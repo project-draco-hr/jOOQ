@@ -1,0 +1,3 @@
+{
+  return JooqUtil.toSQLReference(configuration,sql,bindings,inlineParameters);
+}

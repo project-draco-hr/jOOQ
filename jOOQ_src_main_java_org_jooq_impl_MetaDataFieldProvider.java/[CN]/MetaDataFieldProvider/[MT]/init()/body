@@ -1,0 +1,38 @@
+{
+  Factory create=Factory.getNewFactory(configuration);
+  int columnCount=0;
+  try {
+    columnCount=meta.getColumnCount();
+  }
+ catch (  SQLException e) {
+    log.warn("Cannot fetch column count for cursor : " + e.getMessage());
+    fields.add(create.field("dummy",SQLDataType.OTHER));
+  }
+  try {
+    for (int i=1; i <= columnCount; i++) {
+      String name=meta.getColumnLabel(i);
+      int precision=meta.getPrecision(i);
+      int scale=meta.getScale(i);
+      DataType<?> dataType=SQLDataType.OTHER;
+switch (configuration.getDialect()) {
+case H2:
+        dataType=FieldTypeHelper.getDataType(configuration.getDialect(),FieldTypeHelper.getClass(meta.getColumnType(i),precision,scale));
+      break;
+default :
+    String type=meta.getColumnTypeName(i).replaceAll(".*\\.","");
+  try {
+    dataType=FieldTypeHelper.getDialectDataType(configuration.getDialect(),type,precision,scale);
+  }
+ catch (  SQLDialectNotSupportedException ignore) {
+    log.warn("Not supported by dialect",ignore.getMessage());
+  }
+break;
+}
+fields.add(create.field(name,dataType));
+}
+}
+ catch (SQLException e) {
+throw new RuntimeException(e);
+}
+meta=null;
+}

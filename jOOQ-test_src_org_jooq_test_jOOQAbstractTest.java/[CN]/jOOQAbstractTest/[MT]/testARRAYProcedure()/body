@@ -1,0 +1,89 @@
+{
+  if (cProcedures() == null) {
+    log.info("SKIPPING","ARRAY procedure test (no procedure support)");
+    return;
+  }
+  if (TArrays() == null) {
+    log.info("SKIPPING","ARRAY procedure test (no array support)");
+    return;
+  }
+  reset=false;
+  if (TArrays_STRING_R() != null) {
+    ArrayRecord<Integer> i;
+    ArrayRecord<Long> l;
+    ArrayRecord<String> s;
+    assertEquals(null,invoke(cProcedures(),"pArrays1",create(),null));
+    assertEquals(null,invoke(cProcedures(),"pArrays2",create(),null));
+    assertEquals(null,invoke(cProcedures(),"pArrays3",create(),null));
+    assertEquals(null,invoke(cFunctions(),"fArrays1",create(),null));
+    assertEquals(null,invoke(cFunctions(),"fArrays2",create(),null));
+    assertEquals(null,invoke(cFunctions(),"fArrays3",create(),null));
+    i=newNUMBER_R();
+    l=newNUMBER_LONG_R();
+    s=newSTRING_R();
+    assertEquals(Arrays.asList(new Integer[0]),Arrays.asList(((ArrayRecord<?>)invoke(cProcedures(),"pArrays1",create(),i)).get()));
+    assertEquals(Arrays.asList(new Long[0]),Arrays.asList(((ArrayRecord<?>)invoke(cProcedures(),"pArrays2",create(),l)).get()));
+    assertEquals(Arrays.asList(new String[0]),Arrays.asList(((ArrayRecord<?>)invoke(cProcedures(),"pArrays3",create(),s)).get()));
+    assertEquals(Arrays.asList(new Integer[0]),Arrays.asList(((ArrayRecord<?>)invoke(cFunctions(),"fArrays1",create(),i)).get()));
+    assertEquals(Arrays.asList(new Long[0]),Arrays.asList(((ArrayRecord<?>)invoke(cFunctions(),"fArrays2",create(),l)).get()));
+    assertEquals(Arrays.asList(new String[0]),Arrays.asList(((ArrayRecord<?>)invoke(cFunctions(),"fArrays3",create(),s)).get()));
+    i=newNUMBER_R();
+    l=newNUMBER_LONG_R();
+    s=newSTRING_R();
+    i.set((Integer)null);
+    l.set((Long)null);
+    s.set((String)null);
+    assertEquals(Arrays.asList((Integer)null),Arrays.asList(((ArrayRecord<?>)invoke(cProcedures(),"pArrays1",create(),i)).get()));
+    assertEquals(Arrays.asList((Long)null),Arrays.asList(((ArrayRecord<?>)invoke(cProcedures(),"pArrays2",create(),l)).get()));
+    assertEquals(Arrays.asList((String)null),Arrays.asList(((ArrayRecord<?>)invoke(cProcedures(),"pArrays3",create(),s)).get()));
+    assertEquals(Arrays.asList((Integer)null),Arrays.asList(((ArrayRecord<?>)invoke(cFunctions(),"fArrays1",create(),i)).get()));
+    assertEquals(Arrays.asList((Long)null),Arrays.asList(((ArrayRecord<?>)invoke(cFunctions(),"fArrays2",create(),l)).get()));
+    assertEquals(Arrays.asList((String)null),Arrays.asList(((ArrayRecord<?>)invoke(cFunctions(),"fArrays3",create(),s)).get()));
+    i=newNUMBER_R();
+    l=newNUMBER_LONG_R();
+    s=newSTRING_R();
+    i.set(1,2);
+    l.set(1L,2L);
+    s.set("1","2");
+    assertEquals(Arrays.asList(1,2),Arrays.asList(((ArrayRecord<?>)invoke(cProcedures(),"pArrays1",create(),i)).get()));
+    assertEquals(Arrays.asList(1L,2L),Arrays.asList(((ArrayRecord<?>)invoke(cProcedures(),"pArrays2",create(),l)).get()));
+    assertEquals(Arrays.asList("1","2"),Arrays.asList(((ArrayRecord<?>)invoke(cProcedures(),"pArrays3",create(),s)).get()));
+    assertEquals(Arrays.asList(1,2),Arrays.asList(((ArrayRecord<?>)invoke(cFunctions(),"fArrays1",create(),i)).get()));
+    assertEquals(Arrays.asList(1L,2L),Arrays.asList(((ArrayRecord<?>)invoke(cFunctions(),"fArrays2",create(),l)).get()));
+    assertEquals(Arrays.asList("1","2"),Arrays.asList(((ArrayRecord<?>)invoke(cFunctions(),"fArrays3",create(),s)).get()));
+  }
+  if (TArrays_STRING() != null) {
+    if (supportsOUTParameters()) {
+      assertEquals(null,invoke(cProcedures(),"pArrays1",create(),null));
+      assertEquals(null,invoke(cProcedures(),"pArrays2",create(),null));
+      assertEquals(null,invoke(cProcedures(),"pArrays3",create(),null));
+    }
+    assertEquals(null,invoke(cFunctions(),"fArrays1",create(),null));
+    assertEquals(null,invoke(cFunctions(),"fArrays2",create(),null));
+    assertEquals(null,invoke(cFunctions(),"fArrays3",create(),null));
+    if (supportsOUTParameters()) {
+      assertEquals(Arrays.asList(new Integer[0]),Arrays.asList((Integer[])invoke(cProcedures(),"pArrays1",create(),new Integer[0])));
+      assertEquals(Arrays.asList(new Long[0]),Arrays.asList((Long[])invoke(cProcedures(),"pArrays2",create(),new Long[0])));
+      assertEquals(Arrays.asList(new String[0]),Arrays.asList((String[])invoke(cProcedures(),"pArrays3",create(),new String[0])));
+    }
+    assertEquals(Arrays.asList(new Integer[0]),Arrays.asList((Object[])invoke(cFunctions(),"fArrays1",create(),new Integer[0])));
+    assertEquals(Arrays.asList(new Long[0]),Arrays.asList((Object[])invoke(cFunctions(),"fArrays2",create(),new Long[0])));
+    assertEquals(Arrays.asList(new String[0]),Arrays.asList((Object[])invoke(cFunctions(),"fArrays3",create(),new String[0])));
+    if (supportsOUTParameters()) {
+      assertEquals(Arrays.asList((Integer)null),Arrays.asList((Integer[])invoke(cProcedures(),"pArrays1",create(),new Integer[]{null})));
+      assertEquals(Arrays.asList((Long)null),Arrays.asList((Long[])invoke(cProcedures(),"pArrays2",create(),new Long[]{null})));
+      assertEquals(Arrays.asList((String)null),Arrays.asList((String[])invoke(cProcedures(),"pArrays3",create(),new String[]{null})));
+    }
+    assertEquals(Arrays.asList((Integer)null),Arrays.asList((Object[])invoke(cFunctions(),"fArrays1",create(),new Integer[]{null})));
+    assertEquals(Arrays.asList((Long)null),Arrays.asList((Object[])invoke(cFunctions(),"fArrays2",create(),new Long[]{null})));
+    assertEquals(Arrays.asList((String)null),Arrays.asList((Object[])invoke(cFunctions(),"fArrays3",create(),new String[]{null})));
+    if (supportsOUTParameters()) {
+      assertEquals(Arrays.asList(1,2),Arrays.asList((Integer[])invoke(cProcedures(),"pArrays1",create(),new Integer[]{1,2})));
+      assertEquals(Arrays.asList(1L,2L),Arrays.asList((Long[])invoke(cProcedures(),"pArrays2",create(),new Long[]{1L,2L})));
+      assertEquals(Arrays.asList("1","2"),Arrays.asList((String[])invoke(cProcedures(),"pArrays3",create(),new String[]{"1","2"})));
+    }
+    assertEquals(Arrays.asList(1,2),Arrays.asList((Object[])invoke(cFunctions(),"fArrays1",create(),new Integer[]{1,2})));
+    assertEquals(Arrays.asList(1L,2L),Arrays.asList((Object[])invoke(cFunctions(),"fArrays2",create(),new Long[]{1L,2L})));
+    assertEquals(Arrays.asList("1","2"),Arrays.asList((Object[])invoke(cFunctions(),"fArrays3",create(),new String[]{"1","2"})));
+  }
+}

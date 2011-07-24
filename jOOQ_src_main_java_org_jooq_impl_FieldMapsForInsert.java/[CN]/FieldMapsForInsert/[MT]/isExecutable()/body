@@ -1,0 +1,3 @@
+{
+  return !insertMaps.isEmpty() && insertMaps.get(0) != null;
+}

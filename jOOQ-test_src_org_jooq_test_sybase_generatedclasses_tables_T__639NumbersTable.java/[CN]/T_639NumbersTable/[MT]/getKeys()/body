@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.sybase.generatedclasses.tables.records.T_639NumbersTableRecord>>asList(org.jooq.test.sybase.generatedclasses.Keys.t_639_numbers_table_pk_t_639_numbers_table);
+}

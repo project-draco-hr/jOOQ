@@ -1,0 +1,5 @@
+{
+  conditionStep=ConditionStep.HAVING;
+  getQuery().addHaving(conditions);
+  return this;
+}

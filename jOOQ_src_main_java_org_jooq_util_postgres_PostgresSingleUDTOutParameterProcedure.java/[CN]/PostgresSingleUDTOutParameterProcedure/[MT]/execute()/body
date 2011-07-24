@@ -1,0 +1,5 @@
+{
+  int i=getDelegate().execute();
+  result=getDelegate().getReturnValue();
+  return i;
+}

@@ -1,0 +1,6 @@
+{
+  org.jooq.test.oracle.generatedclasses.functions.FArrays2 f=new org.jooq.test.oracle.generatedclasses.functions.FArrays2();
+  f.setInArray(inArray);
+  f.execute(connection);
+  return f.getReturnValue();
+}

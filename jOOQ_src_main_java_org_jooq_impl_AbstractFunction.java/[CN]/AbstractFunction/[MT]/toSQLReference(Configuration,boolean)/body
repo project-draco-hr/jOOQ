@@ -1,0 +1,3 @@
+{
+  return internal(getFunction(configuration)).toSQLReference(configuration,inlineParameters);
+}

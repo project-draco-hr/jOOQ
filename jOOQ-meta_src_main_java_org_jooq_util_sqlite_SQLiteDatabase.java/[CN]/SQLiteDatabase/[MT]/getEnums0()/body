@@ -1,0 +1,4 @@
+{
+  List<EnumDefinition> result=new ArrayList<EnumDefinition>();
+  return result;
+}

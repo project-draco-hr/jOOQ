@@ -1,0 +1,4 @@
+{
+  final Time result=getValueAsTime(index);
+  return result == null ? defaultValue : result;
+}

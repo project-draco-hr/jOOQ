@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.oracle.generatedclasses.tables.TBookToBookStore.BOOK_ID,value);
+}

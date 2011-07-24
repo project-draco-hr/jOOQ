@@ -1,0 +1,11 @@
+{
+  if (slf4j != null) {
+    slf4j.error(getMessage(message,details));
+  }
+ else   if (log4j != null) {
+    log4j.error(getMessage(message,details));
+  }
+ else {
+    util.severe("" + getMessage(message,details));
+  }
+}

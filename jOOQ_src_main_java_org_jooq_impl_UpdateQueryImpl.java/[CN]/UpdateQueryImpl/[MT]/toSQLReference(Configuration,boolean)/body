@@ -1,0 +1,12 @@
+{
+  StringBuilder sb=new StringBuilder();
+  sb.append("update ");
+  sb.append(internal(getInto()).toSQLDeclaration(configuration,inlineParameters));
+  sb.append(" set ");
+  sb.append(internal(updateMap).toSQLReference(configuration,inlineParameters));
+  if (!(getWhere() instanceof TrueCondition)) {
+    sb.append(" where ");
+    sb.append(internal(getWhere()).toSQLReference(configuration,inlineParameters));
+  }
+  return sb.toString();
+}

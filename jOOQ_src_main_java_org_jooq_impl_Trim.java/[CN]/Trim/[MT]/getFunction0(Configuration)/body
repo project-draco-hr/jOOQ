@@ -1,0 +1,9 @@
+{
+switch (configuration.getDialect()) {
+case INGRES:
+case SQLSERVER:
+    return argument.rtrim().ltrim();
+default :
+  return new Function<String>("trim",SQLDataType.VARCHAR,argument);
+}
+}

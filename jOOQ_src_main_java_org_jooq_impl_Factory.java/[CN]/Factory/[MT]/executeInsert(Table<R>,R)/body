@@ -1,0 +1,5 @@
+{
+  InsertQuery<R> insert=insertQuery(table);
+  insert.setRecord(record);
+  return insert.execute();
+}

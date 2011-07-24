@@ -1,0 +1,3 @@
+Configuration configuration
+PreparedStatement stmt
+int result

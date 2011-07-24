@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.derby.sys.tables.Syscolumns.COLUMNNUMBER,value);
+}

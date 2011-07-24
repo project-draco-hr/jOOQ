@@ -1,0 +1,6 @@
+{
+  if (returnValue == null) {
+    init();
+  }
+  return returnValue;
+}

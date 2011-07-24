@@ -1,0 +1,18 @@
+{
+  if (getDialect() == null) {
+    DataType<?> dataType=typesBySQLDataType[configuration.getDialect().ordinal()].get(this);
+    if (dataType != null) {
+      return (DataType<T>)dataType;
+    }
+  }
+ else   if (getDialect() == configuration.getDialect()) {
+    return this;
+  }
+ else   if (getSQLDataType() == null) {
+    return this;
+  }
+ else {
+    getSQLDataType().getDataType(configuration);
+  }
+  return this;
+}

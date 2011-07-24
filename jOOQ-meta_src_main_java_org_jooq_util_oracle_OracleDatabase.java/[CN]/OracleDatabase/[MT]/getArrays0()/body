@@ -1,0 +1,13 @@
+{
+  List<ArrayDefinition> arrays=new ArrayList<ArrayDefinition>();
+  for (  Record record : create().select(AllCollTypes.TYPE_NAME,AllCollTypes.ELEM_TYPE_NAME,AllCollTypes.PRECISION,AllCollTypes.SCALE).from(ALL_COLL_TYPES).where(AllCollTypes.OWNER.equal(getSchemaName())).and(AllCollTypes.COLL_TYPE.equal("VARYING ARRAY")).orderBy(AllCollTypes.TYPE_NAME).fetch()) {
+    String name=record.getValue(AllCollTypes.TYPE_NAME);
+    String dataType=record.getValue(AllCollTypes.ELEM_TYPE_NAME);
+    int precision=record.getValue(AllCollTypes.PRECISION,BigDecimal.ZERO).intValue();
+    int scale=record.getValue(AllCollTypes.SCALE,BigDecimal.ZERO).intValue();
+    DefaultDataTypeDefinition type=new DefaultDataTypeDefinition(this,dataType,precision,scale);
+    DefaultArrayDefinition array=new DefaultArrayDefinition(this,name,type);
+    arrays.add(array);
+  }
+  return arrays;
+}

@@ -1,0 +1,3 @@
+{
+  return internal(getWhere()).toSQLReference(configuration,inlineParameters);
+}

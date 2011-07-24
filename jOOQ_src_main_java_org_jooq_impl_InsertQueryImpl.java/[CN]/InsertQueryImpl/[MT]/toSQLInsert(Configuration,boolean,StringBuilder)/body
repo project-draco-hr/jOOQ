@@ -1,0 +1,6 @@
+{
+  sb.append("insert into ");
+  sb.append(internal(getInto()).toSQLReference(configuration,inlineParameters));
+  sb.append(" ");
+  sb.append(internal(insertMaps).toSQLReference(configuration,inlineParameters));
+}

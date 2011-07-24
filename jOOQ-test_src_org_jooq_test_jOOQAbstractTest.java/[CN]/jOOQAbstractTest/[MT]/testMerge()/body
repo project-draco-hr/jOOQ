@@ -1,0 +1,24 @@
+{
+switch (getDialect()) {
+case DERBY:
+case H2:
+case INGRES:
+case MYSQL:
+case POSTGRES:
+case SQLITE:
+    log.info("SKIPPING","Merge tests");
+  return;
+}
+reset=false;
+create().mergeInto(TAuthor()).using(create().selectOne()).on("1 = 1").whenMatchedThenUpdate().set(TAuthor_FIRST_NAME(),"Alfred").whenNotMatchedThenInsert(TAuthor_ID(),TAuthor_LAST_NAME()).values(3,"Hitchcock").execute();
+assertEquals(Arrays.asList("Alfred","Alfred"),create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).fetch(TAuthor_FIRST_NAME()));
+create().mergeInto(TAuthor()).using(create().selectOne()).on(TAuthor_ID().equal(1)).whenMatchedThenUpdate().set(TAuthor_FIRST_NAME(),"John").whenNotMatchedThenInsert(TAuthor_ID(),TAuthor_LAST_NAME()).values(3,"Hitchcock").execute();
+assertEquals(Arrays.asList("John","Alfred"),create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).fetch(TAuthor_FIRST_NAME()));
+Field<String> f=val("Dan").as("f");
+Field<String> l=val("Brown").as("l");
+MergeFinalStep q=create().mergeInto(TAuthor()).using(create().select(f,l)).on(TAuthor_LAST_NAME().equal(l)).whenMatchedThenUpdate().set(TAuthor_FIRST_NAME(),"James").whenNotMatchedThenInsert(TAuthor_ID(),TAuthor_FIRST_NAME(),TAuthor_LAST_NAME()).values(3,f,l);
+q.execute();
+assertEquals(Arrays.asList("John","Alfred","Dan"),create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).fetch(TAuthor_FIRST_NAME()));
+q.execute();
+assertEquals(Arrays.asList("John","Alfred","James"),create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).fetch(TAuthor_FIRST_NAME()));
+}

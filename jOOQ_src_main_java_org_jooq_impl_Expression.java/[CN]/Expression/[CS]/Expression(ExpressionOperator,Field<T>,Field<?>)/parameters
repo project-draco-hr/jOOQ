@@ -1,0 +1,3 @@
+ExpressionOperator operator
+Field<T> lhs
+Field<?> rhs

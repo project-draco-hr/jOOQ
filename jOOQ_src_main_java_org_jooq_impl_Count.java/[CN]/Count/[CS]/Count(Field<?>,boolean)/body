@@ -1,0 +1,4 @@
+{
+  super("count",SQLDataType.INTEGER,field);
+  this.distinct=distinct;
+}

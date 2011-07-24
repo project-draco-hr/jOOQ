@@ -1,0 +1,6 @@
+{
+  org.jooq.test.hsqldb.generatedclasses.functions.FArrays3 f=new org.jooq.test.hsqldb.generatedclasses.functions.FArrays3();
+  f.setInArray(inArray);
+  f.execute(connection);
+  return f.getReturnValue();
+}

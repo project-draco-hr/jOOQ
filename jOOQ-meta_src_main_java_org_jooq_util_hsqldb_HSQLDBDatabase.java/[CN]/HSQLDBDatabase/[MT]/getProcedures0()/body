@@ -1,0 +1,10 @@
+{
+  List<ProcedureDefinition> result=new ArrayList<ProcedureDefinition>();
+  for (  Record record : create().select(Routines.ROUTINE_NAME,Routines.SPECIFIC_NAME).from(ROUTINES).where(Routines.ROUTINE_SCHEMA.equal(getSchemaName())).and(Routines.ROUTINE_TYPE.equal("PROCEDURE")).orderBy(Routines.ROUTINE_NAME).fetch()) {
+    String name=record.getValue(Routines.ROUTINE_NAME);
+    String specificName=record.getValue(Routines.SPECIFIC_NAME);
+    HSQLDBProcedureDefinition procedure=new HSQLDBProcedureDefinition(this,null,name,specificName);
+    result.add(procedure);
+  }
+  return result;
+}

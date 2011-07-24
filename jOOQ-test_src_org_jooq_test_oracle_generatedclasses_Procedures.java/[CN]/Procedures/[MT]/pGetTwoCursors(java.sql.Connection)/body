@@ -1,0 +1,5 @@
+{
+  org.jooq.test.oracle.generatedclasses.procedures.PGetTwoCursors p=new org.jooq.test.oracle.generatedclasses.procedures.PGetTwoCursors();
+  p.execute(connection);
+  return p;
+}

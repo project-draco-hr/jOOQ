@@ -1,0 +1,6 @@
+{
+  org.jooq.test.oracle.generatedclasses.packages.library.PkgPAuthorExists1 p=new org.jooq.test.oracle.generatedclasses.packages.library.PkgPAuthorExists1();
+  p.setAuthorName(authorName);
+  p.execute(connection);
+  return p.getResult();
+}

@@ -1,0 +1,11 @@
+{
+  for (  Record record : fetchKeys("P")) {
+    String key=record.getValue(Iiconstraints.CONSTRAINT_NAME.trim());
+    String tableName=record.getValue(Iiconstraints.TABLE_NAME.trim());
+    String columnName=record.getValue(IiindexColumns.COLUMN_NAME.trim());
+    TableDefinition table=getTable(tableName);
+    if (table != null) {
+      relations.addPrimaryKey(key,table.getColumn(columnName));
+    }
+  }
+}

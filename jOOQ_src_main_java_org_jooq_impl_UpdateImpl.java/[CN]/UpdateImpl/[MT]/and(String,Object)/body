@@ -1,0 +1,3 @@
+{
+  return and(create().condition(sql,bindings));
+}

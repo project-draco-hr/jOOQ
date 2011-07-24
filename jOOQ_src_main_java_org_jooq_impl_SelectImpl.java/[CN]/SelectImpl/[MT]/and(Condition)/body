@@ -1,0 +1,17 @@
+{
+switch (conditionStep) {
+case WHERE:
+    getQuery().addConditions(condition);
+  break;
+case CONNECT_BY:
+getQuery().addConnectBy(condition);
+break;
+case HAVING:
+getQuery().addHaving(condition);
+break;
+case ON:
+joinConditions.addConditions(condition);
+break;
+}
+return this;
+}

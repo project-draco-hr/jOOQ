@@ -1,0 +1,4 @@
+{
+  org.jooq.test.oracle.generatedclasses.procedures.PCreateAuthor p=new org.jooq.test.oracle.generatedclasses.procedures.PCreateAuthor();
+  p.execute(connection);
+}

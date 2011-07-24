@@ -1,0 +1,3 @@
+{
+  return getValueAsBigDecimal(getField(fieldName),defaultValue);
+}

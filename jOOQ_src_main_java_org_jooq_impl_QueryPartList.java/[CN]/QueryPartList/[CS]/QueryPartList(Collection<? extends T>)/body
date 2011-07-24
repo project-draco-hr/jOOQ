@@ -1,0 +1,6 @@
+{
+  super();
+  if (wrappedList != null) {
+    addAll(wrappedList);
+  }
+}

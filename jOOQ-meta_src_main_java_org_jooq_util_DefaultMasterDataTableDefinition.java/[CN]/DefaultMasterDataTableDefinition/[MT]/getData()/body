@@ -1,0 +1,12 @@
+{
+  if (!dataFetched) {
+    dataFetched=true;
+    try {
+      data=create().select().from(delegate.getTable()).orderBy(create().field(getPrimaryKeyColumn().getName())).fetch();
+    }
+ catch (    SQLException e) {
+      log.error("Error while initialising master data",e);
+    }
+  }
+  return data;
+}

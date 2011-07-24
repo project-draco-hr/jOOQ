@@ -1,0 +1,9 @@
+{
+  if (cursor != null) {
+    try {
+      cursor.close();
+    }
+ catch (    Exception ignore) {
+    }
+  }
+}

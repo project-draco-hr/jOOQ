@@ -1,0 +1,9 @@
+{
+switch (configuration.getDialect()) {
+case INGRES:
+case ORACLE:
+    return argument.cast(BigDecimal.class).mul(180).div(create(configuration).pi());
+default :
+  return new Function<BigDecimal>("degrees",SQLDataType.NUMERIC,argument);
+}
+}

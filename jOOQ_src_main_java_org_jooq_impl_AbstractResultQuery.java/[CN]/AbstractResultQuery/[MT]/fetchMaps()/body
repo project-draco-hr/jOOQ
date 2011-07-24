@@ -1,0 +1,7 @@
+{
+  List<Map<String,Object>> list=new ArrayList<Map<String,Object>>();
+  for (  R record : fetch()) {
+    list.add(convertToMap(record));
+  }
+  return list;
+}

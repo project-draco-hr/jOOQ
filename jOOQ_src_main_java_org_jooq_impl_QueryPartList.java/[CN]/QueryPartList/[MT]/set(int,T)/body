@@ -1,0 +1,6 @@
+{
+  if (element != null) {
+    return wrappedList.set(index,element);
+  }
+  return null;
+}

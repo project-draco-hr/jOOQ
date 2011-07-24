@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.ingres.generatedclasses.tables.T_639NumbersTable.BIG_INTEGER,value);
+}

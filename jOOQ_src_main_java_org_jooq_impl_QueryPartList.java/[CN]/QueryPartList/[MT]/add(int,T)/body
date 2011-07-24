@@ -1,0 +1,5 @@
+{
+  if (element != null) {
+    wrappedList.add(index,element);
+  }
+}

@@ -1,0 +1,5 @@
+Database database
+String typeName
+Number precision
+Number scale
+String udtName

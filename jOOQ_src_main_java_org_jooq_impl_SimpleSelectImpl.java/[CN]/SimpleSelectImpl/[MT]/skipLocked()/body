@@ -1,0 +1,4 @@
+{
+  getQuery().setForUpdateSkipLocked();
+  return this;
+}

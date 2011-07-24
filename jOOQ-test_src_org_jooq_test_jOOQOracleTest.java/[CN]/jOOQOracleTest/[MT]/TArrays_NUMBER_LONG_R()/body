@@ -1,0 +1,3 @@
+{
+  return TArrays.NUMBER_LONG_ARRAY;
+}

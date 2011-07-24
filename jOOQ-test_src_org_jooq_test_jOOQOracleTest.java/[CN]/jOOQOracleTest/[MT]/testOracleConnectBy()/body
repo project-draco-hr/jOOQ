@@ -1,0 +1,17 @@
+{
+  OracleFactory ora=new OracleFactory(create().getConnection(),create().getSchemaMapping());
+  assertEquals(Arrays.asList(1,2,3,4,5,6,7,8,9),ora.select(ora.rownum()).connectBy(ora.level().lessThan(10)).fetch(ora.rownum()));
+  assertEquals(Arrays.asList(1,2,3,4,5,6,7,8,9),ora.select(ora.rownum()).connectByNoCycle(ora.level().lessThan(10)).fetch(ora.rownum()));
+  assertEquals(Arrays.asList(1,2,3,4,5,6,7,8,9),ora.select(ora.rownum()).connectBy(ora.level().lessThan(10)).and("1 = ?",1).startWith("? = ?",1,1).fetch(ora.rownum()));
+  assertEquals(Arrays.asList(1,2,3,4,5,6,7,8,9),ora.select(ora.rownum()).connectByNoCycle(ora.level().lessThan(10)).and("1 = ?",1).startWith("? = ?",1,1).fetch(ora.rownum()));
+  Result<Record> result=ora.select(ora.rownum(),ora.connectByIsCycle(),ora.connectByIsLeaf()).connectByNoCycle(ora.level().lessThan(4)).fetch();
+  assertEquals(Integer.valueOf(1),result.getValue(0,ora.rownum()));
+  assertEquals(Integer.valueOf(2),result.getValue(1,ora.rownum()));
+  assertEquals(Integer.valueOf(3),result.getValue(2,ora.rownum()));
+  assertEquals(Boolean.FALSE,result.getValue(0,ora.connectByIsLeaf()));
+  assertEquals(Boolean.FALSE,result.getValue(1,ora.connectByIsLeaf()));
+  assertEquals(Boolean.TRUE,result.getValue(2,ora.connectByIsLeaf()));
+  assertEquals(Boolean.FALSE,result.getValue(0,ora.connectByIsCycle()));
+  assertEquals(Boolean.FALSE,result.getValue(1,ora.connectByIsCycle()));
+  assertEquals(Boolean.FALSE,result.getValue(2,ora.connectByIsCycle()));
+}

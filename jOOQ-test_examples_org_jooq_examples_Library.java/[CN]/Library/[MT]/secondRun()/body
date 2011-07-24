@@ -1,0 +1,10 @@
+{
+  Result<Record> result=create().select().from(T_AUTHOR).join(T_BOOK).on(TAuthor.ID.equal(TBook.AUTHOR_ID)).where(TAuthor.YEAR_OF_BIRTH.greaterThan(1920).and(TAuthor.FIRST_NAME.equal("Paulo"))).orderBy(TBook.TITLE).fetch();
+  for (  Record record : result) {
+    String firstName=record.getValue(TAuthor.FIRST_NAME);
+    String lastName=record.getValue(TAuthor.LAST_NAME);
+    String title=record.getValue(TBook.TITLE);
+    Integer publishedIn=record.getValue(TBook.PUBLISHED_IN);
+    System.out.println(title + " (published in " + publishedIn+ ") by "+ firstName+ " "+ lastName);
+  }
+}

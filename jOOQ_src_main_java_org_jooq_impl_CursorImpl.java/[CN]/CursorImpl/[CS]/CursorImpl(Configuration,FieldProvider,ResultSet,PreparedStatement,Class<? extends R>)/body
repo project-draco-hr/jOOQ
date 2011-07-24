@@ -1,0 +1,7 @@
+{
+  this.configuration=configuration;
+  this.fields=fields;
+  this.type=type;
+  this.stmt=stmt;
+  this.rs=rs;
+}

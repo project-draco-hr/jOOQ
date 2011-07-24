@@ -1,0 +1,24 @@
+{
+  String[] split=params.split(",(?!\\s*\\d+\\s*\\))");
+  for (int i=0; i < split.length; i++) {
+    String param=split[i];
+    param=param.trim();
+    Matcher matcher=PARAMETER_PATTERN.matcher(param);
+    while (matcher.find()) {
+      String inOut=matcher.group(2);
+      String paramName=matcher.group(3);
+      String paramType=matcher.group(4);
+      Number precision=0;
+      Number scale=0;
+      if (!StringUtils.isBlank(matcher.group(5))) {
+        precision=Integer.valueOf(matcher.group(5));
+      }
+      if (!StringUtils.isBlank(matcher.group(6))) {
+        scale=Integer.valueOf(matcher.group(6));
+      }
+      DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),paramType,precision,scale);
+      ParameterDefinition parameter=new DefaultParameterDefinition(this,paramName,i + 1,type);
+      addParameter(InOutDefinition.getFromString(inOut),parameter);
+    }
+  }
+}

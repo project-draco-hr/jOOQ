@@ -1,0 +1,3 @@
+{
+  return new SelectQueryAsSubQueryCondition(query,this,SubQueryOperator.LESS_THAN_ALL);
+}

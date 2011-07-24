@@ -1,0 +1,6 @@
+{
+  if (insertMaps.get(index()) == null) {
+    insertMaps.set(index(),new FieldMapForInsert());
+  }
+  return insertMaps.get(index());
+}

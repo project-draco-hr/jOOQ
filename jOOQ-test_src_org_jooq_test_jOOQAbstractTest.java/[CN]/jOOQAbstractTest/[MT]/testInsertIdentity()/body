@@ -1,0 +1,35 @@
+{
+switch (getDialect()) {
+case DB2:
+case POSTGRES:
+case ORACLE:
+case SQLITE:
+    log.info("SKIPPING","IDENTITY tests");
+  return;
+}
+reset=false;
+create().insertInto(TBookStore(),TBookStore_NAME()).values("R??sslitor").execute();
+create().selectFrom(TBookStore()).fetch();
+assertEquals(new BigInteger("4"),create().lastID());
+create().delete(TBookStore()).where(TBookStore_NAME().equal("R??sslitor")).execute();
+create().insertInto(TBookStore(),TBookStore_NAME()).values("Amazon").execute();
+assertEquals(5,create().lastID(TBookStore().getIdentity()));
+assertEquals(5,create().lastID(TBookStore().getIdentity()));
+create().insertInto(TAuthor(),TAuthor_ID(),TAuthor_LAST_NAME()).values(13,"Frisch").execute();
+switch (getDialect()) {
+case SQLITE:
+assertEquals(new BigInteger("3"),create().lastID());
+break;
+case H2:
+case SQLSERVER:
+assertEquals(null,create().lastID());
+break;
+case SYBASE:
+assertEquals(BigInteger.ZERO,create().lastID());
+break;
+case MYSQL:
+default :
+assertEquals(new BigInteger("5"),create().lastID());
+break;
+}
+}

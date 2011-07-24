@@ -1,0 +1,77 @@
+{
+  List<String> values=new ArrayList<String>();
+  int i=0;
+  int state=0;
+  StringBuilder sb=null;
+  while (i < input.length()) {
+    char c=input.charAt(i);
+switch (state) {
+case 0:
+      if (c == '(') {
+        state=1;
+      }
+    break;
+case 1:
+  sb=new StringBuilder();
+if (c == ',') {
+  values.add(null);
+  state=1;
+}
+ else if (c == ')') {
+  values.add(null);
+  state=5;
+}
+ else if (c == '"') {
+  state=2;
+}
+ else if ((c == 'n' || c == 'N') && (i + 4 < input.length()) && input.substring(i,i + 4).equalsIgnoreCase("null")) {
+  values.add(null);
+  i+=3;
+  state=4;
+}
+ else {
+  sb.append(c);
+  state=3;
+}
+break;
+case 2:
+if (c == '"') {
+if (input.charAt(i + 1) == '"') {
+sb.append(c);
+i++;
+}
+ else {
+values.add(sb.toString());
+state=4;
+}
+}
+ else {
+sb.append(c);
+}
+break;
+case 3:
+if (c == ')') {
+values.add(sb.toString());
+state=5;
+}
+ else if (c == ',') {
+values.add(sb.toString());
+state=1;
+}
+ else {
+sb.append(c);
+}
+break;
+case 4:
+if (c == ')') {
+state=5;
+}
+ else if (c == ',') {
+state=1;
+}
+break;
+}
+i++;
+}
+return values;
+}

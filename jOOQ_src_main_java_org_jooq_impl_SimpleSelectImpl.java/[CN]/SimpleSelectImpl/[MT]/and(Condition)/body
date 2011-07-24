@@ -1,0 +1,4 @@
+{
+  getQuery().addConditions(condition);
+  return this;
+}

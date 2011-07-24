@@ -1,0 +1,12 @@
+{
+  StringBuilder sb=new StringBuilder();
+  sb.append(getTargetPackage());
+  if (!StringUtils.isBlank(getSubPackage(definition))) {
+    sb.append(".");
+    sb.append(getSubPackage(definition));
+  }
+  if ("Record".equals(suffix)) {
+    sb.append(".records");
+  }
+  return sb.toString();
+}

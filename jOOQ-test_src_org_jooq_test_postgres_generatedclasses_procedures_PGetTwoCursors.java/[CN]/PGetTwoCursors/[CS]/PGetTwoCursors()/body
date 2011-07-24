@@ -1,0 +1,5 @@
+{
+  super(org.jooq.SQLDialect.POSTGRES,"p_get_two_cursors",org.jooq.test.postgres.generatedclasses.Public.PUBLIC);
+  addOutParameter(BOOKS);
+  addOutParameter(AUTHORS);
+}

@@ -1,0 +1,9 @@
+{
+  List<ForeignKey<R,O>> result=new ArrayList<ForeignKey<R,O>>();
+  for (  ForeignKey<R,?> reference : getReferences()) {
+    if (other.equals(reference.getKey().getTable())) {
+      result.add((ForeignKey<R,O>)reference);
+    }
+  }
+  return Collections.unmodifiableList(result);
+}

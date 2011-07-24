@@ -1,0 +1,4 @@
+{
+  super("sinh",SQLDataType.NUMERIC,argument);
+  this.argument=argument;
+}

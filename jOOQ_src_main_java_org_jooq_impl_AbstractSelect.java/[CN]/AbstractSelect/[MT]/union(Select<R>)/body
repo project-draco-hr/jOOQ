@@ -1,0 +1,3 @@
+{
+  return new Union<R>(attachable.getConfiguration(),this,select,CombineOperator.UNION);
+}

@@ -1,0 +1,5 @@
+{
+  org.jooq.test.hsqldb.generatedclasses.functions.FOne f=new org.jooq.test.hsqldb.generatedclasses.functions.FOne();
+  f.execute(configuration);
+  return f.getReturnValue();
+}

@@ -1,0 +1,8 @@
+{
+  List<FunctionDefinition> result=new ArrayList<FunctionDefinition>();
+  for (  Record record : create().selectDistinct(Routines.ROUTINE_NAME,Routines.SPECIFIC_NAME,Routines.DATA_TYPE,Routines.NUMERIC_PRECISION,Routines.NUMERIC_SCALE).from(ROUTINES).where(Routines.ROUTINE_SCHEMA.equal(getSchemaName())).and(Routines.ROUTINE_TYPE.equal("FUNCTION")).orderBy(Routines.ROUTINE_NAME).fetch()) {
+    SQLServerFunctionDefinition function=new SQLServerFunctionDefinition(this,record.getValue(Routines.ROUTINE_NAME),record.getValue(Routines.SPECIFIC_NAME),record.getValue(Routines.DATA_TYPE),record.getValue(Routines.NUMERIC_PRECISION),record.getValue(Routines.NUMERIC_SCALE));
+    result.add(function);
+  }
+  return result;
+}

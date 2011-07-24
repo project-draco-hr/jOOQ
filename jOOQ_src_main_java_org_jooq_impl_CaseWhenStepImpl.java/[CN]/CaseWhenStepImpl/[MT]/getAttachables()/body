@@ -1,0 +1,8 @@
+{
+  List<Attachable> result=new ArrayList<Attachable>();
+  result.addAll(getAttachables(value));
+  result.addAll(getAttachables(compareValues));
+  result.addAll(getAttachables(results));
+  result.addAll(getAttachables(otherwise));
+  return result;
+}

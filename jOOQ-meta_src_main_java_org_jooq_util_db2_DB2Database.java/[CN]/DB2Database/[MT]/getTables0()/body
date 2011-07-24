@@ -1,0 +1,17 @@
+{
+  List<TableDefinition> result=new ArrayList<TableDefinition>();
+  SelectQuery q=create().selectQuery();
+  q.addFrom(TABLES);
+  q.addSelect(Tables.TABNAME);
+  q.addConditions(Tables.TABSCHEMA.equal(getSchemaName()));
+  q.addConditions(Tables.TYPE.in("T","V"));
+  q.addOrderBy(Tables.TABNAME);
+  q.execute();
+  for (  Record record : q.getResult()) {
+    String name=record.getValue(Tables.TABNAME);
+    String comment="";
+    DB2TableDefinition table=new DB2TableDefinition(this,name,comment);
+    result.add(table);
+  }
+  return result;
+}

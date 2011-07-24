@@ -1,0 +1,3 @@
+SQLDialect dialect
+String name
+DataType<T> type

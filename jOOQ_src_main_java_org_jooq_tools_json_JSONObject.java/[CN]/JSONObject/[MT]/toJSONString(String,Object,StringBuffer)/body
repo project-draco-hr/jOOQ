@@ -1,0 +1,8 @@
+{
+  sb.append('\"');
+  if (key == null)   sb.append("null");
+ else   JSONValue.escape(key,sb);
+  sb.append('\"').append(':');
+  sb.append(JSONValue.toJSONString(value));
+  return sb.toString();
+}

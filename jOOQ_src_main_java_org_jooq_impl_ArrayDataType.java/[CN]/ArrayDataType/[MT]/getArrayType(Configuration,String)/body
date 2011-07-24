@@ -1,0 +1,12 @@
+{
+switch (configuration.getDialect()) {
+case HSQLDB:
+    return dataType + " array";
+case POSTGRES:
+  return dataType + "[]";
+case H2:
+return "array";
+default :
+return dataType + "[]";
+}
+}

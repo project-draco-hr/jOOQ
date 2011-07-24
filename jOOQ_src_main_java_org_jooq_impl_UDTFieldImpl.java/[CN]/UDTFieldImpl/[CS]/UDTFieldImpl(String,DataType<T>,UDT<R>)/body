@@ -1,0 +1,5 @@
+{
+  super(name,type);
+  this.udt=udt;
+  this.udt.getFields().add(this);
+}

@@ -1,0 +1,8 @@
+{
+  for (  E column : getElements()) {
+    if (column.getName().equals(columnName)) {
+      return column;
+    }
+  }
+  return null;
+}

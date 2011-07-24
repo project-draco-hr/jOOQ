@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.postgres.information_schema.tables.Tables.IS_TYPED,value);
+}

@@ -1,0 +1,14 @@
+{
+  String result=sql;
+  if (inlineParameters) {
+    if (bindings == null) {
+      result=toSQLReference(configuration,sql,new Object[]{null},inlineParameters);
+    }
+ else {
+      for (      Object binding : bindings) {
+        result=result.replaceFirst("\\?",Matcher.quoteReplacement(FieldTypeHelper.toSQL(configuration,binding,inlineParameters)));
+      }
+    }
+  }
+  return result;
+}

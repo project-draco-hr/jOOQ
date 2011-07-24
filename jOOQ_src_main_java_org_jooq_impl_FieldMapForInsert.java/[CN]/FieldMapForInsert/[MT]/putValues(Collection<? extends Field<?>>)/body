@@ -1,0 +1,9 @@
+{
+  if (values.size() != size()) {
+    throw new IllegalArgumentException("The number of values must match the number of fields: " + this);
+  }
+  Iterator<? extends Field<?>> it=values.iterator();
+  for (  Entry<Field<?>,Field<?>> entry : entrySet()) {
+    entry.setValue(it.next());
+  }
+}

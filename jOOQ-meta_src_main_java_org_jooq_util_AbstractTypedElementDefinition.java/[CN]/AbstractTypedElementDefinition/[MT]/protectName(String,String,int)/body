@@ -1,0 +1,7 @@
+{
+  if (name == null) {
+    log.warn("Missing name","Object " + table + " holds a column without a name at position "+ position);
+    return "_" + position;
+  }
+  return name;
+}

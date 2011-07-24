@@ -1,0 +1,3 @@
+{
+  super(SQLDialect.SQLITE,sqlDataType,sqlDataType.getType(),typeName);
+}

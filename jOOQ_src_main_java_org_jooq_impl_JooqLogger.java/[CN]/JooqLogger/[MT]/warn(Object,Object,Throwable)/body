@@ -1,0 +1,11 @@
+{
+  if (slf4j != null) {
+    slf4j.warn(getMessage(message,details),t);
+  }
+ else   if (log4j != null) {
+    log4j.warn(getMessage(message,details),t);
+  }
+ else {
+    util.log(Level.WARNING,"" + getMessage(message,details),t);
+  }
+}

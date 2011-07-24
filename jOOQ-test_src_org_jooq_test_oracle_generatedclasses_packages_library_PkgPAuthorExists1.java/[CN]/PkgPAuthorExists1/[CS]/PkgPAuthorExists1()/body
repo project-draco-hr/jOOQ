@@ -1,0 +1,6 @@
+{
+  super(org.jooq.SQLDialect.ORACLE,"PKG_P_AUTHOR_EXISTS",org.jooq.test.oracle.generatedclasses.Test.TEST,org.jooq.test.oracle.generatedclasses.packages.Library.LIBRARY);
+  addInParameter(AUTHOR_NAME);
+  addOutParameter(RESULT);
+  setOverloaded(true);
+}

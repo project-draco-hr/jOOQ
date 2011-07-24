@@ -1,0 +1,5 @@
+{
+  for (  Field<?> field : getUDT().getFields()) {
+    setValue(stream,field);
+  }
+}

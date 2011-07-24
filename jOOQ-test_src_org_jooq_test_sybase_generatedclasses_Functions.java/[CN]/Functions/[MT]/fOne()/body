@@ -1,0 +1,4 @@
+{
+  org.jooq.test.sybase.generatedclasses.functions.FOne f=new org.jooq.test.sybase.generatedclasses.functions.FOne();
+  return f.asField();
+}

@@ -1,0 +1,10 @@
+{
+  SelectQuery q1=create.selectQuery();
+  SelectQuery q2=create.selectQuery();
+  q1.addFrom(TABLE1);
+  q2.addFrom(TABLE2);
+  q2.addSelect(FIELD_ID2);
+  q1.addConditions(FIELD_ID1.in(q2));
+  assertEquals("select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" where \"TABLE1\".\"ID1\" in (select \"TABLE2\".\"ID2\" from \"TABLE2\")",internal(q1).toSQLReference(create,true));
+  assertEquals("select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" where \"TABLE1\".\"ID1\" in (select \"TABLE2\".\"ID2\" from \"TABLE2\")",internal(q1).toSQLReference(create,false));
+}

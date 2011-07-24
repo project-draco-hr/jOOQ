@@ -1,0 +1,4 @@
+{
+  super(database,name,"");
+  this.tableid=tableid;
+}

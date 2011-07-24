@@ -1,0 +1,3 @@
+{
+  return create().select(Systables.TABLENAME,Systables.TABLEID,Sysconstraints.CONSTRAINTNAME,Sysconglomerates.DESCRIPTOR).from(SYSCONGLOMERATES).join(SYSKEYS).on(Syskeys.CONGLOMERATEID.equal(Sysconglomerates.CONGLOMERATEID)).join(SYSCONSTRAINTS).on(Sysconstraints.CONSTRAINTID.equal(Syskeys.CONSTRAINTID)).join(SYSTABLES).on(Systables.TABLEID.equal(Sysconglomerates.TABLEID)).where(Sysconstraints.TYPE.equal(constraintType)).fetch();
+}

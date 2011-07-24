@@ -1,0 +1,39 @@
+{
+  Class.forName(properties.getProperty("jdbc.Driver"));
+  Connection connection=null;
+  try {
+    connection=DriverManager.getConnection(properties.getProperty("jdbc.URL"),properties.getProperty("jdbc.User"),properties.getProperty("jdbc.Password"));
+    Class<Generator> generatorClass=(Class<Generator>)(properties.containsKey("generator") ? Class.forName(properties.getProperty("generator")) : DefaultGenerator.class);
+    Generator generator=generatorClass.newInstance();
+    Class<GeneratorStrategy> strategyClass=(Class<GeneratorStrategy>)(properties.containsKey("generator.strategy") ? Class.forName(properties.getProperty("generator.strategy")) : DefaultGeneratorStrategy.class);
+    GeneratorStrategy strategy=strategyClass.newInstance();
+    strategy.setMetaClassPrefix(defaultString(properties.getProperty("generator.strategy.meta-class-prefix")));
+    strategy.setMetaClassSuffix(defaultString(properties.getProperty("generator.strategy.meta-class-suffix")));
+    strategy.setRecordClassPrefix(defaultString(properties.getProperty("generator.strategy.record-class-prefix")));
+    strategy.setRecordClassSuffix(defaultString(properties.getProperty("generator.strategy.record-class-suffix","Record")));
+    strategy.setMemberScheme(defaultString(properties.getProperty("generator.strategy.member-scheme","camel-case")));
+    generator.setStrategy(strategy);
+    Class<Database> databaseClass=(Class<Database>)Class.forName(properties.getProperty("generator.database"));
+    Database database=databaseClass.newInstance();
+    database.setConnection(connection);
+    database.setSchemaName(properties.getProperty("jdbc.Schema"));
+    database.setIncludes(defaultString(properties.getProperty("generator.database.includes")).split(","));
+    database.setExcludes(defaultString(properties.getProperty("generator.database.excludes")).split(","));
+    database.setMasterDataTableNames(defaultString(properties.getProperty("generator.generate.master-data-tables")).split(","));
+    database.setProperties(properties);
+    generator.setTargetPackage(properties.getProperty("generator.target.package"));
+    generator.setTargetDirectory(properties.getProperty("generator.target.directory"));
+    generator.setGenerateRelations("true".equalsIgnoreCase(properties.getProperty("generator.generate.relations")));
+    generator.setGenerateDeprecated(!"false".equalsIgnoreCase(properties.getProperty("generator.generate.deprecated")));
+    generator.generate(database);
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+    throw e;
+  }
+ finally {
+    if (connection != null) {
+      connection.close();
+    }
+  }
+}

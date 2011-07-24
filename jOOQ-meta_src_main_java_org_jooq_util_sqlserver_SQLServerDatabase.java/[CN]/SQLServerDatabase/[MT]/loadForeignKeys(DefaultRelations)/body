@@ -1,0 +1,14 @@
+{
+  Result<Record> result=create().select(ReferentialConstraints.CONSTRAINT_NAME,ReferentialConstraints.UNIQUE_CONSTRAINT_NAME,KeyColumnUsage.TABLE_NAME,KeyColumnUsage.COLUMN_NAME).from(REFERENTIAL_CONSTRAINTS).join(KEY_COLUMN_USAGE).on(ReferentialConstraints.CONSTRAINT_NAME.equal(KeyColumnUsage.CONSTRAINT_NAME)).where(ReferentialConstraints.CONSTRAINT_SCHEMA.equal(getSchemaName())).orderBy(KeyColumnUsage.TABLE_SCHEMA.asc(),KeyColumnUsage.TABLE_NAME.asc(),KeyColumnUsage.ORDINAL_POSITION.asc()).fetch();
+  for (  Record record : result) {
+    String foreignKey=record.getValue(ReferentialConstraints.CONSTRAINT_NAME);
+    String foreignKeyTable=record.getValue(KeyColumnUsage.TABLE_NAME);
+    String foreignKeyColumn=record.getValue(KeyColumnUsage.COLUMN_NAME);
+    String uniqueKey=record.getValue(ReferentialConstraints.UNIQUE_CONSTRAINT_NAME);
+    TableDefinition referencingTable=getTable(foreignKeyTable);
+    if (referencingTable != null) {
+      ColumnDefinition referencingColumn=referencingTable.getColumn(foreignKeyColumn);
+      relations.addForeignKey(foreignKey,uniqueKey,referencingColumn);
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  org.jooq.examples.mysql.sakila.functions.InventoryInStock f=new org.jooq.examples.mysql.sakila.functions.InventoryInStock();
+  f.setPInventoryId(pInventoryId);
+  f.execute(connection);
+  return f.getReturnValue();
+}

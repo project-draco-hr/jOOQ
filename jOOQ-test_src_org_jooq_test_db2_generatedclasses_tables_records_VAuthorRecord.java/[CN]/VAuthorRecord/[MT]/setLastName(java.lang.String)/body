@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.db2.generatedclasses.tables.VAuthor.LAST_NAME,value);
+}

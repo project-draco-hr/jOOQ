@@ -1,0 +1,3 @@
+{
+  super("TABLES",org.jooq.util.hsqldb.information_schema.InformationSchema.INFORMATION_SCHEMA);
+}

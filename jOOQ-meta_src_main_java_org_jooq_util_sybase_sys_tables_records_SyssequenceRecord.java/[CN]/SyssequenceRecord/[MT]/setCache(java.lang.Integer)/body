@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.sybase.sys.tables.Syssequence.CACHE,value);
+}

@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(org.jooq.examples.mysql.sakila.tables.Customer.CUSTOMER).where(org.jooq.examples.mysql.sakila.tables.Customer.CUSTOMER_ID.equal(getValue(org.jooq.examples.mysql.sakila.tables.Payment.CUSTOMER_ID))).fetchOne();
+}

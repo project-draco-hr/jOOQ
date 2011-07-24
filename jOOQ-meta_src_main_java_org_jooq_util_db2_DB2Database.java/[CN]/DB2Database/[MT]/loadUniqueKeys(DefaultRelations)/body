@@ -1,0 +1,11 @@
+{
+  for (  Record record : fetchKeys("U")) {
+    String key=record.getValue(Keycoluse.CONSTNAME);
+    String tableName=record.getValue(Keycoluse.TABNAME);
+    String columnName=record.getValue(Keycoluse.COLNAME);
+    TableDefinition table=getTable(tableName);
+    if (table != null) {
+      relations.addUniqueKey(key,table.getColumn(columnName));
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  reset=false;
+  Field<Integer> n=create().castNull(Integer.class);
+  Field<Integer> c=val(1);
+  assertEquals(null,create().select(n).fetchOne(n));
+  assertEquals(Integer.valueOf(1),create().select(c).from(TAuthor()).where(TAuthor_ID().equal(1)).and(n.isNull()).fetchOne(c));
+  assertEquals(Integer.valueOf(1),create().select(c).from(TAuthor()).where(TAuthor_ID().equal(1)).and(n.equal(n)).fetchOne(c));
+  assertEquals(null,create().selectOne().from(TAuthor()).where(n.isNotNull()).fetchAny());
+  assertEquals(null,create().selectOne().from(TAuthor()).where(n.notEqual(n)).fetchAny());
+  UpdateQuery<A> u=create().updateQuery(TAuthor());
+  u.addValue(TAuthor_YEAR_OF_BIRTH(),(Integer)null);
+  u.execute();
+  Result<A> records=create().selectFrom(TAuthor()).where(TAuthor_YEAR_OF_BIRTH().isNull()).fetch();
+  assertEquals(2,records.size());
+  assertEquals(null,records.getValue(0,TAuthor_YEAR_OF_BIRTH()));
+}

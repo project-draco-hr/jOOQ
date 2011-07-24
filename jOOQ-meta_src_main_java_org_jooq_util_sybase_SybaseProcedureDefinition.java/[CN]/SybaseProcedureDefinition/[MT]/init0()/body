@@ -1,0 +1,21 @@
+{
+  for (  Record record : create().select(Sysprocparm.PARM_NAME,Sysdomain.DOMAIN_NAME,Sysprocparm.WIDTH,Sysprocparm.SCALE,Sysprocparm.PARM_ID,Sysprocparm.PARM_MODE_IN,Sysprocparm.PARM_MODE_OUT).from(SYSPROCPARM).join(SYSDOMAIN).on(Sysprocparm.DOMAIN_ID.equal(Sysdomain.DOMAIN_ID)).join(SYSPROCEDURE).on(Sysprocparm.PROC_ID.equal(Sysprocedure.PROC_ID)).where(Sysprocedure.PROC_NAME.equal(getName())).orderBy(Sysprocparm.PARM_ID).fetch()) {
+    String paramModeIn=record.getValue(Sysprocparm.PARM_MODE_IN);
+    String paramModeOut=record.getValue(Sysprocparm.PARM_MODE_OUT);
+    InOutDefinition inOutDefinition;
+    if ("Y".equals(paramModeIn) && "Y".equals(paramModeOut)) {
+      inOutDefinition=InOutDefinition.INOUT;
+    }
+ else     if ("Y".equals(paramModeIn)) {
+      inOutDefinition=InOutDefinition.IN;
+    }
+ else     if ("Y".equals(paramModeOut)) {
+      inOutDefinition=InOutDefinition.OUT;
+    }
+ else {
+      throw new IllegalArgumentException("Stored procedure param is neither in or out mode!");
+    }
+    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),record.getValue(Sysdomain.DOMAIN_NAME),record.getValue(Sysprocparm.WIDTH),record.getValue(Sysprocparm.SCALE));
+    addParameter(inOutDefinition,new DefaultParameterDefinition(this,record.getValue(Sysprocparm.PARM_NAME),record.getValue(Sysprocparm.PARM_ID),type));
+  }
+}

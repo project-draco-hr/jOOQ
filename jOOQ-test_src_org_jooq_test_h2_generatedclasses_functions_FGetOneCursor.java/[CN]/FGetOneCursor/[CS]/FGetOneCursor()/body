@@ -1,0 +1,4 @@
+{
+  super(org.jooq.SQLDialect.H2,"F_GET_ONE_CURSOR",org.jooq.test.h2.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.RESULT);
+  addInParameter(P2);
+}

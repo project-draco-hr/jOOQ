@@ -1,0 +1,5 @@
+{
+  super(org.jooq.SQLDialect.DB2,"P_CREATE_AUTHOR_BY_NAME",org.jooq.test.db2.generatedclasses.Lukas.LUKAS);
+  addInParameter(FIRST_NAME);
+  addInParameter(LAST_NAME);
+}

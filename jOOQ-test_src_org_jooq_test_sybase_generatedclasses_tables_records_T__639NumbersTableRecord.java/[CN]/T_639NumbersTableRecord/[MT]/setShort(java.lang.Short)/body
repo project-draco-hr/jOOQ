@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.sybase.generatedclasses.tables.T_639NumbersTable.SHORT,value);
+}

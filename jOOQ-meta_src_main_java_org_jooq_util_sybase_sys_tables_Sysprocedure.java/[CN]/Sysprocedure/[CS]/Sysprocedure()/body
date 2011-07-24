@@ -1,0 +1,3 @@
+{
+  super("SYSPROCEDURE",org.jooq.util.sybase.sys.Sys.SYS);
+}

@@ -1,0 +1,4 @@
+{
+  Field<BigInteger> nextval=sequence.nextval();
+  return select(nextval).fetchOne(nextval);
+}

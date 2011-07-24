@@ -1,0 +1,52 @@
+{
+  out.println();
+  out.println("\t/**");
+  String comment=element.getComment();
+  if (comment != null && comment.length() > 0) {
+    out.println("\t * " + comment);
+  }
+ else {
+    out.println("\t * An uncommented item");
+  }
+  if (getJavaType(element.getType()).startsWith("java.lang.Object")) {
+    String t=element.getType().getType();
+    String u=element.getType().getUserType();
+    String combined=t.equalsIgnoreCase(u) ? t : t + ", " + u;
+    out.println("\t * ");
+    out.print("\t * The SQL type of this item (");
+    out.print(combined);
+    out.println(") could not be mapped.<br/>");
+    out.println("\t * Deserialising this field might not work!");
+    log.warn("Unknown type",element.getQualifiedName() + " (" + combined+ ")");
+  }
+  if (element instanceof ColumnDefinition) {
+    ColumnDefinition column=(ColumnDefinition)element;
+    UniqueKeyDefinition primaryKey=column.getPrimaryKey();
+    ForeignKeyDefinition foreignKey=column.getForeignKey();
+    if (primaryKey != null) {
+      out.println("\t * ");
+      out.print("\t * PRIMARY KEY");
+      out.println();
+    }
+    if (foreignKey != null) {
+      out.println("\t * <p>");
+      out.println("\t * <code><pre>");
+      out.print("\t * FOREIGN KEY ");
+      out.println(foreignKey.getKeyColumns().toString());
+      out.print("\t * REFERENCES ");
+      out.print(foreignKey.getReferencedTable().getName());
+      out.print(" ");
+      out.println(foreignKey.getReferencedColumns().toString());
+      out.println("\t * </pre></code>");
+    }
+  }
+  if (disambiguationSuffix != null && disambiguationSuffix.length() > 0) {
+    out.println("\t * ");
+    out.println("\t * This item causes a name clash. That is why an underline character was appended to the Java field name");
+  }
+  printDeprecation(out,deprecation);
+  out.println("\t */");
+  if (deprecation != null) {
+    out.println("\t@Deprecated");
+  }
+}

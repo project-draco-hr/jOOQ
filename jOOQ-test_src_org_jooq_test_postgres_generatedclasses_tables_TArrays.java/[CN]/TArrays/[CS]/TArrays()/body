@@ -1,0 +1,3 @@
+{
+  super("t_arrays",org.jooq.test.postgres.generatedclasses.Public.PUBLIC);
+}

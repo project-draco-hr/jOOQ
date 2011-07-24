@@ -1,0 +1,6 @@
+{
+  org.jooq.test.h2.generatedclasses.functions.FAuthorExists f=new org.jooq.test.h2.generatedclasses.functions.FAuthorExists();
+  f.setP2(p2);
+  f.execute(configuration);
+  return f.getReturnValue();
+}

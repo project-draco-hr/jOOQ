@@ -1,0 +1,4 @@
+{
+  getQuery().addGroupBy(fields);
+  return this;
+}

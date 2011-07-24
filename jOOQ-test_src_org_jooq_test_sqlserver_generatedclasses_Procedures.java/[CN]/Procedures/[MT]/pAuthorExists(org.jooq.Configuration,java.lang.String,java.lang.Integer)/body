@@ -1,0 +1,7 @@
+{
+  org.jooq.test.sqlserver.generatedclasses.procedures.PAuthorExists p=new org.jooq.test.sqlserver.generatedclasses.procedures.PAuthorExists();
+  p.setAuthorName(authorName);
+  p.setResult(result);
+  p.execute(configuration);
+  return p.getResult();
+}

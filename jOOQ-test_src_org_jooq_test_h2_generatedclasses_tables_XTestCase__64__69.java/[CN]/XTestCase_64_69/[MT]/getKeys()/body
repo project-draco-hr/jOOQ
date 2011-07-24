@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.h2.generatedclasses.tables.records.XTestCase_64_69Record>>asList(org.jooq.test.h2.generatedclasses.Keys.PK_X_TEST_CASE_64_69);
+}

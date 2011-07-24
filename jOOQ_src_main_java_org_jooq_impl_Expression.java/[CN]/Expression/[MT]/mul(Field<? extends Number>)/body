@@ -1,0 +1,7 @@
+{
+  if (operator == ExpressionOperator.MULTIPLY) {
+    rhs.add(value);
+    return this;
+  }
+  return super.mul(value);
+}

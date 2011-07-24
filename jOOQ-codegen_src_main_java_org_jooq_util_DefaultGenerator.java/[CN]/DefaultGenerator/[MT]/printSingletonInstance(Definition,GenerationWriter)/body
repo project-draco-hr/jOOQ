@@ -1,0 +1,13 @@
+{
+  out.println();
+  out.println("\t/**");
+  out.println("\t * The singleton instance of " + definition.getName());
+  out.println("\t */");
+  out.print("\tpublic static final ");
+  out.print(strategy.getFullJavaClassName(definition));
+  out.print(" ");
+  out.print(strategy.getJavaIdentifierUC(definition));
+  out.print(" = new ");
+  out.print(strategy.getFullJavaClassName(definition));
+  out.println("();");
+}

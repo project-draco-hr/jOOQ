@@ -1,0 +1,3 @@
+{
+  return TArrays.UDT_ARRAY;
+}

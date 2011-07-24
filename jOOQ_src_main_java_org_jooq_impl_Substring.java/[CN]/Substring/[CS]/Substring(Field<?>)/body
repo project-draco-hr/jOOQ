@@ -1,0 +1,3 @@
+{
+  super("substring",SQLDataType.VARCHAR,arguments);
+}

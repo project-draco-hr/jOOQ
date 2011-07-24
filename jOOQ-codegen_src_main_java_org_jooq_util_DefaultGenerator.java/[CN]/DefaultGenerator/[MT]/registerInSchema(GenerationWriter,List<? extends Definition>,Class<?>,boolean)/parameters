@@ -1,0 +1,4 @@
+GenerationWriter outS
+List<? extends Definition> definitions
+Class<?> type
+boolean isGeneric

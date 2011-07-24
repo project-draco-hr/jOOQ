@@ -1,0 +1,3 @@
+{
+  return rightPad(str,size,' ');
+}

@@ -1,0 +1,5 @@
+{
+  super(name,type);
+  this.table=table;
+  this.table.getFields().add(this);
+}

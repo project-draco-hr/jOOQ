@@ -1,0 +1,5 @@
+{
+  for (  Attachable attachable : attachables) {
+    attachable.attach(this);
+  }
+}

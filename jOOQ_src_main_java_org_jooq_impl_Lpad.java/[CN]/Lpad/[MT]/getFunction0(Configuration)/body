@@ -1,0 +1,26 @@
+{
+switch (configuration.getDialect()) {
+case SQLSERVER:
+case SYBASE:
+{
+      if (character == null) {
+        return val(" ").repeat(length.sub(field.length())).concat(field);
+      }
+ else {
+        return character.repeat(length.sub(field.length())).concat(field);
+      }
+    }
+default :
+  if (character == null) {
+    if (configuration.getDialect() == SQLDialect.MYSQL) {
+      return new Function<String>("lpad",SQLDataType.VARCHAR,field,length,val(" "));
+    }
+ else {
+      return new Function<String>("lpad",SQLDataType.VARCHAR,field,length);
+    }
+  }
+ else {
+    return new Function<String>("lpad",SQLDataType.VARCHAR,field,length,character);
+  }
+}
+}

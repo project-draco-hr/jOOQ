@@ -1,0 +1,3 @@
+{
+  super("BIG_DECIMAL",org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC);
+}

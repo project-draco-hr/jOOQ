@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.examples.mysql.sakila.tables.records.FilmActorRecord,?>>asList(org.jooq.examples.mysql.sakila.Keys.fk_film_actor_actor,org.jooq.examples.mysql.sakila.Keys.fk_film_actor_film);
+}

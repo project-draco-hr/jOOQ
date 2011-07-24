@@ -1,0 +1,5 @@
+{
+  super("rpad",SQLDataType.VARCHAR,string,count);
+  this.string=string;
+  this.count=count;
+}

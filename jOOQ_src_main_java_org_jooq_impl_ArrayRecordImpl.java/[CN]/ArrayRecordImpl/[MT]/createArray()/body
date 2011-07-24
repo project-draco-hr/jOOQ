@@ -1,0 +1,9 @@
+{
+  SQLDialect dialect=getConfiguration().getDialect();
+switch (dialect) {
+case ORACLE:
+    return OracleUtils.createArray(getConfiguration().getConnection(),this);
+default :
+  throw new SQLDialectNotSupportedException("Cannot create Array for dialect : " + dialect);
+}
+}

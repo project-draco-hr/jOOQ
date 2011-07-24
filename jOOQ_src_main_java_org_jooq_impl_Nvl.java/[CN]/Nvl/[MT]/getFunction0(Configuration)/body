@@ -1,0 +1,18 @@
+{
+switch (configuration.getDialect()) {
+case DB2:
+case H2:
+case HSQLDB:
+case INGRES:
+case ORACLE:
+    return new Function<T>("nvl",getDataType(),getArguments());
+case DERBY:
+case POSTGRES:
+  return new Function<T>("coalesce",getDataType(),getArguments());
+case MYSQL:
+case SQLITE:
+return new Function<T>("ifnull",getDataType(),getArguments());
+default :
+return create(configuration).decode().when(arg1.isNotNull(),arg1).otherwise(arg2);
+}
+}

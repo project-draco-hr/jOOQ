@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.test.postgres.generatedclasses.tables.XTestCase_85.X_UNUSED_ID);
+}

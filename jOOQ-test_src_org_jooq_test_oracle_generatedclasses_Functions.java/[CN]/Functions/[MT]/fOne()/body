@@ -1,0 +1,4 @@
+{
+  org.jooq.test.oracle.generatedclasses.functions.FOne f=new org.jooq.test.oracle.generatedclasses.functions.FOne();
+  return f.asField();
+}

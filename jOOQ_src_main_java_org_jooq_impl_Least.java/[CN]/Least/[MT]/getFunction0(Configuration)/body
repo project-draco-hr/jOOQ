@@ -1,0 +1,26 @@
+{
+  if (getArguments().length == 1) {
+    return (Field<T>)getArguments()[0];
+  }
+switch (configuration.getDialect()) {
+case DERBY:
+case SQLSERVER:
+case SYBASE:
+{
+      Field<T> first=(Field<T>)getArguments()[0];
+      Field<T> other=(Field<T>)getArguments()[1];
+      if (getArguments().length > 2) {
+        Field<?>[] remaining=new Field<?>[getArguments().length - 2];
+        System.arraycopy(getArguments(),2,remaining,0,remaining.length);
+        return create(configuration).decode().when(first.lessThan(other),first.least(remaining)).otherwise(other.least(remaining));
+      }
+ else {
+        return create(configuration).decode().when(first.lessThan(other),first).otherwise(other);
+      }
+    }
+case SQLITE:
+  return new Function<T>("min",getDataType(),getArguments());
+default :
+return new Function<T>("least",getDataType(),getArguments());
+}
+}

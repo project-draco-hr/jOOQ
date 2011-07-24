@@ -1,0 +1,4 @@
+{
+  this.forUpdate=forUpdate;
+  this.forShare=false;
+}

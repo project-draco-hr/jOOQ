@@ -1,0 +1,103 @@
+{
+  strategy.getFile(function).getParentFile().mkdirs();
+  log.info("Generating function",strategy.getFileName(function));
+  GenerationWriter out=new GenerationWriter(new PrintWriter(strategy.getFile(function)));
+  printHeader(out,strategy.getJavaPackageName(function));
+  printClassJavadoc(out,function);
+  out.print("public class ");
+  out.print(strategy.getJavaClassName(function));
+  out.print(" extends ");
+  out.print(StoredFunctionImpl.class);
+  out.print("<");
+  out.print(getJavaType(function.getReturnType()));
+  out.println("> {");
+  out.printSerial();
+  out.println();
+  for (  ParameterDefinition parameter : function.getInParameters()) {
+    printParameter(out,parameter,function);
+  }
+  out.println();
+  printJavadoc(out,"Create a new function call instance");
+  out.println("\tpublic " + strategy.getJavaClassName(function) + "() {");
+  out.print("\t\tsuper(");
+  out.print(SQLDialect.class);
+  out.print(".");
+  out.print(database.getDialect().name());
+  out.print(", \"");
+  out.print(function.getName());
+  out.print("\", ");
+  out.print(strategy.getFullJavaIdentifierUC(schema));
+  out.print(", ");
+  if (function.getPackage() != null) {
+    out.print(strategy.getFullJavaClassName(function.getPackage()));
+    out.print(".");
+    out.print(strategy.getJavaIdentifierUC(function.getPackage()));
+    out.print(", ");
+  }
+  out.print(getJavaTypeReference(database,function.getReturnType()));
+  out.println(");");
+  if (function.getInParameters().size() > 0) {
+    out.println();
+  }
+  for (  ParameterDefinition parameter : function.getInParameters()) {
+    String parameterNameUC=parameter.getName().toUpperCase();
+    out.print("\t\t");
+    out.println("addInParameter(" + parameterNameUC + ");");
+  }
+  if (function.getOverload() != null) {
+    out.println("\t\tsetOverloaded(true);");
+  }
+  out.println("\t}");
+  for (  ParameterDefinition parameter : function.getInParameters()) {
+    out.println();
+    out.println("\t/**");
+    out.println("\t * Set the <code>" + parameter.getName() + "</code> parameter to the function");
+    out.println("\t */");
+    out.print("\tpublic void set");
+    out.print(strategy.getJavaClassName(parameter));
+    out.print("(");
+    printNumberType(out,parameter.getType());
+    out.println(" value) {");
+    out.print("\t\tset");
+    if (parameter.getType().isGenericNumberType()) {
+      out.print("Number");
+    }
+ else {
+      out.print("Value");
+    }
+    out.print("(");
+    out.print(strategy.getJavaIdentifierUC(parameter));
+    out.println(", value);");
+    out.println("\t}");
+    out.println();
+    out.println("\t/**");
+    out.println("\t * Set the <code>" + parameter.getName() + "</code> parameter to the function");
+    out.println("\t * <p>");
+    out.print("\t * Use this method only, if the function is called as a {@link ");
+    out.print(Field.class);
+    out.print("} in a {@link ");
+    out.print(Select.class);
+    out.println("} statement!");
+    out.println("\t */");
+    out.print("\tpublic void set");
+    out.print(strategy.getJavaClassName(parameter));
+    out.print("(");
+    out.print(Field.class);
+    out.print("<");
+    printExtendsNumberType(out,parameter.getType());
+    out.println("> field) {");
+    out.print("\t\tset");
+    if (parameter.getType().isGenericNumberType()) {
+      out.print("Number");
+    }
+ else {
+      out.print("Field");
+    }
+    out.print("(");
+    out.print(strategy.getJavaIdentifierUC(parameter));
+    out.println(", field);");
+    out.println("\t}");
+  }
+  out.println("}");
+  out.close();
+}

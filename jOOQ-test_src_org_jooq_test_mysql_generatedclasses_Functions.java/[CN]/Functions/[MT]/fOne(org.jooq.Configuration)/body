@@ -1,0 +1,5 @@
+{
+  org.jooq.test.mysql.generatedclasses.functions.FOne f=new org.jooq.test.mysql.generatedclasses.functions.FOne();
+  f.execute(configuration);
+  return f.getReturnValue();
+}

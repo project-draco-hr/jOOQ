@@ -1,0 +1,3 @@
+{
+  return JooqUtil.toSQLReferenceWithParentheses(configuration,sql,bindings,inlineParameters);
+}

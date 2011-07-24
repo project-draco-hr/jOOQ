@@ -1,0 +1,4 @@
+{
+  super(org.jooq.SQLDialect.SQLSERVER,"f_number",org.jooq.test.sqlserver.generatedclasses.Dbo.DBO,org.jooq.impl.SQLDataType.INTEGER);
+  addInParameter(N);
+}

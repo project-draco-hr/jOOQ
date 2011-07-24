@@ -1,0 +1,6 @@
+{
+  if (obj instanceof Identity) {
+    return toString().equals(obj.toString());
+  }
+  return false;
+}

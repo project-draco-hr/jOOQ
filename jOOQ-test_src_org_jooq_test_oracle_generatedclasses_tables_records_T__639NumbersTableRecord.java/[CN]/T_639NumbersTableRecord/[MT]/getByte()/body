@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.test.oracle.generatedclasses.tables.T_639NumbersTable.BYTE);
+}

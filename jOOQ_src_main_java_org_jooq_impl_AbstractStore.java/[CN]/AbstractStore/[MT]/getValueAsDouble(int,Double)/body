@@ -1,0 +1,4 @@
+{
+  final Double result=getValueAsDouble(index);
+  return result == null ? defaultValue : result;
+}

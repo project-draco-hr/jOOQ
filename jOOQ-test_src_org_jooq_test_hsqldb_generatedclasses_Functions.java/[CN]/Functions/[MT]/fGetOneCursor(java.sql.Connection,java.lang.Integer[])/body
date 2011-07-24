@@ -1,0 +1,6 @@
+{
+  org.jooq.test.hsqldb.generatedclasses.functions.FGetOneCursor f=new org.jooq.test.hsqldb.generatedclasses.functions.FGetOneCursor();
+  f.setBookIds(bookIds);
+  f.execute(connection);
+  return f.getReturnValue();
+}

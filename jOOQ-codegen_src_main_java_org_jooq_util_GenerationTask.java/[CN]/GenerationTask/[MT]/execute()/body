@@ -1,0 +1,8 @@
+{
+  try {
+    GenerationTool.main(properties);
+  }
+ catch (  Exception e) {
+    throw new BuildException(e);
+  }
+}

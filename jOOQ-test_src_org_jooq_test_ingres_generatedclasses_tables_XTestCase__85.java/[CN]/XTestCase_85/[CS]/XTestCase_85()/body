@@ -1,0 +1,3 @@
+{
+  super("x_test_case_85",org.jooq.test.ingres.generatedclasses.Test.TEST);
+}

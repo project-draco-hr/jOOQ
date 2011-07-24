@@ -1,0 +1,12 @@
+{
+  UpdateQuery<R> update=create().updateQuery(getTable());
+  for (  Field<?> field : getFields()) {
+    if (getValue0(field).isChanged()) {
+      addValue(update,(TableField<R,?>)field);
+    }
+  }
+  for (  Field<?> field : getMainKey().getFields()) {
+    addCondition(update,field);
+  }
+  return update.execute();
+}

@@ -1,0 +1,33 @@
+{
+switch (configuration.getDialect()) {
+case ORACLE:
+{
+      if (inlineParameters) {
+        return toSQLInline(configuration,inlineParameters);
+      }
+ else {
+        return "?";
+      }
+    }
+case POSTGRES:
+{
+    return toSQLInline(configuration,inlineParameters);
+  }
+case DB2:
+{
+  StringBuilder sb=new StringBuilder();
+  sb.append(getInlineConstructor(configuration));
+  sb.append("()");
+  String separator="..";
+  for (  Field<?> field : record.getFields()) {
+    Field<?> value=create(configuration).val(record.getValue(field));
+    sb.append(separator);
+    sb.append(field.getName()).append("(");
+    sb.append(internal(value).toSQLReference(configuration,inlineParameters));
+    sb.append(")");
+  }
+  return sb.toString();
+}
+}
+throw new SQLDialectNotSupportedException("UDTs not supported in dialect " + configuration.getDialect());
+}

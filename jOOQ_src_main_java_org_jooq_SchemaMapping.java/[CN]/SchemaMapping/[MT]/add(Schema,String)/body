@@ -1,0 +1,4 @@
+{
+  Schema configuredSchema=new SchemaImpl(configuredSchemaName);
+  add(generatedSchema,configuredSchema);
+}

@@ -1,0 +1,30 @@
+{
+  assertEquals("\"TABLE1\"",internal(TABLE1).toSQLDeclaration(create));
+  assertEquals("\"TABLE1\"",internal(TABLE1).toSQLReference(create));
+  assertEquals("\"TABLE1\" \"t1\"",internal(TABLE1.as("t1")).toSQLDeclaration(create));
+  assertEquals("\"t1\"",internal(TABLE1.as("t1")).toSQLReference(create));
+  assertEquals("\"TABLE1\".\"ID1\"",internal(TABLE1.getField(FIELD_ID1)).toSQLDeclaration(create));
+  assertEquals("\"TABLE1\".\"ID1\"",internal(TABLE1.getField(FIELD_ID1)).toSQLReference(create));
+  assertEquals("\"TABLE1\".\"ID1\" \"f1\"",internal(TABLE1.getField(FIELD_ID1).as("f1")).toSQLDeclaration(create));
+  assertEquals("\"f1\"",internal(TABLE1.getField(FIELD_ID1).as("f1")).toSQLReference(create));
+  assertEquals("\"t1\".\"ID1\"",internal(TABLE1.as("t1").getField(FIELD_ID1)).toSQLDeclaration(create));
+  assertEquals("\"t1\".\"ID1\"",internal(TABLE1.as("t1").getField(FIELD_ID1)).toSQLReference(create));
+  assertEquals("\"t1\".\"ID1\" \"f1\"",internal(TABLE1.as("t1").getField(FIELD_ID1).as("f1")).toSQLDeclaration(create));
+  assertEquals("\"f1\"",internal(TABLE1.as("t1").getField(FIELD_ID1).as("f1")).toSQLReference(create));
+  context.checking(new Expectations(){
+{
+      oneOf(statement).setInt(1,2);
+      oneOf(statement).setInt(1,4);
+    }
+  }
+);
+  int i=internal(create.val(1).as("c1")).bindReference(create,statement);
+  int j=internal(create.val(2).as("c2")).bindDeclaration(create,statement);
+  int k=internal(create.select(create.val(3)).asTable("t1")).bindReference(create,statement);
+  int l=internal(create.select(create.val(4)).asTable("t2")).bindDeclaration(create,statement);
+  assertEquals(1,i);
+  assertEquals(2,j);
+  assertEquals(1,k);
+  assertEquals(2,l);
+  context.assertIsSatisfied();
+}

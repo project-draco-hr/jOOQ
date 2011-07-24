@@ -1,0 +1,4 @@
+{
+  rowsUnboundedPreceding();
+  return this;
+}

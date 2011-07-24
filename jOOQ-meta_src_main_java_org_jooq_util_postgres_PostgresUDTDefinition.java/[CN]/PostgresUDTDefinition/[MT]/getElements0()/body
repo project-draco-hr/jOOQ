@@ -1,0 +1,9 @@
+{
+  List<AttributeDefinition> result=new ArrayList<AttributeDefinition>();
+  for (  Record record : create().select(Attributes.ATTRIBUTE_NAME,Attributes.ORDINAL_POSITION,Attributes.DATA_TYPE,Attributes.NUMERIC_PRECISION,Attributes.NUMERIC_SCALE,Attributes.ATTRIBUTE_UDT_NAME).from(ATTRIBUTES).where(Attributes.UDT_SCHEMA.equal(getSchemaName())).and(Attributes.UDT_NAME.equal(getName())).orderBy(Attributes.ORDINAL_POSITION).fetch()) {
+    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),record.getValue(Attributes.DATA_TYPE),record.getValue(Attributes.NUMERIC_PRECISION),record.getValue(Attributes.NUMERIC_SCALE),record.getValue(Attributes.ATTRIBUTE_UDT_NAME));
+    AttributeDefinition column=new DefaultAttributeDefinition(this,record.getValue(Attributes.ATTRIBUTE_NAME),record.getValue(Attributes.ORDINAL_POSITION),type);
+    result.add(column);
+  }
+  return result;
+}

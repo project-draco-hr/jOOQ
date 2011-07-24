@@ -1,0 +1,15 @@
+{
+  if (type == null) {
+    ForeignKeyDefinition fk=getDatabase().getRelations().getForeignKey(this);
+    if (fk != null) {
+      TableDefinition referencedTable=fk.getReferencedTable();
+      if (referencedTable instanceof MasterDataTableDefinition) {
+        type=new MasterDataTypeDefinition(referencedTable,underlying);
+      }
+    }
+    if (type == null) {
+      type=underlying;
+    }
+  }
+  return type;
+}

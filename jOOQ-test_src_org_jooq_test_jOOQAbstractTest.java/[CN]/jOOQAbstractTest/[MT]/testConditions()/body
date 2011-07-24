@@ -1,0 +1,24 @@
+{
+  assertEquals(Arrays.asList(2,3),create().select().from(TBook()).where(TBook_ID().between(2,3)).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(3,4),create().select().from(TBook()).where(create().val(3).between(TBook_AUTHOR_ID(),TBook_ID())).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(),create().select().from(TBook()).where(TBook_ID().in(new Integer[0])).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(1,2,3,4),create().select().from(TBook()).where(TBook_ID().notIn(new Integer[0])).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(1,2),create().select().from(TBook()).where(TBook_ID().in(1,2)).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(2,3,4),create().select().from(TBook()).where(create().val(2).in(TBook_ID(),TBook_AUTHOR_ID())).orderBy(TBook_ID()).fetch(TBook_ID()));
+switch (getDialect()) {
+case SQLITE:
+    log.info("SKIPPING","= { ALL | ANY | SOME } tests");
+  break;
+default :
+{
+  assertEquals(Arrays.asList(1),create().select().from(TBook()).where(TBook_ID().equalAll(create().selectOne())).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(),create().select().from(TBook()).where(TBook_ID().equalAll(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,2)))).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(1),create().select().from(TBook()).where(TBook_ID().equalAny(create().selectOne())).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(1,2),create().select().from(TBook()).where(TBook_ID().equalAny(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,2)))).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(1),create().select().from(TBook()).where(TBook_ID().equalSome(create().selectOne())).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(1,2),create().select().from(TBook()).where(TBook_ID().equalSome(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,2)))).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(3),create().select().from(TBook()).where(TBook_ID().equal(create().select(val(3)))).and(TBook_ID().equalAll(create().select(val(3)))).and(TBook_ID().equalAny(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(3,4)))).and(TBook_ID().equalSome(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(3,4)))).and(TBook_ID().notEqual(create().select(val(1)))).and(TBook_ID().notEqualAll(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,4)))).and(TBook_ID().notEqualAny(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,4)))).and(TBook_ID().notEqualSome(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(3,4)))).and(TBook_ID().greaterOrEqual(create().select(val(1)))).and(TBook_ID().greaterOrEqualAll(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,2)))).and(TBook_ID().greaterOrEqualAny(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,4)))).and(TBook_ID().greaterOrEqualSome(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,4)))).and(TBook_ID().greaterThan(create().select(val(1)))).and(TBook_ID().greaterThanAll(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,2)))).and(TBook_ID().greaterThanAny(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,4)))).and(TBook_ID().greaterThanSome(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,4)))).and(TBook_ID().lessOrEqual(create().select(val(3)))).and(TBook_ID().lessOrEqualAll(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(3,4)))).and(TBook_ID().lessOrEqualAny(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,4)))).and(TBook_ID().lessOrEqualSome(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,4)))).and(TBook_ID().lessThan(create().select(val(4)))).and(TBook_ID().lessThanAll(create().select(val(4)))).and(TBook_ID().lessThanAny(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,4)))).and(TBook_ID().lessThanSome(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,4)))).fetch(TBook_ID()));
+  break;
+}
+}
+}

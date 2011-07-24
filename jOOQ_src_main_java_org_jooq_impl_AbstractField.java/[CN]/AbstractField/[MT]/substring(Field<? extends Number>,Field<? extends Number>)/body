@@ -1,0 +1,3 @@
+{
+  return new Substring(this,startingPosition,length);
+}

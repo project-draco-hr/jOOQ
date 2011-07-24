@@ -1,0 +1,33 @@
+{
+  StringBuilder sb=new StringBuilder();
+  String enclosed=toSQLReference0(configuration,inlineParameters);
+  String subqueryName="limit_" + Math.abs(enclosed.hashCode());
+  String rownumName="rownum_" + Math.abs(enclosed.hashCode());
+  sb.append("select * from (select ");
+  sb.append(subqueryName);
+  sb.append(".*, rownum as ");
+  sb.append(rownumName);
+  sb.append(" from (");
+  sb.append(enclosed);
+  sb.append(") ");
+  sb.append(subqueryName);
+  sb.append(") where ");
+  sb.append(rownumName);
+  sb.append(" >= ");
+  if (inlineParameters) {
+    sb.append(getLimit().getLowerRownum());
+  }
+ else {
+    sb.append("?");
+  }
+  sb.append(" and ");
+  sb.append(rownumName);
+  sb.append(" < ");
+  if (inlineParameters) {
+    sb.append(getLimit().getUpperRownum());
+  }
+ else {
+    sb.append("?");
+  }
+  return sb.toString();
+}

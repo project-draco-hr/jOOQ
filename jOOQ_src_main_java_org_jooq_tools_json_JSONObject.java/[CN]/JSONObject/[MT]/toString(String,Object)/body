@@ -1,0 +1,5 @@
+{
+  StringBuffer sb=new StringBuffer();
+  toJSONString(key,value,sb);
+  return sb.toString();
+}

@@ -1,0 +1,4 @@
+{
+  super(table,fields);
+  this.key=key;
+}

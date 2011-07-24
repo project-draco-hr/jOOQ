@@ -1,0 +1,28 @@
+{
+  int result=0;
+  try {
+    String schemaName=schema.internalAPI(QueryPartInternal.class).toSQLReference(this,false);
+switch (dialect) {
+case DB2:
+case DERBY:
+case H2:
+case HSQLDB:
+      result=query("set schema " + schemaName).execute();
+    break;
+case MYSQL:
+case SYBASE:
+  result=query("use " + schemaName).execute();
+break;
+case ORACLE:
+result=query("alter session set current_schema = " + schemaName).execute();
+break;
+case POSTGRES:
+result=query("set search_path = " + schemaName).execute();
+break;
+}
+}
+  finally {
+mapping.use(mapping.map(schema));
+}
+return result;
+}

@@ -1,0 +1,8 @@
+{
+  if (that instanceof QueryPartInternal) {
+    String sql1=toSQLReference(getConfiguration(),true);
+    String sql2=((QueryPartInternal)that).toSQLReference(getConfiguration(),true);
+    return sql1.equals(sql2);
+  }
+  return false;
+}

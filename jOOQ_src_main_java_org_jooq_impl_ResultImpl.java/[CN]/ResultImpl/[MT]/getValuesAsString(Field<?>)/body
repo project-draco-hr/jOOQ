@@ -1,0 +1,7 @@
+{
+  List<String> result=new ArrayList<String>();
+  for (  R record : this) {
+    result.add(record.getValueAsString(field));
+  }
+  return result;
+}

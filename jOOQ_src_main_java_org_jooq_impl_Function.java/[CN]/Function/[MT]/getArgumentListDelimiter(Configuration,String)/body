@@ -1,0 +1,23 @@
+{
+switch (configuration.getDialect()) {
+case ORACLE:
+case DB2:
+    if (arguments.isEmpty()) {
+      return "";
+    }
+ else {
+      return delimiter;
+    }
+case SQLITE:
+case DERBY:
+case H2:
+case HSQLDB:
+case INGRES:
+case MYSQL:
+case POSTGRES:
+case SQLSERVER:
+case SYBASE:
+default :
+  return delimiter;
+}
+}

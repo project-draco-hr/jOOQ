@@ -1,0 +1,9 @@
+{
+  List<ProcedureDefinition> result=new ArrayList<ProcedureDefinition>();
+  Table<RoutinesRecord> r1=ROUTINES.as("r1");
+  Table<RoutinesRecord> r2=ROUTINES.as("r2");
+  for (  Record record : create().select(r1.getField(Routines.ROUTINE_NAME),r1.getField(Routines.SPECIFIC_NAME),r1.getField(Routines.DATA_TYPE),r1.getField(Routines.TYPE_UDT_NAME),getOverloadField(r1,r2)).from(r1).where(r1.getField(Routines.ROUTINE_SCHEMA).equal(getSchemaName())).and(r1.getField(Routines.DATA_TYPE).lower().in("void","record").orExists(create().selectOne().from(PARAMETERS).where(Parameters.SPECIFIC_SCHEMA.equal(getSchemaName())).and(Parameters.SPECIFIC_NAME.equal(r1.getField(Routines.SPECIFIC_NAME))).and(Parameters.PARAMETER_MODE.lower().in("out","inout")))).orderBy(r1.getField(Routines.SPECIFIC_NAME).asc()).fetch()) {
+    result.add(new PostgresProcedureDefinition(this,record));
+  }
+  return result;
+}

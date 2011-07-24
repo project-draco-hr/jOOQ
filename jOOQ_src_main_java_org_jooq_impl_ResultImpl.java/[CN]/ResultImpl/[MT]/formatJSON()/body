@@ -1,0 +1,18 @@
+{
+  List<String> f=new ArrayList<String>();
+  List<List<Object>> r=new ArrayList<List<Object>>();
+  for (  Field<?> field : getFields()) {
+    f.add(field.getName());
+  }
+  for (  Record record : this) {
+    List<Object> list=new ArrayList<Object>();
+    for (    Field<?> field : getFields()) {
+      list.add(record.getValue(field));
+    }
+    r.add(list);
+  }
+  Map<String,List<?>> map=new LinkedHashMap<String,List<?>>();
+  map.put("fields",f);
+  map.put("records",r);
+  return JSONObject.toJSONString(map);
+}

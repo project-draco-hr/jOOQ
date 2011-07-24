@@ -1,0 +1,4 @@
+{
+  super("floor",argument.getDataType(),argument);
+  this.argument=argument;
+}

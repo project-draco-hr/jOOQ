@@ -1,0 +1,5 @@
+{
+  for (  TableLike<?> provider : from) {
+    getFrom().add(provider.asTable());
+  }
+}

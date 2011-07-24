@@ -1,0 +1,7 @@
+{
+  if (operator == ExpressionOperator.ADD) {
+    rhs.add(value);
+    return this;
+  }
+  return super.add(value);
+}

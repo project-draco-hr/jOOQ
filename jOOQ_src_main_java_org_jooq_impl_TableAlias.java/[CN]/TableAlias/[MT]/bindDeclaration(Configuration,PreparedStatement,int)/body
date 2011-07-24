@@ -1,0 +1,3 @@
+{
+  return aliasProvider.bindDeclaration(configuration,stmt,initialIndex);
+}

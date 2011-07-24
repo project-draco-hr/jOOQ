@@ -1,0 +1,5 @@
+{
+  onDuplicateKeyUpdate=true;
+  delegate.onDuplicateKeyUpdate(true);
+  return this;
+}

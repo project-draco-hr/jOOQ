@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.examples.mysql.sakila.tables.SalesByFilmCategory.TOTAL_SALES,value);
+}

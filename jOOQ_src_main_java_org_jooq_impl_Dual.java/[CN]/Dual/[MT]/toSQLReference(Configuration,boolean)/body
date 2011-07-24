@@ -1,0 +1,19 @@
+{
+switch (configuration.getDialect()) {
+case HSQLDB:
+    return "INFORMATION_SCHEMA.SYSTEM_USERS";
+case INGRES:
+case POSTGRES:
+case SQLITE:
+case SQLSERVER:
+  return "";
+case DB2:
+return "SYSIBM.DUAL";
+case DERBY:
+return "SYSIBM.SYSDUMMY1";
+case SYBASE:
+return "SYS.DUMMY";
+default :
+return "dual";
+}
+}

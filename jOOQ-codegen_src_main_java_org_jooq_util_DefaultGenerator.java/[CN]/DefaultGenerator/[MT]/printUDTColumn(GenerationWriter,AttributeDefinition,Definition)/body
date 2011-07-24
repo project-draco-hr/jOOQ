@@ -1,0 +1,5 @@
+{
+  Class<?> declaredMemberClass=UDTField.class;
+  Class<?> concreteMemberClass=UDTFieldImpl.class;
+  printColumnDefinition(out,attribute,table,declaredMemberClass,concreteMemberClass);
+}

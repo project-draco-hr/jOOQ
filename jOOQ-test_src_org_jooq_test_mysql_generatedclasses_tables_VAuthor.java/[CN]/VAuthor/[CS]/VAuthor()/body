@@ -1,0 +1,3 @@
+{
+  super("v_author",org.jooq.test.mysql.generatedclasses.Test.TEST);
+}

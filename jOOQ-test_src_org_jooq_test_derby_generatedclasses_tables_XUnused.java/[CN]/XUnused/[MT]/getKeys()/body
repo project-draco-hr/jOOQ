@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.derby.generatedclasses.tables.records.XUnusedRecord>>asList(org.jooq.test.derby.generatedclasses.Keys.PK_X_UNUSED,org.jooq.test.derby.generatedclasses.Keys.UK_X_UNUSED_ID);
+}

@@ -1,0 +1,3 @@
+{
+  this(configuration,fields,rs,null,(Class<? extends R>)RecordImpl.class);
+}

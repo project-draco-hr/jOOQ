@@ -1,0 +1,7 @@
+{
+  org.jooq.examples.mysql.sakila.procedures.FilmInStock p=new org.jooq.examples.mysql.sakila.procedures.FilmInStock();
+  p.setPFilmId(pFilmId);
+  p.setPStoreId(pStoreId);
+  p.execute(connection);
+  return p.getPFilmCount();
+}

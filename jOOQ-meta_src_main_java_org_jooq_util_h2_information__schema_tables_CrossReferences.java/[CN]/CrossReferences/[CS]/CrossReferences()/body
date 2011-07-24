@@ -1,0 +1,3 @@
+{
+  super("CROSS_REFERENCES",org.jooq.util.h2.information_schema.InformationSchema.INFORMATION_SCHEMA);
+}

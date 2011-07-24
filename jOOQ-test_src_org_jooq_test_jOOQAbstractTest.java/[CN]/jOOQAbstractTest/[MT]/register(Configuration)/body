@@ -1,0 +1,11 @@
+{
+  ConfigurationRegistry.setProvider(new ConfigurationProvider(){
+    @Override public Configuration provideFor(    Configuration c){
+      return configuration;
+    }
+    @Override public String toString(){
+      return "Test Provider";
+    }
+  }
+);
+}

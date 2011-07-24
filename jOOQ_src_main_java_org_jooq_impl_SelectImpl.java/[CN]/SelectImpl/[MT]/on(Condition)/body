@@ -1,0 +1,9 @@
+{
+  conditionStep=ConditionStep.ON;
+  joinConditions=new ConditionProviderImpl();
+  joinConditions.addConditions(conditions);
+  getQuery().addJoin(joinTable,joinType,joinConditions);
+  joinTable=null;
+  joinType=null;
+  return this;
+}

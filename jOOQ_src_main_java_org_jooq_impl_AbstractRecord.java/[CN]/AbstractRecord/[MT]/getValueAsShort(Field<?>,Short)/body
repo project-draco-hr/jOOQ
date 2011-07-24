@@ -1,0 +1,3 @@
+{
+  return getValueAsShort(getIndex(field),defaultValue);
+}

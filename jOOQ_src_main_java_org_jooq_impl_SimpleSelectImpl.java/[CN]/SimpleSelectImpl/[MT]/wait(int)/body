@@ -1,0 +1,4 @@
+{
+  getQuery().setForUpdateWait(seconds);
+  return this;
+}

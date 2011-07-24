@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.oracle.sys.tables.AllTabCols.CHAR_LENGTH,value);
+}

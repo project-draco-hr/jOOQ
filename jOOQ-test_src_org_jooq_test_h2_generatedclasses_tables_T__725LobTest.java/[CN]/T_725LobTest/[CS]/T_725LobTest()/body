@@ -1,0 +1,3 @@
+{
+  super("T_725_LOB_TEST",org.jooq.test.h2.generatedclasses.Public.PUBLIC);
+}

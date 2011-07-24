@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.util.hsqldb.information_schema.tables.Routines.RESULT_CAST_MAX_CARDINALITY);
+}

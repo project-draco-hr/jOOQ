@@ -1,0 +1,6 @@
+Database db
+String t
+int p
+int s
+String u
+String defaultType

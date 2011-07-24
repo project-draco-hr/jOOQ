@@ -1,0 +1,8 @@
+{
+  super(org.jooq.SQLDialect.ORACLE,"DISPLAY_AWR",org.jooq.examples.oracle.sys.Sys.SYS,org.jooq.examples.oracle.sys.packages.DbmsXplan.DBMS_XPLAN);
+  setReturnParameter(RETURN_VALUE);
+  addInParameter(SQL_ID);
+  addInParameter(PLAN_HASH_VALUE);
+  addInParameter(DB_ID);
+  addInParameter(FORMAT);
+}

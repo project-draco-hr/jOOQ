@@ -1,0 +1,11 @@
+{
+  if ("1".equals(string)) {
+    return true;
+  }
+ else   if ("true".equalsIgnoreCase(string)) {
+    return true;
+  }
+ else {
+    return false;
+  }
+}

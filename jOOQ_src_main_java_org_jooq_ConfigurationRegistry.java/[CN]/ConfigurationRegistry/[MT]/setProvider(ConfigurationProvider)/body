@@ -1,0 +1,9 @@
+{
+  if (provider != null) {
+    log.info("Registering provider",provider);
+  }
+ else {
+    log.info("Unregistering provider");
+  }
+  ConfigurationRegistry.provider=provider;
+}

@@ -1,0 +1,4 @@
+{
+  delegate.addConditions(Operator.OR,condition);
+  return this;
+}

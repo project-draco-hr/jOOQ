@@ -1,0 +1,3 @@
+{
+  return nvl(val(defaultValue));
+}

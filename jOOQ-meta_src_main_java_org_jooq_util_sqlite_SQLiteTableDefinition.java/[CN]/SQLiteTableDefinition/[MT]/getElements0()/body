@@ -1,0 +1,15 @@
+{
+  List<ColumnDefinition> result=new ArrayList<ColumnDefinition>();
+  int position=0;
+  for (  Record record : create().fetch("pragma table_info('" + getName() + "')")) {
+    position++;
+    String name=record.getValueAsString("name");
+    String dataType=record.getValueAsString("type").replaceAll("\\(\\d+\\)","").replaceAll(" identity","");
+    Number precision=parsePrecision(record.getValueAsString("type"));
+    Number scale=parseScale(record.getValueAsString("type"));
+    DefaultDataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),dataType,precision,scale);
+    ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getName()),name,position,type,false,null);
+    result.add(column);
+  }
+  return result;
+}

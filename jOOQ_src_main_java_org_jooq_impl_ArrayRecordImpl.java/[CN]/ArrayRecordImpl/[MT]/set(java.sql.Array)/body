@@ -1,0 +1,8 @@
+{
+  if (array == null) {
+    this.array=null;
+  }
+ else {
+    this.array=TypeUtils.convert(array.getArray(),type.getArrayType());
+  }
+}

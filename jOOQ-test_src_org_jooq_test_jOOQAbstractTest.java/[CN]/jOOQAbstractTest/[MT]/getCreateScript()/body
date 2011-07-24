@@ -1,0 +1,3 @@
+{
+  return "/org/jooq/test/" + getDialect().getName().toLowerCase() + "/create.sql";
+}

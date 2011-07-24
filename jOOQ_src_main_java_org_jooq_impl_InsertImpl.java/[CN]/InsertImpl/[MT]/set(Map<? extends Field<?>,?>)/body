@@ -1,0 +1,9 @@
+{
+  if (onDuplicateKeyUpdate) {
+    delegate.addValuesForUpdate(map);
+  }
+ else {
+    delegate.addValues(map);
+  }
+  return this;
+}

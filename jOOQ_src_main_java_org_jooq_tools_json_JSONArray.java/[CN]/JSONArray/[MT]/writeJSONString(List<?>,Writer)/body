@@ -1,0 +1,20 @@
+{
+  if (list == null) {
+    out.write("null");
+    return;
+  }
+  boolean first=true;
+  Iterator<?> iter=list.iterator();
+  out.write('[');
+  while (iter.hasNext()) {
+    if (first)     first=false;
+ else     out.write(',');
+    Object value=iter.next();
+    if (value == null) {
+      out.write("null");
+      continue;
+    }
+    JSONValue.writeJSONString(value,out);
+  }
+  out.write(']');
+}

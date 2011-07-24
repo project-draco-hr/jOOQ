@@ -1,0 +1,78 @@
+{
+  StringBuilder sb=new StringBuilder();
+  if (getLimit().isApplicable()) {
+switch (configuration.getDialect()) {
+case ORACLE:
+      sb.append(toSQLReferenceLimitOracle(configuration,inlineParameters));
+    break;
+case DB2:
+  if (getLimit().getOffset() == 0) {
+    sb.append(toSQLReferenceLimitDefault(configuration,inlineParameters));
+  }
+ else {
+    sb.append(toSQLReferenceLimitDB2SQLServerSybase(configuration,inlineParameters));
+  }
+break;
+case SQLSERVER:
+case SYBASE:
+{
+if (getLimit().getOffset() == 0) {
+  sb.append(toSQLReference0(configuration,inlineParameters));
+}
+ else {
+  sb.append(toSQLReferenceLimitDB2SQLServerSybase(configuration,inlineParameters));
+}
+break;
+}
+default :
+{
+sb.append(toSQLReferenceLimitDefault(configuration,inlineParameters));
+}
+}
+}
+ else {
+sb.append(toSQLReference0(configuration,inlineParameters));
+}
+if (forUpdate) {
+sb.append(" for update");
+if (!forUpdateOf.isEmpty()) {
+sb.append(" of ");
+sb.append(forUpdateOf.toSQLNames(configuration));
+}
+ else if (!forUpdateOfTables.isEmpty()) {
+sb.append(" of ");
+switch (configuration.getDialect()) {
+case DB2:
+case DERBY:
+case INGRES:
+case ORACLE:
+{
+sb.append(forUpdateOfTables.toSQLFieldNames(configuration));
+break;
+}
+default :
+sb.append(forUpdateOfTables.toSQLNames(configuration));
+break;
+}
+}
+if (forUpdateMode != null) {
+sb.append(" ");
+sb.append(forUpdateMode.toSQL());
+if (forUpdateMode == ForUpdateMode.WAIT) {
+sb.append(" ");
+sb.append(forUpdateWait);
+}
+}
+}
+ else if (forShare) {
+switch (configuration.getDialect()) {
+case MYSQL:
+sb.append(" lock in share mode");
+break;
+default :
+sb.append(" for share");
+break;
+}
+}
+return sb.toString();
+}

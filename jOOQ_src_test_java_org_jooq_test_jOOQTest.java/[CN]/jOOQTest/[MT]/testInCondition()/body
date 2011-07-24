@@ -1,0 +1,19 @@
+{
+  Condition c=FIELD_ID1.in(new Integer[0]);
+  assertEquals(create.falseCondition(),c);
+  c=FIELD_ID1.notIn(new Integer[0]);
+  assertEquals(create.trueCondition(),c);
+  c=FIELD_ID1.in(1,10);
+  assertEquals("\"TABLE1\".\"ID1\" in (1, 10)",internal(c).toSQLReference(create,true));
+  assertEquals("\"TABLE1\".\"ID1\" in (?, ?)",internal(c).toSQLReference(create,false));
+  context.checking(new Expectations(){
+{
+      oneOf(statement).setInt(1,1);
+      oneOf(statement).setInt(2,10);
+    }
+  }
+);
+  int i=internal(c).bindReference(create,statement);
+  assertEquals(3,i);
+  context.assertIsSatisfied();
+}

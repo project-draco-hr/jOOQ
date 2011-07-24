@@ -1,0 +1,3 @@
+{
+  return getOffset() != 0 || getNumberOfRows() != Integer.MAX_VALUE;
+}

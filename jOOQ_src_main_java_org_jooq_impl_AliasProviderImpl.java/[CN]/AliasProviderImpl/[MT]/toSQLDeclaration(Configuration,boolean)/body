@@ -1,0 +1,21 @@
+{
+  StringBuilder sb=new StringBuilder();
+  if (wrapInParentheses) {
+    sb.append("(");
+  }
+  sb.append(internal(aliasProvider).toSQLDeclaration(configuration,inlineParameters));
+  if (wrapInParentheses) {
+    sb.append(")");
+  }
+switch (configuration.getDialect()) {
+case POSTGRES:
+case HSQLDB:
+case DERBY:
+case MYSQL:
+    sb.append(" as");
+  break;
+}
+sb.append(" ");
+sb.append(JooqUtil.toSQLLiteral(configuration,alias));
+return sb.toString();
+}

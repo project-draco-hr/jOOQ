@@ -1,0 +1,9 @@
+{
+  int result=initialIndex;
+  result=internal(table).bindDeclaration(configuration,stmt,result);
+  result=internal(using).bindDeclaration(configuration,stmt,result);
+  result=internal(on).bindReference(configuration,stmt,result);
+  result=internal(updateMap).bindReference(configuration,stmt,result);
+  result=internal(insertMap).bindReference(configuration,stmt,result);
+  return result;
+}

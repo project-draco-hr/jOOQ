@@ -1,0 +1,11 @@
+{
+  UniqueKeyDefinition key=uniqueKeys.get(keyName);
+  if (key == null) {
+    key=new DefaultUniqueKeyDefinition(getDatabase(),keyName,column.getContainer());
+    uniqueKeys.put(keyName,key);
+    if (isPK) {
+      primaryKeys.put(keyName,key);
+    }
+  }
+  return key;
+}

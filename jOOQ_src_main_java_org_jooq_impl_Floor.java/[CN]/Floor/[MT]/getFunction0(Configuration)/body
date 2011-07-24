@@ -1,0 +1,8 @@
+{
+switch (configuration.getDialect()) {
+case SQLITE:
+    return argument.sub(0.5).round();
+default :
+  return new Function<T>("floor",getDataType(),argument);
+}
+}

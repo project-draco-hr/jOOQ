@@ -1,0 +1,17 @@
+{
+  InsertQuery<Table1Record> q=create.insertQuery(TABLE1);
+  q.addValue(FIELD_ID1,10);
+  assertEquals("insert into \"TABLE1\" (\"ID1\") values (10)",internal(q).toSQLReference(create,true));
+  assertEquals("insert into \"TABLE1\" (\"ID1\") values (?)",internal(q).toSQLReference(create,false));
+  assertEquals(q,create.insertInto(TABLE1,FIELD_ID1).values(10));
+  assertEquals(q,create.insertInto(TABLE1).set(FIELD_ID1,10));
+  context.checking(new Expectations(){
+{
+      oneOf(statement).setInt(1,10);
+    }
+  }
+);
+  int i=internal(q).bindReference(create,statement);
+  assertEquals(2,i);
+  context.assertIsSatisfied();
+}

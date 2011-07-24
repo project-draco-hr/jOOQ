@@ -1,0 +1,6 @@
+{
+  super(table,name,position,type,comment);
+  this.position=position;
+  this.underlying=type;
+  this.isIdentity=isIdentity;
+}

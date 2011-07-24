@@ -1,0 +1,3 @@
+{
+  super("address",org.jooq.examples.mysql.sakila.Sakila.SAKILA);
+}

@@ -1,0 +1,6 @@
+{
+  super("case",result.getDataType());
+  this.conditions=new ArrayList<Condition>();
+  this.results=new ArrayList<Field<T>>();
+  when(condition,result);
+}

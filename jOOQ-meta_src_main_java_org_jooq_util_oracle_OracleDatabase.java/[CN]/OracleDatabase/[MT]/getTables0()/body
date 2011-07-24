@@ -1,0 +1,10 @@
+{
+  List<TableDefinition> result=new ArrayList<TableDefinition>();
+  for (  Record record : create().select(TABLE_NAME,COMMENTS).from(ALL_TAB_COMMENTS).where(OWNER.equal(getSchemaName())).and(TABLE_NAME.notLike("%$%")).orderBy(TABLE_NAME).fetch()) {
+    String name=record.getValue(TABLE_NAME);
+    String comment=record.getValue(COMMENTS);
+    OracleTableDefinition table=new OracleTableDefinition(this,name,comment);
+    result.add(table);
+  }
+  return result;
+}

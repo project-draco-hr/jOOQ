@@ -1,0 +1,10 @@
+{
+  List<T> list=new ArrayList<T>(c);
+  Iterator<T> it=list.iterator();
+  while (it.hasNext()) {
+    if (it.next() == null) {
+      it.remove();
+    }
+  }
+  return list;
+}

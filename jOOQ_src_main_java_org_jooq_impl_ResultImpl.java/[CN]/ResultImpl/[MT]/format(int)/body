@@ -1,0 +1,65 @@
+{
+  final int MAX_WIDTH=50;
+  final int MAX_RECORDS=50;
+  StringBuilder sb=new StringBuilder();
+  Map<Field<?>,Integer> widths=new HashMap<Field<?>,Integer>();
+  for (  Field<?> f : getFields()) {
+    widths.put(f,4);
+  }
+  for (  Field<?> f : getFields()) {
+    widths.put(f,min(MAX_WIDTH,max(widths.get(f),f.getName().length())));
+    for (int i=0; i < min(MAX_RECORDS,size()); i++) {
+      widths.put(f,min(MAX_WIDTH,max(widths.get(f),format0(getValue(i,f)).length())));
+    }
+  }
+  sb.append("+");
+  for (  Field<?> f : getFields()) {
+    sb.append(rightPad("",widths.get(f),"-"));
+    sb.append("+");
+  }
+  sb.append("\n|");
+  for (  Field<?> f : getFields()) {
+    String padded;
+    if (Number.class.isAssignableFrom(f.getType())) {
+      padded=leftPad(f.getName(),widths.get(f));
+    }
+ else {
+      padded=rightPad(f.getName(),widths.get(f));
+    }
+    sb.append(abbreviate(padded,widths.get(f)));
+    sb.append("|");
+  }
+  sb.append("\n+");
+  for (  Field<?> f : getFields()) {
+    sb.append(rightPad("",widths.get(f),"-"));
+    sb.append("+");
+  }
+  for (int i=0; i < min(maxRecords,size()); i++) {
+    sb.append("\n|");
+    for (    Field<?> f : getFields()) {
+      String value=format0(getValue(i,f)).replace("\n","{lf}").replace("\r","{cr}");
+      String padded;
+      if (Number.class.isAssignableFrom(f.getType())) {
+        padded=leftPad(value,widths.get(f));
+      }
+ else {
+        padded=rightPad(value,widths.get(f));
+      }
+      sb.append(abbreviate(padded,widths.get(f)));
+      sb.append("|");
+    }
+  }
+  if (size() > 0) {
+    sb.append("\n+");
+    for (    Field<?> f : getFields()) {
+      sb.append(rightPad("",widths.get(f),"-"));
+      sb.append("+");
+    }
+  }
+  if (maxRecords < size()) {
+    sb.append("\n|...");
+    sb.append(size() - maxRecords);
+    sb.append(" record(s) truncated...");
+  }
+  return sb.toString();
+}

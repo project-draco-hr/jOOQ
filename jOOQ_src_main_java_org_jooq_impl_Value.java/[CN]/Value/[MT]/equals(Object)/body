@@ -1,0 +1,10 @@
+{
+  if (obj instanceof Value<?>) {
+    Value<?> other=(Value<?>)obj;
+    if (value == null) {
+      return other.getValue() == null;
+    }
+    return value.equals(other.getValue());
+  }
+  return false;
+}

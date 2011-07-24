@@ -1,0 +1,3 @@
+{
+  return simpleJoin0(table,JoinType.NATURAL_JOIN);
+}

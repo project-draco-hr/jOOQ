@@ -1,0 +1,11 @@
+{
+  SelectQuery q=create.selectQuery();
+  q.addFrom(TABLE1);
+  q.addFrom(TABLE2);
+  q.addFrom(TABLE3);
+  assertEquals("select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\", \"TABLE2\".\"ID2\", \"TABLE2\".\"NAME2\", \"TABLE2\".\"DATE2\", \"TABLE3\".\"ID3\", \"TABLE3\".\"NAME3\", \"TABLE3\".\"DATE3\" from \"TABLE1\", \"TABLE2\", \"TABLE3\"",internal(q).toSQLReference(create,true));
+  assertEquals("select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\", \"TABLE2\".\"ID2\", \"TABLE2\".\"NAME2\", \"TABLE2\".\"DATE2\", \"TABLE3\".\"ID3\", \"TABLE3\".\"NAME3\", \"TABLE3\".\"DATE3\" from \"TABLE1\", \"TABLE2\", \"TABLE3\"",internal(q).toSQLReference(create,false));
+  assertEquals(q,create.select().from(TABLE1,TABLE2,TABLE3));
+  int i=internal(q).bindReference(create,statement);
+  assertEquals(1,i);
+}

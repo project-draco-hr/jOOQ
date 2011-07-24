@@ -1,0 +1,78 @@
+{
+switch (getDialect()) {
+case SQLITE:
+case SQLSERVER:
+    log.info("SKIPPING","FOR UPDATE tests");
+  return;
+}
+Result<Record> result=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().fetch();
+assertEquals(2,result.size());
+Result<A> result2=create().selectFrom(TAuthor()).forUpdate().fetch();
+assertEquals(2,result2.size());
+switch (getDialect()) {
+case DB2:
+case DERBY:
+case HSQLDB:
+case H2:
+case INGRES:
+case MYSQL:
+case POSTGRES:
+case SYBASE:
+log.info("SKIPPING","FOR UPDATE .. WAIT/NOWAIT tests");
+break;
+default :
+{
+result=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().wait(2).fetch();
+assertEquals(2,result.size());
+result=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().noWait().fetch();
+assertEquals(2,result.size());
+result=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().skipLocked().fetch();
+assertEquals(2,result.size());
+result2=create().selectFrom(TAuthor()).forUpdate().of(TAuthor_LAST_NAME(),TAuthor_FIRST_NAME()).wait(2).fetch();
+assertEquals(2,result2.size());
+result2=create().selectFrom(TAuthor()).forUpdate().of(TAuthor_LAST_NAME(),TAuthor_FIRST_NAME()).noWait().fetch();
+assertEquals(2,result2.size());
+result2=create().selectFrom(TAuthor()).forUpdate().of(TAuthor_LAST_NAME(),TAuthor_FIRST_NAME()).skipLocked().fetch();
+assertEquals(2,result2.size());
+}
+}
+switch (getDialect()) {
+case MYSQL:
+log.info("SKIPPING","FOR UPDATE OF tests");
+break;
+case DB2:
+case DERBY:
+case H2:
+case HSQLDB:
+case INGRES:
+case ORACLE:
+case SYBASE:
+{
+result=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().of(TAuthor_LAST_NAME(),TAuthor_FIRST_NAME()).fetch();
+assertEquals(2,result.size());
+result2=create().selectFrom(TAuthor()).forUpdate().of(TAuthor_LAST_NAME(),TAuthor_FIRST_NAME()).fetch();
+assertEquals(2,result2.size());
+}
+case POSTGRES:
+{
+result=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().of(TAuthor()).fetch();
+assertEquals(2,result.size());
+result2=create().selectFrom(TAuthor()).forUpdate().of(TAuthor()).fetch();
+assertEquals(2,result2.size());
+break;
+}
+}
+switch (getDialect()) {
+case MYSQL:
+case POSTGRES:
+{
+result=create().select(TAuthor_ID()).from(TAuthor()).forShare().fetch();
+assertEquals(2,result.size());
+result2=create().selectFrom(TAuthor()).forShare().fetch();
+assertEquals(2,result2.size());
+break;
+}
+default :
+log.info("SKIPPING","FOR SHARE clause tests");
+}
+}

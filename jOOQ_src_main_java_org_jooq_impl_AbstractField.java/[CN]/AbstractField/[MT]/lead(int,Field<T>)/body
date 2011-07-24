@@ -1,0 +1,6 @@
+{
+  if (defaultValue == null) {
+    return lead(offset,(T)null);
+  }
+  return new WindowFunction<T>("lead",getDataType(),this,literal(offset),defaultValue);
+}

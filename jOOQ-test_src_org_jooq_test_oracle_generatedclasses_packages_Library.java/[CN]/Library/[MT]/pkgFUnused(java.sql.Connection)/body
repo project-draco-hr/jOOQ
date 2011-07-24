@@ -1,0 +1,5 @@
+{
+  org.jooq.test.oracle.generatedclasses.packages.library.PkgFUnused f=new org.jooq.test.oracle.generatedclasses.packages.library.PkgFUnused();
+  f.execute(connection);
+  return f.getReturnValue();
+}

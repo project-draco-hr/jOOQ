@@ -1,0 +1,10 @@
+{
+switch (getDialect()) {
+case POSTGRES:
+case H2:
+    return "ARRAY".equals(dataType);
+case HSQLDB:
+  return dataType.endsWith("ARRAY");
+}
+return false;
+}

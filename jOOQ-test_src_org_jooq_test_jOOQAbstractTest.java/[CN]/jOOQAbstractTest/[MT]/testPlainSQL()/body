@@ -1,0 +1,68 @@
+{
+  reset=false;
+  Field<?> ID=create().field(TBook_ID().getName());
+  Result<Record> result=create().select().from("t_book").orderBy(ID).fetch();
+  assertEquals(4,result.size());
+  assertEquals(Integer.valueOf(1),result.getValue(0,TBook_ID().getName()));
+  assertEquals(Integer.valueOf(2),result.getValue(1,TBook_ID().getName()));
+  assertEquals(Integer.valueOf(3),result.getValue(2,TBook_ID().getName()));
+  assertEquals(Integer.valueOf(4),result.getValue(3,TBook_ID().getName()));
+  assertEquals("1984",result.getValue(0,TBook_TITLE().getName()));
+  assertEquals("Animal Farm",result.getValue(1,TBook_TITLE().getName()));
+  assertEquals("O Alquimista",result.getValue(2,TBook_TITLE().getName()));
+  assertEquals("Brida",result.getValue(3,TBook_TITLE().getName()));
+  Field<?> LAST_NAME=create().field(TAuthor_LAST_NAME().getName());
+  Field<?> COUNT1=create().field("count(*) x");
+  Field<?> COUNT2=create().field("count(*) y",Integer.class);
+  result=create().select(LAST_NAME,COUNT1,COUNT2).from("t_author a").join("t_book b").on("a.id = b.author_id").where("b.title != 'Brida'").groupBy(LAST_NAME).orderBy(LAST_NAME).fetch();
+  assertEquals(2,result.size());
+  assertEquals("Coelho",result.getValue(0,LAST_NAME));
+  assertEquals("Orwell",result.getValue(1,LAST_NAME));
+  assertEquals("1",result.getValueAsString(0,COUNT1));
+  assertEquals("2",result.getValueAsString(1,COUNT1));
+  assertEquals(Integer.valueOf(1),result.getValue(0,COUNT2));
+  assertEquals(Integer.valueOf(2),result.getValue(1,COUNT2));
+  result=create().select(LAST_NAME,COUNT1,COUNT2).from("t_author a").join("t_book b").on("a.id = b.author_id").where("b.title != 'Brida'").groupBy(LAST_NAME).having("count(*) = ?",1).fetch();
+  assertEquals(1,result.size());
+  assertEquals("Coelho",result.getValue(0,LAST_NAME));
+  assertEquals("1",result.getValueAsString(0,COUNT1));
+  assertEquals(Integer.valueOf(1),result.getValue(0,COUNT2));
+  assertEquals(1,create().query("insert into t_author (id, first_name, last_name) values (?, ?, ?)",3,"Mich??le","Roten").execute());
+  A author=create().fetchOne(TAuthor(),TAuthor_ID().equal(3));
+  assertEquals(Integer.valueOf(3),author.getValue(TAuthor_ID()));
+  assertEquals("Mich??le",author.getValue(TAuthor_FIRST_NAME()));
+  assertEquals("Roten",author.getValue(TAuthor_LAST_NAME()));
+switch (getDialect()) {
+case SYBASE:
+    log.info("SKIPPING","Sybase can't handle untyped null literals");
+  break;
+default :
+{
+  assertEquals(1,create().query("update t_author set first_name = ? where id = 3",(Object[])null).execute());
+  author.refresh();
+  assertEquals(Integer.valueOf(3),author.getValue(TAuthor_ID()));
+  assertEquals(null,author.getValue(TAuthor_FIRST_NAME()));
+  assertEquals("Roten",author.getValue(TAuthor_LAST_NAME()));
+  assertEquals(1,create().query("update t_author set first_name = ? where id = 3","Mich??le").execute());
+  author.refresh();
+  assertEquals(Integer.valueOf(3),author.getValue(TAuthor_ID()));
+  assertEquals("Mich??le",author.getValue(TAuthor_FIRST_NAME()));
+  assertEquals("Roten",author.getValue(TAuthor_LAST_NAME()));
+  assertEquals(1,create().query("update t_author set first_name = ? where id = 3",(Object)null).execute());
+  author.refresh();
+  assertEquals(Integer.valueOf(3),author.getValue(TAuthor_ID()));
+  assertEquals(null,author.getValue(TAuthor_FIRST_NAME()));
+  assertEquals("Roten",author.getValue(TAuthor_LAST_NAME()));
+  break;
+}
+}
+assertEquals("ABC",create().select(create().function("upper",String.class,val("aBc"))).fetchOne(0));
+assertEquals("abc",create().select(create().function("lower",SQLDataType.VARCHAR,val("aBc"))).fetchOne(0));
+Result<Record> books=create().fetch("select * from t_book where id in (?, ?) order by id",1,2);
+assertNotNull(books);
+assertEquals(2,books.size());
+assertEquals(Integer.valueOf(1),books.getValue(0,TBook_ID()));
+assertEquals(Integer.valueOf(2),books.getValue(1,TBook_ID()));
+assertEquals(Integer.valueOf(1),books.getValue(0,TBook_AUTHOR_ID()));
+assertEquals(Integer.valueOf(1),books.getValue(1,TBook_AUTHOR_ID()));
+}

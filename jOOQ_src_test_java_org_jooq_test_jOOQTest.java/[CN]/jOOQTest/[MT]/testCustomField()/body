@@ -1,0 +1,29 @@
+{
+  Field<?> f=new CustomField<Integer>("test",Data.INTEGER_TYPE){
+    private static final long serialVersionUID=1L;
+    @Override public String toSQLReference(    Configuration configuration,    boolean inlineParameters){
+      if (inlineParameters) {
+        return "1";
+      }
+ else {
+        return "?";
+      }
+    }
+    @Override public int bindReference(    Configuration configuration,    PreparedStatement stmt,    int initialIndex) throws SQLException {
+      stmt.setInt(initialIndex,1);
+      return initialIndex + 1;
+    }
+  }
+;
+  assertEquals("1",internal(f).toSQLReference(create,true));
+  assertEquals("?",internal(f).toSQLReference(create,false));
+  context.checking(new Expectations(){
+{
+      oneOf(statement).setInt(1,1);
+    }
+  }
+);
+  int i=internal(f).bindReference(create,statement);
+  assertEquals(2,i);
+  context.assertIsSatisfied();
+}

@@ -1,0 +1,21 @@
+{
+switch (configuration.getDialect()) {
+case MYSQL:
+    return "`" + literal + "`";
+case DB2:
+case DERBY:
+case H2:
+case HSQLDB:
+case INGRES:
+case ORACLE:
+case POSTGRES:
+  return "\"" + literal + "\"";
+case SQLITE:
+return literal;
+case SQLSERVER:
+case SYBASE:
+return "[" + literal + "]";
+default :
+return literal;
+}
+}

@@ -1,0 +1,7 @@
+{
+  String columnName=getDatabase().getProperty("generator.generate.master-data-table-description." + getName());
+  if (columnName == null) {
+    columnName=getLiteralColumn().getName();
+  }
+  return getColumn(columnName);
+}

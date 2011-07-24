@@ -1,0 +1,3 @@
+{
+  return getDelegate().bindReference(configuration,stmt,initialIndex);
+}

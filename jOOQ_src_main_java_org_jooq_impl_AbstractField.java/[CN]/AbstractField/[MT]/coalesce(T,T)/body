@@ -1,0 +1,3 @@
+{
+  return coalesce(val(option),vals(options).toArray(new Field<?>[0]));
+}

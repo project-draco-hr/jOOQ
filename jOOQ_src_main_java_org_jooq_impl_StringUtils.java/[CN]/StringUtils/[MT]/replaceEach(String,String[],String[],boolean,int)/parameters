@@ -1,0 +1,5 @@
+String text
+String[] searchList
+String[] replacementList
+boolean repeat
+int timeToLive

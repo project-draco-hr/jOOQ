@@ -1,0 +1,7 @@
+{
+  List<Float> result=new ArrayList<Float>();
+  for (  R record : this) {
+    result.add(record.getValueAsFloat(field));
+  }
+  return result;
+}

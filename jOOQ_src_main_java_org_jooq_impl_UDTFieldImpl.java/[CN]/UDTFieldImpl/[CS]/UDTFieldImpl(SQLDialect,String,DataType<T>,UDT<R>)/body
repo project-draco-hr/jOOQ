@@ -1,0 +1,3 @@
+{
+  this(Factory.getStaticFactory(dialect),name,type,udt);
+}

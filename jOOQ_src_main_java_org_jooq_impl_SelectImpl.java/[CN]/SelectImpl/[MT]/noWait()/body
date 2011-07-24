@@ -1,0 +1,4 @@
+{
+  getQuery().setForUpdateNoWait();
+  return this;
+}

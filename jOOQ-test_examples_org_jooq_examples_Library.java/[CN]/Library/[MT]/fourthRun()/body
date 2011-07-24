@@ -1,0 +1,11 @@
+{
+  for (  TAuthorRecord record : create().selectFrom(T_AUTHOR).where(TAuthor.ID.in(create().selectDistinct(TBook.AUTHOR_ID).from(T_BOOK).where(TBook.STATUS.equal(TBookStatus.SOLD_OUT)))).fetch()) {
+    System.out.println("Author : " + record.getFirstName() + " "+ record.getLastName()+ " has sold out books");
+  }
+  for (  TAuthorRecord record : create().selectFrom(T_AUTHOR).where(TAuthor.ID.in(create().selectDistinct(TBook.AUTHOR_ID).from(T_BOOK).where(TBook.LANGUAGE_ID.in(TLanguage.en,TLanguage.pt)))).fetch()) {
+    System.out.println("Author : " + record.getFirstName() + " "+ record.getLastName()+ " have english or portuguese books");
+  }
+  Select<?> union=create().select(TBook.TITLE,TBook.AUTHOR_ID).from(T_BOOK).where(TBook.PUBLISHED_IN.greaterThan(1990)).union(create().select(TBook.TITLE,TBook.AUTHOR_ID).from(T_BOOK).where(TBook.AUTHOR_ID.equal(1)));
+  System.out.println(create().select(union.getField(TBook.TITLE)).from(union).orderBy(union.getField(TBook.AUTHOR_ID).desc()));
+  System.out.println(create().select(union.getField(TBook.TITLE),union.getField(TBook.AUTHOR_ID)).from(union).orderBy(union.getField(TBook.AUTHOR_ID).desc()).fetch());
+}

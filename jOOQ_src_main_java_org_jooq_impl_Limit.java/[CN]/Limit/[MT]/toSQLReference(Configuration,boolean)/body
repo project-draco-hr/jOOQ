@@ -1,0 +1,77 @@
+{
+  StringBuilder sb=new StringBuilder();
+switch (configuration.getDialect()) {
+case MYSQL:
+    if (inlineParameters) {
+      sb.append("limit ");
+      sb.append(getOffset());
+      sb.append(", ");
+      sb.append(getNumberOfRows());
+    }
+ else {
+      sb.append("limit ?, ?");
+    }
+  break;
+case H2:
+case HSQLDB:
+case POSTGRES:
+case SQLITE:
+if (inlineParameters) {
+  sb.append("limit ");
+  sb.append(getNumberOfRows());
+  sb.append(" offset ");
+  sb.append(getOffset());
+}
+ else {
+  sb.append("limit ? offset ?");
+}
+break;
+case DERBY:
+if (inlineParameters) {
+sb.append("offset ");
+sb.append(getOffset());
+sb.append(" rows fetch next ");
+sb.append(getNumberOfRows());
+sb.append(" rows only");
+}
+ else {
+sb.append("offset ? rows fetch next ? rows only");
+}
+break;
+case INGRES:
+sb.append("offset ");
+sb.append(getOffset());
+sb.append(" fetch first ");
+sb.append(getNumberOfRows());
+sb.append(" rows only");
+break;
+case DB2:
+if (getOffset() != 0) {
+throw new SQLDialectNotSupportedException("DB2 does not support offsets in FETCH FIRST ROWS ONLY clause");
+}
+sb.append("fetch first ");
+sb.append(getNumberOfRows());
+sb.append(" rows only");
+break;
+case SQLSERVER:
+case SYBASE:
+if (getOffset() != 0) {
+throw new SQLDialectNotSupportedException("Offsets in TOP clause not supported");
+}
+sb.append("top ");
+sb.append(getNumberOfRows());
+break;
+default :
+if (inlineParameters) {
+sb.append("limit ");
+sb.append(getNumberOfRows());
+sb.append(" offset ");
+sb.append(getOffset());
+}
+ else {
+sb.append("limit ? offset ?");
+}
+break;
+}
+return sb.toString();
+}

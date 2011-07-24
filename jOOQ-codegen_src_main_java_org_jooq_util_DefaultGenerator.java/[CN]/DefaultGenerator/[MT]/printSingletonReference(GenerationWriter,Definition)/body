@@ -1,0 +1,12 @@
+{
+  if (definition instanceof SequenceDefinition) {
+    out.print(strategy.getTargetPackage());
+    out.print(".");
+    out.print("Sequences");
+    out.print(".");
+    out.print(strategy.getJavaIdentifierUC(definition));
+  }
+ else {
+    out.print(strategy.getFullJavaIdentifierUC(definition));
+  }
+}

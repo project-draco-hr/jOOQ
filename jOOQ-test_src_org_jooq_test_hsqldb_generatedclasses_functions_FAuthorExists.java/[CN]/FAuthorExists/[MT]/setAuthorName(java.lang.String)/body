@@ -1,0 +1,3 @@
+{
+  setValue(AUTHOR_NAME,value);
+}

@@ -1,0 +1,10 @@
+{
+  final long temp=split;
+  split=System.nanoTime();
+  if (temp == start) {
+    return "Total: " + format(split - start);
+  }
+ else {
+    return "Total: " + format(split - start) + ", +"+ format(split - temp);
+  }
+}

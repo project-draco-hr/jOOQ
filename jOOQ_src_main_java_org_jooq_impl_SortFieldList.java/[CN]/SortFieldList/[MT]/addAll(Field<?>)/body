@@ -1,0 +1,7 @@
+{
+  List<SortField<?>> list=new ArrayList<SortField<?>>();
+  for (  Field<?> field : fields) {
+    list.add(field.asc());
+  }
+  addAll(list);
+}

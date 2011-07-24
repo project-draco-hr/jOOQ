@@ -1,0 +1,4 @@
+GenerationWriter out
+String disambiguationSuffix
+TypedElementDefinition<?> element
+String deprecation

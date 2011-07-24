@@ -1,0 +1,6 @@
+{
+  if (array != null) {
+    return TypeUtils.convert(array.getArray(),type);
+  }
+  return null;
+}

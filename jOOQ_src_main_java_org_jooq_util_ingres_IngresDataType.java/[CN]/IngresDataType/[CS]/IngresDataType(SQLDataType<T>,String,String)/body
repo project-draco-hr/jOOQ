@@ -1,0 +1,3 @@
+{
+  super(SQLDialect.INGRES,sqlDataType,sqlDataType.getType(),typeName,castTypeName);
+}

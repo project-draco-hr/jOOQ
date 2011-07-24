@@ -1,0 +1,93 @@
+{
+  strategy.getFile(procedure).getParentFile().mkdirs();
+  log.info("Generating procedure",strategy.getFileName(procedure));
+  GenerationWriter out=new GenerationWriter(new PrintWriter(strategy.getFile(procedure)));
+  printHeader(out,strategy.getJavaPackageName(procedure));
+  printClassJavadoc(out,procedure);
+  Class<?> procedureClass=StoredProcedureImpl.class;
+  if (database.getDialect() == SQLDialect.POSTGRES && procedure.getOutParameters().size() == 1 && procedure.getOutParameters().get(0).getType().isUDT()) {
+    procedureClass=PostgresSingleUDTOutParameterProcedure.class;
+  }
+  out.print("public class ");
+  out.print(strategy.getJavaClassName(procedure));
+  out.print(" extends ");
+  out.print(procedureClass);
+  out.println(" {");
+  out.printSerial();
+  out.println();
+  for (  ParameterDefinition parameter : procedure.getAllParameters()) {
+    printParameter(out,parameter,procedure);
+  }
+  out.println();
+  printJavadoc(out,"Create a new procedure call instance");
+  out.println("\tpublic " + strategy.getJavaClassName(procedure) + "() {");
+  out.print("\t\tsuper(");
+  out.print(SQLDialect.class);
+  out.print(".");
+  out.print(database.getDialect().name());
+  out.print(", \"");
+  out.print(procedure.getName());
+  out.print("\", ");
+  out.print(strategy.getFullJavaIdentifierUC(schema));
+  if (procedure.getPackage() != null) {
+    out.print(", ");
+    out.print(strategy.getFullJavaClassName(procedure.getPackage()));
+    out.print(".");
+    out.print(strategy.getJavaIdentifierUC(procedure.getPackage()));
+  }
+  out.println(");");
+  if (procedure.getAllParameters().size() > 0) {
+    out.println();
+  }
+  for (  ParameterDefinition parameter : procedure.getAllParameters()) {
+    String parameterNameUC=parameter.getName().toUpperCase();
+    out.print("\t\t");
+    if (parameter.equals(procedure.getReturnValue())) {
+      out.println("setReturnParameter(" + parameterNameUC + ");");
+    }
+ else     if (procedure.getInParameters().contains(parameter)) {
+      if (procedure.getOutParameters().contains(parameter)) {
+        out.println("addInOutParameter(" + parameterNameUC + ");");
+      }
+ else {
+        out.println("addInParameter(" + parameterNameUC + ");");
+      }
+    }
+ else {
+      out.println("addOutParameter(" + parameterNameUC + ");");
+    }
+  }
+  if (procedure.getOverload() != null) {
+    out.println("\t\tsetOverloaded(true);");
+  }
+  out.println("\t}");
+  for (  ParameterDefinition parameter : procedure.getInParameters()) {
+    out.println();
+    out.print("\tpublic void set");
+    out.print(strategy.getJavaClassName(parameter));
+    out.print("(");
+    printNumberType(out,parameter.getType());
+    out.println(" value) {");
+    out.print("\t\tset");
+    if (parameter.getType().isGenericNumberType()) {
+      out.print("Number");
+    }
+ else {
+      out.print("Value");
+    }
+    out.print("(");
+    out.print(strategy.getJavaIdentifierUC(parameter));
+    out.println(", value);");
+    out.println("\t}");
+  }
+  for (  ParameterDefinition parameter : procedure.getAllParameters()) {
+    if (parameter.equals(procedure.getReturnValue()) || procedure.getOutParameters().contains(parameter)) {
+      out.println();
+      out.println("\tpublic " + getJavaType(parameter.getType()) + " get"+ strategy.getJavaClassName(parameter)+ "() {");
+      out.println("\t\treturn getValue(" + strategy.getJavaIdentifierUC(parameter) + ");");
+      out.println("\t}");
+    }
+  }
+  out.println("}");
+  out.close();
+}

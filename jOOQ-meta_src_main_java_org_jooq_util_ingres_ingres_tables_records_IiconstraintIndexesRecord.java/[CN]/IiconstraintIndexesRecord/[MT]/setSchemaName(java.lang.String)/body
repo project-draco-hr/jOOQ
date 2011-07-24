@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.ingres.ingres.tables.IiconstraintIndexes.SCHEMA_NAME,value);
+}

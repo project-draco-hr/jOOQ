@@ -1,0 +1,3 @@
+{
+  super("constraint_column_usage",org.jooq.util.postgres.information_schema.InformationSchema.INFORMATION_SCHEMA);
+}

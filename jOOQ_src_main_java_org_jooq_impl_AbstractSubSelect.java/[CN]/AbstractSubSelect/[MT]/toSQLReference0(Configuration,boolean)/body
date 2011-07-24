@@ -1,0 +1,60 @@
+{
+  StringBuilder sb=new StringBuilder();
+  sb.append("select ");
+  if (distinct) {
+    sb.append("distinct ");
+  }
+  if (!StringUtils.isBlank(hint)) {
+    sb.append(hint);
+    sb.append(" ");
+  }
+switch (configuration.getDialect()) {
+case SQLSERVER:
+case SYBASE:
+    if (getLimit().isApplicable() && getLimit().getOffset() == 0) {
+      sb.append(getLimit().toSQLReference(configuration,inlineParameters));
+      sb.append(" ");
+    }
+ else     if (configuration.getDialect() == SQLSERVER && !getOrderBy().isEmpty()) {
+      sb.append("top 100 percent ");
+    }
+}
+sb.append(getSelect().toSQLDeclaration(configuration,inlineParameters));
+if (!getFrom().toSQLDeclaration(configuration,inlineParameters).isEmpty()) {
+  sb.append(" from ");
+  sb.append(getFrom().toSQLDeclaration(configuration,inlineParameters));
+}
+if (!getJoin().isEmpty()) {
+  sb.append(" ");
+  sb.append(getJoin().toSQLDeclaration(configuration,inlineParameters));
+}
+if (!(getWhere().getWhere() instanceof TrueCondition)) {
+  sb.append(" where ");
+  sb.append(getWhere().toSQLReference(configuration,inlineParameters));
+}
+if (!(getConnectBy().getWhere() instanceof TrueCondition)) {
+  sb.append(" connect by");
+  if (connectByNoCycle) {
+    sb.append(" nocycle");
+  }
+  sb.append(" ");
+  sb.append(getConnectBy().toSQLReference(configuration,inlineParameters));
+  if (!(getConnectByStartWith().getWhere() instanceof TrueCondition)) {
+    sb.append(" start with ");
+    sb.append(getConnectByStartWith().toSQLReference(configuration,inlineParameters));
+  }
+}
+if (!getGroupBy().isEmpty()) {
+  sb.append(" group by ");
+  sb.append(getGroupBy().toSQLReference(configuration,inlineParameters));
+}
+if (!(getHaving().getWhere() instanceof TrueCondition)) {
+  sb.append(" having ");
+  sb.append(getHaving().toSQLReference(configuration,inlineParameters));
+}
+if (!getOrderBy().isEmpty()) {
+  sb.append(" order by ");
+  sb.append(getOrderBy().toSQLReference(configuration,inlineParameters));
+}
+return sb.toString();
+}

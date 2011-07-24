@@ -1,0 +1,3 @@
+{
+  this(dialect,sqldatatype,type,typeName,typeName,hasPrecisionAndScale);
+}

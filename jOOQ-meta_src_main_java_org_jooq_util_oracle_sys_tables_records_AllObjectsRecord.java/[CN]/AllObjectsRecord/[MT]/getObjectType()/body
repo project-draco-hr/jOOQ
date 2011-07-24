@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.util.oracle.sys.tables.AllObjects.OBJECT_TYPE);
+}

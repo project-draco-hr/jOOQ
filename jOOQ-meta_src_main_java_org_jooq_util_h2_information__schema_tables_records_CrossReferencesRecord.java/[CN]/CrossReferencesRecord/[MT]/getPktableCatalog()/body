@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.util.h2.information_schema.tables.CrossReferences.PKTABLE_CATALOG);
+}

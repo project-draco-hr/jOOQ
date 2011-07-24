@@ -1,0 +1,4 @@
+{
+  super("ceil",argument.getDataType(),argument);
+  this.argument=argument;
+}

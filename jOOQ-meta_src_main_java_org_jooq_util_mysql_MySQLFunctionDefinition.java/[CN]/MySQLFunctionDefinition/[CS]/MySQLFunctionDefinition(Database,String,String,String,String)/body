@@ -1,0 +1,4 @@
+{
+  super(database,null,name,comment,null);
+  init(params,returns);
+}

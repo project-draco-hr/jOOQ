@@ -1,0 +1,5 @@
+{
+  org.jooq.examples.mysql.sakila.functions.InventoryHeldByCustomer f=new org.jooq.examples.mysql.sakila.functions.InventoryHeldByCustomer();
+  f.setPInventoryId(pInventoryId);
+  return f.asField();
+}

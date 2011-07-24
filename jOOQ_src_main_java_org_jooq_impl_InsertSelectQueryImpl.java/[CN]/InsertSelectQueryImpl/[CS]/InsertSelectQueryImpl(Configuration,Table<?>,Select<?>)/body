@@ -1,0 +1,5 @@
+{
+  super(configuration);
+  this.into=into;
+  this.select=select;
+}

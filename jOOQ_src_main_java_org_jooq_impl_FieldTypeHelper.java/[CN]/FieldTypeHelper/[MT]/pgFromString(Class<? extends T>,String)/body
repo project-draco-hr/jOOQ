@@ -1,0 +1,68 @@
+{
+  if (string == null) {
+    return null;
+  }
+ else   if (type == Blob.class) {
+  }
+ else   if (type == Boolean.class) {
+    return (T)Boolean.valueOf(string);
+  }
+ else   if (type == BigInteger.class) {
+    return (T)new BigInteger(string);
+  }
+ else   if (type == BigDecimal.class) {
+    return (T)new BigDecimal(string);
+  }
+ else   if (type == Byte.class) {
+    return (T)Byte.valueOf(string);
+  }
+ else   if (type == byte[].class) {
+  }
+ else   if (type == Clob.class) {
+  }
+ else   if (type == Date.class) {
+    SimpleDateFormat f=new SimpleDateFormat("yyyy-MM-dd");
+    return (T)new Date(pgParseDate(string,f).getTime());
+  }
+ else   if (type == Double.class) {
+    return (T)Double.valueOf(string);
+  }
+ else   if (type == Float.class) {
+    return (T)Float.valueOf(string);
+  }
+ else   if (type == Integer.class) {
+    return (T)Integer.valueOf(string);
+  }
+ else   if (type == Long.class) {
+    return (T)Long.valueOf(string);
+  }
+ else   if (type == Short.class) {
+    return (T)Short.valueOf(string);
+  }
+ else   if (type == String.class) {
+    return (T)string;
+  }
+ else   if (type == Time.class) {
+    SimpleDateFormat f=new SimpleDateFormat("HH:mm:ss");
+    return (T)new Time(pgParseDate(string,f).getTime());
+  }
+ else   if (type == Timestamp.class) {
+    SimpleDateFormat f=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    return (T)new Timestamp(pgParseDate(string,f).getTime());
+  }
+ else   if (type.isArray()) {
+    return (T)pgNewArray(type,string);
+  }
+ else   if (ArrayRecord.class.isAssignableFrom(type)) {
+  }
+ else   if (EnumType.class.isAssignableFrom(type)) {
+    return getEnumType(type,string);
+  }
+ else   if (MasterDataType.class.isAssignableFrom(type)) {
+    return (T)getMasterDataType(type,string);
+  }
+ else   if (UDTRecord.class.isAssignableFrom(type)) {
+    return (T)pgNewUDTRecord(type,string);
+  }
+  throw new UnsupportedOperationException("Class " + type + " is not supported");
+}

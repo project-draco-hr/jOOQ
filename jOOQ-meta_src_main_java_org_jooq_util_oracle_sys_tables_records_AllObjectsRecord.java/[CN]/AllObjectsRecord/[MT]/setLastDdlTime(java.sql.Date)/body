@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.oracle.sys.tables.AllObjects.LAST_DDL_TIME,value);
+}

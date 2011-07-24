@@ -1,0 +1,4 @@
+{
+  super(database,null,record.getValue(Routines.ROUTINE_NAME),null,record.getValueAsString("overload"));
+  specificName=record.getValue(Routines.SPECIFIC_NAME);
+}

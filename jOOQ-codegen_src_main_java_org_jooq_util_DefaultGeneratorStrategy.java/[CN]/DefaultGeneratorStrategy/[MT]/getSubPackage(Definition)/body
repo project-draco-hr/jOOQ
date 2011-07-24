@@ -1,0 +1,33 @@
+{
+  if (definition instanceof MasterDataTableDefinition) {
+    return "enums";
+  }
+ else   if (definition instanceof TableDefinition) {
+    return "tables";
+  }
+ else   if (definition instanceof PackageDefinition) {
+    return "packages";
+  }
+ else   if (definition instanceof CallableDefinition) {
+    CallableDefinition callable=(CallableDefinition)definition;
+    if (callable.getPackage() != null) {
+      return "packages." + getJavaIdentifierUC(callable.getPackage()).toLowerCase();
+    }
+ else     if (definition instanceof FunctionDefinition) {
+      return "functions";
+    }
+ else     if (definition instanceof ProcedureDefinition) {
+      return "procedures";
+    }
+  }
+ else   if (definition instanceof EnumDefinition) {
+    return "enums";
+  }
+ else   if (definition instanceof ArrayDefinition) {
+    return "udt";
+  }
+ else   if (definition instanceof UDTDefinition) {
+    return "udt";
+  }
+  return "";
+}

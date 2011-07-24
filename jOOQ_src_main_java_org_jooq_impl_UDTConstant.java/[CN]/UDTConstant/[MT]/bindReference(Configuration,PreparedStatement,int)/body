@@ -1,0 +1,17 @@
+{
+switch (configuration.getDialect()) {
+case ORACLE:
+    return JooqUtil.bind(configuration,stmt,initialIndex,record);
+case DB2:
+case POSTGRES:
+{
+    int result=initialIndex;
+    for (    Field<?> field : record.getFields()) {
+      Field<?> value=create(configuration).val(record.getValue(field));
+      result=internal(value).bindReference(configuration,stmt,result);
+    }
+    return result;
+  }
+}
+throw new SQLDialectNotSupportedException("UDTs not supported in dialect " + configuration.getDialect());
+}

@@ -1,0 +1,4 @@
+Configuration configuration
+PreparedStatement stmt
+int initialIndex
+boolean declaration

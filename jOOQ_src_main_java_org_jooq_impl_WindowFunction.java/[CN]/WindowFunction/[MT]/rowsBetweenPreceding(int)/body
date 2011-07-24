@@ -1,0 +1,4 @@
+{
+  rowsPreceding(number);
+  return this;
+}

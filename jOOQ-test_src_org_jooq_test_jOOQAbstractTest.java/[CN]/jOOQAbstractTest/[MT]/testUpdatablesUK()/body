@@ -1,0 +1,49 @@
+{
+  reset=false;
+  S store=create().newRecord(TBookStore());
+  try {
+    store.refresh();
+  }
+ catch (  SQLException expected) {
+  }
+  store.setValue(TBookStore_NAME(),"R??sslitor");
+  assertEquals(1,store.store());
+  Number identity1=new Integer(0);
+  Number identity2=new Integer(0);
+  if (TBookStore().getIdentity() != null) {
+    identity1=store.getValue(TBookStore().getIdentity().getField());
+    assertNotNull(identity1);
+  }
+ else {
+    log.info("SKIPPING","Identity check");
+  }
+  store=create().fetchOne(TBookStore(),TBookStore_NAME().equal("R??sslitor"));
+  assertEquals("R??sslitor",store.getValue(TBookStore_NAME()));
+  store.setValue(TBookStore_NAME(),"Amazon");
+  store.store();
+  if (TBookStore().getIdentity() != null) {
+    identity2=store.getValue(TBookStore().getIdentity().getField());
+    assertNotNull(identity2);
+    assertEquals(identity1.intValue(),identity2.intValue() - 1);
+  }
+ else {
+    log.info("SKIPPING","Identity check");
+  }
+  store=create().fetchOne(TBookStore(),TBookStore_NAME().equal("Amazon"));
+  assertEquals("Amazon",store.getValue(TBookStore_NAME()));
+  store.delete();
+  assertEquals("Amazon",store.getValue(TBookStore_NAME()));
+  assertEquals(null,create().fetchOne(TBookStore(),TBookStore_NAME().equal("Amazon")));
+switch (getDialect()) {
+case SQLSERVER:
+    log.info("SKIPPING","Storing previously deleted UpdatableRecords");
+  break;
+default :
+store.store();
+assertEquals("Amazon",store.getValue(TBookStore_NAME()));
+store.refresh();
+assertEquals("Amazon",store.getValue(TBookStore_NAME()));
+}
+store=create().fetchOne(TBookStore(),TBookStore_NAME().equal("R??sslitor"));
+assertEquals("R??sslitor",store.getValue(TBookStore_NAME()));
+}

@@ -1,0 +1,5 @@
+SQLDialect dialect
+String name
+Schema schema
+Package pkg
+DataType<T> type

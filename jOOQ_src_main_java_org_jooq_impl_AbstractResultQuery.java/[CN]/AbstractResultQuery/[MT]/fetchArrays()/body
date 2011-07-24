@@ -1,0 +1,8 @@
+{
+  Result<R> fetch=fetch();
+  Object[][] array=new Object[fetch.size()][];
+  for (int i=0; i < fetch.size(); i++) {
+    array[i]=convertToArray(fetch.get(i));
+  }
+  return array;
+}

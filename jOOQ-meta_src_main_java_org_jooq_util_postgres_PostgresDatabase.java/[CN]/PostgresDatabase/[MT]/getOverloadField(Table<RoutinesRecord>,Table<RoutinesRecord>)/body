@@ -1,0 +1,3 @@
+{
+  return create().decode().when(create().exists(create().selectOne().from(r2).where(r2.getField(Routines.ROUTINE_SCHEMA).equal(getSchemaName())).and(r2.getField(Routines.ROUTINE_NAME).equal(r1.getField(Routines.ROUTINE_NAME))).and(r2.getField(Routines.SPECIFIC_NAME).notEqual(r1.getField(Routines.SPECIFIC_NAME)))),create().select(create().count()).from(r2).where(r2.getField(Routines.ROUTINE_SCHEMA).equal(getSchemaName())).and(r2.getField(Routines.ROUTINE_NAME).equal(r1.getField(Routines.ROUTINE_NAME))).and(r2.getField(Routines.SPECIFIC_NAME).lessOrEqual(r1.getField(Routines.SPECIFIC_NAME))).asField()).as("overload");
+}

@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.util.ingres.ingres.tables.Iiindexes.STORAGE_STRUCTURE);
+}

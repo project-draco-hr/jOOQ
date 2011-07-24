@@ -1,0 +1,11 @@
+{
+  if (cLibrary() == null) {
+    log.info("SKIPPING","packages test");
+    return;
+  }
+  reset=false;
+  assertEquals("1","" + invoke(cLibrary(),"pkgPAuthorExists1",create(),"Paulo"));
+  assertEquals("0","" + invoke(cLibrary(),"pkgPAuthorExists1",create(),"Shakespeare"));
+  assertEquals("1","" + invoke(cLibrary(),"pkgFAuthorExists1",create(),"Paulo"));
+  assertEquals("0","" + invoke(cLibrary(),"pkgFAuthorExists1",create(),"Shakespeare"));
+}

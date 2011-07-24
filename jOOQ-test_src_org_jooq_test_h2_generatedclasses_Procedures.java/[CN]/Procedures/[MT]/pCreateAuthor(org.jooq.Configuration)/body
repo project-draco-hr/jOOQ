@@ -1,0 +1,4 @@
+{
+  org.jooq.test.h2.generatedclasses.procedures.PCreateAuthor p=new org.jooq.test.h2.generatedclasses.procedures.PCreateAuthor();
+  p.execute(configuration);
+}

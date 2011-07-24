@@ -1,0 +1,6 @@
+{
+  org.jooq.test.h2.generatedclasses.functions.FNumber f=new org.jooq.test.h2.generatedclasses.functions.FNumber();
+  f.setP1(p1);
+  f.execute(configuration);
+  return f.getReturnValue();
+}

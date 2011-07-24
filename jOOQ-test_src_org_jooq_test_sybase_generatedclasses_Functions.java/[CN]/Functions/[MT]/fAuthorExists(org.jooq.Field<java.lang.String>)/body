@@ -1,0 +1,5 @@
+{
+  org.jooq.test.sybase.generatedclasses.functions.FAuthorExists f=new org.jooq.test.sybase.generatedclasses.functions.FAuthorExists();
+  f.setAuthorName(authorName);
+  return f.asField();
+}

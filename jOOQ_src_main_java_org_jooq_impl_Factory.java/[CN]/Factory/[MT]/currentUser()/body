@@ -1,0 +1,15 @@
+{
+switch (getDialect()) {
+case ORACLE:
+    return new Function<String>("user",SQLDataType.VARCHAR);
+case DERBY:
+case HSQLDB:
+case INGRES:
+case POSTGRES:
+case SQLSERVER:
+case SQLITE:
+case SYBASE:
+  return field("current_user",String.class);
+}
+return new Function<String>("current_user",SQLDataType.VARCHAR);
+}

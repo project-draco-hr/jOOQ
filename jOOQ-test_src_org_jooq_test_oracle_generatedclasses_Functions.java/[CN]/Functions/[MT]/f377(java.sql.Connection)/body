@@ -1,0 +1,5 @@
+{
+  org.jooq.test.oracle.generatedclasses.functions.F377 f=new org.jooq.test.oracle.generatedclasses.functions.F377();
+  f.execute(connection);
+  return f.getReturnValue();
+}

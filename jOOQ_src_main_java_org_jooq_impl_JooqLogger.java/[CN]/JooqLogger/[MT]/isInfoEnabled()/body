@@ -1,0 +1,11 @@
+{
+  if (slf4j != null) {
+    return slf4j.isInfoEnabled();
+  }
+ else   if (log4j != null) {
+    return log4j.isInfoEnabled();
+  }
+ else {
+    return util.isLoggable(Level.INFO);
+  }
+}

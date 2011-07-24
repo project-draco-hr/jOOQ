@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.util.hsqldb.information_schema.tables.Parameters.FROM_SQL_SPECIFIC_NAME);
+}

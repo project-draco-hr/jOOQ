@@ -1,0 +1,12 @@
+{
+  if (dialect == SQLDialect.SQLITE) {
+    String date=rs.getString(index);
+    if (date != null) {
+      return new Date(parse("yyyy-MM-dd",date));
+    }
+    return null;
+  }
+ else {
+    return rs.getDate(index);
+  }
+}

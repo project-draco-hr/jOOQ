@@ -1,0 +1,8 @@
+{
+  SelectQuery q=create.selectQuery();
+  q.addConditions(create.falseCondition());
+  q.addConditions(create.trueCondition());
+  assertEquals("select 1 from dual where (1 = 0 and 1 = 1)",internal(q).toSQLReference(create,true));
+  assertEquals("select 1 from dual where (1 = 0 and 1 = 1)",internal(q).toSQLReference(create,false));
+  assertEquals(q,create.select().where(create.falseCondition().and(create.trueCondition())));
+}

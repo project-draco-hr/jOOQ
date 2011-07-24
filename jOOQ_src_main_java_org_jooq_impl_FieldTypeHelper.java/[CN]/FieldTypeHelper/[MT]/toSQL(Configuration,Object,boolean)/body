@@ -1,0 +1,8 @@
+{
+  if (value == null) {
+    return toSQL(configuration,value,inlineParameters,Object.class);
+  }
+ else {
+    return toSQL(configuration,value,inlineParameters,value.getClass());
+  }
+}

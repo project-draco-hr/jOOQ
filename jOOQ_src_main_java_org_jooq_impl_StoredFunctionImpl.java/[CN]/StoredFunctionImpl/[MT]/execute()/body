@@ -1,0 +1,5 @@
+{
+  final Field<T> field=asField();
+  result=create(attachable).select(field).fetchOne(field);
+  return 0;
+}

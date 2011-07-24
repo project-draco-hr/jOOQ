@@ -1,0 +1,3 @@
+{
+  return getJavaClassName(definition) + ".java";
+}

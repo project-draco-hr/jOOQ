@@ -1,0 +1,18 @@
+{
+  R record=null;
+  if (!isClosed && rs.next()) {
+    record=JooqUtil.newRecord(type,fields,configuration);
+    final List<Field<?>> fieldList=fields.getFields();
+    final int size=fieldList.size();
+    for (int i=0; i < size; i++) {
+      setValue((AbstractRecord)record,fieldList.get(i),i + 1,rs);
+    }
+    if (log.isTraceEnabled()) {
+      log.trace("Fetching record",record);
+    }
+  }
+  if (record == null) {
+    CursorImpl.this.close();
+  }
+  return record;
+}

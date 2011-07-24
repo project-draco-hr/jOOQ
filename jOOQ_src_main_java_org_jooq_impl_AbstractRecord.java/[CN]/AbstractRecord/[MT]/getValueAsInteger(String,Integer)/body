@@ -1,0 +1,3 @@
+{
+  return getValueAsInteger(getField(fieldName),defaultValue);
+}

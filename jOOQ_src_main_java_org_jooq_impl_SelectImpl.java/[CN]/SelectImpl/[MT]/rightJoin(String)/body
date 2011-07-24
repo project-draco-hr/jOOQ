@@ -1,0 +1,3 @@
+{
+  return rightJoin(create().table(sql));
+}

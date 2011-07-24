@@ -1,0 +1,23 @@
+{
+  if (string == null) {
+    return null;
+  }
+  try {
+    Class<?> component=type.getComponentType();
+    String values=string.replaceAll("^\\{(.*)\\}$","$1");
+    if ("".equals(values)) {
+      return (Object[])java.lang.reflect.Array.newInstance(component,0);
+    }
+ else {
+      String[] split=values.split(",");
+      Object[] result=(Object[])java.lang.reflect.Array.newInstance(component,split.length);
+      for (int i=0; i < split.length; i++) {
+        result[i]=pgFromString(type.getComponentType(),split[i]);
+      }
+      return result;
+    }
+  }
+ catch (  Exception e) {
+    throw new SQLException(e);
+  }
+}

@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.examples.mysql.sakila.tables.records.StoreRecord>>asList(org.jooq.examples.mysql.sakila.Keys.KEY_store_PRIMARY,org.jooq.examples.mysql.sakila.Keys.KEY_store_idx_unique_manager);
+}

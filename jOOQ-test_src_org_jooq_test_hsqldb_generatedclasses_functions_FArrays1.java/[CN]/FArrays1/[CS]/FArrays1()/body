@@ -1,0 +1,4 @@
+{
+  super(org.jooq.SQLDialect.HSQLDB,"F_ARRAYS1",org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.INTEGER.getArrayDataType());
+  addInParameter(IN_ARRAY);
+}

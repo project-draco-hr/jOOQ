@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.examples.mysql.sakila.tables.Store.MANAGER_STAFF_ID,value);
+}

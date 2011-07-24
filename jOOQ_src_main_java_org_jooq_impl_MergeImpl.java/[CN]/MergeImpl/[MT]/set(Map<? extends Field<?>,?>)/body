@@ -1,0 +1,4 @@
+{
+  updateMap.set(map);
+  return this;
+}

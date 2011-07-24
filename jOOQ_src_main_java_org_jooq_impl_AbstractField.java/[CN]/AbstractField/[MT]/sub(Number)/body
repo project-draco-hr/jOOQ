@@ -1,0 +1,8 @@
+{
+  if (java.util.Date.class.isAssignableFrom(getType())) {
+    return new DateSub<T>(this,value);
+  }
+ else {
+    return sub(val(value));
+  }
+}

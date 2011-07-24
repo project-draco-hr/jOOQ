@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.oracle.generatedclasses.tables.TAuthor.FIRST_NAME,value);
+}

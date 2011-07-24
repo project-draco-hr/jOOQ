@@ -1,0 +1,14 @@
+{
+switch (configuration.getDialect()) {
+case DB2:
+case DERBY:
+case INGRES:
+case ORACLE:
+case SQLITE:
+case SYBASE:
+    return new Function<Integer>("length",SQLDataType.INTEGER,argument);
+case SQLSERVER:
+  return new Function<Integer>("len",SQLDataType.INTEGER,argument);
+}
+return new Function<Integer>("char_length",SQLDataType.INTEGER,argument);
+}

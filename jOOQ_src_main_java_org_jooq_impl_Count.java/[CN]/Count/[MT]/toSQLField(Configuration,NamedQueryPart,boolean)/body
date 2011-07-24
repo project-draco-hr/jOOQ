@@ -1,0 +1,7 @@
+{
+  String result=super.toSQLField(configuration,field,inlineParameters);
+  if (distinct) {
+    result="distinct " + result;
+  }
+  return result;
+}

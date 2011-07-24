@@ -1,0 +1,4 @@
+{
+  super("cosh",SQLDataType.NUMERIC,argument);
+  this.argument=argument;
+}

@@ -1,0 +1,64 @@
+{
+  reset=false;
+  Select<A> q=create().selectFrom(TAuthor()).orderBy(TAuthor_LAST_NAME());
+  q=runSerialisation(q);
+  try {
+    q.execute();
+    fail();
+  }
+ catch (  DetachedException expected) {
+  }
+  create().attach(q);
+  assertEquals(2,q.execute());
+  assertEquals("Coelho",q.getResult().getValue(0,TAuthor_LAST_NAME()));
+  assertEquals("Orwell",q.getResult().getValue(1,TAuthor_LAST_NAME()));
+  q=runSerialisation(q);
+  assertEquals("Coelho",q.getResult().getValue(0,TAuthor_LAST_NAME()));
+  assertEquals("Orwell",q.getResult().getValue(1,TAuthor_LAST_NAME()));
+  Result<A> result=q.getResult();
+  result=runSerialisation(result);
+  assertEquals("Coelho",result.getValue(0,TAuthor_LAST_NAME()));
+  assertEquals("Orwell",result.getValue(1,TAuthor_LAST_NAME()));
+  try {
+    result.get(1).setValue(TAuthor_FIRST_NAME(),"Georgie");
+    result.get(1).store();
+    fail();
+  }
+ catch (  DetachedException expected) {
+  }
+  create().attach(result);
+  assertEquals(1,result.get(1).store());
+  assertEquals("Georgie",create().fetchOne(TAuthor(),TAuthor_LAST_NAME().equal("Orwell")).getValue(TAuthor_FIRST_NAME()));
+  register(create());
+  try {
+    q=create().selectFrom(TAuthor()).orderBy(TAuthor_LAST_NAME());
+    q=runSerialisation(q);
+    q.execute();
+    result=q.getResult();
+    result=runSerialisation(result);
+    assertEquals("Coelho",result.getValue(0,TAuthor_LAST_NAME()));
+    assertEquals("Orwell",result.getValue(1,TAuthor_LAST_NAME()));
+    result.get(1).setValue(TAuthor_FIRST_NAME(),"Georgie");
+    result.get(1).store();
+  }
+  finally {
+    register(null);
+  }
+  try {
+    q=create().selectFrom(TAuthor()).orderBy(TAuthor_LAST_NAME());
+    q=runSerialisation(q);
+    register(create());
+    q.execute();
+    register(null);
+    result=q.getResult();
+    result=runSerialisation(result);
+    assertEquals("Coelho",result.getValue(0,TAuthor_LAST_NAME()));
+    assertEquals("Orwell",result.getValue(1,TAuthor_LAST_NAME()));
+    result.get(1).setValue(TAuthor_FIRST_NAME(),"G");
+    register(create());
+    result.get(1).store();
+  }
+  finally {
+    register(null);
+  }
+}

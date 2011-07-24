@@ -1,0 +1,5 @@
+{
+  context=new Mockery();
+  statement=context.mock(PreparedStatement.class);
+  create=new Factory((Connection)null,Data.DIALECT);
+}

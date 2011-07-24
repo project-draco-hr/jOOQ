@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.ingres.ingres.tables.Iicolumns.TABLE_NAME,value);
+}

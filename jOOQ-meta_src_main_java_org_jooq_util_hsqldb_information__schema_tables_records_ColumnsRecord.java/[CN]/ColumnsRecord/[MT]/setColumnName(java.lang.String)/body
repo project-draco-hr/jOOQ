@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.hsqldb.information_schema.tables.Columns.COLUMN_NAME,value);
+}

@@ -1,0 +1,17 @@
+{
+  List<T> result=new ArrayList<T>();
+  definitionLoop:   for (  TableDefinition definition : list) {
+    for (    String table : masterDataTableNames) {
+      if (definition.getName().matches(table)) {
+        if (include) {
+          result.add((T)new DefaultMasterDataTableDefinition(definition));
+        }
+        continue definitionLoop;
+      }
+    }
+    if (!include) {
+      result.add((T)definition);
+    }
+  }
+  return result;
+}

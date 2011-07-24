@@ -1,0 +1,13 @@
+{
+  try {
+    try {
+      return Long.valueOf(date);
+    }
+ catch (    NumberFormatException e) {
+      return new SimpleDateFormat(pattern).parse(date).getTime();
+    }
+  }
+ catch (  ParseException e) {
+    throw new SQLException("Could not parse date " + date,e);
+  }
+}

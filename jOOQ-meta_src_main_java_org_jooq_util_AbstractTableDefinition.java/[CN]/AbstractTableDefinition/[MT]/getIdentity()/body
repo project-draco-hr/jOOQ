@@ -1,0 +1,12 @@
+{
+  if (!identityLoaded) {
+    identityLoaded=true;
+    for (    ColumnDefinition column : getColumns()) {
+      if (column.isIdentity()) {
+        identity=column;
+        break;
+      }
+    }
+  }
+  return identity;
+}

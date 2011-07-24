@@ -1,0 +1,6 @@
+{
+  super(org.jooq.SQLDialect.MYSQL,"film_not_in_stock",org.jooq.examples.mysql.sakila.Sakila.SAKILA);
+  addInParameter(P_FILM_ID);
+  addInParameter(P_STORE_ID);
+  addOutParameter(P_FILM_COUNT);
+}

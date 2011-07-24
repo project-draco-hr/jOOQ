@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(org.jooq.examples.mysql.sakila.tables.FilmActor.FILM_ACTOR).where(org.jooq.examples.mysql.sakila.tables.FilmActor.FILM_ID.equal(getValue(org.jooq.examples.mysql.sakila.tables.Film.FILM_ID))).fetch();
+}

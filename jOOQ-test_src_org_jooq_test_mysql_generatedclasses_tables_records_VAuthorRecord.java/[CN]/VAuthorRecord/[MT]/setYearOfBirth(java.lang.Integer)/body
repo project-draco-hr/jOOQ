@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.mysql.generatedclasses.tables.VAuthor.YEAR_OF_BIRTH,value);
+}

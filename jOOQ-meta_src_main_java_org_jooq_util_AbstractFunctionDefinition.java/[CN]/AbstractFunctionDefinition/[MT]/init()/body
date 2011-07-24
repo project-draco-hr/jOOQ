@@ -1,0 +1,9 @@
+{
+  inParameters=new ArrayList<ParameterDefinition>();
+  try {
+    init0();
+  }
+ catch (  SQLException e) {
+    log.error("Error while initialising function",e);
+  }
+}

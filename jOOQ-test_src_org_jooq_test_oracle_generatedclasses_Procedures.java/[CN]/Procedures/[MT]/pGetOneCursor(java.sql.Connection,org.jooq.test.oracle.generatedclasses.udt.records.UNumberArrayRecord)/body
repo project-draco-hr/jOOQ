@@ -1,0 +1,6 @@
+{
+  org.jooq.test.oracle.generatedclasses.procedures.PGetOneCursor p=new org.jooq.test.oracle.generatedclasses.procedures.PGetOneCursor();
+  p.setBookIds(bookIds);
+  p.execute(connection);
+  return p;
+}

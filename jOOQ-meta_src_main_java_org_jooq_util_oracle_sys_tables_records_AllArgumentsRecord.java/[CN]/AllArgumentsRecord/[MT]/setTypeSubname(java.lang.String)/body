@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.oracle.sys.tables.AllArguments.TYPE_SUBNAME,value);
+}

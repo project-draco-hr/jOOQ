@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.test.oracle.generatedclasses.tables.VBook.CONTENT_PDF);
+}

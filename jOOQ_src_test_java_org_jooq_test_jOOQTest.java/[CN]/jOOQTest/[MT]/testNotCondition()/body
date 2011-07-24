@@ -1,0 +1,16 @@
+{
+  Condition c=FIELD_ID1.equal(10).not();
+  assertEquals("not(\"TABLE1\".\"ID1\" = 10)",internal(c).toSQLReference(create,true));
+  assertEquals("not(\"TABLE1\".\"ID1\" = ?)",internal(c).toSQLReference(create,false));
+  assertEquals("not(not(\"TABLE1\".\"ID1\" = 10))",internal(c.not()).toSQLReference(create,true));
+  assertEquals("not(not(\"TABLE1\".\"ID1\" = ?))",internal(c.not()).toSQLReference(create,false));
+  context.checking(new Expectations(){
+{
+      oneOf(statement).setInt(1,10);
+    }
+  }
+);
+  int i=internal(c).bindReference(create,statement);
+  assertEquals(2,i);
+  context.assertIsSatisfied();
+}

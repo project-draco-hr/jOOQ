@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.sybase.generatedclasses.Keys.t_725_lob_test_pk_t_725_lob_test;
+}

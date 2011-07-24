@@ -1,0 +1,48 @@
+{
+  if (connection == null) {
+    try {
+      String property=System.getProperty("jdbc.properties");
+      if (property == null) {
+        log.error("No system property 'jdbc.properties' found");
+        log.error("-----------");
+        log.error("Please be sure property is set; example: -Djdbc.properties=/org/jooq/configuration/${env_var:USERNAME}/db2/library.properties");
+        throw new Error();
+      }
+      InputStream in=GenerationTool.class.getResourceAsStream(property);
+      if (in == null) {
+        log.error("Cannot find " + property);
+        log.error("-----------");
+        log.error("Please be sure it is located on the classpath and qualified as a classpath location.");
+        log.error("If it is located at the current working directory, try adding a '/' to the path");
+        throw new Error();
+      }
+      Properties properties=new Properties();
+      try {
+        properties.load(in);
+      }
+  finally {
+        in.close();
+      }
+      String driver=properties.getProperty(JDBC_DRIVER);
+      jdbcURL=properties.getProperty(JDBC_URL) + getSchemaSuffix();
+      String jdbcUser=properties.getProperty(JDBC_USER);
+      String jdbcPassword=properties.getProperty(JDBC_PASSWORD);
+      jdbcSchema=properties.getProperty(JDBC_SCHEMA) + getSchemaSuffix();
+      Class.forName(driver);
+      if (StringUtils.isBlank(jdbcUser)) {
+        Properties p=new Properties();
+        if (getClass().getSimpleName().toLowerCase().contains("ingres")) {
+          p.setProperty("timezone","EUROPE-CENTRAL");
+        }
+        connection=DriverManager.getConnection(getJdbcURL(),p);
+      }
+ else {
+        connection=DriverManager.getConnection(getJdbcURL(),jdbcUser,jdbcPassword);
+      }
+    }
+ catch (    Exception e) {
+      throw new Error(e);
+    }
+  }
+  return connection;
+}

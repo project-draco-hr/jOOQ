@@ -1,0 +1,15 @@
+{
+  String[] split=params.split(",");
+  for (int i=0; i < split.length; i++) {
+    String param=split[i];
+    param=param.trim();
+    Matcher matcher=PARAMETER_PATTERN.matcher(param);
+    while (matcher.find()) {
+      getInParameters().add(createParameter(matcher,3,i + 1));
+    }
+  }
+  Matcher matcher=TYPE_PATTERN.matcher(returns);
+  if (matcher.find()) {
+    returnValue=createParameter(matcher,0,-1);
+  }
+}

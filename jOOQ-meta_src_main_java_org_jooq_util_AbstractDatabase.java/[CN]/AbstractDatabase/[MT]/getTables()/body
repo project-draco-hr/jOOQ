@@ -1,0 +1,14 @@
+{
+  if (tables == null) {
+    tables=new ArrayList<TableDefinition>();
+    try {
+      List<TableDefinition> t=filterMasterDataTables(getTables0(),false);
+      tables=filterExcludeInclude(t);
+      log.info("Tables fetched",fetchedSize(t,tables));
+    }
+ catch (    Exception e) {
+      log.error("Error while fetching tables",e);
+    }
+  }
+  return tables;
+}

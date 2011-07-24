@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.ingres.ingres.tables.IiindexColumns.INDEX_OWNER,value);
+}

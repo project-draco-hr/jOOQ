@@ -1,0 +1,7 @@
+{
+  if (value == null) {
+    addValueForUpdate(field,(Object)value);
+    return;
+  }
+  updateMap.put(field,value);
+}

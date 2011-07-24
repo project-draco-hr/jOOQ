@@ -1,0 +1,3 @@
+{
+  return asTable().getField(index);
+}

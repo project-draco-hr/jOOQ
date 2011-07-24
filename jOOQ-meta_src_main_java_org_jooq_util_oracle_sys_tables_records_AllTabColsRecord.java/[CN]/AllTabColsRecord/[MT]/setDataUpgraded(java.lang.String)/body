@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.oracle.sys.tables.AllTabCols.DATA_UPGRADED,value);
+}

@@ -1,0 +1,3 @@
+SQLDataType<T> sqlDataType
+String typeName
+boolean hasPrecisionAndScale

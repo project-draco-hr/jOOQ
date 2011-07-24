@@ -1,0 +1,3 @@
+{
+  return filterOne(selectFrom(table).limit(1).fetch());
+}

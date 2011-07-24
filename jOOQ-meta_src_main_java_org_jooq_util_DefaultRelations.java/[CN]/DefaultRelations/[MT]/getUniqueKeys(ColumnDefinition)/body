@@ -1,0 +1,12 @@
+{
+  if (!uniqueKeysByColumn.containsKey(column)) {
+    List<UniqueKeyDefinition> list=new ArrayList<UniqueKeyDefinition>();
+    for (    UniqueKeyDefinition uniqueKey : uniqueKeys.values()) {
+      if (uniqueKey.getKeyColumns().contains(column)) {
+        list.add(uniqueKey);
+      }
+    }
+    uniqueKeysByColumn.put(column,list);
+  }
+  return uniqueKeysByColumn.get(column);
+}

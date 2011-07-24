@@ -1,0 +1,3 @@
+{
+  super("film_text",org.jooq.examples.mysql.sakila.Sakila.SAKILA);
+}

@@ -1,0 +1,873 @@
+{
+  StopWatch watch=new StopWatch();
+  log.info("Database parameters");
+  log.info("----------------------------------------------------------");
+  log.info("  dialect",database.getDialect());
+  log.info("  schema",database.getSchemaName());
+  log.info("  target dir",getTargetDirectory());
+  log.info("  target package",getTargetPackage());
+  log.info("----------------------------------------------------------");
+  String targetPackage=getTargetPackage();
+  File targetPackageDir=new File(getTargetDirectory() + File.separator + targetPackage.replace('.',File.separatorChar));
+  log.info("Emptying",targetPackageDir.getCanonicalPath());
+  empty(targetPackageDir);
+  log.info("Generating classes in",targetPackageDir.getCanonicalPath());
+  SchemaDefinition schema=database.getSchema();
+  GenerationWriter outS=null;
+  GenerationWriter outF=null;
+  if (!schema.isDefaultSchema()) {
+    targetPackageDir.mkdirs();
+    log.info("Generating schema",strategy.getFileName(schema));
+    outS=new GenerationWriter(new PrintWriter(new File(targetPackageDir,strategy.getFileName(schema))));
+    printHeader(outS,targetPackage);
+    printClassJavadoc(outS,schema);
+    outS.print("public class ");
+    outS.print(strategy.getJavaClassName(schema));
+    outS.print(" extends ");
+    outS.print(SchemaImpl.class);
+    outS.println(" {");
+    outS.printSerial();
+    outS.println();
+    outS.println("\t/**");
+    outS.println("\t * The singleton instance of " + schema.getName());
+    outS.println("\t */");
+    outS.println("\tpublic static final " + strategy.getJavaClassName(schema) + " "+ strategy.getJavaIdentifierUC(schema)+ " = new "+ strategy.getJavaClassName(schema)+ "();");
+    outS.println();
+    printNoFurtherInstancesAllowedJavadoc(outS);
+    outS.println("\tprivate " + strategy.getJavaClassName(schema) + "() {");
+    outS.println("\t\tsuper(\"" + schema.getName() + "\");");
+    outS.println("\t}");
+    outS.printInitialisationStatementsPlaceholder();
+    log.info("Generating factory",strategy.getFileName(schema,"Factory"));
+    outF=new GenerationWriter(new PrintWriter(new File(targetPackageDir,strategy.getFileName(schema,"Factory"))));
+    printHeader(outF,targetPackage);
+    printClassJavadoc(outF,schema);
+    outF.print("public class ");
+    outF.print(strategy.getJavaClassName(schema,"Factory"));
+    outF.print(" extends ");
+    outF.print(database.getDialect().getFactory());
+    outF.println(" {");
+    outF.printSerial();
+    outF.println();
+    outF.println("\t/**");
+    outF.println("\t * Create a factory with a connection");
+    outF.println("\t *");
+    outF.println("\t * @param connection The connection to use with objects created from this factory");
+    outF.println("\t */");
+    outF.print("\tpublic ");
+    outF.print(strategy.getJavaClassName(schema,"Factory"));
+    outF.print("(");
+    outF.print(Connection.class);
+    outF.println(" connection) {");
+    outF.println("\t\tsuper(connection);");
+    outF.println("\t}");
+    outF.println();
+    outF.println("\t/**");
+    outF.println("\t * Create a factory with a connection and a schema mapping");
+    outF.println("\t *");
+    outF.println("\t * @param connection The connection to use with objects created from this factory");
+    outF.println("\t * @param mapping The schema mapping to use with objects created from this factory");
+    outF.println("\t */");
+    outF.print("\tpublic ");
+    outF.print(strategy.getJavaClassName(schema,"Factory"));
+    outF.print("(");
+    outF.print(Connection.class);
+    outF.print(" connection, ");
+    outF.print(SchemaMapping.class);
+    outF.println(" mapping) {");
+    outF.println("\t\tsuper(connection, mapping);");
+    outF.println("\t}");
+    watch.splitInfo("Schema generated");
+  }
+  if (database.getSequences().size() > 0) {
+    log.info("Generating sequences",targetPackageDir.getCanonicalPath());
+    targetPackageDir.mkdirs();
+    GenerationWriter out=new GenerationWriter(new PrintWriter(new File(targetPackageDir,"Sequences.java")));
+    printHeader(out,targetPackage);
+    printClassJavadoc(out,"Convenience access to all sequences in " + schema.getName());
+    out.println("public final class Sequences {");
+    for (    SequenceDefinition sequence : database.getSequences()) {
+      out.println();
+      out.println("\t/**");
+      out.println("\t * The sequence " + sequence.getQualifiedName());
+      out.println("\t */");
+      out.print("\tpublic static final ");
+      out.print(Sequence.class);
+      out.print(" ");
+      out.print(strategy.getJavaIdentifierUC(sequence));
+      out.print(" = new ");
+      out.print(SequenceImpl.class);
+      out.print("(\"");
+      out.print(sequence.getName());
+      out.print("\"");
+      if (!schema.isDefaultSchema()) {
+        out.print(", ");
+        out.print(strategy.getFullJavaIdentifierUC(schema));
+      }
+ else {
+        out.print(", null");
+      }
+      out.println(");");
+    }
+    printPrivateConstructor(out,"Sequences");
+    out.println("}");
+    out.close();
+    registerInSchema(outS,database.getSequences(),Sequence.class,false);
+    watch.splitInfo("Sequences generated");
+  }
+  File targetMasterDataTablePackageDir=new File(targetPackageDir,"enums");
+  if (database.getMasterDataTables().size() > 0) {
+    log.info("Generating master data",targetMasterDataTablePackageDir.getCanonicalPath());
+    for (    MasterDataTableDefinition table : database.getMasterDataTables()) {
+      try {
+        targetMasterDataTablePackageDir.mkdirs();
+        log.info("Generating table",strategy.getFileName(table));
+        GenerationWriter out=new GenerationWriter(new PrintWriter(new File(targetMasterDataTablePackageDir,strategy.getFileName(table))));
+        printHeader(out,targetPackage + ".enums");
+        printClassJavadoc(out,table);
+        ColumnDefinition pk=table.getPrimaryKeyColumn();
+        ColumnDefinition l=table.getLiteralColumn();
+        ColumnDefinition d=table.getDescriptionColumn();
+        Result<Record> data=table.getData();
+        out.print("public enum ");
+        out.print(strategy.getJavaClassName(table));
+        out.print(" implements ");
+        out.print(MasterDataType.class);
+        out.print("<");
+        out.print(data.getField(pk.getName()).getType());
+        out.println("> {");
+        Set<ColumnDefinition> columns=new LinkedHashSet<ColumnDefinition>(Arrays.asList(pk,l,d));
+        for (        Record record : data) {
+          String literal=record.getValueAsString(l.getName());
+          String description=record.getValueAsString(d.getName());
+          if (!StringUtils.isEmpty(description)) {
+            out.println();
+            out.println("\t/**");
+            out.println("\t * " + description);
+            out.println("\t */");
+          }
+          out.print("\t");
+          out.print(GenerationUtil.convertToJavaIdentifier(literal));
+          out.print("(");
+          String separator="";
+          for (          ColumnDefinition column : columns) {
+            out.print(separator);
+            out.printNewJavaObject(record.getValue(column.getName()));
+            separator=", ";
+          }
+          out.println("),");
+        }
+        out.println("\t;");
+        out.println();
+        for (        ColumnDefinition column : columns) {
+          out.print("\tprivate final ");
+          out.print(data.getField(column.getName()).getType());
+          out.print(" ");
+          out.println(strategy.getJavaClassNameLC(column) + ";");
+        }
+        out.println();
+        out.print("\tprivate " + strategy.getJavaClassName(table) + "(");
+        String separator="";
+        for (        ColumnDefinition column : columns) {
+          out.print(separator);
+          out.print(data.getField(column.getName()).getType());
+          out.print(" ");
+          out.print(strategy.getJavaClassNameLC(column));
+          separator=", ";
+        }
+        out.println(") {");
+        for (        ColumnDefinition column : columns) {
+          out.print("\t\tthis.");
+          out.print(strategy.getJavaClassNameLC(column));
+          out.print(" = ");
+          out.print(strategy.getJavaClassNameLC(column));
+          out.println(";");
+        }
+        out.println("\t}");
+        out.println();
+        printOverride(out);
+        out.print("\tpublic ");
+        out.print(data.getField(pk.getName()).getType());
+        out.println(" getPrimaryKey() {");
+        out.println("\t\treturn " + strategy.getJavaClassNameLC(pk) + ";");
+        out.println("\t}");
+        for (        ColumnDefinition column : columns) {
+          printFieldJavaDoc(out,"",column);
+          out.print("\tpublic final ");
+          out.print(data.getField(column.getName()).getType());
+          out.print(" get");
+          out.print(strategy.getJavaClassName(column));
+          out.println("() {");
+          out.print("\t\treturn ");
+          out.print(strategy.getJavaClassNameLC(column));
+          out.println(";");
+          out.println("\t}");
+        }
+        out.println("}");
+        out.close();
+      }
+ catch (      Exception e) {
+        log.error("Exception while generating master data table " + table,e);
+      }
+    }
+    watch.splitInfo("Master data generated");
+  }
+  File targetTablePackageDir=new File(targetPackageDir,"tables");
+  if (database.getTables().size() > 0) {
+    log.info("Generating tables",targetTablePackageDir.getCanonicalPath());
+    for (    TableDefinition table : database.getTables()) {
+      try {
+        targetTablePackageDir.mkdirs();
+        log.info("Generating table",strategy.getFileName(table));
+        GenerationWriter out=new GenerationWriter(new PrintWriter(new File(targetTablePackageDir,strategy.getFileName(table))));
+        printHeader(out,targetPackage + ".tables");
+        printClassJavadoc(out,table);
+        Class<?> baseClass;
+        if (generateRelations() && table.getMainUniqueKey() != null) {
+          baseClass=UpdatableTableImpl.class;
+        }
+ else {
+          baseClass=TableImpl.class;
+        }
+        out.print("public class ");
+        out.print(strategy.getJavaClassName(table));
+        out.print(" extends ");
+        out.print(baseClass);
+        out.print("<");
+        out.print(strategy.getFullJavaClassName(table,"Record"));
+        out.println("> {");
+        out.printSerial();
+        printSingletonInstance(table,out);
+        printRecordTypeMethod(table,out);
+        for (        ColumnDefinition column : table.getColumns()) {
+          printTableColumn(out,column,table);
+        }
+        out.println();
+        printNoFurtherInstancesAllowedJavadoc(out);
+        out.println("\tprivate " + strategy.getJavaClassName(table) + "() {");
+        if (!schema.isDefaultSchema()) {
+          out.println("\t\tsuper(\"" + table.getName() + "\", "+ strategy.getFullJavaIdentifierUC(schema)+ ");");
+        }
+ else {
+          out.println("\t\tsuper(\"" + table.getName() + "\");");
+        }
+        out.println("\t}");
+        if (generateRelations()) {
+          ColumnDefinition identity=table.getIdentity();
+          if (identity != null) {
+            out.println();
+            out.println("\t@Override");
+            out.print("\tpublic ");
+            out.print(Identity.class);
+            out.print("<");
+            out.print(strategy.getFullJavaClassName(table,"Record"));
+            out.print(", ");
+            out.print(getJavaType(table.getIdentity().getType()));
+            out.println("> getIdentity() {");
+            out.print("\t\treturn ");
+            out.print(strategy.getTargetPackage());
+            out.print(".Keys.IDENTITY_");
+            out.print(strategy.getJavaIdentifier(identity.getContainer()));
+            out.println(";");
+            out.println("\t}");
+          }
+          UniqueKeyDefinition mainKey=table.getMainUniqueKey();
+          if (mainKey != null) {
+            out.println();
+            out.println("\t@Override");
+            out.print("\tpublic ");
+            out.print(UniqueKey.class);
+            out.print("<");
+            out.print(strategy.getFullJavaClassName(table,"Record"));
+            out.println("> getMainKey() {");
+            out.print("\t\treturn ");
+            out.print(strategy.getTargetPackage());
+            out.print(".Keys.");
+            out.print(strategy.getJavaIdentifier(mainKey));
+            out.println(";");
+            out.println("\t}");
+          }
+          List<UniqueKeyDefinition> uniqueKeys=table.getUniqueKeys();
+          if (uniqueKeys.size() > 0) {
+            out.println();
+            out.println("\t@Override");
+            out.println("\t@SuppressWarnings(\"unchecked\")");
+            out.print("\tpublic ");
+            out.print(List.class);
+            out.print("<");
+            out.print(UniqueKey.class);
+            out.print("<");
+            out.print(strategy.getFullJavaClassName(table,"Record"));
+            out.println(">> getKeys() {");
+            out.print("\t\treturn ");
+            out.print(Arrays.class);
+            out.print(".<");
+            out.print(UniqueKey.class);
+            out.print("<");
+            out.print(strategy.getFullJavaClassName(table,"Record"));
+            out.print(">>asList(");
+            String separator="";
+            for (            UniqueKeyDefinition uniqueKey : uniqueKeys) {
+              out.print(separator);
+              out.print(strategy.getTargetPackage());
+              out.print(".Keys.");
+              out.print(strategy.getJavaIdentifier(uniqueKey));
+              separator=", ";
+            }
+            out.println(");");
+            out.println("\t}");
+          }
+          List<ForeignKeyDefinition> foreignKeys=table.getForeignKeys();
+          if (foreignKeys.size() > 0) {
+            out.println();
+            out.println("\t@Override");
+            out.println("\t@SuppressWarnings(\"unchecked\")");
+            out.print("\tpublic ");
+            out.print(List.class);
+            out.print("<");
+            out.print(ForeignKey.class);
+            out.print("<");
+            out.print(strategy.getFullJavaClassName(table,"Record"));
+            out.println(", ?>> getReferences() {");
+            out.print("\t\treturn ");
+            out.print(Arrays.class);
+            out.print(".<");
+            out.print(ForeignKey.class);
+            out.print("<");
+            out.print(strategy.getFullJavaClassName(table,"Record"));
+            out.print(", ?>>asList(");
+            String separator="";
+            for (            ForeignKeyDefinition foreignKey : foreignKeys) {
+              TableDefinition referencedTable=foreignKey.getReferencedTable();
+              if (referencedTable instanceof MasterDataTableDefinition) {
+                continue;
+              }
+              out.print(separator);
+              out.print(strategy.getTargetPackage());
+              out.print(".Keys.");
+              out.print(strategy.getJavaIdentifier(foreignKey));
+              separator=", ";
+            }
+            out.println(");");
+            out.println("\t}");
+          }
+        }
+        out.printStaticInitialisationStatementsPlaceholder();
+        out.println("}");
+        out.close();
+      }
+ catch (      Exception e) {
+        log.error("Error while generating table " + table,e);
+      }
+    }
+    registerInSchema(outS,database.getTables(),Table.class,true);
+    watch.splitInfo("Tables generated");
+  }
+  if (generateRelations() && database.getTables().size() > 0) {
+    log.info("Generating Keys",targetTablePackageDir.getCanonicalPath());
+    targetPackageDir.mkdirs();
+    GenerationWriter out=new GenerationWriter(new PrintWriter(new File(targetPackageDir,"Keys.java")));
+    printHeader(out,targetPackage);
+    printClassJavadoc(out,"A class modelling foreign key relationships between tables of the " + schema.getName() + " schema");
+    out.suppressWarnings("unchecked");
+    out.print("public class Keys extends ");
+    out.print(AbstractKeys.class);
+    out.println(" {");
+    out.println();
+    out.println("\t// IDENTITY definitions");
+    for (    TableDefinition table : database.getTables()) {
+      try {
+        ColumnDefinition identity=table.getIdentity();
+        if (identity != null) {
+          out.print("\tpublic static final ");
+          out.print(Identity.class);
+          out.print("<");
+          out.print(strategy.getFullJavaClassName(identity.getContainer(),"Record"));
+          out.print(", ");
+          out.print(getJavaType(identity.getType()));
+          out.print("> IDENTITY_");
+          out.print(strategy.getJavaIdentifier(identity.getContainer()));
+          out.print(" = createIdentity(");
+          out.print(strategy.getFullJavaIdentifierUC(identity.getContainer()));
+          out.print(", ");
+          out.print(strategy.getFullJavaIdentifierUC(identity));
+          out.println(");");
+        }
+      }
+ catch (      Exception e) {
+        log.error("Error while generating table " + table,e);
+      }
+    }
+    out.println();
+    out.println("\t// UNIQUE and PRIMARY KEY definitions");
+    for (    TableDefinition table : database.getTables()) {
+      try {
+        List<UniqueKeyDefinition> uniqueKeys=table.getUniqueKeys();
+        if (uniqueKeys.size() > 0) {
+          for (          UniqueKeyDefinition uniqueKey : uniqueKeys) {
+            out.print("\tpublic static final ");
+            out.print(UniqueKey.class);
+            out.print("<");
+            out.print(strategy.getFullJavaClassName(uniqueKey.getTable(),"Record"));
+            out.print("> ");
+            out.print(strategy.getJavaIdentifier(uniqueKey));
+            out.print(" = createUniqueKey(");
+            out.print(strategy.getFullJavaIdentifierUC(uniqueKey.getTable()));
+            out.print(", ");
+            String separator="";
+            for (            ColumnDefinition column : uniqueKey.getKeyColumns()) {
+              out.print(separator);
+              out.print(strategy.getFullJavaIdentifierUC(column));
+              separator=", ";
+            }
+            out.println(");");
+          }
+        }
+      }
+ catch (      Exception e) {
+        log.error("Error while generating table " + table,e);
+      }
+    }
+    out.println();
+    out.println("\t// FOREIGN KEY definitions");
+    for (    TableDefinition table : database.getTables()) {
+      try {
+        List<ForeignKeyDefinition> foreignKeys=table.getForeignKeys();
+        if (foreignKeys.size() > 0) {
+          for (          ForeignKeyDefinition foreignKey : foreignKeys) {
+            if (foreignKey.getReferencedTable() instanceof MasterDataTableDefinition) {
+              continue;
+            }
+            out.print("\tpublic static final ");
+            out.print(ForeignKey.class);
+            out.print("<");
+            out.print(strategy.getFullJavaClassName(foreignKey.getKeyTable(),"Record"));
+            out.print(", ");
+            out.print(strategy.getFullJavaClassName(foreignKey.getReferencedTable(),"Record"));
+            out.print("> ");
+            out.print(strategy.getJavaIdentifier(foreignKey));
+            out.print(" = createForeignKey(");
+            out.print(strategy.getJavaIdentifier(foreignKey.getReferencedKey()));
+            out.print(", ");
+            out.print(strategy.getFullJavaIdentifierUC(foreignKey.getKeyTable()));
+            out.print(", ");
+            String separator="";
+            for (            ColumnDefinition column : foreignKey.getKeyColumns()) {
+              out.print(separator);
+              out.print(strategy.getFullJavaIdentifierUC(column));
+              separator=", ";
+            }
+            out.println(");");
+          }
+        }
+      }
+ catch (      Exception e) {
+        log.error("Error while generating reference " + table,e);
+      }
+    }
+    printPrivateConstructor(out,"Keys");
+    out.println("}");
+    out.close();
+    watch.splitInfo("Keys generated");
+  }
+  File targetTableRecordPackageDir=new File(new File(targetPackageDir,"tables"),"records");
+  if (database.getTables().size() > 0) {
+    log.info("Generating records",targetTableRecordPackageDir.getCanonicalPath());
+    for (    TableDefinition table : database.getTables()) {
+      try {
+        targetTableRecordPackageDir.mkdirs();
+        log.info("Generating record",strategy.getFileName(table,"Record"));
+        GenerationWriter out=new GenerationWriter(new PrintWriter(new File(targetTableRecordPackageDir,strategy.getFileName(table,"Record"))));
+        printHeader(out,targetPackage + ".tables.records");
+        printClassJavadoc(out,table);
+        Class<?> baseClass;
+        Set<String> reserved;
+        if (generateRelations() && table.getMainUniqueKey() != null) {
+          baseClass=UpdatableRecordImpl.class;
+          reserved=reservedColumns(UpdatableRecordImpl.class);
+        }
+ else {
+          baseClass=TableRecordImpl.class;
+          reserved=reservedColumns(TableRecordImpl.class);
+        }
+        out.print("public class ");
+        out.print(strategy.getJavaClassName(table,"Record"));
+        out.print(" extends ");
+        out.print(baseClass);
+        out.print("<");
+        out.print(strategy.getFullJavaClassName(table,"Record"));
+        out.println("> {");
+        out.printSerial();
+        for (        ColumnDefinition column : table.getColumns()) {
+          printGetterAndSetter(out,column,table,reserved);
+        }
+        out.println();
+        out.println("\t/**");
+        out.println("\t * Create a detached " + strategy.getJavaClassName(table,"Record"));
+        out.println("\t */");
+        out.println("\tpublic " + strategy.getJavaClassName(table,"Record") + "() {");
+        out.print("\t\tsuper(");
+        out.print(strategy.getFullJavaIdentifierUC(table));
+        out.println(");");
+        out.println("\t}");
+        if (TableRecordImpl.class != baseClass || generateDeprecated()) {
+          out.println();
+          out.println("\t/**");
+          out.println("\t * Create an attached " + strategy.getJavaClassName(table,"Record"));
+          if (TableRecordImpl.class == baseClass) {
+            out.println("\t * @deprecated - (#363) use the other constructor instead");
+          }
+          out.println("\t */");
+          if (TableRecordImpl.class == baseClass) {
+            out.println("\t@Deprecated");
+          }
+          out.print("\tpublic ");
+          out.print(strategy.getJavaClassName(table,"Record"));
+          out.print("(");
+          out.print(Configuration.class);
+          out.println(" configuration) {");
+          out.print("\t\tsuper(");
+          out.print(strategy.getFullJavaIdentifierUC(table));
+          out.println(", configuration);");
+          out.println("\t}");
+        }
+        out.println("}");
+        out.close();
+      }
+ catch (      Exception e) {
+        log.error("Error while generating table record " + table,e);
+      }
+    }
+    watch.splitInfo("Table records generated");
+  }
+  File targetUDTPackageDir=new File(targetPackageDir,"udt");
+  if (database.getUDTs().size() > 0) {
+    log.info("Generating UDTs",targetUDTPackageDir.getCanonicalPath());
+    for (    UDTDefinition udt : database.getUDTs()) {
+      try {
+        targetUDTPackageDir.mkdirs();
+        log.info("Generating UDT ",strategy.getFileName(udt));
+        GenerationWriter out=new GenerationWriter(new PrintWriter(new File(targetUDTPackageDir,strategy.getFileName(udt))));
+        printHeader(out,targetPackage + ".udt");
+        printClassJavadoc(out,udt);
+        out.print("public class ");
+        out.print(strategy.getJavaClassName(udt));
+        out.print(" extends ");
+        out.print(UDTImpl.class);
+        out.print("<");
+        out.print(strategy.getFullJavaClassName(udt,"Record"));
+        out.println("> {");
+        out.printSerial();
+        printSingletonInstance(udt,out);
+        printRecordTypeMethod(udt,out);
+        for (        AttributeDefinition attribute : udt.getAttributes()) {
+          printUDTColumn(out,attribute,udt);
+        }
+        out.println();
+        printNoFurtherInstancesAllowedJavadoc(out);
+        out.println("\tprivate " + strategy.getJavaClassName(udt) + "() {");
+        if (!schema.isDefaultSchema()) {
+          out.println("\t\tsuper(\"" + udt.getName() + "\", "+ strategy.getFullJavaIdentifierUC(schema)+ ");");
+        }
+ else {
+          out.println("\t\tsuper(\"" + udt.getName() + "\");");
+        }
+        out.println("\t}");
+        out.println("}");
+        out.close();
+        if (outS != null) {
+          outS.printInitialisationStatement("addMapping(\"" + schema.getName() + "."+ udt.getName()+ "\", "+ strategy.getFullJavaClassName(udt,"Record")+ ".class);");
+        }
+      }
+ catch (      Exception e) {
+        log.error("Error while generating udt " + udt,e);
+      }
+    }
+    registerInSchema(outS,database.getUDTs(),UDT.class,true);
+    watch.splitInfo("UDTs generated");
+  }
+  File targetRecordUDTPackageDir=new File(new File(targetPackageDir,"udt"),"records");
+  if (database.getUDTs().size() > 0) {
+    log.info("Generating UDT records",targetRecordUDTPackageDir.getCanonicalPath());
+    for (    UDTDefinition udt : database.getUDTs()) {
+      try {
+        targetRecordUDTPackageDir.mkdirs();
+        log.info("Generating UDT record",strategy.getFileName(udt,"Record"));
+        GenerationWriter out=new GenerationWriter(new PrintWriter(new File(targetRecordUDTPackageDir,strategy.getFileName(udt,"Record"))));
+        printHeader(out,targetPackage + ".udt.records");
+        printClassJavadoc(out,udt);
+        out.print("public class ");
+        out.print(strategy.getJavaClassName(udt,"Record"));
+        out.print(" extends ");
+        out.print(UDTRecordImpl.class);
+        out.print("<");
+        out.print(strategy.getFullJavaClassName(udt,"Record"));
+        out.println("> {");
+        Set<String> reserved=reservedColumns(UDTRecordImpl.class);
+        out.printSerial();
+        out.println();
+        for (        AttributeDefinition attribute : udt.getAttributes()) {
+          printGetterAndSetter(out,attribute,udt,reserved);
+        }
+        out.println();
+        out.println("\tpublic " + strategy.getJavaClassName(udt,"Record") + "() {");
+        out.print("\t\tsuper(");
+        out.print(strategy.getFullJavaIdentifierUC(udt));
+        out.println(");");
+        out.println("\t}");
+        out.println("}");
+        out.close();
+      }
+ catch (      Exception e) {
+        log.error("Error while generating UDT record " + udt,e);
+      }
+    }
+    watch.splitInfo("UDT records generated");
+  }
+  File targetRecordARRAYPackageDir=new File(new File(targetPackageDir,"udt"),"records");
+  if (database.getArrays().size() > 0) {
+    log.info("Generating ARRAYs",targetRecordARRAYPackageDir.getCanonicalPath());
+    for (    ArrayDefinition array : database.getArrays()) {
+      try {
+        targetRecordARRAYPackageDir.mkdirs();
+        log.info("Generating ARRAY",strategy.getFileName(array,"Record"));
+        GenerationWriter out=new GenerationWriter(new PrintWriter(new File(targetRecordARRAYPackageDir,strategy.getFileName(array,"Record"))));
+        printHeader(out,targetPackage + ".udt.records");
+        printClassJavadoc(out,array);
+        out.print("public class ");
+        out.print(strategy.getJavaClassName(array,"Record"));
+        out.print(" extends ");
+        out.print(ArrayRecordImpl.class);
+        out.print("<");
+        out.print(getJavaType(array.getElementType()));
+        out.println("> {");
+        out.printSerial();
+        out.println();
+        out.print("\tpublic ");
+        out.print(strategy.getJavaClassName(array,"Record"));
+        out.print("(");
+        out.print(Configuration.class);
+        out.println(" configuration) {");
+        out.print("\t\tsuper(\"");
+        out.print(array.getSchemaName());
+        out.print(".");
+        out.print(array.getName());
+        out.print("\", ");
+        out.print(getJavaTypeReference(database,array.getElementType()));
+        out.println(", configuration);");
+        out.println("\t}");
+        out.println();
+        out.print("\tpublic ");
+        out.print(strategy.getJavaClassName(array,"Record"));
+        out.print("(");
+        out.print(Configuration.class);
+        out.print(" configuration, ");
+        out.print(getJavaType(array.getElementType()));
+        out.print("... array");
+        out.println(") {");
+        out.println("\t\tthis(configuration);");
+        out.println("\t\tset(array);");
+        out.println("\t}");
+        out.println();
+        out.print("\tpublic ");
+        out.print(strategy.getJavaClassName(array,"Record"));
+        out.print("(");
+        out.print(Configuration.class);
+        out.print(" configuration, ");
+        out.print(List.class);
+        out.print("<? extends ");
+        out.print(getJavaType(array.getElementType()));
+        out.print("> list");
+        out.println(") {");
+        out.println("\t\tthis(configuration);");
+        out.println("\t\tsetList(list);");
+        out.println("\t}");
+        out.println("}");
+        out.close();
+      }
+ catch (      Exception e) {
+        log.error("Error while generating ARRAY record " + array,e);
+      }
+    }
+    watch.splitInfo("ARRAYs generated");
+  }
+  File targetEnumPackageDir=new File(targetPackageDir,"enums");
+  if (database.getEnums().size() > 0) {
+    log.info("Generating ENUMs",targetEnumPackageDir.getCanonicalPath());
+    for (    EnumDefinition e : database.getEnums()) {
+      try {
+        targetEnumPackageDir.mkdirs();
+        log.info("Generating ENUM",strategy.getFileName(e));
+        GenerationWriter out=new GenerationWriter(new PrintWriter(new File(targetEnumPackageDir,strategy.getFileName(e))));
+        printHeader(out,targetPackage + ".enums");
+        printClassJavadoc(out,e);
+        out.print("public enum ");
+        out.print(strategy.getJavaClassName(e));
+        out.print(" implements ");
+        out.print(EnumType.class);
+        out.print(" {");
+        out.println();
+        for (        String literal : e.getLiterals()) {
+          out.println("\t" + GenerationUtil.convertToJavaIdentifier(literal) + "(\""+ literal+ "\"),");
+          out.println();
+        }
+        out.println("\t;");
+        out.println();
+        out.println("\tprivate final java.lang.String literal;");
+        out.println();
+        out.println("\tprivate " + strategy.getJavaClassName(e) + "(java.lang.String literal) {");
+        out.println("\t\tthis.literal = literal;");
+        out.println("\t}");
+        out.println();
+        out.println("\t@Override");
+        out.println("\tpublic java.lang.String getName() {");
+        out.println("\t\treturn \"" + e.getName() + "\";");
+        out.println("\t}");
+        out.println();
+        out.println("\t@Override");
+        out.println("\tpublic java.lang.String getLiteral() {");
+        out.println("\t\treturn literal;");
+        out.println("\t}");
+        out.println("}");
+        out.close();
+      }
+ catch (      Exception ex) {
+        log.error("Error while generating enum " + e,ex);
+      }
+    }
+    watch.splitInfo("Enums generated");
+  }
+  if (database.getProcedures().size() > 0) {
+    File targetProcedurePackageDir=new File(targetPackageDir,"procedures");
+    log.info("Generating procedures",targetProcedurePackageDir.getCanonicalPath());
+    GenerationWriter outP=new GenerationWriter(new PrintWriter(new File(targetPackageDir,"Procedures.java")));
+    printHeader(outP,targetPackage);
+    printClassJavadoc(outP,"Convenience access to all stored procedures in " + schema.getName());
+    outP.println("public final class Procedures {");
+    for (    ProcedureDefinition procedure : database.getProcedures()) {
+      try {
+        printProcedure(database,schema,procedure);
+        printConvenienceMethodProcedure(outP,procedure);
+      }
+ catch (      Exception e) {
+        log.error("Error while generating procedure " + procedure,e);
+      }
+    }
+    printPrivateConstructor(outP,"Procedures");
+    outP.println("}");
+    outP.close();
+    watch.splitInfo("Procedures generated");
+  }
+  if (database.getFunctions().size() > 0) {
+    File targetFunctionPackageDir=new File(targetPackageDir,"functions");
+    log.info("Generating functions",targetFunctionPackageDir.getCanonicalPath());
+    GenerationWriter outFn=new GenerationWriter(new PrintWriter(new File(targetPackageDir,"Functions.java")));
+    printHeader(outFn,targetPackage);
+    printClassJavadoc(outFn,"Convenience access to all stored functions in " + schema.getName());
+    outFn.println("public final class Functions {");
+    for (    FunctionDefinition function : database.getFunctions()) {
+      try {
+        printFunction(database,schema,function);
+        printConvenienceMethodFunction(outFn,function);
+        printConvenienceMethodFunctionAsField(outFn,function,false);
+        printConvenienceMethodFunctionAsField(outFn,function,true);
+      }
+ catch (      Exception e) {
+        log.error("Error while generating function " + function,e);
+      }
+    }
+    printPrivateConstructor(outFn,"Functions");
+    outFn.println("}");
+    outFn.close();
+    watch.splitInfo("Functions generated");
+  }
+  File targetPackagesPackageDir=new File(targetPackageDir,"packages");
+  if (database.getPackages().size() > 0) {
+    log.info("Generating packages",targetPackagesPackageDir.getCanonicalPath());
+    for (    PackageDefinition pkg : database.getPackages()) {
+      try {
+        File targetPackagePackageDir=new File(targetPackagesPackageDir,strategy.getJavaClassName(pkg).toLowerCase());
+        log.info("Generating package",targetPackagePackageDir.getCanonicalPath());
+        for (        ProcedureDefinition procedure : pkg.getProcedures()) {
+          targetPackagePackageDir.mkdirs();
+          try {
+            printProcedure(database,schema,procedure);
+          }
+ catch (          Exception e) {
+            log.error("Error while generating procedure " + procedure,e);
+          }
+        }
+        for (        FunctionDefinition function : pkg.getFunctions()) {
+          targetPackagePackageDir.mkdirs();
+          try {
+            printFunction(database,schema,function);
+          }
+ catch (          Exception e) {
+            log.error("Error while generating function " + function,e);
+          }
+        }
+        GenerationWriter outPkg=new GenerationWriter(new PrintWriter(new File(targetPackagesPackageDir,strategy.getFileName(pkg))));
+        printHeader(outPkg,targetPackage + ".packages");
+        printClassJavadoc(outPkg,"Convenience access to all stored procedures and functions in " + pkg.getName());
+        outPkg.print("public final class ");
+        outPkg.print(strategy.getJavaClassName(pkg));
+        outPkg.print(" extends ");
+        outPkg.print(PackageImpl.class);
+        outPkg.println(" {");
+        outPkg.printSerial();
+        outPkg.println();
+        outPkg.println("\t/**");
+        outPkg.println("\t * The singleton instance of " + strategy.getJavaIdentifierUC(pkg));
+        outPkg.println("\t */");
+        outPkg.print("\tpublic static ");
+        outPkg.print(strategy.getFullJavaClassName(pkg));
+        outPkg.print(" ");
+        outPkg.print(strategy.getJavaIdentifierUC(pkg));
+        outPkg.print(" = new ");
+        outPkg.print(strategy.getFullJavaClassName(pkg));
+        outPkg.println("();");
+        for (        ProcedureDefinition procedure : pkg.getProcedures()) {
+          try {
+            printConvenienceMethodProcedure(outPkg,procedure);
+          }
+ catch (          Exception e) {
+            log.error("Error while generating procedure " + procedure,e);
+          }
+        }
+        for (        FunctionDefinition function : pkg.getFunctions()) {
+          try {
+            printConvenienceMethodFunction(outPkg,function);
+            printConvenienceMethodFunctionAsField(outPkg,function,false);
+            printConvenienceMethodFunctionAsField(outPkg,function,true);
+          }
+ catch (          Exception e) {
+            log.error("Error while generating function " + function,e);
+          }
+        }
+        printNoFurtherInstancesAllowedJavadoc(outPkg);
+        outPkg.println("\tprivate " + strategy.getJavaClassName(pkg) + "() {");
+        outPkg.print("\t\tsuper(\"");
+        outPkg.print(strategy.getJavaIdentifierUC(pkg));
+        outPkg.print("\", ");
+        outPkg.print(strategy.getFullJavaIdentifierUC(schema));
+        outPkg.println(");");
+        outPkg.println("\t}");
+        outPkg.println("}");
+        outPkg.close();
+      }
+ catch (      Exception e) {
+        log.error("Error while generating package " + pkg,e);
+      }
+    }
+    watch.splitInfo("Packages generated");
+  }
+  if (outS != null) {
+    outS.println("}");
+    outS.close();
+  }
+  if (outF != null) {
+    outF.println("}");
+    outF.close();
+  }
+  watch.splitInfo("GENERATION FINISHED!");
+}

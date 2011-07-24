@@ -1,0 +1,15 @@
+{
+  StringBuilder sb=new StringBuilder();
+  sb.append(getFNPrefix());
+  sb.append(getName());
+  sb.append(getArgumentListDelimiter(configuration,"("));
+  String separator="";
+  for (  NamedQueryPart field : arguments) {
+    sb.append(separator);
+    sb.append(toSQLField(configuration,field,inlineParameters));
+    separator=", ";
+  }
+  sb.append(getArgumentListDelimiter(configuration,")"));
+  sb.append(getFNSuffix());
+  return sb.toString();
+}

@@ -1,0 +1,4 @@
+Configuration configuration
+ResultSet rs
+Class<? extends T> type
+int index

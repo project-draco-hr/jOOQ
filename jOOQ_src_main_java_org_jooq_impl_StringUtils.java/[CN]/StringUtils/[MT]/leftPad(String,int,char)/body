@@ -1,0 +1,13 @@
+{
+  if (str == null) {
+    return null;
+  }
+  int pads=size - str.length();
+  if (pads <= 0) {
+    return str;
+  }
+  if (pads > PAD_LIMIT) {
+    return leftPad(str,size,String.valueOf(padChar));
+  }
+  return padding(pads,padChar).concat(str);
+}

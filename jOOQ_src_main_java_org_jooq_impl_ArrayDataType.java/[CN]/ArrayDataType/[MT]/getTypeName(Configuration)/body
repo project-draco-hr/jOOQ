@@ -1,0 +1,4 @@
+{
+  String typeName=elementType.getTypeName(configuration);
+  return getArrayType(configuration,typeName);
+}

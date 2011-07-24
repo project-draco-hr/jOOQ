@@ -1,0 +1,3 @@
+{
+  super(SQLDialect.SQL99,null,udt.getRecordType(),udt.getName());
+}

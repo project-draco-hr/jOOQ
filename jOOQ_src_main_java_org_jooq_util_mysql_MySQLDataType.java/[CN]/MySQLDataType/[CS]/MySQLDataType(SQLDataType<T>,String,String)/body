@@ -1,0 +1,3 @@
+{
+  super(SQLDialect.MYSQL,sqlDataType,sqlDataType.getType(),typeName,castTypeName);
+}

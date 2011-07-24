@@ -1,0 +1,4 @@
+{
+  insertMaps=new ArrayList<FieldMapForInsert>();
+  insertMaps.add(null);
+}

@@ -1,0 +1,3 @@
+{
+  return getDataType(configuration).getTypeName();
+}

@@ -1,0 +1,20 @@
+{
+  Merge q=create.mergeInto(TABLE1).using(create.select(FIELD_ID2).from(TABLE2)).on(FIELD_ID2.equal(FIELD_ID1)).and(FIELD_ID1.equal(1)).or(FIELD_ID2.equal(2)).whenMatchedThenUpdate().set(FIELD_NAME1,"name").set(FIELD_DATE1,new Date(0)).whenNotMatchedThenInsert(FIELD_ID1,FIELD_NAME1,FIELD_DATE1).values(1,"name",new Date(0));
+  assertEquals("merge into \"TABLE1\" using (select \"TABLE2\".\"ID2\" from \"TABLE2\") on ((\"TABLE2\".\"ID2\" = \"TABLE1\".\"ID1\" and \"TABLE1\".\"ID1\" = 1) or \"TABLE2\".\"ID2\" = 2) when matched then update set \"NAME1\" = 'name', \"DATE1\" = '1970-01-01' when not matched then insert (\"ID1\", \"NAME1\", \"DATE1\") values (1, 'name', '1970-01-01')",internal(q).toSQLReference(create,true));
+  assertEquals("merge into \"TABLE1\" using (select \"TABLE2\".\"ID2\" from \"TABLE2\") on ((\"TABLE2\".\"ID2\" = \"TABLE1\".\"ID1\" and \"TABLE1\".\"ID1\" = ?) or \"TABLE2\".\"ID2\" = ?) when matched then update set \"NAME1\" = ?, \"DATE1\" = ? when not matched then insert (\"ID1\", \"NAME1\", \"DATE1\") values (?, ?, ?)",internal(q).toSQLReference(create,false));
+  context.checking(new Expectations(){
+{
+      oneOf(statement).setInt(1,1);
+      oneOf(statement).setInt(2,2);
+      oneOf(statement).setString(3,"name");
+      oneOf(statement).setDate(4,new Date(0));
+      oneOf(statement).setInt(5,1);
+      oneOf(statement).setString(6,"name");
+      oneOf(statement).setDate(7,new Date(0));
+    }
+  }
+);
+  int i=internal(q).bindReference(create,statement);
+  assertEquals(8,i);
+  context.assertIsSatisfied();
+}

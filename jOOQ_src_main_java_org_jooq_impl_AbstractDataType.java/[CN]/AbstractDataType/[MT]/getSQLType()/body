@@ -1,0 +1,78 @@
+{
+  if (type == Blob.class) {
+    return Types.BLOB;
+  }
+ else   if (type == Boolean.class) {
+    return Types.BOOLEAN;
+  }
+ else   if (type == BigInteger.class) {
+    return Types.BIGINT;
+  }
+ else   if (type == BigDecimal.class) {
+    return Types.DECIMAL;
+  }
+ else   if (type == Byte.class) {
+    return Types.TINYINT;
+  }
+ else   if (type == byte[].class) {
+    return Types.BLOB;
+  }
+ else   if (type == Clob.class) {
+    return Types.CLOB;
+  }
+ else   if (type == Date.class) {
+    return Types.DATE;
+  }
+ else   if (type == Double.class) {
+    return Types.DOUBLE;
+  }
+ else   if (type == Float.class) {
+    return Types.FLOAT;
+  }
+ else   if (type == Integer.class) {
+    return Types.INTEGER;
+  }
+ else   if (type == Long.class) {
+    return Types.BIGINT;
+  }
+ else   if (type == Short.class) {
+    return Types.SMALLINT;
+  }
+ else   if (type == String.class) {
+    return Types.VARCHAR;
+  }
+ else   if (type == Time.class) {
+    return Types.TIME;
+  }
+ else   if (type == Timestamp.class) {
+    return Types.TIMESTAMP;
+  }
+ else   if (type.isArray()) {
+    return Types.ARRAY;
+  }
+ else   if (ArrayRecord.class.isAssignableFrom(type)) {
+    return Types.ARRAY;
+  }
+ else   if (EnumType.class.isAssignableFrom(type)) {
+    return Types.VARCHAR;
+  }
+ else   if (MasterDataType.class.isAssignableFrom(type)) {
+    return Types.BIGINT;
+  }
+ else   if (UDTRecord.class.isAssignableFrom(type)) {
+    return Types.STRUCT;
+  }
+ else   if (Result.class.isAssignableFrom(type)) {
+switch (dialect) {
+case ORACLE:
+case H2:
+      return -10;
+case POSTGRES:
+default :
+    return Types.OTHER;
+}
+}
+ else {
+return Types.OTHER;
+}
+}

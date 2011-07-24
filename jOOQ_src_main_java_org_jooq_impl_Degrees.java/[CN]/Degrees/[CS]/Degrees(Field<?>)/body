@@ -1,0 +1,4 @@
+{
+  super("degrees",SQLDataType.NUMERIC,argument);
+  this.argument=argument;
+}

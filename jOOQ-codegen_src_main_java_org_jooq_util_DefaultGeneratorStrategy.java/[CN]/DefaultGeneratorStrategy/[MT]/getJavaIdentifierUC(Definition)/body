@@ -1,0 +1,3 @@
+{
+  return getJavaIdentifier(definition).toUpperCase();
+}

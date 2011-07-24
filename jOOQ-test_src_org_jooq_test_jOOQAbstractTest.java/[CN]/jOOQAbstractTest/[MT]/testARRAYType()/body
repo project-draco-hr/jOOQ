@@ -1,0 +1,165 @@
+{
+  if (TArrays() == null) {
+    log.info("SKIPPING","ARRAY type test");
+    return;
+  }
+  reset=false;
+  if (TArrays_STRING_R() != null) {
+    Result<?> arrays=create().select(TArrays_STRING_R(),TArrays_NUMBER_R(),TArrays_DATE_R()).from(TArrays()).orderBy(TArrays_ID()).fetch();
+    assertEquals(null,arrays.getValue(0,TArrays_STRING_R()));
+    assertEquals(null,arrays.getValue(0,TArrays_NUMBER_R()));
+    assertEquals(null,arrays.getValue(0,TArrays_DATE_R()));
+    assertEquals(Arrays.asList(),Arrays.asList(arrays.getValueAsArray(1,TArrays_STRING_R())));
+    assertEquals(Arrays.asList(),Arrays.asList(arrays.getValueAsArray(1,TArrays_NUMBER_R())));
+    assertEquals(Arrays.asList(),Arrays.asList(arrays.getValueAsArray(1,TArrays_DATE_R())));
+    assertEquals(Arrays.asList("a"),Arrays.asList(arrays.getValueAsArray(2,TArrays_STRING_R())));
+    assertEquals(Arrays.asList(1),Arrays.asList(arrays.getValueAsArray(2,TArrays_NUMBER_R())));
+    assertEquals("[1981-07-10]",Arrays.asList(arrays.getValueAsArray(2,TArrays_DATE_R())).toString());
+    assertEquals(Arrays.asList("a","b"),Arrays.asList(arrays.getValueAsArray(3,TArrays_STRING_R())));
+    assertEquals(Arrays.asList(1,2),Arrays.asList(arrays.getValueAsArray(3,TArrays_NUMBER_R())));
+    assertEquals("[1981-07-10, 2000-01-01]",Arrays.asList(arrays.getValueAsArray(3,TArrays_DATE_R())).toString());
+    InsertQuery<?> insert=create().insertQuery(TArrays());
+    insert.addValue(TArrays_ID(),5);
+    insert.addValueAsArray(TArrays_NUMBER_R(),1,2,3);
+    insert.addValueAsArray(TArrays_STRING_R(),"a","b","c");
+    insert.addValueAsArray(TArrays_DATE_R(),new Date(0),new Date(84600 * 1000),new Date(84600 * 2000));
+    insert.execute();
+    Record array=create().select(TArrays_STRING_R(),TArrays_NUMBER_R(),TArrays_DATE_R()).from(TArrays()).where(TArrays_ID().equal(5)).fetchOne();
+    assertEquals(Arrays.asList("a","b","c"),Arrays.asList(array.getValueAsArray(TArrays_STRING_R())));
+    assertEquals(Arrays.asList(1,2,3),Arrays.asList(array.getValueAsArray(TArrays_NUMBER_R())));
+    assertEquals("[1970-01-01, 1970-01-02, 1970-01-03]",Arrays.asList(array.getValueAsArray(TArrays_DATE_R())).toString());
+    UpdateQuery<X> update=create().updateQuery(TArrays());
+    update.addValueAsArray(TArrays_NUMBER_R(),3,2,1);
+    update.addValueAsArray(TArrays_STRING_R(),"c","b","a");
+    update.addValueAsArray(TArrays_DATE_R(),new Date(84600 * 2000),new Date(84600 * 1000),new Date(0));
+    update.addConditions(TArrays_ID().equal(5));
+    update.execute();
+    array=create().select(TArrays_STRING_R(),TArrays_NUMBER_R(),TArrays_DATE_R()).from(TArrays()).where(TArrays_ID().equal(5)).fetchOne();
+    assertEquals(Arrays.asList("c","b","a"),Arrays.asList(array.getValueAsArray(TArrays_STRING_R())));
+    assertEquals(Arrays.asList(3,2,1),Arrays.asList(array.getValueAsArray(TArrays_NUMBER_R())));
+    assertEquals("[1970-01-03, 1970-01-02, 1970-01-01]",Arrays.asList(array.getValueAsArray(TArrays_DATE_R())).toString());
+  }
+  if (TArrays_STRING() != null) {
+    Result<?> arrays=create().select(TArrays_STRING(),TArrays_NUMBER(),TArrays_DATE(),TArrays_UDT() == null ? val(0) : TArrays_UDT()).from(TArrays()).orderBy(TArrays_ID()).fetch();
+    assertEquals(null,arrays.getValue(0,TArrays_STRING()));
+    assertEquals(null,arrays.getValue(0,TArrays_NUMBER()));
+    assertEquals(null,arrays.getValue(0,TArrays_DATE()));
+    if (TArrays_UDT() != null) {
+      assertEquals(null,arrays.getValue(0,TArrays_UDT()));
+    }
+    Object[] s=(Object[])arrays.getValue(1,0);
+    Object[] n=(Object[])arrays.getValue(1,1);
+    Object[] d=(Object[])arrays.getValue(1,2);
+    assertEquals(0,s.length);
+    assertEquals(0,n.length);
+    assertEquals(0,d.length);
+    assertEquals(TArrays_STRING().getType(),s.getClass());
+    assertEquals(TArrays_NUMBER().getType(),n.getClass());
+    assertEquals(TArrays_DATE().getType(),d.getClass());
+    if (TArrays_UDT() != null) {
+      UDTRecord<?>[] u=(UDTRecord<?>[])arrays.getValue(1,3);
+      assertEquals(0,u.length);
+      assertEquals(TArrays_UDT().getType(),u.getClass());
+    }
+    s=(Object[])arrays.getValue(2,0);
+    n=(Object[])arrays.getValue(2,1);
+    d=(Object[])arrays.getValue(2,2);
+    assertEquals(1,s.length);
+    assertEquals(1,n.length);
+    assertEquals(1,d.length);
+    assertEquals(TArrays_STRING().getType(),s.getClass());
+    assertEquals(TArrays_NUMBER().getType(),n.getClass());
+    assertEquals(TArrays_DATE().getType(),d.getClass());
+    assertEquals("a",s[0].toString());
+    assertEquals("1",n[0].toString());
+    assertEquals("1981-07-10",d[0].toString());
+    if (TArrays_UDT() != null) {
+      UDTRecord<?>[] u=(UDTRecord<?>[])arrays.getValue(2,3);
+      assertEquals(1,u.length);
+      assertEquals(TArrays_UDT().getType(),u.getClass());
+      assertEquals("Downing Street",u[0].getValue(0));
+      assertEquals("10",u[0].getValue(1));
+      assertNull(u[0].getValue(2));
+    }
+    s=(Object[])arrays.getValue(3,0);
+    n=(Object[])arrays.getValue(3,1);
+    d=(Object[])arrays.getValue(3,2);
+    assertEquals(2,s.length);
+    assertEquals(2,n.length);
+    assertEquals(2,d.length);
+    assertEquals(TArrays_STRING().getType(),s.getClass());
+    assertEquals(TArrays_NUMBER().getType(),n.getClass());
+    assertEquals(TArrays_DATE().getType(),d.getClass());
+    assertEquals("a",s[0].toString());
+    assertEquals("b",s[1].toString());
+    assertEquals("1",n[0].toString());
+    assertEquals("2",n[1].toString());
+    assertEquals("1981-07-10",d[0].toString());
+    assertEquals("2000-01-01",d[1].toString());
+    if (TArrays_UDT() != null) {
+      UDTRecord<?>[] u=(UDTRecord<?>[])arrays.getValue(3,3);
+      assertEquals(2,u.length);
+      assertEquals(TArrays_UDT().getType(),u.getClass());
+      assertEquals("Downing Street",u[0].getValue(0));
+      assertEquals("10",u[0].getValue(1));
+      Integer[] floors=(Integer[])u[0].getValue(2);
+      assertEquals(0,floors.length);
+      assertEquals("Bahnhofstrasse",u[1].getValue(0));
+      assertEquals("12",u[1].getValue(1));
+      floors=(Integer[])u[1].getValue(2);
+      assertEquals(2,floors.length);
+      assertEquals(1,(int)floors[0]);
+      assertEquals(2,(int)floors[1]);
+    }
+    InsertQuery<?> insert=create().insertQuery(TArrays());
+    insert.addValue(TArrays_ID(),5);
+    insert.addValue(TArrays_NUMBER(),new Integer[]{1,2,3});
+    insert.addValue(TArrays_STRING(),new String[]{"a","b","c"});
+    insert.addValue(TArrays_DATE(),new Date[]{new Date(0),new Date(84600 * 1000),new Date(84600 * 2000)});
+    insert.execute();
+    Record array=create().select(TArrays_STRING(),TArrays_NUMBER(),TArrays_DATE()).from(TArrays()).where(TArrays_ID().equal(5)).fetchOne();
+    s=(Object[])array.getValue(0);
+    n=(Object[])array.getValue(1);
+    d=(Object[])array.getValue(2);
+    assertEquals(3,s.length);
+    assertEquals(3,n.length);
+    assertEquals(3,d.length);
+    assertEquals(TArrays_STRING().getType(),s.getClass());
+    assertEquals(TArrays_NUMBER().getType(),n.getClass());
+    assertEquals(TArrays_DATE().getType(),d.getClass());
+    assertEquals("a",s[0].toString());
+    assertEquals("b",s[1].toString());
+    assertEquals("c",s[2].toString());
+    assertEquals("1",n[0].toString());
+    assertEquals("2",n[1].toString());
+    assertEquals("3",n[2].toString());
+    assertEquals("1970-01-01",d[0].toString());
+    assertEquals("1970-01-02",d[1].toString());
+    assertEquals("1970-01-03",d[2].toString());
+    UpdateQuery<X> update=create().updateQuery(TArrays());
+    update.addValue(TArrays_NUMBER(),new Integer[]{3,2,1});
+    update.addValue(TArrays_STRING(),new String[]{"c","b","a"});
+    update.addValue(TArrays_DATE(),new Date[]{new Date(84600 * 2000),new Date(84600 * 1000),new Date(0)});
+    update.addConditions(TArrays_ID().equal(5));
+    update.execute();
+    array=create().select(TArrays_STRING(),TArrays_NUMBER(),TArrays_DATE()).from(TArrays()).where(TArrays_ID().equal(5)).fetchOne();
+    s=(Object[])array.getValue(0);
+    n=(Object[])array.getValue(1);
+    d=(Object[])array.getValue(2);
+    assertEquals(3,s.length);
+    assertEquals(3,n.length);
+    assertEquals(3,d.length);
+    assertEquals(TArrays_STRING().getType(),s.getClass());
+    assertEquals(TArrays_NUMBER().getType(),n.getClass());
+    assertEquals(TArrays_DATE().getType(),d.getClass());
+    assertEquals("c",s[0].toString());
+    assertEquals("b",s[1].toString());
+    assertEquals("a",s[2].toString());
+    assertEquals("3",n[0].toString());
+    assertEquals("2",n[1].toString());
+    assertEquals("1",n[2].toString());
+    assertEquals("1970-01-03",d[0].toString());
+    assertEquals("1970-01-02",d[1].toString());
+    assertEquals("1970-01-01",d[2].toString());
+  }
+}

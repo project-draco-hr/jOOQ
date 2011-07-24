@@ -1,0 +1,7 @@
+{
+  for (  Field<?> field : record.getFields()) {
+    if (((AbstractRecord)record).getValue0(field).isChanged()) {
+      addValue(record,field);
+    }
+  }
+}

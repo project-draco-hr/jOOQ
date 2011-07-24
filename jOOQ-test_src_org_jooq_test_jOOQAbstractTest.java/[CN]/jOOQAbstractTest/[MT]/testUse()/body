@@ -1,0 +1,13 @@
+{
+switch (getDialect()) {
+case SQLITE:
+case SQLSERVER:
+    log.info("SKIPPING","USE test");
+  return;
+}
+Factory factory=create();
+factory.use(schema().getName());
+Result<?> result=factory.select(TBook_AUTHOR_ID(),factory.count()).from(TBook()).join(TAuthor()).on(TBook_AUTHOR_ID().equal(TAuthor_ID())).where(TAuthor_YEAR_OF_BIRTH().greaterOrEqual(TAuthor_ID())).groupBy(TBook_AUTHOR_ID()).having(factory.count().greaterOrEqual(1)).orderBy(TBook_AUTHOR_ID().desc()).fetch();
+assertEquals(Arrays.asList(2,1),result.getValues(TBook_AUTHOR_ID()));
+assertEquals(Arrays.asList(2,2),result.getValues(create().count()));
+}

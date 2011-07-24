@@ -1,0 +1,3 @@
+{
+  return getDataType(SQLDialect.H2,type);
+}

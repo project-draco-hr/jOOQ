@@ -1,0 +1,45 @@
+{
+  List<Field<?>> fields=TBook().getFields();
+  Result<B> books=create().selectFrom(TBook()).fetch();
+  String json=books.formatJSON();
+  String token1="{\"fields\":[";
+  assertTrue(json.startsWith(token1));
+  json=json.replace(token1,"");
+  String token2="";
+  String separator="";
+  for (  Field<?> field : fields) {
+    token2+=separator + "\"" + field.getName()+ "\"";
+    separator=",";
+  }
+  assertTrue(json.startsWith(token2));
+  json=json.replace(token2,"");
+  String token3="],\"records\":[";
+  assertTrue(json.startsWith(token3));
+  json=json.replace(token3,"");
+  int i=0;
+  for (  Record record : books) {
+    i++;
+    String token4="[";
+    if (i > 1) {
+      token4=",[";
+    }
+    separator="";
+    for (    Field<?> field : fields) {
+      Object value=record.getValue(field);
+      if (value == null) {
+        token4+=separator + null;
+      }
+ else       if (value instanceof Number) {
+        token4+=separator + value;
+      }
+ else {
+        token4+=separator + "\"" + value.toString().replaceAll("\"","\"\"")+ "\"";
+      }
+      separator=",";
+    }
+    token4+="]";
+    assertTrue(json.startsWith(token4));
+    json=json.replace(token4,"");
+  }
+  assertEquals("]}",json);
+}

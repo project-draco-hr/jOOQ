@@ -1,0 +1,5 @@
+{
+  super.addInParameter(parameter);
+  outParameters.add(parameter);
+  allParameters.add(parameter);
+}

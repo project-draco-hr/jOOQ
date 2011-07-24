@@ -1,0 +1,3 @@
+{
+  return create().select(Constraints.TABLE_NAME,Constraints.COLUMN_LIST,Constraints.CONSTRAINT_NAME).from(CONSTRAINTS).where(Constraints.TABLE_SCHEMA.equal(getSchemaName())).and(Constraints.CONSTRAINT_TYPE.equal(constraintType)).fetch();
+}

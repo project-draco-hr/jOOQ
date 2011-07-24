@@ -1,0 +1,3 @@
+{
+  getHaving().addConditions(operator,conditions);
+}

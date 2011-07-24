@@ -1,0 +1,3 @@
+{
+  super(SQLDialect.DB2,sqlDataType,sqlDataType.getType(),typeName);
+}

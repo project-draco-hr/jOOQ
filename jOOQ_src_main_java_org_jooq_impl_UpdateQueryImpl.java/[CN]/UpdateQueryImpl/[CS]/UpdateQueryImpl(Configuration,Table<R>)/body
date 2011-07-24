@@ -1,0 +1,5 @@
+{
+  super(configuration,table);
+  this.condition=new ConditionProviderImpl();
+  this.updateMap=new FieldMapForUpdate();
+}

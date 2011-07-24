@@ -1,0 +1,3 @@
+{
+  return query.asTable().getField(field);
+}

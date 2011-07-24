@@ -1,0 +1,11 @@
+{
+  if (nanoTime > (60L * 1000L * 1000000L)) {
+    return formatHours(nanoTime / (1000L * 1000000L));
+  }
+ else   if (nanoTime > (1000L * 1000000L)) {
+    return ((nanoTime / 1000000L) / 1000.0) + "s";
+  }
+ else {
+    return ((nanoTime / 1000L) / 1000.0) + "ms";
+  }
+}

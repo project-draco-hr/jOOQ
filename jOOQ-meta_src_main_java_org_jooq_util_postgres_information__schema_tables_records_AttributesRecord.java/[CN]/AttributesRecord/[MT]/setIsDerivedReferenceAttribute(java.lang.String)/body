@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.postgres.information_schema.tables.Attributes.IS_DERIVED_REFERENCE_ATTRIBUTE,value);
+}

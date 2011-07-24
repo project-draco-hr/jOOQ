@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.test.postgres.generatedclasses.tables.TBook.LANGUAGE_ID);
+}

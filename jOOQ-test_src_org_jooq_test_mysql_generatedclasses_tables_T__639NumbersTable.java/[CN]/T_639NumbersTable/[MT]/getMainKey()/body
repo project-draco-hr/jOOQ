@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.mysql.generatedclasses.Keys.KEY_t_639_numbers_table_PRIMARY;
+}

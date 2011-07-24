@@ -1,0 +1,4 @@
+{
+  T value=FieldTypeHelper.getFromResultSet(configuration,rs,field,index);
+  record.setValue(field,new Value<T>(value));
+}

@@ -1,0 +1,6 @@
+{
+  org.jooq.test.sybase.generatedclasses.functions.FNumber f=new org.jooq.test.sybase.generatedclasses.functions.FNumber();
+  f.setN(n);
+  f.execute(connection);
+  return f.getReturnValue();
+}

@@ -1,0 +1,4 @@
+Database database
+String name
+String comment
+String params

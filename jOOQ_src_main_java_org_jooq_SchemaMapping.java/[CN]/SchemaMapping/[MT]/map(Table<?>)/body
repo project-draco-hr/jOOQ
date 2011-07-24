@@ -1,0 +1,10 @@
+{
+  Table<?> result=null;
+  if (generatedTable != null) {
+    result=tables.get(generatedTable.getName());
+    if (result != null) {
+      return result;
+    }
+  }
+  return generatedTable;
+}

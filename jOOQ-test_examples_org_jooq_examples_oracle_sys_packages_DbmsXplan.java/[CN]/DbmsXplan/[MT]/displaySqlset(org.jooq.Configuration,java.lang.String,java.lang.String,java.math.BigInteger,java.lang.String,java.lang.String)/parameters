@@ -1,0 +1,6 @@
+org.jooq.Configuration configuration
+java.lang.String sqlsetName
+java.lang.String sqlId
+java.math.BigInteger planHashValue
+java.lang.String format
+java.lang.String sqlsetOwner

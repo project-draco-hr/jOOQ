@@ -1,0 +1,6 @@
+{
+  if (type == null) {
+    type=new UDTDataType<R>(this);
+  }
+  return type;
+}

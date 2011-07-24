@@ -1,0 +1,9 @@
+{
+  ByteArrayOutputStream out=new ByteArrayOutputStream();
+  ObjectOutputStream o=new ObjectOutputStream(out);
+  o.writeObject(value);
+  o.flush();
+  ByteArrayInputStream in=new ByteArrayInputStream(out.toByteArray());
+  ObjectInputStream i=new ObjectInputStream(in);
+  return (T)i.readObject();
+}

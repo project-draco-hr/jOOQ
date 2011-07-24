@@ -1,0 +1,4 @@
+{
+  super(null,null,elementType.getArrayType(),elementType.getTypeName(),elementType.getCastTypeName());
+  this.elementType=elementType;
+}

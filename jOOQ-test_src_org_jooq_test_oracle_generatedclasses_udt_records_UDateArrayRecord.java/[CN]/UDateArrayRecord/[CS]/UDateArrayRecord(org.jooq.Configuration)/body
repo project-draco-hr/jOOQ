@@ -1,0 +1,3 @@
+{
+  super("TEST.U_DATE_ARRAY",org.jooq.impl.SQLDataType.DATE,configuration);
+}

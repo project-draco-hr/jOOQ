@@ -1,0 +1,11 @@
+{
+  if (list.size() == 0) {
+    return null;
+  }
+ else   if (list.size() == 1) {
+    return list.get(0);
+  }
+ else {
+    throw new SQLException("Too many rows returned : " + list.size());
+  }
+}

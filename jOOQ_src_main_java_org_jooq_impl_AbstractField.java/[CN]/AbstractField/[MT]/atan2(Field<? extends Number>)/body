@@ -1,0 +1,6 @@
+{
+  if (y == null) {
+    return atan2((Number)null);
+  }
+  return new Atan2(this,y);
+}

@@ -1,0 +1,8 @@
+{
+  List<ProcedureDefinition> result=new ArrayList<ProcedureDefinition>();
+  for (  Record record : create().select(Sysprocedure.PROC_NAME).from(Sysprocedure.SYSPROCEDURE).where(Sysprocedure.PROC_DEFN.like("create procedure%")).orderBy(Sysprocedure.PROC_NAME).fetch()) {
+    String name=record.getValue(Sysprocedure.PROC_NAME);
+    result.add(new SybaseProcedureDefinition(this,null,name));
+  }
+  return result;
+}

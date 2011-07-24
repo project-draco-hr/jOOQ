@@ -1,0 +1,3 @@
+{
+  return function("aes_decrypt",String.class,cryptString,keyString);
+}

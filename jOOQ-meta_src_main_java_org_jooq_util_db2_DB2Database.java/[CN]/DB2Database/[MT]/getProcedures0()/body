@@ -1,0 +1,8 @@
+{
+  List<ProcedureDefinition> result=new ArrayList<ProcedureDefinition>();
+  for (  Record record : create().select(Procedures.PROCNAME).from(Procedures.PROCEDURES).where(Procedures.PROCSCHEMA.equal(getSchemaName())).orderBy(Procedures.PROCNAME).fetch()) {
+    String name=record.getValue(Procedures.PROCNAME);
+    result.add(new DB2ProcedureDefinition(this,null,name));
+  }
+  return result;
+}

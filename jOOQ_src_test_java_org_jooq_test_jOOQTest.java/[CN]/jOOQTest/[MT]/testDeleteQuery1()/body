@@ -1,0 +1,6 @@
+{
+  DeleteQuery<Table1Record> q=create.deleteQuery(TABLE1);
+  assertEquals("delete from \"TABLE1\"",internal(q).toSQLReference(create,true));
+  assertEquals("delete from \"TABLE1\"",internal(q).toSQLReference(create,false));
+  assertEquals(q,create.delete(TABLE1));
+}

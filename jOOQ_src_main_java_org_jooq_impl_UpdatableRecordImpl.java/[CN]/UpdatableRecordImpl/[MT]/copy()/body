@@ -1,0 +1,10 @@
+{
+  R copy=create().newRecord(getTable());
+  for (  Field<?> field : getFields()) {
+    setValue(copy,field);
+  }
+  for (  Field<?> field : getMainKey().getFields()) {
+    copy.setValue(field,null);
+  }
+  return copy;
+}

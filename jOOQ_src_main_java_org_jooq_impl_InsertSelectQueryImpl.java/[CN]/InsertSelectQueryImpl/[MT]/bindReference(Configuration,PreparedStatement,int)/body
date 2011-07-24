@@ -1,0 +1,9 @@
+{
+  int result=initialIndex;
+  result=internal(into).bindReference(configuration,stmt,result);
+  for (  Field<?> field : into.getFields()) {
+    result=internal(field).bindReference(configuration,stmt,result);
+  }
+  result=internal(select).bindReference(configuration,stmt,result);
+  return result;
+}

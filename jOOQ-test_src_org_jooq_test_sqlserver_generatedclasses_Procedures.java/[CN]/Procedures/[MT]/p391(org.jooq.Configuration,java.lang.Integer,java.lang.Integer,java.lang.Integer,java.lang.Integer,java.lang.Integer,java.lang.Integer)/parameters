@@ -1,0 +1,7 @@
+org.jooq.Configuration configuration
+java.lang.Integer i1
+java.lang.Integer io1
+java.lang.Integer o1
+java.lang.Integer o2
+java.lang.Integer io2
+java.lang.Integer i2

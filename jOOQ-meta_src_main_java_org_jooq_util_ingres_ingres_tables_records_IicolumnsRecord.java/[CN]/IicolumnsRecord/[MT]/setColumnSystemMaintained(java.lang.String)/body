@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.ingres.ingres.tables.Iicolumns.COLUMN_SYSTEM_MAINTAINED,value);
+}

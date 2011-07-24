@@ -1,0 +1,7 @@
+{
+  List<Time> result=new ArrayList<Time>();
+  for (  R record : this) {
+    result.add(record.getValueAsTime(field));
+  }
+  return result;
+}

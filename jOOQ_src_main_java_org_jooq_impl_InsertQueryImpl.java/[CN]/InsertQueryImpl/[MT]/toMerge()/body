@@ -1,0 +1,23 @@
+{
+  if (getInto() instanceof UpdatableTable) {
+    UpdatableTable<R> into=(UpdatableTable<R>)getInto();
+    Condition condition=null;
+    List<Field<?>> key=new ArrayList<Field<?>>();
+    for (    Field<?> f : into.getMainKey().getFields()) {
+      Field<Object> field=(Field<Object>)f;
+      Field<Object> value=(Field<Object>)insertMaps.getMap().get(field);
+      key.add(value);
+      Condition other=field.equal(value);
+      if (condition == null) {
+        condition=other;
+      }
+ else {
+        condition=condition.and(other);
+      }
+    }
+    return create().mergeInto(into).usingDual().on(condition).whenMatchedThenUpdate().set(updateMap).whenNotMatchedThenInsert(insertMaps.getMap().keySet()).values(insertMaps.getMap().values());
+  }
+ else {
+    throw new IllegalStateException("The ON DUPLICATE KEY UPDATE clause cannot be simulated when inserting into non-updatable tables : " + getInto());
+  }
+}

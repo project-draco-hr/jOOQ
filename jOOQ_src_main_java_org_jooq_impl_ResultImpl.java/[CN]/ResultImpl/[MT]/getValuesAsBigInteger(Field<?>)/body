@@ -1,0 +1,7 @@
+{
+  List<BigInteger> result=new ArrayList<BigInteger>();
+  for (  R record : this) {
+    result.add(record.getValueAsBigInteger(field));
+  }
+  return result;
+}

@@ -1,0 +1,3 @@
+{
+  tables.put(generatedTable.getName(),configuredTable);
+}

@@ -1,0 +1,3 @@
+{
+  setValue(field,FieldTypeHelper.getFromSQLInput(configuration,stream,field));
+}

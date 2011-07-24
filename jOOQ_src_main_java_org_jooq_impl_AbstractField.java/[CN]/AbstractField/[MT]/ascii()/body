@@ -1,0 +1,3 @@
+{
+  return new Function<Integer>("ascii",SQLDataType.INTEGER,this);
+}

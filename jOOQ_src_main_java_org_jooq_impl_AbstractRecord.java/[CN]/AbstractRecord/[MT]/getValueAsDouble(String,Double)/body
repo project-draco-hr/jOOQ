@@ -1,0 +1,3 @@
+{
+  return getValueAsDouble(getField(fieldName),defaultValue);
+}

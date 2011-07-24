@@ -1,0 +1,12 @@
+{
+  SelectQuery q=create().selectQuery();
+  q.addFrom(TAuthor());
+  q.addSelect(TAuthor().getFields());
+  q.addOrderBy(TAuthor_LAST_NAME());
+  int rows=q.execute();
+  Result<?> result=q.getResult();
+  assertEquals(2,rows);
+  assertEquals(2,result.size());
+  assertEquals("Coelho",result.get(0).getValue(TAuthor_LAST_NAME()));
+  assertEquals("Orwell",result.get(1).getValue(TAuthor_LAST_NAME()));
+}

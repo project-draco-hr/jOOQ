@@ -1,0 +1,17 @@
+{
+  if (!conditions.isEmpty()) {
+    Condition c;
+    if (conditions.size() == 1) {
+      c=conditions.iterator().next();
+    }
+ else {
+      c=new CombinedCondition(operator,conditions);
+    }
+    if (getWhere() instanceof TrueCondition) {
+      condition=c;
+    }
+ else {
+      condition=new CombinedCondition(operator,Arrays.asList(getWhere(),c));
+    }
+  }
+}

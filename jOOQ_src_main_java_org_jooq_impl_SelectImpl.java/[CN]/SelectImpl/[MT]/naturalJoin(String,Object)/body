@@ -1,0 +1,3 @@
+{
+  return naturalJoin(create().table(sql,bindings));
+}

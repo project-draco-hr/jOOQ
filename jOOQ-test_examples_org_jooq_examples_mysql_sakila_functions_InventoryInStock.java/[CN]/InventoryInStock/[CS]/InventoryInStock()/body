@@ -1,0 +1,4 @@
+{
+  super(org.jooq.SQLDialect.MYSQL,"inventory_in_stock",org.jooq.examples.mysql.sakila.Sakila.SAKILA,org.jooq.impl.SQLDataType.TINYINT);
+  addInParameter(P_INVENTORY_ID);
+}

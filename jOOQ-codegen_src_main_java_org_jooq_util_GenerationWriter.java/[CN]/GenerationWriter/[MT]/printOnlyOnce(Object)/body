@@ -1,0 +1,7 @@
+{
+  if (!alreadyPrinted.contains(object)) {
+    alreadyPrinted.add(object);
+    return true;
+  }
+  return false;
+}

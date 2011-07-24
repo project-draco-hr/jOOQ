@@ -1,0 +1,3 @@
+{
+  return (Field<T>)Functions.fArrays1((Field<UNumberArrayRecord>)array);
+}

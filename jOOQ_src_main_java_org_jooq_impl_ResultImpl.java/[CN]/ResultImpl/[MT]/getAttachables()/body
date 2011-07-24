@@ -1,0 +1,9 @@
+{
+  List<Attachable> result=new ArrayList<Attachable>();
+  for (  Store<?> item : records) {
+    if (item != null) {
+      result.add(item);
+    }
+  }
+  return result;
+}

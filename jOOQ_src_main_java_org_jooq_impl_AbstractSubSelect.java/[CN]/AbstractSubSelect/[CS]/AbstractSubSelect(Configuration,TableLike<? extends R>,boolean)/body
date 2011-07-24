@@ -1,0 +1,19 @@
+{
+  super(configuration);
+  this.distinct=distinct;
+  this.select=new SelectFieldList();
+  this.from=new TableList();
+  this.join=new JoinList();
+  this.condition=new ConditionProviderImpl();
+  this.connectBy=new ConditionProviderImpl();
+  this.connectByStartWith=new ConditionProviderImpl();
+  this.groupBy=new FieldList();
+  this.having=new ConditionProviderImpl();
+  this.orderBy=new SortFieldList();
+  this.limit=new Limit();
+  if (from != null) {
+    this.from.add(from.asTable());
+  }
+  this.forUpdateOf=new FieldList();
+  this.forUpdateOfTables=new TableList();
+}

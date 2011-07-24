@@ -1,0 +1,7 @@
+{
+  super(org.jooq.SQLDialect.ORACLE,"PKG_F378",org.jooq.test.oracle.generatedclasses.Test.TEST,org.jooq.test.oracle.generatedclasses.packages.Library.LIBRARY);
+  setReturnParameter(RETURN_VALUE);
+  addInParameter(I);
+  addInOutParameter(IO);
+  addOutParameter(O);
+}

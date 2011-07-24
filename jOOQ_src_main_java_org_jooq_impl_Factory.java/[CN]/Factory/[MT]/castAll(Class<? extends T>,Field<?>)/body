@@ -1,0 +1,7 @@
+{
+  Field<?>[] castFields=new Field<?>[fields.length];
+  for (int i=0; i < fields.length; i++) {
+    castFields[i]=fields[i].cast(type);
+  }
+  return (Field<T>[])castFields;
+}

@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(org.jooq.examples.mysql.sakila.tables.City.CITY).where(org.jooq.examples.mysql.sakila.tables.City.COUNTRY_ID.equal(getValue(org.jooq.examples.mysql.sakila.tables.Country.COUNTRY_ID))).fetch();
+}

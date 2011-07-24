@@ -1,0 +1,3 @@
+{
+  return greatest(vals(others).toArray(new Field<?>[0]));
+}

@@ -1,0 +1,5 @@
+{
+  super("-",field.getDataType(),field);
+  this.field=field;
+  this.value=value;
+}

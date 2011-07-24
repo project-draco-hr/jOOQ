@@ -1,0 +1,5 @@
+Configuration configuration
+String name
+Schema schema
+Package pkg
+DataType<T> type

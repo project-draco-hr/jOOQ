@@ -1,0 +1,9 @@
+{
+  if (onDuplicateKeyUpdate) {
+    delegate.addValueForUpdate(field,value);
+  }
+ else {
+    delegate.addValue(field,value);
+  }
+  return this;
+}

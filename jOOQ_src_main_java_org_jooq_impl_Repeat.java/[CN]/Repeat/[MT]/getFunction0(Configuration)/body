@@ -1,0 +1,11 @@
+{
+switch (configuration.getDialect()) {
+case INGRES:
+case ORACLE:
+    return string.rpad(string.length().mul(count),(Field<String>)string);
+case SQLSERVER:
+  return new Function<String>("replicate",SQLDataType.VARCHAR,string,count);
+default :
+return new Function<String>("repeat",SQLDataType.VARCHAR,string,count);
+}
+}

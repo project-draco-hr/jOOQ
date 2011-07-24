@@ -1,0 +1,6 @@
+{
+  result=internal(getInto()).bindReference(configuration,stmt,result);
+  result=internal(insertMaps).bindReference(configuration,stmt,result);
+  result=internal(updateMap).bindReference(configuration,stmt,result);
+  return result;
+}

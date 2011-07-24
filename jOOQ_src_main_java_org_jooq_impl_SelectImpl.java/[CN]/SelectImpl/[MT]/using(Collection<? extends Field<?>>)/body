@@ -1,0 +1,6 @@
+{
+  getQuery().addJoinUsing(joinTable,joinType,fields);
+  joinTable=null;
+  joinType=null;
+  return this;
+}

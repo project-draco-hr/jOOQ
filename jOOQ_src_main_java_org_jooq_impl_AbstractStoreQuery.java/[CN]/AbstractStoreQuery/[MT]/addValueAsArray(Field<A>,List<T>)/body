@@ -1,0 +1,15 @@
+{
+  if (value == null) {
+    getValues().put(field,create().val(null,field));
+  }
+ else {
+    try {
+      A record=JooqUtil.newArrayRecord(field.getType(),attachable.getConfiguration());
+      record.setList(value);
+      addValue(field,record);
+    }
+ catch (    Exception e) {
+      throw new IllegalArgumentException("Field is not a valid ArrayRecord field: " + field);
+    }
+  }
+}

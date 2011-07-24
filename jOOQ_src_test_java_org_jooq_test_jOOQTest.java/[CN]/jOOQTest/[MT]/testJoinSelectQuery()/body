@@ -1,0 +1,10 @@
+{
+  SelectQuery q=create.selectQuery();
+  q.addFrom(TABLE1);
+  q.addJoin(TABLE2);
+  assertEquals("select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\", \"TABLE2\".\"ID2\", \"TABLE2\".\"NAME2\", \"TABLE2\".\"DATE2\" from \"TABLE1\" join \"TABLE2\" on 1 = 1",internal(q).toSQLReference(create,true));
+  assertEquals("select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\", \"TABLE2\".\"ID2\", \"TABLE2\".\"NAME2\", \"TABLE2\".\"DATE2\" from \"TABLE1\" join \"TABLE2\" on 1 = 1",internal(q).toSQLReference(create,false));
+  assertEquals(q,create.select().from(TABLE1).join(TABLE2).on());
+  int i=internal(q).bindReference(create,statement);
+  assertEquals(1,i);
+}

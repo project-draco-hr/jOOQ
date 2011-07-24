@@ -1,0 +1,48 @@
+{
+  final Field<Integer> IDx2=new CustomField<Integer>("ID",TBook_ID().getDataType()){
+    private static final long serialVersionUID=1L;
+    @Override public String toSQLReference(    Configuration configuration,    boolean inlineParameters){
+      if (inlineParameters) {
+        return "ID * 2";
+      }
+ else {
+        return "ID * ?";
+      }
+    }
+    @Override public int bindReference(    Configuration configuration,    PreparedStatement stmt,    int initialIndex) throws SQLException {
+      stmt.setInt(initialIndex,2);
+      return initialIndex + 1;
+    }
+  }
+;
+  Condition c=new CustomCondition(){
+    private static final long serialVersionUID=-629253722638033620L;
+    @Override public String toSQLReference(    Configuration configuration,    boolean inlineParameters){
+      StringBuilder sb=new StringBuilder();
+      sb.append(internal(IDx2).toSQLReference(configuration,inlineParameters));
+      sb.append(" > ");
+      if (inlineParameters) {
+        sb.append("3");
+      }
+ else {
+        sb.append("?");
+      }
+      return sb.toString();
+    }
+    @Override public int bindReference(    Configuration configuration,    PreparedStatement stmt,    int initialIndex) throws SQLException {
+      int result=initialIndex;
+      result=internal(IDx2).bindReference(configuration,stmt,result);
+      stmt.setInt(result++,3);
+      return result;
+    }
+  }
+;
+  Result<Record> result=create().select(TBook_ID(),IDx2).from(TBook()).where(c).orderBy(IDx2).fetch();
+  assertEquals(3,result.size());
+  assertEquals(Integer.valueOf(2),result.getValue(0,TBook_ID()));
+  assertEquals(Integer.valueOf(3),result.getValue(1,TBook_ID()));
+  assertEquals(Integer.valueOf(4),result.getValue(2,TBook_ID()));
+  assertEquals(Integer.valueOf(4),result.getValue(0,IDx2));
+  assertEquals(Integer.valueOf(6),result.getValue(1,IDx2));
+  assertEquals(Integer.valueOf(8),result.getValue(2,IDx2));
+}

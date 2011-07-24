@@ -1,0 +1,10 @@
+{
+  List<ProcedureDefinition> result=new ArrayList<ProcedureDefinition>();
+  Select<?> query=create().select(FunctionAliases.ALIAS_NAME,FunctionAliases.REMARKS,FunctionAliases.DATA_TYPE,FunctionAliases.RETURNS_RESULT).from(FUNCTION_ALIASES).where(FunctionAliases.ALIAS_SCHEMA.equal(getSchemaName())).and(FunctionAliases.RETURNS_RESULT.equal((short)1)).orderBy(FunctionAliases.ALIAS_NAME);
+  for (  Record record : query.fetch()) {
+    String name=record.getValue(FunctionAliases.ALIAS_NAME);
+    String comment=record.getValue(FunctionAliases.REMARKS);
+    result.add(new H2ProcedureDefinition(this,name,comment));
+  }
+  return result;
+}

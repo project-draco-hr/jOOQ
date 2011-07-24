@@ -1,0 +1,8 @@
+{
+  if (value == null) {
+    getValues().put(field,create().val(null,field));
+  }
+ else {
+    addValueAsArray(field,Arrays.asList(value));
+  }
+}

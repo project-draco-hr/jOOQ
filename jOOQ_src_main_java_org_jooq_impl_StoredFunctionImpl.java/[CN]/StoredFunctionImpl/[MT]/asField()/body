@@ -1,0 +1,18 @@
+{
+  if (function == null) {
+    Field<?>[] array=new Field<?>[getInParameters().size()];
+    int i=0;
+    for (    Parameter<?> p : getInParameters()) {
+      if (SQLDialect.POSTGRES == attachable.getDialect() && isOverloaded()) {
+        array[i]=getInValues().get(p).cast(p.getType());
+      }
+ else {
+        array[i]=getInValues().get(p);
+      }
+      i++;
+    }
+    String name=toSQLQualifiedName(attachable.getConfiguration());
+    function=new Function<T>(name,type,array);
+  }
+  return function;
+}

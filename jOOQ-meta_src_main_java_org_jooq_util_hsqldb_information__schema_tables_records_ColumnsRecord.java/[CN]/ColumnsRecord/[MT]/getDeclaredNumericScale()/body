@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.util.hsqldb.information_schema.tables.Columns.DECLARED_NUMERIC_SCALE);
+}

@@ -1,0 +1,7 @@
+{
+  int result=initialIndex;
+  for (  NamedQueryPart field : arguments) {
+    result=internal(field).bindReference(configuration,stmt,result);
+  }
+  return result;
+}

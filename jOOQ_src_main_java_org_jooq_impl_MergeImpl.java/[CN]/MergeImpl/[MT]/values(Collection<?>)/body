@@ -1,0 +1,4 @@
+{
+  insertMap.putValues(vals(values.toArray()));
+  return this;
+}

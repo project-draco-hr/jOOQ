@@ -1,0 +1,3 @@
+Table<R> table
+String alias
+boolean wrapInParentheses

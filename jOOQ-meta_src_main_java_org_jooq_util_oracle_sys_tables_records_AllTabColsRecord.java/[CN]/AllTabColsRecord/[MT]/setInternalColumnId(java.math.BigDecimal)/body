@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.oracle.sys.tables.AllTabCols.INTERNAL_COLUMN_ID,value);
+}

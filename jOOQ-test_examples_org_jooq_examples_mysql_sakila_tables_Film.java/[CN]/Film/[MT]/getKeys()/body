@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.examples.mysql.sakila.tables.records.FilmRecord>>asList(org.jooq.examples.mysql.sakila.Keys.KEY_film_PRIMARY);
+}

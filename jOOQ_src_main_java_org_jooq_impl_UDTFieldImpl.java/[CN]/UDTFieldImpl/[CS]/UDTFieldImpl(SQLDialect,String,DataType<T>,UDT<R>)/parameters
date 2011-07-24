@@ -1,0 +1,4 @@
+SQLDialect dialect
+String name
+DataType<T> type
+UDT<R> udt

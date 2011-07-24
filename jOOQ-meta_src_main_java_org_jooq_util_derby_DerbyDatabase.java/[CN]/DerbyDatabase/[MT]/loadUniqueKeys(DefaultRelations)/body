@@ -1,0 +1,13 @@
+{
+  for (  Record record : fetchKeys("U")) {
+    String key=record.getValue(Sysconstraints.CONSTRAINTNAME);
+    String tableName=record.getValue(Systables.TABLENAME);
+    String descriptor=record.getValueAsString(Sysconglomerates.DESCRIPTOR);
+    TableDefinition table=getTable(tableName);
+    if (table != null) {
+      for (      int index : decode(descriptor)) {
+        relations.addUniqueKey(key,table.getColumn(index));
+      }
+    }
+  }
+}

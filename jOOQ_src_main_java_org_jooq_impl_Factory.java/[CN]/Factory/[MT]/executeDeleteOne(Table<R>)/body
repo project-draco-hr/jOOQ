@@ -1,0 +1,3 @@
+{
+  return executeDeleteOne(table,trueCondition());
+}

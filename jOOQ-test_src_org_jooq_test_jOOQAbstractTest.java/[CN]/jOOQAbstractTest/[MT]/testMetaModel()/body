@@ -1,0 +1,126 @@
+{
+  Schema schema=TAuthor().getSchema();
+  if (schema != null) {
+    if (cSequences() == null) {
+      assertEquals(0,schema.getSequences().size());
+    }
+ else {
+      assertEquals(1,schema.getSequences().size());
+    }
+    int tables=14;
+    if (TArrays() == null) {
+      assertEquals(tables,schema.getTables().size());
+    }
+ else     if (getDialect() == SQLDialect.ORACLE) {
+      assertEquals(tables + 2,schema.getTables().size());
+    }
+ else     if (getDialect() == SQLDialect.HSQLDB) {
+      assertEquals(tables + 8,schema.getTables().size());
+    }
+ else {
+      assertEquals(tables + 1,schema.getTables().size());
+    }
+    if (cUAddressType() == null) {
+      assertEquals(0,schema.getUDTs().size());
+    }
+ else     if (getDialect() == SQLDialect.ORACLE) {
+      assertEquals(5,schema.getUDTs().size());
+    }
+ else {
+      assertEquals(2,schema.getUDTs().size());
+    }
+  }
+  if (getDialect() != SQLDialect.ORACLE && getDialect() != SQLDialect.SQLITE) {
+    assertNull(TAuthor().getIdentity());
+    assertNull(TBook().getIdentity());
+    assertEquals(TBookStore(),TBookStore().getIdentity().getTable());
+  }
+ else {
+    log.info("SKIPPING","Identity tests");
+  }
+  assertNotNull(TAuthor().getMainKey());
+  assertNotNull(TAuthor().getKeys());
+  assertTrue(TAuthor().getKeys().contains(TAuthor().getMainKey()));
+  assertEquals(1,TAuthor().getKeys().size());
+  assertEquals(1,TAuthor().getMainKey().getFields().size());
+  assertEquals(TAuthor_ID(),TAuthor().getMainKey().getFields().get(0));
+  if (supportsReferences()) {
+    assertEquals(0,TAuthor().getReferences().size());
+    assertEquals(2,TAuthor().getMainKey().getReferences().size());
+    assertEquals(TBook(),TAuthor().getMainKey().getReferences().get(0).getTable());
+    assertEquals(TBook(),TAuthor().getMainKey().getReferences().get(1).getTable());
+    assertEquals(Arrays.asList(),TAuthor().getReferencesTo(TBook()));
+    assertTrue(TBook().getReferences().containsAll(TAuthor().getReferencesFrom(TBook())));
+    assertTrue(TBook().getReferences().containsAll(TBook().getReferencesFrom(TAuthor())));
+    assertEquals(TBook().getReferencesTo(TAuthor()),TAuthor().getReferencesFrom(TBook()));
+  }
+ else {
+    log.info("SKIPPING","References tests");
+  }
+  for (  Field<?> field : T639().getFields()) {
+    if ("BYTE".equalsIgnoreCase(field.getName())) {
+      assertEquals(Byte.class,field.getType());
+      assertEquals(SQLDataType.TINYINT,field.getDataType());
+    }
+ else     if ("SHORT".equalsIgnoreCase(field.getName())) {
+      assertEquals(Short.class,field.getType());
+      assertEquals(SQLDataType.SMALLINT,field.getDataType());
+    }
+ else     if ("INTEGER".equalsIgnoreCase(field.getName())) {
+      assertEquals(Integer.class,field.getType());
+      assertEquals(SQLDataType.INTEGER,field.getDataType());
+    }
+ else     if ("LONG".equalsIgnoreCase(field.getName())) {
+      assertEquals(Long.class,field.getType());
+      assertEquals(SQLDataType.BIGINT,field.getDataType());
+    }
+ else     if ("BYTE_DECIMAL".equalsIgnoreCase(field.getName())) {
+      assertEquals(Byte.class,field.getType());
+      assertEquals(SQLDataType.TINYINT,field.getDataType());
+    }
+ else     if ("SHORT_DECIMAL".equalsIgnoreCase(field.getName())) {
+      assertEquals(Short.class,field.getType());
+      assertEquals(SQLDataType.SMALLINT,field.getDataType());
+    }
+ else     if ("INTEGER_DECIMAL".equalsIgnoreCase(field.getName())) {
+      assertEquals(Integer.class,field.getType());
+      assertEquals(SQLDataType.INTEGER,field.getDataType());
+    }
+ else     if ("LONG_DECIMAL".equalsIgnoreCase(field.getName())) {
+      assertEquals(Long.class,field.getType());
+      assertEquals(SQLDataType.BIGINT,field.getDataType());
+    }
+ else     if ("BIG_INTEGER".equalsIgnoreCase(field.getName())) {
+      assertEquals(BigInteger.class,field.getType());
+      assertEquals(SQLDataType.DECIMAL_INTEGER,field.getDataType());
+    }
+ else     if ("BIG_DECIMAL".equalsIgnoreCase(field.getName()) && getDialect() != SQLDialect.ORACLE && getDialect() != SQLDialect.POSTGRES && getDialect() != SQLDialect.SQLITE && getDialect() != SQLDialect.SQLSERVER) {
+      assertEquals(BigDecimal.class,field.getType());
+      assertEquals(SQLDataType.DECIMAL,field.getDataType());
+    }
+ else     if ("BIG_DECIMAL".equalsIgnoreCase(field.getName())) {
+      assertEquals(BigDecimal.class,field.getType());
+      assertEquals(SQLDataType.NUMERIC,field.getDataType());
+    }
+ else     if ("FLOAT".equalsIgnoreCase(field.getName()) && getDialect() != SQLDialect.HSQLDB && getDialect() != SQLDialect.MYSQL && getDialect() != SQLDialect.SYBASE) {
+      assertEquals(Float.class,field.getType());
+      assertEquals(SQLDataType.REAL,field.getDataType());
+    }
+ else     if ("FLOAT".equalsIgnoreCase(field.getName()) && getDialect() != SQLDialect.SYBASE) {
+      assertEquals(Double.class,field.getType());
+      assertEquals(SQLDataType.DOUBLE,field.getDataType());
+    }
+ else     if ("FLOAT".equalsIgnoreCase(field.getName())) {
+      assertEquals(Double.class,field.getType());
+      assertEquals(SQLDataType.FLOAT,field.getDataType());
+    }
+ else     if ("DOUBLE".equalsIgnoreCase(field.getName()) && getDialect() != SQLDialect.SQLSERVER) {
+      assertEquals(Double.class,field.getType());
+      assertEquals(SQLDataType.DOUBLE,field.getDataType());
+    }
+ else     if ("DOUBLE".equalsIgnoreCase(field.getName())) {
+      assertEquals(Double.class,field.getType());
+      assertEquals(SQLDataType.FLOAT,field.getDataType());
+    }
+  }
+}

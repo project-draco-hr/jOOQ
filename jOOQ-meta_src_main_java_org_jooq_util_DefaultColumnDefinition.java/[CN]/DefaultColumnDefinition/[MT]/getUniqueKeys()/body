@@ -1,0 +1,6 @@
+{
+  if (uniqueKeys == null) {
+    uniqueKeys=getDatabase().getRelations().getUniqueKeys(this);
+  }
+  return uniqueKeys;
+}

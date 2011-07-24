@@ -1,0 +1,3 @@
+{
+  super("SYSCONGLOMERATES",org.jooq.util.derby.sys.Sys.SYS);
+}

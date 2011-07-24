@@ -1,0 +1,4 @@
+{
+  super(org.jooq.SQLDialect.SYBASE,"f_author_exists",org.jooq.test.sybase.generatedclasses.Dba.DBA,org.jooq.impl.SQLDataType.INTEGER);
+  addInParameter(AUTHOR_NAME);
+}

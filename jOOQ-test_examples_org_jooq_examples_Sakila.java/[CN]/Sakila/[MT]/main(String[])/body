@@ -1,0 +1,6 @@
+{
+  Class.forName("com.mysql.jdbc.Driver");
+  Connection connection=DriverManager.getConnection("jdbc:mysql://localhost/sakila","root","");
+  Factory create=new SakilaFactory(connection);
+  System.out.println(create.select().from(CUSTOMER).join(ADDRESS).using(Address.ADDRESS_ID).join(CITY).using(City.CITY_ID).join(COUNTRY).using(Country.COUNTRY_ID).fetch().formatCSV());
+}

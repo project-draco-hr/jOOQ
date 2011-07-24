@@ -1,0 +1,7 @@
+{
+  super(org.jooq.SQLDialect.HSQLDB,"F317",org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.INTEGER);
+  addInParameter(P1);
+  addInParameter(P2);
+  addInParameter(P3);
+  addInParameter(P4);
+}

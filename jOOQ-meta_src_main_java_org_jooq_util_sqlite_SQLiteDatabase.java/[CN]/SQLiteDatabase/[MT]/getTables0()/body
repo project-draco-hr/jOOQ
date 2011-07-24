@@ -1,0 +1,8 @@
+{
+  List<TableDefinition> result=new ArrayList<TableDefinition>();
+  for (  String name : create().select(SQLiteMaster.NAME).from(SQLITE_MASTER).where(SQLiteMaster.TYPE.in("table","view")).orderBy(SQLiteMaster.NAME).fetch(SQLiteMaster.NAME)) {
+    SQLiteTableDefinition table=new SQLiteTableDefinition(this,name,"");
+    result.add(table);
+  }
+  return result;
+}

@@ -1,0 +1,5 @@
+{
+  for (  Field<?> field : fields) {
+    put(field,null);
+  }
+}

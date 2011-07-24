@@ -1,0 +1,10 @@
+{
+  Field<Number> exponent=create(configuration).literal(arg2);
+switch (configuration.getDialect()) {
+case DERBY:
+case SQLITE:
+    return arg1.ln().mul(exponent).exp();
+default :
+  return new Function<BigDecimal>("power",SQLDataType.NUMERIC,arg1,exponent);
+}
+}

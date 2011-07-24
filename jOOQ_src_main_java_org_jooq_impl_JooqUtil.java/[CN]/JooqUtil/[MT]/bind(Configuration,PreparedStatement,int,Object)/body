@@ -1,0 +1,12 @@
+{
+  if (bindings == null) {
+    return bind(configuration,stmt,initialIndex,new Object[]{null});
+  }
+ else {
+    for (    Object binding : bindings) {
+      Class<?> type=(binding == null) ? Object.class : binding.getClass();
+      bind(configuration,stmt,initialIndex++,type,binding);
+    }
+  }
+  return initialIndex;
+}

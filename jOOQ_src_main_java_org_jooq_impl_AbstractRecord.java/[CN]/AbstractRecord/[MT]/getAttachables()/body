@@ -1,0 +1,10 @@
+{
+  List<Attachable> result=new ArrayList<Attachable>();
+  for (  Field<?> field : getFields()) {
+    Object value=getValue(field);
+    if (value instanceof Attachable) {
+      result.add((Attachable)value);
+    }
+  }
+  return result;
+}

@@ -1,0 +1,14 @@
+{
+  Condition c=FIELD_ID1.equal(10);
+  assertEquals("\"TABLE1\".\"ID1\" = 10",internal(c).toSQLReference(create,true));
+  assertEquals("\"TABLE1\".\"ID1\" = ?",internal(c).toSQLReference(create,false));
+  context.checking(new Expectations(){
+{
+      oneOf(statement).setInt(1,10);
+    }
+  }
+);
+  int i=internal(c).bindReference(create,statement);
+  assertEquals(2,i);
+  context.assertIsSatisfied();
+}

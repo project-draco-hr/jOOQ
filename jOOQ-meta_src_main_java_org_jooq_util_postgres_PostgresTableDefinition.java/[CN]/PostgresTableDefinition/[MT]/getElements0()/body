@@ -1,0 +1,9 @@
+{
+  List<ColumnDefinition> result=new ArrayList<ColumnDefinition>();
+  for (  Record record : create().select(Columns.COLUMN_NAME,Columns.ORDINAL_POSITION,Columns.DATA_TYPE,Columns.NUMERIC_PRECISION,Columns.NUMERIC_SCALE,Columns.IDENTITY_GENERATION,Columns.COLUMN_DEFAULT,Columns.UDT_NAME).from(COLUMNS).where(Columns.TABLE_SCHEMA.equal(getSchemaName())).and(Columns.TABLE_NAME.equal(getName())).orderBy(Columns.ORDINAL_POSITION).fetch()) {
+    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),record.getValue(Columns.DATA_TYPE),record.getValue(Columns.NUMERIC_PRECISION),record.getValue(Columns.NUMERIC_SCALE),record.getValue(Columns.UDT_NAME));
+    ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getName()),record.getValue(Columns.COLUMN_NAME),record.getValueAsInteger(Columns.ORDINAL_POSITION),type,record.getValue(Columns.COLUMN_DEFAULT,"").startsWith("nextval"),null);
+    result.add(column);
+  }
+  return result;
+}

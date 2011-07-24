@@ -1,0 +1,5 @@
+{
+  conditionStep=ConditionStep.WHERE;
+  getQuery().addConditions(conditions);
+  return this;
+}

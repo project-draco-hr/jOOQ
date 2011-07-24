@@ -1,0 +1,3 @@
+{
+  super(org.jooq.util.oracle.sys.tables.AllColComments.ALL_COL_COMMENTS);
+}

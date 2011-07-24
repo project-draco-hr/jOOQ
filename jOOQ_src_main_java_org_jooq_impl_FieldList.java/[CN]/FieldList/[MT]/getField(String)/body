@@ -1,0 +1,8 @@
+{
+  for (  Field<?> f : this) {
+    if (f.getName().equals(name)) {
+      return f;
+    }
+  }
+  return null;
+}

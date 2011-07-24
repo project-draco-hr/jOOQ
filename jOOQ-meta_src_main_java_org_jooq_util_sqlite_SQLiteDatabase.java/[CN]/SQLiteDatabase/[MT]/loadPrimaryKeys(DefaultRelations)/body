@@ -1,0 +1,15 @@
+{
+  for (  String tableName : create().select(SQLiteMaster.NAME).from(SQLITE_MASTER).where(SQLiteMaster.TYPE.in("table")).orderBy(SQLiteMaster.NAME).fetch(SQLiteMaster.NAME)) {
+    for (    Record record : create().fetch("pragma table_info('" + tableName + "')")) {
+      if (record.getValueAsBoolean("pk",false)) {
+        String columnName=record.getValueAsString("name");
+        String key="pk_" + tableName + "_"+ columnName;
+        TableDefinition table=getTable(tableName);
+        if (table != null) {
+          ColumnDefinition column=table.getColumn(columnName);
+          relations.addPrimaryKey(key,column);
+        }
+      }
+    }
+  }
+}

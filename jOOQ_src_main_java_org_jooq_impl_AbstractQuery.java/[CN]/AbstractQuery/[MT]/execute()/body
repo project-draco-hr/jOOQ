@@ -1,0 +1,40 @@
+{
+  if (isExecutable()) {
+    StopWatch watch=new StopWatch();
+    Configuration configuration=ConfigurationRegistry.provideFor(attachable.getConfiguration());
+    if (configuration == null) {
+      configuration=attachable.getConfiguration();
+    }
+    Connection connection=configuration.getConnection();
+    if (connection == null) {
+      throw new DetachedException("Cannot execute query. No Connection configured");
+    }
+    attach(configuration);
+    watch.splitTrace("Parts attached");
+    PreparedStatement statement=null;
+    int result=0;
+    try {
+      String sql=toSQLReference(configuration);
+      watch.splitTrace("SQL rendered");
+      if (log.isDebugEnabled())       log.debug("Executing query",toSQLReference(configuration,true));
+      if (log.isTraceEnabled())       log.trace("Preparing statement",sql);
+      statement=connection.prepareStatement(sql);
+      watch.splitTrace("Statement prepared");
+      bindReference(configuration,statement);
+      watch.splitTrace("Variables bound");
+      result=execute(configuration,statement);
+      watch.splitTrace("Statement executed");
+      return result;
+    }
+  finally {
+      JooqUtil.safeClose(statement);
+      watch.splitDebug("Statement executed");
+    }
+  }
+ else {
+    if (log.isDebugEnabled()) {
+      log.debug("Query is not executable",this);
+    }
+    return 0;
+  }
+}

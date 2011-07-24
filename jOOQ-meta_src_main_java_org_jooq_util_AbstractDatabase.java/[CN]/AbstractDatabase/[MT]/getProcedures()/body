@@ -1,0 +1,14 @@
+{
+  if (procedures == null) {
+    procedures=new ArrayList<ProcedureDefinition>();
+    try {
+      List<ProcedureDefinition> p=getProcedures0();
+      procedures=filterExcludeInclude(p);
+      log.info("Procedures fetched",fetchedSize(p,procedures));
+    }
+ catch (    Exception e) {
+      log.error("Error while fetching procedures",e);
+    }
+  }
+  return procedures;
+}

@@ -1,0 +1,8 @@
+{
+  if (type instanceof MasterDataTypeDefinition) {
+    return strategy.getFullJavaClassName(((MasterDataTypeDefinition)type).table);
+  }
+ else {
+    return getType(type.getDatabase(),type.getType(),type.getPrecision(),type.getScale(),type.getUserType(),Object.class.getName());
+  }
+}

@@ -1,0 +1,3 @@
+{
+  printColumnDefinition(out,parameter,proc,Parameter.class,ParameterImpl.class);
+}

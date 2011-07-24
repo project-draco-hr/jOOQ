@@ -1,0 +1,6 @@
+{
+  org.jooq.test.h2.generatedclasses.functions.FArrays1 f=new org.jooq.test.h2.generatedclasses.functions.FArrays1();
+  f.setP1(p1);
+  f.execute(connection);
+  return f.getReturnValue();
+}

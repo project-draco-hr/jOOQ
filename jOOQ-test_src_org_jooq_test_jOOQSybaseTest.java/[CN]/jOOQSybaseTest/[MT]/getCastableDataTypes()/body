@@ -1,0 +1,3 @@
+{
+  return new DataType<?>[]{SybaseDataType.MONEY,SybaseDataType.SMALLMONEY,SybaseDataType.CHAR,SybaseDataType.LONGNVARCHAR,SybaseDataType.LONGVARCHAR,SybaseDataType.NCHAR,SybaseDataType.NTEXT,SybaseDataType.NVARCHAR,SybaseDataType.TEXT,SybaseDataType.UNIQUEIDENTIFIERSTR,SybaseDataType.VARCHAR,SybaseDataType.XML,SybaseDataType.UNIQUEIDENTIFIER,SybaseDataType.BIGINT,SybaseDataType.BIT,SybaseDataType.DECIMAL,SybaseDataType.DOUBLE,SybaseDataType.FLOAT,SybaseDataType.INTEGER,SybaseDataType.NUMERIC,SybaseDataType.REAL,SybaseDataType.SMALLINT,SybaseDataType.TINYINT};
+}

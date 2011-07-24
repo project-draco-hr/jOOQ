@@ -1,0 +1,14 @@
+{
+  SelectQuery q=create.selectQuery();
+  q.addFrom(TABLE1);
+  q.addJoin(TABLE2,FIELD_ID1.equal(FIELD_ID2));
+  assertEquals("select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\", \"TABLE2\".\"ID2\", \"TABLE2\".\"NAME2\", \"TABLE2\".\"DATE2\" from \"TABLE1\" join \"TABLE2\" on \"TABLE1\".\"ID1\" = \"TABLE2\".\"ID2\"",internal(q).toSQLReference(create,true));
+  assertEquals("select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\", \"TABLE2\".\"ID2\", \"TABLE2\".\"NAME2\", \"TABLE2\".\"DATE2\" from \"TABLE1\" join \"TABLE2\" on \"TABLE1\".\"ID1\" = \"TABLE2\".\"ID2\"",internal(q).toSQLReference(create,false));
+  assertEquals(q,create.select().from(TABLE1).join(TABLE2).on(FIELD_ID1.equal(FIELD_ID2)));
+  q.addJoin(TABLE3,FIELD_ID2.equal(FIELD_ID3));
+  assertEquals("select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\", \"TABLE2\".\"ID2\", \"TABLE2\".\"NAME2\", \"TABLE2\".\"DATE2\", \"TABLE3\".\"ID3\", \"TABLE3\".\"NAME3\", \"TABLE3\".\"DATE3\" from \"TABLE1\" join \"TABLE2\" on \"TABLE1\".\"ID1\" = \"TABLE2\".\"ID2\" join \"TABLE3\" on \"TABLE2\".\"ID2\" = \"TABLE3\".\"ID3\"",internal(q).toSQLReference(create,true));
+  assertEquals("select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\", \"TABLE2\".\"ID2\", \"TABLE2\".\"NAME2\", \"TABLE2\".\"DATE2\", \"TABLE3\".\"ID3\", \"TABLE3\".\"NAME3\", \"TABLE3\".\"DATE3\" from \"TABLE1\" join \"TABLE2\" on \"TABLE1\".\"ID1\" = \"TABLE2\".\"ID2\" join \"TABLE3\" on \"TABLE2\".\"ID2\" = \"TABLE3\".\"ID3\"",internal(q).toSQLReference(create,false));
+  assertEquals(q,create.select().from(TABLE1).join(TABLE2).on(FIELD_ID1.equal(FIELD_ID2)).join(TABLE3).on(FIELD_ID2.equal(FIELD_ID3)));
+  int i=internal(q).bindReference(create,statement);
+  assertEquals(1,i);
+}

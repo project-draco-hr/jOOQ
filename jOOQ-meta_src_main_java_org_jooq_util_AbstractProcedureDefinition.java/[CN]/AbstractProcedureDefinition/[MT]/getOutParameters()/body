@@ -1,0 +1,6 @@
+{
+  if (outParameters == null) {
+    init();
+  }
+  return outParameters;
+}

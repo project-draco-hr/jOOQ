@@ -1,0 +1,3 @@
+{
+  super("SYSTABCOL",org.jooq.util.sybase.sys.Sys.SYS);
+}

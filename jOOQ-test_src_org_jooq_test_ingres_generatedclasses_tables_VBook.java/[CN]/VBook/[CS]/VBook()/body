@@ -1,0 +1,3 @@
+{
+  super("v_book",org.jooq.test.ingres.generatedclasses.Test.TEST);
+}

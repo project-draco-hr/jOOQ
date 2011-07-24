@@ -1,0 +1,15 @@
+{
+  try {
+    Object[] list=(Object[])type.getMethod("values").invoke(type);
+    for (    Object e : list) {
+      String l=((EnumType)e).getLiteral();
+      if (l.equals(literal)) {
+        return (T)e;
+      }
+    }
+  }
+ catch (  Exception e) {
+    throw new SQLException("Unknown enum literal found : " + literal);
+  }
+  return null;
+}

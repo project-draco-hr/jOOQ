@@ -1,0 +1,16 @@
+{
+  String formatted;
+  if (value == null) {
+    formatted="{null}";
+  }
+ else   if (value.getClass() == byte[].class) {
+    formatted=new String((byte[])value);
+  }
+ else   if (value.getClass().isArray()) {
+    formatted=Arrays.asList((Object[])value).toString();
+  }
+ else {
+    formatted=value.toString();
+  }
+  return formatted;
+}

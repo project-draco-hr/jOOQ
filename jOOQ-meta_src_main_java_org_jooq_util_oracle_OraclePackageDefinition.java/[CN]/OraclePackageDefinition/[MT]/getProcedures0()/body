@@ -1,0 +1,10 @@
+{
+  List<ProcedureDefinition> result=new ArrayList<ProcedureDefinition>();
+  for (  Record record : getProcedures(true)) {
+    String name=record.getValue(o_objectName);
+    BigDecimal objectId=record.getValue(o_objectID);
+    String overload=record.getValue(o_overload);
+    result.add(new OracleProcedureDefinition(getDatabase(),this,name,"",objectId,overload));
+  }
+  return result;
+}

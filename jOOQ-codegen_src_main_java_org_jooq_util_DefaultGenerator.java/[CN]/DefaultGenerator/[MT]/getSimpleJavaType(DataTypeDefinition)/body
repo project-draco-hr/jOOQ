@@ -1,0 +1,3 @@
+{
+  return GenerationUtil.getSimpleJavaType(getJavaType(type));
+}

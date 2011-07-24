@@ -1,0 +1,7 @@
+{
+  super("decode",result.getDataType(),JooqUtil.combine(field,search,result,more));
+  this.field=field;
+  this.search=search;
+  this.result=result;
+  this.more=more;
+}

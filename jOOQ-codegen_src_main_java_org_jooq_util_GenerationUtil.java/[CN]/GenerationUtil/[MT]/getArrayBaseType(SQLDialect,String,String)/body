@@ -1,0 +1,27 @@
+{
+switch (dialect) {
+case POSTGRES:
+{
+      if (u != null && u.startsWith("_")) {
+        return u.substring(1);
+      }
+ else {
+        return u;
+      }
+    }
+case H2:
+{
+    return H2DataType.OTHER.getTypeName();
+  }
+case HSQLDB:
+{
+  if ("ARRAY".equalsIgnoreCase(t)) {
+    return "OTHER";
+  }
+ else {
+    return t.replace(" ARRAY","");
+  }
+}
+}
+throw new SQLDialectNotSupportedException("getArrayBaseType() is not supported for dialect " + dialect);
+}

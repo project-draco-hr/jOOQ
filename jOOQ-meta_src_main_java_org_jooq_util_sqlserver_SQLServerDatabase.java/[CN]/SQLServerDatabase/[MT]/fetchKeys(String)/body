@@ -1,0 +1,3 @@
+{
+  return create().select(KeyColumnUsage.CONSTRAINT_NAME,KeyColumnUsage.TABLE_NAME,KeyColumnUsage.COLUMN_NAME).from(TABLE_CONSTRAINTS).join(KEY_COLUMN_USAGE).on(TableConstraints.CONSTRAINT_NAME.equal(KeyColumnUsage.CONSTRAINT_NAME)).where(TableConstraints.CONSTRAINT_TYPE.equal(constraintType)).and(TableConstraints.TABLE_SCHEMA.equal(getSchemaName())).orderBy(KeyColumnUsage.TABLE_SCHEMA.asc(),KeyColumnUsage.TABLE_NAME.asc(),KeyColumnUsage.ORDINAL_POSITION.asc()).fetch();
+}

@@ -1,0 +1,3 @@
+{
+  super("SYSCONSTRAINTS",org.jooq.util.derby.sys.Sys.SYS);
+}

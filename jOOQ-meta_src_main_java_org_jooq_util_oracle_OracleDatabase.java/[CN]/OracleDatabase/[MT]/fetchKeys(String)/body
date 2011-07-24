@@ -1,0 +1,3 @@
+{
+  return create().select(AllConsColumns.CONSTRAINT_NAME,AllConsColumns.TABLE_NAME,AllConsColumns.COLUMN_NAME).from(ALL_CONS_COLUMNS).join(ALL_CONSTRAINTS).on(AllConsColumns.CONSTRAINT_NAME.equal(AllConstraints.CONSTRAINT_NAME)).where(AllConstraints.CONSTRAINT_TYPE.equal(constraintType)).and(AllConstraints.CONSTRAINT_NAME.notLike("BIN$%")).and(AllConsColumns.OWNER.equal(getSchemaName())).orderBy(AllConstraints.CONSTRAINT_NAME,AllConsColumns.POSITION).fetch();
+}

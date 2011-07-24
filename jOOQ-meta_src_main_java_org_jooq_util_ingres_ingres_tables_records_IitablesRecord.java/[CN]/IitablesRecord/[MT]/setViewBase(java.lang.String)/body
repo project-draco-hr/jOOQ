@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.ingres.ingres.tables.Iitables.VIEW_BASE,value);
+}

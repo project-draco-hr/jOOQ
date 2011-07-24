@@ -1,0 +1,27 @@
+{
+  List<Field<?>> fields=TBook().getFields();
+  Result<B> books=create().selectFrom(TBook()).fetch();
+  String html=books.formatHTML();
+  InputStream is=new ByteArrayInputStream(html.getBytes());
+  DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
+  DocumentBuilder db=dbf.newDocumentBuilder();
+  Document doc=db.parse(is);
+  XPathFactory xpfactory=XPathFactory.newInstance();
+  XPath xp=xpfactory.newXPath();
+  assertEquals("1",xp.evaluate("count(/table)",doc));
+  assertEquals("1",xp.evaluate("count(/table/thead)",doc));
+  assertEquals("1",xp.evaluate("count(/table/thead/tr)",doc));
+  assertEquals("0",xp.evaluate("count(/table/thead/tr/td)",doc));
+  assertEquals("" + fields.size(),xp.evaluate("count(/table/thead/tr/th)",doc));
+  for (int i=0; i < fields.size(); i++) {
+    assertEquals(fields.get(i).getName(),xp.evaluate("/table/thead/tr/th[" + (i + 1) + "]/text()",doc));
+  }
+  assertEquals("1",xp.evaluate("count(/table/tbody)",doc));
+  assertEquals("4",xp.evaluate("count(/table/tbody/tr)",doc));
+  assertEquals("" + 4 * fields.size(),xp.evaluate("count(/table/tbody/tr/td)",doc));
+  for (int j=0; j < books.size(); j++) {
+    for (int i=0; i < fields.size(); i++) {
+      assertEquals(books.getValueAsString(j,i,"{null}"),xp.evaluate("/table/tbody/tr[" + (j + 1) + "]/td["+ (i + 1)+ "]/text()",doc));
+    }
+  }
+}

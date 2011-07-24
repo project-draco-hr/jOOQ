@@ -1,0 +1,5 @@
+{
+  for (  Field<?> field : record.getFields()) {
+    addValue(record,field);
+  }
+}

@@ -1,0 +1,3 @@
+{
+  return getValuesAsBigInteger(getField(fieldIndex));
+}

@@ -1,0 +1,69 @@
+{
+  if (value == null) {
+    stream.writeObject(null);
+  }
+ else   if (type == Blob.class) {
+    stream.writeBlob((Blob)value);
+  }
+ else   if (type == Boolean.class) {
+    stream.writeBoolean((Boolean)value);
+  }
+ else   if (type == BigInteger.class) {
+    stream.writeBigDecimal(new BigDecimal((BigInteger)value));
+  }
+ else   if (type == BigDecimal.class) {
+    stream.writeBigDecimal((BigDecimal)value);
+  }
+ else   if (type == Byte.class) {
+    stream.writeByte((Byte)value);
+  }
+ else   if (type == byte[].class) {
+    stream.writeBytes((byte[])value);
+  }
+ else   if (type == Clob.class) {
+    stream.writeClob((Clob)value);
+  }
+ else   if (type == Date.class) {
+    stream.writeDate((Date)value);
+  }
+ else   if (type == Double.class) {
+    stream.writeDouble((Double)value);
+  }
+ else   if (type == Float.class) {
+    stream.writeFloat((Float)value);
+  }
+ else   if (type == Integer.class) {
+    stream.writeInt((Integer)value);
+  }
+ else   if (type == Long.class) {
+    stream.writeLong((Long)value);
+  }
+ else   if (type == Short.class) {
+    stream.writeShort((Short)value);
+  }
+ else   if (type == String.class) {
+    stream.writeString((String)value);
+  }
+ else   if (type == Time.class) {
+    stream.writeTime((Time)value);
+  }
+ else   if (type == Timestamp.class) {
+    stream.writeTimestamp((Timestamp)value);
+  }
+ else   if (ArrayRecord.class.isAssignableFrom(type)) {
+    stream.writeArray(((ArrayRecord<?>)value).createArray());
+  }
+ else   if (EnumType.class.isAssignableFrom(type)) {
+    stream.writeString(((EnumType)value).getLiteral());
+  }
+ else   if (MasterDataType.class.isAssignableFrom(type)) {
+    Object key=((MasterDataType<?>)value).getPrimaryKey();
+    writeToSQLOutput(stream,key.getClass(),key);
+  }
+ else   if (UDTRecord.class.isAssignableFrom(type)) {
+    stream.writeObject((UDTRecord<?>)value);
+  }
+ else {
+    throw new UnsupportedOperationException("Type " + type + " is not supported");
+  }
+}

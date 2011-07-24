@@ -1,0 +1,5 @@
+{
+  org.jooq.test.postgres.generatedclasses.procedures.PEnhanceAddress2 p=new org.jooq.test.postgres.generatedclasses.procedures.PEnhanceAddress2();
+  p.execute(configuration);
+  return p.getAddress();
+}

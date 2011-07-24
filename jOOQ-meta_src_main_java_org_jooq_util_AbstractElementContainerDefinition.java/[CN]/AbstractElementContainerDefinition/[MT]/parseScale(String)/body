@@ -1,0 +1,11 @@
+{
+  if (typeName.contains("(")) {
+    Matcher m=PRECISION_SCALE.matcher(typeName);
+    if (m.find()) {
+      if (!StringUtils.isBlank(m.group(2))) {
+        return Integer.valueOf(m.group(2));
+      }
+    }
+  }
+  return 0;
+}

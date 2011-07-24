@@ -1,0 +1,3 @@
+{
+  FieldTypeHelper.writeToSQLOutput(stream,field,getValue(field));
+}

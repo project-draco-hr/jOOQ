@@ -1,0 +1,2 @@
+org.jooq.Configuration configuration
+org.jooq.test.oracle.generatedclasses.udt.records.UNumberArrayRecord bookIds

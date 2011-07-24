@@ -1,0 +1,3 @@
+{
+  super("sales_by_film_category",org.jooq.examples.mysql.sakila.Sakila.SAKILA);
+}

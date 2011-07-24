@@ -1,0 +1,4 @@
+{
+  rowsFollowing(number);
+  return this;
+}

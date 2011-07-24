@@ -1,0 +1,3 @@
+UniqueKey<U> key
+Table<R> table
+TableField<R,?> fields

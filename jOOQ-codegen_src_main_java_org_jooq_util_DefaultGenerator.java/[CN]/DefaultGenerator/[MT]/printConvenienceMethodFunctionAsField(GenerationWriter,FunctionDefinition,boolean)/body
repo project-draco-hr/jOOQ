@@ -1,0 +1,52 @@
+{
+  if (function.getInParameters().size() > 254) {
+    log.warn("Too many parameters","Function " + function + " has more than 254 in parameters. Skipping generation of convenience method.");
+    return;
+  }
+  if (parametersAsField && function.getInParameters().isEmpty()) {
+    return;
+  }
+  out.println();
+  out.println("\t/**");
+  out.println("\t * Get " + strategy.getJavaIdentifierUC(function) + " as a field");
+  out.println("\t *");
+  for (  ParameterDefinition parameter : function.getInParameters()) {
+    out.println("\t * @param " + strategy.getJavaClassNameLC(parameter));
+  }
+  out.println("\t */");
+  out.print("\tpublic static ");
+  out.print(Field.class);
+  out.print("<");
+  out.print(getJavaType(function.getReturnType()));
+  out.print("> ");
+  out.print(strategy.getJavaClassNameLC(function));
+  out.print("(");
+  String separator="";
+  for (  ParameterDefinition parameter : function.getInParameters()) {
+    out.print(separator);
+    if (parametersAsField) {
+      out.print(Field.class);
+      out.print("<");
+      printExtendsNumberType(out,parameter.getType());
+      out.print(">");
+    }
+ else {
+      printNumberType(out,parameter.getType());
+    }
+    out.print(" ");
+    out.print(strategy.getJavaClassNameLC(parameter));
+    separator=", ";
+  }
+  out.println(") {");
+  out.print("\t\t");
+  out.print(strategy.getFullJavaClassName(function));
+  out.print(" f = new ");
+  out.print(strategy.getFullJavaClassName(function));
+  out.println("();");
+  for (  ParameterDefinition parameter : function.getInParameters()) {
+    out.println("\t\tf.set" + strategy.getJavaClassName(parameter) + "("+ strategy.getJavaClassNameLC(parameter)+ ");");
+  }
+  out.println();
+  out.println("\t\treturn f.asField();");
+  out.println("\t}");
+}

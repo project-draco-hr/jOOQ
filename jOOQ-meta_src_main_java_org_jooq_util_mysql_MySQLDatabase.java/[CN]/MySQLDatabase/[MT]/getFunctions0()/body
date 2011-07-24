@@ -1,0 +1,12 @@
+{
+  List<FunctionDefinition> result=new ArrayList<FunctionDefinition>();
+  for (  Record record : executeProcedureQuery(ProcType.FUNCTION)) {
+    String name=record.getValue(Proc.NAME);
+    String comment=record.getValue(Proc.COMMENT);
+    String params=new String(record.getValue(Proc.PARAM_LIST));
+    String returnValue=new String(record.getValue(Proc.RETURNS));
+    MySQLFunctionDefinition function=new MySQLFunctionDefinition(this,name,comment,params,returnValue);
+    result.add(function);
+  }
+  return result;
+}

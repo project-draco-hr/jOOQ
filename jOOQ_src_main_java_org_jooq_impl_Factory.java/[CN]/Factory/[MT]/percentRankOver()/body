@@ -1,0 +1,3 @@
+{
+  return new WindowFunction<BigDecimal>("percent_rank",SQLDataType.NUMERIC);
+}

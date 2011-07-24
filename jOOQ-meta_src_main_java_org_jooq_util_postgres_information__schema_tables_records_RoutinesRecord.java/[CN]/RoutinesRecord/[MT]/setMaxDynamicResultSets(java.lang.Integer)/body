@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.postgres.information_schema.tables.Routines.MAX_DYNAMIC_RESULT_SETS,value);
+}

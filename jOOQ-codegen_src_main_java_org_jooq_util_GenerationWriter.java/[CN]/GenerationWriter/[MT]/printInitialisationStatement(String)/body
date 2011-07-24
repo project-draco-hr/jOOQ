@@ -1,0 +1,3 @@
+{
+  initialisationStatements.add(statement);
+}

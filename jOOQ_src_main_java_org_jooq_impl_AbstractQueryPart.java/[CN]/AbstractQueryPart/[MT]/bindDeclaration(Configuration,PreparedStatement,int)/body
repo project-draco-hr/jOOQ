@@ -1,0 +1,3 @@
+{
+  return bindReference(configuration,stmt,initialIndex);
+}

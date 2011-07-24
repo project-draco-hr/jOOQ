@@ -1,0 +1,6 @@
+{
+  int result=initialIndex;
+  result=internal(lhs).bindReference(configuration,stmt,result);
+  result=internal(rhs).bindReference(configuration,stmt,result);
+  return result;
+}

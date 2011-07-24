@@ -1,0 +1,4 @@
+{
+  getQuery().addConnectByNoCycle(condition);
+  return this;
+}

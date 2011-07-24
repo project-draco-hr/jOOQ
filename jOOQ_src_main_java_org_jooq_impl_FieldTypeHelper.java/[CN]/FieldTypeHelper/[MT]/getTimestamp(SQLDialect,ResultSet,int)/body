@@ -1,0 +1,12 @@
+{
+  if (dialect == SQLDialect.SQLITE) {
+    String timestamp=rs.getString(index);
+    if (timestamp != null) {
+      return new Timestamp(parse("yyyy-MM-dd HH:mm:ss",timestamp));
+    }
+    return null;
+  }
+ else {
+    return rs.getTimestamp(index);
+  }
+}

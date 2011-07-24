@@ -1,0 +1,7 @@
+{
+  List<UDTDefinition> result=new ArrayList<UDTDefinition>();
+  for (  String name : create().selectDistinct(Datatypes.TYPENAME).from(DATATYPES).where(Datatypes.TYPESCHEMA.equal(getSchemaName())).orderBy(Datatypes.TYPENAME).fetch(Datatypes.TYPENAME)) {
+    result.add(new DB2UDTDefinition(this,name,null));
+  }
+  return result;
+}

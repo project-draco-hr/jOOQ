@@ -1,0 +1,24 @@
+{
+  Field<Integer> division1=FIELD_ID1.div(FIELD_ID1).div(1).div(2);
+  assertEquals(Integer.class,division1.getType());
+  assertEquals("(((\"TABLE1\".\"ID1\" / \"TABLE1\".\"ID1\") / 1) / 2)",internal(division1).toSQLReference(create,true));
+  assertEquals("(((\"TABLE1\".\"ID1\" / \"TABLE1\".\"ID1\") / ?) / ?)",internal(division1).toSQLReference(create,false));
+  assertEquals("(((\"TABLE1\".\"ID1\" / \"TABLE1\".\"ID1\") / 1) / 2)",internal(division1).toSQLDeclaration(create,true));
+  assertEquals("(((\"TABLE1\".\"ID1\" / \"TABLE1\".\"ID1\") / ?) / ?)",internal(division1).toSQLDeclaration(create,false));
+  Field<Integer> division2=division1.as("d");
+  assertEquals(Integer.class,division2.getType());
+  assertEquals("\"d\"",internal(division2).toSQLReference(create,true));
+  assertEquals("\"d\"",internal(division2).toSQLReference(create,false));
+  assertEquals("(((\"TABLE1\".\"ID1\" / \"TABLE1\".\"ID1\") / 1) / 2) \"d\"",internal(division2).toSQLDeclaration(create,true));
+  assertEquals("(((\"TABLE1\".\"ID1\" / \"TABLE1\".\"ID1\") / ?) / ?) \"d\"",internal(division2).toSQLDeclaration(create,false));
+  context.checking(new Expectations(){
+{
+      oneOf(statement).setInt(1,1);
+      oneOf(statement).setInt(2,2);
+    }
+  }
+);
+  int i=internal(division2).bindDeclaration(create,statement);
+  assertEquals(3,i);
+  context.assertIsSatisfied();
+}

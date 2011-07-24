@@ -1,0 +1,9 @@
+{
+  org.jooq.examples.oracle.sys.packages.dbms_xplan.DisplaySqlset p=new org.jooq.examples.oracle.sys.packages.dbms_xplan.DisplaySqlset();
+  p.setSqlsetName(sqlsetName);
+  p.setSqlId(sqlId);
+  p.setPlanHashValue(planHashValue);
+  p.setFormat(format);
+  p.setSqlsetOwner(sqlsetOwner);
+  p.execute(configuration);
+}

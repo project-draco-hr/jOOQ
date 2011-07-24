@@ -1,0 +1,5 @@
+org.jooq.Configuration configuration
+java.lang.String sqlId
+java.math.BigInteger planHashValue
+java.math.BigInteger dbId
+java.lang.String format

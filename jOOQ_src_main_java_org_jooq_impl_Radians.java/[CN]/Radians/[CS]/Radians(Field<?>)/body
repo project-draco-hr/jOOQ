@@ -1,0 +1,4 @@
+{
+  super("radians",SQLDataType.NUMERIC,argument);
+  this.argument=argument;
+}

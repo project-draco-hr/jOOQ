@@ -1,0 +1,8 @@
+{
+  if (value == null) {
+    setField(parameter,this.val(null,parameter));
+  }
+ else {
+    inValues.put(parameter,value);
+  }
+}

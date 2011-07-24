@@ -1,0 +1,3 @@
+{
+  return least(vals(others).toArray(new Field<?>[0]));
+}

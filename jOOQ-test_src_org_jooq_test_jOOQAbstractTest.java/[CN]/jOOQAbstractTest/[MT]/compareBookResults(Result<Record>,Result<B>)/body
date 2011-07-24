@@ -1,0 +1,9 @@
+{
+  assertEquals(bFromTable.getValues(TBook_ID()),bFromCursor.getValues(TBook_ID()));
+  assertEquals(bFromTable.getValues(TBook_ID().getName()),bFromCursor.getValues(TBook_ID().getName()));
+  assertEquals(bFromTable.getValues(0),bFromCursor.getValues(0));
+  assertEquals(bFromTable.getValues(TBook_AUTHOR_ID()),bFromCursor.getValues(TBook_AUTHOR_ID()));
+  assertEquals(bFromTable.getValues(TBook_CONTENT_PDF()),bFromCursor.getValues(TBook_CONTENT_PDF()));
+  assertEquals(bFromTable.getValues(TBook_CONTENT_TEXT()),bFromCursor.getValues(TBook_CONTENT_TEXT()));
+  assertEquals(bFromTable.getValues(TBook_TITLE()),bFromCursor.getValues(TBook_TITLE()));
+}

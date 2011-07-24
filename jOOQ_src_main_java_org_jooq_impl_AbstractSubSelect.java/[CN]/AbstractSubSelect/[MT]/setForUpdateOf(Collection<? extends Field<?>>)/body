@@ -1,0 +1,6 @@
+{
+  setForUpdate(true);
+  forUpdateOf.clear();
+  forUpdateOfTables.clear();
+  forUpdateOf.addAll(fields);
+}

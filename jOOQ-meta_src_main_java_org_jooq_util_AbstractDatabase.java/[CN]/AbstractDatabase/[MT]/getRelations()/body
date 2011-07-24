@@ -1,0 +1,12 @@
+{
+  if (relations == null) {
+    try {
+      relations=getRelations0();
+    }
+ catch (    Exception e) {
+      log.error("Error while fetching relations",e);
+      relations=new DefaultRelations(this);
+    }
+  }
+  return relations;
+}

@@ -1,0 +1,26 @@
+{
+  if (base == null) {
+switch (configuration.getDialect()) {
+case H2:
+case SQLSERVER:
+      return new Function<BigDecimal>("log",SQLDataType.NUMERIC,argument);
+default :
+    return new Function<BigDecimal>("ln",SQLDataType.NUMERIC,argument);
+}
+}
+ else {
+Field<Integer> baseField=create(configuration).literal(base);
+switch (configuration.getDialect()) {
+case DB2:
+case DERBY:
+case H2:
+case HSQLDB:
+case INGRES:
+case SQLSERVER:
+case SYBASE:
+  return argument.ln().div(baseField.ln());
+default :
+return new Function<BigDecimal>("log",SQLDataType.NUMERIC,baseField,argument);
+}
+}
+}

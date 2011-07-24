@@ -1,0 +1,3 @@
+{
+  super("columns",org.jooq.util.postgres.information_schema.InformationSchema.INFORMATION_SCHEMA);
+}

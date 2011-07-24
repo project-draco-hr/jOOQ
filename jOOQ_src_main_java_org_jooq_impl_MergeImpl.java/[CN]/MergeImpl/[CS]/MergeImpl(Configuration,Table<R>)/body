@@ -1,0 +1,7 @@
+{
+  super(configuration);
+  this.table=table;
+  this.on=new ConditionProviderImpl();
+  this.updateMap=new FieldMapForUpdate();
+  this.insertMap=new FieldMapForInsert();
+}

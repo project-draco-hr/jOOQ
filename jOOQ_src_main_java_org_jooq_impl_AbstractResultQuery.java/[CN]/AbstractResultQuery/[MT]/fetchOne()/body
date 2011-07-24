@@ -1,0 +1,10 @@
+{
+  Result<R> r=fetch();
+  if (r.size() == 1) {
+    return r.get(0);
+  }
+ else   if (r.size() > 1) {
+    throw new SQLException("Query returned more than one result");
+  }
+  return null;
+}

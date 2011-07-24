@@ -1,0 +1,7 @@
+{
+  Map<T,Integer> map=new LinkedHashMap<T,Integer>();
+  for (int i=0; i < sortList.size(); i++) {
+    map.put(sortList.get(i),-i);
+  }
+  return sort(map);
+}

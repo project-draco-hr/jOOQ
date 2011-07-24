@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.ingres.ingres.tables.Iitables.IS_JOURNALLED,value);
+}

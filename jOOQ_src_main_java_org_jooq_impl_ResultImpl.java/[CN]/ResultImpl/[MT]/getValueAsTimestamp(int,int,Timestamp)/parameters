@@ -1,0 +1,3 @@
+int index
+int fieldIndex
+Timestamp defaultValue

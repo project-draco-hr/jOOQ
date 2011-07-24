@@ -1,0 +1,6 @@
+{
+  JooqUtil.safeClose(rs,stmt);
+  rs=null;
+  stmt=null;
+  isClosed=true;
+}

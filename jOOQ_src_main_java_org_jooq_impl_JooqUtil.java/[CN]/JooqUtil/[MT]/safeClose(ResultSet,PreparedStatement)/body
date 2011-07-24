@@ -1,0 +1,4 @@
+{
+  safeClose(resultSet);
+  safeClose(statement);
+}

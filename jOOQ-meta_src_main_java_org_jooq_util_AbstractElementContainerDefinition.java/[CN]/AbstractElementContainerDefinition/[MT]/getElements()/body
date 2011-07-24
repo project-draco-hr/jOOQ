@@ -1,0 +1,12 @@
+{
+  if (elements == null) {
+    elements=new ArrayList<E>();
+    try {
+      elements=getElements0();
+    }
+ catch (    SQLException e) {
+      log.error("Error while initialising type",e);
+    }
+  }
+  return elements;
+}

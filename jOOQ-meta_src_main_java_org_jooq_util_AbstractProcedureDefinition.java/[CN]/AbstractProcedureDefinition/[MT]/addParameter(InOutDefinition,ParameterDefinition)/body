@@ -1,0 +1,18 @@
+{
+  allParameters.add(parameter);
+switch (inOut) {
+case IN:
+    inParameters.add(parameter);
+  break;
+case OUT:
+outParameters.add(parameter);
+break;
+case INOUT:
+inParameters.add(parameter);
+outParameters.add(parameter);
+break;
+case RETURN:
+returnValue=parameter;
+break;
+}
+}

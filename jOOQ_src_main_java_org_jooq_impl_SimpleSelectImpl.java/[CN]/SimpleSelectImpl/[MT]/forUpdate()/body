@@ -1,0 +1,4 @@
+{
+  getQuery().setForUpdate(true);
+  return this;
+}

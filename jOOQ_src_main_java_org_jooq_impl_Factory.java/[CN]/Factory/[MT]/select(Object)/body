@@ -1,0 +1,8 @@
+{
+  if (values != null && values.length == 1 && values[0] instanceof Collection) {
+    return select((Collection<? extends Field<?>>)values[0]);
+  }
+ else {
+    return new SelectImpl(this).select(constants(values));
+  }
+}

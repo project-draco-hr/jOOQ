@@ -1,0 +1,6 @@
+{
+  super("sql");
+  this.sql=sql;
+  this.bindings=(bindings == null) ? new Object[0] : bindings;
+  this.attachable=new AttachableImpl(this,configuration);
+}

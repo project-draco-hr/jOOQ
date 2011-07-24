@@ -1,0 +1,33 @@
+{
+  List<ColumnDefinition> result=new ArrayList<ColumnDefinition>();
+  for (  Record record : create().select(Iicolumns.COLUMN_SEQUENCE,Iicolumns.COLUMN_NAME.trim(),Iicolumns.COLUMN_DATATYPE.trim(),Iicolumns.COLUMN_LENGTH,Iicolumns.COLUMN_SCALE,Iicolumns.COLUMN_ALWAYS_IDENT,Iicolumns.COLUMN_BYDEFAULT_IDENT).from(IICOLUMNS).where(Iicolumns.TABLE_OWNER.equal(getSchemaName())).and(Iicolumns.TABLE_NAME.trim().equal(getName())).orderBy(Iicolumns.COLUMN_SEQUENCE).fetch()) {
+    String typeName=record.getValue(Iicolumns.COLUMN_DATATYPE.trim());
+    if (IngresDataType.INTEGER.getTypeName().equalsIgnoreCase(typeName)) {
+switch (record.getValue(Iicolumns.COLUMN_LENGTH)) {
+case 8:
+        typeName=IngresDataType.BIGINT.getTypeName();
+      break;
+case 2:
+    typeName=IngresDataType.SMALLINT.getTypeName();
+  break;
+case 1:
+typeName=IngresDataType.TINYINT.getTypeName();
+break;
+}
+}
+ else if (IngresDataType.FLOAT.getTypeName().equalsIgnoreCase(typeName)) {
+switch (record.getValue(Iicolumns.COLUMN_LENGTH)) {
+case 8:
+typeName=IngresDataType.FLOAT8.getTypeName();
+break;
+case 4:
+typeName=IngresDataType.FLOAT4.getTypeName();
+break;
+}
+}
+DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),typeName,record.getValue(Iicolumns.COLUMN_LENGTH),record.getValue(Iicolumns.COLUMN_SCALE));
+ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getName()),record.getValue(Iicolumns.COLUMN_NAME.trim()),record.getValue(Iicolumns.COLUMN_SEQUENCE),type,record.getValueAsBoolean(Iicolumns.COLUMN_ALWAYS_IDENT,false) || record.getValueAsBoolean(Iicolumns.COLUMN_BYDEFAULT_IDENT,false),null);
+result.add(column);
+}
+return result;
+}

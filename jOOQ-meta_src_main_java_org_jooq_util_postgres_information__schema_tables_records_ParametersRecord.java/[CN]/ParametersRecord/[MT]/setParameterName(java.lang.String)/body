@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.postgres.information_schema.tables.Parameters.PARAMETER_NAME,value);
+}

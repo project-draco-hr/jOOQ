@@ -1,0 +1,3 @@
+{
+  return new Function<BigDecimal>("atan",SQLDataType.NUMERIC,this);
+}

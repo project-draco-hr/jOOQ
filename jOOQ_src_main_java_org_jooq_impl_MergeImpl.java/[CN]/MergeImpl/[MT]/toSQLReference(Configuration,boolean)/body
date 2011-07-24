@@ -1,0 +1,41 @@
+{
+  StringBuilder sb=new StringBuilder();
+  sb.append("merge into ");
+  sb.append(internal(table).toSQLDeclaration(configuration,inlineParameters));
+  sb.append(" using ");
+  sb.append(wrapInParentheses(internal(using).toSQLDeclaration(configuration,inlineParameters)));
+switch (configuration.getDialect()) {
+case SQLSERVER:
+case SYBASE:
+{
+      if (using instanceof Select) {
+        int hash=Math.abs(using.hashCode());
+        sb.append(" as ");
+        sb.append("dummy_");
+        sb.append(hash);
+        sb.append("(");
+        String separator="";
+        for (        Field<?> field : ((Select<?>)using).getFields()) {
+          String name=StringUtils.isBlank(field.getName()) ? "dummy_" + hash + "_"+ Math.abs(field.hashCode()) : field.getName();
+          sb.append(separator);
+          sb.append(JooqUtil.toSQLLiteral(configuration,name));
+          separator=", ";
+        }
+        sb.append(")");
+      }
+      break;
+    }
+}
+sb.append(" on ");
+sb.append(wrapInParentheses(internal(on).toSQLReference(configuration,inlineParameters)));
+sb.append(" when matched then update set ");
+sb.append(internal(updateMap).toSQLReference(configuration,inlineParameters));
+sb.append(" when not matched then insert ");
+sb.append(internal(insertMap).toSQLReference(configuration,inlineParameters));
+switch (configuration.getDialect()) {
+case SQLSERVER:
+  sb.append(";");
+break;
+}
+return sb.toString();
+}

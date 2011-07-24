@@ -1,0 +1,3 @@
+{
+  return crossJoin(create().table(sql,bindings));
+}

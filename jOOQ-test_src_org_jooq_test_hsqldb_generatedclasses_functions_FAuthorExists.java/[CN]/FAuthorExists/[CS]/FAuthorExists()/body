@@ -1,0 +1,4 @@
+{
+  super(org.jooq.SQLDialect.HSQLDB,"F_AUTHOR_EXISTS",org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.INTEGER);
+  addInParameter(AUTHOR_NAME);
+}

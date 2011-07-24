@@ -1,0 +1,6 @@
+{
+  if (qualifiedJavaType == null) {
+    return null;
+  }
+  return qualifiedJavaType.replaceAll(".*\\.","");
+}

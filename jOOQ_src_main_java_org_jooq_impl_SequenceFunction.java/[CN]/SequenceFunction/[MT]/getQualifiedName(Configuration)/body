@@ -1,0 +1,9 @@
+{
+  StringBuilder sb=new StringBuilder();
+  if (sequence.schema != null) {
+    sb.append(internal(getMappedSchema(configuration,sequence.schema)).toSQLReference(configuration));
+    sb.append(".");
+  }
+  sb.append(JooqUtil.toSQLLiteral(configuration,sequence.name));
+  return sb.toString();
+}

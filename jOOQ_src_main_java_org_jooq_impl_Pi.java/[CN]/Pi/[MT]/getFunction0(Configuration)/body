@@ -1,0 +1,11 @@
+{
+switch (configuration.getDialect()) {
+case DB2:
+case ORACLE:
+    return create(configuration).literal(1).asin().mul(create(configuration).literal(2));
+case SQLITE:
+  return create(configuration).literal(Math.PI,BigDecimal.class);
+default :
+return new Function<BigDecimal>("pi",getDataType());
+}
+}

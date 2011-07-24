@@ -1,0 +1,3 @@
+{
+  return StringUtils.replaceEach(string,new String[]{"\"","'","<",">","&"},new String[]{"&quot;","&apos;","&lt;","&gt;","&amp;"});
+}

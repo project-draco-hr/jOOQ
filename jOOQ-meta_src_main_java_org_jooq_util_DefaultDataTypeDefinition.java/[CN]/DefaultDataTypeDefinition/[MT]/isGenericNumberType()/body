@@ -1,0 +1,9 @@
+{
+switch (getDialect()) {
+case ORACLE:
+{
+      return (OracleDataType.NUMBER.getTypeName().equalsIgnoreCase(typeName) && precision == 0 && scale == 0);
+    }
+}
+return false;
+}

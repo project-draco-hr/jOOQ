@@ -1,0 +1,17 @@
+{
+  if (values == null) {
+    throw new IllegalArgumentException("Cannot create a list of constants for null");
+  }
+ else {
+    FieldList result=new FieldList();
+    for (    Object value : values) {
+      if (value instanceof Field<?>) {
+        result.add((Field<?>)value);
+      }
+ else {
+        result.add(val(value));
+      }
+    }
+    return result;
+  }
+}

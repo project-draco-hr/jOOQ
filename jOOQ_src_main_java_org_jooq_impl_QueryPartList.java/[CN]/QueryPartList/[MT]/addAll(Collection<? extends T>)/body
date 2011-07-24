@@ -1,0 +1,3 @@
+{
+  return wrappedList.addAll(removeNulls(c));
+}

@@ -1,0 +1,3 @@
+{
+  return getValueAsDate(getField(fieldName),defaultValue);
+}

@@ -1,0 +1,17 @@
+{
+  Field<String>[] cast=create(configuration).castAll(String.class,getArguments());
+  if (cast.length == 1) {
+    return cast[0];
+  }
+  Field<String> first=cast[0];
+  Field<String>[] others=new Field[cast.length - 1];
+  System.arraycopy(cast,1,others,0,others.length);
+switch (configuration.getDialect()) {
+case MYSQL:
+    return new Function<String>("concat",SQLDataType.VARCHAR,cast);
+case SQLSERVER:
+  return new Expression<String>(ADD,first,others);
+default :
+return new Expression<String>(CONCAT,first,others);
+}
+}

@@ -1,0 +1,3 @@
+{
+  addFrom(Arrays.asList(from));
+}

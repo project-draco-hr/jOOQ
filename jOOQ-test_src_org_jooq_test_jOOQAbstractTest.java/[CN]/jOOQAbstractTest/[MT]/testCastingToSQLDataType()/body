@@ -1,0 +1,11 @@
+{
+  for (  DataType<?> type : Arrays.<DataType<?>>asList(SQLDataType.BIGINT,SQLDataType.BINARY,SQLDataType.BIT,SQLDataType.BLOB,SQLDataType.BOOLEAN,SQLDataType.CHAR,SQLDataType.CLOB,SQLDataType.DATE,SQLDataType.DECIMAL,SQLDataType.DECIMAL_INTEGER,SQLDataType.DOUBLE,SQLDataType.FLOAT,SQLDataType.INTEGER,SQLDataType.LONGNVARCHAR,SQLDataType.LONGVARBINARY,SQLDataType.LONGVARCHAR,SQLDataType.NCHAR,SQLDataType.NCLOB,SQLDataType.NUMERIC,SQLDataType.NVARCHAR,SQLDataType.REAL,SQLDataType.SMALLINT,SQLDataType.TIME,SQLDataType.TIMESTAMP,SQLDataType.TINYINT,SQLDataType.VARBINARY,SQLDataType.VARCHAR)) {
+    if (getDialect() == SQLDialect.ORACLE) {
+      if (type.getType() == byte[].class || type == SQLDataType.CLOB || type == SQLDataType.NCLOB) {
+        log.info("SKIPPING","Casting to lob type in Oracle");
+        continue;
+      }
+    }
+    assertEquals(null,create().select(val(null).cast(type)).fetchOne(0));
+  }
+}

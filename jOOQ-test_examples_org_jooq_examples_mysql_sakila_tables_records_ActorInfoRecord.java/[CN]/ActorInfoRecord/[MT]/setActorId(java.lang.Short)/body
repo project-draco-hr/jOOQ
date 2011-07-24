@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.examples.mysql.sakila.tables.ActorInfo.ACTOR_ID,value);
+}

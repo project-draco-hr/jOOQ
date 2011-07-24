@@ -1,0 +1,14 @@
+{
+  if (enums == null) {
+    enums=new ArrayList<EnumDefinition>();
+    try {
+      List<EnumDefinition> e=getEnums0();
+      enums=filterExcludeInclude(e);
+      log.info("Enums fetched",fetchedSize(e,enums));
+    }
+ catch (    Exception e) {
+      log.error("Error while fetching enums",e);
+    }
+  }
+  return enums;
+}

@@ -1,0 +1,10 @@
+{
+  int result=initialIndex;
+  for (  Field<?> field : keySet()) {
+    result=internal(field).bindReference(configuration,stmt,result);
+  }
+  for (  Field<?> field : values()) {
+    result=internal(field).bindReference(configuration,stmt,result);
+  }
+  return result;
+}

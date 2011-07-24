@@ -1,0 +1,7 @@
+{
+  Table<Record> configuredTable=new TableImpl<Record>(configuredTableName,generatedTable.getSchema());
+  for (  Field<?> field : generatedTable.getFields()) {
+    addField(configuredTable,field);
+  }
+  add(generatedTable,configuredTable);
+}

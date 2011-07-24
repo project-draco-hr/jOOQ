@@ -1,0 +1,3 @@
+{
+  return (Field)Functions.fArrays2((Field)array);
+}

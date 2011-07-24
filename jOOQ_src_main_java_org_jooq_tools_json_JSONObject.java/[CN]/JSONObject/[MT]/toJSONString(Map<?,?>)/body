@@ -1,0 +1,15 @@
+{
+  if (map == null)   return "null";
+  StringBuffer sb=new StringBuffer();
+  boolean first=true;
+  Iterator<?> iter=map.entrySet().iterator();
+  sb.append('{');
+  while (iter.hasNext()) {
+    if (first)     first=false;
+ else     sb.append(',');
+    Map.Entry<?,?> entry=(Map.Entry<?,?>)iter.next();
+    toJSONString(String.valueOf(entry.getKey()),entry.getValue(),sb);
+  }
+  sb.append('}');
+  return sb.toString();
+}

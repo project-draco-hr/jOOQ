@@ -1,0 +1,4 @@
+{
+  this.start=System.nanoTime();
+  this.split=start;
+}

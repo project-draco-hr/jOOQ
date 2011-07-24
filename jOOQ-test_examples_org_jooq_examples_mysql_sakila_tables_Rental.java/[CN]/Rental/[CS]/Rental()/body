@@ -1,0 +1,3 @@
+{
+  super("rental",org.jooq.examples.mysql.sakila.Sakila.SAKILA);
+}

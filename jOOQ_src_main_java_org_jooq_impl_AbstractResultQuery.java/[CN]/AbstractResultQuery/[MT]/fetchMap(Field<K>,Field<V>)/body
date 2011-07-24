@@ -1,0 +1,7 @@
+{
+  Map<K,V> map=new LinkedHashMap<K,V>();
+  for (  Map.Entry<K,R> entry : fetchMap(key).entrySet()) {
+    map.put(entry.getKey(),entry.getValue().getValue(value));
+  }
+  return map;
+}

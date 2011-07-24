@@ -1,0 +1,18 @@
+{
+  Field<?> f1=create.field("DECODE(TABLE1.ID, 1, 'a', 'b')");
+  Field<?> f2=create.field("DECODE(TABLE1.ID, 1, ?, ?)","a","b");
+  assertEquals("DECODE(TABLE1.ID, 1, 'a', 'b')",internal(f1).toSQLReference(create,true));
+  assertEquals("DECODE(TABLE1.ID, 1, 'a', 'b')",internal(f1).toSQLReference(create,false));
+  assertEquals("DECODE(TABLE1.ID, 1, 'a', 'b')",internal(f2).toSQLReference(create,true));
+  assertEquals("DECODE(TABLE1.ID, 1, ?, ?)",internal(f2).toSQLReference(create,false));
+  context.checking(new Expectations(){
+{
+      oneOf(statement).setString(1,"a");
+      oneOf(statement).setString(2,"b");
+    }
+  }
+);
+  int i=internal(f2).bindReference(create,statement);
+  assertEquals(3,i);
+  context.assertIsSatisfied();
+}

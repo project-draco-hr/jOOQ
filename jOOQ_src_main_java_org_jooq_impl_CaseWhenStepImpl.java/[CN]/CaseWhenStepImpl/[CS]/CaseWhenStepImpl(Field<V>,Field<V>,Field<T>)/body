@@ -1,0 +1,7 @@
+{
+  super("case",result.getDataType());
+  this.value=value;
+  this.compareValues=new ArrayList<Field<V>>();
+  this.results=new ArrayList<Field<T>>();
+  when(compareValue,result);
+}

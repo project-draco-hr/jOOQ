@@ -1,0 +1,4 @@
+{
+  super(org.jooq.SQLDialect.SQLSERVER,"f_author_exists",org.jooq.test.sqlserver.generatedclasses.Dbo.DBO,org.jooq.impl.SQLDataType.INTEGER);
+  addInParameter(AUTHOR_NAME);
+}

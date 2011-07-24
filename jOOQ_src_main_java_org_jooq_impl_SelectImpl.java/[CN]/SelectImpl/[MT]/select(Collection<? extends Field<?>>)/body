@@ -1,0 +1,4 @@
+{
+  getQuery().addSelect(fields);
+  return this;
+}

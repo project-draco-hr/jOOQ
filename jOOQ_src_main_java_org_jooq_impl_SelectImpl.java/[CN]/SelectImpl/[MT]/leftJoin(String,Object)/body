@@ -1,0 +1,3 @@
+{
+  return leftJoin(create().table(sql,bindings));
+}

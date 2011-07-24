@@ -1,0 +1,5 @@
+{
+  String dir=getTargetDirectory();
+  String pkg=getJavaPackageName(definition,suffix).replaceAll("\\.","/");
+  return new File(dir + "/" + pkg,getFileName(definition,suffix));
+}

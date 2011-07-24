@@ -1,0 +1,4 @@
+{
+  this.otherwise=result;
+  return this;
+}

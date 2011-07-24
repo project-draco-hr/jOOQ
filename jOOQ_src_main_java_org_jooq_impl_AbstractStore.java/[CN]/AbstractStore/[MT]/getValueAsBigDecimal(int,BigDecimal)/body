@@ -1,0 +1,4 @@
+{
+  final BigDecimal result=getValueAsBigDecimal(index);
+  return result == null ? defaultValue : result;
+}

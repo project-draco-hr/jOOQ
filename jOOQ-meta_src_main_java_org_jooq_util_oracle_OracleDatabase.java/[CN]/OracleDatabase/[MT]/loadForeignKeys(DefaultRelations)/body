@@ -1,0 +1,13 @@
+{
+  for (  Record record : create().select(AllConstraints.CONSTRAINT_NAME,AllConstraints.TABLE_NAME,AllConsColumns.COLUMN_NAME,AllConstraints.R_CONSTRAINT_NAME).from(ALL_CONSTRAINTS).join(ALL_CONS_COLUMNS).on(AllConstraints.OWNER.equal(AllConsColumns.OWNER)).and(AllConstraints.TABLE_NAME.equal(AllConsColumns.TABLE_NAME)).and(AllConstraints.CONSTRAINT_NAME.equal(AllConsColumns.CONSTRAINT_NAME)).where(AllConstraints.CONSTRAINT_TYPE.equal("R")).and(AllConstraints.OWNER.equal(getSchemaName())).orderBy(AllConstraints.TABLE_NAME,AllConstraints.CONSTRAINT_NAME,AllConsColumns.POSITION).fetch()) {
+    String foreignKeyName=record.getValue(AllConstraints.CONSTRAINT_NAME);
+    String foreignKeyTableName=record.getValue(AllConstraints.TABLE_NAME);
+    String foreignKeyColumnName=record.getValue(AllConsColumns.COLUMN_NAME);
+    String uniqueKeyName=record.getValue(AllConstraints.R_CONSTRAINT_NAME);
+    TableDefinition referencingTable=getTable(foreignKeyTableName);
+    if (referencingTable != null) {
+      ColumnDefinition column=referencingTable.getColumn(foreignKeyColumnName);
+      relations.addForeignKey(foreignKeyName,uniqueKeyName,column);
+    }
+  }
+}

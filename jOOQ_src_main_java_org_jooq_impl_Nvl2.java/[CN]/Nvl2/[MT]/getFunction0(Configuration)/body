@@ -1,0 +1,10 @@
+{
+switch (configuration.getDialect()) {
+case H2:
+case INGRES:
+case ORACLE:
+    return new Function<T>("nvl2",getDataType(),getArguments());
+default :
+  return create(configuration).decode().when(arg1.isNotNull(),arg2).otherwise(arg3);
+}
+}

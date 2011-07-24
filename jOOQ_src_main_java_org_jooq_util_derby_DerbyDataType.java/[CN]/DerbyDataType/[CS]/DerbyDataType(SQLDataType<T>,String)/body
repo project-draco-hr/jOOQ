@@ -1,0 +1,3 @@
+{
+  super(SQLDialect.DERBY,sqlDataType,sqlDataType.getType(),typeName);
+}

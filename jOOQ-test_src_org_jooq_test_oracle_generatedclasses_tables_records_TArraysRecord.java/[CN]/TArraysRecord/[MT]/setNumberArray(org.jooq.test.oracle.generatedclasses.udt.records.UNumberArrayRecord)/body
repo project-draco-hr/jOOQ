@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.oracle.generatedclasses.tables.TArrays.NUMBER_ARRAY,value);
+}

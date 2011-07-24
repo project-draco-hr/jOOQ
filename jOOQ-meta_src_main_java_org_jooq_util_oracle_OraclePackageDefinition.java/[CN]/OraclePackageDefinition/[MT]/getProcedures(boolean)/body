@@ -1,0 +1,9 @@
+{
+  Condition existsReturnValue=create().exists(create().selectOne().from(i).where(i.getField(AllArguments.OWNER).equal(getSchemaName())).and(i.getField(AllArguments.PACKAGE_NAME).equal(getName())).and(i_objectID.equal(o_objectID)).and(i_objectName.equal(o_objectName)).and(i.getField(AllArguments.POSITION).equal(BigDecimal.ZERO)));
+  Condition notExistsOUTParameters=create().notExists(create().selectOne().from(i).where(i.getField(AllArguments.OWNER).equal(getSchemaName())).and(i.getField(AllArguments.PACKAGE_NAME).equal(getName())).and(i_objectID.equal(o_objectID)).and(i_objectName.equal(o_objectName)).and(i.getField(AllArguments.POSITION).notEqual(BigDecimal.ZERO)).and(i.getField(AllArguments.IN_OUT).in("OUT","IN/OUT")));
+  Condition combine=existsReturnValue.and(notExistsOUTParameters);
+  if (procedures) {
+    combine=combine.not();
+  }
+  return create().selectDistinct(o_objectName,o_objectID,o_overload).from(o).where(o.getField(AllArguments.OWNER).equal(getSchemaName())).and(o.getField(AllArguments.PACKAGE_NAME).equal(getName())).and(combine).orderBy(o_objectName,o_overload).fetch();
+}

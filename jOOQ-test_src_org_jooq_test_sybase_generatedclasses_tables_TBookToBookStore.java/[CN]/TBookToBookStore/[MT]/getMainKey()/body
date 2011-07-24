@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.sybase.generatedclasses.Keys.t_book_to_book_store_pk_b2bs;
+}

@@ -1,0 +1,3 @@
+{
+  record.setValue(field,getValue(field));
+}

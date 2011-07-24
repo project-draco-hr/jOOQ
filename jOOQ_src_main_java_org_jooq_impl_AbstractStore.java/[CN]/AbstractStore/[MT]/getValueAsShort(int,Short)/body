@@ -1,0 +1,4 @@
+{
+  final Short result=getValueAsShort(index);
+  return result == null ? defaultValue : result;
+}

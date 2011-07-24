@@ -1,0 +1,2 @@
+java.sql.Connection connection
+org.jooq.test.oracle.generatedclasses.udt.records.UStringArrayRecord inArray

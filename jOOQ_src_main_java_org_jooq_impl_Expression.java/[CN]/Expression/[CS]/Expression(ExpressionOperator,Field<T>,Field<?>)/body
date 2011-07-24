@@ -1,0 +1,7 @@
+{
+  super(operator.toSQL(),lhs.getDataType());
+  this.operator=operator;
+  this.lhs=lhs;
+  this.rhs=new FieldList();
+  this.rhs.addAll(Arrays.asList(rhs));
+}

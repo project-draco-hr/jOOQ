@@ -1,0 +1,4 @@
+{
+  String result=getJavaClassName0(definition,suffix);
+  return result.substring(0,1).toLowerCase() + result.substring(1);
+}

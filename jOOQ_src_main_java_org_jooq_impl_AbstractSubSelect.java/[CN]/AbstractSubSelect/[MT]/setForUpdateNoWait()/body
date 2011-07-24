@@ -1,0 +1,5 @@
+{
+  setForUpdate(true);
+  forUpdateMode=ForUpdateMode.NOWAIT;
+  forUpdateWait=0;
+}

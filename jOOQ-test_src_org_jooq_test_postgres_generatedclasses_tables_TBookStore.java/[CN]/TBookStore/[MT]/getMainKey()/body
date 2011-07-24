@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.postgres.generatedclasses.Keys.uk_t_book_store_name;
+}

@@ -1,0 +1,5 @@
+{
+  super(configuration,name,schema,pkg);
+  this.allParameters=new ArrayList<Parameter<?>>();
+  this.outParameters=new ArrayList<Parameter<?>>();
+}

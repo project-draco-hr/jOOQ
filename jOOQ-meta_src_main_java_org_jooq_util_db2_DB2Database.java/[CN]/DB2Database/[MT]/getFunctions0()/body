@@ -1,0 +1,34 @@
+{
+  Map<String,DB2FunctionDefinition> functionMap=new HashMap<String,DB2FunctionDefinition>();
+  SelectQuery q=create().selectQuery();
+  q.addFrom(FUNCPARMS);
+  q.addJoin(FUNCTIONS,Funcparms.FUNCSCHEMA.equal(Functions.FUNCSCHEMA),Funcparms.FUNCNAME.equal(Functions.FUNCNAME));
+  q.addConditions(Funcparms.FUNCSCHEMA.equal(getSchemaName()));
+  q.addConditions(Functions.ORIGIN.equal("Q"));
+  q.addOrderBy(Funcparms.FUNCNAME);
+  q.addOrderBy(Funcparms.ORDINAL);
+  q.execute();
+  for (  Record record : q.getResult()) {
+    String name=record.getValue(Funcparms.FUNCNAME);
+    String rowType=record.getValue(Funcparms.ROWTYPE);
+    String dataType=record.getValue(Funcparms.TYPENAME);
+    Integer precision=record.getValue(Funcparms.LENGTH);
+    Short scale=record.getValue(Funcparms.SCALE);
+    int position=record.getValue(Funcparms.ORDINAL);
+    String paramName=record.getValue(Funcparms.PARMNAME);
+    DB2FunctionDefinition function=functionMap.get(name);
+    if (function == null) {
+      function=new DB2FunctionDefinition(this,null,name,null);
+      functionMap.put(name,function);
+    }
+    if ("C".equals(rowType)) {
+      function.setReturnValue(dataType,precision,scale);
+    }
+ else     if ("P".equals(rowType)) {
+      function.addParameter(paramName,position,dataType,precision,scale);
+    }
+ else {
+    }
+  }
+  return new ArrayList<FunctionDefinition>(functionMap.values());
+}

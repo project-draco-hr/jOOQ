@@ -1,0 +1,4 @@
+{
+  String castTypeName=elementType.getCastTypeName(configuration);
+  return getArrayType(configuration,castTypeName);
+}

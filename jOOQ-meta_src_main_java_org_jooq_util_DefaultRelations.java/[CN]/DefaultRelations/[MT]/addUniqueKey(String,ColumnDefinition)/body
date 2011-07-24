@@ -1,0 +1,7 @@
+{
+  if (log.isDebugEnabled()) {
+    log.debug("Adding unique key",keyName + " (" + column+ ")");
+  }
+  UniqueKeyDefinition key=getUniqueKey(keyName,column,false);
+  key.getKeyColumns().add(column);
+}

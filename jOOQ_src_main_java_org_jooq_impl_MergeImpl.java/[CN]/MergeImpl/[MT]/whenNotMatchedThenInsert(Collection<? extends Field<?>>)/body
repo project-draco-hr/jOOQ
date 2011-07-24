@@ -1,0 +1,4 @@
+{
+  insertMap.putFields(fields);
+  return this;
+}

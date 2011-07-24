@@ -1,0 +1,11 @@
+{
+  connection=getConnection();
+  if (!initialised) {
+    initialised=true;
+    execute(getCreateScript());
+  }
+  if (!reset) {
+    reset=true;
+    execute(getResetScript());
+  }
+}

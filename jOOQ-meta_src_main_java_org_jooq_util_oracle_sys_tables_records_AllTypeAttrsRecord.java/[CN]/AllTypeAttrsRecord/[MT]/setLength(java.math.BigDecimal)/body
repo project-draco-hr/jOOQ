@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.oracle.sys.tables.AllTypeAttrs.LENGTH,value);
+}

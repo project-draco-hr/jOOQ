@@ -1,0 +1,5 @@
+{
+  super(configuration,into);
+  updateMap=new FieldMapForUpdate();
+  insertMaps=new FieldMapsForInsert();
+}

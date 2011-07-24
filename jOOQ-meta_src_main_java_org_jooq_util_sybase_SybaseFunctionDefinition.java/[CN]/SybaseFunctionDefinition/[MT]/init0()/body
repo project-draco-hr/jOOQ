@@ -1,0 +1,18 @@
+{
+  for (  Record record : create().select(Sysprocparm.PARM_NAME,Sysdomain.DOMAIN_NAME,Sysprocparm.WIDTH,Sysprocparm.SCALE,Sysprocparm.PARM_ID,Sysprocparm.PARM_TYPE).from(SYSPROCPARM).join(SYSDOMAIN).on(Sysprocparm.DOMAIN_ID.equal(Sysdomain.DOMAIN_ID)).join(SYSPROCEDURE).on(Sysprocparm.PROC_ID.equal(Sysprocedure.PROC_ID)).where(Sysprocedure.PROC_NAME.equal(getName())).orderBy(Sysprocparm.PARM_ID).fetch()) {
+    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),record.getValue(Sysdomain.DOMAIN_NAME),record.getValue(Sysprocparm.WIDTH),record.getValue(Sysprocparm.SCALE));
+    String parmName=record.getValue(Sysprocparm.PARM_NAME);
+    int parmId=record.getValue(Sysprocparm.PARM_ID);
+    int parmType=record.getValue(Sysprocparm.PARM_TYPE);
+    if (parmType == 0) {
+      ParameterDefinition parameter=new DefaultParameterDefinition(this,parmName,parmId,type);
+      getInParameters().add(parameter);
+    }
+ else     if (parmType == 4) {
+      this.returnValue=new DefaultParameterDefinition(this,parmName,-1,type);
+    }
+ else {
+      throw new IllegalArgumentException("Unsupported parmtype: " + parmType);
+    }
+  }
+}

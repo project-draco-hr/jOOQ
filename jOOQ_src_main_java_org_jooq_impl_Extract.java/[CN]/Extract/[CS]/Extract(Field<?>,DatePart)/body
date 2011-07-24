@@ -1,0 +1,5 @@
+{
+  super("extract",SQLDataType.INTEGER,field);
+  this.field=field;
+  this.datePart=datePart;
+}

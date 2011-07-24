@@ -1,0 +1,3 @@
+{
+  super("SYSKEYS",org.jooq.util.derby.sys.Sys.SYS);
+}

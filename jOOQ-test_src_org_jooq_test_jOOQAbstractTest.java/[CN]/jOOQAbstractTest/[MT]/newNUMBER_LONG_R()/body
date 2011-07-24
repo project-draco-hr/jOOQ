@@ -1,0 +1,4 @@
+{
+  ArrayRecord<Long> result=TArrays_NUMBER_LONG_R().getType().getConstructor(Configuration.class).newInstance(create());
+  return result;
+}

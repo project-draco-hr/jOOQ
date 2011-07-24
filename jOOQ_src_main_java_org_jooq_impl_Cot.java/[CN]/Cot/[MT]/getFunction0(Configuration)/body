@@ -1,0 +1,9 @@
+{
+switch (configuration.getDialect()) {
+case INGRES:
+case ORACLE:
+    return argument.cos().div(argument.sin());
+default :
+  return new Function<BigDecimal>("cot",SQLDataType.NUMERIC,argument);
+}
+}

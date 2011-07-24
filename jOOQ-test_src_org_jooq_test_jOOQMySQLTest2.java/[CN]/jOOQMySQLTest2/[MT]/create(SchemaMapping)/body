@@ -1,0 +1,5 @@
+{
+  mapping=(mapping != null) ? mapping : new SchemaMapping();
+  mapping.add(TAuthor().getSchema(),TAuthor().getSchema().getName() + getSchemaSuffix());
+  return new TestFactory(getConnection(),mapping);
+}

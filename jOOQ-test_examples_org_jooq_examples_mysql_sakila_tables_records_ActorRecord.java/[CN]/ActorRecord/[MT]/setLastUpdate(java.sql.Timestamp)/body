@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.examples.mysql.sakila.tables.Actor.LAST_UPDATE,value);
+}

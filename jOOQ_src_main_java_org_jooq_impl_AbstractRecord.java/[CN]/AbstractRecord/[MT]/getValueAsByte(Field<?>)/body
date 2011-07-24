@@ -1,0 +1,3 @@
+{
+  return getValueAsByte(getIndex(field));
+}

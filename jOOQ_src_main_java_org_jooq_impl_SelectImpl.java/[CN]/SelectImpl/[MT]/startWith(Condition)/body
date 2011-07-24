@@ -1,0 +1,4 @@
+{
+  getQuery().setConnectByStartWith(condition);
+  return this;
+}

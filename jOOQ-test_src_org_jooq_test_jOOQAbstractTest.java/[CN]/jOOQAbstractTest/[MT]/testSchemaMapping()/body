@@ -1,0 +1,55 @@
+{
+switch (getDialect()) {
+case SQLITE:
+    log.info("SKIPPING","SchemaMapping tests");
+  return;
+}
+SchemaMapping mapping=new SchemaMapping();
+mapping.add(TAuthor(),TAuthor());
+mapping.add(TBook(),TBook().getName());
+mapping.add(TAuthor().getSchema(),TAuthor().getSchema().getName());
+Result<Record> result=create(mapping).select(TBook_TITLE()).from(TAuthor()).join(TBook()).on(TAuthor_ID().equal(TBook_AUTHOR_ID())).orderBy(TBook_ID().asc()).fetch();
+assertEquals("1984",result.getValue(0,TBook_TITLE()));
+assertEquals("Animal Farm",result.getValue(1,TBook_TITLE()));
+assertEquals("O Alquimista",result.getValue(2,TBook_TITLE()));
+assertEquals("Brida",result.getValue(3,TBook_TITLE()));
+switch (getDialect()) {
+case DB2:
+case DERBY:
+case H2:
+case HSQLDB:
+case INGRES:
+case ORACLE:
+case POSTGRES:
+case SQLITE:
+case SQLSERVER:
+case SYBASE:
+log.info("SKIPPING","Schema mapping test");
+return;
+case MYSQL:
+}
+mapping=new SchemaMapping();
+mapping.add(TAuthor().getSchema(),TAuthor().getSchema().getName() + "2");
+Select<Record> q=create(mapping).select(TBook_TITLE()).from(TAuthor()).join(TBook()).on(TAuthor_ID().equal(TBook_AUTHOR_ID())).orderBy(TBook_ID().asc());
+assertTrue(internal(q).toSQLReference(create(mapping)).contains(TAuthor().getSchema().getName() + "2"));
+result=q.fetch();
+assertEquals("1984",result.getValue(0,TBook_TITLE()));
+assertEquals("Animal Farm",result.getValue(1,TBook_TITLE()));
+assertEquals("O Alquimista",result.getValue(2,TBook_TITLE()));
+assertEquals("Brida",result.getValue(3,TBook_TITLE()));
+mapping=new SchemaMapping();
+mapping.add(TAuthor(),VAuthor());
+mapping.add(TBook(),VBook().getName());
+mapping.add(TAuthor().getSchema(),TAuthor().getSchema().getName() + "2");
+q=create(mapping).select(TBook_TITLE()).from(TAuthor()).join(TBook()).on(TAuthor_ID().equal(TBook_AUTHOR_ID())).orderBy(TBook_ID().asc());
+assertTrue(internal(q).toSQLReference(create(mapping)).contains(VAuthor().getName()));
+assertTrue(internal(q).toSQLReference(create(mapping)).contains(VBook().getName()));
+assertTrue(internal(q).toSQLReference(create(mapping)).contains("test2"));
+assertFalse(internal(q).toSQLReference(create(mapping)).contains(TAuthor().getName()));
+assertFalse(internal(q).toSQLReference(create(mapping)).contains(TBook().getName()));
+result=q.fetch();
+assertEquals("1984",result.getValue(0,TBook_TITLE()));
+assertEquals("Animal Farm",result.getValue(1,TBook_TITLE()));
+assertEquals("O Alquimista",result.getValue(2,TBook_TITLE()));
+assertEquals("Brida",result.getValue(3,TBook_TITLE()));
+}

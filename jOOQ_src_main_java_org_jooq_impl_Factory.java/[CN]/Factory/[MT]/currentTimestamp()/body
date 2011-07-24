@@ -1,0 +1,16 @@
+{
+switch (getDialect()) {
+case ORACLE:
+    return new Function<Timestamp>("sysdate",SQLDataType.TIMESTAMP);
+case DERBY:
+case HSQLDB:
+case INGRES:
+case POSTGRES:
+case SQLITE:
+case SQLSERVER:
+  return field("current_timestamp",Timestamp.class);
+case SYBASE:
+return field("current timestamp",Timestamp.class);
+}
+return new Function<Timestamp>("current_timestamp",SQLDataType.TIMESTAMP);
+}

@@ -1,0 +1,7 @@
+{
+  List<Field<?>> fields=new ArrayList<Field<?>>();
+  for (  T value : values) {
+    fields.add(val(value));
+  }
+  return notIn(fields.toArray(new Field<?>[0]));
+}

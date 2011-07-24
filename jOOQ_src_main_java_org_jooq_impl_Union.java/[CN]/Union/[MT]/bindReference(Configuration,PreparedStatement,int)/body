@@ -1,0 +1,7 @@
+{
+  int result=initialIndex;
+  for (  Select<R> query : queries) {
+    result=internal(query).bindReference(configuration,stmt,result);
+  }
+  return result;
+}

@@ -1,0 +1,4 @@
+{
+  getQuery().addLimit(offset,numberOfRows);
+  return this;
+}

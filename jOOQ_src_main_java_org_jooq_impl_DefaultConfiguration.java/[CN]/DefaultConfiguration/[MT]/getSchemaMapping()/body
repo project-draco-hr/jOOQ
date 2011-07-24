@@ -1,0 +1,3 @@
+{
+  return SchemaMapping.NO_MAPPING;
+}

@@ -1,0 +1,7 @@
+{
+  if (obj instanceof Definition) {
+    Definition that=(Definition)obj;
+    return that.getQualifiedName().equals(getQualifiedName());
+  }
+  return false;
+}

@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.util.db2.syscat.tables.Tables.SELFREFS);
+}

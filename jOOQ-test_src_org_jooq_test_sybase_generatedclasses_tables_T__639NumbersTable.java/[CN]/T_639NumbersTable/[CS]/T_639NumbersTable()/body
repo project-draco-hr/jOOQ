@@ -1,0 +1,3 @@
+{
+  super("t_639_numbers_table",org.jooq.test.sybase.generatedclasses.Dba.DBA);
+}

@@ -1,0 +1,7 @@
+{
+  org.jooq.examples.mysql.sakila.procedures.FilmNotInStock p=new org.jooq.examples.mysql.sakila.procedures.FilmNotInStock();
+  p.setPFilmId(pFilmId);
+  p.setPStoreId(pStoreId);
+  p.execute(configuration);
+  return p.getPFilmCount();
+}

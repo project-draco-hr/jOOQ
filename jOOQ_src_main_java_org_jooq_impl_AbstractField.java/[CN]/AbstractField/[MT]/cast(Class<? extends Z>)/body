@@ -1,0 +1,3 @@
+{
+  return cast(SQLDataType.getDataType(null,type));
+}

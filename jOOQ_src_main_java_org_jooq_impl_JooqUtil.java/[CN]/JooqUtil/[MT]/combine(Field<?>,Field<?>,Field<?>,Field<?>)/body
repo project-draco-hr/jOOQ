@@ -1,0 +1,8 @@
+{
+  Field<?>[] result=new Field<?>[fields.length + 3];
+  result[0]=field1;
+  result[1]=field2;
+  result[2]=field3;
+  System.arraycopy(fields,0,result,3,fields.length);
+  return result;
+}

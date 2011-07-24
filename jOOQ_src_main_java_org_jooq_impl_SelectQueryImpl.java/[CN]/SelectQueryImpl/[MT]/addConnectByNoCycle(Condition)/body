@@ -1,0 +1,4 @@
+{
+  getConnectBy().addConditions(condition);
+  setConnectByNoCycle(true);
+}

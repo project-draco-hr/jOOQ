@@ -1,0 +1,3 @@
+{
+  super("SYSFKEY",org.jooq.util.sybase.sys.Sys.SYS);
+}

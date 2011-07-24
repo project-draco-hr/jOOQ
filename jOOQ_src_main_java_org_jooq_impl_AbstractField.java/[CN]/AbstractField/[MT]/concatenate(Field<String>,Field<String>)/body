@@ -1,0 +1,6 @@
+{
+  List<Field<?>> list=new ArrayList<Field<?>>();
+  list.add(field);
+  list.addAll(Arrays.asList(fields));
+  return concat(list.toArray(new Field<?>[0]));
+}

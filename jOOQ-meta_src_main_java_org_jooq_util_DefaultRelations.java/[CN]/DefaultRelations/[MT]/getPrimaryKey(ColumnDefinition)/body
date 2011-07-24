@@ -1,0 +1,13 @@
+{
+  if (!primaryKeysByColumn.containsKey(column)) {
+    UniqueKeyDefinition key=null;
+    for (    UniqueKeyDefinition primaryKey : primaryKeys.values()) {
+      if (primaryKey.getKeyColumns().contains(column)) {
+        key=primaryKey;
+        break;
+      }
+    }
+    primaryKeysByColumn.put(column,key);
+  }
+  return primaryKeysByColumn.get(column);
+}

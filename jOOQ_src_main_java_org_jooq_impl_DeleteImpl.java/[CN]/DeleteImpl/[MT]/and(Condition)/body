@@ -1,0 +1,4 @@
+{
+  delegate.addConditions(condition);
+  return this;
+}

@@ -1,0 +1,5 @@
+{
+  if (insertMaps.get(index()) != null) {
+    insertMaps.add(null);
+  }
+}

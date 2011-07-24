@@ -1,0 +1,4 @@
+{
+  Class<? extends T> type=field.getType();
+  writeToSQLOutput(stream,type,value);
+}

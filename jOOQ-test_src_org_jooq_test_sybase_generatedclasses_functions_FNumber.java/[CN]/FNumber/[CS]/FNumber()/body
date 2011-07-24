@@ -1,0 +1,4 @@
+{
+  super(org.jooq.SQLDialect.SYBASE,"f_number",org.jooq.test.sybase.generatedclasses.Dba.DBA,org.jooq.impl.SQLDataType.INTEGER);
+  addInParameter(N);
+}

@@ -1,0 +1,4 @@
+{
+  super(configuration,name,schema,pkg);
+  this.type=type;
+}

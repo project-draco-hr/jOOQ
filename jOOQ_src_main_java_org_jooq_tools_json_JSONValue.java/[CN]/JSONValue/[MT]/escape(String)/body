@@ -1,0 +1,6 @@
+{
+  if (s == null)   return null;
+  StringBuffer sb=new StringBuffer();
+  escape(s,sb);
+  return sb.toString();
+}

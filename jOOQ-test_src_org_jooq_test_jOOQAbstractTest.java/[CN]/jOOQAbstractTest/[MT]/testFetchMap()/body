@@ -1,0 +1,41 @@
+{
+  try {
+    create().selectFrom(TBook()).orderBy(TBook_ID()).fetchMap(TBook_AUTHOR_ID());
+    fail();
+  }
+ catch (  SQLException expected) {
+  }
+  Map<Integer,B> map1=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchMap(TBook_ID());
+  for (  Entry<Integer,B> entry : map1.entrySet()) {
+    assertEquals(entry.getKey(),entry.getValue().getValue(TBook_ID()));
+  }
+  assertEquals(Arrays.asList(1,2,3,4),new ArrayList<Integer>(map1.keySet()));
+  Map<Integer,String> map2=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchMap(TBook_ID(),TBook_TITLE());
+  assertEquals(Arrays.asList(1,2,3,4),new ArrayList<Integer>(map2.keySet()));
+  assertEquals(Arrays.asList("1984","Animal Farm","O Alquimista","Brida"),new ArrayList<String>(map2.values()));
+  Result<B> books=create().selectFrom(TBook()).orderBy(TBook_ID()).fetch();
+  List<Map<String,Object>> list=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchMaps();
+  assertEquals(4,list.size());
+  for (int i=0; i < books.size(); i++) {
+    for (    Field<?> field : books.getFields()) {
+      assertEquals(books.getValue(i,field),list.get(i).get(field.getName()));
+    }
+  }
+  B book=create().selectFrom(TBook()).where(TBook_ID().equal(1)).fetchOne();
+  Map<String,Object> map3=create().selectFrom(TBook()).where(TBook_ID().equal(1)).fetchOneMap();
+  for (  Field<?> field : books.getFields()) {
+    assertEquals(book.getValue(field),map3.get(field.getName()));
+  }
+  try {
+    create().select(val("a"),val("a")).fetchMaps();
+    fail();
+  }
+ catch (  Exception expected) {
+  }
+  try {
+    create().select(val("a"),val("a")).fetchOneMap();
+    fail();
+  }
+ catch (  Exception expected) {
+  }
+}

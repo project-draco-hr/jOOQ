@@ -1,0 +1,4 @@
+{
+  conditionStep=ConditionStep.WHERE;
+  return andNotExists(select);
+}

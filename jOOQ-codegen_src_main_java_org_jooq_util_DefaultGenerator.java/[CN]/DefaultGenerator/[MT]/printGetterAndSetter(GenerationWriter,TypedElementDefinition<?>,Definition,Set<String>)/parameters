@@ -1,0 +1,4 @@
+GenerationWriter out
+TypedElementDefinition<?> element
+Definition type
+Set<String> reserved

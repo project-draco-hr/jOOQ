@@ -1,0 +1,13 @@
+{
+  Schema result=null;
+  if (generatedSchema != null) {
+    result=schemata.get(generatedSchema.getName());
+    if (result != null) {
+      return result;
+    }
+ else     if (generatedSchema.equals(defaultSchema)) {
+      return null;
+    }
+  }
+  return generatedSchema;
+}

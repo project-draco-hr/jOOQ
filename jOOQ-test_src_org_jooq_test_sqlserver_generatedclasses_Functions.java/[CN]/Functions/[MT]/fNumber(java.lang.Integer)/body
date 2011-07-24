@@ -1,0 +1,5 @@
+{
+  org.jooq.test.sqlserver.generatedclasses.functions.FNumber f=new org.jooq.test.sqlserver.generatedclasses.functions.FNumber();
+  f.setN(n);
+  return f.asField();
+}

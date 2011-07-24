@@ -1,0 +1,21 @@
+{
+switch (configuration.getDialect()) {
+case SQLSERVER:
+case SYBASE:
+{
+      if (inAnalyticClause) {
+        sb.append(JooqUtil.toSQLLiteral(configuration,field.getName()));
+        break;
+      }
+ else {
+      }
+    }
+default :
+{
+    sb.append(internal(field).toSQLReference(configuration,inlineParameters));
+    break;
+  }
+}
+sb.append(" ");
+sb.append(order.toSQL());
+}

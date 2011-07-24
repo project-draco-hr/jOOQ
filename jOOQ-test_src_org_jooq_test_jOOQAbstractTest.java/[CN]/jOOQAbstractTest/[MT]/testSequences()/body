@@ -1,0 +1,30 @@
+{
+  if (cSequences() == null) {
+    log.info("SKIPPING","sequences test");
+    return;
+  }
+  reset=false;
+  Sequence sequence=(Sequence)cSequences().getField("S_AUTHOR_ID").get(cSequences());
+  Field<BigInteger> nextval=sequence.nextval();
+  Field<BigInteger> currval=null;
+  assertEquals("3","" + create().select(nextval).fetchOne(nextval));
+  assertEquals("4","" + create().select(nextval).fetchOne(nextval));
+  assertEquals("5","" + create().select(nextval).fetchOne(nextval));
+switch (getDialect()) {
+case HSQLDB:
+case DERBY:
+case INGRES:
+case DB2:
+    log.info("SKIPPING","Sequence CURRVAL tests");
+  break;
+default :
+currval=sequence.currval();
+assertEquals("5","" + create().select(currval).fetchOne(currval));
+assertEquals("5","" + create().select(currval).fetchOne(currval));
+assertEquals(new BigInteger("5"),create().currval(sequence));
+assertEquals(new BigInteger("5"),create().currval(sequence));
+}
+assertEquals("6","" + create().select(nextval).fetchOne(nextval));
+assertEquals(new BigInteger("7"),create().nextval(sequence));
+assertEquals(new BigInteger("8"),create().nextval(sequence));
+}

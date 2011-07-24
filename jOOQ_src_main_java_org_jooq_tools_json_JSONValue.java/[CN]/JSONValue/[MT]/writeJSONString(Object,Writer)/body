@@ -1,0 +1,39 @@
+{
+  if (value == null) {
+    out.write("null");
+    return;
+  }
+  if (value instanceof String) {
+    out.write('\"');
+    out.write(escape((String)value));
+    out.write('\"');
+    return;
+  }
+  if (value instanceof Double) {
+    if (((Double)value).isInfinite() || ((Double)value).isNaN())     out.write("null");
+ else     out.write(value.toString());
+    return;
+  }
+  if (value instanceof Float) {
+    if (((Float)value).isInfinite() || ((Float)value).isNaN())     out.write("null");
+ else     out.write(value.toString());
+    return;
+  }
+  if (value instanceof Number) {
+    out.write(value.toString());
+    return;
+  }
+  if (value instanceof Boolean) {
+    out.write(value.toString());
+    return;
+  }
+  if (value instanceof Map) {
+    JSONObject.writeJSONString((Map<?,?>)value,out);
+    return;
+  }
+  if (value instanceof List) {
+    JSONArray.writeJSONString((List<?>)value,out);
+    return;
+  }
+  out.write(value.toString());
+}

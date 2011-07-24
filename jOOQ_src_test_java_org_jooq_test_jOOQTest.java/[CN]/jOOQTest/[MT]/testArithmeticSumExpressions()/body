@@ -1,0 +1,24 @@
+{
+  Field<Integer> sum1=FIELD_ID1.add(FIELD_ID1).add(1).add(2);
+  assertEquals(Integer.class,sum1.getType());
+  assertEquals("(\"TABLE1\".\"ID1\" + \"TABLE1\".\"ID1\" + 1 + 2)",internal(sum1).toSQLReference(create,true));
+  assertEquals("(\"TABLE1\".\"ID1\" + \"TABLE1\".\"ID1\" + ? + ?)",internal(sum1).toSQLReference(create,false));
+  assertEquals("(\"TABLE1\".\"ID1\" + \"TABLE1\".\"ID1\" + 1 + 2)",internal(sum1).toSQLDeclaration(create,true));
+  assertEquals("(\"TABLE1\".\"ID1\" + \"TABLE1\".\"ID1\" + ? + ?)",internal(sum1).toSQLDeclaration(create,false));
+  Field<Integer> sum2=sum1.as("s");
+  assertEquals(Integer.class,sum2.getType());
+  assertEquals("\"s\"",internal(sum2).toSQLReference(create,true));
+  assertEquals("\"s\"",internal(sum2).toSQLReference(create,false));
+  assertEquals("(\"TABLE1\".\"ID1\" + \"TABLE1\".\"ID1\" + 1 + 2) \"s\"",internal(sum2).toSQLDeclaration(create,true));
+  assertEquals("(\"TABLE1\".\"ID1\" + \"TABLE1\".\"ID1\" + ? + ?) \"s\"",internal(sum2).toSQLDeclaration(create,false));
+  context.checking(new Expectations(){
+{
+      oneOf(statement).setInt(1,1);
+      oneOf(statement).setInt(2,2);
+    }
+  }
+);
+  int i=internal(sum2).bindDeclaration(create,statement);
+  assertEquals(3,i);
+  context.assertIsSatisfied();
+}

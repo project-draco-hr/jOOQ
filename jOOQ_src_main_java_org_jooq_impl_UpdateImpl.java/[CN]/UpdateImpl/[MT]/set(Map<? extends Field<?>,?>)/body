@@ -1,0 +1,4 @@
+{
+  delegate.addValues(map);
+  return this;
+}

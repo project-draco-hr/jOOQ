@@ -1,0 +1,6 @@
+{
+  if (foreignKeys == null) {
+    foreignKeys=getDatabase().getRelations().getForeignKeys(this);
+  }
+  return foreignKeys;
+}

@@ -1,0 +1,11 @@
+{
+  if (value == null) {
+    return (Field<T>)NULL();
+  }
+ else   if (value instanceof Field<?>) {
+    return (Field<T>)value;
+  }
+ else {
+    return (Field<T>)val(value,getDataType(value.getClass()));
+  }
+}

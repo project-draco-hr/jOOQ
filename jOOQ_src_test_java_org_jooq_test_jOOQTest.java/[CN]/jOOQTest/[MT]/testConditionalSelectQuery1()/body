@@ -1,0 +1,7 @@
+{
+  Select<?> q=create.selectQuery();
+  Select<?> s=create.select();
+  assertEquals("select 1 from dual",internal(q).toSQLReference(create,true));
+  assertEquals("select 1 from dual",internal(q).toSQLReference(create,false));
+  assertEquals(q,s);
+}

@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.ingres.ingres.tables.Iitables.PHYS_PARTITIONS,value);
+}

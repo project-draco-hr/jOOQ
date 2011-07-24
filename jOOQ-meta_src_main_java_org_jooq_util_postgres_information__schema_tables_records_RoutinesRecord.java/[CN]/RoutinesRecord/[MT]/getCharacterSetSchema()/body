@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.util.postgres.information_schema.tables.Routines.CHARACTER_SET_SCHEMA);
+}

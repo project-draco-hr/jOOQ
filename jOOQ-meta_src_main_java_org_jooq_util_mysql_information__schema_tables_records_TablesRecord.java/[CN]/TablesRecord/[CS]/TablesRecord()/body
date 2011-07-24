@@ -1,0 +1,3 @@
+{
+  super(org.jooq.util.mysql.information_schema.tables.Tables.TABLES);
+}

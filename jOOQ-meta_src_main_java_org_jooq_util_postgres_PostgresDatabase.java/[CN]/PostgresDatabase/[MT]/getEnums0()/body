@@ -1,0 +1,14 @@
+{
+  List<EnumDefinition> result=new ArrayList<EnumDefinition>();
+  Result<Record> records=create().select(PgType.TYPNAME,PgEnum.ENUMLABEL).from(PG_ENUM).join(PG_TYPE).on("pg_enum.enumtypid = pg_type.oid").orderBy(PgEnum.ENUMTYPID).fetch();
+  DefaultEnumDefinition definition=null;
+  for (  Record record : records) {
+    String typeName=String.valueOf(record.getValue(PgType.TYPNAME));
+    if (definition == null || !definition.getName().equals(typeName)) {
+      definition=new DefaultEnumDefinition(this,typeName,null);
+      result.add(definition);
+    }
+    definition.addLiteral(String.valueOf(record.getValue(PgEnum.ENUMLABEL)));
+  }
+  return result;
+}

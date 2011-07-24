@@ -1,0 +1,3 @@
+{
+  return JooqUtil.newRecord(table.getRecordType(),table,this);
+}

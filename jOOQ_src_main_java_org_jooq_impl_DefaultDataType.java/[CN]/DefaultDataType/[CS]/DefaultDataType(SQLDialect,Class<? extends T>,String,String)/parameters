@@ -1,0 +1,4 @@
+SQLDialect dialect
+Class<? extends T> type
+String typeName
+String castTypeName

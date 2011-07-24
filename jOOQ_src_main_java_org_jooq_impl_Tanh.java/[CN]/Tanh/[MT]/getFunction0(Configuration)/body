@@ -1,0 +1,17 @@
+{
+switch (configuration.getDialect()) {
+case HSQLDB:
+case INGRES:
+case MYSQL:
+case POSTGRES:
+case SQLSERVER:
+case SYBASE:
+{
+      Field<Integer> one=create(configuration).one();
+      Field<Integer> two=create(configuration).two();
+      return argument.mul(two).exp().sub(one).div(argument.mul(two).exp().add(one));
+    }
+default :
+  return new Function<BigDecimal>("tanh",SQLDataType.NUMERIC,argument);
+}
+}

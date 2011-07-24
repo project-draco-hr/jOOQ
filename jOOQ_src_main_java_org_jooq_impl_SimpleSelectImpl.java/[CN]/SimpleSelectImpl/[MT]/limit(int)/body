@@ -1,0 +1,5 @@
+{
+  this.limit=numberOfRows;
+  getQuery().addLimit(numberOfRows);
+  return this;
+}

@@ -1,0 +1,8 @@
+{
+  int hashCode=1;
+  for (int i=0; i < size(); i++) {
+    final Object obj=getValue(i);
+    hashCode=31 * hashCode + (obj == null ? 0 : obj.hashCode());
+  }
+  return hashCode;
+}

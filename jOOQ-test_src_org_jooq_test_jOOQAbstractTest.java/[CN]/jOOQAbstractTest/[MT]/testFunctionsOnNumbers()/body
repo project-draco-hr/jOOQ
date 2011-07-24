@@ -1,0 +1,85 @@
+{
+  BigDecimal rand=create().select(create().rand()).fetchOne(create().rand());
+  assertNotNull(rand);
+  Field<Float> f1a=val(1.111f).round();
+  Field<Float> f2a=val(1.111f).round(2);
+  Field<Float> f3a=val(1.111f).floor();
+  Field<Float> f4a=val(1.111f).ceil();
+  Field<Double> f1b=val(-1.111).round();
+  Field<Double> f2b=val(-1.111).round(2);
+  Field<Double> f3b=val(-1.111).floor();
+  Field<Double> f4b=val(-1.111).ceil();
+  Record record=create().select(f1a).select(f2a,f3a).select(f4a).select(f1b,f2b,f3b,f4b).fetchOne();
+  assertNotNull(record);
+  assertEquals("1.0",record.getValueAsString(f1a));
+  assertEquals("1.11",record.getValueAsString(f2a));
+  assertEquals("1.0",record.getValueAsString(f3a));
+  assertEquals("2.0",record.getValueAsString(f4a));
+  assertEquals("-1.0",record.getValueAsString(f1b));
+  assertEquals("-1.11",record.getValueAsString(f2b));
+  assertEquals("-2.0",record.getValueAsString(f3b));
+  assertEquals("-1.0",record.getValueAsString(f4b));
+  record=create().select(val(1).greatest(2,3,4),val(1).least(2,3),val("1").greatest("2","3","4"),val("1").least("2","3")).fetchOne();
+  assertEquals(Integer.valueOf(4),record.getValue(0));
+  assertEquals(Integer.valueOf(1),record.getValue(1));
+  assertEquals("4",record.getValue(2));
+  assertEquals("1",record.getValue(3));
+switch (getDialect()) {
+case SQLITE:
+    log.info("SKIPPING","Tests for mathematical functions");
+  break;
+default :
+{
+  Field<BigDecimal> m1=val(2).sqrt();
+  Field<BigDecimal> m2=val(4).sqrt().round();
+  Field<BigDecimal> m3=val(2).exp();
+  Field<BigDecimal> m4=val(0).exp().round();
+  Field<BigDecimal> m5=val(-2).exp();
+  Field<BigDecimal> m6=val(2).ln();
+  Field<BigDecimal> m7=val(16).log(4).round();
+  Field<BigDecimal> m8=val(2).power(4).round();
+  Field<BigDecimal> m9=val(2).sqrt().power(2).sqrt().power(2).round();
+  record=create().select(m1,m2,m3,m4,m5,m6,m7,m8,m9).fetchOne();
+  assertNotNull(record);
+  assertEquals("1.414",record.getValueAsString(m1).substring(0,5));
+  assertEquals("2",record.getValueAsString(m2).substring(0,1));
+  assertEquals("7.389",record.getValueAsString(m3).substring(0,5));
+  assertEquals("1",record.getValueAsString(m4).substring(0,1));
+  assertEquals("0.135",record.getValueAsString(m5).substring(0,5));
+  assertEquals("0.693",record.getValueAsString(m6).substring(0,5));
+  assertEquals("2",record.getValueAsString(m7).substring(0,1));
+  assertEquals("16",record.getValueAsString(m8).substring(0,2));
+  assertEquals("2",record.getValueAsString(m9).substring(0,1));
+  Field<BigDecimal> t1=val(Math.PI / 6 + 0.00001).sin();
+  Field<BigDecimal> t2=val(Math.PI / 6).cos();
+  Field<BigDecimal> t3=val(Math.PI / 6).tan();
+  Field<BigDecimal> t4=val(Math.PI / 6).cot();
+  Field<BigDecimal> t6=val(1.1).deg().rad();
+  Field<BigDecimal> t7=val(Math.PI / 6).asin();
+  Field<BigDecimal> t8=val(Math.PI / 6).acos();
+  Field<BigDecimal> t9=val(Math.PI / 6).atan();
+  Field<BigDecimal> ta=val(1).atan2(1).deg().round();
+  Field<BigDecimal> tb=val(1.0).sinh().div(val(1.0).cosh()).mul(val(1.0).tanh()).mul(val(1.0).coth().power(2).add(0.1));
+  record=create().select(t1,t2,t3,t4,t6,t7,t8,t9,ta,tb).fetchOne();
+  assertNotNull(record);
+  assertEquals("0.5",record.getValueAsString(t1).substring(0,3));
+  assertEquals("0.866",record.getValueAsString(t2).substring(0,5));
+  assertEquals("0.577",record.getValueAsString(t3).substring(0,5));
+  assertEquals("1.732",record.getValueAsString(t4).substring(0,5));
+  assertEquals("1",record.getValueAsString(t6).substring(0,1));
+  assertEquals("0.551",record.getValueAsString(t7).substring(0,5));
+  assertEquals("1.019",record.getValueAsString(t8).substring(0,5));
+  assertEquals("0.482",record.getValueAsString(t9).substring(0,5));
+  assertEquals("45",record.getValueAsString(ta).substring(0,2));
+  assertEquals("1",record.getValueAsString(tb).substring(0,1));
+  break;
+}
+}
+record=create().select(val(2).sign(),val(1).sign(),val(0).sign(),val(-1).sign(),val(-2).sign()).fetchOne();
+assertNotNull(record);
+assertEquals(Integer.valueOf(1),record.getValue(0));
+assertEquals(Integer.valueOf(1),record.getValue(1));
+assertEquals(Integer.valueOf(0),record.getValue(2));
+assertEquals(Integer.valueOf(-1),record.getValue(3));
+assertEquals(Integer.valueOf(-1),record.getValue(4));
+}

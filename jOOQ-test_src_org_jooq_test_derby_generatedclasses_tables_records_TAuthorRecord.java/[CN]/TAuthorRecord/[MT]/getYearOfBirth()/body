@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.test.derby.generatedclasses.tables.TAuthor.YEAR_OF_BIRTH);
+}

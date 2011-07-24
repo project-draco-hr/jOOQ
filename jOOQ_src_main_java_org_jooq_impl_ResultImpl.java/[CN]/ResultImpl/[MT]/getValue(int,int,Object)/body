@@ -1,0 +1,3 @@
+{
+  return get(index).getValue(fieldIndex,defaultValue);
+}

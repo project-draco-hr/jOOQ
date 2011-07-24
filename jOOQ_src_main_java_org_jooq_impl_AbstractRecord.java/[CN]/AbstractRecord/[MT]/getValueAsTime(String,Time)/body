@@ -1,0 +1,3 @@
+{
+  return getValueAsTime(getField(fieldName),defaultValue);
+}

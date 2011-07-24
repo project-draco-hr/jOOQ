@@ -1,0 +1,67 @@
+{
+  if (function.getInParameters().size() > 254) {
+    log.warn("Too many parameters","Function " + function + " has more than 254 in parameters. Skipping generation of convenience method.");
+    return;
+  }
+  for (int i=0; i < 2; i++) {
+    String deprecation=null;
+    if (i == 1 && !generateDeprecated()) {
+      break;
+    }
+ else     if (i == 1) {
+      deprecation="1.6.1 [#453] This method of calling stored functions is not supported anymore<br/>\n" + "See {@link org.jooq.StoredObject#execute(java.sql.Connection)} for details.<br/><br/>\n" + "If you wish to remove this method, adapt your configuration:<br/>\n"+ "<code>generator.generate.deprecated=false</code>";
+    }
+    out.println();
+    out.println("\t/**");
+    out.println("\t * Invoke " + strategy.getJavaIdentifierUC(function));
+    out.println("\t *");
+    for (    ParameterDefinition parameter : function.getInParameters()) {
+      out.println("\t * @param " + strategy.getJavaClassNameLC(parameter));
+    }
+    printDeprecation(out,deprecation);
+    out.println("\t */");
+    if (i == 1) {
+      out.println("\t@Deprecated");
+    }
+    out.print("\tpublic static ");
+    out.print(getJavaType(function.getReturnType()));
+    out.print(" ");
+    out.print(strategy.getJavaClassNameLC(function));
+    if (i == 0) {
+      out.print("(");
+      out.print(Configuration.class);
+      out.print(" configuration");
+    }
+ else {
+      out.print("(");
+      out.print(Connection.class);
+      out.print(" connection");
+    }
+    for (    ParameterDefinition parameter : function.getInParameters()) {
+      out.print(", ");
+      printNumberType(out,parameter.getType());
+      out.print(" ");
+      out.print(strategy.getJavaClassNameLC(parameter));
+    }
+    out.print(") throws ");
+    out.print(SQLException.class);
+    out.println(" {");
+    out.print("\t\t");
+    out.print(strategy.getFullJavaClassName(function));
+    out.print(" f = new ");
+    out.print(strategy.getFullJavaClassName(function));
+    out.println("();");
+    for (    ParameterDefinition parameter : function.getInParameters()) {
+      out.println("\t\tf.set" + strategy.getJavaClassName(parameter) + "("+ strategy.getJavaClassNameLC(parameter)+ ");");
+    }
+    out.println();
+    if (i == 0) {
+      out.println("\t\tf.execute(configuration);");
+    }
+ else {
+      out.println("\t\tf.execute(connection);");
+    }
+    out.println("\t\treturn f.getReturnValue();");
+    out.println("\t}");
+  }
+}

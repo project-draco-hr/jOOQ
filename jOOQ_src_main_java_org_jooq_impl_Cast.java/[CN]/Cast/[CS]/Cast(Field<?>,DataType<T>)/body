@@ -1,0 +1,4 @@
+{
+  super("cast",type);
+  this.field=field;
+}

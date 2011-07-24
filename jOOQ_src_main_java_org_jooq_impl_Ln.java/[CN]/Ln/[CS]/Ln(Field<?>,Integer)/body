@@ -1,0 +1,5 @@
+{
+  super("ln",SQLDataType.NUMERIC,argument);
+  this.argument=argument;
+  this.base=base;
+}

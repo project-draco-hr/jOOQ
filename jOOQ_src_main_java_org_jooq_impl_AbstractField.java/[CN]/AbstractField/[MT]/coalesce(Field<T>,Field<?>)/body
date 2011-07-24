@@ -1,0 +1,10 @@
+{
+  if (option == null) {
+    return coalesce(val((T)option),options);
+  }
+  Field<?>[] arguments=new Field<?>[options.length + 2];
+  arguments[0]=this;
+  arguments[1]=option;
+  System.arraycopy(options,0,arguments,2,options.length);
+  return new Function<T>("coalesce",getDataType(),arguments);
+}

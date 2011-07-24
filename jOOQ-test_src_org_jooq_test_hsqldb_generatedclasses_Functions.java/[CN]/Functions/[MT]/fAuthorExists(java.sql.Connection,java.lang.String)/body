@@ -1,0 +1,6 @@
+{
+  org.jooq.test.hsqldb.generatedclasses.functions.FAuthorExists f=new org.jooq.test.hsqldb.generatedclasses.functions.FAuthorExists();
+  f.setAuthorName(authorName);
+  f.execute(connection);
+  return f.getReturnValue();
+}

@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.db2.syscat.tables.Attributes.COMPACT,value);
+}

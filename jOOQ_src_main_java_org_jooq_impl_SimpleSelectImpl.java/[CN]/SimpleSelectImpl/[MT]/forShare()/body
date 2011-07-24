@@ -1,0 +1,4 @@
+{
+  getQuery().setForShare(true);
+  return this;
+}

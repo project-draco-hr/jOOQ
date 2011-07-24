@@ -1,0 +1,4 @@
+{
+  final Date result=getValueAsDate(index);
+  return result == null ? defaultValue : result;
+}

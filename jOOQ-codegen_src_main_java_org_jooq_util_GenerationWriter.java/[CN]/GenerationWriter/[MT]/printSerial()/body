@@ -1,0 +1,4 @@
+{
+  println();
+  println("\tprivate static final long serialVersionUID = " + SERIAL_STATEMENT + ";");
+}

@@ -1,0 +1,3 @@
+{
+  super(org.jooq.util.hsqldb.information_schema.tables.ConstraintColumnUsage.CONSTRAINT_COLUMN_USAGE);
+}

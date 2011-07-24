@@ -1,0 +1,13 @@
+{
+  super("array_table");
+  Class<?> arrayType;
+  if (array.getDataType().getType().isArray()) {
+    arrayType=array.getDataType().getType().getComponentType();
+  }
+ else {
+    arrayType=Object.class;
+  }
+  this.array=array;
+  this.field=new FieldList();
+  this.field.add(create().field("COLUMN_VALUE",arrayType));
+}

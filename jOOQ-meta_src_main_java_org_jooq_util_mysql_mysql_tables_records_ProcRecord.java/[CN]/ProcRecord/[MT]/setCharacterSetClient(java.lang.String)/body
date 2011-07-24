@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.mysql.mysql.tables.Proc.CHARACTER_SET_CLIENT,value);
+}

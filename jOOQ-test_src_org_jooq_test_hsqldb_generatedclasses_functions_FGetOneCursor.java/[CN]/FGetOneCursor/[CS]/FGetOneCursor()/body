@@ -1,0 +1,4 @@
+{
+  super(org.jooq.SQLDialect.HSQLDB,"F_GET_ONE_CURSOR",org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.RESULT);
+  addInParameter(BOOK_IDS);
+}

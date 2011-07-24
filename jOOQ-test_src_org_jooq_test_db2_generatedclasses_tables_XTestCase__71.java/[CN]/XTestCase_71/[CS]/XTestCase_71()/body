@@ -1,0 +1,3 @@
+{
+  super("X_TEST_CASE_71",org.jooq.test.db2.generatedclasses.Lukas.LUKAS);
+}

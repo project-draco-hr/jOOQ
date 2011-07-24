@@ -1,0 +1,3 @@
+{
+  super("FUNCTION_ALIASES",org.jooq.util.h2.information_schema.InformationSchema.INFORMATION_SCHEMA);
+}

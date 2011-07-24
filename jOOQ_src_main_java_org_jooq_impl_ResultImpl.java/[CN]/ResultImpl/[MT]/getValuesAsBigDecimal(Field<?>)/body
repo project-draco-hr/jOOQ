@@ -1,0 +1,7 @@
+{
+  List<BigDecimal> result=new ArrayList<BigDecimal>();
+  for (  R record : this) {
+    result.add(record.getValueAsBigDecimal(field));
+  }
+  return result;
+}

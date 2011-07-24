@@ -1,0 +1,8 @@
+{
+  for (  EnumDefinition e : getEnums()) {
+    if (e.getName().equals(name)) {
+      return e;
+    }
+  }
+  return null;
+}

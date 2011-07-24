@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.examples.mysql.sakila.tables.records.RentalRecord,?>>asList(org.jooq.examples.mysql.sakila.Keys.fk_rental_inventory,org.jooq.examples.mysql.sakila.Keys.fk_rental_customer,org.jooq.examples.mysql.sakila.Keys.fk_rental_staff);
+}

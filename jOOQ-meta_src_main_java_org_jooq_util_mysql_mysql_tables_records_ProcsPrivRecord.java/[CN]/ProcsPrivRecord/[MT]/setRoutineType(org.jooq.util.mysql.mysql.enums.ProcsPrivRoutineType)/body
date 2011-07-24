@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.mysql.mysql.tables.ProcsPriv.ROUTINE_TYPE,value);
+}

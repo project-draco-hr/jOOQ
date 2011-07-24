@@ -1,0 +1,2 @@
+SQLDataType<T> sqlDataType
+String typeName

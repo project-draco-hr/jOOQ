@@ -1,0 +1,3 @@
+{
+  this.attachable=new AttachableImpl(this,configuration);
+}

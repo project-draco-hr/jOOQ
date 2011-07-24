@@ -1,0 +1,10 @@
+{
+  if (array == null) {
+    return null;
+  }
+ else {
+    ArrayRecord<?> record=JooqUtil.newArrayRecord(type,configuration);
+    record.set(array);
+    return record;
+  }
+}

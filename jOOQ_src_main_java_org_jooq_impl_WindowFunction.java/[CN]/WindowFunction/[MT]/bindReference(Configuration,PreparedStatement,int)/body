@@ -1,0 +1,7 @@
+{
+  int result=initialIndex;
+  result=internal(arguments).bindReference(configuration,stmt,result);
+  result=internal(partitionBy).bindReference(configuration,stmt,result);
+  result=internal(orderBy).bindReference(configuration,stmt,result);
+  return result;
+}

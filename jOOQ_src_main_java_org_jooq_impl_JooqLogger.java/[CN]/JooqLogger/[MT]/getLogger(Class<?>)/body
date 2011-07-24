@@ -1,0 +1,15 @@
+{
+  JooqLogger result=new JooqLogger();
+  try {
+    result.slf4j=org.slf4j.LoggerFactory.getLogger(clazz);
+  }
+ catch (  Throwable e1) {
+    try {
+      result.log4j=org.apache.log4j.Logger.getLogger(clazz);
+    }
+ catch (    Throwable e2) {
+      result.util=java.util.logging.Logger.getLogger(clazz.getName());
+    }
+  }
+  return result;
+}

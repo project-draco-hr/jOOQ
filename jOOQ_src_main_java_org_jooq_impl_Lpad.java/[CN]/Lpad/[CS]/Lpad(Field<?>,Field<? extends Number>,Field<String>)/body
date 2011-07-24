@@ -1,0 +1,6 @@
+{
+  super("lpad",SQLDataType.VARCHAR,field,length,character);
+  this.field=field;
+  this.length=length;
+  this.character=character;
+}

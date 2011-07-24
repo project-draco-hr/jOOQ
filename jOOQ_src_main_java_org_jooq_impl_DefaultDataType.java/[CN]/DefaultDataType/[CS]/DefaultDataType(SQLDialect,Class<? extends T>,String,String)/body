@@ -1,0 +1,3 @@
+{
+  super(dialect,null,type,typeName,castTypeName);
+}

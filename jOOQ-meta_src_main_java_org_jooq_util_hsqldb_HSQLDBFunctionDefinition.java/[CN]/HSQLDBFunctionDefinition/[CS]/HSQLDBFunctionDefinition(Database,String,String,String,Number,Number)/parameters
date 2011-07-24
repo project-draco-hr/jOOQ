@@ -1,0 +1,6 @@
+Database database
+String name
+String specificName
+String dataType
+Number precision
+Number scale

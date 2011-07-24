@@ -1,0 +1,3 @@
+{
+  return fetched.size() + " (" + included.size()+ " included, "+ (fetched.size() - included.size())+ " excluded)";
+}

@@ -1,0 +1,4 @@
+{
+  Field<BigInteger> currval=sequence.currval();
+  return select(currval).fetchOne(currval);
+}

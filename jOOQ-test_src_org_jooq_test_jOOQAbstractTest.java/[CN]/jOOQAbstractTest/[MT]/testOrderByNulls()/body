@@ -1,0 +1,12 @@
+{
+  reset=false;
+  create().insertInto(TAuthor(),TAuthor_ID(),TAuthor_LAST_NAME()).values(3,"D??blin").execute();
+  Result<A> authors=create().selectFrom(TAuthor()).orderBy(TAuthor_FIRST_NAME().asc().nullsFirst()).fetch();
+  assertNull(authors.getValue(0,TAuthor_FIRST_NAME()));
+  assertEquals("George",authors.getValue(1,TAuthor_FIRST_NAME()));
+  assertEquals("Paulo",authors.getValue(2,TAuthor_FIRST_NAME()));
+  authors=create().selectFrom(TAuthor()).orderBy(TAuthor_FIRST_NAME().asc().nullsLast()).fetch();
+  assertEquals("George",authors.getValue(0,TAuthor_FIRST_NAME()));
+  assertEquals("Paulo",authors.getValue(1,TAuthor_FIRST_NAME()));
+  assertNull(authors.getValue(2,TAuthor_FIRST_NAME()));
+}

@@ -1,0 +1,8 @@
+{
+  if (java.util.Date.class.isAssignableFrom(getType())) {
+    return new DateAdd<T>(this,value);
+  }
+ else {
+    return add(val(value));
+  }
+}

@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.derby.generatedclasses.tables.records.T_639NumbersTableRecord>>asList(org.jooq.test.derby.generatedclasses.Keys.PK_T_639_NUMBERS_TABLE);
+}

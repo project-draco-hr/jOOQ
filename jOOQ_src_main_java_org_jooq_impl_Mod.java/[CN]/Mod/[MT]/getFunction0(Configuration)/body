@@ -1,0 +1,8 @@
+{
+switch (configuration.getDialect()) {
+case SQLITE:
+case SQLSERVER:
+    return new Expression<T>(MODULO,arg1,arg2);
+}
+return new Function<T>("mod",getDataType(),arg1,arg2);
+}

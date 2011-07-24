@@ -1,0 +1,8 @@
+{
+  for (  Value<?> value : getValues()) {
+    if (value.isChanged()) {
+      return true;
+    }
+  }
+  return false;
+}

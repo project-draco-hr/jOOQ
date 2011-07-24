@@ -1,0 +1,17 @@
+{
+  List<T> result=new ArrayList<T>();
+  definitionsLoop:   for (  T definition : definitions) {
+    for (    String exclude : excludes) {
+      if (exclude != null && definition.getName().matches(exclude.trim())) {
+        continue definitionsLoop;
+      }
+    }
+    for (    String include : includes) {
+      if (include != null && definition.getName().matches(include.trim())) {
+        result.add(definition);
+        continue definitionsLoop;
+      }
+    }
+  }
+  return result;
+}

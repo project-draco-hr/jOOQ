@@ -1,0 +1,13 @@
+{
+  reset=false;
+  try {
+    create().truncate(TAuthor()).execute();
+    if (supportsReferences()) {
+      fail();
+    }
+  }
+ catch (  Exception expected) {
+  }
+  create().truncate((Table)create().table("t_book_to_book_store")).execute();
+  assertEquals(0,create().fetch(create().table("t_book_to_book_store")).size());
+}

@@ -1,0 +1,33 @@
+{
+  StringBuilder sb=new StringBuilder();
+  sb.append("<jooq-export:result xmlns:jooq-export=\"http://www.jooq.org/xsd/jooq-export-1.6.2.xsd\">");
+  sb.append("<fields>");
+  for (  Field<?> field : getFields()) {
+    sb.append("<field name=\"");
+    sb.append(escapeXML(field.getName()));
+    sb.append("\"/>");
+  }
+  sb.append("</fields>");
+  sb.append("<records>");
+  for (  Record record : this) {
+    sb.append("<record>");
+    for (    Field<?> field : getFields()) {
+      Object value=record.getValue(field);
+      sb.append("<value field=\"");
+      sb.append(escapeXML(field.getName()));
+      sb.append("\"");
+      if (value == null) {
+        sb.append("/>");
+      }
+ else {
+        sb.append(">");
+        sb.append(escapeXML(format0(value)));
+        sb.append("</value>");
+      }
+    }
+    sb.append("</record>");
+  }
+  sb.append("</records>");
+  sb.append("</jooq-export:result>");
+  return sb.toString();
+}

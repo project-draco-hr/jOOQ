@@ -1,0 +1,21 @@
+{
+  InsertQuery<Table1Record> q=create.insertQuery(TABLE1);
+  q.addValue(FIELD_ID1,10);
+  q.addValue(FIELD_NAME1,"ABC");
+  q.addValue(FIELD_DATE1,new Date(0));
+  assertEquals("insert into \"TABLE1\" (\"ID1\", \"NAME1\", \"DATE1\") values (10, 'ABC', '1970-01-01')",internal(q).toSQLReference(create,true));
+  assertEquals("insert into \"TABLE1\" (\"ID1\", \"NAME1\", \"DATE1\") values (?, ?, ?)",internal(q).toSQLReference(create,false));
+  assertEquals(q,create.insertInto(TABLE1,FIELD_ID1,FIELD_NAME1,FIELD_DATE1).values(10,"ABC",new Date(0)));
+  assertEquals(q,create.insertInto(TABLE1).set(FIELD_ID1,10).set(FIELD_NAME1,"ABC").set(FIELD_DATE1,new Date(0)));
+  context.checking(new Expectations(){
+{
+      oneOf(statement).setInt(1,10);
+      oneOf(statement).setString(2,"ABC");
+      oneOf(statement).setDate(3,new Date(0));
+    }
+  }
+);
+  int i=internal(q).bindReference(create,statement);
+  assertEquals(4,i);
+  context.assertIsSatisfied();
+}

@@ -1,0 +1,6 @@
+{
+  int result=initialIndex;
+  result=internal(search).bindReference(configuration,stmt,result);
+  result=internal(in).bindReference(configuration,stmt,result);
+  return result;
+}

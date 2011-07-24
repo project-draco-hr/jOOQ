@@ -1,0 +1,17 @@
+{
+  if (value == null)   return "null";
+  if (value instanceof String)   return "\"" + escape((String)value) + "\"";
+  if (value instanceof Double) {
+    if (((Double)value).isInfinite() || ((Double)value).isNaN())     return "null";
+ else     return value.toString();
+  }
+  if (value instanceof Float) {
+    if (((Float)value).isInfinite() || ((Float)value).isNaN())     return "null";
+ else     return value.toString();
+  }
+  if (value instanceof Number)   return value.toString();
+  if (value instanceof Boolean)   return value.toString();
+  if (value instanceof Map)   return JSONObject.toJSONString((Map<?,?>)value);
+  if (value instanceof List)   return JSONArray.toJSONString((List<?>)value);
+  return "\"" + escape(value.toString()) + "\"";
+}

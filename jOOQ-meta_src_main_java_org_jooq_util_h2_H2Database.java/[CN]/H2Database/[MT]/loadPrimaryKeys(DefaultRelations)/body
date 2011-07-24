@@ -1,0 +1,14 @@
+{
+  for (  Record record : fetchKeys("PRIMARY KEY")) {
+    String tableName=record.getValue(Constraints.TABLE_NAME);
+    String columnList=record.getValue(Constraints.COLUMN_LIST);
+    String primaryKey=record.getValue(Constraints.CONSTRAINT_NAME);
+    TableDefinition table=getTable(tableName);
+    if (table != null) {
+      String[] columnNames=columnList.split("[,]+");
+      for (      String columnName : columnNames) {
+        relations.addPrimaryKey(primaryKey,table.getColumn(columnName));
+      }
+    }
+  }
+}

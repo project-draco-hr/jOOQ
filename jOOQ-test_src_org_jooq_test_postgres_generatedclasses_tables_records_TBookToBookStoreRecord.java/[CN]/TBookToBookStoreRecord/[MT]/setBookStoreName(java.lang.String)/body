@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.postgres.generatedclasses.tables.TBookToBookStore.BOOK_STORE_NAME,value);
+}

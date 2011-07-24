@@ -1,0 +1,9 @@
+{
+  super(org.jooq.SQLDialect.SQLSERVER,"p391",org.jooq.test.sqlserver.generatedclasses.Dbo.DBO);
+  addInParameter(I1);
+  addInOutParameter(IO1);
+  addInOutParameter(O1);
+  addInOutParameter(O2);
+  addInOutParameter(IO2);
+  addInParameter(I2);
+}

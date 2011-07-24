@@ -1,0 +1,14 @@
+{
+  if (sequences == null) {
+    sequences=new ArrayList<SequenceDefinition>();
+    try {
+      List<SequenceDefinition> s=getSequences0();
+      sequences=filterExcludeInclude(s);
+      log.info("Sequences fetched",fetchedSize(s,sequences));
+    }
+ catch (    Exception e) {
+      log.error("Error while fetching sequences",e);
+    }
+  }
+  return sequences;
+}

@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.oracle.generatedclasses.tables.VAuthor.DATE_OF_BIRTH,value);
+}

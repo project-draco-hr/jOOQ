@@ -1,0 +1,3 @@
+{
+  super("pg_class",org.jooq.util.postgres.pg_catalog.PgCatalog.PG_CATALOG);
+}

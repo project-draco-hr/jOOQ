@@ -1,0 +1,3 @@
+{
+  return store == null ? Collections.<Attachable>emptyList() : store.internalAPI(AttachableInternal.class).getAttachables();
+}

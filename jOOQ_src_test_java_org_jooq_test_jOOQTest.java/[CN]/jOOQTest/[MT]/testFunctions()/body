@@ -1,0 +1,5 @@
+{
+  Field<String> f=FIELD_NAME1.replace("a","b");
+  assertEquals("replace(\"TABLE1\".\"NAME1\", 'a', 'b')",internal(f).toSQLReference(create,true));
+  assertEquals("replace(\"TABLE1\".\"NAME1\", ?, ?)",internal(f).toSQLReference(create,false));
+}

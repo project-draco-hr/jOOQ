@@ -1,0 +1,10 @@
+{
+  SelectQuery query=create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,2,3)).getQuery();
+  query.addGroupBy(TBook_ID());
+  query.addHaving(create().count().greaterOrEqual(1));
+  query.addOrderBy(TBook_ID());
+  query.execute();
+  Result<Record> result=query.getResult();
+  assertEquals(3,result.size());
+  assertEquals(Arrays.asList(1,2,3),result.getValues(TBook_ID()));
+}

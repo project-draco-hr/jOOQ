@@ -1,0 +1,3 @@
+{
+  return internal(delegate).toSQLReference(configuration,inlineParameters);
+}

@@ -1,0 +1,4 @@
+{
+  super("cot",SQLDataType.NUMERIC,argument);
+  this.argument=argument;
+}

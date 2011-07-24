@@ -1,0 +1,13 @@
+{
+  if (!foreignKeysByColumn.containsKey(column)) {
+    ForeignKeyDefinition key=null;
+    for (    ForeignKeyDefinition foreignKey : foreignKeys.values()) {
+      if (foreignKey.getKeyColumns().contains(column)) {
+        key=foreignKey;
+        break;
+      }
+    }
+    foreignKeysByColumn.put(column,key);
+  }
+  return foreignKeysByColumn.get(column);
+}

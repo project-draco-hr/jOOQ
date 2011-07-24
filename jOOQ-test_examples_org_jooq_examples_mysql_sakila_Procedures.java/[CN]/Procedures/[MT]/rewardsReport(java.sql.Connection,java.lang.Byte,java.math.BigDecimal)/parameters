@@ -1,0 +1,3 @@
+java.sql.Connection connection
+java.lang.Byte minMonthlyPurchases
+java.math.BigDecimal minDollarAmountPurchased

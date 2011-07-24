@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.util.sqlserver.information_schema.tables.Columns.UDT_SCHEMA);
+}

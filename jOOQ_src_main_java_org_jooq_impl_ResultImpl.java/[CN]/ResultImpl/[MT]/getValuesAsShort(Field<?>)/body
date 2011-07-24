@@ -1,0 +1,7 @@
+{
+  List<Short> result=new ArrayList<Short>();
+  for (  R record : this) {
+    result.add(record.getValueAsShort(field));
+  }
+  return result;
+}

@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.util.oracle.sys.tables.AllTabCols.GLOBAL_STATS);
+}

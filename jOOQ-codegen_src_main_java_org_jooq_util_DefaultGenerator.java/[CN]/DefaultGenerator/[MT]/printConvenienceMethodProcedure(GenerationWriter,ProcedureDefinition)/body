@@ -1,0 +1,91 @@
+{
+  if (procedure.getInParameters().size() > 254) {
+    log.warn("Too many parameters","Procedure " + procedure + " has more than 254 in parameters. Skipping generation of convenience method.");
+    return;
+  }
+  for (int i=0; i < 2; i++) {
+    String deprecation=null;
+    if (i == 1 && !generateDeprecated()) {
+      break;
+    }
+ else     if (i == 1) {
+      deprecation="1.6.1 [#453] This method of calling stored functions is not supported anymore<br/>\n" + "See {@link org.jooq.StoredObject#execute(java.sql.Connection)} for details.<br/><br/>\n" + "If you wish to remove this method, adapt your configuration:<br/>\n"+ "<code>generator.generate.deprecated=false</code>";
+    }
+    out.println();
+    out.println("\t/**");
+    out.println("\t * Invoke " + strategy.getJavaIdentifierUC(procedure));
+    out.println("\t *");
+    for (    ParameterDefinition parameter : procedure.getAllParameters()) {
+      out.print("\t * @param " + strategy.getJavaClassNameLC(parameter) + " ");
+      if (procedure.getInParameters().contains(parameter)) {
+        if (procedure.getOutParameters().contains(parameter)) {
+          out.println("IN OUT parameter");
+        }
+ else {
+          out.println("IN parameter");
+        }
+      }
+ else {
+        out.println("OUT parameter");
+      }
+    }
+    printDeprecation(out,deprecation);
+    out.println("\t */");
+    if (i == 1) {
+      out.println("\t@Deprecated");
+    }
+    out.print("\tpublic static ");
+    if (procedure.getOutParameters().size() == 0) {
+      out.print("void ");
+    }
+ else     if (procedure.getOutParameters().size() == 1) {
+      out.print(getJavaType(procedure.getOutParameters().get(0).getType()));
+      out.print(" ");
+    }
+ else {
+      out.print(strategy.getFullJavaClassName(procedure) + " ");
+    }
+    out.print(strategy.getJavaClassNameLC(procedure));
+    if (i == 0) {
+      out.print("(");
+      out.print(Configuration.class);
+      out.print(" configuration");
+    }
+ else {
+      out.print("(");
+      out.print(Connection.class);
+      out.print(" connection");
+    }
+    for (    ParameterDefinition parameter : procedure.getInParameters()) {
+      out.print(", ");
+      printNumberType(out,parameter.getType());
+      out.print(" ");
+      out.print(strategy.getJavaClassNameLC(parameter));
+    }
+    out.print(") throws ");
+    out.print(SQLException.class);
+    out.println(" {");
+    out.print("\t\t");
+    out.print(strategy.getFullJavaClassName(procedure));
+    out.print(" p = new ");
+    out.print(strategy.getFullJavaClassName(procedure));
+    out.println("();");
+    for (    ParameterDefinition parameter : procedure.getInParameters()) {
+      out.println("\t\tp.set" + strategy.getJavaClassName(parameter) + "("+ strategy.getJavaClassNameLC(parameter)+ ");");
+    }
+    out.println();
+    if (i == 0) {
+      out.println("\t\tp.execute(configuration);");
+    }
+ else {
+      out.println("\t\tp.execute(connection);");
+    }
+    if (procedure.getOutParameters().size() == 1) {
+      out.println("\t\treturn p.get" + strategy.getJavaClassName(procedure.getOutParameters().get(0)) + "();");
+    }
+ else     if (procedure.getOutParameters().size() > 1) {
+      out.println("\t\treturn p;");
+    }
+    out.println("\t}");
+  }
+}

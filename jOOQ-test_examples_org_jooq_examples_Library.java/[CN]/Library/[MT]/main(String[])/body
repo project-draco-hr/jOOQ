@@ -1,0 +1,13 @@
+{
+  System.out.println("First run...");
+  firstRun();
+  System.out.println();
+  System.out.println("Second run...");
+  secondRun();
+  System.out.println();
+  System.out.println("Third run...");
+  thirdRun();
+  System.out.println();
+  System.out.println("Fourth run...");
+  fourthRun();
+}

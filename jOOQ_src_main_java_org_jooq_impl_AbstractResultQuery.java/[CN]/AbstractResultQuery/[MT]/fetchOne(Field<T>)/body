@@ -1,0 +1,4 @@
+{
+  R record=fetchOne();
+  return record == null ? null : record.getValue(field);
+}

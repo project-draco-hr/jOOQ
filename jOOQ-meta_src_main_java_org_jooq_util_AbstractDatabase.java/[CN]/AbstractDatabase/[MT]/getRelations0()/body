@@ -1,0 +1,7 @@
+{
+  DefaultRelations result=new DefaultRelations(this);
+  loadPrimaryKeys(result);
+  loadUniqueKeys(result);
+  loadForeignKeys(result);
+  return result;
+}

@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.ingres.generatedclasses.tables.T_639NumbersTable.BYTE_DECIMAL,value);
+}

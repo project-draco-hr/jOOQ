@@ -1,0 +1,19 @@
+{
+  Connection connection=configuration.getConnection();
+  boolean autoCommit=false;
+  if (configuration.getDialect() == SQLDialect.POSTGRES && isSelectingRefCursor()) {
+    autoCommit=connection.getAutoCommit();
+    if (autoCommit) {
+      connection.setAutoCommit(false);
+    }
+  }
+  try {
+    result=executeLazy(configuration,statement).fetchResult();
+  }
+  finally {
+    if (autoCommit) {
+      connection.setAutoCommit(autoCommit);
+    }
+  }
+  return result.size();
+}

@@ -1,0 +1,5 @@
+{
+  for (  Entry<? extends Field<?>,?> entry : map.entrySet()) {
+    put(entry.getKey(),val(entry.getValue()));
+  }
+}

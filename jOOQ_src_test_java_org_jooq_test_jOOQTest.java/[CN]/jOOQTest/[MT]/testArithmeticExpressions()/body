@@ -1,0 +1,21 @@
+{
+  Field<? extends Number> f;
+  f=FIELD_ID1.add(1).sub(2).add(3);
+  assertEquals("(((\"TABLE1\".\"ID1\" + 1) - 2) + 3)",internal(f).toSQLReference(create,true));
+  assertEquals("(((\"TABLE1\".\"ID1\" + ?) - ?) + ?)",internal(f).toSQLReference(create,false));
+  f=FIELD_ID1.add(1).add(2).sub(3);
+  assertEquals("((\"TABLE1\".\"ID1\" + 1 + 2) - 3)",internal(f).toSQLReference(create,true));
+  assertEquals("((\"TABLE1\".\"ID1\" + ? + ?) - ?)",internal(f).toSQLReference(create,false));
+  f=FIELD_ID1.add(1).sub(create.val(2).add(3));
+  assertEquals("((\"TABLE1\".\"ID1\" + 1) - (2 + 3))",internal(f).toSQLReference(create,true));
+  assertEquals("((\"TABLE1\".\"ID1\" + ?) - (? + ?))",internal(f).toSQLReference(create,false));
+  f=FIELD_ID1.mul(1).div(2).mul(3);
+  assertEquals("(((\"TABLE1\".\"ID1\" * 1) / 2) * 3)",internal(f).toSQLReference(create,true));
+  assertEquals("(((\"TABLE1\".\"ID1\" * ?) / ?) * ?)",internal(f).toSQLReference(create,false));
+  f=FIELD_ID1.mul(1).mul(2).div(3);
+  assertEquals("((\"TABLE1\".\"ID1\" * 1 * 2) / 3)",internal(f).toSQLReference(create,true));
+  assertEquals("((\"TABLE1\".\"ID1\" * ? * ?) / ?)",internal(f).toSQLReference(create,false));
+  f=FIELD_ID1.mul(1).div(create.val(2).mul(3));
+  assertEquals("((\"TABLE1\".\"ID1\" * 1) / (2 * 3))",internal(f).toSQLReference(create,true));
+  assertEquals("((\"TABLE1\".\"ID1\" * ?) / (? * ?))",internal(f).toSQLReference(create,false));
+}

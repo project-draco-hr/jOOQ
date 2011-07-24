@@ -1,0 +1,3 @@
+{
+  return new Function<T>("abs",getDataType(),this);
+}

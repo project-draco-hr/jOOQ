@@ -1,0 +1,14 @@
+{
+  if (value instanceof Field<?>) {
+    return (Field<T>)value;
+  }
+ else   if (value instanceof UDTRecord) {
+    return new UDTConstant((UDTRecord)value);
+  }
+ else   if (value instanceof ArrayRecord) {
+    return new ArrayConstant((ArrayRecord)value);
+  }
+ else {
+    return new Constant<T>(type.convert(value),type);
+  }
+}

@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.util.ingres.ingres.tables.Iitables.TABLE_PAGESIZE);
+}

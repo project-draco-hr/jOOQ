@@ -1,0 +1,7 @@
+{
+  org.jooq.test.oracle.generatedclasses.procedures.F378 p=new org.jooq.test.oracle.generatedclasses.procedures.F378();
+  p.setI(i);
+  p.setIo(io);
+  p.execute(connection);
+  return p;
+}

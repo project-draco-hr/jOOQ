@@ -1,0 +1,6 @@
+{
+  super(message);
+  if (warn) {
+    log.warn("Not supported by dialect",message);
+  }
+}

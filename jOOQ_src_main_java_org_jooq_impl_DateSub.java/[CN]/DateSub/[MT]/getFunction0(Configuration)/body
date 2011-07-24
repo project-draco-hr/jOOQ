@@ -1,0 +1,20 @@
+{
+  Factory create=create(configuration);
+switch (configuration.getDialect()) {
+case DB2:
+case HSQLDB:
+    return field.sub(create.field("? day",BigDecimal.class,value));
+case DERBY:
+  return new FnPrefixFunction<T>("timestampadd",getDataType(),create.field("SQL_TSI_DAY"),create.val(-value.intValue()),field);
+case INGRES:
+return field.sub(create.field("date('" + value + " days')",BigDecimal.class));
+case MYSQL:
+return new Function<T>("timestampadd",getDataType(),create.field("day"),create.val(-value.intValue()),field);
+case POSTGRES:
+return field.sub(create.field("interval '" + value + " days'",BigDecimal.class));
+case SQLITE:
+return new Function<T>("datetime",getDataType(),field,create.val("-" + value + " day"));
+default :
+return field.sub(create.val(value));
+}
+}

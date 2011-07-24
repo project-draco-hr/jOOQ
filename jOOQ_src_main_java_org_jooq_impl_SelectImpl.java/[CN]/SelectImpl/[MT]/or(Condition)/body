@@ -1,0 +1,16 @@
+{
+switch (conditionStep) {
+case WHERE:
+    getQuery().addConditions(Operator.OR,condition);
+  break;
+case CONNECT_BY:
+throw new IllegalStateException("Cannot connect conditions for the CONNECT BY clause using the OR operator");
+case HAVING:
+getQuery().addHaving(Operator.OR,condition);
+break;
+case ON:
+joinConditions.addConditions(Operator.OR,condition);
+break;
+}
+return this;
+}

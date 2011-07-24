@@ -1,0 +1,5 @@
+{
+  Truncate t=create.truncate(TABLE1);
+  assertEquals("truncate table \"TABLE1\"",internal(t).toSQLDeclaration(create));
+  assertEquals("truncate table \"TABLE1\"",internal(t).toSQLReference(create));
+}

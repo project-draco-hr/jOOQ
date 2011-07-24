@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.mysql.generatedclasses.tables.T_639NumbersTable.SHORT,value);
+}

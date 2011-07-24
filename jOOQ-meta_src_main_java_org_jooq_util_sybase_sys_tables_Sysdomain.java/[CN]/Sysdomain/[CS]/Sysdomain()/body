@@ -1,0 +1,3 @@
+{
+  super("SYSDOMAIN",org.jooq.util.sybase.sys.Sys.SYS);
+}

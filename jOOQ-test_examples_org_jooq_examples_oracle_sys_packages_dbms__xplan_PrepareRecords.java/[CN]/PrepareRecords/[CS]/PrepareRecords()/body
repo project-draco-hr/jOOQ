@@ -1,0 +1,6 @@
+{
+  super(org.jooq.SQLDialect.ORACLE,"PREPARE_RECORDS",org.jooq.examples.oracle.sys.Sys.SYS,org.jooq.examples.oracle.sys.packages.DbmsXplan.DBMS_XPLAN);
+  setReturnParameter(RETURN_VALUE);
+  addInParameter(PLAN_CUR);
+  addInParameter(I_FORMAT_FLAGS);
+}

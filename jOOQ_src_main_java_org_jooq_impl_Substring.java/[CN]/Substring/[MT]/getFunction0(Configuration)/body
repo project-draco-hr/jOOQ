@@ -1,0 +1,21 @@
+{
+  String functionName="substring";
+switch (configuration.getDialect()) {
+case SQLSERVER:
+{
+      if (getArguments().length == 2) {
+        return new Function<String>(functionName,SQLDataType.VARCHAR,getArguments()[0],getArguments()[1],create(configuration).literal(Integer.MAX_VALUE));
+      }
+ else {
+        break;
+      }
+    }
+case DB2:
+case DERBY:
+case ORACLE:
+case SQLITE:
+  functionName="substr";
+break;
+}
+return new Function<String>(functionName,SQLDataType.VARCHAR,getArguments());
+}

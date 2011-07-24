@@ -1,0 +1,13 @@
+{
+  MySQLFactory create=(MySQLFactory)create();
+  assertNotNull(create.select(create.password("abc")).fetchOne(0));
+  assertNotNull(create.select(create.md5("abc")).fetchOne(0));
+  assertNotNull(create.select(create.sha1("abc")).fetchOne(0));
+  assertNotNull(create.select(create.sha2("abc",256)).fetchOne(0));
+  assertEquals("abc",create.select(create.decode(create.encode("abc","pw"),val("pw"))).fetchOne(0));
+  assertEquals("abc",create.select(create.aesDecrypt(create.aesEncrypt("abc","pw"),val("pw"))).fetchOne(0));
+  assertEquals("abc",create.select(create.desDecrypt(create.desEncrypt("abc","pw"),val("pw"))).fetchOne(0));
+  assertEquals("abc",create.select(create.desDecrypt(create.desEncrypt("abc"))).fetchOne(0));
+  assertEquals("abc",create.select(create.uncompress(create.compress("abc"))).fetchOne(0));
+  assertEquals(3,create.select(create.uncompressedLength(create.compress("abc"))).fetchOne(0));
+}

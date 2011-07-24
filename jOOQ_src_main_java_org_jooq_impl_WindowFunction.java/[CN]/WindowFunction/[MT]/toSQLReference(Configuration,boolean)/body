@@ -1,0 +1,73 @@
+{
+  StringBuilder sb=new StringBuilder();
+  sb.append(getName());
+  sb.append("(");
+  if (!arguments.isEmpty()) {
+    sb.append(internal(arguments).toSQLReference(configuration,inlineParameters));
+  }
+  if (ignoreNulls) {
+    if (configuration.getDialect() == SQLDialect.DB2) {
+      sb.append(", 'IGNORE NULLS'");
+    }
+ else {
+      sb.append(" ignore nulls");
+    }
+  }
+ else   if (respectNulls) {
+    if (configuration.getDialect() == SQLDialect.DB2) {
+      sb.append(", 'RESPECT NULLS'");
+    }
+ else {
+      sb.append(" respect nulls");
+    }
+  }
+  sb.append(") over (");
+  String glue="";
+  if (!partitionBy.isEmpty()) {
+    if (partitionByOne && configuration.getDialect() == SQLDialect.SYBASE) {
+    }
+ else {
+      sb.append(glue);
+      sb.append("partition by ");
+      sb.append(internal(partitionBy).toSQLReference(configuration,inlineParameters));
+      glue=" ";
+    }
+  }
+  if (!orderBy.isEmpty()) {
+    sb.append(glue);
+    sb.append("order by ");
+switch (configuration.getDialect()) {
+case SQLSERVER:
+case SYBASE:
+{
+        for (        SortField<?> f : orderBy) {
+          SortFieldImpl<?> field=(SortFieldImpl<?>)f;
+          sb.append(field.toSQLInAnalyticClause(configuration,inlineParameters));
+        }
+        break;
+      }
+default :
+{
+      sb.append(internal(orderBy).toSQLReference(configuration,inlineParameters));
+      break;
+    }
+}
+glue=" ";
+}
+if (rowsStart != null) {
+sb.append(glue);
+sb.append("rows ");
+if (rowsEnd != null) {
+  sb.append("between ");
+  toSQLRows(sb,rowsStart);
+  sb.append(" and ");
+  toSQLRows(sb,rowsEnd);
+}
+ else {
+  toSQLRows(sb,rowsStart);
+}
+glue=" ";
+}
+sb.append(")");
+return sb.toString();
+}

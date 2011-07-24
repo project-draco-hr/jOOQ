@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.ingres.ingres.tables.Iisequences.UNORDERED_FLAG,value);
+}

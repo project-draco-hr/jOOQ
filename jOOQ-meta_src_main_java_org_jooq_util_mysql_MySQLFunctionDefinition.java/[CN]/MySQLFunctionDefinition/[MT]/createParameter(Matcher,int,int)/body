@@ -1,0 +1,14 @@
+{
+  String paramName=matcher.group(group);
+  String paramType=matcher.group(group + 1);
+  Number precision=0;
+  Number scale=0;
+  if (!StringUtils.isBlank(matcher.group(group + 2))) {
+    precision=Integer.valueOf(matcher.group(group + 2));
+  }
+  if (!StringUtils.isBlank(matcher.group(group + 3))) {
+    scale=Integer.valueOf(matcher.group(group + 3));
+  }
+  DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),paramType,precision,scale);
+  return new DefaultParameterDefinition(this,paramName,columnIndex,type);
+}

@@ -1,0 +1,6 @@
+{
+  org.jooq.test.sqlserver.generatedclasses.procedures.PCreateAuthorByName p=new org.jooq.test.sqlserver.generatedclasses.procedures.PCreateAuthorByName();
+  p.setFirstName(firstName);
+  p.setLastName(lastName);
+  p.execute(connection);
+}

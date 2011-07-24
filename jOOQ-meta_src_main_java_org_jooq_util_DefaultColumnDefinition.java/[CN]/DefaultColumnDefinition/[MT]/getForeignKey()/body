@@ -1,0 +1,7 @@
+{
+  if (!foreignKeyLoaded) {
+    foreignKeyLoaded=true;
+    foreignKey=getDatabase().getRelations().getForeignKey(this);
+  }
+  return foreignKey;
+}

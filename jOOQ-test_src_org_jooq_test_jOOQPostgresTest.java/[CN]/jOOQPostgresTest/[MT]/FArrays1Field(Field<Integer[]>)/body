@@ -1,0 +1,3 @@
+{
+  return Functions.fArrays1(array);
+}

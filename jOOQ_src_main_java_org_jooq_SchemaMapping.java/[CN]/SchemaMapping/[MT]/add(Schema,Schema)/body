@@ -1,0 +1,3 @@
+{
+  schemata.put(generatedSchema.getName(),configuredSchema);
+}

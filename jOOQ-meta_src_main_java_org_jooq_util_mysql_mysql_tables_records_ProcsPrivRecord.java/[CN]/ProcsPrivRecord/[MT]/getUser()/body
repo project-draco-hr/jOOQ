@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.util.mysql.mysql.tables.ProcsPriv.USER);
+}

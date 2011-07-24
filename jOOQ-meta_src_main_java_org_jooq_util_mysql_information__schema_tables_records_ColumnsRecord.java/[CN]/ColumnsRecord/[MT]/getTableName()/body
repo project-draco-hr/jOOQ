@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.util.mysql.information_schema.tables.Columns.TABLE_NAME);
+}

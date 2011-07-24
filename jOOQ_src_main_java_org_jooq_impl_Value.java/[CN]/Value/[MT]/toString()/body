@@ -1,0 +1,8 @@
+{
+  if (isChanged) {
+    return "*" + value;
+  }
+ else {
+    return "" + value;
+  }
+}

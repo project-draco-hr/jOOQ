@@ -1,0 +1,4 @@
+Configuration configuration
+CallableStatement stmt
+Class<? extends T> type
+int index

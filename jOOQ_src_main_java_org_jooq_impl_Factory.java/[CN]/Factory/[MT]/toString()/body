@@ -1,0 +1,3 @@
+{
+  return "Factory [connected=" + (connection != null) + ", dialect="+ dialect+ ", mapping="+ mapping+ "]";
+}

@@ -1,0 +1,8 @@
+{
+  this.forUpdate=false;
+  this.forShare=forShare;
+  this.forUpdateOf.clear();
+  this.forUpdateOfTables.clear();
+  this.forUpdateMode=null;
+  this.forUpdateWait=0;
+}

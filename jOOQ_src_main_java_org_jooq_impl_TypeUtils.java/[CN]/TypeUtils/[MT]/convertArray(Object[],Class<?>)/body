@@ -1,0 +1,27 @@
+{
+  if (from == null) {
+    return null;
+  }
+ else   if (!toClass.isArray()) {
+    return convertArray(from,Array.newInstance(toClass,0).getClass());
+  }
+ else   if (toClass == from.getClass()) {
+    return from;
+  }
+ else {
+    final Class<?> toComponentType=toClass.getComponentType();
+    if (from.length == 0) {
+      return Arrays.copyOf(from,from.length,(Class<? extends Object[]>)toClass);
+    }
+ else     if (from[0] != null && from[0].getClass() == toComponentType) {
+      return Arrays.copyOf(from,from.length,(Class<? extends Object[]>)toClass);
+    }
+ else {
+      final Object[] result=(Object[])Array.newInstance(toComponentType,from.length);
+      for (int i=0; i < from.length; i++) {
+        result[i]=convert(from[i],toComponentType);
+      }
+      return result;
+    }
+  }
+}

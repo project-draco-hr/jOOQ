@@ -1,0 +1,4 @@
+{
+  getQuery().addFrom(tables);
+  return this;
+}

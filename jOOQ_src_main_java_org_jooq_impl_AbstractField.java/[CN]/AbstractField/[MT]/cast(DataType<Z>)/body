@@ -1,0 +1,8 @@
+{
+  if (getDataType().equals(type)) {
+    return (Field<Z>)this;
+  }
+ else {
+    return new Cast<Z>(this,type);
+  }
+}

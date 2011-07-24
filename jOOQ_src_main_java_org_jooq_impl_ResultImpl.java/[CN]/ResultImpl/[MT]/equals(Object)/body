@@ -1,0 +1,7 @@
+{
+  if (obj instanceof ResultImpl) {
+    ResultImpl<R> other=(ResultImpl<R>)obj;
+    return records.equals(other.records);
+  }
+  return false;
+}

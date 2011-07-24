@@ -1,0 +1,4 @@
+{
+  getQuery().addHint(hint);
+  return this;
+}

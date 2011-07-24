@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.oracle.sys.tables.AllConstraints.TABLE_NAME,value);
+}

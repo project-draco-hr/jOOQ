@@ -1,0 +1,4 @@
+{
+  super("tanh",SQLDataType.NUMERIC,argument);
+  this.argument=argument;
+}

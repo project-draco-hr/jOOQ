@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.util.sybase.sys.tables.Sysfkey.PRIMARY_TABLE_ID);
+}

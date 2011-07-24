@@ -1,0 +1,8 @@
+{
+  try {
+    return ((UDTRecord<?>)udtType.newInstance()).getUDT().getTypeMapping();
+  }
+ catch (  Exception e) {
+    throw new SQLException("Cannot retrieve type mapping for " + udtType,e);
+  }
+}

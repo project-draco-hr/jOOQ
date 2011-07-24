@@ -1,0 +1,4 @@
+{
+  newRecord();
+  setRecord(record);
+}

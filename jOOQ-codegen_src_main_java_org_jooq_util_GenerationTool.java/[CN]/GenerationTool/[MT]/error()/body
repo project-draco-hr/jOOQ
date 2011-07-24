@@ -1,0 +1,4 @@
+{
+  log.error("Usage : GenerationTool <configuration-file>");
+  System.exit(-1);
+}

@@ -1,0 +1,6 @@
+{
+  super(org.jooq.SQLDialect.POSTGRES,"p_unused",org.jooq.test.postgres.generatedclasses.Public.PUBLIC);
+  addInParameter(IN1);
+  addOutParameter(OUT1);
+  addInOutParameter(OUT2);
+}
