@@ -1,0 +1,5 @@
+{
+  org.jooq.test.oracle.generatedclasses.packages.library_767_package_test.Library_767PackageTest f=new org.jooq.test.oracle.generatedclasses.packages.library_767_package_test.Library_767PackageTest();
+  f.execute(connection);
+  return f.getReturnValue();
+}

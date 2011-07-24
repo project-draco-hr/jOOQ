@@ -789,7 +789,6 @@
         File targetPackagePackageDir=new File(targetPackagesPackageDir,strategy.getJavaClassName(pkg).toLowerCase());
         log.info("Generating package",targetPackagePackageDir.getCanonicalPath());
         for (        ProcedureDefinition procedure : pkg.getProcedures()) {
-          targetPackagePackageDir.mkdirs();
           try {
             printProcedure(database,schema,procedure);
           }
@@ -798,7 +797,6 @@
           }
         }
         for (        FunctionDefinition function : pkg.getFunctions()) {
-          targetPackagePackageDir.mkdirs();
           try {
             printFunction(database,schema,function);
           }
