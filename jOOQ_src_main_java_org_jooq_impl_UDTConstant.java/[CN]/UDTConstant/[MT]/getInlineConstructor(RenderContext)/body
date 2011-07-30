@@ -1,0 +1,18 @@
+{
+switch (context.getDialect()) {
+case POSTGRES:
+    return "ROW";
+case ORACLE:
+case DB2:
+{
+    UDT<?> udt=record.getUDT();
+    if (getMappedSchema(context,udt.getSchema()) != null) {
+      return getMappedSchema(context,udt.getSchema()) + "." + udt.getName();
+    }
+ else {
+      return udt.getName();
+    }
+  }
+}
+throw new SQLDialectNotSupportedException("UDTs not supported in dialect " + context.getDialect());
+}

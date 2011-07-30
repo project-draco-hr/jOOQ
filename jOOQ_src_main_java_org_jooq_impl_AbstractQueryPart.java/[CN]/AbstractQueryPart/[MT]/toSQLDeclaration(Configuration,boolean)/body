@@ -1,3 +1,5 @@
 {
-  return toSQLReference(configuration,inlineParameters);
+  RenderContext context=new DefaultRenderContext(configuration,inlineParameters,true,true);
+  toSQL(context);
+  return context.render();
 }

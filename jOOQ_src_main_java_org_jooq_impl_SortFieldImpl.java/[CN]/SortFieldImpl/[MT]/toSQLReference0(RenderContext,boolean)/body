@@ -1,0 +1,40 @@
+{
+  if (nullsFirst || nullsLast) {
+switch (context.getDialect()) {
+case DB2:
+case INGRES:
+case MYSQL:
+case SQLITE:
+case SQLSERVER:
+case SYBASE:
+{
+        if (!inAnalyticClause) {
+          Field<Integer> zero=create(context).zero();
+          Field<Integer> one=create(context).one();
+          Field<Integer> ifNull=nullsFirst ? zero : one;
+          Field<Integer> ifNotNull=nullsFirst ? one : zero;
+          context.sql(field.nvl2(ifNotNull,ifNull));
+          context.sql(", ");
+          toSQLReference1(context,inAnalyticClause);
+          break;
+        }
+ else {
+        }
+      }
+default :
+{
+      toSQLReference1(context,inAnalyticClause);
+      if (nullsFirst) {
+        context.sql(" nulls first");
+      }
+ else {
+        context.sql(" nulls last");
+      }
+      break;
+    }
+}
+}
+ else {
+toSQLReference1(context,inAnalyticClause);
+}
+}

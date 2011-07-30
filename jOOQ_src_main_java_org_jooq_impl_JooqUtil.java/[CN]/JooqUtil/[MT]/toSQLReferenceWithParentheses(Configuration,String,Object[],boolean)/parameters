@@ -1,4 +1,0 @@
-Configuration configuration
-String sql
-Object[] bindings
-boolean inlineParameters

@@ -1,9 +1,9 @@
 {
   Condition c=FIELD_ID1.equal(10).not();
-  assertEquals("not(\"TABLE1\".\"ID1\" = 10)",internal(c).toSQLReference(create,true));
-  assertEquals("not(\"TABLE1\".\"ID1\" = ?)",internal(c).toSQLReference(create,false));
-  assertEquals("not(not(\"TABLE1\".\"ID1\" = 10))",internal(c.not()).toSQLReference(create,true));
-  assertEquals("not(not(\"TABLE1\".\"ID1\" = ?))",internal(c.not()).toSQLReference(create,false));
+  assertEquals("not(\"TABLE1\".\"ID1\" = 10)",refI().render(c));
+  assertEquals("not(\"TABLE1\".\"ID1\" = ?)",ref().render(c));
+  assertEquals("not(not(\"TABLE1\".\"ID1\" = 10))",refI().render(c.not()));
+  assertEquals("not(not(\"TABLE1\".\"ID1\" = ?))",ref().render(c.not()));
   context.checking(new Expectations(){
 {
       oneOf(statement).setInt(1,10);

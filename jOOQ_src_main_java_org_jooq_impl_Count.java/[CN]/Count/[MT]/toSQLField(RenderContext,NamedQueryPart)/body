@@ -1,0 +1,6 @@
+{
+  if (distinct) {
+    context.sql("distinct ");
+  }
+  super.toSQLField(context,field);
+}

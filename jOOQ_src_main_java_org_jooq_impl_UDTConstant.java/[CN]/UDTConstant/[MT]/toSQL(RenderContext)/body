@@ -1,0 +1,35 @@
+{
+switch (context.getDialect()) {
+case ORACLE:
+{
+      if (context.inline()) {
+        toSQLInline(context);
+      }
+ else {
+        context.sql("?");
+      }
+      return;
+    }
+case POSTGRES:
+{
+    toSQLInline(context);
+    return;
+  }
+case DB2:
+{
+  context.sql(getInlineConstructor(context));
+  context.sql("()");
+  String separator="..";
+  for (  Field<?> field : record.getFields()) {
+    Field<?> value=create(context).val(record.getValue(field));
+    context.sql(separator);
+    context.sql(field.getName());
+    context.sql("(");
+    context.sql(value);
+    context.sql(")");
+  }
+  return;
+}
+}
+throw new SQLDialectNotSupportedException("UDTs not supported in dialect " + context.getDialect());
+}

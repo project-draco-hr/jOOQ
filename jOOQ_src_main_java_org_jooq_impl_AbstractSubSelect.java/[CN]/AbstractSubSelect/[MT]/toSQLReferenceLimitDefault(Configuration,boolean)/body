@@ -1,8 +1,0 @@
-{
-  StringBuilder sb=new StringBuilder();
-  String enclosed=toSQLReference0(configuration,inlineParameters);
-  sb.append(enclosed);
-  sb.append(" ");
-  sb.append(getLimit().toSQLReference(configuration,inlineParameters));
-  return sb.toString();
-}

@@ -1,0 +1,9 @@
+{
+switch (context.getDialect()) {
+case SQLITE:
+case DERBY:
+case MYSQL:
+    return;
+}
+context.sql(parenthesis);
+}

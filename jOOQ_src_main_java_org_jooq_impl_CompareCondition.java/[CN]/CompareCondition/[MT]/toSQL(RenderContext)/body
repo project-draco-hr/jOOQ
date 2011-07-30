@@ -1,0 +1,18 @@
+{
+  context.sql(field1).sql(" ");
+  if (field2.isNullLiteral()) {
+switch (comparator) {
+case EQUALS:
+      context.sql("is null");
+    break;
+case NOT_EQUALS:
+  context.sql("is not null");
+break;
+default :
+throw new IllegalStateException("Cannot compare null with " + comparator);
+}
+}
+ else {
+context.sql(comparator.toSQL()).sql(" ").sql(field2);
+}
+}

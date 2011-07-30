@@ -1,0 +1,19 @@
+{
+switch (context.getDialect()) {
+case INGRES:
+case SQLITE:
+{
+      context.sql(create(context).delete(table));
+      break;
+    }
+default :
+{
+    context.sql("truncate table ");
+    context.sql(table);
+    if (context.getDialect() == SQLDialect.DB2) {
+      context.sql(" immediate");
+    }
+    break;
+  }
+}
+}

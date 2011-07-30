@@ -1,9 +1,0 @@
-{
-switch (configuration.getDialect()) {
-case SQLITE:
-case DERBY:
-case MYSQL:
-    return;
-}
-sb.append(parenthesis);
-}

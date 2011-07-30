@@ -1,4 +1,0 @@
-Configuration configuration
-boolean inlineParameters
-boolean inAnalyticClause
-StringBuilder sb

@@ -1,0 +1,21 @@
+{
+switch (context.getDialect()) {
+case SQLSERVER:
+case SYBASE:
+{
+      if (inAnalyticClause) {
+        context.literal(field.getName());
+        break;
+      }
+ else {
+      }
+    }
+default :
+{
+    context.sql(field);
+    break;
+  }
+}
+context.sql(" ");
+context.sql(order.toSQL());
+}

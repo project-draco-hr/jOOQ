@@ -1,0 +1,10 @@
+{
+  context.sql("(");
+  String separator="";
+  for (  Field<?> field : keySet()) {
+    context.sql(separator);
+    context.literal(field.getName());
+    separator=", ";
+  }
+  context.sql(")");
+}

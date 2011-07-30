@@ -1,6 +1,6 @@
 {
   try {
-    return toSQLReference(getConfiguration(),true);
+    return create().renderInlined(this);
   }
  catch (  SQLDialectNotSupportedException e) {
     return "[ ... " + e.getMessage() + " ... ]";

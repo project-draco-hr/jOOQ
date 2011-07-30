@@ -1,9 +1,0 @@
-{
-  StringBuilder sb=new StringBuilder();
-  sb.append("cast(");
-  sb.append(internal(field).toSQLReference(configuration,inlineParameters));
-  sb.append(" as ");
-  sb.append(getDataType(configuration).getCastTypeName(configuration));
-  sb.append(")");
-  return sb.toString();
-}

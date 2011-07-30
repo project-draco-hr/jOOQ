@@ -1,0 +1,4 @@
+{
+  sql.append(s);
+  return this;
+}

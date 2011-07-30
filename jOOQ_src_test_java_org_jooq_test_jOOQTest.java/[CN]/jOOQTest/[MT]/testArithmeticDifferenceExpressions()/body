@@ -1,16 +1,16 @@
 {
   Field<Integer> difference1=FIELD_ID1.sub(FIELD_ID1).sub(1).sub(2);
   assertEquals(Integer.class,difference1.getType());
-  assertEquals("(((\"TABLE1\".\"ID1\" - \"TABLE1\".\"ID1\") - 1) - 2)",internal(difference1).toSQLReference(create,true));
-  assertEquals("(((\"TABLE1\".\"ID1\" - \"TABLE1\".\"ID1\") - ?) - ?)",internal(difference1).toSQLReference(create,false));
-  assertEquals("(((\"TABLE1\".\"ID1\" - \"TABLE1\".\"ID1\") - 1) - 2)",internal(difference1).toSQLDeclaration(create,true));
-  assertEquals("(((\"TABLE1\".\"ID1\" - \"TABLE1\".\"ID1\") - ?) - ?)",internal(difference1).toSQLDeclaration(create,false));
+  assertEquals("(((\"TABLE1\".\"ID1\" - \"TABLE1\".\"ID1\") - 1) - 2)",refI().render(difference1));
+  assertEquals("(((\"TABLE1\".\"ID1\" - \"TABLE1\".\"ID1\") - ?) - ?)",ref().render(difference1));
+  assertEquals("(((\"TABLE1\".\"ID1\" - \"TABLE1\".\"ID1\") - 1) - 2)",decI().render(difference1));
+  assertEquals("(((\"TABLE1\".\"ID1\" - \"TABLE1\".\"ID1\") - ?) - ?)",dec().render(difference1));
   Field<Integer> difference2=difference1.as("d");
   assertEquals(Integer.class,difference2.getType());
-  assertEquals("\"d\"",internal(difference2).toSQLReference(create,true));
-  assertEquals("\"d\"",internal(difference2).toSQLReference(create,false));
-  assertEquals("(((\"TABLE1\".\"ID1\" - \"TABLE1\".\"ID1\") - 1) - 2) \"d\"",internal(difference2).toSQLDeclaration(create,true));
-  assertEquals("(((\"TABLE1\".\"ID1\" - \"TABLE1\".\"ID1\") - ?) - ?) \"d\"",internal(difference2).toSQLDeclaration(create,false));
+  assertEquals("\"d\"",refI().render(difference2));
+  assertEquals("\"d\"",ref().render(difference2));
+  assertEquals("(((\"TABLE1\".\"ID1\" - \"TABLE1\".\"ID1\") - 1) - 2) \"d\"",decI().render(difference2));
+  assertEquals("(((\"TABLE1\".\"ID1\" - \"TABLE1\".\"ID1\") - ?) - ?) \"d\"",dec().render(difference2));
   context.checking(new Expectations(){
 {
       oneOf(statement).setInt(1,1);

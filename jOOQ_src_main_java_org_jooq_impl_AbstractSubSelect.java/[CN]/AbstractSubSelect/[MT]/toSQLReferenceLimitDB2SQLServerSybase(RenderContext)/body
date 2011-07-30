@@ -1,0 +1,32 @@
+{
+  RenderContext local=new DefaultRenderContext(context);
+  toSQLReference0(local);
+  String enclosed=local.render();
+  String subqueryName="limit_" + Math.abs(enclosed.hashCode());
+  String rownumName="rownum_" + Math.abs(enclosed.hashCode());
+  context.sql("select * from (select ").sql(subqueryName).sql(".*, row_number() over (order by ");
+  if (getOrderBy().isEmpty()) {
+    context.sql(getSelect().get(0).getName());
+  }
+ else {
+    String separator="";
+    for (    SortField<?> field : getOrderBy()) {
+      context.sql(separator).sql(field.getName()).sql(" ").sql(field.getOrder().toSQL());
+      separator=", ";
+    }
+  }
+  context.sql(") as ").sql(rownumName).sql(" from (").sql(enclosed).sql(") as ").sql(subqueryName).sql(") as outer_").sql(subqueryName).sql(" where ").sql(rownumName).sql(" >= ");
+  if (context.inline()) {
+    context.sql(getLimit().getLowerRownum());
+  }
+ else {
+    context.sql("?");
+  }
+  context.sql(" and ").sql(rownumName).sql(" < ");
+  if (context.inline()) {
+    context.sql(getLimit().getUpperRownum());
+  }
+ else {
+    context.sql("?");
+  }
+}

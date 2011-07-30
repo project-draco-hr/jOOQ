@@ -1,0 +1,27 @@
+{
+switch (configuration.getDialect()) {
+case MYSQL:
+    sql("`").sql(literal).sql("`");
+  break;
+case DB2:
+case DERBY:
+case H2:
+case HSQLDB:
+case INGRES:
+case ORACLE:
+case POSTGRES:
+sql('"').sql(literal).sql('"');
+break;
+case SQLITE:
+sql(literal);
+break;
+case SQLSERVER:
+case SYBASE:
+sql("[").sql(literal).sql("]");
+break;
+default :
+sql(literal);
+break;
+}
+return this;
+}

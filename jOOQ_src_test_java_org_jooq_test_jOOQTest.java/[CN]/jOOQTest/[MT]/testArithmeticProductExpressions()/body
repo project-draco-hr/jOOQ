@@ -1,16 +1,16 @@
 {
   Field<Integer> product1=FIELD_ID1.mul(FIELD_ID1).mul(1).mul(2);
   assertEquals(Integer.class,product1.getType());
-  assertEquals("(\"TABLE1\".\"ID1\" * \"TABLE1\".\"ID1\" * 1 * 2)",internal(product1).toSQLReference(create,true));
-  assertEquals("(\"TABLE1\".\"ID1\" * \"TABLE1\".\"ID1\" * ? * ?)",internal(product1).toSQLReference(create,false));
-  assertEquals("(\"TABLE1\".\"ID1\" * \"TABLE1\".\"ID1\" * 1 * 2)",internal(product1).toSQLDeclaration(create,true));
-  assertEquals("(\"TABLE1\".\"ID1\" * \"TABLE1\".\"ID1\" * ? * ?)",internal(product1).toSQLDeclaration(create,false));
+  assertEquals("(\"TABLE1\".\"ID1\" * \"TABLE1\".\"ID1\" * 1 * 2)",refI().render(product1));
+  assertEquals("(\"TABLE1\".\"ID1\" * \"TABLE1\".\"ID1\" * ? * ?)",ref().render(product1));
+  assertEquals("(\"TABLE1\".\"ID1\" * \"TABLE1\".\"ID1\" * 1 * 2)",decI().render(product1));
+  assertEquals("(\"TABLE1\".\"ID1\" * \"TABLE1\".\"ID1\" * ? * ?)",dec().render(product1));
   Field<Integer> product2=product1.as("p");
   assertEquals(Integer.class,product2.getType());
-  assertEquals("\"p\"",internal(product2).toSQLReference(create,true));
-  assertEquals("\"p\"",internal(product2).toSQLReference(create,false));
-  assertEquals("(\"TABLE1\".\"ID1\" * \"TABLE1\".\"ID1\" * 1 * 2) \"p\"",internal(product2).toSQLDeclaration(create,true));
-  assertEquals("(\"TABLE1\".\"ID1\" * \"TABLE1\".\"ID1\" * ? * ?) \"p\"",internal(product2).toSQLDeclaration(create,false));
+  assertEquals("\"p\"",refI().render(product2));
+  assertEquals("\"p\"",ref().render(product2));
+  assertEquals("(\"TABLE1\".\"ID1\" * \"TABLE1\".\"ID1\" * 1 * 2) \"p\"",decI().render(product2));
+  assertEquals("(\"TABLE1\".\"ID1\" * \"TABLE1\".\"ID1\" * ? * ?) \"p\"",dec().render(product2));
   context.checking(new Expectations(){
 {
       oneOf(statement).setInt(1,1);

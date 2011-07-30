@@ -1,0 +1,24 @@
+{
+  context.sql(getType().toSQL());
+  context.sql(" ");
+  context.sql(getTable());
+switch (getType()) {
+case CROSS_JOIN:
+case NATURAL_JOIN:
+case NATURAL_LEFT_OUTER_JOIN:
+case NATURAL_RIGHT_OUTER_JOIN:
+    break;
+default :
+{
+    if (usingSyntax) {
+      context.sql(" using (");
+      using.toSQLNames(context);
+      context.sql(")");
+    }
+ else {
+      context.sql(" on ").sql(getCondition());
+    }
+    break;
+  }
+}
+}

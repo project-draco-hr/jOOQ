@@ -3,10 +3,10 @@
   mapping.add(TAuthor(),VAuthor());
   mapping.add(TBook(),VBook().getName());
   Select<Record> q=create(mapping).select(TBook_TITLE()).from(TAuthor()).join(TBook()).on(TAuthor_ID().equal(TBook_AUTHOR_ID())).orderBy(TBook_ID().asc());
-  assertTrue(internal(q).toSQLReference(create(mapping)).contains(VAuthor().getName()));
-  assertTrue(internal(q).toSQLReference(create(mapping)).contains(VBook().getName()));
-  assertFalse(internal(q).toSQLReference(create(mapping)).contains(TAuthor().getName()));
-  assertFalse(internal(q).toSQLReference(create(mapping)).contains(TBook().getName()));
+  assertTrue(create(mapping).render(q).contains(VAuthor().getName()));
+  assertTrue(create(mapping).render(q).contains(VBook().getName()));
+  assertFalse(create(mapping).render(q).contains(TAuthor().getName()));
+  assertFalse(create(mapping).render(q).contains(TBook().getName()));
   Result<Record> result=q.fetch();
   assertEquals("1984",result.getValue(0,TBook_TITLE()));
   assertEquals("Animal Farm",result.getValue(1,TBook_TITLE()));

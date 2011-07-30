@@ -1,12 +1,12 @@
 {
   Condition c=new CustomCondition(){
     private static final long serialVersionUID=6302350477408137757L;
-    @Override public String toSQLReference(    Configuration configuration,    boolean inlineParameters){
-      if (inlineParameters) {
-        return "1 = 1";
+    @Override public void toSQL(    RenderContext ctx){
+      if (ctx.inline()) {
+        ctx.sql("1 = 1");
       }
  else {
-        return "? = ?";
+        ctx.sql("? = ?");
       }
     }
     @Override public int bindReference(    Configuration configuration,    PreparedStatement stmt,    int initialIndex) throws SQLException {
@@ -17,8 +17,8 @@
     }
   }
 ;
-  assertEquals("1 = 1",internal(c).toSQLReference(create,true));
-  assertEquals("? = ?",internal(c).toSQLReference(create,false));
+  assertEquals("1 = 1",refI().render(c));
+  assertEquals("? = ?",ref().render(c));
   context.checking(new Expectations(){
 {
       oneOf(statement).setInt(1,1);

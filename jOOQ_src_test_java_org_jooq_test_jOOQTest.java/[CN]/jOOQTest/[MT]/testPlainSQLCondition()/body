@@ -1,10 +1,10 @@
 {
   Condition c1=create.condition("TABLE1.ID = 10");
   Condition c2=create.condition("TABLE1.ID = ? and TABLE2.ID = ?",10,"20");
-  assertEquals("(TABLE1.ID = 10)",internal(c1).toSQLReference(create,true));
-  assertEquals("(TABLE1.ID = 10)",internal(c1).toSQLReference(create,false));
-  assertEquals("(TABLE1.ID = 10 and TABLE2.ID = '20')",internal(c2).toSQLReference(create,true));
-  assertEquals("(TABLE1.ID = ? and TABLE2.ID = ?)",internal(c2).toSQLReference(create,false));
+  assertEquals("(TABLE1.ID = 10)",refI().render(c1));
+  assertEquals("(TABLE1.ID = 10)",ref().render(c1));
+  assertEquals("(TABLE1.ID = 10 and TABLE2.ID = '20')",refI().render(c2));
+  assertEquals("(TABLE1.ID = ? and TABLE2.ID = ?)",ref().render(c2));
   context.checking(new Expectations(){
 {
       oneOf(statement).setInt(1,10);

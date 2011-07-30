@@ -1,0 +1,19 @@
+{
+  if (context.inline()) {
+    if (bindings == null) {
+      toSQLReference(context,sql,new Object[]{null});
+    }
+ else {
+      String[] split=sql.split("\\?");
+      for (int i=0; i < split.length; i++) {
+        context.sql(split[i]);
+        if (i < bindings.length) {
+          FieldTypeHelper.toSQL(context,bindings[i]);
+        }
+      }
+    }
+  }
+ else {
+    context.sql(sql);
+  }
+}

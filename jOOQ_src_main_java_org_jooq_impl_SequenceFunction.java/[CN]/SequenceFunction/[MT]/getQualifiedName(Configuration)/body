@@ -1,9 +1,9 @@
 {
-  StringBuilder sb=new StringBuilder();
+  RenderContext local=create(configuration).renderContext();
   if (sequence.schema != null) {
-    sb.append(internal(getMappedSchema(configuration,sequence.schema)).toSQLReference(configuration));
-    sb.append(".");
+    local.sql(getMappedSchema(configuration,sequence.schema));
+    local.sql(".");
   }
-  sb.append(JooqUtil.toSQLLiteral(configuration,sequence.name));
-  return sb.toString();
+  local.literal(sequence.name);
+  return local.render();
 }

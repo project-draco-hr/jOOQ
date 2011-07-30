@@ -4,8 +4,8 @@
   q.addValue(FIELD_ID1,10);
   q.addValue(FIELD_NAME1,"ABC");
   q.addConditions(c);
-  assertEquals("update \"TABLE1\" set \"ID1\" = 10, \"NAME1\" = 'ABC' where \"TABLE1\".\"ID1\" = 10",internal(q).toSQLReference(create,true));
-  assertEquals("update \"TABLE1\" set \"ID1\" = ?, \"NAME1\" = ? where \"TABLE1\".\"ID1\" = ?",internal(q).toSQLReference(create,false));
+  assertEquals("update \"TABLE1\" set \"ID1\" = 10, \"NAME1\" = 'ABC' where \"TABLE1\".\"ID1\" = 10",refI().render(q));
+  assertEquals("update \"TABLE1\" set \"ID1\" = ?, \"NAME1\" = ? where \"TABLE1\".\"ID1\" = ?",ref().render(q));
   assertEquals(q,create.update(TABLE1).set(FIELD_ID1,10).set(FIELD_NAME1,"ABC").where(c));
   context.checking(new Expectations(){
 {

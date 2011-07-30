@@ -1,0 +1,3 @@
+{
+  this(context,context.inline(),context.declareFields(),context.declareTables());
+}

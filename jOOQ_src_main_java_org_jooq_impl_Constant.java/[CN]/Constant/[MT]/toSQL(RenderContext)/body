@@ -1,0 +1,17 @@
+{
+  if (!context.inline()) {
+    if (!(value instanceof EnumType) && !(value instanceof MasterDataType)) {
+switch (context.getDialect()) {
+case DB2:
+case DERBY:
+case H2:
+case HSQLDB:
+case INGRES:
+case SYBASE:
+        context.sql("cast(? as ").sql(getDataType(context).getCastTypeName(context)).sql(")");
+      return;
+  }
+}
+}
+FieldTypeHelper.toSQL(context,value,this);
+}

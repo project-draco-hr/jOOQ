@@ -1,3 +1,0 @@
-{
-  return toSQL(configuration,value,inlineParameters,field.getType());
-}

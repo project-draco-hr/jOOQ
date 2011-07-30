@@ -1,0 +1,20 @@
+{
+  if (!isExecutable()) {
+    context.sql("[ no fields are inserted ]");
+  }
+ else   if (insertMaps.size() == 1 || insertMaps.get(1) == null) {
+    context.sql(insertMaps.get(0));
+  }
+ else {
+switch (context.getDialect()) {
+case INGRES:
+case ORACLE:
+case SQLITE:
+      toSQLInsertSelect(context);
+    break;
+default :
+  toSQL92Values(context);
+break;
+}
+}
+}

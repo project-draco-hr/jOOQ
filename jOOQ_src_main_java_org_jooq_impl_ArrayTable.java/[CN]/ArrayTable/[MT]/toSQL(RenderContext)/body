@@ -1,0 +1,29 @@
+{
+switch (context.getDialect()) {
+case ORACLE:
+{
+      context.sql("table(").sql(array).sql(")");
+      break;
+    }
+case H2:
+{
+    context.sql("table(COLUMN_VALUE ");
+    if (array.getDataType().getType() == Object[].class) {
+      context.sql(H2DataType.VARCHAR.getTypeName());
+    }
+ else {
+      context.sql(array.getDataType().getTypeName());
+    }
+    context.sql(" = ").sql(array).sql(")");
+    break;
+  }
+case HSQLDB:
+case POSTGRES:
+{
+  context.sql("unnest(").sql(array).sql(") array_table(COLUMN_VALUE)");
+  break;
+}
+default :
+throw new SQLDialectNotSupportedException("ARRAY TABLE is not supported for " + context.getDialect());
+}
+}

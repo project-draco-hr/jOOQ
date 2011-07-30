@@ -1,0 +1,13 @@
+{
+  if (isEmpty()) {
+    toSQLEmptyList(context);
+  }
+ else {
+    String separator="";
+    for (    T queryPart : this) {
+      context.sql(separator);
+      context.sql(queryPart);
+      separator=getListSeparator() + " ";
+    }
+  }
+}

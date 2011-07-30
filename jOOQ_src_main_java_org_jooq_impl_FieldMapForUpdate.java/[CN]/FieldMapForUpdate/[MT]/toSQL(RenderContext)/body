@@ -1,0 +1,12 @@
+{
+  if (size() > 0) {
+    String separator="";
+    for (    Entry<Field<?>,Field<?>> entry : entrySet()) {
+      context.sql(separator).literal(entry.getKey().getName()).sql(" = ").sql(entry.getValue());
+      separator=", ";
+    }
+  }
+ else {
+    context.sql("[ no fields are updated ]");
+  }
+}

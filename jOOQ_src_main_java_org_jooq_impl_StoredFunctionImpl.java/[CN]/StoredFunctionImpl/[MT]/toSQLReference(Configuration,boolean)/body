@@ -1,3 +1,0 @@
-{
-  return internal(create(configuration).select(asField())).toSQLReference(configuration,inlineParameters);
-}

@@ -1,0 +1,19 @@
+{
+  if (rows == Integer.MIN_VALUE) {
+    context.sql("unbounded preceding");
+  }
+ else   if (rows == Integer.MAX_VALUE) {
+    context.sql("unbounded following");
+  }
+ else   if (rows < 0) {
+    context.sql(-rows);
+    context.sql(" preceding");
+  }
+ else   if (rows > 0) {
+    context.sql(rows);
+    context.sql(" following");
+  }
+ else {
+    context.sql("current row");
+  }
+}

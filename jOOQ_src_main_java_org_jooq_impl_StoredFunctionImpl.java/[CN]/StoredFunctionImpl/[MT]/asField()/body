@@ -11,8 +11,9 @@
       }
       i++;
     }
-    String name=toSQLQualifiedName(attachable.getConfiguration());
-    function=new Function<T>(name,type,array);
+    RenderContext local=create(attachable).renderContext();
+    toSQLQualifiedName(local);
+    function=new Function<T>(local.render(),type,array);
   }
   return function;
 }

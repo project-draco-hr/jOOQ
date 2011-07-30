@@ -1,3 +1,3 @@
 {
-  return toSQLReference(getConfiguration(),true).hashCode();
+  return create().renderInlined(this).hashCode();
 }

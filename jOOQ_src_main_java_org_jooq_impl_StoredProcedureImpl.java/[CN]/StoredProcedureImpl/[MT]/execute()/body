@@ -5,9 +5,9 @@
     results=new HashMap<Parameter<?>,Object>();
     Configuration configuration=attachable.getConfiguration();
     Connection connection=configuration.getConnection();
-    String sql=toSQLReference(configuration);
+    String sql=create(configuration).render(this);
     watch.splitTrace("SQL rendered");
-    if (log.isDebugEnabled())     log.debug("Executing query",toSQLReference(configuration,true));
+    if (log.isDebugEnabled())     log.debug("Executing procedure",create(configuration).renderInlined(this));
     if (log.isTraceEnabled())     log.trace("Preparing statement",sql);
     statement=connection.prepareCall(sql);
     watch.splitTrace("Statement prepared");

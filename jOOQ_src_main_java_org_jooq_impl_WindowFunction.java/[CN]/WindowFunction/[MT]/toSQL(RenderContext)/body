@@ -1,0 +1,68 @@
+{
+  context.sql(getName());
+  context.sql("(");
+  if (!arguments.isEmpty()) {
+    context.sql(arguments);
+  }
+  if (ignoreNulls) {
+    if (context.getDialect() == SQLDialect.DB2) {
+      context.sql(", 'IGNORE NULLS'");
+    }
+ else {
+      context.sql(" ignore nulls");
+    }
+  }
+ else   if (respectNulls) {
+    if (context.getDialect() == SQLDialect.DB2) {
+      context.sql(", 'RESPECT NULLS'");
+    }
+ else {
+      context.sql(" respect nulls");
+    }
+  }
+  context.sql(") over (");
+  String glue="";
+  if (!partitionBy.isEmpty()) {
+    if (partitionByOne && context.getDialect() == SQLDialect.SYBASE) {
+    }
+ else {
+      context.sql(glue).sql("partition by ").sql(partitionBy);
+      glue=" ";
+    }
+  }
+  if (!orderBy.isEmpty()) {
+    context.sql(glue).sql("order by ");
+switch (context.getDialect()) {
+case SQLSERVER:
+case SYBASE:
+{
+        for (        SortField<?> f : orderBy) {
+          SortFieldImpl<?> field=(SortFieldImpl<?>)f;
+          field.toSQLInAnalyticClause(context);
+        }
+        break;
+      }
+default :
+{
+      context.sql(orderBy);
+      break;
+    }
+}
+glue=" ";
+}
+if (rowsStart != null) {
+context.sql(glue);
+context.sql("rows ");
+if (rowsEnd != null) {
+  context.sql("between ");
+  toSQLRows(context,rowsStart);
+  context.sql(" and ");
+  toSQLRows(context,rowsEnd);
+}
+ else {
+  toSQLRows(context,rowsStart);
+}
+glue=" ";
+}
+context.sql(")");
+}

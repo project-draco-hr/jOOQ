@@ -1,7 +1,7 @@
 {
   Condition c=FIELD_ID1.between(1,10);
-  assertEquals("\"TABLE1\".\"ID1\" between 1 and 10",internal(c).toSQLReference(create,true));
-  assertEquals("\"TABLE1\".\"ID1\" between ? and ?",internal(c).toSQLReference(create,false));
+  assertEquals("\"TABLE1\".\"ID1\" between 1 and 10",refI().render(c));
+  assertEquals("\"TABLE1\".\"ID1\" between ? and ?",ref().render(c));
   context.checking(new Expectations(){
 {
       oneOf(statement).setInt(1,1);

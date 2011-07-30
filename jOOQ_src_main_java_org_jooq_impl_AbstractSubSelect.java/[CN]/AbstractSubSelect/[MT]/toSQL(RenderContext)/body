@@ -1,0 +1,78 @@
+{
+  if (getLimit().isApplicable()) {
+switch (context.getDialect()) {
+case ORACLE:
+      toSQLReferenceLimitOracle(context);
+    break;
+case DB2:
+{
+    if (getLimit().getOffset() == 0) {
+      toSQLReferenceLimitDefault(context);
+    }
+ else {
+      toSQLReferenceLimitDB2SQLServerSybase(context);
+    }
+    break;
+  }
+case SQLSERVER:
+case SYBASE:
+{
+  if (getLimit().getOffset() == 0) {
+    toSQLReference0(context);
+  }
+ else {
+    toSQLReferenceLimitDB2SQLServerSybase(context);
+  }
+  break;
+}
+default :
+{
+toSQLReferenceLimitDefault(context);
+}
+}
+}
+ else {
+toSQLReference0(context);
+}
+if (forUpdate) {
+context.sql(" for update");
+if (!forUpdateOf.isEmpty()) {
+context.sql(" of ");
+forUpdateOf.toSQLNames(context);
+}
+ else if (!forUpdateOfTables.isEmpty()) {
+context.sql(" of ");
+switch (context.getDialect()) {
+case DB2:
+case DERBY:
+case INGRES:
+case ORACLE:
+{
+forUpdateOfTables.toSQLFieldNames(context);
+break;
+}
+default :
+forUpdateOfTables.toSQLNames(context);
+break;
+}
+}
+if (forUpdateMode != null) {
+context.sql(" ");
+context.sql(forUpdateMode.toSQL());
+if (forUpdateMode == ForUpdateMode.WAIT) {
+context.sql(" ");
+context.sql(forUpdateWait);
+}
+}
+}
+ else if (forShare) {
+switch (context.getDialect()) {
+case MYSQL:
+context.sql(" lock in share mode");
+break;
+default :
+context.sql(" for share");
+break;
+}
+}
+}

@@ -1,0 +1,31 @@
+{
+  if (!onDuplicateKeyUpdate) {
+    toSQLInsert(context);
+  }
+ else {
+switch (context.getDialect()) {
+case MYSQL:
+{
+        toSQLInsert(context);
+        context.sql(" on duplicate key update ");
+        context.sql(updateMap);
+        break;
+      }
+case H2:
+{
+      throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY UPDATE clause cannot be simulated for " + context.getDialect());
+    }
+case DB2:
+case HSQLDB:
+case ORACLE:
+case SQLSERVER:
+case SYBASE:
+{
+    context.sql(toMerge());
+    break;
+  }
+default :
+throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY UPDATE clause cannot be simulated for " + context.getDialect());
+}
+}
+}

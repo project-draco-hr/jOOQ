@@ -1,10 +1,10 @@
 {
   Condition c1=FIELD_ID1.isNull();
-  assertEquals("\"TABLE1\".\"ID1\" is null",internal(c1).toSQLReference(create,true));
-  assertEquals("\"TABLE1\".\"ID1\" is null",internal(c1).toSQLReference(create,false));
+  assertEquals("\"TABLE1\".\"ID1\" is null",refI().render(c1));
+  assertEquals("\"TABLE1\".\"ID1\" is null",ref().render(c1));
   Condition c2=FIELD_ID1.isNotNull();
-  assertEquals("\"TABLE1\".\"ID1\" is not null",internal(c2).toSQLReference(create,true));
-  assertEquals("\"TABLE1\".\"ID1\" is not null",internal(c2).toSQLReference(create,false));
+  assertEquals("\"TABLE1\".\"ID1\" is not null",refI().render(c2));
+  assertEquals("\"TABLE1\".\"ID1\" is not null",ref().render(c2));
   int i=internal(c1).bindReference(create,statement);
   assertEquals(1,i);
   int j=internal(c2).bindReference(create,statement);

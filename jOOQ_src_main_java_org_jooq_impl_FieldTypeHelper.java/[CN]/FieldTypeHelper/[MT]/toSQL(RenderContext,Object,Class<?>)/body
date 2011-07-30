@@ -1,0 +1,89 @@
+{
+  if (context.inline()) {
+    if (value == null) {
+      context.sql("null");
+    }
+ else     if (type == Blob.class) {
+      context.sql("[BLOB]");
+    }
+ else     if (type == Boolean.class) {
+      context.sql(value.toString());
+    }
+ else     if (type == BigInteger.class) {
+      context.sql(value.toString());
+    }
+ else     if (type == BigDecimal.class) {
+      context.sql(value.toString());
+    }
+ else     if (type == Byte.class) {
+      context.sql(value.toString());
+    }
+ else     if (type == byte[].class) {
+      context.sql("'").sql(new String((byte[])value).replace("'","''")).sql("'");
+    }
+ else     if (type == Clob.class) {
+      context.sql("[BLOB]");
+    }
+ else     if (type == Date.class) {
+      context.sql("'").sql(value.toString()).sql("'");
+    }
+ else     if (type == Double.class) {
+      context.sql(value.toString());
+    }
+ else     if (type == Float.class) {
+      context.sql(value.toString());
+    }
+ else     if (type == Integer.class) {
+      context.sql(value.toString());
+    }
+ else     if (type == Long.class) {
+      context.sql(value.toString());
+    }
+ else     if (type == Short.class) {
+      context.sql(value.toString());
+    }
+ else     if (type == String.class) {
+      context.sql("'").sql(value.toString().replace("'","''")).sql("'");
+    }
+ else     if (type == Time.class) {
+      context.sql("'").sql(value.toString()).sql("'");
+    }
+ else     if (type == Timestamp.class) {
+      context.sql("'").sql(value.toString()).sql("'");
+    }
+ else     if (type.isArray()) {
+      context.sql("ARRAY").sql(Arrays.asList((Object[])value).toString());
+    }
+ else     if (ArrayRecord.class.isAssignableFrom(type)) {
+      context.sql(value.toString());
+    }
+ else     if (EnumType.class.isAssignableFrom(type)) {
+      toSQL(context,((EnumType)value).getLiteral());
+    }
+ else     if (MasterDataType.class.isAssignableFrom(type)) {
+      toSQL(context,((MasterDataType<?>)value).getPrimaryKey());
+    }
+ else     if (UDTRecord.class.isAssignableFrom(type)) {
+      context.sql("[UDT]");
+    }
+ else {
+      throw new UnsupportedOperationException("Class " + type + " is not supported");
+    }
+  }
+ else   if (context.getDialect() == SQLDialect.POSTGRES) {
+    if (type.isArray() && byte[].class != type) {
+      context.sql("?::");
+      context.sql(getDataType(context.getDialect(),type).getCastTypeName(context));
+    }
+ else     if (EnumType.class.isAssignableFrom(type)) {
+      context.sql("?::");
+      context.sql(((EnumType)value).getName());
+    }
+ else {
+      context.sql("?");
+    }
+  }
+ else {
+    context.sql("?");
+  }
+}

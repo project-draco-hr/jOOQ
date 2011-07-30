@@ -1,0 +1,8 @@
+{
+  context.sql("delete from ");
+  context.sql(getFrom());
+  if (!(getWhere() instanceof TrueCondition)) {
+    context.sql(" where ");
+    context.sql(getWhere());
+  }
+}

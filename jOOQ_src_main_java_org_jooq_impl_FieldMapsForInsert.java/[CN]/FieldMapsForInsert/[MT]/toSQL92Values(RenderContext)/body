@@ -1,0 +1,11 @@
+{
+  context.sql(insertMaps.get(0));
+  int i=0;
+  for (  FieldMapForInsert map : insertMaps) {
+    if (map != null && i > 0) {
+      context.sql(", ");
+      map.toSQLReferenceValues(context);
+    }
+    i++;
+  }
+}

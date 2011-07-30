@@ -1,0 +1,24 @@
+{
+  if (context.declareFields() || context.declareTables()) {
+    if (wrapInParentheses) {
+      context.sql("(");
+    }
+    context.sql(aliasProvider);
+    if (wrapInParentheses) {
+      context.sql(")");
+    }
+switch (context.getDialect()) {
+case POSTGRES:
+case HSQLDB:
+case DERBY:
+case MYSQL:
+      context.sql(" as");
+    break;
+}
+context.sql(" ");
+context.literal(alias);
+}
+ else {
+context.literal(alias);
+}
+}

@@ -1,20 +1,20 @@
 {
   Case decode=create.decode();
   CaseConditionStep<String> c=decode.when(FIELD_ID1.equal(1),"one");
-  assertEquals("case when \"TABLE1\".\"ID1\" = 1 then 'one' end",internal(c).toSQLReference(create,true));
-  assertEquals("case when \"TABLE1\".\"ID1\" = ? then ? end",internal(c).toSQLReference(create,false));
-  assertEquals("case when \"TABLE1\".\"ID1\" = 1 then 'one' end",internal(c).toSQLDeclaration(create,true));
-  assertEquals("case when \"TABLE1\".\"ID1\" = ? then ? end",internal(c).toSQLDeclaration(create,false));
+  assertEquals("case when \"TABLE1\".\"ID1\" = 1 then 'one' end",refI().render(c));
+  assertEquals("case when \"TABLE1\".\"ID1\" = ? then ? end",ref().render(c));
+  assertEquals("case when \"TABLE1\".\"ID1\" = 1 then 'one' end",decI().render(c));
+  assertEquals("case when \"TABLE1\".\"ID1\" = ? then ? end",dec().render(c));
   c.otherwise("nothing");
-  assertEquals("case when \"TABLE1\".\"ID1\" = 1 then 'one' else 'nothing' end",internal(c).toSQLReference(create,true));
-  assertEquals("case when \"TABLE1\".\"ID1\" = ? then ? else ? end",internal(c).toSQLReference(create,false));
-  assertEquals("case when \"TABLE1\".\"ID1\" = 1 then 'one' else 'nothing' end",internal(c).toSQLDeclaration(create,true));
-  assertEquals("case when \"TABLE1\".\"ID1\" = ? then ? else ? end",internal(c).toSQLDeclaration(create,false));
+  assertEquals("case when \"TABLE1\".\"ID1\" = 1 then 'one' else 'nothing' end",refI().render(c));
+  assertEquals("case when \"TABLE1\".\"ID1\" = ? then ? else ? end",ref().render(c));
+  assertEquals("case when \"TABLE1\".\"ID1\" = 1 then 'one' else 'nothing' end",decI().render(c));
+  assertEquals("case when \"TABLE1\".\"ID1\" = ? then ? else ? end",dec().render(c));
   c.when(FIELD_ID1.equal(2),"two").when(FIELD_ID1.equal(3),"three");
-  assertEquals("case when \"TABLE1\".\"ID1\" = 1 then 'one' when \"TABLE1\".\"ID1\" = 2 then 'two' when \"TABLE1\".\"ID1\" = 3 then 'three' else 'nothing' end",internal(c).toSQLReference(create,true));
-  assertEquals("case when \"TABLE1\".\"ID1\" = ? then ? when \"TABLE1\".\"ID1\" = ? then ? when \"TABLE1\".\"ID1\" = ? then ? else ? end",internal(c).toSQLReference(create,false));
-  assertEquals("case when \"TABLE1\".\"ID1\" = 1 then 'one' when \"TABLE1\".\"ID1\" = 2 then 'two' when \"TABLE1\".\"ID1\" = 3 then 'three' else 'nothing' end",internal(c).toSQLDeclaration(create,true));
-  assertEquals("case when \"TABLE1\".\"ID1\" = ? then ? when \"TABLE1\".\"ID1\" = ? then ? when \"TABLE1\".\"ID1\" = ? then ? else ? end",internal(c).toSQLDeclaration(create,false));
+  assertEquals("case when \"TABLE1\".\"ID1\" = 1 then 'one' when \"TABLE1\".\"ID1\" = 2 then 'two' when \"TABLE1\".\"ID1\" = 3 then 'three' else 'nothing' end",refI().render(c));
+  assertEquals("case when \"TABLE1\".\"ID1\" = ? then ? when \"TABLE1\".\"ID1\" = ? then ? when \"TABLE1\".\"ID1\" = ? then ? else ? end",ref().render(c));
+  assertEquals("case when \"TABLE1\".\"ID1\" = 1 then 'one' when \"TABLE1\".\"ID1\" = 2 then 'two' when \"TABLE1\".\"ID1\" = 3 then 'three' else 'nothing' end",decI().render(c));
+  assertEquals("case when \"TABLE1\".\"ID1\" = ? then ? when \"TABLE1\".\"ID1\" = ? then ? when \"TABLE1\".\"ID1\" = ? then ? else ? end",dec().render(c));
   context.checking(new Expectations(){
 {
       oneOf(statement).setInt(1,1);

@@ -1,7 +1,7 @@
 {
-  if (that instanceof QueryPartInternal) {
-    String sql1=toSQLReference(getConfiguration(),true);
-    String sql2=((QueryPartInternal)that).toSQLReference(getConfiguration(),true);
+  if (that instanceof QueryPart) {
+    String sql1=create().renderInlined(this);
+    String sql2=create().renderInlined((QueryPart)that);
     return sql1.equals(sql2);
   }
   return false;

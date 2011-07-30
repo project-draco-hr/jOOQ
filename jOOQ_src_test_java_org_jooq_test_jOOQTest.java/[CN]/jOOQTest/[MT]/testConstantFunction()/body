@@ -1,22 +1,22 @@
 {
   Field<Integer> f1=create.val(Integer.valueOf(1));
   assertEquals(Integer.class,f1.getType());
-  assertEquals("1",internal(f1).toSQLReference(create,true));
-  assertEquals("?",internal(f1).toSQLReference(create,false));
-  assertEquals("1",internal(f1).toSQLDeclaration(create,true));
-  assertEquals("?",internal(f1).toSQLDeclaration(create,false));
+  assertEquals("1",refI().render(f1));
+  assertEquals("?",ref().render(f1));
+  assertEquals("1",decI().render(f1));
+  assertEquals("?",dec().render(f1));
   Field<String> f2=create.val("test's");
   assertEquals(String.class,f2.getType());
-  assertEquals("'test''s'",internal(f2).toSQLReference(create,true));
-  assertEquals("?",internal(f2).toSQLReference(create,false));
-  assertEquals("'test''s'",internal(f2).toSQLDeclaration(create,true));
-  assertEquals("?",internal(f2).toSQLDeclaration(create,false));
+  assertEquals("'test''s'",refI().render(f2));
+  assertEquals("?",ref().render(f2));
+  assertEquals("'test''s'",decI().render(f2));
+  assertEquals("?",dec().render(f2));
   Field<Integer> f3=create.val(Integer.valueOf(1)).as("value");
   assertEquals(Integer.class,f3.getType());
-  assertEquals("\"value\"",internal(f3).toSQLReference(create,true));
-  assertEquals("\"value\"",internal(f3).toSQLReference(create,false));
-  assertEquals("1 \"value\"",internal(f3).toSQLDeclaration(create,true));
-  assertEquals("? \"value\"",internal(f3).toSQLDeclaration(create,false));
+  assertEquals("\"value\"",refI().render(f3));
+  assertEquals("\"value\"",ref().render(f3));
+  assertEquals("1 \"value\"",decI().render(f3));
+  assertEquals("? \"value\"",dec().render(f3));
   context.checking(new Expectations(){
 {
       oneOf(statement).setInt(1,1);

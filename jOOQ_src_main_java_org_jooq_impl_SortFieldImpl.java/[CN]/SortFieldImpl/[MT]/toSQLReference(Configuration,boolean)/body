@@ -1,3 +1,0 @@
-{
-  return toSQLReference0(configuration,inlineParameters,false);
-}

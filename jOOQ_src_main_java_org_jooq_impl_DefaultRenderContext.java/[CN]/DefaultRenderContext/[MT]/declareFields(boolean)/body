@@ -1,0 +1,4 @@
+{
+  this.declareFields=d;
+  return this;
+}

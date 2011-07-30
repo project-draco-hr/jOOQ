@@ -1,0 +1,8 @@
+{
+  context.sql("(");
+  context.sql(lhs);
+  for (  Field<?> field : rhs) {
+    context.sql(" ").sql(operator.toSQL()).sql(" ").sql(field);
+  }
+  context.sql(")");
+}

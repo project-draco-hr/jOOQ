@@ -1,0 +1,17 @@
+{
+  insertMaps.get(0).toSQLReferenceKeys(context);
+  context.sql(" ");
+  Select<Record> select=null;
+  for (  FieldMapForInsert map : insertMaps) {
+    if (map != null) {
+      Select<Record> iteration=create().select(map.values());
+      if (select == null) {
+        select=iteration;
+      }
+ else {
+        select=select.unionAll(iteration);
+      }
+    }
+  }
+  context.sql(select);
+}

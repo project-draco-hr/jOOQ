@@ -1,0 +1,7 @@
+{
+  String separator="";
+  for (  NamedQueryPart part : this) {
+    context.sql(separator).literal(part.getName());
+    separator=", ";
+  }
+}

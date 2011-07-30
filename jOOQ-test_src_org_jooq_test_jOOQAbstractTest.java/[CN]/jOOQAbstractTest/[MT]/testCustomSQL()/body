@@ -1,12 +1,12 @@
 {
   final Field<Integer> IDx2=new CustomField<Integer>("ID",TBook_ID().getDataType()){
     private static final long serialVersionUID=1L;
-    @Override public String toSQLReference(    Configuration configuration,    boolean inlineParameters){
-      if (inlineParameters) {
-        return "ID * 2";
+    @Override public void toSQL(    RenderContext context){
+      if (context.inline()) {
+        context.sql("ID * 2");
       }
  else {
-        return "ID * ?";
+        context.sql("ID * ?");
       }
     }
     @Override public int bindReference(    Configuration configuration,    PreparedStatement stmt,    int initialIndex) throws SQLException {
@@ -17,17 +17,15 @@
 ;
   Condition c=new CustomCondition(){
     private static final long serialVersionUID=-629253722638033620L;
-    @Override public String toSQLReference(    Configuration configuration,    boolean inlineParameters){
-      StringBuilder sb=new StringBuilder();
-      sb.append(internal(IDx2).toSQLReference(configuration,inlineParameters));
-      sb.append(" > ");
-      if (inlineParameters) {
-        sb.append("3");
+    @Override public void toSQL(    RenderContext context){
+      context.sql(IDx2);
+      context.sql(" > ");
+      if (context.inline()) {
+        context.sql("3");
       }
  else {
-        sb.append("?");
+        context.sql("?");
       }
-      return sb.toString();
     }
     @Override public int bindReference(    Configuration configuration,    PreparedStatement stmt,    int initialIndex) throws SQLException {
       int result=initialIndex;

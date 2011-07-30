@@ -1,16 +1,22 @@
 {
-  assertEquals("\"TABLE1\"",internal(TABLE1).toSQLDeclaration(create));
-  assertEquals("\"TABLE1\"",internal(TABLE1).toSQLReference(create));
-  assertEquals("\"TABLE1\" \"t1\"",internal(TABLE1.as("t1")).toSQLDeclaration(create));
-  assertEquals("\"t1\"",internal(TABLE1.as("t1")).toSQLReference(create));
-  assertEquals("\"TABLE1\".\"ID1\"",internal(TABLE1.getField(FIELD_ID1)).toSQLDeclaration(create));
-  assertEquals("\"TABLE1\".\"ID1\"",internal(TABLE1.getField(FIELD_ID1)).toSQLReference(create));
-  assertEquals("\"TABLE1\".\"ID1\" \"f1\"",internal(TABLE1.getField(FIELD_ID1).as("f1")).toSQLDeclaration(create));
-  assertEquals("\"f1\"",internal(TABLE1.getField(FIELD_ID1).as("f1")).toSQLReference(create));
-  assertEquals("\"t1\".\"ID1\"",internal(TABLE1.as("t1").getField(FIELD_ID1)).toSQLDeclaration(create));
-  assertEquals("\"t1\".\"ID1\"",internal(TABLE1.as("t1").getField(FIELD_ID1)).toSQLReference(create));
-  assertEquals("\"t1\".\"ID1\" \"f1\"",internal(TABLE1.as("t1").getField(FIELD_ID1).as("f1")).toSQLDeclaration(create));
-  assertEquals("\"f1\"",internal(TABLE1.as("t1").getField(FIELD_ID1).as("f1")).toSQLReference(create));
+  assertEquals("\"TABLE1\"",decT().render(TABLE1));
+  assertEquals("\"TABLE1\"",decF().render(TABLE1));
+  assertEquals("\"TABLE1\"",ref().render(TABLE1));
+  assertEquals("\"TABLE1\" \"t1\"",decT().render(TABLE1.as("t1")));
+  assertEquals("\"t1\"",decF().render(TABLE1.as("t1")));
+  assertEquals("\"t1\"",ref().render(TABLE1.as("t1")));
+  assertEquals("\"TABLE1\".\"ID1\"",decF().render(TABLE1.getField(FIELD_ID1)));
+  assertEquals("\"TABLE1\".\"ID1\"",decT().render(TABLE1.getField(FIELD_ID1)));
+  assertEquals("\"TABLE1\".\"ID1\"",ref().render(TABLE1.getField(FIELD_ID1)));
+  assertEquals("\"TABLE1\".\"ID1\" \"f1\"",decF().render(TABLE1.getField(FIELD_ID1).as("f1")));
+  assertEquals("\"f1\"",decT().render(TABLE1.getField(FIELD_ID1).as("f1")));
+  assertEquals("\"f1\"",ref().render(TABLE1.getField(FIELD_ID1).as("f1")));
+  assertEquals("\"t1\".\"ID1\"",decF().render(TABLE1.as("t1").getField(FIELD_ID1)));
+  assertEquals("\"t1\".\"ID1\"",decT().render(TABLE1.as("t1").getField(FIELD_ID1)));
+  assertEquals("\"t1\".\"ID1\"",ref().render(TABLE1.as("t1").getField(FIELD_ID1)));
+  assertEquals("\"t1\".\"ID1\" \"f1\"",decF().render(TABLE1.as("t1").getField(FIELD_ID1).as("f1")));
+  assertEquals("\"f1\"",decT().render(TABLE1.as("t1").getField(FIELD_ID1).as("f1")));
+  assertEquals("\"f1\"",ref().render(TABLE1.as("t1").getField(FIELD_ID1).as("f1")));
   context.checking(new Expectations(){
 {
       oneOf(statement).setInt(1,2);

@@ -1,0 +1,24 @@
+{
+switch (context.getDialect()) {
+case HSQLDB:
+    context.sql("INFORMATION_SCHEMA.SYSTEM_USERS");
+  break;
+case INGRES:
+case POSTGRES:
+case SQLITE:
+case SQLSERVER:
+break;
+case DB2:
+context.sql("SYSIBM.DUAL");
+break;
+case DERBY:
+context.sql("SYSIBM.SYSDUMMY1");
+break;
+case SYBASE:
+context.sql("SYS.DUMMY");
+break;
+default :
+context.sql("dual");
+break;
+}
+}

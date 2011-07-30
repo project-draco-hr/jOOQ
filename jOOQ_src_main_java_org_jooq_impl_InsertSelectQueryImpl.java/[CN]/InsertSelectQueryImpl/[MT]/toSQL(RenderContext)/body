@@ -1,0 +1,9 @@
+{
+  context.sql("insert into ").sql(into).sql(" (");
+  String separator="";
+  for (  Field<?> field : into.getFields()) {
+    context.sql(separator).literal(field.getName());
+    separator=", ";
+  }
+  context.sql(") ").sql(select);
+}

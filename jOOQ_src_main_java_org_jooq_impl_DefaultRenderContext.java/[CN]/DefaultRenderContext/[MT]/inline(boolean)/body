@@ -1,0 +1,4 @@
+{
+  this.inline=i;
+  return this;
+}

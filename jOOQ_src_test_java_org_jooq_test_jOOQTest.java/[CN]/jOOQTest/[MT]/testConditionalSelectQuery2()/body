@@ -1,7 +1,7 @@
 {
   SelectQuery q=create.selectQuery();
   q.addConditions(create.falseCondition());
-  assertEquals("select 1 from dual where 1 = 0",internal(q).toSQLReference(create,true));
-  assertEquals("select 1 from dual where 1 = 0",internal(q).toSQLReference(create,false));
+  assertEquals("select 1 from dual where 1 = 0",refI().render(q));
+  assertEquals("select 1 from dual where 1 = 0",ref().render(q));
   assertEquals(q,create.select().where(create.falseCondition()));
 }

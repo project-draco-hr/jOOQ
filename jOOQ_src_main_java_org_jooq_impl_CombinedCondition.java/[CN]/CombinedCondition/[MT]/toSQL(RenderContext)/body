@@ -1,0 +1,19 @@
+{
+  if (conditions.isEmpty()) {
+    context.sql(create().trueCondition());
+  }
+ else   if (conditions.size() == 1) {
+    context.sql(conditions.get(0));
+  }
+ else {
+    context.sql("(");
+    String operatorName=" " + operator.name().toLowerCase() + " ";
+    String separator="";
+    for (    Condition condition : conditions) {
+      context.sql(separator);
+      context.sql(condition);
+      separator=operatorName;
+    }
+    context.sql(")");
+  }
+}

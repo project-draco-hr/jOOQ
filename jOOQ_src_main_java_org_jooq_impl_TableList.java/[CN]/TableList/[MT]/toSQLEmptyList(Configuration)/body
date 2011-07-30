@@ -1,3 +1,0 @@
-{
-  return new Dual().toSQLReference(configuration);
-}

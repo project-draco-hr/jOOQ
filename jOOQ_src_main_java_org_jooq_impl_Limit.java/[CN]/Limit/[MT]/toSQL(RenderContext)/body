@@ -1,0 +1,69 @@
+{
+switch (context.getDialect()) {
+case MYSQL:
+{
+      if (context.inline()) {
+        context.sql("limit ").sql(getOffset()).sql(", ").sql(getNumberOfRows());
+      }
+ else {
+        context.sql("limit ?, ?");
+      }
+      break;
+    }
+case H2:
+case HSQLDB:
+case POSTGRES:
+case SQLITE:
+{
+    if (context.inline()) {
+      context.sql("limit ").sql(getNumberOfRows()).sql(" offset ").sql(getOffset());
+    }
+ else {
+      context.sql("limit ? offset ?");
+    }
+    break;
+  }
+case DERBY:
+{
+  if (context.inline()) {
+    context.sql("offset ").sql(getOffset()).sql(" rows fetch next ").sql(getNumberOfRows()).sql(" rows only");
+  }
+ else {
+    context.sql("offset ? rows fetch next ? rows only");
+  }
+  break;
+}
+case INGRES:
+{
+context.sql("offset ").sql(getOffset()).sql(" fetch first ").sql(getNumberOfRows()).sql(" rows only");
+break;
+}
+case DB2:
+{
+if (getOffset() != 0) {
+throw new SQLDialectNotSupportedException("DB2 does not support offsets in FETCH FIRST ROWS ONLY clause");
+}
+context.sql("fetch first ").sql(getNumberOfRows()).sql(" rows only");
+break;
+}
+case SQLSERVER:
+case SYBASE:
+{
+if (getOffset() != 0) {
+throw new SQLDialectNotSupportedException("Offsets in TOP clause not supported");
+}
+context.sql("top ").sql(getNumberOfRows());
+break;
+}
+default :
+{
+if (context.inline()) {
+context.sql("limit ").sql(getNumberOfRows()).sql(" offset ").sql(getOffset());
+}
+ else {
+context.sql("limit ? offset ?");
+}
+break;
+}
+}
+}

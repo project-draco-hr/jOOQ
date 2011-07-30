@@ -1,0 +1,6 @@
+{
+  context.sql("update ").declareTables(true).sql(getInto()).declareTables(false).sql(" set ").sql(updateMap);
+  if (!(getWhere() instanceof TrueCondition)) {
+    context.sql(" where ").sql(getWhere());
+  }
+}

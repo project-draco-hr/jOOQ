@@ -1,7 +1,7 @@
 {
   DeleteQuery<Table1Record> q=create.deleteQuery(TABLE1);
   q.addConditions(create.falseCondition());
-  assertEquals("delete from \"TABLE1\" where 1 = 0",internal(q).toSQLReference(create,true));
-  assertEquals("delete from \"TABLE1\" where 1 = 0",internal(q).toSQLReference(create,false));
+  assertEquals("delete from \"TABLE1\" where 1 = 0",refI().render(q));
+  assertEquals("delete from \"TABLE1\" where 1 = 0",ref().render(q));
   assertEquals(q,create.delete(TABLE1).where(create.falseCondition()));
 }

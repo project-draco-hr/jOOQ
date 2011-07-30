@@ -1,7 +1,7 @@
 {
   Field<?> f=create.val((Object)null);
-  assertEquals("null",internal(f).toSQLReference(create,true));
-  assertEquals("null",internal(f).toSQLReference(create,false));
+  assertEquals("null",refI().render(f));
+  assertEquals("null",ref().render(f));
   int i=internal(f).bindReference(create,statement);
   assertEquals(1,i);
 }

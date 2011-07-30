@@ -1,0 +1,27 @@
+{
+  context.sql("merge into ").declareTables(true).sql(table).sql(" using ").sql(wrapInParentheses(context.render(using))).declareTables(false);
+switch (context.getDialect()) {
+case SQLSERVER:
+case SYBASE:
+{
+      if (using instanceof Select) {
+        int hash=Math.abs(using.hashCode());
+        context.sql(" as ").sql("dummy_").sql(hash).sql("(");
+        String separator="";
+        for (        Field<?> field : ((Select<?>)using).getFields()) {
+          String name=StringUtils.isBlank(field.getName()) ? "dummy_" + hash + "_"+ Math.abs(field.hashCode()) : field.getName();
+          context.sql(separator).literal(name);
+          separator=", ";
+        }
+        context.sql(")");
+      }
+      break;
+    }
+}
+context.sql(" on ").sql(wrapInParentheses(context.render(on))).sql(" when matched then update set ").sql(updateMap).sql(" when not matched then insert ").sql(insertMap);
+switch (context.getDialect()) {
+case SQLSERVER:
+  context.sql(";");
+break;
+}
+}

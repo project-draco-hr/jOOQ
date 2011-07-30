@@ -1,3 +1,0 @@
-{
-  return JooqUtil.toSQLLiteral(configuration,alias);
-}

@@ -1,3 +1,0 @@
-{
-  return "(" + toSQLReference(configuration,sql,bindings,inlineParameters) + ")";
-}
