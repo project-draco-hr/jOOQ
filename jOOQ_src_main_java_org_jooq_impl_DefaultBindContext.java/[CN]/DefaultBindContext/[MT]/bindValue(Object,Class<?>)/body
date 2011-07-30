@@ -113,7 +113,7 @@ stmt.setString(nextIndex(),((EnumType)value).getLiteral());
 }
  else if (MasterDataType.class.isAssignableFrom(type)) {
 Object primaryKey=((MasterDataType<?>)value).getPrimaryKey();
-bind(primaryKey,primaryKey.getClass());
+bindValue(primaryKey,primaryKey.getClass());
 }
  else {
 stmt.setObject(nextIndex(),value);

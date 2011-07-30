@@ -1,7 +1,7 @@
 {
 switch (context.getDialect()) {
 case ORACLE:
-    context.bind(record);
+    context.bindValues(record);
   break;
 case DB2:
 case POSTGRES:
