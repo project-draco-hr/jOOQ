@@ -1,0 +1,4 @@
+{
+  this.subquery=s;
+  return (C)this;
+}

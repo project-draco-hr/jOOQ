@@ -14,41 +14,46 @@ case SYBASE:
         context.sql(getLimit()).sql(" ");
       }
  else       if (context.getDialect() == SQLSERVER && !getOrderBy().isEmpty()) {
-        context.sql("top 100 percent ");
+        if (context.subquery() || getLimit().isApplicable()) {
+          context.sql("top 100 percent ");
+        }
       }
     }
+case INGRES:
+{
+  }
 }
 context.declareFields(true);
 context.sql(getSelect());
 context.declareFields(false);
 context.declareTables(true);
 if (!context.render(getFrom()).isEmpty()) {
-  context.sql(" from ").sql(getFrom());
+context.sql(" from ").sql(getFrom());
 }
 if (!getJoin().isEmpty()) {
-  context.sql(" ").sql(getJoin());
+context.sql(" ").sql(getJoin());
 }
 context.declareTables(false);
 if (!(getWhere().getWhere() instanceof TrueCondition)) {
-  context.sql(" where ").sql(getWhere());
+context.sql(" where ").sql(getWhere());
 }
 if (!(getConnectBy().getWhere() instanceof TrueCondition)) {
-  context.sql(" connect by");
-  if (connectByNoCycle) {
-    context.sql(" nocycle");
-  }
-  context.sql(" ").sql(getConnectBy());
-  if (!(getConnectByStartWith().getWhere() instanceof TrueCondition)) {
-    context.sql(" start with ").sql(getConnectByStartWith());
-  }
+context.sql(" connect by");
+if (connectByNoCycle) {
+  context.sql(" nocycle");
+}
+context.sql(" ").sql(getConnectBy());
+if (!(getConnectByStartWith().getWhere() instanceof TrueCondition)) {
+  context.sql(" start with ").sql(getConnectByStartWith());
+}
 }
 if (!getGroupBy().isEmpty()) {
-  context.sql(" group by ").sql(getGroupBy());
+context.sql(" group by ").sql(getGroupBy());
 }
 if (!(getHaving().getWhere() instanceof TrueCondition)) {
-  context.sql(" having ").sql(getHaving());
+context.sql(" having ").sql(getHaving());
 }
 if (!getOrderBy().isEmpty()) {
-  context.sql(" order by ").sql(getOrderBy());
+context.sql(" order by ").sql(getOrderBy());
 }
 }

@@ -1,3 +1,8 @@
 {
-  context.sql(query);
+  if (context.subquery()) {
+    context.sql(query);
+  }
+ else {
+    context.subquery(true).sql(query).subquery(false);
+  }
 }

@@ -1,0 +1,15 @@
+{
+  sb.append("\ndeclaring [");
+  if (declareFields) {
+    sb.append("fields");
+  }
+ else   if (declareTables) {
+    sb.append("tables");
+  }
+ else {
+    sb.append("-");
+  }
+  sb.append("]\nsubquery  [");
+  sb.append(subquery);
+  sb.append("]");
+}
