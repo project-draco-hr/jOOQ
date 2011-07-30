@@ -1,17 +1,3 @@
 {
-  if (cursor == null) {
-    throw new UnsupportedOperationException();
-  }
- else   if (cursor.getType() == Result.class) {
-  }
- else   if (ArrayConstant.class.isAssignableFrom(cursor.getClass())) {
-    return new ArrayTable<Record>(cursor);
-  }
- else   if (ArrayRecord.class.isAssignableFrom(cursor.getDataType().getType())) {
-    return new ArrayTable<Record>(cursor);
-  }
- else   if (cursor.getType().isArray() && cursor.getType() != byte[].class) {
-    return new ArrayTable<Record>(cursor);
-  }
-  throw new SQLDialectNotSupportedException("Converting arbitrary types into array tables is currently not supported");
+  return unnest(cursor);
 }
