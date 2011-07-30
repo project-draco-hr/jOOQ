@@ -6,12 +6,12 @@
   String rownumName="rownum_" + Math.abs(enclosed.hashCode());
   context.sql("select * from (select ").sql(subqueryName).sql(".*, row_number() over (order by ");
   if (getOrderBy().isEmpty()) {
-    context.sql(getSelect().get(0).getName());
+    context.literal(getSelect().get(0).getName());
   }
  else {
     String separator="";
     for (    SortField<?> field : getOrderBy()) {
-      context.sql(separator).sql(field.getName()).sql(" ").sql(field.getOrder().toSQL());
+      context.sql(separator).literal(field.getName()).sql(" ").sql(field.getOrder().toSQL());
       separator=", ";
     }
   }

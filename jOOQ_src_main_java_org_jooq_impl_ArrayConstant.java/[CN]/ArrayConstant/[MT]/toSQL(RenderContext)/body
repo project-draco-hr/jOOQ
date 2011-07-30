@@ -1,6 +1,6 @@
 {
   if (context.inline()) {
-    context.sql(array.getName());
+    context.literal(array.getName());
     context.sql("(");
     String separator="";
     for (    Object object : array.get()) {

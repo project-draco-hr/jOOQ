@@ -77,7 +77,7 @@
     }
  else     if (EnumType.class.isAssignableFrom(type)) {
       context.sql("?::");
-      context.sql(((EnumType)value).getName());
+      context.literal(((EnumType)value).getName());
     }
  else {
       context.sql("?");
