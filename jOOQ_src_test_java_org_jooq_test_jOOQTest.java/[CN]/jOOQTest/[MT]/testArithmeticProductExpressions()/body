@@ -1,16 +1,16 @@
 {
   Field<Integer> product1=FIELD_ID1.mul(FIELD_ID1).mul(1).mul(2);
   assertEquals(Integer.class,product1.getType());
-  assertEquals("(\"TABLE1\".\"ID1\" * \"TABLE1\".\"ID1\" * 1 * 2)",refI().render(product1));
-  assertEquals("(\"TABLE1\".\"ID1\" * \"TABLE1\".\"ID1\" * ? * ?)",ref().render(product1));
-  assertEquals("(\"TABLE1\".\"ID1\" * \"TABLE1\".\"ID1\" * 1 * 2)",decI().render(product1));
-  assertEquals("(\"TABLE1\".\"ID1\" * \"TABLE1\".\"ID1\" * ? * ?)",dec().render(product1));
+  assertEquals("(\"TABLE1\".\"ID1\" * \"TABLE1\".\"ID1\" * 1 * 2)",r_refI().render(product1));
+  assertEquals("(\"TABLE1\".\"ID1\" * \"TABLE1\".\"ID1\" * ? * ?)",r_ref().render(product1));
+  assertEquals("(\"TABLE1\".\"ID1\" * \"TABLE1\".\"ID1\" * 1 * 2)",r_decI().render(product1));
+  assertEquals("(\"TABLE1\".\"ID1\" * \"TABLE1\".\"ID1\" * ? * ?)",r_dec().render(product1));
   Field<Integer> product2=product1.as("p");
   assertEquals(Integer.class,product2.getType());
-  assertEquals("\"p\"",refI().render(product2));
-  assertEquals("\"p\"",ref().render(product2));
-  assertEquals("(\"TABLE1\".\"ID1\" * \"TABLE1\".\"ID1\" * 1 * 2) \"p\"",decI().render(product2));
-  assertEquals("(\"TABLE1\".\"ID1\" * \"TABLE1\".\"ID1\" * ? * ?) \"p\"",dec().render(product2));
+  assertEquals("\"p\"",r_refI().render(product2));
+  assertEquals("\"p\"",r_ref().render(product2));
+  assertEquals("(\"TABLE1\".\"ID1\" * \"TABLE1\".\"ID1\" * 1 * 2) \"p\"",r_decI().render(product2));
+  assertEquals("(\"TABLE1\".\"ID1\" * \"TABLE1\".\"ID1\" * ? * ?) \"p\"",r_dec().render(product2));
   context.checking(new Expectations(){
 {
       oneOf(statement).setInt(1,1);
@@ -18,7 +18,7 @@
     }
   }
 );
-  int i=internal(product2).bindDeclaration(create,statement);
+  int i=b_decF().bind(product2).peekIndex();
   assertEquals(3,i);
   context.assertIsSatisfied();
 }

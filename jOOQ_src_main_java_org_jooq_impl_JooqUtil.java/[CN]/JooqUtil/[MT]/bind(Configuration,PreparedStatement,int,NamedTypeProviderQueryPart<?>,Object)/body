@@ -1,3 +1,0 @@
-{
-  bind(configuration,stmt,initialIndex,field.getType(),value);
-}

@@ -1,0 +1,4 @@
+{
+  this.declareTables=d;
+  return (C)this;
+}

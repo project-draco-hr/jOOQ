@@ -1,0 +1,7 @@
+{
+  if (context.declareFields() || context.declareTables()) {
+    context.bind(aliasProvider);
+  }
+ else {
+  }
+}

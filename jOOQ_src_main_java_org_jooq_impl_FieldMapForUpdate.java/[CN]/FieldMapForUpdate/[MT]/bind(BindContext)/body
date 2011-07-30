@@ -1,0 +1,6 @@
+{
+  for (  Entry<Field<?>,Field<?>> entry : entrySet()) {
+    context.bind(entry.getKey());
+    context.bind(entry.getValue());
+  }
+}

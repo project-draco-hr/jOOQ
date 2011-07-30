@@ -1,7 +1,0 @@
-{
-  int result=initialIndex;
-  for (  T queryPart : this) {
-    result=internal(queryPart).bindReference(configuration,stmt,result);
-  }
-  return result;
-}

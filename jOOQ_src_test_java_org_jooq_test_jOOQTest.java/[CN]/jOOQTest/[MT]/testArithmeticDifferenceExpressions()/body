@@ -1,16 +1,16 @@
 {
   Field<Integer> difference1=FIELD_ID1.sub(FIELD_ID1).sub(1).sub(2);
   assertEquals(Integer.class,difference1.getType());
-  assertEquals("(((\"TABLE1\".\"ID1\" - \"TABLE1\".\"ID1\") - 1) - 2)",refI().render(difference1));
-  assertEquals("(((\"TABLE1\".\"ID1\" - \"TABLE1\".\"ID1\") - ?) - ?)",ref().render(difference1));
-  assertEquals("(((\"TABLE1\".\"ID1\" - \"TABLE1\".\"ID1\") - 1) - 2)",decI().render(difference1));
-  assertEquals("(((\"TABLE1\".\"ID1\" - \"TABLE1\".\"ID1\") - ?) - ?)",dec().render(difference1));
+  assertEquals("(((\"TABLE1\".\"ID1\" - \"TABLE1\".\"ID1\") - 1) - 2)",r_refI().render(difference1));
+  assertEquals("(((\"TABLE1\".\"ID1\" - \"TABLE1\".\"ID1\") - ?) - ?)",r_ref().render(difference1));
+  assertEquals("(((\"TABLE1\".\"ID1\" - \"TABLE1\".\"ID1\") - 1) - 2)",r_decI().render(difference1));
+  assertEquals("(((\"TABLE1\".\"ID1\" - \"TABLE1\".\"ID1\") - ?) - ?)",r_dec().render(difference1));
   Field<Integer> difference2=difference1.as("d");
   assertEquals(Integer.class,difference2.getType());
-  assertEquals("\"d\"",refI().render(difference2));
-  assertEquals("\"d\"",ref().render(difference2));
-  assertEquals("(((\"TABLE1\".\"ID1\" - \"TABLE1\".\"ID1\") - 1) - 2) \"d\"",decI().render(difference2));
-  assertEquals("(((\"TABLE1\".\"ID1\" - \"TABLE1\".\"ID1\") - ?) - ?) \"d\"",dec().render(difference2));
+  assertEquals("\"d\"",r_refI().render(difference2));
+  assertEquals("\"d\"",r_ref().render(difference2));
+  assertEquals("(((\"TABLE1\".\"ID1\" - \"TABLE1\".\"ID1\") - 1) - 2) \"d\"",r_decI().render(difference2));
+  assertEquals("(((\"TABLE1\".\"ID1\" - \"TABLE1\".\"ID1\") - ?) - ?) \"d\"",r_dec().render(difference2));
   context.checking(new Expectations(){
 {
       oneOf(statement).setInt(1,1);
@@ -18,7 +18,7 @@
     }
   }
 );
-  int i=internal(difference2).bindDeclaration(create,statement);
+  int i=b_decF().bind(difference2).peekIndex();
   assertEquals(3,i);
   context.assertIsSatisfied();
 }

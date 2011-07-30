@@ -1,8 +1,0 @@
-{
-  int result=initialIndex;
-  for (  Entry<Field<?>,Field<?>> entry : entrySet()) {
-    result=internal(entry.getKey()).bindReference(configuration,stmt,result);
-    result=internal(entry.getValue()).bindReference(configuration,stmt,result);
-  }
-  return result;
-}

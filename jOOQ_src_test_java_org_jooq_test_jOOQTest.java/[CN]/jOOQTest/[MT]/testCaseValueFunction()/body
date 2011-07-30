@@ -2,20 +2,20 @@
   Case decode=create.decode();
   CaseValueStep<Integer> value=decode.value(FIELD_ID1);
   CaseWhenStep<Integer,String> c=value.when(1,"one");
-  assertEquals("case \"TABLE1\".\"ID1\" when 1 then 'one' end",refI().render(c));
-  assertEquals("case \"TABLE1\".\"ID1\" when ? then ? end",ref().render(c));
-  assertEquals("case \"TABLE1\".\"ID1\" when 1 then 'one' end",decI().render(c));
-  assertEquals("case \"TABLE1\".\"ID1\" when ? then ? end",dec().render(c));
+  assertEquals("case \"TABLE1\".\"ID1\" when 1 then 'one' end",r_refI().render(c));
+  assertEquals("case \"TABLE1\".\"ID1\" when ? then ? end",r_ref().render(c));
+  assertEquals("case \"TABLE1\".\"ID1\" when 1 then 'one' end",r_decI().render(c));
+  assertEquals("case \"TABLE1\".\"ID1\" when ? then ? end",r_dec().render(c));
   c.otherwise("nothing");
-  assertEquals("case \"TABLE1\".\"ID1\" when 1 then 'one' else 'nothing' end",refI().render(c));
-  assertEquals("case \"TABLE1\".\"ID1\" when ? then ? else ? end",ref().render(c));
-  assertEquals("case \"TABLE1\".\"ID1\" when 1 then 'one' else 'nothing' end",decI().render(c));
-  assertEquals("case \"TABLE1\".\"ID1\" when ? then ? else ? end",dec().render(c));
+  assertEquals("case \"TABLE1\".\"ID1\" when 1 then 'one' else 'nothing' end",r_refI().render(c));
+  assertEquals("case \"TABLE1\".\"ID1\" when ? then ? else ? end",r_ref().render(c));
+  assertEquals("case \"TABLE1\".\"ID1\" when 1 then 'one' else 'nothing' end",r_decI().render(c));
+  assertEquals("case \"TABLE1\".\"ID1\" when ? then ? else ? end",r_dec().render(c));
   c.when(2,"two").when(3,"three");
-  assertEquals("case \"TABLE1\".\"ID1\" when 1 then 'one' when 2 then 'two' when 3 then 'three' else 'nothing' end",refI().render(c));
-  assertEquals("case \"TABLE1\".\"ID1\" when ? then ? when ? then ? when ? then ? else ? end",ref().render(c));
-  assertEquals("case \"TABLE1\".\"ID1\" when 1 then 'one' when 2 then 'two' when 3 then 'three' else 'nothing' end",decI().render(c));
-  assertEquals("case \"TABLE1\".\"ID1\" when ? then ? when ? then ? when ? then ? else ? end",dec().render(c));
+  assertEquals("case \"TABLE1\".\"ID1\" when 1 then 'one' when 2 then 'two' when 3 then 'three' else 'nothing' end",r_refI().render(c));
+  assertEquals("case \"TABLE1\".\"ID1\" when ? then ? when ? then ? when ? then ? else ? end",r_ref().render(c));
+  assertEquals("case \"TABLE1\".\"ID1\" when 1 then 'one' when 2 then 'two' when 3 then 'three' else 'nothing' end",r_decI().render(c));
+  assertEquals("case \"TABLE1\".\"ID1\" when ? then ? when ? then ? when ? then ? else ? end",r_dec().render(c));
   context.checking(new Expectations(){
 {
       oneOf(statement).setInt(1,1);
@@ -28,7 +28,7 @@
     }
   }
 );
-  int i=internal(c).bindReference(create,statement);
+  int i=b_ref().bind(c).peekIndex();
   assertEquals(8,i);
   context.assertIsSatisfied();
 }

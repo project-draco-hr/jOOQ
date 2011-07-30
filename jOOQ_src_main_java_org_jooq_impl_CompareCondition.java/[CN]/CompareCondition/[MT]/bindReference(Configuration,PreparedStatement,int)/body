@@ -1,6 +1,0 @@
-{
-  int result=initialIndex;
-  result=internal(field1).bindReference(configuration,stmt,result);
-  result=internal(field2).bindReference(configuration,stmt,result);
-  return result;
-}

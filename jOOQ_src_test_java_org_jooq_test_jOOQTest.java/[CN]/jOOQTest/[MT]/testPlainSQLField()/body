@@ -1,10 +1,10 @@
 {
   Field<?> f1=create.field("DECODE(TABLE1.ID, 1, 'a', 'b')");
   Field<?> f2=create.field("DECODE(TABLE1.ID, 1, ?, ?)","a","b");
-  assertEquals("DECODE(TABLE1.ID, 1, 'a', 'b')",refI().render(f1));
-  assertEquals("DECODE(TABLE1.ID, 1, 'a', 'b')",ref().render(f1));
-  assertEquals("DECODE(TABLE1.ID, 1, 'a', 'b')",refI().render(f2));
-  assertEquals("DECODE(TABLE1.ID, 1, ?, ?)",ref().render(f2));
+  assertEquals("DECODE(TABLE1.ID, 1, 'a', 'b')",r_refI().render(f1));
+  assertEquals("DECODE(TABLE1.ID, 1, 'a', 'b')",r_ref().render(f1));
+  assertEquals("DECODE(TABLE1.ID, 1, 'a', 'b')",r_refI().render(f2));
+  assertEquals("DECODE(TABLE1.ID, 1, ?, ?)",r_ref().render(f2));
   context.checking(new Expectations(){
 {
       oneOf(statement).setString(1,"a");
@@ -12,7 +12,7 @@
     }
   }
 );
-  int i=internal(f2).bindReference(create,statement);
+  int i=b_ref().bind(f2).peekIndex();
   assertEquals(3,i);
   context.assertIsSatisfied();
 }

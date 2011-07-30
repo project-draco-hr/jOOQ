@@ -1,0 +1,17 @@
+{
+  QueryPartInternal internal=part.internalAPI(QueryPartInternal.class);
+  if (declareFields() && !internal.declaresFields()) {
+    declareFields(false);
+    internal.bind(this);
+    declareFields(true);
+  }
+ else   if (declareTables() && !internal.declaresTables()) {
+    declareTables(false);
+    internal.bind(this);
+    declareTables(true);
+  }
+ else {
+    internal.bind(this);
+  }
+  return this;
+}

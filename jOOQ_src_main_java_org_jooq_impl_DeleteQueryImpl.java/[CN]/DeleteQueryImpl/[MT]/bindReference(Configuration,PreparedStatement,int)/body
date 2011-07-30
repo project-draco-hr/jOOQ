@@ -1,6 +1,0 @@
-{
-  int result=initialIndex;
-  result=internal(getFrom()).bindReference(configuration,stmt,result);
-  result=internal(getWhere()).bindReference(configuration,stmt,result);
-  return result;
-}

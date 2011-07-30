@@ -1,3 +1,0 @@
-{
-  return internal(getFunction(configuration)).bindReference(configuration,stmt,initialIndex);
-}

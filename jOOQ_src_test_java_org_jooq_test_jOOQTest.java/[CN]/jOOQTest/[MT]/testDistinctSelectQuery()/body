@@ -2,9 +2,9 @@
   SelectQuery q=create.selectQuery();
   q.addSelect(FIELD_ID1,FIELD_ID2);
   q.setDistinct(true);
-  assertEquals("select distinct \"TABLE1\".\"ID1\", \"TABLE2\".\"ID2\" from dual",refI().render(q));
-  assertEquals("select distinct \"TABLE1\".\"ID1\", \"TABLE2\".\"ID2\" from dual",ref().render(q));
+  assertEquals("select distinct \"TABLE1\".\"ID1\", \"TABLE2\".\"ID2\" from dual",r_refI().render(q));
+  assertEquals("select distinct \"TABLE1\".\"ID1\", \"TABLE2\".\"ID2\" from dual",r_ref().render(q));
   assertEquals(q,create.selectDistinct(FIELD_ID1,FIELD_ID2));
-  int i=internal(q).bindReference(create,statement);
+  int i=b_ref().bind(q).peekIndex();
   assertEquals(1,i);
 }

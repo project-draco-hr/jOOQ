@@ -1,16 +1,16 @@
 {
   Field<Integer> division1=FIELD_ID1.div(FIELD_ID1).div(1).div(2);
   assertEquals(Integer.class,division1.getType());
-  assertEquals("(((\"TABLE1\".\"ID1\" / \"TABLE1\".\"ID1\") / 1) / 2)",refI().render(division1));
-  assertEquals("(((\"TABLE1\".\"ID1\" / \"TABLE1\".\"ID1\") / ?) / ?)",ref().render(division1));
-  assertEquals("(((\"TABLE1\".\"ID1\" / \"TABLE1\".\"ID1\") / 1) / 2)",decI().render(division1));
-  assertEquals("(((\"TABLE1\".\"ID1\" / \"TABLE1\".\"ID1\") / ?) / ?)",dec().render(division1));
+  assertEquals("(((\"TABLE1\".\"ID1\" / \"TABLE1\".\"ID1\") / 1) / 2)",r_refI().render(division1));
+  assertEquals("(((\"TABLE1\".\"ID1\" / \"TABLE1\".\"ID1\") / ?) / ?)",r_ref().render(division1));
+  assertEquals("(((\"TABLE1\".\"ID1\" / \"TABLE1\".\"ID1\") / 1) / 2)",r_decI().render(division1));
+  assertEquals("(((\"TABLE1\".\"ID1\" / \"TABLE1\".\"ID1\") / ?) / ?)",r_dec().render(division1));
   Field<Integer> division2=division1.as("d");
   assertEquals(Integer.class,division2.getType());
-  assertEquals("\"d\"",refI().render(division2));
-  assertEquals("\"d\"",ref().render(division2));
-  assertEquals("(((\"TABLE1\".\"ID1\" / \"TABLE1\".\"ID1\") / 1) / 2) \"d\"",decI().render(division2));
-  assertEquals("(((\"TABLE1\".\"ID1\" / \"TABLE1\".\"ID1\") / ?) / ?) \"d\"",dec().render(division2));
+  assertEquals("\"d\"",r_refI().render(division2));
+  assertEquals("\"d\"",r_ref().render(division2));
+  assertEquals("(((\"TABLE1\".\"ID1\" / \"TABLE1\".\"ID1\") / 1) / 2) \"d\"",r_decI().render(division2));
+  assertEquals("(((\"TABLE1\".\"ID1\" / \"TABLE1\".\"ID1\") / ?) / ?) \"d\"",r_dec().render(division2));
   context.checking(new Expectations(){
 {
       oneOf(statement).setInt(1,1);
@@ -18,7 +18,7 @@
     }
   }
 );
-  int i=internal(division2).bindDeclaration(create,statement);
+  int i=b_decF().bind(division2).peekIndex();
   assertEquals(3,i);
   context.assertIsSatisfied();
 }

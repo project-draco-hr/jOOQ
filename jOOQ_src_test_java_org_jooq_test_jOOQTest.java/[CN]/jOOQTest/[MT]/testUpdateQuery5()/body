@@ -7,8 +7,8 @@
   q.addConditions(c1);
   q.addConditions(c2);
   q.addConditions(c2,c1);
-  assertEquals("update \"TABLE1\" set \"ID1\" = 10, \"NAME1\" = 'ABC' where (\"TABLE1\".\"ID1\" = 10 and \"TABLE1\".\"ID1\" = 20 and \"TABLE1\".\"ID1\" = 20 and \"TABLE1\".\"ID1\" = 10)",refI().render(q));
-  assertEquals("update \"TABLE1\" set \"ID1\" = ?, \"NAME1\" = ? where (\"TABLE1\".\"ID1\" = ? and \"TABLE1\".\"ID1\" = ? and \"TABLE1\".\"ID1\" = ? and \"TABLE1\".\"ID1\" = ?)",ref().render(q));
+  assertEquals("update \"TABLE1\" set \"ID1\" = 10, \"NAME1\" = 'ABC' where (\"TABLE1\".\"ID1\" = 10 and \"TABLE1\".\"ID1\" = 20 and \"TABLE1\".\"ID1\" = 20 and \"TABLE1\".\"ID1\" = 10)",r_refI().render(q));
+  assertEquals("update \"TABLE1\" set \"ID1\" = ?, \"NAME1\" = ? where (\"TABLE1\".\"ID1\" = ? and \"TABLE1\".\"ID1\" = ? and \"TABLE1\".\"ID1\" = ? and \"TABLE1\".\"ID1\" = ?)",r_ref().render(q));
   assertEquals(q,create.update(TABLE1).set(FIELD_ID1,10).set(FIELD_NAME1,"ABC").where(c1).and(c2).and(c2).and(c1));
   context.checking(new Expectations(){
 {
@@ -21,7 +21,7 @@
     }
   }
 );
-  int i=internal(q).bindReference(create,statement);
+  int i=b_ref().bind(q).peekIndex();
   assertEquals(7,i);
   context.assertIsSatisfied();
 }

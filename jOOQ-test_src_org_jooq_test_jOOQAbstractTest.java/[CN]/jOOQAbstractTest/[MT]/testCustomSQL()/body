@@ -9,9 +9,8 @@
         context.sql("ID * ?");
       }
     }
-    @Override public int bindReference(    Configuration configuration,    PreparedStatement stmt,    int initialIndex) throws SQLException {
-      stmt.setInt(initialIndex,2);
-      return initialIndex + 1;
+    @Override public void bind(    BindContext context) throws SQLException {
+      context.statement().setInt(context.nextIndex(),2);
     }
   }
 ;
@@ -27,11 +26,9 @@
         context.sql("?");
       }
     }
-    @Override public int bindReference(    Configuration configuration,    PreparedStatement stmt,    int initialIndex) throws SQLException {
-      int result=initialIndex;
-      result=internal(IDx2).bindReference(configuration,stmt,result);
-      stmt.setInt(result++,3);
-      return result;
+    @Override public void bind(    BindContext context) throws SQLException {
+      context.bind(IDx2);
+      context.statement().setInt(context.nextIndex(),3);
     }
   }
 ;

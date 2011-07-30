@@ -9,16 +9,14 @@
         ctx.sql("? = ?");
       }
     }
-    @Override public int bindReference(    Configuration configuration,    PreparedStatement stmt,    int initialIndex) throws SQLException {
-      int result=initialIndex;
-      stmt.setInt(result++,1);
-      stmt.setInt(result++,1);
-      return result;
+    @Override public void bind(    BindContext ctx) throws SQLException {
+      ctx.statement().setInt(ctx.nextIndex(),1);
+      ctx.bind(1);
     }
   }
 ;
-  assertEquals("1 = 1",refI().render(c));
-  assertEquals("? = ?",ref().render(c));
+  assertEquals("1 = 1",r_refI().render(c));
+  assertEquals("? = ?",r_ref().render(c));
   context.checking(new Expectations(){
 {
       oneOf(statement).setInt(1,1);
@@ -26,7 +24,7 @@
     }
   }
 );
-  int i=internal(c).bindReference(create,statement);
+  int i=b_ref().bind(c).peekIndex();
   assertEquals(3,i);
   context.assertIsSatisfied();
 }

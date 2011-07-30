@@ -1,3 +1,0 @@
-{
-  return internal(field).bindReference(configuration,stmt,initialIndex);
-}

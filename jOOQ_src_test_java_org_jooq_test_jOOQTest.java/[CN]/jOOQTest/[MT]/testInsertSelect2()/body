@@ -1,10 +1,10 @@
 {
   Insert q=create.insertInto(TABLE1,create.selectQuery());
-  assertEquals("insert into \"TABLE1\" (\"ID1\", \"NAME1\", \"DATE1\") select 1 from dual",refI().render(q));
-  assertEquals("insert into \"TABLE1\" (\"ID1\", \"NAME1\", \"DATE1\") select 1 from dual",ref().render(q));
+  assertEquals("insert into \"TABLE1\" (\"ID1\", \"NAME1\", \"DATE1\") select 1 from dual",r_refI().render(q));
+  assertEquals("insert into \"TABLE1\" (\"ID1\", \"NAME1\", \"DATE1\") select 1 from dual",r_ref().render(q));
   q=create.insertInto(TABLE1,create.select(create.val(1),FIELD_NAME1).from(TABLE1).where(FIELD_NAME1.equal("abc")));
-  assertEquals("insert into \"TABLE1\" (\"ID1\", \"NAME1\", \"DATE1\") select 1, \"TABLE1\".\"NAME1\" from \"TABLE1\" where \"TABLE1\".\"NAME1\" = 'abc'",refI().render(q));
-  assertEquals("insert into \"TABLE1\" (\"ID1\", \"NAME1\", \"DATE1\") select ?, \"TABLE1\".\"NAME1\" from \"TABLE1\" where \"TABLE1\".\"NAME1\" = ?",ref().render(q));
+  assertEquals("insert into \"TABLE1\" (\"ID1\", \"NAME1\", \"DATE1\") select 1, \"TABLE1\".\"NAME1\" from \"TABLE1\" where \"TABLE1\".\"NAME1\" = 'abc'",r_refI().render(q));
+  assertEquals("insert into \"TABLE1\" (\"ID1\", \"NAME1\", \"DATE1\") select ?, \"TABLE1\".\"NAME1\" from \"TABLE1\" where \"TABLE1\".\"NAME1\" = ?",r_ref().render(q));
   context.checking(new Expectations(){
 {
       oneOf(statement).setInt(1,1);
@@ -12,7 +12,7 @@
     }
   }
 );
-  int i=internal(q).bindReference(create,statement);
+  int i=b_ref().bind(q).peekIndex();
   assertEquals(3,i);
   context.assertIsSatisfied();
 }

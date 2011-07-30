@@ -1,3 +1,0 @@
-{
-  return internal(query).bindReference(configuration,stmt,initialIndex);
-}

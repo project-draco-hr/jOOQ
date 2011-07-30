@@ -1,8 +1,8 @@
 {
   UpdateQuery<Table1Record> q=create.updateQuery(TABLE1);
   q.addValue(FIELD_ID1,10);
-  assertEquals("update \"TABLE1\" set \"ID1\" = 10",refI().render(q));
-  assertEquals("update \"TABLE1\" set \"ID1\" = ?",ref().render(q));
+  assertEquals("update \"TABLE1\" set \"ID1\" = 10",r_refI().render(q));
+  assertEquals("update \"TABLE1\" set \"ID1\" = ?",r_ref().render(q));
   assertEquals(q,create.update(TABLE1).set(FIELD_ID1,10));
   context.checking(new Expectations(){
 {
@@ -10,7 +10,7 @@
     }
   }
 );
-  int i=internal(q).bindReference(create,statement);
+  int i=b_ref().bind(q).peekIndex();
   assertEquals(2,i);
   context.assertIsSatisfied();
 }

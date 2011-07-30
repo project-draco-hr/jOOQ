@@ -1,13 +1,13 @@
 {
   SimpleSelectQuery<Table1Record> q=create.selectQuery(TABLE1);
   q.addOrderBy(FIELD_ID1);
-  assertEquals("select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" order by \"TABLE1\".\"ID1\" asc",refI().render(q));
-  assertEquals("select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" order by \"TABLE1\".\"ID1\" asc",ref().render(q));
+  assertEquals("select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" order by \"TABLE1\".\"ID1\" asc",r_refI().render(q));
+  assertEquals("select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" order by \"TABLE1\".\"ID1\" asc",r_ref().render(q));
   assertEquals(q,create.selectFrom(TABLE1).orderBy(FIELD_ID1));
   q.addOrderBy(FIELD_ID2.desc());
-  assertEquals("select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" order by \"TABLE1\".\"ID1\" asc, \"TABLE2\".\"ID2\" desc",refI().render(q));
-  assertEquals("select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" order by \"TABLE1\".\"ID1\" asc, \"TABLE2\".\"ID2\" desc",ref().render(q));
+  assertEquals("select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" order by \"TABLE1\".\"ID1\" asc, \"TABLE2\".\"ID2\" desc",r_refI().render(q));
+  assertEquals("select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" order by \"TABLE1\".\"ID1\" asc, \"TABLE2\".\"ID2\" desc",r_ref().render(q));
   assertEquals(q,create.selectFrom(TABLE1).orderBy(FIELD_ID1.asc(),FIELD_ID2.desc()));
-  int i=internal(q).bindReference(create,statement);
+  int i=b_ref().bind(q).peekIndex();
   assertEquals(1,i);
 }

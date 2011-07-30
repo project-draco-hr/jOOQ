@@ -1,10 +1,10 @@
 {
   Condition c1=create.condition("TABLE1.ID = 10");
   Condition c2=create.condition("TABLE1.ID = ? and TABLE2.ID = ?",10,"20");
-  assertEquals("(TABLE1.ID = 10)",refI().render(c1));
-  assertEquals("(TABLE1.ID = 10)",ref().render(c1));
-  assertEquals("(TABLE1.ID = 10 and TABLE2.ID = '20')",refI().render(c2));
-  assertEquals("(TABLE1.ID = ? and TABLE2.ID = ?)",ref().render(c2));
+  assertEquals("(TABLE1.ID = 10)",r_refI().render(c1));
+  assertEquals("(TABLE1.ID = 10)",r_ref().render(c1));
+  assertEquals("(TABLE1.ID = 10 and TABLE2.ID = '20')",r_refI().render(c2));
+  assertEquals("(TABLE1.ID = ? and TABLE2.ID = ?)",r_ref().render(c2));
   context.checking(new Expectations(){
 {
       oneOf(statement).setInt(1,10);
@@ -12,7 +12,7 @@
     }
   }
 );
-  int i=internal(c2).bindReference(create,statement);
+  int i=b_ref().bind(c2).peekIndex();
   assertEquals(3,i);
   context.assertIsSatisfied();
 }

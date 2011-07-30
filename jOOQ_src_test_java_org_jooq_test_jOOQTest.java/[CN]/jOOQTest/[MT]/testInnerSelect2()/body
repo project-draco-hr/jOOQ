@@ -6,6 +6,6 @@
   q1.addSelect(FIELD_ID1.as("inner_id1"));
   q2.addSelect(FIELD_ID2.as("outer_id2"));
   q2.addSelect(q1.asField().as("outer_id1"));
-  assertEquals("select \"TABLE2\".\"ID2\" \"outer_id2\", (select \"TABLE1\".\"ID1\" \"inner_id1\" from \"TABLE1\") \"outer_id1\" from \"TABLE2\"",refI().render(q2));
-  assertEquals("select \"TABLE2\".\"ID2\" \"outer_id2\", (select \"TABLE1\".\"ID1\" \"inner_id1\" from \"TABLE1\") \"outer_id1\" from \"TABLE2\"",ref().render(q2));
+  assertEquals("select \"TABLE2\".\"ID2\" \"outer_id2\", (select \"TABLE1\".\"ID1\" \"inner_id1\" from \"TABLE1\") \"outer_id1\" from \"TABLE2\"",r_refI().render(q2));
+  assertEquals("select \"TABLE2\".\"ID2\" \"outer_id2\", (select \"TABLE1\".\"ID1\" \"inner_id1\" from \"TABLE1\") \"outer_id1\" from \"TABLE2\"",r_ref().render(q2));
 }

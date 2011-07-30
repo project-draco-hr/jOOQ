@@ -1,9 +1,0 @@
-{
-  int index=initialIndex;
-  for (  Parameter<?> parameter : getParameters()) {
-    if (getInValues().get(parameter) != null) {
-      index=internal(getInValues().get(parameter)).bindReference(configuration,stmt,index);
-    }
-  }
-  return index;
-}

@@ -1,7 +1,0 @@
-{
-  int result=initialIndex;
-  for (  Condition condition : conditions) {
-    result=internal(condition).bindReference(configuration,stmt,result);
-  }
-  return result;
-}

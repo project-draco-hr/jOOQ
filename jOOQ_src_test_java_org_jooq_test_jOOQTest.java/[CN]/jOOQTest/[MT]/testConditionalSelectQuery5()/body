@@ -4,8 +4,8 @@
   Condition c2=create.condition("\"TABLE2\".\"ID2\" = 20 or \"TABLE2\".\"ID2\" = ?",30);
   q.addConditions(c1);
   q.addConditions(c2);
-  assertEquals("select 1 from dual where ((\"TABLE1\".\"ID1\" = '10') and (\"TABLE2\".\"ID2\" = 20 or \"TABLE2\".\"ID2\" = 30))",refI().render(q));
-  assertEquals("select 1 from dual where ((\"TABLE1\".\"ID1\" = ?) and (\"TABLE2\".\"ID2\" = 20 or \"TABLE2\".\"ID2\" = ?))",ref().render(q));
+  assertEquals("select 1 from dual where ((\"TABLE1\".\"ID1\" = '10') and (\"TABLE2\".\"ID2\" = 20 or \"TABLE2\".\"ID2\" = 30))",r_refI().render(q));
+  assertEquals("select 1 from dual where ((\"TABLE1\".\"ID1\" = ?) and (\"TABLE2\".\"ID2\" = 20 or \"TABLE2\".\"ID2\" = ?))",r_ref().render(q));
   assertEquals(q,create.select().where(c1,c2));
   context.checking(new Expectations(){
 {
@@ -14,7 +14,7 @@
     }
   }
 );
-  int i=internal(q).bindReference(create,statement);
+  int i=b_ref().bind(q).peekIndex();
   assertEquals(3,i);
   context.assertIsSatisfied();
 }

@@ -1,7 +1,0 @@
-{
-  int result=initialIndex;
-  result=internal(field).bindReference(configuration,stmt,result);
-  result=internal(minValue).bindReference(configuration,stmt,result);
-  result=internal(maxValue).bindReference(configuration,stmt,result);
-  return result;
-}

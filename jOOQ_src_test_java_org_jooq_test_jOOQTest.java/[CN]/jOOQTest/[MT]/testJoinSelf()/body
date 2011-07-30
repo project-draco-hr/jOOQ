@@ -4,9 +4,9 @@
   SelectQuery q=create.selectQuery();
   q.addFrom(t1);
   q.addJoin(t2,t1.getField(FIELD_ID1).equal(t2.getField(FIELD_ID1)));
-  assertEquals("select \"t1\".\"ID1\", \"t1\".\"NAME1\", \"t1\".\"DATE1\", \"t2\".\"ID1\", \"t2\".\"NAME1\", \"t2\".\"DATE1\" from \"TABLE1\" \"t1\" join \"TABLE1\" \"t2\" on \"t1\".\"ID1\" = \"t2\".\"ID1\"",refI().render(q));
-  assertEquals("select \"t1\".\"ID1\", \"t1\".\"NAME1\", \"t1\".\"DATE1\", \"t2\".\"ID1\", \"t2\".\"NAME1\", \"t2\".\"DATE1\" from \"TABLE1\" \"t1\" join \"TABLE1\" \"t2\" on \"t1\".\"ID1\" = \"t2\".\"ID1\"",ref().render(q));
+  assertEquals("select \"t1\".\"ID1\", \"t1\".\"NAME1\", \"t1\".\"DATE1\", \"t2\".\"ID1\", \"t2\".\"NAME1\", \"t2\".\"DATE1\" from \"TABLE1\" \"t1\" join \"TABLE1\" \"t2\" on \"t1\".\"ID1\" = \"t2\".\"ID1\"",r_refI().render(q));
+  assertEquals("select \"t1\".\"ID1\", \"t1\".\"NAME1\", \"t1\".\"DATE1\", \"t2\".\"ID1\", \"t2\".\"NAME1\", \"t2\".\"DATE1\" from \"TABLE1\" \"t1\" join \"TABLE1\" \"t2\" on \"t1\".\"ID1\" = \"t2\".\"ID1\"",r_ref().render(q));
   assertEquals(q,create.select().from(t1).join(t2).on(t1.getField(FIELD_ID1).equal(t2.getField(FIELD_ID1))));
-  int i=internal(q).bindReference(create,statement);
+  int i=b_ref().bind(q).peekIndex();
   assertEquals(1,i);
 }

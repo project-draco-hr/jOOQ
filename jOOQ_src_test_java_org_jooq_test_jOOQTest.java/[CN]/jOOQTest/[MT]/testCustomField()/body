@@ -9,21 +9,20 @@
         ctx.sql("?");
       }
     }
-    @Override public int bindReference(    Configuration configuration,    PreparedStatement stmt,    int initialIndex) throws SQLException {
-      stmt.setInt(initialIndex,1);
-      return initialIndex + 1;
+    @Override public void bind(    BindContext ctx) throws SQLException {
+      ctx.bind(1);
     }
   }
 ;
-  assertEquals("1",refI().render(f));
-  assertEquals("?",ref().render(f));
+  assertEquals("1",r_refI().render(f));
+  assertEquals("?",r_ref().render(f));
   context.checking(new Expectations(){
 {
       oneOf(statement).setInt(1,1);
     }
   }
 );
-  int i=internal(f).bindReference(create,statement);
+  int i=b_ref().bind(f).peekIndex();
   assertEquals(2,i);
   context.assertIsSatisfied();
 }

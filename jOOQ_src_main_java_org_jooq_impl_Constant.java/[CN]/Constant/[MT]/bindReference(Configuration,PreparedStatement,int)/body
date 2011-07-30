@@ -1,4 +1,0 @@
-{
-  JooqUtil.bind(configuration,stmt,initialIndex,this,value);
-  return initialIndex + 1;
-}

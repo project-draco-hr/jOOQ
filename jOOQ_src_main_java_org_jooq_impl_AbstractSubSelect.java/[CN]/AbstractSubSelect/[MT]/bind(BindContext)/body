@@ -1,0 +1,7 @@
+{
+  context.declareFields(true).bind((QueryPart)getSelect0()).declareFields(false).declareTables(true).bind((QueryPart)getFrom()).bind((QueryPart)getJoin()).declareTables(false).bind(getWhere()).bind(getConnectBy()).bind(getConnectByStartWith()).bind((QueryPart)getGroupBy()).bind(getHaving()).bind((QueryPart)getOrderBy());
+  if (getLimit().isApplicable()) {
+    context.bind(getLimit());
+  }
+  context.bind((QueryPart)forUpdateOf).bind((QueryPart)forUpdateOfTables);
+}

@@ -1,7 +1,7 @@
 {
   Select<?> q=create.selectQuery();
   Select<?> s=create.select();
-  assertEquals("select 1 from dual",refI().render(q));
-  assertEquals("select 1 from dual",ref().render(q));
+  assertEquals("select 1 from dual",r_refI().render(q));
+  assertEquals("select 1 from dual",r_ref().render(q));
   assertEquals(q,s);
 }

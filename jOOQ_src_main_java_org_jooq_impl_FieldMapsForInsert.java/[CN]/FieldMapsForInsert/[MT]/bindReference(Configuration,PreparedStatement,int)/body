@@ -1,3 +1,0 @@
-{
-  return new QueryPartList<FieldMapForInsert>(insertMaps).bindReference(configuration,stmt,initialIndex);
-}

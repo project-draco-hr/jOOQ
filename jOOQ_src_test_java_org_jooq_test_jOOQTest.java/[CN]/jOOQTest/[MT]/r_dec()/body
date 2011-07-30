@@ -1,0 +1,3 @@
+{
+  return r_ref().declareFields(true).declareTables(true);
+}

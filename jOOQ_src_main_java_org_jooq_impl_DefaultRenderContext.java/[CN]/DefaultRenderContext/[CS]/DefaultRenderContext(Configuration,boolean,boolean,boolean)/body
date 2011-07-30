@@ -1,6 +1,0 @@
-{
-  this(configuration);
-  this.inline=inline;
-  this.declareFields=declareFields;
-  this.declareTables=declareTables;
-}

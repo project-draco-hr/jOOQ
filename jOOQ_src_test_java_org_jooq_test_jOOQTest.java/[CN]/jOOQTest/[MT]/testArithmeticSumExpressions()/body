@@ -1,16 +1,16 @@
 {
   Field<Integer> sum1=FIELD_ID1.add(FIELD_ID1).add(1).add(2);
   assertEquals(Integer.class,sum1.getType());
-  assertEquals("(\"TABLE1\".\"ID1\" + \"TABLE1\".\"ID1\" + 1 + 2)",refI().render(sum1));
-  assertEquals("(\"TABLE1\".\"ID1\" + \"TABLE1\".\"ID1\" + ? + ?)",ref().render(sum1));
-  assertEquals("(\"TABLE1\".\"ID1\" + \"TABLE1\".\"ID1\" + 1 + 2)",decI().render(sum1));
-  assertEquals("(\"TABLE1\".\"ID1\" + \"TABLE1\".\"ID1\" + ? + ?)",dec().render(sum1));
+  assertEquals("(\"TABLE1\".\"ID1\" + \"TABLE1\".\"ID1\" + 1 + 2)",r_refI().render(sum1));
+  assertEquals("(\"TABLE1\".\"ID1\" + \"TABLE1\".\"ID1\" + ? + ?)",r_ref().render(sum1));
+  assertEquals("(\"TABLE1\".\"ID1\" + \"TABLE1\".\"ID1\" + 1 + 2)",r_decI().render(sum1));
+  assertEquals("(\"TABLE1\".\"ID1\" + \"TABLE1\".\"ID1\" + ? + ?)",r_dec().render(sum1));
   Field<Integer> sum2=sum1.as("s");
   assertEquals(Integer.class,sum2.getType());
-  assertEquals("\"s\"",refI().render(sum2));
-  assertEquals("\"s\"",ref().render(sum2));
-  assertEquals("(\"TABLE1\".\"ID1\" + \"TABLE1\".\"ID1\" + 1 + 2) \"s\"",decI().render(sum2));
-  assertEquals("(\"TABLE1\".\"ID1\" + \"TABLE1\".\"ID1\" + ? + ?) \"s\"",dec().render(sum2));
+  assertEquals("\"s\"",r_refI().render(sum2));
+  assertEquals("\"s\"",r_ref().render(sum2));
+  assertEquals("(\"TABLE1\".\"ID1\" + \"TABLE1\".\"ID1\" + 1 + 2) \"s\"",r_decI().render(sum2));
+  assertEquals("(\"TABLE1\".\"ID1\" + \"TABLE1\".\"ID1\" + ? + ?) \"s\"",r_dec().render(sum2));
   context.checking(new Expectations(){
 {
       oneOf(statement).setInt(1,1);
@@ -18,7 +18,7 @@
     }
   }
 );
-  int i=internal(sum2).bindDeclaration(create,statement);
+  int i=b_decF().bind(sum2).peekIndex();
   assertEquals(3,i);
   context.assertIsSatisfied();
 }

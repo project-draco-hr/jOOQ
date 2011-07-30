@@ -1,3 +1,0 @@
-{
-  return internal(aliasProvider).bindDeclaration(configuration,stmt,initialIndex);
-}

@@ -1,3 +1,0 @@
-{
-  return internal(delegate).bindReference(configuration,stmt,initialIndex);
-}

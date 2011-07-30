@@ -1,14 +1,14 @@
 {
   Condition c=FIELD_ID1.equal(10);
-  assertEquals("\"TABLE1\".\"ID1\" = 10",refI().render(c));
-  assertEquals("\"TABLE1\".\"ID1\" = ?",ref().render(c));
+  assertEquals("\"TABLE1\".\"ID1\" = 10",r_refI().render(c));
+  assertEquals("\"TABLE1\".\"ID1\" = ?",r_ref().render(c));
   context.checking(new Expectations(){
 {
       oneOf(statement).setInt(1,10);
     }
   }
 );
-  int i=internal(c).bindReference(create,statement);
+  int i=b_ref().bind(c).peekIndex();
   assertEquals(2,i);
   context.assertIsSatisfied();
 }

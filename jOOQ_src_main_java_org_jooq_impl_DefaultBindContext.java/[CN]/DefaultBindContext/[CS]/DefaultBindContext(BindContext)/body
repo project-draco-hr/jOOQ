@@ -1,0 +1,5 @@
+{
+  this(context,context.statement());
+  declareFields(context.declareFields());
+  declareTables(context.declareTables());
+}

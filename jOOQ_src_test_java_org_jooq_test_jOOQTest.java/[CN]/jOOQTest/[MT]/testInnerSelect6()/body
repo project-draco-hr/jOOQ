@@ -5,6 +5,6 @@
   q2.addFrom(TABLE2);
   q2.addSelect(FIELD_ID2);
   q1.addConditions(create.exists(q2));
-  assertEquals("select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" where exists (select \"TABLE2\".\"ID2\" from \"TABLE2\")",refI().render(q1));
-  assertEquals("select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" where exists (select \"TABLE2\".\"ID2\" from \"TABLE2\")",ref().render(q1));
+  assertEquals("select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" where exists (select \"TABLE2\".\"ID2\" from \"TABLE2\")",r_refI().render(q1));
+  assertEquals("select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" where exists (select \"TABLE2\".\"ID2\" from \"TABLE2\")",r_ref().render(q1));
 }

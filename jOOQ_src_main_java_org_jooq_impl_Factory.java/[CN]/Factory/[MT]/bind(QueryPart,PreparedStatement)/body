@@ -1,0 +1,3 @@
+{
+  return bindContext(stmt).bind(part).peekIndex();
+}

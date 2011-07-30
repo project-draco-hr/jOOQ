@@ -1,0 +1,12 @@
+{
+  if (values == null) {
+    bind(new Object[]{null});
+  }
+ else {
+    for (    Object value : values) {
+      Class<?> type=(value == null) ? Object.class : value.getClass();
+      bind(value,type);
+    }
+  }
+  return this;
+}

@@ -1,0 +1,6 @@
+{
+  for (  QueryPart part : parts) {
+    bind(part);
+  }
+  return this;
+}

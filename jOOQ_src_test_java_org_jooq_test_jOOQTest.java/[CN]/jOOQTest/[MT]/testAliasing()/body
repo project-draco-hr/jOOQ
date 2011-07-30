@@ -1,22 +1,22 @@
 {
-  assertEquals("\"TABLE1\"",decT().render(TABLE1));
-  assertEquals("\"TABLE1\"",decF().render(TABLE1));
-  assertEquals("\"TABLE1\"",ref().render(TABLE1));
-  assertEquals("\"TABLE1\" \"t1\"",decT().render(TABLE1.as("t1")));
-  assertEquals("\"t1\"",decF().render(TABLE1.as("t1")));
-  assertEquals("\"t1\"",ref().render(TABLE1.as("t1")));
-  assertEquals("\"TABLE1\".\"ID1\"",decF().render(TABLE1.getField(FIELD_ID1)));
-  assertEquals("\"TABLE1\".\"ID1\"",decT().render(TABLE1.getField(FIELD_ID1)));
-  assertEquals("\"TABLE1\".\"ID1\"",ref().render(TABLE1.getField(FIELD_ID1)));
-  assertEquals("\"TABLE1\".\"ID1\" \"f1\"",decF().render(TABLE1.getField(FIELD_ID1).as("f1")));
-  assertEquals("\"f1\"",decT().render(TABLE1.getField(FIELD_ID1).as("f1")));
-  assertEquals("\"f1\"",ref().render(TABLE1.getField(FIELD_ID1).as("f1")));
-  assertEquals("\"t1\".\"ID1\"",decF().render(TABLE1.as("t1").getField(FIELD_ID1)));
-  assertEquals("\"t1\".\"ID1\"",decT().render(TABLE1.as("t1").getField(FIELD_ID1)));
-  assertEquals("\"t1\".\"ID1\"",ref().render(TABLE1.as("t1").getField(FIELD_ID1)));
-  assertEquals("\"t1\".\"ID1\" \"f1\"",decF().render(TABLE1.as("t1").getField(FIELD_ID1).as("f1")));
-  assertEquals("\"f1\"",decT().render(TABLE1.as("t1").getField(FIELD_ID1).as("f1")));
-  assertEquals("\"f1\"",ref().render(TABLE1.as("t1").getField(FIELD_ID1).as("f1")));
+  assertEquals("\"TABLE1\"",r_decT().render(TABLE1));
+  assertEquals("\"TABLE1\"",r_decF().render(TABLE1));
+  assertEquals("\"TABLE1\"",r_ref().render(TABLE1));
+  assertEquals("\"TABLE1\" \"t1\"",r_decT().render(TABLE1.as("t1")));
+  assertEquals("\"t1\"",r_decF().render(TABLE1.as("t1")));
+  assertEquals("\"t1\"",r_ref().render(TABLE1.as("t1")));
+  assertEquals("\"TABLE1\".\"ID1\"",r_decF().render(TABLE1.getField(FIELD_ID1)));
+  assertEquals("\"TABLE1\".\"ID1\"",r_decT().render(TABLE1.getField(FIELD_ID1)));
+  assertEquals("\"TABLE1\".\"ID1\"",r_ref().render(TABLE1.getField(FIELD_ID1)));
+  assertEquals("\"TABLE1\".\"ID1\" \"f1\"",r_decF().render(TABLE1.getField(FIELD_ID1).as("f1")));
+  assertEquals("\"f1\"",r_decT().render(TABLE1.getField(FIELD_ID1).as("f1")));
+  assertEquals("\"f1\"",r_ref().render(TABLE1.getField(FIELD_ID1).as("f1")));
+  assertEquals("\"t1\".\"ID1\"",r_decF().render(TABLE1.as("t1").getField(FIELD_ID1)));
+  assertEquals("\"t1\".\"ID1\"",r_decT().render(TABLE1.as("t1").getField(FIELD_ID1)));
+  assertEquals("\"t1\".\"ID1\"",r_ref().render(TABLE1.as("t1").getField(FIELD_ID1)));
+  assertEquals("\"t1\".\"ID1\" \"f1\"",r_decF().render(TABLE1.as("t1").getField(FIELD_ID1).as("f1")));
+  assertEquals("\"f1\"",r_decT().render(TABLE1.as("t1").getField(FIELD_ID1).as("f1")));
+  assertEquals("\"f1\"",r_ref().render(TABLE1.as("t1").getField(FIELD_ID1).as("f1")));
   context.checking(new Expectations(){
 {
       oneOf(statement).setInt(1,2);
@@ -24,13 +24,17 @@
     }
   }
 );
-  int i=internal(create.val(1).as("c1")).bindReference(create,statement);
-  int j=internal(create.val(2).as("c2")).bindDeclaration(create,statement);
-  int k=internal(create.select(create.val(3)).asTable("t1")).bindReference(create,statement);
-  int l=internal(create.select(create.val(4)).asTable("t2")).bindDeclaration(create,statement);
-  assertEquals(1,i);
-  assertEquals(2,j);
-  assertEquals(1,k);
-  assertEquals(2,l);
+  int f1=b_ref().bind(create.val(1).as("c1")).peekIndex();
+  int f2=b_decF().bind(create.val(2).as("c2")).peekIndex();
+  int f3=b_decT().bind(create.val(2).as("c2")).peekIndex();
+  int t1=b_ref().bind(create.select(create.val(3)).asTable("t1")).peekIndex();
+  int t2=b_decF().bind(create.select(create.val(4)).asTable("t2")).peekIndex();
+  int t3=b_decT().bind(create.select(create.val(4)).asTable("t2")).peekIndex();
+  assertEquals(1,f1);
+  assertEquals(2,f2);
+  assertEquals(1,f3);
+  assertEquals(1,t1);
+  assertEquals(1,t2);
+  assertEquals(2,t3);
   context.assertIsSatisfied();
 }

@@ -1,3 +1,0 @@
-{
-  return bind0(configuration,stmt,initialIndex,false);
-}

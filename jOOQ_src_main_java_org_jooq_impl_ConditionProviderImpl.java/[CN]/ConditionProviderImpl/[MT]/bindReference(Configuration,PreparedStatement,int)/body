@@ -1,3 +1,0 @@
-{
-  return internal(getWhere()).bindReference(configuration,stmt,initialIndex);
-}

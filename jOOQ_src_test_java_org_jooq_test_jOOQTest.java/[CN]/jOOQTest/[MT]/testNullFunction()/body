@@ -1,7 +1,7 @@
 {
   Field<?> f=create.val((Object)null);
-  assertEquals("null",refI().render(f));
-  assertEquals("null",ref().render(f));
-  int i=internal(f).bindReference(create,statement);
+  assertEquals("null",r_refI().render(f));
+  assertEquals("null",r_ref().render(f));
+  int i=b_ref().bind(f).peekIndex();
   assertEquals(1,i);
 }

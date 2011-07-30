@@ -1,3 +1,0 @@
-{
-  return internal(condition).bindReference(configuration,stmt,initialIndex);
-}

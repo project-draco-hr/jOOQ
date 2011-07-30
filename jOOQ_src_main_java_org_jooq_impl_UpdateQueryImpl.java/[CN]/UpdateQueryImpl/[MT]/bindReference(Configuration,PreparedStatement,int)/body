@@ -1,7 +1,0 @@
-{
-  int result=initialIndex;
-  result=internal(getInto()).bindReference(configuration,stmt,result);
-  result=internal(updateMap).bindReference(configuration,stmt,result);
-  result=internal(condition).bindReference(configuration,stmt,result);
-  return result;
-}

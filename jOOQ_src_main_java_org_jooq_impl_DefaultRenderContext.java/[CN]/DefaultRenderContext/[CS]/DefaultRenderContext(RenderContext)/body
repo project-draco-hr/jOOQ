@@ -1,3 +1,6 @@
 {
-  this(context,context.inline(),context.declareFields(),context.declareTables());
+  this((Configuration)context);
+  inline(context.inline());
+  declareFields(context.declareFields());
+  declareTables(context.declareTables());
 }

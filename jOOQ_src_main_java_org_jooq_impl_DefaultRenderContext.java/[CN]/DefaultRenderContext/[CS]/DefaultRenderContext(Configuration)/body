@@ -1,4 +1,4 @@
 {
-  this.configuration=configuration;
+  super(configuration);
   this.sql=new StringBuilder();
 }

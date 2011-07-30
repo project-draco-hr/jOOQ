@@ -1,5 +1,0 @@
-Configuration configuration
-PreparedStatement stmt
-int initialIndex
-NamedTypeProviderQueryPart<?> field
-Object value

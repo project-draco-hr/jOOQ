@@ -1,3 +1,7 @@
 {
-  return bindReference(configuration,stmt,initialIndex);
+  BindContext context=new DefaultBindContext(configuration,stmt);
+  context.declareFields(true);
+  context.declareTables(true);
+  bind(context);
+  return context.peekIndex();
 }

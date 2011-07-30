@@ -4,17 +4,17 @@
   Condition c3=FIELD_ID1.equal(30);
   Condition c4=FIELD_ID2.equal(40);
   Condition c=c1.and(c2).or(c3.and(c4));
-  assertEquals("((\"TABLE1\".\"ID1\" = 10 and \"TABLE2\".\"ID2\" = 20) or (\"TABLE1\".\"ID1\" = 30 and \"TABLE2\".\"ID2\" = 40))",refI().render(c));
-  assertEquals("((\"TABLE1\".\"ID1\" = ? and \"TABLE2\".\"ID2\" = ?) or (\"TABLE1\".\"ID1\" = ? and \"TABLE2\".\"ID2\" = ?))",ref().render(c));
+  assertEquals("((\"TABLE1\".\"ID1\" = 10 and \"TABLE2\".\"ID2\" = 20) or (\"TABLE1\".\"ID1\" = 30 and \"TABLE2\".\"ID2\" = 40))",r_refI().render(c));
+  assertEquals("((\"TABLE1\".\"ID1\" = ? and \"TABLE2\".\"ID2\" = ?) or (\"TABLE1\".\"ID1\" = ? and \"TABLE2\".\"ID2\" = ?))",r_ref().render(c));
   c=c1.and(c2).or(c3).and(c4);
-  assertEquals("(((\"TABLE1\".\"ID1\" = 10 and \"TABLE2\".\"ID2\" = 20) or \"TABLE1\".\"ID1\" = 30) and \"TABLE2\".\"ID2\" = 40)",refI().render(c));
-  assertEquals("(((\"TABLE1\".\"ID1\" = ? and \"TABLE2\".\"ID2\" = ?) or \"TABLE1\".\"ID1\" = ?) and \"TABLE2\".\"ID2\" = ?)",ref().render(c));
+  assertEquals("(((\"TABLE1\".\"ID1\" = 10 and \"TABLE2\".\"ID2\" = 20) or \"TABLE1\".\"ID1\" = 30) and \"TABLE2\".\"ID2\" = 40)",r_refI().render(c));
+  assertEquals("(((\"TABLE1\".\"ID1\" = ? and \"TABLE2\".\"ID2\" = ?) or \"TABLE1\".\"ID1\" = ?) and \"TABLE2\".\"ID2\" = ?)",r_ref().render(c));
   c=c1.and(c2).and(c3).or(c4);
-  assertEquals("((\"TABLE1\".\"ID1\" = 10 and \"TABLE2\".\"ID2\" = 20 and \"TABLE1\".\"ID1\" = 30) or \"TABLE2\".\"ID2\" = 40)",refI().render(c));
-  assertEquals("((\"TABLE1\".\"ID1\" = ? and \"TABLE2\".\"ID2\" = ? and \"TABLE1\".\"ID1\" = ?) or \"TABLE2\".\"ID2\" = ?)",ref().render(c));
+  assertEquals("((\"TABLE1\".\"ID1\" = 10 and \"TABLE2\".\"ID2\" = 20 and \"TABLE1\".\"ID1\" = 30) or \"TABLE2\".\"ID2\" = 40)",r_refI().render(c));
+  assertEquals("((\"TABLE1\".\"ID1\" = ? and \"TABLE2\".\"ID2\" = ? and \"TABLE1\".\"ID1\" = ?) or \"TABLE2\".\"ID2\" = ?)",r_ref().render(c));
   c=c1.and(c2).and(c3).and(c4);
-  assertEquals("(\"TABLE1\".\"ID1\" = 10 and \"TABLE2\".\"ID2\" = 20 and \"TABLE1\".\"ID1\" = 30 and \"TABLE2\".\"ID2\" = 40)",refI().render(c));
-  assertEquals("(\"TABLE1\".\"ID1\" = ? and \"TABLE2\".\"ID2\" = ? and \"TABLE1\".\"ID1\" = ? and \"TABLE2\".\"ID2\" = ?)",ref().render(c));
+  assertEquals("(\"TABLE1\".\"ID1\" = 10 and \"TABLE2\".\"ID2\" = 20 and \"TABLE1\".\"ID1\" = 30 and \"TABLE2\".\"ID2\" = 40)",r_refI().render(c));
+  assertEquals("(\"TABLE1\".\"ID1\" = ? and \"TABLE2\".\"ID2\" = ? and \"TABLE1\".\"ID1\" = ? and \"TABLE2\".\"ID2\" = ?)",r_ref().render(c));
   context.checking(new Expectations(){
 {
       oneOf(statement).setInt(1,10);
@@ -24,7 +24,7 @@
     }
   }
 );
-  int i=internal(c).bindReference(create,statement);
+  int i=b_ref().bind(c).peekIndex();
   assertEquals(5,i);
   context.assertIsSatisfied();
 }
