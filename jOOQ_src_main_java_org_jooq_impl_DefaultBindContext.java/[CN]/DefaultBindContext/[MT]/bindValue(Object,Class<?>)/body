@@ -20,6 +20,9 @@
  else     if (configuration.getDialect() == SQLDialect.SQLSERVER) {
       stmt.setNull(nextIndex(),sqlType);
     }
+ else     if (configuration.getDialect() == SQLDialect.SYBASE) {
+      stmt.setNull(nextIndex(),Types.VARCHAR);
+    }
  else {
       stmt.setObject(nextIndex(),null);
     }

@@ -32,12 +32,6 @@
   assertEquals(Integer.valueOf(3),author.getValue(TAuthor_ID()));
   assertEquals("Mich??le",author.getValue(TAuthor_FIRST_NAME()));
   assertEquals("Roten",author.getValue(TAuthor_LAST_NAME()));
-switch (getDialect()) {
-case SYBASE:
-    log.info("SKIPPING","Sybase can't handle untyped null literals");
-  break;
-default :
-{
   assertEquals(1,create().query("update t_author set first_name = ? where id = 3",(Object[])null).execute());
   author.refresh();
   assertEquals(Integer.valueOf(3),author.getValue(TAuthor_ID()));
@@ -53,16 +47,13 @@ default :
   assertEquals(Integer.valueOf(3),author.getValue(TAuthor_ID()));
   assertEquals(null,author.getValue(TAuthor_FIRST_NAME()));
   assertEquals("Roten",author.getValue(TAuthor_LAST_NAME()));
-  break;
-}
-}
-assertEquals("ABC",create().select(create().function("upper",String.class,val("aBc"))).fetchOne(0));
-assertEquals("abc",create().select(create().function("lower",SQLDataType.VARCHAR,val("aBc"))).fetchOne(0));
-Result<Record> books=create().fetch("select * from t_book where id in (?, ?) order by id",1,2);
-assertNotNull(books);
-assertEquals(2,books.size());
-assertEquals(Integer.valueOf(1),books.getValue(0,TBook_ID()));
-assertEquals(Integer.valueOf(2),books.getValue(1,TBook_ID()));
-assertEquals(Integer.valueOf(1),books.getValue(0,TBook_AUTHOR_ID()));
-assertEquals(Integer.valueOf(1),books.getValue(1,TBook_AUTHOR_ID()));
+  assertEquals("ABC",create().select(create().function("upper",String.class,val("aBc"))).fetchOne(0));
+  assertEquals("abc",create().select(create().function("lower",SQLDataType.VARCHAR,val("aBc"))).fetchOne(0));
+  Result<Record> books=create().fetch("select * from t_book where id in (?, ?) order by id",1,2);
+  assertNotNull(books);
+  assertEquals(2,books.size());
+  assertEquals(Integer.valueOf(1),books.getValue(0,TBook_ID()));
+  assertEquals(Integer.valueOf(2),books.getValue(1,TBook_ID()));
+  assertEquals(Integer.valueOf(1),books.getValue(0,TBook_AUTHOR_ID()));
+  assertEquals(Integer.valueOf(1),books.getValue(1,TBook_AUTHOR_ID()));
 }
