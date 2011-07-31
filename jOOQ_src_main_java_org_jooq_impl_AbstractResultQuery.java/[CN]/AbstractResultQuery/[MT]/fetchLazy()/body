@@ -1,10 +1,6 @@
 {
-  Configuration configuration=attachable.getConfiguration();
-  Connection connection=configuration.getConnection();
-  if (connection != null) {
-    return executeLazy(configuration,connection);
-  }
- else {
-    throw new SQLException("Cannot execute query. No Connection configured");
-  }
+  lazy=true;
+  execute();
+  lazy=false;
+  return cursor;
 }

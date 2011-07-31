@@ -1,6 +1,0 @@
-{
-  ResultSet rs=statement.executeQuery();
-  Class<? extends R> type=getRecordType();
-  FieldList fields=new FieldList(getFields(rs.getMetaData()));
-  return new CursorImpl<R>(configuration,fields,rs,statement,type);
-}

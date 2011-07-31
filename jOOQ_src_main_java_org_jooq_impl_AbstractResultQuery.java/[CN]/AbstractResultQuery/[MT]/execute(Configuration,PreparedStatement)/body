@@ -8,12 +8,18 @@
     }
   }
   try {
-    result=executeLazy(configuration,statement).fetchResult();
+    ResultSet rs=statement.executeQuery();
+    FieldList fields=new FieldList(getFields(rs.getMetaData()));
+    cursor=new CursorImpl<R>(configuration,fields,rs,statement,getRecordType());
+    if (!lazy) {
+      result=cursor.fetchResult();
+      cursor=null;
+    }
   }
   finally {
     if (autoCommit) {
       connection.setAutoCommit(autoCommit);
     }
   }
-  return result.size();
+  return result != null ? result.size() : 0;
 }

@@ -1,4 +1,4 @@
 {
   execute();
-  return getResult();
+  return result;
 }

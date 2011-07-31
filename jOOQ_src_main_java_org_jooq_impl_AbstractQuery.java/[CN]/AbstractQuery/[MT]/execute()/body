@@ -27,7 +27,9 @@
       return result;
     }
   finally {
-      JooqUtil.safeClose(statement);
+      if (!keepStatementOpen()) {
+        JooqUtil.safeClose(statement);
+      }
       watch.splitDebug("Statement executed");
     }
   }
