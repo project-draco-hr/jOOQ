@@ -1,0 +1,19 @@
+{
+switch (configuration.getDialect()) {
+case DB2:
+case DERBY:
+case H2:
+case HSQLDB:
+case INGRES:
+case MYSQL:
+case ORACLE:
+case POSTGRES:
+case SQLSERVER:
+case SYBASE:
+    return create(configuration).one().exp();
+case SQLITE:
+  return create(configuration).literal(Math.E,BigDecimal.class);
+default :
+return new Function<BigDecimal>("e",getDataType());
+}
+}
