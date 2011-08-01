@@ -1,6 +1,6 @@
 {
   List<T> list=new ArrayList<T>();
-  for (  Record record : this) {
+  for (  R record : this) {
     list.add(record.into(type));
   }
   return list;

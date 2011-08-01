@@ -1,0 +1,6 @@
+{
+  for (  R record : this) {
+    target.next(record);
+  }
+  return target;
+}
