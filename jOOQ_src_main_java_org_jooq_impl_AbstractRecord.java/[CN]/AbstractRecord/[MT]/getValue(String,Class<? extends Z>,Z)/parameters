@@ -1,0 +1,3 @@
+String fieldName
+Class<? extends Z> type
+Z defaultValue

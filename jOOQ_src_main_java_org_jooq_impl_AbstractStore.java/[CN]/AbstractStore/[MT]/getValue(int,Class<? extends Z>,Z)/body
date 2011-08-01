@@ -1,0 +1,4 @@
+{
+  final Z result=getValue(index,type);
+  return result == null ? defaultValue : result;
+}

@@ -1,0 +1,13 @@
+{
+  for (  java.lang.reflect.Field member : type.getFields()) {
+    if (member.getAnnotation(Column.class) != null) {
+      return true;
+    }
+  }
+  for (  Method method : type.getMethods()) {
+    if (method.getAnnotation(Column.class) != null) {
+      return true;
+    }
+  }
+  return false;
+}

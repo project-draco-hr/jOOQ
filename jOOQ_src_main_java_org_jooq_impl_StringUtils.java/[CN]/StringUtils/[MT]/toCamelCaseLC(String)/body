@@ -1,0 +1,4 @@
+{
+  String cc=toCamelCase(string);
+  return cc.substring(0,1).toLowerCase() + cc.substring(1);
+}

@@ -1,0 +1,29 @@
+{
+  Class<?> mType=member.getType();
+  if (mType.isPrimitive()) {
+    if (mType == byte.class) {
+      member.setByte(result,getValueAsByte(field,(byte)0));
+    }
+ else     if (mType == short.class) {
+      member.setShort(result,getValueAsShort(field,(short)0));
+    }
+ else     if (mType == int.class) {
+      member.setInt(result,getValueAsInteger(field,0));
+    }
+ else     if (mType == long.class) {
+      member.setLong(result,getValueAsLong(field,0L));
+    }
+ else     if (mType == float.class) {
+      member.setFloat(result,getValueAsFloat(field,0.0f));
+    }
+ else     if (mType == double.class) {
+      member.setDouble(result,getValueAsDouble(field,0.0));
+    }
+ else     if (mType == boolean.class) {
+      member.setBoolean(result,getValueAsBoolean(field,false));
+    }
+  }
+ else {
+    member.set(result,getValue(field,mType));
+  }
+}

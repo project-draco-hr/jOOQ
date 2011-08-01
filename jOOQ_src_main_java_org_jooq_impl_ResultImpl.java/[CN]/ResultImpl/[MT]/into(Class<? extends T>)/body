@@ -1,0 +1,7 @@
+{
+  List<T> list=new ArrayList<T>();
+  for (  Record record : this) {
+    list.add(record.into(type));
+  }
+  return list;
+}

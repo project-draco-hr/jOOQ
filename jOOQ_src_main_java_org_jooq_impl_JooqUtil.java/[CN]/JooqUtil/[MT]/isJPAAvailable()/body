@@ -1,0 +1,12 @@
+{
+  if (isJPAAvailable == null) {
+    try {
+      Class.forName(Column.class.getName());
+      isJPAAvailable=true;
+    }
+ catch (    Exception e) {
+      isJPAAvailable=false;
+    }
+  }
+  return isJPAAvailable;
+}

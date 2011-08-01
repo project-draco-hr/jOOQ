@@ -1,0 +1,16 @@
+{
+  StringBuilder result=new StringBuilder();
+  for (  String word : string.split("_")) {
+    if (word.length() > 0) {
+      if (Character.isDigit(word.charAt(0))) {
+        result.append("_");
+      }
+      result.append(word.substring(0,1).toUpperCase());
+      result.append(word.substring(1).toLowerCase());
+    }
+ else {
+      result.append("_");
+    }
+  }
+  return result.toString();
+}
