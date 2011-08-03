@@ -1,0 +1,2 @@
+Future<Result<R>> future
+ExecutorService executor

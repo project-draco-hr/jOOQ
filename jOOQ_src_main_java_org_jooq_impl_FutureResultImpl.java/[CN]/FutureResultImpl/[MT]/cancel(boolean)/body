@@ -1,0 +1,10 @@
+{
+  try {
+    return future.cancel(mayInterruptIfRunning);
+  }
+  finally {
+    if (executor != null) {
+      executor.shutdownNow();
+    }
+  }
+}

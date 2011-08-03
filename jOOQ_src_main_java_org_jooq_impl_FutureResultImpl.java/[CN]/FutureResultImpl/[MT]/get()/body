@@ -1,0 +1,10 @@
+{
+  try {
+    return future.get();
+  }
+  finally {
+    if (executor != null) {
+      executor.shutdownNow();
+    }
+  }
+}

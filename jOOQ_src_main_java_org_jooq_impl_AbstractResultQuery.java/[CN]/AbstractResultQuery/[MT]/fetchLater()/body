@@ -1,0 +1,5 @@
+{
+  ExecutorService executor=newSingleThreadExecutor();
+  Future<Result<R>> future=executor.submit(new ResultQueryCallable());
+  return new FutureResultImpl<R>(future,executor);
+}
