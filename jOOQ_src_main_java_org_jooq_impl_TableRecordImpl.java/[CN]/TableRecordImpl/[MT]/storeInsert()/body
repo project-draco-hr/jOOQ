@@ -7,7 +7,7 @@
   }
   int result=insert.execute();
   if (result > 0) {
-    Identity<R,? extends Number> identity=getIdentity();
+    Identity<R,? extends Number> identity=identity();
     if (identity != null) {
       setValue0(identity.getField(),new Value<Number>(create().lastID(identity)));
     }
