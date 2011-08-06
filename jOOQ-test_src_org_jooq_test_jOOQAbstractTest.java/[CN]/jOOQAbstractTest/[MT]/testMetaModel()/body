@@ -7,7 +7,7 @@
  else {
       assertEquals(1,schema.getSequences().size());
     }
-    int tables=14;
+    int tables=15;
     if (TArrays() == null) {
       assertEquals(tables,schema.getTables().size());
     }

@@ -1,0 +1,15 @@
+{
+  SimpleSelectQuery<R> select=create().selectQuery(getTable());
+  for (  Field<?> field : keys) {
+    addCondition(select,field);
+  }
+  if (select.execute() == 1) {
+    AbstractRecord record=(AbstractRecord)select.getResult().get(0);
+    for (    Field<?> field : getFields()) {
+      setValue0(field,record.getValue0(field));
+    }
+  }
+ else {
+    throw new SQLException("Exactly one row expected for refresh. Record does not exist in database.");
+  }
+}

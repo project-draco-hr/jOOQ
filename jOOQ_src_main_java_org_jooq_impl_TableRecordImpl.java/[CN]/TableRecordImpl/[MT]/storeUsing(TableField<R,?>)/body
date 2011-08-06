@@ -1,0 +1,23 @@
+{
+  boolean executeUpdate=false;
+  for (  TableField<R,?> field : keys) {
+    if (getValue(field) == null || getValue0(field).isChanged()) {
+      executeUpdate=false;
+      break;
+    }
+ else {
+      executeUpdate=true;
+    }
+  }
+  int result=0;
+  if (executeUpdate) {
+    result=storeUpdate(keys);
+  }
+ else {
+    result=storeInsert();
+  }
+  for (  Value<?> value : getValues()) {
+    value.setChanged(false);
+  }
+  return result;
+}

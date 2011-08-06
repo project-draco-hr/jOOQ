@@ -1,0 +1,16 @@
+{
+  InsertQuery<R> insert=create().insertQuery(getTable());
+  for (  Field<?> field : getFields()) {
+    if (getValue0(field).isChanged()) {
+      addValue(insert,(TableField<R,?>)field);
+    }
+  }
+  int result=insert.execute();
+  if (result > 0) {
+    Identity<R,? extends Number> identity=getIdentity();
+    if (identity != null) {
+      setValue0(identity.getField(),new Value<Number>(create().lastID(identity)));
+    }
+  }
+  return result;
+}

@@ -1,12 +1,14 @@
 {
   try {
+    R result;
     if (type == RecordImpl.class) {
-      return (R)new RecordImpl(provider,configuration);
+      result=(R)new RecordImpl(provider);
     }
-    if (UpdatableRecordImpl.class.isAssignableFrom(type)) {
-      return type.getConstructor(Configuration.class).newInstance(configuration);
+ else {
+      result=type.newInstance();
     }
-    return type.newInstance();
+    result.attach(configuration);
+    return result;
   }
  catch (  Exception e) {
     throw new IllegalStateException("Could not construct new record. Please report this issue",e);

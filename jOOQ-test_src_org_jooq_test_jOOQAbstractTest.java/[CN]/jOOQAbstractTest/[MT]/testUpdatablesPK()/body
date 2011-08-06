@@ -73,4 +73,12 @@
   assertEquals(Integer.valueOf(77),create().fetchOne(TAuthor(),TAuthor_LAST_NAME().equal("D??blin")).getValue(TAuthor_ID()));
   S store=create().newRecord(TBookStore());
   assertEquals(0,store.store());
+  author=create().newRecord(TAuthor());
+  author.setValue(TAuthor_ID(),78);
+  author.setValue(TAuthor_LAST_NAME(),"Cohen");
+  assertEquals(1,author.store());
+  assertEquals(0,author.store());
+  author.setValue(TAuthor_FIRST_NAME(),"Arthur");
+  assertEquals(1,author.store());
+  assertEquals(1,create().select(create().count()).from(TAuthor()).where(TAuthor_FIRST_NAME().equal("Arthur")).and(TAuthor_LAST_NAME().equal("Cohen")).fetchOne(0));
 }

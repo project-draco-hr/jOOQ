@@ -1,18 +1,3 @@
 {
-  boolean executeUpdate=false;
-  for (  TableField<R,?> field : getMainKey().getFields()) {
-    if (getValue(field) == null || getValue0(field).isChanged()) {
-      executeUpdate=false;
-      break;
-    }
- else {
-      executeUpdate=true;
-    }
-  }
-  if (executeUpdate) {
-    return storeUpdate();
-  }
- else {
-    return storeInsert();
-  }
+  return storeUsing(getMainKey().getFieldsArray());
 }

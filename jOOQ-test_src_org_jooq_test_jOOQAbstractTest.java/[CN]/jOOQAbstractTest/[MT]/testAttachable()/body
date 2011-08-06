@@ -5,6 +5,8 @@
   assertNotNull(store);
   store.setValue(TBookStore_NAME(),"Barnes and Noble");
   assertEquals(1,store.store());
+  store=create.newRecord(TBookStore());
+  store.setValue(TBookStore_NAME(),"Barnes and Noble");
   store.attach(null);
   try {
     store.store();
