@@ -1,0 +1,3 @@
+{
+  return TDirectory.T_DIRECTORY;
+}

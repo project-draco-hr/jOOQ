@@ -8,6 +8,9 @@
       assertEquals(1,schema.getSequences().size());
     }
     int tables=15;
+    if (supportsRecursiveQueries()) {
+      tables++;
+    }
     if (TArrays() == null) {
       assertEquals(tables,schema.getTables().size());
     }

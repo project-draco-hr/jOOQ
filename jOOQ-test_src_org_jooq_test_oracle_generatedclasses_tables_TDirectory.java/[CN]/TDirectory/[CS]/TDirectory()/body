@@ -1,0 +1,3 @@
+{
+  super("T_DIRECTORY",org.jooq.test.oracle.generatedclasses.Test.TEST);
+}
