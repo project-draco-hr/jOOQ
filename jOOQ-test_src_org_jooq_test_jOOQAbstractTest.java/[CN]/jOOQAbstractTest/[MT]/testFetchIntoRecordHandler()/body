@@ -3,7 +3,7 @@
   final Queue<String> titles=new LinkedList<String>();
   ids.addAll(Arrays.asList(1,2,3,4));
   titles.addAll(Arrays.asList("1984","Animal Farm","O Alquimista","Brida"));
-  create().selectFrom(TBook()).orderBy(TBook_ID()).fetchInto(new RecordTarget<B>(){
+  create().selectFrom(TBook()).orderBy(TBook_ID()).fetchInto(new RecordHandler<B>(){
     @Override public void next(    B record){
       assertEquals(ids.poll(),record.getValue(TBook_ID()));
       assertEquals(titles.poll(),record.getValue(TBook_TITLE()));
@@ -14,7 +14,7 @@
   assertTrue(titles.isEmpty());
   ids.addAll(Arrays.asList(1,2,3,4));
   titles.addAll(Arrays.asList("1984","Animal Farm","O Alquimista","Brida"));
-  create().selectFrom(TBook()).orderBy(TBook_ID()).fetchLazy().fetchInto(new RecordTarget<B>(){
+  create().selectFrom(TBook()).orderBy(TBook_ID()).fetchLazy().fetchInto(new RecordHandler<B>(){
     @Override public void next(    B record){
       assertEquals(ids.poll(),record.getValue(TBook_ID()));
       assertEquals(titles.poll(),record.getValue(TBook_TITLE()));
@@ -27,7 +27,7 @@
   final Queue<Integer> count=new LinkedList<Integer>();
   authorIDs.addAll(Arrays.asList(1,2));
   count.addAll(Arrays.asList(2,2));
-  create().select(TBook_AUTHOR_ID(),create().count()).from(TBook()).groupBy(TBook_AUTHOR_ID()).orderBy(TBook_AUTHOR_ID()).fetchInto(new RecordTarget<Record>(){
+  create().select(TBook_AUTHOR_ID(),create().count()).from(TBook()).groupBy(TBook_AUTHOR_ID()).orderBy(TBook_AUTHOR_ID()).fetchInto(new RecordHandler<Record>(){
     @Override public void next(    Record record){
       assertEquals(authorIDs.poll(),record.getValue(TBook_AUTHOR_ID()));
       assertEquals(count.poll(),record.getValue(create().count()));

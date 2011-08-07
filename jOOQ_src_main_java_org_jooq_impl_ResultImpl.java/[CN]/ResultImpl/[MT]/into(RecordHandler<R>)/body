@@ -1,0 +1,6 @@
+{
+  for (  R record : this) {
+    handler.next(record);
+  }
+  return handler;
+}

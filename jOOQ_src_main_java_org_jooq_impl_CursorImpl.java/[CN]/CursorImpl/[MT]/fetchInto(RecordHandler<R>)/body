@@ -1,7 +1,7 @@
 {
   R record=null;
   while ((record=fetchOne()) != null) {
-    target.next(record);
+    handler.next(record);
   }
-  return target;
+  return handler;
 }
