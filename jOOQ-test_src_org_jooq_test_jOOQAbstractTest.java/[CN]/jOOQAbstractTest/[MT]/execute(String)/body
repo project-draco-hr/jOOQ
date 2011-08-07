@@ -1,8 +1,12 @@
 {
   Statement stmt=null;
-  File file=new File(getClass().getResource(script).toURI());
-  String allSQL=FileUtils.readFileToString(file);
-  testSQLWatch.splitDebug("Loaded SQL file");
+  String allSQL=scripts.get(script);
+  if (allSQL == null) {
+    File file=new File(getClass().getResource(script).toURI());
+    allSQL=FileUtils.readFileToString(file);
+    scripts.put(script,allSQL);
+    testSQLWatch.splitDebug("Loaded SQL file");
+  }
   for (  String sql : allSQL.split("/")) {
     try {
       if (!StringUtils.isBlank(sql)) {
