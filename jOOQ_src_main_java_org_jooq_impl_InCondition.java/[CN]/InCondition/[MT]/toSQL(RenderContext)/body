@@ -1,10 +1,29 @@
 {
-  context.sql(field).sql(" ").sql(operator.toSQL()).sql(" (");
-  String separator="";
-  for (  Field<?> value : values) {
-    context.sql(separator);
-    context.sql(value);
-    separator=", ";
-  }
-  context.sql(")");
+  List<Field<?>> list=Arrays.asList(values);
+  if (list.size() > IN_LIMIT) {
+switch (context.getDialect()) {
+case ORACLE:
+case INGRES:
+case SQLSERVER:
+{
+        context.sql("(");
+        for (int i=0; i < list.size(); i+=IN_LIMIT) {
+          if (i > 0) {
+            context.sql(" or ");
+          }
+          toSQLSubValues(context,list.subList(i,Math.min(i + IN_LIMIT,list.size())));
+        }
+        context.sql(")");
+        break;
+      }
+default :
+{
+      toSQLSubValues(context,list);
+      break;
+    }
+}
+}
+ else {
+toSQLSubValues(context,list);
+}
 }
