@@ -1,0 +1,12 @@
+{
+  if (content == CONTENT_CSV) {
+    executeCSV();
+  }
+ else   if (content == CONTENT_XML) {
+    throw new UnsupportedOperationException();
+  }
+ else {
+    throw new IllegalStateException();
+  }
+  return this;
+}

@@ -1,0 +1,3 @@
+{
+  return field.equal(field.getDataType().convert(string));
+}

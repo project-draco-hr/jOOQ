@@ -1,0 +1,7 @@
+{
+  if (updatable == null) {
+    throw new IllegalStateException("ON DUPLICATE KEY IGNORE only works on UpdatableTable. Table is not updatable : " + table);
+  }
+  onDuplicate=ON_DUPLICATE_KEY_IGNORE;
+  return this;
+}

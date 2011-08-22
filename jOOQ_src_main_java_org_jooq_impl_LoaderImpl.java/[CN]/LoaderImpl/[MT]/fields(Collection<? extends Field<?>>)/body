@@ -1,0 +1,3 @@
+{
+  return fields(f.toArray(new Field[f.size()]));
+}

@@ -1,0 +1,4 @@
+{
+  onDuplicate=ON_DUPLICATE_KEY_ERROR;
+  return this;
+}

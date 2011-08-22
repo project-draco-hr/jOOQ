@@ -1,0 +1,5 @@
+{
+  content=CONTENT_CSV;
+  data=new BufferedReader(new FileReader(file));
+  return this;
+}

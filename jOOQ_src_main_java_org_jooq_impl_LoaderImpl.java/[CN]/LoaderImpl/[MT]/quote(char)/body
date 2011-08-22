@@ -1,0 +1,4 @@
+{
+  this.quote=q;
+  return this;
+}

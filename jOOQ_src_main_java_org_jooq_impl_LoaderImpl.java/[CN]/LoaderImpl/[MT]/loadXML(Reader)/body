@@ -1,0 +1,4 @@
+{
+  content=CONTENT_XML;
+  throw new UnsupportedOperationException("This is not yet implemented");
+}

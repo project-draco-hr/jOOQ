@@ -1,0 +1,79 @@
+{
+  CSVReader reader=new CSVReader(data,separator,quote,ignoreRows);
+  try {
+    String[] row=null;
+    rowloop:     while ((row=reader.readNext()) != null) {
+      processed++;
+      InsertQuery<R> insert=create.insertQuery(table);
+      for (int i=0; i < row.length; i++) {
+        if (i < fields.length && fields[i] != null) {
+          insert.addValue(fields[i],fields[i].getDataType().convert(row[i]));
+        }
+      }
+      if (onDuplicate == ON_DUPLICATE_KEY_UPDATE) {
+        insert.onDuplicateKeyUpdate(true);
+        for (int i=0; i < row.length; i++) {
+          if (i < fields.length && mainKey[i]) {
+            insert.addValueForUpdate(fields[i],fields[i].getDataType().convert(row[i]));
+          }
+        }
+      }
+ else       if (onDuplicate == ON_DUPLICATE_KEY_IGNORE) {
+        SimpleSelectQuery<R> select=create.selectQuery(table);
+        for (int i=0; i < row.length; i++) {
+          if (i < fields.length && mainKey[i]) {
+            select.addConditions(getCondition(fields[i],row[i]));
+          }
+        }
+        try {
+          if (select.execute() > 0) {
+            ignored++;
+            continue rowloop;
+          }
+        }
+ catch (        SQLException e) {
+          errors.add(new LoaderErrorImpl(e,row,processed - 1,select));
+        }
+      }
+ else       if (onDuplicate == ON_DUPLICATE_KEY_ERROR) {
+      }
+      try {
+        insert.execute();
+        stored++;
+        if (commit == COMMIT_AFTER) {
+          if (processed % commitAfter == 0) {
+            create.getConnection().commit();
+          }
+        }
+      }
+ catch (      SQLException e) {
+        errors.add(new LoaderErrorImpl(e,row,processed - 1,insert));
+        ignored++;
+        if (onError == ON_ERROR_ABORT) {
+          break rowloop;
+        }
+      }
+    }
+    try {
+      if (commit == COMMIT_ALL) {
+        if (!errors.isEmpty()) {
+          create.getConnection().rollback();
+        }
+ else {
+          create.getConnection().commit();
+        }
+      }
+ else       if (commit == COMMIT_AFTER) {
+        if (processed % commitAfter != 0) {
+          create.getConnection().commit();
+        }
+      }
+    }
+ catch (    SQLException e) {
+      errors.add(new LoaderErrorImpl(e,null,processed - 1,null));
+    }
+  }
+  finally {
+    reader.close();
+  }
+}

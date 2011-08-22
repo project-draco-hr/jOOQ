@@ -1,0 +1,5 @@
+{
+  commit=COMMIT_AFTER;
+  commitAfter=number;
+  return this;
+}

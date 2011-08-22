@@ -1,0 +1,6 @@
+{
+  this.exception=exception;
+  this.row=row;
+  this.rowIndex=rowIndex;
+  this.query=query;
+}

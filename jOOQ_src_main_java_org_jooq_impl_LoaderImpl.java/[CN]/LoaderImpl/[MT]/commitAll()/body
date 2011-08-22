@@ -1,0 +1,4 @@
+{
+  commit=COMMIT_ALL;
+  return this;
+}
