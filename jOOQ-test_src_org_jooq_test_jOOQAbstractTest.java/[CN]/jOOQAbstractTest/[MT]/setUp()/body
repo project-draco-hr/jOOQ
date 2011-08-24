@@ -1,5 +1,6 @@
 {
   connection=getConnection();
+  autocommit=connection.getAutoCommit();
   if (!initialised) {
     initialised=true;
     execute(getCreateScript());

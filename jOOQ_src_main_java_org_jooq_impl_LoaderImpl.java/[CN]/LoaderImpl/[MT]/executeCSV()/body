@@ -57,6 +57,7 @@
     try {
       if (commit == COMMIT_ALL) {
         if (!errors.isEmpty()) {
+          stored=0;
           create.getConnection().rollback();
         }
  else {
