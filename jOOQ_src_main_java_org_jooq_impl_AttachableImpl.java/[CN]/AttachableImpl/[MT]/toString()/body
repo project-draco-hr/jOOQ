@@ -1,0 +1,8 @@
+{
+  if (configuration == null) {
+    return "[ detached ]";
+  }
+ else {
+    return configuration.toString();
+  }
+}
