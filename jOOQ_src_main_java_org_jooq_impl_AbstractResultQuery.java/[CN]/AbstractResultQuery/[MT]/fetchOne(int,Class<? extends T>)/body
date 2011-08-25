@@ -1,0 +1,3 @@
+{
+  return TypeUtils.convert(fetchOne(fieldIndex),type);
+}
