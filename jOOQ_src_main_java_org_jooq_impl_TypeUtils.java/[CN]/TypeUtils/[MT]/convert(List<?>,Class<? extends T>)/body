@@ -1,0 +1,7 @@
+{
+  List<T> result=new ArrayList<T>();
+  for (  Object o : list) {
+    result.add(convert(o,type));
+  }
+  return result;
+}
