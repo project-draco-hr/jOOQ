@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.derby.generatedclasses.Keys.IDENTITY_T_TRIGGERS;
+}

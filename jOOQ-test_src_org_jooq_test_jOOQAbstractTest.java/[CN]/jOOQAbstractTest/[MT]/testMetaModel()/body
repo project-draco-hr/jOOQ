@@ -1,14 +1,19 @@
 {
   Schema schema=TAuthor().getSchema();
   if (schema != null) {
-    if (cSequences() == null) {
-      assertEquals(0,schema.getSequences().size());
+    int sequences=0;
+    if (cSequences() != null) {
+      sequences++;
+      if (getDialect() == SQLDialect.DB2) {
+        sequences++;
+      }
     }
- else {
-      assertEquals(1,schema.getSequences().size());
-    }
+    assertEquals(sequences,schema.getSequences().size());
     int tables=15;
     if (supportsRecursiveQueries()) {
+      tables++;
+    }
+    if (TTriggers() != null) {
       tables++;
     }
     if (TArrays() == null) {

@@ -1,0 +1,4 @@
+{
+  returning.clear();
+  returning.addAll(fields);
+}

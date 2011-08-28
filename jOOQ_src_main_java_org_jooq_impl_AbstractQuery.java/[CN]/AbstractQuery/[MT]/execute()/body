@@ -18,7 +18,7 @@
       watch.splitTrace("SQL rendered");
       if (log.isDebugEnabled())       log.debug("Executing query",create(configuration).renderInlined(this));
       if (log.isTraceEnabled())       log.trace("Preparing statement",sql);
-      statement=connection.prepareStatement(sql);
+      statement=prepare(configuration,sql);
       watch.splitTrace("Statement prepared");
       create(configuration).bind(this,statement);
       watch.splitTrace("Variables bound");

@@ -1,0 +1,5 @@
+{
+  H2Factory create=new H2Factory(conn);
+  Integer maxID=create.select(TTriggers.ID.max().nvl(0).add(1)).from(TTriggers.T_TRIGGERS).fetchOne(0,Integer.class);
+  newRow[1]=maxID * 2;
+}

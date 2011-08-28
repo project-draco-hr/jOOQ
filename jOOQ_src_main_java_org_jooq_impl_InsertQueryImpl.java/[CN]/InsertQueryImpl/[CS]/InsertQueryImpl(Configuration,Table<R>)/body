@@ -2,4 +2,5 @@
   super(configuration,into);
   updateMap=new FieldMapForUpdate();
   insertMaps=new FieldMapsForInsert();
+  returning=new FieldList();
 }

@@ -1,0 +1,6 @@
+Connection conn
+String schemaName
+String triggerName
+String tableName
+boolean before
+int type

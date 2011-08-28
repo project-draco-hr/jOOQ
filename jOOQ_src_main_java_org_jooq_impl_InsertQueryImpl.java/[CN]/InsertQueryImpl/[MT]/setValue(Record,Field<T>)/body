@@ -1,0 +1,3 @@
+{
+  ((AbstractRecord)returned).setValue(field,new Value<T>(record.getValue(field)));
+}

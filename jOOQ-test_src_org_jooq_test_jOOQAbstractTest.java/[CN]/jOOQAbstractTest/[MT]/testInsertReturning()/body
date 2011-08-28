@@ -1,0 +1,37 @@
+{
+  if (TTriggers() == null) {
+    log.info("SKIPPING","INSERT RETURNING tests");
+    return;
+  }
+switch (getDialect()) {
+case INGRES:
+case SQLITE:
+case SYBASE:
+    log.info("SKIPPING","INSERT RETURNING tests - JDBC driver did not implement this yet");
+  return;
+}
+InsertQuery<T> query;
+query=create().insertQuery(TTriggers());
+query.addValue(TTriggers_COUNTER(),0);
+assertEquals(1,query.execute());
+assertNull(query.getReturned());
+assertEquals(1,create().selectFrom(TTriggers()).fetch().size());
+assertEquals(1,(int)create().selectFrom(TTriggers()).fetchOne(TTriggers_ID()));
+assertEquals(2,(int)create().selectFrom(TTriggers()).fetchOne(TTriggers_COUNTER()));
+query=create().insertQuery(TTriggers());
+query.addValue(TTriggers_COUNTER(),0);
+query.setReturning();
+assertEquals(1,query.execute());
+assertNotNull(query.getReturned());
+assertEquals(2,(int)query.getReturned().getValue(TTriggers_ID()));
+assertEquals(4,(int)query.getReturned().getValue(TTriggers_COUNTER()));
+query=create().insertQuery(TTriggers());
+query.addValue(TTriggers_COUNTER(),0);
+query.setReturning(TTriggers_ID());
+assertEquals(1,query.execute());
+assertNotNull(query.getReturned());
+assertEquals(3,(int)query.getReturned().getValue(TTriggers_ID()));
+assertNull(query.getReturned().getValue(TTriggers_COUNTER()));
+query.getReturned().refresh();
+assertEquals(6,(int)query.getReturned().getValue(TTriggers_COUNTER()));
+}

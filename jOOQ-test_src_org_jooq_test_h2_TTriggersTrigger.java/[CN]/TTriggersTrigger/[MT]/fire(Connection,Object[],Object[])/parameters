@@ -1,0 +1,3 @@
+Connection conn
+Object[] oldRow
+Object[] newRow

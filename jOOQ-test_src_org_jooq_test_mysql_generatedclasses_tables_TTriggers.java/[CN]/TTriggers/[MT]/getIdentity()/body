@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.mysql.generatedclasses.Keys.IDENTITY_t_triggers;
+}

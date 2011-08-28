@@ -1,0 +1,3 @@
+{
+  setReturning(Arrays.asList(fields));
+}
