@@ -6,7 +6,6 @@
 switch (getDialect()) {
 case INGRES:
 case SQLITE:
-case SYBASE:
     log.info("SKIPPING","INSERT RETURNING tests - JDBC driver did not implement this yet");
   return;
 }
