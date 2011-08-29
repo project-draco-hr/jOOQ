@@ -16,16 +16,15 @@ case POSTGRES:
 case DERBY:
 case H2:
 case MYSQL:
-  return connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 case SQLSERVER:
-return connection.prepareStatement(sql,new String[]{"id_generated"});
+  return connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 default :
 {
-List<String> names=new ArrayList<String>();
-for (Field<?> field : returning) {
-  names.add(field.getName());
-}
-return connection.prepareStatement(sql,names.toArray(new String[names.size()]));
+  List<String> names=new ArrayList<String>();
+  for (  Field<?> field : returning) {
+    names.add(field.getName());
+  }
+  return connection.prepareStatement(sql,names.toArray(new String[names.size()]));
 }
 }
 }
