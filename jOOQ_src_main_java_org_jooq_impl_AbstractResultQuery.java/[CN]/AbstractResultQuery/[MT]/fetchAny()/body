@@ -1,7 +1,9 @@
 {
-  Result<R> r=fetch();
-  if (r.size() > 0) {
-    return r.get(0);
+  Cursor<R> c=fetchLazy();
+  try {
+    return c.fetchOne();
   }
-  return null;
+  finally {
+    c.close();
+  }
 }
