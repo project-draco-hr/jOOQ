@@ -1,0 +1,3 @@
+{
+  return fetchOne(sql,new Object[0]);
+}
