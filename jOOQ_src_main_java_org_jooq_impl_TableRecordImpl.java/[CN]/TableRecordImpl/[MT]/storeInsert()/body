@@ -5,15 +5,14 @@
       addValue(insert,(TableField<R,?>)field);
     }
   }
-  Identity<R,? extends Number> identity=identity();
-  insert.setReturning(identity);
+  List<Field<?>> key=getKey();
+  insert.setReturning(key);
   int result=insert.execute();
-  if (identity != null && result > 0) {
+  if (!key.isEmpty() && result > 0) {
     if (insert.getReturned() != null) {
-      setValue0(identity.getField(),new Value<Number>(insert.getReturned().getValue(identity.getField())));
-    }
- else {
-      setValue0(identity.getField(),new Value<Number>(create().lastID(identity)));
+      for (      Field<?> field : key) {
+        setValue0(field,new Value<Object>(insert.getReturned().getValue(field)));
+      }
     }
   }
   return result;
