@@ -7,50 +7,41 @@
     ResultSet rs;
 switch (configuration.getDialect()) {
 case INGRES:
-case SYBASE:
 case SQLITE:
 {
         return super.execute(configuration,statement);
       }
+case SYBASE:
+{
+      result=statement.executeUpdate();
+      selectReturning(configuration,create(configuration).lastID());
+      return result;
+    }
 case DERBY:
 case H2:
 case MYSQL:
 case SQLSERVER:
 {
-      result=statement.executeUpdate();
-      rs=statement.getGeneratedKeys();
-      if (rs.next() && getInto() instanceof UpdatableTable) {
-        UpdatableTable<R> updatable=(UpdatableTable<R>)getInto();
-        if (updatable.getIdentity() != null) {
-          Field<Number> id=(Field<Number>)updatable.getIdentity().getField();
-          Number value=id.getDataType().convert(rs.getObject(1));
-          returned=JooqUtil.newRecord(updatable,configuration);
-          if (returning.size() == 1 && returning.get(0).equals(id)) {
-            ((AbstractRecord)returned).setValue(id,new Value<Number>(value));
-          }
- else {
-            Record record=create(configuration).select(returning).from(updatable).where(id.equal(value)).fetchOne();
-            for (            Field<?> field : returning) {
-              setValue(record,field);
-            }
-          }
-        }
-      }
-      return result;
+    result=statement.executeUpdate();
+    rs=statement.getGeneratedKeys();
+    if (rs.next()) {
+      selectReturning(configuration,rs.getObject(1));
     }
+    return result;
+  }
 case POSTGRES:
 {
-    rs=statement.executeQuery();
-    break;
-  }
+  rs=statement.executeQuery();
+  break;
+}
 case DB2:
 case HSQLDB:
 case ORACLE:
 default :
 {
-  result=statement.executeUpdate();
-  rs=statement.getGeneratedKeys();
-  break;
+result=statement.executeUpdate();
+rs=statement.getGeneratedKeys();
+break;
 }
 }
 CursorImpl<R> cursor=new CursorImpl<R>(configuration,returning,rs,statement,getInto().getRecordType());

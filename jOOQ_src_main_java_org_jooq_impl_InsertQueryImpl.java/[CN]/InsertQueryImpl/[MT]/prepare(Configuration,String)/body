@@ -6,8 +6,8 @@
     Connection connection=configuration.getConnection();
 switch (configuration.getDialect()) {
 case INGRES:
-case SYBASE:
 case SQLITE:
+case SYBASE:
 {
         return super.prepare(configuration,sql);
       }
