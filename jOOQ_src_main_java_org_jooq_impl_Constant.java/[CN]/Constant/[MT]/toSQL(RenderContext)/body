@@ -8,10 +8,12 @@ case H2:
 case HSQLDB:
 case INGRES:
 case SYBASE:
-        context.sql("cast(? as ").sql(getDataType(context).getCastTypeName(context)).sql(")");
-      return;
+{
+          toSQLCast(context);
+          return;
+        }
+    }
   }
-}
 }
 FieldTypeHelper.toSQL(context,value,this);
 }

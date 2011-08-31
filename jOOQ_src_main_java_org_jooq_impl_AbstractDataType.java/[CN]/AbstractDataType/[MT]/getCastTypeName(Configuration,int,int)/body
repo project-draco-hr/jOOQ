@@ -1,0 +1,12 @@
+{
+  String result=getCastTypeName(configuration).replaceAll("\\([^\\)]*\\)","");
+  if (precision != 0) {
+    if (scale != 0) {
+      result+="(" + precision + ", "+ scale+ ")";
+    }
+ else {
+      result+="(" + precision + ")";
+    }
+  }
+  return result;
+}
