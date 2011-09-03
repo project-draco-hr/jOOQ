@@ -6,44 +6,41 @@
     int result=1;
     ResultSet rs;
 switch (configuration.getDialect()) {
-case INGRES:
-{
-        return super.execute(configuration,statement);
-      }
 case SQLITE:
 {
-      result=statement.executeUpdate();
-      returned=JooqUtil.newRecord(getInto(),configuration);
-      SQLiteFactory create=new SQLiteFactory(configuration.getConnection());
-      Field<Long> rowid=create.rowid();
-      Record record=create.select(returning).from(getInto()).where(rowid.equal(rowid.getDataType().convert(create.lastID()))).fetchOne();
-      for (      Field<?> field : returning) {
-        setValue(record,field);
+        result=statement.executeUpdate();
+        returned=JooqUtil.newRecord(getInto(),configuration);
+        SQLiteFactory create=new SQLiteFactory(configuration.getConnection());
+        Field<Long> rowid=create.rowid();
+        Record record=create.select(returning).from(getInto()).where(rowid.equal(rowid.getDataType().convert(create.lastID()))).fetchOne();
+        for (        Field<?> field : returning) {
+          setValue(record,field);
+        }
+        return result;
       }
-      return result;
-    }
 case SYBASE:
 {
-    result=statement.executeUpdate();
-    selectReturning(configuration,create(configuration).lastID());
-    return result;
-  }
+      result=statement.executeUpdate();
+      selectReturning(configuration,create(configuration).lastID());
+      return result;
+    }
 case DERBY:
 case H2:
+case INGRES:
 case MYSQL:
 case SQLSERVER:
 {
-  result=statement.executeUpdate();
-  rs=statement.getGeneratedKeys();
-  if (rs.next()) {
-    selectReturning(configuration,rs.getObject(1));
+    result=statement.executeUpdate();
+    rs=statement.getGeneratedKeys();
+    if (rs.next()) {
+      selectReturning(configuration,rs.getObject(1));
+    }
+    return result;
   }
-  return result;
-}
 case POSTGRES:
 {
-rs=statement.executeQuery();
-break;
+  rs=statement.executeQuery();
+  break;
 }
 case DB2:
 case HSQLDB:

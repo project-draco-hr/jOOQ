@@ -55,7 +55,7 @@ case 218:
       }
     }
  else     if (e instanceof SQLSyntaxErrorException) {
-      if (sql.contains("DROP SEQUENCE")) {
+      if (sql.contains("DROP SEQUENCE") || sql.contains("DROP RULE")) {
         continue;
       }
     }
