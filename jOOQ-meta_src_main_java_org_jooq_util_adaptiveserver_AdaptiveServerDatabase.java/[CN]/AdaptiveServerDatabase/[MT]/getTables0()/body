@@ -1,0 +1,7 @@
+{
+  List<TableDefinition> result=new ArrayList<TableDefinition>();
+  for (  String name : fetchTableNames()) {
+    result.add(new AdaptiveServerTableDefinition(this,name,null));
+  }
+  return result;
+}

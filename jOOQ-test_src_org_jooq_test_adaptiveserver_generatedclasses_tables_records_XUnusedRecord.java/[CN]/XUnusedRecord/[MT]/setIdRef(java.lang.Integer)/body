@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.adaptiveserver.generatedclasses.tables.XUnused.ID_REF,value);
+}

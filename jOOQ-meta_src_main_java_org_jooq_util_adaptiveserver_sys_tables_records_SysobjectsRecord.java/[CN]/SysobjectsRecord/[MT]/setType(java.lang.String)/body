@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.adaptiveserver.sys.tables.Sysobjects.TYPE,value);
+}

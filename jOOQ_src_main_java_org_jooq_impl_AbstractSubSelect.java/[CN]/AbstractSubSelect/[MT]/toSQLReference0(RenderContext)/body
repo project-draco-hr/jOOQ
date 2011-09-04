@@ -7,6 +7,7 @@
     context.sql(hint).sql(" ");
   }
 switch (context.getDialect()) {
+case ADAPTIVESERVER:
 case SQLSERVER:
 case SYBASE:
 {

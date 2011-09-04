@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.test.adaptiveserver.generatedclasses.tables.TTriggers.ID_GENERATED);
+}

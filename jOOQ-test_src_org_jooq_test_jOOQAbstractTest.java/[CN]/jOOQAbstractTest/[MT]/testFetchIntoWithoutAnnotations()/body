@@ -1,5 +1,6 @@
 {
 switch (getDialect()) {
+case ADAPTIVESERVER:
 case INGRES:
 case POSTGRES:
     log.info("SKIPPING","fetchInto() tests");

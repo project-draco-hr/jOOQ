@@ -1,6 +1,7 @@
 {
   String functionName="substring";
 switch (configuration.getDialect()) {
+case ADAPTIVESERVER:
 case SQLSERVER:
 {
       if (getArguments().length == 2) {

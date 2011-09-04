@@ -3,6 +3,7 @@ switch (context.getDialect()) {
 case HSQLDB:
     context.sql("INFORMATION_SCHEMA.SYSTEM_USERS");
   break;
+case ADAPTIVESERVER:
 case INGRES:
 case POSTGRES:
 case SQLITE:

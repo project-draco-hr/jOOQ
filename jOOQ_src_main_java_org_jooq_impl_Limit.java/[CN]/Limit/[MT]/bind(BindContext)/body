@@ -16,6 +16,7 @@ case SQLITE:
     context.bind(create(context).val(getOffset()));
     break;
   }
+case ADAPTIVESERVER:
 case DB2:
 case SQLSERVER:
 case SYBASE:

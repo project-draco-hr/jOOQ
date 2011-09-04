@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.adaptiveserver.generatedclasses.tables.records.XUnusedRecord>>asList(org.jooq.test.adaptiveserver.generatedclasses.Keys.pk_x_unused,org.jooq.test.adaptiveserver.generatedclasses.Keys.uk_x_unused_id);
+}

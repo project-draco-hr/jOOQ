@@ -8,8 +8,8 @@ case SQLITE:
 default :
 assertEquals(1,(int)create().select(count).from(TBook()).where(TBook_ID().in(Collections.nCopies(1000,1))).fetchOne(count));
 assertEquals(1,(int)create().select(count).from(TBook()).where(TBook_ID().in(Collections.nCopies(1001,1))).fetchOne(count));
-assertEquals(1,(int)create().select(count).from(TBook()).where(TBook_ID().in(Collections.nCopies(2050,1))).fetchOne(count));
-assertEquals(3,(int)create().select(count).from(TBook()).where(TBook_ID().notIn(Collections.nCopies(2050,1))).fetchOne(count));
+assertEquals(1,(int)create().select(count).from(TBook()).where(TBook_ID().in(Collections.nCopies(1950,1))).fetchOne(count));
+assertEquals(3,(int)create().select(count).from(TBook()).where(TBook_ID().notIn(Collections.nCopies(1950,1))).fetchOne(count));
 break;
 }
 }

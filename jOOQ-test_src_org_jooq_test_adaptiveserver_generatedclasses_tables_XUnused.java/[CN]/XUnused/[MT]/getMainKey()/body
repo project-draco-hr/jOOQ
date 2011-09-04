@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.adaptiveserver.generatedclasses.Keys.pk_x_unused;
+}
