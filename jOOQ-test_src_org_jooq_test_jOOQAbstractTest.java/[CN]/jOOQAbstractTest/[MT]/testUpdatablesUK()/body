@@ -35,6 +35,7 @@
   assertEquals("Amazon",store.getValue(TBookStore_NAME()));
   assertEquals(null,create().fetchOne(TBookStore(),TBookStore_NAME().equal("Amazon")));
 switch (getDialect()) {
+case ASE:
 case SQLSERVER:
     log.info("SKIPPING","Storing previously deleted UpdatableRecords");
   break;
