@@ -1,5 +1,5 @@
 {
-  getQuery().addJoin(table,naturalJoinType);
+  getQuery().addJoin(table,type);
   joinTable=null;
   joinType=null;
   return this;

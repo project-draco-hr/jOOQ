@@ -1,0 +1,10 @@
+{
+  if (usingSyntax) {
+    context.sql(" using (");
+    using.toSQLNames(context);
+    context.sql(")");
+  }
+ else {
+    context.sql(" on ").sql(getCondition());
+  }
+}

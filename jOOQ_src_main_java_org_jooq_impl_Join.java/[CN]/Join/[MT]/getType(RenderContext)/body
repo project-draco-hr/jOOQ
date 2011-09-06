@@ -1,0 +1,8 @@
+{
+  if (context.getDialect() == SQLDialect.ASE && type == JoinType.CROSS_JOIN) {
+    return JoinType.JOIN;
+  }
+ else {
+    return type;
+  }
+}
