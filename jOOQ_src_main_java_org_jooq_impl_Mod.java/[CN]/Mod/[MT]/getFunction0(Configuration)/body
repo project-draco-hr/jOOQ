@@ -1,5 +1,6 @@
 {
 switch (configuration.getDialect()) {
+case ADAPTIVESERVER:
 case SQLITE:
 case SQLSERVER:
     return new Expression<T>(MODULO,arg1,arg2);

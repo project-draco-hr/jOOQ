@@ -6,6 +6,12 @@
         continue;
       }
     }
+    if (getDialect() == SQLDialect.ADAPTIVESERVER) {
+      if (type.getType() == Boolean.class) {
+        log.info("SKIPPING","Casting to bit type in Sybase ASE");
+        continue;
+      }
+    }
     assertEquals(null,create().select(val(null).cast(type)).fetchOne(0));
   }
 }
