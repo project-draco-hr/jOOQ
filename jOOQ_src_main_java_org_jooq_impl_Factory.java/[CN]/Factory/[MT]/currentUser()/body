@@ -1,6 +1,6 @@
 {
 switch (getDialect()) {
-case ADAPTIVESERVER:
+case ASE:
     return field("user",SQLDataType.VARCHAR);
 case ORACLE:
   return new Function<String>("user",SQLDataType.VARCHAR);

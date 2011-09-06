@@ -1,7 +1,7 @@
 {
 switch (dialect) {
-case ADAPTIVESERVER:
-    return AdaptiveServerDataType.getDataType(type);
+case ASE:
+    return ASEDataType.getDataType(type);
 case DB2:
   return DB2DataType.getDataType(type);
 case DERBY:

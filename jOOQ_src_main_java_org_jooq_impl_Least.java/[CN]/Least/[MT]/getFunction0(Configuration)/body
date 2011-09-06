@@ -3,7 +3,7 @@
     return (Field<T>)getArguments()[0];
   }
 switch (configuration.getDialect()) {
-case ADAPTIVESERVER:
+case ASE:
 case DERBY:
 case SQLSERVER:
 case SYBASE:

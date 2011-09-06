@@ -2,13 +2,13 @@
   Limit limit=new Limit();
   limit.setNumberOfRows(1);
   context.sql("select ");
-  if (context.getDialect() == SQLDialect.ADAPTIVESERVER || context.getDialect() == SQLDialect.SYBASE || context.getDialect() == SQLDialect.SQLSERVER) {
+  if (context.getDialect() == SQLDialect.ASE || context.getDialect() == SQLDialect.SYBASE || context.getDialect() == SQLDialect.SQLSERVER) {
     context.inline(true).sql(limit).inline(false);
   }
   context.sql(" * from ");
   context.sql(table);
   context.sql(" ");
-  if (context.getDialect() == SQLDialect.ADAPTIVESERVER || context.getDialect() == SQLDialect.SYBASE || context.getDialect() == SQLDialect.SQLSERVER) {
+  if (context.getDialect() == SQLDialect.ASE || context.getDialect() == SQLDialect.SYBASE || context.getDialect() == SQLDialect.SQLSERVER) {
   }
  else   if (context.getDialect() == SQLDialect.ORACLE) {
     context.sql("where rownum < 1");

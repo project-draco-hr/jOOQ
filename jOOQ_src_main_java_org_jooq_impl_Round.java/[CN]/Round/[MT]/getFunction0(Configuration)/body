@@ -11,7 +11,7 @@ case DERBY:
         return create(configuration).decode().when(mul.sub((Field<? extends Number>)mul.floor()).lessThan((T)Double.valueOf(0.5)),mul.floor().div(factor)).otherwise(mul.ceil().div(factor));
       }
     }
-case ADAPTIVESERVER:
+case ASE:
 case INGRES:
 case SQLSERVER:
 case SYBASE:

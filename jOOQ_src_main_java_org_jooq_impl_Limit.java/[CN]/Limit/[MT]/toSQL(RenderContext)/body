@@ -46,7 +46,7 @@ throw new SQLDialectNotSupportedException("DB2 does not support offsets in FETCH
 context.sql("fetch first ").sql(getNumberOfRows()).sql(" rows only");
 break;
 }
-case ADAPTIVESERVER:
+case ASE:
 case SQLSERVER:
 case SYBASE:
 {

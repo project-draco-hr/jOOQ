@@ -7,7 +7,7 @@
   }
  else {
 switch (context.getDialect()) {
-case ADAPTIVESERVER:
+case ASE:
 case INGRES:
 case ORACLE:
 case SQLITE:

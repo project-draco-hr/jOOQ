@@ -26,7 +26,7 @@ case SQLITE:
 Field<BigInteger> field=field("last_insert_rowid()",BigInteger.class);
 return select(field).fetchOne(field);
 }
-case ADAPTIVESERVER:
+case ASE:
 case SQLSERVER:
 case SYBASE:
 {

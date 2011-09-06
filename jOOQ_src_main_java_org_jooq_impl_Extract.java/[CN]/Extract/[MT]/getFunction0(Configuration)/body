@@ -58,7 +58,7 @@ return new Function<Integer>("to_char",SQLDataType.INTEGER,field,create(configur
 default :
 throw new SQLDialectNotSupportedException("DatePart not supported: " + datePart);
 }
-case ADAPTIVESERVER:
+case ASE:
 case SQLSERVER:
 case SYBASE:
 switch (datePart) {

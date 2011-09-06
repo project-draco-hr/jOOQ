@@ -14,7 +14,7 @@ case DB2:
     }
     break;
   }
-case ADAPTIVESERVER:
+case ASE:
 case SQLSERVER:
 case SYBASE:
 {

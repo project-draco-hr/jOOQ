@@ -1,6 +1,6 @@
 {
 switch (getDialect()) {
-case ADAPTIVESERVER:
+case ASE:
     return new Function<Timestamp>("current_bigdatetime",SQLDataType.TIMESTAMP);
 case ORACLE:
   return new Function<Timestamp>("sysdate",SQLDataType.TIMESTAMP);
