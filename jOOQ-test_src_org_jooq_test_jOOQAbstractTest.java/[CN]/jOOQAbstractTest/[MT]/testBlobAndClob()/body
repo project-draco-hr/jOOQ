@@ -18,10 +18,14 @@
   assertEquals(1,record.store());
   record.refresh();
 switch (getDialect()) {
+case ASE:
+    assertEquals(1,record.getValue(T725_LOB()).length);
+  assertEquals(0,record.getValue(T725_LOB())[0]);
+break;
 case ORACLE:
 case SQLITE:
-    assertNull(record.getValue(T725_LOB()));
-  break;
+assertNull(record.getValue(T725_LOB()));
+break;
 default :
 assertEquals(0,record.getValue(T725_LOB()).length);
 break;
@@ -39,6 +43,10 @@ assertNull(record.getValue(T725_LOB()));
 record.setValue(T725_ID(),3);
 record.refresh();
 switch (getDialect()) {
+case ASE:
+assertEquals(1,record.getValue(T725_LOB()).length);
+assertEquals(0,record.getValue(T725_LOB())[0]);
+break;
 case ORACLE:
 case SQLITE:
 assertNull(record.getValue(T725_LOB()));
@@ -55,6 +63,10 @@ assertEquals(4,result.size());
 assertEquals(Arrays.asList(1,2,3,4),result.getValues(0));
 assertNull(result.getValue(1,1));
 switch (getDialect()) {
+case ASE:
+assertEquals(1,result.getValue(2,T725_LOB()).length);
+assertEquals(0,result.getValue(2,T725_LOB())[0]);
+break;
 case ORACLE:
 case SQLITE:
 assertNull(result.getValue(2,T725_LOB()));

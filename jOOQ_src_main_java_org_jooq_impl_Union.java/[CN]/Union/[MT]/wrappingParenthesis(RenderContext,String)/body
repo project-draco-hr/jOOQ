@@ -2,6 +2,7 @@
 switch (context.getDialect()) {
 case SQLITE:
 case DERBY:
+case ASE:
 case MYSQL:
     return;
 }
