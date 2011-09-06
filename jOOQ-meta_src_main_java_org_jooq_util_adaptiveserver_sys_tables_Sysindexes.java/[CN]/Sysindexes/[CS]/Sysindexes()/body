@@ -1,3 +1,0 @@
-{
-  super("sysindexes",org.jooq.util.adaptiveserver.sys.Dbo.DBO);
-}

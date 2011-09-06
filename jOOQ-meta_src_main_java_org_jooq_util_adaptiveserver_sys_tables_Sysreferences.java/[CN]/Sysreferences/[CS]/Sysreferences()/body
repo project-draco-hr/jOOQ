@@ -1,3 +1,0 @@
-{
-  super("sysreferences",org.jooq.util.adaptiveserver.sys.Dbo.DBO);
-}

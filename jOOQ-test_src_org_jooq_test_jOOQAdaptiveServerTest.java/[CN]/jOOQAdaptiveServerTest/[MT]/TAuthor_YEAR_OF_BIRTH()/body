@@ -1,3 +1,0 @@
-{
-  return TAuthor.YEAR_OF_BIRTH;
-}

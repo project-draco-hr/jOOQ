@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.test.adaptiveserver.generatedclasses.tables.records.TBookRecord,?>>asList(org.jooq.test.adaptiveserver.generatedclasses.Keys.fk_t_book_author_id,org.jooq.test.adaptiveserver.generatedclasses.Keys.fk_t_book_co_author_id);
-}

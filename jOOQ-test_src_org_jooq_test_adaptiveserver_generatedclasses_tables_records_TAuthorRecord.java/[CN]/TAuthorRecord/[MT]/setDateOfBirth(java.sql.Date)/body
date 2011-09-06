@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.test.adaptiveserver.generatedclasses.tables.TAuthor.DATE_OF_BIRTH,value);
-}

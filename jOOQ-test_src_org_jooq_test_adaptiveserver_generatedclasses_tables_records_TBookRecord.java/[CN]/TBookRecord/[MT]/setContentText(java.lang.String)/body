@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.test.adaptiveserver.generatedclasses.tables.TBook.CONTENT_TEXT,value);
-}

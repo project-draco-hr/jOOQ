@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.test.adaptiveserver.generatedclasses.tables.TAuthor.LAST_NAME,value);
-}

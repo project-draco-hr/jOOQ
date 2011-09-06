@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.util.adaptiveserver.sys.tables.Sysindexes.FILL_FACTOR,value);
-}

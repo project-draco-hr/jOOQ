@@ -1,3 +1,0 @@
-{
-  super(SQLDialect.ADAPTIVESERVER,sqlDataType,sqlDataType.getType(),typeName);
-}
