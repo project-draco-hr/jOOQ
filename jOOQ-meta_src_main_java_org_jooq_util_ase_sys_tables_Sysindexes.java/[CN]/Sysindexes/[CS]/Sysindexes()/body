@@ -1,0 +1,3 @@
+{
+  super("sysindexes",org.jooq.util.ase.sys.Dbo.DBO);
+}
