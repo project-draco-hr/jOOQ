@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.ase.sys.tables.Sysindexes.KEYS3,value);
+}

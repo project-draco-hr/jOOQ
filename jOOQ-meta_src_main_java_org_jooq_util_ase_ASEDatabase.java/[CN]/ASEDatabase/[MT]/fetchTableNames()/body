@@ -1,0 +1,9 @@
+{
+  List<String> result=new ArrayList<String>();
+  for (  Record record : create().fetch("sp_help")) {
+    if (getSchemaName().equals(record.getValueAsString("Owner"))) {
+      result.add(record.getValueAsString("Name"));
+    }
+  }
+  return result;
+}

@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.Table<?>>asList(org.jooq.util.ase.sys.tables.Sysindexes.SYSINDEXES,org.jooq.util.ase.sys.tables.Sysobjects.SYSOBJECTS,org.jooq.util.ase.sys.tables.Sysreferences.SYSREFERENCES);
+}

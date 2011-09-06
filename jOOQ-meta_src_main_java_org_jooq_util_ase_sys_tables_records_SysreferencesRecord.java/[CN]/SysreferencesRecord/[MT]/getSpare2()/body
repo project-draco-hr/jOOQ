@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.util.ase.sys.tables.Sysreferences.SPARE2);
+}

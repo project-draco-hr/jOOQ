@@ -1,0 +1,30 @@
+{
+  List<ColumnDefinition> result=new ArrayList<ColumnDefinition>();
+  PreparedStatement stmt=null;
+  try {
+    stmt=create().getConnection().prepareStatement("sp_help '" + getName() + "'");
+    stmt.execute();
+    stmt.getMoreResults();
+    stmt.getResultSet().close();
+    stmt.getMoreResults();
+    ResultSet rs=stmt.getResultSet();
+    int position=1;
+    while (rs.next()) {
+      String p=rs.getString("Prec");
+      String s=rs.getString("Scale");
+      int precision=0;
+      int scale=0;
+      if (p != null && !"null".equalsIgnoreCase(p.trim()))       precision=Integer.valueOf(p.trim());
+      if (s != null && !"null".equalsIgnoreCase(s.trim()))       scale=Integer.valueOf(s.trim());
+      DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),rs.getString("Type"),precision,scale);
+      result.add(new DefaultColumnDefinition(getDatabase().getTable(getName()),rs.getString("Column_name"),position++,type,rs.getBoolean("Identity"),null));
+    }
+  }
+  finally {
+    if (stmt != null) {
+      stmt.getMoreResults(Statement.CLOSE_ALL_RESULTS);
+      stmt.close();
+    }
+  }
+  return result;
+}

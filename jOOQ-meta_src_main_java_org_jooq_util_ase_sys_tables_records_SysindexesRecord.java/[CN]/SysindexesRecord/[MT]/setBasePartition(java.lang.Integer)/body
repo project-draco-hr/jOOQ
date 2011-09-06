@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.ase.sys.tables.Sysindexes.BASE_PARTITION,value);
+}
