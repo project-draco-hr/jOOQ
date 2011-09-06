@@ -41,7 +41,7 @@ assertEquals(1.0f,create().select(create().cast(1,Float.class)).fetchOne(0));
 assertEquals(1.0,create().select(create().cast(1,Double.class)).fetchOne(0));
 assertEquals("1",create().select(create().cast(1,String.class)).fetchOne(0));
 }
-if (getDialect() != SQLDialect.ADAPTIVESERVER) {
+if (getDialect() != SQLDialect.ASE) {
 assertEquals(null,create().select(create().castNull(Boolean.class)).fetchOne(0));
 }
 assertEquals(null,create().select(create().castNull(Byte.class)).fetchOne(0));

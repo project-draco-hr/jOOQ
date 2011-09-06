@@ -3,7 +3,7 @@
   Field<Integer> ID3;
   Field<Integer> ID4;
 switch (getDialect()) {
-case ADAPTIVESERVER:
+case ASE:
 case MYSQL:
     ID3=create().select(val(3)).asField();
   ID4=create().select(val(4)).asField();

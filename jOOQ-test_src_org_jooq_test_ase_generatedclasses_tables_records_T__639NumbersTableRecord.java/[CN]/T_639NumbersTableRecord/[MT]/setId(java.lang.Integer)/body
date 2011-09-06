@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.ase.generatedclasses.tables.T_639NumbersTable.ID,value);
+}

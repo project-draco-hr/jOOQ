@@ -6,7 +6,7 @@
         continue;
       }
     }
-    if (getDialect() == SQLDialect.ADAPTIVESERVER) {
+    if (getDialect() == SQLDialect.ASE) {
       if (type.getType() == Boolean.class) {
         log.info("SKIPPING","Casting to bit type in Sybase ASE");
         continue;

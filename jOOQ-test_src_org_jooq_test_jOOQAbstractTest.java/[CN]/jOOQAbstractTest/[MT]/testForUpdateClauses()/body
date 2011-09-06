@@ -10,7 +10,7 @@ assertEquals(2,result.size());
 Result<A> result2=create().selectFrom(TAuthor()).forUpdate().fetch();
 assertEquals(2,result2.size());
 switch (getDialect()) {
-case ADAPTIVESERVER:
+case ASE:
 case DB2:
 case DERBY:
 case HSQLDB:

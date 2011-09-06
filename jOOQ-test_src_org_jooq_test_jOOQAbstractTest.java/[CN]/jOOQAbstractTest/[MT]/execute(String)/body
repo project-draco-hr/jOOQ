@@ -59,7 +59,7 @@ case 218:
         continue;
       }
     }
- else     if (e.getMessage().contains("doesn't exist") && getDialect() == SQLDialect.ADAPTIVESERVER) {
+ else     if (e.getMessage().contains("doesn't exist") && getDialect() == SQLDialect.ASE) {
       continue;
     }
     System.out.println("Error while executing : " + sql.trim());

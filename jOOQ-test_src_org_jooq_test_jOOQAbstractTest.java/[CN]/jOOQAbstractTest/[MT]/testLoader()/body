@@ -57,7 +57,7 @@
   assertEquals(null,result.getValue(1,TAuthor_FIRST_NAME()));
   assertEquals(2,create().delete(TAuthor()).where(TAuthor_ID().in(5,6)).execute());
 switch (getDialect()) {
-case ADAPTIVESERVER:
+case ASE:
 case DERBY:
 case H2:
 case INGRES:
