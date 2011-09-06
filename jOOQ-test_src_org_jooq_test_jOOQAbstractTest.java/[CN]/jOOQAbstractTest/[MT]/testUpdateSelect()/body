@@ -2,12 +2,11 @@
 switch (getDialect()) {
 case SQLITE:
 case MYSQL:
-case SQLSERVER:
     log.info("SKIPPING","UPDATE .. SET .. = (SELECT ..) integration test. This syntax is poorly supported by " + getDialect());
   return;
 }
 reset=false;
-Table<A> a1=TAuthor().as("a1");
+Table<A> a1=TAuthor();
 Table<A> a2=TAuthor().as("a2");
 Field<String> f1=a1.getField(TAuthor_FIRST_NAME());
 Field<String> f2=a2.getField(TAuthor_FIRST_NAME());

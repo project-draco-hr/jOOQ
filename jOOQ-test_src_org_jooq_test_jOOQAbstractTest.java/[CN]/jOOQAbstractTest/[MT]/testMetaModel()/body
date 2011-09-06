@@ -122,7 +122,7 @@
       assertEquals(Double.class,field.getType());
       assertEquals(SQLDataType.FLOAT,field.getDataType());
     }
- else     if ("DOUBLE".equalsIgnoreCase(field.getName()) && getDialect() != SQLDialect.SQLSERVER) {
+ else     if ("DOUBLE".equalsIgnoreCase(field.getName()) && getDialect() != SQLDialect.SQLSERVER && getDialect() != SQLDialect.ADAPTIVESERVER) {
       assertEquals(Double.class,field.getType());
       assertEquals(SQLDataType.DOUBLE,field.getDataType());
     }

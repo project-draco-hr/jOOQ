@@ -15,6 +15,7 @@ break;
 case SQLITE:
 sql(literal);
 break;
+case ADAPTIVESERVER:
 case SQLSERVER:
 case SYBASE:
 sql("[").sql(literal).sql("]");

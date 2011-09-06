@@ -17,7 +17,7 @@
       if (p != null && !"null".equalsIgnoreCase(p.trim()))       precision=Integer.valueOf(p.trim());
       if (s != null && !"null".equalsIgnoreCase(s.trim()))       scale=Integer.valueOf(s.trim());
       DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),rs.getString("Type"),precision,scale);
-      result.add(new DefaultColumnDefinition(this,rs.getString("Column_name"),position++,type,rs.getBoolean("Identity"),null));
+      result.add(new DefaultColumnDefinition(getDatabase().getTable(getName()),rs.getString("Column_name"),position++,type,rs.getBoolean("Identity"),null));
     }
   }
   finally {

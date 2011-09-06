@@ -1,3 +1,0 @@
-{
-  super("syskeys",org.jooq.util.adaptiveserver.sys.Dbo.DBO);
-}
