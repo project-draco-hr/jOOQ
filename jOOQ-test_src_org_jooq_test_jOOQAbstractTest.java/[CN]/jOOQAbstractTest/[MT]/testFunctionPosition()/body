@@ -8,7 +8,7 @@
   Field<Integer> position=VLibrary_AUTHOR().position("o").as("p");
   q.addSelect(VLibrary_AUTHOR());
   q.addSelect(position);
-  q.addOrderBy(create().field("AUTHOR"));
+  q.addOrderBy(create().field(VLibrary_AUTHOR().getName()));
   q.execute();
   Record r1=q.getResult().get(1);
   Record r2=q.getResult().get(2);

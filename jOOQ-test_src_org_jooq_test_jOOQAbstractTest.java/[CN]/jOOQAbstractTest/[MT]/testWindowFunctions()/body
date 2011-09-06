@@ -1,5 +1,6 @@
 {
 switch (getDialect()) {
+case ADAPTIVESERVER:
 case DERBY:
 case H2:
 case HSQLDB:

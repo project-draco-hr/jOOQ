@@ -14,6 +14,7 @@ assertEquals("Animal Farm",result.getValue(1,TBook_TITLE()));
 assertEquals("O Alquimista",result.getValue(2,TBook_TITLE()));
 assertEquals("Brida",result.getValue(3,TBook_TITLE()));
 switch (getDialect()) {
+case ADAPTIVESERVER:
 case DB2:
 case DERBY:
 case H2:

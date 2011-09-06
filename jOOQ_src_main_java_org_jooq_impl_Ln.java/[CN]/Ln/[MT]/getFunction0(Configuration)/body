@@ -1,6 +1,7 @@
 {
   if (base == null) {
 switch (configuration.getDialect()) {
+case ADAPTIVESERVER:
 case H2:
 case SQLSERVER:
       return new Function<BigDecimal>("log",SQLDataType.NUMERIC,argument);
@@ -11,6 +12,7 @@ default :
  else {
 Field<Integer> baseField=create(configuration).literal(base);
 switch (configuration.getDialect()) {
+case ADAPTIVESERVER:
 case DB2:
 case DERBY:
 case H2:

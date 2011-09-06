@@ -1,7 +1,9 @@
 {
 switch (getDialect()) {
+case ADAPTIVESERVER:
+    return field("user",SQLDataType.VARCHAR);
 case ORACLE:
-    return new Function<String>("user",SQLDataType.VARCHAR);
+  return new Function<String>("user",SQLDataType.VARCHAR);
 case DERBY:
 case HSQLDB:
 case INGRES:
@@ -9,7 +11,7 @@ case POSTGRES:
 case SQLSERVER:
 case SQLITE:
 case SYBASE:
-  return field("current_user",String.class);
+return field("current_user",String.class);
 }
 return new Function<String>("current_user",SQLDataType.VARCHAR);
 }

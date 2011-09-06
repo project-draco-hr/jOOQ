@@ -2,6 +2,7 @@
   if (nullsFirst || nullsLast) {
 switch (context.getDialect()) {
 case DB2:
+case ADAPTIVESERVER:
 case INGRES:
 case MYSQL:
 case SQLITE:

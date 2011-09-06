@@ -9,6 +9,7 @@ case POSTGRES:
 case SQLITE:
 case SYBASE:
       return super.prepare(configuration,sql);
+case ADAPTIVESERVER:
 case DERBY:
 case H2:
 case INGRES:

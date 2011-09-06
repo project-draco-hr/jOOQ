@@ -24,6 +24,7 @@ case SYBASE:
       selectReturning(configuration,create(configuration).lastID());
       return result;
     }
+case ADAPTIVESERVER:
 case DERBY:
 case H2:
 case INGRES:
