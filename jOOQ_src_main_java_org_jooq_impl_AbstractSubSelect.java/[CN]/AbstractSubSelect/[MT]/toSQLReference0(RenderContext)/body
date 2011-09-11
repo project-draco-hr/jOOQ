@@ -9,7 +9,6 @@
 switch (context.getDialect()) {
 case ASE:
 case SQLSERVER:
-case SYBASE:
 {
       if (getLimit().isApplicable() && getLimit().getOffset() == 0) {
         context.sql(getLimit()).sql(" ");
@@ -19,10 +18,18 @@ case SYBASE:
           context.sql("top 100 percent ");
         }
       }
+      break;
     }
+case SYBASE:
+{
+    if (getLimit().isApplicable()) {
+      context.sql(getLimit()).sql(" ");
+    }
+    break;
+  }
 case INGRES:
 {
-  }
+}
 }
 context.declareFields(true);
 context.sql(getSelect());
@@ -41,11 +48,11 @@ context.sql(" where ").sql(getWhere());
 if (!(getConnectBy().getWhere() instanceof TrueCondition)) {
 context.sql(" connect by");
 if (connectByNoCycle) {
-  context.sql(" nocycle");
+context.sql(" nocycle");
 }
 context.sql(" ").sql(getConnectBy());
 if (!(getConnectByStartWith().getWhere() instanceof TrueCondition)) {
-  context.sql(" start with ").sql(getConnectByStartWith());
+context.sql(" start with ").sql(getConnectByStartWith());
 }
 }
 if (!getGroupBy().isEmpty()) {

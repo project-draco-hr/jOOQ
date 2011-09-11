@@ -10,25 +10,30 @@ case DB2:
       toSQLReferenceLimitDefault(context);
     }
  else {
-      toSQLReferenceLimitDB2SQLServerSybase(context);
+      toSQLReferenceLimitDB2SQLServer(context);
     }
     break;
   }
 case ASE:
 case SQLSERVER:
-case SYBASE:
 {
   if (getLimit().getOffset() == 0) {
     toSQLReference0(context);
   }
  else {
-    toSQLReferenceLimitDB2SQLServerSybase(context);
+    toSQLReferenceLimitDB2SQLServer(context);
   }
   break;
+}
+case SYBASE:
+{
+toSQLReference0(context);
+break;
 }
 default :
 {
 toSQLReferenceLimitDefault(context);
+break;
 }
 }
 }

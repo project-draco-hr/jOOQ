@@ -16,16 +16,20 @@ case SQLITE:
     context.bind(create(context).val(getOffset()));
     break;
   }
+case INGRES:
+case SYBASE:
+{
+  break;
+}
 case ASE:
 case DB2:
 case SQLSERVER:
-case SYBASE:
 {
-  if (offset == 0) {
-    break;
-  }
+if (offset == 0) {
+  break;
+}
  else {
-  }
+}
 }
 case ORACLE:
 {

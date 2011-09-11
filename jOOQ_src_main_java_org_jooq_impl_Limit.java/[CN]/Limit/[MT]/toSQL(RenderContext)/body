@@ -38,6 +38,11 @@ case INGRES:
 context.sql("offset ").sql(getOffset()).sql(" fetch first ").sql(getNumberOfRows()).sql(" rows only");
 break;
 }
+case SYBASE:
+{
+context.sql("top ").sql(getNumberOfRows()).sql(" start at ").sql(getOffset() + 1);
+break;
+}
 case DB2:
 {
 if (getOffset() != 0) {
@@ -48,7 +53,6 @@ break;
 }
 case ASE:
 case SQLSERVER:
-case SYBASE:
 {
 if (getOffset() != 0) {
 throw new SQLDialectNotSupportedException("Offsets in TOP clause not supported");
