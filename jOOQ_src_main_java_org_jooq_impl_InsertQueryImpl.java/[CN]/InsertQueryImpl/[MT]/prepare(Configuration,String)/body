@@ -1,9 +1,12 @@
 {
-  if (returning.isEmpty()) {
+  Connection connection=configuration.getConnection();
+  if (configuration.getDialect() == SQLDialect.ASE) {
+    return connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+  }
+ else   if (returning.isEmpty()) {
     return super.prepare(configuration,sql);
   }
  else {
-    Connection connection=configuration.getConnection();
 switch (configuration.getDialect()) {
 case POSTGRES:
 case SQLITE:

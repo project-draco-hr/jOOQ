@@ -24,6 +24,7 @@ case H2:
 case SQLSERVER:
 assertEquals(null,create().lastID());
 break;
+case ASE:
 case SYBASE:
 assertEquals(BigInteger.ZERO,create().lastID());
 break;
