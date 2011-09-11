@@ -13,6 +13,10 @@ for (int i=lower; i < 6; i++) {
   assertEquals(Math.min(i,4),create().selectFrom(TBook()).limit(i).fetch().size());
   assertEquals(Math.min(i,4),create().select().from(TBook()).limit(i).fetch().size());
 }
+if (getDialect() == SQLDialect.ASE) {
+  log.info("SKIPPING","LIMIT .. OFFSET tests");
+  return;
+}
 for (int i=lower; i < 6; i++) {
   assertEquals(Math.min(i,3),create().selectFrom(TBook()).limit(1,i).fetch().size());
   assertEquals(Math.min(i,3),create().selectFrom(TBook()).limit(i).offset(1).fetch().size());
