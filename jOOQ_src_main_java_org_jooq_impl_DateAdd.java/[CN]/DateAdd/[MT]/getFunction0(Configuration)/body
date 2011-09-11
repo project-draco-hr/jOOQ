@@ -1,11 +1,13 @@
 {
   Factory create=create(configuration);
 switch (configuration.getDialect()) {
+case ASE:
+    return new Function<T>("dateadd",getDataType(),literal("day"),val(value),field);
 case DB2:
 case HSQLDB:
-    return field.add(create.field("? day",BigDecimal.class,value));
+  return field.add(create.field("? day",BigDecimal.class,value));
 case DERBY:
-  return new FnPrefixFunction<T>("timestampadd",getDataType(),create.field("SQL_TSI_DAY"),create.val(value.intValue()),field);
+return new FnPrefixFunction<T>("timestampadd",getDataType(),create.field("SQL_TSI_DAY"),create.val(value.intValue()),field);
 case INGRES:
 return field.add(create.field("date('" + value + " days')",BigDecimal.class));
 case MYSQL:
