@@ -1,4 +1,4 @@
 {
   delegate.execute();
-  return delegate.getReturned();
+  return delegate.getReturnedRecord();
 }

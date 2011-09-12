@@ -1,0 +1,6 @@
+{
+  if (returned == null) {
+    returned=new ResultImpl<R>(getConfiguration(),returning);
+  }
+  return returned;
+}

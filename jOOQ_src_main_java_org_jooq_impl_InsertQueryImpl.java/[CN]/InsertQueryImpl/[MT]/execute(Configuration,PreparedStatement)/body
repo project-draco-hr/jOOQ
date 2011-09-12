@@ -9,12 +9,14 @@ switch (configuration.getDialect()) {
 case SQLITE:
 {
         result=statement.executeUpdate();
-        returned=JooqUtil.newRecord(getInto(),configuration);
         SQLiteFactory create=new SQLiteFactory(configuration.getConnection());
         Field<Long> rowid=create.rowid();
-        Record record=create.select(returning).from(getInto()).where(rowid.equal(rowid.getDataType().convert(create.lastID()))).fetchOne();
-        for (        Field<?> field : returning) {
-          setValue(record,field);
+        for (        Record untyped : create.select(returning).from(getInto()).where(rowid.equal(rowid.getDataType().convert(create.lastID()))).fetch()) {
+          R typed=JooqUtil.newRecord(getInto(),configuration);
+          for (          Field<?> field : returning) {
+            setValue(field,typed,untyped);
+          }
+          getReturnedRecords().add(typed);
         }
         return result;
       }
@@ -33,10 +35,17 @@ case SQLSERVER:
 {
     result=statement.executeUpdate();
     rs=statement.getGeneratedKeys();
-    if (rs.next()) {
-      selectReturning(configuration,rs.getObject(1));
+    try {
+      List<Object> list=new ArrayList<Object>();
+      while (rs.next()) {
+        list.add(rs.getObject(1));
+      }
+      selectReturning(configuration,list.toArray());
+      return result;
     }
-    return result;
+  finally {
+      rs.close();
+    }
   }
 case POSTGRES:
 {
@@ -54,7 +63,7 @@ break;
 }
 }
 CursorImpl<R> cursor=new CursorImpl<R>(configuration,returning,rs,statement,getInto().getRecordType());
-returned=cursor.fetchOne();
+returned=cursor.fetchResult();
 return result;
 }
 }

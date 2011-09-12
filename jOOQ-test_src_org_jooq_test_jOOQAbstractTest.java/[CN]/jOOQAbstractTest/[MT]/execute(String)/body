@@ -26,6 +26,9 @@
  else       if (e.getMessage().contains("ORA-04043")) {
         continue;
       }
+ else       if (e.getMessage().contains("ORA-04080")) {
+        continue;
+      }
  else       if (e.getMessage().contains("SQLCODE=-204") && e.getMessage().contains("SQLSTATE=42704")) {
         continue;
       }

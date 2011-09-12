@@ -4,7 +4,7 @@
     int sequences=0;
     if (cSequences() != null) {
       sequences++;
-      if (getDialect() == SQLDialect.DB2) {
+      if (getDialect() == SQLDialect.DB2 || getDialect() == SQLDialect.H2) {
         sequences++;
       }
     }

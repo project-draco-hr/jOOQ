@@ -1,0 +1,6 @@
+{
+  if (getReturnedRecords().size() == 0) {
+    return null;
+  }
+  return getReturnedRecords().get(0);
+}

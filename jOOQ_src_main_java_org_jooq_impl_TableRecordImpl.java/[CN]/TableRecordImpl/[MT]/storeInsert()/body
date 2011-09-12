@@ -9,9 +9,9 @@
   insert.setReturning(key);
   int result=insert.execute();
   if (!key.isEmpty() && result > 0) {
-    if (insert.getReturned() != null) {
+    if (insert.getReturnedRecord() != null) {
       for (      Field<?> field : key) {
-        setValue0(field,new Value<Object>(insert.getReturned().getValue(field)));
+        setValue0(field,new Value<Object>(insert.getReturnedRecord().getValue(field)));
       }
     }
   }

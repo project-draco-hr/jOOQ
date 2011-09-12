@@ -2,16 +2,25 @@
   if (getInto() instanceof UpdatableTable) {
     UpdatableTable<R> updatable=(UpdatableTable<R>)getInto();
     if (updatable.getIdentity() != null) {
-      Field<Number> id=(Field<Number>)updatable.getIdentity().getField();
-      Number value=id.getDataType().convert(o);
-      returned=JooqUtil.newRecord(updatable,configuration);
-      if (returning.size() == 1 && returning.get(0).equals(id)) {
-        ((AbstractRecord)returned).setValue(id,new Value<Number>(value));
+      Field<Number> field=(Field<Number>)updatable.getIdentity().getField();
+      Number[] ids=new Number[values.length];
+      for (int i=0; i < values.length; i++) {
+        ids[i]=field.getDataType().convert(values[i]);
+      }
+      if (returning.size() == 1 && returning.get(0).equals(field)) {
+        for (        Number id : ids) {
+          R typed=JooqUtil.newRecord(getInto(),configuration);
+          ((AbstractRecord)typed).setValue(field,new Value<Number>(id));
+          getReturnedRecords().add(typed);
+        }
       }
  else {
-        Record record=create(configuration).select(returning).from(updatable).where(id.equal(value)).fetchOne();
-        for (        Field<?> field : returning) {
-          setValue(record,field);
+        for (        Record untyped : create(configuration).select(returning).from(updatable).where(field.in(ids)).fetch()) {
+          R typed=JooqUtil.newRecord(getInto(),configuration);
+          for (          Field<?> f : returning) {
+            setValue(f,typed,untyped);
+          }
+          getReturnedRecords().add(typed);
         }
       }
     }
