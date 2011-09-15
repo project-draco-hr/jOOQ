@@ -1,0 +1,21 @@
+{
+  InputStream isXML=HTMLPages.class.getResourceAsStream("manual.xml");
+  InputStream isXSL=HTMLPages.class.getResourceAsStream("html-pages.xsl");
+  StreamSource xsl=new StreamSource(isXSL);
+  TransformerFactory factory=TransformerFactory.newInstance();
+  Transformer transformer=factory.newTransformer(xsl);
+  Match manual=$(isXML);
+  for (  Match section : manual.find("section").each()) {
+    Match sections=section.add(section.parents("section")).reverse();
+    String path=StringUtils.join(sections.ids(),"/");
+    String relativePath=StringUtils.join(Collections.nCopies(sections.size(),".."),"/") + "/";
+    File dir=new File(path);
+    dir.mkdirs();
+    System.out.println("Transforming section " + path);
+    Source source=new DOMSource(manual.document());
+    Result target=new StreamResult(new File(dir,"index.php"));
+    transformer.setParameter("sectionID",section.id());
+    transformer.setParameter("relativePath",relativePath);
+    transformer.transform(source,target);
+  }
+}
