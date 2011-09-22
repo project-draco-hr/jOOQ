@@ -1,0 +1,6 @@
+{
+  many=true;
+  execute();
+  many=false;
+  return results;
+}

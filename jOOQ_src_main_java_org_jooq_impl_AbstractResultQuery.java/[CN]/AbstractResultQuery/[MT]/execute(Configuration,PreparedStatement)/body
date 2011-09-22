@@ -9,11 +9,29 @@
   }
   try {
     ResultSet rs=statement.executeQuery();
-    FieldList fields=new FieldList(getFields(rs.getMetaData()));
-    cursor=new CursorImpl<R>(configuration,fields,rs,statement,getRecordType());
-    if (!lazy) {
-      result=cursor.fetchResult();
-      cursor=null;
+    if (!many) {
+      FieldList fields=new FieldList(getFields(rs.getMetaData()));
+      cursor=new CursorImpl<R>(configuration,fields,rs,statement,getRecordType());
+      if (!lazy) {
+        result=cursor.fetchResult();
+        cursor=null;
+      }
+    }
+ else {
+      results=new ArrayList<Result<Record>>();
+      for (; ; ) {
+        FieldProvider fields=new MetaDataFieldProvider(configuration,rs.getMetaData());
+        Cursor<Record> c=new CursorImpl<Record>(configuration,fields,rs);
+        results.add(c.fetchResult());
+        if (statement.getMoreResults()) {
+          rs=statement.getResultSet();
+        }
+ else {
+          break;
+        }
+      }
+      statement.getMoreResults(Statement.CLOSE_ALL_RESULTS);
+      statement.close();
     }
   }
   finally {

@@ -60,7 +60,7 @@ record.refresh();
 assertEquals("abc",new String(record.getValue(T725_LOB())));
 Result<Record> result=create().fetch("select " + T725_ID().getName() + ", "+ T725_LOB().getName()+ " from "+ T725().getName()+ " order by "+ T725_ID().getName());
 assertEquals(4,result.size());
-assertEquals(Arrays.asList(1,2,3,4),result.getValues(0));
+assertEquals(BOOK_IDS,result.getValues(0));
 assertNull(result.getValue(1,1));
 switch (getDialect()) {
 case ASE:

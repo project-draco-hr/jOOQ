@@ -1,8 +1,8 @@
 {
   final Queue<Integer> ids=new LinkedList<Integer>();
   final Queue<String> titles=new LinkedList<String>();
-  ids.addAll(Arrays.asList(1,2,3,4));
-  titles.addAll(Arrays.asList("1984","Animal Farm","O Alquimista","Brida"));
+  ids.addAll(BOOK_IDS);
+  titles.addAll(BOOK_TITLES);
   create().selectFrom(TBook()).orderBy(TBook_ID()).fetchInto(new RecordHandler<B>(){
     @Override public void next(    B record){
       assertEquals(ids.poll(),record.getValue(TBook_ID()));
@@ -12,8 +12,8 @@
 );
   assertTrue(ids.isEmpty());
   assertTrue(titles.isEmpty());
-  ids.addAll(Arrays.asList(1,2,3,4));
-  titles.addAll(Arrays.asList("1984","Animal Farm","O Alquimista","Brida"));
+  ids.addAll(BOOK_IDS);
+  titles.addAll(BOOK_TITLES);
   create().selectFrom(TBook()).orderBy(TBook_ID()).fetchLazy().fetchInto(new RecordHandler<B>(){
     @Override public void next(    B record){
       assertEquals(ids.poll(),record.getValue(TBook_ID()));

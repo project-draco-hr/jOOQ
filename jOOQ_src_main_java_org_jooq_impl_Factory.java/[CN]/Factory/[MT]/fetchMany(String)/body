@@ -1,0 +1,3 @@
+{
+  return fetchMany(sql,new Object[0]);
+}

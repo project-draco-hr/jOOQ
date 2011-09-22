@@ -9,10 +9,10 @@
   for (  Entry<Integer,B> entry : map1.entrySet()) {
     assertEquals(entry.getKey(),entry.getValue().getValue(TBook_ID()));
   }
-  assertEquals(Arrays.asList(1,2,3,4),new ArrayList<Integer>(map1.keySet()));
+  assertEquals(BOOK_IDS,new ArrayList<Integer>(map1.keySet()));
   Map<Integer,String> map2=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchMap(TBook_ID(),TBook_TITLE());
-  assertEquals(Arrays.asList(1,2,3,4),new ArrayList<Integer>(map2.keySet()));
-  assertEquals(Arrays.asList("1984","Animal Farm","O Alquimista","Brida"),new ArrayList<String>(map2.values()));
+  assertEquals(BOOK_IDS,new ArrayList<Integer>(map2.keySet()));
+  assertEquals(BOOK_TITLES,new ArrayList<String>(map2.values()));
   Result<B> books=create().selectFrom(TBook()).orderBy(TBook_ID()).fetch();
   List<Map<String,Object>> list=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchMaps();
   assertEquals(4,list.size());

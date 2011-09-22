@@ -3,8 +3,8 @@
   Field<Integer> b_ID=b.getField(TBook_ID());
   List<Integer> ids=create().select(b_ID).from(b).orderBy(b_ID).fetch(b_ID);
   assertEquals(4,ids.size());
-  assertEquals(Arrays.asList(1,2,3,4),ids);
+  assertEquals(BOOK_IDS,ids);
   Result<Record> books=create().select().from(b).orderBy(b_ID).fetch();
   assertEquals(4,books.size());
-  assertEquals(Arrays.asList(1,2,3,4),books.getValues(b_ID));
+  assertEquals(BOOK_IDS,books.getValues(b_ID));
 }
