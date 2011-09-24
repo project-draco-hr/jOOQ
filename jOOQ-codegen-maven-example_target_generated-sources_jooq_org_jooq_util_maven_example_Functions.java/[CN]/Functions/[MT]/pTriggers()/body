@@ -1,0 +1,4 @@
+{
+  org.jooq.util.maven.example.functions.PTriggers f=new org.jooq.util.maven.example.functions.PTriggers();
+  return f.asField();
+}

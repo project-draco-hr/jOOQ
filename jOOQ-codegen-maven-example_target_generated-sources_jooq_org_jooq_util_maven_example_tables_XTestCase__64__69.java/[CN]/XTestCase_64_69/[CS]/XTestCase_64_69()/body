@@ -1,0 +1,3 @@
+{
+  super("x_test_case_64_69",org.jooq.util.maven.example.Public.PUBLIC);
+}

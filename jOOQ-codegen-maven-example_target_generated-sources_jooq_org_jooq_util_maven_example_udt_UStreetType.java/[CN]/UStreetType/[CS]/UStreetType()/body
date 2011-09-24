@@ -1,0 +1,3 @@
+{
+  super("u_street_type",org.jooq.util.maven.example.Public.PUBLIC);
+}

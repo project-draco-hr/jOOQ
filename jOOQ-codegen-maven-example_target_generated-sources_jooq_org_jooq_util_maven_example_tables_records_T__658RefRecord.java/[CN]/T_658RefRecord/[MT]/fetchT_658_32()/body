@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(org.jooq.util.maven.example.tables.T_658_32.T_658_32).where(org.jooq.util.maven.example.tables.T_658_32.ID.equal(getValue(org.jooq.util.maven.example.tables.T_658Ref.REF_32))).fetchOne();
+}

@@ -1,0 +1,6 @@
+{
+  org.jooq.util.maven.example.functions.FArrays3 f=new org.jooq.util.maven.example.functions.FArrays3();
+  f.setInArray(inArray);
+  f.execute(configuration);
+  return f.getReturnValue();
+}

@@ -1,0 +1,3 @@
+{
+  super("t_658_11",org.jooq.util.maven.example.Public.PUBLIC);
+}

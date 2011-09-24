@@ -1,0 +1,6 @@
+{
+  org.jooq.util.maven.example.procedures.PCreateAuthorByName p=new org.jooq.util.maven.example.procedures.PCreateAuthorByName();
+  p.setFirstName(firstName);
+  p.setLastName(lastName);
+  p.execute(configuration);
+}

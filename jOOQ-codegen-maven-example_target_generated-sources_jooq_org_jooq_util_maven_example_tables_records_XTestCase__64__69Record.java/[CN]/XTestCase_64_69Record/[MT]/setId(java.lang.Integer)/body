@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.maven.example.tables.XTestCase_64_69.ID,value);
+}

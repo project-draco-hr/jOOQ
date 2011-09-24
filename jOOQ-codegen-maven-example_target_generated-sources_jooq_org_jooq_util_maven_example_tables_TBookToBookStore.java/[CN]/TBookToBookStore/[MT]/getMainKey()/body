@@ -1,0 +1,3 @@
+{
+  return org.jooq.util.maven.example.Keys.pk_b2bs;
+}

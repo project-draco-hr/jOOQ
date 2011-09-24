@@ -1,0 +1,3 @@
+{
+  super("t_author",org.jooq.util.maven.example.Public.PUBLIC);
+}

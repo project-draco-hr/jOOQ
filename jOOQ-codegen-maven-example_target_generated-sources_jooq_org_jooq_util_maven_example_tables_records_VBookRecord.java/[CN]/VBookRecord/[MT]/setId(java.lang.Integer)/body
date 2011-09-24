@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.maven.example.tables.VBook.ID,value);
+}

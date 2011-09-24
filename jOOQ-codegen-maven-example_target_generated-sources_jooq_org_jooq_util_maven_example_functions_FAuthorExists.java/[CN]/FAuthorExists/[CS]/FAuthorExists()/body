@@ -1,0 +1,4 @@
+{
+  super(org.jooq.SQLDialect.POSTGRES,"f_author_exists",org.jooq.util.maven.example.Public.PUBLIC,org.jooq.impl.SQLDataType.INTEGER);
+  addInParameter(AUTHOR_NAME);
+}

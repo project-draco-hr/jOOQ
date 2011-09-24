@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.util.maven.example.tables.records.XUnusedRecord,?>>asList(org.jooq.util.maven.example.Keys.fk_x_unused_self);
+}

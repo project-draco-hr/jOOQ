@@ -1,0 +1,3 @@
+{
+  return org.jooq.util.maven.example.Keys.IDENTITY_t_triggers;
+}

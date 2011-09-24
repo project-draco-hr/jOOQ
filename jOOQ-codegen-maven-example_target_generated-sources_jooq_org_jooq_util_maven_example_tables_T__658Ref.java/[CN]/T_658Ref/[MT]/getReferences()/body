@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.util.maven.example.tables.records.T_658RefRecord,?>>asList(org.jooq.util.maven.example.Keys.fk_t_658_11,org.jooq.util.maven.example.Keys.fk_t_658_21,org.jooq.util.maven.example.Keys.fk_t_658_31,org.jooq.util.maven.example.Keys.fk_t_658_12,org.jooq.util.maven.example.Keys.fk_t_658_22,org.jooq.util.maven.example.Keys.fk_t_658_32);
+}

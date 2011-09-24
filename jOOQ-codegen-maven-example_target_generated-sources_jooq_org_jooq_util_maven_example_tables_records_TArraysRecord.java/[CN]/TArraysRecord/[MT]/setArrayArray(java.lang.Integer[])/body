@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.maven.example.tables.TArrays.ARRAY_ARRAY,value);
+}

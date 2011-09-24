@@ -1,0 +1,5 @@
+{
+  org.jooq.util.maven.example.procedures.PGetTwoCursors p=new org.jooq.util.maven.example.procedures.PGetTwoCursors();
+  p.execute(configuration);
+  return p;
+}

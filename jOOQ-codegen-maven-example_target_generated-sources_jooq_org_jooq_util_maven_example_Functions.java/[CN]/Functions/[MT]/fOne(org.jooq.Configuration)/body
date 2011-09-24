@@ -1,0 +1,5 @@
+{
+  org.jooq.util.maven.example.functions.FOne f=new org.jooq.util.maven.example.functions.FOne();
+  f.execute(configuration);
+  return f.getReturnValue();
+}

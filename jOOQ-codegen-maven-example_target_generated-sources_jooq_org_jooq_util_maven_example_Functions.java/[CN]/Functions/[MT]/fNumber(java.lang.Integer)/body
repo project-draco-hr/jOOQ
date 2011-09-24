@@ -1,0 +1,5 @@
+{
+  org.jooq.util.maven.example.functions.FNumber f=new org.jooq.util.maven.example.functions.FNumber();
+  f.setN(n);
+  return f.asField();
+}

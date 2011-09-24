@@ -1,0 +1,4 @@
+{
+  super(org.jooq.SQLDialect.POSTGRES,"f_get_one_cursor",org.jooq.util.maven.example.Public.PUBLIC,org.jooq.impl.SQLDataType.RESULT);
+  addInParameter(BOOK_IDS);
+}

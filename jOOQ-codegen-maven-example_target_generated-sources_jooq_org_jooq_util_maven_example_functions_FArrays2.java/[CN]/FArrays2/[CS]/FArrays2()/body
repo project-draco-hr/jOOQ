@@ -1,0 +1,5 @@
+{
+  super(org.jooq.SQLDialect.POSTGRES,"f_arrays",org.jooq.util.maven.example.Public.PUBLIC,org.jooq.impl.SQLDataType.BIGINT.getArrayDataType());
+  addInParameter(IN_ARRAY);
+  setOverloaded(true);
+}

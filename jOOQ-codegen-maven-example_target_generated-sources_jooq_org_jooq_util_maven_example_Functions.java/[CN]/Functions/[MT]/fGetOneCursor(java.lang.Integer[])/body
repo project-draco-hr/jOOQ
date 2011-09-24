@@ -1,0 +1,5 @@
+{
+  org.jooq.util.maven.example.functions.FGetOneCursor f=new org.jooq.util.maven.example.functions.FGetOneCursor();
+  f.setBookIds(bookIds);
+  return f.asField();
+}

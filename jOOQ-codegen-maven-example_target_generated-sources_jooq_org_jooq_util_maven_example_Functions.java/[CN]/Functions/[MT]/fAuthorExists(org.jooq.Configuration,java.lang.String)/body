@@ -1,0 +1,6 @@
+{
+  org.jooq.util.maven.example.functions.FAuthorExists f=new org.jooq.util.maven.example.functions.FAuthorExists();
+  f.setAuthorName(authorName);
+  f.execute(configuration);
+  return f.getReturnValue();
+}

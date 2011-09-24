@@ -1,0 +1,3 @@
+{
+  super(org.jooq.util.maven.example.tables.TBookDetails.T_BOOK_DETAILS);
+}

@@ -1,0 +1,4 @@
+{
+  super(org.jooq.SQLDialect.POSTGRES,"p_enhance_address2",org.jooq.util.maven.example.Public.PUBLIC);
+  addOutParameter(ADDRESS);
+}

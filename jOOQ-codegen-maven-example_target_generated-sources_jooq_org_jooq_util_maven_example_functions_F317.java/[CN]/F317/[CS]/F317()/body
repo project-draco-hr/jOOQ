@@ -1,0 +1,7 @@
+{
+  super(org.jooq.SQLDialect.POSTGRES,"f317",org.jooq.util.maven.example.Public.PUBLIC,org.jooq.impl.SQLDataType.INTEGER);
+  addInParameter(P1);
+  addInParameter(P2);
+  addInParameter(P3);
+  addInParameter(P4);
+}

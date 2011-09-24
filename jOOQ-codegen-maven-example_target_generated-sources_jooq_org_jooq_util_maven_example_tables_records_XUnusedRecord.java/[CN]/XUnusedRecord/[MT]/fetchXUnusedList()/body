@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(org.jooq.util.maven.example.tables.XUnused.X_UNUSED).where(org.jooq.util.maven.example.tables.XUnused.ID_REF.equal(getValue(org.jooq.util.maven.example.tables.XUnused.ID))).and(org.jooq.util.maven.example.tables.XUnused.NAME_REF.equal(getValue(org.jooq.util.maven.example.tables.XUnused.NAME))).fetch();
+}

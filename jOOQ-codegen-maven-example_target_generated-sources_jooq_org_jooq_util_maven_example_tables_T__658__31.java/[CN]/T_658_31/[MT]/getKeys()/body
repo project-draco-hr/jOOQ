@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.util.maven.example.tables.records.T_658_31Record>>asList(org.jooq.util.maven.example.Keys.pk_t_658_31);
+}
