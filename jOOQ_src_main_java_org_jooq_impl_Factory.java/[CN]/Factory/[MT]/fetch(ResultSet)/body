@@ -1,0 +1,4 @@
+{
+  FieldProvider fields=new MetaDataFieldProvider(this,rs.getMetaData());
+  return new CursorImpl<Record>(this,fields,rs).fetchResult();
+}
