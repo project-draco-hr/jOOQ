@@ -1,3 +1,0 @@
-{
-  super("u_address_type",org.jooq.util.maven.example.Public.PUBLIC);
-}

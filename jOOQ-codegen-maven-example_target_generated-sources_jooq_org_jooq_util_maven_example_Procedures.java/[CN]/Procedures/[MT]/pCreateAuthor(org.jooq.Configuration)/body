@@ -1,4 +1,0 @@
-{
-  org.jooq.util.maven.example.procedures.PCreateAuthor p=new org.jooq.util.maven.example.procedures.PCreateAuthor();
-  p.execute(configuration);
-}

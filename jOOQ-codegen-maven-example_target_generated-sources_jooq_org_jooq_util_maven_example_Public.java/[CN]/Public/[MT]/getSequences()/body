@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.Sequence>asList(org.jooq.util.maven.example.Sequences.S_AUTHOR_ID,org.jooq.util.maven.example.Sequences.T_BOOK_STORE_ID_SEQ,org.jooq.util.maven.example.Sequences.T_TRIGGERS_ID_GENERATED_SEQ);
-}

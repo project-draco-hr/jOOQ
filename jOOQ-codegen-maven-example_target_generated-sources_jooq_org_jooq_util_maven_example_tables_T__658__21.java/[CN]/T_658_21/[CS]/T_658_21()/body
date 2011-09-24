@@ -1,3 +1,0 @@
-{
-  super("t_658_21",org.jooq.util.maven.example.Public.PUBLIC);
-}

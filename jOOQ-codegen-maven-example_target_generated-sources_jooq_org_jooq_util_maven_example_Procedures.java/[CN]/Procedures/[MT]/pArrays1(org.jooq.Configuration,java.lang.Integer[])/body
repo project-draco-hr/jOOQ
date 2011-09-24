@@ -1,6 +1,0 @@
-{
-  org.jooq.util.maven.example.procedures.PArrays1 p=new org.jooq.util.maven.example.procedures.PArrays1();
-  p.setInArray(inArray);
-  p.execute(configuration);
-  return p.getOutArray();
-}

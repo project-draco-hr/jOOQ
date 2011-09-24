@@ -1,3 +1,0 @@
-{
-  super("t_triggers",org.jooq.util.maven.example.Public.PUBLIC);
-}

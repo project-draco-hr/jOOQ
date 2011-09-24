@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.util.maven.example.tables.TArrays.DATE_ARRAY,value);
-}

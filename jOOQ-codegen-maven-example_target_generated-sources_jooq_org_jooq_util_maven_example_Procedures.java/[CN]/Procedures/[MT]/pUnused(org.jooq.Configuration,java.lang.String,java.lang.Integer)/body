@@ -1,7 +1,0 @@
-{
-  org.jooq.util.maven.example.procedures.PUnused p=new org.jooq.util.maven.example.procedures.PUnused();
-  p.setIn1(in1);
-  p.setOut2(out2);
-  p.execute(configuration);
-  return p;
-}

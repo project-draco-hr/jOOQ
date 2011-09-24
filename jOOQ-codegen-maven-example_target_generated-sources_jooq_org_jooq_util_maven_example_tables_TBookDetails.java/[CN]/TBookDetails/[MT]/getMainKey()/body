@@ -1,3 +1,0 @@
-{
-  return org.jooq.util.maven.example.Keys.pk_t_book_details;
-}

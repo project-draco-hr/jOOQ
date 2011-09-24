@@ -1,3 +1,0 @@
-{
-  super("x_unused",org.jooq.util.maven.example.Public.PUBLIC);
-}

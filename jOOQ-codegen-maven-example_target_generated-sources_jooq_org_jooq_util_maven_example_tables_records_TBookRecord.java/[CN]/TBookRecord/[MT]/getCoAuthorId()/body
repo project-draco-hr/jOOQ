@@ -1,3 +1,0 @@
-{
-  return getValue(org.jooq.util.maven.example.tables.TBook.CO_AUTHOR_ID);
-}

@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.util.maven.example.tables.records.TBookRecord,?>>asList(org.jooq.util.maven.example.Keys.fk_t_book_author_id,org.jooq.util.maven.example.Keys.fk_t_book_co_author_id,org.jooq.util.maven.example.Keys.fk_t_book_details_id);
-}

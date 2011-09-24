@@ -1,6 +1,0 @@
-{
-  org.jooq.util.maven.example.functions.FNumber f=new org.jooq.util.maven.example.functions.FNumber();
-  f.setN(n);
-  f.execute(configuration);
-  return f.getReturnValue();
-}

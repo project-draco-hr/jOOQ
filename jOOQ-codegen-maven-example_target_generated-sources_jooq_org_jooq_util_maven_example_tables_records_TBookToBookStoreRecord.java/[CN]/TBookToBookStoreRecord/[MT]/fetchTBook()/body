@@ -1,3 +1,0 @@
-{
-  return create().selectFrom(org.jooq.util.maven.example.tables.TBook.T_BOOK).where(org.jooq.util.maven.example.tables.TBook.ID.equal(getValue(org.jooq.util.maven.example.tables.TBookToBookStore.BOOK_ID))).fetchOne();
-}

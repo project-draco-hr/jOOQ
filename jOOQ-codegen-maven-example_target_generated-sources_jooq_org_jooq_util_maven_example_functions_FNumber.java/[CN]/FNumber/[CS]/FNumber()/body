@@ -1,4 +1,0 @@
-{
-  super(org.jooq.SQLDialect.POSTGRES,"f_number",org.jooq.util.maven.example.Public.PUBLIC,org.jooq.impl.SQLDataType.INTEGER);
-  addInParameter(N);
-}

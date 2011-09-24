@@ -1,3 +1,0 @@
-{
-  super(org.jooq.SQLDialect.POSTGRES,"f_one",org.jooq.util.maven.example.Public.PUBLIC,org.jooq.impl.SQLDataType.INTEGER);
-}

@@ -1,5 +1,0 @@
-{
-  org.jooq.util.maven.example.functions.FArrays1 f=new org.jooq.util.maven.example.functions.FArrays1();
-  f.setInArray(inArray);
-  return f.asField();
-}

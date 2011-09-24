@@ -1,4 +1,0 @@
-{
-  org.jooq.util.maven.example.functions.FOne f=new org.jooq.util.maven.example.functions.FOne();
-  return f.asField();
-}

@@ -1,3 +1,0 @@
-{
-  super(org.jooq.SQLDialect.POSTGRES,"p_triggers",org.jooq.util.maven.example.Public.PUBLIC,org.jooq.util.postgres.PostgresDataType.getDefaultDataType("trigger"));
-}

@@ -1,6 +1,0 @@
-{
-  org.jooq.util.maven.example.procedures.PGetOneCursor p=new org.jooq.util.maven.example.procedures.PGetOneCursor();
-  p.setBookIds(bookIds);
-  p.execute(configuration);
-  return p;
-}

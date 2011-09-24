@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.util.maven.example.tables.VAuthor.DATE_OF_BIRTH,value);
-}

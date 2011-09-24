@@ -1,5 +1,0 @@
-{
-  org.jooq.util.maven.example.procedures.PEnhanceAddress2 p=new org.jooq.util.maven.example.procedures.PEnhanceAddress2();
-  p.execute(configuration);
-  return p.getAddress();
-}

@@ -1,6 +1,0 @@
-{
-  org.jooq.util.maven.example.procedures.PAuthorExists p=new org.jooq.util.maven.example.procedures.PAuthorExists();
-  p.setAuthorName(authorName);
-  p.execute(configuration);
-  return p.getResult();
-}
