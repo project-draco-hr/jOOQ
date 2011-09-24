@@ -1,3 +1,6 @@
 {
+  if (field == null) {
+    return null;
+  }
   return (Field<T>)getField(field.getName());
 }
