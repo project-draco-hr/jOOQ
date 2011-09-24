@@ -1,6 +1,6 @@
 {
-  InputStream isXML=HTMLPages.class.getResourceAsStream("manual.xml");
-  InputStream isXSL=HTMLPages.class.getResourceAsStream("html-pages.xsl");
+  InputStream isXML=Transform.class.getResourceAsStream("manual.xml");
+  InputStream isXSL=Transform.class.getResourceAsStream("html-pages.xsl");
   StreamSource xsl=new StreamSource(isXSL);
   TransformerFactory factory=TransformerFactory.newInstance();
   Transformer transformer=factory.newTransformer(xsl);

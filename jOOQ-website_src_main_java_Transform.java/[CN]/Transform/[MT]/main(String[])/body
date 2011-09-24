@@ -1,0 +1,9 @@
+{
+  System.out.println("Transforming multi-page manual");
+  System.out.println("------------------------------");
+  multiplePages();
+  System.out.println();
+  System.out.println("Transforming single-page manual");
+  System.out.println("-------------------------------");
+  singlePage();
+}
