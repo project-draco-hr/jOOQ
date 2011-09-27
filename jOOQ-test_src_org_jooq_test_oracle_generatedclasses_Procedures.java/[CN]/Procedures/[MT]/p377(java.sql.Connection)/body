@@ -1,4 +1,0 @@
-{
-  org.jooq.test.oracle.generatedclasses.procedures.P377 p=new org.jooq.test.oracle.generatedclasses.procedures.P377();
-  p.execute(connection);
-}

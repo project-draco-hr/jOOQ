@@ -1,5 +1,0 @@
-{
-  org.jooq.test.db2.generatedclasses.functions.FOne f=new org.jooq.test.db2.generatedclasses.functions.FOne();
-  f.execute(connection);
-  return f.getReturnValue();
-}

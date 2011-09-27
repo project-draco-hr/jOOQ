@@ -1,4 +1,0 @@
-SQLDialect dialect
-String name
-Class<? extends T> type
-Table<R> table

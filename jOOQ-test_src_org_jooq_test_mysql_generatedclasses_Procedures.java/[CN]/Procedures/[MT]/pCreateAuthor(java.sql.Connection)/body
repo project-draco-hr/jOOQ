@@ -1,4 +1,0 @@
-{
-  org.jooq.test.mysql.generatedclasses.procedures.PCreateAuthor p=new org.jooq.test.mysql.generatedclasses.procedures.PCreateAuthor();
-  p.execute(connection);
-}

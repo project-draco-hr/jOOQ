@@ -1,4 +1,0 @@
-{
-  org.jooq.test.db2.generatedclasses.procedures.PCreateAuthor p=new org.jooq.test.db2.generatedclasses.procedures.PCreateAuthor();
-  p.execute(connection);
-}

@@ -1,6 +1,0 @@
-{
-  org.jooq.test.sqlserver.generatedclasses.functions.FNumber f=new org.jooq.test.sqlserver.generatedclasses.functions.FNumber();
-  f.setN(n);
-  f.execute(connection);
-  return f.getReturnValue();
-}

@@ -1,3 +1,0 @@
-{
-  return join0(table,JoinType.RIGHT_JOIN);
-}

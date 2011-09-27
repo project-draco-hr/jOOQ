@@ -1,3 +1,0 @@
-{
-  this(configuration,name,FieldTypeHelper.getDataType(configuration.getDialect(),type),table);
-}

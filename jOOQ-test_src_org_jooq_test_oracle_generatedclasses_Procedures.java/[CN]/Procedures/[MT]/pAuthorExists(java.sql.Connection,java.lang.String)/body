@@ -1,6 +1,0 @@
-{
-  org.jooq.test.oracle.generatedclasses.procedures.PAuthorExists p=new org.jooq.test.oracle.generatedclasses.procedures.PAuthorExists();
-  p.setAuthorName(authorName);
-  p.execute(connection);
-  return p.getResult();
-}

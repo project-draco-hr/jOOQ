@@ -1,3 +1,0 @@
-{
-  return table(sql,new Object[0]);
-}

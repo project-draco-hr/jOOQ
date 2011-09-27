@@ -1,7 +1,0 @@
-{
-  org.jooq.test.hsqldb.generatedclasses.procedures.PUnused p=new org.jooq.test.hsqldb.generatedclasses.procedures.PUnused();
-  p.setIn1(in1);
-  p.setOut2(out2);
-  p.execute(connection);
-  return p;
-}
