@@ -1,0 +1,14 @@
+{
+  if (version == null) {
+    try {
+      InputStream stream=DefaultGenerator.class.getResourceAsStream("/org/jooq/util/generator.properties");
+      Properties properties=new Properties();
+      properties.load(stream);
+      version=properties.getProperty("version");
+    }
+ catch (    Exception e) {
+      version="unknown";
+    }
+  }
+  return version;
+}
