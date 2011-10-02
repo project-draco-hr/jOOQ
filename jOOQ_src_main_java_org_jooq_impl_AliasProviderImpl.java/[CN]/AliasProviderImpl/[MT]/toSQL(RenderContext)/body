@@ -17,6 +17,19 @@ case MYSQL:
 }
 context.sql(" ");
 context.literal(alias);
+switch (context.getDialect()) {
+case HSQLDB:
+case POSTGRES:
+{
+    if (context.declareTables() && aliasProvider instanceof ArrayTable) {
+      ArrayTable<?> table=(ArrayTable<?>)aliasProvider;
+      context.sql("(");
+      table.getFields().toSQLNames(context);
+      context.sql(")");
+    }
+    break;
+  }
+}
 }
  else {
 context.literal(alias);

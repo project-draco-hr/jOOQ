@@ -20,7 +20,10 @@ case H2:
 case HSQLDB:
 case POSTGRES:
 {
-  context.sql("unnest(").sql(array).sql(") array_table(COLUMN_VALUE)");
+  context.sql("unnest(").sql(array).sql(")");
+  if (!StringUtils.isBlank(alias)) {
+    context.sql(" as ").sql(alias);
+  }
   break;
 }
 default :
