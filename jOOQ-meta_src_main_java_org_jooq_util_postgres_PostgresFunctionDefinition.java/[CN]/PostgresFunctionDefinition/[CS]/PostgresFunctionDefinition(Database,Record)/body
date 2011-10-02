@@ -1,6 +1,0 @@
-{
-  super(database,null,record.getValue(Routines.ROUTINE_NAME),null,record.getValueAsString("overload"));
-  DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),record.getValue(Routines.DATA_TYPE),record.getValue(Routines.NUMERIC_PRECISION),record.getValue(Routines.NUMERIC_SCALE),record.getValue(Routines.TYPE_UDT_NAME));
-  returnValue=new DefaultParameterDefinition(this,"return_value",-1,type);
-  specificName=record.getValue(Routines.SPECIFIC_NAME);
-}

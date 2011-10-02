@@ -1,4 +1,0 @@
-{
-  List<FunctionDefinition> result=new ArrayList<FunctionDefinition>();
-  return result;
-}

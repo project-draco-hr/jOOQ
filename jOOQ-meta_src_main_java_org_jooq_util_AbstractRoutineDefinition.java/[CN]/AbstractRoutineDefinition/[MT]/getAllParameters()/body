@@ -1,0 +1,6 @@
+{
+  if (allParameters == null) {
+    init();
+  }
+  return allParameters;
+}

@@ -1,0 +1,9 @@
+{
+  List<RoutineDefinition> result=new ArrayList<RoutineDefinition>();
+  for (  Record record : create().select(AllObjects.OBJECT_NAME,AllObjects.OBJECT_ID).from(ALL_OBJECTS).where(AllObjects.OWNER.equal(getSchemaName()).and(AllObjects.OBJECT_TYPE.in("FUNCTION","PROCEDURE"))).orderBy(AllObjects.OBJECT_NAME,AllObjects.OBJECT_ID).fetch()) {
+    String objectName=record.getValue(AllObjects.OBJECT_NAME);
+    BigDecimal objectId=record.getValue(AllObjects.OBJECT_ID);
+    result.add(new OracleRoutineDefinition(this,null,objectName,"",objectId,null));
+  }
+  return result;
+}

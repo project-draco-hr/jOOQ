@@ -1,4 +1,0 @@
-{
-  super(database,pkg,name,null,null);
-  this.specificName=specificName;
-}

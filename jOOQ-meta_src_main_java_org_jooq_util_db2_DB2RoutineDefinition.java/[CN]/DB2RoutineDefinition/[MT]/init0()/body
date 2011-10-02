@@ -1,0 +1,8 @@
+{
+  if (isProcedure) {
+    initP();
+  }
+ else {
+    initF();
+  }
+}

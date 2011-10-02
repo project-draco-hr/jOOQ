@@ -1,0 +1,11 @@
+{
+  List<RoutineDefinition> result=new ArrayList<RoutineDefinition>();
+  for (  Record record : create().select(Proc.NAME,Proc.COMMENT,Proc.PARAM_LIST,Proc.RETURNS).from(PROC).where(DB.equal(getSchemaName())).fetch()) {
+    String name=record.getValue(Proc.NAME);
+    String comment=record.getValue(Proc.COMMENT);
+    String params=new String(record.getValue(Proc.PARAM_LIST));
+    String returnValue=new String(record.getValue(Proc.RETURNS));
+    result.add(new MySQLRoutineDefinition(this,name,comment,params,returnValue));
+  }
+  return result;
+}

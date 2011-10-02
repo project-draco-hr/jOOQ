@@ -1,3 +1,0 @@
-{
-  return create().select(Proc.NAME,Proc.COMMENT,Proc.PARAM_LIST,Proc.RETURNS).from(PROC).where(DB.equal(getSchemaName())).and(TYPE.equal(type)).fetch();
-}

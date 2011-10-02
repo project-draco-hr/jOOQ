@@ -1,0 +1,9 @@
+{
+  Result<Record> result=create().selectDistinct(Parameters.PARAMETER_MODE,Parameters.PARAMETER_NAME,Parameters.DATA_TYPE,Parameters.NUMERIC_PRECISION,Parameters.NUMERIC_SCALE,Parameters.ORDINAL_POSITION).from(PARAMETERS).join(Routines.ROUTINES).on(Parameters.SPECIFIC_SCHEMA.equal(Routines.SPECIFIC_SCHEMA)).and(Parameters.SPECIFIC_NAME.equal(Routines.SPECIFIC_NAME)).where(Parameters.SPECIFIC_SCHEMA.equal(getSchemaName())).and(Parameters.SPECIFIC_NAME.equal(this.specificName)).orderBy(Parameters.ORDINAL_POSITION.asc()).fetch();
+  for (  Record record : result) {
+    String inOut=record.getValue(Parameters.PARAMETER_MODE);
+    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),record.getValue(Parameters.DATA_TYPE),record.getValue(Parameters.NUMERIC_PRECISION),record.getValue(Parameters.NUMERIC_SCALE));
+    ParameterDefinition parameter=new DefaultParameterDefinition(this,record.getValue(Parameters.PARAMETER_NAME).replaceAll("@",""),record.getValueAsInteger(Parameters.ORDINAL_POSITION),type);
+    addParameter(InOutDefinition.getFromString(inOut),parameter);
+  }
+}

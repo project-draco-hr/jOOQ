@@ -1,0 +1,8 @@
+{
+  List<RoutineDefinition> result=new ArrayList<RoutineDefinition>();
+  for (  Record record : create().select(Sysprocedure.PROC_NAME).from(Sysprocedure.SYSPROCEDURE).orderBy(Sysprocedure.PROC_NAME).fetch()) {
+    String name=record.getValue(Sysprocedure.PROC_NAME);
+    result.add(new SybaseRoutineDefinition(this,null,name));
+  }
+  return result;
+}

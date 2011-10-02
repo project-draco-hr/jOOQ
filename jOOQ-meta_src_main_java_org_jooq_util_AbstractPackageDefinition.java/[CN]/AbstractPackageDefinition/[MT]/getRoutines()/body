@@ -1,0 +1,12 @@
+{
+  if (routines == null) {
+    routines=new ArrayList<RoutineDefinition>();
+    try {
+      routines=getRoutines0();
+    }
+ catch (    SQLException e) {
+      log.error("Error while initialising package",e);
+    }
+  }
+  return routines;
+}

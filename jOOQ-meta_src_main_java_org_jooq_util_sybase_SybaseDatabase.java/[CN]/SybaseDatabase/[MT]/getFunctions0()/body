@@ -1,8 +1,0 @@
-{
-  List<FunctionDefinition> result=new ArrayList<FunctionDefinition>();
-  for (  Record record : create().select(Sysprocedure.PROC_NAME).from(Sysprocedure.SYSPROCEDURE).where(Sysprocedure.PROC_DEFN.like("create function%")).orderBy(Sysprocedure.PROC_NAME).fetch()) {
-    String name=record.getValue(Sysprocedure.PROC_NAME);
-    result.add(new SybaseFunctionDefinition(this,null,name));
-  }
-  return result;
-}

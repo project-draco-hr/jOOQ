@@ -1,5 +1,0 @@
-{
-  DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),paramType,precision,scale);
-  ParameterDefinition column=new DefaultParameterDefinition(this,paramName,position,type);
-  getInParameters().add(column);
-}

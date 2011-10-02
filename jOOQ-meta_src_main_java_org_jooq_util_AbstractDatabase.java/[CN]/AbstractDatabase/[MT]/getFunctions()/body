@@ -2,9 +2,12 @@
   if (functions == null) {
     functions=new ArrayList<FunctionDefinition>();
     try {
-      List<FunctionDefinition> f=getFunctions0();
-      functions=filterExcludeInclude(f);
-      log.info("Functions fetched",fetchedSize(f,functions));
+      List<RoutineDefinition> r=getRoutines();
+      for (      RoutineDefinition routine : r) {
+        if (routine.getReturnValue() != null && routine.getOutParameters().isEmpty()) {
+          functions.add(routine);
+        }
+      }
     }
  catch (    Exception e) {
       log.error("Error while fetching functions",e);

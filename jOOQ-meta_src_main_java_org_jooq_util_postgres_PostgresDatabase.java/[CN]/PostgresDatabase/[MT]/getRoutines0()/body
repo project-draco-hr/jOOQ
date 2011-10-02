@@ -1,0 +1,9 @@
+{
+  List<RoutineDefinition> result=new ArrayList<RoutineDefinition>();
+  Table<RoutinesRecord> r1=ROUTINES.as("r1");
+  Table<RoutinesRecord> r2=ROUTINES.as("r2");
+  for (  Record record : create().select(r1.getField(Routines.ROUTINE_NAME),r1.getField(Routines.SPECIFIC_NAME),r1.getField(Routines.DATA_TYPE),r1.getField(Routines.NUMERIC_PRECISION),r1.getField(Routines.NUMERIC_SCALE),r1.getField(Routines.TYPE_UDT_NAME),getOverloadField(r1,r2)).from(r1).where(r1.getField(Routines.ROUTINE_SCHEMA).equal(getSchemaName())).orderBy(r1.getField(Routines.ROUTINE_NAME).asc()).fetch()) {
+    result.add(new PostgresRoutineDefinition(this,record));
+  }
+  return result;
+}

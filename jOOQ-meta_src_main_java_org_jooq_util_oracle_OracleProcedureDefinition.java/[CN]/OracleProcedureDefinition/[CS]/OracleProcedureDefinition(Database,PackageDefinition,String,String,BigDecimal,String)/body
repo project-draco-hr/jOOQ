@@ -1,4 +1,0 @@
-{
-  super(database,pkg,name,comment,overload);
-  this.objectId=objectId;
-}

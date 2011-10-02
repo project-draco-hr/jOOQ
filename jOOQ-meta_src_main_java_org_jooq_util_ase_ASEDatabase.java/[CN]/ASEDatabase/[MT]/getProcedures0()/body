@@ -1,4 +1,0 @@
-{
-  List<ProcedureDefinition> result=new ArrayList<ProcedureDefinition>();
-  return result;
-}

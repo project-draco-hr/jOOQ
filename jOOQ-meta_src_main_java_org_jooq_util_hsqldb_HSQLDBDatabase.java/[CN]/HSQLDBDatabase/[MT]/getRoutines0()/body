@@ -1,0 +1,13 @@
+{
+  List<RoutineDefinition> result=new ArrayList<RoutineDefinition>();
+  for (  Record record : create().select(Routines.ROUTINE_NAME,Routines.SPECIFIC_NAME,ElementTypes.COLLECTION_TYPE_IDENTIFIER.nvl(Routines.DATA_TYPE).as("datatype"),Routines.NUMERIC_PRECISION,Routines.NUMERIC_SCALE).from(ROUTINES).leftOuterJoin(ELEMENT_TYPES).on(Routines.ROUTINE_SCHEMA.equal(ElementTypes.OBJECT_SCHEMA)).and(Routines.ROUTINE_NAME.equal(ElementTypes.OBJECT_NAME)).and(Routines.DTD_IDENTIFIER.equal(ElementTypes.COLLECTION_TYPE_IDENTIFIER)).where(Routines.ROUTINE_SCHEMA.equal(getSchemaName())).orderBy(Routines.ROUTINE_NAME).fetch()) {
+    String name=record.getValue(Routines.ROUTINE_NAME);
+    String specificName=record.getValue(Routines.SPECIFIC_NAME);
+    String dataType=record.getValueAsString("datatype");
+    Long precision=record.getValue(Routines.NUMERIC_PRECISION);
+    Long scale=record.getValue(Routines.NUMERIC_SCALE);
+    HSQLDBRoutineDefinition function=new HSQLDBRoutineDefinition(this,name,specificName,dataType,precision,scale);
+    result.add(function);
+  }
+  return result;
+}

@@ -1,0 +1,8 @@
+{
+  if (getReturnValue() != null) {
+    return getReturnValue().getType();
+  }
+ else {
+    return new DefaultDataTypeDefinition(getDatabase(),"unknown",0,0);
+  }
+}

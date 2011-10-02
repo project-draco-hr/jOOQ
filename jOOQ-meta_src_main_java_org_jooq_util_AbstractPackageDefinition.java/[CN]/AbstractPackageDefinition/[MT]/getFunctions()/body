@@ -1,11 +1,10 @@
 {
   if (functions == null) {
     functions=new ArrayList<FunctionDefinition>();
-    try {
-      functions=getFunctions0();
-    }
- catch (    SQLException e) {
-      log.error("Error while initialising package",e);
+    for (    RoutineDefinition routine : getRoutines()) {
+      if (routine.getReturnValue() != null && routine.getOutParameters().isEmpty()) {
+        functions.add(routine);
+      }
     }
   }
   return functions;

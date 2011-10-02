@@ -1,11 +1,10 @@
 {
   if (procedures == null) {
     procedures=new ArrayList<ProcedureDefinition>();
-    try {
-      procedures=getProcedures0();
-    }
- catch (    SQLException e) {
-      log.error("Error while initialising package",e);
+    for (    RoutineDefinition routine : getRoutines()) {
+      if (routine.getReturnValue() == null || !routine.getOutParameters().isEmpty()) {
+        procedures.add(routine);
+      }
     }
   }
   return procedures;

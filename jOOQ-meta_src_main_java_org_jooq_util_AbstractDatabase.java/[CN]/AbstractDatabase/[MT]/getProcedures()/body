@@ -2,9 +2,12 @@
   if (procedures == null) {
     procedures=new ArrayList<ProcedureDefinition>();
     try {
-      List<ProcedureDefinition> p=getProcedures0();
-      procedures=filterExcludeInclude(p);
-      log.info("Procedures fetched",fetchedSize(p,procedures));
+      List<RoutineDefinition> r=getRoutines();
+      for (      RoutineDefinition routine : r) {
+        if (routine.getReturnValue() == null || !routine.getOutParameters().isEmpty()) {
+          procedures.add(routine);
+        }
+      }
     }
  catch (    Exception e) {
       log.error("Error while fetching procedures",e);
