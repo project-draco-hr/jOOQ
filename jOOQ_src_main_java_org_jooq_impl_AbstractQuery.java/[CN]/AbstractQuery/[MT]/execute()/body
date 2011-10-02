@@ -1,9 +1,9 @@
 {
   if (isExecutable()) {
     StopWatch watch=new StopWatch();
-    Configuration configuration=ConfigurationRegistry.provideFor(attachable.getConfiguration());
+    Configuration configuration=ConfigurationRegistry.provideFor(getConfiguration());
     if (configuration == null) {
-      configuration=attachable.getConfiguration();
+      configuration=getConfiguration();
     }
     Connection connection=configuration.getConnection();
     if (connection == null) {

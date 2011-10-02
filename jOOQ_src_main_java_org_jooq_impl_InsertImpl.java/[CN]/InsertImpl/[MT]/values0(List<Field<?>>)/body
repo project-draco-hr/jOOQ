@@ -2,9 +2,9 @@
   if (fields.size() != values.size()) {
     throw new IllegalArgumentException("The number of values must match the number of fields");
   }
-  delegate.newRecord();
+  getDelegate().newRecord();
   for (int i=0; i < fields.size(); i++) {
-    delegate.addValue(fields.get(i),values.get(i));
+    getDelegate().addValue(fields.get(i),values.get(i));
   }
   return this;
 }

@@ -1,3 +1,3 @@
 {
-  delegate=new DeleteQueryImpl<R>(configuration,table);
+  super(new DeleteQueryImpl<R>(configuration,table));
 }

@@ -1,3 +1,3 @@
 {
-  return (SelectQuery)query;
+  return (SelectQuery)getDelegate();
 }

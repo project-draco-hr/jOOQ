@@ -1,4 +1,4 @@
 {
-  delegate.addValues(map);
+  getDelegate().addValues(map);
   return this;
 }

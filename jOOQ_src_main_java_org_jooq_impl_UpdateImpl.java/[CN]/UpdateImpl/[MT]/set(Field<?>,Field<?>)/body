@@ -1,4 +1,4 @@
 {
-  delegate.addValue(field,value);
+  getDelegate().addValue(field,value);
   return this;
 }

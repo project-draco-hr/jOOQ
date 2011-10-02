@@ -1,4 +1,4 @@
 {
-  delegate.setReturning(f);
+  getDelegate().setReturning(f);
   return this;
 }

@@ -1,4 +1,4 @@
 {
-  Configuration configuration=attachable.getConfiguration();
+  Configuration configuration=getConfiguration();
   return new MetaDataFieldProvider(configuration,meta).getFields();
 }

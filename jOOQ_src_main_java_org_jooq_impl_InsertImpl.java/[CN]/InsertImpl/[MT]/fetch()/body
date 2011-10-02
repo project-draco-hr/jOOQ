@@ -1,4 +1,4 @@
 {
-  delegate.execute();
-  return delegate.getReturnedRecords();
+  getDelegate().execute();
+  return getDelegate().getReturnedRecords();
 }

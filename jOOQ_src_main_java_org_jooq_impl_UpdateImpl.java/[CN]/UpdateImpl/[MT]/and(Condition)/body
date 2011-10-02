@@ -1,4 +1,4 @@
 {
-  delegate.addConditions(condition);
+  getDelegate().addConditions(condition);
   return this;
 }
