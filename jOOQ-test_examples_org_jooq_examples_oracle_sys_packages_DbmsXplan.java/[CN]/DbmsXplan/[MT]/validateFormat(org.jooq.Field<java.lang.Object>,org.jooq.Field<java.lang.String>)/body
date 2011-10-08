@@ -1,6 +1,0 @@
-{
-  org.jooq.examples.oracle.sys.packages.dbms_xplan.ValidateFormat f=new org.jooq.examples.oracle.sys.packages.dbms_xplan.ValidateFormat();
-  f.setHasplanstats(hasplanstats);
-  f.setFormat(format);
-  return f.asField();
-}

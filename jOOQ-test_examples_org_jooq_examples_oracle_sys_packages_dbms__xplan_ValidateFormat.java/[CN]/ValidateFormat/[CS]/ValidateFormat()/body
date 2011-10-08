@@ -1,5 +1,7 @@
 {
-  super(org.jooq.SQLDialect.ORACLE,"VALIDATE_FORMAT",org.jooq.examples.oracle.sys.Sys.SYS,org.jooq.examples.oracle.sys.packages.DbmsXplan.DBMS_XPLAN,org.jooq.util.oracle.OracleDataType.getDefaultDataType("PL/SQL BOOLEAN"));
+  super(org.jooq.SQLDialect.ORACLE,"VALIDATE_FORMAT",org.jooq.examples.oracle.sys.Sys.SYS,org.jooq.examples.oracle.sys.packages.DbmsXplan.DBMS_XPLAN);
+  setReturnParameter(RETURN_VALUE);
   addInParameter(HASPLANSTATS);
   addInParameter(FORMAT);
+  addOutParameter(FORMAT_FLAGS);
 }

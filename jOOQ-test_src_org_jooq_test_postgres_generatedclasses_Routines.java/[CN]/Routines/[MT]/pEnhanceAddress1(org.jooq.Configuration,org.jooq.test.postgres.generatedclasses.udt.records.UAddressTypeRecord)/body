@@ -1,6 +1,6 @@
 {
-  org.jooq.test.postgres.generatedclasses.routines.PEnhanceAddress1 f=new org.jooq.test.postgres.generatedclasses.routines.PEnhanceAddress1();
-  f.setAddress(address);
-  f.execute(configuration);
-  return f.getReturnValue();
+  org.jooq.test.postgres.generatedclasses.routines.PEnhanceAddress1 p=new org.jooq.test.postgres.generatedclasses.routines.PEnhanceAddress1();
+  p.setAddress(address);
+  p.execute(configuration);
+  return p.getNo();
 }

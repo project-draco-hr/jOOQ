@@ -1,5 +1,0 @@
-{
-  org.jooq.test.hsqldb.generatedclasses.routines.FArrays1 f=new org.jooq.test.hsqldb.generatedclasses.routines.FArrays1();
-  f.setInArray(inArray);
-  return f.asField();
-}

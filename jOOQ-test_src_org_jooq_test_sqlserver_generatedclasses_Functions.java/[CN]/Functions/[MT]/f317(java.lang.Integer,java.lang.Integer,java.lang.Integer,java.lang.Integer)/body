@@ -1,8 +1,0 @@
-{
-  org.jooq.test.sqlserver.generatedclasses.routines.F317 f=new org.jooq.test.sqlserver.generatedclasses.routines.F317();
-  f.setP1(p1);
-  f.setP2(p2);
-  f.setP3(p3);
-  f.setP4(p4);
-  return f.asField();
-}

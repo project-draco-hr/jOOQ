@@ -1,6 +1,0 @@
-{
-  org.jooq.test.db2.generatedclasses.routines.FAuthorExists f=new org.jooq.test.db2.generatedclasses.routines.FAuthorExists();
-  f.setAuthorName(authorName);
-  f.execute(configuration);
-  return f.getReturnValue();
-}

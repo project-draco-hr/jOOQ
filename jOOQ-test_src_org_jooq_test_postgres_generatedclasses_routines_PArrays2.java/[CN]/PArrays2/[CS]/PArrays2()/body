@@ -1,5 +1,6 @@
 {
-  super(org.jooq.SQLDialect.POSTGRES,"p_arrays",org.jooq.test.postgres.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.BIGINT.getArrayDataType());
+  super(org.jooq.SQLDialect.POSTGRES,"p_arrays",org.jooq.test.postgres.generatedclasses.Public.PUBLIC);
   addInParameter(IN_ARRAY);
+  addOutParameter(OUT_ARRAY);
   setOverloaded(true);
 }

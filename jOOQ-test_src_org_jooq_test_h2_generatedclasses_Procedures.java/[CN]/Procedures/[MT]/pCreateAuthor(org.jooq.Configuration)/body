@@ -1,4 +1,0 @@
-{
-  org.jooq.test.h2.generatedclasses.routines.PCreateAuthor p=new org.jooq.test.h2.generatedclasses.routines.PCreateAuthor();
-  p.execute(configuration);
-}

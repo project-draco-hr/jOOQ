@@ -1,5 +1,0 @@
-{
-  org.jooq.test.h2.generatedclasses.routines.FGetOneCursor f=new org.jooq.test.h2.generatedclasses.routines.FGetOneCursor();
-  f.setP2(p2);
-  return f.asField();
-}
