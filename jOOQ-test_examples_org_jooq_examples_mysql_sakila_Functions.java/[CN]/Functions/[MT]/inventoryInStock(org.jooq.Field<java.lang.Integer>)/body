@@ -1,5 +1,5 @@
 {
-  org.jooq.examples.mysql.sakila.functions.InventoryInStock f=new org.jooq.examples.mysql.sakila.functions.InventoryInStock();
+  org.jooq.examples.mysql.sakila.routines.InventoryInStock f=new org.jooq.examples.mysql.sakila.routines.InventoryInStock();
   f.setPInventoryId(pInventoryId);
   return f.asField();
 }

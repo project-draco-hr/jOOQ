@@ -1,5 +1,5 @@
 {
-  org.jooq.test.h2.generatedclasses.functions.FArrays3 f=new org.jooq.test.h2.generatedclasses.functions.FArrays3();
+  org.jooq.test.h2.generatedclasses.routines.FArrays3 f=new org.jooq.test.h2.generatedclasses.routines.FArrays3();
   f.setP1(p1);
   return f.asField();
 }

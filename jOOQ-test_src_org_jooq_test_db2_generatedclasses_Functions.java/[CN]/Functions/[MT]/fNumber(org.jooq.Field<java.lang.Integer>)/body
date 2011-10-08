@@ -1,5 +1,5 @@
 {
-  org.jooq.test.db2.generatedclasses.functions.FNumber f=new org.jooq.test.db2.generatedclasses.functions.FNumber();
+  org.jooq.test.db2.generatedclasses.routines.FNumber f=new org.jooq.test.db2.generatedclasses.routines.FNumber();
   f.setN(n);
   return f.asField();
 }

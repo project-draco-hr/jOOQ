@@ -1,0 +1,4 @@
+{
+  super(org.jooq.SQLDialect.POSTGRES,"p_enhance_address1",org.jooq.test.postgres.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.VARCHAR);
+  addInParameter(ADDRESS);
+}

@@ -2,7 +2,7 @@
   if (procedures == null) {
     procedures=new ArrayList<RoutineDefinition>();
     for (    RoutineDefinition routine : getRoutines()) {
-      if (routine.getReturnValue() == null || !routine.getOutParameters().isEmpty()) {
+      if (routine.isProcedure()) {
         procedures.add(routine);
       }
     }

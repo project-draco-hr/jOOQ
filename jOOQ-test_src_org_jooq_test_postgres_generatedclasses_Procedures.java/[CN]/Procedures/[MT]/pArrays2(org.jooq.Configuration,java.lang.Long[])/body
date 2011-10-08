@@ -1,6 +1,0 @@
-{
-  org.jooq.test.postgres.generatedclasses.procedures.PArrays2 p=new org.jooq.test.postgres.generatedclasses.procedures.PArrays2();
-  p.setInArray(inArray);
-  p.execute(configuration);
-  return p.getOutArray();
-}

@@ -1,6 +1,0 @@
-{
-  org.jooq.test.postgres.generatedclasses.functions.FArrays1 f=new org.jooq.test.postgres.generatedclasses.functions.FArrays1();
-  f.setInArray(inArray);
-  f.execute(configuration);
-  return f.getReturnValue();
-}

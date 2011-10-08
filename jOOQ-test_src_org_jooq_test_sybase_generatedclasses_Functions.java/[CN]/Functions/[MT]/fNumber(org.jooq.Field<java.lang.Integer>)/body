@@ -1,5 +1,5 @@
 {
-  org.jooq.test.sybase.generatedclasses.functions.FNumber f=new org.jooq.test.sybase.generatedclasses.functions.FNumber();
+  org.jooq.test.sybase.generatedclasses.routines.FNumber f=new org.jooq.test.sybase.generatedclasses.routines.FNumber();
   f.setN(n);
   return f.asField();
 }

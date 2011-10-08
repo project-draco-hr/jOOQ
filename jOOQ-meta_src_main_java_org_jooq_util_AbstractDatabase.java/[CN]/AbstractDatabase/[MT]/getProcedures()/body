@@ -4,7 +4,7 @@
     try {
       List<RoutineDefinition> r=getRoutines();
       for (      RoutineDefinition routine : r) {
-        if (routine.getReturnValue() == null || !routine.getOutParameters().isEmpty()) {
+        if (routine.isProcedure()) {
           procedures.add(routine);
         }
       }

@@ -1,5 +1,0 @@
-{
-  org.jooq.test.postgres.generatedclasses.functions.FNumber f=new org.jooq.test.postgres.generatedclasses.functions.FNumber();
-  f.setN(n);
-  return f.asField();
-}

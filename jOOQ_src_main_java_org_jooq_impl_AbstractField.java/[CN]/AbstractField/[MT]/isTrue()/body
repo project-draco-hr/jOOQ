@@ -1,0 +1,3 @@
+{
+  return cast(String.class).in(TypeUtils.TRUE_VALUES);
+}

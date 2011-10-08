@@ -1,6 +1,0 @@
-{
-  org.jooq.test.postgres.generatedclasses.functions.FGetOneCursor f=new org.jooq.test.postgres.generatedclasses.functions.FGetOneCursor();
-  f.setBookIds(bookIds);
-  f.execute(configuration);
-  return f.getReturnValue();
-}

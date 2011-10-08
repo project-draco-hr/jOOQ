@@ -1,0 +1,3 @@
+org.jooq.Field<java.lang.String> sqlId
+org.jooq.Field<java.math.BigInteger> cursorChildNo
+org.jooq.Field<java.lang.String> format

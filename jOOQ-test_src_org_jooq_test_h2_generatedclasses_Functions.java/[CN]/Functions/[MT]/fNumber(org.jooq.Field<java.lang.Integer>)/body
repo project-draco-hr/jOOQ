@@ -1,5 +1,5 @@
 {
-  org.jooq.test.h2.generatedclasses.functions.FNumber f=new org.jooq.test.h2.generatedclasses.functions.FNumber();
+  org.jooq.test.h2.generatedclasses.routines.FNumber f=new org.jooq.test.h2.generatedclasses.routines.FNumber();
   f.setP1(p1);
   return f.asField();
 }

@@ -1,0 +1,4 @@
+org.jooq.Field<java.lang.String> tableName
+org.jooq.Field<java.lang.String> statementId
+org.jooq.Field<java.lang.String> format
+org.jooq.Field<java.lang.String> filterPreds

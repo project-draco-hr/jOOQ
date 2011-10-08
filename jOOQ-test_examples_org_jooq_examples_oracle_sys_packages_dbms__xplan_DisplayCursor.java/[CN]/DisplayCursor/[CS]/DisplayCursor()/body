@@ -1,6 +1,5 @@
 {
-  super(org.jooq.SQLDialect.ORACLE,"DISPLAY_CURSOR",org.jooq.examples.oracle.sys.Sys.SYS,org.jooq.examples.oracle.sys.packages.DbmsXplan.DBMS_XPLAN);
-  setReturnParameter(RETURN_VALUE);
+  super(org.jooq.SQLDialect.ORACLE,"DISPLAY_CURSOR",org.jooq.examples.oracle.sys.Sys.SYS,org.jooq.examples.oracle.sys.packages.DbmsXplan.DBMS_XPLAN,org.jooq.util.oracle.OracleDataType.getDefaultDataType("TABLE"));
   addInParameter(SQL_ID);
   addInParameter(CURSOR_CHILD_NO);
   addInParameter(FORMAT);

@@ -1,5 +1,0 @@
-{
-  org.jooq.test.postgres.generatedclasses.functions.FOne f=new org.jooq.test.postgres.generatedclasses.functions.FOne();
-  f.execute(configuration);
-  return f.getReturnValue();
-}

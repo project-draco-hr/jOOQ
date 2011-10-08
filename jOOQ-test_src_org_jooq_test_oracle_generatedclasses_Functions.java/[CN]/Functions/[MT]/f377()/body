@@ -1,4 +1,0 @@
-{
-  org.jooq.test.oracle.generatedclasses.functions.F377 f=new org.jooq.test.oracle.generatedclasses.functions.F377();
-  return f.asField();
-}

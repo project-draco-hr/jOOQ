@@ -1,0 +1,5 @@
+{
+  org.jooq.test.postgres.generatedclasses.routines.PEnhanceAddress1 f=new org.jooq.test.postgres.generatedclasses.routines.PEnhanceAddress1();
+  f.setAddress(address);
+  return f.asField();
+}

@@ -1,8 +1,8 @@
 {
   if (array == null) {
-    return Functions.fGetOneCursor((UNumberArrayRecord)null);
+    return Routines.fGetOneCursor((UNumberArrayRecord)null);
   }
  else {
-    return Functions.fGetOneCursor(new UNumberArrayRecord(create(),array));
+    return Routines.fGetOneCursor(new UNumberArrayRecord(create(),array));
   }
 }

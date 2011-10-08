@@ -1,21 +1,21 @@
 {
-  if (cFunctions() == null) {
+  if (cRoutines() == null) {
     log.info("SKIPPING","functions test");
     return;
   }
   reset=false;
-  assertEquals("0","" + invoke(cFunctions(),"fAuthorExists",create(),null));
-  assertEquals("1","" + invoke(cFunctions(),"fAuthorExists",create(),"Paulo"));
-  assertEquals("0","" + invoke(cFunctions(),"fAuthorExists",create(),"Shakespeare"));
-  assertEquals("1","" + invoke(cFunctions(),"fOne",create()));
-  assertEquals("1","" + invoke(cFunctions(),"fNumber",create(),1));
-  assertEquals(null,invoke(cFunctions(),"fNumber",create(),null));
-  assertEquals("1204","" + invoke(cFunctions(),"f317",create(),1,2,3,4));
-  assertEquals("1204","" + invoke(cFunctions(),"f317",create(),1,2,null,4));
-  assertEquals("4301","" + invoke(cFunctions(),"f317",create(),4,3,2,1));
-  assertEquals("4301","" + invoke(cFunctions(),"f317",create(),4,3,null,1));
-  assertEquals("1101","" + invoke(cFunctions(),"f317",create(),1,1,1,1));
-  assertEquals("1101","" + invoke(cFunctions(),"f317",create(),1,1,null,1));
+  assertEquals("0","" + invoke(cRoutines(),"fAuthorExists",create(),null));
+  assertEquals("1","" + invoke(cRoutines(),"fAuthorExists",create(),"Paulo"));
+  assertEquals("0","" + invoke(cRoutines(),"fAuthorExists",create(),"Shakespeare"));
+  assertEquals("1","" + invoke(cRoutines(),"fOne",create()));
+  assertEquals("1","" + invoke(cRoutines(),"fNumber",create(),1));
+  assertEquals(null,invoke(cRoutines(),"fNumber",create(),null));
+  assertEquals("1204","" + invoke(cRoutines(),"f317",create(),1,2,3,4));
+  assertEquals("1204","" + invoke(cRoutines(),"f317",create(),1,2,null,4));
+  assertEquals("4301","" + invoke(cRoutines(),"f317",create(),4,3,2,1));
+  assertEquals("4301","" + invoke(cRoutines(),"f317",create(),4,3,null,1));
+  assertEquals("1101","" + invoke(cRoutines(),"f317",create(),1,1,1,1));
+  assertEquals("1101","" + invoke(cRoutines(),"f317",create(),1,1,null,1));
   Field<Integer> f1a=FAuthorExistsField("Paulo").cast(Integer.class);
   Field<Integer> f2a=FAuthorExistsField("Shakespeare").cast(Integer.class);
   Field<Integer> f3a=FOneField().cast(Integer.class);

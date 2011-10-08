@@ -1,0 +1,3 @@
+{
+  return getReturnValue() == null || !getOutParameters().isEmpty();
+}

@@ -1,0 +1,5 @@
+org.jooq.Field<java.lang.String> sqlsetName
+org.jooq.Field<java.lang.String> sqlId
+org.jooq.Field<java.math.BigInteger> planHashValue
+org.jooq.Field<java.lang.String> format
+org.jooq.Field<java.lang.String> sqlsetOwner

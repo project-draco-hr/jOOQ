@@ -1,6 +1,0 @@
-{
-  org.jooq.test.postgres.generatedclasses.procedures.PCreateAuthorByName p=new org.jooq.test.postgres.generatedclasses.procedures.PCreateAuthorByName();
-  p.setFirstName(firstName);
-  p.setLastName(lastName);
-  p.execute(configuration);
-}

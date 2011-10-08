@@ -1,9 +1,10 @@
 {
-  org.jooq.examples.oracle.sys.packages.dbms_xplan.DisplaySqlset p=new org.jooq.examples.oracle.sys.packages.dbms_xplan.DisplaySqlset();
-  p.setSqlsetName(sqlsetName);
-  p.setSqlId(sqlId);
-  p.setPlanHashValue(planHashValue);
-  p.setFormat(format);
-  p.setSqlsetOwner(sqlsetOwner);
-  p.execute(configuration);
+  org.jooq.examples.oracle.sys.packages.dbms_xplan.DisplaySqlset f=new org.jooq.examples.oracle.sys.packages.dbms_xplan.DisplaySqlset();
+  f.setSqlsetName(sqlsetName);
+  f.setSqlId(sqlId);
+  f.setPlanHashValue(planHashValue);
+  f.setFormat(format);
+  f.setSqlsetOwner(sqlsetOwner);
+  f.execute(configuration);
+  return f.getReturnValue();
 }

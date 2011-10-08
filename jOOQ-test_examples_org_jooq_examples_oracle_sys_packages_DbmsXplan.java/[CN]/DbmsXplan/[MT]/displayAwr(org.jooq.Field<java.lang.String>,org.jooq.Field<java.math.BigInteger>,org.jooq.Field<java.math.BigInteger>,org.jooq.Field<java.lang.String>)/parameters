@@ -1,0 +1,4 @@
+org.jooq.Field<java.lang.String> sqlId
+org.jooq.Field<java.math.BigInteger> planHashValue
+org.jooq.Field<java.math.BigInteger> dbId
+org.jooq.Field<java.lang.String> format

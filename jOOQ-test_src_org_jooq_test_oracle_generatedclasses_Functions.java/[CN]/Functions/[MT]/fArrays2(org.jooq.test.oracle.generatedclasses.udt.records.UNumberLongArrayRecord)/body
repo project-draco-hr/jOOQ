@@ -1,5 +1,5 @@
 {
-  org.jooq.test.oracle.generatedclasses.functions.FArrays2 f=new org.jooq.test.oracle.generatedclasses.functions.FArrays2();
+  org.jooq.test.oracle.generatedclasses.routines.FArrays2 f=new org.jooq.test.oracle.generatedclasses.routines.FArrays2();
   f.setInArray(inArray);
   return f.asField();
 }

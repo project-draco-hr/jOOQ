@@ -2,7 +2,7 @@
   if (functions == null) {
     functions=new ArrayList<RoutineDefinition>();
     for (    RoutineDefinition routine : getRoutines()) {
-      if (routine.getReturnValue() != null && routine.getOutParameters().isEmpty()) {
+      if (!routine.isProcedure()) {
         functions.add(routine);
       }
     }

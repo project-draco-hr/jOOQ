@@ -1,0 +1,8 @@
+{
+  org.jooq.examples.oracle.sys.packages.dbms_xplan.DisplayAwr f=new org.jooq.examples.oracle.sys.packages.dbms_xplan.DisplayAwr();
+  f.setSqlId(sqlId);
+  f.setPlanHashValue(planHashValue);
+  f.setDbId(dbId);
+  f.setFormat(format);
+  return f.asField();
+}

@@ -1,5 +1,5 @@
 {
-  org.jooq.test.oracle.generatedclasses.functions.F317 f=new org.jooq.test.oracle.generatedclasses.functions.F317();
+  org.jooq.test.oracle.generatedclasses.routines.F317 f=new org.jooq.test.oracle.generatedclasses.routines.F317();
   f.setP1(p1);
   f.setP2(p2);
   f.setP3(p3);
