@@ -1,6 +1,6 @@
 {
   if (functions == null) {
-    functions=new ArrayList<FunctionDefinition>();
+    functions=new ArrayList<RoutineDefinition>();
     try {
       List<RoutineDefinition> r=getRoutines();
       for (      RoutineDefinition routine : r) {

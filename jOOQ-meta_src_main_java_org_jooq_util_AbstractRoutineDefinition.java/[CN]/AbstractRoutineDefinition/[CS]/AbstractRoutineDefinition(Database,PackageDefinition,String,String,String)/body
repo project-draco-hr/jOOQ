@@ -1,3 +1,4 @@
 {
-  super(database,pkg,name,comment,overload);
+  super(database,name,comment,overload);
+  this.pkg=pkg;
 }

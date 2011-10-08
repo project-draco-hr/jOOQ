@@ -1,4 +1,0 @@
-{
-  super(database,name,comment,overload);
-  this.pkg=pkg;
-}

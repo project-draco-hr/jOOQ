@@ -1,6 +1,6 @@
 {
   if (procedures == null) {
-    procedures=new ArrayList<ProcedureDefinition>();
+    procedures=new ArrayList<RoutineDefinition>();
     try {
       List<RoutineDefinition> r=getRoutines();
       for (      RoutineDefinition routine : r) {

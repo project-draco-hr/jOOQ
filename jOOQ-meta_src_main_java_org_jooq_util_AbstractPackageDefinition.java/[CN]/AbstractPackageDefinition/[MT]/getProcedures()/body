@@ -1,6 +1,6 @@
 {
   if (procedures == null) {
-    procedures=new ArrayList<ProcedureDefinition>();
+    procedures=new ArrayList<RoutineDefinition>();
     for (    RoutineDefinition routine : getRoutines()) {
       if (routine.getReturnValue() == null || !routine.getOutParameters().isEmpty()) {
         procedures.add(routine);

@@ -741,7 +741,7 @@
     printHeader(outP,targetPackage);
     printClassJavadoc(outP,"Convenience access to all stored procedures in " + schema.getName());
     outP.println("public final class Procedures {");
-    for (    ProcedureDefinition procedure : database.getProcedures()) {
+    for (    RoutineDefinition procedure : database.getProcedures()) {
       try {
         printProcedure(database,schema,procedure);
         printConvenienceMethodProcedure(outP,procedure);
@@ -762,7 +762,7 @@
     printHeader(outFn,targetPackage);
     printClassJavadoc(outFn,"Convenience access to all stored functions in " + schema.getName());
     outFn.println("public final class Functions {");
-    for (    FunctionDefinition function : database.getFunctions()) {
+    for (    RoutineDefinition function : database.getFunctions()) {
       try {
         printFunction(database,schema,function);
         printConvenienceMethodFunction(outFn,function);
@@ -785,7 +785,7 @@
       try {
         File targetPackagePackageDir=new File(targetPackagesPackageDir,strategy.getJavaClassName(pkg).toLowerCase());
         log.info("Generating package",targetPackagePackageDir.getCanonicalPath());
-        for (        ProcedureDefinition procedure : pkg.getProcedures()) {
+        for (        RoutineDefinition procedure : pkg.getProcedures()) {
           try {
             printProcedure(database,schema,procedure);
           }
@@ -793,7 +793,7 @@
             log.error("Error while generating procedure " + procedure,e);
           }
         }
-        for (        FunctionDefinition function : pkg.getFunctions()) {
+        for (        RoutineDefinition function : pkg.getFunctions()) {
           try {
             printFunction(database,schema,function);
           }
@@ -821,7 +821,7 @@
         outPkg.print(" = new ");
         outPkg.print(strategy.getFullJavaClassName(pkg));
         outPkg.println("();");
-        for (        ProcedureDefinition procedure : pkg.getProcedures()) {
+        for (        RoutineDefinition procedure : pkg.getProcedures()) {
           try {
             printConvenienceMethodProcedure(outPkg,procedure);
           }
@@ -829,7 +829,7 @@
             log.error("Error while generating procedure " + procedure,e);
           }
         }
-        for (        FunctionDefinition function : pkg.getFunctions()) {
+        for (        RoutineDefinition function : pkg.getFunctions()) {
           try {
             printConvenienceMethodFunction(outPkg,function);
             printConvenienceMethodFunctionAsField(outPkg,function,false);

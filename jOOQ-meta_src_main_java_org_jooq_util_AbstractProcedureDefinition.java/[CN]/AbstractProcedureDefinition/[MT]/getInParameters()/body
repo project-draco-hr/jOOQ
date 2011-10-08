@@ -1,6 +1,0 @@
-{
-  if (inParameters == null) {
-    init();
-  }
-  return inParameters;
-}

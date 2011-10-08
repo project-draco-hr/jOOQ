@@ -1,6 +1,6 @@
 {
   if (functions == null) {
-    functions=new ArrayList<FunctionDefinition>();
+    functions=new ArrayList<RoutineDefinition>();
     for (    RoutineDefinition routine : getRoutines()) {
       if (routine.getReturnValue() != null && routine.getOutParameters().isEmpty()) {
         functions.add(routine);
