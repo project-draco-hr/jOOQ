@@ -1,0 +1,18 @@
+{
+  if (dialect != null) {
+    if (typesByTypeName[dialect.ordinal()].get(FieldTypeHelper.normalise(typeName)) == null) {
+      typesByTypeName[dialect.ordinal()].put(FieldTypeHelper.normalise(typeName),this);
+    }
+    if (typesByType[dialect.ordinal()].get(type) == null) {
+      typesByType[dialect.ordinal()].put(type,this);
+    }
+    if (typesBySQLDataType[dialect.ordinal()].get(sqlDataType) == null) {
+      typesBySQLDataType[dialect.ordinal()].put(sqlDataType,this);
+    }
+  }
+ else {
+    if (sqlDataTypesByType.get(type) == null) {
+      sqlDataTypesByType.put(type,this);
+    }
+  }
+}

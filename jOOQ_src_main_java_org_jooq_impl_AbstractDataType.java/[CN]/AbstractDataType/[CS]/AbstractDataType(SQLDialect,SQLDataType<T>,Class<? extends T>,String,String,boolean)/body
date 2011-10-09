@@ -1,25 +1,10 @@
 {
   this.dialect=dialect;
-  this.sqlDataType=sqldatatype;
+  this.sqlDataType=(SQLDataType<T>)((this instanceof SQLDataType) ? this : sqlDataType);
   this.type=type;
   this.typeName=typeName;
   this.castTypeName=castTypeName;
   this.hasPrecisionAndScale=hasPrecisionAndScale;
   this.arrayType=(Class<? extends T[]>)Array.newInstance(type,0).getClass();
-  if (dialect != null) {
-    if (typesByTypeName[dialect.ordinal()].get(FieldTypeHelper.normalise(typeName)) == null) {
-      typesByTypeName[dialect.ordinal()].put(FieldTypeHelper.normalise(typeName),this);
-    }
-    if (typesByType[dialect.ordinal()].get(type) == null) {
-      typesByType[dialect.ordinal()].put(type,this);
-    }
-    if (typesBySQLDataType[dialect.ordinal()].get(sqldatatype) == null) {
-      typesBySQLDataType[dialect.ordinal()].put(sqldatatype,this);
-    }
-  }
- else {
-    if (sqlDataTypesByType.get(type) == null) {
-      sqlDataTypesByType.put(type,this);
-    }
-  }
+  init();
 }
