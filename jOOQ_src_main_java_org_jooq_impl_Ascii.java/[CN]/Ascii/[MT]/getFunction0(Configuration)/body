@@ -1,0 +1,9 @@
+{
+switch (configuration.getDialect()) {
+case DERBY:
+case INGRES:
+case SQLITE:
+default :
+    return new Function<Integer>("ascii",SQLDataType.INTEGER,string);
+}
+}
