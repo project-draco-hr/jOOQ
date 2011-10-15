@@ -1,13 +1,15 @@
 {
 switch (context.getDialect()) {
-case HSQLDB:
-    context.sql("INFORMATION_SCHEMA.SYSTEM_USERS");
-  break;
 case ASE:
-case INGRES:
 case POSTGRES:
 case SQLITE:
 case SQLSERVER:
+    break;
+case HSQLDB:
+  context.sql("INFORMATION_SCHEMA.SYSTEM_USERS");
+break;
+case INGRES:
+context.sql("(select 1 as dual) as dual");
 break;
 case DB2:
 context.sql("SYSIBM.DUAL");
