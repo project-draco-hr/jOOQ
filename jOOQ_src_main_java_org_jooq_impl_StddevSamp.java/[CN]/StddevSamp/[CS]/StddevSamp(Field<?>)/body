@@ -1,3 +1,0 @@
-{
-  super("stddev_samp",SQLDataType.NUMERIC,arg);
-}

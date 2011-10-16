@@ -1,0 +1,8 @@
+{
+  if (term != null) {
+    return term.translate(dialect);
+  }
+ else {
+    return getName();
+  }
+}

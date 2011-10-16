@@ -1,5 +1,5 @@
 {
-  context.sql(getName());
+  context.sql(getFNName(context.getDialect()));
   context.sql("(");
   if (!arguments.isEmpty()) {
     context.sql(arguments);

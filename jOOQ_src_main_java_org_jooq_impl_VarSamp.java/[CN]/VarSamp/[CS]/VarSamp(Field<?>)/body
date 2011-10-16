@@ -1,3 +1,0 @@
-{
-  super("var_samp",SQLDataType.NUMERIC,arg);
-}

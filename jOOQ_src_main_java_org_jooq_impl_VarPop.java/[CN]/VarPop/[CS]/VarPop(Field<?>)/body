@@ -1,3 +1,0 @@
-{
-  super("var_pop",SQLDataType.NUMERIC,arg);
-}

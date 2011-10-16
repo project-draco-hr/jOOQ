@@ -1,3 +1,3 @@
 {
-  return new VarSamp(this);
+  return new Function<BigDecimal>(Term.VAR_SAMP,SQLDataType.NUMERIC,this);
 }

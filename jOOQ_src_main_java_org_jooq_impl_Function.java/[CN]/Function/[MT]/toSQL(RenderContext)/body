@@ -1,6 +1,6 @@
 {
   context.sql(getFNPrefix());
-  context.sql(getName());
+  context.sql(getFNName(context.getDialect()));
   context.sql(getArgumentListDelimiter(context,"("));
   String separator="";
   for (  NamedQueryPart field : arguments) {

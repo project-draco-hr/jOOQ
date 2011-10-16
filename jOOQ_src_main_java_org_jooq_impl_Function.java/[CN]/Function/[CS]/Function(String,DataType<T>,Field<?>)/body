@@ -1,4 +1,5 @@
 {
   super(name,type);
   this.arguments=Arrays.asList(arguments);
+  this.term=null;
 }

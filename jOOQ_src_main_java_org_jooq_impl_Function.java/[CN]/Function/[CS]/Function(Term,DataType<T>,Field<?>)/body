@@ -1,0 +1,5 @@
+{
+  super(term.name().toLowerCase(),type);
+  this.arguments=Arrays.asList(arguments);
+  this.term=term;
+}
