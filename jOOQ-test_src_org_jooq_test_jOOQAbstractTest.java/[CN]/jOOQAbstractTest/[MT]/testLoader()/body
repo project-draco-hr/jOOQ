@@ -9,6 +9,7 @@
   assertEquals(0,loader.ignored());
   assertEquals(2,(int)create().select(count).from(TAuthor()).fetchOne(count));
   loader=create().loadInto(TAuthor()).loadCSV("3\n" + "4").fields(TAuthor_ID()).ignoreRows(0).execute();
+  resetLoaderConnection();
   assertEquals(1,loader.processed());
   assertEquals(1,loader.errors().size());
   assertNotNull(loader.errors().get(0));
@@ -16,6 +17,7 @@
   assertEquals(1,loader.ignored());
   assertEquals(2,(int)create().select(count).from(TAuthor()).fetchOne(count));
   loader=create().loadInto(TAuthor()).onErrorIgnore().loadCSV("3\n" + "4").fields(TAuthor_ID()).ignoreRows(0).execute();
+  resetLoaderConnection();
   assertEquals(2,loader.processed());
   assertEquals(2,loader.errors().size());
   assertNotNull(loader.errors().get(0));
@@ -24,6 +26,7 @@
   assertEquals(2,loader.ignored());
   assertEquals(2,(int)create().select(count).from(TAuthor()).fetchOne(count));
   loader=create().loadInto(TAuthor()).onDuplicateKeyError().onErrorAbort().loadCSV("1;'Kafka'\n" + "2;Frisch").fields(TAuthor_ID(),TAuthor_LAST_NAME()).quote('\'').separator(';').ignoreRows(0).execute();
+  resetLoaderConnection();
   assertEquals(1,loader.processed());
   assertEquals(1,loader.errors().size());
   assertNotNull(loader.errors().get(0));
@@ -83,6 +86,7 @@ default :
   assertEquals(1,create().delete(TAuthor()).where(TAuthor_ID().in(7)).execute());
 }
 }
+resetLoaderConnection();
 loader=create().loadInto(TAuthor()).commitAll().onDuplicateKeyError().onErrorAbort().loadCSV("\"ID\",\"First Name\",\"Last Name\"\r" + "8,Hermann,Hesse\n" + "1,\"Max\",Frisch\n"+ "2,Friedrich,D??rrenmatt").fields(TAuthor_ID(),null,TAuthor_LAST_NAME()).execute();
 assertEquals(2,loader.processed());
 assertEquals(0,loader.stored());
@@ -103,5 +107,4 @@ assertEquals(8,(int)result.getValue(2,TAuthor_ID()));
 assertNull(result.getValue(2,TAuthor_FIRST_NAME()));
 assertEquals("Hesse",result.getValue(2,TAuthor_LAST_NAME()));
 assertEquals("Coelho",result.getValue(1,TAuthor_LAST_NAME()));
-assertEquals("Orwell",result.getValue(0,TAuthor_LAST_NAME()));
 }

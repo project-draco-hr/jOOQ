@@ -1,0 +1,7 @@
+{
+  connection.rollback();
+  connection.close();
+  connection=null;
+  connection=getConnection();
+  connection.setAutoCommit(false);
+}
