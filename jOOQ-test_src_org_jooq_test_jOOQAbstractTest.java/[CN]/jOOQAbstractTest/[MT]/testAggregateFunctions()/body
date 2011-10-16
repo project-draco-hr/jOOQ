@@ -10,7 +10,7 @@ case SQLITE:
 case SQLSERVER:
 case POSTGRES:
 case DB2:
-    median=TBook_ID().avg().as("median");
+    median=TBook_ID().avg();
   break;
 }
 Result<Record> result=create().select(TBook_AUTHOR_ID(),create().count(),TBook_ID().count(),TBook_AUTHOR_ID().countDistinct(),TBook_ID().sum(),TBook_ID().avg(),TBook_ID().min(),TBook_ID().max(),median).from(TBook()).groupBy(TBook_AUTHOR_ID()).orderBy(TBook_AUTHOR_ID()).fetch();
@@ -50,4 +50,9 @@ assertEquals(0.5,result.getValueAsDouble(1,4));
 }
 }
 }
+result=create().select(TBook_AUTHOR_ID(),TBook_ID().max(),TBook_ID().max()).from(TBook()).groupBy(TBook_AUTHOR_ID()).orderBy(TBook_AUTHOR_ID()).fetch();
+assertEquals(2,(int)result.getValueAsInteger(0,1));
+assertEquals(2,(int)result.getValueAsInteger(0,2));
+assertEquals(4,(int)result.getValueAsInteger(1,1));
+assertEquals(4,(int)result.getValueAsInteger(1,2));
 }
