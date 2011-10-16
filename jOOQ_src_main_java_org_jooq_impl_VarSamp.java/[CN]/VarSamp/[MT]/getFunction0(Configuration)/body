@@ -1,0 +1,10 @@
+{
+switch (configuration.getDialect()) {
+case DB2:
+    return new Function<BigDecimal>("variance",SQLDataType.NUMERIC,getArguments());
+case SQLSERVER:
+  return new Function<BigDecimal>("var",SQLDataType.NUMERIC,getArguments());
+default :
+return new Function<BigDecimal>("var_samp",SQLDataType.NUMERIC,getArguments());
+}
+}

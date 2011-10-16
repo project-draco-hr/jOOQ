@@ -1,0 +1,3 @@
+{
+  super("stddev_pop",SQLDataType.NUMERIC,arg);
+}
