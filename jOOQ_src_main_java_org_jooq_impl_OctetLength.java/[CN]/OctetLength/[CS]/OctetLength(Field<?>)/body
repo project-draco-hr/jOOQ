@@ -1,4 +1,0 @@
-{
-  super("octet_length",SQLDataType.INTEGER,argument);
-  this.argument=argument;
-}

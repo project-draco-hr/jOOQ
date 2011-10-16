@@ -1,4 +1,0 @@
-{
-  super("bit_length",SQLDataType.INTEGER,argument);
-  this.argument=argument;
-}
