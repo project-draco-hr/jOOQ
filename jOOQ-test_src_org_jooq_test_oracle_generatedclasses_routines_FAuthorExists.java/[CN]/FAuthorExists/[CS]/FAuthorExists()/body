@@ -1,4 +1,5 @@
 {
   super(org.jooq.SQLDialect.ORACLE,"F_AUTHOR_EXISTS",org.jooq.test.oracle.generatedclasses.Test.TEST,org.jooq.impl.SQLDataType.NUMERIC);
+  setReturnParameter(RETURN_VALUE);
   addInParameter(AUTHOR_NAME);
 }

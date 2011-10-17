@@ -1,5 +1,6 @@
 {
   super(org.jooq.SQLDialect.MYSQL,"get_customer_balance",org.jooq.examples.mysql.sakila.Sakila.SAKILA,org.jooq.impl.SQLDataType.DECIMAL);
+  setReturnParameter(RETURN_VALUE);
   addInParameter(P_CUSTOMER_ID);
   addInParameter(P_EFFECTIVE_DATE);
 }

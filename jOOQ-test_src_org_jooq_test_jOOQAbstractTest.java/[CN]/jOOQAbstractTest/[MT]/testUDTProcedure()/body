@@ -7,6 +7,10 @@
     log.info("SKIPPING","UDT procedure test (no procedure support)");
     return;
   }
+  if (getDialect() == SQLDialect.POSTGRES) {
+    log.info("SKIPPING","UDT procedure test (Postgres JDBC driver flaw)");
+    return;
+  }
   reset=false;
   UDTRecord<?> address=cUAddressType().newInstance();
   UDTRecord<?> street=cUStreetType().newInstance();

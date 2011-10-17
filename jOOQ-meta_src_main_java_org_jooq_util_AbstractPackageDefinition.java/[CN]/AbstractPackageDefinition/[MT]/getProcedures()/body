@@ -2,7 +2,7 @@
   if (procedures == null) {
     procedures=new ArrayList<RoutineDefinition>();
     for (    RoutineDefinition routine : getRoutines()) {
-      if (routine.isProcedure()) {
+      if (!routine.isSQLUsable()) {
         procedures.add(routine);
       }
     }

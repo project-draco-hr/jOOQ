@@ -743,12 +743,11 @@
     outR.println("public final class Routines {");
     for (    RoutineDefinition routine : database.getRoutines()) {
       try {
-        if (routine.isProcedure()) {
-          printProcedure(database,schema,routine);
+        printRoutine(database,schema,routine);
+        if (!routine.isSQLUsable()) {
           printConvenienceMethodProcedure(outR,routine);
         }
  else {
-          printFunction(database,schema,routine);
           printConvenienceMethodFunction(outR,routine);
           printConvenienceMethodFunctionAsField(outR,routine,false);
           printConvenienceMethodFunctionAsField(outR,routine,true);
@@ -772,12 +771,7 @@
         log.info("Generating package",targetPackagePackageDir.getCanonicalPath());
         for (        RoutineDefinition routine : pkg.getRoutines()) {
           try {
-            if (routine.isProcedure()) {
-              printProcedure(database,schema,routine);
-            }
- else {
-              printFunction(database,schema,routine);
-            }
+            printRoutine(database,schema,routine);
           }
  catch (          Exception e) {
             log.error("Error while generating routine " + routine,e);
@@ -805,7 +799,7 @@
         outPkg.println("();");
         for (        RoutineDefinition routine : pkg.getRoutines()) {
           try {
-            if (routine.isProcedure()) {
+            if (!routine.isSQLUsable()) {
               printConvenienceMethodProcedure(outPkg,routine);
             }
  else {

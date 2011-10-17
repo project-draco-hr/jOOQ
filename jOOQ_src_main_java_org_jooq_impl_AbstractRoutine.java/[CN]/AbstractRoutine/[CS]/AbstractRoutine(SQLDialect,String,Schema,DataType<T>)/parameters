@@ -1,0 +1,4 @@
+SQLDialect dialect
+String name
+Schema schema
+DataType<T> type

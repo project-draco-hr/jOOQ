@@ -1,1 +1,1 @@
-org.jooq.impl.StoredProcedureImpl
+org.jooq.impl.AbstractRoutine<java.lang.Void>

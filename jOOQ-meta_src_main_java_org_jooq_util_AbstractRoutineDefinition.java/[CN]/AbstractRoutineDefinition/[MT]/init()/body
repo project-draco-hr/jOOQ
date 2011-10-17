@@ -3,9 +3,12 @@
   outParameters=new ArrayList<ParameterDefinition>();
   allParameters=new ArrayList<ParameterDefinition>();
   try {
+    if (returnValue != null) {
+      addParameter(InOutDefinition.RETURN,returnValue);
+    }
     init0();
   }
  catch (  SQLException e) {
-    log.error("Error while initialising procedure",e);
+    log.error("Error while initialising routine",e);
   }
 }

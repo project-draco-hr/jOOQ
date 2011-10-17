@@ -1,5 +1,6 @@
 {
   super(org.jooq.SQLDialect.SQLSERVER,"f317",org.jooq.test.sqlserver.generatedclasses.Dbo.DBO,org.jooq.impl.SQLDataType.INTEGER);
+  setReturnParameter(RETURN_VALUE);
   addInParameter(P1);
   addInParameter(P2);
   addInParameter(P3);

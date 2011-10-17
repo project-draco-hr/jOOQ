@@ -1,5 +1,6 @@
 {
   super(org.jooq.SQLDialect.ORACLE,"DISPLAY_SQLSET",org.jooq.examples.oracle.sys.Sys.SYS,org.jooq.examples.oracle.sys.packages.DbmsXplan.DBMS_XPLAN,org.jooq.util.oracle.OracleDataType.getDefaultDataType("TABLE"));
+  setReturnParameter(RETURN_VALUE);
   addInParameter(SQLSET_NAME);
   addInParameter(SQL_ID);
   addInParameter(PLAN_HASH_VALUE);

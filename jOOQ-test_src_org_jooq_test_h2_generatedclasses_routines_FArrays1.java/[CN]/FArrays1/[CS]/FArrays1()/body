@@ -1,4 +1,5 @@
 {
   super(org.jooq.SQLDialect.H2,"F_ARRAYS1",org.jooq.test.h2.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.OTHER.getArrayDataType());
+  setReturnParameter(RETURN_VALUE);
   addInParameter(P1);
 }

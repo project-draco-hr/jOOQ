@@ -1,0 +1,4 @@
+{
+  outParameters.add(parameter);
+  allParameters.add(parameter);
+}

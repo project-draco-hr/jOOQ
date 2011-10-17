@@ -4,7 +4,7 @@
     try {
       List<RoutineDefinition> r=getRoutines();
       for (      RoutineDefinition routine : r) {
-        if (routine.isProcedure()) {
+        if (!routine.isSQLUsable()) {
           procedures.add(routine);
         }
       }

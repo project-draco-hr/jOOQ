@@ -1,0 +1,16 @@
+{
+  if (type == null) {
+    return executeCallableStatement();
+  }
+ else {
+switch (attachable.getConfiguration().getDialect()) {
+case DB2:
+case H2:
+case HSQLDB:
+case SYBASE:
+      return executeSelect();
+default :
+    return executeCallableStatement();
+}
+}
+}

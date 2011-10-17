@@ -1,4 +1,5 @@
 {
   super(org.jooq.SQLDialect.MYSQL,"inventory_held_by_customer",org.jooq.examples.mysql.sakila.Sakila.SAKILA,org.jooq.impl.SQLDataType.INTEGER);
+  setReturnParameter(RETURN_VALUE);
   addInParameter(P_INVENTORY_ID);
 }

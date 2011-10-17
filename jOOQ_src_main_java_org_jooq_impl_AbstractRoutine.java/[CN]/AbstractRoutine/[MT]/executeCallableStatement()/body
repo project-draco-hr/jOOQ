@@ -1,0 +1,34 @@
+{
+  StopWatch watch=new StopWatch();
+  CallableStatement statement=null;
+  try {
+    Configuration configuration=attachable.getConfiguration();
+    Connection connection=configuration.getConnection();
+    String sql=create(configuration).render(this);
+    watch.splitTrace("SQL rendered");
+    if (log.isDebugEnabled())     log.debug("Executing routine",create(configuration).renderInlined(this));
+    if (log.isTraceEnabled())     log.trace("Preparing statement",sql);
+    statement=connection.prepareCall(sql);
+    watch.splitTrace("Statement prepared");
+    create(configuration).bind(this,statement);
+    watch.splitTrace("Variables bound");
+    registerOutParameters(configuration,statement);
+    watch.splitTrace("OUT params registered");
+    boolean autoCommit=connection.getAutoCommit();
+    if (autoCommit && configuration.getDialect() == SQLDialect.POSTGRES) {
+      connection.setAutoCommit(false);
+    }
+    statement.execute();
+    if (autoCommit && configuration.getDialect() == SQLDialect.POSTGRES) {
+      connection.setAutoCommit(autoCommit);
+    }
+    watch.splitTrace("Routine called");
+    fetchOutParameters(configuration,statement);
+    watch.splitTrace("OUT params fetched");
+    return 0;
+  }
+  finally {
+    JooqUtil.safeClose(statement);
+    watch.splitDebug("Routine executed");
+  }
+}

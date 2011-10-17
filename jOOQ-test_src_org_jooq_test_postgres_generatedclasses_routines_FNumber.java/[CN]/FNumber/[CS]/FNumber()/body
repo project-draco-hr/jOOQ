@@ -1,4 +1,5 @@
 {
   super(org.jooq.SQLDialect.POSTGRES,"f_number",org.jooq.test.postgres.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.INTEGER);
+  setReturnParameter(RETURN_VALUE);
   addInParameter(N);
 }
