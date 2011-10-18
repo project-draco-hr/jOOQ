@@ -1,8 +1,9 @@
 {
   if (cursor == null) {
-    throw new UnsupportedOperationException();
+    throw new IllegalArgumentException();
   }
  else   if (cursor.getType() == Result.class) {
+    return new FunctionTable<Record>(cursor);
   }
  else   if (ArrayConstant.class.isAssignableFrom(cursor.getClass())) {
     return new ArrayTable<Record>(cursor);

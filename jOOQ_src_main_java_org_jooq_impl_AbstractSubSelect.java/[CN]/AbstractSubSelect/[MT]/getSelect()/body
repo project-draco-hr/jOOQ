@@ -1,15 +1,20 @@
 {
   if (getSelect0().isEmpty()) {
     FieldList result=new SelectFieldList();
-    for (    TableLike<?> table : getFrom()) {
-      for (      Field<?> field : table.asTable().getFields()) {
-        result.add(field);
+    if (knownTableSource()) {
+      for (      TableLike<?> table : getFrom()) {
+        for (        Field<?> field : table.asTable().getFields()) {
+          result.add(field);
+        }
+      }
+      for (      Join j : getJoin()) {
+        for (        Field<?> field : j.getTable().asTable().getFields()) {
+          result.add(field);
+        }
       }
     }
-    for (    Join j : getJoin()) {
-      for (      Field<?> field : j.getTable().asTable().getFields()) {
-        result.add(field);
-      }
+    if (getFrom().isEmpty()) {
+      result.add(create().literal(1));
     }
     return result;
   }

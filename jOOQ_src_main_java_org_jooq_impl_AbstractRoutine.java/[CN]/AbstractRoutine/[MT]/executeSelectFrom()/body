@@ -1,0 +1,6 @@
+{
+  Factory create=create(attachable);
+  Result<?> result=create.selectFrom(create.table(asField())).fetch();
+  results.put(returnParameter,result);
+  return 0;
+}

@@ -1,0 +1,3 @@
+{
+  return new TableAlias<R>(new FunctionTable<R>(function),as);
+}

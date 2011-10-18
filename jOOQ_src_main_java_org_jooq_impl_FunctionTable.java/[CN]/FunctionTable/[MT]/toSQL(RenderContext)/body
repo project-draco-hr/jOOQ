@@ -1,0 +1,11 @@
+{
+switch (context.getDialect()) {
+case HSQLDB:
+{
+      context.sql("table(").sql(function).sql(")");
+      break;
+    }
+default :
+  throw new SQLDialectNotSupportedException("FUNCTION TABLE is not supported for " + context.getDialect());
+}
+}

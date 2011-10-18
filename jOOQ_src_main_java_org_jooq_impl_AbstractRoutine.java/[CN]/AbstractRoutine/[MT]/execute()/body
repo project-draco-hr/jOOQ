@@ -4,13 +4,18 @@
   }
  else {
 switch (attachable.getConfiguration().getDialect()) {
+case HSQLDB:
+      if (SQLDataType.RESULT.equals(type.getSQLDataType())) {
+        return executeSelectFrom();
+      }
+ else {
+      }
 case DB2:
 case H2:
-case HSQLDB:
 case SYBASE:
-      return executeSelect();
+    return executeSelect();
 default :
-    return executeCallableStatement();
+  return executeCallableStatement();
 }
 }
 }

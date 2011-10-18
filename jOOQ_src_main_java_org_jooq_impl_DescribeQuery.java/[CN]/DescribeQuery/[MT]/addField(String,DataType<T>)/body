@@ -1,3 +1,0 @@
-{
-  new TableFieldImpl<R,T>(fieldName,fieldType,table);
-}

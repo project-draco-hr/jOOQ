@@ -1,3 +1,8 @@
 {
-  return getSelect();
+  List<Field<?>> select=getSelect();
+  if (select.isEmpty()) {
+    Configuration configuration=getConfiguration();
+    return new MetaDataFieldProvider(configuration,meta).getFields();
+  }
+  return select;
 }
