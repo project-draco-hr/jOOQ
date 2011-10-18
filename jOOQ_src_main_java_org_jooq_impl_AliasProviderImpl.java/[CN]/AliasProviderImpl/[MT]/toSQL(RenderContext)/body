@@ -22,7 +22,8 @@ case HSQLDB:
 case POSTGRES:
 {
     if (context.declareTables() && aliasProvider instanceof ArrayTable) {
-      Table<?> table=(Table<?>)aliasProvider;
+      Object o=aliasProvider;
+      ArrayTable<?> table=(ArrayTable<?>)o;
       context.sql("(");
       JooqUtil.toSQLNames(context,table.getFields());
       context.sql(")");
