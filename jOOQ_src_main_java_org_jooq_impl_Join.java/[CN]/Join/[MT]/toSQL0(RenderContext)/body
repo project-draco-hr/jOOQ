@@ -1,7 +1,7 @@
 {
   if (usingSyntax) {
     context.sql(" using (");
-    using.toSQLNames(context);
+    JooqUtil.toSQLNames(context,using);
     context.sql(")");
   }
  else {

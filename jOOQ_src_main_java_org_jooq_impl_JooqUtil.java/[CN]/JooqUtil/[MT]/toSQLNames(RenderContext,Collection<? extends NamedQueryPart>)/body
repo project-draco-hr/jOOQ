@@ -1,6 +1,6 @@
 {
   String separator="";
-  for (  NamedQueryPart part : this) {
+  for (  NamedQueryPart part : list) {
     context.sql(separator).literal(part.getName());
     separator=", ";
   }

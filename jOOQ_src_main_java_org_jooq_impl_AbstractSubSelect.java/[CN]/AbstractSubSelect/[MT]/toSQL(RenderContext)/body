@@ -44,7 +44,7 @@ if (forUpdate) {
 context.sql(" for update");
 if (!forUpdateOf.isEmpty()) {
 context.sql(" of ");
-forUpdateOf.toSQLNames(context);
+JooqUtil.toSQLNames(context,forUpdateOf);
 }
  else if (!forUpdateOfTables.isEmpty()) {
 context.sql(" of ");
@@ -58,7 +58,7 @@ forUpdateOfTables.toSQLFieldNames(context);
 break;
 }
 default :
-forUpdateOfTables.toSQLNames(context);
+JooqUtil.toSQLNames(context,forUpdateOfTables);
 break;
 }
 }
