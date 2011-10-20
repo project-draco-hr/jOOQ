@@ -19,7 +19,7 @@
     if (TArrays() == null) {
       assertEquals(tables,schema.getTables().size());
     }
- else     if (getDialect() == SQLDialect.ORACLE) {
+ else     if (getDialect() == SQLDialect.ORACLE || getDialect() == SQLDialect.H2) {
       assertEquals(tables + 2,schema.getTables().size());
     }
  else     if (getDialect() == SQLDialect.HSQLDB) {
