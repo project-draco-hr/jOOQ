@@ -1,0 +1,5 @@
+{
+  H2Factory create=create(connection);
+  Integer result=create.select(create.count().sign()).from(T_AUTHOR).where(TAuthor.FIRST_NAME.equal(authorName)).or(TAuthor.LAST_NAME.equal(authorName)).fetchOne(0,Integer.class);
+  return result;
+}

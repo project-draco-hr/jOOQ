@@ -1,0 +1,6 @@
+{
+  PreparedStatement stmt=null;
+  String sql=create(connection).select().from(T_BOOK).where(TBook.ID.in(INTEGER.getArrayDataType().convert(bookIds))).orderBy(TBook.ID.asc()).getSQL();
+  stmt=connection.prepareStatement(sql);
+  return stmt.executeQuery();
+}
