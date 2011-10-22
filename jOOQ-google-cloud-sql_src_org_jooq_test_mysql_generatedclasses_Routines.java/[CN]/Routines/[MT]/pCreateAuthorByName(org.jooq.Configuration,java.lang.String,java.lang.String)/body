@@ -1,0 +1,6 @@
+{
+  org.jooq.test.mysql.generatedclasses.routines.PCreateAuthorByName p=new org.jooq.test.mysql.generatedclasses.routines.PCreateAuthorByName();
+  p.setFirstName(firstName);
+  p.setLastName(lastName);
+  p.execute(configuration);
+}

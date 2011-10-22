@@ -1,0 +1,4 @@
+{
+  org.jooq.test.mysql.generatedclasses.routines.PCreateAuthor p=new org.jooq.test.mysql.generatedclasses.routines.PCreateAuthor();
+  p.execute(configuration);
+}
