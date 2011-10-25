@@ -1,3 +1,15 @@
 {
-  return cast(String.class).in(TypeUtils.TRUE_VALUES);
+  Class<?> type=getType();
+  if (type == String.class) {
+    return ((Field<String>)this).in(TypeUtils.TRUE_VALUES);
+  }
+ else   if (Number.class.isAssignableFrom(type)) {
+    return ((Field<Number>)this).equal((Number)getDataType().convert(1));
+  }
+ else   if (Boolean.class.isAssignableFrom(type)) {
+    return ((Field<Boolean>)this).equal(true);
+  }
+ else {
+    return cast(String.class).in(TypeUtils.TRUE_VALUES);
+  }
 }
