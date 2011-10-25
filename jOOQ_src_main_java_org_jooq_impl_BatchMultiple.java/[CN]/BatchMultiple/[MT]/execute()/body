@@ -1,0 +1,21 @@
+{
+  StopWatch watch=new StopWatch();
+  Connection connection=create.getConnection();
+  Statement statement=null;
+  try {
+    statement=connection.createStatement();
+    for (    Query query : queries) {
+      String sql=create.renderInlined(query);
+      watch.splitTrace("SQL rendered");
+      if (log.isDebugEnabled())       log.debug("Adding batch",sql);
+      statement.addBatch(sql);
+    }
+    int[] result=statement.executeBatch();
+    watch.splitTrace("Statement executed");
+    return result;
+  }
+  finally {
+    JooqUtil.safeClose(statement);
+    watch.splitDebug("Statement executed");
+  }
+}

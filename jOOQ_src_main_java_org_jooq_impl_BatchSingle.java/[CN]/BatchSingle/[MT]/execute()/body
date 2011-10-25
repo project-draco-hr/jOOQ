@@ -1,0 +1,25 @@
+{
+  StopWatch watch=new StopWatch();
+  Connection connection=create.getConnection();
+  PreparedStatement statement=null;
+  try {
+    String sql=create.render(query);
+    watch.splitTrace("SQL rendered");
+    if (log.isDebugEnabled())     log.debug("Executing query",create.renderInlined(query));
+    if (log.isTraceEnabled())     log.trace("Preparing statement",sql);
+    statement=connection.prepareStatement(sql);
+    watch.splitTrace("Statement prepared");
+    for (    Object[] bindValues : allBindValues) {
+      new DefaultBindContext(create,statement).bindValues(bindValues);
+      statement.addBatch();
+    }
+    watch.splitTrace("Variables bound");
+    int[] result=statement.executeBatch();
+    watch.splitTrace("Statement executed");
+    return result;
+  }
+  finally {
+    JooqUtil.safeClose(statement);
+    watch.splitDebug("Statement executed");
+  }
+}

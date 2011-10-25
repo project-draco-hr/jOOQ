@@ -1,0 +1,5 @@
+{
+  this.create=create;
+  this.query=query;
+  this.allBindValues=new ArrayList<Object[]>();
+}

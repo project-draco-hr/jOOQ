@@ -1,0 +1,4 @@
+{
+  this.create=create;
+  this.queries=queries;
+}

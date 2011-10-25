@@ -1,0 +1,5 @@
+{
+  assertEquals(5,create().fetch(TAuthor()).size());
+  assertEquals(Arrays.asList(8,9,10),create().select(TAuthor_ID()).from(TAuthor()).where(TAuthor_ID().in(8,9,10)).orderBy(TAuthor_ID()).fetch(TAuthor_ID()));
+  assertEquals(Arrays.asList("Gamma","Helm","Johnson"),create().select(TAuthor_LAST_NAME()).from(TAuthor()).where(TAuthor_ID().in(8,9,10)).orderBy(TAuthor_ID()).fetch(TAuthor_LAST_NAME()));
+}

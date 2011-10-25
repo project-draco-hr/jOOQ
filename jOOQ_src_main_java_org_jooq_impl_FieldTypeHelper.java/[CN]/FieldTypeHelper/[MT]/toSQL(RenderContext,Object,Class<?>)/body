@@ -22,7 +22,7 @@
       context.sql("'").sql(new String((byte[])value).replace("'","''")).sql("'");
     }
  else     if (type == Clob.class) {
-      context.sql("[BLOB]");
+      context.sql("[CLOB]");
     }
  else     if (type == Date.class) {
       context.sql("'").sql(value.toString()).sql("'");
