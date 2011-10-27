@@ -1,4 +1,3 @@
 {
-  Table<R> table=new SelectQueryAsTable<R>(this);
-  return table.as("alias_" + Math.abs(table.hashCode()));
+  return new SelectQueryAsTable<R>(this).as("alias_" + Math.abs(hashCode()));
 }

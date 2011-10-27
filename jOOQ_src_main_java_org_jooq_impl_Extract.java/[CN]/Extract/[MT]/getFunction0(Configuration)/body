@@ -1,19 +1,13 @@
 {
 switch (configuration.getDialect()) {
-case INGRES:
-case MYSQL:
-case POSTGRES:
-case HSQLDB:
-case H2:
-    return new SQLExtract();
 case SQLITE:
 switch (datePart) {
 case YEAR:
-    return new Function<Integer>("strftime",SQLDataType.INTEGER,create(configuration).val("%Y"),field);
+      return new Function<Integer>("strftime",SQLDataType.INTEGER,create(configuration).val("%Y"),field);
 case MONTH:
-  return new Function<Integer>("strftime",SQLDataType.INTEGER,create(configuration).val("%m"),field);
+    return new Function<Integer>("strftime",SQLDataType.INTEGER,create(configuration).val("%m"),field);
 case DAY:
-return new Function<Integer>("strftime",SQLDataType.INTEGER,create(configuration).val("%d"),field);
+  return new Function<Integer>("strftime",SQLDataType.INTEGER,create(configuration).val("%d"),field);
 case HOUR:
 return new Function<Integer>("strftime",SQLDataType.INTEGER,create(configuration).val("%H"),field);
 case MINUTE:
@@ -77,7 +71,12 @@ return new Function<Integer>("datepart",SQLDataType.INTEGER,create(configuration
 default :
 throw new SQLDialectNotSupportedException("DatePart not supported: " + datePart);
 }
+case INGRES:
+case MYSQL:
+case POSTGRES:
+case HSQLDB:
+case H2:
 default :
-throw new SQLDialectNotSupportedException("extract not supported");
+return new SQLExtract();
 }
 }
