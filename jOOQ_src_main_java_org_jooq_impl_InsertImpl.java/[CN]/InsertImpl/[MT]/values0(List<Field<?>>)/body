@@ -1,4 +1,7 @@
 {
+  if (fields.size() == 0) {
+    fields.addAll(into.getFields());
+  }
   if (fields.size() != values.size()) {
     throw new IllegalArgumentException("The number of values must match the number of fields");
   }
