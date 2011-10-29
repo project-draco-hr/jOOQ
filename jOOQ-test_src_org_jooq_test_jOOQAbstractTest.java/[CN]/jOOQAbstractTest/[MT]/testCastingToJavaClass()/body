@@ -1,10 +1,4 @@
 {
-switch (getDialect()) {
-case DERBY:
-    log.info("SKIPPING","most casting tests");
-  break;
-default :
-{
   if (getDialect() != SQLDialect.HSQLDB) {
     assertEquals(true,create().select(create().cast(1,Boolean.class)).fetchOne(0));
     if (getDialect() != SQLDialect.INGRES) {
@@ -39,25 +33,23 @@ default :
   assertEquals(1.0f,create().select(create().cast(1,Float.class)).fetchOne(0));
   assertEquals(1.0,create().select(create().cast(1,Double.class)).fetchOne(0));
   assertEquals("1",create().select(create().cast(1,String.class)).fetchOne(0));
-}
-}
-if (getDialect() != SQLDialect.ASE) {
-assertEquals(null,create().select(create().castNull(Boolean.class)).fetchOne(0));
-}
-assertEquals(null,create().select(create().castNull(Byte.class)).fetchOne(0));
-assertEquals(null,create().select(create().castNull(Short.class)).fetchOne(0));
-assertEquals(null,create().select(create().castNull(Integer.class)).fetchOne(0));
-assertEquals(null,create().select(create().castNull(Long.class)).fetchOne(0));
-if (getDialect() != SQLDialect.SQLITE) {
-assertEquals(null,create().select(create().castNull(BigInteger.class)).fetchOne(0));
-assertEquals(null,create().select(create().castNull(BigDecimal.class)).fetchOne(0));
-}
-assertEquals(null,create().select(create().castNull(Float.class)).fetchOne(0));
-assertEquals(null,create().select(create().castNull(Double.class)).fetchOne(0));
-assertEquals(null,create().select(create().castNull(String.class)).fetchOne(0));
-assertEquals(null,create().select(create().castNull(Date.class)).fetchOne(0));
-assertEquals(null,create().select(create().castNull(Time.class)).fetchOne(0));
-assertEquals(null,create().select(create().castNull(Timestamp.class)).fetchOne(0));
-assertEquals(1984,create().select(TBook_TITLE().cast(Integer.class)).from(TBook()).where(TBook_ID().equal(1)).fetch().getValue(0,0));
-assertEquals(1984L,create().select(TBook_TITLE().cast(Long.class)).from(TBook()).where(TBook_ID().equal(1)).fetch().getValue(0,0));
+  if (getDialect() != SQLDialect.ASE) {
+    assertEquals(null,create().select(create().castNull(Boolean.class)).fetchOne(0));
+  }
+  assertEquals(null,create().select(create().castNull(Byte.class)).fetchOne(0));
+  assertEquals(null,create().select(create().castNull(Short.class)).fetchOne(0));
+  assertEquals(null,create().select(create().castNull(Integer.class)).fetchOne(0));
+  assertEquals(null,create().select(create().castNull(Long.class)).fetchOne(0));
+  if (getDialect() != SQLDialect.SQLITE) {
+    assertEquals(null,create().select(create().castNull(BigInteger.class)).fetchOne(0));
+    assertEquals(null,create().select(create().castNull(BigDecimal.class)).fetchOne(0));
+  }
+  assertEquals(null,create().select(create().castNull(Float.class)).fetchOne(0));
+  assertEquals(null,create().select(create().castNull(Double.class)).fetchOne(0));
+  assertEquals(null,create().select(create().castNull(String.class)).fetchOne(0));
+  assertEquals(null,create().select(create().castNull(Date.class)).fetchOne(0));
+  assertEquals(null,create().select(create().castNull(Time.class)).fetchOne(0));
+  assertEquals(null,create().select(create().castNull(Timestamp.class)).fetchOne(0));
+  assertEquals(1984,create().select(TBook_TITLE().cast(Integer.class)).from(TBook()).where(TBook_ID().equal(1)).fetch().getValue(0,0));
+  assertEquals(1984L,create().select(TBook_TITLE().cast(Long.class)).from(TBook()).where(TBook_ID().equal(1)).fetch().getValue(0,0));
 }

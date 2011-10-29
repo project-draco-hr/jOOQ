@@ -1,0 +1,3 @@
+{
+  return create(configuration).decode().value((Field<String>)field).when(literal("'0'"),literal(false)).when(literal("'false'"),literal(false)).when(literal("'f'"),literal(false)).when(literal((String)null),literal((Boolean)null)).otherwise(literal(true));
+}

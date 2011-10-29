@@ -5,7 +5,11 @@
       return;
     }
  else     if (field.getDataType().isNumeric() && SQLDataType.BOOLEAN.equals(getDataType().getSQLDataType())) {
-      context.sql("cast(").sql("cast(").sql(field).sql(" as char(1))").sql(" as ").sql(getDataType(context).getCastTypeName(context)).sql(")");
+      context.sql(asDecodeNumberToBoolean(context));
+      return;
+    }
+ else     if (field.getDataType().isString() && SQLDataType.BOOLEAN.equals(getDataType().getSQLDataType())) {
+      context.sql(asDecodeVarcharToBoolean(context));
       return;
     }
   }
