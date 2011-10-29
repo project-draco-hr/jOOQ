@@ -1,0 +1,7 @@
+{
+  Field<?>[] fields=new Field[fieldIndexes.length];
+  for (int i=0; i < fieldIndexes.length; i++) {
+    fields[i]=literal(fieldIndexes[i]);
+  }
+  addOrderBy(fields);
+}
