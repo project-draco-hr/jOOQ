@@ -1,3 +1,4 @@
 {
-  return create(configuration).decode().value((Field<String>)field).when(literal("'0'"),literal(false)).when(literal("'false'"),literal(false)).when(literal("'f'"),literal(false)).when(literal((String)null),literal((Boolean)null)).otherwise(literal(true));
+  Field<String> s=(Field<String>)field;
+  return create(configuration).decode().when(s.equal(literal("'0'")),literal(false)).when(s.lower().equal(literal("'false'")),literal(false)).when(s.lower().equal(literal("'f'")),literal(false)).when(s.isNull(),literal((Boolean)null)).otherwise(literal(true));
 }

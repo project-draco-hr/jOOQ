@@ -1,14 +1,18 @@
 {
   if (context.getDialect() == SQLDialect.DERBY) {
-    if (field.getDataType().isNumeric() && SQLDataType.VARCHAR.equals(getDataType().getSQLDataType())) {
-      context.sql("cast(").sql("cast(").sql(field).sql(" as char(38))").sql(" as ").sql(getDataType(context).getCastTypeName(context)).sql(")");
+    if (field.getDataType().isNumeric() && VARCHAR.equals(getSQLDataType())) {
+      context.sql("trim(cast(").sql("cast(").sql(field).sql(" as char(38))").sql(" as ").sql(getDataType(context).getCastTypeName(context)).sql("))");
       return;
     }
- else     if (field.getDataType().isNumeric() && SQLDataType.BOOLEAN.equals(getDataType().getSQLDataType())) {
+ else     if (field.getDataType().isString() && asList(FLOAT,DOUBLE,REAL).contains(getSQLDataType())) {
+      context.sql("cast(").sql("cast(").sql(field).sql(" as decimal)").sql(" as ").sql(getDataType(context).getCastTypeName(context)).sql(")");
+      return;
+    }
+ else     if (field.getDataType().isNumeric() && BOOLEAN.equals(getSQLDataType())) {
       context.sql(asDecodeNumberToBoolean(context));
       return;
     }
- else     if (field.getDataType().isString() && SQLDataType.BOOLEAN.equals(getDataType().getSQLDataType())) {
+ else     if (field.getDataType().isString() && BOOLEAN.equals(getSQLDataType())) {
       context.sql(asDecodeVarcharToBoolean(context));
       return;
     }
