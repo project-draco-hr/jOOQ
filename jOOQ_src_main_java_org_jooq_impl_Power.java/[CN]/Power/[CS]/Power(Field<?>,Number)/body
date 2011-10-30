@@ -1,5 +1,0 @@
-{
-  super("ceil",SQLDataType.NUMERIC,arg1);
-  this.arg1=arg1;
-  this.arg2=arg2;
-}

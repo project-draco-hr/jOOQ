@@ -1,0 +1,12 @@
+{
+  String op=operator.toSQL();
+  if (operator == BIT_XOR && context.getDialect() == POSTGRES) {
+    op="#";
+  }
+  context.sql("(");
+  context.sql(lhs);
+  for (  Field<?> field : rhs) {
+    context.sql(" ").sql(op).sql(" ").sql(field);
+  }
+  context.sql(")");
+}

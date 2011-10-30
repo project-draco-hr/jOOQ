@@ -1,3 +1,3 @@
 {
-  return new Neg<T>(this);
+  return new Neg<T>(this,ExpressionOperator.SUBTRACT);
 }

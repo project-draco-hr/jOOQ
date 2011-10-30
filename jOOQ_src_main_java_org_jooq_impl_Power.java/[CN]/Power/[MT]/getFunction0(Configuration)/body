@@ -2,8 +2,8 @@
 switch (configuration.getDialect()) {
 case DERBY:
 case SQLITE:
-    return arg1.ln().mul(literal(arg2)).exp();
+    return arg1.ln().mul(arg2).exp();
 default :
-  return function("power",SQLDataType.NUMERIC,arg1,literal(arg2));
+  return function("power",SQLDataType.NUMERIC,getArguments());
 }
 }

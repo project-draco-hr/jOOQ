@@ -1,0 +1,36 @@
+{
+  SQLDialect dialect=configuration.getDialect();
+  if (BIT_AND == operator && asList(DB2,H2,HSQLDB,ORACLE).contains(dialect)) {
+    return function("bitand",getDataType(),getArguments());
+  }
+ else   if (BIT_XOR == operator && asList(DB2,H2,HSQLDB).contains(dialect)) {
+    return function("bitxor",getDataType(),getArguments());
+  }
+ else   if (BIT_OR == operator && asList(DB2,H2,HSQLDB).contains(dialect)) {
+    return function("bitor",getDataType(),getArguments());
+  }
+ else   if (BIT_OR == operator && ORACLE == dialect) {
+    return lhs.sub(lhsAsNumber().bitAnd(rhsAsNumber())).add(rhsAsNumber());
+  }
+ else   if (BIT_XOR == operator && asList(ORACLE,SQLITE).contains(dialect)) {
+    return lhs.bitAnd(rhsAsNumber()).bitNot().bitAnd(lhsAsNumber().bitOr(rhsAsNumber()));
+  }
+ else   if (SHL == operator && asList(ASE,DB2,H2,HSQLDB,INGRES,ORACLE,SQLSERVER,SYBASE).contains(dialect)) {
+    return lhs.mul(literal(2).power(rhsAsNumber()));
+  }
+ else   if (SHR == operator && asList(ASE,DB2,H2,HSQLDB,INGRES,ORACLE,SQLSERVER,SYBASE).contains(dialect)) {
+    return lhs.div(literal(2).power(rhsAsNumber()));
+  }
+ else   if (BIT_NAND == operator) {
+    return lhs.bitAnd(rhsAsNumber()).bitNot();
+  }
+ else   if (BIT_NOR == operator) {
+    return lhs.bitOr(rhsAsNumber()).bitNot();
+  }
+ else   if (BIT_XNOR == operator) {
+    return lhs.bitXor(rhsAsNumber()).bitNot();
+  }
+ else {
+    return new DefaultExpression();
+  }
+}

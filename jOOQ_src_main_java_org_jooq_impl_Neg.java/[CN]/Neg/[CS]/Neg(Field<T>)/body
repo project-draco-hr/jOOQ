@@ -1,4 +1,0 @@
-{
-  super("-" + field.getName(),field.getDataType());
-  this.field=field;
-}

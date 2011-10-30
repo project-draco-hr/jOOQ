@@ -1,0 +1,5 @@
+{
+  super(operator.toSQL() + field.getName(),field.getDataType());
+  this.operator=operator;
+  this.field=field;
+}

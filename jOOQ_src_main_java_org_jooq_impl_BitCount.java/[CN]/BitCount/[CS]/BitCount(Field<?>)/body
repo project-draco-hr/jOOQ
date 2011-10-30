@@ -1,0 +1,3 @@
+{
+  super("bit_count",SQLDataType.INTEGER,field);
+}

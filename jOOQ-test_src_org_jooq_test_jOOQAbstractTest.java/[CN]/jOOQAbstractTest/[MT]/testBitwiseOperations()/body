@@ -1,0 +1,24 @@
+{
+switch (getDialect()) {
+case DERBY:
+case INGRES:
+    log.info("SKIPPING","Tests for bitwise operations");
+  return;
+}
+Field<Integer> bitCount=val(3).bitCount();
+if (asList(ASE,DB2,SQLSERVER).contains(getDialect())) {
+bitCount=val(2);
+}
+Record result=create().select(bitCount,val(3).bitNot().bitNot(),val(3).bitAnd(5),val(3).bitOr(5),val(3).bitXor(5),val(3).bitNand(5).bitNot(),val(3).bitNor(5).bitNot(),val(3).bitXNor(5).bitNot(),val(333).shl(3),val(333).shr(3)).fetchOne();
+int index=0;
+assertEquals(2,result.getValue(index++));
+assertEquals(~(~3),result.getValue(index++));
+assertEquals(3 & 5,result.getValue(index++));
+assertEquals(3 | 5,result.getValue(index++));
+assertEquals(3 ^ 5,result.getValue(index++));
+assertEquals(~(~(3 & 5)),result.getValue(index++));
+assertEquals(~(~(3 | 5)),result.getValue(index++));
+assertEquals(~(~(3 ^ 5)),result.getValue(index++));
+assertEquals(333 << 3,result.getValue(index++));
+assertEquals(333 >> 3,result.getValue(index++));
+}
