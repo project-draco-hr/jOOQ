@@ -1,0 +1,3 @@
+{
+  return function("rollup",Object.class,fields);
+}
