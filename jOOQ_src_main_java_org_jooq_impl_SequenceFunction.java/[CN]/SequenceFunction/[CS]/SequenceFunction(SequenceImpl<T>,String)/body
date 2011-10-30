@@ -1,5 +1,5 @@
 {
-  super(method,SQLDataType.DECIMAL_INTEGER);
+  super(method,sequence.type);
   this.sequence=sequence;
   this.method=method;
 }

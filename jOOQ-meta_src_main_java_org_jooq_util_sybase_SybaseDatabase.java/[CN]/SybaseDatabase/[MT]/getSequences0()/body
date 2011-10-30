@@ -1,7 +1,8 @@
 {
   List<SequenceDefinition> result=new ArrayList<SequenceDefinition>();
   for (  String name : create().select(Syssequence.SEQUENCE_NAME).from(Syssequence.SYSSEQUENCE).orderBy(Syssequence.SEQUENCE_NAME).fetch(Syssequence.SEQUENCE_NAME)) {
-    result.add(new DefaultSequenceDefinition(this,name));
+    DataTypeDefinition type=new DefaultDataTypeDefinition(this,SybaseDataType.NUMERIC.getTypeName(),38,0);
+    result.add(new DefaultSequenceDefinition(getSchema(),name,type));
   }
   return result;
 }
