@@ -1,5 +1,5 @@
 {
-  BigDecimal rand=create().select(create().rand()).fetchOne(create().rand());
+  BigDecimal rand=create().select(rand()).fetchOne(rand());
   assertNotNull(rand);
   Field<Float> f1a=val(1.111f).round();
   Field<Float> f2a=val(1.111f).round(2);

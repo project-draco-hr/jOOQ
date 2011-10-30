@@ -1,5 +1,5 @@
 {
-  Record record=create().select(create().zero(),create().one(),create().two(),create().pi(),create().e()).fetchOne();
+  Record record=create().select(zero(),one(),two(),pi(),e()).fetchOne();
   assertEquals(0,record.getValue(0));
   assertEquals(1,record.getValue(1));
   assertEquals(2,record.getValue(2));

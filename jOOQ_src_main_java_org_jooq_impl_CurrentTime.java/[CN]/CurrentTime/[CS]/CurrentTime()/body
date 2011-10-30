@@ -1,0 +1,3 @@
+{
+  super("current_time",SQLDataType.TIME);
+}

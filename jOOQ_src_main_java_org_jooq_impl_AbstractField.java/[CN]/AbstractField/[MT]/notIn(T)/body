@@ -1,6 +1,6 @@
 {
   if (values == null || values.length == 0) {
-    return create().trueCondition();
+    return trueCondition();
   }
  else {
     return notIn(vals(values).toArray(new Field<?>[0]));

@@ -13,15 +13,15 @@ case SYBASE:
       if (getArguments().length > 2) {
         Field<?>[] remaining=new Field<?>[getArguments().length - 2];
         System.arraycopy(getArguments(),2,remaining,0,remaining.length);
-        return create(configuration).decode().when(first.greaterThan(other),first.greatest(remaining)).otherwise(other.greatest(remaining));
+        return Factory.decode().when(first.greaterThan(other),first.greatest(remaining)).otherwise(other.greatest(remaining));
       }
  else {
-        return create(configuration).decode().when(first.greaterThan(other),first).otherwise(other);
+        return Factory.decode().when(first.greaterThan(other),first).otherwise(other);
       }
     }
 case SQLITE:
-  return new Function<T>("max",getDataType(),getArguments());
+  return function("max",getDataType(),getArguments());
 default :
-return new Function<T>("greatest",getDataType(),getArguments());
+return function("greatest",getDataType(),getArguments());
 }
 }

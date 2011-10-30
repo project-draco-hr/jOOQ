@@ -6,7 +6,7 @@ case ORACLE:
     }
 default :
 {
-    CaseConditionStep<Z> when=create(configuration).decode().when(field.equal(search),result);
+    CaseConditionStep<Z> when=Factory.decode().when(field.equal(search),result);
     for (int i=0; i < more.length; i+=2) {
       if (i + 1 < more.length) {
         when=when.when(field.equal((Field<T>)more[i]),(Field<Z>)more[i + 1]);

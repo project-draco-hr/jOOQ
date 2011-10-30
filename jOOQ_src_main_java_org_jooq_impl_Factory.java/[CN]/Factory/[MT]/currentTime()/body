@@ -1,17 +1,3 @@
 {
-switch (getDialect()) {
-case ORACLE:
-    return new Function<Time>("sysdate",SQLDataType.TIME);
-case DERBY:
-case HSQLDB:
-case INGRES:
-case POSTGRES:
-case SQLITE:
-  return field("current_time",Time.class);
-case SQLSERVER:
-return field("convert(time, current_timestamp)",Time.class);
-case SYBASE:
-return field("current time",Time.class);
-}
-return new Function<Time>("current_time",SQLDataType.TIME);
+  return new CurrentTime();
 }

@@ -9,11 +9,11 @@
       return;
     }
  else     if (field.getDataType().isNumeric() && BOOLEAN.equals(getSQLDataType())) {
-      context.sql(asDecodeNumberToBoolean(context));
+      context.sql(asDecodeNumberToBoolean());
       return;
     }
  else     if (field.getDataType().isString() && BOOLEAN.equals(getSQLDataType())) {
-      context.sql(asDecodeVarcharToBoolean(context));
+      context.sql(asDecodeVarcharToBoolean());
       return;
     }
   }

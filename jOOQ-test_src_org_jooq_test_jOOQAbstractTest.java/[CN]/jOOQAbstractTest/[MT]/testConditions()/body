@@ -1,10 +1,10 @@
 {
   assertEquals(Arrays.asList(2,3),create().select().from(TBook()).where(TBook_ID().between(2,3)).orderBy(TBook_ID()).fetch(TBook_ID()));
-  assertEquals(Arrays.asList(3,4),create().select().from(TBook()).where(create().val(3).between(TBook_AUTHOR_ID(),TBook_ID())).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(3,4),create().select().from(TBook()).where(val(3).between(TBook_AUTHOR_ID(),TBook_ID())).orderBy(TBook_ID()).fetch(TBook_ID()));
   assertEquals(Arrays.asList(),create().select().from(TBook()).where(TBook_ID().in(new Integer[0])).fetch(TBook_ID()));
   assertEquals(BOOK_IDS,create().select().from(TBook()).where(TBook_ID().notIn(new Integer[0])).orderBy(TBook_ID()).fetch(TBook_ID()));
   assertEquals(Arrays.asList(1,2),create().select().from(TBook()).where(TBook_ID().in(1,2)).orderBy(TBook_ID()).fetch(TBook_ID()));
-  assertEquals(Arrays.asList(2,3,4),create().select().from(TBook()).where(create().val(2).in(TBook_ID(),TBook_AUTHOR_ID())).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(2,3,4),create().select().from(TBook()).where(val(2).in(TBook_ID(),TBook_AUTHOR_ID())).orderBy(TBook_ID()).fetch(TBook_ID()));
 switch (getDialect()) {
 case SQLITE:
     log.info("SKIPPING","= { ALL | ANY | SOME } tests");

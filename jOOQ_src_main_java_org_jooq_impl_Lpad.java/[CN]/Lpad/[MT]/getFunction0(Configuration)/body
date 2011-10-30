@@ -12,16 +12,18 @@ case SYBASE:
       }
     }
 default :
-  if (character == null) {
-    if (configuration.getDialect() == SQLDialect.MYSQL) {
-      return new Function<String>("lpad",SQLDataType.VARCHAR,field,length,val(" "));
+{
+    if (character == null) {
+      if (configuration.getDialect() == SQLDialect.MYSQL) {
+        return function("lpad",SQLDataType.VARCHAR,field,length,val(" "));
+      }
+ else {
+        return function("lpad",SQLDataType.VARCHAR,field,length);
+      }
     }
  else {
-      return new Function<String>("lpad",SQLDataType.VARCHAR,field,length);
+      return function("lpad",SQLDataType.VARCHAR,field,length,character);
     }
-  }
- else {
-    return new Function<String>("lpad",SQLDataType.VARCHAR,field,length,character);
   }
 }
 }

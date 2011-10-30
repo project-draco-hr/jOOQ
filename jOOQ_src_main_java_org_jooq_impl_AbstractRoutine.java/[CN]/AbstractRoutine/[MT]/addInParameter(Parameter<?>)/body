@@ -1,5 +1,5 @@
 {
   inParameters.add(parameter);
   allParameters.add(parameter);
-  inValues.put(parameter,val(null,parameter));
+  inValues.put(parameter,val(null,parameter.getDataType()));
 }

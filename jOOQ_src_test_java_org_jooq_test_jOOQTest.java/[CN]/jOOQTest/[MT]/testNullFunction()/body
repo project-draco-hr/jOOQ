@@ -1,5 +1,5 @@
 {
-  Field<?> f=create.val((Object)null);
+  Field<?> f=val((Object)null);
   assertEquals("null",r_refI().render(f));
   assertEquals("null",r_ref().render(f));
   int i=b_ref().bind(f).peekIndex();

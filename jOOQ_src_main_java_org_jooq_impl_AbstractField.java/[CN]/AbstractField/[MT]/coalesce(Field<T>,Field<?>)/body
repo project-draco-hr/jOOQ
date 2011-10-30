@@ -6,5 +6,5 @@
   arguments[0]=this;
   arguments[1]=option;
   System.arraycopy(options,0,arguments,2,options.length);
-  return new Function<T>("coalesce",getDataType(),arguments);
+  return function("coalesce",getDataType(),arguments);
 }

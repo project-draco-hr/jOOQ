@@ -1,0 +1,17 @@
+{
+switch (configuration.getDialect()) {
+case ASE:
+    return field("user",SQLDataType.VARCHAR);
+case ORACLE:
+  return function("user",SQLDataType.VARCHAR);
+case DERBY:
+case HSQLDB:
+case INGRES:
+case POSTGRES:
+case SQLSERVER:
+case SQLITE:
+case SYBASE:
+return field("current_user",String.class);
+}
+return function("current_user",SQLDataType.VARCHAR);
+}

@@ -3,6 +3,6 @@ switch (configuration.getDialect()) {
 case SQLITE:
     return argument.power(0.5);
 default :
-  return new Function<BigDecimal>("sqrt",SQLDataType.NUMERIC,argument);
+  return function("sqrt",SQLDataType.NUMERIC,argument);
 }
 }

@@ -1,6 +1,6 @@
 {
   if (condition == null) {
-    return create().trueCondition();
+    return trueCondition();
   }
   return condition;
 }

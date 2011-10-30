@@ -1,5 +1,5 @@
 {
   partitionByOne=true;
-  partitionBy.add(create().one());
+  partitionBy.add(one());
   return this;
 }

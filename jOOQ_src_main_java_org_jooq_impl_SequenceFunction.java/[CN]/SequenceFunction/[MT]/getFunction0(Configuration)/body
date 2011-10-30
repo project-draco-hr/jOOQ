@@ -6,20 +6,20 @@ case ORACLE:
 case SYBASE:
 {
       String field=getQualifiedName(configuration) + "." + method;
-      return create(configuration).field(field,BigInteger.class);
+      return field(field,BigInteger.class);
     }
 case H2:
 case POSTGRES:
 {
     String field=method + "('" + getQualifiedName(configuration)+ "')";
-    return create(configuration).field(field,BigInteger.class);
+    return field(field,BigInteger.class);
   }
 case DERBY:
 case HSQLDB:
 {
   if ("nextval".equals(method)) {
     String field="next value for " + getQualifiedName(configuration);
-    return create(configuration).field(field,BigInteger.class);
+    return field(field,BigInteger.class);
   }
  else {
     throw new SQLDialectNotSupportedException("The sequence's current value functionality is not supported for the " + configuration.getDialect() + " dialect.");
@@ -28,7 +28,7 @@ case HSQLDB:
 default :
 {
 String field=getQualifiedName(configuration) + "." + method;
-return create(configuration).field(field,BigInteger.class);
+return field(field,BigInteger.class);
 }
 }
 }

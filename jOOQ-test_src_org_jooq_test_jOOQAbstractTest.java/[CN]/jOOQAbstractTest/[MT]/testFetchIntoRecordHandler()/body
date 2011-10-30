@@ -27,10 +27,10 @@
   final Queue<Integer> count=new LinkedList<Integer>();
   authorIDs.addAll(Arrays.asList(1,2));
   count.addAll(Arrays.asList(2,2));
-  create().select(TBook_AUTHOR_ID(),create().count()).from(TBook()).groupBy(TBook_AUTHOR_ID()).orderBy(TBook_AUTHOR_ID()).fetchInto(new RecordHandler<Record>(){
+  create().select(TBook_AUTHOR_ID(),count()).from(TBook()).groupBy(TBook_AUTHOR_ID()).orderBy(TBook_AUTHOR_ID()).fetchInto(new RecordHandler<Record>(){
     @Override public void next(    Record record){
       assertEquals(authorIDs.poll(),record.getValue(TBook_AUTHOR_ID()));
-      assertEquals(count.poll(),record.getValue(create().count()));
+      assertEquals(count.poll(),record.getValue(count()));
     }
   }
 );

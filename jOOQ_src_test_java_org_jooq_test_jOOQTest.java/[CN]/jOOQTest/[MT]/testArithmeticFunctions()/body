@@ -55,14 +55,14 @@
   assertEquals("max(\"TABLE1\".\"ID1\") \"value\"",r_decI().render(max2));
   assertEquals("max(\"TABLE1\".\"ID1\") \"value\"",r_dec().render(max2));
   assertEquals(1,b_ref().bind(max2).peekIndex());
-  Field<Integer> count1=create.count();
+  Field<Integer> count1=count();
   assertEquals(Integer.class,count1.getType());
   assertEquals("count(*)",r_refI().render(count1));
   assertEquals("count(*)",r_ref().render(count1));
   assertEquals("count(*)",r_decI().render(count1));
   assertEquals("count(*)",r_dec().render(count1));
   assertEquals(1,b_ref().bind(count1).peekIndex());
-  Field<Integer> count1a=create.count().as("cnt");
+  Field<Integer> count1a=count().as("cnt");
   assertEquals(Integer.class,count1a.getType());
   assertEquals("\"cnt\"",r_refI().render(count1a));
   assertEquals("\"cnt\"",r_ref().render(count1a));

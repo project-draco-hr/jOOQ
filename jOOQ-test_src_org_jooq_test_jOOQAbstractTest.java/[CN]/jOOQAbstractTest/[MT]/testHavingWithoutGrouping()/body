@@ -1,7 +1,7 @@
 {
   try {
-    assertEquals(Integer.valueOf(1),create().selectOne().from(TBook()).where(TBook_AUTHOR_ID().equal(1)).having(create().count().greaterOrEqual(2)).fetchOne(0));
-    assertEquals(null,create().selectOne().from(TBook()).where(TBook_AUTHOR_ID().equal(1)).having(create().count().greaterOrEqual(3)).fetchOne(0));
+    assertEquals(Integer.valueOf(1),create().selectOne().from(TBook()).where(TBook_AUTHOR_ID().equal(1)).having(count().greaterOrEqual(2)).fetchOne(0));
+    assertEquals(null,create().selectOne().from(TBook()).where(TBook_AUTHOR_ID().equal(1)).having(count().greaterOrEqual(3)).fetchOne(0));
   }
  catch (  SQLException e) {
 switch (getDialect()) {

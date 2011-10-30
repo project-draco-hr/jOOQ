@@ -3,8 +3,8 @@ switch (context.getDialect()) {
 case MYSQL:
 case DERBY:
 {
-      context.bind(create(context).val(getOffset()));
-      context.bind(create(context).val(getNumberOfRows()));
+      context.bind(val(getOffset()));
+      context.bind(val(getNumberOfRows()));
       break;
     }
 case HSQLDB:
@@ -12,8 +12,8 @@ case H2:
 case POSTGRES:
 case SQLITE:
 {
-    context.bind(create(context).val(getNumberOfRows()));
-    context.bind(create(context).val(getOffset()));
+    context.bind(val(getNumberOfRows()));
+    context.bind(val(getOffset()));
     break;
   }
 case INGRES:
@@ -33,8 +33,8 @@ if (offset == 0) {
 }
 case ORACLE:
 {
-context.bind(create(context).val(getLowerRownum()));
-context.bind(create(context).val(getUpperRownum()));
+context.bind(val(getLowerRownum()));
+context.bind(val(getUpperRownum()));
 break;
 }
 }

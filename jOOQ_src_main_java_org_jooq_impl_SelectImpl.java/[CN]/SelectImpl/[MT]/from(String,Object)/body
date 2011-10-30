@@ -1,3 +1,3 @@
 {
-  return from(create().table(sql,bindings));
+  return from(table(sql,bindings));
 }

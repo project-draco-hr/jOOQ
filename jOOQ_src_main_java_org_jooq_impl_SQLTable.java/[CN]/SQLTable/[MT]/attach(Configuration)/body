@@ -1,4 +1,0 @@
-{
-  super.attach(configuration);
-  attachable.attach(configuration);
-}

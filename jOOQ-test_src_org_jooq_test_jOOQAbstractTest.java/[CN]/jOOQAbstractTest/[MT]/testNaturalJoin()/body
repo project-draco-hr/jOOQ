@@ -7,7 +7,7 @@ case SQLSERVER:
     log.info("SKIPPING","NATURAL JOIN tests");
   return;
 }
-Result<Record> result=create().select(TAuthor_LAST_NAME(),TBook_TITLE()).from(TBook()).naturalJoin(TAuthor()).orderBy(getDialect() == SQLDialect.ORACLE ? create().field("id") : TBook_ID()).fetch();
+Result<Record> result=create().select(TAuthor_LAST_NAME(),TBook_TITLE()).from(TBook()).naturalJoin(TAuthor()).orderBy(getDialect() == SQLDialect.ORACLE ? field("id") : TBook_ID()).fetch();
 assertEquals(2,result.size());
 assertEquals("1984",result.getValue(0,TBook_TITLE()));
 assertEquals("Orwell",result.getValue(0,TAuthor_LAST_NAME()));
@@ -19,7 +19,7 @@ log.info("SKIPPING","NATURAL OUTER JOIN tests");
 break;
 default :
 {
-result=create().select(TAuthor_LAST_NAME(),TBook_TITLE()).from(TBook()).naturalLeftOuterJoin(TAuthor()).orderBy(getDialect() == SQLDialect.ORACLE ? create().field("id") : TBook_ID()).fetch();
+result=create().select(TAuthor_LAST_NAME(),TBook_TITLE()).from(TBook()).naturalLeftOuterJoin(TAuthor()).orderBy(getDialect() == SQLDialect.ORACLE ? field("id") : TBook_ID()).fetch();
 assertEquals(4,result.size());
 assertEquals("1984",result.getValue(0,TBook_TITLE()));
 assertEquals("Orwell",result.getValue(0,TAuthor_LAST_NAME()));

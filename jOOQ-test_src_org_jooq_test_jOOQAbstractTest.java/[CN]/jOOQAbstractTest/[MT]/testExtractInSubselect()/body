@@ -1,5 +1,5 @@
 {
-  Field<Timestamp> now=create().currentTimestamp();
+  Field<Timestamp> now=currentTimestamp();
   Field<Integer> year=now.extract(DatePart.YEAR).as("y");
   Field<Integer> month=now.extract(DatePart.MONTH).as("m");
   Field<Integer> day=now.extract(DatePart.DAY).as("d");

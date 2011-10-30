@@ -4,6 +4,6 @@ case DERBY:
 case INGRES:
 case SQLITE:
 default :
-    return new Function<Integer>("ascii",SQLDataType.INTEGER,string);
+    return function("ascii",SQLDataType.INTEGER,string);
 }
 }

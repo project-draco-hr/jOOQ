@@ -7,7 +7,7 @@ case DB2:
 case POSTGRES:
 {
   for (  Field<?> field : record.getFields()) {
-    context.bind(create(context).val(record.getValue(field)));
+    context.bind(val(record.getValue(field)));
   }
   break;
 }

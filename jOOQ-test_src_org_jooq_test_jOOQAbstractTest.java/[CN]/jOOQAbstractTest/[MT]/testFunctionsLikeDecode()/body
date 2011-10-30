@@ -1,6 +1,6 @@
 {
-  Field<String> sNull=create().castNull(String.class);
-  Field<Integer> iNull=create().castNull(Integer.class);
+  Field<String> sNull=castNull(String.class);
+  Field<Integer> iNull=castNull(Integer.class);
   assertEquals("1",create().select(val("1").nullif("2")).fetchOne(0));
   assertEquals(null,create().select(val("1").nullif("1")).fetchOne(0));
   assertEquals("1","" + create().select(val(1).nullif(2)).fetchOne(0));

@@ -13,7 +13,7 @@ case DB2:
     median=TBook_ID().avg();
   break;
 }
-Result<Record> result=create().select(TBook_AUTHOR_ID(),create().count(),TBook_ID().count(),TBook_AUTHOR_ID().countDistinct(),TBook_ID().sum(),TBook_ID().avg(),TBook_ID().min(),TBook_ID().max(),median).from(TBook()).groupBy(TBook_AUTHOR_ID()).orderBy(TBook_AUTHOR_ID()).fetch();
+Result<Record> result=create().select(TBook_AUTHOR_ID(),count(),TBook_ID().count(),TBook_AUTHOR_ID().countDistinct(),TBook_ID().sum(),TBook_ID().avg(),TBook_ID().min(),TBook_ID().max(),median).from(TBook()).groupBy(TBook_AUTHOR_ID()).orderBy(TBook_AUTHOR_ID()).fetch();
 assertEquals(2,(int)result.getValueAsInteger(0,1));
 assertEquals(2,(int)result.getValueAsInteger(0,2));
 assertEquals(1,(int)result.getValueAsInteger(0,3));

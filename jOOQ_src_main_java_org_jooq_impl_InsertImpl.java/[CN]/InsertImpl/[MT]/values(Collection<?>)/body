@@ -1,3 +1,3 @@
 {
-  return values0(create().vals(values.toArray()));
+  return values0(vals(values.toArray()));
 }

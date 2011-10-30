@@ -1,6 +1,6 @@
 {
   if (value == null) {
-    setField(parameter,this.val(null,parameter));
+    setField(parameter,val(null,parameter.getDataType()));
   }
  else {
     inValues.put(parameter,value);

@@ -10,5 +10,5 @@
   this.array=array;
   this.alias=alias;
   this.field=new FieldList();
-  this.field.add(create().field("COLUMN_VALUE",arrayType));
+  this.field.add(field("COLUMN_VALUE",arrayType));
 }

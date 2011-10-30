@@ -1,6 +1,6 @@
 {
-  Field<?> f1=create.field("DECODE(TABLE1.ID, 1, 'a', 'b')");
-  Field<?> f2=create.field("DECODE(TABLE1.ID, 1, ?, ?)","a","b");
+  Field<?> f1=field("DECODE(TABLE1.ID, 1, 'a', 'b')");
+  Field<?> f2=field("DECODE(TABLE1.ID, 1, ?, ?)","a","b");
   assertEquals("DECODE(TABLE1.ID, 1, 'a', 'b')",r_refI().render(f1));
   assertEquals("DECODE(TABLE1.ID, 1, 'a', 'b')",r_ref().render(f1));
   assertEquals("DECODE(TABLE1.ID, 1, 'a', 'b')",r_refI().render(f2));

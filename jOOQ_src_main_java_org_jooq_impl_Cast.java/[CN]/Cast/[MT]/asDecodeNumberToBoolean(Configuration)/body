@@ -1,3 +1,0 @@
-{
-  return create(configuration).decode().value((Field<Integer>)field).when(literal(0),literal(false)).when(literal((Integer)null),literal((Boolean)null)).otherwise(literal(true));
-}

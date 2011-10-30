@@ -1,3 +1,3 @@
 {
-  return new Function<BigDecimal>("acos",SQLDataType.NUMERIC,this);
+  return function("acos",SQLDataType.NUMERIC,this);
 }

@@ -1,17 +1,17 @@
 {
-  Field<Integer> f1=create.val(Integer.valueOf(1));
+  Field<Integer> f1=val(Integer.valueOf(1));
   assertEquals(Integer.class,f1.getType());
   assertEquals("1",r_refI().render(f1));
   assertEquals("?",r_ref().render(f1));
   assertEquals("1",r_decI().render(f1));
   assertEquals("?",r_dec().render(f1));
-  Field<String> f2=create.val("test's");
+  Field<String> f2=val("test's");
   assertEquals(String.class,f2.getType());
   assertEquals("'test''s'",r_refI().render(f2));
   assertEquals("?",r_ref().render(f2));
   assertEquals("'test''s'",r_decI().render(f2));
   assertEquals("?",r_dec().render(f2));
-  Field<Integer> f3=create.val(Integer.valueOf(1)).as("value");
+  Field<Integer> f3=val(Integer.valueOf(1)).as("value");
   assertEquals(Integer.class,f3.getType());
   assertEquals("\"value\"",r_refI().render(f3));
   assertEquals("\"value\"",r_ref().render(f3));

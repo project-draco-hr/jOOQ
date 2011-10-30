@@ -1,3 +1,0 @@
-{
-  return create().val(value,type);
-}

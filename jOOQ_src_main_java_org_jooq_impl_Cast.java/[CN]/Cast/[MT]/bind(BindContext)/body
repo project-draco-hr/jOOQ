@@ -1,11 +1,11 @@
 {
   if (context.getDialect() == SQLDialect.DERBY) {
     if (field.getDataType().isNumeric() && BOOLEAN.equals(getSQLDataType())) {
-      context.bind(asDecodeNumberToBoolean(context));
+      context.bind(asDecodeNumberToBoolean());
       return;
     }
  else     if (field.getDataType().isString() && BOOLEAN.equals(getSQLDataType())) {
-      context.bind(asDecodeVarcharToBoolean(context));
+      context.bind(asDecodeVarcharToBoolean());
       return;
     }
   }

@@ -1,6 +1,6 @@
 {
   reset=false;
-  Field<Integer> n=create().castNull(Integer.class);
+  Field<Integer> n=castNull(Integer.class);
   Field<Integer> c=val(1);
   assertEquals(null,create().select(n).fetchOne(n));
   assertEquals(Integer.valueOf(1),create().select(c).from(TAuthor()).where(TAuthor_ID().equal(1)).and(n.isNull()).fetchOne(c));

@@ -3,6 +3,6 @@ switch (configuration.getDialect()) {
 case SQLITE:
     return argument.sub(0.499999999999999).round();
 default :
-  return new Function<T>("floor",getDataType(),argument);
+  return function("floor",getDataType(),argument);
 }
 }

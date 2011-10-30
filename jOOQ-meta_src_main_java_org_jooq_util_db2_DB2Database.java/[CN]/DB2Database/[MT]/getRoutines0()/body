@@ -1,6 +1,6 @@
 {
   List<RoutineDefinition> result=new ArrayList<RoutineDefinition>();
-  for (  Record record : create().select().from(create().select(PROCNAME.as("name"),create().val(true).as("isProcedure")).from(PROCEDURES).where(PROCSCHEMA.equal(getSchemaName())).unionAll(create().select(FUNCNAME.as("name"),create().val(false).as("isProcedure")).from(FUNCTIONS).where(FUNCSCHEMA.equal(getSchemaName())))).orderBy(create().literal(1)).fetch()) {
+  for (  Record record : create().select().from(create().select(PROCNAME.as("name"),val(true).as("isProcedure")).from(PROCEDURES).where(PROCSCHEMA.equal(getSchemaName())).unionAll(create().select(FUNCNAME.as("name"),val(false).as("isProcedure")).from(FUNCTIONS).where(FUNCSCHEMA.equal(getSchemaName())))).orderBy(Factory.literal(1)).fetch()) {
     result.add(new DB2RoutineDefinition(this,record.getValueAsString("name"),null,record.getValueAsBoolean("isProcedure")));
   }
   return result;

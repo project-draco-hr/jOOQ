@@ -1,7 +1,7 @@
 {
   List<ColumnDefinition> result=new ArrayList<ColumnDefinition>();
-  Field<Integer> identity=create().field("c.is_identity",Integer.class);
-  for (  Record record : create().select(Columns.COLUMN_NAME,Columns.ORDINAL_POSITION,Columns.DATA_TYPE,Columns.NUMERIC_PRECISION,Columns.NUMERIC_SCALE,identity).from(COLUMNS).join("sys.objects o").on("o.type in ('U', 'V')").and(Columns.TABLE_NAME.equal(create().field("o.name",String.class))).join("sys.columns c").on("c.object_id = o.object_id").and(Columns.COLUMN_NAME.equal(create().field("c.name",String.class))).where(Columns.TABLE_SCHEMA.equal(getSchemaName())).and(Columns.TABLE_NAME.equal(getName())).orderBy(Columns.ORDINAL_POSITION).fetch()) {
+  Field<Integer> identity=field("c.is_identity",Integer.class);
+  for (  Record record : create().select(Columns.COLUMN_NAME,Columns.ORDINAL_POSITION,Columns.DATA_TYPE,Columns.NUMERIC_PRECISION,Columns.NUMERIC_SCALE,identity).from(COLUMNS).join("sys.objects o").on("o.type in ('U', 'V')").and(Columns.TABLE_NAME.equal(field("o.name",String.class))).join("sys.columns c").on("c.object_id = o.object_id").and(Columns.COLUMN_NAME.equal(field("c.name",String.class))).where(Columns.TABLE_SCHEMA.equal(getSchemaName())).and(Columns.TABLE_NAME.equal(getName())).orderBy(Columns.ORDINAL_POSITION).fetch()) {
     DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),record.getValue(Columns.DATA_TYPE),record.getValue(Columns.NUMERIC_PRECISION),record.getValue(Columns.NUMERIC_SCALE),"");
     ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getName()),record.getValue(Columns.COLUMN_NAME),record.getValueAsInteger(Columns.ORDINAL_POSITION),type,1 == record.getValue(identity),null);
     result.add(column);

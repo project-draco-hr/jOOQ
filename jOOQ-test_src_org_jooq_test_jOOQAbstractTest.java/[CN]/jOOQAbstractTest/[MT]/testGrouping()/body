@@ -1,14 +1,14 @@
 {
-  Field<Integer> count=create().count().as("c");
+  Field<Integer> count=count().as("c");
   Result<Record> result=create().select(TBook_AUTHOR_ID(),count).from(TBook()).groupBy(TBook_AUTHOR_ID()).fetch();
   assertEquals(2,result.size());
   assertEquals(2,(int)result.get(0).getValue(count));
   assertEquals(2,(int)result.get(1).getValue(count));
-  result=create().select(TAuthor_LAST_NAME(),count).from(TBook()).join(TAuthor()).on(TBook_AUTHOR_ID().equal(TAuthor_ID())).where(TBook_TITLE().notEqual("1984")).groupBy(TAuthor_LAST_NAME()).having(create().count().equal(2)).fetch();
+  result=create().select(TAuthor_LAST_NAME(),count).from(TBook()).join(TAuthor()).on(TBook_AUTHOR_ID().equal(TAuthor_ID())).where(TBook_TITLE().notEqual("1984")).groupBy(TAuthor_LAST_NAME()).having(count().equal(2)).fetch();
   assertEquals(1,result.size());
   assertEquals(2,(int)result.getValue(0,count));
   assertEquals("Coelho",result.getValue(0,TAuthor_LAST_NAME()));
-  result=create().select(TAuthor_LAST_NAME(),count).from(TBook()).join(TAuthor()).on(TBook_AUTHOR_ID().equal(TAuthor_ID())).where(TBook_TITLE().notEqual("1984")).groupBy(TAuthor_LAST_NAME()).having(create().count().equal(2)).or(create().count().greaterOrEqual(2)).andExists(create().selectOne()).fetch();
+  result=create().select(TAuthor_LAST_NAME(),count).from(TBook()).join(TAuthor()).on(TBook_AUTHOR_ID().equal(TAuthor_ID())).where(TBook_TITLE().notEqual("1984")).groupBy(TAuthor_LAST_NAME()).having(count().equal(2)).or(count().greaterOrEqual(2)).andExists(create().selectOne()).fetch();
   assertEquals(1,result.size());
   assertEquals(2,(int)result.getValue(0,count));
   assertEquals("Coelho",result.getValue(0,TAuthor_LAST_NAME()));

@@ -1,8 +1,8 @@
 {
-  Field<String> foreignKey=create().field("fc.constraintname",String.class);
-  Field<String> foreignKeyTable=create().field("ft.tablename",String.class);
-  Field<?> foreignKeyDescriptor=create().field("fg.descriptor");
-  Field<String> uniqueKey=create().field("pc.constraintname",String.class);
+  Field<String> foreignKey=field("fc.constraintname",String.class);
+  Field<String> foreignKeyTable=field("ft.tablename",String.class);
+  Field<?> foreignKeyDescriptor=field("fg.descriptor");
+  Field<String> uniqueKey=field("pc.constraintname",String.class);
   for (  Record record : create().select(foreignKey,foreignKeyTable,foreignKeyDescriptor,uniqueKey).from("sys.sysconstraints   fc").join("sys.sysforeignkeys   f ").on("f.constraintid = fc.constraintid").join("sys.sysconglomerates fg").on("fg.conglomerateid = f.conglomerateid").join("sys.systables        ft").on("ft.tableid = fg.tableid").join("sys.sysconstraints   pc").on("pc.constraintid = f.keyconstraintid").where("fc.type = 'F'").fetch()) {
     String foreignKeyName=record.getValue(foreignKey);
     String foreignKeyTableName=record.getValue(foreignKeyTable);

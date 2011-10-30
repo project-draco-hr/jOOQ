@@ -14,7 +14,7 @@
       }
     }
     if (getFrom().isEmpty()) {
-      result.add(create().literal(1));
+      result.add(one());
     }
     return result;
   }

@@ -1,6 +1,6 @@
 {
-  Condition c1=create.condition("TABLE1.ID = 10");
-  Condition c2=create.condition("TABLE1.ID = ? and TABLE2.ID = ?",10,"20");
+  Condition c1=condition("TABLE1.ID = 10");
+  Condition c2=condition("TABLE1.ID = ? and TABLE2.ID = ?",10,"20");
   assertEquals("(TABLE1.ID = 10)",r_refI().render(c1));
   assertEquals("(TABLE1.ID = 10)",r_ref().render(c1));
   assertEquals("(TABLE1.ID = 10 and TABLE2.ID = '20')",r_refI().render(c2));

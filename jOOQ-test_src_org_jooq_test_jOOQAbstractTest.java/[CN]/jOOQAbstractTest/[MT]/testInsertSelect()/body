@@ -4,13 +4,13 @@
 switch (getDialect()) {
 case ORACLE:
 case POSTGRES:
-    nullField=create().cast(null,TAuthor_ADDRESS());
+    nullField=cast(null,TAuthor_ADDRESS());
   break;
 default :
-nullField=create().castNull(String.class);
+nullField=castNull(String.class);
 break;
 }
-Insert i=create().insertInto(TAuthor(),create().select(vals(1000,val("Lukas"))).select(vals("Eder",val(new Date(363589200000L)),create().castNull(Integer.class),nullField)));
+Insert i=create().insertInto(TAuthor(),create().select(vals(1000,val("Lukas"))).select(vals("Eder",val(new Date(363589200000L)),castNull(Integer.class),nullField)));
 i.execute();
 A author=create().fetchOne(TAuthor(),TAuthor_FIRST_NAME().equal("Lukas"));
 assertEquals("Lukas",author.getValue(TAuthor_FIRST_NAME()));

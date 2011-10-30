@@ -11,10 +11,10 @@ case ORACLE:
 case POSTGRES:
 case SQLSERVER:
 case SYBASE:
-    return create(configuration).one().exp();
+    return one().exp();
 case SQLITE:
-  return create(configuration).literal(Math.E,BigDecimal.class);
+  return literal(Math.E,BigDecimal.class);
 default :
-return new Function<BigDecimal>("e",getDataType());
+return function("e",getDataType());
 }
 }

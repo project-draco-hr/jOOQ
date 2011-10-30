@@ -11,7 +11,7 @@ case SQLITE:
   return;
 }
 int column=0;
-Result<Record> result=create().select(TBook_ID(),create().rowNumberOver().partitionByOne().orderBy(TBook_ID().desc()),create().rowNumberOver().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().desc())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
+Result<Record> result=create().select(TBook_ID(),rowNumberOver().partitionByOne().orderBy(TBook_ID().desc()),rowNumberOver().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().desc())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
 column++;
 assertEquals(Integer.valueOf(4),result.getValue(0,column));
 assertEquals(Integer.valueOf(3),result.getValue(1,column));
@@ -23,7 +23,7 @@ assertEquals(Integer.valueOf(1),result.getValue(1,column));
 assertEquals(Integer.valueOf(2),result.getValue(2,column));
 assertEquals(Integer.valueOf(1),result.getValue(3,column));
 column=0;
-result=create().select(TBook_ID(),create().countOver(),create().countOver().partitionBy(TBook_AUTHOR_ID())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
+result=create().select(TBook_ID(),countOver(),countOver().partitionBy(TBook_AUTHOR_ID())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
 column++;
 assertEquals(Integer.valueOf(4),result.getValue(0,column));
 assertEquals(Integer.valueOf(4),result.getValue(1,column));
@@ -35,7 +35,7 @@ assertEquals(Integer.valueOf(2),result.getValue(1,column));
 assertEquals(Integer.valueOf(2),result.getValue(2,column));
 assertEquals(Integer.valueOf(2),result.getValue(3,column));
 column=0;
-result=create().select(TBook_ID(),create().rankOver().orderBy(TBook_ID().desc()),create().rankOver().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().desc()),create().denseRankOver().orderBy(TBook_ID().desc()),create().denseRankOver().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().desc())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
+result=create().select(TBook_ID(),rankOver().orderBy(TBook_ID().desc()),rankOver().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().desc()),denseRankOver().orderBy(TBook_ID().desc()),denseRankOver().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().desc())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
 column++;
 assertEquals(Integer.valueOf(4),result.getValue(0,column));
 assertEquals(Integer.valueOf(3),result.getValue(1,column));
@@ -64,7 +64,7 @@ break;
 default :
 {
 column=0;
-result=create().select(TBook_ID(),create().percentRankOver().orderBy(TBook_ID().desc()),create().percentRankOver().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().desc()),create().cumeDistOver().orderBy(TBook_ID().desc()),create().cumeDistOver().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().desc())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
+result=create().select(TBook_ID(),percentRankOver().orderBy(TBook_ID().desc()),percentRankOver().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().desc()),cumeDistOver().orderBy(TBook_ID().desc()),cumeDistOver().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().desc())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
 column++;
 assertEquals("1",result.getValueAsString(0,column));
 assertEquals("0.6",result.getValueAsString(1,column).substring(0,3));

@@ -14,6 +14,6 @@ Field<String> f3=a2.getField(TAuthor_LAST_NAME());
 UpdateQuery<A> u=create().updateQuery(a1);
 u.addValue(f1,create().select(f3.max()).from(a2).where(f1.equal(f2)).<String>asField());
 u.execute();
-Field<Integer> c=create().count();
+Field<Integer> c=count();
 assertEquals(Integer.valueOf(2),create().select(c).from(TAuthor()).where(TAuthor_FIRST_NAME().equal(TAuthor_LAST_NAME())).fetchOne(c));
 }

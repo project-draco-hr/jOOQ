@@ -1,0 +1,12 @@
+{
+switch (configuration.getDialect()) {
+case DERBY:
+case INGRES:
+case POSTGRES:
+case SQLITE:
+    return function("random",SQLDataType.NUMERIC);
+case ORACLE:
+  return field("dbms_random.random",BigDecimal.class);
+}
+return function("rand",SQLDataType.NUMERIC);
+}

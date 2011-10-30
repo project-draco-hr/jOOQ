@@ -13,7 +13,7 @@
     }
     RenderContext local=create(attachable).renderContext();
     toSQLQualifiedName(local);
-    function=new Function<T>(local.render(),type,array);
+    function=function(local.render(),type,array);
   }
   return function;
 }

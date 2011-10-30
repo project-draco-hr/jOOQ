@@ -2,8 +2,8 @@
 switch (configuration.getDialect()) {
 case INGRES:
 case ORACLE:
-    return argument.cast(BigDecimal.class).mul(180).div(create(configuration).pi());
+    return argument.cast(BigDecimal.class).mul(literal(180)).div(pi());
 default :
-  return new Function<BigDecimal>("degrees",SQLDataType.NUMERIC,argument);
+  return function("degrees",SQLDataType.NUMERIC,argument);
 }
 }

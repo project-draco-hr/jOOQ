@@ -1,6 +1,6 @@
 {
   if (conditions.isEmpty()) {
-    context.sql(create().trueCondition());
+    context.sql(trueCondition());
   }
  else   if (conditions.size() == 1) {
     context.sql(conditions.get(0));

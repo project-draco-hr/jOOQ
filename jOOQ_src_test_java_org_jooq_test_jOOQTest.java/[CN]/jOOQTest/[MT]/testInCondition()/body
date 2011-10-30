@@ -1,8 +1,8 @@
 {
   Condition c=FIELD_ID1.in(new Integer[0]);
-  assertEquals(create.falseCondition(),c);
+  assertEquals(falseCondition(),c);
   c=FIELD_ID1.notIn(new Integer[0]);
-  assertEquals(create.trueCondition(),c);
+  assertEquals(trueCondition(),c);
   c=FIELD_ID1.in(1,10);
   assertEquals("\"TABLE1\".\"ID1\" in (1, 10)",r_refI().render(c));
   assertEquals("\"TABLE1\".\"ID1\" in (?, ?)",r_ref().render(c));

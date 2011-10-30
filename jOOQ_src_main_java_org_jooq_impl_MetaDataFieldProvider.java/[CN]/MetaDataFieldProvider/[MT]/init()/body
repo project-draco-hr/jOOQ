@@ -1,12 +1,11 @@
 {
-  Factory create=Factory.getNewFactory(configuration);
   int columnCount=0;
   try {
     columnCount=meta.getColumnCount();
   }
  catch (  SQLException e) {
     log.warn("Cannot fetch column count for cursor : " + e.getMessage());
-    fields.add(create.field("dummy",SQLDataType.OTHER));
+    fields.add(field("dummy",SQLDataType.OTHER));
   }
   try {
     for (int i=1; i <= columnCount; i++) {
@@ -21,7 +20,7 @@
  catch (      SQLDialectNotSupportedException ignore) {
         log.warn("Not supported by dialect",ignore.getMessage());
       }
-      fields.add(create.field(name,dataType));
+      fields.add(field(name,dataType));
     }
   }
  catch (  SQLException e) {

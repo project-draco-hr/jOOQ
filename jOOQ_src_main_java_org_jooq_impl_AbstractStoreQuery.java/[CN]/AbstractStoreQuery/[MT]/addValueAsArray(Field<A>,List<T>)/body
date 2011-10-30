@@ -1,6 +1,6 @@
 {
   if (value == null) {
-    getValues().put(field,create().val(null,field));
+    getValues().put(field,val(null,field));
   }
  else {
     try {

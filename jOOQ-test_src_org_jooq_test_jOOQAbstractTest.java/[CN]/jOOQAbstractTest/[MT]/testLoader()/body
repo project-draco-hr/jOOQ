@@ -1,7 +1,7 @@
 {
   reset=false;
   connection.setAutoCommit(false);
-  Field<Integer> count=create().count();
+  Field<Integer> count=count();
   Loader<A> loader=create().loadInto(TAuthor()).loadCSV("").fields(TAuthor_ID()).execute();
   assertEquals(0,loader.processed());
   assertEquals(0,loader.errors().size());

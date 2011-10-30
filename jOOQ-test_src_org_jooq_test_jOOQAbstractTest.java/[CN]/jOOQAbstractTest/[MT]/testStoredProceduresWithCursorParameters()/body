@@ -35,7 +35,7 @@ Field<Result<Record>> field=FGetOneCursorField(null);
 Result<Record> bFromCursor;
 switch (getDialect()) {
 case HSQLDB:
-bFromCursor=create().select().from(create().table(field)).fetch();
+bFromCursor=create().select().from(table(field)).fetch();
 break;
 default :
 bFromCursor=create().select(field).fetchOne(field);
@@ -47,7 +47,7 @@ assertEquals(0,bFromCursor.size());
 field=FGetOneCursorField(new Integer[]{1,2,4,6});
 switch (getDialect()) {
 case HSQLDB:
-bFromCursor=create().select().from(create().table(field)).fetch();
+bFromCursor=create().select().from(table(field)).fetch();
 break;
 default :
 bFromCursor=create().select(field).fetchOne(field);

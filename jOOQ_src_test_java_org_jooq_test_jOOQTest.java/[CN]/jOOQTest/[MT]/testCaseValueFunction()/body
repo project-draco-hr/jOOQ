@@ -1,5 +1,5 @@
 {
-  Case decode=create.decode();
+  Case decode=decode();
   CaseValueStep<Integer> value=decode.value(FIELD_ID1);
   CaseWhenStep<Integer,String> c=value.when(1,"one");
   assertEquals("case \"TABLE1\".\"ID1\" when 1 then 'one' end",r_refI().render(c));

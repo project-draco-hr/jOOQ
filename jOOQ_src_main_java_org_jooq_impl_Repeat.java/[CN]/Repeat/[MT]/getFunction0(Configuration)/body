@@ -5,8 +5,8 @@ case ORACLE:
     return string.rpad(string.length().mul(count),(Field<String>)string);
 case ASE:
 case SQLSERVER:
-  return new Function<String>("replicate",SQLDataType.VARCHAR,string,count);
+  return function("replicate",SQLDataType.VARCHAR,string,count);
 default :
-return new Function<String>("repeat",SQLDataType.VARCHAR,string,count);
+return function("repeat",SQLDataType.VARCHAR,string,count);
 }
 }
