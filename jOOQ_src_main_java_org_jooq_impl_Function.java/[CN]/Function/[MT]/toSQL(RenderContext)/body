@@ -3,7 +3,7 @@
   context.sql(getFNName(context.getDialect()));
   context.sql(getArgumentListDelimiter(context,"("));
   String separator="";
-  for (  NamedQueryPart field : arguments) {
+  for (  QueryPart field : arguments) {
     context.sql(separator);
     toSQLField(context,field);
     separator=", ";

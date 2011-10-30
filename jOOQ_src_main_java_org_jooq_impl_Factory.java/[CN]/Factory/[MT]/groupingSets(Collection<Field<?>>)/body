@@ -1,0 +1,7 @@
+{
+  WrappedList[] array=new WrappedList[fieldSets.length];
+  for (int i=0; i < fieldSets.length; i++) {
+    array[i]=new WrappedList(new FieldList(fieldSets[i]));
+  }
+  return new Function<Object>("grouping sets",SQLDataType.OTHER,array);
+}
