@@ -27,6 +27,6 @@
   Field<Timestamp> tomorrow=now.add(1);
   Field<Timestamp> yesterday=now.sub(1);
   record=create().select(tomorrow,ts,yesterday).fetchOne();
-  assertEquals(24 * 60 * 60 + 60 * 60,(record.getValue(ts).getTime() / 1000 - record.getValue(yesterday).getTime() / 1000));
+  assertEquals(24 * 60 * 60,(record.getValue(ts).getTime() / 1000 - record.getValue(yesterday).getTime() / 1000));
   assertEquals(24 * 60 * 60,(record.getValue(tomorrow).getTime() / 1000 - record.getValue(ts).getTime() / 1000));
 }
