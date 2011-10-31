@@ -1,0 +1,8 @@
+{
+switch (configuration.getDialect()) {
+case MYSQL:
+    return new WithRollup();
+default :
+  return function("rollup",Object.class,getArguments());
+}
+}
