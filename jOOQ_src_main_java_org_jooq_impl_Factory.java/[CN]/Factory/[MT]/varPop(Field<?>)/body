@@ -1,0 +1,3 @@
+{
+  return new Function<BigDecimal>(Term.VAR_POP,SQLDataType.NUMERIC,field);
+}

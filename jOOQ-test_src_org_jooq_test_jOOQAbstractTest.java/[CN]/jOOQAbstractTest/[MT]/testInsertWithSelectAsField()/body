@@ -9,8 +9,8 @@ case MYSQL:
   ID4=create().select(val(4)).asField();
 break;
 default :
-ID3=create().select(TAuthor_ID().max().add(1)).from(TAuthor()).asField();
-ID4=create().select(TAuthor_ID().max().add(1)).from(TAuthor()).asField();
+ID3=create().select(max(TAuthor_ID()).add(1)).from(TAuthor()).asField();
+ID4=create().select(max(TAuthor_ID()).add(1)).from(TAuthor()).asField();
 break;
 }
 create().insertInto(TAuthor(),TAuthor_ID(),TAuthor_LAST_NAME()).values(ID3,create().select(val("Hornby")).asField()).execute();

@@ -1,3 +1,0 @@
-{
-  return function("avg",SQLDataType.NUMERIC,this);
-}

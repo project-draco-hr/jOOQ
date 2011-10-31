@@ -15,5 +15,5 @@
   assertEquals(Integer.valueOf(2),records.getValue(0,books));
   assertEquals(Integer.valueOf(2),records.getValue(1,TAuthor_ID()));
   assertEquals(Integer.valueOf(2),records.getValue(1,books));
-  assertEquals("Coelho",create().select(TAuthor_LAST_NAME()).from(TAuthor()).where(val(0).equal(create().select(TBook_ID().count()).from(TBook()).where(TBook_AUTHOR_ID().equal(TAuthor_ID())).and(TBook_TITLE().equal("1984")))).limit(1).fetchOne(TAuthor_LAST_NAME()));
+  assertEquals("Coelho",create().select(TAuthor_LAST_NAME()).from(TAuthor()).where(val(0).equal(create().select(count(TBook_ID())).from(TBook()).where(TBook_AUTHOR_ID().equal(TAuthor_ID())).and(TBook_TITLE().equal("1984")))).limit(1).fetchOne(TAuthor_LAST_NAME()));
 }

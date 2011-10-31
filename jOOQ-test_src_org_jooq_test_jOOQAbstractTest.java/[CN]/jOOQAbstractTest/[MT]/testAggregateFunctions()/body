@@ -1,5 +1,5 @@
 {
-  Field<BigDecimal> median=TBook_ID().median();
+  Field<BigDecimal> median=median(TBook_ID());
 switch (getDialect()) {
 case ASE:
 case DERBY:
@@ -10,10 +10,10 @@ case SQLITE:
 case SQLSERVER:
 case POSTGRES:
 case DB2:
-    median=TBook_ID().avg();
+    median=avg(TBook_ID());
   break;
 }
-Result<Record> result=create().select(TBook_AUTHOR_ID(),count(),TBook_ID().count(),TBook_AUTHOR_ID().countDistinct(),TBook_ID().sum(),TBook_ID().avg(),TBook_ID().min(),TBook_ID().max(),median).from(TBook()).groupBy(TBook_AUTHOR_ID()).orderBy(TBook_AUTHOR_ID()).fetch();
+Result<Record> result=create().select(TBook_AUTHOR_ID(),count(),count(TBook_ID()),countDistinct(TBook_AUTHOR_ID()),sum(TBook_ID()),avg(TBook_ID()),min(TBook_ID()),max(TBook_ID()),median).from(TBook()).groupBy(TBook_AUTHOR_ID()).orderBy(TBook_AUTHOR_ID()).fetch();
 assertEquals(2,(int)result.getValueAsInteger(0,1));
 assertEquals(2,(int)result.getValueAsInteger(0,2));
 assertEquals(1,(int)result.getValueAsInteger(0,3));
@@ -37,7 +37,7 @@ log.info("SKIPPING","Statistical aggregate functions");
 break;
 default :
 {
-result=create().select(TBook_AUTHOR_ID(),TBook_ID().stddevPop(),TBook_ID().stddevSamp(),TBook_ID().varPop(),TBook_ID().varSamp()).from(TBook()).groupBy(TBook_AUTHOR_ID()).orderBy(TBook_AUTHOR_ID()).fetch();
+result=create().select(TBook_AUTHOR_ID(),stddevPop(TBook_ID()),stddevSamp(TBook_ID()),varPop(TBook_ID()),varSamp(TBook_ID())).from(TBook()).groupBy(TBook_AUTHOR_ID()).orderBy(TBook_AUTHOR_ID()).fetch();
 assertEquals(0.5,result.getValueAsDouble(0,1));
 assertEquals(0.25,result.getValueAsDouble(0,3));
 assertEquals(0.5,result.getValueAsDouble(1,1));
@@ -50,7 +50,7 @@ assertEquals(0.5,result.getValueAsDouble(1,4));
 }
 }
 }
-result=create().select(TBook_AUTHOR_ID(),TBook_ID().max(),TBook_ID().max()).from(TBook()).groupBy(TBook_AUTHOR_ID()).orderBy(TBook_AUTHOR_ID()).fetch();
+result=create().select(TBook_AUTHOR_ID(),max(TBook_ID()),max(TBook_ID())).from(TBook()).groupBy(TBook_AUTHOR_ID()).orderBy(TBook_AUTHOR_ID()).fetch();
 assertEquals(2,(int)result.getValueAsInteger(0,1));
 assertEquals(2,(int)result.getValueAsInteger(0,2));
 assertEquals(4,(int)result.getValueAsInteger(1,1));
