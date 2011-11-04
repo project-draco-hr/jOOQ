@@ -1,0 +1,3 @@
+{
+  return sinh(val(value));
+}

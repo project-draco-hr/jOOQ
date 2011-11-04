@@ -1,3 +1,0 @@
-{
-  return new Power(this,exponent);
-}

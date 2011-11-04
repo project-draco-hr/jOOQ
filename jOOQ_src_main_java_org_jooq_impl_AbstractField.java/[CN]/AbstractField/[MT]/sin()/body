@@ -1,3 +1,0 @@
-{
-  return function("sin",SQLDataType.NUMERIC,this);
-}

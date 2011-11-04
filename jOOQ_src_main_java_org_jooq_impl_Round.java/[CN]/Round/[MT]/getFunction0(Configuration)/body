@@ -3,12 +3,12 @@ switch (configuration.getDialect()) {
 case DERBY:
 {
       if (decimals == 0) {
-        return Factory.decode().when(argument.sub((Field<? extends Number>)argument.floor()).lessThan((T)Double.valueOf(0.5)),argument.floor()).otherwise(argument.ceil());
+        return Factory.decode().when(argument.sub(floor(argument)).lessThan((T)Double.valueOf(0.5)),floor(argument)).otherwise(ceil(argument));
       }
  else {
         Field<BigDecimal> factor=Factory.val(BigDecimal.ONE.movePointRight(decimals));
         Field<T> mul=argument.mul(factor);
-        return Factory.decode().when(mul.sub((Field<? extends Number>)mul.floor()).lessThan((T)Double.valueOf(0.5)),mul.floor().div(factor)).otherwise(mul.ceil().div(factor));
+        return Factory.decode().when(mul.sub(floor(mul)).lessThan((T)Double.valueOf(0.5)),floor(mul).div(factor)).otherwise(ceil(mul).div(factor));
       }
     }
 case ASE:

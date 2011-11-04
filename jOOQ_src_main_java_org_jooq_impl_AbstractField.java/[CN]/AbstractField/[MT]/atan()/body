@@ -1,3 +1,0 @@
-{
-  return function("atan",SQLDataType.NUMERIC,this);
-}

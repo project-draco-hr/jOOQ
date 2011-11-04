@@ -1,3 +1,0 @@
-{
-  return mul(2).exp().add(1).div(mul(2).exp().sub(1));
-}

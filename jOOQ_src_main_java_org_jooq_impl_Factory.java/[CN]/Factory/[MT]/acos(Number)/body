@@ -1,0 +1,3 @@
+{
+  return acos(val(value));
+}

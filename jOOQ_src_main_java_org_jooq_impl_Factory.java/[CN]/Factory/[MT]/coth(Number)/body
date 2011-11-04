@@ -1,0 +1,3 @@
+{
+  return coth(val(value));
+}

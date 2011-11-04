@@ -11,7 +11,7 @@ case ORACLE:
 case POSTGRES:
 case SQLSERVER:
 case SYBASE:
-    return one().exp();
+    return exp(one());
 case SQLITE:
   return literal(Math.E,BigDecimal.class);
 default :

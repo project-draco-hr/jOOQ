@@ -1,6 +1,0 @@
-{
-  if (y == null) {
-    return atan2((Number)null);
-  }
-  return new Function<BigDecimal>(Term.ATAN2,SQLDataType.NUMERIC,this,y);
-}

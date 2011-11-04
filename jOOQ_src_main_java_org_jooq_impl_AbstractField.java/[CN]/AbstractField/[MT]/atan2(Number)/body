@@ -1,3 +1,0 @@
-{
-  return atan2(val(y));
-}

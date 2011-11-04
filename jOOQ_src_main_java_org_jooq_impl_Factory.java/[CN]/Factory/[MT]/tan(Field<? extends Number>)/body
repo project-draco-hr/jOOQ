@@ -1,0 +1,3 @@
+{
+  return function("tan",SQLDataType.NUMERIC,field);
+}

@@ -1,3 +1,0 @@
-{
-  return function("exp",SQLDataType.NUMERIC,this);
-}

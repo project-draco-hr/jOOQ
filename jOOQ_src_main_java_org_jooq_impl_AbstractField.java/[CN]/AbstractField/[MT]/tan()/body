@@ -1,3 +1,0 @@
-{
-  return function("tan",SQLDataType.NUMERIC,this);
-}

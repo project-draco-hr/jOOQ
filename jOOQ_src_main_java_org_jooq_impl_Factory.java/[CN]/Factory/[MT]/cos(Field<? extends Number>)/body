@@ -1,0 +1,3 @@
+{
+  return function("cos",SQLDataType.NUMERIC,field);
+}

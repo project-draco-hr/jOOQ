@@ -2,7 +2,7 @@
 switch (configuration.getDialect()) {
 case DB2:
 case ORACLE:
-    return one().asin().mul(two());
+    return asin(one()).mul(two());
 case SQLITE:
   return literal(Math.PI,BigDecimal.class);
 default :

@@ -1,0 +1,3 @@
+{
+  return function("asin",SQLDataType.NUMERIC,field);
+}
