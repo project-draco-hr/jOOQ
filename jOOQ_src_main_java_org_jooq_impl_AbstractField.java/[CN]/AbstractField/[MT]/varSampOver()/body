@@ -1,3 +1,0 @@
-{
-  return new WindowFunction<BigDecimal>(Term.VAR_SAMP,SQLDataType.NUMERIC,this);
-}

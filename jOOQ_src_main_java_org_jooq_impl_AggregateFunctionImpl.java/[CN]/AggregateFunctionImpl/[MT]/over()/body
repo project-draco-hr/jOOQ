@@ -1,3 +1,8 @@
 {
-  return new WindowFunction<T>(getName(),getDataType(),getArguments());
+  if (getTerm() != null) {
+    return new WindowFunction<T>(getTerm(),getDataType(),getArguments());
+  }
+ else {
+    return new WindowFunction<T>(getName(),getDataType(),getArguments());
+  }
 }

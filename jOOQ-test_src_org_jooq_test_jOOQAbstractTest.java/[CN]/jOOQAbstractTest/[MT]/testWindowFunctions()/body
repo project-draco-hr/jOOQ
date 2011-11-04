@@ -101,7 +101,7 @@ assertEquals(Integer.valueOf(2),result.getValue(1,column));
 assertEquals(Integer.valueOf(4),result.getValue(2,column));
 assertEquals(Integer.valueOf(4),result.getValue(3,column));
 column=0;
-result=create().select(TBook_ID(),TBook_ID().stddevPopOver().partitionByOne(),TBook_ID().stddevSampOver().partitionByOne(),TBook_ID().varPopOver().partitionByOne(),TBook_ID().varSampOver().partitionByOne(),TBook_ID().stddevPopOver().partitionBy(TBook_AUTHOR_ID()),TBook_ID().stddevSampOver().partitionBy(TBook_AUTHOR_ID()),TBook_ID().varPopOver().partitionBy(TBook_AUTHOR_ID()),TBook_ID().varSampOver().partitionBy(TBook_AUTHOR_ID())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
+result=create().select(TBook_ID(),stddevPop(TBook_ID()).over().partitionByOne(),stddevSamp(TBook_ID()).over().partitionByOne(),varPop(TBook_ID()).over().partitionByOne(),varSamp(TBook_ID()).over().partitionByOne(),stddevPop(TBook_ID()).over().partitionBy(TBook_AUTHOR_ID()),stddevSamp(TBook_ID()).over().partitionBy(TBook_AUTHOR_ID()),varPop(TBook_ID()).over().partitionBy(TBook_AUTHOR_ID()),varSamp(TBook_ID()).over().partitionBy(TBook_AUTHOR_ID())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
 assertEquals("1.118",result.getValueAsString(0,1).substring(0,5));
 assertEquals(1.25,result.getValueAsDouble(0,3));
 assertEquals(0.5,result.getValueAsDouble(0,5));
