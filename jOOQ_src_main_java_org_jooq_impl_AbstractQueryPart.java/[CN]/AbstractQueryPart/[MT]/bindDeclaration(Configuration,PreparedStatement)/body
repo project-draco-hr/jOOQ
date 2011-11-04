@@ -1,3 +1,0 @@
-{
-  return bindDeclaration(configuration,stmt,1);
-}

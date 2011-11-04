@@ -28,7 +28,7 @@
     record.refreshUsing(T785_VALUE());
     fail();
   }
- catch (  SQLException expected) {
+ catch (  DataAccessException expected) {
   }
   try {
     record=create().newRecord(T785());
@@ -36,7 +36,7 @@
     record.refreshUsing(T785_ID());
     fail();
   }
- catch (  SQLException expected) {
+ catch (  DataAccessException expected) {
   }
   record=create().newRecord(T785());
   record.setValue(T785_ID(),1);

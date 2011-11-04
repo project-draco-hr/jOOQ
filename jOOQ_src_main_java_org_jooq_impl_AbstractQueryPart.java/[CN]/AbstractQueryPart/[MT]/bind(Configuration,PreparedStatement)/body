@@ -1,3 +1,0 @@
-{
-  return bind(configuration,stmt,1);
-}

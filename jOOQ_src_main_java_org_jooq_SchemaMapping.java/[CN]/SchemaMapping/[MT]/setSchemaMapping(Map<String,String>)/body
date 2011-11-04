@@ -1,0 +1,6 @@
+{
+  for (  String generatedSchemaName : schemaMap.keySet()) {
+    String configuredSchemaName=schemaMap.get(generatedSchemaName);
+    add(new SchemaImpl(generatedSchemaName),new SchemaImpl(configuredSchemaName));
+  }
+}

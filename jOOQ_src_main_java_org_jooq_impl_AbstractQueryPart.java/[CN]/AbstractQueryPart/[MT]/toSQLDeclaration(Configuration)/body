@@ -1,3 +1,0 @@
-{
-  return toSQLDeclaration(configuration,false);
-}

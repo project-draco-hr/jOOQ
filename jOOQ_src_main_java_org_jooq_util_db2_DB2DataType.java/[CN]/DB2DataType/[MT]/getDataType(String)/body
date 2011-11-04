@@ -1,3 +1,0 @@
-{
-  return getDataType(SQLDialect.DB2,typeName);
-}

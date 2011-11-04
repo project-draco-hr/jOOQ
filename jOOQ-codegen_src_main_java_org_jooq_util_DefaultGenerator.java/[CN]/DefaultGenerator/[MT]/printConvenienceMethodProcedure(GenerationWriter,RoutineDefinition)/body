@@ -21,6 +21,7 @@
       out.println("OUT parameter");
     }
   }
+  printThrowsDataAccessException(out);
   out.println("\t */");
   out.print("\tpublic static ");
   if (procedure.getOutParameters().size() == 0) {
@@ -43,9 +44,7 @@
     out.print(" ");
     out.print(strategy.getJavaClassNameLC(parameter));
   }
-  out.print(") throws ");
-  out.print(SQLException.class);
-  out.println(" {");
+  out.println(") {");
   out.print("\t\t");
   out.print(strategy.getFullJavaClassName(procedure));
   out.print(" p = new ");

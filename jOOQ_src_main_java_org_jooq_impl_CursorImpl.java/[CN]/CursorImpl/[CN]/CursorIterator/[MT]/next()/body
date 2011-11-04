@@ -1,11 +1,6 @@
 {
   if (hasNext == null) {
-    try {
-      return fetch();
-    }
- catch (    SQLException e) {
-      throw new RuntimeException(e);
-    }
+    return fetch();
   }
   R result=next;
   hasNext=null;

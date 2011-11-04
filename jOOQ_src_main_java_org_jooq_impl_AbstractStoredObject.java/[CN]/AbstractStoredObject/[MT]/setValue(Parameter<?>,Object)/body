@@ -1,3 +1,0 @@
-{
-  setField(parameter,val(value,parameter.getDataType()));
-}

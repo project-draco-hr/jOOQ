@@ -1,3 +1,0 @@
-{
-  return (T)results.get(parameter);
-}

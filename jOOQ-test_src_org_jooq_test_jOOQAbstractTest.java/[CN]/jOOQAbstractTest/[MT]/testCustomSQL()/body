@@ -9,8 +9,13 @@
         context.sql(TBook_ID().getName() + " * ?");
       }
     }
-    @Override public void bind(    BindContext context) throws SQLException {
-      context.statement().setInt(context.nextIndex(),2);
+    @Override public void bind(    BindContext context){
+      try {
+        context.statement().setInt(context.nextIndex(),2);
+      }
+ catch (      SQLException e) {
+        throw translate("CustomCondition.bind",getSQL(),e);
+      }
     }
   }
 ;
@@ -26,9 +31,14 @@
         context.sql("?");
       }
     }
-    @Override public void bind(    BindContext context) throws SQLException {
-      context.bind(IDx2);
-      context.statement().setInt(context.nextIndex(),3);
+    @Override public void bind(    BindContext context){
+      try {
+        context.bind(IDx2);
+        context.statement().setInt(context.nextIndex(),3);
+      }
+ catch (      SQLException e) {
+        throw translate("CustomCondition.bind",getSQL(),e);
+      }
     }
   }
 ;

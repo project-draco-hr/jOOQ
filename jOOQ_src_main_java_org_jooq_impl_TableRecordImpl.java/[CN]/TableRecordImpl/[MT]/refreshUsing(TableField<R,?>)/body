@@ -10,6 +10,6 @@
     }
   }
  else {
-    throw new SQLException("Exactly one row expected for refresh. Record does not exist in database.");
+    throw new DataAccessException("Exactly one row expected for refresh. Record does not exist in database.");
   }
 }

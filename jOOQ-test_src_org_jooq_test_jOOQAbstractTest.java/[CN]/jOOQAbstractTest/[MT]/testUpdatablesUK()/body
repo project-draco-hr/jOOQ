@@ -4,7 +4,7 @@
   try {
     store.refresh();
   }
- catch (  SQLException expected) {
+ catch (  DataAccessException expected) {
   }
   store.setValue(TBookStore_NAME(),"R??sslitor");
   assertEquals(1,store.store());

@@ -2,7 +2,7 @@
   Map<String,Object> map=new LinkedHashMap<String,Object>();
   for (  Field<?> field : record.getFields()) {
     if (map.put(field.getName(),record.getValue(field)) != null) {
-      throw new SQLException("Field " + field.getName() + " is not unique in Record for "+ this);
+      throw new DataAccessException("Field " + field.getName() + " is not unique in Record for "+ this);
     }
   }
   return map;

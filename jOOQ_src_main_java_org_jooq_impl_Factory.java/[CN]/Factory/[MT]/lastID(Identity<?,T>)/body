@@ -1,3 +1,0 @@
-{
-  return select(max(identity.getField())).from(identity.getTable()).fetchOne(max(identity.getField()));
-}

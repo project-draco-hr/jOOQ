@@ -1,4 +1,0 @@
-{
-  inParameters.add(parameter);
-  inValues.put(parameter,val(null,parameter.getDataType()));
-}

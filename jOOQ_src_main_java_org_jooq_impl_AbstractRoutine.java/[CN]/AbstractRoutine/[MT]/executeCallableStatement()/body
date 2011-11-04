@@ -1,10 +1,11 @@
 {
   StopWatch watch=new StopWatch();
+  Configuration configuration=attachable.getConfiguration();
   CallableStatement statement=null;
+  String sql=null;
   try {
-    Configuration configuration=attachable.getConfiguration();
     Connection connection=configuration.getConnection();
-    String sql=create(configuration).render(this);
+    sql=create(configuration).render(this);
     watch.splitTrace("SQL rendered");
     if (log.isDebugEnabled())     log.debug("Executing routine",create(configuration).renderInlined(this));
     if (log.isTraceEnabled())     log.trace("Preparing statement",sql);
@@ -27,7 +28,10 @@
     watch.splitTrace("OUT params fetched");
     return 0;
   }
-  finally {
+ catch (  SQLException exc) {
+    throw translate("AbstractRoutine.executeCallableStatement",sql,exc);
+  }
+ finally {
     JooqUtil.safeClose(statement);
     watch.splitDebug("Routine executed");
   }

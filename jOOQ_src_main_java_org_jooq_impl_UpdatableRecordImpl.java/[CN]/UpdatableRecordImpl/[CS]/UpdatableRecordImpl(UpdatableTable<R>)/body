@@ -1,3 +1,3 @@
 {
-  this(table,null);
+  super(table);
 }

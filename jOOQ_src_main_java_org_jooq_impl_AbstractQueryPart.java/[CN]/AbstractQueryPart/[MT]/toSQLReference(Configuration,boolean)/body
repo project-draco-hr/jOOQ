@@ -1,6 +1,0 @@
-{
-  RenderContext context=new DefaultRenderContext(configuration);
-  context.inline(inlineParameters);
-  toSQL(context);
-  return context.render();
-}

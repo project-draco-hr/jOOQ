@@ -1,3 +1,0 @@
-{
-  this(Factory.getNewFactory(dialect),name,schema,null,type);
-}

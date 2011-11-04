@@ -1,4 +1,0 @@
-{
-  super(configuration,name,schema,pkg);
-  this.parameterIndexes=new HashMap<Parameter<?>,Integer>();
-}

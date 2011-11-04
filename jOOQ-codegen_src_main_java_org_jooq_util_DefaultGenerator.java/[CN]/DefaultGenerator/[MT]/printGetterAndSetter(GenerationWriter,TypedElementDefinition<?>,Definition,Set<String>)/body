@@ -38,9 +38,7 @@
             out.print("By");
             out.print(strategy.getJavaClassName(foreignKey.getKeyColumns().get(0)));
           }
-          out.print("() throws ");
-          out.print(SQLException.class);
-          out.println(" {");
+          out.println("() {");
           out.println("\t\treturn create()");
           out.print("\t\t\t.selectFrom(");
           out.print(strategy.getFullJavaIdentifierUC(referencing));
@@ -87,9 +85,7 @@
           out.print("By");
           out.print(strategy.getJavaClassName(column));
         }
-        out.print("() throws ");
-        out.print(SQLException.class);
-        out.println(" {");
+        out.println("() {");
         out.println("\t\treturn create()");
         out.print("\t\t\t.selectFrom(");
         out.print(strategy.getFullJavaIdentifierUC(referenced));

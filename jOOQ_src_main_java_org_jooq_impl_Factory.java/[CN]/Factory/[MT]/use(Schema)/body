@@ -1,7 +1,7 @@
 {
   int result=0;
   try {
-    String schemaName=schema.internalAPI(QueryPartInternal.class).toSQLReference(this,false);
+    String schemaName=render(schema);
 switch (dialect) {
 case DB2:
 case DERBY:

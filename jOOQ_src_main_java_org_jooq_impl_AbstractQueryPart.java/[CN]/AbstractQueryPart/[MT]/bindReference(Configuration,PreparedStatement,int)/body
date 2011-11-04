@@ -1,5 +1,0 @@
-{
-  BindContext context=new DefaultBindContext(configuration,stmt);
-  bind(context);
-  return context.peekIndex();
-}

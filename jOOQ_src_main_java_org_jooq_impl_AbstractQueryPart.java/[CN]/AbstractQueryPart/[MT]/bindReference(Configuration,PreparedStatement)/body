@@ -1,3 +1,0 @@
-{
-  return bindReference(configuration,stmt,1);
-}

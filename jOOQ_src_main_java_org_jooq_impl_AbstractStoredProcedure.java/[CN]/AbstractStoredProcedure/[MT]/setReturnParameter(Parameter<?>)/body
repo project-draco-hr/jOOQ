@@ -1,4 +1,0 @@
-{
-  returnParameter=parameter;
-  allParameters.add(parameter);
-}

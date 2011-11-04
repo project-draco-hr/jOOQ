@@ -13,8 +13,8 @@ create().selectFrom(TBookStore()).fetch();
 assertEquals(new BigInteger("4"),create().lastID());
 create().delete(TBookStore()).where(TBookStore_NAME().equal("R??sslitor")).execute();
 create().insertInto(TBookStore(),TBookStore_NAME()).values("Amazon").execute();
-assertEquals(5,create().lastID(TBookStore().getIdentity()));
-assertEquals(5,create().lastID(TBookStore().getIdentity()));
+assertEquals(5,create().lastID().intValue());
+assertEquals(5,create().lastID().intValue());
 create().insertInto(TAuthor(),TAuthor_ID(),TAuthor_LAST_NAME()).values(13,"Frisch").execute();
 switch (getDialect()) {
 case SQLITE:

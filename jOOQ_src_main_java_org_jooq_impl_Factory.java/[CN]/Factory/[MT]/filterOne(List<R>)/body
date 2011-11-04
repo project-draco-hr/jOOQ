@@ -6,6 +6,6 @@
     return list.get(0);
   }
  else {
-    throw new SQLException("Too many rows returned : " + list.size());
+    throw new DataAccessException("Too many rows returned : " + list.size());
   }
 }

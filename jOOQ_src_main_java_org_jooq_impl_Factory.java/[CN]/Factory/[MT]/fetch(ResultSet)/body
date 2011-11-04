@@ -1,4 +1,9 @@
 {
-  FieldProvider fields=new MetaDataFieldProvider(this,rs.getMetaData());
-  return new CursorImpl<Record>(this,fields,rs).fetchResult();
+  try {
+    FieldProvider fields=new MetaDataFieldProvider(this,rs.getMetaData());
+    return new CursorImpl<Record>(this,fields,rs).fetch();
+  }
+ catch (  SQLException e) {
+    throw JooqUtil.translate("Factory.fetch",null,e);
+  }
 }

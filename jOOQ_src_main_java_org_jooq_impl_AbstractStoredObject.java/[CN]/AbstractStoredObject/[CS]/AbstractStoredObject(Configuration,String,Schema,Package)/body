@@ -1,7 +1,0 @@
-{
-  super(name,schema);
-  this.attachable=new AttachableImpl(this,configuration);
-  this.pkg=pkg;
-  this.inParameters=new ArrayList<Parameter<?>>();
-  this.inValues=new HashMap<Parameter<?>,Field<?>>();
-}

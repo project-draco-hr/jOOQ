@@ -1,6 +1,0 @@
-{
-  super(SQLDialect.POSTGRES,PostgresSingleUDTOutParameterProcedure.this.getName(),PostgresSingleUDTOutParameterProcedure.this.getSchema(),(DataType<Object>)PostgresSingleUDTOutParameterProcedure.this.getOutParameters().get(0).getDataType());
-  for (  Parameter<?> p : PostgresSingleUDTOutParameterProcedure.this.getInParameters()) {
-    addInParameter(p);
-  }
-}

@@ -1,3 +1,0 @@
-{
-  return asField().as(alias);
-}

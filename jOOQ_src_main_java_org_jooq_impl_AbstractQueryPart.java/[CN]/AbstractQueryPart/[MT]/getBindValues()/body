@@ -1,9 +1,5 @@
 {
   BindValueCollector collector=new BindValueCollector();
-  try {
-    create(getConfiguration()).bind(this,collector);
-  }
- catch (  SQLException ignore) {
-  }
+  create(getConfiguration()).bind(this,collector);
   return collector.result;
 }

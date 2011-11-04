@@ -9,9 +9,13 @@
         ctx.sql("? = ?");
       }
     }
-    @Override public void bind(    BindContext ctx) throws SQLException {
-      ctx.statement().setInt(ctx.nextIndex(),1);
-      ctx.bindValues(1);
+    @Override public void bind(    BindContext ctx){
+      try {
+        ctx.statement().setInt(ctx.nextIndex(),1);
+        ctx.bindValues(1);
+      }
+ catch (      SQLException ignore) {
+      }
     }
   }
 ;

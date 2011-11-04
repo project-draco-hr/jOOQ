@@ -1,3 +1,0 @@
-{
-  return fetchResult(Integer.MAX_VALUE);
-}

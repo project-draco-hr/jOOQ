@@ -1,4 +1,0 @@
-{
-  attach(configuration);
-  return execute();
-}

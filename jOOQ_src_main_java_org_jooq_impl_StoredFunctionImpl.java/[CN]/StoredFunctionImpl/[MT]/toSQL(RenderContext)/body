@@ -1,3 +1,0 @@
-{
-  context.sql(create(context).select(asField()));
-}

@@ -9,7 +9,7 @@
         ctx.sql("?");
       }
     }
-    @Override public void bind(    BindContext ctx) throws SQLException {
+    @Override public void bind(    BindContext ctx){
       ctx.bindValues(1);
     }
   }

@@ -2,10 +2,11 @@
   StopWatch watch=new StopWatch();
   Connection connection=create.getConnection();
   Statement statement=null;
+  String sql=null;
   try {
     statement=connection.createStatement();
     for (    Query query : queries) {
-      String sql=create.renderInlined(query);
+      sql=create.renderInlined(query);
       watch.splitTrace("SQL rendered");
       if (log.isDebugEnabled())       log.debug("Adding batch",sql);
       statement.addBatch(sql);
@@ -14,7 +15,10 @@
     watch.splitTrace("Statement executed");
     return result;
   }
-  finally {
+ catch (  SQLException e) {
+    throw JooqUtil.translate("BatchMultiple.execute",sql,e);
+  }
+ finally {
     JooqUtil.safeClose(statement);
     watch.splitDebug("Statement executed");
   }

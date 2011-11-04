@@ -518,24 +518,6 @@
         out.print(strategy.getFullJavaIdentifierUC(table));
         out.println(");");
         out.println("\t}");
-        if (generateDeprecated()) {
-          out.println();
-          out.println("\t/**");
-          out.println("\t * Create an attached " + strategy.getJavaClassName(table,"Record"));
-          out.println("\t * @deprecated - 1.6.4 [#363, #789] - use the other constructor instead for unattached");
-          out.println("\t * records, or {@link org.jooq.impl.Factory#newRecord(org.jooq.Table)} for attached ones");
-          out.println("\t */");
-          out.println("\t@Deprecated");
-          out.print("\tpublic ");
-          out.print(strategy.getJavaClassName(table,"Record"));
-          out.print("(");
-          out.print(Configuration.class);
-          out.println(" configuration) {");
-          out.print("\t\tsuper(");
-          out.print(strategy.getFullJavaIdentifierUC(table));
-          out.println(", configuration);");
-          out.println("\t}");
-        }
         out.println("}");
         out.close();
       }

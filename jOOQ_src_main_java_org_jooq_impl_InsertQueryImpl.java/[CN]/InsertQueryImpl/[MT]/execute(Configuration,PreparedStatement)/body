@@ -62,7 +62,7 @@ break;
 }
 }
 CursorImpl<R> cursor=new CursorImpl<R>(configuration,returning,rs,statement,getInto().getRecordType());
-returned=cursor.fetchResult();
+returned=cursor.fetch();
 return result;
 }
 }
