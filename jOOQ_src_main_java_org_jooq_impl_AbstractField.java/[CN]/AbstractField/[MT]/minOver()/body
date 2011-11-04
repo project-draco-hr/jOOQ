@@ -1,3 +1,0 @@
-{
-  return new WindowFunction<T>("min",getDataType(),this);
-}

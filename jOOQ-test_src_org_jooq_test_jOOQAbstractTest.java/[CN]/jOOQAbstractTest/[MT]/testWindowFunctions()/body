@@ -11,7 +11,7 @@ case SQLITE:
   return;
 }
 int column=0;
-Result<Record> result=create().select(TBook_ID(),rowNumberOver().partitionByOne().orderBy(TBook_ID().desc()),rowNumberOver().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().desc())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
+Result<Record> result=create().select(TBook_ID(),rowNumber().over().partitionByOne().orderBy(TBook_ID().desc()),rowNumber().over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().desc())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
 column++;
 assertEquals(Integer.valueOf(4),result.getValue(0,column));
 assertEquals(Integer.valueOf(3),result.getValue(1,column));
@@ -23,7 +23,7 @@ assertEquals(Integer.valueOf(1),result.getValue(1,column));
 assertEquals(Integer.valueOf(2),result.getValue(2,column));
 assertEquals(Integer.valueOf(1),result.getValue(3,column));
 column=0;
-result=create().select(TBook_ID(),countOver(),countOver().partitionBy(TBook_AUTHOR_ID())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
+result=create().select(TBook_ID(),count().over(),count().over().partitionBy(TBook_AUTHOR_ID())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
 column++;
 assertEquals(Integer.valueOf(4),result.getValue(0,column));
 assertEquals(Integer.valueOf(4),result.getValue(1,column));
@@ -35,7 +35,7 @@ assertEquals(Integer.valueOf(2),result.getValue(1,column));
 assertEquals(Integer.valueOf(2),result.getValue(2,column));
 assertEquals(Integer.valueOf(2),result.getValue(3,column));
 column=0;
-result=create().select(TBook_ID(),rankOver().orderBy(TBook_ID().desc()),rankOver().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().desc()),denseRankOver().orderBy(TBook_ID().desc()),denseRankOver().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().desc())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
+result=create().select(TBook_ID(),rank().over().orderBy(TBook_ID().desc()),rank().over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().desc()),denseRank().over().orderBy(TBook_ID().desc()),denseRank().over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().desc())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
 column++;
 assertEquals(Integer.valueOf(4),result.getValue(0,column));
 assertEquals(Integer.valueOf(3),result.getValue(1,column));
@@ -64,7 +64,7 @@ break;
 default :
 {
 column=0;
-result=create().select(TBook_ID(),percentRankOver().orderBy(TBook_ID().desc()),percentRankOver().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().desc()),cumeDistOver().orderBy(TBook_ID().desc()),cumeDistOver().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().desc())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
+result=create().select(TBook_ID(),percentRank().over().orderBy(TBook_ID().desc()),percentRank().over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().desc()),cumeDist().over().orderBy(TBook_ID().desc()),cumeDist().over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().desc())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
 column++;
 assertEquals("1",result.getValueAsString(0,column));
 assertEquals("0.6",result.getValueAsString(1,column).substring(0,3));
@@ -89,7 +89,7 @@ break;
 }
 }
 column=0;
-result=create().select(TBook_ID(),TBook_ID().maxOver().partitionByOne(),TBook_ID().maxOver().partitionBy(TBook_AUTHOR_ID())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
+result=create().select(TBook_ID(),max(TBook_ID()).over().partitionByOne(),max(TBook_ID()).over().partitionBy(TBook_AUTHOR_ID())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
 column++;
 assertEquals(Integer.valueOf(4),result.getValue(0,column));
 assertEquals(Integer.valueOf(4),result.getValue(1,column));
@@ -117,7 +117,7 @@ if (getDialect() == SQLDialect.SQLSERVER) {
 log.info("SKIPPING","ROWS UNBOUNDED PRECEDING and similar tests");
 return;
 }
-result=create().select(TBook_ID(),TBook_ID().sumOver().partitionByOne(),TBook_ID().sumOver().partitionBy(TBook_AUTHOR_ID()),TBook_ID().sumOver().orderBy(TBook_ID().asc()).rowsBetweenUnboundedPreceding().andPreceding(1)).from(TBook()).orderBy(TBook_ID().asc()).fetch();
+result=create().select(TBook_ID(),sum(TBook_ID()).over().partitionByOne(),sum(TBook_ID()).over().partitionBy(TBook_AUTHOR_ID()),sum(TBook_ID()).over().orderBy(TBook_ID().asc()).rowsBetweenUnboundedPreceding().andPreceding(1)).from(TBook()).orderBy(TBook_ID().asc()).fetch();
 column++;
 assertEquals(new BigDecimal("10"),result.getValue(0,column));
 assertEquals(new BigDecimal("10"),result.getValue(1,column));
@@ -134,7 +134,7 @@ assertEquals(new BigDecimal("1"),result.getValue(1,column));
 assertEquals(new BigDecimal("3"),result.getValue(2,column));
 assertEquals(new BigDecimal("6"),result.getValue(3,column));
 column=0;
-result=create().select(TBook_ID(),TBook_ID().firstValue().over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_PUBLISHED_IN().asc()).rowsBetweenUnboundedPreceding().andUnboundedFollowing()).from(TBook()).orderBy(TBook_ID().asc()).fetch();
+result=create().select(TBook_ID(),firstValue(TBook_ID()).over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_PUBLISHED_IN().asc()).rowsBetweenUnboundedPreceding().andUnboundedFollowing()).from(TBook()).orderBy(TBook_ID().asc()).fetch();
 column++;
 assertEquals(Integer.valueOf(2),result.getValue(0,column));
 assertEquals(Integer.valueOf(2),result.getValue(1,column));
@@ -147,7 +147,7 @@ break;
 default :
 {
 column=0;
-result=create().select(TBook_ID(),TBook_ID().firstValue().ignoreNulls().over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_PUBLISHED_IN().asc()).rowsBetweenUnboundedPreceding().andUnboundedFollowing()).from(TBook()).orderBy(TBook_ID().asc()).fetch();
+result=create().select(TBook_ID(),firstValue(TBook_ID()).ignoreNulls().over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_PUBLISHED_IN().asc()).rowsBetweenUnboundedPreceding().andUnboundedFollowing()).from(TBook()).orderBy(TBook_ID().asc()).fetch();
 column++;
 assertEquals(Integer.valueOf(2),result.getValue(0,column));
 assertEquals(Integer.valueOf(2),result.getValue(1,column));
@@ -163,7 +163,7 @@ break;
 default :
 {
 column=0;
-result=create().select(TBook_ID(),TBook_ID().lead().over().partitionByOne().orderBy(TBook_ID().asc()),TBook_ID().lead().over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().asc()),TBook_ID().lead(2).over().partitionByOne().orderBy(TBook_ID().asc()),TBook_ID().lead(2).over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().asc()),TBook_ID().lead(2,55).over().partitionByOne().orderBy(TBook_ID().asc()),TBook_ID().lead(2,55).over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().asc()),TBook_ID().lag().over().partitionByOne().orderBy(TBook_ID().asc()),TBook_ID().lag().over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().asc()),TBook_ID().lag(2).over().partitionByOne().orderBy(TBook_ID().asc()),TBook_ID().lag(2).over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().asc()),TBook_ID().lag(2,val(55)).over().partitionByOne().orderBy(TBook_ID().asc()),TBook_ID().lag(2,val(55)).over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().asc())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
+result=create().select(TBook_ID(),lead(TBook_ID()).over().partitionByOne().orderBy(TBook_ID().asc()),lead(TBook_ID()).over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().asc()),lead(TBook_ID(),2).over().partitionByOne().orderBy(TBook_ID().asc()),lead(TBook_ID(),2).over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().asc()),lead(TBook_ID(),2,55).over().partitionByOne().orderBy(TBook_ID().asc()),lead(TBook_ID(),2,55).over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().asc()),lag(TBook_ID()).over().partitionByOne().orderBy(TBook_ID().asc()),lag(TBook_ID()).over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().asc()),lag(TBook_ID(),2).over().partitionByOne().orderBy(TBook_ID().asc()),lag(TBook_ID(),2).over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().asc()),lag(TBook_ID(),2,val(55)).over().partitionByOne().orderBy(TBook_ID().asc()),lag(TBook_ID(),2,val(55)).over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().asc())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
 column++;
 assertEquals(2,result.getValue(0,column));
 assertEquals(3,result.getValue(1,column));

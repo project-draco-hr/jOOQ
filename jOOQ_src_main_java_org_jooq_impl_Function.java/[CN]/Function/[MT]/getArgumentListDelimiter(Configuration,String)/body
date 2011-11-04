@@ -2,7 +2,7 @@
 switch (configuration.getDialect()) {
 case ORACLE:
 case DB2:
-    if (arguments.isEmpty()) {
+    if (arguments.length == 0) {
       return "";
     }
  else {

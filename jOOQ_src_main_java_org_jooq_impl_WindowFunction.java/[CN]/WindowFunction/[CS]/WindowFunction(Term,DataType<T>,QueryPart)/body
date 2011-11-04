@@ -1,0 +1,7 @@
+{
+  super(term.name().toLowerCase(),type);
+  this.partitionBy=new FieldList();
+  this.orderBy=new SortFieldList();
+  this.arguments=new QueryPartList<QueryPart>(Arrays.asList(arguments));
+  this.term=term;
+}

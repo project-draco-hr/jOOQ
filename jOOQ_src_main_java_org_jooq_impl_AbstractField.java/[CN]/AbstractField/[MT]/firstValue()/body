@@ -1,3 +1,0 @@
-{
-  return new WindowFunction<T>("first_value",getDataType(),this);
-}

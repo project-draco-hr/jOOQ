@@ -1,0 +1,3 @@
+{
+  return lead(field,offset,val(defaultValue));
+}

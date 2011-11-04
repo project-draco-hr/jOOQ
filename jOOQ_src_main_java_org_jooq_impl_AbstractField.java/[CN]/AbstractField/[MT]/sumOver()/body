@@ -1,3 +1,0 @@
-{
-  return new WindowFunction<BigDecimal>("sum",SQLDataType.NUMERIC,this);
-}

@@ -1,7 +1,0 @@
-{
-  super(name,type);
-  this.partitionBy=new FieldList();
-  this.orderBy=new SortFieldList();
-  this.arguments=new FieldList(Arrays.asList(arguments));
-  this.term=null;
-}

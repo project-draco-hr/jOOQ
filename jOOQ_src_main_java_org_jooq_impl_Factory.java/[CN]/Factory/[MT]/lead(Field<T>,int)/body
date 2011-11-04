@@ -1,0 +1,3 @@
+{
+  return new WindowFunction<T>("lead",field.getDataType(),field,literal(offset));
+}

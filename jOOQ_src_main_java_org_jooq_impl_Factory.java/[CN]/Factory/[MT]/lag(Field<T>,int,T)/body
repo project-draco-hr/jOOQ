@@ -1,0 +1,3 @@
+{
+  return lag(field,offset,val(defaultValue));
+}

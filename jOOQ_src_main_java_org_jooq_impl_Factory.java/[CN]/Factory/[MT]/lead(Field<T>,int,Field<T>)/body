@@ -1,0 +1,6 @@
+{
+  if (defaultValue == null) {
+    return lead(field,offset,(T)null);
+  }
+  return new WindowFunction<T>("lead",field.getDataType(),field,literal(offset),defaultValue);
+}

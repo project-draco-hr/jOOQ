@@ -1,3 +1,0 @@
-{
-  return new WindowFunction<Integer>("count",SQLDataType.INTEGER,this);
-}

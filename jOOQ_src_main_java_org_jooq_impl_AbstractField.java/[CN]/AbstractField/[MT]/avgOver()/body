@@ -1,3 +1,0 @@
-{
-  return new WindowFunction<BigDecimal>("avg",SQLDataType.NUMERIC,this);
-}
