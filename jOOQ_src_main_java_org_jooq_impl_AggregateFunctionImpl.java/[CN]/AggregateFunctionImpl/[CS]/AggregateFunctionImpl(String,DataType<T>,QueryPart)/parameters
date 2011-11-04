@@ -1,0 +1,3 @@
+String name
+DataType<T> type
+QueryPart arguments
