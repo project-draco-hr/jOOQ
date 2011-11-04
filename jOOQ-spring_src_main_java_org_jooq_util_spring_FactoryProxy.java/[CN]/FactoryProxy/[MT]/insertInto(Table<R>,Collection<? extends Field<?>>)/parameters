@@ -1,0 +1,2 @@
+Table<R> into
+Collection<? extends Field<?>> fields

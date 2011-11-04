@@ -1,0 +1,13 @@
+{
+  Connection conn=currentConnection.get();
+  if (conn != null) {
+    try {
+      conn.close();
+    }
+ catch (    SQLException ignore) {
+      log.warn("Could not close JDBC Connection",ignore);
+    }
+  }
+  currentFactory.remove();
+  currentConnection.remove();
+}

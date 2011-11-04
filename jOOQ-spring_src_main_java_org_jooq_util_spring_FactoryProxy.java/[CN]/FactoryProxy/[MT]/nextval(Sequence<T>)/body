@@ -1,0 +1,3 @@
+{
+  return getDelegate().nextval(sequence);
+}
