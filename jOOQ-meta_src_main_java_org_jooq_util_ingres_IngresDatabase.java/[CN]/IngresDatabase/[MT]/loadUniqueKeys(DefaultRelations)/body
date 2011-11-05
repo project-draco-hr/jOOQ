@@ -1,8 +1,8 @@
 {
   for (  Record record : fetchKeys("U")) {
-    String key=record.getValue(Iiconstraints.CONSTRAINT_NAME.trim());
-    String tableName=record.getValue(Iiconstraints.TABLE_NAME.trim());
-    String columnName=record.getValue(IiindexColumns.COLUMN_NAME.trim());
+    String key=record.getValue(trim(Iiconstraints.CONSTRAINT_NAME));
+    String tableName=record.getValue(trim(Iiconstraints.TABLE_NAME));
+    String columnName=record.getValue(trim(IiindexColumns.COLUMN_NAME));
     TableDefinition table=getTable(tableName);
     if (table != null) {
       relations.addPrimaryKey(key,table.getColumn(columnName));

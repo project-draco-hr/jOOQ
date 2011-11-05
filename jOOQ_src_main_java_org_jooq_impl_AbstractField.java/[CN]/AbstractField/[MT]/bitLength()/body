@@ -1,3 +1,0 @@
-{
-  return new Function<Integer>(Term.BIT_LENGTH,SQLDataType.INTEGER,this);
-}

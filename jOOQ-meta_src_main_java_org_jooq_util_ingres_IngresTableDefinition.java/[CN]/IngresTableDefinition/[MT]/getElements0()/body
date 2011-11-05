@@ -1,7 +1,7 @@
 {
   List<ColumnDefinition> result=new ArrayList<ColumnDefinition>();
-  for (  Record record : create().select(Iicolumns.COLUMN_SEQUENCE,Iicolumns.COLUMN_NAME.trim(),Iicolumns.COLUMN_DATATYPE.trim(),Iicolumns.COLUMN_LENGTH,Iicolumns.COLUMN_SCALE,Iicolumns.COLUMN_ALWAYS_IDENT,Iicolumns.COLUMN_BYDEFAULT_IDENT).from(IICOLUMNS).where(Iicolumns.TABLE_OWNER.equal(getSchemaName())).and(Iicolumns.TABLE_NAME.trim().equal(getName())).orderBy(Iicolumns.COLUMN_SEQUENCE).fetch()) {
-    String typeName=record.getValue(Iicolumns.COLUMN_DATATYPE.trim());
+  for (  Record record : create().select(Iicolumns.COLUMN_SEQUENCE,trim(Iicolumns.COLUMN_NAME),trim(Iicolumns.COLUMN_DATATYPE),Iicolumns.COLUMN_LENGTH,Iicolumns.COLUMN_SCALE,Iicolumns.COLUMN_ALWAYS_IDENT,Iicolumns.COLUMN_BYDEFAULT_IDENT).from(IICOLUMNS).where(Iicolumns.TABLE_OWNER.equal(getSchemaName())).and(trim(Iicolumns.TABLE_NAME).equal(getName())).orderBy(Iicolumns.COLUMN_SEQUENCE).fetch()) {
+    String typeName=record.getValue(trim(Iicolumns.COLUMN_DATATYPE));
     if (IngresDataType.INTEGER.getTypeName().equalsIgnoreCase(typeName)) {
 switch (record.getValue(Iicolumns.COLUMN_LENGTH)) {
 case 8:
@@ -26,7 +26,7 @@ break;
 }
 }
 DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),typeName,record.getValue(Iicolumns.COLUMN_LENGTH),record.getValue(Iicolumns.COLUMN_SCALE));
-ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getName()),record.getValue(Iicolumns.COLUMN_NAME.trim()),record.getValue(Iicolumns.COLUMN_SEQUENCE),type,record.getValueAsBoolean(Iicolumns.COLUMN_ALWAYS_IDENT,false) || record.getValueAsBoolean(Iicolumns.COLUMN_BYDEFAULT_IDENT,false),null);
+ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getName()),record.getValue(trim(Iicolumns.COLUMN_NAME)),record.getValue(Iicolumns.COLUMN_SEQUENCE),type,record.getValueAsBoolean(Iicolumns.COLUMN_ALWAYS_IDENT,false) || record.getValueAsBoolean(Iicolumns.COLUMN_BYDEFAULT_IDENT,false),null);
 result.add(column);
 }
 return result;

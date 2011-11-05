@@ -1,3 +1,0 @@
-{
-  return function("lower",SQLDataType.VARCHAR,this);
-}

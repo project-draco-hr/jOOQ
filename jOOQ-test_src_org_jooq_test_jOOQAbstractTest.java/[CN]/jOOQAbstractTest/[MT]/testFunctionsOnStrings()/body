@@ -1,17 +1,11 @@
 {
-  assertEquals("abc",create().select(val("abc").trim()).fetchOne(0));
-  assertEquals("abc",create().select(val("abc  ").trim()).fetchOne(0));
-  assertEquals("abc",create().select(val("  abc").trim()).fetchOne(0));
-  assertEquals("abc",create().select(val("  abc  ").trim()).fetchOne(0));
-  assertEquals("abc",create().select(val("a").concat("b","c")).fetchOne(0));
-  assertEquals("George Orwell",create().select(TAuthor_FIRST_NAME().concat(" ").concat(TAuthor_LAST_NAME())).from(TAuthor()).where(TAuthor_FIRST_NAME().equal("George")).fetchOne(0));
-  if (getDialect() != SQLDialect.DERBY) {
-    assertEquals("1ab45",create().select(val(1).concat("ab","45")).fetchOne(0));
-    assertEquals("1ab45",create().select(val(1).concat(val("ab"),val(45))).fetchOne(0));
-  }
- else {
-    log.info("SKIPPING","Concatenation with numbers");
-  }
+  assertEquals("abc",create().select(trim("abc")).fetchOne(0));
+  assertEquals("abc",create().select(trim("abc  ")).fetchOne(0));
+  assertEquals("abc",create().select(trim("  abc")).fetchOne(0));
+  assertEquals("abc",create().select(trim("  abc  ")).fetchOne(0));
+  assertEquals("abc",create().select(concat("a","b","c")).fetchOne(0));
+  assertEquals("George Orwell",create().select(concat(TAuthor_FIRST_NAME(),val(" "),TAuthor_LAST_NAME())).from(TAuthor()).where(TAuthor_FIRST_NAME().equal("George")).fetchOne(0));
+  assertEquals("1ab45",create().select(concat(val(1),val("ab"),val(45))).fetchOne(0));
   SelectQuery q=create().selectQuery();
   Field<String> constant=val("abc");
 switch (getDialect()) {
@@ -20,19 +14,19 @@ case DERBY:
   break;
 default :
 {
-  Field<String> x=constant.replace("b","x");
-  Field<String> y=constant.replace("b","y");
-  Field<String> z=constant.replace("b");
+  Field<String> x=replace(constant,"b","x");
+  Field<String> y=replace(constant,"b","y");
+  Field<String> z=replace(constant,"b");
   Record record=create().select(x,y,z).fetchOne();
   assertEquals("axc",record.getValue(x));
   assertEquals("ayc",record.getValue(y));
   assertEquals("ac",record.getValue(z));
 }
 }
-Field<Integer> length=constant.length();
-Field<Integer> charLength=constant.charLength();
-Field<Integer> bitLength=constant.bitLength();
-Field<Integer> octetLength=constant.octetLength();
+Field<Integer> length=length(constant);
+Field<Integer> charLength=charLength(constant);
+Field<Integer> bitLength=bitLength(constant);
+Field<Integer> octetLength=octetLength(constant);
 q.addSelect(length,charLength,bitLength,octetLength);
 q.execute();
 Record record=q.getResult().get(0);
@@ -56,7 +50,7 @@ log.info("SKIPPING","RPAD and LPAD functions");
 break;
 default :
 {
-Record result=create().select(val("aa").rpad(4),val("aa").rpad(4,'-'),val("aa").lpad(4),val("aa").lpad(4,'-')).fetchOne();
+Record result=create().select(rpad(val("aa"),4),rpad(val("aa"),4,"-"),lpad(val("aa"),4),lpad(val("aa"),4,"-")).fetchOne();
 assertEquals("aa  ",result.getValue(0));
 assertEquals("aa--",result.getValue(1));
 assertEquals("  aa",result.getValue(2));
@@ -64,14 +58,14 @@ assertEquals("--aa",result.getValue(3));
 break;
 }
 }
-Record result=create().select(val("abcde").substring(1),val("abcde").substring(1,2),val("abcde").substring(3),val("abcde").substring(3,2)).fetchOne();
+Record result=create().select(substring(val("abcde"),1),substring(val("abcde"),1,2),substring(val("abcde"),3),substring(val("abcde"),3,2)).fetchOne();
 assertEquals("abcde",result.getValue(0));
 assertEquals("ab",result.getValue(1));
 assertEquals("cde",result.getValue(2));
 assertEquals("cd",result.getValue(3));
-result=create().select(TAuthor_FIRST_NAME().substring(2),TAuthor_FIRST_NAME().substring(2,2)).from(TAuthor()).where(TAuthor_ID().equal(1)).fetchOne();
-assertEquals("eorge",result.getValue(TAuthor_FIRST_NAME().substring(2)));
-assertEquals("eo",result.getValue(TAuthor_FIRST_NAME().substring(2,2)));
+result=create().select(substring(TAuthor_FIRST_NAME(),2),substring(TAuthor_FIRST_NAME(),2,2)).from(TAuthor()).where(TAuthor_ID().equal(1)).fetchOne();
+assertEquals("eorge",result.getValue(substring(TAuthor_FIRST_NAME(),2)));
+assertEquals("eo",result.getValue(substring(TAuthor_FIRST_NAME(),2,2)));
 switch (getDialect()) {
 case DERBY:
 case SQLITE:
@@ -79,7 +73,7 @@ log.info("SKIPPING","REPEAT function");
 break;
 default :
 {
-result=create().select(val("a").repeat(1),val("ab").repeat(2),val("abc").repeat(3)).fetchOne();
+result=create().select(repeat("a",1),repeat("ab",2),repeat("abc",3)).fetchOne();
 assertEquals("a",result.getValue(0));
 assertEquals("abab",result.getValue(1));
 assertEquals("abcabcabc",result.getValue(2));
@@ -93,7 +87,7 @@ case SQLITE:
 log.info("SKIPPING","ASCII function test");
 break;
 default :
-record=create().select(val("A").ascii(),val("a").ascii(),val("-").ascii(),val(" ").ascii()).fetchOne();
+record=create().select(ascii("A"),ascii("a"),ascii("-"),ascii(" ")).fetchOne();
 assertEquals((int)'A',(int)record.getValueAsInteger(0));
 assertEquals((int)'a',(int)record.getValueAsInteger(1));
 assertEquals((int)'-',(int)record.getValueAsInteger(2));

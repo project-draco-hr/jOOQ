@@ -1,0 +1,3 @@
+{
+  return rpad(nullSafe(field),val(length),val(character));
+}

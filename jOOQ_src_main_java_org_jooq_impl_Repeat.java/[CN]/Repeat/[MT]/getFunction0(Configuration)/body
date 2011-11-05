@@ -2,7 +2,7 @@
 switch (configuration.getDialect()) {
 case INGRES:
 case ORACLE:
-    return string.rpad(string.length().mul(count),(Field<String>)string);
+    return rpad(string,length(string).mul(count),string);
 case ASE:
 case SQLSERVER:
   return function("replicate",SQLDataType.VARCHAR,string,count);

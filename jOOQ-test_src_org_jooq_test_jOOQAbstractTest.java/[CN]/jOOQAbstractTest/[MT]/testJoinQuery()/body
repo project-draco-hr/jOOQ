@@ -11,7 +11,7 @@
   q2.addFrom(a);
   q2.addJoin(b,b_authorID.equal(a_authorID));
   q2.addConditions(b_title.notEqual("1984"));
-  q2.addOrderBy(b_title.lower());
+  q2.addOrderBy(lower(b_title));
   int rows1=q1.execute();
   int rows2=q2.execute();
   assertEquals(3,rows1);

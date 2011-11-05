@@ -1,0 +1,3 @@
+{
+  return function("upper",SQLDataType.VARCHAR,nullSafe(field));
+}

@@ -5,7 +5,7 @@
   }
   SelectQuery q=create().selectQuery();
   q.addFrom(VLibrary());
-  Field<Integer> position=VLibrary_AUTHOR().position("o").as("p");
+  Field<Integer> position=position(VLibrary_AUTHOR(),"o").as("p");
   q.addSelect(VLibrary_AUTHOR());
   q.addSelect(position);
   q.addOrderBy(field(VLibrary_AUTHOR().getName()));

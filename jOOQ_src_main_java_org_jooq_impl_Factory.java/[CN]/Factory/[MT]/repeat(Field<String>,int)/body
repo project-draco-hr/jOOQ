@@ -1,0 +1,3 @@
+{
+  return repeat(nullSafe(field),val(count));
+}

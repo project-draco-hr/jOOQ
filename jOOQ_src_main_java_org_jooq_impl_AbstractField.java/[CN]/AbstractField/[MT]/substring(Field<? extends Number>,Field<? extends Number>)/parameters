@@ -1,2 +1,0 @@
-Field<? extends Number> startingPosition
-Field<? extends Number> length

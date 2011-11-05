@@ -1,0 +1,3 @@
+{
+  return new Function<Integer>(Term.CHAR_LENGTH,SQLDataType.INTEGER,nullSafe(field));
+}

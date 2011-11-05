@@ -1,0 +1,3 @@
+{
+  return ascii(val(field));
+}

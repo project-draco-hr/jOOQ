@@ -1,3 +1,0 @@
-{
-  return new Function<Integer>(Term.OCTET_LENGTH,SQLDataType.INTEGER,this);
-}

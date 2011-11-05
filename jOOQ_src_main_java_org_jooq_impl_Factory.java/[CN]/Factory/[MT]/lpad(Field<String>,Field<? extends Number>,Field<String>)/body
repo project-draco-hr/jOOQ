@@ -1,0 +1,3 @@
+{
+  return new Lpad(nullSafe(field),nullSafe(length),nullSafe(character));
+}

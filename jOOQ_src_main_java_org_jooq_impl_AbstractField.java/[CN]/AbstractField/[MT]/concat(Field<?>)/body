@@ -1,3 +1,0 @@
-{
-  return new Concat(nullSafe(combine(this,fields)));
-}

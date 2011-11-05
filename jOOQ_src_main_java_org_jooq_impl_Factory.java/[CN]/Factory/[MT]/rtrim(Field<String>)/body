@@ -1,0 +1,3 @@
+{
+  return function("rtrim",SQLDataType.VARCHAR,nullSafe(field));
+}

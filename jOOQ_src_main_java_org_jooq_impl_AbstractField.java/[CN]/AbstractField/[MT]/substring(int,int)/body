@@ -1,3 +1,0 @@
-{
-  return substring(val(startingPosition),val(length));
-}

@@ -1,3 +1,0 @@
-{
-  return new Lpad(this,nullSafe(length),null);
-}

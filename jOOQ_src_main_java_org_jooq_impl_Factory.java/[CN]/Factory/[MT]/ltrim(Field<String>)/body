@@ -1,0 +1,3 @@
+{
+  return function("ltrim",SQLDataType.VARCHAR,nullSafe(value));
+}

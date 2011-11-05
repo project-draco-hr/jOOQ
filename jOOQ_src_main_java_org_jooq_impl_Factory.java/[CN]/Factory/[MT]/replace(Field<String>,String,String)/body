@@ -1,0 +1,3 @@
+{
+  return replace(nullSafe(field),val(search),val(replace));
+}

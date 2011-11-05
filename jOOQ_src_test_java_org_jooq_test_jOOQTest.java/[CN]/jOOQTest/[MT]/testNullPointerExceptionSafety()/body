@@ -8,7 +8,6 @@
   assertEquals(FIELD_ID1.bitXNor((Integer)null),FIELD_ID1.bitXNor((Field<Integer>)null));
   assertEquals(FIELD_ID1.bitXor((Integer)null),FIELD_ID1.bitXor((Field<Integer>)null));
   assertEquals(FIELD_ID1.coalesce((Integer)null),FIELD_ID1.coalesce((Field<Integer>)null));
-  assertEquals(FIELD_ID1.concat((String)null),FIELD_ID1.concat((Field<String>)null));
   assertEquals(FIELD_ID1.decode((Integer)null,null),FIELD_ID1.decode((Field<Integer>)null,null));
   assertEquals(FIELD_ID1.div((Integer)null),FIELD_ID1.div((Field<Integer>)null));
   assertEquals(FIELD_ID1.equal((Integer)null),FIELD_ID1.equal((Field<Integer>)null));
@@ -23,10 +22,6 @@
   assertEquals(FIELD_ID1.mul((Integer)null),FIELD_ID1.mul((Field<Integer>)null));
   assertEquals(FIELD_ID1.notEqual((Integer)null),FIELD_ID1.notEqual((Field<Integer>)null));
   assertEquals(FIELD_ID1.notIn((Integer)null),FIELD_ID1.notIn((Field<Integer>)null));
-  assertEquals(FIELD_ID1.position((String)null),FIELD_ID1.position((Field<String>)null));
-  assertEquals(FIELD_ID1.repeat((Integer)null),FIELD_ID1.repeat((Field<Integer>)null));
-  assertEquals(FIELD_ID1.replace((String)null),FIELD_ID1.replace((Field<String>)null));
-  assertEquals(FIELD_ID1.replace((String)null,null),FIELD_ID1.replace((Field<String>)null,null));
   assertEquals(FIELD_ID1.shl((Integer)null),FIELD_ID1.shl((Field<Integer>)null));
   assertEquals(FIELD_ID1.shr((Integer)null),FIELD_ID1.shr((Field<Integer>)null));
   assertEquals(FIELD_ID1.sub((Integer)null),FIELD_ID1.sub((Field<Integer>)null));
@@ -37,7 +32,10 @@
   assertEquals(Factory.atan2((Integer)null,(Integer)null),Factory.atan2((Field<Integer>)null,(Field<Integer>)null));
   assertEquals(Factory.atan2((Integer)null,(Integer)null),Factory.atan2((Field<Integer>)null,(Integer)null));
   assertEquals(Factory.atan2((Integer)null,(Integer)null),Factory.atan2((Integer)null,(Field<Integer>)null));
+  assertEquals(Factory.bitLength((String)null),Factory.bitLength((Field<String>)null));
   assertEquals(Factory.ceil((Integer)null),Factory.ceil((Field<Integer>)null));
+  assertEquals(Factory.charLength((String)null),Factory.charLength((Field<String>)null));
+  assertEquals(Factory.concat((String)null,(String)null),Factory.concat((Field<String>)null,(Field<String>)null));
   assertEquals(Factory.cos((Integer)null),Factory.cos((Field<Integer>)null));
   assertEquals(Factory.cosh((Integer)null),Factory.cosh((Field<Integer>)null));
   assertEquals(Factory.cot((Integer)null),Factory.cot((Field<Integer>)null));
@@ -48,8 +46,11 @@
   assertEquals(Factory.floor((Integer)null),Factory.floor((Field<Integer>)null));
   assertEquals(Factory.lag((Field<Integer>)null,1,(Integer)null),Factory.lag((Field<Integer>)null,1,(Field<Integer>)null));
   assertEquals(Factory.lead((Field<Integer>)null,1,(Integer)null),Factory.lead((Field<Integer>)null,1,(Field<Integer>)null));
+  assertEquals(Factory.length((String)null),Factory.length((Field<String>)null));
   assertEquals(Factory.ln((Integer)null),Factory.ln((Field<Integer>)null));
   assertEquals(Factory.log((Integer)null,2),Factory.log((Field<Integer>)null,2));
+  assertEquals(Factory.lower((String)null),Factory.lower((Field<String>)null));
+  assertEquals(Factory.ltrim((String)null),Factory.ltrim((Field<String>)null));
   assertEquals(Factory.nullif((Integer)null,(Integer)null),Factory.nullif((Field<Integer>)null,(Integer)null));
   assertEquals(Factory.nullif((Integer)null,(Integer)null),Factory.nullif((Integer)null,(Field<Integer>)null));
   assertEquals(Factory.nullif((Integer)null,(Integer)null),Factory.nullif((Field<Integer>)null,(Field<Integer>)null));
@@ -59,16 +60,26 @@
   assertEquals(Factory.nvl2((Field<Integer>)null,(Integer)null,(Integer)null),Factory.nvl2((Field<Integer>)null,(Field<Integer>)null,(Integer)null));
   assertEquals(Factory.nvl2((Field<Integer>)null,(Integer)null,(Integer)null),Factory.nvl2((Field<Integer>)null,(Integer)null,(Field<Integer>)null));
   assertEquals(Factory.nvl2((Field<Integer>)null,(Integer)null,(Integer)null),Factory.nvl2((Field<Integer>)null,(Field<Integer>)null,(Field<Integer>)null));
+  assertEquals(Factory.octetLength((String)null),Factory.octetLength((Field<String>)null));
+  assertEquals(Factory.position((String)null,(String)null),Factory.position((String)null,(Field<String>)null));
+  assertEquals(Factory.position((String)null,(String)null),Factory.position((Field<String>)null,(String)null));
+  assertEquals(Factory.position((String)null,(String)null),Factory.position((Field<String>)null,(Field<String>)null));
   assertEquals(Factory.power((Integer)null,(Integer)null),Factory.power((Field<Integer>)null,(Field<Integer>)null));
   assertEquals(Factory.power((Integer)null,(Integer)null),Factory.power((Field<Integer>)null,(Integer)null));
   assertEquals(Factory.power((Integer)null,(Integer)null),Factory.power((Integer)null,(Field<Integer>)null));
   assertEquals(Factory.rad((Integer)null),Factory.rad((Field<Integer>)null));
+  assertEquals(Factory.repeat((String)null,(Field<Integer>)null),Factory.repeat((Field<String>)null,(Field<Integer>)null));
+  assertEquals(Factory.replace((Field<String>)null,(String)null),Factory.replace((Field<String>)null,(Field<String>)null));
+  assertEquals(Factory.replace((Field<String>)null,(String)null,(String)null),Factory.replace((Field<String>)null,(Field<String>)null,(Field<String>)null));
   assertEquals(Factory.round((Integer)null),Factory.round((Field<Integer>)null));
   assertEquals(Factory.round((Integer)null,1),Factory.round((Field<Integer>)null,1));
+  assertEquals(Factory.rtrim((String)null),Factory.rtrim((Field<String>)null));
   assertEquals(Factory.sign((Integer)null),Factory.sign((Field<Integer>)null));
   assertEquals(Factory.sin((Integer)null),Factory.sin((Field<Integer>)null));
   assertEquals(Factory.sinh((Integer)null),Factory.sinh((Field<Integer>)null));
   assertEquals(Factory.sqrt((Integer)null),Factory.sqrt((Field<Integer>)null));
   assertEquals(Factory.tan((Integer)null),Factory.tan((Field<Integer>)null));
   assertEquals(Factory.tanh((Integer)null),Factory.tanh((Field<Integer>)null));
+  assertEquals(Factory.trim((String)null),Factory.trim((Field<String>)null));
+  assertEquals(Factory.upper((String)null),Factory.upper((Field<String>)null));
 }

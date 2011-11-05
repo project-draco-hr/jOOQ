@@ -1,3 +1,0 @@
-{
-  return function("rtrim",SQLDataType.VARCHAR,this);
-}

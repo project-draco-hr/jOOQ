@@ -3,7 +3,7 @@ switch (configuration.getDialect()) {
 case ASE:
 case INGRES:
 case SQLSERVER:
-    return argument.rtrim().ltrim();
+    return ltrim(rtrim(argument));
 default :
   return function("trim",SQLDataType.VARCHAR,argument);
 }
