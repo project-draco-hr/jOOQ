@@ -1,3 +1,3 @@
 {
-  return new Position(search,this);
+  return new Position(nullSafe(search),this);
 }

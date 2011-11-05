@@ -1,3 +1,3 @@
 {
-  return new Power(field,exponent);
+  return new Power(nullSafe(field),nullSafe(exponent));
 }

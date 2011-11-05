@@ -1,3 +1,3 @@
 {
-  return new Round<T>(field,decimals);
+  return new Round<T>(nullSafe(field),decimals);
 }

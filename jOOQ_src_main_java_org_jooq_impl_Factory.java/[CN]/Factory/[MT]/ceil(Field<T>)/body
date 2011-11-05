@@ -1,3 +1,3 @@
 {
-  return new Ceil<T>(field);
+  return new Ceil<T>(nullSafe(field));
 }

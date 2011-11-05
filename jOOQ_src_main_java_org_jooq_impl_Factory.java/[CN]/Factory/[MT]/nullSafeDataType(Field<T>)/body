@@ -1,0 +1,3 @@
+{
+  return (DataType<T>)(field == null ? SQLDataType.OTHER : field.getDataType());
+}

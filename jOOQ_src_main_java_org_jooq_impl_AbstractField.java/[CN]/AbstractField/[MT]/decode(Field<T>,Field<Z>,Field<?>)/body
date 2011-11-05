@@ -1,6 +1,3 @@
 {
-  if (search == null || result == null) {
-    return decode(val((T)search),val((Z)result),more);
-  }
-  return new Decode<T,Z>(this,search,result,more);
+  return new Decode<T,Z>(this,nullSafe(search),nullSafe(result),nullSafe(more));
 }

@@ -1,6 +1,3 @@
 {
-  if (defaultValue == null) {
-    return nvl((T)null);
-  }
-  return new Nvl<T>(this,defaultValue);
+  return new Nvl<T>(this,nullSafe(defaultValue));
 }

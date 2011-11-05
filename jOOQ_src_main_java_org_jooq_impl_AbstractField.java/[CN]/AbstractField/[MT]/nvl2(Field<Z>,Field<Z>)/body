@@ -1,6 +1,3 @@
 {
-  if (valueIfNotNull == null || valueIfNull == null) {
-    return nvl2(val((Z)valueIfNotNull),val((Z)valueIfNull));
-  }
-  return new Nvl2<Z>(this,valueIfNotNull,valueIfNull);
+  return new Nvl2<Z>(this,nullSafe(valueIfNotNull),nullSafe(valueIfNull));
 }

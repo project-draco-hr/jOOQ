@@ -1,3 +1,3 @@
 {
-  return new Expression<T>(MULTIPLY,this,value);
+  return new Expression<T>(MULTIPLY,this,nullSafe(value));
 }

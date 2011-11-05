@@ -1,3 +1,3 @@
 {
-  return new Function<T>(name,type,arguments);
+  return new Function<T>(name,type,nullSafe(arguments));
 }

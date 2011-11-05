@@ -1,3 +1,4 @@
 {
+  field=nullSafe(field);
   return exp(field.mul(2)).add(1).div(exp(field.mul(2)).sub(1));
 }

@@ -1,3 +1,3 @@
 {
-  return new Sinh(field);
+  return new Sinh(nullSafe(field));
 }

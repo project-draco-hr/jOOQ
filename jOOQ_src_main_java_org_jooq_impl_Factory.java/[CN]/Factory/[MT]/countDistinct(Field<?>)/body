@@ -1,3 +1,3 @@
 {
-  return new Count(field,true);
+  return new Count(nullSafe(field),true);
 }

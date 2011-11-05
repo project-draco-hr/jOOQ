@@ -1,0 +1,3 @@
+{
+  return field == null ? val((T)null) : field;
+}

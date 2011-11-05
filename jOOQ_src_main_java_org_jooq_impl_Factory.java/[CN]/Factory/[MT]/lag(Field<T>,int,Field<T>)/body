@@ -1,6 +1,3 @@
 {
-  if (defaultValue == null) {
-    return lag(field,offset,(T)null);
-  }
-  return new WindowFunction<T>("lag",field.getDataType(),field,literal(offset),defaultValue);
+  return new WindowFunction<T>("lag",nullSafeDataType(field),nullSafe(field),literal(offset),nullSafe(defaultValue));
 }
