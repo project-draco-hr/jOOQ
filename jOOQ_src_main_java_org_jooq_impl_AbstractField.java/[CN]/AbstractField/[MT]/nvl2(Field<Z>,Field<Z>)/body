@@ -1,3 +1,0 @@
-{
-  return new Nvl2<Z>(this,nullSafe(valueIfNotNull),nullSafe(valueIfNull));
-}

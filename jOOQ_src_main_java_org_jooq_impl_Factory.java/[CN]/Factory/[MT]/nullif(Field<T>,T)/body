@@ -1,0 +1,3 @@
+{
+  return nullif(nullSafe(value),val(other));
+}

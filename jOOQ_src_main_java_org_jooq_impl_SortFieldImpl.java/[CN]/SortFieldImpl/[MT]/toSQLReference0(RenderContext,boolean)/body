@@ -12,7 +12,7 @@ case SYBASE:
         if (!inAnalyticClause) {
           Field<Integer> ifNull=nullsFirst ? zero() : one();
           Field<Integer> ifNotNull=nullsFirst ? one() : zero();
-          context.sql(field.nvl2(ifNotNull,ifNull));
+          context.sql(nvl2(field,ifNotNull,ifNull));
           context.sql(", ");
           toSQLReference1(context,inAnalyticClause);
           break;

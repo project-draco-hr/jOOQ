@@ -1,0 +1,3 @@
+{
+  return nvl2(nullSafe(value),nullSafe(valueIfNotNull),val(valueIfNull));
+}

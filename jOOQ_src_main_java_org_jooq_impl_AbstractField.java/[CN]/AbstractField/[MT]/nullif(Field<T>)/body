@@ -1,3 +1,0 @@
-{
-  return function("nullif",getDataType(),this,nullSafe(other));
-}

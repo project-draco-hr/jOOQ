@@ -1,0 +1,3 @@
+{
+  return function("nullif",nullSafeDataType(value),nullSafe(value),nullSafe(other));
+}

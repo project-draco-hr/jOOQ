@@ -1,3 +1,0 @@
-{
-  return nvl2(val(valueIfNotNull),val(valueIfNull));
-}
