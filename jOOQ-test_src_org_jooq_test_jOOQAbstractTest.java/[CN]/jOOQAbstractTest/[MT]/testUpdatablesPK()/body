@@ -4,7 +4,7 @@
   try {
     book.refresh();
   }
- catch (  DataAccessException expected) {
+ catch (  InvalidResultException expected) {
   }
   B book1=create().fetchOne(TBook(),TBook_TITLE().equal("1984"));
   B book2=create().fetchOne(TBook(),TBook_TITLE().equal("1984"));

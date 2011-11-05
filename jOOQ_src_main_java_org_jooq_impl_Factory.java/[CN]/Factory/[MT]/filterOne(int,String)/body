@@ -3,6 +3,6 @@
     return i;
   }
  else {
-    throw new DataAccessException("Too many rows " + action + " : "+ i);
+    throw new InvalidResultException("Too many rows " + action + " : "+ i);
   }
 }

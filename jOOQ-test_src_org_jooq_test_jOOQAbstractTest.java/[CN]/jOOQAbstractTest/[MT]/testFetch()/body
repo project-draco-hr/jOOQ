@@ -11,7 +11,7 @@
     q.fetchOne();
     fail();
   }
- catch (  Exception expected) {
+ catch (  InvalidResultException expected) {
   }
   Record record=q.fetchAny();
   assertEquals("Coelho",record.getValue(TAuthor_LAST_NAME()));

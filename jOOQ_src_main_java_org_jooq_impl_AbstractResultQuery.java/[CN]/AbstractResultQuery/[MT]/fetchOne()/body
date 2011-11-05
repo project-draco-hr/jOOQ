@@ -4,7 +4,7 @@
     return r.get(0);
   }
  else   if (r.size() > 1) {
-    throw new DataAccessException("Query returned more than one result");
+    throw new InvalidResultException("Query returned more than one result");
   }
   return null;
 }

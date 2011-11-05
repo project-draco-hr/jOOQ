@@ -3,7 +3,7 @@
     create().selectFrom(TBook()).orderBy(TBook_ID()).fetchMap(TBook_AUTHOR_ID());
     fail();
   }
- catch (  DataAccessException expected) {
+ catch (  InvalidResultException expected) {
   }
   Map<Integer,B> map1=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchMap(TBook_ID());
   for (  Entry<Integer,B> entry : map1.entrySet()) {
@@ -30,12 +30,12 @@
     create().select(val("a"),val("a")).fetchMaps();
     fail();
   }
- catch (  Exception expected) {
+ catch (  InvalidResultException expected) {
   }
   try {
     create().select(val("a"),val("a")).fetchOneMap();
     fail();
   }
- catch (  Exception expected) {
+ catch (  InvalidResultException expected) {
   }
 }

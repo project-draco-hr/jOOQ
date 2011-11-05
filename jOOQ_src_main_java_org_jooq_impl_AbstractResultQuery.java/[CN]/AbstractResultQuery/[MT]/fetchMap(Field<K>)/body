@@ -2,7 +2,7 @@
   Map<K,R> map=new LinkedHashMap<K,R>();
   for (  R record : fetch()) {
     if (map.put(record.getValue(key),record) != null) {
-      throw new DataAccessException("Key " + key + " is not unique in Result for "+ this);
+      throw new InvalidResultException("Key " + key + " is not unique in Result for "+ this);
     }
   }
   return map;

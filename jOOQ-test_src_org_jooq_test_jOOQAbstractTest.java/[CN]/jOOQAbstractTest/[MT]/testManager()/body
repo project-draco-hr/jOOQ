@@ -9,7 +9,7 @@
     create().fetchOne(TAuthor());
     fail();
   }
- catch (  Exception expected) {
+ catch (  InvalidResultException expected) {
   }
   A selectOne=create().fetchOne(TAuthor(),TAuthor_FIRST_NAME().equal("Paulo"));
   assertEquals("Paulo",selectOne.getValue(TAuthor_FIRST_NAME()));

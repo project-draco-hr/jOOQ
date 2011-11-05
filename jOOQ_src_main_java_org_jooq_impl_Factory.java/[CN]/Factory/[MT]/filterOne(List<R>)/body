@@ -1,11 +1,6 @@
 {
-  if (list.size() == 0) {
-    return null;
-  }
- else   if (list.size() == 1) {
+  if (filterOne(list.size(),"selected") == 1) {
     return list.get(0);
   }
- else {
-    throw new DataAccessException("Too many rows returned : " + list.size());
-  }
+  return null;
 }
