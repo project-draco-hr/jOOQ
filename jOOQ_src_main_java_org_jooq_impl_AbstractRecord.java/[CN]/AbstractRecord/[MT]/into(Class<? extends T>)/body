@@ -22,6 +22,6 @@
     return result;
   }
  catch (  Exception e) {
-    throw new IllegalStateException("An error ocurred when mapping record to " + type,e);
+    throw new FetchIntoException("An error ocurred when mapping record to " + type,e);
   }
 }

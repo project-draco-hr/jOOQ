@@ -40,4 +40,16 @@ assertEquals("Orwell",result.get(0).lastName2);
 assertEquals("Orwell",result.get(1).lastName2);
 assertEquals("Coelho",result.get(2).lastName2);
 assertEquals("Coelho",result.get(3).lastName2);
+try {
+create().selectFrom(TAuthor()).fetchInto(AbstractList.class);
+fail();
+}
+ catch (FetchIntoException expected) {
+}
+try {
+create().selectFrom(TAuthor()).fetchInto(Math.class);
+fail();
+}
+ catch (FetchIntoException expected) {
+}
 }
