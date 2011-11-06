@@ -1,0 +1,3 @@
+{
+  insert.addValueForUpdate(field,field.getDataType().convert(row));
+}

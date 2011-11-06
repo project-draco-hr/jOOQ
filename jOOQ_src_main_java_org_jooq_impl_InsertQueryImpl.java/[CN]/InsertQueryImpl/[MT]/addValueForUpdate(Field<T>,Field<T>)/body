@@ -1,0 +1,8 @@
+{
+  if (value == null) {
+    updateMap.put(field,val(null,field));
+  }
+ else {
+    updateMap.put(field,value);
+  }
+}

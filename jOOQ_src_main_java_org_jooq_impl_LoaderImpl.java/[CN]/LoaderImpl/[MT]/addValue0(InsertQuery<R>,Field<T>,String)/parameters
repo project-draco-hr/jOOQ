@@ -1,0 +1,3 @@
+InsertQuery<R> insert
+Field<T> field
+String row

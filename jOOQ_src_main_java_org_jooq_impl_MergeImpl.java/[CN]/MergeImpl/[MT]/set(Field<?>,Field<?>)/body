@@ -1,7 +1,0 @@
-{
-  if (value == null) {
-    return set(field,(Object)value);
-  }
-  updateMap.put(field,value);
-  return this;
-}
