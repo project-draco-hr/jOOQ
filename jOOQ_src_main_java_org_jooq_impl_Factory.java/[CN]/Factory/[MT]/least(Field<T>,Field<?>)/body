@@ -1,0 +1,3 @@
+{
+  return new Least<T>(nullSafeDataType(field),nullSafe(combine(field,others)));
+}

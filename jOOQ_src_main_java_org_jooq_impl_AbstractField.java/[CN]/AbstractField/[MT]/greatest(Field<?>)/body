@@ -1,3 +1,0 @@
-{
-  return new Greatest<T>(getDataType(),nullSafe(combine(this,others)));
-}

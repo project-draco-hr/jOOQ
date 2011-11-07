@@ -1,3 +1,0 @@
-{
-  return new Least<T>(getDataType(),nullSafe(combine(this,others)));
-}

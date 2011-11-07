@@ -11,9 +11,9 @@ case SYBASE:
       Field<T> first=(Field<T>)getArguments()[0];
       Field<T> other=(Field<T>)getArguments()[1];
       if (getArguments().length > 2) {
-        Field<?>[] remaining=new Field<?>[getArguments().length - 2];
+        Field<?>[] remaining=new Field[getArguments().length - 2];
         System.arraycopy(getArguments(),2,remaining,0,remaining.length);
-        return Factory.decode().when(first.greaterThan(other),first.greatest(remaining)).otherwise(other.greatest(remaining));
+        return Factory.decode().when(first.greaterThan(other),greatest(first,remaining)).otherwise(greatest(other,remaining));
       }
  else {
         return Factory.decode().when(first.greaterThan(other),first).otherwise(other);

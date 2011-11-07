@@ -35,7 +35,7 @@
   assertEquals("-2.0",record.getValueAsString(f2d));
   assertEquals("-2.0",record.getValueAsString(f3d));
   assertEquals("-2.0",record.getValueAsString(f4d));
-  record=create().select(val(1).greatest(2,3,4),val(1).least(2,3),val("1").greatest("2","3","4"),val("1").least("2","3")).fetchOne();
+  record=create().select(greatest(1,2,3,4),least(1,2,3),greatest("1","2","3","4"),least("1","2","3")).fetchOne();
   assertEquals(Integer.valueOf(4),record.getValue(0));
   assertEquals(Integer.valueOf(1),record.getValue(1));
   assertEquals("4",record.getValue(2));
