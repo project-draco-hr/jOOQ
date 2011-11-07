@@ -1,3 +1,0 @@
-{
-  return function("coalesce",getDataType(),nullSafe(combine(this,option,options)));
-}

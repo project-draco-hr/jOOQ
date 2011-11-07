@@ -1,7 +1,12 @@
 {
-  Field<?>[] result=new Field<?>[fields.length + 2];
-  result[0]=field1;
-  result[1]=field2;
-  System.arraycopy(fields,0,result,2,fields.length);
-  return result;
+  if (fields == null) {
+    return new Field[]{field1,field2};
+  }
+ else {
+    Field<?>[] result=new Field<?>[fields.length + 2];
+    result[0]=field1;
+    result[1]=field2;
+    System.arraycopy(fields,0,result,2,fields.length);
+    return result;
+  }
 }

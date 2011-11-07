@@ -1,0 +1,3 @@
+{
+  return coalesce(val(value1),val(value2),vals(values).toArray(new Field[0]));
+}

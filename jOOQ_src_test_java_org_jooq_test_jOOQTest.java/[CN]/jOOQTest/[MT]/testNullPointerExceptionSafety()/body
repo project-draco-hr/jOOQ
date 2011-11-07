@@ -1,7 +1,6 @@
 {
   assertEquals(FIELD_ID1.add((Integer)null),FIELD_ID1.add((Field<Integer>)null));
   assertEquals(FIELD_ID1.between((Integer)null,null),FIELD_ID1.between((Field<Integer>)null,null));
-  assertEquals(FIELD_ID1.coalesce((Integer)null),FIELD_ID1.coalesce((Field<Integer>)null));
   assertEquals(FIELD_ID1.decode((Integer)null,null),FIELD_ID1.decode((Field<Integer>)null,null));
   assertEquals(FIELD_ID1.div((Integer)null),FIELD_ID1.div((Field<Integer>)null));
   assertEquals(FIELD_ID1.equal((Integer)null),FIELD_ID1.equal((Field<Integer>)null));
@@ -46,6 +45,10 @@
   assertEquals(Factory.bitXor((Integer)null,(Integer)null),Factory.bitXor((Field<Integer>)null,(Field<Integer>)null));
   assertEquals(Factory.ceil((Integer)null),Factory.ceil((Field<Integer>)null));
   assertEquals(Factory.charLength((String)null),Factory.charLength((Field<String>)null));
+  assertEquals(Factory.coalesce((Integer)null,(Integer)null),Factory.coalesce((Field<Integer>)null,(Field<Integer>)null));
+  assertEquals(Factory.coalesce((Integer)null,(Integer)null,(Integer)null),Factory.coalesce((Field<Integer>)null,(Field<Integer>)null,(Field<Integer>)null));
+  assertEquals(Factory.coalesce((Integer)null,(Integer)null,(Integer[])null),Factory.coalesce((Field<Integer>)null,(Field<Integer>)null,(Field<?>[])null));
+  assertEquals(Factory.coalesce((Integer)null,(Integer)null,(Integer)null,(Integer)null),Factory.coalesce((Field<Integer>)null,(Field<Integer>)null,(Field<Integer>)null,(Field<Integer>)null));
   assertEquals(Factory.concat((String)null,(String)null),Factory.concat((Field<String>)null,(Field<String>)null));
   assertEquals(Factory.cos((Integer)null),Factory.cos((Field<Integer>)null));
   assertEquals(Factory.cosh((Integer)null),Factory.cosh((Field<Integer>)null));

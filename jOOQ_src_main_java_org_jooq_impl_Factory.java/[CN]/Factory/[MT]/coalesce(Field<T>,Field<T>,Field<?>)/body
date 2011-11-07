@@ -1,0 +1,3 @@
+{
+  return function("coalesce",nullSafeDataType(field1),nullSafe(combine(field1,field2,fields)));
+}
