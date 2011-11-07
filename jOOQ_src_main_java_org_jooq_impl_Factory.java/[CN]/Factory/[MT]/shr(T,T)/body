@@ -1,0 +1,3 @@
+{
+  return shr(val(value1),val(value2));
+}

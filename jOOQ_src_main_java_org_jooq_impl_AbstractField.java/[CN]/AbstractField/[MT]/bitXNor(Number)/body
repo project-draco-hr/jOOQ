@@ -1,3 +1,0 @@
-{
-  return bitXNor(val(value));
-}

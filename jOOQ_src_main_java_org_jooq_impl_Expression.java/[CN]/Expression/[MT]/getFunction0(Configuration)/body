@@ -10,10 +10,10 @@
     return function("bitor",getDataType(),getArguments());
   }
  else   if (BIT_OR == operator && ORACLE == dialect) {
-    return lhs.sub(lhsAsNumber().bitAnd(rhsAsNumber())).add(rhsAsNumber());
+    return lhs.sub(bitAnd(lhsAsNumber(),rhsAsNumber())).add(rhsAsNumber());
   }
  else   if (BIT_XOR == operator && asList(ORACLE,SQLITE).contains(dialect)) {
-    return lhs.bitAnd(rhsAsNumber()).bitNot().bitAnd(lhsAsNumber().bitOr(rhsAsNumber()));
+    return (Field<T>)bitAnd(bitNot(bitAnd(lhsAsNumber(),rhsAsNumber())),bitOr(lhsAsNumber(),rhsAsNumber()));
   }
  else   if (SHL == operator && asList(ASE,DB2,H2,HSQLDB,INGRES,ORACLE,SQLSERVER,SYBASE).contains(dialect)) {
     return lhs.mul(power(literal(2),rhsAsNumber()));
@@ -22,13 +22,13 @@
     return lhs.div(power(literal(2),rhsAsNumber()));
   }
  else   if (BIT_NAND == operator) {
-    return lhs.bitAnd(rhsAsNumber()).bitNot();
+    return (Field<T>)bitNot(bitAnd(lhsAsNumber(),rhsAsNumber()));
   }
  else   if (BIT_NOR == operator) {
-    return lhs.bitOr(rhsAsNumber()).bitNot();
+    return (Field<T>)bitNot(bitOr(lhsAsNumber(),rhsAsNumber()));
   }
  else   if (BIT_XNOR == operator) {
-    return lhs.bitXor(rhsAsNumber()).bitNot();
+    return (Field<T>)bitNot(bitXor(lhsAsNumber(),rhsAsNumber()));
   }
  else {
     return new DefaultExpression();

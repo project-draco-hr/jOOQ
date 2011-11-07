@@ -1,0 +1,3 @@
+{
+  return bitNor(nullSafe(value1),val(value2));
+}

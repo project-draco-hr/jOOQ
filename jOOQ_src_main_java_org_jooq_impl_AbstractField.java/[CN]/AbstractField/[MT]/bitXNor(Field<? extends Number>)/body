@@ -1,3 +1,0 @@
-{
-  return new Expression<T>(ExpressionOperator.BIT_XNOR,this,nullSafe(value));
-}

@@ -1,3 +1,0 @@
-{
-  return shl(val(value));
-}

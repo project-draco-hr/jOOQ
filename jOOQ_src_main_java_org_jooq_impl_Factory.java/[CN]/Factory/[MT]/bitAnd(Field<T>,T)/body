@@ -1,0 +1,3 @@
+{
+  return bitAnd(nullSafe(value1),val(value2));
+}

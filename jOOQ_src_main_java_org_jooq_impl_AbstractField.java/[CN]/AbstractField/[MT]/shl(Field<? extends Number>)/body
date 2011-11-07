@@ -1,3 +1,0 @@
-{
-  return new Expression<T>(ExpressionOperator.SHL,this,nullSafe(value));
-}

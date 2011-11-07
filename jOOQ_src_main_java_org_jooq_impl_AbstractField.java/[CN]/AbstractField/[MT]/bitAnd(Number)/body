@@ -1,3 +1,0 @@
-{
-  return bitAnd(val(value));
-}

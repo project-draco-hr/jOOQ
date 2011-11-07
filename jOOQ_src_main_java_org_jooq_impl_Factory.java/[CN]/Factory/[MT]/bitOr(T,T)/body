@@ -1,0 +1,3 @@
+{
+  return bitOr(val(value1),val(value2));
+}

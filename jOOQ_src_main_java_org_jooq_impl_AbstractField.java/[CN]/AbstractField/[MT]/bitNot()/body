@@ -1,3 +1,0 @@
-{
-  return new Neg<T>(this,ExpressionOperator.BIT_NOT);
-}

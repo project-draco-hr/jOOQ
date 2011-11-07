@@ -1,0 +1,3 @@
+{
+  return bitNor(val(value1),val(value2));
+}
