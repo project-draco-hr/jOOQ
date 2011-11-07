@@ -1,8 +1,8 @@
 {
   Field<Timestamp> now=currentTimestamp();
-  Field<Integer> year=now.extract(DatePart.YEAR).as("y");
-  Field<Integer> month=now.extract(DatePart.MONTH).as("m");
-  Field<Integer> day=now.extract(DatePart.DAY).as("d");
+  Field<Integer> year=extract(now,DatePart.YEAR).as("y");
+  Field<Integer> month=extract(now,DatePart.MONTH).as("m");
+  Field<Integer> day=extract(now,DatePart.DAY).as("d");
   Select<?> sub=create().select(year,month,day);
   Table<?> subTable=sub.asTable("subselect");
   Record reference=sub.fetchOne();

@@ -54,6 +54,7 @@
   assertEquals(Factory.decode((Integer)null,null,null),Factory.decode((Field<Integer>)null,null,null));
   assertEquals(Factory.deg((Integer)null),Factory.deg((Field<Integer>)null));
   assertEquals(Factory.exp((Integer)null),Factory.exp((Field<Integer>)null));
+  assertEquals(Factory.extract((java.util.Date)null,DatePart.DAY),Factory.extract((Field<java.util.Date>)null,DatePart.DAY));
   assertEquals(Factory.floor((Integer)null),Factory.floor((Field<Integer>)null));
   assertEquals(Factory.lag((Field<Integer>)null,1,(Integer)null),Factory.lag((Field<Integer>)null,1,(Field<Integer>)null));
   assertEquals(Factory.lead((Field<Integer>)null,1,(Integer)null),Factory.lead((Field<Integer>)null,1,(Field<Integer>)null));
