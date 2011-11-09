@@ -1,0 +1,9 @@
+{
+  Connection connection=DriverManager.getConnection("jdbc:postgresql:postgres","postgres","test");
+  PublicFactory create=new PublicFactory(connection);
+  List<TBookRecord> books=create.select(TBook.ID,TBook.TITLE).from(TBook.T_BOOK).orderBy(TBook.ID).fetchInto(TBookRecord.class);
+  for (int i=0; i < BOOK_IDS.size(); i++) {
+    assertEquals(BOOK_IDS.get(i),books.get(i).getId());
+    assertEquals(BOOK_TITLES.get(i),books.get(i).getTitle());
+  }
+}
