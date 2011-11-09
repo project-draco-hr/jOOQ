@@ -1,3 +1,0 @@
-{
-  return decode(val(search),val(result),vals(more).toArray(new Field<?>[0]));
-}

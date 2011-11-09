@@ -1,3 +1,0 @@
-{
-  return decode(nullSafe(search),nullSafe(result),new Field<?>[0]);
-}

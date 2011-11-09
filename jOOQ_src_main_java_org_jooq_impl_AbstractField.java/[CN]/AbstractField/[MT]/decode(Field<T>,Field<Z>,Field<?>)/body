@@ -1,3 +1,0 @@
-{
-  return new Decode<T,Z>(this,nullSafe(search),nullSafe(result),nullSafe(more));
-}

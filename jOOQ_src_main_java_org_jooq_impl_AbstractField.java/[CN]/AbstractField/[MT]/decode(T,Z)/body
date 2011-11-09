@@ -1,3 +1,0 @@
-{
-  return decode(search,result,new Object[0]);
-}
