@@ -69,6 +69,11 @@
  else       if (toClass == java.util.Date.class) {
         return (T)new java.util.Date(time);
       }
+ else       if (toClass == Calendar.class) {
+        Calendar calendar=Calendar.getInstance();
+        calendar.setTimeInMillis(time);
+        return (T)calendar;
+      }
     }
   }
   throw new DataTypeException("Cannot convert from " + from + " to "+ toClass);

@@ -52,4 +52,13 @@ fail();
 }
  catch (FetchIntoException expected) {
 }
+List<DatesWithAnnotations> calendars=create().select(TAuthor_DATE_OF_BIRTH()).from(TAuthor()).orderBy(TAuthor_ID()).fetchInto(DatesWithAnnotations.class);
+assertEquals(2,calendars.size());
+for (int index : asList(0,1)) {
+assertEquals(calendars.get(index).cal1,calendars.get(index).cal2);
+assertEquals(calendars.get(index).cal1,calendars.get(index).calOfBirth);
+assertEquals(calendars.get(index).date1,calendars.get(index).date2);
+assertEquals(calendars.get(index).date1,calendars.get(index).dateOfBirth);
+assertEquals(calendars.get(index).cal1.getTime(),calendars.get(index).date1);
+}
 }

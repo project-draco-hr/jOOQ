@@ -123,8 +123,11 @@
   assertEquals(new Timestamp(1),SQLDataType.TIMESTAMP.convert(new Timestamp(1)));
   A author=create().newRecord(TAuthor());
   author.setValue(TAuthor_DATE_OF_BIRTH(),new Date(1));
+  Calendar calendar=Calendar.getInstance();
+  calendar.setTimeInMillis(1);
   assertEquals(new Date(1),author.getValue(TAuthor_DATE_OF_BIRTH(),Date.class));
   assertEquals(new Time(1),author.getValue(TAuthor_DATE_OF_BIRTH(),Time.class));
   assertEquals(new Timestamp(1),author.getValue(TAuthor_DATE_OF_BIRTH(),Timestamp.class));
   assertEquals(new java.util.Date(1),author.getValue(TAuthor_DATE_OF_BIRTH(),java.util.Date.class));
+  assertEquals(calendar,author.getValue(TAuthor_DATE_OF_BIRTH(),Calendar.class));
 }
