@@ -1,6 +1,6 @@
 {
   reset=false;
-  InsertSetMoreStep set=create().insertInto(T639()).set(T639_ID(),1).set(T639_BIG_DECIMAL(),new BigDecimal("1234.5670")).set(T639_BIG_INTEGER(),new BigInteger("1234567890")).set(T639_BYTE_DECIMAL(),(byte)2).set(T639_INTEGER(),3).set(T639_INTEGER_DECIMAL(),4).set(T639_LONG(),5L).set(T639_LONG_DECIMAL(),6L).set(T639_SHORT(),(short)7).set(T639_SHORT_DECIMAL(),(short)8);
+  InsertSetMoreStep<T639> set=create().insertInto(T639()).set(T639_ID(),1).set(T639_BIG_DECIMAL(),new BigDecimal("1234.5670")).set(T639_BIG_INTEGER(),new BigInteger("1234567890")).set(T639_BYTE_DECIMAL(),(byte)2).set(T639_INTEGER(),3).set(T639_INTEGER_DECIMAL(),4).set(T639_LONG(),5L).set(T639_LONG_DECIMAL(),6L).set(T639_SHORT(),(short)7).set(T639_SHORT_DECIMAL(),(short)8);
   if (T639_BYTE() != null)   set.set(T639_BYTE(),(byte)9);
   if (T639_DOUBLE() != null)   set.set(T639_DOUBLE(),10.125);
   if (T639_FLOAT() != null)   set.set(T639_FLOAT(),11.375f);

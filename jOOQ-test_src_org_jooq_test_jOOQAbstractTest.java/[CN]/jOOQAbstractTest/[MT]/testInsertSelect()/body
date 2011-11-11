@@ -10,7 +10,7 @@ default :
 nullField=castNull(String.class);
 break;
 }
-Insert i=create().insertInto(TAuthor(),create().select(vals(1000,val("Lukas"))).select(vals("Eder",val(new Date(363589200000L)),castNull(Integer.class),nullField)));
+Insert<A> i=create().insertInto(TAuthor(),create().select(vals(1000,val("Lukas"))).select(vals("Eder",val(new Date(363589200000L)),castNull(Integer.class),nullField)));
 i.execute();
 A author=create().fetchOne(TAuthor(),TAuthor_FIRST_NAME().equal("Lukas"));
 assertEquals("Lukas",author.getValue(TAuthor_FIRST_NAME()));

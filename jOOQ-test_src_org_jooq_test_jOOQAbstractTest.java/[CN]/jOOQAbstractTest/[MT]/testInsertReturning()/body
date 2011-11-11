@@ -35,7 +35,7 @@
   assertEquals(ID,(int)query.getReturnedRecord().getValue(TTriggers_ID_GENERATED()));
   assertEquals(ID,(int)query.getReturnedRecord().getValue(TTriggers_ID()));
   assertEquals(2 * ID,(int)query.getReturnedRecord().getValue(TTriggers_COUNTER()));
-  TableRecord<T> returned=(TableRecord<T>)create().insertInto(TTriggers(),TTriggers_COUNTER()).values(0).returning().fetchOne();
+  TableRecord<T> returned=create().insertInto(TTriggers(),TTriggers_COUNTER()).values(0).returning().fetchOne();
   assertNotNull(returned);
   assertEquals(++ID,(int)returned.getValue(TTriggers_ID_GENERATED()));
   assertEquals(ID,(int)returned.getValue(TTriggers_ID()));
@@ -66,7 +66,7 @@ assertEquals(ID,(int)many.getValue(2,TTriggers_ID()));
 assertEquals(2 * ID,(int)many.getValue(2,TTriggers_COUNTER()));
 break;
 }
-returned=(TableRecord<T>)create().insertInto(TTriggers(),TTriggers_COUNTER()).values(0).returning(TTriggers_ID()).fetchOne();
+returned=create().insertInto(TTriggers(),TTriggers_COUNTER()).values(0).returning(TTriggers_ID()).fetchOne();
 assertNotNull(returned);
 assertEquals(++ID,(int)returned.getValue(TTriggers_ID()));
 assertNull(returned.getValue(TTriggers_ID_GENERATED()));
