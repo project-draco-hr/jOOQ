@@ -13,7 +13,10 @@
   out.print("> ");
   out.print(strategy.getJavaIdentifierUC(column));
   out.print(columnDisambiguationSuffix);
-  if (concreteMemberClass == null) {
+  if (declaredMemberClass == TableField.class) {
+    out.print(" = createField");
+  }
+ else   if (declaredMemberClass == UDTField.class) {
     out.print(" = createField");
   }
  else {
