@@ -1,3 +1,0 @@
-{
-  new TableFieldImpl<Record,T>(field.getName(),field.getDataType(),table);
-}

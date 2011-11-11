@@ -1,7 +1,11 @@
 {
-  Table<Record> configuredTable=new TableImpl<Record>(configuredTableName,generatedTable.getSchema());
-  for (  Field<?> field : generatedTable.getFields()) {
-    addField(configuredTable,field);
+  @SuppressWarnings("serial") Table<Record> configuredTable=new TableImpl<Record>(configuredTableName,generatedTable.getSchema()){
+{
+      for (      Field<?> field : generatedTable.getFields()) {
+        createField(field.getName(),field.getDataType(),this);
+      }
+    }
   }
+;
   add(generatedTable,configuredTable);
 }

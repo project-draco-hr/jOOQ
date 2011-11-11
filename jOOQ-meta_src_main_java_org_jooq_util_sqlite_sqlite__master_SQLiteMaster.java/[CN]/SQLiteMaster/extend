@@ -1,1 +1,1 @@
-TableImpl<Record>
+TableImpl<SQLiteMasterRecord>

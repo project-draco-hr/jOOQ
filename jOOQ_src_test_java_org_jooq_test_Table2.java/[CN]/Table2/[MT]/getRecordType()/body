@@ -1,0 +1,3 @@
+{
+  return Table2Record.class;
+}
