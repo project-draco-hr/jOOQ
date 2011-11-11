@@ -1,0 +1,4 @@
+{
+  handler.next(fetchOne());
+  return handler;
+}
