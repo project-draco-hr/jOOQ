@@ -6,7 +6,7 @@ case POSTGRES:
     log.info("SKIPPING","fetchInto() tests");
   return;
 }
-List<BookWithAnnotations> result=create().select(TBook_ID(),TBook_TITLE(),TAuthor_FIRST_NAME(),TAuthor_LAST_NAME()).from(TBook()).join(TAuthor()).on(TBook_AUTHOR_ID().equal(TAuthor_ID())).orderBy(TBook_ID()).fetchInto(BookWithAnnotations.class);
+List<BookWithAnnotations> result=create().select(TBook_ID(),TBook_TITLE(),TAuthor_FIRST_NAME(),TAuthor_LAST_NAME(),TAuthor_DATE_OF_BIRTH()).from(TBook()).join(TAuthor()).on(TBook_AUTHOR_ID().equal(TAuthor_ID())).orderBy(TBook_ID()).fetchInto(BookWithAnnotations.class);
 assertEquals(4,result.size());
 assertEquals(1,(int)result.get(0).id);
 assertEquals(2,(int)result.get(1).id);
