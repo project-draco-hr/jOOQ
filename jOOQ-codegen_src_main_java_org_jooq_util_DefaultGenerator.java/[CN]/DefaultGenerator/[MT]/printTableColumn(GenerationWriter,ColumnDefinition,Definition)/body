@@ -1,5 +1,4 @@
 {
   Class<?> declaredMemberClass=TableField.class;
-  Class<?> concreteMemberClass=null;
-  printColumnDefinition(out,column,table,declaredMemberClass,concreteMemberClass);
+  printColumnDefinition(out,column,table,declaredMemberClass);
 }

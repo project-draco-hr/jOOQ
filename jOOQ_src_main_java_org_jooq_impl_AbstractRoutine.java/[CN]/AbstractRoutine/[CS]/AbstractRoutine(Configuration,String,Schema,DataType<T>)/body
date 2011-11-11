@@ -1,3 +1,0 @@
-{
-  this(configuration,name,schema,null,type);
-}

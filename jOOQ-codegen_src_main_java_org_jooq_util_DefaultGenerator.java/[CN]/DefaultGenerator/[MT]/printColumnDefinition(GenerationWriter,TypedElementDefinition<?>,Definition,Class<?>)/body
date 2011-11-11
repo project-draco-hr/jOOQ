@@ -1,14 +1,14 @@
 {
   String columnDisambiguationSuffix=strategy.getJavaIdentifierUC(column).equals(strategy.getJavaIdentifierUC(type)) ? "_" : "";
   printFieldJavaDoc(out,columnDisambiguationSuffix,column);
-  String genericPrefix="<";
   boolean hasType=type instanceof TableDefinition || type instanceof UDTDefinition;
-  if (hasType) {
-    genericPrefix+=strategy.getFullJavaClassName(type,"Record") + ", ";
-  }
   out.print("\tpublic static final ");
   out.print(declaredMemberClass);
-  out.print(genericPrefix);
+  out.print("<");
+  if (hasType) {
+    out.print(strategy.getFullJavaClassName(type,"Record"));
+    out.print(", ");
+  }
   out.print(getJavaType(column.getType()));
   out.print("> ");
   out.print(strategy.getJavaIdentifierUC(column));
@@ -20,11 +20,7 @@
     out.print(" = createField");
   }
  else {
-    out.print(" = new ");
-    out.print(concreteMemberClass);
-    out.print(genericPrefix);
-    out.print(getJavaType(column.getType()));
-    out.print(">");
+    out.print(" = createParameter");
   }
   out.print("(\"");
   out.print(column.getName());
