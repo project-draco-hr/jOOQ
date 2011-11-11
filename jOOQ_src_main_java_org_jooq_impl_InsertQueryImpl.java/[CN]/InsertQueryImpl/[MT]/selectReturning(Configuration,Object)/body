@@ -15,13 +15,7 @@
         }
       }
  else {
-        for (        Record untyped : create(configuration).select(returning).from(updatable).where(field.in(ids)).fetch()) {
-          R typed=JooqUtil.newRecord(getInto(),configuration);
-          for (          Field<?> f : returning) {
-            setValue(f,typed,untyped);
-          }
-          getReturnedRecords().add(typed);
-        }
+        returned=create(configuration).select(returning).from(updatable).where(field.in(ids)).fetchInto(getInto());
       }
     }
   }

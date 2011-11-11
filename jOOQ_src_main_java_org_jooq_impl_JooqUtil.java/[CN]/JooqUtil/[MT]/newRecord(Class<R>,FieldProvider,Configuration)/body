@@ -5,12 +5,16 @@
       result=(R)new RecordImpl(provider);
     }
  else {
-      result=type.newInstance();
+      Constructor<R> constructor=type.getDeclaredConstructor();
+      if (!constructor.isAccessible()) {
+        constructor.setAccessible(true);
+      }
+      result=constructor.newInstance();
     }
     result.attach(configuration);
     return result;
   }
  catch (  Exception e) {
-    throw new IllegalStateException("Could not construct new record. Please report this issue",e);
+    throw new IllegalStateException("Could not construct new record",e);
   }
 }

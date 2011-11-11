@@ -10,13 +10,7 @@ case SQLITE:
 {
         result=statement.executeUpdate();
         SQLiteFactory create=new SQLiteFactory(configuration.getConnection());
-        for (        Record untyped : create.select(returning).from(getInto()).where(rowid().equal(rowid().getDataType().convert(create.lastID()))).fetch()) {
-          R typed=JooqUtil.newRecord(getInto(),configuration);
-          for (          Field<?> field : returning) {
-            setValue(field,typed,untyped);
-          }
-          getReturnedRecords().add(typed);
-        }
+        returned=create.select(returning).from(getInto()).where(rowid().equal(rowid().getDataType().convert(create.lastID()))).fetchInto(getInto());
         return result;
       }
 case SYBASE:

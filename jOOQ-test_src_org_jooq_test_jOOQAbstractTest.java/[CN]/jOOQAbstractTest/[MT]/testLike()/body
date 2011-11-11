@@ -1,4 +1,8 @@
 {
-  Result<B> books=create().selectFrom(TBook()).where(TBook_TITLE().like("%a%")).and(TBook_TITLE().notLike(TBook_PUBLISHED_IN().cast(String.class))).fetch();
+  Field<String> notLike=TBook_PUBLISHED_IN().cast(String.class);
+  if (getDialect() == DB2) {
+    notLike=val("bbb");
+  }
+  Result<B> books=create().selectFrom(TBook()).where(TBook_TITLE().like("%a%")).and(TBook_TITLE().notLike(notLike)).fetch();
   assertEquals(3,books.size());
 }

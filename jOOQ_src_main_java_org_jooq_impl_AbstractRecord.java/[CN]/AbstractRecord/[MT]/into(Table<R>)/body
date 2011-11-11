@@ -1,0 +1,15 @@
+{
+  try {
+    R result=JooqUtil.newRecord(table,getConfiguration());
+    for (    Field<?> field : getFields()) {
+      Field<?> targetField=result.getField(field);
+      if (targetField != null) {
+        setValue(result,field,targetField);
+      }
+    }
+    return result;
+  }
+ catch (  Exception e) {
+    throw new FetchIntoException("An error ocurred when mapping record to " + table,e);
+  }
+}

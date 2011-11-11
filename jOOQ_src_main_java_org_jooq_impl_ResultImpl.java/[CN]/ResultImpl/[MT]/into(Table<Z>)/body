@@ -1,0 +1,7 @@
+{
+  Result<Z> list=new ResultImpl<Z>(getConfiguration(),table);
+  for (  R record : this) {
+    list.add(record.into(table));
+  }
+  return list;
+}
