@@ -1,26 +1,33 @@
 {
-  BookWithoutAnnotations b=new BookWithoutAnnotations();
-  b.firstName="Edgar Allen";
-  b.lastName="Poe";
-  b.DATE_OF_BIRTH=new Date(1);
-  b.id=17;
-  b.title="The Raven";
-  b.id2=18;
-  b.ID=19;
-  b.LAST_NAME="Poet";
-  b.dateOfBirth=new Date(2);
-  B book=create().newRecord(TBook(),b);
-  A author=create().newRecord(TAuthor(),b);
-  assertEquals(b.id,author.getValue(TAuthor_ID()));
-  assertEquals(b.firstName,author.getValue(TAuthor_FIRST_NAME()));
-  assertEquals(b.lastName,author.getValue(TAuthor_LAST_NAME()));
-  assertEquals(b.DATE_OF_BIRTH,author.getValue(TAuthor_DATE_OF_BIRTH()));
-  assertNull(author.getValue(TAuthor_YEAR_OF_BIRTH()));
-  assertEquals(b.id,book.getValue(TBook_ID()));
-  assertEquals(b.title,book.getValue(TBook_TITLE()));
-  assertNull(book.getValue(TBook_AUTHOR_ID()));
-  assertNull(book.getValue(TBook_CONTENT_PDF()));
-  assertNull(book.getValue(TBook_CONTENT_TEXT()));
-  assertNull(book.getValue(TBook_LANGUAGE_ID()));
-  assertNull(book.getValue(TBook_PUBLISHED_IN()));
+switch (getDialect()) {
+case ASE:
+case INGRES:
+case POSTGRES:
+    log.info("SKIPPING","fetchInto() tests");
+  return;
+}
+BookWithoutAnnotations b=new BookWithoutAnnotations();
+b.firstName="Edgar Allen";
+b.lastName="Poe";
+b.DATE_OF_BIRTH=new Date(1);
+b.id=17;
+b.title="The Raven";
+b.id2=18;
+b.ID=19;
+b.LAST_NAME="Poet";
+b.dateOfBirth=new Date(2);
+B book=create().newRecord(TBook(),b);
+A author=create().newRecord(TAuthor(),b);
+assertEquals(b.id,author.getValue(TAuthor_ID()));
+assertEquals(b.firstName,author.getValue(TAuthor_FIRST_NAME()));
+assertEquals(b.lastName,author.getValue(TAuthor_LAST_NAME()));
+assertEquals(b.DATE_OF_BIRTH,author.getValue(TAuthor_DATE_OF_BIRTH()));
+assertNull(author.getValue(TAuthor_YEAR_OF_BIRTH()));
+assertEquals(b.id,book.getValue(TBook_ID()));
+assertEquals(b.title,book.getValue(TBook_TITLE()));
+assertNull(book.getValue(TBook_AUTHOR_ID()));
+assertNull(book.getValue(TBook_CONTENT_PDF()));
+assertNull(book.getValue(TBook_CONTENT_TEXT()));
+assertNull(book.getValue(TBook_LANGUAGE_ID()));
+assertNull(book.getValue(TBook_PUBLISHED_IN()));
 }

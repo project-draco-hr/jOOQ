@@ -19,7 +19,7 @@
         }
       }
       for (      java.lang.reflect.Method method : methods) {
-        into(result,method,field);
+        method.invoke(result,getValue(field,method.getParameterTypes()[0]));
       }
     }
     return result;

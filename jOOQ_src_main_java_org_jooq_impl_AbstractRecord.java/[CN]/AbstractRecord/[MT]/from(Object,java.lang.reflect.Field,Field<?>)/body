@@ -22,6 +22,9 @@
  else     if (mType == boolean.class) {
       Util.setValue(this,field,member.getBoolean(source));
     }
+ else     if (mType == char.class) {
+      Util.setValue(this,field,member.getChar(source));
+    }
   }
  else {
     Util.setValue(this,field,member.get(source));
