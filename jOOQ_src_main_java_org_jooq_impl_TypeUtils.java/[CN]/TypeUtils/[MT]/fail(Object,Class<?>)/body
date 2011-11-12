@@ -1,0 +1,3 @@
+{
+  return new DataTypeException("Cannot convert from " + from + " ("+ from.getClass()+ ") to "+ toClass);
+}

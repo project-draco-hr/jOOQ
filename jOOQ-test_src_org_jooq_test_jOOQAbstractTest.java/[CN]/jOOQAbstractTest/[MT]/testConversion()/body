@@ -121,6 +121,9 @@
   assertEquals(new Date(1),SQLDataType.DATE.convert(new Timestamp(1)));
   assertEquals(new Time(1),SQLDataType.TIME.convert(new Timestamp(1)));
   assertEquals(new Timestamp(1),SQLDataType.TIMESTAMP.convert(new Timestamp(1)));
+  assertEquals(new Date(1),SQLDataType.DATE.convert(1L));
+  assertEquals(new Time(1),SQLDataType.TIME.convert(1L));
+  assertEquals(new Timestamp(1),SQLDataType.TIMESTAMP.convert(1L));
   A author=create().newRecord(TAuthor());
   author.setValue(TAuthor_DATE_OF_BIRTH(),new Date(1));
   Calendar calendar=Calendar.getInstance();
@@ -130,4 +133,5 @@
   assertEquals(new Timestamp(1),author.getValue(TAuthor_DATE_OF_BIRTH(),Timestamp.class));
   assertEquals(new java.util.Date(1),author.getValue(TAuthor_DATE_OF_BIRTH(),java.util.Date.class));
   assertEquals(calendar,author.getValue(TAuthor_DATE_OF_BIRTH(),Calendar.class));
+  assertEquals(Long.valueOf(1),author.getValue(TAuthor_DATE_OF_BIRTH(),Long.class));
 }

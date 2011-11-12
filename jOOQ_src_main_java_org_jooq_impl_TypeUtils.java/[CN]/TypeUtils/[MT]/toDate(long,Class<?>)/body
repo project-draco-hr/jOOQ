@@ -1,0 +1,20 @@
+{
+  if (toClass == Date.class) {
+    return new Date(time);
+  }
+ else   if (toClass == Time.class) {
+    return new Time(time);
+  }
+ else   if (toClass == Timestamp.class) {
+    return new Timestamp(time);
+  }
+ else   if (toClass == java.util.Date.class) {
+    return new java.util.Date(time);
+  }
+ else   if (toClass == Calendar.class) {
+    Calendar calendar=Calendar.getInstance();
+    calendar.setTimeInMillis(time);
+    return calendar;
+  }
+  throw fail(time,toClass);
+}
