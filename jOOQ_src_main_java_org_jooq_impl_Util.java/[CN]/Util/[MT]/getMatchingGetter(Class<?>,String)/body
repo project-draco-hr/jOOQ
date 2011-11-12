@@ -1,0 +1,25 @@
+{
+  for (  Method method : getInstanceMethods(type)) {
+    if (method.getParameterTypes().length == 0) {
+      if (name.equals(method.getName())) {
+        return method;
+      }
+ else       if (StringUtils.toCamelCaseLC(name).equals(method.getName())) {
+        return method;
+      }
+ else       if (("get" + name).equals(method.getName())) {
+        return method;
+      }
+ else       if (("get" + StringUtils.toCamelCase(name)).equals(method.getName())) {
+        return method;
+      }
+ else       if (("is" + name).equals(method.getName())) {
+        return method;
+      }
+ else       if (("is" + StringUtils.toCamelCase(name)).equals(method.getName())) {
+        return method;
+      }
+    }
+  }
+  return null;
+}

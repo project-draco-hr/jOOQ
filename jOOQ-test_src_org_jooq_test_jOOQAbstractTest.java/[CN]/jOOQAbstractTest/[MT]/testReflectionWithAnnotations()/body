@@ -1,0 +1,10 @@
+{
+  assertEquals(create().newRecord(TBook()),create().newRecord(TBook(),new StaticWithAnnotations()));
+  create().newRecord(TBook()).into(StaticWithAnnotations.class);
+  assertEquals(13,StaticWithAnnotations.ID);
+  B book=create().newRecord(TBook());
+  book.setValue(TBook_ID(),new FinalWithAnnotations().ID);
+  assertEquals(book,create().newRecord(TBook(),new FinalWithAnnotations()));
+  FinalWithAnnotations f=create().newRecord(TBook()).into(FinalWithAnnotations.class);
+  assertEquals(f.ID,new FinalWithAnnotations().ID);
+}

@@ -1,0 +1,20 @@
+{
+  List<Method> result=new ArrayList<Method>();
+  for (  Method method : getInstanceMethods(type)) {
+    if (method.getParameterTypes().length == 1) {
+      if (name.equals(method.getName())) {
+        result.add(method);
+      }
+ else       if (StringUtils.toCamelCaseLC(name).equals(method.getName())) {
+        result.add(method);
+      }
+ else       if (("set" + name).equals(method.getName())) {
+        result.add(method);
+      }
+ else       if (("set" + StringUtils.toCamelCase(name)).equals(method.getName())) {
+        result.add(method);
+      }
+    }
+  }
+  return result;
+}

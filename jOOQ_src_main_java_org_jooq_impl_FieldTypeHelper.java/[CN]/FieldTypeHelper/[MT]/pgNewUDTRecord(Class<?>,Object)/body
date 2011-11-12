@@ -2,7 +2,7 @@
   if (object == null) {
     return null;
   }
-  @SuppressWarnings({"unchecked","rawtypes"}) UDTRecord<?> record=(UDTRecord<?>)JooqUtil.newRecord((Class)type);
+  @SuppressWarnings({"unchecked","rawtypes"}) UDTRecord<?> record=(UDTRecord<?>)Util.newRecord((Class)type);
   List<String> values=new PGobjectParser().parse(object.toString());
   List<Field<?>> fields=record.getFields();
   for (int i=0; i < fields.size(); i++) {

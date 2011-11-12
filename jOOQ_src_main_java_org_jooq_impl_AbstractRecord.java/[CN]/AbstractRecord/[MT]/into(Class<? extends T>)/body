@@ -1,27 +1,30 @@
 {
   try {
     T result=type.newInstance();
+    boolean useAnnotations=isJPAAvailable() && hasColumnAnnotations(type);
     for (    Field<?> field : getFields()) {
       List<java.lang.reflect.Field> members;
       List<java.lang.reflect.Method> methods;
-      if (JooqUtil.isJPAAvailable() && JooqUtil.hasColumnAnnotations(type)) {
-        members=JooqUtil.getAnnotatedMembers(type,field.getName());
-        methods=JooqUtil.getAnnotatedMethods(type,field.getName());
+      if (useAnnotations) {
+        members=getAnnotatedMembers(type,field.getName());
+        methods=getAnnotatedSetters(type,field.getName());
       }
  else {
-        members=JooqUtil.getMatchingMembers(type,field.getName());
-        methods=JooqUtil.getMatchingMethods(type,field.getName());
+        members=getMatchingMembers(type,field.getName());
+        methods=getMatchingSetters(type,field.getName());
       }
       for (      java.lang.reflect.Field member : members) {
-        copyInto(result,member,field);
+        if ((member.getModifiers() & Modifier.FINAL) == 0) {
+          into(result,member,field);
+        }
       }
       for (      java.lang.reflect.Method method : methods) {
-        copyInto(result,method,field);
+        into(result,method,field);
       }
     }
     return result;
   }
  catch (  Exception e) {
-    throw new FetchIntoException("An error ocurred when mapping record to " + type,e);
+    throw new MappingException("An error ocurred when mapping record to " + type,e);
   }
 }

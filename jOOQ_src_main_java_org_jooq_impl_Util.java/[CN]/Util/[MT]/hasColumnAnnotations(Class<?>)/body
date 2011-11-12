@@ -1,0 +1,16 @@
+{
+  if (type.getAnnotation(Entity.class) != null) {
+    return true;
+  }
+  for (  java.lang.reflect.Field member : getInstanceMembers(type)) {
+    if (member.getAnnotation(Column.class) != null) {
+      return true;
+    }
+  }
+  for (  Method method : getInstanceMethods(type)) {
+    if (method.getAnnotation(Column.class) != null) {
+      return true;
+    }
+  }
+  return false;
+}

@@ -1,0 +1,12 @@
+{
+  List<java.lang.reflect.Field> result=new ArrayList<java.lang.reflect.Field>();
+  for (  java.lang.reflect.Field member : getInstanceMembers(type)) {
+    if (name.equals(member.getName())) {
+      result.add(member);
+    }
+ else     if (StringUtils.toCamelCaseLC(name).equals(member.getName())) {
+      result.add(member);
+    }
+  }
+  return result;
+}

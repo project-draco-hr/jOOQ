@@ -1,0 +1,12 @@
+{
+  List<java.lang.reflect.Field> result=new ArrayList<java.lang.reflect.Field>();
+  for (  java.lang.reflect.Field member : getInstanceMembers(type)) {
+    Column annotation=member.getAnnotation(Column.class);
+    if (annotation != null) {
+      if (name.equals(annotation.name())) {
+        result.add(member);
+      }
+    }
+  }
+  return result;
+}

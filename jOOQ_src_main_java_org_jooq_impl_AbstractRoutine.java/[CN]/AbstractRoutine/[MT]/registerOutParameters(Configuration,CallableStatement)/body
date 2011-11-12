@@ -7,11 +7,11 @@ switch (configuration.getDialect()) {
 case ORACLE:
 {
           if (sqlType == Types.STRUCT) {
-            UDTRecord<?> record=JooqUtil.newRecord((Class<? extends UDTRecord<?>>)parameter.getType());
+            UDTRecord<?> record=Util.newRecord((Class<? extends UDTRecord<?>>)parameter.getType());
             statement.registerOutParameter(index,Types.STRUCT,record.getSQLTypeName());
           }
  else           if (sqlType == Types.ARRAY) {
-            ArrayRecord<?> record=JooqUtil.newArrayRecord((Class<? extends ArrayRecord<?>>)parameter.getType(),configuration);
+            ArrayRecord<?> record=Util.newArrayRecord((Class<? extends ArrayRecord<?>>)parameter.getType(),configuration);
             statement.registerOutParameter(index,Types.ARRAY,record.getName());
           }
  else {

@@ -1,3 +1,3 @@
 {
-  return JooqUtil.newRecord(table,this);
+  return Util.newRecord(table,this);
 }

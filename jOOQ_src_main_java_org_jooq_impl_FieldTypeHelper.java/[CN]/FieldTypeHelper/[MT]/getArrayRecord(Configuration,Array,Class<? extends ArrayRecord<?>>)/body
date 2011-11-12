@@ -3,7 +3,7 @@
     return null;
   }
  else {
-    ArrayRecord<?> record=JooqUtil.newArrayRecord(type,configuration);
+    ArrayRecord<?> record=Util.newArrayRecord(type,configuration);
     record.set(array);
     return record;
   }

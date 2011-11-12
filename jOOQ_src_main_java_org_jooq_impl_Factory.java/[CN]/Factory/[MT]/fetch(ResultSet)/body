@@ -4,6 +4,6 @@
     return new CursorImpl<Record>(this,fields,rs).fetch();
   }
  catch (  SQLException e) {
-    throw JooqUtil.translate("Factory.fetch",null,e);
+    throw Util.translate("Factory.fetch",null,e);
   }
 }

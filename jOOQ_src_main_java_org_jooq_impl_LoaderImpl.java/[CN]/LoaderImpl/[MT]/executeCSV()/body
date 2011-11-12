@@ -75,7 +75,7 @@
     }
   }
  catch (  SQLException e) {
-    throw JooqUtil.translate("LoaderImpl.executeCSV",null,e);
+    throw Util.translate("LoaderImpl.executeCSV",null,e);
   }
  finally {
     reader.close();

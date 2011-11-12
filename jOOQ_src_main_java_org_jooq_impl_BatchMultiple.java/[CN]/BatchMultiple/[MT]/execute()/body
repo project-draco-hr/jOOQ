@@ -16,10 +16,10 @@
     return result;
   }
  catch (  SQLException e) {
-    throw JooqUtil.translate("BatchMultiple.execute",sql,e);
+    throw Util.translate("BatchMultiple.execute",sql,e);
   }
  finally {
-    JooqUtil.safeClose(statement);
+    Util.safeClose(statement);
     watch.splitDebug("Statement executed");
   }
 }

@@ -25,7 +25,7 @@ case POSTGRES:
       Object o=aliasProvider;
       ArrayTable<?> table=(ArrayTable<?>)o;
       context.sql("(");
-      JooqUtil.toSQLNames(context,table.getFields());
+      Util.toSQLNames(context,table.getFields());
       context.sql(")");
     }
     break;

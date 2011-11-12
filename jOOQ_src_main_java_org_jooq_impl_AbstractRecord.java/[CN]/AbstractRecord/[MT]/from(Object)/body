@@ -1,0 +1,28 @@
+{
+  if (source == null)   return;
+  Class<?> type=source.getClass();
+  try {
+    boolean useAnnotations=isJPAAvailable() && hasColumnAnnotations(type);
+    for (    Field<?> field : getFields()) {
+      List<java.lang.reflect.Field> members;
+      Method method;
+      if (useAnnotations) {
+        members=getAnnotatedMembers(type,field.getName());
+        method=getAnnotatedGetter(type,field.getName());
+      }
+ else {
+        members=getMatchingMembers(type,field.getName());
+        method=getMatchingGetter(type,field.getName());
+      }
+      if (method != null) {
+        Util.setValue(this,field,method.invoke(source));
+      }
+ else       if (members.size() > 0) {
+        from(source,members.get(0),field);
+      }
+    }
+  }
+ catch (  Exception e) {
+    throw new MappingException("An error ocurred when mapping record from " + type,e);
+  }
+}

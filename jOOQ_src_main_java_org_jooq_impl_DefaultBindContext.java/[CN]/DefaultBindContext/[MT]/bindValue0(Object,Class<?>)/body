@@ -11,7 +11,7 @@
   if (value == null) {
     int sqlType=FieldTypeHelper.getDataType(dialect,type).getSQLType();
     if (ArrayRecord.class.isAssignableFrom(type)) {
-      String typeName=JooqUtil.newArrayRecord((Class<ArrayRecord<?>>)type,configuration).getName();
+      String typeName=Util.newArrayRecord((Class<ArrayRecord<?>>)type,configuration).getName();
       stmt.setNull(nextIndex(),sqlType,typeName);
     }
  else     if (sqlType != Types.OTHER) {

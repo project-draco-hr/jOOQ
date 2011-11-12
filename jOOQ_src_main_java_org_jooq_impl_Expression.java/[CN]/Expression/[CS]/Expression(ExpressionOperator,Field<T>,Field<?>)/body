@@ -1,5 +1,5 @@
 {
-  super(operator.toSQL(),lhs.getDataType(),JooqUtil.combine(lhs,rhs));
+  super(operator.toSQL(),lhs.getDataType(),Util.combine(lhs,rhs));
   this.operator=operator;
   this.lhs=lhs;
   this.rhs=new FieldList();

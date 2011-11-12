@@ -1,3 +1,3 @@
 {
-  JooqUtil.toSQLReference(context,sql,bindings);
+  Util.toSQLReference(context,sql,bindings);
 }
