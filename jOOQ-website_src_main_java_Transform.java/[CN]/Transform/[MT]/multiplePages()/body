@@ -12,10 +12,12 @@
     File dir=new File(path);
     dir.mkdirs();
     System.out.println("Transforming section " + path);
+    FileOutputStream out=new FileOutputStream(new File(dir,"index.php"));
     Source source=new DOMSource(manual.document());
-    Result target=new StreamResult(new File(dir,"index.php"));
+    Result target=new StreamResult(out);
     transformer.setParameter("sectionID",section.id());
     transformer.setParameter("relativePath",relativePath);
     transformer.transform(source,target);
+    out.close();
   }
 }

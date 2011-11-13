@@ -8,7 +8,9 @@
   File dir=new File("manual-single-page");
   dir.mkdirs();
   System.out.println("Transforming manual");
+  FileOutputStream out=new FileOutputStream(new File(dir,"index.php"));
   Source source=new DOMSource(manual.document());
-  Result target=new StreamResult(new File(dir,"index.php"));
+  Result target=new StreamResult(out);
   transformer.transform(source,target);
+  out.close();
 }

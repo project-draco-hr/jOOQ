@@ -1,4 +1,5 @@
 {
+  System.out.println("Transforming XML -> FO");
   InputStream isXML=Transform.class.getResourceAsStream("manual.xml");
   InputStream isXSL=Transform.class.getResourceAsStream("pdf.xsl");
   StreamSource xsl=new StreamSource(isXSL);
@@ -7,8 +8,23 @@
   Match manual=$(isXML);
   File dir=new File("manual-pdf");
   dir.mkdirs();
-  System.out.println("Transforming XML -> FO");
+  FileOutputStream fout=new FileOutputStream(new File(dir,"jOOQ-manual.fo.xml"));
   Source source=new DOMSource(manual.document());
-  Result target=new StreamResult(new File(dir,"manual.fo.xml"));
+  Result target=new StreamResult(fout);
   transformer.transform(source,target);
+  fout.close();
+  System.out.println("Transforming FO -> PDF");
+  OutputStream out=null;
+  fopFactory.setUserConfig(new File("C:/Users/lukas/workspace/jOOQ-website/src/main/resources/fop.config.xml"));
+  FOUserAgent foUserAgent=fopFactory.newFOUserAgent();
+  out=new FileOutputStream(new File(dir,"jOOQ-manual.pdf"));
+  out=new BufferedOutputStream(out);
+  Fop fop=fopFactory.newFop(MimeConstants.MIME_PDF,foUserAgent,out);
+  transformer=factory.newTransformer();
+  Source src=new StreamSource(new File(dir,"jOOQ-manual.fo.xml"));
+  Result res=new SAXResult(fop.getDefaultHandler());
+  transformer.transform(src,res);
+  out.flush();
+  out.close();
+  Runtime.getRuntime().exec(new String[]{"C:\\Program Files (x86)\\Adobe\\Reader 9.0\\Reader\\AcroRd32.exe","C:\\Users\\lukas\\workspace\\jOOQ-website\\manual-pdf\\jOOQ-manual.pdf"});
 }
