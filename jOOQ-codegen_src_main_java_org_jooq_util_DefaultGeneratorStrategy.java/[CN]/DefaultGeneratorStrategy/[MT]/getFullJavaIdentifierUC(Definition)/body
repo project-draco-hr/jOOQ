@@ -1,6 +1,9 @@
 {
   StringBuilder sb=new StringBuilder();
-  if (definition instanceof TypedElementDefinition) {
+  if (definition instanceof ColumnDefinition) {
+    sb.append(getFullJavaIdentifierUC(((TypedElementDefinition<?>)definition).getContainer()));
+  }
+ else   if (definition instanceof TypedElementDefinition) {
     sb.append(getFullJavaClassName(((TypedElementDefinition<?>)definition).getContainer()));
   }
  else {

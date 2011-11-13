@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.test.hsqldb.generatedclasses.tables.Class.CLASS_);
+  return getValue(org.jooq.test.hsqldb.generatedclasses.tables.Class.CLASS.CLASS_);
 }

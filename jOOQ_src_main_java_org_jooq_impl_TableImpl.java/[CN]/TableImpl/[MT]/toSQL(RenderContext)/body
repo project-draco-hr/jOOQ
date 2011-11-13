@@ -1,7 +1,12 @@
 {
-  if (getMappedSchema(context,getSchema()) != null) {
-    context.sql(getMappedSchema(context,getSchema()));
-    context.sql(".");
+  if (alias != null) {
+    alias.toSQL(context);
   }
-  context.literal(getMappedTable(context,this).getName());
+ else {
+    if (getMappedSchema(context,getSchema()) != null) {
+      context.sql(getMappedSchema(context,getSchema()));
+      context.sql(".");
+    }
+    context.literal(getMappedTable(context,this).getName());
+  }
 }

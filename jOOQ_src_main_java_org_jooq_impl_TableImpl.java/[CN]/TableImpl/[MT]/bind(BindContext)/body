@@ -1,2 +1,5 @@
 {
+  if (alias != null) {
+    alias.bind(context);
+  }
 }

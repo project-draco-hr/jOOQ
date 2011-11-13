@@ -1,0 +1,10 @@
+{
+  super(name,schema);
+  this.fields=new FieldList();
+  if (aliased != null) {
+    alias=new AliasProviderImpl<Table<R>>(aliased,name);
+  }
+ else {
+    alias=null;
+  }
+}

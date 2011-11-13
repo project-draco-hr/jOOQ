@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.test.hsqldb.generatedclasses.tables.XTestCase_71.ID);
+  return getValue(org.jooq.test.hsqldb.generatedclasses.tables.XTestCase_71.X_TEST_CASE_71.ID);
 }

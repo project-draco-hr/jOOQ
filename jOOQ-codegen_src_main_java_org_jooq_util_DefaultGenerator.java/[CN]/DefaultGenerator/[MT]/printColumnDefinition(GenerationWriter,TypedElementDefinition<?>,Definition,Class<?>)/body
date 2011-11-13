@@ -2,7 +2,12 @@
   String columnDisambiguationSuffix=strategy.getJavaIdentifierUC(column).equals(strategy.getJavaIdentifierUC(type)) ? "_" : "";
   printFieldJavaDoc(out,columnDisambiguationSuffix,column);
   boolean hasType=type instanceof TableDefinition || type instanceof UDTDefinition;
-  out.print("\tpublic static final ");
+  if (type instanceof TableDefinition) {
+    out.print("\tpublic final ");
+  }
+ else {
+    out.print("\tpublic static final ");
+  }
   out.print(declaredMemberClass);
   out.print("<");
   if (hasType) {
@@ -27,7 +32,12 @@
   out.print("\", ");
   out.print(getJavaTypeReference(column.getDatabase(),column.getType()));
   if (hasType) {
-    out.print(", " + strategy.getJavaIdentifierUC(type));
+    if (type instanceof TableDefinition) {
+      out.print(", this");
+    }
+ else {
+      out.print(", " + strategy.getJavaIdentifierUC(type));
+    }
   }
   out.println(");");
 }

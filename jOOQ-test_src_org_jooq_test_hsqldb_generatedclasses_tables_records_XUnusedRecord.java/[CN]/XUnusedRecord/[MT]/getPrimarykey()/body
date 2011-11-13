@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.test.hsqldb.generatedclasses.tables.XUnused.PRIMARYKEY);
+  return getValue(org.jooq.test.hsqldb.generatedclasses.tables.XUnused.X_UNUSED.PRIMARYKEY);
 }

@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.test.hsqldb.generatedclasses.tables.TArrays.STRING_ARRAY);
+  return getValue(org.jooq.test.hsqldb.generatedclasses.tables.TArrays.T_ARRAYS.STRING_ARRAY);
 }

@@ -1,3 +1,8 @@
 {
-  return new TableAlias<R>(this,alias);
+  if (alias != null) {
+    return alias.as(as);
+  }
+ else {
+    return new TableAlias<R>(this,as);
+  }
 }
