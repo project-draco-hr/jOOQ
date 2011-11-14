@@ -1,3 +1,3 @@
 {
-  return TTriggers.T_TRIGGERS;
+  return T_TRIGGERS;
 }

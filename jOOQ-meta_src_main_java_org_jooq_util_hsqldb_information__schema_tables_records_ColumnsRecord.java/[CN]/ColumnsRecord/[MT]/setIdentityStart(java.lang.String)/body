@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.hsqldb.information_schema.tables.Columns.IDENTITY_START,value);
+  setValue(org.jooq.util.hsqldb.information_schema.tables.Columns.COLUMNS.IDENTITY_START,value);
 }

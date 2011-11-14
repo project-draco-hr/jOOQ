@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.examples.mysql.sakila.tables.Address.ADDRESS2,value);
+  setValue(org.jooq.examples.mysql.sakila.tables.Address.ADDRESS.ADDRESS2,value);
 }

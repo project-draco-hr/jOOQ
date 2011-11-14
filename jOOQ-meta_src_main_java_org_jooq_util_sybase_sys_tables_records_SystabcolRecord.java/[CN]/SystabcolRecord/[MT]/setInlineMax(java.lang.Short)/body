@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.sybase.sys.tables.Systabcol.INLINE_MAX,value);
+  setValue(org.jooq.util.sybase.sys.tables.Systabcol.SYSTABCOL.INLINE_MAX,value);
 }

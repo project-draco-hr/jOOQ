@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.oracle.sys.tables.AllArguments.PACKAGE_NAME,value);
+  setValue(org.jooq.util.oracle.sys.tables.AllArguments.ALL_ARGUMENTS.PACKAGE_NAME,value);
 }

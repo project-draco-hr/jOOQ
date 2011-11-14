@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.postgres.information_schema.tables.Routines.IS_USER_DEFINED_CAST,value);
+  setValue(org.jooq.util.postgres.information_schema.tables.Routines.ROUTINES.IS_USER_DEFINED_CAST,value);
 }

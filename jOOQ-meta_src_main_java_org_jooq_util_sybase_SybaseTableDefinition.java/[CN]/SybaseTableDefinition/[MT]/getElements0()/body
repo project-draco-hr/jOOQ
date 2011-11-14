@@ -1,8 +1,8 @@
 {
   List<ColumnDefinition> result=new ArrayList<ColumnDefinition>();
-  for (  Record record : create().select(Systabcol.COLUMN_NAME,Systabcol.COLUMN_ID,Sysdomain.DOMAIN_NAME,Systabcol.WIDTH,Systabcol.SCALE,Systabcol.DEFAULT).from(SYSTABCOL).join(SYSTAB).on(Systabcol.TABLE_ID.equal(Systab.TABLE_ID)).join(SYSDOMAIN).on(Systabcol.DOMAIN_ID.equal(Sysdomain.DOMAIN_ID)).where(Systab.TABLE_NAME.equal(getName())).orderBy(Systabcol.COLUMN_ID).fetch()) {
-    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),record.getValue(Sysdomain.DOMAIN_NAME),record.getValue(Systabcol.WIDTH),record.getValue(Systabcol.SCALE));
-    ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getName()),record.getValue(Systabcol.COLUMN_NAME),record.getValue(Systabcol.COLUMN_ID),type,"autoincrement".equalsIgnoreCase(record.getValue(Systabcol.DEFAULT)),null);
+  for (  Record record : create().select(SYSTABCOL.COLUMN_NAME,SYSTABCOL.COLUMN_ID,SYSDOMAIN.DOMAIN_NAME,SYSTABCOL.WIDTH,SYSTABCOL.SCALE,SYSTABCOL.DEFAULT).from(SYSTABCOL).join(SYSTAB).on(SYSTABCOL.TABLE_ID.equal(SYSTAB.TABLE_ID)).join(SYSDOMAIN).on(SYSTABCOL.DOMAIN_ID.equal(SYSDOMAIN.DOMAIN_ID)).where(SYSTAB.TABLE_NAME.equal(getName())).orderBy(SYSTABCOL.COLUMN_ID).fetch()) {
+    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),record.getValue(SYSDOMAIN.DOMAIN_NAME),record.getValue(SYSTABCOL.WIDTH),record.getValue(SYSTABCOL.SCALE));
+    ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getName()),record.getValue(SYSTABCOL.COLUMN_NAME),record.getValue(SYSTABCOL.COLUMN_ID),type,"autoincrement".equalsIgnoreCase(record.getValue(SYSTABCOL.DEFAULT)),null);
     result.add(column);
   }
   return result;

@@ -1,0 +1,3 @@
+{
+  super(alias,org.jooq.util.sybase.sys.Sys.SYS,org.jooq.util.sybase.sys.tables.Sysprocedure.SYSPROCEDURE);
+}

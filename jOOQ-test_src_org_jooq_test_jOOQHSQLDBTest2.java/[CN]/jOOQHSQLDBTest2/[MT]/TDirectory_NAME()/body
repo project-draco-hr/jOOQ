@@ -1,3 +1,3 @@
 {
-  return TDirectory.NAME;
+  return T_DIRECTORY.NAME;
 }

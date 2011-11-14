@@ -1,8 +1,8 @@
 {
   List<TableDefinition> result=new ArrayList<TableDefinition>();
-  for (  Record record : create().select(Systable.TABLE_NAME,Systable.REMARKS).from(SYSTABLE).fetch()) {
-    String name=record.getValue(Systable.TABLE_NAME);
-    String comment=record.getValue(Systable.REMARKS);
+  for (  Record record : create().select(SYSTABLE.TABLE_NAME,SYSTABLE.REMARKS).from(SYSTABLE).fetch()) {
+    String name=record.getValue(SYSTABLE.TABLE_NAME);
+    String comment=record.getValue(SYSTABLE.REMARKS);
     SybaseTableDefinition table=new SybaseTableDefinition(this,name,comment);
     result.add(table);
   }

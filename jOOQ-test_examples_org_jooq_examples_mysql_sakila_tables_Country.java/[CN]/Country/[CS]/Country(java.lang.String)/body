@@ -1,0 +1,3 @@
+{
+  super(alias,org.jooq.examples.mysql.sakila.Sakila.SAKILA,org.jooq.examples.mysql.sakila.tables.Country.COUNTRY);
+}

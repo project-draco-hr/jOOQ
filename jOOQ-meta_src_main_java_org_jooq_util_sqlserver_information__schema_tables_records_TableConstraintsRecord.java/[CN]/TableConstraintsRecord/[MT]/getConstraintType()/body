@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.util.sqlserver.information_schema.tables.TableConstraints.CONSTRAINT_TYPE);
+  return getValue(org.jooq.util.sqlserver.information_schema.tables.TableConstraints.TABLE_CONSTRAINTS.CONSTRAINT_TYPE);
 }

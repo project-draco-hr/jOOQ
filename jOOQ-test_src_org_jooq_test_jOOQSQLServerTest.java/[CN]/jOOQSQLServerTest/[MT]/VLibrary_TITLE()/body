@@ -1,3 +1,3 @@
 {
-  return VLibrary.TITLE;
+  return V_LIBRARY.TITLE;
 }

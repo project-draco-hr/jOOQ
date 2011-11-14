@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.hsqldb.information_schema.tables.ElementTypes.MAXIMUM_CARDINALITY,value);
+  setValue(org.jooq.util.hsqldb.information_schema.tables.ElementTypes.ELEMENT_TYPES.MAXIMUM_CARDINALITY,value);
 }

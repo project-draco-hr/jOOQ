@@ -1,10 +1,10 @@
 {
-  Result<Record> result=create().select(ReferentialConstraints.CONSTRAINT_NAME,ReferentialConstraints.UNIQUE_CONSTRAINT_NAME,KeyColumnUsage.TABLE_NAME,KeyColumnUsage.COLUMN_NAME).from(REFERENTIAL_CONSTRAINTS).join(KEY_COLUMN_USAGE).on(ReferentialConstraints.CONSTRAINT_NAME.equal(KeyColumnUsage.CONSTRAINT_NAME)).where(ReferentialConstraints.CONSTRAINT_SCHEMA.equal(getSchemaName())).orderBy(KeyColumnUsage.TABLE_SCHEMA.asc(),KeyColumnUsage.TABLE_NAME.asc(),KeyColumnUsage.ORDINAL_POSITION.asc()).fetch();
+  Result<Record> result=create().select(REFERENTIAL_CONSTRAINTS.CONSTRAINT_NAME,REFERENTIAL_CONSTRAINTS.UNIQUE_CONSTRAINT_NAME,KEY_COLUMN_USAGE.TABLE_NAME,KEY_COLUMN_USAGE.COLUMN_NAME).from(REFERENTIAL_CONSTRAINTS).join(KEY_COLUMN_USAGE).on(REFERENTIAL_CONSTRAINTS.CONSTRAINT_NAME.equal(KEY_COLUMN_USAGE.CONSTRAINT_NAME)).where(REFERENTIAL_CONSTRAINTS.CONSTRAINT_SCHEMA.equal(getSchemaName())).orderBy(KEY_COLUMN_USAGE.TABLE_SCHEMA.asc(),KEY_COLUMN_USAGE.TABLE_NAME.asc(),KEY_COLUMN_USAGE.ORDINAL_POSITION.asc()).fetch();
   for (  Record record : result) {
-    String foreignKey=record.getValue(ReferentialConstraints.CONSTRAINT_NAME);
-    String foreignKeyTable=record.getValue(KeyColumnUsage.TABLE_NAME);
-    String foreignKeyColumn=record.getValue(KeyColumnUsage.COLUMN_NAME);
-    String uniqueKey=record.getValue(ReferentialConstraints.UNIQUE_CONSTRAINT_NAME);
+    String foreignKey=record.getValue(REFERENTIAL_CONSTRAINTS.CONSTRAINT_NAME);
+    String foreignKeyTable=record.getValue(KEY_COLUMN_USAGE.TABLE_NAME);
+    String foreignKeyColumn=record.getValue(KEY_COLUMN_USAGE.COLUMN_NAME);
+    String uniqueKey=record.getValue(REFERENTIAL_CONSTRAINTS.UNIQUE_CONSTRAINT_NAME);
     TableDefinition referencingTable=getTable(foreignKeyTable);
     if (referencingTable != null) {
       ColumnDefinition referencingColumn=referencingTable.getColumn(foreignKeyColumn);

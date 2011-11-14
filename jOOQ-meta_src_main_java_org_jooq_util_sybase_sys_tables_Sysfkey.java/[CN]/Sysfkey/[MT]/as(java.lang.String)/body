@@ -1,0 +1,3 @@
+{
+  return new org.jooq.util.sybase.sys.tables.Sysfkey(alias);
+}

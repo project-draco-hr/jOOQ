@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.sqlserver.information_schema.tables.Sequences.DATA_TYPE,value);
+  setValue(org.jooq.util.sqlserver.information_schema.tables.Sequences.SEQUENCES.DATA_TYPE,value);
 }

@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.examples.mysql.sakila.tables.Payment.CUSTOMER_ID,value);
+  setValue(org.jooq.examples.mysql.sakila.tables.Payment.PAYMENT.CUSTOMER_ID,value);
 }

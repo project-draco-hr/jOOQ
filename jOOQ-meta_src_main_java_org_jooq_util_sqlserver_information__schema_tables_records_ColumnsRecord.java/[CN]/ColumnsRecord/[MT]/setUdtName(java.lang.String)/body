@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.sqlserver.information_schema.tables.Columns.UDT_NAME,value);
+  setValue(org.jooq.util.sqlserver.information_schema.tables.Columns.COLUMNS.UDT_NAME,value);
 }

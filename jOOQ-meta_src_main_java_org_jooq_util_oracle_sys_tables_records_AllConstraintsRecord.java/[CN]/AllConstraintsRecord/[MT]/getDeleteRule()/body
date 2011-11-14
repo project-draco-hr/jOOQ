@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.util.oracle.sys.tables.AllConstraints.DELETE_RULE);
+  return getValue(org.jooq.util.oracle.sys.tables.AllConstraints.ALL_CONSTRAINTS.DELETE_RULE);
 }

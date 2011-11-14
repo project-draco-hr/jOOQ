@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.examples.mysql.sakila.tables.FilmActor.LAST_UPDATE,value);
+  setValue(org.jooq.examples.mysql.sakila.tables.FilmActor.FILM_ACTOR.LAST_UPDATE,value);
 }

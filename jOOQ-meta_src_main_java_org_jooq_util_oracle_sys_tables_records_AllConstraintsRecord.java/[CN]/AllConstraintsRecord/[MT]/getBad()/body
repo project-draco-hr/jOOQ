@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.util.oracle.sys.tables.AllConstraints.BAD);
+  return getValue(org.jooq.util.oracle.sys.tables.AllConstraints.ALL_CONSTRAINTS.BAD);
 }

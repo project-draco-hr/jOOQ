@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.postgres.pg_catalog.tables.PgProc.PROOWNER,value);
+  setValue(org.jooq.util.postgres.pg_catalog.tables.PgProc.PG_PROC.PROOWNER,value);
 }

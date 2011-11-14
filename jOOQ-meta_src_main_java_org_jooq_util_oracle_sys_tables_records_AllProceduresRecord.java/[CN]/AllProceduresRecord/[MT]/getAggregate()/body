@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.util.oracle.sys.tables.AllProcedures.AGGREGATE);
+  return getValue(org.jooq.util.oracle.sys.tables.AllProcedures.ALL_PROCEDURES.AGGREGATE);
 }

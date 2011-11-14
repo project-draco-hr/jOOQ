@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.examples.mysql.sakila.tables.Film.SPECIAL_FEATURES,value);
+  setValue(org.jooq.examples.mysql.sakila.tables.Film.FILM.SPECIAL_FEATURES,value);
 }

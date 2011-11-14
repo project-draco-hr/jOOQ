@@ -1,3 +1,3 @@
 {
-  return create().selectFrom(org.jooq.examples.mysql.sakila.tables.Category.CATEGORY).where(org.jooq.examples.mysql.sakila.tables.Category.CATEGORY_ID.equal(getValue(org.jooq.examples.mysql.sakila.tables.FilmCategory.CATEGORY_ID))).fetchOne();
+  return create().selectFrom(org.jooq.examples.mysql.sakila.tables.Category.CATEGORY).where(org.jooq.examples.mysql.sakila.tables.Category.CATEGORY.CATEGORY_ID.equal(getValue(org.jooq.examples.mysql.sakila.tables.FilmCategory.FILM_CATEGORY.CATEGORY_ID))).fetchOne();
 }

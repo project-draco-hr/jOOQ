@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.hsqldb.information_schema.tables.Routines.RESULT_CAST_FROM_DECLARED_DATA_TYPE,value);
+  setValue(org.jooq.util.hsqldb.information_schema.tables.Routines.ROUTINES.RESULT_CAST_FROM_DECLARED_DATA_TYPE,value);
 }

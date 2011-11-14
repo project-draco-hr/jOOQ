@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.test.postgres.generatedclasses.tables.TArrays.ARRAY_ARRAY,value);
+  setValue(org.jooq.test.postgres.generatedclasses.tables.TArrays.T_ARRAYS.ARRAY_ARRAY,value);
 }

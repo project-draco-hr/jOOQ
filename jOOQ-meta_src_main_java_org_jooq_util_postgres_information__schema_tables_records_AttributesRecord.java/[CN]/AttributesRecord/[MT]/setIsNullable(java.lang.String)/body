@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.postgres.information_schema.tables.Attributes.IS_NULLABLE,value);
+  setValue(org.jooq.util.postgres.information_schema.tables.Attributes.ATTRIBUTES.IS_NULLABLE,value);
 }

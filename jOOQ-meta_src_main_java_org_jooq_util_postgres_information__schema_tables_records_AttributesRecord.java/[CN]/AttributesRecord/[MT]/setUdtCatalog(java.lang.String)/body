@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.postgres.information_schema.tables.Attributes.UDT_CATALOG,value);
+  setValue(org.jooq.util.postgres.information_schema.tables.Attributes.ATTRIBUTES.UDT_CATALOG,value);
 }

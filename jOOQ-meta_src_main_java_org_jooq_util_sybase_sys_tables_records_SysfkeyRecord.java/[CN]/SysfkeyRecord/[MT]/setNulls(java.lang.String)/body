@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.sybase.sys.tables.Sysfkey.NULLS,value);
+  setValue(org.jooq.util.sybase.sys.tables.Sysfkey.SYSFKEY.NULLS,value);
 }

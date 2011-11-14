@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.test.sqlserver.generatedclasses.tables.VBook.CONTENT_PDF,value);
+  setValue(org.jooq.test.sqlserver.generatedclasses.tables.VBook.V_BOOK.CONTENT_PDF,value);
 }

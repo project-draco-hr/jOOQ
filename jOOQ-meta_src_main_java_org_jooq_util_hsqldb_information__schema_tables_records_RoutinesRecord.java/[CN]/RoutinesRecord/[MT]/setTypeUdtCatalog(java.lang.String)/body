@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.hsqldb.information_schema.tables.Routines.TYPE_UDT_CATALOG,value);
+  setValue(org.jooq.util.hsqldb.information_schema.tables.Routines.ROUTINES.TYPE_UDT_CATALOG,value);
 }

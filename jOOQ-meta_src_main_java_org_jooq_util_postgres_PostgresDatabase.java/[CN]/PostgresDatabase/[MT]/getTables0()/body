@@ -1,6 +1,6 @@
 {
   List<TableDefinition> result=new ArrayList<TableDefinition>();
-  for (  String name : create().select(Tables.TABLE_NAME).from(TABLES).where(Tables.TABLE_SCHEMA.equal(getSchemaName())).orderBy(Tables.TABLE_NAME).fetch(Tables.TABLE_NAME)) {
+  for (  String name : create().select(TABLES.TABLE_NAME).from(TABLES).where(TABLES.TABLE_SCHEMA.equal(getSchemaName())).orderBy(TABLES.TABLE_NAME).fetch(TABLES.TABLE_NAME)) {
     String comment="";
     result.add(new PostgresTableDefinition(this,name,comment));
   }

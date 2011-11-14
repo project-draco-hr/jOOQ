@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.hsqldb.information_schema.tables.ElementTypes.SCOPE_NAME,value);
+  setValue(org.jooq.util.hsqldb.information_schema.tables.ElementTypes.ELEMENT_TYPES.SCOPE_NAME,value);
 }

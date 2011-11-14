@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.postgres.information_schema.tables.Routines.IS_NULL_CALL,value);
+  setValue(org.jooq.util.postgres.information_schema.tables.Routines.ROUTINES.IS_NULL_CALL,value);
 }

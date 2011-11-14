@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.examples.mysql.sakila.tables.Customer.ACTIVE,value);
+  setValue(org.jooq.examples.mysql.sakila.tables.Customer.CUSTOMER.ACTIVE,value);
 }

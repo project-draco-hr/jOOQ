@@ -1,7 +1,7 @@
 {
   List<RoutineDefinition> result=new ArrayList<RoutineDefinition>();
-  for (  Record record : create().selectDistinct(AllArguments.OBJECT_NAME,AllArguments.OBJECT_ID,AllArguments.OVERLOAD).from(ALL_ARGUMENTS).where(AllArguments.OWNER.equal(getSchemaName())).and(AllArguments.PACKAGE_NAME.equal(getName())).orderBy(AllArguments.OBJECT_NAME,AllArguments.OVERLOAD).fetch()) {
-    result.add(new OracleRoutineDefinition(getDatabase(),this,record.getValue(AllArguments.OBJECT_NAME),"",record.getValue(AllArguments.OBJECT_ID),record.getValue(AllArguments.OVERLOAD)));
+  for (  Record record : create().selectDistinct(ALL_ARGUMENTS.OBJECT_NAME,ALL_ARGUMENTS.OBJECT_ID,ALL_ARGUMENTS.OVERLOAD).from(ALL_ARGUMENTS).where(ALL_ARGUMENTS.OWNER.equal(getSchemaName())).and(ALL_ARGUMENTS.PACKAGE_NAME.equal(getName())).orderBy(ALL_ARGUMENTS.OBJECT_NAME,ALL_ARGUMENTS.OVERLOAD).fetch()) {
+    result.add(new OracleRoutineDefinition(getDatabase(),this,record.getValue(ALL_ARGUMENTS.OBJECT_NAME),"",record.getValue(ALL_ARGUMENTS.OBJECT_ID),record.getValue(ALL_ARGUMENTS.OVERLOAD)));
   }
   return result;
 }

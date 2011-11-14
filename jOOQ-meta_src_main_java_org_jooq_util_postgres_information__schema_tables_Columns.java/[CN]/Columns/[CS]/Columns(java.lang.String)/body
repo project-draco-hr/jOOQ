@@ -1,0 +1,3 @@
+{
+  super(alias,org.jooq.util.postgres.information_schema.InformationSchema.INFORMATION_SCHEMA,org.jooq.util.postgres.information_schema.tables.Columns.COLUMNS);
+}

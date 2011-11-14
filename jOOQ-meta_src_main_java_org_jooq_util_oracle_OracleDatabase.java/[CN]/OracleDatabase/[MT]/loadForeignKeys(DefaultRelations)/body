@@ -1,9 +1,9 @@
 {
-  for (  Record record : create().select(AllConstraints.CONSTRAINT_NAME,AllConstraints.TABLE_NAME,AllConsColumns.COLUMN_NAME,AllConstraints.R_CONSTRAINT_NAME).from(ALL_CONSTRAINTS).join(ALL_CONS_COLUMNS).on(AllConstraints.OWNER.equal(AllConsColumns.OWNER)).and(AllConstraints.TABLE_NAME.equal(AllConsColumns.TABLE_NAME)).and(AllConstraints.CONSTRAINT_NAME.equal(AllConsColumns.CONSTRAINT_NAME)).where(AllConstraints.CONSTRAINT_TYPE.equal("R")).and(AllConstraints.OWNER.equal(getSchemaName())).orderBy(AllConstraints.TABLE_NAME,AllConstraints.CONSTRAINT_NAME,AllConsColumns.POSITION).fetch()) {
-    String foreignKeyName=record.getValue(AllConstraints.CONSTRAINT_NAME);
-    String foreignKeyTableName=record.getValue(AllConstraints.TABLE_NAME);
-    String foreignKeyColumnName=record.getValue(AllConsColumns.COLUMN_NAME);
-    String uniqueKeyName=record.getValue(AllConstraints.R_CONSTRAINT_NAME);
+  for (  Record record : create().select(ALL_CONSTRAINTS.CONSTRAINT_NAME,ALL_CONSTRAINTS.TABLE_NAME,ALL_CONS_COLUMNS.COLUMN_NAME,ALL_CONSTRAINTS.R_CONSTRAINT_NAME).from(ALL_CONSTRAINTS).join(ALL_CONS_COLUMNS).on(ALL_CONSTRAINTS.OWNER.equal(ALL_CONS_COLUMNS.OWNER)).and(ALL_CONSTRAINTS.TABLE_NAME.equal(ALL_CONS_COLUMNS.TABLE_NAME)).and(ALL_CONSTRAINTS.CONSTRAINT_NAME.equal(ALL_CONS_COLUMNS.CONSTRAINT_NAME)).where(ALL_CONSTRAINTS.CONSTRAINT_TYPE.equal("R")).and(ALL_CONSTRAINTS.OWNER.equal(getSchemaName())).orderBy(ALL_CONSTRAINTS.TABLE_NAME,ALL_CONSTRAINTS.CONSTRAINT_NAME,ALL_CONS_COLUMNS.POSITION).fetch()) {
+    String foreignKeyName=record.getValue(ALL_CONSTRAINTS.CONSTRAINT_NAME);
+    String foreignKeyTableName=record.getValue(ALL_CONSTRAINTS.TABLE_NAME);
+    String foreignKeyColumnName=record.getValue(ALL_CONS_COLUMNS.COLUMN_NAME);
+    String uniqueKeyName=record.getValue(ALL_CONSTRAINTS.R_CONSTRAINT_NAME);
     TableDefinition referencingTable=getTable(foreignKeyTableName);
     if (referencingTable != null) {
       ColumnDefinition column=referencingTable.getColumn(foreignKeyColumnName);

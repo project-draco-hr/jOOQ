@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.util.sqlserver.information_schema.tables.Routines.IS_IMPLICITLY_INVOCABLE);
+  return getValue(org.jooq.util.sqlserver.information_schema.tables.Routines.ROUTINES.IS_IMPLICITLY_INVOCABLE);
 }

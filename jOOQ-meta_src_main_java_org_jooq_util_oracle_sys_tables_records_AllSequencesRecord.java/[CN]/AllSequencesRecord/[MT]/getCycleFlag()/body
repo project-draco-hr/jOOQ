@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.util.oracle.sys.tables.AllSequences.CYCLE_FLAG);
+  return getValue(org.jooq.util.oracle.sys.tables.AllSequences.ALL_SEQUENCES.CYCLE_FLAG);
 }

@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.test.postgres.generatedclasses.tables.T_725LobTest.LOB,value);
+  setValue(org.jooq.test.postgres.generatedclasses.tables.T_725LobTest.T_725_LOB_TEST.LOB,value);
 }

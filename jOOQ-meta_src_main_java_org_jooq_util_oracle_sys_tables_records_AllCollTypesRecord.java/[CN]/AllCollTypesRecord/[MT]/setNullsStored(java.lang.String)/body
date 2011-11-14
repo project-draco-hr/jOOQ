@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.oracle.sys.tables.AllCollTypes.NULLS_STORED,value);
+  setValue(org.jooq.util.oracle.sys.tables.AllCollTypes.ALL_COLL_TYPES.NULLS_STORED,value);
 }

@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.postgres.information_schema.tables.Attributes.CHARACTER_SET_CATALOG,value);
+  setValue(org.jooq.util.postgres.information_schema.tables.Attributes.ATTRIBUTES.CHARACTER_SET_CATALOG,value);
 }

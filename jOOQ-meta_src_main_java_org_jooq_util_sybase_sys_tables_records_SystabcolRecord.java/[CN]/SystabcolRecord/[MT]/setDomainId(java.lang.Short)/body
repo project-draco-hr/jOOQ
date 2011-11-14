@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.sybase.sys.tables.Systabcol.DOMAIN_ID,value);
+  setValue(org.jooq.util.sybase.sys.tables.Systabcol.SYSTABCOL.DOMAIN_ID,value);
 }

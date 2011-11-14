@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.util.oracle.sys.tables.AllArguments.RADIX);
+  return getValue(org.jooq.util.oracle.sys.tables.AllArguments.ALL_ARGUMENTS.RADIX);
 }

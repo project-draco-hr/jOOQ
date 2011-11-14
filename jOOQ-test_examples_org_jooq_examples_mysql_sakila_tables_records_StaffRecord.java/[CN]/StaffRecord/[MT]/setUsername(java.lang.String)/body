@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.examples.mysql.sakila.tables.Staff.USERNAME,value);
+  setValue(org.jooq.examples.mysql.sakila.tables.Staff.STAFF.USERNAME,value);
 }

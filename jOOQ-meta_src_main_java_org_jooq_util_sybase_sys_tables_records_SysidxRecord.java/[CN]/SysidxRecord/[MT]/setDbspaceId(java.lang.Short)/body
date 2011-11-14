@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.sybase.sys.tables.Sysidx.DBSPACE_ID,value);
+  setValue(org.jooq.util.sybase.sys.tables.Sysidx.SYSIDX.DBSPACE_ID,value);
 }

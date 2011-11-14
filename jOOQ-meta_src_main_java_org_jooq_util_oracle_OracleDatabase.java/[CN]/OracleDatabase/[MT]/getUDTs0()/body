@@ -1,6 +1,6 @@
 {
   List<UDTDefinition> result=new ArrayList<UDTDefinition>();
-  for (  String name : create().selectDistinct(AllTypes.TYPE_NAME).from(ALL_TYPES).where(AllTypes.OWNER.equal(getSchemaName())).and(AllTypes.TYPECODE.equal("OBJECT")).orderBy(AllTypes.TYPE_NAME).fetch(AllTypes.TYPE_NAME)) {
+  for (  String name : create().selectDistinct(ALL_TYPES.TYPE_NAME).from(ALL_TYPES).where(ALL_TYPES.OWNER.equal(getSchemaName())).and(ALL_TYPES.TYPECODE.equal("OBJECT")).orderBy(ALL_TYPES.TYPE_NAME).fetch(ALL_TYPES.TYPE_NAME)) {
     result.add(new OracleUDTDefinition(this,name,null));
   }
   return result;

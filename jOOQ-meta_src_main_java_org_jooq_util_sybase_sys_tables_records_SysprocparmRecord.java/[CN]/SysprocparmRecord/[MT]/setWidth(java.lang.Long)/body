@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.sybase.sys.tables.Sysprocparm.WIDTH,value);
+  setValue(org.jooq.util.sybase.sys.tables.Sysprocparm.SYSPROCPARM.WIDTH,value);
 }

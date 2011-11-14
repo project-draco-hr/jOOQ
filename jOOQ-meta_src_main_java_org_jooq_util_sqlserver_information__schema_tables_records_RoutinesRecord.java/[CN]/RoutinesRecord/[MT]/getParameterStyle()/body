@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.util.sqlserver.information_schema.tables.Routines.PARAMETER_STYLE);
+  return getValue(org.jooq.util.sqlserver.information_schema.tables.Routines.ROUTINES.PARAMETER_STYLE);
 }

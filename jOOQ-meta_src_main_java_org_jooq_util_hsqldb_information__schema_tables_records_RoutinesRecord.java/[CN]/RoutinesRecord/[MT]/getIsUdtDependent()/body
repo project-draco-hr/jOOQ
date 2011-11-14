@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.util.hsqldb.information_schema.tables.Routines.IS_UDT_DEPENDENT);
+  return getValue(org.jooq.util.hsqldb.information_schema.tables.Routines.ROUTINES.IS_UDT_DEPENDENT);
 }

@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.sybase.sys.tables.Sysprocedure.REMARKS,value);
+  setValue(org.jooq.util.sybase.sys.tables.Sysprocedure.SYSPROCEDURE.REMARKS,value);
 }

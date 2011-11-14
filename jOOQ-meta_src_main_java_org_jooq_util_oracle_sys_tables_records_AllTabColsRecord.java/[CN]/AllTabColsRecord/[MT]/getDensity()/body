@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.util.oracle.sys.tables.AllTabCols.DENSITY);
+  return getValue(org.jooq.util.oracle.sys.tables.AllTabCols.ALL_TAB_COLS.DENSITY);
 }

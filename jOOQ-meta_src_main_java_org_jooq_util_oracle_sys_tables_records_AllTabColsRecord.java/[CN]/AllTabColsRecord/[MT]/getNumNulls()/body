@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.util.oracle.sys.tables.AllTabCols.NUM_NULLS);
+  return getValue(org.jooq.util.oracle.sys.tables.AllTabCols.ALL_TAB_COLS.NUM_NULLS);
 }

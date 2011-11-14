@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.test.sqlserver.generatedclasses.tables.T_725LobTest.ID);
+  return getValue(org.jooq.test.sqlserver.generatedclasses.tables.T_725LobTest.T_725_LOB_TEST.ID);
 }

@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.util.hsqldb.information_schema.tables.Routines.NUMERIC_SCALE);
+  return getValue(org.jooq.util.hsqldb.information_schema.tables.Routines.ROUTINES.NUMERIC_SCALE);
 }

@@ -1,12 +1,12 @@
 {
-  Table<SysidxRecord> fkIndex=SYSIDX.as("fkIndex");
-  Table<SysidxRecord> ukIndex=SYSIDX.as("ukIndex");
-  Table<SystableRecord> fkTable=SYSTABLE.as("fkTable");
-  Table<SystableRecord> ukTable=SYSTABLE.as("ukTable");
-  for (  Record record : create().select(concat(fkTable.getField(Systable.TABLE_NAME),val("_"),fkIndex.getField(Sysidx.INDEX_NAME)).as("fkIndexName"),fkTable.getField(Systable.TABLE_NAME),Systabcol.COLUMN_NAME,concat(ukTable.getField(Systable.TABLE_NAME),val("_"),ukIndex.getField(Sysidx.INDEX_NAME)).as("ukIndexName")).from(SYSFKEY).join(fkIndex).on(Sysfkey.FOREIGN_INDEX_ID.equal(fkIndex.getField(Sysidx.INDEX_ID))).and(Sysfkey.FOREIGN_TABLE_ID.equal(fkIndex.getField(Sysidx.TABLE_ID))).join(SYSIDXCOL).on(fkIndex.getField(Sysidx.INDEX_ID).equal(Sysidxcol.INDEX_ID)).and(fkIndex.getField(Sysidx.TABLE_ID).equal(Sysidxcol.TABLE_ID)).join(fkTable).on(Sysfkey.FOREIGN_TABLE_ID.equal(fkTable.getField(Systable.TABLE_ID))).join(SYSTABCOL).on(Sysidxcol.TABLE_ID.equal(Systabcol.TABLE_ID)).and(Sysidxcol.COLUMN_ID.equal(Systabcol.COLUMN_ID)).join(ukIndex).on(Sysfkey.PRIMARY_INDEX_ID.equal(ukIndex.getField(Sysidx.INDEX_ID))).and(Sysfkey.PRIMARY_TABLE_ID.equal(ukIndex.getField(Sysidx.TABLE_ID))).join(ukTable).on(Sysfkey.PRIMARY_TABLE_ID.equal(ukTable.getField(Systable.TABLE_ID))).orderBy(fkTable.getField(Systable.TABLE_NAME).asc(),fkIndex.getField(Sysidx.INDEX_NAME).asc(),Sysidxcol.SEQUENCE.asc()).fetch()) {
+  Sysidx fkIndex=SYSIDX.as("fkIndex");
+  Sysidx ukIndex=SYSIDX.as("ukIndex");
+  Systable fkTable=SYSTABLE.as("fkTable");
+  Systable ukTable=SYSTABLE.as("ukTable");
+  for (  Record record : create().select(concat(fkTable.TABLE_NAME,val("_"),fkIndex.INDEX_NAME).as("fkIndexName"),fkTable.TABLE_NAME,SYSTABCOL.COLUMN_NAME,concat(ukTable.TABLE_NAME,val("_"),ukIndex.INDEX_NAME).as("ukIndexName")).from(SYSFKEY).join(fkIndex).on(SYSFKEY.FOREIGN_INDEX_ID.equal(fkIndex.INDEX_ID)).and(SYSFKEY.FOREIGN_TABLE_ID.equal(fkIndex.TABLE_ID)).join(SYSIDXCOL).on(fkIndex.INDEX_ID.equal(SYSIDXCOL.INDEX_ID)).and(fkIndex.TABLE_ID.equal(SYSIDXCOL.TABLE_ID)).join(fkTable).on(SYSFKEY.FOREIGN_TABLE_ID.equal(fkTable.TABLE_ID)).join(SYSTABCOL).on(SYSIDXCOL.TABLE_ID.equal(SYSTABCOL.TABLE_ID)).and(SYSIDXCOL.COLUMN_ID.equal(SYSTABCOL.COLUMN_ID)).join(ukIndex).on(SYSFKEY.PRIMARY_INDEX_ID.equal(ukIndex.INDEX_ID)).and(SYSFKEY.PRIMARY_TABLE_ID.equal(ukIndex.TABLE_ID)).join(ukTable).on(SYSFKEY.PRIMARY_TABLE_ID.equal(ukTable.TABLE_ID)).orderBy(fkTable.TABLE_NAME.asc(),fkIndex.INDEX_NAME.asc(),SYSIDXCOL.SEQUENCE.asc()).fetch()) {
     String foreignKey=record.getValueAsString("fkIndexName");
-    String foreignKeyTableName=record.getValue(Systable.TABLE_NAME);
-    String foreignKeyColumn=record.getValue(Systabcol.COLUMN_NAME);
+    String foreignKeyTableName=record.getValue(SYSTABLE.TABLE_NAME);
+    String foreignKeyColumn=record.getValue(SYSTABCOL.COLUMN_NAME);
     String referencedKey=record.getValueAsString("ukIndexName");
     TableDefinition foreignKeyTable=getTable(foreignKeyTableName);
     if (foreignKeyTable != null) {

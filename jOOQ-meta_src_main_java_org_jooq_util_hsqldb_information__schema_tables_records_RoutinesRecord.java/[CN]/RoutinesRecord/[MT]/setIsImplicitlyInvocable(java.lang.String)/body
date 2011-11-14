@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.hsqldb.information_schema.tables.Routines.IS_IMPLICITLY_INVOCABLE,value);
+  setValue(org.jooq.util.hsqldb.information_schema.tables.Routines.ROUTINES.IS_IMPLICITLY_INVOCABLE,value);
 }

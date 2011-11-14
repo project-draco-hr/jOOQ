@@ -1,0 +1,3 @@
+{
+  super(alias,org.jooq.util.postgres.pg_catalog.PgCatalog.PG_CATALOG,org.jooq.util.postgres.pg_catalog.tables.PgProc.PG_PROC);
+}

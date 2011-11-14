@@ -1,8 +1,8 @@
 {
   List<AttributeDefinition> result=new ArrayList<AttributeDefinition>();
-  for (  Record record : create().select(AllTypeAttrs.ATTR_NAME,AllTypeAttrs.ATTR_NO,AllTypeAttrs.ATTR_TYPE_NAME,AllTypeAttrs.PRECISION,AllTypeAttrs.SCALE).from(ALL_TYPE_ATTRS).where(AllTypeAttrs.OWNER.equal(getSchemaName())).and(AllTypeAttrs.TYPE_NAME.equal(getName())).orderBy(AllTypeAttrs.ATTR_NO).fetch()) {
-    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),record.getValue(AllTypeAttrs.ATTR_TYPE_NAME),record.getValueAsInteger(AllTypeAttrs.PRECISION,0),record.getValueAsInteger(AllTypeAttrs.SCALE,0));
-    AttributeDefinition attribute=new DefaultAttributeDefinition(this,record.getValue(AllTypeAttrs.ATTR_NAME),record.getValueAsInteger(AllTypeAttrs.ATTR_NO),type);
+  for (  Record record : create().select(ALL_TYPE_ATTRS.ATTR_NAME,ALL_TYPE_ATTRS.ATTR_NO,ALL_TYPE_ATTRS.ATTR_TYPE_NAME,ALL_TYPE_ATTRS.PRECISION,ALL_TYPE_ATTRS.SCALE).from(ALL_TYPE_ATTRS).where(ALL_TYPE_ATTRS.OWNER.equal(getSchemaName())).and(ALL_TYPE_ATTRS.TYPE_NAME.equal(getName())).orderBy(ALL_TYPE_ATTRS.ATTR_NO).fetch()) {
+    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),record.getValue(ALL_TYPE_ATTRS.ATTR_TYPE_NAME),record.getValueAsInteger(ALL_TYPE_ATTRS.PRECISION,0),record.getValueAsInteger(ALL_TYPE_ATTRS.SCALE,0));
+    AttributeDefinition attribute=new DefaultAttributeDefinition(this,record.getValue(ALL_TYPE_ATTRS.ATTR_NAME),record.getValueAsInteger(ALL_TYPE_ATTRS.ATTR_NO),type);
     result.add(attribute);
   }
   return result;

@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.oracle.sys.tables.AllConstraints.DEFERRED,value);
+  setValue(org.jooq.util.oracle.sys.tables.AllConstraints.ALL_CONSTRAINTS.DEFERRED,value);
 }

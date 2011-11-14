@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.sybase.sys.tables.Sysfkey.PRIMARY_TABLE_ID,value);
+  setValue(org.jooq.util.sybase.sys.tables.Sysfkey.SYSFKEY.PRIMARY_TABLE_ID,value);
 }

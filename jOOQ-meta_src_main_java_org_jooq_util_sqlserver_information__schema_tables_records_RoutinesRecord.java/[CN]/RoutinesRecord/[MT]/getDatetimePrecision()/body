@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.util.sqlserver.information_schema.tables.Routines.DATETIME_PRECISION);
+  return getValue(org.jooq.util.sqlserver.information_schema.tables.Routines.ROUTINES.DATETIME_PRECISION);
 }

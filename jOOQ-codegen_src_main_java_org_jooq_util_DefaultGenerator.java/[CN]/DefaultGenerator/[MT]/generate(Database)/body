@@ -260,17 +260,23 @@
           out.println("\t\tsuper(\"" + table.getName() + "\");");
         }
         out.println("\t}");
-        out.println();
-        printNoFurtherInstancesAllowedJavadoc(out);
-        out.println("\tprivate " + strategy.getJavaClassName(table) + "(java.lang.String alias) {");
-        out.print("\t\tsuper(alias, ");
-        out.print(strategy.getFullJavaIdentifierUC(schema));
-        out.print(", ");
-        out.print(strategy.getFullJavaClassName(table));
-        out.print(".");
-        out.print(strategy.getJavaIdentifierUC(table));
-        out.println(");");
-        out.println("\t}");
+        if (generateInstanceFields()) {
+          out.println();
+          printNoFurtherInstancesAllowedJavadoc(out);
+          out.print("\tprivate ");
+          out.print(strategy.getJavaClassName(table));
+          out.print("(");
+          out.print(String.class);
+          out.println(" alias) {");
+          out.print("\t\tsuper(alias, ");
+          out.print(strategy.getFullJavaIdentifierUC(schema));
+          out.print(", ");
+          out.print(strategy.getFullJavaClassName(table));
+          out.print(".");
+          out.print(strategy.getJavaIdentifierUC(table));
+          out.println(");");
+          out.println("\t}");
+        }
         if (generateRelations()) {
           ColumnDefinition identity=table.getIdentity();
           if (identity != null) {
@@ -371,17 +377,19 @@
             out.println("\t}");
           }
         }
-        out.println();
-        out.println("\t@Override");
-        out.print("\tpublic ");
-        out.print(strategy.getFullJavaClassName(table));
-        out.print(" as(");
-        out.print(String.class);
-        out.println(" alias) {");
-        out.print("\t\treturn new ");
-        out.print(strategy.getFullJavaClassName(table));
-        out.println("(alias);");
-        out.println("\t}");
+        if (generateInstanceFields()) {
+          out.println();
+          out.println("\t@Override");
+          out.print("\tpublic ");
+          out.print(strategy.getFullJavaClassName(table));
+          out.print(" as(");
+          out.print(String.class);
+          out.println(" alias) {");
+          out.print("\t\treturn new ");
+          out.print(strategy.getFullJavaClassName(table));
+          out.println("(alias);");
+          out.println("\t}");
+        }
         out.printStaticInitialisationStatementsPlaceholder();
         out.println("}");
         out.close();

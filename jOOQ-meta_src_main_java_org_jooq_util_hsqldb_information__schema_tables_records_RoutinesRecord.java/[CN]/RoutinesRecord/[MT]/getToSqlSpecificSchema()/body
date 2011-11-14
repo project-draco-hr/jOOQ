@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.util.hsqldb.information_schema.tables.Routines.TO_SQL_SPECIFIC_SCHEMA);
+  return getValue(org.jooq.util.hsqldb.information_schema.tables.Routines.ROUTINES.TO_SQL_SPECIFIC_SCHEMA);
 }

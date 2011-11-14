@@ -1,8 +1,8 @@
 {
   List<TableDefinition> result=new ArrayList<TableDefinition>();
-  for (  Record record : create().select(AllTabComments.TABLE_NAME,AllTabComments.COMMENTS).from(ALL_TAB_COMMENTS).where(AllTabComments.OWNER.equal(getSchemaName())).and(AllTabComments.TABLE_NAME.notLike("%$%")).orderBy(AllTabComments.TABLE_NAME).fetch()) {
-    String name=record.getValue(AllTabComments.TABLE_NAME);
-    String comment=record.getValue(AllTabComments.COMMENTS);
+  for (  Record record : create().select(ALL_TAB_COMMENTS.TABLE_NAME,ALL_TAB_COMMENTS.COMMENTS).from(ALL_TAB_COMMENTS).where(ALL_TAB_COMMENTS.OWNER.equal(getSchemaName())).and(ALL_TAB_COMMENTS.TABLE_NAME.notLike("%$%")).orderBy(ALL_TAB_COMMENTS.TABLE_NAME).fetch()) {
+    String name=record.getValue(ALL_TAB_COMMENTS.TABLE_NAME);
+    String comment=record.getValue(ALL_TAB_COMMENTS.COMMENTS);
     OracleTableDefinition table=new OracleTableDefinition(this,name,comment);
     result.add(table);
   }

@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.examples.mysql.sakila.tables.Film.RELEASE_YEAR,value);
+  setValue(org.jooq.examples.mysql.sakila.tables.Film.FILM.RELEASE_YEAR,value);
 }

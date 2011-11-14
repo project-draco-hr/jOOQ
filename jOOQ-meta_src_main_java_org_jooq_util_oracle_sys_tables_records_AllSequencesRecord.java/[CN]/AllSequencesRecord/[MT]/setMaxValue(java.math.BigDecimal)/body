@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.oracle.sys.tables.AllSequences.MAX_VALUE,value);
+  setValue(org.jooq.util.oracle.sys.tables.AllSequences.ALL_SEQUENCES.MAX_VALUE,value);
 }

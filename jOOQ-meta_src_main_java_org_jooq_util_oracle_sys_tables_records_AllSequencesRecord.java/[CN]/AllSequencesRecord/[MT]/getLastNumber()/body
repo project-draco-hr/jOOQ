@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.util.oracle.sys.tables.AllSequences.LAST_NUMBER);
+  return getValue(org.jooq.util.oracle.sys.tables.AllSequences.ALL_SEQUENCES.LAST_NUMBER);
 }

@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.sybase.sys.tables.Systab.ENCRYPTED,value);
+  setValue(org.jooq.util.sybase.sys.tables.Systab.SYSTAB.ENCRYPTED,value);
 }

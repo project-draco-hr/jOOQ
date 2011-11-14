@@ -1,3 +1,3 @@
 {
-  return create().selectFrom(org.jooq.test.oracle.generatedclasses.tables.TBook.T_BOOK).where(org.jooq.test.oracle.generatedclasses.tables.TBook.CO_AUTHOR_ID.equal(getValue(org.jooq.test.oracle.generatedclasses.tables.TAuthor.ID))).fetch();
+  return create().selectFrom(org.jooq.test.oracle.generatedclasses.tables.TBook.T_BOOK).where(org.jooq.test.oracle.generatedclasses.tables.TBook.T_BOOK.CO_AUTHOR_ID.equal(getValue(org.jooq.test.oracle.generatedclasses.tables.TAuthor.T_AUTHOR.ID))).fetch();
 }

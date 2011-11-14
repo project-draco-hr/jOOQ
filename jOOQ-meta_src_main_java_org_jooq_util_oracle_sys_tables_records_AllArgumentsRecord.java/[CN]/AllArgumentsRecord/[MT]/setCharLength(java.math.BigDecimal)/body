@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.oracle.sys.tables.AllArguments.CHAR_LENGTH,value);
+  setValue(org.jooq.util.oracle.sys.tables.AllArguments.ALL_ARGUMENTS.CHAR_LENGTH,value);
 }

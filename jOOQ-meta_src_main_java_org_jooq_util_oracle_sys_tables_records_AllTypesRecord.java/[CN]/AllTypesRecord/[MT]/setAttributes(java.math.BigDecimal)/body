@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.oracle.sys.tables.AllTypes.ATTRIBUTES,value);
+  setValue(org.jooq.util.oracle.sys.tables.AllTypes.ALL_TYPES.ATTRIBUTES,value);
 }

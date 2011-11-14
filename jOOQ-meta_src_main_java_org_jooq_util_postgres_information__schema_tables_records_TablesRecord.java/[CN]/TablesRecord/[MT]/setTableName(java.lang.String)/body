@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.postgres.information_schema.tables.Tables.TABLE_NAME,value);
+  setValue(org.jooq.util.postgres.information_schema.tables.Tables.TABLES.TABLE_NAME,value);
 }

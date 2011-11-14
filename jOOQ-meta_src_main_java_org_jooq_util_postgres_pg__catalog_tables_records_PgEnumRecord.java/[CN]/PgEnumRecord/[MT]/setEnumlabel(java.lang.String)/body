@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.postgres.pg_catalog.tables.PgEnum.ENUMLABEL,value);
+  setValue(org.jooq.util.postgres.pg_catalog.tables.PgEnum.PG_ENUM.ENUMLABEL,value);
 }

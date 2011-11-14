@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.sqlserver.information_schema.tables.Columns.IS_NULLABLE,value);
+  setValue(org.jooq.util.sqlserver.information_schema.tables.Columns.COLUMNS.IS_NULLABLE,value);
 }

@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.util.sybase.sys.tables.Sysprocparm.PROC_ID);
+  return getValue(org.jooq.util.sybase.sys.tables.Sysprocparm.SYSPROCPARM.PROC_ID);
 }

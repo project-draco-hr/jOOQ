@@ -1,0 +1,3 @@
+{
+  return new org.jooq.test.sqlserver.generatedclasses.tables.XUnused(alias);
+}

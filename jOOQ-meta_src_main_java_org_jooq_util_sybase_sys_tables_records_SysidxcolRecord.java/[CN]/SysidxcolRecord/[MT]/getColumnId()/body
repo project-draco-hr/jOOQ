@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.util.sybase.sys.tables.Sysidxcol.COLUMN_ID);
+  return getValue(org.jooq.util.sybase.sys.tables.Sysidxcol.SYSIDXCOL.COLUMN_ID);
 }

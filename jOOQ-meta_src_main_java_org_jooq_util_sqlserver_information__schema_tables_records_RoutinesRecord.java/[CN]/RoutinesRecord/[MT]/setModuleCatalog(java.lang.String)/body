@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.sqlserver.information_schema.tables.Routines.MODULE_CATALOG,value);
+  setValue(org.jooq.util.sqlserver.information_schema.tables.Routines.ROUTINES.MODULE_CATALOG,value);
 }

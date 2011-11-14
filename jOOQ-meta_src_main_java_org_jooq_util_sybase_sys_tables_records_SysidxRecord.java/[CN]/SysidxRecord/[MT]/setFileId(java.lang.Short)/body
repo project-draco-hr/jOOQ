@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.sybase.sys.tables.Sysidx.FILE_ID,value);
+  setValue(org.jooq.util.sybase.sys.tables.Sysidx.SYSIDX.FILE_ID,value);
 }

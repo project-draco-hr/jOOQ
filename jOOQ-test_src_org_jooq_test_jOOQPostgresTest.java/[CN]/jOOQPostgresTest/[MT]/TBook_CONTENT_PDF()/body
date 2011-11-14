@@ -1,3 +1,3 @@
 {
-  return TBook.CONTENT_PDF;
+  return T_BOOK.CONTENT_PDF;
 }

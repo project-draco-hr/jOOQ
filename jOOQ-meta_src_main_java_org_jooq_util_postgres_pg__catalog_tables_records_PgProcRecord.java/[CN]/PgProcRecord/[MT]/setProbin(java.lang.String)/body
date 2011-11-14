@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.postgres.pg_catalog.tables.PgProc.PROBIN,value);
+  setValue(org.jooq.util.postgres.pg_catalog.tables.PgProc.PG_PROC.PROBIN,value);
 }

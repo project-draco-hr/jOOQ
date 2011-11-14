@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.util.sybase.sys.tables.Sysview.MV_REFRESH_TYPE);
+  return getValue(org.jooq.util.sybase.sys.tables.Sysview.SYSVIEW.MV_REFRESH_TYPE);
 }

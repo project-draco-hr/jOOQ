@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.examples.mysql.sakila.tables.City.COUNTRY_ID,value);
+  setValue(org.jooq.examples.mysql.sakila.tables.City.CITY.COUNTRY_ID,value);
 }

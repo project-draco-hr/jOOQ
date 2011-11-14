@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.util.sybase.sys.tables.Sysidx.TABLE_ID);
+  return getValue(org.jooq.util.sybase.sys.tables.Sysidx.SYSIDX.TABLE_ID);
 }

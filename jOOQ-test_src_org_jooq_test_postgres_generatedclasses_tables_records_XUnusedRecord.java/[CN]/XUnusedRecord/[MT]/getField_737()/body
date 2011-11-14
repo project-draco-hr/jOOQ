@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.test.postgres.generatedclasses.tables.XUnused.FIELD_737);
+  return getValue(org.jooq.test.postgres.generatedclasses.tables.XUnused.X_UNUSED.FIELD_737);
 }

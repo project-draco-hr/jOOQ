@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.util.hsqldb.information_schema.tables.Columns.DATETIME_PRECISION,value);
+  setValue(org.jooq.util.hsqldb.information_schema.tables.Columns.COLUMNS.DATETIME_PRECISION,value);
 }

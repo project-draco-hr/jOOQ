@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.util.oracle.sys.tables.AllTabCols.INTERNAL_COLUMN_ID);
+  return getValue(org.jooq.util.oracle.sys.tables.AllTabCols.ALL_TAB_COLS.INTERNAL_COLUMN_ID);
 }

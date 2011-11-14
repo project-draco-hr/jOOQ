@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.util.oracle.sys.tables.AllObjects.OBJECT_ID);
+  return getValue(org.jooq.util.oracle.sys.tables.AllObjects.ALL_OBJECTS.OBJECT_ID);
 }
