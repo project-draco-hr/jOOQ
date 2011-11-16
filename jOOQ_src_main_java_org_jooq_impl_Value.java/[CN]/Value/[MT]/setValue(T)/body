@@ -1,9 +1,4 @@
 {
-  if (this.value == null) {
-    setChanged(value != null);
-  }
- else {
-    setChanged(!this.value.equals(value));
-  }
+  this.isChanged=true;
   this.value=value;
 }
