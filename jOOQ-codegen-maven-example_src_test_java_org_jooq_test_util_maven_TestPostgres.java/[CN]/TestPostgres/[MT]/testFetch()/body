@@ -2,6 +2,6 @@
   Connection connection=DriverManager.getConnection("jdbc:postgresql:postgres","postgres","test");
   PublicFactory create=new PublicFactory(connection);
   Result<Record> books=create.select(TBook.ID,TBook.TITLE).from(TBook.T_BOOK).orderBy(TBook.ID).fetch();
-  assertEquals(BOOK_IDS,books.getValues(0));
-  assertEquals(BOOK_TITLES,books.getValues(1));
+  assertEquals(Data.BOOK_IDS,books.getValues(0));
+  assertEquals(Data.BOOK_TITLES,books.getValues(1));
 }
