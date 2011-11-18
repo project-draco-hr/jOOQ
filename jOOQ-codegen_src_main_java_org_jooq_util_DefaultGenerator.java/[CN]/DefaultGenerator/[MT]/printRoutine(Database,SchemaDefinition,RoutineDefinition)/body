@@ -4,11 +4,10 @@
   GenerationWriter out=new GenerationWriter(new PrintWriter(strategy.getFile(routine)));
   printHeader(out,strategy.getJavaPackageName(routine));
   printClassJavadoc(out,routine);
-  Class<?> procedureClass=AbstractRoutine.class;
   out.print("public class ");
   out.print(strategy.getJavaClassName(routine));
   out.print(" extends ");
-  out.print(procedureClass);
+  out.print(AbstractRoutine.class);
   out.print("<");
   if (routine.getReturnValue() == null) {
     out.print(Void.class);

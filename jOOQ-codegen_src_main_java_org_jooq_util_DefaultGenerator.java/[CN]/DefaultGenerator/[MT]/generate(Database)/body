@@ -200,7 +200,7 @@
         out.println("\t\treturn " + strategy.getJavaClassNameLC(pk) + ";");
         out.println("\t}");
         for (        ColumnDefinition column : columns) {
-          printFieldJavaDoc(out,"",column);
+          printFieldJavaDoc(out,column);
           out.print("\tpublic final ");
           out.print(data.getField(column.getName()).getType());
           out.print(" get");
@@ -545,14 +545,11 @@
         printHeader(out,targetPackage + ".tables.records");
         printClassJavadoc(out,table);
         Class<?> baseClass;
-        Set<String> reserved;
         if (generateRelations() && table.getMainUniqueKey() != null) {
           baseClass=UpdatableRecordImpl.class;
-          reserved=reservedColumns(UpdatableRecordImpl.class);
         }
  else {
           baseClass=TableRecordImpl.class;
-          reserved=reservedColumns(TableRecordImpl.class);
         }
         out.print("public class ");
         out.print(strategy.getJavaClassName(table,"Record"));
@@ -563,7 +560,7 @@
         out.println("> {");
         out.printSerial();
         for (        ColumnDefinition column : table.getColumns()) {
-          printGetterAndSetter(out,column,table,reserved);
+          printGetterAndSetter(out,column);
         }
         out.println();
         out.println("\t/**");
@@ -646,11 +643,10 @@
         out.print("<");
         out.print(strategy.getFullJavaClassName(udt,"Record"));
         out.println("> {");
-        Set<String> reserved=reservedColumns(UDTRecordImpl.class);
         out.printSerial();
         out.println();
         for (        AttributeDefinition attribute : udt.getAttributes()) {
-          printGetterAndSetter(out,attribute,udt,reserved);
+          printGetterAndSetter(out,attribute);
         }
         out.println();
         out.println("\tpublic " + strategy.getJavaClassName(udt,"Record") + "() {");

@@ -1,3 +1,10 @@
 {
-  return getJavaIdentifier(definition).toUpperCase();
+  String identifier=getJavaIdentifier(definition).toUpperCase();
+  if (definition instanceof ColumnDefinition || definition instanceof AttributeDefinition) {
+    TypedElementDefinition<?> e=(TypedElementDefinition<?>)definition;
+    if (identifier.equals(getJavaIdentifierUC(e.getContainer()))) {
+      return identifier + "_";
+    }
+  }
+  return identifier;
 }

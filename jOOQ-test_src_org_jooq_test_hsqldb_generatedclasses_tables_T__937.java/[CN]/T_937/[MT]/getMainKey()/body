@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.hsqldb.generatedclasses.Keys.T_937;
+}

@@ -40,10 +40,6 @@
       out.println("\t * </pre></code>");
     }
   }
-  if (disambiguationSuffix != null && disambiguationSuffix.length() > 0) {
-    out.println("\t * ");
-    out.println("\t * This item causes a name clash. That is why an underline character was appended to the Java field name");
-  }
   printDeprecation(out,deprecation);
   out.println("\t */");
   if (deprecation != null) {

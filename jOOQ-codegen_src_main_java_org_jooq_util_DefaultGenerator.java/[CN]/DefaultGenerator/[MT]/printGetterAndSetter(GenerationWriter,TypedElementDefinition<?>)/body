@@ -1,19 +1,11 @@
 {
-  String columnDisambiguationSuffix="";
-  String getterDisambiguationSuffix="";
-  if (strategy.getJavaIdentifierUC(element).equals(strategy.getJavaIdentifierUC(type))) {
-    columnDisambiguationSuffix="_";
-  }
-  if (reserved.contains(strategy.getJavaClassName(element))) {
-    getterDisambiguationSuffix="_";
-  }
-  printFieldJavaDoc(out,getterDisambiguationSuffix,element);
-  out.println("\tpublic void set" + strategy.getJavaClassName(element) + getterDisambiguationSuffix+ "("+ getJavaType(element.getType())+ " value) {");
-  out.println("\t\tsetValue(" + strategy.getFullJavaIdentifierUC(element) + columnDisambiguationSuffix+ ", value);");
+  printFieldJavaDoc(out,element);
+  out.println("\tpublic void " + strategy.getJavaSetterName(element) + "("+ getJavaType(element.getType())+ " value) {");
+  out.println("\t\tsetValue(" + strategy.getFullJavaIdentifierUC(element) + ", value);");
   out.println("\t}");
-  printFieldJavaDoc(out,getterDisambiguationSuffix,element);
-  out.println("\tpublic " + getJavaType(element.getType()) + " get"+ strategy.getJavaClassName(element)+ getterDisambiguationSuffix+ "() {");
-  out.println("\t\treturn getValue(" + strategy.getFullJavaIdentifierUC(element) + columnDisambiguationSuffix+ ");");
+  printFieldJavaDoc(out,element);
+  out.println("\tpublic " + getJavaType(element.getType()) + " "+ strategy.getJavaGetterName(element)+ "() {");
+  out.println("\t\treturn getValue(" + strategy.getFullJavaIdentifierUC(element) + ");");
   out.println("\t}");
   if (generateRelations() && element instanceof ColumnDefinition) {
     ColumnDefinition column=(ColumnDefinition)element;
@@ -26,7 +18,7 @@
             continue foreignKeyLoop;
           }
           TableDefinition referencing=foreignKey.getKeyTable();
-          printFieldJavaDoc(out,null,column);
+          printFieldJavaDoc(out,column);
           out.print("\tpublic ");
           out.print(List.class);
           out.print("<");
@@ -76,7 +68,7 @@
         skipGeneration=true;
       }
       if (!skipGeneration) {
-        printFieldJavaDoc(out,null,column);
+        printFieldJavaDoc(out,column);
         out.print("\tpublic ");
         out.print(strategy.getFullJavaClassName(referenced,"Record"));
         out.print(" fetch");

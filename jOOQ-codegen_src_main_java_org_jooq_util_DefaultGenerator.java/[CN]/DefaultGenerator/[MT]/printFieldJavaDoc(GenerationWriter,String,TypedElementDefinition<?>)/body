@@ -1,3 +1,0 @@
-{
-  printFieldJavaDoc(out,disambiguationSuffix,element,null);
-}

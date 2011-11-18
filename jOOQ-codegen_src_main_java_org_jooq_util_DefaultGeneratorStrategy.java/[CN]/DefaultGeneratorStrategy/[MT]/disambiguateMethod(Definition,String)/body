@@ -1,0 +1,18 @@
+{
+  Set<String> reserved=null;
+  if (definition instanceof AttributeDefinition) {
+    reserved=reservedColumns(UDTRecordImpl.class);
+  }
+ else   if (definition instanceof ColumnDefinition) {
+    if (((ColumnDefinition)definition).getContainer().getMainUniqueKey() != null) {
+      reserved=reservedColumns(UpdatableRecordImpl.class);
+    }
+ else {
+      reserved=reservedColumns(TableRecordImpl.class);
+    }
+  }
+  if (reserved != null && reserved.contains(javaClassName)) {
+    return javaClassName + "_";
+  }
+  return javaClassName;
+}

@@ -1,6 +1,5 @@
 {
-  String columnDisambiguationSuffix=strategy.getJavaIdentifierUC(column).equals(strategy.getJavaIdentifierUC(type)) ? "_" : "";
-  printFieldJavaDoc(out,columnDisambiguationSuffix,column);
+  printFieldJavaDoc(out,column);
   boolean hasType=type instanceof TableDefinition || type instanceof UDTDefinition;
   if (type instanceof TableDefinition) {
     if (generateInstanceFields()) {
@@ -22,7 +21,6 @@
   out.print(getJavaType(column.getType()));
   out.print("> ");
   out.print(strategy.getJavaIdentifierUC(column));
-  out.print(columnDisambiguationSuffix);
   if (declaredMemberClass == TableField.class) {
     out.print(" = createField");
   }
