@@ -596,12 +596,32 @@
         out.print(UDTImpl.class);
         out.print("<");
         out.print(strategy.getFullJavaClassName(udt,"Record"));
-        out.println("> {");
+        out.print(">");
+        if (udt.getRoutines().size() > 0) {
+          out.print(" implements ");
+          out.print(org.jooq.Package.class);
+        }
+        out.println(" {");
         out.printSerial();
         printSingletonInstance(udt,out);
         printRecordTypeMethod(udt,out);
         for (        AttributeDefinition attribute : udt.getAttributes()) {
           printUDTColumn(out,attribute,udt);
+        }
+        for (        RoutineDefinition routine : udt.getRoutines()) {
+          try {
+            if (!routine.isSQLUsable()) {
+              printConvenienceMethodProcedure(out,routine,false);
+            }
+ else {
+              printConvenienceMethodFunction(out,routine,false);
+              printConvenienceMethodFunctionAsField(out,routine,false);
+              printConvenienceMethodFunctionAsField(out,routine,true);
+            }
+          }
+ catch (          Exception e) {
+            log.error("Error while generating routine " + routine,e);
+          }
         }
         out.println();
         printNoFurtherInstancesAllowedJavadoc(out);
@@ -626,7 +646,7 @@
     registerInSchema(outS,database.getUDTs(),UDT.class,true);
     watch.splitInfo("UDTs generated");
   }
-  File targetRecordUDTPackageDir=new File(new File(targetPackageDir,"udt"),"records");
+  File targetRecordUDTPackageDir=new File(targetUDTPackageDir,"records");
   if (database.getUDTs().size() > 0) {
     log.info("Generating UDT records",targetRecordUDTPackageDir.getCanonicalPath());
     for (    UDTDefinition udt : database.getUDTs()) {
@@ -648,6 +668,19 @@
         for (        AttributeDefinition attribute : udt.getAttributes()) {
           printGetterAndSetter(out,attribute);
         }
+        for (        RoutineDefinition routine : udt.getRoutines()) {
+          try {
+            if (!routine.isSQLUsable()) {
+              printConvenienceMethodProcedure(out,routine,true);
+            }
+ else {
+              printConvenienceMethodFunction(out,routine,true);
+            }
+          }
+ catch (          Exception e) {
+            log.error("Error while generating routine " + routine,e);
+          }
+        }
         out.println();
         out.println("\tpublic " + strategy.getJavaClassName(udt,"Record") + "() {");
         out.print("\t\tsuper(");
@@ -663,7 +696,29 @@
     }
     watch.splitInfo("UDT records generated");
   }
-  File targetRecordARRAYPackageDir=new File(new File(targetPackageDir,"udt"),"records");
+  if (database.getUDTs().size() > 0) {
+    for (    UDTDefinition udt : database.getUDTs()) {
+      if (udt.getRoutines().size() > 0) {
+        try {
+          File dir=new File(targetUDTPackageDir,strategy.getJavaIdentifierUC(udt).toLowerCase());
+          log.info("Generating member routines",dir.getCanonicalPath());
+          for (          RoutineDefinition routine : udt.getRoutines()) {
+            try {
+              printRoutine(database,schema,routine);
+            }
+ catch (            Exception e) {
+              log.error("Error while generating member routines " + routine,e);
+            }
+          }
+        }
+ catch (        Exception e) {
+          log.error("Error while generating UDT " + udt,e);
+        }
+        watch.splitInfo("Member procedures routines");
+      }
+    }
+  }
+  File targetRecordARRAYPackageDir=new File(targetUDTPackageDir,"records");
   if (database.getArrays().size() > 0) {
     log.info("Generating ARRAYs",targetRecordARRAYPackageDir.getCanonicalPath());
     for (    ArrayDefinition array : database.getArrays()) {
@@ -787,10 +842,10 @@
       try {
         printRoutine(database,schema,routine);
         if (!routine.isSQLUsable()) {
-          printConvenienceMethodProcedure(outR,routine);
+          printConvenienceMethodProcedure(outR,routine,false);
         }
  else {
-          printConvenienceMethodFunction(outR,routine);
+          printConvenienceMethodFunction(outR,routine,false);
           printConvenienceMethodFunctionAsField(outR,routine,false);
           printConvenienceMethodFunctionAsField(outR,routine,true);
         }
@@ -809,7 +864,7 @@
     log.info("Generating packages",targetPackagesPackageDir.getCanonicalPath());
     for (    PackageDefinition pkg : database.getPackages()) {
       try {
-        File targetPackagePackageDir=new File(targetPackagesPackageDir,strategy.getJavaClassName(pkg).toLowerCase());
+        File targetPackagePackageDir=new File(targetPackagesPackageDir,strategy.getJavaIdentifierUC(pkg).toLowerCase());
         log.info("Generating package",targetPackagePackageDir.getCanonicalPath());
         for (        RoutineDefinition routine : pkg.getRoutines()) {
           try {
@@ -842,10 +897,10 @@
         for (        RoutineDefinition routine : pkg.getRoutines()) {
           try {
             if (!routine.isSQLUsable()) {
-              printConvenienceMethodProcedure(outPkg,routine);
+              printConvenienceMethodProcedure(outPkg,routine,false);
             }
  else {
-              printConvenienceMethodFunction(outPkg,routine);
+              printConvenienceMethodFunction(outPkg,routine,false);
               printConvenienceMethodFunctionAsField(outPkg,routine,false);
               printConvenienceMethodFunctionAsField(outPkg,routine,true);
             }

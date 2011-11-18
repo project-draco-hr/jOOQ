@@ -29,6 +29,8 @@ case DB2:
   }
   return;
 }
+default :
+toSQLInline(context);
+return;
 }
-throw new SQLDialectNotSupportedException("UDTs not supported in dialect " + context.getDialect());
 }

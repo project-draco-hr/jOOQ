@@ -1,0 +1,4 @@
+{
+  super(org.jooq.SQLDialect.ORACLE,"LOAD",org.jooq.test.oracle.generatedclasses.Test.TEST,org.jooq.test.oracle.generatedclasses.udt.UAuthorType.U_AUTHOR_TYPE);
+  addInOutParameter(SELF);
+}

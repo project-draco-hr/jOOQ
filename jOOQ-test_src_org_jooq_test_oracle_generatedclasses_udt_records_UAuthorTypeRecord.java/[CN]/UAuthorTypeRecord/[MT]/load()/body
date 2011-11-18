@@ -1,0 +1,7 @@
+{
+  org.jooq.test.oracle.generatedclasses.udt.u_author_type.Load p=new org.jooq.test.oracle.generatedclasses.udt.u_author_type.Load();
+  p.setSelf(this);
+  p.execute(getConfiguration());
+  from(p.getSelf());
+  return p.getSelf();
+}

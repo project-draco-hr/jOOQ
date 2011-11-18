@@ -1,0 +1,3 @@
+{
+  super("U_AUTHOR_TYPE",org.jooq.test.oracle.generatedclasses.Test.TEST);
+}

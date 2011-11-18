@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.test.oracle.generatedclasses.udt.UAuthorType.LAST_NAME);
+}

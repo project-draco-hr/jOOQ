@@ -4,6 +4,7 @@ case POSTGRES:
     return "ROW";
 case ORACLE:
 case DB2:
+default :
 {
     UDT<?> udt=record.getUDT();
     if (getMappedSchema(context,udt.getSchema()) != null) {
@@ -14,5 +15,4 @@ case DB2:
     }
   }
 }
-throw new SQLDialectNotSupportedException("UDTs not supported in dialect " + context.getDialect());
 }
