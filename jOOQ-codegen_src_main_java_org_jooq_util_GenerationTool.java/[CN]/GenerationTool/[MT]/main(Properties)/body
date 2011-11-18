@@ -2,7 +2,7 @@
   Class.forName(properties.getProperty("jdbc.Driver"));
   Connection connection=null;
   try {
-    connection=DriverManager.getConnection(properties.getProperty("jdbc.URL"),properties.getProperty("jdbc.User"),properties.getProperty("jdbc.Password"));
+    connection=DriverManager.getConnection(defaultString(properties.getProperty("jdbc.URL")),defaultString(properties.getProperty("jdbc.User")),defaultString(properties.getProperty("jdbc.Password")));
     Class<Generator> generatorClass=(Class<Generator>)(properties.containsKey("generator") ? Class.forName(properties.getProperty("generator")) : DefaultGenerator.class);
     Generator generator=generatorClass.newInstance();
     Class<GeneratorStrategy> strategyClass=(Class<GeneratorStrategy>)(properties.containsKey("generator.strategy") ? Class.forName(properties.getProperty("generator.strategy")) : DefaultGeneratorStrategy.class);
