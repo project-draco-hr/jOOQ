@@ -50,6 +50,9 @@
  else   if (type == Timestamp.class) {
     stream.writeTimestamp((Timestamp)value);
   }
+ else   if (UNumber.class.isAssignableFrom(type)) {
+    stream.writeString(value.toString());
+  }
  else   if (ArrayRecord.class.isAssignableFrom(type)) {
     stream.writeArray(((ArrayRecord<?>)value).createArray());
   }

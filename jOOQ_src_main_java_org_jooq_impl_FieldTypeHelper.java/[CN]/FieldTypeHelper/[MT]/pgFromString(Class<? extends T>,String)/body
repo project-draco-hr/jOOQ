@@ -50,6 +50,18 @@
     SimpleDateFormat f=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     return (T)new Timestamp(pgParseDate(string,f).getTime());
   }
+ else   if (type == UByte.class) {
+    return (T)new UByte(string);
+  }
+ else   if (type == UShort.class) {
+    return (T)new UShort(string);
+  }
+ else   if (type == UInteger.class) {
+    return (T)new UInteger(string);
+  }
+ else   if (type == ULong.class) {
+    return (T)new ULong(string);
+  }
  else   if (type.isArray()) {
     return (T)pgNewArray(type,string);
   }

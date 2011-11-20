@@ -54,6 +54,9 @@
  else     if (type.isArray()) {
       context.sql("ARRAY").sql(Arrays.asList((Object[])value).toString());
     }
+ else     if (UNumber.class.isAssignableFrom(type)) {
+      context.sql(value.toString());
+    }
  else     if (ArrayRecord.class.isAssignableFrom(type)) {
       context.sql(value.toString());
     }

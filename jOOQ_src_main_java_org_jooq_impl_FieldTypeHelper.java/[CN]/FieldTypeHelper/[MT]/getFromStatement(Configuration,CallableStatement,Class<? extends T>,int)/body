@@ -48,6 +48,22 @@
  else   if (type == Timestamp.class) {
     return (T)stmt.getTimestamp(index);
   }
+ else   if (type == UByte.class) {
+    String string=stmt.getString(index);
+    return (T)(string == null ? null : new UByte(string));
+  }
+ else   if (type == UShort.class) {
+    String string=stmt.getString(index);
+    return (T)(string == null ? null : new UShort(string));
+  }
+ else   if (type == UInteger.class) {
+    String string=stmt.getString(index);
+    return (T)(string == null ? null : new UInteger(string));
+  }
+ else   if (type == ULong.class) {
+    String string=stmt.getString(index);
+    return (T)(string == null ? null : new ULong(string));
+  }
  else   if (type.isArray()) {
     return (T)convertArray(stmt.getObject(index),(Class<? extends Object[]>)type);
   }
