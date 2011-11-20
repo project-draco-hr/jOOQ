@@ -155,7 +155,7 @@
             out.println("\t */");
           }
           out.print("\t");
-          out.print(GenerationUtil.convertToJavaIdentifier(literal));
+          out.print(GenerationUtil.convertToJavaIdentifierEnum(literal));
           out.print("(");
           String separator="";
           for (          ColumnDefinition column : columns) {
@@ -828,7 +828,7 @@
         out.print(" {");
         out.println();
         for (        String literal : e.getLiterals()) {
-          out.println("\t" + GenerationUtil.convertToJavaIdentifier(literal) + "(\""+ literal+ "\"),");
+          out.println("\t" + GenerationUtil.convertToJavaIdentifierEnum(literal) + "(\""+ literal+ "\"),");
           out.println();
         }
         out.println("\t;");

@@ -1,0 +1,3 @@
+{
+  super("t_959",org.jooq.test.mysql.generatedclasses.Test.TEST);
+}

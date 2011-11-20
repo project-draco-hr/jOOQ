@@ -1,0 +1,3 @@
+{
+  super(alias,org.jooq.test.postgres.generatedclasses.Public.PUBLIC,org.jooq.test.postgres.generatedclasses.tables.T_959.T_959);
+}

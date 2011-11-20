@@ -1,0 +1,9 @@
+{
+  reset=false;
+  assertEquals(3,create().insertInto(T_959).set(T_959.JAVA_KEYWORDS,U_959.public_).newRecord().set(T_959.JAVA_KEYWORDS,U_959.abstract_).newRecord().set(T_959.JAVA_KEYWORDS,U_959.class_).execute());
+  List<U_959> result=create().selectFrom(T_959).orderBy(T_959.JAVA_KEYWORDS).fetch(T_959.JAVA_KEYWORDS);
+  assertEquals(3,result.size());
+  assertEquals(U_959.abstract_,result.get(0));
+  assertEquals(U_959.class_,result.get(1));
+  assertEquals(U_959.public_,result.get(2));
+}

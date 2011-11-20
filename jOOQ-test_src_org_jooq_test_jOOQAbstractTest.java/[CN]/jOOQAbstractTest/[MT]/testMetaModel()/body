@@ -19,13 +19,16 @@
     if (TUnsigned() != null) {
       tables++;
     }
+    if (getDialect() == MYSQL || getDialect() == POSTGRES) {
+      tables++;
+    }
     if (TArrays() == null) {
       assertEquals(tables,schema.getTables().size());
     }
- else     if (getDialect() == SQLDialect.ORACLE || getDialect() == SQLDialect.H2) {
+ else     if (getDialect() == ORACLE || getDialect() == H2) {
       assertEquals(tables + 2,schema.getTables().size());
     }
- else     if (getDialect() == SQLDialect.HSQLDB) {
+ else     if (getDialect() == HSQLDB) {
       assertEquals(tables + 8,schema.getTables().size());
     }
  else {
@@ -34,14 +37,14 @@
     if (cUAddressType() == null) {
       assertEquals(0,schema.getUDTs().size());
     }
- else     if (getDialect() == SQLDialect.ORACLE) {
+ else     if (getDialect() == ORACLE) {
       assertEquals(7,schema.getUDTs().size());
     }
  else {
       assertEquals(2,schema.getUDTs().size());
     }
   }
-  if (getDialect() != SQLDialect.ORACLE && getDialect() != SQLDialect.SQLITE) {
+  if (getDialect() != ORACLE && getDialect() != SQLITE) {
     assertNull(TAuthor().getIdentity());
     assertNull(TBook().getIdentity());
     assertEquals(TBookStore(),TBookStore().getIdentity().getTable());
