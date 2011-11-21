@@ -26,6 +26,7 @@
     generator.setGenerateRelations("true".equalsIgnoreCase(properties.getProperty("generator.generate.relations")));
     generator.setGenerateDeprecated(!"false".equalsIgnoreCase(properties.getProperty("generator.generate.deprecated")));
     generator.setGenerateInstanceFields(!"false".equalsIgnoreCase(properties.getProperty("generator.generate.instance-fields")));
+    generator.setGenerateUnsignedTypes(!"false".equalsIgnoreCase(properties.getProperty("generator.generate.unsigned-types")));
     strategy.setInstanceFields(generator.generateInstanceFields());
     generator.generate(database);
   }

@@ -2,9 +2,11 @@
   List<ColumnDefinition> result=new ArrayList<ColumnDefinition>();
   for (  Record record : create().select(Columns.ORDINAL_POSITION,Columns.COLUMN_NAME,Columns.COLUMN_COMMENT,Columns.COLUMN_TYPE,Columns.DATA_TYPE,Columns.NUMERIC_PRECISION,Columns.NUMERIC_SCALE,Columns.EXTRA).from(COLUMNS).where(TABLE_SCHEMA.equal(getSchemaName())).and(TABLE_NAME.equal(getName())).orderBy(ORDINAL_POSITION).fetch()) {
     String dataType=record.getValue(Columns.DATA_TYPE);
-    if (asList("tinyint","smallint","mediumint","int","bigint").contains(dataType.toLowerCase())) {
-      if (record.getValue(Columns.COLUMN_TYPE).toLowerCase().contains("unsigned")) {
-        dataType+="unsigned";
+    if (getDatabase().supportsUnsignedTypes()) {
+      if (asList("tinyint","smallint","mediumint","int","bigint").contains(dataType.toLowerCase())) {
+        if (record.getValue(Columns.COLUMN_TYPE).toLowerCase().contains("unsigned")) {
+          dataType+="unsigned";
+        }
       }
     }
     DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),dataType,record.getValue(Columns.NUMERIC_PRECISION),record.getValue(Columns.NUMERIC_SCALE),getName() + "_" + record.getValue(Columns.COLUMN_NAME));
