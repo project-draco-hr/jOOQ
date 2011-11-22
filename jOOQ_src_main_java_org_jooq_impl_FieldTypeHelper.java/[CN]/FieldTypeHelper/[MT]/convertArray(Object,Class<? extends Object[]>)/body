@@ -1,6 +1,6 @@
 {
   if (array instanceof Object[]) {
-    return TypeUtils.convert(array,type);
+    return Convert.convert(array,type);
   }
  else   if (array instanceof Array) {
     return convertArray((Array)array,type);

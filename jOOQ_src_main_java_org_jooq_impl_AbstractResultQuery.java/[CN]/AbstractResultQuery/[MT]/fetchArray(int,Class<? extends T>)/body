@@ -1,3 +1,3 @@
 {
-  return (T[])TypeUtils.convertArray(fetchArray(fieldIndex),type);
+  return (T[])Convert.convertArray(fetchArray(fieldIndex),type);
 }

@@ -1,7 +1,7 @@
 {
   Class<?> type=getType();
   if (type == String.class) {
-    return ((Field<String>)this).in(TypeUtils.TRUE_VALUES);
+    return ((Field<String>)this).in(Convert.TRUE_VALUES);
   }
  else   if (Number.class.isAssignableFrom(type)) {
     return ((Field<Number>)this).equal((Number)getDataType().convert(1));
@@ -10,6 +10,6 @@
     return ((Field<Boolean>)this).equal(true);
   }
  else {
-    return cast(String.class).in(TypeUtils.TRUE_VALUES);
+    return cast(String.class).in(Convert.TRUE_VALUES);
   }
 }

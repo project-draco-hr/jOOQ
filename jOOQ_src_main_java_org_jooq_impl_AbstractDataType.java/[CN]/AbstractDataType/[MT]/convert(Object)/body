@@ -1,3 +1,3 @@
 {
-  return TypeUtils.convert(object,type);
+  return Convert.convert(object,type);
 }
