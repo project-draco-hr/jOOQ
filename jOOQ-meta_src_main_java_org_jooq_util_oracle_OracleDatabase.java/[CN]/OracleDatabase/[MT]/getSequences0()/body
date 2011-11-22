@@ -1,8 +1,24 @@
 {
   List<SequenceDefinition> result=new ArrayList<SequenceDefinition>();
-  for (  String name : create().select(ALL_SEQUENCES.SEQUENCE_NAME).from(ALL_SEQUENCES).where(ALL_SEQUENCES.SEQUENCE_OWNER.equal(getInputSchema())).orderBy(ALL_SEQUENCES.SEQUENCE_NAME).fetch(ALL_SEQUENCES.SEQUENCE_NAME)) {
-    DataTypeDefinition type=new DefaultDataTypeDefinition(this,OracleDataType.NUMBER.getTypeName(),38,0);
-    result.add(new DefaultSequenceDefinition(getSchema(),name,type));
+  for (  Record record : create().select(ALL_SEQUENCES.SEQUENCE_NAME,ALL_SEQUENCES.MAX_VALUE).from(ALL_SEQUENCES).where(ALL_SEQUENCES.SEQUENCE_OWNER.equal(getInputSchema())).orderBy(ALL_SEQUENCES.SEQUENCE_NAME).fetch()) {
+    DataTypeDefinition type;
+    BigInteger value=record.getValue(ALL_SEQUENCES.MAX_VALUE,BigInteger.class,BigInteger.valueOf(Long.MAX_VALUE));
+    if (BigInteger.valueOf(Byte.MAX_VALUE).compareTo(value) >= 0) {
+      type=new DefaultDataTypeDefinition(this,SQLDataType.NUMERIC.getTypeName(),2,0);
+    }
+ else     if (BigInteger.valueOf(Short.MAX_VALUE).compareTo(value) >= 0) {
+      type=new DefaultDataTypeDefinition(this,SQLDataType.NUMERIC.getTypeName(),4,0);
+    }
+ else     if (BigInteger.valueOf(Integer.MAX_VALUE).compareTo(value) >= 0) {
+      type=new DefaultDataTypeDefinition(this,SQLDataType.NUMERIC.getTypeName(),9,0);
+    }
+ else     if (BigInteger.valueOf(Long.MAX_VALUE).compareTo(value) >= 0) {
+      type=new DefaultDataTypeDefinition(this,SQLDataType.NUMERIC.getTypeName(),18,0);
+    }
+ else {
+      type=new DefaultDataTypeDefinition(this,SQLDataType.NUMERIC.getTypeName(),38,0);
+    }
+    result.add(new DefaultSequenceDefinition(getSchema(),record.getValue(ALL_SEQUENCES.SEQUENCE_NAME),type));
   }
   return result;
 }

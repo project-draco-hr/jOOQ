@@ -7,6 +7,9 @@
       if (getDialect() == SQLDialect.DB2 || getDialect() == SQLDialect.H2) {
         sequences++;
       }
+ else       if (getDialect() == ORACLE) {
+        sequences+=5;
+      }
     }
     assertEquals(sequences,schema.getSequences().size());
     int tables=15;
