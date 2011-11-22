@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.mysql2.generatedclasses.Keys.KEY_t_725_lob_test_PRIMARY;
+}

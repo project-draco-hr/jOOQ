@@ -1,0 +1,3 @@
+{
+  return T_BOOK.PUBLISHED_IN;
+}

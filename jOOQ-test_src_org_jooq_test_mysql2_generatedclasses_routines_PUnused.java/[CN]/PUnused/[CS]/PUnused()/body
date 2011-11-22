@@ -1,0 +1,6 @@
+{
+  super(org.jooq.SQLDialect.MYSQL,"p_unused",org.jooq.test.mysql2.generatedclasses.Test2.TEST2);
+  addInParameter(IN1);
+  addOutParameter(OUT1);
+  addInOutParameter(OUT2);
+}

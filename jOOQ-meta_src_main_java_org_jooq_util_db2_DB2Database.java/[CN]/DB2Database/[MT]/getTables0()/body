@@ -3,7 +3,7 @@
   SelectQuery q=create().selectQuery();
   q.addFrom(TABLES);
   q.addSelect(Tables.TABNAME);
-  q.addConditions(Tables.TABSCHEMA.equal(getSchemaName()));
+  q.addConditions(Tables.TABSCHEMA.equal(getInputSchema()));
   q.addConditions(Tables.TYPE.in("T","V"));
   q.addOrderBy(Tables.TABNAME);
   q.execute();

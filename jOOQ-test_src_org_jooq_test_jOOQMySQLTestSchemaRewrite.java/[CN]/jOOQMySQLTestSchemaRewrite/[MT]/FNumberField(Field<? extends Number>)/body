@@ -1,0 +1,3 @@
+{
+  return Routines.fNumber((Field<Integer>)n);
+}

@@ -1,6 +1,6 @@
 {
   List<SequenceDefinition> result=new ArrayList<SequenceDefinition>();
-  for (  String name : create().select(ALL_SEQUENCES.SEQUENCE_NAME).from(ALL_SEQUENCES).where(ALL_SEQUENCES.SEQUENCE_OWNER.equal(getSchemaName())).orderBy(ALL_SEQUENCES.SEQUENCE_NAME).fetch(ALL_SEQUENCES.SEQUENCE_NAME)) {
+  for (  String name : create().select(ALL_SEQUENCES.SEQUENCE_NAME).from(ALL_SEQUENCES).where(ALL_SEQUENCES.SEQUENCE_OWNER.equal(getInputSchema())).orderBy(ALL_SEQUENCES.SEQUENCE_NAME).fetch(ALL_SEQUENCES.SEQUENCE_NAME)) {
     DataTypeDefinition type=new DefaultDataTypeDefinition(this,OracleDataType.NUMBER.getTypeName(),38,0);
     result.add(new DefaultSequenceDefinition(getSchema(),name,type));
   }

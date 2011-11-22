@@ -1,6 +1,6 @@
 {
   List<SequenceDefinition> result=new ArrayList<SequenceDefinition>();
-  for (  Record record : create().select(Syssequences.SEQUENCENAME,Syssequences.SEQUENCEDATATYPE).from(SYSSEQUENCES).join(SYSSCHEMAS).on(Sysschemas.SCHEMAID.equal(Syssequences.SCHEMAID)).where(Sysschemas.SCHEMANAME.equal(getSchemaName())).orderBy(Syssequences.SEQUENCENAME).fetch()) {
+  for (  Record record : create().select(Syssequences.SEQUENCENAME,Syssequences.SEQUENCEDATATYPE).from(SYSSEQUENCES).join(SYSSCHEMAS).on(Sysschemas.SCHEMAID.equal(Syssequences.SCHEMAID)).where(Sysschemas.SCHEMANAME.equal(getInputSchema())).orderBy(Syssequences.SEQUENCENAME).fetch()) {
     DataTypeDefinition type=new DefaultDataTypeDefinition(this,record.getValue(Syssequences.SEQUENCEDATATYPE),0,0);
     result.add(new DefaultSequenceDefinition(getSchema(),record.getValueAsString(Syssequences.SEQUENCENAME),type));
   }

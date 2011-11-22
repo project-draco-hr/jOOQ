@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.mysql2.generatedclasses.tables.TBookStore.T_BOOK_STORE.NAME,value);
+}

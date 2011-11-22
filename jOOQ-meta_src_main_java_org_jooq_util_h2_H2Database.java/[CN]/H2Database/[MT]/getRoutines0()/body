@@ -1,6 +1,6 @@
 {
   List<RoutineDefinition> result=new ArrayList<RoutineDefinition>();
-  for (  Record record : create().select(FunctionAliases.ALIAS_NAME,FunctionAliases.REMARKS,FunctionAliases.DATA_TYPE,FunctionAliases.RETURNS_RESULT,TypeInfo.TYPE_NAME,TypeInfo.PRECISION,TypeInfo.MAXIMUM_SCALE).from(FUNCTION_ALIASES).leftOuterJoin(TYPE_INFO).on(FunctionAliases.DATA_TYPE.equal(TypeInfo.DATA_TYPE)).where(FunctionAliases.ALIAS_SCHEMA.equal(getSchemaName())).and(FunctionAliases.RETURNS_RESULT.in((short)1,(short)2)).orderBy(FunctionAliases.ALIAS_NAME).fetch()) {
+  for (  Record record : create().select(FunctionAliases.ALIAS_NAME,FunctionAliases.REMARKS,FunctionAliases.DATA_TYPE,FunctionAliases.RETURNS_RESULT,TypeInfo.TYPE_NAME,TypeInfo.PRECISION,TypeInfo.MAXIMUM_SCALE).from(FUNCTION_ALIASES).leftOuterJoin(TYPE_INFO).on(FunctionAliases.DATA_TYPE.equal(TypeInfo.DATA_TYPE)).where(FunctionAliases.ALIAS_SCHEMA.equal(getInputSchema())).and(FunctionAliases.RETURNS_RESULT.in((short)1,(short)2)).orderBy(FunctionAliases.ALIAS_NAME).fetch()) {
     String name=record.getValue(FunctionAliases.ALIAS_NAME);
     String comment=record.getValue(FunctionAliases.REMARKS);
     String typeName=record.getValue(TypeInfo.TYPE_NAME);

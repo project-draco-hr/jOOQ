@@ -1,3 +1,3 @@
 {
-  return create().select(Keycoluse.CONSTNAME,Keycoluse.TABNAME,Keycoluse.COLNAME).from(KEYCOLUSE).join(TABCONST).on(Keycoluse.TABSCHEMA.equal(Tabconst.TABSCHEMA)).and(Keycoluse.CONSTNAME.equal(Tabconst.CONSTNAME)).where(Keycoluse.TABSCHEMA.equal(getSchemaName())).and(Tabconst.TYPE.equal(constraintType)).orderBy(Keycoluse.CONSTNAME.asc(),Keycoluse.COLSEQ.asc()).fetch();
+  return create().select(Keycoluse.CONSTNAME,Keycoluse.TABNAME,Keycoluse.COLNAME).from(KEYCOLUSE).join(TABCONST).on(Keycoluse.TABSCHEMA.equal(Tabconst.TABSCHEMA)).and(Keycoluse.CONSTNAME.equal(Tabconst.CONSTNAME)).where(Keycoluse.TABSCHEMA.equal(getInputSchema())).and(Tabconst.TYPE.equal(constraintType)).orderBy(Keycoluse.CONSTNAME.asc(),Keycoluse.COLSEQ.asc()).fetch();
 }

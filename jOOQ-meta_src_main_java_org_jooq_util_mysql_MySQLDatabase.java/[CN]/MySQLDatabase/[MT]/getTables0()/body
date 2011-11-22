@@ -1,6 +1,6 @@
 {
   List<TableDefinition> result=new ArrayList<TableDefinition>();
-  for (  Record record : create().select(Tables.TABLE_NAME,Tables.TABLE_COMMENT).from(TABLES).where(Tables.TABLE_SCHEMA.equal(getSchemaName())).orderBy(Tables.TABLE_NAME).fetch()) {
+  for (  Record record : create().select(Tables.TABLE_NAME,Tables.TABLE_COMMENT).from(TABLES).where(Tables.TABLE_SCHEMA.equal(getInputSchema())).orderBy(Tables.TABLE_NAME).fetch()) {
     String name=record.getValue(Tables.TABLE_NAME);
     String comment=record.getValue(Tables.TABLE_COMMENT);
     MySQLTableDefinition table=new MySQLTableDefinition(this,name,comment);

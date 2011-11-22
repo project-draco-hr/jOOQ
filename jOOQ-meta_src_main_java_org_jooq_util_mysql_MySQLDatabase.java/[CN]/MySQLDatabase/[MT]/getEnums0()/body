@@ -1,6 +1,6 @@
 {
   List<EnumDefinition> result=new ArrayList<EnumDefinition>();
-  Result<Record> records=create().select(Columns.COLUMN_COMMENT,Columns.TABLE_NAME,Columns.COLUMN_NAME,Columns.COLUMN_TYPE).from(COLUMNS).where(Columns.COLUMN_TYPE.like("enum(%)").and(Columns.TABLE_SCHEMA.equal(getSchemaName()))).orderBy(Columns.TABLE_NAME.asc(),Columns.COLUMN_NAME.asc()).fetch();
+  Result<Record> records=create().select(Columns.COLUMN_COMMENT,Columns.TABLE_NAME,Columns.COLUMN_NAME,Columns.COLUMN_TYPE).from(COLUMNS).where(Columns.COLUMN_TYPE.like("enum(%)").and(Columns.TABLE_SCHEMA.equal(getInputSchema()))).orderBy(Columns.TABLE_NAME.asc(),Columns.COLUMN_NAME.asc()).fetch();
   for (  Record record : records) {
     String comment=record.getValue(Columns.COLUMN_COMMENT);
     String table=record.getValue(Columns.TABLE_NAME);

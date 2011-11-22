@@ -1,0 +1,3 @@
+{
+  super(alias,org.jooq.test.mysql2.generatedclasses.Test2.TEST2,org.jooq.test.mysql2.generatedclasses.tables.T_639NumbersTable.T_639_NUMBERS_TABLE);
+}

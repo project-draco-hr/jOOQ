@@ -1,0 +1,3 @@
+{
+  super("t_triggers",org.jooq.test.mysql2.generatedclasses.Test2.TEST2);
+}

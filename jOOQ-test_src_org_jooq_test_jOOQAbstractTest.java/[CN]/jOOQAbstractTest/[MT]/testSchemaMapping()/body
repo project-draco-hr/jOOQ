@@ -32,6 +32,10 @@ case SYBASE:
 log.info("SKIPPING","Schema mapping test");
 return;
 case MYSQL:
+if (getClass() == jOOQMySQLTestSchemaRewrite.class) {
+log.info("SKIPPING","Schema mapping test");
+return;
+}
 }
 mapping=new SchemaMapping();
 mapping.add(TAuthor().getSchema(),TAuthor().getSchema().getName() + "2");

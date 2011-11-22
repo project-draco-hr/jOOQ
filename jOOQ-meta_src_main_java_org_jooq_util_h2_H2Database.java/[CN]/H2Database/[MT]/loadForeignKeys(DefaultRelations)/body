@@ -1,5 +1,5 @@
 {
-  for (  Record record : create().select(CrossReferences.FK_NAME,CrossReferences.FKTABLE_NAME,CrossReferences.FKCOLUMN_NAME,Constraints.CONSTRAINT_NAME).from(CROSS_REFERENCES).join(CONSTRAINTS).on(CrossReferences.PK_NAME.equal(Constraints.UNIQUE_INDEX_NAME)).and(CrossReferences.PKTABLE_NAME.equal(Constraints.TABLE_NAME)).and(CrossReferences.PKTABLE_SCHEMA.equal(Constraints.TABLE_SCHEMA)).where(CrossReferences.FKTABLE_SCHEMA.equal(getSchemaName())).orderBy(CrossReferences.FK_NAME.asc(),CrossReferences.ORDINAL_POSITION.asc()).fetch()) {
+  for (  Record record : create().select(CrossReferences.FK_NAME,CrossReferences.FKTABLE_NAME,CrossReferences.FKCOLUMN_NAME,Constraints.CONSTRAINT_NAME).from(CROSS_REFERENCES).join(CONSTRAINTS).on(CrossReferences.PK_NAME.equal(Constraints.UNIQUE_INDEX_NAME)).and(CrossReferences.PKTABLE_NAME.equal(Constraints.TABLE_NAME)).and(CrossReferences.PKTABLE_SCHEMA.equal(Constraints.TABLE_SCHEMA)).where(CrossReferences.FKTABLE_SCHEMA.equal(getInputSchema())).orderBy(CrossReferences.FK_NAME.asc(),CrossReferences.ORDINAL_POSITION.asc()).fetch()) {
     String foreignKeyTableName=record.getValue(CrossReferences.FKTABLE_NAME);
     String foreignKeyColumn=record.getValue(CrossReferences.FKCOLUMN_NAME);
     String foreignKey=record.getValue(CrossReferences.FK_NAME);

@@ -1,6 +1,6 @@
 {
   List<UDTDefinition> result=new ArrayList<UDTDefinition>();
-  for (  String name : create().selectDistinct(ATTRIBUTES.UDT_NAME).from(ATTRIBUTES).where(ATTRIBUTES.UDT_SCHEMA.equal(getSchemaName())).orderBy(ATTRIBUTES.UDT_NAME).fetch(ATTRIBUTES.UDT_NAME)) {
+  for (  String name : create().selectDistinct(ATTRIBUTES.UDT_NAME).from(ATTRIBUTES).where(ATTRIBUTES.UDT_SCHEMA.equal(getInputSchema())).orderBy(ATTRIBUTES.UDT_NAME).fetch(ATTRIBUTES.UDT_NAME)) {
     result.add(new PostgresUDTDefinition(this,name,null));
   }
   return result;

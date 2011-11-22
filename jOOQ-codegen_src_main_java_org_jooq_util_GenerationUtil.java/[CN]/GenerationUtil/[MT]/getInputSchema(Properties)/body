@@ -1,0 +1,8 @@
+{
+  if (!StringUtils.isBlank(properties.getProperty("generator.database.input-schema"))) {
+    return properties.getProperty("generator.database.input-schema");
+  }
+ else {
+    return properties.getProperty("jdbc.Schema");
+  }
+}

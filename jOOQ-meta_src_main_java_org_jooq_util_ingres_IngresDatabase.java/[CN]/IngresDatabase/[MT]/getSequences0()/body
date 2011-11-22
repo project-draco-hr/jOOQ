@@ -1,6 +1,6 @@
 {
   List<SequenceDefinition> result=new ArrayList<SequenceDefinition>();
-  for (  Record record : create().select(trim(Iisequences.SEQ_NAME),trim(Iisequences.DATA_TYPE)).from(IISEQUENCES).where(Iisequences.SEQ_OWNER.equal(getSchemaName())).orderBy(Iisequences.SEQ_NAME).fetch()) {
+  for (  Record record : create().select(trim(Iisequences.SEQ_NAME),trim(Iisequences.DATA_TYPE)).from(IISEQUENCES).where(Iisequences.SEQ_OWNER.equal(getInputSchema())).orderBy(Iisequences.SEQ_NAME).fetch()) {
     DataTypeDefinition type=new DefaultDataTypeDefinition(this,record.getValue(trim(Iisequences.DATA_TYPE)),0,0);
     result.add(new DefaultSequenceDefinition(getSchema(),record.getValue(trim(Iisequences.SEQ_NAME)),type));
   }

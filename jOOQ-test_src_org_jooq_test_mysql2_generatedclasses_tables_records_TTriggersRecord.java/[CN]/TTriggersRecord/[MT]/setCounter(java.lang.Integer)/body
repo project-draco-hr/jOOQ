@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.mysql2.generatedclasses.tables.TTriggers.T_TRIGGERS.COUNTER,value);
+}

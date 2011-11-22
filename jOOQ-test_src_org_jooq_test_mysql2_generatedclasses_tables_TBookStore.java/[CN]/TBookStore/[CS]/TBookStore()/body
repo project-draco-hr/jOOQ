@@ -1,0 +1,3 @@
+{
+  super("t_book_store",org.jooq.test.mysql2.generatedclasses.Test2.TEST2);
+}

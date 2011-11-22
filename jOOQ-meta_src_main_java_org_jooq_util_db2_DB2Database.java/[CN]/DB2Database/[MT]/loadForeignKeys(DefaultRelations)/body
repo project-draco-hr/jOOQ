@@ -1,5 +1,5 @@
 {
-  for (  Record record : create().select(References.CONSTNAME,References.TABNAME,References.FK_COLNAMES,References.REFKEYNAME).from(REFERENCES).where(References.TABSCHEMA.equal(getSchemaName())).fetch()) {
+  for (  Record record : create().select(References.CONSTNAME,References.TABNAME,References.FK_COLNAMES,References.REFKEYNAME).from(REFERENCES).where(References.TABSCHEMA.equal(getInputSchema())).fetch()) {
     String foreignKey=record.getValue(References.CONSTNAME);
     String foreignKeyTableName=record.getValue(References.TABNAME);
     String foreignKeyColumn=record.getValue(References.FK_COLNAMES);

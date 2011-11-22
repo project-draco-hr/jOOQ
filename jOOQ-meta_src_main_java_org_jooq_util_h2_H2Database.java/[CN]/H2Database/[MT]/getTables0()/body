@@ -1,6 +1,6 @@
 {
   List<TableDefinition> result=new ArrayList<TableDefinition>();
-  for (  Record record : create().select(Tables.TABLE_NAME,Tables.REMARKS).from(TABLES).where(Tables.TABLE_SCHEMA.equal(getSchemaName())).orderBy(Tables.ID).fetch()) {
+  for (  Record record : create().select(Tables.TABLE_NAME,Tables.REMARKS).from(TABLES).where(Tables.TABLE_SCHEMA.equal(getInputSchema())).orderBy(Tables.ID).fetch()) {
     String name=record.getValue(Tables.TABLE_NAME);
     String comment=record.getValue(Tables.REMARKS);
     H2TableDefinition table=new H2TableDefinition(this,name,comment);

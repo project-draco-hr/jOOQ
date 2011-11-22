@@ -1,6 +1,6 @@
 {
   List<TableDefinition> result=new ArrayList<TableDefinition>();
-  for (  Record record : create().select(Systables.TABLENAME,Systables.TABLEID).from(SYSTABLES).join(SYSSCHEMAS).on(Systables.SCHEMAID.equal(Sysschemas.SCHEMAID)).where(Sysschemas.SCHEMANAME.equal(getSchemaName())).fetch()) {
+  for (  Record record : create().select(Systables.TABLENAME,Systables.TABLEID).from(SYSTABLES).join(SYSSCHEMAS).on(Systables.SCHEMAID.equal(Sysschemas.SCHEMAID)).where(Sysschemas.SCHEMANAME.equal(getInputSchema())).fetch()) {
     String name=record.getValue(Systables.TABLENAME);
     String id=record.getValue(Systables.TABLEID);
     DerbyTableDefinition table=new DerbyTableDefinition(this,name,id);

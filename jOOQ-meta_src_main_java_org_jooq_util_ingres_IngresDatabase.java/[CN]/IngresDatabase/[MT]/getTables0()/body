@@ -1,6 +1,6 @@
 {
   List<TableDefinition> result=new ArrayList<TableDefinition>();
-  for (  Record record : create().select(trim(Iitables.TABLE_NAME)).from(IITABLES).where(Iitables.TABLE_OWNER.equal(getSchemaName())).orderBy(trim(Iitables.TABLE_NAME)).fetch()) {
+  for (  Record record : create().select(trim(Iitables.TABLE_NAME)).from(IITABLES).where(Iitables.TABLE_OWNER.equal(getInputSchema())).orderBy(trim(Iitables.TABLE_NAME)).fetch()) {
     result.add(new IngresTableDefinition(this,record.getValue(trim(Iitables.TABLE_NAME))));
   }
   return result;

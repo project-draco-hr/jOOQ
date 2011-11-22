@@ -1,6 +1,6 @@
 {
   List<TableDefinition> result=new ArrayList<TableDefinition>();
-  for (  String name : create().select(TABLES.TABLE_NAME).from(TABLES).where(TABLES.TABLE_SCHEMA.equal(getSchemaName())).orderBy(TABLES.TABLE_NAME).fetch(TABLES.TABLE_NAME)) {
+  for (  String name : create().select(TABLES.TABLE_NAME).from(TABLES).where(TABLES.TABLE_SCHEMA.equal(getInputSchema())).orderBy(TABLES.TABLE_NAME).fetch(TABLES.TABLE_NAME)) {
     String comment="";
     result.add(new SQLServerTableDefinition(this,name,comment));
   }

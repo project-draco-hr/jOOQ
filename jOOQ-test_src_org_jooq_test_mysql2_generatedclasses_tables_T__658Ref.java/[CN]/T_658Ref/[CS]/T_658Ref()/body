@@ -1,0 +1,3 @@
+{
+  super("t_658_ref",org.jooq.test.mysql2.generatedclasses.Test2.TEST2);
+}

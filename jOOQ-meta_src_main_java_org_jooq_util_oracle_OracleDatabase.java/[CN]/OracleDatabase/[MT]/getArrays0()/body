@@ -1,6 +1,6 @@
 {
   List<ArrayDefinition> arrays=new ArrayList<ArrayDefinition>();
-  for (  Record record : create().select(ALL_COLL_TYPES.TYPE_NAME,ALL_COLL_TYPES.ELEM_TYPE_NAME,ALL_COLL_TYPES.PRECISION,ALL_COLL_TYPES.SCALE).from(ALL_COLL_TYPES).where(ALL_COLL_TYPES.OWNER.equal(getSchemaName())).and(ALL_COLL_TYPES.COLL_TYPE.equal("VARYING ARRAY")).orderBy(ALL_COLL_TYPES.TYPE_NAME).fetch()) {
+  for (  Record record : create().select(ALL_COLL_TYPES.TYPE_NAME,ALL_COLL_TYPES.ELEM_TYPE_NAME,ALL_COLL_TYPES.PRECISION,ALL_COLL_TYPES.SCALE).from(ALL_COLL_TYPES).where(ALL_COLL_TYPES.OWNER.equal(getInputSchema())).and(ALL_COLL_TYPES.COLL_TYPE.equal("VARYING ARRAY")).orderBy(ALL_COLL_TYPES.TYPE_NAME).fetch()) {
     String name=record.getValue(ALL_COLL_TYPES.TYPE_NAME);
     String dataType=record.getValue(ALL_COLL_TYPES.ELEM_TYPE_NAME);
     int precision=record.getValue(ALL_COLL_TYPES.PRECISION,BigDecimal.ZERO).intValue();
