@@ -1,0 +1,6 @@
+{
+  if (obj instanceof UByte) {
+    return value == ((UByte)obj).value;
+  }
+  return false;
+}

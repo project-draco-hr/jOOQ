@@ -1,0 +1,6 @@
+{
+  if (obj instanceof UInteger) {
+    return value == ((UInteger)obj).value;
+  }
+  return false;
+}

@@ -1,0 +1,4 @@
+{
+  this.value=Integer.parseInt(value);
+  rangeCheck();
+}

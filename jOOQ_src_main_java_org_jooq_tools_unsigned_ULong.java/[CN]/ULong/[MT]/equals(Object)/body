@@ -1,0 +1,6 @@
+{
+  if (obj instanceof ULong) {
+    return value.equals(((ULong)obj).value);
+  }
+  return false;
+}

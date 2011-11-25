@@ -1,0 +1,5 @@
+{
+  if (value.compareTo(MIN_VALUE) < 0 || value.compareTo(MAX_VALUE) > 0) {
+    throw new NumberFormatException("Value is out of range : " + value);
+  }
+}

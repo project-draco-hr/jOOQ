@@ -1,0 +1,8 @@
+{
+  if (value >= 0) {
+    this.value=BigInteger.valueOf(value);
+  }
+ else {
+    this.value=BigInteger.valueOf(value & Long.MAX_VALUE).add(MAX_VALUE_LONG);
+  }
+}

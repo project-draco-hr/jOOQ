@@ -1,0 +1,6 @@
+{
+  if (obj instanceof UShort) {
+    return value == ((UShort)obj).value;
+  }
+  return false;
+}

@@ -1,0 +1,4 @@
+{
+  this.value=Long.parseLong(value);
+  rangeCheck();
+}

@@ -1,0 +1,4 @@
+{
+  this.value=Short.parseShort(value);
+  rangeCheck();
+}
