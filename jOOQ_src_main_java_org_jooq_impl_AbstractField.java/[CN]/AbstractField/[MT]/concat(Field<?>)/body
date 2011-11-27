@@ -1,0 +1,3 @@
+{
+  return Factory.concat(Util.combine(this,fields));
+}

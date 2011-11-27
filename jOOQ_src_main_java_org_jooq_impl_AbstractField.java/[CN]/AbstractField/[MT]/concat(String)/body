@@ -1,0 +1,3 @@
+{
+  return Factory.concat(Util.combine(this,vals((Object[])values).toArray(new Field[0])));
+}

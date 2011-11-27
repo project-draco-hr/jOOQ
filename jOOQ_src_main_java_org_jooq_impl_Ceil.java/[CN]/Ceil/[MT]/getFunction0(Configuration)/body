@@ -1,7 +1,7 @@
 {
 switch (configuration.getDialect()) {
 case SQLITE:
-    return round(argument.add(0.499999999999999));
+    return Factory.round(argument.add(0.499999999999999));
 case ASE:
 case H2:
 case SQLSERVER:

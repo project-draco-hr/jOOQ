@@ -2,7 +2,7 @@
 switch (configuration.getDialect()) {
 case INGRES:
 case ORACLE:
-    return cos(argument).div(sin(argument));
+    return Factory.cos(argument).div(Factory.sin(argument));
 default :
   return function("cot",SQLDataType.NUMERIC,argument);
 }

@@ -1,0 +1,8 @@
+{
+  if (getDataType().isNumeric()) {
+    return (Field<Z>)this;
+  }
+ else {
+    return (Field<Z>)cast(BigDecimal.class);
+  }
+}

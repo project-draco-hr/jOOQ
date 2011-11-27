@@ -7,7 +7,7 @@ case MYSQL:
 case POSTGRES:
 case SQLSERVER:
 case SYBASE:
-    return exp(argument.mul(two())).sub(one()).div(exp(argument).mul(two()));
+    return Factory.exp(argument.mul(two())).sub(one()).div(Factory.exp(argument).mul(two()));
 default :
   return function("sinh",SQLDataType.NUMERIC,argument);
 }

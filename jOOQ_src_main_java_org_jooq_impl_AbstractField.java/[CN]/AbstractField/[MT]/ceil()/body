@@ -1,0 +1,3 @@
+{
+  return (Field<T>)Factory.ceil(numeric());
+}

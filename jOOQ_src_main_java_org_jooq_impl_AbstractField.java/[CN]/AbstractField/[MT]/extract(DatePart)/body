@@ -1,0 +1,3 @@
+{
+  return Factory.extract(date(),datePart);
+}

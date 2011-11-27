@@ -5,10 +5,10 @@ case SQLSERVER:
 case SYBASE:
 {
       if (character == null) {
-        return concat(repeat(" ",length.sub(length(field))),field);
+        return Factory.concat(Factory.repeat(" ",length.sub(Factory.length(field))),field);
       }
  else {
-        return concat(repeat(character,length.sub(length(field))),field);
+        return Factory.concat(Factory.repeat(character,length.sub(Factory.length(field))),field);
       }
     }
 default :

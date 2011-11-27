@@ -1,0 +1,8 @@
+{
+  if (getDataType().isTemporal()) {
+    return (Field<Z>)this;
+  }
+ else {
+    return (Field<Z>)cast(Timestamp.class);
+  }
+}

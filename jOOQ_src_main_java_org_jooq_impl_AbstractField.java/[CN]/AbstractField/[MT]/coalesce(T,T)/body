@@ -1,0 +1,3 @@
+{
+  return Factory.coalesce(this,Util.combine(val(option),vals(options).toArray(new Field[0])));
+}
