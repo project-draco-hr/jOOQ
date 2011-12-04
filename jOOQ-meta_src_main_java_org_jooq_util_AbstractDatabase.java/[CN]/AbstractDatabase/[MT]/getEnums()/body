@@ -4,6 +4,7 @@
     try {
       List<EnumDefinition> e=getEnums0();
       enums=filterExcludeInclude(e);
+      enums.addAll(getConfiguredEnums());
       log.info("Enums fetched",fetchedSize(e,enums));
     }
  catch (    Exception e) {

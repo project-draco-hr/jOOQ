@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.db2.generatedclasses.tables.records.TBooleansRecord>>asList(org.jooq.test.db2.generatedclasses.Keys.PK_T_BOOLEANS);
+}

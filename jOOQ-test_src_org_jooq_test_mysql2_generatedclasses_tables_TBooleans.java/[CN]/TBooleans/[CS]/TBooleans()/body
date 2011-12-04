@@ -1,0 +1,3 @@
+{
+  super("t_booleans",org.jooq.test.mysql2.generatedclasses.Test2.TEST2);
+}

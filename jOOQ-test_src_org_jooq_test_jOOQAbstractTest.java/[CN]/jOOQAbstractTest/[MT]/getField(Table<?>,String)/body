@@ -1,0 +1,10 @@
+{
+  Field<?> result=table.getField(name);
+  if (result == null) {
+    result=table.getField(name.toUpperCase());
+  }
+  if (result == null) {
+    result=table.getField(name.toLowerCase());
+  }
+  return result;
+}

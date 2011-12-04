@@ -1,0 +1,18 @@
+{
+  List<EnumDefinition> result=new ArrayList<EnumDefinition>();
+  for (  String property : properties.stringPropertyNames()) {
+    if (property.startsWith("generator.database.enum-type.")) {
+      String name=property.replace("generator.database.enum-type.","");
+      DefaultEnumDefinition e=new DefaultEnumDefinition(this,name,null);
+      String literals=properties.getProperty(property);
+      try {
+        CSVReader reader=new CSVReader(new StringReader(literals));
+        e.addLiterals(reader.readNext());
+      }
+ catch (      IOException ignore) {
+      }
+      result.add(e);
+    }
+  }
+  return result;
+}

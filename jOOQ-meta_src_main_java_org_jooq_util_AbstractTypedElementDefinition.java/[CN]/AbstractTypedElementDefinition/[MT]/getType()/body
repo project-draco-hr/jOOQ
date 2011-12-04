@@ -1,3 +1,18 @@
 {
+  if (type == null) {
+    Database db=container.getDatabase();
+    for (    String property : db.getPropertyNames()) {
+      if (property.startsWith("generator.database.forced-type.")) {
+        if (getQualifiedName().matches(db.getProperty(property))) {
+          String forcedType=property.replace("generator.database.forced-type.","");
+          log.debug("Forcing type",this + " into " + forcedType);
+          type=new DefaultDataTypeDefinition(db,definedType.getType(),definedType.getPrecision(),definedType.getScale(),forcedType);
+        }
+      }
+    }
+    if (type == null) {
+      type=definedType;
+    }
+  }
   return type;
 }

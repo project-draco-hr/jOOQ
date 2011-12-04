@@ -11,6 +11,16 @@
   props.put("generator.database.excludes",defaultString(generator.getDatabase().getExcludes()));
   props.put("generator.database.input-schema",defaultString(generator.getDatabase().getInputSchema()));
   props.put("generator.database.output-schema",defaultString(generator.getDatabase().getOutputSchema()));
+  if (generator.getDatabase().getEnumTypes() != null) {
+    for (    EnumType type : generator.getDatabase().getEnumTypes()) {
+      props.put("generator.database.enum-type." + type.getName(),type.getLiterals());
+    }
+  }
+  if (generator.getDatabase().getForcedTypes() != null) {
+    for (    ForcedType type : generator.getDatabase().getForcedTypes()) {
+      props.put("generator.database.forced-type." + type.getName(),type.getExpressions());
+    }
+  }
   props.put("generator.generate.relations",defaultString(generator.getGenerate().getRelations()));
   props.put("generator.generate.deprecated",defaultString(generator.getGenerate().getDeprecated()));
   props.put("generator.generate.instance-fields",defaultString(generator.getGenerate().getInstanceFields()));

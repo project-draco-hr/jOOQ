@@ -1,0 +1,3 @@
+{
+  return new org.jooq.test.sybase.generatedclasses.tables.TBooleans(alias);
+}

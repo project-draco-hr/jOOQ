@@ -12,7 +12,16 @@
       }
     }
     assertEquals(sequences,schema.getSequences().size());
-    int tables=15;
+    for (    Table<?> table : schema.getTables()) {
+      assertEquals(table,schema.getTable(table.getName()));
+    }
+    for (    UDT<?> udt : schema.getUDTs()) {
+      assertEquals(udt,schema.getUDT(udt.getName()));
+    }
+    for (    Sequence<?> sequence : schema.getSequences()) {
+      assertEquals(sequence,schema.getSequence(sequence.getName()));
+    }
+    int tables=16;
     if (supportsRecursiveQueries()) {
       tables++;
     }

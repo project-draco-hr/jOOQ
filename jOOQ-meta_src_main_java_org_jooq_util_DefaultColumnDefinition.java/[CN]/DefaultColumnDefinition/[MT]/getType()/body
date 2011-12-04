@@ -8,7 +8,7 @@
       }
     }
     if (type == null) {
-      type=underlying;
+      type=super.getType();
     }
   }
   return type;

@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.test.derby.generatedclasses.tables.TBooleans.ONE_ZERO);
+}

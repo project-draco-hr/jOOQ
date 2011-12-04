@@ -1,0 +1,3 @@
+{
+  super("t_booleans",org.jooq.test.sqlserver.generatedclasses.Dbo.DBO);
+}

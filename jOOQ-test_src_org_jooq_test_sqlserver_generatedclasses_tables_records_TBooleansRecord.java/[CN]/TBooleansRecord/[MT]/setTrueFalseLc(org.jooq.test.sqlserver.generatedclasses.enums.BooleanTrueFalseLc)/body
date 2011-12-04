@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.sqlserver.generatedclasses.tables.TBooleans.T_BOOLEANS.TRUE_FALSE_LC,value);
+}

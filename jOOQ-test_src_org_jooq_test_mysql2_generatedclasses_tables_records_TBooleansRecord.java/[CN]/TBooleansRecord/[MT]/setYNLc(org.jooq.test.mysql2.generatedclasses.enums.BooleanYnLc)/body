@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.mysql2.generatedclasses.tables.TBooleans.T_BOOLEANS.Y_N_LC,value);
+}

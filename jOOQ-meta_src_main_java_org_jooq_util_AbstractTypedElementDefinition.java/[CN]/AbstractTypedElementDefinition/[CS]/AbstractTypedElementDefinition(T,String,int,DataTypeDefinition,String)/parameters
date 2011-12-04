@@ -1,5 +1,5 @@
 T container
 String name
 int position
-DataTypeDefinition type
+DataTypeDefinition definedType
 String comment

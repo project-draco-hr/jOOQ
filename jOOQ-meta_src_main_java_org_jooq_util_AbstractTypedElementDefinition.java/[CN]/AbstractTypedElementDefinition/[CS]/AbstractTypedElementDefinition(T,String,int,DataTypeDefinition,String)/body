@@ -1,5 +1,5 @@
 {
   super(container.getDatabase(),protectName(container.getName(),name,position),comment);
   this.container=container;
-  this.type=type;
+  this.definedType=definedType;
 }
