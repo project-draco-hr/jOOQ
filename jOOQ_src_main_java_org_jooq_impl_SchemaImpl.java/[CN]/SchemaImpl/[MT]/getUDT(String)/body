@@ -1,0 +1,8 @@
+{
+  for (  UDT<?> udt : getUDTs()) {
+    if (udt.getName().equals(name)) {
+      return udt;
+    }
+  }
+  return null;
+}

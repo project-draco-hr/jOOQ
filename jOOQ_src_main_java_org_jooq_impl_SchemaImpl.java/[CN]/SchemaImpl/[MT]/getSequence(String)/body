@@ -1,0 +1,8 @@
+{
+  for (  Sequence<?> sequence : getSequences()) {
+    if (sequence.getName().equals(name)) {
+      return sequence;
+    }
+  }
+  return null;
+}
