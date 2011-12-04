@@ -24,6 +24,9 @@
       return (T)convertArray((Object[])from,toClass);
     }
  else     if (toClass == String.class) {
+      if (from instanceof EnumType) {
+        return (T)((EnumType)from).getLiteral();
+      }
       return (T)from.toString();
     }
  else     if (toClass == Object.class) {
