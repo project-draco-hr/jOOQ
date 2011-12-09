@@ -1,3 +1,0 @@
-{
-  return getValue(org.jooq.test.postgres.generatedclasses.tables.TBookStore.T_BOOK_STORE.ID);
-}

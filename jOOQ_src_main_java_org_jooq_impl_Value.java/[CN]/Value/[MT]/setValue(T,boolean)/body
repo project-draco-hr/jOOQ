@@ -1,0 +1,14 @@
+{
+  if (!primaryKey) {
+    isChanged=true;
+  }
+ else {
+    if (value == null) {
+      isChanged|=val != null;
+    }
+ else {
+      isChanged|=!value.equals(val);
+    }
+  }
+  value=val;
+}

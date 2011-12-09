@@ -5,9 +5,15 @@
       for (int i=0; i < size(); i++) {
         final Object thisValue=getValue(i);
         final Object thatValue=that.getValue(i);
-        if (thisValue == null) {
-          if (thatValue != null) {
-            return false;
+        if (thisValue == null || thatValue == null) {
+          return thisValue == thatValue;
+        }
+ else         if (thisValue.getClass().isArray() && thatValue.getClass().isArray()) {
+          if (thisValue.getClass() == byte[].class && thatValue.getClass() == byte[].class) {
+            return new String((byte[])thisValue).equals(new String((byte[])thatValue));
+          }
+ else {
+            return Arrays.asList((Object[])thisValue).equals(Arrays.asList((Object[])thatValue));
           }
         }
  else         if (!thisValue.equals(thatValue)) {

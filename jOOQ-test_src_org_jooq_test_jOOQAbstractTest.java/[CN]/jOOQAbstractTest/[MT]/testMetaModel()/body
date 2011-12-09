@@ -56,7 +56,7 @@
       assertEquals(2,schema.getUDTs().size());
     }
   }
-  if (getDialect() != ORACLE && getDialect() != SQLITE) {
+  if (false && getDialect() != ORACLE && getDialect() != SQLITE) {
     assertNull(TAuthor().getIdentity());
     assertNull(TBook().getIdentity());
     assertEquals(TBookStore(),TBookStore().getIdentity().getTable());

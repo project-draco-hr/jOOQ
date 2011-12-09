@@ -1,4 +1,3 @@
 {
-  this.isChanged=true;
-  this.value=value;
+  setValue(val,false);
 }

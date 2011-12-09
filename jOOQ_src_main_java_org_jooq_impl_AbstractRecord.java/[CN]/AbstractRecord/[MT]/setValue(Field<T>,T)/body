@@ -1,3 +1,18 @@
 {
-  getValue0(field).setValue(value);
+  UniqueKey<?> mainKey=getMainKey();
+  Value<T> val=getValue0(field);
+  if (mainKey == null || !mainKey.getFields().contains(field)) {
+    val.setValue(value);
+  }
+ else   if (val.isChanged()) {
+    val.setValue(value);
+  }
+ else {
+    val.setValue(value,true);
+    if (val.isChanged()) {
+      for (      Value<?> other : getValues()) {
+        other.setChanged(true);
+      }
+    }
+  }
 }

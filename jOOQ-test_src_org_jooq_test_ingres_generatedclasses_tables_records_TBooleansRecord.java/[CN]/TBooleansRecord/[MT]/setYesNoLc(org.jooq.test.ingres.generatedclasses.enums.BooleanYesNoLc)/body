@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.ingres.generatedclasses.tables.TBooleans.YES_NO_LC,value);
+}
