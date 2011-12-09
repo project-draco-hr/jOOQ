@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.test.oracle.generatedclasses.tables.TBooleans.T_BOOLEANS.VC_BOOLEAN);
+}

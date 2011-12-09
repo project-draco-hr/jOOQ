@@ -23,8 +23,11 @@
   @SuppressWarnings("unchecked") Field<EnumType> e7=(Field<EnumType>)getField(booleans,"Y_N_UC");
   EnumType e7False=(EnumType)e7.getType().getField("N").get(e7.getType());
   EnumType e7True=(EnumType)e7.getType().getField("Y").get(e7.getType());
-  assertEquals(1,create().insertInto(booleans).set(id,1).set(e1,e1False).set(e2,e2False).set(e3,e3False).set(e4,e4False).set(e5,e5False).set(e6,e6False).set(e7,e7False).execute());
-  assertEquals(1,create().insertInto(booleans).set(id,2).set(e1,e1True).set(e2,e2True).set(e3,e3True).set(e4,e4True).set(e5,e5True).set(e6,e6True).set(e7,e7True).execute());
+  @SuppressWarnings("unchecked") Field<Boolean> b1=(Field<Boolean>)getField(booleans,"C_BOOLEAN");
+  @SuppressWarnings("unchecked") Field<Boolean> b2=(Field<Boolean>)getField(booleans,"VC_BOOLEAN");
+  @SuppressWarnings("unchecked") Field<Boolean> b3=(Field<Boolean>)getField(booleans,"N_BOOLEAN");
+  assertEquals(1,create().insertInto(booleans).set(id,1).set(e1,e1False).set(e2,e2False).set(e3,e3False).set(e4,e4False).set(e5,e5False).set(e6,e6False).set(e7,e7False).set(b1,false).set(b2,false).set(b3,false).execute());
+  assertEquals(1,create().insertInto(booleans).set(id,2).set(e1,e1True).set(e2,e2True).set(e3,e3True).set(e4,e4True).set(e5,e5True).set(e6,e6True).set(e7,e7True).set(b1,true).set(b2,true).set(b3,true).execute());
   Result<?> result=create().selectFrom(booleans).orderBy(id.asc()).fetch();
   assertEquals(1,(int)result.getValue(0,id));
   assertEquals(2,(int)result.getValue(1,id));
@@ -42,4 +45,10 @@
   assertEquals(e6True,result.getValue(1,e6));
   assertEquals(e7False,result.getValue(0,e7));
   assertEquals(e7True,result.getValue(1,e7));
+  assertFalse(result.getValue(0,b1));
+  assertTrue(result.getValue(1,b1));
+  assertFalse(result.getValue(0,b2));
+  assertTrue(result.getValue(1,b2));
+  assertFalse(result.getValue(0,b3));
+  assertTrue(result.getValue(1,b3));
 }

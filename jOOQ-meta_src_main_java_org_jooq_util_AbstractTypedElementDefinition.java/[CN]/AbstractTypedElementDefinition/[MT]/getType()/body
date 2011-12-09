@@ -6,7 +6,21 @@
         if (getQualifiedName().matches(db.getProperty(property))) {
           String forcedType=property.replace("generator.database.forced-type.","");
           log.debug("Forcing type",this + " into " + forcedType);
-          type=new DefaultDataTypeDefinition(db,definedType.getType(),definedType.getPrecision(),definedType.getScale(),forcedType);
+          DataType<?> forcedDataType=null;
+          String t=definedType.getType();
+          int p=definedType.getPrecision();
+          int s=definedType.getScale();
+          try {
+            forcedDataType=FieldTypeHelper.getDialectDataType(db.getDialect(),forcedType,p,s);
+          }
+ catch (          SQLDialectNotSupportedException ignore) {
+          }
+          if (forcedDataType != null) {
+            type=new DefaultDataTypeDefinition(db,forcedType,p,s);
+          }
+ else {
+            type=new DefaultDataTypeDefinition(db,t,p,s,forcedType);
+          }
         }
       }
     }

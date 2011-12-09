@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.sybase.generatedclasses.tables.TBooleans.T_BOOLEANS.N_BOOLEAN,value);
+}
