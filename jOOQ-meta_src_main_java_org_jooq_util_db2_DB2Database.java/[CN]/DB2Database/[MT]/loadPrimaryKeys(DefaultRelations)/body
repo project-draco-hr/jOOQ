@@ -1,6 +1,6 @@
 {
   for (  Record record : fetchKeys("P")) {
-    String key=record.getValue(Keycoluse.CONSTNAME);
+    String key=record.getValue("constraint_name",String.class);
     String tableName=record.getValue(Keycoluse.TABNAME);
     String columnName=record.getValue(Keycoluse.COLNAME);
     TableDefinition table=getTable(tableName);

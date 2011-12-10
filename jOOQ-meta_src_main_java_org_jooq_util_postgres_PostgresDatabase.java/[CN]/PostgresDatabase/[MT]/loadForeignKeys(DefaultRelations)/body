@@ -8,7 +8,7 @@
     TableDefinition referencingTable=getTable(foreignKeyTable);
     if (referencingTable != null) {
       ColumnDefinition referencingColumn=referencingTable.getColumn(foreignKeyColumn);
-      relations.addForeignKey(foreignKey,uniqueKey,referencingColumn);
+      relations.addForeignKey(foreignKeyTable + "__" + foreignKey,uniqueKey,referencingColumn);
     }
   }
 }

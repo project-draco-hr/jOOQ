@@ -1,3 +1,3 @@
 {
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.test.sybase.generatedclasses.tables.records.TBookRecord,?>>asList(org.jooq.test.sybase.generatedclasses.Keys.t_book_fk_t_book_author_id,org.jooq.test.sybase.generatedclasses.Keys.t_book_fk_t_book_co_author_id);
+  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.test.sybase.generatedclasses.tables.records.TBookRecord,?>>asList(org.jooq.test.sybase.generatedclasses.Keys.t_book__fk_t_book_author_id,org.jooq.test.sybase.generatedclasses.Keys.t_book__fk_t_book_co_author_id);
 }

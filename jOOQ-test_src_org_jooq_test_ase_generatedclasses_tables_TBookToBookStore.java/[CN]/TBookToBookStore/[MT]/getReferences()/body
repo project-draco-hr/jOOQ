@@ -1,3 +1,3 @@
 {
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.test.ase.generatedclasses.tables.records.TBookToBookStoreRecord,?>>asList(org.jooq.test.ase.generatedclasses.Keys.fk_b2bs_bs_name,org.jooq.test.ase.generatedclasses.Keys.fk_b2bs_b_id);
+  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.test.ase.generatedclasses.tables.records.TBookToBookStoreRecord,?>>asList(org.jooq.test.ase.generatedclasses.Keys.t_book_to_book_store__fk_b2bs_bs_name,org.jooq.test.ase.generatedclasses.Keys.t_book_to_book_store__fk_b2bs_b_id);
 }

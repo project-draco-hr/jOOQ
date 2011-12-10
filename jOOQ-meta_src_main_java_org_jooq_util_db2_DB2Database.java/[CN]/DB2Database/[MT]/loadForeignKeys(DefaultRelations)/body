@@ -1,9 +1,9 @@
 {
-  for (  Record record : create().select(References.CONSTNAME,References.TABNAME,References.FK_COLNAMES,References.REFKEYNAME).from(REFERENCES).where(References.TABSCHEMA.equal(getInputSchema())).fetch()) {
-    String foreignKey=record.getValue(References.CONSTNAME);
+  for (  Record record : create().select(concat(References.TABNAME,val("__"),References.CONSTNAME).as("constraint_name"),References.TABNAME,References.FK_COLNAMES,concat(References.REFTABNAME,val("__"),References.REFKEYNAME).as("referenced_constraint_name")).from(REFERENCES).where(References.TABSCHEMA.equal(getInputSchema())).fetch()) {
+    String foreignKey=record.getValue("constraint_name",String.class);
     String foreignKeyTableName=record.getValue(References.TABNAME);
     String foreignKeyColumn=record.getValue(References.FK_COLNAMES);
-    String uniqueKey=record.getValue(References.REFKEYNAME);
+    String uniqueKey=record.getValue("referenced_constraint_name",String.class);
     TableDefinition foreignKeyTable=getTable(foreignKeyTableName);
     if (foreignKeyTable != null) {
       String[] referencingColumnNames=foreignKeyColumn.trim().split("[ ]+");

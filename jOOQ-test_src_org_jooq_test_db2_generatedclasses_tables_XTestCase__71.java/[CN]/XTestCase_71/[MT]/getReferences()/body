@@ -1,3 +1,3 @@
 {
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.test.db2.generatedclasses.tables.records.XTestCase_71Record,?>>asList(org.jooq.test.db2.generatedclasses.Keys.FK_X_TEST_CASE_71);
+  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.test.db2.generatedclasses.tables.records.XTestCase_71Record,?>>asList(org.jooq.test.db2.generatedclasses.Keys.X_TEST_CASE_71__FK_X_TEST_CASE_71);
 }

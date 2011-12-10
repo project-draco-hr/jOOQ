@@ -1,5 +1,5 @@
 {
-  for (  Record record : create().select(concat(SYSTABLE.TABLE_NAME,val("_"),SYSIDX.INDEX_NAME).as("indexName"),SYSTABLE.TABLE_NAME,SYSTABCOL.COLUMN_NAME).from(SYSIDX).join(SYSIDXCOL).on(SYSIDX.TABLE_ID.equal(SYSIDXCOL.TABLE_ID)).and(SYSIDX.INDEX_ID.equal(SYSIDXCOL.INDEX_ID)).join(SYSTABLE).on(SYSIDXCOL.TABLE_ID.equal(SYSTABLE.TABLE_ID)).join(SYSTABCOL).on(SYSIDXCOL.TABLE_ID.equal(SYSTABCOL.TABLE_ID)).and(SYSIDXCOL.COLUMN_ID.equal(SYSTABCOL.COLUMN_ID)).where(SYSIDX.INDEX_CATEGORY.equal((byte)3)).and(SYSIDX.UNIQUE.equal((byte)2)).orderBy(SYSIDXCOL.SEQUENCE).fetch()) {
+  for (  Record record : create().select(concat(SYSTABLE.TABLE_NAME,val("__"),SYSIDX.INDEX_NAME).as("indexName"),SYSTABLE.TABLE_NAME,SYSTABCOL.COLUMN_NAME).from(SYSIDX).join(SYSIDXCOL).on(SYSIDX.TABLE_ID.equal(SYSIDXCOL.TABLE_ID)).and(SYSIDX.INDEX_ID.equal(SYSIDXCOL.INDEX_ID)).join(SYSTABLE).on(SYSIDXCOL.TABLE_ID.equal(SYSTABLE.TABLE_ID)).join(SYSTABCOL).on(SYSIDXCOL.TABLE_ID.equal(SYSTABCOL.TABLE_ID)).and(SYSIDXCOL.COLUMN_ID.equal(SYSTABCOL.COLUMN_ID)).where(SYSIDX.INDEX_CATEGORY.equal((byte)3)).and(SYSIDX.UNIQUE.equal((byte)2)).orderBy(SYSIDXCOL.SEQUENCE).fetch()) {
     String key=record.getValueAsString("indexName");
     String tableName=record.getValue(SYSTABLE.TABLE_NAME);
     String columnName=record.getValue(SYSTABCOL.COLUMN_NAME);
