@@ -1,0 +1,14 @@
+{
+  try {
+    int index=Integer.valueOf(param);
+    return bind(index,value);
+  }
+ catch (  NumberFormatException e) {
+    Param<?> p=getParam(param);
+    if (p == null) {
+      throw new IllegalArgumentException("No such parameter : " + param);
+    }
+    p.setConverted(value);
+    return this;
+  }
+}

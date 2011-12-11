@@ -1,0 +1,8 @@
+{
+  Param<?>[] array=getParams().values().toArray(new Param[0]);
+  if (index < 1 || index > array.length) {
+    throw new IllegalArgumentException("Index out of range for Query parameters : " + index);
+  }
+  array[index - 1].setConverted(value);
+  return this;
+}
