@@ -7,13 +7,13 @@
       context.sql(val.toString());
     }
  else     if (type == byte[].class) {
-      context.sql("'").sql(new String((byte[])val).replace("'","''")).sql("'");
+      context.sql("'").sql(Arrays.toString((byte[])val).replace("'","''")).sql("'");
     }
  else     if (Number.class.isAssignableFrom(type)) {
       context.sql(val.toString());
     }
  else     if (type.isArray()) {
-      context.sql("ARRAY").sql(Arrays.asList((Object[])val).toString());
+      context.sql("ARRAY").sql(Arrays.toString((Object[])val));
     }
  else     if (ArrayRecord.class.isAssignableFrom(type)) {
       context.sql(val.toString());
