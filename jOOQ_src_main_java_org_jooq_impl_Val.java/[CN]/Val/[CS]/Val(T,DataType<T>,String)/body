@@ -1,0 +1,5 @@
+{
+  super(name(value,paramName),type);
+  this.paramName=paramName;
+  this.value=value;
+}

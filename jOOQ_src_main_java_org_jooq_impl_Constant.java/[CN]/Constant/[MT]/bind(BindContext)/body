@@ -1,3 +1,0 @@
-{
-  context.bindValue(value,getType());
-}

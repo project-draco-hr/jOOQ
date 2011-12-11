@@ -1,0 +1,23 @@
+{
+switch (context.getDialect()) {
+case DB2:
+case DERBY:
+case HSQLDB:
+{
+      if (getType() == BigDecimal.class) {
+        int scale=((BigDecimal)getValue()).scale();
+        int precision=scale + ((BigDecimal)getValue()).precision();
+        context.sql("cast(").sql(getBindVariable(context)).sql(" as ").sql(getDataType(context).getCastTypeName(context,precision,scale)).sql(")");
+        break;
+      }
+ else {
+      }
+    }
+case H2:
+case INGRES:
+case SYBASE:
+{
+    context.sql("cast(").sql(getBindVariable(context)).sql(" as ").sql(getDataType(context).getCastTypeName(context)).sql(")");
+  }
+}
+}

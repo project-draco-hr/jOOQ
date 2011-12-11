@@ -1,5 +1,8 @@
 {
-  sb.append("\ndeclaring [");
+  sb.append("bind index   [");
+  sb.append(index);
+  sb.append("]");
+  sb.append("\ndeclaring    [");
   if (declareFields) {
     sb.append("fields");
   }
@@ -9,7 +12,7 @@
  else {
     sb.append("-");
   }
-  sb.append("]\nsubquery  [");
+  sb.append("]\nsubquery     [");
   sb.append(subquery);
   sb.append("]");
 }

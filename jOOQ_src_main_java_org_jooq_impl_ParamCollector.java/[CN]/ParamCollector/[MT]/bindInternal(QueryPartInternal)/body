@@ -1,0 +1,15 @@
+{
+  if (internal instanceof Param) {
+    Param<?> param=(Param<?>)internal;
+    String i=String.valueOf(nextIndex());
+    if (StringUtils.isBlank(param.getParamName())) {
+      result.put(i,param);
+    }
+ else {
+      result.put(param.getParamName(),param);
+    }
+  }
+ else {
+    super.bindInternal(internal);
+  }
+}

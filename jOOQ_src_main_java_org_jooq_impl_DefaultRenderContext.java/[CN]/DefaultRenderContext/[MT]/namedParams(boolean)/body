@@ -1,0 +1,4 @@
+{
+  this.renderNamedParams=r;
+  return this;
+}

@@ -1,0 +1,14 @@
+{
+  if (context.namedParams()) {
+    int index=context.nextIndex();
+    if (StringUtils.isBlank(getParamName())) {
+      return ":" + index;
+    }
+ else {
+      return ":" + getName();
+    }
+  }
+ else {
+    return "?";
+  }
+}

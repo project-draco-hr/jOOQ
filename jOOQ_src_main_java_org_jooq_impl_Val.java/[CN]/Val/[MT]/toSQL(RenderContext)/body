@@ -1,0 +1,19 @@
+{
+  if (!context.inline()) {
+    if (!(getValue() instanceof EnumType) && !(getValue() instanceof MasterDataType)) {
+switch (context.getDialect()) {
+case DB2:
+case DERBY:
+case H2:
+case HSQLDB:
+case INGRES:
+case SYBASE:
+{
+          toSQLCast(context);
+          return;
+        }
+    }
+  }
+}
+toSQL(context,getValue(),this.getType());
+}

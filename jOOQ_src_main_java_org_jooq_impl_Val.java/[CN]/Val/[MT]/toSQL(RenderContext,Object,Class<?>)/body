@@ -1,0 +1,52 @@
+{
+  if (context.inline()) {
+    if (val == null) {
+      context.sql("null");
+    }
+ else     if (type == Boolean.class) {
+      context.sql(val.toString());
+    }
+ else     if (type == byte[].class) {
+      context.sql("'").sql(new String((byte[])val).replace("'","''")).sql("'");
+    }
+ else     if (Number.class.isAssignableFrom(type)) {
+      context.sql(val.toString());
+    }
+ else     if (type.isArray()) {
+      context.sql("ARRAY").sql(Arrays.asList((Object[])val).toString());
+    }
+ else     if (ArrayRecord.class.isAssignableFrom(type)) {
+      context.sql(val.toString());
+    }
+ else     if (EnumType.class.isAssignableFrom(type)) {
+      toSQL(context,((EnumType)val).getLiteral());
+    }
+ else     if (MasterDataType.class.isAssignableFrom(type)) {
+      toSQL(context,((MasterDataType<?>)val).getPrimaryKey());
+    }
+ else     if (UDTRecord.class.isAssignableFrom(type)) {
+      context.sql("[UDT]");
+    }
+ else {
+      context.sql("'").sql(val.toString().replace("'","''")).sql("'");
+    }
+  }
+ else   if (context.getDialect() == SQLDialect.POSTGRES) {
+    if (type.isArray() && byte[].class != type) {
+      context.sql(getBindVariable(context));
+      context.sql("::");
+      context.sql(FieldTypeHelper.getDataType(context.getDialect(),type).getCastTypeName(context));
+    }
+ else     if (EnumType.class.isAssignableFrom(type)) {
+      context.sql(getBindVariable(context));
+      context.sql("::");
+      context.literal(((EnumType)val).getName());
+    }
+ else {
+      context.sql(getBindVariable(context));
+    }
+  }
+ else {
+    context.sql(getBindVariable(context));
+  }
+}

@@ -1,4 +1,0 @@
-{
-  super("" + value,type);
-  this.value=value;
-}

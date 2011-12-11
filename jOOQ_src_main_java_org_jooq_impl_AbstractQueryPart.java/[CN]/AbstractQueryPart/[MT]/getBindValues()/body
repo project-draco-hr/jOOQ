@@ -1,5 +1,7 @@
 {
-  BindValueCollector collector=new BindValueCollector();
-  create(getConfiguration()).bind(this,collector);
-  return collector.result;
+  List<Object> result=new ArrayList<Object>();
+  for (  Param<?> param : getParams().values()) {
+    result.add(param.getValue());
+  }
+  return Collections.unmodifiableList(result);
 }

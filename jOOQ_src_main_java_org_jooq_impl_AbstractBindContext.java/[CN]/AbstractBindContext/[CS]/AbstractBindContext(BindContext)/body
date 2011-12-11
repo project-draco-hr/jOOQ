@@ -1,7 +1,5 @@
 {
   this((Configuration)context);
-  inline(context.inline());
-  namedParams(context.namedParams());
   declareFields(context.declareFields());
   declareTables(context.declareTables());
 }

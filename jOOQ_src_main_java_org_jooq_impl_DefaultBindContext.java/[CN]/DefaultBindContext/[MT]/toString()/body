@@ -1,8 +1,0 @@
-{
-  StringBuilder sb=new StringBuilder();
-  sb.append("binding   [index ");
-  sb.append(index);
-  sb.append("]");
-  toString(sb);
-  return sb.toString();
-}

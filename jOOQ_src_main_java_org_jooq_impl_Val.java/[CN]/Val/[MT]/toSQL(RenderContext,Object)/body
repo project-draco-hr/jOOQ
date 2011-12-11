@@ -1,0 +1,8 @@
+{
+  if (val == null) {
+    toSQL(context,val,Object.class);
+  }
+ else {
+    toSQL(context,val,val.getClass());
+  }
+}

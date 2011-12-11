@@ -1,0 +1,5 @@
+{
+  ParamCollector collector=new ParamCollector(getConfiguration());
+  collector.bind(this);
+  return Collections.unmodifiableMap(collector.result);
+}
