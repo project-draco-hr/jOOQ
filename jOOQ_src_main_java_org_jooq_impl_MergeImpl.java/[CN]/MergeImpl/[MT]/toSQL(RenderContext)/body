@@ -1,5 +1,5 @@
 {
-  context.sql("merge into ").declareTables(true).sql(table).sql(" using ").sql(wrapInParentheses(context.render(using))).declareTables(false);
+  context.sql("merge into ").declareTables(true).sql(table).sql(" using ").sql(Util.wrapInParentheses(context.render(using))).declareTables(false);
 switch (context.getDialect()) {
 case SQLSERVER:
 case SYBASE:
@@ -18,7 +18,7 @@ case SYBASE:
       break;
     }
 }
-context.sql(" on ").sql(wrapInParentheses(context.render(on))).sql(" when matched then update set ").sql(updateMap).sql(" when not matched then insert ").sql(insertMap);
+context.sql(" on ").sql(Util.wrapInParentheses(context.render(on))).sql(" when matched then update set ").sql(updateMap).sql(" when not matched then insert ").sql(insertMap);
 switch (context.getDialect()) {
 case SQLSERVER:
   context.sql(";");

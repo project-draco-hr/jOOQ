@@ -1,0 +1,5 @@
+{
+  RenderContext local=create(configuration).renderContext();
+  toSQLQualifiedName(local);
+  return function(local.render(),getDataType(),getArguments());
+}
