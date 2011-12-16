@@ -1,17 +1,19 @@
 {
-  QueryPartInternal internal=part.internalAPI(QueryPartInternal.class);
-  if (declareFields() && !internal.declaresFields()) {
-    declareFields(false);
-    internal.toSQL(this);
-    declareFields(true);
-  }
- else   if (declareTables() && !internal.declaresTables()) {
-    declareTables(false);
-    internal.toSQL(this);
-    declareTables(true);
-  }
+  if (part != null) {
+    QueryPartInternal internal=part.internalAPI(QueryPartInternal.class);
+    if (declareFields() && !internal.declaresFields()) {
+      declareFields(false);
+      internal.toSQL(this);
+      declareFields(true);
+    }
+ else     if (declareTables() && !internal.declaresTables()) {
+      declareTables(false);
+      internal.toSQL(this);
+      declareTables(true);
+    }
  else {
-    internal.toSQL(this);
+      internal.toSQL(this);
+    }
   }
   return this;
 }

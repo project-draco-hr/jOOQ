@@ -1,4 +1,7 @@
 {
-  insertMap.putFields(fields);
+  notMatchedClause=true;
+  notMatchedInsert=new FieldMapForInsert();
+  notMatchedInsert.putFields(fields);
+  matchedClause=false;
   return this;
 }

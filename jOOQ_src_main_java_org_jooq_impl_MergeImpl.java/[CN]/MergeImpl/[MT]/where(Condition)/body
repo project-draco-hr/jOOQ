@@ -1,0 +1,12 @@
+{
+  if (matchedClause) {
+    matchedWhere=condition;
+  }
+ else   if (notMatchedClause) {
+    notMatchedWhere=condition;
+  }
+ else {
+    throw new IllegalStateException("Cannot call where() on the current state of the MERGE statement");
+  }
+  return this;
+}

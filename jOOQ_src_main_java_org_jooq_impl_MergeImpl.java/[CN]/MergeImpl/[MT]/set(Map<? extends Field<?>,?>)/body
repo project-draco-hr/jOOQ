@@ -1,4 +1,4 @@
 {
-  updateMap.set(map);
+  matchedUpdate.set(map);
   return this;
 }

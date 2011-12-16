@@ -1,3 +1,6 @@
 {
+  matchedClause=true;
+  matchedUpdate=new FieldMapForUpdate();
+  notMatchedClause=false;
   return this;
 }

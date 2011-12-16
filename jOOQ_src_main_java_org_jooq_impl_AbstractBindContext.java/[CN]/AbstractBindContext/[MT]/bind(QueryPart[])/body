@@ -1,4 +1,6 @@
 {
-  bind(Arrays.asList(parts));
+  if (parts != null) {
+    bind(Arrays.asList(parts));
+  }
   return this;
 }

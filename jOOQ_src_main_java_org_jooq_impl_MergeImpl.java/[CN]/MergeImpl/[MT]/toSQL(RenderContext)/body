@@ -18,7 +18,22 @@ case SYBASE:
       break;
     }
 }
-context.sql(" on ").sql(Util.wrapInParentheses(context.render(on))).sql(" when matched then update set ").sql(updateMap).sql(" when not matched then insert ").sql(insertMap);
+context.sql(" on ").sql(Util.wrapInParentheses(context.render(on)));
+if (matchedUpdate != null) {
+  context.sql(" when matched then update set ").sql(matchedUpdate);
+}
+if (matchedWhere != null) {
+  context.sql(" where ").sql(matchedWhere);
+}
+if (matchedDeleteWhere != null) {
+  context.sql(" delete where ").sql(matchedDeleteWhere);
+}
+if (notMatchedInsert != null) {
+  context.sql(" when not matched then insert ").sql(notMatchedInsert);
+}
+if (notMatchedWhere != null) {
+  context.sql(" where ").sql(notMatchedWhere);
+}
 switch (context.getDialect()) {
 case SQLSERVER:
   context.sql(";");

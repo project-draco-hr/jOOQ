@@ -1,6 +1,8 @@
 {
-  for (  QueryPart part : parts) {
-    bind(part);
+  if (parts != null) {
+    for (    QueryPart part : parts) {
+      bind(part);
+    }
   }
   return this;
 }
