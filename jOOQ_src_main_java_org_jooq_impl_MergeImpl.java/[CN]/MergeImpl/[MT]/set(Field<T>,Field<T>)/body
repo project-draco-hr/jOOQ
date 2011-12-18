@@ -1,4 +1,12 @@
 {
-  matchedUpdate.put(field,nullSafe(value));
+  if (matchedClause) {
+    matchedUpdate.put(field,nullSafe(value));
+  }
+ else   if (notMatchedClause) {
+    notMatchedInsert.put(field,nullSafe(value));
+  }
+ else {
+    throw new IllegalStateException("Cannot call where() on the current state of the MERGE statement");
+  }
   return this;
 }

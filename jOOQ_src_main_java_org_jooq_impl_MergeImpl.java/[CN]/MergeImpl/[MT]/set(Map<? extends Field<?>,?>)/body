@@ -1,4 +1,12 @@
 {
-  matchedUpdate.set(map);
+  if (matchedClause) {
+    matchedUpdate.set(map);
+  }
+ else   if (notMatchedClause) {
+    notMatchedInsert.set(map);
+  }
+ else {
+    throw new IllegalStateException("Cannot call where() on the current state of the MERGE statement");
+  }
   return this;
 }

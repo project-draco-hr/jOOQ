@@ -1,0 +1,3 @@
+{
+  return whenNotMatchedThenInsert(Collections.<Field<?>>emptyList());
+}
