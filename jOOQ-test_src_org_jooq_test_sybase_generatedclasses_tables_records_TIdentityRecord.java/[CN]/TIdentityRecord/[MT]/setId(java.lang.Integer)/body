@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.sybase.generatedclasses.tables.TIdentity.T_IDENTITY.ID,value);
+}

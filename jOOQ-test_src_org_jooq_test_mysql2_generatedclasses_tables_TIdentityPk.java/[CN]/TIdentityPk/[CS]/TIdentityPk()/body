@@ -1,0 +1,3 @@
+{
+  super("t_identity_pk",org.jooq.test.mysql2.generatedclasses.Test2.TEST2);
+}

@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.sybase.generatedclasses.Keys.t_identity_pk__pk_t_identity_pk;
+}

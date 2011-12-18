@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.ase.generatedclasses.Keys.t_identity_pk__pk_t_identity_pk;
+}

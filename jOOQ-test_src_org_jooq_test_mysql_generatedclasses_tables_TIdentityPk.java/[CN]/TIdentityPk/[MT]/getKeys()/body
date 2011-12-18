@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.mysql.generatedclasses.tables.records.TIdentityPkRecord>>asList(org.jooq.test.mysql.generatedclasses.Keys.KEY_t_identity_pk_PRIMARY);
+}

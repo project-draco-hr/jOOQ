@@ -1,0 +1,3 @@
+{
+  super("t_identity",org.jooq.test.sqlserver.generatedclasses.Dbo.DBO);
+}

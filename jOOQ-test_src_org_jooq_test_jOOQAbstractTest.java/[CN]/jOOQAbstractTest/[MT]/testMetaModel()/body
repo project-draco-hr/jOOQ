@@ -31,6 +31,12 @@
     if (TUnsigned() != null) {
       tables++;
     }
+    if (TIdentity() != null) {
+      tables++;
+    }
+    if (TIdentityPK() != null) {
+      tables++;
+    }
     if (getDialect() == MYSQL || getDialect() == POSTGRES) {
       tables++;
     }
@@ -59,10 +65,17 @@
       assertEquals(2,schema.getUDTs().size());
     }
   }
-  if (false && getDialect() != ORACLE && getDialect() != SQLITE) {
-    assertNull(TAuthor().getIdentity());
-    assertNull(TBook().getIdentity());
-    assertEquals(TBookStore(),TBookStore().getIdentity().getTable());
+  assertNull(TAuthor().getIdentity());
+  assertNull(TBook().getIdentity());
+  if (TIdentity() != null || TIdentityPK() != null) {
+    if (TIdentity() != null) {
+      assertEquals(TIdentity(),TIdentity().getIdentity().getTable());
+      assertEquals(TIdentity_ID(),TIdentity().getIdentity().getField());
+    }
+    if (TIdentityPK() != null) {
+      assertEquals(TIdentityPK(),TIdentityPK().getIdentity().getTable());
+      assertEquals(TIdentityPK_ID(),TIdentityPK().getIdentity().getField());
+    }
   }
  else {
     log.info("SKIPPING","Identity tests");

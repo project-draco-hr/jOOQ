@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.mysql2.generatedclasses.Keys.KEY_t_identity_pk_PRIMARY;
+}

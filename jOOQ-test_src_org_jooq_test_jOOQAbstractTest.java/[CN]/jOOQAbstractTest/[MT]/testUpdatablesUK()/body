@@ -8,27 +8,10 @@
   }
   store.setValue(TBookStore_NAME(),"R??sslitor");
   assertEquals(1,store.store());
-  Number identity1=new Integer(0);
-  Number identity2=new Integer(0);
-  if (false && TBookStore().getIdentity() != null) {
-    identity1=store.getValue(TBookStore().getIdentity().getField());
-    assertNotNull(identity1);
-  }
- else {
-    log.info("SKIPPING","Identity check");
-  }
   store=create().fetchOne(TBookStore(),TBookStore_NAME().equal("R??sslitor"));
   assertEquals("R??sslitor",store.getValue(TBookStore_NAME()));
   store.setValue(TBookStore_NAME(),"Amazon");
   assertEquals(1,store.store());
-  if (false && TBookStore().getIdentity() != null) {
-    identity2=store.getValue(TBookStore().getIdentity().getField());
-    assertNotNull(identity2);
-    assertEquals(identity1.intValue(),identity2.intValue() - 1);
-  }
- else {
-    log.info("SKIPPING","Identity check");
-  }
   store=create().fetchOne(TBookStore(),TBookStore_NAME().equal("Amazon"));
   assertEquals("Amazon",store.getValue(TBookStore_NAME()));
   store.delete();

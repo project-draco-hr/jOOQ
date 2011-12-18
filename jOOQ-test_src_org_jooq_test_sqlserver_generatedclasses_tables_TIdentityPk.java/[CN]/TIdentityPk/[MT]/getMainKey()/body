@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.sqlserver.generatedclasses.Keys.pk_t_identity_pk;
+}
