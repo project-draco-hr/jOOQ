@@ -5,7 +5,7 @@
       addValue(insert,(TableField<R,?>)field);
     }
   }
-  List<Field<?>> key=getKey();
+  Collection<Field<?>> key=getReturning();
   insert.setReturning(key);
   int result=insert.execute();
   if (!key.isEmpty() && result > 0) {

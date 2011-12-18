@@ -1,0 +1,5 @@
+{
+  Collection<Field<?>> result=super.getReturning();
+  result.addAll(getMainKey().getFields());
+  return result;
+}

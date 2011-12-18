@@ -30,5 +30,7 @@
       assertEquals(new BigInteger("5"),create().lastID());
       assertEquals(new BigInteger("5"),create().lastID());
     }
+    R r5=create().fetchOne(table,id.equal(5));
+    assertEquals(r5,r4);
   }
 }
