@@ -1,0 +1,6 @@
+{
+  if (fields.size() == 0) {
+    fields.addAll(into.getFields());
+  }
+  return fields;
+}

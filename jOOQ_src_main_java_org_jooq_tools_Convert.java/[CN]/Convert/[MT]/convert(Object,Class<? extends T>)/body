@@ -97,10 +97,10 @@
       return (T)Character.valueOf(from.toString().charAt(0));
     }
  else     if (java.util.Date.class.isAssignableFrom(fromClass)) {
-      return (T)toDate(((java.util.Date)from).getTime(),toClass);
+      return toDate(((java.util.Date)from).getTime(),toClass);
     }
  else     if ((fromClass == Long.class || fromClass == long.class) && java.util.Date.class.isAssignableFrom(toClass)) {
-      return (T)toDate((Long)from,toClass);
+      return toDate((Long)from,toClass);
     }
   }
   throw fail(from,toClass);
