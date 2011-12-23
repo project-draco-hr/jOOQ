@@ -1,4 +1,5 @@
 {
+  conditionStep=ConditionStep.CONNECT_BY;
   getQuery().addConnectByNoCycle(condition);
   return this;
 }

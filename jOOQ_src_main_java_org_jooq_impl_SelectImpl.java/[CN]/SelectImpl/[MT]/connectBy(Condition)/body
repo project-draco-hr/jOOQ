@@ -1,4 +1,5 @@
 {
+  conditionStep=ConditionStep.CONNECT_BY;
   getQuery().addConnectBy(condition);
   return this;
 }
