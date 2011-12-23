@@ -1,0 +1,5 @@
+{
+  super(database,name,comment);
+  this.literals=new ArrayList<String>();
+  this.isSynthetic=isSynthetic;
+}

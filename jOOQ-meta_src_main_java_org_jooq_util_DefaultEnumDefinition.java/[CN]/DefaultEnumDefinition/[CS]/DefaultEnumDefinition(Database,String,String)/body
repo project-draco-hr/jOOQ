@@ -1,4 +1,3 @@
 {
-  super(database,name,comment);
-  literals=new ArrayList<String>();
+  this(database,name,comment,false);
 }

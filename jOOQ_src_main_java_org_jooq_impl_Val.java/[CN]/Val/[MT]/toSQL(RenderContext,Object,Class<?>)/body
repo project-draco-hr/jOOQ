@@ -39,8 +39,10 @@
     }
  else     if (EnumType.class.isAssignableFrom(type)) {
       context.sql(getBindVariable(context));
-      context.sql("::");
-      context.literal(((EnumType)val).getName());
+      if (!StringUtils.isBlank(((EnumType)val).getName())) {
+        context.sql("::");
+        context.literal(((EnumType)val).getName());
+      }
     }
  else {
       context.sql(getBindVariable(context));
