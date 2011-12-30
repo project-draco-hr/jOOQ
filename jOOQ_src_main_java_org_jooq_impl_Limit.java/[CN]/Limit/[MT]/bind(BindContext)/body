@@ -1,12 +1,12 @@
 {
 switch (context.getDialect()) {
-case MYSQL:
 case DERBY:
 {
       context.bind(val(getOffset()));
       context.bind(val(getNumberOfRows()));
       break;
     }
+case MYSQL:
 case HSQLDB:
 case H2:
 case POSTGRES:

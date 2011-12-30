@@ -1,42 +1,33 @@
 {
 switch (context.getDialect()) {
 case MYSQL:
-{
-      if (context.inline()) {
-        context.sql("limit ").sql(getOffset()).sql(", ").sql(getNumberOfRows());
-      }
- else {
-        context.sql("limit ?, ?");
-      }
-      break;
-    }
 case H2:
 case HSQLDB:
 case POSTGRES:
 case SQLITE:
 {
+      if (context.inline()) {
+        context.sql("limit ").sql(getNumberOfRows()).sql(" offset ").sql(getOffset());
+      }
+ else {
+        context.sql("limit ? offset ?");
+      }
+      break;
+    }
+case DERBY:
+{
     if (context.inline()) {
-      context.sql("limit ").sql(getNumberOfRows()).sql(" offset ").sql(getOffset());
+      context.sql("offset ").sql(getOffset()).sql(" rows fetch next ").sql(getNumberOfRows()).sql(" rows only");
     }
  else {
-      context.sql("limit ? offset ?");
+      context.sql("offset ? rows fetch next ? rows only");
     }
     break;
   }
-case DERBY:
-{
-  if (context.inline()) {
-    context.sql("offset ").sql(getOffset()).sql(" rows fetch next ").sql(getNumberOfRows()).sql(" rows only");
-  }
- else {
-    context.sql("offset ? rows fetch next ? rows only");
-  }
-  break;
-}
 case INGRES:
 {
-context.sql("offset ").sql(getOffset()).sql(" fetch first ").sql(getNumberOfRows()).sql(" rows only");
-break;
+  context.sql("offset ").sql(getOffset()).sql(" fetch first ").sql(getNumberOfRows()).sql(" rows only");
+  break;
 }
 case SYBASE:
 {
