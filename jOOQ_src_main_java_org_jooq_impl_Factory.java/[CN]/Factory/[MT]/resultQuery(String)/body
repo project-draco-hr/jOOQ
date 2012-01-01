@@ -1,0 +1,3 @@
+{
+  return resultQuery(sql,new Object[0]);
+}
