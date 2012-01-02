@@ -15,4 +15,9 @@
   assertEquals(2,result2.getValue(1,0));
   assertEquals("asdf",result2.getValue(0,1));
   assertEquals("asdf",result2.getValue(1,1));
+  select=create().select(param("p"));
+  select.bind(1,"10");
+  Result<?> result3=select.fetch();
+  assertEquals(1,result3.size());
+  assertEquals("10",result3.getValue(0,0));
 }
