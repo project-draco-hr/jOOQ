@@ -1,0 +1,4 @@
+RenderContext context
+DataType<?> type
+int precision
+int scale

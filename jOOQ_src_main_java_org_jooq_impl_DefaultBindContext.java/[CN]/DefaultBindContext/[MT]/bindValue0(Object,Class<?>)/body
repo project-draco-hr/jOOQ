@@ -17,10 +17,10 @@
  else     if (sqlType != Types.OTHER) {
       stmt.setNull(nextIndex(),sqlType);
     }
- else     if (configuration.getDialect() == SQLDialect.SQLSERVER) {
+ else     if (configuration.getDialect() == SQLSERVER) {
       stmt.setNull(nextIndex(),sqlType);
     }
- else     if (configuration.getDialect() == SQLDialect.SYBASE) {
+ else     if (configuration.getDialect() == SYBASE) {
       stmt.setNull(nextIndex(),Types.VARCHAR);
     }
  else {
@@ -34,7 +34,7 @@
     stmt.setBoolean(nextIndex(),(Boolean)value);
   }
  else   if (type == BigDecimal.class) {
-    if (dialect == SQLDialect.SQLITE) {
+    if (dialect == SQLITE) {
       stmt.setString(nextIndex(),value.toString());
     }
  else {
@@ -42,7 +42,7 @@
     }
   }
  else   if (type == BigInteger.class) {
-    if (dialect == SQLDialect.SQLITE) {
+    if (dialect == SQLITE) {
       stmt.setString(nextIndex(),value.toString());
     }
  else {

@@ -1,23 +1,21 @@
 {
-switch (context.getDialect()) {
-case DB2:
-case DERBY:
-case HSQLDB:
-{
-      if (getType() == BigDecimal.class) {
-        int scale=((BigDecimal)getValue()).scale();
-        int precision=scale + ((BigDecimal)getValue()).precision();
-        context.sql("cast(").sql(getBindVariable(context)).sql(" as ").sql(getDataType(context).getCastTypeName(context,precision,scale)).sql(")");
-        break;
-      }
- else {
-      }
-    }
-case H2:
-case INGRES:
-case SYBASE:
-{
-    context.sql("cast(").sql(getBindVariable(context)).sql(" as ").sql(getDataType(context).getCastTypeName(context)).sql(")");
+  if (getType() == BigDecimal.class && asList(DB2,DERBY,HSQLDB).contains(context.getDialect())) {
+    int scale=((BigDecimal)getValue()).scale();
+    int precision=scale + ((BigDecimal)getValue()).precision();
+    toSQLCast(context,getDataType(context),precision,scale);
   }
-}
+ else   if (SQLDataType.OTHER == getDataType(context)) {
+    if (value != null) {
+      toSQLCast(context,FieldTypeHelper.getDataType(context.getDialect(),value.getClass()),0,0);
+    }
+ else     if (asList(INGRES,SYBASE).contains(context.getDialect())) {
+      context.sql(getBindVariable(context));
+    }
+ else {
+      toSQLCast(context,FieldTypeHelper.getDataType(context.getDialect(),String.class),0,0);
+    }
+  }
+ else {
+    toSQLCast(context,getDataType(context),0,0);
+  }
 }

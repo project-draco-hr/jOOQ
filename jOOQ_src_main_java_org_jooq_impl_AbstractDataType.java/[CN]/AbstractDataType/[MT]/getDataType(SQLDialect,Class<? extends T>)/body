@@ -18,10 +18,7 @@
       }
     }
     if (result == null) {
-      if (type == Object.class) {
-        return new DefaultDataType<T>(dialect,(Class<? extends T>)Object.class,"","");
-      }
- else       if (sqlDataTypesByType.get(type) != null) {
+      if (sqlDataTypesByType.get(type) != null) {
         return (DataType<T>)sqlDataTypesByType.get(type);
       }
  else {

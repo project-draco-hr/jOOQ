@@ -1,6 +1,7 @@
 {
-  String result=getCastTypeName(configuration).replaceAll("\\([^\\)]*\\)","");
+  String result=getCastTypeName(configuration);
   if (precision != 0) {
+    result=result.replaceAll("\\([^\\)]*\\)","");
     if (scale != 0) {
       result+="(" + precision + ", "+ scale+ ")";
     }
