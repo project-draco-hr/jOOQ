@@ -4,7 +4,7 @@
     int precision=scale + ((BigDecimal)getValue()).precision();
     toSQLCast(context,getDataType(context),precision,scale);
   }
- else   if (SQLDataType.OTHER == getDataType(context)) {
+ else   if (SQLDataType.OTHER == getDataType(context).getSQLDataType()) {
     if (value != null) {
       toSQLCast(context,FieldTypeHelper.getDataType(context.getDialect(),value.getClass()),0,0);
     }
