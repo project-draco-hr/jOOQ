@@ -1,0 +1,28 @@
+{
+  if (context.inline()) {
+    int bindIndex=0;
+    char[] sqlChars=sql.toCharArray();
+    boolean stringLiteral=false;
+    for (int i=0; i < sqlChars.length; i++) {
+      if (sqlChars[i] == '\'') {
+        if (i + 1 < sqlChars.length && sqlChars[i + 1] == '\'') {
+          context.sql(sqlChars[i++]);
+          context.sql(sqlChars[i]);
+        }
+ else {
+          stringLiteral=!stringLiteral;
+          context.sql(sqlChars[i]);
+        }
+      }
+ else       if (sqlChars[i] == '?' && !stringLiteral && bindIndex < bindings.size()) {
+        context.sql(bindings.get(bindIndex++));
+      }
+ else {
+        context.sql(sqlChars[i]);
+      }
+    }
+  }
+ else {
+    context.sql(sql);
+  }
+}

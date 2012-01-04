@@ -1,5 +1,5 @@
 {
   super(configuration);
   this.sql=sql;
-  this.bindings=bindings;
+  this.bindings=Util.bindings(bindings);
 }
