@@ -1,3 +1,3 @@
 {
-  return values0(vals(convert(values)));
+  return values0(vals(convert(getFields(),values)));
 }

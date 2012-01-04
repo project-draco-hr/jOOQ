@@ -6,7 +6,7 @@
         result[i]=values[i];
       }
  else {
-        result[i]=Convert.convert(values[i],getFields().get(i).getType());
+        result[i]=Convert.convert(values[i],fields.get(i).getType());
       }
     }
     return result;

@@ -1,4 +1,3 @@
 {
-  notMatchedInsert.putValues(vals(values.toArray()));
-  return this;
+  return values(values.toArray());
 }

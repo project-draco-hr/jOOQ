@@ -1,3 +1,5 @@
 {
-  return values(Arrays.asList(values));
+  List<Field<?>> fields=new ArrayList<Field<?>>(notMatchedInsert.keySet());
+  notMatchedInsert.putValues(vals(convert(fields,values)));
+  return this;
 }
