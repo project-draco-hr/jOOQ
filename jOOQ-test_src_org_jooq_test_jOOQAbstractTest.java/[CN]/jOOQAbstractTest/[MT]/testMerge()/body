@@ -22,4 +22,11 @@ q.execute();
 assertEquals(Arrays.asList("John","Alfred","Dan"),create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).fetch(TAuthor_FIRST_NAME()));
 q.execute();
 assertEquals(Arrays.asList("John","Alfred","James"),create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).fetch(TAuthor_FIRST_NAME()));
+f=val("Herman").as("f");
+l=val("Hesse").as("l");
+q=create().mergeInto(TAuthor()).using(create().select(f,l)).on(TAuthor_LAST_NAME().equal(l)).whenNotMatchedThenInsert(TAuthor_ID(),TAuthor_FIRST_NAME(),TAuthor_LAST_NAME(),TAuthor_DATE_OF_BIRTH()).values("4",f,l,0L);
+q.execute();
+assertEquals(Arrays.asList("John","Alfred","James","Herman"),create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).fetch(TAuthor_FIRST_NAME()));
+q.execute();
+assertEquals(Arrays.asList("John","Alfred","James","Herman"),create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).fetch(TAuthor_FIRST_NAME()));
 }
