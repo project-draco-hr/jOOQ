@@ -1,5 +1,6 @@
 {
 switch (getDialect()) {
+case ASE:
 case SQLITE:
 case SQLSERVER:
     log.info("SKIPPING","USE test");
