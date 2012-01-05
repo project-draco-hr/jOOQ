@@ -1,0 +1,3 @@
+{
+  super("T_976_OBJECT_TYPE",org.jooq.test.oracle2.generatedclasses.Test.TEST);
+}

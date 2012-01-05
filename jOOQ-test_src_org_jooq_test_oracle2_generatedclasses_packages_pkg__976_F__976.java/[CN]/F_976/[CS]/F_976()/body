@@ -1,0 +1,5 @@
+{
+  super(org.jooq.SQLDialect.ORACLE,"F_976",org.jooq.test.oracle2.generatedclasses.Test.TEST,org.jooq.test.oracle2.generatedclasses.packages.Pkg_976.PKG_976,org.jooq.impl.SQLDataType.TIMESTAMP);
+  setReturnParameter(RETURN_VALUE);
+  addInParameter(I);
+}

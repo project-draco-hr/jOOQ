@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.oracle2.generatedclasses.tables.records.T_976Record>>asList(org.jooq.test.oracle2.generatedclasses.Keys.PK_T_976);
+}

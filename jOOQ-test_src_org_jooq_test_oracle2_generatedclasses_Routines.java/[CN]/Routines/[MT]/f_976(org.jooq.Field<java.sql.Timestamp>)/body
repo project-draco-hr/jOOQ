@@ -1,0 +1,5 @@
+{
+  org.jooq.test.oracle2.generatedclasses.routines.F_976 f=new org.jooq.test.oracle2.generatedclasses.routines.F_976();
+  f.setI(i);
+  return f.asField();
+}

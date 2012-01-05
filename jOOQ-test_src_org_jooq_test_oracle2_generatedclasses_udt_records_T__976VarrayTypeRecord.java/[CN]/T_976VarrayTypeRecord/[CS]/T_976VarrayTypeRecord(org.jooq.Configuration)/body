@@ -1,0 +1,3 @@
+{
+  super("TEST.T_976_VARRAY_TYPE",org.jooq.impl.SQLDataType.DATE,configuration);
+}

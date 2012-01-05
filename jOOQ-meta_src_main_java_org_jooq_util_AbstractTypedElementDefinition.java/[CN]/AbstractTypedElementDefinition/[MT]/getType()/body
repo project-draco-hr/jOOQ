@@ -11,7 +11,7 @@
           int p=definedType.getPrecision();
           int s=definedType.getScale();
           try {
-            forcedDataType=FieldTypeHelper.getDialectDataType(db.getDialect(),forcedType,p,s);
+            forcedDataType=getDialectDataType(db.getDialect(),forcedType,p,s);
           }
  catch (          SQLDialectNotSupportedException ignore) {
           }
@@ -21,6 +21,20 @@
  else {
             type=new DefaultDataTypeDefinition(db,t,p,s,forcedType);
           }
+        }
+      }
+    }
+    if ("true".equalsIgnoreCase(db.getProperty("generator.database.date-as-timestamp"))) {
+      DataType<?> dataType=null;
+      try {
+        dataType=getDialectDataType(db.getDialect(),definedType.getType(),0,0);
+      }
+ catch (      SQLDialectNotSupportedException ignore) {
+      }
+      if (dataType != null) {
+        if (dataType.getSQLDataType() == SQLDataType.DATE) {
+          DataType<?> forcedDataType=getDialectDataType(db.getDialect(),SQLDataType.TIMESTAMP.getTypeName(),0,0);
+          type=new DefaultDataTypeDefinition(db,forcedDataType.getTypeName(),0,0);
         }
       }
     }
