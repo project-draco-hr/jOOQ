@@ -7,6 +7,7 @@ case DERBY:
 case H2:
 case HSQLDB:
 case INGRES:
+case POSTGRES:
 case SYBASE:
 {
           toSQLCast(context);
@@ -15,5 +16,5 @@ case SYBASE:
     }
   }
 }
-toSQL(context,getValue(),this.getType());
+toSQL(context,getValue(),getType());
 }
