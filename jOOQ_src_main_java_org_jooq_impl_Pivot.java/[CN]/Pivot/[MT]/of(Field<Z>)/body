@@ -1,0 +1,4 @@
+{
+  this.of=(Field<T>)field;
+  return (Pivot<Z>)this;
+}

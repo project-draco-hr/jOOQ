@@ -1,0 +1,5 @@
+{
+  super("pivot");
+  this.table=table;
+  this.aggregateFunctions=new SelectFieldList(aggregateFunctions);
+}

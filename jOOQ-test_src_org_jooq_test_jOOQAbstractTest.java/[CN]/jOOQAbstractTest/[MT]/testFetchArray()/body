@@ -9,6 +9,8 @@
   for (int j=0; j < books.size(); j++) {
     for (int i=0; i < TBook().getFields().size(); i++) {
       assertEquals(books.getValue(j,i),booksArray[j][i]);
+      assertEquals(books.getValue(j,i),books.intoArray()[j][i]);
+      assertEquals(books.get(j).getValue(i),books.get(j).intoArray()[i]);
     }
   }
   assertEquals(create().selectFrom(TBook()).orderBy(TBook_ID()).fetch(TBook_TITLE()),Arrays.asList(create().selectFrom(TBook()).orderBy(TBook_ID()).fetchArray(TBook_TITLE())));

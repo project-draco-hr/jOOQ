@@ -1,0 +1,3 @@
+{
+  return new Pivot<Object>(this,aggregateFunctions);
+}
