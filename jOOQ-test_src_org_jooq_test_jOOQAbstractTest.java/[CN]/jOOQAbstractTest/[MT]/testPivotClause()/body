@@ -46,7 +46,7 @@ assertEquals(asList(1,10,10,10,1,1,1,1,1,null,null,null,0),asList(result2.get(0)
 assertEquals(asList(2,10,10,10,1,null,null,null,0,null,null,null,0),asList(result2.get(1).into(Integer[].class)));
 assertEquals(asList(3,10,10,10,1,2,2,2,1,1,1,1,1),asList(result2.get(2).into(Integer[].class)));
 Field<Integer> lang=TBook_LANGUAGE_ID().cast(Integer.class).as("lang");
-Result<Record> result3=create().select().from(create().select(TBook_AUTHOR_ID(),lang).from(TBook()).asTable().pivot(count()).of(lang).in(1,2,3,4)).fetch();
+Result<Record> result3=create().select().from(table(create().select(TBook_AUTHOR_ID(),lang).from(TBook())).pivot(count()).of(lang).in(1,2,3,4)).fetch();
 assertEquals(2,result3.size());
 assertEquals(5,result3.getFields().size());
 assertEquals(AUTHOR_IDS,result3.getValues(0));
