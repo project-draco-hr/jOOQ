@@ -1,0 +1,3 @@
+{
+  return new ArrayAsSubqueryCondition<T>(nullSafe(array),this,SubQueryOperator.EQUALS_ALL);
+}

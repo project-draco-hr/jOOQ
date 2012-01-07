@@ -1,0 +1,17 @@
+{
+switch (context.getDialect()) {
+case H2:
+case HSQLDB:
+{
+      context.sql(field).sql(" ").sql(operator.toSQL()).sql(" (").sql(create(context).select().from(table(array))).sql(")");
+      break;
+    }
+case POSTGRES:
+{
+    context.sql(field).sql(" ").sql(operator.toSQL()).sql(" (").sql(array).sql(")");
+    break;
+  }
+default :
+throw new SQLDialectNotSupportedException("Arrays as subquery conditions not yet supported by " + context.getDialect());
+}
+}

@@ -1,0 +1,3 @@
+{
+  return greaterThanAll(val(array));
+}

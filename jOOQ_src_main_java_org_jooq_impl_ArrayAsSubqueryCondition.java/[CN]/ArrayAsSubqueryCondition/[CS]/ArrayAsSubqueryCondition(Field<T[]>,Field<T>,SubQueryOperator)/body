@@ -1,0 +1,5 @@
+{
+  this.array=array;
+  this.field=field;
+  this.operator=operator;
+}

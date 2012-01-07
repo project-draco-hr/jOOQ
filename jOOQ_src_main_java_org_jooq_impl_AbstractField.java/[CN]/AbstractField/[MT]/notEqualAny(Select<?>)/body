@@ -1,3 +1,3 @@
 {
-  return new SelectQueryAsSubQueryCondition(query,this,SubQueryOperator.NOT_EQUALS_ALL);
+  return new SelectQueryAsSubQueryCondition(query,this,SubQueryOperator.NOT_EQUALS_ANY);
 }
