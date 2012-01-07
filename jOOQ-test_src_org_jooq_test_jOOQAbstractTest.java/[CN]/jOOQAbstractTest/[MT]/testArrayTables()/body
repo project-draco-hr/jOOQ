@@ -25,13 +25,13 @@
     assertEquals("2","" + result.getValue(2,0));
     array.set(2,3);
     Table<?> table=table(array);
-    result=create().select(TBook_ID(),TBook_TITLE()).from(TBook()).join(table).on(table.getField(0).cast(Integer.class).equal(TBook_ID())).fetch();
+    result=create().select(TBook_ID(),TBook_TITLE()).from(TBook()).join(table).on(table.getField(0).cast(Integer.class).equal(TBook_ID())).orderBy(TBook_ID()).fetch();
     assertEquals(2,result.size());
     assertEquals(Integer.valueOf(2),result.getValue(0,TBook_ID()));
     assertEquals(Integer.valueOf(3),result.getValue(1,TBook_ID()));
     assertEquals("Animal Farm",result.getValue(0,TBook_TITLE()));
     assertEquals("O Alquimista",result.getValue(1,TBook_TITLE()));
-    result=create().select(TBook_ID(),TBook_TITLE()).from(TBook()).join(table.as("t")).on(table.as("t").getField(0).cast(Integer.class).equal(TBook_ID())).fetch();
+    result=create().select(TBook_ID(),TBook_TITLE()).from(TBook()).join(table.as("t")).on(table.as("t").getField(0).cast(Integer.class).equal(TBook_ID())).orderBy(TBook_ID()).fetch();
     assertEquals(2,result.size());
     assertEquals(Integer.valueOf(2),result.getValue(0,TBook_ID()));
     assertEquals(Integer.valueOf(3),result.getValue(1,TBook_ID()));

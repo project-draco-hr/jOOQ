@@ -1,0 +1,4 @@
+{
+  super(term,type,arguments);
+  this.distinct=distinct;
+}

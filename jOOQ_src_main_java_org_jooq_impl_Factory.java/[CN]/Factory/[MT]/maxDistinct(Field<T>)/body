@@ -1,0 +1,3 @@
+{
+  return new AggregateFunctionImpl<T>("max",true,nullSafeDataType(field),nullSafe(field));
+}
