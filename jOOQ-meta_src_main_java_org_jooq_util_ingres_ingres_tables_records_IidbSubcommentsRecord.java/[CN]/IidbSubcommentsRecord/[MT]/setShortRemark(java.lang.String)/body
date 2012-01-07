@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.ingres.ingres.tables.IidbSubcomments.SHORT_REMARK,value);
+}

@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.ingres.ingres.tables.IidbSubcomments.SUBOBJECT_TYPE,value);
+}
