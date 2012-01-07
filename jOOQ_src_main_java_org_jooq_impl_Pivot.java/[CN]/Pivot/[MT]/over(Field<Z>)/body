@@ -1,4 +1,4 @@
 {
-  this.of=(Field<T>)field;
+  this.over=(Field<T>)field;
   return (Pivot<Z>)this;
 }
