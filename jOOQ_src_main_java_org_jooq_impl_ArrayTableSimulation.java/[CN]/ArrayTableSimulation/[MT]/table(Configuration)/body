@@ -1,0 +1,19 @@
+{
+  if (table == null) {
+    Select<Record> select=null;
+    for (    Field<?> val : vals(array)) {
+      Select<Record> subselect=create(configuration).select(val.as("COLUMN_VALUE"));
+      if (select == null) {
+        select=subselect;
+      }
+ else {
+        select=select.unionAll(subselect);
+      }
+    }
+    if (select == null) {
+      select=create(configuration).select(one().as("COLUMN_VALUE")).where(falseCondition());
+    }
+    table=select.asTable(alias);
+  }
+  return table;
+}

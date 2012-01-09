@@ -23,7 +23,7 @@ case POSTGRES:
 {
     if (context.declareTables() && aliasProvider instanceof ArrayTable) {
       Object o=aliasProvider;
-      ArrayTable<?> table=(ArrayTable<?>)o;
+      ArrayTable table=(ArrayTable)o;
       context.sql("(");
       Util.toSQLNames(context,table.getFields());
       context.sql(")");

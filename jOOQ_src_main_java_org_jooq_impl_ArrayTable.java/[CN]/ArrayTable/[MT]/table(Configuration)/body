@@ -1,0 +1,31 @@
+{
+switch (configuration.getDialect()) {
+case ORACLE:
+{
+      if (array.getDataType().getType().isArray()) {
+        return simulate().as(alias);
+      }
+ else {
+        return new OracleArrayTable().as(alias);
+      }
+    }
+case H2:
+{
+    return new H2ArrayTable().as(alias);
+  }
+case HSQLDB:
+case POSTGRES:
+{
+  return new PostgresHSQLDBTable().as(alias);
+}
+default :
+{
+if (array.getDataType().getType().isArray() && array instanceof Param) {
+  return simulate();
+}
+ else {
+  throw new SQLDialectNotSupportedException("ARRAY TABLE is not supported for " + configuration.getDialect());
+}
+}
+}
+}

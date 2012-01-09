@@ -38,14 +38,14 @@
   assertEquals(0,loader.errors().size());
   assertEquals(2,loader.ignored());
   assertEquals(2,(int)create().select(count).from(TAuthor()).fetchOne(count));
-  loader=create().loadInto(TAuthor()).loadCSV("####Some Data####\n" + "\"ID\",\"Last Name\"\r" + "3,Hesse\n"+ "4,Frisch").fields(TAuthor_ID(),TAuthor_LAST_NAME()).quote('"').separator(',').ignoreRows(2).execute();
+  loader=create().loadInto(TAuthor()).loadCSV("####Some Data####\n" + "\"ID\",\"Last Qualifier\"\r" + "3,Hesse\n"+ "4,Frisch").fields(TAuthor_ID(),TAuthor_LAST_NAME()).quote('"').separator(',').ignoreRows(2).execute();
   assertEquals(2,loader.processed());
   assertEquals(2,loader.stored());
   assertEquals(0,loader.ignored());
   assertEquals(0,loader.errors().size());
   assertEquals(2,(int)create().select(count).from(TAuthor()).where(TAuthor_ID().in(3,4)).and(TAuthor_LAST_NAME().in("Hesse","Frisch")).fetchOne(count));
   assertEquals(2,create().delete(TAuthor()).where(TAuthor_ID().in(3,4)).execute());
-  loader=create().loadInto(TAuthor()).loadCSV("\"ID\",\"First Name\",\"Last Name\"\r" + "5,Hermann,Hesse\n" + "6,\"Max\",Frisch").fields(TAuthor_ID(),null,TAuthor_LAST_NAME()).execute();
+  loader=create().loadInto(TAuthor()).loadCSV("\"ID\",\"First Qualifier\",\"Last Qualifier\"\r" + "5,Hermann,Hesse\n" + "6,\"Max\",Frisch").fields(TAuthor_ID(),null,TAuthor_LAST_NAME()).execute();
   assertEquals(2,loader.processed());
   assertEquals(2,loader.stored());
   assertEquals(0,loader.ignored());
@@ -70,7 +70,7 @@ case SQLITE:
   break;
 default :
 {
-  loader=create().loadInto(TAuthor()).onDuplicateKeyUpdate().loadCSV("\"ID\",\"First Name\",\"Last Name\"\r" + "1,Hermann,Hesse\n" + "7,\"Max\",Frisch").fields(TAuthor_ID(),null,TAuthor_LAST_NAME()).execute();
+  loader=create().loadInto(TAuthor()).onDuplicateKeyUpdate().loadCSV("\"ID\",\"First Qualifier\",\"Last Qualifier\"\r" + "1,Hermann,Hesse\n" + "7,\"Max\",Frisch").fields(TAuthor_ID(),null,TAuthor_LAST_NAME()).execute();
   assertEquals(2,loader.processed());
   assertEquals(2,loader.stored());
   assertEquals(0,loader.ignored());
@@ -87,7 +87,7 @@ default :
 }
 }
 resetLoaderConnection();
-loader=create().loadInto(TAuthor()).commitAll().onDuplicateKeyError().onErrorAbort().loadCSV("\"ID\",\"First Name\",\"Last Name\"\r" + "8,Hermann,Hesse\n" + "1,\"Max\",Frisch\n"+ "2,Friedrich,D??rrenmatt").fields(TAuthor_ID(),null,TAuthor_LAST_NAME()).execute();
+loader=create().loadInto(TAuthor()).commitAll().onDuplicateKeyError().onErrorAbort().loadCSV("\"ID\",\"First Qualifier\",\"Last Qualifier\"\r" + "8,Hermann,Hesse\n" + "1,\"Max\",Frisch\n"+ "2,Friedrich,D??rrenmatt").fields(TAuthor_ID(),null,TAuthor_LAST_NAME()).execute();
 assertEquals(2,loader.processed());
 assertEquals(0,loader.stored());
 assertEquals(1,loader.ignored());
@@ -96,7 +96,7 @@ assertEquals(1,loader.errors().get(0).rowIndex());
 assertEquals(Arrays.asList("1","Max","Frisch"),Arrays.asList(loader.errors().get(0).row()));
 result=create().selectFrom(TAuthor()).where(TAuthor_ID().in(8)).orderBy(TAuthor_ID()).fetch();
 assertEquals(0,result.size());
-loader=create().loadInto(TAuthor()).commitAll().onDuplicateKeyIgnore().onErrorAbort().loadCSV("\"ID\",\"First Name\",\"Last Name\"\r" + "8,Hermann,Hesse\n" + "1,\"Max\",Frisch\n"+ "2,Friedrich,D??rrenmatt").fields(TAuthor_ID(),null,TAuthor_LAST_NAME()).execute();
+loader=create().loadInto(TAuthor()).commitAll().onDuplicateKeyIgnore().onErrorAbort().loadCSV("\"ID\",\"First Qualifier\",\"Last Qualifier\"\r" + "8,Hermann,Hesse\n" + "1,\"Max\",Frisch\n"+ "2,Friedrich,D??rrenmatt").fields(TAuthor_ID(),null,TAuthor_LAST_NAME()).execute();
 assertEquals(3,loader.processed());
 assertEquals(1,loader.stored());
 assertEquals(2,loader.ignored());

@@ -1,0 +1,10 @@
+{
+  context.sql("table(COLUMN_VALUE ");
+  if (array.getDataType().getType() == Object[].class) {
+    context.sql(H2DataType.VARCHAR.getTypeName());
+  }
+ else {
+    context.sql(array.getDataType().getTypeName());
+  }
+  context.sql(" = ").sql(array).sql(")");
+}

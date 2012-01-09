@@ -1,5 +1,5 @@
 {
-  super("array_table");
+  super(alias);
   Class<?> arrayType;
   if (array.getDataType().getType().isArray()) {
     arrayType=array.getDataType().getType().getComponentType();
@@ -10,5 +10,5 @@
   this.array=array;
   this.alias=alias;
   this.field=new FieldList();
-  this.field.add(field("COLUMN_VALUE",arrayType));
+  this.field.add(new Qualifier(Factory.getDataType(arrayType),alias,"COLUMN_VALUE"));
 }
