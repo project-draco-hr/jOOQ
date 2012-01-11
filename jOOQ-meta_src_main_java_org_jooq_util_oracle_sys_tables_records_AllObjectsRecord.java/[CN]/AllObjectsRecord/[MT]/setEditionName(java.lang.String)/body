@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.oracle.sys.tables.AllObjects.ALL_OBJECTS.EDITION_NAME,value);
+}

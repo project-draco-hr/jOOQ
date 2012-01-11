@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.util.oracle.sys.tables.AllArguments.ALL_ARGUMENTS.DEFAULTED);
+}
