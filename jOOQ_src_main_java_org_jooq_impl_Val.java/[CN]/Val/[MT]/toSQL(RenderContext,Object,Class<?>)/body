@@ -13,7 +13,12 @@
       context.sql(val.toString());
     }
  else     if (type.isArray()) {
-      context.sql("ARRAY").sql(Arrays.toString((Object[])val));
+      if (context.getDialect() == H2) {
+        context.sql(Arrays.toString((Object[])val).replaceAll("\\[([^]]*)\\]","($1)"));
+      }
+ else {
+        context.sql("ARRAY").sql(Arrays.toString((Object[])val));
+      }
     }
  else     if (ArrayRecord.class.isAssignableFrom(type)) {
       context.sql(val.toString());
