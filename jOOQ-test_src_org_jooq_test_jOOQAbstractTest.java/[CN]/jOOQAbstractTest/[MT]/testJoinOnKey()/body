@@ -1,0 +1,32 @@
+{
+  if (!supportsReferences()) {
+    log.info("SKIPPING","JOIN ON KEY tests");
+    return;
+  }
+  try {
+    create().select(TAuthor_ID(),TBook_TITLE()).from(TAuthor().join(TBook()).onKey());
+    fail();
+  }
+ catch (  DataAccessException expected) {
+  }
+  try {
+    create().select(TAuthor_ID(),TBook_TITLE()).from(TAuthor().join(TBook()).onKey(TBook_TITLE()));
+    fail();
+  }
+ catch (  DataAccessException expected) {
+  }
+  try {
+    create().select(TAuthor_ID(),TBook_TITLE()).from(TAuthor().join(TBook()).onKey(TBook_AUTHOR_ID(),TBook_ID()));
+    fail();
+  }
+ catch (  DataAccessException expected) {
+  }
+  Result<Record> result1=create().select(TAuthor_ID(),TBook_TITLE()).from(TAuthor().join(TBook()).onKey(TBook_AUTHOR_ID())).orderBy(TBook_ID()).fetch();
+  assertEquals(4,result1.size());
+  assertEquals(BOOK_AUTHOR_IDS,result1.getValues(0));
+  assertEquals(BOOK_TITLES,result1.getValues(1));
+  Result<Record> result2=create().select(TAuthor_ID(),TBook_TITLE()).from(TAuthor().join(TBook()).onKey(TBook_AUTHOR_ID()).and(TBook_ID().in(1,2))).orderBy(TBook_ID()).fetch();
+  assertEquals(2,result2.size());
+  assertEquals(BOOK_AUTHOR_IDS.subList(0,2),result2.getValues(0));
+  assertEquals(BOOK_TITLES.subList(0,2),result2.getValues(1));
+}

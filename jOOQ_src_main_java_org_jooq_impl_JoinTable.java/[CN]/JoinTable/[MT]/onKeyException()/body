@@ -1,0 +1,3 @@
+{
+  return new DataAccessException("Key ambiguous between tables " + lhs + " and "+ rhs);
+}
