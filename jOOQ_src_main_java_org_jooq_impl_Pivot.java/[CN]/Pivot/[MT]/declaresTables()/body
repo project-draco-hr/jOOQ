@@ -1,3 +1,3 @@
 {
-  return table.internalAPI(QueryPartInternal.class).declaresTables();
+  return true;
 }

@@ -1,5 +1,3 @@
 {
-  boolean inline=context.inline();
-  boolean declare=context.declareFields();
-  context.sql(table).sql(" pivot(").inline(true).declareFields(true).sql(aggregateFunctions).sql(" for ").literal(on.getName()).sql(" in (").sql(in).declareFields(declare).inline(inline).sql("))");
+  context.sql(pivot(context));
 }

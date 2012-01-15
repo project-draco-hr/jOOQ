@@ -1,0 +1,36 @@
+{
+  FieldList groupingFields=new FieldList();
+  FieldList aliasedGroupingFields=new FieldList();
+  FieldList aggregatedFields=new FieldList();
+  Table<?> pivot=table.as("pivot_outer");
+  for (  Field<?> field : aggregateFunctions) {
+    if (field instanceof AggregateFunctionImpl) {
+      for (      QueryPart argument : ((AggregateFunctionImpl<?>)field).getArguments()) {
+        if (argument instanceof Field) {
+          aggregatedFields.add((Field<?>)argument);
+        }
+      }
+    }
+  }
+  for (  Field<?> field : table.getFields()) {
+    if (!aggregatedFields.contains(field)) {
+      if (!on.equals(field)) {
+        aliasedGroupingFields.add(pivot.getField(field));
+        groupingFields.add(field);
+      }
+    }
+  }
+  FieldList aggregationSelects=new FieldList();
+  for (  Field<?> inField : in) {
+    for (    Field<?> aggregateFunction : aggregateFunctions) {
+      Condition join=trueCondition();
+      for (      Field<?> field : groupingFields) {
+        join=join.and(join(pivot,field));
+      }
+      Select<?> aggregateSelect=create(context).select(aggregateFunction).from(table).where(on.equal((Field<T>)inField)).and(join);
+      aggregationSelects.add(aggregateSelect.asField(inField.getName() + "_" + aggregateFunction.getName()));
+    }
+  }
+  Table<Record> select=create(context).select(aliasedGroupingFields).select(aggregationSelects).from(pivot).where(pivot.getField(on).in(in.toArray(new Field[0]))).groupBy(aliasedGroupingFields).asTable();
+  return select;
+}

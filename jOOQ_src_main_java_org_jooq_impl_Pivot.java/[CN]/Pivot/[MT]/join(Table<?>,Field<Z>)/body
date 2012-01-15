@@ -1,0 +1,3 @@
+{
+  return field.equal(pivot.getField(field));
+}

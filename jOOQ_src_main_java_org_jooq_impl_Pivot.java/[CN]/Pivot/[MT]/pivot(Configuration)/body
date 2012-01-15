@@ -1,0 +1,12 @@
+{
+switch (configuration.getDialect()) {
+case ORACLE:
+{
+      return new OraclePivotTable();
+    }
+default :
+{
+    return new DefaultPivotTable();
+  }
+}
+}
