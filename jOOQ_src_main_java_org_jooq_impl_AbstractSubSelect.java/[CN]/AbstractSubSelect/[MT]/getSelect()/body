@@ -7,11 +7,6 @@
           result.add(field);
         }
       }
-      for (      Join j : getJoin()) {
-        for (        Field<?> field : j.getTable().asTable().getFields()) {
-          result.add(field);
-        }
-      }
     }
     if (getFrom().isEmpty()) {
       result.add(one());

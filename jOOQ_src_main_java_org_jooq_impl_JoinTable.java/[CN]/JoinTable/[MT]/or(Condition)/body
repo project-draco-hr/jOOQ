@@ -1,0 +1,4 @@
+{
+  condition.addConditions(Operator.OR,c);
+  return this;
+}

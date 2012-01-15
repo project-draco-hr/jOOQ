@@ -1,9 +1,0 @@
-{
-  context.bind(getTable());
-  if (usingSyntax) {
-    context.bind((QueryPart)using);
-  }
- else {
-    context.bind(getCondition());
-  }
-}

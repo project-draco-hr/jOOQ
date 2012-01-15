@@ -1,8 +1,8 @@
 {
   if (limit.isApplicable()) {
-    return getAttachables(select,from,join,condition,groupBy,having,orderBy,limit,forUpdateOf,forUpdateOfTables);
+    return getAttachables(select,from,condition,groupBy,having,orderBy,limit,forUpdateOf,forUpdateOfTables);
   }
  else {
-    return getAttachables(select,from,join,condition,groupBy,having,orderBy,forUpdateOf,forUpdateOfTables);
+    return getAttachables(select,from,condition,groupBy,having,orderBy,forUpdateOf,forUpdateOfTables);
   }
 }

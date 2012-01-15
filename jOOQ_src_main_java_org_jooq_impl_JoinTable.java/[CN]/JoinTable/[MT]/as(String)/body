@@ -1,0 +1,3 @@
+{
+  return new TableAlias<Record>(this,alias);
+}

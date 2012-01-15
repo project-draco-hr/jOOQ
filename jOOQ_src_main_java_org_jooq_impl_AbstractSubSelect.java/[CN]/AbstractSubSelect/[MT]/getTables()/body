@@ -1,7 +1,0 @@
-{
-  TableList result=new TableList(getFrom());
-  for (  Join j : getJoin()) {
-    result.add(j.getTable().asTable());
-  }
-  return result;
-}

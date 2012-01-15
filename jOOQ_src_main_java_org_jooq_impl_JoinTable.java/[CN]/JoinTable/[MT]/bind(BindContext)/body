@@ -1,0 +1,9 @@
+{
+  context.bind(lhs).bind(rhs);
+  if (!using.isEmpty()) {
+    context.bind((QueryPart)using);
+  }
+ else {
+    context.bind(condition);
+  }
+}

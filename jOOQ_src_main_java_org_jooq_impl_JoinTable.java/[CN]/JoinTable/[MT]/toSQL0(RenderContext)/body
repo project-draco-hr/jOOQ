@@ -1,0 +1,10 @@
+{
+  if (!using.isEmpty()) {
+    context.sql(" using (");
+    Util.toSQLNames(context,using);
+    context.sql(")");
+  }
+ else {
+    context.sql(" on ").sql(condition);
+  }
+}

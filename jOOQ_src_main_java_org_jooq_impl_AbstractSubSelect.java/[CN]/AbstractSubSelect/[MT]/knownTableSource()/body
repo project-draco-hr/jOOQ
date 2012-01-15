@@ -4,10 +4,5 @@
       return false;
     }
   }
-  for (  Join j : getJoin()) {
-    if (!knownTable(j.getTable())) {
-      return false;
-    }
-  }
   return true;
 }

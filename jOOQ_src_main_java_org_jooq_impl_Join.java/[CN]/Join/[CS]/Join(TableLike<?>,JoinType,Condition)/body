@@ -1,8 +1,0 @@
-{
-  this.condition=new ConditionProviderImpl();
-  this.condition.addConditions(conditions);
-  this.using=new FieldList();
-  this.usingSyntax=false;
-  this.table=table;
-  this.type=type;
-}

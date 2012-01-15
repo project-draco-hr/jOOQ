@@ -1,6 +1,6 @@
 {
-  if (getTables().size() == 1 && getSelect0().isEmpty()) {
-    return (Class<? extends R>)getTables().get(0).asTable().getRecordType();
+  if (getFrom().size() == 1 && getSelect0().isEmpty()) {
+    return (Class<? extends R>)getFrom().get(0).asTable().getRecordType();
   }
  else {
     return (Class<? extends R>)RecordImpl.class;

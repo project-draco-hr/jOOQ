@@ -1,0 +1,15 @@
+{
+  context.sql(lhs).sql(" ").sql(getType(context).toSQL()).sql(" ").sql(rhs);
+switch (getType(context)) {
+case CROSS_JOIN:
+case NATURAL_JOIN:
+case NATURAL_LEFT_OUTER_JOIN:
+case NATURAL_RIGHT_OUTER_JOIN:
+    break;
+default :
+{
+    toSQL0(context);
+    break;
+  }
+}
+}

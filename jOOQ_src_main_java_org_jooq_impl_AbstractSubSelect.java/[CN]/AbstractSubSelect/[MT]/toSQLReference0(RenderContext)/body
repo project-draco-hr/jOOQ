@@ -38,9 +38,6 @@ context.declareTables(true);
 if (!context.render(getFrom()).isEmpty()) {
 context.sql(" from ").sql(getFrom());
 }
-if (!getJoin().isEmpty()) {
-context.sql(" ").sql(getJoin());
-}
 context.declareTables(false);
 if (!(getWhere().getWhere() instanceof TrueCondition)) {
 context.sql(" where ").sql(getWhere());

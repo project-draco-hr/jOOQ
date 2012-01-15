@@ -1,0 +1,8 @@
+{
+  super("join");
+  this.lhs=lhs.asTable();
+  this.rhs=rhs.asTable();
+  this.type=type;
+  this.condition=new ConditionProviderImpl();
+  this.using=new FieldList();
+}

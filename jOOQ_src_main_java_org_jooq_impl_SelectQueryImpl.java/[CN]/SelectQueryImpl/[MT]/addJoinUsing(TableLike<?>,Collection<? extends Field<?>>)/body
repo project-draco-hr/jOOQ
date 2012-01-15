@@ -1,3 +1,3 @@
 {
-  getJoin().add(new Join(table,JoinType.JOIN,fields));
+  addJoinUsing(table,JoinType.JOIN,fields);
 }

@@ -1,0 +1,3 @@
+{
+  return new JoinTable(this,table,JoinType.RIGHT_OUTER_JOIN);
+}

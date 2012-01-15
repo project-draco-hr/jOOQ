@@ -1,0 +1,4 @@
+{
+  and(sql,bindings);
+  return this;
+}
