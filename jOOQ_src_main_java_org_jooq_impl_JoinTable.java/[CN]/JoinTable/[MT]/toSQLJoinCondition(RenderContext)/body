@@ -1,29 +1,29 @@
 {
   if (!using.isEmpty()) {
-switch (context.getDialect()) {
-case ASE:
-case DB2:
-case H2:
-case SQLSERVER:
-case SYBASE:
-{
-        context.sql(" on ");
-        String glue="";
-        for (        Field<?> field : using) {
-          context.sql(glue).sql(lhs.getField(field)).sql(" = ").sql(rhs.getField(field));
-          glue=" and ";
-        }
-        break;
+    if (asList(ASE,DB2,H2,SQLSERVER,SYBASE).contains(context.getDialect())) {
+      String glue=" on ";
+      for (      Field<?> field : using) {
+        context.sql(glue).sql(lhs.getField(field)).sql(" = ").sql(rhs.getField(field));
+        glue=" and ";
       }
-default :
-{
+    }
+ else {
       context.sql(" using (");
       Util.toSQLNames(context,using);
       context.sql(")");
     }
-}
-}
+  }
+ else   if (simulateNaturalJoin(context) || simulateNaturalLeftOuterJoin(context) || simulateNaturalRightOuterJoin(context)) {
+    String glue=" on ";
+    for (    Field<?> field : lhs.getFields()) {
+      Field<?> other=rhs.getField(field);
+      if (other != null) {
+        context.sql(glue).sql(field).sql(" = ").sql(other);
+        glue=" and ";
+      }
+    }
+  }
  else {
-context.sql(" on ").sql(condition);
-}
+    context.sql(" on ").sql(condition);
+  }
 }

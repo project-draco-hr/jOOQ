@@ -1,0 +1,3 @@
+{
+  return type == NATURAL_LEFT_OUTER_JOIN && asList(ASE,DB2,H2,INGRES,SQLSERVER).contains(context.getDialect());
+}

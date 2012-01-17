@@ -1,0 +1,3 @@
+{
+  return type == CROSS_JOIN && context.getDialect() == ASE;
+}
