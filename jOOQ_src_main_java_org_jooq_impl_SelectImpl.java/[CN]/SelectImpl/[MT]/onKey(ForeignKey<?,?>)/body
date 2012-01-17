@@ -1,0 +1,7 @@
+{
+  conditionStep=ConditionStep.ON;
+  getQuery().addJoinOnKey(joinTable,joinType,key);
+  joinTable=null;
+  joinType=null;
+  return this;
+}

@@ -1,0 +1,3 @@
+TableLike<?> table
+JoinType type
+ForeignKey<?,?> key
