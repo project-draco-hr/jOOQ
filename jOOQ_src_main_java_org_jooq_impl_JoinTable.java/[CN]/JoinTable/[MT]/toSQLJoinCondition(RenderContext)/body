@@ -1,10 +1,29 @@
 {
   if (!using.isEmpty()) {
-    context.sql(" using (");
-    Util.toSQLNames(context,using);
-    context.sql(")");
-  }
+switch (context.getDialect()) {
+case ASE:
+case DB2:
+case H2:
+case SQLSERVER:
+case SYBASE:
+{
+        context.sql(" on ");
+        String glue="";
+        for (        Field<?> field : using) {
+          context.sql(glue).sql(lhs.getField(field)).sql(" = ").sql(rhs.getField(field));
+          glue=" and ";
+        }
+        break;
+      }
+default :
+{
+      context.sql(" using (");
+      Util.toSQLNames(context,using);
+      context.sql(")");
+    }
+}
+}
  else {
-    context.sql(" on ").sql(condition);
-  }
+context.sql(" on ").sql(condition);
+}
 }
