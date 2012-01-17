@@ -1,5 +1,5 @@
 {
-  context.sql(lhs).sql(" ").sql(getType(context).toSQL()).sql(" ").sql(rhs);
+  context.sql(lhs).sql(" ").sql(getType(context).toSQL()).sql(" ").sql(rhs instanceof JoinTable ? "(" : "").sql(rhs).sql(rhs instanceof JoinTable ? ")" : "");
 switch (getType(context)) {
 case CROSS_JOIN:
 case NATURAL_JOIN:
@@ -8,7 +8,7 @@ case NATURAL_RIGHT_OUTER_JOIN:
     break;
 default :
 {
-    toSQL0(context);
+    toSQLJoinCondition(context);
     break;
   }
 }

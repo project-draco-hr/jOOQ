@@ -37,4 +37,6 @@
   assertEquals(6,result4.size());
   assertEquals(asList(1,1,2,3,3,3),result4.getValues(0));
   assertEquals(asList("Ex Libris","Orell F??ssli","Orell F??ssli","Buchhandlung im Volkshaus","Ex Libris","Orell F??ssli"),result4.getValues(1));
+  Result<Record> result5=create().select(TBook_ID(),TBookStore_NAME()).from(TBook()).join(TBookToBookStore().join(TBookStore()).onKey()).onKey().orderBy(TBook_ID(),TBookStore_NAME()).fetch();
+  assertEquals(result4,result5);
 }
