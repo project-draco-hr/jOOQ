@@ -73,4 +73,12 @@
   finally {
     register(null);
   }
+  if (cSequences() == null) {
+    log.info("SKIPPING","sequences test");
+  }
+ else {
+    Select<?> s;
+    s=create().select(SAuthorID().nextval(),SAuthorID().currval());
+    s=runSerialisation(s);
+  }
 }

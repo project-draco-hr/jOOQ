@@ -4,7 +4,7 @@
     return;
   }
   reset=false;
-  @SuppressWarnings("unchecked") Sequence<? extends Number> sequence=(Sequence<? extends Number>)cSequences().getField("S_AUTHOR_ID").get(cSequences());
+  Sequence<? extends Number> sequence=SAuthorID();
   Field<? extends Number> nextval=sequence.nextval();
   Field<? extends Number> currval=null;
   assertEquals("3","" + create().select(nextval).fetchOne(nextval));

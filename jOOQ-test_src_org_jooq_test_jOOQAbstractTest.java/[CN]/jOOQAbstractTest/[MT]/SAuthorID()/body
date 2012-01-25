@@ -1,0 +1,3 @@
+{
+  return (Sequence<? extends Number>)cSequences().getField("S_AUTHOR_ID").get(cSequences());
+}
