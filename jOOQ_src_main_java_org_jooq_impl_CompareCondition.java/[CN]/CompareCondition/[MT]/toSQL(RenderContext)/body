@@ -11,4 +11,7 @@ return;
 }
 }
 context.sql(comparator.toSQL()).sql(" ").sql(field2);
+if (escape != null) {
+context.sql(" escape '").sql(escape).sql("'");
+}
 }

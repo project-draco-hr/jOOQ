@@ -1,5 +1,3 @@
 {
-  this.field1=field1;
-  this.field2=field2;
-  this.comparator=comparator;
+  this(field1,field2,comparator,null);
 }

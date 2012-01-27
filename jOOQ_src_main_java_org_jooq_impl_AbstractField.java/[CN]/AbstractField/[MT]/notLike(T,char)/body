@@ -1,0 +1,3 @@
+{
+  return notLike(val(value),escape);
+}
