@@ -1,0 +1,6 @@
+{
+  super(configuration);
+  this.into=into;
+  this.fields=(fields == null || fields.isEmpty()) ? into.getFields() : fields;
+  this.select=select;
+}

@@ -1,0 +1,4 @@
+{
+  Configuration configuration=getDelegate().internalAPI(AttachableInternal.class).getConfiguration();
+  return new InsertSelectQueryImpl<R>(configuration,into,fields,select);
+}

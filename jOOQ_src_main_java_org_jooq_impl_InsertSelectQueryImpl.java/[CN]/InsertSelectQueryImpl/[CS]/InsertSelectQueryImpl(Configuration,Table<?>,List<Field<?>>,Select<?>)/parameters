@@ -1,3 +1,4 @@
 Configuration configuration
 Table<?> into
+List<Field<?>> fields
 Select<?> select
