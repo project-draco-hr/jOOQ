@@ -1,0 +1,7 @@
+{
+  PreparedStatement statement=super.prepare(configuration,sql);
+  if (size > 0) {
+    statement.setFetchSize(size);
+  }
+  return statement;
+}

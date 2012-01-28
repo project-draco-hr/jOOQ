@@ -1,6 +1,3 @@
 {
-  lazy=true;
-  execute();
-  lazy=false;
-  return cursor;
+  return fetchLazy(0);
 }

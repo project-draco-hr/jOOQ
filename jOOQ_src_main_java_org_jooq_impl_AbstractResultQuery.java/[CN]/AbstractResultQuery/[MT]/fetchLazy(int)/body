@@ -1,0 +1,12 @@
+{
+  lazy=true;
+  size=fetchSize;
+  try {
+    execute();
+  }
+  finally {
+    lazy=false;
+    size=0;
+  }
+  return cursor;
+}
