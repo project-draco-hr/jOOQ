@@ -1,4 +1,8 @@
 {
+  if (getDialect() == SQLITE) {
+    log.info("SKIPPING","Nested JOINs");
+    return;
+  }
   Result<Record> result1=create().select(TAuthor_ID(),TBook_ID(),TBookStore_NAME()).from(TAuthor().join(TBook()).on(TAuthor_ID().equal(TBook_AUTHOR_ID()))).join(TBookToBookStore().join(TBookStore()).on(TBookToBookStore_BOOK_STORE_NAME().equal(TBookStore_NAME()))).on(TBook_ID().equal(TBookToBookStore_BOOK_ID())).orderBy(TBook_ID(),TBookStore_NAME()).fetch();
   assertEquals(6,result1.size());
   assertEquals(asList(1,1,1,2,2,2),result1.getValues(0));

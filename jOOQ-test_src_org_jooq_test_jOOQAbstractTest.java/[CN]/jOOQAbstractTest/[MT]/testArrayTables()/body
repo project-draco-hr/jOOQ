@@ -66,6 +66,7 @@
 switch (getDialect()) {
 case POSTGRES:
 case H2:
+case HSQLDB:
       log.info("SKIPPING","Cross join of table with unnested array is not supported");
     break;
 default :
