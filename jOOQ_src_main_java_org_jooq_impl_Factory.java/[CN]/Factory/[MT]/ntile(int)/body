@@ -1,3 +1,3 @@
 {
-  return new WindowFunction<BigDecimal>("ntile",SQLDataType.NUMERIC,field("" + number,Integer.class));
+  return new WindowFunction<Integer>("ntile",SQLDataType.INTEGER,field("" + number,Integer.class));
 }
