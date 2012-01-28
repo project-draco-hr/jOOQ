@@ -1,3 +1,6 @@
 {
-  context.bind(field1).bind(field2);
+  context.bind(field1);
+  if (!field2.isNullLiteral() || !asList(EQUALS,NOT_EQUALS).contains(comparator)) {
+    context.bind(field2);
+  }
 }
