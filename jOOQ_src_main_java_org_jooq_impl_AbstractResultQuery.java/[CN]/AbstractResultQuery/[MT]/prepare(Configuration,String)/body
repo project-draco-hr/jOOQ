@@ -1,6 +1,7 @@
 {
   PreparedStatement statement=super.prepare(configuration,sql);
   if (size > 0) {
+    if (log.isDebugEnabled())     log.debug("Setting fetch size",size);
     statement.setFetchSize(size);
   }
   return statement;

@@ -4,6 +4,7 @@
   if (configuration.getDialect() == SQLDialect.POSTGRES && isSelectingRefCursor()) {
     autoCommit=connection.getAutoCommit();
     if (autoCommit) {
+      if (log.isDebugEnabled())       log.debug("Unsetting auto-commit",false);
       connection.setAutoCommit(false);
     }
   }
@@ -36,6 +37,7 @@
   }
   finally {
     if (autoCommit) {
+      if (log.isDebugEnabled())       log.debug("Resetting auto-commit",autoCommit);
       connection.setAutoCommit(autoCommit);
     }
   }
