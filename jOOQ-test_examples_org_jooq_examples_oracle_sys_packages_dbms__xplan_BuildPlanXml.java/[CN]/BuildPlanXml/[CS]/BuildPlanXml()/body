@@ -1,0 +1,11 @@
+{
+  super(org.jooq.SQLDialect.ORACLE,"BUILD_PLAN_XML",org.jooq.examples.oracle.sys.Sys.SYS,org.jooq.examples.oracle.sys.packages.DbmsXplan.DBMS_XPLAN,org.jooq.util.oracle.OracleDataType.getDefaultDataType("UNDEFINED"));
+  setReturnParameter(RETURN_VALUE);
+  addInParameter(TABLE_NAME);
+  addInParameter(STATEMENT_ID);
+  addInParameter(PLAN_ID);
+  addInParameter(FORMAT);
+  addInParameter(FILTER_PREDS);
+  addInParameter(PLAN_TAG);
+  addInParameter(REPORT_REF);
+}

@@ -1,0 +1,5 @@
+{
+  super(org.jooq.SQLDialect.ORACLE,"FORMAT_NUMBER",org.jooq.examples.oracle.sys.Sys.SYS,org.jooq.examples.oracle.sys.packages.DbmsXplan.DBMS_XPLAN,org.jooq.impl.SQLDataType.VARCHAR);
+  setReturnParameter(RETURN_VALUE);
+  addInParameter(NUM);
+}

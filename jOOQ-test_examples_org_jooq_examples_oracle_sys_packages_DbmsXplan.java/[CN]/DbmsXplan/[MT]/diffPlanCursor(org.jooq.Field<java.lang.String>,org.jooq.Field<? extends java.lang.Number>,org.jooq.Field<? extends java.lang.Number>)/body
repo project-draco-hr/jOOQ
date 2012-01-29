@@ -1,0 +1,7 @@
+{
+  org.jooq.examples.oracle.sys.packages.dbms_xplan.DiffPlanCursor f=new org.jooq.examples.oracle.sys.packages.dbms_xplan.DiffPlanCursor();
+  f.setSqlId(sqlId);
+  f.setCursorChildNum1(cursorChildNum1);
+  f.setCursorChildNum2(cursorChildNum2);
+  return f.asField();
+}

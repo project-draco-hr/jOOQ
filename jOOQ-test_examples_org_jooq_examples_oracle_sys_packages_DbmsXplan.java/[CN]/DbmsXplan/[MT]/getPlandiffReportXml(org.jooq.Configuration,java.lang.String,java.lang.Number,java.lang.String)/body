@@ -1,0 +1,8 @@
+{
+  org.jooq.examples.oracle.sys.packages.dbms_xplan.GetPlandiffReportXml f=new org.jooq.examples.oracle.sys.packages.dbms_xplan.GetPlandiffReportXml();
+  f.setReportRef(reportRef);
+  f.setTid(tid);
+  f.setMethod(method);
+  f.execute(configuration);
+  return f.getReturnValue();
+}

@@ -1,0 +1,5 @@
+{
+  org.jooq.examples.oracle.sys.packages.dbms_xplan.FormatSize2 f=new org.jooq.examples.oracle.sys.packages.dbms_xplan.FormatSize2();
+  f.setNum(num);
+  return f.asField();
+}

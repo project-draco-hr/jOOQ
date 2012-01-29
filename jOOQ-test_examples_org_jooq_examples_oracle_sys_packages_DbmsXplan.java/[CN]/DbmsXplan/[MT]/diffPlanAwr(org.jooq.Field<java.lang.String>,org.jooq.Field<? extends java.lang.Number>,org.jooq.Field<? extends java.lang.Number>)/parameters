@@ -1,0 +1,3 @@
+org.jooq.Field<java.lang.String> sqlId
+org.jooq.Field<? extends java.lang.Number> planHashValue1
+org.jooq.Field<? extends java.lang.Number> planHashValue2

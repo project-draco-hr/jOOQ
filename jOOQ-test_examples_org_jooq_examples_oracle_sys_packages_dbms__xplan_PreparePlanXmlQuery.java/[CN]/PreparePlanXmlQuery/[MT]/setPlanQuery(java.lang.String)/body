@@ -1,0 +1,3 @@
+{
+  setValue(PLAN_QUERY,value);
+}

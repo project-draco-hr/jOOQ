@@ -1,0 +1,7 @@
+{
+  org.jooq.examples.oracle.sys.packages.dbms_xplan.DisplaySqlPlanBaseline f=new org.jooq.examples.oracle.sys.packages.dbms_xplan.DisplaySqlPlanBaseline();
+  f.setSqlHandle(sqlHandle);
+  f.setPlanName(planName);
+  f.setFormat(format);
+  return f.asField();
+}

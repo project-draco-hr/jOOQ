@@ -1,0 +1,7 @@
+java.lang.String tableName
+java.lang.String statementId
+java.lang.Number planId
+java.lang.String format
+java.lang.String filterPreds
+java.lang.String planTag
+java.lang.String reportRef

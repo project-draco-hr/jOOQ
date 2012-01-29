@@ -1,0 +1,7 @@
+{
+  super(org.jooq.SQLDialect.ORACLE,"DIFF_PLAN",org.jooq.examples.oracle.sys.Sys.SYS,org.jooq.examples.oracle.sys.packages.DbmsXplan.DBMS_XPLAN,org.jooq.impl.SQLDataType.VARCHAR);
+  setReturnParameter(RETURN_VALUE);
+  addInParameter(SQL_TEXT);
+  addInParameter(OUTLINE);
+  addInParameter(USER_NAME);
+}

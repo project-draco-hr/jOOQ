@@ -1,0 +1,7 @@
+{
+  super(org.jooq.SQLDialect.ORACLE,"GET_PLANDIFF_REPORT_XML",org.jooq.examples.oracle.sys.Sys.SYS,org.jooq.examples.oracle.sys.packages.DbmsXplan.DBMS_XPLAN,org.jooq.util.oracle.OracleDataType.getDefaultDataType("UNDEFINED"));
+  setReturnParameter(RETURN_VALUE);
+  addInParameter(REPORT_REF);
+  addInParameter(TID);
+  addInParameter(METHOD);
+}

@@ -1,0 +1,9 @@
+{
+  super(org.jooq.SQLDialect.ORACLE,"DISPLAY_PLAN",org.jooq.examples.oracle.sys.Sys.SYS,org.jooq.examples.oracle.sys.packages.DbmsXplan.DBMS_XPLAN,org.jooq.impl.SQLDataType.CLOB);
+  setReturnParameter(RETURN_VALUE);
+  addInParameter(TABLE_NAME);
+  addInParameter(STATEMENT_ID);
+  addInParameter(FORMAT);
+  addInParameter(FILTER_PREDS);
+  addInParameter(TYPE);
+}

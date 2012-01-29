@@ -1,0 +1,3 @@
+org.jooq.Field<java.lang.String> sqlHandle
+org.jooq.Field<java.lang.String> planName
+org.jooq.Field<java.lang.String> format

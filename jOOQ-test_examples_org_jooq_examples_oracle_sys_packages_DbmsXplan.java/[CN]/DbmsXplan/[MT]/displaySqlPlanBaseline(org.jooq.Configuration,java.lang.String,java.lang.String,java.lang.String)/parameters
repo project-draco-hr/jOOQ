@@ -1,0 +1,4 @@
+org.jooq.Configuration configuration
+java.lang.String sqlHandle
+java.lang.String planName
+java.lang.String format

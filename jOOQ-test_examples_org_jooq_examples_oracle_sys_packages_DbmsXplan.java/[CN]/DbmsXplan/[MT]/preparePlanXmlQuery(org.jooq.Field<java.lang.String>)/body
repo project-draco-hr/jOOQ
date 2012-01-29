@@ -1,0 +1,5 @@
+{
+  org.jooq.examples.oracle.sys.packages.dbms_xplan.PreparePlanXmlQuery f=new org.jooq.examples.oracle.sys.packages.dbms_xplan.PreparePlanXmlQuery();
+  f.setPlanQuery(planQuery);
+  return f.asField();
+}

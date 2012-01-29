@@ -1,0 +1,5 @@
+{
+  org.jooq.examples.oracle.sys.packages.dbms_xplan.FormatTimeS f=new org.jooq.examples.oracle.sys.packages.dbms_xplan.FormatTimeS();
+  f.setNum(num);
+  return f.asField();
+}

@@ -1,0 +1,3 @@
+org.jooq.Field<java.lang.String> sqlText
+org.jooq.Field<java.lang.String> outline
+org.jooq.Field<java.lang.String> userName

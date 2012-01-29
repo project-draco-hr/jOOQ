@@ -1,0 +1,7 @@
+{
+  super(org.jooq.SQLDialect.ORACLE,"DIFF_PLAN_CURSOR",org.jooq.examples.oracle.sys.Sys.SYS,org.jooq.examples.oracle.sys.packages.DbmsXplan.DBMS_XPLAN,org.jooq.impl.SQLDataType.VARCHAR);
+  setReturnParameter(RETURN_VALUE);
+  addInParameter(SQL_ID);
+  addInParameter(CURSOR_CHILD_NUM1);
+  addInParameter(CURSOR_CHILD_NUM2);
+}

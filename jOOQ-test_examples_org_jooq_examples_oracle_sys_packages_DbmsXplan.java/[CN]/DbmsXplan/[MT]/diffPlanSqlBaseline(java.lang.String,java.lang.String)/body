@@ -1,0 +1,6 @@
+{
+  org.jooq.examples.oracle.sys.packages.dbms_xplan.DiffPlanSqlBaseline f=new org.jooq.examples.oracle.sys.packages.dbms_xplan.DiffPlanSqlBaseline();
+  f.setBaselinePlanName1(baselinePlanName1);
+  f.setBaselinePlanName2(baselinePlanName2);
+  return f.asField();
+}
