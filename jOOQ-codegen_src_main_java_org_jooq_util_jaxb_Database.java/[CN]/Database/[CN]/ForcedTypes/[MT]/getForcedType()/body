@@ -1,6 +1,0 @@
-{
-  if (forcedType == null) {
-    forcedType=new ArrayList<ForcedType>();
-  }
-  return this.forcedType;
-}
