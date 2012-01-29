@@ -7,32 +7,27 @@
     if (wrapInParentheses) {
       context.sql(")");
     }
-switch (context.getDialect()) {
-case POSTGRES:
-case HSQLDB:
-case DERBY:
-case MYSQL:
+    if (Arrays.asList(DERBY,HSQLDB,MYSQL,POSTGRES).contains(context.getDialect())) {
       context.sql(" as");
-    break;
-}
-context.sql(" ");
-context.literal(alias);
+    }
+    context.sql(" ");
+    context.literal(alias);
 switch (context.getDialect()) {
 case HSQLDB:
 case POSTGRES:
 {
-    if (context.declareTables() && aliasProvider instanceof ArrayTable) {
-      Object o=aliasProvider;
-      ArrayTable table=(ArrayTable)o;
-      context.sql("(");
-      Util.toSQLNames(context,table.getFields());
-      context.sql(")");
-    }
-    break;
+        if (context.declareTables() && aliasProvider instanceof ArrayTable) {
+          Object o=aliasProvider;
+          ArrayTable table=(ArrayTable)o;
+          context.sql("(");
+          Util.toSQLNames(context,table.getFields());
+          context.sql(")");
+        }
+        break;
+      }
   }
 }
-}
  else {
-context.literal(alias);
+  context.literal(alias);
 }
 }
