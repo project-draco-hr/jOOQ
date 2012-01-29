@@ -16,8 +16,8 @@ switch (context.getDialect()) {
 case HSQLDB:
 case POSTGRES:
 {
-        if (context.declareTables() && aliasProvider instanceof ArrayTable) {
-          Object o=aliasProvider;
+        Object o=aliasProvider;
+        if (context.declareTables() && o instanceof ArrayTable) {
           ArrayTable table=(ArrayTable)o;
           context.sql("(");
           Util.toSQLNames(context,table.getFields());
