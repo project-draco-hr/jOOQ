@@ -1,5 +1,5 @@
 {
-  if (args.length != 1) {
+  if (args.length < 1) {
     error();
   }
   InputStream in=GenerationTool.class.getResourceAsStream(args[0]);
@@ -18,7 +18,7 @@
  else {
       Properties properties=new Properties();
       properties.load(in);
-      main(properties);
+      main(properties,args);
     }
   }
  catch (  Exception e) {
