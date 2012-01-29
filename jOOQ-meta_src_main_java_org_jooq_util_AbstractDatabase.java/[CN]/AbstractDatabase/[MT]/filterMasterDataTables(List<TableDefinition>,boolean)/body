@@ -1,8 +1,8 @@
 {
   List<T> result=new ArrayList<T>();
   definitionLoop:   for (  TableDefinition definition : list) {
-    for (    String table : masterDataTableNames) {
-      if (definition.getName().matches(table)) {
+    for (    MasterDataTable table : configuredMasterDataTables) {
+      if (definition.getName().equals(table.getName())) {
         if (include) {
           result.add((T)new DefaultMasterDataTableDefinition(definition));
         }

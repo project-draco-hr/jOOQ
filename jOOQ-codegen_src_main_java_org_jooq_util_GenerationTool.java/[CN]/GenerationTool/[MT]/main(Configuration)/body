@@ -1,0 +1,48 @@
+{
+  Jdbc j=configuration.getJdbc();
+  org.jooq.util.jaxb.Generator g=configuration.getGenerator();
+  if (g.getStrategy() == null)   g.setStrategy(new Strategy());
+  if (g.getTarget() == null)   g.setTarget(new Target());
+  if (g.getDatabase().getEnumTypes() == null)   g.getDatabase().setEnumTypes(new EnumTypes());
+  if (g.getDatabase().getForcedTypes() == null)   g.getDatabase().setForcedTypes(new ForcedTypes());
+  if (g.getDatabase().getMasterDataTables() == null)   g.getDatabase().setMasterDataTables(new MasterDataTables());
+  Class.forName(j.getDriver());
+  Connection connection=null;
+  try {
+    connection=DriverManager.getConnection(defaultString(j.getUrl()),defaultString(j.getUser()),defaultString(j.getPassword()));
+    Class<Generator> generatorClass=(Class<Generator>)(!isBlank(g.getName()) ? Class.forName(g.getName()) : DefaultGenerator.class);
+    Generator generator=generatorClass.newInstance();
+    Class<GeneratorStrategy> strategyClass=(Class<GeneratorStrategy>)(!isBlank(g.getStrategy().getName()) ? Class.forName(g.getStrategy().getName()) : DefaultGeneratorStrategy.class);
+    GeneratorStrategy strategy=strategyClass.newInstance();
+    generator.setStrategy(strategy);
+    Class<Database> databaseClass=(Class<Database>)Class.forName(g.getDatabase().getName());
+    Database database=databaseClass.newInstance();
+    database.setConnection(connection);
+    database.setInputSchema(defaultString(GenerationUtil.getInputSchema(configuration)));
+    database.setOutputSchema(defaultString(GenerationUtil.getOutputSchema(configuration)));
+    database.setIncludes(defaultString(g.getDatabase().getIncludes()).split(","));
+    database.setExcludes(defaultString(g.getDatabase().getExcludes()).split(","));
+    database.setDateAsTimestamp(g.getDatabase().isDateAsTimestamp());
+    database.setConfiguredMasterDataTables(g.getDatabase().getMasterDataTables().getMasterDataTable());
+    database.setConfiguredEnumTypes(g.getDatabase().getEnumTypes().getEnumType());
+    database.setConfiguredForcedTypes(g.getDatabase().getForcedTypes().getForcedType());
+    database.setSupportsUnsignedTypes(g.getGenerate().isUnsignedTypes());
+    generator.setTargetPackage(g.getTarget().getPackageName());
+    generator.setTargetDirectory(g.getTarget().getDirectory());
+    generator.setGenerateRelations(g.getGenerate().isRelations());
+    generator.setGenerateDeprecated(g.getGenerate().isDeprecated());
+    generator.setGenerateInstanceFields(g.getGenerate().isInstanceFields());
+    generator.setGenerateGeneratedAnnotation(g.getGenerate().isGeneratedAnnotation());
+    strategy.setInstanceFields(generator.generateInstanceFields());
+    generator.generate(database);
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+    throw e;
+  }
+ finally {
+    if (connection != null) {
+      connection.close();
+    }
+  }
+}

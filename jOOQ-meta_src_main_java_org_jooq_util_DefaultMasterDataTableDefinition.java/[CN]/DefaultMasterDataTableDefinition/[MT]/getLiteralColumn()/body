@@ -1,5 +1,5 @@
 {
-  String columnName=getDatabase().getProperty("generator.generate.master-data-table-literal." + getName());
+  String columnName=getConfiguredMasterDataTable().getLiteral();
   if (columnName == null) {
     columnName=getPrimaryKeyColumn().getName();
   }

@@ -11,9 +11,15 @@
     error();
   }
   log.info("Initialising properties",args[0]);
-  Properties properties=new Properties();
   try {
-    properties.load(in);
+    if (args[0].endsWith(".xml")) {
+      main(JAXB.unmarshal(in,Configuration.class));
+    }
+ else {
+      Properties properties=new Properties();
+      properties.load(in);
+      main(properties);
+    }
   }
  catch (  Exception e) {
     log.error("Cannot read " + args[0] + ". Error : "+ e.getMessage());
@@ -24,5 +30,4 @@
       in.close();
     }
   }
-  main(properties);
 }

@@ -1,44 +1,70 @@
 {
-  Class.forName(properties.getProperty("jdbc.Driver"));
-  Connection connection=null;
-  try {
-    connection=DriverManager.getConnection(defaultString(properties.getProperty("jdbc.URL")),defaultString(properties.getProperty("jdbc.User")),defaultString(properties.getProperty("jdbc.Password")));
-    Class<Generator> generatorClass=(Class<Generator>)(properties.containsKey("generator") ? Class.forName(properties.getProperty("generator")) : DefaultGenerator.class);
-    Generator generator=generatorClass.newInstance();
-    Class<GeneratorStrategy> strategyClass=(Class<GeneratorStrategy>)(properties.containsKey("generator.strategy") ? Class.forName(properties.getProperty("generator.strategy")) : DefaultGeneratorStrategy.class);
-    GeneratorStrategy strategy=strategyClass.newInstance();
-    strategy.setMetaClassPrefix(defaultString(properties.getProperty("generator.strategy.meta-class-prefix")));
-    strategy.setMetaClassSuffix(defaultString(properties.getProperty("generator.strategy.meta-class-suffix")));
-    strategy.setRecordClassPrefix(defaultString(properties.getProperty("generator.strategy.record-class-prefix")));
-    strategy.setRecordClassSuffix(defaultString(properties.getProperty("generator.strategy.record-class-suffix","Record")));
-    strategy.setMemberScheme(defaultString(properties.getProperty("generator.strategy.member-scheme","camel-case")));
-    generator.setStrategy(strategy);
-    Class<Database> databaseClass=(Class<Database>)Class.forName(properties.getProperty("generator.database"));
-    Database database=databaseClass.newInstance();
-    database.setConnection(connection);
-    database.setInputSchema(defaultString(GenerationUtil.getInputSchema(properties)));
-    database.setOutputSchema(defaultString(GenerationUtil.getOutputSchema(properties)));
-    database.setIncludes(defaultString(properties.getProperty("generator.database.includes")).split(","));
-    database.setExcludes(defaultString(properties.getProperty("generator.database.excludes")).split(","));
-    database.setMasterDataTableNames(defaultString(properties.getProperty("generator.generate.master-data-tables")).split(","));
-    database.setProperties(properties);
-    generator.setTargetPackage(properties.getProperty("generator.target.package"));
-    generator.setTargetDirectory(properties.getProperty("generator.target.directory"));
-    generator.setGenerateRelations("true".equalsIgnoreCase(properties.getProperty("generator.generate.relations")));
-    generator.setGenerateDeprecated(!"false".equalsIgnoreCase(properties.getProperty("generator.generate.deprecated")));
-    generator.setGenerateInstanceFields(!"false".equalsIgnoreCase(properties.getProperty("generator.generate.instance-fields")));
-    generator.setGenerateUnsignedTypes(!"false".equalsIgnoreCase(properties.getProperty("generator.generate.unsigned-types")));
-    generator.setGenerateGeneratedAnnotation(!"false".equalsIgnoreCase(properties.getProperty("generator.generate.generated-annotation")));
-    strategy.setInstanceFields(generator.generateInstanceFields());
-    generator.generate(database);
+  log.warn("WARNING: jooq-codegen source code generation using .properties files is deprecated");
+  log.warn("WARNING: consider using XML configuration instead");
+  log.warn("WARNING: See http://www.jooq.org/manual/META/Configuration/ for more details");
+  Jdbc jdbc=new Jdbc();
+  jdbc.setDriver(properties.getProperty("jdbc.Driver"));
+  jdbc.setUrl(properties.getProperty("jdbc.URL"));
+  jdbc.setUser(properties.getProperty("jdbc.User"));
+  jdbc.setPassword(properties.getProperty("jdbc.Password"));
+  jdbc.setSchema(properties.getProperty("jdbc.Schema"));
+  Strategy strategy=new Strategy();
+  strategy.setName(properties.containsKey("generator.strategy") ? properties.getProperty("generator.strategy") : null);
+  MasterDataTables masterDataTables=new MasterDataTables();
+  for (  String name : defaultString(properties.getProperty("generator.generate.master-data-tables")).split(",")) {
+    MasterDataTable table=new MasterDataTable();
+    table.setName(name);
+    table.setLiteral(properties.getProperty("generator.generate.master-data-table-literal." + name));
+    table.setDescription(properties.getProperty("generator.generate.master-data-table-description." + name));
+    masterDataTables.getMasterDataTable().add(table);
   }
- catch (  Exception e) {
-    e.printStackTrace();
-    throw e;
-  }
- finally {
-    if (connection != null) {
-      connection.close();
+  EnumTypes enumTypes=new EnumTypes();
+  for (  String property : properties.stringPropertyNames()) {
+    if (property.startsWith("generator.database.enum-type.")) {
+      String name=property.replace("generator.database.enum-type.","");
+      EnumType type=new EnumType();
+      type.setName(name);
+      type.setLiterals(properties.getProperty(property));
+      enumTypes.getEnumType().add(type);
     }
   }
+  ForcedTypes forcedTypes=new ForcedTypes();
+  for (  String property : properties.stringPropertyNames()) {
+    if (property.startsWith("generator.database.forced-type.")) {
+      String name=property.replace("generator.database.forced-type.","");
+      ForcedType type=new ForcedType();
+      type.setName(name);
+      type.setExpressions(properties.getProperty(property));
+      forcedTypes.getForcedType().add(type);
+    }
+  }
+  org.jooq.util.jaxb.Database database=new org.jooq.util.jaxb.Database();
+  database.setName(properties.getProperty("generator.database"));
+  database.setInputSchema(properties.containsKey("generator.database.input-schema") ? properties.getProperty("generator.database.input-schema") : null);
+  database.setOutputSchema(properties.containsKey("generator.database.output-schema") ? properties.getProperty("generator.database.output-schema") : null);
+  database.setIncludes(properties.containsKey("generator.database.includes") ? properties.getProperty("generator.database.includes") : null);
+  database.setExcludes(properties.containsKey("generator.database.excludes") ? properties.getProperty("generator.database.excludes") : null);
+  database.setDateAsTimestamp("true".equalsIgnoreCase(properties.getProperty("generator.database.date-as-timestamp")));
+  database.setMasterDataTables(masterDataTables);
+  database.setEnumTypes(enumTypes);
+  database.setForcedTypes(forcedTypes);
+  Target target=new Target();
+  target.setPackageName(properties.getProperty("generator.target.package"));
+  target.setDirectory(properties.getProperty("generator.target.directory"));
+  Generate generate=new Generate();
+  generate.setRelations("true".equalsIgnoreCase(properties.getProperty("generator.generate.relations")));
+  generate.setDeprecated(!"false".equalsIgnoreCase(properties.getProperty("generator.generate.deprecated")));
+  generate.setInstanceFields(!"false".equalsIgnoreCase(properties.getProperty("generator.generate.instance-fields")));
+  generate.setUnsignedTypes(!"false".equalsIgnoreCase(properties.getProperty("generator.generate.unsigned-types")));
+  generate.setGeneratedAnnotation(!"false".equalsIgnoreCase(properties.getProperty("generator.generate.generated-annotation")));
+  org.jooq.util.jaxb.Generator generator=new org.jooq.util.jaxb.Generator();
+  generator.setStrategy(strategy);
+  generator.setDatabase(database);
+  generator.setTarget(target);
+  generator.setGenerate(generate);
+  generator.setName(properties.containsKey("generator") ? properties.getProperty("generator") : null);
+  Configuration configuration=new Configuration();
+  configuration.setJdbc(jdbc);
+  configuration.setGenerator(generator);
+  main(configuration);
 }

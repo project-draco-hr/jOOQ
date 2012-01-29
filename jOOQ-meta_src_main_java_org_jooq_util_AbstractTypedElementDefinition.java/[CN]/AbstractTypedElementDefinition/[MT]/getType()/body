@@ -1,30 +1,27 @@
 {
   if (type == null) {
     Database db=container.getDatabase();
-    for (    String property : db.getPropertyNames()) {
-      if (property.startsWith("generator.database.forced-type.")) {
-        if (getQualifiedName().matches(db.getProperty(property))) {
-          String forcedType=property.replace("generator.database.forced-type.","");
-          log.debug("Forcing type",this + " into " + forcedType);
-          DataType<?> forcedDataType=null;
-          String t=definedType.getType();
-          int p=definedType.getPrecision();
-          int s=definedType.getScale();
-          try {
-            forcedDataType=getDialectDataType(db.getDialect(),forcedType,p,s);
-          }
- catch (          SQLDialectNotSupportedException ignore) {
-          }
-          if (forcedDataType != null) {
-            type=new DefaultDataTypeDefinition(db,forcedType,p,s);
-          }
+    for (    ForcedType forcedType : db.getConfiguredForcedTypes()) {
+      if (getQualifiedName().matches(forcedType.getExpressions())) {
+        log.debug("Forcing type",this + " into " + forcedType.getName());
+        DataType<?> forcedDataType=null;
+        String t=definedType.getType();
+        int p=definedType.getPrecision();
+        int s=definedType.getScale();
+        try {
+          forcedDataType=getDialectDataType(db.getDialect(),forcedType.getName(),p,s);
+        }
+ catch (        SQLDialectNotSupportedException ignore) {
+        }
+        if (forcedDataType != null) {
+          type=new DefaultDataTypeDefinition(db,forcedType.getName(),p,s);
+        }
  else {
-            type=new DefaultDataTypeDefinition(db,t,p,s,forcedType);
-          }
+          type=new DefaultDataTypeDefinition(db,t,p,s,forcedType.getName());
         }
       }
     }
-    if ("true".equalsIgnoreCase(db.getProperty("generator.database.date-as-timestamp"))) {
+    if (db.dateAsTimestamp()) {
       DataType<?> dataType=null;
       try {
         dataType=getDialectDataType(db.getDialect(),definedType.getType(),0,0);

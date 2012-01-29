@@ -1,0 +1,9 @@
+{
+  if (!StringUtils.isBlank(configuration.getGenerator().getDatabase().getInputSchema())) {
+    return configuration.getGenerator().getDatabase().getInputSchema();
+  }
+ else {
+    log.warn("WARNING: The configuration property jdbc.Schema is deprecated and will be removed in the future. Use /configuration/generator/database/inputSchema instead");
+    return configuration.getJdbc().getSchema();
+  }
+}
