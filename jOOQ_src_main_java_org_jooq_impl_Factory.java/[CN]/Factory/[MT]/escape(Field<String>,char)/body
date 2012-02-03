@@ -1,3 +1,6 @@
 {
-  return replace(replace(field,"%",escape + "%"),"_",escape + "_");
+  Field<String> replace=field;
+  replace=replace(replace,literal("'%'"),literal("'" + escape + "%'"));
+  replace=replace(replace,literal("'_'"),literal("'" + escape + "_'"));
+  return replace;
 }
