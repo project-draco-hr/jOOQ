@@ -1,8 +1,0 @@
-{
-  this.writer=writer;
-  this.sb=new StringBuilder();
-  this.staticInitialisationStatements=new ArrayList<String>();
-  this.initialisationStatements=new ArrayList<String>();
-  this.alreadyPrinted=new HashSet<Object>();
-  this.suppressWarnings=new TreeSet<String>();
-}

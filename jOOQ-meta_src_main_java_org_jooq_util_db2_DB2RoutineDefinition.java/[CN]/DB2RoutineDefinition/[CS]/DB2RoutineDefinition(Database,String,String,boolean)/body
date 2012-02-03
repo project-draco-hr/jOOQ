@@ -1,4 +1,0 @@
-{
-  super(database,null,name,comment,null);
-  this.isProcedure=isProcedure;
-}

@@ -1,3 +1,3 @@
 {
-  return create().select(Constraints.TABLE_NAME,Constraints.COLUMN_LIST,Constraints.CONSTRAINT_NAME).from(CONSTRAINTS).where(Constraints.TABLE_SCHEMA.equal(getInputSchema())).and(Constraints.CONSTRAINT_TYPE.equal(constraintType)).fetch();
+  return create().select(Constraints.TABLE_SCHEMA,Constraints.TABLE_NAME,Constraints.COLUMN_LIST,Constraints.CONSTRAINT_NAME).from(CONSTRAINTS).where(Constraints.TABLE_SCHEMA.in(getInputSchemata())).and(Constraints.CONSTRAINT_TYPE.equal(constraintType)).orderBy(Constraints.TABLE_SCHEMA,Constraints.CONSTRAINT_NAME,Constraints.COLUMN_LIST).fetch();
 }

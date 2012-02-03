@@ -3,7 +3,7 @@
   for (  Record record : create().select(SYSTABLE.TABLE_NAME,SYSTABLE.REMARKS).from(SYSTABLE).fetch()) {
     String name=record.getValue(SYSTABLE.TABLE_NAME);
     String comment=record.getValue(SYSTABLE.REMARKS);
-    SybaseTableDefinition table=new SybaseTableDefinition(this,name,comment);
+    SybaseTableDefinition table=new SybaseTableDefinition(getSchema(),name,comment);
     result.add(table);
   }
   return result;

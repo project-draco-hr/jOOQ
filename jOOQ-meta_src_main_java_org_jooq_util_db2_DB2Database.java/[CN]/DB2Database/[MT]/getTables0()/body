@@ -2,15 +2,17 @@
   List<TableDefinition> result=new ArrayList<TableDefinition>();
   SelectQuery q=create().selectQuery();
   q.addFrom(TABLES);
+  q.addSelect(Tables.TABSCHEMA.trim());
   q.addSelect(Tables.TABNAME);
-  q.addConditions(Tables.TABSCHEMA.equal(getInputSchema()));
+  q.addConditions(Tables.TABSCHEMA.in(getInputSchemata()));
   q.addConditions(Tables.TYPE.in("T","V"));
   q.addOrderBy(Tables.TABNAME);
   q.execute();
   for (  Record record : q.getResult()) {
+    SchemaDefinition schema=getSchema(record.getValue(Tables.TABSCHEMA.trim()));
     String name=record.getValue(Tables.TABNAME);
     String comment="";
-    DB2TableDefinition table=new DB2TableDefinition(this,name,comment);
+    DB2TableDefinition table=new DB2TableDefinition(schema,name,comment);
     result.add(table);
   }
   return result;

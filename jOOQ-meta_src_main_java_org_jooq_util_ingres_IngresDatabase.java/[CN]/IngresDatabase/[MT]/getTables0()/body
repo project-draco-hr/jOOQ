@@ -1,7 +1,7 @@
 {
   List<TableDefinition> result=new ArrayList<TableDefinition>();
-  for (  Record record : create().select(trim(Iitables.TABLE_NAME),trim(IidbComments.LONG_REMARK)).from(IITABLES).leftOuterJoin(IIDB_COMMENTS).on(Iitables.TABLE_NAME.equal(IidbComments.OBJECT_NAME)).and(Iitables.TABLE_OWNER.equal(IidbComments.OBJECT_OWNER)).and(IidbComments.OBJECT_TYPE.equal("T")).and(IidbComments.TEXT_SEQUENCE.equal(1L)).where(Iitables.TABLE_OWNER.equal(getInputSchema())).orderBy(trim(Iitables.TABLE_NAME)).fetch()) {
-    result.add(new IngresTableDefinition(this,record.getValue(trim(Iitables.TABLE_NAME)),record.getValue(trim(IidbComments.LONG_REMARK))));
+  for (  Record record : create().select(trim(Iitables.TABLE_OWNER),trim(Iitables.TABLE_NAME),trim(IidbComments.LONG_REMARK)).from(IITABLES).leftOuterJoin(IIDB_COMMENTS).on(Iitables.TABLE_NAME.equal(IidbComments.OBJECT_NAME)).and(Iitables.TABLE_OWNER.equal(IidbComments.OBJECT_OWNER)).and(IidbComments.OBJECT_TYPE.equal("T")).and(IidbComments.TEXT_SEQUENCE.equal(1L)).where(Iitables.TABLE_OWNER.in(getInputSchemata())).orderBy(trim(Iitables.TABLE_OWNER),trim(Iitables.TABLE_NAME)).fetch()) {
+    result.add(new IngresTableDefinition(getSchema(record.getValue(trim(Iitables.TABLE_OWNER))),record.getValue(trim(Iitables.TABLE_NAME)),record.getValue(trim(IidbComments.LONG_REMARK))));
   }
   return result;
 }

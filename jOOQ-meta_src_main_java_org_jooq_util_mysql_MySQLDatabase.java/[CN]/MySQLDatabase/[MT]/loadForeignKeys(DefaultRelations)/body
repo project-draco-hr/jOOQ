@@ -1,11 +1,12 @@
 {
-  for (  Record record : create().select(ReferentialConstraints.CONSTRAINT_NAME,ReferentialConstraints.TABLE_NAME,ReferentialConstraints.REFERENCED_TABLE_NAME,ReferentialConstraints.UNIQUE_CONSTRAINT_NAME,KeyColumnUsage.COLUMN_NAME).from(REFERENTIAL_CONSTRAINTS).join(KEY_COLUMN_USAGE).on(ReferentialConstraints.CONSTRAINT_SCHEMA.equal(KeyColumnUsage.CONSTRAINT_SCHEMA)).and(ReferentialConstraints.CONSTRAINT_NAME.equal(KeyColumnUsage.CONSTRAINT_NAME)).where(ReferentialConstraints.CONSTRAINT_SCHEMA.equal(getInputSchema())).orderBy(KeyColumnUsage.CONSTRAINT_NAME.asc(),KeyColumnUsage.ORDINAL_POSITION.asc()).fetch()) {
+  for (  Record record : create().select(ReferentialConstraints.CONSTRAINT_SCHEMA,ReferentialConstraints.CONSTRAINT_NAME,ReferentialConstraints.TABLE_NAME,ReferentialConstraints.REFERENCED_TABLE_NAME,ReferentialConstraints.UNIQUE_CONSTRAINT_NAME,KeyColumnUsage.COLUMN_NAME).from(REFERENTIAL_CONSTRAINTS).join(KEY_COLUMN_USAGE).on(ReferentialConstraints.CONSTRAINT_SCHEMA.equal(KeyColumnUsage.CONSTRAINT_SCHEMA)).and(ReferentialConstraints.CONSTRAINT_NAME.equal(KeyColumnUsage.CONSTRAINT_NAME)).where(ReferentialConstraints.CONSTRAINT_SCHEMA.in(getInputSchemata())).orderBy(KeyColumnUsage.CONSTRAINT_SCHEMA.asc(),KeyColumnUsage.CONSTRAINT_NAME.asc(),KeyColumnUsage.ORDINAL_POSITION.asc()).fetch()) {
+    SchemaDefinition schema=getSchema(record.getValue(ReferentialConstraints.CONSTRAINT_SCHEMA));
     String foreignKey=record.getValue(ReferentialConstraints.CONSTRAINT_NAME);
     String foreignKeyColumn=record.getValue(KeyColumnUsage.COLUMN_NAME);
     String foreignKeyTableName=record.getValue(ReferentialConstraints.TABLE_NAME);
     String referencedKey=record.getValue(ReferentialConstraints.UNIQUE_CONSTRAINT_NAME);
     String referencedTableName=record.getValue(ReferentialConstraints.REFERENCED_TABLE_NAME);
-    TableDefinition foreignKeyTable=getTable(foreignKeyTableName);
+    TableDefinition foreignKeyTable=getTable(schema,foreignKeyTableName);
     if (foreignKeyTable != null) {
       ColumnDefinition column=foreignKeyTable.getColumn(foreignKeyColumn);
       String key=getKeyName(referencedTableName,referencedKey);

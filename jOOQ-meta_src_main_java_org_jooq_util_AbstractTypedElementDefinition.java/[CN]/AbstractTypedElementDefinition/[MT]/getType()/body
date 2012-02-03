@@ -14,10 +14,10 @@
  catch (        SQLDialectNotSupportedException ignore) {
         }
         if (forcedDataType != null) {
-          type=new DefaultDataTypeDefinition(db,forcedType.getName(),p,s);
+          type=new DefaultDataTypeDefinition(db,getSchema(),forcedType.getName(),p,s);
         }
  else {
-          type=new DefaultDataTypeDefinition(db,t,p,s,forcedType.getName());
+          type=new DefaultDataTypeDefinition(db,getSchema(),t,p,s,forcedType.getName());
         }
       }
     }
@@ -31,7 +31,7 @@
       if (dataType != null) {
         if (dataType.getSQLDataType() == SQLDataType.DATE) {
           DataType<?> forcedDataType=getDialectDataType(db.getDialect(),SQLDataType.TIMESTAMP.getTypeName(),0,0);
-          type=new DefaultDataTypeDefinition(db,forcedDataType.getTypeName(),0,0);
+          type=new DefaultDataTypeDefinition(db,getSchema(),forcedDataType.getTypeName(),0,0);
         }
       }
     }

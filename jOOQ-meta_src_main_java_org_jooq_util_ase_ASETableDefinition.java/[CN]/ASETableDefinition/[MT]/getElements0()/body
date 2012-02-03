@@ -8,8 +8,8 @@
     int scale=0;
     if (p != null && !"null".equalsIgnoreCase(p.trim()))     precision=Integer.valueOf(p.trim());
     if (s != null && !"null".equalsIgnoreCase(s.trim()))     scale=Integer.valueOf(s.trim());
-    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),record.getValueAsString("Type"),precision,scale);
-    result.add(new DefaultColumnDefinition(getDatabase().getTable(getName()),record.getValueAsString("Column_name"),position++,type,record.getValueAsBoolean("Identity",false),null));
+    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),record.getValueAsString("Type"),precision,scale);
+    result.add(new DefaultColumnDefinition(getDatabase().getTable(getSchema(),getName()),record.getValueAsString("Column_name"),position++,type,record.getValueAsBoolean("Identity",false),null));
   }
   return result;
 }

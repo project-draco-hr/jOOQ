@@ -1,8 +1,7 @@
 {
-  strategy.getFile(routine).getParentFile().mkdirs();
   log.info("Generating routine",strategy.getFileName(routine));
-  GenerationWriter out=new GenerationWriter(new PrintWriter(strategy.getFile(routine)));
-  printHeader(out,strategy.getJavaPackageName(routine));
+  GenerationWriter out=new GenerationWriter(strategy.getFile(routine));
+  printHeader(out,routine);
   printClassJavadoc(out,routine);
   out.print("public class ");
   out.print(strategy.getJavaClassName(routine));

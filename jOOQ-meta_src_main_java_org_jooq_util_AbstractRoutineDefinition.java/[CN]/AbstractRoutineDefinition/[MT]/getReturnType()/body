@@ -3,6 +3,6 @@
     return getReturnValue().getType();
   }
  else {
-    return new DefaultDataTypeDefinition(getDatabase(),"unknown",0,0);
+    return new DefaultDataTypeDefinition(getDatabase(),getSchema(),"unknown",0,0);
   }
 }

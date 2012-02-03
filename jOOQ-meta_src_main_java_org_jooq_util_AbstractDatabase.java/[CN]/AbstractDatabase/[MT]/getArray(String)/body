@@ -1,8 +1,0 @@
-{
-  for (  ArrayDefinition e : getArrays()) {
-    if (e.getName().equals(name)) {
-      return e;
-    }
-  }
-  return null;
-}

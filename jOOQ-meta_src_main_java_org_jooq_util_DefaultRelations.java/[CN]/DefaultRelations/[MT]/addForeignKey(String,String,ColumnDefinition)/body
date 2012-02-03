@@ -6,7 +6,7 @@
   if (foreignKey == null) {
     UniqueKeyDefinition uniqueKey=uniqueKeys.get(uniqueKeyName);
     if (uniqueKey != null) {
-      foreignKey=new DefaultForeignKeyDefinition(getDatabase(),foreignKeyName,column.getContainer(),uniqueKey);
+      foreignKey=new DefaultForeignKeyDefinition(column.getSchema(),foreignKeyName,column.getContainer(),uniqueKey);
       foreignKeys.put(foreignKeyName,foreignKey);
       uniqueKey.getForeignKeys().add(foreignKey);
     }

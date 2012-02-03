@@ -1,0 +1,14 @@
+{
+  if (routines == null) {
+    routines=new ArrayList<RoutineDefinition>();
+    try {
+      List<RoutineDefinition> r=getRoutines0();
+      routines=filterExcludeInclude(r);
+      log.info("Routines fetched",fetchedSize(r,routines));
+    }
+ catch (    Exception e) {
+      log.error("Error while fetching functions",e);
+    }
+  }
+  return filterSchema(routines,schema);
+}

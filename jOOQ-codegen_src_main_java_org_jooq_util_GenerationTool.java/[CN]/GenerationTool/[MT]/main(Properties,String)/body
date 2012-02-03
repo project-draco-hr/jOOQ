@@ -36,13 +36,17 @@
       forcedTypes.getForcedType().add(type);
     }
   }
+  Schema schema=new Schema();
+  schema.setInputSchema(properties.containsKey("generator.database.input-schema") ? properties.getProperty("generator.database.input-schema") : null);
+  schema.setOutputSchema(properties.containsKey("generator.database.output-schema") ? properties.getProperty("generator.database.output-schema") : null);
+  Schemata schemata=new Schemata();
+  schemata.getSchema().add(schema);
   org.jooq.util.jaxb.Database database=new org.jooq.util.jaxb.Database();
   database.setName(properties.getProperty("generator.database"));
-  database.setInputSchema(properties.containsKey("generator.database.input-schema") ? properties.getProperty("generator.database.input-schema") : null);
-  database.setOutputSchema(properties.containsKey("generator.database.output-schema") ? properties.getProperty("generator.database.output-schema") : null);
   database.setIncludes(properties.containsKey("generator.database.includes") ? properties.getProperty("generator.database.includes") : null);
   database.setExcludes(properties.containsKey("generator.database.excludes") ? properties.getProperty("generator.database.excludes") : null);
   database.setDateAsTimestamp("true".equalsIgnoreCase(properties.getProperty("generator.database.date-as-timestamp")));
+  database.setSchemata(schemata);
   if (!masterDataTables.getMasterDataTable().isEmpty())   database.setMasterDataTables(masterDataTables);
   if (!enumTypes.getEnumType().isEmpty())   database.setEnumTypes(enumTypes);
   if (!forcedTypes.getForcedType().isEmpty())   database.setForcedTypes(forcedTypes);

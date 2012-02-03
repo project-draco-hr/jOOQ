@@ -1,0 +1,13 @@
+{
+  for (  TableDefinition table : getTables(schema)) {
+    if (table.getName().equals(name)) {
+      return table;
+    }
+  }
+  for (  TableDefinition table : getMasterDataTables(schema)) {
+    if (table.getName().equals(name)) {
+      return table;
+    }
+  }
+  return null;
+}

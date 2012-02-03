@@ -1,9 +1,10 @@
 {
   for (  Record record : fetchKeys("PRIMARY KEY")) {
+    SchemaDefinition schema=getSchema(record.getValue(Constraints.TABLE_SCHEMA));
     String tableName=record.getValue(Constraints.TABLE_NAME);
     String columnList=record.getValue(Constraints.COLUMN_LIST);
     String primaryKey=record.getValue(Constraints.CONSTRAINT_NAME);
-    TableDefinition table=getTable(tableName);
+    TableDefinition table=getTable(schema,tableName);
     if (table != null) {
       String[] columnNames=columnList.split("[,]+");
       for (      String columnName : columnNames) {

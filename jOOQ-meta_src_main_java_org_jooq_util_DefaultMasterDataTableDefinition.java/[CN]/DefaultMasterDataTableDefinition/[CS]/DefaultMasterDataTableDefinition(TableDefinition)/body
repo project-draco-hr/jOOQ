@@ -1,4 +1,4 @@
 {
-  super(delegate.getDatabase(),delegate.getName(),delegate.getComment());
+  super(delegate.getDatabase(),delegate.getSchema(),delegate.getName(),delegate.getComment());
   this.delegate=delegate;
 }

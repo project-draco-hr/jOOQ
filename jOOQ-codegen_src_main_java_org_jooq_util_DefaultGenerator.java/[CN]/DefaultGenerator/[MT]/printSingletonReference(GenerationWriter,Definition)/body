@@ -1,6 +1,6 @@
 {
   if (definition instanceof SequenceDefinition) {
-    out.print(strategy.getTargetPackage());
+    out.print(strategy.getJavaPackageName(definition.getSchema()));
     out.print(".");
     out.print("Sequences");
     out.print(".");

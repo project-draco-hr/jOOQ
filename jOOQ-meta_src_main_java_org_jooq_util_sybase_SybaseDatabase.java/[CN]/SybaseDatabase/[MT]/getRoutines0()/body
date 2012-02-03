@@ -2,7 +2,7 @@
   List<RoutineDefinition> result=new ArrayList<RoutineDefinition>();
   for (  Record record : create().select(SYSPROCEDURE.PROC_NAME).from(SYSPROCEDURE).orderBy(SYSPROCEDURE.PROC_NAME).fetch()) {
     String name=record.getValue(SYSPROCEDURE.PROC_NAME);
-    result.add(new SybaseRoutineDefinition(this,null,name));
+    result.add(new SybaseRoutineDefinition(getSchema(),null,name));
   }
   return result;
 }

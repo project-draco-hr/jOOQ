@@ -1,9 +1,10 @@
 {
   for (  Record record : fetchKeys("UNIQUE")) {
+    SchemaDefinition schema=getSchema(record.getValue(KEY_COLUMN_USAGE.TABLE_SCHEMA));
     String key=record.getValue(KEY_COLUMN_USAGE.CONSTRAINT_NAME);
     String tableName=record.getValue(KEY_COLUMN_USAGE.TABLE_NAME);
     String columnName=record.getValue(KEY_COLUMN_USAGE.COLUMN_NAME);
-    TableDefinition table=getTable(tableName);
+    TableDefinition table=getTable(schema,tableName);
     if (table != null) {
       relations.addUniqueKey(key,table.getColumn(columnName));
     }

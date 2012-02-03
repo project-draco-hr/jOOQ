@@ -1,6 +1,0 @@
-{
-  this.database=database;
-  this.name=name;
-  this.comment=comment;
-  this.overload=overload;
-}

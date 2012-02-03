@@ -1,0 +1,6 @@
+{
+  super(schema.getDatabase(),schema,name,null);
+  this.foreignKeys=new ArrayList<ForeignKeyDefinition>();
+  this.keyColumns=new ArrayList<ColumnDefinition>();
+  this.table=table;
+}

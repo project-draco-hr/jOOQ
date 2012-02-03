@@ -1,5 +1,0 @@
-{
-  super(database,null,name,comment,null);
-  this.params=params;
-  this.returns=returns;
-}

@@ -1,4 +1,0 @@
-{
-  super(database,name,"");
-  this.type=type;
-}

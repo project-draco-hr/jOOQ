@@ -1,0 +1,6 @@
+SchemaDefinition schema
+String name
+String comment
+String typeName
+Number precision
+Number scale

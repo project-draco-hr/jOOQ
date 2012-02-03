@@ -1,9 +1,10 @@
 {
   List<TableDefinition> result=new ArrayList<TableDefinition>();
-  for (  Record record : create().select(Tables.TABLE_NAME,Tables.TABLE_COMMENT).from(TABLES).where(Tables.TABLE_SCHEMA.equal(getInputSchema())).orderBy(Tables.TABLE_NAME).fetch()) {
+  for (  Record record : create().select(Tables.TABLE_SCHEMA,Tables.TABLE_NAME,Tables.TABLE_COMMENT).from(TABLES).where(Tables.TABLE_SCHEMA.in(getInputSchemata())).orderBy(Tables.TABLE_SCHEMA,Tables.TABLE_NAME).fetch()) {
+    SchemaDefinition schema=getSchema(record.getValue(Tables.TABLE_SCHEMA));
     String name=record.getValue(Tables.TABLE_NAME);
     String comment=record.getValue(Tables.TABLE_COMMENT);
-    MySQLTableDefinition table=new MySQLTableDefinition(this,name,comment);
+    MySQLTableDefinition table=new MySQLTableDefinition(schema,name,comment);
     result.add(table);
   }
   return result;

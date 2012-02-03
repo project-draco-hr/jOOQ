@@ -17,9 +17,24 @@
     generator.setStrategy(strategy);
     Class<Database> databaseClass=(Class<Database>)Class.forName(g.getDatabase().getName());
     Database database=databaseClass.newInstance();
+    Schemata schemata=g.getDatabase().getSchemata();
+    if (schemata == null) {
+      schemata=new Schemata();
+      g.getDatabase().setSchemata(schemata);
+    }
+    List<Schema> schemaList=schemata.getSchema();
+    if (schemaList.isEmpty())     schemaList.add(new Schema());
+    for (    Schema schema : schemaList) {
+      if (StringUtils.isBlank(schema.getInputSchema())) {
+        log.warn("WARNING: The configuration property jdbc.Schema is deprecated and will be removed in the future. Use /configuration/generator/database/inputSchema instead");
+        schema.setInputSchema(j.getSchema());
+      }
+      if (StringUtils.isBlank(schema.getOutputSchema())) {
+        schema.setOutputSchema(schema.getInputSchema());
+      }
+    }
     database.setConnection(connection);
-    database.setInputSchema(defaultString(GenerationUtil.getInputSchema(configuration)));
-    database.setOutputSchema(defaultString(GenerationUtil.getOutputSchema(configuration)));
+    database.setConfiguredSchemata(schemata);
     database.setIncludes(defaultString(g.getDatabase().getIncludes()).split(","));
     database.setExcludes(defaultString(g.getDatabase().getExcludes()).split(","));
     database.setDateAsTimestamp(g.getDatabase().isDateAsTimestamp());

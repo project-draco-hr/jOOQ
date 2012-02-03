@@ -1,6 +1,0 @@
-{
-  super(database,name,null);
-  this.keyColumns=new ArrayList<ColumnDefinition>();
-  this.table=table;
-  this.uniqueKey=uniqueKey;
-}

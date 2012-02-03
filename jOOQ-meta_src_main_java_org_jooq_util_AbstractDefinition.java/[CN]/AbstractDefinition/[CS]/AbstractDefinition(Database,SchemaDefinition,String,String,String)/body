@@ -1,0 +1,7 @@
+{
+  this.database=database;
+  this.schema=(schema == null && this instanceof SchemaDefinition) ? (SchemaDefinition)this : schema;
+  this.name=name;
+  this.comment=comment;
+  this.overload=overload;
+}

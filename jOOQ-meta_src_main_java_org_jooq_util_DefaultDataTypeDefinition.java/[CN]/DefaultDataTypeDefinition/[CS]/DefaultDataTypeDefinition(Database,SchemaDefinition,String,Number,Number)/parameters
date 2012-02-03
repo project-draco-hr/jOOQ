@@ -1,0 +1,5 @@
+Database database
+SchemaDefinition schema
+String typeName
+Number precision
+Number scale

@@ -1,0 +1,6 @@
+Database db
+SchemaDefinition schema
+String t
+int p
+int s
+String u

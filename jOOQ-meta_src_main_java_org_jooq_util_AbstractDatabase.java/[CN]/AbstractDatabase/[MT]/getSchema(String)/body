@@ -1,0 +1,8 @@
+{
+  for (  SchemaDefinition schema : getSchemata()) {
+    if (schema.getName().equals(getOutputSchema(name))) {
+      return schema;
+    }
+  }
+  return null;
+}

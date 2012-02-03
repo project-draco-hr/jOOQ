@@ -10,10 +10,10 @@
  else {
     if (db.isArrayType(type.getType())) {
       String baseType=GenerationUtil.getArrayBaseType(db.getDialect(),type.getType(),type.getUserType());
-      return getTypeReference(db,baseType,0,0,baseType) + ".getArrayDataType()";
+      return getTypeReference(db,type.getSchema(),baseType,0,0,baseType) + ".getArrayDataType()";
     }
  else {
-      return getTypeReference(db,type.getType(),type.getPrecision(),type.getScale(),type.getUserType());
+      return getTypeReference(db,type.getSchema(),type.getType(),type.getPrecision(),type.getScale(),type.getUserType());
     }
   }
 }

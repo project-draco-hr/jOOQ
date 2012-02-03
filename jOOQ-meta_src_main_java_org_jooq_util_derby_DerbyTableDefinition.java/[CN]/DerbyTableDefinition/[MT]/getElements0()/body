@@ -4,8 +4,8 @@
     String typeName=record.getValueAsString(Syscolumns.COLUMNDATATYPE);
     Number precision=parsePrecision(typeName);
     Number scale=parseScale(typeName);
-    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),typeName,precision,scale);
-    ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getName()),record.getValue(Syscolumns.COLUMNNAME),record.getValue(Syscolumns.COLUMNNUMBER),type,null != record.getValue(Syscolumns.AUTOINCREMENTINC),null);
+    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),typeName,precision,scale);
+    ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getSchema(),getName()),record.getValue(Syscolumns.COLUMNNAME),record.getValue(Syscolumns.COLUMNNUMBER),type,null != record.getValue(Syscolumns.AUTOINCREMENTINC),null);
     result.add(column);
   }
   return result;

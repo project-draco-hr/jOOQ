@@ -1,0 +1,5 @@
+{
+  super(schema.getDatabase(),schema,name,comment);
+  this.literals=new ArrayList<String>();
+  this.isSynthetic=isSynthetic;
+}

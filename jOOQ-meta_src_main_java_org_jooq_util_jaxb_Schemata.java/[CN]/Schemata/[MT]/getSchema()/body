@@ -1,0 +1,6 @@
+{
+  if (schema == null) {
+    schema=new ArrayList<Schemata.Schema>();
+  }
+  return this.schema;
+}

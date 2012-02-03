@@ -1,7 +1,7 @@
 {
   List<RoutineDefinition> result=new ArrayList<RoutineDefinition>();
-  for (  Record record : create().selectDistinct(ROUTINES.ROUTINE_NAME,ROUTINES.SPECIFIC_NAME,ROUTINES.DATA_TYPE,ROUTINES.NUMERIC_PRECISION,ROUTINES.NUMERIC_SCALE).from(ROUTINES).where(ROUTINES.ROUTINE_SCHEMA.equal(getInputSchema())).orderBy(ROUTINES.ROUTINE_NAME).fetch()) {
-    SQLServerRoutineDefinition routine=new SQLServerRoutineDefinition(this,record.getValue(ROUTINES.ROUTINE_NAME),record.getValue(ROUTINES.SPECIFIC_NAME),record.getValue(ROUTINES.DATA_TYPE),record.getValue(ROUTINES.NUMERIC_PRECISION),record.getValue(ROUTINES.NUMERIC_SCALE));
+  for (  Record record : create().selectDistinct(ROUTINES.ROUTINE_SCHEMA,ROUTINES.ROUTINE_NAME,ROUTINES.SPECIFIC_NAME,ROUTINES.DATA_TYPE,ROUTINES.NUMERIC_PRECISION,ROUTINES.NUMERIC_SCALE).from(ROUTINES).where(ROUTINES.ROUTINE_SCHEMA.in(getInputSchemata())).orderBy(ROUTINES.ROUTINE_SCHEMA,ROUTINES.ROUTINE_NAME).fetch()) {
+    SQLServerRoutineDefinition routine=new SQLServerRoutineDefinition(getSchema(record.getValue(ROUTINES.ROUTINE_SCHEMA)),record.getValue(ROUTINES.ROUTINE_NAME),record.getValue(ROUTINES.SPECIFIC_NAME),record.getValue(ROUTINES.DATA_TYPE),record.getValue(ROUTINES.NUMERIC_PRECISION),record.getValue(ROUTINES.NUMERIC_SCALE));
     result.add(routine);
   }
   return result;

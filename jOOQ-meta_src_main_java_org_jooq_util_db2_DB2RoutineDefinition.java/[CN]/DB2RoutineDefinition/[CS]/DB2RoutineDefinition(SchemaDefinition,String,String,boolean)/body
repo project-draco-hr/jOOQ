@@ -1,0 +1,4 @@
+{
+  super(schema,null,name,comment,null);
+  this.isProcedure=isProcedure;
+}

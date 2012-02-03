@@ -8,7 +8,7 @@
     String foreignKeyTableName=record.getValue(SYSTABLE.TABLE_NAME);
     String foreignKeyColumn=record.getValue(SYSTABCOL.COLUMN_NAME);
     String referencedKey=record.getValueAsString("ukIndexName");
-    TableDefinition foreignKeyTable=getTable(foreignKeyTableName);
+    TableDefinition foreignKeyTable=getTable(getSchema(),foreignKeyTableName);
     if (foreignKeyTable != null) {
       ColumnDefinition referencingColumn=foreignKeyTable.getColumn(foreignKeyColumn);
       relations.addForeignKey(foreignKey,referencedKey,referencingColumn);

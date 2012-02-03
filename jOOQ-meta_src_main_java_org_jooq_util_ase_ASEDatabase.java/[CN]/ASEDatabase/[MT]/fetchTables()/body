@@ -1,0 +1,11 @@
+{
+  List<Record> result=new ArrayList<Record>();
+  for (  Record record : create().fetch("sp_help")) {
+    if (asList("view","user table","system table").contains(record.getValueAsString("Object_type"))) {
+      if (getInputSchemata().contains(record.getValueAsString("Owner"))) {
+        result.add(record);
+      }
+    }
+  }
+  return result;
+}

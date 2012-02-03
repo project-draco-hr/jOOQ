@@ -1,9 +1,10 @@
 {
   List<TableDefinition> result=new ArrayList<TableDefinition>();
-  for (  Record record : create().select(Systables.TABLENAME,Systables.TABLEID).from(SYSTABLES).join(SYSSCHEMAS).on(Systables.SCHEMAID.equal(Sysschemas.SCHEMAID)).where(Sysschemas.SCHEMANAME.equal(getInputSchema())).fetch()) {
+  for (  Record record : create().select(Sysschemas.SCHEMANAME,Systables.TABLENAME,Systables.TABLEID).from(SYSTABLES).join(SYSSCHEMAS).on(Systables.SCHEMAID.equal(Sysschemas.SCHEMAID)).where(Sysschemas.SCHEMANAME.in(getInputSchemata())).orderBy(Sysschemas.SCHEMANAME,Systables.TABLENAME).fetch()) {
+    SchemaDefinition schema=getSchema(record.getValue(Sysschemas.SCHEMANAME));
     String name=record.getValue(Systables.TABLENAME);
     String id=record.getValue(Systables.TABLEID);
-    DerbyTableDefinition table=new DerbyTableDefinition(this,name,id);
+    DerbyTableDefinition table=new DerbyTableDefinition(schema,name,id);
     result.add(table);
   }
   return result;

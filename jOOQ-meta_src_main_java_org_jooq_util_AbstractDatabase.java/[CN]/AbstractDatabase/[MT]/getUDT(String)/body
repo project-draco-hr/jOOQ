@@ -1,8 +1,0 @@
-{
-  for (  UDTDefinition e : getUDTs()) {
-    if (e.getName().equals(name)) {
-      return e;
-    }
-  }
-  return null;
-}

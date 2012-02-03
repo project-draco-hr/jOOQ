@@ -5,7 +5,7 @@
     }
  catch (    Exception e) {
       log.error("Error while fetching relations",e);
-      relations=new DefaultRelations(this);
+      relations=new DefaultRelations();
     }
   }
   return relations;

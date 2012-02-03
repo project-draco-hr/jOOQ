@@ -1,0 +1,14 @@
+{
+  if (masterDataTables == null) {
+    masterDataTables=new ArrayList<MasterDataTableDefinition>();
+    try {
+      List<MasterDataTableDefinition> t=filterMasterDataTables(getTables0(),true);
+      masterDataTables=filterExcludeInclude(t);
+      log.info("Masterdata tables fetched",fetchedSize(t,masterDataTables));
+    }
+ catch (    Exception e) {
+      log.error("Exception while fetching master data tables",e);
+    }
+  }
+  return filterSchema(masterDataTables,schema);
+}

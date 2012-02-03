@@ -1,8 +1,8 @@
 {
-  if (StringUtils.isBlank(getSchemaName())) {
+  if (StringUtils.isBlank(getSchema().getName())) {
     return getName();
   }
  else {
-    return getSchemaName() + "." + getName();
+    return getSchema().getName() + "." + getName();
   }
 }

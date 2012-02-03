@@ -4,7 +4,7 @@
       if (record.getValueAsBoolean("pk",false)) {
         String columnName=record.getValueAsString("name");
         String key="pk_" + tableName + "_"+ columnName;
-        TableDefinition table=getTable(tableName);
+        TableDefinition table=getTable(getSchemata().get(0),tableName);
         if (table != null) {
           ColumnDefinition column=table.getColumn(columnName);
           relations.addPrimaryKey(key,column);

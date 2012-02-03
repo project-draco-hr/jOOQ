@@ -3,7 +3,7 @@
     String key=record.getValueAsString("indexName");
     String tableName=record.getValue(SYSTABLE.TABLE_NAME);
     String columnName=record.getValue(SYSTABCOL.COLUMN_NAME);
-    TableDefinition table=getTable(tableName);
+    TableDefinition table=getTable(getSchema(),tableName);
     if (table != null) {
       relations.addPrimaryKey(key,table.getColumn(columnName));
     }

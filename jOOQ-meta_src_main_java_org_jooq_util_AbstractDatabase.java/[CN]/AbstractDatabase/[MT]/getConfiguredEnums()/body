@@ -2,7 +2,7 @@
   List<EnumDefinition> result=new ArrayList<EnumDefinition>();
   for (  EnumType enumType : configuredEnumTypes) {
     String name=enumType.getName();
-    DefaultEnumDefinition e=new DefaultEnumDefinition(this,name,null,true);
+    DefaultEnumDefinition e=new DefaultEnumDefinition(getSchemata().get(0),name,null,true);
     String literals=enumType.getLiterals();
     try {
       CSVReader reader=new CSVReader(new StringReader(literals));

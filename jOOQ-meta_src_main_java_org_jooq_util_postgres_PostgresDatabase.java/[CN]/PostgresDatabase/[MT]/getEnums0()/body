@@ -1,11 +1,12 @@
 {
   List<EnumDefinition> result=new ArrayList<EnumDefinition>();
-  Result<Record> records=create().select(PG_TYPE.TYPNAME,PG_ENUM.ENUMLABEL).from(PG_ENUM).join(PG_TYPE).on("pg_enum.enumtypid = pg_type.oid").orderBy(PG_ENUM.ENUMTYPID,PG_ENUM.ENUMLABEL).fetch();
+  Result<Record> records=create().select(PG_NAMESPACE.NSPNAME,PG_TYPE.TYPNAME,PG_ENUM.ENUMLABEL).from(PG_ENUM).join(PG_TYPE).on("pg_enum.enumtypid = pg_type.oid").join(PG_NAMESPACE).on("pg_type.typnamespace = pg_namespace.oid").where(PG_NAMESPACE.NSPNAME.in(getInputSchemata())).orderBy(PG_NAMESPACE.NSPNAME,PG_TYPE.TYPNAME,PG_ENUM.ENUMLABEL).fetch();
   DefaultEnumDefinition definition=null;
   for (  Record record : records) {
+    SchemaDefinition schema=getSchema(record.getValue(PG_NAMESPACE.NSPNAME));
     String typeName=String.valueOf(record.getValue(PG_TYPE.TYPNAME));
     if (definition == null || !definition.getName().equals(typeName)) {
-      definition=new DefaultEnumDefinition(this,typeName,null);
+      definition=new DefaultEnumDefinition(schema,typeName,null);
       result.add(definition);
     }
     definition.addLiteral(String.valueOf(record.getValue(PG_ENUM.ENUMLABEL)));

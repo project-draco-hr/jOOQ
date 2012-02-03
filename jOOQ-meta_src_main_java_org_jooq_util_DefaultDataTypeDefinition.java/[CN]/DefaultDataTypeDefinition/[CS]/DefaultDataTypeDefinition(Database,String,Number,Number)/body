@@ -1,3 +1,0 @@
-{
-  this(database,typeName,precision,scale,typeName);
-}

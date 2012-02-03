@@ -1,5 +1,5 @@
 {
-  DefaultRelations result=new DefaultRelations(this);
+  DefaultRelations result=new DefaultRelations();
   loadPrimaryKeys(result);
   loadUniqueKeys(result);
   loadForeignKeys(result);

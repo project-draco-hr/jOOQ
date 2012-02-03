@@ -1,0 +1,14 @@
+{
+  if (arrays == null) {
+    arrays=new ArrayList<ArrayDefinition>();
+    try {
+      List<ArrayDefinition> a=getArrays0();
+      arrays=filterExcludeInclude(a);
+      log.info("ARRAYs fetched",fetchedSize(a,arrays));
+    }
+ catch (    Exception e) {
+      log.error("Error while fetching ARRAYS",e);
+    }
+  }
+  return filterSchema(arrays,schema);
+}

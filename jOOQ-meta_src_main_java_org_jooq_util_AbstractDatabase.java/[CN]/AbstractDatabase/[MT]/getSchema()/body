@@ -1,3 +1,0 @@
-{
-  return new SchemaDefinition(this,getOutputSchema(),null);
-}
