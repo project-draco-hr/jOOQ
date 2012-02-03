@@ -4,6 +4,9 @@
   if (array.getDataType().getType().isArray()) {
     arrayType=array.getDataType().getType().getComponentType();
   }
+ else   if (array instanceof ArrayConstant) {
+    arrayType=array.getDataType().getType();
+  }
  else {
     arrayType=Object.class;
   }
