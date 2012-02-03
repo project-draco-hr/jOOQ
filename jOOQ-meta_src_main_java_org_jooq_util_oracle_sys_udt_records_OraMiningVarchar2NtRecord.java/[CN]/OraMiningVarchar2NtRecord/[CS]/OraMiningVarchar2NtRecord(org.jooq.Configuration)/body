@@ -1,0 +1,3 @@
+{
+  super("SYS.ORA_MINING_VARCHAR2_NT",org.jooq.impl.SQLDataType.VARCHAR,configuration);
+}
