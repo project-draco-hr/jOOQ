@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.util.postgres.pg_catalog.tables.PgNamespace.PG_NAMESPACE.NSPACL,value);
+}
