@@ -1,0 +1,4 @@
+{
+  org.jooq.examples.sqlserver.adventureworks.dbo.routines.Ufngetaccountingstartdate f=new org.jooq.examples.sqlserver.adventureworks.dbo.routines.Ufngetaccountingstartdate();
+  return f.asField();
+}

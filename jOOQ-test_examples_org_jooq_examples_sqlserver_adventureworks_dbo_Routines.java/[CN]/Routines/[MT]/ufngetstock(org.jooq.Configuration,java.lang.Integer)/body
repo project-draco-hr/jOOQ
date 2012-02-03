@@ -1,0 +1,6 @@
+{
+  org.jooq.examples.sqlserver.adventureworks.dbo.routines.Ufngetstock f=new org.jooq.examples.sqlserver.adventureworks.dbo.routines.Ufngetstock();
+  f.setProductid(productid);
+  f.execute(configuration);
+  return f.getReturnValue();
+}

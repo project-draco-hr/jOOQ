@@ -1,0 +1,3 @@
+{
+  super(alias,org.jooq.examples.sqlserver.adventureworks.sales.Sales.SALES,org.jooq.examples.sqlserver.adventureworks.sales.tables.Currencyrate.CURRENCYRATE);
+}

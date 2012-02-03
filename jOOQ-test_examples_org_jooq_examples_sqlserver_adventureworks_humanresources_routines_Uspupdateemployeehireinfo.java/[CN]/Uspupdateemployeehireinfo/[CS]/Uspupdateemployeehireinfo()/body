@@ -1,0 +1,10 @@
+{
+  super(org.jooq.SQLDialect.SQLSERVER,"uspUpdateEmployeeHireInfo",org.jooq.examples.sqlserver.adventureworks.humanresources.Humanresources.HUMANRESOURCES);
+  addInParameter(EMPLOYEEID);
+  addInParameter(TITLE);
+  addInParameter(HIREDATE);
+  addInParameter(RATECHANGEDATE);
+  addInParameter(RATE);
+  addInParameter(PAYFREQUENCY);
+  addInParameter(CURRENTFLAG);
+}

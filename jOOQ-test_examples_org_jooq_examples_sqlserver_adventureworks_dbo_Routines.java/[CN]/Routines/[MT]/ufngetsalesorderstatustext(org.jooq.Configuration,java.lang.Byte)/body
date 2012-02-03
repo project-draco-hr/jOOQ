@@ -1,0 +1,6 @@
+{
+  org.jooq.examples.sqlserver.adventureworks.dbo.routines.Ufngetsalesorderstatustext f=new org.jooq.examples.sqlserver.adventureworks.dbo.routines.Ufngetsalesorderstatustext();
+  f.setStatus(status);
+  f.execute(configuration);
+  return f.getReturnValue();
+}

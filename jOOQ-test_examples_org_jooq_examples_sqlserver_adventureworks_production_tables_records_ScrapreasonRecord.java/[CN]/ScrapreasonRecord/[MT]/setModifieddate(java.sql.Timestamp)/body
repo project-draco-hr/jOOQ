@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.examples.sqlserver.adventureworks.production.tables.Scrapreason.SCRAPREASON.MODIFIEDDATE,value);
+}

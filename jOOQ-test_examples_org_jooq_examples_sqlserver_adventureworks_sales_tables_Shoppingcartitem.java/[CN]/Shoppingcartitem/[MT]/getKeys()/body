@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.examples.sqlserver.adventureworks.sales.tables.records.ShoppingcartitemRecord>>asList(org.jooq.examples.sqlserver.adventureworks.sales.Keys.PK_ShoppingCartItem_ShoppingCartItemID);
+}

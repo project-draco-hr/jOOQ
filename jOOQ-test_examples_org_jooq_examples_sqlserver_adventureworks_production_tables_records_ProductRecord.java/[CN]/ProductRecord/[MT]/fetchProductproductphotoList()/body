@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(org.jooq.examples.sqlserver.adventureworks.production.tables.Productproductphoto.PRODUCTPRODUCTPHOTO).where(org.jooq.examples.sqlserver.adventureworks.production.tables.Productproductphoto.PRODUCTPRODUCTPHOTO.PRODUCTID.equal(getValue(org.jooq.examples.sqlserver.adventureworks.production.tables.Product.PRODUCT.PRODUCTID))).fetch();
+}

@@ -1,0 +1,8 @@
+{
+  super(org.jooq.SQLDialect.SQLSERVER,"uspUpdateEmployeePersonalInfo",org.jooq.examples.sqlserver.adventureworks.humanresources.Humanresources.HUMANRESOURCES);
+  addInParameter(EMPLOYEEID);
+  addInParameter(NATIONALIDNUMBER);
+  addInParameter(BIRTHDATE);
+  addInParameter(MARITALSTATUS);
+  addInParameter(GENDER);
+}

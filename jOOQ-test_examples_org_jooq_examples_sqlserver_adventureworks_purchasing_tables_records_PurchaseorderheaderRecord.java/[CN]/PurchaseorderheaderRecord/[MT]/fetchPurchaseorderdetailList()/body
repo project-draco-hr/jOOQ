@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(org.jooq.examples.sqlserver.adventureworks.purchasing.tables.Purchaseorderdetail.PURCHASEORDERDETAIL).where(org.jooq.examples.sqlserver.adventureworks.purchasing.tables.Purchaseorderdetail.PURCHASEORDERDETAIL.PURCHASEORDERID.equal(getValue(org.jooq.examples.sqlserver.adventureworks.purchasing.tables.Purchaseorderheader.PURCHASEORDERHEADER.PURCHASEORDERID))).fetch();
+}

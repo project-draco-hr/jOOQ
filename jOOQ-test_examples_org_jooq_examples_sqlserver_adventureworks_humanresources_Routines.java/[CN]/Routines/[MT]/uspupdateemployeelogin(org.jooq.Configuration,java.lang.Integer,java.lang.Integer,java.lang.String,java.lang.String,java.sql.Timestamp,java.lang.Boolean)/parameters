@@ -1,0 +1,7 @@
+org.jooq.Configuration configuration
+java.lang.Integer employeeid
+java.lang.Integer managerid
+java.lang.String loginid
+java.lang.String title
+java.sql.Timestamp hiredate
+java.lang.Boolean currentflag

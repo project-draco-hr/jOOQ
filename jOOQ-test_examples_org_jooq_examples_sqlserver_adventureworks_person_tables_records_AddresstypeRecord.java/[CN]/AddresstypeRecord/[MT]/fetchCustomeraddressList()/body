@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(org.jooq.examples.sqlserver.adventureworks.sales.tables.Customeraddress.CUSTOMERADDRESS).where(org.jooq.examples.sqlserver.adventureworks.sales.tables.Customeraddress.CUSTOMERADDRESS.ADDRESSTYPEID.equal(getValue(org.jooq.examples.sqlserver.adventureworks.person.tables.Addresstype.ADDRESSTYPE.ADDRESSTYPEID))).fetch();
+}

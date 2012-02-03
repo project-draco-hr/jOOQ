@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(org.jooq.examples.sqlserver.adventureworks.sales.tables.Creditcard.CREDITCARD).where(org.jooq.examples.sqlserver.adventureworks.sales.tables.Creditcard.CREDITCARD.CREDITCARDID.equal(getValue(org.jooq.examples.sqlserver.adventureworks.sales.tables.Contactcreditcard.CONTACTCREDITCARD.CREDITCARDID))).fetchOne();
+}

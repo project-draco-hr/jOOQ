@@ -1,0 +1,3 @@
+{
+  super(alias,org.jooq.examples.sqlserver.adventureworks.dbo.Dbo.DBO,org.jooq.examples.sqlserver.adventureworks.dbo.tables.Databaselog.DATABASELOG);
+}

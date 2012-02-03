@@ -1,0 +1,3 @@
+{
+  return org.jooq.examples.sqlserver.adventureworks.sales.Keys.PK_CustomerAddress_CustomerID_AddressID;
+}

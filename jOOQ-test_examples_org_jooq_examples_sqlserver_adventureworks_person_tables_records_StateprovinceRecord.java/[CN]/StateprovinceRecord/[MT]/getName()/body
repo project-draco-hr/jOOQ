@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.examples.sqlserver.adventureworks.person.tables.Stateprovince.STATEPROVINCE.NAME);
+}

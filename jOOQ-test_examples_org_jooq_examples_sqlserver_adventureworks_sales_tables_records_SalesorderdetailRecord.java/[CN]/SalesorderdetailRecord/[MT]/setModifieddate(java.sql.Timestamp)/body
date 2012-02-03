@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.examples.sqlserver.adventureworks.sales.tables.Salesorderdetail.SALESORDERDETAIL.MODIFIEDDATE,value);
+}

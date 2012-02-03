@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.examples.sqlserver.adventureworks.sales.tables.Salespersonquotahistory.SALESPERSONQUOTAHISTORY.ROWGUID);
+}

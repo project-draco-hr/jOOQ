@@ -1,0 +1,3 @@
+{
+  super("EmployeeAddress",org.jooq.examples.sqlserver.adventureworks.humanresources.Humanresources.HUMANRESOURCES);
+}

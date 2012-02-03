@@ -1,0 +1,4 @@
+{
+  org.jooq.examples.sqlserver.adventureworks.dbo.routines.Ufngetaccountingenddate f=new org.jooq.examples.sqlserver.adventureworks.dbo.routines.Ufngetaccountingenddate();
+  return f.asField();
+}

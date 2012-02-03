@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(org.jooq.examples.sqlserver.adventureworks.production.tables.Productcategory.PRODUCTCATEGORY).where(org.jooq.examples.sqlserver.adventureworks.production.tables.Productcategory.PRODUCTCATEGORY.PRODUCTCATEGORYID.equal(getValue(org.jooq.examples.sqlserver.adventureworks.production.tables.Productsubcategory.PRODUCTSUBCATEGORY.PRODUCTCATEGORYID))).fetchOne();
+}

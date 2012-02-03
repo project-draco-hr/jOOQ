@@ -1,0 +1,3 @@
+{
+  super("ProductModelProductDescriptionCulture",org.jooq.examples.sqlserver.adventureworks.production.Production.PRODUCTION);
+}

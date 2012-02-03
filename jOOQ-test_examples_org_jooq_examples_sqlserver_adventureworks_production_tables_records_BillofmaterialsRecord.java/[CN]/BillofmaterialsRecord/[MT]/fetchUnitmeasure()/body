@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(org.jooq.examples.sqlserver.adventureworks.production.tables.Unitmeasure.UNITMEASURE).where(org.jooq.examples.sqlserver.adventureworks.production.tables.Unitmeasure.UNITMEASURE.UNITMEASURECODE.equal(getValue(org.jooq.examples.sqlserver.adventureworks.production.tables.Billofmaterials.BILLOFMATERIALS.UNITMEASURECODE))).fetchOne();
+}

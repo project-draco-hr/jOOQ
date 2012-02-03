@@ -1,0 +1,3 @@
+{
+  super("ProductSubcategory",org.jooq.examples.sqlserver.adventureworks.production.Production.PRODUCTION);
+}

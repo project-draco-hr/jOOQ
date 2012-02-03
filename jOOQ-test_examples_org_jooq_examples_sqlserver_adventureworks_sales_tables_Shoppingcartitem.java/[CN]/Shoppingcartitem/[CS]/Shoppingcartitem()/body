@@ -1,0 +1,3 @@
+{
+  super("ShoppingCartItem",org.jooq.examples.sqlserver.adventureworks.sales.Sales.SALES);
+}

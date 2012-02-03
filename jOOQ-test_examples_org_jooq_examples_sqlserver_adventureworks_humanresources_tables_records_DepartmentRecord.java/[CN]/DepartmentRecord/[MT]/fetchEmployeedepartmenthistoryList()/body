@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(org.jooq.examples.sqlserver.adventureworks.humanresources.tables.Employeedepartmenthistory.EMPLOYEEDEPARTMENTHISTORY).where(org.jooq.examples.sqlserver.adventureworks.humanresources.tables.Employeedepartmenthistory.EMPLOYEEDEPARTMENTHISTORY.DEPARTMENTID.equal(getValue(org.jooq.examples.sqlserver.adventureworks.humanresources.tables.Department.DEPARTMENT.DEPARTMENTID))).fetch();
+}

@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.examples.sqlserver.adventureworks.purchasing.tables.Vendor.VENDOR.NAME);
+}

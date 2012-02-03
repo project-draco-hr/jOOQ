@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(org.jooq.examples.sqlserver.adventureworks.sales.tables.Salesorderheader.SALESORDERHEADER).where(org.jooq.examples.sqlserver.adventureworks.sales.tables.Salesorderheader.SALESORDERHEADER.SHIPTOADDRESSID.equal(getValue(org.jooq.examples.sqlserver.adventureworks.person.tables.Address.ADDRESS.ADDRESSID))).fetch();
+}

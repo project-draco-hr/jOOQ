@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(org.jooq.examples.sqlserver.adventureworks.sales.tables.Individual.INDIVIDUAL).where(org.jooq.examples.sqlserver.adventureworks.sales.tables.Individual.INDIVIDUAL.CUSTOMERID.equal(getValue(org.jooq.examples.sqlserver.adventureworks.sales.tables.Customer.CUSTOMER.CUSTOMERID))).fetch();
+}

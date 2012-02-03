@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(org.jooq.examples.sqlserver.adventureworks.sales.tables.Countryregioncurrency.COUNTRYREGIONCURRENCY).where(org.jooq.examples.sqlserver.adventureworks.sales.tables.Countryregioncurrency.COUNTRYREGIONCURRENCY.CURRENCYCODE.equal(getValue(org.jooq.examples.sqlserver.adventureworks.sales.tables.Currency.CURRENCY.CURRENCYCODE))).fetch();
+}

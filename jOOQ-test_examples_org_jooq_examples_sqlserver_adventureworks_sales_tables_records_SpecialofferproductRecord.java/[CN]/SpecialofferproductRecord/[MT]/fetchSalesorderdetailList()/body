@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(org.jooq.examples.sqlserver.adventureworks.sales.tables.Salesorderdetail.SALESORDERDETAIL).where(org.jooq.examples.sqlserver.adventureworks.sales.tables.Salesorderdetail.SALESORDERDETAIL.SPECIALOFFERID.equal(getValue(org.jooq.examples.sqlserver.adventureworks.sales.tables.Specialofferproduct.SPECIALOFFERPRODUCT.SPECIALOFFERID))).and(org.jooq.examples.sqlserver.adventureworks.sales.tables.Salesorderdetail.SALESORDERDETAIL.PRODUCTID.equal(getValue(org.jooq.examples.sqlserver.adventureworks.sales.tables.Specialofferproduct.SPECIALOFFERPRODUCT.PRODUCTID))).fetch();
+}

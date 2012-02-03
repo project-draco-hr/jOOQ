@@ -1,0 +1,6 @@
+{
+  super(org.jooq.SQLDialect.SQLSERVER,"ufnGetProductStandardCost",org.jooq.examples.sqlserver.adventureworks.dbo.Dbo.DBO,org.jooq.impl.SQLDataType.NUMERIC);
+  setReturnParameter(RETURN_VALUE);
+  addInParameter(PRODUCTID);
+  addInParameter(ORDERDATE);
+}

@@ -1,0 +1,5 @@
+{
+  super(org.jooq.SQLDialect.SQLSERVER,"uspGetWhereUsedProductID",org.jooq.examples.sqlserver.adventureworks.dbo.Dbo.DBO);
+  addInParameter(STARTPRODUCTID);
+  addInParameter(CHECKDATE);
+}

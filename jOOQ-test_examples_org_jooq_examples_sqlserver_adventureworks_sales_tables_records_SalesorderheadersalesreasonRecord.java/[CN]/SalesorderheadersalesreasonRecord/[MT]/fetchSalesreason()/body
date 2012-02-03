@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(org.jooq.examples.sqlserver.adventureworks.sales.tables.Salesreason.SALESREASON).where(org.jooq.examples.sqlserver.adventureworks.sales.tables.Salesreason.SALESREASON.SALESREASONID.equal(getValue(org.jooq.examples.sqlserver.adventureworks.sales.tables.Salesorderheadersalesreason.SALESORDERHEADERSALESREASON.SALESREASONID))).fetchOne();
+}

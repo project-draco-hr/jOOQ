@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(org.jooq.examples.sqlserver.adventureworks.person.tables.Countryregion.COUNTRYREGION).where(org.jooq.examples.sqlserver.adventureworks.person.tables.Countryregion.COUNTRYREGION.COUNTRYREGIONCODE.equal(getValue(org.jooq.examples.sqlserver.adventureworks.person.tables.Stateprovince.STATEPROVINCE.COUNTRYREGIONCODE))).fetchOne();
+}

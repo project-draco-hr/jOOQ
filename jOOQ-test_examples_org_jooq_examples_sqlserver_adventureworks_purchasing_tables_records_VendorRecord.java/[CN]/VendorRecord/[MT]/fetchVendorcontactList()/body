@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(org.jooq.examples.sqlserver.adventureworks.purchasing.tables.Vendorcontact.VENDORCONTACT).where(org.jooq.examples.sqlserver.adventureworks.purchasing.tables.Vendorcontact.VENDORCONTACT.VENDORID.equal(getValue(org.jooq.examples.sqlserver.adventureworks.purchasing.tables.Vendor.VENDOR.VENDORID))).fetch();
+}

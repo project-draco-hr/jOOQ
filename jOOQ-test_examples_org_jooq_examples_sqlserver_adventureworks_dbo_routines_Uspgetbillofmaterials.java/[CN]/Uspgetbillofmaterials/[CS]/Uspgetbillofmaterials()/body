@@ -1,0 +1,5 @@
+{
+  super(org.jooq.SQLDialect.SQLSERVER,"uspGetBillOfMaterials",org.jooq.examples.sqlserver.adventureworks.dbo.Dbo.DBO);
+  addInParameter(STARTPRODUCTID);
+  addInParameter(CHECKDATE);
+}

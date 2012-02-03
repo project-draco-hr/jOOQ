@@ -1,0 +1,5 @@
+{
+  org.jooq.examples.sqlserver.adventureworks.dbo.routines.Ufnleadingzeros f=new org.jooq.examples.sqlserver.adventureworks.dbo.routines.Ufnleadingzeros();
+  f.setValue(value);
+  return f.asField();
+}

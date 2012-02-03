@@ -1,0 +1,3 @@
+{
+  super("CountryRegionCurrency",org.jooq.examples.sqlserver.adventureworks.sales.Sales.SALES);
+}

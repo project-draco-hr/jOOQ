@@ -1,0 +1,3 @@
+{
+  return org.jooq.examples.sqlserver.adventureworks.sales.Keys.IDENTITY_SpecialOffer;
+}
