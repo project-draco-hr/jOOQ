@@ -1,0 +1,3 @@
+{
+  setValue(IN_TABLE,value);
+}

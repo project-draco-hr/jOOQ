@@ -1,0 +1,3 @@
+{
+  super("TEST.U_DATE_TABLE",org.jooq.impl.SQLDataType.DATE,configuration);
+}

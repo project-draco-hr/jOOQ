@@ -1,0 +1,5 @@
+{
+  super(org.jooq.SQLDialect.ORACLE,"P_TABLES1",org.jooq.test.oracle.generatedclasses.Test.TEST);
+  addInParameter(IN_TABLE);
+  addOutParameter(OUT_TABLE);
+}

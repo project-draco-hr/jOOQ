@@ -3,4 +3,5 @@
   addInOutParameter(SELF);
   addOutParameter(BOOK1);
   addOutParameter(BOOK2);
+  addOutParameter(BOOKS);
 }

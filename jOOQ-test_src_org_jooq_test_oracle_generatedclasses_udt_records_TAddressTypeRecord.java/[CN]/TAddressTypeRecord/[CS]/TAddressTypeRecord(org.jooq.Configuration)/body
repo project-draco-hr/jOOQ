@@ -1,0 +1,3 @@
+{
+  super("TEST.T_ADDRESS_TYPE",org.jooq.test.oracle.generatedclasses.udt.UAddressType.U_ADDRESS_TYPE.getDataType(),configuration);
+}

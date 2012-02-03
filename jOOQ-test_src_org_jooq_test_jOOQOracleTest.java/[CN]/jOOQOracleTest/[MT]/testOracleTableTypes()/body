@@ -1,0 +1,36 @@
+{
+  ora().newRecord(TArrays());
+  new FTables1();
+  assertEquals(emptyList(),create().select().from(table(new UNumberArrayRecord(ora(),(Integer[])null))).fetch(0));
+  assertEquals(emptyList(),create().select().from(table(new UNumberArrayRecord(ora()))).fetch(0));
+  assertEquals(asList(1),create().select().from(table(new UNumberArrayRecord(ora(),1))).fetch(0));
+  assertEquals(asList(1,2),create().select().from(table(new UNumberArrayRecord(ora(),1,2))).fetch(0));
+  assertEquals(emptyList(),create().select().from(table(new UNumberTableRecord(ora(),(Integer[])null))).fetch(0));
+  assertEquals(emptyList(),create().select().from(table(new UNumberTableRecord(ora()))).fetch(0));
+  assertEquals(asList(1),create().select().from(table(new UNumberTableRecord(ora(),1))).fetch(0));
+  assertEquals(asList(1,2),create().select().from(table(new UNumberTableRecord(ora(),1,2))).fetch(0));
+  assertEquals(emptyList(),create().select().from(table(fArrays1(new UNumberArrayRecord(ora(),(Integer[])null)))).fetch(0));
+  assertEquals(emptyList(),create().select().from(table(fArrays1(new UNumberArrayRecord(ora())))).fetch(0));
+  assertEquals(asList(1),create().select().from(table(fArrays1(new UNumberArrayRecord(ora(),1)))).fetch(0));
+  assertEquals(asList(1,2),create().select().from(table(fArrays1(new UNumberArrayRecord(ora(),1,2)))).fetch(0));
+  assertEquals(emptyList(),create().select().from(table(fTables1(new UNumberTableRecord(ora(),(Integer[])null)))).fetch(0));
+  assertEquals(emptyList(),create().select().from(table(fTables1(new UNumberTableRecord(ora())))).fetch(0));
+  assertEquals(asList(1),create().select().from(table(fTables1(new UNumberTableRecord(ora(),1)))).fetch(0));
+  assertEquals(asList(1,2),create().select().from(table(fTables1(new UNumberTableRecord(ora(),1,2)))).fetch(0));
+  assertEquals(emptyList(),fArrays1(ora(),new UNumberArrayRecord(ora(),(Integer[])null)).getList());
+  assertEquals(emptyList(),fArrays1(ora(),new UNumberArrayRecord(ora())).getList());
+  assertEquals(asList(1),fArrays1(ora(),new UNumberArrayRecord(ora(),1)).getList());
+  assertEquals(asList(1,2),fArrays1(ora(),new UNumberArrayRecord(ora(),1,2)).getList());
+  assertEquals(emptyList(),fTables1(ora(),new UNumberTableRecord(ora(),(Integer[])null)).getList());
+  assertEquals(emptyList(),fTables1(ora(),new UNumberTableRecord(ora())).getList());
+  assertEquals(asList(1),fTables1(ora(),new UNumberTableRecord(ora(),1)).getList());
+  assertEquals(asList(1,2),fTables1(ora(),new UNumberTableRecord(ora(),1,2)).getList());
+  assertEquals(emptyList(),pArrays1(ora(),new UNumberArrayRecord(ora(),(Integer[])null)).getList());
+  assertEquals(emptyList(),pArrays1(ora(),new UNumberArrayRecord(ora())).getList());
+  assertEquals(asList(1),pArrays1(ora(),new UNumberArrayRecord(ora(),1)).getList());
+  assertEquals(asList(1,2),pArrays1(ora(),new UNumberArrayRecord(ora(),1,2)).getList());
+  assertEquals(emptyList(),pTables1(ora(),new UNumberTableRecord(ora(),(Integer[])null)).getList());
+  assertEquals(emptyList(),pTables1(ora(),new UNumberTableRecord(ora())).getList());
+  assertEquals(asList(1),pTables1(ora(),new UNumberTableRecord(ora(),1)).getList());
+  assertEquals(asList(1,2),pTables1(ora(),new UNumberTableRecord(ora(),1,2)).getList());
+}

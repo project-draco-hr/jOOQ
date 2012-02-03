@@ -1,0 +1,5 @@
+{
+  org.jooq.test.oracle.generatedclasses.routines.FTables3 f=new org.jooq.test.oracle.generatedclasses.routines.FTables3();
+  f.setInTable(inTable);
+  return f.asField();
+}

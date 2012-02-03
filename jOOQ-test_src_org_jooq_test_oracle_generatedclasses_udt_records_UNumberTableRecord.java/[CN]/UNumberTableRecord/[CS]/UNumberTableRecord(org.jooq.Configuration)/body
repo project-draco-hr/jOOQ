@@ -1,0 +1,3 @@
+{
+  super("TEST.U_NUMBER_TABLE",org.jooq.impl.SQLDataType.INTEGER,configuration);
+}
