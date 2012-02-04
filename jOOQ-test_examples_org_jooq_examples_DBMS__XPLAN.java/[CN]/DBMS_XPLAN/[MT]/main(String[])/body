@@ -3,6 +3,11 @@
   Connection connection=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","TEST","TEST");
   OracleFactory ora=new OracleFactory(connection);
   ora.fetch("select * from t_book b join t_author a on b.author_id = a.id");
+  System.out.println("Standalone call:");
+  System.out.println("----------------");
+  for (  DbmsXplanTypeRecord record : DbmsXplan.displayCursor(ora,null,null,"ALLSTATS LAST").get()) {
+    System.out.println(record.getPlanTableOutput());
+  }
   System.out.println("Unnested table:");
   System.out.println("---------------");
   for (  String row : ora.select().from(table(DbmsXplan.displayCursor(null,null,"ALLSTATS LAST"))).fetch(0,String.class)) {
