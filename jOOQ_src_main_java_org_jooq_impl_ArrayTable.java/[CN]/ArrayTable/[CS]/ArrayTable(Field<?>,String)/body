@@ -17,5 +17,18 @@
   this.array=array;
   this.alias=alias;
   this.field=new FieldList();
-  this.field.add(new Qualifier(Factory.getDataType(arrayType),alias,"COLUMN_VALUE"));
+  if (UDTRecord.class.isAssignableFrom(arrayType)) {
+    try {
+      UDTRecord<?> record=(UDTRecord<?>)arrayType.newInstance();
+      for (      Field<?> f : record.getFields()) {
+        this.field.add(new Qualifier(f.getDataType(),alias,f.getName()));
+      }
+    }
+ catch (    Exception e) {
+      throw new DataTypeException("Bad UDT Type : " + arrayType,e);
+    }
+  }
+ else {
+    this.field.add(new Qualifier(Factory.getDataType(arrayType),alias,"COLUMN_VALUE"));
+  }
 }

@@ -8,7 +8,7 @@
       result=typesByType[dialect.ordinal()].get(type);
     }
     if (result == null) {
-      if (EnumType.class.isAssignableFrom(type) || UDTRecord.class.isAssignableFrom(type) || MasterDataType.class.isAssignableFrom(type)) {
+      if (EnumType.class.isAssignableFrom(type) || UDTRecord.class.isAssignableFrom(type) || MasterDataType.class.isAssignableFrom(type)|| ArrayRecord.class.isAssignableFrom(type)) {
         for (        SQLDialect d : SQLDialect.values()) {
           result=typesByType[d.ordinal()].get(type);
           if (result != null) {

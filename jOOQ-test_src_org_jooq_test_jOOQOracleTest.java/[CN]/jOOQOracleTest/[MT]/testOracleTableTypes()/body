@@ -1,6 +1,8 @@
 {
-  ora().newRecord(TArrays());
+  new FArrays1();
   new FTables1();
+  new FArrays4();
+  new FTables4();
   assertEquals(emptyList(),create().select().from(table(new UNumberArrayRecord(ora(),(Integer[])null))).fetch(0));
   assertEquals(emptyList(),create().select().from(table(new UNumberArrayRecord(ora()))).fetch(0));
   assertEquals(asList(1),create().select().from(table(new UNumberArrayRecord(ora(),1))).fetch(0));
@@ -33,4 +35,22 @@
   assertEquals(emptyList(),pTables1(ora(),new UNumberTableRecord(ora())).getList());
   assertEquals(asList(1),pTables1(ora(),new UNumberTableRecord(ora(),1)).getList());
   assertEquals(asList(1,2),pTables1(ora(),new UNumberTableRecord(ora(),1,2)).getList());
+  UBookTypeRecord r1=new UBookTypeRecord();
+  UBookTypeRecord r2=new UBookTypeRecord();
+  r1.setId(1);
+  r1.setTitle(BOOK_TITLES.get(0));
+  r2.setId(2);
+  r2.setTitle(BOOK_TITLES.get(1));
+  assertEquals(emptyList(),create().select().from(table(new UBookArrayRecord(ora(),(UBookTypeRecord[])null))).fetch(0));
+  assertEquals(emptyList(),create().select().from(table(new UBookArrayRecord(ora()))).fetch(0));
+  assertEquals(asList(1),create().select().from(table(new UBookArrayRecord(ora(),r1))).fetch(0));
+  assertEquals(BOOK_TITLES.subList(0,1),create().select().from(table(new UBookArrayRecord(ora(),r1))).fetch(1));
+  assertEquals(asList(1,2),create().select().from(table(new UBookArrayRecord(ora(),r1,r2))).fetch(0));
+  assertEquals(BOOK_TITLES.subList(0,2),create().select().from(table(new UBookArrayRecord(ora(),r1,r2))).fetch(1));
+  assertEquals(emptyList(),create().select().from(table(new UBookTableRecord(ora(),(UBookTypeRecord[])null))).fetch(0));
+  assertEquals(emptyList(),create().select().from(table(new UBookTableRecord(ora()))).fetch(0));
+  assertEquals(asList(1),create().select().from(table(new UBookTableRecord(ora(),r1))).fetch(0));
+  assertEquals(BOOK_TITLES.subList(0,1),create().select().from(table(new UBookTableRecord(ora(),r1))).fetch(1));
+  assertEquals(asList(1,2),create().select().from(table(new UBookTableRecord(ora(),r1,r2))).fetch(0));
+  assertEquals(BOOK_TITLES.subList(0,2),create().select().from(table(new UBookTableRecord(ora(),r1,r2))).fetch(1));
 }
