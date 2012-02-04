@@ -1,0 +1,3 @@
+{
+  super("TEST.U_BOOK_TABLE",org.jooq.test.oracle.generatedclasses.udt.UBookType.U_BOOK_TYPE.getDataType(),configuration);
+}
