@@ -1,0 +1,6 @@
+{
+  org.jooq.test.oracle.generatedclasses.routines.FTables4 f=new org.jooq.test.oracle.generatedclasses.routines.FTables4();
+  f.setInTable(inTable);
+  f.execute(configuration);
+  return f.getReturnValue();
+}
