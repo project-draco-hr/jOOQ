@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.examples.oracle.sys.udt.DbmsXplanType.PLAN_TABLE_OUTPUT);
+}

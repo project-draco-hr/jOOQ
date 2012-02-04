@@ -1,0 +1,3 @@
+{
+  super("SYS.DBMS_XPLAN_TYPE_TABLE",org.jooq.examples.oracle.sys.udt.DbmsXplanType.DBMS_XPLAN_TYPE.getDataType(),configuration);
+}

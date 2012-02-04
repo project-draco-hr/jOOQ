@@ -1,0 +1,7 @@
+{
+  Class.forName("oracle.jdbc.OracleDriver");
+  Connection connection=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","TEST","TEST");
+  OracleFactory ora=new OracleFactory(connection);
+  ora.fetch("select * from t_book");
+  ora.select().from(table(DbmsXplan.displayCursor(null,null,"ALLSTATS LAST"))).fetch();
+}

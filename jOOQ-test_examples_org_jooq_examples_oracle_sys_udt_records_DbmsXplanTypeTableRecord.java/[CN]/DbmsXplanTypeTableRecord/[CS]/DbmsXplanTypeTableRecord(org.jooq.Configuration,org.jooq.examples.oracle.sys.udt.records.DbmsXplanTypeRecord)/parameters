@@ -1,0 +1,2 @@
+org.jooq.Configuration configuration
+org.jooq.examples.oracle.sys.udt.records.DbmsXplanTypeRecord array
