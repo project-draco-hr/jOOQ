@@ -41,7 +41,7 @@
     database.setConfiguredMasterDataTables(g.getDatabase().getMasterDataTables().getMasterDataTable());
     database.setConfiguredEnumTypes(g.getDatabase().getEnumTypes().getEnumType());
     database.setConfiguredForcedTypes(g.getDatabase().getForcedTypes().getForcedType());
-    database.setSupportsUnsignedTypes(g.getGenerate().isUnsignedTypes());
+    database.setSupportsUnsignedTypes(g.getDatabase().isUnsignedTypes());
     generator.setTargetPackage(g.getTarget().getPackageName());
     generator.setTargetDirectory(g.getTarget().getDirectory());
     generator.setGenerateRelations(g.getGenerate().isRelations());
