@@ -1,0 +1,3 @@
+{
+  return delegate.TBookSale_SOLD_AT();
+}

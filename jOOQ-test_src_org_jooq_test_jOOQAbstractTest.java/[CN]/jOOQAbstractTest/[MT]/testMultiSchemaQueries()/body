@@ -1,0 +1,3 @@
+{
+  new SchemaAndMappingTests(this).testMultiSchemaQueries();
+}
