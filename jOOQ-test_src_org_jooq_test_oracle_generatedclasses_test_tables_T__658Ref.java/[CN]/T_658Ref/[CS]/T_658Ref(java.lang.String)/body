@@ -1,0 +1,3 @@
+{
+  super(alias,org.jooq.test.oracle.generatedclasses.test.Test.TEST,org.jooq.test.oracle.generatedclasses.test.tables.T_658Ref.T_658_REF);
+}

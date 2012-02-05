@@ -1,0 +1,3 @@
+{
+  super("T_TRIGGERS",org.jooq.test.oracle.generatedclasses.test.Test.TEST);
+}

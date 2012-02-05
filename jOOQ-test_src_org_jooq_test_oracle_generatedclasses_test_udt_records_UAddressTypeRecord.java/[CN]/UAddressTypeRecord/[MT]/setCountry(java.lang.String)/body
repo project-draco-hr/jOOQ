@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.oracle.generatedclasses.test.udt.UAddressType.COUNTRY,value);
+}

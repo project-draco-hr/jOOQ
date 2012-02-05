@@ -1,5 +1,0 @@
-{
-  super(org.jooq.SQLDialect.ORACLE,"P_ARRAYS4",org.jooq.test.oracle.generatedclasses.Test.TEST);
-  addInParameter(IN_ARRAY);
-  addOutParameter(OUT_ARRAY);
-}

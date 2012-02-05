@@ -1,7 +1,0 @@
-{
-  org.jooq.test.oracle.generatedclasses.routines.F378 p=new org.jooq.test.oracle.generatedclasses.routines.F378();
-  p.setI(i);
-  p.setIo(io);
-  p.execute(configuration);
-  return p;
-}

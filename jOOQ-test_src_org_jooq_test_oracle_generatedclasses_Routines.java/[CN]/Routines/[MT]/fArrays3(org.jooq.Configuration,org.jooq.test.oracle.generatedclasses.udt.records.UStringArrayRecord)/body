@@ -1,6 +1,0 @@
-{
-  org.jooq.test.oracle.generatedclasses.routines.FArrays3 f=new org.jooq.test.oracle.generatedclasses.routines.FArrays3();
-  f.setInArray(inArray);
-  f.execute(configuration);
-  return f.getReturnValue();
-}

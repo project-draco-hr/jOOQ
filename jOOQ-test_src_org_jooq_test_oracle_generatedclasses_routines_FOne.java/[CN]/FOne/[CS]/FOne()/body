@@ -1,4 +1,0 @@
-{
-  super(org.jooq.SQLDialect.ORACLE,"F_ONE",org.jooq.test.oracle.generatedclasses.Test.TEST,org.jooq.impl.SQLDataType.NUMERIC);
-  setReturnParameter(RETURN_VALUE);
-}

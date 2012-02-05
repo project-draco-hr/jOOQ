@@ -1,0 +1,4 @@
+{
+  org.jooq.test.oracle.generatedclasses.test.packages.library.PkgFUnused f=new org.jooq.test.oracle.generatedclasses.test.packages.library.PkgFUnused();
+  return f.asField();
+}

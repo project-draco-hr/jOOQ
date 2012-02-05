@@ -1,0 +1,94 @@
+{
+  Statement stmt=null;
+  String allSQL=scripts.get(script);
+  if (allSQL == null) {
+    try {
+      File file=new File(getClass().getResource(script).toURI());
+      allSQL=FileUtils.readFileToString(file);
+      testSQLWatch.splitDebug("Loaded SQL file");
+    }
+ catch (    Exception ignore) {
+      allSQL="";
+    }
+    scripts.put(script,allSQL);
+  }
+  for (  String sql : allSQL.split("/")) {
+    try {
+      if (!StringUtils.isBlank(sql)) {
+        sql=sql.replace("{" + JDBC_SCHEMA + "}",jdbcSchema);
+        if (sql.toLowerCase().contains("multi_schema.")) {
+          stmt=getConnectionMultiSchema().createStatement();
+        }
+ else {
+          stmt=getConnection().createStatement();
+        }
+        stmt.execute(sql.trim());
+        testSQLWatch.splitDebug(StringUtils.abbreviate(sql.trim().replaceAll("[\\n\\r]|\\s+"," "),25));
+      }
+    }
+ catch (    Exception e) {
+      if (e.getMessage().contains("ORA-00942")) {
+        continue;
+      }
+ else       if (e.getMessage().contains("ORA-02289")) {
+        continue;
+      }
+ else       if (e.getMessage().contains("ORA-04043")) {
+        continue;
+      }
+ else       if (e.getMessage().contains("ORA-04080")) {
+        continue;
+      }
+ else       if (e.getMessage().contains("SQLCODE=-204") && e.getMessage().contains("SQLSTATE=42704")) {
+        continue;
+      }
+ else       if (e.getMessage().contains("SQLCODE=-20012") && e.getMessage().contains("SQLSTATE=42740")) {
+        continue;
+      }
+ else       if (e instanceof PSQLException) {
+        if ("42883".equals(((PSQLException)e).getSQLState())) {
+          continue;
+        }
+      }
+ else       if (e.getCause() instanceof org.apache.derby.client.am.SqlException) {
+        if (sql.contains("DROP") || sql.contains("CREATE SCHEMA")) {
+          continue;
+        }
+      }
+ else       if (e instanceof SQLServerException) {
+switch (((SQLServerException)e).getErrorCode()) {
+case 3701:
+case 218:
+          continue;
+      }
+    }
+ else     if (e instanceof SybSQLException) {
+      if (sql.contains("DROP SEQUENCE")) {
+        continue;
+      }
+    }
+ else     if (e instanceof SQLSyntaxErrorException) {
+      if (sql.contains("DROP SEQUENCE") || sql.contains("DROP RULE")) {
+        continue;
+      }
+    }
+ else     if (e.getMessage().contains("doesn't exist") && getDialect() == SQLDialect.ASE) {
+      continue;
+    }
+    System.out.println("Error while executing : " + sql.trim());
+    System.out.println();
+    System.out.println();
+    e.printStackTrace();
+    System.exit(-1);
+  }
+ finally {
+    if (stmt != null) {
+      try {
+        stmt.close();
+      }
+ catch (      SQLException e) {
+      }
+    }
+  }
+}
+}

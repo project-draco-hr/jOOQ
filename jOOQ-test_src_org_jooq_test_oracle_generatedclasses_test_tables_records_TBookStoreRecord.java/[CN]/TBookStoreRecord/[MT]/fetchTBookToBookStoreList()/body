@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(org.jooq.test.oracle.generatedclasses.test.tables.TBookToBookStore.T_BOOK_TO_BOOK_STORE).where(org.jooq.test.oracle.generatedclasses.test.tables.TBookToBookStore.T_BOOK_TO_BOOK_STORE.BOOK_STORE_NAME.equal(getValue(org.jooq.test.oracle.generatedclasses.test.tables.TBookStore.T_BOOK_STORE.NAME))).fetch();
+}

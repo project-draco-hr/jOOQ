@@ -1,3 +1,0 @@
-{
-  super("U_INVALID_TABLE",org.jooq.test.oracle.generatedclasses.Test.TEST);
-}

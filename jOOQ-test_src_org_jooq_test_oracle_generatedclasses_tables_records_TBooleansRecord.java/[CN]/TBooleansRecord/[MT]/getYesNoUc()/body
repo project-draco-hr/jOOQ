@@ -1,3 +1,0 @@
-{
-  return getValue(org.jooq.test.oracle.generatedclasses.tables.TBooleans.T_BOOLEANS.YES_NO_UC);
-}

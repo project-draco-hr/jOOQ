@@ -1,5 +1,6 @@
 {
-  if (connectionMultiSchema == null) {
+  if (!connectionMultiSchemaInitialised) {
+    connectionMultiSchemaInitialised=true;
     connectionMultiSchema=getConnection0("MULTI_SCHEMA","MULTI_SCHEMA");
   }
   return connectionMultiSchema;

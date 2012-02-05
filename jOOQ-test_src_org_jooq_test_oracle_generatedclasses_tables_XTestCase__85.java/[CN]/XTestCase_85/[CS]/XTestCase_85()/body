@@ -1,3 +1,0 @@
-{
-  super("X_TEST_CASE_85",org.jooq.test.oracle.generatedclasses.Test.TEST);
-}

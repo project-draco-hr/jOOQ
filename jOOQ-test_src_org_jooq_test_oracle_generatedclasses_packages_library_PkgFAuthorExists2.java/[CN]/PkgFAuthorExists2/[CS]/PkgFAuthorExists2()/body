@@ -1,7 +1,0 @@
-{
-  super(org.jooq.SQLDialect.ORACLE,"PKG_F_AUTHOR_EXISTS",org.jooq.test.oracle.generatedclasses.Test.TEST,org.jooq.test.oracle.generatedclasses.packages.Library.LIBRARY,org.jooq.impl.SQLDataType.NUMERIC);
-  setReturnParameter(RETURN_VALUE);
-  addInParameter(AUTHOR_NAME);
-  addInParameter(UNUSED);
-  setOverloaded(true);
-}

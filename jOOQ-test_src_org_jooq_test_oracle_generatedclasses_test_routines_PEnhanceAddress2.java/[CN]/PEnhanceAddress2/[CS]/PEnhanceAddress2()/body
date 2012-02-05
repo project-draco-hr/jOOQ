@@ -1,0 +1,4 @@
+{
+  super(org.jooq.SQLDialect.ORACLE,"P_ENHANCE_ADDRESS2",org.jooq.test.oracle.generatedclasses.test.Test.TEST);
+  addOutParameter(ADDRESS);
+}

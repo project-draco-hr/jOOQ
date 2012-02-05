@@ -1,0 +1,4 @@
+{
+  super(org.jooq.SQLDialect.ORACLE,"LIBRARY_767_PACKAGE_TEST",org.jooq.test.oracle.generatedclasses.test.Test.TEST,org.jooq.test.oracle.generatedclasses.test.packages.Library_767PackageTest.LIBRARY_767_PACKAGE_TEST,org.jooq.impl.SQLDataType.NUMERIC);
+  setReturnParameter(RETURN_VALUE);
+}

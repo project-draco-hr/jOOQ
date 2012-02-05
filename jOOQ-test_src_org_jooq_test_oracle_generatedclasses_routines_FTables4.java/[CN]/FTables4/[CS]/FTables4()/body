@@ -1,5 +1,0 @@
-{
-  super(org.jooq.SQLDialect.ORACLE,"F_TABLES4",org.jooq.test.oracle.generatedclasses.Test.TEST,org.jooq.test.oracle.generatedclasses.udt.UBookType.U_BOOK_TYPE.getDataType().asArrayDataType(org.jooq.test.oracle.generatedclasses.udt.records.UBookTableRecord.class));
-  setReturnParameter(RETURN_VALUE);
-  addInParameter(IN_TABLE);
-}

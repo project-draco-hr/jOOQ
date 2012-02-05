@@ -1,7 +1,0 @@
-{
-  org.jooq.test.oracle.generatedclasses.packages.library.PkgFAuthorExists2 f=new org.jooq.test.oracle.generatedclasses.packages.library.PkgFAuthorExists2();
-  f.setAuthorName(authorName);
-  f.setUnused(unused);
-  f.execute(configuration);
-  return f.getReturnValue();
-}

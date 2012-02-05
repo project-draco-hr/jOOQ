@@ -3,12 +3,10 @@
   autocommit=connection.getAutoCommit();
   if (!initialised) {
     initialised=true;
-    execute(getCreateScript(),connection);
-    execute(getCreateMultiSchemaScript(),connectionMultiSchema);
+    execute(getCreateScript());
   }
   if (!reset) {
     reset=true;
-    execute(getResetScript(),connection);
-    execute(getResetMultiSchemaScript(),connectionMultiSchema);
+    execute(getResetScript());
   }
 }

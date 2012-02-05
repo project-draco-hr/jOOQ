@@ -1,0 +1,7 @@
+{
+  super(org.jooq.SQLDialect.ORACLE,"GET_BOOKS",org.jooq.test.oracle.generatedclasses.test.Test.TEST,org.jooq.test.oracle.generatedclasses.test.udt.UAuthorType.U_AUTHOR_TYPE);
+  addInOutParameter(SELF);
+  addOutParameter(BOOK1);
+  addOutParameter(BOOK2);
+  addOutParameter(BOOKS);
+}

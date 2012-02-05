@@ -1,0 +1,3 @@
+{
+  super("X_UNUSED",org.jooq.test.oracle.generatedclasses.test.Test.TEST);
+}

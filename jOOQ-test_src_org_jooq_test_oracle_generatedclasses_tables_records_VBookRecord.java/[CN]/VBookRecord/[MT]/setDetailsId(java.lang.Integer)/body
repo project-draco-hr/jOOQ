@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.test.oracle.generatedclasses.tables.VBook.V_BOOK.DETAILS_ID,value);
-}

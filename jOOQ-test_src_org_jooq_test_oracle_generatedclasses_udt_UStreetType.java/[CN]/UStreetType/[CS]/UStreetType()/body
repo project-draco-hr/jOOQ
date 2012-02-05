@@ -1,3 +1,0 @@
-{
-  super("U_STREET_TYPE",org.jooq.test.oracle.generatedclasses.Test.TEST);
-}

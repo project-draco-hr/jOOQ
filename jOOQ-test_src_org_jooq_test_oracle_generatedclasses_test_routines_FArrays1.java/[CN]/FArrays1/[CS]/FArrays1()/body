@@ -1,0 +1,5 @@
+{
+  super(org.jooq.SQLDialect.ORACLE,"F_ARRAYS1",org.jooq.test.oracle.generatedclasses.test.Test.TEST,org.jooq.impl.SQLDataType.INTEGER.asArrayDataType(org.jooq.test.oracle.generatedclasses.test.udt.records.UNumberArrayRecord.class));
+  setReturnParameter(RETURN_VALUE);
+  addInParameter(IN_ARRAY);
+}

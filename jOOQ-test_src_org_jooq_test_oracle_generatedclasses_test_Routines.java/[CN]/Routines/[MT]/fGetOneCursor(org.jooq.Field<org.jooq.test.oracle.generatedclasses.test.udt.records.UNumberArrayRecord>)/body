@@ -1,0 +1,5 @@
+{
+  org.jooq.test.oracle.generatedclasses.test.routines.FGetOneCursor f=new org.jooq.test.oracle.generatedclasses.test.routines.FGetOneCursor();
+  f.setBookIds(bookIds);
+  return f.asField();
+}

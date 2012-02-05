@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.oracle.generatedclasses.Keys.UK_T_BOOK_STORE_NAME;
-}

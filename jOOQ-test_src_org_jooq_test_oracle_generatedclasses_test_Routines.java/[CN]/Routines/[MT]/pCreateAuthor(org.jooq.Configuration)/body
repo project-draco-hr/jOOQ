@@ -1,0 +1,4 @@
+{
+  org.jooq.test.oracle.generatedclasses.test.routines.PCreateAuthor p=new org.jooq.test.oracle.generatedclasses.test.routines.PCreateAuthor();
+  p.execute(configuration);
+}

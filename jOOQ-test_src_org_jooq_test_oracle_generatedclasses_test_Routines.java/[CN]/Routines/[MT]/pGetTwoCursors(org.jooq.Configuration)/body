@@ -1,0 +1,5 @@
+{
+  org.jooq.test.oracle.generatedclasses.test.routines.PGetTwoCursors p=new org.jooq.test.oracle.generatedclasses.test.routines.PGetTwoCursors();
+  p.execute(configuration);
+  return p;
+}

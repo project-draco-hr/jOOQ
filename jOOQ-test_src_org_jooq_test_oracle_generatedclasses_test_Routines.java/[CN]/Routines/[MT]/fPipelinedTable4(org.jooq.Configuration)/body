@@ -1,0 +1,5 @@
+{
+  org.jooq.test.oracle.generatedclasses.test.routines.FPipelinedTable4 f=new org.jooq.test.oracle.generatedclasses.test.routines.FPipelinedTable4();
+  f.execute(configuration);
+  return f.getReturnValue();
+}

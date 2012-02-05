@@ -1,0 +1,3 @@
+{
+  super("U_ADDRESS_TYPE",org.jooq.test.oracle.generatedclasses.test.Test.TEST);
+}

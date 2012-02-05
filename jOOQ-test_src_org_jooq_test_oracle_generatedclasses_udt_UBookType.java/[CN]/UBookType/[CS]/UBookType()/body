@@ -1,3 +1,0 @@
-{
-  super("U_BOOK_TYPE",org.jooq.test.oracle.generatedclasses.Test.TEST);
-}

@@ -1,5 +1,6 @@
 {
-  if (connection == null) {
+  if (!connectionInitialised) {
+    connectionInitialised=true;
     connection=getConnection0(null,null);
   }
   return connection;

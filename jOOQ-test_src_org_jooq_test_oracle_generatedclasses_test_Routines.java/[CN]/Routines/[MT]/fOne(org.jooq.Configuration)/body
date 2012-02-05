@@ -1,0 +1,5 @@
+{
+  org.jooq.test.oracle.generatedclasses.test.routines.FOne f=new org.jooq.test.oracle.generatedclasses.test.routines.FOne();
+  f.execute(configuration);
+  return f.getReturnValue();
+}

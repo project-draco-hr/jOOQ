@@ -1,0 +1,6 @@
+{
+  org.jooq.test.oracle.generatedclasses.test.routines.FNumber f=new org.jooq.test.oracle.generatedclasses.test.routines.FNumber();
+  f.setN(n);
+  f.execute(configuration);
+  return f.getReturnValue();
+}

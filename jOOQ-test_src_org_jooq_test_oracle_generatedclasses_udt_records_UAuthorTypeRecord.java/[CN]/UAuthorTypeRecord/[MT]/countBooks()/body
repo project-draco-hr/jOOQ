@@ -1,6 +1,0 @@
-{
-  org.jooq.test.oracle.generatedclasses.udt.u_author_type.CountBooks f=new org.jooq.test.oracle.generatedclasses.udt.u_author_type.CountBooks();
-  f.setSelf(this);
-  f.execute(getConfiguration());
-  return f.getReturnValue();
-}

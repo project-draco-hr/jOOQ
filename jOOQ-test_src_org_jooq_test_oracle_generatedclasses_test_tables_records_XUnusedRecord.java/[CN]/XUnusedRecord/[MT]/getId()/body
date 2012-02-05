@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.test.oracle.generatedclasses.test.tables.XUnused.X_UNUSED.ID);
+}

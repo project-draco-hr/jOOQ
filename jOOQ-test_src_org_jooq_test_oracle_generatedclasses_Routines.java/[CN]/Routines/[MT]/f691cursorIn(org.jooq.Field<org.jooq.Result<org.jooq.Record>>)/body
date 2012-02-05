@@ -1,5 +1,0 @@
-{
-  org.jooq.test.oracle.generatedclasses.routines.F691cursorIn f=new org.jooq.test.oracle.generatedclasses.routines.F691cursorIn();
-  f.setC(c);
-  return f.asField();
-}
