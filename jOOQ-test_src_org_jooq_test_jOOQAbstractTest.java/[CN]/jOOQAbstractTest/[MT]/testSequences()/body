@@ -1,29 +1,3 @@
 {
-  if (cSequences() == null) {
-    log.info("SKIPPING","sequences test");
-    return;
-  }
-  reset=false;
-  Sequence<? extends Number> sequence=SAuthorID();
-  Field<? extends Number> nextval=sequence.nextval();
-  Field<? extends Number> currval=null;
-  assertEquals("3","" + create().select(nextval).fetchOne(nextval));
-  assertEquals("4","" + create().select(nextval).fetchOne(nextval));
-  assertEquals("5","" + create().select(nextval).fetchOne(nextval));
-switch (getDialect()) {
-case HSQLDB:
-case DERBY:
-case INGRES:
-    log.info("SKIPPING","Sequence CURRVAL tests");
-  break;
-default :
-currval=sequence.currval();
-assertEquals("5","" + create().select(currval).fetchOne(currval));
-assertEquals("5","" + create().select(currval).fetchOne(currval));
-assertEquals(5,create().currval(sequence).intValue());
-assertEquals(5,create().currval(sequence).intValue());
-}
-assertEquals("6","" + create().select(nextval).fetchOne(nextval));
-assertEquals(7,create().nextval(sequence).intValue());
-assertEquals(8,create().nextval(sequence).intValue());
+  new GeneralTests(this).testSequences();
 }

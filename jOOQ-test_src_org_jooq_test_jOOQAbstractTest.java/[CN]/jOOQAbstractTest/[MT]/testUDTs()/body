@@ -1,36 +1,3 @@
 {
-  if (TAuthor_ADDRESS() == null) {
-    log.info("SKIPPING","UDT test");
-    return;
-  }
-  reset=false;
-  Result<A> authors=create().selectFrom(TAuthor()).fetch();
-  UDTRecord<?> a1=authors.get(0).getValue(TAuthor_ADDRESS());
-  UDTRecord<?> a2=authors.get(1).getValue(TAuthor_ADDRESS());
-  Object street1=a1.getClass().getMethod("getStreet").invoke(a1);
-  assertEquals("77",street1.getClass().getMethod("getNo").invoke(street1));
-  assertEquals("Parliament Hill",street1.getClass().getMethod("getStreet").invoke(street1));
-  assertEquals("NW31A9",a1.getClass().getMethod("getZip").invoke(a1));
-  assertEquals("Hampstead",a1.getClass().getMethod("getCity").invoke(a1));
-  assertEquals("England","" + a1.getClass().getMethod("getCountry").invoke(a1));
-  assertEquals(null,a1.getClass().getMethod("getCode").invoke(a1));
-  if (TArrays_NUMBER_R() != null) {
-    assertEquals(Arrays.asList(1,2,3),invoke(invoke(street1,"getFloors"),"getList"));
-  }
-  if (TArrays_NUMBER() != null) {
-    assertEquals(Arrays.asList(1,2,3),Arrays.asList((Object[])invoke(street1,"getFloors")));
-  }
-  Object street2=a2.getClass().getMethod("getStreet").invoke(a2);
-  assertEquals("43.003",street1.getClass().getMethod("getNo").invoke(street2));
-  assertEquals("Caixa Postal",street1.getClass().getMethod("getStreet").invoke(street2));
-  assertEquals(null,a2.getClass().getMethod("getZip").invoke(a2));
-  assertEquals("Rio de Janeiro",a2.getClass().getMethod("getCity").invoke(a2));
-  assertEquals("Brazil","" + a1.getClass().getMethod("getCountry").invoke(a2));
-  assertEquals(2,a1.getClass().getMethod("getCode").invoke(a2));
-  if (TArrays_NUMBER_R() != null) {
-    assertEquals(null,invoke(street2,"getFloors"));
-  }
-  if (TArrays_NUMBER() != null) {
-    assertEquals(null,invoke(street2,"getFloors"));
-  }
+  new RoutineAndUDTTests(this).testUDTs();
 }

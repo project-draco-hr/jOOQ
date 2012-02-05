@@ -1,0 +1,3 @@
+{
+  return delegate.TBook_PUBLISHED_IN();
+}

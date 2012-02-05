@@ -1,5 +1,3 @@
 {
-  for (  DataType<?> type : getCastableDataTypes()) {
-    assertEquals(null,create().select(val(null).cast(type)).fetchOne(0));
-  }
+  new DataTypeTests(this).testCastingToDialectDataType();
 }

@@ -1,0 +1,7 @@
+{
+  jOOQAbstractTest.connection.rollback();
+  jOOQAbstractTest.connection.close();
+  jOOQAbstractTest.connection=null;
+  jOOQAbstractTest.connection=delegate.getConnection();
+  jOOQAbstractTest.connection.setAutoCommit(false);
+}

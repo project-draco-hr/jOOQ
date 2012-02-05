@@ -1,11 +1,3 @@
 {
-  Select<?> select=create().select(TAuthor_ID()).from(TAuthor()).where(TAuthor_ID().in(field("?",Integer.class,(Object[])null),field("?",Integer.class,(Object[])null))).and(TAuthor_ID().getName() + " != ? or 'abc' = '???'",37).orderBy(TAuthor_ID().asc());
-  assertEquals(0,select.fetch().size());
-  Result<?> result1=select.bind(1,1L).bind(2,1).fetch();
-  assertEquals(1,result1.size());
-  assertEquals(1,result1.getValue(0,0));
-  Result<?> result2=select.bind(2,2).fetch();
-  assertEquals(2,result2.size());
-  assertEquals(1,result2.getValue(0,0));
-  assertEquals(2,result2.getValue(1,0));
+  new RenderAndBindTests(this).testQueryBindValuesWithPlainSQL();
 }

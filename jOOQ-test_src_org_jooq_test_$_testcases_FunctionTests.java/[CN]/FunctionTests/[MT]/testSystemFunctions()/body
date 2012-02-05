@@ -1,0 +1,9 @@
+{
+  if (getDialect() == SQLDialect.SQLITE) {
+    log.info("SKIPPING","System functions test");
+    return;
+  }
+  Field<?> user=trim(lower(currentUser()));
+  Record record=create().select(user).fetchOne();
+  assertTrue(Arrays.asList("test","db2admin","sa","root@localhost","postgres","dbo","dba").contains(record.getValue(user)));
+}

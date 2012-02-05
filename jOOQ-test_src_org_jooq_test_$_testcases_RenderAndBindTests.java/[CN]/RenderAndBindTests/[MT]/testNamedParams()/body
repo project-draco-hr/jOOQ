@@ -1,0 +1,18 @@
+{
+  Select<?> select=create().select(TAuthor_ID(),param("p1",String.class)).from(TAuthor()).where(TAuthor_ID().in(param("p2",Integer.class),param("p3",Integer.class))).orderBy(TAuthor_ID().asc());
+  assertEquals(0,select.fetch().size());
+  select.getParam("p2").setConverted(1L);
+  select.getParam("p3").setConverted("1");
+  Result<?> result1=select.fetch();
+  assertEquals(1,result1.size());
+  assertEquals(1,result1.getValue(0,0));
+  assertNull(result1.getValue(0,1));
+  select.getParam("p1").setConverted("asdf");
+  select.getParam("p3").setConverted("2");
+  Result<?> result2=select.fetch();
+  assertEquals(2,result2.size());
+  assertEquals(1,result2.getValue(0,0));
+  assertEquals(2,result2.getValue(1,0));
+  assertEquals("asdf",result2.getValue(0,1));
+  assertEquals("asdf",result2.getValue(1,1));
+}

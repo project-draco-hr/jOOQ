@@ -1,0 +1,35 @@
+{
+  assertEquals(Arrays.asList(2,3),create().select().from(TBook()).where(TBook_ID().between(2,3)).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(3,4),create().select().from(TBook()).where(val(3).between(TBook_AUTHOR_ID(),TBook_ID())).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(1,4),create().select().from(TBook()).where(TBook_ID().notBetween(2,3)).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(1,2),create().select().from(TBook()).where(val(3).notBetween(TBook_AUTHOR_ID(),TBook_ID())).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(),create().select().from(TBook()).where(TBook_ID().in(new Integer[0])).fetch(TBook_ID()));
+  assertEquals(BOOK_IDS,create().select().from(TBook()).where(TBook_ID().notIn(new Integer[0])).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(asList(1),create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(val(1),castNull(Integer.class))).fetch(TBook_ID()));
+  if (asList(ASE,HSQLDB,MYSQL).contains(getDialect())) {
+    assertEquals(asList(2,3,4),create().select(TBook_ID()).from(TBook()).where(TBook_ID().notIn(val(1),castNull(Integer.class))).orderBy(TBook_ID()).fetch(TBook_ID()));
+  }
+ else {
+    assertEquals(asList(),create().select(TBook_ID()).from(TBook()).where(TBook_ID().notIn(val(1),castNull(Integer.class))).fetch(TBook_ID()));
+  }
+  assertEquals(Arrays.asList(1,2),create().select().from(TBook()).where(TBook_ID().in(1,2)).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(2,3,4),create().select().from(TBook()).where(val(2).in(TBook_ID(),TBook_AUTHOR_ID())).orderBy(TBook_ID()).fetch(TBook_ID()));
+switch (getDialect()) {
+case SQLITE:
+    log.info("SKIPPING","= { ALL | ANY | SOME } tests");
+  break;
+default :
+{
+  assertEquals(Arrays.asList(1),create().select().from(TBook()).where(TBook_ID().equalAll(create().selectOne())).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(),create().select().from(TBook()).where(TBook_ID().equalAll(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,2)))).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(1),create().select().from(TBook()).where(TBook_ID().equalAny(create().selectOne())).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(1,2),create().select().from(TBook()).where(TBook_ID().equalAny(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,2)))).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(1),create().select(TBook_ID()).from(TBook()).where(TBook_ID().equalAll(1)).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(),create().select(TBook_ID()).from(TBook()).where(TBook_ID().equalAll(1,2)).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(1),create().select(TBook_ID()).from(TBook()).where(TBook_ID().equalAny(1)).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(1,2),create().select(TBook_ID()).from(TBook()).where(TBook_ID().equalAny(1,2)).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(3),create().select().from(TBook()).where(TBook_ID().equal(create().select(val(3)))).and(TBook_ID().equalAll(create().select(val(3)))).and(TBook_ID().equalAll(3,3)).and(TBook_ID().equalAny(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(3,4)))).and(TBook_ID().equalAny(3,4)).and(TBook_ID().notEqual(create().select(val(1)))).and(TBook_ID().notEqualAll(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,4)))).and(TBook_ID().notEqualAll(1,4,4)).and(TBook_ID().notEqualAny(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,4)))).and(TBook_ID().notEqualAny(1,4,4)).and(TBook_ID().greaterOrEqual(create().select(val(1)))).and(TBook_ID().greaterOrEqualAll(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,2)))).and(TBook_ID().greaterOrEqualAll(1,2)).and(TBook_ID().greaterOrEqualAny(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,4)))).and(TBook_ID().greaterOrEqualAny(1,4)).and(TBook_ID().greaterThan(create().select(val(1)))).and(TBook_ID().greaterThanAll(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,2)))).and(TBook_ID().greaterThanAll(1,2)).and(TBook_ID().greaterThanAny(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,4)))).and(TBook_ID().greaterThanAny(1,4)).and(TBook_ID().lessOrEqual(create().select(val(3)))).and(TBook_ID().lessOrEqualAll(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(3,4)))).and(TBook_ID().lessOrEqualAll(3,4)).and(TBook_ID().lessOrEqualAny(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,4)))).and(TBook_ID().lessOrEqualAny(1,4)).and(TBook_ID().lessThan(create().select(val(4)))).and(TBook_ID().lessThanAll(create().select(val(4)))).and(TBook_ID().lessThanAll(4,5)).and(TBook_ID().lessThanAny(create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,4)))).and(TBook_ID().lessThanAny(1,4)).fetch(TBook_ID()));
+  break;
+}
+}
+}

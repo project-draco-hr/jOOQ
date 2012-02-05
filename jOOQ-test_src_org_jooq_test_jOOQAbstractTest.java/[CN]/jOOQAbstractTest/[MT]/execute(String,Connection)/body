@@ -7,7 +7,7 @@
       allSQL=FileUtils.readFileToString(file);
       testSQLWatch.splitDebug("Loaded SQL file");
     }
- catch (    IOException ignore) {
+ catch (    Exception ignore) {
       allSQL="";
     }
     scripts.put(script,allSQL);

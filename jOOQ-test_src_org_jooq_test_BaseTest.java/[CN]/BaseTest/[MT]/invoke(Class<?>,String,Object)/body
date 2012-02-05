@@ -1,0 +1,3 @@
+{
+  return (R)invoke0(clazz,clazz,methodName,parameters);
+}

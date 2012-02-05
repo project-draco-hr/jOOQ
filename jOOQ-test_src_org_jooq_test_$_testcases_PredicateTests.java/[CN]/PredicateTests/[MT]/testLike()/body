@@ -1,0 +1,20 @@
+{
+  jOOQAbstractTest.reset=false;
+  Field<String> notLike=TBook_PUBLISHED_IN().cast(String.class);
+  if (getDialect() == DB2) {
+    notLike=val("bbb");
+  }
+  Result<B> books=create().selectFrom(TBook()).where(TBook_TITLE().like("%a%")).and(TBook_TITLE().notLike(notLike)).fetch();
+  assertEquals(3,books.size());
+  assertEquals(1,create().insertInto(TBook()).set(TBook_ID(),5).set(TBook_AUTHOR_ID(),2).set(TBook_PUBLISHED_IN(),2012).set((Field<Integer>)TBook_LANGUAGE_ID(),1).set(TBook_TITLE(),"About percentages (%) and underscores (_), a critical review").execute());
+  books=create().selectFrom(TBook()).where(TBook_TITLE().like("%(!%)%",'!')).and(TBook_TITLE().like("%(#_)%",'#')).and(TBook_TITLE().notLike("%(!%)%",'#')).and(TBook_TITLE().notLike("%(#_)%",'!')).fetch();
+  assertEquals(1,books.size());
+  assertEquals(5,(int)books.get(0).getValue(TBook_ID()));
+  boolean derby=getDialect() == DERBY;
+  books=create().selectFrom(TBook()).where(TBook_TITLE().like(concat("%",escape("(%)",'!'),"%"),'!')).and(derby ? trueCondition() : TBook_TITLE().like(concat(val("%"),escape(val("(_)"),'#'),val("%")),'#')).and(TBook_TITLE().notLike(concat("%",escape("(!%)",'#'),"%"),'#')).and(derby ? trueCondition() : TBook_TITLE().notLike(concat(val("%"),escape(val("(#_)"),'!'),val("%")),'!')).fetch();
+  assertEquals(1,books.size());
+  assertEquals(5,(int)books.get(0).getValue(TBook_ID()));
+  books=create().selectFrom(TBook()).where(TBook_TITLE().contains("%")).and(derby ? trueCondition() : TBook_TITLE().contains(val("(_"))).and(TBook_TITLE().startsWith("About")).and(derby ? trueCondition() : TBook_TITLE().startsWith(val("Abo"))).and(TBook_TITLE().endsWith("review")).and(derby ? trueCondition() : TBook_TITLE().endsWith(val("review"))).fetch();
+  assertEquals(1,books.size());
+  assertEquals(5,(int)books.get(0).getValue(TBook_ID()));
+}

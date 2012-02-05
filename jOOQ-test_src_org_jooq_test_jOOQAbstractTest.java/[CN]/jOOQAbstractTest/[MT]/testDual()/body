@@ -1,4 +1,3 @@
 {
-  assertEquals(1,(int)create().selectOne().fetchOne(0,Integer.class));
-  assertEquals(1,(int)create().selectOne().where(one().equal(1)).fetchOne(0,Integer.class));
+  new GeneralTests(this).testDual();
 }

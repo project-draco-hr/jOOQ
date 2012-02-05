@@ -1,0 +1,72 @@
+{
+  Field<String> sNull=castNull(String.class);
+  Field<Integer> iNull=castNull(Integer.class);
+  assertEquals("1",create().select(nullif("1","2")).fetchOne(0));
+  assertEquals(null,create().select(nullif("1","1")).fetchOne(0));
+  assertEquals("1","" + create().select(nullif(1,2)).fetchOne(0));
+  assertEquals(null,create().select(nullif(1,1)).fetchOne(0));
+  assertEquals(null,create().select(nvl(sNull,sNull)).fetchOne(0));
+  assertEquals(Integer.valueOf(1),create().select(nvl(iNull,1)).fetchOne(0));
+  assertEquals("1",create().select(nvl(sNull,"1")).fetchOne(0));
+  assertEquals(Integer.valueOf(2),create().select(nvl(2,1)).fetchOne(0));
+  assertEquals("2",create().select(nvl("2","1")).fetchOne(0));
+  if (getDialect() != SQLDialect.ASE) {
+    assertTrue(("" + create().select(nvl(TBook_CONTENT_TEXT(),"abc")).from(TBook()).where(TBook_ID().equal(1)).fetchOne(0)).startsWith("To know and"));
+    assertEquals("abc",create().select(nvl(TBook_CONTENT_TEXT(),"abc")).from(TBook()).where(TBook_ID().equal(2)).fetchOne(0));
+  }
+  assertEquals(null,create().select(nvl2(sNull,sNull,sNull)).fetchOne(0));
+  assertEquals(Integer.valueOf(1),create().select(nvl2(iNull,2,1)).fetchOne(0));
+  assertEquals("1",create().select(nvl2(sNull,"2","1")).fetchOne(0));
+  assertEquals(Integer.valueOf(2),create().select(nvl2(val(2),2,1)).fetchOne(0));
+  assertEquals("2",create().select(nvl2(val("2"),"2","1")).fetchOne(0));
+  if (getDialect() != SQLDialect.ASE) {
+    assertEquals("abc",create().select(nvl2(TBook_CONTENT_TEXT(),"abc","xyz")).from(TBook()).where(TBook_ID().equal(1)).fetchOne(0));
+    assertEquals("xyz",create().select(nvl2(TBook_CONTENT_TEXT(),"abc","xyz")).from(TBook()).where(TBook_ID().equal(2)).fetchOne(0));
+  }
+  assertEquals(null,create().select(coalesce(sNull,sNull)).fetchOne(0));
+  assertEquals(Integer.valueOf(1),create().select(coalesce(iNull,val(1))).fetchOne(0));
+  assertEquals(Integer.valueOf(1),create().select(coalesce(iNull,iNull,val(1))).fetchOne(0));
+  assertEquals(Integer.valueOf(1),create().select(coalesce(iNull,iNull,iNull,val(1))).fetchOne(0));
+  assertEquals("1",create().select(coalesce(sNull,val("1"))).fetchOne(0));
+  assertEquals("1",create().select(coalesce(sNull,sNull,val("1"))).fetchOne(0));
+  assertEquals("1",create().select(coalesce(sNull,sNull,sNull,val("1"))).fetchOne(0));
+  assertEquals(Integer.valueOf(2),create().select(coalesce(2,1)).fetchOne(0));
+  assertEquals(Integer.valueOf(2),create().select(coalesce(2,1,1)).fetchOne(0));
+  assertEquals(Integer.valueOf(2),create().select(coalesce(2,1,1,1)).fetchOne(0));
+  assertEquals("2",create().select(coalesce("2","1")).fetchOne(0));
+  assertEquals("2",create().select(coalesce("2","1","1")).fetchOne(0));
+  assertEquals("2",create().select(coalesce("2","1","1","1")).fetchOne(0));
+  assertTrue(("" + create().select(coalesce(TBook_CONTENT_TEXT().cast(String.class),sNull,val("abc"))).from(TBook()).where(TBook_ID().equal(1)).fetchOne(0)).startsWith("To know and"));
+  assertEquals("abc",create().select(coalesce(TBook_CONTENT_TEXT().cast(String.class),sNull,val("abc"))).from(TBook()).where(TBook_ID().equal(2)).fetchOne(0));
+  assertEquals(null,create().select(decode(sNull,sNull,sNull)).fetchOne(0));
+  assertEquals(null,create().select(decode(iNull,val(2),val(1))).fetchOne(0));
+  assertEquals(Integer.valueOf(1),create().select(decode(iNull,val(2),val(1),val(1))).fetchOne(0));
+  assertEquals(Integer.valueOf(1),create().select(decode(iNull,iNull,val(1))).fetchOne(0));
+  assertEquals(Integer.valueOf(1),create().select(decode(iNull,iNull,val(1),val(2))).fetchOne(0));
+  assertEquals(Integer.valueOf(1),create().select(decode(iNull,val(2),val(2),iNull,val(1))).fetchOne(0));
+  assertEquals(Integer.valueOf(1),create().select(decode(iNull,val(2),val(2),iNull,val(1),val(3))).fetchOne(0));
+  assertEquals(null,create().select(decode(sNull,"2","1")).fetchOne(0));
+  assertEquals("1",create().select(decode(sNull,"2","1","1")).fetchOne(0));
+  assertEquals("1",create().select(decode(sNull,sNull,val("1"))).fetchOne(0));
+  assertEquals("1",create().select(decode(sNull,sNull,val("1"),val("2"))).fetchOne(0));
+  assertEquals("1",create().select(decode(sNull,val("2"),val("2"),sNull,val("1"))).fetchOne(0));
+  assertEquals("1",create().select(decode(sNull,val("2"),val("2"),sNull,val("1"),val("3"))).fetchOne(0));
+  Field<Integer> lang=TBook_LANGUAGE_ID().cast(Integer.class);
+  Result<Record> result=create().select(decode(lang,1,"EN"),decode(lang,1,"EN","Other"),decode(lang,1,"EN",2,"DE"),decode(lang,1,"EN",2,"DE","Other")).from(TBook()).orderBy(TBook_ID()).fetch();
+  assertEquals("EN",result.getValue(0,0));
+  assertEquals("EN",result.getValue(1,0));
+  assertEquals(null,result.getValue(2,0));
+  assertEquals(null,result.getValue(3,0));
+  assertEquals("EN",result.getValue(0,1));
+  assertEquals("EN",result.getValue(1,1));
+  assertEquals("Other",result.getValue(2,1));
+  assertEquals("Other",result.getValue(3,1));
+  assertEquals("EN",result.getValue(0,2));
+  assertEquals("EN",result.getValue(1,2));
+  assertEquals(null,result.getValue(2,2));
+  assertEquals("DE",result.getValue(3,2));
+  assertEquals("EN",result.getValue(0,3));
+  assertEquals("EN",result.getValue(1,3));
+  assertEquals("Other",result.getValue(2,3));
+  assertEquals("DE",result.getValue(3,3));
+}

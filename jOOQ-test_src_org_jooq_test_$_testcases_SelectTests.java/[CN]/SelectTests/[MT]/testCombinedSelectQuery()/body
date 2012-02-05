@@ -1,0 +1,13 @@
+{
+  SelectQuery q1=create().selectQuery();
+  SelectQuery q2=create().selectQuery();
+  q1.addFrom(TBook());
+  q2.addFrom(TBook());
+  q1.addConditions(TBook_AUTHOR_ID().equal(1));
+  q2.addConditions(TBook_TITLE().equal("Brida"));
+  Select<?> union=q1.unionAll(q2);
+  int rows=union.execute();
+  assertEquals(3,rows);
+  rows=create().selectDistinct(union.getField(TBook_AUTHOR_ID()),TAuthor_FIRST_NAME()).from(union).join(TAuthor()).on(union.getField(TBook_AUTHOR_ID()).equal(TAuthor_ID())).orderBy(TAuthor_FIRST_NAME()).execute();
+  assertEquals(2,rows);
+}

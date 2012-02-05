@@ -1,0 +1,3 @@
+{
+  return delegate.TDirectory_IS_DIRECTORY();
+}

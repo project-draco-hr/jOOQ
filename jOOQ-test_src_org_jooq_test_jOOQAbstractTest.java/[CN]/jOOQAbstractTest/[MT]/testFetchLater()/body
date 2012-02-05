@@ -1,26 +1,3 @@
 {
-  Future<Result<B>> later;
-  Result<B> result;
-  int activeCount=Thread.activeCount();
-  later=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchLater();
-  assertFalse(later.isDone());
-  assertFalse(later.isCancelled());
-  assertEquals(activeCount + 1,Thread.activeCount());
-  result=later.get();
-  Thread.sleep(500);
-  assertEquals(activeCount,Thread.activeCount());
-  result=later.get();
-  result=later.get(1000,TimeUnit.MILLISECONDS);
-  assertEquals(4,result.size());
-  assertEquals(BOOK_IDS,result.getValues(TBook_ID()));
-  later=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchLater();
-  later=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchLater();
-  later=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchLater();
-  later=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchLater();
-  assertEquals(activeCount + 4,Thread.activeCount());
-  later=null;
-  System.gc();
-  System.gc();
-  Thread.sleep(500);
-  assertEquals(activeCount,Thread.activeCount());
+  new FetchTests(this).testFetchLater();
 }

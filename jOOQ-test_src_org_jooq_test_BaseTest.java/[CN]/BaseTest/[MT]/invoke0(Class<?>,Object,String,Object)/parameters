@@ -1,0 +1,4 @@
+Class<?> clazz
+Object object
+String methodName
+Object parameters

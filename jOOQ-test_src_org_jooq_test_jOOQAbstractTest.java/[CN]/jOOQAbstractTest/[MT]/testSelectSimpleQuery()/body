@@ -1,24 +1,3 @@
 {
-  SelectQuery q=create().selectQuery();
-  Field<Integer> f1=val(1).as("f1");
-  Field<Double> f2=val(2d).as("f2");
-  Field<String> f3=val("test").as("f3");
-  q.addSelect(f1);
-  q.addSelect(f2);
-  q.addSelect(f3);
-  int i=q.execute();
-  Result<?> result=q.getResult();
-  assertEquals(1,i);
-  assertEquals(1,result.size());
-  assertEquals(3,result.getFields().size());
-  assertTrue(result.getFields().contains(f1));
-  assertTrue(result.getFields().contains(f2));
-  assertTrue(result.getFields().contains(f3));
-  assertEquals(3,result.get(0).getFields().size());
-  assertTrue(result.get(0).getFields().contains(f1));
-  assertTrue(result.get(0).getFields().contains(f2));
-  assertTrue(result.get(0).getFields().contains(f3));
-  assertEquals(Integer.valueOf(1),result.get(0).getValue(f1));
-  assertEquals(2d,result.get(0).getValue(f2));
-  assertEquals("test",result.get(0).getValue(f3));
+  new SelectTests(this).testSelectSimpleQuery();
 }

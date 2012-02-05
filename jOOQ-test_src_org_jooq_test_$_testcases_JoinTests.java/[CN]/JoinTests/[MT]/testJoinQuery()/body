@@ -1,0 +1,46 @@
+{
+  SimpleSelectQuery<L> q1=create().selectQuery(VLibrary());
+  q1.addOrderBy(VLibrary_TITLE());
+  q1.addConditions(VLibrary_TITLE().notEqual("1984"));
+  Table<A> a=TAuthor().as("a");
+  Table<B> b=TBook().as("b");
+  Field<Integer> a_authorID=a.getField(TAuthor_ID());
+  Field<Integer> b_authorID=b.getField(TBook_AUTHOR_ID());
+  Field<String> b_title=b.getField(TBook_TITLE());
+  SelectQuery q2=create().selectQuery();
+  q2.addFrom(a);
+  q2.addJoin(b,b_authorID.equal(a_authorID));
+  q2.addConditions(b_title.notEqual("1984"));
+  q2.addOrderBy(lower(b_title));
+  int rows1=q1.execute();
+  int rows2=q2.execute();
+  assertEquals(3,rows1);
+  assertEquals(3,rows2);
+  Result<L> result1=q1.getResult();
+  Result<?> result2=q2.getResult();
+  assertEquals("Animal Farm",result1.get(0).getValue(VLibrary_TITLE()));
+  assertEquals("Animal Farm",result2.get(0).getValue(b_title));
+  assertEquals("Brida",result1.get(1).getValue(VLibrary_TITLE()));
+  assertEquals("Brida",result2.get(1).getValue(b_title));
+  assertEquals("O Alquimista",result1.get(2).getValue(VLibrary_TITLE()));
+  assertEquals("O Alquimista",result2.get(2).getValue(b_title));
+  if (getDialect() != SQLDialect.DB2 && getDialect() != SQLDialect.INGRES) {
+    Result<Record> result=create().select().from(TAuthor()).join(TBook()).on(TAuthor_ID().equal(TBook_AUTHOR_ID()).and(TBook_LANGUAGE_ID().in(create().select(field("id")).from("t_language").where("upper(cd) in (?, ?)","DE","EN"))).orExists(create().selectOne().from(TAuthor()).where(falseCondition()))).orderBy(TBook_ID()).fetch();
+    assertEquals(3,result.size());
+    assertEquals("1984",result.getValue(0,TBook_TITLE()));
+    assertEquals("Animal Farm",result.getValue(1,TBook_TITLE()));
+    assertEquals("Brida",result.getValue(2,TBook_TITLE()));
+    Select<A> author=create().selectFrom(TAuthor());
+    result=create().select().from(author).join(TBook()).on(author.getField(TAuthor_ID()).equal(TBook_AUTHOR_ID())).and(TBook_LANGUAGE_ID().in(create().select(field("id")).from("t_language").where("upper(cd) in (?, ?)","DE","EN"))).orExists(create().selectOne().where(falseCondition())).orderBy(TBook_ID()).fetch();
+    assertEquals(3,result.size());
+    assertEquals("1984",result.getValue(0,TBook_TITLE()));
+    assertEquals("Animal Farm",result.getValue(1,TBook_TITLE()));
+    assertEquals("Brida",result.getValue(2,TBook_TITLE()));
+    Select<B> book=create().selectFrom(TBook());
+    result=create().select().from(TAuthor()).join(book).on(TAuthor_ID().equal(book.getField(TBook_AUTHOR_ID()))).and(book.getField(TBook_LANGUAGE_ID()).in(create().select(field("id")).from("t_language").where("upper(cd) in (?, ?)","DE","EN"))).orExists(create().selectOne().where(falseCondition())).orderBy(book.getField(TBook_ID())).fetch();
+    assertEquals(3,result.size());
+    assertEquals("1984",result.getValue(0,TBook_TITLE()));
+    assertEquals("Animal Farm",result.getValue(1,TBook_TITLE()));
+    assertEquals("Brida",result.getValue(2,TBook_TITLE()));
+  }
+}

@@ -1,9 +1,3 @@
 {
-  Result<B> books=create().selectFrom(TBook()).fetch();
-  String xml=books.formatXML();
-  InputStream is=new ByteArrayInputStream(xml.getBytes());
-  DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
-  DocumentBuilder db=dbf.newDocumentBuilder();
-  Document doc=db.parse(is);
-  testXML(doc,books);
+  new FormatTests(this).testFormatXML();
 }

@@ -1,0 +1,9 @@
+{
+  Select<?> select=create().select(param("p1"),param("p2"));
+  select.bind(1,"10");
+  select.bind(2,null);
+  Result<?> result3=select.fetch();
+  assertEquals(1,result3.size());
+  assertEquals("10",result3.getValue(0,0));
+  assertEquals(null,result3.getValue(0,1));
+}

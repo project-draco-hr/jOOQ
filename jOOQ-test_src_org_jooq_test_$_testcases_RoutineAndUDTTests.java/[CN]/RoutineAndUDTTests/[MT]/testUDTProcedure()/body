@@ -1,0 +1,35 @@
+{
+  if (cUAddressType() == null) {
+    log.info("SKIPPING","UDT procedure test (no UDT support)");
+    return;
+  }
+  if (cRoutines() == null) {
+    log.info("SKIPPING","UDT procedure test (no procedure support)");
+    return;
+  }
+  if (getDialect() == SQLDialect.POSTGRES) {
+    log.info("SKIPPING","UDT procedure test (Postgres JDBC driver flaw)");
+    return;
+  }
+  jOOQAbstractTest.reset=false;
+  UDTRecord<?> address=cUAddressType().newInstance();
+  UDTRecord<?> street=cUStreetType().newInstance();
+  invoke(street,"setNo","35");
+  invoke(address,"setStreet",street);
+  Object result=invoke(cRoutines(),"pEnhanceAddress1",create(),address);
+  assertEquals("35",result);
+  address=invoke(cRoutines(),"pEnhanceAddress2",create());
+  street=invoke(address,"getStreet");
+  assertEquals("Parliament Hill",invoke(street,"getStreet"));
+  assertEquals("77",invoke(street,"getNo"));
+  if (TArrays_NUMBER_R() != null) {
+    assertEquals(Arrays.asList(1,2,3),invoke(invoke(street,"getFloors"),"getList"));
+  }
+  if (TArrays_NUMBER() != null) {
+    assertEquals(Arrays.asList(1,2,3),Arrays.asList((Object[])invoke(street,"getFloors")));
+  }
+  address=(UDTRecord<?>)invoke(cRoutines(),"pEnhanceAddress3",create(),address);
+  street=(UDTRecord<?>)invoke(address,"getStreet");
+  assertEquals("Zwinglistrasse",invoke(street,"getStreet"));
+  assertEquals("17",invoke(street,"getNo"));
+}

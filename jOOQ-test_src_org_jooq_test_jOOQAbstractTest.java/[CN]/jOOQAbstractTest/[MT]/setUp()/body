@@ -1,6 +1,5 @@
 {
   connection=getConnection();
-  connectionMultiSchema=getConnectionMultiSchema();
   autocommit=connection.getAutoCommit();
   if (!initialised) {
     initialised=true;

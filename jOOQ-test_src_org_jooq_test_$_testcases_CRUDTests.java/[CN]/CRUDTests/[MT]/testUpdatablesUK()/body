@@ -1,0 +1,33 @@
+{
+  jOOQAbstractTest.reset=false;
+  S store=create().newRecord(TBookStore());
+  try {
+    store.refresh();
+  }
+ catch (  InvalidResultException expected) {
+  }
+  store.setValue(TBookStore_NAME(),"R??sslitor");
+  assertEquals(1,store.store());
+  store=create().fetchOne(TBookStore(),TBookStore_NAME().equal("R??sslitor"));
+  assertEquals("R??sslitor",store.getValue(TBookStore_NAME()));
+  store.setValue(TBookStore_NAME(),"Amazon");
+  assertEquals(1,store.store());
+  store=create().fetchOne(TBookStore(),TBookStore_NAME().equal("Amazon"));
+  assertEquals("Amazon",store.getValue(TBookStore_NAME()));
+  store.delete();
+  assertEquals("Amazon",store.getValue(TBookStore_NAME()));
+  assertEquals(null,create().fetchOne(TBookStore(),TBookStore_NAME().equal("Amazon")));
+switch (getDialect()) {
+case ASE:
+case SQLSERVER:
+    log.info("SKIPPING","Storing previously deleted UpdatableRecords");
+  break;
+default :
+store.store();
+assertEquals("Amazon",store.getValue(TBookStore_NAME()));
+store.refresh();
+assertEquals("Amazon",store.getValue(TBookStore_NAME()));
+}
+store=create().fetchOne(TBookStore(),TBookStore_NAME().equal("R??sslitor"));
+assertEquals("R??sslitor",store.getValue(TBookStore_NAME()));
+}

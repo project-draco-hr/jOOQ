@@ -1,0 +1,3 @@
+{
+  return delegate.TBookStore_NAME();
+}

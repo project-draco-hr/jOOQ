@@ -1,0 +1,37 @@
+{
+  List<Field<?>> fields=TBook().getFields();
+  Result<B> books=create().selectFrom(TBook()).fetch();
+  String csv=books.formatCSV();
+  String[] lines=csv.split("\n");
+  String[] fieldNames=lines[0].split(",");
+  assertEquals(5,lines.length);
+  assertEquals(fields.size(),fieldNames.length);
+  for (int i=0; i < fields.size(); i++) {
+    assertEquals(fields.get(i).getName(),fieldNames[i]);
+  }
+  for (int j=1; j < lines.length; j++) {
+    for (int i=0; i < fields.size(); i++) {
+      String value=books.getValueAsString(j - 1,i);
+      if (value == null || "".equals(value)) {
+        value="\"\"";
+      }
+      String regex1="";
+      String regex2="";
+      for (int x=0; x < fields.size(); x++) {
+        if (x > 0) {
+          regex1+=",";
+          regex2+=",";
+        }
+        if (x == i) {
+          regex1+=value;
+          regex2+="\"" + value.replaceAll("\"","\"\"") + "\"";
+        }
+ else {
+          regex1+="((?!\")[^,]+|\"[^\"]*\")";
+          regex2+="((?!\")[^,]+|\"[^\"]*\")";
+        }
+      }
+      assertTrue(lines[j].matches(regex1) || lines[j].matches(regex2));
+    }
+  }
+}

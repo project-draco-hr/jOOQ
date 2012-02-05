@@ -1,33 +1,3 @@
 {
-  reset=false;
-  Factory create=create();
-  S store=create.newRecord(TBookStore());
-  assertNotNull(store);
-  store.setValue(TBookStore_NAME(),"Barnes and Noble");
-  assertEquals(1,store.store());
-  store=create.newRecord(TBookStore());
-  store.setValue(TBookStore_NAME(),"Barnes and Noble");
-  store.attach(null);
-  try {
-    store.store();
-    fail();
-  }
- catch (  DetachedException expected) {
-  }
-  try {
-    store.refresh();
-    fail();
-  }
- catch (  DetachedException expected) {
-  }
-  try {
-    store.delete();
-    fail();
-  }
- catch (  DetachedException expected) {
-  }
-  store.attach(create);
-  store.refresh();
-  assertEquals(1,store.delete());
-  assertNull(create.fetchOne(TBookStore(),TBookStore_NAME().equal("Barnes and Noble")));
+  new GeneralTests(this).testAttachable();
 }

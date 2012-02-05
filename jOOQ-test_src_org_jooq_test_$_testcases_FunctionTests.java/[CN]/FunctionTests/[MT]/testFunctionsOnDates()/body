@@ -1,0 +1,32 @@
+{
+  SelectQuery q1=create().selectQuery();
+  Field<Timestamp> now=currentTimestamp();
+  Field<Timestamp> ts=now.as("ts");
+  Field<Date> date=currentDate().as("d");
+  Field<Time> time=currentTime().as("t");
+  Field<Integer> year=extract(now,DatePart.YEAR).as("y");
+  Field<Integer> month=extract(now,DatePart.MONTH).as("m");
+  Field<Integer> day=extract(now,DatePart.DAY).as("dd");
+  Field<Integer> hour=extract(now,DatePart.HOUR).as("h");
+  Field<Integer> minute=extract(now,DatePart.MINUTE).as("mn");
+  Field<Integer> second=extract(now,DatePart.SECOND).as("sec");
+  q1.addSelect(ts,date,time,year,month,day,hour,minute,second);
+  q1.execute();
+  Record record=q1.getResult().get(0);
+  String timestamp=record.getValue(ts).toString().replaceFirst("\\.\\d+$","");
+  assertEquals(timestamp.split(" ")[0],record.getValue(date).toString());
+  if (getDialect() != SQLDialect.POSTGRES) {
+    assertEquals(timestamp.split(" ")[1],record.getValue(time).toString());
+  }
+  assertEquals(Integer.valueOf(timestamp.split(" ")[0].split("-")[0]),record.getValue(year));
+  assertEquals(Integer.valueOf(timestamp.split(" ")[0].split("-")[1]),record.getValue(month));
+  assertEquals(Integer.valueOf(timestamp.split(" ")[0].split("-")[2]),record.getValue(day));
+  assertEquals(Integer.valueOf(timestamp.split(" ")[1].split(":")[0]),record.getValue(hour));
+  assertEquals(Integer.valueOf(timestamp.split(" ")[1].split(":")[1]),record.getValue(minute));
+  assertEquals(Integer.valueOf(timestamp.split(" ")[1].split(":")[2].split("\\.")[0]),record.getValue(second));
+  Field<Timestamp> tomorrow=now.add(1);
+  Field<Timestamp> yesterday=now.sub(1);
+  record=create().select(tomorrow,ts,yesterday).fetchOne();
+  assertEquals(24 * 60 * 60,(record.getValue(ts).getTime() / 1000 - record.getValue(yesterday).getTime() / 1000));
+  assertEquals(24 * 60 * 60,(record.getValue(tomorrow).getTime() / 1000 - record.getValue(ts).getTime() / 1000));
+}

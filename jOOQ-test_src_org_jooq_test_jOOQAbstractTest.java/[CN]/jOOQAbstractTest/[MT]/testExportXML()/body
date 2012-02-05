@@ -1,4 +1,3 @@
 {
-  Result<B> books=create().selectFrom(TBook()).fetch();
-  testXML(books.exportXML(),books);
+  new FormatTests(this).testExportXML();
 }

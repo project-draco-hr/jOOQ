@@ -1,0 +1,21 @@
+{
+  Select<?> select=create().select(TBook_ID(),TBook_ID().mul(6).div(2).div(3)).from(TBook()).orderBy(TBook_ID(),TBook_ID().mod(2));
+  assertEquals(Arrays.asList(6,2,3,2),select.getBindValues());
+  log.info("Executing",select.getSQL());
+  PreparedStatement stmt=jOOQAbstractTest.connection.prepareStatement(select.getSQL());
+  int i=0;
+  for (  Object value : select.getBindValues()) {
+    stmt.setObject(++i,value);
+  }
+  ResultSet rs=stmt.executeQuery();
+  Result<Record> result=create().fetch(rs);
+  assertEquals(BOOK_IDS,result.getValues(TBook_ID(),Integer.class));
+  assertEquals(BOOK_IDS,result.getValues(1,Integer.class));
+  try {
+    assertEquals(BOOK_IDS,result.getValues(2,Integer.class));
+    fail();
+  }
+ catch (  IllegalArgumentException expected) {
+  }
+  stmt.close();
+}

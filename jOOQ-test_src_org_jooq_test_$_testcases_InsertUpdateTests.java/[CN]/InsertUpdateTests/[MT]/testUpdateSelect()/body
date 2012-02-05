@@ -1,0 +1,19 @@
+{
+switch (getDialect()) {
+case SQLITE:
+case MYSQL:
+    log.info("SKIPPING","UPDATE .. SET .. = (SELECT ..) integration test. This syntax is poorly supported by " + getDialect());
+  return;
+}
+jOOQAbstractTest.reset=false;
+Table<A> a1=TAuthor();
+Table<A> a2=TAuthor().as("a2");
+Field<String> f1=a1.getField(TAuthor_FIRST_NAME());
+Field<String> f2=a2.getField(TAuthor_FIRST_NAME());
+Field<String> f3=a2.getField(TAuthor_LAST_NAME());
+UpdateQuery<A> u=create().updateQuery(a1);
+u.addValue(f1,create().select(max(f3)).from(a2).where(f1.equal(f2)).<String>asField());
+u.execute();
+Field<Integer> c=count();
+assertEquals(Integer.valueOf(2),create().select(c).from(TAuthor()).where(TAuthor_FIRST_NAME().equal(TAuthor_LAST_NAME())).fetchOne(c));
+}
