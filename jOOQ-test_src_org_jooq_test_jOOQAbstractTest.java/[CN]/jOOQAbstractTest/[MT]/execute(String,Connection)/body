@@ -2,16 +2,21 @@
   Statement stmt=null;
   String allSQL=scripts.get(script);
   if (allSQL == null) {
-    File file=new File(getClass().getResource(script).toURI());
-    allSQL=FileUtils.readFileToString(file);
+    try {
+      File file=new File(getClass().getResource(script).toURI());
+      allSQL=FileUtils.readFileToString(file);
+      testSQLWatch.splitDebug("Loaded SQL file");
+    }
+ catch (    IOException ignore) {
+      allSQL="";
+    }
     scripts.put(script,allSQL);
-    testSQLWatch.splitDebug("Loaded SQL file");
   }
   for (  String sql : allSQL.split("/")) {
     try {
       if (!StringUtils.isBlank(sql)) {
         sql=sql.replace("{" + JDBC_SCHEMA + "}",jdbcSchema);
-        stmt=connection.createStatement();
+        stmt=con.createStatement();
         stmt.execute(sql.trim());
         testSQLWatch.splitDebug(StringUtils.abbreviate(sql.trim().replaceAll("[\\n\\r]|\\s+"," "),25));
       }

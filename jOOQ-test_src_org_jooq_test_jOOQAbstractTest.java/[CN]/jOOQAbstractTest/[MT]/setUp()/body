@@ -1,12 +1,15 @@
 {
   connection=getConnection();
+  connectionMultiSchema=getConnectionMultiSchema();
   autocommit=connection.getAutoCommit();
   if (!initialised) {
     initialised=true;
-    execute(getCreateScript());
+    execute(getCreateScript(),connection);
+    execute(getCreateMultiSchemaScript(),connectionMultiSchema);
   }
   if (!reset) {
     reset=true;
-    execute(getResetScript());
+    execute(getResetScript(),connection);
+    execute(getResetMultiSchemaScript(),connectionMultiSchema);
   }
 }
