@@ -1,0 +1,4 @@
+{
+  org.jooq.test.oracle.generatedclasses.routines.FPipelinedArray4 f=new org.jooq.test.oracle.generatedclasses.routines.FPipelinedArray4();
+  return f.asField();
+}

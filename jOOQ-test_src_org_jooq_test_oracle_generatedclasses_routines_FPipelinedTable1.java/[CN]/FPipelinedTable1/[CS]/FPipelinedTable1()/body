@@ -1,0 +1,4 @@
+{
+  super(org.jooq.SQLDialect.ORACLE,"F_PIPELINED_TABLE1",org.jooq.test.oracle.generatedclasses.Test.TEST,org.jooq.impl.SQLDataType.INTEGER.asArrayDataType(org.jooq.test.oracle.generatedclasses.udt.records.UNumberTableRecord.class));
+  setReturnParameter(RETURN_VALUE);
+}
