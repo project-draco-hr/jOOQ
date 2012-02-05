@@ -1,3 +1,0 @@
-{
-  return (R)invoke0(object.getClass(),object,methodName,parameters);
-}
