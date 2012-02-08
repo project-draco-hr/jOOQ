@@ -1,10 +1,11 @@
 {
+  SQLDataType<T> type=getDataType(context).getSQLDataType();
   if (getType() == BigDecimal.class && asList(DB2,DERBY,HSQLDB).contains(context.getDialect())) {
     int scale=((BigDecimal)getValue()).scale();
     int precision=scale + ((BigDecimal)getValue()).precision();
     toSQLCast(context,getDataType(context),precision,scale);
   }
- else   if (SQLDataType.OTHER == getDataType(context).getSQLDataType()) {
+ else   if (SQLDataType.OTHER == type) {
     if (value != null) {
       toSQLCast(context,FieldTypeHelper.getDataType(context.getDialect(),value.getClass()),0,0);
     }
