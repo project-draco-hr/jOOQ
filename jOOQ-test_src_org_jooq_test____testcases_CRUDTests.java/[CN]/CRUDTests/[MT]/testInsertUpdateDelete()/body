@@ -1,11 +1,12 @@
 {
   jOOQAbstractTest.reset=false;
-  long time=System.currentTimeMillis();
+  long timeIn=0;
+  long timeOut=-3600000;
   InsertQuery<A> i=create().insertQuery(TAuthor());
   i.addValue(TAuthor_ID(),100);
   i.addValue(TAuthor_FIRST_NAME(),"Hermann");
   i.addValue(TAuthor_LAST_NAME(),"Hesse");
-  i.addValue(TAuthor_DATE_OF_BIRTH(),new Date(time));
+  i.addValue(TAuthor_DATE_OF_BIRTH(),new Date(timeIn));
   i.addValue(TAuthor_YEAR_OF_BIRTH(),2010);
   if (TAuthor_ADDRESS() != null) {
     addAddressValue(i,TAuthor_ADDRESS());
@@ -14,6 +15,7 @@
   A author=create().fetchOne(TAuthor(),TAuthor_FIRST_NAME().equal("Hermann"));
   assertEquals("Hermann",author.getValue(TAuthor_FIRST_NAME()));
   assertEquals("Hesse",author.getValue(TAuthor_LAST_NAME()));
+  assertEquals(new Date(timeOut),author.getValue(TAuthor_DATE_OF_BIRTH()));
   Map<Field<?>,String> map=new HashMap<Field<?>,String>();
   map.put(TAuthor_FIRST_NAME(),"Hermie");
   assertEquals(1,create().update(TAuthor()).set(map).where(TAuthor_ID().equal(100)).execute());
