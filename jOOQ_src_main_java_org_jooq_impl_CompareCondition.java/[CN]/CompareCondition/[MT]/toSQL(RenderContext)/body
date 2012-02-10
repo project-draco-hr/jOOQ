@@ -10,7 +10,8 @@ case NOT_EQUALS:
 return;
 }
 }
-context.sql(comparator.toSQL()).sql(" ").sql(field2);
+boolean cast=context.getDialect() == DB2 && field2 instanceof Concat;
+context.sql(comparator.toSQL()).sql(" ").sql(cast ? "cast(" : "").sql(field2).sql(cast ? " as varchar(4000))" : "");
 if (escape != null) {
 context.sql(" escape '").sql(escape).sql("'");
 }
