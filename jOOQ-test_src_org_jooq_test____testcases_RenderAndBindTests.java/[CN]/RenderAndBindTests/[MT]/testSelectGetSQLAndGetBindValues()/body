@@ -1,6 +1,6 @@
 {
   Select<?> select=create().select(TBook_ID(),TBook_ID().mul(6).div(2).div(3)).from(TBook()).orderBy(TBook_ID(),TBook_ID().mod(2));
-  assertEquals(Arrays.asList(6,2,3,2),select.getBindValues());
+  assertEquals(asList(6,2,3,2),select.getBindValues());
   log.info("Executing",select.getSQL());
   PreparedStatement stmt=jOOQAbstractTest.connection.prepareStatement(select.getSQL());
   int i=0;
