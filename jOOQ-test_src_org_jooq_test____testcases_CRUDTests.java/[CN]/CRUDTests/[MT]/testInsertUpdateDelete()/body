@@ -15,7 +15,7 @@
   A author=create().fetchOne(TAuthor(),TAuthor_FIRST_NAME().equal("Hermann"));
   assertEquals("Hermann",author.getValue(TAuthor_FIRST_NAME()));
   assertEquals("Hesse",author.getValue(TAuthor_LAST_NAME()));
-  assertEquals(new Date(timeOut),author.getValue(TAuthor_DATE_OF_BIRTH()));
+  if (getDialect() != SQLITE)   assertEquals(new Date(timeOut),author.getValue(TAuthor_DATE_OF_BIRTH()));
   Map<Field<?>,String> map=new HashMap<Field<?>,String>();
   map.put(TAuthor_FIRST_NAME(),"Hermie");
   assertEquals(1,create().update(TAuthor()).set(map).where(TAuthor_ID().equal(100)).execute());

@@ -14,5 +14,8 @@
   if ("Record".equals(suffix)) {
     sb.append(".records");
   }
+ else   if ("Pojo".equals(suffix)) {
+    sb.append(".pojos");
+  }
   return sb.toString();
 }

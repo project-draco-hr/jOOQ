@@ -1,6 +1,6 @@
 {
   Record record=create().select(val(new Date(0)).as("d"),val(new Time(0)).as("t"),val(new Timestamp(0)).as("ts")).fetchOne();
-  assertEquals(new Date(-3600000),record.getValue("d"));
+  if (getDialect() != SQLITE)   assertEquals(new Date(-3600000),record.getValue("d"));
   assertEquals(new Time(0),record.getValue("t"));
   assertEquals(new Timestamp(0),record.getValue("ts"));
 }

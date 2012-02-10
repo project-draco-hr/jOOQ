@@ -383,6 +383,62 @@
     registerInSchema(outS,database.getTables(schema),Table.class,true);
     watch.splitInfo("Tables generated");
   }
+  if (generatePojos() && database.getTables(schema).size() > 0) {
+    log.info("Generating table POJOs");
+    for (    TableDefinition table : database.getTables(schema)) {
+      try {
+        log.info("Generating table POJO",strategy.getFileName(table));
+        GenerationWriter out=new GenerationWriter(strategy.getFile(table,"Pojo"));
+        printHeader(out,table,"Pojo");
+        printClassJavadoc(out,table);
+        out.print("public class ");
+        out.print(strategy.getJavaClassName(table));
+        out.print(" implements java.io.Serializable {");
+        out.println();
+        out.printSerial();
+        out.println();
+        for (        ColumnDefinition column : table.getColumns()) {
+          out.print("\tprivate ");
+          out.print(getJavaType(column.getType()));
+          out.print(" ");
+          out.print(convertToJavaIdentifierEnum(strategy.getJavaClassNameLC(column)));
+          out.println(";");
+        }
+        for (        ColumnDefinition column : table.getColumns()) {
+          out.println();
+          out.print("\tpublic ");
+          out.print(getJavaType(column.getType()));
+          out.print(" ");
+          out.print(strategy.getJavaGetterName(column));
+          out.println("() {");
+          out.print("\t\treturn this.");
+          out.print(convertToJavaIdentifierEnum(strategy.getJavaClassNameLC(column)));
+          out.println(";");
+          out.println("\t}");
+          out.println();
+          out.print("\tpublic void ");
+          out.print(strategy.getJavaSetterName(column));
+          out.print("(");
+          out.print(getJavaType(column.getType()));
+          out.print(" ");
+          out.print(convertToJavaIdentifierEnum(strategy.getJavaClassNameLC(column)));
+          out.println(") {");
+          out.print("\t\tthis.");
+          out.print(convertToJavaIdentifierEnum(strategy.getJavaClassNameLC(column)));
+          out.print(" = ");
+          out.print(convertToJavaIdentifierEnum(strategy.getJavaClassNameLC(column)));
+          out.println(";");
+          out.println("\t}");
+        }
+        out.println("}");
+        out.close();
+      }
+ catch (      Exception e) {
+        log.error("Error while generating table POJO " + table,e);
+      }
+    }
+    watch.splitInfo("Table POJOs generated");
+  }
   if (database.getTables(schema).size() > 0) {
     log.info("Generating table references");
     GenerationWriter out=new GenerationWriter(new File(targetSchemaDir,"Tables.java"));
