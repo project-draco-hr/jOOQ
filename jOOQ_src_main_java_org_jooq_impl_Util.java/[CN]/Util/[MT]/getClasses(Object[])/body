@@ -1,0 +1,18 @@
+{
+  if (values == null) {
+    return null;
+  }
+  Class<?>[] result=new Class<?>[values.length];
+  for (int i=0; i < values.length; i++) {
+    if (values[i] instanceof Field<?>) {
+      result[i]=((Field<?>)values[i]).getType();
+    }
+ else     if (values[i] != null) {
+      result[i]=values[i].getClass();
+    }
+ else {
+      result[i]=Object.class;
+    }
+  }
+  return result;
+}

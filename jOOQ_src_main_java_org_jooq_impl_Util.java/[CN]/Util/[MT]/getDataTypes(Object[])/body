@@ -1,0 +1,3 @@
+{
+  return getDataTypes(getClasses(values));
+}

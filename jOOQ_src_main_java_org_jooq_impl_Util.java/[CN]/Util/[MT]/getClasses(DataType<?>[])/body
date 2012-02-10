@@ -1,0 +1,15 @@
+{
+  if (types == null) {
+    return null;
+  }
+  Class<?>[] result=new Class<?>[types.length];
+  for (int i=0; i < types.length; i++) {
+    if (types[i] != null) {
+      result[i]=types[i].getType();
+    }
+ else {
+      result[i]=Object.class;
+    }
+  }
+  return result;
+}
