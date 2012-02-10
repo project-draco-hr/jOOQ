@@ -16,7 +16,7 @@
       toSQLCast(context,FieldTypeHelper.getDataType(context.getDialect(),String.class),0,0);
     }
   }
- else   if (context.getDialect() == POSTGRES) {
+ else   if (context.getDialect() == POSTGRES && (type == null || !type.isTemporal())) {
     toSQL(context,getValue(),getType());
   }
  else {
