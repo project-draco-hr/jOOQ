@@ -6,28 +6,33 @@ case ORACLE:
     break;
 case DB2:
 {
-    if (getLimit().getOffset() == 0) {
+    if (getLimit().offsetZero() && !getLimit().rendersParams()) {
       toSQLReferenceLimitDefault(context);
     }
  else {
-      toSQLReferenceLimitDB2SQLServer(context);
+      toSQLReferenceLimitDB2SQLServerSybase(context);
     }
     break;
   }
 case ASE:
 case SQLSERVER:
 {
-  if (getLimit().getOffset() == 0) {
+  if (getLimit().offsetZero() && !getLimit().rendersParams()) {
     toSQLReference0(context);
   }
  else {
-    toSQLReferenceLimitDB2SQLServer(context);
+    toSQLReferenceLimitDB2SQLServerSybase(context);
   }
   break;
 }
 case SYBASE:
 {
-toSQLReference0(context);
+if (!getLimit().rendersParams()) {
+  toSQLReference0(context);
+}
+ else {
+  toSQLReferenceLimitDB2SQLServerSybase(context);
+}
 break;
 }
 default :

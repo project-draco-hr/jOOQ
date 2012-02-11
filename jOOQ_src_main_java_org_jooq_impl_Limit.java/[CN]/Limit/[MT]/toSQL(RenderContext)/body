@@ -1,4 +1,6 @@
 {
+  boolean inline=context.inline();
+  CastMode castMode=context.castMode();
 switch (context.getDialect()) {
 case MYSQL:
 case H2:
@@ -6,59 +8,44 @@ case HSQLDB:
 case POSTGRES:
 case SQLITE:
 {
-      if (context.inline()) {
-        context.sql("limit ").sql(getNumberOfRows()).sql(" offset ").sql(getOffset());
-      }
- else {
-        context.sql("limit ? offset ?");
-      }
+      context.castMode(NEVER).sql("limit ").sql(numberOfRows).sql(" offset ").sql(offsetOrZero).castMode(castMode);
       break;
     }
 case DERBY:
 {
-    if (context.inline()) {
-      context.sql("offset ").sql(getOffset()).sql(" rows fetch next ").sql(getNumberOfRows()).sql(" rows only");
-    }
- else {
-      context.sql("offset ? rows fetch next ? rows only");
-    }
+    context.castMode(NEVER).sql("offset ").sql(offsetOrZero).sql(" rows fetch next ").sql(numberOfRows).sql(" rows only").castMode(castMode);
     break;
   }
 case INGRES:
 {
-  context.sql("offset ").sql(getOffset()).sql(" fetch first ").sql(getNumberOfRows()).sql(" rows only");
+  context.inline(true).sql("offset ").sql(offsetOrZero).sql(" fetch first ").sql(numberOfRows).sql(" rows only").inline(inline);
   break;
 }
 case SYBASE:
 {
-context.sql("top ").sql(getNumberOfRows()).sql(" start at ").sql(getOffset() + 1);
+context.inline(true).sql("top ").sql(numberOfRows).sql(" start at ").sql(offsetPlusOne).inline(inline);
 break;
 }
 case DB2:
 {
-if (getOffset() != 0) {
-throw new SQLDialectNotSupportedException("DB2 does not support offsets in FETCH FIRST ROWS ONLY clause");
+if (offset != null) {
+throw new DataAccessException("DB2 does not support offsets in FETCH FIRST ROWS ONLY clause");
 }
-context.sql("fetch first ").sql(getNumberOfRows()).sql(" rows only");
+context.inline(true).sql("fetch first ").sql(numberOfRows).sql(" rows only").inline(inline);
 break;
 }
 case ASE:
 case SQLSERVER:
 {
-if (getOffset() != 0) {
-throw new SQLDialectNotSupportedException("Offsets in TOP clause not supported");
+if (offset != null) {
+throw new DataAccessException("Offsets in TOP clause not supported");
 }
-context.sql("top ").sql(getNumberOfRows());
+context.inline(true).sql("top ").sql(numberOfRows).inline(inline);
 break;
 }
 default :
 {
-if (context.inline()) {
-context.sql("limit ").sql(getNumberOfRows()).sql(" offset ").sql(getOffset());
-}
- else {
-context.sql("limit ? offset ?");
-}
+context.castMode(NEVER).sql("limit ").sql(numberOfRows).sql(" offset ").sql(offsetOrZero).castMode(castMode);
 break;
 }
 }

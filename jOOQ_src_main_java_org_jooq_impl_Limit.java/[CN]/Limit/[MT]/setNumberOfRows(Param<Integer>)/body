@@ -1,0 +1,4 @@
+{
+  this.numberOfRows=numberOfRows;
+  this.rendersParams=true;
+}

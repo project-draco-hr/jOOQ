@@ -1,3 +1,7 @@
 {
-  this.offset=offset;
+  if (offset != 0) {
+    this.offset=val(offset);
+    this.offsetOrZero=this.offset;
+    this.offsetPlusOne=val(offset + 1);
+  }
 }

@@ -1,0 +1,5 @@
+{
+  this.offset=offset;
+  this.offsetOrZero=offset;
+  this.rendersParams=true;
+}

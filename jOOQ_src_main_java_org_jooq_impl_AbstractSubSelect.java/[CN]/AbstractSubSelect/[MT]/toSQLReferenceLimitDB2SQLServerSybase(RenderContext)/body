@@ -15,18 +15,5 @@
       separator=", ";
     }
   }
-  context.sql(") as ").sql(rownumName).sql(" from (").sql(enclosed).sql(") as ").sql(subqueryName).sql(") as outer_").sql(subqueryName).sql(" where ").sql(rownumName).sql(" >= ");
-  if (context.inline()) {
-    context.sql(getLimit().getLowerRownum());
-  }
- else {
-    context.sql("?");
-  }
-  context.sql(" and ").sql(rownumName).sql(" < ");
-  if (context.inline()) {
-    context.sql(getLimit().getUpperRownum());
-  }
- else {
-    context.sql("?");
-  }
+  context.sql(") as ").sql(rownumName).sql(" from (").sql(enclosed).sql(") as ").sql(subqueryName).sql(") as outer_").sql(subqueryName).sql(" where ").sql(rownumName).sql(" > ").sql(getLimit().getLowerRownum()).sql(" and ").sql(rownumName).sql(" <= ").sql(getLimit().getUpperRownum());
 }

@@ -1,0 +1,11 @@
+{
+switch (castMode) {
+case ALWAYS:
+    return true;
+case NEVER:
+  return false;
+case SOME:
+return asList(castDialects).contains(getDialect());
+}
+return null;
+}

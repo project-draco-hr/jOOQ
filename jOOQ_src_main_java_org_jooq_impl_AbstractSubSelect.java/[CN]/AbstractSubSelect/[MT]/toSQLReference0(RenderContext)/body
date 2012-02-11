@@ -10,7 +10,7 @@ switch (context.getDialect()) {
 case ASE:
 case SQLSERVER:
 {
-      if (getLimit().isApplicable() && getLimit().getOffset() == 0) {
+      if (getLimit().isApplicable() && getLimit().offsetZero() && !getLimit().rendersParams()) {
         context.sql(getLimit()).sql(" ");
       }
  else       if (context.getDialect() == SQLSERVER && !getOrderBy().isEmpty()) {
@@ -22,7 +22,7 @@ case SQLSERVER:
     }
 case SYBASE:
 {
-    if (getLimit().isApplicable()) {
+    if (getLimit().isApplicable() && !getLimit().rendersParams()) {
       context.sql(getLimit()).sql(" ");
     }
     break;

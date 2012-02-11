@@ -2,8 +2,8 @@
 switch (context.getDialect()) {
 case DERBY:
 {
-      context.bind(val(getOffset()));
-      context.bind(val(getNumberOfRows()));
+      context.bind(offsetOrZero);
+      context.bind(numberOfRows);
       break;
     }
 case MYSQL:
@@ -12,29 +12,40 @@ case H2:
 case POSTGRES:
 case SQLITE:
 {
-    context.bind(val(getNumberOfRows()));
-    context.bind(val(getOffset()));
+    context.bind(numberOfRows);
+    context.bind(offsetOrZero);
     break;
   }
+case ASE:
 case INGRES:
-case SYBASE:
 {
   break;
 }
-case ASE:
+case SYBASE:
+{
+if (!rendersParams) {
+}
+ else {
+  context.bind(getLowerRownum());
+  context.bind(getUpperRownum());
+}
+break;
+}
 case DB2:
 case SQLSERVER:
 {
-if (offset == 0) {
-  break;
+if (offset == null && !rendersParams) {
 }
  else {
+context.bind(getLowerRownum());
+context.bind(getUpperRownum());
 }
+break;
 }
 case ORACLE:
 {
-context.bind(val(getLowerRownum()));
-context.bind(val(getUpperRownum()));
+context.bind(getLowerRownum());
+context.bind(getUpperRownum());
 break;
 }
 }

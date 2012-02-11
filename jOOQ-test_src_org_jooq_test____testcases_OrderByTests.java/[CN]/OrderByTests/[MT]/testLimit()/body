@@ -1,29 +1,20 @@
 {
-  SQLDialect dialect=getDialect();
-  int lower=0;
-switch (dialect) {
-case DB2:
-case DERBY:
-case HSQLDB:
-case INGRES:
-case SYBASE:
-    lower=1;
-}
-for (int i=lower; i < 6; i++) {
-  assertEquals(Math.min(i,4),create().selectFrom(TBook()).limit(i).fetch().size());
-  assertEquals(Math.min(i,4),create().select().from(TBook()).limit(i).fetch().size());
-}
-if (getDialect() == SQLDialect.ASE) {
-  log.info("SKIPPING","LIMIT .. OFFSET tests");
-  return;
-}
-for (int i=lower; i < 6; i++) {
-  assertEquals(Math.min(i,3),create().selectFrom(TBook()).limit(1,i).fetch().size());
-  assertEquals(Math.min(i,3),create().selectFrom(TBook()).limit(i).offset(1).fetch().size());
-  assertEquals(Math.min(i,3),create().select().from(TBook()).limit(1,i).fetch().size());
-  assertEquals(Math.min(i,3),create().select().from(TBook()).limit(i).offset(1).fetch().size());
-}
-Result<B> result=create().selectFrom(TBook()).orderBy(TBook_ID(),TBook_AUTHOR_ID()).limit(1,2).fetch();
-assertEquals(Integer.valueOf(2),result.getValue(0,TBook_ID()));
-assertEquals(Integer.valueOf(3),result.getValue(1,TBook_ID()));
+  int lower=asList(DB2,DERBY,HSQLDB,INGRES,SYBASE).contains(getDialect()) ? 1 : 0;
+  for (int i=lower; i < 6; i++) {
+    assertEquals(Math.min(i,4),create().selectFrom(TBook()).limit(i).fetch().size());
+    assertEquals(Math.min(i,4),create().select().from(TBook()).limit(i).fetch().size());
+  }
+  if (getDialect() == SQLDialect.ASE) {
+    log.info("SKIPPING","LIMIT .. OFFSET tests");
+    return;
+  }
+  for (int i=lower; i < 6; i++) {
+    assertEquals(Math.min(i,3),create().selectFrom(TBook()).limit(1,i).fetch().size());
+    assertEquals(Math.min(i,3),create().selectFrom(TBook()).limit(i).offset(1).fetch().size());
+    assertEquals(Math.min(i,3),create().select().from(TBook()).limit(1,i).fetch().size());
+    assertEquals(Math.min(i,3),create().select().from(TBook()).limit(i).offset(1).fetch().size());
+  }
+  Result<B> result=create().selectFrom(TBook()).orderBy(TBook_ID(),TBook_AUTHOR_ID()).limit(1,2).fetch();
+  assertEquals(Integer.valueOf(2),result.getValue(0,TBook_ID()));
+  assertEquals(Integer.valueOf(3),result.getValue(1,TBook_ID()));
 }
