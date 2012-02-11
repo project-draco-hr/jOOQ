@@ -391,21 +391,27 @@
         GenerationWriter out=new GenerationWriter(strategy.getFile(table,"Pojo"));
         printHeader(out,table,"Pojo");
         printClassJavadoc(out,table);
+        printTableJPAAnnotation(out,table);
         out.print("public class ");
         out.print(strategy.getJavaClassName(table));
         out.print(" implements java.io.Serializable {");
         out.println();
         out.printSerial();
         out.println();
+        int maxLength=0;
+        for (        ColumnDefinition column : table.getColumns()) {
+          maxLength=Math.max(maxLength,getJavaType(column.getType()).length());
+        }
         for (        ColumnDefinition column : table.getColumns()) {
           out.print("\tprivate ");
-          out.print(getJavaType(column.getType()));
+          out.print(StringUtils.rightPad(getJavaType(column.getType()),maxLength));
           out.print(" ");
           out.print(convertToJavaIdentifierEnum(strategy.getJavaClassNameLC(column)));
           out.println(";");
         }
         for (        ColumnDefinition column : table.getColumns()) {
           out.println();
+          printColumnJPAAnnotation(out,column);
           out.print("\tpublic ");
           out.print(getJavaType(column.getType()));
           out.print(" ");
@@ -588,6 +594,7 @@
         GenerationWriter out=new GenerationWriter(strategy.getFile(table,"Record"));
         printHeader(out,table,"Record");
         printClassJavadoc(out,table);
+        printTableJPAAnnotation(out,table);
         Class<?> baseClass;
         if (generateRelations() && table.getMainUniqueKey() != null) {
           baseClass=UpdatableRecordImpl.class;

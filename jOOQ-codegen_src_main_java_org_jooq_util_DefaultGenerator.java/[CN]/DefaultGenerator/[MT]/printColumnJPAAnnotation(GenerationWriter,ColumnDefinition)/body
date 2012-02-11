@@ -1,0 +1,23 @@
+{
+  if (generateJPAAnnotations()) {
+    UniqueKeyDefinition pk=column.getPrimaryKey();
+    List<UniqueKeyDefinition> uks=column.getUniqueKeys();
+    if (pk != null) {
+      if (pk.getKeyColumns().size() == 1) {
+        out.println("\t@javax.persistence.Id");
+      }
+    }
+    String unique="";
+    for (    UniqueKeyDefinition uk : uks) {
+      if (uk.getKeyColumns().size() == 1) {
+        unique=", unique = true";
+        break;
+      }
+    }
+    out.print("\t@javax.persistence.Column(name = \"");
+    out.print(column.getName().replace("\"","\\\""));
+    out.print("\"");
+    out.print(unique);
+    out.println(")");
+  }
+}
