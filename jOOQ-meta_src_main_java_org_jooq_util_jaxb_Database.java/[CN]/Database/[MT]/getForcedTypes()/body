@@ -1,3 +1,6 @@
 {
+  if (forcedTypes == null) {
+    forcedTypes=new ArrayList<ForcedType>();
+  }
   return forcedTypes;
 }

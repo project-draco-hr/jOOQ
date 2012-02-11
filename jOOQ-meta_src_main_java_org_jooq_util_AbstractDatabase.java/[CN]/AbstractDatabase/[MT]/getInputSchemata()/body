@@ -1,6 +1,6 @@
 {
   List<String> result=new ArrayList<String>();
-  for (  Schema schema : configuredSchemata.getSchema()) {
+  for (  Schema schema : configuredSchemata) {
     result.add(schema.getInputSchema());
   }
   return result;

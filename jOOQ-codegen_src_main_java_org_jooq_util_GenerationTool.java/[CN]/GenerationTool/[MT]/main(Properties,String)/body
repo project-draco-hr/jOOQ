@@ -7,50 +7,46 @@
   jdbc.setSchema(properties.getProperty("jdbc.Schema"));
   Strategy strategy=new Strategy();
   strategy.setName(properties.containsKey("generator.strategy") ? properties.getProperty("generator.strategy") : null);
-  MasterDataTables masterDataTables=new MasterDataTables();
+  List<MasterDataTable> masterDataTables=new ArrayList<MasterDataTable>();
   for (  String name : defaultString(properties.getProperty("generator.generate.master-data-tables")).split(",")) {
     if (isBlank(name))     continue;
     MasterDataTable table=new MasterDataTable();
     table.setName(name);
     table.setLiteral(properties.getProperty("generator.generate.master-data-table-literal." + name));
     table.setDescription(properties.getProperty("generator.generate.master-data-table-description." + name));
-    masterDataTables.getMasterDataTable().add(table);
+    masterDataTables.add(table);
   }
-  EnumTypes enumTypes=new EnumTypes();
+  List<EnumType> enumTypes=new ArrayList<EnumType>();
   for (  String property : properties.stringPropertyNames()) {
     if (property.startsWith("generator.database.enum-type.")) {
       String name=property.replace("generator.database.enum-type.","");
       EnumType type=new EnumType();
       type.setName(name);
       type.setLiterals(properties.getProperty(property));
-      enumTypes.getEnumType().add(type);
+      enumTypes.add(type);
     }
   }
-  ForcedTypes forcedTypes=new ForcedTypes();
+  List<ForcedType> forcedTypes=new ArrayList<ForcedType>();
   for (  String property : properties.stringPropertyNames()) {
     if (property.startsWith("generator.database.forced-type.")) {
       String name=property.replace("generator.database.forced-type.","");
       ForcedType type=new ForcedType();
       type.setName(name);
       type.setExpressions(properties.getProperty(property));
-      forcedTypes.getForcedType().add(type);
+      forcedTypes.add(type);
     }
   }
-  Schema schema=new Schema();
-  schema.setInputSchema(properties.containsKey("generator.database.input-schema") ? properties.getProperty("generator.database.input-schema") : null);
-  schema.setOutputSchema(properties.containsKey("generator.database.output-schema") ? properties.getProperty("generator.database.output-schema") : null);
-  Schemata schemata=new Schemata();
-  schemata.getSchema().add(schema);
   org.jooq.util.jaxb.Database database=new org.jooq.util.jaxb.Database();
   database.setName(properties.getProperty("generator.database"));
   database.setIncludes(properties.containsKey("generator.database.includes") ? properties.getProperty("generator.database.includes") : null);
   database.setExcludes(properties.containsKey("generator.database.excludes") ? properties.getProperty("generator.database.excludes") : null);
   database.setDateAsTimestamp("true".equalsIgnoreCase(properties.getProperty("generator.database.date-as-timestamp")));
   database.setUnsignedTypes(!"false".equalsIgnoreCase(properties.getProperty("generator.generate.unsigned-types")));
-  database.setSchemata(schemata);
-  if (!masterDataTables.getMasterDataTable().isEmpty())   database.setMasterDataTables(masterDataTables);
-  if (!enumTypes.getEnumType().isEmpty())   database.setEnumTypes(enumTypes);
-  if (!forcedTypes.getForcedType().isEmpty())   database.setForcedTypes(forcedTypes);
+  database.setInputSchema(properties.containsKey("generator.database.input-schema") ? properties.getProperty("generator.database.input-schema") : null);
+  database.setOutputSchema(properties.containsKey("generator.database.output-schema") ? properties.getProperty("generator.database.output-schema") : null);
+  if (!masterDataTables.isEmpty())   database.getMasterDataTables().addAll(masterDataTables);
+  if (!enumTypes.isEmpty())   database.getEnumTypes().addAll(enumTypes);
+  if (!forcedTypes.isEmpty())   database.getForcedTypes().addAll(forcedTypes);
   Target target=new Target();
   target.setPackageName(properties.getProperty("generator.target.package"));
   target.setDirectory(properties.getProperty("generator.target.directory"));

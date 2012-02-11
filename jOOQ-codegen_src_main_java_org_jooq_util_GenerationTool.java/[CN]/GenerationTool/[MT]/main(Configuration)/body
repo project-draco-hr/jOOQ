@@ -3,9 +3,6 @@
   org.jooq.util.jaxb.Generator g=configuration.getGenerator();
   if (g.getStrategy() == null)   g.setStrategy(new Strategy());
   if (g.getTarget() == null)   g.setTarget(new Target());
-  if (g.getDatabase().getEnumTypes() == null)   g.getDatabase().setEnumTypes(new EnumTypes());
-  if (g.getDatabase().getForcedTypes() == null)   g.getDatabase().setForcedTypes(new ForcedTypes());
-  if (g.getDatabase().getMasterDataTables() == null)   g.getDatabase().setMasterDataTables(new MasterDataTables());
   Class.forName(j.getDriver());
   Connection connection=null;
   try {
@@ -17,14 +14,22 @@
     generator.setStrategy(strategy);
     Class<Database> databaseClass=(Class<Database>)Class.forName(g.getDatabase().getName());
     Database database=databaseClass.newInstance();
-    Schemata schemata=g.getDatabase().getSchemata();
-    if (schemata == null) {
-      schemata=new Schemata();
-      g.getDatabase().setSchemata(schemata);
+    List<Schema> schemata=g.getDatabase().getSchemata();
+    if (schemata.isEmpty()) {
+      Schema schema=new Schema();
+      schema.setInputSchema(g.getDatabase().getInputSchema());
+      schema.setOutputSchema(g.getDatabase().getOutputSchema());
+      schemata.add(schema);
     }
-    List<Schema> schemaList=schemata.getSchema();
-    if (schemaList.isEmpty())     schemaList.add(new Schema());
-    for (    Schema schema : schemaList) {
+ else {
+      if (!StringUtils.isBlank(g.getDatabase().getInputSchema())) {
+        log.warn("WARNING: Cannot combine configuration properties /configuration/generator/database/inputSchema and /configuration/generator/database/schemata");
+      }
+      if (!StringUtils.isBlank(g.getDatabase().getOutputSchema())) {
+        log.warn("WARNING: Cannot combine configuration properties /configuration/generator/database/outputSchema and /configuration/generator/database/schemata");
+      }
+    }
+    for (    Schema schema : schemata) {
       if (StringUtils.isBlank(schema.getInputSchema())) {
         log.warn("WARNING: The configuration property jdbc.Schema is deprecated and will be removed in the future. Use /configuration/generator/database/inputSchema instead");
         schema.setInputSchema(j.getSchema());
@@ -37,11 +42,13 @@
     database.setConfiguredSchemata(schemata);
     database.setIncludes(defaultString(g.getDatabase().getIncludes()).split(","));
     database.setExcludes(defaultString(g.getDatabase().getExcludes()).split(","));
-    database.setConfiguredMasterDataTables(g.getDatabase().getMasterDataTables().getMasterDataTable());
-    database.setConfiguredEnumTypes(g.getDatabase().getEnumTypes().getEnumType());
-    database.setConfiguredForcedTypes(g.getDatabase().getForcedTypes().getForcedType());
+    database.setConfiguredMasterDataTables(g.getDatabase().getMasterDataTables());
+    database.setConfiguredEnumTypes(g.getDatabase().getEnumTypes());
+    database.setConfiguredForcedTypes(g.getDatabase().getForcedTypes());
     if (g.getDatabase().isDateAsTimestamp() != null)     database.setDateAsTimestamp(g.getDatabase().isDateAsTimestamp());
     if (g.getDatabase().isUnsignedTypes() != null)     database.setSupportsUnsignedTypes(g.getDatabase().isUnsignedTypes());
+    if (StringUtils.isBlank(g.getTarget().getPackageName()))     g.getTarget().setPackageName("org.jooq.generated");
+    if (StringUtils.isBlank(g.getTarget().getDirectory()))     g.getTarget().setPackageName("target/generated-sources/jooq");
     generator.setTargetPackage(g.getTarget().getPackageName());
     generator.setTargetDirectory(g.getTarget().getDirectory());
     if (g.getGenerate().isRelations() != null)     generator.setGenerateRelations(g.getGenerate().isRelations());

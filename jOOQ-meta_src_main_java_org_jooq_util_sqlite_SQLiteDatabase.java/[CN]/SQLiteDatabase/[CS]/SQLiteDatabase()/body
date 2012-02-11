@@ -2,7 +2,7 @@
   Schema schema=new Schema();
   schema.setInputSchema("");
   schema.setOutputSchema("");
-  Schemata s=new Schemata();
-  s.getSchema().add(schema);
-  setConfiguredSchemata(s);
+  List<Schema> schemata=new ArrayList<Schema>();
+  schemata.add(schema);
+  setConfiguredSchemata(schemata);
 }
