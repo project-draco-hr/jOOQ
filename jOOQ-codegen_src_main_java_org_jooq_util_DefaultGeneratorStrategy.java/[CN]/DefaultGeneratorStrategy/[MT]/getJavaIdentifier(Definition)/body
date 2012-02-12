@@ -1,3 +1,4 @@
 {
-  return GenerationUtil.convertToJavaIdentifier(definition.getName());
+  String n=(definition instanceof SchemaDefinition) ? definition.getDatabase().getOutputSchema(definition.getName()) : definition.getName();
+  return GenerationUtil.convertToJavaIdentifier(n);
 }

@@ -2,7 +2,7 @@
   if (schemata == null) {
     schemata=new ArrayList<SchemaDefinition>();
     for (    String name : getInputSchemata()) {
-      schemata.add(new SchemaDefinition(this,getOutputSchema(name),null));
+      schemata.add(new SchemaDefinition(this,name,null));
     }
   }
   return schemata;
