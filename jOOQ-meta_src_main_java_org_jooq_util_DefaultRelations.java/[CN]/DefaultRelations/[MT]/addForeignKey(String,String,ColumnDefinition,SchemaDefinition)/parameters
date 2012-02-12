@@ -1,0 +1,4 @@
+String foreignKeyName
+String uniqueKeyName
+ColumnDefinition foreignKeyColumn
+SchemaDefinition uniqueKeySchema

@@ -14,7 +14,7 @@
         String foreignKeyColumnName=record.getValueAsString(i + 3);
         String uniqueKeyName=record.getValueAsString("pk");
         ColumnDefinition column=referencingTable.getColumn(foreignKeyColumnName);
-        relations.addForeignKey(foreignKeyName,uniqueKeyName,column);
+        relations.addForeignKey(foreignKeyName,uniqueKeyName,column,getSchema());
       }
     }
   }
