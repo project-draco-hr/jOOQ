@@ -10,7 +10,7 @@
   out.println("\tpublic " + getJavaType(element.getType()) + " "+ strategy.getJavaGetterName(element)+ "() {");
   out.println("\t\treturn getValue(" + strategy.getFullJavaIdentifierUC(element) + ");");
   out.println("\t}");
-  if (generateRelations() && element instanceof ColumnDefinition) {
+  if (generateRelations() && generateNavigationMethods() && element instanceof ColumnDefinition) {
     ColumnDefinition column=(ColumnDefinition)element;
     List<UniqueKeyDefinition> uniqueKeys=column.getUniqueKeys();
     for (    UniqueKeyDefinition uniqueKey : uniqueKeys) {

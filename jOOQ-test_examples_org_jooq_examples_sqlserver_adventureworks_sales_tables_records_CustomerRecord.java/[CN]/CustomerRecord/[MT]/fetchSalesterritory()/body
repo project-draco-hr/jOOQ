@@ -1,3 +1,0 @@
-{
-  return create().selectFrom(org.jooq.examples.sqlserver.adventureworks.sales.tables.Salesterritory.SALESTERRITORY).where(org.jooq.examples.sqlserver.adventureworks.sales.tables.Salesterritory.SALESTERRITORY.TERRITORYID.equal(getValue(org.jooq.examples.sqlserver.adventureworks.sales.tables.Customer.CUSTOMER.TERRITORYID))).fetchOne();
-}
