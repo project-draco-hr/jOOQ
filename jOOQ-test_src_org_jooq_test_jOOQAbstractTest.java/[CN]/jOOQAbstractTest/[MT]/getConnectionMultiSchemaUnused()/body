@@ -1,0 +1,7 @@
+{
+  if (!connectionMultiSchemaUnusedInitialised) {
+    connectionMultiSchemaUnusedInitialised=true;
+    connectionMultiSchemaUnused=getConnection0("MULTI_SCHEMA_UNUSED","MULTI_SCHEMA_UNUSED");
+  }
+  return connectionMultiSchemaUnused;
+}

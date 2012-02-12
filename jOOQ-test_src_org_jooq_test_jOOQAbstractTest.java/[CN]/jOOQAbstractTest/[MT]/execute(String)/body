@@ -16,7 +16,10 @@
     try {
       if (!StringUtils.isBlank(sql)) {
         sql=sql.replace("{" + JDBC_SCHEMA + "}",jdbcSchema);
-        if (sql.toLowerCase().contains("multi_schema.")) {
+        if (sql.toLowerCase().contains("multi_schema_unused.") && !sql.toLowerCase().contains("references multi_schema_unused")) {
+          stmt=getConnectionMultiSchemaUnused().createStatement();
+        }
+ else         if (sql.toLowerCase().contains("multi_schema.") && !sql.toLowerCase().contains("references multi_schema.")) {
           stmt=getConnectionMultiSchema().createStatement();
         }
  else {
