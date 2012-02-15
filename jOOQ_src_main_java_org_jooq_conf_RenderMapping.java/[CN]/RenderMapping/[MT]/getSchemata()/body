@@ -1,0 +1,6 @@
+{
+  if (schemata == null) {
+    schemata=new ArrayList<MappedSchema>();
+  }
+  return schemata;
+}

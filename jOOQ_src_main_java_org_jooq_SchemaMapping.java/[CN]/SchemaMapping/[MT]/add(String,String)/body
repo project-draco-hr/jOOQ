@@ -1,0 +1,3 @@
+{
+  add(inputSchema,new SchemaImpl(outputSchema));
+}

@@ -1,0 +1,4 @@
+{
+  this.defaultSchema=defaultSchema;
+  this.schemata=schemata;
+}

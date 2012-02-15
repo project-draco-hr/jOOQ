@@ -1,0 +1,4 @@
+{
+  setStatementType(value);
+  return this;
+}

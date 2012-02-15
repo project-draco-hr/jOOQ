@@ -1,0 +1,4 @@
+{
+  setOutput(value);
+  return this;
+}

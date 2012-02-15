@@ -1,0 +1,4 @@
+{
+  setRenderMapping(value);
+  return this;
+}

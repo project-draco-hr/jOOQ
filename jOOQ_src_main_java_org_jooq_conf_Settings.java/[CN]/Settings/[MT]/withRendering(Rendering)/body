@@ -1,0 +1,4 @@
+{
+  setRendering(value);
+  return this;
+}

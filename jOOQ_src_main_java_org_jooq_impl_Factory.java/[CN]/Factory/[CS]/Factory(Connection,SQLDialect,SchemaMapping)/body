@@ -1,5 +1,0 @@
-{
-  this.connection=connection;
-  this.dialect=dialect;
-  this.mapping=mapping != null ? mapping : new SchemaMapping();
-}

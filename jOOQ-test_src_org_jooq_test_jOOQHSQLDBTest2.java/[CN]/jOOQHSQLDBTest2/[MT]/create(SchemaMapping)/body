@@ -1,5 +1,0 @@
-{
-  mapping=(mapping != null) ? mapping : new SchemaMapping();
-  mapping.add(TAuthor().getSchema(),Public.PUBLIC);
-  return new PublicFactory(getConnection(),mapping);
-}

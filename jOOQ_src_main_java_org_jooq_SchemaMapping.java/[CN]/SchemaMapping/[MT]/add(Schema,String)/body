@@ -1,4 +1,3 @@
 {
-  Schema configuredSchema=new SchemaImpl(configuredSchemaName);
-  add(generatedSchema,configuredSchema);
+  add(inputSchema.getName(),new SchemaImpl(outputSchema));
 }

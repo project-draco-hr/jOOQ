@@ -1,3 +1,3 @@
 {
-  return java.util.Arrays.<org.jooq.Table<?>>asList(org.jooq.util.derby.sys.tables.Sysconglomerates.SYSCONGLOMERATES,org.jooq.util.derby.sys.tables.Systables.SYSTABLES,org.jooq.util.derby.sys.tables.Syscolumns.SYSCOLUMNS,org.jooq.util.derby.sys.tables.Sysschemas.SYSSCHEMAS,org.jooq.util.derby.sys.tables.Sysconstraints.SYSCONSTRAINTS,org.jooq.util.derby.sys.tables.Syskeys.SYSKEYS,org.jooq.util.derby.sys.tables.Syssequences.SYSSEQUENCES);
+  return java.util.Arrays.<org.jooq.Table<?>>asList(org.jooq.util.derby.sys.tables.Syscolumns.SYSCOLUMNS,org.jooq.util.derby.sys.tables.Sysconglomerates.SYSCONGLOMERATES,org.jooq.util.derby.sys.tables.Sysconstraints.SYSCONSTRAINTS,org.jooq.util.derby.sys.tables.Syskeys.SYSKEYS,org.jooq.util.derby.sys.tables.Sysschemas.SYSSCHEMAS,org.jooq.util.derby.sys.tables.Syssequences.SYSSEQUENCES,org.jooq.util.derby.sys.tables.Systables.SYSTABLES);
 }

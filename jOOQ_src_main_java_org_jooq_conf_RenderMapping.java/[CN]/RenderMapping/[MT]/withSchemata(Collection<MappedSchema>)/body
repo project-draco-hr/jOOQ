@@ -1,0 +1,6 @@
+{
+  if (values != null) {
+    getSchemata().addAll(values);
+  }
+  return this;
+}

@@ -1,3 +1,0 @@
-{
-  return new SQLiteFactory(getConnection(),mapping);
-}

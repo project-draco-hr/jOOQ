@@ -1,2 +1,2 @@
-Schema generatedSchema
-String configuredSchemaName
+Schema inputSchema
+String outputSchema

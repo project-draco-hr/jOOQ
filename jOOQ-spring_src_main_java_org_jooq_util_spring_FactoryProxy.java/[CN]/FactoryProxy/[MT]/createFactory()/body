@@ -1,13 +1,13 @@
 {
   try {
     Class<? extends Factory> clazz=getDialect().getFactory();
-    Constructor<? extends Factory> constructor=clazz.getConstructor(Connection.class,SchemaMapping.class);
+    Constructor<? extends Factory> constructor=clazz.getConstructor(Connection.class,Settings.class);
     Connection con=DataSourceUtils.getConnection(getDataSource());
     Connection conToUse=con;
     if (nativeJdbcExtractor != null) {
       conToUse=nativeJdbcExtractor.getNativeConnection(con);
     }
-    Factory factory=constructor.newInstance(conToUse,getSchemaMapping());
+    Factory factory=constructor.newInstance(conToUse,getSettings());
     currentFactory.set(factory);
     currentConnection.set(con);
     return factory;
