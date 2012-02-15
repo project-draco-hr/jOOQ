@@ -1,5 +1,0 @@
-Configuration configuration
-FieldProvider fields
-ResultSet rs
-PreparedStatement stmt
-Class<? extends R> type

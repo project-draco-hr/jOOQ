@@ -1,0 +1,3 @@
+{
+  delegate.updateInt(columnIndex,x);
+}

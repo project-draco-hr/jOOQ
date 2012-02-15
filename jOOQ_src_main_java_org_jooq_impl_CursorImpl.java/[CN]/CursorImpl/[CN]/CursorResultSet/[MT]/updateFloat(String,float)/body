@@ -1,0 +1,3 @@
+{
+  delegate.updateFloat(columnLabel,x);
+}

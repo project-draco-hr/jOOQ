@@ -1,0 +1,5 @@
+Configuration configuration
+FieldProvider fields
+ResultSet rs
+Statement stmt
+Class<? extends R> type

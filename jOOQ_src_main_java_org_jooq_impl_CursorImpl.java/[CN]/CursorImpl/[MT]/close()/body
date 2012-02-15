@@ -1,6 +1,5 @@
 {
-  Util.safeClose(rs,stmt);
+  Util.safeClose(rs);
   rs=null;
-  stmt=null;
   isClosed=true;
 }

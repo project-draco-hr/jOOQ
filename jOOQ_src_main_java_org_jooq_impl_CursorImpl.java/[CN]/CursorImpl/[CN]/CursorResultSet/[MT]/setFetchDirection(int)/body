@@ -1,0 +1,3 @@
+{
+  delegate.setFetchDirection(direction);
+}
