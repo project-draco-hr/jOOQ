@@ -1,0 +1,3 @@
+{
+  new FormatTests(this).testIntoXML();
+}
