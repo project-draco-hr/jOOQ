@@ -1,0 +1,12 @@
+{
+  if (settings != null) {
+    Execution execution=settings.getExecution();
+    if (execution != null) {
+      StatementType result=execution.getStatementType();
+      if (result != null) {
+        return result;
+      }
+    }
+  }
+  return StatementType.PREPARED_STATEMENT;
+}

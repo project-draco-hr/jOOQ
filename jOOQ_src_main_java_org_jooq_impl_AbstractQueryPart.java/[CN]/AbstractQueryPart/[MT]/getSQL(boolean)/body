@@ -1,0 +1,8 @@
+{
+  if (inline) {
+    return create().renderInlined(this);
+  }
+ else {
+    return create().render(this);
+  }
+}
