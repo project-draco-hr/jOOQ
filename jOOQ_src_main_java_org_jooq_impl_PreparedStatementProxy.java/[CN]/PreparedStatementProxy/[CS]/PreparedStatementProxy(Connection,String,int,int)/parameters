@@ -1,0 +1,4 @@
+Connection connection
+String sql
+int resultSetType
+int resultSetConcurrency

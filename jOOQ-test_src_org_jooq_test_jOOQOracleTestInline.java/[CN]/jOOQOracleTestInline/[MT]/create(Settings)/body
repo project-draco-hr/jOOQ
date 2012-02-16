@@ -1,0 +1,5 @@
+{
+  settings=(settings != null) ? settings : new Settings();
+  settings.withExecution(new Execution().withStatementType(StatementType.STATEMENT));
+  return new TestFactory(getConnection(),settings);
+}

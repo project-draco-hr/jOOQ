@@ -1,0 +1,8 @@
+{
+  if (Util.getStatementType(settings) == PREPARED_STATEMENT) {
+    return delegate.prepareStatement(sql,resultSetType,resultSetConcurrency,resultSetHoldability);
+  }
+ else {
+    return new PreparedStatementProxy(delegate,sql,resultSetType,resultSetConcurrency,resultSetHoldability);
+  }
+}

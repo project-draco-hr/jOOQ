@@ -1,0 +1,3 @@
+{
+  this(connection,sql,MethodType.SQL_RST_RSC,connection.createStatement(resultSetType,resultSetConcurrency));
+}

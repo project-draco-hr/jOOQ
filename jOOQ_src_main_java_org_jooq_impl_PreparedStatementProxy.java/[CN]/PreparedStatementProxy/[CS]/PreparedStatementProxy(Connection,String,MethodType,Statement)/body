@@ -1,0 +1,6 @@
+{
+  this.connection=connection;
+  this.methodType=type;
+  this.sql=sql;
+  this.delegate=statement;
+}

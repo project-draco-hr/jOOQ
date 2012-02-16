@@ -1,0 +1,4 @@
+{
+  this(connection,sql,MethodType.SQL_CN);
+  this.columnNames=columnNames;
+}

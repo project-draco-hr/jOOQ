@@ -1,0 +1,8 @@
+{
+  if (Util.getStatementType(settings) == PREPARED_STATEMENT) {
+    return delegate.prepareStatement(sql);
+  }
+ else {
+    return new PreparedStatementProxy(delegate,sql);
+  }
+}
