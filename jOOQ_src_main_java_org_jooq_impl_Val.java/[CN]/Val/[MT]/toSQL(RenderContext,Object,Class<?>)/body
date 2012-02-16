@@ -1,10 +1,11 @@
 {
+  SQLDialect dialect=context.getDialect();
   if (context.inline()) {
     if (val == null) {
       context.sql("null");
     }
  else     if (type == Boolean.class) {
-      if (asList(ASE,DB2,ORACLE,SQLSERVER,SQLITE,SYBASE).contains(context.getDialect())) {
+      if (asList(ASE,DB2,ORACLE,SQLSERVER,SQLITE,SYBASE).contains(dialect)) {
         context.sql(((Boolean)val) ? "1" : "0");
       }
  else {
@@ -12,13 +13,22 @@
       }
     }
  else     if (type == byte[].class) {
-      context.sql("'").sql(Arrays.toString((byte[])val).replace("'","''")).sql("'");
+      byte[] binary=(byte[])val;
+      if (dialect == H2) {
+        context.sql("X'").sql(StringUtils.convertBytesToHex(binary)).sql("'");
+      }
+ else       if (Util.getStatementType(context.getSettings()) == STATEMENT) {
+        throw new DataAccessException("Cannot inline binary data in dialect " + dialect + ". Use StatementType.PREPARED_STATEMENT instead");
+      }
+ else {
+        context.sql("'").sql(Arrays.toString(binary).replace("'","''")).sql("'");
+      }
     }
  else     if (Number.class.isAssignableFrom(type)) {
       context.sql(val.toString());
     }
  else     if (type.isArray()) {
-      if (context.getDialect() == H2) {
+      if (dialect == H2) {
         context.sql(Arrays.toString((Object[])val).replaceAll("\\[([^]]*)\\]","($1)"));
       }
  else {
@@ -41,11 +51,11 @@
       context.sql("'").sql(val.toString().replace("'","''")).sql("'");
     }
   }
- else   if (context.getDialect() == SQLDialect.POSTGRES) {
+ else   if (dialect == SQLDialect.POSTGRES) {
     if (type.isArray() && byte[].class != type) {
       context.sql(getBindVariable(context));
       context.sql("::");
-      context.sql(FieldTypeHelper.getDataType(context.getDialect(),type).getCastTypeName(context));
+      context.sql(FieldTypeHelper.getDataType(dialect,type).getCastTypeName(context));
     }
  else     if (EnumType.class.isAssignableFrom(type)) {
       context.sql(getBindVariable(context));

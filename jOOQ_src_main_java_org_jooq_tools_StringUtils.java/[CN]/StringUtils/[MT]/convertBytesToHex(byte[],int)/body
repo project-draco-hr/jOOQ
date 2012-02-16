@@ -1,0 +1,10 @@
+{
+  char[] buff=new char[len + len];
+  char[] hex=HEX;
+  for (int i=0; i < len; i++) {
+    int c=value[i] & 0xff;
+    buff[i + i]=hex[c >> 4];
+    buff[i + i + 1]=hex[c & 0xf];
+  }
+  return new String(buff);
+}

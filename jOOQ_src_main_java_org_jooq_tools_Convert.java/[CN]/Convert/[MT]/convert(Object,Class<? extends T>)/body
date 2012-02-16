@@ -17,6 +17,9 @@
     if (toClass == fromClass) {
       return (T)from;
     }
+ else     if (toClass == Object.class) {
+      return (T)from;
+    }
  else     if (fromClass == byte[].class) {
       return convert(Arrays.toString((byte[])from),toClass);
     }
@@ -28,9 +31,6 @@
         return (T)((EnumType)from).getLiteral();
       }
       return (T)from.toString();
-    }
- else     if (toClass == Object.class) {
-      return (T)from;
     }
  else     if (toClass == Byte.class || toClass == byte.class) {
       return (T)Byte.valueOf(new BigDecimal(from.toString().trim()).byteValue());
