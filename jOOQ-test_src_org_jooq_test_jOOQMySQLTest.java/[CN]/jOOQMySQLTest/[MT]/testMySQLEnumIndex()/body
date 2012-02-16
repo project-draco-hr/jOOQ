@@ -1,0 +1,8 @@
+{
+  assertNull(MySQLFactory.enumType(TBookStatus.class,-1));
+  assertNull(MySQLFactory.enumType(TBookStatus.class,0));
+  assertEquals(TBookStatus.SOLD_OUT,MySQLFactory.enumType(TBookStatus.class,1));
+  assertEquals(TBookStatus.ORDERED,MySQLFactory.enumType(TBookStatus.class,2));
+  assertEquals(TBookStatus.ON_STOCK,MySQLFactory.enumType(TBookStatus.class,3));
+  assertNull(MySQLFactory.enumType(TBookStatus.class,4));
+}

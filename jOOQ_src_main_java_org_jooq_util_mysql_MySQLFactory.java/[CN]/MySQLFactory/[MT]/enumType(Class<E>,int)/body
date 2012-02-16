@@ -1,0 +1,10 @@
+{
+  if (index <= 0) {
+    return null;
+  }
+  E[] values=type.getEnumConstants();
+  if (index > values.length) {
+    return null;
+  }
+  return values[index - 1];
+}
