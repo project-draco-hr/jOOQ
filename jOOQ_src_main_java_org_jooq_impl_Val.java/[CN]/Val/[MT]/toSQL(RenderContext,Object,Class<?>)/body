@@ -14,14 +14,23 @@
     }
  else     if (type == byte[].class) {
       byte[] binary=(byte[])val;
-      if (dialect == H2) {
-        context.sql("X'").sql(StringUtils.convertBytesToHex(binary)).sql("'");
+      if (asList(ASE,SQLSERVER,SYBASE).contains(dialect)) {
+        context.sql("0x").sql(Util.convertBytesToHex(binary));
       }
- else       if (Util.getStatementType(context.getSettings()) == STATEMENT) {
-        throw new DataAccessException("Cannot inline binary data in dialect " + dialect + ". Use StatementType.PREPARED_STATEMENT instead");
+ else       if (dialect == DB2) {
+        context.sql("blob(X'").sql(Util.convertBytesToHex(binary)).sql("')");
+      }
+ else       if (asList(DERBY,H2,HSQLDB,INGRES,MYSQL,SQLITE).contains(dialect)) {
+        context.sql("X'").sql(Util.convertBytesToHex(binary)).sql("'");
+      }
+ else       if (asList(ORACLE).contains(dialect)) {
+        context.sql("hextoraw('").sql(Util.convertBytesToHex(binary)).sql("')");
+      }
+ else       if (dialect == POSTGRES) {
+        context.sql("E'").sql(Util.convertBytesToPostgresOctal(binary)).sql("'::bytea");
       }
  else {
-        context.sql("'").sql(Arrays.toString(binary).replace("'","''")).sql("'");
+        context.sql("X'").sql(Util.convertBytesToHex(binary)).sql("'");
       }
     }
  else     if (Number.class.isAssignableFrom(type)) {
