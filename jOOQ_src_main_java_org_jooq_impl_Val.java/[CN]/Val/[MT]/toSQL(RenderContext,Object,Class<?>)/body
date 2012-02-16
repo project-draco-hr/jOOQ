@@ -4,7 +4,12 @@
       context.sql("null");
     }
  else     if (type == Boolean.class) {
-      context.sql(val.toString());
+      if (asList(ASE,DB2,ORACLE,SQLSERVER,SQLITE,SYBASE).contains(context.getDialect())) {
+        context.sql(((Boolean)val) ? "1" : "0");
+      }
+ else {
+        context.sql(val.toString());
+      }
     }
  else     if (type == byte[].class) {
       context.sql("'").sql(Arrays.toString((byte[])val).replace("'","''")).sql("'");
