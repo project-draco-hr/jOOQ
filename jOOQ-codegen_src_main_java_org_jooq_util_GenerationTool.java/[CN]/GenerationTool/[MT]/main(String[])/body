@@ -13,7 +13,11 @@
   log.info("Initialising properties",args[0]);
   try {
     if (args[0].endsWith(".xml")) {
-      main(JAXB.unmarshal(in,Configuration.class));
+      ByteArrayOutputStream out=new ByteArrayOutputStream();
+      copyLarge(in,out);
+      String xml=out.toString();
+      xml=xml.replace("<configuration>","<configuration xmlns=\"http://www.jooq.org/xsd/jooq-codegen-2.0.4.xsd\">");
+      main(JAXB.unmarshal(new StringReader(xml),Configuration.class));
     }
  else {
       Properties properties=new Properties();
