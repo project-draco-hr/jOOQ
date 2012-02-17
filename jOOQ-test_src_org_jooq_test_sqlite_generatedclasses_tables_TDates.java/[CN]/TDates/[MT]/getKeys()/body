@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.sqlite.generatedclasses.tables.records.TDatesRecord>>asList(org.jooq.test.sqlite.generatedclasses.Keys.pk_t_dates_id);
+}

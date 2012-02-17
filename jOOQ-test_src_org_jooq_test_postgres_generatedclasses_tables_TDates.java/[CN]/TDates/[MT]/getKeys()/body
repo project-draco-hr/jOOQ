@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.postgres.generatedclasses.tables.records.TDatesRecord>>asList(org.jooq.test.postgres.generatedclasses.Keys.pk_t_dates);
+}

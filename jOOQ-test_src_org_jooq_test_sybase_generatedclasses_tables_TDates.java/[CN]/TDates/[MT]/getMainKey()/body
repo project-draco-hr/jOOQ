@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.sybase.generatedclasses.Keys.t_dates__pk_t_dates;
+}

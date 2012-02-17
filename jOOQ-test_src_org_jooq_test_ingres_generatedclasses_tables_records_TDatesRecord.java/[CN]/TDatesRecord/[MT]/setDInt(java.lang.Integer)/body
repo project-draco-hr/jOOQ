@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.ingres.generatedclasses.tables.TDates.D_INT,value);
+}
