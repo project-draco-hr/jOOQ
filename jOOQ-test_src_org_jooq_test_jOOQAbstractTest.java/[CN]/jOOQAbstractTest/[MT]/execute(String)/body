@@ -48,7 +48,7 @@
  else       if (e.getMessage().contains("SQLCODE=-20012") && e.getMessage().contains("SQLSTATE=42740")) {
         continue;
       }
- else       if (e instanceof PSQLException) {
+ else       if (e.getClass().getName().startsWith("org.postgresql")) {
         if ("42883".equals(((PSQLException)e).getSQLState())) {
           continue;
         }
@@ -58,14 +58,14 @@
           continue;
         }
       }
- else       if (e instanceof SQLServerException) {
+ else       if (e.getClass().getName().startsWith("com.microsoft")) {
 switch (((SQLServerException)e).getErrorCode()) {
 case 3701:
 case 218:
           continue;
       }
     }
- else     if (e instanceof SybSQLException) {
+ else     if (e.getClass().getName().startsWith("com.sybase")) {
       if (sql.contains("DROP SEQUENCE")) {
         continue;
       }

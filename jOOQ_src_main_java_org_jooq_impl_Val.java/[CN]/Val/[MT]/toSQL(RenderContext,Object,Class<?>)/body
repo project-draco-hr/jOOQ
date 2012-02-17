@@ -36,6 +36,36 @@
  else     if (Number.class.isAssignableFrom(type)) {
       context.sql(val.toString());
     }
+ else     if (type == Date.class) {
+      if (dialect == ASE) {
+        context.sql(field("{d '" + val + "'}").cast(Date.class));
+      }
+ else       if (dialect == SQLITE) {
+        context.sql("'").sql(val.toString()).sql("'");
+      }
+ else {
+        context.sql("{d '").sql(val.toString()).sql("'}");
+      }
+    }
+ else     if (type == Timestamp.class) {
+      if (dialect == ASE) {
+        context.sql(field("{ts '" + val + "'}").cast(Timestamp.class));
+      }
+ else       if (dialect == SQLITE) {
+        context.sql("'").sql(val.toString()).sql("'");
+      }
+ else {
+        context.sql("{ts '").sql(val.toString()).sql("'}");
+      }
+    }
+ else     if (type == Time.class) {
+      if (dialect == SQLITE) {
+        context.sql("'").sql(val.toString()).sql("'");
+      }
+ else {
+        context.sql("{t '").sql(val.toString()).sql("'}");
+      }
+    }
  else     if (type.isArray()) {
       if (dialect == H2) {
         context.sql(Arrays.toString((Object[])val).replaceAll("\\[([^]]*)\\]","($1)"));
