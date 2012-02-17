@@ -1,3 +1,5 @@
 {
-  return "Factory [connected=" + (connection != null) + ", dialect="+ dialect+ ", mapping="+ mapping+ "]";
+  StringWriter writer=new StringWriter();
+  JAXB.marshal(settings,writer);
+  return "Factory [connected=" + (connection != null) + ", dialect="+ dialect+ ", settings=\n"+ writer+ "]";
 }
