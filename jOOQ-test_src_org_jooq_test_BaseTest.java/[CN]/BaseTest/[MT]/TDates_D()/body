@@ -1,0 +1,3 @@
+{
+  return (TableField<DATE,Date>)getField(TDates(),"D");
+}

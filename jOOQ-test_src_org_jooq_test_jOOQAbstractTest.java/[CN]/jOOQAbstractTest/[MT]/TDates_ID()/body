@@ -1,3 +1,0 @@
-{
-  return (TableField<DATE,Integer>)TDates().getField("ID");
-}
