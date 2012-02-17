@@ -1,0 +1,3 @@
+{
+  return new CompareCondition(this,nullSafe(value),Comparator.LIKE,escape);
+}

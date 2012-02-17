@@ -1,3 +1,0 @@
-{
-  return new CompareCondition<T>(this,nullSafe(value),Comparator.LIKE);
-}

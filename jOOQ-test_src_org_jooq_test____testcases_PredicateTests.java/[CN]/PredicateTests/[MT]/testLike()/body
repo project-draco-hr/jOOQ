@@ -20,4 +20,10 @@
   books=create().selectFrom(TBook()).where(TBook_TITLE().contains("%")).and(derby ? trueCondition() : TBook_TITLE().contains(val("(_"))).and(TBook_TITLE().startsWith("About")).and(derby ? trueCondition() : TBook_TITLE().startsWith(val("Abo"))).and(TBook_TITLE().endsWith("review")).and(derby ? trueCondition() : TBook_TITLE().endsWith(val("review"))).fetch();
   assertEquals(1,books.size());
   assertEquals(5,(int)books.get(0).getValue(TBook_ID()));
+  books=create().selectFrom(TBook()).where(TBook_PUBLISHED_IN().like("194%")).orderBy(TBook_ID()).fetch();
+  assertEquals(2,books.size());
+  assertEquals(asList(1,2),books.getValues(TBook_ID()));
+  books=create().selectFrom(TBook()).where(TBook_PUBLISHED_IN().like("%9%")).and(TBook_PUBLISHED_IN().notLike("%8%")).orderBy(TBook_ID()).fetch();
+  assertEquals(2,books.size());
+  assertEquals(asList(2,4),books.getValues(TBook_ID()));
 }

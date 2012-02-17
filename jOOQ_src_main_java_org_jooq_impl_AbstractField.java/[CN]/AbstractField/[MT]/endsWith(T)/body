@@ -1,4 +1,4 @@
 {
   Field<String> concat=Factory.concat(Factory.literal("'%'"),Factory.val(escape("" + value,'!')));
-  return like(concat.cast(this),'!');
+  return like(concat,'!');
 }

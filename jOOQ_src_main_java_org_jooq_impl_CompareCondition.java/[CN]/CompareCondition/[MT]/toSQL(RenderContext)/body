@@ -1,5 +1,10 @@
 {
-  context.sql(field1).sql(" ");
+  SQLDialect dialect=context.getDialect();
+  Field<?> lhs=field1;
+  if ((comparator == LIKE || comparator == NOT_LIKE) && field1.getType() != String.class && asList(ASE,DERBY,POSTGRES).contains(dialect)) {
+    lhs=lhs.cast(String.class);
+  }
+  context.sql(lhs).sql(" ");
   if (field2.isNullLiteral()) {
 switch (comparator) {
 case EQUALS:
@@ -10,8 +15,8 @@ case NOT_EQUALS:
 return;
 }
 }
-boolean cast=context.getDialect() == DB2 && field2 instanceof Concat;
-context.sql(comparator.toSQL()).sql(" ").sql(cast ? "cast(" : "").sql(field2).sql(cast ? " as varchar(4000))" : "");
+boolean castRhs=(dialect == DB2 && field2 instanceof Concat);
+context.sql(comparator.toSQL()).sql(" ").sql(castRhs ? "cast(" : "").sql(field2).sql(castRhs ? " as varchar(4000))" : "");
 if (escape != null) {
 context.sql(" escape '").sql(escape).sql("'");
 }
