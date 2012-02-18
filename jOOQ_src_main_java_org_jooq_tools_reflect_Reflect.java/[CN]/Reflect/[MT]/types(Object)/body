@@ -1,0 +1,10 @@
+{
+  if (values == null) {
+    return new Class[0];
+  }
+  Class<?>[] result=new Class[values.length];
+  for (int i=0; i < values.length; i++) {
+    result[i]=values[i].getClass();
+  }
+  return result;
+}

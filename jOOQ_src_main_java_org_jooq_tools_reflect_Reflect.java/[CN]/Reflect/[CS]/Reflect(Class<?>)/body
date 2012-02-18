@@ -1,0 +1,4 @@
+{
+  this.object=type;
+  this.isClass=true;
+}

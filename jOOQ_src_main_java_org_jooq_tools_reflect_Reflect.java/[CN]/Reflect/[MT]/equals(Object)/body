@@ -1,0 +1,6 @@
+{
+  if (obj instanceof Reflect) {
+    return object.equals(((Reflect)obj).get());
+  }
+  return false;
+}

@@ -1,0 +1,8 @@
+{
+  if (isClass) {
+    return (Class<?>)object;
+  }
+ else {
+    return object.getClass();
+  }
+}

@@ -1,0 +1,26 @@
+{
+  try {
+    Field field=type().getField(name);
+    field.set(object,unwrap(value));
+    return this;
+  }
+ catch (  Exception e1) {
+    boolean accessible=true;
+    Field field=null;
+    try {
+      field=type().getDeclaredField(name);
+      accessible=field.isAccessible();
+      if (!accessible)       field.setAccessible(true);
+      field.set(object,unwrap(value));
+      return this;
+    }
+ catch (    Exception e2) {
+      throw new ReflectException(e2);
+    }
+ finally {
+      if (field != null && !accessible) {
+        field.setAccessible(false);
+      }
+    }
+  }
+}

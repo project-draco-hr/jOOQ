@@ -1,0 +1,3 @@
+{
+  return create(new Object[0]);
+}

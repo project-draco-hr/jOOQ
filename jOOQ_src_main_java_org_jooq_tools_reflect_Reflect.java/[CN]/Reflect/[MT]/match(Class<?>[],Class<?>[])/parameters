@@ -1,0 +1,2 @@
+Class<?>[] declaredTypes
+Class<?>[] actualTypes

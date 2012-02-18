@@ -1,0 +1,21 @@
+{
+  boolean accessible=method.isAccessible();
+  try {
+    if (!accessible)     method.setAccessible(true);
+    if (method.getReturnType() == void.class) {
+      method.invoke(object,args);
+      return on(object);
+    }
+ else {
+      return on(method.invoke(object,args));
+    }
+  }
+ catch (  Exception e) {
+    throw new ReflectException(e);
+  }
+ finally {
+    if (!accessible) {
+      method.setAccessible(false);
+    }
+  }
+}

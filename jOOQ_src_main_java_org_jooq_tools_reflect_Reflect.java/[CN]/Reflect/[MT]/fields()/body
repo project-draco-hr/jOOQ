@@ -1,0 +1,10 @@
+{
+  Map<String,Reflect> result=new LinkedHashMap<String,Reflect>();
+  for (  Field field : type().getFields()) {
+    if (!isClass ^ Modifier.isStatic(field.getModifiers())) {
+      String name=field.getName();
+      result.put(name,field(name));
+    }
+  }
+  return result;
+}

@@ -1,0 +1,6 @@
+{
+  if (object instanceof Reflect) {
+    return ((Reflect)object).get();
+  }
+  return object;
+}
