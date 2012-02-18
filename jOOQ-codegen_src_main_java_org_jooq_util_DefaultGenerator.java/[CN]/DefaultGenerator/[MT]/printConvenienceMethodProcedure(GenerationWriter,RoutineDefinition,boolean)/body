@@ -8,7 +8,7 @@
   out.println("\t * Invoke " + strategy.getJavaIdentifierUC(procedure));
   out.println("\t *");
   for (  ParameterDefinition parameter : procedure.getAllParameters()) {
-    out.print("\t * @param " + strategy.getJavaClassNameLC(parameter) + " ");
+    out.print("\t * @param " + strategy.getJavaMemberName(parameter) + " ");
     if (procedure.getInParameters().contains(parameter)) {
       if (procedure.getOutParameters().contains(parameter)) {
         out.println("IN OUT parameter");
@@ -37,7 +37,7 @@
  else {
     out.print(strategy.getFullJavaClassName(procedure) + " ");
   }
-  out.print(strategy.getJavaClassNameLC(procedure));
+  out.print(strategy.getJavaMethodName(procedure));
   out.print("(");
   String glue="";
   if (!instance) {
@@ -52,7 +52,7 @@
     out.print(glue);
     printNumberType(out,parameter.getType());
     out.print(" ");
-    out.print(strategy.getJavaClassNameLC(parameter));
+    out.print(strategy.getJavaMemberName(parameter));
     glue=", ";
   }
   out.println(") {");
@@ -62,14 +62,14 @@
   out.print(strategy.getFullJavaClassName(procedure));
   out.println("();");
   for (  ParameterDefinition parameter : procedure.getInParameters()) {
-    out.print("\t\tp.set");
-    out.print(strategy.getJavaClassName(parameter));
+    out.print("\t\tp.");
+    out.print(strategy.getJavaSetterName(parameter));
     out.print("(");
     if (instance && parameter.equals(procedure.getInParameters().get(0))) {
       out.print("this");
     }
  else {
-      out.print(strategy.getJavaClassNameLC(parameter));
+      out.print(strategy.getJavaMemberName(parameter));
     }
     out.println(");");
   }
@@ -84,13 +84,13 @@
   out.println(");");
   if (procedure.getOutParameters().size() > 0) {
     if (instance) {
-      out.print("\t\tfrom(p.get");
-      out.print(strategy.getJavaClassName(procedure.getOutParameters().get(0)));
+      out.print("\t\tfrom(p.");
+      out.print(strategy.getJavaGetterName(procedure.getOutParameters().get(0)));
       out.println("());");
     }
     if (procedure.getOutParameters().size() == 1) {
-      out.print("\t\treturn p.get");
-      out.print(strategy.getJavaClassName(procedure.getOutParameters().get(0)));
+      out.print("\t\treturn p.");
+      out.print(strategy.getJavaGetterName(procedure.getOutParameters().get(0)));
       out.println("();");
     }
  else     if (procedure.getOutParameters().size() > 1) {

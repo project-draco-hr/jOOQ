@@ -1,4 +1,3 @@
 {
-  String result=getJavaClassName0(definition,mode);
-  return result.substring(0,1).toLowerCase() + result.substring(1);
+  return getJavaMemberName(definition,mode);
 }

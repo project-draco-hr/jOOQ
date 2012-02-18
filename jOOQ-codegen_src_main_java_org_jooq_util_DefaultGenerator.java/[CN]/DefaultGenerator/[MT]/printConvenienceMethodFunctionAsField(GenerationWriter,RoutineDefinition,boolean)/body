@@ -11,7 +11,7 @@
   out.println("\t * Get " + strategy.getJavaIdentifierUC(function) + " as a field");
   out.println("\t *");
   for (  ParameterDefinition parameter : function.getInParameters()) {
-    out.println("\t * @param " + strategy.getJavaClassNameLC(parameter));
+    out.println("\t * @param " + strategy.getJavaMemberName(parameter));
   }
   out.println("\t */");
   out.print("\tpublic static ");
@@ -19,7 +19,7 @@
   out.print("<");
   out.print(getJavaType(function.getReturnType()));
   out.print("> ");
-  out.print(strategy.getJavaClassNameLC(function));
+  out.print(strategy.getJavaMethodName(function));
   out.print("(");
   String separator="";
   for (  ParameterDefinition parameter : function.getInParameters()) {
@@ -34,7 +34,7 @@
       printNumberType(out,parameter.getType());
     }
     out.print(" ");
-    out.print(strategy.getJavaClassNameLC(parameter));
+    out.print(strategy.getJavaMemberName(parameter));
     separator=", ";
   }
   out.println(") {");
@@ -44,7 +44,11 @@
   out.print(strategy.getFullJavaClassName(function));
   out.println("();");
   for (  ParameterDefinition parameter : function.getInParameters()) {
-    out.println("\t\tf.set" + strategy.getJavaClassName(parameter) + "("+ strategy.getJavaClassNameLC(parameter)+ ");");
+    out.print("\t\tf.");
+    out.print(strategy.getJavaSetterName(parameter));
+    out.print("(");
+    out.print(strategy.getJavaMemberName(parameter));
+    out.println(");");
   }
   out.println();
   out.println("\t\treturn f.asField();");
