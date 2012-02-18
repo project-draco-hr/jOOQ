@@ -1,0 +1,3 @@
+{
+  return equalIgnoreCase(val(value));
+}

@@ -1,0 +1,3 @@
+{
+  return Factory.lower(cast(String.class)).equal(Factory.lower(value));
+}
