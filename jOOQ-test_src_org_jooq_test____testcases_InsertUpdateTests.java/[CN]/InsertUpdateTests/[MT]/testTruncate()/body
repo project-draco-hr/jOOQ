@@ -8,6 +8,6 @@
   }
  catch (  Exception expected) {
   }
-  create().truncate((Table)table("t_book_to_book_store")).execute();
-  assertEquals(0,create().fetch(table("t_book_to_book_store")).size());
+  create().truncate(TDates()).execute();
+  assertEquals(0,create().fetch(TDates()).size());
 }
