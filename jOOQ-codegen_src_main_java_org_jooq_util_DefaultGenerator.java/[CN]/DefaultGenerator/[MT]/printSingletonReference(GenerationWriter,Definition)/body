@@ -7,6 +7,6 @@
     out.print(strategy.getJavaIdentifierUC(definition));
   }
  else {
-    out.print(strategy.getFullJavaIdentifierUC(definition));
+    out.print(strategy.getFullJavaIdentifier(definition));
   }
 }

@@ -1,14 +1,14 @@
 {
   printFieldJavaDoc(out,element);
   out.println("\tpublic void " + strategy.getJavaSetterName(element) + "("+ getJavaType(element.getType())+ " value) {");
-  out.println("\t\tsetValue(" + strategy.getFullJavaIdentifierUC(element) + ", value);");
+  out.println("\t\tsetValue(" + strategy.getFullJavaIdentifier(element) + ", value);");
   out.println("\t}");
   printFieldJavaDoc(out,element);
   if (element instanceof ColumnDefinition) {
     printColumnJPAAnnotation(out,(ColumnDefinition)element);
   }
   out.println("\tpublic " + getJavaType(element.getType()) + " "+ strategy.getJavaGetterName(element)+ "() {");
-  out.println("\t\treturn getValue(" + strategy.getFullJavaIdentifierUC(element) + ");");
+  out.println("\t\treturn getValue(" + strategy.getFullJavaIdentifier(element) + ");");
   out.println("\t}");
   if (generateRelations() && generateNavigationMethods() && element instanceof ColumnDefinition) {
     ColumnDefinition column=(ColumnDefinition)element;
@@ -36,12 +36,12 @@
           out.println("() {");
           out.println("\t\treturn create()");
           out.print("\t\t\t.selectFrom(");
-          out.print(strategy.getFullJavaIdentifierUC(referencing));
+          out.print(strategy.getFullJavaIdentifier(referencing));
           out.println(")");
           String connector="\t\t\t.where(";
           for (int i=0; i < foreignKey.getReferencedColumns().size(); i++) {
             out.print(connector);
-            out.print(strategy.getFullJavaIdentifierUC(foreignKey.getKeyColumns().get(i)));
+            out.print(strategy.getFullJavaIdentifier(foreignKey.getKeyColumns().get(i)));
             out.print(".equal(getValue");
             DataTypeDefinition foreignType=foreignKey.getKeyColumns().get(i).getType();
             DataTypeDefinition primaryType=uniqueKey.getKeyColumns().get(i).getType();
@@ -50,7 +50,7 @@
               out.print(getSimpleJavaType(foreignKey.getKeyColumns().get(i).getType()));
             }
             out.print("(");
-            out.print(strategy.getFullJavaIdentifierUC(uniqueKey.getKeyColumns().get(i)));
+            out.print(strategy.getFullJavaIdentifier(uniqueKey.getKeyColumns().get(i)));
             out.println(")))");
             connector="\t\t\t.and(";
           }
@@ -83,12 +83,12 @@
         out.println("() {");
         out.println("\t\treturn create()");
         out.print("\t\t\t.selectFrom(");
-        out.print(strategy.getFullJavaIdentifierUC(referenced));
+        out.print(strategy.getFullJavaIdentifier(referenced));
         out.println(")");
         String connector="\t\t\t.where(";
         for (int i=0; i < foreignKey.getReferencedColumns().size(); i++) {
           out.print(connector);
-          out.print(strategy.getFullJavaIdentifierUC(foreignKey.getReferencedColumns().get(i)));
+          out.print(strategy.getFullJavaIdentifier(foreignKey.getReferencedColumns().get(i)));
           out.print(".equal(getValue");
           DataTypeDefinition foreignType=foreignKey.getKeyColumns().get(i).getType();
           DataTypeDefinition primaryType=foreignKey.getReferencedColumns().get(i).getType();
@@ -97,7 +97,7 @@
             out.print(getSimpleJavaType(foreignKey.getReferencedColumns().get(i).getType()));
           }
           out.print("(");
-          out.print(strategy.getFullJavaIdentifierUC(foreignKey.getKeyColumns().get(i)));
+          out.print(strategy.getFullJavaIdentifier(foreignKey.getKeyColumns().get(i)));
           out.println(")))");
           connector="\t\t\t.and(";
         }

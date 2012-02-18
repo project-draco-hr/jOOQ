@@ -9,7 +9,7 @@
   }
  else   if (db.getUDT(schema,u) != null) {
     UDTDefinition udt=db.getUDT(schema,u);
-    sb.append(strategy.getFullJavaIdentifierUC(udt));
+    sb.append(strategy.getFullJavaIdentifier(udt));
     sb.append(".getDataType()");
   }
  else   if (db.getEnum(schema,u) != null) {

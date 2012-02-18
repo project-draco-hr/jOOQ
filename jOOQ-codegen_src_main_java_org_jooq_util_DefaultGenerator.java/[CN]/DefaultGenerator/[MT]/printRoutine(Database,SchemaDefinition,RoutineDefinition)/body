@@ -31,12 +31,10 @@
   out.print(", \"");
   out.print(routine.getName());
   out.print("\", ");
-  out.print(strategy.getFullJavaIdentifierUC(schema));
+  out.print(strategy.getFullJavaIdentifier(schema));
   if (routine.getPackage() != null) {
     out.print(", ");
-    out.print(strategy.getFullJavaClassName(routine.getPackage()));
-    out.print(".");
-    out.print(strategy.getJavaIdentifierUC(routine.getPackage()));
+    out.print(strategy.getFullJavaIdentifier(routine.getPackage()));
   }
   if (routine.getReturnValue() != null) {
     out.print(", ");
@@ -125,8 +123,14 @@
     boolean isOutParameter=routine.getOutParameters().contains(parameter);
     if (isOutParameter && !isReturnValue) {
       out.println();
-      out.println("\tpublic " + getJavaType(parameter.getType()) + " get"+ strategy.getJavaClassName(parameter)+ "() {");
-      out.println("\t\treturn getValue(" + strategy.getJavaIdentifierUC(parameter) + ");");
+      out.print("\tpublic ");
+      out.print(getJavaType(parameter.getType()));
+      out.print(" ");
+      out.print(strategy.getJavaGetterName(parameter));
+      out.println("() {");
+      out.print("\t\treturn getValue(");
+      out.print(strategy.getJavaIdentifierUC(parameter));
+      out.println(");");
       out.println("\t}");
     }
   }
