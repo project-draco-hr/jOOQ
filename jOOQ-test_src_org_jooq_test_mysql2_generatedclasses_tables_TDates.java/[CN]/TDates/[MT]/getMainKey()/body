@@ -1,3 +1,3 @@
 {
-  return org.jooq.test.mysql2.generatedclasses.Keys.KEY_t_dates_PRIMARY;
+  return org.jooq.test.mysql2.generatedclasses.Keys.KEY_T_DATES_PRIMARY;
 }

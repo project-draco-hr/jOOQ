@@ -1,3 +1,3 @@
 {
-  return org.jooq.examples.sqlserver.adventureworks.production.Keys.PK_ProductSubcategory_ProductSubcategoryID;
+  return org.jooq.examples.sqlserver.adventureworks.production.Keys.PK_PRODUCTSUBCATEGORY_PRODUCTSUBCATEGORYID;
 }

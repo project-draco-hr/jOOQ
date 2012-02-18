@@ -1,22 +1,3 @@
 {
-  StringBuilder sb=new StringBuilder();
-  if (definition instanceof ColumnDefinition) {
-    TypedElementDefinition<?> e=(TypedElementDefinition<?>)definition;
-    if (instanceFields) {
-      sb.append(getFullJavaIdentifierUC(e.getContainer()));
-    }
- else {
-      sb.append(getFullJavaClassName(e.getContainer()));
-    }
-  }
- else   if (definition instanceof TypedElementDefinition) {
-    TypedElementDefinition<?> e=(TypedElementDefinition<?>)definition;
-    sb.append(getFullJavaClassName(e.getContainer()));
-  }
- else {
-    sb.append(getFullJavaClassName(definition));
-  }
-  sb.append(".");
-  sb.append(getJavaIdentifierUC(definition));
-  return sb.toString();
+  return getFullJavaIdentifier(definition);
 }

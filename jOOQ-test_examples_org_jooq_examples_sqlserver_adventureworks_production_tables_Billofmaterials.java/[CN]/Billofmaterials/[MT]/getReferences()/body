@@ -1,3 +1,3 @@
 {
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.examples.sqlserver.adventureworks.production.tables.records.BillofmaterialsRecord,?>>asList(org.jooq.examples.sqlserver.adventureworks.production.Keys.FK_BillOfMaterials_Product_ProductAssemblyID,org.jooq.examples.sqlserver.adventureworks.production.Keys.FK_BillOfMaterials_Product_ComponentID,org.jooq.examples.sqlserver.adventureworks.production.Keys.FK_BillOfMaterials_UnitMeasure_UnitMeasureCode);
+  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.examples.sqlserver.adventureworks.production.tables.records.BillofmaterialsRecord,?>>asList(org.jooq.examples.sqlserver.adventureworks.production.Keys.FK_BILLOFMATERIALS_PRODUCT_PRODUCTASSEMBLYID,org.jooq.examples.sqlserver.adventureworks.production.Keys.FK_BILLOFMATERIALS_PRODUCT_COMPONENTID,org.jooq.examples.sqlserver.adventureworks.production.Keys.FK_BILLOFMATERIALS_UNITMEASURE_UNITMEASURECODE);
 }

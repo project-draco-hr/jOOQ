@@ -1,3 +1,3 @@
 {
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.examples.sqlserver.adventureworks.sales.tables.records.StorecontactRecord,?>>asList(org.jooq.examples.sqlserver.adventureworks.sales.Keys.FK_StoreContact_Store_CustomerID,org.jooq.examples.sqlserver.adventureworks.sales.Keys.FK_StoreContact_Contact_ContactID,org.jooq.examples.sqlserver.adventureworks.sales.Keys.FK_StoreContact_ContactType_ContactTypeID);
+  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.examples.sqlserver.adventureworks.sales.tables.records.StorecontactRecord,?>>asList(org.jooq.examples.sqlserver.adventureworks.sales.Keys.FK_STORECONTACT_STORE_CUSTOMERID,org.jooq.examples.sqlserver.adventureworks.sales.Keys.FK_STORECONTACT_CONTACT_CONTACTID,org.jooq.examples.sqlserver.adventureworks.sales.Keys.FK_STORECONTACT_CONTACTTYPE_CONTACTTYPEID);
 }

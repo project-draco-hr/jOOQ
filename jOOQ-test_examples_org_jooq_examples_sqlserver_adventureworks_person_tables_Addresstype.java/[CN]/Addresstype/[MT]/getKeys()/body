@@ -1,3 +1,3 @@
 {
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.examples.sqlserver.adventureworks.person.tables.records.AddresstypeRecord>>asList(org.jooq.examples.sqlserver.adventureworks.person.Keys.PK_AddressType_AddressTypeID);
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.examples.sqlserver.adventureworks.person.tables.records.AddresstypeRecord>>asList(org.jooq.examples.sqlserver.adventureworks.person.Keys.PK_ADDRESSTYPE_ADDRESSTYPEID);
 }

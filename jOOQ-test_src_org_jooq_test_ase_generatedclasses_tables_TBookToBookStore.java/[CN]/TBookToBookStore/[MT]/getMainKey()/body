@@ -1,3 +1,3 @@
 {
-  return org.jooq.test.ase.generatedclasses.Keys.t_book_to_book_store__pk_b2bs;
+  return org.jooq.test.ase.generatedclasses.Keys.T_BOOK_TO_BOOK_STORE__PK_B2BS;
 }

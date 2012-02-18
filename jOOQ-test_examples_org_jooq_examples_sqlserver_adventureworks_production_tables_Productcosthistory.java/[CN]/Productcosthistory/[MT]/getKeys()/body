@@ -1,3 +1,3 @@
 {
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.examples.sqlserver.adventureworks.production.tables.records.ProductcosthistoryRecord>>asList(org.jooq.examples.sqlserver.adventureworks.production.Keys.PK_ProductCostHistory_ProductID_StartDate);
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.examples.sqlserver.adventureworks.production.tables.records.ProductcosthistoryRecord>>asList(org.jooq.examples.sqlserver.adventureworks.production.Keys.PK_PRODUCTCOSTHISTORY_PRODUCTID_STARTDATE);
 }

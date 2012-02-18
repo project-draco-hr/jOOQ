@@ -1,3 +1,3 @@
 {
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.examples.sqlserver.adventureworks.sales.tables.records.SpecialofferproductRecord>>asList(org.jooq.examples.sqlserver.adventureworks.sales.Keys.PK_SpecialOfferProduct_SpecialOfferID_ProductID);
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.examples.sqlserver.adventureworks.sales.tables.records.SpecialofferproductRecord>>asList(org.jooq.examples.sqlserver.adventureworks.sales.Keys.PK_SPECIALOFFERPRODUCT_SPECIALOFFERID_PRODUCTID);
 }

@@ -1,3 +1,3 @@
 {
-  return org.jooq.examples.sqlserver.adventureworks.sales.Keys.PK_Individual_CustomerID;
+  return org.jooq.examples.sqlserver.adventureworks.sales.Keys.PK_INDIVIDUAL_CUSTOMERID;
 }

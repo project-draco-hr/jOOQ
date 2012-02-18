@@ -1,3 +1,3 @@
 {
-  return org.jooq.examples.sqlserver.adventureworks.purchasing.Keys.PK_Vendor_VendorID;
+  return org.jooq.examples.sqlserver.adventureworks.purchasing.Keys.PK_VENDOR_VENDORID;
 }

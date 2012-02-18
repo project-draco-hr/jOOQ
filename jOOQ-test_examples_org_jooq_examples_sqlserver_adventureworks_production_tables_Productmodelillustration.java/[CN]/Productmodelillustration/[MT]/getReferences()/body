@@ -1,3 +1,3 @@
 {
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.examples.sqlserver.adventureworks.production.tables.records.ProductmodelillustrationRecord,?>>asList(org.jooq.examples.sqlserver.adventureworks.production.Keys.FK_ProductModelIllustration_ProductModel_ProductModelID,org.jooq.examples.sqlserver.adventureworks.production.Keys.FK_ProductModelIllustration_Illustration_IllustrationID);
+  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.examples.sqlserver.adventureworks.production.tables.records.ProductmodelillustrationRecord,?>>asList(org.jooq.examples.sqlserver.adventureworks.production.Keys.FK_PRODUCTMODELILLUSTRATION_PRODUCTMODEL_PRODUCTMODELID,org.jooq.examples.sqlserver.adventureworks.production.Keys.FK_PRODUCTMODELILLUSTRATION_ILLUSTRATION_ILLUSTRATIONID);
 }

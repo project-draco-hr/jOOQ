@@ -1,3 +1,3 @@
 {
-  return org.jooq.examples.sqlserver.adventureworks.production.Keys.IDENTITY_BillOfMaterials;
+  return org.jooq.examples.sqlserver.adventureworks.production.Keys.IDENTITY_BILLOFMATERIALS;
 }

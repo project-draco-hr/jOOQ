@@ -1,3 +1,3 @@
 {
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.examples.sqlserver.adventureworks.sales.tables.records.SpecialofferproductRecord,?>>asList(org.jooq.examples.sqlserver.adventureworks.sales.Keys.FK_SpecialOfferProduct_SpecialOffer_SpecialOfferID,org.jooq.examples.sqlserver.adventureworks.sales.Keys.FK_SpecialOfferProduct_Product_ProductID);
+  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.examples.sqlserver.adventureworks.sales.tables.records.SpecialofferproductRecord,?>>asList(org.jooq.examples.sqlserver.adventureworks.sales.Keys.FK_SPECIALOFFERPRODUCT_SPECIALOFFER_SPECIALOFFERID,org.jooq.examples.sqlserver.adventureworks.sales.Keys.FK_SPECIALOFFERPRODUCT_PRODUCT_PRODUCTID);
 }

@@ -1,3 +1,3 @@
 {
-  return org.jooq.examples.sqlserver.adventureworks.humanresources.Keys.PK_EmployeePayHistory_EmployeeID_RateChangeDate;
+  return org.jooq.examples.sqlserver.adventureworks.humanresources.Keys.PK_EMPLOYEEPAYHISTORY_EMPLOYEEID_RATECHANGEDATE;
 }

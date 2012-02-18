@@ -1,3 +1,3 @@
 {
-  return org.jooq.test.sqlite.generatedclasses.Keys.pk_t_dates_id;
+  return org.jooq.test.sqlite.generatedclasses.Keys.PK_T_DATES_ID;
 }

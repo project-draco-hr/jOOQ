@@ -1,3 +1,3 @@
 {
-  return org.jooq.test.ase.generatedclasses.Keys.t_booleans__pk_t_booleans;
+  return org.jooq.test.ase.generatedclasses.Keys.T_BOOLEANS__PK_T_BOOLEANS;
 }

@@ -1,3 +1,3 @@
 {
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.examples.mysql.sakila.tables.records.PaymentRecord,?>>asList(org.jooq.examples.mysql.sakila.Keys.fk_payment_customer,org.jooq.examples.mysql.sakila.Keys.fk_payment_staff,org.jooq.examples.mysql.sakila.Keys.fk_payment_rental);
+  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.examples.mysql.sakila.tables.records.PaymentRecord,?>>asList(org.jooq.examples.mysql.sakila.Keys.FK_PAYMENT_CUSTOMER,org.jooq.examples.mysql.sakila.Keys.FK_PAYMENT_STAFF,org.jooq.examples.mysql.sakila.Keys.FK_PAYMENT_RENTAL);
 }

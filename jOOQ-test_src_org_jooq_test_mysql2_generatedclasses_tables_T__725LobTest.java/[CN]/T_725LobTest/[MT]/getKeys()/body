@@ -1,3 +1,3 @@
 {
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.mysql2.generatedclasses.tables.records.T_725LobTestRecord>>asList(org.jooq.test.mysql2.generatedclasses.Keys.KEY_t_725_lob_test_PRIMARY);
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.mysql2.generatedclasses.tables.records.T_725LobTestRecord>>asList(org.jooq.test.mysql2.generatedclasses.Keys.KEY_T_725_LOB_TEST_PRIMARY);
 }

@@ -1,3 +1,3 @@
 {
-  return org.jooq.examples.mysql.sakila.Keys.KEY_country_PRIMARY;
+  return org.jooq.examples.mysql.sakila.Keys.KEY_COUNTRY_PRIMARY;
 }

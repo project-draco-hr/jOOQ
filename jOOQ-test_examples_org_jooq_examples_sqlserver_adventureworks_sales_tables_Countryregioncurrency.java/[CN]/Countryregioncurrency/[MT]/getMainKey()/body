@@ -1,3 +1,3 @@
 {
-  return org.jooq.examples.sqlserver.adventureworks.sales.Keys.PK_CountryRegionCurrency_CountryRegionCode_CurrencyCode;
+  return org.jooq.examples.sqlserver.adventureworks.sales.Keys.PK_COUNTRYREGIONCURRENCY_COUNTRYREGIONCODE_CURRENCYCODE;
 }

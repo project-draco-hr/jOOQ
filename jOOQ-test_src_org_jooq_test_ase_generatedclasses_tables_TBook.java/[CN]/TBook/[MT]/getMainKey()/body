@@ -1,3 +1,3 @@
 {
-  return org.jooq.test.ase.generatedclasses.Keys.t_book__pk_t_book;
+  return org.jooq.test.ase.generatedclasses.Keys.T_BOOK__PK_T_BOOK;
 }

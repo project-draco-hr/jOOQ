@@ -1,3 +1,3 @@
 {
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.examples.sqlserver.adventureworks.humanresources.tables.records.ShiftRecord>>asList(org.jooq.examples.sqlserver.adventureworks.humanresources.Keys.PK_Shift_ShiftID);
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.examples.sqlserver.adventureworks.humanresources.tables.records.ShiftRecord>>asList(org.jooq.examples.sqlserver.adventureworks.humanresources.Keys.PK_SHIFT_SHIFTID);
 }

@@ -1,3 +1,3 @@
 {
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.examples.sqlserver.adventureworks.sales.tables.records.CurrencyrateRecord,?>>asList(org.jooq.examples.sqlserver.adventureworks.sales.Keys.FK_CurrencyRate_Currency_FromCurrencyCode,org.jooq.examples.sqlserver.adventureworks.sales.Keys.FK_CurrencyRate_Currency_ToCurrencyCode);
+  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.examples.sqlserver.adventureworks.sales.tables.records.CurrencyrateRecord,?>>asList(org.jooq.examples.sqlserver.adventureworks.sales.Keys.FK_CURRENCYRATE_CURRENCY_FROMCURRENCYCODE,org.jooq.examples.sqlserver.adventureworks.sales.Keys.FK_CURRENCYRATE_CURRENCY_TOCURRENCYCODE);
 }
