@@ -1,0 +1,8 @@
+{
+  if (value != null && value.getClass() == String.class) {
+    return val(escape("" + value,ESCAPE));
+  }
+ else {
+    return val("" + value);
+  }
+}

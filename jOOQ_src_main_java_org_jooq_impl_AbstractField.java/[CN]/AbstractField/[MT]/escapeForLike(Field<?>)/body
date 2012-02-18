@@ -1,0 +1,8 @@
+{
+  if (nullSafe(field).getDataType().isString()) {
+    return escape((Field<String>)field,ESCAPE);
+  }
+ else {
+    return field.cast(String.class);
+  }
+}
