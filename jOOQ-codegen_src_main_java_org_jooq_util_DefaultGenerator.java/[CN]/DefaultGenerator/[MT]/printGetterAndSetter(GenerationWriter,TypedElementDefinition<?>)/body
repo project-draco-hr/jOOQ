@@ -25,7 +25,7 @@
           out.print("\tpublic ");
           out.print(List.class);
           out.print("<");
-          out.print(strategy.getFullJavaClassName(referencing,"Record"));
+          out.print(strategy.getFullJavaClassName(referencing,Mode.RECORD));
           out.print("> fetch");
           out.print(strategy.getJavaClassName(referencing));
           out.print("List");
@@ -73,7 +73,7 @@
       if (!skipGeneration) {
         printFieldJavaDoc(out,column);
         out.print("\tpublic ");
-        out.print(strategy.getFullJavaClassName(referenced,"Record"));
+        out.print(strategy.getFullJavaClassName(referenced,Mode.RECORD));
         out.print(" fetch");
         out.print(strategy.getJavaClassName(referenced));
         if (foreignKey.countSimilarReferences() > 1) {

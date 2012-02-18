@@ -1,5 +1,4 @@
 {
-  Database database=table.getDatabase();
   SchemaDefinition schema=table.getSchema();
   if (generateJPAAnnotations()) {
     out.println("@javax.persistence.Entity");

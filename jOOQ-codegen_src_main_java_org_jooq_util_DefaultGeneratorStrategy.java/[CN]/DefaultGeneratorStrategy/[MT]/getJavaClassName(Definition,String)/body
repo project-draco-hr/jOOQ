@@ -1,3 +1,0 @@
-{
-  return getJavaClassName0(definition,suffix);
-}

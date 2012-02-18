@@ -4,7 +4,7 @@
     ArrayDefinition array=db.getArray(schema,u);
     sb.append(getJavaTypeReference(db,array.getElementType()));
     sb.append(".asArrayDataType(");
-    sb.append(strategy.getFullJavaClassName(array,"Record"));
+    sb.append(strategy.getFullJavaClassName(array,Mode.RECORD));
     sb.append(".class)");
   }
  else   if (db.getUDT(schema,u) != null) {

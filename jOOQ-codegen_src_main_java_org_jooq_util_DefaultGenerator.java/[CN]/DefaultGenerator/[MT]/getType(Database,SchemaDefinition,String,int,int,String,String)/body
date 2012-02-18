@@ -5,13 +5,13 @@
     type=getType(db,schema,baseType,p,s,baseType,defaultType) + "[]";
   }
  else   if (db.getArray(schema,u) != null) {
-    type=strategy.getFullJavaClassName(db.getArray(schema,u),"Record");
+    type=strategy.getFullJavaClassName(db.getArray(schema,u),Mode.RECORD);
   }
  else   if (db.getEnum(schema,u) != null) {
     type=strategy.getFullJavaClassName(db.getEnum(schema,u));
   }
  else   if (db.getUDT(schema,u) != null) {
-    type=strategy.getFullJavaClassName(db.getUDT(schema,u),"Record");
+    type=strategy.getFullJavaClassName(db.getUDT(schema,u),Mode.RECORD);
   }
  else {
     try {

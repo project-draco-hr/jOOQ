@@ -1,8 +1,0 @@
-{
-  if ("Pojo".equals(suffix)) {
-    return getJavaClassName(definition) + ".java";
-  }
- else {
-    return getJavaClassName(definition) + suffix + ".java";
-  }
-}

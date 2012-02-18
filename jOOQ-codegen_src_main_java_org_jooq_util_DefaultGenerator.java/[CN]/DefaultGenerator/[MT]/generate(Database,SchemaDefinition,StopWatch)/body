@@ -25,12 +25,12 @@
     outS.println("\t\tsuper(\"" + schema.getOutputName() + "\");");
     outS.println("\t}");
     outS.printInitialisationStatementsPlaceholder();
-    log.info("Generating factory",strategy.getFileName(schema,"Factory"));
-    outF=new GenerationWriter(strategy.getFile(schema,"Factory"));
+    log.info("Generating factory",strategy.getFileName(schema,Mode.FACTORY));
+    outF=new GenerationWriter(strategy.getFile(schema,Mode.FACTORY));
     printHeader(outF,schema);
     printClassJavadoc(outF,schema);
     outF.print("public class ");
-    outF.print(strategy.getJavaClassName(schema,"Factory"));
+    outF.print(strategy.getJavaClassName(schema,Mode.FACTORY));
     outF.print(" extends ");
     outF.print(database.getDialect().getFactory());
     outF.println(" {");
@@ -42,7 +42,7 @@
     outF.println("\t * @param connection The connection to use with objects created from this factory");
     outF.println("\t */");
     outF.print("\tpublic ");
-    outF.print(strategy.getJavaClassName(schema,"Factory"));
+    outF.print(strategy.getJavaClassName(schema,Mode.FACTORY));
     outF.print("(");
     outF.print(Connection.class);
     outF.println(" connection) {");
@@ -54,7 +54,7 @@
       outF.println("\t * Create a factory with a connection and a schema mapping");
       outF.println("\t * ");
       outF.print("\t * @deprecated - 2.0.5 - Use {@link #");
-      outF.print(strategy.getJavaClassName(schema,"Factory"));
+      outF.print(strategy.getJavaClassName(schema,Mode.FACTORY));
       outF.print("(");
       outF.print(Connection.class);
       outF.print(", ");
@@ -63,7 +63,7 @@
       outF.println("\t */");
       outF.println("\t@Deprecated");
       outF.print("\tpublic ");
-      outF.print(strategy.getJavaClassName(schema,"Factory"));
+      outF.print(strategy.getJavaClassName(schema,Mode.FACTORY));
       outF.print("(");
       outF.print(Connection.class);
       outF.print(" connection, ");
@@ -80,7 +80,7 @@
     outF.println("\t * @param settings The settings to apply to objects created from this factory");
     outF.println("\t */");
     outF.print("\tpublic ");
-    outF.print(strategy.getJavaClassName(schema,"Factory"));
+    outF.print(strategy.getJavaClassName(schema,Mode.FACTORY));
     outF.print("(");
     outF.print(Connection.class);
     outF.print(" connection, ");
@@ -248,7 +248,7 @@
         out.print(" extends ");
         out.print(baseClass);
         out.print("<");
-        out.print(strategy.getFullJavaClassName(table,"Record"));
+        out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
         out.println("> {");
         out.printSerial();
         printSingletonInstance(table,out);
@@ -291,7 +291,7 @@
             out.print("\tpublic ");
             out.print(Identity.class);
             out.print("<");
-            out.print(strategy.getFullJavaClassName(table,"Record"));
+            out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
             out.print(", ");
             out.print(getJavaType(table.getIdentity().getType()));
             out.println("> getIdentity() {");
@@ -309,7 +309,7 @@
             out.print("\tpublic ");
             out.print(UniqueKey.class);
             out.print("<");
-            out.print(strategy.getFullJavaClassName(table,"Record"));
+            out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
             out.println("> getMainKey() {");
             out.print("\t\treturn ");
             out.print(strategy.getJavaPackageName(schema));
@@ -328,14 +328,14 @@
             out.print("<");
             out.print(UniqueKey.class);
             out.print("<");
-            out.print(strategy.getFullJavaClassName(table,"Record"));
+            out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
             out.println(">> getKeys() {");
             out.print("\t\treturn ");
             out.print(Arrays.class);
             out.print(".<");
             out.print(UniqueKey.class);
             out.print("<");
-            out.print(strategy.getFullJavaClassName(table,"Record"));
+            out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
             out.print(">>asList(");
             String separator="";
             for (            UniqueKeyDefinition uniqueKey : uniqueKeys) {
@@ -358,14 +358,14 @@
             out.print("<");
             out.print(ForeignKey.class);
             out.print("<");
-            out.print(strategy.getFullJavaClassName(table,"Record"));
+            out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
             out.println(", ?>> getReferences() {");
             out.print("\t\treturn ");
             out.print(Arrays.class);
             out.print(".<");
             out.print(ForeignKey.class);
             out.print("<");
-            out.print(strategy.getFullJavaClassName(table,"Record"));
+            out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
             out.print(", ?>>asList(");
             String separator="";
             for (            ForeignKeyDefinition foreignKey : foreignKeys) {
@@ -412,8 +412,8 @@
     for (    TableDefinition table : database.getTables(schema)) {
       try {
         log.info("Generating table POJO",strategy.getFileName(table));
-        GenerationWriter out=new GenerationWriter(strategy.getFile(table,"Pojo"));
-        printHeader(out,table,"Pojo");
+        GenerationWriter out=new GenerationWriter(strategy.getFile(table,Mode.POJO));
+        printHeader(out,table,Mode.POJO);
         printClassJavadoc(out,table);
         printTableJPAAnnotation(out,table);
         out.print("public class ");
@@ -518,7 +518,7 @@
           out.print("\tpublic static final ");
           out.print(Identity.class);
           out.print("<");
-          out.print(strategy.getFullJavaClassName(identity.getContainer(),"Record"));
+          out.print(strategy.getFullJavaClassName(identity.getContainer(),Mode.RECORD));
           out.print(", ");
           out.print(getJavaType(identity.getType()));
           out.print("> IDENTITY_");
@@ -544,7 +544,7 @@
             out.print("\tpublic static final ");
             out.print(UniqueKey.class);
             out.print("<");
-            out.print(strategy.getFullJavaClassName(uniqueKey.getTable(),"Record"));
+            out.print(strategy.getFullJavaClassName(uniqueKey.getTable(),Mode.RECORD));
             out.print("> ");
             out.print(strategy.getJavaIdentifier(uniqueKey));
             out.print(" = createUniqueKey(");
@@ -577,9 +577,9 @@
             out.print("\tpublic static final ");
             out.print(ForeignKey.class);
             out.print("<");
-            out.print(strategy.getFullJavaClassName(foreignKey.getKeyTable(),"Record"));
+            out.print(strategy.getFullJavaClassName(foreignKey.getKeyTable(),Mode.RECORD));
             out.print(", ");
-            out.print(strategy.getFullJavaClassName(foreignKey.getReferencedTable(),"Record"));
+            out.print(strategy.getFullJavaClassName(foreignKey.getReferencedTable(),Mode.RECORD));
             out.print("> ");
             out.print(strategy.getJavaIdentifier(foreignKey));
             out.print(" = createForeignKey(");
@@ -614,9 +614,9 @@
     log.info("Generating records");
     for (    TableDefinition table : database.getTables(schema)) {
       try {
-        log.info("Generating record",strategy.getFileName(table,"Record"));
-        GenerationWriter out=new GenerationWriter(strategy.getFile(table,"Record"));
-        printHeader(out,table,"Record");
+        log.info("Generating record",strategy.getFileName(table,Mode.RECORD));
+        GenerationWriter out=new GenerationWriter(strategy.getFile(table,Mode.RECORD));
+        printHeader(out,table,Mode.RECORD);
         printClassJavadoc(out,table);
         printTableJPAAnnotation(out,table);
         Class<?> baseClass;
@@ -627,11 +627,11 @@
           baseClass=TableRecordImpl.class;
         }
         out.print("public class ");
-        out.print(strategy.getJavaClassName(table,"Record"));
+        out.print(strategy.getJavaClassName(table,Mode.RECORD));
         out.print(" extends ");
         out.print(baseClass);
         out.print("<");
-        out.print(strategy.getFullJavaClassName(table,"Record"));
+        out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
         out.println("> {");
         out.printSerial();
         for (        ColumnDefinition column : table.getColumns()) {
@@ -639,9 +639,9 @@
         }
         out.println();
         out.println("\t/**");
-        out.println("\t * Create a detached " + strategy.getJavaClassName(table,"Record"));
+        out.println("\t * Create a detached " + strategy.getJavaClassName(table,Mode.RECORD));
         out.println("\t */");
-        out.println("\tpublic " + strategy.getJavaClassName(table,"Record") + "() {");
+        out.println("\tpublic " + strategy.getJavaClassName(table,Mode.RECORD) + "() {");
         out.print("\t\tsuper(");
         out.print(strategy.getFullJavaIdentifierUC(table));
         out.println(");");
@@ -668,7 +668,7 @@
         out.print(" extends ");
         out.print(UDTImpl.class);
         out.print("<");
-        out.print(strategy.getFullJavaClassName(udt,"Record"));
+        out.print(strategy.getFullJavaClassName(udt,Mode.RECORD));
         out.print(">");
         if (udt.getRoutines().size() > 0) {
           out.print(" implements ");
@@ -709,7 +709,7 @@
         out.println("}");
         out.close();
         if (outS != null) {
-          outS.printInitialisationStatement("addMapping(\"" + schema.getOutputName() + "."+ udt.getName()+ "\", "+ strategy.getFullJavaClassName(udt,"Record")+ ".class);");
+          outS.printInitialisationStatement("addMapping(\"" + schema.getOutputName() + "."+ udt.getName()+ "\", "+ strategy.getFullJavaClassName(udt,Mode.RECORD)+ ".class);");
         }
       }
  catch (      Exception e) {
@@ -723,16 +723,16 @@
     log.info("Generating UDT records");
     for (    UDTDefinition udt : database.getUDTs(schema)) {
       try {
-        log.info("Generating UDT record",strategy.getFileName(udt,"Record"));
-        GenerationWriter out=new GenerationWriter(strategy.getFile(udt,"Record"));
-        printHeader(out,udt,"Record");
+        log.info("Generating UDT record",strategy.getFileName(udt,Mode.RECORD));
+        GenerationWriter out=new GenerationWriter(strategy.getFile(udt,Mode.RECORD));
+        printHeader(out,udt,Mode.RECORD);
         printClassJavadoc(out,udt);
         out.print("public class ");
-        out.print(strategy.getJavaClassName(udt,"Record"));
+        out.print(strategy.getJavaClassName(udt,Mode.RECORD));
         out.print(" extends ");
         out.print(UDTRecordImpl.class);
         out.print("<");
-        out.print(strategy.getFullJavaClassName(udt,"Record"));
+        out.print(strategy.getFullJavaClassName(udt,Mode.RECORD));
         out.println("> {");
         out.printSerial();
         out.println();
@@ -753,7 +753,7 @@
           }
         }
         out.println();
-        out.println("\tpublic " + strategy.getJavaClassName(udt,"Record") + "() {");
+        out.println("\tpublic " + strategy.getJavaClassName(udt,Mode.RECORD) + "() {");
         out.print("\t\tsuper(");
         out.print(strategy.getFullJavaIdentifierUC(udt));
         out.println(");");
@@ -818,12 +818,12 @@
     log.info("Generating ARRAYs");
     for (    ArrayDefinition array : database.getArrays(schema)) {
       try {
-        log.info("Generating ARRAY",strategy.getFileName(array,"Record"));
-        GenerationWriter out=new GenerationWriter(strategy.getFile(array,"Record"));
-        printHeader(out,array,"Record");
+        log.info("Generating ARRAY",strategy.getFileName(array,Mode.RECORD));
+        GenerationWriter out=new GenerationWriter(strategy.getFile(array,Mode.RECORD));
+        printHeader(out,array,Mode.RECORD);
         printClassJavadoc(out,array);
         out.print("public class ");
-        out.print(strategy.getJavaClassName(array,"Record"));
+        out.print(strategy.getJavaClassName(array,Mode.RECORD));
         out.print(" extends ");
         out.print(ArrayRecordImpl.class);
         out.print("<");
@@ -832,7 +832,7 @@
         out.printSerial();
         out.println();
         out.print("\tpublic ");
-        out.print(strategy.getJavaClassName(array,"Record"));
+        out.print(strategy.getJavaClassName(array,Mode.RECORD));
         out.print("(");
         out.print(Configuration.class);
         out.println(" configuration) {");
@@ -846,7 +846,7 @@
         out.println("\t}");
         out.println();
         out.print("\tpublic ");
-        out.print(strategy.getJavaClassName(array,"Record"));
+        out.print(strategy.getJavaClassName(array,Mode.RECORD));
         out.print("(");
         out.print(Configuration.class);
         out.print(" configuration, ");
@@ -858,7 +858,7 @@
         out.println("\t}");
         out.println();
         out.print("\tpublic ");
-        out.print(strategy.getJavaClassName(array,"Record"));
+        out.print(strategy.getJavaClassName(array,Mode.RECORD));
         out.print("(");
         out.print(Configuration.class);
         out.print(" configuration, ");

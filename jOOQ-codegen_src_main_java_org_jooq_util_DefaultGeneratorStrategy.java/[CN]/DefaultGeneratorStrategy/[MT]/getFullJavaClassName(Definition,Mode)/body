@@ -1,0 +1,7 @@
+{
+  StringBuilder sb=new StringBuilder();
+  sb.append(getJavaPackageName(definition,mode));
+  sb.append(".");
+  sb.append(getJavaClassName(definition,mode));
+  return sb.toString();
+}

@@ -1,0 +1,15 @@
+{
+  StringBuilder result=new StringBuilder();
+  String name=GenerationUtil.convertToJavaIdentifier(definition.getOutputName());
+  result.append(StringUtils.toCamelCase(name));
+  if (mode == Mode.RECORD) {
+    result.append("Record");
+  }
+ else   if (mode == Mode.FACTORY) {
+    result.append("Factory");
+  }
+  if (!StringUtils.isBlank(definition.getOverload())) {
+    result.append(definition.getOverload());
+  }
+  return result.toString();
+}

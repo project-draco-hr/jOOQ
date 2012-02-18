@@ -15,7 +15,7 @@
   out.print(declaredMemberClass);
   out.print("<");
   if (hasType) {
-    out.print(strategy.getFullJavaClassName(type,"Record"));
+    out.print(strategy.getFullJavaClassName(type,Mode.RECORD));
     out.print(", ");
   }
   out.print(getJavaType(column.getType()));
