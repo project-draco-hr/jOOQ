@@ -8,5 +8,5 @@
       }
     }
   }
-  return StatementType.PREPARED_STATEMENT;
+  return PREPARED_STATEMENT;
 }

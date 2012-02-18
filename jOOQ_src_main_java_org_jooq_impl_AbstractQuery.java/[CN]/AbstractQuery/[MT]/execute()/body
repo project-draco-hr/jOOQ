@@ -17,7 +17,7 @@
     try {
       sql=getSQL();
       watch.splitTrace("SQL rendered");
-      boolean usePreparedStatement=getStatementType(getConfiguration().getSettings()) == PREPARED_STATEMENT;
+      boolean usePreparedStatement=executePreparedStatements(getConfiguration().getSettings());
       if (log.isDebugEnabled())       log.debug("Executing query",getSQL(true));
       if (log.isTraceEnabled() && usePreparedStatement)       log.trace("Preparing statement",sql);
       statement=prepare(configuration,sql);

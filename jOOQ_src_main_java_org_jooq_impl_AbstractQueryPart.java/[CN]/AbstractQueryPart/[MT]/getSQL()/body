@@ -1,8 +1,8 @@
 {
-  if (Util.getStatementType(create().getSettings()) == STATEMENT) {
-    return getSQL(true);
+  if (executePreparedStatements(create().getSettings())) {
+    return getSQL(false);
   }
  else {
-    return getSQL(false);
+    return getSQL(true);
   }
 }

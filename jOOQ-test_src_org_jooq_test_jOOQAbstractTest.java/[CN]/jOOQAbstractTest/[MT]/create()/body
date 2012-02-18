@@ -1,10 +1,3 @@
 {
-  if (System.getProperty("org.jooq.test.statement-type") == "STATEMENT") {
-    Settings settings=new Settings();
-    Execution execution=new Execution().withStatementType(StatementType.STATEMENT);
-    return create(settings.withExecution(execution));
-  }
- else {
-    return create(null);
-  }
+  return create(null);
 }

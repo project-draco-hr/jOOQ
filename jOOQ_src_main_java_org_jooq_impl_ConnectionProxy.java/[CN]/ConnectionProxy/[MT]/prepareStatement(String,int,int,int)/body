@@ -1,5 +1,5 @@
 {
-  if (Util.getStatementType(settings) == PREPARED_STATEMENT) {
+  if (executePreparedStatements(settings)) {
     return delegate.prepareStatement(sql,resultSetType,resultSetConcurrency,resultSetHoldability);
   }
  else {
