@@ -1,4 +1,0 @@
-{
-  ArrayDescriptor descriptor=ArrayDescriptor.createDescriptor(record.getName(),connection);
-  return new ARRAY(descriptor,connection,record.get());
-}
