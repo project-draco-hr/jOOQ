@@ -1,8 +1,0 @@
-{
-  if (StringUtils.isBlank(getSchema().getName())) {
-    return getContainer().getName() + "." + getName();
-  }
- else {
-    return getDatabase().getOutputSchema(getSchema().getName()) + "." + getContainer().getName()+ "."+ getName();
-  }
-}

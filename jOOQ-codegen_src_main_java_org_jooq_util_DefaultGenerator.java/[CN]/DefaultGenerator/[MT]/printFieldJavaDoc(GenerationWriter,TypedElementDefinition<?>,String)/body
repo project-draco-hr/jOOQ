@@ -31,12 +31,26 @@
     if (foreignKey != null) {
       out.println("\t * <p>");
       out.println("\t * <code><pre>");
-      out.print("\t * FOREIGN KEY ");
-      out.println(foreignKey.getKeyColumns().toString());
+      out.print("\t * CONSTRAINT ");
+      out.println(foreignKey.getOutputName());
+      out.print("\t * FOREIGN KEY (");
+      String separator="";
+      for (      ColumnDefinition fkColumn : foreignKey.getKeyColumns()) {
+        out.print(separator);
+        out.print(fkColumn.getOutputName());
+        separator=", ";
+      }
+      out.println(")");
       out.print("\t * REFERENCES ");
-      out.print(foreignKey.getReferencedTable().getName());
-      out.print(" ");
-      out.println(foreignKey.getReferencedColumns().toString());
+      out.print(foreignKey.getReferencedTable().getQualifiedOutputName());
+      out.print(" (");
+      separator="";
+      for (      ColumnDefinition fkColumn : foreignKey.getReferencedColumns()) {
+        out.print(separator);
+        out.print(fkColumn.getOutputName());
+        separator=", ";
+      }
+      out.println(")");
       out.println("\t * </pre></code>");
     }
   }

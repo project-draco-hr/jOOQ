@@ -1,0 +1,8 @@
+{
+  if (pkg != null) {
+    return Arrays.<Definition>asList(getSchema(),pkg,this);
+  }
+ else {
+    return Arrays.<Definition>asList(getSchema(),this);
+  }
+}

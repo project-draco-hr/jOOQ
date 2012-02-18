@@ -1,0 +1,6 @@
+{
+  List<Definition> result=new ArrayList<Definition>();
+  result.addAll(getContainer().getDefinitionPath());
+  result.add(this);
+  return result;
+}

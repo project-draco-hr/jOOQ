@@ -1,7 +1,6 @@
 {
   StringBuilder result=new StringBuilder();
-  String n=(definition instanceof SchemaDefinition) ? definition.getDatabase().getOutputSchema(definition.getName()) : definition.getName();
-  String name=GenerationUtil.convertToJavaIdentifier(n);
+  String name=GenerationUtil.convertToJavaIdentifier(definition.getOutputName());
   result.append(StringUtils.toCamelCase(name));
   if (!"Pojo".equals(suffix) && !StringUtils.isEmpty(suffix)) {
     result.append(suffix);

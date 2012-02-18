@@ -8,7 +8,7 @@
     out.print("\"");
     if (!schema.isDefaultSchema()) {
       out.print(", schema = \"");
-      out.print(database.getOutputSchema(schema.getName()).replace("\"","\\\""));
+      out.print(schema.getOutputName().replace("\"","\\\""));
       out.print("\"");
     }
     StringBuilder sb=new StringBuilder();
