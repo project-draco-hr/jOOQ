@@ -1,0 +1,5 @@
+{
+  org.jooq.test.oracle3.generatedclasses.routines.F_PIPELINED_ARRAY1 f=new org.jooq.test.oracle3.generatedclasses.routines.F_PIPELINED_ARRAY1();
+  f.execute(configuration);
+  return f.getReturnValue();
+}

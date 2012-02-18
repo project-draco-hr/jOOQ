@@ -3,7 +3,7 @@
   sb.append(getTargetPackage());
   if (definition.getDatabase().getSchemata().size() > 1) {
     sb.append(".");
-    sb.append(GenerationUtil.convertToJavaIdentifierEnum(definition.getSchema().getOutputName()).toLowerCase());
+    sb.append(convertToJavaIdentifier(definition.getSchema().getJavaName()).toLowerCase());
   }
   if (!StringUtils.isBlank(getSubPackage(definition))) {
     sb.append(".");

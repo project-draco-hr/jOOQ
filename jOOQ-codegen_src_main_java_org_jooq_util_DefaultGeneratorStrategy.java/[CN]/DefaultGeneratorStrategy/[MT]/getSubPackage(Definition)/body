@@ -14,10 +14,10 @@
  else   if (definition instanceof RoutineDefinition) {
     RoutineDefinition routine=(RoutineDefinition)definition;
     if (routine.getPackage() instanceof UDTDefinition) {
-      return "udt." + getJavaIdentifierUC(routine.getPackage()).toLowerCase();
+      return "udt." + getJavaIdentifier(routine.getPackage()).toLowerCase();
     }
  else     if (routine.getPackage() != null) {
-      return "packages." + getJavaIdentifierUC(routine.getPackage()).toLowerCase();
+      return "packages." + getJavaIdentifier(routine.getPackage()).toLowerCase();
     }
  else {
       return "routines";

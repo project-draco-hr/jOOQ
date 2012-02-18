@@ -1,0 +1,4 @@
+{
+  org.jooq.test.oracle3.generatedclasses.routines.F_PIPELINED_ARRAY4 f=new org.jooq.test.oracle3.generatedclasses.routines.F_PIPELINED_ARRAY4();
+  return f.asField();
+}

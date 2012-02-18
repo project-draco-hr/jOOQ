@@ -1,0 +1,6 @@
+{
+  org.jooq.test.oracle3.generatedclasses.routines.P_ENHANCE_ADDRESS3 p=new org.jooq.test.oracle3.generatedclasses.routines.P_ENHANCE_ADDRESS3();
+  p.setADDRESS(ADDRESS);
+  p.execute(configuration);
+  return p.getADDRESS();
+}

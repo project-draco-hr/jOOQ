@@ -1,0 +1,3 @@
+{
+  return this.DATE_OF_BIRTH;
+}

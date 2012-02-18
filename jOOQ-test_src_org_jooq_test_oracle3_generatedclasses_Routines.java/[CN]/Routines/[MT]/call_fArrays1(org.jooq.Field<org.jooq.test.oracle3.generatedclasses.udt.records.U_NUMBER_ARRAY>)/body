@@ -1,0 +1,5 @@
+{
+  org.jooq.test.oracle3.generatedclasses.routines.F_ARRAYS1 f=new org.jooq.test.oracle3.generatedclasses.routines.F_ARRAYS1();
+  f.setIN_ARRAY(IN_ARRAY);
+  return f.asField();
+}

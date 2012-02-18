@@ -1,0 +1,6 @@
+{
+  org.jooq.test.oracle3.generatedclasses.routines.P_TABLES1 p=new org.jooq.test.oracle3.generatedclasses.routines.P_TABLES1();
+  p.setIN_TABLE(IN_TABLE);
+  p.execute(configuration);
+  return p.getOUT_TABLE();
+}

@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.test.oracle3.generatedclasses.udt.U_ADDRESS_TYPE.SINCE);
+}

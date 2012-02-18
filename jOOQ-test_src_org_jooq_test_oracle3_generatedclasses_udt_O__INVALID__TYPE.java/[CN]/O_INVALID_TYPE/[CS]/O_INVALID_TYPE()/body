@@ -1,0 +1,3 @@
+{
+  super("O_INVALID_TYPE",org.jooq.test.oracle3.generatedclasses.TEST.TEST);
+}

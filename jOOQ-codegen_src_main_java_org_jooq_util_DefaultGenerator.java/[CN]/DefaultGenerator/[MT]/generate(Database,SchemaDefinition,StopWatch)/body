@@ -161,7 +161,7 @@
             out.println("\t */");
           }
           out.print("\t");
-          out.print(GenerationUtil.convertToJavaIdentifierEnum(literal));
+          out.print(GenerationUtil.convertToJavaIdentifier(literal));
           out.print("(");
           String separator="";
           for (          ColumnDefinition column : columns) {
@@ -210,7 +210,7 @@
           out.print("\tpublic final ");
           out.print(data.getField(column.getName()).getType());
           out.print(" ");
-          out.print(strategy.getJavaGetterName(column));
+          out.print(strategy.getJavaGetterName(column,Mode.DEFAULT));
           out.println("() {");
           out.print("\t\treturn ");
           out.print(strategy.getJavaMemberName(column));
@@ -426,7 +426,7 @@
           out.print("\tprivate ");
           out.print(StringUtils.rightPad(getJavaType(column.getType()),maxLength));
           out.print(" ");
-          out.print(convertToJavaIdentifierEnum(strategy.getJavaMemberName(column)));
+          out.print(convertToJavaIdentifier(strategy.getJavaMemberName(column)));
           out.println(";");
         }
         for (        ColumnDefinition column : table.getColumns()) {
@@ -435,24 +435,24 @@
           out.print("\tpublic ");
           out.print(getJavaType(column.getType()));
           out.print(" ");
-          out.print(strategy.getJavaGetterName(column));
+          out.print(strategy.getJavaGetterName(column,Mode.POJO));
           out.println("() {");
           out.print("\t\treturn this.");
-          out.print(convertToJavaIdentifierEnum(strategy.getJavaMemberName(column)));
+          out.print(convertToJavaIdentifier(strategy.getJavaMemberName(column)));
           out.println(";");
           out.println("\t}");
           out.println();
           out.print("\tpublic void ");
-          out.print(strategy.getJavaSetterName(column));
+          out.print(strategy.getJavaSetterName(column,Mode.POJO));
           out.print("(");
           out.print(getJavaType(column.getType()));
           out.print(" ");
-          out.print(convertToJavaIdentifierEnum(strategy.getJavaMemberName(column)));
+          out.print(convertToJavaIdentifier(strategy.getJavaMemberName(column)));
           out.println(") {");
           out.print("\t\tthis.");
-          out.print(convertToJavaIdentifierEnum(strategy.getJavaMemberName(column)));
+          out.print(convertToJavaIdentifier(strategy.getJavaMemberName(column)));
           out.print(" = ");
-          out.print(convertToJavaIdentifierEnum(strategy.getJavaMemberName(column)));
+          out.print(convertToJavaIdentifier(strategy.getJavaMemberName(column)));
           out.println(";");
           out.println("\t}");
         }
@@ -884,7 +884,7 @@
         out.print(" {");
         out.println();
         for (        String literal : e.getLiterals()) {
-          out.println("\t" + GenerationUtil.convertToJavaIdentifierEnum(literal) + "(\""+ literal+ "\"),");
+          out.println("\t" + GenerationUtil.convertToJavaIdentifier(literal) + "(\""+ literal+ "\"),");
           out.println();
         }
         out.println("\t;");

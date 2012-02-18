@@ -1,0 +1,4 @@
+{
+  org.jooq.test.oracle3.generatedclasses.routines.P377 p=new org.jooq.test.oracle3.generatedclasses.routines.P377();
+  p.execute(configuration);
+}

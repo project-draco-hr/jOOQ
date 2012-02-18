@@ -1,0 +1,3 @@
+{
+  super("TEST.U_STRING_ARRAY",org.jooq.impl.SQLDataType.VARCHAR,configuration);
+}

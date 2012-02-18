@@ -6,6 +6,18 @@
   log.info("  target dir",getTargetDirectory());
   log.info("  target package",getTargetPackage());
   log.info("----------------------------------------------------------");
+  log.info("");
+  log.info("Generation parameters");
+  log.info("----------------------------------------------------------");
+  log.info("  strategy",strategy.delegate.getClass());
+  log.info("  deprecated",generateDeprecated());
+  log.info("  generated annotation",generateGeneratedAnnotation());
+  log.info("  instance fields",generateInstanceFields());
+  log.info("  JPA annotations",generateJPAAnnotations());
+  log.info("  navigation methods",generateNavigationMethods());
+  log.info("  pojos",generatePojos());
+  log.info("  relations",generateRelations());
+  log.info("----------------------------------------------------------");
   String targetPackage=getTargetPackage();
   File targetPackageDir=new File(getTargetDirectory() + File.separator + targetPackage.replace('.',File.separatorChar));
   log.info("Emptying",targetPackageDir.getCanonicalPath());

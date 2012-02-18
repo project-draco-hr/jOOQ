@@ -1,0 +1,6 @@
+{
+  super(org.jooq.SQLDialect.ORACLE,"P_GET_ONE_CURSOR",org.jooq.test.oracle3.generatedclasses.TEST.TEST);
+  addOutParameter(TOTAL);
+  addOutParameter(BOOKS);
+  addInParameter(BOOK_IDS);
+}

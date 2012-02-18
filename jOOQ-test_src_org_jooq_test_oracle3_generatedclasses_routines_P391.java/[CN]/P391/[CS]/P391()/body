@@ -1,0 +1,9 @@
+{
+  super(org.jooq.SQLDialect.ORACLE,"P391",org.jooq.test.oracle3.generatedclasses.TEST.TEST);
+  addInParameter(I1);
+  addInOutParameter(IO1);
+  addOutParameter(O1);
+  addOutParameter(O2);
+  addInOutParameter(IO2);
+  addInParameter(I2);
+}

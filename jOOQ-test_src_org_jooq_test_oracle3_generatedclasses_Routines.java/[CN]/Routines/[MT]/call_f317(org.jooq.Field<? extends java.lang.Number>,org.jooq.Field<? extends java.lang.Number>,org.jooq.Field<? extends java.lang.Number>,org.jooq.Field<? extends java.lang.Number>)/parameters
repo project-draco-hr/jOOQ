@@ -1,0 +1,4 @@
+org.jooq.Field<? extends java.lang.Number> P1
+org.jooq.Field<? extends java.lang.Number> P2
+org.jooq.Field<? extends java.lang.Number> P3
+org.jooq.Field<? extends java.lang.Number> P4

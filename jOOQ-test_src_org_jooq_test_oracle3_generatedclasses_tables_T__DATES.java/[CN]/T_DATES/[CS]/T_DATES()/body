@@ -1,0 +1,3 @@
+{
+  super("T_DATES",org.jooq.test.oracle3.generatedclasses.TEST.TEST);
+}

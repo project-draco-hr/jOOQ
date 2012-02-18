@@ -1,0 +1,6 @@
+{
+  super(org.jooq.SQLDialect.ORACLE,"P_UNUSED",org.jooq.test.oracle3.generatedclasses.TEST.TEST);
+  addInParameter(IN1);
+  addOutParameter(OUT1);
+  addInOutParameter(OUT2);
+}

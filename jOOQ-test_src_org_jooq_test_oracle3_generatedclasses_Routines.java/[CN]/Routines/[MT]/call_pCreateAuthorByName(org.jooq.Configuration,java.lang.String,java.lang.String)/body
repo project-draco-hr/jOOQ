@@ -1,0 +1,6 @@
+{
+  org.jooq.test.oracle3.generatedclasses.routines.P_CREATE_AUTHOR_BY_NAME p=new org.jooq.test.oracle3.generatedclasses.routines.P_CREATE_AUTHOR_BY_NAME();
+  p.setFIRST_NAME(FIRST_NAME);
+  p.setLAST_NAME(LAST_NAME);
+  p.execute(configuration);
+}

@@ -1,8 +1,0 @@
-{
-  if (JAVA_KEYWORDS.contains(literal)) {
-    return literal + "_";
-  }
- else {
-    return convertToJavaIdentifier(literal);
-  }
-}

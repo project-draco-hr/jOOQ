@@ -1,6 +1,6 @@
 {
   StringBuilder result=new StringBuilder();
-  String name=GenerationUtil.convertToJavaIdentifier(definition.getOutputName());
+  String name=GenerationUtil.convertToJavaIdentifier(definition.getJavaName());
   result.append(StringUtils.toCamelCase(name));
   if (mode == Mode.RECORD) {
     result.append("Record");

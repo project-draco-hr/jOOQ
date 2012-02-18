@@ -1,0 +1,3 @@
+{
+  super("T_BOOK_TO_BOOK_STORE",org.jooq.test.oracle3.generatedclasses.TEST.TEST);
+}

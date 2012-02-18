@@ -1,5 +1,5 @@
 {
-  String identifier=GenerationUtil.convertToJavaIdentifier(definition.getOutputName()).toUpperCase();
+  String identifier=GenerationUtil.convertToJavaIdentifier(definition.getJavaName()).toUpperCase();
   if (definition instanceof ColumnDefinition || definition instanceof AttributeDefinition) {
     TypedElementDefinition<?> e=(TypedElementDefinition<?>)definition;
     if (identifier.equals(getJavaIdentifier(e.getContainer()))) {

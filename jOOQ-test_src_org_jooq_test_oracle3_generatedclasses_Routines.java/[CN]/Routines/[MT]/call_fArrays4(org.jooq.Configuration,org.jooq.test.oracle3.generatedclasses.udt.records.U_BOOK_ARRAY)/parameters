@@ -1,0 +1,2 @@
+org.jooq.Configuration configuration
+org.jooq.test.oracle3.generatedclasses.udt.records.U_BOOK_ARRAY IN_ARRAY

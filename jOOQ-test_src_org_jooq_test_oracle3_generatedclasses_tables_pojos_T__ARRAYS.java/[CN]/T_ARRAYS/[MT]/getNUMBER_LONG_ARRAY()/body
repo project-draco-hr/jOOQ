@@ -1,0 +1,3 @@
+{
+  return this.NUMBER_LONG_ARRAY;
+}

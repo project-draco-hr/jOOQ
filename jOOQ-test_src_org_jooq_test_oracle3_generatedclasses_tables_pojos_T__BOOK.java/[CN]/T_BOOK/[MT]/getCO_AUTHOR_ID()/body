@@ -1,0 +1,3 @@
+{
+  return this.CO_AUTHOR_ID;
+}

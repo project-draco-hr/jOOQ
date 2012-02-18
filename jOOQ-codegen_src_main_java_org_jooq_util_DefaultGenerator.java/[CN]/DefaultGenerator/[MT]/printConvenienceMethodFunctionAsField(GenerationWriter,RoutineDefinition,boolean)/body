@@ -19,7 +19,7 @@
   out.print("<");
   out.print(getJavaType(function.getReturnType()));
   out.print("> ");
-  out.print(strategy.getJavaMethodName(function));
+  out.print(strategy.getJavaMethodName(function,Mode.DEFAULT));
   out.print("(");
   String separator="";
   for (  ParameterDefinition parameter : function.getInParameters()) {
@@ -45,7 +45,7 @@
   out.println("();");
   for (  ParameterDefinition parameter : function.getInParameters()) {
     out.print("\t\tf.");
-    out.print(strategy.getJavaSetterName(parameter));
+    out.print(strategy.getJavaSetterName(parameter,Mode.DEFAULT));
     out.print("(");
     out.print(strategy.getJavaMemberName(parameter));
     out.println(");");

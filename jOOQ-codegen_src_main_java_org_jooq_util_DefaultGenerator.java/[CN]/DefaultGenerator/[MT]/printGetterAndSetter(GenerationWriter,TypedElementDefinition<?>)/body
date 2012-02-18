@@ -1,13 +1,13 @@
 {
   printFieldJavaDoc(out,element);
-  out.println("\tpublic void " + strategy.getJavaSetterName(element) + "("+ getJavaType(element.getType())+ " value) {");
+  out.println("\tpublic void " + strategy.getJavaSetterName(element,Mode.DEFAULT) + "("+ getJavaType(element.getType())+ " value) {");
   out.println("\t\tsetValue(" + strategy.getFullJavaIdentifier(element) + ", value);");
   out.println("\t}");
   printFieldJavaDoc(out,element);
   if (element instanceof ColumnDefinition) {
     printColumnJPAAnnotation(out,(ColumnDefinition)element);
   }
-  out.println("\tpublic " + getJavaType(element.getType()) + " "+ strategy.getJavaGetterName(element)+ "() {");
+  out.println("\tpublic " + getJavaType(element.getType()) + " "+ strategy.getJavaGetterName(element,Mode.DEFAULT)+ "() {");
   out.println("\t\treturn getValue(" + strategy.getFullJavaIdentifier(element) + ");");
   out.println("\t}");
   if (generateRelations() && generateNavigationMethods() && element instanceof ColumnDefinition) {

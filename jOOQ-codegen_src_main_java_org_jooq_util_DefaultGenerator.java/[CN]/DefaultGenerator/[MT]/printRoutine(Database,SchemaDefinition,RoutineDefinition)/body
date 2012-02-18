@@ -72,7 +72,7 @@
     out.println("\t * Set the <code>" + parameter.getName() + "</code> parameter to the routine");
     out.println("\t */");
     out.print("\tpublic void ");
-    out.print(strategy.getJavaSetterName(parameter));
+    out.print(strategy.getJavaSetterName(parameter,Mode.DEFAULT));
     out.print("(");
     printNumberType(out,parameter.getType());
     out.println(" value) {");
@@ -99,7 +99,7 @@
       out.println("} statement!");
       out.println("\t */");
       out.print("\tpublic void ");
-      out.print(strategy.getJavaSetterName(parameter));
+      out.print(strategy.getJavaSetterName(parameter,Mode.DEFAULT));
       out.print("(");
       out.print(Field.class);
       out.print("<");
@@ -126,7 +126,7 @@
       out.print("\tpublic ");
       out.print(getJavaType(parameter.getType()));
       out.print(" ");
-      out.print(strategy.getJavaGetterName(parameter));
+      out.print(strategy.getJavaGetterName(parameter,Mode.DEFAULT));
       out.println("() {");
       out.print("\t\treturn getValue(");
       out.print(strategy.getJavaIdentifier(parameter));

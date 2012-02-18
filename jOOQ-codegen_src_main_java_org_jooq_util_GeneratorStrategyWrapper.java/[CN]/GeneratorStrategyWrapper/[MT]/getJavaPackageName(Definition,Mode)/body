@@ -1,0 +1,7 @@
+{
+  String[] split=delegate.getJavaPackageName(definition,mode).split("\\.");
+  for (int i=0; i < split.length; i++) {
+    split[i]=convertToJavaIdentifier(split[i]);
+  }
+  return StringUtils.join(split,".");
+}

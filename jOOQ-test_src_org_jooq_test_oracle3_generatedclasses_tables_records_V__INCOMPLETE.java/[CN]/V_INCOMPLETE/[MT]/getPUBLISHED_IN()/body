@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.test.oracle3.generatedclasses.tables.V_INCOMPLETE.V_INCOMPLETE.PUBLISHED_IN);
+}

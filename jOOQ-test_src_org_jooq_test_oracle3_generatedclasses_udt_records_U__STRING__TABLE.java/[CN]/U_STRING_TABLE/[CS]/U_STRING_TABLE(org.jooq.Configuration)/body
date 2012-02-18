@@ -1,0 +1,3 @@
+{
+  super("TEST.U_STRING_TABLE",org.jooq.impl.SQLDataType.VARCHAR,configuration);
+}

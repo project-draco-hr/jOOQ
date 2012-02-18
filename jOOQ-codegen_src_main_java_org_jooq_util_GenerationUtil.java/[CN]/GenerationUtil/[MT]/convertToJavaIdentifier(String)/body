@@ -1,4 +1,7 @@
 {
+  if (JAVA_KEYWORDS.contains(literal)) {
+    return literal + "_";
+  }
   StringBuilder sb=new StringBuilder();
   if ("".equals(literal)) {
     return "_";

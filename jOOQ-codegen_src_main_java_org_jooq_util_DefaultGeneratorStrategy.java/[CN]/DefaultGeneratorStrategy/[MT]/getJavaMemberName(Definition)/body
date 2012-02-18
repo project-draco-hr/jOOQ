@@ -1,3 +1,0 @@
-{
-  return getJavaMemberName(definition,Mode.DEFAULT);
-}

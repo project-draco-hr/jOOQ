@@ -37,7 +37,7 @@
  else {
     out.print(strategy.getFullJavaClassName(procedure) + " ");
   }
-  out.print(strategy.getJavaMethodName(procedure));
+  out.print(strategy.getJavaMethodName(procedure,Mode.DEFAULT));
   out.print("(");
   String glue="";
   if (!instance) {
@@ -63,7 +63,7 @@
   out.println("();");
   for (  ParameterDefinition parameter : procedure.getInParameters()) {
     out.print("\t\tp.");
-    out.print(strategy.getJavaSetterName(parameter));
+    out.print(strategy.getJavaSetterName(parameter,Mode.DEFAULT));
     out.print("(");
     if (instance && parameter.equals(procedure.getInParameters().get(0))) {
       out.print("this");
@@ -85,12 +85,12 @@
   if (procedure.getOutParameters().size() > 0) {
     if (instance) {
       out.print("\t\tfrom(p.");
-      out.print(strategy.getJavaGetterName(procedure.getOutParameters().get(0)));
+      out.print(strategy.getJavaGetterName(procedure.getOutParameters().get(0),Mode.DEFAULT));
       out.println("());");
     }
     if (procedure.getOutParameters().size() == 1) {
       out.print("\t\treturn p.");
-      out.print(strategy.getJavaGetterName(procedure.getOutParameters().get(0)));
+      out.print(strategy.getJavaGetterName(procedure.getOutParameters().get(0),Mode.DEFAULT));
       out.println("();");
     }
  else     if (procedure.getOutParameters().size() > 1) {

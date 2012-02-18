@@ -1,0 +1,6 @@
+{
+  org.jooq.test.oracle3.generatedclasses.routines.P_AUTHOR_EXISTS p=new org.jooq.test.oracle3.generatedclasses.routines.P_AUTHOR_EXISTS();
+  p.setAUTHOR_NAME(AUTHOR_NAME);
+  p.execute(configuration);
+  return p.getRESULT();
+}
