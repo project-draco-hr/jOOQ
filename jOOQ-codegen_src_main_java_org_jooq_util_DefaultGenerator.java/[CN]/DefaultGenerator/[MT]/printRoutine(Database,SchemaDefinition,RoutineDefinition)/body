@@ -71,8 +71,8 @@
     out.println("\t/**");
     out.println("\t * Set the <code>" + parameter.getName() + "</code> parameter to the routine");
     out.println("\t */");
-    out.print("\tpublic void set");
-    out.print(strategy.getJavaClassName(parameter));
+    out.print("\tpublic void ");
+    out.print(strategy.getJavaSetterName(parameter));
     out.print("(");
     printNumberType(out,parameter.getType());
     out.println(" value) {");
@@ -84,7 +84,7 @@
       out.print("Value");
     }
     out.print("(");
-    out.print(strategy.getJavaIdentifierUC(parameter));
+    out.print(strategy.getJavaIdentifier(parameter));
     out.println(", value);");
     out.println("\t}");
     if (routine.isSQLUsable()) {
@@ -98,8 +98,8 @@
       out.print(Select.class);
       out.println("} statement!");
       out.println("\t */");
-      out.print("\tpublic void set");
-      out.print(strategy.getJavaClassName(parameter));
+      out.print("\tpublic void ");
+      out.print(strategy.getJavaSetterName(parameter));
       out.print("(");
       out.print(Field.class);
       out.print("<");
@@ -113,7 +113,7 @@
         out.print("Field");
       }
       out.print("(");
-      out.print(strategy.getJavaIdentifierUC(parameter));
+      out.print(strategy.getJavaIdentifier(parameter));
       out.println(", field);");
       out.println("\t}");
     }
@@ -129,7 +129,7 @@
       out.print(strategy.getJavaGetterName(parameter));
       out.println("() {");
       out.print("\t\treturn getValue(");
-      out.print(strategy.getJavaIdentifierUC(parameter));
+      out.print(strategy.getJavaIdentifier(parameter));
       out.println(");");
       out.println("\t}");
     }

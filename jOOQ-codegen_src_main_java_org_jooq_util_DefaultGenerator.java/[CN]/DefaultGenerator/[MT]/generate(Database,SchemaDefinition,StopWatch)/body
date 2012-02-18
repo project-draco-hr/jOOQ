@@ -18,7 +18,7 @@
     outS.println("\t/**");
     outS.println("\t * The singleton instance of " + schema.getOutputName());
     outS.println("\t */");
-    outS.println("\tpublic static final " + strategy.getJavaClassName(schema) + " "+ strategy.getJavaIdentifierUC(schema)+ " = new "+ strategy.getJavaClassName(schema)+ "();");
+    outS.println("\tpublic static final " + strategy.getJavaClassName(schema) + " "+ strategy.getJavaIdentifier(schema)+ " = new "+ strategy.getJavaClassName(schema)+ "();");
     outS.println();
     printNoFurtherInstancesAllowedJavadoc(outS);
     outS.println("\tprivate " + strategy.getJavaClassName(schema) + "() {");
@@ -66,9 +66,7 @@
       outF.print(strategy.getJavaClassName(schema,Mode.FACTORY));
       outF.print("(");
       outF.print(Connection.class);
-      outF.print(" connection, ");
-      outF.print(org.jooq.SchemaMapping.class);
-      outF.println(" mapping) {");
+      outF.println(" connection, org.jooq.SchemaMapping mapping) {");
       outF.println("\t\tsuper(connection, mapping);");
       outF.println("\t}");
     }
@@ -107,18 +105,18 @@
       out.print(getJavaType(sequence.getType()));
       out.print(">");
       out.print(" ");
-      out.print(strategy.getJavaIdentifierUC(sequence));
+      out.print(strategy.getJavaIdentifier(sequence));
       out.print(" = new ");
       out.print(SequenceImpl.class);
       out.print("<");
       out.print(getJavaType(sequence.getType()));
       out.print(">");
       out.print("(\"");
-      out.print(sequence.getName());
+      out.print(sequence.getOutputName());
       out.print("\"");
       if (!schema.isDefaultSchema()) {
         out.print(", ");
-        out.print(strategy.getFullJavaIdentifierUC(schema));
+        out.print(strategy.getFullJavaIdentifier(schema));
       }
  else {
         out.print(", null");
@@ -179,7 +177,7 @@
           out.print("\tprivate final ");
           out.print(data.getField(column.getName()).getType());
           out.print(" ");
-          out.println(strategy.getJavaClassNameLC(column) + ";");
+          out.println(strategy.getJavaMemberName(column) + ";");
         }
         out.println();
         out.print("\tprivate " + strategy.getJavaClassName(table) + "(");
@@ -188,15 +186,15 @@
           out.print(separator);
           out.print(data.getField(column.getName()).getType());
           out.print(" ");
-          out.print(strategy.getJavaClassNameLC(column));
+          out.print(strategy.getJavaMemberName(column));
           separator=", ";
         }
         out.println(") {");
         for (        ColumnDefinition column : columns) {
           out.print("\t\tthis.");
-          out.print(strategy.getJavaClassNameLC(column));
+          out.print(strategy.getJavaMemberName(column));
           out.print(" = ");
-          out.print(strategy.getJavaClassNameLC(column));
+          out.print(strategy.getJavaMemberName(column));
           out.println(";");
         }
         out.println("\t}");
@@ -205,17 +203,17 @@
         out.print("\tpublic ");
         out.print(data.getField(pk.getName()).getType());
         out.println(" getPrimaryKey() {");
-        out.println("\t\treturn " + strategy.getJavaClassNameLC(pk) + ";");
+        out.println("\t\treturn " + strategy.getJavaMemberName(pk) + ";");
         out.println("\t}");
         for (        ColumnDefinition column : columns) {
           printFieldJavaDoc(out,column);
           out.print("\tpublic final ");
           out.print(data.getField(column.getName()).getType());
-          out.print(" get");
-          out.print(strategy.getJavaClassName(column));
+          out.print(" ");
+          out.print(strategy.getJavaGetterName(column));
           out.println("() {");
           out.print("\t\treturn ");
-          out.print(strategy.getJavaClassNameLC(column));
+          out.print(strategy.getJavaMemberName(column));
           out.println(";");
           out.println("\t}");
         }
@@ -260,10 +258,10 @@
         printNoFurtherInstancesAllowedJavadoc(out);
         out.println("\tprivate " + strategy.getJavaClassName(table) + "() {");
         if (!schema.isDefaultSchema()) {
-          out.println("\t\tsuper(\"" + table.getName() + "\", "+ strategy.getFullJavaIdentifierUC(schema)+ ");");
+          out.println("\t\tsuper(\"" + table.getOutputName() + "\", "+ strategy.getFullJavaIdentifier(schema)+ ");");
         }
  else {
-          out.println("\t\tsuper(\"" + table.getName() + "\");");
+          out.println("\t\tsuper(\"" + table.getOutputName() + "\");");
         }
         out.println("\t}");
         if (generateInstanceFields()) {
@@ -275,11 +273,9 @@
           out.print(String.class);
           out.println(" alias) {");
           out.print("\t\tsuper(alias, ");
-          out.print(strategy.getFullJavaIdentifierUC(schema));
+          out.print(strategy.getFullJavaIdentifier(schema));
           out.print(", ");
-          out.print(strategy.getFullJavaClassName(table));
-          out.print(".");
-          out.print(strategy.getJavaIdentifierUC(table));
+          out.print(strategy.getFullJavaIdentifier(table));
           out.println(");");
           out.println("\t}");
         }
@@ -430,7 +426,7 @@
           out.print("\tprivate ");
           out.print(StringUtils.rightPad(getJavaType(column.getType()),maxLength));
           out.print(" ");
-          out.print(convertToJavaIdentifierEnum(strategy.getJavaClassNameLC(column)));
+          out.print(convertToJavaIdentifierEnum(strategy.getJavaMemberName(column)));
           out.println(";");
         }
         for (        ColumnDefinition column : table.getColumns()) {
@@ -442,7 +438,7 @@
           out.print(strategy.getJavaGetterName(column));
           out.println("() {");
           out.print("\t\treturn this.");
-          out.print(convertToJavaIdentifierEnum(strategy.getJavaClassNameLC(column)));
+          out.print(convertToJavaIdentifierEnum(strategy.getJavaMemberName(column)));
           out.println(";");
           out.println("\t}");
           out.println();
@@ -451,12 +447,12 @@
           out.print("(");
           out.print(getJavaType(column.getType()));
           out.print(" ");
-          out.print(convertToJavaIdentifierEnum(strategy.getJavaClassNameLC(column)));
+          out.print(convertToJavaIdentifierEnum(strategy.getJavaMemberName(column)));
           out.println(") {");
           out.print("\t\tthis.");
-          out.print(convertToJavaIdentifierEnum(strategy.getJavaClassNameLC(column)));
+          out.print(convertToJavaIdentifierEnum(strategy.getJavaMemberName(column)));
           out.print(" = ");
-          out.print(convertToJavaIdentifierEnum(strategy.getJavaClassNameLC(column)));
+          out.print(convertToJavaIdentifierEnum(strategy.getJavaMemberName(column)));
           out.println(";");
           out.println("\t}");
         }
@@ -488,11 +484,9 @@
       out.print("\tpublic static ");
       out.print(strategy.getFullJavaClassName(table));
       out.print(" ");
-      out.print(strategy.getJavaIdentifierUC(table));
+      out.print(strategy.getJavaIdentifier(table));
       out.print(" = ");
-      out.print(strategy.getFullJavaClassName(table));
-      out.print(".");
-      out.print(strategy.getJavaIdentifierUC(table));
+      out.print(strategy.getFullJavaIdentifier(table));
       out.println(";");
     }
     printPrivateConstructor(out,"Tables");
@@ -524,9 +518,9 @@
           out.print("> IDENTITY_");
           out.print(strategy.getJavaIdentifier(identity.getContainer()));
           out.print(" = createIdentity(");
-          out.print(strategy.getFullJavaIdentifierUC(identity.getContainer()));
+          out.print(strategy.getFullJavaIdentifier(identity.getContainer()));
           out.print(", ");
-          out.print(strategy.getFullJavaIdentifierUC(identity));
+          out.print(strategy.getFullJavaIdentifier(identity));
           out.println(");");
         }
       }
@@ -548,12 +542,12 @@
             out.print("> ");
             out.print(strategy.getJavaIdentifier(uniqueKey));
             out.print(" = createUniqueKey(");
-            out.print(strategy.getFullJavaIdentifierUC(uniqueKey.getTable()));
+            out.print(strategy.getFullJavaIdentifier(uniqueKey.getTable()));
             out.print(", ");
             String separator="";
             for (            ColumnDefinition column : uniqueKey.getKeyColumns()) {
               out.print(separator);
-              out.print(strategy.getFullJavaIdentifierUC(column));
+              out.print(strategy.getFullJavaIdentifier(column));
               separator=", ";
             }
             out.println(");");
@@ -589,12 +583,12 @@
             }
             out.print(strategy.getJavaIdentifier(foreignKey.getReferencedKey()));
             out.print(", ");
-            out.print(strategy.getFullJavaIdentifierUC(foreignKey.getKeyTable()));
+            out.print(strategy.getFullJavaIdentifier(foreignKey.getKeyTable()));
             out.print(", ");
             String separator="";
             for (            ColumnDefinition column : foreignKey.getKeyColumns()) {
               out.print(separator);
-              out.print(strategy.getFullJavaIdentifierUC(column));
+              out.print(strategy.getFullJavaIdentifier(column));
               separator=", ";
             }
             out.println(");");
@@ -643,7 +637,7 @@
         out.println("\t */");
         out.println("\tpublic " + strategy.getJavaClassName(table,Mode.RECORD) + "() {");
         out.print("\t\tsuper(");
-        out.print(strategy.getFullJavaIdentifierUC(table));
+        out.print(strategy.getFullJavaIdentifier(table));
         out.println(");");
         out.println("\t}");
         out.println("}");
@@ -700,16 +694,16 @@
         printNoFurtherInstancesAllowedJavadoc(out);
         out.println("\tprivate " + strategy.getJavaClassName(udt) + "() {");
         if (!schema.isDefaultSchema()) {
-          out.println("\t\tsuper(\"" + udt.getName() + "\", "+ strategy.getFullJavaIdentifierUC(schema)+ ");");
+          out.println("\t\tsuper(\"" + udt.getOutputName() + "\", "+ strategy.getFullJavaIdentifier(schema)+ ");");
         }
  else {
-          out.println("\t\tsuper(\"" + udt.getName() + "\");");
+          out.println("\t\tsuper(\"" + udt.getOutputName() + "\");");
         }
         out.println("\t}");
         out.println("}");
         out.close();
         if (outS != null) {
-          outS.printInitialisationStatement("addMapping(\"" + schema.getOutputName() + "."+ udt.getName()+ "\", "+ strategy.getFullJavaClassName(udt,Mode.RECORD)+ ".class);");
+          outS.printInitialisationStatement("addMapping(\"" + udt.getQualifiedOutputName() + "\", "+ strategy.getFullJavaClassName(udt,Mode.RECORD)+ ".class);");
         }
       }
  catch (      Exception e) {
@@ -755,7 +749,7 @@
         out.println();
         out.println("\tpublic " + strategy.getJavaClassName(udt,Mode.RECORD) + "() {");
         out.print("\t\tsuper(");
-        out.print(strategy.getFullJavaIdentifierUC(udt));
+        out.print(strategy.getFullJavaIdentifier(udt));
         out.println(");");
         out.println("\t}");
         out.println("}");
@@ -802,11 +796,9 @@
       out.print("\tpublic static ");
       out.print(strategy.getFullJavaClassName(udt));
       out.print(" ");
-      out.print(strategy.getJavaIdentifierUC(udt));
+      out.print(strategy.getJavaIdentifier(udt));
       out.print(" = ");
-      out.print(strategy.getFullJavaClassName(udt));
-      out.print(".");
-      out.print(strategy.getJavaIdentifierUC(udt));
+      out.print(strategy.getFullJavaIdentifier(udt));
       out.println(";");
     }
     printPrivateConstructor(out,"UDTs");
@@ -837,9 +829,7 @@
         out.print(Configuration.class);
         out.println(" configuration) {");
         out.print("\t\tsuper(\"");
-        out.print(array.getSchema().getName());
-        out.print(".");
-        out.print(array.getName());
+        out.print(array.getQualifiedOutputName());
         out.print("\", ");
         out.print(getJavaTypeReference(database,array.getElementType()));
         out.println(", configuration);");
@@ -979,12 +969,12 @@
         outPkg.printSerial();
         outPkg.println();
         outPkg.println("\t/**");
-        outPkg.println("\t * The singleton instance of " + strategy.getJavaIdentifierUC(pkg));
+        outPkg.println("\t * The singleton instance of " + strategy.getJavaIdentifier(pkg));
         outPkg.println("\t */");
         outPkg.print("\tpublic static ");
         outPkg.print(strategy.getFullJavaClassName(pkg));
         outPkg.print(" ");
-        outPkg.print(strategy.getJavaIdentifierUC(pkg));
+        outPkg.print(strategy.getJavaIdentifier(pkg));
         outPkg.print(" = new ");
         outPkg.print(strategy.getFullJavaClassName(pkg));
         outPkg.println("();");
@@ -1006,9 +996,9 @@
         printNoFurtherInstancesAllowedJavadoc(outPkg);
         outPkg.println("\tprivate " + strategy.getJavaClassName(pkg) + "() {");
         outPkg.print("\t\tsuper(\"");
-        outPkg.print(strategy.getJavaIdentifierUC(pkg));
+        outPkg.print(pkg.getOutputName());
         outPkg.print("\", ");
-        outPkg.print(strategy.getFullJavaIdentifierUC(schema));
+        outPkg.print(strategy.getFullJavaIdentifier(schema));
         outPkg.println(");");
         outPkg.println("\t}");
         outPkg.println("}");

@@ -4,7 +4,7 @@
     out.print(".");
     out.print("Sequences");
     out.print(".");
-    out.print(strategy.getJavaIdentifierUC(definition));
+    out.print(strategy.getJavaIdentifier(definition));
   }
  else {
     out.print(strategy.getFullJavaIdentifier(definition));

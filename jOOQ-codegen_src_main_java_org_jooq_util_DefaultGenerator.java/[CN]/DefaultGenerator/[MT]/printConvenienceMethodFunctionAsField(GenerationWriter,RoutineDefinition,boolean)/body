@@ -8,7 +8,7 @@
   }
   out.println();
   out.println("\t/**");
-  out.println("\t * Get " + strategy.getJavaIdentifierUC(function) + " as a field");
+  out.println("\t * Get " + strategy.getJavaIdentifier(function) + " as a field");
   out.println("\t *");
   for (  ParameterDefinition parameter : function.getInParameters()) {
     out.println("\t * @param " + strategy.getJavaMemberName(parameter));

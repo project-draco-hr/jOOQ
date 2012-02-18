@@ -20,7 +20,7 @@
   }
   out.print(getJavaType(column.getType()));
   out.print("> ");
-  out.print(strategy.getJavaIdentifierUC(column));
+  out.print(strategy.getJavaIdentifier(column));
   if (declaredMemberClass == TableField.class) {
     out.print(" = createField");
   }
@@ -40,11 +40,11 @@
         out.print(", this");
       }
  else {
-        out.print(", " + strategy.getJavaIdentifierUC(type));
+        out.print(", " + strategy.getJavaIdentifier(type));
       }
     }
  else {
-      out.print(", " + strategy.getJavaIdentifierUC(type));
+      out.print(", " + strategy.getJavaIdentifier(type));
     }
   }
   out.println(");");

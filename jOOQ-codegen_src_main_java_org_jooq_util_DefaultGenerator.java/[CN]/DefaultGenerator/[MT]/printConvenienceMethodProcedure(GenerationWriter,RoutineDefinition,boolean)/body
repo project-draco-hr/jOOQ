@@ -5,7 +5,7 @@
   }
   out.println();
   out.println("\t/**");
-  out.println("\t * Invoke " + strategy.getJavaIdentifierUC(procedure));
+  out.println("\t * Invoke " + strategy.getJavaIdentifier(procedure));
   out.println("\t *");
   for (  ParameterDefinition parameter : procedure.getAllParameters()) {
     out.print("\t * @param " + strategy.getJavaMemberName(parameter) + " ");
