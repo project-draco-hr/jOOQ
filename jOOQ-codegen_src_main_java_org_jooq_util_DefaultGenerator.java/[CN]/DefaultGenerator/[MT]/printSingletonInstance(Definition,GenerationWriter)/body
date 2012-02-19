@@ -1,7 +1,7 @@
 {
   out.println();
   out.println("\t/**");
-  out.println("\t * The singleton instance of " + definition.getOutputName());
+  out.println("\t * The singleton instance of " + definition.getQualifiedOutputName());
   out.println("\t */");
   out.print("\tpublic static final ");
   out.print(strategy.getFullJavaClassName(definition));

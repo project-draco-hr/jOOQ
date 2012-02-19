@@ -16,7 +16,7 @@
     outS.printSerial();
     outS.println();
     outS.println("\t/**");
-    outS.println("\t * The singleton instance of " + schema.getOutputName());
+    outS.println("\t * The singleton instance of " + schema.getQualifiedOutputName());
     outS.println("\t */");
     outS.println("\tpublic static final " + strategy.getJavaClassName(schema) + " "+ strategy.getJavaIdentifier(schema)+ " = new "+ strategy.getJavaClassName(schema)+ "();");
     outS.println();
@@ -97,7 +97,7 @@
     for (    SequenceDefinition sequence : database.getSequences(schema)) {
       out.println();
       out.println("\t/**");
-      out.println("\t * The sequence " + sequence.getQualifiedName());
+      out.println("\t * The sequence " + sequence.getQualifiedOutputName());
       out.println("\t */");
       out.print("\tpublic static final ");
       out.print(Sequence.class);
@@ -478,7 +478,7 @@
         out.println("\t * " + table.getComment());
       }
  else {
-        out.println("\t * The table " + table.getQualifiedName());
+        out.println("\t * The table " + table.getQualifiedOutputName());
       }
       out.println("\t */");
       out.print("\tpublic static ");
@@ -791,7 +791,7 @@
     for (    UDTDefinition udt : database.getUDTs(schema)) {
       out.println();
       out.println("\t/**");
-      out.println("\t * The type " + udt.getQualifiedName());
+      out.println("\t * The type " + udt.getQualifiedOutputName());
       out.println("\t */");
       out.print("\tpublic static ");
       out.print(strategy.getFullJavaClassName(udt));
@@ -873,12 +873,12 @@
     log.info("Generating ENUMs");
     for (    EnumDefinition e : database.getEnums(schema)) {
       try {
-        log.info("Generating ENUM",strategy.getFileName(e));
-        GenerationWriter out=new GenerationWriter(strategy.getFile(e));
+        log.info("Generating ENUM",strategy.getFileName(e,Mode.ENUM));
+        GenerationWriter out=new GenerationWriter(strategy.getFile(e,Mode.ENUM));
         printHeader(out,e);
         printClassJavadoc(out,e);
         out.print("public enum ");
-        out.print(strategy.getJavaClassName(e));
+        out.print(strategy.getJavaClassName(e,Mode.ENUM));
         out.print(" implements ");
         out.print(EnumType.class);
         out.print(" {");
@@ -891,7 +891,7 @@
         out.println();
         out.println("\tprivate final java.lang.String literal;");
         out.println();
-        out.println("\tprivate " + strategy.getJavaClassName(e) + "(java.lang.String literal) {");
+        out.println("\tprivate " + strategy.getJavaClassName(e,Mode.ENUM) + "(java.lang.String literal) {");
         out.println("\t\tthis.literal = literal;");
         out.println("\t}");
         out.println();
@@ -967,17 +967,7 @@
         outPkg.print(PackageImpl.class);
         outPkg.println(" {");
         outPkg.printSerial();
-        outPkg.println();
-        outPkg.println("\t/**");
-        outPkg.println("\t * The singleton instance of " + strategy.getJavaIdentifier(pkg));
-        outPkg.println("\t */");
-        outPkg.print("\tpublic static ");
-        outPkg.print(strategy.getFullJavaClassName(pkg));
-        outPkg.print(" ");
-        outPkg.print(strategy.getJavaIdentifier(pkg));
-        outPkg.print(" = new ");
-        outPkg.print(strategy.getFullJavaClassName(pkg));
-        outPkg.println("();");
+        printSingletonInstance(pkg,outPkg);
         for (        RoutineDefinition routine : pkg.getRoutines()) {
           try {
             if (!routine.isSQLUsable()) {

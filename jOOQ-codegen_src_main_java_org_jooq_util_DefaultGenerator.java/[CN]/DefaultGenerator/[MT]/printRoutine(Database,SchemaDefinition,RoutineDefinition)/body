@@ -69,7 +69,7 @@
   for (  ParameterDefinition parameter : routine.getInParameters()) {
     out.println();
     out.println("\t/**");
-    out.println("\t * Set the <code>" + parameter.getName() + "</code> parameter to the routine");
+    out.println("\t * Set the <code>" + parameter.getOutputName() + "</code> parameter to the routine");
     out.println("\t */");
     out.print("\tpublic void ");
     out.print(strategy.getJavaSetterName(parameter,Mode.DEFAULT));
@@ -90,7 +90,7 @@
     if (routine.isSQLUsable()) {
       out.println();
       out.println("\t/**");
-      out.println("\t * Set the <code>" + parameter.getName() + "</code> parameter to the function");
+      out.println("\t * Set the <code>" + parameter.getOutputName() + "</code> parameter to the function");
       out.println("\t * <p>");
       out.print("\t * Use this method only, if the function is called as a {@link ");
       out.print(Field.class);

@@ -5,7 +5,7 @@
   }
   out.println();
   out.println("\t/**");
-  out.println("\t * Invoke " + strategy.getJavaIdentifier(function));
+  out.println("\t * Call " + function.getQualifiedOutputName());
   out.println("\t *");
   for (  ParameterDefinition parameter : function.getInParameters()) {
     out.println("\t * @param " + strategy.getJavaMemberName(parameter));
