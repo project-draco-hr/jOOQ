@@ -10,6 +10,7 @@
       }
     }
     @Override public void bind(    BindContext context){
+      context.setData("Foo-Field","Baz");
       try {
         context.statement().setInt(context.nextIndex(),2);
       }
@@ -32,6 +33,7 @@
       }
     }
     @Override public void bind(    BindContext context){
+      context.setData("Foo-Condition","Baz");
       try {
         context.bind(IDx2);
         context.statement().setInt(context.nextIndex(),3);
@@ -42,7 +44,10 @@
     }
   }
 ;
-  Result<Record> result=create().select(TBook_ID(),IDx2).from(TBook()).where(c).orderBy(IDx2).fetch();
+  Factory create=create();
+  create.setData("Foo-Field","Bar");
+  create.setData("Foo-Condition","Bar");
+  Result<Record> result=create.select(TBook_ID(),IDx2).from(TBook()).where(c).orderBy(IDx2).fetch();
   assertEquals(3,result.size());
   assertEquals(Integer.valueOf(2),result.getValue(0,TBook_ID()));
   assertEquals(Integer.valueOf(3),result.getValue(1,TBook_ID()));
@@ -50,4 +55,6 @@
   assertEquals(Integer.valueOf(4),result.getValue(0,IDx2));
   assertEquals(Integer.valueOf(6),result.getValue(1,IDx2));
   assertEquals(Integer.valueOf(8),result.getValue(2,IDx2));
+  assertEquals("Baz",create.getData("Foo-Field"));
+  assertEquals("Baz",create.getData("Foo-Condition"));
 }

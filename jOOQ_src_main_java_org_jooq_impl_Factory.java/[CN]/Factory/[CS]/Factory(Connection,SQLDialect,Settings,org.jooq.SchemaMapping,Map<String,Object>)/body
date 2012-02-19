@@ -3,4 +3,5 @@
   this.dialect=dialect;
   this.settings=settings != null ? settings : new Settings();
   this.mapping=mapping != null ? mapping : org.jooq.SchemaMapping.fromSettings(settings);
+  this.data=data != null ? data : new HashMap<String,Object>();
 }
