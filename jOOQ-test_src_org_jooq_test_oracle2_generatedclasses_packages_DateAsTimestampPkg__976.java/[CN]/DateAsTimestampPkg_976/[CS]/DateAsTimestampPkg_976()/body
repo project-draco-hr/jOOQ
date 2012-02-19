@@ -1,0 +1,3 @@
+{
+  super("PKG_976",org.jooq.test.oracle2.generatedclasses.DateAsTimestampTest.DATE_AS_TIMESTAMP_TEST);
+}

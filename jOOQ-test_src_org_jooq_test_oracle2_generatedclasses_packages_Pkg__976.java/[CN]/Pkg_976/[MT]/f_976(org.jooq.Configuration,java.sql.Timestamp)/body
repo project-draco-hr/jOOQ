@@ -1,6 +1,0 @@
-{
-  org.jooq.test.oracle2.generatedclasses.packages.pkg_976.F_976 f=new org.jooq.test.oracle2.generatedclasses.packages.pkg_976.F_976();
-  f.setI(i);
-  f.execute(configuration);
-  return f.getReturnValue();
-}

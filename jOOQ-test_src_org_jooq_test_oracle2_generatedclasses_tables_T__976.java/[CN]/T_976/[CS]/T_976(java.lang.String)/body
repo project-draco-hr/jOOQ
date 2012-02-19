@@ -1,3 +1,0 @@
-{
-  super(alias,org.jooq.test.oracle2.generatedclasses.Test.TEST,org.jooq.test.oracle2.generatedclasses.tables.T_976.T_976);
-}

@@ -1,0 +1,3 @@
+{
+  return "DATE_AS_TIMESTAMP_" + super.getJavaIdentifier(definition);
+}

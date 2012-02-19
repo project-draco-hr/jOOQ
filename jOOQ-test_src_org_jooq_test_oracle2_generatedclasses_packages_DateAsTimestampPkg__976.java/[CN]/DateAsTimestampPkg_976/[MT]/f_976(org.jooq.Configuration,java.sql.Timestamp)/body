@@ -1,0 +1,6 @@
+{
+  org.jooq.test.oracle2.generatedclasses.packages.date_as_timestamp_pkg_976.DateAsTimestampF_976 f=new org.jooq.test.oracle2.generatedclasses.packages.date_as_timestamp_pkg_976.DateAsTimestampF_976();
+  f.setI(dateAsTimestampi);
+  f.execute(configuration);
+  return f.getReturnValue();
+}

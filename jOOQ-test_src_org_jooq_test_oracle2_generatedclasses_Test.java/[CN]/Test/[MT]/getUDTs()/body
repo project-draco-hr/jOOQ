@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.UDT<?>>asList(org.jooq.test.oracle2.generatedclasses.udt.T_976ObjectType.T_976_OBJECT_TYPE);
-}

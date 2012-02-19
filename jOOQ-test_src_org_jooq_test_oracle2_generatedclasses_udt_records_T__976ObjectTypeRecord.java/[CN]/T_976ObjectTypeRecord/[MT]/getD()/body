@@ -1,3 +1,0 @@
-{
-  return getValue(org.jooq.test.oracle2.generatedclasses.udt.T_976ObjectType.D);
-}

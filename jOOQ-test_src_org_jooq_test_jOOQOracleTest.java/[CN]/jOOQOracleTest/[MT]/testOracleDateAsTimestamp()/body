@@ -1,6 +1,6 @@
 {
   Timestamp now=new Timestamp(System.currentTimeMillis() / 1000 * 1000);
-  T_976Record record=ora().newRecord(T_976);
+  DateAsTimestampT_976Record record=ora().newRecord(DATE_AS_TIMESTAMP_T_976);
   record.setId(1);
   assertEquals(1,record.store());
   assertNull(record.getD());
@@ -10,21 +10,21 @@
   assertNull(record.getD());
   assertNull(record.getT());
   assertNull(record.getO());
-  assertEquals(record,ora().fetchOne(T_976,T_976.ID.equal(1)));
-  T_976ObjectTypeRecord o=ora().newRecord(T_976_OBJECT_TYPE);
+  assertEquals(record,ora().fetchOne(DATE_AS_TIMESTAMP_T_976,DATE_AS_TIMESTAMP_T_976.DATE_AS_TIMESTAMP_ID.equal(1)));
+  DateAsTimestampT_976ObjectTypeRecord o=ora().newRecord(DATE_AS_TIMESTAMP_T_976_OBJECT_TYPE);
   o.setD(now);
-  T_976VarrayTypeRecord t=new T_976VarrayTypeRecord(ora());
-  record=ora().newRecord(T_976);
+  DateAsTimestampT_976VarrayTypeRecord t=new DateAsTimestampT_976VarrayTypeRecord(ora());
+  record=ora().newRecord(DATE_AS_TIMESTAMP_T_976);
   record.setId(2);
   record.setD(now);
   record.setO(o);
   record.setT(t);
   record.store();
-  assertEquals(record,ora().fetchOne(T_976,T_976.ID.equal(2)));
+  assertEquals(record,ora().fetchOne(DATE_AS_TIMESTAMP_T_976,DATE_AS_TIMESTAMP_T_976.DATE_AS_TIMESTAMP_ID.equal(2)));
   assertEquals(now,org.jooq.test.oracle2.generatedclasses.Routines.p_976(ora(),now));
   assertEquals(now,org.jooq.test.oracle2.generatedclasses.Routines.f_976(ora(),now));
   assertEquals(now,ora().select(org.jooq.test.oracle2.generatedclasses.Routines.f_976(now)).fetchOne(0));
-  assertEquals(now,org.jooq.test.oracle2.generatedclasses.packages.Pkg_976.p_976(ora(),now));
-  assertEquals(now,org.jooq.test.oracle2.generatedclasses.packages.Pkg_976.f_976(ora(),now));
-  assertEquals(now,ora().select(org.jooq.test.oracle2.generatedclasses.packages.Pkg_976.f_976(now)).fetchOne(0));
+  assertEquals(now,org.jooq.test.oracle2.generatedclasses.packages.DateAsTimestampPkg_976.p_976(ora(),now));
+  assertEquals(now,org.jooq.test.oracle2.generatedclasses.packages.DateAsTimestampPkg_976.f_976(ora(),now));
+  assertEquals(now,ora().select(org.jooq.test.oracle2.generatedclasses.packages.DateAsTimestampPkg_976.f_976(now)).fetchOne(0));
 }

@@ -1,0 +1,5 @@
+{
+  super(org.jooq.SQLDialect.ORACLE,"P_976",org.jooq.test.oracle2.generatedclasses.DateAsTimestampTest.DATE_AS_TIMESTAMP_TEST);
+  addInParameter(DATE_AS_TIMESTAMP_I);
+  addOutParameter(DATE_AS_TIMESTAMP_O);
+}

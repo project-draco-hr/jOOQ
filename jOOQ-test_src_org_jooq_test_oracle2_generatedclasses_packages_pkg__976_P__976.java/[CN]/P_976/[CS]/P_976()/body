@@ -1,5 +1,0 @@
-{
-  super(org.jooq.SQLDialect.ORACLE,"P_976",org.jooq.test.oracle2.generatedclasses.Test.TEST,org.jooq.test.oracle2.generatedclasses.packages.Pkg_976.PKG_976);
-  addInParameter(I);
-  addOutParameter(O);
-}
