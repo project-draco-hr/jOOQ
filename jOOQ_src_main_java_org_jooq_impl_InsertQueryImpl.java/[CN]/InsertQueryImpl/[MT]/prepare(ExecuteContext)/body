@@ -1,0 +1,37 @@
+{
+  Connection connection=ctx.getConnection();
+  if (ctx.getDialect() == SQLDialect.ASE) {
+    ctx.statement(connection.prepareStatement(ctx.sql(),Statement.RETURN_GENERATED_KEYS));
+    return;
+  }
+ else   if (returning.isEmpty()) {
+    super.prepare(ctx);
+    return;
+  }
+ else {
+switch (ctx.getDialect()) {
+case POSTGRES:
+case SQLITE:
+case SYBASE:
+      super.prepare(ctx);
+    return;
+case ASE:
+case DERBY:
+case H2:
+case INGRES:
+case MYSQL:
+case SQLSERVER:
+  ctx.statement(connection.prepareStatement(ctx.sql(),Statement.RETURN_GENERATED_KEYS));
+return;
+default :
+{
+List<String> names=new ArrayList<String>();
+for (Field<?> field : returning) {
+  names.add(field.getName());
+}
+ctx.statement(connection.prepareStatement(ctx.sql(),names.toArray(new String[names.size()])));
+return;
+}
+}
+}
+}

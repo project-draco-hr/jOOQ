@@ -1,5 +1,5 @@
 {
   settings=(settings != null) ? settings : new Settings();
-  settings.withExecution(new Execution().withStatementType(StatementType.STATIC_STATEMENT));
+  settings.withStatementType(StatementType.STATIC_STATEMENT);
   return new TestFactory(getConnection(),settings);
 }

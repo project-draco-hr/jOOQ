@@ -1,3 +1,3 @@
 {
-  delegate.updateLong(columnIndex,x);
+  ctx.resultSet().updateLong(columnIndex,x);
 }

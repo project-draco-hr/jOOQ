@@ -1,3 +1,3 @@
 {
-  return delegate.getURL(columnLabel);
+  return ctx.resultSet().getURL(columnLabel);
 }

@@ -3,7 +3,7 @@
   if (log.isDebugEnabled()) {
     log.debug("Deserialising",this);
   }
-  Configuration registered=ConfigurationRegistry.provideFor(this);
+  Configuration registered=org.jooq.ConfigurationRegistry.provideFor(this);
   if (registered != null) {
     connection=registered.getConnection();
   }

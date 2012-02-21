@@ -1,0 +1,7 @@
+{
+  super.prepare(ctx);
+  if (size > 0) {
+    if (log.isDebugEnabled())     log.debug("Setting fetch size",size);
+    ctx.statement().setFetchSize(size);
+  }
+}

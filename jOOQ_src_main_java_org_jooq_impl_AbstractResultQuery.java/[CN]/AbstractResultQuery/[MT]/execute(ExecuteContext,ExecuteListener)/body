@@ -1,0 +1,49 @@
+{
+  Connection connection=ctx.getConnection();
+  boolean autoCommit=false;
+  if (ctx.getDialect() == SQLDialect.POSTGRES && isSelectingRefCursor()) {
+    autoCommit=connection.getAutoCommit();
+    if (autoCommit) {
+      if (log.isDebugEnabled())       log.debug("Unsetting auto-commit",false);
+      connection.setAutoCommit(false);
+    }
+  }
+  try {
+    listener.executeStart(ctx);
+    ctx.resultSet(ctx.statement().executeQuery());
+    listener.executeEnd(ctx);
+    if (!many) {
+      listener.fetchStart(ctx);
+      FieldList fields=new FieldList(getFields(ctx.resultSet().getMetaData()));
+      cursor=new CursorImpl<R>(ctx,listener,fields,getRecordType());
+      if (!lazy) {
+        result=cursor.fetch();
+        cursor=null;
+      }
+    }
+ else {
+      results=new ArrayList<Result<Record>>();
+      for (; ; ) {
+        listener.fetchStart(ctx);
+        FieldProvider fields=new MetaDataFieldProvider(ctx,ctx.resultSet().getMetaData());
+        Cursor<Record> c=new CursorImpl<Record>(ctx,listener,fields);
+        results.add(c.fetch());
+        if (ctx.statement().getMoreResults()) {
+          ctx.resultSet(ctx.statement().getResultSet());
+        }
+ else {
+          break;
+        }
+      }
+      ctx.statement().getMoreResults(Statement.CLOSE_ALL_RESULTS);
+      ctx.statement().close();
+    }
+  }
+  finally {
+    if (autoCommit) {
+      if (log.isDebugEnabled())       log.debug("Resetting auto-commit",autoCommit);
+      connection.setAutoCommit(autoCommit);
+    }
+  }
+  return result != null ? result.size() : 0;
+}

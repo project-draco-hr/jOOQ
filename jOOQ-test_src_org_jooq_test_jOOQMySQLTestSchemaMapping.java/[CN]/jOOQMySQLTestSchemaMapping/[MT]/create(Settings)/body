@@ -1,5 +1,5 @@
 {
   settings=(settings != null) ? settings : new Settings();
-  settings.withRendering(new Rendering().withRenderMapping(new RenderMapping().withSchemata(new MappedSchema().withInput(TAuthor().getSchema().getName()).withOutput(TAuthor().getSchema().getName() + getSchemaSuffix()))));
+  settings.withRenderMapping(new RenderMapping().withSchemata(new MappedSchema().withInput(TAuthor().getSchema().getName()).withOutput(TAuthor().getSchema().getName() + getSchemaSuffix())));
   return new TestFactory(getConnection(),settings);
 }

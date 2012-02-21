@@ -1,3 +1,3 @@
 {
-  delegate.updateRowId(columnIndex,x);
+  ctx.resultSet().updateRowId(columnIndex,x);
 }

@@ -1,0 +1,9 @@
+{
+  if (log.isDebugEnabled() && ctx.result() != null) {
+    String comment="Fetched result";
+    for (    String line : ctx.result().format(5).split("\n")) {
+      log.debug(comment,line);
+      comment="";
+    }
+  }
+}

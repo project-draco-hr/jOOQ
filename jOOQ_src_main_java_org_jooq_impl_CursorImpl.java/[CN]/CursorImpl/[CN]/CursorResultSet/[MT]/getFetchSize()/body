@@ -1,3 +1,3 @@
 {
-  return delegate.getFetchSize();
+  return ctx.resultSet().getFetchSize();
 }

@@ -1,4 +1,5 @@
 {
+  log.warn("Deprecation","org.jooq.ConfigurationRegistry is deprecated. Use org.jooq.ExecuteListener instead");
   if (provider != null) {
     log.info("Registering provider",provider);
   }

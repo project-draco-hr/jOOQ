@@ -1,4 +1,0 @@
-AbstractRecord record
-Field<T> field
-int index
-ResultSet rs

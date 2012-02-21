@@ -1,9 +1,13 @@
 {
+  ExecuteListener listener=new ExecuteListeners(this);
+  ExecuteContext ctx=new DefaultExecuteContext(this,null);
   try {
     FieldProvider fields=new MetaDataFieldProvider(this,rs.getMetaData());
-    return new CursorImpl<Record>(this,fields,rs).fetch();
+    ctx.resultSet(rs);
+    listener.fetchStart(ctx);
+    return new CursorImpl<Record>(ctx,listener,fields).fetch();
   }
  catch (  SQLException e) {
-    throw Util.translate("Factory.fetch",null,e);
+    throw Util.translate("Factory.fetch",ctx.sql(),e);
   }
 }

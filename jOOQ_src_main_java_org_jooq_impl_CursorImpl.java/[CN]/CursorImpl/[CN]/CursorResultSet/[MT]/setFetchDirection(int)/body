@@ -1,3 +1,3 @@
 {
-  delegate.setFetchDirection(direction);
+  ctx.resultSet().setFetchDirection(direction);
 }

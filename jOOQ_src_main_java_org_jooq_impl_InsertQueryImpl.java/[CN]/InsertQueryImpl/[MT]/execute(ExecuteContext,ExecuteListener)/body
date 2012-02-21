@@ -1,0 +1,65 @@
+{
+  if (returning.isEmpty()) {
+    return super.execute(ctx,listener);
+  }
+ else {
+    int result=1;
+    ResultSet rs;
+switch (ctx.getDialect()) {
+case SQLITE:
+{
+        result=ctx.statement().executeUpdate();
+        SQLiteFactory create=new SQLiteFactory(ctx.getConnection());
+        returned=create.select(returning).from(getInto()).where(rowid().equal(rowid().getDataType().convert(create.lastID()))).fetchInto(getInto());
+        return result;
+      }
+case SYBASE:
+{
+      result=ctx.statement().executeUpdate();
+      selectReturning(ctx.configuration(),create(ctx).lastID());
+      return result;
+    }
+case ASE:
+case DERBY:
+case H2:
+case INGRES:
+case MYSQL:
+case SQLSERVER:
+{
+    result=ctx.statement().executeUpdate();
+    rs=ctx.statement().getGeneratedKeys();
+    try {
+      List<Object> list=new ArrayList<Object>();
+      while (rs.next()) {
+        list.add(rs.getObject(1));
+      }
+      selectReturning(ctx,list.toArray());
+      return result;
+    }
+  finally {
+      rs.close();
+    }
+  }
+case POSTGRES:
+{
+  rs=ctx.statement().executeQuery();
+  break;
+}
+case DB2:
+case HSQLDB:
+case ORACLE:
+default :
+{
+result=ctx.statement().executeUpdate();
+rs=ctx.statement().getGeneratedKeys();
+break;
+}
+}
+ExecuteListener listener2=new ExecuteListeners(ctx.configuration());
+ExecuteContext ctx2=new DefaultExecuteContext(ctx.configuration(),null);
+ctx2.resultSet(rs);
+listener2.fetchStart(ctx2);
+returned=new CursorImpl<R>(ctx2,listener2,returning,getInto().getRecordType()).fetch();
+return result;
+}
+}

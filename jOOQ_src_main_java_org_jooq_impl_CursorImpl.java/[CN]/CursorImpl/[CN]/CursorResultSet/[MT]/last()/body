@@ -1,3 +1,3 @@
 {
-  return delegate.last();
+  return ctx.resultSet().last();
 }

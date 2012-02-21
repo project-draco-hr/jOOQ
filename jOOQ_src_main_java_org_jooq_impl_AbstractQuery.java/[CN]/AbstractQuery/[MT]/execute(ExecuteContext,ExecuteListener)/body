@@ -1,0 +1,7 @@
+{
+  int result=0;
+  listener.executeStart(ctx);
+  result=ctx.statement().executeUpdate();
+  listener.executeEnd(ctx);
+  return result;
+}

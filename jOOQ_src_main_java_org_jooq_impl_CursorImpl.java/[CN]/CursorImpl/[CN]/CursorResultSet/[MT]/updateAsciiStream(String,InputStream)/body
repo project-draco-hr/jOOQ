@@ -1,3 +1,3 @@
 {
-  delegate.updateAsciiStream(columnLabel,x);
+  ctx.resultSet().updateAsciiStream(columnLabel,x);
 }

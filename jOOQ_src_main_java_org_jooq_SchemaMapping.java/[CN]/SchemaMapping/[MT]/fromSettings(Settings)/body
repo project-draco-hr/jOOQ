@@ -1,18 +1,15 @@
 {
   SchemaMapping result=new SchemaMapping(false);
   if (settings != null) {
-    Rendering rendering=settings.getRendering();
-    if (rendering != null) {
-      RenderMapping r=rendering.getRenderMapping();
-      if (r != null) {
-        if (!StringUtils.isEmpty(r.getDefaultSchema())) {
-          result.use(r.getDefaultSchema());
-        }
-        for (        MappedSchema schema : r.getSchemata()) {
-          result.add(schema.getInput(),schema.getOutput());
-          for (          MappedTable table : schema.getTables()) {
-            log.warn("TODO","Re-implement table mapping for table " + table);
-          }
+    RenderMapping r=settings.getRenderMapping();
+    if (r != null) {
+      if (!StringUtils.isEmpty(r.getDefaultSchema())) {
+        result.use(r.getDefaultSchema());
+      }
+      for (      MappedSchema schema : r.getSchemata()) {
+        result.add(schema.getInput(),schema.getOutput());
+        for (        MappedTable table : schema.getTables()) {
+          log.warn("TODO","Re-implement table mapping for table " + table);
         }
       }
     }

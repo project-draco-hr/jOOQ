@@ -1,3 +1,3 @@
 {
-  delegate.insertRow();
+  ctx.resultSet().insertRow();
 }

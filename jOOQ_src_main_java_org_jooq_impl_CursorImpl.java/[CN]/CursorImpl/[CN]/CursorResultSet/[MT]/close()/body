@@ -1,4 +1,5 @@
 {
-  delegate.close();
-  stmt.close();
+  listener.fetchEnd(ctx);
+  ctx.resultSet().close();
+  ctx.statement().close();
 }

@@ -31,7 +31,7 @@
   Boolean bool1=true;
   Boolean bool2=false;
   Boolean bool3=(derby ? bool1 : null);
-  Factory create=create(new Settings().withExecution(new Execution().withStatementType(StatementType.STATIC_STATEMENT)));
+  Factory create=create(new Settings().withStatementType(StatementType.STATIC_STATEMENT));
   Object[] array1=create.select(vals(s1,s2,s3,s4)).fetchOneArray();
   Object[] array2=create.select(vals(b1,b2,sh1,sh2,i1,i2,l1,l2,bi1,bi2,bd1,bd2,db1,db2,f1,f2)).fetchOneArray();
   Object[] array3=create.select(vals(d1,d2,t1,t2,ts1,ts2)).fetchOneArray();

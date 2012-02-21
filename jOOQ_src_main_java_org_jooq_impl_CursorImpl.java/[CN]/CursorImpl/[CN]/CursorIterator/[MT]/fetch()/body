@@ -2,19 +2,20 @@
   R record=null;
   try {
     if (!isClosed && rs.next()) {
-      record=Util.newRecord(type,fields,configuration);
+      ctx.record(null);
+      listener.recordStart(ctx);
+      record=Util.newRecord(type,fields,ctx.configuration());
       final List<Field<?>> fieldList=fields.getFields();
       final int size=fieldList.size();
       for (int i=0; i < size; i++) {
-        setValue((AbstractRecord)record,fieldList.get(i),i,rs);
+        setValue((AbstractRecord)record,fieldList.get(i),i);
       }
-      if (log.isTraceEnabled()) {
-        log.trace("Fetching record",record);
-      }
+      ctx.record(record);
+      listener.recordEnd(ctx);
     }
   }
  catch (  SQLException e) {
-    throw Util.translate("Cursor.fetch",null,e);
+    throw Util.translate("Cursor.fetch",ctx.sql(),e);
   }
   if (record == null) {
     CursorImpl.this.close();

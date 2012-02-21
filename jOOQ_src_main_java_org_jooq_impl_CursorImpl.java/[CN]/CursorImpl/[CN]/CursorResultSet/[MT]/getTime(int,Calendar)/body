@@ -1,3 +1,3 @@
 {
-  return delegate.getTime(columnIndex,cal);
+  return ctx.resultSet().getTime(columnIndex,cal);
 }

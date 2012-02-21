@@ -1,3 +1,3 @@
 {
-  delegate.updateByte(columnLabel,x);
+  ctx.resultSet().updateByte(columnLabel,x);
 }

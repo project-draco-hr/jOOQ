@@ -1,0 +1,10 @@
+{
+  if (log.isDebugEnabled()) {
+    if (ctx.query() != null) {
+      log.debug("Executing query",ctx.query().getSQL(true));
+    }
+ else     if (!StringUtils.isBlank(ctx.sql())) {
+      log.debug("Executing query",ctx.sql());
+    }
+  }
+}

@@ -1,3 +1,3 @@
 {
-  delegate.updateTimestamp(columnLabel,x);
+  ctx.resultSet().updateTimestamp(columnLabel,x);
 }

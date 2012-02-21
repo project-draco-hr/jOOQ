@@ -1,0 +1,4 @@
+{
+  safeClose(ctx.resultSet());
+  safeClose(ctx.statement());
+}

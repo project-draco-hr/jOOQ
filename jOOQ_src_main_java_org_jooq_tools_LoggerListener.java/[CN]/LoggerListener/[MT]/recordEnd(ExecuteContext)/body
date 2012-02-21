@@ -1,0 +1,3 @@
+{
+  if (log.isTraceEnabled() && ctx.record() != null)   log.trace("Record fetched",ctx.record());
+}

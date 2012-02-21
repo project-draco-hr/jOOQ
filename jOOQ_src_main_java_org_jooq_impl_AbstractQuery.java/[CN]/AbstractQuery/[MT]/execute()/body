@@ -1,7 +1,6 @@
 {
   if (isExecutable()) {
-    StopWatch watch=new StopWatch();
-    Configuration configuration=ConfigurationRegistry.provideFor(getConfiguration());
+    Configuration configuration=org.jooq.ConfigurationRegistry.provideFor(getConfiguration());
     if (configuration == null) {
       configuration=getConfiguration();
     }
@@ -9,35 +8,32 @@
     if (connection == null) {
       throw new DetachedException("Cannot execute query. No Connection configured");
     }
+    ExecuteListener listener=new ExecuteListeners(configuration);
+    ExecuteContext ctx=new DefaultExecuteContext(configuration,this);
     attach(configuration);
-    watch.splitTrace("Parts attached");
-    PreparedStatement statement=null;
-    String sql=null;
     int result=0;
     try {
-      sql=getSQL();
-      watch.splitTrace("SQL rendered");
-      boolean usePreparedStatement=executePreparedStatements(getConfiguration().getSettings());
-      if (log.isDebugEnabled())       log.debug("Executing query",getSQL(true));
-      if (log.isTraceEnabled() && usePreparedStatement)       log.trace("Preparing statement",sql);
-      statement=prepare(configuration,sql);
-      if (usePreparedStatement) {
-        watch.splitTrace("Statement prepared");
-        create(configuration).bind(this,statement);
-        watch.splitTrace("Variables bound");
+      listener.renderStart(ctx);
+      ctx.sql(getSQL());
+      listener.renderEnd(ctx);
+      listener.prepareStart(ctx);
+      prepare(ctx);
+      listener.prepareEnd(ctx);
+      if (executePreparedStatements(getConfiguration().getSettings())) {
+        listener.bindStart(ctx);
+        create(configuration).bind(this,ctx.statement());
+        listener.bindEnd(ctx);
       }
-      result=execute(configuration,statement);
-      watch.splitTrace("Statement executed");
+      result=execute(ctx,listener);
       return result;
     }
  catch (    SQLException e) {
-      throw Util.translate("AbstractQuery.execute",sql,e);
+      throw Util.translate("AbstractQuery.execute",ctx.sql(),e);
     }
  finally {
       if (!keepStatementOpen()) {
-        Util.safeClose(statement);
+        Util.safeClose(ctx);
       }
-      watch.splitDebug("Statement executed");
     }
   }
  else {

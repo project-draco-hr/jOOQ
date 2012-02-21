@@ -1,38 +1,36 @@
 {
-  StopWatch watch=new StopWatch();
   Configuration configuration=attachable.getConfiguration();
-  CallableStatement statement=null;
-  String sql=null;
+  ExecuteListener listener=new ExecuteListeners(configuration);
+  ExecuteContext ctx=new DefaultExecuteContext(configuration,null);
   try {
     Connection connection=configuration.getConnection();
-    sql=create(configuration).render(this);
-    watch.splitTrace("SQL rendered");
-    if (log.isDebugEnabled())     log.debug("Executing routine",create(configuration).renderInlined(this));
-    if (log.isTraceEnabled())     log.trace("Preparing statement",sql);
-    statement=connection.prepareCall(sql);
-    watch.splitTrace("Statement prepared");
-    create(configuration).bind(this,statement);
-    watch.splitTrace("Variables bound");
-    registerOutParameters(configuration,statement);
-    watch.splitTrace("OUT params registered");
+    listener.renderStart(ctx);
+    ctx.sql(create(configuration).render(this));
+    listener.renderEnd(ctx);
+    listener.prepareStart(ctx);
+    ctx.statement(connection.prepareCall(ctx.sql()));
+    listener.prepareEnd(ctx);
+    listener.bindStart(ctx);
+    create(configuration).bind(this,ctx.statement());
+    registerOutParameters(configuration,(CallableStatement)ctx.statement());
+    listener.bindEnd(ctx);
     boolean autoCommit=connection.getAutoCommit();
     if (autoCommit && configuration.getDialect() == SQLDialect.POSTGRES) {
       connection.setAutoCommit(false);
     }
-    statement.execute();
+    listener.executeStart(ctx);
+    ctx.statement().execute();
+    listener.executeEnd(ctx);
     if (autoCommit && configuration.getDialect() == SQLDialect.POSTGRES) {
       connection.setAutoCommit(autoCommit);
     }
-    watch.splitTrace("Routine called");
-    fetchOutParameters(configuration,statement);
-    watch.splitTrace("OUT params fetched");
+    fetchOutParameters(ctx);
     return 0;
   }
- catch (  SQLException exc) {
-    throw translate("AbstractRoutine.executeCallableStatement",sql,exc);
+ catch (  SQLException e) {
+    throw translate("AbstractRoutine.executeCallableStatement",ctx.sql(),e);
   }
  finally {
-    Util.safeClose(statement);
-    watch.splitDebug("Routine executed");
+    Util.safeClose(ctx);
   }
 }

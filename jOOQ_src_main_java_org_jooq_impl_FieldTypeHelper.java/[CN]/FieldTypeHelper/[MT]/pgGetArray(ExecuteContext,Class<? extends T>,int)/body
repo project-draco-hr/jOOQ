@@ -1,0 +1,28 @@
+{
+  ResultSet rs=ctx.resultSet();
+  Array array=rs.getArray(index);
+  if (array == null) {
+    return null;
+  }
+  try {
+    return (T)convertArray(rs.getArray(index),(Class<? extends Object[]>)type);
+  }
+ catch (  Exception e) {
+    List<Object> result=new ArrayList<Object>();
+    try {
+      ctx.resultSet(array.getResultSet());
+      while (ctx.resultSet().next()) {
+        result.add(getFromResultSet(ctx,type.getComponentType(),2));
+      }
+    }
+ catch (    Exception fatal) {
+      log.error("Cannot parse Postgres array: " + rs.getString(index));
+      log.error(fatal);
+      return null;
+    }
+ finally {
+      ctx.resultSet(rs);
+    }
+    return (T)convertArray(result.toArray(),(Class<? extends Object[]>)type);
+  }
+}

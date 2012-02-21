@@ -1,3 +1,3 @@
 {
-  return delegate.getAsciiStream(columnIndex);
+  return ctx.resultSet().getAsciiStream(columnIndex);
 }

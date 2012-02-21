@@ -1,3 +1,3 @@
 {
-  delegate.updateBigDecimal(columnLabel,x);
+  ctx.resultSet().updateBigDecimal(columnLabel,x);
 }

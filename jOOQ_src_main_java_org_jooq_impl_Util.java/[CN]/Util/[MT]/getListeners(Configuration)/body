@@ -1,0 +1,16 @@
+{
+  List<ExecuteListener> result=new ArrayList<ExecuteListener>();
+  if (!FALSE.equals(configuration.getSettings().isExecuteLogging())) {
+    result.add(new StopWatchListener());
+    result.add(new LoggerListener());
+  }
+  for (  String listener : configuration.getSettings().getExecuteListeners()) {
+    try {
+      result.add((ExecuteListener)Class.forName(listener).newInstance());
+    }
+ catch (    Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+  return result;
+}

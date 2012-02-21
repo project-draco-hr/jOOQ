@@ -4,7 +4,7 @@ case SQLITE:
     log.info("SKIPPING","SchemaMapping tests");
   return;
 }
-Settings settings=new Settings().withRendering(new Rendering().withRenderMapping(new RenderMapping().withSchemata(new MappedSchema().withInput(TAuthor().getSchema().getName()).withOutput(TAuthor().getSchema().getName()).withTables(new MappedTable().withInput(TAuthor().getName()).withOutput(TAuthor().getName()),new MappedTable().withInput(TBook().getName()).withOutput(TBook().getName())))));
+Settings settings=new Settings().withRenderMapping(new RenderMapping().withSchemata(new MappedSchema().withInput(TAuthor().getSchema().getName()).withOutput(TAuthor().getSchema().getName()).withTables(new MappedTable().withInput(TAuthor().getName()).withOutput(TAuthor().getName()),new MappedTable().withInput(TBook().getName()).withOutput(TBook().getName()))));
 Select<Record> query=create(settings).select(TBook_TITLE()).from(TAuthor()).join(TBook()).on(TAuthor_ID().equal(TBook_AUTHOR_ID())).orderBy(TBook_ID().asc());
 Result<Record> result=query.fetch();
 assertEquals("1984",result.getValue(0,TBook_TITLE()));
@@ -34,7 +34,7 @@ log.info("SKIPPING","Schema mapping test");
 return;
 }
 }
-settings=new Settings().withRendering(new Rendering().withRenderMapping(new RenderMapping().withSchemata(new MappedSchema().withInput(TAuthor().getSchema().getName()).withOutput(TAuthor().getSchema().getName() + "2"))));
+settings=new Settings().withRenderMapping(new RenderMapping().withSchemata(new MappedSchema().withInput(TAuthor().getSchema().getName()).withOutput(TAuthor().getSchema().getName() + "2")));
 Select<Record> q=create(settings).select(TBook_TITLE()).from(TAuthor()).join(TBook()).on(TAuthor_ID().equal(TBook_AUTHOR_ID())).orderBy(TBook_ID().asc());
 assertTrue(create(settings).render(q).contains(TAuthor().getSchema().getName() + "2"));
 assertTrue(q.getSQL().contains(TAuthor().getSchema().getName() + "2"));
@@ -53,7 +53,7 @@ assertEquals(create(settings).render(q),q.getSQL());
 Record record=q.fetchOne();
 assertEquals(1,(int)record.getValue(f1));
 assertEquals(42,(int)record.getValue(f2));
-settings=new Settings().withRendering(new Rendering().withRenderMapping(new RenderMapping().withSchemata(new MappedSchema().withInput(TAuthor().getSchema().getName()).withOutput(TAuthor().getSchema().getName() + "2").withTables(new MappedTable().withInput(TAuthor().getName()).withOutput(VAuthor().getName()),new MappedTable().withInput(TBook().getName()).withOutput(VBook().getName())))));
+settings=new Settings().withRenderMapping(new RenderMapping().withSchemata(new MappedSchema().withInput(TAuthor().getSchema().getName()).withOutput(TAuthor().getSchema().getName() + "2").withTables(new MappedTable().withInput(TAuthor().getName()).withOutput(VAuthor().getName()),new MappedTable().withInput(TBook().getName()).withOutput(VBook().getName()))));
 q=create(settings).select(TBook_TITLE()).from(TAuthor()).join(TBook()).on(TAuthor_ID().equal(TBook_AUTHOR_ID())).orderBy(TBook_ID().asc());
 assertTrue(create(settings).render(q).contains(VAuthor().getName()));
 assertTrue(create(settings).render(q).contains(VBook().getName()));

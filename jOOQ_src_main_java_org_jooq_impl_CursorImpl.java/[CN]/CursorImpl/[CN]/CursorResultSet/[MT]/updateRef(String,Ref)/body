@@ -1,3 +1,3 @@
 {
-  delegate.updateRef(columnLabel,x);
+  ctx.resultSet().updateRef(columnLabel,x);
 }

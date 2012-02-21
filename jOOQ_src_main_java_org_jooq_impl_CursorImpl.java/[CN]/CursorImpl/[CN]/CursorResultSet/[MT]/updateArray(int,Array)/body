@@ -1,3 +1,3 @@
 {
-  delegate.updateArray(columnIndex,x);
+  ctx.resultSet().updateArray(columnIndex,x);
 }

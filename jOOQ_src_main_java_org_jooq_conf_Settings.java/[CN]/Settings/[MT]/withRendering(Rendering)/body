@@ -1,4 +1,0 @@
-{
-  setRendering(value);
-  return this;
-}

@@ -1,3 +1,3 @@
 {
-  delegate.updateClob(columnLabel,reader,length);
+  ctx.resultSet().updateClob(columnLabel,reader,length);
 }

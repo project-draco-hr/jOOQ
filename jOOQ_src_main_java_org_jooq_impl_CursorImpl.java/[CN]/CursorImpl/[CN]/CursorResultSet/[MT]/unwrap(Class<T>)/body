@@ -1,3 +1,3 @@
 {
-  return delegate.unwrap(iface);
+  return ctx.resultSet().unwrap(iface);
 }

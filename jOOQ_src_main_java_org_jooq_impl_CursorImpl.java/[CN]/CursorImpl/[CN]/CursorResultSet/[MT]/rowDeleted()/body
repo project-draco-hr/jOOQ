@@ -1,3 +1,3 @@
 {
-  return delegate.rowDeleted();
+  return ctx.resultSet().rowDeleted();
 }

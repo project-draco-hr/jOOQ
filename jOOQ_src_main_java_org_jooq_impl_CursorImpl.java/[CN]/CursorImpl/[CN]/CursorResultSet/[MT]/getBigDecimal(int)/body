@@ -1,3 +1,3 @@
 {
-  return delegate.getBigDecimal(columnIndex);
+  return ctx.resultSet().getBigDecimal(columnIndex);
 }

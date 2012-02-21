@@ -1,3 +1,3 @@
 {
-  return delegate.getByte(columnIndex);
+  return ctx.resultSet().getByte(columnIndex);
 }

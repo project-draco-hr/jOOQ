@@ -1,0 +1,3 @@
+{
+  this(ctx,listener,fields,(Class<? extends R>)RecordImpl.class);
+}
