@@ -1,0 +1,17 @@
+{
+  if (routine != null) {
+    return ExecuteType.ROUTINE;
+  }
+ else   if (query != null) {
+    if (query instanceof ResultQuery) {
+      return ExecuteType.READ;
+    }
+ else     if (query instanceof Insert || query instanceof Update || query instanceof Delete|| query instanceof Merge) {
+      return ExecuteType.WRITE;
+    }
+ else     if (query instanceof Truncate) {
+      return ExecuteType.DDL;
+    }
+  }
+  return ExecuteType.OTHER;
+}
