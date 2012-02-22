@@ -1,6 +1,7 @@
 {
   if (iterator == null) {
     iterator=new CursorIterator();
+    listener.fetchStart(ctx);
   }
   return iterator;
 }

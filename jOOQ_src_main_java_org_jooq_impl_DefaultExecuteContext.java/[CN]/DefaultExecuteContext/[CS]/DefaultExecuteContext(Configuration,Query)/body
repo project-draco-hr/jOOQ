@@ -1,4 +1,3 @@
 {
-  super(configuration);
-  this.query=query;
+  this(configuration,query,null);
 }
