@@ -1,5 +1,5 @@
 {
-  final int maxDisplayedRowCount=displayedRowCountField.getNumber();
+  final int maxDisplayedRowCount=((Number)displayedRowCountField.getValue()).intValue();
   evaluationThread=new Thread("SQLConsole - Evaluation"){
     @Override public void run(){
       evaluate_unrestricted_nothread(sql,maxDisplayedRowCount);

@@ -26,7 +26,11 @@
 );
   northPanel.add(stopButton);
   northPanel.add(new JLabel("No display when rows >"));
-  displayedRowCountField=new JNumberEntryField<Integer>(100000,7,1,Integer.MAX_VALUE);
+  NumberFormat numberFormat=NumberFormat.getIntegerInstance();
+  displayedRowCountField=new JFormattedTextField(numberFormat);
+  displayedRowCountField.setHorizontalAlignment(JFormattedTextField.RIGHT);
+  displayedRowCountField.setValue(100000);
+  displayedRowCountField.setColumns(7);
   northPanel.add(displayedRowCountField);
   add(northPanel,BorderLayout.NORTH);
   editorTextArea=new SqlTextArea();
