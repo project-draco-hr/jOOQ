@@ -2,7 +2,8 @@
   closeConnection();
   SwingUtilities.invokeLater(new Runnable(){
     @Override public void run(){
-      stopButton.setEnabled(true);
+      startButton.setVisible(false);
+      stopButton.setVisible(true);
       stopButton.setToolTipText("Query started on " + Utils.formatDateTimeTZ(new Date()));
     }
   }
@@ -209,8 +210,8 @@ setMessage(addResultPane(),message,true);
  finally {
 SwingUtilities.invokeLater(new Runnable(){
 @Override public void run(){
-stopButton.setEnabled(false);
-stopButton.setToolTipText(null);
+startButton.setVisible(true);
+stopButton.setVisible(false);
 }
 }
 );

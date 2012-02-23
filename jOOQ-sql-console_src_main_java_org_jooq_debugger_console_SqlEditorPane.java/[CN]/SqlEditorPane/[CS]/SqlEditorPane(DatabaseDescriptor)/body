@@ -3,20 +3,21 @@
   this.databaseDescriptor=databaseDescriptor;
   this.isDBEditable=!databaseDescriptor.isReadOnly();
   setOpaque(false);
-  JPanel northPanel=new JPanel();
+  JPanel northPanel=new JPanel(new FlowLayout(FlowLayout.LEFT,5,2));
   northPanel.setOpaque(false);
-  JCheckBox limitCheckBox=new JCheckBox("10000 top rows",isUsingMaxRowCount);
-  limitCheckBox.addItemListener(new ItemListener(){
-    @Override public void itemStateChanged(    ItemEvent e){
-      isUsingMaxRowCount=e.getStateChange() == ItemEvent.SELECTED;
+  startButton=new JButton("Run");
+  startButton.setOpaque(false);
+  startButton.setToolTipText("Run the (selected) text (F5)");
+  startButton.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      evaluateInternal();
     }
   }
 );
-  limitCheckBox.setOpaque(false);
-  northPanel.add(limitCheckBox);
+  northPanel.add(startButton);
   stopButton=new JButton("Stop");
+  stopButton.setVisible(false);
   stopButton.setOpaque(false);
-  stopButton.setEnabled(false);
   stopButton.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    ActionEvent e){
       evaluationThread=null;
@@ -32,6 +33,15 @@
   displayedRowCountField.setValue(100000);
   displayedRowCountField.setColumns(7);
   northPanel.add(displayedRowCountField);
+  JCheckBox limitCheckBox=new JCheckBox("Parse 10000 rows max",isUsingMaxRowCount);
+  limitCheckBox.addItemListener(new ItemListener(){
+    @Override public void itemStateChanged(    ItemEvent e){
+      isUsingMaxRowCount=e.getStateChange() == ItemEvent.SELECTED;
+    }
+  }
+);
+  limitCheckBox.setOpaque(false);
+  northPanel.add(limitCheckBox);
   add(northPanel,BorderLayout.NORTH);
   editorTextArea=new SqlTextArea();
   editorTextArea.addKeyListener(new KeyAdapter(){
@@ -44,7 +54,7 @@ case KeyEvent.VK_SPACE:
         }
       break;
 case KeyEvent.VK_F5:
-    if (!stopButton.isEnabled()) {
+    if (startButton.isEnabled()) {
       evaluateInternal();
     }
   break;
