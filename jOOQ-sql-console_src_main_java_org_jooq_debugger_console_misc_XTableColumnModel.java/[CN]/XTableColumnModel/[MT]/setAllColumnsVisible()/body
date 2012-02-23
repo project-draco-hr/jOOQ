@@ -2,7 +2,7 @@
   int noColumns=allTableColumns.size();
   for (int columnIndex=0; columnIndex < noColumns; ++columnIndex) {
     TableColumn visibleColumn=(columnIndex < tableColumns.size() ? (TableColumn)tableColumns.get(columnIndex) : null);
-    TableColumn invisibleColumn=(TableColumn)allTableColumns.get(columnIndex);
+    TableColumn invisibleColumn=allTableColumns.get(columnIndex);
     if (visibleColumn != invisibleColumn) {
       super.addColumn(invisibleColumn);
       super.moveColumn(tableColumns.size() - 1,columnIndex);

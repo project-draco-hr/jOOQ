@@ -6,7 +6,7 @@
   int noColumns=columns.size();
   TableColumn column;
   for (int columnIndex=0; columnIndex < noColumns; ++columnIndex) {
-    column=(TableColumn)columns.get(columnIndex);
+    column=columns.get(columnIndex);
     if (identifier.equals(column.getIdentifier())) {
       return columnIndex;
     }

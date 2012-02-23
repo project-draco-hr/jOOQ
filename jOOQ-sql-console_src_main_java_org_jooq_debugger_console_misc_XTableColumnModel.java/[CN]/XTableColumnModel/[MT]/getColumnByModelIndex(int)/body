@@ -1,6 +1,6 @@
 {
   for (int columnIndex=0; columnIndex < allTableColumns.size(); ++columnIndex) {
-    TableColumn column=(TableColumn)allTableColumns.elementAt(columnIndex);
+    TableColumn column=allTableColumns.elementAt(columnIndex);
     if (column.getModelIndex() == modelColumnIndex) {
       return column;
     }
