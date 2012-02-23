@@ -1,0 +1,3 @@
+{
+  SERVER=new SqlRemoteQueryDebuggerServer(DEBUGGER_PORT);
+}
