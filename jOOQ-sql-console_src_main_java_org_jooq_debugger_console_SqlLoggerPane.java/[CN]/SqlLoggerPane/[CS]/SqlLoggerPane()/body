@@ -1,8 +1,10 @@
 {
   super(new BorderLayout());
   setOpaque(false);
-  JPanel loggerHeaderPanel=new JPanel();
+  JPanel loggerHeaderPanel=new JPanel(new BorderLayout());
   loggerHeaderPanel.setOpaque(false);
+  JPanel loggerHeaderWestPanel=new JPanel(new FlowLayout(FlowLayout.LEFT,5,5));
+  loggerHeaderWestPanel.setOpaque(false);
   loggerLogCheckBox=new JCheckBox("Log");
   loggerLogCheckBox.setOpaque(false);
   loggerLogCheckBox.addItemListener(new ItemListener(){
@@ -11,7 +13,7 @@
     }
   }
 );
-  loggerHeaderPanel.add(loggerLogCheckBox);
+  loggerHeaderWestPanel.add(loggerLogCheckBox);
   JButton loggerClearButton=new JButton("Clear");
   loggerClearButton.setOpaque(false);
   loggerClearButton.addActionListener(new ActionListener(){
@@ -28,7 +30,7 @@
     }
   }
 );
-  loggerHeaderPanel.add(loggerClearButton);
+  loggerHeaderWestPanel.add(loggerClearButton);
   JCheckBox loggerThreadCheckBox=new JCheckBox("Threads",true);
   loggerThreadCheckBox.setOpaque(false);
   loggerThreadCheckBox.addItemListener(new ItemListener(){
@@ -40,7 +42,7 @@
     }
   }
 );
-  loggerHeaderPanel.add(loggerThreadCheckBox);
+  loggerHeaderWestPanel.add(loggerThreadCheckBox);
   JCheckBox loggerTimestampCheckBox=new JCheckBox("Timestamps",true);
   loggerTimestampCheckBox.setOpaque(false);
   loggerTimestampCheckBox.addItemListener(new ItemListener(){
@@ -52,7 +54,7 @@
     }
   }
 );
-  loggerHeaderPanel.add(loggerTimestampCheckBox);
+  loggerHeaderWestPanel.add(loggerTimestampCheckBox);
   JCheckBox loggerDurationCheckBox=new JCheckBox("Exec Time",true);
   loggerDurationCheckBox.setOpaque(false);
   loggerDurationCheckBox.addItemListener(new ItemListener(){
@@ -64,7 +66,7 @@
     }
   }
 );
-  loggerHeaderPanel.add(loggerDurationCheckBox);
+  loggerHeaderWestPanel.add(loggerDurationCheckBox);
   JCheckBox preparedStatementDataCheckBox=new JCheckBox("PS Data",true);
   preparedStatementDataCheckBox.setOpaque(false);
   preparedStatementDataCheckBox.addItemListener(new ItemListener(){
@@ -77,7 +79,7 @@
     }
   }
 );
-  loggerHeaderPanel.add(preparedStatementDataCheckBox);
+  loggerHeaderWestPanel.add(preparedStatementDataCheckBox);
   JCheckBox resultSetDataCheckBox=new JCheckBox("RS Data",true);
   resultSetDataCheckBox.setOpaque(false);
   resultSetDataCheckBox.addItemListener(new ItemListener(){
@@ -91,7 +93,7 @@
     }
   }
 );
-  loggerHeaderPanel.add(resultSetDataCheckBox);
+  loggerHeaderWestPanel.add(resultSetDataCheckBox);
   JCheckBox duplicationCountCheckBox=new JCheckBox("Duplication",true);
   duplicationCountCheckBox.setOpaque(false);
   duplicationCountCheckBox.addItemListener(new ItemListener(){
@@ -103,7 +105,7 @@
     }
   }
 );
-  loggerHeaderPanel.add(duplicationCountCheckBox);
+  loggerHeaderWestPanel.add(duplicationCountCheckBox);
   JCheckBox loggerReadQueryTypeCheckBox=new JCheckBox("Read",isReadQueryTypeDisplayed);
   loggerReadQueryTypeCheckBox.setOpaque(false);
   loggerReadQueryTypeCheckBox.addItemListener(new ItemListener(){
@@ -113,7 +115,7 @@
     }
   }
 );
-  loggerHeaderPanel.add(loggerReadQueryTypeCheckBox);
+  loggerHeaderWestPanel.add(loggerReadQueryTypeCheckBox);
   JCheckBox loggerWriteQueryTypeCheckBox=new JCheckBox("Write",isWriteQueryTypeDisplayed);
   loggerWriteQueryTypeCheckBox.setOpaque(false);
   loggerWriteQueryTypeCheckBox.addItemListener(new ItemListener(){
@@ -123,7 +125,7 @@
     }
   }
 );
-  loggerHeaderPanel.add(loggerWriteQueryTypeCheckBox);
+  loggerHeaderWestPanel.add(loggerWriteQueryTypeCheckBox);
   JCheckBox loggerOtherQueryTypeCheckBox=new JCheckBox("Other",isOtherQueryTypeDisplayed);
   loggerOtherQueryTypeCheckBox.setOpaque(false);
   loggerOtherQueryTypeCheckBox.addItemListener(new ItemListener(){
@@ -133,7 +135,20 @@
     }
   }
 );
-  loggerHeaderPanel.add(loggerOtherQueryTypeCheckBox);
+  loggerHeaderWestPanel.add(loggerOtherQueryTypeCheckBox);
+  loggerHeaderPanel.add(loggerHeaderWestPanel,BorderLayout.WEST);
+  JToggleButton scrollLockButton=new JToggleButton(new ImageIcon(getClass().getResource("resources/LockScroll16.png")));
+  scrollLockButton.setMargin(new Insets(2,2,2,2));
+  scrollLockButton.addItemListener(new ItemListener(){
+    @Override public void itemStateChanged(    ItemEvent e){
+      isScrollLocked=e.getStateChange() == ItemEvent.SELECTED;
+    }
+  }
+);
+  JPanel loggerHeaderEastPanel=new JPanel(new FlowLayout(FlowLayout.RIGHT,5,5));
+  loggerHeaderEastPanel.setOpaque(false);
+  loggerHeaderEastPanel.add(scrollLockButton);
+  loggerHeaderPanel.add(loggerHeaderEastPanel,BorderLayout.EAST);
   add(loggerHeaderPanel,BorderLayout.NORTH);
   table=new JTableX(new AbstractTableModel(){
     @Override public Object getValueAt(    int rowIndex,    int columnIndex){

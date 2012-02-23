@@ -7,8 +7,7 @@
   if (isLogging) {
     sqlQueryDebugger=new SqlQueryDebugger(){
       @Override public void debugQueries(      SqlQueryDebuggerData sqlQueryDebuggerData){
-        Thread thread=Thread.currentThread();
-        debugQueries(new QueryDebuggingInfo(System.currentTimeMillis(),sqlQueryDebuggerData,new Exception("Statement Stack trace"),thread.getName(),thread.getId()));
+        debugQueries(new QueryDebuggingInfo(System.currentTimeMillis(),sqlQueryDebuggerData));
       }
       public void debugQueries(      final QueryDebuggingInfo queryDebuggingInfo){
         if (!SwingUtilities.isEventDispatchThread()) {

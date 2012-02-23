@@ -1,5 +1,9 @@
 {
   this.id=nextID++;
+  Thread currentThread=Thread.currentThread();
+  this.threadName=currentThread.getName();
+  this.threadID=currentThread.getId();
+  this.callerStackTraceElements=new Exception().getStackTrace();
   this.queryType=queryType;
   this.queries=queries;
   this.preparationDuration=preparationDuration;

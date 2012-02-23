@@ -1,21 +1,33 @@
 {
+  if (queryDebuggingInfoList.size() == MAX_NUMBER_OF_ROWS) {
+    QueryDebuggingInfo discaredDebuggingInfo=queryDebuggingInfoList.remove(0);
+    if (displayedQueryDebuggingInfoList.size() > 0 && displayedQueryDebuggingInfoList.get(0) == discaredDebuggingInfo) {
+      displayedQueryDebuggingInfoList.remove(0);
+      for (int i=displayedQueryDebuggingInfoList.size() - 1; i >= 0; i--) {
+        displayedQueryDebuggingInfoList.get(i).setDisplayedRow(i);
+      }
+      ((AbstractTableModel)table.getModel()).fireTableRowsDeleted(0,0);
+    }
+  }
   queryDebuggingInfoList.add(queryDebuggingInfo);
   addDisplayedRow(queryDebuggingInfo);
   int displayedRow=queryDebuggingInfo.getDisplayedRow();
   if (displayedRow >= 0) {
     ((AbstractTableModel)table.getModel()).fireTableRowsInserted(displayedRow,displayedRow);
-    SwingUtilities.invokeLater(new Runnable(){
-      @Override public void run(){
-        List<? extends SortKey> sortKeys=table.getRowSorter().getSortKeys();
-        if (sortKeys.size() >= 1) {
-          SortKey sortKey=sortKeys.get(0);
-          if (sortKey.getColumn() == COLUMN_LINE && sortKey.getSortOrder() == SortOrder.ASCENDING) {
-            table.scrollRectToVisible(new Rectangle(0,table.getHeight() - 1,1,1));
+    if (!isScrollLocked) {
+      SwingUtilities.invokeLater(new Runnable(){
+        @Override public void run(){
+          List<? extends SortKey> sortKeys=table.getRowSorter().getSortKeys();
+          if (sortKeys.size() >= 1) {
+            SortKey sortKey=sortKeys.get(0);
+            if (sortKey.getColumn() == COLUMN_LINE && sortKey.getSortOrder() == SortOrder.ASCENDING) {
+              table.scrollRectToVisible(new Rectangle(0,table.getHeight() - 1,1,1));
+            }
           }
         }
       }
-    }
 );
+    }
   }
   updateStatusLabel();
 }

@@ -1,5 +1,2 @@
 long timestamp
 SqlQueryDebuggerData sqlQueryDebuggerData
-Throwable throwable
-String threadName
-long threadId
