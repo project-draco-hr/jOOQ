@@ -1,0 +1,7 @@
+{
+  super(configuration);
+  this.query=query;
+  this.batchQueries=batchQueries;
+  this.routine=routine;
+  this.batchSQL=(batchQueries == null ? null : new String[batchQueries.length]);
+}

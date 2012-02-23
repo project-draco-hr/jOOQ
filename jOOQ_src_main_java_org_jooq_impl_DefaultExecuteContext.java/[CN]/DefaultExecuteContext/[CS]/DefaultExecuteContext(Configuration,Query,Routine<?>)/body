@@ -1,5 +1,0 @@
-{
-  super(configuration);
-  this.query=query;
-  this.routine=routine;
-}

@@ -1,3 +1,4 @@
 Configuration configuration
 Query query
+Query[] batchQueries
 Routine<?> routine
