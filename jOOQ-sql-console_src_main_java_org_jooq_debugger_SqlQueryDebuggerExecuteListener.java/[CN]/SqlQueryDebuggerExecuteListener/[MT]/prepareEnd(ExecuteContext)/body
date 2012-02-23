@@ -2,7 +2,7 @@
   if (!isLogging) {
     return;
   }
-  endPreparationTime=System.currentTimeMillis();
+  aggregatedPreparationDuration+=System.currentTimeMillis() - startPreparationTime;
   PreparedStatement statement=ctx.statement();
   ctx.statement(new UsageTrackingPreparedStatement(statement));
 }

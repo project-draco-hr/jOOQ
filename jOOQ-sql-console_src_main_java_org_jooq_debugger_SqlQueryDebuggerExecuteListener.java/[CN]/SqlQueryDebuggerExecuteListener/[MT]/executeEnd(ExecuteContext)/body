@@ -8,16 +8,21 @@
     return;
   }
   ResultSet resultSet=ctx.resultSet();
-  String sql=ctx.sql();
-  SqlQueryType sqlQueryType=getSqlQueryType(sql);
-  PreparedStatement statement=ctx.statement();
-  if (statement instanceof UsageTrackingPreparedStatement) {
-    String parameterDescription=((UsageTrackingPreparedStatement)statement).getParameterDescription();
-    if (parameterDescription != null) {
-      sql+=" -> " + parameterDescription;
+  String[] sql=ctx.batchSQL();
+  if (sql.length == 1 && sql[0] == null) {
+    sql=new String[]{ctx.sql()};
+  }
+  SqlQueryType sqlQueryType=getSqlQueryType(sql[0]);
+  if (sql.length == 1) {
+    PreparedStatement statement=ctx.statement();
+    if (statement instanceof UsageTrackingPreparedStatement) {
+      String parameterDescription=((UsageTrackingPreparedStatement)statement).getParameterDescription();
+      if (parameterDescription != null) {
+        sql=new String[]{sql[0] + " -> " + parameterDescription};
+      }
     }
   }
-  SqlQueryDebuggerData sqlQueryDebuggerData=new SqlQueryDebuggerData(sqlQueryType,new String[]{sql},startPreparationTime == 0 ? null : endPreparationTime - startPreparationTime,startBindTime == 0 ? null : endBindTime - startBindTime,endExecutionTime - startExecutionTime);
+  SqlQueryDebuggerData sqlQueryDebuggerData=new SqlQueryDebuggerData(sqlQueryType,sql,startPreparationTime == 0 ? null : aggregatedPreparationDuration,startBindTime == 0 ? null : endBindTime - startBindTime,endExecutionTime - startExecutionTime);
   for (  SqlQueryDebugger listener : sqlQueryDebuggerList) {
     listener.debugQueries(sqlQueryDebuggerData);
   }
