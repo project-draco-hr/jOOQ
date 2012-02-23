@@ -1,0 +1,20 @@
+{
+  int row=table.rowAtPoint(p);
+  if (row < 0) {
+    return null;
+  }
+  int column=table.columnAtPoint(p);
+  if (column < 0) {
+    return null;
+  }
+  row=table.convertRowIndexToModel(row);
+  column=table.convertColumnIndexToModel(column);
+  if (column != COLUMN_QUERY) {
+    return null;
+  }
+  final QueryDebuggingInfo queryDebuggingInfo=displayedQueryDebuggingInfoList.get(row);
+  if (queryDebuggingInfo != null) {
+    return queryDebuggingInfo.getThreadName() + " [" + queryDebuggingInfo.getThreadId()+ "]\n"+ getStackTrace(queryDebuggingInfo);
+  }
+  return null;
+}

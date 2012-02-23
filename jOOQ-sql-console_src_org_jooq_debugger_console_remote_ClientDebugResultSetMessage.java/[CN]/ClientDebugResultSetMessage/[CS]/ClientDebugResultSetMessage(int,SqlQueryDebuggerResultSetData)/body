@@ -1,0 +1,4 @@
+{
+  this.sqlQueryDebuggerDataID=sqlQueryDebuggerDataID;
+  this.sqlQueryDebuggerResultSetData=sqlQueryDebuggerData;
+}

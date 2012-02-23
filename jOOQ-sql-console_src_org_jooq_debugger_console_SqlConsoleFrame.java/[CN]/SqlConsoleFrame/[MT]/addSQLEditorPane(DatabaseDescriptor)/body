@@ -1,0 +1,9 @@
+{
+  isAdjusting=true;
+  int index=editorTabbedPane.getTabCount() - 1;
+  final SqlEditorPane sqlEditorPane=new SqlEditorPane(databaseDescriptor);
+  editorTabbedPane.insertTab("Context " + contextCount++,null,sqlEditorPane,null,index);
+  editorTabbedPane.setSelectedIndex(index);
+  isAdjusting=false;
+  sqlEditorPane.adjustDefaultFocus();
+}

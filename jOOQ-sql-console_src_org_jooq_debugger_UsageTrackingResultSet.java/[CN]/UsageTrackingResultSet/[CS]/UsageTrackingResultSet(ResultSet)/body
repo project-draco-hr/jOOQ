@@ -1,0 +1,4 @@
+{
+  this.resultSet=resultSet;
+  creationTime=System.currentTimeMillis();
+}

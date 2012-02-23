@@ -1,0 +1,10 @@
+{
+  String queryLC=query.toLowerCase(Locale.ENGLISH).trim();
+  if (queryLC.startsWith("insert ") || queryLC.startsWith("update ") || queryLC.startsWith("delete ")) {
+    return SqlQueryType.WRITE;
+  }
+  if (queryLC.startsWith("select ") || queryLC.startsWith("with ")) {
+    return SqlQueryType.READ;
+  }
+  return SqlQueryType.OTHER;
+}

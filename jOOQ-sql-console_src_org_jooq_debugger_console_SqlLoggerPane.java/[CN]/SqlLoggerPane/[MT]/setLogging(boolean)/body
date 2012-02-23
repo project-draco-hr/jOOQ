@@ -1,0 +1,52 @@
+{
+  loggerLogCheckBox.setSelected(isLogging);
+  if (sqlQueryDebugger != null) {
+    SqlQueryDebuggerRegister.removeSqlQueryDebugger(sqlQueryDebugger);
+    sqlQueryDebugger=null;
+  }
+  if (isLogging) {
+    sqlQueryDebugger=new SqlQueryDebugger(){
+      @Override public void debugQueries(      SqlQueryDebuggerData sqlQueryDebuggerData){
+        Thread thread=Thread.currentThread();
+        debugQueries(new QueryDebuggingInfo(System.currentTimeMillis(),sqlQueryDebuggerData,new Exception("Statement Stack trace"),thread.getName(),thread.getId()));
+      }
+      public void debugQueries(      final QueryDebuggingInfo queryDebuggingInfo){
+        if (!SwingUtilities.isEventDispatchThread()) {
+          SwingUtilities.invokeLater(new Runnable(){
+            @Override public void run(){
+              debugQueries(queryDebuggingInfo);
+            }
+          }
+);
+          return;
+        }
+        addRow(queryDebuggingInfo);
+      }
+      @Override public void debugResultSet(      final int sqlQueryDebuggerDataID,      final SqlQueryDebuggerResultSetData sqlQueryDebuggerResultSetData){
+        if (!SwingUtilities.isEventDispatchThread()) {
+          SwingUtilities.invokeLater(new Runnable(){
+            @Override public void run(){
+              debugResultSet(sqlQueryDebuggerDataID,sqlQueryDebuggerResultSetData);
+            }
+          }
+);
+          return;
+        }
+        for (int i=queryDebuggingInfoList.size() - 1; i >= 0; i--) {
+          QueryDebuggingInfo queryDebuggingInfo=queryDebuggingInfoList.get(i);
+          if (queryDebuggingInfo.getSqlQueryDebuggerData().getID() == sqlQueryDebuggerDataID) {
+            queryDebuggingInfo.setSqlQueryDebuggerResultSetData(sqlQueryDebuggerResultSetData);
+            XTableColumnModel columnModel=(XTableColumnModel)table.getColumnModel();
+            boolean isResultSetDataShown=columnModel.isColumnVisible(columnModel.getColumnByModelIndex(COLUMN_RS_LIFETIME));
+            if (isResultSetDataShown) {
+              updateRow(queryDebuggingInfo);
+            }
+            break;
+          }
+        }
+      }
+    }
+;
+    SqlQueryDebuggerRegister.addSqlQueryDebugger(sqlQueryDebugger);
+  }
+}

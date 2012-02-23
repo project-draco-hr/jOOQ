@@ -1,0 +1,4 @@
+{
+  stmt.setBoolean(parameterIndex,x);
+  logValue(parameterIndex,x);
+}

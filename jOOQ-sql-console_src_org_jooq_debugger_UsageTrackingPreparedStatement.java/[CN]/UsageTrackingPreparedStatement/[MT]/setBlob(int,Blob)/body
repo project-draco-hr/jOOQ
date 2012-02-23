@@ -1,0 +1,4 @@
+{
+  stmt.setBlob(parameterIndex,x);
+  logValue(parameterIndex,x == null ? null : "<Blob>");
+}

@@ -1,0 +1,4 @@
+{
+  stmt.setDate(parameterIndex,x,cal);
+  logValue(parameterIndex,x);
+}

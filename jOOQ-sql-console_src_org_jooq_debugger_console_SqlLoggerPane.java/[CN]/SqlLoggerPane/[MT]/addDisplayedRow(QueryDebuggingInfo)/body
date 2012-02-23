@@ -1,0 +1,30 @@
+{
+  boolean isDisplayed=false;
+switch (queryDebuggingInfo.getQueryType()) {
+case READ:
+    isDisplayed=isReadQueryTypeDisplayed;
+  break;
+case WRITE:
+isDisplayed=isWriteQueryTypeDisplayed;
+break;
+case OTHER:
+isDisplayed=isOtherQueryTypeDisplayed;
+break;
+}
+int displayedRow=-1;
+if (isDisplayed) {
+List<String> queryList=Arrays.asList(queryDebuggingInfo.getQueries());
+Integer count=queriesToCountMap.get(queryList);
+if (count == null) {
+count=1;
+}
+ else {
+count++;
+}
+queriesToCountMap.put(queryList,count);
+displayedRow=displayedQueryDebuggingInfoList.size();
+queryDebuggingInfo.setDuplicationCount(count);
+displayedQueryDebuggingInfoList.add(queryDebuggingInfo);
+}
+queryDebuggingInfo.setDisplayedRow(displayedRow);
+}

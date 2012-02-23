@@ -1,0 +1,5 @@
+SqlQueryType queryType
+String[] queries
+Long preparationDuration
+Long bindingDuration
+long executionDuration

@@ -1,0 +1,11 @@
+{
+  southPanel.removeAll();
+  southPanel.revalidate();
+  southPanel.repaint();
+  SwingUtilities.invokeLater(new Runnable(){
+    @Override public void run(){
+      evaluate_(sql);
+    }
+  }
+);
+}

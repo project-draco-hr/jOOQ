@@ -1,0 +1,9 @@
+{
+  isLogging=!SqlQueryDebuggerRegister.getSqlQueryDebuggerList().isEmpty();
+  startPreparationTime=0;
+  endPreparationTime=0;
+  startBindTime=0;
+  endBindTime=0;
+  startExecutionTime=0;
+  endExecutionTime=0;
+}

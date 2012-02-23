@@ -1,0 +1,4 @@
+{
+  stmt.setNull(parameterIndex,sqlType,typeName);
+  logValue(parameterIndex,null);
+}

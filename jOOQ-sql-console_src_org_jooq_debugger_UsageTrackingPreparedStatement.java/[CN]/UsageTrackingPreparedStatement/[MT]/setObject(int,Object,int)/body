@@ -1,0 +1,4 @@
+{
+  stmt.setObject(parameterIndex,x,targetSqlType);
+  logValue(parameterIndex,x);
+}

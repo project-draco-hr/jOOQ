@@ -1,0 +1,90 @@
+{
+class TableTipListener extends MouseInputAdapter implements TableModelListener {
+    private Timer enterTimer;
+    public TableTipListener(){
+      enterTimer=new Timer(750,new ActionListener(){
+        @Override public void actionPerformed(        ActionEvent e){
+          processTip();
+        }
+      }
+);
+      enterTimer.setRepeats(false);
+    }
+    private Point point;
+    @Override public void mouseEntered(    MouseEvent e){
+      point=SwingUtilities.convertPoint(table,e.getPoint(),table.getParent());
+      enterTimer.start();
+    }
+    @Override public void mouseMoved(    MouseEvent e){
+      point=SwingUtilities.convertPoint(table,e.getPoint(),table.getParent());
+      if (tip == null) {
+        enterTimer.restart();
+      }
+ else {
+        processTip();
+      }
+    }
+    @Override public void mousePressed(    MouseEvent e){
+      enterTimer.stop();
+      processTip(null);
+    }
+    private void processTip(){
+      String text=getMultilineTooltip(SwingUtilities.convertPoint(table.getParent(),point,table));
+      processTip(text);
+    }
+    @Override public void mouseExited(    MouseEvent e){
+      point=null;
+      enterTimer.stop();
+      processTip(null);
+    }
+    private String lastText;
+    private Popup tip;
+    private void processTip(    String text){
+      if (Utils.equals(lastText,text)) {
+        return;
+      }
+      lastText=text;
+      if (tip != null) {
+        tip.hide();
+        tip=null;
+      }
+      if (text != null) {
+        PopupFactory popupFactory=PopupFactory.getSharedInstance();
+        JTextArea textContent=new JTextArea(text);
+        textContent.setFont(UIManager.getFont("ToolTip.font"));
+        textContent.setBackground(UIManager.getColor("ToolTip.background"));
+        textContent.setForeground(UIManager.getColor("ToolTip.foreground"));
+        textContent.setBorder(UIManager.getBorder("ToolTip.border"));
+        Point location=new Point(point);
+        SwingUtilities.convertPointToScreen(location,table.getParent());
+        GraphicsConfiguration gc=table.getGraphicsConfiguration();
+        Rectangle sBounds=gc.getBounds();
+        Insets screenInsets=Toolkit.getDefaultToolkit().getScreenInsets(gc);
+        sBounds.x+=screenInsets.left;
+        sBounds.y+=screenInsets.top;
+        sBounds.width-=screenInsets.left + screenInsets.right;
+        sBounds.height-=screenInsets.top + screenInsets.bottom;
+        Dimension tipSize=textContent.getPreferredSize();
+        textContent.setPreferredSize(tipSize);
+        location.x+=20;
+        location.x=Math.min(location.x,sBounds.x + sBounds.width - tipSize.width);
+        if (location.y + tipSize.height > sBounds.y + sBounds.height && location.y - 40 - tipSize.height >= sBounds.y) {
+          location.y-=40 + tipSize.height;
+        }
+        location.y+=20;
+        tip=popupFactory.getPopup(null,textContent,location.x,location.y);
+        tip.show();
+      }
+    }
+    @Override public void tableChanged(    TableModelEvent e){
+      if (tip != null) {
+        processTip();
+      }
+    }
+  }
+  ;
+  TableTipListener tableTipListener=new TableTipListener();
+  table.addMouseListener(tableTipListener);
+  table.addMouseMotionListener(tableTipListener);
+  table.getModel().addTableModelListener(tableTipListener);
+}

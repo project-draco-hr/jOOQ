@@ -1,0 +1,10 @@
+{
+  int caretPosition=editorTextArea.getSelectionStart();
+  if (caretPosition == editorTextArea.getSelectionEnd()) {
+    String text=editorTextArea.getText();
+    if ((caretPosition == 0 || text.charAt(caretPosition - 1) == '\n') && (text.length() <= caretPosition || text.charAt(caretPosition) == '\n')) {
+      editorTextArea.insert(sql + '\n',caretPosition);
+    }
+  }
+  evaluateInternal(sql);
+}

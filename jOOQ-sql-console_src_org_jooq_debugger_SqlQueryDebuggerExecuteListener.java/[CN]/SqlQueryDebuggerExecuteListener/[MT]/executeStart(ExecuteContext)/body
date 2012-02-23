@@ -1,0 +1,6 @@
+{
+  if (!isLogging) {
+    return;
+  }
+  startExecutionTime=System.currentTimeMillis();
+}

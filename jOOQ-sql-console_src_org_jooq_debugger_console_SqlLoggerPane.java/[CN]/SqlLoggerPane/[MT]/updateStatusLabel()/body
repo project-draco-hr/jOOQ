@@ -1,0 +1,16 @@
+{
+  int size=queryDebuggingInfoList.size();
+  int displayedCount=displayedQueryDebuggingInfoList.size();
+  String text;
+  if (displayedCount == size) {
+    text=size + " queries";
+  }
+ else {
+    text=displayedCount + "/" + size+ " queries";
+  }
+  int count=table.getSelectedRowCount();
+  if (count > 0) {
+    text=text + " - " + count+ " selected rows";
+  }
+  loggerStatusLabel.setText(text);
+}

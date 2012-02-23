@@ -1,0 +1,16 @@
+{
+  int rowAtPoint=rowAtPoint(g.getClipBounds().getLocation());
+  if (rowAtPoint < 0) {
+    return;
+  }
+  int topY=getCellRect(rowAtPoint,0,true).y;
+  int currentRow=rowAtPoint;
+  int rowCount=getRowCount();
+  while (currentRow < rowCount && topY < g.getClipBounds().y + g.getClipBounds().height) {
+    int bottomY=topY + getRowHeight(currentRow);
+    g.setColor(getRowBackgroundColor(currentRow));
+    g.fillRect(g.getClipBounds().x,topY,g.getClipBounds().width,bottomY - topY);
+    topY=bottomY;
+    currentRow++;
+  }
+}

@@ -1,0 +1,8 @@
+{
+  if (!isLogging) {
+    return;
+  }
+  endPreparationTime=System.currentTimeMillis();
+  PreparedStatement statement=ctx.statement();
+  ctx.statement(new UsageTrackingPreparedStatement(statement));
+}

@@ -1,0 +1,15 @@
+{
+  if (identifier == null) {
+    throw new IllegalArgumentException("Identifier is null");
+  }
+  Vector<TableColumn> columns=(onlyVisible ? tableColumns : allTableColumns);
+  int noColumns=columns.size();
+  TableColumn column;
+  for (int columnIndex=0; columnIndex < noColumns; ++columnIndex) {
+    column=(TableColumn)columns.get(columnIndex);
+    if (identifier.equals(column.getIdentifier())) {
+      return columnIndex;
+    }
+  }
+  throw new IllegalArgumentException("Identifier not found");
+}

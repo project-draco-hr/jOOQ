@@ -1,0 +1,4 @@
+{
+  readCount++;
+  resultSet.updateRowId(columnIndex,x);
+}

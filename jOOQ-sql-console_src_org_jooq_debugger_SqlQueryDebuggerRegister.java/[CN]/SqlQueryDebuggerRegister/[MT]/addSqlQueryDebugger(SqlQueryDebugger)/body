@@ -1,0 +1,8 @@
+{
+synchronized (LOCK) {
+    debuggerList.add(sqlQueryDebugger);
+    for (    SqlQueryDebuggerRegisterListener l : debuggerRegisterListenerList) {
+      l.notifySqlQueryDebuggerListenerListModified();
+    }
+  }
+}

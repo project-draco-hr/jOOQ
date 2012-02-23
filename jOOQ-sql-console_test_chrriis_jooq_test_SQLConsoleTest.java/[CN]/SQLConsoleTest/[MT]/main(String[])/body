@@ -1,0 +1,85 @@
+{
+  SwingUtilities.invokeLater(new Runnable(){
+    public void run(){
+      try {
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+      }
+ catch (      Exception e) {
+        e.printStackTrace();
+      }
+      DatabaseDescriptor editorDatabaseDescriptor=null;
+      editorDatabaseDescriptor=new DatabaseDescriptor(){
+        @Override public Schema getSchema(){
+          final List<Table<?>> tableList=new ArrayList<Table<?>>();
+          tableList.add(new TableImpl<Record>("An_Example_Table"){
+{
+              createField("SomeDecimal",SQLDataType.DECIMAL,this);
+              createField("AnInt",SQLDataType.BIGINT,this);
+            }
+          }
+);
+          tableList.add(new TableImpl<Record>("Another_Table"){
+{
+              createField("Wow",SQLDataType.CLOB,this);
+              createField("Great",SQLDataType.BIT,this);
+            }
+          }
+);
+          tableList.add(new TableImpl<Record>("Basic"){
+{
+              createField("Stuff",SQLDataType.CLOB,this);
+              createField("Thing",SQLDataType.BIT,this);
+            }
+          }
+);
+          tableList.add(new TableImpl<Record>("Yet_Another_One"){
+{
+              createField("SoGood",SQLDataType.DECIMAL,this);
+              createField("Great",SQLDataType.VARCHAR,this);
+            }
+          }
+);
+          return new SchemaImpl("Test"){
+            @Override public List<Table<?>> getTables(){
+              return tableList;
+            }
+          }
+;
+        }
+        @Override public SQLDialect getSQLDialect(){
+          return SQLDialect.SQLSERVER;
+        }
+        @Override public Connection createConnection(){
+          return null;
+        }
+      }
+;
+      SqlConsoleFrame sqlConsoleFrame=new SqlConsoleFrame(editorDatabaseDescriptor,true);
+      sqlConsoleFrame.setLoggingActive(true);
+      sqlConsoleFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      sqlConsoleFrame.setVisible(true);
+      new Thread("SQL Thread"){
+        public void run(){
+          while (true) {
+            try {
+              sleep(Math.round(Math.random() * 3000));
+            }
+ catch (            InterruptedException e) {
+            }
+            if (Math.random() < 0.2) {
+              performSP();
+            }
+ else             if (Math.random() < 0.6) {
+              performInsert();
+            }
+ else {
+              performSelectWithIndirection();
+            }
+          }
+        }
+      }
+.start();
+    }
+  }
+);
+}

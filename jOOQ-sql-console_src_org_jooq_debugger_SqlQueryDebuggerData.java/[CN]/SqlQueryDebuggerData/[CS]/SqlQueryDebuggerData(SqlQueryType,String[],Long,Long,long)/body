@@ -1,0 +1,8 @@
+{
+  this.id=nextID++;
+  this.queryType=queryType;
+  this.queries=queries;
+  this.preparationDuration=preparationDuration;
+  this.bindingDuration=bindingDuration;
+  this.executionDuration=executionDuration;
+}

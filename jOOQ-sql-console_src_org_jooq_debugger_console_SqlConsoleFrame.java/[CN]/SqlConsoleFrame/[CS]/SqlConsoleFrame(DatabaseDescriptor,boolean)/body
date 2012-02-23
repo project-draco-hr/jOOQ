@@ -1,0 +1,38 @@
+{
+  setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+  mainTabbedPane=new JTabbedPane();
+  String title="SQL Console";
+  if (editorDatabaseDescriptor != null) {
+    String schemaName=editorDatabaseDescriptor.getSchema().getName();
+    if (schemaName != null && schemaName.length() != 0) {
+      title+=" - " + schemaName;
+    }
+  }
+  setTitle(title);
+  if (editorDatabaseDescriptor != null) {
+    addEditorTab(editorDatabaseDescriptor);
+  }
+  if (isShowingLoggingTab) {
+    addLoggerTab();
+  }
+  getContentPane().add(mainTabbedPane,BorderLayout.CENTER);
+  setLocationByPlatform(true);
+  setSize(800,600);
+  addNotify();
+  if (editorDatabaseDescriptor != null) {
+    getFocusedEditorPane().adjustDefaultFocus();
+  }
+  addWindowListener(new WindowAdapter(){
+    @Override public void windowClosing(    WindowEvent e){
+      if (sqlLoggerPane != null) {
+        sqlLoggerPane.setLogging(false);
+      }
+      if (editorTabbedPane != null) {
+        for (int i=editorTabbedPane.getTabCount() - 2; i >= 0; i--) {
+          ((SqlEditorPane)editorTabbedPane.getComponentAt(i)).closeConnection();
+        }
+      }
+    }
+  }
+);
+}

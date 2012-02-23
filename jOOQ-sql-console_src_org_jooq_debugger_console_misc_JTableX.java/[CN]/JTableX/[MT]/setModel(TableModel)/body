@@ -1,0 +1,9 @@
+{
+  for (int i=0; i < getColumnModel().getColumnCount(); i++) {
+    getColumnModel().getColumn(i).removePropertyChangeListener(listener);
+  }
+  super.setModel(dataModel);
+  for (int i=0; i < getColumnModel().getColumnCount(); i++) {
+    getColumnModel().getColumn(i).addPropertyChangeListener(listener);
+  }
+}

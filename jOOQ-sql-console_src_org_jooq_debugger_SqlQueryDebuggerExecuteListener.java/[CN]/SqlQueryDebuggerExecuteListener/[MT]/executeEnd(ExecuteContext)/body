@@ -1,0 +1,41 @@
+{
+  if (!isLogging) {
+    return;
+  }
+  endExecutionTime=System.currentTimeMillis();
+  List<SqlQueryDebugger> sqlQueryDebuggerList=SqlQueryDebuggerRegister.getSqlQueryDebuggerList();
+  if (sqlQueryDebuggerList.isEmpty()) {
+    return;
+  }
+  ResultSet resultSet=ctx.resultSet();
+  String sql=ctx.sql();
+  SqlQueryType sqlQueryType=getSqlQueryType(sql);
+  PreparedStatement statement=ctx.statement();
+  if (statement instanceof UsageTrackingPreparedStatement) {
+    String parameterDescription=((UsageTrackingPreparedStatement)statement).getParameterDescription();
+    if (parameterDescription != null) {
+      sql+=" -> " + parameterDescription;
+    }
+  }
+  SqlQueryDebuggerData sqlQueryDebuggerData=new SqlQueryDebuggerData(sqlQueryType,new String[]{sql},startPreparationTime == 0 ? null : endPreparationTime - startPreparationTime,startBindTime == 0 ? null : endBindTime - startBindTime,endExecutionTime - startExecutionTime);
+  for (  SqlQueryDebugger listener : sqlQueryDebuggerList) {
+    listener.debugQueries(sqlQueryDebuggerData);
+  }
+  if (resultSet != null) {
+    final int sqlQueryDebuggerDataID=sqlQueryDebuggerData.getID();
+    ResultSet newResultSet=new UsageTrackingResultSet(resultSet){
+      @Override protected void notifyData(      long lifeTime,      int readRows,      int readCount,      int writeCount){
+        List<SqlQueryDebugger> sqlQueryDebuggerList=SqlQueryDebuggerRegister.getSqlQueryDebuggerList();
+        if (sqlQueryDebuggerList.isEmpty()) {
+          return;
+        }
+        SqlQueryDebuggerResultSetData sqlQueryDebuggerResultSetData=new SqlQueryDebuggerResultSetData(lifeTime,readRows,readCount,writeCount);
+        for (        SqlQueryDebugger listener : sqlQueryDebuggerList) {
+          listener.debugResultSet(sqlQueryDebuggerDataID,sqlQueryDebuggerResultSetData);
+        }
+      }
+    }
+;
+    ctx.resultSet(newResultSet);
+  }
+}

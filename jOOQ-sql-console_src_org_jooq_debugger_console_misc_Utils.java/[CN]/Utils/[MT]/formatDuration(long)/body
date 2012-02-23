@@ -1,0 +1,3 @@
+{
+  return formatDuration(duration,DurationFormatPrecision.MILLISECOND);
+}

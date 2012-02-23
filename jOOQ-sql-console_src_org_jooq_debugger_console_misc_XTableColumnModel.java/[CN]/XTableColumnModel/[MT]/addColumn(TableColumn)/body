@@ -1,0 +1,4 @@
+{
+  allTableColumns.addElement(column);
+  super.addColumn(column);
+}

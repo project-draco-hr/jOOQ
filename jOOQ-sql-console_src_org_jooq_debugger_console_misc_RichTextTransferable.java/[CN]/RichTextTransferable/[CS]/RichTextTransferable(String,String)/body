@@ -1,0 +1,4 @@
+{
+  this.htmlContent=htmlContent;
+  this.plainContent=plainContent;
+}

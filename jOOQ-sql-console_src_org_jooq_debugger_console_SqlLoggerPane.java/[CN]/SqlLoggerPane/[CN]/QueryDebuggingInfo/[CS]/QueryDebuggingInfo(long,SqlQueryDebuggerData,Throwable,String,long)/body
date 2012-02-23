@@ -1,0 +1,7 @@
+{
+  this.timestamp=timestamp;
+  this.sqlQueryDebuggerData=sqlQueryDebuggerData;
+  this.throwable=throwable;
+  this.threadName=threadName;
+  this.threadId=threadId;
+}

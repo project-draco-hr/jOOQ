@@ -1,0 +1,4 @@
+{
+  stmt.setAsciiStream(parameterIndex,x);
+  logValue(parameterIndex,x == null ? null : "<AsciiStream>");
+}

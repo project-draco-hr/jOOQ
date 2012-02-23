@@ -1,0 +1,33 @@
+{
+  StringBuilder sb=new StringBuilder();
+  if (duration < 0) {
+    duration=-duration;
+    sb.append("-");
+  }
+  if (duration / (24 * 1000 * 60* 60) != 0 || precision == DurationFormatPrecision.DAY) {
+    sb.append(duration / (24 * 1000 * 60* 60)).append("d ");
+    if (precision == DurationFormatPrecision.DAY) {
+      return sb.toString().trim();
+    }
+  }
+  if (duration / (1000 * 60 * 60) != 0 || precision == DurationFormatPrecision.HOUR) {
+    sb.append((duration / (1000 * 60 * 60)) % 24).append("h ");
+    if (precision == DurationFormatPrecision.HOUR) {
+      return sb.toString().trim();
+    }
+  }
+  if (duration / (1000 * 60) != 0 || precision == DurationFormatPrecision.MINUTE) {
+    sb.append((duration / (1000 * 60)) % 60).append("min ");
+    if (precision == DurationFormatPrecision.MINUTE) {
+      return sb.toString().trim();
+    }
+  }
+  if (duration / 1000 != 0 || precision == DurationFormatPrecision.SECOND) {
+    sb.append((duration / 1000) % 60).append("s ");
+    if (precision == DurationFormatPrecision.SECOND) {
+      return sb.toString().trim();
+    }
+  }
+  sb.append(duration % 1000).append("ms");
+  return sb.toString();
+}

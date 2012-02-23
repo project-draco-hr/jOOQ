@@ -1,0 +1,31 @@
+{
+  TableColumnModel columnModel=table.getColumnModel();
+  TableCellRenderer headerRenderer=table.getTableHeader().getDefaultRenderer();
+  int rowCount=table.getRowCount();
+  int rowMargin=table.getRowMargin();
+  int margin=20;
+  for (int i=columnIndex < 0 ? columnModel.getColumnCount() - 1 : columnIndex; i >= 0; i--) {
+    TableColumn column=columnModel.getColumn(i);
+    int headerWidth;
+    headerWidth=headerRenderer.getTableCellRendererComponent(table,column.getHeaderValue(),false,false,0,0).getPreferredSize().width;
+    headerWidth+=margin;
+    int cellWidth=0;
+    for (int j=0; j < rowCount; j++) {
+      Component comp=table.prepareRenderer(table.getDefaultRenderer(table.getColumnClass(i)),j,i);
+      int preferredWidth=comp.getPreferredSize().width;
+      preferredWidth+=10;
+      cellWidth=Math.max(cellWidth,preferredWidth);
+      if (Math.max(headerWidth,cellWidth) + rowMargin >= maxWidth) {
+        break;
+      }
+    }
+    int width=Math.min(Math.max(headerWidth,cellWidth) + rowMargin,maxWidth);
+    column.setPreferredWidth(width);
+    if (isSettingMinimumSize) {
+      column.setMinWidth(width);
+    }
+    if (columnIndex >= 0) {
+      break;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  String text=editorTextArea.getSelectedText();
+  if (text == null || text.length() == 0) {
+    text=editorTextArea.getText();
+  }
+  evaluateInternal(text);
+}

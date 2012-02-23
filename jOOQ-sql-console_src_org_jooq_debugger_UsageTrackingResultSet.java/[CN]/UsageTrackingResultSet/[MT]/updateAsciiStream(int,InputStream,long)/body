@@ -1,0 +1,4 @@
+{
+  writeCount++;
+  resultSet.updateAsciiStream(columnIndex,x,length);
+}

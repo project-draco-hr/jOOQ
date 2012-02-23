@@ -1,0 +1,4 @@
+{
+  writeCount++;
+  resultSet.updateCharacterStream(columnIndex,x,length);
+}

@@ -1,0 +1,2 @@
+DatabaseDescriptor databaseDescriptor
+boolean isLoggingActive

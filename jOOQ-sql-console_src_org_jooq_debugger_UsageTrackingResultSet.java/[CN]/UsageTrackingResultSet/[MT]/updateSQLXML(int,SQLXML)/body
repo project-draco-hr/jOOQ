@@ -1,0 +1,4 @@
+{
+  writeCount++;
+  resultSet.updateSQLXML(columnIndex,xmlObject);
+}

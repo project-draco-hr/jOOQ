@@ -1,0 +1,6 @@
+{
+  SqlQueryDebuggerData sqlQueryDebuggerData=new SqlQueryDebuggerData(SqlQueryType.OTHER,new String[]{"spCustomFnt" + Math.round(Math.random() * 10) + "('Some params')"},Math.round(Math.random() * 1500),Math.round(Math.random() * 1500),Math.round(Math.random() * 1500));
+  for (  SqlQueryDebugger debugger : SqlQueryDebuggerRegister.getSqlQueryDebuggerList()) {
+    debugger.debugQueries(sqlQueryDebuggerData);
+  }
+}

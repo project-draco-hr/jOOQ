@@ -1,0 +1,6 @@
+{
+  if (!isLogging) {
+    return;
+  }
+  endBindTime=System.currentTimeMillis();
+}

@@ -1,0 +1,11 @@
+{
+  StringBuilder sb=new StringBuilder();
+  sb.append(columnName);
+  if (precision != 0) {
+    sb.append(" (" + precision + (scale != 0 ? ", " + scale : "")+ ")");
+  }
+  if (nullable != ResultSetMetaData.columnNullableUnknown) {
+    sb.append(nullable == ResultSetMetaData.columnNoNulls ? " not null" : " null");
+  }
+  return sb.toString();
+}

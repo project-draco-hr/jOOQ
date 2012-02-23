@@ -1,0 +1,4 @@
+{
+  stmt.setString(parameterIndex,x);
+  logValue(parameterIndex,x == null ? null : '"' + x + '"');
+}

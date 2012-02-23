@@ -1,0 +1,11 @@
+{
+  try {
+    columnName=metaData.getColumnTypeName(column);
+    precision=metaData.getPrecision(column);
+    scale=metaData.getScale(column);
+    nullable=metaData.isNullable(column);
+  }
+ catch (  SQLException e) {
+    e.printStackTrace();
+  }
+}

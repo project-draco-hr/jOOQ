@@ -1,0 +1,27 @@
+{
+  JPanel resultPane=new JPanel(new BorderLayout());
+  int componentCount=southPanel.getComponentCount();
+  if (componentCount == 0) {
+    southPanel.add(resultPane,BorderLayout.CENTER);
+    southPanel.revalidate();
+    southPanel.repaint();
+  }
+ else {
+    JTabbedPane tabbedPane;
+    Component component0=southPanel.getComponent(0);
+    if (component0 instanceof JTabbedPane) {
+      tabbedPane=(JTabbedPane)component0;
+    }
+ else {
+      JPanel query1Panel=(JPanel)component0;
+      southPanel.remove(0);
+      tabbedPane=new JTabbedPane();
+      tabbedPane.addTab("Query 1",query1Panel);
+      southPanel.add(tabbedPane,BorderLayout.CENTER);
+      southPanel.revalidate();
+      southPanel.repaint();
+    }
+    tabbedPane.addTab("Query " + (tabbedPane.getTabCount() + 1),resultPane);
+  }
+  return resultPane;
+}

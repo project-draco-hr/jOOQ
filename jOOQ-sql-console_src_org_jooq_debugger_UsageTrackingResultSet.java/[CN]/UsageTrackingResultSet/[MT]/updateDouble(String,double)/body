@@ -1,0 +1,4 @@
+{
+  writeCount++;
+  resultSet.updateDouble(columnLabel,x);
+}

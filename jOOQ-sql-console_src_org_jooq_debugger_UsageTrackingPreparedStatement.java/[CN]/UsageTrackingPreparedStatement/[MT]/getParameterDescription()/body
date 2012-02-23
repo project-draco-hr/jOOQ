@@ -1,0 +1,8 @@
+{
+  if (isNew) {
+    if (paramList.isEmpty() && sb.length() == 0) {
+      return null;
+    }
+  }
+  return sb.toString();
+}

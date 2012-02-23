@@ -1,0 +1,4 @@
+{
+  readCount++;
+  return resultSet.getClob(columnIndex);
+}

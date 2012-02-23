@@ -1,0 +1,4 @@
+{
+  stmt.addBatch(sql);
+  commitParameterDescription();
+}

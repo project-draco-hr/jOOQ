@@ -1,0 +1,13 @@
+{
+  super.configureEnclosingScrollPane();
+  Container p=getParent();
+  if (p instanceof JViewport) {
+    p.setBackground(EVEN_ROW_COLOR);
+    p.addComponentListener(new ComponentAdapter(){
+      @Override public void componentResized(      ComponentEvent e){
+        adjustLastColumn();
+      }
+    }
+);
+  }
+}

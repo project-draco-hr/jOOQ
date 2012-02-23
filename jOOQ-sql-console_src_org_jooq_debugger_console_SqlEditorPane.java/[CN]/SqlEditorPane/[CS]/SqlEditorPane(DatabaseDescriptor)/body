@@ -1,0 +1,66 @@
+{
+  super(new BorderLayout());
+  this.databaseDescriptor=databaseDescriptor;
+  this.isDBEditable=!databaseDescriptor.isReadOnly();
+  setOpaque(false);
+  JPanel northPanel=new JPanel();
+  northPanel.setOpaque(false);
+  JCheckBox limitCheckBox=new JCheckBox("10000 top rows",isUsingMaxRowCount);
+  limitCheckBox.addItemListener(new ItemListener(){
+    @Override public void itemStateChanged(    ItemEvent e){
+      isUsingMaxRowCount=e.getStateChange() == ItemEvent.SELECTED;
+    }
+  }
+);
+  limitCheckBox.setOpaque(false);
+  northPanel.add(limitCheckBox);
+  stopButton=new JButton("Stop");
+  stopButton.setOpaque(false);
+  stopButton.setEnabled(false);
+  stopButton.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      evaluationThread=null;
+      closeConnection();
+    }
+  }
+);
+  northPanel.add(stopButton);
+  northPanel.add(new JLabel("No display when rows >"));
+  displayedRowCountField=new JNumberEntryField<Integer>(100000,7,1,Integer.MAX_VALUE);
+  northPanel.add(displayedRowCountField);
+  add(northPanel,BorderLayout.NORTH);
+  editorTextArea=new SqlTextArea();
+  editorTextArea.addKeyListener(new KeyAdapter(){
+    @Override public void keyPressed(    KeyEvent e){
+      boolean isControlDown=e.isControlDown();
+switch (e.getKeyCode()) {
+case KeyEvent.VK_SPACE:
+        if (isControlDown) {
+          showCompletion();
+        }
+      break;
+case KeyEvent.VK_F5:
+    if (!stopButton.isEnabled()) {
+      evaluateInternal();
+    }
+  break;
+case KeyEvent.VK_ESCAPE:
+new Thread("SQLConsole - Interruption"){
+  @Override public void run(){
+    if (evaluationThread != null) {
+      evaluationThread=null;
+      closeConnection();
+    }
+  }
+}
+.start();
+break;
+}
+}
+}
+);
+RTextScrollPane editorTextAreaScrollPane=new RTextScrollPane(editorTextArea);
+JSplitPane verticalSplitPane=new JSplitPane(JSplitPane.VERTICAL_SPLIT,true,editorTextAreaScrollPane,southPanel);
+add(verticalSplitPane,BorderLayout.CENTER);
+verticalSplitPane.setDividerLocation(150);
+}

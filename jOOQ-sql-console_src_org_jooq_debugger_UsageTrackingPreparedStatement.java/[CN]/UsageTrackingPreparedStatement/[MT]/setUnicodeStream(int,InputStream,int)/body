@@ -1,0 +1,4 @@
+{
+  stmt.setUnicodeStream(parameterIndex,x,length);
+  logValue(parameterIndex,x == null ? null : "<UnicodeStream>");
+}

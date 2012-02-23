@@ -1,0 +1,7 @@
+{
+  boolean next=resultSet.next();
+  if (next) {
+    readRows++;
+  }
+  return next;
+}

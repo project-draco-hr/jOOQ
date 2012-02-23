@@ -1,0 +1,4 @@
+{
+  writeCount++;
+  resultSet.updateBoolean(columnIndex,x);
+}

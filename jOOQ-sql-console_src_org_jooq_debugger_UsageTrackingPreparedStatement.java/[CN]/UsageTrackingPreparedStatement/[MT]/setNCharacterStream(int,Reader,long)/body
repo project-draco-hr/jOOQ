@@ -1,0 +1,4 @@
+{
+  stmt.setNCharacterStream(parameterIndex,x,length);
+  logValue(parameterIndex,x == null ? null : "<NCharacterStream>");
+}

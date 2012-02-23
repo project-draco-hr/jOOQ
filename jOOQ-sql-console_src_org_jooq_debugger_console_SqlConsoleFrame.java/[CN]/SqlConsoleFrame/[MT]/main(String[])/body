@@ -1,0 +1,27 @@
+{
+  if (args.length < 2) {
+    System.out.println("Usage: <prog> <ip> <port>");
+    return;
+  }
+  try {
+    new SqlRemoteQueryDebuggerClient(args[0],Integer.parseInt(args[1]));
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+    return;
+  }
+  try {
+    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+  }
+  SwingUtilities.invokeLater(new Runnable(){
+    public void run(){
+      SqlConsoleFrame sqlConsoleFrame=new SqlConsoleFrame(null,true);
+      sqlConsoleFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+      sqlConsoleFrame.setVisible(true);
+    }
+  }
+);
+}

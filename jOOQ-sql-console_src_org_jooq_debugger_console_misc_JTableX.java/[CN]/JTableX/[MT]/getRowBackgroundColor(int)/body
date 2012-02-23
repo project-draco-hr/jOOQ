@@ -1,0 +1,3 @@
+{
+  return currentRow % 2 != 0 ? ODD_ROW_COLOR : EVEN_ROW_COLOR;
+}

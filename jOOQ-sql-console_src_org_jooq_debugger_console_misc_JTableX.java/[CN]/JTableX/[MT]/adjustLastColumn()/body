@@ -1,0 +1,35 @@
+{
+  if (isAdjusting) {
+    return;
+  }
+  isAdjusting=true;
+  if (autoAdjustingColumn >= 0 && getAutoResizeMode() == JTable.AUTO_RESIZE_OFF) {
+    Container p=getParent();
+    if (p instanceof JViewport) {
+      Container gp=p.getParent();
+      if (gp instanceof JScrollPane) {
+        int columnCount=getColumnModel().getColumnCount();
+        if (columnCount > 0) {
+          int autoFitColumn=autoAdjustingColumn;
+          if (autoFitColumn >= columnCount) {
+            autoFitColumn=columnCount - 1;
+          }
+ else {
+            autoFitColumn=convertColumnIndexToView(autoFitColumn);
+          }
+          TableColumn column=getColumnModel().getColumn(autoFitColumn);
+          int minWidth=column.getMinWidth();
+          column.setMinWidth(0);
+          column.setPreferredWidth(0);
+          column.setWidth(0);
+          int diff=p.getSize().width - getPreferredSize().width;
+          column.setMinWidth(minWidth);
+          diff=Math.max(minWidth,diff);
+          column.setPreferredWidth(diff);
+          column.setWidth(diff);
+        }
+      }
+    }
+  }
+  isAdjusting=false;
+}

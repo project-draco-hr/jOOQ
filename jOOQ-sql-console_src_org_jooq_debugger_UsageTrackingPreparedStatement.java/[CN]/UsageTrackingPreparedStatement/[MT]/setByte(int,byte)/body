@@ -1,0 +1,4 @@
+{
+  stmt.setByte(parameterIndex,x);
+  logValue(parameterIndex,x);
+}

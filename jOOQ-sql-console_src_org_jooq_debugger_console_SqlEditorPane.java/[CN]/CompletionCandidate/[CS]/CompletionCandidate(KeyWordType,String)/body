@@ -1,0 +1,4 @@
+{
+  this.keyWordType=keyWordType;
+  this.word=word;
+}

@@ -1,0 +1,4 @@
+{
+  stmt.setLong(parameterIndex,x);
+  logValue(parameterIndex,x);
+}

@@ -1,0 +1,4 @@
+{
+  writeCount++;
+  resultSet.updateRowId(columnLabel,x);
+}
