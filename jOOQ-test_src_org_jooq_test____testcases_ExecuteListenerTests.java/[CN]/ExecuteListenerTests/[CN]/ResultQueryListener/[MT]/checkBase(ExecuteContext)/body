@@ -1,0 +1,19 @@
+{
+  assertNotNull(ctx.query());
+  assertNotNull(ctx.batchQueries());
+  assertTrue(ctx.query().toString().contains("select"));
+  assertTrue(ctx.batchQueries()[0].toString().contains("select"));
+  assertEquals(ctx.query(),ctx.batchQueries()[0]);
+  assertEquals(1,ctx.batchSQL().length);
+  assertEquals("Bar",ctx.getData("Foo"));
+  assertEquals("Baz",ctx.getData("Bar"));
+  assertEquals(new HashMap<String,String>(){
+{
+      put("Foo","Bar");
+      put("Bar","Baz");
+    }
+  }
+,ctx.getData());
+  assertNull(ctx.routine());
+  assertEquals(ExecuteType.READ,ctx.type());
+}

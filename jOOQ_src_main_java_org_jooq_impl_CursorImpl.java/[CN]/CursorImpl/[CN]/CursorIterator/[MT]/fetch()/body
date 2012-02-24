@@ -2,9 +2,9 @@
   R record=null;
   try {
     if (!isClosed && rs.next()) {
-      ctx.record(null);
-      listener.recordStart(ctx);
       record=Util.newRecord(type,fields,ctx.configuration());
+      ctx.record(record);
+      listener.recordStart(ctx);
       final List<Field<?>> fieldList=fields.getFields();
       final int size=fieldList.size();
       for (int i=0; i < size; i++) {

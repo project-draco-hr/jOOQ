@@ -1,5 +1,10 @@
 {
-  for (  ExecuteListener listener : listeners) {
-    listener.fetchEnd(ctx);
+  if (resultStart) {
+    fetchEnd=true;
+  }
+ else {
+    for (    ExecuteListener listener : listeners) {
+      listener.fetchEnd(ctx);
+    }
   }
 }

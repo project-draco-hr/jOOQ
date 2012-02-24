@@ -1,8 +1,9 @@
 {
-  ctx.result(null);
-  listener.resultStart(ctx);
+  iterator();
   ResultImpl<R> result=new ResultImpl<R>(ctx.configuration(),fields);
   R record=null;
+  ctx.result(result);
+  listener.resultStart(ctx);
   for (int i=0; i < number && ((record=fetchOne()) != null); i++) {
     result.addRecord(record);
   }

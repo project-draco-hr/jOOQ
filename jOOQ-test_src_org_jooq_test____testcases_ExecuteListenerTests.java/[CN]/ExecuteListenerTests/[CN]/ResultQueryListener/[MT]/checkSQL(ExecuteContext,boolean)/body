@@ -1,0 +1,8 @@
+{
+  assertTrue(ctx.batchSQL()[0].contains("select"));
+  assertTrue(ctx.sql().contains("select"));
+  assertEquals(ctx.sql(),ctx.batchSQL()[0]);
+  if (patched) {
+    assertTrue(ctx.sql().contains("as my_field"));
+  }
+}

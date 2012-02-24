@@ -1,5 +1,9 @@
 {
+  resultStart=false;
   for (  ExecuteListener listener : listeners) {
     listener.resultEnd(ctx);
+  }
+  if (fetchEnd) {
+    fetchEnd(ctx);
   }
 }

@@ -1,0 +1,11 @@
+{
+  recordStart.add(++callbackCount);
+  checkBase(ctx);
+  checkSQL(ctx,true);
+  checkStatement(ctx,true);
+  checkResultSet(ctx,true);
+  assertNotNull(ctx.record());
+  assertEquals(2,ctx.record().getFields().size());
+  assertNull(ctx.record().getValue(0));
+  assertNull(ctx.record().getValue(1));
+}

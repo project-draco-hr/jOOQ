@@ -1,10 +1,10 @@
 {
   super(configuration);
   this.query=query;
-  this.batchQueries=batchQueries;
+  this.batchQueries=(batchQueries == null ? new Query[0] : batchQueries);
   this.routine=routine;
-  if (batchQueries != null) {
-    this.batchSQL=new String[batchQueries.length];
+  if (this.batchQueries.length > 0) {
+    this.batchSQL=new String[this.batchQueries.length];
   }
  else   if (routine != null) {
     this.batchSQL=new String[1];

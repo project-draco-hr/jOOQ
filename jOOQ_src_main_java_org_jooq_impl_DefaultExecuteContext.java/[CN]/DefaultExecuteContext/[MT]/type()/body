@@ -2,6 +2,9 @@
   if (routine != null) {
     return ExecuteType.ROUTINE;
   }
+ else   if (batchQueries.length > 1) {
+    return ExecuteType.BATCH;
+  }
  else   if (query != null) {
     if (query instanceof ResultQuery) {
       return ExecuteType.READ;

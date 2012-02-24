@@ -1,0 +1,9 @@
+{
+  fetchStart=++callbackCount;
+  checkBase(ctx);
+  checkSQL(ctx,true);
+  checkStatement(ctx,true);
+  checkResultSet(ctx,true);
+  assertNull(ctx.record());
+  assertNull(ctx.result());
+}

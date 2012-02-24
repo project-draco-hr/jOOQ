@@ -1,0 +1,10 @@
+{
+  start=++callbackCount;
+  checkBase(ctx);
+  assertNull(ctx.batchSQL()[0]);
+  assertNull(ctx.sql());
+  assertNull(ctx.statement());
+  assertNull(ctx.resultSet());
+  assertNull(ctx.record());
+  assertNull(ctx.result());
+}

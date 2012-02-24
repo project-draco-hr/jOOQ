@@ -1,0 +1,9 @@
+{
+  bindStart=++callbackCount;
+  checkBase(ctx);
+  checkSQL(ctx,true);
+  checkStatement(ctx,true);
+  assertNull(ctx.resultSet());
+  assertNull(ctx.record());
+  assertNull(ctx.result());
+}

@@ -1,4 +1,5 @@
 {
+  resultStart=true;
   for (  ExecuteListener listener : listeners) {
     listener.resultStart(ctx);
   }
