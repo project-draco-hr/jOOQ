@@ -1,0 +1,6 @@
+{
+  assertTrue(ctx.batchSQL()[0].contains("insert"));
+  if (patched) {
+    assertTrue(ctx.batchSQL()[0].contains("values    ("));
+  }
+}

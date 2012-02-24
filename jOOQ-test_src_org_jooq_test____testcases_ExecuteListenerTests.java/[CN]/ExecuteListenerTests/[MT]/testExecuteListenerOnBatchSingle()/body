@@ -1,0 +1,18 @@
+{
+  jOOQAbstractTest.reset=false;
+  Factory create=create(new Settings().withExecuteListeners(BatchSingleListener.class.getName()));
+  create.setData("Foo","Bar");
+  create.setData("Bar","Baz");
+  int[] result=create.batch(create().insertInto(TAuthor()).set(TAuthor_ID(),param("id",Integer.class)).set(TAuthor_LAST_NAME(),param("name",String.class))).bind(8,"Gamma").bind(9,"Helm").bind(10,"Johnson").execute();
+  assertEquals(3,result.length);
+  assertEquals(1,BatchSingleListener.start);
+  assertEquals(2,BatchSingleListener.renderStart);
+  assertEquals(3,BatchSingleListener.renderEnd);
+  assertEquals(4,BatchSingleListener.prepareStart);
+  assertEquals(5,BatchSingleListener.prepareEnd);
+  assertEquals(asList(6,8,10),BatchSingleListener.bindStart);
+  assertEquals(asList(7,9,11),BatchSingleListener.bindEnd);
+  assertEquals(12,BatchSingleListener.executeStart);
+  assertEquals(13,BatchSingleListener.executeEnd);
+  assertEquals(14,BatchSingleListener.end);
+}
