@@ -3,8 +3,8 @@
     return;
   }
   this.isLogging=isLogging;
-  loggerLoggingOnButton.setVisible(!isLogging);
-  loggerLoggingOffButton.setVisible(isLogging);
+  loggerOnButton.setVisible(!isLogging);
+  loggerOffButton.setVisible(isLogging);
   if (sqlQueryDebugger != null) {
     SqlQueryDebuggerRegister.removeSqlQueryDebugger(sqlQueryDebugger);
     sqlQueryDebugger=null;
