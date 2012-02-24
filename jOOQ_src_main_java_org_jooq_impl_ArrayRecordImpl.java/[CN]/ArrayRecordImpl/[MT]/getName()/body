@@ -1,3 +1,8 @@
 {
-  return name;
+  if (schema != null) {
+    return schema.getName() + "." + name;
+  }
+ else {
+    return name;
+  }
 }

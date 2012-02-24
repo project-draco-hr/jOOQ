@@ -3,6 +3,13 @@
     this.array=null;
   }
  else {
-    this.array=Convert.convert(array.getArray(),type.getArrayType());
+    Object o;
+    if (schema != null) {
+      o=array.getArray(schema.getTypeMapping());
+    }
+ else {
+      o=array.getArray();
+    }
+    this.array=Convert.convert(o,type.getArrayType());
   }
 }

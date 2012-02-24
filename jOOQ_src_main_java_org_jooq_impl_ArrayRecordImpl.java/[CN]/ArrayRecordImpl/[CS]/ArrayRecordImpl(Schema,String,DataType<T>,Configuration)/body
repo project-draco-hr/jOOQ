@@ -1,0 +1,6 @@
+{
+  super(configuration);
+  this.schema=schema;
+  this.name=name;
+  this.type=type;
+}

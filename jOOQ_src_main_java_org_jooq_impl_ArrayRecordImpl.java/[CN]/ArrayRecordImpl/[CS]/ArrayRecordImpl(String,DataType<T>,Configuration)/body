@@ -1,5 +1,3 @@
 {
-  super(configuration);
-  this.name=name;
-  this.type=type;
+  this(null,name,type,configuration);
 }
