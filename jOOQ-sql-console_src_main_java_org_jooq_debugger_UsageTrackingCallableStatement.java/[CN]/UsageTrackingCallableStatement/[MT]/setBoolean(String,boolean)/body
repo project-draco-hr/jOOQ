@@ -1,0 +1,3 @@
+{
+  stmt.setBoolean(parameterName,x);
+}

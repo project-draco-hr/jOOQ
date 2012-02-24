@@ -1,0 +1,3 @@
+{
+  stmt.setAsciiStream(parameterName,x);
+}

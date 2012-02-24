@@ -1,0 +1,3 @@
+{
+  return stmt.getBytes(parameterName);
+}

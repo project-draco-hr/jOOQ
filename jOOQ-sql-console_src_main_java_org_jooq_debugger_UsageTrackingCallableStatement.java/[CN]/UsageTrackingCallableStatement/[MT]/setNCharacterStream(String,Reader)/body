@@ -1,0 +1,3 @@
+{
+  stmt.setNCharacterStream(parameterName,value);
+}

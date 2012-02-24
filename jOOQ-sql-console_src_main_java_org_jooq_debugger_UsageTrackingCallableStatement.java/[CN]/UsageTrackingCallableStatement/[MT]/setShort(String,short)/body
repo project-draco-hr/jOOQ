@@ -1,0 +1,3 @@
+{
+  stmt.setShort(parameterName,x);
+}

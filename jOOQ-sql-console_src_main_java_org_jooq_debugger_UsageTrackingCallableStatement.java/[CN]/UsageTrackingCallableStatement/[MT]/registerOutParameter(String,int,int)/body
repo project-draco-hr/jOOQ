@@ -1,0 +1,3 @@
+{
+  stmt.registerOutParameter(parameterName,sqlType,scale);
+}
