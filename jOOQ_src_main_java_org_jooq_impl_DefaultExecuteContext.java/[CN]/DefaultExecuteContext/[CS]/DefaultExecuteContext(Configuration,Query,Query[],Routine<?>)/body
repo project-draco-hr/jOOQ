@@ -3,5 +3,13 @@
   this.query=query;
   this.batchQueries=batchQueries;
   this.routine=routine;
-  this.batchSQL=(batchQueries == null ? null : new String[batchQueries.length]);
+  if (batchQueries != null) {
+    this.batchSQL=new String[batchQueries.length];
+  }
+ else   if (routine != null) {
+    this.batchSQL=new String[1];
+  }
+ else {
+    this.batchSQL=new String[0];
+  }
 }
