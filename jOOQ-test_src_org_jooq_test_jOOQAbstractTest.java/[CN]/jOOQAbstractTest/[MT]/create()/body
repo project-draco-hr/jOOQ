@@ -1,4 +1,4 @@
 {
-  Settings settings=new Settings().withExecuteListeners(SqlQueryDebuggerExecuteListener.class.getName());
+  Settings settings=new Settings().withExecuteListeners(TestStatisticsListener.class.getName(),SqlQueryDebuggerExecuteListener.class.getName());
   return create(settings);
 }

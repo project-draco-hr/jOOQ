@@ -6,4 +6,9 @@
     connection.createStatement().execute("dump tran TEST with truncate_only");
   }
   connection.close();
+  log.info("TEST STATISTICS");
+  log.info("---------------");
+  for (  ExecuteType type : ExecuteType.values()) {
+    log.info(type.name(),TestStatisticsListener.STATISTICS.get(type) + " executions");
+  }
 }

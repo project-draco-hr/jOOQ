@@ -1,0 +1,7 @@
+{
+  Integer count=STATISTICS.get(ctx.type());
+  if (count == null) {
+    count=0;
+  }
+  STATISTICS.put(ctx.type(),count + 1);
+}
