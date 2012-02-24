@@ -4,5 +4,7 @@
   }
   aggregatedPreparationDuration+=System.currentTimeMillis() - startPreparationTime;
   PreparedStatement statement=ctx.statement();
-  ctx.statement(new UsageTrackingPreparedStatement(statement));
+  if (ctx.type() != ExecuteType.ROUTINE) {
+    ctx.statement(new UsageTrackingPreparedStatement(statement));
+  }
 }
