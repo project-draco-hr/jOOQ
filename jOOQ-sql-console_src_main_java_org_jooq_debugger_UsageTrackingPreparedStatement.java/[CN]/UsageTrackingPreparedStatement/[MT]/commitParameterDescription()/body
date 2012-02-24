@@ -11,5 +11,4 @@
     }
   }
   sb.append("]");
-  isNew=true;
 }

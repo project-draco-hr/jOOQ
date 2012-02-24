@@ -1,8 +1,7 @@
 {
-  isNew=false;
-  int missingLength=parameterIndex + 1 - paramList.size();
+  int missingLength=parameterIndex - paramList.size();
   for (int i=0; i < missingLength; i++) {
     paramList.add(null);
   }
-  paramList.set(parameterIndex,String.valueOf(o));
+  paramList.set(parameterIndex - 1,String.valueOf(o));
 }

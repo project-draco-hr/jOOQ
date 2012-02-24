@@ -9,9 +9,6 @@
   }
   ResultSet resultSet=ctx.resultSet();
   String[] sql=ctx.batchSQL();
-  if (sql.length == 1 && sql[0] == null) {
-    sql=new String[]{ctx.sql()};
-  }
   SqlQueryType sqlQueryType=getSqlQueryType(sql[0]);
   if (sql.length == 1) {
     PreparedStatement statement=ctx.statement();
