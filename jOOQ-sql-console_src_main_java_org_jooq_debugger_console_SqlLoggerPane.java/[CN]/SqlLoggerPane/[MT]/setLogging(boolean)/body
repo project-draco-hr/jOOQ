@@ -1,5 +1,10 @@
 {
-  loggerLogCheckBox.setSelected(isLogging);
+  if (this.isLogging == isLogging) {
+    return;
+  }
+  this.isLogging=isLogging;
+  loggerLoggingOnButton.setVisible(!isLogging);
+  loggerLoggingOffButton.setVisible(isLogging);
   if (sqlQueryDebugger != null) {
     SqlQueryDebuggerRegister.removeSqlQueryDebugger(sqlQueryDebugger);
     sqlQueryDebugger=null;
