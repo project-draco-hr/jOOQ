@@ -1,4 +1,8 @@
 {
+  if (!executePreparedStatements(create().getSettings())) {
+    log.info("SKIPPINT","Single batch tests with statement type = STATEMENT");
+    return;
+  }
   jOOQAbstractTest.reset=false;
   Factory create=create(new Settings().withExecuteListeners(BatchSingleListener.class.getName()));
   create.setData("Foo","Bar");
