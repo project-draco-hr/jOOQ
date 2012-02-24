@@ -1,10 +1,12 @@
 {
   boolean isDisplayed=false;
 switch (queryDebuggingInfo.getQueryType()) {
-case READ:
+case SELECT:
     isDisplayed=isReadQueryTypeDisplayed;
   break;
-case WRITE:
+case INSERT:
+case UPDATE:
+case DELETE:
 isDisplayed=isWriteQueryTypeDisplayed;
 break;
 case OTHER:
