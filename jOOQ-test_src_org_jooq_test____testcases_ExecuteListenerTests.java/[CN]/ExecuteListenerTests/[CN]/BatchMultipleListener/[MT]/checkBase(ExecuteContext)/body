@@ -1,0 +1,23 @@
+{
+  assertNull(ctx.query());
+  assertNotNull(ctx.batchQueries());
+  assertTrue(ctx.batchQueries()[0].toString().contains("insert"));
+  assertTrue(ctx.batchQueries()[1].toString().contains("insert"));
+  assertTrue(ctx.batchQueries()[2].toString().contains("insert"));
+  assertTrue(ctx.batchQueries()[3].toString().contains("insert"));
+  assertEquals(4,ctx.batchSQL().length);
+  assertEquals("Bar",ctx.getData("Foo"));
+  assertEquals("Baz",ctx.getData("Bar"));
+  assertEquals(new HashMap<String,String>(){
+{
+      put("Foo","Bar");
+      put("Bar","Baz");
+    }
+  }
+,ctx.getData());
+  assertNull(ctx.routine());
+  assertNull(ctx.resultSet());
+  assertNull(ctx.record());
+  assertNull(ctx.result());
+  assertEquals(ExecuteType.BATCH,ctx.type());
+}

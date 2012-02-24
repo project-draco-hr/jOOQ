@@ -1,0 +1,7 @@
+{
+  renderStart.add(++callbackCount);
+  checkBase(ctx);
+  checkStatement(ctx,false);
+  checkSQL(ctx,false);
+  assertNull(ctx.sql());
+}
