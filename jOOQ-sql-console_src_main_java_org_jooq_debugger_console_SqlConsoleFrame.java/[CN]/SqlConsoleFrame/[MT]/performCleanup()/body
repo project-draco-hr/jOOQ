@@ -1,0 +1,10 @@
+{
+  if (sqlLoggerPane != null) {
+    sqlLoggerPane.setLogging(false);
+  }
+  if (editorTabbedPane != null) {
+    for (int i=editorTabbedPane.getTabCount() - 2; i >= 0; i--) {
+      ((SqlEditorPane)editorTabbedPane.getComponentAt(i)).closeConnection();
+    }
+  }
+}
