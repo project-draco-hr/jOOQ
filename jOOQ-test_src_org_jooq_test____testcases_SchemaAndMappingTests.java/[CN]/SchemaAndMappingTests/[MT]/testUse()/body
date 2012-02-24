@@ -11,4 +11,6 @@ factory.use(schema().getName());
 Result<?> result=factory.select(TBook_AUTHOR_ID(),count()).from(TBook()).join(TAuthor()).on(TBook_AUTHOR_ID().equal(TAuthor_ID())).where(TAuthor_YEAR_OF_BIRTH().greaterOrEqual(TAuthor_ID())).groupBy(TBook_AUTHOR_ID()).having(count().greaterOrEqual(1)).orderBy(TBook_AUTHOR_ID().desc()).fetch();
 assertEquals(Arrays.asList(2,1),result.getValues(TBook_AUTHOR_ID()));
 assertEquals(Arrays.asList(2,2),result.getValues(count()));
+String sql=factory.select(TBook_AUTHOR_ID()).from(TAuthor()).getSQL();
+assertFalse(sql.toLowerCase().contains(schema().getName().toLowerCase()));
 }
