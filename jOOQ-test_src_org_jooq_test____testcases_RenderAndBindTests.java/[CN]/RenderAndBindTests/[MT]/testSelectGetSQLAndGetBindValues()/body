@@ -3,9 +3,11 @@
   assertEquals(asList(6,2,3,2),select.getBindValues());
   log.info("Executing",select.getSQL());
   PreparedStatement stmt=jOOQAbstractTest.connection.prepareStatement(select.getSQL());
-  int i=0;
-  for (  Object value : select.getBindValues()) {
-    stmt.setObject(++i,value);
+  if (executePreparedStatements(create().getSettings())) {
+    int i=0;
+    for (    Object value : select.getBindValues()) {
+      stmt.setObject(++i,value);
+    }
   }
   ResultSet rs=stmt.executeQuery();
   Result<Record> result=create().fetch(rs);
