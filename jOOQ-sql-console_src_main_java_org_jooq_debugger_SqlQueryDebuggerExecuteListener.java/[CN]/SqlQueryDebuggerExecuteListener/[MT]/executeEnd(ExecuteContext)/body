@@ -9,7 +9,7 @@
   }
   ResultSet resultSet=ctx.resultSet();
   String[] sql=ctx.batchSQL();
-  SqlQueryType sqlQueryType=getSqlQueryType(sql[0]);
+  SqlQueryType sqlQueryType=SqlQueryType.detectType(sql[0]);
   if (sql.length == 1) {
     PreparedStatement statement=ctx.statement();
     if (statement instanceof UsageTrackingPreparedStatement) {
