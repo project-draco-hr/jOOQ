@@ -305,6 +305,8 @@ case COLUMN_RS_READ_ROWS:
 return Integer.class;
 case COLUMN_DUPLICATION_COUNT:
 return Integer.class;
+case COLUMN_QUERY:
+return String.class;
 }
 return super.getColumnClass(columnIndex);
 }
@@ -352,6 +354,16 @@ break;
 ((JLabel)c).setIcon(icon);
 }
 return c;
+}
+}
+);
+table.setDefaultRenderer(String.class,new DefaultTableCellRenderer(){
+private Pattern pattern=Pattern.compile("[\\t\\n\\x0B\\f\\r]+");
+@Override public Component getTableCellRendererComponent(JTable table,Object value,boolean isSelected,boolean hasFocus,int row,int column){
+if (value != null) {
+value=pattern.matcher((String)value).replaceAll(" ");
+}
+return super.getTableCellRendererComponent(table,value,isSelected,hasFocus,row,column);
 }
 }
 );
