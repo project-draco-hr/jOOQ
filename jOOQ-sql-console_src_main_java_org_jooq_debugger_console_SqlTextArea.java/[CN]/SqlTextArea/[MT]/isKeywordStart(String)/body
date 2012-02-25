@@ -1,4 +1,0 @@
-{
-  s=s.toUpperCase();
-  return s.startsWith("UNION ") || s.startsWith("CROSS JOIN ") || s.startsWith("INNER JOIN ")|| s.startsWith("ORDER BY ")|| s.startsWith("GROUP BY ")|| s.startsWith("HAVING ")|| s.startsWith("ON ")|| s.startsWith("WITH ")|| s.startsWith("SELECT ")|| s.startsWith("LEFT ")|| s.startsWith("FROM ")|| s.startsWith("WHERE ")|| s.startsWith("AND ")|| s.startsWith("OR ");
-}
