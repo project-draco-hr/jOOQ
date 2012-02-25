@@ -1,6 +1,6 @@
 {
   if (!executePreparedStatements(create().getSettings())) {
-    log.info("SKIPPINT","Single batch tests with statement type = STATEMENT");
+    log.info("SKIPPING","Single batch tests with statement type = STATEMENT");
     return;
   }
   jOOQAbstractTest.reset=false;
