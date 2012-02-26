@@ -1,5 +1,5 @@
 {
-  isLogging=!DebuggerRegister.getSqlQueryDebuggerList().isEmpty();
+  isLogging=!DebuggerRegistry.getDebuggerList().isEmpty();
   startPreparationTime=0;
   aggregatedPreparationDuration=0;
   startBindTime=0;

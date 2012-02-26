@@ -31,10 +31,10 @@
           if (o instanceof ServerLoggingActivationMessage) {
             isLogging=((ServerLoggingActivationMessage)o).isLogging();
             if (isLogging) {
-              DebuggerRegister.addSqlQueryDebugger(sqlQueryDebugger);
+              DebuggerRegistry.addSqlQueryDebugger(sqlQueryDebugger);
             }
  else {
-              DebuggerRegister.removeSqlQueryDebugger(sqlQueryDebugger);
+              DebuggerRegistry.removeSqlQueryDebugger(sqlQueryDebugger);
             }
           }
         }
@@ -46,7 +46,7 @@
       }
  finally {
         if (sqlQueryDebugger != null) {
-          DebuggerRegister.removeSqlQueryDebugger(sqlQueryDebugger);
+          DebuggerRegistry.removeSqlQueryDebugger(sqlQueryDebugger);
         }
       }
     }

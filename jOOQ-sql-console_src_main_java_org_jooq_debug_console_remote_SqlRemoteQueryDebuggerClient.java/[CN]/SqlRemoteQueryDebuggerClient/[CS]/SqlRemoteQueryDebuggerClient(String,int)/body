@@ -2,13 +2,13 @@
   socket=new Socket(ip,port);
   Thread thread=new Thread("SQL Remote Debugger Client on port " + port){
     @Override public void run(){
-      DebuggerRegisterListener debuggerRegisterListener=null;
+      DebuggerRegistryListener debuggerRegisterListener=null;
       try {
         final ObjectOutputStream out=new ObjectOutputStream(new BufferedOutputStream(socket.getOutputStream()));
-        debuggerRegisterListener=new DebuggerRegisterListener(){
-          @Override public void notifySqlQueryDebuggerListenerListModified(){
+        debuggerRegisterListener=new DebuggerRegistryListener(){
+          @Override public void notifyDebuggerListenersModified(){
             try {
-              boolean isLogging=!DebuggerRegister.getSqlQueryDebuggerList().isEmpty();
+              boolean isLogging=!DebuggerRegistry.getDebuggerList().isEmpty();
               out.writeObject(new ServerLoggingActivationMessage(isLogging));
               out.flush();
             }
@@ -18,12 +18,12 @@
           }
         }
 ;
-        DebuggerRegister.addSqlQueryDebuggerRegisterListener(debuggerRegisterListener);
+        DebuggerRegistry.addDebuggerRegisterListener(debuggerRegisterListener);
         ObjectInputStream in=new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
         for (Message o; (o=(Message)in.readObject()) != null; ) {
           if (o instanceof ClientDebugQueriesMessage) {
             DebuggerData sqlQueryDebuggerData=((ClientDebugQueriesMessage)o).getSqlQueryDebuggerData();
-            for (            Debugger debugger : DebuggerRegister.getSqlQueryDebuggerList()) {
+            for (            Debugger debugger : DebuggerRegistry.getDebuggerList()) {
               debugger.debugQueries(sqlQueryDebuggerData);
             }
           }
@@ -31,7 +31,7 @@
             ClientDebugResultSetMessage m=(ClientDebugResultSetMessage)o;
             int sqlQueryDebuggerDataID=m.getSqlQueryDebuggerDataID();
             DebuggerResultSetData clientDebugResultSetData=m.getSqlQueryDebuggerResultSetData();
-            for (            Debugger debugger : DebuggerRegister.getSqlQueryDebuggerList()) {
+            for (            Debugger debugger : DebuggerRegistry.getDebuggerList()) {
               debugger.debugResultSet(sqlQueryDebuggerDataID,clientDebugResultSetData);
             }
           }
@@ -42,7 +42,7 @@
       }
  finally {
         if (debuggerRegisterListener != null) {
-          DebuggerRegister.removeSqlQueryDebuggerRegisterListener(debuggerRegisterListener);
+          DebuggerRegistry.removeDebuggerRegisterListener(debuggerRegisterListener);
         }
       }
     }

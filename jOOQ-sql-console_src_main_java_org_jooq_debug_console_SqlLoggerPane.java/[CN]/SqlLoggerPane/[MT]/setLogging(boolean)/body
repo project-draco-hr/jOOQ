@@ -6,7 +6,7 @@
   loggerOnButton.setVisible(!isLogging);
   loggerOffButton.setVisible(isLogging);
   if (sqlQueryDebugger != null) {
-    DebuggerRegister.removeSqlQueryDebugger(sqlQueryDebugger);
+    DebuggerRegistry.removeSqlQueryDebugger(sqlQueryDebugger);
     sqlQueryDebugger=null;
   }
   if (isLogging) {
@@ -51,6 +51,6 @@
       }
     }
 ;
-    DebuggerRegister.addSqlQueryDebugger(sqlQueryDebugger);
+    DebuggerRegistry.addSqlQueryDebugger(sqlQueryDebugger);
   }
 }
