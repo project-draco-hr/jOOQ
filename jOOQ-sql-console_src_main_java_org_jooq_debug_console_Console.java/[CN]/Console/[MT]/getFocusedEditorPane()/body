@@ -1,0 +1,3 @@
+{
+  return (EditorPane)editorTabbedPane.getSelectedComponent();
+}

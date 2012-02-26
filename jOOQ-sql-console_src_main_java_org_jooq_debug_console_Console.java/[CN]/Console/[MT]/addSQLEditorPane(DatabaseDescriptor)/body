@@ -1,7 +1,7 @@
 {
   isAdjusting=true;
   int index=editorTabbedPane.getTabCount() - 1;
-  final SqlEditorPane sqlEditorPane=new SqlEditorPane(databaseDescriptor);
+  final EditorPane sqlEditorPane=new EditorPane(databaseDescriptor);
   String title="Context " + contextCount++;
   editorTabbedPane.insertTab(title,null,sqlEditorPane,null,index);
   final JPanel tabComponent=new JPanel(new BorderLayout());
@@ -17,7 +17,7 @@
       if (editorTabbedPane.getTabCount() > 2) {
         for (int i=editorTabbedPane.getTabCount() - 1; i >= 0; i--) {
           if (editorTabbedPane.getTabComponentAt(i) == tabComponent) {
-            ((SqlEditorPane)editorTabbedPane.getComponentAt(i)).closeConnection();
+            ((EditorPane)editorTabbedPane.getComponentAt(i)).closeConnection();
             editorTabbedPane.removeTabAt(i);
             if (i == editorTabbedPane.getTabCount() - 1) {
               editorTabbedPane.setSelectedIndex(i - 1);

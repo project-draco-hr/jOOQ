@@ -38,7 +38,7 @@ JMenuItem aboutMenuItem=new JMenuItem("About");
 aboutMenuItem.setMnemonic('A');
 aboutMenuItem.addActionListener(new ActionListener(){
 @Override public void actionPerformed(ActionEvent e){
-final JDialog aboutDialog=new JDialog(SqlConsoleFrame.this,"About jOOQ Console",ModalityType.APPLICATION_MODAL);
+final JDialog aboutDialog=new JDialog(Console.this,"About jOOQ Console",ModalityType.APPLICATION_MODAL);
 aboutDialog.setResizable(false);
 Container contentPane=aboutDialog.getContentPane();
 JPanel centerPane=new JPanel(new GridBagLayout());
@@ -80,7 +80,7 @@ aboutDialog.dispose();
 southPane.add(okButton);
 contentPane.add(southPane,BorderLayout.SOUTH);
 aboutDialog.pack();
-aboutDialog.setLocationRelativeTo(SqlConsoleFrame.this);
+aboutDialog.setLocationRelativeTo(Console.this);
 aboutDialog.setVisible(true);
 }
 }

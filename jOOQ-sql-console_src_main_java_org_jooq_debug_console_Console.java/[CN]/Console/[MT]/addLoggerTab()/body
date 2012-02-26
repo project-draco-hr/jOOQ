@@ -1,4 +1,4 @@
 {
-  sqlLoggerPane=new SqlLoggerPane();
+  sqlLoggerPane=new LoggerPane();
   mainTabbedPane.addTab("Logger",sqlLoggerPane);
 }

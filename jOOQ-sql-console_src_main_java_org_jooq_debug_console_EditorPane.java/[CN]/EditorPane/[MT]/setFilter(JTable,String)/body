@@ -7,7 +7,7 @@
   this.filter=filter;
   ((TableRowSorter<?>)table.getRowSorter()).setRowFilter(new RowFilter<Object,Object>(){
     @Override public boolean include(    javax.swing.RowFilter.Entry<? extends Object,? extends Object> entry){
-      String lcFilter=SqlEditorPane.this.filter.toLowerCase();
+      String lcFilter=EditorPane.this.filter.toLowerCase();
       for (int i=entry.getValueCount() - 1; i >= 0; i--) {
         if (entry.getStringValue(i).toLowerCase().contains(lcFilter)) {
           return true;
