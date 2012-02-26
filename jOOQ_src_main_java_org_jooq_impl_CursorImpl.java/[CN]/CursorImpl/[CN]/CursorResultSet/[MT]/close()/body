@@ -1,5 +1,7 @@
 {
   ctx.resultSet().close();
-  ctx.statement().close();
+  if (!keepStatementOpen) {
+    ctx.statement().close();
+  }
   listener.fetchEnd(ctx);
 }
