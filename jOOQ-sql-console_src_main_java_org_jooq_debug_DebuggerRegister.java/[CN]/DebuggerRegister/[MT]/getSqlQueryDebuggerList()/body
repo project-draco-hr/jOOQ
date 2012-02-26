@@ -1,0 +1,8 @@
+{
+synchronized (LOCK) {
+    if (debuggerList.isEmpty()) {
+      return Collections.emptyList();
+    }
+    return Collections.unmodifiableList(new ArrayList<Debugger>(debuggerList));
+  }
+}

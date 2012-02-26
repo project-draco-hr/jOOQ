@@ -6,12 +6,12 @@
   loggerOnButton.setVisible(!isLogging);
   loggerOffButton.setVisible(isLogging);
   if (sqlQueryDebugger != null) {
-    SqlQueryDebuggerRegister.removeSqlQueryDebugger(sqlQueryDebugger);
+    DebuggerRegister.removeSqlQueryDebugger(sqlQueryDebugger);
     sqlQueryDebugger=null;
   }
   if (isLogging) {
-    sqlQueryDebugger=new SqlQueryDebugger(){
-      @Override public void debugQueries(      SqlQueryDebuggerData sqlQueryDebuggerData){
+    sqlQueryDebugger=new Debugger(){
+      @Override public void debugQueries(      DebuggerData sqlQueryDebuggerData){
         debugQueries(new QueryDebuggingInfo(System.currentTimeMillis(),sqlQueryDebuggerData));
       }
       public void debugQueries(      final QueryDebuggingInfo queryDebuggingInfo){
@@ -26,7 +26,7 @@
         }
         addRow(queryDebuggingInfo);
       }
-      @Override public void debugResultSet(      final int sqlQueryDebuggerDataID,      final SqlQueryDebuggerResultSetData sqlQueryDebuggerResultSetData){
+      @Override public void debugResultSet(      final int sqlQueryDebuggerDataID,      final DebuggerResultSetData sqlQueryDebuggerResultSetData){
         if (!SwingUtilities.isEventDispatchThread()) {
           SwingUtilities.invokeLater(new Runnable(){
             @Override public void run(){
@@ -51,6 +51,6 @@
       }
     }
 ;
-    SqlQueryDebuggerRegister.addSqlQueryDebugger(sqlQueryDebugger);
+    DebuggerRegister.addSqlQueryDebugger(sqlQueryDebugger);
   }
 }
