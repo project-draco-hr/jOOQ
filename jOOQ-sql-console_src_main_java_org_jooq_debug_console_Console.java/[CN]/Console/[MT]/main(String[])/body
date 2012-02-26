@@ -4,7 +4,7 @@
     return;
   }
   try {
-    new SqlRemoteQueryDebuggerClient(args[0],Integer.parseInt(args[1]));
+    new RemoteDebuggerClient(args[0],Integer.parseInt(args[1]));
   }
  catch (  Exception e) {
     e.printStackTrace();
