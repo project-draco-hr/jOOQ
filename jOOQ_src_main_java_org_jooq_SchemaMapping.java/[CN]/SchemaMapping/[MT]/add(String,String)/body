@@ -1,13 +1,16 @@
 {
   if (ignoreMapping)   return;
   logDeprecation();
-  Iterator<MappedSchema> it=mapping.getSchemata().iterator();
-  while (it.hasNext()) {
-    MappedSchema schema=it.next();
-    if (inputSchema.equals(schema.getInput())) {
-      it.remove();
+  MappedSchema schema=null;
+  for (  MappedSchema s : mapping.getSchemata()) {
+    if (inputSchema.equals(s.getInput())) {
+      schema=s;
       break;
     }
   }
-  mapping.getSchemata().add(new MappedSchema().withInput(inputSchema).withOutput(outputSchema));
+  if (schema == null) {
+    schema=new MappedSchema().withInput(inputSchema);
+    mapping.getSchemata().add(schema);
+  }
+  schema.setOutput(outputSchema);
 }
