@@ -1,6 +1,6 @@
 {
   Factory create=delegate.create(settings);
   create.getSettings().getExecuteListeners().add(TestStatisticsListener.class.getName());
-  create.getSettings().getExecuteListeners().add(SqlQueryDebuggerExecuteListener.class.getName());
+  create.getSettings().getExecuteListeners().add(DebugListener.class.getName());
   return create;
 }
