@@ -3,6 +3,7 @@
   String allSQL=scripts.get(script);
   if (allSQL == null) {
     try {
+      log.info("Loading",script);
       File file=new File(getClass().getResource(script).toURI());
       allSQL=FileUtils.readFileToString(file);
       testSQLWatch.splitDebug("Loaded SQL file");
