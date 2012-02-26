@@ -1,3 +1,4 @@
 {
-  defaultSchema=schema;
+  if (ignoreMapping)   return;
+  use(schema.getName());
 }

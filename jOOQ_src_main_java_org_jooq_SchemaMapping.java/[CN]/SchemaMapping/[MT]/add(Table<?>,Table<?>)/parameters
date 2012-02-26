@@ -1,2 +1,2 @@
-Table<?> generatedTable
-Table<?> configuredTable
+Table<?> inputTable
+Table<?> outputTable

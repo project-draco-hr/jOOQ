@@ -1,25 +1,5 @@
 {
-  StringBuilder sb=new StringBuilder();
-  sb.append("SchemaMapping[");
-  String separator="";
-  if (!schemata.isEmpty()) {
-    sb.append(separator);
-    sb.append("schemata=");
-    sb.append(schemata);
-    separator=", ";
-  }
-  if (defaultSchema != null) {
-    sb.append(separator);
-    sb.append("use=");
-    sb.append(defaultSchema);
-    separator=", ";
-  }
-  if (!tables.isEmpty()) {
-    sb.append(separator);
-    sb.append("tables=");
-    sb.append(tables);
-    separator=", ";
-  }
-  sb.append("]");
-  return sb.toString();
+  StringWriter writer=new StringWriter();
+  JAXB.marshal(mapping,writer);
+  return writer.toString();
 }

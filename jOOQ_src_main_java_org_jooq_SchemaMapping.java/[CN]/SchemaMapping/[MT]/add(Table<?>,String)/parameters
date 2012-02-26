@@ -1,2 +1,2 @@
-Table<?> generatedTable
-String configuredTableName
+Table<?> inputTable
+String outputTable

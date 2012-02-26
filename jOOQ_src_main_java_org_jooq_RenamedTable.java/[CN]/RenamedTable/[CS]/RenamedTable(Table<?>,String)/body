@@ -1,0 +1,6 @@
+{
+  super(rename,delegate.getSchema());
+  for (  Field<?> field : delegate.getFields()) {
+    createField(field.getName(),field.getDataType(),this);
+  }
+}

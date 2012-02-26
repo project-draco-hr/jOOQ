@@ -1,3 +1,4 @@
 {
-  schemata.put(inputSchema,outputSchema);
+  if (ignoreMapping)   return;
+  add(inputSchema,outputSchema.getName());
 }

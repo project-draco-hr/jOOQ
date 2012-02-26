@@ -1,11 +1,25 @@
 {
-  @SuppressWarnings("serial") Table<Record> configuredTable=new TableImpl<Record>(configuredTableName,generatedTable.getSchema()){
-{
-      for (      Field<?> field : generatedTable.getFields()) {
-        createField(field.getName(),field.getDataType(),this);
+  if (ignoreMapping)   return;
+  logDeprecation();
+  MappedSchema schema=null;
+  for (  MappedSchema s : mapping.getSchemata()) {
+    if (inputTable.getSchema().getName().equals(s.getInput())) {
+      Iterator<MappedTable> it=s.getTables().iterator();
+      tableLoop:       while (it.hasNext()) {
+        MappedTable table=it.next();
+        if (inputTable.getName().equals(table.getInput())) {
+          it.remove();
+          break tableLoop;
+        }
       }
+      schema=s;
+      break;
     }
   }
-;
-  add(generatedTable,configuredTable);
+  if (schema == null) {
+    schema=new MappedSchema();
+    schema.setInput(inputTable.getSchema().getName());
+    mapping.getSchemata().add(schema);
+  }
+  schema.getTables().add(new MappedTable().withInput(inputTable.getName()).withOutput(outputTable));
 }

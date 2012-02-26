@@ -1,3 +1,5 @@
 {
-  defaultSchema=new SchemaImpl(schemaName);
+  if (ignoreMapping)   return;
+  logDeprecation();
+  mapping.setDefaultSchema(schemaName);
 }

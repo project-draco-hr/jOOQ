@@ -1,3 +1,4 @@
 {
-  tables.put(generatedTable.getName(),configuredTable);
+  if (ignoreMapping)   return;
+  add(inputTable,outputTable.getName());
 }

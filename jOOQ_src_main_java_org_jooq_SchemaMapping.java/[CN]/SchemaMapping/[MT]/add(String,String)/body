@@ -1,3 +1,13 @@
 {
-  add(inputSchema,new SchemaImpl(outputSchema));
+  if (ignoreMapping)   return;
+  logDeprecation();
+  Iterator<MappedSchema> it=mapping.getSchemata().iterator();
+  while (it.hasNext()) {
+    MappedSchema schema=it.next();
+    if (inputSchema.equals(schema.getInput())) {
+      it.remove();
+      break;
+    }
+  }
+  mapping.getSchemata().add(new MappedSchema().withInput(inputSchema).withOutput(outputSchema));
 }

@@ -1,0 +1,7 @@
+{
+  if (settings == null) {
+    logDeprecation();
+  }
+  this.mapping=SettingsTools.getRenderMapping(settings);
+  this.ignoreMapping=ignore;
+}

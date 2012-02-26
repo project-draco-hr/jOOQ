@@ -1,3 +1,4 @@
 {
-  add(inputSchema.getName(),new SchemaImpl(outputSchema));
+  if (ignoreMapping)   return;
+  add(inputSchema.getName(),outputSchema);
 }
