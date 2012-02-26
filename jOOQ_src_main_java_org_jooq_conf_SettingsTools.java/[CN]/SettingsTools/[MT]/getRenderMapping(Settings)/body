@@ -1,0 +1,6 @@
+{
+  if (settings.getRenderMapping() == null) {
+    settings.setRenderMapping(new RenderMapping());
+  }
+  return settings.getRenderMapping();
+}

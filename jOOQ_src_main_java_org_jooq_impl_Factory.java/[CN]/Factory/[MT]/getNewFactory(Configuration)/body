@@ -3,6 +3,6 @@
     return getNewFactory(DefaultConfiguration.DEFAULT_CONFIGURATION);
   }
  else {
-    return new Factory(configuration.getConnection(),configuration.getDialect(),configuration.getSettings(),null,configuration.getData());
+    return new Factory(configuration.getConnection(),configuration.getDialect(),configuration.getSettings(),configuration.getSchemaMapping(),configuration.getData());
   }
 }
