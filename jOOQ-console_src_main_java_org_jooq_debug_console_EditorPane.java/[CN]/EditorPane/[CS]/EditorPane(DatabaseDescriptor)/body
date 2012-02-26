@@ -8,7 +8,7 @@
   JToolBar northWestPanel=new JToolBar();
   northWestPanel.setOpaque(false);
   northWestPanel.setFloatable(false);
-  startButton=new JButton(new ImageIcon(getClass().getResource("resources/Play16.png")));
+  startButton=new JButton(new ImageIcon(getClass().getResource("/org/jooq/debug/console/resources/Play16.png")));
   startButton.setOpaque(false);
   startButton.setFocusable(false);
   startButton.setToolTipText("Run the (selected) text (F5)");
@@ -19,7 +19,7 @@
   }
 );
   northWestPanel.add(startButton);
-  stopButton=new JButton(new ImageIcon(getClass().getResource("resources/Stop16.png")));
+  stopButton=new JButton(new ImageIcon(getClass().getResource("/org/jooq/debug/console/resources/Stop16.png")));
   stopButton.setVisible(false);
   stopButton.setOpaque(false);
   stopButton.setFocusable(false);

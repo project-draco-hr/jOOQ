@@ -6,7 +6,7 @@
   JToolBar loggerHeaderWestPanel=new JToolBar();
   loggerHeaderWestPanel.setFloatable(false);
   loggerHeaderWestPanel.setOpaque(false);
-  loggerOnButton=new JButton(new ImageIcon(getClass().getResource("resources/Paused16.png")));
+  loggerOnButton=new JButton(new ImageIcon(getClass().getResource("/org/jooq/debug/console/resources/Paused16.png")));
   loggerOnButton.setOpaque(false);
   loggerOnButton.setFocusable(false);
   loggerOnButton.setToolTipText("Activate logging");
@@ -17,7 +17,7 @@
   }
 );
   loggerHeaderWestPanel.add(loggerOnButton);
-  loggerOffButton=new JButton(new ImageIcon(getClass().getResource("resources/Running16.png")));
+  loggerOffButton=new JButton(new ImageIcon(getClass().getResource("/org/jooq/debug/console/resources/Running16.png")));
   loggerOffButton.setOpaque(false);
   loggerOffButton.setFocusable(false);
   loggerOffButton.setToolTipText("Deactivate logging");
@@ -148,7 +148,7 @@
   }
 );
   loggerHeaderEastPanel.add(loggerOtherQueryTypeToggleButton);
-  JButton loggerClearButton=new JButton(new ImageIcon(getClass().getResource("resources/Clear16.png")));
+  JButton loggerClearButton=new JButton(new ImageIcon(getClass().getResource("/org/jooq/debug/console/resources/Clear16.png")));
   loggerClearButton.setOpaque(false);
   loggerClearButton.setFocusable(false);
   loggerClearButton.setToolTipText("Clear collected data");
@@ -168,7 +168,7 @@
 );
   loggerHeaderEastPanel.add(new JToolBar.Separator());
   loggerHeaderEastPanel.add(loggerClearButton);
-  JToggleButton scrollLockToggleButton=new JToggleButton(new ImageIcon(getClass().getResource("resources/LockScroll16.png")));
+  JToggleButton scrollLockToggleButton=new JToggleButton(new ImageIcon(getClass().getResource("/org/jooq/debug/console/resources/LockScroll16.png")));
   scrollLockToggleButton.setFocusable(false);
   scrollLockToggleButton.setToolTipText("Scroll Lock");
   scrollLockToggleButton.addItemListener(new ItemListener(){

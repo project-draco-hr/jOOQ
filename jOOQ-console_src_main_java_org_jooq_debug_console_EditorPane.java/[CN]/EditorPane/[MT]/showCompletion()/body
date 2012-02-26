@@ -9,9 +9,9 @@
     final JPopupMenu w=new JPopupMenu();
     final JList jList=new JList(words);
     jList.setCellRenderer(new DefaultListCellRenderer(){
-      private ImageIcon tableIcon=new ImageIcon(getClass().getResource("resources/Table16.png"));
-      private ImageIcon tableColumnIcon=new ImageIcon(getClass().getResource("resources/TableColumn16.png"));
-      private ImageIcon sqlIcon=new ImageIcon(getClass().getResource("resources/SQL16.png"));
+      private ImageIcon tableIcon=new ImageIcon(getClass().getResource("/org/jooq/debug/console/resources/Table16.png"));
+      private ImageIcon tableColumnIcon=new ImageIcon(getClass().getResource("/org/jooq/debug/console/resources/TableColumn16.png"));
+      private ImageIcon sqlIcon=new ImageIcon(getClass().getResource("/org/jooq/debug/console/resources/SQL16.png"));
       @Override public Component getListCellRendererComponent(      JList list,      Object value,      int index,      boolean isSelected,      boolean cellHasFocus){
         Component c=super.getListCellRendererComponent(list,value,index,isSelected,cellHasFocus);
         if (c instanceof JLabel) {
