@@ -1,0 +1,3 @@
+{
+  return ArrayRecord.class.isAssignableFrom(type) || (!isBinary() && type.isArray());
+}

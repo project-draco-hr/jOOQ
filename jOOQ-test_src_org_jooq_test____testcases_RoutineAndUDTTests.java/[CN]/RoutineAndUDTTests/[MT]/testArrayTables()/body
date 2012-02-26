@@ -1,6 +1,8 @@
 {
   if (TArrays_NUMBER_R() != null) {
     Result<Record> result;
+    assertTrue(TArrays_NUMBER_R().getDataType().isArray());
+    assertFalse(TBook_ID().getDataType().isArray());
     ArrayRecord<Integer> array=newNUMBER_R();
     result=create().select().from(table(array)).fetch();
     assertEquals(0,result.size());
@@ -63,6 +65,8 @@
     Result<Record> result;
     Table<?> table;
     Integer[] array;
+    assertTrue(TArrays_NUMBER().getDataType().isArray());
+    assertFalse(TBook_ID().getDataType().isArray());
 switch (getDialect()) {
 case POSTGRES:
 case H2:
