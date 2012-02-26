@@ -6,6 +6,8 @@
     configuration=c;
   }
   for (  Attachable attachable : getAttachables()) {
-    attachable.attach(c);
+    if (attachable != null) {
+      attachable.attach(c);
+    }
   }
 }

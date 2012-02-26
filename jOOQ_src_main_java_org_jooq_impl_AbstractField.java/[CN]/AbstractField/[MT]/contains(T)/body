@@ -1,4 +1,3 @@
 {
-  Field<String> concat=Factory.concat(literal("'%'"),escapeForLike(value),literal("'%'"));
-  return like(concat,ESCAPE);
+  return new Contains<T>(this,value);
 }

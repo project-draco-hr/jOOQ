@@ -1,0 +1,5 @@
+{
+  this.lhs=field;
+  this.rhs=rhs;
+  this.value=null;
+}

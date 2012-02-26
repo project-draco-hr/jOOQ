@@ -1,0 +1,15 @@
+{
+  if (lhs.getDataType().isArray()) {
+    return new PostgresArrayContains();
+  }
+ else {
+    Field<String> concat;
+    if (rhs == null) {
+      concat=Factory.concat(literal("'%'"),Util.escapeForLike(value),literal("'%'"));
+    }
+ else {
+      concat=Factory.concat(literal("'%'"),Util.escapeForLike(rhs),literal("'%'"));
+    }
+    return lhs.like(concat,Util.ESCAPE);
+  }
+}
