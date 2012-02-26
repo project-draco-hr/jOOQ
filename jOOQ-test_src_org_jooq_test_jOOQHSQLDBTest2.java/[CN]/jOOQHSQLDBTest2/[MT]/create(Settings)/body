@@ -1,5 +1,12 @@
 {
   settings=(settings != null) ? settings : new Settings();
-  settings.withRenderMapping(new RenderMapping().withSchemata(new MappedSchema().withInput(TAuthor().getSchema().getName()).withOutput(Public.PUBLIC.getName())));
+  RenderMapping mapping=SettingsTools.getRenderMapping(settings);
+  List<MappedSchema> schemata=mapping.getSchemata();
+  if (schemata.size() == 0) {
+    schemata.add(new MappedSchema().withInput(TAuthor().getSchema().getName()).withOutput(Public.PUBLIC.getName()));
+  }
+ else {
+    schemata.get(0).withInput(TAuthor().getSchema().getName()).withOutput(Public.PUBLIC.getName());
+  }
   return new PublicFactory(getConnection(),settings);
 }
