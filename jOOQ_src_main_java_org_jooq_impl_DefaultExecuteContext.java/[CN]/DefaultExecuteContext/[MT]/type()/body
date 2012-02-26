@@ -18,6 +18,27 @@
  else     if (query instanceof Truncate) {
       return ExecuteType.DDL;
     }
+ else {
+      String s=query.getSQL().toLowerCase();
+      if (s.matches("^(with\\b.*?\\bselect|select|explain)\\b.*?")) {
+        return ExecuteType.READ;
+      }
+ else       if (s.matches("^(insert|update|delete|merge|replace|upsert|lock)\\b.*?")) {
+        return ExecuteType.WRITE;
+      }
+ else       if (s.matches("^(create|alter|drop|truncate|grant|revoke|analyze|comment|flashback|enable|disable)\\b.*?")) {
+        return ExecuteType.DDL;
+      }
+ else       if (s.matches("^\\s*\\{\\s*(\\?\\s*=\\s*)call.*?")) {
+        return ExecuteType.ROUTINE;
+      }
+ else       if (s.matches("^(call|begin|declare)\\b.*?")) {
+        return ExecuteType.ROUTINE;
+      }
+    }
+  }
+ else   if (resultSet != null) {
+    return ExecuteType.READ;
   }
   return ExecuteType.OTHER;
 }
