@@ -2,10 +2,13 @@
   StringBuilder stringSB=new StringBuilder();
   StringBuilder htmlSB=new StringBuilder();
   htmlSB.append("<html>\n<body>\n<table>\n");
-  htmlSB.append("<tr>" + "<th>Thread name</th>" + "<th>Thread ID</th>"+ "<th>Timestamp</th>"+ "<th>Exec time (ms)</th>"+ "<th>RS lifetime (ms)</th>"+ "<th>RS read</th>"+ "<th>RS rows read</th>"+ "<th>Query</th>"+ "<th>Stack trace</th>"+ "</tr>\n");
+  htmlSB.append("<tr>" + "<th>Type</th>" + "<th>Thread name</th>"+ "<th>Thread ID</th>"+ "<th>Timestamp</th>"+ "<th>Exec time (ms)</th>"+ "<th>RS lifetime (ms)</th>"+ "<th>RS read</th>"+ "<th>RS rows read</th>"+ "<th>Query</th>"+ "<th>Stack trace</th>"+ "</tr>\n");
   for (  QueryDebuggingInfo queryDebuggingInfo : queryDebuggingInfos) {
     DebuggerResultSetData resultSetData=queryDebuggingInfo.getSqlQueryDebuggerResultSetData();
     htmlSB.append("<tr>\n");
+    htmlSB.append("<td>");
+    htmlSB.append(queryDebuggingInfo.getQueryType());
+    htmlSB.append("</td>\n");
     htmlSB.append("<td>");
     htmlSB.append(queryDebuggingInfo.getThreadName());
     htmlSB.append("</td>\n");
