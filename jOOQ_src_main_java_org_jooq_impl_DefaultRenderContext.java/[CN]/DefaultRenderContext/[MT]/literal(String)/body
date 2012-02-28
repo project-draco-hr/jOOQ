@@ -1,8 +1,9 @@
 {
+  if (Boolean.TRUE.equals(configuration.getSettings().isRenderQuoted())) {
 switch (configuration.getDialect()) {
 case MYSQL:
-    sql("`").sql(literal).sql("`");
-  break;
+      sql("`").sql(literal).sql("`");
+    break;
 case DB2:
 case DERBY:
 case H2:
@@ -10,7 +11,7 @@ case HSQLDB:
 case INGRES:
 case ORACLE:
 case POSTGRES:
-sql('"').sql(literal).sql('"');
+  sql('"').sql(literal).sql('"');
 break;
 case SQLITE:
 sql(literal);
@@ -23,6 +24,10 @@ break;
 default :
 sql(literal);
 break;
+}
+}
+ else {
+sql(literal);
 }
 return this;
 }
