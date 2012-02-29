@@ -1,3 +1,3 @@
 {
-  context.sql("extract(").sql(datePart.toSQL()).sql(" from ").sql(field).sql(")");
+  context.keyword("extract(").sql(datePart.toSQL()).keyword(" from ").sql(field).sql(")");
 }

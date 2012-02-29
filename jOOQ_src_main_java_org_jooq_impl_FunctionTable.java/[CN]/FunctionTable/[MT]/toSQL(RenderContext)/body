@@ -2,7 +2,7 @@
 switch (context.getDialect()) {
 case HSQLDB:
 {
-      context.sql("table(").sql(function).sql(")");
+      context.keyword("table(").sql(function).sql(")");
       break;
     }
 default :

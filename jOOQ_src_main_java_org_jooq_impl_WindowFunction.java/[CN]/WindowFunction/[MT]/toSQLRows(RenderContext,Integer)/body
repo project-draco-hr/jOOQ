@@ -1,19 +1,19 @@
 {
   if (rows == Integer.MIN_VALUE) {
-    context.sql("unbounded preceding");
+    context.keyword("unbounded preceding");
   }
  else   if (rows == Integer.MAX_VALUE) {
-    context.sql("unbounded following");
+    context.keyword("unbounded following");
   }
  else   if (rows < 0) {
     context.sql(-rows);
-    context.sql(" preceding");
+    context.keyword(" preceding");
   }
  else   if (rows > 0) {
     context.sql(rows);
-    context.sql(" following");
+    context.keyword(" following");
   }
  else {
-    context.sql("current row");
+    context.keyword("current row");
   }
 }

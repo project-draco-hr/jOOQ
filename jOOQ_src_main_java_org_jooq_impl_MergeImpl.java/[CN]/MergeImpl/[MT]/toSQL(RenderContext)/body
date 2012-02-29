@@ -1,12 +1,12 @@
 {
-  context.sql("merge into ").declareTables(true).sql(table).sql(" using ").sql(Util.wrapInParentheses(context.render(using))).declareTables(false);
+  context.keyword("merge into ").declareTables(true).sql(table).keyword(" using ").sql(Util.wrapInParentheses(context.render(using))).declareTables(false);
 switch (context.getDialect()) {
 case SQLSERVER:
 case SYBASE:
 {
       if (using instanceof Select) {
         int hash=Util.hash(using);
-        context.sql(" as ").sql("dummy_").sql(hash).sql("(");
+        context.keyword(" as ").sql("dummy_").sql(hash).sql("(");
         String separator="";
         for (        Field<?> field : ((Select<?>)using).getFields()) {
           String name=StringUtils.isBlank(field.getName()) ? "dummy_" + hash + "_"+ Util.hash(field) : field.getName();
@@ -18,21 +18,21 @@ case SYBASE:
       break;
     }
 }
-context.sql(" on ").sql(Util.wrapInParentheses(context.render(on)));
+context.keyword(" on ").sql(Util.wrapInParentheses(context.render(on)));
 if (matchedUpdate != null) {
-  context.sql(" when matched then update set ").sql(matchedUpdate);
+  context.keyword(" when matched then update set ").sql(matchedUpdate);
 }
 if (matchedWhere != null) {
-  context.sql(" where ").sql(matchedWhere);
+  context.keyword(" where ").sql(matchedWhere);
 }
 if (matchedDeleteWhere != null) {
-  context.sql(" delete where ").sql(matchedDeleteWhere);
+  context.keyword(" delete where ").sql(matchedDeleteWhere);
 }
 if (notMatchedInsert != null) {
   context.sql(" when not matched then insert ").sql(notMatchedInsert);
 }
 if (notMatchedWhere != null) {
-  context.sql(" where ").sql(notMatchedWhere);
+  context.keyword(" where ").sql(notMatchedWhere);
 }
 switch (context.getDialect()) {
 case SQLSERVER:

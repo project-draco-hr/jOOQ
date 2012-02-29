@@ -1,8 +1,8 @@
 {
   for (int i=0; i < rendered; i++) {
-    assertTrue(ctx.batchQueries()[i].toString().contains("insert"));
+    assertTrue(ctx.batchQueries()[i].toString().toLowerCase().contains("insert"));
     if (patched) {
-      assertTrue(ctx.batchSQL()[i].contains("values    ("));
+      assertTrue(ctx.batchSQL()[i].toLowerCase().contains("values    ("));
     }
   }
 }

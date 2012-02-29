@@ -2,14 +2,14 @@
   SQLDialect dialect=context.getDialect();
   if (context.inline()) {
     if (val == null) {
-      context.sql("null");
+      context.keyword("null");
     }
  else     if (type == Boolean.class) {
       if (asList(ASE,DB2,ORACLE,SQLSERVER,SQLITE,SYBASE).contains(dialect)) {
         context.sql(((Boolean)val) ? "1" : "0");
       }
  else {
-        context.sql(val.toString());
+        context.keyword(val.toString());
       }
     }
  else     if (type == byte[].class) {
@@ -18,16 +18,16 @@
         context.sql("0x").sql(Util.convertBytesToHex(binary));
       }
  else       if (dialect == DB2) {
-        context.sql("blob(X'").sql(Util.convertBytesToHex(binary)).sql("')");
+        context.keyword("blob").sql("(X'").sql(Util.convertBytesToHex(binary)).sql("')");
       }
  else       if (asList(DERBY,H2,HSQLDB,INGRES,MYSQL,SQLITE).contains(dialect)) {
         context.sql("X'").sql(Util.convertBytesToHex(binary)).sql("'");
       }
  else       if (asList(ORACLE).contains(dialect)) {
-        context.sql("hextoraw('").sql(Util.convertBytesToHex(binary)).sql("')");
+        context.keyword("hextoraw('").sql(Util.convertBytesToHex(binary)).sql("')");
       }
  else       if (dialect == POSTGRES) {
-        context.sql("E'").sql(Util.convertBytesToPostgresOctal(binary)).sql("'::bytea");
+        context.sql("E'").sql(Util.convertBytesToPostgresOctal(binary)).keyword("'::bytea");
       }
  else {
         context.sql("X'").sql(Util.convertBytesToHex(binary)).sql("'");
@@ -71,7 +71,7 @@
         context.sql(Arrays.toString((Object[])val).replaceAll("\\[([^]]*)\\]","($1)"));
       }
  else {
-        context.sql("ARRAY").sql(Arrays.toString((Object[])val));
+        context.keyword("ARRAY").sql(Arrays.toString((Object[])val));
       }
     }
  else     if (ArrayRecord.class.isAssignableFrom(type)) {
@@ -94,7 +94,7 @@
     if (type.isArray() && byte[].class != type) {
       context.sql(getBindVariable(context));
       context.sql("::");
-      context.sql(FieldTypeHelper.getDataType(dialect,type).getCastTypeName(context));
+      context.keyword(FieldTypeHelper.getDataType(dialect,type).getCastTypeName(context));
     }
  else     if (EnumType.class.isAssignableFrom(type)) {
       context.sql(getBindVariable(context));

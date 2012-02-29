@@ -1,10 +1,10 @@
 {
-  context.sql("case");
+  context.keyword("case");
   for (int i=0; i < conditions.size(); i++) {
-    context.sql(" when ").sql(conditions.get(i)).sql(" then ").sql(results.get(i));
+    context.keyword(" when ").sql(conditions.get(i)).keyword(" then ").sql(results.get(i));
   }
   if (otherwise != null) {
-    context.sql(" else ").sql(otherwise);
+    context.keyword(" else ").sql(otherwise);
   }
-  context.sql(" end");
+  context.keyword(" end");
 }

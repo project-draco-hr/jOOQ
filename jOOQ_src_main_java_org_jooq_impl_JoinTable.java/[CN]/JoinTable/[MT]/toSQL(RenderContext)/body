@@ -1,5 +1,5 @@
 {
-  context.sql(lhs).sql(" ").sql(translateType(context).toSQL()).sql(" ").sql(rhs instanceof JoinTable ? "(" : "").sql(rhs).sql(rhs instanceof JoinTable ? ")" : "");
+  context.sql(lhs).sql(" ").keyword(translateType(context).toSQL()).sql(" ").sql(rhs instanceof JoinTable ? "(" : "").sql(rhs).sql(rhs instanceof JoinTable ? ")" : "");
   if (!asList(CROSS_JOIN,NATURAL_JOIN,NATURAL_LEFT_OUTER_JOIN,NATURAL_RIGHT_OUTER_JOIN).contains(translateType(context))) {
     toSQLJoinCondition(context);
   }

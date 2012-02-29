@@ -1,6 +1,6 @@
 {
-  assertTrue(ctx.batchSQL()[0].contains("insert"));
+  assertTrue(ctx.batchSQL()[0].toLowerCase().contains("insert"));
   if (patched) {
-    assertTrue(ctx.batchSQL()[0].contains("values    ("));
+    assertTrue(ctx.batchSQL()[0].toLowerCase().contains("values    ("));
   }
 }

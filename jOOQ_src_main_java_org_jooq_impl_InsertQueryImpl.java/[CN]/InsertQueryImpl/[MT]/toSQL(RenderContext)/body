@@ -7,7 +7,7 @@ switch (context.getDialect()) {
 case MYSQL:
 {
         toSQLInsert(context);
-        context.sql(" on duplicate key update ");
+        context.keyword(" on duplicate key update ");
         context.sql(updateMap);
         break;
       }

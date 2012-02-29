@@ -1,0 +1,8 @@
+{
+  if (RenderKeywordStyle.UPPER == getSettings().getRenderKeywordStyle()) {
+    return sql(keyword.toUpperCase());
+  }
+ else {
+    return sql(keyword.toLowerCase());
+  }
+}

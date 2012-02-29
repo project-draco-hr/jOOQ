@@ -1,5 +1,5 @@
 {
   toSQLReferenceKeys(context);
-  context.sql(" values ");
+  context.keyword(" values ");
   toSQLReferenceValues(context);
 }

@@ -4,16 +4,16 @@
   String enclosed=local.render();
   String subqueryName="limit_" + Util.hash(enclosed);
   String rownumName="rownum_" + Util.hash(enclosed);
-  context.sql("select * from (select ").sql(subqueryName).sql(".*, row_number() over (order by ");
+  context.keyword("select * from (select ").sql(subqueryName).sql(".*, row_number()").keyword("over (order by ");
   if (getOrderBy().isEmpty()) {
     context.literal(getSelect().get(0).getName());
   }
  else {
     String separator="";
     for (    SortField<?> field : getOrderBy()) {
-      context.sql(separator).literal(field.getName()).sql(" ").sql(field.getOrder().toSQL());
+      context.sql(separator).literal(field.getName()).sql(" ").keyword(field.getOrder().toSQL());
       separator=", ";
     }
   }
-  context.sql(") as ").sql(rownumName).sql(" from (").sql(enclosed).sql(") as ").sql(subqueryName).sql(") as outer_").sql(subqueryName).sql(" where ").sql(rownumName).sql(" > ").sql(getLimit().getLowerRownum()).sql(" and ").sql(rownumName).sql(" <= ").sql(getLimit().getUpperRownum());
+  context.keyword(") as ").sql(rownumName).keyword(" from (").sql(enclosed).keyword(") as ").sql(subqueryName).keyword(") as ").sql("outer_").sql(subqueryName).keyword(" where ").sql(rownumName).sql(" > ").sql(getLimit().getLowerRownum()).keyword(" and ").sql(rownumName).sql(" <= ").sql(getLimit().getUpperRownum());
 }

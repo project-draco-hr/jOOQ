@@ -1,12 +1,12 @@
 {
-  context.sql("case");
+  context.keyword("case");
 switch (context.getDialect()) {
 case DERBY:
 {
       for (int i=0; i < compareValues.size(); i++) {
-        context.sql(" when ");
+        context.keyword(" when ");
         context.sql(value.equal(compareValues.get(i)));
-        context.sql(" then ");
+        context.keyword(" then ");
         context.sql(results.get(i));
       }
       break;
@@ -15,16 +15,16 @@ default :
 {
     context.sql(" ").sql(value);
     for (int i=0; i < compareValues.size(); i++) {
-      context.sql(" when ");
+      context.keyword(" when ");
       context.sql(compareValues.get(i));
-      context.sql(" then ");
+      context.keyword(" then ");
       context.sql(results.get(i));
     }
     break;
   }
 }
 if (otherwise != null) {
-context.sql(" else ").sql(otherwise);
+context.keyword(" else ").sql(otherwise);
 }
-context.sql(" end");
+context.keyword(" end");
 }

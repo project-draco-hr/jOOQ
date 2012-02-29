@@ -1,9 +1,9 @@
 {
-  context.sql("insert into ").sql(getInto()).sql(" ").sql(insertMaps);
+  context.keyword("insert into ").sql(getInto()).sql(" ").sql(insertMaps);
   if (!returning.isEmpty()) {
 switch (context.getDialect()) {
 case POSTGRES:
-      context.sql(" returning ").sql(returning);
+      context.keyword(" returning ").sql(returning);
     break;
 default :
 }

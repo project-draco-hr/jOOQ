@@ -1,5 +1,5 @@
 {
-  context.sql(getFNName(context.getDialect()));
+  context.keyword(getFNName(context.getDialect()));
   context.sql("(");
   if (!arguments.isEmpty()) {
     context.sql(arguments);
@@ -9,7 +9,7 @@
       context.sql(", 'IGNORE NULLS'");
     }
  else {
-      context.sql(" ignore nulls");
+      context.keyword(" ignore nulls");
     }
   }
  else   if (respectNulls) {
@@ -17,21 +17,21 @@
       context.sql(", 'RESPECT NULLS'");
     }
  else {
-      context.sql(" respect nulls");
+      context.keyword(" respect nulls");
     }
   }
-  context.sql(") over (");
+  context.keyword(") over (");
   String glue="";
   if (!partitionBy.isEmpty()) {
     if (partitionByOne && context.getDialect() == SQLDialect.SYBASE) {
     }
  else {
-      context.sql(glue).sql("partition by ").sql(partitionBy);
+      context.sql(glue).keyword("partition by ").sql(partitionBy);
       glue=" ";
     }
   }
   if (!orderBy.isEmpty()) {
-    context.sql(glue).sql("order by ");
+    context.sql(glue).keyword("order by ");
 switch (context.getDialect()) {
 case SQLSERVER:
 case SYBASE:
@@ -52,11 +52,11 @@ glue=" ";
 }
 if (rowsStart != null) {
 context.sql(glue);
-context.sql("rows ");
+context.keyword("rows ");
 if (rowsEnd != null) {
-  context.sql("between ");
+  context.keyword("between ");
   toSQLRows(context,rowsStart);
-  context.sql(" and ");
+  context.keyword(" and ");
   toSQLRows(context,rowsEnd);
 }
  else {

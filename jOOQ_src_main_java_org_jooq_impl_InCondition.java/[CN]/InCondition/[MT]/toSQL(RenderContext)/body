@@ -9,7 +9,7 @@ case SQLSERVER:
         context.sql("(");
         for (int i=0; i < list.size(); i+=IN_LIMIT) {
           if (i > 0) {
-            context.sql(" or ");
+            context.keyword(" or ");
           }
           toSQLSubValues(context,list.subList(i,Math.min(i + IN_LIMIT,list.size())));
         }

@@ -3,12 +3,12 @@
     if (asList(ASE,DB2,H2,SQLSERVER,SYBASE).contains(context.getDialect())) {
       String glue=" on ";
       for (      Field<?> field : using) {
-        context.sql(glue).sql(lhs.getField(field)).sql(" = ").sql(rhs.getField(field));
+        context.keyword(glue).sql(lhs.getField(field)).sql(" = ").sql(rhs.getField(field));
         glue=" and ";
       }
     }
  else {
-      context.sql(" using (");
+      context.keyword(" using (");
       Util.toSQLNames(context,using);
       context.sql(")");
     }
@@ -18,12 +18,12 @@
     for (    Field<?> field : lhs.getFields()) {
       Field<?> other=rhs.getField(field);
       if (other != null) {
-        context.sql(glue).sql(field).sql(" = ").sql(other);
+        context.keyword(glue).sql(field).sql(" = ").sql(other);
         glue=" and ";
       }
     }
   }
  else {
-    context.sql(" on ").sql(condition);
+    context.keyword(" on ").sql(condition);
   }
 }

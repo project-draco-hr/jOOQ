@@ -1,7 +1,7 @@
 {
-  context.sql("select ");
+  context.keyword("select ");
   if (distinct) {
-    context.sql("distinct ");
+    context.keyword("distinct ");
   }
   if (!StringUtils.isBlank(hint)) {
     context.sql(hint).sql(" ");
@@ -15,7 +15,7 @@ case SQLSERVER:
       }
  else       if (context.getDialect() == SQLSERVER && !getOrderBy().isEmpty()) {
         if (context.subquery() || getLimit().isApplicable()) {
-          context.sql("top 100 percent ");
+          context.keyword("top 100 percent ");
         }
       }
       break;
@@ -36,29 +36,29 @@ context.sql(getSelect());
 context.declareFields(false);
 context.declareTables(true);
 if (!context.render(getFrom()).isEmpty()) {
-context.sql(" from ").sql(getFrom());
+context.keyword(" from ").sql(getFrom());
 }
 context.declareTables(false);
 if (!(getWhere().getWhere() instanceof TrueCondition)) {
-context.sql(" where ").sql(getWhere());
+context.keyword(" where ").sql(getWhere());
 }
 if (!(getConnectBy().getWhere() instanceof TrueCondition)) {
-context.sql(" connect by");
+context.keyword(" connect by");
 if (connectByNoCycle) {
-context.sql(" nocycle");
+context.keyword(" nocycle");
 }
 context.sql(" ").sql(getConnectBy());
 if (!(getConnectByStartWith().getWhere() instanceof TrueCondition)) {
-context.sql(" start with ").sql(getConnectByStartWith());
+context.keyword(" start with ").sql(getConnectByStartWith());
 }
 }
 if (!getGroupBy().isEmpty()) {
-context.sql(" group by ").sql(getGroupBy());
+context.keyword(" group by ").sql(getGroupBy());
 }
 if (!(getHaving().getWhere() instanceof TrueCondition)) {
-context.sql(" having ").sql(getHaving());
+context.keyword(" having ").sql(getHaving());
 }
 if (!getOrderBy().isEmpty()) {
-context.sql(" order by ").sql(getOrderBy());
+context.keyword(" order by ").sql(getOrderBy());
 }
 }

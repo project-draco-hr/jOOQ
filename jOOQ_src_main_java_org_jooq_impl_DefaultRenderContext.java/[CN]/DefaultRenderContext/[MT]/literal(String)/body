@@ -1,12 +1,12 @@
 {
   RenderNameStyle style=configuration.getSettings().getRenderNameStyle();
-  if (RenderNameStyle.LOWER.equals(style)) {
+  if (RenderNameStyle.LOWER == style) {
     sql(literal.toLowerCase());
   }
- else   if (RenderNameStyle.UPPER.equals(style)) {
+ else   if (RenderNameStyle.UPPER == style) {
     sql(literal.toUpperCase());
   }
- else   if (RenderNameStyle.AS_IS.equals(style)) {
+ else   if (RenderNameStyle.AS_IS == style) {
     sql(literal);
   }
  else {

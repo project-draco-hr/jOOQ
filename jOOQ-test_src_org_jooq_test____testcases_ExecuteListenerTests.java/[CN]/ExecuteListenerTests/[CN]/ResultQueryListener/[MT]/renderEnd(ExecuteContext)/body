@@ -6,6 +6,6 @@
   assertNull(ctx.resultSet());
   assertNull(ctx.record());
   assertNull(ctx.result());
-  ctx.sql(ctx.sql().replaceFirst("from","as my_field from"));
+  ctx.sql(ctx.sql().replaceFirst("(?i:from)","as my_field from"));
   checkSQL(ctx,true);
 }

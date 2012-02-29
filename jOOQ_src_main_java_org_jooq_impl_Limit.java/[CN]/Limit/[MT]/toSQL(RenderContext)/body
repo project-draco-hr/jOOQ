@@ -8,22 +8,22 @@ case HSQLDB:
 case POSTGRES:
 case SQLITE:
 {
-      context.castMode(NEVER).sql("limit ").sql(numberOfRows).sql(" offset ").sql(offsetOrZero).castMode(castMode);
+      context.castMode(NEVER).keyword("limit ").sql(numberOfRows).keyword(" offset ").sql(offsetOrZero).castMode(castMode);
       break;
     }
 case DERBY:
 {
-    context.castMode(NEVER).sql("offset ").sql(offsetOrZero).sql(" rows fetch next ").sql(numberOfRows).sql(" rows only").castMode(castMode);
+    context.castMode(NEVER).keyword("offset ").sql(offsetOrZero).keyword(" rows fetch next ").sql(numberOfRows).keyword(" rows only").castMode(castMode);
     break;
   }
 case INGRES:
 {
-  context.inline(true).sql("offset ").sql(offsetOrZero).sql(" fetch first ").sql(numberOfRows).sql(" rows only").inline(inline);
+  context.inline(true).keyword("offset ").sql(offsetOrZero).keyword(" fetch first ").sql(numberOfRows).keyword(" rows only").inline(inline);
   break;
 }
 case SYBASE:
 {
-context.inline(true).sql("top ").sql(numberOfRows).sql(" start at ").sql(offsetPlusOne).inline(inline);
+context.inline(true).keyword("top ").sql(numberOfRows).keyword(" start at ").sql(offsetPlusOne).inline(inline);
 break;
 }
 case DB2:
@@ -31,7 +31,7 @@ case DB2:
 if (offset != null) {
 throw new DataAccessException("DB2 does not support offsets in FETCH FIRST ROWS ONLY clause");
 }
-context.inline(true).sql("fetch first ").sql(numberOfRows).sql(" rows only").inline(inline);
+context.inline(true).keyword("fetch first ").sql(numberOfRows).keyword(" rows only").inline(inline);
 break;
 }
 case ASE:
@@ -40,12 +40,12 @@ case SQLSERVER:
 if (offset != null) {
 throw new DataAccessException("Offsets in TOP clause not supported");
 }
-context.inline(true).sql("top ").sql(numberOfRows).inline(inline);
+context.inline(true).keyword("top ").sql(numberOfRows).inline(inline);
 break;
 }
 default :
 {
-context.castMode(NEVER).sql("limit ").sql(numberOfRows).sql(" offset ").sql(offsetOrZero).castMode(castMode);
+context.castMode(NEVER).keyword("limit ").sql(numberOfRows).keyword(" offset ").sql(offsetOrZero).castMode(castMode);
 break;
 }
 }

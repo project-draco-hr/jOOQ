@@ -1,5 +1,5 @@
 {
-  context.sql(field).sql(" ").sql(operator.toSQL()).sql(" (");
+  context.sql(field).sql(" ").keyword(operator.toSQL()).sql(" (");
   String separator="";
   for (  Field<?> value : subValues) {
     context.sql(separator);

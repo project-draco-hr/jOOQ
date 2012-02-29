@@ -8,7 +8,7 @@
       context.sql(")");
     }
     if (Arrays.asList(DERBY,HSQLDB,MYSQL,POSTGRES).contains(context.getDialect())) {
-      context.sql(" as");
+      context.keyword(" as");
     }
     context.sql(" ");
     context.literal(alias);

@@ -46,13 +46,13 @@ break;
 toSQLReference0(context);
 }
 if (forUpdate) {
-context.sql(" for update");
+context.keyword(" for update");
 if (!forUpdateOf.isEmpty()) {
-context.sql(" of ");
+context.keyword(" of ");
 Util.toSQLNames(context,forUpdateOf);
 }
  else if (!forUpdateOfTables.isEmpty()) {
-context.sql(" of ");
+context.keyword(" of ");
 switch (context.getDialect()) {
 case DB2:
 case DERBY:
@@ -69,7 +69,7 @@ break;
 }
 if (forUpdateMode != null) {
 context.sql(" ");
-context.sql(forUpdateMode.toSQL());
+context.keyword(forUpdateMode.toSQL());
 if (forUpdateMode == ForUpdateMode.WAIT) {
 context.sql(" ");
 context.sql(forUpdateWait);
@@ -79,10 +79,10 @@ context.sql(forUpdateWait);
  else if (forShare) {
 switch (context.getDialect()) {
 case MYSQL:
-context.sql(" lock in share mode");
+context.keyword(" lock in share mode");
 break;
 default :
-context.sql(" for share");
+context.keyword(" for share");
 break;
 }
 }

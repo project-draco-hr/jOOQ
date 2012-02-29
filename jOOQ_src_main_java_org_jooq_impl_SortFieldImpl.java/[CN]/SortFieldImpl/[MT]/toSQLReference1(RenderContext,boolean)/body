@@ -17,5 +17,5 @@ default :
   }
 }
 context.sql(" ");
-context.sql(order.toSQL());
+context.keyword(order.toSQL());
 }
