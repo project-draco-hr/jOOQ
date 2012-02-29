@@ -1,4 +1,0 @@
-{
-  setRenderQuoted(value);
-  return this;
-}

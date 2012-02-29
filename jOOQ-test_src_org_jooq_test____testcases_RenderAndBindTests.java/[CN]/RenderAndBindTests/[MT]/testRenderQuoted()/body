@@ -1,5 +1,5 @@
 {
-  Select<?> s=create(new Settings().withRenderQuoted(false)).select(TBook_ID(),TBook_TITLE(),TAuthor_FIRST_NAME(),TAuthor_LAST_NAME()).from(TBook()).join(TAuthor()).on(TBook_AUTHOR_ID().equal(TAuthor_ID())).orderBy(TBook_ID());
+  Select<?> s=create(new Settings().withRenderNameStyle(RenderNameStyle.AS_IS)).select(TBook_ID(),TBook_TITLE(),TAuthor_FIRST_NAME(),TAuthor_LAST_NAME()).from(TBook()).join(TAuthor()).on(TBook_AUTHOR_ID().equal(TAuthor_ID())).orderBy(TBook_ID());
   Result<?> result=s.fetch();
   assertEquals(BOOK_IDS,result.getValues(TBook_ID()));
   assertEquals(BOOK_TITLES,result.getValues(TBook_TITLE()));

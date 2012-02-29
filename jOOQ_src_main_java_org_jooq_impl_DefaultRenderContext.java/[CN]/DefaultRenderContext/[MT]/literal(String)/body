@@ -1,5 +1,15 @@
 {
-  if (Boolean.TRUE.equals(configuration.getSettings().isRenderQuoted())) {
+  RenderNameStyle style=configuration.getSettings().getRenderNameStyle();
+  if (RenderNameStyle.LOWER.equals(style)) {
+    sql(literal.toLowerCase());
+  }
+ else   if (RenderNameStyle.UPPER.equals(style)) {
+    sql(literal.toUpperCase());
+  }
+ else   if (RenderNameStyle.AS_IS.equals(style)) {
+    sql(literal);
+  }
+ else {
 switch (configuration.getDialect()) {
 case MYSQL:
       sql("`").sql(literal).sql("`");
@@ -25,9 +35,6 @@ default :
 sql(literal);
 break;
 }
-}
- else {
-sql(literal);
 }
 return this;
 }
