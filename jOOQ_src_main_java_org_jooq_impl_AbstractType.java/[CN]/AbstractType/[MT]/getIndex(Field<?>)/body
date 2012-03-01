@@ -1,3 +1,3 @@
 {
-  return getFields().getIndex(field);
+  return getFieldList().getIndex(field);
 }
