@@ -32,7 +32,7 @@ case INGRES:
 }
 }
 context.declareFields(true);
-context.sql(getSelect());
+context.sql(getSelect1());
 context.declareFields(false);
 context.declareTables(true);
 if (!context.render(getFrom()).isEmpty()) {

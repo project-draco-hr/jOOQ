@@ -1,0 +1,17 @@
+{
+  if (getSelect0().isEmpty()) {
+    FieldList result=new SelectFieldList();
+    if (knownTableSource()) {
+      for (      TableLike<?> table : getFrom()) {
+        for (        Field<?> field : table.asTable().getFields()) {
+          result.add(field);
+        }
+      }
+    }
+    if (getFrom().isEmpty()) {
+      result.add(one());
+    }
+    return result;
+  }
+  return getSelect0();
+}
