@@ -1,0 +1,7 @@
+{
+  if (Boolean.TRUE.equals(getSettings().isRenderFormatted())) {
+    sql.append("\n");
+    sql.append(indentation());
+  }
+  return this;
+}

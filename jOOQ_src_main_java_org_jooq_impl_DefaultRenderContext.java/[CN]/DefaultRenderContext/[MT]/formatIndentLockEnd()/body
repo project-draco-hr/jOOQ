@@ -1,0 +1,6 @@
+{
+  if (Boolean.TRUE.equals(getSettings().isRenderFormatted())) {
+    indent=indentLock.pop();
+  }
+  return this;
+}

@@ -5,5 +5,5 @@
     context.sql(separator).literal(field.getName());
     separator=", ";
   }
-  context.sql(") ").sql(select);
+  context.sql(")").formatSeparator().sql(select);
 }

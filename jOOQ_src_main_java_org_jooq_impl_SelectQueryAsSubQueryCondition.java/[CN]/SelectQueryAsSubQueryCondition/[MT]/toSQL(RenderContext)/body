@@ -1,8 +1,8 @@
 {
   if (context.subquery()) {
-    context.sql(field).sql(" ").keyword(operator.toSQL()).sql(" (").sql(query).sql(")");
+    context.sql(field).sql(" ").keyword(operator.toSQL()).sql(" (").formatIndentLockStart().sql(query).formatIndentLockEnd().sql(")");
   }
  else {
-    context.sql(field).sql(" ").keyword(operator.toSQL()).sql(" (").subquery(true).sql(query).subquery(false).sql(")");
+    context.sql(field).sql(" ").keyword(operator.toSQL()).sql(" (").subquery(true).formatIndentLockStart().sql(query).formatIndentLockEnd().subquery(false).sql(")");
   }
 }

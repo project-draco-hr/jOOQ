@@ -8,17 +8,17 @@ case HSQLDB:
 case POSTGRES:
 case SQLITE:
 {
-      context.castMode(NEVER).keyword("limit ").sql(numberOfRows).keyword(" offset ").sql(offsetOrZero).castMode(castMode);
+      context.castMode(NEVER).formatSeparator().keyword("limit ").sql(numberOfRows).keyword(" offset ").sql(offsetOrZero).castMode(castMode);
       break;
     }
 case DERBY:
 {
-    context.castMode(NEVER).keyword("offset ").sql(offsetOrZero).keyword(" rows fetch next ").sql(numberOfRows).keyword(" rows only").castMode(castMode);
+    context.castMode(NEVER).formatSeparator().keyword("offset ").sql(offsetOrZero).keyword(" rows fetch next ").sql(numberOfRows).keyword(" rows only").castMode(castMode);
     break;
   }
 case INGRES:
 {
-  context.inline(true).keyword("offset ").sql(offsetOrZero).keyword(" fetch first ").sql(numberOfRows).keyword(" rows only").inline(inline);
+  context.inline(true).formatSeparator().keyword("offset ").sql(offsetOrZero).keyword(" fetch first ").sql(numberOfRows).keyword(" rows only").inline(inline);
   break;
 }
 case SYBASE:
@@ -31,7 +31,7 @@ case DB2:
 if (offset != null) {
 throw new DataAccessException("DB2 does not support offsets in FETCH FIRST ROWS ONLY clause");
 }
-context.inline(true).keyword("fetch first ").sql(numberOfRows).keyword(" rows only").inline(inline);
+context.inline(true).formatSeparator().keyword("fetch first ").sql(numberOfRows).keyword(" rows only").inline(inline);
 break;
 }
 case ASE:
@@ -45,7 +45,7 @@ break;
 }
 default :
 {
-context.castMode(NEVER).keyword("limit ").sql(numberOfRows).keyword(" offset ").sql(offsetOrZero).castMode(castMode);
+context.castMode(NEVER).formatSeparator().keyword("limit ").sql(numberOfRows).keyword(" offset ").sql(offsetOrZero).castMode(castMode);
 break;
 }
 }

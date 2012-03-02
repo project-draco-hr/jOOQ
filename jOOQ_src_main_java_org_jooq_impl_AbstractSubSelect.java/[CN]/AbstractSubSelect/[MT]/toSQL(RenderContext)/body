@@ -46,7 +46,7 @@ break;
 toSQLReference0(context);
 }
 if (forUpdate) {
-context.keyword(" for update");
+context.formatSeparator().keyword("for update");
 if (!forUpdateOf.isEmpty()) {
 context.keyword(" of ");
 Util.toSQLNames(context,forUpdateOf);
@@ -79,10 +79,10 @@ context.sql(forUpdateWait);
  else if (forShare) {
 switch (context.getDialect()) {
 case MYSQL:
-context.keyword(" lock in share mode");
+context.formatSeparator().keyword("lock in share mode");
 break;
 default :
-context.keyword(" for share");
+context.formatSeparator().keyword("for share");
 break;
 }
 }

@@ -1,0 +1,6 @@
+{
+  if (Boolean.TRUE.equals(getSettings().isRenderFormatted())) {
+    indent+=i;
+  }
+  return this;
+}

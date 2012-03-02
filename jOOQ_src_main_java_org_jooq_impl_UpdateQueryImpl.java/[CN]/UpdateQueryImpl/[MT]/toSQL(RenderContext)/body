@@ -1,6 +1,6 @@
 {
-  context.keyword("update ").declareTables(true).sql(getInto()).declareTables(false).keyword(" set ").sql(updateMap);
+  context.keyword("update ").declareTables(true).sql(getInto()).declareTables(false).formatSeparator().keyword("set ").formatIndentLockStart().sql(updateMap).formatIndentLockEnd();
   if (!(getWhere() instanceof TrueCondition)) {
-    context.keyword(" where ").sql(getWhere());
+    context.formatSeparator().keyword("where ").sql(getWhere());
   }
 }

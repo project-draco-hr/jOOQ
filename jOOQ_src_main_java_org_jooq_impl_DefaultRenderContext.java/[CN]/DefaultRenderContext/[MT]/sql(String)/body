@@ -1,4 +1,9 @@
 {
-  sql.append(s);
+  if (s != null && Boolean.TRUE.equals(getSettings().isRenderFormatted())) {
+    sql.append(s.replaceAll("[\\n\\r]","$0" + indentation()));
+  }
+ else {
+    sql.append(s);
+  }
   return this;
 }

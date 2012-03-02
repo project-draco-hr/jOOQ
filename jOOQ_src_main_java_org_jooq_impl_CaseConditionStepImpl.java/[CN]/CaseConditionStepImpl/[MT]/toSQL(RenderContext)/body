@@ -1,10 +1,21 @@
 {
-  context.keyword("case");
-  for (int i=0; i < conditions.size(); i++) {
+  context.formatIndentLockStart().keyword("case").formatIndentLockStart();
+  int size=conditions.size();
+  for (int i=0; i < size; i++) {
+    if (i > 0) {
+      context.formatSeparator();
+    }
     context.keyword(" when ").sql(conditions.get(i)).keyword(" then ").sql(results.get(i));
   }
   if (otherwise != null) {
-    context.keyword(" else ").sql(otherwise);
+    context.formatSeparator().keyword(" else ").sql(otherwise);
   }
-  context.keyword(" end");
+  context.formatIndentLockEnd();
+  if (size > 1 || otherwise != null) {
+    context.formatSeparator();
+  }
+ else {
+    context.sql(" ");
+  }
+  context.keyword("end").formatIndentLockEnd();
 }

@@ -4,10 +4,14 @@
   }
  else {
     String separator="";
+    boolean indent=(size() > 1);
+    if (indent)     context.formatIndentStart();
     for (    T queryPart : this) {
       context.sql(separator);
+      if (indent)       context.formatNewLine();
       context.sql(queryPart);
       separator=", ";
     }
+    if (indent)     context.formatIndentEnd();
   }
 }

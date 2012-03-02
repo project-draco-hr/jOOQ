@@ -3,7 +3,7 @@
   if (!returning.isEmpty()) {
 switch (context.getDialect()) {
 case POSTGRES:
-      context.keyword(" returning ").sql(returning);
+      context.formatSeparator().keyword("returning ").sql(returning);
     break;
 default :
 }

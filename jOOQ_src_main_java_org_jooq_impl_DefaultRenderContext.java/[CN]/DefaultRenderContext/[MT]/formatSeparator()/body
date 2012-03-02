@@ -1,0 +1,9 @@
+{
+  if (Boolean.TRUE.equals(getSettings().isRenderFormatted())) {
+    formatNewLine();
+  }
+ else {
+    sql.append(" ");
+  }
+  return this;
+}

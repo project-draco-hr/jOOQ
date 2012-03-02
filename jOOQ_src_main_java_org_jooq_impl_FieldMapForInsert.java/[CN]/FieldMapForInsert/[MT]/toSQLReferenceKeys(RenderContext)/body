@@ -1,10 +1,20 @@
 {
+  boolean indent=(size() > 1);
   context.sql("(");
+  if (indent) {
+    context.formatIndentStart();
+  }
   String separator="";
   for (  Field<?> field : keySet()) {
     context.sql(separator);
+    if (indent) {
+      context.formatNewLine();
+    }
     context.literal(field.getName());
     separator=", ";
+  }
+  if (indent) {
+    context.formatIndentEnd().formatNewLine();
   }
   context.sql(")");
 }

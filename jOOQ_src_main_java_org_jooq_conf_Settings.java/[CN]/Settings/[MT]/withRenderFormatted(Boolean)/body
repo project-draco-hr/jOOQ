@@ -1,0 +1,4 @@
+{
+  setRenderFormatted(value);
+  return this;
+}

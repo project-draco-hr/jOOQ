@@ -2,7 +2,11 @@
   if (size() > 0) {
     String separator="";
     for (    Entry<Field<?>,Field<?>> entry : entrySet()) {
-      context.sql(separator).literal(entry.getKey().getName()).sql(" = ").sql(entry.getValue());
+      context.sql(separator);
+      if (!"".equals(separator)) {
+        context.formatNewLine();
+      }
+      context.literal(entry.getKey().getName()).sql(" = ").sql(entry.getValue());
       separator=", ";
     }
   }
