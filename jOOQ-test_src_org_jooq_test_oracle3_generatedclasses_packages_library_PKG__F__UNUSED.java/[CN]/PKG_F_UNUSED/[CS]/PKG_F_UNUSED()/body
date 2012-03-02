@@ -1,4 +1,4 @@
 {
-  super(org.jooq.SQLDialect.ORACLE,"PKG_F_UNUSED",org.jooq.test.oracle3.generatedclasses.TEST.TEST,org.jooq.test.oracle3.generatedclasses.packages.LIBRARY.LIBRARY,org.jooq.impl.SQLDataType.NUMERIC);
+  super("PKG_F_UNUSED",org.jooq.test.oracle3.generatedclasses.TEST.TEST,org.jooq.test.oracle3.generatedclasses.packages.LIBRARY.LIBRARY,org.jooq.impl.SQLDataType.NUMERIC);
   setReturnParameter(RETURN_VALUE);
 }

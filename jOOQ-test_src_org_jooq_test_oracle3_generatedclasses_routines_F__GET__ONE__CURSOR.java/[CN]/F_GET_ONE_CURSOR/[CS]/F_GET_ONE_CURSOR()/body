@@ -1,5 +1,5 @@
 {
-  super(org.jooq.SQLDialect.ORACLE,"F_GET_ONE_CURSOR",org.jooq.test.oracle3.generatedclasses.TEST.TEST,org.jooq.impl.SQLDataType.RESULT);
+  super("F_GET_ONE_CURSOR",org.jooq.test.oracle3.generatedclasses.TEST.TEST,org.jooq.impl.SQLDataType.RESULT);
   setReturnParameter(RETURN_VALUE);
   addInParameter(BOOK_IDS);
 }

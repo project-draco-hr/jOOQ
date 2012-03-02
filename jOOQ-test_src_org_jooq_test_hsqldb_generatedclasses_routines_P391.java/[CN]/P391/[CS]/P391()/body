@@ -1,5 +1,5 @@
 {
-  super(org.jooq.SQLDialect.HSQLDB,"P391",org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC);
+  super("P391",org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC);
   addInParameter(I1);
   addInOutParameter(IO1);
   addOutParameter(O1);

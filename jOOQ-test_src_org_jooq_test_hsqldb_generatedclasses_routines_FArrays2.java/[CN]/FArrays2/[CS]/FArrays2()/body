@@ -1,5 +1,5 @@
 {
-  super(org.jooq.SQLDialect.HSQLDB,"F_ARRAYS2",org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.BIGINT.getArrayDataType());
+  super("F_ARRAYS2",org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.BIGINT.getArrayDataType());
   setReturnParameter(RETURN_VALUE);
   addInParameter(IN_ARRAY);
 }

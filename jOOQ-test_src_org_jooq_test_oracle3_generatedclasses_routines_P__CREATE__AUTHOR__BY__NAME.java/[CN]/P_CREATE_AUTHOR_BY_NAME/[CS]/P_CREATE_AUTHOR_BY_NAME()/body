@@ -1,5 +1,5 @@
 {
-  super(org.jooq.SQLDialect.ORACLE,"P_CREATE_AUTHOR_BY_NAME",org.jooq.test.oracle3.generatedclasses.TEST.TEST);
+  super("P_CREATE_AUTHOR_BY_NAME",org.jooq.test.oracle3.generatedclasses.TEST.TEST);
   addInParameter(FIRST_NAME);
   addInParameter(LAST_NAME);
 }

@@ -1,5 +1,5 @@
 {
-  super(org.jooq.SQLDialect.MYSQL,"rewards_report",org.jooq.examples.mysql.sakila.Sakila.SAKILA);
+  super("rewards_report",org.jooq.examples.mysql.sakila.Sakila.SAKILA);
   addInParameter(MIN_MONTHLY_PURCHASES);
   addInParameter(MIN_DOLLAR_AMOUNT_PURCHASED);
   addOutParameter(COUNT_REWARDEES);

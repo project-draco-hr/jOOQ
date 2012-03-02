@@ -1,4 +1,4 @@
 {
-  super(org.jooq.SQLDialect.HSQLDB,"F_ONE",org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.INTEGER);
+  super("F_ONE",org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.INTEGER);
   setReturnParameter(RETURN_VALUE);
 }

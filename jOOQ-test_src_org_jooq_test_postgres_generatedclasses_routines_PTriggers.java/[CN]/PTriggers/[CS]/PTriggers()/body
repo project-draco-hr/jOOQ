@@ -1,4 +1,4 @@
 {
-  super(org.jooq.SQLDialect.POSTGRES,"p_triggers",org.jooq.test.postgres.generatedclasses.Public.PUBLIC,org.jooq.util.postgres.PostgresDataType.getDefaultDataType("trigger"));
+  super("p_triggers",org.jooq.test.postgres.generatedclasses.Public.PUBLIC,org.jooq.util.postgres.PostgresDataType.getDefaultDataType("trigger"));
   setReturnParameter(RETURN_VALUE);
 }

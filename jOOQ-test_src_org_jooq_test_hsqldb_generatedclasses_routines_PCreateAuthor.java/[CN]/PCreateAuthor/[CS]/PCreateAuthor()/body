@@ -1,3 +1,3 @@
 {
-  super(org.jooq.SQLDialect.HSQLDB,"P_CREATE_AUTHOR",org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC);
+  super("P_CREATE_AUTHOR",org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC);
 }

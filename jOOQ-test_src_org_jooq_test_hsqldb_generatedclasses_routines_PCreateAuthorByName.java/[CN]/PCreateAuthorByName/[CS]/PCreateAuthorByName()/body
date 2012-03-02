@@ -1,5 +1,5 @@
 {
-  super(org.jooq.SQLDialect.HSQLDB,"P_CREATE_AUTHOR_BY_NAME",org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC);
+  super("P_CREATE_AUTHOR_BY_NAME",org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC);
   addInParameter(FIRST_NAME);
   addInParameter(LAST_NAME);
 }

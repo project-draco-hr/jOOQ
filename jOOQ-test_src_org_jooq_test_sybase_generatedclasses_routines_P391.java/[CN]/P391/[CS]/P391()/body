@@ -1,5 +1,5 @@
 {
-  super(org.jooq.SQLDialect.SYBASE,"p391",org.jooq.test.sybase.generatedclasses.Dba.DBA);
+  super("p391",org.jooq.test.sybase.generatedclasses.Dba.DBA);
   addInParameter(I1);
   addInOutParameter(IO1);
   addOutParameter(O1);

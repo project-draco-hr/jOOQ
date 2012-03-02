@@ -1,5 +1,5 @@
 {
-  super(org.jooq.SQLDialect.MYSQL,"p_create_author_by_name",org.jooq.test.mysql2.generatedclasses.Test2.TEST2);
+  super("p_create_author_by_name",org.jooq.test.mysql2.generatedclasses.Test2.TEST2);
   addInParameter(FIRST_NAME);
   addInParameter(LAST_NAME);
 }

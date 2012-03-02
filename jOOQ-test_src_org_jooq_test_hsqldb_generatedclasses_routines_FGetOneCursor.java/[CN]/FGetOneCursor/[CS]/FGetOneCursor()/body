@@ -1,5 +1,5 @@
 {
-  super(org.jooq.SQLDialect.HSQLDB,"F_GET_ONE_CURSOR",org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.RESULT);
+  super("F_GET_ONE_CURSOR",org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.RESULT);
   setReturnParameter(RETURN_VALUE);
   addInParameter(BOOK_IDS);
 }

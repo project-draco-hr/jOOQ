@@ -1,5 +1,5 @@
 {
-  super(org.jooq.SQLDialect.SQLSERVER,"p_create_author_by_name",org.jooq.test.sqlserver.generatedclasses.Dbo.DBO);
+  super("p_create_author_by_name",org.jooq.test.sqlserver.generatedclasses.Dbo.DBO);
   addInParameter(FIRST_NAME);
   addInParameter(LAST_NAME);
 }

@@ -25,10 +25,7 @@
   printJavadoc(out,"Create a new routine call instance");
   out.println("\tpublic " + strategy.getJavaClassName(routine) + "() {");
   out.print("\t\tsuper(");
-  out.print(SQLDialect.class);
-  out.print(".");
-  out.print(database.getDialect().name());
-  out.print(", \"");
+  out.print("\"");
   out.print(routine.getName());
   out.print("\", ");
   out.print(strategy.getFullJavaIdentifier(schema));

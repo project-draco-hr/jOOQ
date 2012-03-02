@@ -1,4 +1,4 @@
 {
-  super(org.jooq.SQLDialect.SQLSERVER,"uspGetEmployeeManagers",org.jooq.examples.sqlserver.adventureworks.dbo.Dbo.DBO);
+  super("uspGetEmployeeManagers",org.jooq.examples.sqlserver.adventureworks.dbo.Dbo.DBO);
   addInParameter(EMPLOYEEID);
 }

@@ -1,5 +1,5 @@
 {
-  super(org.jooq.SQLDialect.SYBASE,"f317",org.jooq.test.sybase.generatedclasses.Dba.DBA,org.jooq.impl.SQLDataType.INTEGER);
+  super("f317",org.jooq.test.sybase.generatedclasses.Dba.DBA,org.jooq.impl.SQLDataType.INTEGER);
   setReturnParameter(RETURN_VALUE);
   addInParameter(P1);
   addInParameter(P2);

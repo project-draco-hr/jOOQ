@@ -1,5 +1,5 @@
 {
-  super(org.jooq.SQLDialect.ORACLE,"P_GET_TWO_CURSORS",org.jooq.test.oracle3.generatedclasses.TEST.TEST);
+  super("P_GET_TWO_CURSORS",org.jooq.test.oracle3.generatedclasses.TEST.TEST);
   addOutParameter(BOOKS);
   addOutParameter(AUTHORS);
 }

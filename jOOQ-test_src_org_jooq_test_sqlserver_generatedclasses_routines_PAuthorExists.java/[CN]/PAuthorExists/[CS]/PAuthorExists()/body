@@ -1,5 +1,5 @@
 {
-  super(org.jooq.SQLDialect.SQLSERVER,"p_author_exists",org.jooq.test.sqlserver.generatedclasses.Dbo.DBO);
+  super("p_author_exists",org.jooq.test.sqlserver.generatedclasses.Dbo.DBO);
   addInParameter(AUTHOR_NAME);
   addInOutParameter(RESULT);
 }

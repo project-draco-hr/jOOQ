@@ -1,5 +1,5 @@
 {
-  super(org.jooq.SQLDialect.POSTGRES,"f_arrays",org.jooq.test.postgres.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.CLOB.getArrayDataType());
+  super("f_arrays",org.jooq.test.postgres.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.CLOB.getArrayDataType());
   setReturnParameter(RETURN_VALUE);
   addInParameter(IN_ARRAY);
   setOverloaded(true);

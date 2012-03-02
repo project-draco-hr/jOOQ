@@ -1,5 +1,5 @@
 {
-  super(org.jooq.SQLDialect.ORACLE,"F317",org.jooq.test.oracle.generatedclasses.test.Test.TEST,org.jooq.impl.SQLDataType.NUMERIC);
+  super("F317",org.jooq.test.oracle.generatedclasses.test.Test.TEST,org.jooq.impl.SQLDataType.NUMERIC);
   setReturnParameter(RETURN_VALUE);
   addInParameter(P1);
   addInParameter(P2);

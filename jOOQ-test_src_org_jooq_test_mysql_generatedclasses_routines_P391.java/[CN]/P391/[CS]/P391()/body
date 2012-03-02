@@ -1,5 +1,5 @@
 {
-  super(org.jooq.SQLDialect.MYSQL,"p391",org.jooq.test.mysql.generatedclasses.Test.TEST);
+  super("p391",org.jooq.test.mysql.generatedclasses.Test.TEST);
   addInParameter(I1);
   addInOutParameter(IO1);
   addOutParameter(O1);
