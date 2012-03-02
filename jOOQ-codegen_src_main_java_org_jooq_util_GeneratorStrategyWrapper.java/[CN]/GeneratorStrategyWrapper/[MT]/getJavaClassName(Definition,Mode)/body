@@ -1,4 +1,7 @@
 {
+  if (!generator.generateRecords() && mode == Mode.RECORD && definition instanceof TableDefinition) {
+    return Record.class.getSimpleName();
+  }
   String className=convertToJavaIdentifier(delegate.getJavaClassName(definition,mode));
   if (mode == Mode.FACTORY) {
     String alternative=convertToJavaIdentifier(delegate.getJavaClassName(definition,Mode.DEFAULT));

@@ -1,1 +1,1 @@
-org.jooq.impl.TableImpl<org.jooq.util.ingres.ingres.tables.records.IirefConstraintsRecord>
+org.jooq.impl.TableImpl<org.jooq.Record>

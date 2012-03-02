@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.util.sqlserver.information_schema.tables.ReferentialConstraints.REFERENTIAL_CONSTRAINTS.UNIQUE_CONSTRAINT_CATALOG,value);
-}

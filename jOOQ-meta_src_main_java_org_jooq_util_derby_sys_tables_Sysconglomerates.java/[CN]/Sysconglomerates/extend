@@ -1,1 +1,1 @@
-org.jooq.impl.TableImpl<org.jooq.util.derby.sys.tables.records.SysconglomeratesRecord>
+org.jooq.impl.TableImpl<org.jooq.Record>

@@ -1,3 +1,0 @@
-{
-  return getValue(org.jooq.util.hsqldb.information_schema.tables.Columns.COLUMNS.CHARACTER_SET_CATALOG);
-}

@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.util.sybase.sys.tables.Sysfkey.SYSFKEY.MATCH_TYPE,value);
-}

@@ -1,1 +1,1 @@
-org.jooq.impl.TableImpl<org.jooq.util.oracle.sys.tables.records.AllArgumentsRecord>
+org.jooq.impl.TableImpl<org.jooq.Record>

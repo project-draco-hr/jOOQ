@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.util.sybase.sys.tables.Sysfkey.SYSFKEY.PRIMARY_INDEX_ID,value);
-}

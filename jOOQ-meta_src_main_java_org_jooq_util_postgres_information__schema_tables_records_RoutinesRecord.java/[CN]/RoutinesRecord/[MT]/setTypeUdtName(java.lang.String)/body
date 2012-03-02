@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.util.postgres.information_schema.tables.Routines.ROUTINES.TYPE_UDT_NAME,value);
-}

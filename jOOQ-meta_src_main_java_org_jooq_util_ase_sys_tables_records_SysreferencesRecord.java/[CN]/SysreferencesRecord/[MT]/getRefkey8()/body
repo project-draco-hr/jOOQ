@@ -1,3 +1,0 @@
-{
-  return getValue(org.jooq.util.ase.sys.tables.Sysreferences.REFKEY8);
-}

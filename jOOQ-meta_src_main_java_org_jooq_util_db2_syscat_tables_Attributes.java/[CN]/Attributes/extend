@@ -1,1 +1,1 @@
-org.jooq.impl.TableImpl<org.jooq.util.db2.syscat.tables.records.AttributesRecord>
+org.jooq.impl.TableImpl<org.jooq.Record>

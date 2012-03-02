@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.util.sybase.sys.tables.Systabcol.SYSTABCOL.WIDTH,value);
-}

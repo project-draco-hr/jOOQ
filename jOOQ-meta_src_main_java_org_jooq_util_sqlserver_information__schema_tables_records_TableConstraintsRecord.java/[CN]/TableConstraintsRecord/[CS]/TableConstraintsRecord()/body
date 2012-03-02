@@ -1,3 +1,0 @@
-{
-  super(org.jooq.util.sqlserver.information_schema.tables.TableConstraints.TABLE_CONSTRAINTS);
-}

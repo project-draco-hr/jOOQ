@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.util.oracle.sys.tables.AllCollTypes.ALL_COLL_TYPES.ELEM_TYPE_NAME,value);
-}

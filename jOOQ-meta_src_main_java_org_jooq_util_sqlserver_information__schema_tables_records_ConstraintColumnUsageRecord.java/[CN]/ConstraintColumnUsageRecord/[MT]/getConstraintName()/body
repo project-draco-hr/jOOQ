@@ -1,3 +1,0 @@
-{
-  return getValue(org.jooq.util.sqlserver.information_schema.tables.ConstraintColumnUsage.CONSTRAINT_COLUMN_USAGE.CONSTRAINT_NAME);
-}

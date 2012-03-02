@@ -1,3 +1,0 @@
-{
-  return getValue(org.jooq.util.oracle.sys.tables.AllTypeAttrs.ALL_TYPE_ATTRS.OWNER);
-}

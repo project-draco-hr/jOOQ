@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.util.sqlserver.information_schema.tables.Parameters.PARAMETERS.INTERVAL_TYPE,value);
-}

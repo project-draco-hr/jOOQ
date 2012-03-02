@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.util.ingres.ingres.tables.Iitables.ALLOCATED_PAGES,value);
-}

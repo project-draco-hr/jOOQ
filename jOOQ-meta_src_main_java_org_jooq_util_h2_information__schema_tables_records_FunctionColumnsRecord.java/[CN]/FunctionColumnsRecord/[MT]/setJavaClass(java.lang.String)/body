@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.util.h2.information_schema.tables.FunctionColumns.JAVA_CLASS,value);
-}

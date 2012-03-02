@@ -1,0 +1,4 @@
+{
+  setInputSchema(value);
+  return this;
+}

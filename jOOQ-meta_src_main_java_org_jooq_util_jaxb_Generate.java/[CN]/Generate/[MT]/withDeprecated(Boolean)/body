@@ -1,0 +1,4 @@
+{
+  setDeprecated(value);
+  return this;
+}

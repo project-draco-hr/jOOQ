@@ -1,0 +1,4 @@
+{
+  setDateAsTimestamp(value);
+  return this;
+}

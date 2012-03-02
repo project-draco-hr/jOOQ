@@ -1,1 +1,1 @@
-org.jooq.impl.TableImpl<org.jooq.util.postgres.information_schema.tables.records.KeyColumnUsageRecord>
+org.jooq.impl.TableImpl<org.jooq.Record>

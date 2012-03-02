@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.util.sybase.sys.tables.Systab.SYSTAB.EXT_PAGE_LIST,value);
-}

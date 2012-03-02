@@ -1,3 +1,0 @@
-{
-  return getValue(org.jooq.util.oracle.sys.tables.AllTabComments.ALL_TAB_COMMENTS.TABLE_NAME);
-}

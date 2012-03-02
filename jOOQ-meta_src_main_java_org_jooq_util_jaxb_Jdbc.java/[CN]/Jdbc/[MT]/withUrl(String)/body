@@ -1,0 +1,4 @@
+{
+  setUrl(value);
+  return this;
+}

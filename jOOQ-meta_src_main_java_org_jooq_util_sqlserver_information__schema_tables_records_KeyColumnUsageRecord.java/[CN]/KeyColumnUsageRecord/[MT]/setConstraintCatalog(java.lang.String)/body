@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.util.sqlserver.information_schema.tables.KeyColumnUsage.KEY_COLUMN_USAGE.CONSTRAINT_CATALOG,value);
-}

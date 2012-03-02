@@ -1,3 +1,0 @@
-{
-  return getValue(org.jooq.util.sybase.sys.tables.Sysview.SYSVIEW.MV_LAST_REFRESHED_AT);
-}

@@ -1,0 +1,4 @@
+{
+  setStrategy(value);
+  return this;
+}

@@ -1,3 +1,0 @@
-{
-  return getValue(org.jooq.util.ingres.ingres.tables.Iicolumns.COLUMN_LENGTH);
-}

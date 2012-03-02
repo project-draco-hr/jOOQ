@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.util.derby.sys.tables.Sysconstraints.STATE,value);
-}

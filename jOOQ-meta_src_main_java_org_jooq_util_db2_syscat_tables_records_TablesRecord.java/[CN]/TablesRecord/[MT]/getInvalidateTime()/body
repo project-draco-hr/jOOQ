@@ -1,3 +1,0 @@
-{
-  return getValue(org.jooq.util.db2.syscat.tables.Tables.INVALIDATE_TIME);
-}

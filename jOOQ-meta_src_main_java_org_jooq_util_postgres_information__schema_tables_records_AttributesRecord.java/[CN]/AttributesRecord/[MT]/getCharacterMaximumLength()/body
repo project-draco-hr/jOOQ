@@ -1,3 +1,0 @@
-{
-  return getValue(org.jooq.util.postgres.information_schema.tables.Attributes.ATTRIBUTES.CHARACTER_MAXIMUM_LENGTH);
-}

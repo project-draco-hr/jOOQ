@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.util.ase.sys.tables.Sysindexes.IDENTITYGAP,value);
-}

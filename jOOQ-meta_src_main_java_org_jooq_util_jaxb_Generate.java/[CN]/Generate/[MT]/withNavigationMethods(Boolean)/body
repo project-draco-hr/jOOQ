@@ -1,0 +1,4 @@
+{
+  setNavigationMethods(value);
+  return this;
+}

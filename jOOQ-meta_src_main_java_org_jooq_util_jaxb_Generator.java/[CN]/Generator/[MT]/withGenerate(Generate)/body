@@ -1,0 +1,4 @@
+{
+  setGenerate(value);
+  return this;
+}

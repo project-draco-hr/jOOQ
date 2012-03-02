@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.util.mysql.information_schema.tables.Tables.VERSION,value);
-}

@@ -1,0 +1,4 @@
+{
+  setLiteral(value);
+  return this;
+}

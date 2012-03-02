@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.util.sqlserver.information_schema.tables.Columns.COLUMNS.IDENTITY_GENERATION,value);
-}

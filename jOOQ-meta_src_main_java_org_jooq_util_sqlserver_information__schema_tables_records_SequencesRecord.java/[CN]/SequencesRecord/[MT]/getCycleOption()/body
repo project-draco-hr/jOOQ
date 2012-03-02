@@ -1,3 +1,0 @@
-{
-  return getValue(org.jooq.util.sqlserver.information_schema.tables.Sequences.SEQUENCES.CYCLE_OPTION);
-}

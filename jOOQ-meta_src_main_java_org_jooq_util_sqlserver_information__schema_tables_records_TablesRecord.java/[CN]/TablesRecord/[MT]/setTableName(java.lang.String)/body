@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.util.sqlserver.information_schema.tables.Tables.TABLES.TABLE_NAME,value);
-}

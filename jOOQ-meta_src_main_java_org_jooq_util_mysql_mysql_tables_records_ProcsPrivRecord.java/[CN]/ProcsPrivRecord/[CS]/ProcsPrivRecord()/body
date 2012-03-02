@@ -1,3 +1,0 @@
-{
-  super(org.jooq.util.mysql.mysql.tables.ProcsPriv.PROCS_PRIV);
-}

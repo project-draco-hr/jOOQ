@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.util.hsqldb.information_schema.tables.Columns.COLUMNS.IDENTITY_INCREMENT,value);
-}

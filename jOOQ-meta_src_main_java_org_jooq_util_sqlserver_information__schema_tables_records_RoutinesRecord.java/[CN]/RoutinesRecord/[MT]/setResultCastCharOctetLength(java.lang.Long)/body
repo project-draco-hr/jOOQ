@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.util.sqlserver.information_schema.tables.Routines.ROUTINES.RESULT_CAST_CHAR_OCTET_LENGTH,value);
-}

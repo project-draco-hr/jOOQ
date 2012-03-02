@@ -1,3 +1,0 @@
-{
-  return getValue(org.jooq.util.sybase.sys.tables.Systabcol.SYSTABCOL.COLLECT_STATS);
-}

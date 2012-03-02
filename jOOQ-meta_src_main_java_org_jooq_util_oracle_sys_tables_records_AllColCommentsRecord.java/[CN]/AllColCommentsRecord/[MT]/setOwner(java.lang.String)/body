@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.util.oracle.sys.tables.AllColComments.ALL_COL_COMMENTS.OWNER,value);
-}

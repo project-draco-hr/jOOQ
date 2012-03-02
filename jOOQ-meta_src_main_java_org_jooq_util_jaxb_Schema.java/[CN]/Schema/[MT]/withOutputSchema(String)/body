@@ -1,0 +1,4 @@
+{
+  setOutputSchema(value);
+  return this;
+}

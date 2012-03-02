@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.util.sybase.sys.tables.Sysidxcol.SYSIDXCOL.TABLE_ID,value);
-}

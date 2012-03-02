@@ -56,6 +56,7 @@
   generate.setInstanceFields(!"false".equalsIgnoreCase(properties.getProperty("generator.generate.instance-fields")));
   generate.setGeneratedAnnotation(!"false".equalsIgnoreCase(properties.getProperty("generator.generate.generated-annotation")));
   generate.setPojos("true".equalsIgnoreCase(properties.getProperty("generator.generate.pojos")));
+  generate.setRecords(!"false".equalsIgnoreCase(properties.getProperty("generator.generate.records")));
   generate.setJpaAnnotations("true".equalsIgnoreCase(properties.getProperty("generator.generate.jpa-annotations")));
   org.jooq.util.jaxb.Generator generator=new org.jooq.util.jaxb.Generator();
   if (!isBlank(strategy.getName()))   generator.setStrategy(strategy);

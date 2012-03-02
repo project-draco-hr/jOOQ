@@ -1,0 +1,4 @@
+{
+  setDirectory(value);
+  return this;
+}

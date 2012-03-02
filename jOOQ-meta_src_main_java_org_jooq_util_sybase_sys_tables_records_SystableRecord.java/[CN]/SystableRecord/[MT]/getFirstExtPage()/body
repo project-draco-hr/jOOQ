@@ -1,3 +1,0 @@
-{
-  return getValue(org.jooq.util.sybase.sys.tables.Systable.SYSTABLE.FIRST_EXT_PAGE);
-}

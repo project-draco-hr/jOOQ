@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.util.sybase.sys.tables.Sysview.SYSVIEW.MV_KNOWN_STALE_AT,value);
-}

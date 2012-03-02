@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.util.ingres.ingres.tables.IirefConstraints.REF_CONSTRAINT_NAME,value);
-}

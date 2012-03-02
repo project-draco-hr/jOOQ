@@ -1,1 +1,1 @@
-org.jooq.impl.TableImpl<org.jooq.util.ase.sys.tables.records.SysobjectsRecord>
+org.jooq.impl.TableImpl<org.jooq.Record>

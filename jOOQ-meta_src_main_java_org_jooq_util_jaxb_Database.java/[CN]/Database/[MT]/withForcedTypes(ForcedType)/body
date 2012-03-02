@@ -1,0 +1,8 @@
+{
+  if (values != null) {
+    for (    ForcedType value : values) {
+      getForcedTypes().add(value);
+    }
+  }
+  return this;
+}

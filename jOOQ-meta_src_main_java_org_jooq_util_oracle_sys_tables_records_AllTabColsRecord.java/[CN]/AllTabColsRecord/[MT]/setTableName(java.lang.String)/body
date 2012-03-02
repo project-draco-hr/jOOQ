@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.util.oracle.sys.tables.AllTabCols.ALL_TAB_COLS.TABLE_NAME,value);
-}
