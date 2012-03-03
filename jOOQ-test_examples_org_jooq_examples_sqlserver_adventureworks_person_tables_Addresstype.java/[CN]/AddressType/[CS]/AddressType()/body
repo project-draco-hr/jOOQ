@@ -1,3 +1,0 @@
-{
-  super("AddressType",org.jooq.examples.sqlserver.adventureworks.person.Person.Person);
-}

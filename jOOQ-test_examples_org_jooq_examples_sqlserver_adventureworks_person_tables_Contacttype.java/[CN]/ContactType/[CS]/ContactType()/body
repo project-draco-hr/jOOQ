@@ -1,3 +1,0 @@
-{
-  super("ContactType",org.jooq.examples.sqlserver.adventureworks.person.Person.Person);
-}

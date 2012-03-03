@@ -1,3 +1,0 @@
-{
-  super(alias,org.jooq.examples.sqlserver.adventureworks.person.Person.Person,org.jooq.examples.sqlserver.adventureworks.person.tables.CountryRegion.CountryRegion);
-}
