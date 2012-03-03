@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.examples.sqlserver.adventureworks.sales.tables.records.CountryRegionCurrency>>asList(org.jooq.examples.sqlserver.adventureworks.sales.Keys.PK_CountryRegionCurrency_CountryRegionCode_CurrencyCode);
-}
