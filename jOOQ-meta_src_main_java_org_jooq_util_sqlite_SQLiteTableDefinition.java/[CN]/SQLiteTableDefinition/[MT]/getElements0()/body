@@ -10,7 +10,7 @@
     boolean pk=record.getValueAsBoolean("pk");
     boolean identity=pk && create().fetchOne("select count(*) from sqlite_sequence where name = ?",getName()).getValue(0,Boolean.class);
     DefaultDataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),dataType,precision,scale);
-    ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getSchema(),getName()),name,position,type,identity,null);
+    ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getSchema(),getName()),name,position,type,!record.getValue("notnull",boolean.class),identity,null);
     result.add(column);
   }
   return result;

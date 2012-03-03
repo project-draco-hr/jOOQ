@@ -9,7 +9,7 @@
     if (p != null && !"null".equalsIgnoreCase(p.trim()))     precision=Integer.valueOf(p.trim());
     if (s != null && !"null".equalsIgnoreCase(s.trim()))     scale=Integer.valueOf(s.trim());
     DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),record.getValueAsString("Type"),precision,scale);
-    result.add(new DefaultColumnDefinition(getDatabase().getTable(getSchema(),getName()),record.getValueAsString("Column_name"),position++,type,record.getValueAsBoolean("Identity",false),null));
+    result.add(new DefaultColumnDefinition(getDatabase().getTable(getSchema(),getName()),record.getValueAsString("Column_name"),position++,type,record.getValue("Nulls",boolean.class),record.getValueAsBoolean("Identity",false),null));
   }
   return result;
 }

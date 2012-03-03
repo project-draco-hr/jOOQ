@@ -1,8 +1,8 @@
 {
   List<ColumnDefinition> result=new ArrayList<ColumnDefinition>();
-  for (  Record record : create().select(COLUMNS.COLUMN_NAME,COLUMNS.ORDINAL_POSITION,COLUMNS.DATA_TYPE,COLUMNS.NUMERIC_PRECISION,COLUMNS.NUMERIC_SCALE,COLUMNS.IDENTITY_GENERATION,COLUMNS.COLUMN_DEFAULT,COLUMNS.UDT_NAME).from(COLUMNS).where(COLUMNS.TABLE_SCHEMA.equal(getSchema().getName())).and(COLUMNS.TABLE_NAME.equal(getName())).orderBy(COLUMNS.ORDINAL_POSITION).fetch()) {
+  for (  Record record : create().select(COLUMNS.COLUMN_NAME,COLUMNS.ORDINAL_POSITION,COLUMNS.DATA_TYPE,COLUMNS.NUMERIC_PRECISION,COLUMNS.NUMERIC_SCALE,COLUMNS.IS_NULLABLE,COLUMNS.IDENTITY_GENERATION,COLUMNS.COLUMN_DEFAULT,COLUMNS.UDT_NAME).from(COLUMNS).where(COLUMNS.TABLE_SCHEMA.equal(getSchema().getName())).and(COLUMNS.TABLE_NAME.equal(getName())).orderBy(COLUMNS.ORDINAL_POSITION).fetch()) {
     DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),record.getValue(COLUMNS.DATA_TYPE),record.getValue(COLUMNS.NUMERIC_PRECISION),record.getValue(COLUMNS.NUMERIC_SCALE),record.getValue(COLUMNS.UDT_NAME));
-    ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getSchema(),getName()),record.getValue(COLUMNS.COLUMN_NAME),record.getValueAsInteger(COLUMNS.ORDINAL_POSITION),type,record.getValue(COLUMNS.COLUMN_DEFAULT,"").startsWith("nextval"),null);
+    ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getSchema(),getName()),record.getValue(COLUMNS.COLUMN_NAME),record.getValueAsInteger(COLUMNS.ORDINAL_POSITION),type,record.getValue(COLUMNS.IS_NULLABLE,boolean.class),record.getValue(COLUMNS.COLUMN_DEFAULT,"").startsWith("nextval"),null);
     result.add(column);
   }
   return result;

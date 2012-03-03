@@ -1,0 +1,7 @@
+TableDefinition table
+String name
+int position
+DataTypeDefinition type
+boolean nullable
+boolean isIdentity
+String comment
