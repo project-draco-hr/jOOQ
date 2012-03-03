@@ -1,0 +1,17 @@
+{
+  Factory create=create(configuration);
+  ConditionProviderImpl selfJoin=new ConditionProviderImpl();
+  FieldList select=new FieldList();
+  Table<?> outer=dividend.as("dividend");
+  for (  Field<?> field : returning) {
+    Field<?> outerField=outer.getField(field);
+    if (outerField == null) {
+      select.add(field);
+    }
+ else {
+      select.add(outerField);
+      selfJoin(selfJoin,outer,dividend,field);
+    }
+  }
+  return create.selectDistinct(select).from(outer).whereNotExists(create.selectOne().from(divisor).whereNotExists(create.selectOne().from(dividend).where(selfJoin).and(condition))).asTable();
+}

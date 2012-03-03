@@ -1,0 +1,3 @@
+{
+  new ExoticTests(this).testRelationalDivision();
+}

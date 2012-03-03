@@ -1,0 +1,10 @@
+{
+  Field<T> outerField=outer.getField(field);
+  Field<T> innerField=inner.getField(field);
+  if (outerField == null || innerField == null) {
+    return;
+  }
+ else {
+    selfJoin.addConditions(outerField.equal(innerField));
+  }
+}

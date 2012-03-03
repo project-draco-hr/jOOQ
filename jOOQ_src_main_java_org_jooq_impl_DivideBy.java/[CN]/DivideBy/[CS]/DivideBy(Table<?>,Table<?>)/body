@@ -1,0 +1,7 @@
+{
+  super("division");
+  this.dividend=dividend;
+  this.divisor=divisor;
+  this.condition=new ConditionProviderImpl();
+  this.returning=new FieldList();
+}

@@ -1,0 +1,4 @@
+{
+  returning.addAll(fields);
+  return this;
+}
