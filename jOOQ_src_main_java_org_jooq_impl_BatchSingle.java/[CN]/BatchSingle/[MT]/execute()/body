@@ -1,29 +1,8 @@
 {
-  Connection connection=create.getConnection();
-  ExecuteContext ctx=new DefaultExecuteContext(create,new Query[]{query});
-  ExecuteListener listener=new ExecuteListeners(ctx);
-  try {
-    listener.renderStart(ctx);
-    ctx.sql(create.render(query));
-    listener.renderEnd(ctx);
-    listener.prepareStart(ctx);
-    ctx.statement(connection.prepareStatement(ctx.sql()));
-    listener.prepareEnd(ctx);
-    for (    Object[] bindValues : allBindValues) {
-      listener.bindStart(ctx);
-      new DefaultBindContext(create,ctx.statement()).bindValues(bindValues);
-      listener.bindEnd(ctx);
-      ctx.statement().addBatch();
-    }
-    listener.executeStart(ctx);
-    int[] result=ctx.statement().executeBatch();
-    listener.executeEnd(ctx);
-    return result;
+  if (executeStaticStatements(create.getSettings())) {
+    return executeStatic();
   }
- catch (  SQLException e) {
-    throw Util.translate("BatchSingle.execute",ctx.sql(),e);
-  }
- finally {
-    Util.safeClose(listener,ctx);
+ else {
+    return executePrepared();
   }
 }

@@ -1,0 +1,3 @@
+{
+  return batch(queries.toArray(new Query[queries.size()]));
+}
