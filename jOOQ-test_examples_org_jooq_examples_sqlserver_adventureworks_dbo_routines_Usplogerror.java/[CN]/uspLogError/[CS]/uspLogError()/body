@@ -1,4 +1,0 @@
-{
-  super("uspLogError",org.jooq.examples.sqlserver.adventureworks.dbo.dbo.dbo);
-  addInOutParameter(ErrorLogID);
-}

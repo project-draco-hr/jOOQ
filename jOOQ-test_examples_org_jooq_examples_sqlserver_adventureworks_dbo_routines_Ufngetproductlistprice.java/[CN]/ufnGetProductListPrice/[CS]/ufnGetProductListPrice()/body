@@ -1,6 +1,0 @@
-{
-  super("ufnGetProductListPrice",org.jooq.examples.sqlserver.adventureworks.dbo.dbo.dbo,org.jooq.impl.SQLDataType.NUMERIC);
-  setReturnParameter(RETURN_VALUE);
-  addInParameter(ProductID);
-  addInParameter(OrderDate);
-}

@@ -1,4 +1,0 @@
-{
-  super("uspGetEmployeeManagers",org.jooq.examples.sqlserver.adventureworks.dbo.dbo.dbo);
-  addInParameter(EmployeeID);
-}
