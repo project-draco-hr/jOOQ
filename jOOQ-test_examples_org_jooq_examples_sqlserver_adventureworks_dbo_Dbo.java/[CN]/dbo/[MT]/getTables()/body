@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.Table<?>>asList(org.jooq.examples.sqlserver.adventureworks.dbo.tables.AWBuildVersion.AWBuildVersion,org.jooq.examples.sqlserver.adventureworks.dbo.tables.DatabaseLog.DatabaseLog,org.jooq.examples.sqlserver.adventureworks.dbo.tables.ErrorLog.ErrorLog);
-}
