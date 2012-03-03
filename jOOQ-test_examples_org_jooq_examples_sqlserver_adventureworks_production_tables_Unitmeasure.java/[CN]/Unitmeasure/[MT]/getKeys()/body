@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.examples.sqlserver.adventureworks.production.tables.records.UnitmeasureRecord>>asList(org.jooq.examples.sqlserver.adventureworks.production.Keys.PK_UNITMEASURE_UNITMEASURECODE);
-}

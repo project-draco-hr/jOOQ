@@ -1,5 +1,0 @@
-{
-  org.jooq.examples.sqlserver.adventureworks.dbo.routines.Ufngetcontactinformation f=new org.jooq.examples.sqlserver.adventureworks.dbo.routines.Ufngetcontactinformation();
-  f.setContactid(contactid);
-  return f.asField();
-}

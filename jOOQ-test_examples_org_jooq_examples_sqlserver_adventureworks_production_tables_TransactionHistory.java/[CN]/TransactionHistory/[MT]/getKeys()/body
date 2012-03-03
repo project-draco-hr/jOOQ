@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.examples.sqlserver.adventureworks.production.tables.records.TransactionHistory>>asList(org.jooq.examples.sqlserver.adventureworks.production.Keys.PK_TransactionHistory_TransactionID);
+}

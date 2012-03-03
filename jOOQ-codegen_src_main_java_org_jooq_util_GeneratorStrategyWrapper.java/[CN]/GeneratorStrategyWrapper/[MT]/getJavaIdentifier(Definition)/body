@@ -1,3 +1,10 @@
 {
-  return convertToJavaIdentifier(delegate.getJavaIdentifier(definition));
+  String identifier=convertToJavaIdentifier(delegate.getJavaIdentifier(definition));
+  if (definition instanceof ColumnDefinition || definition instanceof AttributeDefinition) {
+    TypedElementDefinition<?> e=(TypedElementDefinition<?>)definition;
+    if (identifier.equals(getJavaIdentifier(e.getContainer()))) {
+      return identifier + "_";
+    }
+  }
+  return identifier;
 }

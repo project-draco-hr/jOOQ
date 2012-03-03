@@ -1,0 +1,3 @@
+{
+  super("ShipMethod",org.jooq.examples.sqlserver.adventureworks.purchasing.Purchasing.Purchasing);
+}

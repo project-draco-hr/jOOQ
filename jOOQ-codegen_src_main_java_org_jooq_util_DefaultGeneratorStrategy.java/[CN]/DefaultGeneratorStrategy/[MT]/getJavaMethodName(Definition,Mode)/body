@@ -1,3 +1,3 @@
 {
-  return disambiguateMethod(definition,getJavaClassName0LC(definition,Mode.DEFAULT));
+  return getJavaClassName0LC(definition,Mode.DEFAULT);
 }

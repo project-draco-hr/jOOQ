@@ -1,0 +1,3 @@
+{
+  super("AWBuildVersion",org.jooq.examples.sqlserver.adventureworks.dbo.dbo.dbo);
+}

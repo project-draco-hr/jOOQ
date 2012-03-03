@@ -1,3 +1,0 @@
-{
-  super("ProductReview",org.jooq.examples.sqlserver.adventureworks.production.Production.PRODUCTION);
-}

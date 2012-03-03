@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.examples.sqlserver.adventureworks.production.tables.Culture.Culture.CultureID,value);
+}

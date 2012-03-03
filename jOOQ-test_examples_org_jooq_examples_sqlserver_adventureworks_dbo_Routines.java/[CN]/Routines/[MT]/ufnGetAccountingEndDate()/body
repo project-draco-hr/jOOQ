@@ -1,0 +1,4 @@
+{
+  org.jooq.examples.sqlserver.adventureworks.dbo.routines.ufnGetAccountingEndDate f=new org.jooq.examples.sqlserver.adventureworks.dbo.routines.ufnGetAccountingEndDate();
+  return f.asField();
+}

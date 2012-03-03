@@ -1,4 +1,0 @@
-{
-  org.jooq.examples.sqlserver.adventureworks.dbo.routines.Uspprinterror p=new org.jooq.examples.sqlserver.adventureworks.dbo.routines.Uspprinterror();
-  p.execute(configuration);
-}

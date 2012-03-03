@@ -1,3 +1,0 @@
-{
-  super("ProductPhoto",org.jooq.examples.sqlserver.adventureworks.production.Production.PRODUCTION);
-}

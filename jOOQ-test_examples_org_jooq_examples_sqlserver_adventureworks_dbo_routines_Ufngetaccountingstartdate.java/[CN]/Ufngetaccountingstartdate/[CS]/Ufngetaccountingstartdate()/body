@@ -1,4 +1,0 @@
-{
-  super("ufnGetAccountingStartDate",org.jooq.examples.sqlserver.adventureworks.dbo.Dbo.DBO,org.jooq.impl.SQLDataType.TIMESTAMP);
-  setReturnParameter(RETURN_VALUE);
-}

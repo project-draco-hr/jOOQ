@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.examples.sqlserver.adventureworks.humanresources.tables.vJobCandidateEducation.vJobCandidateEducation.Edu_EndDate,value);
+}

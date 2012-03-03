@@ -1,0 +1,8 @@
+org.jooq.Configuration configuration
+java.lang.Integer EmployeeID
+java.lang.String Title
+java.sql.Timestamp HireDate
+java.sql.Timestamp RateChangeDate
+java.math.BigDecimal Rate
+java.lang.Byte PayFrequency
+java.lang.Boolean CurrentFlag

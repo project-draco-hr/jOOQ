@@ -1,0 +1,7 @@
+{
+  org.jooq.examples.sqlserver.adventureworks.dbo.routines.ufnGetProductDealerPrice f=new org.jooq.examples.sqlserver.adventureworks.dbo.routines.ufnGetProductDealerPrice();
+  f.setProductID(ProductID);
+  f.setOrderDate(OrderDate);
+  f.execute(configuration);
+  return f.getReturnValue();
+}

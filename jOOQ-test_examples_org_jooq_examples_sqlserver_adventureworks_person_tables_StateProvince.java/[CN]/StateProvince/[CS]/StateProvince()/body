@@ -1,0 +1,3 @@
+{
+  super("StateProvince",org.jooq.examples.sqlserver.adventureworks.person.Person.Person);
+}

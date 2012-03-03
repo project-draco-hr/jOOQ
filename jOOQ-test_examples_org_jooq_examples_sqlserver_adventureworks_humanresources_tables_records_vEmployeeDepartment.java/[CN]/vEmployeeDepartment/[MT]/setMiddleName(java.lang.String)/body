@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.examples.sqlserver.adventureworks.humanresources.tables.vEmployeeDepartment.vEmployeeDepartment.MiddleName,value);
+}

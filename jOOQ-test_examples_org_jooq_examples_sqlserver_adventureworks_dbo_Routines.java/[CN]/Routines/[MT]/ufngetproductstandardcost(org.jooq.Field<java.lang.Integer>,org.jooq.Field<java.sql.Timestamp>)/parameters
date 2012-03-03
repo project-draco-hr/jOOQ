@@ -1,2 +1,0 @@
-org.jooq.Field<java.lang.Integer> productid
-org.jooq.Field<java.sql.Timestamp> orderdate

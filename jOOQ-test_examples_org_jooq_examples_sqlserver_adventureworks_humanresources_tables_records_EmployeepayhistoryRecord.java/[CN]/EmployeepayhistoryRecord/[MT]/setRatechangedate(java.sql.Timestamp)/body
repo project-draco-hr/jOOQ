@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.examples.sqlserver.adventureworks.humanresources.tables.Employeepayhistory.EMPLOYEEPAYHISTORY.RATECHANGEDATE,value);
-}

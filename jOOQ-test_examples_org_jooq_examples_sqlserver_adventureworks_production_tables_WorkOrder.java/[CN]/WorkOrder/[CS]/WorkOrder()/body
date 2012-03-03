@@ -1,0 +1,3 @@
+{
+  super("WorkOrder",org.jooq.examples.sqlserver.adventureworks.production.Production.Production);
+}

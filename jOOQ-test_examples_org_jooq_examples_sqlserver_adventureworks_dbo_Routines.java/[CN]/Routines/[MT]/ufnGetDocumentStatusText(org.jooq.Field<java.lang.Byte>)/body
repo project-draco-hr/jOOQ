@@ -1,0 +1,5 @@
+{
+  org.jooq.examples.sqlserver.adventureworks.dbo.routines.ufnGetDocumentStatusText f=new org.jooq.examples.sqlserver.adventureworks.dbo.routines.ufnGetDocumentStatusText();
+  f.setStatus(Status);
+  return f.asField();
+}

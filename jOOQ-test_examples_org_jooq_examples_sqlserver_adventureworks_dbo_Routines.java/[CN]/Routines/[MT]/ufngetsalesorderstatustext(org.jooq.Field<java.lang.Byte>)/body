@@ -1,5 +1,0 @@
-{
-  org.jooq.examples.sqlserver.adventureworks.dbo.routines.Ufngetsalesorderstatustext f=new org.jooq.examples.sqlserver.adventureworks.dbo.routines.Ufngetsalesorderstatustext();
-  f.setStatus(status);
-  return f.asField();
-}

@@ -1,0 +1,3 @@
+{
+  return org.jooq.examples.sqlserver.adventureworks.sales.Keys.PK_SalesTerritoryHistory_SalesPersonID_StartDate_TerritoryID;
+}

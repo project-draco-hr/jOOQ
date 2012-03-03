@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.examples.sqlserver.adventureworks.humanresources.tables.Vjobcandidate.VJOBCANDIDATE.ADDR_TYPE,value);
-}

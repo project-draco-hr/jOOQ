@@ -1,3 +1,0 @@
-{
-  super(alias,org.jooq.examples.sqlserver.adventureworks.sales.Sales.SALES,org.jooq.examples.sqlserver.adventureworks.sales.tables.Salesorderheadersalesreason.SALESORDERHEADERSALESREASON);
-}

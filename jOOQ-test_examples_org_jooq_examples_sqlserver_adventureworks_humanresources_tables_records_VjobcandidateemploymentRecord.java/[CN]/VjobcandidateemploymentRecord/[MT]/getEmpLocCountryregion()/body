@@ -1,3 +1,0 @@
-{
-  return getValue(org.jooq.examples.sqlserver.adventureworks.humanresources.tables.Vjobcandidateemployment.VJOBCANDIDATEEMPLOYMENT.EMP_LOC_COUNTRYREGION);
-}

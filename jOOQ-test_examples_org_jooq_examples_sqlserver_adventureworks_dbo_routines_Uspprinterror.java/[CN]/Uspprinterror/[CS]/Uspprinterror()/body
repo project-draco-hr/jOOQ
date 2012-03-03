@@ -1,3 +1,0 @@
-{
-  super("uspPrintError",org.jooq.examples.sqlserver.adventureworks.dbo.Dbo.DBO);
-}

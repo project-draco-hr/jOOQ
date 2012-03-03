@@ -1,0 +1,9 @@
+{
+  org.jooq.examples.sqlserver.adventureworks.humanresources.routines.uspUpdateEmployeePersonalInfo p=new org.jooq.examples.sqlserver.adventureworks.humanresources.routines.uspUpdateEmployeePersonalInfo();
+  p.setEmployeeID(EmployeeID);
+  p.setNationalIDNumber(NationalIDNumber);
+  p.setBirthDate(BirthDate);
+  p.setMaritalStatus(MaritalStatus);
+  p.setGender(Gender);
+  p.execute(configuration);
+}

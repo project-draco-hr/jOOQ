@@ -1,0 +1,2 @@
+java.lang.Integer ProductID
+java.sql.Timestamp OrderDate

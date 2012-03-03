@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.examples.sqlserver.adventureworks.production.tables.records.WorkorderRecord,?>>asList(org.jooq.examples.sqlserver.adventureworks.production.Keys.FK_WORKORDER_PRODUCT_PRODUCTID,org.jooq.examples.sqlserver.adventureworks.production.Keys.FK_WORKORDER_SCRAPREASON_SCRAPREASONID);
-}

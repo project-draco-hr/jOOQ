@@ -1,0 +1,6 @@
+org.jooq.Configuration configuration
+java.lang.Integer EmployeeID
+java.lang.String NationalIDNumber
+java.sql.Timestamp BirthDate
+java.lang.String MaritalStatus
+java.lang.String Gender

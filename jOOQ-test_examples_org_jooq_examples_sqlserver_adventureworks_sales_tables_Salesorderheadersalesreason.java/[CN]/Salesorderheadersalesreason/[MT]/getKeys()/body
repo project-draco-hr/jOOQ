@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.examples.sqlserver.adventureworks.sales.tables.records.SalesorderheadersalesreasonRecord>>asList(org.jooq.examples.sqlserver.adventureworks.sales.Keys.PK_SALESORDERHEADERSALESREASON_SALESORDERID_SALESREASONID);
-}

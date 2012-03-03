@@ -1,0 +1,3 @@
+{
+  super("SalesOrderDetail",org.jooq.examples.sqlserver.adventureworks.sales.Sales.Sales);
+}

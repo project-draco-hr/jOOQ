@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.examples.sqlserver.adventureworks.sales.tables.SalesOrderHeader.SalesOrderHeader.Freight,value);
+}

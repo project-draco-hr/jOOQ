@@ -1,0 +1,3 @@
+{
+  super(alias,org.jooq.examples.sqlserver.adventureworks.humanresources.HumanResources.HumanResources,org.jooq.examples.sqlserver.adventureworks.humanresources.tables.vEmployee.vEmployee);
+}

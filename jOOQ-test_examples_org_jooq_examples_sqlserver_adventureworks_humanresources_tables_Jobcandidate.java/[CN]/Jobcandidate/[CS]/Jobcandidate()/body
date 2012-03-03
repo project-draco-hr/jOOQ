@@ -1,3 +1,0 @@
-{
-  super("JobCandidate",org.jooq.examples.sqlserver.adventureworks.humanresources.Humanresources.HUMANRESOURCES);
-}

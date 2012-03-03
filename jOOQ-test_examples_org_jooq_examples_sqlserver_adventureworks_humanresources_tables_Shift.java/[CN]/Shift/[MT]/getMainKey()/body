@@ -1,3 +1,3 @@
 {
-  return org.jooq.examples.sqlserver.adventureworks.humanresources.Keys.PK_SHIFT_SHIFTID;
+  return org.jooq.examples.sqlserver.adventureworks.humanresources.Keys.PK_Shift_ShiftID;
 }

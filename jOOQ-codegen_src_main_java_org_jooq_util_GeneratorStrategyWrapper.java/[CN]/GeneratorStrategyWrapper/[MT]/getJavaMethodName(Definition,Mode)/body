@@ -1,3 +1,3 @@
 {
-  return convertToJavaIdentifier(delegate.getJavaMethodName(definition,mode));
+  return disambiguateMethod(definition,convertToJavaIdentifier(delegate.getJavaMethodName(definition,mode)));
 }

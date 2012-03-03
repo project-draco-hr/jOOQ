@@ -1,3 +1,0 @@
-{
-  super("vSalesPerson",org.jooq.examples.sqlserver.adventureworks.sales.Sales.SALES);
-}

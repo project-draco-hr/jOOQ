@@ -1,0 +1,3 @@
+{
+  super(alias,org.jooq.examples.sqlserver.adventureworks.production.Production.Production,org.jooq.examples.sqlserver.adventureworks.production.tables.ProductPhoto.ProductPhoto);
+}

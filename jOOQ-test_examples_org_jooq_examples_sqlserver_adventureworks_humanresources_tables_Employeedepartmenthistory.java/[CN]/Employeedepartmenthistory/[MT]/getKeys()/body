@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.examples.sqlserver.adventureworks.humanresources.tables.records.EmployeedepartmenthistoryRecord>>asList(org.jooq.examples.sqlserver.adventureworks.humanresources.Keys.PK_EMPLOYEEDEPARTMENTHISTORY_EMPLOYEEID_STARTDATE_DEPARTMENTID);
-}

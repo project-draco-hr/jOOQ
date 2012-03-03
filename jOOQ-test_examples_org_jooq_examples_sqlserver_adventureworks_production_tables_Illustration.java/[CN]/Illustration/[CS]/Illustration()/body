@@ -1,3 +1,3 @@
 {
-  super("Illustration",org.jooq.examples.sqlserver.adventureworks.production.Production.PRODUCTION);
+  super("Illustration",org.jooq.examples.sqlserver.adventureworks.production.Production.Production);
 }

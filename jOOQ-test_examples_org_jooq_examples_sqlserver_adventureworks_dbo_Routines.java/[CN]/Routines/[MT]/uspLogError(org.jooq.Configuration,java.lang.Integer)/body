@@ -1,0 +1,6 @@
+{
+  org.jooq.examples.sqlserver.adventureworks.dbo.routines.uspLogError p=new org.jooq.examples.sqlserver.adventureworks.dbo.routines.uspLogError();
+  p.setErrorLogID(ErrorLogID);
+  p.execute(configuration);
+  return p.getErrorLogID();
+}

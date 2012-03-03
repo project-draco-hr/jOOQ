@@ -1,0 +1,5 @@
+{
+  org.jooq.examples.sqlserver.adventureworks.dbo.routines.uspGetEmployeeManagers p=new org.jooq.examples.sqlserver.adventureworks.dbo.routines.uspGetEmployeeManagers();
+  p.setEmployeeID(EmployeeID);
+  p.execute(configuration);
+}

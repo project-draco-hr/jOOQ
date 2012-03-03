@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.examples.sqlserver.adventureworks.humanresources.tables.vJobCandidate.vJobCandidate.JobCandidateID);
+}

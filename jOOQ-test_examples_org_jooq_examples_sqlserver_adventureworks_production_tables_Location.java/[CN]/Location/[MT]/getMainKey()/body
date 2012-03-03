@@ -1,3 +1,3 @@
 {
-  return org.jooq.examples.sqlserver.adventureworks.production.Keys.PK_LOCATION_LOCATIONID;
+  return org.jooq.examples.sqlserver.adventureworks.production.Keys.PK_Location_LocationID;
 }

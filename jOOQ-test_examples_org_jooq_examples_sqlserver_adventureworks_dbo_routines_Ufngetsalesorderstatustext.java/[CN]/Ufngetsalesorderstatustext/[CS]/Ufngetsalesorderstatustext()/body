@@ -1,5 +1,0 @@
-{
-  super("ufnGetSalesOrderStatusText",org.jooq.examples.sqlserver.adventureworks.dbo.Dbo.DBO,org.jooq.impl.SQLDataType.NVARCHAR);
-  setReturnParameter(RETURN_VALUE);
-  addInParameter(STATUS);
-}

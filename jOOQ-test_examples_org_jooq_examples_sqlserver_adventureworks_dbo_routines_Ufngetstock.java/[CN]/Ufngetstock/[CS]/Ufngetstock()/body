@@ -1,5 +1,0 @@
-{
-  super("ufnGetStock",org.jooq.examples.sqlserver.adventureworks.dbo.Dbo.DBO,org.jooq.impl.SQLDataType.INTEGER);
-  setReturnParameter(RETURN_VALUE);
-  addInParameter(PRODUCTID);
-}

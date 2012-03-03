@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.examples.sqlserver.adventureworks.person.tables.Contact.Contact.rowguid,value);
+}

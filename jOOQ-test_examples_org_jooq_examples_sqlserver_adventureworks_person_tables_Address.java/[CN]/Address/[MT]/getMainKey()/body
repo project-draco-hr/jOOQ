@@ -1,3 +1,3 @@
 {
-  return org.jooq.examples.sqlserver.adventureworks.person.Keys.PK_ADDRESS_ADDRESSID;
+  return org.jooq.examples.sqlserver.adventureworks.person.Keys.PK_Address_AddressID;
 }

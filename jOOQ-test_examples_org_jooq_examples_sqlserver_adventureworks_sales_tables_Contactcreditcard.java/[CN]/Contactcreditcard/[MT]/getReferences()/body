@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.examples.sqlserver.adventureworks.sales.tables.records.ContactcreditcardRecord,?>>asList(org.jooq.examples.sqlserver.adventureworks.sales.Keys.FK_CONTACTCREDITCARD_CONTACT_CONTACTID,org.jooq.examples.sqlserver.adventureworks.sales.Keys.FK_CONTACTCREDITCARD_CREDITCARD_CREDITCARDID);
-}

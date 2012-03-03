@@ -1,3 +1,3 @@
 {
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.examples.sqlserver.adventureworks.production.tables.records.CultureRecord>>asList(org.jooq.examples.sqlserver.adventureworks.production.Keys.PK_CULTURE_CULTUREID);
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.examples.sqlserver.adventureworks.production.tables.records.Culture>>asList(org.jooq.examples.sqlserver.adventureworks.production.Keys.PK_Culture_CultureID);
 }

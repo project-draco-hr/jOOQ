@@ -1,0 +1,5 @@
+{
+  super("ufnGetDocumentStatusText",org.jooq.examples.sqlserver.adventureworks.dbo.dbo.dbo,org.jooq.impl.SQLDataType.NVARCHAR);
+  setReturnParameter(RETURN_VALUE);
+  addInParameter(Status);
+}

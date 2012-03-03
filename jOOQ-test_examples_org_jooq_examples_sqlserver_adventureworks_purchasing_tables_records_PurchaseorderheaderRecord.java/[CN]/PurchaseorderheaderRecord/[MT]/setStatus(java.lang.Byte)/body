@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.examples.sqlserver.adventureworks.purchasing.tables.Purchaseorderheader.PURCHASEORDERHEADER.STATUS,value);
-}
