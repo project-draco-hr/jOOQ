@@ -1,3 +1,0 @@
-{
-  super("ProductListPriceHistory",org.jooq.examples.sqlserver.adventureworks.production.Production.Production);
-}

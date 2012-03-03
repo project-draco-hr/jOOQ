@@ -1,3 +1,0 @@
-{
-  return org.jooq.examples.sqlserver.adventureworks.production.Keys.PK_ProductModelProductDescriptionCulture_ProductModelID_ProductDescriptionID_CultureID;
-}
