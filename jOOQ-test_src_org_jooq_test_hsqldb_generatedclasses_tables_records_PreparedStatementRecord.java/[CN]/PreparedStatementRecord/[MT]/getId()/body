@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.test.hsqldb.generatedclasses.tables.PreparedStatement.PREPARED_STATEMENT.ID);
+}

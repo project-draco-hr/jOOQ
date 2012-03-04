@@ -1,0 +1,3 @@
+{
+  super("PREPARED_STATEMENT",org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC);
+}
