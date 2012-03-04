@@ -13,6 +13,9 @@
  else   if (db.getUDT(schema,u) != null) {
     type=strategy.getFullJavaClassName(db.getUDT(schema,u),Mode.RECORD);
   }
+ else   if (db.getConfiguredCustomType(u) != null) {
+    type=u;
+  }
  else {
     try {
       Class<?> clazz=FieldTypeHelper.getDialectJavaType(db.getDialect(),t,p,s);

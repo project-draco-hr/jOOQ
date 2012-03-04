@@ -1,8 +1,0 @@
-{
-  try {
-    return MyEnum.valueOf(t);
-  }
- catch (  Exception e) {
-    return null;
-  }
-}

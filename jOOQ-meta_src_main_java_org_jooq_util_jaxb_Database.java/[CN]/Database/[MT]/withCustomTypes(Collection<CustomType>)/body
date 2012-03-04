@@ -1,0 +1,6 @@
+{
+  if (values != null) {
+    getCustomTypes().addAll(values);
+  }
+  return this;
+}

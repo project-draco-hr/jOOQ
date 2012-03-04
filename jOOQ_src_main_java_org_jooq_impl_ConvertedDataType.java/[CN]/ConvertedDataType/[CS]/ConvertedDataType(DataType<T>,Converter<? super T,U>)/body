@@ -1,0 +1,6 @@
+{
+  super(null,null,converter.toType(),delegate.getTypeName(),delegate.getCastTypeName());
+  this.delegate=delegate;
+  this.converter=converter;
+  DataTypes.registerConverter(converter.toType(),converter);
+}

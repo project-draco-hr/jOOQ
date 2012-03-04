@@ -1,4 +1,13 @@
 {
   Class<? extends T> type=field.getType();
-  return getFromResultSet(ctx,type,index);
+  Class<?> actual=type;
+  Converter<?,? extends T> converter=DataTypes.converter(type);
+  if (converter != null) {
+    actual=converter.fromType();
+  }
+  Object result=getFromResultSet(ctx,actual,index);
+  if (converter != null) {
+    result=((Converter)converter).from(result);
+  }
+  return (T)result;
 }

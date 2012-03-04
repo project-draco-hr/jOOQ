@@ -1,5 +1,10 @@
 {
   SQLDialect dialect=configuration.getDialect();
+  Converter<?,?> converter=DataTypes.converter(type);
+  if (converter != null) {
+    value=((Converter)converter).to(value);
+    type=converter.fromType();
+  }
   if (log.isTraceEnabled()) {
     if (value != null && value.getClass().isArray() && value.getClass() != byte[].class) {
       log.trace("Binding variable " + peekIndex(),Arrays.asList((Object[])value) + " (" + type+ ")");

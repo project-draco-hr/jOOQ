@@ -29,7 +29,7 @@
  catch (      SQLDialectNotSupportedException ignore) {
       }
       if (dataType != null) {
-        if (dataType.getSQLDataType() == SQLDataType.DATE) {
+        if (dataType.getSQLType() == Types.DATE) {
           DataType<?> forcedDataType=getDialectDataType(db.getDialect(),SQLDataType.TIMESTAMP.getTypeName(),0,0);
           type=new DefaultDataTypeDefinition(db,getSchema(),forcedDataType.getTypeName(),0,0);
         }

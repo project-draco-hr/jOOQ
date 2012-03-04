@@ -1,0 +1,8 @@
+{
+  for (  CustomType type : configuredCustomTypes) {
+    if (type.getName().equals(name)) {
+      return type;
+    }
+  }
+  return null;
+}

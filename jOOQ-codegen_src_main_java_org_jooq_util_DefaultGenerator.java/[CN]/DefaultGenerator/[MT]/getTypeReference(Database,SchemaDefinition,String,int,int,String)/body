@@ -35,6 +35,11 @@
       sb.append(SQLDataType.class.getCanonicalName());
       sb.append(".");
       sb.append(FieldTypeHelper.normalise(sqlDataType.getTypeName()));
+      if (db.getConfiguredCustomType(u) != null) {
+        sb.append(".asConvertedDataType(new ");
+        sb.append(db.getConfiguredCustomType(u).getConverter());
+        sb.append("())");
+      }
     }
  else {
       sb.append("org.jooq.util.");

@@ -43,6 +43,7 @@
     database.setIncludes(defaultString(g.getDatabase().getIncludes()).split(","));
     database.setExcludes(defaultString(g.getDatabase().getExcludes()).split(","));
     database.setConfiguredMasterDataTables(g.getDatabase().getMasterDataTables());
+    database.setConfiguredCustomTypes(g.getDatabase().getCustomTypes());
     database.setConfiguredEnumTypes(g.getDatabase().getEnumTypes());
     database.setConfiguredForcedTypes(g.getDatabase().getForcedTypes());
     if (g.getDatabase().isDateAsTimestamp() != null)     database.setDateAsTimestamp(g.getDatabase().isDateAsTimestamp());
