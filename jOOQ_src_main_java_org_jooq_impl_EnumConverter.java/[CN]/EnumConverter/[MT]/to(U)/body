@@ -1,0 +1,8 @@
+{
+  if (enumType == EnumType.ORDINAL) {
+    return convert(userObject.ordinal(),fromType);
+  }
+ else {
+    return convert(userObject.name(),fromType);
+  }
+}

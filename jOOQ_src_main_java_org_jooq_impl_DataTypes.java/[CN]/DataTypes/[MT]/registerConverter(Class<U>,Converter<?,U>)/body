@@ -1,0 +1,5 @@
+{
+  if (!CONVERTERS.containsKey(customType)) {
+    CONVERTERS.put(customType,converter);
+  }
+}

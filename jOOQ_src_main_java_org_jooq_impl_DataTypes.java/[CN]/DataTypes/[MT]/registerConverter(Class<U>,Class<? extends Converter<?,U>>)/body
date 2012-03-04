@@ -1,0 +1,9 @@
+{
+  try {
+    converter.getConstructor().setAccessible(true);
+    registerConverter(customType,converter.newInstance());
+  }
+ catch (  Exception e) {
+    throw new DataTypeException("Cannot register converter",e);
+  }
+}

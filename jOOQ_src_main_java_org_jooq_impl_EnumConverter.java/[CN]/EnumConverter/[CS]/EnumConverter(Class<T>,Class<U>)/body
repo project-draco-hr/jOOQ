@@ -1,0 +1,9 @@
+{
+  this.fromType=fromType;
+  this.toType=toType;
+  this.enumType=Number.class.isAssignableFrom(fromType) ? EnumType.ORDINAL : EnumType.STRING;
+  this.lookup=new LinkedHashMap<T,U>();
+  for (  U u : toType.getEnumConstants()) {
+    this.lookup.put(to(u),u);
+  }
+}
