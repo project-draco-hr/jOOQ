@@ -1,0 +1,4 @@
+{
+  ConvertAll<T> all=new ConvertAll<T>(converter.fromType());
+  return converter.from(all.from(from));
+}

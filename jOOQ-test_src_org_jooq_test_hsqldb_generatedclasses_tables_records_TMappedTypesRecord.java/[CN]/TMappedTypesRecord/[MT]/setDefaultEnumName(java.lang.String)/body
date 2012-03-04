@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.hsqldb.generatedclasses.tables.TMappedTypes.T_MAPPED_TYPES.DEFAULT_ENUM_NAME,value);
+}

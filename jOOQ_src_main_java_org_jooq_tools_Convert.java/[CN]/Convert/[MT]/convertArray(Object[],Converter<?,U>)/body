@@ -1,0 +1,13 @@
+{
+  if (from == null) {
+    return null;
+  }
+ else {
+    Object[] arrayOfT=convertArray(from,converter.fromType());
+    Object[] arrayOfU=(Object[])Array.newInstance(converter.toType(),from.length);
+    for (int i=0; i < arrayOfT.length; i++) {
+      arrayOfU[i]=convert(arrayOfT[i],converter);
+    }
+    return (U[])arrayOfU;
+  }
+}

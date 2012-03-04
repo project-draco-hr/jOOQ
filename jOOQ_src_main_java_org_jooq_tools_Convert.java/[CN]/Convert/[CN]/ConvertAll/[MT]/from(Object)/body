@@ -1,0 +1,107 @@
+{
+  if (from == null) {
+    if (toClass.isPrimitive()) {
+      if (toClass == char.class) {
+        return (U)Character.valueOf((char)0);
+      }
+ else {
+        return convert(0,toClass);
+      }
+    }
+ else {
+      return null;
+    }
+  }
+ else {
+    final Class<?> fromClass=from.getClass();
+    if (toClass == fromClass) {
+      return (U)from;
+    }
+ else     if (toClass == Object.class) {
+      return (U)from;
+    }
+ else     if (fromClass == byte[].class) {
+      return convert(Arrays.toString((byte[])from),toClass);
+    }
+ else     if (fromClass.isArray()) {
+      return (U)convertArray((Object[])from,toClass);
+    }
+ else     if (toClass == String.class) {
+      if (from instanceof EnumType) {
+        return (U)((EnumType)from).getLiteral();
+      }
+      return (U)from.toString();
+    }
+ else     if (toClass == Byte.class || toClass == byte.class) {
+      return (U)Byte.valueOf(new BigDecimal(from.toString().trim()).byteValue());
+    }
+ else     if (toClass == Short.class || toClass == short.class) {
+      return (U)Short.valueOf(new BigDecimal(from.toString().trim()).shortValue());
+    }
+ else     if (toClass == Integer.class || toClass == int.class) {
+      return (U)Integer.valueOf(new BigDecimal(from.toString().trim()).intValue());
+    }
+ else     if (toClass == Long.class || toClass == long.class) {
+      if (java.util.Date.class.isAssignableFrom(fromClass)) {
+        return (U)Long.valueOf(((java.util.Date)from).getTime());
+      }
+ else {
+        return (U)Long.valueOf(new BigDecimal(from.toString().trim()).longValue());
+      }
+    }
+ else     if (toClass == UByte.class) {
+      return (U)ubyte(new BigDecimal(from.toString().trim()).shortValue());
+    }
+ else     if (toClass == UShort.class) {
+      return (U)ushort(new BigDecimal(from.toString().trim()).intValue());
+    }
+ else     if (toClass == UInteger.class) {
+      return (U)uint(new BigDecimal(from.toString().trim()).longValue());
+    }
+ else     if (toClass == ULong.class) {
+      if (java.util.Date.class.isAssignableFrom(fromClass)) {
+        return (U)ulong(((java.util.Date)from).getTime());
+      }
+ else {
+        return (U)ulong(new BigDecimal(from.toString().trim()).toBigInteger().toString());
+      }
+    }
+ else     if (toClass == Float.class || toClass == float.class) {
+      return (U)Float.valueOf(from.toString().trim());
+    }
+ else     if (toClass == Double.class || toClass == double.class) {
+      return (U)Double.valueOf(from.toString().trim());
+    }
+ else     if (toClass == BigDecimal.class) {
+      return (U)new BigDecimal(from.toString().trim());
+    }
+ else     if (toClass == BigInteger.class) {
+      return (U)new BigDecimal(from.toString().trim()).toBigInteger();
+    }
+ else     if (toClass == Boolean.class || toClass == boolean.class) {
+      String s=from.toString().toLowerCase().trim();
+      if (TRUE_VALUES.contains(s)) {
+        return (U)Boolean.TRUE;
+      }
+ else       if (FALSE_VALUES.contains(s)) {
+        return (U)Boolean.FALSE;
+      }
+ else {
+        return null;
+      }
+    }
+ else     if (toClass == Character.class || toClass == char.class) {
+      if (from.toString().length() != 1) {
+        throw fail(from,toClass);
+      }
+      return (U)Character.valueOf(from.toString().charAt(0));
+    }
+ else     if (java.util.Date.class.isAssignableFrom(fromClass)) {
+      return toDate(((java.util.Date)from).getTime(),toClass);
+    }
+ else     if ((fromClass == Long.class || fromClass == long.class) && java.util.Date.class.isAssignableFrom(toClass)) {
+      return toDate((Long)from,toClass);
+    }
+  }
+  throw fail(from,toClass);
+}

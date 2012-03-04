@@ -1,0 +1,4 @@
+{
+  final U result=getValue(fieldName,converter);
+  return result == null ? defaultValue : result;
+}

@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.hsqldb.generatedclasses.tables.records.TMappedTypesRecord>>asList(org.jooq.test.hsqldb.generatedclasses.Keys.PK_T_MAPPED_TYPES);
+}

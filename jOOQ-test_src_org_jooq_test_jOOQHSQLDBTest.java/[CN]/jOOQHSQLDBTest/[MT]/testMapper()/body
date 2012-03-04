@@ -1,0 +1,14 @@
+{
+  jOOQAbstractTest.reset=false;
+  TMappedTypesRecord record;
+  record=create().newRecord(T_MAPPED_TYPES);
+  record.setId(1);
+  record.setValue(T_MAPPED_TYPES.DEFAULT_ENUM_NAME,MyEnum.A,MyEnumStringMapper.INSTANCE);
+  record.setValue(T_MAPPED_TYPES.DEFAULT_ENUM_ORDINAL,MyEnum.B,MyEnumNumericMapper.INSTANCE);
+  assertEquals(1,record.store());
+  record=create().newRecord(T_MAPPED_TYPES);
+  record.setId(1);
+  record.refresh();
+  assertEquals(MyEnum.A,record.getValue(T_MAPPED_TYPES.DEFAULT_ENUM_NAME,MyEnumStringMapper.INSTANCE));
+  assertEquals(MyEnum.B,record.getValue(T_MAPPED_TYPES.DEFAULT_ENUM_ORDINAL,MyEnumNumericMapper.INSTANCE));
+}

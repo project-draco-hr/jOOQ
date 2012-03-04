@@ -1,0 +1,3 @@
+{
+  return convert0(from,converter);
+}
