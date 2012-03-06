@@ -21,7 +21,7 @@
     for (    Sequence<?> sequence : schema.getSequences()) {
       assertEquals(sequence,schema.getSequence(sequence.getName()));
     }
-    int tables=18;
+    int tables=17;
     if (supportsRecursiveQueries()) {
       tables++;
     }
@@ -50,7 +50,7 @@
       assertEquals(tables + 2,schema.getTables().size());
     }
  else     if (getDialect() == HSQLDB) {
-      assertEquals(tables + 11,schema.getTables().size());
+      assertEquals(tables + 12,schema.getTables().size());
     }
  else {
       assertEquals(tables + 1,schema.getTables().size());
