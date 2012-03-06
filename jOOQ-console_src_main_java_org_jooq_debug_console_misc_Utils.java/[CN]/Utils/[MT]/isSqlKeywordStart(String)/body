@@ -1,4 +1,8 @@
 {
   s=s.toUpperCase(Locale.ENGLISH);
-  return s.startsWith("UNION ") || s.startsWith("CROSS JOIN ") || s.startsWith("INNER JOIN ")|| s.startsWith("ORDER BY ")|| s.startsWith("GROUP BY ")|| s.startsWith("HAVING ")|| s.startsWith("ON ")|| s.startsWith("WITH ")|| s.startsWith("SELECT ")|| s.startsWith("LEFT ")|| s.startsWith("FROM ")|| s.startsWith("WHERE ")|| s.startsWith("AND ")|| s.startsWith("OR ")|| s.startsWith("SET ");
+  int index=s.indexOf(' ');
+  if (index < 1) {
+    return false;
+  }
+  return keywordSet.contains(s.substring(0,index));
 }

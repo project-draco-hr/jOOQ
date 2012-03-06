@@ -16,6 +16,7 @@
   char quoteStart=0;
   boolean isLineStart=false;
   String currentIndent="";
+  boolean isWritingKeyword=isSqlKeywordStart(text.trim());
   Stack<Boolean> isParenthesisNewLineStack=new Stack<Boolean>();
   for (int i=0; i < charCount; i++) {
     char c=text.charAt(i);
@@ -30,6 +31,7 @@ switch (c) {
 case '"':
 case '\'':
 {
+          isWritingKeyword=false;
           if (isLineStart) {
             isLineStart=false;
             sb.append(currentIndent);
@@ -40,8 +42,9 @@ case '\'':
         }
 case '(':
 {
+        isWritingKeyword=false;
         boolean isNewLine=false;
-        if (text.length() <= i + 1 || !text.substring(i + 1).matches("\\s*(\\w+|.)\\s*\\).*")) {
+        if (text.length() <= i + 1 || !text.substring(i + 1).matches("\\s*(\\w+|[^\\w\\s])\\s*\\).*")) {
           while (text.length() > i + 1 && text.charAt(i + 1) == ' ') {
             i++;
           }
@@ -63,6 +66,7 @@ case '(':
       }
 case ')':
 {
+      isWritingKeyword=false;
       if (!isParenthesisNewLineStack.isEmpty()) {
         boolean isNewLine=isParenthesisNewLineStack.pop();
         if (isNewLine) {
@@ -85,7 +89,9 @@ case ')':
     }
 case ' ':
 {
-    if (!isLineStart && text.length() > i + 1 && isSqlKeywordStart(text.substring(i + 1).trim())) {
+    boolean isFirstKeyWord=!isWritingKeyword;
+    isWritingKeyword=text.length() > i + 1 && isSqlKeywordStart(text.substring(i + 1).trim());
+    if (!isLineStart && isWritingKeyword && isFirstKeyWord) {
       while (text.length() > i + 1 && text.charAt(i + 1) == ' ') {
         i++;
       }
@@ -99,14 +105,30 @@ case ' ':
     }
     break;
   }
-default :
+case ',':
 {
+  isWritingKeyword=false;
   if (isLineStart) {
     isLineStart=false;
     sb.append(currentIndent);
   }
   sb.append(c);
+  if (text.length() > i + 1 && text.charAt(i + 1) != ' ') {
+    sb.append(' ');
+  }
   break;
+}
+case '[':
+case ']':
+isWritingKeyword=false;
+default :
+{
+if (isLineStart) {
+isLineStart=false;
+sb.append(currentIndent);
+}
+sb.append(c);
+break;
 }
 }
 }
