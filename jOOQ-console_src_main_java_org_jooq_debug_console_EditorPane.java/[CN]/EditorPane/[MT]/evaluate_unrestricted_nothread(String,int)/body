@@ -212,6 +212,7 @@ SwingUtilities.invokeLater(new Runnable(){
 @Override public void run(){
 startButton.setVisible(true);
 stopButton.setVisible(false);
+stopButton.setToolTipText(null);
 }
 }
 );

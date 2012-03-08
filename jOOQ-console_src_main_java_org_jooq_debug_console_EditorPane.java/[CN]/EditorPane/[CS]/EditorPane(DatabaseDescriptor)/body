@@ -64,7 +64,7 @@ case KeyEvent.VK_SPACE:
         }
       break;
 case KeyEvent.VK_F5:
-    if (startButton.isEnabled()) {
+    if (startButton.isVisible()) {
       evaluateInternal();
     }
   break;
