@@ -8,14 +8,18 @@
 switch (ctx.getDialect()) {
 case SQLITE:
 {
+        listener.executeStart(ctx);
         result=ctx.statement().executeUpdate();
+        listener.executeEnd(ctx);
         SQLiteFactory create=new SQLiteFactory(ctx.getConnection());
         returned=create.select(returning).from(getInto()).where(rowid().equal(rowid().getDataType().convert(create.lastID()))).fetchInto(getInto());
         return result;
       }
 case SYBASE:
 {
+      listener.executeStart(ctx);
       result=ctx.statement().executeUpdate();
+      listener.executeEnd(ctx);
       selectReturning(ctx.configuration(),create(ctx).lastID());
       return result;
     }
@@ -26,7 +30,9 @@ case INGRES:
 case MYSQL:
 case SQLSERVER:
 {
+    listener.executeStart(ctx);
     result=ctx.statement().executeUpdate();
+    listener.executeEnd(ctx);
     rs=ctx.statement().getGeneratedKeys();
     try {
       List<Object> list=new ArrayList<Object>();
@@ -42,7 +48,9 @@ case SQLSERVER:
   }
 case POSTGRES:
 {
+  listener.executeStart(ctx);
   rs=ctx.statement().executeQuery();
+  listener.executeEnd(ctx);
   break;
 }
 case DB2:
@@ -50,7 +58,9 @@ case HSQLDB:
 case ORACLE:
 default :
 {
+listener.executeStart(ctx);
 result=ctx.statement().executeUpdate();
+listener.executeEnd(ctx);
 rs=ctx.statement().getGeneratedKeys();
 break;
 }
