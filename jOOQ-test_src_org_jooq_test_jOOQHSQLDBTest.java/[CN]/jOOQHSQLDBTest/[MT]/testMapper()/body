@@ -1,14 +1,24 @@
 {
   jOOQAbstractTest.reset=false;
   TMappedTypesRecord record;
+  GregorianCalendar now=(GregorianCalendar)Calendar.getInstance();
   record=create().newRecord(T_MAPPED_TYPES);
   record.setId(1);
   record.setValue(T_MAPPED_TYPES.DEFAULT_ENUM_NAME,StringEnum.A);
   record.setValue(T_MAPPED_TYPES.DEFAULT_ENUM_ORDINAL,OrdinalEnum.B);
+  record.setValue(T_MAPPED_TYPES.CUSTOM_ENUM_TEXT,StringEnum1.C);
+  record.setValue(T_MAPPED_TYPES.CUSTOM_ENUM_NUMERIC,OrdinalEnum1.C);
+  record.setValue(T_MAPPED_TYPES.JAVA_UTIL_DATE,now.getTime());
+  record.setValue(T_MAPPED_TYPES.JAVA_UTIL_CALENDAR,now);
   assertEquals(1,record.store());
   record=create().newRecord(T_MAPPED_TYPES);
   record.setId(1);
   record.refresh();
   assertEquals(StringEnum.A,record.getValue(T_MAPPED_TYPES.DEFAULT_ENUM_NAME));
   assertEquals(OrdinalEnum.B,record.getValue(T_MAPPED_TYPES.DEFAULT_ENUM_ORDINAL));
+  assertEquals(StringEnum1.C,record.getValue(T_MAPPED_TYPES.CUSTOM_ENUM_TEXT));
+  assertEquals(OrdinalEnum1.C,record.getValue(T_MAPPED_TYPES.CUSTOM_ENUM_NUMERIC));
+  assertEquals(now.getTime(),record.getValue(T_MAPPED_TYPES.JAVA_UTIL_DATE));
+  assertEquals(now,record.getValue(T_MAPPED_TYPES.JAVA_UTIL_CALENDAR));
+  assertEquals(1,create().selectCount().from(T_MAPPED_TYPES).where(T_MAPPED_TYPES.DEFAULT_ENUM_NAME.equal(StringEnum.A)).and(T_MAPPED_TYPES.DEFAULT_ENUM_ORDINAL.equal(OrdinalEnum.B)).and(T_MAPPED_TYPES.CUSTOM_ENUM_TEXT.equal(StringEnum1.C)).and(T_MAPPED_TYPES.CUSTOM_ENUM_NUMERIC.equal(OrdinalEnum1.C)).and(T_MAPPED_TYPES.JAVA_UTIL_DATE.equal(now.getTime())).and(T_MAPPED_TYPES.JAVA_UTIL_CALENDAR.equal(now)).fetchOne(0));
 }

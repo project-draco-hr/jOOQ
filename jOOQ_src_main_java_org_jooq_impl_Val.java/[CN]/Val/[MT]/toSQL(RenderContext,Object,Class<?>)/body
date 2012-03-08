@@ -1,5 +1,10 @@
 {
   SQLDialect dialect=context.getDialect();
+  Converter<?,?> converter=DataTypes.converter(type);
+  if (converter != null) {
+    val=((Converter)converter).to(val);
+    type=converter.fromType();
+  }
   if (context.inline()) {
     if (val == null) {
       context.keyword("null");

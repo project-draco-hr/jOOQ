@@ -1,8 +1,0 @@
-{
-  try {
-    return OrdinalEnum.values()[t];
-  }
- catch (  Exception e) {
-    return null;
-  }
-}

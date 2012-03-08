@@ -1,8 +1,0 @@
-{
-  try {
-    return StringEnum.valueOf(t);
-  }
- catch (  Exception e) {
-    return null;
-  }
-}

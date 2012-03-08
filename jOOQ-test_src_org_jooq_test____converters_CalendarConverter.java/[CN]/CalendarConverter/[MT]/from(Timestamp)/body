@@ -1,0 +1,5 @@
+{
+  GregorianCalendar calendar=(GregorianCalendar)Calendar.getInstance();
+  calendar.setTimeInMillis(databaseObject.getTime());
+  return calendar;
+}
