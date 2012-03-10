@@ -1,3 +1,0 @@
-{
-  return getValue(org.jooq.test.hsqldb.generatedclasses.tables.TMappedTypes.T_MAPPED_TYPES.JAVA_UTIL_DATE);
-}
