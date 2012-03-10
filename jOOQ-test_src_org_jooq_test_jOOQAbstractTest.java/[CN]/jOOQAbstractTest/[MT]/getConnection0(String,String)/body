@@ -1,15 +1,15 @@
 {
   try {
-    String property=System.getProperty("jdbc.properties");
-    if (property == null) {
+    String configuration=System.getProperty("jdbc.properties");
+    if (configuration == null) {
       log.error("No system property 'jdbc.properties' found");
       log.error("-----------");
       log.error("Please be sure property is set; example: -Djdbc.properties=/org/jooq/configuration/${env_var:USERNAME}/db2/library.properties");
       throw new Error();
     }
-    InputStream in=GenerationTool.class.getResourceAsStream(property);
+    InputStream in=GenerationTool.class.getResourceAsStream(configuration);
     if (in == null) {
-      log.error("Cannot find " + property);
+      log.error("Cannot find " + configuration);
       log.error("-----------");
       log.error("Please be sure it is located on the classpath and qualified as a classpath location.");
       log.error("If it is located at the current working directory, try adding a '/' to the path");

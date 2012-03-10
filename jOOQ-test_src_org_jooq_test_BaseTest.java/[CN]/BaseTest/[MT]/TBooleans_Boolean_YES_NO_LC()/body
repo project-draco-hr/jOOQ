@@ -1,0 +1,3 @@
+{
+  return delegate.TBooleans_Boolean_YES_NO_LC();
+}

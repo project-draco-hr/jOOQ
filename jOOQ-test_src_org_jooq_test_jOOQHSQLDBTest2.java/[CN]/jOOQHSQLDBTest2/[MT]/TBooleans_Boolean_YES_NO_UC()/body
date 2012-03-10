@@ -1,0 +1,3 @@
+{
+  return T_BOOLEANS.YES_NO_UC;
+}

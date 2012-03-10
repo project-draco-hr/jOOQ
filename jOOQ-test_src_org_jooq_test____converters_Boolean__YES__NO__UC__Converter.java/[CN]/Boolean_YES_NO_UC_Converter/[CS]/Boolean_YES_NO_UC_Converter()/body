@@ -1,0 +1,3 @@
+{
+  super(String.class,Boolean_YES_NO_UC.class);
+}
