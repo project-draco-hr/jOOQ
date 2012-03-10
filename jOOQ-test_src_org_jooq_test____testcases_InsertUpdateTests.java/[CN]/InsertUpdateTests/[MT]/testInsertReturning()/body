@@ -41,6 +41,11 @@
   assertEquals(++ID,(int)returned.getValue(TTriggers_ID_GENERATED()));
   assertEquals(ID,(int)returned.getValue(TTriggers_ID()));
   assertEquals(2 * ID,(int)returned.getValue(TTriggers_COUNTER()));
+  returned=create().insertInto(TTriggers()).set(TTriggers_COUNTER(),0).returning(TTriggers_ID_GENERATED()).fetchOne();
+  assertNotNull(returned);
+  assertEquals(++ID,(int)returned.getValue(TTriggers_ID_GENERATED()));
+  assertNull(returned.getValue(TTriggers_ID()));
+  assertNull(returned.getValue(TTriggers_COUNTER()));
 switch (getDialect()) {
 case ASE:
 case DERBY:
