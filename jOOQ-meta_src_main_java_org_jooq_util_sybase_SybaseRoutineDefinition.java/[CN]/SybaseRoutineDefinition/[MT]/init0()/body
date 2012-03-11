@@ -21,7 +21,7 @@
  else {
       throw new IllegalArgumentException("Stored procedure param is neither in or out mode!");
     }
-    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),record.getValue(SYSDOMAIN.DOMAIN_NAME),record.getValue(SYSPROCPARM.WIDTH),record.getValue(SYSPROCPARM.SCALE));
+    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),record.getValue(SYSDOMAIN.DOMAIN_NAME),record.getValue(SYSPROCPARM.WIDTH),record.getValue(SYSPROCPARM.WIDTH),record.getValue(SYSPROCPARM.SCALE));
     ParameterDefinition parameter=new DefaultParameterDefinition(this,paramName,record.getValue(SYSPROCPARM.PARM_ID),type);
     addParameter(inOutDefinition,parameter);
   }

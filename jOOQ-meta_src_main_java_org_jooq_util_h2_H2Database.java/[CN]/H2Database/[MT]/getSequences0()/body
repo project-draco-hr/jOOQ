@@ -3,7 +3,7 @@
   for (  Record record : create().select(Sequences.SEQUENCE_SCHEMA,Sequences.SEQUENCE_NAME).from(SEQUENCES).where(Sequences.SEQUENCE_SCHEMA.in(getInputSchemata())).orderBy(Sequences.SEQUENCE_SCHEMA,Sequences.SEQUENCE_NAME).fetch()) {
     SchemaDefinition schema=getSchema(record.getValue(Sequences.SEQUENCE_SCHEMA));
     String name=record.getValue(Sequences.SEQUENCE_NAME);
-    DefaultDataTypeDefinition type=new DefaultDataTypeDefinition(this,schema,H2DataType.BIGINT.getTypeName(),0,0);
+    DefaultDataTypeDefinition type=new DefaultDataTypeDefinition(this,schema,H2DataType.BIGINT.getTypeName(),0,0,0);
     result.add(new DefaultSequenceDefinition(schema,name,type));
   }
   return result;

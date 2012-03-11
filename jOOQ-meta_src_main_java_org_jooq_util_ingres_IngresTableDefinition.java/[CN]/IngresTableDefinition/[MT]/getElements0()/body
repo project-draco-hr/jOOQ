@@ -25,7 +25,7 @@ typeName=IngresDataType.FLOAT4.getTypeName();
 break;
 }
 }
-DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),typeName,record.getValue(Iicolumns.COLUMN_LENGTH),record.getValue(Iicolumns.COLUMN_SCALE));
+DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),typeName,record.getValue(Iicolumns.COLUMN_LENGTH),record.getValue(Iicolumns.COLUMN_LENGTH),record.getValue(Iicolumns.COLUMN_SCALE));
 ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getSchema(),getName()),record.getValue(trim(Iicolumns.COLUMN_NAME)),record.getValue(Iicolumns.COLUMN_SEQUENCE),type,record.getValue(Iicolumns.COLUMN_NULLS,boolean.class),record.getValueAsBoolean(Iicolumns.COLUMN_ALWAYS_IDENT,false) || record.getValueAsBoolean(Iicolumns.COLUMN_BYDEFAULT_IDENT,false),record.getValue(trim(IidbSubcomments.LONG_REMARK)));
 result.add(column);
 }

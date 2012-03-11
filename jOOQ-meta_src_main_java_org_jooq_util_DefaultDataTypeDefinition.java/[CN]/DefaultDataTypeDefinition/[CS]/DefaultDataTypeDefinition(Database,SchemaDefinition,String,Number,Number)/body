@@ -1,3 +1,0 @@
-{
-  this(database,schema,typeName,precision,scale,typeName);
-}

@@ -2,7 +2,7 @@
   List<SequenceDefinition> result=new ArrayList<SequenceDefinition>();
   for (  Record record : create().select(Sequences.SEQSCHEMA.trim(),Sequences.SEQNAME,Sequences.SEQTYPE,Datatypes.TYPENAME,Sequences.PRECISION).from(SEQUENCES).join(DATATYPES).on(Sequences.DATATYPEID.equal(Datatypes.TYPEID.cast(Integer.class))).where(Sequences.SEQSCHEMA.in(getInputSchemata())).orderBy(Sequences.SEQSCHEMA,Sequences.SEQNAME).fetch()) {
     SchemaDefinition schema=getSchema(record.getValue(Sequences.SEQSCHEMA.trim()));
-    DataTypeDefinition type=new DefaultDataTypeDefinition(this,schema,record.getValue(Datatypes.TYPENAME),record.getValue(Sequences.PRECISION),0);
+    DataTypeDefinition type=new DefaultDataTypeDefinition(this,schema,record.getValue(Datatypes.TYPENAME),0,record.getValue(Sequences.PRECISION),0);
     result.add(new DefaultSequenceDefinition(schema,record.getValue(Sequences.SEQNAME),type));
   }
   return result;

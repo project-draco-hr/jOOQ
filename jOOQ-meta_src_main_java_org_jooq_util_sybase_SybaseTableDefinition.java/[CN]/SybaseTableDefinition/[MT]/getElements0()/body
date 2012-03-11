@@ -1,7 +1,7 @@
 {
   List<ColumnDefinition> result=new ArrayList<ColumnDefinition>();
   for (  Record record : create().select(SYSTABCOL.COLUMN_NAME,SYSTABCOL.COLUMN_ID,SYSDOMAIN.DOMAIN_NAME,SYSTABCOL.NULLS,SYSTABCOL.WIDTH,SYSTABCOL.SCALE,SYSTABCOL.DEFAULT).from(SYSTABCOL).join(SYSTAB).on(SYSTABCOL.TABLE_ID.equal(SYSTAB.TABLE_ID)).join(SYSDOMAIN).on(SYSTABCOL.DOMAIN_ID.equal(SYSDOMAIN.DOMAIN_ID)).where(SYSTAB.TABLE_NAME.equal(getName())).orderBy(SYSTABCOL.COLUMN_ID).fetch()) {
-    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),record.getValue(SYSDOMAIN.DOMAIN_NAME),record.getValue(SYSTABCOL.WIDTH),record.getValue(SYSTABCOL.SCALE));
+    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),record.getValue(SYSDOMAIN.DOMAIN_NAME),record.getValue(SYSTABCOL.WIDTH),record.getValue(SYSTABCOL.WIDTH),record.getValue(SYSTABCOL.SCALE));
     ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getSchema(),getName()),record.getValue(SYSTABCOL.COLUMN_NAME),record.getValue(SYSTABCOL.COLUMN_ID),type,record.getValue(SYSTABCOL.NULLS,boolean.class),"autoincrement".equalsIgnoreCase(record.getValue(SYSTABCOL.DEFAULT)),null);
     result.add(column);
   }

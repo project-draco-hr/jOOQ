@@ -2,7 +2,7 @@
   List<SequenceDefinition> result=new ArrayList<SequenceDefinition>();
   for (  Record record : create().select(Sysschemas.SCHEMANAME,Syssequences.SEQUENCENAME,Syssequences.SEQUENCEDATATYPE).from(SYSSEQUENCES).join(SYSSCHEMAS).on(Sysschemas.SCHEMAID.equal(Syssequences.SCHEMAID)).where(Sysschemas.SCHEMANAME.in(getInputSchemata())).orderBy(Sysschemas.SCHEMANAME,Syssequences.SEQUENCENAME).fetch()) {
     SchemaDefinition schema=getSchema(record.getValue(Sysschemas.SCHEMANAME));
-    DataTypeDefinition type=new DefaultDataTypeDefinition(this,schema,record.getValue(Syssequences.SEQUENCEDATATYPE),0,0);
+    DataTypeDefinition type=new DefaultDataTypeDefinition(this,schema,record.getValue(Syssequences.SEQUENCEDATATYPE),0,0,0);
     result.add(new DefaultSequenceDefinition(schema,record.getValueAsString(Syssequences.SEQUENCENAME),type));
   }
   return result;
