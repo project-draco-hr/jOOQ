@@ -1,0 +1,13 @@
+{
+  try {
+    Class<?> type=EXECUTE_LISTENERS.get(name);
+    if (type == null) {
+      type=Class.forName(name);
+      EXECUTE_LISTENERS.put(name,type);
+    }
+    return (ExecuteListener)type.newInstance();
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

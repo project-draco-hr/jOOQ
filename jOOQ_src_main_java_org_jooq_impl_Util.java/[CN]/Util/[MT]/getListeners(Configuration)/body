@@ -5,12 +5,7 @@
     result.add(new LoggerListener());
   }
   for (  String listener : configuration.getSettings().getExecuteListeners()) {
-    try {
-      result.add((ExecuteListener)Class.forName(listener).newInstance());
-    }
- catch (    Exception e) {
-      throw new RuntimeException(e);
-    }
+    result.add(getListener(listener));
   }
   return result;
 }
