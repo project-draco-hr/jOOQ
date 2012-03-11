@@ -19,6 +19,13 @@
       String typeName=Util.newArrayRecord((Class<ArrayRecord<?>>)type,configuration).getName();
       stmt.setNull(nextIndex(),sqlType,typeName);
     }
+ else     if (UDTRecord.class.isAssignableFrom(type)) {
+      String typeName=Util.newRecord((Class<UDTRecord<?>>)type).getUDT().getName();
+      stmt.setNull(nextIndex(),sqlType,typeName);
+    }
+ else     if (configuration.getDialect() == POSTGRES && sqlType == Types.BLOB) {
+      stmt.setNull(nextIndex(),Types.BINARY);
+    }
  else     if (sqlType != Types.OTHER) {
       stmt.setNull(nextIndex(),sqlType);
     }
