@@ -73,6 +73,21 @@
   finally {
     register(null);
   }
+  ConnectionProviderListener.c=create().getConnection();
+  try {
+    q=create(new Settings().withExecuteListeners(ConnectionProviderListener.class.getName())).selectFrom(TAuthor()).orderBy(TAuthor_LAST_NAME());
+    q=runSerialisation(q);
+    q.execute();
+    result=q.getResult();
+    result=runSerialisation(result);
+    assertEquals("Coelho",result.getValue(0,TAuthor_LAST_NAME()));
+    assertEquals("Orwell",result.getValue(1,TAuthor_LAST_NAME()));
+    result.get(1).setValue(TAuthor_FIRST_NAME(),"Gee-Gee");
+    result.get(1).store();
+  }
+  finally {
+    ConnectionProviderListener.c=null;
+  }
   if (cSequences() == null) {
     log.info("SKIPPING","sequences test");
   }

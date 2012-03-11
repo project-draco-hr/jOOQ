@@ -4,13 +4,13 @@
     if (configuration == null) {
       configuration=getConfiguration();
     }
+    ExecuteContext ctx=new DefaultExecuteContext(configuration,this);
+    ExecuteListener listener=new ExecuteListeners(ctx);
     Connection connection=configuration.getConnection();
     if (connection == null) {
       throw new DetachedException("Cannot execute query. No Connection configured");
     }
     attach(configuration);
-    ExecuteContext ctx=new DefaultExecuteContext(configuration,this);
-    ExecuteListener listener=new ExecuteListeners(ctx);
     int result=0;
     try {
       listener.renderStart(ctx);
