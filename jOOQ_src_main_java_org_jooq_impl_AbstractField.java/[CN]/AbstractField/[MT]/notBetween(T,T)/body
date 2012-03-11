@@ -1,3 +1,3 @@
 {
-  return notBetween(val(minValue),val(maxValue));
+  return notBetween(val(minValue,this),val(maxValue,this));
 }

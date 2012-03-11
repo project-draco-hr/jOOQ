@@ -1,3 +1,11 @@
 {
-  return values0(Arrays.asList(values));
+  List<Field<?>> values1=Arrays.asList(values);
+  if (getFields().size() != values1.size()) {
+    throw new IllegalArgumentException("The number of values must match the number of fields");
+  }
+  getDelegate().newRecord();
+  for (int i=0; i < getFields().size(); i++) {
+    getDelegate().addValue((Field<Void>)getFields().get(i),(Field<Void>)values1.get(i));
+  }
+  return this;
 }

@@ -23,7 +23,7 @@
       String typeName=Util.newRecord((Class<UDTRecord<?>>)type).getUDT().getName();
       stmt.setNull(nextIndex(),sqlType,typeName);
     }
- else     if (configuration.getDialect() == POSTGRES && sqlType == Types.BLOB) {
+ else     if (asList(POSTGRES,SYBASE).contains(configuration.getDialect()) && sqlType == Types.BLOB) {
       stmt.setNull(nextIndex(),Types.BINARY);
     }
  else     if (sqlType != Types.OTHER) {

@@ -1,11 +1,9 @@
 {
-  if (value == null) {
-    return (Field<T>)NULL();
-  }
- else   if (value instanceof Field<?>) {
+  if (value instanceof Field<?>) {
     return (Field<T>)value;
   }
  else {
-    return (Field<T>)val(value,getDataType(value.getClass()));
+    Class<?> type=(value == null) ? Object.class : value.getClass();
+    return (Field<T>)val(value,getDataType(type));
   }
 }

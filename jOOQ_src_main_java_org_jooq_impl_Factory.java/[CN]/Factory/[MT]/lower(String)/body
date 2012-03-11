@@ -1,3 +1,3 @@
 {
-  return lower(val(value));
+  return lower(val(value,String.class));
 }

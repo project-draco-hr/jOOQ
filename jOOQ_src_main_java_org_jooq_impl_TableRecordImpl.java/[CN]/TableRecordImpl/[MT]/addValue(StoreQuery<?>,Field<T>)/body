@@ -1,3 +1,3 @@
 {
-  store.addValue(field,getValue(field));
+  store.addValue(field,val(getValue(field),field));
 }

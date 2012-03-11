@@ -1,3 +1,3 @@
 {
-  return equalIgnoreCase(val(value));
+  return equalIgnoreCase(val(value,String.class));
 }
