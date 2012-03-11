@@ -3,12 +3,9 @@
   Table<?> result=null;
   if (table != null) {
     Schema schema=table.getSchema();
-    if (schema == null) {
-      return table;
-    }
-    String schemaName=schema.getName();
+    String schemaName=(schema == null) ? "" : schema.getName();
     String tableName=table.getName();
-    String key=schemaName + "." + tableName;
+    String key=(schema == null) ? tableName : (schemaName + "." + tableName);
     if (!getTables().containsKey(key)) {
       Table<?> mapped=table;
       schemaLoop:       for (      MappedSchema s : mapping.getSchemata()) {
