@@ -11,7 +11,7 @@ case SQLITE:
         listener.executeStart(ctx);
         result=ctx.statement().executeUpdate();
         listener.executeEnd(ctx);
-        SQLiteFactory create=new SQLiteFactory(ctx.getConnection());
+        SQLiteFactory create=new SQLiteFactory(ctx.getConnection(),ctx.getSettings());
         returned=create.select(returning).from(getInto()).where(rowid().equal(rowid().getDataType().convert(create.lastID()))).fetchInto(getInto());
         return result;
       }
