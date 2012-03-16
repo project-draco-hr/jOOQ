@@ -1,0 +1,9 @@
+{
+  @SuppressWarnings("unchecked") Converter<T,U> converter=(Converter<T,U>)DataTypes.converter(field.getType());
+  if (converter != null) {
+    return converter.from(getFromResultSet(ctx,converter.fromType(),index));
+  }
+ else {
+    return getFromResultSet(ctx,field.getType(),index);
+  }
+}
