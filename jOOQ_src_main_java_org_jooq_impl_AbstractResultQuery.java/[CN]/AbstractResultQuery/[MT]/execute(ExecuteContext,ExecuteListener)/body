@@ -10,19 +10,26 @@
   }
   try {
     listener.executeStart(ctx);
-    ctx.resultSet(ctx.statement().executeQuery());
+    if (ctx.statement().execute()) {
+      ctx.resultSet(ctx.statement().getResultSet());
+    }
     listener.executeEnd(ctx);
     if (!many) {
-      FieldList fields=new FieldList(getFields(ctx.resultSet().getMetaData()));
-      cursor=new CursorImpl<R>(ctx,listener,fields,getRecordType());
-      if (!lazy) {
-        result=cursor.fetch();
-        cursor=null;
+      if (ctx.resultSet() != null) {
+        FieldList fields=new FieldList(getFields(ctx.resultSet().getMetaData()));
+        cursor=new CursorImpl<R>(ctx,listener,fields,getRecordType());
+        if (!lazy) {
+          result=cursor.fetch();
+          cursor=null;
+        }
+      }
+ else {
+        result=new ResultImpl<R>(ctx,new FieldList());
       }
     }
  else {
       results=new ArrayList<Result<Record>>();
-      for (; ; ) {
+      while (ctx.resultSet() != null) {
         FieldProvider fields=new MetaDataFieldProvider(ctx,ctx.resultSet().getMetaData());
         Cursor<Record> c=new CursorImpl<Record>(ctx,listener,fields,true);
         results.add(c.fetch());
@@ -30,7 +37,7 @@
           ctx.resultSet(ctx.statement().getResultSet());
         }
  else {
-          break;
+          ctx.resultSet(null);
         }
       }
       ctx.statement().getMoreResults(Statement.CLOSE_ALL_RESULTS);
