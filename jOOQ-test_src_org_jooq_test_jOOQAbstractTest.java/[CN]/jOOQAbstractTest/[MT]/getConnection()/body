@@ -2,6 +2,29 @@
   if (!connectionInitialised) {
     connectionInitialised=true;
     connection=getConnection0(null,null);
+    boolean runConsoleInProcess=false;
+    if (runConsoleInProcess) {
+      DatabaseDescriptor descriptor=new DatabaseDescriptor(){
+        @Override public Schema getSchema(){
+          return jOOQAbstractTest.this.schema();
+        }
+        @Override public SQLDialect getSQLDialect(){
+          return SQLDialect.ORACLE;
+        }
+        @Override public Connection createConnection(){
+          return jOOQAbstractTest.this.getConnection();
+        }
+      }
+;
+      try {
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        Console console=new Console(descriptor,true);
+        console.setLoggingActive(true);
+        console.setVisible(true);
+      }
+ catch (      Exception ignore) {
+      }
+    }
   }
   return connection;
 }
