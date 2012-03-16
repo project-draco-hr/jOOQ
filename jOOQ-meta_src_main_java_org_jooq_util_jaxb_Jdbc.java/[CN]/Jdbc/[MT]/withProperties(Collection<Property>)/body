@@ -1,0 +1,6 @@
+{
+  if (values != null) {
+    getProperties().addAll(values);
+  }
+  return this;
+}

@@ -1,0 +1,8 @@
+{
+  if (values != null) {
+    for (    Property value : values) {
+      getProperties().add(value);
+    }
+  }
+  return this;
+}

@@ -6,7 +6,13 @@
   Class.forName(j.getDriver());
   Connection connection=null;
   try {
-    connection=DriverManager.getConnection(defaultString(j.getUrl()),defaultString(j.getUser()),defaultString(j.getPassword()));
+    Properties properties=new Properties();
+    for (    Property p : j.getProperties()) {
+      properties.put(p.getKey(),p.getValue());
+    }
+    if (!properties.containsKey("user"))     properties.put("user",defaultString(j.getUser()));
+    if (!properties.containsKey("password"))     properties.put("password",defaultString(j.getPassword()));
+    connection=DriverManager.getConnection(defaultString(j.getUrl()),properties);
     Class<Generator> generatorClass=(Class<Generator>)(!isBlank(g.getName()) ? Class.forName(trim(g.getName())) : DefaultGenerator.class);
     Generator generator=generatorClass.newInstance();
     Class<GeneratorStrategy> strategyClass=(Class<GeneratorStrategy>)(!isBlank(g.getStrategy().getName()) ? Class.forName(trim(g.getStrategy().getName())) : DefaultGeneratorStrategy.class);
