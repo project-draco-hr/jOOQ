@@ -8,11 +8,19 @@
     String column=record.getValue(Columns.COLUMN_NAME);
     String name=table + "_" + column;
     String columnType=record.getValue(Columns.COLUMN_TYPE);
-    DefaultEnumDefinition definition=new DefaultEnumDefinition(schema,name,comment);
-    for (    String string : columnType.replaceAll("enum\\(|\\)","").split(",")) {
-      definition.addLiteral(string.trim().replaceAll("'",""));
+    TableDefinition tableDefinition=getTable(schema,table);
+    if (tableDefinition != null) {
+      ColumnDefinition columnDefinition=tableDefinition.getColumn(column);
+      if (columnDefinition != null) {
+        if (getConfiguredForcedType(columnDefinition) == null) {
+          DefaultEnumDefinition definition=new DefaultEnumDefinition(schema,name,comment);
+          for (          String string : columnType.replaceAll("enum\\(|\\)","").split(",")) {
+            definition.addLiteral(string.trim().replaceAll("'",""));
+          }
+          result.add(definition);
+        }
+      }
     }
-    result.add(definition);
   }
   return result;
 }

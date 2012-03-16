@@ -1,0 +1,8 @@
+{
+  for (  ForcedType forcedType : getConfiguredForcedTypes()) {
+    if (definition.getQualifiedName().matches(forcedType.getExpressions())) {
+      return forcedType;
+    }
+  }
+  return null;
+}
