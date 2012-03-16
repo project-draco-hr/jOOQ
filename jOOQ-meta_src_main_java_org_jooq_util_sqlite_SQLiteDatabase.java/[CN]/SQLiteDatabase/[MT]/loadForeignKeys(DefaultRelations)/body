@@ -1,2 +1,35 @@
 {
+  for (  TableDefinition table : getTables(getSchemata().get(0))) {
+    Result<Record> result=null;
+    try {
+      result=create().fetch("pragma foreign_key_list(" + table.getName() + ")");
+    }
+ catch (    DataAccessException e) {
+      continue;
+    }
+    Map<String,Integer> map=new HashMap<String,Integer>();
+    for (    Record record : result) {
+      String foreignKeyPrefix="fk_" + table.getName() + "_"+ record.getValue("table");
+      Integer sequence=map.get(foreignKeyPrefix);
+      if (sequence == null) {
+        sequence=0;
+      }
+      if (0 == record.getValue("seq",Integer.class)) {
+        sequence=sequence + 1;
+      }
+      map.put(foreignKeyPrefix,sequence);
+      String foreignKey="fk_" + table.getName() + "_"+ record.getValue("table")+ "_"+ sequence;
+      String foreignKeyTable=table.getName();
+      String foreignKeyColumn=record.getValueAsString("from");
+      TableDefinition referencingTable=getTable(getSchemata().get(0),foreignKeyTable);
+      TableDefinition referencedTable=getTable(getSchemata().get(0),record.getValueAsString("table"),true);
+      if (referencedTable != null) {
+        String uniqueKey="pk_" + referencedTable.getName() + "_"+ referencedTable.getColumn(record.getValueAsString("to"),true).getName();
+        if (referencingTable != null) {
+          ColumnDefinition referencingColumn=referencingTable.getColumn(foreignKeyColumn);
+          relations.addForeignKey(foreignKey,uniqueKey,referencingColumn,getSchemata().get(0));
+        }
+      }
+    }
+  }
 }

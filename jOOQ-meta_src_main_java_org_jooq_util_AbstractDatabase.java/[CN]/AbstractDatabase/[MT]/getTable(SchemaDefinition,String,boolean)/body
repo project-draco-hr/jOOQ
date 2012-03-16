@@ -1,0 +1,8 @@
+{
+  TableDefinition result=null;
+  result=getDefinition(getTables(schema),name,ignoreCase);
+  if (result == null) {
+    result=getDefinition(getMasterDataTables(schema),name,ignoreCase);
+  }
+  return result;
+}

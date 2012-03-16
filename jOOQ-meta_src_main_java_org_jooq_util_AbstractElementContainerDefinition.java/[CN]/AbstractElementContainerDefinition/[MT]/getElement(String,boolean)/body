@@ -1,0 +1,3 @@
+{
+  return AbstractDatabase.getDefinition(getElements(),name,ignoreCase);
+}

@@ -1,0 +1,8 @@
+{
+  for (  D definition : definitions) {
+    if ((ignoreCase && definition.getName().equalsIgnoreCase(name)) || (!ignoreCase && definition.getName().equals(name))) {
+      return definition;
+    }
+  }
+  return null;
+}

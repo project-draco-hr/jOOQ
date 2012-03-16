@@ -1,0 +1,3 @@
+List<D> definitions
+String name
+boolean ignoreCase

@@ -1,0 +1,3 @@
+{
+  return getDefinition(getMasterDataTables(schema),name,ignoreCase);
+}

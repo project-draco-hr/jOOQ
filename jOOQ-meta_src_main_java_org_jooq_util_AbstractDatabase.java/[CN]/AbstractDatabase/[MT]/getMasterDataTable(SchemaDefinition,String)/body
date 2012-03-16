@@ -1,8 +1,3 @@
 {
-  for (  MasterDataTableDefinition table : getMasterDataTables(schema)) {
-    if (table.getName().equals(name)) {
-      return table;
-    }
-  }
-  return null;
+  return getMasterDataTable(schema,name,false);
 }
