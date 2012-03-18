@@ -1,5 +1,7 @@
 {
   super(name,type);
   this.udt=udt;
-  this.udt.getFields().add(this);
+  if (udt instanceof UDTImpl) {
+    ((UDTImpl<?>)udt).getFieldList().add(this);
+  }
 }

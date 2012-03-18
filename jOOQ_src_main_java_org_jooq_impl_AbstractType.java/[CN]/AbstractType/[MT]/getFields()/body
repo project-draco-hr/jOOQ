@@ -1,3 +1,3 @@
 {
-  return getFieldList();
+  return new ArrayList<Field<?>>(getFieldList());
 }
