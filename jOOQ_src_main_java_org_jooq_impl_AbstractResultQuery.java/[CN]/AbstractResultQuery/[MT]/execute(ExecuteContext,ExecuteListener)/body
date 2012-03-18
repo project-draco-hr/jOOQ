@@ -32,7 +32,9 @@
     }
  else {
       results=new ArrayList<Result<Record>>();
+      boolean anyResults=false;
       while (ctx.resultSet() != null) {
+        anyResults=true;
         FieldProvider fields=new MetaDataFieldProvider(ctx,ctx.resultSet().getMetaData());
         Cursor<Record> c=new CursorImpl<Record>(ctx,listener,fields,true);
         results.add(c.fetch());
@@ -43,7 +45,9 @@
           ctx.resultSet(null);
         }
       }
-      ctx.statement().getMoreResults(Statement.CLOSE_ALL_RESULTS);
+      if (anyResults) {
+        ctx.statement().getMoreResults(Statement.CLOSE_ALL_RESULTS);
+      }
       ctx.statement().close();
     }
   }
