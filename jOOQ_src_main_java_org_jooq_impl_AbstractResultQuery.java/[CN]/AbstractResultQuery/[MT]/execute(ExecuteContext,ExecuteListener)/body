@@ -10,7 +10,10 @@
   }
   try {
     listener.executeStart(ctx);
-    if (ctx.statement().execute()) {
+    if (ctx.getDialect() == ASE) {
+      ctx.resultSet(ctx.statement().executeQuery());
+    }
+ else     if (ctx.statement().execute()) {
       ctx.resultSet(ctx.statement().getResultSet());
     }
     listener.executeEnd(ctx);
