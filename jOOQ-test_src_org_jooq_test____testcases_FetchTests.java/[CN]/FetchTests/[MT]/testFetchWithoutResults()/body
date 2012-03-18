@@ -1,8 +1,13 @@
 {
-  Result<Record> result=create().fetch(create().update(TAuthor()).set(TAuthor_FIRST_NAME(),"Hugo").where(TAuthor_ID().equal(100)).getSQL(true));
-  assertNotNull(result);
-  assertEquals(0,result.size());
-  List<Result<Record>> results=create().fetchMany(create().update(TAuthor()).set(TAuthor_FIRST_NAME(),"Hugo").where(TAuthor_ID().equal(100)).getSQL(true));
-  assertNotNull(result);
-  assertEquals(0,results.size());
+switch (getDialect()) {
+case ASE:
+    log.info("SKIPPING","Fetch without results tests");
+  return;
+}
+Result<Record> result=create().fetch(create().update(TAuthor()).set(TAuthor_FIRST_NAME(),"Hugo").where(TAuthor_ID().equal(100)).getSQL(true));
+assertNotNull(result);
+assertEquals(0,result.size());
+List<Result<Record>> results=create().fetchMany(create().update(TAuthor()).set(TAuthor_FIRST_NAME(),"Hugo").where(TAuthor_ID().equal(100)).getSQL(true));
+assertNotNull(result);
+assertEquals(0,results.size());
 }
