@@ -1,3 +1,6 @@
 {
+  if (mode == Mode.POJO) {
+    return definition.getOutputName() + "_POJO";
+  }
   return definition.getOutputName();
 }
