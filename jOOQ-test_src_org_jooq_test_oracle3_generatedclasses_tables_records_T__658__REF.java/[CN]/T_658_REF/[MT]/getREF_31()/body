@@ -1,3 +1,0 @@
-{
-  return getValue(org.jooq.test.oracle3.generatedclasses.tables.T_658_REF.T_658_REF.REF_31);
-}

@@ -1,1 +1,1 @@
-org.jooq.impl.UpdatableTableImpl<org.jooq.test.oracle3.generatedclasses.tables.records.T_BOOK_TO_BOOK_STORE>
+org.jooq.impl.UpdatableTableImpl<org.jooq.Record>

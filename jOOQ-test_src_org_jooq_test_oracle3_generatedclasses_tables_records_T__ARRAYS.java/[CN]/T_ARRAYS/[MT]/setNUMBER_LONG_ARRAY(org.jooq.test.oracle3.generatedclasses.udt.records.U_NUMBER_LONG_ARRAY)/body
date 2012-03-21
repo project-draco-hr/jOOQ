@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.test.oracle3.generatedclasses.tables.T_ARRAYS.T_ARRAYS.NUMBER_LONG_ARRAY,value);
-}
