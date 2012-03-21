@@ -15,6 +15,7 @@
     out.print(getJavaType(routine.getReturnType()));
   }
   out.print(">");
+  printImplements(out,routine,Mode.DEFAULT);
   out.println(" {");
   out.printSerial();
   out.println();

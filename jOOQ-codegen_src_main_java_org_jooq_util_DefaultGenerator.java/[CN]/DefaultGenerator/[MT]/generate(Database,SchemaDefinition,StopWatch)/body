@@ -12,6 +12,7 @@
     outS.print(strategy.getJavaClassName(schema));
     outS.print(" extends ");
     outS.print(SchemaImpl.class);
+    printImplements(outS,schema,Mode.DEFAULT);
     outS.println(" {");
     outS.printSerial();
     outS.println();
@@ -33,6 +34,7 @@
     outF.print(strategy.getJavaClassName(schema,Mode.FACTORY));
     outF.print(" extends ");
     outF.print(database.getDialect().getFactory());
+    printImplements(outF,schema,Mode.FACTORY);
     outF.println(" {");
     outF.printSerial();
     outF.println();
@@ -145,11 +147,8 @@
         Result<Record> data=table.getData();
         out.print("public enum ");
         out.print(strategy.getJavaClassName(table));
-        out.print(" implements ");
-        out.print(MasterDataType.class);
-        out.print("<");
-        out.print(getJavaType(pk.getType()));
-        out.println("> {");
+        printImplements(out,table,Mode.ENUM,MasterDataType.class.getName() + "<" + getJavaType(pk.getType())+ ">");
+        out.println(" {");
         Set<ColumnDefinition> columns=new LinkedHashSet<ColumnDefinition>(Arrays.asList(pk,l,d));
         for (        Record record : data) {
           String literal=record.getValueAsString(l.getName());
@@ -247,7 +246,9 @@
         out.print(baseClass);
         out.print("<");
         out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
-        out.println("> {");
+        out.print(">");
+        printImplements(out,table,Mode.RECORD);
+        out.println(" {");
         out.printSerial();
         printSingletonInstance(table,out);
         printRecordTypeMethod(table,out);
@@ -414,7 +415,9 @@
         printTableJPAAnnotation(out,table);
         out.print("public class ");
         out.print(strategy.getJavaClassName(table,Mode.POJO));
-        out.print(" implements java.io.Serializable {");
+        printExtends(out,table,Mode.POJO);
+        printImplements(out,table,Mode.POJO);
+        out.print(" {");
         out.println();
         out.printSerial();
         out.println();
@@ -626,7 +629,9 @@
         out.print(baseClass);
         out.print("<");
         out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
-        out.println("> {");
+        out.print(">");
+        printImplements(out,table,Mode.RECORD);
+        out.println(" {");
         out.printSerial();
         for (        ColumnDefinition column : table.getColumns()) {
           printGetterAndSetter(out,column);
@@ -665,8 +670,10 @@
         out.print(strategy.getFullJavaClassName(udt,Mode.RECORD));
         out.print(">");
         if (udt.getRoutines().size() > 0) {
-          out.print(" implements ");
-          out.print(org.jooq.Package.class);
+          printImplements(out,udt,Mode.DEFAULT,org.jooq.Package.class.getName());
+        }
+ else {
+          printImplements(out,udt,Mode.DEFAULT);
         }
         out.println(" {");
         out.printSerial();
@@ -727,7 +734,9 @@
         out.print(UDTRecordImpl.class);
         out.print("<");
         out.print(strategy.getFullJavaClassName(udt,Mode.RECORD));
-        out.println("> {");
+        out.print(">");
+        printImplements(out,udt,Mode.RECORD);
+        out.println(" {");
         out.printSerial();
         out.println();
         for (        AttributeDefinition attribute : udt.getAttributes()) {
@@ -820,7 +829,9 @@
         out.print(ArrayRecordImpl.class);
         out.print("<");
         out.print(getJavaType(array.getElementType()));
-        out.println("> {");
+        out.print(">");
+        printImplements(out,array,Mode.RECORD);
+        out.println(" {");
         out.printSerial();
         out.println();
         out.print("\tpublic ");
@@ -881,8 +892,7 @@
         printClassJavadoc(out,e);
         out.print("public enum ");
         out.print(strategy.getJavaClassName(e,Mode.ENUM));
-        out.print(" implements ");
-        out.print(EnumType.class);
+        printImplements(out,e,Mode.ENUM,EnumType.class.getName());
         out.print(" {");
         out.println();
         for (        String literal : e.getLiterals()) {
@@ -967,6 +977,7 @@
         outPkg.print(strategy.getJavaClassName(pkg));
         outPkg.print(" extends ");
         outPkg.print(PackageImpl.class);
+        printImplements(outPkg,pkg,Mode.DEFAULT);
         outPkg.println(" {");
         outPkg.printSerial();
         printSingletonInstance(pkg,outPkg);

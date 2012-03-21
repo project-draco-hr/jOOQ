@@ -1,0 +1,8 @@
+{
+  if (definition.getName().toLowerCase().contains("book")) {
+    return Object.class.getName();
+  }
+ else {
+    return ThreadDeath.class.getName();
+  }
+}

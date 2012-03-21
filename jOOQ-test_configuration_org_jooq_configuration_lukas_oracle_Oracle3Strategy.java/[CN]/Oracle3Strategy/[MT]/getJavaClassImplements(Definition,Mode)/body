@@ -1,0 +1,18 @@
+{
+  if (mode == Mode.POJO) {
+    if (definition.getName().toLowerCase().contains("book")) {
+      return Arrays.asList(Serializable.class.getName());
+    }
+ else {
+      return Arrays.asList(Cloneable.class.getName());
+    }
+  }
+ else {
+    if (definition.getName().toLowerCase().contains("library")) {
+      return Arrays.asList(Serializable.class.getName(),Cloneable.class.getName());
+    }
+ else {
+      return Arrays.asList(Cloneable.class.getName(),Cloneable.class.getName());
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  List<String> interfaces=strategy.getJavaClassImplements(definition,mode);
+  interfaces=new ArrayList<String>(interfaces == null ? Collections.<String>emptyList() : interfaces);
+  interfaces.addAll(Arrays.asList(forcedInterfaces));
+  if (!interfaces.isEmpty()) {
+    String glue=" implements ";
+    for (    String i : new LinkedHashSet<String>(interfaces)) {
+      if (!StringUtils.isBlank(i)) {
+        out.print(glue);
+        out.print(i);
+        glue=", ";
+      }
+    }
+  }
+}
