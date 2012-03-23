@@ -1,0 +1,11 @@
+{
+  org.jooq.test.sqlserver.generatedclasses.routines.PDefault p=new org.jooq.test.sqlserver.generatedclasses.routines.PDefault();
+  p.setPInNumber(pInNumber);
+  p.setPOutNumber(pOutNumber);
+  p.setPInVarchar(pInVarchar);
+  p.setPOutVarchar(pOutVarchar);
+  p.setPInDate(pInDate);
+  p.setPOutDate(pOutDate);
+  p.execute(configuration);
+  return p;
+}

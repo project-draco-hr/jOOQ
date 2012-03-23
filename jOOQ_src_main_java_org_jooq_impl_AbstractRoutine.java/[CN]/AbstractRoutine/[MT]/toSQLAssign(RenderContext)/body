@@ -1,0 +1,10 @@
+{
+switch (context.getDialect()) {
+case ORACLE:
+    context.sql("? := ");
+  break;
+default :
+context.sql("? = ");
+break;
+}
+}

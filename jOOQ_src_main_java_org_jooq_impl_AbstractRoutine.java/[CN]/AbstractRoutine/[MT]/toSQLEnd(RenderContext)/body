@@ -1,0 +1,10 @@
+{
+switch (context.getDialect()) {
+case ORACLE:
+    context.sql(";").formatIndentEnd().formatSeparator().keyword("end;");
+  break;
+default :
+context.sql(" }");
+break;
+}
+}

@@ -1,0 +1,10 @@
+{
+switch (context.getDialect()) {
+case ORACLE:
+    break;
+default :
+  context.sql("call ");
+break;
+}
+toSQLQualifiedName(context);
+}

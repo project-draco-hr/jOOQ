@@ -1,0 +1,9 @@
+{
+  super("p_default",org.jooq.test.sqlserver.generatedclasses.Dbo.DBO);
+  addInParameter(P_IN_NUMBER);
+  addInOutParameter(P_OUT_NUMBER);
+  addInParameter(P_IN_VARCHAR);
+  addInOutParameter(P_OUT_VARCHAR);
+  addInParameter(P_IN_DATE);
+  addInOutParameter(P_OUT_DATE);
+}

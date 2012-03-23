@@ -1,5 +1,5 @@
 {
-  Result<Record> result=create().select(ALL_ARGUMENTS.IN_OUT,ALL_ARGUMENTS.ARGUMENT_NAME,ALL_ARGUMENTS.DATA_TYPE,ALL_ARGUMENTS.DATA_LENGTH,ALL_ARGUMENTS.DATA_PRECISION,ALL_ARGUMENTS.DATA_SCALE,ALL_ARGUMENTS.TYPE_NAME,ALL_ARGUMENTS.POSITION).from(ALL_ARGUMENTS).where(ALL_ARGUMENTS.OWNER.equal(getSchema().getName())).and(ALL_ARGUMENTS.OBJECT_NAME.equal(getName())).and(ALL_ARGUMENTS.OBJECT_ID.equal(objectId)).and(ALL_ARGUMENTS.OVERLOAD.equal(getOverload())).and(ALL_ARGUMENTS.DATA_LEVEL.equal(BigDecimal.ZERO)).and(ALL_ARGUMENTS.DATA_TYPE.isNotNull()).orderBy(ALL_ARGUMENTS.POSITION.asc()).fetch();
+  Result<Record> result=create().select(ALL_ARGUMENTS.IN_OUT,ALL_ARGUMENTS.ARGUMENT_NAME,ALL_ARGUMENTS.DATA_TYPE,ALL_ARGUMENTS.DATA_LENGTH,ALL_ARGUMENTS.DATA_PRECISION,ALL_ARGUMENTS.DATA_SCALE,ALL_ARGUMENTS.TYPE_NAME,ALL_ARGUMENTS.POSITION,ALL_ARGUMENTS.DEFAULTED).from(ALL_ARGUMENTS).where(ALL_ARGUMENTS.OWNER.equal(getSchema().getName())).and(ALL_ARGUMENTS.OBJECT_NAME.equal(getName())).and(ALL_ARGUMENTS.OBJECT_ID.equal(objectId)).and(ALL_ARGUMENTS.OVERLOAD.equal(getOverload())).and(ALL_ARGUMENTS.DATA_LEVEL.equal(BigDecimal.ZERO)).and(ALL_ARGUMENTS.DATA_TYPE.isNotNull()).orderBy(ALL_ARGUMENTS.POSITION.asc()).fetch();
   for (  Record record : result) {
     InOutDefinition inOut=InOutDefinition.getFromString(record.getValue(ALL_ARGUMENTS.IN_OUT));
     DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),record.getValue(ALL_ARGUMENTS.DATA_TYPE),record.getValue(ALL_ARGUMENTS.DATA_LENGTH),record.getValue(ALL_ARGUMENTS.DATA_PRECISION),record.getValue(ALL_ARGUMENTS.DATA_SCALE),record.getValue(ALL_ARGUMENTS.TYPE_NAME));
@@ -9,7 +9,7 @@
       inOut=InOutDefinition.RETURN;
       name="RETURN_VALUE";
     }
-    ParameterDefinition parameter=new DefaultParameterDefinition(this,name,position,type);
+    ParameterDefinition parameter=new DefaultParameterDefinition(this,name,position,type,record.getValue(ALL_ARGUMENTS.DEFAULTED,boolean.class));
     addParameter(inOut,parameter);
   }
 }

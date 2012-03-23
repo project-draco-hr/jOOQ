@@ -1,7 +1,7 @@
 {
   for (  Parameter<?> parameter : getParameters()) {
-    int index=parameterIndexes.get(parameter);
     if (parameter.equals(getReturnParameter()) || getOutParameters().contains(parameter)) {
+      int index=parameterIndexes.get(parameter);
       results.put(parameter,FieldTypeHelper.getFromStatement(ctx,parameter.getType(),index));
     }
   }

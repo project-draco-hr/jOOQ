@@ -4,5 +4,6 @@
   }
  else {
     inValues.put(parameter,value);
+    inValuesNonDefaulted.add(parameter);
   }
 }

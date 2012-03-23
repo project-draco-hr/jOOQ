@@ -1,28 +1,32 @@
 {
-  context.sql("{ ");
+  toSQLBegin(context);
   if (getReturnParameter() != null) {
-    context.sql("? = ");
+    toSQLAssign(context);
   }
-  context.sql("call ");
-  toSQLQualifiedName(context);
+  toSQLCall(context);
   context.sql("(");
   String separator="";
   for (  Parameter<?> parameter : getParameters()) {
-    context.sql(separator);
     if (parameter.equals(getReturnParameter())) {
       continue;
     }
  else     if (getOutParameters().contains(parameter)) {
-      context.sql("?");
+      context.sql(separator);
+      toSQLOutParam(context,parameter);
+    }
+ else     if (!inValuesNonDefaulted.contains(parameter)) {
+      continue;
     }
  else {
       Field<?> value=getInValues().get(parameter);
       if (SQLDialect.POSTGRES == context.getDialect() && isOverloaded()) {
         value=value.cast(parameter.getType());
       }
-      context.sql(value);
+      context.sql(separator);
+      toSQLInParam(context,parameter,value);
     }
     separator=", ";
   }
-  context.sql(") }");
+  context.sql(")");
+  toSQLEnd(context);
 }
