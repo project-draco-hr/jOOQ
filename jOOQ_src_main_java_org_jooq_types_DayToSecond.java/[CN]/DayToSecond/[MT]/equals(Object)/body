@@ -1,0 +1,12 @@
+{
+  if (this == obj)   return true;
+  if (obj == null)   return false;
+  if (getClass() != obj.getClass())   return false;
+  DayToSecond other=(DayToSecond)obj;
+  if (days != other.days)   return false;
+  if (hours != other.hours)   return false;
+  if (minutes != other.minutes)   return false;
+  if (nano != other.nano)   return false;
+  if (seconds != other.seconds)   return false;
+  return true;
+}

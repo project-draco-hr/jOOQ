@@ -50,6 +50,12 @@
  else   if (type == Timestamp.class) {
     stream.writeTimestamp((Timestamp)value);
   }
+ else   if (type == YearToMonth.class) {
+    stream.writeString(value.toString());
+  }
+ else   if (type == DayToSecond.class) {
+    stream.writeString(value.toString());
+  }
  else   if (UNumber.class.isAssignableFrom(type)) {
     stream.writeString(value.toString());
   }

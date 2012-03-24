@@ -1,0 +1,12 @@
+{
+  if (string != null) {
+    Matcher matcher=PATTERN.matcher(string);
+    if (matcher.find()) {
+      boolean negative="-".equals(matcher.group(1));
+      int years=Integer.parseInt(matcher.group(2));
+      int months=Integer.parseInt(matcher.group(3));
+      return new YearToMonth(years,months,negative);
+    }
+  }
+  return null;
+}

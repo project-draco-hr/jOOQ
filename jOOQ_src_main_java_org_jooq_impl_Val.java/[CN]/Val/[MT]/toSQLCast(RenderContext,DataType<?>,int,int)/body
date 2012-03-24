@@ -1,3 +1,5 @@
 {
-  context.sql("cast(").sql(getBindVariable(context)).sql(" as ").sql(type.getCastTypeName(context,precision,scale)).sql(")");
+  context.sql("cast(");
+  toSQL(context,getValue(),getType());
+  context.sql(" as ").sql(type.getCastTypeName(context,precision,scale)).sql(")");
 }

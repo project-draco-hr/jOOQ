@@ -1,0 +1,17 @@
+{
+  StringBuilder sb=new StringBuilder();
+  sb.append(negative ? "-" : "+");
+  sb.append(days);
+  sb.append(" ");
+  if (hours < 10)   sb.append("0");
+  sb.append(hours);
+  sb.append(":");
+  if (minutes < 10)   sb.append("0");
+  sb.append(minutes);
+  sb.append(":");
+  if (seconds < 10)   sb.append("0");
+  sb.append(seconds);
+  sb.append(".");
+  sb.append(nano);
+  return sb.toString();
+}

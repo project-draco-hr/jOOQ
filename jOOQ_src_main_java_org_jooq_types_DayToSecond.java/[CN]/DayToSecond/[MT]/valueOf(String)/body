@@ -1,0 +1,15 @@
+{
+  if (string != null) {
+    Matcher matcher=PATTERN.matcher(string);
+    if (matcher.find()) {
+      boolean negative="-".equals(matcher.group(1));
+      int days=Integer.parseInt(matcher.group(2));
+      int hours=Integer.parseInt(matcher.group(3));
+      int minutes=Integer.parseInt(matcher.group(4));
+      int seconds=Integer.parseInt(matcher.group(5));
+      int nano=Integer.parseInt(StringUtils.rightPad(matcher.group(6),9,"0"));
+      return new DayToSecond(days,hours,minutes,seconds,nano,negative);
+    }
+  }
+  return null;
+}

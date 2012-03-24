@@ -97,6 +97,12 @@
  else   if (type == Timestamp.class) {
     stmt.setTimestamp(nextIndex(),(Timestamp)value);
   }
+ else   if (type == YearToMonth.class) {
+    stmt.setString(nextIndex(),value.toString());
+  }
+ else   if (type == DayToSecond.class) {
+    stmt.setString(nextIndex(),value.toString());
+  }
  else   if (UNumber.class.isAssignableFrom(type)) {
     stmt.setString(nextIndex(),value.toString());
   }

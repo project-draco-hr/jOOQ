@@ -1,0 +1,15 @@
+{
+  if (years < that.years) {
+    return -1;
+  }
+  if (years > that.years) {
+    return 1;
+  }
+  if (months < that.months) {
+    return -1;
+  }
+  if (months > that.months) {
+    return 1;
+  }
+  return 0;
+}

@@ -1,0 +1,6 @@
+int days
+int hours
+int minutes
+int seconds
+int nano
+boolean negative

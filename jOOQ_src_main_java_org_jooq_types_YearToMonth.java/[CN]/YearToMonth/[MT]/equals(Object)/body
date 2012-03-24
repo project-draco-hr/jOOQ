@@ -1,0 +1,9 @@
+{
+  if (this == obj)   return true;
+  if (obj == null)   return false;
+  if (getClass() != obj.getClass())   return false;
+  YearToMonth other=(YearToMonth)obj;
+  if (months != other.months)   return false;
+  if (years != other.years)   return false;
+  return true;
+}

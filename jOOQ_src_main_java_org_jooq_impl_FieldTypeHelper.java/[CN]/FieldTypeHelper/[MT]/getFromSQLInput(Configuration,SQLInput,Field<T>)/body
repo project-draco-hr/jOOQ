@@ -49,6 +49,14 @@
  else   if (type == Timestamp.class) {
     return (T)stream.readTimestamp();
   }
+ else   if (type == YearToMonth.class) {
+    String string=stream.readString();
+    return (T)(string == null ? null : YearToMonth.valueOf(string));
+  }
+ else   if (type == DayToSecond.class) {
+    String string=stream.readString();
+    return (T)(string == null ? null : DayToSecond.valueOf(string));
+  }
  else   if (type == UByte.class) {
     String string=stream.readString();
     return (T)(string == null ? null : new UByte(string));

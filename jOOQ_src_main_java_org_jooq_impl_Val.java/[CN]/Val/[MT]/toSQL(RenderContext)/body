@@ -7,7 +7,10 @@ case ALWAYS:
 toSQLCast(context);
 return;
 case SOME:
-if (context.cast()) {
+if (getDataType().isInterval()) {
+toSQLCast(context);
+}
+ else if (context.cast()) {
 toSQLCast(context);
 }
  else {
@@ -32,5 +35,10 @@ return;
 }
 }
 }
+if (getDataType().isInterval()) {
+toSQLCast(context);
+}
+ else {
 toSQL(context,getValue(),getType());
+}
 }
