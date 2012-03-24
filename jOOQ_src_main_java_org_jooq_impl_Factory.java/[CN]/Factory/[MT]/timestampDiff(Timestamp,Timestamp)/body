@@ -1,0 +1,3 @@
+{
+  return timestampDiff(val(timestamp1),val(timestamp2));
+}

@@ -1,0 +1,3 @@
+{
+  return dateDiff(val(date1),val(date2));
+}

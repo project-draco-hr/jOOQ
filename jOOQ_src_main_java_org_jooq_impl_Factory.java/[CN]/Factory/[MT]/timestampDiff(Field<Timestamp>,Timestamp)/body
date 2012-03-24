@@ -1,0 +1,3 @@
+{
+  return timestampDiff(nullSafe(timestamp1),val(timestamp2));
+}

@@ -1,0 +1,3 @@
+{
+  return timeDiff(val(time1),nullSafe(time2));
+}
