@@ -1,4 +1,8 @@
 {
+  if (months >= 12) {
+    years+=(months / 12);
+    months%=12;
+  }
   this.negative=negative;
   this.years=years;
   this.months=months;

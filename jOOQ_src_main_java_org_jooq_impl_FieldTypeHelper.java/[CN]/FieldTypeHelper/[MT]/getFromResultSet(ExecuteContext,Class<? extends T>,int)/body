@@ -60,12 +60,24 @@
     return (T)getTimestamp(ctx.getDialect(),rs,index);
   }
  else   if (type == YearToMonth.class) {
-    String string=rs.getString(index);
-    return (T)(string == null ? null : YearToMonth.valueOf(string));
+    if (ctx.getDialect() == POSTGRES) {
+      Object object=rs.getObject(index);
+      return (T)(object == null ? null : PGIntervalConverter.toYearToMonth(object));
+    }
+ else {
+      String string=rs.getString(index);
+      return (T)(string == null ? null : YearToMonth.valueOf(string));
+    }
   }
  else   if (type == DayToSecond.class) {
-    String string=rs.getString(index);
-    return (T)(string == null ? null : DayToSecond.valueOf(string));
+    if (ctx.getDialect() == POSTGRES) {
+      Object object=rs.getObject(index);
+      return (T)(object == null ? null : PGIntervalConverter.toDayToSecond(object));
+    }
+ else {
+      String string=rs.getString(index);
+      return (T)(string == null ? null : DayToSecond.valueOf(string));
+    }
   }
  else   if (type == UByte.class) {
     String string=rs.getString(index);

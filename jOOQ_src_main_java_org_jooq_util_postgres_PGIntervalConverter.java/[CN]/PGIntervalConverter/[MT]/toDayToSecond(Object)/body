@@ -1,0 +1,5 @@
+{
+  Reflect i=on(pgInterval);
+  Double seconds=i.call("getSeconds").<Double>get();
+  return new DayToSecond(i.call("getDays").<Integer>get(),i.call("getHours").<Integer>get(),i.call("getMinutes").<Integer>get(),seconds.intValue(),(int)(1000000000 * (seconds - seconds.intValue())));
+}

@@ -1,0 +1,3 @@
+{
+  return on("org.postgresql.util.PGInterval").create(0,0,interval.getDays(),interval.getHours(),interval.getMinutes(),interval.getSeconds() + interval.getNano() / 1000000000.0).get();
+}

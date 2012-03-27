@@ -3,11 +3,11 @@
     Matcher matcher=PATTERN.matcher(string);
     if (matcher.find()) {
       boolean negative="-".equals(matcher.group(1));
-      int days=Integer.parseInt(matcher.group(2));
-      int hours=Integer.parseInt(matcher.group(3));
-      int minutes=Integer.parseInt(matcher.group(4));
-      int seconds=Integer.parseInt(matcher.group(5));
-      int nano=Integer.parseInt(StringUtils.rightPad(matcher.group(6),9,"0"));
+      int days=Convert.convert(matcher.group(2),int.class);
+      int hours=Convert.convert(matcher.group(3),int.class);
+      int minutes=Convert.convert(matcher.group(4),int.class);
+      int seconds=Convert.convert(matcher.group(5),int.class);
+      int nano=Convert.convert(StringUtils.rightPad(matcher.group(6),9,"0"),int.class);
       return new DayToSecond(days,hours,minutes,seconds,nano,negative);
     }
   }

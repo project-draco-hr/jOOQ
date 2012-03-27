@@ -1,0 +1,4 @@
+{
+  Reflect i=on(pgInterval);
+  return new YearToMonth(i.call("getYears").<Integer>get(),i.call("getMonths").<Integer>get());
+}

@@ -1,0 +1,3 @@
+{
+  return on("org.postgresql.util.PGInterval").create(interval.getYears(),interval.getMonths(),0,0,0,0.0).get();
+}
