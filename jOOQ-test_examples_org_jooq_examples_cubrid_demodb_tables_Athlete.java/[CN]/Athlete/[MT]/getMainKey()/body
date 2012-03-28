@@ -1,0 +1,3 @@
+{
+  return org.jooq.examples.cubrid.demodb.Keys.PK_ATHLETE_CODE;
+}

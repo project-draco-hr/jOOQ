@@ -1,0 +1,3 @@
+{
+  super("db_index_key",org.jooq.util.cubrid.dba.Dba.DBA);
+}

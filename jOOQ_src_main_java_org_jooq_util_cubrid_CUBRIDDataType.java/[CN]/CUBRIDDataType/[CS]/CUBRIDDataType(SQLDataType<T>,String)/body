@@ -1,0 +1,3 @@
+{
+  super(SQLDialect.CUBRID,sqlDataType,sqlDataType.getType(),typeName);
+}

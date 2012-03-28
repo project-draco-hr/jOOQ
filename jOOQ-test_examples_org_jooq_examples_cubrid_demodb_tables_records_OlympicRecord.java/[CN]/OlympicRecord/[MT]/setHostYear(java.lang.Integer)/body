@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.examples.cubrid.demodb.tables.Olympic.OLYMPIC.HOST_YEAR,value);
+}

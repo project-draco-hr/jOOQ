@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.examples.cubrid.demodb.tables.Game.GAME.HOST_YEAR,value);
+}

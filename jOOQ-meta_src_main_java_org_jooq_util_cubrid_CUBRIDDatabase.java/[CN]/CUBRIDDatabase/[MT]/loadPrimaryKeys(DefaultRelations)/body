@@ -1,0 +1,12 @@
+{
+  for (  Record record : fetchKeys(DB_INDEX.IS_UNIQUE.isTrue().and(DB_INDEX.IS_PRIMARY_KEY.isFalse()))) {
+    SchemaDefinition schema=getSchema(record.getValue(DB_CLASS.OWNER_NAME));
+    String key=record.getValue(DB_INDEX.INDEX_NAME);
+    String tableName=record.getValue(DB_CLASS.CLASS_NAME);
+    String columnName=record.getValue(DB_INDEX_KEY.KEY_ATTR_NAME);
+    TableDefinition table=getTable(schema,tableName);
+    if (table != null) {
+      relations.addUniqueKey(key,table.getColumn(columnName));
+    }
+  }
+}

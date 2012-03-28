@@ -1,0 +1,3 @@
+{
+  super("participant",org.jooq.examples.cubrid.demodb.Public.PUBLIC);
+}

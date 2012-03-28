@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.Table<?>>asList(org.jooq.util.cubrid.dba.tables.DbAttribute.DB_ATTRIBUTE,org.jooq.util.cubrid.dba.tables.DbClass.DB_CLASS,org.jooq.util.cubrid.dba.tables.DbIndex.DB_INDEX,org.jooq.util.cubrid.dba.tables.DbIndexKey.DB_INDEX_KEY,org.jooq.util.cubrid.dba.tables.DbSerial.DB_SERIAL);
+}

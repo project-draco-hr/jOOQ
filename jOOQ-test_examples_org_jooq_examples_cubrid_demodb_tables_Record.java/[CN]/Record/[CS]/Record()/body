@@ -1,0 +1,3 @@
+{
+  super("record",org.jooq.examples.cubrid.demodb.Public.PUBLIC);
+}

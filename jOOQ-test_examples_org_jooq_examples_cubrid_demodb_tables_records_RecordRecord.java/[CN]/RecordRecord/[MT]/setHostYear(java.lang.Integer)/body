@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.examples.cubrid.demodb.tables.Record.RECORD.HOST_YEAR,value);
+}

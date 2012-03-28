@@ -1,0 +1,3 @@
+{
+  super("olympic",org.jooq.examples.cubrid.demodb.Public.PUBLIC);
+}

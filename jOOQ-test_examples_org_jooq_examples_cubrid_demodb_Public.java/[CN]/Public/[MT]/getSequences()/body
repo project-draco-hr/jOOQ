@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.Sequence<?>>asList(org.jooq.examples.cubrid.demodb.Sequences.EVENT_NO,org.jooq.examples.cubrid.demodb.Sequences.STADIUM_NO,org.jooq.examples.cubrid.demodb.Sequences.ATHLETE_AI_CODE);
+}

@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.examples.cubrid.demodb.tables.History.HISTORY.ATHLETE,value);
+}

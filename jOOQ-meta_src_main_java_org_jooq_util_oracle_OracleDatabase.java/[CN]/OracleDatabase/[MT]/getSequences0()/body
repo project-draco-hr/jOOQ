@@ -1,25 +1,10 @@
 {
   List<SequenceDefinition> result=new ArrayList<SequenceDefinition>();
   for (  Record record : create().select(ALL_SEQUENCES.SEQUENCE_OWNER,ALL_SEQUENCES.SEQUENCE_NAME,ALL_SEQUENCES.MAX_VALUE).from(ALL_SEQUENCES).where(ALL_SEQUENCES.SEQUENCE_OWNER.in(getInputSchemata())).orderBy(ALL_SEQUENCES.SEQUENCE_OWNER,ALL_SEQUENCES.SEQUENCE_NAME).fetch()) {
-    DataTypeDefinition type;
     SchemaDefinition schema=getSchema(record.getValue(ALL_SEQUENCES.SEQUENCE_OWNER));
     BigInteger value=record.getValue(ALL_SEQUENCES.MAX_VALUE,BigInteger.class,BigInteger.valueOf(Long.MAX_VALUE));
-    if (BigInteger.valueOf(Byte.MAX_VALUE).compareTo(value) >= 0) {
-      type=new DefaultDataTypeDefinition(this,schema,SQLDataType.NUMERIC.getTypeName(),0,2,0);
-    }
- else     if (BigInteger.valueOf(Short.MAX_VALUE).compareTo(value) >= 0) {
-      type=new DefaultDataTypeDefinition(this,schema,SQLDataType.NUMERIC.getTypeName(),0,4,0);
-    }
- else     if (BigInteger.valueOf(Integer.MAX_VALUE).compareTo(value) >= 0) {
-      type=new DefaultDataTypeDefinition(this,schema,SQLDataType.NUMERIC.getTypeName(),0,9,0);
-    }
- else     if (BigInteger.valueOf(Long.MAX_VALUE).compareTo(value) >= 0) {
-      type=new DefaultDataTypeDefinition(this,schema,SQLDataType.NUMERIC.getTypeName(),0,18,0);
-    }
- else {
-      type=new DefaultDataTypeDefinition(this,schema,SQLDataType.NUMERIC.getTypeName(),0,38,0);
-    }
-    result.add(new DefaultSequenceDefinition(getSchema(record.getValue(ALL_SEQUENCES.SEQUENCE_OWNER)),record.getValue(ALL_SEQUENCES.SEQUENCE_NAME),type));
+    DataTypeDefinition type=getDataTypeForMAX_VAL(schema,value);
+    result.add(new DefaultSequenceDefinition(schema,record.getValue(ALL_SEQUENCES.SEQUENCE_NAME),type));
   }
   return result;
 }

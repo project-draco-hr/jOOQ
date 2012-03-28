@@ -1,0 +1,3 @@
+{
+  super(alias,org.jooq.util.cubrid.dba.Dba.DBA,org.jooq.util.cubrid.dba.tables.DbIndex.DB_INDEX);
+}

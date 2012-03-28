@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.examples.cubrid.demodb.tables.Record.RECORD.SCORE);
+}
