@@ -1,0 +1,3 @@
+{
+  setNumber(P_IN_NUMBER,value);
+}

@@ -1,0 +1,7 @@
+{
+  context.formatSeparator().keyword("connect by");
+  if (connectByNoCycle) {
+    context.keyword(" nocycle");
+  }
+  context.sql(" ").sql(getConnectBy());
+}

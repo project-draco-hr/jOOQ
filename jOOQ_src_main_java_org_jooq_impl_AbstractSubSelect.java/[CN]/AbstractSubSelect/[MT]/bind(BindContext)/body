@@ -1,5 +1,5 @@
 {
-  context.declareFields(true).bind((QueryPart)getSelect0()).declareFields(false).declareTables(true).bind((QueryPart)getFrom()).declareTables(false).bind(getWhere()).bind(getConnectBy()).bind(getConnectByStartWith()).bind((QueryPart)getGroupBy()).bind(getHaving()).bind((QueryPart)getOrderBy());
+  context.declareFields(true).bind((QueryPart)getSelect0()).declareFields(false).declareTables(true).bind((QueryPart)getFrom()).declareTables(false).bind(getWhere()).bind(getConnectByStartWith()).bind(getConnectBy()).bind((QueryPart)getGroupBy()).bind(getHaving()).bind((QueryPart)getOrderBy());
   if (getLimit().isApplicable()) {
     context.bind(getLimit());
   }

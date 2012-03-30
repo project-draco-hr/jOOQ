@@ -43,14 +43,8 @@ if (!(getWhere().getWhere() instanceof TrueCondition)) {
 context.formatSeparator().keyword("where ").sql(getWhere());
 }
 if (!(getConnectBy().getWhere() instanceof TrueCondition)) {
-context.formatSeparator().keyword("connect by");
-if (connectByNoCycle) {
-context.keyword(" nocycle");
-}
-context.sql(" ").sql(getConnectBy());
-if (!(getConnectByStartWith().getWhere() instanceof TrueCondition)) {
-context.formatSeparator().keyword("start with ").sql(getConnectByStartWith());
-}
+toSQLStartWith(context);
+toSQLConnectBy(context);
 }
 if (!getGroupBy().isEmpty()) {
 context.formatSeparator().keyword("group by ").sql(getGroupBy());

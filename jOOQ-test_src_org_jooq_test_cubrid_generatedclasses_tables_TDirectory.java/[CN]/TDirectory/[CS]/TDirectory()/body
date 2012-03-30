@@ -1,0 +1,3 @@
+{
+  super("t_directory",org.jooq.test.cubrid.generatedclasses.Dba.DBA);
+}
