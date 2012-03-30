@@ -16,6 +16,7 @@ log.info("Executing",sql);
 assertEquals(result,create().fetch(sql,query.getBindValues().toArray()));
 switch (getDialect()) {
 case ASE:
+case CUBRID:
 case DB2:
 case DERBY:
 case H2:

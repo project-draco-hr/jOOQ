@@ -9,7 +9,10 @@
  else   if (dialect == CUBRID) {
     Date date=rs.getDate(index);
     if (date != null) {
-      date=new Date((rs.getDate(index).getTime() / 1000) * 1000);
+      Calendar cal=Calendar.getInstance();
+      cal.setTimeInMillis(date.getTime());
+      cal.set(Calendar.MILLISECOND,0);
+      date=new Date(cal.getTimeInMillis());
     }
     return date;
   }
