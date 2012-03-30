@@ -4,8 +4,11 @@
     int sequences=0;
     if (cSequences() != null) {
       sequences++;
-      if (getDialect() == SQLDialect.DB2 || getDialect() == SQLDialect.H2) {
+      if (getDialect() == DB2 || getDialect() == H2) {
         sequences++;
+      }
+ else       if (getDialect() == CUBRID) {
+        sequences+=3;
       }
  else       if (getDialect() == ORACLE) {
         sequences+=5;
@@ -40,7 +43,7 @@
     if (getDialect() == MYSQL || getDialect() == POSTGRES) {
       tables++;
     }
-    if (getDialect() == ASE || getDialect() == DB2 || getDialect() == POSTGRES || getDialect() == SQLITE || getDialect() == SYBASE) {
+    if (getDialect() == ASE || getDialect() == CUBRID || getDialect() == DB2 || getDialect() == POSTGRES || getDialect() == SQLITE || getDialect() == SYBASE) {
       tables+=2;
     }
     if (TArrays() == null) {
