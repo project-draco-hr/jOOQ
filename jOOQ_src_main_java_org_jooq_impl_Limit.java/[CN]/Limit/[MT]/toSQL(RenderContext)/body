@@ -11,15 +11,20 @@ case SQLITE:
       context.castMode(NEVER).formatSeparator().keyword("limit ").sql(numberOfRows).keyword(" offset ").sql(offsetOrZero).castMode(castMode);
       break;
     }
-case DERBY:
+case CUBRID:
 {
-    context.castMode(NEVER).formatSeparator().keyword("offset ").sql(offsetOrZero).keyword(" rows fetch next ").sql(numberOfRows).keyword(" rows only").castMode(castMode);
+    context.castMode(NEVER).formatSeparator().keyword("limit ").sql(offsetOrZero).sql(", ").sql(numberOfRows).castMode(castMode);
     break;
   }
+case DERBY:
+{
+  context.castMode(NEVER).formatSeparator().keyword("offset ").sql(offsetOrZero).keyword(" rows fetch next ").sql(numberOfRows).keyword(" rows only").castMode(castMode);
+  break;
+}
 case INGRES:
 {
-  context.inline(true).formatSeparator().keyword("offset ").sql(offsetOrZero).keyword(" fetch first ").sql(numberOfRows).keyword(" rows only").inline(inline);
-  break;
+context.inline(true).formatSeparator().keyword("offset ").sql(offsetOrZero).keyword(" fetch first ").sql(numberOfRows).keyword(" rows only").inline(inline);
+break;
 }
 case SYBASE:
 {

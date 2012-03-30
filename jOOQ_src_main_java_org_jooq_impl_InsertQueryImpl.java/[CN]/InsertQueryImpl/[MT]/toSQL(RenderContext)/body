@@ -4,6 +4,7 @@
   }
  else {
 switch (context.getDialect()) {
+case CUBRID:
 case MYSQL:
 {
         toSQLInsert(context);

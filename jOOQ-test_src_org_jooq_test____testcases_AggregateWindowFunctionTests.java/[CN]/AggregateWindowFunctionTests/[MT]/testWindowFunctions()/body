@@ -1,6 +1,7 @@
 {
 switch (getDialect()) {
 case ASE:
+case CUBRID:
 case DERBY:
 case H2:
 case HSQLDB:

@@ -23,6 +23,7 @@ if (!(getValue() instanceof EnumType) && !(getValue() instanceof MasterDataType)
 switch (context.getDialect()) {
 case DB2:
 case DERBY:
+case CUBRID:
 case H2:
 case HSQLDB:
 case INGRES:

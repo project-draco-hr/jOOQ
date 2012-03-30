@@ -6,6 +6,13 @@
     }
     return null;
   }
+ else   if (dialect == CUBRID) {
+    Date date=rs.getDate(index);
+    if (date != null) {
+      date=new Date((rs.getDate(index).getTime() / 1000) * 1000);
+    }
+    return date;
+  }
  else {
     return rs.getDate(index);
   }

@@ -1,6 +1,6 @@
 {
   if (!using.isEmpty()) {
-    if (asList(ASE,DB2,H2,SQLSERVER,SYBASE).contains(context.getDialect())) {
+    if (asList(ASE,CUBRID,DB2,H2,SQLSERVER,SYBASE).contains(context.getDialect())) {
       String glue=" on ";
       for (      Field<?> field : using) {
         context.keyword(glue).sql(lhs.getField(field)).sql(" = ").sql(rhs.getField(field));

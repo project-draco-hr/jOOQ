@@ -24,6 +24,7 @@ case SYBASE:
       return result;
     }
 case ASE:
+case CUBRID:
 case DERBY:
 case H2:
 case INGRES:

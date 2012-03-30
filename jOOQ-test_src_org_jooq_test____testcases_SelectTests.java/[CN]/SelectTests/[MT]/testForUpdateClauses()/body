@@ -1,5 +1,6 @@
 {
 switch (getDialect()) {
+case CUBRID:
 case SQLITE:
 case SQLSERVER:
     log.info("SKIPPING","FOR UPDATE tests");

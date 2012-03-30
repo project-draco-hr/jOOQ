@@ -1,0 +1,3 @@
+{
+  super("t_book_store",org.jooq.test.cubrid.generatedclasses.Dba.DBA);
+}

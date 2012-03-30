@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(org.jooq.examples.cubrid.demodb.tables.Game.GAME).where(org.jooq.examples.cubrid.demodb.tables.Game.GAME.EVENT_CODE.equal(getValue(org.jooq.examples.cubrid.demodb.tables.Event.EVENT.CODE))).fetch();
+}

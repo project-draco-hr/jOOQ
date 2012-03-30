@@ -17,6 +17,7 @@ switch (configuration.getDialect()) {
 case MYSQL:
       sql("`").sql(literal).sql("`");
     break;
+case CUBRID:
 case DB2:
 case DERBY:
 case H2:

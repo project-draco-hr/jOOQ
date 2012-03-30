@@ -1,6 +1,6 @@
 {
   RenderContext local=create(configuration).renderContext();
-  if (sequence.schema != null) {
+  if (sequence.schema != null && configuration.getDialect() != CUBRID) {
     local.sql(Util.getMappedSchema(configuration,sequence.schema));
     local.sql(".");
   }

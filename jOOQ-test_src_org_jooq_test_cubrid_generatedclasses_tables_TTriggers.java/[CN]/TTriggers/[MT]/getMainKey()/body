@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.cubrid.generatedclasses.Keys.T_TRIGGERS__PK_T_TRIGGERS;
+}

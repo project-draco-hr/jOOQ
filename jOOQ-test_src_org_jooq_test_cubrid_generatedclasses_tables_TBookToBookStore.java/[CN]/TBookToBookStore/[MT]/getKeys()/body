@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.cubrid.generatedclasses.tables.records.TBookToBookStoreRecord>>asList(org.jooq.test.cubrid.generatedclasses.Keys.T_BOOK_TO_BOOK_STORE__PK_B2BS);
+}

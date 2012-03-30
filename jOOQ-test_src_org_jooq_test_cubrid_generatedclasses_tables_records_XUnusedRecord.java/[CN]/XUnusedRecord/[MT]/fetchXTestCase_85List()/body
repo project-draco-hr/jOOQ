@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(org.jooq.test.cubrid.generatedclasses.tables.XTestCase_85.X_TEST_CASE_85).where(org.jooq.test.cubrid.generatedclasses.tables.XTestCase_85.X_UNUSED_ID.equal(getValue(org.jooq.test.cubrid.generatedclasses.tables.XUnused.ID))).and(org.jooq.test.cubrid.generatedclasses.tables.XTestCase_85.X_UNUSED_NAME.equal(getValue(org.jooq.test.cubrid.generatedclasses.tables.XUnused.NAME))).fetch();
+}

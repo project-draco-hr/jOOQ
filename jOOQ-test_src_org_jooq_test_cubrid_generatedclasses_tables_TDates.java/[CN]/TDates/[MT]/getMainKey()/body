@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.cubrid.generatedclasses.Keys.T_DATES__PK_T_DATES;
+}

@@ -3,6 +3,7 @@
 switch (context.getDialect()) {
 case DB2:
 case ASE:
+case CUBRID:
 case INGRES:
 case MYSQL:
 case SQLITE:

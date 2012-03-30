@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(org.jooq.examples.cubrid.demodb.tables.Participant.PARTICIPANT).where(org.jooq.examples.cubrid.demodb.tables.Participant.PARTICIPANT.HOST_YEAR.equal(getValue(org.jooq.examples.cubrid.demodb.tables.Olympic.OLYMPIC.HOST_YEAR))).fetch();
+}

@@ -16,18 +16,24 @@ case SQLITE:
     context.bind(offsetOrZero);
     break;
   }
+case CUBRID:
+{
+  context.bind(offsetOrZero);
+  context.bind(numberOfRows);
+  break;
+}
 case ASE:
 case INGRES:
 {
-  break;
+break;
 }
 case SYBASE:
 {
 if (!rendersParams) {
 }
  else {
-  context.bind(getLowerRownum());
-  context.bind(getUpperRownum());
+context.bind(getLowerRownum());
+context.bind(getUpperRownum());
 }
 break;
 }

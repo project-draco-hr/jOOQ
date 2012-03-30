@@ -1,2 +1,18 @@
 {
+  DatabaseMetaData meta=create().getConnection().getMetaData();
+  for (  String table : create().selectDistinct(DB_INDEX.CLASS_NAME).from(DB_INDEX).where(DB_INDEX.IS_FOREIGN_KEY.isTrue()).fetch(DB_INDEX.CLASS_NAME)) {
+    for (    Record record : create().fetch(meta.getImportedKeys(null,null,table))) {
+      SchemaDefinition foreignKeySchema=getSchema(getInputSchemata().get(0));
+      SchemaDefinition uniqueKeySchema=getSchema(getInputSchemata().get(0));
+      String foreignKeyName=record.getValue("FKTABLE_NAME",String.class) + "__" + record.getValue("FK_NAME",String.class);
+      String foreignKeyTableName=record.getValue("FKTABLE_NAME",String.class);
+      String foreignKeyColumnName=record.getValue("FKCOLUMN_NAME",String.class);
+      String uniqueKeyName=record.getValue("PKTABLE_NAME",String.class) + "__" + record.getValue("PK_NAME",String.class);
+      TableDefinition referencingTable=getTable(foreignKeySchema,foreignKeyTableName);
+      if (referencingTable != null) {
+        ColumnDefinition column=referencingTable.getColumn(foreignKeyColumnName);
+        relations.addForeignKey(foreignKeyName,uniqueKeyName,column,uniqueKeySchema);
+      }
+    }
+  }
 }

@@ -1,9 +1,14 @@
 {
   long tsShift=-3600000;
-  Record record=create().select(val(new Date(0)).as("d"),val(new Time(0)).as("t"),val(new Timestamp(0)).as("ts"),val(new YearToMonth(0)).as("iy"),val(new DayToSecond(0)).as("id")).fetchOne();
+  Record record=create().select(val(new Date(0)).as("d"),val(new Time(0)).as("t"),val(new Timestamp(0)).as("ts")).fetchOne();
   if (getDialect() != SQLITE)   assertEquals(new Date(tsShift),record.getValue("d"));
   assertEquals(new Time(0),record.getValue("t"));
   assertEquals(new Timestamp(0),record.getValue("ts"));
+  if (getDialect() == CUBRID) {
+    log.info("SKIPPING","Interval tests");
+    return;
+  }
+  record=create().select(val(new Date(0)).as("d"),val(new Time(0)).as("t"),val(new Timestamp(0)).as("ts"),val(new YearToMonth(0)).as("iy"),val(new DayToSecond(0)).as("id")).fetchOne();
   assertEquals(new YearToMonth(0),record.getValue("iy"));
   assertEquals(new DayToSecond(0),record.getValue("id"));
   record=create().select(val(new YearToMonth(1)).div(2).as("y1"),val(new YearToMonth(1)).mul(2).as("y2"),val(new YearToMonth(1)).div(2).mul(2).as("y3"),val(new DayToSecond(1)).div(2).as("d1"),val(new DayToSecond(1)).mul(2).as("d2"),val(new DayToSecond(1)).div(2).mul(2).as("d3")).fetchOne();

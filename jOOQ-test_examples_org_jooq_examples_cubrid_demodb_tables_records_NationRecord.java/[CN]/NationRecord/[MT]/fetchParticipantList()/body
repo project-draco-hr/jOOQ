@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(org.jooq.examples.cubrid.demodb.tables.Participant.PARTICIPANT).where(org.jooq.examples.cubrid.demodb.tables.Participant.PARTICIPANT.NATION_CODE.equal(getValue(org.jooq.examples.cubrid.demodb.tables.Nation.NATION.CODE))).fetch();
+}

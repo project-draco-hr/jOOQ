@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.cubrid.generatedclasses.Keys.X_TEST_CASE_71__PK_X_TEST_CASE_71;
+}

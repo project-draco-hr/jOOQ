@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(org.jooq.examples.cubrid.demodb.tables.Athlete.ATHLETE).where(org.jooq.examples.cubrid.demodb.tables.Athlete.ATHLETE.CODE.equal(getValue(org.jooq.examples.cubrid.demodb.tables.Game.GAME.ATHLETE_CODE))).fetchOne();
+}

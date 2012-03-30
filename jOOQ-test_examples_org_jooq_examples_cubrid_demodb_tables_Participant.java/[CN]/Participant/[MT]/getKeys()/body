@@ -1,3 +1,3 @@
 {
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.examples.cubrid.demodb.tables.records.ParticipantRecord>>asList(org.jooq.examples.cubrid.demodb.Keys.PK_PARTICIPANT_HOST_YEAR_NATION_CODE);
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.examples.cubrid.demodb.tables.records.ParticipantRecord>>asList(org.jooq.examples.cubrid.demodb.Keys.PARTICIPANT__PK_PARTICIPANT_HOST_YEAR_NATION_CODE);
 }

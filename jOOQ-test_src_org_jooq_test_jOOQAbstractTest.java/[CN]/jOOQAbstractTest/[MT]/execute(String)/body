@@ -79,6 +79,9 @@ case 218:
  else     if (e.getMessage().contains("doesn't exist") && getDialect() == SQLDialect.ASE) {
       continue;
     }
+ else     if (getDialect() == CUBRID && sql.trim().startsWith("DROP")) {
+      continue;
+    }
     System.out.println("Error while executing : " + sql.trim());
     System.out.println();
     System.out.println();
