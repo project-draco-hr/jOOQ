@@ -1,6 +1,6 @@
 {
   SQLDataType<T> type=getDataType(context).getSQLDataType();
-  if (getValue() != null && getType() == BigDecimal.class && asList(DB2,DERBY,HSQLDB).contains(context.getDialect())) {
+  if (getValue() != null && getType() == BigDecimal.class && asList(CUBRID,DB2,DERBY,HSQLDB).contains(context.getDialect())) {
     int scale=((BigDecimal)getValue()).scale();
     int precision=scale + ((BigDecimal)getValue()).precision();
     toSQLCast(context,getDataType(context),precision,scale);

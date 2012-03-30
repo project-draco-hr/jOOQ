@@ -15,6 +15,7 @@ case SQLITE:
         returned=create.select(returning).from(getInto()).where(rowid().equal(rowid().getDataType().convert(create.lastID()))).fetchInto(getInto());
         return result;
       }
+case CUBRID:
 case SYBASE:
 {
       listener.executeStart(ctx);
@@ -24,7 +25,6 @@ case SYBASE:
       return result;
     }
 case ASE:
-case CUBRID:
 case DERBY:
 case H2:
 case INGRES:

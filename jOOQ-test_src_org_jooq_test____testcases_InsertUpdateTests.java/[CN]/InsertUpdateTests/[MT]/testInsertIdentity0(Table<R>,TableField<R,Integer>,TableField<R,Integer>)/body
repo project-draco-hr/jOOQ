@@ -13,7 +13,7 @@
   }
   assertEquals(2,(int)r2.getValue(id));
   assertEquals(11,(int)r2.getValue(val));
-  if (getDialect() == SYBASE || getDialect() == SQLSERVER || getDialect() == INGRES || getDialect() == H2 || getDialect() == DERBY || getDialect() == ASE) {
+  if (getDialect() == CUBRID || getDialect() == SYBASE || getDialect() == SQLSERVER || getDialect() == INGRES || getDialect() == H2 || getDialect() == DERBY || getDialect() == ASE) {
     log.info("SKIPPING","Multi-record INSERT .. RETURNING statement");
   }
  else {

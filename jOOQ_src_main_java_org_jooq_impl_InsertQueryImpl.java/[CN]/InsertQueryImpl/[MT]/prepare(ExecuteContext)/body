@@ -12,11 +12,11 @@
 switch (ctx.getDialect()) {
 case POSTGRES:
 case SQLITE:
+case CUBRID:
 case SYBASE:
       super.prepare(ctx);
     return;
 case ASE:
-case CUBRID:
 case DERBY:
 case H2:
 case INGRES:

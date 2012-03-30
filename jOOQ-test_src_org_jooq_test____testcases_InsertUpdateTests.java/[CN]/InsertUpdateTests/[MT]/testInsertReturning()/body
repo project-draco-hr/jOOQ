@@ -48,6 +48,7 @@
   assertNull(returned.getValue(TTriggers_COUNTER()));
 switch (getDialect()) {
 case ASE:
+case CUBRID:
 case DERBY:
 case H2:
 case INGRES:
