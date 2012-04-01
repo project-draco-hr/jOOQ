@@ -1,5 +1,0 @@
-{
-  super(org.jooq.SQLDialect.MYSQL,"p_author_exists",org.jooq.test.mysql.generatedclasses.Test.TEST);
-  addInParameter(AUTHOR_NAME);
-  addOutParameter(RESULT);
-}

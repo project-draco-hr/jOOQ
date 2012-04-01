@@ -1,3 +1,0 @@
-{
-  super("x_unused",org.jooq.test.mysql.generatedclasses.Test.TEST);
-}

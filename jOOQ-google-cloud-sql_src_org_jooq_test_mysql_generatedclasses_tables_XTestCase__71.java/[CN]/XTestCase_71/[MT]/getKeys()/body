@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.mysql.generatedclasses.tables.records.XTestCase_71Record>>asList(org.jooq.test.mysql.generatedclasses.Keys.KEY_x_test_case_71_PRIMARY);
-}

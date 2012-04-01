@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.mysql.generatedclasses.tables.records.TBookStoreRecord>>asList(org.jooq.test.mysql.generatedclasses.Keys.KEY_t_book_store_uk_t_book_store_name,org.jooq.test.mysql.generatedclasses.Keys.KEY_t_book_store_uk_t_book_store_id);
-}

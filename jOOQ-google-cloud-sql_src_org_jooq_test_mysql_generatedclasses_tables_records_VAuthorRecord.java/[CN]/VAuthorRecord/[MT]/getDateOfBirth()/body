@@ -1,3 +1,0 @@
-{
-  return getValue(org.jooq.test.mysql.generatedclasses.tables.VAuthor.DATE_OF_BIRTH);
-}

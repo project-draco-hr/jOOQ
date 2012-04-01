@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.mysql.generatedclasses.tables.records.T_639NumbersTableRecord>>asList(org.jooq.test.mysql.generatedclasses.Keys.KEY_t_639_numbers_table_PRIMARY);
-}

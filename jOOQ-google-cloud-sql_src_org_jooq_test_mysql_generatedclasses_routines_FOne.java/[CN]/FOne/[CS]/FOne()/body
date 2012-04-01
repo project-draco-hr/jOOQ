@@ -1,4 +1,0 @@
-{
-  super(org.jooq.SQLDialect.MYSQL,"f_one",org.jooq.test.mysql.generatedclasses.Test.TEST,org.jooq.impl.SQLDataType.INTEGER);
-  setReturnParameter(RETURN_VALUE);
-}
