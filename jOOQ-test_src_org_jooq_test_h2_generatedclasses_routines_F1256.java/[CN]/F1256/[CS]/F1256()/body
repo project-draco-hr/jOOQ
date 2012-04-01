@@ -1,0 +1,5 @@
+{
+  super("F1256",org.jooq.test.h2.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.VARCHAR);
+  setReturnParameter(RETURN_VALUE);
+  addInParameter(P1);
+}
