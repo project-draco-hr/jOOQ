@@ -1,2 +1,2 @@
-Field<T> field
+Field<?> field
 String intervalType

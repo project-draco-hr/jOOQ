@@ -38,21 +38,43 @@ case ASE:
         return result;
       }
     }
+case DB2:
+case HSQLDB:
+{
+    if (rhs.get(0).getType() == YearToMonth.class) {
+      YearToMonth interval=((Param<YearToMonth>)rhs.get(0)).getValue();
+      if (operator == ADD) {
+        return lhs.add(new IntervalLiteral(val(interval.intValue()),"month"));
+      }
+ else {
+        return lhs.sub(new IntervalLiteral(val(interval.intValue()),"month"));
+      }
+    }
+ else {
+      DayToSecond interval=((Param<DayToSecond>)rhs.get(0)).getValue();
+      if (operator == ADD) {
+        return (Field)lhs.cast(Timestamp.class).add(new IntervalLiteral(val(interval.getTotalMicro()),"microseconds"));
+      }
+ else {
+        return (Field)lhs.cast(Timestamp.class).sub(new IntervalLiteral(val(interval.getTotalMicro()),"microseconds"));
+      }
+    }
+  }
 case CUBRID:
 case MYSQL:
 {
-    org.jooq.types.Interval<?> interval=((Param<org.jooq.types.Interval<?>>)rhs.get(0)).getValue();
-    if (operator == SUBTRACT) {
-      interval=interval.neg();
-    }
-    if (rhs.get(0).getType() == YearToMonth.class) {
-      return function("date_add",getDataType(),lhs,new IntervalLiteral(val(interval),"year_month"));
-    }
- else {
-      String intervalType=(dialect == MYSQL) ? "day_microsecond" : "day_millisecond";
-      return function("date_add",getDataType(),lhs,new IntervalLiteral(val(interval),intervalType));
-    }
+  org.jooq.types.Interval<?> interval=((Param<org.jooq.types.Interval<?>>)rhs.get(0)).getValue();
+  if (operator == SUBTRACT) {
+    interval=interval.neg();
   }
+  if (rhs.get(0).getType() == YearToMonth.class) {
+    return function("date_add",getDataType(),lhs,new IntervalLiteral(val(interval),"year_month"));
+  }
+ else {
+    String intervalType=(dialect == MYSQL) ? "day_microsecond" : "day_millisecond";
+    return function("date_add",getDataType(),lhs,new IntervalLiteral(val(interval),intervalType));
+  }
+}
 default :
 return new DefaultExpression();
 }
