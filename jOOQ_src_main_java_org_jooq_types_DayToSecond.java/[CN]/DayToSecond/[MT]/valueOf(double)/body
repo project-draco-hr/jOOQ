@@ -1,0 +1,17 @@
+{
+  double abs=Math.abs(days);
+  int d=(int)abs;
+  abs=(abs - d) * 24.0;
+  int h=(int)abs;
+  abs=(abs - h) * 60.0;
+  int m=(int)abs;
+  abs=(abs - m) * 60.0;
+  int s=(int)abs;
+  abs=(abs - s) * 1000000000.0;
+  int n=(int)abs;
+  DayToSecond result=new DayToSecond(d,h,m,s,n);
+  if (days < 0) {
+    result=result.neg();
+  }
+  return result;
+}

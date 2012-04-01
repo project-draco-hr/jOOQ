@@ -1,0 +1,26 @@
+{
+switch (configuration.getDialect()) {
+case ASE:
+    if (operator == ADD) {
+      return function("dateadd",getDataType(),literal("day"),rhsAsNumber(),lhs);
+    }
+ else {
+      return function("dateadd",getDataType(),literal("day"),rhsAsNumber().neg(),lhs);
+    }
+case CUBRID:
+case MYSQL:
+{
+    if (operator == ADD) {
+      return function("date_add",getDataType(),lhs,new IntervalLiteral(rhsAsNumber(),"day"));
+    }
+ else {
+      return function("date_add",getDataType(),lhs,new IntervalLiteral(rhsAsNumber().neg(),"day"));
+    }
+  }
+case ORACLE:
+case SYBASE:
+case SQLSERVER:
+default :
+return new DefaultExpression();
+}
+}

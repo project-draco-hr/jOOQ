@@ -1,0 +1,59 @@
+{
+  SQLDialect dialect=configuration.getDialect();
+switch (dialect) {
+case ASE:
+{
+      if (rhs.get(0).getType() == YearToMonth.class) {
+        YearToMonth interval=((Param<YearToMonth>)rhs.get(0)).getValue();
+        if (operator == ADD) {
+          return function("dateadd",getDataType(),literal("mm"),val(interval.intValue()),lhs);
+        }
+ else {
+          return function("dateadd",getDataType(),literal("mm"),val(-interval.intValue()),lhs);
+        }
+      }
+ else {
+        DayToSecond interval=((Param<DayToSecond>)rhs.get(0)).getValue();
+        Field<T> result=lhs;
+        if (operator == ADD) {
+          if (interval.getNano() != 0) {
+            int micro=interval.getNano() / 1000;
+            result=function("dateadd",getDataType(),literal("us"),val(micro),result);
+            result=function("dateadd",getDataType(),literal("ss"),val((long)interval.getTotalSeconds()),result);
+          }
+ else {
+            result=function("dateadd",getDataType(),literal("ss"),val((long)interval.getTotalSeconds()),result);
+          }
+        }
+ else {
+          if (interval.getNano() != 0) {
+            int micro=interval.getNano() / 1000;
+            result=function("dateadd",getDataType(),literal("us"),val(-micro),result);
+            result=function("dateadd",getDataType(),literal("ss"),val(-(long)interval.getTotalSeconds()),result);
+          }
+ else {
+            result=function("dateadd",getDataType(),literal("ss"),val(-(long)interval.getTotalSeconds()),result);
+          }
+        }
+        return result;
+      }
+    }
+case CUBRID:
+case MYSQL:
+{
+    org.jooq.types.Interval<?> interval=((Param<org.jooq.types.Interval<?>>)rhs.get(0)).getValue();
+    if (operator == SUBTRACT) {
+      interval=interval.neg();
+    }
+    if (rhs.get(0).getType() == YearToMonth.class) {
+      return function("date_add",getDataType(),lhs,new IntervalLiteral(val(interval),"year_month"));
+    }
+ else {
+      String intervalType=(dialect == MYSQL) ? "day_microsecond" : "day_millisecond";
+      return function("date_add",getDataType(),lhs,new IntervalLiteral(val(interval),intervalType));
+    }
+  }
+default :
+return new DefaultExpression();
+}
+}

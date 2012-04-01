@@ -1,0 +1,21 @@
+{
+  if (expected.doubleValue() > 1 / 24.0) {
+    assertEquals(expected.doubleValue(),interval.doubleValue());
+    assertEquals(expected.floatValue(),interval.floatValue());
+  }
+  assertEquals(expected.byteValue(),interval.byteValue());
+  assertEquals(expected.shortValue(),interval.shortValue());
+  assertEquals(expected.intValue(),interval.intValue());
+  assertEquals(expected.longValue(),interval.longValue());
+  if (interval instanceof YearToMonth) {
+    YearToMonth y=YearToMonth.valueOf(interval.toString());
+    assertEquals(interval,y);
+  }
+ else {
+    DayToSecond m=DayToSecond.valueOf(interval.toString());
+    assertEquals(interval,m);
+    assertEquals(m.getDays(),(int)m.getTotalDays());
+    assertEquals(m.getDays() * 24 + m.getHours(),(int)m.getTotalHours());
+    assertEquals(m.getDays() * 24 * 60 + m.getHours() * 60 + m.getMinutes(),(int)m.getTotalMinutes());
+  }
+}

@@ -12,6 +12,6 @@
   if (seconds < 10)   sb.append("0");
   sb.append(seconds);
   sb.append(".");
-  sb.append(nano);
+  sb.append(StringUtils.leftPad("" + nano,9,"0"));
   return sb.toString();
 }

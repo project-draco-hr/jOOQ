@@ -1,0 +1,5 @@
+{
+  super("timestampdiff",SQLDataType.INTERVALDAYTOSECOND,timestamp1,timestamp2);
+  this.timestamp1=timestamp1;
+  this.timestamp2=timestamp2;
+}

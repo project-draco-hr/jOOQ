@@ -1,0 +1,5 @@
+{
+  super("interval",field.getDataType());
+  this.field=field;
+  this.intervalType=intervalType;
+}

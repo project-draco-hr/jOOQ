@@ -1,0 +1,9 @@
+{
+  if (context.getDialect() == CUBRID) {
+    boolean inline=context.inline();
+    context.keyword("interval ").inline(true).sql(field.getDataType().isNumeric() ? "" : "'").sql(field).sql(field.getDataType().isNumeric() ? "" : "'").inline(inline).sql(" ").keyword(intervalType);
+  }
+ else {
+    context.keyword("interval ").sql(field).sql(" ").keyword(intervalType);
+  }
+}

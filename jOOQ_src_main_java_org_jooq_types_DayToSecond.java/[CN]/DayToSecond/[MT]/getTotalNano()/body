@@ -1,0 +1,3 @@
+{
+  return negativeFactor() * (nano + 1000000000.0 * seconds + 1000000000.0 * 60.0 * minutes + 1000000000.0 * 3600.0 * hours + 1000000000.0 * 3600.0 * 24.0* days);
+}

@@ -1,0 +1,27 @@
+{
+  if (!context.inline()) {
+    if (!(getValue() instanceof EnumType) && !(getValue() instanceof MasterDataType)) {
+switch (context.getDialect()) {
+case DB2:
+case DERBY:
+case H2:
+case HSQLDB:
+case INGRES:
+case CUBRID:
+case POSTGRES:
+case SYBASE:
+{
+          return true;
+        }
+    }
+  }
+}
+ else if (getDataType().isInterval()) {
+switch (context.getDialect()) {
+case ORACLE:
+case POSTGRES:
+    return true;
+}
+}
+return false;
+}

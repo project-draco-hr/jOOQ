@@ -7,10 +7,10 @@ case ALWAYS:
 toSQLCast(context);
 return;
 case SOME:
-if (getDataType().isInterval()) {
+if (context.cast()) {
 toSQLCast(context);
 }
- else if (context.cast()) {
+ else if (shouldCast(context)) {
 toSQLCast(context);
 }
  else {
@@ -18,25 +18,7 @@ toSQL(context,getValue(),getType());
 }
 return;
 }
-if (!context.inline()) {
-if (!(getValue() instanceof EnumType) && !(getValue() instanceof MasterDataType)) {
-switch (context.getDialect()) {
-case DB2:
-case DERBY:
-case H2:
-case HSQLDB:
-case INGRES:
-case CUBRID:
-case POSTGRES:
-case SYBASE:
-{
-toSQLCast(context);
-return;
-}
-}
-}
-}
-if (getDataType().isInterval()) {
+if (shouldCast(context)) {
 toSQLCast(context);
 }
  else {

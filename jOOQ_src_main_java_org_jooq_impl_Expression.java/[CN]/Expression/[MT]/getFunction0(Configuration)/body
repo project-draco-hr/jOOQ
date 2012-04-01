@@ -30,6 +30,9 @@
  else   if (BIT_XNOR == operator) {
     return (Field<T>)bitNot(bitXor(lhsAsNumber(),rhsAsNumber()));
   }
+ else   if (asList(ADD,SUBTRACT).contains(operator) && lhs.getDataType().isDateTime() && !rhs.get(0).getDataType().isDateTime()) {
+    return new DateExpression();
+  }
  else {
     return new DefaultExpression();
   }

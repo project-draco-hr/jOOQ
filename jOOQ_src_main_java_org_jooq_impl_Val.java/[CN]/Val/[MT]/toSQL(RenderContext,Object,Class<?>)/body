@@ -38,6 +38,9 @@
         context.sql("X'").sql(Util.convertBytesToHex(binary)).sql("'");
       }
     }
+ else     if (Interval.class.isAssignableFrom(type)) {
+      context.sql("'").sql(val.toString()).sql("'");
+    }
  else     if (Number.class.isAssignableFrom(type)) {
       context.sql(val.toString());
     }

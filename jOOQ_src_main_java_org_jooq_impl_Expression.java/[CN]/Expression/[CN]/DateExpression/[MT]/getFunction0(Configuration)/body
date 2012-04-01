@@ -1,0 +1,8 @@
+{
+  if (rhs.get(0).getDataType().isInterval()) {
+    return getIntervalExpression(configuration);
+  }
+ else {
+    return getNumberExpression(configuration);
+  }
+}

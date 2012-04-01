@@ -1,0 +1,15 @@
+{
+switch (configuration.getDialect()) {
+case ASE:
+    Field<Double> days=function("datediff",SQLDataType.DOUBLE,literal("day"),timestamp2,timestamp1);
+  Field<Double> milli=function("datediff",SQLDataType.DOUBLE,literal("ms"),timestamp2.add(days),timestamp1);
+return (Field)days.add(milli.div(new DayToSecond(1).getTotalMilli()));
+case CUBRID:
+return (Field)timestamp1.sub(timestamp2).div(new DayToSecond(1).getTotalMilli());
+case MYSQL:
+return function("timestampdiff",getDataType(),literal("microsecond"),timestamp2,timestamp1).div(new DayToSecond(1).getTotalMicro());
+case ORACLE:
+return timestamp1.sub(timestamp2).cast(DayToSecond.class);
+}
+return null;
+}
