@@ -9,6 +9,8 @@ case HSQLDB:
   context.literal("INFORMATION_SCHEMA").sql(".").literal("SYSTEM_USERS");
 break;
 case CUBRID:
+context.literal("db_root");
+break;
 case INGRES:
 context.keyword("(select 1 as dual) as dual");
 break;

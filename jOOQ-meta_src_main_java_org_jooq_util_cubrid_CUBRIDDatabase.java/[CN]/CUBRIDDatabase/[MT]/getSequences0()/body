@@ -1,7 +1,7 @@
 {
   List<SequenceDefinition> result=new ArrayList<SequenceDefinition>();
-  for (  Record record : create().select(DB_SERIAL.NAME,DB_SERIAL.MAX_VAL).from(DB_SERIAL).fetch()) {
-    SchemaDefinition schema=getSchema(getInputSchemata().get(0));
+  for (  Record record : create().select(DB_SERIAL.NAME,DB_SERIAL.MAX_VAL,field("owner.name",String.class).as("owner")).from(DB_SERIAL).where(field("owner.name",String.class).in(getInputSchemata())).fetch()) {
+    SchemaDefinition schema=getSchema(record.getValue("owner",String.class));
     BigInteger value=record.getValue(DB_SERIAL.MAX_VAL,BigInteger.class,BigInteger.valueOf(Long.MAX_VALUE));
     DataTypeDefinition type=getDataTypeForMAX_VAL(schema,value);
     result.add(new DefaultSequenceDefinition(schema,record.getValue(DB_SERIAL.NAME),type));
