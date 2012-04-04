@@ -60,20 +60,54 @@ case HSQLDB:
       }
     }
   }
+case DERBY:
+{
+  if (rhs.get(0).getType() == YearToMonth.class) {
+    YearToMonth interval=((Param<YearToMonth>)rhs.get(0)).getValue();
+    if (operator == ADD) {
+      return new FnPrefixFunction<T>("timestampadd",getDataType(),field("SQL_TSI_MONTH"),val(interval.intValue()),lhs);
+    }
+ else {
+      return new FnPrefixFunction<T>("timestampadd",getDataType(),field("SQL_TSI_MONTH"),val(-interval.intValue()),lhs);
+    }
+  }
+ else {
+    DayToSecond interval=((Param<DayToSecond>)rhs.get(0)).getValue();
+    if (operator == ADD) {
+      return new FnPrefixFunction<T>("timestampadd",getDataType(),field("SQL_TSI_SECOND"),val((long)interval.getTotalSeconds()),lhs);
+    }
+ else {
+      return new FnPrefixFunction<T>("timestampadd",getDataType(),field("SQL_TSI_SECOND"),val((long)-interval.getTotalSeconds()),lhs);
+    }
+  }
+}
 case CUBRID:
 case MYSQL:
 {
-  org.jooq.types.Interval<?> interval=((Param<org.jooq.types.Interval<?>>)rhs.get(0)).getValue();
-  if (operator == SUBTRACT) {
-    interval=interval.neg();
-  }
-  if (rhs.get(0).getType() == YearToMonth.class) {
-    return function("date_add",getDataType(),lhs,new IntervalLiteral(val(interval),"year_month"));
-  }
+org.jooq.types.Interval<?> interval=((Param<org.jooq.types.Interval<?>>)rhs.get(0)).getValue();
+if (operator == SUBTRACT) {
+  interval=interval.neg();
+}
+if (rhs.get(0).getType() == YearToMonth.class) {
+  return function("date_add",getDataType(),lhs,new IntervalLiteral(val(interval),"year_month"));
+}
  else {
-    String intervalType=(dialect == MYSQL) ? "day_microsecond" : "day_millisecond";
-    return function("date_add",getDataType(),lhs,new IntervalLiteral(val(interval),intervalType));
-  }
+  String intervalType=(dialect == MYSQL) ? "day_microsecond" : "day_millisecond";
+  return function("date_add",getDataType(),lhs,new IntervalLiteral(val(interval),intervalType));
+}
+}
+case H2:
+{
+org.jooq.types.Interval<?> interval=((Param<org.jooq.types.Interval<?>>)rhs.get(0)).getValue();
+if (operator == SUBTRACT) {
+interval=interval.neg();
+}
+if (rhs.get(0).getType() == YearToMonth.class) {
+return function("dateadd",getDataType(),literal("'month'"),val(interval.intValue()),lhs);
+}
+ else {
+return function("dateadd",getDataType(),literal("'ms'"),val((long)((DayToSecond)interval).getTotalMilli()),lhs);
+}
 }
 default :
 return new DefaultExpression();

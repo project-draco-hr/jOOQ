@@ -19,16 +19,26 @@ case HSQLDB:
       return lhs.sub(new IntervalLiteral(rhsAsNumber(),"day"));
     }
   }
+case DERBY:
+{
+  if (operator == ADD) {
+    return new FnPrefixFunction<T>("timestampadd",getDataType(),field("SQL_TSI_DAY"),rhsAsNumber(),lhs);
+  }
+ else {
+    return new FnPrefixFunction<T>("timestampadd",getDataType(),field("SQL_TSI_DAY"),rhsAsNumber().neg(),lhs);
+  }
+}
 case CUBRID:
 case MYSQL:
 {
-  if (operator == ADD) {
-    return function("date_add",getDataType(),lhs,new IntervalLiteral(rhsAsNumber(),"day"));
-  }
- else {
-    return function("date_add",getDataType(),lhs,new IntervalLiteral(rhsAsNumber().neg(),"day"));
-  }
+if (operator == ADD) {
+  return function("date_add",getDataType(),lhs,new IntervalLiteral(rhsAsNumber(),"day"));
 }
+ else {
+  return function("date_add",getDataType(),lhs,new IntervalLiteral(rhsAsNumber().neg(),"day"));
+}
+}
+case H2:
 case ORACLE:
 case SYBASE:
 case SQLSERVER:
