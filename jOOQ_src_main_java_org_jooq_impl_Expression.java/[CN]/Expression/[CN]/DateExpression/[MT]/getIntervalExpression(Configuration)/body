@@ -39,7 +39,6 @@ case ASE:
       }
     }
 case DB2:
-case HSQLDB:
 {
     if (rhs.get(0).getType() == YearToMonth.class) {
       YearToMonth interval=((Param<YearToMonth>)rhs.get(0)).getValue();
@@ -61,6 +60,7 @@ case HSQLDB:
     }
   }
 case DERBY:
+case HSQLDB:
 {
   if (rhs.get(0).getType() == YearToMonth.class) {
     YearToMonth interval=((Param<YearToMonth>)rhs.get(0)).getValue();
@@ -109,6 +109,7 @@ return function("dateadd",getDataType(),literal("'month'"),val(interval.intValue
 return function("dateadd",getDataType(),literal("'ms'"),val((long)((DayToSecond)interval).getTotalMilli()),lhs);
 }
 }
+case ORACLE:
 default :
 return new DefaultExpression();
 }

@@ -16,7 +16,7 @@ case SYBASE:
     }
   }
 }
- else if (getDataType().isInterval()) {
+if (getDataType().isInterval()) {
 switch (context.getDialect()) {
 case ORACLE:
 case POSTGRES:

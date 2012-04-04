@@ -1,3 +1,0 @@
-{
-  return nullSafe(time1).sub(nullSafe(time2)).cast(DayToSecond.class);
-}

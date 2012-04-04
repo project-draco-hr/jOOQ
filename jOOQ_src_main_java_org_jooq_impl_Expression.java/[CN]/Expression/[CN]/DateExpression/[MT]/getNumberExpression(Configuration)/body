@@ -38,6 +38,24 @@ if (operator == ADD) {
   return function("date_add",getDataType(),lhs,new IntervalLiteral(rhsAsNumber().neg(),"day"));
 }
 }
+case INGRES:
+{
+if (operator == ADD) {
+return lhs.add(field("date('" + rhsAsNumber() + " days')",Object.class));
+}
+ else {
+return lhs.sub(field("date('" + rhsAsNumber() + " days')",Object.class));
+}
+}
+case POSTGRES:
+{
+if (getType() == Date.class) {
+return new DefaultExpression();
+}
+ else {
+return new Expression(operator,lhs.cast(Date.class),rhsAsNumber());
+}
+}
 case H2:
 case ORACLE:
 case SYBASE:

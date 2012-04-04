@@ -9,9 +9,11 @@ return function("days",getDataType(),date1).sub(function("days",getDataType(),da
 case DERBY:
 return new FnPrefixFunction<Integer>("timestampdiff",getDataType(),field("SQL_TSI_DAY"),date2,date1);
 case H2:
+case HSQLDB:
 return function("datediff",getDataType(),literal("'day'"),date2,date1);
 case CUBRID:
 case ORACLE:
+case POSTGRES:
 return date1.sub(date2).cast(Integer.class);
 }
 return null;
