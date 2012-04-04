@@ -2,6 +2,8 @@
   SQLDialect dialect=configuration.getDialect();
 switch (dialect) {
 case ASE:
+case SYBASE:
+case SQLSERVER:
 {
       if (rhs.get(0).getType() == YearToMonth.class) {
         YearToMonth interval=((Param<YearToMonth>)rhs.get(0)).getValue();
@@ -13,8 +15,8 @@ case ASE:
         }
       }
  else {
+        Field<?> result=lhs.cast(Timestamp.class);
         DayToSecond interval=((Param<DayToSecond>)rhs.get(0)).getValue();
-        Field<T> result=lhs;
         if (operator == ADD) {
           if (interval.getNano() != 0) {
             int micro=interval.getNano() / 1000;
@@ -35,7 +37,7 @@ case ASE:
             result=function("dateadd",getDataType(),literal("ss"),val(-(long)interval.getTotalSeconds()),result);
           }
         }
-        return result;
+        return (Field)result;
       }
     }
 case DB2:

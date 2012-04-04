@@ -1,6 +1,8 @@
 {
 switch (configuration.getDialect()) {
 case ASE:
+case SQLSERVER:
+case SYBASE:
 {
       if (operator == ADD) {
         return function("dateadd",getDataType(),literal("day"),rhsAsNumber(),lhs);
@@ -56,10 +58,15 @@ return new DefaultExpression();
 return new Expression(operator,lhs.cast(Date.class),rhsAsNumber());
 }
 }
+case SQLITE:
+if (operator == ADD) {
+return function("datetime",getDataType(),lhs,literal("+" + rhsAsNumber() + " day"));
+}
+ else {
+return function("datetime",getDataType(),lhs,literal("-" + rhsAsNumber() + " day"));
+}
 case H2:
 case ORACLE:
-case SYBASE:
-case SQLSERVER:
 default :
 return new DefaultExpression();
 }

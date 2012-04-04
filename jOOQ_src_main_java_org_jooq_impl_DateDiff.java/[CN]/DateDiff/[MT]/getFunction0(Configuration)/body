@@ -1,6 +1,8 @@
 {
 switch (configuration.getDialect()) {
 case ASE:
+case SQLSERVER:
+case SYBASE:
     return function("datediff",getDataType(),literal("day"),date2,date1);
 case MYSQL:
   return function("datediff",getDataType(),date1,date2);
