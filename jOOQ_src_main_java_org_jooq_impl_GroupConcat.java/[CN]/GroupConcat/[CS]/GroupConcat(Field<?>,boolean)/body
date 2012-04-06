@@ -1,0 +1,6 @@
+{
+  super("group_concat",SQLDataType.VARCHAR);
+  this.field=field;
+  this.distinct=distinct;
+  this.orderBy=new SortFieldList();
+}

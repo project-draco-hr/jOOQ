@@ -1,4 +1,4 @@
 {
-  Field<String> literal=literal("'" + delimiter.replace("'","''") + "'");
+  Field<String> literal=literal("'" + separator.replace("'","''") + "'");
   return new Function<String>(Term.LIST_AGG,SQLDataType.VARCHAR,nullSafe(field),literal);
 }
