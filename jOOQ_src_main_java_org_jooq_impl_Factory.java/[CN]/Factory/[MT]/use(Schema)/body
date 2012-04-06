@@ -22,6 +22,7 @@ result=query("set search_path = " + schemaName).execute();
 break;
 case SQLSERVER:
 break;
+case CUBRID:
 case SQLITE:
 break;
 }
