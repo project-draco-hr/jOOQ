@@ -1,6 +1,0 @@
-{
-  if (distinct) {
-    context.keyword("distinct ");
-  }
-  super.toSQLField(context,field);
-}

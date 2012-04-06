@@ -1,3 +1,3 @@
 {
-  return new AggregateFunctionImpl<BigDecimal>("median",SQLDataType.NUMERIC,nullSafe(field));
+  return new Function<BigDecimal>("median",SQLDataType.NUMERIC,nullSafe(field));
 }

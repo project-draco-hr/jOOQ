@@ -1,8 +1,0 @@
-{
-  if (getTerm() != null) {
-    return new WindowFunction<T>(getTerm(),getDataType(),withinGroupOrderBy,getArguments());
-  }
- else {
-    return new WindowFunction<T>(getName(),getDataType(),withinGroupOrderBy,getArguments());
-  }
-}

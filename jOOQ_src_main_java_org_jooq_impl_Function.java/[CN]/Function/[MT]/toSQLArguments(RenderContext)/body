@@ -1,0 +1,26 @@
+{
+  context.sql("(");
+  if (distinct) {
+    context.keyword("distinct ");
+  }
+  if (!arguments.isEmpty()) {
+    context.sql(arguments);
+  }
+  if (ignoreNulls) {
+    if (context.getDialect() == SQLDialect.DB2) {
+      context.sql(", 'IGNORE NULLS'");
+    }
+ else {
+      context.keyword(" ignore nulls");
+    }
+  }
+ else   if (respectNulls) {
+    if (context.getDialect() == SQLDialect.DB2) {
+      context.sql(", 'RESPECT NULLS'");
+    }
+ else {
+      context.keyword(" respect nulls");
+    }
+  }
+  context.sql(")");
+}

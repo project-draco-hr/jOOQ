@@ -2,7 +2,7 @@
 switch (configuration.getDialect()) {
 case ORACLE:
 {
-      return new Function<Z>("decode",getDataType(),getArguments());
+      return function("decode",getDataType(),getArguments());
     }
 default :
 {

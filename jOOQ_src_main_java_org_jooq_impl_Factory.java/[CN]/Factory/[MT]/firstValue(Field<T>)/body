@@ -1,3 +1,3 @@
 {
-  return new WindowFunction<T>("first_value",nullSafeDataType(field),nullSafe(field));
+  return new Function<T>("first_value",nullSafeDataType(field),nullSafe(field));
 }

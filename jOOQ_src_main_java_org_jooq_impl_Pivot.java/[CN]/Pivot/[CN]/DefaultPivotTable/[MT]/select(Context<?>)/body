@@ -4,8 +4,8 @@
   FieldList aggregatedFields=new FieldList();
   Table<?> pivot=table.as("pivot_outer");
   for (  Field<?> field : aggregateFunctions) {
-    if (field instanceof AggregateFunctionImpl) {
-      for (      QueryPart argument : ((AggregateFunctionImpl<?>)field).getArguments()) {
+    if (field instanceof Function) {
+      for (      QueryPart argument : ((Function<?>)field).getArguments()) {
         if (argument instanceof Field) {
           aggregatedFields.add((Field<?>)argument);
         }

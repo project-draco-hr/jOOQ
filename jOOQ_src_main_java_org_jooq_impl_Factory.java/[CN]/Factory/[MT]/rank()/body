@@ -1,3 +1,3 @@
 {
-  return new WindowFunction<Integer>("rank",SQLDataType.INTEGER);
+  return new Function<Integer>("rank",SQLDataType.INTEGER);
 }

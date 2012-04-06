@@ -1,3 +1,0 @@
-{
-  context.bind((QueryPart)arguments).bind((QueryPart)partitionBy).bind((QueryPart)orderBy);
-}

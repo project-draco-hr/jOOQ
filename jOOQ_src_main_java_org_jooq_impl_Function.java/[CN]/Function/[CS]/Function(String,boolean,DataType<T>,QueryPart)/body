@@ -1,0 +1,9 @@
+{
+  super(name,type);
+  this.term=null;
+  this.distinct=distinct;
+  this.arguments=new QueryPartList<QueryPart>(arguments);
+  this.withinGroupOrderBy=new SortFieldList();
+  this.partitionBy=new FieldList();
+  this.orderBy=new SortFieldList();
+}

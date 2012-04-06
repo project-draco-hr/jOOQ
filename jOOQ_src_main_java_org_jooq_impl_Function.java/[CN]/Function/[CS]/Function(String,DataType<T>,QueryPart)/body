@@ -1,5 +1,3 @@
 {
-  super(name,type);
-  this.arguments=arguments;
-  this.term=null;
+  this(name,false,type,arguments);
 }

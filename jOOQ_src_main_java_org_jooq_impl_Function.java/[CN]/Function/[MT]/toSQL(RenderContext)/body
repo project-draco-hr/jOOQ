@@ -1,12 +1,6 @@
 {
   context.sql(getFNName(context.getDialect()));
-  context.sql("(");
-  String separator="";
-  for (  QueryPart field : arguments) {
-    context.sql(separator);
-    toSQLField(context,field);
-    separator=", ";
-  }
-  context.sql(")");
-  toSQLSuffix(context);
+  toSQLArguments(context);
+  toSQLWithinGroupClause(context);
+  toSQLOverClause(context);
 }
