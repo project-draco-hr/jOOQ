@@ -10,4 +10,5 @@
   }
   context.sql(getArgumentListDelimiter(context,")"));
   context.sql(getFNSuffix());
+  toSQLSuffix(context);
 }

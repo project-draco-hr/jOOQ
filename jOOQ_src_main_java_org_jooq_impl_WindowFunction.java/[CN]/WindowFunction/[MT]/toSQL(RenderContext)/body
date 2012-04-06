@@ -20,20 +20,19 @@
       context.keyword(" respect nulls");
     }
   }
-  context.keyword(") over (").formatIndentLockStart();
-  boolean newLine=false;
+  context.sql(")");
+  if (!withinGroupOrderBy.isEmpty()) {
+    context.keyword(" within group (order by ").sql(withinGroupOrderBy).sql(")");
+  }
+  context.keyword(" over (");
   if (!partitionBy.isEmpty()) {
     if (partitionByOne && context.getDialect() == SQLDialect.SYBASE) {
     }
  else {
       context.keyword("partition by ").sql(partitionBy);
-      newLine=true;
     }
   }
   if (!orderBy.isEmpty()) {
-    if (newLine) {
-      context.formatSeparator();
-    }
     context.keyword("order by ");
 switch (context.getDialect()) {
 case SQLSERVER:
@@ -51,22 +50,18 @@ default :
       break;
     }
 }
-newLine=true;
 }
 if (rowsStart != null) {
-if (newLine) {
-  context.formatSeparator();
-}
 context.keyword("rows ");
 if (rowsEnd != null) {
   context.keyword("between ");
   toSQLRows(context,rowsStart);
-  context.formatSeparator().keyword("and ");
+  context.keyword("and ");
   toSQLRows(context,rowsEnd);
 }
  else {
   toSQLRows(context,rowsStart);
 }
 }
-context.sql(")").formatIndentLockEnd();
+context.sql(")");
 }

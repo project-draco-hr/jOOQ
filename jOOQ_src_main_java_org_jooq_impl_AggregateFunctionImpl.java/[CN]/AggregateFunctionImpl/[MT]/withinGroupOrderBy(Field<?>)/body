@@ -1,0 +1,4 @@
+{
+  withinGroupOrderBy.addAll(fields);
+  return this;
+}

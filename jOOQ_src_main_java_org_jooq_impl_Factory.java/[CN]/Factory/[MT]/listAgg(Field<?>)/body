@@ -1,0 +1,3 @@
+{
+  return new AggregateFunctionImpl<String>(Term.LIST_AGG,SQLDataType.VARCHAR,nullSafe(field));
+}

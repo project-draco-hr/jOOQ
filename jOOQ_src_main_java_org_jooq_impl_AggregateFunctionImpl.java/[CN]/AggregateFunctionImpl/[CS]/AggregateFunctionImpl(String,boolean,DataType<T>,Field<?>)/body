@@ -1,4 +1,5 @@
 {
   super(name,type,arguments);
   this.distinct=distinct;
+  this.withinGroupOrderBy=new SortFieldList();
 }
