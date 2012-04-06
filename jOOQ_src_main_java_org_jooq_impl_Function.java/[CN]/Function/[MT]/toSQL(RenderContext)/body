@@ -2,8 +2,8 @@
   if (term == LIST_AGG && asList(CUBRID,H2,HSQLDB,MYSQL).contains(context.getDialect())) {
     toSQLGroupConcat(context);
   }
- else   if (term == LIST_AGG && asList(SYBASE).contains(context.getDialect())) {
-    toSQLList(context);
+ else   if (term == LIST_AGG && asList(POSTGRES,SYBASE).contains(context.getDialect())) {
+    toSQLStringAgg(context);
   }
  else   if (term == LIST_AGG && asList(DB2).contains(context.getDialect())) {
     toSQLXMLAGG(context);

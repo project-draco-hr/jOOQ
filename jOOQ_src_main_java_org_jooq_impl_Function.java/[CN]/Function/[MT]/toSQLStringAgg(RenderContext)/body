@@ -4,9 +4,17 @@
   if (distinct) {
     context.keyword("distinct ");
   }
-  context.sql(arguments);
+  context.sql(((Field<?>)arguments.get(0)).cast(String.class));
+  if (arguments.size() > 1) {
+    context.sql(", ");
+    context.sql(arguments.get(1));
+  }
+ else {
+    context.sql(", ''");
+  }
   if (!withinGroupOrderBy.isEmpty()) {
     context.keyword(" order by ").sql(withinGroupOrderBy);
   }
   context.sql(")");
+  toSQLOverClause(context);
 }

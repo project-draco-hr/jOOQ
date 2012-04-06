@@ -3,7 +3,6 @@ switch (getDialect()) {
 case ASE:
 case DERBY:
 case INGRES:
-case POSTGRES:
 case SQLITE:
 case SQLSERVER:
     log.info("SKIPPING","LISTAGG tests");
@@ -23,6 +22,7 @@ case DB2:
 case H2:
 case HSQLDB:
 case MYSQL:
+case POSTGRES:
 case SYBASE:
 log.info("SKIPPING","LISTAGG window function tests");
 return;
