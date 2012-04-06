@@ -1,9 +1,9 @@
 {
   context.sql(getFNName(context.getDialect()));
-  if (term == LIST_AGG && asList(MYSQL,CUBRID).contains(context.getDialect())) {
+  if (term == LIST_AGG && asList(CUBRID,H2,HSQLDB,MYSQL).contains(context.getDialect())) {
     toSQLGroupConcat(context);
   }
-  if (term == LIST_AGG && asList(SYBASE).contains(context.getDialect())) {
+ else   if (term == LIST_AGG && asList(SYBASE).contains(context.getDialect())) {
     toSQLList(context);
   }
  else {

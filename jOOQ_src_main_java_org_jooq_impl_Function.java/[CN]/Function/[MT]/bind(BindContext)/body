@@ -1,5 +1,5 @@
 {
-  if (term == LIST_AGG && asList(MYSQL,CUBRID).contains(context.getDialect())) {
+  if (term == LIST_AGG && asList(CUBRID,H2,HSQLDB,MYSQL).contains(context.getDialect())) {
     context.bind(arguments.get(0));
     context.bind((QueryPart)withinGroupOrderBy);
     if (arguments.size() > 1) {

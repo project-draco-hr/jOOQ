@@ -3,8 +3,6 @@ switch (getDialect()) {
 case ASE:
 case DB2:
 case DERBY:
-case H2:
-case HSQLDB:
 case INGRES:
 case POSTGRES:
 case SQLITE:
@@ -20,6 +18,8 @@ assertEquals("2, 1",result1.getValue(0,"books"));
 assertEquals("4, 3",result1.getValue(1,"books"));
 switch (getDialect()) {
 case CUBRID:
+case H2:
+case HSQLDB:
 case MYSQL:
 case SYBASE:
 log.info("SKIPPING","LISTAGG window function tests");
