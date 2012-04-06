@@ -13,6 +13,7 @@
   if (generateRelations() && generateNavigationMethods() && element instanceof ColumnDefinition) {
     ColumnDefinition column=(ColumnDefinition)element;
     List<UniqueKeyDefinition> uniqueKeys=column.getUniqueKeys();
+    Set<String> fetchMethodNames=new HashSet<String>();
     for (    UniqueKeyDefinition uniqueKey : uniqueKeys) {
       if (out.printOnlyOnce(uniqueKey)) {
         foreignKeyLoop:         for (        ForeignKeyDefinition foreignKey : uniqueKey.getForeignKeys()) {
@@ -21,18 +22,28 @@
             continue foreignKeyLoop;
           }
           TableDefinition referencing=foreignKey.getKeyTable();
+          StringBuilder fetchMethodName=new StringBuilder();
+          fetchMethodName.append("fetch");
+          fetchMethodName.append(strategy.getJavaClassName(referencing));
+          fetchMethodName.append("List");
+          if (foreignKey.countSimilarReferences() > 1) {
+            fetchMethodName.append("By");
+            fetchMethodName.append(strategy.getJavaClassName(foreignKey.getKeyColumns().get(0)));
+          }
+          if (fetchMethodNames.contains(fetchMethodName.toString())) {
+            log.warn("Duplicate foreign key",foreignKey.getName() + " has the same properties as another foreign key! No code is generated for this key. See trac ticket #1270");
+            continue foreignKeyLoop;
+          }
+ else {
+            fetchMethodNames.add(fetchMethodName.toString());
+          }
           printFieldJavaDoc(out,column);
           out.print("\tpublic ");
           out.print(List.class);
           out.print("<");
           out.print(strategy.getFullJavaClassName(referencing,Mode.RECORD));
-          out.print("> fetch");
-          out.print(strategy.getJavaClassName(referencing));
-          out.print("List");
-          if (foreignKey.countSimilarReferences() > 1) {
-            out.print("By");
-            out.print(strategy.getJavaClassName(foreignKey.getKeyColumns().get(0)));
-          }
+          out.print("> ");
+          out.print(fetchMethodName);
           out.println("() {");
           out.println("\t\treturn create()");
           out.print("\t\t\t.selectFrom(");
