@@ -15,10 +15,10 @@ case DB2:
 case HSQLDB:
 {
     if (operator == ADD) {
-      return lhs.add(new IntervalLiteral(rhsAsNumber(),"day"));
+      return lhs.add(field("{0} day",rhsAsNumber()));
     }
  else {
-      return lhs.sub(new IntervalLiteral(rhsAsNumber(),"day"));
+      return lhs.sub(field("{0} day",rhsAsNumber()));
     }
   }
 case DERBY:
@@ -34,10 +34,10 @@ case CUBRID:
 case MYSQL:
 {
 if (operator == ADD) {
-  return function("date_add",getDataType(),lhs,new IntervalLiteral(rhsAsNumber(),"day"));
+  return field("{date_add}({0}, {interval} {1} {day})",getDataType(),lhs,rhsAsNumber());
 }
  else {
-  return function("date_add",getDataType(),lhs,new IntervalLiteral(rhsAsNumber().neg(),"day"));
+  return field("{date_add}({0}, {interval} {1} {day})",getDataType(),lhs,rhsAsNumber().neg());
 }
 }
 case INGRES:

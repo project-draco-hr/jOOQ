@@ -45,19 +45,19 @@ case DB2:
     if (rhs.get(0).getType() == YearToMonth.class) {
       YearToMonth interval=((Param<YearToMonth>)rhs.get(0)).getValue();
       if (operator == ADD) {
-        return lhs.add(new IntervalLiteral(val(interval.intValue()),"month"));
+        return lhs.add(field("{0} month",val(interval.intValue())));
       }
  else {
-        return lhs.sub(new IntervalLiteral(val(interval.intValue()),"month"));
+        return lhs.sub(field("{0} month",val(interval.intValue())));
       }
     }
  else {
       DayToSecond interval=((Param<DayToSecond>)rhs.get(0)).getValue();
       if (operator == ADD) {
-        return (Field)lhs.cast(Timestamp.class).add(new IntervalLiteral(val(interval.getTotalMicro()),"microseconds"));
+        return (Field)lhs.cast(Timestamp.class).add(field("{0} microseconds",val(interval.getTotalMicro())));
       }
  else {
-        return (Field)lhs.cast(Timestamp.class).sub(new IntervalLiteral(val(interval.getTotalMicro()),"microseconds"));
+        return (Field)lhs.cast(Timestamp.class).sub(field("{0} microseconds",val(interval.getTotalMicro())));
       }
     }
   }
@@ -91,11 +91,15 @@ if (operator == SUBTRACT) {
   interval=interval.neg();
 }
 if (rhs.get(0).getType() == YearToMonth.class) {
-  return function("date_add",getDataType(),lhs,new IntervalLiteral(val(interval),"year_month"));
+  return field("{date_add}({0}, {interval} {1} {year_month})",getDataType(),lhs,val(interval));
 }
  else {
-  String intervalType=(dialect == MYSQL) ? "day_microsecond" : "day_millisecond";
-  return function("date_add",getDataType(),lhs,new IntervalLiteral(val(interval),intervalType));
+  if (dialect == MYSQL) {
+    return field("{date_add}({0}, {interval} {1} {day_microsecond})",getDataType(),lhs,val(interval));
+  }
+ else {
+    return field("{date_add}({0}, {interval} {1} {day_millisecond})",getDataType(),lhs,val(interval));
+  }
 }
 }
 case H2:

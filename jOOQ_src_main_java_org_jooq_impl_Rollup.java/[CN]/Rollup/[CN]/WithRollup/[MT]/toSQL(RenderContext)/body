@@ -1,3 +1,0 @@
-{
-  context.sql(new FieldList(Arrays.asList(getArguments()))).formatSeparator().keyword("with rollup");
-}

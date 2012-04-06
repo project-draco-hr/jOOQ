@@ -1,3 +1,0 @@
-{
-  return getAttachables(Extract.this.getArguments());
-}

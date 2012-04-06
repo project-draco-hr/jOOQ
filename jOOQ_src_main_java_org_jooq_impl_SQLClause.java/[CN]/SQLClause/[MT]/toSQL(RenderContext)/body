@@ -1,0 +1,21 @@
+{
+  String[] sqlParts=StringUtils.split("\\{[\\w\\s]+\\}",sql);
+  int i=0;
+  for (  String sqlPart : sqlParts) {
+    if (sqlPart.matches("\\{\\d+\\}")) {
+      if (i == parts.length) {
+        throw new DataAccessException("The number of placeholders must match the number of query parts : " + sql);
+      }
+      context.sql(parts[i++]);
+    }
+ else     if (sqlPart.matches("\\{[\\w\\s]+\\}")) {
+      context.keyword(sqlPart.substring(1,sqlPart.length() - 1));
+    }
+ else {
+      context.sql(sqlPart);
+    }
+  }
+  if (i != parts.length) {
+    throw new DataAccessException("The number of placeholders must match the number of query parts : " + sql);
+  }
+}

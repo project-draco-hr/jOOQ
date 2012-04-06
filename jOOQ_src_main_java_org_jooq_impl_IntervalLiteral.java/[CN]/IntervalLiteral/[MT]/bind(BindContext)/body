@@ -1,5 +1,0 @@
-{
-  if (context.getDialect() != CUBRID) {
-    context.bind(field);
-  }
-}

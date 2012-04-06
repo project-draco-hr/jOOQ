@@ -1,4 +1,0 @@
-{
-  super("prior",field.getDataType());
-  this.field=field;
-}

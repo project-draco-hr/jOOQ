@@ -1,0 +1,5 @@
+{
+  super(sql,type);
+  this.sql=sql;
+  this.parts=parts;
+}

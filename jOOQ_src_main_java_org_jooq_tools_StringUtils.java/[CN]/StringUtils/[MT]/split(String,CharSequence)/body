@@ -1,0 +1,20 @@
+{
+  int index=0;
+  ArrayList<String> matchList=new ArrayList<String>();
+  Matcher m=Pattern.compile(regex).matcher(input);
+  while (m.find()) {
+    matchList.add(input.subSequence(index,m.start()).toString());
+    matchList.add(input.subSequence(m.start(),m.end()).toString());
+    index=m.end();
+  }
+  if (index == 0)   return new String[]{input.toString()};
+  matchList.add(input.subSequence(index,input.length()).toString());
+  Iterator<String> it=matchList.iterator();
+  while (it.hasNext()) {
+    if ("".equals(it.next())) {
+      it.remove();
+    }
+  }
+  String[] result=new String[matchList.size()];
+  return matchList.toArray(result);
+}

@@ -2,7 +2,7 @@
 switch (configuration.getDialect()) {
 case CUBRID:
 case MYSQL:
-    return new WithRollup();
+    return field("{0} {with rollup}",new FieldList(asList(getArguments())));
 default :
   return function("rollup",Object.class,getArguments());
 }

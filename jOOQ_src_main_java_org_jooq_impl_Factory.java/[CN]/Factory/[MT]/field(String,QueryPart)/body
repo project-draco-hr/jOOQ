@@ -1,0 +1,3 @@
+{
+  return new SQLClause<Object>(sql,SQLDataType.OTHER,parts);
+}

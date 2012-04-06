@@ -1,3 +1,0 @@
-{
-  context.keyword("position(").sql(search).keyword(" in ").sql(in).sql(")");
-}

@@ -1,5 +1,0 @@
-{
-  super("interval",SQLDataType.OTHER);
-  this.field=field;
-  this.intervalType=intervalType;
-}
