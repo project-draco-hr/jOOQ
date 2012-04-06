@@ -24,10 +24,10 @@ case HSQLDB:
 case DERBY:
 {
   if (operator == ADD) {
-    return new FnPrefixFunction<T>("timestampadd",getDataType(),field("SQL_TSI_DAY"),rhsAsNumber(),lhs);
+    return field("{fn {timestampadd}({sql_tsi_day}, {0}, {1}) }",getDataType(),rhsAsNumber(),lhs);
   }
  else {
-    return new FnPrefixFunction<T>("timestampadd",getDataType(),field("SQL_TSI_DAY"),rhsAsNumber().neg(),lhs);
+    return field("{fn {timestampadd}({sql_tsi_day}, {0}, {1}) }",getDataType(),rhsAsNumber().neg(),lhs);
   }
 }
 case CUBRID:

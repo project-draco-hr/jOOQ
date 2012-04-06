@@ -1,17 +1,18 @@
 {
 switch (configuration.getDialect()) {
 case ORACLE:
-    return function("sysdate",SQLDataType.TIME);
+    return field("sysdate",SQLDataType.TIME);
+case DB2:
 case DERBY:
 case HSQLDB:
 case INGRES:
 case POSTGRES:
 case SQLITE:
-  return field("current_time",Time.class);
+  return field("current_time",SQLDataType.TIME);
 case SQLSERVER:
-return field("convert(time, current_timestamp)",Time.class);
+return field("convert(time, current_timestamp)",SQLDataType.TIME);
 case SYBASE:
-return field("current time",Time.class);
+return field("current time",SQLDataType.TIME);
 }
 return function("current_time",SQLDataType.TIME);
 }

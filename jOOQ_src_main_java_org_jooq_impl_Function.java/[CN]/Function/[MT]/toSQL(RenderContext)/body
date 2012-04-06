@@ -1,14 +1,12 @@
 {
-  context.sql(getFNPrefix());
   context.sql(getFNName(context.getDialect()));
-  context.sql(getArgumentListDelimiter(context,"("));
+  context.sql("(");
   String separator="";
   for (  QueryPart field : arguments) {
     context.sql(separator);
     toSQLField(context,field);
     separator=", ";
   }
-  context.sql(getArgumentListDelimiter(context,")"));
-  context.sql(getFNSuffix());
+  context.sql(")");
   toSQLSuffix(context);
 }

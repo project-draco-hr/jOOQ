@@ -1,5 +1,5 @@
 {
-  String[] sqlParts=StringUtils.split("\\{[\\w\\s]+\\}",sql);
+  String[] sqlParts=StringUtils.split("\\{(?!(fn|d|t|ts)\\b)[\\w\\s]+\\}",sql);
   int i=0;
   for (  String sqlPart : sqlParts) {
     if (sqlPart.matches("\\{\\d+\\}")) {
