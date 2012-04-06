@@ -1,6 +1,14 @@
 {
   context.sql(getFNName(context.getDialect()));
-  toSQLArguments(context);
-  toSQLWithinGroupClause(context);
-  toSQLOverClause(context);
+  if (term == LIST_AGG && asList(MYSQL,CUBRID).contains(context.getDialect())) {
+    toSQLGroupConcat(context);
+  }
+  if (term == LIST_AGG && asList(SYBASE).contains(context.getDialect())) {
+    toSQLList(context);
+  }
+ else {
+    toSQLArguments(context);
+    toSQLWithinGroupClause(context);
+    toSQLOverClause(context);
+  }
 }

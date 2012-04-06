@@ -1,0 +1,11 @@
+{
+  context.sql("(");
+  if (distinct) {
+    context.keyword("distinct ");
+  }
+  context.sql(arguments);
+  if (!withinGroupOrderBy.isEmpty()) {
+    context.keyword(" order by ").sql(withinGroupOrderBy);
+  }
+  context.sql(")");
+}

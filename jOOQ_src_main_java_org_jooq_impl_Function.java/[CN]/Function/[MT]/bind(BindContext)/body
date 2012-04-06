@@ -1,3 +1,12 @@
 {
-  context.bind((QueryPart)arguments).bind((QueryPart)withinGroupOrderBy).bind((QueryPart)partitionBy).bind((QueryPart)orderBy);
+  if (term == LIST_AGG && asList(MYSQL,CUBRID).contains(context.getDialect())) {
+    context.bind(arguments.get(0));
+    context.bind((QueryPart)withinGroupOrderBy);
+    if (arguments.size() > 1) {
+      context.bind(arguments.get(1));
+    }
+  }
+ else {
+    context.bind((QueryPart)arguments).bind((QueryPart)withinGroupOrderBy).bind((QueryPart)partitionBy).bind((QueryPart)orderBy);
+  }
 }
