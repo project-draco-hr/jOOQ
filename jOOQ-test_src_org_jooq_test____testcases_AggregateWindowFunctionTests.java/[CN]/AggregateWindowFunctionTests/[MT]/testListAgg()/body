@@ -1,7 +1,6 @@
 {
 switch (getDialect()) {
 case ASE:
-case DB2:
 case DERBY:
 case INGRES:
 case POSTGRES:
@@ -20,6 +19,7 @@ assertEquals("4, 3",result1.getValue(1,"books1"));
 assertEquals("4, 3",result1.getValue(1,"books2"));
 switch (getDialect()) {
 case CUBRID:
+case DB2:
 case H2:
 case HSQLDB:
 case MYSQL:

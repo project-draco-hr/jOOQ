@@ -1,4 +1,5 @@
 {
+  context.sql(getFNName(context.getDialect()));
   context.sql("(");
   if (distinct) {
     context.keyword("distinct ");
