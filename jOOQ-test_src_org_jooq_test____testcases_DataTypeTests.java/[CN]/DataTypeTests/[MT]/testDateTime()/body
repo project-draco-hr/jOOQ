@@ -8,9 +8,13 @@
     log.info("SKIPPING","Interval tests");
   }
  else {
-    record=create().select(val(new Date(0)).as("d"),val(new Time(0)).as("t"),val(new Timestamp(0)).as("ts"),val(new YearToMonth(0)).as("iy"),val(new DayToSecond(0)).as("id")).fetchOne();
+    record=create().select(val(new YearToMonth(1,1)).as("iyplus"),val(new YearToMonth(0)).as("iy"),val(new YearToMonth(1,1).neg()).as("iyminus"),val(new DayToSecond(1,1,1,1)).as("idplus"),val(new DayToSecond(0)).as("id"),val(new DayToSecond(1,1,1,1).neg()).as("idminus")).fetchOne();
+    assertEquals(new YearToMonth(1,1),record.getValue("iyplus"));
     assertEquals(new YearToMonth(0),record.getValue("iy"));
+    assertEquals(new YearToMonth(1,1).neg(),record.getValue("iyminus"));
+    assertEquals(new DayToSecond(1,1,1,1),record.getValue("idplus"));
     assertEquals(new DayToSecond(0),record.getValue("id"));
+    assertEquals(new DayToSecond(1,1,1,1).neg(),record.getValue("idminus"));
     record=create().select(val(new YearToMonth(1)).div(2).as("y1"),val(new YearToMonth(1)).mul(2).as("y2"),val(new YearToMonth(1)).div(2).mul(2).as("y3"),val(new DayToSecond(1)).div(2).as("d1"),val(new DayToSecond(1)).mul(2).as("d2"),val(new DayToSecond(1)).div(2).mul(2).as("d3")).fetchOne();
     assertEquals(new YearToMonth(0,6),record.getValue("y1"));
     assertEquals(new YearToMonth(2),record.getValue("y2"));

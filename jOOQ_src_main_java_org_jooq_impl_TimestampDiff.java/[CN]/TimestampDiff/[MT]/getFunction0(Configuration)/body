@@ -23,7 +23,7 @@ case SQLITE:
 return field("({strftime}('%s', {0}) - {strftime}('%s', {1})) * 1000",getDataType(),timestamp1,timestamp2);
 case ORACLE:
 case POSTGRES:
-return timestamp1.sub(timestamp2).cast(DayToSecond.class);
+return field("{0} - {1}",getDataType(),timestamp1,timestamp2);
 }
-return null;
+return timestamp1.sub(timestamp2).cast(DayToSecond.class);
 }
