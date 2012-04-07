@@ -1,63 +1,42 @@
 {
   SQLDialect dialect=configuration.getDialect();
+  int sign=(operator == ADD) ? 1 : -1;
 switch (dialect) {
 case ASE:
 case SYBASE:
 case SQLSERVER:
 {
       if (rhs.get(0).getType() == YearToMonth.class) {
-        YearToMonth interval=((Param<YearToMonth>)rhs.get(0)).getValue();
-        if (operator == ADD) {
-          return function("dateadd",getDataType(),literal("mm"),val(interval.intValue()),lhs);
-        }
- else {
-          return function("dateadd",getDataType(),literal("mm"),val(-interval.intValue()),lhs);
-        }
+        return field("{dateadd}(mm, {0}, {1})",getDataType(),val(sign * rhsAsYTM().intValue()),lhs);
       }
  else {
-        Field<?> result=lhs.cast(Timestamp.class);
-        DayToSecond interval=((Param<DayToSecond>)rhs.get(0)).getValue();
-        if (operator == ADD) {
-          if (interval.getNano() != 0) {
-            int micro=interval.getNano() / 1000;
-            result=function("dateadd",getDataType(),literal("us"),val(micro),result);
-            result=function("dateadd",getDataType(),literal("ss"),val((long)interval.getTotalSeconds()),result);
-          }
- else {
-            result=function("dateadd",getDataType(),literal("ss"),val((long)interval.getTotalSeconds()),result);
-          }
+        Field<Timestamp> lhsAsTS=lhs.cast(Timestamp.class);
+        DayToSecond interval=rhsAsDTS();
+        if (interval.getNano() != 0) {
+          return field("{dateadd}(ss, {0}, {dateadd}(us, {1}, {2}))",getDataType(),val(sign * (long)interval.getTotalSeconds()),val(sign * interval.getMicro()),lhsAsTS);
         }
  else {
-          if (interval.getNano() != 0) {
-            int micro=interval.getNano() / 1000;
-            result=function("dateadd",getDataType(),literal("us"),val(-micro),result);
-            result=function("dateadd",getDataType(),literal("ss"),val(-(long)interval.getTotalSeconds()),result);
-          }
- else {
-            result=function("dateadd",getDataType(),literal("ss"),val(-(long)interval.getTotalSeconds()),result);
-          }
+          return field("{dateadd}(ss, {0}, {1})",getDataType(),val(sign * (long)interval.getTotalSeconds()),lhsAsTS);
         }
-        return (Field)result;
       }
     }
 case DB2:
 {
     if (rhs.get(0).getType() == YearToMonth.class) {
-      YearToMonth interval=((Param<YearToMonth>)rhs.get(0)).getValue();
       if (operator == ADD) {
-        return lhs.add(field("{0} month",val(interval.intValue())));
+        return lhs.add(field("{0} month",val(rhsAsYTM().intValue())));
       }
  else {
-        return lhs.sub(field("{0} month",val(interval.intValue())));
+        return lhs.sub(field("{0} month",val(rhsAsYTM().intValue())));
       }
     }
  else {
-      DayToSecond interval=((Param<DayToSecond>)rhs.get(0)).getValue();
+      DataType<T> type=lhs.getDataType();
       if (operator == ADD) {
-        return (Field)lhs.cast(Timestamp.class).add(field("{0} microseconds",val(interval.getTotalMicro())));
+        return lhs.cast(Timestamp.class).add(field("{0} microseconds",val(rhsAsDTS().getTotalMicro()))).cast(type);
       }
  else {
-        return (Field)lhs.cast(Timestamp.class).sub(field("{0} microseconds",val(interval.getTotalMicro())));
+        return lhs.cast(Timestamp.class).sub(field("{0} microseconds",val(rhsAsDTS().getTotalMicro()))).cast(type);
       }
     }
   }
@@ -65,54 +44,48 @@ case DERBY:
 case HSQLDB:
 {
   if (rhs.get(0).getType() == YearToMonth.class) {
-    YearToMonth interval=((Param<YearToMonth>)rhs.get(0)).getValue();
-    if (operator == ADD) {
-      return field("{fn {timestampadd}({sql_tsi_month}, {0}, {1}) }",getDataType(),val(interval.intValue()),lhs);
-    }
- else {
-      return field("{fn {timestampadd}({sql_tsi_month}, {0}, {1}) }",getDataType(),val(-interval.intValue()),lhs);
-    }
+    return field("{fn {timestampadd}({sql_tsi_month}, {0}, {1}) }",getDataType(),val(sign * rhsAsYTM().intValue()),lhs);
   }
  else {
-    DayToSecond interval=((Param<DayToSecond>)rhs.get(0)).getValue();
-    if (operator == ADD) {
-      return field("{fn {timestampadd}({sql_tsi_second}, {0}, {1}) }",getDataType(),val((long)interval.getTotalSeconds()),lhs);
-    }
- else {
-      return field("{fn {timestampadd}({sql_tsi_second}, {0}, {1}) }",getDataType(),val((long)-interval.getTotalSeconds()),lhs);
-    }
+    return field("{fn {timestampadd}({sql_tsi_second}, {0}, {1}) }",getDataType(),val(sign * (long)rhsAsDTS().getTotalSeconds()),lhs);
   }
 }
 case CUBRID:
 case MYSQL:
 {
-org.jooq.types.Interval<?> interval=((Param<org.jooq.types.Interval<?>>)rhs.get(0)).getValue();
+Interval interval=rhsAsInterval();
 if (operator == SUBTRACT) {
   interval=interval.neg();
 }
 if (rhs.get(0).getType() == YearToMonth.class) {
-  return field("{date_add}({0}, {interval} {1} {year_month})",getDataType(),lhs,val(interval));
+  return field("{date_add}({0}, {interval} {1} {year_month})",getDataType(),lhs,val(interval,String.class));
 }
  else {
   if (dialect == MYSQL) {
-    return field("{date_add}({0}, {interval} {1} {day_microsecond})",getDataType(),lhs,val(interval));
+    return field("{date_add}({0}, {interval} {1} {day_microsecond})",getDataType(),lhs,val(interval,String.class));
   }
  else {
-    return field("{date_add}({0}, {interval} {1} {day_millisecond})",getDataType(),lhs,val(interval));
+    return field("{date_add}({0}, {interval} {1} {day_millisecond})",getDataType(),lhs,val(interval,String.class));
   }
 }
 }
 case H2:
 {
-org.jooq.types.Interval<?> interval=((Param<org.jooq.types.Interval<?>>)rhs.get(0)).getValue();
-if (operator == SUBTRACT) {
-interval=interval.neg();
-}
 if (rhs.get(0).getType() == YearToMonth.class) {
-return function("dateadd",getDataType(),literal("'month'"),val(interval.intValue()),lhs);
+return field("{dateadd}('month', {0}, {1})",getDataType(),val(sign * rhsAsYTM().intValue()),lhs);
 }
  else {
-return function("dateadd",getDataType(),literal("'ms'"),val((long)((DayToSecond)interval).getTotalMilli()),lhs);
+return field("{dateadd}('ms', {0}, {1})",getDataType(),val(sign * (long)rhsAsDTS().getTotalMilli()),lhs);
+}
+}
+case SQLITE:
+{
+String prefix=(sign > 0) ? "+" : "-";
+if (rhs.get(0).getType() == YearToMonth.class) {
+return field("{datetime}({0}, '" + prefix + rhsAsYTM().intValue()+ " months')",getDataType(),lhs);
+}
+ else {
+return field("{datetime}({0}, '" + prefix + rhsAsDTS().getTotalSeconds()+ " seconds')",getDataType(),lhs);
 }
 }
 case ORACLE:

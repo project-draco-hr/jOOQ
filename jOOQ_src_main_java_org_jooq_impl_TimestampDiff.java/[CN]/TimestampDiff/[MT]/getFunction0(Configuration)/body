@@ -1,23 +1,26 @@
 {
+  double milliInDay=new DayToSecond(1).getTotalMilli();
 switch (configuration.getDialect()) {
 case ASE:
-    Field<Double> days=function("datediff",SQLDataType.DOUBLE,literal("day"),timestamp2,timestamp1);
-  Field<Double> milli=function("datediff",SQLDataType.DOUBLE,literal("ms"),timestamp2.add(days),timestamp1);
-return (Field)days.add(milli.div(literal(new DayToSecond(1).getTotalMilli())));
+    Field<Integer> days=field("{datediff}(day, {0}, {1})",INTEGER,timestamp2,timestamp1);
+  Field<Integer> milli=field("{datediff}(ms, {0}, {1})",INTEGER,timestamp2.add(days),timestamp1);
+return (Field)days.mul(86400000).add(milli);
 case CUBRID:
-return (Field)timestamp1.sub(timestamp2).div(literal(new DayToSecond(1).getTotalMilli()));
+return (Field)timestamp1.sub(timestamp2);
 case DB2:
-return (Field)function("days",SQLDataType.INTEGER,timestamp1).sub(function("days",SQLDataType.INTEGER,timestamp2)).add(function("midnight_seconds",SQLDataType.INTEGER,timestamp1).sub(function("midnight_seconds",SQLDataType.INTEGER,timestamp2)).div(literal(new DayToSecond(1).getTotalSeconds())));
+return (Field)function("days",INTEGER,timestamp1).sub(function("days",INTEGER,timestamp2)).mul(86400000).add(function("midnight_seconds",INTEGER,timestamp1).sub(function("midnight_seconds",INTEGER,timestamp2)).mul(1000));
 case DERBY:
-return (Field)field("{fn {timestampdiff}({sql_tsi_second}, {0}, {1}) }",SQLDataType.INTEGER,timestamp2,timestamp1).div(literal(new DayToSecond(1).getTotalSeconds()));
+return (Field)field("1000 * {fn {timestampdiff}({sql_tsi_second}, {0}, {1}) }",INTEGER,timestamp2,timestamp1);
 case H2:
 case HSQLDB:
-return function("datediff",getDataType(),literal("'ms'"),timestamp2,timestamp1).div(literal(new DayToSecond(1).getTotalMilli()));
+return field("{datediff}('ms', {0}, {1})",getDataType(),timestamp2,timestamp1);
 case MYSQL:
-return function("timestampdiff",getDataType(),literal("microsecond"),timestamp2,timestamp1).div(literal(new DayToSecond(1).getTotalMicro()));
+return field("{timestampdiff}(microsecond, {0}, {1}) / 1000",getDataType(),timestamp2,timestamp1);
 case SQLSERVER:
 case SYBASE:
-return function("datediff",getDataType(),literal("ms"),timestamp2,timestamp1).div(literal(new DayToSecond(1).getTotalMilli()));
+return field("{datediff}(ms, {0}, {1})",getDataType(),timestamp2,timestamp1);
+case SQLITE:
+return field("({strftime}('%s', {0}) - {strftime}('%s', {1})) * 1000",getDataType(),timestamp1,timestamp2);
 case ORACLE:
 case POSTGRES:
 return timestamp1.sub(timestamp2).cast(DayToSecond.class);

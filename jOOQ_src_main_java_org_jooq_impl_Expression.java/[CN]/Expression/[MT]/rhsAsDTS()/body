@@ -1,0 +1,8 @@
+{
+  try {
+    return ((Param<DayToSecond>)rhs.get(0)).getValue();
+  }
+ catch (  ClassCastException e) {
+    throw new DataTypeException("Cannot perform datetime arithmetic with a non-numeric, non-interval data type on the right hand side of the expression: " + rhs.get(0));
+  }
+}

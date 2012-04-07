@@ -16,10 +16,10 @@
     return (Field<T>)bitAnd(bitNot(bitAnd(lhsAsNumber(),rhsAsNumber())),bitOr(lhsAsNumber(),rhsAsNumber()));
   }
  else   if (SHL == operator && asList(ASE,DB2,H2,HSQLDB,INGRES,ORACLE,SQLSERVER,SYBASE).contains(dialect)) {
-    return lhs.mul(Factory.power(literal(2),rhsAsNumber()));
+    return lhs.mul(Factory.power(two(),rhsAsNumber()));
   }
  else   if (SHR == operator && asList(ASE,DB2,H2,HSQLDB,INGRES,ORACLE,SQLSERVER,SYBASE).contains(dialect)) {
-    return lhs.div(Factory.power(literal(2),rhsAsNumber()));
+    return lhs.div(Factory.power(two(),rhsAsNumber()));
   }
  else   if (BIT_NAND == operator) {
     return (Field<T>)bitNot(bitAnd(lhsAsNumber(),rhsAsNumber()));

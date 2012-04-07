@@ -1,10 +1,12 @@
 {
+  for (double i=-1394892834972.0; i <= 23487289374987.0; i+=283749827.3839293) {
+    intervalChecks(i,DayToSecond.valueOf(i));
+  }
   for (int i=0; i <= 5; i++) {
-    intervalChecks(i / 2.0,DayToSecond.valueOf(i / 2.0));
-    intervalChecks(i,new DayToSecond(i));
-    intervalChecks(i / 24.0,new DayToSecond(0,i));
-    intervalChecks(i / 24.0 / 60.0,new DayToSecond(0,0,i));
-    intervalChecks(i / 24.0 / 3600.0,new DayToSecond(0,0,0,i));
-    intervalChecks(i / 24.0 / 3600.0/ 1000000000.0,new DayToSecond(0,0,0,0,i));
+    intervalChecks(i * 1000 * 86400.0,new DayToSecond(i));
+    intervalChecks(i * 1000 * 3600.0,new DayToSecond(0,i));
+    intervalChecks(i * 1000 * 60.0,new DayToSecond(0,0,i));
+    intervalChecks(i * 1000,new DayToSecond(0,0,0,i));
+    intervalChecks(i / 1000000.0,new DayToSecond(0,0,0,0,i));
   }
 }

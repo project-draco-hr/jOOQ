@@ -3,7 +3,7 @@ switch (configuration.getDialect()) {
 case ASE:
 case SQLSERVER:
 case SYBASE:
-    return function("datediff",getDataType(),literal("day"),date2,date1);
+    return field("{datediff}(day, {0}, {1})",getDataType(),date2,date1);
 case MYSQL:
   return function("datediff",getDataType(),date1,date2);
 case DB2:
@@ -12,7 +12,9 @@ case DERBY:
 return field("{fn {timestampdiff}({sql_tsi_day}, {0}, {1}) }",getDataType(),date2,date1);
 case H2:
 case HSQLDB:
-return function("datediff",getDataType(),literal("'day'"),date2,date1);
+return field("{datediff}('day', {0}, {1})",getDataType(),date2,date1);
+case SQLITE:
+return field("({strftime}('%s', {0}) - {strftime}('%s', {1})) / 86400",getDataType(),date1,date2);
 case CUBRID:
 case ORACLE:
 case POSTGRES:
