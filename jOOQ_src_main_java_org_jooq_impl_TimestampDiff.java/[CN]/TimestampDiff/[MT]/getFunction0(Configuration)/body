@@ -1,5 +1,4 @@
 {
-  double milliInDay=new DayToSecond(1).getTotalMilli();
 switch (configuration.getDialect()) {
 case ASE:
     Field<Integer> days=field("{datediff}(day, {0}, {1})",INTEGER,timestamp2,timestamp1);
@@ -14,6 +13,8 @@ return (Field)field("1000 * {fn {timestampdiff}({sql_tsi_second}, {0}, {1}) }",I
 case H2:
 case HSQLDB:
 return field("{datediff}('ms', {0}, {1})",getDataType(),timestamp2,timestamp1);
+case INGRES:
+throw new SQLDialectNotSupportedException("Date time arithmetic not supported in Ingres. Contributions welcome!");
 case MYSQL:
 return field("{timestampdiff}(microsecond, {0}, {1}) / 1000",getDataType(),timestamp2,timestamp1);
 case SQLSERVER:

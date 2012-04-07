@@ -20,53 +20,53 @@ case SQLSERVER:
         }
       }
     }
-case DB2:
-{
-    if (rhs.get(0).getType() == YearToMonth.class) {
-      if (operator == ADD) {
-        return lhs.add(field("{0} month",val(rhsAsYTM().intValue())));
-      }
- else {
-        return lhs.sub(field("{0} month",val(rhsAsYTM().intValue())));
-      }
-    }
- else {
-      DataType<T> type=lhs.getDataType();
-      if (operator == ADD) {
-        return lhs.cast(Timestamp.class).add(field("{0} microseconds",val(rhsAsDTS().getTotalMicro()))).cast(type);
-      }
- else {
-        return lhs.cast(Timestamp.class).sub(field("{0} microseconds",val(rhsAsDTS().getTotalMicro()))).cast(type);
-      }
-    }
-  }
-case DERBY:
-case HSQLDB:
-{
-  if (rhs.get(0).getType() == YearToMonth.class) {
-    return field("{fn {timestampadd}({sql_tsi_month}, {0}, {1}) }",getDataType(),val(sign * rhsAsYTM().intValue()),lhs);
-  }
- else {
-    return field("{fn {timestampadd}({sql_tsi_second}, {0}, {1}) }",getDataType(),val(sign * (long)rhsAsDTS().getTotalSeconds()),lhs);
-  }
-}
 case CUBRID:
 case MYSQL:
 {
-Interval interval=rhsAsInterval();
-if (operator == SUBTRACT) {
-  interval=interval.neg();
+    Interval interval=rhsAsInterval();
+    if (operator == SUBTRACT) {
+      interval=interval.neg();
+    }
+    if (rhs.get(0).getType() == YearToMonth.class) {
+      return field("{date_add}({0}, {interval} {1} {year_month})",getDataType(),lhs,val(interval,String.class));
+    }
+ else {
+      if (dialect == MYSQL) {
+        return field("{date_add}({0}, {interval} {1} {day_microsecond})",getDataType(),lhs,val(interval,String.class));
+      }
+ else {
+        return field("{date_add}({0}, {interval} {1} {day_millisecond})",getDataType(),lhs,val(interval,String.class));
+      }
+    }
+  }
+case DB2:
+{
+  if (rhs.get(0).getType() == YearToMonth.class) {
+    if (operator == ADD) {
+      return lhs.add(field("{0} month",val(rhsAsYTM().intValue())));
+    }
+ else {
+      return lhs.sub(field("{0} month",val(rhsAsYTM().intValue())));
+    }
+  }
+ else {
+    DataType<T> type=lhs.getDataType();
+    if (operator == ADD) {
+      return lhs.cast(Timestamp.class).add(field("{0} microseconds",val(rhsAsDTS().getTotalMicro()))).cast(type);
+    }
+ else {
+      return lhs.cast(Timestamp.class).sub(field("{0} microseconds",val(rhsAsDTS().getTotalMicro()))).cast(type);
+    }
+  }
 }
+case DERBY:
+case HSQLDB:
+{
 if (rhs.get(0).getType() == YearToMonth.class) {
-  return field("{date_add}({0}, {interval} {1} {year_month})",getDataType(),lhs,val(interval,String.class));
+  return field("{fn {timestampadd}({sql_tsi_month}, {0}, {1}) }",getDataType(),val(sign * rhsAsYTM().intValue()),lhs);
 }
  else {
-  if (dialect == MYSQL) {
-    return field("{date_add}({0}, {interval} {1} {day_microsecond})",getDataType(),lhs,val(interval,String.class));
-  }
- else {
-    return field("{date_add}({0}, {interval} {1} {day_millisecond})",getDataType(),lhs,val(interval,String.class));
-  }
+  return field("{fn {timestampadd}({sql_tsi_second}, {0}, {1}) }",getDataType(),val(sign * (long)rhsAsDTS().getTotalSeconds()),lhs);
 }
 }
 case H2:
@@ -77,6 +77,10 @@ return field("{dateadd}('month', {0}, {1})",getDataType(),val(sign * rhsAsYTM().
  else {
 return field("{dateadd}('ms', {0}, {1})",getDataType(),val(sign * (long)rhsAsDTS().getTotalMilli()),lhs);
 }
+}
+case INGRES:
+{
+throw new SQLDialectNotSupportedException("Date time arithmetic not supported in Ingres. Contributions welcome!");
 }
 case SQLITE:
 {
@@ -89,6 +93,7 @@ return field("{datetime}({0}, '" + prefix + rhsAsDTS().getTotalSeconds()+ " seco
 }
 }
 case ORACLE:
+case POSTGRES:
 default :
 return new DefaultExpression();
 }

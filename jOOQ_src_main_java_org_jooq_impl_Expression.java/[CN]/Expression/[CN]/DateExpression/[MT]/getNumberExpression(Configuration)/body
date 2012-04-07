@@ -43,10 +43,10 @@ if (operator == ADD) {
 case INGRES:
 {
 if (operator == ADD) {
-return lhs.add(field("{date}('" + rhsAsNumber() + " days')",Object.class));
+return lhs.add(field("{date}({0} || ' days')",Object.class,rhsAsNumber()));
 }
  else {
-return lhs.sub(field("{date}('" + rhsAsNumber() + " days')",Object.class));
+return lhs.sub(field("{date}({0} || ' days')",Object.class,rhsAsNumber()));
 }
 }
 case POSTGRES:
