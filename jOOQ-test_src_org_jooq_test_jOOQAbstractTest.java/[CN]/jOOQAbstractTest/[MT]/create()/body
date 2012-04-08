@@ -1,4 +1,4 @@
 {
-  Settings settings=SettingsTools.defaultSettings().withExecuteListeners(TestStatisticsListener.class.getName(),DebugListener.class.getName());
+  Settings settings=SettingsTools.defaultSettings().withRenderMapping(new RenderMapping().withDefaultSchema("")).withExecuteListeners(TestStatisticsListener.class.getName(),DebugListener.class.getName());
   return create(settings);
 }
