@@ -1,5 +1,6 @@
 SqlQueryType queryType
 String[] queries
+String parameterDescription
 Long preparationDuration
 Long bindingDuration
 long executionDuration

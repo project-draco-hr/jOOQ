@@ -6,6 +6,7 @@
   this.callerStackTraceElements=new Exception().getStackTrace();
   this.queryType=queryType;
   this.queries=queries;
+  this.parameterDescription=parameterDescription;
   this.preparationDuration=preparationDuration;
   this.bindingDuration=bindingDuration;
   this.executionDuration=executionDuration;
