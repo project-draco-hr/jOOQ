@@ -1,4 +1,5 @@
 {
-  Settings settings=SettingsTools.defaultSettings().withRenderMapping(new RenderMapping().withDefaultSchema("")).withExecuteListeners(TestStatisticsListener.class.getName(),DebugListener.class.getName());
+  String defaultSchema=System.getProperty("org.jooq.settings.defaultSchema","");
+  Settings settings=SettingsTools.defaultSettings().withRenderMapping(new RenderMapping().withDefaultSchema(defaultSchema)).withExecuteListeners(TestStatisticsListener.class.getName(),DebugListener.class.getName());
   return create(settings);
 }
