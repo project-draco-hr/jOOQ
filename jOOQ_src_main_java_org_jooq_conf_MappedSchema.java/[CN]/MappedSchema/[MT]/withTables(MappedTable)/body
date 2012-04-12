@@ -1,8 +1,0 @@
-{
-  if (values != null) {
-    for (    MappedTable value : values) {
-      getTables().add(value);
-    }
-  }
-  return this;
-}

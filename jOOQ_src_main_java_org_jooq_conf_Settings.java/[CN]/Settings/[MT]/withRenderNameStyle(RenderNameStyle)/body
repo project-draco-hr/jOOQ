@@ -1,4 +1,0 @@
-{
-  setRenderNameStyle(value);
-  return this;
-}

@@ -1,4 +1,0 @@
-{
-  setExecuteLogging(value);
-  return this;
-}

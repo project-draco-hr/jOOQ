@@ -1,4 +1,0 @@
-{
-  setRenderKeywordStyle(value);
-  return this;
-}

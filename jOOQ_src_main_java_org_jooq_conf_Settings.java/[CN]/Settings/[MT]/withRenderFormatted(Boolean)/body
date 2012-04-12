@@ -1,4 +1,0 @@
-{
-  setRenderFormatted(value);
-  return this;
-}
