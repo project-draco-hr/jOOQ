@@ -1,8 +1,0 @@
-{
-  if (values != null) {
-    for (    Schema value : values) {
-      getSchemata().add(value);
-    }
-  }
-  return this;
-}

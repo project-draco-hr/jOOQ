@@ -1,6 +1,0 @@
-{
-  if (enumTypes == null) {
-    enumTypes=new ArrayList<EnumType>();
-  }
-  return enumTypes;
-}

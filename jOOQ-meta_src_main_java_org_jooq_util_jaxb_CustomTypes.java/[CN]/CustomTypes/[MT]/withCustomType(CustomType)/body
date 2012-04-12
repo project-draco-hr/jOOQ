@@ -1,8 +1,0 @@
-{
-  if (values != null) {
-    for (    CustomType value : values) {
-      getCustomType().add(value);
-    }
-  }
-  return this;
-}

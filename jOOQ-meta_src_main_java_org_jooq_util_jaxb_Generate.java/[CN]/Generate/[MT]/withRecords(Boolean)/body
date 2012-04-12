@@ -1,4 +1,0 @@
-{
-  setRecords(value);
-  return this;
-}

@@ -1,4 +1,0 @@
-{
-  setPojos(value);
-  return this;
-}

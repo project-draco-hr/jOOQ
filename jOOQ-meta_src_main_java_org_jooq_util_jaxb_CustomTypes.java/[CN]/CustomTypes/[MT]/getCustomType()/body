@@ -1,6 +1,0 @@
-{
-  if (customType == null) {
-    customType=new ArrayList<CustomType>();
-  }
-  return this.customType;
-}

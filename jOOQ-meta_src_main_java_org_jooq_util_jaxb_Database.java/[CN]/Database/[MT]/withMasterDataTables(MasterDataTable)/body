@@ -1,8 +1,0 @@
-{
-  if (values != null) {
-    for (    MasterDataTable value : values) {
-      getMasterDataTables().add(value);
-    }
-  }
-  return this;
-}

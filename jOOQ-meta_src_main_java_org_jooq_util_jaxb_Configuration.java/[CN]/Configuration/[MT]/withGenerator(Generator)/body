@@ -1,4 +1,0 @@
-{
-  setGenerator(value);
-  return this;
-}

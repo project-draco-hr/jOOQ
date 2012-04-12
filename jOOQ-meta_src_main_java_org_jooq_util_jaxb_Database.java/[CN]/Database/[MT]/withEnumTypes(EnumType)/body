@@ -1,8 +1,0 @@
-{
-  if (values != null) {
-    for (    EnumType value : values) {
-      getEnumTypes().add(value);
-    }
-  }
-  return this;
-}

@@ -1,6 +1,0 @@
-{
-  if (masterDataTables == null) {
-    masterDataTables=new ArrayList<MasterDataTable>();
-  }
-  return masterDataTables;
-}

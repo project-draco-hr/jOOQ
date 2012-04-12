@@ -1,4 +1,0 @@
-{
-  setKey(value);
-  return this;
-}

@@ -1,6 +1,0 @@
-{
-  if (values != null) {
-    getEnumTypes().addAll(values);
-  }
-  return this;
-}

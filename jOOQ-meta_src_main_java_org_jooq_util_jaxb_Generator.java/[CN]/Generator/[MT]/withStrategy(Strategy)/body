@@ -1,4 +1,0 @@
-{
-  setStrategy(value);
-  return this;
-}

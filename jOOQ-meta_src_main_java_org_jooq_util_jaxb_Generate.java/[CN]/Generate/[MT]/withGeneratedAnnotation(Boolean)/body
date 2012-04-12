@@ -1,4 +1,0 @@
-{
-  setGeneratedAnnotation(value);
-  return this;
-}

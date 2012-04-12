@@ -1,4 +1,0 @@
-{
-  setJpaAnnotations(value);
-  return this;
-}

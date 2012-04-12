@@ -1,6 +1,0 @@
-{
-  if (schemata == null) {
-    schemata=new ArrayList<Schema>();
-  }
-  return schemata;
-}

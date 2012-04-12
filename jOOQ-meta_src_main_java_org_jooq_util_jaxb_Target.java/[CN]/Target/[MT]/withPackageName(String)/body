@@ -1,4 +1,0 @@
-{
-  setPackageName(value);
-  return this;
-}

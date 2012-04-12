@@ -1,4 +1,0 @@
-{
-  setJdbc(value);
-  return this;
-}

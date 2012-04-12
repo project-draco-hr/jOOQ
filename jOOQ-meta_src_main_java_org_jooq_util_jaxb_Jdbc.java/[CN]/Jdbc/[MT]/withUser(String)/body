@@ -1,4 +1,0 @@
-{
-  setUser(value);
-  return this;
-}

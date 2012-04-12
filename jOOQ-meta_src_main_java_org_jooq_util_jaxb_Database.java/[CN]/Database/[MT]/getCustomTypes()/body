@@ -1,6 +1,0 @@
-{
-  if (customTypes == null) {
-    customTypes=new ArrayList<CustomType>();
-  }
-  return customTypes;
-}

@@ -1,6 +1,0 @@
-{
-  if (values != null) {
-    getForcedTypes().addAll(values);
-  }
-  return this;
-}

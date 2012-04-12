@@ -1,4 +1,0 @@
-{
-  setDatabase(value);
-  return this;
-}

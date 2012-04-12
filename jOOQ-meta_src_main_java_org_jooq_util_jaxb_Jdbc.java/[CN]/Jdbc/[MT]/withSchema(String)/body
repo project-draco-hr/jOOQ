@@ -1,4 +1,0 @@
-{
-  setSchema(value);
-  return this;
-}

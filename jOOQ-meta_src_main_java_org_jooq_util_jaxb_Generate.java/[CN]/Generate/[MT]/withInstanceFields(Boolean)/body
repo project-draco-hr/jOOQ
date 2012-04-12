@@ -1,4 +1,0 @@
-{
-  setInstanceFields(value);
-  return this;
-}

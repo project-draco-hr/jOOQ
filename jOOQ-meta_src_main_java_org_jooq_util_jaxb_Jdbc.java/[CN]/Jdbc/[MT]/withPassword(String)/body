@@ -1,4 +1,0 @@
-{
-  setPassword(value);
-  return this;
-}
