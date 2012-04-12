@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.hsqldb.generatedclasses.tables.TDates.T_DATES.I_D,value);
+}

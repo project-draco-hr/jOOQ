@@ -7,8 +7,9 @@ case DB2:
 default :
 {
     UDT<?> udt=record.getUDT();
-    if (Util.getMappedSchema(context,udt.getSchema()) != null) {
-      return Util.getMappedSchema(context,udt.getSchema()) + "." + udt.getName();
+    Schema mappedSchema=Util.getMappedSchema(context,udt.getSchema());
+    if (mappedSchema != null) {
+      return mappedSchema + "." + udt.getName();
     }
  else {
       return udt.getName();
