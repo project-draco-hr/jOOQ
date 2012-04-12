@@ -1,0 +1,3 @@
+{
+  super(SQLDialect.ASE,settings);
+}
