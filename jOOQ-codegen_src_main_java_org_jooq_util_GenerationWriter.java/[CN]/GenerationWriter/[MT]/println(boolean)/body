@@ -1,0 +1,6 @@
+{
+  if (doPrint) {
+    println();
+  }
+  return false;
+}

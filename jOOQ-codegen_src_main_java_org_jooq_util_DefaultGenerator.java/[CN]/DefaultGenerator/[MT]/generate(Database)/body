@@ -14,6 +14,7 @@
   log.info("  generated annotation",generateGeneratedAnnotation());
   log.info("  instance fields",generateInstanceFields());
   log.info("  JPA annotations",generateJPAAnnotations());
+  log.info("  validation annotations",generateValidationAnnotations());
   log.info("  navigation methods",generateNavigationMethods());
   log.info("  records",generateRecords());
   log.info("  pojos",generatePojos());

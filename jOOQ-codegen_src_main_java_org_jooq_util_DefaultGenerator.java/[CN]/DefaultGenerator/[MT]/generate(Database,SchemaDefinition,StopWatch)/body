@@ -431,6 +431,7 @@
           maxLength=Math.max(maxLength,getJavaType(column.getType()).length());
         }
         for (        ColumnDefinition column : table.getColumns()) {
+          printColumnValidationAnnotation(out,column);
           out.print("\tprivate ");
           out.print(StringUtils.rightPad(getJavaType(column.getType()),maxLength));
           out.print(" ");
