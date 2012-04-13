@@ -1,3 +1,5 @@
 {
-  context.bindValue(getValue(),getType());
+  if (!isInline()) {
+    context.bindValue(getValue(),getType());
+  }
 }

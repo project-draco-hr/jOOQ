@@ -1,5 +1,5 @@
 {
-  if (!context.inline()) {
+  if (!isInline(context)) {
     if (!(getValue() instanceof EnumType) && !(getValue() instanceof MasterDataType)) {
 switch (context.getDialect()) {
 case DB2:

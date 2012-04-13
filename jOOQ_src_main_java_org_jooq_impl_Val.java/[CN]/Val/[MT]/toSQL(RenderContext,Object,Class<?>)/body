@@ -5,7 +5,7 @@
     val=((Converter)converter).to(val);
     type=converter.fromType();
   }
-  if (context.inline()) {
+  if (isInline(context)) {
     if (val == null) {
       context.keyword("null");
     }
