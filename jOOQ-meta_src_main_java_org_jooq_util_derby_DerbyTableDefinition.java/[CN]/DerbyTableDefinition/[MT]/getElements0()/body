@@ -1,6 +1,6 @@
 {
   List<ColumnDefinition> result=new ArrayList<ColumnDefinition>();
-  for (  Record record : create().select(Syscolumns.COLUMNNAME,Syscolumns.COLUMNNUMBER,Syscolumns.COLUMNDATATYPE,Syscolumns.AUTOINCREMENTINC).from(SYSCOLUMNS).where(Syscolumns.REFERENCEID.equal(literal("'" + tableid + "'"))).orderBy(Syscolumns.COLUMNNUMBER).fetch()) {
+  for (  Record record : create().select(Syscolumns.COLUMNNAME,Syscolumns.COLUMNNUMBER,Syscolumns.COLUMNDATATYPE,Syscolumns.AUTOINCREMENTINC).from(SYSCOLUMNS).where(Syscolumns.REFERENCEID.equal(inline(tableid))).orderBy(Syscolumns.COLUMNNUMBER).fetch()) {
     String typeName=record.getValueAsString(Syscolumns.COLUMNDATATYPE);
     Number precision=parsePrecision(typeName);
     Number scale=parseScale(typeName);

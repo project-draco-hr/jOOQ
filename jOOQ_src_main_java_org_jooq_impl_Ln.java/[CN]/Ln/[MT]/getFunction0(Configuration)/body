@@ -19,9 +19,9 @@ case HSQLDB:
 case INGRES:
 case SQLSERVER:
 case SYBASE:
-  return Factory.ln(argument).div(Factory.ln(literal(base)));
+  return Factory.ln(argument).div(Factory.ln(inline(base)));
 default :
-return function("log",SQLDataType.NUMERIC,literal(base),argument);
+return function("log",SQLDataType.NUMERIC,inline(base),argument);
 }
 }
 }

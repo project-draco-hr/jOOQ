@@ -14,7 +14,7 @@ case SQLSERVER:
 case SYBASE:
     return Factory.exp(one());
 case SQLITE:
-  return literal(Math.E,BigDecimal.class);
+  return inline(Math.E,BigDecimal.class);
 default :
 return function("e",getDataType());
 }

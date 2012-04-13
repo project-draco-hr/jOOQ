@@ -15,7 +15,7 @@ case SYBASE:
     log.info("SKIPPING","PIVOT clause tests");
   return;
 }
-Result<Record> result1=create().select().from(TBookToBookStore().pivot(count()).on(TBookToBookStore_BOOK_STORE_NAME()).in("Orell F??ssli","Ex Libris","Buchhandlung im Volkshaus")).orderBy(literal(1).asc(),literal(2).asc()).fetch();
+Result<Record> result1=create().select().from(TBookToBookStore().pivot(count()).on(TBookToBookStore_BOOK_STORE_NAME()).in("Orell F??ssli","Ex Libris","Buchhandlung im Volkshaus")).orderBy(one().asc(),two().asc()).fetch();
 assertEquals(6,result1.size());
 assertEquals(TBookToBookStore_BOOK_ID().getName(),result1.getField(0).getName());
 assertEquals(TBookToBookStore_STOCK().getName(),result1.getField(1).getName());
