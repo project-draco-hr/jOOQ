@@ -1,3 +1,3 @@
 {
-  return new DboFactory(getConnection(),settings);
+  return new SQLServerFactory(getConnection(),settings);
 }

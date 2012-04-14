@@ -1,0 +1,3 @@
+{
+  org.jooq.conf.SettingsTools.getRenderMapping(getSettings()).setDefaultSchema(org.jooq.test.oracle3.generatedclasses.TEST.TEST.getName());
+}

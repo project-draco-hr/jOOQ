@@ -49,6 +49,8 @@
     outF.print(Connection.class);
     outF.println(" connection) {");
     outF.println("\t\tsuper(connection);");
+    outF.println();
+    outF.println("\t\tinitDefaultSchema();");
     outF.println("\t}");
     if (generateDeprecated()) {
       outF.println();
@@ -70,6 +72,8 @@
       outF.print(Connection.class);
       outF.println(" connection, org.jooq.SchemaMapping mapping) {");
       outF.println("\t\tsuper(connection, mapping);");
+      outF.println();
+      outF.println("\t\tinitDefaultSchema();");
       outF.println("\t}");
     }
     outF.println();
@@ -87,6 +91,21 @@
     outF.print(Settings.class);
     outF.println(" settings) {");
     outF.println("\t\tsuper(connection, settings);");
+    outF.println();
+    outF.println("\t\tinitDefaultSchema();");
+    outF.println("\t}");
+    outF.println();
+    outF.println("\t/**");
+    outF.println("\t * Initialise the render mapping's default schema.");
+    outF.println("\t * <p>");
+    outF.println("\t * For convenience, this schema-specific factory should override any pre-existing setting");
+    outF.println("\t */");
+    outF.println("\tprivate final void initDefaultSchema() {");
+    outF.print("\t\t");
+    outF.print(SettingsTools.class);
+    outF.print(".getRenderMapping(getSettings()).setDefaultSchema(");
+    outF.print(strategy.getFullJavaIdentifier(schema));
+    outF.println(".getName());");
     outF.println("\t}");
     watch.splitInfo("Schema generated");
   }
