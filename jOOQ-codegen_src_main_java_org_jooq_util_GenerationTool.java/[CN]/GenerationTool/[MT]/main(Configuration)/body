@@ -37,11 +37,18 @@
     }
     for (    Schema schema : schemata) {
       if (StringUtils.isBlank(schema.getInputSchema())) {
-        log.warn("WARNING: The configuration property jdbc.Schema is deprecated and will be removed in the future. Use /configuration/generator/database/inputSchema instead");
+        if (!StringUtils.isBlank(j.getSchema())) {
+          log.warn("WARNING: The configuration property jdbc.Schema is deprecated and will be removed in the future. Use /configuration/generator/database/inputSchema instead");
+        }
         schema.setInputSchema(trim(j.getSchema()));
       }
       if (StringUtils.isBlank(schema.getOutputSchema())) {
         schema.setOutputSchema(trim(schema.getInputSchema()));
+      }
+    }
+    if (schemata.size() == 1) {
+      if (StringUtils.isBlank(schemata.get(0).getInputSchema())) {
+        log.info("No <inputSchema/> was provided. Generating ALL available schemata instead!");
       }
     }
     database.setConnection(connection);
@@ -69,6 +76,7 @@
     if (g.getGenerate().isPojos() != null)     generator.setGeneratePojos(g.getGenerate().isPojos());
     if (g.getGenerate().isRecords() != null)     generator.setGenerateRecords(g.getGenerate().isRecords());
     if (g.getGenerate().isJpaAnnotations() != null)     generator.setGenerateJPAAnnotations(g.getGenerate().isJpaAnnotations());
+    if (g.getGenerate().isValidationAnnotations() != null)     generator.setGenerateValidationAnnotations(g.getGenerate().isValidationAnnotations());
     strategy.setInstanceFields(generator.generateInstanceFields());
     generator.generate(database);
   }

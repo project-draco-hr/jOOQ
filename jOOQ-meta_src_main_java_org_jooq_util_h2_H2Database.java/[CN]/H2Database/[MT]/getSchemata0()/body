@@ -1,0 +1,7 @@
+{
+  List<SchemaDefinition> result=new ArrayList<SchemaDefinition>();
+  for (  Record record : create().select(Schemata.SCHEMA_NAME,Schemata.REMARKS).from(SCHEMATA).fetch()) {
+    result.add(new SchemaDefinition(this,record.getValue(Schemata.SCHEMA_NAME),record.getValue(Schemata.REMARKS)));
+  }
+  return result;
+}

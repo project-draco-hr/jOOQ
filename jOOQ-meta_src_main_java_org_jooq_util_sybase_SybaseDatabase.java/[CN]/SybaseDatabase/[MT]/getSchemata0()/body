@@ -1,0 +1,7 @@
+{
+  List<SchemaDefinition> result=new ArrayList<SchemaDefinition>();
+  for (  String name : create().select(SYSUSER.USER_NAME).from(SYSUSER).fetch(SYSUSER.USER_NAME)) {
+    result.add(new SchemaDefinition(this,name,""));
+  }
+  return result;
+}

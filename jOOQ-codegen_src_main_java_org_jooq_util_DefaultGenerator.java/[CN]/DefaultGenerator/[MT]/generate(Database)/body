@@ -24,6 +24,7 @@
   File targetPackageDir=new File(getTargetDirectory() + File.separator + targetPackage.replace('.',File.separatorChar));
   log.info("Emptying",targetPackageDir.getCanonicalPath());
   empty(targetPackageDir);
+  log.info("Generating schemata","Total: " + database.getSchemata().size());
   for (  SchemaDefinition schema : database.getSchemata()) {
     generate(database,schema,watch);
   }

@@ -1,0 +1,3 @@
+{
+  super("iischema",org.jooq.util.ingres.ingres.$ingres.$INGRES);
+}

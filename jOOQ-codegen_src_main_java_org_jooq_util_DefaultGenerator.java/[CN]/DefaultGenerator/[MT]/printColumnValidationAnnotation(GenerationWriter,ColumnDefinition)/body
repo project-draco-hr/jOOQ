@@ -1,5 +1,5 @@
 {
-  if (generateJPAAnnotations()) {
+  if (generateValidationAnnotations()) {
     DataTypeDefinition type=column.getType();
     boolean newline=true;
     if (!column.isNullable()) {

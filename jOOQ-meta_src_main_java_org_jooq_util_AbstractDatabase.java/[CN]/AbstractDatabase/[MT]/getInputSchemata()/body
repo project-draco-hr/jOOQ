@@ -1,7 +1,21 @@
 {
-  List<String> result=new ArrayList<String>();
-  for (  Schema schema : configuredSchemata) {
-    result.add(schema.getInputSchema());
+  if (inputSchemata == null) {
+    inputSchemata=new ArrayList<String>();
+    if (configuredSchemata.size() == 1 && StringUtils.isBlank(configuredSchemata.get(0).getInputSchema())) {
+      try {
+        for (        SchemaDefinition schema : getSchemata0()) {
+          inputSchemata.add(schema.getName());
+        }
+      }
+ catch (      SQLException e) {
+        log.error("Could not load schemata",e);
+      }
+    }
+ else {
+      for (      Schema schema : configuredSchemata) {
+        inputSchemata.add(schema.getInputSchema());
+      }
+    }
   }
-  return result;
+  return inputSchemata;
 }

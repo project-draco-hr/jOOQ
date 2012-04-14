@@ -1,0 +1,3 @@
+{
+  super(alias,org.jooq.util.oracle.sys.Sys.SYS,org.jooq.util.oracle.sys.tables.AllUsers.ALL_USERS);
+}
