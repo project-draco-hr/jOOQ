@@ -1,7 +1,0 @@
-{
-  Factory factory=currentFactory.get();
-  if (factory == null) {
-    factory=createFactory();
-  }
-  return factory;
-}
