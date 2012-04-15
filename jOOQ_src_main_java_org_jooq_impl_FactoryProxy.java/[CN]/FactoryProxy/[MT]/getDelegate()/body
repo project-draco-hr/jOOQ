@@ -1,0 +1,21 @@
+{
+  if (dataSource == null || dialect == null) {
+    throw new DataAccessException("Both dataSource and dialect properties should be set");
+  }
+  try {
+    Class<? extends Factory> clazz=getDialect().getFactory();
+    Connection con=getDataSource().getConnection();
+    Constructor<? extends Factory> constructor;
+    if (schemaMapping == null) {
+      constructor=clazz.getConstructor(Connection.class);
+      return constructor.newInstance(con);
+    }
+ else {
+      constructor=clazz.getConstructor(Connection.class,org.jooq.SchemaMapping.class);
+      return constructor.newInstance(con,schemaMapping);
+    }
+  }
+ catch (  Exception e) {
+    throw new DataAccessException("Failed to create jOOQ Factory",e);
+  }
+}

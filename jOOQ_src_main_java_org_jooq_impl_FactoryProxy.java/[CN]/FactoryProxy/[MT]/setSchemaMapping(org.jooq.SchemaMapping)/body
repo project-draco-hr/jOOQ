@@ -1,0 +1,4 @@
+{
+  this.schemaMapping=schemaMapping;
+  log.warn("DEPRECATION","org.jooq.SchemaMapping is deprecated as of jOOQ 2.0.5. Consider using jOOQ's runtime configuration org.jooq.conf.Settings instead");
+}
