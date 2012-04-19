@@ -1,0 +1,12 @@
+{
+  if (hexDigit >= '0' && hexDigit <= '9') {
+    return hexDigit - '0';
+  }
+ else   if (hexDigit >= 'a' && hexDigit <= 'f') {
+    return hexDigit - 'a' + 10;
+  }
+ else   if (hexDigit >= 'A' && hexDigit <= 'F') {
+    return hexDigit - 'A' + 10;
+  }
+  throw new DataTypeException("unknown postgresql character format for hexValue: " + hexDigit);
+}

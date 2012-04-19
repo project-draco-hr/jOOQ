@@ -17,6 +17,7 @@
     return (T)Byte.valueOf(string);
   }
  else   if (type == byte[].class) {
+    return (T)PostgresUtils.toBytes(string);
   }
  else   if (type == Clob.class) {
   }

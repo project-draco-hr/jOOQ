@@ -1,3 +1,3 @@
 {
-  return on("org.postgresql.util.PGInterval").create(0,0,interval.getSign() * interval.getDays(),interval.getSign() * interval.getHours(),interval.getSign() * interval.getMinutes(),interval.getSign() * interval.getSeconds() + interval.getSign() * interval.getNano() / 1000000000.0).get();
+  return PostgresUtils.toPGInterval(interval);
 }

@@ -1,12 +1,3 @@
 {
-  boolean negative=pgInterval.toString().contains("-");
-  Reflect i=on(pgInterval);
-  if (negative) {
-    i.call("scale",-1);
-  }
-  YearToMonth result=new YearToMonth(i.call("getYears").<Integer>get(),i.call("getMonths").<Integer>get());
-  if (negative) {
-    result=result.neg();
-  }
-  return result;
+  return PostgresUtils.toYearToMonth(pgInterval);
 }

@@ -62,7 +62,7 @@
  else   if (type == YearToMonth.class) {
     if (ctx.getDialect() == POSTGRES) {
       Object object=rs.getObject(index);
-      return (T)(object == null ? null : PGIntervalConverter.toYearToMonth(object));
+      return (T)(object == null ? null : PostgresUtils.toYearToMonth(object));
     }
  else {
       String string=rs.getString(index);
@@ -72,7 +72,7 @@
  else   if (type == DayToSecond.class) {
     if (ctx.getDialect() == POSTGRES) {
       Object object=rs.getObject(index);
-      return (T)(object == null ? null : PGIntervalConverter.toDayToSecond(object));
+      return (T)(object == null ? null : PostgresUtils.toDayToSecond(object));
     }
  else {
       String string=rs.getString(index);

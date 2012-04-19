@@ -3,7 +3,7 @@
     return null;
   }
   @SuppressWarnings({"unchecked","rawtypes"}) UDTRecord<?> record=(UDTRecord<?>)Util.newRecord((Class)type);
-  List<String> values=new PGobjectParser().parse(object.toString());
+  List<String> values=PostgresUtils.toPGObject(object.toString());
   List<Field<?>> fields=record.getFields();
   for (int i=0; i < fields.size(); i++) {
     pgSetValue(record,fields.get(i),values.get(i));

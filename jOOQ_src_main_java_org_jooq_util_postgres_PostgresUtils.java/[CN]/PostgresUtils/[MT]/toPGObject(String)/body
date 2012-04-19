@@ -1,0 +1,86 @@
+{
+  List<String> values=new ArrayList<String>();
+  int i=0;
+  int state=0;
+  StringBuilder sb=null;
+  while (i < input.length()) {
+    char c=input.charAt(i);
+switch (state) {
+case PG_OBJECT_INIT:
+      if (c == '(') {
+        state=PG_OBJECT_BEFORE_VALUE;
+      }
+    break;
+case PG_OBJECT_BEFORE_VALUE:
+  sb=new StringBuilder();
+if (c == ',') {
+  values.add(null);
+  state=PG_OBJECT_BEFORE_VALUE;
+}
+ else if (c == ')') {
+  values.add(null);
+  state=PG_OBJECT_END;
+}
+ else if (c == '"') {
+  state=PG_OBJECT_QUOTED_VALUE;
+}
+ else if ((c == 'n' || c == 'N') && (i + 4 < input.length()) && input.substring(i,i + 4).equalsIgnoreCase("null")) {
+  values.add(null);
+  i+=3;
+  state=PG_OBJECT_AFTER_VALUE;
+}
+ else {
+  sb.append(c);
+  state=PG_OBJECT_UNQUOTED_VALUE;
+}
+break;
+case PG_OBJECT_QUOTED_VALUE:
+if (c == '"') {
+if (input.charAt(i + 1) == '"') {
+sb.append(c);
+i++;
+}
+ else {
+values.add(sb.toString());
+state=PG_OBJECT_AFTER_VALUE;
+}
+}
+ else if (c == '\\') {
+if (input.charAt(i + 1) == '\\') {
+sb.append(c);
+i++;
+}
+ else {
+sb.append(c);
+}
+}
+ else {
+sb.append(c);
+}
+break;
+case PG_OBJECT_UNQUOTED_VALUE:
+if (c == ')') {
+values.add(sb.toString());
+state=PG_OBJECT_END;
+}
+ else if (c == ',') {
+values.add(sb.toString());
+state=PG_OBJECT_BEFORE_VALUE;
+}
+ else {
+sb.append(c);
+}
+break;
+case PG_OBJECT_AFTER_VALUE:
+if (c == ')') {
+state=PG_OBJECT_END;
+}
+ else if (c == ',') {
+state=PG_OBJECT_BEFORE_VALUE;
+}
+break;
+}
+i++;
+}
+return values;
+}

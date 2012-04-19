@@ -1,0 +1,25 @@
+{
+  if (string.startsWith(POSTGRESQL_HEX_STRING_PREFIX)) {
+    String hex=string.substring(POSTGRESQL_HEX_STRING_PREFIX.length());
+    final StringReader input=new StringReader(hex);
+    final ByteArrayOutputStream bytes=new ByteArrayOutputStream(hex.length() / 2);
+    int hexDigit;
+    int byteValue;
+    try {
+      while ((hexDigit=input.read()) != -1) {
+        byteValue=(hexValue(hexDigit) << 4);
+        if ((hexDigit=input.read()) == -1) {
+          break;
+        }
+        byteValue+=hexValue(hexDigit);
+        bytes.write(byteValue);
+      }
+    }
+ catch (    IOException e) {
+      throw new DataTypeException("Error while decoding hex string",e);
+    }
+    input.close();
+    return bytes.toByteArray();
+  }
+  throw new DataTypeException("unknown postgresql string format for bytes: " + string);
+}
