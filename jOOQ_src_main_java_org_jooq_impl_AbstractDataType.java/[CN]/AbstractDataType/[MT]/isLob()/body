@@ -1,0 +1,4 @@
+{
+  SQLDataType<T> t=getSQLDataType();
+  return (t == BLOB || t == CLOB || t == NCLOB);
+}
