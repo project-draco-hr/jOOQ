@@ -21,6 +21,6 @@ case HSQLDB:
 case INGRES:
 case ORACLE:
 default :
-return function("{trunc}({0}, {1})",field.getDataType(),field,decimals);
+return field("{trunc}({0}, {1})",field.getDataType(),field,decimals);
 }
 }
