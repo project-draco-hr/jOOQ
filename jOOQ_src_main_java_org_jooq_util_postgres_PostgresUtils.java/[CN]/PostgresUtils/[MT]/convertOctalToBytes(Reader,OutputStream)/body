@@ -1,0 +1,32 @@
+{
+  int ch;
+  while ((ch=reader.read()) != -1) {
+    if (ch == '\\') {
+      ch=reader.read();
+      if (ch == -1) {
+        throw new DataTypeException("unexpected end of stream after initial backslash");
+      }
+      if (ch == '\\') {
+        bytes.write('\\');
+        continue;
+      }
+      int val=octalValue(ch);
+      ch=reader.read();
+      if (ch == -1) {
+        throw new DataTypeException("unexpected end of octal value");
+      }
+      val<<=3;
+      val+=octalValue(ch);
+      ch=reader.read();
+      if (ch == -1) {
+        throw new DataTypeException("unexpected end of octal value");
+      }
+      val<<=3;
+      val+=octalValue(ch);
+      bytes.write(val);
+    }
+ else {
+      bytes.write(ch);
+    }
+  }
+}

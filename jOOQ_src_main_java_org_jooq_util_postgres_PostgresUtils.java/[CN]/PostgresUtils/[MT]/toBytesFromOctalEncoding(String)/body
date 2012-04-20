@@ -1,0 +1,11 @@
+{
+  final Reader reader=new StringReader(string);
+  final ByteArrayOutputStream bytes=new ByteArrayOutputStream();
+  try {
+    convertOctalToBytes(reader,bytes);
+    return bytes.toByteArray();
+  }
+ catch (  IOException x) {
+    throw new DataTypeException("failed to parse octal hex string: " + x.getMessage(),x);
+  }
+}

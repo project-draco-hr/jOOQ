@@ -1,0 +1,6 @@
+{
+  if (octalDigit < '0' || octalDigit > '7') {
+    throw new DataTypeException("unknown postgresql character format for octalValue: " + octalDigit);
+  }
+  return octalDigit - '0';
+}
