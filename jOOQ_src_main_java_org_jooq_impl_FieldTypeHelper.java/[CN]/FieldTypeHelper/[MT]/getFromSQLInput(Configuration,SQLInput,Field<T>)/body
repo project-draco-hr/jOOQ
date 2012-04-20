@@ -1,5 +1,6 @@
 {
   Class<? extends T> type=field.getType();
+  DataType<T> dataType=field.getDataType();
   if (type == Blob.class) {
     return (T)stream.readBlob();
   }
@@ -17,7 +18,19 @@
     return (T)checkWasNull(stream,Byte.valueOf(stream.readByte()));
   }
  else   if (type == byte[].class) {
-    return (T)stream.readBytes();
+    if (dataType.isLob()) {
+      Blob blob=null;
+      try {
+        blob=stream.readBlob();
+        return (T)(blob == null ? null : blob.getBytes(1,(int)blob.length()));
+      }
+  finally {
+        Util.safeFree(blob);
+      }
+    }
+ else {
+      return (T)stream.readBytes();
+    }
   }
  else   if (type == Clob.class) {
     return (T)stream.readClob();

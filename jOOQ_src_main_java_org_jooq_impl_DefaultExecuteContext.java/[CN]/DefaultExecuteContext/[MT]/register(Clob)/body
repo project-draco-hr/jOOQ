@@ -1,0 +1,3 @@
+{
+  CLOBS.get().add(clob);
+}

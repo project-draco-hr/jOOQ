@@ -1,0 +1,4 @@
+SQLOutput stream
+Class<? extends T> type
+DataType<T> dataType
+T value

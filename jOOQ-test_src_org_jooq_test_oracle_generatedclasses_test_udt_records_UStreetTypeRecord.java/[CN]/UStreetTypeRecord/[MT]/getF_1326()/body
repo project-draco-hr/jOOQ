@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.test.oracle.generatedclasses.test.udt.UStreetType.F_1326);
+}

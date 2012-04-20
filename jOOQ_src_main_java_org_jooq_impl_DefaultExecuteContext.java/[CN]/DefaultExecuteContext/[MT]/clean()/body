@@ -1,0 +1,16 @@
+{
+  List<Blob> blobs=BLOBS.get();
+  List<Clob> clobs=CLOBS.get();
+  if (blobs != null) {
+    for (    Blob blob : blobs) {
+      Util.safeFree(blob);
+    }
+    BLOBS.remove();
+  }
+  if (clobs != null) {
+    for (    Clob clob : clobs) {
+      Util.safeFree(clob);
+    }
+    CLOBS.remove();
+  }
+}

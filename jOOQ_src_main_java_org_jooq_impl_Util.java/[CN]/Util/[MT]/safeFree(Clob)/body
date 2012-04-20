@@ -1,0 +1,9 @@
+{
+  if (clob != null) {
+    try {
+      clob.free();
+    }
+ catch (    Exception ignore) {
+    }
+  }
+}

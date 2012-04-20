@@ -1,0 +1,9 @@
+{
+  if (blob != null) {
+    try {
+      blob.free();
+    }
+ catch (    Exception ignore) {
+    }
+  }
+}
