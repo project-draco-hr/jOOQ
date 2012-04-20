@@ -1,3 +1,4 @@
 {
-  return value.replace("%",escape + "%").replace("_",escape + "_");
+  String esc="" + escape;
+  return value.replace(esc,esc + esc).replace("%",esc + "%").replace("_",esc + "_");
 }

@@ -1,0 +1,3 @@
+{
+  return (Param)inline((Object)((character == null) ? null : ("" + character)));
+}

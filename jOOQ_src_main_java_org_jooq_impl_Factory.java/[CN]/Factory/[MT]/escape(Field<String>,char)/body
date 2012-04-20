@@ -1,6 +1,8 @@
 {
   Field<String> replace=field;
-  replace=replace(replace,literal("'%'"),literal("'" + escape + "%'"));
-  replace=replace(replace,literal("'_'"),literal("'" + escape + "_'"));
+  String esc="" + escape;
+  replace=replace(replace,inline(esc),inline(esc + esc));
+  replace=replace(replace,inline("%"),inline(esc + "%"));
+  replace=replace(replace,inline("_"),inline(esc + "_"));
   return replace;
 }
