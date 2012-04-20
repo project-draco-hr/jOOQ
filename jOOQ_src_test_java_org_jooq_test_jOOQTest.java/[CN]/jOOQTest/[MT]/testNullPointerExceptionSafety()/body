@@ -51,22 +51,20 @@
   assertEquals(Factory.cosh((Integer)null),Factory.cosh((Field<Integer>)null));
   assertEquals(Factory.cot((Integer)null),Factory.cot((Field<Integer>)null));
   assertEquals(Factory.coth((Integer)null),Factory.coth((Field<Integer>)null));
+  assertEquals(Factory.dateAdd((Date)null,(Integer)null),Factory.dateAdd((Field<Date>)null,(Field<Integer>)null));
+  assertEquals(Factory.dateDiff((Date)null,(Date)null),Factory.dateDiff((Field<Date>)null,(Field<Date>)null));
+  assertEquals(Factory.day((java.util.Date)null),Factory.day((Field<java.util.Date>)null));
   assertEquals(Factory.decode((Integer)null,null,null),Factory.decode((Field<Integer>)null,null,null));
   assertEquals(Factory.decode((Integer)null,null,null),Factory.decode((Field<Integer>)null,null,null));
   assertEquals(Factory.deg((Integer)null),Factory.deg((Field<Integer>)null));
   assertEquals(Factory.exp((Integer)null),Factory.exp((Field<Integer>)null));
   assertEquals(Factory.extract((java.util.Date)null,DatePart.DAY),Factory.extract((Field<java.util.Date>)null,DatePart.DAY));
-  assertEquals(Factory.year((java.util.Date)null),Factory.year((Field<java.util.Date>)null));
-  assertEquals(Factory.month((java.util.Date)null),Factory.month((Field<java.util.Date>)null));
-  assertEquals(Factory.day((java.util.Date)null),Factory.day((Field<java.util.Date>)null));
-  assertEquals(Factory.hour((java.util.Date)null),Factory.hour((Field<java.util.Date>)null));
-  assertEquals(Factory.minute((java.util.Date)null),Factory.minute((Field<java.util.Date>)null));
-  assertEquals(Factory.second((java.util.Date)null),Factory.second((Field<java.util.Date>)null));
   assertEquals(Factory.floor((Integer)null),Factory.floor((Field<Integer>)null));
   assertEquals(Factory.greatest((Integer)null),Factory.greatest((Field<Integer>)null));
   assertEquals(Factory.greatest((Integer)null,(Integer[])null),Factory.greatest((Field<Integer>)null,(Field[])null));
   assertEquals(Factory.greatest((Integer)null,(Integer)null,(Integer)null),Factory.greatest((Field<Integer>)null,(Field<Integer>)null,(Field<Integer>)null));
   assertEquals(Factory.greatest((Integer)null,(Integer)null),Factory.greatest((Field<Integer>)null,(Field<Integer>)null));
+  assertEquals(Factory.hour((java.util.Date)null),Factory.hour((Field<java.util.Date>)null));
   assertEquals(Factory.lag((Field<Integer>)null,1,(Integer)null),Factory.lag((Field<Integer>)null,1,(Field<Integer>)null));
   assertEquals(Factory.lead((Field<Integer>)null,1,(Integer)null),Factory.lead((Field<Integer>)null,1,(Field<Integer>)null));
   assertEquals(Factory.least((Integer)null),Factory.least((Field<Integer>)null));
@@ -78,6 +76,8 @@
   assertEquals(Factory.log((Integer)null,2),Factory.log((Field<Integer>)null,2));
   assertEquals(Factory.lower((String)null),Factory.lower((Field<String>)null));
   assertEquals(Factory.ltrim((String)null),Factory.ltrim((Field<String>)null));
+  assertEquals(Factory.minute((java.util.Date)null),Factory.minute((Field<java.util.Date>)null));
+  assertEquals(Factory.month((java.util.Date)null),Factory.month((Field<java.util.Date>)null));
   assertEquals(Factory.nullif((Integer)null,(Integer)null),Factory.nullif((Field<Integer>)null,(Integer)null));
   assertEquals(Factory.nullif((Integer)null,(Integer)null),Factory.nullif((Integer)null,(Field<Integer>)null));
   assertEquals(Factory.nullif((Integer)null,(Integer)null),Factory.nullif((Field<Integer>)null,(Field<Integer>)null));
@@ -101,6 +101,7 @@
   assertEquals(Factory.round((Integer)null),Factory.round((Field<Integer>)null));
   assertEquals(Factory.round((Integer)null,1),Factory.round((Field<Integer>)null,1));
   assertEquals(Factory.rtrim((String)null),Factory.rtrim((Field<String>)null));
+  assertEquals(Factory.second((java.util.Date)null),Factory.second((Field<java.util.Date>)null));
   assertEquals(Factory.shl((Integer)null,(Integer)null),Factory.shl((Integer)null,(Field<Integer>)null));
   assertEquals(Factory.shl((Integer)null,(Integer)null),Factory.shl((Field<Integer>)null,(Integer)null));
   assertEquals(Factory.shl((Integer)null,(Integer)null),Factory.shl((Field<Integer>)null,(Field<Integer>)null));
@@ -113,6 +114,9 @@
   assertEquals(Factory.sqrt((Integer)null),Factory.sqrt((Field<Integer>)null));
   assertEquals(Factory.tan((Integer)null),Factory.tan((Field<Integer>)null));
   assertEquals(Factory.tanh((Integer)null),Factory.tanh((Field<Integer>)null));
+  assertEquals(Factory.timestampAdd((Timestamp)null,(Integer)null),Factory.timestampAdd((Field<Timestamp>)null,(Field<Integer>)null));
+  assertEquals(Factory.timestampDiff((Timestamp)null,(Timestamp)null),Factory.timestampDiff((Field<Timestamp>)null,(Field<Timestamp>)null));
   assertEquals(Factory.trim((String)null),Factory.trim((Field<String>)null));
   assertEquals(Factory.upper((String)null),Factory.upper((Field<String>)null));
+  assertEquals(Factory.year((java.util.Date)null),Factory.year((Field<java.util.Date>)null));
 }

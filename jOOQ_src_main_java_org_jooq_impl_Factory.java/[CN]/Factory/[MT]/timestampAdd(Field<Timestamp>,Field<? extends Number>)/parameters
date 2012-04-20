@@ -1,0 +1,2 @@
+Field<Timestamp> timestamp
+Field<? extends Number> interval

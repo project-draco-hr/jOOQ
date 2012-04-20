@@ -1,0 +1,3 @@
+{
+  return dateAdd(val(date),val(interval));
+}
