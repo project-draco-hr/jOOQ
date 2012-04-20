@@ -1,0 +1,8 @@
+{
+  if (decimals != null) {
+    return getNumericFunction(configuration);
+  }
+ else {
+    return getDateTimeFunction(configuration);
+  }
+}

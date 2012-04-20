@@ -1,0 +1,3 @@
+{
+  return trunc(val(timestamp),part);
+}

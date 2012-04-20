@@ -1,0 +1,3 @@
+{
+  return trunc(val(number),nullSafe(decimals));
+}

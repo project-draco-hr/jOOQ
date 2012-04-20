@@ -1,0 +1,5 @@
+{
+  super("trunc",field.getDataType());
+  this.field=field;
+  this.decimals=decimals;
+}
