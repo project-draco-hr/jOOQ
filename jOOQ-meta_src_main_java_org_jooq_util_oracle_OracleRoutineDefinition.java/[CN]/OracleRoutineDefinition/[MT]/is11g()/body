@@ -1,0 +1,6 @@
+{
+  if (is11g == null) {
+    is11g=create().selectCount().from(ALL_COL_COMMENTS).where(ALL_COL_COMMENTS.OWNER.equal(ALL_ARGUMENTS.getSchema().getName())).and(ALL_COL_COMMENTS.TABLE_NAME.equal(ALL_ARGUMENTS.getName())).and(ALL_COL_COMMENTS.COLUMN_NAME.equal(ALL_ARGUMENTS.DEFAULTED.getName())).fetchOne(0,boolean.class);
+  }
+  return is11g;
+}
