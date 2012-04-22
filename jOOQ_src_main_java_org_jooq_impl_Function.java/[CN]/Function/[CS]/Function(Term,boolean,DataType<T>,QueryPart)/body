@@ -3,6 +3,7 @@
   this.term=term;
   this.distinct=distinct;
   this.arguments=new QueryPartList<QueryPart>(arguments);
+  this.keepDenseRankOrderBy=new SortFieldList();
   this.withinGroupOrderBy=new SortFieldList();
   this.partitionBy=new FieldList();
   this.orderBy=new SortFieldList();

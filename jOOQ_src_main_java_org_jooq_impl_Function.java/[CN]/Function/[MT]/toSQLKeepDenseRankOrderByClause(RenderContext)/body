@@ -1,0 +1,5 @@
+{
+  if (!keepDenseRankOrderBy.isEmpty()) {
+    context.keyword(" keep (dense_rank ").keyword(first ? "first" : "last").keyword(" order by ").sql(keepDenseRankOrderBy).sql(")");
+  }
+}

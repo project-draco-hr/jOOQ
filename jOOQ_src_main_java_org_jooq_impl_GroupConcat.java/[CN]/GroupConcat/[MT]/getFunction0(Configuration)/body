@@ -4,7 +4,7 @@
     result=new Function<String>(Term.LIST_AGG,distinct,SQLDataType.VARCHAR,field);
   }
  else {
-    Field<String> literal=literal("'" + separator.replace("'","''") + "'");
+    Field<String> literal=inline(separator);
     result=new Function<String>(Term.LIST_AGG,distinct,SQLDataType.VARCHAR,field,literal);
   }
   return result.withinGroupOrderBy(orderBy);

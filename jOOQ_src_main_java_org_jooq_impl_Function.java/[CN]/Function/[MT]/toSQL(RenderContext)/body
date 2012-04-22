@@ -10,6 +10,7 @@
   }
  else {
     toSQLArguments(context);
+    toSQLKeepDenseRankOrderByClause(context);
     toSQLWithinGroupClause(context);
     toSQLOverClause(context);
   }

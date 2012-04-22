@@ -7,6 +7,6 @@
     }
   }
  else {
-    context.bind((QueryPart)arguments).bind((QueryPart)withinGroupOrderBy).bind((QueryPart)partitionBy).bind((QueryPart)orderBy);
+    context.bind((QueryPart)arguments).bind((QueryPart)keepDenseRankOrderBy).bind((QueryPart)withinGroupOrderBy).bind((QueryPart)partitionBy).bind((QueryPart)orderBy);
   }
 }
