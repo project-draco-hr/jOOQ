@@ -1,5 +1,5 @@
 {
-  List<Date> result=new ArrayList<Date>();
+  List<Date> result=new ArrayList<Date>(size());
   for (  R record : this) {
     result.add(record.getValueAsDate(field));
   }

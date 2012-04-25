@@ -1,5 +1,5 @@
 {
-  List<Time> result=new ArrayList<Time>();
+  List<Time> result=new ArrayList<Time>(size());
   for (  R record : this) {
     result.add(record.getValueAsTime(field));
   }

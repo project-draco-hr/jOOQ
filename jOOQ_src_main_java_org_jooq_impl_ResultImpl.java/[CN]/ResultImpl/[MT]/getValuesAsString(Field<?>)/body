@@ -1,5 +1,5 @@
 {
-  List<String> result=new ArrayList<String>();
+  List<String> result=new ArrayList<String>(size());
   for (  R record : this) {
     result.add(record.getValueAsString(field));
   }
