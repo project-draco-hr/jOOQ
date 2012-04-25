@@ -1,5 +1,7 @@
 {
-  T result=type.newInstance();
+  Constructor<? extends T> constructor=type.getDeclaredConstructor();
+  if (!constructor.isAccessible())   constructor.setAccessible(true);
+  T result=constructor.newInstance();
   boolean useAnnotations=hasColumnAnnotations(type);
   for (  Field<?> field : getFields()) {
     List<java.lang.reflect.Field> members;

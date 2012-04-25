@@ -55,12 +55,7 @@ fail();
 }
  catch (MappingException expected) {
 }
-try {
 create().selectFrom(TAuthor()).fetchInto(Math.class);
-fail();
-}
- catch (MappingException expected) {
-}
 List<DatesWithAnnotations> calendars=create().select(TAuthor_DATE_OF_BIRTH()).from(TAuthor()).orderBy(TAuthor_ID()).fetchInto(DatesWithAnnotations.class);
 assertEquals(2,calendars.size());
 for (int index : asList(0,1)) {
