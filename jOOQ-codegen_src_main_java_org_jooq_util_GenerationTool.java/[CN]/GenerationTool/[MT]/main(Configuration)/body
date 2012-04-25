@@ -65,7 +65,7 @@
     if (g.getDatabase().isDateAsTimestamp() != null)     database.setDateAsTimestamp(g.getDatabase().isDateAsTimestamp());
     if (g.getDatabase().isUnsignedTypes() != null)     database.setSupportsUnsignedTypes(g.getDatabase().isUnsignedTypes());
     if (StringUtils.isBlank(g.getTarget().getPackageName()))     g.getTarget().setPackageName("org.jooq.generated");
-    if (StringUtils.isBlank(g.getTarget().getDirectory()))     g.getTarget().setPackageName("target/generated-sources/jooq");
+    if (StringUtils.isBlank(g.getTarget().getDirectory()))     g.getTarget().setDirectory("target/generated-sources/jooq");
     generator.setTargetPackage(g.getTarget().getPackageName());
     generator.setTargetDirectory(g.getTarget().getDirectory());
     if (g.getGenerate().isRelations() != null)     generator.setGenerateRelations(g.getGenerate().isRelations());
