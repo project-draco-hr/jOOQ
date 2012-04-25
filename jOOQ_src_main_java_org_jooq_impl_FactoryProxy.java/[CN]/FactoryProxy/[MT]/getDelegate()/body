@@ -6,16 +6,16 @@
     Class<? extends Factory> clazz=getDialect().getFactory();
     Connection con=getDataSource().getConnection();
     Constructor<? extends Factory> constructor;
-    if (schemaMapping == null) {
+    if (settings == null) {
       constructor=clazz.getConstructor(Connection.class);
       return constructor.newInstance(con);
     }
  else {
-      constructor=clazz.getConstructor(Connection.class,org.jooq.SchemaMapping.class);
-      return constructor.newInstance(con,schemaMapping);
+      constructor=clazz.getConstructor(Connection.class,Settings.class);
+      return constructor.newInstance(con,settings);
     }
   }
- catch (  Exception e) {
-    throw new DataAccessException("Failed to create jOOQ Factory",e);
+ catch (  Exception exc) {
+    throw new DataAccessException("Failed to create jOOQ Factory",exc);
   }
 }
