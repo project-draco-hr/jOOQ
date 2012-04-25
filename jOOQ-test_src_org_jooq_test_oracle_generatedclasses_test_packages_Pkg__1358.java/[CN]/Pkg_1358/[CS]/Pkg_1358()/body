@@ -1,0 +1,3 @@
+{
+  super("PKG_1358",org.jooq.test.oracle.generatedclasses.test.Test.TEST);
+}
