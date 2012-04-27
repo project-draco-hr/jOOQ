@@ -1,0 +1,24 @@
+{
+  boolean useAnnotations=hasColumnAnnotations(type);
+  for (  Field<?> field : getFields()) {
+    List<java.lang.reflect.Field> members;
+    List<java.lang.reflect.Method> methods;
+    if (useAnnotations) {
+      members=getAnnotatedMembers(type,field.getName());
+      methods=getAnnotatedSetters(type,field.getName());
+    }
+ else {
+      members=getMatchingMembers(type,field.getName());
+      methods=getMatchingSetters(type,field.getName());
+    }
+    for (    java.lang.reflect.Field member : members) {
+      if ((member.getModifiers() & Modifier.FINAL) == 0) {
+        into(result,member,field);
+      }
+    }
+    for (    java.lang.reflect.Method method : methods) {
+      method.invoke(result,getValue(field,method.getParameterTypes()[0]));
+    }
+  }
+  return result;
+}

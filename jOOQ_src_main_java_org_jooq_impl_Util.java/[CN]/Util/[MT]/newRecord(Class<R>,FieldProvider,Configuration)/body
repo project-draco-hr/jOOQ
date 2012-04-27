@@ -5,11 +5,7 @@
       result=(R)new RecordImpl(provider);
     }
  else {
-      Constructor<R> constructor=type.getDeclaredConstructor();
-      if (!constructor.isAccessible()) {
-        constructor.setAccessible(true);
-      }
-      result=constructor.newInstance();
+      result=accessible(type.getDeclaredConstructor()).newInstance();
     }
     result.attach(configuration);
     return result;

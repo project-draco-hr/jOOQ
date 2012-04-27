@@ -7,7 +7,10 @@
       return intoPOJO(type);
     }
   }
- catch (  Exception e) {
+ catch (  MappingException e) {
+    throw e;
+  }
+catch (  Exception e) {
     throw new MappingException("An error ocurred when mapping record to " + type,e);
   }
 }

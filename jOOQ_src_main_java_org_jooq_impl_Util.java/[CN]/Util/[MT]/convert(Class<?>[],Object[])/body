@@ -1,0 +1,17 @@
+{
+  if (values != null) {
+    Object[] result=new Object[values.length];
+    for (int i=0; i < values.length; i++) {
+      if (values[i] instanceof Field<?>) {
+        result[i]=values[i];
+      }
+ else {
+        result[i]=Convert.convert(values[i],types[i]);
+      }
+    }
+    return result;
+  }
+ else {
+    return null;
+  }
+}

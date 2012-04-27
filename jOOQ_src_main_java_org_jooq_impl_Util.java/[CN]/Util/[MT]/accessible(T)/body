@@ -1,0 +1,6 @@
+{
+  if (!accessible.isAccessible()) {
+    accessible.setAccessible(true);
+  }
+  return accessible;
+}
