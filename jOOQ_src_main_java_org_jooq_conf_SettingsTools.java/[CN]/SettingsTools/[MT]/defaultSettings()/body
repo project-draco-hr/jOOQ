@@ -1,5 +1,3 @@
 {
-  StringWriter xml=new StringWriter();
-  JAXB.marshal(DEFAULT_SETTINGS,xml);
-  return JAXB.unmarshal(new StringReader(xml.toString()),Settings.class);
+  return clone(DEFAULT_SETTINGS);
 }

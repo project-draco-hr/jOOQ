@@ -1,0 +1,8 @@
+{
+  if (executeStaticStatements(create.getSettings())) {
+    return executeStatic();
+  }
+ else {
+    return executePrepared();
+  }
+}

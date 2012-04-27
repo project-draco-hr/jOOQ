@@ -1,0 +1,30 @@
+{
+  List<Query> queries=new ArrayList<Query>();
+  Settings work=create.getSettings();
+  Settings orig=SettingsTools.clone(work);
+  try {
+    work.setExecuteListeners(Arrays.asList(QueryCollector.class.getName()));
+    for (int i=0; i < records.length; i++) {
+      Configuration previous=records[i].internalAPI(AttachableInternal.class).getConfiguration();
+      try {
+        records[i].attach(create);
+        records[i].store();
+      }
+ catch (      QueryCollectorException e) {
+        Query query=e.getQuery();
+        if (query.isExecutable()) {
+          queries.add(query);
+        }
+      }
+ finally {
+        records[i].attach(previous);
+      }
+    }
+  }
+  finally {
+    work.setExecuteListeners(orig.getExecuteListeners());
+  }
+  int[] result=create.batch(queries).execute();
+  setAllUnchanged();
+  return result;
+}

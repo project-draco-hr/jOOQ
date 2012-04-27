@@ -1,0 +1,50 @@
+{
+  Map<String,List<Query>> queries=new LinkedHashMap<String,List<Query>>();
+  Settings work=create.getSettings();
+  Settings orig=SettingsTools.clone(work);
+  try {
+    work.setExecuteListeners(Arrays.asList(QueryCollector.class.getName()));
+    for (int i=0; i < records.length; i++) {
+      Configuration previous=records[i].internalAPI(AttachableInternal.class).getConfiguration();
+      try {
+        records[i].attach(create);
+        records[i].store();
+      }
+ catch (      QueryCollectorException e) {
+        Query query=e.getQuery();
+        String sql=e.getSQL();
+        if (query.isExecutable()) {
+          List<Query> list=queries.get(sql);
+          if (list == null) {
+            list=new ArrayList<Query>();
+            queries.put(sql,list);
+          }
+          list.add(query);
+        }
+      }
+ finally {
+        records[i].attach(previous);
+      }
+    }
+  }
+  finally {
+    work.setExecuteListeners(orig.getExecuteListeners());
+  }
+  List<Integer> result=new ArrayList<Integer>();
+  for (  Entry<String,List<Query>> entry : queries.entrySet()) {
+    BatchBindStep batch=create.batch(entry.getValue().get(0));
+    for (    Query query : entry.getValue()) {
+      batch.bind(query.getBindValues().toArray());
+    }
+    int[] array=batch.execute();
+    for (    int i : array) {
+      result.add(i);
+    }
+  }
+  int[] array=new int[result.size()];
+  for (int i=0; i < result.size(); i++) {
+    array[i]=result.get(i);
+  }
+  setAllUnchanged();
+  return array;
+}

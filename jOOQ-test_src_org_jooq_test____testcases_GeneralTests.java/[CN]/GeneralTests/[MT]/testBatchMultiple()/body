@@ -4,5 +4,5 @@
   assertEquals(4,result.length);
   assertEquals(5,create().fetch(TBook()).size());
   assertEquals(1,create().fetch(TBook(),TBook_AUTHOR_ID().equal(8)).size());
-  testBatchAuthors();
+  testBatchAuthors("Gamma","Helm","Johnson");
 }

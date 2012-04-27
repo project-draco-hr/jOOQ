@@ -1,0 +1,5 @@
+{
+  StringWriter xml=new StringWriter();
+  JAXB.marshal(settings,xml);
+  return JAXB.unmarshal(new StringReader(xml.toString()),Settings.class);
+}

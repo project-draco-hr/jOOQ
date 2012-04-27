@@ -16,8 +16,6 @@
  else {
     result=storeInsert();
   }
-  for (  Value<?> value : getValues()) {
-    value.setChanged(false);
-  }
+  setAllChanged(false);
   return result;
 }
