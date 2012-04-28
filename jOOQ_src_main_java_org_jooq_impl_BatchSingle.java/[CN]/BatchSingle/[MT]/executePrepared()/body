@@ -2,6 +2,11 @@
   Connection connection=create.getConnection();
   ExecuteContext ctx=new DefaultExecuteContext(create,new Query[]{query});
   ExecuteListener listener=new ExecuteListeners(ctx);
+  List<Param<?>> params=new ArrayList<Param<?>>(query.getParams().values());
+  List<Object> previous=new ArrayList<Object>();
+  for (  Param<?> param : params) {
+    previous.add(param.getValue());
+  }
   try {
     listener.renderStart(ctx);
     ctx.sql(create.render(query));
@@ -11,7 +16,10 @@
     listener.prepareEnd(ctx);
     for (    Object[] bindValues : allBindValues) {
       listener.bindStart(ctx);
-      new DefaultBindContext(create,ctx.statement()).bindValues(bindValues);
+      for (int i=0; i < params.size(); i++) {
+        params.get(i).setConverted(bindValues[i]);
+      }
+      new DefaultBindContext(create,ctx.statement()).bind(query);
       listener.bindEnd(ctx);
       ctx.statement().addBatch();
     }
@@ -25,5 +33,8 @@
   }
  finally {
     Util.safeClose(listener,ctx);
+    for (int i=0; i < params.size(); i++) {
+      params.get(i).setConverted(previous.get(i));
+    }
   }
 }
