@@ -5,7 +5,7 @@
       result=(R)new RecordImpl(provider);
     }
  else {
-      result=accessible(type.getDeclaredConstructor()).newInstance();
+      result=Reflect.accessible(type.getDeclaredConstructor()).newInstance();
     }
     result.attach(configuration);
     return result;
