@@ -1,0 +1,227 @@
+{
+  int rowCount=resultSetResult.getRowCount();
+  JPanel resultPane=addResultPane();
+  final JLabel label=new JLabel(" " + rowCount + " rows");
+  FlowLayout flowLayout=new FlowLayout(FlowLayout.LEFT,0,0);
+  flowLayout.setAlignOnBaseline(true);
+  JPanel statusCountPane=new JPanel(flowLayout);
+  if (rowCount <= resultSetResult.getRetainParsedRSDataRowCountThreshold()) {
+    final JTableX table=new ResultTable(resultSetResult);
+    JTableHeader tableHeader=new JTableHeader(table.getColumnModel()){
+      @Override public String getToolTipText(      MouseEvent e){
+        int col=getTable().convertColumnIndexToModel(columnAtPoint(e.getPoint()));
+        return col == 0 ? null : resultSetResult.getTypeInfos()[col - 1].toString();
+      }
+    }
+;
+    ToolTipManager.sharedInstance().registerComponent(tableHeader);
+    table.setTableHeader(tableHeader);
+    table.setDefaultRenderer(String.class,new DefaultTableCellRenderer(){
+      @Override public Component getTableCellRendererComponent(      JTable table,      Object value,      boolean isSelected,      boolean hasFocus,      int row,      int column){
+        if (value != null) {
+          value="\"" + value + "\"";
+        }
+        return super.getTableCellRendererComponent(table,value,isSelected,hasFocus,row,column);
+      }
+    }
+);
+    final TableCellRenderer booleanRenderer=table.getDefaultRenderer(Boolean.class);
+    table.setDefaultRenderer(Boolean.class,new DefaultTableCellRenderer(){
+      @Override public Component getTableCellRendererComponent(      JTable table,      Object value,      boolean isSelected,      boolean hasFocus,      int row,      int column){
+        Component c=null;
+        if (value == null) {
+          c=super.getTableCellRendererComponent(table," ",isSelected,hasFocus,row,column);
+        }
+ else {
+          c=booleanRenderer.getTableCellRendererComponent(table,value,isSelected,hasFocus,row,column);
+        }
+        if (!isSelected) {
+          c.setBackground(row % 2 == 0 ? UIManager.getColor("Table.background") : JTableX.getTableAlternateRowBackgroundColor());
+        }
+        return c;
+      }
+    }
+);
+    table.setDefaultRenderer(Timestamp.class,new DefaultTableCellRenderer(){
+      @Override public Component getTableCellRendererComponent(      JTable table,      Object value,      boolean isSelected,      boolean hasFocus,      int row,      int column){
+        Component c=super.getTableCellRendererComponent(table,value,isSelected,hasFocus,row,column);
+        if (value != null && c instanceof JLabel) {
+          Timestamp timestamp=(Timestamp)value;
+          String s;
+          if (timestamp.getHours() != 0 || timestamp.getMinutes() != 0 || timestamp.getSeconds() != 0) {
+            s=Utils.formatDateTimeGMT((Timestamp)value);
+          }
+ else {
+            s=Utils.formatDateGMT((Timestamp)value);
+          }
+          ((JLabel)c).setText(s);
+        }
+        return c;
+      }
+    }
+);
+    table.setDefaultRenderer(byte[].class,new DefaultTableCellRenderer(){
+      @Override public Component getTableCellRendererComponent(      JTable table,      Object value,      boolean isSelected,      boolean hasFocus,      int row,      int column){
+        Component c=super.getTableCellRendererComponent(table,value,isSelected,hasFocus,row,column);
+        if (value != null && c instanceof JLabel) {
+          byte[] bytes=(byte[])value;
+          ((JLabel)c).setText("Blob (" + bytes.length + " bytes)");
+        }
+        return c;
+      }
+    }
+);
+    table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+    table.setAutoCreateRowSorter(true);
+    table.getRowSorter().setSortKeys(Arrays.asList(new RowSorter.SortKey(0,SortOrder.ASCENDING)));
+    table.setColumnSelectionAllowed(true);
+    table.applyMinimumAndPreferredColumnSizes(200);
+    resultPane.add(new JScrollPane(table),BorderLayout.CENTER);
+    table.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+      @Override public void valueChanged(      ListSelectionEvent e){
+        int selectedRowCount=table.getSelectedRowCount();
+        label.setText(" " + resultSetResult.getRowData().length + " rows"+ (selectedRowCount == 0 ? "" : " - " + selectedRowCount + " selected rows"));
+      }
+    }
+);
+    table.addMouseListener(new MouseAdapter(){
+      @Override public void mousePressed(      MouseEvent e){
+        int row=table.rowAtPoint(e.getPoint());
+        int column=table.columnAtPoint(e.getPoint());
+        if (!table.isCellSelected(row,column)) {
+          table.changeSelection(row,column,false,false);
+        }
+        maybeShowPopup(e);
+      }
+      @Override public void mouseReleased(      MouseEvent e){
+        maybeShowPopup(e);
+      }
+      private void maybeShowPopup(      MouseEvent e){
+        if (!e.isPopupTrigger()) {
+          return;
+        }
+        boolean isEditable=resultSetResult.isEditable();
+        JPopupMenu menu=new JPopupMenu();
+        int selectedRowCount=table.getSelectedRowCount();
+        int selectedColumnCount=table.getSelectedColumnCount();
+        boolean isAddingSeparator=false;
+        if (isEditable) {
+          if (isAddingSeparator) {
+            isAddingSeparator=false;
+            menu.addSeparator();
+          }
+          JMenuItem insertNullMenuItem=new JMenuItem("Insert NULL");
+          insertNullMenuItem.addActionListener(new ActionListener(){
+            @Override public void actionPerformed(            ActionEvent e){
+              int row=table.getSelectedRow();
+              int column=table.getSelectedColumn();
+              table.setValueAt(null,row,column);
+            }
+          }
+);
+          insertNullMenuItem.setEnabled(selectedRowCount == 1 && selectedColumnCount == 1 && table.convertColumnIndexToModel(table.getSelectedColumn()) != 0);
+          menu.add(insertNullMenuItem);
+          menu.addSeparator();
+          JMenuItem deleteRowMenuItem=new JMenuItem("Delete " + (selectedRowCount > 1 ? selectedRowCount + " rows" : "row"));
+          deleteRowMenuItem.addActionListener(new ActionListener(){
+            @Override public void actionPerformed(            ActionEvent e){
+              int[] selectedRows=table.getSelectedRows();
+              for (int i=selectedRows.length - 1; i >= 0; i--) {
+                selectedRows[i]=table.convertRowIndexToModel(selectedRows[i]);
+              }
+              Arrays.sort(selectedRows);
+              for (int i=selectedRows.length - 1; i >= 0; i--) {
+                int row=selectedRows[i];
+                boolean isSuccess=resultSetResult.deleteRow(row);
+                if (isSuccess) {
+                  ((AbstractTableModel)table.getModel()).fireTableRowsDeleted(row,row);
+                }
+              }
+            }
+          }
+);
+          deleteRowMenuItem.setEnabled(selectedRowCount > 0);
+          menu.add(deleteRowMenuItem);
+        }
+        if (menu.getComponentCount() > 0) {
+          menu.show(e.getComponent(),e.getX(),e.getY());
+        }
+      }
+    }
+);
+    final JPanel filterPane=new JPanel(flowLayout);
+    final JToggleButton filterToggleButton=new JToggleButton(new ImageIcon(getClass().getResource("/org/jooq/debug/console/resources/Search16.png")));
+    filterToggleButton.setToolTipText("Filter (" + KeyEvent.getKeyModifiersText(InputEvent.CTRL_MASK) + "+"+ KeyEvent.getKeyText(KeyEvent.VK_F)+ ")");
+    filterToggleButton.setMargin(new Insets(0,0,0,0));
+    filterPane.add(filterToggleButton);
+    final JTextField searchField=new JTextField(7);
+    searchField.getDocument().addDocumentListener(new DocumentListener(){
+      @Override public void removeUpdate(      DocumentEvent e){
+        adjustFilter();
+      }
+      @Override public void insertUpdate(      DocumentEvent e){
+        adjustFilter();
+      }
+      @Override public void changedUpdate(      DocumentEvent e){
+        adjustFilter();
+      }
+      private void adjustFilter(){
+        setFilter(table,searchField.getText());
+      }
+    }
+);
+    searchField.setVisible(false);
+    filterPane.add(searchField);
+    filterToggleButton.addItemListener(new ItemListener(){
+      @Override public void itemStateChanged(      ItemEvent e){
+        boolean isActive=e.getStateChange() == ItemEvent.SELECTED;
+        searchField.setVisible(isActive);
+        if (isActive) {
+          searchField.requestFocus();
+        }
+ else {
+          searchField.setText("");
+          table.requestFocus();
+        }
+        filterPane.revalidate();
+        filterPane.repaint();
+      }
+    }
+);
+    searchField.addKeyListener(new KeyAdapter(){
+      @Override public void keyPressed(      KeyEvent e){
+        if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+          e.consume();
+          filterToggleButton.setSelected(false);
+        }
+ else         if (e.getKeyCode() == KeyEvent.VK_F && e.isControlDown()) {
+          filterToggleButton.setSelected(false);
+        }
+      }
+    }
+);
+    table.addKeyListener(new KeyAdapter(){
+      @Override public void keyPressed(      KeyEvent e){
+        if (e.getKeyCode() == KeyEvent.VK_F && e.isControlDown()) {
+          e.consume();
+          filterToggleButton.setSelected(true);
+          searchField.requestFocus();
+          searchField.selectAll();
+        }
+      }
+    }
+);
+    statusCountPane.add(filterPane);
+  }
+  JPanel southPanel=new JPanel(new BorderLayout());
+  if (isUsingMaxRowCount && rowCount == MAX_ROW_COUNT) {
+    label.setForeground(Color.RED);
+  }
+  statusCountPane.add(label);
+  southPanel.add(statusCountPane,BorderLayout.WEST);
+  southPanel.add(new JLabel(Utils.formatDuration(duration) + " - " + Utils.formatDuration(resultSetResult.getResultSetParsingDuration())),BorderLayout.EAST);
+  resultPane.add(southPanel,BorderLayout.SOUTH);
+  southPanel.setToolTipText(sql);
+  resultPane.revalidate();
+  resultPane.repaint();
+}

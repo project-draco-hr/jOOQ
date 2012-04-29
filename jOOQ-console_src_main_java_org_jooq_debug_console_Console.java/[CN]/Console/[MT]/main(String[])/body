@@ -4,8 +4,9 @@
     System.out.println("Usage: Console <ip> <port>");
     return;
   }
+  final Debugger debugger;
   try {
-    new RemoteDebuggerClient(args[0],Integer.parseInt(args[1]));
+    debugger=new RemoteDebuggerClient(args[0],Integer.parseInt(args[1]));
   }
  catch (  Exception e) {
     e.printStackTrace();
@@ -19,7 +20,7 @@
   }
   SwingUtilities.invokeLater(new Runnable(){
     @Override public void run(){
-      Console sqlConsoleFrame=new Console(null,true);
+      Console sqlConsoleFrame=new Console(debugger,true);
       sqlConsoleFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
       sqlConsoleFrame.setVisible(true);
     }

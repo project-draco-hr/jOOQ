@@ -4,7 +4,7 @@
   }
   if (editorTabbedPane != null) {
     for (int i=editorTabbedPane.getTabCount() - 2; i >= 0; i--) {
-      ((EditorPane)editorTabbedPane.getComponentAt(i)).closeConnection();
+      ((EditorPane)editorTabbedPane.getComponentAt(i)).closeLastExecution();
     }
   }
 }

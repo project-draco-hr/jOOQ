@@ -1,6 +1,0 @@
-{
-  this.timestamp=timestamp;
-  this.sqlQueryDebuggerData=sqlQueryDebuggerData;
-  this.throwable=new Exception("Statement Stack trace");
-  throwable.setStackTrace(sqlQueryDebuggerData.getCallerStackTraceElements());
-}

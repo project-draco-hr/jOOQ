@@ -1,0 +1,3 @@
+{
+  return col == 0 ? Integer.class : resultSetResult.getColumnClasses()[col - 1];
+}

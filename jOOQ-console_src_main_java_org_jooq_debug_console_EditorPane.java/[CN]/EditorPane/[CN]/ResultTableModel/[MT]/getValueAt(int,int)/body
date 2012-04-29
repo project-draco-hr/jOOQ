@@ -1,0 +1,3 @@
+{
+  return col == 0 ? row + 1 : resultSetResult.getRowData()[row][col - 1];
+}

@@ -1,0 +1,8 @@
+{
+synchronized (debugger) {
+    if (lastStatementExecutor != null) {
+      lastStatementExecutor.stopExecution();
+      lastStatementExecutor=null;
+    }
+  }
+}

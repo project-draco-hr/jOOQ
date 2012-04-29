@@ -1,0 +1,11 @@
+{
+  this.rs=rs;
+  this.columnNames=columnNames;
+  this.typeInfos=typeInfos;
+  this.columnClasses=columnClasses;
+  this.rowData=rowData;
+  this.rowCount=rowCount;
+  this.resultSetParsingDuration=resultSetParsingDuration;
+  this.retainParsedRSDataRowCountThreshold=retainParsedRSDataRowCountThreshold;
+  this.isReadOnly=isReadOnly;
+}

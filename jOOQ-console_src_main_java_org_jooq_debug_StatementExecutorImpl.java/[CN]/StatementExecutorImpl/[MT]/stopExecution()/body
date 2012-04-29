@@ -1,0 +1,6 @@
+{
+  if (evaluationThread != null) {
+    evaluationThread=null;
+    closeConnection();
+  }
+}

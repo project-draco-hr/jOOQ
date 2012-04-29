@@ -1,0 +1,187 @@
+{
+  boolean isAllowed=true;
+  if (databaseDescriptor.isReadOnly()) {
+    String simplifiedSql=sql.replaceAll("'[^']*'","");
+    Matcher matcher=Pattern.compile("[a-zA-Z_0-9\\$]+").matcher(simplifiedSql);
+    boolean isFirst=true;
+    while (matcher.find()) {
+      String word=simplifiedSql.substring(matcher.start(),matcher.end()).toUpperCase(Locale.ENGLISH);
+      if (isFirst && !word.equals("SELECT")) {
+        isAllowed=false;
+        break;
+      }
+      isFirst=false;
+      for (      String keyword : new String[]{"INSERT","UPDATE","DELETE","ALTER","DROP","CREATE","EXEC","EXECUTE"}) {
+        if (word.equals(keyword)) {
+          isAllowed=false;
+          break;
+        }
+      }
+    }
+  }
+  if (!isAllowed) {
+    return new StatementExecution(0,new StatementExecutionMessageResult("The database is not editable but the statement to evaluate is a modification statement!",true));
+  }
+  closeConnection();
+  evaluationThread=Thread.currentThread();
+  long start=System.currentTimeMillis();
+  try {
+    conn=databaseDescriptor.createConnection();
+    stmt=conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+    start=System.currentTimeMillis();
+    if (evaluationThread != Thread.currentThread()) {
+      long executionDuration=System.currentTimeMillis() - start;
+      return new StatementExecution(executionDuration,new StatementExecutionMessageResult("Interrupted by user after " + Utils.formatDuration(executionDuration),true));
+    }
+    boolean executeResult;
+    try {
+      executeResult=stmt.execute(sql);
+    }
+ catch (    SQLException e) {
+      long executionDuration=System.currentTimeMillis() - start;
+      if (evaluationThread != Thread.currentThread()) {
+        return new StatementExecution(executionDuration,new StatementExecutionMessageResult("Interrupted by user after " + Utils.formatDuration(executionDuration),true));
+      }
+      return new StatementExecution(executionDuration,new StatementExecutionMessageResult(e));
+    }
+    final long executionDuration=System.currentTimeMillis() - start;
+    if (evaluationThread != Thread.currentThread()) {
+      return new StatementExecution(executionDuration,new StatementExecutionMessageResult("Interrupted by user after " + Utils.formatDuration(executionDuration),true));
+    }
+    List<StatementExecutionResult> statementExecutionResultList=new ArrayList<StatementExecutionResult>();
+    do {
+      StatementExecutionResult statementExecutionResult;
+      if (executeResult) {
+        final ResultSet rs=stmt.getResultSet();
+        ResultSetMetaData metaData=rs.getMetaData();
+        final String[] columnNames=new String[metaData.getColumnCount()];
+        final int[] columnTypes=new int[columnNames.length];
+        final TypeInfo[] typeInfos=new TypeInfo[columnNames.length];
+        final Class<?>[] columnClasses=new Class[columnNames.length];
+        for (int i=0; i < columnNames.length; i++) {
+          columnNames[i]=metaData.getColumnName(i + 1);
+          if (columnNames[i] == null || columnNames[i].length() == 0) {
+            columnNames[i]=" ";
+          }
+          typeInfos[i]=new TypeInfo(metaData,i);
+          int type=metaData.getColumnType(i + 1);
+          columnTypes[i]=type;
+switch (type) {
+case Types.CLOB:
+            columnClasses[i]=String.class;
+          break;
+case Types.BLOB:
+        columnClasses[i]=byte[].class;
+      break;
+default :
+    String columnClassName=metaData.getColumnClassName(i + 1);
+  if (columnClassName == null) {
+    System.err.println("Unknown SQL Type for \"" + columnNames[i] + "\" in "+ getClass().getSimpleName()+ ": "+ metaData.getColumnTypeName(i));
+    columnClasses[i]=Object.class;
+  }
+ else {
+    columnClasses[i]=Class.forName(columnClassName);
+  }
+break;
+}
+}
+if (evaluationThread != Thread.currentThread()) {
+return new StatementExecution(executionDuration,new StatementExecutionMessageResult("Interrupted by user after " + Utils.formatDuration(executionDuration),true));
+}
+final List<Object[]> rowDataList=new ArrayList<Object[]>();
+int rowCount=0;
+long rsStart=System.currentTimeMillis();
+while (rs.next() && rowCount < maxRSRowsParsing) {
+if (evaluationThread != Thread.currentThread()) {
+return new StatementExecution(executionDuration,new StatementExecutionMessageResult("Interrupted by user after " + Utils.formatDuration(executionDuration),true));
+}
+rowCount++;
+Object[] rowData=new Object[columnNames.length];
+for (int i=0; i < columnNames.length; i++) {
+switch (columnTypes[i]) {
+case Types.CLOB:
+{
+  Clob clob=rs.getClob(i + 1);
+  if (clob != null) {
+    StringWriter stringWriter=new StringWriter();
+    char[] chars=new char[1024];
+    Reader reader=new BufferedReader(clob.getCharacterStream());
+    for (int count; (count=reader.read(chars)) >= 0; ) {
+      stringWriter.write(chars,0,count);
+    }
+    rowData[i]=stringWriter.toString();
+  }
+ else {
+    rowData[i]=null;
+  }
+  break;
+}
+case Types.BLOB:
+{
+Blob blob=rs.getBlob(i + 1);
+if (blob != null) {
+  ByteArrayOutputStream baos=new ByteArrayOutputStream();
+  byte[] bytes=new byte[1024];
+  InputStream in=new BufferedInputStream(blob.getBinaryStream());
+  for (int count; (count=in.read(bytes)) >= 0; ) {
+    baos.write(bytes,0,count);
+  }
+  rowData[i]=baos.toByteArray();
+}
+ else {
+  rowData[i]=null;
+}
+break;
+}
+default :
+Object object=rs.getObject(i + 1);
+if (object != null) {
+String className=object.getClass().getName();
+if ("oracle.sql.TIMESTAMP".equals(className) || "oracle.sql.TIMESTAMPTZ".equals(className)) {
+object=rs.getTimestamp(i + 1);
+}
+}
+rowData[i]=object;
+break;
+}
+}
+if (rowCount <= retainParsedRSDataRowCountThreshold) {
+rowDataList.add(rowData);
+}
+ else if (rowCount == retainParsedRSDataRowCountThreshold + 1) {
+rowDataList.clear();
+}
+}
+final long resultSetParsingDuration=System.currentTimeMillis() - rsStart;
+statementExecutionResult=new StatementExecutionResultSetResult(rs,columnNames,typeInfos,columnClasses,rowDataList.toArray(new Object[0][]),rowCount,resultSetParsingDuration,retainParsedRSDataRowCountThreshold,databaseDescriptor.isReadOnly());
+}
+ else {
+final int updateCount=stmt.getUpdateCount();
+statementExecutionResult=new StatementExecutionMessageResult(Utils.formatDuration(executionDuration) + "> " + updateCount+ " row(s) affected.",false);
+}
+if (databaseDescriptor.getSQLDialect() == SQLDialect.SQLSERVER) {
+try {
+executeResult=stmt.getMoreResults(Statement.KEEP_CURRENT_RESULT);
+}
+ catch (Exception e) {
+executeResult=stmt.getMoreResults();
+}
+}
+ else {
+executeResult=false;
+}
+statementExecutionResultList.add(statementExecutionResult);
+}
+ while (executeResult || stmt.getUpdateCount() != -1);
+return new StatementExecution(executionDuration,statementExecutionResultList.toArray(new StatementExecutionResult[0]));
+}
+ catch (Exception e) {
+long executionDuration=System.currentTimeMillis() - start;
+return new StatementExecution(executionDuration,new StatementExecutionMessageResult(e));
+}
+ finally {
+if (databaseDescriptor.isReadOnly()) {
+closeConnection();
+}
+}
+}

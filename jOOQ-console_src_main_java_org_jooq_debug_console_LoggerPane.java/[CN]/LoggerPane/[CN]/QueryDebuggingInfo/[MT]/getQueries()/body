@@ -1,6 +1,6 @@
 {
-  String parameterDescription=sqlQueryDebuggerData.getParameterDescription();
-  String[] queries=sqlQueryDebuggerData.getQueries();
+  String parameterDescription=queryLoggingData.getParameterDescription();
+  String[] queries=queryLoggingData.getQueries();
   if (parameterDescription != null) {
     return new String[]{queries[0] + " -> " + parameterDescription};
   }

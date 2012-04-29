@@ -1,0 +1,9 @@
+ResultSet rs
+String[] columnNames
+TypeInfo[] typeInfos
+Class<?>[] columnClasses
+Object[][] rowData
+int rowCount
+long resultSetParsingDuration
+int retainParsedRSDataRowCountThreshold
+boolean isReadOnly

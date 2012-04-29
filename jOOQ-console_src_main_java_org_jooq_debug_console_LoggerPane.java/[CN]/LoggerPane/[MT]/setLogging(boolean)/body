@@ -5,14 +5,10 @@
   this.isLogging=isLogging;
   loggerOnButton.setVisible(!isLogging);
   loggerOffButton.setVisible(isLogging);
-  if (sqlQueryDebugger != null) {
-    DebuggerRegistry.removeSqlQueryDebugger(sqlQueryDebugger);
-    sqlQueryDebugger=null;
-  }
   if (isLogging) {
-    sqlQueryDebugger=new Debugger(){
-      @Override public void debugQueries(      DebuggerData sqlQueryDebuggerData){
-        debugQueries(new QueryDebuggingInfo(System.currentTimeMillis(),sqlQueryDebuggerData));
+    LoggingListener loggingListener=new LoggingListener(){
+      @Override public void logQueries(      QueryLoggingData queryLoggingData){
+        debugQueries(new QueryDebuggingInfo(System.currentTimeMillis(),queryLoggingData));
       }
       public void debugQueries(      final QueryDebuggingInfo queryDebuggingInfo){
         if (!SwingUtilities.isEventDispatchThread()) {
@@ -26,11 +22,11 @@
         }
         addRow(queryDebuggingInfo);
       }
-      @Override public void debugResultSet(      final int sqlQueryDebuggerDataID,      final DebuggerResultSetData sqlQueryDebuggerResultSetData){
+      @Override public void logResultSet(      final int queryLoggingDataID,      final ResultSetLoggingData resultSetLoggingData){
         if (!SwingUtilities.isEventDispatchThread()) {
           SwingUtilities.invokeLater(new Runnable(){
             @Override public void run(){
-              debugResultSet(sqlQueryDebuggerDataID,sqlQueryDebuggerResultSetData);
+              logResultSet(queryLoggingDataID,resultSetLoggingData);
             }
           }
 );
@@ -38,8 +34,8 @@
         }
         for (int i=queryDebuggingInfoList.size() - 1; i >= 0; i--) {
           QueryDebuggingInfo queryDebuggingInfo=queryDebuggingInfoList.get(i);
-          if (queryDebuggingInfo.getSqlQueryDebuggerData().getID() == sqlQueryDebuggerDataID) {
-            queryDebuggingInfo.setSqlQueryDebuggerResultSetData(sqlQueryDebuggerResultSetData);
+          if (queryDebuggingInfo.getQueryLoggingData().getID() == queryLoggingDataID) {
+            queryDebuggingInfo.setResultSetLoggingData(resultSetLoggingData);
             XTableColumnModel columnModel=(XTableColumnModel)table.getColumnModel();
             boolean isResultSetDataShown=columnModel.isColumnVisible(columnModel.getColumnByModelIndex(COLUMN_RS_LIFETIME));
             if (isResultSetDataShown) {
@@ -51,6 +47,9 @@
       }
     }
 ;
-    DebuggerRegistry.addSqlQueryDebugger(sqlQueryDebugger);
+    debugger.setLoggingListener(loggingListener);
+  }
+ else {
+    debugger.setLoggingListener(null);
   }
 }

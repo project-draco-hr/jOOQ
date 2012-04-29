@@ -1,0 +1,12 @@
+{
+  this.loggingListener=loggingListener;
+  try {
+synchronized (LOCK) {
+      out.writeObject(new ServerLoggingActivationMessage(loggingListener != null));
+      out.flush();
+    }
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+  }
+}

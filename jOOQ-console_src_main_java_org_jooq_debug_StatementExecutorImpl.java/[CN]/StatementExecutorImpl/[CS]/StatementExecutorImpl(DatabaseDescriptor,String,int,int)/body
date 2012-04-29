@@ -1,0 +1,6 @@
+{
+  this.databaseDescriptor=databaseDescriptor;
+  this.sql=sql;
+  this.maxRSRowsParsing=maxRSRowsParsing;
+  this.retainParsedRSDataRowCountThreshold=retainParsedRSDataRowCountThreshold;
+}

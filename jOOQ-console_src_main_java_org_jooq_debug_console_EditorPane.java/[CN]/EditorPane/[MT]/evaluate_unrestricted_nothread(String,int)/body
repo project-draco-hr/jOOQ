@@ -1,5 +1,5 @@
 {
-  closeConnection();
+  closeLastExecution();
   SwingUtilities.invokeLater(new Runnable(){
     @Override public void run(){
       startButton.setVisible(false);
@@ -8,216 +8,42 @@
     }
   }
 );
+  StatementExecutor statementExecutor;
+synchronized (debugger) {
+    statementExecutor=debugger.createStatementExecutor(sql,isUsingMaxRowCount ? MAX_ROW_COUNT : Integer.MAX_VALUE,maxDisplayedRowCount);
+    lastStatementExecutor=statementExecutor;
+  }
+  StatementExecution statementExecution;
   try {
-    conn=databaseDescriptor.createConnection();
-    stmt=conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-    final long start=System.currentTimeMillis();
-    if (evaluationThread != Thread.currentThread()) {
-      SwingUtilities.invokeLater(new Runnable(){
-        @Override public void run(){
-          setMessage(addResultPane(),"Interrupted by user after " + Utils.formatDuration(System.currentTimeMillis() - start),true);
+    statementExecution=statementExecutor.execute();
+  }
+  finally {
+    SwingUtilities.invokeLater(new Runnable(){
+      @Override public void run(){
+        startButton.setVisible(true);
+        stopButton.setVisible(false);
+        stopButton.setToolTipText(null);
+      }
+    }
+);
+  }
+  final StatementExecutionResult[] results=statementExecution.getResults();
+  final long executionDuration=statementExecution.getExecutionDuration();
+  SwingUtilities.invokeLater(new Runnable(){
+    @Override public void run(){
+      for (      StatementExecutionResult result : results) {
+        if (result instanceof StatementExecutionMessageResult) {
+          StatementExecutionMessageResult messageResult=(StatementExecutionMessageResult)result;
+          setMessage(addResultPane(),messageResult.getMessage(),messageResult.isError());
+        }
+ else         if (result instanceof StatementExecutionResultSetResult) {
+          addResultTable(sql,executionDuration,(StatementExecutionResultSetResult)result);
+        }
+ else {
+          throw new IllegalStateException("Unknown result class: " + result.getClass().getName());
         }
       }
-);
-      return;
     }
-    boolean executeResult;
-    try {
-      executeResult=stmt.execute(sql);
-    }
- catch (    SQLException e) {
-      if (evaluationThread != Thread.currentThread()) {
-        SwingUtilities.invokeLater(new Runnable(){
-          @Override public void run(){
-            setMessage(addResultPane(),"Interrupted by user after " + Utils.formatDuration(System.currentTimeMillis() - start),true);
-          }
-        }
-);
-        return;
-      }
-      throw e;
-    }
-    final long duration=System.currentTimeMillis() - start;
-    if (evaluationThread != Thread.currentThread()) {
-      SwingUtilities.invokeLater(new Runnable(){
-        @Override public void run(){
-          setMessage(addResultPane(),"Interrupted by user after " + Utils.formatDuration(duration),true);
-        }
-      }
-);
-      return;
-    }
-    do {
-      if (executeResult) {
-        final ResultSet rs=stmt.getResultSet();
-        ResultSetMetaData metaData=rs.getMetaData();
-        final String[] columnNames=new String[metaData.getColumnCount() + 1];
-        final int[] columnTypes=new int[columnNames.length];
-        final TypeInfo[] typeInfos=new TypeInfo[columnNames.length];
-        final Class<?>[] columnClasses=new Class[columnNames.length];
-        columnNames[0]="";
-        columnClasses[0]=Integer.class;
-        for (int i=1; i < columnNames.length; i++) {
-          columnNames[i]=metaData.getColumnName(i);
-          if (columnNames[i] == null || columnNames[i].length() == 0) {
-            columnNames[i]=" ";
-          }
-          typeInfos[i]=new TypeInfo(metaData,i);
-          int type=metaData.getColumnType(i);
-          columnTypes[i]=type;
-switch (type) {
-case Types.CLOB:
-            columnClasses[i]=String.class;
-          break;
-case Types.BLOB:
-        columnClasses[i]=byte[].class;
-      break;
-default :
-    String columnClassName=metaData.getColumnClassName(i);
-  if (columnClassName == null) {
-    System.err.println("Unknown SQL Type for \"" + columnNames[i] + "\" in SQLEditorPane: "+ metaData.getColumnTypeName(i));
-    columnClasses[i]=Object.class;
   }
- else {
-    columnClasses[i]=Class.forName(columnClassName);
-  }
-break;
-}
-}
-if (evaluationThread != Thread.currentThread()) {
-SwingUtilities.invokeLater(new Runnable(){
-@Override public void run(){
-setMessage(addResultPane(),"Interrupted by user after " + Utils.formatDuration(duration),true);
-}
-}
 );
-return;
-}
-final List<Object[]> rowDataList=new ArrayList<Object[]>();
-int rowCount=0;
-long rsStart=System.currentTimeMillis();
-while (rs.next() && (!isUsingMaxRowCount || rowCount < MAX_ROW_COUNT)) {
-if (evaluationThread != Thread.currentThread()) {
-SwingUtilities.invokeLater(new Runnable(){
-@Override public void run(){
-  setMessage(addResultPane(),"Interrupted by user after " + Utils.formatDuration(duration),true);
-}
-}
-);
-return;
-}
-rowCount++;
-Object[] rowData=new Object[columnNames.length];
-rowData[0]=rowCount;
-for (int i=1; i < columnNames.length; i++) {
-switch (columnTypes[i]) {
-case Types.CLOB:
-{
-  Clob clob=rs.getClob(i);
-  if (clob != null) {
-    StringWriter stringWriter=new StringWriter();
-    char[] chars=new char[1024];
-    Reader reader=new BufferedReader(clob.getCharacterStream());
-    for (int count; (count=reader.read(chars)) >= 0; ) {
-      stringWriter.write(chars,0,count);
-    }
-    rowData[i]=stringWriter.toString();
-  }
- else {
-    rowData[i]=null;
-  }
-  break;
-}
-case Types.BLOB:
-{
-Blob blob=rs.getBlob(i);
-if (blob != null) {
-  ByteArrayOutputStream baos=new ByteArrayOutputStream();
-  byte[] bytes=new byte[1024];
-  InputStream in=new BufferedInputStream(blob.getBinaryStream());
-  for (int count; (count=in.read(bytes)) >= 0; ) {
-    baos.write(bytes,0,count);
-  }
-  rowData[i]=baos.toByteArray();
-}
- else {
-  rowData[i]=null;
-}
-break;
-}
-default :
-Object object=rs.getObject(i);
-if (object != null) {
-String className=object.getClass().getName();
-if ("oracle.sql.TIMESTAMP".equals(className) || "oracle.sql.TIMESTAMPTZ".equals(className)) {
-object=rs.getTimestamp(i);
-}
-}
-rowData[i]=object;
-break;
-}
-}
-if (rowCount <= maxDisplayedRowCount) {
-rowDataList.add(rowData);
-}
- else if (rowCount == maxDisplayedRowCount + 1) {
-rowDataList.clear();
-}
-}
-final long rsDuration=System.currentTimeMillis() - rsStart;
-final int rowCount_=rowCount;
-SwingUtilities.invokeLater(new Runnable(){
-@Override public void run(){
-addResultTable(sql,duration,rs,columnNames,typeInfos,columnClasses,rowDataList,rowCount_,rsDuration,maxDisplayedRowCount);
-}
-}
-);
-}
- else {
-final int updateCount=stmt.getUpdateCount();
-SwingUtilities.invokeLater(new Runnable(){
-@Override public void run(){
-setMessage(addResultPane(),Utils.formatDuration(duration) + "> " + updateCount+ " row(s) affected.",false);
-}
-}
-);
-}
-if (databaseDescriptor.getSQLDialect() == SQLDialect.SQLSERVER) {
-try {
-executeResult=stmt.getMoreResults(Statement.KEEP_CURRENT_RESULT);
-}
- catch (Exception e) {
-executeResult=stmt.getMoreResults();
-}
-}
- else {
-executeResult=false;
-}
-}
- while (executeResult || stmt.getUpdateCount() != -1);
-}
- catch (Exception e) {
-StringWriter stringWriter=new StringWriter();
-e.printStackTrace(new PrintWriter(stringWriter));
-final String message=stringWriter.toString();
-SwingUtilities.invokeLater(new Runnable(){
-@Override public void run(){
-setMessage(addResultPane(),message,true);
-}
-}
-);
-}
- finally {
-SwingUtilities.invokeLater(new Runnable(){
-@Override public void run(){
-startButton.setVisible(true);
-stopButton.setVisible(false);
-stopButton.setToolTipText(null);
-}
-}
-);
-if (!isDBEditable) {
-closeConnection();
-}
-}
 }
