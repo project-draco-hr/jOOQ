@@ -4,12 +4,7 @@
   }
  else {
     Object o;
-    if (schema != null) {
-      o=array.getArray(schema.getTypeMapping());
-    }
- else {
-      o=array.getArray();
-    }
+    o=array.getArray(DataTypes.udtRecords());
     this.array=Convert.convert(o,type.getArrayType());
   }
 }

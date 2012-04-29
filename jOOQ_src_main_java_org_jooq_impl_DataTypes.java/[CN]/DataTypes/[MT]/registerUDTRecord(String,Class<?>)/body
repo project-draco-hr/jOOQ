@@ -1,0 +1,5 @@
+{
+  if (!UDT_RECORDS.containsKey(name)) {
+    UDT_RECORDS.put(name,type);
+  }
+}

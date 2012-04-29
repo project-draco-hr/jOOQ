@@ -102,7 +102,7 @@ switch (ctx.getDialect()) {
 case POSTGRES:
       return (T)pgNewUDTRecord(type,stmt.getObject(index));
   }
-  return (T)stmt.getObject(index,getTypeMapping(type));
+  return (T)stmt.getObject(index,DataTypes.udtRecords());
 }
  else if (Result.class.isAssignableFrom(type)) {
   ResultSet nested=(ResultSet)stmt.getObject(index);
