@@ -1,3 +1,3 @@
 {
-  return new UByte(value);
+  return valueOfUnchecked((short)(value & MAX_VALUE));
 }

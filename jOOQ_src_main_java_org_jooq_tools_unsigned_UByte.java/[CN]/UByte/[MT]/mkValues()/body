@@ -1,0 +1,5 @@
+{
+  UByte[] ret=new UByte[256];
+  for (int i=Byte.MIN_VALUE; i <= Byte.MAX_VALUE; i++)   ret[i & MAX_VALUE]=new UByte((byte)i);
+  return ret;
+}
