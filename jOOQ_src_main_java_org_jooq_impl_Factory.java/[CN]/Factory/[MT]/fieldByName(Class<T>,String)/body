@@ -1,0 +1,3 @@
+{
+  return fieldByName(getDataType(type),fieldName);
+}
