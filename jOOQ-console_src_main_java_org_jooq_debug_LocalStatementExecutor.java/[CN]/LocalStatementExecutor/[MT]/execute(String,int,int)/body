@@ -22,7 +22,7 @@
   if (!isAllowed) {
     return new StatementExecution(0,new StatementExecutionMessageResult("The database is not editable but the statement to evaluate is a modification statement!",true));
   }
-  closeConnection();
+  stopExecution();
   evaluationThread=Thread.currentThread();
   long start=System.currentTimeMillis();
   try {

@@ -10,12 +10,12 @@
 );
   StatementExecutor statementExecutor;
 synchronized (debugger) {
-    statementExecutor=debugger.createStatementExecutor(sql,isUsingMaxRowCount ? MAX_ROW_COUNT : Integer.MAX_VALUE,maxDisplayedRowCount);
+    statementExecutor=debugger.createStatementExecutor();
     lastStatementExecutor=statementExecutor;
   }
   StatementExecution statementExecution;
   try {
-    statementExecution=statementExecutor.execute();
+    statementExecution=statementExecutor.execute(sql,isUsingMaxRowCount ? MAX_ROW_COUNT : Integer.MAX_VALUE,maxDisplayedRowCount);
   }
   finally {
     SwingUtilities.invokeLater(new Runnable(){

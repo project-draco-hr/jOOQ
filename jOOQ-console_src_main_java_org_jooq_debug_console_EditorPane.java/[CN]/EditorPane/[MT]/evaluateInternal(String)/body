@@ -4,7 +4,14 @@
   southPanel.repaint();
   SwingUtilities.invokeLater(new Runnable(){
     @Override public void run(){
-      evaluate_(sql);
+      final int maxDisplayedRowCount=((Number)displayedRowCountField.getValue()).intValue();
+      Thread evaluationThread=new Thread("SQLConsole - Evaluation"){
+        @Override public void run(){
+          evaluate_unrestricted_nothread(sql,maxDisplayedRowCount);
+        }
+      }
+;
+      evaluationThread.start();
     }
   }
 );

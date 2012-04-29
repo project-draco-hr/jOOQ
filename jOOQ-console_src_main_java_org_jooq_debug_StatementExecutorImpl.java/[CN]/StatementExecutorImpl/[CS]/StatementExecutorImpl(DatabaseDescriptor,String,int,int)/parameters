@@ -1,4 +1,0 @@
-DatabaseDescriptor databaseDescriptor
-String sql
-int maxRSRowsParsing
-int retainParsedRSDataRowCountThreshold

@@ -1,7 +1,6 @@
 {
   super(new BorderLayout());
   this.debugger=debugger;
-  this.isDBEditable=!debugger.isReadOnly();
   setOpaque(false);
   JPanel northPanel=new JPanel(new BorderLayout());
   northPanel.setOpaque(false);
