@@ -1,5 +1,5 @@
 {
-  Thread clientThread=new Thread("SQL Remote Debugger Server on port " + port){
+  Thread clientThread=new Thread("SQL Remote Debugger Server-Client on port " + port){
     @Override public void run(){
       Debugger debugger=null;
       boolean isLogging=false;
@@ -37,6 +37,9 @@
  else {
               debugger.setLoggingListener(null);
             }
+          }
+ else           if (o instanceof ServerLoggingStatementMatchersMessage) {
+            debugger.setLoggingStatementMatchers(((ServerLoggingStatementMatchersMessage)o).getStatementMatchers());
           }
         }
       }

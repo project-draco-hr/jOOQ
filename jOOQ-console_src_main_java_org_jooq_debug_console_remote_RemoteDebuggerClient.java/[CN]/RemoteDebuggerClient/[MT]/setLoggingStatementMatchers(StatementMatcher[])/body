@@ -1,0 +1,12 @@
+{
+  this.loggingStatementMatchers=loggingStatementMatchers;
+  try {
+synchronized (LOCK) {
+      out.writeObject(new ServerLoggingStatementMatchersMessage(loggingStatementMatchers));
+      out.flush();
+    }
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+  }
+}

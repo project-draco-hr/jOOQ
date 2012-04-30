@@ -7,17 +7,25 @@
         ObjectInputStream in=new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
         for (Message o; (o=(Message)in.readObject()) != null; ) {
           if (o instanceof ClientDebugQueriesMessage) {
-            if (loggingListener != null) {
+            LoggingListener loggingListener_;
+synchronized (LOCK) {
+              loggingListener_=loggingListener;
+            }
+            if (loggingListener_ != null) {
               QueryLoggingData sqlQueryDebuggerData=((ClientDebugQueriesMessage)o).getSqlQueryDebuggerData();
-              loggingListener.logQueries(sqlQueryDebuggerData);
+              loggingListener_.logQueries(sqlQueryDebuggerData);
             }
           }
  else           if (o instanceof ClientDebugResultSetMessage) {
-            if (loggingListener != null) {
+            LoggingListener loggingListener_;
+synchronized (LOCK) {
+              loggingListener_=loggingListener;
+            }
+            if (loggingListener_ != null) {
               ClientDebugResultSetMessage m=(ClientDebugResultSetMessage)o;
               int sqlQueryDebuggerDataID=m.getSqlQueryDebuggerDataID();
               ResultSetLoggingData clientDebugResultSetData=m.getSqlQueryDebuggerResultSetData();
-              loggingListener.logResultSet(sqlQueryDebuggerDataID,clientDebugResultSetData);
+              loggingListener_.logResultSet(sqlQueryDebuggerDataID,clientDebugResultSetData);
             }
           }
         }
