@@ -4,21 +4,11 @@
     return on(field.get(object));
   }
  catch (  Exception e1) {
-    Field field=null;
-    boolean accessible=true;
     try {
-      field=type().getDeclaredField(name);
-      accessible=field.isAccessible();
-      if (!accessible)       field.setAccessible(true);
-      return on(field.get(object));
+      return on(accessible(type().getDeclaredField(name)).get(object));
     }
  catch (    Exception e2) {
       throw new ReflectException(e2);
-    }
- finally {
-      if (field != null && !accessible) {
-        field.setAccessible(false);
-      }
     }
   }
 }

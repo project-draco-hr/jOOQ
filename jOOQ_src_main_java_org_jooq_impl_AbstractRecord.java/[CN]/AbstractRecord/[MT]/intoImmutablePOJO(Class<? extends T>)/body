@@ -3,7 +3,7 @@
     Class<?>[] parameterTypes=constructor.getParameterTypes();
     if (parameterTypes.length == getFields().size()) {
       Object[] converted=Util.convert(parameterTypes,intoArray());
-      return accessible(constructor).newInstance(converted);
+      return Reflect.accessible(constructor).newInstance(converted);
     }
   }
   throw new MappingException("No matching constructor found on type " + type + " for record "+ this);

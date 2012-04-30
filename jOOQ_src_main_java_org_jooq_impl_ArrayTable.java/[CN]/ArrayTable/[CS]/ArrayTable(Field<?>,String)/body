@@ -21,7 +21,7 @@
     try {
       UDTRecord<?> record=(UDTRecord<?>)arrayType.newInstance();
       for (      Field<?> f : record.getFields()) {
-        this.field.add(new Qualifier(f.getDataType(),alias,f.getName()));
+        this.field.add(fieldByName(f.getDataType(),alias,f.getName()));
       }
     }
  catch (    Exception e) {
@@ -29,6 +29,6 @@
     }
   }
  else {
-    this.field.add(new Qualifier(Factory.getDataType(arrayType),alias,"COLUMN_VALUE"));
+    this.field.add(fieldByName(Factory.getDataType(arrayType),alias,"COLUMN_VALUE"));
   }
 }

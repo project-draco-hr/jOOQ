@@ -1,0 +1,6 @@
+{
+  if (value < MIN_VALUE || value > MAX_VALUE) {
+    throw new NumberFormatException("Value is out of range : " + value);
+  }
+  return value;
+}

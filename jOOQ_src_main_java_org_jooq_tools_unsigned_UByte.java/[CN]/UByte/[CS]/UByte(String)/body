@@ -1,4 +1,3 @@
 {
-  this.value=Short.parseShort(value);
-  rangeCheck();
+  this.value=rangeCheck(Short.parseShort(value));
 }

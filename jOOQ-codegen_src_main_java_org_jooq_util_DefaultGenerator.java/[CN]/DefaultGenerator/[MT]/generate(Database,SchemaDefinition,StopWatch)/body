@@ -731,12 +731,12 @@
  else {
           out.println("\t\tsuper(\"" + udt.getOutputName() + "\");");
         }
+        out.println();
+        out.println("\t\t// Initialise data type");
+        out.println("\t\tgetDataType();");
         out.println("\t}");
         out.println("}");
         out.close();
-        if (outS != null) {
-          outS.printInitialisationStatement("addMapping(\"" + udt.getQualifiedOutputName() + "\", "+ strategy.getFullJavaClassName(udt,Mode.RECORD)+ ".class);");
-        }
       }
  catch (      Exception e) {
         log.error("Error while generating udt " + udt,e);

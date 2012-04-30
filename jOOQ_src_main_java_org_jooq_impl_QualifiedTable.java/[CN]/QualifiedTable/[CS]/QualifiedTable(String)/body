@@ -1,0 +1,4 @@
+{
+  super(sql[sql.length - 1]);
+  this.sql=sql;
+}

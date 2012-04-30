@@ -1,0 +1,3 @@
+{
+  return RecordImpl.class;
+}

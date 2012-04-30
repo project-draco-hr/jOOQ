@@ -1,6 +1,6 @@
 {
   try {
-    T result=accessible(type.getDeclaredConstructor()).newInstance();
+    T result=Reflect.accessible(type.getDeclaredConstructor()).newInstance();
     return intoMutablePOJO(type,result);
   }
  catch (  NoSuchMethodException e) {

@@ -1,7 +1,6 @@
 {
-  boolean accessible=method.isAccessible();
   try {
-    if (!accessible)     method.setAccessible(true);
+    accessible(method);
     if (method.getReturnType() == void.class) {
       method.invoke(object,args);
       return on(object);
@@ -12,10 +11,5 @@
   }
  catch (  Exception e) {
     throw new ReflectException(e);
-  }
- finally {
-    if (!accessible) {
-      method.setAccessible(false);
-    }
   }
 }
