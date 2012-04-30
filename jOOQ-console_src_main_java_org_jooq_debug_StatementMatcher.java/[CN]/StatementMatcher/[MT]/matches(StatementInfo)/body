@@ -1,0 +1,90 @@
+{
+  if (threadName != null) {
+    if (!threadName.equals(statementInfo.getThreadName())) {
+      return false;
+    }
+  }
+  if (textMatchingType != null) {
+    if (text == null) {
+      return false;
+    }
+switch (textMatchingType) {
+case STARTS_WITH:
+{
+        boolean isMatching=false;
+        for (        String sql : statementInfo.getQueries()) {
+          if (isTextMatchingCaseSensitive) {
+            if (sql.startsWith(text)) {
+              isMatching=true;
+              break;
+            }
+          }
+ else           if (sql.length() >= text.length()) {
+            if (sql.substring(0,text.length()).equalsIgnoreCase(text)) {
+              isMatching=true;
+              break;
+            }
+          }
+        }
+        if (!isMatching) {
+          return false;
+        }
+        break;
+      }
+case EQUALS:
+{
+      boolean isMatching=false;
+      for (      String sql : statementInfo.getQueries()) {
+        if (isTextMatchingCaseSensitive) {
+          if (sql.equals(text)) {
+            isMatching=true;
+            break;
+          }
+        }
+ else {
+          if (sql.equalsIgnoreCase(text)) {
+            isMatching=true;
+            break;
+          }
+        }
+      }
+      if (!isMatching) {
+        return false;
+      }
+      break;
+    }
+case CONTAINS:
+{
+    boolean isMatching=false;
+    for (    String sql : statementInfo.getQueries()) {
+      if (pattern.matcher(sql).matches()) {
+        isMatching=true;
+        break;
+      }
+    }
+    if (!isMatching) {
+      return false;
+    }
+  }
+case MATCHES_REG_EXP:
+{
+  boolean isMatching=false;
+  for (  String sql : statementInfo.getQueries()) {
+    if (pattern.matcher(sql).matches()) {
+      isMatching=true;
+      break;
+    }
+  }
+  if (!isMatching) {
+    return false;
+  }
+}
+}
+}
+if (queryTypeSet != null) {
+if (!queryTypeSet.contains(statementInfo.getQueryType())) {
+return false;
+}
+}
+return true;
+}

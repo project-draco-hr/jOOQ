@@ -1,0 +1,8 @@
+{
+  Thread currentThread=Thread.currentThread();
+  this.threadName=currentThread.getName();
+  this.threadID=currentThread.getId();
+  this.queryType=queryType;
+  this.queries=queries;
+  this.parameterDescription=parameterDescription;
+}

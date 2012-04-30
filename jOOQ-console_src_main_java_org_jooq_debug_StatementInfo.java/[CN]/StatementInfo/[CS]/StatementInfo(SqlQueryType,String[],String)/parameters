@@ -1,0 +1,3 @@
+SqlQueryType queryType
+String[] queries
+String parameterDescription
