@@ -46,7 +46,7 @@ break;
  else {
 toSQLReference0(context);
 }
-if (forUpdate) {
+if (forUpdate && !asList(CUBRID,SQLSERVER).contains(context.getDialect())) {
 context.formatSeparator().keyword("for update");
 if (!forUpdateOf.isEmpty()) {
 context.keyword(" of ");

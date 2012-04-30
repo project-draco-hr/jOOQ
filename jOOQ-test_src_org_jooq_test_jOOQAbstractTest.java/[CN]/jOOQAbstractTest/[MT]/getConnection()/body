@@ -17,10 +17,6 @@
       }
 ;
       try {
-        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        Console console=new Console(descriptor,true);
-        console.setLoggingActive(true);
-        console.setVisible(true);
       }
  catch (      Exception ignore) {
       }
