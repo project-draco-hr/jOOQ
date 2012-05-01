@@ -1,0 +1,11 @@
+{
+  WeakReference<Object> weakReference=instanceIDToObjectReferenceMap.get(instanceID);
+  if (weakReference == null) {
+    return null;
+  }
+  Object o=weakReference.get();
+  if (o == null) {
+    instanceIDToObjectReferenceMap.remove(instanceID);
+  }
+  return o;
+}

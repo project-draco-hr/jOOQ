@@ -1,27 +1,27 @@
 {
-  Thread serverThread=new Thread("SQL Remote Debugger Server on port " + port){
-    @Override public void run(){
-      try {
+  final DatabaseDescriptor databaseDescriptor=null;
+  try {
 synchronized (LOCK) {
-          serverSocket=new ServerSocket(port);
-        }
-        while (true) {
-          ServerSocket serverSocket_;
-synchronized (LOCK) {
-            serverSocket_=serverSocket;
+      serverSocket=CommunicationInterface.openServerCommunicationChannel(new CommunicationInterfaceFactory(){
+        @Override public CommunicationInterface createCommunicationInterface(        int port_){
+          final DebuggerServer serverDebugger=new DebuggerServer(databaseDescriptor);
+          DebuggerCommmunicationInterface commmunicationInterface=new DebuggerCommmunicationInterface(serverDebugger,port_){
+            @Override protected void processOpened(){
+              DebuggerRegistry.addSqlQueryDebugger(serverDebugger);
+            }
+            @Override protected void processClosed(){
+              DebuggerRegistry.removeSqlQueryDebugger(serverDebugger);
+            }
           }
-          if (serverSocket_ != null) {
-            Socket socket=serverSocket_.accept();
-            startServerToClientThread(socket,port);
-          }
+;
+          serverDebugger.setCommunicationInterface(commmunicationInterface);
+          return commmunicationInterface;
         }
       }
- catch (      Exception e) {
-        e.printStackTrace();
-      }
+,port);
     }
   }
-;
-  serverThread.setDaemon(true);
-  serverThread.start();
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
 }

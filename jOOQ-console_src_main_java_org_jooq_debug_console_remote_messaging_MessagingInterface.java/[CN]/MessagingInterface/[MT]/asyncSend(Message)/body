@@ -1,0 +1,9 @@
+{
+  message.setSyncExec(false);
+  try {
+    writeMessage(message);
+  }
+ catch (  Exception e) {
+    throw new IllegalStateException(e);
+  }
+}

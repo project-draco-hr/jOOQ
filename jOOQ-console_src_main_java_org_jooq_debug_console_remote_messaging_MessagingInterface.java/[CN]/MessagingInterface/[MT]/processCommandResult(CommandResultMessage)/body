@@ -1,0 +1,10 @@
+{
+  if (IS_DEBUGGING_MESSAGES) {
+    System.err.println("<USE: " + commandResultMessage.getID());
+  }
+  Throwable exception=commandResultMessage.getException();
+  if (exception != null) {
+    throw new RuntimeException(exception);
+  }
+  return commandResultMessage.getResult();
+}

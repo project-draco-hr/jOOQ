@@ -1,0 +1,14 @@
+{
+  MessagingInterface messagingInterface=getCommunicationInterface().getMessagingInterface();
+  int instanceID=(Integer)args[0];
+  Thread thread=(Thread)messagingInterface.syncThreadRegistry.get(instanceID);
+  messagingInterface.syncThreadRegistry.remove(instanceID);
+  if (thread == null) {
+    return null;
+  }
+synchronized (thread) {
+    messagingInterface.syncThreadRegistry.add(args[1],instanceID);
+    thread.notify();
+  }
+  return null;
+}

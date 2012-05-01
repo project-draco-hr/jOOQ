@@ -1,0 +1,81 @@
+{
+  this.communicationInterface=communicationInterface;
+  try {
+    oos=new ObjectOutputStream(new BufferedOutputStream(socket.getOutputStream()){
+      @Override public synchronized void write(      int b) throws IOException {
+        super.write(b);
+        oosByteCount++;
+      }
+      @Override public synchronized void write(      byte[] b,      int off,      int len) throws IOException {
+        super.write(b,off,len);
+        oosByteCount+=len;
+      }
+    }
+);
+    oos.flush();
+    ois=new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+  Thread receiverThread=new Thread("MessagingInterface Receiver"){
+    @Override public void run(){
+      while (isAlive) {
+        Message message=null;
+        try {
+          message=readMessage();
+        }
+ catch (        Exception e) {
+          if (isAlive) {
+            isAlive=false;
+            try {
+              communicationInterface.notifyKilled();
+            }
+ catch (            Exception ex) {
+              ex.printStackTrace();
+            }
+          }
+synchronized (RECEIVER_LOCK) {
+            receivedMessageList.clear();
+            RECEIVER_LOCK.notify();
+          }
+          for (          int instanceID : syncThreadRegistry.getInstanceIDs()) {
+            Thread thread=(Thread)syncThreadRegistry.get(instanceID);
+            if (thread != null) {
+synchronized (thread) {
+                thread.notify();
+              }
+            }
+          }
+        }
+        if (message != null) {
+          final Message message_=message;
+          new Thread("Communication Interface Async"){
+            @Override public void run(){
+              runMessage(message_);
+            }
+          }
+.start();
+        }
+      }
+      try {
+        oos.close();
+      }
+ catch (      Exception e) {
+      }
+      try {
+        ois.close();
+      }
+ catch (      Exception e) {
+      }
+      try {
+        socket.close();
+      }
+ catch (      Exception e) {
+      }
+    }
+  }
+;
+  receiverThread.setDaemon(true);
+  receiverThread.start();
+}

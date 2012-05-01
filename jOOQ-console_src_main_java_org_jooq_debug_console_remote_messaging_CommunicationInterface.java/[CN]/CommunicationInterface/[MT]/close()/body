@@ -1,0 +1,7 @@
+{
+  isOpen=false;
+  if (messagingInterface != null) {
+    messagingInterface.destroy();
+    messagingInterface=null;
+  }
+}

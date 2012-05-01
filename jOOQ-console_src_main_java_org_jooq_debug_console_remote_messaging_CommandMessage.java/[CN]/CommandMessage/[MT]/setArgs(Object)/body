@@ -1,0 +1,6 @@
+{
+  if (args.length == 0) {
+    args=null;
+  }
+  this.args=args;
+}

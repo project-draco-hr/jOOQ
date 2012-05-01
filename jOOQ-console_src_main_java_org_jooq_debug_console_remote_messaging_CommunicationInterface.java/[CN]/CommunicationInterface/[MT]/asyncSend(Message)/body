@@ -1,0 +1,14 @@
+{
+  if (IS_SYNCING_MESSAGES) {
+    syncSend(message);
+  }
+ else {
+    checkOpen();
+    if (message instanceof LocalMessage) {
+      LocalMessage localMessage=(LocalMessage)message;
+      localMessage.runCommand();
+      return;
+    }
+    messagingInterface.asyncSend(message);
+  }
+}

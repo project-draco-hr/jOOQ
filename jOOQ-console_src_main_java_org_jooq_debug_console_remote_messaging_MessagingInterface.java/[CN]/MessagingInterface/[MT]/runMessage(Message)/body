@@ -1,0 +1,39 @@
+{
+  if (IS_DEBUGGING_MESSAGES) {
+    System.err.println(">RUN: " + message.getID() + ", "+ message);
+  }
+  CommandResultMessage commandResultMessage;
+  if (message instanceof CommandMessage) {
+    CommandMessage commandMessage=(CommandMessage)message;
+    Object result=null;
+    Throwable throwable=null;
+    if (message.isValid()) {
+      try {
+        result=commandMessage.runCommand();
+      }
+ catch (      Throwable t) {
+        throwable=t;
+      }
+    }
+    if (commandMessage.isSyncExec()) {
+      commandResultMessage=new CommandResultMessage(commandMessage.getID(),result,throwable);
+      asyncSend(commandResultMessage);
+    }
+ else {
+      if (throwable != null) {
+        throwable.printStackTrace();
+      }
+      commandResultMessage=new CommandResultMessage(message.getID(),result,throwable);
+    }
+  }
+ else {
+    commandResultMessage=new CommandResultMessage(message.getID(),null,null);
+    if (message.isSyncExec()) {
+      asyncSend(commandResultMessage);
+    }
+  }
+  if (IS_DEBUGGING_MESSAGES) {
+    System.err.println("<RUN: " + message.getID());
+  }
+  return commandResultMessage;
+}

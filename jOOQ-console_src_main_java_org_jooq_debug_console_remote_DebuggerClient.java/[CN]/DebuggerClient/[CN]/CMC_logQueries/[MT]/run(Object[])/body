@@ -1,0 +1,7 @@
+{
+  LoggingListener loggingListener=getDebugger().getLoggingListener();
+  if (loggingListener != null) {
+    loggingListener.logQueries((QueryLoggingData)args[0]);
+  }
+  return null;
+}

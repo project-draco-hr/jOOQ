@@ -1,0 +1,3 @@
+{
+  return run(args == null ? EMPTY_ARGS : args);
+}

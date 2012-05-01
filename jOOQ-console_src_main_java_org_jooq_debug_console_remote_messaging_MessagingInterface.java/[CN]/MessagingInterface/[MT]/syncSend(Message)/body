@@ -1,0 +1,24 @@
+{
+  Thread thread=Thread.currentThread();
+  final int instanceID=syncThreadRegistry.add(Thread.currentThread());
+  CM_asyncExec asyncExec=new CM_asyncExec();
+  asyncExec.setArgs(instanceID,message);
+  asyncSend(asyncExec);
+synchronized (thread) {
+    while (syncThreadRegistry.get(instanceID) instanceof Thread) {
+      try {
+        thread.wait();
+      }
+ catch (      Exception e) {
+      }
+      if (!isAlive()) {
+        syncThreadRegistry.remove(instanceID);
+        printFailedInvocation(message);
+        return null;
+      }
+    }
+    CommandResultMessage commandResultMessage=(CommandResultMessage)syncThreadRegistry.get(instanceID);
+    syncThreadRegistry.remove(instanceID);
+    return processCommandResult(commandResultMessage);
+  }
+}

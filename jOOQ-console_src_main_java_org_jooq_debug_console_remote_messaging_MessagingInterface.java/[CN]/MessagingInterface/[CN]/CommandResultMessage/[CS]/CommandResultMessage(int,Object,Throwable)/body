@@ -1,0 +1,5 @@
+{
+  this.originalID=originalID;
+  this.result=result;
+  this.exception=exception;
+}

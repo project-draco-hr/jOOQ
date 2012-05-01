@@ -1,0 +1,17 @@
+{
+  if (!isAlive()) {
+    printFailedInvocation(message);
+    return;
+  }
+  if (IS_DEBUGGING_MESSAGES) {
+    System.err.println((message.isSyncExec() ? "SYNDS" : "SYNDA") + ": " + message.getID()+ ", "+ message);
+  }
+synchronized (oos) {
+    oos.writeUnshared(message);
+    oos.flush();
+    if (oosByteCount > OOS_RESET_THRESHOLD) {
+      oos.reset();
+      oosByteCount=0;
+    }
+  }
+}

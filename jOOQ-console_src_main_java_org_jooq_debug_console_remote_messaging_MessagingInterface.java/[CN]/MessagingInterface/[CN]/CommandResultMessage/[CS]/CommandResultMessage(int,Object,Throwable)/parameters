@@ -1,0 +1,3 @@
+int originalID
+Object result
+Throwable exception

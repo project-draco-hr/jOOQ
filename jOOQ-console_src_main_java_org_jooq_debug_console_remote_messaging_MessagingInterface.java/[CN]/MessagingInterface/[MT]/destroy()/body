@@ -1,0 +1,8 @@
+{
+  isAlive=false;
+  try {
+    ois.close();
+  }
+ catch (  Exception e) {
+  }
+}

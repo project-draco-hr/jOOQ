@@ -1,0 +1,16 @@
+{
+  if (isActive) {
+    setLoggingListener(new LoggingListener(){
+      @Override public void logQueries(      QueryLoggingData queryLoggingData){
+        new DebuggerClient.CMC_logQueries().asyncExec(communicationInterface,queryLoggingData);
+      }
+      @Override public void logResultSet(      int sqlQueryDebuggerDataID,      ResultSetLoggingData resultSetLoggingData){
+        new DebuggerClient.CMC_logResultSet().asyncExec(communicationInterface,sqlQueryDebuggerDataID,resultSetLoggingData);
+      }
+    }
+);
+  }
+ else {
+    setLoggingListener(null);
+  }
+}
