@@ -1,8 +1,4 @@
 {
-  new FArrays1();
-  new FTables1();
-  new FArrays4();
-  new FTables4();
   assertEquals(emptyList(),create().select().from(table(new UNumberArrayRecord(ora(),(Integer[])null))).fetch(0));
   assertEquals(emptyList(),create().select().from(table(new UNumberArrayRecord(ora()))).fetch(0));
   assertEquals(asList(1),create().select().from(table(new UNumberArrayRecord(ora(),1))).fetch(0));
