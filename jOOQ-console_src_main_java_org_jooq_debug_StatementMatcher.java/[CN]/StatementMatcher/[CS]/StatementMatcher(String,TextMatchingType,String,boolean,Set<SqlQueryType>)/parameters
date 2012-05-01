@@ -1,5 +1,0 @@
-String threadName
-TextMatchingType textMatchingType
-String text
-boolean isTextMatchingCaseSensitive
-Set<SqlQueryType> queryTypeSet
