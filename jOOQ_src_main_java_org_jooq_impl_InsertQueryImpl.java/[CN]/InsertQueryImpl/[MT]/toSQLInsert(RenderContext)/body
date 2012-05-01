@@ -1,5 +1,5 @@
 {
-  context.keyword("insert into ").sql(getInto()).sql(" ").sql(insertMaps);
+  context.keyword("insert ").keyword((onDuplicateKeyIgnore && context.getDialect() == MYSQL) ? "ignore " : "").keyword("into ").sql(getInto()).sql(" ").sql(insertMaps);
   if (!returning.isEmpty()) {
 switch (context.getDialect()) {
 case POSTGRES:

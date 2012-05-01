@@ -1,8 +1,5 @@
 {
-  if (!onDuplicateKeyUpdate) {
-    bindInsert(context);
-  }
- else {
+  if (onDuplicateKeyUpdate) {
 switch (context.getDialect()) {
 case CUBRID:
 case MYSQL:
@@ -26,5 +23,37 @@ case SYBASE:
 default :
 throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY UPDATE clause cannot be simulated for " + context.getDialect());
 }
+}
+ else if (onDuplicateKeyIgnore) {
+switch (context.getDialect()) {
+case MYSQL:
+{
+bindInsert(context);
+break;
+}
+case CUBRID:
+{
+bindInsert(context);
+break;
+}
+case H2:
+{
+throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY IGNORE clause cannot be simulated for " + context.getDialect());
+}
+case DB2:
+case HSQLDB:
+case ORACLE:
+case SQLSERVER:
+case SYBASE:
+{
+context.bind(toMerge());
+break;
+}
+default :
+throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY IGNORE clause cannot be simulated for " + context.getDialect());
+}
+}
+ else {
+bindInsert(context);
 }
 }

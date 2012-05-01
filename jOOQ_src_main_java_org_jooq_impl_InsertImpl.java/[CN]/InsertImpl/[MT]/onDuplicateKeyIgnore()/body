@@ -1,0 +1,4 @@
+{
+  getDelegate().onDuplicateKeyIgnore(true);
+  return this;
+}

@@ -1,0 +1,4 @@
+{
+  this.onDuplicateKeyUpdate=false;
+  this.onDuplicateKeyIgnore=flag;
+}

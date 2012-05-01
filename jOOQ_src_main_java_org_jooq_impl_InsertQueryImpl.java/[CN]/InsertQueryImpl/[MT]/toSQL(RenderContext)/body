@@ -1,8 +1,5 @@
 {
-  if (!onDuplicateKeyUpdate) {
-    toSQLInsert(context);
-  }
- else {
+  if (onDuplicateKeyUpdate) {
 switch (context.getDialect()) {
 case CUBRID:
 case MYSQL:
@@ -27,5 +24,41 @@ case SYBASE:
 default :
 throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY UPDATE clause cannot be simulated for " + context.getDialect());
 }
+}
+ else if (onDuplicateKeyIgnore) {
+switch (context.getDialect()) {
+case MYSQL:
+{
+toSQLInsert(context);
+break;
+}
+case CUBRID:
+{
+FieldMapForUpdate update=new FieldMapForUpdate();
+Field<?> field=getInto().getField(0);
+update.put(field,field);
+toSQLInsert(context);
+context.formatSeparator().keyword("on duplicate key update ").sql(update);
+break;
+}
+case H2:
+{
+throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY UPDATE clause cannot be simulated for " + context.getDialect());
+}
+case DB2:
+case HSQLDB:
+case ORACLE:
+case SQLSERVER:
+case SYBASE:
+{
+context.sql(toMerge());
+break;
+}
+default :
+throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY UPDATE clause cannot be simulated for " + context.getDialect());
+}
+}
+ else {
+toSQLInsert(context);
 }
 }
