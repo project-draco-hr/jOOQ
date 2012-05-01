@@ -116,7 +116,6 @@
   assertEquals(Factory.tanh((Integer)null),Factory.tanh((Field<Integer>)null));
   assertEquals(Factory.timestampAdd((Timestamp)null,(Integer)null),Factory.timestampAdd((Field<Timestamp>)null,(Field<Integer>)null));
   assertEquals(Factory.timestampDiff((Timestamp)null,(Timestamp)null),Factory.timestampDiff((Field<Timestamp>)null,(Field<Timestamp>)null));
-  assertEquals(Factory.trunc((Timestamp)null,null),Factory.trunc((Field<Timestamp>)null,null));
   assertEquals(Factory.trunc((Integer)null,null),Factory.trunc((Field<Integer>)null,null));
   assertEquals(Factory.trim((String)null),Factory.trim((Field<String>)null));
   assertEquals(Factory.upper((String)null),Factory.upper((Field<String>)null));
