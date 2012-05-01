@@ -1,0 +1,3 @@
+{
+  ctx.exception(new E("ERROR"));
+}

@@ -1,0 +1,9 @@
+{
+  Factory create=create(new Settings().withExecuteListeners(CustomExceptionListener.class.getName()));
+  try {
+    create.fetch("invalid sql");
+  }
+ catch (  E e) {
+    assertEquals("ERROR",e.getMessage());
+  }
+}

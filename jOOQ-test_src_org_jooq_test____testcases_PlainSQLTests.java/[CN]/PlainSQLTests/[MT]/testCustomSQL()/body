@@ -15,7 +15,7 @@
         context.statement().setInt(context.nextIndex(),2);
       }
  catch (      SQLException e) {
-        throw translate("CustomCondition.bind",getSQL(),e);
+        throw translate(getSQL(),e);
       }
     }
   }
@@ -39,7 +39,7 @@
         context.statement().setInt(context.nextIndex(),3);
       }
  catch (      SQLException e) {
-        throw translate("CustomCondition.bind",getSQL(),e);
+        throw translate(getSQL(),e);
       }
     }
   }

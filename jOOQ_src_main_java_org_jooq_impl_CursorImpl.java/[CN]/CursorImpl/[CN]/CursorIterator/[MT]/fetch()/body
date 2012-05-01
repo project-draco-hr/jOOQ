@@ -19,7 +19,9 @@
     }
   }
  catch (  SQLException e) {
-    throw Util.translate("Cursor.fetch",ctx.sql(),e);
+    ctx.sqlException(e);
+    listener.exception(ctx);
+    throw ctx.exception();
   }
   if (record == null) {
     CursorImpl.this.close();
