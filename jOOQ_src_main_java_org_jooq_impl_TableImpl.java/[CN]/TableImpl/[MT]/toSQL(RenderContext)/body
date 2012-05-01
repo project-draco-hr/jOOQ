@@ -3,10 +3,12 @@
     alias.toSQL(context);
   }
  else {
-    Schema mappedSchema=Util.getMappedSchema(context,getSchema());
-    if (mappedSchema != null) {
-      context.sql(mappedSchema);
-      context.sql(".");
+    if (context.qualify()) {
+      Schema mappedSchema=Util.getMappedSchema(context,getSchema());
+      if (mappedSchema != null) {
+        context.sql(mappedSchema);
+        context.sql(".");
+      }
     }
     context.literal(Util.getMappedTable(context,this).getName());
   }

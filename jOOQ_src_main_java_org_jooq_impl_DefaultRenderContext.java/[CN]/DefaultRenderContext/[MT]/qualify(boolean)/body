@@ -1,0 +1,4 @@
+{
+  this.qualify=q;
+  return this;
+}
