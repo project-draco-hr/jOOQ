@@ -1,0 +1,5 @@
+{
+  statementMatcherPanesContainer.removeAll();
+  statementMatcherPanesContainer.revalidate();
+  statementMatcherPanesContainer.repaint();
+}

@@ -1,0 +1,4 @@
+TextMatcher threadNameTextMatcher
+TextMatcher statementTextMatcher
+Set<SqlQueryType> queryTypeSet
+boolean isActive

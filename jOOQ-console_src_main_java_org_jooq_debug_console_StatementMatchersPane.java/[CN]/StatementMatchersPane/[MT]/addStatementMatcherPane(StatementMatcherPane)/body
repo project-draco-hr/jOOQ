@@ -1,0 +1,6 @@
+{
+  statementMatcherPanesContainer.add(statementMatcherPane);
+  statementMatcherPanesContainer.revalidate();
+  statementMatcherPanesContainer.repaint();
+  statementMatcherPanesContainer.scrollRectToVisible(new Rectangle(0,Short.MAX_VALUE,1,1));
+}

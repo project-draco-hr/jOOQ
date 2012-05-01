@@ -1,0 +1,18 @@
+{
+  this.type=type;
+  this.text=text;
+  this.isCaseSensitive=isCaseSensitive;
+switch (type) {
+case CONTAINS:
+{
+      String patternText=".*\\Q" + text.replace("\\E","\\\\E").replace("\\Q","\\\\Q") + "\\E.*\\Q";
+      pattern=Pattern.compile(patternText,isCaseSensitive ? Pattern.DOTALL : Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
+      break;
+    }
+case MATCHES_REG_EXP:
+{
+    pattern=Pattern.compile(text,isCaseSensitive ? Pattern.DOTALL : Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
+    break;
+  }
+}
+}
