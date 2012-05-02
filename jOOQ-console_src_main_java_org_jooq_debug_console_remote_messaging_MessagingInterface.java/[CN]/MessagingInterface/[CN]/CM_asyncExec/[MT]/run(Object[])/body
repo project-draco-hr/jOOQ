@@ -2,6 +2,7 @@
   Message message=(Message)args[1];
   message.setSyncExec(false);
   CommunicationInterface communicationInterface=getCommunicationInterface();
+  message.setCommunicationInterface(communicationInterface);
   MessagingInterface messagingInterface=communicationInterface.getMessagingInterface();
   CM_asyncExecResponse asyncExecResponse=new CM_asyncExecResponse();
   asyncExecResponse.setArgs(args[0],messagingInterface.runMessage(message));

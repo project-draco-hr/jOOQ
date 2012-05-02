@@ -1,5 +1,14 @@
 {
   message.setSyncExec(false);
+  Thread thread=Thread.currentThread();
+  if (thread instanceof MessageProcessingThread) {
+    message.setThreadID(((MessageProcessingThread)thread).getOriginatorThreadID());
+    message.setOriginatingSide(true);
+  }
+ else {
+    message.setThreadID(thread.getId());
+    message.setOriginatingSide(false);
+  }
   try {
     writeMessage(message);
   }

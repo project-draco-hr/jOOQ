@@ -1,14 +1,20 @@
 {
   MessagingInterface messagingInterface=getCommunicationInterface().getMessagingInterface();
-  int instanceID=(Integer)args[0];
-  Thread thread=(Thread)messagingInterface.syncThreadRegistry.get(instanceID);
-  messagingInterface.syncThreadRegistry.remove(instanceID);
-  if (thread == null) {
+  long threadID=(Long)args[0];
+  CommandResultMessage commandResultMessage=(CommandResultMessage)args[1];
+  if (!commandResultMessage.isOriginatingSide()) {
+    return messagingInterface.processCommandResult(commandResultMessage);
+  }
+  ThreadInfo threadInfo;
+synchronized (messagingInterface.idToThreadInfo) {
+    threadInfo=messagingInterface.idToThreadInfo.get(threadID);
+  }
+  if (threadInfo == null) {
     return null;
   }
-synchronized (thread) {
-    messagingInterface.syncThreadRegistry.add(args[1],instanceID);
-    thread.notify();
+synchronized (threadInfo) {
+    threadInfo.setMessage(commandResultMessage);
+    threadInfo.notify();
   }
   return null;
 }
