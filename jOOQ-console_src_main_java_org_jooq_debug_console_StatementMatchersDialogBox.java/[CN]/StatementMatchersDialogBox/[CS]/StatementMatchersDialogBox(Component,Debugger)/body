@@ -3,6 +3,7 @@
   setDefaultCloseOperation(DISPOSE_ON_CLOSE);
   Container contentPane=getContentPane();
   final StatementMatchersPane statementMatchersPane=new StatementMatchersPane(debugger.getLoggingStatementMatchers());
+  statementMatchersPane.setBorder(BorderFactory.createEmptyBorder(2,2,0,2));
   contentPane.add(statementMatchersPane,BorderLayout.CENTER);
   JPanel buttonBar=new JPanel(new BorderLayout());
   buttonBar.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
