@@ -3,11 +3,11 @@
   Thread thread=Thread.currentThread();
   if (thread instanceof MessageProcessingThread) {
     message.setThreadID(((MessageProcessingThread)thread).getOriginatorThreadID());
-    message.setOriginatingSide(true);
+    message.setProcessorToOriginator(true);
   }
  else {
     message.setThreadID(thread.getId());
-    message.setOriginatingSide(false);
+    message.setProcessorToOriginator(false);
   }
   try {
     writeMessage(message);

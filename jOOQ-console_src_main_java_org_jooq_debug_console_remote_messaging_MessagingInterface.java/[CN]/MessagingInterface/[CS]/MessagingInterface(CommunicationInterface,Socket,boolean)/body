@@ -1,5 +1,6 @@
 {
   this.communicationInterface=communicationInterface;
+  this.isClient=isClient;
   try {
     oos=new ObjectOutputStream(new BufferedOutputStream(socket.getOutputStream()){
       @Override public synchronized void write(      int b) throws IOException {
@@ -18,7 +19,7 @@
  catch (  IOException e) {
     throw new RuntimeException(e);
   }
-  Thread receiverThread=new Thread("MessagingInterface Receiver"){
+  Thread receiverThread=new Thread("MessagingInterface Receiver (" + (isClient ? "client" : "server") + ")"){
     @Override public void run(){
       while (isAlive) {
         Message message=null;
@@ -49,8 +50,33 @@ synchronized (threadInfo) {
         }
         if (message != null) {
           long threadID=message.getThreadID();
-          boolean isOriginatingSide=message.isOriginatingSide();
-          if (isOriginatingSide) {
+          boolean isProcessorToOriginator=message.isProcessorToOriginator();
+          if (!isProcessorToOriginator) {
+            MessageProcessingThread messageProcessingThread;
+            boolean isNew=false;
+synchronized (originatorThreadIDToThreadMap) {
+              messageProcessingThread=originatorThreadIDToThreadMap.get(threadID);
+              if (messageProcessingThread == null) {
+                messageProcessingThread=new MessageProcessingThread(threadID);
+                originatorThreadIDToThreadMap.put(threadID,messageProcessingThread);
+                isNew=true;
+                messageProcessingThread.addMessage(message);
+              }
+ else {
+                if (messageProcessingThread.isWaitingOnSyncCall()) {
+                  threadID=messageProcessingThread.getId();
+                  isProcessorToOriginator=true;
+                }
+ else {
+                  messageProcessingThread.addMessage(message);
+                }
+              }
+            }
+            if (isNew) {
+              messageProcessingThread.start();
+            }
+          }
+          if (isProcessorToOriginator) {
             ThreadInfo threadInfo;
 synchronized (idToThreadInfo) {
               threadInfo=idToThreadInfo.get(threadID);
@@ -66,22 +92,6 @@ synchronized (threadInfo) {
             }
  else {
               System.err.println("What to do?");
-            }
-          }
- else {
-            MessageProcessingThread messageProcessingThread;
-            boolean isNew=false;
-synchronized (originatorThreadIDToThreadMap) {
-              messageProcessingThread=originatorThreadIDToThreadMap.get(threadID);
-              if (messageProcessingThread == null) {
-                messageProcessingThread=new MessageProcessingThread(threadID);
-                originatorThreadIDToThreadMap.put(threadID,messageProcessingThread);
-                isNew=true;
-              }
-              messageProcessingThread.addMessage(message);
-            }
-            if (isNew) {
-              messageProcessingThread.start();
             }
           }
         }

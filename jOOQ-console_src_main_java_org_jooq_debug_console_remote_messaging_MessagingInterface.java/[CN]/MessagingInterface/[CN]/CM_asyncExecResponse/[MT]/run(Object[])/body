@@ -2,14 +2,12 @@
   MessagingInterface messagingInterface=getCommunicationInterface().getMessagingInterface();
   long threadID=(Long)args[0];
   CommandResultMessage commandResultMessage=(CommandResultMessage)args[1];
-  if (!commandResultMessage.isOriginatingSide()) {
-    return messagingInterface.processCommandResult(commandResultMessage);
-  }
   ThreadInfo threadInfo;
 synchronized (messagingInterface.idToThreadInfo) {
     threadInfo=messagingInterface.idToThreadInfo.get(threadID);
   }
   if (threadInfo == null) {
+    System.err.println("A sync call is missing.");
     return null;
   }
 synchronized (threadInfo) {

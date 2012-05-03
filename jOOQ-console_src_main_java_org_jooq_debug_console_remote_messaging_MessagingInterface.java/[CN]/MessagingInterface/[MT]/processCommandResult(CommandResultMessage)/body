@@ -1,6 +1,6 @@
 {
   if (IS_DEBUGGING_MESSAGES) {
-    System.err.println("<USE: " + commandResultMessage.getID());
+    System.err.println("[" + (isClient ? "client" : "server") + "] <USE: "+ commandResultMessage.getID());
   }
   Throwable exception=commandResultMessage.getException();
   if (exception != null) {

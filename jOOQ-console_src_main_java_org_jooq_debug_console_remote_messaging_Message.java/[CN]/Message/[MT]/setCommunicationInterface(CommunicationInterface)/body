@@ -1,6 +1,3 @@
 {
-  if (communicationInterface == null) {
-    System.err.println("in");
-  }
   this.communicationInterface=communicationInterface;
 }

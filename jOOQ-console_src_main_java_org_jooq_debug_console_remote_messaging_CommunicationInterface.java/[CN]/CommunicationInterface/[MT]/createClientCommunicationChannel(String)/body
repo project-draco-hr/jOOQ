@@ -19,6 +19,6 @@
   if (socket == null) {
     throw new IllegalStateException("Failed to connect to " + ip + "!");
   }
-  messagingInterface=new MessagingInterface(this,socket);
+  messagingInterface=new MessagingInterface(this,socket,true);
   notifyOpen();
 }

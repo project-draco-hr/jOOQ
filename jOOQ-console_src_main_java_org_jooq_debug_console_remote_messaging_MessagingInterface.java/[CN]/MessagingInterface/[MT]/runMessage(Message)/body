@@ -1,6 +1,6 @@
 {
   if (IS_DEBUGGING_MESSAGES) {
-    System.err.println(">RUN: " + message.getID() + ", "+ message);
+    System.err.println("[" + (isClient ? "client" : "server") + "] >RUN: "+ message.getID()+ ", "+ message);
   }
   CommandResultMessage commandResultMessage;
   if (message instanceof CommandMessage) {
@@ -9,6 +9,7 @@
     Throwable throwable=null;
     if (message.isValid()) {
       try {
+        commandMessage.setCommunicationInterface(communicationInterface);
         result=commandMessage.runCommand();
       }
  catch (      Throwable t) {
@@ -33,7 +34,7 @@
     }
   }
   if (IS_DEBUGGING_MESSAGES) {
-    System.err.println("<RUN: " + message.getID());
+    System.err.println("[" + (isClient ? "client" : "server") + "] <RUN: "+ message.getID());
   }
   return commandResultMessage;
 }

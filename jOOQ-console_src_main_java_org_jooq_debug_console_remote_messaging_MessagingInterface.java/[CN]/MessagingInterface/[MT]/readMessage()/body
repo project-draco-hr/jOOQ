@@ -3,11 +3,10 @@
   if (o instanceof Message) {
     Message message=(Message)o;
     if (IS_DEBUGGING_MESSAGES) {
-      System.err.println("RECV: " + message.getID() + ", "+ message);
+      System.err.println("[" + (isClient ? "client" : "server") + "] RECV: "+ message.getID()+ ", "+ message);
     }
-    message.setCommunicationInterface(communicationInterface);
     return message;
   }
-  System.err.println("Unknown message: " + o);
+  System.err.println("[" + (isClient ? "client" : "server") + "] Unknown message: "+ o);
   return null;
 }

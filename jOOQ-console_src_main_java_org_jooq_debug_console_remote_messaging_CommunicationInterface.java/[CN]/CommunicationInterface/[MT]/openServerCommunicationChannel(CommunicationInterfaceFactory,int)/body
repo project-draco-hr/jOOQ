@@ -16,7 +16,7 @@
           new Thread("Communication channel - client connection"){
             @Override public void run(){
               CommunicationInterface communicationInterface=communicationInterfaceFactory.createCommunicationInterface(port);
-              communicationInterface.messagingInterface=new MessagingInterface(communicationInterface,socket);
+              communicationInterface.messagingInterface=new MessagingInterface(communicationInterface,socket,false);
               communicationInterface.notifyOpen();
             }
           }
