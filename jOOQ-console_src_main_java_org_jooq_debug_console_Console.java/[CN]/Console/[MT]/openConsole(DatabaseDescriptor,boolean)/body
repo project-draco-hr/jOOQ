@@ -1,12 +1,5 @@
 {
-  final LocalDebugger debugger=new LocalDebugger(databaseDescriptor);
-  Console sqlConsoleFrame=new Console(debugger,true);
+  Console sqlConsoleFrame=new Console(databaseDescriptor,true);
   sqlConsoleFrame.setLoggingActive(isLoggingActive);
-  sqlConsoleFrame.addWindowListener(new WindowAdapter(){
-    @Override public void windowClosing(    WindowEvent e){
-      DebuggerRegistry.removeSqlQueryDebugger(debugger);
-    }
-  }
-);
   sqlConsoleFrame.setVisible(true);
 }
