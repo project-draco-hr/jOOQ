@@ -31,13 +31,14 @@
   }
 );
   loggerHeaderWestPanel.add(loggerOffButton);
-  statementMatcherButton=new JButton();
+  statementMatcherButton=new JToggleButton(new ImageIcon(getClass().getResource("/org/jooq/debug/console/resources/Filter16.png")));
   statementMatcherButton.setOpaque(false);
   statementMatcherButton.setFocusable(false);
   statementMatcherButton.setToolTipText("Filter incoming statements");
   adjustStatementMatcherButton();
   statementMatcherButton.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    ActionEvent e){
+      statementMatcherButton.setSelected(true);
       new StatementMatchersDialogBox(LoggerPane.this,LoggerPane.this.debugger).setVisible(true);
       adjustStatementMatcherButton();
     }

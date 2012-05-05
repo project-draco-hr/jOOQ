@@ -1,4 +1,7 @@
 {
+  if (!(statementMatcherPanesContainer.getComponent(0) instanceof StatementMatcherPane)) {
+    statementMatcherPanesContainer.remove(0);
+  }
   statementMatcherPanesContainer.add(statementMatcherPane);
   statementMatcherPanesContainer.revalidate();
   statementMatcherPanesContainer.repaint();

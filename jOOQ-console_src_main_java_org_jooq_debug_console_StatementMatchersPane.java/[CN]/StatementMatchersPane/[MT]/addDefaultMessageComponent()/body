@@ -1,0 +1,5 @@
+{
+  JLabel messageLabel=new JLabel("No statement filters, logging everything.");
+  messageLabel.setFont(messageLabel.getFont().deriveFont(Font.ITALIC));
+  statementMatcherPanesContainer.add(messageLabel);
+}

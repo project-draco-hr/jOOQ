@@ -1,9 +1,4 @@
 {
   StatementMatcher[] loggingStatementMatchers=LoggerPane.this.debugger.getLoggingStatementMatchers();
-  if (loggingStatementMatchers != null) {
-    statementMatcherButton.setIcon(new ImageIcon(getClass().getResource("/org/jooq/debug/console/resources/FilterOn16.png")));
-  }
- else {
-    statementMatcherButton.setIcon(new ImageIcon(getClass().getResource("/org/jooq/debug/console/resources/FilterOff16.png")));
-  }
+  statementMatcherButton.setSelected(loggingStatementMatchers != null);
 }
