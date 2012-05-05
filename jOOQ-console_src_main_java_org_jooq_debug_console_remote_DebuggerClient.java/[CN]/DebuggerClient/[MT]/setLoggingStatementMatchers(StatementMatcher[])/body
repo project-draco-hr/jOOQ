@@ -1,4 +1,0 @@
-{
-  this.loggingStatementMatchers=loggingStatementMatchers;
-  new DebuggerServer.CMS_setLoggingStatementMatchers().asyncExec(communicationInterface,(Object)loggingStatementMatchers);
-}
