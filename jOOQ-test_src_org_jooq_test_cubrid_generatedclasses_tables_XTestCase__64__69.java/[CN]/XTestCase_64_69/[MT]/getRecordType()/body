@@ -1,3 +1,3 @@
 {
-  return __RECORD_TYPE;
+  return org.jooq.test.cubrid.generatedclasses.tables.records.XTestCase_64_69Record.class;
 }
