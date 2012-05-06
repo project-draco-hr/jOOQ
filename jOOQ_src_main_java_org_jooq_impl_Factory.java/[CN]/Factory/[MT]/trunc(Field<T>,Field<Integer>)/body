@@ -1,3 +1,3 @@
 {
-  return new Trunc<T>(number,decimals);
+  return new Trunc<T>(nullSafe(number),nullSafe(decimals));
 }
