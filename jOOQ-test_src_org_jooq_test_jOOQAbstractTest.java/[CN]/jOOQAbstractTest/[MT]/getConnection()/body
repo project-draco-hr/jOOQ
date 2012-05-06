@@ -4,19 +4,12 @@
     connection=getConnection0(null,null);
     boolean runConsoleInProcess=false;
     if (runConsoleInProcess) {
-      DatabaseDescriptor descriptor=new DatabaseDescriptor(){
-        @Override public Schema getSchema(){
-          return jOOQAbstractTest.this.schema();
-        }
-        @Override public SQLDialect getSQLDialect(){
-          return SQLDialect.ORACLE;
-        }
-        @Override public Connection createConnection(){
-          return jOOQAbstractTest.this.getConnection();
-        }
-      }
-;
       try {
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        Debugger debugger=new ClientDebugger("127.0.0.1",DEBUGGER_PORT);
+        Console console=new Console(debugger,true);
+        console.setLoggingActive(true);
+        console.setVisible(true);
       }
  catch (      Exception ignore) {
       }
