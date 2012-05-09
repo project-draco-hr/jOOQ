@@ -1,0 +1,20 @@
+{
+  Statement statement=null;
+  try {
+    statement=ctx.getConnection().createStatement();
+    statement.execute(sql);
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+ finally {
+    if (statement != null) {
+      try {
+        statement.close();
+      }
+ catch (      Exception e) {
+        e.printStackTrace();
+      }
+    }
+  }
+}

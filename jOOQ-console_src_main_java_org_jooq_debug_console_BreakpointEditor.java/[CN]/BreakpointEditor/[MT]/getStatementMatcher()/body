@@ -1,0 +1,29 @@
+{
+  boolean isActive=true;
+  TextMatcher threadNameTextMatcher=threadNameTextMatcherCheckBox.isSelected() ? threadNameTextMatcherPane.getTextMatcher() : null;
+  TextMatcher statementTextMatcher=statementTextMatcherCheckBox.isSelected() ? statementTextMatcherPane.getTextMatcher() : null;
+  Set<SqlQueryType> queryTypeSet;
+  if (statementTypeCheckBox.isSelected()) {
+    List<SqlQueryType> typeList=new ArrayList<SqlQueryType>();
+    if (statementTypeSelectCheckBox.isSelected()) {
+      typeList.add(SqlQueryType.SELECT);
+    }
+    if (statementTypeUpdateCheckBox.isSelected()) {
+      typeList.add(SqlQueryType.UPDATE);
+    }
+    if (statementTypeInsertCheckBox.isSelected()) {
+      typeList.add(SqlQueryType.INSERT);
+    }
+    if (statementTypeDeleteCheckBox.isSelected()) {
+      typeList.add(SqlQueryType.DELETE);
+    }
+    if (statementTypeOtherCheckBox.isSelected()) {
+      typeList.add(SqlQueryType.OTHER);
+    }
+    queryTypeSet=EnumSet.copyOf(typeList);
+  }
+ else {
+    queryTypeSet=null;
+  }
+  return new StatementMatcher(threadNameTextMatcher,statementTextMatcher,queryTypeSet,isActive);
+}

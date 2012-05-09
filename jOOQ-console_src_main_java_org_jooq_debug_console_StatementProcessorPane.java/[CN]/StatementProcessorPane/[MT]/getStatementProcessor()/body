@@ -1,0 +1,3 @@
+{
+  return new StatementProcessor((StatementProcessor.ProcessorExecutionType)processorTypeComboBox.getSelectedItem(),processorTextField.getText());
+}

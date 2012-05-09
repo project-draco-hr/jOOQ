@@ -1,0 +1,12 @@
+{
+  boolean returnValue=false;
+  if (event instanceof MouseEvent) {
+    MouseEvent mouseEvent=(MouseEvent)event;
+    TreePath path=tree.getPathForLocation(mouseEvent.getX(),mouseEvent.getY());
+    if (path != null) {
+      Object node=path.getLastPathComponent();
+      returnValue=node instanceof CheckBoxNode;
+    }
+  }
+  return returnValue;
+}

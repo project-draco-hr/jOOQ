@@ -1,0 +1,12 @@
+{
+  TreePath[] paths=breakpointTree.getSelectionPaths();
+  eastPane.removeAll();
+  if (paths != null && paths.length == 1) {
+    Object o=((DefaultMutableTreeNode)paths[0].getLastPathComponent()).getUserObject();
+    if (o instanceof Breakpoint) {
+      eastPane.add(new BreakpointEditor(this,(Breakpoint)o));
+    }
+  }
+  eastPane.revalidate();
+  eastPane.repaint();
+}

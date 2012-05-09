@@ -1,3 +1,5 @@
 {
-  return loggingStatementMatchers;
+synchronized (LOGGING_STATEMENT_MATCHERS_LOCK) {
+    return loggingStatementMatchers;
+  }
 }

@@ -1,0 +1,9 @@
+{
+switch (type) {
+case STATIC:
+    return text;
+case SED_LIKE_REG_EXP:
+  return Utils.applySedRegularExpression(sql,text);
+}
+throw new IllegalStateException();
+}

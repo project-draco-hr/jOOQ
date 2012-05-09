@@ -1,0 +1,11 @@
+{
+  List<Breakpoint> breakpointList=new ArrayList<Breakpoint>();
+  int childCount=rootNode.getChildCount();
+  for (int i=0; i < childCount; i++) {
+    CheckBoxNode node=(CheckBoxNode)rootNode.getChildAt(i);
+    if (node.isSelected()) {
+      breakpointList.add((Breakpoint)node.getUserObject());
+    }
+  }
+  debugger.setBreakpoints(breakpointList.toArray(new Breakpoint[0]));
+}

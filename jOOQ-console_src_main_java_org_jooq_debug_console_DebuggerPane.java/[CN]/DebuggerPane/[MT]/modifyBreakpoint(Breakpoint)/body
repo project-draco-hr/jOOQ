@@ -1,0 +1,12 @@
+{
+  int childCount=rootNode.getChildCount();
+  for (int i=0; i < childCount; i++) {
+    CheckBoxNode checkBoxNode=(CheckBoxNode)rootNode.getChildAt(i);
+    Breakpoint breakpoint_=(Breakpoint)checkBoxNode.getUserObject();
+    if (breakpoint_.getID() == breakpoint.getID()) {
+      checkBoxNode.setUserObject(breakpoint);
+      commitBreakpoints();
+      break;
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  super(new BorderLayout());
+  this.debugger=debugger;
+  JPanel westPane=new JPanel(new BorderLayout());
+  JPanel breakpointAddPane=new JPanel(new GridBagLayout());
+  final JTextField addBreakpointTextField=new JTextField(7);
+  breakpointAddPane.add(addBreakpointTextField,new GridBagConstraints(0,0,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(0,0,0,0),0,0));
+  final JButton addBreakpointButton=new JButton("Add");
+  addBreakpointButton.setEnabled(false);
+  breakpointAddPane.add(addBreakpointButton,new GridBagConstraints(1,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(0,2,0,0),0,0));
+  addBreakpointTextField.getDocument().addDocumentListener(new DocumentListener(){
+    @Override public void removeUpdate(    DocumentEvent e){
+      adjustStates();
+    }
+    @Override public void insertUpdate(    DocumentEvent e){
+      adjustStates();
+    }
+    @Override public void changedUpdate(    DocumentEvent e){
+      adjustStates();
+    }
+    private void adjustStates(){
+      boolean isEnabled=addBreakpointTextField.getText().length() > 0;
+      addBreakpointButton.setEnabled(isEnabled);
+    }
+  }
+);
+  ActionListener addBreakpointActionListener=new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      String name=addBreakpointTextField.getText();
+      addBreakpointTextField.setText("");
+      addBreakpoint(name);
+    }
+  }
+;
+  addBreakpointTextField.addActionListener(addBreakpointActionListener);
+  addBreakpointButton.addActionListener(addBreakpointActionListener);
+  westPane.add(breakpointAddPane,BorderLayout.NORTH);
+  rootNode=new DefaultMutableTreeNode();
+  breakpointTreeModel=new DefaultTreeModel(rootNode){
+    @Override public void valueForPathChanged(    TreePath path,    Object newValue){
+      if (newValue instanceof CheckBoxNode) {
+        CheckBoxNode node=(CheckBoxNode)path.getLastPathComponent();
+        node.setSelected(((CheckBoxNode)newValue).isSelected());
+        super.valueForPathChanged(path,node.getUserObject());
+      }
+    }
+  }
+;
+  breakpointTree=new JTree(breakpointTreeModel);
+  breakpointTree.setRootVisible(false);
+  breakpointTree.setCellRenderer(new CheckBoxNodeRenderer());
+  breakpointTree.setCellEditor(new CheckBoxNodeEditor(breakpointTree));
+  breakpointTree.setEditable(true);
+  westPane.add(new JScrollPane(breakpointTree),BorderLayout.CENTER);
+  JPanel breakpointRemovePane=new JPanel(new FlowLayout(FlowLayout.CENTER,0,0));
+  final JButton removeBreakpointButton=new JButton("Remove");
+  removeBreakpointButton.setEnabled(false);
+  removeBreakpointButton.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      TreePath[] paths=breakpointTree.getSelectionPaths();
+      boolean isValid=paths != null && paths.length > 0;
+      if (isValid) {
+        for (int i=0; i < paths.length; i++) {
+          if (!(paths[i].getLastPathComponent() instanceof CheckBoxNode)) {
+            isValid=false;
+            break;
+          }
+        }
+      }
+      if (isValid) {
+        breakpointTree.cancelEditing();
+        for (int i=0; i < paths.length; i++) {
+          CheckBoxNode childNode=(CheckBoxNode)paths[i].getLastPathComponent();
+          int index=rootNode.getIndex(childNode);
+          rootNode.remove(index);
+          breakpointTreeModel.nodesWereRemoved(rootNode,new int[]{index},new Object[]{childNode});
+        }
+        commitBreakpoints();
+      }
+    }
+  }
+);
+  breakpointTree.getSelectionModel().addTreeSelectionListener(new TreeSelectionListener(){
+    @Override public void valueChanged(    TreeSelectionEvent e){
+      TreePath[] paths=breakpointTree.getSelectionPaths();
+      boolean isValid=paths != null && paths.length > 0;
+      if (isValid) {
+        for (int i=0; i < paths.length; i++) {
+          if (!(paths[i].getLastPathComponent() instanceof CheckBoxNode)) {
+            isValid=false;
+            break;
+          }
+        }
+      }
+      removeBreakpointButton.setEnabled(isValid);
+      processTreeSelection();
+    }
+  }
+);
+  breakpointRemovePane.add(removeBreakpointButton);
+  westPane.add(breakpointRemovePane,BorderLayout.SOUTH);
+  eastPane=new JPanel(new BorderLayout());
+  add(new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,true,westPane,eastPane),BorderLayout.CENTER);
+}

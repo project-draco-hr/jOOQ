@@ -1,0 +1,13 @@
+{
+  StatementMatcher statementMatcher=getStatementMatcher();
+  boolean isBreaking=breakpointTypeComboBox.getSelectedItem() == BREAK;
+  StatementProcessor beforeExecutionProcessor=null;
+  StatementProcessor replacementExecutionProcessor=null;
+  StatementProcessor afterExecutionProcessor=null;
+  if (!isBreaking) {
+    beforeExecutionProcessor=beforeExecutionCheckBox.isSelected() ? beforeExecutionProcessorPane.getStatementProcessor() : null;
+    replacementExecutionProcessor=replaceExecutionRadioButton.isSelected() ? replacementExecutionProcessorPane.getStatementProcessor() : null;
+    afterExecutionProcessor=afterExecutionCheckBox.isSelected() ? afterExecutionProcessorPane.getStatementProcessor() : null;
+  }
+  return new Breakpoint(id,statementMatcher,isBreaking,beforeExecutionProcessor,replacementExecutionProcessor,afterExecutionProcessor);
+}

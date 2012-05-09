@@ -1,4 +1,6 @@
 {
-  this.loggingListener=loggingListener;
+synchronized (LOGGING_LISTENER_LOCK) {
+    this.loggingListener=loggingListener;
+  }
   new ServerDebugger.CMS_setLoggingActive().asyncExec(communicationInterface,loggingListener != null);
 }

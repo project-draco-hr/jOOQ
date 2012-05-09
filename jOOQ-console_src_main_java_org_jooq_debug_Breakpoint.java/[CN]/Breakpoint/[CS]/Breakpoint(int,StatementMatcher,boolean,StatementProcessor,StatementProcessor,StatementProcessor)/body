@@ -1,0 +1,8 @@
+{
+  this.id=id;
+  this.statementMatcher=statementMatcher;
+  this.isBreaking=isBreaking;
+  this.beforeExecutionProcessor=beforeExecutionProcessor;
+  this.replacementExecutionProcessor=replacementExecutionProcessor;
+  this.afterExecutionProcessor=afterExecutionProcessor;
+}

@@ -1,0 +1,4 @@
+{
+  this.breakpointID=breakpointID;
+  this.sql=sql;
+}

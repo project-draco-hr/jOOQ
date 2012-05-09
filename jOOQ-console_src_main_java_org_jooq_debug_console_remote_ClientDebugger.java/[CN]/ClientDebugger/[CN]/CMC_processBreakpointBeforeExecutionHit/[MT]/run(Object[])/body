@@ -1,0 +1,12 @@
+{
+  BreakpointHitHandler breakpointHitHandler=getDebugger().getBreakpointHitHandler();
+  if (breakpointHitHandler != null) {
+    BreakpointBeforeExecutionHit breakpointHit=(BreakpointBeforeExecutionHit)args[0];
+    breakpointHitHandler.processBreakpointBeforeExecutionHit(breakpointHit);
+    if (breakpointHit.getBreakpointID() != null) {
+      breakpointHit.setExecutionType(BreakpointBeforeExecutionHit.ExecutionType.RUN,null);
+    }
+    return breakpointHit;
+  }
+  return null;
+}

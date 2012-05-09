@@ -1,0 +1,4 @@
+{
+  this.debugger=debugger;
+  init(isShowingLoggingTab,isShowingDebugger);
+}

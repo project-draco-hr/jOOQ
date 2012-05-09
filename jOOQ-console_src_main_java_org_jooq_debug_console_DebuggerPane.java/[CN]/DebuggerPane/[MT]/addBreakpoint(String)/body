@@ -1,0 +1,9 @@
+{
+  breakpointTree.cancelEditing();
+  Breakpoint breakpoint=new Breakpoint(nextID++,null,true,null,null,null);
+  CheckBoxNode breakpointNode=new CheckBoxNode(breakpoint,name,true);
+  rootNode.add(breakpointNode);
+  breakpointTreeModel.nodesWereInserted(rootNode,new int[]{rootNode.getIndex(breakpointNode)});
+  breakpointTree.expandPath(new TreePath(rootNode));
+  commitBreakpoints();
+}

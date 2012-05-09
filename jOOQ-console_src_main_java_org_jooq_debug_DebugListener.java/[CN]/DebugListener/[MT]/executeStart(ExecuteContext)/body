@@ -1,6 +1,114 @@
 {
-  if (!isLogging) {
-    return;
+  BreakpointHitHandler breakpointHitHandler=null;
+  List<Debugger> debuggerList=DebuggerRegistry.getDebuggerList();
+  if (!debuggerList.isEmpty()) {
+    StatementInfo statementInfo=null;
+    bp:     for (    Debugger debugger : debuggerList) {
+      Breakpoint[] breakpoints=debugger.getBreakpoints();
+      if (breakpoints != null) {
+        for (        Breakpoint breakpoint : breakpoints) {
+          if (statementInfo == null) {
+            String[] sql=ctx.batchSQL();
+            SqlQueryType sqlQueryType=SqlQueryType.detectType(sql[0]);
+            String parameterDescription=null;
+            if (sql.length == 1) {
+              matchingSQL=sql[0];
+              PreparedStatement statement=ctx.statement();
+              if (statement instanceof UsageTrackingPreparedStatement) {
+                parameterDescription=((UsageTrackingPreparedStatement)statement).getParameterDescription();
+              }
+            }
+ else {
+              StringBuilder sb=new StringBuilder();
+              for (int i=0; i < sql.length; i++) {
+                if (i > 0) {
+                  sb.append('\n');
+                }
+                sb.append(sql[i]);
+              }
+              matchingSQL=sb.toString();
+            }
+            statementInfo=new StatementInfo(sqlQueryType,sql,parameterDescription);
+          }
+          if (breakpoint.matches(statementInfo)) {
+            matchingBreakpoint=breakpoint;
+            if (breakpoint.isBreaking()) {
+              breakpointHitHandler=debugger.getBreakpointHitHandler();
+            }
+            break bp;
+          }
+        }
+      }
+    }
   }
-  startExecutionTime=System.currentTimeMillis();
+  if (matchingBreakpoint != null) {
+    StatementProcessor beforeExecutionProcessor=matchingBreakpoint.getBeforeExecutionProcessor();
+    if (beforeExecutionProcessor != null) {
+      String sql=beforeExecutionProcessor.processSQL(matchingSQL);
+      long subStartExecutionTime=System.currentTimeMillis();
+      executeSQL(ctx,sql);
+      long subEndExecutionTime=System.currentTimeMillis();
+      for (      Debugger listener : debuggerList) {
+        LoggingListener loggingListener=listener.getLoggingListener();
+        if (loggingListener != null) {
+          SqlQueryType sqlQueryType=SqlQueryType.detectType(sql);
+          QueryLoggingData queryLoggingData=new QueryLoggingData(sqlQueryType,new String[]{sql},null,null,null,subEndExecutionTime - subStartExecutionTime);
+          StatementMatcher[] loggingStatementMatchers=listener.getLoggingStatementMatchers();
+          if (loggingStatementMatchers == null) {
+            loggingListener.logQueries(queryLoggingData);
+          }
+ else           for (          StatementMatcher statementMatcher : loggingStatementMatchers) {
+            if (statementMatcher.matches(queryLoggingData)) {
+              loggingListener.logQueries(queryLoggingData);
+              break;
+            }
+          }
+        }
+      }
+    }
+    String mainSQL=null;
+    StatementProcessor replacementExecutionProcessor=matchingBreakpoint.getReplacementExecutionProcessor();
+    if (replacementExecutionProcessor != null) {
+      mainSQL=replacementExecutionProcessor.processSQL(matchingSQL);
+      try {
+        ctx.statement().close();
+        ctx.sql(mainSQL);
+        ctx.statement(ctx.getConnection().prepareStatement(mainSQL));
+      }
+ catch (      Exception e) {
+        throw new RuntimeException(e);
+      }
+    }
+    ExecutionType executionType=BreakpointBeforeExecutionHit.ExecutionType.RUN;
+    if (breakpointHitHandler != null) {
+      effectiveSQL=mainSQL != null ? mainSQL : matchingSQL;
+      BreakpointBeforeExecutionHit breakpointBeforeExecutionHit=new BreakpointBeforeExecutionHit(matchingBreakpoint.getID(),effectiveSQL);
+      breakpointHitHandler.processBreakpointBeforeExecutionHit(breakpointBeforeExecutionHit);
+      executionType=breakpointBeforeExecutionHit.getExecutionType();
+    }
+switch (executionType) {
+case STEP_THROUGH:
+{
+        matchingBreakpointHitHandler=breakpointHitHandler;
+        break;
+      }
+case RUN_OVER:
+{
+      try {
+        ctx.statement().close();
+        String sql=new Factory(ctx.getDialect()).selectZero().where("1 = 2").getSQL();
+        ctx.sql(sql);
+        ctx.statement(ctx.getConnection().prepareStatement(sql));
+      }
+ catch (      Exception e) {
+        throw new RuntimeException(e);
+      }
+      break;
+    }
+}
+}
+if (!hasDebuggers) {
+return;
+}
+startExecutionTime=System.currentTimeMillis();
 }

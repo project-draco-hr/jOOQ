@@ -1,0 +1,14 @@
+{
+  Component editor=renderer.getTreeCellRendererComponent(tree,value,true,expanded,leaf,row,true);
+  if (editor instanceof JCheckBox) {
+    ((JCheckBox)editor).addItemListener(new ItemListener(){
+      @Override public void itemStateChanged(      ItemEvent itemEvent){
+        if (stopCellEditing()) {
+          fireEditingStopped();
+        }
+      }
+    }
+);
+  }
+  return editor;
+}
