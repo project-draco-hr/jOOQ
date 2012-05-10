@@ -1,0 +1,5 @@
+{
+  org.jooq.util.postgres.pg_catalog.routines.PgCursor p=new org.jooq.util.postgres.pg_catalog.routines.PgCursor();
+  p.execute(configuration);
+  return p;
+}
