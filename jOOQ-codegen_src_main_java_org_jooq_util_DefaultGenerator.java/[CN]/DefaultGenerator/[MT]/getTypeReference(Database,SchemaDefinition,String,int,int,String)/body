@@ -60,12 +60,12 @@
       }
  catch (      SQLDialectNotSupportedException e) {
         sb.append("getDefaultDataType(\"");
-        sb.append(t);
+        sb.append(t.replace("\"","\\\""));
         sb.append("\")");
       }
 catch (      ReflectException e) {
         sb.append("getDefaultDataType(\"");
-        sb.append(t);
+        sb.append(t.replace("\"","\\\""));
         sb.append("\")");
       }
     }

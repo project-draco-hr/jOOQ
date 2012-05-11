@@ -3,7 +3,14 @@ switch (configuration.getDialect()) {
 case ASE:
 case DERBY:
 {
-      Field<BigDecimal> power=Factory.power(inline(new BigDecimal("10.0")),decimals);
+      Field<BigDecimal> power;
+      Integer decimalsVal=extractVal(decimals);
+      if (decimalsVal != null) {
+        power=inline(TEN.pow(decimalsVal,MathContext.DECIMAL128));
+      }
+ else {
+        power=Factory.power(inline(TEN),decimals);
+      }
       return Factory.decode().when(field.sign().greaterOrEqual(zero()),field.mul(power).floor().div(power)).otherwise(field.mul(power).ceil().div(power));
     }
 case H2:

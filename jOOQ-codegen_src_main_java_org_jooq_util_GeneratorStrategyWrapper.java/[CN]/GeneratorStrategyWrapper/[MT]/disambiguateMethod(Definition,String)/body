@@ -11,6 +11,9 @@
       reserved=reservedColumns(TableRecordImpl.class);
     }
   }
+ else   if (definition instanceof ParameterDefinition) {
+    reserved=reservedColumns(AbstractRoutine.class);
+  }
   if (reserved != null) {
     if (reserved.contains(method)) {
       return method + "_";
