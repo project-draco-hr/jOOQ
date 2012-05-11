@@ -1,0 +1,9 @@
+{
+  columnNames=rsResult.getColumnNames();
+  typeInfos=rsResult.getTypeInfos();
+  columnClasses=rsResult.getColumnClasses();
+  rowData=rsResult.getRowData();
+  rowCount=rsResult.getRowCount();
+  resultSetParsingDuration=rsResult.getResultSetParsingDuration();
+  retainParsedRSDataRowCountThreshold=rsResult.getRetainParsedRSDataRowCountThreshold();
+}

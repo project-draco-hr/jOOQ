@@ -1,0 +1,3 @@
+{
+  new ServerDebugger.CMS_stopStatementExecutorExecution().asyncExec(debugger.getCommunicationInterface(),id);
+}

@@ -1,0 +1,5 @@
+{
+synchronized (idToStatementExecutorMap) {
+    idToStatementExecutorMap.put(id,createStatementExecutor());
+  }
+}
