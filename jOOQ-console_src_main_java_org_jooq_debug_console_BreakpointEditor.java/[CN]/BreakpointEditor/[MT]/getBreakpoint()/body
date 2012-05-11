@@ -1,5 +1,6 @@
 {
   StatementMatcher statementMatcher=getStatementMatcher();
+  Integer hitCount=hitCountCheckBox.isSelected() ? ((Number)hitCountField.getValue()).intValue() : null;
   boolean isBreaking=breakpointTypeComboBox.getSelectedItem() == BREAK;
   StatementProcessor beforeExecutionProcessor=null;
   StatementProcessor replacementExecutionProcessor=null;
@@ -9,5 +10,5 @@
     replacementExecutionProcessor=replaceExecutionRadioButton.isSelected() ? replacementExecutionProcessorPane.getStatementProcessor() : null;
     afterExecutionProcessor=afterExecutionCheckBox.isSelected() ? afterExecutionProcessorPane.getStatementProcessor() : null;
   }
-  return new Breakpoint(id,statementMatcher,isBreaking,beforeExecutionProcessor,replacementExecutionProcessor,afterExecutionProcessor);
+  return new Breakpoint(id,hitCount,statementMatcher,isBreaking,beforeExecutionProcessor,replacementExecutionProcessor,afterExecutionProcessor);
 }

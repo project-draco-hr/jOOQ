@@ -1,0 +1,4 @@
+int newOrientation
+boolean newContinuousLayout
+Component newLeftComponent
+Component newRightComponent

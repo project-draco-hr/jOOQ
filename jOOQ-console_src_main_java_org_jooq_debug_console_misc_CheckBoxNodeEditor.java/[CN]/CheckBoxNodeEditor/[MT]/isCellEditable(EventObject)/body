@@ -1,12 +1,23 @@
 {
-  boolean returnValue=false;
   if (event instanceof MouseEvent) {
     MouseEvent mouseEvent=(MouseEvent)event;
     TreePath path=tree.getPathForLocation(mouseEvent.getX(),mouseEvent.getY());
     if (path != null) {
       Object node=path.getLastPathComponent();
-      returnValue=node instanceof CheckBoxNode;
+      if (node instanceof CheckBoxNode) {
+        int row=tree.getRowForPath(path);
+        Component editor=renderer.getTreeCellRendererComponent(tree,node,true,false,true,row,true);
+        Rectangle rowBounds=tree.getRowBounds(row);
+        int x=mouseEvent.getX() - rowBounds.x;
+        int y=mouseEvent.getY() - rowBounds.y;
+        if (editor instanceof CheckBoxNodeRenderer.CheckBoxEditor) {
+          editor.setSize(rowBounds.getSize());
+          editor.validate();
+          editor.doLayout();
+          return ((CheckBoxNodeRenderer.CheckBoxEditor)editor).findComponentAt(x,y) instanceof JCheckBox;
+        }
+      }
     }
   }
-  return returnValue;
+  return false;
 }

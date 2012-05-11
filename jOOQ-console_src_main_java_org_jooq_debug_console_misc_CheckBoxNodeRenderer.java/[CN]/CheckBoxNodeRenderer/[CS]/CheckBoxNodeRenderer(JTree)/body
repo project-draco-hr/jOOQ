@@ -1,0 +1,16 @@
+{
+  nonCheckBoxRenderer=tree.getCellRenderer();
+  checkBoxRenderer=new JCheckBox();
+  checkBoxRenderer.setMargin(new Insets(0,0,0,0));
+  Font fontValue=UIManager.getFont("Tree.font");
+  if (fontValue != null) {
+    checkBoxRenderer.setFont(fontValue);
+  }
+  Boolean booleanValue=(Boolean)UIManager.get("Tree.drawsFocusBorderAroundIcon");
+  checkBoxRenderer.setFocusPainted((booleanValue != null) && (booleanValue.booleanValue()));
+  selectionBorderColor=UIManager.getColor("Tree.selectionBorderColor");
+  selectionForeground=UIManager.getColor("Tree.selectionForeground");
+  selectionBackground=UIManager.getColor("Tree.selectionBackground");
+  textForeground=UIManager.getColor("Tree.textForeground");
+  textBackground=UIManager.getColor("Tree.textBackground");
+}

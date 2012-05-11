@@ -1,6 +1,0 @@
-int id
-StatementMatcher statementMatcher
-boolean isBreaking
-StatementProcessor beforeExecutionProcessor
-StatementProcessor replacementExecutionProcessor
-StatementProcessor afterExecutionProcessor

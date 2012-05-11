@@ -2,6 +2,7 @@
   int y=0;
   StatementProcessor beforeExecutionProcessor=breakpoint.getBeforeExecutionProcessor();
   beforeExecutionCheckBox=new JCheckBox("Execute before: ");
+  beforeExecutionCheckBox.setOpaque(false);
   beforeExecutionCheckBox.setSelected(beforeExecutionProcessor != null);
   beforeExecutionCheckBox.addItemListener(new ItemListener(){
     @Override public void itemStateChanged(    ItemEvent e){
@@ -9,17 +10,19 @@
     }
   }
 );
-  processorPane.add(beforeExecutionCheckBox,new GridBagConstraints(0,y,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,0,0,0),0,0));
+  processorPane.add(beforeExecutionCheckBox,new GridBagConstraints(0,y,1,1,0,0,GridBagConstraints.NORTHWEST,GridBagConstraints.NONE,new Insets(2,0,0,0),0,0));
   beforeExecutionProcessorPane=new StatementProcessorPane(beforeExecutionProcessor);
-  processorPane.add(beforeExecutionProcessorPane,new GridBagConstraints(1,y,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(0,5,0,0),0,0));
+  processorPane.add(beforeExecutionProcessorPane,new GridBagConstraints(1,y,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,5,0,0),0,0));
   y++;
   ButtonGroup executionButtonGroup=new ButtonGroup();
   StatementProcessor replacementExecutionProcessor=breakpoint.getReplacementExecutionProcessor();
   executeRadioButton=new JRadioButton("Execute");
+  executeRadioButton.setOpaque(false);
   executionButtonGroup.add(executeRadioButton);
-  processorPane.add(executeRadioButton,new GridBagConstraints(0,y,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,0,0,0),0,0));
+  processorPane.add(executeRadioButton,new GridBagConstraints(0,y,1,1,0,0,GridBagConstraints.NORTHWEST,GridBagConstraints.NONE,new Insets(0,0,0,0),0,0));
   y++;
   replaceExecutionRadioButton=new JRadioButton("Replace with: ");
+  replaceExecutionRadioButton.setOpaque(false);
   executionButtonGroup.add(replaceExecutionRadioButton);
   if (replacementExecutionProcessor != null) {
     replaceExecutionRadioButton.setSelected(true);
@@ -27,7 +30,7 @@
  else {
     executeRadioButton.setSelected(true);
   }
-  processorPane.add(replaceExecutionRadioButton,new GridBagConstraints(0,y,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,0,0,0),0,0));
+  processorPane.add(replaceExecutionRadioButton,new GridBagConstraints(0,y,1,1,0,0,GridBagConstraints.NORTHWEST,GridBagConstraints.NONE,new Insets(0,0,0,0),0,0));
   replacementExecutionProcessorPane=new StatementProcessorPane(breakpoint.getReplacementExecutionProcessor());
   processorPane.add(replacementExecutionProcessorPane,new GridBagConstraints(1,y,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(0,5,0,0),0,0));
   executeRadioButton.addItemListener(new ItemListener(){
@@ -45,6 +48,7 @@
   y++;
   StatementProcessor afterExecutionProcessor=breakpoint.getAfterExecutionProcessor();
   afterExecutionCheckBox=new JCheckBox("Execute after: ");
+  afterExecutionCheckBox.setOpaque(false);
   afterExecutionCheckBox.setSelected(afterExecutionProcessor != null);
   afterExecutionCheckBox.addItemListener(new ItemListener(){
     @Override public void itemStateChanged(    ItemEvent e){
@@ -52,7 +56,7 @@
     }
   }
 );
-  processorPane.add(afterExecutionCheckBox,new GridBagConstraints(0,y,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,0,0,0),0,0));
+  processorPane.add(afterExecutionCheckBox,new GridBagConstraints(0,y,1,1,0,0,GridBagConstraints.NORTHWEST,GridBagConstraints.NONE,new Insets(2,0,0,0),0,0));
   afterExecutionProcessorPane=new StatementProcessorPane(afterExecutionProcessor);
-  processorPane.add(afterExecutionProcessorPane,new GridBagConstraints(1,y,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(0,5,0,0),0,0));
+  processorPane.add(afterExecutionProcessorPane,new GridBagConstraints(1,y,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,5,0,0),0,0));
 }

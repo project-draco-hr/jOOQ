@@ -7,5 +7,12 @@
       breakpointList.add((Breakpoint)node.getUserObject());
     }
   }
-  debugger.setBreakpoints(breakpointList.toArray(new Breakpoint[0]));
+  Breakpoint[] breakpoints=breakpointList.toArray(new Breakpoint[0]);
+  if (breakpoints.length == 0) {
+    debugger.setBreakpointHitHandler(null);
+  }
+ else {
+    debugger.setBreakpointHitHandler(breakpointHitHandler);
+  }
+  debugger.setBreakpoints(breakpoints);
 }

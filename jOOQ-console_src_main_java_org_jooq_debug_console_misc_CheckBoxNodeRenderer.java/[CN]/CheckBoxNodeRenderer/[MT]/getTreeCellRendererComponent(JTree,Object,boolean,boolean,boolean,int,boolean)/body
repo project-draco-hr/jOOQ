@@ -1,20 +1,12 @@
 {
-  Object usedValue=value;
-  if (value instanceof CheckBoxNode) {
-    usedValue=((CheckBoxNode)value).getText();
-  }
-  Component c=nonCheckBoxRenderer.getTreeCellRendererComponent(tree,usedValue,selected,expanded,leaf,row,hasFocus);
+  Component c=nonCheckBoxRenderer.getTreeCellRendererComponent(tree,value,selected,expanded,leaf,row,hasFocus);
   if (value instanceof CheckBoxNode) {
     checkBoxRenderer.setSelected(false);
     checkBoxRenderer.setEnabled(tree.isEnabled());
     checkBoxRenderer.setOpaque(false);
     CheckBoxNode node=(CheckBoxNode)value;
     checkBoxRenderer.setSelected(node.isSelected());
-    JPanel pane=new JPanel(new FlowLayout(FlowLayout.LEFT,0,0));
-    pane.setOpaque(false);
-    pane.add(checkBoxRenderer);
-    pane.add(c);
-    c=pane;
+    c=new CheckBoxEditor(checkBoxRenderer,c);
   }
   return c;
 }

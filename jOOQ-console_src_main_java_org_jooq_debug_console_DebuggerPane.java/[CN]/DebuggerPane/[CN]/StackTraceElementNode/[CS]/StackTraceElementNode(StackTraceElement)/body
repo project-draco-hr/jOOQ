@@ -1,0 +1,9 @@
+{
+  super(stackTraceElement);
+  String className=stackTraceElement.getClassName();
+  className=className.substring(className.lastIndexOf('.') + 1);
+  name=className + '.' + stackTraceElement.getMethodName()+ "()";
+  if (stackTraceElement.getLineNumber() >= 0) {
+    name+=" line " + stackTraceElement.getLineNumber();
+  }
+}

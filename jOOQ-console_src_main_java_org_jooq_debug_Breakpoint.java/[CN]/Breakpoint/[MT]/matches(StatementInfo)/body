@@ -1,3 +1,0 @@
-{
-  return statementMatcher != null && statementMatcher.matches(statementInfo);
-}

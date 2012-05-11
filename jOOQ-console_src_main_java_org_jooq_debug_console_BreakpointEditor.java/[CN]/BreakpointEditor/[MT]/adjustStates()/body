@@ -10,7 +10,9 @@
   statementTypeDeleteCheckBox.setEnabled(isActive && statementTypeCheckBox.isSelected());
   statementTypeOtherCheckBox.setEnabled(isActive && statementTypeCheckBox.isSelected());
   threadNameTextMatcherPane.setLocked(!isActive || !threadNameTextMatcherCheckBox.isSelected());
-  breakpointTypeComboBox.setEnabled(isActive && (statementTextMatcherCheckBox.isSelected() || statementTypeCheckBox.isSelected() || threadNameTextMatcherCheckBox.isSelected()));
+  hitCountCheckBox.setEnabled(isActive);
+  hitCountField.setEnabled(isActive && hitCountCheckBox.isSelected());
+  breakpointTypeComboBox.setEnabled(isActive && (statementTextMatcherCheckBox.isSelected() || statementTypeCheckBox.isSelected() || threadNameTextMatcherCheckBox.isSelected()|| hitCountCheckBox.isSelected()));
   processorPane.setVisible(isActive && breakpointTypeComboBox.getSelectedItem() == PROCESS);
   beforeExecutionCheckBox.setEnabled(isActive);
   beforeExecutionProcessorPane.setLocked(!isActive || !beforeExecutionCheckBox.isSelected());

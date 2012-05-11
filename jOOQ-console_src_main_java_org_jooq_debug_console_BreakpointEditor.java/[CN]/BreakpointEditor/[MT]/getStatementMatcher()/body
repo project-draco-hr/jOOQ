@@ -25,5 +25,8 @@
  else {
     queryTypeSet=null;
   }
+  if (threadNameTextMatcher == null && statementTextMatcher == null && queryTypeSet == null) {
+    return null;
+  }
   return new StatementMatcher(threadNameTextMatcher,statementTextMatcher,queryTypeSet,isActive);
 }

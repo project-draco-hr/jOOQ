@@ -1,5 +1,8 @@
 {
 synchronized (BREAKPOINT_HIT_HANDLER_LOCK) {
+    if (this.breakpointHitHandler == breakpointHitHandler) {
+      return;
+    }
     this.breakpointHitHandler=breakpointHitHandler;
   }
   new ServerDebugger.CMS_setBreakpointHitHandlerActive().asyncExec(communicationInterface,breakpointHitHandler != null);
