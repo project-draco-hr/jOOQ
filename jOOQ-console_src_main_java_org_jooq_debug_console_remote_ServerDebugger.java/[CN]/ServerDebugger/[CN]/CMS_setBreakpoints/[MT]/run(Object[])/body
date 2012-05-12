@@ -1,4 +1,10 @@
 {
-  getDebugger().setBreakpoints((Breakpoint[])args[0]);
+  Breakpoint[] breakpoints=(Breakpoint[])args[0];
+  if (breakpoints != null) {
+    for (    Breakpoint breakpoint : breakpoints) {
+      breakpoint.reset();
+    }
+  }
+  getDebugger().setBreakpoints(breakpoints);
   return null;
 }

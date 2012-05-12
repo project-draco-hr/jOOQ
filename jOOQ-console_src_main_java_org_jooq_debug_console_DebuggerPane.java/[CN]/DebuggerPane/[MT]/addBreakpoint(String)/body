@@ -5,6 +5,7 @@
   rootNode.add(breakpointNode);
   breakpointTreeModel.nodesWereInserted(rootNode,new int[]{rootNode.getIndex(breakpointNode)});
   breakpointTree.expandPath(new TreePath(rootNode));
-  commitBreakpoints();
+  debugger.addBreakpoint(breakpoint);
+  DebuggerPane.this.debugger.setBreakpointHitHandler(breakpointHitHandler);
   breakpointTree.setSelectionPath(new TreePath(new Object[]{rootNode,breakpointNode}));
 }

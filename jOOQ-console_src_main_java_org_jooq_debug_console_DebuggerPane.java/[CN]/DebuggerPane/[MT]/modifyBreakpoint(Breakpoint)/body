@@ -5,7 +5,9 @@
     Breakpoint breakpoint_=(Breakpoint)checkBoxNode.getUserObject();
     if (breakpoint_.getID() == breakpoint.getID()) {
       checkBoxNode.setUserObject(breakpoint);
-      commitBreakpoints();
+      if (checkBoxNode.isSelected()) {
+        debugger.modifyBreakpoint(breakpoint);
+      }
       break;
     }
   }

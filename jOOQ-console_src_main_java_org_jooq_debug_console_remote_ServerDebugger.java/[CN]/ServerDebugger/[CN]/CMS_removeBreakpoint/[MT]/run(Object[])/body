@@ -1,0 +1,4 @@
+{
+  getDebugger().removeBreakpoint((Breakpoint)args[0]);
+  return null;
+}

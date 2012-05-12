@@ -1,0 +1,6 @@
+{
+  Breakpoint breakpoint=(Breakpoint)args[0];
+  breakpoint.reset();
+  getDebugger().addBreakpoint(breakpoint);
+  return null;
+}
