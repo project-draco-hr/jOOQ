@@ -1,7 +1,7 @@
 {
   BreakpointHitHandler breakpointHitHandler=getDebugger().getBreakpointHitHandler();
   if (breakpointHitHandler != null) {
-    BreakpointAfterExecutionHit breakpointHit=(BreakpointAfterExecutionHit)args[0];
+    BreakpointHit breakpointHit=(BreakpointHit)args[0];
     breakpointHitHandler.processBreakpointAfterExecutionHit(breakpointHit);
   }
   return null;

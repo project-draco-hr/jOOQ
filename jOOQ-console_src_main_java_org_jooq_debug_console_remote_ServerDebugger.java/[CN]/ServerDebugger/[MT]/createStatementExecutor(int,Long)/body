@@ -1,0 +1,12 @@
+{
+  LocalStatementExecutor statementExecutor;
+  if (breakpointHitThreadID == null) {
+    statementExecutor=createStatementExecutor();
+  }
+ else {
+    statementExecutor=createBreakpointHitStatementExecutor(breakpointHitThreadID);
+  }
+synchronized (idToStatementExecutorMap) {
+    idToStatementExecutorMap.put(id,statementExecutor);
+  }
+}

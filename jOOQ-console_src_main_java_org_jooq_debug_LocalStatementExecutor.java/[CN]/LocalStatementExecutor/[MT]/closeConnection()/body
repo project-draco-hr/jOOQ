@@ -13,11 +13,7 @@
       }
     }
     stmt=null;
-    try {
-      conn.close();
-    }
- catch (    Exception e) {
-    }
+    executorContext.releaseConnection(conn);
     conn=null;
   }
 }

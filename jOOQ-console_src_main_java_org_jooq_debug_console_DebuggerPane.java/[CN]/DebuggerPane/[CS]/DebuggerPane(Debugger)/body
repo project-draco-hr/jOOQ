@@ -67,8 +67,13 @@
         if (value instanceof CheckBoxNode) {
           icon=((CheckBoxNode)value).isSelected() ? BREAKPOINT_ON_ICON : BREAKPOINT_OFF_ICON;
         }
- else         if (value instanceof BreakpointBeforeExecutionHitNode) {
-          icon=BREAKPOINT_HIT_ICON;
+ else         if (value instanceof BreakpointHitNode) {
+          if (((BreakpointHitNode)value).getUserObject().isBeforeExecution()) {
+            icon=BREAKPOINT_HIT_BEFORE_ICON;
+          }
+ else {
+            icon=BREAKPOINT_HIT_AFTER_ICON;
+          }
         }
  else         if (value instanceof StackTraceElementNode) {
           icon=STACK_TRACE_ELEMENT_ICON;
@@ -104,17 +109,15 @@
         }
       }
       if (isValid) {
-        List<BreakpointBeforeExecutionHitNode> beforeExecutionHitNodeList=new ArrayList<DebuggerPane.BreakpointBeforeExecutionHitNode>();
+        List<BreakpointHitNode> breakpointHitNodeList=new ArrayList<DebuggerPane.BreakpointHitNode>();
         breakpointTree.cancelEditing();
         for (int i=0; i < paths.length; i++) {
           CheckBoxNode childNode=(CheckBoxNode)paths[i].getLastPathComponent();
           int childCount=childNode.getChildCount();
           for (int j=0; j < childCount; j++) {
             TreeNode node=childNode.getChildAt(j);
-            if (node instanceof BreakpointBeforeExecutionHitNode) {
-              beforeExecutionHitNodeList.add((BreakpointBeforeExecutionHitNode)node);
-            }
- else {
+            if (node instanceof BreakpointHitNode) {
+              breakpointHitNodeList.add((BreakpointHitNode)node);
             }
           }
           int index=rootNode.getIndex(childNode);
@@ -122,7 +125,7 @@
           breakpointTreeModel.nodesWereRemoved(rootNode,new int[]{index},new Object[]{childNode});
         }
         commitBreakpoints();
-        for (        BreakpointBeforeExecutionHitNode node : beforeExecutionHitNodeList) {
+        for (        BreakpointHitNode node : breakpointHitNodeList) {
 synchronized (node) {
             node.proceed();
           }
@@ -145,6 +148,51 @@ synchronized (node) {
       }
       removeBreakpointButton.setEnabled(isValid);
       processTreeSelection();
+    }
+  }
+);
+  breakpointTree.addMouseListener(new MouseAdapter(){
+    @Override public void mousePressed(    MouseEvent e){
+      maybeShowPopup(e);
+    }
+    @Override public void mouseReleased(    MouseEvent e){
+      maybeShowPopup(e);
+    }
+    private void maybeShowPopup(    MouseEvent e){
+      if (e.isPopupTrigger()) {
+        TreePath[] selectionPaths=breakpointTree.getSelectionPaths();
+        if (selectionPaths != null && selectionPaths.length == 1) {
+          Object o=selectionPaths[0].getLastPathComponent();
+          if (o instanceof BreakpointHitNode) {
+            final BreakpointHit breakpointHit=((BreakpointHitNode)o).getUserObject();
+            JPopupMenu popupMenu=new JPopupMenu();
+            JMenuItem copyStackToClipboardMenuItem=new JMenuItem("Copy Call Stack to Clipboard");
+            copyStackToClipboardMenuItem.addActionListener(new ActionListener(){
+              @Override public void actionPerformed(              ActionEvent e){
+                StringWriter sw=new StringWriter();
+                Throwable throwable=new Exception("Statement Stack trace");
+                throwable.setStackTrace(breakpointHit.getCallerStackTraceElements());
+                throwable.printStackTrace(new PrintWriter(sw));
+                Clipboard clipboard=Toolkit.getDefaultToolkit().getSystemClipboard();
+                clipboard.setContents(new StringSelection(sw.toString()),null);
+              }
+            }
+);
+            popupMenu.add(copyStackToClipboardMenuItem);
+            JMenuItem dumpStackToConsoleMenuItem=new JMenuItem("Dump Call Stack");
+            dumpStackToConsoleMenuItem.addActionListener(new ActionListener(){
+              @Override public void actionPerformed(              ActionEvent e){
+                Throwable throwable=new Exception("Statement Stack trace");
+                throwable.setStackTrace(breakpointHit.getCallerStackTraceElements());
+                throwable.printStackTrace();
+              }
+            }
+);
+            popupMenu.add(dumpStackToConsoleMenuItem);
+            popupMenu.show(e.getComponent(),e.getX(),e.getY());
+          }
+        }
+      }
     }
   }
 );

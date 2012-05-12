@@ -1,5 +1,0 @@
-{
-  id=nextID.incrementAndGet();
-  this.debugger=debugger;
-  new ServerDebugger.CMS_createServerStatementExecutor().asyncExec(debugger.getCommunicationInterface(),id);
-}

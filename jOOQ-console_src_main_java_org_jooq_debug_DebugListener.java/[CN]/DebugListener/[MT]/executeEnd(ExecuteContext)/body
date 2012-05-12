@@ -3,9 +3,6 @@
     return;
   }
   endExecutionTime=System.currentTimeMillis();
-  if (matchingBreakpointHitHandler != null) {
-    matchingBreakpointHitHandler.processBreakpointAfterExecutionHit(new BreakpointAfterExecutionHit(matchingBreakpoint.getID(),effectiveSQL));
-  }
   List<Debugger> debuggerList=DebuggerRegistry.getDebuggerList();
   if (!debuggerList.isEmpty()) {
     boolean hasListener=false;
@@ -63,6 +60,14 @@
         ctx.resultSet(newResultSet);
       }
     }
+  }
+  if (matchingDebugger != null) {
+    Thread currentThread=Thread.currentThread();
+    long threadID=currentThread.getId();
+    String threadName=currentThread.getName();
+    StackTraceElement[] callerStackTraceElements=currentThread.getStackTrace();
+    callerStackTraceElements=Arrays.copyOfRange(callerStackTraceElements,2,callerStackTraceElements.length);
+    matchingDebugger.processBreakpointAfterExecutionHit(ctx,new BreakpointHit(matchingBreakpoint.getID(),effectiveSQL,threadID,threadName,callerStackTraceElements,false));
   }
   if (matchingBreakpoint != null) {
     StatementProcessor afterExecutionProcessor=matchingBreakpoint.getAfterExecutionProcessor();

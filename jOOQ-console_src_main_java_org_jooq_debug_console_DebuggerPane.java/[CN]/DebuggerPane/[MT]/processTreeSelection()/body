@@ -7,8 +7,8 @@
       Object o=node.getUserObject();
       eastPane.add(new BreakpointEditor(this,(Breakpoint)o));
     }
- else     if (node instanceof BreakpointBeforeExecutionHitNode) {
-      eastPane.add(new BreakpointHitEditor(this,(BreakpointBeforeExecutionHitNode)node));
+ else     if (node instanceof BreakpointHitNode) {
+      eastPane.add(new BreakpointHitEditor(debugger,this,(BreakpointHitNode)node));
     }
   }
   eastPane.revalidate();

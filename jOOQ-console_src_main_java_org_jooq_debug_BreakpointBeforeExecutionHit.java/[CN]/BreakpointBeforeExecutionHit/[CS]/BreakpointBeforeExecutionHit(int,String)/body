@@ -1,6 +1,0 @@
-{
-  this.breakpointID=breakpointID;
-  this.sql=sql;
-  this.threadName=Thread.currentThread().getName();
-  this.callerStackTraceElements=new Exception().getStackTrace();
-}

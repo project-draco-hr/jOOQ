@@ -1,0 +1,19 @@
+{
+  BreakpointHitHandler handler=getBreakpointHitHandler();
+  if (handler == null) {
+    return;
+  }
+  long threadID=breakpointHit.getThreadID();
+synchronized (threadIDToExecuteContextMap) {
+    threadIDToExecuteContextMap.put(threadID,ctx);
+  }
+  try {
+    handler.processBreakpointAfterExecutionHit(breakpointHit);
+  }
+  finally {
+synchronized (threadIDToExecuteContextMap) {
+      threadIDToExecuteContextMap.remove(threadID);
+    }
+    performThreadDataCleanup(threadID);
+  }
+}

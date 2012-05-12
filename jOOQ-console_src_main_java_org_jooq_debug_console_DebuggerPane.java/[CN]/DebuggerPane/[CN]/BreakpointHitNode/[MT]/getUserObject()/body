@@ -1,0 +1,3 @@
+{
+  return (BreakpointHit)super.getUserObject();
+}

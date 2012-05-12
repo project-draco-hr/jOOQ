@@ -1,0 +1,8 @@
+{
+  this.isBeforeExecution=isBeforeExecution;
+  this.breakpointID=breakpointID;
+  this.sql=sql;
+  this.threadID=threadID;
+  this.threadName=threadName;
+  this.callerStackTraceElements=callerStackTraceElements;
+}

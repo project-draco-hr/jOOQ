@@ -1,0 +1,6 @@
+int breakpointID
+String sql
+long threadID
+String threadName
+StackTraceElement[] callerStackTraceElements
+boolean isBeforeExecution
