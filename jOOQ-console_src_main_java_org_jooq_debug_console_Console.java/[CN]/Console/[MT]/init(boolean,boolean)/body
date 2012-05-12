@@ -107,7 +107,7 @@ setLocationByPlatform(true);
 setSize(800,600);
 addNotify();
 if (debugger.isExecutionSupported()) {
-getFocusedEditorPane().adjustDefaultFocus();
+editorsPane.adjustDefaultFocus();
 }
 addWindowListener(new WindowAdapter(){
 @Override public void windowClosing(WindowEvent e){
