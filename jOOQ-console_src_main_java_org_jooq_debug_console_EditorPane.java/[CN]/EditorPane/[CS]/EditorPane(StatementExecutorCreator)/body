@@ -1,6 +1,6 @@
 {
   super(new BorderLayout());
-  this.debugger=debugger;
+  this.statementExecutorCreator=statementExecutorCreator;
   setOpaque(false);
   JPanel northPanel=new JPanel(new BorderLayout());
   northPanel.setOpaque(false);
@@ -79,7 +79,10 @@ break;
 }
 );
 RTextScrollPane editorTextAreaScrollPane=new RTextScrollPane(editorTextArea);
-JSplitPane verticalSplitPane=new JSplitPane(JSplitPane.VERTICAL_SPLIT,true,editorTextAreaScrollPane,southPanel);
+southPanel=new JPanel(new BorderLayout());
+southPanel.setOpaque(false);
+JSplitPane verticalSplitPane=new InvisibleSplitPane(JSplitPane.VERTICAL_SPLIT,true,editorTextAreaScrollPane,southPanel);
+verticalSplitPane.setOpaque(false);
 add(verticalSplitPane,BorderLayout.CENTER);
 verticalSplitPane.setDividerLocation(150);
 }

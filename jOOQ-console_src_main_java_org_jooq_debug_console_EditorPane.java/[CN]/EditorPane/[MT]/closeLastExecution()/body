@@ -1,5 +1,5 @@
 {
-synchronized (debugger) {
+synchronized (STATEMENT_EXECUTOR_CREATOR_LOCK) {
     if (lastStatementExecutor != null) {
       lastStatementExecutor.stopExecution();
       lastStatementExecutor=null;

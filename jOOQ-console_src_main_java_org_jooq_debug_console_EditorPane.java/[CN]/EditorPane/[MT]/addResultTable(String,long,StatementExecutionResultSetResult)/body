@@ -4,7 +4,8 @@
   final JLabel label=new JLabel(" " + rowCount + " rows");
   FlowLayout flowLayout=new FlowLayout(FlowLayout.LEFT,0,0);
   flowLayout.setAlignOnBaseline(true);
-  JPanel statusCountPane=new JPanel(flowLayout);
+  JPanel statusPane=new JPanel(flowLayout);
+  statusPane.setOpaque(false);
   if (rowCount <= resultSetResult.getRetainParsedRSDataRowCountThreshold()) {
     final JTableX table=new ResultTable(resultSetResult);
     JTableHeader tableHeader=new JTableHeader(table.getColumnModel()){
@@ -150,7 +151,9 @@
     }
 );
     final JPanel filterPane=new JPanel(flowLayout);
+    filterPane.setOpaque(false);
     final JToggleButton filterToggleButton=new JToggleButton(new ImageIcon(getClass().getResource("/org/jooq/debug/console/resources/Search16.png")));
+    filterToggleButton.setOpaque(false);
     filterToggleButton.setToolTipText("Filter (" + KeyEvent.getKeyModifiersText(InputEvent.CTRL_MASK) + "+"+ KeyEvent.getKeyText(KeyEvent.VK_F)+ ")");
     filterToggleButton.setMargin(new Insets(0,0,0,0));
     filterPane.add(filterToggleButton);
@@ -211,17 +214,18 @@
       }
     }
 );
-    statusCountPane.add(filterPane);
+    statusPane.add(filterPane);
   }
-  JPanel southPanel=new JPanel(new BorderLayout());
+  JPanel southResultPanel=new JPanel(new BorderLayout());
+  southResultPanel.setOpaque(false);
   if (isUsingMaxRowCount && rowCount == MAX_ROW_COUNT) {
     label.setForeground(Color.RED);
   }
-  statusCountPane.add(label);
-  southPanel.add(statusCountPane,BorderLayout.WEST);
-  southPanel.add(new JLabel(Utils.formatDuration(duration) + " - " + Utils.formatDuration(resultSetResult.getResultSetParsingDuration())),BorderLayout.EAST);
-  resultPane.add(southPanel,BorderLayout.SOUTH);
-  southPanel.setToolTipText(sql);
+  statusPane.add(label);
+  southResultPanel.add(statusPane,BorderLayout.WEST);
+  southResultPanel.add(new JLabel(Utils.formatDuration(duration) + " - " + Utils.formatDuration(resultSetResult.getResultSetParsingDuration())),BorderLayout.EAST);
+  resultPane.add(southResultPanel,BorderLayout.SOUTH);
+  southResultPanel.setToolTipText(sql);
   resultPane.revalidate();
   resultPane.repaint();
 }

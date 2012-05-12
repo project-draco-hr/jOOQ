@@ -1,5 +1,7 @@
 {
   setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+  JPanel contentPane=new JPanel(new BorderLayout());
+  contentPane.setBorder(BorderFactory.createEmptyBorder(2,2,2,2));
   JMenuBar menuBar=new JMenuBar();
   JMenu fileMenu=new JMenu("File");
   fileMenu.setMnemonic('F');
@@ -100,7 +102,7 @@ addLoggerTab();
 if (isShowingDebugger) {
 addDebuggerTab();
 }
-getContentPane().add(mainTabbedPane,BorderLayout.CENTER);
+contentPane.add(mainTabbedPane,BorderLayout.CENTER);
 setLocationByPlatform(true);
 setSize(800,600);
 addNotify();
@@ -118,4 +120,5 @@ ex.printStackTrace();
 }
 }
 );
+setContentPane(contentPane);
 }

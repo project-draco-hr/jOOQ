@@ -9,8 +9,8 @@
   }
 );
   StatementExecutor statementExecutor;
-synchronized (debugger) {
-    statementExecutor=debugger.createStatementExecutor();
+synchronized (STATEMENT_EXECUTOR_CREATOR_LOCK) {
+    statementExecutor=statementExecutorCreator.createStatementExecutor();
     lastStatementExecutor=statementExecutor;
   }
   StatementExecution statementExecution;

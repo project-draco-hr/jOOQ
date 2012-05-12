@@ -2,6 +2,7 @@
   isAdjusting=true;
   int index=editorTabbedPane.getTabCount() - 1;
   final EditorPane sqlEditorPane=new EditorPane(debugger);
+  sqlEditorPane.setBorder(BorderFactory.createEmptyBorder(2,5,0,5));
   String title="Context " + contextCount++;
   editorTabbedPane.insertTab(title,null,sqlEditorPane,null,index);
   final JPanel tabComponent=new JPanel(new BorderLayout());

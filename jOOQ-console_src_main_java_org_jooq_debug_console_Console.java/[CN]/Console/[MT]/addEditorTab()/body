@@ -1,5 +1,7 @@
 {
   JPanel editorsPane=new JPanel(new BorderLayout());
+  editorsPane.setBorder(BorderFactory.createEmptyBorder(2,5,5,5));
+  editorsPane.setOpaque(false);
   final String[] tableNames=debugger.createStatementExecutor().getTableNames();
   final JList tableNamesJList=new JList(tableNames);
   tableNamesJList.addMouseListener(new MouseAdapter(){
@@ -25,6 +27,10 @@
   }
 );
   JPanel tableNamePane=new JPanel(new BorderLayout());
+  tableNamePane.setOpaque(false);
+  JPanel tableNameFilterPane=new JPanel(new BorderLayout());
+  tableNameFilterPane.setBorder(BorderFactory.createEmptyBorder(0,0,2,0));
+  tableNameFilterPane.setOpaque(false);
   final JTextField tableNameFilterTextField=new JTextField();
   tableNameFilterTextField.getDocument().addDocumentListener(new DocumentListener(){
     @Override public void removeUpdate(    DocumentEvent e){
@@ -131,9 +137,11 @@ case KeyEvent.VK_ENTER:
 }
 }
 );
-tableNamePane.add(tableNameFilterTextField,BorderLayout.NORTH);
+tableNameFilterPane.add(tableNameFilterTextField,BorderLayout.CENTER);
+tableNamePane.add(tableNameFilterPane,BorderLayout.NORTH);
 tableNamePane.add(new JScrollPane(tableNamesJList),BorderLayout.CENTER);
-JSplitPane horizontalSplitPane=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,true,tableNamePane,editorTabbedPane);
+JSplitPane horizontalSplitPane=new InvisibleSplitPane(JSplitPane.HORIZONTAL_SPLIT,true,tableNamePane,editorTabbedPane);
+horizontalSplitPane.setOpaque(false);
 addSQLEditorPane();
 editorsPane.add(horizontalSplitPane,BorderLayout.CENTER);
 mainTabbedPane.addTab("Editor",editorsPane);
