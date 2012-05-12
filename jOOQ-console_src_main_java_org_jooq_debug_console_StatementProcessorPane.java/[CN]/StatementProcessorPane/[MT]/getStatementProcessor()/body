@@ -1,3 +1,4 @@
 {
-  return new StatementProcessor((StatementProcessor.ProcessorExecutionType)processorTypeComboBox.getSelectedItem(),processorTextField.getText());
+  StatementProcessor.ProcessorExecutionType type=(StatementProcessor.ProcessorExecutionType)processorTypeComboBox.getSelectedItem();
+  return new StatementProcessor(type,type == StatementProcessor.ProcessorExecutionType.STATIC ? processorStaticSQLTextArea.getText() : processorTextField.getText());
 }

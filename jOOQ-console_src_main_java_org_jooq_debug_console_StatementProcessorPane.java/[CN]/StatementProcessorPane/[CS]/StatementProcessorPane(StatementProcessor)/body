@@ -16,7 +16,7 @@
   boolean isStatic=statementProcessor.getType() == StatementProcessor.ProcessorExecutionType.STATIC;
   processorTextField=new JTextField(isStatic ? "" : statementProcessor.getText(),14);
   add(processorTextField,new GridBagConstraints(1,0,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(0,5,0,0),0,0));
-  SqlTextArea processorStaticSQLTextArea=new SqlTextArea();
+  processorStaticSQLTextArea=new SqlTextArea();
   if (isStatic) {
     processorStaticSQLTextArea.setText(statementProcessor.getText());
     processorStaticSQLTextArea.setCaretPosition(0);
