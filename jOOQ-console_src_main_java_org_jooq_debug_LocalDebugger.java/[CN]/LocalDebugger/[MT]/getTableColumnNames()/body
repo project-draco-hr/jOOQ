@@ -1,4 +1,7 @@
 {
+  if (databaseDescriptor == null) {
+    return new String[0];
+  }
   Set<String> columnNameSet=new HashSet<String>();
   for (  Table<?> table : databaseDescriptor.getSchema().getTables()) {
     for (    Field<?> field : table.getFields()) {

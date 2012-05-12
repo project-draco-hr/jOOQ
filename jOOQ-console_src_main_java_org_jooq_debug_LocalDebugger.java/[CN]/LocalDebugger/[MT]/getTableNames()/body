@@ -1,4 +1,7 @@
 {
+  if (databaseDescriptor == null) {
+    return new String[0];
+  }
   List<Table<?>> tableList=databaseDescriptor.getSchema().getTables();
   List<String> tableNameList=new ArrayList<String>();
   for (  Table<? extends Record> table : tableList) {
