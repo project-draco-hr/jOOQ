@@ -67,7 +67,7 @@
     String threadName=currentThread.getName();
     StackTraceElement[] callerStackTraceElements=currentThread.getStackTrace();
     callerStackTraceElements=Arrays.copyOfRange(callerStackTraceElements,2,callerStackTraceElements.length);
-    matchingDebugger.processBreakpointAfterExecutionHit(ctx,new BreakpointHit(matchingBreakpoint.getID(),effectiveSQL,threadID,threadName,callerStackTraceElements,false));
+    matchingDebugger.processBreakpointAfterExecutionHit(ctx,new BreakpointHit(matchingBreakpoint.getID(),effectiveSQL,matchingParameterDescription,threadID,threadName,callerStackTraceElements,false));
   }
   if (matchingBreakpoint != null) {
     StatementProcessor afterExecutionProcessor=matchingBreakpoint.getAfterExecutionProcessor();
