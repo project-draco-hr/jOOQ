@@ -1,12 +1,19 @@
 {
   SQLDialect dialect=context.getDialect();
   Field<?> lhs=field1;
-  if ((comparator == LIKE || comparator == NOT_LIKE) && field1.getType() != String.class && asList(ASE,DERBY,POSTGRES).contains(dialect)) {
+  Field<?> rhs=field2;
+  Comparator op=comparator;
+  if ((op == LIKE || op == NOT_LIKE) && field1.getType() != String.class && asList(ASE,DERBY,POSTGRES).contains(dialect)) {
     lhs=lhs.cast(String.class);
   }
+ else   if ((op == LIKE_IGNORE_CASE || op == NOT_LIKE_IGNORE_CASE) && POSTGRES != dialect) {
+    lhs=lhs.lower();
+    rhs=rhs.lower();
+    op=(op == LIKE_IGNORE_CASE ? LIKE : NOT_LIKE);
+  }
   context.sql(lhs).sql(" ");
-  if (field2.isNullLiteral()) {
-switch (comparator) {
+  if (rhs.isNullLiteral()) {
+switch (op) {
 case EQUALS:
       context.keyword("is null");
     return;
@@ -15,8 +22,8 @@ case NOT_EQUALS:
 return;
 }
 }
-boolean castRhs=(dialect == DB2 && field2 instanceof Concat);
-context.keyword(comparator.toSQL()).sql(" ").keyword(castRhs ? "cast(" : "").sql(field2).keyword(castRhs ? " as varchar(4000))" : "");
+boolean castRhs=(dialect == DB2 && rhs instanceof Concat);
+context.keyword(op.toSQL()).sql(" ").keyword(castRhs ? "cast(" : "").sql(rhs).keyword(castRhs ? " as varchar(4000))" : "");
 if (escape != null) {
 context.keyword(" escape '").sql(escape).sql("'");
 }

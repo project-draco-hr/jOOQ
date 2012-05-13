@@ -29,4 +29,7 @@
   books=create().selectFrom(TBook()).where(TBook_PUBLISHED_IN().contains(9)).and(TBook_PUBLISHED_IN().endsWith(88)).and(TBook_PUBLISHED_IN().startsWith(1)).orderBy(TBook_ID()).fetch();
   assertEquals(1,books.size());
   assertEquals(asList(3),books.getValues(TBook_ID()));
+  books=create().selectFrom(TBook()).where(TBook_TITLE().likeIgnoreCase("%IM%")).and(TBook_TITLE().notLikeIgnoreCase("%o%")).fetch();
+  assertEquals(1,books.size());
+  assertEquals(asList(2),books.getValues(TBook_ID()));
 }

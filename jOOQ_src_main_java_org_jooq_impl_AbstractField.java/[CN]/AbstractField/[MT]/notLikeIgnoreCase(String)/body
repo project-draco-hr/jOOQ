@@ -1,0 +1,3 @@
+{
+  return notLikeIgnoreCase(val(value,String.class));
+}
