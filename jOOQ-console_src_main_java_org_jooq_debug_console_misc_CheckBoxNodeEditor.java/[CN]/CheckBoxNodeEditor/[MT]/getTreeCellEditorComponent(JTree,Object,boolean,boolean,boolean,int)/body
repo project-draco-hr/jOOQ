@@ -1,0 +1,17 @@
+{
+  Component editor=renderer.getTreeCellRendererComponent(tree,value,true,expanded,leaf,row,true);
+  if (editor instanceof CheckBoxNodeRenderer.CheckBoxEditor) {
+    final JCheckBox checkBox=((CheckBoxNodeRenderer.CheckBoxEditor)editor).getCheckBox();
+    editor=new CheckBoxNodeRenderer.CheckBoxEditor(checkBox,renderer.getNonCheckBoxRenderer().getTreeCellRendererComponent(tree,value,true,expanded,leaf,row,true));
+    checkBox.addItemListener(new ItemListener(){
+      @Override public void itemStateChanged(      ItemEvent itemEvent){
+        if (stopCellEditing()) {
+          checkBox.removeItemListener(this);
+          fireEditingStopped();
+        }
+      }
+    }
+);
+  }
+  return editor;
+}

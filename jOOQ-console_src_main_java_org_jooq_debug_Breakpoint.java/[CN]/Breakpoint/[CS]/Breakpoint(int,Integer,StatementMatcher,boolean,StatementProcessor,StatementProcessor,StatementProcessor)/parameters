@@ -1,0 +1,7 @@
+int id
+Integer hitCount
+StatementMatcher statementMatcher
+boolean isBreaking
+StatementProcessor beforeExecutionProcessor
+StatementProcessor replacementExecutionProcessor
+StatementProcessor afterExecutionProcessor

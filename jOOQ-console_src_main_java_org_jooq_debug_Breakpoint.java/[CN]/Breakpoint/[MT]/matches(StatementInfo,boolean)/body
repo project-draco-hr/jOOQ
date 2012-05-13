@@ -1,0 +1,26 @@
+{
+  if (trackHitCount && hitCount != null && currentHitCount.get() <= 0) {
+    return false;
+  }
+  boolean hasMatcher=false;
+  if (statementMatcher != null) {
+    if (!statementMatcher.matches(statementInfo)) {
+      return false;
+    }
+    hasMatcher=true;
+  }
+  if (trackHitCount) {
+    if (hitCount != null) {
+      int currentHitCount_=currentHitCount.decrementAndGet();
+      if (currentHitCount_ > 0) {
+        return false;
+      }
+      if (currentHitCount_ < 0) {
+        currentHitCount.set(0);
+        return false;
+      }
+      hasMatcher=true;
+    }
+  }
+  return hasMatcher;
+}

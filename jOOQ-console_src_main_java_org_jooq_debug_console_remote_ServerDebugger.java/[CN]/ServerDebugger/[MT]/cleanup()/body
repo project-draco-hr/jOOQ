@@ -1,0 +1,8 @@
+{
+synchronized (idToStatementExecutorMap) {
+    for (    StatementExecutor executor : idToStatementExecutorMap.values()) {
+      executor.stopExecution();
+    }
+    idToStatementExecutorMap.clear();
+  }
+}

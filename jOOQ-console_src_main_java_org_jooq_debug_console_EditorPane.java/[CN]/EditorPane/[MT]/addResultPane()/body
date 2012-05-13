@@ -1,5 +1,6 @@
 {
   JPanel resultPane=new JPanel(new BorderLayout());
+  resultPane.setOpaque(false);
   int componentCount=southPanel.getComponentCount();
   if (componentCount == 0) {
     southPanel.add(resultPane,BorderLayout.CENTER);

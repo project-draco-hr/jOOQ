@@ -1,0 +1,29 @@
+{
+  final ExecuteContext ctx;
+synchronized (threadIDToExecuteContextMap) {
+    ctx=threadIDToExecuteContextMap.get(threadID);
+    if (ctx == null) {
+      return null;
+    }
+  }
+  return new LocalStatementExecutor(new StatementExecutorContext(){
+    @Override public boolean isReadOnly(){
+      return false;
+    }
+    @Override public Connection getConnection(){
+      return ctx.getConnection();
+    }
+    @Override public void releaseConnection(    Connection connection){
+    }
+    @Override public SQLDialect getSQLDialect(){
+      return ctx.getDialect();
+    }
+    @Override public String[] getTableNames(){
+      return LocalDebugger.this.getTableNames();
+    }
+    @Override public String[] getTableColumnNames(){
+      return LocalDebugger.this.getTableColumnNames();
+    }
+  }
+);
+}

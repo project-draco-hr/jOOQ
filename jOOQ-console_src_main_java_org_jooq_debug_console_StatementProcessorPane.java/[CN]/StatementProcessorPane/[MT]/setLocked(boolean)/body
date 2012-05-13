@@ -1,0 +1,4 @@
+{
+  processorTypeComboBox.setEnabled(!isLocked);
+  processorTextField.setEnabled(!isLocked);
+}

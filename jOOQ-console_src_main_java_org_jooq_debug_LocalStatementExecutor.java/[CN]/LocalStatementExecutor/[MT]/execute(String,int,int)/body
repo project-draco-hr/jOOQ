@@ -1,6 +1,6 @@
 {
   boolean isAllowed=true;
-  if (databaseDescriptor.isReadOnly()) {
+  if (executorContext.isReadOnly()) {
     String simplifiedSql=sql.replaceAll("'[^']*'","");
     Matcher matcher=Pattern.compile("[a-zA-Z_0-9\\$]+").matcher(simplifiedSql);
     boolean isFirst=true;
@@ -26,7 +26,7 @@
   evaluationThread=Thread.currentThread();
   long start=System.currentTimeMillis();
   try {
-    conn=databaseDescriptor.createConnection();
+    conn=executorContext.getConnection();
     stmt=conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
     start=System.currentTimeMillis();
     if (evaluationThread != Thread.currentThread()) {
@@ -153,13 +153,13 @@ rowDataList.clear();
 }
 }
 final long resultSetParsingDuration=System.currentTimeMillis() - rsStart;
-statementExecutionResult=new StatementExecutionResultSetResult(rs,columnNames,typeInfos,columnClasses,rowDataList.toArray(new Object[0][]),rowCount,resultSetParsingDuration,retainParsedRSDataRowCountThreshold,databaseDescriptor.isReadOnly());
+statementExecutionResult=new LocalStatementExecutionResultSetResult(rs,columnNames,typeInfos,columnClasses,rowDataList.toArray(new Object[0][]),rowCount,resultSetParsingDuration,retainParsedRSDataRowCountThreshold,executorContext.isReadOnly());
 }
  else {
 final int updateCount=stmt.getUpdateCount();
 statementExecutionResult=new StatementExecutionMessageResult(Utils.formatDuration(executionDuration) + "> " + updateCount+ " row(s) affected.",false);
 }
-if (databaseDescriptor.getSQLDialect() == SQLDialect.SQLSERVER) {
+if (executorContext.getSQLDialect() == SQLDialect.SQLSERVER) {
 try {
 executeResult=stmt.getMoreResults(Statement.KEEP_CURRENT_RESULT);
 }
@@ -180,7 +180,7 @@ long executionDuration=System.currentTimeMillis() - start;
 return new StatementExecution(executionDuration,new StatementExecutionMessageResult(e));
 }
  finally {
-if (databaseDescriptor.isReadOnly()) {
+if (executorContext.isReadOnly()) {
 closeConnection();
 }
 }

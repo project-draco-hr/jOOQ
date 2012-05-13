@@ -1,27 +1,3 @@
 {
-  final DatabaseDescriptor databaseDescriptor=null;
-  try {
-synchronized (LOCK) {
-      serverSocket=CommunicationInterface.openServerCommunicationChannel(new CommunicationInterfaceFactory(){
-        @Override public CommunicationInterface createCommunicationInterface(        int port_){
-          final ServerDebugger serverDebugger=new ServerDebugger(databaseDescriptor);
-          DebuggerCommmunicationInterface commmunicationInterface=new DebuggerCommmunicationInterface(serverDebugger,port_){
-            @Override protected void processOpened(){
-              DebuggerRegistry.addSqlQueryDebugger(serverDebugger);
-            }
-            @Override protected void processClosed(){
-              DebuggerRegistry.removeSqlQueryDebugger(serverDebugger);
-            }
-          }
-;
-          serverDebugger.setCommunicationInterface(commmunicationInterface);
-          return commmunicationInterface;
-        }
-      }
-,port);
-    }
-  }
- catch (  Exception e) {
-    throw new RuntimeException(e);
-  }
+  this(port,null);
 }

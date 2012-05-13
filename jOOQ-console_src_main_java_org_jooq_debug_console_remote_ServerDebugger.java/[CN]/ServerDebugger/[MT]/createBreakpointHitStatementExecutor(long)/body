@@ -1,0 +1,12 @@
+{
+  LocalStatementExecutor statementExecutor=super.createBreakpointHitStatementExecutor(threadID);
+synchronized (threadIDToStatementExecutorList) {
+    List<StatementExecutor> list=threadIDToStatementExecutorList.get(threadID);
+    if (list == null) {
+      list=new ArrayList<StatementExecutor>();
+      threadIDToStatementExecutorList.put(threadID,list);
+    }
+    list.add(statementExecutor);
+  }
+  return statementExecutor;
+}

@@ -1,5 +1,5 @@
 {
-  Console sqlConsoleFrame=new Console(databaseDescriptor,true);
+  Console sqlConsoleFrame=new Console(databaseDescriptor,true,true);
   sqlConsoleFrame.setLoggingActive(isLoggingActive);
   sqlConsoleFrame.setVisible(true);
 }

@@ -20,7 +20,7 @@
   }
   SwingUtilities.invokeLater(new Runnable(){
     @Override public void run(){
-      Console sqlConsoleFrame=new Console(debugger,true);
+      Console sqlConsoleFrame=new Console(debugger,true,true);
       sqlConsoleFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
       sqlConsoleFrame.setVisible(true);
     }

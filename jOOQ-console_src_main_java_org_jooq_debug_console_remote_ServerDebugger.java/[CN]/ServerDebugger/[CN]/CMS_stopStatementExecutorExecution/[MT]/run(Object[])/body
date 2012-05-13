@@ -1,0 +1,5 @@
+{
+  int id=(Integer)args[0];
+  getDebugger().removeStatementExecutor(id).stopExecution();
+  return null;
+}

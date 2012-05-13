@@ -1,0 +1,9 @@
+{
+  if (breakpoints != null && breakpoints.length == 0) {
+    breakpoints=null;
+  }
+synchronized (BREAKPOINT_LOCK) {
+    this.breakpoints=breakpoints;
+  }
+  new ServerDebugger.CMS_setBreakpoints().asyncExec(communicationInterface,(Object)breakpoints);
+}

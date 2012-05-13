@@ -2,9 +2,7 @@
   if (sqlLoggerPane != null) {
     sqlLoggerPane.setLogging(false);
   }
-  if (editorTabbedPane != null) {
-    for (int i=editorTabbedPane.getTabCount() - 2; i >= 0; i--) {
-      ((EditorPane)editorTabbedPane.getComponentAt(i)).closeLastExecution();
-    }
+  if (editorsPane != null) {
+    editorsPane.performCleanup();
   }
 }

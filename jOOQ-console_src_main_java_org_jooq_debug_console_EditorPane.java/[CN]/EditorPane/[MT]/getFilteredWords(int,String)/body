@@ -1,13 +1,14 @@
 {
   List<CompletionCandidate> candidateList=new ArrayList<CompletionCandidate>();
   if (candidateList.isEmpty()) {
-    StatementExecutor statementExecutor=debugger.createStatementExecutor();
+    StatementExecutor statementExecutor=statementExecutorCreator.createStatementExecutor();
     for (    String s : statementExecutor.getTableNames()) {
       candidateList.add(new CompletionCandidate(KeyWordType.TABLE,s));
     }
     for (    String s : statementExecutor.getTableColumnNames()) {
       candidateList.add(new CompletionCandidate(KeyWordType.TABLE_COlUMN,s));
     }
+    statementExecutor.stopExecution();
     for (    String s : new String[]{"ALTER","ASC","BY","DESC","DROP","FROM","IN","INNER","INSERT","INTO","JOIN","LEFT","NOT","ORDER","SELECT","UPDATE","WHERE","AND","OR","EXISTS","HAVING","TOP","GROUP","SET"}) {
       candidateList.add(new CompletionCandidate(KeyWordType.KEYWORD,s));
     }

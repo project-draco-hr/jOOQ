@@ -1,0 +1,5 @@
+{
+  super(ui);
+  super.setBorder(BorderFactory.createEmptyBorder(1,1,1,1));
+  setOpaque(false);
+}

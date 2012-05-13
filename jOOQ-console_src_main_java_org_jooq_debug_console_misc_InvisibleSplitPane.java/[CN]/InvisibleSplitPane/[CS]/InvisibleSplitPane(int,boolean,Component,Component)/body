@@ -1,0 +1,4 @@
+{
+  super(newOrientation,newContinuousLayout,newLeftComponent,newRightComponent);
+  initialize();
+}

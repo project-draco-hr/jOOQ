@@ -1,7 +1,7 @@
 {
   super(queryType,queries,parameterDescription);
   this.id=nextID.getAndIncrement();
-  this.callerStackTraceElements=new Exception().getStackTrace();
+  this.callerStackTraceElements=Thread.currentThread().getStackTrace();
   this.preparationDuration=preparationDuration;
   this.bindingDuration=bindingDuration;
   this.executionDuration=executionDuration;

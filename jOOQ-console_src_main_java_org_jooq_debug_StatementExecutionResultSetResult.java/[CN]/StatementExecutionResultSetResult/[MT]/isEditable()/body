@@ -1,8 +1,0 @@
-{
-  try {
-    return rs.getConcurrency() == ResultSet.CONCUR_UPDATABLE && !isReadOnly;
-  }
- catch (  SQLException e) {
-  }
-  return false;
-}

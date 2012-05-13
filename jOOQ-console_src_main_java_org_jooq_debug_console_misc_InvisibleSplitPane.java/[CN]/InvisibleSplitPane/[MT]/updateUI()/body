@@ -1,0 +1,4 @@
+{
+  setUI(new SplitPaneWithInvisibleDividerUI());
+  revalidate();
+}

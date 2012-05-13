@@ -1,0 +1,7 @@
+{
+  super(breakpointHit);
+  StackTraceElement[] callerStackTraceElements=breakpointHit.getCallerStackTraceElements();
+  for (  StackTraceElement stackTraceElement : callerStackTraceElements) {
+    add(new StackTraceElementNode(stackTraceElement));
+  }
+}

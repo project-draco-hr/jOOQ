@@ -1,0 +1,39 @@
+{
+  setLayout(new GridBagLayout());
+  JPanel summaryPanel=new JPanel(new GridBagLayout());
+  summaryPanel.add(new JLabel("Pattern summary: "),new GridBagConstraints(0,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,0,0,0),0,0));
+  final JTextField summaryTextField=new JTextField(7);
+  final JTextArea sampleTextTextArea=new JTextArea(sampleText);
+  final JTextArea outputTextArea=new JTextArea();
+  outputTextArea.setEditable(false);
+  DocumentListener documentListener=new DocumentListener(){
+    @Override public void removeUpdate(    DocumentEvent e){
+      update();
+    }
+    @Override public void insertUpdate(    DocumentEvent e){
+      update();
+    }
+    @Override public void changedUpdate(    DocumentEvent e){
+      update();
+    }
+    private void update(){
+      try {
+        outputTextArea.setText(Utils.applySedRegularExpression(sampleTextTextArea.getText(),summaryTextField.getText()));
+      }
+ catch (      Exception e) {
+        outputTextArea.setText(e.getMessage());
+        outputTextArea.setCaretPosition(0);
+      }
+    }
+  }
+;
+  summaryTextField.getDocument().addDocumentListener(documentListener);
+  summaryPanel.add(summaryTextField,new GridBagConstraints(1,0,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(0,0,0,0),0,0));
+  add(summaryPanel,new GridBagConstraints(0,0,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(0,0,0,0),0,0));
+  add(new JLabel("Sample text:"),new GridBagConstraints(0,1,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(5,0,0,0),0,0));
+  add(new JScrollPane(sampleTextTextArea),new GridBagConstraints(0,2,1,1,1,1,GridBagConstraints.WEST,GridBagConstraints.BOTH,new Insets(0,0,0,0),0,0));
+  add(new JLabel("Output:"),new GridBagConstraints(0,3,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(5,0,0,0),0,0));
+  add(new JScrollPane(outputTextArea),new GridBagConstraints(0,4,1,1,1,1,GridBagConstraints.WEST,GridBagConstraints.BOTH,new Insets(0,0,0,0),0,0));
+  summaryTextField.setText(patternSummary);
+  sampleTextTextArea.getDocument().addDocumentListener(documentListener);
+}

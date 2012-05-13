@@ -1,0 +1,15 @@
+{
+  if (databaseDescriptor == null) {
+    return new String[0];
+  }
+  Set<String> columnNameSet=new HashSet<String>();
+  for (  Table<?> table : databaseDescriptor.getSchema().getTables()) {
+    for (    Field<?> field : table.getFields()) {
+      String columnName=field.getName();
+      columnNameSet.add(columnName);
+    }
+  }
+  String[] columnNames=columnNameSet.toArray(new String[0]);
+  Arrays.sort(columnNames,String.CASE_INSENSITIVE_ORDER);
+  return columnNames;
+}

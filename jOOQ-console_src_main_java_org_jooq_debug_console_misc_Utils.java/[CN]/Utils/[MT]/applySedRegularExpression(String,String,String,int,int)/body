@@ -1,0 +1,65 @@
+{
+  StringBuilder sb;
+  String toFind=s.substring(0,index1);
+  String replacement=index2 == -1 ? null : s.substring(index1,index2);
+  String modifiers=index2 == -1 ? s.substring(index1) : s.substring(index2);
+  boolean isGlobal=false;
+  int flags=0;
+  for (int i=0; i < modifiers.length(); i++) {
+    char c=modifiers.charAt(i);
+switch (c) {
+case 'g':
+      isGlobal=true;
+    break;
+case 'i':
+  flags|=Pattern.CASE_INSENSITIVE;
+break;
+case 'd':
+flags|=Pattern.UNIX_LINES;
+break;
+case 'm':
+flags|=Pattern.MULTILINE;
+break;
+case 's':
+flags|=Pattern.DOTALL;
+break;
+case 'u':
+flags|=Pattern.UNICODE_CASE;
+break;
+case 'x':
+flags|=Pattern.COMMENTS;
+break;
+default :
+throw new IllegalArgumentException("Invalid expression format: " + originalRegEx);
+}
+}
+Matcher matcher=Pattern.compile(toFind,flags).matcher(text);
+if (replacement == null) {
+int groupCount=matcher.groupCount();
+sb=new StringBuilder();
+while (matcher.find()) {
+if (groupCount > 0) {
+for (int i=0; i < groupCount; i++) {
+String group=matcher.group(i + 1);
+if (group != null) {
+sb.append(group);
+}
+}
+}
+ else {
+String group=matcher.group();
+if (group != null) {
+sb.append(group);
+}
+}
+if (!isGlobal) {
+break;
+}
+}
+return sb.toString();
+}
+if (isGlobal) {
+return matcher.replaceAll(replacement);
+}
+return matcher.replaceFirst(replacement);
+}

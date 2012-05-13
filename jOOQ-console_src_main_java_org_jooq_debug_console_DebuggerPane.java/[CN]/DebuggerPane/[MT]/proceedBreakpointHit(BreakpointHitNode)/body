@@ -1,0 +1,7 @@
+{
+  CheckBoxNode parentNode=(CheckBoxNode)breakpointHitNode.getParent();
+  int index=parentNode.getIndex(breakpointHitNode);
+  parentNode.remove(index);
+  breakpointTreeModel.nodesWereRemoved(parentNode,new int[]{index},new Object[]{breakpointHitNode});
+  breakpointHitNode.proceed();
+}

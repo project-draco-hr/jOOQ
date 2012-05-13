@@ -1,4 +1,6 @@
 {
-  this.loggingStatementMatchers=loggingStatementMatchers;
+synchronized (LOGGING_STATEMENT_MATCHERS_LOCK) {
+    this.loggingStatementMatchers=loggingStatementMatchers;
+  }
   new ServerDebugger.CMS_setLoggingStatementMatchers().asyncExec(communicationInterface,(Object)loggingStatementMatchers);
 }

@@ -1,0 +1,24 @@
+{
+  boolean isActive=true;
+  statementTextMatcherCheckBox.setEnabled(isActive);
+  statementTypeCheckBox.setEnabled(isActive);
+  threadNameTextMatcherCheckBox.setEnabled(isActive);
+  statementTextMatcherPane.setLocked(!isActive || !statementTextMatcherCheckBox.isSelected());
+  statementTypeSelectCheckBox.setEnabled(isActive && statementTypeCheckBox.isSelected());
+  statementTypeUpdateCheckBox.setEnabled(isActive && statementTypeCheckBox.isSelected());
+  statementTypeInsertCheckBox.setEnabled(isActive && statementTypeCheckBox.isSelected());
+  statementTypeDeleteCheckBox.setEnabled(isActive && statementTypeCheckBox.isSelected());
+  statementTypeOtherCheckBox.setEnabled(isActive && statementTypeCheckBox.isSelected());
+  threadNameTextMatcherPane.setLocked(!isActive || !threadNameTextMatcherCheckBox.isSelected());
+  hitCountCheckBox.setEnabled(isActive);
+  hitCountField.setEnabled(isActive && hitCountCheckBox.isSelected());
+  breakpointTypeComboBox.setEnabled(isActive && (statementTextMatcherCheckBox.isSelected() || statementTypeCheckBox.isSelected() || threadNameTextMatcherCheckBox.isSelected()|| hitCountCheckBox.isSelected()));
+  processorPane.setVisible(isActive && breakpointTypeComboBox.getSelectedItem() == PROCESS);
+  beforeExecutionCheckBox.setEnabled(isActive);
+  beforeExecutionProcessorPane.setLocked(!isActive || !beforeExecutionCheckBox.isSelected());
+  executeRadioButton.setEnabled(isActive);
+  replaceExecutionRadioButton.setEnabled(isActive);
+  replacementExecutionProcessorPane.setLocked(!isActive || !replaceExecutionRadioButton.isSelected());
+  afterExecutionCheckBox.setEnabled(isActive);
+  afterExecutionProcessorPane.setLocked(!isActive || !afterExecutionCheckBox.isSelected());
+}

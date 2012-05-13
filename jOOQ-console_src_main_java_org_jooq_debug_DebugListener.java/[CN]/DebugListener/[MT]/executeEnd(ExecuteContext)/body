@@ -1,66 +1,99 @@
 {
-  if (!isLogging) {
+  if (!hasDebuggers) {
     return;
   }
   endExecutionTime=System.currentTimeMillis();
   List<Debugger> debuggerList=DebuggerRegistry.getDebuggerList();
-  if (debuggerList.isEmpty()) {
-    return;
-  }
-  boolean hasListener=false;
-  for (  Debugger listener : debuggerList) {
-    LoggingListener loggingListener=listener.getLoggingListener();
-    if (loggingListener != null) {
-      hasListener=true;
-      break;
-    }
-  }
-  if (!hasListener) {
-    return;
-  }
-  ResultSet resultSet=ctx.resultSet();
-  String[] sql=ctx.batchSQL();
-  SqlQueryType sqlQueryType=SqlQueryType.detectType(sql[0]);
-  String parameterDescription=null;
-  if (sql.length == 1) {
-    PreparedStatement statement=ctx.statement();
-    if (statement instanceof UsageTrackingPreparedStatement) {
-      parameterDescription=((UsageTrackingPreparedStatement)statement).getParameterDescription();
-    }
-  }
-  QueryLoggingData queryLoggingData=new QueryLoggingData(sqlQueryType,sql,parameterDescription,startPreparationTime == 0 ? null : aggregatedPreparationDuration,startBindTime == 0 ? null : endBindTime - startBindTime,endExecutionTime - startExecutionTime);
-  final List<LoggingListener> loggingListenerList=new ArrayList<LoggingListener>(debuggerList.size());
-  for (  Debugger listener : debuggerList) {
-    LoggingListener loggingListener=listener.getLoggingListener();
-    if (loggingListener != null) {
-      StatementMatcher[] loggingStatementMatchers=listener.getLoggingStatementMatchers();
-      if (loggingStatementMatchers == null) {
-        loggingListenerList.add(loggingListener);
-        loggingListener.logQueries(queryLoggingData);
+  if (!debuggerList.isEmpty()) {
+    boolean hasListener=false;
+    for (    Debugger debugger : debuggerList) {
+      LoggingListener loggingListener=debugger.getLoggingListener();
+      if (loggingListener != null) {
+        hasListener=true;
+        break;
       }
- else       for (      StatementMatcher statementMatcher : loggingStatementMatchers) {
-        if (statementMatcher.matches(queryLoggingData)) {
-          loggingListenerList.add(loggingListener);
-          loggingListener.logQueries(queryLoggingData);
-          break;
+    }
+    if (hasListener) {
+      String[] sql=ctx.batchSQL();
+      SqlQueryType sqlQueryType=SqlQueryType.detectType(sql[0]);
+      String parameterDescription=null;
+      if (sql.length == 1) {
+        PreparedStatement statement=ctx.statement();
+        if (statement instanceof UsageTrackingPreparedStatement) {
+          parameterDescription=((UsageTrackingPreparedStatement)statement).getParameterDescription();
         }
       }
-    }
-  }
-  if (resultSet != null && !loggingListenerList.isEmpty()) {
-    final int queryLoggingDataID=queryLoggingData.getID();
-    ResultSet newResultSet=new UsageTrackingResultSet(resultSet){
-      @Override protected void notifyData(      long lifeTime,      int readRows,      int readCount,      int writeCount){
-        ResultSetLoggingData resultSetLoggingData=null;
-        for (        LoggingListener loggingListener : loggingListenerList) {
-          if (resultSetLoggingData == null) {
-            resultSetLoggingData=new ResultSetLoggingData(lifeTime,readRows,readCount,writeCount);
+      QueryLoggingData queryLoggingData=new QueryLoggingData(sqlQueryType,sql,parameterDescription,startPreparationTime == 0 ? null : aggregatedPreparationDuration,startBindTime == 0 ? null : endBindTime - startBindTime,endExecutionTime - startExecutionTime);
+      final List<LoggingListener> loggingListenerList=new ArrayList<LoggingListener>(debuggerList.size());
+      for (      Debugger listener : debuggerList) {
+        LoggingListener loggingListener=listener.getLoggingListener();
+        if (loggingListener != null) {
+          StatementMatcher[] loggingStatementMatchers=listener.getLoggingStatementMatchers();
+          if (loggingStatementMatchers == null) {
+            loggingListenerList.add(loggingListener);
+            loggingListener.logQueries(queryLoggingData);
           }
-          loggingListener.logResultSet(queryLoggingDataID,resultSetLoggingData);
+ else           for (          StatementMatcher statementMatcher : loggingStatementMatchers) {
+            if (statementMatcher.matches(queryLoggingData)) {
+              loggingListenerList.add(loggingListener);
+              loggingListener.logQueries(queryLoggingData);
+              break;
+            }
+          }
+        }
+      }
+      ResultSet resultSet=ctx.resultSet();
+      if (resultSet != null && !loggingListenerList.isEmpty()) {
+        final int queryLoggingDataID=queryLoggingData.getID();
+        ResultSet newResultSet=new UsageTrackingResultSet(resultSet){
+          @Override protected void notifyData(          long lifeTime,          int readRows,          int readCount,          int writeCount){
+            ResultSetLoggingData resultSetLoggingData=null;
+            for (            LoggingListener loggingListener : loggingListenerList) {
+              if (resultSetLoggingData == null) {
+                resultSetLoggingData=new ResultSetLoggingData(lifeTime,readRows,readCount,writeCount);
+              }
+              loggingListener.logResultSet(queryLoggingDataID,resultSetLoggingData);
+            }
+          }
+        }
+;
+        ctx.resultSet(newResultSet);
+      }
+    }
+  }
+  if (matchingDebugger != null) {
+    Thread currentThread=Thread.currentThread();
+    long threadID=currentThread.getId();
+    String threadName=currentThread.getName();
+    StackTraceElement[] callerStackTraceElements=currentThread.getStackTrace();
+    callerStackTraceElements=Arrays.copyOfRange(callerStackTraceElements,2,callerStackTraceElements.length);
+    matchingDebugger.processBreakpointAfterExecutionHit(ctx,new BreakpointHit(matchingBreakpoint.getID(),effectiveSQL,matchingParameterDescription,threadID,threadName,callerStackTraceElements,false));
+  }
+  if (matchingBreakpoint != null) {
+    StatementProcessor afterExecutionProcessor=matchingBreakpoint.getAfterExecutionProcessor();
+    matchingBreakpoint=null;
+    if (afterExecutionProcessor != null) {
+      String sql=afterExecutionProcessor.processSQL(matchingSQL);
+      long subStartExecutionTime=System.currentTimeMillis();
+      executeSQL(ctx,sql);
+      long subEndExecutionTime=System.currentTimeMillis();
+      for (      Debugger listener : debuggerList) {
+        LoggingListener loggingListener=listener.getLoggingListener();
+        if (loggingListener != null) {
+          SqlQueryType sqlQueryType=SqlQueryType.detectType(sql);
+          QueryLoggingData queryLoggingData=new QueryLoggingData(sqlQueryType,new String[]{sql},null,null,null,subEndExecutionTime - subStartExecutionTime);
+          StatementMatcher[] loggingStatementMatchers=listener.getLoggingStatementMatchers();
+          if (loggingStatementMatchers == null) {
+            loggingListener.logQueries(queryLoggingData);
+          }
+ else           for (          StatementMatcher statementMatcher : loggingStatementMatchers) {
+            if (statementMatcher.matches(queryLoggingData)) {
+              loggingListener.logQueries(queryLoggingData);
+              break;
+            }
+          }
         }
       }
     }
-;
-    ctx.resultSet(newResultSet);
   }
 }

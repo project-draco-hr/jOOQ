@@ -1,3 +1,5 @@
 {
-  return loggingListener;
+synchronized (LOGGING_LISTENER_LOCK) {
+    return loggingListener;
+  }
 }

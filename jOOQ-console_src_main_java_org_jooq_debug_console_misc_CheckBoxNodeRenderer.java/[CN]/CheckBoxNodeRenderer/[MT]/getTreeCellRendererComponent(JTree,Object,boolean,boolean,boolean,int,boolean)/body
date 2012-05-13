@@ -1,0 +1,12 @@
+{
+  Component c=nonCheckBoxRenderer.getTreeCellRendererComponent(tree,value,selected,expanded,leaf,row,hasFocus);
+  if (value instanceof CheckBoxNode) {
+    checkBoxRenderer.setSelected(false);
+    checkBoxRenderer.setEnabled(tree.isEnabled());
+    checkBoxRenderer.setOpaque(false);
+    CheckBoxNode node=(CheckBoxNode)value;
+    checkBoxRenderer.setSelected(node.isSelected());
+    c=new CheckBoxEditor(checkBoxRenderer,c);
+  }
+  return c;
+}

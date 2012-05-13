@@ -1,5 +1,6 @@
 {
   super(new BorderLayout());
+  setBorder(BorderFactory.createEmptyBorder(2,5,0,5));
   this.debugger=debugger;
   setOpaque(false);
   JPanel loggerHeaderPanel=new JPanel(new BorderLayout());
@@ -502,7 +503,7 @@ updateStatusLabel();
 }
 );
 textArea=new SqlTextArea();
-final JSplitPane splitPane=new JSplitPane(JSplitPane.VERTICAL_SPLIT,true,new JScrollPane(table),new JScrollPane(textArea));
+final JSplitPane splitPane=new InvisibleSplitPane(JSplitPane.VERTICAL_SPLIT,true,new JScrollPane(table),new RTextScrollPane(textArea));
 splitPane.setResizeWeight(1);
 SwingUtilities.invokeLater(new Runnable(){
 @Override public void run(){

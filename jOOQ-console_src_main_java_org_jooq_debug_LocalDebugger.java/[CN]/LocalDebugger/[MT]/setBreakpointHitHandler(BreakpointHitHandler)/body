@@ -1,0 +1,5 @@
+{
+synchronized (BREAKPOINT_HIT_HANDLER_LOCK) {
+    this.breakpointHitHandler=breakpointHitHandler;
+  }
+}

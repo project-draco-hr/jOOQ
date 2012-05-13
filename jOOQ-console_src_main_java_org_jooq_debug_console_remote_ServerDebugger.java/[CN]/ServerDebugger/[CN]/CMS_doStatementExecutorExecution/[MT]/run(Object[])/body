@@ -1,0 +1,8 @@
+{
+  int id=(Integer)args[0];
+  String sql=(String)args[1];
+  int maxRSRowsParsing=(Integer)args[2];
+  int retainParsedRSDataRowCountThreshold=(Integer)args[3];
+  StatementExecution statementExecution=getDebugger().getStatementExecutor(id).execute(sql,maxRSRowsParsing,retainParsedRSDataRowCountThreshold);
+  return new ClientStatementExecution(statementExecution);
+}

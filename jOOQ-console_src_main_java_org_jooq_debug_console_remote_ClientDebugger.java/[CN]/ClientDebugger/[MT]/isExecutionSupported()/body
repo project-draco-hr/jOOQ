@@ -1,3 +1,8 @@
 {
-  return false;
+synchronized (IS_EDITION_SUPPORTED_LOCK) {
+    if (isEditionSupported == null) {
+      isEditionSupported=(Boolean)new ServerDebugger.CMS_isExecutionSupported().syncExec(communicationInterface);
+    }
+  }
+  return Boolean.TRUE.equals(isEditionSupported);
 }

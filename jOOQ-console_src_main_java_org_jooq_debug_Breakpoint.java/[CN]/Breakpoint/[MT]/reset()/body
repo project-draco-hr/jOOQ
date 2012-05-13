@@ -1,0 +1,5 @@
+{
+  if (hitCount != null) {
+    currentHitCount=new AtomicInteger(hitCount);
+  }
+}
