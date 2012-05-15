@@ -1,0 +1,3 @@
+{
+  getDelegate().setClob(parameterName,reader,length);
+}

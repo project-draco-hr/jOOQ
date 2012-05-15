@@ -1,0 +1,3 @@
+{
+  getDelegate().setClientInfo(name,value);
+}

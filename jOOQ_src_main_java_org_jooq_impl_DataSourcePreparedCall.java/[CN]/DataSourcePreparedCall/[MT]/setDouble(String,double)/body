@@ -1,0 +1,3 @@
+{
+  getDelegate().setDouble(parameterName,x);
+}

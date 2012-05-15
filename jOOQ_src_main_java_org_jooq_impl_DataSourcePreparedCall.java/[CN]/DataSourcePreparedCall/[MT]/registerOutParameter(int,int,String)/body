@@ -1,0 +1,3 @@
+{
+  getDelegate().registerOutParameter(parameterIndex,sqlType,typeName);
+}

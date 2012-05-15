@@ -1,0 +1,3 @@
+{
+  return getDelegate().getTimestamp(parameterIndex,cal);
+}

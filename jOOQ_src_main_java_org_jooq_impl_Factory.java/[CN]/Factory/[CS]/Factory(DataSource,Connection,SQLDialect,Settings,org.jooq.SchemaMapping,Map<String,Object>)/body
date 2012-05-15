@@ -1,0 +1,8 @@
+{
+  this.connection=connection;
+  this.datasource=datasource;
+  this.dialect=dialect;
+  this.settings=settings != null ? settings : SettingsTools.defaultSettings();
+  this.mapping=mapping != null ? mapping : new org.jooq.SchemaMapping(this.settings);
+  this.data=data != null ? data : new HashMap<String,Object>();
+}

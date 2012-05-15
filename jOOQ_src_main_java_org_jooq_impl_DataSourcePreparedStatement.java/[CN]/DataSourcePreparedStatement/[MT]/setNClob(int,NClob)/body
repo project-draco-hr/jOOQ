@@ -1,0 +1,3 @@
+{
+  getDelegate().setNClob(parameterIndex,value);
+}

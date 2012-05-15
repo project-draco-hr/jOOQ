@@ -1,0 +1,3 @@
+{
+  getDelegate().setNCharacterStream(parameterIndex,value,length);
+}

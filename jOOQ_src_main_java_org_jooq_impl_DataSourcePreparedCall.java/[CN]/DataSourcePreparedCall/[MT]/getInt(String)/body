@@ -1,0 +1,3 @@
+{
+  return getDelegate().getInt(parameterName);
+}

@@ -1,0 +1,3 @@
+{
+  getDelegate().setBoolean(parameterIndex,x);
+}

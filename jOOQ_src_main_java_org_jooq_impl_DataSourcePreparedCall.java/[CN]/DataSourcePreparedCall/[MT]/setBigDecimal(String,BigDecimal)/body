@@ -1,0 +1,3 @@
+{
+  getDelegate().setBigDecimal(parameterName,x);
+}
