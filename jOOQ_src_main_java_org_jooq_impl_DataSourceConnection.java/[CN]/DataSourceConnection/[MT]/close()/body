@@ -1,0 +1,6 @@
+{
+  getDelegate().close();
+  if (datasource != null) {
+    connection=null;
+  }
+}

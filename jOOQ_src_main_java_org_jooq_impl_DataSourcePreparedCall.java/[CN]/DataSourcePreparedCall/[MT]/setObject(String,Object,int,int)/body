@@ -1,0 +1,3 @@
+{
+  getDelegate().setObject(parameterName,x,targetSqlType,scale);
+}

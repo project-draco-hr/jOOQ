@@ -1,3 +1,3 @@
 {
-  this(connection,dialect,settings,new org.jooq.SchemaMapping(settings),null);
+  this(null,connection,dialect,settings,new org.jooq.SchemaMapping(settings),null);
 }

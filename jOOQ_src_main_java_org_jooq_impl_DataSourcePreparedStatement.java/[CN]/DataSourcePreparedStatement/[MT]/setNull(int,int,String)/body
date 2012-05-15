@@ -1,0 +1,3 @@
+{
+  getDelegate().setNull(parameterIndex,sqlType,typeName);
+}

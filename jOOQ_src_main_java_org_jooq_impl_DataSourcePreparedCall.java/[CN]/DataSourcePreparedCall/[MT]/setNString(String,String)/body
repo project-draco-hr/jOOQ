@@ -1,0 +1,3 @@
+{
+  getDelegate().setNString(parameterName,value);
+}

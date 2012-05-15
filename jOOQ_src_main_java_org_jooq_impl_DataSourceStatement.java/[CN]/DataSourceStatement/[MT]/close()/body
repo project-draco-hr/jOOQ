@@ -1,0 +1,10 @@
+{
+  try {
+    getDelegate().close();
+  }
+  finally {
+    if (connection.getDataSource() != null) {
+      connection.close();
+    }
+  }
+}

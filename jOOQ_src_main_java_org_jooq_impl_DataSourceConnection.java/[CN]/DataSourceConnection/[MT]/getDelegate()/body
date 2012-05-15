@@ -1,0 +1,11 @@
+{
+  if (connection == null) {
+    try {
+      connection=new ConnectionProxy(datasource.getConnection(),settings);
+    }
+ catch (    SQLException e) {
+      throw new DataAccessException("Error when fetching Connection from DataSource",e);
+    }
+  }
+  return connection;
+}

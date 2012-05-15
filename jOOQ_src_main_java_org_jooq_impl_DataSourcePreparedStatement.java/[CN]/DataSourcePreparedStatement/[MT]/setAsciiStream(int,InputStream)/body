@@ -1,0 +1,3 @@
+{
+  getDelegate().setAsciiStream(parameterIndex,x);
+}

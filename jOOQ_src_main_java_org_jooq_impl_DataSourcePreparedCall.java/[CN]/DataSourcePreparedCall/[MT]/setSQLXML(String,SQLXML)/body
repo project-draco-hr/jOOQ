@@ -1,0 +1,3 @@
+{
+  getDelegate().setSQLXML(parameterName,xmlObject);
+}

@@ -1,0 +1,3 @@
+{
+  getDelegate().setMaxRows(max);
+}
