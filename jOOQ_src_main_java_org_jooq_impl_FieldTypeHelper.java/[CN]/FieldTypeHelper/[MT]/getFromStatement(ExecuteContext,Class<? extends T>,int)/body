@@ -71,19 +71,19 @@
   }
  else   if (type == UByte.class) {
     String string=stmt.getString(index);
-    return (T)(string == null ? null : new UByte(string));
+    return (T)(string == null ? null : UByte.valueOf(string));
   }
  else   if (type == UShort.class) {
     String string=stmt.getString(index);
-    return (T)(string == null ? null : new UShort(string));
+    return (T)(string == null ? null : UShort.valueOf(string));
   }
  else   if (type == UInteger.class) {
     String string=stmt.getString(index);
-    return (T)(string == null ? null : new UInteger(string));
+    return (T)(string == null ? null : UInteger.valueOf(string));
   }
  else   if (type == ULong.class) {
     String string=stmt.getString(index);
-    return (T)(string == null ? null : new ULong(string));
+    return (T)(string == null ? null : ULong.valueOf(string));
   }
  else   if (type.isArray()) {
     return (T)convertArray(stmt.getObject(index),(Class<? extends Object[]>)type);
