@@ -1,0 +1,12 @@
+{
+  Author a1=new Author();
+  a1.setFirstName("Calvin");
+  a1.setLastName("Coolidge");
+  authorDao.add(a1);
+  Author a2=new Author();
+  a2.setFirstName("James Fenimore");
+  a2.setLastName("Cooper");
+  authorDao.add(a2);
+  long count=authorDao.countDistinctForLastName("Coo");
+  Assert.assertEquals(2,count);
+}

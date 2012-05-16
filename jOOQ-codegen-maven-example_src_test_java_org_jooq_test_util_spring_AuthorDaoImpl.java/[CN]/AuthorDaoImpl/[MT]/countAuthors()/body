@@ -1,0 +1,3 @@
+{
+  return factory.selectCount().from(T_AUTHOR).fetchOne().getValue(0,Long.class);
+}

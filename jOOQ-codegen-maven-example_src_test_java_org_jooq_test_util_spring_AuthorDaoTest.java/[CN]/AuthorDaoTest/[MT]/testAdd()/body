@@ -1,0 +1,8 @@
+{
+  Author a=new Author();
+  a.setFirstName("Lewis");
+  a.setLastName("Carroll");
+  authorDao.add(a);
+  List<Author> authors=authorDao.findAll();
+  Assert.assertEquals(3,authors.size());
+}

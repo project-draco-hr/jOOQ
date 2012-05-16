@@ -1,0 +1,3 @@
+{
+  return factory.selectFrom(T_AUTHOR).where(T_AUTHOR.ID.equal(author.getId())).fetchOne() != null;
+}
