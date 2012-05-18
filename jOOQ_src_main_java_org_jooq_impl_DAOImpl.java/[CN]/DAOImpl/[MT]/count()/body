@@ -1,0 +1,3 @@
+{
+  return create.selectCount().from(table).fetchOne(0,Long.class);
+}

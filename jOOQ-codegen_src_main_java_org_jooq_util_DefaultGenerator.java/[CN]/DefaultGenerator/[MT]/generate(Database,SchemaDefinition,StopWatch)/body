@@ -428,7 +428,7 @@
     registerInSchema(outS,database.getTables(schema),Table.class,true);
     watch.splitInfo("Tables generated");
   }
-  if (generatePojos() && database.getTables(schema).size() > 0) {
+  if ((generateDaos() || generatePojos()) && database.getTables(schema).size() > 0) {
     log.info("Generating table POJOs");
     for (    TableDefinition table : database.getTables(schema)) {
       try {
@@ -492,6 +492,86 @@
       }
     }
     watch.splitInfo("Table POJOs generated");
+  }
+  if (generateDaos() && database.getTables(schema).size() > 0) {
+    log.info("Generating DAOs");
+    for (    TableDefinition table : database.getTables(schema)) {
+      try {
+        String tType="Void";
+        String pType=strategy.getFullJavaClassName(table,Mode.POJO);
+        UniqueKeyDefinition key=table.getMainUniqueKey();
+        ColumnDefinition keyColumn=null;
+        if (key != null) {
+          List<ColumnDefinition> columns=key.getKeyColumns();
+          if (columns.size() == 1) {
+            keyColumn=columns.get(0);
+            tType=getJavaType(keyColumn.getType());
+          }
+        }
+        if (keyColumn == null) {
+          log.info("Skipping DAO generation",strategy.getFileName(table,Mode.DAO));
+          continue;
+        }
+ else {
+          log.info("Generating DAO",strategy.getFileName(table,Mode.DAO));
+        }
+        GenerationWriter out=new GenerationWriter(strategy.getFile(table,Mode.DAO));
+        printHeader(out,table,Mode.DAO);
+        printClassJavadoc(out,table);
+        out.print("public class ");
+        out.print(strategy.getJavaClassName(table,Mode.DAO));
+        out.print(" extends ");
+        out.print(DAOImpl.class);
+        out.print("<");
+        out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
+        out.print(", ");
+        out.print(pType);
+        out.print(", ");
+        out.print(tType);
+        out.println("> {");
+        out.println();
+        printJavadoc(out,"Create a new " + strategy.getJavaClassName(table,Mode.DAO) + " without any factory");
+        out.print("\tpublic ");
+        out.print(strategy.getJavaClassName(table,Mode.DAO));
+        out.println("() {");
+        out.print("\t\tsuper(");
+        out.print(strategy.getFullJavaIdentifier(table));
+        out.print(", ");
+        out.print(strategy.getFullJavaClassName(table,Mode.POJO));
+        out.println(".class);");
+        out.println("\t}");
+        out.println();
+        printJavadoc(out,"Create a new " + strategy.getJavaClassName(table,Mode.DAO) + " with an attached factory");
+        out.print("\tpublic ");
+        out.print(strategy.getJavaClassName(table,Mode.DAO));
+        out.print("(");
+        out.print(Factory.class);
+        out.println(" factory) {");
+        out.print("\t\tsuper(");
+        out.print(strategy.getFullJavaIdentifier(table));
+        out.print(", ");
+        out.print(strategy.getFullJavaClassName(table,Mode.POJO));
+        out.println(".class, factory);");
+        out.println("\t}");
+        out.println();
+        printOverride(out);
+        out.print("\tprotected ");
+        out.print(tType);
+        out.print(" getId(");
+        out.print(strategy.getFullJavaClassName(table,Mode.POJO));
+        out.println(" object) {");
+        out.print("\t\treturn object.");
+        out.print(strategy.getJavaGetterName(keyColumn,Mode.POJO));
+        out.println("();");
+        out.println("\t}");
+        out.println("}");
+        out.close();
+      }
+ catch (      Exception e) {
+        log.error("Error while generating table DAO " + table,e);
+      }
+    }
+    watch.splitInfo("Table DAOs generated");
   }
   if (database.getTables(schema).size() > 0) {
     log.info("Generating table references");
@@ -632,7 +712,7 @@
     out.close();
     watch.splitInfo("Keys generated");
   }
-  if (generateRecords() && database.getTables(schema).size() > 0) {
+  if ((generateDaos() || generateRecords()) && database.getTables(schema).size() > 0) {
     log.info("Generating records");
     for (    TableDefinition table : database.getTables(schema)) {
       try {

@@ -3,5 +3,16 @@
   if (mode == Mode.POJO) {
     result.add(Serializable.class.getName());
   }
+ else   if (mode == Mode.DAO) {
+    TableDefinition table=(TableDefinition)definition;
+    List<ColumnDefinition> keyColumns=table.getMainUniqueKey().getKeyColumns();
+    String name=DAO.class.getName();
+    name+="<";
+    name+=getFullJavaClassName(table,Mode.POJO);
+    name+=", ";
+    name+=keyColumns.size() == 1 ? "Void" : "Void";
+    name+=">";
+    result.add(name);
+  }
   return result;
 }

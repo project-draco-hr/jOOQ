@@ -1,0 +1,9 @@
+{
+  Field<?> pk=pk();
+  if (pk != null) {
+    return create.selectFrom(table).where(equal(pk,id)).fetchOne().into(type);
+  }
+ else {
+    return null;
+  }
+}

@@ -1,0 +1,7 @@
+{
+  List<R> result=new ArrayList<R>();
+  for (  P object : objects) {
+    result.add(create.newRecord(table,object));
+  }
+  return result;
+}

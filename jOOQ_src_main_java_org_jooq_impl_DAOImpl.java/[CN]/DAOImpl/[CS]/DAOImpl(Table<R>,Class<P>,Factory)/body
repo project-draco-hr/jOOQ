@@ -1,0 +1,5 @@
+{
+  this.table=table;
+  this.type=type;
+  this.create=create;
+}

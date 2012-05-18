@@ -1,0 +1,3 @@
+{
+  return batchStore(records.toArray(new UpdatableRecord[records.size()]));
+}

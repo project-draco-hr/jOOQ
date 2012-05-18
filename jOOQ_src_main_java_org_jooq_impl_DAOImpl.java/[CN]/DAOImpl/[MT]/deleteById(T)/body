@@ -1,0 +1,3 @@
+{
+  deleteById(asList(ids));
+}

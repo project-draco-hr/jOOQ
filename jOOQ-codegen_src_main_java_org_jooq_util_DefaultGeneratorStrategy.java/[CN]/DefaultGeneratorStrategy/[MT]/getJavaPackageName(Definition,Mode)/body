@@ -15,5 +15,8 @@
  else   if (mode == Mode.POJO) {
     sb.append(".pojos");
   }
+ else   if (mode == Mode.DAO) {
+    sb.append(".daos");
+  }
   return sb.toString();
 }

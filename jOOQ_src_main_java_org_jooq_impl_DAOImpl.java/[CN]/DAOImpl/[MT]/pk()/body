@@ -1,0 +1,10 @@
+{
+  if (table instanceof UpdatableTable) {
+    UpdatableTable<?> updatable=(UpdatableTable<?>)table;
+    UniqueKey<?> key=updatable.getMainKey();
+    if (key.getFields().size() == 1) {
+      return key.getFields().get(0);
+    }
+  }
+  return null;
+}

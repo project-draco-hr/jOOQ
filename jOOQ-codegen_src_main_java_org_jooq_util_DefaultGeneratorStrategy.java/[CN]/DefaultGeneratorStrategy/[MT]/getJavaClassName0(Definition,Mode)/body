@@ -8,6 +8,9 @@
  else   if (mode == Mode.FACTORY) {
     result.append("Factory");
   }
+ else   if (mode == Mode.DAO) {
+    result.append("Dao");
+  }
   if (!StringUtils.isBlank(definition.getOverload())) {
     result.append(definition.getOverload());
   }

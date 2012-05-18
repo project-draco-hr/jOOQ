@@ -18,6 +18,7 @@
   log.info("  navigation methods",generateNavigationMethods());
   log.info("  records",generateRecords());
   log.info("  pojos",generatePojos());
+  log.info("  daos",generateDaos());
   log.info("  relations",generateRelations());
   log.info("----------------------------------------------------------");
   String targetPackage=getTargetPackage();

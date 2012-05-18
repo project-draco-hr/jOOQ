@@ -1,0 +1,3 @@
+{
+  save(singletonList(object));
+}

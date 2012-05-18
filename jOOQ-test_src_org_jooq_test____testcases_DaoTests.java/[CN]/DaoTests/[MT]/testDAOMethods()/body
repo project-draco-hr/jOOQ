@@ -1,0 +1,27 @@
+{
+  if (TAuthorDao() == null) {
+    log.info("SKIPPING","DAO tests");
+    return;
+  }
+  jOOQAbstractTest.reset=false;
+  Class<AP> type=TAuthorDao().getType();
+  assertEquals(2,TAuthorDao().count());
+  assertEquals(2,TAuthorDao().findAll().size());
+  assertEquals(1,on(TAuthorDao().findById(1)).get("id"));
+  assertEquals("George",on(TAuthorDao().findById(1)).get("firstName"));
+  assertEquals("Orwell",on(TAuthorDao().findById(1)).get("lastName"));
+  assertTrue(TAuthorDao().exists(on(type).create().set("id",1).<AP>get()));
+  assertTrue(TAuthorDao().existsById(1));
+  AP author=on(type).create().set("id",3).set("lastName","Hesse").<AP>get();
+  TAuthorDao().add(author);
+  assertEquals(3,TAuthorDao().count());
+  assertEquals(3,on(TAuthorDao().findById(3)).get("id"));
+  assertEquals(null,on(TAuthorDao().findById(3)).get("firstName"));
+  assertEquals("Hesse",on(TAuthorDao().findById(3)).get("lastName"));
+  author=on(author).set("firstName","Hermann").<AP>get();
+  TAuthorDao().save(author);
+  assertEquals(3,TAuthorDao().count());
+  assertEquals(3,on(TAuthorDao().findById(3)).get("id"));
+  assertEquals("Hermann",on(TAuthorDao().findById(3)).get("firstName"));
+  assertEquals("Hesse",on(TAuthorDao().findById(3)).get("lastName"));
+}
