@@ -1,0 +1,3 @@
+{
+  return convert(collection,new ConvertAll<T>(type));
+}
