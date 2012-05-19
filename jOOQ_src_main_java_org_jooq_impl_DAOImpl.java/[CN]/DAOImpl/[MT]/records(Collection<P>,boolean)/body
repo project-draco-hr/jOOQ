@@ -1,0 +1,12 @@
+{
+  List<R> result=new ArrayList<R>();
+  Field<?> pk=pk();
+  for (  P object : objects) {
+    R record=create.newRecord(table,object);
+    if (forUpdate && pk != null) {
+      ((AbstractRecord)record).getValue0(pk).setChanged(false);
+    }
+    result.add(record);
+  }
+  return result;
+}

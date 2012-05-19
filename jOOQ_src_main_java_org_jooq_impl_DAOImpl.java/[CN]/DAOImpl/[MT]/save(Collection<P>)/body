@@ -1,9 +1,0 @@
-{
-  if (objects.size() > 1) {
-    create.batchStore(records(objects));
-  }
- else   if (objects.size() == 1) {
-    R record=records(objects).get(0);
-    record.store();
-  }
-}

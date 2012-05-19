@@ -428,7 +428,7 @@
     registerInSchema(outS,database.getTables(schema),Table.class,true);
     watch.splitInfo("Tables generated");
   }
-  if ((generateDaos() || generatePojos()) && database.getTables(schema).size() > 0) {
+  if (generatePojos() && database.getTables(schema).size() > 0) {
     log.info("Generating table POJOs");
     for (    TableDefinition table : database.getTables(schema)) {
       try {
@@ -712,7 +712,7 @@
     out.close();
     watch.splitInfo("Keys generated");
   }
-  if ((generateDaos() || generateRecords()) && database.getTables(schema).size() > 0) {
+  if (generateRecords() && database.getTables(schema).size() > 0) {
     log.info("Generating records");
     for (    TableDefinition table : database.getTables(schema)) {
       try {

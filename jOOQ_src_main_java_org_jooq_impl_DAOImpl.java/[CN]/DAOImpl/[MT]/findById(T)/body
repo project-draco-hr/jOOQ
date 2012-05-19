@@ -1,9 +1,8 @@
 {
   Field<?> pk=pk();
+  R record=null;
   if (pk != null) {
-    return create.selectFrom(table).where(equal(pk,id)).fetchOne().into(type);
+    record=create.selectFrom(table).where(equal(pk,id)).fetchOne();
   }
- else {
-    return null;
-  }
+  return record == null ? null : record.into(type);
 }

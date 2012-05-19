@@ -16,8 +16,8 @@
   log.info("  JPA annotations",generateJPAAnnotations());
   log.info("  validation annotations",generateValidationAnnotations());
   log.info("  navigation methods",generateNavigationMethods());
-  log.info("  records",generateRecords());
-  log.info("  pojos",generatePojos());
+  log.info("  records",generateRecords() + ((!generateRecords && generateDaos) ? " (forced to true because of <daos/>)" : ""));
+  log.info("  pojos",generatePojos() + ((!generatePojos && generateDaos) ? " (forced to true because of <daos/>)" : ""));
   log.info("  daos",generateDaos());
   log.info("  relations",generateRelations());
   log.info("----------------------------------------------------------");

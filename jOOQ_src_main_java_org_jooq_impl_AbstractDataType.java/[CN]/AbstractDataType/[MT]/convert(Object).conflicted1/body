@@ -1,0 +1,3 @@
+{
+  return (T[])Convert.convertArray(objects,type);
+}
