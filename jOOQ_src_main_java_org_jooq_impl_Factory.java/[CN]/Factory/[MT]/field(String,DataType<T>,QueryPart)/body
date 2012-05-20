@@ -1,3 +1,3 @@
 {
-  return new SQLClause<T>(sql,type,parts);
+  return new SQLField<T>(sql,type,parts);
 }

@@ -12,6 +12,6 @@ case ASE:
 case SQLSERVER:
 return function("charindex",SQLDataType.INTEGER,search,in);
 default :
-return new SQLClause<Integer>("{position}({0} {in} {1})",SQLDataType.INTEGER,search,in);
+return field("{position}({0} {in} {1})",SQLDataType.INTEGER,search,in);
 }
 }
