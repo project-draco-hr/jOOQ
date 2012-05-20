@@ -1,0 +1,4 @@
+SchemaDefinition schema
+String name
+TableDefinition table
+boolean isPrimaryKey

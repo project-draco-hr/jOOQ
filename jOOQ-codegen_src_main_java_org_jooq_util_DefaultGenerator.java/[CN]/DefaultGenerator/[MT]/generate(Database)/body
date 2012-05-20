@@ -7,7 +7,7 @@
   log.info("  target package",getTargetPackage());
   log.info("----------------------------------------------------------");
   log.info("");
-  log.info("Generation parameters");
+  log.info("DefaultGenerator parameters");
   log.info("----------------------------------------------------------");
   log.info("  strategy",strategy.delegate.getClass());
   log.info("  deprecated",generateDeprecated());

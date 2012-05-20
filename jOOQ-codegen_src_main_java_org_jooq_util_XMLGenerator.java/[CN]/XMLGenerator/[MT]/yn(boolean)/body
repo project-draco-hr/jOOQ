@@ -1,0 +1,3 @@
+{
+  return value ? YesOrNoType.YES : YesOrNoType.NO;
+}
