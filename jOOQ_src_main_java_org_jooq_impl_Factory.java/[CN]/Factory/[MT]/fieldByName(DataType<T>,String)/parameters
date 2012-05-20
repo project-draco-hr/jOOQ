@@ -1,2 +1,2 @@
 DataType<T> type
-String fieldName
+String qualifiedName

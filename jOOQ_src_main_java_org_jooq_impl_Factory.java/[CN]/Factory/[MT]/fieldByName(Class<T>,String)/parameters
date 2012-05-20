@@ -1,2 +1,2 @@
 Class<T> type
-String fieldName
+String qualifiedName
