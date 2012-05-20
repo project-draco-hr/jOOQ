@@ -28,7 +28,7 @@
   assertEquals("2",result.getValueAsString(1,COUNT1));
   assertEquals(Integer.valueOf(1),result.getValue(0,COUNT2));
   assertEquals(Integer.valueOf(2),result.getValue(1,COUNT2));
-  result=create().select(LAST_NAME,COUNT1,COUNT2).from("t_author a").join("t_book b").on("a.id = b.author_id").where("b.title != 'Brida'").groupBy(LAST_NAME).having("count(*) = ?",1).fetch();
+  result=create().select(LAST_NAME,COUNT1,COUNT2).from("t_author a").join("t_book b").on("a.id = b.author_id").where("b.title != 'Brida'").groupBy(LAST_NAME).having("{count}(*) = ?",1).fetch();
   assertEquals(1,result.size());
   assertEquals("Coelho",result.getValue(0,LAST_NAME));
   assertEquals("1",result.getValueAsString(0,COUNT1));

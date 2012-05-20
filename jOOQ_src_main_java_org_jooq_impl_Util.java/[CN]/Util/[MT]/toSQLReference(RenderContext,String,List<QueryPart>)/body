@@ -1,0 +1,41 @@
+{
+  int bindIndex=0;
+  char[] sqlChars=sql.toCharArray();
+  boolean stringLiteral=false;
+  for (int i=0; i < sqlChars.length; i++) {
+    if (sqlChars[i] == '\'') {
+      if (i + 1 < sqlChars.length && sqlChars[i + 1] == '\'') {
+        context.sql(sqlChars[i++]);
+        context.sql(sqlChars[i]);
+      }
+ else {
+        stringLiteral=!stringLiteral;
+        context.sql(sqlChars[i]);
+      }
+    }
+ else     if (sqlChars[i] == '?' && context.inline() && !stringLiteral && bindIndex < substitutes.size()) {
+      context.sql(substitutes.get(bindIndex++));
+    }
+ else     if (sqlChars[i] == '{' && !stringLiteral && bindIndex < substitutes.size()) {
+      int start=++i;
+      for (; i < sqlChars.length && sqlChars[i] != '}'; i++)       ;
+      int end=i;
+      String token=sql.substring(start,end);
+      if ("(fn|d|t|ts)\\b)[\\w\\s]+".matches(token)) {
+        context.sql(token);
+      }
+ else {
+        try {
+          int substituteIndex=Integer.valueOf(token);
+          context.sql(substitutes.get(substituteIndex));
+        }
+ catch (        NumberFormatException e) {
+          context.keyword(token);
+        }
+      }
+    }
+ else {
+      context.sql(sqlChars[i]);
+    }
+  }
+}

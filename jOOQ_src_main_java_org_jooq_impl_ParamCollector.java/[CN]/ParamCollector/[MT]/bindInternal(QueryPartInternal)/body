@@ -1,14 +1,12 @@
 {
-  if (internal instanceof BindingProvider) {
-    BindingProvider provider=(BindingProvider)internal;
-    for (    Param<?> param : provider.getBindings()) {
-      String i=String.valueOf(nextIndex());
-      if (StringUtils.isBlank(param.getParamName())) {
-        result.put(i,param);
-      }
+  if (internal instanceof Param) {
+    Param<?> param=(Param<?>)internal;
+    String i=String.valueOf(nextIndex());
+    if (StringUtils.isBlank(param.getParamName())) {
+      result.put(i,param);
+    }
  else {
-        result.put(param.getParamName(),param);
-      }
+      result.put(param.getParamName(),param);
     }
   }
  else {

@@ -1,3 +1,0 @@
-RenderContext context
-String sql
-List<Param<?>> bindings

@@ -1,0 +1,18 @@
+{
+  if (substitutes == null) {
+    return queryParts(new Object[]{null});
+  }
+ else {
+    List<QueryPart> result=new ArrayList<QueryPart>();
+    for (    Object substitute : substitutes) {
+      if (substitute instanceof QueryPart) {
+        result.add((QueryPart)substitute);
+      }
+ else {
+        Class<?> type=substitute != null ? substitute.getClass() : Object.class;
+        result.add(new Val<Object>(substitute,Factory.getDataType(type)));
+      }
+    }
+    return result;
+  }
+}
