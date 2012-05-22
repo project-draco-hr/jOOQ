@@ -1,0 +1,30 @@
+{
+  CSVReader reader=new CSVReader(new StringReader(string),delimiter);
+  List<String[]> all=null;
+  try {
+    all=reader.readAll();
+  }
+ catch (  IOException e) {
+    throw new DataAccessException("Could not read the CSV string",e);
+  }
+  FieldList fields=new FieldList();
+  if (all.size() == 0) {
+    return new ResultImpl<Record>(this,fields);
+  }
+ else {
+    for (    String name : all.get(0)) {
+      fields.add(fieldByName(String.class,name));
+    }
+    Result<Record> result=new ResultImpl<Record>(this,fields);
+    if (all.size() > 1) {
+      for (      String[] values : all.subList(1,all.size())) {
+        Record record=new RecordImpl(fields);
+        for (int i=0; i < Math.min(values.length,fields.size()); i++) {
+          Util.setValue(record,fields.get(i),values[i]);
+        }
+        result.add(record);
+      }
+    }
+    return result;
+  }
+}
