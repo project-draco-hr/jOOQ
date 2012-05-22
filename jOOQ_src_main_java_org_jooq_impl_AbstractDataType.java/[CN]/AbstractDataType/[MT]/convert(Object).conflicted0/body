@@ -1,3 +1,11 @@
 {
-  return Convert.convert(object,type);
+  if (object == null) {
+    return null;
+  }
+ else   if (object.getClass() == type) {
+    return (T)object;
+  }
+ else {
+    return Convert.convert(object,type);
+  }
 }
