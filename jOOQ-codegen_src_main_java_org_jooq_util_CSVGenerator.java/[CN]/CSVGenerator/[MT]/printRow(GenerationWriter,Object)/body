@@ -1,0 +1,21 @@
+{
+  String separator="";
+  for (  Field field : record.getClass().getDeclaredFields()) {
+    XmlElement annotation=field.getAnnotation(XmlElement.class);
+    if (annotation != null) {
+      try {
+        field.setAccessible(true);
+        Object object=field.get(record);
+        out.print(separator);
+        out.print("\"");
+        out.print(object == null ? "" : object.toString().replace("\"","\"\""));
+        out.print("\"");
+        separator=",";
+      }
+ catch (      Exception e) {
+        throw new RuntimeException(e);
+      }
+    }
+  }
+  out.print("\n");
+}

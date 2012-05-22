@@ -1,0 +1,11 @@
+{
+  print(is.getCOLUMNS(),ColumnsRecordType.class,"COLUMNS.csv");
+  print(is.getKEYCOLUMNUSAGE(),KeyColumnUsageRecordType.class,"KEY_COLUMN_USAGE.csv");
+  print(is.getPARAMETERS(),ParametersRecordType.class,"PARAMETERS.csv");
+  print(is.getREFERENTIALCONSTRAINTS(),ReferentialConstraintsRecordType.class,"REFERENTIAL_CONSTRAINTS.csv");
+  print(is.getROUTINES(),RoutinesRecordType.class,"ROUTINES.csv");
+  print(is.getSCHEMATA(),SchemataRecordType.class,"SCHEMATA.csv");
+  print(is.getSEQUENCES(),SequencesRecordType.class,"SEQUENCES.csv");
+  print(is.getTABLECONSTRAINTS(),TableConstraintsRecordType.class,"TABLE_CONSTRAINTS.csv");
+  print(is.getTABLES(),TablesRecordType.class,"TABLES.csv");
+}

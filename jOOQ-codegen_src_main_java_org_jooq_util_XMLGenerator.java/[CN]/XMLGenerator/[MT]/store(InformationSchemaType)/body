@@ -1,0 +1,7 @@
+{
+  GenerationWriter out=new GenerationWriter(new File(getTargetDirectory(),"INFORMATION_SCHEMA.xml"));
+  StringWriter writer=new StringWriter();
+  JAXB.marshal(is,writer);
+  out.print(writer.toString());
+  out.close();
+}

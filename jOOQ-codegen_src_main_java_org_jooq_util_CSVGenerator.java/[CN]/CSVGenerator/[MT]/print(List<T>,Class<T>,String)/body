@@ -1,0 +1,8 @@
+{
+  GenerationWriter out=new GenerationWriter(new File(getTargetDirectory(),fileName));
+  printHeader(out,type);
+  for (  T record : records) {
+    printRow(out,record);
+  }
+  out.close();
+}

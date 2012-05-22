@@ -1,0 +1,14 @@
+{
+  String separator="";
+  for (  Field field : type.getDeclaredFields()) {
+    XmlElement annotation=field.getAnnotation(XmlElement.class);
+    if (annotation != null) {
+      out.print(separator);
+      out.print("\"");
+      out.print(annotation.name().replace("\"","\"\""));
+      out.print("\"");
+      separator=",";
+    }
+  }
+  out.print("\n");
+}
