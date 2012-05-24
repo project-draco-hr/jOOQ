@@ -164,10 +164,11 @@
     }
  else     if ((fromClass == String.class) && java.lang.Enum.class.isAssignableFrom(toClass)) {
       try {
-        return java.lang.Enum.valueOf(toClass,(String)from);
+        @SuppressWarnings("rawtypes") Class raw=toClass;
+        return (U)java.lang.Enum.valueOf(raw,(String)from);
       }
  catch (      java.lang.IllegalArgumentException e) {
-        throw fail(from,toClass);
+        return null;
       }
     }
   }

@@ -257,4 +257,9 @@
   assertEquals('1',(char)author2.getValue(TAuthor_ID(),char.class));
   assertEquals('a',(char)author2.getValue(TAuthor_LAST_NAME(),Character.class));
   assertEquals('a',(char)author2.getValue(TAuthor_LAST_NAME(),char.class));
+  Record record=create().select(inline("YES"),inline("NO")).fetchOne();
+  assertEquals(Boolean_YES_NO_UC.YES,record.getValue(0,Boolean_YES_NO_UC.class));
+  assertEquals(Boolean_YES_NO_UC.NO,record.getValue(1,Boolean_YES_NO_UC.class));
+  assertNull(record.getValue(0,Boolean_YES_NO_LC.class));
+  assertNull(record.getValue(1,Boolean_YES_NO_LC.class));
 }
