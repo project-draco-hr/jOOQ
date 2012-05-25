@@ -1,6 +1,6 @@
 {
   List<TableDefinition> result=new ArrayList<TableDefinition>();
-  for (  Record record : create().select(ALL_TAB_COMMENTS.OWNER,ALL_TAB_COMMENTS.TABLE_NAME,ALL_TAB_COMMENTS.COMMENTS).from(ALL_TAB_COMMENTS).where(ALL_TAB_COMMENTS.OWNER.in(getInputSchemata())).and(ALL_TAB_COMMENTS.TABLE_NAME.notLike("%$%")).orderBy(ALL_TAB_COMMENTS.OWNER,ALL_TAB_COMMENTS.TABLE_NAME).fetch()) {
+  for (  Record record : create().select(ALL_TAB_COMMENTS.OWNER,ALL_TAB_COMMENTS.TABLE_NAME,ALL_TAB_COMMENTS.COMMENTS).from(ALL_TAB_COMMENTS).where(ALL_TAB_COMMENTS.OWNER.upper().in(getInputSchemata())).and(ALL_TAB_COMMENTS.TABLE_NAME.notLike("%$%")).orderBy(ALL_TAB_COMMENTS.OWNER,ALL_TAB_COMMENTS.TABLE_NAME).fetch()) {
     SchemaDefinition schema=getSchema(record.getValue(ALL_TAB_COMMENTS.OWNER));
     String name=record.getValue(ALL_TAB_COMMENTS.TABLE_NAME);
     String comment=record.getValue(ALL_TAB_COMMENTS.COMMENTS);

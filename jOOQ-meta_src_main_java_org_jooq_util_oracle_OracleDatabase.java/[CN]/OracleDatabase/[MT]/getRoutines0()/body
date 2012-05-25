@@ -1,6 +1,6 @@
 {
   List<RoutineDefinition> result=new ArrayList<RoutineDefinition>();
-  for (  Record record : create().select(ALL_OBJECTS.OWNER,ALL_OBJECTS.OBJECT_NAME,ALL_OBJECTS.OBJECT_ID).from(ALL_OBJECTS).where(ALL_OBJECTS.OWNER.in(getInputSchemata()).and(ALL_OBJECTS.OBJECT_TYPE.in("FUNCTION","PROCEDURE"))).orderBy(ALL_OBJECTS.OWNER,ALL_OBJECTS.OBJECT_NAME,ALL_OBJECTS.OBJECT_ID).fetch()) {
+  for (  Record record : create().select(ALL_OBJECTS.OWNER,ALL_OBJECTS.OBJECT_NAME,ALL_OBJECTS.OBJECT_ID).from(ALL_OBJECTS).where(ALL_OBJECTS.OWNER.upper().in(getInputSchemata()).and(ALL_OBJECTS.OBJECT_TYPE.in("FUNCTION","PROCEDURE"))).orderBy(ALL_OBJECTS.OWNER,ALL_OBJECTS.OBJECT_NAME,ALL_OBJECTS.OBJECT_ID).fetch()) {
     SchemaDefinition schema=getSchema(record.getValue(ALL_OBJECTS.OWNER));
     String objectName=record.getValue(ALL_OBJECTS.OBJECT_NAME);
     BigDecimal objectId=record.getValue(ALL_OBJECTS.OBJECT_ID);
