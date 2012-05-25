@@ -50,8 +50,8 @@ break;
 }
 case ORACLE:
 {
-context.bind(getLowerRownum());
 context.bind(getUpperRownum());
+context.bind(getLowerRownum());
 break;
 }
 }
