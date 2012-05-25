@@ -5,7 +5,7 @@ case ASE:
 case SQLSERVER:
 {
       if (getArguments().length == 2) {
-        return function(functionName,SQLDataType.VARCHAR,getArguments()[0],getArguments()[1],literal(Integer.MAX_VALUE));
+        return function(functionName,SQLDataType.VARCHAR,getArguments()[0],getArguments()[1],inline(Integer.MAX_VALUE));
       }
  else {
         break;

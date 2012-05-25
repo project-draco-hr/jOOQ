@@ -1,4 +1,3 @@
 {
-  String escaped="'" + separator.replace("'","''") + "'";
-  return function("sys_connect_by_path",String.class,field,literal(escaped));
+  return function("sys_connect_by_path",String.class,field,inline(separator));
 }
