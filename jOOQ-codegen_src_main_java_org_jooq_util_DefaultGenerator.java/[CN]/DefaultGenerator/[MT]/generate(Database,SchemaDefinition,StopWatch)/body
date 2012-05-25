@@ -29,7 +29,7 @@
     log.info("Generating factory",strategy.getFileName(schema,Mode.FACTORY));
     outF=new GenerationWriter(strategy.getFile(schema,Mode.FACTORY));
     printHeader(outF,schema);
-    printClassJavadoc(outF,"A Factory for specific use with the <code>" + schema.getOutputName() + "</code> schema.<p>This Factory will not render the <code>"+ schema.getOutputName()+ "</code> schema's schema name in rendered SQL (assuming that you use it as the default schema on your connection!). Use the more generic {@link "+ database.getDialect().getFactory().getName()+ "} or the {@link "+ Factory.class.getName()+ "} instead, if you want to fully qualify tables, routines, etc.");
+    printClassJavadoc(outF,"A Factory for specific use with the <code>" + schema.getOutputName() + "</code> schema.\n<p>\nThis Factory will not render the <code>"+ schema.getOutputName()+ "</code> schema's schema name in rendered SQL (assuming that you use it as the default schema on your connection!). Use the more generic {@link "+ database.getDialect().getFactory().getName()+ "} or the {@link "+ Factory.class.getName()+ "} instead, if you want to fully qualify tables, routines, etc.");
     outF.print("public class ");
     outF.print(strategy.getJavaClassName(schema,Mode.FACTORY));
     outF.print(" extends ");
@@ -606,7 +606,7 @@
     log.info("Generating Keys");
     GenerationWriter out=new GenerationWriter(new File(targetSchemaDir,"Keys.java"));
     printHeader(out,schema);
-    printClassJavadoc(out,"A class modelling foreign key relationships between tables of the " + schema.getOutputName() + " schema");
+    printClassJavadoc(out,"A class modelling foreign key relationships between tables of the <code>" + schema.getOutputName() + "</code> schema");
     out.suppressWarnings("unchecked");
     out.print("public class Keys extends ");
     out.print(AbstractKeys.class);
