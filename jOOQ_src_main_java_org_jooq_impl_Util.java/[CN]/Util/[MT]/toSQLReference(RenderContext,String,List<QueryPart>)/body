@@ -17,7 +17,7 @@
       context.sql(substitutes.get(bindIndex++));
     }
  else     if (sqlChars[i] == '{' && !stringLiteral && bindIndex < substitutes.size()) {
-      if (sql.substring(i).matches("\\{(fn|d|t|ts)\\b.*")) {
+      if (JDBC_ESCAPE_PATTERN.matcher(sql.substring(i)).matches()) {
         context.sql(sqlChars[i]);
       }
  else {
