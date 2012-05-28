@@ -4,6 +4,18 @@
     if (other.equals(reference.getKey().getTable())) {
       result.add((ForeignKey<R,O>)reference);
     }
+ else     if (other instanceof TableImpl) {
+      Table<O> aliased=((TableImpl<O>)other).getAliasedTable();
+      if (aliased != null && aliased.equals(reference.getKey().getTable())) {
+        result.add((ForeignKey<R,O>)reference);
+      }
+    }
+ else     if (other instanceof TableAlias) {
+      Table<O> aliased=((TableAlias<O>)other).getAliasedTable();
+      if (aliased != null && aliased.equals(reference.getKey().getTable())) {
+        result.add((ForeignKey<R,O>)reference);
+      }
+    }
   }
   return Collections.unmodifiableList(result);
 }
