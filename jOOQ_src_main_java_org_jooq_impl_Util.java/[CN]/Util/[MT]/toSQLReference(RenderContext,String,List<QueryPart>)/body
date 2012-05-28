@@ -17,14 +17,14 @@
       context.sql(substitutes.get(bindIndex++));
     }
  else     if (sqlChars[i] == '{' && !stringLiteral && bindIndex < substitutes.size()) {
-      int start=++i;
-      for (; i < sqlChars.length && sqlChars[i] != '}'; i++)       ;
-      int end=i;
-      String token=sql.substring(start,end);
-      if ("(fn|d|t|ts)\\b)[\\w\\s]+".matches(token)) {
-        context.sql(token);
+      if (sql.substring(i).matches("\\{(fn|d|t|ts)\\b.*")) {
+        context.sql(sqlChars[i]);
       }
  else {
+        int start=++i;
+        for (; i < sqlChars.length && sqlChars[i] != '}'; i++)         ;
+        int end=i;
+        String token=sql.substring(start,end);
         try {
           int substituteIndex=Integer.valueOf(token);
           context.sql(substitutes.get(substituteIndex));
