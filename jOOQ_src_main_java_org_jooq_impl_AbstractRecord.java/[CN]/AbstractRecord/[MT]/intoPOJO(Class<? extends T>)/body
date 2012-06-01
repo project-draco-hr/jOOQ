@@ -1,6 +1,12 @@
 {
   try {
-    T result=Reflect.accessible(type.getDeclaredConstructor()).newInstance();
+    T result;
+    if (Modifier.isAbstract(type.getModifiers())) {
+      result=Reflect.on(HashMap.class).create().as(type);
+    }
+ else {
+      result=Reflect.accessible(type.getDeclaredConstructor()).newInstance();
+    }
     return intoMutablePOJO(type,result);
   }
  catch (  NoSuchMethodException e) {
