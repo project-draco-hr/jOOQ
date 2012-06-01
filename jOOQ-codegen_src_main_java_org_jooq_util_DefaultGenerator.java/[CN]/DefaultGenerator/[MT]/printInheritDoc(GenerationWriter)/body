@@ -1,4 +1,0 @@
-{
-  printJavadoc(out,"{@inheritDoc}");
-  printOverride(out);
-}
