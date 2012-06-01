@@ -1,5 +1,6 @@
 {
   file.getParentFile().mkdirs();
+  this.file=file;
   this.writer=new PrintWriter(file);
   this.sb=new StringBuilder();
   this.staticInitialisationStatements=new ArrayList<String>();

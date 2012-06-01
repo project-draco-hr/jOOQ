@@ -1,0 +1,146 @@
+{
+  printFieldJavaDoc(out,element);
+  if (printBody && generateInterfaces() && element instanceof ColumnDefinition) {
+    printOverride(out);
+  }
+  out.print("\tpublic void ");
+  out.print(strategy.getJavaSetterName(element,Mode.DEFAULT));
+  out.print("(");
+  out.print(getJavaType(element.getType()));
+  out.print(" value)");
+  if (printBody) {
+    out.println(" {");
+    out.println("\t\tsetValue(" + strategy.getFullJavaIdentifier(element) + ", value);");
+    out.println("\t}");
+  }
+ else {
+    out.println(";");
+  }
+  printFieldJavaDoc(out,element);
+  if (element instanceof ColumnDefinition) {
+    printColumnJPAAnnotation(out,(ColumnDefinition)element);
+  }
+  if (printBody && generateInterfaces() && element instanceof ColumnDefinition) {
+    printOverride(out);
+  }
+  out.print("\tpublic ");
+  out.print(getJavaType(element.getType()));
+  out.print(" ");
+  out.print(strategy.getJavaGetterName(element,Mode.DEFAULT));
+  out.print("()");
+  if (printBody) {
+    out.println(" {");
+    out.println("\t\treturn getValue(" + strategy.getFullJavaIdentifier(element) + ");");
+    out.println("\t}");
+  }
+ else {
+    out.println(";");
+  }
+  if (printBody && generateRelations() && generateNavigationMethods()&& element instanceof ColumnDefinition) {
+    ColumnDefinition column=(ColumnDefinition)element;
+    List<UniqueKeyDefinition> uniqueKeys=column.getUniqueKeys();
+    Set<String> fetchMethodNames=new HashSet<String>();
+    for (    UniqueKeyDefinition uniqueKey : uniqueKeys) {
+      if (out.printOnlyOnce(uniqueKey)) {
+        foreignKeyLoop:         for (        ForeignKeyDefinition foreignKey : uniqueKey.getForeignKeys()) {
+          if (foreignKey.getReferencedColumns().size() != foreignKey.getKeyColumns().size()) {
+            log.warn("Foreign key mismatch",foreignKey.getName() + " does not match its primary key! No code is generated for this key. See trac tickets #64 and #69");
+            continue foreignKeyLoop;
+          }
+          TableDefinition referencing=foreignKey.getKeyTable();
+          StringBuilder fetchMethodName=new StringBuilder();
+          fetchMethodName.append("fetch");
+          fetchMethodName.append(strategy.getJavaClassName(referencing));
+          fetchMethodName.append("List");
+          if (foreignKey.countSimilarReferences() > 1) {
+            fetchMethodName.append("By");
+            fetchMethodName.append(strategy.getJavaClassName(foreignKey.getKeyColumns().get(0)));
+          }
+          if (fetchMethodNames.contains(fetchMethodName.toString())) {
+            log.warn("Duplicate foreign key",foreignKey.getName() + " has the same properties as another foreign key! No code is generated for this key. See trac ticket #1270");
+            continue foreignKeyLoop;
+          }
+ else {
+            fetchMethodNames.add(fetchMethodName.toString());
+          }
+          printFieldJavaDoc(out,column);
+          out.print("\tpublic ");
+          out.print(List.class);
+          out.print("<");
+          out.print(strategy.getFullJavaClassName(referencing,Mode.RECORD));
+          out.print("> ");
+          out.print(fetchMethodName);
+          out.println("() {");
+          out.println("\t\treturn create()");
+          out.print("\t\t\t.selectFrom(");
+          out.print(strategy.getFullJavaIdentifier(referencing));
+          out.println(")");
+          String connector="\t\t\t.where(";
+          for (int i=0; i < foreignKey.getReferencedColumns().size(); i++) {
+            out.print(connector);
+            out.print(strategy.getFullJavaIdentifier(foreignKey.getKeyColumns().get(i)));
+            out.print(".equal(getValue");
+            DataTypeDefinition foreignType=foreignKey.getKeyColumns().get(i).getType();
+            DataTypeDefinition primaryType=uniqueKey.getKeyColumns().get(i).getType();
+            if (!match(foreignType,primaryType)) {
+              out.print("As");
+              out.print(getSimpleJavaType(foreignKey.getKeyColumns().get(i).getType()));
+            }
+            out.print("(");
+            out.print(strategy.getFullJavaIdentifier(uniqueKey.getKeyColumns().get(i)));
+            out.println(")))");
+            connector="\t\t\t.and(";
+          }
+          out.println("\t\t\t.fetch();");
+          out.println("\t}");
+        }
+      }
+    }
+    ForeignKeyDefinition foreignKey=column.getForeignKey();
+    if (foreignKey != null && out.printOnlyOnce(foreignKey)) {
+      boolean skipGeneration=false;
+      if (foreignKey.getReferencedColumns().size() != foreignKey.getKeyColumns().size()) {
+        log.warn("Foreign key mismatch",foreignKey.getName() + " does not match its primary key! No code is generated for this key. See trac tickets #64 and #69");
+        skipGeneration=true;
+      }
+      TableDefinition referenced=foreignKey.getReferencedTable();
+      if (referenced instanceof MasterDataTableDefinition) {
+        skipGeneration=true;
+      }
+      if (!skipGeneration) {
+        printFieldJavaDoc(out,column);
+        out.print("\tpublic ");
+        out.print(strategy.getFullJavaClassName(referenced,Mode.RECORD));
+        out.print(" fetch");
+        out.print(strategy.getJavaClassName(referenced));
+        if (foreignKey.countSimilarReferences() > 1) {
+          out.print("By");
+          out.print(strategy.getJavaClassName(column));
+        }
+        out.println("() {");
+        out.println("\t\treturn create()");
+        out.print("\t\t\t.selectFrom(");
+        out.print(strategy.getFullJavaIdentifier(referenced));
+        out.println(")");
+        String connector="\t\t\t.where(";
+        for (int i=0; i < foreignKey.getReferencedColumns().size(); i++) {
+          out.print(connector);
+          out.print(strategy.getFullJavaIdentifier(foreignKey.getReferencedColumns().get(i)));
+          out.print(".equal(getValue");
+          DataTypeDefinition foreignType=foreignKey.getKeyColumns().get(i).getType();
+          DataTypeDefinition primaryType=foreignKey.getReferencedColumns().get(i).getType();
+          if (!match(foreignType,primaryType)) {
+            out.print("As");
+            out.print(getSimpleJavaType(foreignKey.getReferencedColumns().get(i).getType()));
+          }
+          out.print("(");
+          out.print(strategy.getFullJavaIdentifier(foreignKey.getKeyColumns().get(i)));
+          out.println(")))");
+          connector="\t\t\t.and(";
+        }
+        out.println("\t\t\t.fetchOne();");
+        out.println("\t}");
+      }
+    }
+  }
+}

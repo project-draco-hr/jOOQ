@@ -18,5 +18,8 @@
  else   if (mode == Mode.DAO) {
     sb.append(".daos");
   }
+ else   if (mode == Mode.INTERFACE) {
+    sb.append(".interfaces");
+  }
   return sb.toString();
 }

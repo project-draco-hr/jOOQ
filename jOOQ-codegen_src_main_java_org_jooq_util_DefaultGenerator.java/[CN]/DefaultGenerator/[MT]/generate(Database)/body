@@ -18,6 +18,7 @@
   log.info("  navigation methods",generateNavigationMethods());
   log.info("  records",generateRecords() + ((!generateRecords && generateDaos) ? " (forced to true because of <daos/>)" : ""));
   log.info("  pojos",generatePojos() + ((!generatePojos && generateDaos) ? " (forced to true because of <daos/>)" : ""));
+  log.info("  interfaces",generateInterfaces());
   log.info("  daos",generateDaos());
   log.info("  relations",generateRelations());
   log.info("----------------------------------------------------------");

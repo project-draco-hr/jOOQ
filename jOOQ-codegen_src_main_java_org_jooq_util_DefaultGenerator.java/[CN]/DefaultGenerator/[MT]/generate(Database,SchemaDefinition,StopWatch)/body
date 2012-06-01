@@ -460,6 +460,9 @@
         for (        ColumnDefinition column : table.getColumns()) {
           out.println();
           printColumnJPAAnnotation(out,column);
+          if (generateInterfaces()) {
+            printOverride(out);
+          }
           out.print("\tpublic ");
           out.print(getJavaType(column.getType()));
           out.print(" ");
@@ -470,6 +473,9 @@
           out.println(";");
           out.println("\t}");
           out.println();
+          if (generateInterfaces()) {
+            printOverride(out);
+          }
           out.print("\tpublic void ");
           out.print(strategy.getJavaSetterName(column,Mode.POJO));
           out.print("(");
@@ -750,6 +756,31 @@
         out.print(strategy.getFullJavaIdentifier(table));
         out.println(");");
         out.println("\t}");
+        out.println("}");
+        out.close();
+      }
+ catch (      Exception e) {
+        log.error("Error while generating table record " + table,e);
+      }
+    }
+    watch.splitInfo("Table records generated");
+  }
+  if (generateInterfaces() && database.getTables(schema).size() > 0) {
+    log.info("Generating interfaces");
+    for (    TableDefinition table : database.getTables(schema)) {
+      try {
+        log.info("Generating interface",strategy.getFileName(table,Mode.INTERFACE));
+        GenerationWriter out=new GenerationWriter(strategy.getFile(table,Mode.INTERFACE));
+        printHeader(out,table,Mode.INTERFACE);
+        printClassJavadoc(out,table);
+        printTableJPAAnnotation(out,table);
+        out.print("public interface ");
+        out.print(strategy.getJavaClassName(table,Mode.INTERFACE));
+        printImplements(out,table,Mode.INTERFACE);
+        out.println(" {");
+        for (        ColumnDefinition column : table.getColumns()) {
+          printGetterAndSetter(out,column,false);
+        }
         out.println("}");
         out.close();
       }

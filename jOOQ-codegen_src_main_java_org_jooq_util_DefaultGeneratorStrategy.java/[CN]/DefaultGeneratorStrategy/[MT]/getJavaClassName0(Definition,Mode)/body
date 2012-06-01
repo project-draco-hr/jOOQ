@@ -11,5 +11,8 @@
  else   if (mode == Mode.DAO) {
     result.append("Dao");
   }
+ else   if (mode == Mode.INTERFACE) {
+    result.insert(0,"I");
+  }
   return result.toString();
 }
