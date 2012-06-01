@@ -1,5 +1,0 @@
-{
-  org.jooq.test.oracle.generatedclasses.test.packages.pkg_1358.P22 p=new org.jooq.test.oracle.generatedclasses.test.packages.pkg_1358.P22();
-  p.setJ(j);
-  p.execute(configuration);
-}

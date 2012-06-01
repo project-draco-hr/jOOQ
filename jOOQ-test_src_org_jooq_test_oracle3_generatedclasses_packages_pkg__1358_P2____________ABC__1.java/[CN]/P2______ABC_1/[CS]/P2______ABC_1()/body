@@ -1,0 +1,5 @@
+{
+  super("P2",org.jooq.test.oracle3.generatedclasses.TEST.TEST,org.jooq.test.oracle3.generatedclasses.packages.PKG_1358.PKG_1358);
+  addInParameter(I);
+  setOverloaded(true);
+}

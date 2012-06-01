@@ -1,3 +1,7 @@
 {
-  return disambiguateMethod(definition,convertToJavaIdentifier(delegate.getJavaMethodName(definition,mode)));
+  String methodName;
+  methodName=delegate.getJavaMethodName(definition,mode);
+  methodName=overload(definition,mode,methodName);
+  methodName=convertToJavaIdentifier(methodName);
+  return disambiguateMethod(definition,methodName);
 }

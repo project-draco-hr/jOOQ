@@ -1,0 +1,5 @@
+{
+  org.jooq.test.oracle3.generatedclasses.packages.pkg_1358.P______ABC_3 p=new org.jooq.test.oracle3.generatedclasses.packages.pkg_1358.P______ABC_3();
+  p.setK(K);
+  p.execute(configuration);
+}

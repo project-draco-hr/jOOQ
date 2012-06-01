@@ -1,0 +1,5 @@
+{
+  org.jooq.test.oracle3.generatedclasses.packages.library.PKG_F_AUTHOR_EXISTS______ABC_1 f=new org.jooq.test.oracle3.generatedclasses.packages.library.PKG_F_AUTHOR_EXISTS______ABC_1();
+  f.setAUTHOR_NAME(AUTHOR_NAME);
+  return f.asField();
+}
