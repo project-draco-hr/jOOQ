@@ -7,7 +7,7 @@
   }
   if (deprecation != null && deprecation.length() > 0) {
     out.println(" *");
-    out.println(" * @deprecated : " + deprecation);
+    printJavadocParagraph(out,"@deprecated : " + deprecation,"");
   }
   out.println(" */");
   if (generateGeneratedAnnotation()) {
