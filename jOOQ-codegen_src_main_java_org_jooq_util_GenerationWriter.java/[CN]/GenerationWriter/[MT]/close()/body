@@ -39,18 +39,6 @@
     }
     inits.append("\t}\n");
   }
-  if (!suppressWarnings.isEmpty()) {
-    warnings.append("@SuppressWarnings({");
-    String separator="";
-    for (    String warning : suppressWarnings) {
-      warnings.append(separator);
-      warnings.append("\"");
-      warnings.append(warning);
-      warnings.append("\"");
-      separator=", ";
-    }
-    warnings.append("})\n");
-  }
   string=string.replaceAll(STATIC_INITIALISATION_STATEMENT + "\\n",Matcher.quoteReplacement(staticInits.toString()));
   string=string.replaceAll(INITIALISATION_STATEMENT + "\\n",Matcher.quoteReplacement(inits.toString()));
   string=string.replaceAll(SUPPRESS_WARNINGS_STATEMENT + "\\n",Matcher.quoteReplacement(warnings.toString()));

@@ -1,4 +1,7 @@
 {
+  if (definition instanceof IdentityDefinition) {
+    return "IDENTITY_" + getJavaIdentifier(((IdentityDefinition)definition).getColumn().getContainer());
+  }
   String identifier=convertToJavaIdentifier(delegate.getJavaIdentifier(definition));
   if (definition instanceof ColumnDefinition || definition instanceof AttributeDefinition) {
     TypedElementDefinition<?> e=(TypedElementDefinition<?>)definition;
