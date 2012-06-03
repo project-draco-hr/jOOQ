@@ -1,5 +1,14 @@
 {
-  StringWriter xml=new StringWriter();
-  JAXB.marshal(settings,xml);
-  return JAXB.unmarshal(new StringReader(xml.toString()),Settings.class);
+  try {
+    ByteArrayOutputStream out=new ByteArrayOutputStream();
+    ObjectOutputStream o=new ObjectOutputStream(out);
+    o.writeObject(settings);
+    o.flush();
+    ByteArrayInputStream in=new ByteArrayInputStream(out.toByteArray());
+    ObjectInputStream i=new ObjectInputStream(in);
+    return (Settings)i.readObject();
+  }
+ catch (  Exception ignore) {
+    throw new RuntimeException(ignore);
+  }
 }
