@@ -1,3 +1,6 @@
 {
-  return create().getDialect();
+  if (dialect == null) {
+    dialect=create().getDialect();
+  }
+  return dialect;
 }
