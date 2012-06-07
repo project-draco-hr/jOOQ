@@ -1,0 +1,30 @@
+{
+  if (uniqueKeyCounter % INITIALISER_SIZE == 0) {
+    if (uniqueKeyCounter > 0) {
+      out.println("\t}");
+    }
+    out.println();
+    out.println("\t@SuppressWarnings({\"hiding\", \"unchecked\"})");
+    out.print("\tprivate static class UniqueKeys");
+    out.print(uniqueKeyCounter / INITIALISER_SIZE);
+    out.print(" extends ");
+    out.print(AbstractKeys.class);
+    out.println(" {");
+  }
+  out.print("\t\tpublic static final ");
+  out.print(UniqueKey.class);
+  out.print("<");
+  out.print(strategy.getFullJavaClassName(uniqueKey.getTable(),Mode.RECORD));
+  out.print("> ");
+  out.print(strategy.getJavaIdentifier(uniqueKey));
+  out.print(" = createUniqueKey(");
+  out.print(strategy.getFullJavaIdentifier(uniqueKey.getTable()));
+  out.print(", ");
+  String separator="";
+  for (  ColumnDefinition column : uniqueKey.getKeyColumns()) {
+    out.print(separator);
+    out.print(strategy.getFullJavaIdentifier(column));
+    separator=", ";
+  }
+  out.println(");");
+}

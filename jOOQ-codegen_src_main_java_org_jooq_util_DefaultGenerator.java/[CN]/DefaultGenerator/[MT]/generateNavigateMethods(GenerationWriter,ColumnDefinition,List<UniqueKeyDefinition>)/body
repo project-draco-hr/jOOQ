@@ -1,0 +1,14 @@
+{
+  Set<String> fetchMethodNames=new HashSet<String>();
+  for (  UniqueKeyDefinition uniqueKey : uniqueKeys) {
+    if (out.printOnlyOnce(uniqueKey)) {
+      for (      ForeignKeyDefinition foreignKey : uniqueKey.getForeignKeys()) {
+        generateFetchFKList(out,uniqueKey,foreignKey,column,fetchMethodNames);
+      }
+    }
+  }
+  ForeignKeyDefinition foreignKey=column.getForeignKey();
+  if (foreignKey != null && out.printOnlyOnce(foreignKey)) {
+    generateFetchFK(out,column,foreignKey);
+  }
+}

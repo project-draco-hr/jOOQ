@@ -1,0 +1,22 @@
+{
+  log.info("Generating table references");
+  File file=new File(targetSchemaDir,"Tables.java");
+  GenerationWriter out;
+  try {
+    out=new GenerationWriter(file);
+  }
+ catch (  Exception e) {
+    log.error("Error while generating " + file,e);
+    return;
+  }
+  printHeader(out,schema);
+  printClassJavadoc(out,"Convenience access to all tables in " + schema.getOutputName());
+  out.println("public final class Tables {");
+  for (  TableDefinition table : database.getTables(schema)) {
+    generateTableReference(out,table);
+  }
+  printPrivateConstructor(out,"Tables");
+  out.println("}");
+  out.close();
+  watch.splitInfo("Table references generated");
+}

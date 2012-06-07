@@ -1,0 +1,43 @@
+{
+  log.info("Generating sequences");
+  GenerationWriter out=new GenerationWriter(new File(targetSchemaDir,"Sequences.java"));
+  printHeader(out,schema);
+  printClassJavadoc(out,"Convenience access to all sequences in " + schema.getOutputName());
+  out.println("public final class Sequences {");
+  for (  SequenceDefinition sequence : database.getSequences(schema)) {
+    out.println();
+    out.println("\t/**");
+    out.println("\t * The sequence " + sequence.getQualifiedOutputName());
+    out.println("\t */");
+    out.print("\tpublic static final ");
+    out.print(Sequence.class);
+    out.print("<");
+    out.print(getJavaType(sequence.getType()));
+    out.print(">");
+    out.print(" ");
+    out.print(strategy.getJavaIdentifier(sequence));
+    out.print(" = new ");
+    out.print(SequenceImpl.class);
+    out.print("<");
+    out.print(getJavaType(sequence.getType()));
+    out.print(">");
+    out.print("(\"");
+    out.print(sequence.getOutputName());
+    out.print("\"");
+    if (!schema.isDefaultSchema()) {
+      out.print(", ");
+      out.print(strategy.getFullJavaIdentifier(schema));
+    }
+ else {
+      out.print(", null");
+    }
+    out.print(", ");
+    out.print(getJavaTypeReference(sequence.getDatabase(),sequence.getType()));
+    out.println(");");
+  }
+  printPrivateConstructor(out,"Sequences");
+  out.println("}");
+  out.close();
+  registerInSchema(database.getSequences(schema),Sequence.class,true);
+  watch.splitInfo("Sequences generated");
+}

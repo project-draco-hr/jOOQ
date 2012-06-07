@@ -1,0 +1,39 @@
+{
+  log.info("Generating ENUM",strategy.getFileName(e,Mode.ENUM));
+  GenerationWriter out=new GenerationWriter(strategy.getFile(e,Mode.ENUM));
+  printHeader(out,e);
+  printClassJavadoc(out,e);
+  out.print("public enum ");
+  out.print(strategy.getJavaClassName(e,Mode.ENUM));
+  printImplements(out,e,Mode.ENUM,EnumType.class.getName());
+  out.print(" {");
+  out.println();
+  for (  String literal : e.getLiterals()) {
+    out.println("\t" + GenerationUtil.convertToJavaIdentifier(literal) + "(\""+ literal+ "\"),");
+    out.println();
+  }
+  out.println("\t;");
+  out.println();
+  out.println("\tprivate final java.lang.String literal;");
+  out.println();
+  out.println("\tprivate " + strategy.getJavaClassName(e,Mode.ENUM) + "(java.lang.String literal) {");
+  out.println("\t\tthis.literal = literal;");
+  out.println("\t}");
+  out.println();
+  out.println("\t@Override");
+  out.println("\tpublic java.lang.String getName() {");
+  if (e.isSynthetic()) {
+    out.println("\t\treturn null;");
+  }
+ else {
+    out.println("\t\treturn \"" + e.getName() + "\";");
+  }
+  out.println("\t}");
+  out.println();
+  out.println("\t@Override");
+  out.println("\tpublic java.lang.String getLiteral() {");
+  out.println("\t\treturn literal;");
+  out.println("\t}");
+  out.println("}");
+  out.close();
+}

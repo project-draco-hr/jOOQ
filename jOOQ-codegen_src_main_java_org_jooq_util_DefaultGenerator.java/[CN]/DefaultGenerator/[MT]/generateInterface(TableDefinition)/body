@@ -1,0 +1,16 @@
+{
+  log.info("Generating interface",strategy.getFileName(table,Mode.INTERFACE));
+  GenerationWriter out=new GenerationWriter(strategy.getFile(table,Mode.INTERFACE));
+  printHeader(out,table,Mode.INTERFACE);
+  printClassJavadoc(out,table);
+  printTableJPAAnnotation(out,table);
+  out.print("public interface ");
+  out.print(strategy.getJavaClassName(table,Mode.INTERFACE));
+  printImplements(out,table,Mode.INTERFACE);
+  out.println(" {");
+  for (  ColumnDefinition column : table.getColumns()) {
+    printGetterAndSetter(out,column,false);
+  }
+  out.println("}");
+  out.close();
+}

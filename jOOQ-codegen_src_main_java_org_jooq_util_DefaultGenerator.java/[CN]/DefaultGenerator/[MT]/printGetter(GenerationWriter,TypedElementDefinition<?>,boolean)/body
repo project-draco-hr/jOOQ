@@ -1,0 +1,15 @@
+{
+  out.print("\tpublic ");
+  out.print(getJavaType(element.getType()));
+  out.print(" ");
+  out.print(strategy.getJavaGetterName(element,Mode.DEFAULT));
+  out.print("()");
+  if (printBody) {
+    out.println(" {");
+    out.println("\t\treturn getValue(" + strategy.getFullJavaIdentifier(element) + ");");
+    out.println("\t}");
+  }
+ else {
+    out.println(";");
+  }
+}

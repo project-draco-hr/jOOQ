@@ -1,0 +1,12 @@
+{
+  log.info("Generating table POJOs");
+  for (  TableDefinition table : database.getTables(schema)) {
+    try {
+      generatePojo(table);
+    }
+ catch (    Exception e) {
+      log.error("Error while generating table POJO " + table,e);
+    }
+  }
+  watch.splitInfo("Table POJOs generated");
+}

@@ -1,0 +1,21 @@
+{
+  for (  UDTDefinition udt : database.getUDTs(schema)) {
+    if (udt.getRoutines().size() > 0) {
+      try {
+        log.info("Generating member routines");
+        for (        RoutineDefinition routine : udt.getRoutines()) {
+          try {
+            printRoutine(schema,routine);
+          }
+ catch (          Exception e) {
+            log.error("Error while generating member routines " + routine,e);
+          }
+        }
+      }
+ catch (      Exception e) {
+        log.error("Error while generating UDT " + udt,e);
+      }
+      watch.splitInfo("Member procedures routines");
+    }
+  }
+}

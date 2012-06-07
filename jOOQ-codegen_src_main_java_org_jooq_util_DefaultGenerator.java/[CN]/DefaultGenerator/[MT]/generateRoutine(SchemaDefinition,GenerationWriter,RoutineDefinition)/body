@@ -1,0 +1,11 @@
+{
+  printRoutine(schema,routine);
+  if (!routine.isSQLUsable()) {
+    printConvenienceMethodProcedure(outR,routine,false);
+  }
+ else {
+    printConvenienceMethodFunction(outR,routine,false);
+    printConvenienceMethodFunctionAsField(outR,routine,false);
+    printConvenienceMethodFunctionAsField(outR,routine,true);
+  }
+}

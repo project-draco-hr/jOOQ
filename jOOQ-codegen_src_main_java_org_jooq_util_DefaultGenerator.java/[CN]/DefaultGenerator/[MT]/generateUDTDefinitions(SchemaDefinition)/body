@@ -1,0 +1,12 @@
+{
+  log.info("Generating UDT records");
+  for (  UDTDefinition udt : database.getUDTs(schema)) {
+    try {
+      generateUDTDefinition(udt);
+    }
+ catch (    Exception e) {
+      log.error("Error while generating UDT record " + udt,e);
+    }
+  }
+  watch.splitInfo("UDT records generated");
+}

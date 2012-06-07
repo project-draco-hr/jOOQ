@@ -1,0 +1,62 @@
+{
+  log.info("Generating table POJO",strategy.getFileName(table,Mode.POJO));
+  GenerationWriter out=new GenerationWriter(strategy.getFile(table,Mode.POJO));
+  printHeader(out,table,Mode.POJO);
+  printClassJavadoc(out,table);
+  printTableJPAAnnotation(out,table);
+  out.print("public class ");
+  out.print(strategy.getJavaClassName(table,Mode.POJO));
+  printExtends(out,table,Mode.POJO);
+  printImplements(out,table,Mode.POJO);
+  out.print(" {");
+  out.println();
+  out.printSerial();
+  out.println();
+  int maxLength=0;
+  for (  ColumnDefinition column : table.getColumns()) {
+    maxLength=Math.max(maxLength,getJavaType(column.getType()).length());
+  }
+  for (  ColumnDefinition column : table.getColumns()) {
+    printColumnValidationAnnotation(out,column);
+    out.print("\tprivate ");
+    out.print(StringUtils.rightPad(getJavaType(column.getType()),maxLength));
+    out.print(" ");
+    out.print(convertToJavaIdentifier(strategy.getJavaMemberName(column,Mode.POJO)));
+    out.println(";");
+  }
+  for (  ColumnDefinition column : table.getColumns()) {
+    out.println();
+    printColumnJPAAnnotation(out,column);
+    if (generateInterfaces()) {
+      printOverride(out);
+    }
+    out.print("\tpublic ");
+    out.print(getJavaType(column.getType()));
+    out.print(" ");
+    out.print(strategy.getJavaGetterName(column,Mode.POJO));
+    out.println("() {");
+    out.print("\t\treturn this.");
+    out.print(convertToJavaIdentifier(strategy.getJavaMemberName(column,Mode.POJO)));
+    out.println(";");
+    out.println("\t}");
+    out.println();
+    if (generateInterfaces()) {
+      printOverride(out);
+    }
+    out.print("\tpublic void ");
+    out.print(strategy.getJavaSetterName(column,Mode.POJO));
+    out.print("(");
+    out.print(getJavaType(column.getType()));
+    out.print(" ");
+    out.print(convertToJavaIdentifier(strategy.getJavaMemberName(column,Mode.POJO)));
+    out.println(") {");
+    out.print("\t\tthis.");
+    out.print(convertToJavaIdentifier(strategy.getJavaMemberName(column,Mode.POJO)));
+    out.print(" = ");
+    out.print(convertToJavaIdentifier(strategy.getJavaMemberName(column,Mode.POJO)));
+    out.println(";");
+    out.println("\t}");
+  }
+  out.println("}");
+  out.close();
+}

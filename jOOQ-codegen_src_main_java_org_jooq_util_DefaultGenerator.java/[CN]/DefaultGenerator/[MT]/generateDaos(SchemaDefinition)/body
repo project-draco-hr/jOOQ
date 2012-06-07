@@ -1,0 +1,12 @@
+{
+  log.info("Generating DAOs");
+  for (  TableDefinition table : database.getTables(schema)) {
+    try {
+      generateDao(table);
+    }
+ catch (    Exception e) {
+      log.error("Error while generating table DAO " + table,e);
+    }
+  }
+  watch.splitInfo("Table DAOs generated");
+}

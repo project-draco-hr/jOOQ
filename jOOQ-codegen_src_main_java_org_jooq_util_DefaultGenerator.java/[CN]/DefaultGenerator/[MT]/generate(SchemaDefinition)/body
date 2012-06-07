@@ -1,0 +1,59 @@
+{
+  File targetSchemaDir=strategy.getFile(schema).getParentFile();
+  if (!schema.isDefaultSchema()) {
+    generateSchema(schema);
+  }
+  if (database.getSequences(schema).size() > 0) {
+    generateSequences(schema,targetSchemaDir);
+  }
+  if (database.getMasterDataTables(schema).size() > 0) {
+    generateMasterTables(schema);
+  }
+  if (database.getTables(schema).size() > 0) {
+    generateTables(schema);
+  }
+  if (generatePojos() && database.getTables(schema).size() > 0) {
+    generatePojos(schema);
+  }
+  if (generateDaos() && database.getTables(schema).size() > 0) {
+    generateDaos(schema);
+  }
+  if (database.getTables(schema).size() > 0) {
+    generateTableReferences(schema,targetSchemaDir);
+  }
+  if (generateRelations() && database.getTables(schema).size() > 0) {
+    generateRelations(schema,targetSchemaDir);
+  }
+  if (generateRecords() && database.getTables(schema).size() > 0) {
+    generateRecords(schema);
+  }
+  if (generateInterfaces() && database.getTables(schema).size() > 0) {
+    generateInterfaces(schema);
+  }
+  if (database.getUDTs(schema).size() > 0) {
+    generateUDTs(schema);
+  }
+  if (database.getUDTs(schema).size() > 0) {
+    generateUDTDefinitions(schema);
+  }
+  if (database.getUDTs(schema).size() > 0) {
+    generateUDTRoutines(schema);
+  }
+  if (database.getUDTs(schema).size() > 0) {
+    generateUDTReferences(schema,targetSchemaDir);
+  }
+  if (database.getArrays(schema).size() > 0) {
+    generateArrays(schema);
+  }
+  if (database.getEnums(schema).size() > 0) {
+    generateEnums(schema);
+  }
+  if (database.getRoutines(schema).size() > 0) {
+    generateRoutines(schema,targetSchemaDir);
+  }
+  if (database.getPackages(schema).size() > 0) {
+    generatePackages(schema);
+  }
+  close();
+  watch.splitInfo("GENERATION FINISHED!");
+}

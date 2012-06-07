@@ -1,0 +1,12 @@
+{
+  log.info("Generating ENUMs");
+  for (  EnumDefinition e : database.getEnums(schema)) {
+    try {
+      generateEnum(e);
+    }
+ catch (    Exception ex) {
+      log.error("Error while generating enum " + e,ex);
+    }
+  }
+  watch.splitInfo("Enums generated");
+}

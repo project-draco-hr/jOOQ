@@ -1,0 +1,47 @@
+{
+  log.info("Generating package",pkg);
+  for (  RoutineDefinition routine : pkg.getRoutines()) {
+    try {
+      printRoutine(schema,routine);
+    }
+ catch (    Exception e) {
+      log.error("Error while generating routine " + routine,e);
+    }
+  }
+  GenerationWriter outPkg=new GenerationWriter(strategy.getFile(pkg));
+  printHeader(outPkg,pkg);
+  printClassJavadoc(outPkg,"Convenience access to all stored procedures and functions in " + pkg.getName());
+  outPkg.print("public final class ");
+  outPkg.print(strategy.getJavaClassName(pkg));
+  outPkg.print(" extends ");
+  outPkg.print(PackageImpl.class);
+  printImplements(outPkg,pkg,Mode.DEFAULT);
+  outPkg.println(" {");
+  outPkg.printSerial();
+  printSingletonInstance(pkg,outPkg);
+  for (  RoutineDefinition routine : pkg.getRoutines()) {
+    try {
+      if (!routine.isSQLUsable()) {
+        printConvenienceMethodProcedure(outPkg,routine,false);
+      }
+ else {
+        printConvenienceMethodFunction(outPkg,routine,false);
+        printConvenienceMethodFunctionAsField(outPkg,routine,false);
+        printConvenienceMethodFunctionAsField(outPkg,routine,true);
+      }
+    }
+ catch (    Exception e) {
+      log.error("Error while generating routine " + routine,e);
+    }
+  }
+  printNoFurtherInstancesAllowedJavadoc(outPkg);
+  outPkg.println("\tprivate " + strategy.getJavaClassName(pkg) + "() {");
+  outPkg.print("\t\tsuper(\"");
+  outPkg.print(pkg.getOutputName());
+  outPkg.print("\", ");
+  outPkg.print(strategy.getFullJavaIdentifier(schema));
+  outPkg.println(");");
+  outPkg.println("\t}");
+  outPkg.println("}");
+  outPkg.close();
+}

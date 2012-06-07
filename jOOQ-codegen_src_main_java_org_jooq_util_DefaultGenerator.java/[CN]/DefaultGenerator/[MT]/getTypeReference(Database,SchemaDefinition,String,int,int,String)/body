@@ -1,7 +1,7 @@
 {
   StringBuilder sb=new StringBuilder();
   if (db.getArray(schema,u) != null) {
-    ArrayDefinition array=db.getArray(schema,u);
+    ArrayDefinition array=database.getArray(schema,u);
     sb.append(getJavaTypeReference(db,array.getElementType()));
     sb.append(".asArrayDataType(");
     sb.append(strategy.getFullJavaClassName(array,Mode.RECORD));

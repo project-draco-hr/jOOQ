@@ -8,7 +8,7 @@
     return sb.toString();
   }
  else {
-    if (db.isArrayType(type.getType())) {
+    if (database.isArrayType(type.getType())) {
       String baseType=GenerationUtil.getArrayBaseType(db.getDialect(),type.getType(),type.getUserType());
       return getTypeReference(db,type.getSchema(),baseType,0,0,baseType) + ".getArrayDataType()";
     }

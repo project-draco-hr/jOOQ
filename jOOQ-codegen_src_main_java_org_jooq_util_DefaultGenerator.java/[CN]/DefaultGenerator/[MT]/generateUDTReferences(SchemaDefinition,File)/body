@@ -1,0 +1,14 @@
+{
+  log.info("Generating UDT references");
+  GenerationWriter out=new GenerationWriter(new File(targetSchemaDir,"UDTs.java"));
+  printHeader(out,schema);
+  printClassJavadoc(out,"Convenience access to all UDTs in " + schema.getOutputName());
+  out.println("public final class UDTs {");
+  for (  UDTDefinition udt : database.getUDTs(schema)) {
+    generateUDTReference(out,udt);
+  }
+  printPrivateConstructor(out,"UDTs");
+  out.println("}");
+  out.close();
+  watch.splitInfo("UDT references generated");
+}

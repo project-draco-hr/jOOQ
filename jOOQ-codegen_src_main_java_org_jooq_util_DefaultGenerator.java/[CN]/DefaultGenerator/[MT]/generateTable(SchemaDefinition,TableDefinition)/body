@@ -1,0 +1,166 @@
+{
+  log.info("Generating table",strategy.getFileName(table));
+  GenerationWriter out=new GenerationWriter(strategy.getFile(table));
+  printHeader(out,table);
+  printClassJavadoc(out,table);
+  Class<?> baseClass;
+  if (generateRelations() && table.getMainUniqueKey() != null) {
+    baseClass=UpdatableTableImpl.class;
+  }
+ else {
+    baseClass=TableImpl.class;
+  }
+  out.print("public class ");
+  out.print(strategy.getJavaClassName(table));
+  out.print(" extends ");
+  out.print(baseClass);
+  out.print("<");
+  out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
+  out.print(">");
+  printImplements(out,table,Mode.DEFAULT);
+  out.println(" {");
+  out.printSerial();
+  printSingletonInstance(table,out);
+  printRecordTypeMethod(table,out);
+  for (  ColumnDefinition column : table.getColumns()) {
+    printTableColumn(out,column,table);
+  }
+  out.println();
+  if (generateInstanceFields()) {
+    out.print("\tpublic ");
+  }
+ else {
+    printNoFurtherInstancesAllowedJavadoc(out);
+    out.print("\tprivate ");
+  }
+  out.println(strategy.getJavaClassName(table) + "() {");
+  if (!schema.isDefaultSchema()) {
+    out.println("\t\tsuper(\"" + table.getOutputName() + "\", "+ strategy.getFullJavaIdentifier(schema)+ ");");
+  }
+ else {
+    out.println("\t\tsuper(\"" + table.getOutputName() + "\");");
+  }
+  out.println("\t}");
+  if (generateInstanceFields()) {
+    out.println();
+    out.print("\tpublic ");
+    out.print(strategy.getJavaClassName(table));
+    out.print("(");
+    out.print(String.class);
+    out.println(" alias) {");
+    out.print("\t\tsuper(alias, ");
+    out.print(strategy.getFullJavaIdentifier(schema));
+    out.print(", ");
+    out.print(strategy.getFullJavaIdentifier(table));
+    out.println(");");
+    out.println("\t}");
+  }
+  if (generateRelations()) {
+    IdentityDefinition identity=table.getIdentity();
+    if (identity != null) {
+      out.println();
+      out.println("\t@Override");
+      out.print("\tpublic ");
+      out.print(Identity.class);
+      out.print("<");
+      out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
+      out.print(", ");
+      out.print(getJavaType(identity.getColumn().getType()));
+      out.println("> getIdentity() {");
+      out.print("\t\treturn ");
+      out.print(strategy.getFullJavaIdentifier(identity));
+      out.println(";");
+      out.println("\t}");
+    }
+    UniqueKeyDefinition mainKey=table.getMainUniqueKey();
+    if (mainKey != null) {
+      out.println();
+      out.println("\t@Override");
+      out.print("\tpublic ");
+      out.print(UniqueKey.class);
+      out.print("<");
+      out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
+      out.println("> getMainKey() {");
+      out.print("\t\treturn ");
+      out.print(strategy.getFullJavaIdentifier(mainKey));
+      out.println(";");
+      out.println("\t}");
+    }
+    List<UniqueKeyDefinition> uniqueKeys=table.getUniqueKeys();
+    if (uniqueKeys.size() > 0) {
+      out.println();
+      out.println("\t@Override");
+      out.println("\t@SuppressWarnings(\"unchecked\")");
+      out.print("\tpublic ");
+      out.print(List.class);
+      out.print("<");
+      out.print(UniqueKey.class);
+      out.print("<");
+      out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
+      out.println(">> getKeys() {");
+      out.print("\t\treturn ");
+      out.print(Arrays.class);
+      out.print(".<");
+      out.print(UniqueKey.class);
+      out.print("<");
+      out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
+      out.print(">>asList(");
+      String separator="";
+      for (      UniqueKeyDefinition uniqueKey : uniqueKeys) {
+        out.print(separator);
+        out.print(strategy.getFullJavaIdentifier(uniqueKey));
+        separator=", ";
+      }
+      out.println(");");
+      out.println("\t}");
+    }
+    List<ForeignKeyDefinition> foreignKeys=table.getForeignKeys();
+    if (foreignKeys.size() > 0) {
+      out.println();
+      out.println("\t@Override");
+      out.println("\t@SuppressWarnings(\"unchecked\")");
+      out.print("\tpublic ");
+      out.print(List.class);
+      out.print("<");
+      out.print(ForeignKey.class);
+      out.print("<");
+      out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
+      out.println(", ?>> getReferences() {");
+      out.print("\t\treturn ");
+      out.print(Arrays.class);
+      out.print(".<");
+      out.print(ForeignKey.class);
+      out.print("<");
+      out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
+      out.print(", ?>>asList(");
+      String separator="";
+      for (      ForeignKeyDefinition foreignKey : foreignKeys) {
+        TableDefinition referencedTable=foreignKey.getReferencedTable();
+        if (referencedTable instanceof MasterDataTableDefinition) {
+          continue;
+        }
+        out.print(separator);
+        out.print(strategy.getFullJavaIdentifier(foreignKey));
+        separator=", ";
+      }
+      out.println(");");
+      out.println("\t}");
+    }
+  }
+  if (generateInstanceFields()) {
+    out.println();
+    out.println("\t@Override");
+    out.print("\tpublic ");
+    out.print(strategy.getFullJavaClassName(table));
+    out.print(" as(");
+    out.print(String.class);
+    out.println(" alias) {");
+    out.print("\t\treturn new ");
+    out.print(strategy.getFullJavaClassName(table));
+    out.println("(alias);");
+    out.println("\t}");
+  }
+  out.printStaticInitialisationStatementsPlaceholder();
+  out.println("}");
+  out.close();
+}
