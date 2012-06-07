@@ -1,5 +1,4 @@
 {
-  StopWatch watch=new StopWatch();
   log.info("Database parameters");
   log.info("----------------------------------------------------------");
   log.info("  dialect",database.getDialect());
@@ -28,6 +27,6 @@
   empty(targetPackageDir);
   log.info("Generating schemata","Total: " + database.getSchemata().size());
   for (  SchemaDefinition schema : database.getSchemata()) {
-    generate(database,schema,watch);
+    generate(database,schema);
   }
 }
