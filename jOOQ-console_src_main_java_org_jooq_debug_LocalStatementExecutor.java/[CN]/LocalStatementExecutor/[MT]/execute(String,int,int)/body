@@ -2,86 +2,88 @@
   boolean isAllowed=true;
   if (executorContext.isReadOnly()) {
     String simplifiedSql=sql.replaceAll("'[^']*'","");
+switch (SqlQueryType.detectType(simplifiedSql)) {
+case SELECT:
+      String[] forbiddenWords=new String[]{"INSERT","UPDATE","DELETE","ALTER","DROP","CREATE","EXEC","EXECUTE"};
     Matcher matcher=Pattern.compile("[a-zA-Z_0-9\\$]+").matcher(simplifiedSql);
-    boolean isFirst=true;
-    while (matcher.find()) {
-      String word=simplifiedSql.substring(matcher.start(),matcher.end()).toUpperCase(Locale.ENGLISH);
-      if (isFirst && !word.equals("SELECT")) {
+  while (matcher.find()) {
+    String word=simplifiedSql.substring(matcher.start(),matcher.end()).toUpperCase(Locale.ENGLISH);
+    for (    String keyword : forbiddenWords) {
+      if (word.equals(keyword)) {
         isAllowed=false;
         break;
       }
-      isFirst=false;
-      for (      String keyword : new String[]{"INSERT","UPDATE","DELETE","ALTER","DROP","CREATE","EXEC","EXECUTE"}) {
-        if (word.equals(keyword)) {
-          isAllowed=false;
-          break;
-        }
-      }
     }
   }
-  if (!isAllowed) {
-    return new StatementExecution(0,new StatementExecutionMessageResult("The database is not editable but the statement to evaluate is a modification statement!",true));
-  }
-  stopExecution();
-  evaluationThread=Thread.currentThread();
-  long start=System.currentTimeMillis();
-  try {
-    conn=executorContext.getConnection();
-    stmt=conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-    start=System.currentTimeMillis();
-    if (evaluationThread != Thread.currentThread()) {
-      long executionDuration=System.currentTimeMillis() - start;
-      return new StatementExecution(executionDuration,new StatementExecutionMessageResult("Interrupted by user after " + Utils.formatDuration(executionDuration),true));
-    }
-    boolean executeResult;
-    try {
-      executeResult=stmt.execute(sql);
-    }
- catch (    SQLException e) {
-      long executionDuration=System.currentTimeMillis() - start;
-      if (evaluationThread != Thread.currentThread()) {
-        return new StatementExecution(executionDuration,new StatementExecutionMessageResult("Interrupted by user after " + Utils.formatDuration(executionDuration),true));
-      }
-      return new StatementExecution(executionDuration,new StatementExecutionMessageResult(e));
-    }
-    final long executionDuration=System.currentTimeMillis() - start;
-    if (evaluationThread != Thread.currentThread()) {
-      return new StatementExecution(executionDuration,new StatementExecutionMessageResult("Interrupted by user after " + Utils.formatDuration(executionDuration),true));
-    }
-    List<StatementExecutionResult> statementExecutionResultList=new ArrayList<StatementExecutionResult>();
-    do {
-      StatementExecutionResult statementExecutionResult;
-      if (executeResult) {
-        final ResultSet rs=stmt.getResultSet();
-        ResultSetMetaData metaData=rs.getMetaData();
-        final String[] columnNames=new String[metaData.getColumnCount()];
-        final int[] columnTypes=new int[columnNames.length];
-        final TypeInfo[] typeInfos=new TypeInfo[columnNames.length];
-        final Class<?>[] columnClasses=new Class[columnNames.length];
-        for (int i=0; i < columnNames.length; i++) {
-          columnNames[i]=metaData.getColumnName(i + 1);
-          if (columnNames[i] == null || columnNames[i].length() == 0) {
-            columnNames[i]=" ";
-          }
-          typeInfos[i]=new TypeInfo(metaData,i);
-          int type=metaData.getColumnType(i + 1);
-          columnTypes[i]=type;
+break;
+default :
+isAllowed=false;
+break;
+}
+}
+if (!isAllowed) {
+return new StatementExecution(0,new StatementExecutionMessageResult("The database is not editable but the statement to evaluate is a modification statement!",true));
+}
+stopExecution();
+evaluationThread=Thread.currentThread();
+long start=System.currentTimeMillis();
+try {
+conn=executorContext.getConnection();
+stmt=conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+start=System.currentTimeMillis();
+if (evaluationThread != Thread.currentThread()) {
+long executionDuration=System.currentTimeMillis() - start;
+return new StatementExecution(executionDuration,new StatementExecutionMessageResult("Interrupted by user after " + Utils.formatDuration(executionDuration),true));
+}
+boolean executeResult;
+try {
+executeResult=stmt.execute(sql);
+}
+ catch (SQLException e) {
+long executionDuration=System.currentTimeMillis() - start;
+if (evaluationThread != Thread.currentThread()) {
+return new StatementExecution(executionDuration,new StatementExecutionMessageResult("Interrupted by user after " + Utils.formatDuration(executionDuration),true));
+}
+return new StatementExecution(executionDuration,new StatementExecutionMessageResult(e));
+}
+final long executionDuration=System.currentTimeMillis() - start;
+if (evaluationThread != Thread.currentThread()) {
+return new StatementExecution(executionDuration,new StatementExecutionMessageResult("Interrupted by user after " + Utils.formatDuration(executionDuration),true));
+}
+List<StatementExecutionResult> statementExecutionResultList=new ArrayList<StatementExecutionResult>();
+do {
+StatementExecutionResult statementExecutionResult;
+if (executeResult) {
+final ResultSet rs=stmt.getResultSet();
+ResultSetMetaData metaData=rs.getMetaData();
+final String[] columnNames=new String[metaData.getColumnCount()];
+final int[] columnTypes=new int[columnNames.length];
+final TypeInfo[] typeInfos=new TypeInfo[columnNames.length];
+final Class<?>[] columnClasses=new Class[columnNames.length];
+for (int i=0; i < columnNames.length; i++) {
+columnNames[i]=metaData.getColumnName(i + 1);
+if (columnNames[i] == null || columnNames[i].length() == 0) {
+columnNames[i]=" ";
+}
+typeInfos[i]=new TypeInfo(metaData,i);
+int type=metaData.getColumnType(i + 1);
+columnTypes[i]=type;
 switch (type) {
 case Types.CLOB:
-            columnClasses[i]=String.class;
-          break;
+columnClasses[i]=String.class;
+break;
 case Types.BLOB:
-        columnClasses[i]=byte[].class;
-      break;
+columnClasses[i]=byte[].class;
+break;
 default :
-    String columnClassName=metaData.getColumnClassName(i + 1);
-  if (columnClassName == null) {
-    System.err.println("Unknown SQL Type for \"" + columnNames[i] + "\" in "+ getClass().getSimpleName()+ ": "+ metaData.getColumnTypeName(i));
-    columnClasses[i]=Object.class;
-  }
+String columnClassName=metaData.getColumnClassName(i + 1);
+if (columnClassName == null) {
+System.err.println("Unknown SQL Type for \"" + columnNames[i] + "\" in "+ getClass().getSimpleName()+ ": "+ metaData.getColumnTypeName(i));
+columnClasses[i]=Object.class;
+}
  else {
-    columnClasses[i]=Class.forName(columnClassName);
-  }
+columnClasses[i]=Class.forName(columnClassName);
+}
 break;
 }
 }
@@ -101,35 +103,35 @@ for (int i=0; i < columnNames.length; i++) {
 switch (columnTypes[i]) {
 case Types.CLOB:
 {
-  Clob clob=rs.getClob(i + 1);
-  if (clob != null) {
-    StringWriter stringWriter=new StringWriter();
-    char[] chars=new char[1024];
-    Reader reader=new BufferedReader(clob.getCharacterStream());
-    for (int count; (count=reader.read(chars)) >= 0; ) {
-      stringWriter.write(chars,0,count);
-    }
-    rowData[i]=stringWriter.toString();
-  }
+Clob clob=rs.getClob(i + 1);
+if (clob != null) {
+StringWriter stringWriter=new StringWriter();
+char[] chars=new char[1024];
+Reader reader=new BufferedReader(clob.getCharacterStream());
+for (int count; (count=reader.read(chars)) >= 0; ) {
+stringWriter.write(chars,0,count);
+}
+rowData[i]=stringWriter.toString();
+}
  else {
-    rowData[i]=null;
-  }
-  break;
+rowData[i]=null;
+}
+break;
 }
 case Types.BLOB:
 {
 Blob blob=rs.getBlob(i + 1);
 if (blob != null) {
-  ByteArrayOutputStream baos=new ByteArrayOutputStream();
-  byte[] bytes=new byte[1024];
-  InputStream in=new BufferedInputStream(blob.getBinaryStream());
-  for (int count; (count=in.read(bytes)) >= 0; ) {
-    baos.write(bytes,0,count);
-  }
-  rowData[i]=baos.toByteArray();
+ByteArrayOutputStream baos=new ByteArrayOutputStream();
+byte[] bytes=new byte[1024];
+InputStream in=new BufferedInputStream(blob.getBinaryStream());
+for (int count; (count=in.read(bytes)) >= 0; ) {
+baos.write(bytes,0,count);
+}
+rowData[i]=baos.toByteArray();
 }
  else {
-  rowData[i]=null;
+rowData[i]=null;
 }
 break;
 }
