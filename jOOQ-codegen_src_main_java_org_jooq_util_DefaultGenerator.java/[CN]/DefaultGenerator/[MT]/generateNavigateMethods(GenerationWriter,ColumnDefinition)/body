@@ -1,4 +1,5 @@
 {
+  List<UniqueKeyDefinition> uniqueKeys=column.getUniqueKeys();
   Set<String> fetchMethodNames=new HashSet<String>();
   for (  UniqueKeyDefinition uniqueKey : uniqueKeys) {
     if (out.printOnlyOnce(uniqueKey)) {

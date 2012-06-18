@@ -1,3 +1,2 @@
 GenerationWriter out
 ColumnDefinition column
-List<UniqueKeyDefinition> uniqueKeys

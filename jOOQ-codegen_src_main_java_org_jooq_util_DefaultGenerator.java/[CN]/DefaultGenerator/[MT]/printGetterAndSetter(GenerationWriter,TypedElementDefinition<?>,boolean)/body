@@ -14,7 +14,6 @@
   printGetter(out,element,printBody);
   if (printBody && generateRelations() && generateNavigationMethods()&& element instanceof ColumnDefinition) {
     ColumnDefinition column=(ColumnDefinition)element;
-    List<UniqueKeyDefinition> uniqueKeys=column.getUniqueKeys();
-    generateNavigateMethods(out,column,uniqueKeys);
+    generateNavigateMethods(out,column);
   }
 }
