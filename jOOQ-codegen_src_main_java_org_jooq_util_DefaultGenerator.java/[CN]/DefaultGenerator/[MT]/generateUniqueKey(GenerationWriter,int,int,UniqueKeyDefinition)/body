@@ -4,7 +4,9 @@
       out.println("\t}");
     }
     out.println();
-    out.println("\t@SuppressWarnings({\"hiding\", \"unchecked\"})");
+    out.print("\t@SuppressWarnings({");
+    generateUniqueKeySuppressHidingWarning(out,uniqueKey);
+    out.println("\"unchecked\"})");
     out.print("\tprivate static class UniqueKeys");
     out.print(uniqueKeyCounter / INITIALISER_SIZE);
     out.print(" extends ");
