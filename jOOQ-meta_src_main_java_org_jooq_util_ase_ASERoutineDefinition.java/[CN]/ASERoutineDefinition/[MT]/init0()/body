@@ -1,0 +1,30 @@
+{
+  List<ColumnDefinition> result=new ArrayList<ColumnDefinition>();
+  List<Result<Record>> fetchMany=create().fetchMany("sp_help '" + getName() + "'");
+  if (fetchMany.size() < 2) {
+    return;
+  }
+  for (  Record record : fetchMany.get(1)) {
+    String n=record.getValueAsString("Parameter_name");
+    String l=record.getValueAsString("Length");
+    String p=record.getValueAsString("Prec");
+    String s=record.getValueAsString("Scale");
+    int o=record.getValueAsInteger("Param_order");
+    String inOut=record.getValueAsString("Mode");
+    int length=0;
+    int precision=0;
+    int scale=0;
+    if (l != null && !"null".equalsIgnoreCase(l.trim())) {
+      length=Integer.valueOf(l.trim());
+    }
+    if (p != null && !"null".equalsIgnoreCase(p.trim())) {
+      precision=Integer.valueOf(p.trim());
+    }
+    if (s != null && !"null".equalsIgnoreCase(s.trim())) {
+      scale=Integer.valueOf(s.trim());
+    }
+    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),record.getValueAsString("Type"),length,precision,scale);
+    ParameterDefinition parameter=new DefaultParameterDefinition(this,n.replaceAll("@",""),o,type);
+    addParameter(InOutDefinition.getFromString(inOut),parameter);
+  }
+}

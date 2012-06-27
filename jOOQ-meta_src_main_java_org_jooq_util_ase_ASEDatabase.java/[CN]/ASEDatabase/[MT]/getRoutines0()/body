@@ -1,4 +1,9 @@
 {
   List<RoutineDefinition> result=new ArrayList<RoutineDefinition>();
+  for (  Record record : fetchRoutines()) {
+    SchemaDefinition schema=getSchema(record.getValueAsString("Owner"));
+    String name=record.getValueAsString("Name");
+    result.add(new ASERoutineDefinition(schema,null,name,"",null,null,null));
+  }
   return result;
 }
