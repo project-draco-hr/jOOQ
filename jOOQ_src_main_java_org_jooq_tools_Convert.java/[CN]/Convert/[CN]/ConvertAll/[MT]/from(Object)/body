@@ -167,7 +167,23 @@
         return (U)java.sql.Date.valueOf((String)from);
       }
  catch (      IllegalArgumentException e) {
-        throw fail(from,java.sql.Date.class);
+        return null;
+      }
+    }
+ else     if ((fromClass == String.class) && toClass == java.sql.Time.class) {
+      try {
+        return (U)java.sql.Time.valueOf((String)from);
+      }
+ catch (      IllegalArgumentException e) {
+        return null;
+      }
+    }
+ else     if ((fromClass == String.class) && toClass == java.sql.Timestamp.class) {
+      try {
+        return (U)java.sql.Timestamp.valueOf((String)from);
+      }
+ catch (      IllegalArgumentException e) {
+        return null;
       }
     }
  else     if ((fromClass == String.class) && java.lang.Enum.class.isAssignableFrom(toClass)) {
