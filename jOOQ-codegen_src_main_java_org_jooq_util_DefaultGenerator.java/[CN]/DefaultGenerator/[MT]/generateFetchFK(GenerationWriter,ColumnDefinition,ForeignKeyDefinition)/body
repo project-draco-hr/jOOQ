@@ -1,0 +1,11 @@
+{
+  if (foreignKey.getReferencedColumns().size() != foreignKey.getKeyColumns().size()) {
+    log.warn("Foreign key mismatch",foreignKey.getName() + " does not match its primary key! No code is generated for this key. See trac tickets #64 and #69");
+    return;
+  }
+  TableDefinition referenced=foreignKey.getReferencedTable();
+  if (referenced instanceof MasterDataTableDefinition) {
+    return;
+  }
+  printFetchMethod(out,column,foreignKey,referenced);
+}

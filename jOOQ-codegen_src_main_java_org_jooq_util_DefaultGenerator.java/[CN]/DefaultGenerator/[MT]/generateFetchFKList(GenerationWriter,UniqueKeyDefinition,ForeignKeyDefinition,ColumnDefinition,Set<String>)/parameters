@@ -1,0 +1,5 @@
+GenerationWriter out
+UniqueKeyDefinition uniqueKey
+ForeignKeyDefinition foreignKey
+ColumnDefinition column
+Set<String> fetchMethodNames

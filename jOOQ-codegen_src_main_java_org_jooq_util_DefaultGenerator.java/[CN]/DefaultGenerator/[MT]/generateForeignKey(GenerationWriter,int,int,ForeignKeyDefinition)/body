@@ -1,0 +1,36 @@
+{
+  if (foreignKeyCounter % INITIALISER_SIZE == 0) {
+    if (foreignKeyCounter > 0) {
+      out.println("\t}");
+    }
+    out.println();
+    out.print("\t@SuppressWarnings({");
+    generateForeignKeySuppressHidingWarning(out,foreignKey);
+    out.println("\"unchecked\"})");
+    out.print("\tprivate static class ForeignKeys");
+    out.print(foreignKeyCounter / INITIALISER_SIZE);
+    out.print(" extends ");
+    out.print(AbstractKeys.class);
+    out.println(" {");
+  }
+  out.print("\t\tpublic static final ");
+  out.print(ForeignKey.class);
+  out.print("<");
+  out.print(strategy.getFullJavaClassName(foreignKey.getKeyTable(),Mode.RECORD));
+  out.print(", ");
+  out.print(strategy.getFullJavaClassName(foreignKey.getReferencedTable(),Mode.RECORD));
+  out.print("> ");
+  out.print(strategy.getJavaIdentifier(foreignKey));
+  out.print(" = createForeignKey(");
+  out.print(strategy.getFullJavaIdentifier(foreignKey.getReferencedKey()));
+  out.print(", ");
+  out.print(strategy.getFullJavaIdentifier(foreignKey.getKeyTable()));
+  out.print(", ");
+  String separator="";
+  for (  ColumnDefinition column : foreignKey.getKeyColumns()) {
+    out.print(separator);
+    out.print(strategy.getFullJavaIdentifier(column));
+    separator=", ";
+  }
+  out.println(");");
+}

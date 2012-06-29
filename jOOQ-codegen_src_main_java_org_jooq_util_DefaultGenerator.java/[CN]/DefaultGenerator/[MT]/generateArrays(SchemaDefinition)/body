@@ -1,0 +1,12 @@
+{
+  log.info("Generating ARRAYs");
+  for (  ArrayDefinition array : database.getArrays(schema)) {
+    try {
+      generateArray(schema,array);
+    }
+ catch (    Exception e) {
+      log.error("Error while generating ARRAY record " + array,e);
+    }
+  }
+  watch.splitInfo("ARRAYs generated");
+}

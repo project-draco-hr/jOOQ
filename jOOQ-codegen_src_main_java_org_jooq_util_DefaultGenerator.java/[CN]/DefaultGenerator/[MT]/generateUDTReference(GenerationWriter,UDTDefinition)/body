@@ -1,0 +1,13 @@
+{
+  out.println();
+  out.println("\t/**");
+  out.println("\t * The type " + udt.getQualifiedOutputName());
+  out.println("\t */");
+  out.print("\tpublic static ");
+  out.print(strategy.getFullJavaClassName(udt));
+  out.print(" ");
+  out.print(strategy.getJavaIdentifier(udt));
+  out.print(" = ");
+  out.print(strategy.getFullJavaIdentifier(udt));
+  out.println(";");
+}

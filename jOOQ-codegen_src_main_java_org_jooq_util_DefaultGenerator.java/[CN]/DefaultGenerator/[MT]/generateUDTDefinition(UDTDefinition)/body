@@ -1,0 +1,41 @@
+{
+  log.info("Generating UDT record",strategy.getFileName(udt,Mode.RECORD));
+  GenerationWriter out=new GenerationWriter(strategy.getFile(udt,Mode.RECORD));
+  printHeader(out,udt,Mode.RECORD);
+  printClassJavadoc(out,udt);
+  out.print("public class ");
+  out.print(strategy.getJavaClassName(udt,Mode.RECORD));
+  out.print(" extends ");
+  out.print(UDTRecordImpl.class);
+  out.print("<");
+  out.print(strategy.getFullJavaClassName(udt,Mode.RECORD));
+  out.print(">");
+  printImplements(out,udt,Mode.RECORD);
+  out.println(" {");
+  out.printSerial();
+  out.println();
+  for (  AttributeDefinition attribute : udt.getAttributes()) {
+    printGetterAndSetter(out,attribute);
+  }
+  for (  RoutineDefinition routine : udt.getRoutines()) {
+    try {
+      if (!routine.isSQLUsable()) {
+        printConvenienceMethodProcedure(out,routine,true);
+      }
+ else {
+        printConvenienceMethodFunction(out,routine,true);
+      }
+    }
+ catch (    Exception e) {
+      log.error("Error while generating routine " + routine,e);
+    }
+  }
+  out.println();
+  out.println("\tpublic " + strategy.getJavaClassName(udt,Mode.RECORD) + "() {");
+  out.print("\t\tsuper(");
+  out.print(strategy.getFullJavaIdentifier(udt));
+  out.println(");");
+  out.println("\t}");
+  out.println("}");
+  out.close();
+}

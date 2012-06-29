@@ -1,0 +1,4 @@
+GenerationWriter out
+int INITIALISER_SIZE
+int uniqueKeyCounter
+UniqueKeyDefinition uniqueKey
