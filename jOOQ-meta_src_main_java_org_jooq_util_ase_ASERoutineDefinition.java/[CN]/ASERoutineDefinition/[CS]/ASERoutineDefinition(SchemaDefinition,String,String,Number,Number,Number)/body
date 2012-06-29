@@ -1,0 +1,6 @@
+{
+  super(schema,null,name,null,null);
+  if (!StringUtils.isBlank(dataType)) {
+    throw new InstantiationError("datatype argument not supported for ASE routines");
+  }
+}
