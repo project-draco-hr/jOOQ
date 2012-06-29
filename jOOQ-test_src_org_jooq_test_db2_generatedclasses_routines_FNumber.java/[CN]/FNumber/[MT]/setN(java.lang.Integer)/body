@@ -1,3 +1,3 @@
 {
-  setValue(N,value);
+  setValue(org.jooq.test.db2.generatedclasses.routines.FNumber.N,value);
 }

@@ -1,3 +1,3 @@
 {
-  setNumber(F063,value);
+  setNumber(org.jooq.test.oracle3.generatedclasses.routines.F_MANY_PARAMETERS.F063,value);
 }

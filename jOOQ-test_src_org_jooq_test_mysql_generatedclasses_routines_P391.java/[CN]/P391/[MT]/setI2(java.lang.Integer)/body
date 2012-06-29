@@ -1,3 +1,3 @@
 {
-  setValue(I2,value);
+  setValue(org.jooq.test.mysql.generatedclasses.routines.P391.I2,value);
 }

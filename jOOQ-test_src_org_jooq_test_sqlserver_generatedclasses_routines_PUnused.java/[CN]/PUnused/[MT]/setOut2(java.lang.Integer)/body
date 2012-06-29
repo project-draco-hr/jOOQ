@@ -1,3 +1,3 @@
 {
-  setValue(OUT2,value);
+  setValue(org.jooq.test.sqlserver.generatedclasses.routines.PUnused.OUT2,value);
 }

@@ -1,3 +1,3 @@
 {
-  setValue(PLAN_HASH_VALUE,value);
+  setValue(org.jooq.examples.oracle.sys.packages.dbms_xplan.DisplaySqlset.PLAN_HASH_VALUE,value);
 }

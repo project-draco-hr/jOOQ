@@ -1,3 +1,3 @@
 {
-  setValue(ADDRESS,value);
+  setValue(org.jooq.test.oracle3.generatedclasses.routines.P_ENHANCE_ADDRESS3.ADDRESS,value);
 }

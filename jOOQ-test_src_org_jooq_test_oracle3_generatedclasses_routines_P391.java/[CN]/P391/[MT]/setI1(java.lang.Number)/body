@@ -1,3 +1,3 @@
 {
-  setNumber(I1,value);
+  setNumber(org.jooq.test.oracle3.generatedclasses.routines.P391.I1,value);
 }
