@@ -98,6 +98,7 @@
   breakpointTree.setCellEditor(new CheckBoxNodeEditor(breakpointTree));
   breakpointTree.setCellRenderer(new CheckBoxNodeRenderer(breakpointTree));
   breakpointTree.setEditable(true);
+  TreeDataTip.activate(breakpointTree);
   JScrollPane breakpointTreeScrollPane=new JScrollPane(breakpointTree);
   breakpointTreeScrollPane.setPreferredSize(new Dimension(200,200));
   westPane.add(breakpointTreeScrollPane,BorderLayout.CENTER);
