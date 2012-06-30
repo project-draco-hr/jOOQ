@@ -1,3 +1,3 @@
 {
-  setValue(F390,value);
+  setValue(org.jooq.test.sqlserver.generatedclasses.routines.PManyParameters.F390,value);
 }

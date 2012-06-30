@@ -1,3 +1,3 @@
 {
-  setNumber(F030,value);
+  setNumber(org.jooq.test.oracle3.generatedclasses.packages.library.PKG_P_MANY_PARAMETERS.F030,value);
 }

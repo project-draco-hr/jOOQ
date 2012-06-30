@@ -1,3 +1,3 @@
 {
-  setNumber(P_IN_NUMBER,value);
+  setNumber(org.jooq.test.oracle.generatedclasses.test.routines.PDefault.P_IN_NUMBER,value);
 }

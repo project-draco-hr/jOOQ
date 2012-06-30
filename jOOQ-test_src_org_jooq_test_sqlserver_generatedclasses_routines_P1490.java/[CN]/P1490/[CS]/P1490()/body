@@ -1,0 +1,4 @@
+{
+  super("p1490",org.jooq.test.sqlserver.generatedclasses.Dbo.DBO);
+  addInParameter(VALUE);
+}

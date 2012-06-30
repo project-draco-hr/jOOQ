@@ -213,6 +213,9 @@
   assertEquals(new Date(1),SQLDataType.DATE.convert(1L));
   assertEquals(new Time(1),SQLDataType.TIME.convert(1L));
   assertEquals(new Timestamp(1),SQLDataType.TIMESTAMP.convert(1L));
+  assertEquals("1970-01-01",SQLDataType.DATE.convert("1970-01-01").toString());
+  assertEquals("00:00:00",SQLDataType.TIME.convert("00:00:00").toString());
+  assertEquals("1970-01-01 00:00:00.0",SQLDataType.TIMESTAMP.convert("1970-01-01 00:00:00").toString());
   A author1=create().newRecord(TAuthor());
   assertEquals(Byte.valueOf("0"),author1.getValue(TAuthor_ID(),byte.class));
   assertEquals(Short.valueOf("0"),author1.getValue(TAuthor_ID(),short.class));

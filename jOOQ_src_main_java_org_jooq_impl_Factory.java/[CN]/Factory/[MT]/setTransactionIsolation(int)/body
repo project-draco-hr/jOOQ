@@ -1,0 +1,8 @@
+{
+  try {
+    getConnection().setTransactionIsolation(level);
+  }
+ catch (  Exception e) {
+    throw new DataAccessException("Cannot set transactionIsolation",e);
+  }
+}

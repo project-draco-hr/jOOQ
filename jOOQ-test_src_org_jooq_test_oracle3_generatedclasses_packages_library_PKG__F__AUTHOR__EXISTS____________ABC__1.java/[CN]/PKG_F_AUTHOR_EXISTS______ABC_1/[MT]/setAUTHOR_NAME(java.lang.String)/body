@@ -1,3 +1,3 @@
 {
-  setValue(AUTHOR_NAME,value);
+  setValue(org.jooq.test.oracle3.generatedclasses.packages.library.PKG_F_AUTHOR_EXISTS______ABC_1.AUTHOR_NAME,value);
 }

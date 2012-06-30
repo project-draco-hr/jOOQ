@@ -9,7 +9,13 @@ case SQLSERVER:
         context.sql("(").formatIndentLockStart();
         for (int i=0; i < list.size(); i+=IN_LIMIT) {
           if (i > 0) {
-            context.keyword(" or ").formatSeparator();
+            if (operator == InOperator.IN) {
+              context.keyword(" or");
+            }
+ else {
+              context.keyword(" and");
+            }
+            context.formatSeparator();
           }
           toSQLSubValues(context,list.subList(i,Math.min(i + IN_LIMIT,list.size())));
         }

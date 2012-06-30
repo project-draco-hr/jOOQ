@@ -1,10 +1,10 @@
 {
   context.keyword("select ");
-  if (distinct) {
-    context.keyword("distinct ");
-  }
   if (!StringUtils.isBlank(hint)) {
     context.sql(hint).sql(" ");
+  }
+  if (distinct) {
+    context.keyword("distinct ");
   }
 switch (context.getDialect()) {
 case ASE:

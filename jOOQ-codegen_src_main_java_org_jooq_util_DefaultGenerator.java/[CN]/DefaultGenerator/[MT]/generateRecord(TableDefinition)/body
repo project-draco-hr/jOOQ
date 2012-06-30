@@ -1,0 +1,38 @@
+{
+  log.info("Generating record",strategy.getFileName(table,Mode.RECORD));
+  GenerationWriter out=new GenerationWriter(strategy.getFile(table,Mode.RECORD));
+  printHeader(out,table,Mode.RECORD);
+  printClassJavadoc(out,table);
+  printTableJPAAnnotation(out,table);
+  Class<?> baseClass;
+  if (generateRelations() && table.getMainUniqueKey() != null) {
+    baseClass=UpdatableRecordImpl.class;
+  }
+ else {
+    baseClass=TableRecordImpl.class;
+  }
+  out.print("public class ");
+  out.print(strategy.getJavaClassName(table,Mode.RECORD));
+  out.print(" extends ");
+  out.print(baseClass);
+  out.print("<");
+  out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
+  out.print(">");
+  printImplements(out,table,Mode.RECORD);
+  out.println(" {");
+  out.printSerial();
+  for (  ColumnDefinition column : table.getColumns()) {
+    printGetterAndSetter(out,column);
+  }
+  out.println();
+  out.println("\t/**");
+  out.println("\t * Create a detached " + strategy.getJavaClassName(table,Mode.RECORD));
+  out.println("\t */");
+  out.println("\tpublic " + strategy.getJavaClassName(table,Mode.RECORD) + "() {");
+  out.print("\t\tsuper(");
+  out.print(strategy.getFullJavaIdentifier(table));
+  out.println(");");
+  out.println("\t}");
+  out.println("}");
+  out.close();
+}

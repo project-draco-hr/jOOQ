@@ -1,0 +1,56 @@
+{
+  log.info("Generating UDT ",strategy.getFileName(udt));
+  GenerationWriter out=new GenerationWriter(strategy.getFile(udt));
+  printHeader(out,udt);
+  printClassJavadoc(out,udt);
+  out.print("public class ");
+  out.print(strategy.getJavaClassName(udt));
+  out.print(" extends ");
+  out.print(UDTImpl.class);
+  out.print("<");
+  out.print(strategy.getFullJavaClassName(udt,Mode.RECORD));
+  out.print(">");
+  if (udt.getRoutines().size() > 0) {
+    printImplements(out,udt,Mode.DEFAULT,org.jooq.Package.class.getName());
+  }
+ else {
+    printImplements(out,udt,Mode.DEFAULT);
+  }
+  out.println(" {");
+  out.printSerial();
+  printSingletonInstance(udt,out);
+  printRecordTypeMethod(udt,out);
+  for (  AttributeDefinition attribute : udt.getAttributes()) {
+    printUDTColumn(out,attribute,udt);
+  }
+  for (  RoutineDefinition routine : udt.getRoutines()) {
+    try {
+      if (!routine.isSQLUsable()) {
+        printConvenienceMethodProcedure(out,routine,false);
+      }
+ else {
+        printConvenienceMethodFunction(out,routine,false);
+        printConvenienceMethodFunctionAsField(out,routine,false);
+        printConvenienceMethodFunctionAsField(out,routine,true);
+      }
+    }
+ catch (    Exception e) {
+      log.error("Error while generating routine " + routine,e);
+    }
+  }
+  out.println();
+  printNoFurtherInstancesAllowedJavadoc(out);
+  out.println("\tprivate " + strategy.getJavaClassName(udt) + "() {");
+  if (!schema.isDefaultSchema()) {
+    out.println("\t\tsuper(\"" + udt.getOutputName() + "\", "+ strategy.getFullJavaIdentifier(schema)+ ");");
+  }
+ else {
+    out.println("\t\tsuper(\"" + udt.getOutputName() + "\");");
+  }
+  out.println();
+  out.println("\t\t// Initialise data type");
+  out.println("\t\tgetDataType();");
+  out.println("\t}");
+  out.println("}");
+  out.close();
+}

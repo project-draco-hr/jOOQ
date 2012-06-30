@@ -1,3 +1,3 @@
 {
-  setNumber(F352,value);
+  setNumber(org.jooq.test.oracle.generatedclasses.test.routines.FManyParameters.F352,value);
 }

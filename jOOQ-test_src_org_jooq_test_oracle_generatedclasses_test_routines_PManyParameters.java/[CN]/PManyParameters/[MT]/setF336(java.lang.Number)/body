@@ -1,3 +1,3 @@
 {
-  setNumber(F336,value);
+  setNumber(org.jooq.test.oracle.generatedclasses.test.routines.PManyParameters.F336,value);
 }

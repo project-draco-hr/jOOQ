@@ -1,0 +1,27 @@
+{
+  if (identityCounter % INITIALISER_SIZE == 0) {
+    if (identityCounter > 0) {
+      out.println("\t}");
+    }
+    out.println();
+    out.println("\t@SuppressWarnings(\"hiding\")");
+    out.print("\tprivate static class Identities");
+    out.print(identityCounter / INITIALISER_SIZE);
+    out.print(" extends ");
+    out.print(AbstractKeys.class);
+    out.println(" {");
+  }
+  out.print("\t\tpublic static ");
+  out.print(Identity.class);
+  out.print("<");
+  out.print(strategy.getFullJavaClassName(identity.getTable(),Mode.RECORD));
+  out.print(", ");
+  out.print(getJavaType(identity.getColumn().getType()));
+  out.print("> ");
+  out.print(strategy.getJavaIdentifier(identity));
+  out.print(" = createIdentity(");
+  out.print(strategy.getFullJavaIdentifier(identity.getColumn().getContainer()));
+  out.print(", ");
+  out.print(strategy.getFullJavaIdentifier(identity.getColumn()));
+  out.println(");");
+}

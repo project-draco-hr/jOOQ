@@ -1,3 +1,3 @@
 {
-  setValue(Gender,value);
+  setValue(org.jooq.examples.sqlserver.adventureworks.humanresources.routines.uspUpdateEmployeePersonalInfo.Gender,value);
 }

@@ -1,3 +1,3 @@
 {
-  setValue(IN_TABLE,value);
+  setValue(org.jooq.test.oracle.generatedclasses.test.routines.FTables2.IN_TABLE,value);
 }
