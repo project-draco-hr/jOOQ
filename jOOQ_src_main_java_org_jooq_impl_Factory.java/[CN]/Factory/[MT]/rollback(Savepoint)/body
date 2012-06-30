@@ -1,0 +1,8 @@
+{
+  try {
+    getConnection().rollback(savepoint);
+  }
+ catch (  Exception e) {
+    throw new DataAccessException("Cannot rollback transaction",e);
+  }
+}

@@ -1,0 +1,8 @@
+{
+  try {
+    getConnection().releaseSavepoint(savepoint);
+  }
+ catch (  Exception e) {
+    throw new DataAccessException("Cannot release savepoint",e);
+  }
+}
