@@ -10,6 +10,7 @@ assertEquals(1,(int)create().select(count).from(TBook()).where(TBook_ID().in(Col
 assertEquals(1,(int)create().select(count).from(TBook()).where(TBook_ID().in(Collections.nCopies(1001,1))).fetchOne(count));
 assertEquals(1,(int)create().select(count).from(TBook()).where(TBook_ID().in(Collections.nCopies(1950,1))).fetchOne(count));
 assertEquals(3,(int)create().select(count).from(TBook()).where(TBook_ID().notIn(Collections.nCopies(1950,1))).fetchOne(count));
+assertEquals(3,(int)create(new Settings().withStatementType(STATIC_STATEMENT)).select(count).from(TBook()).where(TBook_ID().notIn(Collections.nCopies(3000,1))).fetchOne(count));
 List<Integer> list=new ArrayList<Integer>();
 list.addAll(Collections.nCopies(1000,1));
 list.addAll(Collections.nCopies(1000,2));
