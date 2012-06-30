@@ -1,3 +1,3 @@
 {
-  setNumber(F221,value);
+  setNumber(org.jooq.test.oracle.generatedclasses.test.packages.library.PkgFManyParameters.F221,value);
 }
