@@ -45,7 +45,7 @@
       context.sql(val.toString());
     }
  else     if (type == Date.class) {
-      if (asList(SQLITE,SQLSERVER,SYBASE).contains(dialect)) {
+      if (asList(ASE,SQLITE,SQLSERVER,SYBASE).contains(dialect)) {
         context.sql("'").sql(val.toString()).sql("'");
       }
  else       if (dialect == DERBY) {
@@ -56,7 +56,7 @@
       }
     }
  else     if (type == Timestamp.class) {
-      if (asList(SQLITE,SQLSERVER,SYBASE).contains(dialect)) {
+      if (asList(ASE,SQLITE,SQLSERVER,SYBASE).contains(dialect)) {
         context.sql("'").sql(val.toString()).sql("'");
       }
  else       if (dialect == DERBY) {
@@ -70,7 +70,7 @@
       }
     }
  else     if (type == Time.class) {
-      if (asList(SQLITE,SQLSERVER,SYBASE).contains(dialect)) {
+      if (asList(ASE,SQLITE,SQLSERVER,SYBASE).contains(dialect)) {
         context.sql("'").sql(val.toString()).sql("'");
       }
  else       if (dialect == DERBY) {
