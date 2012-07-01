@@ -2,14 +2,20 @@
 switch (getDialect()) {
 case ASE:
 case CUBRID:
-case DERBY:
-case H2:
 case HSQLDB:
 case INGRES:
 case MYSQL:
 case SQLITE:
     log.info("SKIPPING","Window function tests");
   return;
+}
+List<Integer> rows=create().select(rowNumber().over()).from(TBook()).fetch(0,Integer.class);
+assertEquals(asList(1,2,3,4),rows);
+switch (getDialect()) {
+case DERBY:
+case H2:
+log.info("SKIPPING","Advanced window function tests");
+return;
 }
 int column=0;
 Result<Record> result=create().select(TBook_ID(),rowNumber().over().partitionByOne().orderBy(TBook_ID().desc()),rowNumber().over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().desc())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
