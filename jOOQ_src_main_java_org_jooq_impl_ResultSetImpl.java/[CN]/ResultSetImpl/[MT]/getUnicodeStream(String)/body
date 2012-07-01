@@ -1,0 +1,4 @@
+{
+  String string=getString(columnLabel);
+  return wasNull ? null : new ByteArrayInputStream(string.getBytes());
+}

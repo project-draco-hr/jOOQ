@@ -1,0 +1,5 @@
+{
+  if (direction != ResultSet.FETCH_FORWARD) {
+    throw new SQLException("Fetch direction can only be FETCH_FORWARD");
+  }
+}

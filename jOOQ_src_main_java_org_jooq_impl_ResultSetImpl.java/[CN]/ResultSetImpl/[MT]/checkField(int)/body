@@ -1,0 +1,5 @@
+{
+  if (result.getField(columnIndex - 1) == null) {
+    throw new SQLException("Unknown column index : " + columnIndex);
+  }
+}

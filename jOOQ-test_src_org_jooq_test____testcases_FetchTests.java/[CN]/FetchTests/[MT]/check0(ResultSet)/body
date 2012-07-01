@@ -1,0 +1,14 @@
+{
+  assertFalse(rs.isClosed());
+  assertTrue(rs.isBeforeFirst());
+  assertFalse(rs.isAfterLast());
+  assertFalse(rs.isFirst());
+  assertFalse(rs.isLast());
+  assertEquals(0,rs.getRow());
+  try {
+    rs.getObject(1);
+    fail();
+  }
+ catch (  SQLException expected) {
+  }
+}

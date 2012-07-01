@@ -1,0 +1,6 @@
+{
+  checkNotClosed();
+  if (index <= 0 || index > result.size()) {
+    throw new SQLException("ResultSet index is at an illegal position : " + index);
+  }
+}

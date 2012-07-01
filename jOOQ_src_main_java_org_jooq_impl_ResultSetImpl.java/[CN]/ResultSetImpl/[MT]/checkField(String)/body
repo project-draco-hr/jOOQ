@@ -1,0 +1,5 @@
+{
+  if (result.getField(columnLabel) == null) {
+    throw new SQLException("Unknown column label : " + columnLabel);
+  }
+}

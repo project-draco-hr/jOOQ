@@ -1,0 +1,4 @@
+{
+  String string=getString(columnIndex);
+  return wasNull ? null : new StringReader(string);
+}

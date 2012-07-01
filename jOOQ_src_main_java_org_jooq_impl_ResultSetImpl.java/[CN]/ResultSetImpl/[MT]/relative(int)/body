@@ -1,0 +1,11 @@
+{
+  checkNotClosed();
+  index+=rows;
+  try {
+    return (index > 0 && index <= result.size());
+  }
+  finally {
+    index=Math.max(index,0);
+    index=Math.min(index,result.size() + 1);
+  }
+}

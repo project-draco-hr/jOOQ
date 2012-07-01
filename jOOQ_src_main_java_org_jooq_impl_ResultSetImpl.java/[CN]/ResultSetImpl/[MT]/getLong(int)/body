@@ -1,0 +1,4 @@
+{
+  Long value=getValue(columnIndex,Long.class);
+  return wasNull ? 0L : value;
+}

@@ -1,0 +1,3 @@
+{
+  return (index > result.size()) ? 0 : index;
+}

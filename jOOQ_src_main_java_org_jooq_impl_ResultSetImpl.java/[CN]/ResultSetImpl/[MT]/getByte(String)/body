@@ -1,0 +1,4 @@
+{
+  Byte value=getValue(columnLabel,Byte.class);
+  return wasNull ? (byte)0 : value;
+}

@@ -1,0 +1,4 @@
+{
+  Short value=getValue(columnLabel,Short.class);
+  return wasNull ? (short)0 : value;
+}

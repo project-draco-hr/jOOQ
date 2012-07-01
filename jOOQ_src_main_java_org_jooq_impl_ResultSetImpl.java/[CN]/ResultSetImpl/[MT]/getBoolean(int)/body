@@ -1,0 +1,4 @@
+{
+  Boolean value=getValue(columnIndex,Boolean.class);
+  return wasNull ? false : value;
+}

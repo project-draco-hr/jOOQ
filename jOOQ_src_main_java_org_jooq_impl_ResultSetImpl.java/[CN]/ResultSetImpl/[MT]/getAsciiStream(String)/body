@@ -1,0 +1,4 @@
+{
+  byte[] bytes=getBytes(columnLabel);
+  return wasNull ? null : new ByteArrayInputStream(bytes);
+}

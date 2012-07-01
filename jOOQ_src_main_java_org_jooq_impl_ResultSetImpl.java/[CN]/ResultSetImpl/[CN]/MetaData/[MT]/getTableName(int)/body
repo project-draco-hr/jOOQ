@@ -1,0 +1,11 @@
+{
+  checkNotClosed();
+  Field<?> field=result.getField(column - 1);
+  if (field instanceof TableField) {
+    Table<?> table=((TableField<?,?>)field).getTable();
+    if (table != null) {
+      return table.getName();
+    }
+  }
+  return "";
+}

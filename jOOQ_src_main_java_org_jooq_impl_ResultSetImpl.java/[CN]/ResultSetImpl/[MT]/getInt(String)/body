@@ -1,0 +1,4 @@
+{
+  Integer value=getValue(columnLabel,Integer.class);
+  return wasNull ? 0 : value;
+}

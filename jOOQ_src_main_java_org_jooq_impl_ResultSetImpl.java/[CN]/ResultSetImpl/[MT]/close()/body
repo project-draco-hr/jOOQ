@@ -1,0 +1,5 @@
+{
+  checkNotClosed();
+  result=null;
+  index=0;
+}
