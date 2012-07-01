@@ -1,5 +1,10 @@
 {
-  if (!over)   return;
+  if (!over) {
+    return;
+  }
+  if (over && term == ROW_NUMBER && context.getDialect() == HSQLDB) {
+    return;
+  }
   String glue="";
   context.keyword(" over (");
   if (!partitionBy.isEmpty()) {

@@ -1,3 +1,3 @@
 {
-  return new Function<Integer>("row_number",SQLDataType.INTEGER);
+  return new Function<Integer>(ROW_NUMBER,SQLDataType.INTEGER);
 }
