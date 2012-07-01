@@ -5,10 +5,20 @@
     DefaultMutableTreeNode node=(DefaultMutableTreeNode)paths[0].getLastPathComponent();
     if (node instanceof CheckBoxNode) {
       Object o=node.getUserObject();
-      eastPane.add(new BreakpointEditor(this,(Breakpoint)o));
+      JPanel contentPane=new JPanel(new BorderLayout());
+      contentPane.setBorder(BorderFactory.createTitledBorder("Breakpoint configuration"));
+      contentPane.setOpaque(false);
+      BreakpointEditor c=new BreakpointEditor(this,(Breakpoint)o);
+      contentPane.add(c);
+      eastPane.add(contentPane);
     }
  else     if (node instanceof BreakpointHitNode) {
-      eastPane.add(new BreakpointHitEditor(debugger,this,(BreakpointHitNode)node));
+      JPanel contentPane=new JPanel(new BorderLayout());
+      contentPane.setBorder(BorderFactory.createTitledBorder("Breakpoint hit details"));
+      contentPane.setOpaque(false);
+      BreakpointHitEditor c=new BreakpointHitEditor(debugger,this,(BreakpointHitNode)node);
+      contentPane.add(c);
+      eastPane.add(contentPane);
     }
   }
   eastPane.revalidate();

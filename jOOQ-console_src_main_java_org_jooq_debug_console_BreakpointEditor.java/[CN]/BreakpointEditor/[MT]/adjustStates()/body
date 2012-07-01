@@ -16,9 +16,8 @@
   processorPane.setVisible(isActive && breakpointTypeComboBox.getSelectedItem() == PROCESS);
   beforeExecutionCheckBox.setEnabled(isActive);
   beforeExecutionProcessorPane.setLocked(!isActive || !beforeExecutionCheckBox.isSelected());
-  executeRadioButton.setEnabled(isActive);
-  replaceExecutionRadioButton.setEnabled(isActive);
-  replacementExecutionProcessorPane.setLocked(!isActive || !replaceExecutionRadioButton.isSelected());
+  executeTypeComboBox.setEnabled(isActive);
+  replacementExecutionProcessorPane.setLocked(!isActive || executeTypeComboBox.getSelectedIndex() != 1);
   afterExecutionCheckBox.setEnabled(isActive);
   afterExecutionProcessorPane.setLocked(!isActive || !afterExecutionCheckBox.isSelected());
 }

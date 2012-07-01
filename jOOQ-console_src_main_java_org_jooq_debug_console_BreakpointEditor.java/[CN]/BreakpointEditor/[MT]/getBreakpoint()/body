@@ -7,7 +7,7 @@
   StatementProcessor afterExecutionProcessor=null;
   if (!isBreaking) {
     beforeExecutionProcessor=beforeExecutionCheckBox.isSelected() ? beforeExecutionProcessorPane.getStatementProcessor() : null;
-    replacementExecutionProcessor=replaceExecutionRadioButton.isSelected() ? replacementExecutionProcessorPane.getStatementProcessor() : null;
+    replacementExecutionProcessor=executeTypeComboBox.getSelectedIndex() == 1 ? replacementExecutionProcessorPane.getStatementProcessor() : null;
     afterExecutionProcessor=afterExecutionCheckBox.isSelected() ? afterExecutionProcessorPane.getStatementProcessor() : null;
   }
   return new Breakpoint(id,hitCount,statementMatcher,isBreaking,beforeExecutionProcessor,replacementExecutionProcessor,afterExecutionProcessor);

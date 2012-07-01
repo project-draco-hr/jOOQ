@@ -115,23 +115,27 @@
       matchingDebugger=null;
     }
 switch (executionType) {
+case FAIL:
+{
+        throw new DataAccessException("Failing SQL statement.");
+      }
 case RUN_OVER:
 {
-        try {
-          ctx.statement().close();
-          String sql=new Factory(ctx.getDialect()).selectZero().where("1 = 2").getSQL();
-          ctx.sql(sql);
-          ctx.statement(ctx.getConnection().prepareStatement(sql));
-        }
- catch (        Exception e) {
-          throw new RuntimeException(e);
-        }
-        break;
+      try {
+        ctx.statement().close();
+        String sql=new Factory(ctx.getDialect()).selectZero().where("1 = 2").getSQL();
+        ctx.sql(sql);
+        ctx.statement(ctx.getConnection().prepareStatement(sql));
       }
-  }
+ catch (      Exception e) {
+        throw new RuntimeException(e);
+      }
+      break;
+    }
+}
 }
 if (!hasDebuggers) {
-  return;
+return;
 }
 startExecutionTime=System.currentTimeMillis();
 }
