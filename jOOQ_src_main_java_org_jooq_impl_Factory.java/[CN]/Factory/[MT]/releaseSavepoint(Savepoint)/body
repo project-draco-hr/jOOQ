@@ -1,5 +1,6 @@
 {
   try {
+    log.debug("release savepoint");
     getConnection().releaseSavepoint(savepoint);
   }
  catch (  Exception e) {

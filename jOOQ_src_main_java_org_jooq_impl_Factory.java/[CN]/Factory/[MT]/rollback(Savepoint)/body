@@ -1,5 +1,6 @@
 {
   try {
+    log.debug("rollback to savepoint");
     getConnection().rollback(savepoint);
   }
  catch (  Exception e) {

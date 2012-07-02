@@ -1,5 +1,6 @@
 {
   try {
+    log.debug("set savepoint",name);
     return getConnection().setSavepoint(name);
   }
  catch (  Exception e) {
