@@ -15,7 +15,7 @@
   assertEquals("123.0",r_refI.render(i3));
   assertEquals("123.0",r_refP.render(i3));
   assertEquals("123.0",r_ref.render(i3));
-  assertEquals("{d '1981-07-10'}",r_refI.render(i4));
-  assertEquals("{d '1981-07-10'}",r_refP.render(i4));
-  assertEquals("{d '1981-07-10'}",r_ref.render(i4));
+  assertEquals("date '1981-07-10'",r_refI.render(i4));
+  assertEquals("date '1981-07-10'",r_refP.render(i4));
+  assertEquals("date '1981-07-10'",r_ref.render(i4));
 }
