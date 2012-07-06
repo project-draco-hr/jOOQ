@@ -8,7 +8,12 @@
       }
     }
  else     if (!StringUtils.isBlank(ctx.sql())) {
-      log.debug("Executing query",ctx.sql());
+      if (ctx.type() == ExecuteType.BATCH) {
+        log.debug("Executing batch query",ctx.sql());
+      }
+ else {
+        log.debug("Executing query",ctx.sql());
+      }
     }
   }
 }
