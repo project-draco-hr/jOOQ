@@ -108,9 +108,9 @@ case INGRES:
 case ORACLE:
 case SYBASE:
 {
-Result<Record> result=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().of(TAuthor_LAST_NAME(),TAuthor_FIRST_NAME()).fetch();
+Result<Record> result=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().of(TAuthor_ID(),TAuthor_LAST_NAME(),TAuthor_FIRST_NAME()).fetch();
 assertEquals(2,result.size());
-Result<A> result2=create().selectFrom(TAuthor()).forUpdate().of(TAuthor_LAST_NAME(),TAuthor_FIRST_NAME()).fetch();
+Result<A> result2=create().selectFrom(TAuthor()).forUpdate().of(TAuthor_ID(),TAuthor_LAST_NAME(),TAuthor_FIRST_NAME()).fetch();
 assertEquals(2,result2.size());
 }
 case POSTGRES:
