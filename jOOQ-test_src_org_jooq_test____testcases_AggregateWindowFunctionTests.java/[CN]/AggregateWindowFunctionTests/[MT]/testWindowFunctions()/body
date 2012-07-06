@@ -8,12 +8,12 @@ case SQLITE:
     log.info("SKIPPING","Window function tests");
   return;
 }
-List<Integer> rows=create().select(rowNumber().over()).from(TBook()).fetch(0,Integer.class);
-assertEquals(asList(1,2,3,4),rows);
 switch (getDialect()) {
 case DERBY:
 case H2:
 case HSQLDB:
+List<Integer> rows=create().select(rowNumber().over()).from(TBook()).orderBy(TBook_ID()).fetch(0,Integer.class);
+assertEquals(asList(1,2,3,4),rows);
 log.info("SKIPPING","Advanced window function tests");
 return;
 }
