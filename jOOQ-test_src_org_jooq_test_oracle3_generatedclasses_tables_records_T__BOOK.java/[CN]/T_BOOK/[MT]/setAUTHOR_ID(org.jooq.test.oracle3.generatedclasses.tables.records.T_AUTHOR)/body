@@ -1,0 +1,8 @@
+{
+  if (value == null) {
+    setValue(org.jooq.test.oracle3.generatedclasses.tables.T_BOOK.T_BOOK.AUTHOR_ID,null);
+  }
+ else {
+    setValue(org.jooq.test.oracle3.generatedclasses.tables.T_BOOK.T_BOOK.AUTHOR_ID,value.getValue(org.jooq.test.oracle3.generatedclasses.tables.T_AUTHOR.T_AUTHOR.ID));
+  }
+}

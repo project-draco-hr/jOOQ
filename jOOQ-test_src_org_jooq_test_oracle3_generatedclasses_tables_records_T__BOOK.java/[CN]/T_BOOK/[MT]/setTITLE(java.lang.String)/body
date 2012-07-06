@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.oracle3.generatedclasses.tables.T_BOOK.T_BOOK.TITLE,value);
+}

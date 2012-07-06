@@ -1,0 +1,8 @@
+{
+  if (value == null) {
+    setValue(org.jooq.examples.mysql.sakila.tables.Rental.RENTAL.INVENTORY_ID,null);
+  }
+ else {
+    setValue(org.jooq.examples.mysql.sakila.tables.Rental.RENTAL.INVENTORY_ID,value.getValue(org.jooq.examples.mysql.sakila.tables.Inventory.INVENTORY.INVENTORY_ID));
+  }
+}

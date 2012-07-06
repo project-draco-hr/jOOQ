@@ -1,0 +1,8 @@
+{
+  if (value == null) {
+    setValue(org.jooq.test.db2.generatedclasses.tables.TBookToBookStore.BOOK_ID,null);
+  }
+ else {
+    setValue(org.jooq.test.db2.generatedclasses.tables.TBookToBookStore.BOOK_ID,value.getValue(org.jooq.test.db2.generatedclasses.tables.TBook.ID));
+  }
+}

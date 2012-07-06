@@ -1,0 +1,8 @@
+{
+  if (value == null) {
+    setValue(org.jooq.test.db2.generatedclasses.tables.T_986_2.REF,null);
+  }
+ else {
+    setValue(org.jooq.test.db2.generatedclasses.tables.T_986_2.REF,value.getValue(org.jooq.test.db2.generatedclasses.tables.XUnused.ID));
+  }
+}

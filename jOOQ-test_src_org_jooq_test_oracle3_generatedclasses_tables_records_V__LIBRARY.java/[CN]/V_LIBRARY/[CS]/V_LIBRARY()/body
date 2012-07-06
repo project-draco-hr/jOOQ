@@ -1,0 +1,3 @@
+{
+  super(org.jooq.test.oracle3.generatedclasses.tables.V_LIBRARY.V_LIBRARY);
+}

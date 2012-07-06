@@ -1,0 +1,8 @@
+{
+  if (value == null) {
+    setValue(org.jooq.examples.mysql.sakila.tables.Staff.STAFF.STORE_ID,null);
+  }
+ else {
+    setValue(org.jooq.examples.mysql.sakila.tables.Staff.STAFF.STORE_ID,value.getValue(org.jooq.examples.mysql.sakila.tables.Store.STORE.STORE_ID));
+  }
+}

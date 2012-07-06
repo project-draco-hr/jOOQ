@@ -1,0 +1,8 @@
+{
+  if (value == null) {
+    setValue(org.jooq.test.oracle3.generatedclasses.tables.T_DIRECTORY.T_DIRECTORY.PARENT_ID,null);
+  }
+ else {
+    setValue(org.jooq.test.oracle3.generatedclasses.tables.T_DIRECTORY.T_DIRECTORY.PARENT_ID,value.getValue(org.jooq.test.oracle3.generatedclasses.tables.T_DIRECTORY.T_DIRECTORY.ID));
+  }
+}

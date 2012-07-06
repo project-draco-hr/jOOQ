@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.test.oracle3.generatedclasses.tables.T_DATES.T_DATES.TS_BIGINT);
+}

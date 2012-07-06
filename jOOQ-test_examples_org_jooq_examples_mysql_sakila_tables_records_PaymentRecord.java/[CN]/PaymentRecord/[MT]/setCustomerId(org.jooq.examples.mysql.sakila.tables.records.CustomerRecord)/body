@@ -1,0 +1,8 @@
+{
+  if (value == null) {
+    setValue(org.jooq.examples.mysql.sakila.tables.Payment.PAYMENT.CUSTOMER_ID,null);
+  }
+ else {
+    setValue(org.jooq.examples.mysql.sakila.tables.Payment.PAYMENT.CUSTOMER_ID,value.getValue(org.jooq.examples.mysql.sakila.tables.Customer.CUSTOMER.CUSTOMER_ID));
+  }
+}

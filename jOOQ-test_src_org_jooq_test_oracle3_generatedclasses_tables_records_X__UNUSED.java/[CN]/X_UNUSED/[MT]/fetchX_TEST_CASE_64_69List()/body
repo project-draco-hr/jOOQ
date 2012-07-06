@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(org.jooq.test.oracle3.generatedclasses.tables.X_TEST_CASE_64_69.X_TEST_CASE_64_69).where(org.jooq.test.oracle3.generatedclasses.tables.X_TEST_CASE_64_69.X_TEST_CASE_64_69.UNUSED_ID.equal(getValue(org.jooq.test.oracle3.generatedclasses.tables.X_UNUSED.X_UNUSED.ID))).fetch();
+}

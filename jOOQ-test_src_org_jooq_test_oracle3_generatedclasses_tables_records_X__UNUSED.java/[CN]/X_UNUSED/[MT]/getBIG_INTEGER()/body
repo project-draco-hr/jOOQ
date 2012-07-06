@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.test.oracle3.generatedclasses.tables.X_UNUSED.X_UNUSED.BIG_INTEGER);
+}

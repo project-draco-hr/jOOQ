@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.oracle3.generatedclasses.tables.T_639_NUMBERS_TABLE.T_639_NUMBERS_TABLE.BYTE_DECIMAL,value);
+}
