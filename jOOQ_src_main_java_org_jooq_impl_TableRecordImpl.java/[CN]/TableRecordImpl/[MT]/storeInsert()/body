@@ -1,14 +1,18 @@
 {
-  InsertQuery<R> insert=create().insertQuery(getTable());
+  Factory create=create();
+  InsertQuery<R> insert=create.insertQuery(getTable());
   for (  Field<?> field : getFields()) {
     if (getValue0(field).isChanged()) {
       addValue(insert,(TableField<R,?>)field);
     }
   }
-  Collection<Field<?>> key=getReturning();
-  insert.setReturning(key);
+  Collection<Field<?>> key=null;
+  if (!TRUE.equals(create.getData(OMIT_RETURNING_CLAUSE))) {
+    key=getReturning();
+    insert.setReturning(key);
+  }
   int result=insert.execute();
-  if (!key.isEmpty() && result > 0) {
+  if (key != null && !key.isEmpty() && result > 0) {
     if (insert.getReturnedRecord() != null) {
       for (      Field<?> field : key) {
         setValue0(field,new Value<Object>(insert.getReturnedRecord().getValue(field)));
