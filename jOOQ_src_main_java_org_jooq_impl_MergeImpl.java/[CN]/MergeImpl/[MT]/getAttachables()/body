@@ -1,3 +1,3 @@
 {
-  return getAttachables(table,using,on,matchedUpdate,matchedWhere,matchedDeleteWhere,notMatchedInsert,notMatchedWhere);
+  return getAttachables(table,using,on,matchedUpdate,matchedWhere,matchedDeleteWhere,notMatchedInsert,notMatchedWhere,h2Fields,h2Keys,h2Select,h2Values);
 }

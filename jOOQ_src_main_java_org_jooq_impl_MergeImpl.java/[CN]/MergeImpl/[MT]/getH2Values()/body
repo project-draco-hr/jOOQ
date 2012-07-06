@@ -1,0 +1,6 @@
+{
+  if (h2Values == null) {
+    h2Values=new FieldList();
+  }
+  return h2Values;
+}

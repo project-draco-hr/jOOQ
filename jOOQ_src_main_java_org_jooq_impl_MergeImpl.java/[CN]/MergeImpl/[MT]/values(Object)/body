@@ -1,5 +1,11 @@
 {
-  List<Field<?>> fields=new ArrayList<Field<?>>(notMatchedInsert.keySet());
-  notMatchedInsert.putValues(vals(convert(fields,values)));
+  if (using == null) {
+    h2Style=true;
+    getH2Values().addAll(vals(convert(getH2Fields(),values)));
+  }
+ else {
+    List<Field<?>> fields=new ArrayList<Field<?>>(notMatchedInsert.keySet());
+    notMatchedInsert.putValues(vals(convert(fields,values)));
+  }
   return this;
 }

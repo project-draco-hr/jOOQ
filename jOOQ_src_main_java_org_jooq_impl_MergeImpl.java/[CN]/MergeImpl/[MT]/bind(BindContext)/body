@@ -1,3 +1,8 @@
 {
-  context.declareTables(true).bind(table).bind(using).declareTables(false).bind(on).bind(matchedUpdate).bind(matchedWhere).bind(matchedDeleteWhere).bind(notMatchedInsert).bind(notMatchedWhere);
+  if (h2Style) {
+    bindH2(context);
+  }
+ else {
+    bindStandard(context);
+  }
 }

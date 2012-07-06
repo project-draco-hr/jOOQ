@@ -1,0 +1,3 @@
+{
+  return mergeInto(table,Arrays.asList(fields));
+}

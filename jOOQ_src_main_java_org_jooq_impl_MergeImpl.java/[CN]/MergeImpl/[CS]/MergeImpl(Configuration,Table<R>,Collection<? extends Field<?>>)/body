@@ -1,0 +1,9 @@
+{
+  super(configuration);
+  this.table=table;
+  this.on=new ConditionProviderImpl();
+  if (fields != null) {
+    h2Style=true;
+    h2Fields=new FieldList(fields);
+  }
+}
