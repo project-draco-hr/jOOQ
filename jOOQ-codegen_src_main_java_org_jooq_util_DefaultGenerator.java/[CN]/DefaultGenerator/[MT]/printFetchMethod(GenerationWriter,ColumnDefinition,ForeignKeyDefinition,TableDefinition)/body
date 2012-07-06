@@ -1,4 +1,5 @@
 {
+  printFKSetter(out,column,foreignKey,referenced);
   printFieldJavaDoc(out,column);
   out.print("\tpublic ");
   out.print(strategy.getFullJavaClassName(referenced,Mode.RECORD));
