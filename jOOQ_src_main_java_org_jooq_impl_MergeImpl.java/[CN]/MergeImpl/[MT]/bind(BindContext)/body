@@ -1,6 +1,11 @@
 {
   if (h2Style) {
-    bindH2(context);
+    if (context.getDialect() == H2) {
+      bindH2(context);
+    }
+ else {
+      context.bind(getStandardMerge(context));
+    }
   }
  else {
     bindStandard(context);

@@ -1,0 +1,73 @@
+{
+switch (config.getDialect()) {
+case DB2:
+case HSQLDB:
+case ORACLE:
+case SQLSERVER:
+case SYBASE:
+{
+      Table<?> src;
+      if (h2Select != null) {
+        FieldList v=new FieldList();
+        for (int i=0; i < h2Select.getFields().size(); i++) {
+          v.add(h2Select.getField(i).as("s" + (i + 1)));
+        }
+        src=create().select(v).from(h2Select).asTable("src");
+      }
+ else {
+        FieldList v=new FieldList();
+        for (int i=0; i < getH2Values().size(); i++) {
+          v.add(getH2Values().get(i).as("s" + (i + 1)));
+        }
+        src=create().select(v).asTable("src");
+      }
+      Set<Field<?>> onFields=new HashSet<Field<?>>();
+      Condition condition=null;
+      if (getH2Keys().isEmpty()) {
+        if (table instanceof UpdatableTable) {
+          UniqueKey<?> key=((UpdatableTable<?>)table).getMainKey();
+          onFields.addAll(key.getFields());
+          for (int i=0; i < key.getFields().size(); i++) {
+            @SuppressWarnings({"unchecked","rawtypes"}) Condition rhs=key.getFields().get(i).equal((Field)src.getField(i));
+            if (condition == null) {
+              condition=rhs;
+            }
+ else {
+              condition=condition.and(rhs);
+            }
+          }
+        }
+ else {
+          throw new IllegalStateException("Cannot omit KEY() clause on a non-Updatable Table");
+        }
+      }
+ else {
+        for (int i=0; i < getH2Keys().size(); i++) {
+          int matchIndex=getH2Fields().indexOf(getH2Keys().get(i));
+          if (matchIndex == -1) {
+            throw new IllegalStateException("Fields in KEY() clause must be part of the fields specified in MERGE INTO table (...)");
+          }
+          onFields.addAll(getH2Keys());
+          @SuppressWarnings({"unchecked","rawtypes"}) Condition rhs=getH2Keys().get(i).equal((Field)src.getField(matchIndex));
+          if (condition == null) {
+            condition=rhs;
+          }
+ else {
+            condition=condition.and(rhs);
+          }
+        }
+      }
+      Map<Field<?>,Field<?>> update=new LinkedHashMap<Field<?>,Field<?>>();
+      Map<Field<?>,Field<?>> insert=new LinkedHashMap<Field<?>,Field<?>>();
+      for (int i=0; i < src.getFields().size(); i++) {
+        if (!onFields.contains(getH2Fields().get(i))) {
+          update.put(getH2Fields().get(i),src.getField(i));
+        }
+        insert.put(getH2Fields().get(i),src.getField(i));
+      }
+      return create().mergeInto(table).using(src).on(condition).whenMatchedThenUpdate().set(update).whenNotMatchedThenInsert().set(insert);
+    }
+default :
+  throw new SQLDialectNotSupportedException("The H2-specific MERGE syntax is not supported in dialect : " + config.getDialect());
+}
+}

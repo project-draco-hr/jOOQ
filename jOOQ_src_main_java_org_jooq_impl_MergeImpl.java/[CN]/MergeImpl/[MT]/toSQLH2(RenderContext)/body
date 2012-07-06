@@ -1,7 +1,4 @@
 {
-  if (context.getDialect() != H2) {
-    throw new SQLDialectNotSupportedException("The H2-specific MERGE syntax is only supported in H2");
-  }
   context.keyword("merge into ").declareTables(true).sql(table).formatSeparator();
   context.sql("(");
   Util.toSQLNames(context,getH2Fields());
