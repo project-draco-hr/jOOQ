@@ -29,7 +29,7 @@
  catch (  SQLException expected) {
   }
   try {
-    rs.getObject(10);
+    rs.getObject(100);
     fail();
   }
  catch (  SQLException expected) {
