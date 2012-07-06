@@ -1,9 +1,5 @@
 {
   Result<B> result=create().selectFrom(TBook()).orderBy(TBook_ID()).fetch();
-  Result<Record> result1=create().fetch(result.intoResultSet());
-  Result<Record> result2=create().fetch(result1.intoResultSet());
-  assertEquals(result,result1);
-  assertEquals(result,result2);
   ResultSet rs=result.intoResultSet();
   check0(rs);
   assertTrue(rs.next());
