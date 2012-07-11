@@ -1,0 +1,3 @@
+{
+  return create.selectFrom(table).where(field.equal(value)).fetchOne().into(type);
+}
