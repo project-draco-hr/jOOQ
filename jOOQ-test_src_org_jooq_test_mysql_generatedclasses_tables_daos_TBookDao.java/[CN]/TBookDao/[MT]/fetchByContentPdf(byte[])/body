@@ -1,0 +1,3 @@
+{
+  return fetch(org.jooq.test.mysql.generatedclasses.tables.TBook.CONTENT_PDF,values);
+}

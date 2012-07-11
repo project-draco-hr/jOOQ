@@ -1,0 +1,3 @@
+{
+  return fetch(org.jooq.test.oracle.generatedclasses.test.tables.TDates.T_DATES.D_INT,values);
+}

@@ -1,0 +1,3 @@
+{
+  return fetch(org.jooq.test.oracle.generatedclasses.test.tables.TBook.T_BOOK.LANGUAGE_ID,values);
+}

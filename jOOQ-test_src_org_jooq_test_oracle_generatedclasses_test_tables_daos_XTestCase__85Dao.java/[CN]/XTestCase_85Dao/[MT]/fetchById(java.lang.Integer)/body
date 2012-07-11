@@ -1,0 +1,3 @@
+{
+  return fetch(org.jooq.test.oracle.generatedclasses.test.tables.XTestCase_85.X_TEST_CASE_85.ID,values);
+}

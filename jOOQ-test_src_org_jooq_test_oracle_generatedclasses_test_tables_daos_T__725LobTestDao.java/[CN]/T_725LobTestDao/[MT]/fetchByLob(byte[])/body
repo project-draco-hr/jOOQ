@@ -1,0 +1,3 @@
+{
+  return fetch(org.jooq.test.oracle.generatedclasses.test.tables.T_725LobTest.T_725_LOB_TEST.LOB,values);
+}
