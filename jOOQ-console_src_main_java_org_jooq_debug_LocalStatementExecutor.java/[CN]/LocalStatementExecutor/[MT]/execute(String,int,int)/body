@@ -82,7 +82,50 @@ System.err.println("Unknown SQL Type for \"" + columnNames[i] + "\" in "+ getCla
 columnClasses[i]=Object.class;
 }
  else {
+if (columnClassName.indexOf('.') == -1) {
+boolean isArray;
+if (columnClassName.endsWith("[]")) {
+columnClassName=columnClassName.substring(0,columnClassName.length() - 2);
+isArray=true;
+}
+ else {
+isArray=false;
+}
+if ("boolean".equals(columnClassName)) {
+columnClasses[i]=boolean.class;
+}
+ else if ("byte".equals(columnClassName)) {
+columnClasses[i]=byte.class;
+}
+ else if ("char".equals(columnClassName)) {
+columnClasses[i]=char.class;
+}
+ else if ("short".equals(columnClassName)) {
+columnClasses[i]=short.class;
+}
+ else if ("int".equals(columnClassName)) {
+columnClasses[i]=int.class;
+}
+ else if ("long".equals(columnClassName)) {
+columnClasses[i]=long.class;
+}
+ else if ("float".equals(columnClassName)) {
+columnClasses[i]=float.class;
+}
+ else if ("double".equals(columnClassName)) {
+columnClasses[i]=double.class;
+}
+ else {
+isArray=false;
 columnClasses[i]=Class.forName(columnClassName);
+}
+if (isArray) {
+columnClasses[i]=Array.newInstance(columnClasses[i],0).getClass();
+}
+}
+ else {
+columnClasses[i]=Class.forName(columnClassName);
+}
 }
 break;
 }
