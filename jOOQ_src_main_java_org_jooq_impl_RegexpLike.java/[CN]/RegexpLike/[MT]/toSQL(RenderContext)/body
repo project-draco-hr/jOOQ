@@ -1,0 +1,38 @@
+{
+switch (context.getDialect()) {
+case CUBRID:
+case H2:
+case MYSQL:
+case SQLITE:
+case SYBASE:
+{
+      context.sql(search).keyword(" regexp ").sql(pattern);
+      break;
+    }
+case HSQLDB:
+{
+    context.sql(Factory.field("{regexp_matches}({0}, {1})",Boolean.class,search,pattern));
+    break;
+  }
+case POSTGRES:
+{
+  context.sql(Factory.field("{0} ~ {1}",Boolean.class,search,pattern));
+  break;
+}
+case ORACLE:
+{
+context.sql(Factory.field("{regexp_like}({0}, {1})",Boolean.class,search,pattern));
+break;
+}
+case ASE:
+case DB2:
+case DERBY:
+case INGRES:
+case SQLSERVER:
+default :
+{
+context.sql(search).keyword(" like_regex ").sql(pattern);
+break;
+}
+}
+}
