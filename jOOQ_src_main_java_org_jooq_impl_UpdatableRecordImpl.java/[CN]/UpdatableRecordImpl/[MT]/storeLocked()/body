@@ -1,0 +1,3 @@
+{
+  return storeLockedUsing(getMainKey().getFieldsArray());
+}

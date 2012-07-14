@@ -1,0 +1,22 @@
+{
+  SimpleSelectQuery<R> select=create().selectQuery(getTable());
+  for (  Field<?> field : keys) {
+    addCondition(select,field);
+  }
+  if (create().getDialect() != SQLDialect.SQLITE) {
+    select.setForUpdate(true);
+  }
+  R record=select.fetchOne();
+  if (record == null) {
+    throw new DataChangedException("Database record no longer exists");
+  }
+  for (  Field<?> field : getFields()) {
+    Value<?> thisValue=getValue0(field);
+    Value<?> thatValue=((AbstractRecord)record).getValue0(field);
+    Object thisObject=thisValue.getOriginal();
+    Object thatObject=thatValue.getOriginal();
+    if (!StringUtils.equals(thisObject,thatObject)) {
+      throw new DataChangedException("Database record has been changed");
+    }
+  }
+}

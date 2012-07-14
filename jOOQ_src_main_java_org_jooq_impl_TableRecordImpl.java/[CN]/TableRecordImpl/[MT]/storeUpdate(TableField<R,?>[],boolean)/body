@@ -8,5 +8,8 @@
   for (  Field<?> field : keys) {
     addCondition(update,field);
   }
+  if (checkIfChanged && update.isExecutable()) {
+    checkIfChanged(keys);
+  }
   return update.execute();
 }

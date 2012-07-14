@@ -1,0 +1,41 @@
+{
+  jOOQAbstractTest.reset=false;
+  B book1=create().fetchOne(TBook(),TBook_ID().equal(1));
+  assertEquals(0,book1.storeLocked());
+  assertEquals(0,book1.storeLocked());
+  book1.setValue(TBook_TITLE(),"New Title 1");
+  assertEquals(1,book1.storeLocked());
+  assertEquals("New Title 1",create().fetchOne(TBook(),TBook_ID().equal(1)).getValue(TBook_TITLE()));
+  B book2=create().fetchOne(TBook(),TBook_ID().equal(1));
+  B book3=create().fetchOne(TBook(),TBook_ID().equal(1));
+  book2.setValue(TBook_TITLE(),"New Title 2");
+  assertEquals(1,book2.storeLocked());
+  assertEquals("New Title 2",create().fetchOne(TBook(),TBook_ID().equal(1)).getValue(TBook_TITLE()));
+  assertEquals(0,book3.storeLocked());
+  book3.setValue(TBook_TITLE(),"New Title 3");
+  try {
+    book3.storeLocked();
+    fail();
+  }
+ catch (  DataChangedException expected) {
+  }
+  assertEquals("New Title 2",create().fetchOne(TBook(),TBook_ID().equal(1)).getValue(TBook_TITLE()));
+  book3.refresh();
+  book3.setValue(TBook_TITLE(),"New Title 3");
+  assertEquals(1,book3.storeLocked());
+  assertEquals("New Title 3",create().fetchOne(TBook(),TBook_ID().equal(1)).getValue(TBook_TITLE()));
+  B book4=create().fetchOne(TBook(),TBook_ID().equal(1));
+  B book5=create().fetchOne(TBook(),TBook_ID().equal(1));
+  assertEquals(1,book4.delete());
+  assertEquals(0,book5.storeLocked());
+  book5.setValue(TBook_TITLE(),"New Title 5");
+  try {
+    book5.storeLocked();
+    fail();
+  }
+ catch (  DataChangedException expected) {
+  }
+  assertEquals(1,book4.storeLocked());
+  assertEquals(1,book5.storeLocked());
+  assertEquals("New Title 5",create().fetchOne(TBook(),TBook_ID().equal(1)).getValue(TBook_TITLE()));
+}
