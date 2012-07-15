@@ -11,7 +11,7 @@
   }
   int result=0;
   if (executeUpdate) {
-    result=storeUpdate(keys,checkLocked);
+    result=storeUpdate(keys,checkIfChanged);
   }
  else {
     result=storeInsert();

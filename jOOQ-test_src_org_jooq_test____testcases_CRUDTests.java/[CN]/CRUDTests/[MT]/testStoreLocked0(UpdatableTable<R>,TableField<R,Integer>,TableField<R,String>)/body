@@ -25,7 +25,7 @@
   assertEquals("New Title 3",create().fetchOne(table,id.equal(1)).getValue(string));
   R record4=create().fetchOne(table,id.equal(1));
   R record5=create().fetchOne(table,id.equal(1));
-  assertEquals(1,record4.delete());
+  assertEquals(1,record4.deleteLocked());
   assertEquals(0,record5.storeLocked());
   record5.setValue(string,"New Title 5");
   try {
@@ -37,4 +37,18 @@
   assertEquals(1,record4.storeLocked());
   assertEquals(1,record5.storeLocked());
   assertEquals("New Title 5",create().fetchOne(table,id.equal(1)).getValue(string));
+  try {
+    record4.deleteLocked();
+    fail();
+  }
+ catch (  DataChangedException expected) {
+  }
+  record4.refresh();
+  assertEquals(1,record4.deleteLocked());
+  try {
+    record5.deleteLocked();
+    fail();
+  }
+ catch (  DataChangedException expected) {
+  }
 }

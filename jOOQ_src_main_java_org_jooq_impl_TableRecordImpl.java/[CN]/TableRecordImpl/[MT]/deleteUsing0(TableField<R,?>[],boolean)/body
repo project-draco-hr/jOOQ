@@ -1,0 +1,17 @@
+{
+  try {
+    DeleteQuery<R> delete=create().deleteQuery(getTable());
+    for (    Field<?> field : keys) {
+      addCondition(delete,field);
+    }
+    if (checkIfChanged && delete.isExecutable()) {
+      checkIfChanged(keys);
+    }
+    return delete.execute();
+  }
+  finally {
+    for (    Field<?> field : getFields()) {
+      getValue0(field).setChanged(true);
+    }
+  }
+}
