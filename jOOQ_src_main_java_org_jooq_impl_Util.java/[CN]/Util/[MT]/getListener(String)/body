@@ -1,10 +1,6 @@
 {
   try {
-    Class<?> type=EXECUTE_LISTENERS.get(name);
-    if (type == null) {
-      type=Class.forName(name);
-      EXECUTE_LISTENERS.put(name,type);
-    }
+    Class<?> type=Thread.currentThread().getContextClassLoader().loadClass(name);
     return (ExecuteListener)Reflect.accessible(type.getDeclaredConstructor()).newInstance();
   }
  catch (  Exception e) {
