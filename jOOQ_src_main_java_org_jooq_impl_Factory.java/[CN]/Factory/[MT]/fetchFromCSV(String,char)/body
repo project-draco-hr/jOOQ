@@ -7,6 +7,13 @@
  catch (  IOException e) {
     throw new DataAccessException("Could not read the CSV string",e);
   }
+ finally {
+    try {
+      reader.close();
+    }
+ catch (    IOException ignore) {
+    }
+  }
   FieldList fields=new FieldList();
   if (all.size() == 0) {
     return new ResultImpl<Record>(this,fields);
