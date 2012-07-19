@@ -1,0 +1,3 @@
+{
+  super(dataSource,SQLDialect.DB2,settings);
+}
