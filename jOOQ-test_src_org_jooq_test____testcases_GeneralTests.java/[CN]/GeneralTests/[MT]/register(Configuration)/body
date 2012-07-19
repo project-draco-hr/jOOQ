@@ -1,5 +1,5 @@
 {
-  ConfigurationRegistry.setProvider(new ConfigurationProvider(){
+  org.jooq.ConfigurationRegistry.setProvider(new org.jooq.ConfigurationProvider(){
     @Override public Configuration provideFor(    Configuration c){
       return configuration;
     }

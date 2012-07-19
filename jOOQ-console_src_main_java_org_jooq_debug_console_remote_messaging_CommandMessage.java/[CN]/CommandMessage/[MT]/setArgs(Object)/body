@@ -1,6 +1,6 @@
 {
-  if (args.length == 0) {
-    args=null;
+  if (arguments.length == 0) {
+    arguments=null;
   }
-  this.args=args;
+  this.args=arguments;
 }

@@ -1,4 +1,4 @@
 {
-  setArgs(args);
+  setArgs(arguments);
   asyncSend(communicationInterface);
 }
