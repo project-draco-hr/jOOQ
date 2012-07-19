@@ -4,26 +4,15 @@ case ASE:
 case SQLSERVER:
 case SYBASE:
 {
-      if (character == null) {
-        return Factory.concat(field,Factory.repeat(" ",length.sub(Factory.length(field))));
-      }
- else {
-        return Factory.concat(field,Factory.repeat(character,length.sub(Factory.length(field))));
-      }
+      return Factory.concat(field,Factory.repeat(character,length.sub(Factory.length(field))));
     }
+case SQLITE:
+{
+    return Factory.field("{0} || replace(replace(substr(quote(zeroblob(({1} + 1) / 2)), 3, ({2} - length({3}))), '''', ''), '0', {4})",String.class,field,length,length,field,character);
+  }
 default :
 {
-    if (character == null) {
-      if (configuration.getDialect() == SQLDialect.MYSQL) {
-        return function("rpad",SQLDataType.VARCHAR,field,length,val(" "));
-      }
- else {
-        return function("rpad",SQLDataType.VARCHAR,field,length);
-      }
-    }
- else {
-      return function("rpad",SQLDataType.VARCHAR,field,length,character);
-    }
-  }
+  return function("rpad",SQLDataType.VARCHAR,field,length,character);
+}
 }
 }

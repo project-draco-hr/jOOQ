@@ -50,7 +50,6 @@ break;
 }
 switch (getDialect()) {
 case DERBY:
-case SQLITE:
 log.info("SKIPPING","RPAD and LPAD functions");
 break;
 default :

@@ -2,5 +2,5 @@
   super("rpad",SQLDataType.VARCHAR,field,length,character);
   this.field=field;
   this.length=length;
-  this.character=character;
+  this.character=(character == null ? inline(" ") : character);
 }
