@@ -3,9 +3,11 @@ switch (configuration.getDialect()) {
 case INGRES:
 case ORACLE:
     return Factory.rpad(string,Factory.length(string).mul(count),string);
+case SQLITE:
+  return Factory.field("replace(substr(quote(zeroblob(({0} + 1) / 2)), 3, {1}), '0', {2})",String.class,count,count,string);
 case ASE:
 case SQLSERVER:
-  return function("replicate",SQLDataType.VARCHAR,string,count);
+return function("replicate",SQLDataType.VARCHAR,string,count);
 default :
 return function("repeat",SQLDataType.VARCHAR,string,count);
 }

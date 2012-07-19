@@ -72,7 +72,6 @@ assertEquals("eorge",result.getValue(substring(TAuthor_FIRST_NAME(),2)));
 assertEquals("eo",result.getValue(substring(TAuthor_FIRST_NAME(),2,2)));
 switch (getDialect()) {
 case DERBY:
-case SQLITE:
 log.info("SKIPPING","REPEAT function");
 break;
 default :
