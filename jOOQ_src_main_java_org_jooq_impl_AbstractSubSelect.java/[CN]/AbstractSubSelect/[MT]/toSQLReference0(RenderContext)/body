@@ -53,6 +53,6 @@ if (!(getHaving().getWhere() instanceof TrueCondition)) {
 context.formatSeparator().keyword("having ").sql(getHaving());
 }
 if (!getOrderBy().isEmpty()) {
-context.formatSeparator().keyword("order by ").sql(getOrderBy());
+context.formatSeparator().keyword("order ").keyword(orderBySiblings ? "siblings " : "").keyword("by ").sql(getOrderBy());
 }
 }

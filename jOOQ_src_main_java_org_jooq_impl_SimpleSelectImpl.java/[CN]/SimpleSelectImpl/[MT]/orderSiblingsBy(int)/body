@@ -1,0 +1,5 @@
+{
+  getQuery().addOrderBy(fieldIndexes);
+  getQuery().setOrderBySiblings(true);
+  return this;
+}
