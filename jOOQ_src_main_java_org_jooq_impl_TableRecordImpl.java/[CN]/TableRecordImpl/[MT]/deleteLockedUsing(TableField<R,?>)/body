@@ -1,3 +1,0 @@
-{
-  return deleteUsing0(keys,true);
-}

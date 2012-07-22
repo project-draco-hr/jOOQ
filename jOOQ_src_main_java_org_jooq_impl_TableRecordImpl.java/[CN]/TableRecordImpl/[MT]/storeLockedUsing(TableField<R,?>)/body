@@ -1,3 +1,0 @@
-{
-  return storeUsing0(keys,true);
-}
