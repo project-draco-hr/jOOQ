@@ -1,9 +1,0 @@
-{
-  List<Attachable> result=new ArrayList<Attachable>();
-  for (  QueryPart item : list) {
-    if (item != null) {
-      result.add(item);
-    }
-  }
-  return result;
-}

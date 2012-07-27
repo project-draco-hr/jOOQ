@@ -1,3 +1,0 @@
-{
-  return getAttachables(Arrays.asList(list));
-}
