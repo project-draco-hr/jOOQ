@@ -1,3 +1,0 @@
-{
-  return getAttachables(dividend,divisor,condition,returning);
-}

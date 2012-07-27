@@ -1,8 +1,0 @@
-{
-  if (alias != null) {
-    return getAttachables(alias,fields);
-  }
- else {
-    return getAttachables(fields);
-  }
-}

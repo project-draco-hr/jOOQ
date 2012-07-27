@@ -1,3 +1,0 @@
-{
-  return getAttachables(table,aggregateFunctions,on,in);
-}

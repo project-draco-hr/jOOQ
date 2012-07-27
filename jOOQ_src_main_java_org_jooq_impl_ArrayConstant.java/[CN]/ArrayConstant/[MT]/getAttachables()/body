@@ -1,6 +1,0 @@
-{
-  List<Attachable> result=new ArrayList<Attachable>();
-  result.add(array);
-  result.addAll(getAttachables(array));
-  return result;
-}

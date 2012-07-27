@@ -1,3 +1,0 @@
-{
-  return getAttachables(arguments,keepDenseRankOrderBy,withinGroupOrderBy,partitionBy,orderBy);
-}
