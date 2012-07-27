@@ -1,0 +1,6 @@
+{
+  if (delegate instanceof AttachableInternal) {
+    return ((AttachableInternal)delegate).getConfiguration();
+  }
+  return super.getConfiguration();
+}

@@ -1,4 +1,3 @@
 {
-  super(delegate.internalAPI(AttachableInternal.class).getConfiguration());
   this.delegate=delegate;
 }
