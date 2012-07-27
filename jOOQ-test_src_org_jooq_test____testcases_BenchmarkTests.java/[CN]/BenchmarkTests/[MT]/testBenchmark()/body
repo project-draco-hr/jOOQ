@@ -1,0 +1,13 @@
+{
+  Factory create=create();
+  create.getSettings().setExecuteLogging(false);
+  create.getSettings().setExecuteListeners(Collections.<String>emptyList());
+  StopWatch watch=new StopWatch();
+  watch.splitInfo("Benchmark start");
+  testBenchmarkFullExecution(create);
+  watch.splitInfo("Full re-execution");
+  testBenchmarkReuseSelect(create);
+  watch.splitInfo("Reuse select");
+  testBenchmarkReuseSQLString(create);
+  watch.splitInfo("Reuse SQL String");
+}

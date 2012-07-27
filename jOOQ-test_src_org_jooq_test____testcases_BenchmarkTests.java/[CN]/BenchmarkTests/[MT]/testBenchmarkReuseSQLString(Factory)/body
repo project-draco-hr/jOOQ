@@ -1,0 +1,10 @@
+{
+  String sql=createSelect(create).getSQL(false);
+  PreparedStatement pst=getConnection().prepareStatement(sql);
+  pst.setLong(1,1);
+  pst.setString(2,RANDOM);
+  for (int i=0; i < REPETITIONS; i++) {
+    pst.executeQuery();
+  }
+  pst.close();
+}

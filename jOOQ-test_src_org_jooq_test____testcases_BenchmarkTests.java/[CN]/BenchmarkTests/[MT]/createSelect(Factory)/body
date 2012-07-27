@@ -1,0 +1,3 @@
+{
+  return create.select().from(TBook()).where(TBook_ID().equal(1)).and(TBook_TITLE().isNull().or(TBook_TITLE().notEqual(RANDOM)));
+}
