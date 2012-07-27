@@ -1,10 +1,10 @@
 {
-  RenderContext local=create(configuration).renderContext();
+  RenderContext local=create(c).renderContext();
   toSQLQualifiedName(local);
   Field<?>[] array=new Field<?>[getInParameters().size()];
   int i=0;
   for (  Parameter<?> p : getInParameters()) {
-    if (SQLDialect.POSTGRES == configuration.getDialect() && isOverloaded()) {
+    if (SQLDialect.POSTGRES == c.getDialect() && isOverloaded()) {
       array[i]=getInValues().get(p).cast(p.getType());
     }
  else {

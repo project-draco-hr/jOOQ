@@ -1,3 +1,6 @@
 {
-  attachable.attach(configuration);
+  this.configuration=c;
+  for (  Attachable attachable : getAttachables()) {
+    attachable.attach(c);
+  }
 }

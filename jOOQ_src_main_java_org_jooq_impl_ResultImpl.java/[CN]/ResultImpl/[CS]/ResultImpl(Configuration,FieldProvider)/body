@@ -1,5 +1,5 @@
 {
   this.fields=fields;
   this.records=new ArrayList<R>();
-  this.attachable=new AttachableImpl(this,configuration);
+  this.configuration=configuration;
 }

@@ -1,5 +1,4 @@
 {
-  Configuration configuration=attachable.getConfiguration();
   ExecuteContext ctx=new DefaultExecuteContext(configuration,this);
   ExecuteListener listener=new ExecuteListeners(ctx);
   try {

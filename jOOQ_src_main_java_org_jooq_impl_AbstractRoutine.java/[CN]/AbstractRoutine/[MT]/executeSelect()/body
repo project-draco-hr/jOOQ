@@ -1,5 +1,5 @@
 {
   final Field<T> field=asField();
-  results.put(returnParameter,create(attachable).select(field).fetchOne(field));
+  results.put(returnParameter,create(configuration).select(field).fetchOne(field));
   return 0;
 }

@@ -1,6 +1,5 @@
 {
   super(name,schema);
-  this.attachable=new AttachableImpl(this);
   this.parameterIndexes=new HashMap<Parameter<?>,Integer>();
   this.pkg=pkg;
   this.allParameters=new ArrayList<Parameter<?>>();

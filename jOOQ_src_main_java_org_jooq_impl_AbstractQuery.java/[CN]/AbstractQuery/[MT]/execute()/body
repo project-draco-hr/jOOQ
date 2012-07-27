@@ -1,12 +1,12 @@
 {
   if (isExecutable()) {
-    Configuration configuration=org.jooq.ConfigurationRegistry.provideFor(getConfiguration());
-    if (configuration == null) {
-      configuration=getConfiguration();
+    Configuration c=org.jooq.ConfigurationRegistry.provideFor(getConfiguration());
+    if (c == null) {
+      c=getConfiguration();
     }
-    ExecuteContext ctx=new DefaultExecuteContext(configuration,this);
+    ExecuteContext ctx=new DefaultExecuteContext(c,this);
     ExecuteListener listener=new ExecuteListeners(ctx);
-    Connection connection=configuration.getConnection();
+    Connection connection=c.getConnection();
     if (connection == null) {
       throw new DetachedException("Cannot execute query. No Connection configured");
     }
@@ -18,9 +18,9 @@
       listener.prepareStart(ctx);
       prepare(ctx);
       listener.prepareEnd(ctx);
-      if (executePreparedStatements(getConfiguration().getSettings())) {
+      if (executePreparedStatements(c.getSettings())) {
         listener.bindStart(ctx);
-        create(configuration).bind(this,ctx.statement());
+        create(c).bind(this,ctx.statement());
         listener.bindEnd(ctx);
       }
       result=execute(ctx,listener);

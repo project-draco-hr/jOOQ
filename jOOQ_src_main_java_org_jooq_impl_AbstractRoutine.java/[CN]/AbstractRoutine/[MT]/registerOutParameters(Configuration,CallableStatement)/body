@@ -2,8 +2,8 @@
   for (  Parameter<?> parameter : getParameters()) {
     if (parameter.equals(getReturnParameter()) || getOutParameters().contains(parameter)) {
       int index=parameterIndexes.get(parameter);
-      int sqlType=parameter.getDataType().getDataType(configuration).getSQLType();
-switch (configuration.getDialect()) {
+      int sqlType=parameter.getDataType().getDataType(c).getSQLType();
+switch (c.getDialect()) {
 case ORACLE:
 {
           if (sqlType == Types.STRUCT) {
@@ -11,7 +11,7 @@ case ORACLE:
             statement.registerOutParameter(index,Types.STRUCT,record.getSQLTypeName());
           }
  else           if (sqlType == Types.ARRAY) {
-            ArrayRecord<?> record=Util.newArrayRecord((Class<? extends ArrayRecord<?>>)parameter.getType(),configuration);
+            ArrayRecord<?> record=Util.newArrayRecord((Class<? extends ArrayRecord<?>>)parameter.getType(),c);
             statement.registerOutParameter(index,Types.ARRAY,record.getName());
           }
  else {
