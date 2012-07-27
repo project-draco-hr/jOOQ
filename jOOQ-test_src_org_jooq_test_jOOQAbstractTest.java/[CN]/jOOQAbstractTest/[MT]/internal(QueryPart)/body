@@ -1,3 +1,0 @@
-{
-  return q.internalAPI(QueryPartInternal.class);
-}

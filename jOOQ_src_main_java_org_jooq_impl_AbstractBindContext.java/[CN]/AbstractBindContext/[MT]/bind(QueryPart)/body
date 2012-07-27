@@ -1,6 +1,6 @@
 {
   if (part != null) {
-    QueryPartInternal internal=part.internalAPI(QueryPartInternal.class);
+    QueryPartInternal internal=(QueryPartInternal)part;
     if (declareFields() && !internal.declaresFields()) {
       declareFields(false);
       bindInternal(internal);
