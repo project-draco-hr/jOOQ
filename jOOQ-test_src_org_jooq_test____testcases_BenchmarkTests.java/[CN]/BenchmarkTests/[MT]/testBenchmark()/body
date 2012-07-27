@@ -5,7 +5,6 @@
   testBenchmarkFullExecution(create,1);
   testBenchmarkReuseSelect(create,1);
   testBenchmarkReuseSQLString(create,1);
-  System.in.read();
   StopWatch watch=new StopWatch();
   watch.splitInfo("Benchmark start");
   testBenchmarkFullExecution(create,REPETITIONS);
