@@ -86,7 +86,9 @@
     stream.writeString(value.toString());
   }
  else   if (ArrayRecord.class.isAssignableFrom(type)) {
-    stream.writeArray(((ArrayRecord<?>)value).createArray());
+    Connection connection=getDriverConnection(DefaultBindContext.localConfiguration.get());
+    ArrayRecord<?> arrayRecord=(ArrayRecord<?>)value;
+    stream.writeArray(on(connection).call("createARRAY",arrayRecord.getName(),arrayRecord.get()).<Array>get());
   }
  else   if (EnumType.class.isAssignableFrom(type)) {
     stream.writeString(((EnumType)value).getLiteral());

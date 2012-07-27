@@ -175,7 +175,13 @@ Object primaryKey=((MasterDataType<?>)value).getPrimaryKey();
 bindValue(primaryKey,primaryKey.getClass());
 }
  else {
+try {
+localConfiguration.set(this);
 stmt.setObject(nextIndex(),value);
+}
+  finally {
+localConfiguration.remove();
+}
 }
 return this;
 }

@@ -10,7 +10,6 @@
     if (connection == null) {
       throw new DetachedException("Cannot execute query. No Connection configured");
     }
-    attach(configuration);
     int result=0;
     try {
       listener.renderStart(ctx);
