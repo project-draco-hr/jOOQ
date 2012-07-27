@@ -1,4 +1,8 @@
 {
   super(configuration);
+  Settings settings=configuration.getSettings();
   this.sql=new StringBuilder();
+  this.renderKeywordStyle=settings.getRenderKeywordStyle();
+  this.renderFormatted=Boolean.TRUE.equals(settings.isRenderFormatted());
+  this.renderNameStyle=settings.getRenderNameStyle();
 }

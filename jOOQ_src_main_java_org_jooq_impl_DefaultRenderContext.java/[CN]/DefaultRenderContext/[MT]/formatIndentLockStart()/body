@@ -1,5 +1,5 @@
 {
-  if (Boolean.TRUE.equals(getSettings().isRenderFormatted())) {
+  if (renderFormatted) {
     indentLock.push(indent);
     String[] lines=sql.toString().split("[\\n\\r]");
     indent=lines[lines.length - 1].length();
