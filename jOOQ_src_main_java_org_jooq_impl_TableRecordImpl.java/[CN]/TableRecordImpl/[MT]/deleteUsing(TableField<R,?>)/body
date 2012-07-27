@@ -1,14 +1,18 @@
 {
-  boolean checkIfChanged=isExecuteWithOptimisticLocking();
   try {
     DeleteQuery<R> delete=create().deleteQuery(getTable());
-    for (    Field<?> field : keys) {
-      addCondition(delete,field);
+    addConditions(delete,keys);
+    if (isExecuteWithOptimisticLocking()) {
+      if (isTimestampOrVersionAvailable()) {
+        addConditionForVersionAndTimestamp(delete);
+      }
+ else {
+        checkIfChanged(keys);
+      }
     }
-    if (checkIfChanged && delete.isExecutable()) {
-      checkIfChanged(keys);
-    }
-    return delete.execute();
+    int result=delete.execute();
+    checkIfChanged(result,null,null);
+    return result;
   }
   finally {
     for (    Field<?> field : getFields()) {

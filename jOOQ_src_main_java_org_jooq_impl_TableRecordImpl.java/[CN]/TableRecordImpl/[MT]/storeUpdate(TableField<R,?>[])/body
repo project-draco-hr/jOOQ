@@ -1,0 +1,19 @@
+{
+  UpdateQuery<R> update=create().updateQuery(getTable());
+  addChangedValues(update);
+  addConditions(update,keys);
+  if (!update.isExecutable())   return 0;
+  BigInteger version=addRecordVersion(update);
+  Timestamp timestamp=addRecordTimestamp(update);
+  if (isExecuteWithOptimisticLocking()) {
+    if (isTimestampOrVersionAvailable()) {
+      addConditionForVersionAndTimestamp(update);
+    }
+ else {
+      checkIfChanged(keys);
+    }
+  }
+  int result=update.execute();
+  checkIfChanged(result,version,timestamp);
+  return result;
+}

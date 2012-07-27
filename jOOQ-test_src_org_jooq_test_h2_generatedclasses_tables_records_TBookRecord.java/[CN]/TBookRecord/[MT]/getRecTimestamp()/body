@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.test.h2.generatedclasses.tables.TBook.REC_TIMESTAMP);
+}

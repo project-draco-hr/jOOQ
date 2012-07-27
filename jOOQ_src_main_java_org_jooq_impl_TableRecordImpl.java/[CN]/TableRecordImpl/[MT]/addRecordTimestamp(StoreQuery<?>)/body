@@ -1,0 +1,11 @@
+{
+  Timestamp result=null;
+  if (isTimestampOrVersionAvailable()) {
+    TableField<R,? extends java.util.Date> timestamp=getUpdatableTable().getRecordTimestamp();
+    if (timestamp != null) {
+      result=new Timestamp(System.currentTimeMillis());
+      addValue(store,timestamp,result);
+    }
+  }
+  return result;
+}

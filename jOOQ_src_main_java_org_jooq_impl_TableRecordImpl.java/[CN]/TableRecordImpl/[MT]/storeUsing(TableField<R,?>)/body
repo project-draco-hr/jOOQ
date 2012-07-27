@@ -1,5 +1,4 @@
 {
-  boolean checkIfChanged=isExecuteWithOptimisticLocking();
   boolean executeUpdate=false;
   for (  TableField<R,?> field : keys) {
     if (getValue(field) == null || getValue0(field).isChanged()) {
@@ -12,7 +11,7 @@
   }
   int result=0;
   if (executeUpdate) {
-    result=storeUpdate(keys,checkIfChanged);
+    result=storeUpdate(keys);
   }
  else {
     result=storeInsert();

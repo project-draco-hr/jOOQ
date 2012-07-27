@@ -1,0 +1,7 @@
+{
+  if (getTable() instanceof UpdatableTable) {
+    UpdatableTable<R> table=(UpdatableTable<R>)getTable();
+    return table.getRecordTimestamp() != null || table.getRecordVersion() != null;
+  }
+  return false;
+}

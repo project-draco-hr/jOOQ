@@ -1,0 +1,7 @@
+{
+  for (  Field<?> field : getFields()) {
+    if (getValue0(field).isChanged()) {
+      addValue(query,field);
+    }
+  }
+}

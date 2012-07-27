@@ -147,6 +147,48 @@
       out.println("\t}");
     }
   }
+  if (baseClass == UpdatableTableImpl.class) {
+    patternLoop:     for (    String pattern : database.getRecordVersionFields()) {
+      for (      ColumnDefinition column : table.getColumns()) {
+        if ((column.getName().matches(pattern.trim()) || column.getQualifiedName().matches(pattern.trim()))) {
+          out.println();
+          out.println("\t@Override");
+          out.print("\tpublic ");
+          out.print(TableField.class);
+          out.print("<");
+          out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
+          out.print(", ");
+          out.print(getJavaType(column.getType()));
+          out.println("> getRecordVersion() {");
+          out.print("\t\treturn ");
+          out.print(strategy.getFullJavaIdentifier(column));
+          out.println(";");
+          out.println("\t}");
+          break patternLoop;
+        }
+      }
+    }
+    timestampLoop:     for (    String pattern : database.getRecordTimestampFields()) {
+      for (      ColumnDefinition column : table.getColumns()) {
+        if ((column.getName().matches(pattern.trim()) || column.getQualifiedName().matches(pattern.trim()))) {
+          out.println();
+          out.println("\t@Override");
+          out.print("\tpublic ");
+          out.print(TableField.class);
+          out.print("<");
+          out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
+          out.print(", ");
+          out.print(getJavaType(column.getType()));
+          out.println("> getRecordTimestamp() {");
+          out.print("\t\treturn ");
+          out.print(strategy.getFullJavaIdentifier(column));
+          out.println(";");
+          out.println("\t}");
+          break timestampLoop;
+        }
+      }
+    }
+  }
   if (generateInstanceFields()) {
     out.println();
     out.println("\t@Override");

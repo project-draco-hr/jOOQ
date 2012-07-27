@@ -1,0 +1,3 @@
+{
+  return TBook.REC_VERSION;
+}

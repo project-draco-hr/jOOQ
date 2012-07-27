@@ -1,0 +1,8 @@
+{
+  if (result > 0) {
+    setRecordVersionAndTimestamp(version,timestamp);
+  }
+ else   if (isExecuteWithOptimisticLocking()) {
+    throw new DataChangedException("Database record has been changed or doesn't exist any longer");
+  }
+}

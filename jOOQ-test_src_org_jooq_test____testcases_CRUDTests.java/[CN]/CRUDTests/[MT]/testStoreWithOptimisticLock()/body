@@ -1,0 +1,6 @@
+{
+  jOOQAbstractTest.reset=false;
+  testStoreWithOptimisticLock0(TBook(),TBook_ID(),TBook_TITLE());
+  create().executeDelete(TBook());
+  testStoreWithOptimisticLock0(TAuthor(),TAuthor_ID(),TAuthor_LAST_NAME());
+}

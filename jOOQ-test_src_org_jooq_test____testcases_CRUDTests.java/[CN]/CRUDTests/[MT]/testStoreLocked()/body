@@ -1,6 +1,0 @@
-{
-  jOOQAbstractTest.reset=false;
-  testStoreLocked0(TBook(),TBook_ID(),TBook_TITLE());
-  create().executeDelete(TBook());
-  testStoreLocked0(TAuthor(),TAuthor_ID(),TAuthor_LAST_NAME());
-}

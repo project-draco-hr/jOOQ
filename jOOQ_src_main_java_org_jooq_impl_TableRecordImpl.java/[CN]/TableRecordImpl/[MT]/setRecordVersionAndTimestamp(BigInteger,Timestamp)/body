@@ -1,0 +1,10 @@
+{
+  if (version != null) {
+    TableField<R,?> field=getUpdatableTable().getRecordVersion();
+    setValue0(field,new Value<Object>(field.getDataType().convert(version)));
+  }
+  if (timestamp != null) {
+    TableField<R,?> field=getUpdatableTable().getRecordTimestamp();
+    setValue0(field,new Value<Object>(field.getDataType().convert(timestamp)));
+  }
+}
