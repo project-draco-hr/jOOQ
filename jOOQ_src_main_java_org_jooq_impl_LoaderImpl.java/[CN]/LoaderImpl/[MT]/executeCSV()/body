@@ -3,6 +3,11 @@
   try {
     String[] row=null;
     rowloop:     while ((row=reader.readNext()) != null) {
+      for (int i=0; i < row.length; i++) {
+        if (StringUtils.equals(nullString,row[i])) {
+          row[i]=null;
+        }
+      }
       processed++;
       InsertQuery<R> insert=create.insertQuery(table);
       for (int i=0; i < row.length; i++) {

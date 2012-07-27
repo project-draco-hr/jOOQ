@@ -1,0 +1,20 @@
+{
+  StringBuilder sb=new StringBuilder();
+  String sep1="";
+  for (  Field<?> field : getFields()) {
+    sb.append(sep1);
+    sb.append(formatCSV0(field.getName(),""));
+    sep1=Character.toString(delimiter);
+  }
+  sb.append("\n");
+  for (  Record record : this) {
+    String sep2="";
+    for (    Field<?> field : getFields()) {
+      sb.append(sep2);
+      sb.append(formatCSV0(record.getValue(field),nullString));
+      sep2=Character.toString(delimiter);
+    }
+    sb.append("\n");
+  }
+  return sb.toString();
+}

@@ -1,0 +1,4 @@
+{
+  this.nullString=n;
+  return this;
+}

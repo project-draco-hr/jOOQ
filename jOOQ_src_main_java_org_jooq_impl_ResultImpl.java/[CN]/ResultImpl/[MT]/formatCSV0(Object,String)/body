@@ -1,6 +1,11 @@
 {
   if (value == null || "".equals(value)) {
-    return "\"\"";
+    if (StringUtils.isEmpty(nullString)) {
+      return "\"\"";
+    }
+ else {
+      return nullString;
+    }
   }
   String result=format0(value);
   if (StringUtils.containsAny(result,',',';','\t','"','\n','\r','\'')) {
