@@ -1,0 +1,3 @@
+{
+  this.generateImmutablePojos=generateImmutablePojos;
+}

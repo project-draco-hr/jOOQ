@@ -11,7 +11,7 @@
   assertEquals(1,on(id1).get("id"));
   assertEquals("George",on(id1).get("firstName"));
   assertEquals("Orwell",on(id1).get("lastName"));
-  assertTrue(TAuthorDao().exists(on(type).create().set("id",1).<AP>get()));
+  assertTrue(TAuthorDao().exists(id1));
   assertTrue(TAuthorDao().existsById(1));
   assertNull(TAuthorDao().findById(17));
   List<AP> authors1=on(TAuthorDao()).call("fetchByLastName",(Object)new String[]{"Orwell","George"}).<List<AP>>get();
@@ -27,7 +27,13 @@
   assertEquals(2,on(authors2.get(1)).get("id"));
   assertEquals("Paulo",on(authors2.get(1)).get("firstName"));
   assertEquals("Coelho",on(authors2.get(1)).get("lastName"));
-  AP author=on(type).create().set("id",3).set("lastName","Hesse").<AP>get();
+  AP author=null;
+  try {
+    author=on(type).create().set("id",3).set("lastName","Hesse").<AP>get();
+  }
+ catch (  ReflectException e) {
+    author=(AP)type.getConstructors()[0].newInstance(3,null,"Hesse",null,null,null);
+  }
   TAuthorDao().insert(author);
   assertEquals(3,TAuthorDao().count());
   AP id3=TAuthorDao().findById(3);
@@ -43,7 +49,13 @@
   assertEquals("Hesse",on(id3).get("lastName"));
   TAuthorDao().delete(author);
   assertEquals(2,TAuthorDao().count());
-  List<AP> authors=asList(on(type).create().set("id",4).set("lastName","Koontz").<AP>get(),on(type).create().set("id",5).set("lastName","Hitchcock").<AP>get());
+  List<AP> authors=null;
+  try {
+    authors=asList(on(type).create().set("id",4).set("lastName","Koontz").<AP>get(),on(type).create().set("id",5).set("lastName","Hitchcock").<AP>get());
+  }
+ catch (  ReflectException e) {
+    authors=asList((AP)type.getConstructors()[0].newInstance(4,null,"Koontz",null,null,null),(AP)type.getConstructors()[0].newInstance(5,null,"Hitchcock",null,null,null));
+  }
   TAuthorDao().insert(authors);
   AP id4=TAuthorDao().findById(4);
   AP id5=TAuthorDao().findById(5);
