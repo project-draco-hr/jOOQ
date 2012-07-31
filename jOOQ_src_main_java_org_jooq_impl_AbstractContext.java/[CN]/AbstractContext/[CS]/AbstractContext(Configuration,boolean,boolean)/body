@@ -1,5 +1,0 @@
-{
-  this(configuration);
-  this.declareFields=declareFields;
-  this.declareTables=declareTables;
-}

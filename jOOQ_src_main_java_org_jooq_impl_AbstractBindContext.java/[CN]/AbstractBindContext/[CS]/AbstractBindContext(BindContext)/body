@@ -1,5 +1,0 @@
-{
-  this((Configuration)context);
-  declareFields(context.declareFields());
-  declareTables(context.declareTables());
-}
