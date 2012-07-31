@@ -2,8 +2,9 @@
   Field<Integer> count=count();
   assertEquals(1,(int)create().select(count).from(TBook()).where(TBook_ID().in(Collections.nCopies(999,1))).fetchOne(count));
 switch (getDialect()) {
+case INGRES:
 case SQLITE:
-    log.info("SKIPPING","SQLite can't handle more than 999 variables");
+    log.info("SKIPPING","SQLite/Ingres can't handle more than 999 variables");
   break;
 default :
 assertEquals(1,(int)create().select(count).from(TBook()).where(TBook_ID().in(Collections.nCopies(1000,1))).fetchOne(count));
