@@ -6,7 +6,6 @@ case DB2:
 case DERBY:
 case H2:
 case HSQLDB:
-case INGRES:
 case CUBRID:
 case POSTGRES:
 case SYBASE:

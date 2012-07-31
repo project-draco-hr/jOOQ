@@ -11,11 +11,20 @@ case SQLSERVER:
         break;
       }
     }
+case INGRES:
+{
+    if (getArguments().length == 2) {
+      return field("{substring}({0}, {cast}({1} {as integer}))",SQLDataType.VARCHAR,getArguments());
+    }
+ else {
+      return field("{substring}({0}, {cast}({1} {as integer}), {cast}({2} {as integer}))",SQLDataType.VARCHAR,getArguments());
+    }
+  }
 case DB2:
 case DERBY:
 case ORACLE:
 case SQLITE:
-  functionName="substr";
+functionName="substr";
 break;
 }
 return function(functionName,SQLDataType.VARCHAR,getArguments());
