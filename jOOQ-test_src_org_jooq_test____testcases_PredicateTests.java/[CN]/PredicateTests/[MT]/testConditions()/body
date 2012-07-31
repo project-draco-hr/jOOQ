@@ -16,6 +16,7 @@
   assertEquals(Arrays.asList(2,3,4),create().select().from(TBook()).where(val(2).in(TBook_ID(),TBook_AUTHOR_ID())).orderBy(TBook_ID()).fetch(TBook_ID()));
 switch (getDialect()) {
 case SQLITE:
+case INGRES:
     log.info("SKIPPING","= { ALL | ANY | SOME } tests");
   break;
 default :
