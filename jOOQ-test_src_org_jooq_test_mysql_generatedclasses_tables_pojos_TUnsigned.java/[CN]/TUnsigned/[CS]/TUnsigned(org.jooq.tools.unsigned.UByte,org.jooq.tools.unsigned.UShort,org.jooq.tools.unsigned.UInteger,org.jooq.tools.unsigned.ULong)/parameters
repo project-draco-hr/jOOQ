@@ -1,0 +1,4 @@
+org.jooq.tools.unsigned.UByte uByte
+org.jooq.tools.unsigned.UShort uShort
+org.jooq.tools.unsigned.UInteger uInt
+org.jooq.tools.unsigned.ULong uLong

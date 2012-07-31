@@ -1,0 +1,9 @@
+{
+  this.id=id;
+  this.stringArray=stringArray;
+  this.numberArray=numberArray;
+  this.dateArray=dateArray;
+  this.udtArray=udtArray;
+  this.enumArray=enumArray;
+  this.arrayArray=arrayArray;
+}

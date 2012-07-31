@@ -1,0 +1,12 @@
+{
+  this.id=id;
+  this.authorId=authorId;
+  this.coAuthorId=coAuthorId;
+  this.detailsId=detailsId;
+  this.title=title;
+  this.publishedIn=publishedIn;
+  this.languageId=languageId;
+  this.contentText=contentText;
+  this.contentPdf=contentPdf;
+  this.status=status;
+}

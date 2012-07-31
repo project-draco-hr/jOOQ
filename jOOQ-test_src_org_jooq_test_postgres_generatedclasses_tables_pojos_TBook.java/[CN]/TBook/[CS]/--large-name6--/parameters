@@ -1,0 +1,10 @@
+java.lang.Integer id
+java.lang.Integer authorId
+java.lang.Integer coAuthorId
+java.lang.Integer detailsId
+java.lang.String title
+java.lang.Integer publishedIn
+org.jooq.test.postgres.generatedclasses.enums.TLanguage languageId
+java.lang.String contentText
+byte[] contentPdf
+org.jooq.test.postgres.generatedclasses.enums.UBookStatus status

@@ -1,0 +1,14 @@
+java.lang.Integer id
+java.lang.String name
+java.math.BigInteger bigInteger
+java.lang.Integer idRef
+java.lang.String nameRef
+java.lang.Integer class_
+java.lang.Integer fields
+java.lang.Integer configuration
+java.lang.Integer uDT
+java.lang.Integer metaData
+java.lang.Integer type0
+java.lang.Integer primaryKey
+java.lang.Integer primarykey
+java.math.BigDecimal field_737
