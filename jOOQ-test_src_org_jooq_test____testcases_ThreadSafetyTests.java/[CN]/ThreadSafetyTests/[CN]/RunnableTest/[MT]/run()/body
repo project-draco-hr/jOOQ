@@ -1,0 +1,11 @@
+{
+  try {
+synchronized (lock) {
+      lock.wait();
+    }
+    assertEquals(4,(int)create().selectCount().from(TBook()).fetchOne(0,Integer.class));
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}
