@@ -1,4 +1,5 @@
 {
+  jOOQAbstractTest.reset=false;
   UAuthorTypeRecord author1;
   UAuthorTypeRecord author2;
   author1=new UAuthorTypeRecord();
@@ -42,4 +43,18 @@
   assertEquals(1,(int)author1.getId());
   assertEquals("George",author1.getFirstName());
   assertEquals("Orwell",author1.getLastName());
+  UAuthorTypeRecord author3=UAuthorType.newAuthor(ora(),3,"first","last");
+  assertEquals(3,(int)author3.getId());
+  assertEquals("first",author3.getFirstName());
+  assertEquals("last",author3.getLastName());
+  UAuthorTypeRecord author4=UAuthorType.getAuthor(ora(),3);
+  assertEquals(author3,author4);
+  assertEquals(3,(int)author4.getId());
+  assertEquals("first",author4.getFirstName());
+  assertEquals("last",author4.getLastName());
+  UAuthorTypeRecord author5=ora().select(UAuthorType.getAuthor(3)).fetchOne(UAuthorType.getAuthor(3));
+  assertEquals(author3,author5);
+  assertEquals(3,(int)author5.getId());
+  assertEquals("first",author5.getFirstName());
+  assertEquals("last",author5.getLastName());
 }

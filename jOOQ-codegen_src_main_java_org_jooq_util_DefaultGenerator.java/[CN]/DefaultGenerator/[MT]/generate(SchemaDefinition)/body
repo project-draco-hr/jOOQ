@@ -34,7 +34,7 @@
     generateUDTs(schema);
   }
   if (database.getUDTs(schema).size() > 0) {
-    generateUDTDefinitions(schema);
+    generateUDTRecords(schema);
   }
   if (database.getUDTs(schema).size() > 0) {
     generateUDTRoutines(schema);

@@ -18,12 +18,13 @@
     printGetterAndSetter(out,attribute);
   }
   for (  RoutineDefinition routine : udt.getRoutines()) {
+    boolean instance=routine.getInParameters().size() > 0 && routine.getInParameters().get(0).getInputName().toUpperCase().equals("SELF");
     try {
       if (!routine.isSQLUsable()) {
-        printConvenienceMethodProcedure(out,routine,true);
+        printConvenienceMethodProcedure(out,routine,instance);
       }
  else {
-        printConvenienceMethodFunction(out,routine,true);
+        printConvenienceMethodFunction(out,routine,instance);
       }
     }
  catch (    Exception e) {
