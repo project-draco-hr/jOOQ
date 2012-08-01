@@ -1,16 +1,20 @@
 {
-  InputStream isXML=Transform.class.getResourceAsStream("manual.xml");
+  InputStream isXML=Transform.class.getResourceAsStream(file("manual.xml"));
   InputStream isXSL=Transform.class.getResourceAsStream("html-page.xsl");
   StreamSource xsl=new StreamSource(isXSL);
   TransformerFactory factory=TransformerFactory.newInstance();
   Transformer transformer=factory.newTransformer(xsl);
+  String relativePath=relative(path("manual-single-page"));
+  String root=root();
   Match manual=$(isXML);
-  File dir=new File("manual-single-page");
+  File dir=new File(path("manual-single-page"));
   dir.mkdirs();
   System.out.println("Transforming manual");
   FileOutputStream out=new FileOutputStream(new File(dir,"index.php"));
   Source source=new DOMSource(manual.document());
   Result target=new StreamResult(out);
+  transformer.setParameter("relativePath",relativePath);
+  transformer.setParameter("root",root);
   transformer.transform(source,target);
   out.close();
 }
