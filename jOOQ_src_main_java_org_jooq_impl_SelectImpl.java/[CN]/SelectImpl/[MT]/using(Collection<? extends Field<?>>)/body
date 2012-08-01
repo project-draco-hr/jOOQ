@@ -1,6 +1,7 @@
 {
   getQuery().addJoinUsing(joinTable,joinType,fields);
   joinTable=null;
+  joinPartitionBy=null;
   joinType=null;
   return this;
 }

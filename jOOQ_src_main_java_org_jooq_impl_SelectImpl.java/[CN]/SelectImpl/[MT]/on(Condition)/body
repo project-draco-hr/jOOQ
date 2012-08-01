@@ -2,8 +2,9 @@
   conditionStep=ConditionStep.ON;
   joinConditions=new ConditionProviderImpl();
   joinConditions.addConditions(conditions);
-  getQuery().addJoin(joinTable,joinType,joinConditions);
+  getQuery().addJoin(joinTable,joinType,new Condition[]{joinConditions},joinPartitionBy);
   joinTable=null;
+  joinPartitionBy=null;
   joinType=null;
   return this;
 }

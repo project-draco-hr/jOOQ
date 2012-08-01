@@ -1,0 +1,4 @@
+TableLike<?> table
+JoinType type
+Condition[] conditions
+Field<?>[] partitionBy

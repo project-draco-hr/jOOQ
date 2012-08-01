@@ -1,5 +1,8 @@
 {
   context.sql(lhs).formatSeparator().keyword(translateType(context).toSQL()).sql(" ").sql(rhs instanceof JoinTable ? "(" : "").sql(rhs).sql(rhs instanceof JoinTable ? ")" : "");
+  if (!rhsPartitionBy.isEmpty()) {
+    context.formatSeparator().keyword(" partition by (").sql(rhsPartitionBy).sql(")");
+  }
   if (!asList(CROSS_JOIN,NATURAL_JOIN,NATURAL_LEFT_OUTER_JOIN,NATURAL_RIGHT_OUTER_JOIN).contains(translateType(context))) {
     toSQLJoinCondition(context);
   }

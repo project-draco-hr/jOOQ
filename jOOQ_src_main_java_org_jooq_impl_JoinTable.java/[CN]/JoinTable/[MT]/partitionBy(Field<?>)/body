@@ -1,0 +1,3 @@
+{
+  return partitionBy(Util.list(fields));
+}

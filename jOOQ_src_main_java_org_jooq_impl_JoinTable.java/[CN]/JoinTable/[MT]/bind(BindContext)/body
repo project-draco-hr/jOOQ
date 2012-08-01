@@ -1,5 +1,5 @@
 {
-  context.bind(lhs).bind(rhs);
+  context.bind(lhs).bind(rhs).bind((QueryPart)rhsPartitionBy);
   if (!using.isEmpty()) {
     context.bind((QueryPart)using);
   }

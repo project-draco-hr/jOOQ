@@ -1,0 +1,3 @@
+{
+  return array == null ? Collections.<T>emptyList() : Arrays.asList(array);
+}

@@ -2,6 +2,7 @@
   conditionStep=ConditionStep.ON;
   getQuery().addJoinOnKey(joinTable,joinType,keyFields);
   joinTable=null;
+  joinPartitionBy=null;
   joinType=null;
   return this;
 }
