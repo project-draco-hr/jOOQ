@@ -1,4 +1,5 @@
 {
+  if (true)   return;
   System.out.println("Transforming XML -> FO");
   InputStream isXML=Transform.class.getResourceAsStream(file("manual.xml"));
   InputStream isXSL=Transform.class.getResourceAsStream("pdf.xsl");

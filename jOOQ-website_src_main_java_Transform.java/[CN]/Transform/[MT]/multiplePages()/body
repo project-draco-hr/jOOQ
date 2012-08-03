@@ -13,7 +13,9 @@
     File dir=new File(path);
     dir.mkdirs();
     System.out.println("Transforming section " + path);
-    FileOutputStream out=new FileOutputStream(new File(dir,"index.php"));
+    File file=new File(dir,"index.php");
+    file.delete();
+    FileOutputStream out=new FileOutputStream(file);
     Source source=new DOMSource(manual.document());
     Result target=new StreamResult(out);
     transformer.setParameter("sectionID",section.id());
