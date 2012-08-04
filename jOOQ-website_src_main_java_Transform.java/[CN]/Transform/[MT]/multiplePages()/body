@@ -5,6 +5,14 @@
   TransformerFactory factory=TransformerFactory.newInstance();
   Transformer transformer=factory.newTransformer(xsl);
   Match manual=$(isXML);
+  List<String> ids=manual.find("section").ids();
+  HashSet<String> uniqueIds=new HashSet<String>(ids);
+  if (ids.size() != uniqueIds.size()) {
+    for (    String id : uniqueIds) {
+      ids.remove(id);
+    }
+    throw new Exception("Duplicate section ids found! " + ids);
+  }
   for (  Match section : manual.find("section").each()) {
     Match sections=section.add(section.parents("section")).reverse();
     String path=path(StringUtils.join(sections.ids(),"/"));
