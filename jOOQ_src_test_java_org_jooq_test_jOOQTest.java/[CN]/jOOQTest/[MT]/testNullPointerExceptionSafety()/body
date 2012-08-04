@@ -6,6 +6,8 @@
   assertEquals(FIELD_ID1.greaterOrEqual((Integer)null),FIELD_ID1.greaterOrEqual((Field<Integer>)null));
   assertEquals(FIELD_ID1.greaterThan((Integer)null),FIELD_ID1.greaterThan((Field<Integer>)null));
   assertEquals(FIELD_ID1.in((Integer)null),FIELD_ID1.in((Field<Integer>)null));
+  assertEquals(FIELD_ID1.isDistinctFrom((Integer)null),FIELD_ID1.isDistinctFrom((Field<Integer>)null));
+  assertEquals(FIELD_ID1.isNotDistinctFrom((Integer)null),FIELD_ID1.isNotDistinctFrom((Field<Integer>)null));
   assertEquals(FIELD_ID1.lessOrEqual((Integer)null),FIELD_ID1.lessOrEqual((Field<Integer>)null));
   assertEquals(FIELD_ID1.lessThan((Integer)null),FIELD_ID1.lessThan((Field<Integer>)null));
   assertEquals(FIELD_ID1.mod((Integer)null),FIELD_ID1.mod((Field<Integer>)null));

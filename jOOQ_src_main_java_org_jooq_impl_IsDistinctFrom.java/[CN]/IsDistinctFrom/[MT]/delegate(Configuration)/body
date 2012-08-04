@@ -1,0 +1,30 @@
+{
+  if (asList(ASE,CUBRID,DB2,DERBY,INGRES,ORACLE,SQLSERVER,SQLITE).contains(configuration.getDialect())) {
+    if (caseExpression == null) {
+      if (comparator == Comparator.IS_DISTINCT_FROM) {
+        caseExpression=(QueryPartInternal)decode().when(lhs.isNull().and(rhs.isNull()),zero()).when(lhs.isNull().and(rhs.isNotNull()),one()).when(lhs.isNotNull().and(rhs.isNull()),one()).when(lhs.equal(rhs),zero()).otherwise(one()).equal(one());
+      }
+ else {
+        caseExpression=(QueryPartInternal)decode().when(lhs.isNull().and(rhs.isNull()),one()).when(lhs.isNull().and(rhs.isNotNull()),zero()).when(lhs.isNotNull().and(rhs.isNull()),zero()).when(lhs.equal(rhs),one()).otherwise(zero()).equal(one());
+      }
+    }
+    return caseExpression;
+  }
+ else   if (MYSQL.equals(configuration.getDialect())) {
+    if (mySQLCondition == null) {
+      if (comparator == Comparator.IS_DISTINCT_FROM) {
+        mySQLCondition=(QueryPartInternal)condition("not({0} <=> {1})",lhs,rhs);
+      }
+ else {
+        mySQLCondition=(QueryPartInternal)condition("{0} <=> {1}",lhs,rhs);
+      }
+    }
+    return mySQLCondition;
+  }
+ else {
+    if (compareCondition == null) {
+      compareCondition=new CompareCondition(lhs,rhs,comparator);
+    }
+    return compareCondition;
+  }
+}
