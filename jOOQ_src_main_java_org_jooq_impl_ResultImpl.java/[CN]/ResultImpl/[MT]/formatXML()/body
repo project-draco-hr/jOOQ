@@ -1,6 +1,6 @@
 {
   StringBuilder sb=new StringBuilder();
-  sb.append("<jooq-export:result xmlns:jooq-export=\"http://www.jooq.org/xsd/jooq-export-1.6.2.xsd\">");
+  sb.append("<result xmlns=\"http://www.jooq.org/xsd/jooq-export-1.6.2.xsd\">");
   sb.append("<fields>");
   for (  Field<?> field : getFields()) {
     sb.append("<field name=\"");
@@ -28,6 +28,6 @@
     sb.append("</record>");
   }
   sb.append("</records>");
-  sb.append("</jooq-export:result>");
+  sb.append("</result>");
   return sb.toString();
 }
