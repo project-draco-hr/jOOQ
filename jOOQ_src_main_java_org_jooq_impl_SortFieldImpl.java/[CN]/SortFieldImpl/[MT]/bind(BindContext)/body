@@ -1,3 +1,18 @@
 {
-  context.bind(field);
+  if (nullsFirst || nullsLast) {
+switch (context.getDialect()) {
+case DB2:
+case ASE:
+case CUBRID:
+case INGRES:
+case MYSQL:
+case SQLITE:
+case SQLSERVER:
+case SYBASE:
+{
+        context.bind(field);
+      }
+  }
+}
+context.bind(field);
 }
