@@ -1,0 +1,3 @@
+Field<String> field
+String textQuery
+String structuredQuery

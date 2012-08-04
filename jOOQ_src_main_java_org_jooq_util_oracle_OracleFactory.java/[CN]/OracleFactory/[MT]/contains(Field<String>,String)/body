@@ -1,0 +1,3 @@
+{
+  return field("{contains}({0}, {1})",SQLDataType.NUMERIC,nullSafe(field),val(query));
+}

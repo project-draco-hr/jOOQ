@@ -1,0 +1,3 @@
+{
+  return field("{score}({0})",SQLDataType.NUMERIC,inline(label));
+}

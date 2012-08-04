@@ -1,0 +1,3 @@
+{
+  return field("{catsearch}({0}, {1}, {2})",SQLDataType.NUMERIC,nullSafe(field),val(textQuery),val(structuredQuery));
+}
