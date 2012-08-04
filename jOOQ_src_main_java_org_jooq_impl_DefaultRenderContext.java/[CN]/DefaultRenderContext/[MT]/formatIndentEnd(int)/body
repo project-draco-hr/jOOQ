@@ -1,5 +1,5 @@
 {
-  if (renderFormatted) {
+  if (cachedRenderFormatted) {
     indent-=i;
   }
   return this;

@@ -2,13 +2,13 @@
   if (literal == null) {
     return this;
   }
-  if (RenderNameStyle.LOWER == renderNameStyle) {
+  if (RenderNameStyle.LOWER == cachedRenderNameStyle) {
     sql(literal.toLowerCase());
   }
- else   if (RenderNameStyle.UPPER == renderNameStyle) {
+ else   if (RenderNameStyle.UPPER == cachedRenderNameStyle) {
     sql(literal.toUpperCase());
   }
- else   if (RenderNameStyle.AS_IS == renderNameStyle) {
+ else   if (RenderNameStyle.AS_IS == cachedRenderNameStyle) {
     sql(literal);
   }
  else {
