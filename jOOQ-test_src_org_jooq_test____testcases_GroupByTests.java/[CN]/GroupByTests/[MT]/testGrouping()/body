@@ -1,4 +1,6 @@
 {
+  assertEquals(1,(int)create().selectOne().from(TBook()).groupBy().fetchOne(0,Integer.class));
+  assertEquals(1,(int)create().selectOne().from(TBook()).groupBy().having(trueCondition()).fetchOne(0,Integer.class));
   Field<Integer> count=count().as("c");
   Result<Record> result=create().select(TBook_AUTHOR_ID(),count).from(TBook()).groupBy(TBook_AUTHOR_ID()).fetch();
   assertEquals(2,result.size());

@@ -46,8 +46,14 @@ if (!(getConnectBy().getWhere() instanceof TrueCondition)) {
 toSQLStartWith(context);
 toSQLConnectBy(context);
 }
-if (!getGroupBy().isEmpty()) {
-context.formatSeparator().keyword("group by ").sql(getGroupBy());
+if (grouping) {
+context.formatSeparator().keyword("group by ");
+if (getGroupBy().isEmpty()) {
+context.sql("()");
+}
+ else {
+context.sql(getGroupBy());
+}
 }
 if (!(getHaving().getWhere() instanceof TrueCondition)) {
 context.formatSeparator().keyword("having ").sql(getHaving());
