@@ -1,0 +1,9 @@
+{
+  Field<?>[] array=new Field<?>[getInParameters().size()];
+  int i=0;
+  for (  Parameter<?> p : getInParameters()) {
+    array[i]=getInValues().get(p);
+    i++;
+  }
+  return (AggregateFunction<T>)function(getName(),type,array);
+}

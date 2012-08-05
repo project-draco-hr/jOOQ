@@ -1,0 +1,5 @@
+{
+  super(schema.getDatabase(),schema,name,comment,overload);
+  this.pkg=pkg;
+  this.aggregate=aggregate;
+}

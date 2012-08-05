@@ -15,7 +15,7 @@
   }
   out.println("\t */");
   out.print("\tpublic static ");
-  out.print(Field.class);
+  out.print(function.isAggregate() ? AggregateFunction.class : Field.class);
   out.print("<");
   out.print(getJavaType(function.getReturnType()));
   out.print("> ");
@@ -51,6 +51,11 @@
     out.println(");");
   }
   out.println();
-  out.println("\t\treturn f.asField();");
+  if (function.isAggregate()) {
+    out.println("\t\treturn f.asAggregateFunction();");
+  }
+ else {
+    out.println("\t\treturn f.asField();");
+  }
   out.println("\t}");
 }

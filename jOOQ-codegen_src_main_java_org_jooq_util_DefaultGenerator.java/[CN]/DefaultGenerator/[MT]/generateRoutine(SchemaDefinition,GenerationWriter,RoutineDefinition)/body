@@ -4,7 +4,9 @@
     printConvenienceMethodProcedure(outR,routine,false);
   }
  else {
-    printConvenienceMethodFunction(outR,routine,false);
+    if (!routine.isAggregate()) {
+      printConvenienceMethodFunction(outR,routine,false);
+    }
     printConvenienceMethodFunctionAsField(outR,routine,false);
     printConvenienceMethodFunctionAsField(outR,routine,true);
   }

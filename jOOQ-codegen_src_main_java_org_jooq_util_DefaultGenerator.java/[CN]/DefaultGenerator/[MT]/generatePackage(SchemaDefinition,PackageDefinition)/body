@@ -25,7 +25,9 @@
         printConvenienceMethodProcedure(outPkg,routine,false);
       }
  else {
-        printConvenienceMethodFunction(outPkg,routine,false);
+        if (!routine.isAggregate()) {
+          printConvenienceMethodFunction(outPkg,routine,false);
+        }
         printConvenienceMethodFunctionAsField(outPkg,routine,false);
         printConvenienceMethodFunctionAsField(outPkg,routine,true);
       }

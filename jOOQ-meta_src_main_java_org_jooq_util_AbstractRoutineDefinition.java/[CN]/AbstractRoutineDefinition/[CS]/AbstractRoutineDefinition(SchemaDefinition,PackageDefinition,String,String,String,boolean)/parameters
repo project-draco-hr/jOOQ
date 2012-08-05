@@ -1,0 +1,6 @@
+SchemaDefinition schema
+PackageDefinition pkg
+String name
+String comment
+String overload
+boolean aggregate

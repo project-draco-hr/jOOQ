@@ -24,7 +24,9 @@
         printConvenienceMethodProcedure(out,routine,instance);
       }
  else {
-        printConvenienceMethodFunction(out,routine,instance);
+        if (!routine.isAggregate()) {
+          printConvenienceMethodFunction(out,routine,instance);
+        }
       }
     }
  catch (    Exception e) {

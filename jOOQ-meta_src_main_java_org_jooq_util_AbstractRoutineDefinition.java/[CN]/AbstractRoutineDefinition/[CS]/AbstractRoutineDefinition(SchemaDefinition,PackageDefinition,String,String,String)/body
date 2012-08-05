@@ -1,4 +1,3 @@
 {
-  super(schema.getDatabase(),schema,name,comment,overload);
-  this.pkg=pkg;
+  this(schema,pkg,name,comment,overload,false);
 }
