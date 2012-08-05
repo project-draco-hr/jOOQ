@@ -7,6 +7,7 @@
   String relativePath=relative(path("manual-single-page"));
   String root=root();
   Match manual=$(isXML);
+  replaceVariables(manual);
   File dir=new File(path("manual-single-page"));
   dir.mkdirs();
   System.out.println("Transforming manual");

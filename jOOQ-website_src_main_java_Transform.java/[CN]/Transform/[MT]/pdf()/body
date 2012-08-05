@@ -7,6 +7,7 @@
   TransformerFactory factory=TransformerFactory.newInstance();
   Transformer transformer=factory.newTransformer(xsl);
   Match manual=$(isXML);
+  replaceVariables(manual);
   File dir=new File(path("manual-pdf"));
   dir.mkdirs();
   FileOutputStream fout=new FileOutputStream(new File(dir,file("jOOQ-manual.fo.xml")));

@@ -1,0 +1,16 @@
+{
+  manual.find("content").each(new Each(){
+    @Override public void each(    Context context){
+      String content=$(context.element()).content();
+      boolean changed=false;
+      if (content.contains("{jooq-version}")) {
+        content=content.replace("{jooq-version}",version + ".0");
+        changed=true;
+      }
+      if (changed) {
+        $(context.element()).content(content);
+      }
+    }
+  }
+);
+}

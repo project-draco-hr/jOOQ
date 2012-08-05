@@ -5,6 +5,7 @@
   TransformerFactory factory=TransformerFactory.newInstance();
   Transformer transformer=factory.newTransformer(xsl);
   Match manual=$(isXML);
+  replaceVariables(manual);
   List<String> ids=manual.find("section").ids();
   HashSet<String> uniqueIds=new HashSet<String>(ids);
   if (ids.size() != uniqueIds.size()) {
