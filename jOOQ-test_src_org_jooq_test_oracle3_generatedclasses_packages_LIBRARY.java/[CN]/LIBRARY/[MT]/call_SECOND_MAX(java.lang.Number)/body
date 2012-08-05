@@ -1,0 +1,5 @@
+{
+  org.jooq.test.oracle3.generatedclasses.packages.library.SECOND_MAX f=new org.jooq.test.oracle3.generatedclasses.packages.library.SECOND_MAX();
+  f.setINPUT(INPUT);
+  return f.asAggregateFunction();
+}

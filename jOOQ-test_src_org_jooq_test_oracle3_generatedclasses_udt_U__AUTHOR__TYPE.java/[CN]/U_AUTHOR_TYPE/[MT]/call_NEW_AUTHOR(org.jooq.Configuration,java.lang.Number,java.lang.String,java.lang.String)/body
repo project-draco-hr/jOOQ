@@ -1,0 +1,8 @@
+{
+  org.jooq.test.oracle3.generatedclasses.udt.u_author_type.NEW_AUTHOR p=new org.jooq.test.oracle3.generatedclasses.udt.u_author_type.NEW_AUTHOR();
+  p.setP_ID(P_ID);
+  p.setP_FIRST_NAME(P_FIRST_NAME);
+  p.setP_LAST_NAME(P_LAST_NAME);
+  p.execute(configuration);
+  return p.getP_AUTHOR();
+}

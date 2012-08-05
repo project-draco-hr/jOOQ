@@ -1,3 +1,0 @@
-{
-  super("P377",org.jooq.test.oracle3.generatedclasses.TEST.TEST);
-}
