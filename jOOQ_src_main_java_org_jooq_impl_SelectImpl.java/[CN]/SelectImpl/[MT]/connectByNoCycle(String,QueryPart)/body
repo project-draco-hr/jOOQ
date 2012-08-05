@@ -1,0 +1,3 @@
+{
+  return connectByNoCycle(condition(sql,parts));
+}

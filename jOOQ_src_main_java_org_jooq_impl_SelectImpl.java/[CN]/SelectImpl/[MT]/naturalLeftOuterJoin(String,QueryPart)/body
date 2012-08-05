@@ -1,0 +1,3 @@
+{
+  return naturalLeftOuterJoin(table(sql,parts));
+}
