@@ -37,6 +37,9 @@ context.declareFields(false);
 context.declareTables(true);
 if (!context.render(getFrom()).isEmpty()) {
 context.formatSeparator().keyword("from ").sql(getFrom());
+if (grouping && getGroupBy().isEmpty() && asList(ASE,INGRES).contains(context.getDialect())) {
+context.sql(", (select 1 as x) as empty_grouping_dummy_table");
+}
 }
 context.declareTables(false);
 if (!(getWhere().getWhere() instanceof TrueCondition)) {
@@ -49,7 +52,10 @@ toSQLConnectBy(context);
 if (grouping) {
 context.formatSeparator().keyword("group by ");
 if (getGroupBy().isEmpty()) {
-if (asList(CUBRID,DERBY,HSQLDB,MYSQL,POSTGRES,SQLITE).contains(context.getDialect())) {
+if (asList(ASE,INGRES).contains(context.getDialect())) {
+  context.sql("empty_grouping_dummy_table.x");
+}
+ else if (asList(CUBRID,DERBY,HSQLDB,MYSQL,POSTGRES,SQLITE).contains(context.getDialect())) {
   context.sql("1");
 }
  else {
