@@ -49,7 +49,12 @@ toSQLConnectBy(context);
 if (grouping) {
 context.formatSeparator().keyword("group by ");
 if (getGroupBy().isEmpty()) {
-context.sql("()");
+if (asList(CUBRID,DERBY,HSQLDB,MYSQL,POSTGRES,SQLITE).contains(context.getDialect())) {
+  context.sql("1");
+}
+ else {
+  context.sql("()");
+}
 }
  else {
 context.sql(getGroupBy());
