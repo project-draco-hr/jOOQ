@@ -1,6 +1,6 @@
 {
   SimpleSelectQuery<R> select=create().selectQuery(getTable());
-  addConditions(select,keys);
+  Util.addConditions(select,this,keys);
   if (create().getDialect() != SQLDialect.SQLITE) {
     select.setForUpdate(true);
   }

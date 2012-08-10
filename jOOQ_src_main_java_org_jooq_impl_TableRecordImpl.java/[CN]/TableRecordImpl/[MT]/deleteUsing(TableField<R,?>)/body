@@ -1,7 +1,7 @@
 {
   try {
     DeleteQuery<R> delete=create().deleteQuery(getTable());
-    addConditions(delete,keys);
+    Util.addConditions(delete,this,keys);
     if (isExecuteWithOptimisticLocking()) {
       if (isTimestampOrVersionAvailable()) {
         addConditionForVersionAndTimestamp(delete);

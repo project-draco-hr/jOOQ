@@ -1,6 +1,6 @@
 {
   SimpleSelectQuery<R> select=create().selectQuery(getTable());
-  addConditions(select,keys);
+  Util.addConditions(select,this,keys);
   if (select.execute() == 1) {
     AbstractRecord record=(AbstractRecord)select.getResult().get(0);
     for (    Field<?> field : getFields()) {

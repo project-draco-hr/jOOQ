@@ -1,0 +1,6 @@
+{
+  UpdateQuery<R> update=updateQuery(record.getTable());
+  update.addConditions(condition);
+  update.setRecord(record);
+  return update.execute();
+}

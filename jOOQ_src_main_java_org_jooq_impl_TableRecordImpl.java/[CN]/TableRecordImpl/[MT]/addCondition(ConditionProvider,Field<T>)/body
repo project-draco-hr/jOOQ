@@ -1,3 +1,0 @@
-{
-  provider.addConditions(field.equal(getValue(field)));
-}

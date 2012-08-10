@@ -1,7 +1,7 @@
 {
   UpdateQuery<R> update=create().updateQuery(getTable());
   addChangedValues(update);
-  addConditions(update,keys);
+  Util.addConditions(update,this,keys);
   if (!update.isExecutable())   return 0;
   BigInteger version=addRecordVersion(update);
   Timestamp timestamp=addRecordTimestamp(update);
