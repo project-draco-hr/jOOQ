@@ -86,7 +86,7 @@
     stream.writeString(value.toString());
   }
  else   if (ArrayRecord.class.isAssignableFrom(type)) {
-    Connection connection=getDriverConnection(DefaultBindContext.localConfiguration.get());
+    Connection connection=getDriverConnection(DefaultBindContext.LOCAL_CONFIGURATION.get());
     ArrayRecord<?> arrayRecord=(ArrayRecord<?>)value;
     stream.writeArray(on(connection).call("createARRAY",arrayRecord.getName(),arrayRecord.get()).<Array>get());
   }

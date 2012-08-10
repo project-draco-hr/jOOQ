@@ -178,11 +178,11 @@ bindValue(primaryKey,primaryKey.getClass());
 }
  else {
 try {
-localConfiguration.set(this);
+LOCAL_CONFIGURATION.set(this);
 stmt.setObject(nextIndex(),value);
 }
   finally {
-localConfiguration.remove();
+LOCAL_CONFIGURATION.remove();
 }
 }
 return this;

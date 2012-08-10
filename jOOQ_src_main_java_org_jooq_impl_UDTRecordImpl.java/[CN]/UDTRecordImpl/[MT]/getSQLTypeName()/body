@@ -1,3 +1,13 @@
 {
-  return getUDT().getName();
+  StringBuilder sb=new StringBuilder();
+  Configuration configuration=DefaultBindContext.LOCAL_CONFIGURATION.get();
+  if (configuration != null) {
+    Schema schema=Util.getMappedSchema(configuration,getUDT().getSchema());
+    if (schema != null) {
+      sb.append(schema.getName());
+      sb.append(".");
+    }
+  }
+  sb.append(getUDT().getName());
+  return sb.toString();
 }
