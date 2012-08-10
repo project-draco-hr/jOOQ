@@ -7,7 +7,9 @@
  else {
       result=Reflect.accessible(type.getDeclaredConstructor()).newInstance();
     }
-    result.attach(configuration);
+    if (attachRecords(configuration)) {
+      result.attach(configuration);
+    }
     return result;
   }
  catch (  Exception e) {

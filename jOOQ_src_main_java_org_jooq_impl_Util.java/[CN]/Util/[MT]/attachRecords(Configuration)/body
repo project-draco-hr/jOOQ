@@ -1,0 +1,9 @@
+{
+  if (configuration != null) {
+    Settings settings=configuration.getSettings();
+    if (settings != null) {
+      return !FALSE.equals(settings.isAttachRecords());
+    }
+  }
+  return true;
+}
