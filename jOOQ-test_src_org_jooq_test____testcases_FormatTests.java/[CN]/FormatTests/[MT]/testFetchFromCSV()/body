@@ -15,6 +15,18 @@
   assertEquals(asList("1","","a","b"),asList(result1.get(0).intoArray()));
   assertEquals(asList("1","2","a",null),asList(result1.get(1).intoArray()));
   assertEquals(asList("1","2","a","b"),asList(result1.get(2).intoArray()));
+  String[] array1a=new String[2];
+  String[] array2a=new String[3];
+  String[] array3a=new String[4];
+  String[] array1b=result1.get(0).into(array1a);
+  String[] array2b=result1.get(1).into(array2a);
+  String[] array3b=result1.get(2).into(array3a);
+  assertEquals(asList("1","","a","b"),asList(array1b));
+  assertEquals(asList("1","2","a",null),asList(array2b));
+  assertEquals(asList("1","2","a","b"),asList(array3b));
+  assertTrue(array1a != array1b);
+  assertTrue(array2a != array2b);
+  assertTrue(array3a == array3b);
   String csv=create().selectFrom(TBook()).orderBy(TBook_ID()).fetch().formatCSV();
   Result<Record> result2=create().fetchFromCSV(csv);
   assertEquals(4,result2.size());

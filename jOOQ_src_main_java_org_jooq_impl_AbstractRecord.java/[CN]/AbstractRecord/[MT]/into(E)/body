@@ -1,0 +1,20 @@
+{
+  if (object == null) {
+    throw new NullPointerException("Cannot copy Record into null");
+  }
+  @SuppressWarnings("unchecked") Class<E> type=(Class<E>)object.getClass();
+  try {
+    if (type.isArray()) {
+      return intoArray((Object[])object,type.getComponentType());
+    }
+ else {
+      return intoMutablePOJO(type,object);
+    }
+  }
+ catch (  MappingException e) {
+    throw e;
+  }
+catch (  Exception e) {
+    throw new MappingException("An error ocurred when mapping record to " + type,e);
+  }
+}
