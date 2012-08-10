@@ -2,10 +2,10 @@
   if (object == null) {
     throw new NullPointerException("Cannot copy Record into null");
   }
-  @SuppressWarnings("unchecked") Class<E> type=(Class<E>)object.getClass();
+  Class<E> type=(Class<E>)object.getClass();
   try {
     if (type.isArray()) {
-      return intoArray((Object[])object,type.getComponentType());
+      return (E)intoArray((Object[])object,type.getComponentType());
     }
  else {
       return intoMutablePOJO(type,object);

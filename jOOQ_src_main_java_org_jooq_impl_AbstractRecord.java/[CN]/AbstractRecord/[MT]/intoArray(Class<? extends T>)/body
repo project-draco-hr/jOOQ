@@ -2,5 +2,5 @@
   int size=getFields().size();
   Class<?> componentType=type.getComponentType();
   Object[] result=(Object[])Array.newInstance(componentType,size);
-  return intoArray(result,componentType);
+  return (T)intoArray(result,componentType);
 }
