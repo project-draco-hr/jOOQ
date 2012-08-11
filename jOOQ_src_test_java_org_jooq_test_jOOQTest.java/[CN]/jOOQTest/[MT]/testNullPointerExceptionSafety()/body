@@ -1,6 +1,7 @@
 {
   assertEquals(FIELD_ID1.add((Integer)null),FIELD_ID1.add((Field<Integer>)null));
   assertEquals(FIELD_ID1.between((Integer)null,null),FIELD_ID1.between((Field<Integer>)null,null));
+  assertEquals(FIELD_ID1.betweenSymmetric((Integer)null,null),FIELD_ID1.betweenSymmetric((Field<Integer>)null,null));
   assertEquals(FIELD_ID1.div((Integer)null),FIELD_ID1.div((Field<Integer>)null));
   assertEquals(FIELD_ID1.equal((Integer)null),FIELD_ID1.equal((Field<Integer>)null));
   assertEquals(FIELD_ID1.greaterOrEqual((Integer)null),FIELD_ID1.greaterOrEqual((Field<Integer>)null));
@@ -12,6 +13,8 @@
   assertEquals(FIELD_ID1.lessThan((Integer)null),FIELD_ID1.lessThan((Field<Integer>)null));
   assertEquals(FIELD_ID1.mod((Integer)null),FIELD_ID1.mod((Field<Integer>)null));
   assertEquals(FIELD_ID1.mul((Integer)null),FIELD_ID1.mul((Field<Integer>)null));
+  assertEquals(FIELD_ID1.notBetween((Integer)null,null),FIELD_ID1.notBetween((Field<Integer>)null,null));
+  assertEquals(FIELD_ID1.notBetweenSymmetric((Integer)null,null),FIELD_ID1.notBetweenSymmetric((Field<Integer>)null,null));
   assertEquals(FIELD_ID1.notEqual((Integer)null),FIELD_ID1.notEqual((Field<Integer>)null));
   assertEquals(FIELD_ID1.notIn((Integer)null),FIELD_ID1.notIn((Field<Integer>)null));
   assertEquals(FIELD_ID1.sub((Integer)null),FIELD_ID1.sub((Field<Integer>)null));

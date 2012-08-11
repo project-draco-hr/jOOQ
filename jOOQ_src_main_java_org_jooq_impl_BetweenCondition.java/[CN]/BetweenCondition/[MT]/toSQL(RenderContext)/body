@@ -1,3 +1,8 @@
 {
-  context.sql(field).keyword(not ? " not" : "").keyword(" between ").sql(minValue).keyword(" and ").sql(maxValue);
+  if (symmetric && asList(CUBRID,DB2,DERBY,H2,MYSQL,ORACLE,SQLSERVER,SQLITE).contains(context.getDialect())) {
+    simulateSymmetric().toSQL(context);
+  }
+ else {
+    context.sql(field).keyword(not ? " not" : "").keyword(" between ").keyword(symmetric ? "symmetric " : "").sql(minValue).keyword(" and ").sql(maxValue);
+  }
 }

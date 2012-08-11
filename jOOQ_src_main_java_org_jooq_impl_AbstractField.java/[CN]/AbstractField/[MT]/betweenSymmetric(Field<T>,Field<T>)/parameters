@@ -1,4 +1,2 @@
-Field<T> field
 Field<T> minValue
 Field<T> maxValue
-boolean not

@@ -1,0 +1,3 @@
+{
+  return notBetweenSymmetric(val(minValue,this),val(maxValue,this));
+}
