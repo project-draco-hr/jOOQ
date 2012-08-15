@@ -1,0 +1,4 @@
+{
+  Collections.sort(this,new RecordComparator<T>(getIndex(field),comparator));
+  return this;
+}

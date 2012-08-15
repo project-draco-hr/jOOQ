@@ -1,0 +1,3 @@
+{
+  return comparator.compare((T)record1.getValue(fieldIndex),(T)record2.getValue(fieldIndex));
+}
