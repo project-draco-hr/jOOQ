@@ -1,0 +1,4 @@
+{
+  Collections.sort(this,comparator);
+  return this;
+}
