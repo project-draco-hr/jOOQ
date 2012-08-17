@@ -1,0 +1,5 @@
+{
+  DeleteQuery<R> delete=deleteQuery(record.getTable());
+  delete.addConditions(condition);
+  return delete.execute();
+}

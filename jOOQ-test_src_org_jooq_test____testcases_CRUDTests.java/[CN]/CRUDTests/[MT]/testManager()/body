@@ -33,6 +33,6 @@
   assertEquals(Integer.valueOf(15),author.getValue(TAuthor_ID()));
   assertEquals("Fritz",author.getValue(TAuthor_FIRST_NAME()));
   assertEquals("K??stner",author.getValue(TAuthor_LAST_NAME()));
-  create().executeDelete(TAuthor(),TAuthor_LAST_NAME().equal("K??stner"));
+  create().executeDelete(author);
   assertEquals(null,create().fetchOne(TAuthor(),TAuthor_FIRST_NAME().equal("Erich")));
 }
