@@ -4,6 +4,7 @@ switch (getDialect()) {
 case ASE:
 case CUBRID:
 case DERBY:
+case FIREBIRD:
 case H2:
 case INGRES:
 case MYSQL:
@@ -43,6 +44,7 @@ assertEquals(3,distinct4);
 assertTrue(asList(1.0,1.5,2.0).contains(distinct5));
 switch (getDialect()) {
 case DERBY:
+case FIREBIRD:
 case SQLITE:
 log.info("SKIPPING","Statistical aggregate functions");
 break;
