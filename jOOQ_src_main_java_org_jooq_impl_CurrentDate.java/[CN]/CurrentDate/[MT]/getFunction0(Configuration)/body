@@ -4,6 +4,7 @@ case ORACLE:
     return field("sysdate",SQLDataType.DATE);
 case DB2:
 case DERBY:
+case FIREBIRD:
 case HSQLDB:
 case INGRES:
 case POSTGRES:

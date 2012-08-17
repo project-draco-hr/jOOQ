@@ -6,6 +6,7 @@ case ORACLE:
   return field("sysdate",SQLDataType.TIMESTAMP);
 case DB2:
 case DERBY:
+case FIREBIRD:
 case HSQLDB:
 case INGRES:
 case POSTGRES:
