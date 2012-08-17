@@ -5,6 +5,7 @@ case ORACLE:
     return field("user",SQLDataType.VARCHAR);
 case DB2:
 case DERBY:
+case FIREBIRD:
 case HSQLDB:
 case INGRES:
 case POSTGRES:
