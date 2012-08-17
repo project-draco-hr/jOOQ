@@ -6,6 +6,9 @@
  else   if (operator == BIT_NOT && dialect == DB2) {
     context.keyword("bitnot(").sql(field).sql(")");
   }
+ else   if (operator == BIT_NOT && dialect == FIREBIRD) {
+    context.keyword("bin_not(").sql(field).sql(")");
+  }
  else {
     context.sql(operator.toSQL()).sql("(").sql(field).sql(")");
   }
