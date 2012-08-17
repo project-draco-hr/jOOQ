@@ -1,0 +1,13 @@
+{
+  Map<K,Result<R>> map=new LinkedHashMap<K,Result<R>>();
+  for (  R record : this) {
+    K value=record.getValue(key);
+    Result<R> result=map.get(value);
+    if (result == null) {
+      result=new ResultImpl<R>(configuration,fields);
+      map.put(value,result);
+    }
+    result.add(record);
+  }
+  return map;
+}
