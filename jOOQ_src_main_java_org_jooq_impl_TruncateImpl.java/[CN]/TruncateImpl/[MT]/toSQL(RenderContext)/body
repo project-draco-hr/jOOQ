@@ -1,5 +1,6 @@
 {
 switch (context.getDialect()) {
+case FIREBIRD:
 case INGRES:
 case SQLITE:
 {
