@@ -1,3 +1,3 @@
 {
-  return convertToMap(fetchOne());
+  return fetchOne().intoMap();
 }
