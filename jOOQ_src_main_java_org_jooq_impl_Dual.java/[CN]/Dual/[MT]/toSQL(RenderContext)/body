@@ -5,8 +5,11 @@ case POSTGRES:
 case SQLITE:
 case SQLSERVER:
     break;
+case FIREBIRD:
+  context.literal("RDB$DATABASE");
+break;
 case HSQLDB:
-  context.literal("INFORMATION_SCHEMA").sql(".").literal("SYSTEM_USERS");
+context.literal("INFORMATION_SCHEMA").sql(".").literal("SYSTEM_USERS");
 break;
 case CUBRID:
 context.literal("db_root");
