@@ -82,6 +82,9 @@ case 218:
  else     if (getDialect() == CUBRID && sql.trim().startsWith("DROP")) {
       continue;
     }
+ else     if (getDialect() == FIREBIRD && sql.trim().startsWith("DROP")) {
+      continue;
+    }
     System.out.println("Error while executing : " + sql.trim());
     System.out.println();
     System.out.println();
