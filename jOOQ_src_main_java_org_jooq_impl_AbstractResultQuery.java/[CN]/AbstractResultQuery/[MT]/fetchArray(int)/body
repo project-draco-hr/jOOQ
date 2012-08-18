@@ -1,3 +1,6 @@
 {
-  return fetch(fieldIndex).toArray();
+  Result<R> fetch=fetch();
+  Class<?> type=fetch.getField(fieldIndex).getType();
+  List<?> list=fetch.getValues(fieldIndex);
+  return list.toArray((Object[])Array.newInstance(type,list.size()));
 }
