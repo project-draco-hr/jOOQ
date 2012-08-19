@@ -1,6 +1,7 @@
 {
   context.bind(getInto()).bind(insertMaps).bind(updateMap);
 switch (context.getDialect()) {
+case FIREBIRD:
 case POSTGRES:
     context.bind((QueryPart)returning);
   break;

@@ -50,6 +50,7 @@ switch (getDialect()) {
 case ASE:
 case CUBRID:
 case DERBY:
+case FIREBIRD:
 case H2:
 case INGRES:
 case ORACLE:

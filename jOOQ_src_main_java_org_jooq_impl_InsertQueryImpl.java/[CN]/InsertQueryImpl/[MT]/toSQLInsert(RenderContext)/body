@@ -2,6 +2,7 @@
   context.keyword("insert ").keyword((onDuplicateKeyIgnore && context.getDialect() == MYSQL) ? "ignore " : "").keyword("into ").sql(getInto()).sql(" ").sql(insertMaps);
   if (!returning.isEmpty()) {
 switch (context.getDialect()) {
+case FIREBIRD:
 case POSTGRES:
       context.formatSeparator().keyword("returning ").sql(returning);
     break;

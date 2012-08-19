@@ -10,6 +10,7 @@
   }
  else {
 switch (ctx.getDialect()) {
+case FIREBIRD:
 case POSTGRES:
 case SQLITE:
 case CUBRID:
