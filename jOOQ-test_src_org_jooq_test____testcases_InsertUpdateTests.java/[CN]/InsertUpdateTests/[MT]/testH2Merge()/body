@@ -1,15 +1,14 @@
 {
 switch (getDialect()) {
-case H2:
-case DB2:
-case HSQLDB:
-case ORACLE:
-case SQLSERVER:
-case SYBASE:
-    break;
-default :
-  log.info("SKIPPING","H2-specific MERGE syntax test");
-return;
+case ASE:
+case CUBRID:
+case DERBY:
+case INGRES:
+case MYSQL:
+case POSTGRES:
+case SQLITE:
+    log.info("SKIPPING","H2-specific MERGE syntax test");
+  return;
 }
 jOOQAbstractTest.reset=false;
 assertEquals(1,create().mergeInto(TAuthor(),TAuthor_ID(),TAuthor_LAST_NAME()).values(3,"Hesse").execute());
