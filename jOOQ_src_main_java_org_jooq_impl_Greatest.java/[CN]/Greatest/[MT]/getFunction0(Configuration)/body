@@ -5,7 +5,6 @@
 switch (configuration.getDialect()) {
 case ASE:
 case DERBY:
-case FIREBIRD:
 case SQLSERVER:
 case SYBASE:
 {
@@ -20,8 +19,10 @@ case SYBASE:
         return Factory.decode().when(first.greaterThan(other),first).otherwise(other);
       }
     }
+case FIREBIRD:
+  return function("maxvalue",getDataType(),getArguments());
 case SQLITE:
-  return function("max",getDataType(),getArguments());
+return function("max",getDataType(),getArguments());
 default :
 return function("greatest",getDataType(),getArguments());
 }
