@@ -10,7 +10,7 @@
       context.keyword("null");
     }
  else     if (type == Boolean.class) {
-      if (asList(ASE,DB2,ORACLE,SQLSERVER,SQLITE,SYBASE).contains(dialect)) {
+      if (asList(ASE,DB2,FIREBIRD,ORACLE,SQLSERVER,SQLITE,SYBASE).contains(dialect)) {
         context.sql(((Boolean)val) ? "1" : "0");
       }
  else {
