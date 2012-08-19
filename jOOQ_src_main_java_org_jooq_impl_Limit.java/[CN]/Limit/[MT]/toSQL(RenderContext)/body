@@ -16,10 +16,15 @@ case CUBRID:
     context.castMode(NEVER).formatSeparator().keyword("limit ").sql(offsetOrZero).sql(", ").sql(numberOfRows).castMode(castMode);
     break;
   }
+case FIREBIRD:
+{
+  context.castMode(NEVER).formatSeparator().keyword("rows ").sql(getLowerRownum().add(inline(1))).keyword(" to ").sql(getUpperRownum()).castMode(castMode);
+  break;
+}
 case DERBY:
 {
-  context.castMode(NEVER).formatSeparator().keyword("offset ").sql(offsetOrZero).keyword(" rows fetch next ").sql(numberOfRows).keyword(" rows only").castMode(castMode);
-  break;
+context.castMode(NEVER).formatSeparator().keyword("offset ").sql(offsetOrZero).keyword(" rows fetch next ").sql(numberOfRows).keyword(" rows only").castMode(castMode);
+break;
 }
 case INGRES:
 {
@@ -29,11 +34,6 @@ break;
 case SYBASE:
 {
 context.inline(true).keyword("top ").sql(numberOfRows).keyword(" start at ").sql(offsetPlusOne).inline(inline);
-break;
-}
-case FIREBIRD:
-{
-context.inline(true).keyword("first ").sql(numberOfRows).keyword(" skip ").sql(offsetOrZero).inline(inline);
 break;
 }
 case DB2:

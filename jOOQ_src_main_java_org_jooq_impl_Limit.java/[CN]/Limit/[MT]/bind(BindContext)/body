@@ -22,6 +22,12 @@ case CUBRID:
   context.bind(numberOfRows);
   break;
 }
+case FIREBIRD:
+{
+context.bind(getLowerRownum());
+context.bind(getUpperRownum());
+break;
+}
 case ASE:
 case INGRES:
 {
@@ -35,10 +41,6 @@ if (!rendersParams) {
 context.bind(getLowerRownum());
 context.bind(getUpperRownum());
 }
-break;
-}
-case FIREBIRD:
-{
 break;
 }
 case DB2:
