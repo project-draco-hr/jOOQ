@@ -11,6 +11,7 @@ case ASE:
       }
     }
 case DB2:
+case FIREBIRD:
 case HSQLDB:
 case INGRES:
 case MYSQL:
