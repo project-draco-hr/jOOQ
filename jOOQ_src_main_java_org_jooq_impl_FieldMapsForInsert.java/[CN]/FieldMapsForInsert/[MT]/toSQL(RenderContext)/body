@@ -8,6 +8,7 @@
  else {
 switch (context.getDialect()) {
 case ASE:
+case FIREBIRD:
 case INGRES:
 case ORACLE:
 case SQLITE:
