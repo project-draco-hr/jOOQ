@@ -3,6 +3,7 @@ switch (getDialect()) {
 case ASE:
 case DB2:
 case DERBY:
+case FIREBIRD:
 case H2:
 case HSQLDB:
 case INGRES:
