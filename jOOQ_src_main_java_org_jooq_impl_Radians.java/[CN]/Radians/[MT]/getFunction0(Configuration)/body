@@ -1,5 +1,6 @@
 {
 switch (configuration.getDialect()) {
+case FIREBIRD:
 case INGRES:
 case ORACLE:
 case SQLITE:
