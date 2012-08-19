@@ -37,6 +37,10 @@ context.bind(getUpperRownum());
 }
 break;
 }
+case FIREBIRD:
+{
+break;
+}
 case DB2:
 case SQLSERVER:
 {

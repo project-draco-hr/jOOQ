@@ -20,6 +20,7 @@ case SQLSERVER:
       }
       break;
     }
+case FIREBIRD:
 case SYBASE:
 {
     if (getLimit().isApplicable() && !getLimit().rendersParams()) {
