@@ -1,0 +1,4 @@
+{
+  super("rtrim",SQLDataType.VARCHAR,argument);
+  this.argument=argument;
+}

@@ -1,0 +1,8 @@
+{
+switch (configuration.getDialect()) {
+case FIREBIRD:
+    return field("{trim}({leading} {from} {0})",SQLDataType.VARCHAR,argument);
+default :
+  return function("ltrim",SQLDataType.VARCHAR,argument);
+}
+}
