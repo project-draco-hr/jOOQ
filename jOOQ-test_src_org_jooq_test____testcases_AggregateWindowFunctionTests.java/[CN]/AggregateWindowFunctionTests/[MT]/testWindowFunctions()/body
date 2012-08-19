@@ -2,6 +2,7 @@
 switch (getDialect()) {
 case ASE:
 case CUBRID:
+case FIREBIRD:
 case INGRES:
 case MYSQL:
 case SQLITE:
