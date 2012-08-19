@@ -1,14 +1,3 @@
 {
-  ExecuteContext ctx=new DefaultExecuteContext(this);
-  ExecuteListener listener=new ExecuteListeners(ctx);
-  try {
-    FieldProvider fields=new MetaDataFieldProvider(this,rs.getMetaData());
-    ctx.resultSet(rs);
-    return new CursorImpl<Record>(ctx,listener,fields).fetch();
-  }
- catch (  SQLException e) {
-    ctx.sqlException(e);
-    listener.exception(ctx);
-    throw ctx.exception();
-  }
+  return fetchLazy(rs).fetch();
 }
