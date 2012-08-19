@@ -10,9 +10,13 @@ case SQLITE:
 {
     return Factory.field("substr(" + "replace(" + "replace("+ "substr("+ "quote("+ "zeroblob((({0} - length({1}) - 1 + length({2})) / length({3}) + 1) / 2)"+ "), 3"+ "), '''', ''"+ "), '0', {4}"+ "), 1, ({5} - length({6}))"+ ") || {7}",String.class,length,field,character,character,character,length,field,field);
   }
+case FIREBIRD:
+{
+  return field("cast(lpad({0}, {1}, {2}) as varchar(4000))",SQLDataType.VARCHAR,field,length,character);
+}
 default :
 {
-  return function("lpad",SQLDataType.VARCHAR,field,length,character);
+return function("lpad",SQLDataType.VARCHAR,field,length,character);
 }
 }
 }
