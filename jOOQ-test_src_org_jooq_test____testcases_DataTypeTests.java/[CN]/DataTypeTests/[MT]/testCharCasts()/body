@@ -1,0 +1,3 @@
+{
+  assertEquals("abc",create().select(field("cast('abc' as char(3))",SQLDataType.CHAR)).where(field("cast('abc' as char(3))",SQLDataType.CHAR).equal("abc")).fetchOne(0,String.class));
+}
