@@ -2,8 +2,9 @@
   List<Field<?>> list=Arrays.asList(values);
   if (list.size() > IN_LIMIT) {
 switch (context.getDialect()) {
-case ORACLE:
+case FIREBIRD:
 case INGRES:
+case ORACLE:
 case SQLSERVER:
 {
         context.sql("(").formatIndentLockStart();
