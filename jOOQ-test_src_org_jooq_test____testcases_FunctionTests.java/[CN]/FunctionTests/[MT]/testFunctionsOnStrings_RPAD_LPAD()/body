@@ -1,0 +1,16 @@
+{
+switch (getDialect()) {
+case DERBY:
+    log.info("SKIPPING","RPAD and LPAD functions");
+  break;
+default :
+{
+  Record result=create().select(rpad(val("aa"),4),rpad(val("aa"),4,"-"),lpad(val("aa"),4),lpad(val("aa"),4,"-")).fetchOne();
+  assertEquals("aa  ",result.getValue(0));
+  assertEquals("aa--",result.getValue(1));
+  assertEquals("  aa",result.getValue(2));
+  assertEquals("--aa",result.getValue(3));
+  break;
+}
+}
+}

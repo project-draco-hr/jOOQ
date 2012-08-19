@@ -1,0 +1,4 @@
+{
+  assertEquals("abc",create().select(lower("ABC")).fetchOne(0));
+  assertEquals("ABC",create().select(upper("abc")).fetchOne(0));
+}

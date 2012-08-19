@@ -1,0 +1,10 @@
+{
+  Record result=create().select(substring(val("abcde"),1),substring(val("abcde"),1,2),substring(val("abcde"),3),substring(val("abcde"),3,2)).fetchOne();
+  assertEquals("abcde",result.getValue(0));
+  assertEquals("ab",result.getValue(1));
+  assertEquals("cde",result.getValue(2));
+  assertEquals("cd",result.getValue(3));
+  result=create().select(substring(TAuthor_FIRST_NAME(),2),substring(TAuthor_FIRST_NAME(),2,2)).from(TAuthor()).where(TAuthor_ID().equal(1)).fetchOne();
+  assertEquals("eorge",result.getValue(substring(TAuthor_FIRST_NAME(),2)));
+  assertEquals("eo",result.getValue(substring(TAuthor_FIRST_NAME(),2,2)));
+}
