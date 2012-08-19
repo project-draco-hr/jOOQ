@@ -56,7 +56,7 @@ if (getGroupBy().isEmpty()) {
 if (asList(ASE,INGRES).contains(context.getDialect())) {
   context.sql("empty_grouping_dummy_table.x");
 }
- else if (asList(CUBRID,DERBY,HSQLDB,MYSQL,POSTGRES,SQLITE).contains(context.getDialect())) {
+ else if (asList(CUBRID,DERBY,FIREBIRD,HSQLDB,MYSQL,POSTGRES,SQLITE).contains(context.getDialect())) {
   context.sql("1");
 }
  else {
