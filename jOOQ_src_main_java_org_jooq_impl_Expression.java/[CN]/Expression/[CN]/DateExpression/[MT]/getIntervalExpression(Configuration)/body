@@ -69,6 +69,15 @@ if (rhs.get(0).getType() == YearToMonth.class) {
   return field("{fn {timestampadd}({sql_tsi_second}, {0}, {1}) }",getDataType(),val(sign * (long)rhsAsDTS().getTotalSeconds()),lhs);
 }
 }
+case FIREBIRD:
+{
+if (rhs.get(0).getType() == YearToMonth.class) {
+return field("{dateadd}({month}, {0}, {1})",getDataType(),val(sign * rhsAsYTM().intValue()),lhs);
+}
+ else {
+return field("{dateadd}({millisecond}, {0}, {1})",getDataType(),val(sign * (long)rhsAsDTS().getTotalMilli()),lhs);
+}
+}
 case H2:
 {
 if (rhs.get(0).getType() == YearToMonth.class) {

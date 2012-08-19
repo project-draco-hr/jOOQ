@@ -1,6 +1,7 @@
 {
 switch (configuration.getDialect()) {
 case ASE:
+case FIREBIRD:
 case SQLSERVER:
 case SYBASE:
 {
