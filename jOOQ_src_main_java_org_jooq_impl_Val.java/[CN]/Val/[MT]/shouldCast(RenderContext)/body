@@ -4,6 +4,7 @@
 switch (context.getDialect()) {
 case DB2:
 case DERBY:
+case FIREBIRD:
 case H2:
 case HSQLDB:
 case CUBRID:
