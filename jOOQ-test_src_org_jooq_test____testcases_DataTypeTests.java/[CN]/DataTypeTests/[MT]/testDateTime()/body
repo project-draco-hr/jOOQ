@@ -4,7 +4,7 @@
   if (getDialect() != SQLITE)   assertEquals(new Date(tsShift),record.getValue("d"));
   assertEquals(new Time(0),record.getValue("t"));
   assertEquals(new Timestamp(0),record.getValue("ts"));
-  if (getDialect() == ASE || getDialect() == DB2 || getDialect() == DERBY || getDialect() == CUBRID || getDialect() == H2 || getDialect() == INGRES || getDialect() == MYSQL || getDialect() == SQLSERVER || getDialect() == SQLITE || getDialect() == SYBASE) {
+  if (getDialect() == ASE || getDialect() == CUBRID || getDialect() == DB2 || getDialect() == DERBY || getDialect() == FIREBIRD || getDialect() == H2 || getDialect() == INGRES || getDialect() == MYSQL || getDialect() == SQLSERVER || getDialect() == SQLITE || getDialect() == SYBASE) {
     log.info("SKIPPING","Interval tests");
   }
  else {
