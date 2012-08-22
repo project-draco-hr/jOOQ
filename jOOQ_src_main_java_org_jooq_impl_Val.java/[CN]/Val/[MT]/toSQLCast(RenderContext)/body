@@ -19,6 +19,9 @@
  else   if (context.getDialect() == POSTGRES && (type == null || !type.isTemporal())) {
     toSQL(context,getValue(),getType());
   }
+ else   if (getValue() != null && type == SQLDataType.VARCHAR) {
+    toSQLCast(context,getDataType(context),Math.min(32672,4 * ((String)getValue()).length()));
+  }
  else {
     toSQLCast(context,getDataType(context),0,0);
   }

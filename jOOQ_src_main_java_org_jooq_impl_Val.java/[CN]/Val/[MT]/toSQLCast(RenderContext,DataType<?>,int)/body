@@ -1,0 +1,5 @@
+{
+  context.keyword("cast(");
+  toSQL(context,getValue(),getType());
+  context.keyword(" as ").sql(type.getCastTypeName(context,length)).sql(")");
+}
