@@ -1,0 +1,15 @@
+{
+  String string=(String)getValue();
+  if (string == null) {
+    return 1;
+  }
+ else {
+    int length=string.length();
+    for (int i=0; i < length; i++) {
+      if (string.charAt(i) > 127) {
+        return Math.min(32672,4 * length);
+      }
+    }
+    return Math.min(32672,length);
+  }
+}

@@ -19,8 +19,8 @@
  else   if (context.getDialect() == POSTGRES && (type == null || !type.isTemporal())) {
     toSQL(context,getValue(),getType());
   }
- else   if (getValue() != null && type == SQLDataType.VARCHAR) {
-    toSQLCast(context,getDataType(context),Math.min(32672,4 * ((String)getValue()).length()));
+ else   if (getValue() != null && type == SQLDataType.VARCHAR && asList(FIREBIRD).contains(context.getDialect())) {
+    toSQLCast(context,getDataType(context),getValueLength());
   }
  else {
     toSQLCast(context,getDataType(context),0,0);
