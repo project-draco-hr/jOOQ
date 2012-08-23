@@ -2,4 +2,5 @@
   Record record=create().select(Collections.nCopies(1000,val("abc"))).fetchOne();
   assertEquals(1000,record.size());
   assertEquals(Collections.nCopies(1000,"abc"),asList(record.intoArray()));
+  assertEquals(1,create().selectOne().where(val("abc").in(Collections.nCopies(1000,val("abc")).toArray(new Field[0]))).fetchOne(0));
 }
