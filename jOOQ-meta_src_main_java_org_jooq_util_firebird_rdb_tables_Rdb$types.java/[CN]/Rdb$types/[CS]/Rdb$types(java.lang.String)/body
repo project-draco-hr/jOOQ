@@ -1,3 +1,0 @@
-{
-  super(alias,null,org.jooq.util.firebird.rdb.tables.Rdb$types.RDB$TYPES);
-}
