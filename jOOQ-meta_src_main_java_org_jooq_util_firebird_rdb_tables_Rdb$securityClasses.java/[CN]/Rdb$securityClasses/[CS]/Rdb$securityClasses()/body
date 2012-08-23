@@ -1,0 +1,3 @@
+{
+  super("RDB$SECURITY_CLASSES");
+}

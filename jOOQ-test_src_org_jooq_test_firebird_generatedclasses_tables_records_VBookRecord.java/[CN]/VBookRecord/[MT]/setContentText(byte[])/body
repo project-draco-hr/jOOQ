@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.firebird.generatedclasses.tables.VBook.V_BOOK.CONTENT_TEXT,value);
+}

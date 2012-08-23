@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.firebird.generatedclasses.tables.VAuthor.V_AUTHOR.YEAR_OF_BIRTH,value);
+}

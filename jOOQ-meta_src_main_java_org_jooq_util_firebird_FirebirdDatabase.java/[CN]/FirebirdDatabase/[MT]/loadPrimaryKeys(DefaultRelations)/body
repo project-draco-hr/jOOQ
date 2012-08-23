@@ -1,0 +1,15 @@
+{
+  Rdb$relations r=RDB$RELATIONS.as("r");
+  Rdb$relationConstraints rc=RDB$RELATION_CONSTRAINTS.as("rc");
+  Rdb$indexSegments is=RDB$INDEX_SEGMENTS.as("is");
+  for (  String tableName : create().select(r.RDB$RELATION_NAME.trim()).from(r).where(r.RDB$VIEW_BLR.isNull()).orderBy(1).fetch(r.RDB$RELATION_NAME.trim())) {
+    for (    String fieldName : create().select(is.RDB$FIELD_NAME).from(rc).join(is).on(is.RDB$INDEX_NAME.eq(rc.RDB$INDEX_NAME)).where(rc.RDB$RELATION_NAME.eq(tableName)).and(rc.RDB$CONSTRAINT_TYPE.eq("PRIMARY KEY")).fetch(is.RDB$FIELD_NAME)) {
+      String key="PK_" + tableName + "_"+ fieldName;
+      TableDefinition td=this.getTable(this.getSchemata().get(0),tableName);
+      if (td != null) {
+        ColumnDefinition cd=td.getColumn(fieldName);
+        relations.addPrimaryKey(fieldName,cd);
+      }
+    }
+  }
+}

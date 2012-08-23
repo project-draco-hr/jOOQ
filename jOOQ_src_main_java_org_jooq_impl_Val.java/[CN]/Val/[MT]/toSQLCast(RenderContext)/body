@@ -1,25 +1,26 @@
 {
   SQLDataType<T> type=getDataType(context).getSQLDataType();
-  if (getValue() != null && getType() == BigDecimal.class && asList(CUBRID,DB2,DERBY,HSQLDB).contains(context.getDialect())) {
+  SQLDialect dialect=context.getDialect();
+  if (getValue() != null && getType() == BigDecimal.class && asList(CUBRID,DB2,DERBY,HSQLDB).contains(dialect)) {
     int scale=((BigDecimal)getValue()).scale();
     int precision=scale + ((BigDecimal)getValue()).precision();
     toSQLCast(context,getDataType(context),precision,scale);
   }
  else   if (SQLDataType.OTHER == type) {
     if (value != null) {
-      toSQLCast(context,FieldTypeHelper.getDataType(context.getDialect(),value.getClass()),0,0);
+      toSQLCast(context,FieldTypeHelper.getDataType(dialect,value.getClass()),0,0);
     }
- else     if (asList(INGRES,SYBASE).contains(context.getDialect())) {
+ else     if (asList(INGRES,SYBASE).contains(dialect)) {
       context.sql(getBindVariable(context));
     }
  else {
-      toSQLCast(context,FieldTypeHelper.getDataType(context.getDialect(),String.class),0,0);
+      toSQLCast(context,FieldTypeHelper.getDataType(dialect,String.class),0,0);
     }
   }
- else   if (context.getDialect() == POSTGRES && (type == null || !type.isTemporal())) {
+ else   if (dialect == POSTGRES && (type == null || !type.isTemporal())) {
     toSQL(context,getValue(),getType());
   }
- else   if (getValue() != null && type == SQLDataType.VARCHAR && asList(FIREBIRD).contains(context.getDialect())) {
+ else   if (getValue() != null && (type == SQLDataType.VARCHAR || type == SQLDataType.CHAR) && asList(FIREBIRD).contains(dialect)) {
     toSQLCast(context,getDataType(context),getValueLength());
   }
  else {

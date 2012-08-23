@@ -1,0 +1,33 @@
+{
+  Rdb$relationConstraints rc=RDB$RELATION_CONSTRAINTS.as("rc");
+  Rdb$dependencies d1=RDB$DEPENDENCIES.as("d1");
+  Rdb$dependencies d2=RDB$DEPENDENCIES.as("d2");
+  for (  TableDefinition table : getTables(getSchemata().get(0))) {
+    Map<String,Integer> map=new HashMap<String,Integer>();
+    for (    Record record : create().selectDistinct(rc.RDB$CONSTRAINT_NAME,rc.RDB$RELATION_NAME,d1.RDB$FIELD_NAME,d2.RDB$DEPENDED_ON_NAME,d2.RDB$FIELD_NAME).from(rc).leftOuterJoin(d1).on(d1.RDB$DEPENDED_ON_NAME.eq(rc.RDB$RELATION_NAME)).leftOuterJoin(d2).on(d1.RDB$DEPENDENT_NAME.eq(d2.RDB$DEPENDENT_NAME)).where(rc.RDB$CONSTRAINT_TYPE.eq("FOREIGN KEY")).and(d1.RDB$DEPENDED_ON_NAME.ne(d2.RDB$DEPENDED_ON_NAME)).and(d1.RDB$FIELD_NAME.ne(d2.RDB$FIELD_NAME)).and(rc.RDB$RELATION_NAME.eq(table.getName())).fetch()) {
+      String fkPrefix="FK_" + record.getValue(rc.RDB$RELATION_NAME) + "_TO_"+ record.getValue(d2.RDB$DEPENDED_ON_NAME);
+      Integer sequence=map.get(fkPrefix);
+      if (sequence == null) {
+        sequence=new Integer(0);
+        map.put(fkPrefix,sequence);
+      }
+ else {
+        sequence=sequence + 1;
+      }
+      String fkName=fkPrefix + "_" + sequence;
+      String tableName=table.getName();
+      String fieldName=record.getValue(d1.RDB$FIELD_NAME);
+      String foreignTableName=record.getValue(d2.RDB$DEPENDED_ON_NAME);
+      String foreignFieldName=record.getValue(d2.RDB$FIELD_NAME);
+      TableDefinition tdReferencing=getTable(getSchemata().get(0),tableName,true);
+      TableDefinition tdReferenced=getTable(getSchemata().get(0),foreignTableName,true);
+      if (tdReferenced != null) {
+        String pkName="PK_" + foreignTableName + "_"+ foreignFieldName;
+        if (tdReferencing != null) {
+          ColumnDefinition referencingColumn=tdReferencing.getColumn(fieldName);
+          relations.addForeignKey(fkName,pkName,referencingColumn,getSchemata().get(0));
+        }
+      }
+    }
+  }
+}

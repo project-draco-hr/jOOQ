@@ -1,0 +1,3 @@
+{
+  super(alias,null,org.jooq.test.firebird.generatedclasses.tables.T_785.T_785);
+}

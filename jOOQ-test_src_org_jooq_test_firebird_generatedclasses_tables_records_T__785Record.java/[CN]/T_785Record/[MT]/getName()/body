@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.test.firebird.generatedclasses.tables.T_785.T_785.NAME);
+}

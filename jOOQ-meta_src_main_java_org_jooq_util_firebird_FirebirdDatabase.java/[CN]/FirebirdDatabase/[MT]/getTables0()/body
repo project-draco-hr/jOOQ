@@ -1,0 +1,9 @@
+{
+  List<TableDefinition> result=new ArrayList<TableDefinition>();
+  for (  Record recTableName : create().select(RDB$RELATIONS.RDB$RELATION_NAME.trim()).from(RDB$RELATIONS).orderBy(1).fetch()) {
+    String tableName=recTableName.getValueAsString(0);
+    TableDefinition tableDef=new FirebirdTableDefinition(getSchemata().get(0),tableName,"");
+    result.add(tableDef);
+  }
+  return result;
+}

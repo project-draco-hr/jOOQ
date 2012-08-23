@@ -1,0 +1,8 @@
+{
+  Schema schema=new Schema();
+  schema.setInputSchema("");
+  schema.setOutputSchema("");
+  List<Schema> schemata=new ArrayList<Schema>();
+  schemata.add(schema);
+  setConfiguredSchemata(schemata);
+}

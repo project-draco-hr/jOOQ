@@ -1,0 +1,3 @@
+{
+  super("RDB$VIEW_RELATIONS");
+}

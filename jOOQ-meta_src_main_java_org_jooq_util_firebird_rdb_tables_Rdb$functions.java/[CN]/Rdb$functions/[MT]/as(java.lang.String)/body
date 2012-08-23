@@ -1,0 +1,3 @@
+{
+  return new org.jooq.util.firebird.rdb.tables.Rdb$functions(alias);
+}

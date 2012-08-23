@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.test.firebird.generatedclasses.tables.TBookToBookStore.T_BOOK_TO_BOOK_STORE.BOOK_ID);
+}
