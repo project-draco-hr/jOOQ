@@ -20,7 +20,7 @@
  else   if (dialect == POSTGRES && (type == null || !type.isTemporal())) {
     toSQL(context,getValue(),getType());
   }
- else   if (getValue() != null && (type == SQLDataType.VARCHAR || type == SQLDataType.CHAR) && asList(FIREBIRD).contains(dialect)) {
+ else   if ((type == SQLDataType.VARCHAR || type == SQLDataType.CHAR) && asList(FIREBIRD).contains(dialect)) {
     toSQLCast(context,getDataType(context),getValueLength());
   }
  else {
