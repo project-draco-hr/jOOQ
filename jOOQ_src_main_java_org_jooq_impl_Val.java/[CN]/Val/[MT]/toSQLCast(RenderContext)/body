@@ -1,9 +1,12 @@
 {
   SQLDataType<T> type=getDataType(context).getSQLDataType();
   SQLDialect dialect=context.getDialect();
-  if (getValue() != null && getType() == BigDecimal.class && asList(CUBRID,DB2,DERBY,HSQLDB).contains(dialect)) {
+  if (getValue() != null && getType() == BigDecimal.class && asList(CUBRID,DB2,DERBY,FIREBIRD,HSQLDB).contains(dialect)) {
     int scale=((BigDecimal)getValue()).scale();
     int precision=scale + ((BigDecimal)getValue()).precision();
+    if (dialect == FIREBIRD) {
+      precision=Math.min(precision,18);
+    }
     toSQLCast(context,getDataType(context),precision,scale);
   }
  else   if (SQLDataType.OTHER == type) {
