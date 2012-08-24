@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.firebird.generatedclasses.tables.records.T_937Record>>asList(org.jooq.test.firebird.generatedclasses.Keys.T_937);
+}

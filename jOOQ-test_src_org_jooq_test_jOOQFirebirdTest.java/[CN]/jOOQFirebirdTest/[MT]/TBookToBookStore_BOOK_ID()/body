@@ -1,3 +1,3 @@
 {
-  return TBookToBookStore.BOOK_ID;
+  return T_BOOK_TO_BOOK_STORE.BOOK_ID;
 }

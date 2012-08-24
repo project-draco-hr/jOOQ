@@ -1,3 +1,3 @@
 {
-  return TBooleans.Y_N_UC;
+  return T_BOOLEANS.Y_N_UC;
 }
