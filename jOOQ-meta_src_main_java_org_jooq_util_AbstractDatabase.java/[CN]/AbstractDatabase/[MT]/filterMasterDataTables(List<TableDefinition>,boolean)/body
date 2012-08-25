@@ -4,6 +4,7 @@
     for (    MasterDataTable table : configuredMasterDataTables) {
       if (definition.getName().equals(table.getName())) {
         if (include) {
+          log.info("DEPRECATION","Master data tables have been deprecated in jOOQ 2.5.0 and will be removed in jOOQ 3.0. Do not reuse this feature");
           result.add((T)new DefaultMasterDataTableDefinition(definition));
         }
         continue definitionLoop;

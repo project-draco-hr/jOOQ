@@ -27,7 +27,7 @@
       for (      Field<?> field : groupingFields) {
         join=join.and(condition(pivot,field));
       }
-      Select<?> aggregateSelect=create(context).select(aggregateFunction).from(table).where(on.equal((Field<T>)inField)).and(join);
+      @SuppressWarnings("unchecked") Select<?> aggregateSelect=create(context).select(aggregateFunction).from(table).where(on.equal((Field<T>)inField)).and(join);
       aggregationSelects.add(aggregateSelect.asField(inField.getName() + "_" + aggregateFunction.getName()));
     }
   }

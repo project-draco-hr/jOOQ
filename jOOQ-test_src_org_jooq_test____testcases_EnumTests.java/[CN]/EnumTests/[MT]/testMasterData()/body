@@ -6,13 +6,13 @@
   jOOQAbstractTest.reset=false;
   B book=create().fetchOne(TBook(),TBook_TITLE().equal("1984"));
   Enum<?> value=(Enum<?>)book.getValue(TBook_LANGUAGE_ID());
-  assertEquals(Integer.valueOf(1),((MasterDataType<?>)value).getPrimaryKey());
+  assertEquals(Integer.valueOf(1),((org.jooq.MasterDataType<?>)value).getPrimaryKey());
   assertEquals("en",value.name());
   book.setValue((Field)TBook_LANGUAGE_ID(),Enum.valueOf(value.getClass(),"de"));
   book.store();
   book=create().fetchOne(TBook(),TBook_TITLE().equal("1984"));
   value=(Enum<?>)book.getValue(TBook_LANGUAGE_ID());
-  assertEquals(Integer.valueOf(2),((MasterDataType<?>)value).getPrimaryKey());
+  assertEquals(Integer.valueOf(2),((org.jooq.MasterDataType<?>)value).getPrimaryKey());
   assertEquals("de",value.name());
   T658 master=create().fetchOne(T658());
   assertNotNull(master);

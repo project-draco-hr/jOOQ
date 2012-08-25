@@ -1,6 +1,6 @@
 {
   if (!isInline(context)) {
-    if (!(getValue() instanceof EnumType) && !(getValue() instanceof MasterDataType)) {
+    if (!(getValue() instanceof EnumType) && !(getValue() instanceof org.jooq.MasterDataType)) {
 switch (context.getDialect()) {
 case DB2:
 case DERBY:

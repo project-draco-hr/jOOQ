@@ -97,8 +97,8 @@
  else     if (EnumType.class.isAssignableFrom(type)) {
       toSQL(context,((EnumType)val).getLiteral());
     }
- else     if (MasterDataType.class.isAssignableFrom(type)) {
-      toSQL(context,((MasterDataType<?>)val).getPrimaryKey());
+ else     if (org.jooq.MasterDataType.class.isAssignableFrom(type)) {
+      toSQL(context,((org.jooq.MasterDataType<?>)val).getPrimaryKey());
     }
  else     if (UDTRecord.class.isAssignableFrom(type)) {
       context.sql("[UDT]");
