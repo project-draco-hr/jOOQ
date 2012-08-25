@@ -1,3 +1,0 @@
-{
-  return isInline() || (context.getDialect() == FIREBIRD && value == null);
-}
