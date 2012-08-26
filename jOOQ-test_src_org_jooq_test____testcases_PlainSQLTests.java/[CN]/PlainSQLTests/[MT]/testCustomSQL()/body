@@ -6,6 +6,9 @@
       if (context.inline()) {
         context.sql(TBook_ID().getName() + " * 2");
       }
+ else       if (context.getDialect() == FIREBIRD) {
+        context.sql(TBook_ID().getName() + " * cast (? as int)");
+      }
  else {
         context.sql(TBook_ID().getName() + " * ?");
       }
