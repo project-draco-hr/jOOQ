@@ -1,5 +1,5 @@
 {
-  if (symmetric && asList(CUBRID,DB2,DERBY,FIREBIRD,H2,MYSQL,ORACLE,SQLSERVER,SQLITE,SYBASE).contains(context.getDialect())) {
+  if (symmetric && asList(ASE,CUBRID,DB2,DERBY,FIREBIRD,H2,MYSQL,ORACLE,SQLSERVER,SQLITE,SYBASE).contains(context.getDialect())) {
     simulateSymmetric().bind(context);
   }
  else {
