@@ -1,6 +1,6 @@
 {
   jOOQAbstractTest.reset=false;
-  int[] result=create().batch(create().insertInto(TAuthor()).set(TAuthor_ID(),8).set(TAuthor_LAST_NAME(),"Gamma")).bind(8,"Gamma").bind(9,"Helm").bind(10,"Johnson").execute();
+  int[] result=create().batch(create().insertInto(TAuthor()).set(TAuthor_ID(),8).set(TAuthor_LAST_NAME(),"           ")).bind(8,"Gamma").bind(9,"Helm").bind(10,"Johnson").execute();
   assertEquals(3,result.length);
   testBatchAuthors("Gamma","Helm","Johnson");
 }
