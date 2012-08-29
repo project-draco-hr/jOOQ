@@ -1,0 +1,10 @@
+{
+  context.sql("(");
+  String separator="";
+  for (  Field<?> field : fields) {
+    context.sql(separator);
+    context.sql(field);
+    separator=", ";
+  }
+  context.sql(")");
+}

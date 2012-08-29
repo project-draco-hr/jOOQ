@@ -1,0 +1,4 @@
+{
+  QueryPartList<QueryPart> list=new QueryPartList<QueryPart>(tuples);
+  return new TupleInCondition(list,InOperator.IN);
+}
