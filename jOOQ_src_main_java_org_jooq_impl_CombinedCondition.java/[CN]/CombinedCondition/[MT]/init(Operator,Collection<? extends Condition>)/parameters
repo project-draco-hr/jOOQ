@@ -1,0 +1,2 @@
+Operator op
+Collection<? extends Condition> cond

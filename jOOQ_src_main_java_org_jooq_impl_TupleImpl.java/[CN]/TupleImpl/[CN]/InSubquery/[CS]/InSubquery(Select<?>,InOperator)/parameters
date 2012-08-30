@@ -1,2 +1,2 @@
-QueryPart other
+Select<?> other
 InOperator operator

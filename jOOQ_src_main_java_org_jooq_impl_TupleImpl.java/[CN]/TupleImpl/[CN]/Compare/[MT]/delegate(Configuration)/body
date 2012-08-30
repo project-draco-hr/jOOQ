@@ -1,0 +1,16 @@
+{
+  if (asList(ASE,DERBY,FIREBIRD,INGRES,SQLSERVER,SQLITE,SYBASE).contains(configuration.getDialect())) {
+    List<Condition> conditions=new ArrayList<Condition>();
+    for (int i=0; i < fields.length; i++) {
+      conditions.add(fields[i].equal((Field)other.fields[i]));
+    }
+    Condition result=new CombinedCondition(Operator.AND,conditions);
+    if (comparator == NOT_EQUALS) {
+      result=result.not();
+    }
+    return (QueryPartInternal)result;
+  }
+ else {
+    return new Native();
+  }
+}

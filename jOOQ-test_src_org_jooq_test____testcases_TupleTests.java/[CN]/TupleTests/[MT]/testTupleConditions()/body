@@ -1,17 +1,8 @@
 {
-  if (asList(ASE,DERBY,FIREBIRD,INGRES,SQLSERVER,SQLITE,SYBASE).contains(getDialect())) {
-    log.info("SKIPPING","Tuple condition tests");
-    return;
-  }
   assertEquals(1,(int)create().selectOne().where(tuple(1,2,3).equal(1,2,3)).and(tuple(1,2,3).ne(3,2,1)).fetchOne(0,Integer.class));
-  if (asList(DB2).contains(getDialect())) {
-    log.info("SKIPPING","Tuples and IN-predicates");
-  }
- else {
-    assertEquals(1,(int)create().selectOne().where(tuple(1,2,3).in(tuple(3,3,3),tuple(2,3,1),tuple(1,2,3))).and(tuple(1,2,3).notIn(tuple(3,3,3),tuple(2,3,1))).fetchOne(0,Integer.class));
-  }
+  assertEquals(1,(int)create().selectOne().where(tuple(1,2,3).in(tuple(3,3,3),tuple(2,3,1),tuple(1,2,3))).and(tuple(1,2,3).notIn(tuple(3,3,3),tuple(2,3,1))).fetchOne(0,Integer.class));
   assertEquals(asList(1,2),create().select(TBook_ID()).from(TBook()).where(tuple(TBook_ID()).equal(1)).or(tuple(TBook_ID(),inline(2)).equal(2,2)).or(tuple(TBook_ID(),inline(2),val(3)).equal(1,2,3)).or(tuple("1","2","3","4").equal(TBook_TITLE(),TBook_TITLE(),TBook_TITLE(),TBook_TITLE())).or(tuple(TBook_ID(),TBook_ID(),TBook_ID(),TBook_ID(),TBook_ID()).notEqual(tuple(TBook_ID(),TBook_ID(),TBook_ID(),TBook_ID(),TBook_ID()))).or(tuple(1,2,3,4,5,6).eq(6,5,4,3,2,1)).or(tuple(1,2,3,4,5,6,7).eq(1,2,3,4,5,6,0)).or(tuple(1,2,3,4,5,6,7,8).eq(1,2,3,4,5,6,7,0)).or(tuple(1,2,3,4,5,6,7,8,9).eq(1,2,3,4,5,6,7,8,0)).orderBy(TBook_ID()).fetch(TBook_ID()));
-  if (asList(H2).contains(getDialect())) {
+  if (asList(ASE,DERBY,FIREBIRD,INGRES,SQLSERVER,SQLITE,SYBASE,H2).contains(getDialect())) {
     log.info("SKIPPING","Tuples and subselects");
   }
  else {

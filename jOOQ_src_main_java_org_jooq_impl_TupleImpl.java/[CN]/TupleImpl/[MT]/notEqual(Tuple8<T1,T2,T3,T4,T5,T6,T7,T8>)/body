@@ -1,3 +1,3 @@
 {
-  return new TupleCompareCondition(tuple,Comparator.NOT_EQUALS);
+  return new Compare(tuple,Comparator.NOT_EQUALS);
 }
