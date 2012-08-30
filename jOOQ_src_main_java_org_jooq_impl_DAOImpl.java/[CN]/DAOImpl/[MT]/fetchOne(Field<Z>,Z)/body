@@ -1,3 +1,4 @@
 {
-  return create.selectFrom(table).where(field.equal(value)).fetchOne().into(type);
+  R record=create.selectFrom(table).where(field.equal(value)).fetchOne();
+  return record == null ? null : record.into(type);
 }
