@@ -1,0 +1,20 @@
+{
+  DataType<?> type0=fields[0].getDataType();
+  DataType<?> type1=fields[1].getDataType();
+  boolean standardOverlaps=type0.isDateTime() && type1.isTemporal();
+  boolean intervalOverlaps=type0.isDateTime() && (type1.isInterval() || type1.isNumeric());
+  if (!standardOverlaps || asList(ASE,CUBRID,DB2,DERBY,FIREBIRD,H2,INGRES,MYSQL,SQLSERVER,SQLITE,SYBASE).contains(configuration.getDialect())) {
+    if (intervalOverlaps) {
+      return (QueryPartInternal)other.fields[0].le((Field)fields[0].add(fields[1])).and(fields[0].le((Field)other.fields[0].add(other.fields[1])));
+    }
+ else {
+      return (QueryPartInternal)other.fields[0].le((Field)fields[1]).and(fields[0].le((Field)other.fields[1]));
+    }
+  }
+ else   if (intervalOverlaps && asList(HSQLDB).contains(configuration.getDialect())) {
+    return (QueryPartInternal)other.fields[0].le((Field)fields[0].add(fields[1])).and(fields[0].le((Field)other.fields[0].add(other.fields[1])));
+  }
+ else {
+    return new Native();
+  }
+}

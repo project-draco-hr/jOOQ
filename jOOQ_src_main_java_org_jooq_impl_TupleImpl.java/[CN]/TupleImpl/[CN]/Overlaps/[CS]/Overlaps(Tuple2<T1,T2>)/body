@@ -1,0 +1,3 @@
+{
+  this.other=(TupleImpl<T1,T2,?,?,?,?,?,?>)other;
+}
