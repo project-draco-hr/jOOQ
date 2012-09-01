@@ -1,7 +1,6 @@
 {
   this.field=field;
   this.minValue=minValue;
-  this.maxValue=maxValue;
   this.not=not;
   this.symmetric=symmetric;
 }
