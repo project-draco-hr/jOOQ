@@ -1,0 +1,8 @@
+{
+  if (value == null) {
+    setValue(org.jooq.test.cubrid.generatedclasses.tables.XTestCase_71.TEST_CASE_64_69_ID,null);
+  }
+ else {
+    setValue(org.jooq.test.cubrid.generatedclasses.tables.XTestCase_71.TEST_CASE_64_69_ID,value.getValue(org.jooq.test.cubrid.generatedclasses.tables.XTestCase_64_69.ID));
+  }
+}

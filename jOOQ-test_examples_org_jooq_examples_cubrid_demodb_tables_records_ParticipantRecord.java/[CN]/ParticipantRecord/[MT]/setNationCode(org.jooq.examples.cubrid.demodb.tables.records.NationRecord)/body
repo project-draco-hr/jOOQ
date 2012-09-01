@@ -1,0 +1,8 @@
+{
+  if (value == null) {
+    setValue(org.jooq.examples.cubrid.demodb.tables.Participant.PARTICIPANT.NATION_CODE,null);
+  }
+ else {
+    setValue(org.jooq.examples.cubrid.demodb.tables.Participant.PARTICIPANT.NATION_CODE,value.getValue(org.jooq.examples.cubrid.demodb.tables.Nation.NATION.CODE));
+  }
+}

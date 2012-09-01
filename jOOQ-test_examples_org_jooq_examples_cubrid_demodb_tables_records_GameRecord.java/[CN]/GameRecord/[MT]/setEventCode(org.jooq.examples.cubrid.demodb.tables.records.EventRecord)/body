@@ -1,0 +1,8 @@
+{
+  if (value == null) {
+    setValue(org.jooq.examples.cubrid.demodb.tables.Game.GAME.EVENT_CODE,null);
+  }
+ else {
+    setValue(org.jooq.examples.cubrid.demodb.tables.Game.GAME.EVENT_CODE,value.getValue(org.jooq.examples.cubrid.demodb.tables.Event.EVENT.CODE));
+  }
+}
