@@ -2,7 +2,6 @@
   String string=sb.toString();
   StringBuilder staticInits=new StringBuilder();
   StringBuilder inits=new StringBuilder();
-  StringBuilder warnings=new StringBuilder();
   boolean hasStaticInits=false;
   boolean hasInits=false;
   for (  String statement : staticInitialisationStatements) {
@@ -41,7 +40,6 @@
   }
   string=string.replaceAll(STATIC_INITIALISATION_STATEMENT + "\\n",Matcher.quoteReplacement(staticInits.toString()));
   string=string.replaceAll(INITIALISATION_STATEMENT + "\\n",Matcher.quoteReplacement(inits.toString()));
-  string=string.replaceAll(SUPPRESS_WARNINGS_STATEMENT + "\\n",Matcher.quoteReplacement(warnings.toString()));
   string=string.replaceAll(SERIAL_STATEMENT,Matcher.quoteReplacement(String.valueOf(string.hashCode())));
   writer.append(string);
   writer.close();

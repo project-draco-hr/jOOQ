@@ -1,3 +1,0 @@
-{
-  println(SUPPRESS_WARNINGS_STATEMENT);
-}
