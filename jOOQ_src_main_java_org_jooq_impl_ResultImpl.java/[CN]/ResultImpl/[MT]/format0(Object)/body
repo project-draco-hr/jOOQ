@@ -12,6 +12,9 @@
  else   if (value instanceof EnumType) {
     formatted=((EnumType)value).getLiteral();
   }
+ else   if (value instanceof Number) {
+    formatted=value.toString().replaceAll("(?:(\\..*[^0])0+|\\.0+)$","$1");
+  }
  else {
     formatted=value.toString();
   }

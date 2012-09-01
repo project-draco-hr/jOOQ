@@ -1,0 +1,13 @@
+{
+  jOOQAbstractTest.reset=false;
+  create().insertInto(T639(),T639_ID(),T639_BIG_DECIMAL()).values(1,null).values(2,new BigDecimal("0")).values(3,new BigDecimal("1")).values(4,new BigDecimal("1.2")).values(5,new BigDecimal("1.23")).values(6,new BigDecimal("1.23456789")).values(7,new BigDecimal("12.3")).values(8,new BigDecimal("123.4")).values(9,new BigDecimal("1234.5")).values(10,new BigDecimal("12345678.9")).values(11,new BigDecimal("0.1")).values(12,new BigDecimal("0.12")).values(13,new BigDecimal("0.123456789")).execute();
+  String format=create().select(T639_ID(),T639_BIG_DECIMAL()).from(T639()).fetch().format();
+  Set<Integer> decimalPointIndexSet=new HashSet<Integer>();
+  for (  String formatLine : format.split("\n")) {
+    if (formatLine.startsWith("|")) {
+      decimalPointIndexSet.add(formatLine.indexOf("."));
+    }
+  }
+  decimalPointIndexSet.remove(-1);
+  assertEquals(1,decimalPointIndexSet.size());
+}

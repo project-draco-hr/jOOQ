@@ -1,0 +1,8 @@
+{
+  int decimalPlaces=0;
+  int dotIndex=value.indexOf(".");
+  if (dotIndex != -1) {
+    decimalPlaces=value.length() - dotIndex - 1;
+  }
+  return decimalPlaces;
+}
