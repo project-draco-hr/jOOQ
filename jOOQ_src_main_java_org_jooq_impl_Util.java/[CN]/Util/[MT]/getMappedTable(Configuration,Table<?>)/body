@@ -1,6 +1,7 @@
 {
-  if (configuration.getSchemaMapping() != null) {
-    return configuration.getSchemaMapping().map(table);
+  SchemaMapping mapping=configuration.getSchemaMapping();
+  if (mapping != null) {
+    return mapping.map(table);
   }
  else {
     return table;
