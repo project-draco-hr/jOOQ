@@ -1,0 +1,5 @@
+{
+  Field<?>[] result=new Field[fields.length];
+  System.arraycopy(fields,0,result,0,fields.length);
+  return result;
+}
