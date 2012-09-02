@@ -1,7 +1,8 @@
 {
-  Settings settings2=SettingsTools.defaultSettings();
-  settings.setAttachRecords(false);
-  assertTrue(settings2.isAttachRecords());
-  assertTrue(SettingsTools.defaultSettings().isAttachRecords());
-  assertFalse(settings.isAttachRecords());
+  Settings settings1=new Settings();
+  Settings settings2=SettingsTools.clone(settings1);
+  assertEquals(settings1.isAttachRecords(),settings2.isAttachRecords());
+  assertEquals(settings1.getExecuteListeners(),settings2.getExecuteListeners());
+  settings1.getExecuteListeners().add("asdf");
+  assertEquals(settings1.getExecuteListeners().size(),settings2.getExecuteListeners().size() + 1);
 }
