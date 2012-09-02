@@ -99,22 +99,23 @@ assertEquals(2,result2.size());
 }
 switch (getDialect()) {
 case MYSQL:
+case POSTGRES:
 log.info("SKIPPING","FOR UPDATE OF tests");
 break;
-case DB2:
-case DERBY:
-case H2:
-case HSQLDB:
-case INGRES:
-case ORACLE:
-case SYBASE:
+default :
 {
 Result<Record> result=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().of(TAuthor_ID(),TAuthor_LAST_NAME(),TAuthor_FIRST_NAME()).fetch();
 assertEquals(2,result.size());
 Result<A> result2=create().selectFrom(TAuthor()).forUpdate().of(TAuthor_ID(),TAuthor_LAST_NAME(),TAuthor_FIRST_NAME()).fetch();
 assertEquals(2,result2.size());
 }
+}
+switch (getDialect()) {
+case MYSQL:
+log.info("SKIPPING","FOR UPDATE OF tests");
+break;
 case POSTGRES:
+default :
 {
 Result<Record> result=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().of(TAuthor()).fetch();
 assertEquals(2,result.size());
