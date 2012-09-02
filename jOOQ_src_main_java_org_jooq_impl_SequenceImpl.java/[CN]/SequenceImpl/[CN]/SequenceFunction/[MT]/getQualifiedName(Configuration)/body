@@ -1,10 +1,10 @@
 {
   RenderContext local=create(configuration).renderContext();
-  Schema mappedSchema=Util.getMappedSchema(configuration,sequence.schema);
+  Schema mappedSchema=Util.getMappedSchema(configuration,schema);
   if (mappedSchema != null && configuration.getDialect() != CUBRID) {
     local.sql(mappedSchema);
     local.sql(".");
   }
-  local.literal(sequence.name);
+  local.literal(name);
   return local.render();
 }

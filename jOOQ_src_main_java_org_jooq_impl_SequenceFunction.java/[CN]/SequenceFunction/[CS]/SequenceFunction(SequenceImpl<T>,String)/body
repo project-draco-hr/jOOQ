@@ -1,5 +1,0 @@
-{
-  super(method,sequence.type);
-  this.sequence=sequence;
-  this.method=method;
-}

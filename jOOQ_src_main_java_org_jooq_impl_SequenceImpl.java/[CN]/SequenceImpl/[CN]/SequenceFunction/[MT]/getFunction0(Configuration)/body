@@ -1,5 +1,6 @@
 {
-switch (configuration.getDialect()) {
+  SQLDialect dialect=configuration.getDialect();
+switch (dialect) {
 case DB2:
 case INGRES:
 case ORACLE:
@@ -14,6 +15,7 @@ case POSTGRES:
     String field=method + "('" + getQualifiedName(configuration)+ "')";
     return field(field,getDataType());
   }
+case FIREBIRD:
 case DERBY:
 case HSQLDB:
 {
@@ -21,8 +23,11 @@ case HSQLDB:
     String field="next value for " + getQualifiedName(configuration);
     return field(field,getDataType());
   }
+ else   if (dialect == FIREBIRD) {
+    return field("gen_id(" + getQualifiedName(configuration) + ", 0)",getDataType());
+  }
  else {
-    throw new SQLDialectNotSupportedException("The sequence's current value functionality is not supported for the " + configuration.getDialect() + " dialect.");
+    throw new SQLDialectNotSupportedException("The sequence's current value functionality is not supported for the " + dialect + " dialect.");
   }
 }
 case CUBRID:
