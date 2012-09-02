@@ -1,14 +1,3 @@
 {
-  try {
-    ByteArrayOutputStream out=new ByteArrayOutputStream();
-    ObjectOutputStream o=new ObjectOutputStream(out);
-    o.writeObject(settings);
-    o.flush();
-    ByteArrayInputStream in=new ByteArrayInputStream(out.toByteArray());
-    ObjectInputStream i=new ObjectInputStream(in);
-    return (Settings)i.readObject();
-  }
- catch (  Exception ignore) {
-    throw new RuntimeException(ignore);
-  }
+  return (Settings)settings.clone();
 }

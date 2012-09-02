@@ -1,0 +1,7 @@
+{
+  Settings settings2=SettingsTools.defaultSettings();
+  settings.setAttachRecords(false);
+  assertTrue(settings2.isAttachRecords());
+  assertTrue(SettingsTools.defaultSettings().isAttachRecords());
+  assertFalse(settings.isAttachRecords());
+}
