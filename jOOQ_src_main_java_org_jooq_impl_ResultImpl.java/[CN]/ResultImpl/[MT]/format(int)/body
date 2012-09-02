@@ -2,7 +2,7 @@
   final int COL_MIN_WIDTH=4;
   final int COL_MAX_WIDTH=50;
   final int NUM_COL_MAX_WIDTH=100;
-  final int MAX_RECORDS=50;
+  final int MAX_RECORDS=min(50,maxRecords);
   Map<Field<?>,Integer> decimalPlacesMap=new HashMap<Field<?>,Integer>();
   for (  Field<?> f : getFields()) {
     if (Number.class.isAssignableFrom(f.getType())) {
