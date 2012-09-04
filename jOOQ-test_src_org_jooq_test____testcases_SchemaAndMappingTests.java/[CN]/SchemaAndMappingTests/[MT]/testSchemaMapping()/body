@@ -31,7 +31,7 @@ case SYBASE:
 log.info("SKIPPING","Schema mapping test");
 return;
 case MYSQL:
-if (delegate.getClass() == jOOQMySQLTestSchemaRewrite.class) {
+if (delegate.getClass() == MySQLTestSchemaRewrite.class) {
 log.info("SKIPPING","Schema mapping test");
 return;
 }
