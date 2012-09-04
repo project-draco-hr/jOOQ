@@ -5,6 +5,9 @@
   for (  Field<?> field : getFields()) {
     sb.append("<field name=\"");
     sb.append(escapeXML(field.getName()));
+    sb.append("\" ");
+    sb.append("type=\"");
+    sb.append(field.getDataType().getTypeName().toUpperCase());
     sb.append("\"/>");
   }
   sb.append("</fields>");

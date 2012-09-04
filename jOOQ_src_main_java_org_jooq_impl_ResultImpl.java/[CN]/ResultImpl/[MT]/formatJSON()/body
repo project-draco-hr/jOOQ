@@ -1,8 +1,12 @@
 {
-  List<String> f=new ArrayList<String>();
+  List<Map<String,String>> f=new ArrayList<Map<String,String>>();
   List<List<Object>> r=new ArrayList<List<Object>>();
+  Map<String,String> fieldMap;
   for (  Field<?> field : getFields()) {
-    f.add(field.getName());
+    fieldMap=new LinkedHashMap<String,String>();
+    fieldMap.put("name",field.getName());
+    fieldMap.put("type",field.getDataType().getTypeName().toUpperCase());
+    f.add(fieldMap);
   }
   for (  Record record : this) {
     List<Object> list=new ArrayList<Object>();
