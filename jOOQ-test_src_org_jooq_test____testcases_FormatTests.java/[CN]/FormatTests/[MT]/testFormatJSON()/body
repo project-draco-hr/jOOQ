@@ -8,7 +8,7 @@
   String token2="";
   String separator="";
   for (  Field<?> field : fields) {
-    token2+=separator + "\"" + field.getName()+ "\"";
+    token2+=separator + "{\"name\":\"" + field.getName()+ "\""+ ",\"type\":\""+ field.getDataType().getTypeName().toUpperCase()+ "\"}";
     separator=",";
   }
   assertTrue(json.startsWith(token2));

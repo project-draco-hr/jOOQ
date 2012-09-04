@@ -4,13 +4,14 @@
     DocumentBuilder builder=factory.newDocumentBuilder();
     Document document=builder.newDocument();
     Element eResult=document.createElement("result");
-    eResult.setAttribute("xmlns","http://www.jooq.org/xsd/jooq-export-1.6.2.xsd");
+    eResult.setAttribute("xmlns","http://www.jooq.org/xsd/jooq-export-2.6.0.xsd");
     document.appendChild(eResult);
     Element eFields=document.createElement("fields");
     eResult.appendChild(eFields);
     for (    Field<?> field : getFields()) {
       Element eField=document.createElement("field");
       eField.setAttribute("name",field.getName());
+      eField.setAttribute("type",field.getDataType().getTypeName().toUpperCase());
       eFields.appendChild(eField);
     }
     Element eRecords=document.createElement("records");
