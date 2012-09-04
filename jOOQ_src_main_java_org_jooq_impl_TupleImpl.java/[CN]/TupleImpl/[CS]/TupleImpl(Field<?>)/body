@@ -1,4 +1,0 @@
-{
-  super("tuple");
-  this.fields=fields;
-}

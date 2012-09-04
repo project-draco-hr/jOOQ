@@ -1,3 +1,0 @@
-{
-  return new TupleImpl<T1,T2,T3,Object,Object,Object,Object,Object>(t1,t2,t3);
-}

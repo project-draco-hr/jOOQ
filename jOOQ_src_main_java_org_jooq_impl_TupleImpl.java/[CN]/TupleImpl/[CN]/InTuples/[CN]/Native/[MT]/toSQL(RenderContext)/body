@@ -1,3 +1,0 @@
-{
-  context.sql(TupleImpl.this).sql(" ").keyword(operator.toSQL()).sql(" (").sql(other).sql(")");
-}

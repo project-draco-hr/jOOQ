@@ -1,3 +1,0 @@
-{
-  return equal(tuple(values));
-}

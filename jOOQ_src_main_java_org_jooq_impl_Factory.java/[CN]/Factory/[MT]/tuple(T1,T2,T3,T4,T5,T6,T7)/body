@@ -1,3 +1,0 @@
-{
-  return tuple(val(t1),val(t2),val(t3),val(t4),val(t5),val(t6),val(t7));
-}

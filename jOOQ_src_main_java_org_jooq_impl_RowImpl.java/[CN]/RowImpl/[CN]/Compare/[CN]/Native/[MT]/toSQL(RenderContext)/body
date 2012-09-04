@@ -1,0 +1,9 @@
+{
+  if (comparator == NOT_EQUALS && asList(DB2).contains(context.getDialect())) {
+    context.keyword("not(").sql(RowImpl.this).sql(" = ").sql(other).sql(")");
+  }
+ else {
+    boolean extraParentheses=asList(ORACLE).contains(context.getDialect());
+    context.sql(RowImpl.this).sql(" ").sql(comparator.toSQL()).sql(" ").sql(extraParentheses ? "(" : "").sql(other).sql(extraParentheses ? ")" : "");
+  }
+}

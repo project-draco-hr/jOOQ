@@ -1,3 +1,0 @@
-{
-  context.bind(TupleImpl.this).bind((QueryPart)other);
-}

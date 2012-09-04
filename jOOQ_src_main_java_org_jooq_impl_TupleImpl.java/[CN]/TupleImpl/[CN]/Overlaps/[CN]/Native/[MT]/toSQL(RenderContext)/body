@@ -1,3 +1,0 @@
-{
-  context.sql("(").sql(TupleImpl.this).keyword(" overlaps ").sql(other).sql(")");
-}

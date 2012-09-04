@@ -1,3 +1,0 @@
-{
-  return tuple(vals(values).toArray(new Field[0]));
-}
