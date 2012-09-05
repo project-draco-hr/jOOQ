@@ -1,22 +1,33 @@
 {
   int bindIndex=0;
   char[] sqlChars=sql.toCharArray();
-  boolean stringLiteral=false;
   for (int i=0; i < sqlChars.length; i++) {
-    if (sqlChars[i] == '\'') {
-      if (i + 1 < sqlChars.length && sqlChars[i + 1] == '\'') {
-        context.sql(sqlChars[i++]);
-        context.sql(sqlChars[i]);
-      }
- else {
-        stringLiteral=!stringLiteral;
-        context.sql(sqlChars[i]);
-      }
+    if (peek(sqlChars,i,"--")) {
+      for (; sqlChars[i] != '\r' && sqlChars[i] != '\n'; context.sql(sqlChars[i++]))       ;
+      context.sql(sqlChars[i]);
     }
- else     if (sqlChars[i] == '?' && context.inline() && !stringLiteral && bindIndex < substitutes.size()) {
+ else     if (peek(sqlChars,i,"/*")) {
+      for (; !peek(sqlChars,i,"*/"); context.sql(sqlChars[i++]))       ;
+      context.sql(sqlChars[i++]);
+      context.sql(sqlChars[i]);
+    }
+ else     if (sqlChars[i] == '\'') {
+      context.sql(sqlChars[i++]);
+      for (; ; ) {
+        if (peek(sqlChars,i,"''")) {
+          context.sql(sqlChars[i++]);
+        }
+ else         if (peek(sqlChars,i,"'")) {
+          break;
+        }
+        context.sql(sqlChars[i++]);
+      }
+      context.sql(sqlChars[i]);
+    }
+ else     if (sqlChars[i] == '?' && context.inline() && bindIndex < substitutes.size()) {
       context.sql(substitutes.get(bindIndex++));
     }
- else     if (sqlChars[i] == '{' && !stringLiteral && bindIndex < substitutes.size()) {
+ else     if (sqlChars[i] == '{' && bindIndex < substitutes.size()) {
       if (JDBC_ESCAPE_PATTERN.matcher(sql.substring(i)).matches()) {
         context.sql(sqlChars[i]);
       }
