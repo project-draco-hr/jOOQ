@@ -1,10 +1,11 @@
 {
-  log.info("Generating table",strategy.getFileName(table));
+  UniqueKeyDefinition mainKey=table.getMainUniqueKey();
+  log.info("Generating table",strategy.getFileName(table) + " [input=" + table.getInputName()+ ", output="+ table.getOutputName()+ ", pk="+ (mainKey != null ? mainKey.getName() : "N/A")+ "]");
   GenerationWriter out=new GenerationWriter(strategy.getFile(table));
   printHeader(out,table);
   printClassJavadoc(out,table);
   Class<?> baseClass;
-  if (generateRelations() && table.getMainUniqueKey() != null) {
+  if (generateRelations() && mainKey != null) {
     baseClass=UpdatableTableImpl.class;
   }
  else {
@@ -77,7 +78,6 @@
       out.println(";");
       out.println("\t}");
     }
-    UniqueKeyDefinition mainKey=table.getMainUniqueKey();
     if (mainKey != null) {
       out.println();
       out.println("\t@Override");
