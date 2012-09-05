@@ -18,6 +18,6 @@
     context.assertIsSatisfied();
   }
   Condition c=not(val(1).eq(1).and(val(2).eq(2)));
-  assertEquals("not(1 = 1 and 2 = 2)",r_refI().render(c));
-  assertEquals("not(? = ? and ? = ?)",r_ref().render(c));
+  assertEquals("not((1 = 1 and 2 = 2))",r_refI().render(c));
+  assertEquals("not((? = ? and ? = ?))",r_ref().render(c));
 }
