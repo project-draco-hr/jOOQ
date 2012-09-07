@@ -1,9 +1,9 @@
 {
   try {
     R result=Util.newRecord(table,getConfiguration());
-    for (    Field<?> sourceField : getFields()) {
-      Field<?> targetField=result.getField(sourceField);
-      if (targetField != null) {
+    for (    Field<?> targetField : table.getFields()) {
+      Field<?> sourceField=getField(targetField);
+      if (sourceField != null) {
         Util.setValue(result,targetField,this,sourceField);
       }
     }
