@@ -1,3 +1,3 @@
 {
-  return (T[])Convert.convertArray(fetchArray(fieldName),type);
+  return fetch().intoArray(fieldName,type);
 }

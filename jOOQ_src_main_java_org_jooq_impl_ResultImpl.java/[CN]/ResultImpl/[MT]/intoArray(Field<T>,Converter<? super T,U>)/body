@@ -1,0 +1,3 @@
+{
+  return (U[])Convert.convertArray(intoArray(field),converter);
+}
