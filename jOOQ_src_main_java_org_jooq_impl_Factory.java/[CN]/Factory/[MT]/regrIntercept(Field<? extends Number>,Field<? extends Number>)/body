@@ -1,0 +1,3 @@
+{
+  return new Function<BigDecimal>("regr_intercept",SQLDataType.NUMERIC,nullSafe(y),nullSafe(x));
+}

@@ -1,0 +1,6 @@
+{
+  for (int i=0; i < strings.length; i++) {
+    strings[i]="" + new BigDecimal(strings[i]).setScale(n,RoundingMode.HALF_UP);
+  }
+  return strings;
+}
