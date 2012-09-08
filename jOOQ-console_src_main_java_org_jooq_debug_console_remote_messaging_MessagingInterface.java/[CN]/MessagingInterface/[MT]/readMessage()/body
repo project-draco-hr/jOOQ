@@ -1,7 +1,7 @@
 {
   Object o=ois.readUnshared();
   if (o instanceof Message) {
-    Message message=(Message)o;
+    Message<?> message=(Message<?>)o;
     if (IS_DEBUGGING_MESSAGES) {
       System.err.println("[" + (isClient ? "client" : "server") + "] RECV: "+ message.getID()+ ", "+ message);
     }

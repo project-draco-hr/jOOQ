@@ -1,3 +1,3 @@
 {
-  return (StatementExecution)new ServerDebugger.CMS_doStatementExecutorExecution().syncExec(debugger.getCommunicationInterface(),id,sql,maxRSRowsParsing,retainParsedRSDataRowCountThreshold);
+  return new ServerDebugger.CMS_doStatementExecutorExecution().syncExec(debugger.getCommunicationInterface(),id,sql,maxRSRowsParsing,retainParsedRSDataRowCountThreshold);
 }

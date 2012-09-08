@@ -1,10 +1,10 @@
 {
-  Message message=(Message)args[1];
+  Message<?> message=(Message<?>)args[1];
   message.setSyncExec(false);
   CommunicationInterface communicationInterface=getCommunicationInterface();
   MessagingInterface messagingInterface=communicationInterface.getMessagingInterface();
   CM_asyncExecResponse asyncExecResponse=new CM_asyncExecResponse();
-  CommandResultMessage commandResultMessage=messagingInterface.runMessage(message);
+  CommandResultMessage<?> commandResultMessage=messagingInterface.runMessage(message);
   asyncExecResponse.setArgs(args[0],commandResultMessage);
   messagingInterface.asyncSend(asyncExecResponse);
   return null;

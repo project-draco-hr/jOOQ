@@ -2,7 +2,7 @@
   if (isActive) {
     setBreakpointHitHandler(new BreakpointHitHandler(){
       @Override public void processBreakpointBeforeExecutionHit(      BreakpointHit breakpointHit){
-        BreakpointHit modifiedBreakpointHit=(BreakpointHit)new ClientDebugger.CMC_processBreakpointBeforeExecutionHit().syncExec(communicationInterface,breakpointHit);
+        BreakpointHit modifiedBreakpointHit=new ClientDebugger.CMC_processBreakpointBeforeExecutionHit().syncExec(communicationInterface,breakpointHit);
         if (modifiedBreakpointHit != null) {
           breakpointHit.setExecutionType(modifiedBreakpointHit.getExecutionType(),modifiedBreakpointHit.getSql());
         }

@@ -22,7 +22,7 @@
   Thread receiverThread=new Thread("MessagingInterface Receiver (" + (isClient ? "client" : "server") + ")"){
     @Override public void run(){
       while (isAlive) {
-        Message message=null;
+        Message<?> message=null;
         try {
           message=readMessage();
         }
@@ -41,7 +41,7 @@ synchronized (RECEIVER_LOCK) {
             RECEIVER_LOCK.notify();
           }
 synchronized (idToThreadInfo) {
-            for (            ThreadInfo threadInfo : idToThreadInfo.values()) {
+            for (            ThreadInfo<?> threadInfo : idToThreadInfo.values()) {
 synchronized (threadInfo) {
                 threadInfo.notify();
               }

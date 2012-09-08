@@ -5,7 +5,7 @@
  else {
     checkOpen();
     if (message instanceof LocalMessage) {
-      LocalMessage localMessage=(LocalMessage)message;
+      LocalMessage<?> localMessage=(LocalMessage<?>)message;
       localMessage.setCommunicationInterface(this);
       localMessage.runCommand();
       return;

@@ -1,8 +1,8 @@
 {
   Thread thread=Thread.currentThread();
   long threadID=thread.getId();
-  ThreadInfo threadInfo=new ThreadInfo();
-  ThreadInfo previousThreadInfo;
+  ThreadInfo<S> threadInfo=new ThreadInfo<S>();
+  ThreadInfo<?> previousThreadInfo;
 synchronized (idToThreadInfo) {
     previousThreadInfo=idToThreadInfo.put(threadID,threadInfo);
   }
@@ -14,7 +14,7 @@ synchronized (originatorThreadIDToThreadMap) {
   CM_asyncExec asyncExec=new CM_asyncExec();
   asyncExec.setArgs(threadID,message);
   asyncSend(asyncExec);
-  CommandResultMessage commandResultMessage=null;
+  CommandResultMessage<S> commandResultMessage=null;
 synchronized (threadInfo) {
     while (commandResultMessage == null) {
       while (!threadInfo.isValuePresent()) {
@@ -29,10 +29,10 @@ synchronized (threadInfo) {
           return null;
         }
       }
-      Message value=threadInfo.getMessage();
+      Message<S> value=threadInfo.getMessage();
       threadInfo.clearMessage();
       if (value instanceof CommandResultMessage) {
-        commandResultMessage=(CommandResultMessage)value;
+        commandResultMessage=(CommandResultMessage<S>)value;
       }
  else {
         runMessage(value);

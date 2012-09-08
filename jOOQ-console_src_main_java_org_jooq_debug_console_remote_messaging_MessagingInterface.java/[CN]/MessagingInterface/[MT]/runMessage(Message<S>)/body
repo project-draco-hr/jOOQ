@@ -2,10 +2,10 @@
   if (IS_DEBUGGING_MESSAGES) {
     System.err.println("[" + (isClient ? "client" : "server") + "] >RUN: "+ message.getID()+ ", "+ message);
   }
-  CommandResultMessage commandResultMessage;
+  CommandResultMessage<S> commandResultMessage;
   if (message instanceof CommandMessage) {
-    CommandMessage commandMessage=(CommandMessage)message;
-    Object result=null;
+    CommandMessage<S> commandMessage=(CommandMessage<S>)message;
+    S result=null;
     Throwable throwable=null;
     if (message.isValid()) {
       try {
@@ -17,18 +17,18 @@
       }
     }
     if (commandMessage.isSyncExec()) {
-      commandResultMessage=new CommandResultMessage(commandMessage.getID(),result,throwable);
+      commandResultMessage=new CommandResultMessage<S>(commandMessage.getID(),result,throwable);
       asyncSend(commandResultMessage);
     }
  else {
       if (throwable != null) {
         throwable.printStackTrace();
       }
-      commandResultMessage=new CommandResultMessage(message.getID(),result,throwable);
+      commandResultMessage=new CommandResultMessage<S>(message.getID(),result,throwable);
     }
   }
  else {
-    commandResultMessage=new CommandResultMessage(message.getID(),null,null);
+    commandResultMessage=new CommandResultMessage<S>(message.getID(),null,null);
     if (message.isSyncExec()) {
       asyncSend(commandResultMessage);
     }

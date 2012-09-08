@@ -1,6 +1,6 @@
 {
   while (true) {
-    Message message;
+    Message<?> message;
 synchronized (messageList) {
       if (messageList.isEmpty()) {
         message=null;
