@@ -233,17 +233,17 @@ return duration < 0 ? null : duration;
 }
 case COLUMN_RS_LIFETIME:
 {
-ResultSetLoggingData rsData=queryDebuggingInfo.getResultSetLoggingData();
+ResultSetLog rsData=queryDebuggingInfo.getResultSetLoggingData();
 return rsData == null ? null : rsData.getLifeTime();
 }
 case COLUMN_RS_READ:
 {
-ResultSetLoggingData rsData=queryDebuggingInfo.getResultSetLoggingData();
+ResultSetLog rsData=queryDebuggingInfo.getResultSetLoggingData();
 return rsData == null ? null : rsData.getReadCount();
 }
 case COLUMN_RS_READ_ROWS:
 {
-ResultSetLoggingData rsData=queryDebuggingInfo.getResultSetLoggingData();
+ResultSetLog rsData=queryDebuggingInfo.getResultSetLoggingData();
 return rsData == null ? null : rsData.getReadRows();
 }
 case COLUMN_DUPLICATION_COUNT:

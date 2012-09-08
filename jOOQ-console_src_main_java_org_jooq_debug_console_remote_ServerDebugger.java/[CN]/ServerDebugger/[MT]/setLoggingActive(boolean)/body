@@ -4,8 +4,8 @@
       @Override public void logQueries(      StatementLog statementLog){
         comm.asyncExec(new CMC_logQueries(),statementLog);
       }
-      @Override public void logResultSet(      int sqlQueryDebuggerDataID,      ResultSetLoggingData resultSetLoggingData){
-        comm.asyncExec(new CMC_logResultSet(),sqlQueryDebuggerDataID,resultSetLoggingData);
+      @Override public void logResultSet(      int sqlQueryDebuggerDataID,      ResultSetLog resultSetLog){
+        comm.asyncExec(new CMC_logResultSet(),sqlQueryDebuggerDataID,resultSetLog);
       }
     }
 );
