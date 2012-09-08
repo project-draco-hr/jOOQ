@@ -1,15 +1,13 @@
 {
-  try {
-    Reflect book=on(TBook().getClass().getPackage().getName() + ".pojos." + TBook().getClass().getSimpleName());
-    List<Object> books=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchInto((Class<?>)book.get());
-    assertEquals(4,books.size());
-    for (int i=0; i < 4; i++) {
-      assertEquals(BOOK_IDS.get(i),on(books.get(i)).call("getId").get());
-      assertEquals(BOOK_AUTHOR_IDS.get(i),on(books.get(i)).call("getAuthorId").get());
-      assertEquals(BOOK_TITLES.get(i),on(books.get(i)).call("getTitle").get());
-    }
-  }
- catch (  ReflectException e) {
+  if (TAuthorPojo() == null) {
     log.info("SKIPPING","Generated POJO tests");
+    return;
+  }
+  List<Object> books=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchInto(TBookPojo());
+  assertEquals(4,books.size());
+  for (int i=0; i < 4; i++) {
+    assertEquals(BOOK_IDS.get(i),on(books.get(i)).call("getId").get());
+    assertEquals(BOOK_AUTHOR_IDS.get(i),on(books.get(i)).call("getAuthorId").get());
+    assertEquals(BOOK_TITLES.get(i),on(books.get(i)).call("getTitle").get());
   }
 }

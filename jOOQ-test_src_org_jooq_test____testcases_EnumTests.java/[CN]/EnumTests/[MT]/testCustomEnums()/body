@@ -19,9 +19,11 @@
   assertEquals(Boolean_YN_LC.y,result.getValue(1,TBooleans_Boolean_YN_LC()));
   assertEquals(Boolean_YN_UC.N,result.getValue(0,TBooleans_Boolean_YN_UC()));
   assertEquals(Boolean_YN_UC.Y,result.getValue(1,TBooleans_Boolean_YN_UC()));
-  try {
-    Reflect booleans=on(TBooleans().getClass().getPackage().getName() + ".pojos." + TBooleans().getClass().getSimpleName());
-    List<Object> b=create().selectFrom(TBooleans()).orderBy(TBooleans_ID().asc()).fetchInto((Class<?>)booleans.get());
+  if (TBooleansPojo() == null) {
+    log.info("SKIPPING","Generated POJO tests");
+  }
+ else {
+    List<Object> b=create().selectFrom(TBooleans()).orderBy(TBooleans_ID().asc()).fetchInto(TBooleansPojo());
     assertEquals(2,b.size());
     assertEquals(1,on(b.get(0)).call("getId").get());
     assertEquals(2,on(b.get(1)).call("getId").get());
@@ -39,8 +41,5 @@
     assertEquals(Boolean_YN_LC.y,on(b.get(1)).call("getYNLc").get());
     assertEquals(Boolean_YN_UC.N,on(b.get(0)).call("getYNUc").get());
     assertEquals(Boolean_YN_UC.Y,on(b.get(1)).call("getYNUc").get());
-  }
- catch (  ReflectException e) {
-    log.info("SKIPPING","Generated POJO tests");
   }
 }
