@@ -7,8 +7,8 @@
   loggerOffButton.setVisible(isLogging);
   if (isLogging) {
     LoggingListener loggingListener=new LoggingListener(){
-      @Override public void logQueries(      QueryLoggingData queryLoggingData){
-        debugQueries(new QueryDebuggingInfo(System.currentTimeMillis(),queryLoggingData));
+      @Override public void logQueries(      StatementLog statementLog){
+        debugQueries(new QueryDebuggingInfo(System.currentTimeMillis(),statementLog));
       }
       public void debugQueries(      final QueryDebuggingInfo queryDebuggingInfo){
         if (!SwingUtilities.isEventDispatchThread()) {

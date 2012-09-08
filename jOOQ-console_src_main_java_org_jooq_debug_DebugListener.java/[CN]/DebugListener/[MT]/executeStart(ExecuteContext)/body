@@ -56,14 +56,15 @@
         LoggingListener loggingListener=debugger.getLoggingListener();
         if (loggingListener != null) {
           QueryType queryType=QueryType.detectType(sql);
-          QueryLoggingData queryLoggingData=new QueryLoggingData(queryType,new String[]{sql},null,null,null,subEndExecutionTime - subStartExecutionTime);
+          StatementInfo statementInfo=new StatementInfo(queryType,new String[]{sql},null);
+          StatementLog statementLog=new StatementLog(statementInfo,null,null,subEndExecutionTime - subStartExecutionTime);
           StatementMatcher[] loggingStatementMatchers=debugger.getLoggingStatementMatchers();
           if (loggingStatementMatchers == null) {
-            loggingListener.logQueries(queryLoggingData);
+            loggingListener.logQueries(statementLog);
           }
  else           for (          StatementMatcher statementMatcher : loggingStatementMatchers) {
-            if (statementMatcher.matches(queryLoggingData)) {
-              loggingListener.logQueries(queryLoggingData);
+            if (statementMatcher.matches(statementLog.getStatementInfo())) {
+              loggingListener.logQueries(statementLog);
               break;
             }
           }

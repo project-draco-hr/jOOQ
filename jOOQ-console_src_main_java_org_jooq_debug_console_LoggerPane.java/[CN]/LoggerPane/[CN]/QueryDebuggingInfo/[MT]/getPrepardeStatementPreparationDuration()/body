@@ -1,3 +1,3 @@
 {
-  return queryLoggingData.getPreparedStatementPreparationDuration();
+  return statementLog.getPreparedStatementPreparationDuration();
 }

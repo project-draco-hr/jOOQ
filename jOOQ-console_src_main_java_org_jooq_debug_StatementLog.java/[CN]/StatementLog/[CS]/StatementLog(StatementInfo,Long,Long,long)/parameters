@@ -1,6 +1,4 @@
-QueryType queryType
-String[] queries
-String parameterDescription
+StatementInfo statementInfo
 Long preparationDuration
 Long bindingDuration
 long executionDuration

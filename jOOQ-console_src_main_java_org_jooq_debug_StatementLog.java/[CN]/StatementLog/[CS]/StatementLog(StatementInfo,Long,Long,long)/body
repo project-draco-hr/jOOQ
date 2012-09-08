@@ -1,5 +1,5 @@
 {
-  super(queryType,queries,parameterDescription);
+  this.statementInfo=statementInfo;
   this.id=nextID.getAndIncrement();
   this.callerStackTraceElements=Thread.currentThread().getStackTrace();
   this.preparationDuration=preparationDuration;
