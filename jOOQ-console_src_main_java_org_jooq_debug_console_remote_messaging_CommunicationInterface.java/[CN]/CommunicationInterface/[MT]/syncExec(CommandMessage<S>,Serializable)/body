@@ -1,0 +1,4 @@
+{
+  message.setArgs(arguments);
+  return syncSend(message);
+}

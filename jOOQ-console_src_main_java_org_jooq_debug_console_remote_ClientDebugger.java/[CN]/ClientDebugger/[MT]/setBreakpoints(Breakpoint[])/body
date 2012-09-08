@@ -5,5 +5,5 @@
 synchronized (BREAKPOINT_LOCK) {
     this.breakpoints=breakpoints;
   }
-  new ServerDebugger.CMS_setBreakpoints().asyncExec(communicationInterface,(Object)breakpoints);
+  comm.asyncExec(new CMS_setBreakpoints(),(Serializable[])breakpoints);
 }

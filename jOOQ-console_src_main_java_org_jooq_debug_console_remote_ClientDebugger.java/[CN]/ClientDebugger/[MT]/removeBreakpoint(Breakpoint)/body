@@ -14,7 +14,7 @@ synchronized (BREAKPOINT_LOCK) {
           System.arraycopy(breakpoints,i + 1,newBreakpoints,i,newBreakpoints.length - i);
           breakpoints=newBreakpoints;
         }
-        new ServerDebugger.CMS_removeBreakpoint().asyncExec(communicationInterface,(Object)breakpoint);
+        comm.asyncExec(new CMS_removeBreakpoint(),breakpoint);
         break;
       }
     }

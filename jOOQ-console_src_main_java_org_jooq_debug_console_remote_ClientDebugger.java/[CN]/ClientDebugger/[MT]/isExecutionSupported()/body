@@ -1,7 +1,7 @@
 {
 synchronized (IS_EDITION_SUPPORTED_LOCK) {
     if (isEditionSupported == null) {
-      isEditionSupported=(Boolean)new ServerDebugger.CMS_isExecutionSupported().syncExec(communicationInterface);
+      isEditionSupported=comm.syncExec(new CMS_isExecutionSupported());
     }
   }
   return Boolean.TRUE.equals(isEditionSupported);
