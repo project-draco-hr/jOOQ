@@ -1,4 +1,4 @@
-SqlQueryType queryType
+QueryType queryType
 String[] queries
 String parameterDescription
 Long preparationDuration

@@ -306,7 +306,7 @@ switch (columnIndex) {
 case COLUMN_LINE:
 return Integer.class;
 case COLUMN_TYPE:
-return SqlQueryType.class;
+return QueryType.class;
 case COLUMN_PS_PREPARATION_DURATION:
 return Long.class;
 case COLUMN_PS_BINDING_DURATION:
@@ -342,7 +342,7 @@ columnModel.getColumnByModelIndex(COLUMN_THREAD).setPreferredWidth(150);
 columnModel.getColumnByModelIndex(COLUMN_DUPLICATION_COUNT).setPreferredWidth(40);
 table.setColumnSelectionAllowed(true);
 table.setFillsViewportHeight(true);
-table.setDefaultRenderer(SqlQueryType.class,new DefaultTableCellRenderer(){
+table.setDefaultRenderer(QueryType.class,new DefaultTableCellRenderer(){
 @Override public Component getTableCellRendererComponent(JTable table,Object value,boolean isSelected,boolean hasFocus,int row,int column){
 Component c=super.getTableCellRendererComponent(table,value,isSelected,hasFocus,row,column);
 if (c instanceof JLabel) {

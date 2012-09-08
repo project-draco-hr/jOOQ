@@ -11,7 +11,7 @@
           String parameterDescription=null;
           if (statementInfo == null) {
             String[] sql=ctx.batchSQL();
-            SqlQueryType sqlQueryType=SqlQueryType.detectType(sql[0]);
+            QueryType queryType=QueryType.detectType(sql[0]);
             if (sql.length == 1) {
               sql_=sql[0];
               PreparedStatement statement=ctx.statement();
@@ -29,7 +29,7 @@
               }
               sql_=sb.toString();
             }
-            statementInfo=new StatementInfo(sqlQueryType,sql,parameterDescription);
+            statementInfo=new StatementInfo(queryType,sql,parameterDescription);
           }
           if (breakpoint.matches(statementInfo,true)) {
             matchingSQL=sql_;
@@ -55,8 +55,8 @@
       for (      Debugger debugger : debuggerList) {
         LoggingListener loggingListener=debugger.getLoggingListener();
         if (loggingListener != null) {
-          SqlQueryType sqlQueryType=SqlQueryType.detectType(sql);
-          QueryLoggingData queryLoggingData=new QueryLoggingData(sqlQueryType,new String[]{sql},null,null,null,subEndExecutionTime - subStartExecutionTime);
+          QueryType queryType=QueryType.detectType(sql);
+          QueryLoggingData queryLoggingData=new QueryLoggingData(queryType,new String[]{sql},null,null,null,subEndExecutionTime - subStartExecutionTime);
           StatementMatcher[] loggingStatementMatchers=debugger.getLoggingStatementMatchers();
           if (loggingStatementMatchers == null) {
             loggingListener.logQueries(queryLoggingData);

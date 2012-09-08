@@ -2,23 +2,23 @@
   boolean isActive=true;
   TextMatcher threadNameTextMatcher=threadNameTextMatcherCheckBox.isSelected() ? threadNameTextMatcherPane.getTextMatcher() : null;
   TextMatcher statementTextMatcher=statementTextMatcherCheckBox.isSelected() ? statementTextMatcherPane.getTextMatcher() : null;
-  Set<SqlQueryType> queryTypeSet;
+  Set<QueryType> queryTypeSet;
   if (statementTypeCheckBox.isSelected()) {
-    List<SqlQueryType> typeList=new ArrayList<SqlQueryType>();
+    List<QueryType> typeList=new ArrayList<QueryType>();
     if (statementTypeSelectCheckBox.isSelected()) {
-      typeList.add(SqlQueryType.SELECT);
+      typeList.add(QueryType.SELECT);
     }
     if (statementTypeUpdateCheckBox.isSelected()) {
-      typeList.add(SqlQueryType.UPDATE);
+      typeList.add(QueryType.UPDATE);
     }
     if (statementTypeInsertCheckBox.isSelected()) {
-      typeList.add(SqlQueryType.INSERT);
+      typeList.add(QueryType.INSERT);
     }
     if (statementTypeDeleteCheckBox.isSelected()) {
-      typeList.add(SqlQueryType.DELETE);
+      typeList.add(QueryType.DELETE);
     }
     if (statementTypeOtherCheckBox.isSelected()) {
-      typeList.add(SqlQueryType.OTHER);
+      typeList.add(QueryType.OTHER);
     }
     queryTypeSet=EnumSet.copyOf(typeList);
   }

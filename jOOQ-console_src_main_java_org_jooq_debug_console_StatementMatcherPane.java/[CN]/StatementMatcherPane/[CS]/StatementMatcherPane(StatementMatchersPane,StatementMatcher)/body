@@ -40,7 +40,7 @@
   statementTextMatcherPane=new TextMatcherPane(statementTextMatcher);
   add(statementTextMatcherPane,new GridBagConstraints(1,y,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(0,5,0,0),0,0));
   y++;
-  Set<SqlQueryType> queryTypeSet=statementMatcher.getQueryTypeSet();
+  Set<QueryType> queryTypeSet=statementMatcher.getQueryTypeSet();
   statementTypeCheckBox=new JCheckBox("Type",queryTypeSet != null);
   statementTypeCheckBox.addItemListener(new ItemListener(){
     @Override public void itemStateChanged(    ItemEvent e){
@@ -50,15 +50,15 @@
 );
   add(statementTypeCheckBox,new GridBagConstraints(0,y,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,0,0,0),0,0));
   JPanel typesPane=new JPanel(new GridBagLayout());
-  statementTypeSelectCheckBox=new JCheckBox("SELECT",queryTypeSet != null && queryTypeSet.contains(SqlQueryType.SELECT));
+  statementTypeSelectCheckBox=new JCheckBox("SELECT",queryTypeSet != null && queryTypeSet.contains(QueryType.SELECT));
   typesPane.add(statementTypeSelectCheckBox,new GridBagConstraints(0,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,0,0,0),0,0));
-  statementTypeUpdateCheckBox=new JCheckBox("UPDATE",queryTypeSet != null && queryTypeSet.contains(SqlQueryType.UPDATE));
+  statementTypeUpdateCheckBox=new JCheckBox("UPDATE",queryTypeSet != null && queryTypeSet.contains(QueryType.UPDATE));
   typesPane.add(statementTypeUpdateCheckBox,new GridBagConstraints(1,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,2,0,0),0,0));
-  statementTypeInsertCheckBox=new JCheckBox("INSERT",queryTypeSet != null && queryTypeSet.contains(SqlQueryType.INSERT));
+  statementTypeInsertCheckBox=new JCheckBox("INSERT",queryTypeSet != null && queryTypeSet.contains(QueryType.INSERT));
   typesPane.add(statementTypeInsertCheckBox,new GridBagConstraints(2,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,2,0,0),0,0));
-  statementTypeDeleteCheckBox=new JCheckBox("DELETE",queryTypeSet != null && queryTypeSet.contains(SqlQueryType.DELETE));
+  statementTypeDeleteCheckBox=new JCheckBox("DELETE",queryTypeSet != null && queryTypeSet.contains(QueryType.DELETE));
   typesPane.add(statementTypeDeleteCheckBox,new GridBagConstraints(3,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,2,0,0),0,0));
-  statementTypeOtherCheckBox=new JCheckBox("OTHER",queryTypeSet != null && queryTypeSet.contains(SqlQueryType.OTHER));
+  statementTypeOtherCheckBox=new JCheckBox("OTHER",queryTypeSet != null && queryTypeSet.contains(QueryType.OTHER));
   typesPane.add(statementTypeOtherCheckBox,new GridBagConstraints(4,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,2,0,0),0,0));
   add(typesPane,new GridBagConstraints(1,y,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,5,0,0),0,0));
   y++;
