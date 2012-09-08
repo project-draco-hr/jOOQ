@@ -1,2 +1,2 @@
 int port
-DatabaseDescriptor databaseDescriptor
+DatabaseDescriptor descriptor

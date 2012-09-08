@@ -3,7 +3,7 @@
     return;
   }
   endExecutionTime=System.currentTimeMillis();
-  List<Debugger> debuggerList=DebuggerRegistry.getDebuggerList();
+  List<Debugger> debuggerList=DebuggerRegistry.get();
   if (!debuggerList.isEmpty()) {
     boolean hasListener=false;
     for (    Debugger debugger : debuggerList) {

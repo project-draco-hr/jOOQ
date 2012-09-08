@@ -1,5 +1,5 @@
 {
-  List<Debugger> debuggerList=DebuggerRegistry.getDebuggerList();
+  List<Debugger> debuggerList=DebuggerRegistry.get();
   boolean hasBreakpointHitHandler=false;
   if (!debuggerList.isEmpty()) {
     StatementInfo statementInfo=null;

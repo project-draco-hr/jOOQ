@@ -1,5 +1,5 @@
 {
-  hasDebuggers=!DebuggerRegistry.getDebuggerList().isEmpty();
+  hasDebuggers=!DebuggerRegistry.get().isEmpty();
   startPreparationTime=0;
   aggregatedPreparationDuration=0;
   startBindTime=0;
