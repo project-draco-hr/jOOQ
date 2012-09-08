@@ -71,7 +71,7 @@ class DataTipComponent extends JToolTip {
             @Override public boolean contains(            int x,            int y){
               return isHeavyWeight;
             }
-            @Override public void paintComponent(            Graphics g){
+            @SuppressWarnings("hiding") @Override public void paintComponent(            Graphics g){
               g.setColor(backgroundColor);
               int width=getWidth();
               int height=getHeight();
