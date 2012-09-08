@@ -1,3 +1,0 @@
-{
-  communicationInterface.asyncSend(this);
-}

@@ -1,4 +1,4 @@
 {
   setArgs(arguments);
-  return syncSend(communicationInterface);
+  return communicationInterface.syncSend(this);
 }

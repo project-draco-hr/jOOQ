@@ -1,4 +1,4 @@
 {
   setArgs(arguments);
-  asyncSend(communicationInterface);
+  communicationInterface.asyncSend(this);
 }
