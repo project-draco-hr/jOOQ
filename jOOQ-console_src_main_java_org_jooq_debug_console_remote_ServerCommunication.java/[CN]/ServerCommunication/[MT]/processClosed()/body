@@ -1,0 +1,4 @@
+{
+  DebuggerRegistry.remove(getDebugger());
+  getDebugger().cleanup();
+}

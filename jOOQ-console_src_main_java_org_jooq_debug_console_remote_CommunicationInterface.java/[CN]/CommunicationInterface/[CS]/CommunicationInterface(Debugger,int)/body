@@ -1,4 +1,0 @@
-{
-  this.debugger=debugger;
-  this.port=port;
-}

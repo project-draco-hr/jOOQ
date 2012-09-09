@@ -1,3 +1,0 @@
-CommunicationInterface communicationInterface
-Socket socket
-boolean isClient

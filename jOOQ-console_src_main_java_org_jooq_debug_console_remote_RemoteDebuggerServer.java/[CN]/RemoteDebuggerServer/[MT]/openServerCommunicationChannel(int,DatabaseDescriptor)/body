@@ -1,0 +1,39 @@
+{
+  final ServerSocket serverSocket;
+  try {
+    serverSocket=new ServerSocket();
+    serverSocket.bind(new InetSocketAddress(port));
+  }
+ catch (  IOException e) {
+    throw e;
+  }
+  Thread serverThread=new Thread("Communication channel server on port " + port){
+    @Override public void run(){
+      while (!serverSocket.isClosed()) {
+        final Socket socket;
+        try {
+          socket=serverSocket.accept();
+          new Thread("Communication channel - client connection"){
+            @Override public void run(){
+              final ServerDebugger debugger=new ServerDebugger(descriptor);
+              Communication comm=new ServerCommunication(debugger);
+              debugger.setCommunicationInterface(comm);
+              comm.setMessagingInterface(new MessagingInterface(comm,socket,false));
+              comm.notifyOpen();
+            }
+          }
+.start();
+        }
+ catch (        Exception e) {
+          if (!serverSocket.isClosed()) {
+            e.printStackTrace();
+          }
+        }
+      }
+    }
+  }
+;
+  serverThread.setDaemon(true);
+  serverThread.start();
+  return serverSocket;
+}

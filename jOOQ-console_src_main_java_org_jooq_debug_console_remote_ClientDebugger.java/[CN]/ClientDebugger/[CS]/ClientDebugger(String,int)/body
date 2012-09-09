@@ -1,8 +1,3 @@
 {
-  comm=CommunicationInterface.openClientCommunicationChannel(new CommunicationInterfaceFactory(){
-    @Override public CommunicationInterface createCommunicationInterface(    int port_){
-      return new CommunicationInterface(ClientDebugger.this,port_);
-    }
-  }
-,ip,port);
+  comm=new ClientCommunication(this,port,ip);
 }

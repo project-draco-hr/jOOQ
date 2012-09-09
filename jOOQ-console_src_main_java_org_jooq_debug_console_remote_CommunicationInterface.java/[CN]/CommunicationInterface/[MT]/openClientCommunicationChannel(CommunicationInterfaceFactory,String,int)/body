@@ -1,5 +1,0 @@
-{
-  CommunicationInterface communicationInterface=communicationInterfaceFactory.createCommunicationInterface(port);
-  communicationInterface.createClientCommunicationChannel(ip);
-  return communicationInterface;
-}
