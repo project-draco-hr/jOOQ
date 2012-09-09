@@ -6,8 +6,7 @@
     checkOpen();
     if (message instanceof LocalMessage) {
       LocalMessage<?> localMessage=(LocalMessage<?>)message;
-      localMessage.setCommunicationInterface(this);
-      localMessage.runCommand();
+      localMessage.runCommand(new MessageContext(this));
       return;
     }
     messagingInterface.asyncSend(message);

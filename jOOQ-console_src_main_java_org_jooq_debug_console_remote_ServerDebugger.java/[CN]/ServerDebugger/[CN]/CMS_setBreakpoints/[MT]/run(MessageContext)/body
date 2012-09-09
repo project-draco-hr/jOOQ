@@ -1,0 +1,9 @@
+{
+  if (breakpoints != null) {
+    for (    Breakpoint breakpoint : breakpoints) {
+      breakpoint.reset();
+    }
+  }
+  context.getDebugger().setBreakpoints(breakpoints);
+  return null;
+}

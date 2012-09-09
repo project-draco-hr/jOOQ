@@ -1,1 +1,1 @@
-ClientDebuggerCommandMessage<BreakpointHit>
+CommandMessage<BreakpointHit>

@@ -1,4 +1,0 @@
-{
-  getDebugger().setLoggingStatementMatchers(matchers);
-  return null;
-}

@@ -2,8 +2,7 @@
   checkOpen();
   if (message instanceof LocalMessage) {
     LocalMessage<S> localMessage=(LocalMessage<S>)message;
-    localMessage.setCommunicationInterface(this);
-    return localMessage.runCommand();
+    return localMessage.runCommand(new MessageContext(this));
   }
   return messagingInterface.syncSend(message);
 }

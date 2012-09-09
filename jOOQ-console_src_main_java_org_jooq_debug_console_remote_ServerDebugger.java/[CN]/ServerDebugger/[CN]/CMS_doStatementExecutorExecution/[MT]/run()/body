@@ -1,4 +1,0 @@
-{
-  StatementExecution statementExecution=getDebugger().getStatementExecutor(id).execute(sql,maxRSRowsParsing,retainParsedRSDataRowCountThreshold);
-  return new ClientStatementExecution(statementExecution);
-}

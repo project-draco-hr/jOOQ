@@ -1,1 +1,1 @@
-ClientDebuggerCommandMessage<Serializable>
+CommandMessage<Serializable>

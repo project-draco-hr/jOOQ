@@ -1,0 +1,4 @@
+{
+  context.getDebugger().removeBreakpoint(breakpoint);
+  return null;
+}

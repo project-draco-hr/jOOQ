@@ -1,4 +1,0 @@
-{
-  getDebugger().setLoggingActive(isActive);
-  return null;
-}

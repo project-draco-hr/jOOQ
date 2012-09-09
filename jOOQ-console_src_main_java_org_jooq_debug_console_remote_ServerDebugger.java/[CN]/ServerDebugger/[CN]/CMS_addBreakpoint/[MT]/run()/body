@@ -1,5 +1,0 @@
-{
-  breakpoint.reset();
-  getDebugger().addBreakpoint(breakpoint);
-  return null;
-}

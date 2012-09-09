@@ -1,0 +1,4 @@
+{
+  getServerDebugger(context).setBreakpointHitHandlerActive(isActive);
+  return null;
+}

@@ -9,8 +9,7 @@
     Throwable throwable=null;
     if (message.isValid()) {
       try {
-        commandMessage.setCommunicationInterface(communicationInterface);
-        result=commandMessage.runCommand();
+        result=commandMessage.runCommand(new MessageContext(comm));
       }
  catch (      Throwable t) {
         throwable=t;

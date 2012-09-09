@@ -1,0 +1,3 @@
+{
+  return getServerDebugger(context).getStatementExecutor(id).getTableNames();
+}

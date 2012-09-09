@@ -1,7 +1,0 @@
-{
-  LoggingListener loggingListener=getDebugger().getLoggingListener();
-  if (loggingListener != null) {
-    loggingListener.logQueries(statementLog);
-  }
-  return null;
-}

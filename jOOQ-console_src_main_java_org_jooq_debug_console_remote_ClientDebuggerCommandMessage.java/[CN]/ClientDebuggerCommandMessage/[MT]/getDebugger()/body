@@ -1,3 +1,0 @@
-{
-  return (ClientDebugger)((DebuggerCommmunicationInterface)getCommunicationInterface()).getDebugger();
-}

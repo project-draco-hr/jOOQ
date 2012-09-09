@@ -1,0 +1,16 @@
+{
+  MessagingInterface messagingInterface=context.getMessagingInterface();
+  ThreadInfo<S> threadInfo;
+synchronized (messagingInterface.idToThreadInfo) {
+    threadInfo=(ThreadInfo<S>)messagingInterface.idToThreadInfo.get(threadID);
+  }
+  if (threadInfo == null) {
+    System.err.println("A sync call is missing.");
+    return null;
+  }
+synchronized (threadInfo) {
+    threadInfo.setMessage(commandResultMessage);
+    threadInfo.notify();
+  }
+  return null;
+}

@@ -1,5 +1,5 @@
 {
-  this.communicationInterface=communicationInterface;
+  this.comm=communicationInterface;
   this.isClient=isClient;
   try {
     oos=new ObjectOutputStream(new BufferedOutputStream(socket.getOutputStream()){
