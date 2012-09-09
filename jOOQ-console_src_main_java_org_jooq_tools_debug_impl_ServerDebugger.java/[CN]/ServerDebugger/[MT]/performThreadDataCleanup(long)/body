@@ -1,11 +1,11 @@
 {
-  List<StatementExecutor> list;
+  List<QueryExecutor> list;
 synchronized (threadIDToStatementExecutorList) {
     list=threadIDToStatementExecutorList.remove(threadID);
   }
   if (list != null) {
-    for (    StatementExecutor statementExecutor : list) {
-      statementExecutor.stopExecution();
+    for (    QueryExecutor queryExecutor : list) {
+      queryExecutor.stopExecution();
     }
   }
 }

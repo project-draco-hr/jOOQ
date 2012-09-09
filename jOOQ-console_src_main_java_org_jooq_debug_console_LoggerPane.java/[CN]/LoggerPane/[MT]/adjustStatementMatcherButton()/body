@@ -1,4 +1,4 @@
 {
-  StatementMatcher[] loggingStatementMatchers=LoggerPane.this.debugger.getLoggingStatementMatchers();
+  QueryMatcher[] loggingStatementMatchers=LoggerPane.this.debugger.getLoggingStatementMatchers();
   statementMatcherButton.setSelected(loggingStatementMatchers != null);
 }

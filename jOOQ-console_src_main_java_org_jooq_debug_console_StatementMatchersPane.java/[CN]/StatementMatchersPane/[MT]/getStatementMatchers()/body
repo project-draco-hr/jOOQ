@@ -1,9 +1,9 @@
 {
   if (!(statementMatcherPanesContainer.getComponent(0) instanceof StatementMatcherPane)) {
-    return new StatementMatcher[0];
+    return new QueryMatcher[0];
   }
   Component[] components=statementMatcherPanesContainer.getComponents();
-  StatementMatcher[] statementMatchers=new StatementMatcher[components.length];
+  QueryMatcher[] statementMatchers=new QueryMatcher[components.length];
   for (int i=0; i < components.length; i++) {
     statementMatchers[i]=((StatementMatcherPane)components[i]).getStatementMatcher();
   }

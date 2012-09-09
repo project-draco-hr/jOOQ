@@ -25,5 +25,5 @@
  else {
     queryTypeSet=null;
   }
-  return new StatementMatcher(threadNameTextMatcher,statementTextMatcher,queryTypeSet,isActive);
+  return new QueryMatcher(threadNameTextMatcher,statementTextMatcher,queryTypeSet,isActive);
 }

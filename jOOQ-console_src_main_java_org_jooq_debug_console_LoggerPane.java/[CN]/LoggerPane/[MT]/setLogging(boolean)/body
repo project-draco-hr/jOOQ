@@ -7,8 +7,8 @@
   loggerOffButton.setVisible(isLogging);
   if (isLogging) {
     LoggingListener loggingListener=new LoggingListener(){
-      @Override public void logQueries(      StatementLog statementLog){
-        debugQueries(new QueryDebuggingInfo(System.currentTimeMillis(),statementLog));
+      @Override public void logQuery(      QueryLog queryLog){
+        debugQueries(new QueryDebuggingInfo(System.currentTimeMillis(),queryLog));
       }
       public void debugQueries(      final QueryDebuggingInfo queryDebuggingInfo){
         if (!SwingUtilities.isEventDispatchThread()) {
@@ -22,11 +22,11 @@
         }
         addRow(queryDebuggingInfo);
       }
-      @Override public void logResultSet(      final int queryLoggingDataID,      final ResultSetLog resultSetLog){
+      @Override public void logResult(      final int queryLoggingDataID,      final ResultLog resultLog){
         if (!SwingUtilities.isEventDispatchThread()) {
           SwingUtilities.invokeLater(new Runnable(){
             @Override public void run(){
-              logResultSet(queryLoggingDataID,resultSetLog);
+              logResult(queryLoggingDataID,resultLog);
             }
           }
 );
@@ -35,7 +35,7 @@
         for (int i=queryDebuggingInfoList.size() - 1; i >= 0; i--) {
           QueryDebuggingInfo queryDebuggingInfo=queryDebuggingInfoList.get(i);
           if (queryDebuggingInfo.getQueryLoggingData().getID() == queryLoggingDataID) {
-            queryDebuggingInfo.setResultSetLoggingData(resultSetLog);
+            queryDebuggingInfo.setResultSetLoggingData(resultLog);
             XTableColumnModel columnModel=(XTableColumnModel)table.getColumnModel();
             boolean isResultSetDataShown=columnModel.isColumnVisible(columnModel.getColumnByModelIndex(COLUMN_RS_LIFETIME));
             if (isResultSetDataShown) {

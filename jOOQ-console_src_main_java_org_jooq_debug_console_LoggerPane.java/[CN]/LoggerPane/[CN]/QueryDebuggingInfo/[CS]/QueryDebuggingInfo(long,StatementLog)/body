@@ -1,6 +1,0 @@
-{
-  this.timestamp=timestamp;
-  this.statementLog=statementLog;
-  this.throwable=new Exception("Statement Stack trace");
-  throwable.setStackTrace(statementLog.getCallerStackTraceElements());
-}

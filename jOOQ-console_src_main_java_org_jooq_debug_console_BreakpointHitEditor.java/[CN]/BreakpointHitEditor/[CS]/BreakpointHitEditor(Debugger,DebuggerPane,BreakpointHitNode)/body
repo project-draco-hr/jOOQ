@@ -91,8 +91,8 @@
   breakpointHitExecutionPane.add(buttonPane,new GridBagConstraints(0,y,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(0,0,0,0),0,0));
   adjustStates();
   tabbedPane.addTab("Execution",breakpointHitExecutionPane);
-  tabbedPane.addTab("Editor",new EditorsPane(new StatementExecutorCreator(){
-    @Override public StatementExecutor createStatementExecutor(){
+  tabbedPane.addTab("Editor",new EditorsPane(new QueryExecutorCreator(){
+    @Override public QueryExecutor createQueryExecutor(){
       return debugger.createBreakpointHitStatementExecutor(breakpointHit.getThreadID());
     }
   }

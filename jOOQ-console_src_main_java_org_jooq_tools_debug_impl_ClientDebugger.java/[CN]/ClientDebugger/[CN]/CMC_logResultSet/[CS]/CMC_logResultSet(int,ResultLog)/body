@@ -1,0 +1,4 @@
+{
+  this.dataId=dataId;
+  this.resultLog=resultLog;
+}

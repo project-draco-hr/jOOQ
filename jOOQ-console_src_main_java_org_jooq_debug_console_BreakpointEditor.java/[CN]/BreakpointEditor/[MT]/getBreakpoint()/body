@@ -1,14 +1,14 @@
 {
-  StatementMatcher statementMatcher=getStatementMatcher();
+  QueryMatcher queryMatcher=getStatementMatcher();
   Integer hitCount=hitCountCheckBox.isSelected() ? ((Number)hitCountField.getValue()).intValue() : null;
   boolean isBreaking=breakpointTypeComboBox.getSelectedItem() == BREAK;
-  StatementProcessor beforeExecutionProcessor=null;
-  StatementProcessor replacementExecutionProcessor=null;
-  StatementProcessor afterExecutionProcessor=null;
+  QueryProcessor beforeExecutionProcessor=null;
+  QueryProcessor replacementExecutionProcessor=null;
+  QueryProcessor afterExecutionProcessor=null;
   if (!isBreaking) {
     beforeExecutionProcessor=beforeExecutionCheckBox.isSelected() ? beforeExecutionProcessorPane.getStatementProcessor() : null;
     replacementExecutionProcessor=executeTypeComboBox.getSelectedIndex() == 1 ? replacementExecutionProcessorPane.getStatementProcessor() : null;
     afterExecutionProcessor=afterExecutionCheckBox.isSelected() ? afterExecutionProcessorPane.getStatementProcessor() : null;
   }
-  return new Breakpoint(id,hitCount,statementMatcher,isBreaking,beforeExecutionProcessor,replacementExecutionProcessor,afterExecutionProcessor);
+  return new Breakpoint(id,hitCount,queryMatcher,isBreaking,beforeExecutionProcessor,replacementExecutionProcessor,afterExecutionProcessor);
 }

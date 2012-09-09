@@ -1,4 +1,0 @@
-StatementInfo statementInfo
-Long preparationDuration
-Long bindingDuration
-long executionDuration

@@ -1,4 +1,4 @@
 {
-  StatementExecution statementExecution=getServerDebugger(context).getStatementExecutor(id).execute(sql,maxRSRowsParsing,retainParsedRSDataRowCountThreshold);
-  return new ClientStatementExecution(statementExecution);
+  QueryExecution queryExecution=getServerDebugger(context).getStatementExecutor(id).execute(sql,maxRSRowsParsing,retainParsedRSDataRowCountThreshold);
+  return new ClientStatementExecution(queryExecution);
 }

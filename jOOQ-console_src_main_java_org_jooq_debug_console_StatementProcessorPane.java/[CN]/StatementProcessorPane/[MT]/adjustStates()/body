@@ -1,5 +1,5 @@
 {
-  boolean isStatic=processorTypeComboBox.getSelectedItem() == StatementProcessor.ProcessorExecutionType.STATIC;
+  boolean isStatic=processorTypeComboBox.getSelectedItem() == QueryProcessor.ProcessorExecutionType.STATIC;
   processorStaticScrollPane.setVisible(isStatic);
   processorTextField.setVisible(!isStatic);
   revalidate();

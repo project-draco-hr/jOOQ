@@ -1,0 +1,8 @@
+{
+  this.queryInfo=queryInfo;
+  this.id=nextID.getAndIncrement();
+  this.callerStackTraceElements=Thread.currentThread().getStackTrace();
+  this.preparationDuration=preparationDuration;
+  this.bindingDuration=bindingDuration;
+  this.executionDuration=executionDuration;
+}

@@ -1,11 +1,11 @@
 {
   if (isActive) {
     setLoggingListener(new LoggingListener(){
-      @Override public void logQueries(      StatementLog statementLog){
-        comm.asyncSend((CommandMessage<?>)new CMC_logQueries(statementLog));
+      @Override public void logQuery(      QueryLog queryLog){
+        comm.asyncSend((CommandMessage<?>)new CMC_logQueries(queryLog));
       }
-      @Override public void logResultSet(      int dataId,      ResultSetLog resultSetLog){
-        comm.asyncSend((CommandMessage<?>)new CMC_logResultSet(dataId,resultSetLog));
+      @Override public void logResult(      int dataId,      ResultLog resultLog){
+        comm.asyncSend((CommandMessage<?>)new CMC_logResultSet(dataId,resultLog));
       }
     }
 );

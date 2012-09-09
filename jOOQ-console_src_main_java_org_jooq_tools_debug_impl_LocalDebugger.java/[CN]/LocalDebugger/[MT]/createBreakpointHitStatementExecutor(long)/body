@@ -6,7 +6,7 @@ synchronized (threadIDToExecuteContextMap) {
       return null;
     }
   }
-  return new LocalStatementExecutor(new StatementExecutorContext(){
+  return new LocalStatementExecutor(new QueryExecutorContext(){
     @Override public boolean isReadOnly(){
       return false;
     }

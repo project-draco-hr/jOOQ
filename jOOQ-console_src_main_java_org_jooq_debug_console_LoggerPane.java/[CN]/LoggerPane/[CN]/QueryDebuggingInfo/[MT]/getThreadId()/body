@@ -1,3 +1,3 @@
 {
-  return statementLog.getStatementInfo().getThreadID();
+  return queryLog.getQueryInfo().getThreadID();
 }

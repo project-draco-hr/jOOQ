@@ -23,21 +23,21 @@
           parameterDescription=((TrackingPreparedStatement)statement).getParameterDescription();
         }
       }
-      StatementInfo statementInfo=new StatementInfo(queryType,sql,parameterDescription);
-      StatementLog statementLog=new StatementLog(statementInfo,startPreparationTime == 0 ? null : aggregatedPreparationDuration,startBindTime == 0 ? null : endBindTime - startBindTime,endExecutionTime - startExecutionTime);
+      QueryInfo queryInfo=new QueryInfo(queryType,sql,parameterDescription);
+      QueryLog queryLog=new QueryLog(queryInfo,startPreparationTime == 0 ? null : aggregatedPreparationDuration,startBindTime == 0 ? null : endBindTime - startBindTime,endExecutionTime - startExecutionTime);
       final List<LoggingListener> loggingListenerList=new ArrayList<LoggingListener>(debuggerList.size());
       for (      Debugger listener : debuggerList) {
         LoggingListener loggingListener=listener.getLoggingListener();
         if (loggingListener != null) {
-          StatementMatcher[] loggingStatementMatchers=listener.getLoggingStatementMatchers();
+          QueryMatcher[] loggingStatementMatchers=listener.getLoggingStatementMatchers();
           if (loggingStatementMatchers == null) {
             loggingListenerList.add(loggingListener);
-            loggingListener.logQueries(statementLog);
+            loggingListener.logQuery(queryLog);
           }
- else           for (          StatementMatcher statementMatcher : loggingStatementMatchers) {
-            if (statementMatcher.matches(statementLog.getStatementInfo())) {
+ else           for (          QueryMatcher queryMatcher : loggingStatementMatchers) {
+            if (queryMatcher.matches(queryLog.getQueryInfo())) {
               loggingListenerList.add(loggingListener);
-              loggingListener.logQueries(statementLog);
+              loggingListener.logQuery(queryLog);
               break;
             }
           }
@@ -45,15 +45,15 @@
       }
       ResultSet resultSet=ctx.resultSet();
       if (resultSet != null && !loggingListenerList.isEmpty()) {
-        final int queryLoggingDataID=statementLog.getID();
+        final int queryLoggingDataID=queryLog.getID();
         ResultSet newResultSet=new TrackingResultSet(resultSet){
           @Override protected void notifyData(          long lifeTime,          int readRows,          int readCount,          int writeCount){
-            ResultSetLog resultSetLog=null;
+            ResultLog resultLog=null;
             for (            LoggingListener loggingListener : loggingListenerList) {
-              if (resultSetLog == null) {
-                resultSetLog=new ResultSetLog(lifeTime,readRows,readCount,writeCount);
+              if (resultLog == null) {
+                resultLog=new ResultLog(lifeTime,readRows,readCount,writeCount);
               }
-              loggingListener.logResultSet(queryLoggingDataID,resultSetLog);
+              loggingListener.logResult(queryLoggingDataID,resultLog);
             }
           }
         }
@@ -71,7 +71,7 @@
     matchingDebugger.processBreakpointAfterExecutionHit(ctx,new BreakpointHit(matchingBreakpoint.getID(),effectiveSQL,matchingParameterDescription,threadID,threadName,callerStackTraceElements,false));
   }
   if (matchingBreakpoint != null) {
-    StatementProcessor afterExecutionProcessor=matchingBreakpoint.getAfterExecutionProcessor();
+    QueryProcessor afterExecutionProcessor=matchingBreakpoint.getAfterExecutionProcessor();
     matchingBreakpoint=null;
     if (afterExecutionProcessor != null) {
       String sql=afterExecutionProcessor.processSQL(matchingSQL);
@@ -82,15 +82,15 @@
         LoggingListener loggingListener=listener.getLoggingListener();
         if (loggingListener != null) {
           QueryType queryType=QueryType.detectType(sql);
-          StatementInfo statementInfo=new StatementInfo(queryType,new String[]{sql},null);
-          StatementLog statementLog=new StatementLog(statementInfo,null,null,subEndExecutionTime - subStartExecutionTime);
-          StatementMatcher[] loggingStatementMatchers=listener.getLoggingStatementMatchers();
+          QueryInfo queryInfo=new QueryInfo(queryType,new String[]{sql},null);
+          QueryLog queryLog=new QueryLog(queryInfo,null,null,subEndExecutionTime - subStartExecutionTime);
+          QueryMatcher[] loggingStatementMatchers=listener.getLoggingStatementMatchers();
           if (loggingStatementMatchers == null) {
-            loggingListener.logQueries(statementLog);
+            loggingListener.logQuery(queryLog);
           }
- else           for (          StatementMatcher statementMatcher : loggingStatementMatchers) {
-            if (statementMatcher.matches(statementLog.getStatementInfo())) {
-              loggingListener.logQueries(statementLog);
+ else           for (          QueryMatcher queryMatcher : loggingStatementMatchers) {
+            if (queryMatcher.matches(queryLog.getQueryInfo())) {
+              loggingListener.logQuery(queryLog);
               break;
             }
           }

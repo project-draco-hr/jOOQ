@@ -1,13 +1,13 @@
 {
   super(new GridBagLayout());
   setOpaque(false);
-  StatementMatcher statementMatcher=breakpoint.getStatementMatcher();
+  QueryMatcher queryMatcher=breakpoint.getStatementMatcher();
   id=breakpoint.getID();
-  if (statementMatcher == null) {
-    statementMatcher=new StatementMatcher(null,null,null,true);
+  if (queryMatcher == null) {
+    queryMatcher=new QueryMatcher(null,null,null,true);
   }
   int y=0;
-  TextMatcher statementTextMatcher=statementMatcher.getStatementTextMatcher();
+  TextMatcher statementTextMatcher=queryMatcher.getStatementTextMatcher();
   statementTextMatcherCheckBox=new JCheckBox("Statement",statementTextMatcher != null);
   statementTextMatcherCheckBox.setOpaque(false);
   statementTextMatcherCheckBox.addItemListener(new ItemListener(){
@@ -20,7 +20,7 @@
   statementTextMatcherPane=new TextMatcherPane(statementTextMatcher);
   add(statementTextMatcherPane,new GridBagConstraints(1,y,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(0,5,0,0),0,0));
   y++;
-  Set<QueryType> queryTypeSet=statementMatcher.getQueryTypeSet();
+  Set<QueryType> queryTypeSet=queryMatcher.getQueryTypeSet();
   statementTypeCheckBox=new JCheckBox("Type",queryTypeSet != null);
   statementTypeCheckBox.setOpaque(false);
   statementTypeCheckBox.addItemListener(new ItemListener(){
@@ -49,7 +49,7 @@
   typesPane.add(statementTypeOtherCheckBox,new GridBagConstraints(4,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,2,0,0),0,0));
   add(typesPane,new GridBagConstraints(1,y,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,5,0,0),0,0));
   y++;
-  TextMatcher threadNameTextMatcher=statementMatcher.getThreadNameTextMatcher();
+  TextMatcher threadNameTextMatcher=queryMatcher.getThreadNameTextMatcher();
   threadNameTextMatcherCheckBox=new JCheckBox("Thread name",threadNameTextMatcher != null);
   threadNameTextMatcherCheckBox.setOpaque(false);
   threadNameTextMatcherCheckBox.addItemListener(new ItemListener(){

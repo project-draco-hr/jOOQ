@@ -1,6 +1,6 @@
 {
-  String parameterDescription=statementLog.getStatementInfo().getParameterDescription();
-  String[] queries=statementLog.getStatementInfo().getQueries();
+  String parameterDescription=queryLog.getQueryInfo().getParameterDescription();
+  String[] queries=queryLog.getQueryInfo().getQueries();
   if (parameterDescription != null) {
     return new String[]{queries[0] + " -> " + parameterDescription};
   }

@@ -1,0 +1,3 @@
+{
+  super(queryExecution.getExecutionDuration(),convertResults(queryExecution));
+}

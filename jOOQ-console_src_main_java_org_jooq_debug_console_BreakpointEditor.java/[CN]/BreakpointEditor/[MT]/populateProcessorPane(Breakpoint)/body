@@ -1,6 +1,6 @@
 {
   int y=0;
-  StatementProcessor beforeExecutionProcessor=breakpoint.getBeforeExecutionProcessor();
+  QueryProcessor beforeExecutionProcessor=breakpoint.getBeforeExecutionProcessor();
   beforeExecutionCheckBox=new JCheckBox("Execute before: ");
   beforeExecutionCheckBox.setOpaque(false);
   beforeExecutionCheckBox.setSelected(beforeExecutionProcessor != null);
@@ -14,7 +14,7 @@
   beforeExecutionProcessorPane=new StatementProcessorPane(beforeExecutionProcessor);
   processorPane.add(beforeExecutionProcessorPane,new GridBagConstraints(1,y,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,5,0,0),0,0));
   y++;
-  StatementProcessor replacementExecutionProcessor=breakpoint.getReplacementExecutionProcessor();
+  QueryProcessor replacementExecutionProcessor=breakpoint.getReplacementExecutionProcessor();
   executeTypeComboBox=new JComboBox(new String[]{"Execute","Replace with"});
   if (replacementExecutionProcessor != null) {
     executeTypeComboBox.setSelectedIndex(1);
@@ -32,7 +32,7 @@
   }
 );
   y++;
-  StatementProcessor afterExecutionProcessor=breakpoint.getAfterExecutionProcessor();
+  QueryProcessor afterExecutionProcessor=breakpoint.getAfterExecutionProcessor();
   afterExecutionCheckBox=new JCheckBox("Execute after: ");
   afterExecutionCheckBox.setOpaque(false);
   afterExecutionCheckBox.setSelected(afterExecutionProcessor != null);

@@ -22,7 +22,7 @@ break;
 }
 }
 if (!isAllowed) {
-return new StatementExecution(0,new StatementExecutionMessageResult("The database is not editable but the statement to evaluate is a modification statement!",true));
+return new QueryExecution(0,new QueryExecutionMessageResult("The database is not editable but the statement to evaluate is a modification statement!",true));
 }
 stopExecution();
 evaluationThread=Thread.currentThread();
@@ -33,7 +33,7 @@ stmt=conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDAT
 start=System.currentTimeMillis();
 if (evaluationThread != Thread.currentThread()) {
 long executionDuration=System.currentTimeMillis() - start;
-return new StatementExecution(executionDuration,new StatementExecutionMessageResult("Interrupted by user after " + Utils.formatDuration(executionDuration),true));
+return new QueryExecution(executionDuration,new QueryExecutionMessageResult("Interrupted by user after " + Utils.formatDuration(executionDuration),true));
 }
 boolean executeResult;
 try {
@@ -42,17 +42,17 @@ executeResult=stmt.execute(sql);
  catch (SQLException e) {
 long executionDuration=System.currentTimeMillis() - start;
 if (evaluationThread != Thread.currentThread()) {
-return new StatementExecution(executionDuration,new StatementExecutionMessageResult("Interrupted by user after " + Utils.formatDuration(executionDuration),true));
+return new QueryExecution(executionDuration,new QueryExecutionMessageResult("Interrupted by user after " + Utils.formatDuration(executionDuration),true));
 }
-return new StatementExecution(executionDuration,new StatementExecutionMessageResult(e));
+return new QueryExecution(executionDuration,new QueryExecutionMessageResult(e));
 }
 final long executionDuration=System.currentTimeMillis() - start;
 if (evaluationThread != Thread.currentThread()) {
-return new StatementExecution(executionDuration,new StatementExecutionMessageResult("Interrupted by user after " + Utils.formatDuration(executionDuration),true));
+return new QueryExecution(executionDuration,new QueryExecutionMessageResult("Interrupted by user after " + Utils.formatDuration(executionDuration),true));
 }
-List<StatementExecutionResult> statementExecutionResultList=new ArrayList<StatementExecutionResult>();
+List<QueryExecutionResult> statementExecutionResultList=new ArrayList<QueryExecutionResult>();
 do {
-StatementExecutionResult statementExecutionResult;
+QueryExecutionResult queryExecutionResult;
 if (executeResult) {
 final ResultSet rs=stmt.getResultSet();
 ResultSetMetaData metaData=rs.getMetaData();
@@ -131,14 +131,14 @@ break;
 }
 }
 if (evaluationThread != Thread.currentThread()) {
-return new StatementExecution(executionDuration,new StatementExecutionMessageResult("Interrupted by user after " + Utils.formatDuration(executionDuration),true));
+return new QueryExecution(executionDuration,new QueryExecutionMessageResult("Interrupted by user after " + Utils.formatDuration(executionDuration),true));
 }
 final List<Object[]> rowDataList=new ArrayList<Object[]>();
 int rowCount=0;
 long rsStart=System.currentTimeMillis();
 while (rs.next() && rowCount < maxRSRowsParsing) {
 if (evaluationThread != Thread.currentThread()) {
-return new StatementExecution(executionDuration,new StatementExecutionMessageResult("Interrupted by user after " + Utils.formatDuration(executionDuration),true));
+return new QueryExecution(executionDuration,new QueryExecutionMessageResult("Interrupted by user after " + Utils.formatDuration(executionDuration),true));
 }
 rowCount++;
 Object[] rowData=new Object[columnNames.length];
@@ -198,11 +198,11 @@ rowDataList.clear();
 }
 }
 final long resultSetParsingDuration=System.currentTimeMillis() - rsStart;
-statementExecutionResult=new LocalStatementExecutionResultSetResult(rs,columnNames,typeInfos,columnClasses,rowDataList.toArray(new Object[0][]),rowCount,resultSetParsingDuration,retainParsedRSDataRowCountThreshold,executorContext.isReadOnly());
+queryExecutionResult=new LocalStatementExecutionResultSetResult(rs,columnNames,typeInfos,columnClasses,rowDataList.toArray(new Object[0][]),rowCount,resultSetParsingDuration,retainParsedRSDataRowCountThreshold,executorContext.isReadOnly());
 }
  else {
 final int updateCount=stmt.getUpdateCount();
-statementExecutionResult=new StatementExecutionMessageResult(Utils.formatDuration(executionDuration) + "> " + updateCount+ " row(s) affected.",false);
+queryExecutionResult=new QueryExecutionMessageResult(Utils.formatDuration(executionDuration) + "> " + updateCount+ " row(s) affected.",false);
 }
 if (executorContext.getSQLDialect() == SQLDialect.SQLSERVER) {
 try {
@@ -215,14 +215,14 @@ executeResult=stmt.getMoreResults();
  else {
 executeResult=false;
 }
-statementExecutionResultList.add(statementExecutionResult);
+statementExecutionResultList.add(queryExecutionResult);
 }
  while (executeResult || stmt.getUpdateCount() != -1);
-return new StatementExecution(executionDuration,statementExecutionResultList.toArray(new StatementExecutionResult[0]));
+return new QueryExecution(executionDuration,statementExecutionResultList.toArray(new QueryExecutionResult[0]));
 }
  catch (Exception e) {
 long executionDuration=System.currentTimeMillis() - start;
-return new StatementExecution(executionDuration,new StatementExecutionMessageResult(e));
+return new QueryExecution(executionDuration,new QueryExecutionMessageResult(e));
 }
  finally {
 if (executorContext.isReadOnly()) {

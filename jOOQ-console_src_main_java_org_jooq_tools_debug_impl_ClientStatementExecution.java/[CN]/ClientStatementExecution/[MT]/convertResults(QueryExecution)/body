@@ -1,0 +1,11 @@
+{
+  QueryExecutionResult[] results=queryExecution.getResults();
+  QueryExecutionResult[] clientResults=new QueryExecutionResult[results.length];
+  for (int i=0; i < results.length; i++) {
+    clientResults[i]=results[i];
+    if (clientResults[i] instanceof LocalStatementExecutionResultSetResult) {
+      clientResults[i]=new ClientStatementExecutionResultSetResult((LocalStatementExecutionResultSetResult)clientResults[i]);
+    }
+  }
+  return clientResults;
+}

@@ -8,14 +8,14 @@
     }
   }
 );
-  StatementExecutor statementExecutor;
+  QueryExecutor queryExecutor;
 synchronized (STATEMENT_EXECUTOR_CREATOR_LOCK) {
-    statementExecutor=statementExecutorCreator.createStatementExecutor();
-    lastStatementExecutor=statementExecutor;
+    queryExecutor=queryExecutorCreator.createQueryExecutor();
+    lastStatementExecutor=queryExecutor;
   }
-  StatementExecution statementExecution;
+  QueryExecution queryExecution;
   try {
-    statementExecution=statementExecutor.execute(sql,isUsingMaxRowCount ? MAX_ROW_COUNT : Integer.MAX_VALUE,maxDisplayedRowCount);
+    queryExecution=queryExecutor.execute(sql,isUsingMaxRowCount ? MAX_ROW_COUNT : Integer.MAX_VALUE,maxDisplayedRowCount);
   }
   finally {
     SwingUtilities.invokeLater(new Runnable(){
@@ -27,13 +27,13 @@ synchronized (STATEMENT_EXECUTOR_CREATOR_LOCK) {
     }
 );
   }
-  final StatementExecutionResult[] results=statementExecution.getResults();
-  final long executionDuration=statementExecution.getExecutionDuration();
+  final QueryExecutionResult[] results=queryExecution.getResults();
+  final long executionDuration=queryExecution.getExecutionDuration();
   SwingUtilities.invokeLater(new Runnable(){
     @Override public void run(){
-      for (      StatementExecutionResult result : results) {
-        if (result instanceof StatementExecutionMessageResult) {
-          StatementExecutionMessageResult messageResult=(StatementExecutionMessageResult)result;
+      for (      QueryExecutionResult result : results) {
+        if (result instanceof QueryExecutionMessageResult) {
+          QueryExecutionMessageResult messageResult=(QueryExecutionMessageResult)result;
           setMessage(addResultPane(),messageResult.getMessage(),messageResult.isError());
         }
  else         if (result instanceof StatementExecutionResultSetResult) {

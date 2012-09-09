@@ -33,7 +33,7 @@
   JButton okButton=new JButton("OK");
   okButton.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    ActionEvent e){
-      StatementMatcher[] statementMatchers=statementMatchersPane.getStatementMatchers();
+      QueryMatcher[] statementMatchers=statementMatchersPane.getStatementMatchers();
       debugger.setLoggingStatementMatchers(statementMatchers.length == 0 ? null : statementMatchers);
       dispose();
     }
@@ -43,7 +43,7 @@
   JButton applyButton=new JButton("Apply");
   applyButton.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    ActionEvent e){
-      StatementMatcher[] statementMatchers=statementMatchersPane.getStatementMatchers();
+      QueryMatcher[] statementMatchers=statementMatchersPane.getStatementMatchers();
       debugger.setLoggingStatementMatchers(statementMatchers.length == 0 ? null : statementMatchers);
     }
   }

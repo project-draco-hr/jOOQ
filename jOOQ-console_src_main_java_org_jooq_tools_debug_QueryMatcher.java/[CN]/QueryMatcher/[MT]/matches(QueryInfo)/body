@@ -1,0 +1,25 @@
+{
+  if (!isActive) {
+    return false;
+  }
+  boolean hasMatcher=false;
+  if (threadNameTextMatcher != null) {
+    if (!threadNameTextMatcher.matches(queryInfo.getThreadName())) {
+      return false;
+    }
+    hasMatcher=true;
+  }
+  if (statementTextMatcher != null) {
+    if (!statementTextMatcher.matches(queryInfo.getQueries())) {
+      return false;
+    }
+    hasMatcher=true;
+  }
+  if (queryTypeSet != null) {
+    if (!queryTypeSet.contains(queryInfo.getQueryType())) {
+      return false;
+    }
+    hasMatcher=true;
+  }
+  return hasMatcher;
+}

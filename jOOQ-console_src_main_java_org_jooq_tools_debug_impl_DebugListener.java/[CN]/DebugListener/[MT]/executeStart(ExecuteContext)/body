@@ -2,14 +2,14 @@
   List<Debugger> debuggerList=DebuggerRegistry.get();
   boolean hasBreakpointHitHandler=false;
   if (!debuggerList.isEmpty()) {
-    StatementInfo statementInfo=null;
+    QueryInfo queryInfo=null;
     bp:     for (    Debugger debugger : debuggerList) {
       Breakpoint[] breakpoints=debugger.getBreakpoints();
       if (breakpoints != null) {
         for (        Breakpoint breakpoint : breakpoints) {
           String sql_=null;
           String parameterDescription=null;
-          if (statementInfo == null) {
+          if (queryInfo == null) {
             String[] sql=ctx.batchSQL();
             QueryType queryType=QueryType.detectType(sql[0]);
             if (sql.length == 1) {
@@ -29,9 +29,9 @@
               }
               sql_=sb.toString();
             }
-            statementInfo=new StatementInfo(queryType,sql,parameterDescription);
+            queryInfo=new QueryInfo(queryType,sql,parameterDescription);
           }
-          if (breakpoint.matches(statementInfo,true)) {
+          if (breakpoint.matches(queryInfo,true)) {
             matchingSQL=sql_;
             matchingParameterDescription=parameterDescription;
             matchingDebugger=debugger;
@@ -46,7 +46,7 @@
     }
   }
   if (matchingBreakpoint != null) {
-    StatementProcessor beforeExecutionProcessor=matchingBreakpoint.getBeforeExecutionProcessor();
+    QueryProcessor beforeExecutionProcessor=matchingBreakpoint.getBeforeExecutionProcessor();
     if (beforeExecutionProcessor != null) {
       String sql=beforeExecutionProcessor.processSQL(matchingSQL);
       long subStartExecutionTime=System.currentTimeMillis();
@@ -56,15 +56,15 @@
         LoggingListener loggingListener=debugger.getLoggingListener();
         if (loggingListener != null) {
           QueryType queryType=QueryType.detectType(sql);
-          StatementInfo statementInfo=new StatementInfo(queryType,new String[]{sql},null);
-          StatementLog statementLog=new StatementLog(statementInfo,null,null,subEndExecutionTime - subStartExecutionTime);
-          StatementMatcher[] loggingStatementMatchers=debugger.getLoggingStatementMatchers();
+          QueryInfo queryInfo=new QueryInfo(queryType,new String[]{sql},null);
+          QueryLog queryLog=new QueryLog(queryInfo,null,null,subEndExecutionTime - subStartExecutionTime);
+          QueryMatcher[] loggingStatementMatchers=debugger.getLoggingStatementMatchers();
           if (loggingStatementMatchers == null) {
-            loggingListener.logQueries(statementLog);
+            loggingListener.logQuery(queryLog);
           }
- else           for (          StatementMatcher statementMatcher : loggingStatementMatchers) {
-            if (statementMatcher.matches(statementLog.getStatementInfo())) {
-              loggingListener.logQueries(statementLog);
+ else           for (          QueryMatcher queryMatcher : loggingStatementMatchers) {
+            if (queryMatcher.matches(queryLog.getQueryInfo())) {
+              loggingListener.logQuery(queryLog);
               break;
             }
           }
@@ -72,7 +72,7 @@
       }
     }
     String mainSQL=null;
-    StatementProcessor replacementExecutionProcessor=matchingBreakpoint.getReplacementExecutionProcessor();
+    QueryProcessor replacementExecutionProcessor=matchingBreakpoint.getReplacementExecutionProcessor();
     if (replacementExecutionProcessor != null) {
       mainSQL=replacementExecutionProcessor.processSQL(matchingSQL);
       matchingParameterDescription=null;

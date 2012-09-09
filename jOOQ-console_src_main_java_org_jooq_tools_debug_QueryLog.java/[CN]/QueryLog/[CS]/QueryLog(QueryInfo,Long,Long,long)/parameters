@@ -1,0 +1,4 @@
+QueryInfo queryInfo
+Long preparationDuration
+Long bindingDuration
+long executionDuration
