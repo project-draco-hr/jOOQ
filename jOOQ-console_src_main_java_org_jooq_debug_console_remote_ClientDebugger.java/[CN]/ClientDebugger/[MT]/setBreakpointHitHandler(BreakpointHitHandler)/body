@@ -5,5 +5,5 @@ synchronized (BREAKPOINT_HIT_HANDLER_LOCK) {
     }
     this.breakpointHitHandler=breakpointHitHandler;
   }
-  comm.asyncExec(new CMS_setBreakpointHitHandlerActive(),breakpointHitHandler != null);
+  comm.asyncExec(new CMS_setBreakpointHitHandlerActive(breakpointHitHandler != null));
 }

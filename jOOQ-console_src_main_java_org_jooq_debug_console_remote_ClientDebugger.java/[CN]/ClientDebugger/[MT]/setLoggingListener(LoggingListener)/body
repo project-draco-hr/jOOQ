@@ -5,5 +5,5 @@ synchronized (LOGGING_LISTENER_LOCK) {
     }
     this.loggingListener=loggingListener;
   }
-  comm.asyncExec(new CMS_setLoggingActive(),loggingListener != null);
+  comm.asyncExec(new CMS_setLoggingActive(loggingListener != null));
 }

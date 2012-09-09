@@ -1,4 +1,0 @@
-{
-  getDebugger().setBreakpointHitHandlerActive((Boolean)args[0]);
-  return null;
-}

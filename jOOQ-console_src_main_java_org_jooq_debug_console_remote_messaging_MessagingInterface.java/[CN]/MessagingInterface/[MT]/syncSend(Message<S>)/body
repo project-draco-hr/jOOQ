@@ -11,8 +11,7 @@ synchronized (originatorThreadIDToThreadMap) {
       ((MessageProcessingThread)thread).setWaitingOnSyncCall(true);
     }
   }
-  CM_asyncExec asyncExec=new CM_asyncExec();
-  asyncExec.setArgs(threadID,message);
+  CM_asyncExec<S> asyncExec=new CM_asyncExec<S>(threadID,message);
   asyncSend(asyncExec);
   CommandResultMessage<S> commandResultMessage=null;
 synchronized (threadInfo) {

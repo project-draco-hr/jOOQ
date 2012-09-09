@@ -2,13 +2,13 @@
 synchronized (BREAKPOINT_LOCK) {
     if (this.breakpoints == null) {
       this.breakpoints=new Breakpoint[]{breakpoint};
-      comm.asyncExec(new CMS_addBreakpoint(),breakpoint);
+      comm.asyncExec(new CMS_addBreakpoint(breakpoint));
       return;
     }
     for (int i=0; i < breakpoints.length; i++) {
       if (breakpoints[i].getID() == breakpoint.getID()) {
         breakpoints[i]=breakpoint;
-        comm.asyncExec(new CMS_modifyBreakpoint(),breakpoint);
+        comm.asyncExec(new CMS_modifyBreakpoint(breakpoint));
         return;
       }
     }
@@ -17,5 +17,5 @@ synchronized (BREAKPOINT_LOCK) {
     newBreakpoints[breakpoints.length]=breakpoint;
     breakpoints=newBreakpoints;
   }
-  comm.asyncExec(new CMS_addBreakpoint(),breakpoint);
+  comm.asyncExec(new CMS_addBreakpoint(breakpoint));
 }

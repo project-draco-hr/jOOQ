@@ -1,4 +1,0 @@
-{
-  int id=(Integer)args[0];
-  return getDebugger().getStatementExecutor(id).getTableColumnNames();
-}

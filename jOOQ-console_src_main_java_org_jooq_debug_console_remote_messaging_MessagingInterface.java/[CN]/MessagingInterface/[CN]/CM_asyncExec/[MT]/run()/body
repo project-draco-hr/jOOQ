@@ -1,0 +1,9 @@
+{
+  message.setSyncExec(false);
+  CommunicationInterface communicationInterface=getCommunicationInterface();
+  MessagingInterface messagingInterface=communicationInterface.getMessagingInterface();
+  CommandResultMessage<S> commandResultMessage=messagingInterface.runMessage(message);
+  CM_asyncExecResponse<S> asyncExecResponse=new CM_asyncExecResponse<S>(threadID,commandResultMessage);
+  messagingInterface.asyncSend(asyncExecResponse);
+  return null;
+}

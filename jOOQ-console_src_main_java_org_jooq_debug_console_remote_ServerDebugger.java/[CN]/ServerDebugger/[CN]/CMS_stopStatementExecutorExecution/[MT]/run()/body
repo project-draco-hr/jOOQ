@@ -1,0 +1,4 @@
+{
+  getDebugger().removeStatementExecutor(id).stopExecution();
+  return null;
+}

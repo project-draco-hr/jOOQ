@@ -1,0 +1,6 @@
+{
+  this.id=id;
+  this.sql=sql;
+  this.maxRSRowsParsing=maxRSRowsParsing;
+  this.retainParsedRSDataRowCountThreshold=retainParsedRSDataRowCountThreshold;
+}

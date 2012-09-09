@@ -1,6 +1,0 @@
-{
-  int id=(Integer)args[0];
-  Long breakpointHitThreadID=(Long)args[1];
-  getDebugger().createStatementExecutor(id,breakpointHitThreadID);
-  return null;
-}

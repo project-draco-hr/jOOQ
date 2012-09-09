@@ -1,0 +1,4 @@
+{
+  getDebugger().createStatementExecutor(id,breakpointHitThreadID);
+  return null;
+}

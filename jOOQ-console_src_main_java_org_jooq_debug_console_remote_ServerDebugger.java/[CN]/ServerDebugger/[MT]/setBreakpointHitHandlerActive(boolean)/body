@@ -1,14 +1,14 @@
 {
   if (isActive) {
     setBreakpointHitHandler(new BreakpointHitHandler(){
-      @Override public void processBreakpointBeforeExecutionHit(      BreakpointHit breakpointHit){
-        BreakpointHit modifiedBreakpointHit=comm.syncExec(new CMC_processBreakpointBeforeExecutionHit(),breakpointHit);
+      @Override public void processBreakpointBeforeExecutionHit(      BreakpointHit hit){
+        BreakpointHit modifiedBreakpointHit=comm.syncExec(new CMC_processBreakpointBeforeExecutionHit(hit));
         if (modifiedBreakpointHit != null) {
-          breakpointHit.setExecutionType(modifiedBreakpointHit.getExecutionType(),modifiedBreakpointHit.getSql());
+          hit.setExecutionType(modifiedBreakpointHit.getExecutionType(),modifiedBreakpointHit.getSql());
         }
       }
-      @Override public void processBreakpointAfterExecutionHit(      BreakpointHit breakpointHit){
-        comm.syncExec(new CMC_processBreakpointAfterExecutionHit(),breakpointHit);
+      @Override public void processBreakpointAfterExecutionHit(      BreakpointHit hit){
+        comm.syncExec(new CMC_processBreakpointAfterExecutionHit(hit));
       }
     }
 );
