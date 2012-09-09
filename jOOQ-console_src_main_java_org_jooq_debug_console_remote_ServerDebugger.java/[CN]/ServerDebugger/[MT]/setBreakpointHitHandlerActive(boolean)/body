@@ -2,13 +2,13 @@
   if (isActive) {
     setBreakpointHitHandler(new BreakpointHitHandler(){
       @Override public void processBreakpointBeforeExecutionHit(      BreakpointHit hit){
-        BreakpointHit modifiedBreakpointHit=comm.syncExec(new CMC_processBreakpointBeforeExecutionHit(hit));
+        BreakpointHit modifiedBreakpointHit=comm.syncSend(new CMC_processBreakpointBeforeExecutionHit(hit));
         if (modifiedBreakpointHit != null) {
           hit.setExecutionType(modifiedBreakpointHit.getExecutionType(),modifiedBreakpointHit.getSql());
         }
       }
       @Override public void processBreakpointAfterExecutionHit(      BreakpointHit hit){
-        comm.syncExec(new CMC_processBreakpointAfterExecutionHit(hit));
+        comm.syncSend(new CMC_processBreakpointAfterExecutionHit(hit));
       }
     }
 );

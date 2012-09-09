@@ -2,10 +2,10 @@
   if (isActive) {
     setLoggingListener(new LoggingListener(){
       @Override public void logQueries(      StatementLog statementLog){
-        comm.asyncExec(new CMC_logQueries(statementLog));
+        comm.asyncSend((CommandMessage<?>)new CMC_logQueries(statementLog));
       }
       @Override public void logResultSet(      int dataId,      ResultSetLog resultSetLog){
-        comm.asyncExec(new CMC_logResultSet(dataId,resultSetLog));
+        comm.asyncSend((CommandMessage<?>)new CMC_logResultSet(dataId,resultSetLog));
       }
     }
 );

@@ -5,5 +5,5 @@
 synchronized (BREAKPOINT_LOCK) {
     this.breakpoints=breakpoints;
   }
-  comm.asyncExec(new CMS_setBreakpoints(breakpoints));
+  comm.asyncSend((CommandMessage<?>)new CMS_setBreakpoints(breakpoints));
 }

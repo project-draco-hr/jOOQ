@@ -2,5 +2,5 @@
 synchronized (LOGGING_STATEMENT_MATCHERS_LOCK) {
     this.loggingStatementMatchers=matchers;
   }
-  comm.asyncExec(new CMS_setLoggingStatementMatchers(matchers));
+  comm.asyncSend((CommandMessage<?>)new CMS_setLoggingStatementMatchers(matchers));
 }
