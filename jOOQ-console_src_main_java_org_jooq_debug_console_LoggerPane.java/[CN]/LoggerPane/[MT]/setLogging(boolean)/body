@@ -22,11 +22,11 @@
         }
         addRow(queryDebuggingInfo);
       }
-      @Override public void logResult(      final int queryLoggingDataID,      final ResultLog resultLog){
+      @Override public void logResult(      final ResultLog resultLog){
         if (!SwingUtilities.isEventDispatchThread()) {
           SwingUtilities.invokeLater(new Runnable(){
             @Override public void run(){
-              logResult(queryLoggingDataID,resultLog);
+              logResult(resultLog);
             }
           }
 );
@@ -34,7 +34,7 @@
         }
         for (int i=queryDebuggingInfoList.size() - 1; i >= 0; i--) {
           QueryDebuggingInfo queryDebuggingInfo=queryDebuggingInfoList.get(i);
-          if (queryDebuggingInfo.getQueryLoggingData().getID() == queryLoggingDataID) {
+          if (queryDebuggingInfo.getQueryLoggingData().getID() == resultLog.getQueryLogId()) {
             queryDebuggingInfo.setResultSetLoggingData(resultLog);
             XTableColumnModel columnModel=(XTableColumnModel)table.getColumnModel();
             boolean isResultSetDataShown=columnModel.isColumnVisible(columnModel.getColumnByModelIndex(COLUMN_RS_LIFETIME));

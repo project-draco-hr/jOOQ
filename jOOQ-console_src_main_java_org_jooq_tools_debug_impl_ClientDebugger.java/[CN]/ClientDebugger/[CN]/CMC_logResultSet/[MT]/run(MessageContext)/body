@@ -1,7 +1,7 @@
 {
   LoggingListener loggingListener=context.getDebugger().getLoggingListener();
   if (loggingListener != null) {
-    loggingListener.logResult(dataId,resultLog);
+    loggingListener.logResult(resultLog);
   }
   return null;
 }

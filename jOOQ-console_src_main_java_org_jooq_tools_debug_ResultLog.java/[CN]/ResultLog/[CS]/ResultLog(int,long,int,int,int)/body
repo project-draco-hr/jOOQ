@@ -1,4 +1,5 @@
 {
+  this.queryLogId=queryLogId;
   this.id=nextID++;
   this.lifeTime=lifeTime;
   this.readRows=readRows;

@@ -24,7 +24,7 @@
         }
       }
       QueryInfo queryInfo=new QueryInfo(queryType,sql,parameterDescription);
-      QueryLog queryLog=new QueryLog(queryInfo,startPreparationTime == 0 ? null : aggregatedPreparationDuration,startBindTime == 0 ? null : endBindTime - startBindTime,endExecutionTime - startExecutionTime);
+      final QueryLog queryLog=new QueryLog(queryInfo,startPreparationTime == 0 ? null : aggregatedPreparationDuration,startBindTime == 0 ? null : endBindTime - startBindTime,endExecutionTime - startExecutionTime);
       final List<LoggingListener> loggingListenerList=new ArrayList<LoggingListener>(debuggerList.size());
       for (      Debugger listener : debuggerList) {
         LoggingListener loggingListener=listener.getLoggingListener();
@@ -45,15 +45,14 @@
       }
       ResultSet resultSet=ctx.resultSet();
       if (resultSet != null && !loggingListenerList.isEmpty()) {
-        final int queryLoggingDataID=queryLog.getID();
         ResultSet newResultSet=new TrackingResultSet(resultSet){
           @Override protected void notifyData(          long lifeTime,          int readRows,          int readCount,          int writeCount){
             ResultLog resultLog=null;
             for (            LoggingListener loggingListener : loggingListenerList) {
               if (resultLog == null) {
-                resultLog=new ResultLog(lifeTime,readRows,readCount,writeCount);
+                resultLog=new ResultLog(queryLog.getID(),lifeTime,readRows,readCount,writeCount);
               }
-              loggingListener.logResult(queryLoggingDataID,resultLog);
+              loggingListener.logResult(resultLog);
             }
           }
         }
