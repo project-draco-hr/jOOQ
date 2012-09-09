@@ -1,5 +1,5 @@
 {
-  debugger=new LocalDebugger(editorDatabaseDescriptor);
+  debugger=DebuggerFactory.localDebugger(editorDatabaseDescriptor);
   addWindowListener(new WindowAdapter(){
     @Override public void windowOpened(    WindowEvent e){
       DebuggerRegistry.add(debugger);

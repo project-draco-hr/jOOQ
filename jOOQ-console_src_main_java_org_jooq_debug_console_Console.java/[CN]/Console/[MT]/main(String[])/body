@@ -1,12 +1,12 @@
 {
   if (args.length < 2) {
-    System.out.println("Please specify IP and port of a running RemoteDebuggerServer");
+    System.out.println("Please specify IP and port of a running Server");
     System.out.println("Usage: Console <ip> <port>");
     return;
   }
   final Debugger debugger;
   try {
-    debugger=new ClientDebugger(args[0],Integer.parseInt(args[1]));
+    debugger=DebuggerFactory.remoteDebugger(args[0],Integer.parseInt(args[1]));
   }
  catch (  Exception e) {
     e.printStackTrace();

@@ -1,3 +1,3 @@
 {
-  SERVER=new RemoteDebuggerServer(DEBUGGER_PORT);
+  SERVER=new Server(DEBUGGER_PORT);
 }
