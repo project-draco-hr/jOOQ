@@ -3,7 +3,7 @@
     log.info("SKIPPING","Generated POJO tests");
     return;
   }
-  Map<Integer,List<Object>> map1=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchIntoGroups(TBook_ID(),TBookPojo());
+  Map<Integer,List<Object>> map1=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchGroups(TBook_ID(),TBookPojo());
   assertEquals(4,map1.size());
   assertEquals(BOOK_IDS,new ArrayList<Integer>(map1.keySet()));
   List<Entry<Integer,List<Object>>> entries=new ArrayList<Map.Entry<Integer,List<Object>>>(map1.entrySet());
@@ -14,7 +14,7 @@
     assertEquals(BOOK_AUTHOR_IDS.get(i),on(entry.getValue().get(0)).call("getAuthorId").get());
     assertEquals(BOOK_TITLES.get(i),on(entry.getValue().get(0)).call("getTitle").get());
   }
-  Map<Integer,List<Object>> map2=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchIntoGroups(TBook_AUTHOR_ID(),TBookPojo());
+  Map<Integer,List<Object>> map2=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchGroups(TBook_AUTHOR_ID(),TBookPojo());
   assertEquals(2,map2.size());
   assertEquals(AUTHOR_IDS,new ArrayList<Integer>(map2.keySet()));
   Iterator<Entry<Integer,List<Object>>> it=map2.entrySet().iterator();
