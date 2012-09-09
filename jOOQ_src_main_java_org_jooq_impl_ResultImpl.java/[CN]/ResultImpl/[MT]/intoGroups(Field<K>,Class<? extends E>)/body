@@ -4,7 +4,7 @@
     K keyVal=record.getValue(key);
     List<E> list=map.get(keyVal);
     if (list == null) {
-      list=new LinkedList<E>();
+      list=new ArrayList<E>();
       map.put(keyVal,list);
     }
     list.add(record.into(type));
