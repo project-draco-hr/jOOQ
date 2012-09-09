@@ -1,0 +1,3 @@
+{
+  DebuggerRegistry.remove(this);
+}

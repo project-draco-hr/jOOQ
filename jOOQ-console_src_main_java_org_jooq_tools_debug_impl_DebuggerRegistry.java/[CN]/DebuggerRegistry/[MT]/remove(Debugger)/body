@@ -1,5 +1,0 @@
-{
-synchronized (LOCK) {
-    debuggers.remove(sqlQueryDebugger);
-  }
-}
