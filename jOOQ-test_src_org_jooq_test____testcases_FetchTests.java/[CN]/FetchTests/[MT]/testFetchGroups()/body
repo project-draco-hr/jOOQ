@@ -36,4 +36,13 @@
     assertEquals(BOOK_TITLES.get(i * 2 + 0),map4Values.get(i).get(0));
     assertEquals(BOOK_TITLES.get(i * 2 + 1),map4Values.get(i).get(1));
   }
+  Map<List<?>,Result<B>> map5=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchGroups(TBook_ID(),TBook_LANGUAGE_ID(),TBook_TITLE());
+  assertEquals(4,map5.size());
+  for (  List<?> keyList : map5.keySet()) {
+    Result<B> result=map5.get(keyList);
+    assertEquals(1,result.size());
+    assertEquals(keyList.get(0),result.get(0).getValue(TBook_ID()));
+    assertEquals(keyList.get(1),result.get(0).getValue(TBook_LANGUAGE_ID()));
+    assertEquals(keyList.get(2),result.get(0).getValue(TBook_TITLE()));
+  }
 }
