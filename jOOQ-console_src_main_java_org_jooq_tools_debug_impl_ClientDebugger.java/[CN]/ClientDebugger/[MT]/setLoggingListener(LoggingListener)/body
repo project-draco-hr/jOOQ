@@ -5,5 +5,5 @@ synchronized (LOGGING_LISTENER_LOCK) {
     }
     this.loggingListener=listener;
   }
-  comm.asyncSend((CommandMessage<?>)new CMS_setLoggingActive(listener != null,listener != null ? listener.getMatchers() : null));
+  comm.asyncSend(new CMS_setLoggingActive(listener != null,listener != null ? listener.getMatchers() : null));
 }
