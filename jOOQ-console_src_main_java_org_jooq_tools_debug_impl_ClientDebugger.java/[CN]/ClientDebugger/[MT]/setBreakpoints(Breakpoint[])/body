@@ -1,9 +1,0 @@
-{
-  if (breakpoints != null && breakpoints.length == 0) {
-    breakpoints=null;
-  }
-synchronized (BREAKPOINT_LOCK) {
-    this.breakpoints=breakpoints;
-  }
-  comm.asyncSend((CommandMessage<?>)new CMS_setBreakpoints(breakpoints));
-}

@@ -1,8 +1,0 @@
-{
-  if (breakpoints != null && breakpoints.length == 0) {
-    breakpoints=null;
-  }
-synchronized (BREAKPOINT_LOCK) {
-    this.breakpoints=breakpoints;
-  }
-}
