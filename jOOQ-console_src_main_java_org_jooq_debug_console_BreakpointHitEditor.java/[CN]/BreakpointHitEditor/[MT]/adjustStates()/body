@@ -1,6 +1,6 @@
 {
-  if (breakpointHit.isBeforeExecution()) {
-    replacementSQLTextAreaScrollPane.setVisible(replaceStatementCheckBox.isSelected());
+  if (hit.isBeforeExecution()) {
+    replacePane.setVisible(replaceCheckbox.isSelected());
     revalidate();
     repaint();
   }

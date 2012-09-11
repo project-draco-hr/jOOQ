@@ -222,7 +222,7 @@ synchronized (node) {
                 @Override public void actionPerformed(                ActionEvent e){
                   StringWriter sw=new StringWriter();
                   Throwable throwable=new Exception("Statement Stack trace");
-                  throwable.setStackTrace(breakpointHit.getCallerStackTraceElements());
+                  throwable.setStackTrace(breakpointHit.getStackTrace());
                   throwable.printStackTrace(new PrintWriter(sw));
                   Clipboard clipboard=Toolkit.getDefaultToolkit().getSystemClipboard();
                   clipboard.setContents(new StringSelection(sw.toString()),null);
@@ -234,7 +234,7 @@ synchronized (node) {
               dumpStackToConsoleMenuItem.addActionListener(new ActionListener(){
                 @Override public void actionPerformed(                ActionEvent e){
                   Throwable throwable=new Exception("Statement Stack trace");
-                  throwable.setStackTrace(breakpointHit.getCallerStackTraceElements());
+                  throwable.setStackTrace(breakpointHit.getStackTrace());
                   throwable.printStackTrace();
                 }
               }

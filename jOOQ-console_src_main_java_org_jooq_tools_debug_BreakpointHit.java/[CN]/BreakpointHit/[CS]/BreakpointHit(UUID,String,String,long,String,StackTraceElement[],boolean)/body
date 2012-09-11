@@ -5,5 +5,5 @@
   this.parameterDescription=parameterDescription;
   this.threadID=threadID;
   this.threadName=threadName;
-  this.callerStackTraceElements=callerStackTraceElements;
+  this.stackTrace=callerStackTraceElements;
 }

@@ -87,7 +87,7 @@
         throw new RuntimeException(e);
       }
     }
-    ExecutionType executionType=BreakpointHit.ExecutionType.RUN;
+    ExecutionType executionType=ExecutionType.RUN;
     if (hasBreakpointHitHandler) {
       effectiveSQL=mainSQL != null ? mainSQL : matchingSQL;
       Thread currentThread=Thread.currentThread();
@@ -99,7 +99,7 @@
       matchingDebugger.processBreakpointBeforeExecutionHit(ctx,breakpointHit);
       if (breakpointHit.getBreakpointID() == null) {
         executionType=breakpointHit.getExecutionType();
-        String sql=breakpointHit.getSql();
+        String sql=breakpointHit.getSQL();
         if (sql != null) {
           effectiveSQL=sql;
           matchingParameterDescription=null;
@@ -114,7 +114,7 @@
         }
       }
     }
-    if (executionType != ExecutionType.STEP_THROUGH) {
+    if (executionType != ExecutionType.STEP) {
       matchingDebugger=null;
     }
 switch (executionType) {
@@ -122,7 +122,7 @@ case FAIL:
 {
         throw new DataAccessException("Failing SQL statement.");
       }
-case RUN_OVER:
+case SKIP:
 {
       try {
         ctx.statement().close();
