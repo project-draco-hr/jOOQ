@@ -4,7 +4,7 @@ synchronized (BREAKPOINT_LOCK) {
       return;
     }
     for (int i=0; i < breakpoints.length; i++) {
-      if (breakpoints[i].getID() == breakpoint.getID()) {
+      if (breakpoints[i].equals(breakpoint)) {
         if (breakpoints.length == 1) {
           breakpoints=null;
         }
