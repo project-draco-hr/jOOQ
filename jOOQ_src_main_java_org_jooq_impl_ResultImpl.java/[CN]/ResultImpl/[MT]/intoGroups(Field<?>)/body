@@ -1,0 +1,16 @@
+{
+  Map<List<?>,Result<R>> map=new LinkedHashMap<List<?>,Result<R>>();
+  for (  R record : this) {
+    List<Object> keyList=new ArrayList<Object>();
+    for (    Field<?> key : keys) {
+      keyList.add(record.getValue(key));
+    }
+    Result<R> result=map.get(keyList);
+    if (result == null) {
+      result=new ResultImpl<R>(getConfiguration(),this.fields);
+      map.put(keyList,result);
+    }
+    result.add(record);
+  }
+  return map;
+}
