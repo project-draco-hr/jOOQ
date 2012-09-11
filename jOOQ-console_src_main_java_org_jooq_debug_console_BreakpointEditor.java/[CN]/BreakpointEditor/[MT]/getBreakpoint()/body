@@ -1,14 +1,14 @@
 {
-  QueryMatcher queryMatcher=getStatementMatcher();
+  QueryMatcher matcher=getMatcher();
   Integer hitCount=hitCountCheckBox.isSelected() ? ((Number)hitCountField.getValue()).intValue() : null;
-  boolean isBreaking=breakpointTypeComboBox.getSelectedItem() == BREAK;
-  QueryProcessor beforeExecutionProcessor=null;
-  QueryProcessor replacementExecutionProcessor=null;
-  QueryProcessor afterExecutionProcessor=null;
+  boolean isBreaking=breakpointTypeCombobox.getSelectedItem() == BREAK;
+  QueryProcessor before=null;
+  QueryProcessor replace=null;
+  QueryProcessor after=null;
   if (!isBreaking) {
-    beforeExecutionProcessor=beforeExecutionCheckBox.isSelected() ? beforeExecutionProcessorPane.getQueryProcessor() : null;
-    replacementExecutionProcessor=executeTypeComboBox.getSelectedIndex() == 1 ? replacementExecutionProcessorPane.getQueryProcessor() : null;
-    afterExecutionProcessor=afterExecutionCheckBox.isSelected() ? afterExecutionProcessorPane.getQueryProcessor() : null;
+    before=beforeCheckbox.isSelected() ? beforePane.getQueryProcessor() : null;
+    replace=executeTypeComboBox.getSelectedIndex() == 1 ? replacePane.getQueryProcessor() : null;
+    after=afterCheckbox.isSelected() ? afterPane.getQueryProcessor() : null;
   }
-  return new Breakpoint(id,hitCount,queryMatcher,isBreaking,beforeExecutionProcessor,replacementExecutionProcessor,afterExecutionProcessor);
+  return new Breakpoint(breakpoint.getID(),hitCount,matcher,isBreaking,before,replace,after);
 }

@@ -1,0 +1,7 @@
+UUID id
+Integer hitCount
+QueryMatcher matcher
+boolean isBreaking
+QueryProcessor before
+QueryProcessor replace
+QueryProcessor after

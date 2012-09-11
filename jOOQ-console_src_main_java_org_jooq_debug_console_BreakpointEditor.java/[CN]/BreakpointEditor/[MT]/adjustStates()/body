@@ -1,23 +1,23 @@
 {
   boolean isActive=true;
-  statementTextMatcherCheckBox.setEnabled(isActive);
-  statementTypeCheckBox.setEnabled(isActive);
+  queryTextMatcherCheckBox.setEnabled(isActive);
+  queryTypeCheckBox.setEnabled(isActive);
   threadNameTextMatcherCheckBox.setEnabled(isActive);
-  statementTextMatcherPane.setLocked(!isActive || !statementTextMatcherCheckBox.isSelected());
-  statementTypeSelectCheckBox.setEnabled(isActive && statementTypeCheckBox.isSelected());
-  statementTypeUpdateCheckBox.setEnabled(isActive && statementTypeCheckBox.isSelected());
-  statementTypeInsertCheckBox.setEnabled(isActive && statementTypeCheckBox.isSelected());
-  statementTypeDeleteCheckBox.setEnabled(isActive && statementTypeCheckBox.isSelected());
-  statementTypeOtherCheckBox.setEnabled(isActive && statementTypeCheckBox.isSelected());
+  queryTextMatcherPane.setLocked(!isActive || !queryTextMatcherCheckBox.isSelected());
+  queryTypeSelectCheckBox.setEnabled(isActive && queryTypeCheckBox.isSelected());
+  queryTypeUpdateCheckBox.setEnabled(isActive && queryTypeCheckBox.isSelected());
+  queryTypeInsertCheckBox.setEnabled(isActive && queryTypeCheckBox.isSelected());
+  queryTypeDeleteCheckBox.setEnabled(isActive && queryTypeCheckBox.isSelected());
+  queryTypeOtherCheckBox.setEnabled(isActive && queryTypeCheckBox.isSelected());
   threadNameTextMatcherPane.setLocked(!isActive || !threadNameTextMatcherCheckBox.isSelected());
   hitCountCheckBox.setEnabled(isActive);
   hitCountField.setEnabled(isActive && hitCountCheckBox.isSelected());
-  breakpointTypeComboBox.setEnabled(isActive && (statementTextMatcherCheckBox.isSelected() || statementTypeCheckBox.isSelected() || threadNameTextMatcherCheckBox.isSelected()|| hitCountCheckBox.isSelected()));
-  processorPane.setVisible(isActive && breakpointTypeComboBox.getSelectedItem() == PROCESS);
-  beforeExecutionCheckBox.setEnabled(isActive);
-  beforeExecutionProcessorPane.setLocked(!isActive || !beforeExecutionCheckBox.isSelected());
+  breakpointTypeCombobox.setEnabled(isActive && (queryTextMatcherCheckBox.isSelected() || queryTypeCheckBox.isSelected() || threadNameTextMatcherCheckBox.isSelected()|| hitCountCheckBox.isSelected()));
+  processorPane.setVisible(isActive && breakpointTypeCombobox.getSelectedItem() == PROCESS);
+  beforeCheckbox.setEnabled(isActive);
+  beforePane.setLocked(!isActive || !beforeCheckbox.isSelected());
   executeTypeComboBox.setEnabled(isActive);
-  replacementExecutionProcessorPane.setLocked(!isActive || executeTypeComboBox.getSelectedIndex() != 1);
-  afterExecutionCheckBox.setEnabled(isActive);
-  afterExecutionProcessorPane.setLocked(!isActive || !afterExecutionCheckBox.isSelected());
+  replacePane.setLocked(!isActive || executeTypeComboBox.getSelectedIndex() != 1);
+  afterCheckbox.setEnabled(isActive);
+  afterPane.setLocked(!isActive || !afterCheckbox.isSelected());
 }

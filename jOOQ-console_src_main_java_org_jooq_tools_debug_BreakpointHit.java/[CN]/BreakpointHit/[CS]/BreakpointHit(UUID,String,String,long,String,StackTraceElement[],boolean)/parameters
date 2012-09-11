@@ -1,4 +1,4 @@
-int breakpointID
+UUID breakpointID
 String sql
 String parameterDescription
 long threadID

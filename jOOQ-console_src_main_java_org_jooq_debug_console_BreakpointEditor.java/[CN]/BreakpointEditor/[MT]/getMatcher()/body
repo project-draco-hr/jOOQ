@@ -1,23 +1,23 @@
 {
   boolean isActive=true;
   TextMatcher threadNameTextMatcher=threadNameTextMatcherCheckBox.isSelected() ? threadNameTextMatcherPane.getTextMatcher() : null;
-  TextMatcher statementTextMatcher=statementTextMatcherCheckBox.isSelected() ? statementTextMatcherPane.getTextMatcher() : null;
+  TextMatcher statementTextMatcher=queryTextMatcherCheckBox.isSelected() ? queryTextMatcherPane.getTextMatcher() : null;
   Set<QueryType> queryTypeSet;
-  if (statementTypeCheckBox.isSelected()) {
+  if (queryTypeCheckBox.isSelected()) {
     List<QueryType> typeList=new ArrayList<QueryType>();
-    if (statementTypeSelectCheckBox.isSelected()) {
+    if (queryTypeSelectCheckBox.isSelected()) {
       typeList.add(QueryType.SELECT);
     }
-    if (statementTypeUpdateCheckBox.isSelected()) {
+    if (queryTypeUpdateCheckBox.isSelected()) {
       typeList.add(QueryType.UPDATE);
     }
-    if (statementTypeInsertCheckBox.isSelected()) {
+    if (queryTypeInsertCheckBox.isSelected()) {
       typeList.add(QueryType.INSERT);
     }
-    if (statementTypeDeleteCheckBox.isSelected()) {
+    if (queryTypeDeleteCheckBox.isSelected()) {
       typeList.add(QueryType.DELETE);
     }
-    if (statementTypeOtherCheckBox.isSelected()) {
+    if (queryTypeOtherCheckBox.isSelected()) {
       typeList.add(QueryType.OTHER);
     }
     queryTypeSet=EnumSet.copyOf(typeList);

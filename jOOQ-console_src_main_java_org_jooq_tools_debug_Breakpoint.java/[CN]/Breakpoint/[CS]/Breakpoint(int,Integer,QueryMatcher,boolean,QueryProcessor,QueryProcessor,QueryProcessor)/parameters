@@ -1,7 +1,0 @@
-int id
-Integer hitCount
-QueryMatcher queryMatcher
-boolean isBreaking
-QueryProcessor beforeExecutionProcessor
-QueryProcessor replacementExecutionProcessor
-QueryProcessor afterExecutionProcessor

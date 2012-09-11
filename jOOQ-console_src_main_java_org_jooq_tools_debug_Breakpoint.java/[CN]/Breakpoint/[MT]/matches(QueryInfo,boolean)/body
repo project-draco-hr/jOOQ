@@ -3,8 +3,8 @@
     return false;
   }
   boolean hasMatcher=false;
-  if (queryMatcher != null) {
-    if (!queryMatcher.matches(queryInfo)) {
+  if (matcher != null) {
+    if (!matcher.matches(queryInfo)) {
       return false;
     }
     hasMatcher=true;

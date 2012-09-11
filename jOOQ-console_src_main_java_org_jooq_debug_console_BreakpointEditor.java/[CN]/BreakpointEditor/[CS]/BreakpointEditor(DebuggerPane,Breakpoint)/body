@@ -1,52 +1,52 @@
 {
   super(new GridBagLayout());
   setOpaque(false);
-  QueryMatcher queryMatcher=breakpoint.getStatementMatcher();
-  id=breakpoint.getID();
+  QueryMatcher queryMatcher=breakpoint.getMatcher();
+  this.breakpoint=breakpoint;
   if (queryMatcher == null) {
     queryMatcher=new QueryMatcher(null,null,null,true);
   }
   int y=0;
   TextMatcher statementTextMatcher=queryMatcher.getQueryTextMatcher();
-  statementTextMatcherCheckBox=new JCheckBox("Statement",statementTextMatcher != null);
-  statementTextMatcherCheckBox.setOpaque(false);
-  statementTextMatcherCheckBox.addItemListener(new ItemListener(){
+  queryTextMatcherCheckBox=new JCheckBox("Statement",statementTextMatcher != null);
+  queryTextMatcherCheckBox.setOpaque(false);
+  queryTextMatcherCheckBox.addItemListener(new ItemListener(){
     @Override public void itemStateChanged(    ItemEvent e){
       adjustStates();
     }
   }
 );
-  add(statementTextMatcherCheckBox,new GridBagConstraints(0,y,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,0,0,0),0,0));
-  statementTextMatcherPane=new TextMatcherPane(statementTextMatcher);
-  add(statementTextMatcherPane,new GridBagConstraints(1,y,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(0,5,0,0),0,0));
+  add(queryTextMatcherCheckBox,new GridBagConstraints(0,y,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,0,0,0),0,0));
+  queryTextMatcherPane=new TextMatcherPane(statementTextMatcher);
+  add(queryTextMatcherPane,new GridBagConstraints(1,y,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(0,5,0,0),0,0));
   y++;
   Set<QueryType> queryTypeSet=queryMatcher.getQueryTypeSet();
-  statementTypeCheckBox=new JCheckBox("Type",queryTypeSet != null);
-  statementTypeCheckBox.setOpaque(false);
-  statementTypeCheckBox.addItemListener(new ItemListener(){
+  queryTypeCheckBox=new JCheckBox("Type",queryTypeSet != null);
+  queryTypeCheckBox.setOpaque(false);
+  queryTypeCheckBox.addItemListener(new ItemListener(){
     @Override public void itemStateChanged(    ItemEvent e){
       adjustStates();
     }
   }
 );
-  add(statementTypeCheckBox,new GridBagConstraints(0,y,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,0,0,0),0,0));
+  add(queryTypeCheckBox,new GridBagConstraints(0,y,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,0,0,0),0,0));
   JPanel typesPane=new JPanel(new GridBagLayout());
   typesPane.setOpaque(false);
-  statementTypeSelectCheckBox=new JCheckBox("SELECT",queryTypeSet != null && queryTypeSet.contains(QueryType.SELECT));
-  statementTypeSelectCheckBox.setOpaque(false);
-  typesPane.add(statementTypeSelectCheckBox,new GridBagConstraints(0,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,0,0,0),0,0));
-  statementTypeUpdateCheckBox=new JCheckBox("UPDATE",queryTypeSet != null && queryTypeSet.contains(QueryType.UPDATE));
-  statementTypeUpdateCheckBox.setOpaque(false);
-  typesPane.add(statementTypeUpdateCheckBox,new GridBagConstraints(1,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,2,0,0),0,0));
-  statementTypeInsertCheckBox=new JCheckBox("INSERT",queryTypeSet != null && queryTypeSet.contains(QueryType.INSERT));
-  statementTypeInsertCheckBox.setOpaque(false);
-  typesPane.add(statementTypeInsertCheckBox,new GridBagConstraints(2,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,2,0,0),0,0));
-  statementTypeDeleteCheckBox=new JCheckBox("DELETE",queryTypeSet != null && queryTypeSet.contains(QueryType.DELETE));
-  statementTypeDeleteCheckBox.setOpaque(false);
-  typesPane.add(statementTypeDeleteCheckBox,new GridBagConstraints(3,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,2,0,0),0,0));
-  statementTypeOtherCheckBox=new JCheckBox("OTHER",queryTypeSet != null && queryTypeSet.contains(QueryType.OTHER));
-  statementTypeOtherCheckBox.setOpaque(false);
-  typesPane.add(statementTypeOtherCheckBox,new GridBagConstraints(4,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,2,0,0),0,0));
+  queryTypeSelectCheckBox=new JCheckBox("SELECT",queryTypeSet != null && queryTypeSet.contains(QueryType.SELECT));
+  queryTypeSelectCheckBox.setOpaque(false);
+  typesPane.add(queryTypeSelectCheckBox,new GridBagConstraints(0,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,0,0,0),0,0));
+  queryTypeUpdateCheckBox=new JCheckBox("UPDATE",queryTypeSet != null && queryTypeSet.contains(QueryType.UPDATE));
+  queryTypeUpdateCheckBox.setOpaque(false);
+  typesPane.add(queryTypeUpdateCheckBox,new GridBagConstraints(1,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,2,0,0),0,0));
+  queryTypeInsertCheckBox=new JCheckBox("INSERT",queryTypeSet != null && queryTypeSet.contains(QueryType.INSERT));
+  queryTypeInsertCheckBox.setOpaque(false);
+  typesPane.add(queryTypeInsertCheckBox,new GridBagConstraints(2,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,2,0,0),0,0));
+  queryTypeDeleteCheckBox=new JCheckBox("DELETE",queryTypeSet != null && queryTypeSet.contains(QueryType.DELETE));
+  queryTypeDeleteCheckBox.setOpaque(false);
+  typesPane.add(queryTypeDeleteCheckBox,new GridBagConstraints(3,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,2,0,0),0,0));
+  queryTypeOtherCheckBox=new JCheckBox("OTHER",queryTypeSet != null && queryTypeSet.contains(QueryType.OTHER));
+  queryTypeOtherCheckBox.setOpaque(false);
+  typesPane.add(queryTypeOtherCheckBox,new GridBagConstraints(4,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,2,0,0),0,0));
   add(typesPane,new GridBagConstraints(1,y,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,5,0,0),0,0));
   y++;
   TextMatcher threadNameTextMatcher=queryMatcher.getThreadNameTextMatcher();
@@ -79,19 +79,19 @@
   hitCountField.setColumns(7);
   add(hitCountField,new GridBagConstraints(1,y,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,5,0,0),0,0));
   y++;
-  breakpointTypeComboBox=new JComboBox(new Object[]{BREAK,PROCESS});
-  breakpointTypeComboBox.setSelectedItem(breakpoint.isBreaking() ? BREAK : PROCESS);
-  breakpointTypeComboBox.addItemListener(new ItemListener(){
+  breakpointTypeCombobox=new JComboBox(new Object[]{BREAK,PROCESS});
+  breakpointTypeCombobox.setSelectedItem(breakpoint.isBreaking() ? BREAK : PROCESS);
+  breakpointTypeCombobox.addItemListener(new ItemListener(){
     @Override public void itemStateChanged(    ItemEvent e){
       adjustStates();
     }
   }
 );
-  add(breakpointTypeComboBox,new GridBagConstraints(0,y,2,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,0,0,0),0,0));
+  add(breakpointTypeCombobox,new GridBagConstraints(0,y,2,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,0,0,0),0,0));
   y++;
   processorPane=new JPanel(new GridBagLayout());
   processorPane.setOpaque(false);
-  populateProcessorPane(breakpoint);
+  populateProcessorPane();
   add(processorPane,new GridBagConstraints(0,y,2,1,1,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(0,20,0,0),0,0));
   y++;
   JPanel buttonPane=new JPanel(new FlowLayout(FlowLayout.CENTER,0,0));
