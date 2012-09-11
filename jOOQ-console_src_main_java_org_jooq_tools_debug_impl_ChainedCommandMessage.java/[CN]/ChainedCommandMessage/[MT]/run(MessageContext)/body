@@ -1,0 +1,6 @@
+{
+  for (  CommandMessage<?> message : messages) {
+    message.run(context);
+  }
+  return null;
+}
