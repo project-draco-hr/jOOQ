@@ -1,8 +1,4 @@
 {
   checkOpen();
-  if (message instanceof LocalMessage) {
-    LocalMessage<S> localMessage=(LocalMessage<S>)message;
-    return localMessage.runCommand(new MessageContext(this));
-  }
   return messagingInterface.syncSend(message);
 }

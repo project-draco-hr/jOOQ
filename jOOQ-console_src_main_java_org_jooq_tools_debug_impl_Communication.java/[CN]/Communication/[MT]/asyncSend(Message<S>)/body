@@ -4,11 +4,6 @@
   }
  else {
     checkOpen();
-    if (message instanceof LocalMessage) {
-      LocalMessage<?> localMessage=(LocalMessage<?>)message;
-      localMessage.runCommand(new MessageContext(this));
-      return;
-    }
     messagingInterface.asyncSend(message);
   }
 }
