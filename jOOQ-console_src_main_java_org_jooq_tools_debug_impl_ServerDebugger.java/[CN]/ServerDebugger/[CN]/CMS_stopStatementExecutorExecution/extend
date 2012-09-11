@@ -1,1 +1,1 @@
-CommandMessage<Serializable>
+CommandMessage<NoResult>
