@@ -1,4 +1,7 @@
 {
+  if (keys == null || keys.length == 0) {
+    throw new IllegalArgumentException("Keys must not be null or empty.");
+  }
   Map<List<?>,R> map=new LinkedHashMap<List<?>,R>();
   for (  R record : this) {
     List<Object> keyList=new ArrayList<Object>();
