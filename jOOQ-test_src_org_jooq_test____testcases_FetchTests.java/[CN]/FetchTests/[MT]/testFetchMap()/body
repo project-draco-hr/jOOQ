@@ -13,7 +13,7 @@
   Map<Integer,String> map2=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchMap(TBook_ID(),TBook_TITLE());
   assertEquals(BOOK_IDS,new ArrayList<Integer>(map2.keySet()));
   assertEquals(BOOK_TITLES,new ArrayList<String>(map2.values()));
-  Map<List<?>,B> map3=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchMap(TBook_ID(),TBook_LANGUAGE_ID(),TBook_TITLE());
+  Map<List<?>,B> map3=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchMap(new Field<?>[]{TBook_ID(),TBook_LANGUAGE_ID(),TBook_TITLE()});
   assertEquals(4,map3.keySet().size());
   for (  List<?> keyList : map3.keySet()) {
     B record=map3.get(keyList);
