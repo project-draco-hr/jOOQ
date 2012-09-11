@@ -1,0 +1,13 @@
+{
+  Map<List<?>,R> map=new LinkedHashMap<List<?>,R>();
+  for (  R record : this) {
+    List<Object> keyList=new ArrayList<Object>();
+    for (    Field<?> key : keys) {
+      keyList.add(record.getValue(key));
+    }
+    if (map.put(keyList,record) != null) {
+      throw new InvalidResultException("Key list " + keys + " is not unique in Result for "+ this);
+    }
+  }
+  return map;
+}
