@@ -7,7 +7,7 @@
     queryMatcher=new QueryMatcher(null,null,null,true);
   }
   int y=0;
-  TextMatcher statementTextMatcher=queryMatcher.getStatementTextMatcher();
+  TextMatcher statementTextMatcher=queryMatcher.getQueryTextMatcher();
   statementTextMatcherCheckBox=new JCheckBox("Statement",statementTextMatcher != null);
   statementTextMatcherCheckBox.setOpaque(false);
   statementTextMatcherCheckBox.addItemListener(new ItemListener(){

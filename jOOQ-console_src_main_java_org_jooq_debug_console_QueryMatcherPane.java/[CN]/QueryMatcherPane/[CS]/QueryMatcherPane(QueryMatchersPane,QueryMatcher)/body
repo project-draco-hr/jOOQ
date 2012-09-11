@@ -1,0 +1,77 @@
+{
+  super(new GridBagLayout());
+  setBorder(BorderFactory.createLineBorder(getBackground().darker()));
+  if (queryMatcher == null) {
+    queryMatcher=new QueryMatcher(null,null,null,true);
+  }
+  int y=0;
+  JPanel northPane=new JPanel(new GridBagLayout());
+  activeCheckBox=new JCheckBox("Active",queryMatcher.isActive());
+  activeCheckBox.addItemListener(new ItemListener(){
+    @Override public void itemStateChanged(    ItemEvent e){
+      adjustStates();
+    }
+  }
+);
+  northPane.add(activeCheckBox,new GridBagConstraints(0,0,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(0,0,0,0),0,0));
+  JToolBar closeButtonPane=new JToolBar();
+  closeButtonPane.setFloatable(false);
+  JButton closeButton=new JButton(new ImageIcon(getClass().getResource("/org/jooq/debug/console/resources/TabCloseActive14.png")));
+  closeButton.setFocusable(false);
+  closeButton.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      queryMatchersPane.removeQueryMatcherPane(QueryMatcherPane.this);
+    }
+  }
+);
+  closeButtonPane.add(closeButton);
+  northPane.add(closeButtonPane,new GridBagConstraints(1,0,1,1,0,0,GridBagConstraints.EAST,GridBagConstraints.NONE,new Insets(0,5,0,0),0,0));
+  add(northPane,new GridBagConstraints(0,y,2,1,1,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(0,0,0,0),0,0));
+  y++;
+  TextMatcher queryTextMatcher=queryMatcher.getQueryTextMatcher();
+  queryTextMatcherCheckBox=new JCheckBox("Query",queryTextMatcher != null);
+  queryTextMatcherCheckBox.addItemListener(new ItemListener(){
+    @Override public void itemStateChanged(    ItemEvent e){
+      adjustStates();
+    }
+  }
+);
+  add(queryTextMatcherCheckBox,new GridBagConstraints(0,y,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,0,0,0),0,0));
+  queryTextMatcherPane=new TextMatcherPane(queryTextMatcher);
+  add(queryTextMatcherPane,new GridBagConstraints(1,y,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(0,5,0,0),0,0));
+  y++;
+  Set<QueryType> queryTypeSet=queryMatcher.getQueryTypeSet();
+  queryTypeCheckBox=new JCheckBox("Type",queryTypeSet != null);
+  queryTypeCheckBox.addItemListener(new ItemListener(){
+    @Override public void itemStateChanged(    ItemEvent e){
+      adjustStates();
+    }
+  }
+);
+  add(queryTypeCheckBox,new GridBagConstraints(0,y,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,0,0,0),0,0));
+  JPanel typesPane=new JPanel(new GridBagLayout());
+  queryTypeSelectCheckBox=new JCheckBox("SELECT",queryTypeSet != null && queryTypeSet.contains(QueryType.SELECT));
+  typesPane.add(queryTypeSelectCheckBox,new GridBagConstraints(0,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,0,0,0),0,0));
+  queryTypeUpdateCheckBox=new JCheckBox("UPDATE",queryTypeSet != null && queryTypeSet.contains(QueryType.UPDATE));
+  typesPane.add(queryTypeUpdateCheckBox,new GridBagConstraints(1,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,2,0,0),0,0));
+  queryTypeInsertCheckBox=new JCheckBox("INSERT",queryTypeSet != null && queryTypeSet.contains(QueryType.INSERT));
+  typesPane.add(queryTypeInsertCheckBox,new GridBagConstraints(2,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,2,0,0),0,0));
+  queryTypeDeleteCheckBox=new JCheckBox("DELETE",queryTypeSet != null && queryTypeSet.contains(QueryType.DELETE));
+  typesPane.add(queryTypeDeleteCheckBox,new GridBagConstraints(3,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,2,0,0),0,0));
+  queryTypeOtherCheckBox=new JCheckBox("OTHER",queryTypeSet != null && queryTypeSet.contains(QueryType.OTHER));
+  typesPane.add(queryTypeOtherCheckBox,new GridBagConstraints(4,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,2,0,0),0,0));
+  add(typesPane,new GridBagConstraints(1,y,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,5,0,0),0,0));
+  y++;
+  TextMatcher threadNameTextMatcher=queryMatcher.getThreadNameTextMatcher();
+  threadNameTextMatcherCheckBox=new JCheckBox("Thread name",threadNameTextMatcher != null);
+  threadNameTextMatcherCheckBox.addItemListener(new ItemListener(){
+    @Override public void itemStateChanged(    ItemEvent e){
+      adjustStates();
+    }
+  }
+);
+  add(threadNameTextMatcherCheckBox,new GridBagConstraints(0,y,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,0,0,0),0,0));
+  threadNameTextMatcherPane=new TextMatcherPane(threadNameTextMatcher);
+  add(threadNameTextMatcherPane,new GridBagConstraints(1,y,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.NONE,new Insets(0,5,0,0),0,0));
+  adjustStates();
+}

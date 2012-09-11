@@ -1,0 +1,13 @@
+{
+  boolean isActive=activeCheckBox.isSelected();
+  queryTextMatcherCheckBox.setEnabled(isActive);
+  queryTypeCheckBox.setEnabled(isActive);
+  threadNameTextMatcherCheckBox.setEnabled(isActive);
+  queryTextMatcherPane.setLocked(!isActive || !queryTextMatcherCheckBox.isSelected());
+  queryTypeSelectCheckBox.setEnabled(isActive && queryTypeCheckBox.isSelected());
+  queryTypeUpdateCheckBox.setEnabled(isActive && queryTypeCheckBox.isSelected());
+  queryTypeInsertCheckBox.setEnabled(isActive && queryTypeCheckBox.isSelected());
+  queryTypeDeleteCheckBox.setEnabled(isActive && queryTypeCheckBox.isSelected());
+  queryTypeOtherCheckBox.setEnabled(isActive && queryTypeCheckBox.isSelected());
+  threadNameTextMatcherPane.setLocked(!isActive || !threadNameTextMatcherCheckBox.isSelected());
+}

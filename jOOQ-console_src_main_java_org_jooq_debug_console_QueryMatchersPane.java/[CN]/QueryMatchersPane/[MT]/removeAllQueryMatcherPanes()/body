@@ -1,0 +1,6 @@
+{
+  matcherPanesContainer.removeAll();
+  addDefaultMessageComponent();
+  matcherPanesContainer.revalidate();
+  matcherPanesContainer.repaint();
+}

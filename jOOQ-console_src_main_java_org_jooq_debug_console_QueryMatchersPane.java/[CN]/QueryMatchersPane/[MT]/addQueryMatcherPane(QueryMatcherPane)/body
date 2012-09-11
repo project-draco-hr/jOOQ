@@ -1,0 +1,9 @@
+{
+  if (!(matcherPanesContainer.getComponent(0) instanceof QueryMatcherPane)) {
+    matcherPanesContainer.remove(0);
+  }
+  matcherPanesContainer.add(pane);
+  matcherPanesContainer.revalidate();
+  matcherPanesContainer.repaint();
+  matcherPanesContainer.scrollRectToVisible(new Rectangle(0,Short.MAX_VALUE,1,1));
+}

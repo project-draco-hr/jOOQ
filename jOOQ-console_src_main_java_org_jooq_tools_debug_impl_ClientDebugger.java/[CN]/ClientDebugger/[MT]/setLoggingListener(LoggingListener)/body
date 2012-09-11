@@ -1,9 +1,9 @@
 {
 synchronized (LOGGING_LISTENER_LOCK) {
-    if (this.loggingListener == loggingListener) {
+    if (this.loggingListener == listener) {
       return;
     }
-    this.loggingListener=loggingListener;
+    this.loggingListener=listener;
   }
-  comm.asyncSend((CommandMessage<?>)new CMS_setLoggingActive(loggingListener != null));
+  comm.asyncSend((CommandMessage<?>)new CMS_setLoggingActive(listener != null,listener != null ? listener.getMatchers() : null));
 }

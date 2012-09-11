@@ -1,0 +1,12 @@
+{
+  super(new BorderLayout());
+  matcherPanesContainer=new ScrollablePane();
+  matcherPanesContainer.setBorder(BorderFactory.createEmptyBorder(1,1,1,1));
+  addDefaultMessageComponent();
+  add(new JScrollPane(matcherPanesContainer),BorderLayout.CENTER);
+  if (matchers != null) {
+    for (    QueryMatcher matcher : matchers) {
+      addQueryMatcherPane(new QueryMatcherPane(this,matcher));
+    }
+  }
+}

@@ -1,0 +1,2 @@
+boolean isActive
+QueryMatcher[] matchers

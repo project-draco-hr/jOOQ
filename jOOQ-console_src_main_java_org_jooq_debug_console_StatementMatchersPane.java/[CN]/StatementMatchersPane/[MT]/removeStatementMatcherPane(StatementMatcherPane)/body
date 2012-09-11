@@ -1,8 +1,0 @@
-{
-  statementMatcherPanesContainer.remove(statementMatcherPane);
-  if (statementMatcherPanesContainer.getComponentCount() == 0) {
-    addDefaultMessageComponent();
-  }
-  statementMatcherPanesContainer.revalidate();
-  statementMatcherPanesContainer.repaint();
-}

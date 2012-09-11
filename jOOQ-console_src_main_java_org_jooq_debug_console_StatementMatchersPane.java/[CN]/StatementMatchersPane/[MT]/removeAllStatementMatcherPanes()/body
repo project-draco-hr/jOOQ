@@ -1,6 +1,0 @@
-{
-  statementMatcherPanesContainer.removeAll();
-  addDefaultMessageComponent();
-  statementMatcherPanesContainer.revalidate();
-  statementMatcherPanesContainer.repaint();
-}

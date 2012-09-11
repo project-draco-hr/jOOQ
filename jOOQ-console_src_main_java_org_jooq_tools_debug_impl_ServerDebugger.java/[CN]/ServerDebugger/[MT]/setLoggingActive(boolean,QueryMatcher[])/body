@@ -1,0 +1,19 @@
+{
+  if (isActive) {
+    setLoggingListener(new LoggingListener(){
+      @Override public QueryMatcher[] getMatchers(){
+        return matchers;
+      }
+      @Override public void logQuery(      QueryLog queryLog){
+        comm.asyncSend((CommandMessage<?>)new CMC_logQueries(queryLog));
+      }
+      @Override public void logResult(      ResultLog resultLog){
+        comm.asyncSend((CommandMessage<?>)new CMC_logResultSet(resultLog));
+      }
+    }
+);
+  }
+ else {
+    setLoggingListener(null);
+  }
+}

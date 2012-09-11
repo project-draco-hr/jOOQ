@@ -1,0 +1,64 @@
+{
+  super(SwingUtilities.getWindowAncestor(parent),"Query filters",ModalityType.DOCUMENT_MODAL);
+  setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+  Container contentPane=getContentPane();
+  JPanel northPane=new JPanel(new BorderLayout());
+  northPane.setBorder(BorderFactory.createEmptyBorder(5,5,2,5));
+  northPane.add(new JLabel("Log queries matching any of these filters:"),BorderLayout.WEST);
+  contentPane.add(northPane,BorderLayout.NORTH);
+  final QueryMatchersPane matchersPane=new QueryMatchersPane(listener.getMatchers());
+  matchersPane.setBorder(BorderFactory.createEmptyBorder(0,5,0,5));
+  contentPane.add(matchersPane,BorderLayout.CENTER);
+  JPanel buttonBar=new JPanel(new BorderLayout());
+  buttonBar.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
+  JPanel filterButtonsPane=new JPanel(new GridLayout(1,2,2,0));
+  JButton addFilterButton=new JButton("Add filter");
+  addFilterButton.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      matchersPane.addQueryMatcherPane(new QueryMatcherPane(matchersPane,null));
+    }
+  }
+);
+  filterButtonsPane.add(addFilterButton);
+  JButton removeAllFiltersButton=new JButton("Remove all");
+  removeAllFiltersButton.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      matchersPane.removeAllQueryMatcherPanes();
+    }
+  }
+);
+  filterButtonsPane.add(removeAllFiltersButton);
+  buttonBar.add(filterButtonsPane,BorderLayout.WEST);
+  JPanel rightButtonsPane=new JPanel(new GridLayout(1,2,2,0));
+  JButton okButton=new JButton("OK");
+  okButton.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      listener.setMatchers(matchersPane.getMatchers());
+      debugger.setLoggingListener(listener);
+      dispose();
+    }
+  }
+);
+  rightButtonsPane.add(okButton);
+  JButton applyButton=new JButton("Apply");
+  applyButton.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      listener.setMatchers(matchersPane.getMatchers());
+      debugger.setLoggingListener(listener);
+    }
+  }
+);
+  rightButtonsPane.add(applyButton);
+  JButton cancelButton=new JButton("Cancel");
+  cancelButton.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      dispose();
+    }
+  }
+);
+  rightButtonsPane.add(cancelButton);
+  buttonBar.add(rightButtonsPane,BorderLayout.EAST);
+  contentPane.add(buttonBar,BorderLayout.SOUTH);
+  setSize(600,400);
+  setLocationRelativeTo(SwingUtilities.getWindowAncestor(parent));
+}

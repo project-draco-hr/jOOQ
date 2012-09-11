@@ -53,19 +53,21 @@
       executeSQL(ctx,sql);
       long subEndExecutionTime=System.currentTimeMillis();
       for (      Debugger debugger : debuggerList) {
-        LoggingListener loggingListener=debugger.getLoggingListener();
-        if (loggingListener != null) {
-          QueryType queryType=QueryType.detectType(sql);
-          QueryInfo queryInfo=new QueryInfo(queryType,new String[]{sql},null);
-          QueryLog queryLog=new QueryLog(queryInfo,null,null,subEndExecutionTime - subStartExecutionTime);
-          QueryMatcher[] loggingStatementMatchers=debugger.getLoggingStatementMatchers();
-          if (loggingStatementMatchers == null) {
-            loggingListener.logQuery(queryLog);
+        LoggingListener listener=debugger.getLoggingListener();
+        if (listener != null) {
+          QueryType type=QueryType.detectType(sql);
+          QueryInfo info=new QueryInfo(type,new String[]{sql},null);
+          QueryLog log=new QueryLog(info,null,null,subEndExecutionTime - subStartExecutionTime);
+          QueryMatcher[] matchers=listener.getMatchers();
+          if (matchers == null) {
+            listener.logQuery(log);
           }
- else           for (          QueryMatcher queryMatcher : loggingStatementMatchers) {
-            if (queryMatcher.matches(queryLog.getQueryInfo())) {
-              loggingListener.logQuery(queryLog);
-              break;
+ else {
+            for (            QueryMatcher matcher : matchers) {
+              if (matcher.matches(log.getQueryInfo())) {
+                listener.logQuery(log);
+                break;
+              }
             }
           }
         }

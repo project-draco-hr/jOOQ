@@ -1,0 +1,3 @@
+{
+  debugQueries(new QueryDebuggingInfo(System.currentTimeMillis(),queryLog));
+}

@@ -11,7 +11,7 @@
   }
 );
   processorPane.add(beforeExecutionCheckBox,new GridBagConstraints(0,y,1,1,0,0,GridBagConstraints.NORTHWEST,GridBagConstraints.NONE,new Insets(2,0,0,0),0,0));
-  beforeExecutionProcessorPane=new StatementProcessorPane(beforeExecutionProcessor);
+  beforeExecutionProcessorPane=new QueryProcessorPane(beforeExecutionProcessor);
   processorPane.add(beforeExecutionProcessorPane,new GridBagConstraints(1,y,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,5,0,0),0,0));
   y++;
   QueryProcessor replacementExecutionProcessor=breakpoint.getReplacementExecutionProcessor();
@@ -23,7 +23,7 @@
     executeTypeComboBox.setSelectedIndex(0);
   }
   processorPane.add(executeTypeComboBox,new GridBagConstraints(0,y,1,1,0,0,GridBagConstraints.NORTHWEST,GridBagConstraints.NONE,new Insets(0,0,0,0),0,0));
-  replacementExecutionProcessorPane=new StatementProcessorPane(breakpoint.getReplacementExecutionProcessor());
+  replacementExecutionProcessorPane=new QueryProcessorPane(breakpoint.getReplacementExecutionProcessor());
   processorPane.add(replacementExecutionProcessorPane,new GridBagConstraints(1,y,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(0,5,0,0),0,0));
   executeTypeComboBox.addItemListener(new ItemListener(){
     @Override public void itemStateChanged(    ItemEvent e){
@@ -43,6 +43,6 @@
   }
 );
   processorPane.add(afterExecutionCheckBox,new GridBagConstraints(0,y,1,1,0,0,GridBagConstraints.NORTHWEST,GridBagConstraints.NONE,new Insets(2,0,0,0),0,0));
-  afterExecutionProcessorPane=new StatementProcessorPane(afterExecutionProcessor);
+  afterExecutionProcessorPane=new QueryProcessorPane(afterExecutionProcessor);
   processorPane.add(afterExecutionProcessorPane,new GridBagConstraints(1,y,1,1,1,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,5,0,0),0,0));
 }

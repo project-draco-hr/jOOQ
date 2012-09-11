@@ -8,6 +8,7 @@
   JToolBar loggerHeaderWestPanel=new JToolBar();
   loggerHeaderWestPanel.setFloatable(false);
   loggerHeaderWestPanel.setOpaque(false);
+  loggingListener=new LoggerPaneLoggingListener();
   loggerOnButton=new JButton(new ImageIcon(getClass().getResource("/org/jooq/debug/console/resources/Paused16.png")));
   loggerOnButton.setOpaque(false);
   loggerOnButton.setFocusable(false);
@@ -32,20 +33,20 @@
   }
 );
   loggerHeaderWestPanel.add(loggerOffButton);
-  statementMatcherButton=new JToggleButton(new ImageIcon(getClass().getResource("/org/jooq/debug/console/resources/Filter16.png")));
-  statementMatcherButton.setOpaque(false);
-  statementMatcherButton.setFocusable(false);
-  statementMatcherButton.setToolTipText("Filter incoming statements");
-  adjustStatementMatcherButton();
-  statementMatcherButton.addActionListener(new ActionListener(){
+  queryMatcherButton=new JToggleButton(new ImageIcon(getClass().getResource("/org/jooq/debug/console/resources/Filter16.png")));
+  queryMatcherButton.setOpaque(false);
+  queryMatcherButton.setFocusable(false);
+  queryMatcherButton.setToolTipText("Filter incoming queries");
+  adjustQueryMatcherButton();
+  queryMatcherButton.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    ActionEvent e){
-      statementMatcherButton.setSelected(true);
-      new StatementMatchersDialogBox(LoggerPane.this,LoggerPane.this.debugger).setVisible(true);
-      adjustStatementMatcherButton();
+      queryMatcherButton.setSelected(true);
+      new QueryMatchersDialogBox(LoggerPane.this,LoggerPane.this.debugger,loggingListener).setVisible(true);
+      adjustQueryMatcherButton();
     }
   }
 );
-  loggerHeaderWestPanel.add(statementMatcherButton);
+  loggerHeaderWestPanel.add(queryMatcherButton);
   loggerHeaderPanel.add(loggerHeaderWestPanel,BorderLayout.WEST);
   JPanel loggerHeaderCenterPanel=new JPanel(new FlowLayout(FlowLayout.CENTER,2,2));
   loggerHeaderCenterPanel.setOpaque(false);
@@ -131,7 +132,7 @@
   JToggleButton loggerReadQueryTypeToggleButton=new JToggleButton(SELECT_ICON,isReadQueryTypeDisplayed);
   loggerReadQueryTypeToggleButton.setOpaque(false);
   loggerReadQueryTypeToggleButton.setFocusable(false);
-  loggerReadQueryTypeToggleButton.setToolTipText("Show/hide read statements");
+  loggerReadQueryTypeToggleButton.setToolTipText("Show/hide read queries");
   loggerReadQueryTypeToggleButton.addItemListener(new ItemListener(){
     @Override public void itemStateChanged(    ItemEvent e){
       isReadQueryTypeDisplayed=e.getStateChange() == ItemEvent.SELECTED;
@@ -143,7 +144,7 @@
   JToggleButton loggerWriteQueryTypeToggleButton=new JToggleButton(UPDATE_ICON,isWriteQueryTypeDisplayed);
   loggerWriteQueryTypeToggleButton.setOpaque(false);
   loggerWriteQueryTypeToggleButton.setFocusable(false);
-  loggerWriteQueryTypeToggleButton.setToolTipText("Show/hide modification statements");
+  loggerWriteQueryTypeToggleButton.setToolTipText("Show/hide modification queries");
   loggerWriteQueryTypeToggleButton.addItemListener(new ItemListener(){
     @Override public void itemStateChanged(    ItemEvent e){
       isWriteQueryTypeDisplayed=e.getStateChange() == ItemEvent.SELECTED;
@@ -155,7 +156,7 @@
   JToggleButton loggerOtherQueryTypeToggleButton=new JToggleButton(OTHER_ICON,isOtherQueryTypeDisplayed);
   loggerOtherQueryTypeToggleButton.setOpaque(false);
   loggerOtherQueryTypeToggleButton.setFocusable(false);
-  loggerOtherQueryTypeToggleButton.setToolTipText("Show/hide other types of statements");
+  loggerOtherQueryTypeToggleButton.setToolTipText("Show/hide other types of queries");
   loggerOtherQueryTypeToggleButton.addItemListener(new ItemListener(){
     @Override public void itemStateChanged(    ItemEvent e){
       isOtherQueryTypeDisplayed=e.getStateChange() == ItemEvent.SELECTED;
@@ -218,12 +219,12 @@ case COLUMN_TIMESTAMP:
   }
 case COLUMN_PS_PREPARATION_DURATION:
 {
-  Long duration=queryDebuggingInfo.getPrepardeStatementPreparationDuration();
+  Long duration=queryDebuggingInfo.getPreparedStatementPreparationDuration();
   return duration == null ? null : duration;
 }
 case COLUMN_PS_BINDING_DURATION:
 {
-Long duration=queryDebuggingInfo.getPrepardeStatementBindingDuration();
+Long duration=queryDebuggingInfo.getPreparedStatementBindingDuration();
 return duration == null ? null : duration;
 }
 case COLUMN_EXEC_TIME:
@@ -423,7 +424,7 @@ table.getTransferHandler().exportToClipboard(table,Toolkit.getDefaultToolkit().g
 popupMenu.add(copyCellsToClipboardMenuItem);
 }
 if (selectedQueryDebuggingInfos.length > 0) {
-JMenuItem copyToClipboardMenuItem=new JMenuItem("Copy " + (selectedQueryDebuggingInfos.length > 1 ? selectedQueryDebuggingInfos.length + " " : "") + "Statement Data to Clipboard");
+JMenuItem copyToClipboardMenuItem=new JMenuItem("Copy " + (selectedQueryDebuggingInfos.length > 1 ? selectedQueryDebuggingInfos.length + " " : "") + "Query Data to Clipboard");
 copyToClipboardMenuItem.addActionListener(new ActionListener(){
 @Override public void actionPerformed(ActionEvent e){
 copyToClipboard(selectedQueryDebuggingInfos);
@@ -433,7 +434,7 @@ copyToClipboard(selectedQueryDebuggingInfos);
 popupMenu.add(copyToClipboardMenuItem);
 }
 if (displayedQueryDebuggingInfoList.size() > 0) {
-JMenuItem copyAllToClipboardMenuItem=new JMenuItem("Copy All Statements Data (" + displayedQueryDebuggingInfoList.size() + ") to Clipboard");
+JMenuItem copyAllToClipboardMenuItem=new JMenuItem("Copy All Query Data (" + displayedQueryDebuggingInfoList.size() + ") to Clipboard");
 copyAllToClipboardMenuItem.addActionListener(new ActionListener(){
 @Override public void actionPerformed(ActionEvent e){
 copyToClipboard(displayedQueryDebuggingInfoList.toArray(new QueryDebuggingInfo[0]));

@@ -1,0 +1,29 @@
+{
+  boolean isActive=activeCheckBox.isSelected();
+  TextMatcher threadNameTextMatcher=threadNameTextMatcherCheckBox.isSelected() ? threadNameTextMatcherPane.getTextMatcher() : null;
+  TextMatcher queryTextMatcher=queryTextMatcherCheckBox.isSelected() ? queryTextMatcherPane.getTextMatcher() : null;
+  Set<QueryType> queryTypeSet;
+  if (queryTypeCheckBox.isSelected()) {
+    List<QueryType> typeList=new ArrayList<QueryType>();
+    if (queryTypeSelectCheckBox.isSelected()) {
+      typeList.add(QueryType.SELECT);
+    }
+    if (queryTypeUpdateCheckBox.isSelected()) {
+      typeList.add(QueryType.UPDATE);
+    }
+    if (queryTypeInsertCheckBox.isSelected()) {
+      typeList.add(QueryType.INSERT);
+    }
+    if (queryTypeDeleteCheckBox.isSelected()) {
+      typeList.add(QueryType.DELETE);
+    }
+    if (queryTypeOtherCheckBox.isSelected()) {
+      typeList.add(QueryType.OTHER);
+    }
+    queryTypeSet=EnumSet.copyOf(typeList);
+  }
+ else {
+    queryTypeSet=null;
+  }
+  return new QueryMatcher(threadNameTextMatcher,queryTextMatcher,queryTypeSet,isActive);
+}

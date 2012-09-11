@@ -1,6 +1,6 @@
 {
   this.timestamp=timestamp;
   this.queryLog=queryLog;
-  this.throwable=new Exception("Statement Stack trace");
+  this.throwable=new Exception("Query Stack trace");
   throwable.setStackTrace(queryLog.getCallerStackTraceElements());
 }

@@ -6,9 +6,9 @@
   QueryProcessor replacementExecutionProcessor=null;
   QueryProcessor afterExecutionProcessor=null;
   if (!isBreaking) {
-    beforeExecutionProcessor=beforeExecutionCheckBox.isSelected() ? beforeExecutionProcessorPane.getStatementProcessor() : null;
-    replacementExecutionProcessor=executeTypeComboBox.getSelectedIndex() == 1 ? replacementExecutionProcessorPane.getStatementProcessor() : null;
-    afterExecutionProcessor=afterExecutionCheckBox.isSelected() ? afterExecutionProcessorPane.getStatementProcessor() : null;
+    beforeExecutionProcessor=beforeExecutionCheckBox.isSelected() ? beforeExecutionProcessorPane.getQueryProcessor() : null;
+    replacementExecutionProcessor=executeTypeComboBox.getSelectedIndex() == 1 ? replacementExecutionProcessorPane.getQueryProcessor() : null;
+    afterExecutionProcessor=afterExecutionCheckBox.isSelected() ? afterExecutionProcessorPane.getQueryProcessor() : null;
   }
   return new Breakpoint(id,hitCount,queryMatcher,isBreaking,beforeExecutionProcessor,replacementExecutionProcessor,afterExecutionProcessor);
 }

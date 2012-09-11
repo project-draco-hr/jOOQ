@@ -1,6 +1,6 @@
 {
   this.threadNameTextMatcher=threadNameTextMatcher;
-  this.statementTextMatcher=statementTextMatcher;
+  this.queryTextMatcher=queryTextMatcher;
   this.queryTypeSet=queryTypeSet == null ? null : EnumSet.copyOf(queryTypeSet);
   this.isActive=isActive;
 }

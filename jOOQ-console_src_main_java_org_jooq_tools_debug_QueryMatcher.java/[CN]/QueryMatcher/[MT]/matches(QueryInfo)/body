@@ -9,8 +9,8 @@
     }
     hasMatcher=true;
   }
-  if (statementTextMatcher != null) {
-    if (!statementTextMatcher.matches(queryInfo.getQueries())) {
+  if (queryTextMatcher != null) {
+    if (!queryTextMatcher.matches(queryInfo.getQueries())) {
       return false;
     }
     hasMatcher=true;

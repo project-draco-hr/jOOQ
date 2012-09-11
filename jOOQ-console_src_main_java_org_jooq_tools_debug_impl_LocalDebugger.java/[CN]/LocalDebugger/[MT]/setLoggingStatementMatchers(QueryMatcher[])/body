@@ -1,5 +1,0 @@
-{
-synchronized (LOGGING_STATEMENT_MATCHERS_LOCK) {
-    this.loggingStatementMatchers=loggingStatementMatchers;
-  }
-}
