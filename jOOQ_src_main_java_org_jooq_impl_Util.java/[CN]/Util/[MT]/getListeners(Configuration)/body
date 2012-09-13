@@ -4,6 +4,8 @@
     result.add(new StopWatchListener());
     result.add(new LoggerListener());
   }
+  if (OFF != configuration.getSettings().getExecuteDebugging()) {
+  }
   for (  String listener : configuration.getSettings().getExecuteListeners()) {
     result.add(getListener(listener));
   }
