@@ -1,7 +1,8 @@
 {
   List<Method> result=new ArrayList<Method>();
   for (  Method method : getInstanceMethods(type)) {
-    if (method.getParameterTypes().length == 1) {
+    Class<?>[] parameterTypes=method.getParameterTypes();
+    if (parameterTypes.length == 1 && !Record.class.isAssignableFrom(parameterTypes[0])) {
       if (name.equals(method.getName())) {
         result.add(accessible(method));
       }
