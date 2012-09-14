@@ -3,7 +3,7 @@
     Column annotation=method.getAnnotation(Column.class);
     if (annotation != null && name.equals(annotation.name())) {
       if (method.getParameterTypes().length == 0) {
-        return method;
+        return accessible(method);
       }
  else       if (method.getParameterTypes().length == 1) {
         String m=method.getName();
@@ -11,7 +11,7 @@
           try {
             Method getter=type.getMethod("get" + m.substring(3));
             if (getter.getAnnotation(Column.class) == null) {
-              return getter;
+              return accessible(getter);
             }
           }
  catch (          NoSuchMethodException ignore) {
@@ -19,7 +19,7 @@
           try {
             Method getter=type.getMethod("is" + m.substring(3));
             if (getter.getAnnotation(Column.class) == null) {
-              return getter;
+              return accessible(getter);
             }
           }
  catch (          NoSuchMethodException ignore) {

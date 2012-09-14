@@ -3,16 +3,16 @@
   for (  Method method : getInstanceMethods(type)) {
     if (method.getParameterTypes().length == 1) {
       if (name.equals(method.getName())) {
-        result.add(method);
+        result.add(accessible(method));
       }
  else       if (StringUtils.toCamelCaseLC(name).equals(method.getName())) {
-        result.add(method);
+        result.add(accessible(method));
       }
  else       if (("set" + name).equals(method.getName())) {
-        result.add(method);
+        result.add(accessible(method));
       }
  else       if (("set" + StringUtils.toCamelCase(name)).equals(method.getName())) {
-        result.add(method);
+        result.add(accessible(method));
       }
     }
   }

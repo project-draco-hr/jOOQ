@@ -4,7 +4,7 @@
     Column annotation=method.getAnnotation(Column.class);
     if (annotation != null && name.equals(annotation.name())) {
       if (method.getParameterTypes().length == 1) {
-        result.add(method);
+        result.add(accessible(method));
       }
  else       if (method.getParameterTypes().length == 0) {
         String m=method.getName();
@@ -12,7 +12,7 @@
           try {
             Method setter=type.getMethod("set" + m.substring(3),method.getReturnType());
             if (setter.getAnnotation(Column.class) == null) {
-              result.add(setter);
+              result.add(accessible(setter));
             }
           }
  catch (          NoSuchMethodException ignore) {

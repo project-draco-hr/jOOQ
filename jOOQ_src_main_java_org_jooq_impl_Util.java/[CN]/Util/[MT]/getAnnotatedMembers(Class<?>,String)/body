@@ -4,7 +4,7 @@
     Column annotation=member.getAnnotation(Column.class);
     if (annotation != null) {
       if (name.equals(annotation.name())) {
-        result.add(member);
+        result.add(accessible(member));
       }
     }
   }
