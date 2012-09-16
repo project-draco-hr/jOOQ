@@ -1,3 +1,4 @@
 int queryLogId
 long fetchTime
-int size
+int rows
+int columns

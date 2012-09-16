@@ -10,7 +10,7 @@
           LoggerListener listener=logger.listener();
           if (listener != null) {
             if (resultLog == null) {
-              resultLog=new ResultLog(getLog(ctx).getId(),endFetchTime - startFetchTime,result.size());
+              resultLog=new ResultLog(getLog(ctx).getId(),endFetchTime - startFetchTime,result.size(),result.getFields().size());
             }
             listener.logResult(resultLog);
           }
