@@ -1,0 +1,3 @@
+int queryLogId
+long fetchTime
+int size

@@ -1,0 +1,10 @@
+{
+  try {
+synchronized (LOCK) {
+      serverSocket=openServerCommunicationChannel(port);
+    }
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

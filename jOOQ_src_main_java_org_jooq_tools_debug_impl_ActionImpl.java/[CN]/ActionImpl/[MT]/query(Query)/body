@@ -1,0 +1,4 @@
+{
+  this.query=q;
+  apply();
+}

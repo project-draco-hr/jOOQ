@@ -1,0 +1,3 @@
+{
+  return before.toArray(new Action[before.size()]);
+}

@@ -1,0 +1,13 @@
+{
+  if (matchers == null) {
+    matchers=new ArrayList<Matcher>();
+    for (    Debugger debugger : DebuggerRegistry.get()) {
+      for (      Matcher matcher : debugger.matchers()) {
+        if (((MatcherImpl)matcher).matches(ctx)) {
+          matchers.add(matcher);
+        }
+      }
+    }
+  }
+  return matchers;
+}

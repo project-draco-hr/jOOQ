@@ -1,0 +1,18 @@
+{
+  message.setSyncExec(false);
+  Thread thread=Thread.currentThread();
+  if (thread instanceof MessageProcessingThread) {
+    message.setThreadID(((MessageProcessingThread)thread).getOriginatorThreadID());
+    message.setProcessorToOriginator(true);
+  }
+ else {
+    message.setThreadID(thread.getId());
+    message.setProcessorToOriginator(false);
+  }
+  try {
+    writeMessage(message);
+  }
+ catch (  Throwable e) {
+    throw new IllegalStateException(e);
+  }
+}

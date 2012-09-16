@@ -1,0 +1,19 @@
+{
+  initialiseHitContext(context);
+  for (  Matcher m : context.getClientDebugger().matchers) {
+    for (    Breakpoint b : m.breakpoints()) {
+      if (b.getId().equals(breakpoint)) {
+        BreakpointListener listener=b.listener();
+        if (listener != null) {
+          if (before) {
+            return listener.before(hitContext);
+          }
+ else {
+            return listener.after(hitContext);
+          }
+        }
+      }
+    }
+  }
+  return Step.STEP;
+}

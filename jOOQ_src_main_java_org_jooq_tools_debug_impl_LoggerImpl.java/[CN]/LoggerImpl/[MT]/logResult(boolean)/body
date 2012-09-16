@@ -1,0 +1,4 @@
+{
+  this.logResult=l;
+  apply();
+}

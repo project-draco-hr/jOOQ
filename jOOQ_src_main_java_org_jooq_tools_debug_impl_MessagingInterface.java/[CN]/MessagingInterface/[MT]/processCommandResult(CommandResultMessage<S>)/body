@@ -1,0 +1,10 @@
+{
+  if (log.isDebugEnabled()) {
+    log.debug("[" + (isClient ? "client" : "server") + "] <USE: "+ message.getID());
+  }
+  Throwable exception=message.getException();
+  if (exception != null) {
+    Utils.doThrow(exception);
+  }
+  return message.getResult();
+}

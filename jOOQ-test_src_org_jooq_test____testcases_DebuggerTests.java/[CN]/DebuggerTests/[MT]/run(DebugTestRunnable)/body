@@ -1,0 +1,17 @@
+{
+  System.setProperty("communication.interface.syncmessages","true");
+  if (!initialiseOnce) {
+    initialiseOnce=true;
+    create().selectOne().fetch();
+    Thread.sleep(1000);
+  }
+  Debugger remote=remoteDebugger("localhost",5555);
+  Debugger local=localDebugger();
+  try {
+    runnable.run(remote,local);
+  }
+  finally {
+    remote.remove();
+    local.remove();
+  }
+}

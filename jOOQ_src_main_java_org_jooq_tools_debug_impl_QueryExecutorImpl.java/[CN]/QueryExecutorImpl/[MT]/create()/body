@@ -1,0 +1,3 @@
+{
+  return new Factory(configuration.getConnection(),configuration.getDialect(),configuration.getSettings());
+}

@@ -1,0 +1,15 @@
+{
+  run(new DebugTestRunnable(){
+    @Override public void run(    Debugger d1,    Debugger d2) throws Exception {
+      Matcher d1m1=d1.newMatcher();
+      Matcher d2m1=d2.newMatcher();
+      d1m1.newLogger().listener(new LListener(null));
+      Breakpoint d1m1b1=d1m1.newBreakpoint();
+      Breakpoint d2m1b1=d2m1.newBreakpoint();
+      d1m1b1.listener(new BListener());
+      d2m1b1.listener(new BListener());
+      create().select().from(TAuthor()).fetch();
+    }
+  }
+);
+}

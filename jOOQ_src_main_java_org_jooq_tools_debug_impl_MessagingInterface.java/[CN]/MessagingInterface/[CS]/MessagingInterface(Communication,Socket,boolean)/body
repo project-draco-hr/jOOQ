@@ -1,0 +1,119 @@
+{
+  this.comm=communication;
+  this.isClient=isClient;
+  try {
+    oos=new ObjectOutputStream(new BufferedOutputStream(socket.getOutputStream()){
+      @Override public synchronized void write(      int b) throws IOException {
+        super.write(b);
+        oosByteCount++;
+      }
+      @Override public synchronized void write(      byte[] b,      int off,      int len) throws IOException {
+        super.write(b,off,len);
+        oosByteCount+=len;
+      }
+    }
+);
+    oos.flush();
+    ois=new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+  Thread receiverThread=new Thread("MessagingInterface Receiver (" + (isClient ? "client" : "server") + ")"){
+    @Override public void run(){
+      while (isAlive) {
+        Message<?> message=null;
+        try {
+          message=readMessage();
+        }
+ catch (        Throwable e) {
+          if (isAlive) {
+            isAlive=false;
+            try {
+              communication.notifyKilled();
+            }
+ catch (            Throwable ex) {
+              ex.printStackTrace();
+            }
+          }
+synchronized (RECEIVER_LOCK) {
+            receivedMessageList.clear();
+            RECEIVER_LOCK.notify();
+          }
+synchronized (idToThreadInfo) {
+            for (            ThreadInfo<?> threadInfo : idToThreadInfo.values()) {
+synchronized (threadInfo) {
+                threadInfo.notify();
+              }
+            }
+          }
+        }
+        if (message != null) {
+          long threadID=message.getThreadID();
+          boolean isProcessorToOriginator=message.isProcessorToOriginator();
+          if (!isProcessorToOriginator) {
+            MessageProcessingThread messageProcessingThread;
+            boolean isNew=false;
+synchronized (originatorThreadIDToThreadMap) {
+              messageProcessingThread=originatorThreadIDToThreadMap.get(threadID);
+              if (messageProcessingThread == null) {
+                messageProcessingThread=new MessageProcessingThread(threadID);
+                originatorThreadIDToThreadMap.put(threadID,messageProcessingThread);
+                isNew=true;
+                messageProcessingThread.addMessage(message);
+              }
+ else {
+                if (messageProcessingThread.isWaitingOnSyncCall()) {
+                  threadID=messageProcessingThread.getId();
+                  isProcessorToOriginator=true;
+                }
+ else {
+                  messageProcessingThread.addMessage(message);
+                }
+              }
+            }
+            if (isNew) {
+              messageProcessingThread.start();
+            }
+          }
+          if (isProcessorToOriginator) {
+            ThreadInfo threadInfo;
+synchronized (idToThreadInfo) {
+              threadInfo=idToThreadInfo.get(threadID);
+            }
+            if (threadInfo != null) {
+              if (message instanceof CommandResultMessage) {
+                throw new IllegalStateException("I need to indicate if command result message.");
+              }
+synchronized (threadInfo) {
+                threadInfo.setMessage(message);
+                threadInfo.notify();
+              }
+            }
+ else {
+              System.err.println("What to do?");
+            }
+          }
+        }
+      }
+      try {
+        oos.close();
+      }
+ catch (      Throwable e) {
+      }
+      try {
+        ois.close();
+      }
+ catch (      Throwable e) {
+      }
+      try {
+        socket.close();
+      }
+ catch (      Throwable e) {
+      }
+    }
+  }
+;
+  receiverThread.setDaemon(true);
+  receiverThread.start();
+}

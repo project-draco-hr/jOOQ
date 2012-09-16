@@ -1,0 +1,4 @@
+Query query
+long prepareTime
+long bindTime
+long executeTime

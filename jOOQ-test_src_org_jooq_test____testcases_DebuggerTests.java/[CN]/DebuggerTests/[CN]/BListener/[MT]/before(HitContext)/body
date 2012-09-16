@@ -1,0 +1,6 @@
+{
+  Result<Record> result=context.executor().fetch(create().selectCount().from(TAuthor()));
+  assertEquals(1,result.size());
+  assertEquals(2,(int)result.get(0).getValue(0,int.class));
+  return Step.STEP;
+}

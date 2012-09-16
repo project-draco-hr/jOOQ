@@ -1,0 +1,4 @@
+{
+  if (!hasDebuggers)   return;
+  startBindTime=System.nanoTime();
+}

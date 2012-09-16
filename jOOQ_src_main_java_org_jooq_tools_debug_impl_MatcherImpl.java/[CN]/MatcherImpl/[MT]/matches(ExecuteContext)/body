@@ -1,0 +1,20 @@
+{
+  if (matchThreadName != null) {
+    if (!matchThreadName.matcher(Thread.currentThread().getName()).matches()) {
+      return false;
+    }
+  }
+  if (matchSQL != null) {
+    boolean matchFound=false;
+    for (    String sql : ctx.batchSQL()) {
+      if (matchSQL.matcher(sql).matches()) {
+        matchFound=true;
+        break;
+      }
+    }
+    if (!matchFound) {
+      return false;
+    }
+  }
+  return true;
+}

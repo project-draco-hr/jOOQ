@@ -1,0 +1,9 @@
+{
+  Query query=action.query();
+  if (query instanceof ResultQuery) {
+    create.fetchLazy(create.renderInlined(query)).close();
+  }
+ else {
+    create.execute(create.renderInlined(query));
+  }
+}

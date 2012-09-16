@@ -1,0 +1,5 @@
+{
+synchronized (MATCHER_LOCK) {
+    matchers.remove(matcher);
+  }
+}

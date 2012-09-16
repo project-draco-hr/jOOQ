@@ -1,0 +1,17 @@
+{
+  if (!isAlive()) {
+    printFailedInvocation(message);
+    return;
+  }
+  if (log.isDebugEnabled()) {
+    log.debug("[" + (isClient ? "client" : "server") + "] "+ (message.isSyncExec() ? "SNDS" : "SNDA")+ ": "+ message.getID()+ ", "+ message);
+  }
+synchronized (oos) {
+    oos.writeUnshared(message);
+    oos.flush();
+    if (oosByteCount > OOS_RESET_THRESHOLD) {
+      oos.reset();
+      oosByteCount=0;
+    }
+  }
+}

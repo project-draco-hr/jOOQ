@@ -1,0 +1,13 @@
+{
+  for (  Matcher m : context.getClientDebugger().matchers) {
+    for (    Logger l : m.loggers()) {
+      if (l.getId().equals(logger)) {
+        LoggerListener listener=l.listener();
+        if (listener != null) {
+          listener.logQuery(log);
+        }
+      }
+    }
+  }
+  return null;
+}

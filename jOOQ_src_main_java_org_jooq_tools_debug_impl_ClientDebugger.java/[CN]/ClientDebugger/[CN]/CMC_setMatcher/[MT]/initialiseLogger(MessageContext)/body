@@ -1,0 +1,16 @@
+{
+  for (  final Logger logger : matcher.loggers()) {
+    if (loggerListener == null) {
+      loggerListener=new LoggerListener(){
+        @Override public void logQuery(        QueryLog log){
+          context.getServerDebugger().getCommunicationInterface().asyncSend(new CMS_logQuery(logger.getId(),log));
+        }
+        @Override public void logResult(        ResultLog log){
+          context.getServerDebugger().getCommunicationInterface().asyncSend(new CMS_logResult(logger.getId(),log));
+        }
+      }
+;
+    }
+    logger.listener(loggerListener);
+  }
+}

@@ -1,0 +1,28 @@
+{
+  if (!hasDebuggers)   return;
+  endExecuteTime=System.nanoTime();
+  for (  Matcher matcher : matchers(ctx)) {
+    for (    Logger logger : matcher.loggers()) {
+      LoggerListener listener=logger.listener();
+      if (listener != null) {
+        if (logger.logQuery()) {
+          listener.logQuery(getLog(ctx));
+        }
+      }
+    }
+  }
+  recursionSafe(new Runnable(){
+    @Override public void run(){
+      Factory create=create(ctx);
+      for (      Matcher matcher : matchers(ctx)) {
+        for (        Processor processor : matcher.processors()) {
+          for (          Action action : processor.after()) {
+            execute(create,action);
+          }
+        }
+      }
+      breakpoints(false,ctx);
+    }
+  }
+);
+}

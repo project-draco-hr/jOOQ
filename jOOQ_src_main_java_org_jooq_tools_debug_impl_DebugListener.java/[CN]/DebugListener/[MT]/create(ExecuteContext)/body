@@ -1,0 +1,3 @@
+{
+  return new Factory(ctx.getConnection(),ctx.getDialect(),ctx.getSettings());
+}

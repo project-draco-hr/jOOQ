@@ -1,0 +1,55 @@
+{
+  Thread thread=Thread.currentThread();
+  long threadID=thread.getId();
+  ThreadInfo<S> threadInfo=new ThreadInfo<S>();
+  ThreadInfo<?> previousThreadInfo;
+synchronized (idToThreadInfo) {
+    previousThreadInfo=idToThreadInfo.put(threadID,threadInfo);
+  }
+  if (thread instanceof MessageProcessingThread) {
+synchronized (originatorThreadIDToThreadMap) {
+      ((MessageProcessingThread)thread).setWaitingOnSyncCall(true);
+    }
+  }
+  CM_asyncExec<S> asyncExec=new CM_asyncExec<S>(threadID,message);
+  asyncSend(asyncExec);
+  CommandResultMessage<S> commandResultMessage=null;
+synchronized (threadInfo) {
+    while (commandResultMessage == null) {
+      while (!threadInfo.isValuePresent()) {
+        try {
+          threadInfo.wait();
+        }
+ catch (        Throwable e) {
+        }
+        if (!isAlive()) {
+          idToThreadInfo.remove(threadID);
+          printFailedInvocation(message);
+          return null;
+        }
+      }
+      Message<S> value=threadInfo.getMessage();
+      threadInfo.clearMessage();
+      if (value instanceof CommandResultMessage) {
+        commandResultMessage=(CommandResultMessage<S>)value;
+      }
+ else {
+        runMessage(value);
+      }
+    }
+  }
+synchronized (idToThreadInfo) {
+    if (previousThreadInfo != null) {
+      idToThreadInfo.put(threadID,previousThreadInfo);
+    }
+ else {
+      idToThreadInfo.remove(threadID);
+    }
+  }
+  if (previousThreadInfo == null && thread instanceof MessageProcessingThread) {
+synchronized (originatorThreadIDToThreadMap) {
+      ((MessageProcessingThread)thread).setWaitingOnSyncCall(false);
+    }
+  }
+  return processCommandResult(commandResultMessage);
+}

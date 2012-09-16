@@ -1,0 +1,3 @@
+{
+  return processors.toArray(new Processor[processors.size()]);
+}

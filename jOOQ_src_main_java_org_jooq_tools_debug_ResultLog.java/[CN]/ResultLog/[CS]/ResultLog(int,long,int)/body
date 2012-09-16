@@ -1,0 +1,6 @@
+{
+  this.queryLogId=queryLogId;
+  this.id=NEXT_ID.getAndIncrement();
+  this.fetchTime=fetchTime;
+  this.size=size;
+}

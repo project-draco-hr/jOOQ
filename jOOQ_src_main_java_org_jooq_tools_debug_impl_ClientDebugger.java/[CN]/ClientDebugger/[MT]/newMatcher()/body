@@ -1,0 +1,23 @@
+{
+  final MatcherImpl result=new MatcherImpl();
+  result.setDelegate(new AbstractDebuggerObject(){
+    /** 
+ * Generated UID
+ */
+    private static final long serialVersionUID=549633622817329607L;
+    @Override public void remove(){
+synchronized (ClientDebugger.this) {
+        matchers.remove(result);
+      }
+      comm.asyncSend(new CMC_removeMatcher(result.getId()));
+    }
+    @Override void apply(){
+      comm.asyncSend(new CMC_setMatcher(result));
+    }
+  }
+);
+synchronized (ClientDebugger.this) {
+    matchers.add(result);
+  }
+  return result;
+}

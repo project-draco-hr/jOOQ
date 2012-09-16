@@ -1,0 +1,6 @@
+{
+synchronized (parent) {
+    siblings.remove(child);
+    apply();
+  }
+}

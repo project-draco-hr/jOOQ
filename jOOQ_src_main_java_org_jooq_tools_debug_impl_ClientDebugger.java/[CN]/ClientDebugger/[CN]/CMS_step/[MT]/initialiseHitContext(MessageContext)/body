@@ -1,0 +1,14 @@
+{
+  if (executor == null) {
+    executor=new QueryExecutor(){
+      @Override public <R extends Record>Result<R> fetch(      ResultQuery<R> query){
+        return context.getClientDebugger().getCommunicationInterface().syncSend(new CMC_fetch<R>(query));
+      }
+      @Override public int execute(      Query query){
+        return context.getClientDebugger().getCommunicationInterface().syncSend(new CMC_execute(query));
+      }
+    }
+;
+  }
+  hitContext.executor(executor);
+}

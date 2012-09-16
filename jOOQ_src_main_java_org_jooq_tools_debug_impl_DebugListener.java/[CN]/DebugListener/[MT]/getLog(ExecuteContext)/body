@@ -1,0 +1,6 @@
+{
+  if (log == null) {
+    log=new QueryLog(ctx.query(),endPrepareTime - startPrepareTime,endBindTime - startBindTime,endExecuteTime - startExecuteTime);
+  }
+  return log;
+}

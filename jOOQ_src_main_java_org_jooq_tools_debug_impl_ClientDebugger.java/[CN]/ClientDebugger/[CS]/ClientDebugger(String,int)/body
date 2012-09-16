@@ -1,0 +1,3 @@
+{
+  comm=new ClientCommunication(this,port,ip);
+}

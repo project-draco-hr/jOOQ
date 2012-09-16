@@ -1,0 +1,4 @@
+{
+  if (!hasDebuggers)   return;
+  startFetchTime=System.nanoTime();
+}

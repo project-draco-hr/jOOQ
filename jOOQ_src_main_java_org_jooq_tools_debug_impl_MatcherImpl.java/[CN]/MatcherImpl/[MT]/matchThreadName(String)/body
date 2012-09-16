@@ -1,0 +1,8 @@
+{
+  if (regex != null) {
+    this.matchThreadName=Pattern.compile(regex);
+  }
+ else {
+    this.matchThreadName=null;
+  }
+}

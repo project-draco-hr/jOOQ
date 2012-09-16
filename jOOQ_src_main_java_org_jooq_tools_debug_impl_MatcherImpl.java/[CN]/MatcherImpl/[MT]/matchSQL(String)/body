@@ -1,0 +1,8 @@
+{
+  if (regex != null) {
+    this.matchSQL=Pattern.compile(regex);
+  }
+ else {
+    this.matchSQL=null;
+  }
+}

@@ -1,0 +1,4 @@
+{
+  checkOpen();
+  return messagingInterface.syncSend(message);
+}

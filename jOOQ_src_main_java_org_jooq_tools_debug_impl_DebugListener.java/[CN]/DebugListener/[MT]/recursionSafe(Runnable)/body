@@ -1,0 +1,11 @@
+{
+  if (RECURSION_LOCK.get() == null) {
+    RECURSION_LOCK.set(new Object());
+    try {
+      runnable.run();
+    }
+  finally {
+      RECURSION_LOCK.remove();
+    }
+  }
+}

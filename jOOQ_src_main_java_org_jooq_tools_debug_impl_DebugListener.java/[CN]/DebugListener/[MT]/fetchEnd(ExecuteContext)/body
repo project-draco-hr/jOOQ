@@ -1,0 +1,21 @@
+{
+  if (!hasDebuggers)   return;
+  endFetchTime=System.nanoTime();
+  Result<?> result=ctx.result();
+  if (result != null) {
+    ResultLog resultLog=null;
+    for (    Matcher matcher : matchers(ctx)) {
+      for (      Logger logger : matcher.loggers()) {
+        if (logger.logResult()) {
+          LoggerListener listener=logger.listener();
+          if (listener != null) {
+            if (resultLog == null) {
+              resultLog=new ResultLog(getLog(ctx).getId(),endFetchTime - startFetchTime,result.size());
+            }
+            listener.logResult(resultLog);
+          }
+        }
+      }
+    }
+  }
+}

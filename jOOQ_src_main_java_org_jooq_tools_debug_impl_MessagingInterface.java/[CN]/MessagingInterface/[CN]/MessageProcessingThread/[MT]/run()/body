@@ -1,0 +1,29 @@
+{
+  while (true) {
+    Message<?> message;
+synchronized (messageList) {
+      if (messageList.isEmpty()) {
+        message=null;
+      }
+ else {
+        message=messageList.remove(0);
+      }
+    }
+    if (message == null) {
+synchronized (originatorThreadIDToThreadMap) {
+synchronized (messageList) {
+          if (messageList.isEmpty()) {
+            originatorThreadIDToThreadMap.remove(originatorThreadID);
+          }
+ else {
+            message=messageList.remove(0);
+          }
+        }
+      }
+    }
+    if (message == null) {
+      break;
+    }
+    runMessage(message);
+  }
+}

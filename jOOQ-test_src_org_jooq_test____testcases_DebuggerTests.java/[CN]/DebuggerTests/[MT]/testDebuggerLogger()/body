@@ -1,0 +1,33 @@
+{
+  run(new DebugTestRunnable(){
+    @Override public void run(    Debugger d1,    Debugger d2) throws Exception {
+      Matcher d1m1=d1.newMatcher();
+      Matcher d1m2=d1.newMatcher();
+      Matcher d2m1=d2.newMatcher();
+      d1m1.matchSQL("(?i:.*book.*)");
+      d1m2.matchSQL("(?i:.*id.*)");
+      d2m1.matchSQL("(?i:^select.*)");
+      Logger d1m1l1=d1m1.newLogger();
+      Logger d1m1l2=d1m1.newLogger();
+      LListener d1m1l1listener=new LListener(LListenerType.BOOK);
+      LListener d1m1l2listener=new LListener(LListenerType.BOOK);
+      d1m1l1.listener(d1m1l1listener);
+      d1m1l2.listener(d1m1l2listener);
+      Logger d1m2l1=d1m2.newLogger();
+      Logger d1m2l2=d1m2.newLogger();
+      LListener d1m2l1listener=new LListener(LListenerType.ID);
+      LListener d1m2l2listener=new LListener(LListenerType.ID);
+      d1m2l1.listener(d1m2l1listener);
+      d1m2l2.listener(d1m2l2listener);
+      Logger d2m1l1=d2m1.newLogger();
+      Logger d2m1l2=d2m1.newLogger();
+      LListener d2m1l1listener=new LListener(LListenerType.SELECT);
+      LListener d2m1l2listener=new LListener(LListenerType.SELECT);
+      d2m1l1.listener(d2m1l1listener);
+      d2m1l2.listener(d2m1l2listener);
+      create().select().from(TBook()).where(TBook_ID().in(1,3,4)).fetch();
+      create().select().from(TAuthor()).fetch();
+    }
+  }
+);
+}

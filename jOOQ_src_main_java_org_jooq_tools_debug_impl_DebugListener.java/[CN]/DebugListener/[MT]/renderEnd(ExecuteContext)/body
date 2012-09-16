@@ -1,0 +1,23 @@
+{
+  hasDebuggers=!DebuggerRegistry.get().isEmpty();
+  startPrepareTime=0;
+  endPrepareTime=0;
+  startBindTime=0;
+  endBindTime=0;
+  startExecuteTime=0;
+  endExecuteTime=0;
+  recursionSafe(new Runnable(){
+    @Override public void run(){
+      Factory create=create(ctx);
+      for (      Matcher matcher : matchers(ctx)) {
+        for (        Processor processor : matcher.processors()) {
+          for (          Action action : processor.before()) {
+            execute(create,action);
+          }
+        }
+      }
+      breakpoints(true,ctx);
+    }
+  }
+);
+}
