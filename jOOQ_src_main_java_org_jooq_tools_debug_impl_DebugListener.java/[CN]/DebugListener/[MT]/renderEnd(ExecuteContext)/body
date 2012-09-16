@@ -6,7 +6,7 @@
   endBindTime=0;
   startExecuteTime=0;
   endExecuteTime=0;
-  recursionSafe(new Runnable(){
+  recursionSafe(PROCESSOR_BEFORE,new Runnable(){
     @Override public void run(){
       Factory create=create(ctx);
       for (      Matcher matcher : matchers(ctx)) {
@@ -16,6 +16,11 @@
           }
         }
       }
+    }
+  }
+);
+  recursionSafe(BREAKPOINT_BEFORE,new Runnable(){
+    @Override public void run(){
       breakpoints(true,ctx);
     }
   }

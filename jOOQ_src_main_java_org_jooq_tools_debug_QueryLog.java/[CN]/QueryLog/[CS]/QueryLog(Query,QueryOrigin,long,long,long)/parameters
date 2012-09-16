@@ -1,4 +1,5 @@
 Query query
+QueryOrigin origin
 long prepareTime
 long bindTime
 long executeTime

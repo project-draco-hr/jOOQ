@@ -1,6 +1,6 @@
 {
   if (RECURSION_LOCK.get() == null) {
-    RECURSION_LOCK.set(new Object());
+    RECURSION_LOCK.set(origin);
     try {
       runnable.run();
     }

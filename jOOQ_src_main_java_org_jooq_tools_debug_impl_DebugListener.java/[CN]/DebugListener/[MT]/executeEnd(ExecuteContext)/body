@@ -11,7 +11,7 @@
       }
     }
   }
-  recursionSafe(new Runnable(){
+  recursionSafe(PROCESSOR_AFTER,new Runnable(){
     @Override public void run(){
       Factory create=create(ctx);
       for (      Matcher matcher : matchers(ctx)) {
@@ -21,6 +21,11 @@
           }
         }
       }
+    }
+  }
+);
+  recursionSafe(BREAKPOINT_AFTER,new Runnable(){
+    @Override public void run(){
       breakpoints(false,ctx);
     }
   }

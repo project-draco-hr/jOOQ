@@ -2,6 +2,7 @@
   this.id=NEXT_ID.getAndIncrement();
   this.stackTrace=Thread.currentThread().getStackTrace();
   this.query=query;
+  this.origin=origin;
   this.prepareTime=prepareTime;
   this.bindTime=bindTime;
   this.executeTime=executeTime;
