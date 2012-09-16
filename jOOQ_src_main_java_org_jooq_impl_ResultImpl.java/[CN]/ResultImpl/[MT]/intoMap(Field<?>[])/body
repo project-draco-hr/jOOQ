@@ -1,6 +1,6 @@
 {
-  if (keys == null || keys.length == 0) {
-    throw new IllegalArgumentException("Keys must not be null or empty.");
+  if (keys == null) {
+    keys=new Field[0];
   }
   Map<List<?>,R> map=new LinkedHashMap<List<?>,R>();
   for (  R record : this) {
