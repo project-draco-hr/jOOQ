@@ -1,4 +1,5 @@
 {
   this.listener=l;
   apply();
+  return this;
 }

@@ -1,4 +1,5 @@
 {
   this.query=q;
   apply();
+  return this;
 }
