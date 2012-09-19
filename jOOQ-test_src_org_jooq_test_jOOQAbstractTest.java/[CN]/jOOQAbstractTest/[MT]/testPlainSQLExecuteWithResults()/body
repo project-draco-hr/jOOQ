@@ -1,0 +1,3 @@
+{
+  new PlainSQLTests(this).testPlainSQLExecuteWithResults();
+}
