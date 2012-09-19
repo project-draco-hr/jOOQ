@@ -8,7 +8,7 @@
   sb.append(StopWatch.format(executeTime));
   sb.append(", query=[");
   sb.append(query);
-  sb.append(", origin=");
+  sb.append("], origin=");
   sb.append(origin);
   sb.append("]");
   return sb.toString();

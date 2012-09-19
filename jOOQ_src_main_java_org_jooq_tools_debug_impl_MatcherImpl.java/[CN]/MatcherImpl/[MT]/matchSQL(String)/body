@@ -5,4 +5,5 @@
  else {
     this.matchSQL=null;
   }
+  apply();
 }

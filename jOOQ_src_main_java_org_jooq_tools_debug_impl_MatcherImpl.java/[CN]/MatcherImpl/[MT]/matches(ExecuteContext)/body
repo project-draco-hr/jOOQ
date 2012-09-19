@@ -16,5 +16,13 @@
       return false;
     }
   }
+  if (matchCount != null) {
+synchronized (matchCount) {
+      matchCounter+=1;
+      if (!matchCount.contains(matchCounter)) {
+        return false;
+      }
+    }
+  }
   return true;
 }

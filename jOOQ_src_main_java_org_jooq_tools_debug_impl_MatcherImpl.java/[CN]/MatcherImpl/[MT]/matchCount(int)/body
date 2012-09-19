@@ -1,0 +1,12 @@
+{
+  if (count == null || count.length == 0) {
+    matchCount=null;
+  }
+ else {
+    matchCount=new HashSet<Integer>();
+    for (    int i : count) {
+      matchCount.add(i);
+    }
+  }
+  apply();
+}

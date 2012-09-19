@@ -5,4 +5,5 @@
  else {
     this.matchThreadName=null;
   }
+  apply();
 }
