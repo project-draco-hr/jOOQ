@@ -1,0 +1,3 @@
+{
+  return instead.toArray(new Action[instead.size()]);
+}
