@@ -1,4 +1,4 @@
-Query query
+ExecuteContext ctx
 QueryOrigin origin
 long prepareTime
 long bindTime

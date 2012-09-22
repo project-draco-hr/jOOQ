@@ -1,0 +1,13 @@
+{
+  final Thread thread=Thread.currentThread();
+  this.id=NEXT_ID.getAndIncrement();
+  this.stackTrace=thread.getStackTrace();
+  this.threadName=thread.getName();
+  this.threadId=thread.getId();
+  this.query=ctx.query();
+  this.executeType=ctx.type();
+  this.origin=origin;
+  this.prepareTime=prepareTime;
+  this.bindTime=bindTime;
+  this.executeTime=executeTime;
+}

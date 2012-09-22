@@ -3,10 +3,11 @@
     matchCount=null;
   }
  else {
-    matchCount=new HashSet<Integer>();
+    matchCount=new TreeSet<Integer>();
     for (    int i : count) {
       matchCount.add(i);
     }
   }
   apply();
+  return this;
 }

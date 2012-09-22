@@ -1,5 +1,7 @@
 {
-  this.logQuery=l;
-  apply();
+  if (logQuery != l) {
+    logQuery=l;
+    apply();
+  }
   return this;
 }

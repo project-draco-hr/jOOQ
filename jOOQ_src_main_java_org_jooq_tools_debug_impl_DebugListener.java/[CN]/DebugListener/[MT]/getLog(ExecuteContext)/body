@@ -1,7 +1,7 @@
 {
   QueryOrigin origin=defaultIfNull(RECURSION_LOCK.get(),APPLICATION);
   if (log == null) {
-    log=new QueryLog(ctx.query(),origin,endPrepareTime - startPrepareTime,endBindTime - startBindTime,endExecuteTime - startExecuteTime);
+    log=new QueryLog(ctx,origin,endPrepareTime - startPrepareTime,endBindTime - startBindTime,endExecuteTime - startExecuteTime);
   }
   return log;
 }

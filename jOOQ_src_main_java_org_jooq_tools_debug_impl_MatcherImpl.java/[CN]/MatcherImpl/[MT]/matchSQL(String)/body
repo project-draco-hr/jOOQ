@@ -6,4 +6,5 @@
     this.matchSQL=null;
   }
   apply();
+  return this;
 }

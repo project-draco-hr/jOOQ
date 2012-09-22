@@ -1,5 +1,7 @@
 {
-  this.logResult=l;
-  apply();
+  if (logResult != l) {
+    logResult=l;
+    apply();
+  }
   return this;
 }

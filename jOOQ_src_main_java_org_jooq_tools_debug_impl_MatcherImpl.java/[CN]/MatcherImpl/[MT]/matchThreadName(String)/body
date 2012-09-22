@@ -6,4 +6,5 @@
     this.matchThreadName=null;
   }
   apply();
+  return this;
 }

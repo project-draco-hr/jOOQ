@@ -1,0 +1,11 @@
+{
+  if (matchCount == null) {
+    return null;
+  }
+  int[] result=new int[matchCount.size()];
+  int i=0;
+  for (  int count : matchCount) {
+    result[i++]=count;
+  }
+  return result;
+}

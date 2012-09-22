@@ -1,0 +1,3 @@
+{
+  return matchThreadName == null ? null : matchThreadName.pattern();
+}
