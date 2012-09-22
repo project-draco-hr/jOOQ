@@ -1,0 +1,2 @@
+Class<? extends E> type
+E result

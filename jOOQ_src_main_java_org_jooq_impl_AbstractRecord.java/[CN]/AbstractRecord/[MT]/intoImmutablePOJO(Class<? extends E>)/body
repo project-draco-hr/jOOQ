@@ -1,5 +1,5 @@
 {
-  for (  Constructor<T> constructor : (Constructor<T>[])type.getDeclaredConstructors()) {
+  for (  Constructor<E> constructor : (Constructor<E>[])type.getDeclaredConstructors()) {
     Class<?>[] parameterTypes=constructor.getParameterTypes();
     if (parameterTypes.length == getFields().size()) {
       Object[] converted=Util.convert(parameterTypes,intoArray());

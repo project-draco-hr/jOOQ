@@ -1,6 +1,6 @@
 {
   try {
-    T result;
+    E result;
     if (Modifier.isAbstract(type.getModifiers())) {
       result=Reflect.on(HashMap.class).create().as(type);
     }
