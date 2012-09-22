@@ -1,9 +1,16 @@
 {
-  for (  Constructor<E> constructor : (Constructor<E>[])type.getDeclaredConstructors()) {
+  Constructor<E>[] constructors=(Constructor<E>[])type.getDeclaredConstructors();
+  for (  Constructor<E> constructor : constructors) {
+    ConstructorProperties properties=constructor.getAnnotation(ConstructorProperties.class);
+    if (properties != null) {
+      return intoImmutablePOJO(type,constructor,properties);
+    }
+  }
+  for (  Constructor<E> constructor : constructors) {
     Class<?>[] parameterTypes=constructor.getParameterTypes();
     if (parameterTypes.length == getFields().size()) {
       Object[] converted=Util.convert(parameterTypes,intoArray());
-      return Reflect.accessible(constructor).newInstance(converted);
+      return accessible(constructor).newInstance(converted);
     }
   }
   throw new MappingException("No matching constructor found on type " + type + " for record "+ this);

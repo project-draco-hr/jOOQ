@@ -5,7 +5,7 @@
       result=Reflect.on(HashMap.class).create().as(type);
     }
  else {
-      result=Reflect.accessible(type.getDeclaredConstructor()).newInstance();
+      result=accessible(type.getDeclaredConstructor()).newInstance();
     }
     return intoMutablePOJO(type,result);
   }

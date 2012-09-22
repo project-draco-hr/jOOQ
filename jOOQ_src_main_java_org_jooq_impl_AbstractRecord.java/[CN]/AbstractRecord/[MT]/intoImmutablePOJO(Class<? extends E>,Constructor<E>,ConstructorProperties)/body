@@ -1,0 +1,33 @@
+{
+  boolean useAnnotations=hasColumnAnnotations(type);
+  List<String> propertyNames=Arrays.asList(properties.value());
+  Class<?>[] parameterTypes=constructor.getParameterTypes();
+  Object[] parameterValues=new Object[parameterTypes.length];
+  for (  Field<?> field : getFields()) {
+    List<java.lang.reflect.Field> members;
+    Method method;
+    if (useAnnotations) {
+      members=getAnnotatedMembers(type,field.getName());
+      method=getAnnotatedGetter(type,field.getName());
+    }
+ else {
+      members=getMatchingMembers(type,field.getName());
+      method=getMatchingGetter(type,field.getName());
+    }
+    for (    java.lang.reflect.Field member : members) {
+      int index=propertyNames.indexOf(member.getName());
+      if (index >= 0) {
+        parameterValues[index]=getValue(field);
+      }
+    }
+    if (method != null) {
+      String name=getPropertyName(method.getName());
+      int index=propertyNames.indexOf(name);
+      if (index >= 0) {
+        parameterValues[index]=getValue(field);
+      }
+    }
+  }
+  Object[] converted=Util.convert(parameterTypes,parameterValues);
+  return accessible(constructor).newInstance(converted);
+}
