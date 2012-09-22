@@ -1,6 +1,10 @@
 {
   many=true;
-  execute();
-  many=false;
+  try {
+    execute();
+  }
+  finally {
+    many=false;
+  }
   return results;
 }
