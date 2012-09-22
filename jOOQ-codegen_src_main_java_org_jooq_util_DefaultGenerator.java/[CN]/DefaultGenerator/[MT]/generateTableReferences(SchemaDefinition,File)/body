@@ -18,5 +18,5 @@
   printPrivateConstructor(out,"Tables");
   out.println("}");
   out.close();
-  watch.splitInfo("Table references generated");
+  watch.splitInfo("Table refs generated");
 }
