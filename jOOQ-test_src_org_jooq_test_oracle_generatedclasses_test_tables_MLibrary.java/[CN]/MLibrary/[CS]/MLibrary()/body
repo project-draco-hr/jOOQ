@@ -1,0 +1,3 @@
+{
+  super("M_LIBRARY",org.jooq.test.oracle.generatedclasses.test.Test.TEST);
+}
