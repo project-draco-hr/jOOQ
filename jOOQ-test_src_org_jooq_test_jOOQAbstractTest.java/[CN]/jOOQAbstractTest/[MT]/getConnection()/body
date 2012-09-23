@@ -3,6 +3,7 @@
     connectionInitialised=true;
     connection=getConnection0(null,null);
     if (RUN_CONSOLE_IN_PROCESS) {
+      create().selectOne().fetch();
       try {
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         Debugger debugger=DebuggerFactory.remoteDebugger("127.0.0.1",DEBUGGER_PORT);

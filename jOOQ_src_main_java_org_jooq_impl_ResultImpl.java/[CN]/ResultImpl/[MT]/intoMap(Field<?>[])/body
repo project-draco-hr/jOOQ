@@ -2,14 +2,15 @@
   if (keys == null) {
     keys=new Field[0];
   }
-  Map<List<?>,R> map=new LinkedHashMap<List<?>,R>();
+  Map<Record,R> map=new LinkedHashMap<Record,R>();
+  FieldList keyList=new FieldList(keys);
   for (  R record : this) {
-    List<Object> keyList=new ArrayList<Object>();
-    for (    Field<?> key : keys) {
-      keyList.add(record.getValue(key));
+    Record key=new RecordImpl(keyList);
+    for (    Field<?> field : keys) {
+      Util.setValue(key,field,record,field);
     }
-    if (map.put(keyList,record) != null) {
-      throw new InvalidResultException("Key list " + keys + " is not unique in Result for "+ this);
+    if (map.put(key,record) != null) {
+      throw new InvalidResultException("Key list " + keyList + " is not unique in Result for "+ this);
     }
   }
   return map;

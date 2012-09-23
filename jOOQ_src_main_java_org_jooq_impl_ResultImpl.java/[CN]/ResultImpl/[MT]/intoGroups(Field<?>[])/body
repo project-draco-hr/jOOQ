@@ -2,16 +2,17 @@
   if (keys == null) {
     keys=new Field[0];
   }
-  Map<List<?>,Result<R>> map=new LinkedHashMap<List<?>,Result<R>>();
+  Map<Record,Result<R>> map=new LinkedHashMap<Record,Result<R>>();
+  FieldList keyList=new FieldList(keys);
   for (  R record : this) {
-    List<Object> keyList=new ArrayList<Object>();
-    for (    Field<?> key : keys) {
-      keyList.add(record.getValue(key));
+    Record key=new RecordImpl(keyList);
+    for (    Field<?> field : keys) {
+      Util.setValue(key,field,record,field);
     }
-    Result<R> result=map.get(keyList);
+    Result<R> result=map.get(key);
     if (result == null) {
       result=new ResultImpl<R>(getConfiguration(),this.fields);
-      map.put(keyList,result);
+      map.put(key,result);
     }
     result.add(record);
   }

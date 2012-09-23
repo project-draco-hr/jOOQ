@@ -1,5 +1,4 @@
 {
-  SERVER.close();
   log.info("QUITTING");
   if (connection.getClass().getPackage().getName().contains("jtds")) {
     log.info("RUNNING","dump tran TEST with truncate_only");

@@ -5,7 +5,7 @@
     create().selectOne().fetch();
     Thread.sleep(1000);
   }
-  Debugger remote=remoteDebugger("localhost",5555);
+  Debugger remote=remoteDebugger("localhost",jOOQAbstractTest.DEBUGGER_PORT);
   Debugger local=localDebugger();
   try {
     runnable.run(remote,local);
