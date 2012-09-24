@@ -1,4 +1,24 @@
 {
+  if (schema() != null) {
+    List<Schema> schemata=Arrays.asList(context.executor().schemata());
+    assertTrue(schemata.contains(schema()));
+  }
+  List<Table<?>> tables1=Arrays.asList(context.executor().tables());
+  assertTrue(tables1.contains(TBook()));
+  assertTrue(tables1.contains(TAuthor()));
+  if (schema() != null) {
+    List<Table<?>> tables2=Arrays.asList(context.executor().tables(schema()));
+    assertTrue(tables2.contains(TBook()));
+    assertTrue(tables2.contains(TAuthor()));
+  }
+  List<Field<?>> fields1=Arrays.asList(context.executor().fields());
+  assertTrue(fields1.contains(TBook_ID()));
+  assertTrue(fields1.contains(TBook_TITLE()));
+  assertTrue(fields1.contains(TAuthor_ID()));
+  List<Field<?>> fields2=Arrays.asList(context.executor().fields(TBook()));
+  assertTrue(fields2.contains(TBook_ID()));
+  assertTrue(fields2.contains(TBook_TITLE()));
+  assertFalse(fields2.contains(TAuthor_ID()));
   Result<Record> result=context.executor().fetch(create().selectCount().from(TAuthor()));
   assertEquals(1,result.size());
   assertEquals(2,(int)result.get(0).getValue(0,int.class));
