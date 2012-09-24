@@ -1,0 +1,9 @@
+{
+switch (comparator) {
+case IS_DISTINCT_FROM:
+case IS_NOT_DISTINCT_FROM:
+    return new IsDistinctFrom<T>(this,nullSafe(field),comparator);
+default :
+  return new CompareCondition(this,nullSafe(field),comparator);
+}
+}
