@@ -1,7 +1,0 @@
-{
-  getQuery().addJoin(table,type);
-  joinTable=null;
-  joinPartitionBy=null;
-  joinType=null;
-  return this;
-}

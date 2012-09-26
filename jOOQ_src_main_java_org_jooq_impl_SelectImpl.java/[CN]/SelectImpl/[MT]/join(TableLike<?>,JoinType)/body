@@ -1,0 +1,24 @@
+{
+switch (type) {
+case CROSS_JOIN:
+case NATURAL_JOIN:
+case NATURAL_LEFT_OUTER_JOIN:
+case NATURAL_RIGHT_OUTER_JOIN:
+{
+      getQuery().addJoin(table,type);
+      joinTable=null;
+      joinPartitionBy=null;
+      joinType=null;
+      return this;
+    }
+default :
+{
+    conditionStep=ConditionStep.ON;
+    joinTable=table;
+    joinType=type;
+    joinPartitionBy=null;
+    joinConditions=null;
+    return this;
+  }
+}
+}

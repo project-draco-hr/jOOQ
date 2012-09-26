@@ -1,8 +1,0 @@
-{
-  conditionStep=ConditionStep.ON;
-  joinTable=table;
-  joinType=type;
-  joinPartitionBy=null;
-  joinConditions=null;
-  return this;
-}
