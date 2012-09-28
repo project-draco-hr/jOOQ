@@ -3,7 +3,7 @@
     for (    Breakpoint breakpoint : matcher.breakpoints()) {
       BreakpointListener listener=breakpoint.listener();
       if (listener != null) {
-        QueryExecutor executor=new QueryExecutorImpl(ctx);
+        Executor executor=new ExecutorImpl(null,ctx);
         BREAKPOINT_EXECUTORS.set(executor);
         try {
           HitContext hitContext=new HitContextImpl(ctx.query(),executor);

@@ -4,8 +4,7 @@
     result.add(new StopWatchListener());
     result.add(new LoggerListener());
   }
-  ExecuteDebugging debugging=configuration.getSettings().getExecuteDebugging();
-  if (SERVER == debugging || LOCAL == debugging) {
+  if (DebuggerAPI.debug()) {
     result.add(new DebugListener());
   }
   for (  String listener : configuration.getSettings().getExecuteListeners()) {

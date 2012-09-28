@@ -1,8 +1,6 @@
 {
   try {
-synchronized (LOCK) {
-      serverSocket=openServerCommunicationChannel(port);
-    }
+    socket=openServerCommunicationChannel(port);
   }
  catch (  Exception e) {
     throw new RuntimeException(e);

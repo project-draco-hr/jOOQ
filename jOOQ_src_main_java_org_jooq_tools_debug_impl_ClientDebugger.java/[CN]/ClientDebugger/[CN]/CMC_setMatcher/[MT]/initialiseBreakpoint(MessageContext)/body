@@ -2,10 +2,10 @@
   for (  final Breakpoint breakpoint : matcher.breakpoints()) {
     if (breakpointListener == null) {
       breakpointListener=new BreakpointListener(){
-        @Override public Step before(        HitContext hitContext){
+        @Override public final Step before(        HitContext hitContext){
           return context.getServerDebugger().getCommunicationInterface().syncSend(new CMS_step(true,breakpoint.getId(),(HitContextImpl)hitContext));
         }
-        @Override public Step after(        HitContext hitContext){
+        @Override public final Step after(        HitContext hitContext){
           return context.getServerDebugger().getCommunicationInterface().syncSend(new CMS_step(false,breakpoint.getId(),(HitContextImpl)hitContext));
         }
       }

@@ -1,13 +1,8 @@
 {
-synchronized (LOCK) {
-    if (serverSocket != null) {
-      try {
-        serverSocket.close();
-      }
- catch (      IOException e) {
-        e.printStackTrace();
-      }
-      serverSocket=null;
-    }
+  try {
+    socket.close();
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
   }
 }

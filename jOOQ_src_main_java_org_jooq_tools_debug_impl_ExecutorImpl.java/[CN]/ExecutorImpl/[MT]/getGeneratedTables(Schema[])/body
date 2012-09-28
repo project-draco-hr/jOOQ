@@ -1,0 +1,7 @@
+{
+  List<Table<?>> result=new ArrayList<Table<?>>();
+  for (  Schema schema : nonEmpty(filter,schemata)) {
+    result.addAll(schema.getTables());
+  }
+  return result.toArray(new Table[result.size()]);
+}

@@ -1,0 +1,8 @@
+{
+  if (schemata.length != 0) {
+    return getGeneratedTables(filter);
+  }
+ else {
+    return getJDBCTables(filter);
+  }
+}

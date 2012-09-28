@@ -5,8 +5,8 @@
  * Generated UID
  */
     private static final long serialVersionUID=549633622817329607L;
-    @Override public void remove(){
-synchronized (ClientDebugger.this) {
+    @Override public final void remove(){
+synchronized (matchers) {
         matchers.remove(result);
       }
       comm.asyncSend(new CMC_removeMatcher(result.getId()));
@@ -16,7 +16,7 @@ synchronized (ClientDebugger.this) {
     }
   }
 );
-synchronized (ClientDebugger.this) {
+synchronized (matchers) {
     matchers.add(result);
   }
   return result;

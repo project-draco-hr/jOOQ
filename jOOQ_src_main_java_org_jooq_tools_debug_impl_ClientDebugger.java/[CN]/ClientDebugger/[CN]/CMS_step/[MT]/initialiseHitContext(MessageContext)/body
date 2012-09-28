@@ -1,23 +1,6 @@
 {
   if (executor == null) {
-    executor=new QueryExecutor(){
-      @Override public Schema[] schemata(){
-        return context.getClientDebugger().getCommunicationInterface().syncSend(new CMC_schemata());
-      }
-      @Override public Table<?>[] tables(      Schema... schemata){
-        return context.getClientDebugger().getCommunicationInterface().syncSend(new CMC_tables(schemata));
-      }
-      @Override public Field<?>[] fields(      Table<?>... tables){
-        return context.getClientDebugger().getCommunicationInterface().syncSend(new CMC_fields(tables));
-      }
-      @Override public <R extends Record>Result<R> fetch(      ResultQuery<R> query){
-        return context.getClientDebugger().getCommunicationInterface().syncSend(new CMC_fetch<R>(query));
-      }
-      @Override public int execute(      Query query){
-        return context.getClientDebugger().getCommunicationInterface().syncSend(new CMC_execute(query));
-      }
-    }
-;
+    executor=new ClientExecutor(null,context.getClientDebugger().getCommunication());
   }
   hitContext.executor(executor);
 }

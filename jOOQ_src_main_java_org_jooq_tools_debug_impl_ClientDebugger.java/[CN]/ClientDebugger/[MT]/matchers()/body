@@ -1,3 +1,5 @@
 {
-  return matchers.toArray(new Matcher[matchers.size()]);
+synchronized (matchers) {
+    return matchers.toArray(new Matcher[matchers.size()]);
+  }
 }

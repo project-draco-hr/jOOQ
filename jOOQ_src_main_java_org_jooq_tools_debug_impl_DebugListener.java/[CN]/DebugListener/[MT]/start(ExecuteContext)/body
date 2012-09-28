@@ -1,5 +1,0 @@
-{
-  if (ctx.getSettings().getExecuteDebugging() == SERVER) {
-    Server.initialise(ctx.getSettings().getExecuteDebuggingPort());
-  }
-}

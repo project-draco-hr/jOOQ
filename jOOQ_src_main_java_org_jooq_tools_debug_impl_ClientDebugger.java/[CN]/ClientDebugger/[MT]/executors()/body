@@ -1,0 +1,8 @@
+{
+  String[] names=comm.syncSend(new CMC_executorNames());
+  Executor[] executors=new Executor[names.length];
+  for (int i=0; i < names.length; i++) {
+    executors[i]=new ClientExecutor(names[i],comm);
+  }
+  return executors;
+}

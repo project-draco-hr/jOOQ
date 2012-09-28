@@ -1,0 +1,27 @@
+{
+  if (schema() != null) {
+    DebuggerAPI.setExecutor("GENERATED",create(),schema());
+  }
+  DebuggerAPI.setExecutor("META",create());
+  try {
+    run(new DebugTestRunnable(){
+      @Override public void run(      Debugger remote,      Debugger local) throws Exception {
+        Executor[] generated={remote.executor("GENERATED"),local.executor("GENERATED")};
+        Executor[] meta={remote.executor("META"),local.executor("META")};
+        for (        Executor exe : generated) {
+          assertEquals("GENERATED",exe.getName());
+          executorTests(exe);
+        }
+        for (        Executor exe : meta) {
+          assertEquals("META",exe.getName());
+          executorTests(exe);
+        }
+      }
+    }
+);
+  }
+  finally {
+    DebuggerAPI.removeExecutor("GENERATED");
+    DebuggerAPI.removeExecutor("META");
+  }
+}

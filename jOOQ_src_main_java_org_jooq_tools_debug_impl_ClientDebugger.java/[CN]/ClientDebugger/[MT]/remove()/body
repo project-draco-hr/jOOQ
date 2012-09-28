@@ -1,3 +1,4 @@
 {
   comm.close();
+  comm=null;
 }

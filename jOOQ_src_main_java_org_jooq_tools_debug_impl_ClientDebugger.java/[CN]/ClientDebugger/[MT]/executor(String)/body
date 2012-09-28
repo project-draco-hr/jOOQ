@@ -1,0 +1,8 @@
+{
+  for (  Executor executor : executors()) {
+    if (name.equals(executor.getName())) {
+      return executor;
+    }
+  }
+  return null;
+}

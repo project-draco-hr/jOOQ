@@ -1,0 +1,6 @@
+{
+  if (INSTANCE != null) {
+    INSTANCE.close();
+  }
+  INSTANCE=null;
+}

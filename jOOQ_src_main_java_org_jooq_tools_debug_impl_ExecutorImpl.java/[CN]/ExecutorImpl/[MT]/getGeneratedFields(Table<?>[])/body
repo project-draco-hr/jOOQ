@@ -1,0 +1,7 @@
+{
+  List<Field<?>> result=new ArrayList<Field<?>>();
+  for (  Table<?> table : nonEmpty(filter,getGeneratedTables(schemata))) {
+    result.addAll(table.getFields());
+  }
+  return result.toArray(new Field[result.size()]);
+}

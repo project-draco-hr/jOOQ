@@ -1,0 +1,18 @@
+{
+  filter=(filter != null && filter.length > 0) ? filter : new Table[]{null};
+  List<Field<?>> result=new ArrayList<Field<?>>();
+  try {
+    DatabaseMetaData meta=meta();
+    for (    Table<?> table : filter) {
+      String schemaName=(table != null && table.getSchema() != null) ? table.getSchema().getName() : null;
+      String tableName=(table != null) ? table.getName() : null;
+      for (      Record record : create().fetch(meta.getColumns(null,schemaName,tableName,null))) {
+        result.add(fieldByName(record.getValue(1,String.class),record.getValue(2,String.class),record.getValue(3,String.class)));
+      }
+    }
+    return result.toArray(new Field[result.size()]);
+  }
+ catch (  SQLException e) {
+    throw new DataAccessException("Cannot fetch fields",e);
+  }
+}
