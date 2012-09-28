@@ -1,0 +1,6 @@
+{
+  B book=create().selectFrom(TBook()).where(TBook_ID().eq(1)).fetchOne();
+  assertFalse(book.changed());
+  book.setValue(TBook_TITLE(),"abc");
+  assertTrue(book.changed());
+}

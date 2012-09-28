@@ -5,11 +5,15 @@
   assertEquals(book.getValue(TBook_ID()),orig.getValue(TBook_ID()));
   assertEquals(book.getValue(TBook_TITLE()),orig.getValue(TBook_TITLE()));
   book.setValue(TBook_TITLE(),"abc");
+  assertFalse(book.equals(orig));
+  assertFalse(book.equals(book.original()));
   assertEquals("abc",book.getValue(TBook_TITLE()));
   assertEquals(BOOK_TITLES.get(0),orig.getValue(TBook_TITLE()));
   book=orig;
   orig=orig.original();
   book.setValue(TBook_TITLE(),"abc");
+  assertFalse(book.equals(orig));
+  assertFalse(book.equals(book.original()));
   assertEquals("abc",book.getValue(TBook_TITLE()));
   assertEquals(BOOK_TITLES.get(0),orig.getValue(TBook_TITLE()));
 }
