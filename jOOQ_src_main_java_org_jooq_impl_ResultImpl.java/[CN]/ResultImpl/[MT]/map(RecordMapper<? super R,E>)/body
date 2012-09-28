@@ -1,0 +1,7 @@
+{
+  List<E> result=new ArrayList<E>();
+  for (  R record : this) {
+    result.add(mapper.map(record));
+  }
+  return result;
+}
