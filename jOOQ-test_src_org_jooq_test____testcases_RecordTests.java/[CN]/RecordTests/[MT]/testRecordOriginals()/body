@@ -1,0 +1,9 @@
+{
+  B book=create().selectFrom(TBook()).where(TBook_ID().eq(1)).fetchOne();
+  assertEquals(book,book.original());
+  assertEquals(book.getValue(TBook_ID()),book.original().getValue(TBook_ID()));
+  assertEquals(book.getValue(TBook_TITLE()),book.original().getValue(TBook_TITLE()));
+  book.setValue(TBook_TITLE(),"abc");
+  assertEquals("abc",book.getValue(TBook_TITLE()));
+  assertEquals(BOOK_TITLES.get(0),book.original().getValue(TBook_TITLE()));
+}
