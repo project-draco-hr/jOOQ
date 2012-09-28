@@ -5,15 +5,22 @@
       for (int i=0; i < size(); i++) {
         final Object thisValue=getValue(i);
         final Object thatValue=that.getValue(i);
-        if (thisValue == null || thatValue == null) {
-          return thisValue == thatValue;
+        if (thisValue == null && thatValue == null) {
+          continue;
+        }
+ else         if (thisValue == null || thatValue == null) {
+          return false;
         }
  else         if (thisValue.getClass().isArray() && thatValue.getClass().isArray()) {
           if (thisValue.getClass() == byte[].class && thatValue.getClass() == byte[].class) {
-            return Arrays.equals((byte[])thisValue,(byte[])thatValue);
+            if (!Arrays.equals((byte[])thisValue,(byte[])thatValue)) {
+              return false;
+            }
           }
  else           if (!thisValue.getClass().getComponentType().isPrimitive() && !thatValue.getClass().getComponentType().isPrimitive()) {
-            return Arrays.equals((Object[])thisValue,(Object[])thatValue);
+            if (!Arrays.equals((Object[])thisValue,(Object[])thatValue)) {
+              return false;
+            }
           }
  else {
             return false;
