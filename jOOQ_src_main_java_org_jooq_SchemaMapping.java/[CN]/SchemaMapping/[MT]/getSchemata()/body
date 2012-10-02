@@ -1,6 +1,3 @@
 {
-  if (schemata == null) {
-    schemata=new HashMap<String,Schema>();
-  }
   return schemata;
 }
