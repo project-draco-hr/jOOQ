@@ -1,3 +1,10 @@
 {
+  if (tables == null) {
+synchronized (this) {
+      if (tables == null) {
+        tables=new HashMap<String,Table<?>>();
+      }
+    }
+  }
   return tables;
 }
