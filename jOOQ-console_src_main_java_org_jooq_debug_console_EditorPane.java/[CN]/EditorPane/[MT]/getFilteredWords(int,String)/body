@@ -1,7 +1,7 @@
 {
   List<CompletionCandidate> candidateList=new ArrayList<CompletionCandidate>();
   if (candidateList.isEmpty()) {
-    QueryExecutor queryExecutor=queryExecutorCreator.createQueryExecutor();
+    QueryExecutor queryExecutor=queryExecutorCreator.createQueryExecutor(executionContextName);
     for (    String s : queryExecutor.getTableNames()) {
       candidateList.add(new CompletionCandidate(KeyWordType.TABLE,s));
     }

@@ -120,7 +120,9 @@ setJMenuBar(menuBar);
 mainTabbedPane=new JTabbedPane();
 String title="jOOQ Console";
 setTitle(title);
-if (debugger.isExecutionSupported()) {
+String[] executionContextNames=debugger.getExecutionContextNames();
+boolean isExecutionSupported=executionContextNames.length > 0;
+if (isExecutionSupported) {
 addEditorTab();
 }
 if (isShowingLoggingTab) {
@@ -133,7 +135,7 @@ contentPane.add(mainTabbedPane,BorderLayout.CENTER);
 setLocationByPlatform(true);
 setSize(800,600);
 addNotify();
-if (debugger.isExecutionSupported()) {
+if (isExecutionSupported) {
 editorsPane.adjustDefaultFocus();
 }
 addWindowListener(new WindowAdapter(){

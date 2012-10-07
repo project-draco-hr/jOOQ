@@ -1,8 +1,0 @@
-{
-synchronized (IS_EXECUTION_SUPPORTED_LOCK) {
-    if (isExecutionSupported == null) {
-      isExecutionSupported=comm.syncSend(new CMS_isExecutionSupported());
-    }
-  }
-  return Boolean.TRUE.equals(isExecutionSupported);
-}

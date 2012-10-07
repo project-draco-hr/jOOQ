@@ -92,7 +92,7 @@
   adjustStates();
   tabbedPane.addTab("Execution",breakpointHitExecutionPane);
   tabbedPane.addTab("Editor",new EditorsPane(new QueryExecutorCreator(){
-    @Override public QueryExecutor createQueryExecutor(){
+    @Override public QueryExecutor createQueryExecutor(    String executionContextName){
       return debugger.createBreakpointHitStatementExecutor(hit.getThreadID());
     }
   }

@@ -1,5 +1,5 @@
 {
-  ClientStatementExecutor statementExecutor=new ClientStatementExecutor(this,threadID);
+  ClientStatementExecutor statementExecutor=new ClientStatementExecutor(this,null,threadID);
 synchronized (threadIDToStatementExecutorList) {
     List<QueryExecutor> list=threadIDToStatementExecutorList.get(threadID);
     if (list == null) {
