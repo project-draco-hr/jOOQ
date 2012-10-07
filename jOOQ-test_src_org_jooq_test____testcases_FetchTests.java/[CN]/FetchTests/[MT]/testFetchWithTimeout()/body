@@ -1,0 +1,8 @@
+{
+  try {
+    create().selectOne().from(TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook()).queryTimeout(1).fetch();
+    fail();
+  }
+ catch (  DataAccessException expected) {
+  }
+}
