@@ -15,7 +15,7 @@ synchronized (STATEMENT_EXECUTOR_CREATOR_LOCK) {
   }
   QueryExecution queryExecution;
   try {
-    queryExecution=queryExecutor.execute(sql,isUsingMaxRowCount ? MAX_ROW_COUNT : Integer.MAX_VALUE,maxDisplayedRowCount);
+    queryExecution=queryExecutor.execute(sql,isUsingMaxRowCount ? MAX_ROW_COUNT : Integer.MAX_VALUE,maxDisplayedRowCount,isUpdatable);
   }
   finally {
     SwingUtilities.invokeLater(new Runnable(){

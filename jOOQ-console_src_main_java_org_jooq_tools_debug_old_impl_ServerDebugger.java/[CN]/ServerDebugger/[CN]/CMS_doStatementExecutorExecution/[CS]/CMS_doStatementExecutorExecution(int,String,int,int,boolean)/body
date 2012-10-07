@@ -3,4 +3,5 @@
   this.sql=sql;
   this.maxRSRowsParsing=maxRSRowsParsing;
   this.retainParsedRSDataRowCountThreshold=retainParsedRSDataRowCountThreshold;
+  this.isUpdatable=isUpdatable;
 }

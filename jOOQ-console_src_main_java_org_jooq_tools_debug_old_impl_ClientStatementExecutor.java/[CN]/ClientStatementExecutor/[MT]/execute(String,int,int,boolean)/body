@@ -1,0 +1,3 @@
+{
+  return debugger.getCommunicationInterface().syncSend(new CMS_doStatementExecutorExecution(id,sql,maxRSRowsParsing,retainParsedRSDataRowCountThreshold,isUpdatable));
+}
