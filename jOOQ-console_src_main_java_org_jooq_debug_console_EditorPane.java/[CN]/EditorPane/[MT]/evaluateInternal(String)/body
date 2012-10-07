@@ -5,9 +5,10 @@
   SwingUtilities.invokeLater(new Runnable(){
     @Override public void run(){
       final int maxDisplayedRowCount=((Number)displayedRowCountField.getValue()).intValue();
+      final boolean isUpdatable=isUsingMaxRowCount;
       Thread evaluationThread=new Thread("SQLConsole - Evaluation"){
         @Override public void run(){
-          evaluate_unrestricted_nothread(sql,maxDisplayedRowCount);
+          evaluate_unrestricted_nothread(sql,maxDisplayedRowCount,isUpdatable);
         }
       }
 ;

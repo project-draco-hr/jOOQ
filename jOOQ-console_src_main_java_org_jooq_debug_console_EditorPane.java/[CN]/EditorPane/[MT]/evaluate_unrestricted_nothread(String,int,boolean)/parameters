@@ -1,2 +1,3 @@
 String sql
 int maxDisplayedRowCount
+boolean isUpdatable

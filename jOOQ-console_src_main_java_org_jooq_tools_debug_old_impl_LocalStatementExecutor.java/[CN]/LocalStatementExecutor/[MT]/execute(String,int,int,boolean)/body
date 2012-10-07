@@ -1,6 +1,8 @@
 {
+  boolean isReadOnly=executorContext.isReadOnly();
+  isUpdatable=!isReadOnly && isUpdatable;
   boolean isAllowed=true;
-  if (executorContext.isReadOnly()) {
+  if (isReadOnly) {
     String simplifiedSql=sql.replaceAll("'[^']*'","");
 switch (QueryType.detectType(simplifiedSql)) {
 case SELECT:
@@ -29,7 +31,12 @@ evaluationThread=Thread.currentThread();
 long start=System.currentTimeMillis();
 try {
 conn=executorContext.getConnection();
+if (isUpdatable) {
 stmt=conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+}
+ else {
+stmt=conn.createStatement(ResultSet.TYPE_FORWARD_ONLY,ResultSet.CONCUR_READ_ONLY);
+}
 start=System.currentTimeMillis();
 if (evaluationThread != Thread.currentThread()) {
 long executionDuration=System.currentTimeMillis() - start;
@@ -198,7 +205,7 @@ rowDataList.clear();
 }
 }
 final long resultSetParsingDuration=System.currentTimeMillis() - rsStart;
-queryExecutionResult=new LocalStatementExecutionResultSetResult(rs,columnNames,typeInfos,columnClasses,rowDataList.toArray(new Object[0][]),rowCount,resultSetParsingDuration,retainParsedRSDataRowCountThreshold,executorContext.isReadOnly());
+queryExecutionResult=new LocalStatementExecutionResultSetResult(rs,columnNames,typeInfos,columnClasses,rowDataList.toArray(new Object[0][]),rowCount,resultSetParsingDuration,retainParsedRSDataRowCountThreshold,isReadOnly);
 }
  else {
 final int updateCount=stmt.getUpdateCount();
@@ -225,7 +232,7 @@ long executionDuration=System.currentTimeMillis() - start;
 return new QueryExecution(executionDuration,new QueryExecutionMessageResult(e));
 }
  finally {
-if (executorContext.isReadOnly()) {
+if (isReadOnly) {
 closeConnection();
 }
 }

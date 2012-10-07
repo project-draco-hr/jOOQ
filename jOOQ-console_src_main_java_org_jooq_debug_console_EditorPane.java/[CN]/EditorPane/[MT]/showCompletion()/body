@@ -43,7 +43,9 @@ case KeyEvent.VK_UP:
 case KeyEvent.VK_DOWN:
 case KeyEvent.VK_HOME:
 case KeyEvent.VK_END:
+return;
 case KeyEvent.VK_ESCAPE:
+w.setVisible(false);
 return;
 case KeyEvent.VK_ENTER:
 editorTextArea.replaceRange(((CompletionCandidate)jList.getSelectedValue()).toString(),getWordStart(),editorTextArea.getCaretPosition());
