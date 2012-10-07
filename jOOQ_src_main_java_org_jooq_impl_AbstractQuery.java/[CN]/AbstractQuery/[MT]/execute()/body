@@ -17,6 +17,9 @@
       listener.renderEnd(ctx);
       listener.prepareStart(ctx);
       prepare(ctx);
+      if (timeout != 0) {
+        ctx.statement().setQueryTimeout(timeout);
+      }
       listener.prepareEnd(ctx);
       if (executePreparedStatements(c.getSettings())) {
         listener.bindStart(ctx);

@@ -1,0 +1,5 @@
+{
+  Result<B> books=create().selectFrom(TBook()).orderBy(TBook_ID()).maxRows(2).fetch();
+  assertEquals(2,books.size());
+  assertEquals(Arrays.asList(1,2),books.getValues(TBook_ID()));
+}
