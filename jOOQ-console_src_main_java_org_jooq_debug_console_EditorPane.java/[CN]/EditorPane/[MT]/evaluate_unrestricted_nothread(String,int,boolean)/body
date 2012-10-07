@@ -10,7 +10,7 @@
 );
   QueryExecutor queryExecutor;
 synchronized (STATEMENT_EXECUTOR_CREATOR_LOCK) {
-    queryExecutor=queryExecutorCreator.createQueryExecutor();
+    queryExecutor=queryExecutorCreator.createQueryExecutor(executionContextName);
     lastStatementExecutor=queryExecutor;
   }
   QueryExecution queryExecution;

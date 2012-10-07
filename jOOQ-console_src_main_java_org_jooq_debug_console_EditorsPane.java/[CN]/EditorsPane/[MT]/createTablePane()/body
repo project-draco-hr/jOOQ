@@ -1,5 +1,5 @@
 {
-  final String[] tableNames=queryExecutorCreator.createQueryExecutor().getTableNames();
+  final String[] tableNames=queryExecutorCreator.createQueryExecutor("default").getTableNames();
   final JList tableNamesJList=new JList(tableNames);
   tableNamesJList.addMouseListener(new MouseAdapter(){
     @Override public void mousePressed(    MouseEvent e){

@@ -1,4 +1,5 @@
 {
   this.id=id;
+  this.executionContextName=executionContextName;
   this.breakpointHitThreadID=breakpointHitThreadID;
 }

@@ -1,7 +1,7 @@
 {
   LocalStatementExecutor statementExecutor;
   if (breakpointHitThreadID == null) {
-    statementExecutor=createQueryExecutor();
+    statementExecutor=createQueryExecutor(executionContextName);
   }
  else {
     statementExecutor=createBreakpointHitStatementExecutor(breakpointHitThreadID);

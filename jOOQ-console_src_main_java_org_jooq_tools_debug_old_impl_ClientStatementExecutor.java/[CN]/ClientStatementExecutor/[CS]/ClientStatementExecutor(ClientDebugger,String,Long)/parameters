@@ -1,2 +1,3 @@
 ClientDebugger debugger
+String executionContextName
 Long breakpointHitThreadID
