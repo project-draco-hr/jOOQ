@@ -20,4 +20,19 @@
  catch (  Throwable t) {
     assertEquals(InvalidResultException.class,t.getClass());
   }
+  Map<List<?>,Object> map4=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchMap(new Field<?>[]{TBook_ID(),TBook_LANGUAGE_ID(),TBook_TITLE()},TBookPojo());
+  assertEquals(4,map4.keySet().size());
+  for (  List<?> keys : map4.keySet()) {
+    Object pojo=map4.get(keys);
+    assertEquals(keys.get(0),on(pojo).call("getId").get());
+    assertEquals(keys.get(1),on(pojo).call("getLanguageId").get());
+    assertEquals(keys.get(2),on(pojo).call("getTitle").get());
+  }
+  try {
+    create().selectFrom(TBook()).orderBy(TBook_ID()).fetchMap(new Field<?>[]{TBook_AUTHOR_ID()},TBookPojo());
+    fail("Fetching map with the non-unique key - InvalidResultException not thrown.");
+  }
+ catch (  Throwable t) {
+    assertEquals(InvalidResultException.class,t.getClass());
+  }
 }

@@ -1,0 +1,19 @@
+{
+  if (keys == null) {
+    keys=new Field[0];
+  }
+  Map<List<?>,List<E>> map=new LinkedHashMap<List<?>,List<E>>();
+  for (  R record : this) {
+    List<Object> keyValueList=new ArrayList<Object>();
+    for (    Field<?> key : keys) {
+      keyValueList.add(record.getValue(key));
+    }
+    List<E> list=map.get(keyValueList);
+    if (list == null) {
+      list=new ArrayList<E>();
+      map.put(keyValueList,list);
+    }
+    list.add(record.into(type));
+  }
+  return map;
+}
