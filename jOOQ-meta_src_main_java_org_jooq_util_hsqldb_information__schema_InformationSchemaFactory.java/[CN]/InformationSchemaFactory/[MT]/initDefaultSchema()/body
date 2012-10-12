@@ -1,3 +1,0 @@
-{
-  org.jooq.conf.SettingsTools.getRenderMapping(getSettings()).setDefaultSchema(org.jooq.util.hsqldb.information_schema.InformationSchema.INFORMATION_SCHEMA.getName());
-}

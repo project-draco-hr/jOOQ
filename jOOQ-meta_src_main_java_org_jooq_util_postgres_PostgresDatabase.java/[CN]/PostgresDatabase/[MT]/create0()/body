@@ -1,3 +1,3 @@
 {
-  return new InformationSchemaFactory(getConnection());
+  return new Factory(getConnection(),SQLDialect.POSTGRES);
 }

@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.Record>>asList(org.jooq.util.cubrid.dba.Keys.DB_SERIAL__PK_DB_SERIAL_NAME);
+}
