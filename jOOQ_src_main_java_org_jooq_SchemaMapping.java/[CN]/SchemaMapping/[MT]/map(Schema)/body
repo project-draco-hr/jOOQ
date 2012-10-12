@@ -5,16 +5,20 @@
   if (schema != null) {
     String schemaName=schema.getName();
     if (!getSchemata().containsKey(schemaName)) {
-      Schema mapped=schema;
-      for (      MappedSchema s : mapping.getSchemata()) {
-        if (schemaName.equals(s.getInput())) {
-          if (!isBlank(s.getOutput()) && !s.getOutput().equals(s.getInput())) {
-            mapped=new RenamedSchema(schema,s.getOutput());
+synchronized (this) {
+        if (!getSchemata().containsKey(schemaName)) {
+          Schema mapped=schema;
+          for (          MappedSchema s : mapping.getSchemata()) {
+            if (schemaName.equals(s.getInput())) {
+              if (!isBlank(s.getOutput()) && !s.getOutput().equals(s.getInput())) {
+                mapped=new RenamedSchema(schema,s.getOutput());
+              }
+              break;
+            }
           }
-          break;
+          getSchemata().put(schemaName,mapped);
         }
       }
-      getSchemata().put(schemaName,mapped);
     }
     result=getSchemata().get(schemaName);
     if (result.getName().equals(mapping.getDefaultSchema())) {

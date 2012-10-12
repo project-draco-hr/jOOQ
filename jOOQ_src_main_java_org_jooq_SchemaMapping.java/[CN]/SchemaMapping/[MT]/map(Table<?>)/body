@@ -7,20 +7,24 @@
     String tableName=table.getName();
     String key=(schema == null) ? tableName : (schemaName + "." + tableName);
     if (!getTables().containsKey(key)) {
-      Table<?> mapped=table;
-      schemaLoop:       for (      MappedSchema s : mapping.getSchemata()) {
-        if (schemaName.equals(s.getInput())) {
-          for (          MappedTable t : s.getTables()) {
-            if (tableName.equals(t.getInput())) {
-              if (!isBlank(t.getOutput()) && !t.getOutput().equals(t.getInput())) {
-                mapped=new RenamedTable(table,t.getOutput());
+synchronized (this) {
+        if (!getTables().containsKey(key)) {
+          Table<?> mapped=table;
+          schemaLoop:           for (          MappedSchema s : mapping.getSchemata()) {
+            if (schemaName.equals(s.getInput())) {
+              for (              MappedTable t : s.getTables()) {
+                if (tableName.equals(t.getInput())) {
+                  if (!isBlank(t.getOutput()) && !t.getOutput().equals(t.getInput())) {
+                    mapped=new RenamedTable(table,t.getOutput());
+                  }
+                  break schemaLoop;
+                }
               }
-              break schemaLoop;
             }
           }
+          getTables().put(key,mapped);
         }
       }
-      getTables().put(key,mapped);
     }
     result=getTables().get(key);
   }
