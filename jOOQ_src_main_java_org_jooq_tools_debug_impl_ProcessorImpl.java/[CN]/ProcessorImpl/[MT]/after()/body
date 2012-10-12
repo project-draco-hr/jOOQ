@@ -1,3 +1,0 @@
-{
-  return after.toArray(new Action[after.size()]);
-}

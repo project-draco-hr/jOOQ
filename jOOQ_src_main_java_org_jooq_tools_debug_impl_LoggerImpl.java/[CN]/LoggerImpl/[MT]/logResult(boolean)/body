@@ -1,7 +1,0 @@
-{
-  if (logResult != l) {
-    logResult=l;
-    apply();
-  }
-  return this;
-}

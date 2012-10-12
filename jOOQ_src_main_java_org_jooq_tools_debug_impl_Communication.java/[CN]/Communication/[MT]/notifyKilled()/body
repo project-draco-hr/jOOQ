@@ -1,5 +1,0 @@
-{
-  isOpen=false;
-  messagingInterface=null;
-  processClosed();
-}

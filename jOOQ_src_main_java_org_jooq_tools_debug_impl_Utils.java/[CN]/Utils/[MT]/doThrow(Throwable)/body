@@ -1,3 +1,0 @@
-{
-  Utils.<RuntimeException>doThrow0(t);
-}

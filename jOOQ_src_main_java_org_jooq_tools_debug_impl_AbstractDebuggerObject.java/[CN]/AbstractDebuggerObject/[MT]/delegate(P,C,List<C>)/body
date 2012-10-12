@@ -1,7 +1,0 @@
-{
-synchronized (parent) {
-    child.setDelegate(new Delegate<P,C>(parent,child,siblings));
-    siblings.add(child);
-  }
-  return child;
-}

@@ -1,7 +1,0 @@
-{
-  if (listener != l) {
-    listener=l;
-    apply();
-  }
-  return this;
-}

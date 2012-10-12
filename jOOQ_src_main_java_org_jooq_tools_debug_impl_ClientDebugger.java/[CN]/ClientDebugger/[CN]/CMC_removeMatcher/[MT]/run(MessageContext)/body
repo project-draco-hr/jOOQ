@@ -1,8 +1,0 @@
-{
-  for (  Matcher m : context.getClientDebugger().matchers) {
-    if (m.getId().equals(matcher)) {
-      context.getServerDebugger().removeMatcher(m);
-    }
-  }
-  return null;
-}

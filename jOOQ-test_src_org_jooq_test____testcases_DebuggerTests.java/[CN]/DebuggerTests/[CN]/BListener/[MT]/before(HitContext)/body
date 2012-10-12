@@ -1,4 +1,0 @@
-{
-  executorTests(context.executor());
-  return Step.STEP;
-}

@@ -1,4 +1,0 @@
-{
-  if (!hasDebuggers)   return;
-  startPrepareTime=System.nanoTime();
-}

@@ -1,3 +1,0 @@
-{
-  System.err.println("[" + (isClient ? "client" : "server") + "] Failed messaging: "+ message);
-}

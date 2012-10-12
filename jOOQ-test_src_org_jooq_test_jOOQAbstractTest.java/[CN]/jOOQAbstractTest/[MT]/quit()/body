@@ -16,5 +16,4 @@
   }
   log.info("---------------");
   log.info("Total",total);
-  DebuggerAPI.stopServer();
 }

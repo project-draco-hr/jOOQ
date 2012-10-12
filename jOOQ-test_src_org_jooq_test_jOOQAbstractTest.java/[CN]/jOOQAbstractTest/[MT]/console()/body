@@ -1,4 +1,0 @@
-{
-  DebuggerAPI.startServer(DEBUGGER_PORT);
-  DebuggerAPI.debug(true);
-}

@@ -1,4 +1,0 @@
-{
-  create().attach(query);
-  return query.fetch();
-}

@@ -1,6 +1,0 @@
-{
-  if (executor == null) {
-    executor=new ClientExecutor(null,context.getClientDebugger().getCommunication());
-  }
-  hitContext.executor(executor);
-}

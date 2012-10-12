@@ -1,7 +1,0 @@
-{
-  ExecutorImpl result=new ExecutorImpl(name,configuration,schemata);
-synchronized (EXECUTORS) {
-    EXECUTORS.put(name,result);
-  }
-  return result;
-}

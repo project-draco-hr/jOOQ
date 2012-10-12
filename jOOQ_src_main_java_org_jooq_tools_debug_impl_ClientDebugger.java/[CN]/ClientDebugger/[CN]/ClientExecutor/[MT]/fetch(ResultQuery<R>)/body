@@ -1,3 +1,0 @@
-{
-  return comm.syncSend(new CMC_fetch<R>(name,query));
-}

@@ -1,3 +1,0 @@
-{
-  return (filter != null && filter.length > 0) ? filter : fallback;
-}

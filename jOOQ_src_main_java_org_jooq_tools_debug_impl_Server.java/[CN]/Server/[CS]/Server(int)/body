@@ -1,8 +1,0 @@
-{
-  try {
-    socket=openServerCommunicationChannel(port);
-  }
- catch (  Exception e) {
-    throw new RuntimeException(e);
-  }
-}

@@ -1,4 +1,0 @@
-{
-  comm.close();
-  comm=null;
-}

@@ -1,7 +1,0 @@
-{
-  this.queryLogId=queryLogId;
-  this.id=NEXT_ID.getAndIncrement();
-  this.fetchTime=fetchTime;
-  this.rows=rows;
-  this.columns=columns;
-}

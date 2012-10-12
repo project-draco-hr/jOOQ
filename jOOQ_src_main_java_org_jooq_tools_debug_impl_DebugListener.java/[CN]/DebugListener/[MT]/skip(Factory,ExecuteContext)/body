@@ -1,9 +1,0 @@
-{
-  try {
-    ctx.statement().close();
-    ctx.statement(ctx.configuration().getConnection().prepareStatement(create.selectOne().getSQL()));
-  }
- catch (  SQLException e) {
-    throw new DataAccessException("Cannot prepare skipping statement",e);
-  }
-}

@@ -1,5 +1,0 @@
-{
-  Matcher result=new MatcherImpl();
-  setMatcher(result);
-  return result;
-}

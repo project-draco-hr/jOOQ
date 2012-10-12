@@ -1,8 +1,0 @@
-{
-  if (schemata.length != 0) {
-    return getGeneratedFields(filter);
-  }
- else {
-    return getJDBCFields(filter);
-  }
-}

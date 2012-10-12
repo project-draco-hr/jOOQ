@@ -1,3 +1,0 @@
-{
-  return matchSQL == null ? null : matchSQL.pattern();
-}

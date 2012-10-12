@@ -1,8 +1,0 @@
-{
-  if (schemata.length != 0) {
-    return getGeneratedSchemata();
-  }
- else {
-    return getJDBCSchemata();
-  }
-}

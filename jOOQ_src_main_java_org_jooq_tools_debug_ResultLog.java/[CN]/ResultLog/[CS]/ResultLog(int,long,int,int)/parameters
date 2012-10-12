@@ -1,4 +1,0 @@
-int queryLogId
-long fetchTime
-int rows
-int columns

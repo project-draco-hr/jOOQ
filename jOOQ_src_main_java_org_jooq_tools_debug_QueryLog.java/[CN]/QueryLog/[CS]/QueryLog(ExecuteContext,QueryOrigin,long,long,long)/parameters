@@ -1,5 +1,0 @@
-ExecuteContext ctx
-QueryOrigin origin
-long prepareTime
-long bindTime
-long executeTime

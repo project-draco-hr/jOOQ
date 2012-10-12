@@ -1,3 +1,0 @@
-{
-  create.execute(create.renderInlined(action.query()));
-}

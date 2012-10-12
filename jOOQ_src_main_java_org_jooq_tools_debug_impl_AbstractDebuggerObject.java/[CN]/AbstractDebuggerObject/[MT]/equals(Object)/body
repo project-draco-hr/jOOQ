@@ -1,6 +1,0 @@
-{
-  if (o instanceof AbstractDebuggerObject) {
-    return uuid.equals(((AbstractDebuggerObject)o).uuid);
-  }
-  return false;
-}

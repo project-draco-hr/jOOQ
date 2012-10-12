@@ -1,6 +1,0 @@
-{
-  initialiseLogger(context);
-  initialiseBreakpoint(context);
-  context.getServerDebugger().setMatcher(matcher);
-  return null;
-}

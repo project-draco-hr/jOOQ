@@ -1,4 +1,0 @@
-{
-  setName("Communication Interface Message Dispatcher-" + getId() + " ["+ originatorThreadID+ "]");
-  this.originatorThreadID=originatorThreadID;
-}

@@ -1,5 +1,0 @@
-{
-synchronized (EXECUTORS) {
-    return EXECUTORS.get(name);
-  }
-}

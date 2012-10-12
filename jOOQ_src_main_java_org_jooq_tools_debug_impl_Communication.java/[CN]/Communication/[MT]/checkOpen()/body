@@ -1,5 +1,0 @@
-{
-  if (!isOpen()) {
-    throw new IllegalStateException("The interface is not open!");
-  }
-}
