@@ -156,6 +156,30 @@
       }
       return (U)Character.valueOf(from.toString().charAt(0));
     }
+ else     if ((fromClass == String.class) && toClass == URI.class) {
+      try {
+        return (U)new URI(from.toString());
+      }
+ catch (      URISyntaxException e) {
+        return null;
+      }
+    }
+ else     if ((fromClass == String.class) && toClass == URL.class) {
+      try {
+        return (U)new URI(from.toString()).toURL();
+      }
+ catch (      Exception e) {
+        return null;
+      }
+    }
+ else     if ((fromClass == String.class) && toClass == File.class) {
+      try {
+        return (U)new File(from.toString());
+      }
+ catch (      Exception e) {
+        return null;
+      }
+    }
  else     if (java.util.Date.class.isAssignableFrom(fromClass)) {
       return toDate(((java.util.Date)from).getTime(),toClass);
     }
