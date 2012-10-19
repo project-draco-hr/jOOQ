@@ -1,4 +1,3 @@
-ExecuteContext ctx
 ExecuteListener listener
-FieldProvider fields
+ExecuteContext ctx
 boolean keepStatement

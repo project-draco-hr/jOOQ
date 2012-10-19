@@ -1,0 +1,3 @@
+{
+  return (ResultQuery<R>)super.keepStatement(k);
+}

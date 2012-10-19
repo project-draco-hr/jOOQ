@@ -3,5 +3,5 @@
   this.listener=(listener != null ? listener : new ExecuteListeners(ctx));
   this.fields=fields;
   this.type=type;
-  this.rs=new CursorResultSet(keepStatementOpen);
+  this.rs=new CursorResultSet(keepStatement);
 }

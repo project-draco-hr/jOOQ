@@ -1,3 +1,0 @@
-{
-  this(ctx,listener,fields,type,false);
-}

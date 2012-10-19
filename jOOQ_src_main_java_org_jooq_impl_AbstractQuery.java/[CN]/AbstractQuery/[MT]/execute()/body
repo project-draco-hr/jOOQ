@@ -12,15 +12,27 @@
     }
     int result=0;
     try {
-      listener.renderStart(ctx);
-      ctx.sql(getSQL());
-      listener.renderEnd(ctx);
-      listener.prepareStart(ctx);
-      prepare(ctx);
+      if (statement != null) {
+        ctx.sql(sql);
+        ctx.statement(statement);
+      }
+ else {
+        listener.renderStart(ctx);
+        ctx.sql(getSQL());
+        listener.renderEnd(ctx);
+        if (keepStatement) {
+          sql=ctx.sql();
+        }
+        listener.prepareStart(ctx);
+        prepare(ctx);
+        listener.prepareEnd(ctx);
+        if (keepStatement) {
+          statement=ctx.statement();
+        }
+      }
       if (timeout != 0) {
         ctx.statement().setQueryTimeout(timeout);
       }
-      listener.prepareEnd(ctx);
       if (executePreparedStatements(c.getSettings())) {
         listener.bindStart(ctx);
         create(c).bind(this,ctx.statement());
@@ -35,8 +47,8 @@
       throw ctx.exception();
     }
  finally {
-      if (!keepStatementOpen()) {
-        Util.safeClose(listener,ctx);
+      if (!keepResult()) {
+        Util.safeClose(listener,ctx,keepStatement);
       }
     }
   }

@@ -1,6 +1,3 @@
 {
-  safeClose(ctx.resultSet());
-  safeClose(ctx.statement());
-  listener.end(ctx);
-  DefaultExecuteContext.clean();
+  safeClose(listener,ctx,false);
 }

@@ -20,7 +20,7 @@
     if (!many) {
       if (ctx.resultSet() != null) {
         FieldList fields=new FieldList(getFields(ctx.resultSet().getMetaData()));
-        cursor=new CursorImpl<R>(ctx,listener,fields,getRecordType());
+        cursor=new CursorImpl<R>(ctx,listener,fields,getRecordType(),keepStatement());
         if (!lazy) {
           result=cursor.fetch();
           cursor=null;
@@ -48,7 +48,6 @@
       if (anyResults) {
         ctx.statement().getMoreResults(Statement.CLOSE_ALL_RESULTS);
       }
-      ctx.statement().close();
     }
   }
   finally {

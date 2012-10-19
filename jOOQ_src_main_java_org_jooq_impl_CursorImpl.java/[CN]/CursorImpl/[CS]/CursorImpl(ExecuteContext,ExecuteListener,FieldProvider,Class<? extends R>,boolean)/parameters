@@ -2,4 +2,4 @@ ExecuteContext ctx
 ExecuteListener listener
 FieldProvider fields
 Class<? extends R> type
-boolean keepStatementOpen
+boolean keepStatement

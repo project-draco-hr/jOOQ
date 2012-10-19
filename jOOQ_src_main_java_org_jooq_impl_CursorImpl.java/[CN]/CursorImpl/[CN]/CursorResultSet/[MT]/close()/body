@@ -1,6 +1,6 @@
 {
   ctx.resultSet().close();
-  if (!keepStatementOpen) {
+  if (!keepStatement) {
     ctx.statement().close();
   }
   listener.fetchEnd(ctx);

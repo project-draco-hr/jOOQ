@@ -1,0 +1,4 @@
+{
+  this.keepStatement=k;
+  return this;
+}
