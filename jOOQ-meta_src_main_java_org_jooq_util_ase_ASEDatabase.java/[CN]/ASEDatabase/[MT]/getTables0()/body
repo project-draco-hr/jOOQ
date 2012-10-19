@@ -1,8 +1,8 @@
 {
   List<TableDefinition> result=new ArrayList<TableDefinition>();
   for (  Record record : fetchTables()) {
-    SchemaDefinition schema=getSchema(record.getValueAsString("Owner"));
-    String name=record.getValueAsString("Name");
+    SchemaDefinition schema=getSchema(record.getValue("Owner",String.class));
+    String name=record.getValue("Name",String.class);
     result.add(new ASETableDefinition(schema,name,null));
   }
   return result;

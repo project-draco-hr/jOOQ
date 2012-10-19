@@ -1,13 +1,13 @@
 {
   for (  Record record : fetchKeys(UK_INCL,UK_EXCL)) {
-    String keyName=record.getValueAsString(0);
-    TableDefinition table=getTable(getSchema(),record.getValueAsString(1));
+    String keyName=record.getValue(0,String.class);
+    TableDefinition table=getTable(getSchema(),record.getValue(1,String.class));
     if (table != null) {
       for (int i=0; i < 8; i++) {
         if (record.getValue(2 + i) == null) {
           break;
         }
-        relations.addUniqueKey(keyName,table.getColumn(record.getValueAsString(2 + i)));
+        relations.addUniqueKey(keyName,table.getColumn(record.getValue(2 + i,String.class)));
       }
     }
   }
