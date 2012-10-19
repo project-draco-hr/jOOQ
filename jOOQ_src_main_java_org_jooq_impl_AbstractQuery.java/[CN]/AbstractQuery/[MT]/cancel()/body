@@ -1,8 +1,7 @@
 {
   if (statement != null) {
     try {
-      statement.close();
-      statement=null;
+      statement.cancel();
     }
  catch (    SQLException e) {
       throw Util.translate(sql,e);

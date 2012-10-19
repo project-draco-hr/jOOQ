@@ -12,7 +12,7 @@
     }
     int result=0;
     try {
-      if (statement != null) {
+      if (keepStatement() && statement != null) {
         ctx.sql(sql);
         ctx.statement(statement);
       }
@@ -20,15 +20,11 @@
         listener.renderStart(ctx);
         ctx.sql(getSQL());
         listener.renderEnd(ctx);
-        if (keepStatement) {
-          sql=ctx.sql();
-        }
+        sql=ctx.sql();
         listener.prepareStart(ctx);
         prepare(ctx);
         listener.prepareEnd(ctx);
-        if (keepStatement) {
-          statement=ctx.statement();
-        }
+        statement=ctx.statement();
       }
       if (timeout != 0) {
         ctx.statement().setQueryTimeout(timeout);
@@ -48,7 +44,11 @@
     }
  finally {
       if (!keepResult()) {
-        Util.safeClose(listener,ctx,keepStatement);
+        Util.safeClose(listener,ctx,keepStatement());
+      }
+      if (!keepStatement()) {
+        statement=null;
+        sql=null;
       }
     }
   }

@@ -1,0 +1,20 @@
+{
+  final Select<?> select=create().selectOne().from(TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook());
+  try {
+    new Thread(new Runnable(){
+      @Override public void run(){
+        try {
+          Thread.sleep(500);
+        }
+ catch (        InterruptedException ignore) {
+        }
+        select.cancel();
+      }
+    }
+).start();
+    select.fetch();
+    fail();
+  }
+ catch (  DataAccessException expected) {
+  }
+}

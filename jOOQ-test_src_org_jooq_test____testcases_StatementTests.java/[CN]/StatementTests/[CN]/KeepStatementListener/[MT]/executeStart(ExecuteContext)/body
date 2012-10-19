@@ -9,6 +9,8 @@
     }
   }
 );
-  ctx.statement(s);
+  if (!delegate.getClass().getName().toLowerCase().contains("proxy")) {
+    ctx.statement(s);
+  }
   statements.add(delegate);
 }

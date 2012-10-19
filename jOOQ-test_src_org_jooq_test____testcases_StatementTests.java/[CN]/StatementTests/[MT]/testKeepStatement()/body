@@ -13,7 +13,8 @@
   assertEquals(3,query.bind(1,3).fetchOne(0));
   Cursor<Record> cursor=query.fetchLazy();
   assertEquals(3,cursor.fetchOne().getValue(0));
-  assertEquals(3,KeepStatementListener.statements.size());
+  assertEquals(3,query.fetchOne(0));
+  assertEquals(4,KeepStatementListener.statements.size());
   assertEquals(0,KeepStatementListener.closed);
   assertTrue(KeepStatementListener.statements.get(0) == KeepStatementListener.statements.get(1));
   assertTrue(KeepStatementListener.statements.get(0) == KeepStatementListener.statements.get(2));
