@@ -13,11 +13,11 @@
       map.put(foreignKeyPrefix,sequence);
       String foreignKey="fk_" + table.getName() + "_"+ record.getValue("table")+ "_"+ sequence;
       String foreignKeyTable=table.getName();
-      String foreignKeyColumn=record.getValueAsString("from");
+      String foreignKeyColumn=record.getValue("from",String.class);
       TableDefinition referencingTable=getTable(getSchemata().get(0),foreignKeyTable);
-      TableDefinition referencedTable=getTable(getSchemata().get(0),record.getValueAsString("table"),true);
+      TableDefinition referencedTable=getTable(getSchemata().get(0),record.getValue("table",String.class),true);
       if (referencedTable != null) {
-        String uniqueKey="pk_" + referencedTable.getName() + "_"+ referencedTable.getColumn(record.getValueAsString("to"),true).getName();
+        String uniqueKey="pk_" + referencedTable.getName() + "_"+ referencedTable.getColumn(record.getValue("to",String.class),true).getName();
         if (referencingTable != null) {
           ColumnDefinition referencingColumn=referencingTable.getColumn(foreignKeyColumn);
           relations.addForeignKey(foreignKey,uniqueKey,referencingColumn,getSchemata().get(0));

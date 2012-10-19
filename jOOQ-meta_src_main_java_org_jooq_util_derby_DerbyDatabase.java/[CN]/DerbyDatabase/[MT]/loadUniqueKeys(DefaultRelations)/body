@@ -3,7 +3,7 @@
     SchemaDefinition schema=getSchema(record.getValue(Sysschemas.SCHEMANAME));
     String key=record.getValue(Sysconstraints.CONSTRAINTNAME);
     String tableName=record.getValue(Systables.TABLENAME);
-    String descriptor=record.getValueAsString(Sysconglomerates.DESCRIPTOR);
+    String descriptor=record.getValue(Sysconglomerates.DESCRIPTOR,String.class);
     TableDefinition table=getTable(schema,tableName);
     if (table != null) {
       for (      int index : decode(descriptor)) {

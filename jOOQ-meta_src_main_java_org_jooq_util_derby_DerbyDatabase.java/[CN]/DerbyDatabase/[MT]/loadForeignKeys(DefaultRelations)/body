@@ -10,7 +10,7 @@
     SchemaDefinition uniqueKeySchema=getSchema(record.getValue(ukSchema));
     String foreignKeyName=record.getValue(fkName);
     String foreignKeyTableName=record.getValue(fkTable);
-    List<Integer> foreignKeyIndexes=decode(record.getValueAsString(fkDescriptor));
+    List<Integer> foreignKeyIndexes=decode(record.getValue(fkDescriptor,String.class));
     String uniqueKeyName=record.getValue(ukName);
     TableDefinition referencingTable=getTable(foreignKeySchema,foreignKeyTableName);
     if (referencingTable != null) {

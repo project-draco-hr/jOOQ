@@ -5,7 +5,7 @@
     InOutDefinition inOut=InOutDefinition.getFromString(record.getValue(ALL_ARGUMENTS.IN_OUT));
     DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),record.getValue(ALL_ARGUMENTS.DATA_TYPE),record.getValue(ALL_ARGUMENTS.DATA_LENGTH),record.getValue(ALL_ARGUMENTS.DATA_PRECISION),record.getValue(ALL_ARGUMENTS.DATA_SCALE),record.getValue(ALL_ARGUMENTS.TYPE_NAME));
     String name=record.getValue(ALL_ARGUMENTS.ARGUMENT_NAME);
-    Integer position=record.getValueAsInteger(ALL_ARGUMENTS.POSITION);
+    int position=record.getValue(ALL_ARGUMENTS.POSITION,int.class);
     if (StringUtils.isBlank(name) && position == 0) {
       inOut=InOutDefinition.RETURN;
       name="RETURN_VALUE";

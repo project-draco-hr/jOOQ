@@ -3,7 +3,7 @@
   for (  Record record : result) {
     String inOut=record.getValue(PARAMETERS.PARAMETER_MODE);
     DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),record.getValue(PARAMETERS.DATA_TYPE),record.getValue(PARAMETERS.CHARACTER_MAXIMUM_LENGTH),record.getValue(PARAMETERS.NUMERIC_PRECISION),record.getValue(PARAMETERS.NUMERIC_SCALE));
-    ParameterDefinition parameter=new DefaultParameterDefinition(this,record.getValue(PARAMETERS.PARAMETER_NAME).replaceAll("@",""),record.getValueAsInteger(PARAMETERS.ORDINAL_POSITION),type);
+    ParameterDefinition parameter=new DefaultParameterDefinition(this,record.getValue(PARAMETERS.PARAMETER_NAME).replaceAll("@",""),record.getValue(PARAMETERS.ORDINAL_POSITION,int.class),type);
     addParameter(InOutDefinition.getFromString(inOut),parameter);
   }
 }

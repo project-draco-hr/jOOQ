@@ -1,8 +1,8 @@
 {
   for (  Record record : create().select(SYSPROCPARM.PARM_NAME,SYSDOMAIN.DOMAIN_NAME,SYSPROCPARM.WIDTH,SYSPROCPARM.SCALE,SYSPROCPARM.PARM_ID,SYSPROCPARM.PARM_TYPE,SYSPROCPARM.PARM_MODE_IN,SYSPROCPARM.PARM_MODE_OUT).from(SYSPROCPARM).join(SYSDOMAIN).on(SYSPROCPARM.DOMAIN_ID.equal(SYSDOMAIN.DOMAIN_ID)).join(SYSPROCEDURE).on(SYSPROCPARM.PROC_ID.equal(SYSPROCEDURE.PROC_ID)).where(SYSPROCEDURE.PROC_NAME.equal(getName())).orderBy(SYSPROCPARM.PARM_ID).fetch()) {
     String paramName=record.getValue(SYSPROCPARM.PARM_NAME);
-    Boolean paramModeIn=record.getValueAsBoolean(SYSPROCPARM.PARM_MODE_IN,false);
-    Boolean paramModeOut=record.getValueAsBoolean(SYSPROCPARM.PARM_MODE_OUT,false);
+    boolean paramModeIn=record.getValue(SYSPROCPARM.PARM_MODE_IN,boolean.class);
+    boolean paramModeOut=record.getValue(SYSPROCPARM.PARM_MODE_OUT,boolean.class);
     int parmType=record.getValue(SYSPROCPARM.PARM_TYPE);
     InOutDefinition inOutDefinition;
     if (parmType == 4) {

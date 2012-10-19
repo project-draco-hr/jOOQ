@@ -1,7 +1,7 @@
 {
   List<RoutineDefinition> result=new ArrayList<RoutineDefinition>();
   for (  Record record : create().select(ROUTINES.ROUTINE_SCHEMA,ROUTINES.ROUTINE_NAME,ROUTINES.SPECIFIC_NAME,nvl(ELEMENT_TYPES.COLLECTION_TYPE_IDENTIFIER,ROUTINES.DATA_TYPE).as("datatype"),ROUTINES.NUMERIC_PRECISION,ROUTINES.NUMERIC_SCALE).from(ROUTINES).leftOuterJoin(ELEMENT_TYPES).on(ROUTINES.ROUTINE_SCHEMA.equal(ELEMENT_TYPES.OBJECT_SCHEMA)).and(ROUTINES.ROUTINE_NAME.equal(ELEMENT_TYPES.OBJECT_NAME)).and(ROUTINES.DTD_IDENTIFIER.equal(ELEMENT_TYPES.COLLECTION_TYPE_IDENTIFIER)).where(ROUTINES.ROUTINE_SCHEMA.in(getInputSchemata())).orderBy(ROUTINES.ROUTINE_SCHEMA,ROUTINES.ROUTINE_NAME).fetch()) {
-    result.add(new HSQLDBRoutineDefinition(getSchema(record.getValue(ROUTINES.ROUTINE_SCHEMA)),record.getValue(ROUTINES.ROUTINE_NAME),record.getValue(ROUTINES.SPECIFIC_NAME),record.getValueAsString("datatype"),record.getValue(ROUTINES.NUMERIC_PRECISION),record.getValue(ROUTINES.NUMERIC_SCALE)));
+    result.add(new HSQLDBRoutineDefinition(getSchema(record.getValue(ROUTINES.ROUTINE_SCHEMA)),record.getValue(ROUTINES.ROUTINE_NAME),record.getValue(ROUTINES.SPECIFIC_NAME),record.getValue("datatype",String.class),record.getValue(ROUTINES.NUMERIC_PRECISION),record.getValue(ROUTINES.NUMERIC_SCALE)));
   }
   return result;
 }

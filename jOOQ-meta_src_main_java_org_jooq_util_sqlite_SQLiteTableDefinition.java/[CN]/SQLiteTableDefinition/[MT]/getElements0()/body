@@ -3,11 +3,11 @@
   int position=0;
   for (  Record record : create().fetch("pragma table_info('" + getName() + "')")) {
     position++;
-    String name=record.getValueAsString("name");
-    String dataType=record.getValueAsString("type").replaceAll("\\(\\d+\\)","");
-    Number precision=parsePrecision(record.getValueAsString("type"));
-    Number scale=parseScale(record.getValueAsString("type"));
-    boolean pk=record.getValueAsBoolean("pk");
+    String name=record.getValue("name",String.class);
+    String dataType=record.getValue("type",String.class).replaceAll("\\(\\d+\\)","");
+    Number precision=parsePrecision(record.getValue("type",String.class));
+    Number scale=parseScale(record.getValue("type",String.class));
+    boolean pk=record.getValue("pk",Boolean.class);
     boolean identity=pk && create().fetchOne("select count(*) from sqlite_sequence where name = ?",getName()).getValue(0,Boolean.class);
     DefaultDataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),dataType,precision,precision,scale);
     ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getSchema(),getName()),name,position,type,!record.getValue("notnull",boolean.class),identity,null);
