@@ -9,7 +9,7 @@
     }
  else {
       context.keyword(" using (");
-      Util.toSQLNames(context,using);
+      Util.fieldNames(context,using);
       context.sql(")");
     }
   }

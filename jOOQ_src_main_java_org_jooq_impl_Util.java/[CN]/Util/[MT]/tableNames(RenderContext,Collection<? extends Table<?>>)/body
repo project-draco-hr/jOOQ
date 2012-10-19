@@ -1,0 +1,7 @@
+{
+  String separator="";
+  for (  Table<?> table : list) {
+    context.sql(separator).literal(table.getName());
+    separator=", ";
+  }
+}

@@ -5,7 +5,7 @@
     DefaultEnumDefinition e=new DefaultEnumDefinition(getSchemata().get(0),name,null,true);
     String literals=enumType.getLiterals();
     try {
-      CSVReader reader=new CSVReader(new StringReader(literals));
+      @SuppressWarnings("resource") CSVReader reader=new CSVReader(new StringReader(literals));
       e.addLiterals(reader.readNext());
     }
  catch (    IOException ignore) {
