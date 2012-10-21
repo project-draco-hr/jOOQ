@@ -1,5 +1,0 @@
-{
-  context.sql("(");
-  toSQLReference(context,sql,substitutes);
-  context.sql(")");
-}

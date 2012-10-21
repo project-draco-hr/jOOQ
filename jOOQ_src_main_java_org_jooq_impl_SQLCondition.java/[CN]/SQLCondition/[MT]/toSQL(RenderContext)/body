@@ -1,3 +1,5 @@
 {
-  Util.toSQLReferenceWithParentheses(context,sql,substitutes);
+  context.sql("(");
+  Util.renderAndBind(context,null,sql,substitutes);
+  context.sql(")");
 }
