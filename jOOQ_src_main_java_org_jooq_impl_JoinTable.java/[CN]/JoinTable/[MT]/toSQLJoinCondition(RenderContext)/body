@@ -1,29 +1,29 @@
 {
   if (!using.isEmpty()) {
     if (asList(ASE,CUBRID,DB2,H2,SQLSERVER,SYBASE).contains(context.getDialect())) {
-      String glue=" on ";
+      String glue="on ";
       for (      Field<?> field : using) {
-        context.keyword(glue).sql(lhs.getField(field)).sql(" = ").sql(rhs.getField(field));
-        glue=" and ";
+        context.formatSeparator().keyword(glue).sql(lhs.getField(field)).sql(" = ").sql(rhs.getField(field));
+        glue="and ";
       }
     }
  else {
-      context.keyword(" using (");
+      context.formatSeparator().keyword("using (");
       Util.fieldNames(context,using);
       context.sql(")");
     }
   }
  else   if (simulateNaturalJoin(context) || simulateNaturalLeftOuterJoin(context) || simulateNaturalRightOuterJoin(context)) {
-    String glue=" on ";
+    String glue="on ";
     for (    Field<?> field : lhs.getFields()) {
       Field<?> other=rhs.getField(field);
       if (other != null) {
-        context.keyword(glue).sql(field).sql(" = ").sql(other);
-        glue=" and ";
+        context.formatSeparator().keyword(glue).sql(field).sql(" = ").sql(other);
+        glue="and ";
       }
     }
   }
  else {
-    context.keyword(" on ").sql(condition);
+    context.formatSeparator().keyword("on ").sql(condition);
   }
 }

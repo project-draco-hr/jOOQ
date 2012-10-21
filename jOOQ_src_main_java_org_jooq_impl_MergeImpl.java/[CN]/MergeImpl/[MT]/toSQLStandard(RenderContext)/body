@@ -1,5 +1,5 @@
 {
-  context.keyword("merge into ").declareTables(true).sql(table).formatSeparator().keyword("using ").formatIndentLockStart().sql(Util.wrapInParentheses(context.render(using))).formatIndentLockEnd().declareTables(false);
+  context.keyword("merge into ").declareTables(true).sql(table).formatSeparator().keyword("using ").formatIndentStart().formatNewLine().sql(Util.wrapInParentheses(context.render(using))).formatIndentEnd().declareTables(false);
 switch (context.getDialect()) {
 case SQLSERVER:
 case SYBASE:
@@ -18,7 +18,7 @@ case SYBASE:
       break;
     }
 }
-context.formatSeparator().keyword("on ").formatIndentLockStart().sql(Util.wrapInParentheses(context.render(on))).formatIndentLockEnd();
+context.formatSeparator().keyword("on ").sql(Util.wrapInParentheses(context.render(on)));
 if (matchedUpdate != null) {
   context.formatSeparator().keyword("when matched then update set ").sql(matchedUpdate);
 }

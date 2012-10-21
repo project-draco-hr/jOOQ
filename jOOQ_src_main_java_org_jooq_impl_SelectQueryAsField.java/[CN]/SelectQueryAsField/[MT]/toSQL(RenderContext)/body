@@ -1,8 +1,8 @@
 {
   if (context.subquery()) {
-    context.sql("(").formatIndentLockStart().sql(query).formatIndentLockEnd().sql(")");
+    context.sql("(").formatIndentStart().formatNewLine().sql(query).formatIndentEnd().formatNewLine().sql(")");
   }
  else {
-    context.sql("(").subquery(true).formatIndentLockStart().sql(query).formatIndentLockEnd().subquery(false).sql(")");
+    context.sql("(").subquery(true).formatIndentStart().formatNewLine().sql(query).formatIndentEnd().formatNewLine().subquery(false).sql(")");
   }
 }

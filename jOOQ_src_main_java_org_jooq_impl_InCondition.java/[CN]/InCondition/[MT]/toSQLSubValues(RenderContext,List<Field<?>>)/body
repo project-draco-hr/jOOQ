@@ -1,10 +1,15 @@
 {
   context.sql(field).sql(" ").keyword(operator.toSQL()).sql(" (");
+  if (subValues.size() > 1) {
+    context.formatIndentStart().formatNewLine();
+  }
   String separator="";
   for (  Field<?> value : subValues) {
-    context.sql(separator);
-    context.sql(value);
+    context.sql(separator).formatNewLineAfterPrintMargin().sql(value);
     separator=", ";
+  }
+  if (subValues.size() > 1) {
+    context.formatIndentEnd().formatNewLine();
   }
   context.sql(")");
 }

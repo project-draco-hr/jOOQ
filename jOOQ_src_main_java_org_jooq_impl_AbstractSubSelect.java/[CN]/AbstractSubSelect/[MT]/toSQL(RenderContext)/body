@@ -1,5 +1,4 @@
 {
-  context.formatIndentLockStart();
   if (getLimit().isApplicable()) {
 switch (context.getDialect()) {
 case ORACLE:
@@ -87,5 +86,4 @@ context.formatSeparator().keyword("for share");
 break;
 }
 }
-context.formatIndentLockEnd();
 }

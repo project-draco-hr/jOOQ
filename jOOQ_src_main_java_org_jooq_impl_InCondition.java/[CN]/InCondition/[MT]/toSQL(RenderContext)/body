@@ -7,20 +7,19 @@ case INGRES:
 case ORACLE:
 case SQLSERVER:
 {
-        context.sql("(").formatIndentLockStart();
+        context.sql("(").formatIndentStart().formatNewLine();
         for (int i=0; i < list.size(); i+=IN_LIMIT) {
           if (i > 0) {
             if (operator == InOperator.IN) {
-              context.keyword(" or");
+              context.formatSeparator().keyword("or ");
             }
  else {
-              context.keyword(" and");
+              context.formatSeparator().keyword("and ");
             }
-            context.formatSeparator();
           }
           toSQLSubValues(context,list.subList(i,Math.min(i + IN_LIMIT,list.size())));
         }
-        context.sql(")").formatIndentLockEnd();
+        context.formatIndentEnd().formatNewLine().sql(")");
         break;
       }
 default :
