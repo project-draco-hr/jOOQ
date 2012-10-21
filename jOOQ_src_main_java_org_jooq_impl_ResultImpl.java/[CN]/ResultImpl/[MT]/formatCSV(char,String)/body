@@ -1,4 +1,5 @@
 {
+  final int size=getFields().size();
   StringBuilder sb=new StringBuilder();
   String sep1="";
   for (  Field<?> field : getFields()) {
@@ -9,9 +10,9 @@
   sb.append("\n");
   for (  Record record : this) {
     String sep2="";
-    for (    Field<?> field : getFields()) {
+    for (int index=0; index < size; index++) {
       sb.append(sep2);
-      sb.append(formatCSV0(record.getValue(field),nullString));
+      sb.append(formatCSV0(record.getValue(index),nullString));
       sep2=Character.toString(delimiter);
     }
     sb.append("\n");

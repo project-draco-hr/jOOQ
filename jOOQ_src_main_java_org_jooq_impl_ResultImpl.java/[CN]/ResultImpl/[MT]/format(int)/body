@@ -3,79 +3,84 @@
   final int COL_MAX_WIDTH=50;
   final int NUM_COL_MAX_WIDTH=100;
   final int MAX_RECORDS=min(50,maxRecords);
-  Map<Field<?>,Integer> decimalPlacesMap=new HashMap<Field<?>,Integer>();
-  for (  Field<?> f : getFields()) {
+  final int size=getFields().size();
+  final int[] decimalPlaces=new int[size];
+  final int[] widths=new int[size];
+  for (int index=0; index < size; index++) {
+    Field<?> f=getField(index);
     if (Number.class.isAssignableFrom(f.getType())) {
       List<Integer> decimalPlacesList=new ArrayList<Integer>();
       decimalPlacesList.add(0);
       String value;
       for (int i=0; i < min(MAX_RECORDS,size()); i++) {
-        value=format0(getValue(i,f));
+        value=format0(getValue(i,index));
         decimalPlacesList.add(getDecimalPlaces(value));
       }
-      decimalPlacesMap.put(f,Collections.max(decimalPlacesList));
+      decimalPlaces[index]=Collections.max(decimalPlacesList);
     }
   }
-  Map<Field<?>,Integer> widthMap=new HashMap<Field<?>,Integer>();
   int colMaxWidth;
-  for (  Field<?> f : getFields()) {
+  for (int index=0; index < size; index++) {
+    Field<?> f=getField(index);
     boolean isNumCol=Number.class.isAssignableFrom(f.getType());
     colMaxWidth=isNumCol ? NUM_COL_MAX_WIDTH : COL_MAX_WIDTH;
     List<Integer> widthList=new ArrayList<Integer>();
     widthList.add(min(colMaxWidth,max(COL_MIN_WIDTH,f.getName().length())));
     String value;
     for (int i=0; i < min(MAX_RECORDS,size()); i++) {
-      value=format0(getValue(i,f));
+      value=format0(getValue(i,index));
       if (isNumCol) {
-        value=alignNumberValue(decimalPlacesMap.get(f),value);
+        value=alignNumberValue(decimalPlaces[index],value);
       }
       widthList.add(min(colMaxWidth,value.length()));
     }
-    widthMap.put(f,Collections.max(widthList));
+    widths[index]=Collections.max(widthList);
   }
   StringBuilder sb=new StringBuilder();
   sb.append("+");
-  for (  Field<?> f : getFields()) {
-    sb.append(rightPad("",widthMap.get(f),"-"));
+  for (int index=0; index < size; index++) {
+    sb.append(rightPad("",widths[index],"-"));
     sb.append("+");
   }
   sb.append("\n|");
-  for (  Field<?> f : getFields()) {
+  for (int index=0; index < size; index++) {
+    Field<?> f=getField(index);
     String padded;
     if (Number.class.isAssignableFrom(f.getType())) {
-      padded=leftPad(f.getName(),widthMap.get(f));
+      padded=leftPad(f.getName(),widths[index]);
     }
  else {
-      padded=rightPad(f.getName(),widthMap.get(f));
+      padded=rightPad(f.getName(),widths[index]);
     }
-    sb.append(abbreviate(padded,widthMap.get(f)));
+    sb.append(abbreviate(padded,widths[index]));
     sb.append("|");
   }
   sb.append("\n+");
-  for (  Field<?> f : getFields()) {
-    sb.append(rightPad("",widthMap.get(f),"-"));
+  for (int index=0; index < size; index++) {
+    sb.append(rightPad("",widths[index],"-"));
     sb.append("+");
   }
   for (int i=0; i < min(maxRecords,size()); i++) {
     sb.append("\n|");
-    for (    Field<?> f : getFields()) {
-      String value=format0(getValue(i,f)).replace("\n","{lf}").replace("\r","{cr}");
+    for (int index=0; index < size; index++) {
+      Field<?> f=getField(index);
+      String value=format0(getValue(i,index)).replace("\n","{lf}").replace("\r","{cr}");
       String padded;
       if (Number.class.isAssignableFrom(f.getType())) {
-        value=alignNumberValue(decimalPlacesMap.get(f),value);
-        padded=leftPad(value,widthMap.get(f));
+        value=alignNumberValue(decimalPlaces[index],value);
+        padded=leftPad(value,widths[index]);
       }
  else {
-        padded=rightPad(value,widthMap.get(f));
+        padded=rightPad(value,widths[index]);
       }
-      sb.append(abbreviate(padded,widthMap.get(f)));
+      sb.append(abbreviate(padded,widths[index]));
       sb.append("|");
     }
   }
   if (size() > 0) {
     sb.append("\n+");
-    for (    Field<?> f : getFields()) {
-      sb.append(rightPad("",widthMap.get(f),"-"));
+    for (int index=0; index < size; index++) {
+      sb.append(rightPad("",widths[index],"-"));
       sb.append("+");
     }
   }

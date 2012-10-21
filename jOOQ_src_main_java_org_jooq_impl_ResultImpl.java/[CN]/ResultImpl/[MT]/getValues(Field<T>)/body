@@ -1,7 +1,3 @@
 {
-  List<T> result=new ArrayList<T>(size());
-  for (  R record : this) {
-    result.add(record.getValue(field));
-  }
-  return result;
+  return (List<T>)getValues(fields.getIndex(field));
 }
