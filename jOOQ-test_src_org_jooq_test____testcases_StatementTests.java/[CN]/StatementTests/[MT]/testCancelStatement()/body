@@ -1,4 +1,8 @@
 {
+  if (getDialect() != H2) {
+    log.info("SKIPPING","Dangerous timeout query");
+    return;
+  }
   final Select<?> select=create().selectOne().from(TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook(),TBook());
   try {
     new Thread(new Runnable(){
