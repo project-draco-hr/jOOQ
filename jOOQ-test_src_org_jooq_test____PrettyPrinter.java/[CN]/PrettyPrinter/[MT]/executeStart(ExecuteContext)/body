@@ -1,0 +1,12 @@
+{
+  Factory factory=new Factory(ctx.getDialect(),new Settings().withRenderFormatted(true));
+  if (ctx.query() != null) {
+    System.out.println(factory.renderInlined(ctx.query()));
+  }
+ else   if (ctx.routine() != null) {
+    System.out.println(factory.renderInlined(ctx.routine()));
+  }
+ else   if (!StringUtils.isBlank(ctx.sql())) {
+    System.out.println(ctx.sql());
+  }
+}
