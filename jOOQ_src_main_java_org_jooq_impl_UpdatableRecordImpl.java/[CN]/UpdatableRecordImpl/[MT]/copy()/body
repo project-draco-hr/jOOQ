@@ -1,10 +1,10 @@
 {
   R copy=create().newRecord(getTable());
+  List<TableField<R,?>> key=getMainKey().getFields();
   for (  Field<?> field : getFields()) {
-    setValue(copy,field);
-  }
-  for (  Field<?> field : getMainKey().getFields()) {
-    copy.setValue(field,null);
+    if (!key.contains(field)) {
+      setValue(copy,field);
+    }
   }
   return copy;
 }
