@@ -1,4 +1,4 @@
-ConditionProvider selfJoin
+org.jooq.ConditionProvider selfJoin
 Table<?> outer
 Table<?> inner
 Field<T> field
