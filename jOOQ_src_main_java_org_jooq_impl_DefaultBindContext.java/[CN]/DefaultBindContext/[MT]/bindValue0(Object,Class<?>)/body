@@ -135,22 +135,7 @@
 switch (dialect) {
 case POSTGRES:
 {
-        StringBuilder sb=new StringBuilder();
-        sb.append("{");
-        String separator="";
-        for (        Object o : (Object[])value) {
-          sb.append(separator);
-          if (o == null) {
-            sb.append(o);
-          }
- else {
-            sb.append("\"");
-            sb.append(o.toString().replaceAll("\"","\"\""));
-            sb.append("\"");
-          }
-          separator=", ";
-        }
-        sb.append("}");
+        StringBuilder sb=postgresArrayString(value);
         stmt.setString(nextIndex(),sb.toString());
         break;
       }
