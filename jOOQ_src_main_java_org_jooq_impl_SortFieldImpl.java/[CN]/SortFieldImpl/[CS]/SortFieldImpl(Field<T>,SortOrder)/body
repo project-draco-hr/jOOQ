@@ -1,5 +1,5 @@
 {
-  super(field.getName(),field.getDataType());
+  super(field.getName());
   this.field=field;
   this.order=order;
 }

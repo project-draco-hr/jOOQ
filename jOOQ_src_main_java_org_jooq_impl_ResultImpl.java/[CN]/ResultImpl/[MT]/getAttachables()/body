@@ -1,6 +1,6 @@
 {
   List<Attachable> result=new ArrayList<Attachable>();
-  for (  Store<?> item : records) {
+  for (  Attachable item : records) {
     if (item != null) {
       result.add(item);
     }
