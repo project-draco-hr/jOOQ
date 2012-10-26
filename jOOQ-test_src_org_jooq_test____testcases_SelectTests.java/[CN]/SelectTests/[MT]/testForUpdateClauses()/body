@@ -111,6 +111,7 @@ assertEquals(2,result2.size());
 }
 }
 switch (getDialect()) {
+case ASE:
 case MYSQL:
 log.info("SKIPPING","FOR UPDATE OF tests");
 break;
