@@ -96,9 +96,6 @@
  else   if (EnumType.class.isAssignableFrom(type)) {
     return getEnumType(type,stream.readString());
   }
- else   if (MasterDataType.class.isAssignableFrom(type)) {
-    return (T)getMasterDataType(type,stream.readObject());
-  }
  else   if (UDTRecord.class.isAssignableFrom(type)) {
     return (T)stream.readObject();
   }

@@ -1,8 +1,0 @@
-{
-  if (literal == null) {
-    return (Field<T>)NULL();
-  }
- else {
-    return field(literal.toString(),type);
-  }
-}

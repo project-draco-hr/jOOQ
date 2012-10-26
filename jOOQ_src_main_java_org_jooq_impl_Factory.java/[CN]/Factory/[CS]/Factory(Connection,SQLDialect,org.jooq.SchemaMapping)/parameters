@@ -1,3 +1,0 @@
-Connection connection
-SQLDialect dialect
-org.jooq.SchemaMapping mapping

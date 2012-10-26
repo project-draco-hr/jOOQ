@@ -1,3 +1,0 @@
-{
-  return new InsertSelectQueryImpl<R>(this,into,into.getFields(),select);
-}

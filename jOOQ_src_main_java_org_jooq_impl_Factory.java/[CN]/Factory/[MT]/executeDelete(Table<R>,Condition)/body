@@ -1,5 +1,0 @@
-{
-  DeleteQuery<R> delete=deleteQuery(table);
-  delete.addConditions(condition);
-  return delete.execute();
-}

@@ -1,8 +1,0 @@
-{
-  if (literal == null) {
-    return (Field<T>)NULL();
-  }
- else {
-    return literal(literal,(Class<T>)literal.getClass());
-  }
-}

@@ -1,3 +1,0 @@
-{
-  return filterUpdateOne(executeUpdate(table,record));
-}

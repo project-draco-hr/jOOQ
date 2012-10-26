@@ -1,3 +1,0 @@
-{
-  return getDelegate().fetchMany(sql,parts);
-}

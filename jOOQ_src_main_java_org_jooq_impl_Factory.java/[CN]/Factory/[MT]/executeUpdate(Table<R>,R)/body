@@ -1,3 +1,0 @@
-{
-  return executeUpdate(table,record,trueCondition());
-}

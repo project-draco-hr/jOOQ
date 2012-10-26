@@ -1,3 +1,0 @@
-{
-  writeToSQLOutput(stream,type,null,value);
-}
