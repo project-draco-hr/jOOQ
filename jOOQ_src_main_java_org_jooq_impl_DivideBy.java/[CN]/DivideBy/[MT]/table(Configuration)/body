@@ -1,5 +1,5 @@
 {
-  Factory create=create(configuration);
+  Executor create=create(configuration);
   ConditionProviderImpl selfJoin=new ConditionProviderImpl();
   FieldList select=new FieldList();
   Table<?> outer=dividend.as("dividend");

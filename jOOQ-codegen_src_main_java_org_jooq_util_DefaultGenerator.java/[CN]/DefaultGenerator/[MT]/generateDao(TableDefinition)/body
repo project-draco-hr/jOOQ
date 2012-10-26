@@ -47,7 +47,7 @@
   out.print("\tpublic ");
   out.print(strategy.getJavaClassName(table,Mode.DAO));
   out.print("(");
-  out.print(Factory.class);
+  out.print(Executor.class);
   out.println(" factory) {");
   out.print("\t\tsuper(");
   out.print(strategy.getFullJavaIdentifier(table));

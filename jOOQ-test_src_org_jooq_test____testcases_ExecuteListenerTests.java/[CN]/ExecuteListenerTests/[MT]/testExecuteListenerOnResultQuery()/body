@@ -1,5 +1,5 @@
 {
-  Factory create=create(new Settings().withExecuteListeners(ResultQueryListener.class.getName()));
+  Executor create=create(new Settings().withExecuteListeners(ResultQueryListener.class.getName()));
   create.setData("Foo","Bar");
   create.setData("Bar","Baz");
   Result<?> result=create.select(TBook_ID(),val("Hello")).from(TBook()).where(TBook_ID().in(1,2)).fetch();

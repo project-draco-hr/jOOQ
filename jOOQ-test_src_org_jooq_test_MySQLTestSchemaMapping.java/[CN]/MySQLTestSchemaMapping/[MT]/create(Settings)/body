@@ -8,5 +8,5 @@
  else {
     schemata.get(0).withInput(TAuthor().getSchema().getName()).withOutput(TAuthor().getSchema().getName() + getSchemaSuffix());
   }
-  return new Factory(getConnection(),SQLDialect.MYSQL,settings);
+  return new Executor(getConnection(),SQLDialect.MYSQL,settings);
 }

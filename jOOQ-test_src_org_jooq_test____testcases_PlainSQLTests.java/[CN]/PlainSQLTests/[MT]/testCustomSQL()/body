@@ -47,7 +47,7 @@
     }
   }
 ;
-  Factory create=create();
+  Executor create=create();
   create.setData("Foo-Field","Bar");
   create.setData("Foo-Condition","Bar");
   Result<Record> result=create.select(TBook_ID(),IDx2).from(TBook()).where(c).orderBy(IDx2).fetch();

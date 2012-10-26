@@ -1,5 +1,5 @@
 {
-  Factory create=create();
+  Executor create=create();
   create.getSettings().setExecuteLogging(false);
   create.getSettings().setExecuteListeners(Collections.<String>emptyList());
   testBenchmarkFullExecution(create,1);

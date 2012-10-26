@@ -4,8 +4,8 @@ case SQLITE:
     log.info("SKIPPING","FOR UPDATE tests");
   return;
 }
-final Factory create1=create();
-final Factory create2=create();
+final Executor create1=create();
+final Executor create2=create();
 create2.setConnection(getNewConnection());
 create2.getConnection().setAutoCommit(false);
 final Vector<String> execOrder=new Vector<String>();

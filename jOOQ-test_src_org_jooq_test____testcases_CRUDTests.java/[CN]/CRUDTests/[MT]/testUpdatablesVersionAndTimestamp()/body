@@ -3,7 +3,7 @@
     log.info("SKIPPING","Record version and timestamp tests");
   }
   jOOQAbstractTest.reset=false;
-  Factory create=create(new Settings().withExecuteWithOptimisticLocking(true));
+  Executor create=create(new Settings().withExecuteWithOptimisticLocking(true));
   boolean t=TBook_REC_TIMESTAMP() != null;
   boolean v=TBook_REC_VERSION() != null;
   if (t)   assertEquals(2,create.selectCount().from(TBook()).where(TBook_REC_TIMESTAMP().isNotNull()).fetchOne(0));

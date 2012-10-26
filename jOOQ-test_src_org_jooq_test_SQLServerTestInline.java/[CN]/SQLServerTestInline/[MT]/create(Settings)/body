@@ -1,5 +1,5 @@
 {
   settings=(settings != null) ? settings : new Settings();
   settings.withStatementType(StatementType.STATIC_STATEMENT);
-  return new Factory(getConnection(),SQLDialect.SQLSERVER,settings);
+  return new Executor(getConnection(),SQLDialect.SQLSERVER,settings);
 }

@@ -1,5 +1,5 @@
 {
   context=new Mockery();
   statement=context.mock(PreparedStatement.class);
-  create=new Factory(SQLDialect.ORACLE);
+  create=new Executor(SQLDialect.ORACLE);
 }

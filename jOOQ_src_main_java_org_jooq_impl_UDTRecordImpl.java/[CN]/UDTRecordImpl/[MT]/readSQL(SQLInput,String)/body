@@ -1,5 +1,5 @@
 {
-  Factory configuration=Factory.getNewFactory(getUDT().getDataType().getDialect());
+  Executor configuration=Executor.getNewFactory(getUDT().getDataType().getDialect());
   for (  Field<?> field : getUDT().getFields()) {
     setValue(configuration,stream,field);
   }

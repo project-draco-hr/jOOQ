@@ -1,5 +1,5 @@
 {
-  Factory create=create(new Settings().withExecuteListeners(CustomExceptionListener.class.getName()));
+  Executor create=create(new Settings().withExecuteListeners(CustomExceptionListener.class.getName()));
   try {
     create.fetch("invalid sql");
   }

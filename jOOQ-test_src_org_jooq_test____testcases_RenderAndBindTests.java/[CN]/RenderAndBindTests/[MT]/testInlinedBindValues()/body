@@ -32,7 +32,7 @@
   Boolean bool2=false;
   Boolean bool3=(derby ? bool1 : null);
 {
-    Factory create=create(new Settings().withStatementType(StatementType.STATIC_STATEMENT));
+    Executor create=create(new Settings().withStatementType(StatementType.STATIC_STATEMENT));
     Object[] array1=create.select(vals(s1,s2,s3,s4)).fetchOneArray();
     Object[] array2=create.select(vals(b1,b2,sh1,sh2,i1,i2,l1,l2,bi1,bi2,bd1,bd2,db1,db2,f1,f2)).fetchOneArray();
     Object[] array3=create.select(vals(d1,d2,t1,t2,ts1,ts2)).fetchOneArray();
@@ -49,7 +49,7 @@
     assertEquals(asList(new String(by1),(derby ? new String(by2) : by2),bool1,bool2,bool3),asList(array4));
   }
 {
-    Factory create=create();
+    Executor create=create();
     Object[] array1=create.select(inline(s1),inline(s2),inline(s3),inline(s4)).fetchOneArray();
     Object[] array2=create.select(inline(b1),inline(b2),inline(sh1),inline(sh2),inline(i1),inline(i2),inline(l1),inline(l2),inline(bi1),inline(bi2),inline(bd1),inline(bd2),inline(db1),inline(db2),inline(f1),inline(f2)).fetchOneArray();
     Object[] array3=create.select(inline(d1),inline(d2),inline(t1),inline(t2),inline(ts1),inline(ts2)).fetchOneArray();

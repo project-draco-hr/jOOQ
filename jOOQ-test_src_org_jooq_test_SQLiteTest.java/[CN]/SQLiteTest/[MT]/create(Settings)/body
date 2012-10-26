@@ -1,3 +1,3 @@
 {
-  return new Factory(getConnection(),SQLDialect.SQLITE,settings);
+  return new Executor(getConnection(),SQLDialect.SQLITE,settings);
 }
