@@ -1,0 +1,6 @@
+DataSource datasource
+Connection connection
+SQLDialect dialect
+Settings settings
+org.jooq.SchemaMapping mapping
+Map<String,Object> data

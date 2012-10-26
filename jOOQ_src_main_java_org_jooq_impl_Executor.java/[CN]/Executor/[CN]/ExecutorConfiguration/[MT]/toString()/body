@@ -1,0 +1,5 @@
+{
+  StringWriter writer=new StringWriter();
+  JAXB.marshal(settings,writer);
+  return "ExecutorConfiguration [\n\tconnected=" + (connection != null) + ",\n\tdialect="+ dialect+ ",\n\tdata="+ data+ ",\n\tsettings=\n\t\t"+ writer.toString().trim().replace("\n","\n\t\t")+ "\n]";
+}

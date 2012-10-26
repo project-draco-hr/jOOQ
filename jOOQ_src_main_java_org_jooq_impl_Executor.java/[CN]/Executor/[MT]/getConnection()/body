@@ -1,17 +1,3 @@
 {
-  if (connection == null && datasource == null) {
-    return null;
-  }
- else   if (connection == null && datasource != null) {
-    return new DataSourceConnection(datasource,null,settings);
-  }
- else   if (connection.getClass() == DataSourceConnection.class) {
-    return connection;
-  }
- else   if (connection.getClass() == ConnectionProxy.class) {
-    return connection;
-  }
- else {
-    return new DataSourceConnection(null,new ConnectionProxy(connection,settings),settings);
-  }
+  return configuration.getConnection();
 }
