@@ -1,5 +1,5 @@
 {
-  Factory pretty=new Factory(ctx.getDialect(),new Settings().withRenderFormatted(true));
+  Factory pretty=new Factory(ctx.getDialect(),SettingsTools.clone(ctx.getSettings()).withRenderFormatted(true));
   Factory normal=new Factory(ctx.getDialect());
   String n="" + count.incrementAndGet();
   System.out.println();
