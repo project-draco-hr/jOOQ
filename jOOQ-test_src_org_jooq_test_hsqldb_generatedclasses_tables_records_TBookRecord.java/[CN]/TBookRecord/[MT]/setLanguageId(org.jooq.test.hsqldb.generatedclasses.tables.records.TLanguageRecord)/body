@@ -1,0 +1,8 @@
+{
+  if (value == null) {
+    setValue(org.jooq.test.hsqldb.generatedclasses.tables.TBook.T_BOOK.LANGUAGE_ID,null);
+  }
+ else {
+    setValue(org.jooq.test.hsqldb.generatedclasses.tables.TBook.T_BOOK.LANGUAGE_ID,value.getValue(org.jooq.test.hsqldb.generatedclasses.tables.TLanguage.T_LANGUAGE.ID));
+  }
+}

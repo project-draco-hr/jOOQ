@@ -1,0 +1,8 @@
+{
+  if (value == null) {
+    setValue(org.jooq.test.mysql.generatedclasses.tables.TBook.LANGUAGE_ID,null);
+  }
+ else {
+    setValue(org.jooq.test.mysql.generatedclasses.tables.TBook.LANGUAGE_ID,value.getValue(org.jooq.test.mysql.generatedclasses.tables.TLanguage.ID));
+  }
+}

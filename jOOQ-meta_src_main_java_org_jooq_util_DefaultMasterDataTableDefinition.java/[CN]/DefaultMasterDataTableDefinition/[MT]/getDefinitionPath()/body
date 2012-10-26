@@ -1,3 +1,0 @@
-{
-  return Arrays.<Definition>asList(getSchema(),this);
-}

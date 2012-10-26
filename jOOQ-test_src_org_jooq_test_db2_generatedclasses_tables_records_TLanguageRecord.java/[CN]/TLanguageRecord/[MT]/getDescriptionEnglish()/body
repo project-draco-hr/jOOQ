@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.test.db2.generatedclasses.tables.TLanguage.DESCRIPTION_ENGLISH);
+}

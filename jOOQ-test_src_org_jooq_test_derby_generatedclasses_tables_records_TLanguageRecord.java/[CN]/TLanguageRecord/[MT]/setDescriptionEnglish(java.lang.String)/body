@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.derby.generatedclasses.tables.TLanguage.DESCRIPTION_ENGLISH,value);
+}

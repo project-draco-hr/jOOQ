@@ -1,7 +1,0 @@
-{
-  String columnName=getConfiguredMasterDataTable().getDescription();
-  if (columnName == null) {
-    columnName=getLiteralColumn().getName();
-  }
-  return getColumn(columnName);
-}

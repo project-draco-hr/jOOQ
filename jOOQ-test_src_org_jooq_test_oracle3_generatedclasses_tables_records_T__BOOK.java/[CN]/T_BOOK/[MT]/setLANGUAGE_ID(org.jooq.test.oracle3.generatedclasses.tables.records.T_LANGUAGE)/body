@@ -1,0 +1,8 @@
+{
+  if (value == null) {
+    setValue(org.jooq.test.oracle3.generatedclasses.tables.T_BOOK.T_BOOK.LANGUAGE_ID,null);
+  }
+ else {
+    setValue(org.jooq.test.oracle3.generatedclasses.tables.T_BOOK.T_BOOK.LANGUAGE_ID,value.getValue(org.jooq.test.oracle3.generatedclasses.tables.T_LANGUAGE.T_LANGUAGE.ID));
+  }
+}

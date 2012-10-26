@@ -1,0 +1,6 @@
+{
+  this.cd=cd;
+  this.description=description;
+  this.descriptionEnglish=descriptionEnglish;
+  this.id=id;
+}

@@ -1,8 +1,5 @@
 {
-  if (definition instanceof MasterDataTableDefinition) {
-    return "enums";
-  }
- else   if (definition instanceof TableDefinition) {
+  if (definition instanceof TableDefinition) {
     return "tables";
   }
  else   if (definition instanceof UDTDefinition) {

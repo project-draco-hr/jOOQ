@@ -64,9 +64,6 @@
     try {
       List<ForeignKeyDefinition> foreignKeys=table.getForeignKeys();
       for (      ForeignKeyDefinition foreignKey : foreignKeys) {
-        if (foreignKey.getReferencedTable() instanceof MasterDataTableDefinition) {
-          continue;
-        }
         out.print("\tpublic static final ");
         out.print(ForeignKey.class);
         out.print("<");

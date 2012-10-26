@@ -1,3 +1,3 @@
 {
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.test.sqlite.generatedclasses.tables.records.TBookRecord,?>>asList(org.jooq.test.sqlite.generatedclasses.Keys.FK_T_BOOK_T_AUTHOR_2,org.jooq.test.sqlite.generatedclasses.Keys.FK_T_BOOK_T_AUTHOR_1);
+  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.test.sqlite.generatedclasses.tables.records.TBookRecord,?>>asList(org.jooq.test.sqlite.generatedclasses.Keys.FK_T_BOOK_T_AUTHOR_2,org.jooq.test.sqlite.generatedclasses.Keys.FK_T_BOOK_T_AUTHOR_1,org.jooq.test.sqlite.generatedclasses.Keys.FK_T_BOOK_T_LANGUAGE_1);
 }

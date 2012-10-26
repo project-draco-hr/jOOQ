@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(org.jooq.test.oracle3.generatedclasses.tables.T_BOOK.T_BOOK).where(org.jooq.test.oracle3.generatedclasses.tables.T_BOOK.T_BOOK.LANGUAGE_ID.equal(getValue(org.jooq.test.oracle3.generatedclasses.tables.T_LANGUAGE.T_LANGUAGE.ID))).fetch();
+}

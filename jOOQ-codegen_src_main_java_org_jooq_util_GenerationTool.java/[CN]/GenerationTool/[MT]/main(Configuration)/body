@@ -57,7 +57,6 @@
     database.setExcludes(defaultString(g.getDatabase().getExcludes()).split(","));
     database.setRecordVersionFields(defaultString(g.getDatabase().getRecordVersionFields()).split(","));
     database.setRecordTimestampFields(defaultString(g.getDatabase().getRecordTimestampFields()).split(","));
-    database.setConfiguredMasterDataTables(g.getDatabase().getMasterDataTables());
     database.setConfiguredCustomTypes(g.getDatabase().getCustomTypes());
     database.setConfiguredEnumTypes(g.getDatabase().getEnumTypes());
     database.setConfiguredForcedTypes(g.getDatabase().getForcedTypes());

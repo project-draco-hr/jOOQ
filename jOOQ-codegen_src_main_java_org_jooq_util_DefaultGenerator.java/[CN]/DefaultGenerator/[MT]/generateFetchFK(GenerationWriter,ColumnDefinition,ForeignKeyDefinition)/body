@@ -4,8 +4,5 @@
     return;
   }
   TableDefinition referenced=foreignKey.getReferencedTable();
-  if (referenced instanceof MasterDataTableDefinition) {
-    return;
-  }
   printFetchMethod(out,column,foreignKey,referenced);
 }

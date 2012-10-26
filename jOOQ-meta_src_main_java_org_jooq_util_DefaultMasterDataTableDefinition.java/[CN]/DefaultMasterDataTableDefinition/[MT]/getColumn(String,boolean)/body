@@ -1,3 +1,0 @@
-{
-  return delegate.getColumn(columnName,ignoreCase);
-}

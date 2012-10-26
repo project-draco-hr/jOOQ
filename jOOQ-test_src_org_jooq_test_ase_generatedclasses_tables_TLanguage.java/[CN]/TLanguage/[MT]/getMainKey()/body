@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.ase.generatedclasses.Keys.T_LANGUAGE__PK_T_LANGUAGE;
+}

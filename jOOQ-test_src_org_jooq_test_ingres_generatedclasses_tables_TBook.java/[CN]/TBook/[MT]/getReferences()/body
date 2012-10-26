@@ -1,3 +1,3 @@
 {
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.test.ingres.generatedclasses.tables.records.TBookRecord,?>>asList(org.jooq.test.ingres.generatedclasses.Keys.FK_T_BOOK_AUTHOR_ID,org.jooq.test.ingres.generatedclasses.Keys.FK_T_BOOK_CO_AUTHOR_ID);
+  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.test.ingres.generatedclasses.tables.records.TBookRecord,?>>asList(org.jooq.test.ingres.generatedclasses.Keys.FK_T_BOOK_AUTHOR_ID,org.jooq.test.ingres.generatedclasses.Keys.FK_T_BOOK_CO_AUTHOR_ID,org.jooq.test.ingres.generatedclasses.Keys.FK_T_BOOK_LANGUAGE_ID);
 }

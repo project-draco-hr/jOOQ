@@ -1,8 +1,0 @@
-{
-  for (  ColumnDefinition column : getColumns()) {
-    if (getDatabase().getRelations().getPrimaryKey(column) != null) {
-      return column;
-    }
-  }
-  return null;
-}

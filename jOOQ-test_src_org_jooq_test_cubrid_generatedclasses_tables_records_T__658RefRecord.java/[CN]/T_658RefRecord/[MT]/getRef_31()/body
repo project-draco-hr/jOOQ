@@ -1,3 +1,0 @@
-{
-  return getValue(org.jooq.test.cubrid.generatedclasses.tables.T_658Ref.REF_31);
-}

@@ -1,6 +1,0 @@
-TableDefinition table
-String name
-int position
-DataTypeDefinition type
-boolean isIdentity
-String comment

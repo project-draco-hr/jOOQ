@@ -11,7 +11,7 @@
   b1.setValue(TBook_AUTHOR_ID(),8);
   b1.setValue(TBook_TITLE(),"XX 1");
   b1.setValue(TBook_PUBLISHED_IN(),2000);
-  b1.setValue((Field<Object>)TBook_LANGUAGE_ID(),on(TBook_LANGUAGE_ID().getDataType().getType()).get("en"));
+  b1.setValue(TBook_LANGUAGE_ID(),1);
   int[] result1=create().batchStore(a1,b1,a2).execute();
   assertEquals(3,result1.length);
   testBatchAuthors("XX","YY");

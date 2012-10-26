@@ -6,9 +6,6 @@
   if (database.getSequences(schema).size() > 0) {
     generateSequences(schema,targetSchemaDir);
   }
-  if (database.getMasterDataTables(schema).size() > 0) {
-    generateMasterTables(schema);
-  }
   if (database.getTables(schema).size() > 0) {
     generateTables(schema);
   }

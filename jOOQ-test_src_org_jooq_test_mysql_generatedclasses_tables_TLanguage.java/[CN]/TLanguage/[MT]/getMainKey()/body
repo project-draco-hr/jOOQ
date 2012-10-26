@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.mysql.generatedclasses.Keys.KEY_T_LANGUAGE_PRIMARY;
+}

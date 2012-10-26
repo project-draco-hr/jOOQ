@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.sqlserver.generatedclasses.tables.records.T_658RefRecord.class;
-}

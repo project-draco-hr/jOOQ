@@ -140,10 +140,6 @@
       out.print(", ?>>asList(");
       String separator="";
       for (      ForeignKeyDefinition foreignKey : foreignKeys) {
-        TableDefinition referencedTable=foreignKey.getReferencedTable();
-        if (referencedTable instanceof MasterDataTableDefinition) {
-          continue;
-        }
         out.print(separator);
         out.print(strategy.getFullJavaIdentifier(foreignKey));
         separator=", ";

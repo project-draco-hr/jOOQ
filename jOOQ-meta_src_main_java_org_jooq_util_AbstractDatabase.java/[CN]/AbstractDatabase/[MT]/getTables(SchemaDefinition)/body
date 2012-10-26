@@ -2,7 +2,7 @@
   if (tables == null) {
     tables=new ArrayList<TableDefinition>();
     try {
-      List<TableDefinition> t=filterMasterDataTables(getTables0(),false);
+      List<TableDefinition> t=getTables0();
       tables=filterExcludeInclude(t);
       log.info("Tables fetched",fetchedSize(t,tables));
     }

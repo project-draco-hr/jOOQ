@@ -1,3 +1,0 @@
-{
-  this(table,name,position,type,true,isIdentity,comment);
-}

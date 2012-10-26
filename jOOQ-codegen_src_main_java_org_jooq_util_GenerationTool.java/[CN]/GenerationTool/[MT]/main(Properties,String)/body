@@ -7,15 +7,6 @@
   jdbc.setSchema(properties.getProperty("jdbc.Schema"));
   Strategy strategy=new Strategy();
   strategy.setName(properties.containsKey("generator.strategy") ? properties.getProperty("generator.strategy") : null);
-  List<MasterDataTable> masterDataTables=new ArrayList<MasterDataTable>();
-  for (  String name : defaultString(properties.getProperty("generator.generate.master-data-tables")).split(",")) {
-    if (isBlank(name))     continue;
-    MasterDataTable table=new MasterDataTable();
-    table.setName(name);
-    table.setLiteral(properties.getProperty("generator.generate.master-data-table-literal." + name));
-    table.setDescription(properties.getProperty("generator.generate.master-data-table-description." + name));
-    masterDataTables.add(table);
-  }
   List<EnumType> enumTypes=new ArrayList<EnumType>();
   for (  String property : properties.stringPropertyNames()) {
     if (property.startsWith("generator.database.enum-type.")) {
@@ -44,7 +35,6 @@
   database.setUnsignedTypes(!"false".equalsIgnoreCase(properties.getProperty("generator.generate.unsigned-types")));
   database.setInputSchema(properties.containsKey("generator.database.input-schema") ? properties.getProperty("generator.database.input-schema") : null);
   database.setOutputSchema(properties.containsKey("generator.database.output-schema") ? properties.getProperty("generator.database.output-schema") : null);
-  if (!masterDataTables.isEmpty())   database.getMasterDataTables().addAll(masterDataTables);
   if (!enumTypes.isEmpty())   database.getEnumTypes().addAll(enumTypes);
   if (!forcedTypes.isEmpty())   database.getForcedTypes().addAll(forcedTypes);
   Target target=new Target();

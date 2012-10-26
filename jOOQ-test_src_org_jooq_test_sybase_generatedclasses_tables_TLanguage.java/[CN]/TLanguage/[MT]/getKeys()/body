@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.sybase.generatedclasses.tables.records.TLanguageRecord>>asList(org.jooq.test.sybase.generatedclasses.Keys.T_LANGUAGE__PK_T_LANGUAGE);
+}
