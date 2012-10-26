@@ -1,8 +1,8 @@
 {
-  super(name);
   this.parameterIndexes=new HashMap<Parameter<?>,Integer>();
   this.schema=schema;
   this.pkg=pkg;
+  this.name=name;
   this.allParameters=new ArrayList<Parameter<?>>();
   this.inParameters=new ArrayList<Parameter<?>>();
   this.outParameters=new ArrayList<Parameter<?>>();

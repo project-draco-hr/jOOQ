@@ -1,4 +1,5 @@
 {
-  super(name);
+  super();
   this.schema=schema;
+  this.name=name;
 }

@@ -1,5 +1,4 @@
 {
-  super(alias);
   this.wrapped=wrapped;
   this.alias=alias;
   this.wrapInParentheses=wrapInParentheses;
