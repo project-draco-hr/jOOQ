@@ -1,4 +1,0 @@
-{
-  assertEquals("{\"foo\"}",DefaultBindContext.postgresArrayString(new String[]{"foo"}));
-  assertEquals("{\"foo\", \"bar\"}",DefaultBindContext.postgresArrayString(new String[]{"foo","bar"}));
-}

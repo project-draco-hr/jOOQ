@@ -1,0 +1,3 @@
+{
+  PostgresUtils.toPGArrayString(null);
+}

@@ -1,3 +1,0 @@
-{
-  assertEquals("{null}",DefaultBindContext.postgresArrayString(new Object[]{null}));
-}

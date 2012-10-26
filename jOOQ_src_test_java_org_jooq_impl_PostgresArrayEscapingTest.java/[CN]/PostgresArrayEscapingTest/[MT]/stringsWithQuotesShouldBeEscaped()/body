@@ -1,3 +1,0 @@
-{
-  assertEquals("{\"\\\"foo\"}",DefaultBindContext.postgresArrayString(new String[]{"\"foo"}));
-}

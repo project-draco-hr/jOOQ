@@ -1,0 +1,4 @@
+{
+  assertEquals("{\"foo\"}",PostgresUtils.toPGArrayString(new String[]{"foo"}));
+  assertEquals("{\"foo\", \"bar\"}",PostgresUtils.toPGArrayString(new String[]{"foo","bar"}));
+}
