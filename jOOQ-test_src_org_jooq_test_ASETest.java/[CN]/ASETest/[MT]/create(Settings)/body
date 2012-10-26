@@ -1,3 +1,3 @@
 {
-  return new ASEFactory(getConnection(),settings);
+  return new Factory(getConnection(),SQLDialect.ASE,settings);
 }

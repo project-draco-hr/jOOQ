@@ -1,3 +1,0 @@
-{
-  super(SQLDialect.DB2,settings);
-}

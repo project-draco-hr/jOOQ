@@ -1,7 +1,7 @@
 {
   Class.forName("oracle.jdbc.OracleDriver");
   Connection connection=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","TEST","TEST");
-  OracleFactory ora=new OracleFactory(connection);
+  Factory ora=new Factory(connection,SQLDialect.ORACLE);
   ora.fetch("select * from t_book b join t_author a on b.author_id = a.id");
   System.out.println("Unnested table:");
   System.out.println("---------------");

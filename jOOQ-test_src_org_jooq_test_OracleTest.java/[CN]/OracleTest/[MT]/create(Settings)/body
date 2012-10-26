@@ -1,3 +1,3 @@
 {
-  return new OracleFactory(getConnection(),settings);
+  return new Factory(getConnection(),SQLDialect.ORACLE,settings);
 }

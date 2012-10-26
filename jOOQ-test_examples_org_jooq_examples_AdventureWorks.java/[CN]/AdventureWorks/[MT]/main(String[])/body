@@ -1,6 +1,6 @@
 {
   Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
   Connection connection=DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=AdventureWorks;integratedSecurity=true");
-  Factory create=new SQLServerFactory(connection);
+  Factory create=new Factory(connection,SQLDialect.SQLSERVER);
   System.out.println(create.select(Employee.getFields()).select(val("###")).select(Department.getFields()).select(val("###")).select(Contact.getFields()).from(Employee).join(EmployeeAddress).using(Employee.EmployeeID).join(EmployeeDepartmentHistory).using(Employee.EmployeeID).join(Department).using(Department.DepartmentID).join(Contact).using(Contact.ContactID).fetch());
 }

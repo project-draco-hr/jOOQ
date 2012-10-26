@@ -1,5 +1,5 @@
 {
   context=new Mockery();
   statement=context.mock(PreparedStatement.class);
-  create=new OracleFactory((Connection)null);
+  create=new Factory(SQLDialect.ORACLE);
 }

@@ -1,3 +1,3 @@
 {
-  return new CUBRIDFactory(getConnection(),settings);
+  return new Factory(getConnection(),SQLDialect.CUBRID,settings);
 }

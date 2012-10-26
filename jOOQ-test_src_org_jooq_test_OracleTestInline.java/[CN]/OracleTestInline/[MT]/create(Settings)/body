@@ -2,5 +2,5 @@
   settings=(settings != null) ? settings : new Settings();
   settings.withStatementType(StatementType.STATIC_STATEMENT);
   settings.withRenderFormatted(true);
-  return new OracleFactory(getConnection(),settings);
+  return new Factory(getConnection(),SQLDialect.ORACLE,settings);
 }
