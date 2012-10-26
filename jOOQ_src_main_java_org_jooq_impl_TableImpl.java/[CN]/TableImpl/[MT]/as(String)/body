@@ -1,6 +1,6 @@
 {
   if (alias != null) {
-    return alias.as(as);
+    return alias.wrapped().as(as);
   }
  else {
     return new TableAlias<R>(this,as);

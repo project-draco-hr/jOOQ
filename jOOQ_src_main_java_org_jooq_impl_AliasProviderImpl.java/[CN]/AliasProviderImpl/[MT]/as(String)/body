@@ -1,3 +1,0 @@
-{
-  return aliasProvider.as(as);
-}

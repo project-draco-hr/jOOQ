@@ -1,4 +1,4 @@
 {
   super(alias,table.getSchema());
-  this.aliasProvider=new AliasProviderImpl<Table<R>>(table,alias,wrapInParentheses);
+  this.alias=new Alias<Table<R>>(table,alias,wrapInParentheses);
 }

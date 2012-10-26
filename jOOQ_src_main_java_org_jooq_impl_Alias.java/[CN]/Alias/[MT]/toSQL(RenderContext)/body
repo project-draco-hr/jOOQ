@@ -3,7 +3,7 @@
     if (wrapInParentheses) {
       context.sql("(");
     }
-    context.sql(aliasProvider);
+    context.sql(wrapped);
     if (wrapInParentheses) {
       context.sql(")");
     }
@@ -16,7 +16,7 @@ switch (context.getDialect()) {
 case HSQLDB:
 case POSTGRES:
 {
-        Object o=aliasProvider;
+        Object o=wrapped;
         if (context.declareTables() && o instanceof ArrayTable) {
           ArrayTable table=(ArrayTable)o;
           context.sql("(");

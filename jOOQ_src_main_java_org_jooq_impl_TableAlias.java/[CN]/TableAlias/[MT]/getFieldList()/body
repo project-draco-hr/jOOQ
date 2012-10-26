@@ -1,7 +1,7 @@
 {
   if (aliasedFields == null) {
     aliasedFields=new FieldList();
-    for (    Field<?> field : aliasProvider.getAliasProvider().getFields()) {
+    for (    Field<?> field : alias.wrapped().getFields()) {
       registerTableField(field);
     }
   }

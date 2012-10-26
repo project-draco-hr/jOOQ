@@ -1,4 +1,4 @@
 {
   super(alias,field.getDataType());
-  this.aliasProvider=new AliasProviderImpl<Field<T>>(field,alias,false);
+  this.alias=new Alias<Field<T>>(field,alias,false);
 }

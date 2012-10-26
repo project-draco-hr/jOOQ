@@ -1,6 +1,6 @@
 {
   super(alias);
-  this.aliasProvider=aliasProvider;
+  this.wrapped=wrapped;
   this.alias=alias;
   this.wrapInParentheses=wrapInParentheses;
 }

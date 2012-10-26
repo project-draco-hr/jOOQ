@@ -1,6 +1,6 @@
 {
   if (context.declareFields() || context.declareTables()) {
-    context.bind(aliasProvider);
+    context.bind(wrapped);
   }
  else {
   }

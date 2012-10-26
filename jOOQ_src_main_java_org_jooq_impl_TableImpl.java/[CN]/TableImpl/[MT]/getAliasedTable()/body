@@ -1,6 +1,6 @@
 {
   if (alias != null) {
-    return alias.getAliasProvider();
+    return alias.wrapped();
   }
   return null;
 }
