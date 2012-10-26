@@ -1,7 +1,0 @@
-{
-  List<Long> result=new ArrayList<Long>(size());
-  for (  R record : this) {
-    result.add(record.getValueAsLong(field));
-  }
-  return result;
-}

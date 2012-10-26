@@ -1,3 +1,0 @@
-{
-  return getValueAsBigDecimal(getIndex(field));
-}

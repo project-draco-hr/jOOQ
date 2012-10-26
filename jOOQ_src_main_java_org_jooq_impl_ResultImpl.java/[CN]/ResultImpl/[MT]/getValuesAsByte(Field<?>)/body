@@ -1,7 +1,0 @@
-{
-  List<Byte> result=new ArrayList<Byte>(size());
-  for (  R record : this) {
-    result.add(record.getValueAsByte(field));
-  }
-  return result;
-}

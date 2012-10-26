@@ -1,3 +1,0 @@
-{
-  return getValuesAsShort(getField(fieldName));
-}

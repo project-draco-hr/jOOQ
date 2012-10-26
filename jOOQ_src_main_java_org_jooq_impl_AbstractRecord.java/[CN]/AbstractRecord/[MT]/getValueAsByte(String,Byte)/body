@@ -1,3 +1,0 @@
-{
-  return getValueAsByte(getField(fieldName),defaultValue);
-}

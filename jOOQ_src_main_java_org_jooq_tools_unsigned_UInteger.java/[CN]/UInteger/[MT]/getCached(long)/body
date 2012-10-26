@@ -1,0 +1,4 @@
+{
+  if (VALUES != null && value < VALUES.length)   return VALUES[(int)value];
+  return null;
+}

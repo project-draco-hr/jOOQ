@@ -1,3 +1,0 @@
-{
-  return getValueAsFloat(getField(fieldName));
-}

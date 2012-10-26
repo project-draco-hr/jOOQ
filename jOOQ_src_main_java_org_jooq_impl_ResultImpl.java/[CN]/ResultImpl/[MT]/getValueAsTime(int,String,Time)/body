@@ -1,3 +1,0 @@
-{
-  return get(index).getValueAsTime(fieldName,defaultValue);
-}

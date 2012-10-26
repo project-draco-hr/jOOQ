@@ -1,0 +1,5 @@
+{
+  UInteger cached;
+  if ((cached=getCached(value)) != null)   return cached;
+  return new UInteger(value,true);
+}

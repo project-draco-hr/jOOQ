@@ -3,7 +3,7 @@
   Settings work=create.getSettings();
   Settings orig=SettingsTools.clone(work);
   try {
-    create.setData(TableRecordImpl.OMIT_RETURNING_CLAUSE,true);
+    create.setData(UpdatableRecordImpl.OMIT_RETURNING_CLAUSE,true);
     work.setExecuteListeners(Arrays.asList(QueryCollector.class.getName()));
     work.setExecuteLogging(false);
     for (int i=0; i < records.length; i++) {
@@ -30,7 +30,7 @@
     }
   }
   finally {
-    create.getData().remove(TableRecordImpl.OMIT_RETURNING_CLAUSE);
+    create.getData().remove(UpdatableRecordImpl.OMIT_RETURNING_CLAUSE);
     work.setExecuteListeners(orig.getExecuteListeners());
     work.setExecuteLogging(orig.isExecuteLogging());
   }

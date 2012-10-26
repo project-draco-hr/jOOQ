@@ -1,3 +1,0 @@
-{
-  return getValueAsString(getField(fieldName),defaultValue);
-}

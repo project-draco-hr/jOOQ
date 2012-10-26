@@ -1,0 +1,4 @@
+{
+  UpdatableTable<R> table=getTable();
+  return table.getRecordTimestamp() != null || table.getRecordVersion() != null;
+}

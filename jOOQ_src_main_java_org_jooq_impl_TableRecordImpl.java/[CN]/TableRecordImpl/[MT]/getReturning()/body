@@ -1,8 +1,0 @@
-{
-  Collection<Field<?>> result=new LinkedHashSet<Field<?>>();
-  Identity<R,?> identity=getTable().getIdentity();
-  if (identity != null) {
-    result.add(identity.getField());
-  }
-  return result;
-}

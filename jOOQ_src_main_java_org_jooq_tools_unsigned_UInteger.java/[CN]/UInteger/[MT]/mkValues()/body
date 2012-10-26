@@ -1,0 +1,8 @@
+{
+  int precacheSize=getPrecacheSize();
+  UInteger[] ret;
+  if (precacheSize <= 0)   return null;
+  ret=new UInteger[precacheSize];
+  for (int i=0; i < precacheSize; i++)   ret[i]=new UInteger(i);
+  return ret;
+}

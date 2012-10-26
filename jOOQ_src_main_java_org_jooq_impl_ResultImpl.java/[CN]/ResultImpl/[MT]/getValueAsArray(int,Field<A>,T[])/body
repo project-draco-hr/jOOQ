@@ -1,3 +1,0 @@
-{
-  return get(index).getValueAsArray(field,defaultValue);
-}

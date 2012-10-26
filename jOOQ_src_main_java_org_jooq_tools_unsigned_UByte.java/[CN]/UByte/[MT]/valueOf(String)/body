@@ -1,3 +1,3 @@
 {
-  return valueOf(rangeCheck(Short.parseShort(value)));
+  return valueOfUnchecked(rangeCheck(Short.parseShort(value)));
 }

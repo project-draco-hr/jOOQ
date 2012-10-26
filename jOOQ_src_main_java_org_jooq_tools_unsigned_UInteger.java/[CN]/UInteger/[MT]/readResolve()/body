@@ -1,0 +1,6 @@
+{
+  UInteger cached;
+  rangeCheck(value);
+  if ((cached=getCached(value)) != null)   return cached;
+  return this;
+}

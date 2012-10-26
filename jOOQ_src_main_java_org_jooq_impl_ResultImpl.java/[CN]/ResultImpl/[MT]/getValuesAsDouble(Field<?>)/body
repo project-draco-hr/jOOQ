@@ -1,7 +1,0 @@
-{
-  List<Double> result=new ArrayList<Double>(size());
-  for (  R record : this) {
-    result.add(record.getValueAsDouble(field));
-  }
-  return result;
-}

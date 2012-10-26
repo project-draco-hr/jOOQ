@@ -1,4 +1,0 @@
-{
-  final T[] result=getValueAsArray(field);
-  return result == null ? defaultValue : result;
-}

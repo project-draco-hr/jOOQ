@@ -1,0 +1,17 @@
+{
+  BigInteger result=null;
+  if (isTimestampOrVersionAvailable()) {
+    TableField<R,? extends Number> version=getTable().getRecordVersion();
+    if (version != null) {
+      Number value=getValue(version);
+      if (value == null) {
+        result=BigInteger.ONE;
+      }
+ else {
+        result=new BigInteger(value.toString()).add(BigInteger.ONE);
+      }
+      addValue(store,version,result);
+    }
+  }
+  return result;
+}

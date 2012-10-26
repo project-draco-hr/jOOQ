@@ -1,4 +1,5 @@
 {
-  super(name,schema);
+  super(name);
   this.fields=new FieldList();
+  this.schema=schema;
 }

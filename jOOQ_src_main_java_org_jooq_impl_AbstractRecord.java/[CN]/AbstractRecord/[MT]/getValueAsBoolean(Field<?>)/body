@@ -1,3 +1,0 @@
-{
-  return getValueAsBoolean(getIndex(field));
-}

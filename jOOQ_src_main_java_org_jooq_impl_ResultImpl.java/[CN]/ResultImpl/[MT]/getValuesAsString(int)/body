@@ -1,3 +1,0 @@
-{
-  return getValuesAsString(getField(fieldIndex));
-}

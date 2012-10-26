@@ -1,4 +1,0 @@
-{
-  A result=getValue(field);
-  return result == null ? null : result.get();
-}

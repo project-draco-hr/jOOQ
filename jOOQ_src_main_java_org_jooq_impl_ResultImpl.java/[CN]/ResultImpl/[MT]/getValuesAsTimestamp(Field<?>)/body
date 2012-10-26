@@ -1,7 +1,0 @@
-{
-  List<Timestamp> result=new ArrayList<Timestamp>(size());
-  for (  R record : this) {
-    result.add(record.getValueAsTimestamp(field));
-  }
-  return result;
-}

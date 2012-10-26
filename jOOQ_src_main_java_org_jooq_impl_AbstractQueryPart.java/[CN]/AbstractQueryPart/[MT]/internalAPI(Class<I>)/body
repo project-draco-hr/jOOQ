@@ -1,3 +1,0 @@
-{
-  return internalType.cast(this);
-}

@@ -1,5 +1,9 @@
 {
-  Collection<Field<?>> result=super.getReturning();
+  Collection<Field<?>> result=new LinkedHashSet<Field<?>>();
+  Identity<R,?> identity=getTable().getIdentity();
+  if (identity != null) {
+    result.add(identity.getField());
+  }
   result.addAll(getMainKey().getFields());
   return result;
 }

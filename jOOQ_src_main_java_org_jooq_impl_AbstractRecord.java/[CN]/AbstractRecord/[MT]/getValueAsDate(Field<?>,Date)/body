@@ -1,3 +1,0 @@
-{
-  return getValueAsDate(getIndex(field),defaultValue);
-}

@@ -28,17 +28,17 @@
   for (int i=0; i < foreignKey.getKeyColumns().size(); i++) {
     ColumnDefinition referencingColumn=foreignKey.getKeyColumns().get(i);
     ColumnDefinition referencedColumn=foreignKey.getReferencedColumns().get(i);
-    DataTypeDefinition foreignType=referencingColumn.getType();
-    DataTypeDefinition primaryType=referencedColumn.getType();
     out.print("\t\t\tsetValue(");
     out.print(getStrategy().getFullJavaIdentifier(referencingColumn));
-    out.print(", value.getValue");
-    if (!match(foreignType,primaryType)) {
-      out.print("As");
-      out.print(getSimpleJavaType(referencingColumn.getType()));
-    }
-    out.print("(");
+    out.print(", value.getValue(");
     out.print(strategy.getFullJavaIdentifier(referencedColumn));
+    DataTypeDefinition foreignType=referencingColumn.getType();
+    DataTypeDefinition primaryType=referencedColumn.getType();
+    if (!match(foreignType,primaryType)) {
+      out.print(", ");
+      out.print(getSimpleJavaType(referencingColumn.getType()));
+      out.print(".class");
+    }
     out.println("));");
   }
   out.println("\t\t}");

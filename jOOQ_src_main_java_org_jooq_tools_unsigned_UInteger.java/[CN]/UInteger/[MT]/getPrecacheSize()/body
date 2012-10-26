@@ -1,0 +1,25 @@
+{
+  String prop=null;
+  long propParsed;
+  try {
+    prop=System.getProperty(PRECACHE_PROPERTY);
+  }
+ catch (  SecurityException e) {
+    return DEFAULT_PRECACHE_SIZE;
+  }
+  if (prop == null)   return DEFAULT_PRECACHE_SIZE;
+  if (prop.length() <= 0) {
+    return DEFAULT_PRECACHE_SIZE;
+  }
+  try {
+    propParsed=Long.parseLong(prop);
+  }
+ catch (  NumberFormatException e) {
+    return DEFAULT_PRECACHE_SIZE;
+  }
+  if (propParsed < 0)   return 0;
+  if (propParsed > Integer.MAX_VALUE) {
+    return Integer.MAX_VALUE;
+  }
+  return (int)propParsed;
+}

@@ -1,3 +1,23 @@
 {
-  return deleteUsing(getMainKey().getFieldsArray());
+  TableField<R,?>[] keys=getMainKey().getFieldsArray();
+  try {
+    DeleteQuery<R> delete1=create().deleteQuery(getTable());
+    Util.addConditions(delete1,this,keys);
+    if (isExecuteWithOptimisticLocking()) {
+      if (isTimestampOrVersionAvailable()) {
+        addConditionForVersionAndTimestamp(delete1);
+      }
+ else {
+        checkIfChanged(keys);
+      }
+    }
+    int result=delete1.execute();
+    checkIfChanged(result,null,null);
+    return result;
+  }
+  finally {
+    for (    Field<?> field : getFields()) {
+      getValue0(field).setChanged(true);
+    }
+  }
 }
