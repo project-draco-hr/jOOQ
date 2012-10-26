@@ -135,7 +135,7 @@
 switch (dialect) {
 case POSTGRES:
 {
-        stmt.setString(nextIndex(),postgresArrayString(value));
+        stmt.setString(nextIndex(),postgresArrayString((Object[])value));
         break;
       }
 case HSQLDB:
