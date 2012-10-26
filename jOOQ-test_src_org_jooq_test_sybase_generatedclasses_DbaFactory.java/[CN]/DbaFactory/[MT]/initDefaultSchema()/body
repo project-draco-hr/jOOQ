@@ -1,3 +1,0 @@
-{
-  org.jooq.conf.SettingsTools.getRenderMapping(getSettings()).setDefaultSchema(org.jooq.test.sybase.generatedclasses.Dba.DBA.getName());
-}

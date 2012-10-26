@@ -1,3 +1,0 @@
-{
-  org.jooq.conf.SettingsTools.getRenderMapping(getSettings()).setDefaultSchema(org.jooq.examples.mysql.sakila.Sakila.SAKILA.getName());
-}

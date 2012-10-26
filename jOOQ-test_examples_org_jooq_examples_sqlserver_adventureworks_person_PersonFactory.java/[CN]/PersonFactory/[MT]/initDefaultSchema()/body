@@ -1,3 +1,0 @@
-{
-  org.jooq.conf.SettingsTools.getRenderMapping(getSettings()).setDefaultSchema(org.jooq.examples.sqlserver.adventureworks.person.Person.Person.getName());
-}

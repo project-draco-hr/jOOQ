@@ -1,7 +1,7 @@
 {
   Class.forName("com.mysql.jdbc.Driver");
   Connection connection=DriverManager.getConnection("jdbc:mysql://localhost/test2","root","");
-  Test2Factory create=new Test2Factory(connection);
+  Factory create=new Factory(connection,SQLDialect.MYSQL);
   TBook b=T_BOOK.as("b");
   TAuthor a=T_AUTHOR.as("a");
   TBookStore s=T_BOOK_STORE.as("s");

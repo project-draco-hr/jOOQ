@@ -1,7 +1,7 @@
 {
   Class.forName("net.sourceforge.jtds.jdbc.Driver");
   Connection connection=DriverManager.getConnection("jdbc:jtds:sybase://lukas-hp:5000/TEST","sa","");
-  DboFactory create=new DboFactory(connection);
+  Factory create=new Factory(connection,SQLDialect.ASE);
   TBook b=T_BOOK.as("b");
   TAuthor a=T_AUTHOR.as("a");
   TBookStore s=T_BOOK_STORE.as("s");

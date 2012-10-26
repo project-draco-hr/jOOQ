@@ -1,2 +1,0 @@
-javax.sql.DataSource dataSource
-org.jooq.conf.Settings settings

@@ -1,9 +1,6 @@
 {
   if (isExecutable()) {
-    Configuration c=org.jooq.ConfigurationRegistry.provideFor(getConfiguration());
-    if (c == null) {
-      c=getConfiguration();
-    }
+    Configuration c=getConfiguration();
     ExecuteContext ctx=new DefaultExecuteContext(c,this);
     ExecuteListener listener=new ExecuteListeners(ctx);
     Connection connection=c.getConnection();

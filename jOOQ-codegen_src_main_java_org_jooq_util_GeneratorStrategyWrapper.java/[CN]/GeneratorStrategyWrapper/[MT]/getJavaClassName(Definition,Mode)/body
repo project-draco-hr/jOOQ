@@ -6,12 +6,5 @@
   className=delegate.getJavaClassName(definition,mode);
   className=overload(definition,mode,className);
   className=convertToJavaIdentifier(className);
-  if (mode == Mode.FACTORY) {
-    String alternative=convertToJavaIdentifier(delegate.getJavaClassName(definition,Mode.DEFAULT));
-    if (className.equalsIgnoreCase(alternative)) {
-      log.warn("Configuration problem","Factory has the same name as Schema, forcing Factory suffix. Consider correcting your strategy");
-      className+="Factory";
-    }
-  }
   return className;
 }

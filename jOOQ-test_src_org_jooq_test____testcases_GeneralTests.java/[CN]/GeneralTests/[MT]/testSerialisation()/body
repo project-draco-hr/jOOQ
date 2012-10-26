@@ -29,50 +29,6 @@
   create().attach(result);
   assertEquals(1,result.get(1).store());
   assertEquals("Georgie",create().fetchOne(TAuthor(),TAuthor_LAST_NAME().equal("Orwell")).getValue(TAuthor_FIRST_NAME()));
-  register(create());
-  try {
-    q=create().selectFrom(TAuthor()).orderBy(TAuthor_LAST_NAME());
-    q=runSerialisation(q);
-    q.execute();
-    result=q.getResult();
-    result=runSerialisation(result);
-    assertEquals("Coelho",result.getValue(0,TAuthor_LAST_NAME()));
-    assertEquals("Orwell",result.getValue(1,TAuthor_LAST_NAME()));
-    result.get(1).setValue(TAuthor_FIRST_NAME(),"Georgie");
-    result.get(1).store();
-  }
-  finally {
-    register(null);
-  }
-  try {
-    q=create().selectFrom(TAuthor()).orderBy(TAuthor_LAST_NAME());
-    q=runSerialisation(q);
-    register(create());
-    q.execute();
-    register(null);
-    result=q.getResult();
-    result=runSerialisation(result);
-    assertEquals("Coelho",result.getValue(0,TAuthor_LAST_NAME()));
-    assertEquals("Orwell",result.getValue(1,TAuthor_LAST_NAME()));
-    result.get(1).setValue(TAuthor_FIRST_NAME(),"G");
-    register(create());
-    result.get(1).store();
-  }
-  finally {
-    register(null);
-  }
-  try {
-    q=create().selectFrom(TAuthor()).orderBy(TAuthor_LAST_NAME());
-    q=runSerialisation(q);
-    register(create());
-    Cursor<A> cursor=q.fetchLazy();
-    register(null);
-    assertEquals("Coelho",cursor.fetchOne().getValue(TAuthor_LAST_NAME()));
-    assertEquals("Orwell",cursor.fetchOne().getValue(TAuthor_LAST_NAME()));
-  }
-  finally {
-    register(null);
-  }
   ConnectionProviderListener.c=create().getConnection();
   try {
     q=create(new Settings().withExecuteListeners(ConnectionProviderListener.class.getName())).selectFrom(TAuthor()).orderBy(TAuthor_LAST_NAME());
