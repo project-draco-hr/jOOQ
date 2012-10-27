@@ -1,1 +1,1 @@
-AbstractDelegatingQueryPart<InsertQuery<R>>
+AbstractDelegatingQuery<InsertQuery<R>>

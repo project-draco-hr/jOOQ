@@ -1,3 +1,0 @@
-{
-  return getDelegate().bind(index,value);
-}

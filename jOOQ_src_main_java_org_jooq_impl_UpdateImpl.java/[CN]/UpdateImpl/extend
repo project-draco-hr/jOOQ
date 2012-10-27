@@ -1,1 +1,1 @@
-AbstractDelegatingQueryPart<UpdateQuery<R>>
+AbstractDelegatingQuery<UpdateQuery<R>>

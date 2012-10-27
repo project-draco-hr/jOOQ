@@ -1,1 +1,1 @@
-AbstractDelegatingQueryPart<DeleteQueryImpl<R>>
+AbstractDelegatingQuery<DeleteQueryImpl<R>>

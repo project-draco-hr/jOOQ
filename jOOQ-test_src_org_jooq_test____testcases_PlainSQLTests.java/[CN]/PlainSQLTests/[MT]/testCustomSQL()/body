@@ -18,7 +18,7 @@
         context.statement().setInt(context.nextIndex(),2);
       }
  catch (      SQLException e) {
-        throw translate(getSQL(),e);
+        throw translate(null,e);
       }
     }
   }
@@ -42,7 +42,7 @@
         context.statement().setInt(context.nextIndex(),3);
       }
  catch (      SQLException e) {
-        throw translate(getSQL(),e);
+        throw translate(null,e);
       }
     }
   }
