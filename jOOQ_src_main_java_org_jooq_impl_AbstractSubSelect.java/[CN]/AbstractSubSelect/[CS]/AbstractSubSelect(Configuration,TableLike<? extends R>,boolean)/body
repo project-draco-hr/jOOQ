@@ -6,7 +6,7 @@
   this.condition=new ConditionProviderImpl();
   this.connectBy=new ConditionProviderImpl();
   this.connectByStartWith=new ConditionProviderImpl();
-  this.groupBy=new FieldList();
+  this.groupBy=new QueryPartList<GroupField>();
   this.having=new ConditionProviderImpl();
   this.orderBy=new SortFieldList();
   this.limit=new Limit();
