@@ -1,6 +1,0 @@
-{
-  values=new Value<?>[fields.getFields().size()];
-  for (int i=0; i < values.length; i++) {
-    values[i]=new Value<Object>(null);
-  }
-}
