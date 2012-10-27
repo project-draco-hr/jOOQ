@@ -1,3 +1,0 @@
-{
-  return greaterOrEqual(any(query));
-}
