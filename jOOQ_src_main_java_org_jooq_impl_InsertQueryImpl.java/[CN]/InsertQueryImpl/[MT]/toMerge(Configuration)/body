@@ -15,7 +15,7 @@
         condition=condition.and(other);
       }
     }
-    MergeOnConditionStep<R> on=create().mergeInto(into).usingDual().on(condition);
+    MergeOnConditionStep<R> on=create(configuration).mergeInto(into).usingDual().on(condition);
     MergeNotMatchedStep<R> notMatched=on;
     if (onDuplicateKeyUpdate) {
       notMatched=on.whenMatchedThenUpdate().set(updateMap);

@@ -103,7 +103,7 @@ case POSTGRES:
 }
  else if (Result.class.isAssignableFrom(type)) {
   ResultSet nested=(ResultSet)stmt.getObject(index);
-  return (T)getNewFactory(ctx).fetch(nested);
+  return (T)new Executor(ctx).fetch(nested);
 }
  else {
   return (T)stmt.getObject(index);

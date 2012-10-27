@@ -1,8 +1,0 @@
-{
-  if (configuration == null) {
-    return getNewFactory(DefaultConfiguration.DEFAULT_CONFIGURATION);
-  }
- else {
-    return new Executor(configuration);
-  }
-}

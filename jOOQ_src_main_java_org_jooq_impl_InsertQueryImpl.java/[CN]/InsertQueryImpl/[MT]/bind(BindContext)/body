@@ -17,7 +17,7 @@ case ORACLE:
 case SQLSERVER:
 case SYBASE:
 {
-    context.bind(toMerge());
+    context.bind(toMerge(context));
     break;
   }
 default :
@@ -46,7 +46,7 @@ case ORACLE:
 case SQLSERVER:
 case SYBASE:
 {
-context.bind(toMerge());
+context.bind(toMerge(context));
 break;
 }
 default :

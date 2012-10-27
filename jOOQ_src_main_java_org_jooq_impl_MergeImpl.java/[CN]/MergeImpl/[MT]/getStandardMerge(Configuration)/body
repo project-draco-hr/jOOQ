@@ -12,14 +12,14 @@ case SYBASE:
         for (int i=0; i < h2Select.getFields().size(); i++) {
           v.add(h2Select.getField(i).as("s" + (i + 1)));
         }
-        src=create().select(v).from(h2Select).asTable("src");
+        src=create(config).select(v).from(h2Select).asTable("src");
       }
  else {
         FieldList v=new FieldList();
         for (int i=0; i < getH2Values().size(); i++) {
           v.add(getH2Values().get(i).as("s" + (i + 1)));
         }
-        src=create().select(v).asTable("src");
+        src=create(config).select(v).asTable("src");
       }
       Set<Field<?>> onFields=new HashSet<Field<?>>();
       Condition condition=null;
@@ -65,7 +65,7 @@ case SYBASE:
         }
         insert.put(getH2Fields().get(i),src.getField(i));
       }
-      return create().mergeInto(table).using(src).on(condition).whenMatchedThenUpdate().set(update).whenNotMatchedThenInsert().set(insert);
+      return create(config).mergeInto(table).using(src).on(condition).whenMatchedThenUpdate().set(update).whenNotMatchedThenInsert().set(insert);
     }
 default :
   throw new SQLDialectNotSupportedException("The H2-specific MERGE syntax is not supported in dialect : " + config.getDialect());
