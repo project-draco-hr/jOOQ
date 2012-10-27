@@ -1,0 +1,8 @@
+{
+  if (context.subquery()) {
+    context.keyword(quantifier.toSQL()).sql(" (").formatIndentStart().formatNewLine().sql(part(context)).formatIndentEnd().formatNewLine().sql(")");
+  }
+ else {
+    context.keyword(quantifier.toSQL()).sql(" (").subquery(true).formatIndentStart().formatNewLine().sql(part(context)).formatIndentEnd().formatNewLine().subquery(false).sql(")");
+  }
+}

@@ -1,0 +1,5 @@
+{
+  this.quantifier=quantifier;
+  this.query=query;
+  this.array=null;
+}

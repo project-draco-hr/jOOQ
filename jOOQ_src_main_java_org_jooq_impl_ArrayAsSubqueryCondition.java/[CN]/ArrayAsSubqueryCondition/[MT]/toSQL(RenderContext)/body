@@ -1,3 +1,0 @@
-{
-  context.sql(field).sql(" ").keyword(operator.toSQL()).sql(" (").formatIndentStart().formatNewLine().sql(array(context)).formatIndentEnd().formatNewLine().sql(")");
-}
