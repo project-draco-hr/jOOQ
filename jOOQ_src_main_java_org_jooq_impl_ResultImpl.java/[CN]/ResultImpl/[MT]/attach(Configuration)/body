@@ -1,6 +1,8 @@
 {
   this.configuration=c;
-  for (  Attachable attachable : getAttachables()) {
-    attachable.attach(c);
+  for (  R record : records) {
+    if (record != null) {
+      record.attach(c);
+    }
   }
 }

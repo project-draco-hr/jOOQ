@@ -1,9 +1,0 @@
-{
-  List<Attachable> result=new ArrayList<Attachable>();
-  for (  Attachable item : records) {
-    if (item != null) {
-      result.add(item);
-    }
-  }
-  return result;
-}
