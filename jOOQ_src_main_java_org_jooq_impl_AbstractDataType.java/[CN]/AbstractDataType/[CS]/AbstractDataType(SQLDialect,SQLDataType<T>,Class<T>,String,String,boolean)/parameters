@@ -1,0 +1,6 @@
+SQLDialect dialect
+SQLDataType<T> sqlDataType
+Class<T> type
+String typeName
+String castTypeName
+boolean hasPrecisionAndScale

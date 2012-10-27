@@ -1,5 +1,5 @@
 {
-  Class<? extends T> type=field.getType();
+  Class<T> type=field.getType();
   DataType<T> dataType=field.getDataType();
   if (type == Blob.class) {
     return (T)stream.readBlob();

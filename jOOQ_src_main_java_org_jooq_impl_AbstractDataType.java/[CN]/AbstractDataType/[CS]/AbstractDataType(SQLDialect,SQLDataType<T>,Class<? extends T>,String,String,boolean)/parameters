@@ -1,6 +1,0 @@
-SQLDialect dialect
-SQLDataType<T> sqlDataType
-Class<? extends T> type
-String typeName
-String castTypeName
-boolean hasPrecisionAndScale

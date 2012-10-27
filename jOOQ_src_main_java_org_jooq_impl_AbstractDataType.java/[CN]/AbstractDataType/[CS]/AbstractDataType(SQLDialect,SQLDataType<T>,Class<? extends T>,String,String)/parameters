@@ -1,5 +1,0 @@
-SQLDialect dialect
-SQLDataType<T> sqldatatype
-Class<? extends T> type
-String typeName
-String castTypeName

@@ -1,0 +1,10 @@
+{
+  this.dialect=dialect;
+  this.sqlDataType=(SQLDataType<T>)((this instanceof SQLDataType) ? this : sqlDataType);
+  this.type=type;
+  this.typeName=typeName;
+  this.castTypeName=castTypeName;
+  this.hasPrecisionAndScale=hasPrecisionAndScale;
+  this.arrayType=(Class<T[]>)Array.newInstance(type,0).getClass();
+  init();
+}

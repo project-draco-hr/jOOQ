@@ -1,2 +1,0 @@
-SQLDialect dialect
-Class<? extends T> type
