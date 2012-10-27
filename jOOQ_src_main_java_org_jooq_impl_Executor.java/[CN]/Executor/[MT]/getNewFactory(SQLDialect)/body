@@ -1,3 +1,0 @@
-{
-  return getNewFactory(DEFAULT_INSTANCES[dialect.ordinal()]);
-}

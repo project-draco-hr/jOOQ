@@ -13,4 +13,5 @@
     }
     CLOBS.remove();
   }
+  LOCAL_CONFIGURATION.remove();
 }

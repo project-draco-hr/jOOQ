@@ -157,13 +157,7 @@ stmt.setArray(nextIndex(),on(connection).call("createARRAY",arrayRecord.getName(
 stmt.setString(nextIndex(),((EnumType)value).getLiteral());
 }
  else {
-try {
-LOCAL_CONFIGURATION.set(this);
 stmt.setObject(nextIndex(),value);
-}
-  finally {
-LOCAL_CONFIGURATION.remove();
-}
 }
 return this;
 }

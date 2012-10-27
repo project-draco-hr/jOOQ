@@ -15,4 +15,5 @@
   clean();
   BLOBS.set(new ArrayList<Blob>());
   CLOBS.set(new ArrayList<Clob>());
+  LOCAL_CONFIGURATION.set(configuration);
 }

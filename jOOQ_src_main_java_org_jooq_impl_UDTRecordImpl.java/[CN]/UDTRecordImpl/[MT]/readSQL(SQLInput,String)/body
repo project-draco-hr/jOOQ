@@ -1,6 +1,5 @@
 {
-  Executor configuration=Executor.getNewFactory(getUDT().getDataType().getDialect());
   for (  Field<?> field : getUDT().getFields()) {
-    setValue(configuration,stream,field);
+    setValue(DefaultExecuteContext.registeredConfiguration(),stream,field);
   }
 }
