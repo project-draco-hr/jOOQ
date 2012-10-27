@@ -2,7 +2,7 @@
   StringBuilder sb=new StringBuilder();
   Configuration configuration=DefaultExecuteContext.registeredConfiguration();
   if (configuration != null) {
-    Schema schema=Util.getMappedSchema(configuration,getUDT().getSchema());
+    Schema schema=Utils.getMappedSchema(configuration,getUDT().getSchema());
     if (schema != null) {
       sb.append(schema.getName());
       sb.append(".");

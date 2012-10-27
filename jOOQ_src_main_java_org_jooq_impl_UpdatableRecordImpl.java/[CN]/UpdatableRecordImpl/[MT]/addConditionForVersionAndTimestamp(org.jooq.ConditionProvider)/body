@@ -1,6 +1,6 @@
 {
   TableField<R,?> v=getTable().getRecordVersion();
   TableField<R,?> t=getTable().getRecordTimestamp();
-  if (v != null)   Util.addCondition(query,this,v);
-  if (t != null)   Util.addCondition(query,this,t);
+  if (v != null)   Utils.addCondition(query,this,v);
+  if (t != null)   Utils.addCondition(query,this,t);
 }

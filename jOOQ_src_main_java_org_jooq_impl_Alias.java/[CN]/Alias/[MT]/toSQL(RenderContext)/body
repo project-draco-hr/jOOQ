@@ -20,7 +20,7 @@ case POSTGRES:
         if (context.declareTables() && o instanceof ArrayTable) {
           ArrayTable table=(ArrayTable)o;
           context.sql("(");
-          Util.fieldNames(context,table.getFields());
+          Utils.fieldNames(context,table.getFields());
           context.sql(")");
         }
         break;

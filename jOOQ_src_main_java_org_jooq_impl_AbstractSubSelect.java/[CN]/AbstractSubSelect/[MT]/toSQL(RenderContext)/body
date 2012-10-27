@@ -49,7 +49,7 @@ if (forUpdate && !asList(CUBRID,SQLSERVER).contains(context.getDialect())) {
 context.formatSeparator().keyword("for update");
 if (!forUpdateOf.isEmpty()) {
 context.keyword(" of ");
-Util.fieldNames(context,forUpdateOf);
+Utils.fieldNames(context,forUpdateOf);
 }
  else if (!forUpdateOfTables.isEmpty()) {
 context.keyword(" of ");
@@ -63,7 +63,7 @@ forUpdateOfTables.toSQLFieldNames(context);
 break;
 }
 default :
-Util.tableNames(context,forUpdateOfTables);
+Utils.tableNames(context,forUpdateOfTables);
 break;
 }
 }

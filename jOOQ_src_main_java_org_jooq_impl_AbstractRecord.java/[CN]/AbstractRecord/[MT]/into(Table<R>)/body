@@ -1,10 +1,10 @@
 {
   try {
-    R result=Util.newRecord(table,getConfiguration());
+    R result=Utils.newRecord(table,getConfiguration());
     for (    Field<?> targetField : table.getFields()) {
       Field<?> sourceField=getField(targetField);
       if (sourceField != null) {
-        Util.setValue(result,targetField,this,sourceField);
+        Utils.setValue(result,targetField,this,sourceField);
       }
     }
     if (result instanceof AbstractRecord) {

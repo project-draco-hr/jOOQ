@@ -9,7 +9,7 @@
     }
  else {
       context.formatSeparator().keyword("using (");
-      Util.fieldNames(context,using);
+      Utils.fieldNames(context,using);
       context.sql(")");
     }
   }

@@ -7,7 +7,7 @@
   for (  R record : this) {
     Record key=new RecordImpl(keyList);
     for (    Field<?> field : keys) {
-      Util.setValue(key,field,record,field);
+      Utils.setValue(key,field,record,field);
     }
     List<E> list=map.get(key);
     if (list == null) {

@@ -2,7 +2,7 @@
   for (  Field<?> field : getFields()) {
     Field<?> sourceField=source.getField(field);
     if (sourceField != null) {
-      Util.setValue(this,field,source,sourceField);
+      Utils.setValue(this,field,source,sourceField);
     }
   }
 }

@@ -7,11 +7,11 @@ switch (c.getDialect()) {
 case ORACLE:
 {
           if (sqlType == Types.STRUCT) {
-            UDTRecord<?> record=Util.newRecord((Class<? extends UDTRecord<?>>)parameter.getType());
+            UDTRecord<?> record=Utils.newRecord((Class<? extends UDTRecord<?>>)parameter.getType());
             statement.registerOutParameter(index,Types.STRUCT,record.getSQLTypeName());
           }
  else           if (sqlType == Types.ARRAY) {
-            ArrayRecord<?> record=Util.newArrayRecord((Class<? extends ArrayRecord<?>>)parameter.getType(),c);
+            ArrayRecord<?> record=Utils.newArrayRecord((Class<? extends ArrayRecord<?>>)parameter.getType(),c);
             statement.registerOutParameter(index,Types.ARRAY,record.getName());
           }
  else {

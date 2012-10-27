@@ -1,15 +1,15 @@
 {
-  context.keyword("merge into ").declareTables(true).sql(table).formatSeparator().keyword("using ").formatIndentStart().formatNewLine().sql(Util.wrapInParentheses(context.render(using))).formatIndentEnd().declareTables(false);
+  context.keyword("merge into ").declareTables(true).sql(table).formatSeparator().keyword("using ").formatIndentStart().formatNewLine().sql(Utils.wrapInParentheses(context.render(using))).formatIndentEnd().declareTables(false);
 switch (context.getDialect()) {
 case SQLSERVER:
 case SYBASE:
 {
       if (using instanceof Select) {
-        int hash=Util.hash(using);
+        int hash=Utils.hash(using);
         context.keyword(" as ").sql("dummy_").sql(hash).sql("(");
         String separator="";
         for (        Field<?> field : ((Select<?>)using).getFields()) {
-          String name=StringUtils.isBlank(field.getName()) ? "dummy_" + hash + "_"+ Util.hash(field) : field.getName();
+          String name=StringUtils.isBlank(field.getName()) ? "dummy_" + hash + "_"+ Utils.hash(field) : field.getName();
           context.sql(separator).literal(name);
           separator=", ";
         }
@@ -18,7 +18,7 @@ case SYBASE:
       break;
     }
 }
-context.formatSeparator().keyword("on ").sql(Util.wrapInParentheses(context.render(on)));
+context.formatSeparator().keyword("on ").sql(Utils.wrapInParentheses(context.render(on)));
 if (matchedUpdate != null) {
   context.formatSeparator().keyword("when matched then update set ").sql(matchedUpdate);
 }

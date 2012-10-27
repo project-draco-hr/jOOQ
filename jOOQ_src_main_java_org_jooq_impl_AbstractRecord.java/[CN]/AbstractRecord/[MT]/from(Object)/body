@@ -15,7 +15,7 @@
         method=getMatchingGetter(type,field.getName());
       }
       if (method != null) {
-        Util.setValue(this,field,method.invoke(source));
+        Utils.setValue(this,field,method.invoke(source));
       }
  else       if (members.size() > 0) {
         from(source,members.get(0),field);

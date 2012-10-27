@@ -80,7 +80,7 @@
     }
   }
  catch (  SQLException e) {
-    throw Util.translate(null,e);
+    throw Utils.translate(null,e);
   }
  finally {
     reader.close();

@@ -1,3 +1,3 @@
 {
-  return Util.newRecord(type,this);
+  return Utils.newRecord(type,this);
 }

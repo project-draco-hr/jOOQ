@@ -9,7 +9,7 @@
         Configuration configuration=((AttachableInternal)result).getConfiguration();
         Schema mapped=null;
         if (configuration != null) {
-          mapped=Util.getMappedSchema(configuration,schema);
+          mapped=Utils.getMappedSchema(configuration,schema);
         }
         if (mapped != null) {
           return mapped.getName();

@@ -1,5 +1,5 @@
 {
-  Schema mappedSchema=Util.getMappedSchema(context,getSchema());
+  Schema mappedSchema=Utils.getMappedSchema(context,getSchema());
   if (context.qualify()) {
     if (mappedSchema != null) {
       context.sql(mappedSchema);

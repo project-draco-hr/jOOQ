@@ -27,7 +27,7 @@
       for (      String[] values : all.subList(1,all.size())) {
         Record record=new RecordImpl(fields);
         for (int i=0; i < Math.min(values.length,fields.size()); i++) {
-          Util.setValue(record,fields.get(i),values[i]);
+          Utils.setValue(record,fields.get(i),values[i]);
         }
         result.add(record);
       }

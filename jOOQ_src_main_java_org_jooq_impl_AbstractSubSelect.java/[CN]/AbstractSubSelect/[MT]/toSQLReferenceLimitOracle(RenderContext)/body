@@ -2,7 +2,7 @@
   RenderContext local=new DefaultRenderContext(context);
   toSQLReference0(local);
   String enclosed=local.render();
-  String subqueryName="limit_" + Util.hash(enclosed);
-  String rownumName="rownum_" + Util.hash(enclosed);
+  String subqueryName="limit_" + Utils.hash(enclosed);
+  String rownumName="rownum_" + Utils.hash(enclosed);
   context.keyword("select * from (").formatIndentStart().formatNewLine().keyword("select ").sql(subqueryName).keyword(".*, rownum as ").sql(rownumName).formatSeparator().keyword("from (").formatIndentStart().formatNewLine().sql(enclosed).formatIndentEnd().formatNewLine().sql(") ").sql(subqueryName).formatSeparator().keyword("where rownum <= ").sql(getLimit().getUpperRownum()).formatIndentEnd().formatNewLine().sql(") ").formatSeparator().keyword("where ").sql(rownumName).sql(" > ").sql(getLimit().getLowerRownum());
 }

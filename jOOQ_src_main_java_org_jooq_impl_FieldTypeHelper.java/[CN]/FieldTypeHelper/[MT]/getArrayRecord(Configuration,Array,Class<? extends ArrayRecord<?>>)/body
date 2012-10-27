@@ -3,7 +3,7 @@
     return null;
   }
  else {
-    ArrayRecord<?> record=Util.newArrayRecord(type,configuration);
+    ArrayRecord<?> record=Utils.newArrayRecord(type,configuration);
     record.set(array);
     return record;
   }

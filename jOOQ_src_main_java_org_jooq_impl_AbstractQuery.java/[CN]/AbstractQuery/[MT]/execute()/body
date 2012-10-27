@@ -41,7 +41,7 @@
     }
  finally {
       if (!keepResult()) {
-        Util.safeClose(listener,ctx,keepStatement());
+        Utils.safeClose(listener,ctx,keepStatement());
       }
       if (!keepStatement()) {
         statement=null;

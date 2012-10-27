@@ -2,7 +2,7 @@
   TableField<R,?>[] keys=getMainKey().getFieldsArray();
   try {
     DeleteQuery<R> delete1=create().deleteQuery(getTable());
-    Util.addConditions(delete1,this,keys);
+    Utils.addConditions(delete1,this,keys);
     if (isExecuteWithOptimisticLocking()) {
       if (isTimestampOrVersionAvailable()) {
         addConditionForVersionAndTimestamp(delete1);

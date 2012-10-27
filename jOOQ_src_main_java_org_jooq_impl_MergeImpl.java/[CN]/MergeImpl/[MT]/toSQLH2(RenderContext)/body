@@ -1,11 +1,11 @@
 {
   context.keyword("merge into ").declareTables(true).sql(table).formatSeparator();
   context.sql("(");
-  Util.fieldNames(context,getH2Fields());
+  Utils.fieldNames(context,getH2Fields());
   context.sql(")");
   if (!getH2Keys().isEmpty()) {
     context.keyword(" key (");
-    Util.fieldNames(context,getH2Keys());
+    Utils.fieldNames(context,getH2Keys());
     context.sql(")");
   }
   if (h2Select != null) {

@@ -4,12 +4,12 @@
   }
  else {
     if (context.qualify()) {
-      Schema mappedSchema=Util.getMappedSchema(context,getSchema());
+      Schema mappedSchema=Utils.getMappedSchema(context,getSchema());
       if (mappedSchema != null) {
         context.sql(mappedSchema);
         context.sql(".");
       }
     }
-    context.literal(Util.getMappedTable(context,this).getName());
+    context.literal(Utils.getMappedTable(context,this).getName());
   }
 }
