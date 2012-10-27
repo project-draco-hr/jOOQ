@@ -1,4 +1,0 @@
-{
-  final Timestamp result=getValueAsTimestamp(index);
-  return result == null ? defaultValue : result;
-}

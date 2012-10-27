@@ -1,4 +1,0 @@
-{
-  final Float result=getValueAsFloat(index);
-  return result == null ? defaultValue : result;
-}

@@ -1,4 +1,0 @@
-{
-  final BigInteger result=getValueAsBigInteger(index);
-  return result == null ? defaultValue : result;
-}

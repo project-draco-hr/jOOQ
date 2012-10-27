@@ -1,4 +1,0 @@
-{
-  final Boolean result=getValueAsBoolean(index);
-  return result == null ? defaultValue : result;
-}

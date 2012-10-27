@@ -1,3 +1,0 @@
-{
-  return Convert.convert(getValue(index),Integer.class);
-}

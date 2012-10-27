@@ -1,4 +1,0 @@
-{
-  final Long result=getValueAsLong(index);
-  return result == null ? defaultValue : result;
-}

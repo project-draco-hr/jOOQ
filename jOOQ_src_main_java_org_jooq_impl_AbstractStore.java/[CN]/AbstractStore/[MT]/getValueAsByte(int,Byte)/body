@@ -1,4 +1,0 @@
-{
-  final Byte result=getValueAsByte(index);
-  return result == null ? defaultValue : result;
-}

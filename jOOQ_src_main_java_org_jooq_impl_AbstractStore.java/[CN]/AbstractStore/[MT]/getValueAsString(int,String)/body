@@ -1,4 +1,0 @@
-{
-  final String result=getValueAsString(index);
-  return result == null ? defaultValue : result;
-}

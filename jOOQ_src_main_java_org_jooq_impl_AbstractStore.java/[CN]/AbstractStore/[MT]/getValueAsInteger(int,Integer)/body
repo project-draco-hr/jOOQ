@@ -1,4 +1,0 @@
-{
-  final Integer result=getValueAsInteger(index);
-  return result == null ? defaultValue : result;
-}
