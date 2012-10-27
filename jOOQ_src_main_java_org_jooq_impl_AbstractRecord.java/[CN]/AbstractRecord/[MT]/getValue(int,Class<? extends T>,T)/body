@@ -1,4 +1,4 @@
 {
-  final T result=getValue(index);
+  final T result=getValue(index,type);
   return result == null ? defaultValue : result;
 }

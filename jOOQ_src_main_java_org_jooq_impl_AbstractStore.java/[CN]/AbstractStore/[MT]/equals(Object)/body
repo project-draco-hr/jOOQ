@@ -1,6 +1,6 @@
 {
-  if (obj instanceof Store) {
-    final Store<?> that=(Store<?>)obj;
+  if (obj instanceof AbstractStore) {
+    final AbstractStore that=(AbstractStore)obj;
     if (size() == that.size()) {
       for (int i=0; i < size(); i++) {
         final Object thisValue=getValue(i);

@@ -1,4 +1,4 @@
 {
-  final Z result=getValue(index,type);
+  final Object result=getValue(index);
   return result == null ? defaultValue : result;
 }
