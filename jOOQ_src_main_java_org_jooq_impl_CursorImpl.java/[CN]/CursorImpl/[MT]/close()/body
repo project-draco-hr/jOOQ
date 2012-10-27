@@ -1,5 +1,5 @@
 {
-  Util.safeClose(rs);
+  JDBCUtils.safeClose(rs);
   rs=null;
   isClosed=true;
 }

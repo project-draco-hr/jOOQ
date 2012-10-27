@@ -25,7 +25,7 @@
         return (T)(blob == null ? null : blob.getBytes(1,(int)blob.length()));
       }
   finally {
-        Util.safeFree(blob);
+        JDBCUtils.safeFree(blob);
       }
     }
  else {

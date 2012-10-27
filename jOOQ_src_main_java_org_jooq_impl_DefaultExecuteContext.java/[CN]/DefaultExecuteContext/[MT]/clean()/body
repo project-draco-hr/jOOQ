@@ -3,13 +3,13 @@
   List<Clob> clobs=CLOBS.get();
   if (blobs != null) {
     for (    Blob blob : blobs) {
-      Util.safeFree(blob);
+      JDBCUtils.safeFree(blob);
     }
     BLOBS.remove();
   }
   if (clobs != null) {
     for (    Clob clob : clobs) {
-      Util.safeFree(clob);
+      JDBCUtils.safeFree(clob);
     }
     CLOBS.remove();
   }
