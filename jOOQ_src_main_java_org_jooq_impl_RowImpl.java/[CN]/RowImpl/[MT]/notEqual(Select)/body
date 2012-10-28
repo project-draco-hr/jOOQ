@@ -1,0 +1,3 @@
+{
+  return new Subquery(select,SubQueryOperator.NOT_EQUALS);
+}
