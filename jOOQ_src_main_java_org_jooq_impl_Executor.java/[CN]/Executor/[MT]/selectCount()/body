@@ -1,5 +1,5 @@
 {
-  SelectSelectStep result=Factory.selectCount();
+  SelectSelectStep<Record> result=(SelectSelectStep)Factory.selectCount();
   result.attach(this);
   return result;
 }

@@ -1,0 +1,13 @@
+{
+  Configuration previous=null;
+  if (query instanceof AttachableInternal) {
+    previous=((AttachableInternal)query).getConfiguration();
+  }
+  try {
+    query.attach(this);
+    return query.fetchOne();
+  }
+  finally {
+    query.attach(previous);
+  }
+}

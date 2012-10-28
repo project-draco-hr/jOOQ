@@ -1,0 +1,9 @@
+{
+  FieldList result=new FieldList();
+  if (values != null && fields != null) {
+    for (int i=0; i < values.length && i < fields.length; i++) {
+      result.add(val(values[i],fields[i]));
+    }
+  }
+  return result;
+}

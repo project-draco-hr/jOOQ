@@ -1,5 +1,5 @@
 {
-  SelectFinalStep q1=create.select().from(TABLE1).where(FIELD_ID1.equal(1));
-  SelectFinalStep q2=create.select().from(TABLE1).where(FIELD_ID1.equal(2));
+  SelectFinalStep<Record> q1=create.select().from(TABLE1).where(FIELD_ID1.equal(1));
+  SelectFinalStep<Record> q2=create.select().from(TABLE1).where(FIELD_ID1.equal(2));
   return q1.union(q2);
 }

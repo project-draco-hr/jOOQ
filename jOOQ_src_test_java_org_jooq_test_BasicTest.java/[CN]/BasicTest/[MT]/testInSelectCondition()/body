@@ -1,10 +1,10 @@
 {
-  Condition c=FIELD_ID1.in(create.selectFrom(TABLE1).where(FIELD_NAME1.equal("x")));
-  assertEquals("\"TABLE1\".\"ID1\" in (select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" where \"TABLE1\".\"NAME1\" = 'x')",r_refI().render(c));
-  assertEquals("\"TABLE1\".\"ID1\" in (select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" where \"TABLE1\".\"NAME1\" = ?)",r_ref().render(c));
-  c=FIELD_ID1.notIn(create.selectFrom(TABLE1).where(FIELD_NAME1.equal("x")));
-  assertEquals("\"TABLE1\".\"ID1\" not in (select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" where \"TABLE1\".\"NAME1\" = 'x')",r_refI().render(c));
-  assertEquals("\"TABLE1\".\"ID1\" not in (select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" where \"TABLE1\".\"NAME1\" = ?)",r_ref().render(c));
+  Condition c=FIELD_ID1.in(select(FIELD_ID1).from(TABLE1).where(FIELD_NAME1.equal("x")));
+  assertEquals("\"TABLE1\".\"ID1\" in (select \"TABLE1\".\"ID1\" from \"TABLE1\" where \"TABLE1\".\"NAME1\" = 'x')",r_refI().render(c));
+  assertEquals("\"TABLE1\".\"ID1\" in (select \"TABLE1\".\"ID1\" from \"TABLE1\" where \"TABLE1\".\"NAME1\" = ?)",r_ref().render(c));
+  c=FIELD_ID1.notIn(select(FIELD_ID1).from(TABLE1).where(FIELD_NAME1.equal("x")));
+  assertEquals("\"TABLE1\".\"ID1\" not in (select \"TABLE1\".\"ID1\" from \"TABLE1\" where \"TABLE1\".\"NAME1\" = 'x')",r_refI().render(c));
+  assertEquals("\"TABLE1\".\"ID1\" not in (select \"TABLE1\".\"ID1\" from \"TABLE1\" where \"TABLE1\".\"NAME1\" = ?)",r_ref().render(c));
   context.checking(new Expectations(){
 {
       oneOf(statement).setString(1,"x");

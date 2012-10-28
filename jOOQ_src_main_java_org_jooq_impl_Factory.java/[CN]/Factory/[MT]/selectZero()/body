@@ -1,3 +1,3 @@
 {
-  return new SelectImpl(DEFAULT_CONFIGURATION).select(zero());
+  return new SelectImpl<Record1<Integer>>(DEFAULT_CONFIGURATION).select(zero());
 }

@@ -1,5 +1,5 @@
 {
-  SelectSelectStep result=Factory.selectDistinct(fields);
+  SelectSelectStep<Record> result=Factory.selectDistinct(fields);
   result.attach(this);
   return result;
 }

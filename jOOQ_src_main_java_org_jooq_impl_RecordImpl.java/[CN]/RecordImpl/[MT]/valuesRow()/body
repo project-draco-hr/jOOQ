@@ -1,0 +1,4 @@
+{
+  List<Field<?>> fields=getFields();
+  return new RowImpl(vals(intoArray(),fields.toArray(new Field[fields.size()])));
+}

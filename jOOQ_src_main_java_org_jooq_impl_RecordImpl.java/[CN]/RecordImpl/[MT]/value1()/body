@@ -1,0 +1,3 @@
+{
+  return (T1)getValue(0);
+}

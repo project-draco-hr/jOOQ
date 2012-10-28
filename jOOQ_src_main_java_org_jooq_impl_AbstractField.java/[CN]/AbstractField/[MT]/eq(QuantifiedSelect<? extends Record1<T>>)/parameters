@@ -1,0 +1,1 @@
+QuantifiedSelect<? extends Record1<T>> query

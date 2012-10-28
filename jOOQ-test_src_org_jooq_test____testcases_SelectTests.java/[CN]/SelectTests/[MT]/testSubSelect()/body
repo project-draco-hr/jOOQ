@@ -15,5 +15,5 @@
   assertEquals(Integer.valueOf(2),records.getValue(0,books));
   assertEquals(Integer.valueOf(2),records.getValue(1,TAuthor_ID()));
   assertEquals(Integer.valueOf(2),records.getValue(1,books));
-  assertEquals("Coelho",create().select(TAuthor_LAST_NAME()).from(TAuthor()).where(val(0).equal(create().select(count(TBook_ID())).from(TBook()).where(TBook_AUTHOR_ID().equal(TAuthor_ID())).and(TBook_TITLE().equal("1984")))).and(val(100).notEqual(create().selectOne())).and(val(0).lessThan(create().selectOne())).and(val(1).lessOrEqual(create().selectOne())).and(val(1).greaterThan(create().selectZero())).and(val(0).greaterOrEqual(create().selectZero())).limit(1).fetchOne(TAuthor_LAST_NAME()));
+  assertEquals("Coelho",create().select(TAuthor_LAST_NAME()).from(TAuthor()).where(val(0).equal(select(count(TBook_ID())).from(TBook()).where(TBook_AUTHOR_ID().equal(TAuthor_ID())).and(TBook_TITLE().equal("1984")))).and(val(100).notEqual(selectOne())).and(val(0).lessThan(selectOne())).and(val(1).lessOrEqual(selectOne())).and(val(1).greaterThan(selectZero())).and(val(0).greaterOrEqual(selectZero())).limit(1).fetchOne(TAuthor_LAST_NAME()));
 }

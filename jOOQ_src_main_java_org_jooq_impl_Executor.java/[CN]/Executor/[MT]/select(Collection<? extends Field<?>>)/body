@@ -1,5 +1,5 @@
 {
-  SelectSelectStep result=Factory.select(fields);
+  SelectSelectStep<Record> result=Factory.select(fields);
   result.attach(this);
   return result;
 }

@@ -1,0 +1,3 @@
+{
+  return (T4)getValue(3);
+}

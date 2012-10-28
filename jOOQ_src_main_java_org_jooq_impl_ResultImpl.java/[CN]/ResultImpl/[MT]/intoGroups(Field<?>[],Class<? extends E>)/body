@@ -5,7 +5,7 @@
   Map<Record,List<E>> map=new LinkedHashMap<Record,List<E>>();
   FieldList keyList=new FieldList(keys);
   for (  R record : this) {
-    Record key=new RecordImpl(keyList);
+    @SuppressWarnings("rawtypes") Record key=new RecordImpl(keyList);
     for (    Field<?> field : keys) {
       Utils.setValue(key,field,record,field);
     }

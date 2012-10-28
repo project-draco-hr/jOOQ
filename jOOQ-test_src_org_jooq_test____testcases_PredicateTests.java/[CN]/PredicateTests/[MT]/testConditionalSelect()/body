@@ -5,6 +5,6 @@
   assertEquals(3,create().selectFrom(TBook()).where(c).execute());
   c=c.not();
   assertEquals(1,create().selectFrom(TBook()).where(c).execute());
-  c=c.or(TBook_AUTHOR_ID().equal(create().select(TAuthor_ID()).from(TAuthor()).where(TAuthor_FIRST_NAME().equal("Paulo"))));
+  c=c.or(TBook_AUTHOR_ID().equal(select(TAuthor_ID()).from(TAuthor()).where(TAuthor_FIRST_NAME().equal("Paulo"))));
   assertEquals(3,create().selectFrom(TBook()).where(c).execute());
 }
