@@ -1,3 +1,5 @@
 {
-  return new SelectImpl(this,true).select(fields);
+  SelectSelectStep result=Factory.selectDistinct(fields);
+  result.attach(this);
+  return result;
 }

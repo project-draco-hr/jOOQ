@@ -1,5 +1,5 @@
 {
-  Result<?> result=create().select().from(TAuthor()).join(TBook()).on(TAuthor_ID().equal(TBook_AUTHOR_ID())).crossJoin(create().select(one().as("one"))).orderBy(TBook_ID()).fetch();
+  Result<?> result=create().select().from(TAuthor()).join(TBook()).on(TAuthor_ID().equal(TBook_AUTHOR_ID())).crossJoin(select(one().as("one"))).orderBy(TBook_ID()).fetch();
   assertEquals(4,result.size());
   assertEquals(BOOK_AUTHOR_IDS,result.getValues(TAuthor_ID()));
   assertEquals(BOOK_AUTHOR_IDS,result.getValues(TBook_AUTHOR_ID()));

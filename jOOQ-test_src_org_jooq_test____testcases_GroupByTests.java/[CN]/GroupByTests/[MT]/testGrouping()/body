@@ -8,7 +8,7 @@
   assertEquals(1,result.size());
   assertEquals(2,(int)result.getValue(0,count));
   assertEquals("Coelho",result.getValue(0,TAuthor_LAST_NAME()));
-  result=create().select(TAuthor_LAST_NAME(),count).from(TBook()).join(TAuthor()).on(TBook_AUTHOR_ID().equal(TAuthor_ID())).where(TBook_TITLE().notEqual("1984")).groupBy(TAuthor_LAST_NAME()).having(count().equal(2)).or(count().greaterOrEqual(2)).andExists(create().selectOne()).fetch();
+  result=create().select(TAuthor_LAST_NAME(),count).from(TBook()).join(TAuthor()).on(TBook_AUTHOR_ID().equal(TAuthor_ID())).where(TBook_TITLE().notEqual("1984")).groupBy(TAuthor_LAST_NAME()).having(count().equal(2)).or(count().greaterOrEqual(2)).andExists(selectOne()).fetch();
   assertEquals(1,result.size());
   assertEquals(2,(int)result.getValue(0,count));
   assertEquals("Coelho",result.getValue(0,TAuthor_LAST_NAME()));

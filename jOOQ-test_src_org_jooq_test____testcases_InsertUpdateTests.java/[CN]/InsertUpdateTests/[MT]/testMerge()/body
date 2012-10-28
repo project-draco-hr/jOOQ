@@ -12,13 +12,13 @@ case SQLITE:
   return;
 }
 jOOQAbstractTest.reset=false;
-create().mergeInto(TAuthor()).using(create().selectOne()).on("1 = 1").whenMatchedThenUpdate().set(TAuthor_FIRST_NAME(),"Alfred").whenNotMatchedThenInsert(TAuthor_ID(),TAuthor_LAST_NAME()).values(3,"Hitchcock").execute();
+create().mergeInto(TAuthor()).using(selectOne()).on("1 = 1").whenMatchedThenUpdate().set(TAuthor_FIRST_NAME(),"Alfred").whenNotMatchedThenInsert(TAuthor_ID(),TAuthor_LAST_NAME()).values(3,"Hitchcock").execute();
 assertEquals(Arrays.asList("Alfred","Alfred"),create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).fetch(TAuthor_FIRST_NAME()));
-create().mergeInto(TAuthor()).using(create().selectOne()).on(TAuthor_ID().equal(1)).whenMatchedThenUpdate().set(TAuthor_FIRST_NAME(),"John").whenNotMatchedThenInsert(TAuthor_ID(),TAuthor_LAST_NAME()).values(3,"Hitchcock").execute();
+create().mergeInto(TAuthor()).using(selectOne()).on(TAuthor_ID().equal(1)).whenMatchedThenUpdate().set(TAuthor_FIRST_NAME(),"John").whenNotMatchedThenInsert(TAuthor_ID(),TAuthor_LAST_NAME()).values(3,"Hitchcock").execute();
 assertEquals(Arrays.asList("John","Alfred"),create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).fetch(TAuthor_FIRST_NAME()));
 Field<String> f=val("Dan").as("f");
 Field<String> l=val("Brown").as("l");
-MergeFinalStep<A> q=create().mergeInto(TAuthor()).using(create().select(f,l)).on(TAuthor_LAST_NAME().equal(l)).whenMatchedThenUpdate().set(TAuthor_FIRST_NAME(),"James").whenNotMatchedThenInsert().set(TAuthor_ID(),3).set(TAuthor_FIRST_NAME(),f).set(TAuthor_LAST_NAME(),l);
+MergeFinalStep<A> q=create().mergeInto(TAuthor()).using(select(f,l)).on(TAuthor_LAST_NAME().equal(l)).whenMatchedThenUpdate().set(TAuthor_FIRST_NAME(),"James").whenNotMatchedThenInsert().set(TAuthor_ID(),3).set(TAuthor_FIRST_NAME(),f).set(TAuthor_LAST_NAME(),l);
 q.execute();
 assertEquals(Arrays.asList("John","Alfred","Dan"),create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).fetch(TAuthor_FIRST_NAME()));
 q.execute();

@@ -1,3 +1,5 @@
 {
-  return new SelectImpl(this).select(zero());
+  SelectSelectStep result=Factory.selectZero();
+  result.attach(this);
+  return result;
 }
