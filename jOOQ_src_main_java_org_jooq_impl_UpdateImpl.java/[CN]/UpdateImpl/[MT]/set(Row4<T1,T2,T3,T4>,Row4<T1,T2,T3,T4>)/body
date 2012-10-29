@@ -1,0 +1,4 @@
+{
+  getDelegate().addValues(row,value);
+  return this;
+}

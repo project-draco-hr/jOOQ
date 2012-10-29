@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(TAuthor()).where(TAuthor_ID().equal(id)).fetchOne();
+}

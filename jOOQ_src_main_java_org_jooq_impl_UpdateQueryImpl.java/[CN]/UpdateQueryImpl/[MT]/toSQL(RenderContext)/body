@@ -1,5 +1,22 @@
 {
-  context.keyword("update ").declareTables(true).sql(getInto()).declareTables(false).formatSeparator().keyword("set ").formatIndentLockStart().sql(updateMap).formatIndentLockEnd();
+  context.keyword("update ").declareTables(true).sql(getInto()).declareTables(false).formatSeparator().keyword("set ");
+  if (multiRow != null) {
+    boolean qualify=context.qualify();
+    context.qualify(false).sql(multiRow).qualify(qualify).sql(" = ");
+    if (multiValue != null && !asList(INGRES,ORACLE).contains(context.getDialect())) {
+      context.sql(multiValue);
+    }
+ else {
+      Select<?> select=multiSelect;
+      if (multiValue != null) {
+        select=select(multiValue.getFields());
+      }
+      context.sql("(").formatIndentStart().formatNewLine().subquery(true).sql(select).subquery(false).formatIndentEnd().formatNewLine().sql(")");
+    }
+  }
+ else {
+    context.formatIndentLockStart().sql(updateMap).formatIndentLockEnd();
+  }
   if (!(getWhere() instanceof TrueCondition)) {
     context.formatSeparator().keyword("where ").sql(getWhere());
   }

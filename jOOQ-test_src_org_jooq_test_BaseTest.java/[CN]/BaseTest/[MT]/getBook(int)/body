@@ -1,0 +1,3 @@
+{
+  return create().selectFrom(TBook()).where(TBook_ID().equal(id)).fetchOne();
+}

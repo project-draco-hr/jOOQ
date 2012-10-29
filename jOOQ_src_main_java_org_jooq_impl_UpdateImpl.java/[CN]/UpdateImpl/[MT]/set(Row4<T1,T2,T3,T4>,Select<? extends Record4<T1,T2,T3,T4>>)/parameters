@@ -1,0 +1,2 @@
+Row4<T1,T2,T3,T4> row
+Select<? extends Record4<T1,T2,T3,T4>> select
