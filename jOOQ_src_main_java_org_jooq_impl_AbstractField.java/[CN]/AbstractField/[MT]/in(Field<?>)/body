@@ -3,6 +3,6 @@
     return falseCondition();
   }
  else {
-    return new InCondition<T>(this,nullSafe(values),InOperator.IN);
+    return new InCondition<T>(this,nullSafe(values),SubqueryOperator.IN);
   }
 }
