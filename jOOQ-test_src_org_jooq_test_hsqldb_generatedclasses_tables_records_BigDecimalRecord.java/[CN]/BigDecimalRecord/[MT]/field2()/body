@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.hsqldb.generatedclasses.tables.BigDecimal.BIG_DECIMAL.OTHER;
+}

@@ -22,7 +22,6 @@
   for (  ParameterDefinition parameter : routine.getAllParameters()) {
     printParameter(out,parameter,routine);
   }
-  out.println();
   printJavadoc(out,"Create a new routine call instance");
   out.println("\tpublic " + strategy.getJavaClassName(routine) + "() {");
   out.print("\t\tsuper(");

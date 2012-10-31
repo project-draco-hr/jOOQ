@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.sybase.generatedclasses.tables.TIdentityPk.T_IDENTITY_PK.VAL;
+}

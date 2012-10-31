@@ -1,4 +1,5 @@
 {
+  out.println();
   out.println("\t/**");
   out.println("\t * " + doc);
   out.println("\t */");

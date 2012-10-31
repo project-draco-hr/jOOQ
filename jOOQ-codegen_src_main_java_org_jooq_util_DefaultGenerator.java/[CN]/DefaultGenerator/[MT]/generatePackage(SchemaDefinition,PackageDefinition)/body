@@ -36,7 +36,7 @@
       log.error("Error while generating routine " + routine,e);
     }
   }
-  printNoFurtherInstancesAllowedJavadoc(outPkg);
+  printJavadocNoFurtherInstancesAllowed(outPkg);
   outPkg.println("\tprivate " + strategy.getJavaClassName(pkg) + "() {");
   outPkg.print("\t\tsuper(\"");
   outPkg.print(pkg.getOutputName());

@@ -1,0 +1,3 @@
+{
+  return org.jooq.examples.mysql.sakila.tables.SalesByStore.SALES_BY_STORE.MANAGER;
+}

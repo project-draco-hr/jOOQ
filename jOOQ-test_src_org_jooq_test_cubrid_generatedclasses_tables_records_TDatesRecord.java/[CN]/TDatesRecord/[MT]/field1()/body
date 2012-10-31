@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.cubrid.generatedclasses.tables.TDates.ID;
+}

@@ -1,0 +1,14 @@
+{
+  @SuppressWarnings({"unchecked","rawtypes"}) Record6<Integer,String,String,Date,Integer,Object> author=(Record6)getAuthor(1);
+  assertEquals(TAuthor_ID(),author.field1());
+  assertEquals(TAuthor_FIRST_NAME(),author.field2());
+  assertEquals(TAuthor_LAST_NAME(),author.field3());
+  assertEquals(TAuthor_DATE_OF_BIRTH(),author.field4());
+  assertEquals(TAuthor_YEAR_OF_BIRTH(),author.field5());
+  assertEquals(1,(int)author.value1());
+  assertEquals("George",author.value2());
+  assertEquals("Orwell",author.value3());
+  assertEquals(Date.valueOf("1903-06-25"),author.value4());
+  assertEquals(1903,(int)author.value5());
+  assertEquals(author,create().fetchOne(select(author.field1(),author.field2(),author.field3(),author.field4(),author.field5(),author.field6()).from(TAuthor()).where(author.fieldsRow().eq(author.valuesRow())).union(select(val(1),val("abc"),val("xyz"),val(Date.valueOf("1903-06-25")),val(123),val(null)).where(val(1).eq(val(0))))));
+}

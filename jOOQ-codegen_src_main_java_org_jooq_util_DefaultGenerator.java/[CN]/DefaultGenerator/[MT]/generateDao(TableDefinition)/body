@@ -31,7 +31,6 @@
   out.print(", ");
   out.print(tType);
   out.println("> {");
-  out.println();
   printJavadoc(out,"Create a new " + strategy.getJavaClassName(table,Mode.DAO) + " without any factory");
   out.print("\tpublic ");
   out.print(strategy.getJavaClassName(table,Mode.DAO));
@@ -42,7 +41,6 @@
   out.print(strategy.getFullJavaClassName(table,Mode.POJO));
   out.println(".class);");
   out.println("\t}");
-  out.println();
   printJavadoc(out,"Create a new " + strategy.getJavaClassName(table,Mode.DAO) + " with an attached factory");
   out.print("\tpublic ");
   out.print(strategy.getJavaClassName(table,Mode.DAO));
@@ -67,7 +65,6 @@
   out.println("();");
   out.println("\t}");
   for (  ColumnDefinition column : table.getColumns()) {
-    out.println();
     printJavadoc(out,"Fetch records that have <code>" + column.getOutputName() + " IN (values)</code>");
     out.print("\tpublic ");
     out.print(List.class);
@@ -84,7 +81,6 @@
     out.println("\t}");
     ukLoop:     for (    UniqueKeyDefinition uk : column.getUniqueKeys()) {
       if (uk.getKeyColumns().size() == 1 && uk.getKeyColumns().get(0).equals(column)) {
-        out.println();
         printJavadoc(out,"Fetch a unique that has <code>" + column.getOutputName() + " = value</code>");
         out.print("\tpublic ");
         out.print(strategy.getFullJavaClassName(table,Mode.POJO));

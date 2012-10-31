@@ -1,0 +1,3 @@
+{
+  return getNUMBER_LONG_ARRAY();
+}

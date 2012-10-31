@@ -1,0 +1,3 @@
+{
+  return org.jooq.examples.sqlserver.adventureworks.humanresources.tables.EmployeeAddress.EmployeeAddress.ModifiedDate;
+}

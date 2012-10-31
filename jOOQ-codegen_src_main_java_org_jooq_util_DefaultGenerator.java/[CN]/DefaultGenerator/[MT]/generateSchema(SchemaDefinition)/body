@@ -16,8 +16,7 @@
   outS.println("\t * The singleton instance of " + schema.getQualifiedOutputName());
   outS.println("\t */");
   outS.println("\tpublic static final " + strategy.getJavaClassName(schema) + " "+ strategy.getJavaIdentifier(schema)+ " = new "+ strategy.getJavaClassName(schema)+ "();");
-  outS.println();
-  printNoFurtherInstancesAllowedJavadoc(outS);
+  printJavadocNoFurtherInstancesAllowed(outS);
   outS.println("\tprivate " + strategy.getJavaClassName(schema) + "() {");
   outS.println("\t\tsuper(\"" + schema.getOutputName() + "\");");
   outS.println("\t}");

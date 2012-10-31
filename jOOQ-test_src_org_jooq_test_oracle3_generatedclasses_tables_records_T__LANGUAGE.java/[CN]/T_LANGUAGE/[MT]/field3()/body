@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.oracle3.generatedclasses.tables.T_LANGUAGE.T_LANGUAGE.DESCRIPTION_ENGLISH;
+}

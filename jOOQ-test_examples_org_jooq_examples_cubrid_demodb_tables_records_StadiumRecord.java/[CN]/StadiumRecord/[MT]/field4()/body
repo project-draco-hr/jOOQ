@@ -1,0 +1,3 @@
+{
+  return org.jooq.examples.cubrid.demodb.tables.Stadium.STADIUM.AREA;
+}

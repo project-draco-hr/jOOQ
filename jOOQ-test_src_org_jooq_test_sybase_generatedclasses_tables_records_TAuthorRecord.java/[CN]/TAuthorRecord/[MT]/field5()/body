@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.sybase.generatedclasses.tables.TAuthor.T_AUTHOR.YEAR_OF_BIRTH;
+}

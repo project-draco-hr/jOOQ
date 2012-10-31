@@ -11,6 +11,20 @@
  else {
     baseClass=TableRecordImpl.class;
   }
+  int degree=table.getColumns().size();
+  String rowType=null;
+  String recordType=null;
+  if (degree <= Constants.MAX_ROW_DEGREE) {
+    rowType="<";
+    String separator="";
+    for (    ColumnDefinition column : table.getColumns()) {
+      rowType+=separator;
+      rowType+=getJavaType(column.getType());
+      separator=", ";
+    }
+    rowType+=">";
+    recordType=Record.class.getName() + degree + rowType;
+  }
   out.print("public class ");
   out.print(strategy.getJavaClassName(table,Mode.RECORD));
   out.print(" extends ");
@@ -18,21 +32,92 @@
   out.print("<");
   out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
   out.print(">");
-  printImplements(out,table,Mode.RECORD);
+  if (degree <= Constants.MAX_ROW_DEGREE) {
+    printImplements(out,table,Mode.RECORD,recordType);
+  }
+ else {
+    printImplements(out,table,Mode.RECORD);
+  }
   out.println(" {");
   out.printSerial();
   for (  ColumnDefinition column : table.getColumns()) {
     printGetterAndSetter(out,column);
   }
-  out.println();
-  out.println("\t/**");
-  out.println("\t * Create a detached " + strategy.getJavaClassName(table,Mode.RECORD));
-  out.println("\t */");
+  printJavadoc(out,"Create a detached " + strategy.getJavaClassName(table,Mode.RECORD));
   out.println("\tpublic " + strategy.getJavaClassName(table,Mode.RECORD) + "() {");
   out.print("\t\tsuper(");
   out.print(strategy.getFullJavaIdentifier(table));
   out.println(");");
   out.println("\t}");
+  if (degree <= Constants.MAX_ROW_DEGREE) {
+    printSectionHeader(out,"Record" + degree + " type implementation");
+    printOverrideInheritDoc(out);
+    out.print("\tpublic ");
+    out.print(Row.class);
+    out.print(degree);
+    out.print(rowType);
+    out.println(" fieldsRow() {");
+    out.print("\t\treturn ");
+    out.print(Factory.class);
+    out.print(".row(");
+    String separator1="";
+    for (int i=1; i <= degree; i++) {
+      out.print(separator1);
+      out.print("field");
+      out.print(i);
+      out.print("()");
+      separator1=", ";
+    }
+    out.println(");");
+    out.println("\t}");
+    printOverrideInheritDoc(out);
+    out.print("\tpublic ");
+    out.print(Row.class);
+    out.print(degree);
+    out.print(rowType);
+    out.println(" valuesRow() {");
+    out.print("\t\treturn ");
+    out.print(Factory.class);
+    out.print(".row(");
+    String separator2="";
+    for (int i=1; i <= degree; i++) {
+      out.print(separator2);
+      out.print("value");
+      out.print(i);
+      out.print("()");
+      separator2=", ";
+    }
+    out.println(");");
+    out.println("\t}");
+    for (int i=1; i <= degree; i++) {
+      ColumnDefinition column=table.getColumn(i - 1);
+      printOverrideInheritDoc(out);
+      out.print("\tpublic ");
+      out.print(Field.class);
+      out.print("<");
+      out.print(getJavaType(column.getType()));
+      out.print("> field");
+      out.print(i);
+      out.println("() {");
+      out.print("\t\treturn ");
+      out.print(getStrategy().getFullJavaIdentifier(column));
+      out.println(";");
+      out.println("\t}");
+    }
+    for (int i=1; i <= degree; i++) {
+      ColumnDefinition column=table.getColumn(i - 1);
+      printOverrideInheritDoc(out);
+      out.print("\tpublic ");
+      out.print(getJavaType(column.getType()));
+      out.print(" value");
+      out.print(i);
+      out.println("() {");
+      out.print("\t\treturn ");
+      out.print(getStrategy().getJavaGetterName(column,Mode.RECORD));
+      out.println("();");
+      out.println("\t}");
+    }
+  }
   out.println("}");
   out.close();
 }

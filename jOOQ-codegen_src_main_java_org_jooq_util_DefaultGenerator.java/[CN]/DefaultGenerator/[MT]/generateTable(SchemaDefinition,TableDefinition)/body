@@ -26,12 +26,12 @@
   for (  ColumnDefinition column : table.getColumns()) {
     printTableColumn(out,column,table);
   }
-  out.println();
   if (generateInstanceFields()) {
+    out.println();
     out.print("\tpublic ");
   }
  else {
-    printNoFurtherInstancesAllowedJavadoc(out);
+    printJavadocNoFurtherInstancesAllowed(out);
     out.print("\tprivate ");
   }
   out.println(strategy.getJavaClassName(table) + "() {");

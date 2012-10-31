@@ -1,0 +1,3 @@
+{
+  return org.jooq.examples.mysql.sakila.tables.ActorInfo.ACTOR_INFO.FILM_INFO;
+}

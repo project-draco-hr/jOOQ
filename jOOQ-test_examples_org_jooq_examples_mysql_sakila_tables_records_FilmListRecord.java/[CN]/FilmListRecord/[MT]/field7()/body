@@ -1,0 +1,3 @@
+{
+  return org.jooq.examples.mysql.sakila.tables.FilmList.FILM_LIST.RATING;
+}

@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.mysql.generatedclasses.tables.XTestCase_85.X_UNUSED_ID;
+}

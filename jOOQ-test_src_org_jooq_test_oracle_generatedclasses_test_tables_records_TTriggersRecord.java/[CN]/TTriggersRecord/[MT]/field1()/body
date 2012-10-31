@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.oracle.generatedclasses.test.tables.TTriggers.T_TRIGGERS.ID_GENERATED;
+}

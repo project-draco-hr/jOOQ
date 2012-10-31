@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.sybase.generatedclasses.tables.TAuthor.T_AUTHOR.ADDRESS;
+}

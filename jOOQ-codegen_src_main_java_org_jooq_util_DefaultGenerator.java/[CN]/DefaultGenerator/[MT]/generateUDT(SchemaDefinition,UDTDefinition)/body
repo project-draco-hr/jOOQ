@@ -40,8 +40,7 @@
       log.error("Error while generating routine " + routine,e);
     }
   }
-  out.println();
-  printNoFurtherInstancesAllowedJavadoc(out);
+  printJavadocNoFurtherInstancesAllowed(out);
   out.println("\tprivate " + strategy.getJavaClassName(udt) + "() {");
   if (!schema.isDefaultSchema()) {
     out.println("\t\tsuper(\"" + udt.getOutputName() + "\", "+ strategy.getFullJavaIdentifier(schema)+ ");");

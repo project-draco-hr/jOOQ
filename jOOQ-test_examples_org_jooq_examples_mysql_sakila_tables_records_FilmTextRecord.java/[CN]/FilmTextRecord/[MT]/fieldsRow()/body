@@ -1,0 +1,3 @@
+{
+  return org.jooq.impl.Factory.row(field1(),field2(),field3());
+}

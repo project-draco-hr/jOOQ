@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.sybase.generatedclasses.tables.TBookStore.T_BOOK_STORE.NAME;
+}

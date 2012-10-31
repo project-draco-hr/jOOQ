@@ -1,0 +1,3 @@
+{
+  return org.jooq.examples.cubrid.demodb.tables.Game.GAME.ATHLETE_CODE;
+}
