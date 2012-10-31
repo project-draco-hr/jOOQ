@@ -1,0 +1,8 @@
+{
+  context.keyword("values");
+  String separator="";
+  for (  Row row : rows) {
+    context.sql(separator).sql(row);
+    separator=", ";
+  }
+}
