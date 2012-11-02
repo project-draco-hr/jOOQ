@@ -1,0 +1,5 @@
+{
+  ResultImpl<Record> result=new ResultImpl<Record>(getConfiguration(),getFieldProvider());
+  result.add(this);
+  return result.intoResultSet();
+}

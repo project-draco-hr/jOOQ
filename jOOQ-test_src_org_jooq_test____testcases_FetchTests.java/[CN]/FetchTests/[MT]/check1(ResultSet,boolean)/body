@@ -3,7 +3,7 @@
   assertFalse(rs.isBeforeFirst());
   assertFalse(rs.isAfterLast());
   assertTrue(rs.isFirst());
-  assertFalse(rs.isLast());
+  assertEquals(last,rs.isLast());
   assertEquals(1,rs.getRow());
   assertEquals(1,rs.getInt(1));
   assertFalse(rs.wasNull());
