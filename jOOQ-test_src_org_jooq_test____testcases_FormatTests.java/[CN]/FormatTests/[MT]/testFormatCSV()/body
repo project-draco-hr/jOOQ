@@ -1,10 +1,18 @@
 {
+  jOOQAbstractTest.reset=false;
+  B b1=newBook(5);
+  B b2=newBook(6);
+  B b3=newBook(7);
+  b1.setValue(TBook_TITLE(),"\"\"\"\"");
+  b2.setValue(TBook_TITLE(),"Hello\\World");
+  b3.setValue(TBook_TITLE(),"Hello\\,\\World");
+  create().batchStore(b1,b2).execute();
   List<Field<?>> fields=TBook().getFields();
   Result<B> books=create().selectFrom(TBook()).fetch();
   String csv=books.formatCSV();
   String[] lines=csv.split("\n");
   String[] fieldNames=lines[0].split(",");
-  assertEquals(5,lines.length);
+  assertEquals(books.size() + 1,lines.length);
   assertEquals(fields.size(),fieldNames.length);
   for (int i=0; i < fields.size(); i++) {
     assertEquals(fields.get(i).getName(),fieldNames[i]);
@@ -23,15 +31,15 @@
           regex2+=",";
         }
         if (x == i) {
-          regex1+=value;
-          regex2+="\"" + value.replaceAll("\"","\"\"") + "\"";
+          regex1+=value.replace("\\","\\\\");
+          regex2+="\"" + value.replace("\\","\\\\\\\\").replace("\"","\"\"") + "\"";
         }
  else {
-          regex1+="((?!\")[^,]+|\"[^\"]*\")";
-          regex2+="((?!\")[^,]+|\"[^\"]*\")";
+          regex1+="((?!\")[^,]+|\".*?\"(?=(,|$)))";
+          regex2+="((?!\")[^,]+|\".*?\"(?=(,|$)))";
         }
       }
-      assertTrue(lines[j].matches(regex1) || lines[j].matches(regex2));
+      assertTrue(lines[j],lines[j].matches(regex1) || lines[j].matches(regex2));
     }
   }
 }
