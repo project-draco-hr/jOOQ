@@ -3,8 +3,4 @@
     outS.println("}");
     outS.close();
   }
-  if (outF != null) {
-    outF.println("}");
-    outF.close();
-  }
 }
