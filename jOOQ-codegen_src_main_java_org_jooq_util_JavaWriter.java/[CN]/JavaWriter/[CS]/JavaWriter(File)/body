@@ -1,0 +1,6 @@
+{
+  super(file);
+  this.staticInitialisationStatements=new ArrayList<String>();
+  this.initialisationStatements=new ArrayList<String>();
+  this.alreadyPrinted=new HashSet<Object>();
+}

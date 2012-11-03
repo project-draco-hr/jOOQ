@@ -1,13 +1,12 @@
 {
-  log.info("Generating interface",strategy.getFileName(table,Mode.INTERFACE));
-  GenerationWriter out=new GenerationWriter(strategy.getFile(table,Mode.INTERFACE));
-  printHeader(out,table,Mode.INTERFACE);
+  log.info("Generating interface",getStrategy().getFileName(table,Mode.INTERFACE));
+  final String className=getStrategy().getJavaClassName(table,Mode.INTERFACE);
+  final List<String> interfaces=getStrategy().getJavaClassImplements(table,Mode.INTERFACE);
+  JavaWriter out=new JavaWriter(getStrategy().getFile(table,Mode.INTERFACE));
+  printPackage(out,table,Mode.INTERFACE);
   printClassJavadoc(out,table);
   printTableJPAAnnotation(out,table);
-  out.print("public interface ");
-  out.print(strategy.getJavaClassName(table,Mode.INTERFACE));
-  printImplements(out,table,Mode.INTERFACE);
-  out.println(" {");
+  out.println("public interface %s [[before=extends ][%s]] {",className,interfaces);
   for (  ColumnDefinition column : table.getColumns()) {
     printGetterAndSetter(out,column,false);
   }

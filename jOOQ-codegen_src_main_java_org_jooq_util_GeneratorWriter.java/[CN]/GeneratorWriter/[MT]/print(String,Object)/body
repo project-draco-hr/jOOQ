@@ -1,0 +1,56 @@
+{
+  if (newline && indentTabs > 0) {
+    sb.append(StringUtils.leftPad("",indentTabs,'\t'));
+    newline=false;
+    indentTabs=0;
+  }
+  if (args.length > 0) {
+    List<Object> originals=Arrays.asList(args);
+    List<Object> translated=new ArrayList<Object>();
+    for (; ; ) {
+      for (      Object arg : originals) {
+        if (arg instanceof Class) {
+          translated.add(((Class<?>)arg).getName());
+        }
+ else         if (arg instanceof Object[] || arg instanceof Collection) {
+          if (arg instanceof Collection) {
+            arg=((Collection<?>)arg).toArray();
+          }
+          int start=string.indexOf("[[");
+          int end=string.indexOf("]]");
+          String expression=string.substring(start,end + 2);
+          StringBuilder replacement=new StringBuilder();
+          Pattern p=Pattern.compile("\\[(?:\\[before=([^\\]]+)\\])?" + "(?:\\[separator=([^\\]]+)\\])?" + "(?:\\[after=([^\\]]+)\\])?"+ "(?:\\[(.*)\\]\\])");
+          Matcher m=p.matcher(expression);
+          m.find();
+          String gBefore=StringUtils.defaultString(m.group(1));
+          String gSeparator=StringUtils.defaultString(m.group(2),", ");
+          String gAfter=StringUtils.defaultString(m.group(3));
+          String gContent=m.group(4);
+          String separator=gBefore;
+          for (          Object o : ((Object[])arg)) {
+            translated.add(o);
+            replacement.append(separator);
+            replacement.append(gContent);
+            separator=gSeparator;
+          }
+          replacement.append(gAfter);
+          string=string.substring(0,start) + replacement + string.substring(end + 2);
+        }
+ else {
+          translated.add(arg);
+        }
+      }
+      if (!string.contains("[[")) {
+        break;
+      }
+      originals=translated;
+      translated=new ArrayList<Object>();
+    }
+    sb.append(String.format(string,translated.toArray()));
+  }
+ else {
+    sb.append(string);
+  }
+  return (W)this;
+}

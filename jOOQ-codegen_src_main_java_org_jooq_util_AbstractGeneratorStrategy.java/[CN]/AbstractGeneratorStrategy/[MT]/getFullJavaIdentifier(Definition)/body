@@ -9,6 +9,10 @@
       sb.append(getFullJavaClassName(e.getContainer()));
     }
   }
+ else   if (definition instanceof SequenceDefinition) {
+    sb.append(getJavaPackageName(definition.getSchema()));
+    sb.append(".Sequences");
+  }
  else   if (definition instanceof TypedElementDefinition) {
     TypedElementDefinition<?> e=(TypedElementDefinition<?>)definition;
     sb.append(getFullJavaClassName(e.getContainer()));

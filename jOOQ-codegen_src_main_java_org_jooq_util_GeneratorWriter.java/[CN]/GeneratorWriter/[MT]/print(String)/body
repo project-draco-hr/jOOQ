@@ -1,0 +1,4 @@
+{
+  print(string,new Object[0]);
+  return (W)this;
+}

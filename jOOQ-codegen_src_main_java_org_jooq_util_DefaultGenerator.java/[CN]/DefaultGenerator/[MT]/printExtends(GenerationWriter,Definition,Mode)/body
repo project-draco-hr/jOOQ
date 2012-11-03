@@ -1,7 +1,0 @@
-{
-  String superclass=strategy.getJavaClassExtends(definition,mode);
-  if (!StringUtils.isBlank(superclass)) {
-    out.print(" extends ");
-    out.print(superclass);
-  }
-}

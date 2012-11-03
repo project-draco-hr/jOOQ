@@ -1,8 +1,13 @@
 {
   UniqueKeyDefinition mainKey=table.getMainUniqueKey();
-  log.info("Generating table",strategy.getFileName(table) + " [input=" + table.getInputName()+ ", output="+ table.getOutputName()+ ", pk="+ (mainKey != null ? mainKey.getName() : "N/A")+ "]");
-  GenerationWriter out=new GenerationWriter(strategy.getFile(table));
-  printHeader(out,table);
+  final String className=getStrategy().getJavaClassName(table);
+  final String fullClassName=getStrategy().getFullJavaClassName(table);
+  final String fullTableId=getStrategy().getFullJavaIdentifier(table);
+  final String recordType=getStrategy().getFullJavaClassName(table,Mode.RECORD);
+  final List<String> interfaces=getStrategy().getJavaClassImplements(table,Mode.DEFAULT);
+  log.info("Generating table",getStrategy().getFileName(table) + " [input=" + table.getInputName()+ ", output="+ table.getOutputName()+ ", pk="+ (mainKey != null ? mainKey.getName() : "N/A")+ "]");
+  JavaWriter out=new JavaWriter(getStrategy().getFile(table));
+  printPackage(out,table);
   printClassJavadoc(out,table);
   Class<?> baseClass;
   if (generateRelations() && mainKey != null) {
@@ -11,160 +16,74 @@
  else {
     baseClass=TableImpl.class;
   }
-  out.print("public class ");
-  out.print(strategy.getJavaClassName(table));
-  out.print(" extends ");
-  out.print(baseClass);
-  out.print("<");
-  out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
-  out.print(">");
-  printImplements(out,table,Mode.DEFAULT);
-  out.println(" {");
+  out.println("public class %s extends %s<%s>[[before= implements ][%s]] {",className,baseClass,recordType,interfaces);
   out.printSerial();
-  printSingletonInstance(table,out);
-  printRecordTypeMethod(table,out);
+  printSingletonInstance(out,table);
+  printRecordTypeMethod(out,table);
   for (  ColumnDefinition column : table.getColumns()) {
     printTableColumn(out,column,table);
   }
   if (generateInstanceFields()) {
     out.println();
-    out.print("\tpublic ");
+    out.tab(1).println("public %s() {",className);
   }
  else {
-    printJavadocNoFurtherInstancesAllowed(out);
-    out.print("\tprivate ");
+    out.tab(1).javadoc(NO_FURTHER_INSTANCES_ALLOWED);
+    out.tab(1).println("private %s() {",className);
   }
-  out.println(strategy.getJavaClassName(table) + "() {");
-  if (!schema.isDefaultSchema()) {
-    out.println("\t\tsuper(\"" + table.getOutputName() + "\", "+ strategy.getFullJavaIdentifier(schema)+ ");");
-  }
- else {
-    out.println("\t\tsuper(\"" + table.getOutputName() + "\");");
-  }
-  out.println("\t}");
+  out.tab(2).println("super(\"%s\"[[before=, ][%s]]);",table.getOutputName(),list(schema.isDefaultSchema() ? null : getStrategy().getFullJavaIdentifier(schema)));
+  out.tab(1).println("}");
   if (generateInstanceFields()) {
+    final String schemaId=schema.isDefaultSchema() ? "null" : getStrategy().getFullJavaIdentifier(schema);
     out.println();
-    out.print("\tpublic ");
-    out.print(strategy.getJavaClassName(table));
-    out.print("(");
-    out.print(String.class);
-    out.println(" alias) {");
-    out.print("\t\tsuper(alias, ");
-    if (schema.isDefaultSchema()) {
-      out.print("null");
-    }
- else {
-      out.print(strategy.getFullJavaIdentifier(schema));
-    }
-    out.print(", ");
-    out.print(strategy.getFullJavaIdentifier(table));
-    out.println(");");
-    out.println("\t}");
+    out.tab(1).println("public %s(%s alias) {",className,String.class);
+    out.tab(2).println("super(alias, %s, %s);",schemaId,fullTableId);
+    out.tab(1).println("}");
   }
   if (generateRelations()) {
     IdentityDefinition identity=table.getIdentity();
     if (identity != null) {
-      out.println();
-      out.println("\t@Override");
-      out.print("\tpublic ");
-      out.print(Identity.class);
-      out.print("<");
-      out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
-      out.print(", ");
-      out.print(getJavaType(identity.getColumn().getType()));
-      out.println("> getIdentity() {");
-      out.print("\t\treturn ");
-      out.print(strategy.getFullJavaIdentifier(identity));
-      out.println(";");
-      out.println("\t}");
+      final String identityType=getJavaType(identity.getColumn().getType());
+      final String identityFullId=getStrategy().getFullJavaIdentifier(identity);
+      out.tab(1).overrideInherit();
+      out.tab(1).println("public %s<%s, %s> getIdentity() {",Identity.class,recordType,identityType);
+      out.tab(2).println("return %s;",identityFullId);
+      out.tab(1).println("}");
     }
     if (mainKey != null) {
-      out.println();
-      out.println("\t@Override");
-      out.print("\tpublic ");
-      out.print(UniqueKey.class);
-      out.print("<");
-      out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
-      out.println("> getMainKey() {");
-      out.print("\t\treturn ");
-      out.print(strategy.getFullJavaIdentifier(mainKey));
-      out.println(";");
-      out.println("\t}");
+      final String keyFullId=getStrategy().getFullJavaIdentifier(mainKey);
+      out.tab(1).overrideInherit();
+      out.tab(1).println("public %s<%s> getMainKey() {",UniqueKey.class,recordType);
+      out.tab(2).println("return %s;",keyFullId);
+      out.tab(1).println("}");
     }
     List<UniqueKeyDefinition> uniqueKeys=table.getUniqueKeys();
     if (uniqueKeys.size() > 0) {
-      out.println();
-      out.println("\t@Override");
-      out.println("\t@SuppressWarnings(\"unchecked\")");
-      out.print("\tpublic ");
-      out.print(List.class);
-      out.print("<");
-      out.print(UniqueKey.class);
-      out.print("<");
-      out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
-      out.println(">> getKeys() {");
-      out.print("\t\treturn ");
-      out.print(Arrays.class);
-      out.print(".<");
-      out.print(UniqueKey.class);
-      out.print("<");
-      out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
-      out.print(">>asList(");
-      String separator="";
-      for (      UniqueKeyDefinition uniqueKey : uniqueKeys) {
-        out.print(separator);
-        out.print(strategy.getFullJavaIdentifier(uniqueKey));
-        separator=", ";
-      }
-      out.println(");");
-      out.println("\t}");
+      final List<String> keyFullIds=getStrategy().getFullJavaIdentifiers(uniqueKeys);
+      out.tab(1).overrideInherit();
+      out.tab(1).println("public %s<%s<%s>> getKeys() {",List.class,UniqueKey.class,recordType);
+      out.tab(2).println("return %s.<%s<%s>>asList([[%s]]);",Arrays.class,UniqueKey.class,recordType,keyFullIds);
+      out.tab(1).println("}");
     }
     List<ForeignKeyDefinition> foreignKeys=table.getForeignKeys();
     if (foreignKeys.size() > 0) {
-      out.println();
-      out.println("\t@Override");
-      out.println("\t@SuppressWarnings(\"unchecked\")");
-      out.print("\tpublic ");
-      out.print(List.class);
-      out.print("<");
-      out.print(ForeignKey.class);
-      out.print("<");
-      out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
-      out.println(", ?>> getReferences() {");
-      out.print("\t\treturn ");
-      out.print(Arrays.class);
-      out.print(".<");
-      out.print(ForeignKey.class);
-      out.print("<");
-      out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
-      out.print(", ?>>asList(");
-      String separator="";
-      for (      ForeignKeyDefinition foreignKey : foreignKeys) {
-        out.print(separator);
-        out.print(strategy.getFullJavaIdentifier(foreignKey));
-        separator=", ";
-      }
-      out.println(");");
-      out.println("\t}");
+      final List<String> keyFullIds=getStrategy().getFullJavaIdentifiers(foreignKeys);
+      out.tab(1).overrideInherit();
+      out.tab(1).println("public %s<%s<%s, ?>> getReferences() {",List.class,ForeignKey.class,recordType);
+      out.tab(2).println("return %s.<%s<%s, ?>>asList([[%s]]);",Arrays.class,ForeignKey.class,recordType,keyFullIds);
+      out.tab(1).println("}");
     }
   }
   if (baseClass == UpdatableTableImpl.class) {
     patternLoop:     for (    String pattern : database.getRecordVersionFields()) {
       for (      ColumnDefinition column : table.getColumns()) {
         if ((column.getName().matches(pattern.trim()) || column.getQualifiedName().matches(pattern.trim()))) {
-          out.println();
-          out.println("\t@Override");
-          out.print("\tpublic ");
-          out.print(TableField.class);
-          out.print("<");
-          out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
-          out.print(", ");
-          out.print(getJavaType(column.getType()));
-          out.println("> getRecordVersion() {");
-          out.print("\t\treturn ");
-          out.print(strategy.getFullJavaIdentifier(column));
-          out.println(";");
-          out.println("\t}");
+          final String columnType=getJavaType(column.getType());
+          final String columnId=getStrategy().getFullJavaIdentifier(column);
+          out.tab(1).overrideInherit();
+          out.tab(1).println("public %s<%s, %s> getRecordVersion() {",TableField.class,recordType,columnType);
+          out.tab(2).println("return %s;",columnId);
+          out.tab(1).println("}");
           break patternLoop;
         }
       }
@@ -172,36 +91,22 @@
     timestampLoop:     for (    String pattern : database.getRecordTimestampFields()) {
       for (      ColumnDefinition column : table.getColumns()) {
         if ((column.getName().matches(pattern.trim()) || column.getQualifiedName().matches(pattern.trim()))) {
-          out.println();
-          out.println("\t@Override");
-          out.print("\tpublic ");
-          out.print(TableField.class);
-          out.print("<");
-          out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
-          out.print(", ");
-          out.print(getJavaType(column.getType()));
-          out.println("> getRecordTimestamp() {");
-          out.print("\t\treturn ");
-          out.print(strategy.getFullJavaIdentifier(column));
-          out.println(";");
-          out.println("\t}");
+          final String columnType=getJavaType(column.getType());
+          final String columnId=getStrategy().getFullJavaIdentifier(column);
+          out.tab(1).overrideInherit();
+          out.tab(1).println("public %s<%s, %s> getRecordTimestamp() {",TableField.class,recordType,columnType);
+          out.tab(2).println("return %s;",columnId);
+          out.tab(1).println("}");
           break timestampLoop;
         }
       }
     }
   }
   if (generateInstanceFields()) {
-    out.println();
-    out.println("\t@Override");
-    out.print("\tpublic ");
-    out.print(strategy.getFullJavaClassName(table));
-    out.print(" as(");
-    out.print(String.class);
-    out.println(" alias) {");
-    out.print("\t\treturn new ");
-    out.print(strategy.getFullJavaClassName(table));
-    out.println("(alias);");
-    out.println("\t}");
+    out.tab(1).overrideInherit();
+    out.tab(1).println("public %s as(%s alias) {",fullClassName,String.class);
+    out.tab(2).println("return new %s(alias);",fullClassName);
+    out.tab(1).println("}");
   }
   out.printStaticInitialisationStatementsPlaceholder();
   out.println("}");

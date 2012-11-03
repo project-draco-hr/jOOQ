@@ -1,0 +1,34 @@
+{
+  if (function.getInParameters().size() > 254) {
+    log.warn("Too many parameters","Function " + function + " has more than 254 in parameters. Skipping generation of convenience method.");
+    return;
+  }
+  if (parametersAsField && function.getInParameters().isEmpty()) {
+    return;
+  }
+  final String className=getStrategy().getFullJavaClassName(function);
+  out.tab(1).javadoc("Get <code>%s</code> as a field",function.getQualifiedOutputName());
+  out.tab(1).print("public static %s<%s> %s(",function.isAggregate() ? AggregateFunction.class : Field.class,getJavaType(function.getReturnType()),getStrategy().getJavaMethodName(function,Mode.DEFAULT));
+  String separator="";
+  for (  ParameterDefinition parameter : function.getInParameters()) {
+    out.print(separator);
+    if (parametersAsField) {
+      out.print("%s<%s>",Field.class,getExtendsNumberType(parameter.getType()));
+    }
+ else {
+      out.print(getNumberType(parameter.getType()));
+    }
+    out.print(" %s",getStrategy().getJavaMemberName(parameter));
+    separator=", ";
+  }
+  out.println(") {");
+  out.tab(2).println("%s f = new %s();",className,className);
+  for (  ParameterDefinition parameter : function.getInParameters()) {
+    final String paramSetter=getStrategy().getJavaSetterName(parameter,Mode.DEFAULT);
+    final String paramMember=getStrategy().getJavaMemberName(parameter);
+    out.tab(2).println("f.%s(%s);",paramSetter,paramMember);
+  }
+  out.println();
+  out.tab(2).println("return f.as%s();",function.isAggregate() ? "AggregateFunction" : "Field");
+  out.tab(1).println("}");
+}

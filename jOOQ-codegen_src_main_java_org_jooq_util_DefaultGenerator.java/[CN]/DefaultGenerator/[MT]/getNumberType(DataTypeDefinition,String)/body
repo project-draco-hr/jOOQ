@@ -1,0 +1,8 @@
+{
+  if (type.isGenericNumberType()) {
+    return prefix + Number.class.getName();
+  }
+ else {
+    return getJavaType(type);
+  }
+}

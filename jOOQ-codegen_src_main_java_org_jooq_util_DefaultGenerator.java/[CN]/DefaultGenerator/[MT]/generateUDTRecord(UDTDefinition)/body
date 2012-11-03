@@ -1,17 +1,13 @@
 {
-  log.info("Generating UDT record",strategy.getFileName(udt,Mode.RECORD));
-  GenerationWriter out=new GenerationWriter(strategy.getFile(udt,Mode.RECORD));
-  printHeader(out,udt,Mode.RECORD);
+  log.info("Generating UDT record",getStrategy().getFileName(udt,Mode.RECORD));
+  final String className=getStrategy().getJavaClassName(udt,Mode.RECORD);
+  final String recordType=getStrategy().getFullJavaClassName(udt,Mode.RECORD);
+  final List<String> interfaces=getStrategy().getJavaClassImplements(udt,Mode.RECORD);
+  final String udtId=getStrategy().getFullJavaIdentifier(udt);
+  JavaWriter out=new JavaWriter(getStrategy().getFile(udt,Mode.RECORD));
+  printPackage(out,udt,Mode.RECORD);
   printClassJavadoc(out,udt);
-  out.print("public class ");
-  out.print(strategy.getJavaClassName(udt,Mode.RECORD));
-  out.print(" extends ");
-  out.print(UDTRecordImpl.class);
-  out.print("<");
-  out.print(strategy.getFullJavaClassName(udt,Mode.RECORD));
-  out.print(">");
-  printImplements(out,udt,Mode.RECORD);
-  out.println(" {");
+  out.println("public class %s extends %s<%s>[[before= implements ][%s]] {",className,UDTRecordImpl.class,recordType,interfaces);
   out.printSerial();
   out.println();
   for (  AttributeDefinition attribute : udt.getAttributes()) {
@@ -33,12 +29,10 @@
       log.error("Error while generating routine " + routine,e);
     }
   }
-  out.println();
-  out.println("\tpublic " + strategy.getJavaClassName(udt,Mode.RECORD) + "() {");
-  out.print("\t\tsuper(");
-  out.print(strategy.getFullJavaIdentifier(udt));
-  out.println(");");
-  out.println("\t}");
+  out.tab(1).javadoc("Create a new <code>%s</code> record",udt.getQualifiedOutputName());
+  out.tab(1).println("public %s() {",className);
+  out.tab(2).println("super(%s);",udtId);
+  out.tab(1).println("}");
   out.println("}");
   out.close();
 }

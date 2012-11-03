@@ -1,0 +1,7 @@
+{
+  Integer[] result=new Integer[to - from + 1];
+  for (int i=from; i <= to; i++) {
+    result[i - from]=i;
+  }
+  return result;
+}

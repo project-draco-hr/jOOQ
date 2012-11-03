@@ -1,0 +1,62 @@
+{
+  if (procedure.getInParameters().size() > 254) {
+    log.warn("Too many parameters","Procedure " + procedure + " has more than 254 in parameters. Skipping generation of convenience method.");
+    return;
+  }
+  final String className=getStrategy().getFullJavaClassName(procedure);
+  out.tab(1).javadoc("Call <code>%s</code>",procedure.getQualifiedOutputName());
+  out.print("\tpublic ");
+  if (!instance) {
+    out.print("static ");
+  }
+  if (procedure.getOutParameters().size() == 0) {
+    out.print("void ");
+  }
+ else   if (procedure.getOutParameters().size() == 1) {
+    out.print(getJavaType(procedure.getOutParameters().get(0).getType()));
+    out.print(" ");
+  }
+ else {
+    out.print(className + " ");
+  }
+  out.print(getStrategy().getJavaMethodName(procedure,Mode.DEFAULT));
+  out.print("(");
+  String glue="";
+  if (!instance) {
+    out.print(Configuration.class);
+    out.print(" configuration");
+    glue=", ";
+  }
+  for (  ParameterDefinition parameter : procedure.getInParameters()) {
+    if (instance && parameter.equals(procedure.getInParameters().get(0))) {
+      continue;
+    }
+    out.print(glue);
+    out.print(getNumberType(parameter.getType()));
+    out.print(" ");
+    out.print(getStrategy().getJavaMemberName(parameter));
+    glue=", ";
+  }
+  out.println(") {");
+  out.tab(2).println("%s p = new %s();",className,className);
+  for (  ParameterDefinition parameter : procedure.getInParameters()) {
+    final String setter=getStrategy().getJavaSetterName(parameter,Mode.DEFAULT);
+    final String arg=(instance && parameter.equals(procedure.getInParameters().get(0))) ? "this" : getStrategy().getJavaMemberName(parameter);
+    out.tab(2).println("p.%s(%s);",setter,arg);
+  }
+  out.println();
+  out.tab(2).println("p.execute(%s);",instance ? "getConfiguration()" : "configuration");
+  if (procedure.getOutParameters().size() > 0) {
+    final String getter=getStrategy().getJavaGetterName(procedure.getOutParameters().get(0),Mode.DEFAULT);
+    if (instance) {
+      out.tab(2).println("from(p.%s());",getter);
+    }
+    if (procedure.getOutParameters().size() == 1) {
+      out.tab(2).println("return p.%s();",getter);
+    }
+ else     if (procedure.getOutParameters().size() > 1) {
+      out.tab(2).println("return p;");
+    }
+  }
+  out.tab(1).println("}");
+}

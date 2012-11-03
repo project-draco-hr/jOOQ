@@ -1,0 +1,7 @@
+{
+  List<T> result=new ArrayList<T>();
+  if (object != null && !"".equals(object)) {
+    result.add(object);
+  }
+  return result;
+}

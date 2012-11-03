@@ -1,3 +1,0 @@
-{
-  printFieldJavaDoc(out,element,null);
-}

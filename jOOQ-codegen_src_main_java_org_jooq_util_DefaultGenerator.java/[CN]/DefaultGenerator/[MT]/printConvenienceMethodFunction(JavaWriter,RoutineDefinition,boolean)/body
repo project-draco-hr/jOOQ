@@ -1,0 +1,37 @@
+{
+  if (function.getInParameters().size() > 254) {
+    log.warn("Too many parameters","Function " + function + " has more than 254 in parameters. Skipping generation of convenience method.");
+    return;
+  }
+  final String className=getStrategy().getFullJavaClassName(function);
+  final String functionName=function.getQualifiedOutputName();
+  final String functionType=getJavaType(function.getReturnType());
+  final String methodName=getStrategy().getJavaMethodName(function,Mode.DEFAULT);
+  out.tab(1).javadoc("Call <code>%s</code>",functionName);
+  out.tab(1).print("public %s%s %s(",!instance ? "static " : "",functionType,methodName);
+  String glue="";
+  if (!instance) {
+    out.print("%s configuration",Configuration.class);
+    glue=", ";
+  }
+  for (  ParameterDefinition parameter : function.getInParameters()) {
+    if (instance && parameter.equals(function.getInParameters().get(0))) {
+      continue;
+    }
+    final String paramType=getNumberType(parameter.getType());
+    final String paramMember=getStrategy().getJavaMemberName(parameter);
+    out.print("%s%s %s",glue,paramType,paramMember);
+    glue=", ";
+  }
+  out.println(") {");
+  out.tab(2).println("%s f = new %s();",className,className);
+  for (  ParameterDefinition parameter : function.getInParameters()) {
+    final String paramSetter=getStrategy().getJavaSetterName(parameter,Mode.DEFAULT);
+    final String paramMember=(instance && parameter.equals(function.getInParameters().get(0))) ? "this" : getStrategy().getJavaMemberName(parameter);
+    out.tab(2).println("f.%s(%s);",paramSetter,paramMember);
+  }
+  out.println();
+  out.tab(2).println("f.execute(%s);",instance ? "getConfiguration()" : "configuration");
+  out.tab(2).println("return f.getReturnValue();");
+  out.tab(1).println("}");
+}

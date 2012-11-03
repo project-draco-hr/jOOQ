@@ -1,24 +1,20 @@
 {
-  log.info("Generating schema",strategy.getFileName(schema));
+  log.info("Generating schema",getStrategy().getFileName(schema));
   log.info("----------------------------------------------------------");
-  outS=new GenerationWriter(strategy.getFile(schema));
-  printHeader(outS,schema);
+  final String schemaName=schema.getQualifiedOutputName();
+  final String schemaId=getStrategy().getJavaIdentifier(schema);
+  final String className=getStrategy().getJavaClassName(schema);
+  final List<String> interfaces=getStrategy().getJavaClassImplements(schema,Mode.DEFAULT);
+  outS=new JavaWriter(getStrategy().getFile(schema));
+  printPackage(outS,schema);
   printClassJavadoc(outS,schema);
-  outS.print("public class ");
-  outS.print(strategy.getJavaClassName(schema));
-  outS.print(" extends ");
-  outS.print(SchemaImpl.class);
-  printImplements(outS,schema,Mode.DEFAULT);
-  outS.println(" {");
+  outS.println("public class %s extends %s[[before= implements ][%s]] {",className,SchemaImpl.class,interfaces);
   outS.printSerial();
-  outS.println();
-  outS.println("\t/**");
-  outS.println("\t * The singleton instance of " + schema.getQualifiedOutputName());
-  outS.println("\t */");
-  outS.println("\tpublic static final " + strategy.getJavaClassName(schema) + " "+ strategy.getJavaIdentifier(schema)+ " = new "+ strategy.getJavaClassName(schema)+ "();");
-  printJavadocNoFurtherInstancesAllowed(outS);
-  outS.println("\tprivate " + strategy.getJavaClassName(schema) + "() {");
-  outS.println("\t\tsuper(\"" + schema.getOutputName() + "\");");
-  outS.println("\t}");
+  outS.tab(1).javadoc("The singleton instance of <code>%s</code>",schemaName);
+  outS.tab(1).println("public static final %s %s = new %s();",className,schemaId,className);
+  outS.tab(1).javadoc(NO_FURTHER_INSTANCES_ALLOWED);
+  outS.tab(1).println("private %s() {",className);
+  outS.tab(2).println("super(\"%s\");",schema.getOutputName());
+  outS.tab(1).println("}");
   outS.printInitialisationStatementsPlaceholder();
 }

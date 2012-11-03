@@ -1,0 +1,41 @@
+{
+  printFieldJavaDoc(out,column);
+  boolean hasType=type instanceof TableDefinition || type instanceof UDTDefinition;
+  boolean isDefaulted=column instanceof ParameterDefinition && ((ParameterDefinition)column).isDefaulted();
+  String isStatic=(type instanceof TableDefinition && generateInstanceFields()) ? "" : "static ";
+  out.tab(1).print("public %sfinal %s<",isStatic,declaredMemberClass);
+  if (hasType) {
+    out.print("%s, ",getStrategy().getFullJavaClassName(type,Mode.RECORD));
+  }
+  out.print("%s> %s",getJavaType(column.getType()),getStrategy().getJavaIdentifier(column));
+  if (declaredMemberClass == TableField.class) {
+    out.print(" = createField");
+  }
+ else   if (declaredMemberClass == UDTField.class) {
+    out.print(" = createField");
+  }
+ else {
+    out.print(" = createParameter");
+  }
+  out.print("(\"");
+  out.print(column.getName());
+  out.print("\", ");
+  out.print(getJavaTypeReference(column.getDatabase(),column.getType()));
+  if (hasType) {
+    if (type instanceof TableDefinition) {
+      if (generateInstanceFields()) {
+        out.print(", this");
+      }
+ else {
+        out.print(", " + getStrategy().getJavaIdentifier(type));
+      }
+    }
+ else {
+      out.print(", " + getStrategy().getJavaIdentifier(type));
+    }
+  }
+  if (isDefaulted) {
+    out.print(", true");
+  }
+  out.println(");");
+}

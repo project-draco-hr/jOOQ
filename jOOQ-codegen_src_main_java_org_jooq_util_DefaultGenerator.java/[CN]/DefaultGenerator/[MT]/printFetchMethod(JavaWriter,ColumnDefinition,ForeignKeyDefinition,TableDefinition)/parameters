@@ -1,0 +1,4 @@
+JavaWriter out
+ColumnDefinition column
+ForeignKeyDefinition foreignKey
+TableDefinition referenced

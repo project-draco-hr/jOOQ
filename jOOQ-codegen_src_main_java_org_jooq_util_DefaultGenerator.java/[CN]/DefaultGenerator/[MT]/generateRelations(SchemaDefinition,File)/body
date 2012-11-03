@@ -1,12 +1,11 @@
 {
   log.info("Generating Keys");
-  GenerationWriter out=new GenerationWriter(new File(targetSchemaDir,"Keys.java"));
-  printHeader(out,schema);
+  JavaWriter out=new JavaWriter(new File(targetSchemaDir,"Keys.java"));
+  printPackage(out,schema);
   printClassJavadoc(out,"A class modelling foreign key relationships between tables of the <code>" + schema.getOutputName() + "</code> schema");
   out.println("public class Keys {");
   out.println();
-  out.println("\t// IDENTITY definitions");
-  final int INITIALISER_SIZE=500;
+  out.tab(1).println("// IDENTITY definitions");
   List<IdentityDefinition> allIdentities=new ArrayList<IdentityDefinition>();
   List<UniqueKeyDefinition> allUniqueKeys=new ArrayList<UniqueKeyDefinition>();
   List<ForeignKeyDefinition> allForeignKeys=new ArrayList<ForeignKeyDefinition>();
@@ -14,19 +13,11 @@
     try {
       IdentityDefinition identity=table.getIdentity();
       if (identity != null) {
-        out.print("\tpublic static final ");
-        out.print(Identity.class);
-        out.print("<");
-        out.print(strategy.getFullJavaClassName(identity.getColumn().getContainer(),Mode.RECORD));
-        out.print(", ");
-        out.print(getJavaType(identity.getColumn().getType()));
-        out.print("> IDENTITY_");
-        out.print(strategy.getJavaIdentifier(identity.getColumn().getContainer()));
-        out.print(" = Identities");
-        out.print(allIdentities.size() / INITIALISER_SIZE);
-        out.print(".IDENTITY_");
-        out.print(strategy.getJavaIdentifier(identity.getColumn().getContainer()));
-        out.println(";");
+        final String identityType=getStrategy().getFullJavaClassName(identity.getColumn().getContainer(),Mode.RECORD);
+        final String columnType=getJavaType(identity.getColumn().getType());
+        final String identityId=getStrategy().getJavaIdentifier(identity.getColumn().getContainer());
+        final int block=allIdentities.size() / INITIALISER_SIZE;
+        out.tab(1).println("public static final %s<%s, %s> IDENTITY_%s = Identities%s.IDENTITY_%s;",Identity.class,identityType,columnType,identityId,block,identityId);
         allIdentities.add(identity);
       }
     }
@@ -35,22 +26,15 @@
     }
   }
   out.println();
-  out.println("\t// UNIQUE and PRIMARY KEY definitions");
+  out.tab(1).println("// UNIQUE and PRIMARY KEY definitions");
   for (  TableDefinition table : database.getTables(schema)) {
     try {
       List<UniqueKeyDefinition> uniqueKeys=table.getUniqueKeys();
       for (      UniqueKeyDefinition uniqueKey : uniqueKeys) {
-        out.print("\tpublic static final ");
-        out.print(UniqueKey.class);
-        out.print("<");
-        out.print(strategy.getFullJavaClassName(uniqueKey.getTable(),Mode.RECORD));
-        out.print("> ");
-        out.print(strategy.getJavaIdentifier(uniqueKey));
-        out.print(" = UniqueKeys");
-        out.print(allUniqueKeys.size() / INITIALISER_SIZE);
-        out.print(".");
-        out.print(strategy.getJavaIdentifier(uniqueKey));
-        out.println(";");
+        final String keyType=getStrategy().getFullJavaClassName(uniqueKey.getTable(),Mode.RECORD);
+        final String keyId=getStrategy().getJavaIdentifier(uniqueKey);
+        final int block=allUniqueKeys.size() / INITIALISER_SIZE;
+        out.tab(1).println("public static final %s<%s> %s = UniqueKeys%s.%s;",UniqueKey.class,keyType,keyId,block,keyId);
         allUniqueKeys.add(uniqueKey);
       }
     }
@@ -59,24 +43,16 @@
     }
   }
   out.println();
-  out.println("\t// FOREIGN KEY definitions");
+  out.tab(1).println("// FOREIGN KEY definitions");
   for (  TableDefinition table : database.getTables(schema)) {
     try {
       List<ForeignKeyDefinition> foreignKeys=table.getForeignKeys();
       for (      ForeignKeyDefinition foreignKey : foreignKeys) {
-        out.print("\tpublic static final ");
-        out.print(ForeignKey.class);
-        out.print("<");
-        out.print(strategy.getFullJavaClassName(foreignKey.getKeyTable(),Mode.RECORD));
-        out.print(", ");
-        out.print(strategy.getFullJavaClassName(foreignKey.getReferencedTable(),Mode.RECORD));
-        out.print("> ");
-        out.print(strategy.getJavaIdentifier(foreignKey));
-        out.print(" = ForeignKeys");
-        out.print(allForeignKeys.size() / INITIALISER_SIZE);
-        out.print(".");
-        out.print(strategy.getJavaIdentifier(foreignKey));
-        out.println(";");
+        final String keyType=getStrategy().getFullJavaClassName(foreignKey.getKeyTable(),Mode.RECORD);
+        final String referencedType=getStrategy().getFullJavaClassName(foreignKey.getReferencedTable(),Mode.RECORD);
+        final String keyId=getStrategy().getJavaIdentifier(foreignKey);
+        final int block=allForeignKeys.size() / INITIALISER_SIZE;
+        out.tab(1).println("public static final %s<%s, %s> %s = ForeignKeys%s.%s;",ForeignKey.class,keyType,referencedType,keyId,block,keyId);
         allForeignKeys.add(foreignKey);
       }
     }
@@ -84,26 +60,28 @@
       log.error("Error while generating reference " + table,e);
     }
   }
-  printPrivateConstructor(out,"Keys");
+  out.tab(1).javadoc(NO_FURTHER_INSTANCES_ALLOWED);
+  out.tab(1).println("private Keys() {}");
   int identityCounter=0;
   int uniqueKeyCounter=0;
   int foreignKeyCounter=0;
+  out.tab(1).header("[#1459] distribute members to avoid static initialisers > 64kb");
   for (  IdentityDefinition identity : allIdentities) {
-    generateIdentity(out,INITIALISER_SIZE,identityCounter,identity);
+    generateIdentity(out,identityCounter,identity);
     identityCounter++;
   }
   if (identityCounter > 0) {
     out.println("\t}");
   }
   for (  UniqueKeyDefinition uniqueKey : allUniqueKeys) {
-    generateUniqueKey(out,INITIALISER_SIZE,uniqueKeyCounter,uniqueKey);
+    generateUniqueKey(out,uniqueKeyCounter,uniqueKey);
     uniqueKeyCounter++;
   }
   if (uniqueKeyCounter > 0) {
     out.println("\t}");
   }
   for (  ForeignKeyDefinition foreignKey : allForeignKeys) {
-    generateForeignKey(out,INITIALISER_SIZE,foreignKeyCounter,foreignKey);
+    generateForeignKey(out,foreignKeyCounter,foreignKey);
     foreignKeyCounter++;
   }
   if (foreignKeyCounter > 0) {

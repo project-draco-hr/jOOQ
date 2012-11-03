@@ -1,0 +1,6 @@
+{
+  String string=beforeClose(sb.toString());
+  writer.append(string);
+  writer.flush();
+  writer.close();
+}

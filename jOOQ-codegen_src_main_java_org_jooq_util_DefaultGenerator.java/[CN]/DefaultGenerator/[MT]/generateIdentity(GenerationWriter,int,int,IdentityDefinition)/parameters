@@ -1,4 +1,0 @@
-GenerationWriter out
-int INITIALISER_SIZE
-int identityCounter
-IdentityDefinition identity

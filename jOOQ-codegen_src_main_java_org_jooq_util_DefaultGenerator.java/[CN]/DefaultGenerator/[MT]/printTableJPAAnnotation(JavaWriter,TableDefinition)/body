@@ -1,0 +1,38 @@
+{
+  SchemaDefinition schema=table.getSchema();
+  if (generateJPAAnnotations()) {
+    out.println("@javax.persistence.Entity");
+    out.print("@javax.persistence.Table(name = \"");
+    out.print(table.getName().replace("\"","\\\""));
+    out.print("\"");
+    if (!schema.isDefaultSchema()) {
+      out.print(", schema = \"");
+      out.print(schema.getOutputName().replace("\"","\\\""));
+      out.print("\"");
+    }
+    StringBuilder sb=new StringBuilder();
+    String glue1="";
+    for (    UniqueKeyDefinition uk : table.getUniqueKeys()) {
+      if (uk.getKeyColumns().size() > 1) {
+        sb.append(glue1);
+        sb.append("\t@javax.persistence.UniqueConstraint(columnNames = {");
+        String glue2="";
+        for (        ColumnDefinition column : uk.getKeyColumns()) {
+          sb.append(glue2);
+          sb.append("\"");
+          sb.append(column.getName().replace("\"","\\\""));
+          sb.append("\"");
+          glue2=", ";
+        }
+        sb.append("})");
+        glue1=",\n";
+      }
+    }
+    if (sb.length() > 0) {
+      out.println(", uniqueConstraints = {");
+      out.println(sb.toString());
+      out.print("}");
+    }
+    out.println(")");
+  }
+}

@@ -1,136 +1,76 @@
 {
-  log.info("Generating routine",strategy.getFileName(routine));
-  GenerationWriter out=new GenerationWriter(strategy.getFile(routine));
-  printHeader(out,routine);
+  log.info("Generating routine",getStrategy().getFileName(routine));
+  final String className=getStrategy().getJavaClassName(routine);
+  final String returnType=(routine.getReturnValue() == null) ? Void.class.getName() : getJavaType(routine.getReturnType());
+  final List<?> returnTypeRef=(routine.getReturnValue() != null) ? Arrays.asList(getJavaTypeReference(database,routine.getReturnType())) : Collections.emptyList();
+  final List<String> interfaces=getStrategy().getJavaClassImplements(routine,Mode.DEFAULT);
+  final String schemaId=getStrategy().getFullJavaIdentifier(schema);
+  final List<String> packageId=getStrategy().getFullJavaIdentifiers(routine.getPackage());
+  JavaWriter out=new JavaWriter(getStrategy().getFile(routine));
+  printPackage(out,routine);
   printClassJavadoc(out,routine);
-  out.print("public class ");
-  out.print(strategy.getJavaClassName(routine));
-  out.print(" extends ");
-  out.print(AbstractRoutine.class);
-  out.print("<");
-  if (routine.getReturnValue() == null) {
-    out.print(Void.class);
-  }
- else {
-    out.print(getJavaType(routine.getReturnType()));
-  }
-  out.print(">");
-  printImplements(out,routine,Mode.DEFAULT);
-  out.println(" {");
+  out.println("public class %s extends %s<%s>[[before= implements ][%s]] {",className,AbstractRoutine.class,returnType,interfaces);
   out.printSerial();
   out.println();
   for (  ParameterDefinition parameter : routine.getAllParameters()) {
     printParameter(out,parameter,routine);
   }
-  printJavadoc(out,"Create a new routine call instance");
-  out.println("\tpublic " + strategy.getJavaClassName(routine) + "() {");
-  out.print("\t\tsuper(");
-  out.print("\"");
-  out.print(routine.getName());
-  out.print("\", ");
-  out.print(strategy.getFullJavaIdentifier(schema));
-  if (routine.getPackage() != null) {
-    out.print(", ");
-    out.print(strategy.getFullJavaIdentifier(routine.getPackage()));
-  }
-  if (routine.getReturnValue() != null) {
-    out.print(", ");
-    out.print(getJavaTypeReference(database,routine.getReturnType()));
-  }
-  out.println(");");
+  out.tab(1).javadoc("Create a new routine call instance");
+  out.tab(1).println("public %s() {",className);
+  out.tab(2).println("super(\"%s\", %s[[before=, ][%s]][[before=, ][%s]]);",routine.getName(),schemaId,packageId,returnTypeRef);
   if (routine.getAllParameters().size() > 0) {
     out.println();
   }
   for (  ParameterDefinition parameter : routine.getAllParameters()) {
-    out.print("\t\t");
+    final String paramId=getStrategy().getJavaIdentifier(parameter);
     if (parameter.equals(routine.getReturnValue())) {
-      out.println("setReturnParameter(" + strategy.getJavaIdentifier(parameter) + ");");
+      out.tab(2).println("setReturnParameter(%s);",paramId);
     }
  else     if (routine.getInParameters().contains(parameter)) {
       if (routine.getOutParameters().contains(parameter)) {
-        out.println("addInOutParameter(" + strategy.getJavaIdentifier(parameter) + ");");
+        out.tab(2).println("addInOutParameter(%s);",paramId);
       }
  else {
-        out.println("addInParameter(" + strategy.getJavaIdentifier(parameter) + ");");
+        out.tab(2).println("addInParameter(%s);",paramId);
       }
     }
  else {
-      out.println("addOutParameter(" + strategy.getJavaIdentifier(parameter) + ");");
+      out.tab(2).println("addOutParameter(%s);",paramId);
     }
   }
   if (routine.getOverload() != null) {
-    out.println("\t\tsetOverloaded(true);");
+    out.tab(2).println("setOverloaded(true);");
   }
-  out.println("\t}");
+  out.tab(1).println("}");
   for (  ParameterDefinition parameter : routine.getInParameters()) {
-    out.println();
-    out.println("\t/**");
-    out.println("\t * Set the <code>" + parameter.getOutputName() + "</code> parameter IN value to the routine");
-    out.println("\t */");
-    out.print("\tpublic void ");
-    out.print(strategy.getJavaSetterName(parameter,Mode.DEFAULT));
-    out.print("(");
-    printNumberType(out,parameter.getType());
-    out.println(" value) {");
-    out.print("\t\tset");
-    if (parameter.getType().isGenericNumberType()) {
-      out.print("Number");
-    }
- else {
-      out.print("Value");
-    }
-    out.print("(");
-    out.print(strategy.getFullJavaIdentifier(parameter));
-    out.println(", value);");
-    out.println("\t}");
+    final String setter=getStrategy().getJavaSetterName(parameter,Mode.DEFAULT);
+    final String numberValue=parameter.getType().isGenericNumberType() ? "Number" : "Value";
+    final String numberField=parameter.getType().isGenericNumberType() ? "Number" : "Field";
+    final String paramId=getStrategy().getJavaIdentifier(parameter);
+    final String paramFullId=getStrategy().getFullJavaIdentifier(parameter);
+    out.tab(1).javadoc("Set the <code>%s</code> parameter IN value to the routine",parameter.getOutputName());
+    out.tab(1).println("public void %s(%s value) {",setter,getNumberType(parameter.getType()));
+    out.tab(2).println("set%s(%s, value);",numberValue,paramFullId);
+    out.tab(1).println("}");
     if (routine.isSQLUsable()) {
-      out.println();
-      out.println("\t/**");
-      out.println("\t * Set the <code>" + parameter.getOutputName() + "</code> parameter to the function");
-      out.println("\t * <p>");
-      out.print("\t * Use this method only, if the function is called as a {@link ");
-      out.print(Field.class);
-      out.print("} in a {@link ");
-      out.print(Select.class);
-      out.println("} statement!");
-      out.println("\t */");
-      out.print("\tpublic void ");
-      out.print(strategy.getJavaSetterName(parameter,Mode.DEFAULT));
-      out.print("(");
-      out.print(Field.class);
-      out.print("<");
-      printExtendsNumberType(out,parameter.getType());
-      out.println("> field) {");
-      out.print("\t\tset");
-      if (parameter.getType().isGenericNumberType()) {
-        out.print("Number");
-      }
- else {
-        out.print("Field");
-      }
-      out.print("(");
-      out.print(strategy.getJavaIdentifier(parameter));
-      out.println(", field);");
-      out.println("\t}");
+      out.tab(1).javadoc("Set the <code>%s</code> parameter to the function to be used with a {@link org.jooq.Select} statement",parameter.getOutputName());
+      out.tab(1).println("public void %s(%s<%s> field) {",setter,Field.class,getExtendsNumberType(parameter.getType()));
+      out.tab(2).println("set%s(%s, field);",numberField,paramId);
+      out.tab(1).println("}");
     }
   }
   for (  ParameterDefinition parameter : routine.getAllParameters()) {
     boolean isReturnValue=parameter.equals(routine.getReturnValue());
     boolean isOutParameter=routine.getOutParameters().contains(parameter);
     if (isOutParameter && !isReturnValue) {
-      out.println();
-      out.println("\t/**");
-      out.println("\t * Get the <code>" + parameter.getOutputName() + "</code> parameter OUT value from the routine");
-      out.println("\t */");
-      out.print("\tpublic ");
-      out.print(getJavaType(parameter.getType()));
-      out.print(" ");
-      out.print(strategy.getJavaGetterName(parameter,Mode.DEFAULT));
-      out.println("() {");
-      out.print("\t\treturn getValue(");
-      out.print(strategy.getJavaIdentifier(parameter));
-      out.println(");");
-      out.println("\t}");
+      final String paramName=parameter.getOutputName();
+      final String paramType=getJavaType(parameter.getType());
+      final String paramGetter=getStrategy().getJavaGetterName(parameter,Mode.DEFAULT);
+      final String paramId=getStrategy().getJavaIdentifier(parameter);
+      out.tab(1).javadoc("Get the <code>%s</code> parameter OUT value from the routine",paramName);
+      out.tab(1).println("public %s %s() {",paramType,paramGetter);
+      out.tab(2).println("return getValue(%s);",paramId);
+      out.tab(1).println("}");
     }
   }
   out.println("}");

@@ -1,15 +1,16 @@
 {
-  log.info("Generating table POJO",strategy.getFileName(table,Mode.POJO));
-  GenerationWriter out=new GenerationWriter(strategy.getFile(table,Mode.POJO));
-  printHeader(out,table,Mode.POJO);
+  log.info("Generating table POJO",getStrategy().getFileName(table,Mode.POJO));
+  final String className=getStrategy().getJavaClassName(table,Mode.POJO);
+  final String superName=getStrategy().getJavaClassExtends(table,Mode.POJO);
+  final List<String> interfaces=getStrategy().getJavaClassImplements(table,Mode.POJO);
+  if (generateInterfaces()) {
+    interfaces.add(getStrategy().getFullJavaClassName(table,Mode.INTERFACE));
+  }
+  JavaWriter out=new JavaWriter(getStrategy().getFile(table,Mode.POJO));
+  printPackage(out,table,Mode.POJO);
   printClassJavadoc(out,table);
   printTableJPAAnnotation(out,table);
-  out.print("public class ");
-  out.print(strategy.getJavaClassName(table,Mode.POJO));
-  printExtends(out,table,Mode.POJO);
-  printImplements(out,table,Mode.POJO);
-  out.print(" {");
-  out.println();
+  out.println("public class %s[[before= extends ][%s]][[before= implements ][%s]] {",className,list(superName),interfaces);
   out.printSerial();
   out.println();
   int maxLength=0;
@@ -18,73 +19,46 @@
   }
   for (  ColumnDefinition column : table.getColumns()) {
     printColumnValidationAnnotation(out,column);
-    out.print("\tprivate ");
-    if (generateImmutablePojos()) {
-      out.print("final ");
-    }
-    out.print(StringUtils.rightPad(getJavaType(column.getType()),maxLength));
-    out.print(" ");
-    out.print(convertToJavaIdentifier(strategy.getJavaMemberName(column,Mode.POJO)));
-    out.println(";");
+    out.tab(1).println("private %s%s %s;",generateImmutablePojos() ? "final " : "",StringUtils.rightPad(getJavaType(column.getType()),maxLength),getStrategy().getJavaMemberName(column,Mode.POJO));
   }
   if (generateImmutablePojos()) {
     out.println();
-    out.print("\tpublic ");
-    out.print(strategy.getJavaClassName(table,Mode.POJO));
-    out.print("(");
+    out.tab(1).print("public %s(",className);
     String separator1="";
     for (    ColumnDefinition column : table.getColumns()) {
       out.println(separator1);
-      out.print("\t\t");
-      out.print(StringUtils.rightPad(getJavaType(column.getType()),maxLength));
-      out.print(" ");
-      out.print(convertToJavaIdentifier(strategy.getJavaMemberName(column,Mode.POJO)));
+      out.tab(2).print("%s %s",StringUtils.rightPad(getJavaType(column.getType()),maxLength),getStrategy().getJavaMemberName(column,Mode.POJO));
       separator1=",";
     }
     out.println();
-    out.println("\t) {");
+    out.tab(1).println(") {");
     for (    ColumnDefinition column : table.getColumns()) {
-      out.print("\t\tthis.");
-      out.print(convertToJavaIdentifier(strategy.getJavaMemberName(column,Mode.POJO)));
-      out.print(" = ");
-      out.print(convertToJavaIdentifier(strategy.getJavaMemberName(column,Mode.POJO)));
-      out.println(";");
+      final String columnMember=getStrategy().getJavaMemberName(column,Mode.POJO);
+      out.tab(2).println("this.%s = %s;",columnMember,columnMember);
     }
-    out.println("\t}");
+    out.tab(1).println("}");
   }
   for (  ColumnDefinition column : table.getColumns()) {
+    final String columnType=getJavaType(column.getType());
+    final String columnGetter=getStrategy().getJavaGetterName(column,Mode.POJO);
+    final String columnSetter=getStrategy().getJavaSetterName(column,Mode.POJO);
+    final String columnMember=getStrategy().getJavaMemberName(column,Mode.POJO);
     out.println();
     printColumnJPAAnnotation(out,column);
     if (generateInterfaces()) {
-      printOverride(out);
+      out.tab(1).override();
     }
-    out.print("\tpublic ");
-    out.print(getJavaType(column.getType()));
-    out.print(" ");
-    out.print(strategy.getJavaGetterName(column,Mode.POJO));
-    out.println("() {");
-    out.print("\t\treturn this.");
-    out.print(convertToJavaIdentifier(strategy.getJavaMemberName(column,Mode.POJO)));
-    out.println(";");
-    out.println("\t}");
+    out.tab(1).println("public %s %s() {",columnType,columnGetter);
+    out.tab(2).println("return this.%s;",columnMember);
+    out.tab(1).println("}");
     if (!generateImmutablePojos()) {
       out.println();
       if (generateInterfaces()) {
-        printOverride(out);
+        out.tab(1).override();
       }
-      out.print("\tpublic void ");
-      out.print(strategy.getJavaSetterName(column,Mode.POJO));
-      out.print("(");
-      out.print(getJavaType(column.getType()));
-      out.print(" ");
-      out.print(convertToJavaIdentifier(strategy.getJavaMemberName(column,Mode.POJO)));
-      out.println(") {");
-      out.print("\t\tthis.");
-      out.print(convertToJavaIdentifier(strategy.getJavaMemberName(column,Mode.POJO)));
-      out.print(" = ");
-      out.print(convertToJavaIdentifier(strategy.getJavaMemberName(column,Mode.POJO)));
-      out.println(";");
-      out.println("\t}");
+      out.tab(1).println("public void %s(%s %s) {",columnSetter,columnType,columnMember);
+      out.tab(2).println("this.%s = %s;",columnMember,columnMember);
+      out.tab(1).println("}");
     }
   }
   out.println("}");

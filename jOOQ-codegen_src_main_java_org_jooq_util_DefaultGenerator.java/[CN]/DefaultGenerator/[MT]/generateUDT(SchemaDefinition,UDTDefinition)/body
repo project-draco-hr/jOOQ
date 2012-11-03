@@ -1,25 +1,19 @@
 {
-  log.info("Generating UDT ",strategy.getFileName(udt));
-  GenerationWriter out=new GenerationWriter(strategy.getFile(udt));
-  printHeader(out,udt);
+  log.info("Generating UDT ",getStrategy().getFileName(udt));
+  final String className=getStrategy().getJavaClassName(udt);
+  final String recordType=getStrategy().getFullJavaClassName(udt,Mode.RECORD);
+  final List<String> interfaces=getStrategy().getJavaClassImplements(udt,Mode.DEFAULT);
+  final String schemaId=getStrategy().getFullJavaIdentifier(schema);
+  JavaWriter out=new JavaWriter(getStrategy().getFile(udt));
+  printPackage(out,udt);
   printClassJavadoc(out,udt);
-  out.print("public class ");
-  out.print(strategy.getJavaClassName(udt));
-  out.print(" extends ");
-  out.print(UDTImpl.class);
-  out.print("<");
-  out.print(strategy.getFullJavaClassName(udt,Mode.RECORD));
-  out.print(">");
   if (udt.getRoutines().size() > 0) {
-    printImplements(out,udt,Mode.DEFAULT,org.jooq.Package.class.getName());
+    interfaces.add(org.jooq.Package.class.getName());
   }
- else {
-    printImplements(out,udt,Mode.DEFAULT);
-  }
-  out.println(" {");
+  out.println("public class %s extends %s<%s>[[before= implements ][%s]] {",className,UDTImpl.class,recordType,interfaces);
   out.printSerial();
-  printSingletonInstance(udt,out);
-  printRecordTypeMethod(udt,out);
+  printSingletonInstance(out,udt);
+  printRecordTypeMethod(out,udt);
   for (  AttributeDefinition attribute : udt.getAttributes()) {
     printUDTColumn(out,attribute,udt);
   }
@@ -40,18 +34,13 @@
       log.error("Error while generating routine " + routine,e);
     }
   }
-  printJavadocNoFurtherInstancesAllowed(out);
-  out.println("\tprivate " + strategy.getJavaClassName(udt) + "() {");
-  if (!schema.isDefaultSchema()) {
-    out.println("\t\tsuper(\"" + udt.getOutputName() + "\", "+ strategy.getFullJavaIdentifier(schema)+ ");");
-  }
- else {
-    out.println("\t\tsuper(\"" + udt.getOutputName() + "\");");
-  }
+  out.tab(1).javadoc(NO_FURTHER_INSTANCES_ALLOWED);
+  out.tab(1).println("private %s() {",className);
+  out.tab(2).println("super(\"%s\"[[before=, ][%s]]);",udt.getOutputName(),list(schemaId));
   out.println();
-  out.println("\t\t// Initialise data type");
-  out.println("\t\tgetDataType();");
-  out.println("\t}");
+  out.tab(2).println("// Initialise data type");
+  out.tab(2).println("getDataType();");
+  out.tab(1).println("}");
   out.println("}");
   out.close();
 }

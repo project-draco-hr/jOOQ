@@ -1,3 +1,0 @@
-{
-  printHeader(out,definition,Mode.DEFAULT);
-}

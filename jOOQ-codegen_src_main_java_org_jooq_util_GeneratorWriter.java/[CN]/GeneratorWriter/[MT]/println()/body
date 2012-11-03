@@ -1,0 +1,5 @@
+{
+  sb.append("\n");
+  newline=true;
+  return (W)this;
+}

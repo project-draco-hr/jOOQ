@@ -1,6 +1,10 @@
 {
+  final String className=getStrategy().getJavaClassName(table,Mode.DAO);
+  final String tableRecord=getStrategy().getFullJavaClassName(table,Mode.RECORD);
+  final String daoImpl=DAOImpl.class.getName();
+  final String tableIdentifier=getStrategy().getFullJavaIdentifier(table);
   String tType="Void";
-  String pType=strategy.getFullJavaClassName(table,Mode.POJO);
+  String pType=getStrategy().getFullJavaClassName(table,Mode.POJO);
   UniqueKeyDefinition key=table.getMainUniqueKey();
   ColumnDefinition keyColumn=null;
   if (key != null) {
@@ -11,88 +15,43 @@
     }
   }
   if (keyColumn == null) {
-    log.info("Skipping DAO generation",strategy.getFileName(table,Mode.DAO));
+    log.info("Skipping DAO generation",getStrategy().getFileName(table,Mode.DAO));
     return;
   }
  else {
-    log.info("Generating DAO",strategy.getFileName(table,Mode.DAO));
+    log.info("Generating DAO",getStrategy().getFileName(table,Mode.DAO));
   }
-  GenerationWriter out=new GenerationWriter(strategy.getFile(table,Mode.DAO));
-  printHeader(out,table,Mode.DAO);
+  JavaWriter out=new JavaWriter(getStrategy().getFile(table,Mode.DAO));
+  printPackage(out,table,Mode.DAO);
   printClassJavadoc(out,table);
-  out.print("public class ");
-  out.print(strategy.getJavaClassName(table,Mode.DAO));
-  out.print(" extends ");
-  out.print(DAOImpl.class);
-  out.print("<");
-  out.print(strategy.getFullJavaClassName(table,Mode.RECORD));
-  out.print(", ");
-  out.print(pType);
-  out.print(", ");
-  out.print(tType);
-  out.println("> {");
-  printJavadoc(out,"Create a new " + strategy.getJavaClassName(table,Mode.DAO) + " without any factory");
-  out.print("\tpublic ");
-  out.print(strategy.getJavaClassName(table,Mode.DAO));
-  out.println("() {");
-  out.print("\t\tsuper(");
-  out.print(strategy.getFullJavaIdentifier(table));
-  out.print(", ");
-  out.print(strategy.getFullJavaClassName(table,Mode.POJO));
-  out.println(".class);");
-  out.println("\t}");
-  printJavadoc(out,"Create a new " + strategy.getJavaClassName(table,Mode.DAO) + " with an attached factory");
-  out.print("\tpublic ");
-  out.print(strategy.getJavaClassName(table,Mode.DAO));
-  out.print("(");
-  out.print(Executor.class);
-  out.println(" factory) {");
-  out.print("\t\tsuper(");
-  out.print(strategy.getFullJavaIdentifier(table));
-  out.print(", ");
-  out.print(strategy.getFullJavaClassName(table,Mode.POJO));
-  out.println(".class, factory);");
-  out.println("\t}");
-  out.println();
-  printOverride(out);
-  out.print("\tprotected ");
-  out.print(tType);
-  out.print(" getId(");
-  out.print(strategy.getFullJavaClassName(table,Mode.POJO));
-  out.println(" object) {");
-  out.print("\t\treturn object.");
-  out.print(strategy.getJavaGetterName(keyColumn,Mode.POJO));
-  out.println("();");
-  out.println("\t}");
+  out.println("public class %s extends %s<%s, %s, %s> {",className,daoImpl,tableRecord,pType,tType);
+  out.tab(1).javadoc("Create a new %s without any factory",className);
+  out.tab(1).println("public %s() {",className);
+  out.tab(2).println("super(%s, %s.class);",tableIdentifier,pType);
+  out.tab(1).println("}");
+  out.tab(1).javadoc("Create a new %s with an attached factory",className);
+  out.tab(1).println("public %s(%s factory) {",className,Executor.class);
+  out.tab(2).println("super(%s, %s.class, factory);",tableIdentifier,pType);
+  out.tab(1).println("}");
+  out.tab(1).overrideInherit();
+  out.tab(1).println("protected %s getId(%s object) {",tType,pType);
+  out.tab(2).println("return object.%s();",getStrategy().getJavaGetterName(keyColumn,Mode.POJO));
+  out.tab(1).println("}");
   for (  ColumnDefinition column : table.getColumns()) {
-    printJavadoc(out,"Fetch records that have <code>" + column.getOutputName() + " IN (values)</code>");
-    out.print("\tpublic ");
-    out.print(List.class);
-    out.print("<");
-    out.print(strategy.getFullJavaClassName(table,Mode.POJO));
-    out.print("> fetchBy");
-    out.print(strategy.getJavaClassName(column,Mode.POJO));
-    out.print("(");
-    out.print(getJavaType(column.getType()));
-    out.println("... values) {");
-    out.print("\t\treturn fetch(");
-    out.print(strategy.getFullJavaIdentifier(column));
-    out.println(", values);");
-    out.println("\t}");
+    final String colName=column.getOutputName();
+    final String colClass=getStrategy().getJavaClassName(column,Mode.POJO);
+    final String colType=getJavaType(column.getType());
+    final String colIdentifier=getStrategy().getFullJavaIdentifier(column);
+    out.tab(1).javadoc("Fetch records that have <code>%s IN (values)</code>",colName);
+    out.tab(1).println("public %s<%s> fetchBy%s(%s... values) {",List.class,pType,colClass,colType);
+    out.tab(2).println("return fetch(%s, values);",colIdentifier);
+    out.tab(1).println("}");
     ukLoop:     for (    UniqueKeyDefinition uk : column.getUniqueKeys()) {
       if (uk.getKeyColumns().size() == 1 && uk.getKeyColumns().get(0).equals(column)) {
-        printJavadoc(out,"Fetch a unique that has <code>" + column.getOutputName() + " = value</code>");
-        out.print("\tpublic ");
-        out.print(strategy.getFullJavaClassName(table,Mode.POJO));
-        out.print(" fetchOneBy");
-        out.print(strategy.getJavaClassName(column,Mode.POJO));
-        out.print("(");
-        out.print(getJavaType(column.getType()));
-        out.println(" value) {");
-        out.print("\t\treturn fetchOne(");
-        out.print(strategy.getFullJavaIdentifier(column));
-        out.println(", value);");
-        out.println("\t}");
+        out.tab(1).javadoc("Fetch a unique record that has <code>%s = value</code>",colName);
+        out.tab(1).println("public %s fetchOneBy%s(%s value) {",pType,colClass,colType);
+        out.tab(2).println("return fetchOne(%s, value);",colIdentifier);
+        out.tab(1).println("}");
         break ukLoop;
       }
     }

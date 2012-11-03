@@ -1,0 +1,8 @@
+{
+  final int t=tab();
+  tab(t).println();
+  tab(t).println("/**");
+  tab(t).println(" * " + string,args);
+  tab(t).println(" */");
+  return this;
+}

@@ -1,0 +1,4 @@
+JavaWriter out
+TypedElementDefinition<?> column
+Definition type
+Class<?> declaredMemberClass

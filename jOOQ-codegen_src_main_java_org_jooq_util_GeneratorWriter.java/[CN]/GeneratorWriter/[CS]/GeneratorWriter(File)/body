@@ -1,0 +1,11 @@
+{
+  file.getParentFile().mkdirs();
+  this.file=file;
+  try {
+    this.writer=new PrintWriter(file);
+  }
+ catch (  FileNotFoundException e) {
+    throw new GeneratorException("Error writing " + file.getAbsolutePath());
+  }
+  this.sb=new StringBuilder();
+}

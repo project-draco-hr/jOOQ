@@ -1,0 +1,4 @@
+{
+  print(clazz.getCanonicalName());
+  return this;
+}

@@ -1,6 +1,0 @@
-{
-  out.print("\t * @throws ");
-  out.print(DataAccessException.class);
-  out.print(" if something went wrong executing the query");
-  out.println();
-}

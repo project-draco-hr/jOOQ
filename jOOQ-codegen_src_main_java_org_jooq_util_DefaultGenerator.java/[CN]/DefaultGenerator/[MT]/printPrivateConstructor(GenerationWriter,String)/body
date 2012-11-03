@@ -1,7 +1,0 @@
-{
-  out.println();
-  out.println("\t/**");
-  out.println("\t * No instances");
-  out.println("\t */");
-  out.println("\tprivate " + javaClassName + "() {}");
-}

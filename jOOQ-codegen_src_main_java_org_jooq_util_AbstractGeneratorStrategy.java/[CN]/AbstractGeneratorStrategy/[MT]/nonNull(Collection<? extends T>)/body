@@ -1,0 +1,9 @@
+{
+  List<T> result=new ArrayList<T>();
+  for (  T t : collection) {
+    if (t != null) {
+      result.add(t);
+    }
+  }
+  return result;
+}

@@ -4,12 +4,12 @@
     ArrayDefinition array=database.getArray(schema,u);
     sb.append(getJavaTypeReference(db,array.getElementType()));
     sb.append(".asArrayDataType(");
-    sb.append(strategy.getFullJavaClassName(array,Mode.RECORD));
+    sb.append(getStrategy().getFullJavaClassName(array,Mode.RECORD));
     sb.append(".class)");
   }
  else   if (db.getUDT(schema,u) != null) {
     UDTDefinition udt=db.getUDT(schema,u);
-    sb.append(strategy.getFullJavaIdentifier(udt));
+    sb.append(getStrategy().getFullJavaIdentifier(udt));
     sb.append(".getDataType()");
   }
  else   if (db.getEnum(schema,u) != null) {
@@ -20,7 +20,7 @@
     sb.append("DataType.");
     sb.append(FieldTypeHelper.normalise(FieldTypeHelper.getDataType(db.getDialect(),String.class).getTypeName()));
     sb.append(".asEnumDataType(");
-    sb.append(strategy.getFullJavaClassName(db.getEnum(schema,u)));
+    sb.append(getStrategy().getFullJavaClassName(db.getEnum(schema,u)));
     sb.append(".class)");
   }
  else {

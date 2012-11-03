@@ -1,5 +1,5 @@
 {
-  File targetSchemaDir=strategy.getFile(schema).getParentFile();
+  File targetSchemaDir=getStrategy().getFile(schema).getParentFile();
   if (!schema.isDefaultSchema()) {
     generateSchema(schema);
   }

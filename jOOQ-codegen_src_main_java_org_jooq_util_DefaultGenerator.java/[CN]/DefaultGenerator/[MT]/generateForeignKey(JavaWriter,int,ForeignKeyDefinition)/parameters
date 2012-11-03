@@ -1,0 +1,3 @@
+JavaWriter out
+int foreignKeyCounter
+ForeignKeyDefinition foreignKey

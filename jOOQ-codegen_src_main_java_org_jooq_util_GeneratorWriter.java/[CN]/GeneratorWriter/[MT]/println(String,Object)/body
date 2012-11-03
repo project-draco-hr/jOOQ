@@ -1,0 +1,5 @@
+{
+  print(string,args);
+  println();
+  return (W)this;
+}

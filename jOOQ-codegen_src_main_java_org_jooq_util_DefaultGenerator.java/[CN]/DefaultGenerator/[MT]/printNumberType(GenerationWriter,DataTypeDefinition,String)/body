@@ -1,9 +1,0 @@
-{
-  if (type.isGenericNumberType()) {
-    out.print(prefix);
-    out.print(Number.class);
-  }
- else {
-    out.print(getJavaType(type));
-  }
-}

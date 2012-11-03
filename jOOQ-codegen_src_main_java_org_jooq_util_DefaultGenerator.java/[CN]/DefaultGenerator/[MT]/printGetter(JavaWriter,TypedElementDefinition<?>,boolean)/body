@@ -1,0 +1,14 @@
+{
+  final String type=getJavaType(element.getType());
+  final String getter=getStrategy().getJavaGetterName(element,Mode.DEFAULT);
+  final String id=getStrategy().getFullJavaIdentifier(element);
+  out.tab(1).print("public %s %s()",type,getter);
+  if (printBody) {
+    out.println(" {");
+    out.tab(2).println("return getValue(%s);",id);
+    out.tab(1).println("}");
+  }
+ else {
+    out.println(";");
+  }
+}
