@@ -1,0 +1,26 @@
+{
+  if (foreignKey.getKeyColumns().size() > 1) {
+    return;
+  }
+  final TableDefinition referenced=foreignKey.getReferencedTable();
+  final String referencedType=getStrategy().getFullJavaClassName(referenced,Mode.RECORD);
+  final String setter=foreignKey.getKeyColumns().size() == 1 ? getStrategy().getJavaSetterName(column,Mode.RECORD) : getStrategy().getJavaSetterName(referenced,Mode.RECORD);
+  out.tab(1).javadoc("Link this record to a given {@link %s}",referencedType);
+  out.tab(1).println("public void %s(%s value) {",setter,referencedType);
+  out.tab(2).println("if (value == null) {");
+  out.print("[[\t\t\tsetValue(%s, null);\n]]",getStrategy().getFullJavaIdentifiers(foreignKey.getKeyColumns()));
+  out.tab(2).println("}");
+  out.tab(2).println("else {");
+  for (int i=0; i < foreignKey.getKeyColumns().size(); i++) {
+    ColumnDefinition referencingColumn=foreignKey.getKeyColumns().get(i);
+    ColumnDefinition referencedColumn=foreignKey.getReferencedColumns().get(i);
+    final String referencingId=getStrategy().getFullJavaIdentifier(referencingColumn);
+    final String referencedId=getStrategy().getFullJavaIdentifier(referencedColumn);
+    DataTypeDefinition foreignType=referencingColumn.getType();
+    DataTypeDefinition primaryType=referencedColumn.getType();
+    List<String> conversion=list(!match(foreignType,primaryType) ? getSimpleJavaType(referencingColumn.getType()) : null);
+    out.tab(3).println("setValue(%s, value.getValue(%s[[before=, ][after=.class][%s]]));",referencingId,referencedId,conversion);
+  }
+  out.tab(2).println("}");
+  out.tab(1).println("}");
+}

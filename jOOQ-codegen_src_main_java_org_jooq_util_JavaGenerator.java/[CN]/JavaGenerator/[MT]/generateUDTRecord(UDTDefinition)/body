@@ -1,0 +1,51 @@
+{
+  log.info("Generating UDT record",getStrategy().getFileName(udt,Mode.RECORD));
+  final String className=getStrategy().getJavaClassName(udt,Mode.RECORD);
+  final String recordType=getStrategy().getFullJavaClassName(udt,Mode.RECORD);
+  final List<String> interfaces=getStrategy().getJavaClassImplements(udt,Mode.RECORD);
+  final String udtId=getStrategy().getFullJavaIdentifier(udt);
+  JavaWriter out=new JavaWriter(getStrategy().getFile(udt,Mode.RECORD));
+  printPackage(out,udt,Mode.RECORD);
+  printClassJavadoc(out,udt);
+  out.println("public class %s extends %s<%s>[[before= implements ][%s]] {",className,UDTRecordImpl.class,recordType,interfaces);
+  out.printSerial();
+  out.println();
+  for (  AttributeDefinition attribute : udt.getAttributes()) {
+    final String comment=StringUtils.defaultString(attribute.getComment());
+    final String setter=getStrategy().getJavaSetterName(attribute,Mode.DEFAULT);
+    final String getter=getStrategy().getJavaGetterName(attribute,Mode.DEFAULT);
+    final String type=getJavaType((attribute).getType());
+    final String id=getStrategy().getFullJavaIdentifier(attribute);
+    final String name=attribute.getQualifiedOutputName();
+    out.tab(1).javadoc("Setter for <code>%s</code>. %s",name,comment);
+    out.tab(1).println("public void %s(%s value) {",setter,type);
+    out.tab(2).println("setValue(%s, value);",id);
+    out.tab(1).println("}");
+    out.tab(1).javadoc("Getter for <code>%s</code>. %s",name,comment);
+    out.tab(1).println("public %s %s() {",type,getter);
+    out.tab(2).println("return getValue(%s);",id);
+    out.tab(1).println("}");
+  }
+  for (  RoutineDefinition routine : udt.getRoutines()) {
+    boolean instance=routine.getInParameters().size() > 0 && routine.getInParameters().get(0).getInputName().toUpperCase().equals("SELF");
+    try {
+      if (!routine.isSQLUsable()) {
+        printConvenienceMethodProcedure(out,routine,instance);
+      }
+ else {
+        if (!routine.isAggregate()) {
+          printConvenienceMethodFunction(out,routine,instance);
+        }
+      }
+    }
+ catch (    Exception e) {
+      log.error("Error while generating routine " + routine,e);
+    }
+  }
+  out.tab(1).javadoc("Create a new <code>%s</code> record",udt.getQualifiedOutputName());
+  out.tab(1).println("public %s() {",className);
+  out.tab(2).println("super(%s);",udtId);
+  out.tab(1).println("}");
+  out.println("}");
+  out.close();
+}

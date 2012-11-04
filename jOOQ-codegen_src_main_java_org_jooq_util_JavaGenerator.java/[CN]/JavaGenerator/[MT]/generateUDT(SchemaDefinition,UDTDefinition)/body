@@ -1,0 +1,53 @@
+{
+  log.info("Generating UDT ",getStrategy().getFileName(udt));
+  final String className=getStrategy().getJavaClassName(udt);
+  final String recordType=getStrategy().getFullJavaClassName(udt,Mode.RECORD);
+  final List<String> interfaces=getStrategy().getJavaClassImplements(udt,Mode.DEFAULT);
+  final String schemaId=getStrategy().getFullJavaIdentifier(schema);
+  final String udtId=getStrategy().getJavaIdentifier(udt);
+  JavaWriter out=new JavaWriter(getStrategy().getFile(udt));
+  printPackage(out,udt);
+  printClassJavadoc(out,udt);
+  if (udt.getRoutines().size() > 0) {
+    interfaces.add(org.jooq.Package.class.getName());
+  }
+  out.println("public class %s extends %s<%s>[[before= implements ][%s]] {",className,UDTImpl.class,recordType,interfaces);
+  out.printSerial();
+  printSingletonInstance(out,udt);
+  printRecordTypeMethod(out,udt);
+  for (  AttributeDefinition attribute : udt.getAttributes()) {
+    final String attrType=getJavaType(attribute.getType());
+    final String attrTypeRef=getJavaTypeReference(attribute.getDatabase(),attribute.getType());
+    final String attrId=getStrategy().getJavaIdentifier(attribute);
+    final String attrName=attribute.getName();
+    final String attrComment=StringUtils.defaultString(attribute.getComment());
+    out.tab(1).javadoc("The attribute <code>%s</code>. %s",attribute.getQualifiedOutputName(),attrComment);
+    out.tab(1).println("public static final %s<%s, %s> %s = createField(\"%s\", %s, %s);",UDTField.class,recordType,attrType,attrId,attrName,attrTypeRef,udtId);
+  }
+  for (  RoutineDefinition routine : udt.getRoutines()) {
+    try {
+      if (!routine.isSQLUsable()) {
+        printConvenienceMethodProcedure(out,routine,false);
+      }
+ else {
+        if (!routine.isAggregate()) {
+          printConvenienceMethodFunction(out,routine,false);
+        }
+        printConvenienceMethodFunctionAsField(out,routine,false);
+        printConvenienceMethodFunctionAsField(out,routine,true);
+      }
+    }
+ catch (    Exception e) {
+      log.error("Error while generating routine " + routine,e);
+    }
+  }
+  out.tab(1).javadoc(NO_FURTHER_INSTANCES_ALLOWED);
+  out.tab(1).println("private %s() {",className);
+  out.tab(2).println("super(\"%s\"[[before=, ][%s]]);",udt.getOutputName(),list(schemaId));
+  out.println();
+  out.tab(2).println("// Initialise data type");
+  out.tab(2).println("getDataType();");
+  out.tab(1).println("}");
+  out.println("}");
+  out.close();
+}

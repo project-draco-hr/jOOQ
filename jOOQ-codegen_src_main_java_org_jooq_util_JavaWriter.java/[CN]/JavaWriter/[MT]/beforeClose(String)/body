@@ -1,44 +1,4 @@
 {
-  StringBuilder staticInits=new StringBuilder();
-  StringBuilder inits=new StringBuilder();
-  boolean hasStaticInits=false;
-  boolean hasInits=false;
-  for (  String statement : staticInitialisationStatements) {
-    if (!StringUtils.isBlank(statement)) {
-      hasStaticInits=true;
-      break;
-    }
-  }
-  for (  String statement : initialisationStatements) {
-    if (!StringUtils.isBlank(statement)) {
-      hasInits=true;
-      break;
-    }
-  }
-  if (hasStaticInits) {
-    staticInits.append("\n");
-    staticInits.append("\t/*\n");
-    staticInits.append("\t * static initialiser\n");
-    staticInits.append("\t */\n");
-    staticInits.append("\tstatic {\n");
-    for (    String statement : staticInitialisationStatements) {
-      staticInits.append("\t\t" + statement + "\n");
-    }
-    staticInits.append("\t}\n");
-  }
-  if (hasInits) {
-    inits.append("\n");
-    inits.append("\t/*\n");
-    inits.append("\t * instance initialiser\n");
-    inits.append("\t */\n");
-    inits.append("\t{\n");
-    for (    String statement : initialisationStatements) {
-      inits.append("\t\t" + statement + "\n");
-    }
-    inits.append("\t}\n");
-  }
-  string=string.replaceAll(STATIC_INITIALISATION_STATEMENT + "\\n",Matcher.quoteReplacement(staticInits.toString()));
-  string=string.replaceAll(INITIALISATION_STATEMENT + "\\n",Matcher.quoteReplacement(inits.toString()));
   string=string.replaceAll(SERIAL_STATEMENT,Matcher.quoteReplacement(String.valueOf(string.hashCode())));
   return string;
 }

@@ -1,9 +1,0 @@
-{
-  if (warnings.length == 1) {
-    println("@SuppressWarnings(\"%s\")",warnings[0]);
-  }
- else {
-    println("@SuppressWarnings({ [[join|\"%s\"]] })",(Object)warnings);
-  }
-  return this;
-}

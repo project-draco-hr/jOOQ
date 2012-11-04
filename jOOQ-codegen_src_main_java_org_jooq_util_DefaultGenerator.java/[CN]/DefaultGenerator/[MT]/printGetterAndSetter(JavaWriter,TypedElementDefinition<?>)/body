@@ -1,3 +1,0 @@
-{
-  printGetterAndSetter(out,element,true);
-}

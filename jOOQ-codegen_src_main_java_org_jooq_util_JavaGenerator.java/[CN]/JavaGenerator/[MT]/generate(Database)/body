@@ -1,0 +1,39 @@
+{
+  this.database=db;
+  log.info("Database parameters");
+  log.info("----------------------------------------------------------");
+  log.info("  dialect",database.getDialect());
+  log.info("  target dir",getTargetDirectory());
+  log.info("  target package",getTargetPackage());
+  log.info("----------------------------------------------------------");
+  log.info("");
+  log.info("DefaultGenerator parameters");
+  log.info("----------------------------------------------------------");
+  log.info("  strategy",strategy.delegate.getClass());
+  log.info("  deprecated",generateDeprecated());
+  log.info("  generated annotation",generateGeneratedAnnotation());
+  log.info("  instance fields",generateInstanceFields());
+  log.info("  JPA annotations",generateJPAAnnotations());
+  log.info("  validation annotations",generateValidationAnnotations());
+  log.info("  navigation methods",generateNavigationMethods());
+  log.info("  records",generateRecords() + ((!generateRecords && generateDaos) ? " (forced to true because of <daos/>)" : ""));
+  log.info("  pojos",generatePojos() + ((!generatePojos && generateDaos) ? " (forced to true because of <daos/>)" : ((!generatePojos && generateImmutablePojos) ? " (forced to true because of <immutablePojos/>)" : "")));
+  log.info("  immutable pojos",generateImmutablePojos());
+  log.info("  interfaces",generateInterfaces());
+  log.info("  daos",generateDaos());
+  log.info("  relations",generateRelations());
+  log.info("----------------------------------------------------------");
+  String targetPackage=getTargetPackage();
+  File targetPackageDir=new File(getTargetDirectory() + File.separator + targetPackage.replace('.',File.separatorChar));
+  log.info("Emptying",targetPackageDir.getAbsolutePath());
+  empty(targetPackageDir,".java");
+  log.info("Generating schemata","Total: " + database.getSchemata().size());
+  for (  SchemaDefinition schema : database.getSchemata()) {
+    try {
+      generate(schema);
+    }
+ catch (    Exception e) {
+      throw new GeneratorException("Error generating code for schema " + schema,e);
+    }
+  }
+}

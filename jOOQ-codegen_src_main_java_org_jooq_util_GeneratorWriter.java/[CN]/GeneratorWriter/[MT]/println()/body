@@ -1,5 +1,7 @@
 {
-  sb.append("\n");
-  newline=true;
+  if (sb.length() > 0) {
+    sb.append("\n");
+    newline=true;
+  }
   return (W)this;
 }

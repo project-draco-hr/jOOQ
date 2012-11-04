@@ -1,0 +1,24 @@
+{
+  log.info("Generating schema",getStrategy().getFileName(schema));
+  log.info("----------------------------------------------------------");
+  final String schemaName=schema.getQualifiedOutputName();
+  final String schemaId=getStrategy().getJavaIdentifier(schema);
+  final String className=getStrategy().getJavaClassName(schema);
+  final List<String> interfaces=getStrategy().getJavaClassImplements(schema,Mode.DEFAULT);
+  JavaWriter out=new JavaWriter(getStrategy().getFile(schema));
+  printPackage(out,schema);
+  printClassJavadoc(out,schema);
+  out.println("public class %s extends %s[[before= implements ][%s]] {",className,SchemaImpl.class,interfaces);
+  out.printSerial();
+  out.tab(1).javadoc("The singleton instance of <code>%s</code>",schemaName);
+  out.tab(1).println("public static final %s %s = new %s();",className,schemaId,className);
+  out.tab(1).javadoc(NO_FURTHER_INSTANCES_ALLOWED);
+  out.tab(1).println("private %s() {",className);
+  out.tab(2).println("super(\"%s\");",schema.getOutputName());
+  out.tab(1).println("}");
+  printSchemaReferences(out,database.getSequences(schema),Sequence.class,true);
+  printSchemaReferences(out,database.getTables(schema),Table.class,true);
+  printSchemaReferences(out,database.getUDTs(schema),UDT.class,true);
+  out.println("}");
+  out.close();
+}

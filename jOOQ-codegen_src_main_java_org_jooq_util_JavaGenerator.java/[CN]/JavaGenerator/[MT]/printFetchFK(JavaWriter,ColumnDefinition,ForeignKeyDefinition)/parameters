@@ -1,0 +1,3 @@
+JavaWriter out
+ColumnDefinition column
+ForeignKeyDefinition foreignKey

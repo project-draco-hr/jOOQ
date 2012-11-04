@@ -1,0 +1,12 @@
+{
+  if (!routine.isSQLUsable()) {
+    printConvenienceMethodProcedure(out,routine,false);
+  }
+ else {
+    if (!routine.isAggregate()) {
+      printConvenienceMethodFunction(out,routine,false);
+    }
+    printConvenienceMethodFunctionAsField(out,routine,false);
+    printConvenienceMethodFunctionAsField(out,routine,true);
+  }
+}

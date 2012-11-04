@@ -1,0 +1,12 @@
+{
+  log.info("Generating tables");
+  for (  TableDefinition table : database.getTables(schema)) {
+    try {
+      generateTable(schema,table);
+    }
+ catch (    Exception e) {
+      log.error("Error while generating table " + table,e);
+    }
+  }
+  watch.splitInfo("Tables generated");
+}

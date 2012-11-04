@@ -1,0 +1,84 @@
+{
+  log.info("Generating routine",getStrategy().getFileName(routine));
+  final String className=getStrategy().getJavaClassName(routine);
+  final String returnType=(routine.getReturnValue() == null) ? Void.class.getName() : getJavaType(routine.getReturnType());
+  final List<?> returnTypeRef=list((routine.getReturnValue() != null) ? getJavaTypeReference(database,routine.getReturnType()) : null);
+  final List<String> interfaces=getStrategy().getJavaClassImplements(routine,Mode.DEFAULT);
+  final String schemaId=getStrategy().getFullJavaIdentifier(schema);
+  final List<String> packageId=getStrategy().getFullJavaIdentifiers(routine.getPackage());
+  JavaWriter out=new JavaWriter(getStrategy().getFile(routine));
+  printPackage(out,routine);
+  printClassJavadoc(out,routine);
+  out.println("public class %s extends %s<%s>[[before= implements ][%s]] {",className,AbstractRoutine.class,returnType,interfaces);
+  out.printSerial();
+  for (  ParameterDefinition parameter : routine.getAllParameters()) {
+    final String paramType=getJavaType(parameter.getType());
+    final String paramTypeRef=getJavaTypeReference(parameter.getDatabase(),parameter.getType());
+    final String paramId=getStrategy().getJavaIdentifier(parameter);
+    final String paramName=parameter.getName();
+    final String paramComment=StringUtils.defaultString(parameter.getComment());
+    final List<String> isDefaulted=list(parameter.isDefaulted() ? "true" : null);
+    out.tab(1).javadoc("The parameter <code>%s</code>. %s",parameter.getQualifiedOutputName(),paramComment);
+    out.tab(1).println("public static final %s<%s> %s = createParameter(\"%s\", %s[[before=, ][%s]]);",Parameter.class,paramType,paramId,paramName,paramTypeRef,isDefaulted);
+  }
+  out.tab(1).javadoc("Create a new routine call instance");
+  out.tab(1).println("public %s() {",className);
+  out.tab(2).println("super(\"%s\", %s[[before=, ][%s]][[before=, ][%s]]);",routine.getName(),schemaId,packageId,returnTypeRef);
+  if (routine.getAllParameters().size() > 0) {
+    out.println();
+  }
+  for (  ParameterDefinition parameter : routine.getAllParameters()) {
+    final String paramId=getStrategy().getJavaIdentifier(parameter);
+    if (parameter.equals(routine.getReturnValue())) {
+      out.tab(2).println("setReturnParameter(%s);",paramId);
+    }
+ else     if (routine.getInParameters().contains(parameter)) {
+      if (routine.getOutParameters().contains(parameter)) {
+        out.tab(2).println("addInOutParameter(%s);",paramId);
+      }
+ else {
+        out.tab(2).println("addInParameter(%s);",paramId);
+      }
+    }
+ else {
+      out.tab(2).println("addOutParameter(%s);",paramId);
+    }
+  }
+  if (routine.getOverload() != null) {
+    out.tab(2).println("setOverloaded(true);");
+  }
+  out.tab(1).println("}");
+  for (  ParameterDefinition parameter : routine.getInParameters()) {
+    final String setter=getStrategy().getJavaSetterName(parameter,Mode.DEFAULT);
+    final String numberValue=parameter.getType().isGenericNumberType() ? "Number" : "Value";
+    final String numberField=parameter.getType().isGenericNumberType() ? "Number" : "Field";
+    final String paramId=getStrategy().getJavaIdentifier(parameter);
+    final String paramFullId=getStrategy().getFullJavaIdentifier(parameter);
+    out.tab(1).javadoc("Set the <code>%s</code> parameter IN value to the routine",parameter.getOutputName());
+    out.tab(1).println("public void %s(%s value) {",setter,getNumberType(parameter.getType()));
+    out.tab(2).println("set%s(%s, value);",numberValue,paramFullId);
+    out.tab(1).println("}");
+    if (routine.isSQLUsable()) {
+      out.tab(1).javadoc("Set the <code>%s</code> parameter to the function to be used with a {@link org.jooq.Select} statement",parameter.getOutputName());
+      out.tab(1).println("public void %s(%s<%s> field) {",setter,Field.class,getExtendsNumberType(parameter.getType()));
+      out.tab(2).println("set%s(%s, field);",numberField,paramId);
+      out.tab(1).println("}");
+    }
+  }
+  for (  ParameterDefinition parameter : routine.getAllParameters()) {
+    boolean isReturnValue=parameter.equals(routine.getReturnValue());
+    boolean isOutParameter=routine.getOutParameters().contains(parameter);
+    if (isOutParameter && !isReturnValue) {
+      final String paramName=parameter.getOutputName();
+      final String paramType=getJavaType(parameter.getType());
+      final String paramGetter=getStrategy().getJavaGetterName(parameter,Mode.DEFAULT);
+      final String paramId=getStrategy().getJavaIdentifier(parameter);
+      out.tab(1).javadoc("Get the <code>%s</code> parameter OUT value from the routine",paramName);
+      out.tab(1).println("public %s %s() {",paramType,paramGetter);
+      out.tab(2).println("return getValue(%s);",paramId);
+      out.tab(1).println("}");
+    }
+  }
+  out.println("}");
+  out.close();
+}

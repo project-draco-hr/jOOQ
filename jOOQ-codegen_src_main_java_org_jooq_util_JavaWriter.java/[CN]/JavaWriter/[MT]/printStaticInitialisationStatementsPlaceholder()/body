@@ -1,3 +1,0 @@
-{
-  println(STATIC_INITIALISATION_STATEMENT);
-}

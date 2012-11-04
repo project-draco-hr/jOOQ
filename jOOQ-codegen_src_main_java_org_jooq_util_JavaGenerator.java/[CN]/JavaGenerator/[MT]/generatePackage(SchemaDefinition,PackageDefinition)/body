@@ -1,0 +1,27 @@
+{
+  log.info("Generating package",pkg);
+  final String className=getStrategy().getJavaClassName(pkg);
+  final String schemaIdentifier=getStrategy().getFullJavaIdentifier(schema);
+  final List<String> interfaces=getStrategy().getJavaClassImplements(pkg,Mode.DEFAULT);
+  JavaWriter out=new JavaWriter(getStrategy().getFile(pkg));
+  printPackage(out,pkg);
+  printClassJavadoc(out,"Convenience access to all stored procedures and functions in " + pkg.getName());
+  out.println("public final class %s extends %s[[before= implements ][%s]] {",className,PackageImpl.class,interfaces);
+  out.printSerial();
+  printSingletonInstance(out,pkg);
+  for (  RoutineDefinition routine : pkg.getRoutines()) {
+    printRoutine(out,routine);
+    try {
+      generateRoutine(schema,routine);
+    }
+ catch (    Exception e) {
+      log.error("Error while generating routine " + routine,e);
+    }
+  }
+  out.tab(1).javadoc(NO_FURTHER_INSTANCES_ALLOWED);
+  out.tab(1).println("private %s() {",className);
+  out.tab(2).println("super(\"%s\", %s);",pkg.getOutputName(),schemaIdentifier);
+  out.tab(1).println("}");
+  out.println("}");
+  out.close();
+}

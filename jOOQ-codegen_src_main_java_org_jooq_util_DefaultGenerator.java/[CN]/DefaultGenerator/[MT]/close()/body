@@ -1,6 +1,0 @@
-{
-  if (outS != null) {
-    outS.println("}");
-    outS.close();
-  }
-}
