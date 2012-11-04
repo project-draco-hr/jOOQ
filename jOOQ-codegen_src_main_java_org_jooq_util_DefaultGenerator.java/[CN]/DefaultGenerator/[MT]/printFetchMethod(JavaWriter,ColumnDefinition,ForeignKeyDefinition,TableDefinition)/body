@@ -1,34 +1,22 @@
 {
   printFKSetter(out,column,foreignKey,referenced);
   printFieldJavaDoc(out,column);
-  out.print("\tpublic ");
-  out.print(getStrategy().getFullJavaClassName(referenced,Mode.RECORD));
-  out.print(" fetch");
-  out.print(getStrategy().getJavaClassName(referenced));
-  if (foreignKey.countSimilarReferences() > 1) {
-    out.print("By");
-    out.print(getStrategy().getJavaClassName(column));
-  }
-  out.println("() {");
-  out.println("\t\treturn create()");
-  out.print("\t\t\t.selectFrom(");
-  out.print(getStrategy().getFullJavaIdentifier(referenced));
-  out.println(")");
-  String connector="\t\t\t.where(";
+  final String referencedId=getStrategy().getFullJavaIdentifier(referenced);
+  final String referencedType=getStrategy().getFullJavaClassName(referenced,Mode.RECORD);
+  final String referencedClassName=getStrategy().getJavaClassName(referenced);
+  List<String> disambiguation=list(foreignKey.countSimilarReferences() > 1 ? getStrategy().getJavaClassName(column) : null);
+  out.tab(1).println("public %s fetch%s[[before=By][%s]]() {",referencedType,referencedClassName,disambiguation);
+  out.tab(2).println("return create()");
+  out.tab(3).println(".selectFrom(%s)",referencedId);
+  String connector="where";
   for (int i=0; i < foreignKey.getReferencedColumns().size(); i++) {
-    out.print(connector);
-    out.print(getStrategy().getFullJavaIdentifier(foreignKey.getReferencedColumns().get(i)));
-    out.print(".equal(getValue(");
-    out.print(getStrategy().getFullJavaIdentifier(foreignKey.getKeyColumns().get(i)));
+    final String ukId=getStrategy().getFullJavaIdentifier(foreignKey.getReferencedColumns().get(i));
+    final String fkId=getStrategy().getFullJavaIdentifier(foreignKey.getKeyColumns().get(i));
     DataTypeDefinition foreignType=foreignKey.getKeyColumns().get(i).getType();
     DataTypeDefinition primaryType=foreignKey.getReferencedColumns().get(i).getType();
-    if (!match(foreignType,primaryType)) {
-      out.print(", ");
-      out.print(getSimpleJavaType(foreignKey.getReferencedColumns().get(i).getType()));
-      out.print(".class");
-    }
-    out.println(")))");
-    connector="\t\t\t.and(";
+    List<String> conversion=list(!match(foreignType,primaryType) ? getSimpleJavaType(foreignKey.getReferencedColumns().get(i).getType()) : null);
+    out.tab(3).println(".%s(%s.equal(getValue(%s[[before=, ][after=.class][%s]])))",connector,ukId,fkId,conversion);
+    connector="and";
   }
   out.println("\t\t\t.fetchOne();");
   out.println("\t}");
