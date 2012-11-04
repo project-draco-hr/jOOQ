@@ -24,7 +24,7 @@
     printTableColumn(out,column,table);
   }
   if (generateInstanceFields()) {
-    out.println();
+    out.tab(1).javadoc("Create a <code>%s</code> table reference",table.getQualifiedOutputName());
     out.tab(1).println("public %s() {",className);
   }
  else {
@@ -35,7 +35,7 @@
   out.tab(1).println("}");
   if (generateInstanceFields()) {
     final String schemaId=schema.isDefaultSchema() ? "null" : getStrategy().getFullJavaIdentifier(schema);
-    out.println();
+    out.tab(1).javadoc("Create an aliased <code>%s</code> table reference",table.getQualifiedOutputName());
     out.tab(1).println("public %s(%s alias) {",className,String.class);
     out.tab(2).println("super(alias, %s, %s);",schemaId,fullTableId);
     out.tab(1).println("}");
