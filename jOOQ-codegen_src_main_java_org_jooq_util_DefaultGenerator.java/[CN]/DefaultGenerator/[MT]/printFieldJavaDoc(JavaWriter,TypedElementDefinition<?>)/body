@@ -32,40 +32,5 @@
     out.println("\t * Deserialising this field might not work!");
     log.warn("Unknown type",element.getQualifiedName() + " (" + combined+ ")");
   }
-  if (element instanceof ColumnDefinition) {
-    ColumnDefinition column=(ColumnDefinition)element;
-    UniqueKeyDefinition primaryKey=column.getPrimaryKey();
-    ForeignKeyDefinition foreignKey=column.getForeignKey();
-    if (primaryKey != null) {
-      out.println("\t * <p>");
-      out.print("\t * This column is part of the table's PRIMARY KEY");
-      out.println();
-    }
-    if (foreignKey != null) {
-      out.println("\t * <p>");
-      out.println("\t * This column is part of a FOREIGN KEY: <code><pre>");
-      out.print("\t * CONSTRAINT ");
-      out.println(foreignKey.getOutputName());
-      out.print("\t * FOREIGN KEY (");
-      String separator="";
-      for (      ColumnDefinition fkColumn : foreignKey.getKeyColumns()) {
-        out.print(separator);
-        out.print(fkColumn.getOutputName());
-        separator=", ";
-      }
-      out.println(")");
-      out.print("\t * REFERENCES ");
-      out.print(foreignKey.getReferencedTable().getQualifiedOutputName());
-      out.print(" (");
-      separator="";
-      for (      ColumnDefinition fkColumn : foreignKey.getReferencedColumns()) {
-        out.print(separator);
-        out.print(fkColumn.getOutputName());
-        separator=", ";
-      }
-      out.println(")");
-      out.println("\t * </pre></code>");
-    }
-  }
   out.println("\t */");
 }

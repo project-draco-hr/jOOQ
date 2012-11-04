@@ -14,6 +14,6 @@
   printGetter(out,element,printBody);
   if (printBody && generateRelations() && generateNavigationMethods()&& element instanceof ColumnDefinition) {
     ColumnDefinition column=(ColumnDefinition)element;
-    generateNavigateMethods(out,column);
+    printNavigateMethods(out,column);
   }
 }

@@ -4,6 +4,8 @@
     return;
   }
   final TableDefinition referencing=foreignKey.getKeyTable();
+  final TableDefinition referenced=foreignKey.getReferencedTable();
+  final UniqueKeyDefinition uniqueKey=foreignKey.getReferencedKey();
   final String referencingType=getStrategy().getFullJavaClassName(referencing,Mode.RECORD);
   final String referencingId=getStrategy().getFullJavaIdentifier(referencing);
   final StringBuilder method=new StringBuilder();
@@ -21,7 +23,7 @@
  else {
     fetchMethodNames.add(method.toString());
   }
-  printFieldJavaDoc(out,column);
+  out.tab(1).javadoc("Fetch a list of <code>%s</code> referencing this <code>%s</code>",referencing.getQualifiedOutputName(),referenced.getQualifiedOutputName());
   out.tab(1).println("public %s<%s> %s() {",Result.class,referencingType,method);
   out.tab(2).println("return create()");
   out.tab(3).println(".selectFrom(%s)",referencingId);

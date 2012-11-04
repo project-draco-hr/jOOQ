@@ -2,45 +2,24 @@
   if (foreignKey.getKeyColumns().size() > 1) {
     return;
   }
-  out.println("");
-  out.println("\t/**");
-  String comment="Link this record to a given {@link " + getStrategy().getFullJavaClassName(referencedTable,Mode.RECORD) + " "+ getStrategy().getJavaClassName(referencedTable,Mode.RECORD)+ "}";
-  printJavadocParagraph(out,comment,"\t");
-  out.println("\t */");
-  out.print("\tpublic void ");
-  if (foreignKey.getKeyColumns().size() == 1) {
-    out.print(getStrategy().getJavaSetterName(column,Mode.RECORD));
-  }
- else {
-    out.print(getStrategy().getJavaSetterName(referencedTable,Mode.RECORD));
-  }
-  out.print("(");
-  out.print(getStrategy().getFullJavaClassName(referencedTable,Mode.RECORD));
-  out.println(" value) {");
-  out.println("\t\tif (value == null) {");
-  for (int i=0; i < foreignKey.getKeyColumns().size(); i++) {
-    out.print("\t\t\tsetValue(");
-    out.print(getStrategy().getFullJavaIdentifier(foreignKey.getKeyColumns().get(i)));
-    out.println(", null);");
-  }
-  out.println("\t\t}");
-  out.println("\t\telse {");
+  final String referencedType=getStrategy().getFullJavaClassName(referencedTable,Mode.RECORD);
+  final String setter=foreignKey.getKeyColumns().size() == 1 ? getStrategy().getJavaSetterName(column,Mode.RECORD) : getStrategy().getJavaSetterName(referencedTable,Mode.RECORD);
+  out.tab(1).javadoc("Link this record to a given {@link %s}",referencedType);
+  out.tab(1).println("public void %s(%s value) {",setter,referencedType);
+  out.tab(2).println("if (value == null) {");
+  out.print("[[\t\t\tsetValue(%s, null);\n]]",getStrategy().getFullJavaIdentifiers(foreignKey.getKeyColumns()));
+  out.tab(2).println("}");
+  out.tab(2).println("else {");
   for (int i=0; i < foreignKey.getKeyColumns().size(); i++) {
     ColumnDefinition referencingColumn=foreignKey.getKeyColumns().get(i);
     ColumnDefinition referencedColumn=foreignKey.getReferencedColumns().get(i);
-    out.print("\t\t\tsetValue(");
-    out.print(getStrategy().getFullJavaIdentifier(referencingColumn));
-    out.print(", value.getValue(");
-    out.print(getStrategy().getFullJavaIdentifier(referencedColumn));
+    final String referencingId=getStrategy().getFullJavaIdentifier(referencingColumn);
+    final String referencedId=getStrategy().getFullJavaIdentifier(referencedColumn);
     DataTypeDefinition foreignType=referencingColumn.getType();
     DataTypeDefinition primaryType=referencedColumn.getType();
-    if (!match(foreignType,primaryType)) {
-      out.print(", ");
-      out.print(getSimpleJavaType(referencingColumn.getType()));
-      out.print(".class");
-    }
-    out.println("));");
+    List<String> conversion=list(!match(foreignType,primaryType) ? getSimpleJavaType(referencingColumn.getType()) : null);
+    out.tab(3).println("setValue(%s, value.getValue(%s[[before=, ][after=.class][%s]]));",referencingId,referencedId,conversion);
   }
-  out.println("\t\t}");
-  out.println("\t}");
+  out.tab(2).println("}");
+  out.tab(1).println("}");
 }

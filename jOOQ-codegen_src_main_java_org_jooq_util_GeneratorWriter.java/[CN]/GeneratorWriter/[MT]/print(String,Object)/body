@@ -20,8 +20,7 @@
           int end=string.indexOf("]]");
           String expression=string.substring(start,end + 2);
           StringBuilder replacement=new StringBuilder();
-          Pattern p=Pattern.compile("\\[(?:\\[before=([^\\]]+)\\])?" + "(?:\\[separator=([^\\]]+)\\])?" + "(?:\\[after=([^\\]]+)\\])?"+ "(?:\\[(.*)\\]\\])");
-          Matcher m=p.matcher(expression);
+          Matcher m=PATTERN_LIST.matcher(expression);
           m.find();
           String gBefore=StringUtils.defaultString(m.group(1));
           String gSeparator=StringUtils.defaultString(m.group(2),", ");

@@ -1,10 +1,11 @@
 {
-  printFKSetter(out,column,foreignKey,referenced);
-  printFieldJavaDoc(out,column);
+  final TableDefinition referencing=foreignKey.getKeyTable();
   final String referencedId=getStrategy().getFullJavaIdentifier(referenced);
   final String referencedType=getStrategy().getFullJavaClassName(referenced,Mode.RECORD);
   final String referencedClassName=getStrategy().getJavaClassName(referenced);
+  printFKSetter(out,column,foreignKey,referenced);
   List<String> disambiguation=list(foreignKey.countSimilarReferences() > 1 ? getStrategy().getJavaClassName(column) : null);
+  out.tab(1).javadoc("Fetch a <code>%s</code> referenced by this <code>%s</code>",referenced.getQualifiedOutputName(),referencing.getQualifiedOutputName());
   out.tab(1).println("public %s fetch%s[[before=By][%s]]() {",referencedType,referencedClassName,disambiguation);
   out.tab(2).println("return create()");
   out.tab(3).println(".selectFrom(%s)",referencedId);
