@@ -1,0 +1,6 @@
+{
+  if (string == null || string.isEmpty()) {
+    return string;
+  }
+  return Character.toLowerCase(string.charAt(0)) + string.substring(1);
+}

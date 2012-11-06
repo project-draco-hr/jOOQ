@@ -1,10 +1,11 @@
 {
   List<java.lang.reflect.Field> result=new ArrayList<java.lang.reflect.Field>();
+  String camelCaseLC=StringUtils.toCamelCaseLC(name);
   for (  java.lang.reflect.Field member : getInstanceMembers(type)) {
     if (name.equals(member.getName())) {
       result.add(accessible(member));
     }
- else     if (StringUtils.toCamelCaseLC(name).equals(member.getName())) {
+ else     if (camelCaseLC.equals(member.getName())) {
       result.add(accessible(member));
     }
   }

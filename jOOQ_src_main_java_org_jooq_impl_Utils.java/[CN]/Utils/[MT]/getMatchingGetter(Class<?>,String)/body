@@ -1,22 +1,24 @@
 {
+  String camelCase=StringUtils.toCamelCase(name);
+  String camelCaseLC=StringUtils.toLC(camelCase);
   for (  Method method : getInstanceMethods(type)) {
     if (method.getParameterTypes().length == 0) {
       if (name.equals(method.getName())) {
         return accessible(method);
       }
- else       if (StringUtils.toCamelCaseLC(name).equals(method.getName())) {
+ else       if (camelCaseLC.equals(method.getName())) {
         return accessible(method);
       }
  else       if (("get" + name).equals(method.getName())) {
         return accessible(method);
       }
- else       if (("get" + StringUtils.toCamelCase(name)).equals(method.getName())) {
+ else       if (("get" + camelCase).equals(method.getName())) {
         return accessible(method);
       }
  else       if (("is" + name).equals(method.getName())) {
         return accessible(method);
       }
- else       if (("is" + StringUtils.toCamelCase(name)).equals(method.getName())) {
+ else       if (("is" + camelCase).equals(method.getName())) {
         return accessible(method);
       }
     }

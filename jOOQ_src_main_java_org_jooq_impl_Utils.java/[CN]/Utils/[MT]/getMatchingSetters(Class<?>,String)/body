@@ -1,18 +1,20 @@
 {
   List<Method> result=new ArrayList<Method>();
+  String camelCase=StringUtils.toCamelCase(name);
+  String camelCaseLC=StringUtils.toLC(camelCase);
   for (  Method method : getInstanceMethods(type)) {
     Class<?>[] parameterTypes=method.getParameterTypes();
     if (parameterTypes.length == 1 && !Record.class.isAssignableFrom(parameterTypes[0])) {
       if (name.equals(method.getName())) {
         result.add(accessible(method));
       }
- else       if (StringUtils.toCamelCaseLC(name).equals(method.getName())) {
+ else       if (camelCaseLC.equals(method.getName())) {
         result.add(accessible(method));
       }
  else       if (("set" + name).equals(method.getName())) {
         result.add(accessible(method));
       }
- else       if (("set" + StringUtils.toCamelCase(name)).equals(method.getName())) {
+ else       if (("set" + camelCase).equals(method.getName())) {
         result.add(accessible(method));
       }
     }
