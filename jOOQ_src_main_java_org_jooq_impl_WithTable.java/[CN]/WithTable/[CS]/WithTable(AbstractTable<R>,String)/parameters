@@ -1,0 +1,2 @@
+AbstractTable<R> delegate
+String hint
