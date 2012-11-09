@@ -1,0 +1,8 @@
+{
+  if (getOrderBy().isEmpty()) {
+    SortFieldList result=new SortFieldList();
+    result.add(getSelect().get(0).asc());
+    return result;
+  }
+  return getOrderBy();
+}

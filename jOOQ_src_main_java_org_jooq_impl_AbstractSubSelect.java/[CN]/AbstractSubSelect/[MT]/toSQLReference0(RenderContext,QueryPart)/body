@@ -1,0 +1,79 @@
+{
+  context.keyword("select ");
+  if (!StringUtils.isBlank(hint)) {
+    context.sql(hint).sql(" ");
+  }
+  if (distinct) {
+    context.keyword("distinct ");
+  }
+switch (context.getDialect()) {
+case ASE:
+case SQLSERVER:
+{
+      if (getLimit().isApplicable() && getLimit().offsetZero() && !getLimit().rendersParams()) {
+        context.sql(getLimit()).sql(" ");
+      }
+ else       if (context.getDialect() == SQLSERVER && !getOrderBy().isEmpty()) {
+        if (context.subquery() || getLimit().isApplicable()) {
+          context.keyword("top 100 percent ");
+        }
+      }
+      break;
+    }
+case SYBASE:
+{
+    if (getLimit().isApplicable() && !getLimit().rendersParams()) {
+      context.sql(getLimit()).sql(" ");
+    }
+    break;
+  }
+case INGRES:
+{
+}
+}
+context.declareFields(true);
+context.sql(getSelect1());
+if (limitOffsetRownumber != null) {
+boolean inline=context.inline();
+context.inline(true).sql(",").formatIndentStart().formatSeparator().sql(limitOffsetRownumber).formatIndentEnd().inline(inline);
+}
+context.declareFields(false);
+context.declareTables(true);
+if (!context.render(getFrom()).isEmpty()) {
+context.formatSeparator().keyword("from ").sql(getFrom());
+if (grouping && getGroupBy().isEmpty() && asList(ASE,INGRES).contains(context.getDialect())) {
+context.sql(", (select 1 as x) as empty_grouping_dummy_table");
+}
+}
+context.declareTables(false);
+if (!(getWhere().getWhere() instanceof TrueCondition)) {
+context.formatSeparator().keyword("where ").sql(getWhere());
+}
+if (!(getConnectBy().getWhere() instanceof TrueCondition)) {
+toSQLStartWith(context);
+toSQLConnectBy(context);
+}
+if (grouping) {
+context.formatSeparator().keyword("group by ");
+if (getGroupBy().isEmpty()) {
+if (asList(ASE,INGRES).contains(context.getDialect())) {
+  context.sql("empty_grouping_dummy_table.x");
+}
+ else if (asList(CUBRID,DERBY,FIREBIRD,HSQLDB,MYSQL,POSTGRES,SQLITE).contains(context.getDialect())) {
+  context.sql("1");
+}
+ else {
+  context.sql("()");
+}
+}
+ else {
+context.sql(getGroupBy());
+}
+}
+if (!(getHaving().getWhere() instanceof TrueCondition)) {
+context.formatSeparator().keyword("having ").sql(getHaving());
+}
+if (!getOrderBy().isEmpty()) {
+context.formatSeparator().keyword("order ").keyword(orderBySiblings ? "siblings " : "").keyword("by ").sql(getOrderBy());
+}
+}

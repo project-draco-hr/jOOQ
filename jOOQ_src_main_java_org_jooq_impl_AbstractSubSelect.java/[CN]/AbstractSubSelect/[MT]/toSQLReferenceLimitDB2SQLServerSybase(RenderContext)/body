@@ -1,22 +1,11 @@
 {
+  RenderContext tmpLocal=new DefaultRenderContext(context);
+  toSQLReference0(tmpLocal);
+  String tmpEnclosed=tmpLocal.render();
+  String subqueryName="limit_" + Utils.hash(tmpEnclosed);
+  String rownumName="rownum_" + Utils.hash(tmpEnclosed);
   RenderContext local=new DefaultRenderContext(context);
-  toSQLReference0(local);
+  toSQLReference0(local,rowNumber().over().orderBy(getNonEmptyOrderBy()).as(rownumName));
   String enclosed=local.render();
-  String subqueryName="limit_" + Utils.hash(enclosed);
-  String rownumName="rownum_" + Utils.hash(enclosed);
-  context.keyword("select * from (").formatIndentStart().formatNewLine().keyword("select ").sql(subqueryName).sql(".*, row_number() ").keyword("over (");
-  if (asList(SQLSERVER,SYBASE).contains(context.getDialect())) {
-    context.keyword("order by ");
-    if (getOrderBy().isEmpty()) {
-      context.literal(getSelect().get(0).getName());
-    }
- else {
-      String separator="";
-      for (      SortField<?> field : getOrderBy()) {
-        context.sql(separator).literal(field.getName()).sql(" ").keyword(field.getOrder().toSQL());
-        separator=", ";
-      }
-    }
-  }
-  context.keyword(") as ").sql(rownumName).formatSeparator().keyword("from (").formatIndentStart().formatNewLine().sql(enclosed).formatIndentEnd().formatNewLine().keyword(") as ").sql(subqueryName).formatIndentEnd().formatNewLine().keyword(") as ").sql("outer_").sql(subqueryName).formatSeparator().keyword("where ").sql(rownumName).sql(" > ").sql(getLimit().getLowerRownum()).formatSeparator().keyword("and ").sql(rownumName).sql(" <= ").sql(getLimit().getUpperRownum());
+  context.keyword("select * from (").formatIndentStart().formatNewLine().sql(enclosed).formatIndentEnd().formatNewLine().keyword(") as ").sql(name(subqueryName)).formatSeparator().keyword("where ").sql(name(rownumName)).sql(" > ").sql(getLimit().getLowerRownum()).formatSeparator().keyword("and ").sql(name(rownumName)).sql(" <= ").sql(getLimit().getUpperRownum());
 }
