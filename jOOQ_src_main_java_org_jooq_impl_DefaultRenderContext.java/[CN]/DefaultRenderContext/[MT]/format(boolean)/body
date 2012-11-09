@@ -1,0 +1,4 @@
+{
+  cachedRenderFormatted=format;
+  return this;
+}
