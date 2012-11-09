@@ -18,7 +18,7 @@ log.info("SKIPPING","Advanced window function tests");
 return;
 }
 int column=0;
-Result<Record> result=create().select(TBook_ID(),rowNumber().over().partitionByOne().orderBy(TBook_ID().desc()),rowNumber().over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().desc())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
+Result<Record> result=create().select(TBook_ID(),rowNumber().over().partitionByOne().orderBy(TBook_ID().mul(2).desc(),TBook_ID().add(1).desc()),rowNumber().over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().desc())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
 column++;
 assertEquals(Integer.valueOf(4),result.getValue(0,column));
 assertEquals(Integer.valueOf(3),result.getValue(1,column));

@@ -16,38 +16,22 @@
     }
   }
   if (!orderBy.isEmpty()) {
-    context.sql(glue).keyword("order by ");
-switch (context.getDialect()) {
-case SQLSERVER:
-case SYBASE:
-{
-        for (        SortField<?> f : orderBy) {
-          SortFieldImpl<?> field=(SortFieldImpl<?>)f;
-          field.toSQLInAnalyticClause(context);
-        }
-        break;
-      }
-default :
-{
-      context.sql(orderBy);
-      break;
+    context.sql(glue).keyword("order by ").sql(orderBy);
+    glue=" ";
+  }
+  if (rowsStart != null) {
+    context.sql(glue);
+    context.keyword("rows ");
+    if (rowsEnd != null) {
+      context.keyword("between ");
+      toSQLRows(context,rowsStart);
+      context.keyword(" and ");
+      toSQLRows(context,rowsEnd);
     }
-}
-glue=" ";
-}
-if (rowsStart != null) {
-context.sql(glue);
-context.keyword("rows ");
-if (rowsEnd != null) {
-  context.keyword("between ");
-  toSQLRows(context,rowsStart);
-  context.keyword(" and ");
-  toSQLRows(context,rowsEnd);
-}
  else {
-  toSQLRows(context,rowsStart);
-}
-glue=" ";
-}
-context.sql(")");
+      toSQLRows(context,rowsStart);
+    }
+    glue=" ";
+  }
+  context.sql(")");
 }
