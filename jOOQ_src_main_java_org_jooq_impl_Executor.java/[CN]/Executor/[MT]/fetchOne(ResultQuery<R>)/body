@@ -1,8 +1,5 @@
 {
-  Configuration previous=null;
-  if (query instanceof AttachableInternal) {
-    previous=((AttachableInternal)query).getConfiguration();
-  }
+  final Configuration previous=Utils.getConfiguration(query);
   try {
     query.attach(this);
     return query.fetchOne();
