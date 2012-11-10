@@ -1,0 +1,7 @@
+{
+  RecordImpl result=new RecordImpl(new FieldList(getMainKey().getFields()));
+  for (  Field<?> field : result.getFields()) {
+    result.setValue(field,getValue0(field));
+  }
+  return result;
+}

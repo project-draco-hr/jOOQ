@@ -4,7 +4,7 @@
   if (select.execute() == 1) {
     AbstractRecord record=(AbstractRecord)select.getResult().get(0);
     for (    Field<?> field : getFields()) {
-      setValue0(field,record.getValue0(field));
+      setValue(field,record.getValue0(field));
     }
   }
  else {

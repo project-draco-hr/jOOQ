@@ -1,0 +1,10 @@
+{
+  StringBuilder result=new StringBuilder();
+  String separator="";
+  for (  ColumnDefinition column : columns) {
+    result.append(separator);
+    result.append(getJavaType(column.getType()));
+    separator=", ";
+  }
+  return result.toString();
+}

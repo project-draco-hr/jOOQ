@@ -16,7 +16,7 @@
     if (key != null && !key.isEmpty()) {
       if (insert.getReturnedRecord() != null) {
         for (        Field<?> field : key) {
-          setValue0(field,new Value<Object>(insert.getReturnedRecord().getValue(field)));
+          setValue(field,new Value<Object>(insert.getReturnedRecord().getValue(field)));
         }
       }
     }

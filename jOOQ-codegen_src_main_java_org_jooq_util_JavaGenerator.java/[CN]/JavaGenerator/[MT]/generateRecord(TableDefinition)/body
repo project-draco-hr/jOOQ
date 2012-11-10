@@ -1,5 +1,6 @@
 {
   log.info("Generating record",getStrategy().getFileName(table,Mode.RECORD));
+  final UniqueKeyDefinition key=table.getMainUniqueKey();
   final String className=getStrategy().getJavaClassName(table,Mode.RECORD);
   final String tableIdentifier=getStrategy().getFullJavaIdentifier(table);
   final String recordType=getStrategy().getFullJavaClassName(table,Mode.RECORD);
@@ -9,7 +10,7 @@
   printClassJavadoc(out,table);
   printTableJPAAnnotation(out,table);
   Class<?> baseClass;
-  if (generateRelations() && table.getMainUniqueKey() != null) {
+  if (generateRelations() && key != null) {
     baseClass=UpdatableRecordImpl.class;
   }
  else {
@@ -19,15 +20,8 @@
   String rowType=null;
   String rowTypeRecord=null;
   if (degree <= Constants.MAX_ROW_DEGREE) {
-    rowType="<";
-    String separator="";
-    for (    ColumnDefinition column : table.getColumns()) {
-      rowType+=separator;
-      rowType+=getJavaType(column.getType());
-      separator=", ";
-    }
-    rowType+=">";
-    rowTypeRecord=Record.class.getName() + degree + rowType;
+    rowType=getRowType(table.getColumns());
+    rowTypeRecord=Record.class.getName() + degree + "<"+ rowType+ ">";
     interfaces.add(rowTypeRecord);
   }
   if (generateInterfaces()) {
@@ -66,14 +60,25 @@
       printNavigateMethods(out,column);
     }
   }
+  if (generateRelations() && key != null) {
+    int keyDegree=key.getKeyColumns().size();
+    if (keyDegree <= Constants.MAX_ROW_DEGREE) {
+      String keyType=getRowType(key.getKeyColumns());
+      out.tab(1).header("Primary key information");
+      out.tab(1).overrideInherit();
+      out.tab(1).println("public %s%s<%s> key() {",Record.class,keyDegree,keyType);
+      out.tab(2).println("return (%s%s) super.key();",Record.class,keyDegree);
+      out.tab(1).println("}");
+    }
+  }
   if (degree <= Constants.MAX_ROW_DEGREE) {
     out.tab(1).header("Record%s type implementation",degree);
     out.tab(1).overrideInherit();
-    out.tab(1).println("public %s%s%s fieldsRow() {",Row.class,degree,rowType);
+    out.tab(1).println("public %s%s<%s> fieldsRow() {",Row.class,degree,rowType);
     out.tab(2).println("return %s.row([[field%s()]]);",Factory.class,range(1,degree));
     out.tab(1).println("}");
     out.tab(1).overrideInherit();
-    out.tab(1).println("public %s%s%s valuesRow() {",Row.class,degree,rowType);
+    out.tab(1).println("public %s%s<%s> valuesRow() {",Row.class,degree,rowType);
     out.tab(2).println("return %s.row([[value%s()]]);",Factory.class,range(1,degree));
     out.tab(1).println("}");
     for (int i=1; i <= degree; i++) {
