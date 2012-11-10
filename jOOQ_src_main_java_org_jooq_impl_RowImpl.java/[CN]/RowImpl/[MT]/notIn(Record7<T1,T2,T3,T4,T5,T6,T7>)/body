@@ -1,0 +1,7 @@
+{
+  Row7<T1,T2,T3,T4,T5,T6,T7>[] rows=new Row7[records.length];
+  for (int i=0; i < records.length; i++) {
+    rows[i]=records[i].valuesRow();
+  }
+  return notIn(rows);
+}

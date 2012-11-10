@@ -1,0 +1,8 @@
+{
+  RowN[] rows=new RowN[records.length];
+  for (int i=0; i < records.length; i++) {
+    List<Field<?>> f=records[i].getFields();
+    rows[i]=new RowImpl(vals(records[i].intoArray(),f.toArray(new Field[f.size()])));
+  }
+  return notIn(rows);
+}

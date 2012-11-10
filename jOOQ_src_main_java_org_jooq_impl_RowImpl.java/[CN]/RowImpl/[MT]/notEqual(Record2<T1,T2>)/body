@@ -1,0 +1,3 @@
+{
+  return new Compare(record.valuesRow(),Comparator.NOT_EQUALS);
+}
