@@ -1,0 +1,7 @@
+{
+  Row1<T1>[] rows=new Row1[records.length];
+  for (int i=0; i < records.length; i++) {
+    rows[i]=records[i].valuesRow();
+  }
+  return in(rows);
+}
