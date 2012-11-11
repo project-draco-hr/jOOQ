@@ -1,3 +1,0 @@
-{
-  properties.setProperty("generator.target.directory",value);
-}
