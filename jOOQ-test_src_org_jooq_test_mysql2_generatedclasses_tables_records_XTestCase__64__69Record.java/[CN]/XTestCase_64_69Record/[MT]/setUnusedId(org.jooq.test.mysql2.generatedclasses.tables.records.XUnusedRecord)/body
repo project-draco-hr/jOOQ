@@ -1,0 +1,8 @@
+{
+  if (value == null) {
+    setValue(org.jooq.test.mysql2.generatedclasses.tables.XTestCase_64_69.X_TEST_CASE_64_69.UNUSED_ID,null);
+  }
+ else {
+    setValue(org.jooq.test.mysql2.generatedclasses.tables.XTestCase_64_69.X_TEST_CASE_64_69.UNUSED_ID,value.getValue(org.jooq.test.mysql2.generatedclasses.tables.XUnused.X_UNUSED.ID));
+  }
+}

@@ -1,0 +1,3 @@
+{
+  return (org.jooq.Record1)super.key();
+}

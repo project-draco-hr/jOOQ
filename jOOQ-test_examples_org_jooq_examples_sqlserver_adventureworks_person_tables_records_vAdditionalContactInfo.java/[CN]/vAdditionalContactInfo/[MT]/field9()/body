@@ -1,0 +1,3 @@
+{
+  return org.jooq.examples.sqlserver.adventureworks.person.tables.vAdditionalContactInfo.vAdditionalContactInfo.StateProvince;
+}

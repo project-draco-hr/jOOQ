@@ -1,0 +1,3 @@
+{
+  return org.jooq.examples.sqlserver.adventureworks.purchasing.tables.ProductVendor.ProductVendor.UnitMeasureCode;
+}

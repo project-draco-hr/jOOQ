@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.ingres.generatedclasses.tables.XUnused.NAME_REF;
+}
