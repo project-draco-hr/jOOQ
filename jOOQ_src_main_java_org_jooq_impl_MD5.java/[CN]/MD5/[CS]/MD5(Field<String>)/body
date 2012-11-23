@@ -1,0 +1,4 @@
+{
+  super("md5",SQLDataType.VARCHAR,argument);
+  this.argument=argument;
+}

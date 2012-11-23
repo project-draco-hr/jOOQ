@@ -1,3 +1,0 @@
-{
-  return function("md5",String.class,string);
-}

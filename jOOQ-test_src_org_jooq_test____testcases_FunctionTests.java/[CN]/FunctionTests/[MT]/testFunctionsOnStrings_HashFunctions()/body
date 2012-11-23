@@ -1,0 +1,23 @@
+{
+switch (getDialect()) {
+case ASE:
+case CUBRID:
+case DB2:
+case DERBY:
+case FIREBIRD:
+case H2:
+case HSQLDB:
+case INGRES:
+case POSTGRES:
+case SQLITE:
+case SQLSERVER:
+case SYBASE:
+    log.info("SKIPPING","MD5 function test");
+  break;
+case MYSQL:
+case ORACLE:
+default :
+assertEquals("900150983cd24fb0d6963f7d28e17f72",create().select(md5("abc")).fetchOne(0));
+break;
+}
+}
