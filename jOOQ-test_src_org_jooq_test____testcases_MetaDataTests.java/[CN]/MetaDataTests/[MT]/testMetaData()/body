@@ -1,8 +1,15 @@
 {
   Meta meta=create().meta();
   if (schema() != null) {
+    List<Catalog> metaCatalogs=meta.getCatalogs();
+    List<Schema> metaSchemasFromCatalogs=new ArrayList<Schema>();
+    for (    Catalog metaCatalog : metaCatalogs) {
+      metaSchemasFromCatalogs.addAll(metaCatalog.getSchemas());
+    }
+    assertTrue(metaSchemasFromCatalogs.contains(schema()));
     List<Schema> metaSchemas=meta.getSchemas();
     assertTrue(metaSchemas.contains(schema()));
+    assertEquals(metaSchemasFromCatalogs,metaSchemas);
     Schema metaSchema=metaSchemas.get(metaSchemas.indexOf(schema()));
     assertEquals(schema(),metaSchema);
     List<Table<?>> metaTables=metaSchema.getTables();

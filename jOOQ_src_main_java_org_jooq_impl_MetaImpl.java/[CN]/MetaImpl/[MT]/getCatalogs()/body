@@ -1,0 +1,13 @@
+{
+  try {
+    List<Catalog> result=new ArrayList<Catalog>();
+    Result<Record> schemas=executor.fetch(meta().getCatalogs());
+    for (    String name : schemas.getValues(0,String.class)) {
+      result.add(new MetaCatalog(name));
+    }
+    return result;
+  }
+ catch (  SQLException e) {
+    throw new DataAccessException("Error while accessing DatabaseMetaData",e);
+  }
+}
