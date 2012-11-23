@@ -1,0 +1,3 @@
+{
+  return sortAsc(fieldName,new NaturalComparator());
+}

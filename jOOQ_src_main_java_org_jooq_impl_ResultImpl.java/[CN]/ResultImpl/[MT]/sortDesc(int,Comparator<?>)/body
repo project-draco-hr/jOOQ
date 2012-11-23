@@ -1,0 +1,3 @@
+{
+  return sortAsc(fieldIndex,Collections.reverseOrder(comparator));
+}

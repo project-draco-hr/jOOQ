@@ -1,0 +1,3 @@
+{
+  return sortAsc(fieldName,Collections.reverseOrder(new NaturalComparator()));
+}
