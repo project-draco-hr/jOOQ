@@ -1,0 +1,11 @@
+{
+  try {
+    Result<Record> columns=executor.fetch(meta().getColumns(null,getSchema().getName(),getName(),"%"));
+    for (    Record column : columns) {
+      createField(column.getValue("COLUMN_NAME",String.class),SQLDataType.OTHER,this);
+    }
+  }
+ catch (  SQLException e) {
+    throw new DataAccessException("Error while accessing DatabaseMetaData",e);
+  }
+}

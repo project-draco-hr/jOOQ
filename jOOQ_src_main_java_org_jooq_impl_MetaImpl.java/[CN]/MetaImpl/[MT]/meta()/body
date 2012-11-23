@@ -1,0 +1,11 @@
+{
+  if (meta == null) {
+    try {
+      meta=executor.getConnection().getMetaData();
+    }
+ catch (    SQLException e) {
+      throw new DataAccessException("Error while accessing DatabaseMetaData",e);
+    }
+  }
+  return meta;
+}

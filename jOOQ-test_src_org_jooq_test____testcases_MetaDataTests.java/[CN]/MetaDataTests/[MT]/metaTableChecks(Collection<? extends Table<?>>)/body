@@ -1,0 +1,18 @@
+{
+  for (  Table<?> metaTable : metaTables) {
+    Table<?> generatedTable=schema().getTable(metaTable.getName());
+    if (generatedTable != null) {
+      assertNotNull(generatedTable);
+      assertEquals(metaTable,generatedTable);
+      List<Field<?>> metaFields=metaTable.getFields();
+      assertTrue(metaFields.containsAll(generatedTable.getFields()));
+      if (generatedTable instanceof UpdatableTable && metaTable instanceof UpdatableTable) {
+        UpdatableTable<?> generatedUTable=(UpdatableTable<?>)generatedTable;
+        UpdatableTable<?> metaUTable=(UpdatableTable<?>)metaTable;
+      }
+ else {
+        assertFalse(metaTable instanceof UpdatableTable);
+      }
+    }
+  }
+}

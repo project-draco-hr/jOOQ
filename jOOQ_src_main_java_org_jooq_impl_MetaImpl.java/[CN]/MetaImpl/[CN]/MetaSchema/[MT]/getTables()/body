@@ -1,0 +1,22 @@
+{
+  try {
+    List<Table<?>> result=new ArrayList<Table<?>>();
+    Result<Record> tables=executor.fetch(meta().getTables(null,getName(),"%",null));
+    for (    Record table : tables) {
+      String catalog=table.getValue(0,String.class);
+      String schema=table.getValue(1,String.class);
+      String name=table.getValue(2,String.class);
+      Result<Record> pkColumns=executor.fetch(meta().getPrimaryKeys(catalog,schema,name)).sortAsc("KEY_SEQ");
+      if (pkColumns.size() == 0) {
+        result.add(new MetaTable(name,this));
+      }
+ else {
+        result.add(new MetaUpdatableTable(name,this));
+      }
+    }
+    return result;
+  }
+ catch (  SQLException e) {
+    throw new DataAccessException("Error while accessing DatabaseMetaData",e);
+  }
+}
