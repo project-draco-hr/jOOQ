@@ -2,7 +2,16 @@
   try {
     Result<Record> columns=executor.fetch(meta().getColumns(null,getSchema().getName(),getName(),"%"));
     for (    Record column : columns) {
-      createField(column.getValue("COLUMN_NAME",String.class),SQLDataType.OTHER,this);
+      String columnName=column.getValue("COLUMN_NAME",String.class);
+      String typeName=column.getValue("TYPE_NAME",String.class);
+      DataType<?> type=null;
+      try {
+        type=SQLDataType.getDataType(SQLDialect.SQL99,typeName);
+      }
+ catch (      SQLDialectNotSupportedException e) {
+        type=SQLDataType.OTHER;
+      }
+      createField(columnName,type,this);
     }
   }
  catch (  SQLException e) {

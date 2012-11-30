@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.jdbc.generatedclasses.tables.XUnused.META_DATA;
+}

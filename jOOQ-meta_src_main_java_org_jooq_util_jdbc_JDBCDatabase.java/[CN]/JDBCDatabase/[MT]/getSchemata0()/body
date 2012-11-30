@@ -1,0 +1,7 @@
+{
+  List<SchemaDefinition> result=new ArrayList<SchemaDefinition>();
+  for (  Schema schema : getSchemasFromMeta()) {
+    result.add(new SchemaDefinition(this,schema.getName(),""));
+  }
+  return result;
+}

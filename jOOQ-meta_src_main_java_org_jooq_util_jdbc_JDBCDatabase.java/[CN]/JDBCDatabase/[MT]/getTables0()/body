@@ -1,0 +1,12 @@
+{
+  List<TableDefinition> result=new ArrayList<TableDefinition>();
+  for (  Schema schema : getSchemasFromMeta()) {
+    SchemaDefinition sd=getSchema(schema.getName());
+    if (sd != null) {
+      for (      Table<?> table : schema.getTables()) {
+        result.add(new JDBCTableDefinition(sd,table));
+      }
+    }
+  }
+  return result;
+}

@@ -1,0 +1,3 @@
+{
+  return getValue(org.jooq.test.jdbc.generatedclasses.tables.XUnused.TYPE0);
+}

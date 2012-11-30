@@ -1,7 +1,8 @@
 {
-  DataType<?> result=typesByTypeName[dialect.ordinal()].get(FieldTypeHelper.normalise(typeName));
+  String normalised=FieldTypeHelper.normalise(typeName);
+  DataType<?> result=typesByTypeName[dialect.ordinal()].get(normalised);
   if (result == null) {
-    result=typesByTypeName[SQLDialect.SQL99.ordinal()].get(FieldTypeHelper.normalise(typeName));
+    result=typesByTypeName[SQLDialect.SQL99.ordinal()].get(normalised);
   }
   if (result == null) {
     throw new SQLDialectNotSupportedException("Type " + typeName + " is not supported in dialect "+ dialect,false);

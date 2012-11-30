@@ -1,0 +1,11 @@
+{
+  List<SequenceDefinition> result=new ArrayList<SequenceDefinition>();
+  for (  Schema schema : getSchemasFromMeta()) {
+    for (    Sequence<?> sequence : schema.getSequences()) {
+      SchemaDefinition sd=getSchema(schema.getName());
+      DataTypeDefinition type=new DefaultDataTypeDefinition(this,sd,sequence.getDataType().getTypeName(),0,0,0);
+      result.add(new DefaultSequenceDefinition(sd,sequence.getName(),type));
+    }
+  }
+  return result;
+}

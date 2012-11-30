@@ -1,16 +1,16 @@
 {
-  if (dialect != null) {
-    if (typesByTypeName[dialect.ordinal()].get(FieldTypeHelper.normalise(typeName)) == null) {
-      typesByTypeName[dialect.ordinal()].put(FieldTypeHelper.normalise(typeName),this);
-    }
-    if (typesByType[dialect.ordinal()].get(type) == null) {
-      typesByType[dialect.ordinal()].put(type,this);
-    }
-    if (typesBySQLDataType[dialect.ordinal()].get(sqlDataType) == null) {
-      typesBySQLDataType[dialect.ordinal()].put(sqlDataType,this);
-    }
+  int ordinal=dialect == null ? SQLDialect.SQL99.ordinal() : dialect.ordinal();
+  String normalised=FieldTypeHelper.normalise(typeName);
+  if (typesByTypeName[ordinal].get(normalised) == null) {
+    typesByTypeName[ordinal].put(normalised,this);
   }
- else {
+  if (typesByType[ordinal].get(type) == null) {
+    typesByType[ordinal].put(type,this);
+  }
+  if (typesBySQLDataType[ordinal].get(sqlDataType) == null) {
+    typesBySQLDataType[ordinal].put(sqlDataType,this);
+  }
+  if (dialect == null) {
     if (sqlDataTypesByType.get(type) == null) {
       sqlDataTypesByType.put(type,this);
     }
