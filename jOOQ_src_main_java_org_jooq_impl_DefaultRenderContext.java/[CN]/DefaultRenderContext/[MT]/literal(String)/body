@@ -2,13 +2,14 @@
   if (literal == null) {
     return this;
   }
+  boolean needsQuote=RenderNameStyle.QUOTED == cachedRenderNameStyle || !IDENTIFIER_PATTERN.matcher(literal).matches();
   if (RenderNameStyle.LOWER == cachedRenderNameStyle) {
-    sql(literal.toLowerCase());
+    literal=literal.toLowerCase();
   }
  else   if (RenderNameStyle.UPPER == cachedRenderNameStyle) {
-    sql(literal.toUpperCase());
+    literal=literal.toUpperCase();
   }
- else   if (RenderNameStyle.AS_IS == cachedRenderNameStyle) {
+  if (!needsQuote) {
     sql(literal);
   }
  else {
@@ -16,6 +17,14 @@ switch (configuration.getDialect()) {
 case MYSQL:
       sql("`").sql(literal.replace("`","``")).sql("`");
     break;
+case SQLITE:
+  sql(literal);
+break;
+case ASE:
+case SQLSERVER:
+case SYBASE:
+sql("[").sql(literal.replace("]","]]")).sql("]");
+break;
 case CUBRID:
 case DB2:
 case DERBY:
@@ -25,18 +34,8 @@ case HSQLDB:
 case INGRES:
 case ORACLE:
 case POSTGRES:
-  sql('"').sql(literal.replace("\"","\"\"")).sql('"');
-break;
-case SQLITE:
-sql(literal);
-break;
-case ASE:
-case SQLSERVER:
-case SYBASE:
-sql("[").sql(literal.replace("]","]]")).sql("]");
-break;
 default :
-sql(literal);
+sql('"').sql(literal.replace("\"","\"\"")).sql('"');
 break;
 }
 }
