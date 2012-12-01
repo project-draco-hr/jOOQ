@@ -5,7 +5,6 @@
   q.addSelect(Tables.TABSCHEMA.trim());
   q.addSelect(Tables.TABNAME);
   q.addConditions(Tables.TABSCHEMA.in(getInputSchemata()));
-  q.addConditions(Tables.TYPE.in("T","V","G","S"));
   q.addOrderBy(Tables.TABNAME);
   q.execute();
   for (  Record record : q.getResult()) {
