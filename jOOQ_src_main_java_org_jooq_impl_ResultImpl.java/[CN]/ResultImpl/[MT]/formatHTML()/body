@@ -16,7 +16,7 @@
     sb.append("<tr>");
     for (int index=0; index < size; index++) {
       sb.append("<td>");
-      sb.append(format0(record.getValue(index)));
+      sb.append(format0(record.getValue(index),false));
       sb.append("</td>");
     }
     sb.append("</tr>");

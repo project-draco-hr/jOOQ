@@ -27,7 +27,7 @@
         eValue.setAttribute("field",field.getName());
         eRecord.appendChild(eValue);
         if (value != null) {
-          eValue.setTextContent(format0(value));
+          eValue.setTextContent(format0(value,false));
         }
       }
     }

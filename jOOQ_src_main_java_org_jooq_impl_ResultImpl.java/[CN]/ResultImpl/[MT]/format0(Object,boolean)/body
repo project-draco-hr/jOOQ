@@ -1,0 +1,19 @@
+{
+  String formatted=changed ? "*" : "";
+  if (value == null) {
+    formatted+="{null}";
+  }
+ else   if (value.getClass() == byte[].class) {
+    formatted+=Arrays.toString((byte[])value);
+  }
+ else   if (value.getClass().isArray()) {
+    formatted+=Arrays.toString((Object[])value);
+  }
+ else   if (value instanceof EnumType) {
+    formatted+=((EnumType)value).getLiteral();
+  }
+ else {
+    formatted+=value.toString();
+  }
+  return formatted;
+}
