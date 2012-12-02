@@ -1,0 +1,5 @@
+{
+  for (  Field<?> field : changed.getFields()) {
+    assertEquals(changed.original(field),original.getValue(field));
+  }
+}
