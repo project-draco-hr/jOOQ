@@ -3,6 +3,9 @@
   if (source instanceof Map) {
     fromMap((Map<String,?>)source);
   }
+ else   if (source instanceof Object[]) {
+    fromArray((Object[])source);
+  }
  else {
     Class<?> type=source.getClass();
     try {
