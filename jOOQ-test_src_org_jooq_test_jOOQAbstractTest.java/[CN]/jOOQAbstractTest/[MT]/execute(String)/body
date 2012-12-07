@@ -34,6 +34,9 @@
       if (e.getMessage().contains("ORA-00942")) {
         continue;
       }
+ else       if (e.getMessage().contains("ORA-12003")) {
+        continue;
+      }
  else       if (e.getMessage().contains("ORA-02289")) {
         continue;
       }
