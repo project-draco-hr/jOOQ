@@ -1,3 +1,6 @@
 {
   this.isChanged=isChanged;
+  if (!isChanged) {
+    original=value;
+  }
 }
