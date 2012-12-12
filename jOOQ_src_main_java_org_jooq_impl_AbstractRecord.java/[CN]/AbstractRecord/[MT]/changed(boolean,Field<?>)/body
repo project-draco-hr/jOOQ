@@ -1,0 +1,3 @@
+{
+  changed(changed,getIndex(field));
+}
