@@ -1,0 +1,3 @@
+{
+  getValue0(fieldIndex).reset();
+}

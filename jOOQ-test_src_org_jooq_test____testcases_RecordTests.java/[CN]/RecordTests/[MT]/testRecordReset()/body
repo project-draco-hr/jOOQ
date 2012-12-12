@@ -1,0 +1,21 @@
+{
+  B book=create().selectFrom(TBook()).where(TBook_ID().eq(1)).fetchOne();
+  book.setValue(TBook_TITLE(),"abc");
+  book.reset();
+  assertFalse(book.changed());
+  assertFalse(book.changed(TBook_TITLE()));
+  assertFalse(book.changed(TBook_TITLE().getName()));
+  assertEquals("1984",book.getValue(TBook_TITLE()));
+  book.setValue(TBook_TITLE(),"abc");
+  book.reset(TBook_TITLE());
+  assertFalse(book.changed());
+  assertFalse(book.changed(TBook_TITLE()));
+  assertFalse(book.changed(TBook_TITLE().getName()));
+  assertEquals("1984",book.getValue(TBook_TITLE()));
+  book.setValue(TBook_TITLE(),"abc");
+  book.reset(TBook_TITLE().getName());
+  assertFalse(book.changed());
+  assertFalse(book.changed(TBook_TITLE()));
+  assertFalse(book.changed(TBook_TITLE().getName()));
+  assertEquals("1984",book.getValue(TBook_TITLE()));
+}
