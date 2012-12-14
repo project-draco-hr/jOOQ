@@ -5,5 +5,5 @@
   }
   Field<?> user=trim(lower(currentUser()));
   Record record=create().select(user).fetchOne();
-  assertTrue(Arrays.asList("test","lukas","sa","root@localhost","postgres","dbo","dba","dba@lukas-hp").contains(record.getValue(user)));
+  assertTrue(Arrays.asList("test","lukas","sa","root@localhost","postgres","dbo","dba","dba@lukas-hp","dba@lukas-omni27").contains(record.getValue(user)));
 }
