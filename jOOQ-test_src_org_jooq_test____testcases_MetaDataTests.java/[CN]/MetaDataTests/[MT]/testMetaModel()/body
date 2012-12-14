@@ -40,7 +40,7 @@
     if (TIdentityPK() != null) {
       tables++;
     }
-    if (getDialect() == MYSQL || getDialect() == POSTGRES) {
+    if (getDialect() == CUBRID || getDialect() == MYSQL || getDialect() == POSTGRES) {
       tables++;
     }
     if (getDialect() == ASE || getDialect() == CUBRID || getDialect() == DB2 || getDialect() == POSTGRES || getDialect() == SQLITE || getDialect() == SYBASE) {
