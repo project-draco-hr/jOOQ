@@ -1,7 +1,7 @@
 {
   List<String> values=new ArrayList<String>();
   int i=0;
-  int state=0;
+  int state=PG_OBJECT_INIT;
   StringBuilder sb=null;
   while (i < input.length()) {
     char c=input.charAt(i);
