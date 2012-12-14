@@ -1,0 +1,4 @@
+String text
+String searchString
+String replacement
+int max

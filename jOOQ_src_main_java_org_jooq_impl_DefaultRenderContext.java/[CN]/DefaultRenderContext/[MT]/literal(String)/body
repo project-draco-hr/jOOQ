@@ -15,7 +15,7 @@
  else {
 switch (configuration.getDialect()) {
 case MYSQL:
-      sql("`").sql(literal.replace("`","``")).sql("`");
+      sql("`").sql(StringUtils.replace(literal,"`","``")).sql("`");
     break;
 case SQLITE:
   sql(literal);
@@ -23,7 +23,7 @@ break;
 case ASE:
 case SQLSERVER:
 case SYBASE:
-sql("[").sql(literal.replace("]","]]")).sql("]");
+sql("[").sql(StringUtils.replace(literal,"]","]]")).sql("]");
 break;
 case CUBRID:
 case DB2:
@@ -35,7 +35,7 @@ case INGRES:
 case ORACLE:
 case POSTGRES:
 default :
-sql('"').sql(literal.replace("\"","\"\"")).sql('"');
+sql('"').sql(StringUtils.replace(literal,"\"","\"\"")).sql('"');
 break;
 }
 }
