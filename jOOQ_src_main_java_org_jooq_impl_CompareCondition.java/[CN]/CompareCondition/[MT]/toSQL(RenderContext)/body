@@ -12,19 +12,9 @@
     op=(op == LIKE_IGNORE_CASE ? LIKE : NOT_LIKE);
   }
   context.sql(lhs).sql(" ");
-  if (rhs.isNullLiteral()) {
-switch (op) {
-case EQUALS:
-      context.keyword("is null");
-    return;
-case NOT_EQUALS:
-  context.keyword("is not null");
-return;
-}
-}
-boolean castRhs=(dialect == DB2 && rhs instanceof Concat);
-context.keyword(op.toSQL()).sql(" ").keyword(castRhs ? "cast(" : "").sql(rhs).keyword(castRhs ? " as varchar(4000))" : "");
-if (escape != null) {
-context.keyword(" escape '").sql(escape).sql("'");
-}
+  boolean castRhs=(dialect == DB2 && rhs instanceof Concat);
+  context.keyword(op.toSQL()).sql(" ").keyword(castRhs ? "cast(" : "").sql(rhs).keyword(castRhs ? " as varchar(4000))" : "");
+  if (escape != null) {
+    context.keyword(" escape '").sql(escape).sql("'");
+  }
 }
