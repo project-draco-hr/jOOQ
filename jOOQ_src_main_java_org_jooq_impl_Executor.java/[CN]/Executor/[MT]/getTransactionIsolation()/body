@@ -1,8 +1,0 @@
-{
-  try {
-    return getConnection().getTransactionIsolation();
-  }
- catch (  Exception e) {
-    throw new DataAccessException("Cannot get transactionIsolation",e);
-  }
-}

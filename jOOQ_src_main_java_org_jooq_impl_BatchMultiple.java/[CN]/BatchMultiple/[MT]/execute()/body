@@ -1,7 +1,7 @@
 {
-  Connection connection=create.getConnection();
   ExecuteContext ctx=new DefaultExecuteContext(create,queries);
   ExecuteListener listener=new ExecuteListeners(ctx);
+  Connection connection=ctx.connection();
   try {
     ctx.statement(new PreparedStatementProxy(connection));
     String[] batchSQL=ctx.batchSQL();

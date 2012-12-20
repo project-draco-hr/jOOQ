@@ -1,8 +1,0 @@
-{
-  try {
-    return getConnection().getAutoCommit();
-  }
- catch (  Exception e) {
-    throw new DataAccessException("Cannot get autoCommit",e);
-  }
-}

@@ -1,9 +1,0 @@
-{
-  try {
-    log.debug("commit");
-    getConnection().commit();
-  }
- catch (  Exception e) {
-    throw new DataAccessException("Cannot commit transaction",e);
-  }
-}

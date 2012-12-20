@@ -1,0 +1,3 @@
+ConnectionProvider connectionProvider
+SQLDialect dialect
+Settings settings

@@ -1,9 +1,0 @@
-{
-  try {
-    log.debug("set savepoint");
-    return getConnection().setSavepoint();
-  }
- catch (  Exception e) {
-    throw new DataAccessException("Cannot set savepoint",e);
-  }
-}

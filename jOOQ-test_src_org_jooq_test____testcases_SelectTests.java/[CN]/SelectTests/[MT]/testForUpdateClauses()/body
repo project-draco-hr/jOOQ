@@ -6,8 +6,8 @@ case SQLITE:
 }
 final Executor create1=create();
 final Executor create2=create();
-create2.setConnection(getNewConnection());
-create2.getConnection().setAutoCommit(false);
+((DefaultConnectionProvider)create2.getConnectionProvider()).setConnection(getNewConnection());
+create2.getConnectionProvider().acquire().setAutoCommit(false);
 final Vector<String> execOrder=new Vector<String>();
 try {
 final Thread t1=new Thread(new Runnable(){
@@ -34,8 +34,8 @@ final Thread t2=new Thread(new Runnable(){
     sleep(4000);
     execOrder.add("t1-fail-or-t2-commit");
     try {
-      create2.getConnection().commit();
-      create2.getConnection().close();
+      create2.getConnectionProvider().acquire().commit();
+      create2.getConnectionProvider().acquire().close();
     }
  catch (    Exception e) {
     }
@@ -50,7 +50,7 @@ assertEquals(asList("t2-exec","t2-signal","t1-block","t1-fail-or-t2-commit","t1-
 }
   finally {
 try {
-  create2.getConnection().close();
+  create2.getConnectionProvider().acquire().close();
 }
  catch (Exception e) {
 }

@@ -1,7 +1,7 @@
 {
-  Connection connection=create.getConnection();
   ExecuteContext ctx=new DefaultExecuteContext(create,new Query[]{query});
   ExecuteListener listener=new ExecuteListeners(ctx);
+  Connection connection=ctx.connection();
   List<Param<?>> params=new ArrayList<Param<?>>(query.getParams().values());
   List<Object> previous=new ArrayList<Object>();
   for (  Param<?> param : params) {

@@ -1,4 +1,4 @@
 {
-  Record user=ora().select(sysContext("USERENV","SESSION_USER"),currentUser()).fetchOne();
+  Record user=create().select(sysContext("USERENV","SESSION_USER"),currentUser()).fetchOne();
   assertEquals(user.getValue(0),user.getValue(1));
 }

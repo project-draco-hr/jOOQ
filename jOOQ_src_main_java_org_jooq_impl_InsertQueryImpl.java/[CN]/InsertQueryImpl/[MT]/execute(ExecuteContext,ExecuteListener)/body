@@ -11,7 +11,7 @@ case SQLITE:
         listener.executeStart(ctx);
         result=ctx.statement().executeUpdate();
         listener.executeEnd(ctx);
-        Executor create=new Executor(ctx.getConnection(),SQLDialect.SQLITE,ctx.getSettings());
+        Executor create=new Executor(ctx.connection(),SQLDialect.SQLITE,ctx.getSettings());
         returned=create.select(returning).from(getInto()).where(rowid().equal(rowid().getDataType().convert(create.lastID()))).fetchInto(getInto());
         return result;
       }

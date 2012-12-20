@@ -3,8 +3,7 @@
     Configuration c=getConfiguration();
     ExecuteContext ctx=new DefaultExecuteContext(c,this);
     ExecuteListener listener=new ExecuteListeners(ctx);
-    Connection connection=c.getConnection();
-    if (connection == null) {
+    if (ctx.connection() == null) {
       throw new DetachedException("Cannot execute query. No Connection configured");
     }
     int result=0;

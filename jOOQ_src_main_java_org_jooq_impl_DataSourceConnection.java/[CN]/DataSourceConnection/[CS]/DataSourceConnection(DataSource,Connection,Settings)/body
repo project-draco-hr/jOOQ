@@ -1,5 +1,0 @@
-{
-  this.datasource=datasource;
-  this.connection=connection;
-  this.settings=settings;
-}

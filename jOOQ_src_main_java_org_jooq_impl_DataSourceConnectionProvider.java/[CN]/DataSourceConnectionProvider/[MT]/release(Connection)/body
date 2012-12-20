@@ -1,0 +1,12 @@
+{
+  if (this.connection != released) {
+    throw new IllegalArgumentException("Expected " + this.connection + " but got "+ released);
+  }
+  try {
+    connection.close();
+    this.connection=null;
+  }
+ catch (  SQLException e) {
+    throw new DataAccessException("Error closing connection " + connection,e);
+  }
+}

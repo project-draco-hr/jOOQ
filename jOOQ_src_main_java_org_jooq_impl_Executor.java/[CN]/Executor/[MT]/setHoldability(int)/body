@@ -1,9 +1,0 @@
-{
-  try {
-    log.debug("setting holdability",holdability);
-    getConnection().setHoldability(holdability);
-  }
- catch (  Exception e) {
-    throw new DataAccessException("Cannot set holdability",e);
-  }
-}

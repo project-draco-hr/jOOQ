@@ -11,7 +11,7 @@ synchronized (threadIDToExecuteContextMap) {
       return false;
     }
     @Override public Connection getConnection(){
-      return ctx.getConnection();
+      return ctx.connection();
     }
     @Override public void releaseConnection(    Connection connection){
     }

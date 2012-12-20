@@ -1,5 +1,5 @@
 {
-  Connection connection=ctx.getConnection();
+  Connection connection=ctx.connection();
   if (ctx.getDialect() == SQLDialect.ASE) {
     ctx.statement(connection.prepareStatement(ctx.sql(),Statement.RETURN_GENERATED_KEYS));
     return;

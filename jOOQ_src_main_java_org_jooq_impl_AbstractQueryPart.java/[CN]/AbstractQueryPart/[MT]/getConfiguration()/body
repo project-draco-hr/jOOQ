@@ -1,3 +1,3 @@
 {
-  return DefaultConfiguration.DEFAULT_CONFIGURATION;
+  return new DefaultConfiguration();
 }

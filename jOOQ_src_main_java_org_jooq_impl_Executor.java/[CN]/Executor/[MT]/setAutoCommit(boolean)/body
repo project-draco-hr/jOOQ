@@ -1,9 +1,0 @@
-{
-  try {
-    log.debug("setting auto commit",autoCommit);
-    getConnection().setAutoCommit(autoCommit);
-  }
- catch (  Exception e) {
-    throw new DataAccessException("Cannot set autoCommit",e);
-  }
-}

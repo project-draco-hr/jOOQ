@@ -81,7 +81,7 @@
       try {
         ctx.statement().close();
         ctx.sql(mainSQL);
-        ctx.statement(ctx.getConnection().prepareStatement(mainSQL));
+        ctx.statement(ctx.connection().prepareStatement(mainSQL));
       }
  catch (      Exception e) {
         throw new RuntimeException(e);
@@ -106,7 +106,7 @@
           try {
             ctx.statement().close();
             ctx.sql(effectiveSQL);
-            ctx.statement(ctx.getConnection().prepareStatement(effectiveSQL));
+            ctx.statement(ctx.connection().prepareStatement(effectiveSQL));
           }
  catch (          Exception e) {
             throw new RuntimeException(e);
@@ -128,7 +128,7 @@ case SKIP:
         ctx.statement().close();
         String sql=new Executor(ctx.getDialect()).selectZero().where("1 = 2").getSQL();
         ctx.sql(sql);
-        ctx.statement(ctx.getConnection().prepareStatement(sql));
+        ctx.statement(ctx.connection().prepareStatement(sql));
       }
  catch (      Exception e) {
         throw new RuntimeException(e);

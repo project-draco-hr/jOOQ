@@ -1,7 +1,7 @@
 {
   Statement statement=null;
   try {
-    statement=ctx.getConnection().createStatement();
+    statement=ctx.connection().createStatement();
     statement.execute(sql);
   }
  catch (  Exception e) {

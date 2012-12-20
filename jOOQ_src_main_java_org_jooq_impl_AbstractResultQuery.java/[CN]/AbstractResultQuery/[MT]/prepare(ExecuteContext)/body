@@ -1,9 +1,9 @@
 {
   if (isForUpdate() && asList(CUBRID,SQLSERVER).contains(ctx.getDialect())) {
-    ctx.statement(ctx.getConnection().prepareStatement(ctx.sql(),TYPE_SCROLL_SENSITIVE,CONCUR_UPDATABLE));
+    ctx.statement(ctx.connection().prepareStatement(ctx.sql(),TYPE_SCROLL_SENSITIVE,CONCUR_UPDATABLE));
   }
  else {
-    ctx.statement(ctx.getConnection().prepareStatement(ctx.sql()));
+    ctx.statement(ctx.connection().prepareStatement(ctx.sql()));
   }
   if (size != 0) {
     if (log.isDebugEnabled())     log.debug("Setting fetch size",size);

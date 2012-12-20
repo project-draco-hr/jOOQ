@@ -1,5 +1,5 @@
 {
-  DatabaseMetaData meta=create().getConnection().getMetaData();
+  DatabaseMetaData meta=create().getConnectionProvider().acquire().getMetaData();
   for (  String table : create().selectDistinct(DB_INDEX.CLASS_NAME).from(DB_INDEX).where(DB_INDEX.IS_FOREIGN_KEY.isTrue()).fetch(DB_INDEX.CLASS_NAME)) {
     for (    Record record : create().fetch(meta.getImportedKeys(null,null,table))) {
       SchemaDefinition foreignKeySchema=getSchema(getInputSchemata().get(0));

@@ -1,7 +1,7 @@
 {
-  assertEquals(Byte.valueOf("1"),ora().nextval(Sequences.S_961_BYTE));
-  assertEquals(Short.valueOf("1"),ora().nextval(Sequences.S_961_SHORT));
-  assertEquals(Integer.valueOf("1"),ora().nextval(Sequences.S_961_INT));
-  assertEquals(Long.valueOf("1"),ora().nextval(Sequences.S_961_LONG));
-  assertEquals(BigInteger.valueOf(1),ora().nextval(Sequences.S_961_BIG_INTEGER));
+  assertEquals(Byte.valueOf("1"),create().nextval(Sequences.S_961_BYTE));
+  assertEquals(Short.valueOf("1"),create().nextval(Sequences.S_961_SHORT));
+  assertEquals(Integer.valueOf("1"),create().nextval(Sequences.S_961_INT));
+  assertEquals(Long.valueOf("1"),create().nextval(Sequences.S_961_LONG));
+  assertEquals(BigInteger.valueOf(1),create().nextval(Sequences.S_961_BIG_INTEGER));
 }

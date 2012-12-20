@@ -1,0 +1,4 @@
+ConnectionProvider connectionProvider
+SQLDialect dialect
+Settings settings
+Map<String,Object> data

@@ -47,7 +47,7 @@
         stored++;
         if (commit == COMMIT_AFTER) {
           if (processed % commitAfter == 0) {
-            create.getConnection().commit();
+            create.getConnectionProvider().acquire().commit();
           }
         }
       }
@@ -63,15 +63,15 @@
       if (commit == COMMIT_ALL) {
         if (!errors.isEmpty()) {
           stored=0;
-          create.getConnection().rollback();
+          create.getConnectionProvider().acquire().rollback();
         }
  else {
-          create.getConnection().commit();
+          create.getConnectionProvider().acquire().commit();
         }
       }
  else       if (commit == COMMIT_AFTER) {
         if (processed % commitAfter != 0) {
-          create.getConnection().commit();
+          create.getConnectionProvider().acquire().commit();
         }
       }
     }

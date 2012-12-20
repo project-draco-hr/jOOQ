@@ -1,3 +1,0 @@
-{
-  this(new ExecutorConfiguration(datasource,connection,dialect,settings,mapping,data));
-}

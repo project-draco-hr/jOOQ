@@ -1,0 +1,9 @@
+{
+  try {
+    log.debug("rollback");
+    connection.rollback();
+  }
+ catch (  Exception e) {
+    throw new DataAccessException("Cannot rollback transaction",e);
+  }
+}

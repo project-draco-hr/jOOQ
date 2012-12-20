@@ -1,9 +1,0 @@
-{
-  try {
-    log.debug("setting tx isolation",level);
-    getConnection().setTransactionIsolation(level);
-  }
- catch (  Exception e) {
-    throw new DataAccessException("Cannot set transactionIsolation",e);
-  }
-}

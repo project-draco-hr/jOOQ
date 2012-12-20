@@ -1,6 +1,6 @@
 {
   if (configuration == null) {
-    configuration=DefaultConfiguration.DEFAULT_CONFIGURATION;
+    configuration=new DefaultConfiguration();
   }
   this.configuration=configuration;
 }

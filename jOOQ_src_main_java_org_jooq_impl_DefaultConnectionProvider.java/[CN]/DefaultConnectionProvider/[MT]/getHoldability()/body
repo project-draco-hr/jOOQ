@@ -1,0 +1,8 @@
+{
+  try {
+    return connection.getHoldability();
+  }
+ catch (  Exception e) {
+    throw new DataAccessException("Cannot get holdability",e);
+  }
+}
