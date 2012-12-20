@@ -12,7 +12,9 @@
   b1.setValue(TBook_TITLE(),"XX 1");
   b1.setValue(TBook_PUBLISHED_IN(),2000);
   b1.setValue(TBook_LANGUAGE_ID(),1);
-  int[] result1=create().batchStore(a1,b1,a2).execute();
+  Batch batch=create().batchStore(a1,b1,a2);
+  assertEquals(3,batch.size());
+  int[] result1=batch.execute();
   assertEquals(3,result1.length);
   testBatchAuthors("XX","YY");
   assertEquals("XX 1",create().select(TBook_TITLE()).from(TBook()).where(TBook_ID().equal(80)).fetchOne(0));
