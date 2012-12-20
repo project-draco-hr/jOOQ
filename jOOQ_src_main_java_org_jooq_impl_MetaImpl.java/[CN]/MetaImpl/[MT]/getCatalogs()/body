@@ -5,6 +5,9 @@
     for (    String name : schemas.getValues(0,String.class)) {
       result.add(new MetaCatalog(name));
     }
+    if (result.isEmpty()) {
+      result.add(new MetaCatalog(""));
+    }
     return result;
   }
  catch (  SQLException e) {
