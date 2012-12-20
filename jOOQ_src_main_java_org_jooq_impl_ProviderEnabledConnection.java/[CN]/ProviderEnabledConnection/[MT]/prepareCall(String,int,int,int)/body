@@ -1,0 +1,3 @@
+{
+  return new ProviderEnabledCallableStatement(this,getDelegate().prepareCall(sql,resultSetType,resultSetConcurrency,resultSetHoldability));
+}

@@ -1,0 +1,8 @@
+{
+  if (executePreparedStatements(settings)) {
+    return getDelegate().prepareStatement(sql,columnNames);
+  }
+ else {
+    return new SettingsEnabledPreparedStatement(getDelegate(),sql,columnNames);
+  }
+}

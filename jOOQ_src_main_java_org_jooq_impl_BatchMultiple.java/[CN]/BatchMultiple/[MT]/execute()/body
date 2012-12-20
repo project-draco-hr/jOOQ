@@ -3,7 +3,7 @@
   ExecuteListener listener=new ExecuteListeners(ctx);
   Connection connection=ctx.connection();
   try {
-    ctx.statement(new PreparedStatementProxy(connection));
+    ctx.statement(new SettingsEnabledPreparedStatement(connection));
     String[] batchSQL=ctx.batchSQL();
     for (int i=0; i < queries.length; i++) {
       listener.renderStart(ctx);

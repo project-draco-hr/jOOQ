@@ -1,0 +1,3 @@
+{
+  return new ProviderEnabledPreparedStatement(this,getDelegate().prepareStatement(sql,columnNames));
+}

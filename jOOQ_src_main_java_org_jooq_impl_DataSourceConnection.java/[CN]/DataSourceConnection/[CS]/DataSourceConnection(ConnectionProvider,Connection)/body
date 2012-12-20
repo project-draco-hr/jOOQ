@@ -1,4 +1,0 @@
-{
-  this.connectionProvider=connectionProvider;
-  this.connection=connection;
-}

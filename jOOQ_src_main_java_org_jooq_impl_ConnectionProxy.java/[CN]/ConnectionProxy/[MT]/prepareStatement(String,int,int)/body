@@ -1,8 +1,0 @@
-{
-  if (executePreparedStatements(settings)) {
-    return delegate.prepareStatement(sql,resultSetType,resultSetConcurrency);
-  }
- else {
-    return new PreparedStatementProxy(delegate,sql,resultSetType,resultSetConcurrency);
-  }
-}

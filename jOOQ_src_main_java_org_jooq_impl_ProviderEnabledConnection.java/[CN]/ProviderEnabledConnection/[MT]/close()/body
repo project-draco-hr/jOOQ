@@ -1,0 +1,3 @@
+{
+  connectionProvider.release(getDelegate());
+}

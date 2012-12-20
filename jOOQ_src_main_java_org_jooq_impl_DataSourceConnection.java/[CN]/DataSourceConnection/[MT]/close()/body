@@ -1,3 +1,0 @@
-{
-  connectionProvider.release(connection);
-}

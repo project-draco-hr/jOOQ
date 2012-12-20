@@ -1,8 +1,0 @@
-{
-  if (executePreparedStatements(settings)) {
-    return delegate.prepareStatement(sql,columnNames);
-  }
- else {
-    return new PreparedStatementProxy(delegate,sql,columnNames);
-  }
-}
