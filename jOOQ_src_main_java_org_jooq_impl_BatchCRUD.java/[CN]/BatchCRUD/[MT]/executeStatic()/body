@@ -8,7 +8,7 @@
       Configuration previous=((AttachableInternal)records[i]).getConfiguration();
       try {
         records[i].attach(create);
-        records[i].store();
+        executeAction(i);
       }
  catch (      QueryCollectorException e) {
         Query query=e.getQuery();
@@ -25,6 +25,6 @@
     work.setExecuteListeners(orig.getExecuteListeners());
   }
   int[] result=create.batch(queries).execute();
-  setAllUnchanged();
+  updateChangedFlag();
   return result;
 }

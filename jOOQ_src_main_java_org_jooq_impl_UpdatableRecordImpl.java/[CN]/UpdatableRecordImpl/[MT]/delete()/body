@@ -16,8 +16,6 @@
     return result;
   }
   finally {
-    for (    Field<?> field : getFields()) {
-      getValue0(field).setChanged(true);
-    }
+    setAllChanged(true);
   }
 }

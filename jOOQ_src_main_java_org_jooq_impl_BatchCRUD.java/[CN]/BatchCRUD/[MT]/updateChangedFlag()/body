@@ -1,7 +1,7 @@
 {
   for (  UpdatableRecord<?> record : records) {
     if (record instanceof AbstractRecord) {
-      ((AbstractRecord)record).setAllChanged(false);
+      ((AbstractRecord)record).setAllChanged(action == Action.DELETE);
     }
   }
 }

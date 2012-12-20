@@ -1,0 +1,8 @@
+{
+  if (action == Action.STORE) {
+    records[i].store();
+  }
+ else   if (action == Action.DELETE) {
+    records[i].delete();
+  }
+}
