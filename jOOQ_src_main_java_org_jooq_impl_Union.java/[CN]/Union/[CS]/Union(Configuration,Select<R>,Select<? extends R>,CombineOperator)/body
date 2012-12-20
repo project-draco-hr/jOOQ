@@ -1,7 +1,7 @@
 {
   super(configuration);
   this.operator=operator;
-  this.queries=new ArrayList<Select<R>>();
+  this.queries=new ArrayList<Select<? extends R>>();
   this.queries.add(query1);
   this.queries.add(query2);
 }
