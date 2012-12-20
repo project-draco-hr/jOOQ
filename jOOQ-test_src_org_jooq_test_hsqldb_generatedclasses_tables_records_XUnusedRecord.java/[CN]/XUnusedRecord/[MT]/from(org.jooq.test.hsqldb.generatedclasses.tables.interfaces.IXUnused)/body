@@ -1,0 +1,18 @@
+{
+  setId(from.getId());
+  setName(from.getName());
+  setBigInteger(from.getBigInteger());
+  setIdRef(from.getIdRef());
+  setClass_(from.getClass_());
+  setFields_(from.getFields_());
+  setConfiguration_(from.getConfiguration_());
+  setUDT(from.getUDT());
+  setMetaData(from.getMetaData());
+  setType0(from.getType0());
+  setPrimaryKey(from.getPrimaryKey());
+  setPrimarykey(from.getPrimarykey());
+  setNameRef(from.getNameRef());
+  setField_737(from.getField_737());
+  setConnection(from.getConnection());
+  setPreparedStatement(from.getPreparedStatement());
+}

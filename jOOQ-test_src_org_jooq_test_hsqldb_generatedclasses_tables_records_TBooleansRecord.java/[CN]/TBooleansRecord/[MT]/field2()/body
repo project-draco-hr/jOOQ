@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.hsqldb.generatedclasses.tables.TBooleans.T_BOOLEANS.ONE_ZERO;
+}

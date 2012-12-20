@@ -1,0 +1,4 @@
+{
+  setId(from.getId());
+  setOther(from.getOther());
+}
