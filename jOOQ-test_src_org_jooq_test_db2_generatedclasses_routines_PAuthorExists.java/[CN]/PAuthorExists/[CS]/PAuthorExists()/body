@@ -1,5 +1,5 @@
 {
-  super("P_AUTHOR_EXISTS",org.jooq.test.db2.generatedclasses.Lukas.LUKAS);
+  super("P_AUTHOR_EXISTS",org.jooq.test.db2.generatedclasses.Test.TEST);
   addInParameter(AUTHOR_NAME);
   addOutParameter(RESULT);
 }

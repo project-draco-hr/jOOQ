@@ -1,5 +1,5 @@
 {
-  super("P_CREATE_AUTHOR_BY_NAME",org.jooq.test.db2.generatedclasses.Lukas.LUKAS);
+  super("P_CREATE_AUTHOR_BY_NAME",org.jooq.test.db2.generatedclasses.Test.TEST);
   addInParameter(FIRST_NAME);
   addInParameter(LAST_NAME);
 }

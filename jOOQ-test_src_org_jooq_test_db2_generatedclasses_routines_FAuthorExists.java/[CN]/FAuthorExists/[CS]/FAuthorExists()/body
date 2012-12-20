@@ -1,5 +1,5 @@
 {
-  super("F_AUTHOR_EXISTS",org.jooq.test.db2.generatedclasses.Lukas.LUKAS,org.jooq.impl.SQLDataType.INTEGER);
+  super("F_AUTHOR_EXISTS",org.jooq.test.db2.generatedclasses.Test.TEST,org.jooq.impl.SQLDataType.INTEGER);
   setReturnParameter(RETURN_VALUE);
   addInParameter(AUTHOR_NAME);
 }

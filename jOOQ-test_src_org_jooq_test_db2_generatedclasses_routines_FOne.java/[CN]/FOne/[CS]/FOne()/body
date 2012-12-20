@@ -1,4 +1,4 @@
 {
-  super("F_ONE",org.jooq.test.db2.generatedclasses.Lukas.LUKAS,org.jooq.impl.SQLDataType.INTEGER);
+  super("F_ONE",org.jooq.test.db2.generatedclasses.Test.TEST,org.jooq.impl.SQLDataType.INTEGER);
   setReturnParameter(RETURN_VALUE);
 }
