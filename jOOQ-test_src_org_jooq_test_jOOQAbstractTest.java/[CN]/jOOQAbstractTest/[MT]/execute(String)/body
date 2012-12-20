@@ -53,7 +53,7 @@
         continue;
       }
  else       if (e.getClass().getName().startsWith("org.postgresql")) {
-        if ("42883".equals(((PSQLException)e).getSQLState())) {
+        if (asList("42704","42883","42P01").contains(((PSQLException)e).getSQLState())) {
           continue;
         }
       }
