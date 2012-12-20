@@ -57,6 +57,9 @@
       out.tab(1).println("}");
     }
   }
+  if (generateInterfaces()) {
+    printFromAndInto(out,table);
+  }
   out.println("}");
   out.close();
 }

@@ -19,6 +19,13 @@
     printColumnJPAAnnotation(out,column);
     out.tab(1).println("public %s %s();",type,getter);
   }
+  String local=getStrategy().getJavaClassName(table,Mode.INTERFACE);
+  String qualified=getStrategy().getFullJavaClassName(table,Mode.INTERFACE);
+  out.tab(1).header("FROM and INTO");
+  out.tab(1).javadoc("Load data from another generated Record/POJO implementing the common interface %s",local);
+  out.tab(1).println("public void from(%s from);",qualified);
+  out.tab(1).javadoc("Copy data into another generated Record/POJO implementing the common interface %s",local);
+  out.tab(1).println("public <E extends %s> E into(E into);",qualified);
   out.println("}");
   out.close();
 }
