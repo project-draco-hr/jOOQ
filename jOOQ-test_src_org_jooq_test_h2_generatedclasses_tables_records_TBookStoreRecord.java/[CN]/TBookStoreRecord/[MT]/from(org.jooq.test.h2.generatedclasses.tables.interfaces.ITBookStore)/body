@@ -1,0 +1,3 @@
+{
+  setName(from.getName());
+}
