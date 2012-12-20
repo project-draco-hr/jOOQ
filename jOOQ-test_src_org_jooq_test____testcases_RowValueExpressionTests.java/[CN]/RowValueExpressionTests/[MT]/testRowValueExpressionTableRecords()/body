@@ -11,5 +11,5 @@
   assertEquals(Date.valueOf("1903-06-25"),author.value4());
   assertEquals(1903,(int)author.value5());
   B2S b2s=create().selectFrom(TBookToBookStore()).where(TBookToBookStore_BOOK_ID().eq(2)).fetchOne();
-  assertEquals(b2s,create().fetchOne(select(b2s.field1(),b2s.field2(),b2s.field3()).from(TBookToBookStore()).where(b2s.fieldsRow().eq(b2s.valuesRow())).union(select(val("abc"),val(1),val(1)).where(val(1).eq(val(0)))).union(create().selectFrom(TBookToBookStore()).where(one().eq(zero())))));
+  assertEquals(b2s,create().fetchOne(select(b2s.field1(),b2s.field2(),b2s.field3()).from(TBookToBookStore()).where(b2s.fieldsRow().eq(b2s.valuesRow())).union(select(inline("abc"),inline(1),inline(1)).where(inline(1).eq(inline(0)))).union(create().selectFrom(TBookToBookStore()).where(one().eq(zero())))));
 }
