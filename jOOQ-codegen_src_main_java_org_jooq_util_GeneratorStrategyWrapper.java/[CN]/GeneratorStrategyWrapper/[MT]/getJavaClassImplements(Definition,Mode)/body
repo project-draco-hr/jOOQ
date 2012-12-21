@@ -1,10 +1,10 @@
 {
-  List<String> result=new ArrayList<String>(delegate.getJavaClassImplements(definition,mode));
+  Set<String> result=new LinkedHashSet<String>(delegate.getJavaClassImplements(definition,mode));
   if (mode == Mode.INTERFACE) {
     result.add(Serializable.class.getName());
   }
  else   if (mode == Mode.POJO && !generator.generateInterfaces()) {
     result.add(Serializable.class.getName());
   }
-  return result;
+  return new ArrayList<String>(result);
 }
