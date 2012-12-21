@@ -1,0 +1,3 @@
+{
+  return new DefaultDataType<Object>(SQLDialect.SQL99,Object.class,typeName,typeName);
+}

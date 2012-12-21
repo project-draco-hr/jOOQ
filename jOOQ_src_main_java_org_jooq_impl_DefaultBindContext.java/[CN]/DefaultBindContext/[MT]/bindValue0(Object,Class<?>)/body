@@ -14,7 +14,7 @@
     }
   }
   if (value == null) {
-    int sqlType=FieldTypeHelper.getDataType(dialect,type).getSQLType();
+    int sqlType=AbstractDataType.getDataType(dialect,type).getSQLType();
     if (ArrayRecord.class.isAssignableFrom(type)) {
       String typeName=Utils.newArrayRecord((Class<ArrayRecord<?>>)type,configuration).getName();
       stmt.setNull(nextIndex(),sqlType,typeName);

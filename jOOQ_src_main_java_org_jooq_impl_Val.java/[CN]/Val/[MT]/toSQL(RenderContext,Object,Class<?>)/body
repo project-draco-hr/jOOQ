@@ -108,7 +108,7 @@
     if (type.isArray() && byte[].class != type) {
       context.sql(getBindVariable(context));
       context.sql("::");
-      context.keyword(FieldTypeHelper.getDataType(dialect,type).getCastTypeName(context));
+      context.keyword(AbstractDataType.getDataType(dialect,type).getCastTypeName(context));
     }
  else     if (EnumType.class.isAssignableFrom(type)) {
       context.sql(getBindVariable(context));

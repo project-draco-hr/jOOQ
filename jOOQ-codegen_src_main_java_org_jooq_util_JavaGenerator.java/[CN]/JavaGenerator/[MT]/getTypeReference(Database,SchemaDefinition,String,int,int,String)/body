@@ -18,7 +18,7 @@
     sb.append(".");
     sb.append(db.getDialect().getName());
     sb.append("DataType.");
-    sb.append(FieldTypeHelper.normalise(FieldTypeHelper.getDataType(db.getDialect(),String.class).getTypeName()));
+    sb.append(FieldTypeHelper.normalise(AbstractDataType.getDataType(db.getDialect(),String.class).getTypeName()));
     sb.append(".asEnumDataType(");
     sb.append(getStrategy().getFullJavaClassName(db.getEnum(schema,u)));
     sb.append(".class)");
