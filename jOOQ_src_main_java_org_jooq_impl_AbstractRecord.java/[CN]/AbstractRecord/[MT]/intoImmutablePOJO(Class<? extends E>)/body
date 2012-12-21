@@ -9,7 +9,7 @@
   for (  Constructor<E> constructor : constructors) {
     Class<?>[] parameterTypes=constructor.getParameterTypes();
     if (parameterTypes.length == getFields().size()) {
-      Object[] converted=Utils.convert(parameterTypes,intoArray());
+      Object[] converted=Convert.convert(intoArray(),parameterTypes);
       return accessible(constructor).newInstance(converted);
     }
   }

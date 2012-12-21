@@ -20,22 +20,22 @@
  else     if (type == byte[].class) {
       byte[] binary=(byte[])val;
       if (asList(ASE,SQLSERVER,SYBASE).contains(dialect)) {
-        context.sql("0x").sql(Utils.convertBytesToHex(binary));
+        context.sql("0x").sql(convertBytesToHex(binary));
       }
  else       if (dialect == DB2) {
-        context.keyword("blob").sql("(X'").sql(Utils.convertBytesToHex(binary)).sql("')");
+        context.keyword("blob").sql("(X'").sql(convertBytesToHex(binary)).sql("')");
       }
  else       if (asList(DERBY,H2,HSQLDB,INGRES,MYSQL,SQLITE).contains(dialect)) {
-        context.sql("X'").sql(Utils.convertBytesToHex(binary)).sql("'");
+        context.sql("X'").sql(convertBytesToHex(binary)).sql("'");
       }
  else       if (asList(ORACLE).contains(dialect)) {
-        context.keyword("hextoraw('").sql(Utils.convertBytesToHex(binary)).sql("')");
+        context.keyword("hextoraw('").sql(convertBytesToHex(binary)).sql("')");
       }
  else       if (dialect == POSTGRES) {
-        context.sql("E'").sql(Utils.convertBytesToPostgresOctal(binary)).keyword("'::bytea");
+        context.sql("E'").sql(convertBytesToPostgresOctal(binary)).keyword("'::bytea");
       }
  else {
-        context.sql("X'").sql(Utils.convertBytesToHex(binary)).sql("'");
+        context.sql("X'").sql(convertBytesToHex(binary)).sql("'");
       }
     }
  else     if (Interval.class.isAssignableFrom(type)) {

@@ -1,4 +1,6 @@
 {
+  Class<T> type=field.getType();
+  DataType<T> dataType=field.getDataType();
   if (value == null) {
     stream.writeObject(null);
   }

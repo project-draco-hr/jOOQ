@@ -1,4 +1,0 @@
-SQLOutput stream
-Class<T> type
-DataType<T> dataType
-T value

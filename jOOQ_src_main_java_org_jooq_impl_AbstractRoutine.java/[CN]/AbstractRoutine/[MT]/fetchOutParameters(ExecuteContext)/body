@@ -2,7 +2,7 @@
   for (  Parameter<?> parameter : getParameters()) {
     if (parameter.equals(getReturnParameter()) || getOutParameters().contains(parameter)) {
       int index=parameterIndexes.get(parameter);
-      results.put(parameter,FieldTypeHelper.getFromStatement(ctx,parameter.getType(),index));
+      results.put(parameter,Utils.getFromStatement(ctx,parameter.getType(),index));
     }
   }
 }
