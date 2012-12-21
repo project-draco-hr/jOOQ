@@ -4,7 +4,7 @@
     return (T)stmt.getBlob(index);
   }
  else   if (type == Boolean.class) {
-    return (T)checkWasNull(stmt,Boolean.valueOf(stmt.getBoolean(index)));
+    return (T)wasNull(stmt,Boolean.valueOf(stmt.getBoolean(index)));
   }
  else   if (type == BigInteger.class) {
     BigDecimal result=stmt.getBigDecimal(index);
@@ -14,7 +14,7 @@
     return (T)stmt.getBigDecimal(index);
   }
  else   if (type == Byte.class) {
-    return (T)checkWasNull(stmt,Byte.valueOf(stmt.getByte(index)));
+    return (T)wasNull(stmt,Byte.valueOf(stmt.getByte(index)));
   }
  else   if (type == byte[].class) {
     return (T)stmt.getBytes(index);
@@ -26,19 +26,19 @@
     return (T)stmt.getDate(index);
   }
  else   if (type == Double.class) {
-    return (T)checkWasNull(stmt,Double.valueOf(stmt.getDouble(index)));
+    return (T)wasNull(stmt,Double.valueOf(stmt.getDouble(index)));
   }
  else   if (type == Float.class) {
-    return (T)checkWasNull(stmt,Float.valueOf(stmt.getFloat(index)));
+    return (T)wasNull(stmt,Float.valueOf(stmt.getFloat(index)));
   }
  else   if (type == Integer.class) {
-    return (T)checkWasNull(stmt,Integer.valueOf(stmt.getInt(index)));
+    return (T)wasNull(stmt,Integer.valueOf(stmt.getInt(index)));
   }
  else   if (type == Long.class) {
-    return (T)checkWasNull(stmt,Long.valueOf(stmt.getLong(index)));
+    return (T)wasNull(stmt,Long.valueOf(stmt.getLong(index)));
   }
  else   if (type == Short.class) {
-    return (T)checkWasNull(stmt,Short.valueOf(stmt.getShort(index)));
+    return (T)wasNull(stmt,Short.valueOf(stmt.getShort(index)));
   }
  else   if (type == String.class) {
     return (T)stmt.getString(index);

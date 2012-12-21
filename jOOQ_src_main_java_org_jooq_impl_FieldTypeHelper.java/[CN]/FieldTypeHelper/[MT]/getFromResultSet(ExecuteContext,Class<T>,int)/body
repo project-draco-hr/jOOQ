@@ -4,7 +4,7 @@
     return (T)rs.getBlob(index);
   }
  else   if (type == Boolean.class) {
-    return (T)checkWasNull(rs,Boolean.valueOf(rs.getBoolean(index)));
+    return (T)wasNull(rs,Boolean.valueOf(rs.getBoolean(index)));
   }
  else   if (type == BigInteger.class) {
     if (ctx.getDialect() == SQLDialect.SQLITE) {
@@ -24,7 +24,7 @@
     }
   }
  else   if (type == Byte.class) {
-    return (T)checkWasNull(rs,Byte.valueOf(rs.getByte(index)));
+    return (T)wasNull(rs,Byte.valueOf(rs.getByte(index)));
   }
  else   if (type == byte[].class) {
     return (T)rs.getBytes(index);
@@ -36,19 +36,19 @@
     return (T)getDate(ctx.getDialect(),rs,index);
   }
  else   if (type == Double.class) {
-    return (T)checkWasNull(rs,Double.valueOf(rs.getDouble(index)));
+    return (T)wasNull(rs,Double.valueOf(rs.getDouble(index)));
   }
  else   if (type == Float.class) {
-    return (T)checkWasNull(rs,Float.valueOf(rs.getFloat(index)));
+    return (T)wasNull(rs,Float.valueOf(rs.getFloat(index)));
   }
  else   if (type == Integer.class) {
-    return (T)checkWasNull(rs,Integer.valueOf(rs.getInt(index)));
+    return (T)wasNull(rs,Integer.valueOf(rs.getInt(index)));
   }
  else   if (type == Long.class) {
-    return (T)checkWasNull(rs,Long.valueOf(rs.getLong(index)));
+    return (T)wasNull(rs,Long.valueOf(rs.getLong(index)));
   }
  else   if (type == Short.class) {
-    return (T)checkWasNull(rs,Short.valueOf(rs.getShort(index)));
+    return (T)wasNull(rs,Short.valueOf(rs.getShort(index)));
   }
  else   if (type == String.class) {
     return (T)rs.getString(index);

@@ -5,7 +5,7 @@
     return (T)stream.readBlob();
   }
  else   if (type == Boolean.class) {
-    return (T)checkWasNull(stream,Boolean.valueOf(stream.readBoolean()));
+    return (T)wasNull(stream,Boolean.valueOf(stream.readBoolean()));
   }
  else   if (type == BigInteger.class) {
     BigDecimal result=stream.readBigDecimal();
@@ -15,7 +15,7 @@
     return (T)stream.readBigDecimal();
   }
  else   if (type == Byte.class) {
-    return (T)checkWasNull(stream,Byte.valueOf(stream.readByte()));
+    return (T)wasNull(stream,Byte.valueOf(stream.readByte()));
   }
  else   if (type == byte[].class) {
     if (dataType.isLob()) {
@@ -25,7 +25,7 @@
         return (T)(blob == null ? null : blob.getBytes(1,(int)blob.length()));
       }
   finally {
-        JDBCUtils.safeFree(blob);
+        safeFree(blob);
       }
     }
  else {
@@ -39,19 +39,19 @@
     return (T)stream.readDate();
   }
  else   if (type == Double.class) {
-    return (T)checkWasNull(stream,Double.valueOf(stream.readDouble()));
+    return (T)wasNull(stream,Double.valueOf(stream.readDouble()));
   }
  else   if (type == Float.class) {
-    return (T)checkWasNull(stream,Float.valueOf(stream.readFloat()));
+    return (T)wasNull(stream,Float.valueOf(stream.readFloat()));
   }
  else   if (type == Integer.class) {
-    return (T)checkWasNull(stream,Integer.valueOf(stream.readInt()));
+    return (T)wasNull(stream,Integer.valueOf(stream.readInt()));
   }
  else   if (type == Long.class) {
-    return (T)checkWasNull(stream,Long.valueOf(stream.readLong()));
+    return (T)wasNull(stream,Long.valueOf(stream.readLong()));
   }
  else   if (type == Short.class) {
-    return (T)checkWasNull(stream,Short.valueOf(stream.readShort()));
+    return (T)wasNull(stream,Short.valueOf(stream.readShort()));
   }
  else   if (type == String.class) {
     return (T)stream.readString();
