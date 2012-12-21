@@ -5,8 +5,8 @@
   this.typeName=typeName;
   this.castTypeName=castTypeName;
   this.arrayType=(Class<T[]>)Array.newInstance(type,0).getClass();
-  this.precision=0;
-  this.scale=0;
-  this.length=0;
+  this.precision=precision;
+  this.scale=scale;
+  this.length=length;
   init();
 }

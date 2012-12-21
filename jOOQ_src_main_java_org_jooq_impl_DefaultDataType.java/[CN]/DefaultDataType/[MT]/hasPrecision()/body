@@ -1,0 +1,3 @@
+{
+  return sqlDataType == SQLDataType.DECIMAL || sqlDataType == SQLDataType.DECIMAL_INTEGER || sqlDataType == SQLDataType.NUMERIC;
+}

@@ -1,3 +1,3 @@
 {
-  this(dialect,null,type,typeName,castTypeName);
+  this(dialect,null,type,typeName,castTypeName,0,0,0);
 }

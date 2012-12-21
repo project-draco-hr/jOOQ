@@ -3,3 +3,6 @@ DataType<T> sqlDataType
 Class<T> type
 String typeName
 String castTypeName
+int precision
+int scale
+int length

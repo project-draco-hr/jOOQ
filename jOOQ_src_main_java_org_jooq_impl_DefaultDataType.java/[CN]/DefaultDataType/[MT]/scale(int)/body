@@ -1,0 +1,6 @@
+{
+  if (hasScale()) {
+    return new DefaultDataType<T>(dialect,sqlDataType,type,typeName,castTypeName,precision,s,length);
+  }
+  return this;
+}

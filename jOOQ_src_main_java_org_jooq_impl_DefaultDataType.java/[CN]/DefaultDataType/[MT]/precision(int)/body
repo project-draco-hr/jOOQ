@@ -1,0 +1,6 @@
+{
+  if (hasPrecision()) {
+    return new DefaultDataType<T>(dialect,sqlDataType,type,typeName,castTypeName,p,scale,length);
+  }
+  return this;
+}

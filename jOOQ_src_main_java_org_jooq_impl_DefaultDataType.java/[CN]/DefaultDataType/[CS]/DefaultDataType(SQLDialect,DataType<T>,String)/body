@@ -1,3 +1,3 @@
 {
-  this(dialect,sqlDataType,sqlDataType.getType(),typeName,typeName);
+  this(dialect,sqlDataType,sqlDataType.getType(),typeName,typeName,0,0,0);
 }
