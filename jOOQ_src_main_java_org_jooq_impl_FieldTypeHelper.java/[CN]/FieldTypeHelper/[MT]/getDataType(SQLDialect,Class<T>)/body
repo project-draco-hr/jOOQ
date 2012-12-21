@@ -8,6 +8,8 @@ case DB2:
 return DB2DataType.getDataType(type);
 case DERBY:
 return DerbyDataType.getDataType(type);
+case FIREBIRD:
+return FirebirdDataType.getDataType(type);
 case H2:
 return H2DataType.getDataType(type);
 case HSQLDB:
