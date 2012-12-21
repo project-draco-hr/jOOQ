@@ -1,5 +1,5 @@
 {
-  SQLDataType<T> type=getDataType(context).getSQLDataType();
+  DataType<T> type=getDataType(context).getSQLDataType();
   SQLDialect dialect=context.getDialect();
   if (getValue() != null && getType() == BigDecimal.class && asList(CUBRID,DB2,DERBY,FIREBIRD,HSQLDB).contains(dialect)) {
     int scale=((BigDecimal)getValue()).scale();

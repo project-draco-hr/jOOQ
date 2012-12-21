@@ -31,7 +31,7 @@
  catch (    SQLDialectNotSupportedException ignore) {
     }
     if (dataType != null && dataType.getSQLDataType() != null) {
-      SQLDataType<?> sqlDataType=dataType.getSQLDataType();
+      DataType<?> sqlDataType=dataType.getSQLDataType();
       sb.append(SQLDataType.class.getCanonicalName());
       sb.append(".");
       sb.append(DefaultDataType.normalise(sqlDataType.getTypeName()));

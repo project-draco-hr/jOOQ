@@ -1,5 +1,4 @@
 SQLDialect dialect
-SQLDataType<T> sqlDataType
-Class<T> type
+DataType<T> sqlDataType
 String typeName
 String castTypeName
