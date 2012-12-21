@@ -1,3 +1,0 @@
-{
-  super(SQLDialect.ORACLE,sqlDataType,sqlDataType.getType(),typeName,hasPrecisionAndScale);
-}

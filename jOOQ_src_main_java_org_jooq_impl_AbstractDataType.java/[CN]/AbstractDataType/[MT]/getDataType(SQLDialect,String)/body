@@ -1,5 +1,5 @@
 {
-  String normalised=FieldTypeHelper.normalise(typeName);
+  String normalised=AbstractDataType.normalise(typeName);
   DataType<?> result=TYPES_BY_NAME[dialect.ordinal()].get(normalised);
   if (result == null) {
     result=TYPES_BY_NAME[SQLDialect.SQL99.ordinal()].get(normalised);

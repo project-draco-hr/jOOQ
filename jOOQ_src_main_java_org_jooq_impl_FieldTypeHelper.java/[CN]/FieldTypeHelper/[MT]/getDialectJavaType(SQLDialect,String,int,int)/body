@@ -1,3 +1,0 @@
-{
-  return getDialectDataType(dialect,t,p,s).getType(p,s);
-}

@@ -1,6 +1,0 @@
-{
-  if (hasPrecisionAndScale) {
-    return FieldTypeHelper.getClass(Types.NUMERIC,precision,scale);
-  }
-  return getType();
-}

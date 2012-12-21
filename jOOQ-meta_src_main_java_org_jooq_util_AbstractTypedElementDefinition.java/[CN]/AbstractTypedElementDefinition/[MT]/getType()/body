@@ -10,7 +10,7 @@
       int p=definedType.getPrecision();
       int s=definedType.getScale();
       try {
-        forcedDataType=getDialectDataType(db.getDialect(),forcedType.getName(),p,s);
+        forcedDataType=AbstractDataType.getDataType(db.getDialect(),forcedType.getName(),p,s);
       }
  catch (      SQLDialectNotSupportedException ignore) {
       }
@@ -24,13 +24,13 @@
     if (db.dateAsTimestamp()) {
       DataType<?> dataType=null;
       try {
-        dataType=getDialectDataType(db.getDialect(),definedType.getType(),0,0);
+        dataType=AbstractDataType.getDataType(db.getDialect(),definedType.getType(),0,0);
       }
  catch (      SQLDialectNotSupportedException ignore) {
       }
       if (dataType != null) {
         if (dataType.getSQLType() == Types.DATE) {
-          DataType<?> forcedDataType=getDialectDataType(db.getDialect(),SQLDataType.TIMESTAMP.getTypeName(),0,0);
+          DataType<?> forcedDataType=AbstractDataType.getDataType(db.getDialect(),SQLDataType.TIMESTAMP.getTypeName(),0,0);
           type=new DefaultDataTypeDefinition(db,getSchema(),forcedDataType.getTypeName(),0,0,0);
         }
       }

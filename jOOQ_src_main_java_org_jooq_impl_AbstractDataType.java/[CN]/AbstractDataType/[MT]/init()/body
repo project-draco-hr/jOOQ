@@ -1,6 +1,6 @@
 {
   int ordinal=dialect == null ? SQLDialect.SQL99.ordinal() : dialect.ordinal();
-  String normalised=FieldTypeHelper.normalise(typeName);
+  String normalised=AbstractDataType.normalise(typeName);
   if (TYPES_BY_NAME[ordinal].get(normalised) == null) {
     TYPES_BY_NAME[ordinal].put(normalised,this);
   }
