@@ -4,6 +4,7 @@
   this.type=type;
   this.typeName=typeName;
   this.castTypeName=castTypeName;
+  this.castTypeBase=TYPE_NAME_PATTERN.matcher(castTypeName).replaceAll("").trim();
   this.arrayType=(Class<T[]>)Array.newInstance(type,0).getClass();
   if (type == Long.class || type == ULong.class) {
     this.precision=LONG_PRECISION;

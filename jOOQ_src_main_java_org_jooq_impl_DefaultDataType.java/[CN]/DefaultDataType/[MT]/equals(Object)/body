@@ -4,6 +4,9 @@
   if (getClass() != obj.getClass())   return false;
   DefaultDataType<?> other=(DefaultDataType<?>)obj;
   if (dialect != other.dialect)   return false;
+  if (length != other.length)   return false;
+  if (precision != other.precision)   return false;
+  if (scale != other.scale)   return false;
   if (type == null) {
     if (other.type != null)     return false;
   }

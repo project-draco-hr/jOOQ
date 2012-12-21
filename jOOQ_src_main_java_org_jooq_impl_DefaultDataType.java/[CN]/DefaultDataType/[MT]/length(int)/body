@@ -1,6 +1,11 @@
 {
-  if (hasLength()) {
+  if (length == l) {
+    return this;
+  }
+ else   if (hasLength()) {
     return new DefaultDataType<T>(dialect,sqlDataType,type,typeName,castTypeName,precision,scale,l);
   }
-  return this;
+ else {
+    return this;
+  }
 }

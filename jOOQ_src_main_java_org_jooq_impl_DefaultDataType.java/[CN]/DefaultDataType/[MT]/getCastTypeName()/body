@@ -1,3 +1,16 @@
 {
-  return castTypeName;
+  if (length != 0 && hasLength()) {
+    return castTypeBase + "(" + length+ ")";
+  }
+ else   if (precision != 0 && hasPrecision()) {
+    if (scale != 0 && hasScale()) {
+      return castTypeBase + "(" + precision+ ", "+ scale+ ")";
+    }
+ else {
+      return castTypeBase + "(" + precision+ ")";
+    }
+  }
+ else {
+    return castTypeName;
+  }
 }
