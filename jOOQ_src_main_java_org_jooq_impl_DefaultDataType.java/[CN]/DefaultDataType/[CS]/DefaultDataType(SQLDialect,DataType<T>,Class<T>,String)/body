@@ -1,3 +1,0 @@
-{
-  this(dialect,sqlDataType,type,typeName,typeName);
-}
