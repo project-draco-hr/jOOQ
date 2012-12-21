@@ -16,6 +16,15 @@
       String type=meta.getColumnTypeName(i);
       try {
         dataType=DefaultDataType.getDataType(configuration.getDialect(),type,precision,scale);
+        if (dataType.hasPrecision()) {
+          dataType=dataType.precision(precision);
+        }
+        if (dataType.hasScale()) {
+          dataType=dataType.scale(scale);
+        }
+        if (dataType.hasLength()) {
+          dataType=dataType.length(precision);
+        }
       }
  catch (      SQLDialectNotSupportedException ignore) {
         log.warn("Not supported by dialect",ignore.getMessage());

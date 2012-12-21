@@ -5,8 +5,37 @@
   this.typeName=typeName;
   this.castTypeName=castTypeName;
   this.arrayType=(Class<T[]>)Array.newInstance(type,0).getClass();
-  this.precision=precision;
+  if (type == Long.class || type == ULong.class) {
+    this.precision=LONG_PRECISION;
+  }
+ else   if (type == Integer.class || type == UInteger.class) {
+    this.precision=INTEGER_PRECISION;
+  }
+ else   if (type == Short.class || type == UShort.class) {
+    this.precision=SHORT_PRECISION;
+  }
+ else   if (type == Byte.class || type == UByte.class) {
+    this.precision=BYTE_PRECISION;
+  }
+ else {
+    this.precision=precision;
+  }
   this.scale=scale;
   this.length=length;
-  init();
+  int ordinal=dialect == null ? SQLDialect.SQL99.ordinal() : dialect.ordinal();
+  String normalised=DefaultDataType.normalise(typeName);
+  if (TYPES_BY_NAME[ordinal].get(normalised) == null) {
+    TYPES_BY_NAME[ordinal].put(normalised,this);
+  }
+  if (TYPES_BY_TYPE[ordinal].get(type) == null) {
+    TYPES_BY_TYPE[ordinal].put(type,this);
+  }
+  if (TYPES_BY_SQL_DATATYPE[ordinal].get(sqlDataType) == null) {
+    TYPES_BY_SQL_DATATYPE[ordinal].put(sqlDataType,this);
+  }
+  if (dialect == null) {
+    if (SQL_DATATYPES_BY_TYPE.get(type) == null) {
+      SQL_DATATYPES_BY_TYPE.put(type,this);
+    }
+  }
 }
