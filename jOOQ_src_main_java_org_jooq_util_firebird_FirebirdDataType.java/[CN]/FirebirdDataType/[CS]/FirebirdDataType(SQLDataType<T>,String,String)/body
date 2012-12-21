@@ -1,3 +1,0 @@
-{
-  super(SQLDialect.FIREBIRD,sqlDataType,sqlDataType.getType(),typeName,castTypeName);
-}

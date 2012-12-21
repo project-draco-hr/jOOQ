@@ -1,0 +1,18 @@
+{
+  int ordinal=dialect == null ? SQLDialect.SQL99.ordinal() : dialect.ordinal();
+  String normalised=DefaultDataType.normalise(typeName);
+  if (TYPES_BY_NAME[ordinal].get(normalised) == null) {
+    TYPES_BY_NAME[ordinal].put(normalised,this);
+  }
+  if (TYPES_BY_TYPE[ordinal].get(type) == null) {
+    TYPES_BY_TYPE[ordinal].put(type,this);
+  }
+  if (TYPES_BY_SQL_DATATYPE[ordinal].get(sqlDataType) == null) {
+    TYPES_BY_SQL_DATATYPE[ordinal].put(sqlDataType,this);
+  }
+  if (dialect == null) {
+    if (SQL_DATATYPES_BY_TYPE.get(type) == null) {
+      SQL_DATATYPES_BY_TYPE.put(type,this);
+    }
+  }
+}

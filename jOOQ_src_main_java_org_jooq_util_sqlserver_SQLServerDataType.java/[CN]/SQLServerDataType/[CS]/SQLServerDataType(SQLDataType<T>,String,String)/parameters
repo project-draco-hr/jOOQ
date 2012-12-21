@@ -1,3 +1,0 @@
-SQLDataType<T> sqlDataType
-String typeName
-String castTypeName

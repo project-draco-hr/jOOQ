@@ -1,3 +1,0 @@
-{
-  return new DefaultDataType<E>(dialect,enumDataType,typeName,castTypeName);
-}

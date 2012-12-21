@@ -1,0 +1,7 @@
+{
+  DataType<?> result=DefaultDataType.getDataType(dialect,DefaultDataType.normalise(t));
+  if (result.getType() == BigDecimal.class) {
+    result=DefaultDataType.getDataType(dialect,getNumericClass(p,s));
+  }
+  return result;
+}

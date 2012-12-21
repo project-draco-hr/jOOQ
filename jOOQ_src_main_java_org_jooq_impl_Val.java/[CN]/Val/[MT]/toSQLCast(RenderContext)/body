@@ -11,13 +11,13 @@
   }
  else   if (SQLDataType.OTHER == type) {
     if (value != null) {
-      toSQLCast(context,AbstractDataType.getDataType(dialect,value.getClass()),0,0);
+      toSQLCast(context,DefaultDataType.getDataType(dialect,value.getClass()),0,0);
     }
  else     if (asList(INGRES,SYBASE).contains(dialect)) {
       context.sql(getBindVariable(context));
     }
  else {
-      toSQLCast(context,AbstractDataType.getDataType(dialect,String.class),0,0);
+      toSQLCast(context,DefaultDataType.getDataType(dialect,String.class),0,0);
     }
   }
  else   if (dialect == POSTGRES && (type == null || !type.isTemporal())) {

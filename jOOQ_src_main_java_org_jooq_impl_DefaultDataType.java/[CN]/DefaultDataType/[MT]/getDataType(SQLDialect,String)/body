@@ -1,0 +1,11 @@
+{
+  String normalised=DefaultDataType.normalise(typeName);
+  DataType<?> result=TYPES_BY_NAME[dialect.ordinal()].get(normalised);
+  if (result == null) {
+    result=TYPES_BY_NAME[SQLDialect.SQL99.ordinal()].get(normalised);
+  }
+  if (result == null) {
+    throw new SQLDialectNotSupportedException("Type " + typeName + " is not supported in dialect "+ dialect,false);
+  }
+  return result;
+}

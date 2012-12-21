@@ -1,0 +1,3 @@
+{
+  this(dialect,sqlDataType,sqlDataType.getType(),typeName,typeName);
+}

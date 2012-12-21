@@ -1,3 +1,0 @@
-{
-  return new DefaultDataType<Object>(dialect,Object.class,typeName,typeName);
-}

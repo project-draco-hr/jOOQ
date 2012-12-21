@@ -1,3 +1,0 @@
-{
-  return new DefaultDataType<A>(dialect,arrayDataType,typeName,castTypeName);
-}

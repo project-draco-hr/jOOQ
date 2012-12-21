@@ -18,7 +18,7 @@
   }
  else {
     try {
-      Class<?> clazz=AbstractDataType.getType(db.getDialect(),t,p,s);
+      Class<?> clazz=DefaultDataType.getType(db.getDialect(),t,p,s);
       type=clazz.getCanonicalName();
       if (clazz.getTypeParameters().length > 0) {
         type+="<";
