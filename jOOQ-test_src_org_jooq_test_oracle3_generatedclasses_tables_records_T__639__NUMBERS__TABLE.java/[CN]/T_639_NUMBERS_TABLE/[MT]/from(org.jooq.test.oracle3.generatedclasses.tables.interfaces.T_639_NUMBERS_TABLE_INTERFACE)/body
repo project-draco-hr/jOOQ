@@ -1,0 +1,13 @@
+{
+  setID(from.getID());
+  setBYTE(from.getBYTE());
+  setSHORT(from.getSHORT());
+  setINTEGER(from.getINTEGER());
+  setLONG(from.getLONG());
+  setBYTE_DECIMAL(from.getBYTE_DECIMAL());
+  setSHORT_DECIMAL(from.getSHORT_DECIMAL());
+  setINTEGER_DECIMAL(from.getINTEGER_DECIMAL());
+  setLONG_DECIMAL(from.getLONG_DECIMAL());
+  setBIG_INTEGER(from.getBIG_INTEGER());
+  setBIG_DECIMAL(from.getBIG_DECIMAL());
+}

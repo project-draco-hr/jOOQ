@@ -1,0 +1,13 @@
+{
+  setID(from.getID());
+  setONE_ZERO(from.getONE_ZERO());
+  setTRUE_FALSE_LC(from.getTRUE_FALSE_LC());
+  setTRUE_FALSE_UC(from.getTRUE_FALSE_UC());
+  setYES_NO_LC(from.getYES_NO_LC());
+  setYES_NO_UC(from.getYES_NO_UC());
+  setY_N_LC(from.getY_N_LC());
+  setY_N_UC(from.getY_N_UC());
+  setVC_BOOLEAN(from.getVC_BOOLEAN());
+  setC_BOOLEAN(from.getC_BOOLEAN());
+  setN_BOOLEAN(from.getN_BOOLEAN());
+}

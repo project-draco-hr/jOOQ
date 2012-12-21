@@ -59,12 +59,16 @@
         }
       }
  catch (      SQLDialectNotSupportedException e) {
-        sb.append("getDefaultDataType(\"");
+        sb=new StringBuilder();
+        sb.append(DefaultDataType.class.getName());
+        sb.append(".getDefaultDataType(\"");
         sb.append(t.replace("\"","\\\""));
         sb.append("\")");
       }
 catch (      ReflectException e) {
-        sb.append("getDefaultDataType(\"");
+        sb=new StringBuilder();
+        sb.append(DefaultDataType.class.getName());
+        sb.append(".getDefaultDataType(\"");
         sb.append(t.replace("\"","\\\""));
         sb.append("\")");
       }

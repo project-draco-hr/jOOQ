@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.oracle3.generatedclasses.tables.T_BOOK.T_BOOK.CONTENT_PDF;
+}

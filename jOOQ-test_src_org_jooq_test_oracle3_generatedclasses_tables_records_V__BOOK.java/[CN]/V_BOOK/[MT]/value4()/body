@@ -1,0 +1,3 @@
+{
+  return getDETAILS_ID();
+}

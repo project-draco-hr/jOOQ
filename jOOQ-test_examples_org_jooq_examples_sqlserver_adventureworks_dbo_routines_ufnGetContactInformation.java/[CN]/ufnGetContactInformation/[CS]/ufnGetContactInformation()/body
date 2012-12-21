@@ -1,5 +1,5 @@
 {
-  super("ufnGetContactInformation",org.jooq.examples.sqlserver.adventureworks.dbo.dbo.dbo,org.jooq.util.sqlserver.SQLServerDataType.getDefaultDataType("TABLE"));
+  super("ufnGetContactInformation",org.jooq.examples.sqlserver.adventureworks.dbo.dbo.dbo,org.jooq.impl.DefaultDataType.getDefaultDataType("TABLE"));
   setReturnParameter(RETURN_VALUE);
   addInParameter(ContactID);
 }

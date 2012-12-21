@@ -1,0 +1,7 @@
+{
+  setID(from.getID());
+  setSTRING_ARRAY(from.getSTRING_ARRAY());
+  setNUMBER_ARRAY(from.getNUMBER_ARRAY());
+  setNUMBER_LONG_ARRAY(from.getNUMBER_LONG_ARRAY());
+  setDATE_ARRAY(from.getDATE_ARRAY());
+}

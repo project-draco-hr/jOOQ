@@ -1,0 +1,4 @@
+{
+  setAUTHOR(from.getAUTHOR());
+  setTITLE(from.getTITLE());
+}

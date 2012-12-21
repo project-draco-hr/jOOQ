@@ -1,0 +1,3 @@
+{
+  return getCO_AUTHOR_ID();
+}

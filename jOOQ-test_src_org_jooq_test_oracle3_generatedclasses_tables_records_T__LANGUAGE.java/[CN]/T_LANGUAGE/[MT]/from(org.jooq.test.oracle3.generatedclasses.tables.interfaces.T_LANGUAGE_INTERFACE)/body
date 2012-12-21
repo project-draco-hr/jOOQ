@@ -1,0 +1,6 @@
+{
+  setCD(from.getCD());
+  setDESCRIPTION(from.getDESCRIPTION());
+  setDESCRIPTION_ENGLISH(from.getDESCRIPTION_ENGLISH());
+  setID(from.getID());
+}

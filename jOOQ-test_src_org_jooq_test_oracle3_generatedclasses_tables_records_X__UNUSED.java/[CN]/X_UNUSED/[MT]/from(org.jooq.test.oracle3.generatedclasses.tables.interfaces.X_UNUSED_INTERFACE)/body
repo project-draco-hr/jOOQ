@@ -1,0 +1,18 @@
+{
+  setID(from.getID());
+  setNAME(from.getNAME());
+  setBIG_INTEGER(from.getBIG_INTEGER());
+  setID_REF(from.getID_REF());
+  setCLASS(from.getCLASS());
+  setFIELDS(from.getFIELDS());
+  setCONFIGURATION(from.getCONFIGURATION());
+  setU_D_T(from.getU_D_T());
+  setMETA_DATA(from.getMETA_DATA());
+  setTYPE0(from.getTYPE0());
+  setPRIMARY_KEY(from.getPRIMARY_KEY());
+  setPRIMARYKEY(from.getPRIMARYKEY());
+  setNAME_REF(from.getNAME_REF());
+  setFIELD_737(from.getFIELD_737());
+  setMS_UNUSED_ID_REF(from.getMS_UNUSED_ID_REF());
+  setMS_UNUSED_NAME_REF(from.getMS_UNUSED_NAME_REF());
+}

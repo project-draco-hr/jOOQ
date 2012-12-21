@@ -1,0 +1,3 @@
+{
+  return getINTEGER_DECIMAL();
+}

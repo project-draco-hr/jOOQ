@@ -1,0 +1,6 @@
+{
+  setID(from.getID());
+  setPARENT_ID(from.getPARENT_ID());
+  setIS_DIRECTORY(from.getIS_DIRECTORY());
+  setname(from.getname());
+}

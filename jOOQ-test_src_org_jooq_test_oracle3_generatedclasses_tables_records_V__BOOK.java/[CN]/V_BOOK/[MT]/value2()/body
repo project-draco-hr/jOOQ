@@ -1,0 +1,3 @@
+{
+  return getAUTHOR_ID();
+}
