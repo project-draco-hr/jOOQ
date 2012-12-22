@@ -41,11 +41,6 @@
     out.tab(1).println("public void %s(%s value) {",setter,type);
     out.tab(2).println("setValue(%s, value);",id);
     out.tab(1).println("}");
-    if (generateRelations() && generateNavigationMethods()) {
-      for (      ForeignKeyDefinition foreignKey : column.getForeignKeys()) {
-        printFKSetter(out,column,foreignKey);
-      }
-    }
     out.tab(1).javadoc("Getter for <code>%s</code>. %s",name,comment);
     printColumnJPAAnnotation(out,column);
     out.tab(1).overrideIf(generateInterfaces());
