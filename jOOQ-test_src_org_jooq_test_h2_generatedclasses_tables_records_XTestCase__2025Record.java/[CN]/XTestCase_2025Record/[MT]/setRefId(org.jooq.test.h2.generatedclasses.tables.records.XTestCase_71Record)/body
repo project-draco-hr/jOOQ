@@ -1,0 +1,8 @@
+{
+  if (value == null) {
+    setValue(org.jooq.test.h2.generatedclasses.tables.XTestCase_2025.REF_ID,null);
+  }
+ else {
+    setValue(org.jooq.test.h2.generatedclasses.tables.XTestCase_2025.REF_ID,value.getValue(org.jooq.test.h2.generatedclasses.tables.XTestCase_71.ID));
+  }
+}

@@ -1,0 +1,3 @@
+{
+  super("X_TEST_CASE_2025",org.jooq.test.oracle.generatedclasses.test.Test.TEST);
+}
