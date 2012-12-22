@@ -1,3 +1,3 @@
 {
-  return filterOne(fetchLazy(rs).fetch());
+  return Utils.filterOne(fetchLazy(rs).fetch());
 }

@@ -1,0 +1,4 @@
+Collection<? extends R2> records
+Table<R1> table
+TableField<R1,?>[] fields1
+TableField<R2,?>[] fields2

@@ -1,0 +1,2 @@
+Collection<? extends R> records
+TableField<R,?>[] fields

@@ -1,0 +1,3 @@
+{
+  return key.fetchParent((R)this);
+}

@@ -1,0 +1,8 @@
+{
+  if (records == null || records.size() == 0) {
+    return new ResultImpl<R>(new DefaultConfiguration(),new FieldList(getFields()));
+  }
+ else {
+    return fetch(records,getTable(),getFieldsArray(),key.getFieldsArray());
+  }
+}

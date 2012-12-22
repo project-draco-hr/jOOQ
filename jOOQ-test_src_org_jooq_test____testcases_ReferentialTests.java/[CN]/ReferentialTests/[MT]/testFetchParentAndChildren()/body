@@ -1,0 +1,22 @@
+{
+  Result<A> authors=create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).fetch();
+  Result<B> books=create().selectFrom(TBook()).orderBy(TBook_ID()).fetch();
+  A a1=authors.get(0);
+  A a2=authors.get(1);
+  B b1=books.get(0);
+  B b2=books.get(1);
+  B b3=books.get(2);
+  B b4=books.get(3);
+  assertEquals(a1,b1.fetchParent(FK_T_BOOK_AUTHOR_ID()));
+  assertEquals(a1,FK_T_BOOK_AUTHOR_ID().fetchParent(b1));
+  assertSame(asList(a1),FK_T_BOOK_AUTHOR_ID().fetchParents(b1,b2));
+  assertSame(asList(a1,a2),FK_T_BOOK_AUTHOR_ID().fetchParents(b1,b3));
+  assertSame(asList(a1,a2),FK_T_BOOK_AUTHOR_ID().fetchParents(b1,b2,b3,b4));
+  assertSame(asList(b1,b2),a1.fetchChildren(FK_T_BOOK_AUTHOR_ID()));
+  assertSame(asList(b1,b2),FK_T_BOOK_AUTHOR_ID().fetchChildren(a1));
+  assertSame(asList(b3,b4),a2.fetchChildren(FK_T_BOOK_AUTHOR_ID()));
+  assertSame(asList(b3,b4),FK_T_BOOK_AUTHOR_ID().fetchChildren(a2));
+  assertSame(asList(b1,b2,b3,b4),FK_T_BOOK_AUTHOR_ID().fetchChildren(a1,a2));
+  assertNull(b1.fetchParent(FK_T_BOOK_CO_AUTHOR_ID()));
+  assertNull(a1.fetchChild(FK_T_BOOK_CO_AUTHOR_ID()));
+}
