@@ -48,12 +48,6 @@
     out.tab(2).println("return getValue(%s);",id);
     out.tab(1).println("}");
   }
-  if (generateRelations() && generateNavigationMethods()) {
-    out.tab(1).header("Foreign key navigation methods");
-    for (    ColumnDefinition column : table.getColumns()) {
-      printNavigateMethods(out,column);
-    }
-  }
   if (generateRelations() && key != null) {
     int keyDegree=key.getKeyColumns().size();
     if (keyDegree <= Constants.MAX_ROW_DEGREE) {

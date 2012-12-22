@@ -24,7 +24,7 @@
     for (    Sequence<?> sequence : schema.getSequences()) {
       assertEquals(sequence,schema.getSequence(sequence.getName()));
     }
-    int tables=17;
+    int tables=18;
     if (supportsRecursiveQueries()) {
       tables++;
     }

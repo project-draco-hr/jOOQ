@@ -1,4 +1,3 @@
 {
   super(file);
-  this.alreadyPrinted=new HashSet<Object>();
 }
