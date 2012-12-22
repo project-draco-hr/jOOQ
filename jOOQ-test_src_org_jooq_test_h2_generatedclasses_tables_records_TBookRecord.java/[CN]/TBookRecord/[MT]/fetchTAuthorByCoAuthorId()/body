@@ -1,3 +1,0 @@
-{
-  return create().selectFrom(org.jooq.test.h2.generatedclasses.tables.TAuthor.T_AUTHOR).where(org.jooq.test.h2.generatedclasses.tables.TAuthor.ID.equal(getValue(org.jooq.test.h2.generatedclasses.tables.TBook.CO_AUTHOR_ID))).fetchOne();
-}

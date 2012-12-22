@@ -1,3 +1,0 @@
-{
-  return create().selectFrom(org.jooq.test.oracle.generatedclasses.test.tables.XTestCase_2025.X_TEST_CASE_2025).where(org.jooq.test.oracle.generatedclasses.test.tables.XTestCase_2025.X_TEST_CASE_2025.REF_ID.equal(getValue(org.jooq.test.oracle.generatedclasses.test.tables.XUnused.X_UNUSED.ID))).and(org.jooq.test.oracle.generatedclasses.test.tables.XTestCase_2025.X_TEST_CASE_2025.REF_NAME.equal(getValue(org.jooq.test.oracle.generatedclasses.test.tables.XUnused.X_UNUSED.NAME))).fetch();
-}
