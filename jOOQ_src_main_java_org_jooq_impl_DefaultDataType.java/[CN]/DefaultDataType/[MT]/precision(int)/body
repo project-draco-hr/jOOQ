@@ -1,11 +1,3 @@
 {
-  if (precision == p) {
-    return this;
-  }
- else   if (hasPrecision()) {
-    return new DefaultDataType<T>(dialect,sqlDataType,type,typeName,castTypeName,p,scale,length);
-  }
- else {
-    return this;
-  }
+  return precision(p,scale);
 }

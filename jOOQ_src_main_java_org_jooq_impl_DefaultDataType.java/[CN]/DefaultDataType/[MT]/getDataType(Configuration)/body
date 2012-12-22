@@ -1,6 +1,6 @@
 {
   if (getDialect() == null) {
-    DataType<?> dataType=TYPES_BY_SQL_DATATYPE[configuration.getDialect().ordinal()].get(length(0).precision(0).scale(0));
+    DataType<?> dataType=TYPES_BY_SQL_DATATYPE[configuration.getDialect().ordinal()].get(length(0).precision(0,0));
     if (dataType != null) {
       return (DataType<T>)dataType;
     }
