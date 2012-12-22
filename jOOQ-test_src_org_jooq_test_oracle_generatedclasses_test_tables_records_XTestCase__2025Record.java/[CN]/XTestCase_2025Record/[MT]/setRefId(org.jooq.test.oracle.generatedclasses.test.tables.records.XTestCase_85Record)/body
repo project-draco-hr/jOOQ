@@ -1,8 +1,0 @@
-{
-  if (value == null) {
-    setValue(org.jooq.test.oracle.generatedclasses.test.tables.XTestCase_2025.X_TEST_CASE_2025.REF_ID,null);
-  }
- else {
-    setValue(org.jooq.test.oracle.generatedclasses.test.tables.XTestCase_2025.X_TEST_CASE_2025.REF_ID,value.getValue(org.jooq.test.oracle.generatedclasses.test.tables.XTestCase_85.X_TEST_CASE_85.ID));
-  }
-}
