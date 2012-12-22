@@ -9,6 +9,7 @@
     return new ArrayConstant((ArrayRecord)value);
   }
  else {
-    return new Val<T>(type.convert(value),type);
+    T converted=type.convert(value);
+    return new Val<T>(converted,mostSpecific(converted,type));
   }
 }
