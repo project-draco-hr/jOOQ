@@ -1,13 +1,12 @@
 {
   if (!foreignKeysByColumn.containsKey(column)) {
-    ForeignKeyDefinition key=null;
+    List<ForeignKeyDefinition> list=new ArrayList<ForeignKeyDefinition>();
     for (    ForeignKeyDefinition foreignKey : foreignKeys.values()) {
       if (foreignKey.getKeyColumns().contains(column)) {
-        key=foreignKey;
-        break;
+        list.add(foreignKey);
       }
     }
-    foreignKeysByColumn.put(column,key);
+    foreignKeysByColumn.put(column,list);
   }
   return foreignKeysByColumn.get(column);
 }

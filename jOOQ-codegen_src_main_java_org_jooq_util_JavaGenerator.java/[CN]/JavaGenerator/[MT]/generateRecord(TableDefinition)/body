@@ -42,8 +42,7 @@
     out.tab(2).println("setValue(%s, value);",id);
     out.tab(1).println("}");
     if (generateRelations() && generateNavigationMethods()) {
-      ForeignKeyDefinition foreignKey=column.getForeignKey();
-      if (foreignKey != null) {
+      for (      ForeignKeyDefinition foreignKey : column.getForeignKeys()) {
         printFKSetter(out,column,foreignKey);
       }
     }

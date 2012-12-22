@@ -8,8 +8,9 @@
       }
     }
   }
-  ForeignKeyDefinition foreignKey=column.getForeignKey();
-  if (foreignKey != null && out.printOnlyOnce(foreignKey)) {
-    printFetchFK(out,column,foreignKey);
+  for (  ForeignKeyDefinition foreignKey : column.getForeignKeys()) {
+    if (out.printOnlyOnce(foreignKey)) {
+      printFetchFK(out,column,foreignKey);
+    }
   }
 }

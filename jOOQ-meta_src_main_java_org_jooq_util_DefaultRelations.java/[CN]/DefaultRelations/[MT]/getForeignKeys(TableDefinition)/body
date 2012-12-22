@@ -1,10 +1,7 @@
 {
   Set<ForeignKeyDefinition> result=new LinkedHashSet<ForeignKeyDefinition>();
   for (  ColumnDefinition column : table.getColumns()) {
-    ForeignKeyDefinition foreignKey=getForeignKey(column);
-    if (foreignKey != null) {
-      result.add(foreignKey);
-    }
+    result.addAll(getForeignKeys(column));
   }
   return new ArrayList<ForeignKeyDefinition>(result);
 }
