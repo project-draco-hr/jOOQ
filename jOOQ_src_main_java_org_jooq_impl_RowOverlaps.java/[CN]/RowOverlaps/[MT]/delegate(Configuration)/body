@@ -1,0 +1,24 @@
+{
+  Field<T1> left1=left.field1();
+  Field<T2> left2=left.field2();
+  Field<T1> right1=right.field1();
+  Field<T2> right2=right.field2();
+  DataType<?> type0=left1.getDataType();
+  DataType<?> type1=left2.getDataType();
+  boolean standardOverlaps=type0.isDateTime() && type1.isTemporal();
+  boolean intervalOverlaps=type0.isDateTime() && (type1.isInterval() || type1.isNumeric());
+  if (!standardOverlaps || asList(ASE,CUBRID,DB2,DERBY,FIREBIRD,H2,INGRES,MYSQL,SQLSERVER,SQLITE,SYBASE).contains(configuration.getDialect())) {
+    if (intervalOverlaps) {
+      return (QueryPartInternal)right1.le(left1.add(left2)).and(left1.le(right1.add(right2)));
+    }
+ else {
+      return (QueryPartInternal)right1.le(left2.cast(right1)).and(left1.le(right2.cast(left1)));
+    }
+  }
+ else   if (intervalOverlaps && asList(HSQLDB).contains(configuration.getDialect())) {
+    return (QueryPartInternal)right1.le(left1.add(left2)).and(left1.le(right1.add(right2)));
+  }
+ else {
+    return new Native();
+  }
+}

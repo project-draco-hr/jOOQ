@@ -1,3 +1,3 @@
 {
-  return new Overlaps(row);
+  return new RowOverlaps(this,row);
 }
