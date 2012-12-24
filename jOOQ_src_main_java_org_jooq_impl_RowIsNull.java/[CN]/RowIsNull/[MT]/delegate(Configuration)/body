@@ -1,0 +1,13 @@
+{
+  if (asList(CUBRID,DB2,DERBY,H2,HSQLDB,MYSQL,ORACLE,SQLITE,SQLSERVER).contains(configuration.getDialect())) {
+    List<Condition> conditions=new ArrayList<Condition>();
+    for (    Field<?> field : row.getFields()) {
+      conditions.add(isNull ? field.isNull() : field.isNotNull());
+    }
+    Condition result=new CombinedCondition(Operator.AND,conditions);
+    return (QueryPartInternal)result;
+  }
+ else {
+    return new Native();
+  }
+}
