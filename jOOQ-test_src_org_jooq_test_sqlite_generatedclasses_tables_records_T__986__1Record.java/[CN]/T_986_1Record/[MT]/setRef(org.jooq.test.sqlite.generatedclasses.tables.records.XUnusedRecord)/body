@@ -1,8 +1,0 @@
-{
-  if (value == null) {
-    setValue(org.jooq.test.sqlite.generatedclasses.tables.T_986_1.REF,null);
-  }
- else {
-    setValue(org.jooq.test.sqlite.generatedclasses.tables.T_986_1.REF,value.getValue(org.jooq.test.sqlite.generatedclasses.tables.XUnused.ID));
-  }
-}

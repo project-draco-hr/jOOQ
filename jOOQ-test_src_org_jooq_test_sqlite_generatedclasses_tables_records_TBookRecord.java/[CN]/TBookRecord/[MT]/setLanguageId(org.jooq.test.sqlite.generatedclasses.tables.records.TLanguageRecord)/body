@@ -1,8 +1,0 @@
-{
-  if (value == null) {
-    setValue(org.jooq.test.sqlite.generatedclasses.tables.TBook.LANGUAGE_ID,null);
-  }
- else {
-    setValue(org.jooq.test.sqlite.generatedclasses.tables.TBook.LANGUAGE_ID,value.getValue(org.jooq.test.sqlite.generatedclasses.tables.TLanguage.ID));
-  }
-}
