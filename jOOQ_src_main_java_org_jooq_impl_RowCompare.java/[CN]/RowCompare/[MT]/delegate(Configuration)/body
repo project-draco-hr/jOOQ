@@ -1,8 +1,10 @@
 {
   if (asList(ASE,DERBY,FIREBIRD,INGRES,SQLSERVER,SQLITE,SYBASE).contains(configuration.getDialect())) {
     List<Condition> conditions=new ArrayList<Condition>();
-    for (int i=0; i < fields.length; i++) {
-      conditions.add(fields[i].equal((Field)other.fields[i]));
+    Field<?>[] leftFields=left.getFields();
+    Field<?>[] rightFields=right.getFields();
+    for (int i=0; i < leftFields.length; i++) {
+      conditions.add(leftFields[i].equal((Field)rightFields[i]));
     }
     Condition result=new CombinedCondition(Operator.AND,conditions);
     if (comparator == NOT_EQUALS) {
