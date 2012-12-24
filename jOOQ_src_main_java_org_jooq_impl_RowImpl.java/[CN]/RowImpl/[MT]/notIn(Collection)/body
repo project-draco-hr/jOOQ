@@ -1,4 +1,4 @@
 {
   QueryPartList<Row> list=new QueryPartList<Row>(rows);
-  return new RowIn(this,list,SubqueryOperator.NOT_IN);
+  return new RowInCondition(this,list,SubqueryOperator.NOT_IN);
 }

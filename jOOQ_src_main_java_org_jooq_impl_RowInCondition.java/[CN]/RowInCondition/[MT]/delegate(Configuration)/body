@@ -2,7 +2,7 @@
   if (asList(ASE,DB2,DERBY,FIREBIRD,INGRES,SQLSERVER,SQLITE,SYBASE).contains(configuration.getDialect())) {
     List<Condition> conditions=new ArrayList<Condition>();
     for (    Row row : right) {
-      conditions.add(new RowCompare(left,row,EQUALS));
+      conditions.add(new RowCondition(left,row,EQUALS));
     }
     Condition result=new CombinedCondition(Operator.OR,conditions);
     if (operator == NOT_IN) {
