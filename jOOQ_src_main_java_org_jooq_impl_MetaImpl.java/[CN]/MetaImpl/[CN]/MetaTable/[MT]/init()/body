@@ -1,6 +1,7 @@
 {
   try {
-    Result<Record> columns=executor.fetch(meta().getColumns(null,getSchema().getName(),getName(),"%"));
+    String searchName=executor.getDialect() == ORACLE ? getName().replace("/","//") : getName();
+    Result<Record> columns=executor.fetch(meta().getColumns(null,getSchema().getName(),searchName,"%"));
     for (    Record column : columns) {
       String columnName=column.getValue("COLUMN_NAME",String.class);
       String typeName=column.getValue("TYPE_NAME",String.class);
