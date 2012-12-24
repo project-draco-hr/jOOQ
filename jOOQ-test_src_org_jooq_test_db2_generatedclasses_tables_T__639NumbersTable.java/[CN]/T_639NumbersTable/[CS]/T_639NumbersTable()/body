@@ -1,3 +1,3 @@
 {
-  super("T_639_NUMBERS_TABLE",org.jooq.test.db2.generatedclasses.Test.TEST);
+  super("T_639_NUMBERS_TABLE",org.jooq.test.db2.generatedclasses.Lukas.LUKAS);
 }

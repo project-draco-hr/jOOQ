@@ -1,5 +1,5 @@
 {
-  super("P_UNUSED",org.jooq.test.db2.generatedclasses.Test.TEST);
+  super("P_UNUSED",org.jooq.test.db2.generatedclasses.Lukas.LUKAS);
   addInParameter(IN1);
   addOutParameter(OUT1);
   addInOutParameter(OUT2);
