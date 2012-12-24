@@ -1,3 +1,0 @@
-{
-  context.sql(RowImpl.this).sql(" ").keyword(operator.toSQL()).sql(" (").sql(other).sql(")");
-}
