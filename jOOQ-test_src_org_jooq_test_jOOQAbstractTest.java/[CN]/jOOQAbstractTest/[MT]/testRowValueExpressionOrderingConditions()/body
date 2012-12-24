@@ -1,0 +1,3 @@
+{
+  new RowValueExpressionTests(this).testRowValueExpressionOrderingConditions();
+}
