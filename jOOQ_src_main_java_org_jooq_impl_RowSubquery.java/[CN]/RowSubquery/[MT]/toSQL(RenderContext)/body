@@ -1,0 +1,5 @@
+{
+  boolean extraParentheses=asList(ORACLE).contains(context.getDialect());
+  boolean subquery=context.subquery();
+  context.sql(left).sql(" ").keyword(operator.toSQL()).sql(" (").sql(extraParentheses ? "(" : "").subquery(true).sql(right).subquery(subquery).sql(extraParentheses ? ")" : "").sql(")");
+}

@@ -1,3 +1,3 @@
 {
-  return new Subquery(select,SubqueryOperator.IN);
+  return new RowSubquery(this,select,SubqueryOperator.IN);
 }

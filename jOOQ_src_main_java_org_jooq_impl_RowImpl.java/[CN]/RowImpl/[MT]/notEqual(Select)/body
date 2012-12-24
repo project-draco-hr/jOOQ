@@ -1,3 +1,3 @@
 {
-  return new Subquery(select,SubqueryOperator.NOT_EQUALS);
+  return new RowSubquery(this,select,SubqueryOperator.NOT_EQUALS);
 }
