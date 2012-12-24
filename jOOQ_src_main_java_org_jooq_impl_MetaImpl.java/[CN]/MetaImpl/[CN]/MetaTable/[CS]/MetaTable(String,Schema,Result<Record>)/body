@@ -1,0 +1,6 @@
+{
+  super(name,schema);
+  if (columns != null) {
+    init(columns);
+  }
+}
