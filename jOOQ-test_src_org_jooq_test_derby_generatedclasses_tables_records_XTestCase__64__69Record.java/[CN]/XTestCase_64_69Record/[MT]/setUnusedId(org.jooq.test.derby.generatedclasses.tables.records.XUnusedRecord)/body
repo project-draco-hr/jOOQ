@@ -1,8 +1,0 @@
-{
-  if (value == null) {
-    setValue(org.jooq.test.derby.generatedclasses.tables.XTestCase_64_69.UNUSED_ID,null);
-  }
- else {
-    setValue(org.jooq.test.derby.generatedclasses.tables.XTestCase_64_69.UNUSED_ID,value.getValue(org.jooq.test.derby.generatedclasses.tables.XUnused.ID));
-  }
-}
