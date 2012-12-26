@@ -1,0 +1,4 @@
+{
+  this.maxValue=r;
+  return this;
+}

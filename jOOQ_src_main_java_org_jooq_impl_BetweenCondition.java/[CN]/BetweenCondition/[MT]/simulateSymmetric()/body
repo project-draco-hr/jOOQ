@@ -1,8 +1,0 @@
-{
-  if (not) {
-    return (QueryPartInternal)field.notBetween(minValue,maxValue).and(field.notBetween(maxValue,minValue));
-  }
- else {
-    return (QueryPartInternal)field.between(minValue,maxValue).or(field.between(maxValue,minValue));
-  }
-}

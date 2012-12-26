@@ -1,0 +1,3 @@
+{
+  return notBetween(minValue).and(maxValue);
+}

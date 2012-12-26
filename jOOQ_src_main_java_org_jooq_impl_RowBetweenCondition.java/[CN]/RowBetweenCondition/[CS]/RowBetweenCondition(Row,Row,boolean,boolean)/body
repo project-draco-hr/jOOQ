@@ -1,0 +1,6 @@
+{
+  this.row=row;
+  this.minValue=minValue;
+  this.not=not;
+  this.symmetric=symmetric;
+}

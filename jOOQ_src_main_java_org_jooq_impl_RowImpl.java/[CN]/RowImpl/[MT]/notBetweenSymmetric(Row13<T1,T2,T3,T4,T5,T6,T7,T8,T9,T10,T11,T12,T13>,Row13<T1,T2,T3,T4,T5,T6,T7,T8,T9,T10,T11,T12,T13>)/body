@@ -1,0 +1,3 @@
+{
+  return notBetweenSymmetric(minValue).and(maxValue);
+}

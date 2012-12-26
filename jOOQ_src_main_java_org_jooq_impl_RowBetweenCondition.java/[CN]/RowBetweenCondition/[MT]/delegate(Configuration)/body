@@ -1,0 +1,23 @@
+{
+  RowN r=(RowN)row;
+  RowN min=(RowN)minValue;
+  RowN max=(RowN)maxValue;
+  if (symmetric && asList(ASE,CUBRID,DB2,DERBY,FIREBIRD,H2,MYSQL,ORACLE,SQLSERVER,SQLITE,SYBASE).contains(configuration.getDialect())) {
+    if (not) {
+      return (QueryPartInternal)r.notBetween(min,max).and(r.notBetween(max,min));
+    }
+ else {
+      return (QueryPartInternal)r.between(min,max).or(r.between(max,min));
+    }
+  }
+ else   if (row.getDegree() > 1 && asList(DERBY,MYSQL,ORACLE,SQLSERVER,SQLITE).contains(configuration.getDialect())) {
+    Condition result=r.ge(min).and(r.le(max));
+    if (not) {
+      result=result.not();
+    }
+    return (QueryPartInternal)result;
+  }
+ else {
+    return new Native();
+  }
+}
