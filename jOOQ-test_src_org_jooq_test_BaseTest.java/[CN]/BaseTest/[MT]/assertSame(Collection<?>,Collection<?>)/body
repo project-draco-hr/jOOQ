@@ -1,5 +1,5 @@
 {
-  if (!new HashSet<E>(expected).equals(new HashSet<E>(actual))) {
+  if (!new HashSet<Object>(expected).equals(new HashSet<Object>(actual))) {
     Assert.fail("Collections aren't the same : " + expected + " and "+ actual);
   }
 }
