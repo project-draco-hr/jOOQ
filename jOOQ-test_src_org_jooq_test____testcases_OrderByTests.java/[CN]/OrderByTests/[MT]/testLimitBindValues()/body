@@ -1,0 +1,5 @@
+{
+  Select<?> select=create().select().limit(1).offset(2);
+  assertSame(asList(1,2),select.getBindValues());
+  assertSame(asList(val(1),val(2)),select.getParams().values());
+}
