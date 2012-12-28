@@ -2,8 +2,8 @@
   UpdateQuery<Table1Record> q=create.updateQuery(TABLE1);
   q.addValue(FIELD_ID1,10);
   q.addValue(FIELD_NAME1,"ABC");
-  assertEquals("update \"TABLE1\" set \"ID1\" = 10, \"NAME1\" = 'ABC'",r_refI().render(q));
-  assertEquals("update \"TABLE1\" set \"ID1\" = ?, \"NAME1\" = ?",r_ref().render(q));
+  assertEquals("update \"TABLE1\" set \"TABLE1\".\"ID1\" = 10, \"TABLE1\".\"NAME1\" = 'ABC'",r_refI().render(q));
+  assertEquals("update \"TABLE1\" set \"TABLE1\".\"ID1\" = ?, \"TABLE1\".\"NAME1\" = ?",r_ref().render(q));
   assertEquals(q,create.update(TABLE1).set(FIELD_ID1,10).set(FIELD_NAME1,"ABC"));
   context.checking(new Expectations(){
 {
