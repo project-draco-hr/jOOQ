@@ -1,0 +1,4 @@
+{
+  setId(from.getId());
+  setUnusedId(from.getUnusedId());
+}

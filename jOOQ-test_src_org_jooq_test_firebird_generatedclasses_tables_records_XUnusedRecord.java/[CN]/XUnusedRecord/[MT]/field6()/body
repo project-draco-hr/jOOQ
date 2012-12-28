@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.firebird.generatedclasses.tables.XUnused.X_UNUSED.FIELDS;
+}

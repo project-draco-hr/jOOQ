@@ -1,0 +1,5 @@
+{
+  setBookStoreName(from.getBookStoreName());
+  setBookId(from.getBookId());
+  setStock(from.getStock());
+}

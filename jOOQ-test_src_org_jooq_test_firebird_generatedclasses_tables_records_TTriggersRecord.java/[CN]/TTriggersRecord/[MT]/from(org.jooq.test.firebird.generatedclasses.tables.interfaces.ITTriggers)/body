@@ -1,0 +1,5 @@
+{
+  setIdGenerated(from.getIdGenerated());
+  setId(from.getId());
+  setCounter(from.getCounter());
+}
