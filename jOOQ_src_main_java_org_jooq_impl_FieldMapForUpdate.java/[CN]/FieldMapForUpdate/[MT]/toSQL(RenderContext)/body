@@ -1,13 +1,14 @@
 {
   if (size() > 0) {
     String separator="";
-    boolean qualify=context.qualify();
+    boolean restoreQualify=context.qualify();
+    boolean supportsQualify=asList(POSTGRES,SQLITE).contains(context.getDialect()) ? false : restoreQualify;
     for (    Entry<Field<?>,Field<?>> entry : entrySet()) {
       context.sql(separator);
       if (!"".equals(separator)) {
         context.formatNewLine();
       }
-      context.qualify(false).sql(entry.getKey()).qualify(qualify).sql(" = ").sql(entry.getValue());
+      context.qualify(supportsQualify).sql(entry.getKey()).qualify(restoreQualify).sql(" = ").sql(entry.getValue());
       separator=", ";
     }
   }
