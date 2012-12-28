@@ -60,5 +60,11 @@ context.bind(getUpperRownum());
 context.bind(getLowerRownum());
 break;
 }
+default :
+{
+context.bind(numberOfRows);
+context.bind(offsetOrZero);
+break;
+}
 }
 }
