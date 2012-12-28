@@ -2,6 +2,7 @@
 switch (configuration.getDialect()) {
 case CUBRID:
 case DB2:
+case FIREBIRD:
 case ORACLE:
 case SQLSERVER:
     return Factory.decode().when(condition,inline(true)).otherwise(inline(false));
@@ -12,7 +13,6 @@ case MYSQL:
 case POSTGRES:
 case SQLITE:
 case ASE:
-case FIREBIRD:
 case INGRES:
 case SYBASE:
   return condition;
