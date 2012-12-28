@@ -10,7 +10,7 @@
       return (QueryPartInternal)r.between(min,max).or(r.between(max,min));
     }
   }
- else   if (row.getDegree() > 1 && asList(DERBY,MYSQL,ORACLE,SQLSERVER,SQLITE).contains(configuration.getDialect())) {
+ else   if (row.getDegree() > 1 && asList(DERBY,FIREBIRD,ORACLE).contains(configuration.getDialect())) {
     Condition result=r.ge(min).and(r.le(max));
     if (not) {
       result=result.not();
