@@ -1,5 +1,5 @@
 {
-  SelectQuery q=create.selectQuery();
+  SelectQuery<?> q=create.selectQuery();
   q.addFrom(TABLE1);
   q.addFrom(TABLE2);
   q.addFrom(TABLE3);

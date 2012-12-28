@@ -1,4 +1,0 @@
-{
-  getQuery().addOrderBy(fields);
-  return this;
-}

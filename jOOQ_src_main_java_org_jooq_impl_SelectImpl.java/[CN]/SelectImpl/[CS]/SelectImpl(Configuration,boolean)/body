@@ -1,3 +1,3 @@
 {
-  this((Select<R>)new SelectQueryImpl(configuration,distinct));
+  this(new SelectQueryImpl<R>(configuration,distinct));
 }

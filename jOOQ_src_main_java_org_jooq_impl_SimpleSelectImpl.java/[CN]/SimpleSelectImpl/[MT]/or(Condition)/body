@@ -1,4 +1,0 @@
-{
-  getQuery().addConditions(Operator.OR,condition);
-  return this;
-}

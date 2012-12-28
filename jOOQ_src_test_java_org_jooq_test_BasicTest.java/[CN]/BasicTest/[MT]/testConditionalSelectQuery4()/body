@@ -1,5 +1,5 @@
 {
-  SelectQuery q=create.selectQuery();
+  SelectQuery<?> q=create.selectQuery();
   Condition c1=FIELD_ID1.equal(10);
   Condition c2=FIELD_ID1.equal(20);
   q.addConditions(c1);

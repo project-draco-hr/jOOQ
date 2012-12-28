@@ -1,3 +1,0 @@
-{
-  this(new SimpleSelectQueryImpl<R>(configuration,table,distinct));
-}

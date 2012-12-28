@@ -1,5 +1,5 @@
 {
-  SelectQuery q=create.selectQuery();
+  SelectQuery<?> q=create.selectQuery();
   Condition c1=condition("\"TABLE1\".\"ID1\" = ?","10");
   Condition c2=condition("\"TABLE2\".\"ID2\" = 20 or \"TABLE2\".\"ID2\" = ?",30);
   q.addConditions(c1);

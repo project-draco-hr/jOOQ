@@ -1,3 +1,0 @@
-{
-  return (SimpleSelectQuery<R>)getDelegate();
-}

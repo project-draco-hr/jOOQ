@@ -1,5 +1,5 @@
 {
-  SimpleSelectQuery<R> select=create().selectQuery(getTable());
+  SelectQuery<R> select=create().selectQuery(getTable());
   Utils.addConditions(select,this,keys);
   if (create().getDialect() != SQLDialect.SQLITE) {
     select.setForUpdate(true);

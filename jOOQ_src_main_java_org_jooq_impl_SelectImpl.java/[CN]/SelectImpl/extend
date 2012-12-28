@@ -1,1 +1,1 @@
-AbstractDelegatingSelect<R>
+AbstractDelegatingQuery<Select<R>>

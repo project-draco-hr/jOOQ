@@ -1,5 +1,5 @@
 {
-  SimpleSelectQuery<L> q1=create().selectQuery(VLibrary());
+  SelectQuery<L> q1=create().selectQuery(VLibrary());
   q1.addOrderBy(VLibrary_TITLE());
   q1.addConditions(VLibrary_TITLE().notEqual("1984"));
   Table<A> a=TAuthor().as("a");
@@ -7,7 +7,7 @@
   Field<Integer> a_authorID=a.getField(TAuthor_ID());
   Field<Integer> b_authorID=b.getField(TBook_AUTHOR_ID());
   Field<String> b_title=b.getField(TBook_TITLE());
-  SelectQuery q2=create().selectQuery();
+  SelectQuery<?> q2=create().selectQuery();
   q2.addFrom(a);
   q2.addJoin(b,b_authorID.equal(a_authorID));
   q2.addConditions(b_title.notEqual("1984"));

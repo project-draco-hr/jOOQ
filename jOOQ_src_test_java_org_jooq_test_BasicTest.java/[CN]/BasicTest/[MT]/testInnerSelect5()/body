@@ -1,5 +1,5 @@
 {
-  SelectQuery q=create.selectQuery();
+  SelectQuery<?> q=create.selectQuery();
   q.addFrom(TABLE1);
   q.addConditions(FIELD_ID1.greaterThan(any(select(FIELD_ID2).from(TABLE2))));
   assertEquals("select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" where \"TABLE1\".\"ID1\" > any (select \"TABLE2\".\"ID2\" from \"TABLE2\")",r_refI().render(q));

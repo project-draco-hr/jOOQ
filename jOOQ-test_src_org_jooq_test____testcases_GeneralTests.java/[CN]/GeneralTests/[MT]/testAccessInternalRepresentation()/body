@@ -1,5 +1,5 @@
 {
-  SelectQuery query=create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,2,3)).getQuery();
+  SelectQuery<Record> query=create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,2,3)).getQuery();
   query.addGroupBy(TBook_ID());
   query.addHaving(count().greaterOrEqual(1));
   query.addOrderBy(TBook_ID());

@@ -1,5 +1,5 @@
 {
-  SelectQuery q=create().selectQuery();
+  SelectQuery<?> q=create().selectQuery();
   Field<String> constant=val("abc");
 switch (getDialect()) {
 case DERBY:

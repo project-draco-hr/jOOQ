@@ -24,7 +24,7 @@
         }
       }
  else       if (onDuplicate == ON_DUPLICATE_KEY_IGNORE) {
-        SimpleSelectQuery<R> select=create.selectQuery(table);
+        SelectQuery<R> select=create.selectQuery(table);
         for (int i=0; i < row.length; i++) {
           if (i < fields.length && mainKey[i]) {
             select.addConditions(getCondition(fields[i],row[i]));

@@ -1,5 +1,5 @@
 {
-  SelectQuery q=create().selectQuery();
+  SelectQuery<?> q=create().selectQuery();
   q.addFrom(TAuthor());
   q.addSelect(TAuthor().getFields());
   q.addOrderBy(TAuthor_LAST_NAME());

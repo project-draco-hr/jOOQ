@@ -3,7 +3,7 @@
     log.info("SKIPPING","position function test");
     return;
   }
-  SelectQuery q=create().selectQuery();
+  SelectQuery<?> q=create().selectQuery();
   q.addFrom(VLibrary());
   Field<Integer> position=position(VLibrary_AUTHOR(),"o").as("p");
   q.addSelect(VLibrary_AUTHOR());

@@ -1,5 +1,5 @@
 {
-  SelectQuery select=create().selectQuery();
+  SelectQuery<?> select=create().selectQuery();
   select.addSelect(fields);
   select.addFrom(getTable());
   Utils.addConditions(select,this,getMainKey().getFieldsArray());

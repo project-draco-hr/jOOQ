@@ -1,5 +1,5 @@
 {
-  SimpleSelectQuery<Table1Record> q=create.selectQuery(TABLE1);
+  SelectQuery<Table1Record> q=create.selectQuery(TABLE1);
   q.addOrderBy(FIELD_ID1);
   assertEquals("select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" order by \"TABLE1\".\"ID1\" asc",r_refI().render(q));
   assertEquals("select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" order by \"TABLE1\".\"ID1\" asc",r_ref().render(q));

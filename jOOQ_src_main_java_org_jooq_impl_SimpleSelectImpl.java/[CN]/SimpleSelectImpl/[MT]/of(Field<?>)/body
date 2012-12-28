@@ -1,4 +1,0 @@
-{
-  getQuery().setForUpdateOf(fields);
-  return this;
-}

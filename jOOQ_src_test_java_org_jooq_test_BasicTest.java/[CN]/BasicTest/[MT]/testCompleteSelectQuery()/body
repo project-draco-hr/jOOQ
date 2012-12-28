@@ -1,5 +1,5 @@
 {
-  SelectQuery q=create.selectQuery();
+  SelectQuery<?> q=create.selectQuery();
   q.addFrom(TABLE1);
   q.addJoin(TABLE2,FIELD_ID1.equal(FIELD_ID2));
   q.addSelect(FIELD_ID1,FIELD_ID2);

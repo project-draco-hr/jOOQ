@@ -1,5 +1,5 @@
 {
-  SelectQuery q1=create().selectQuery();
+  SelectQuery<?> q1=create().selectQuery();
   Field<Timestamp> now=currentTimestamp();
   Field<Timestamp> ts=now.as("ts");
   Field<Date> date=currentDate().as("d");
