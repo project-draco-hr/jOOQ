@@ -1,7 +1,3 @@
 {
-  List<Object> result=new ArrayList<Object>();
-  for (  Param<?> param : getParams().values()) {
-    result.add(param.getValue());
-  }
-  return Collections.unmodifiableList(result);
+  return create().extractBindValues(this);
 }
