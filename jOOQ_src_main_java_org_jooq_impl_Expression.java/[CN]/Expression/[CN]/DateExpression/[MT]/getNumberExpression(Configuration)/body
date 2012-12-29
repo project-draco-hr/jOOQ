@@ -24,12 +24,14 @@ case HSQLDB:
   }
 case DERBY:
 {
+  Field<T> result;
   if (operator == ADD) {
-    return field("{fn {timestampadd}({sql_tsi_day}, {0}, {1}) }",getDataType(),rhsAsNumber(),lhs);
+    result=field("{fn {timestampadd}({sql_tsi_day}, {0}, {1}) }",getDataType(),rhsAsNumber(),lhs);
   }
  else {
-    return field("{fn {timestampadd}({sql_tsi_day}, {0}, {1}) }",getDataType(),rhsAsNumber().neg(),lhs);
+    result=field("{fn {timestampadd}({sql_tsi_day}, {0}, {1}) }",getDataType(),rhsAsNumber().neg(),lhs);
   }
+  return castNonTimestamps(configuration,result);
 }
 case CUBRID:
 case MYSQL:

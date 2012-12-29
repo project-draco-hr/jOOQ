@@ -62,12 +62,14 @@ case DB2:
 case DERBY:
 case HSQLDB:
 {
+Field<T> result;
 if (rhs.get(0).getType() == YearToMonth.class) {
-  return field("{fn {timestampadd}({sql_tsi_month}, {0}, {1}) }",getDataType(),val(sign * rhsAsYTM().intValue()),lhs);
+  result=field("{fn {timestampadd}({sql_tsi_month}, {0}, {1}) }",getDataType(),val(sign * rhsAsYTM().intValue()),lhs);
 }
  else {
-  return field("{fn {timestampadd}({sql_tsi_second}, {0}, {1}) }",getDataType(),val(sign * (long)rhsAsDTS().getTotalSeconds()),lhs);
+  result=field("{fn {timestampadd}({sql_tsi_second}, {0}, {1}) }",getDataType(),val(sign * (long)rhsAsDTS().getTotalSeconds()),lhs);
 }
+return castNonTimestamps(configuration,result);
 }
 case FIREBIRD:
 {
