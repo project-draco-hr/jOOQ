@@ -13,7 +13,7 @@
     }
     return (QueryPartInternal)result;
   }
- else   if (asList(GREATER,GREATER_OR_EQUAL,LESS,LESS_OR_EQUAL).contains(comparator) && asList(DERBY,CUBRID,FIREBIRD,ORACLE,SQLSERVER,SQLITE).contains(dialect)) {
+ else   if (asList(GREATER,GREATER_OR_EQUAL,LESS,LESS_OR_EQUAL).contains(comparator) && asList(DERBY,CUBRID,FIREBIRD,ORACLE,SQLSERVER,SQLITE,SYBASE).contains(dialect)) {
     Comparator order=(comparator == GREATER) ? GREATER : (comparator == GREATER_OR_EQUAL) ? GREATER : (comparator == LESS) ? LESS : (comparator == LESS_OR_EQUAL) ? LESS : null;
     boolean equal=(comparator == GREATER_OR_EQUAL) || (comparator == LESS_OR_EQUAL);
     List<Condition> outer=new ArrayList<Condition>();
