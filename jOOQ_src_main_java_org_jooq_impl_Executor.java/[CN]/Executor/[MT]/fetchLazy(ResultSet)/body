@@ -1,14 +1,9 @@
 {
-  ExecuteContext ctx=new DefaultExecuteContext(this);
-  ExecuteListener listener=new ExecuteListeners(ctx);
   try {
     FieldProvider fields=new MetaDataFieldProvider(this,rs.getMetaData());
-    ctx.resultSet(rs);
-    return new CursorImpl<Record>(ctx,listener,fields,false);
+    return fetchLazy(rs,fields);
   }
  catch (  SQLException e) {
-    ctx.sqlException(e);
-    listener.exception(ctx);
-    throw ctx.exception();
+    throw new DataAccessException("Error while accessing ResultSet meta data",e);
   }
 }
