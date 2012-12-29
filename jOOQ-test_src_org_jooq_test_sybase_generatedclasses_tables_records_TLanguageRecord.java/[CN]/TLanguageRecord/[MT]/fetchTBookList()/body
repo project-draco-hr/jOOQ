@@ -1,3 +1,0 @@
-{
-  return create().selectFrom(org.jooq.test.sybase.generatedclasses.tables.TBook.T_BOOK).where(org.jooq.test.sybase.generatedclasses.tables.TBook.T_BOOK.LANGUAGE_ID.equal(getValue(org.jooq.test.sybase.generatedclasses.tables.TLanguage.T_LANGUAGE.ID))).fetch();
-}

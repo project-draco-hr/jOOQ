@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.sybase.generatedclasses.tables.TBook.T_BOOK.ID;
+}
