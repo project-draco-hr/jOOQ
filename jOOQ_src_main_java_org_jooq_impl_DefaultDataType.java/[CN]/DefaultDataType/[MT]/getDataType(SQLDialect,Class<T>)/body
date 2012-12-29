@@ -1,4 +1,5 @@
 {
+  type=(Class<T>)wrapper(type);
   if (byte[].class != type && type.isArray()) {
     return (DataType<T>)getDataType(dialect,type.getComponentType()).getArrayDataType();
   }

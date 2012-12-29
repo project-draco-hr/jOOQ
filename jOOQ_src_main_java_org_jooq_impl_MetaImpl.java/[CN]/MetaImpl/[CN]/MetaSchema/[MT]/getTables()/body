@@ -3,7 +3,7 @@
     return tableCache;
   }
   try {
-    columnCache=executor.fetch(meta().getColumns(null,getName(),"%","%")).intoGroups(fieldByName(String.class,"TABLE_NAME"));
+    columnCache=executor.fetch(meta().getColumns(null,getName(),"%","%"),String.class,String.class,String.class,String.class,int.class,String.class,int.class,String.class,int.class).intoGroups(fieldByName(String.class,"TABLE_NAME"));
     List<Table<?>> result=new ArrayList<Table<?>>();
     Result<Record> tables=executor.fetch(meta().getTables(null,getName(),"%",null));
     for (    Record table : tables) {
