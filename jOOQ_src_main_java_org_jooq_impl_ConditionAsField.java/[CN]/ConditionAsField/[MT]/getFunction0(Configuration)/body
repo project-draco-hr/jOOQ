@@ -5,6 +5,7 @@ case DB2:
 case FIREBIRD:
 case ORACLE:
 case SQLSERVER:
+case SYBASE:
     return Factory.decode().when(condition,inline(true)).otherwise(inline(false));
 case DERBY:
 case H2:
@@ -14,7 +15,6 @@ case POSTGRES:
 case SQLITE:
 case ASE:
 case INGRES:
-case SYBASE:
   return condition;
 }
 return condition;
