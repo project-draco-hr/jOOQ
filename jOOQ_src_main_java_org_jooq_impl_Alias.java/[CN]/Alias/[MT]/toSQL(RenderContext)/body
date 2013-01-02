@@ -1,13 +1,18 @@
 {
   if (context.declareFields() || context.declareTables()) {
-    if (wrapInParentheses) {
-      context.sql("(");
+    if (asList(CUBRID,FIREBIRD).contains(context.getDialect()) && fieldAliases != null && wrapped instanceof TableImpl) {
+      context.keyword("(select * from ").sql(wrapped).sql(")");
     }
-    context.sql(wrapped);
-    if (wrapInParentheses) {
-      context.sql(")");
+ else {
+      if (wrapInParentheses) {
+        context.sql("(");
+      }
+      context.sql(wrapped);
+      if (wrapInParentheses) {
+        context.sql(")");
+      }
     }
-    if (Arrays.asList(DERBY,HSQLDB,MYSQL,POSTGRES).contains(context.getDialect())) {
+    if (asList(DERBY,HSQLDB,MYSQL,POSTGRES).contains(context.getDialect())) {
       context.keyword(" as");
     }
     context.sql(" ");
