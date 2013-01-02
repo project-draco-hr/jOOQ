@@ -1,0 +1,11 @@
+{
+  Record r1=create().select().from(table(selectOne()).crossJoin(table(selectZero())).as("t","a","b")).fetchOne();
+  assertEquals("a",r1.getField(0).getName());
+  assertEquals("b",r1.getField(1).getName());
+  assertEquals("a",r1.getField("a").getName());
+  assertEquals("b",r1.getField("b").getName());
+  assertEquals(1,r1.getValue(0));
+  assertEquals(0,r1.getValue(1));
+  assertEquals(1,r1.getValue("a"));
+  assertEquals(0,r1.getValue("b"));
+}
