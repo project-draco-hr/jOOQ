@@ -1,11 +1,11 @@
 {
   StringBuilder result=new StringBuilder();
   String separator="";
-  result.append(getName());
+  result.append(create().render(getUDT()));
   result.append("(");
-  for (  T t : array) {
+  for (  Object o : intoArray()) {
     result.append(separator);
-    result.append(t);
+    result.append(o);
     separator=", ";
   }
   result.append(")");
