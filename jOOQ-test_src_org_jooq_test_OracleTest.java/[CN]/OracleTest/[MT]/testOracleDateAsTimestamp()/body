@@ -1,5 +1,6 @@
 {
   Timestamp now=new Timestamp(System.currentTimeMillis() / 1000 * 1000);
+  Timestamp later=new Timestamp(System.currentTimeMillis() / 1000 * 1000 + 1000);
   DateAsTimestampT_976Record record=create().newRecord(DATE_AS_TIMESTAMP_T_976);
   record.setId(1);
   assertEquals(1,record.store());
@@ -20,6 +21,13 @@
   record.setD(now);
   record.setO(o);
   record.setT(t);
+  record.store();
+  assertEquals(record,create().fetchOne(DATE_AS_TIMESTAMP_T_976,DATE_AS_TIMESTAMP_T_976.DATE_AS_TIMESTAMP_ID.equal(2)));
+  record.setD(later);
+  o.setD(later);
+  t.set(later,later,later);
+  record.changed(true,DATE_AS_TIMESTAMP_T_976.DATE_AS_TIMESTAMP_O);
+  record.changed(true,DATE_AS_TIMESTAMP_T_976.DATE_AS_TIMESTAMP_T);
   record.store();
   assertEquals(record,create().fetchOne(DATE_AS_TIMESTAMP_T_976,DATE_AS_TIMESTAMP_T_976.DATE_AS_TIMESTAMP_ID.equal(2)));
   assertEquals(now,org.jooq.test.oracle2.generatedclasses.Routines.p_976(create(),now));
