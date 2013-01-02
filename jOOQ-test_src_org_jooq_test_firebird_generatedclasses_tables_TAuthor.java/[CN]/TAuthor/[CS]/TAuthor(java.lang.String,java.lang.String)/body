@@ -1,3 +1,0 @@
-{
-  super(alias,fieldAliases,(org.jooq.Schema)null,org.jooq.test.firebird.generatedclasses.tables.TAuthor.T_AUTHOR);
-}
