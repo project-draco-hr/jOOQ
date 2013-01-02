@@ -12,7 +12,7 @@
   assertEquals(1,query.execute());
   assertNull(query.getReturnedRecord());
   assertEquals(1,create().selectFrom(TTriggers()).fetch().size());
-  assertEquals(++ID,(int)create().selectFrom(TTriggers()).fetchOne(TTriggers_ID_GENERATED()));
+  ID=create().selectFrom(TTriggers()).fetchOne(TTriggers_ID_GENERATED());
   assertEquals(ID,(int)create().selectFrom(TTriggers()).fetchOne(TTriggers_ID()));
   assertEquals(2 * ID,(int)create().selectFrom(TTriggers()).fetchOne(TTriggers_COUNTER()));
   query=create().insertQuery(TTriggers());
