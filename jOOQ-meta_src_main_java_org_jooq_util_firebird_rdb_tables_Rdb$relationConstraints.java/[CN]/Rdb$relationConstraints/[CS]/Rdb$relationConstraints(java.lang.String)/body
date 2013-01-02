@@ -1,3 +1,3 @@
 {
-  super(alias,null,org.jooq.util.firebird.rdb.tables.Rdb$relationConstraints.RDB$RELATION_CONSTRAINTS);
+  super(alias,(org.jooq.Schema)null,org.jooq.util.firebird.rdb.tables.Rdb$relationConstraints.RDB$RELATION_CONSTRAINTS);
 }
