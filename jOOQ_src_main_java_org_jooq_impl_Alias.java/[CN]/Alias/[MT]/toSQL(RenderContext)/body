@@ -1,6 +1,6 @@
 {
   if (context.declareFields() || context.declareTables()) {
-    if (asList(CUBRID,FIREBIRD).contains(context.getDialect()) && fieldAliases != null && wrapped instanceof TableImpl) {
+    if (asList(CUBRID,FIREBIRD,SQLSERVER,SYBASE).contains(context.getDialect()) && fieldAliases != null && wrapped instanceof TableImpl) {
       context.keyword("(select * from ").sql(wrapped).sql(")");
     }
  else {
