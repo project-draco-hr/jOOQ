@@ -1,2 +1,2 @@
 org.jooq.Configuration configuration
-java.sql.Date array
+java.sql.Timestamp array

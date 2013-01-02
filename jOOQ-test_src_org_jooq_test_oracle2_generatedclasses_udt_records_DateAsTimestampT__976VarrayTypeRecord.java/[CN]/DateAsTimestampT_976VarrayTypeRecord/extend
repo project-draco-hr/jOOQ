@@ -1,1 +1,1 @@
-org.jooq.impl.ArrayRecordImpl<java.sql.Date>
+org.jooq.impl.ArrayRecordImpl<java.sql.Timestamp>
