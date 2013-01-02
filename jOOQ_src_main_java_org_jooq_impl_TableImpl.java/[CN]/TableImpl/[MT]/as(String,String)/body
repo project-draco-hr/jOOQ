@@ -1,0 +1,8 @@
+{
+  if (alias != null) {
+    return alias.wrapped().as(as,fieldAliases);
+  }
+ else {
+    return new TableAlias<R>(this,as,fieldAliases);
+  }
+}

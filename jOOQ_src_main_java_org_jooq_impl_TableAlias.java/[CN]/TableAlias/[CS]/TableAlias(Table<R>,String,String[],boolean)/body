@@ -1,0 +1,6 @@
+{
+  super(alias,table.getSchema());
+  this.alias=new Alias<Table<R>>(table,alias,fieldAliases,wrapInParentheses);
+  this.aliasedFields=new FieldList();
+  registerFields(fieldAliases);
+}

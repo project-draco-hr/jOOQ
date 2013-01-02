@@ -1,4 +1,3 @@
 {
-  super(alias,table.getSchema());
-  this.alias=new Alias<Table<R>>(table,alias,wrapInParentheses);
+  this(table,alias,null,wrapInParentheses);
 }

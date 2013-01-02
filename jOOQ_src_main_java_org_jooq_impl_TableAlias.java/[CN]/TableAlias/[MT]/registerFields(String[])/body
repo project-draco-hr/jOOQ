@@ -1,0 +1,12 @@
+{
+  List<Field<?>> fields=this.alias.wrapped().getFields();
+  int size=fields.size();
+  for (int i=0; i < size; i++) {
+    Field<?> field=fields.get(i);
+    String name=field.getName();
+    if (fieldAliases != null && fieldAliases.length > i) {
+      name=fieldAliases[i];
+    }
+    registerTableField(field,name);
+  }
+}

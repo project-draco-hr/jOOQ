@@ -1,0 +1,6 @@
+{
+  this.wrapped=wrapped;
+  this.alias=alias;
+  this.fieldAliases=fieldAliases;
+  this.wrapInParentheses=wrapInParentheses;
+}

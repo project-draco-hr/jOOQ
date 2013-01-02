@@ -1,7 +1,3 @@
 {
-  super(alias);
-  this.array=array;
-  this.field=new FieldList();
-  this.alias=alias;
-  this.field.add(fieldByName(Factory.getDataType(array.getClass().getComponentType()),alias,"COLUMN_VALUE"));
+  this(array,alias,null);
 }

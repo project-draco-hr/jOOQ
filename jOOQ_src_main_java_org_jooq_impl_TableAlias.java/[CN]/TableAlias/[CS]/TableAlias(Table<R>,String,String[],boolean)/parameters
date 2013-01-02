@@ -1,0 +1,4 @@
+Table<R> table
+String alias
+String[] fieldAliases
+boolean wrapInParentheses

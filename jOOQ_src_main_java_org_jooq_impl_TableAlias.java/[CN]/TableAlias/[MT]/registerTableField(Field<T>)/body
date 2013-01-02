@@ -1,3 +1,0 @@
-{
-  aliasedFields.add(new TableFieldImpl<R,T>(field.getName(),field.getDataType(),this));
-}

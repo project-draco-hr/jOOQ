@@ -1,0 +1,3 @@
+Field<?> array
+String alias
+String[] fieldAliases

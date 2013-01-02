@@ -12,19 +12,31 @@
     }
     context.sql(" ");
     context.literal(alias);
+    if (fieldAliases != null) {
+      String separator="";
+      context.sql("(");
+      for (int i=0; i < fieldAliases.length; i++) {
+        context.sql(separator);
+        context.literal(fieldAliases[i]);
+        separator=", ";
+      }
+      context.sql(")");
+    }
+ else {
 switch (context.getDialect()) {
 case HSQLDB:
 case POSTGRES:
 {
-        Object o=wrapped;
-        if (context.declareTables() && o instanceof ArrayTable) {
-          ArrayTable table=(ArrayTable)o;
-          context.sql("(");
-          Utils.fieldNames(context,table.getFields());
-          context.sql(")");
+          Object o=wrapped;
+          if (context.declareTables() && o instanceof ArrayTable) {
+            ArrayTable table=(ArrayTable)o;
+            context.sql("(");
+            Utils.fieldNames(context,table.getFields());
+            context.sql(")");
+          }
+          break;
         }
-        break;
-      }
+    }
   }
 }
  else {

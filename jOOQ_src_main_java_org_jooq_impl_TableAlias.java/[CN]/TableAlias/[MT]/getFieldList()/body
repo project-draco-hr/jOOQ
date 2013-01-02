@@ -1,9 +1,3 @@
 {
-  if (aliasedFields == null) {
-    aliasedFields=new FieldList();
-    for (    Field<?> field : alias.wrapped().getFields()) {
-      registerTableField(field);
-    }
-  }
   return aliasedFields;
 }
