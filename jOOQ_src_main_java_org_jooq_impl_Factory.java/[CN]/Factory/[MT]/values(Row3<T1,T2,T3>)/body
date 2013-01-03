@@ -1,3 +1,3 @@
 {
-  return new Values<Record3<T1,T2,T3>>(rows);
+  return new Values<Record3<T1,T2,T3>>(rows).as("v","c1","c2","c3");
 }
