@@ -1,8 +1,41 @@
 {
-  context.keyword("values");
-  String separator="";
-  for (  Row row : rows) {
-    context.sql(separator).sql(row);
-    separator=", ";
+switch (context.getDialect()) {
+case FIREBIRD:
+case ORACLE:
+case SYBASE:
+{
+      Select<Record> selects=null;
+      for (      Row row : rows) {
+        Select<Record> select=create().select(row.getFields());
+        if (selects == null) {
+          selects=select;
+        }
+ else {
+          selects=selects.unionAll(select);
+        }
+      }
+      context.formatIndentStart().formatNewLine().sql(selects).formatIndentEnd().formatNewLine();
+      break;
+    }
+case CUBRID:
+case DERBY:
+case H2:
+case HSQLDB:
+case POSTGRES:
+case SQLSERVER:
+default :
+{
+    context.keyword("values").formatIndentLockStart();
+    boolean firstRow=true;
+    for (    Row row : rows) {
+      if (!firstRow) {
+        context.sql(",").formatSeparator();
+      }
+      context.sql(row);
+      firstRow=false;
+    }
+    context.formatIndentEnd();
+    break;
   }
+}
 }
