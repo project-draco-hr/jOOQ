@@ -1,0 +1,10 @@
+{
+  String separator="";
+  context.sql("(");
+  for (int i=0; i < fieldAliases.length; i++) {
+    context.sql(separator);
+    context.literal(fieldAliases[i]);
+    separator=", ";
+  }
+  context.sql(")");
+}

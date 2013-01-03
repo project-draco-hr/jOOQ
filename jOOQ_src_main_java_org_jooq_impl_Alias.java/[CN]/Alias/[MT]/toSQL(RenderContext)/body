@@ -1,6 +1,13 @@
 {
   if (context.declareFields() || context.declareTables()) {
-    if (asList(CUBRID,FIREBIRD,SQLSERVER,SYBASE).contains(context.getDialect()) && fieldAliases != null && wrapped instanceof TableImpl) {
+    SQLDialect dialect=context.getDialect();
+    boolean simulateDerivedColumnList=asList(ORACLE).contains(dialect);
+    if (fieldAliases != null && simulateDerivedColumnList) {
+      context.keyword("(with").sql(" v");
+      toSQLDerivedColumnList(context);
+      context.keyword(" as (select * from ").sql(wrapped).sql(") ").keyword("select * from").sql(" v)");
+    }
+ else     if (fieldAliases != null && asList(CUBRID,FIREBIRD,SQLSERVER,SYBASE).contains(dialect) && wrapped instanceof TableImpl) {
       context.keyword("(select * from ").sql(wrapped).sql(")");
     }
  else {
@@ -12,23 +19,16 @@
         context.sql(")");
       }
     }
-    if (asList(DERBY,HSQLDB,MYSQL,POSTGRES).contains(context.getDialect())) {
+    if (asList(DERBY,HSQLDB,MYSQL,POSTGRES).contains(dialect)) {
       context.keyword(" as");
     }
     context.sql(" ");
     context.literal(alias);
-    if (fieldAliases != null) {
-      String separator="";
-      context.sql("(");
-      for (int i=0; i < fieldAliases.length; i++) {
-        context.sql(separator);
-        context.literal(fieldAliases[i]);
-        separator=", ";
-      }
-      context.sql(")");
+    if (fieldAliases != null && !simulateDerivedColumnList) {
+      toSQLDerivedColumnList(context);
     }
  else {
-switch (context.getDialect()) {
+switch (dialect) {
 case HSQLDB:
 case POSTGRES:
 {
