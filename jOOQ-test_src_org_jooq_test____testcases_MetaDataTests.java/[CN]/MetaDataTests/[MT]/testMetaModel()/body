@@ -24,42 +24,25 @@
     for (    Sequence<?> sequence : schema.getSequences()) {
       assertEquals(sequence,schema.getSequence(sequence.getName()));
     }
-    int tables=18;
-    if (supportsRecursiveQueries()) {
-      tables++;
+    assertTrue(schema.getTables().contains(T639()));
+    assertTrue(schema.getTables().contains(TAuthor()));
+    assertTrue(schema.getTables().contains(TBook()));
+    assertTrue(schema.getTables().contains(TBookStore()));
+    assertTrue(schema.getTables().contains(TBookToBookStore()));
+    if (TDirectory() != null) {
+      schema.getTables().contains(TDirectory());
     }
     if (TTriggers() != null) {
-      tables++;
+      schema.getTables().contains(TTriggers());
     }
     if (TUnsigned() != null) {
-      tables++;
+      schema.getTables().contains(TUnsigned());
     }
     if (TIdentity() != null) {
-      tables++;
+      schema.getTables().contains(TIdentity());
     }
     if (TIdentityPK() != null) {
-      tables++;
-    }
-    if (getDialect() == CUBRID || getDialect() == MYSQL || getDialect() == POSTGRES) {
-      tables++;
-    }
-    if (getDialect() == ASE || getDialect() == CUBRID || getDialect() == DB2 || getDialect() == POSTGRES || getDialect() == SQLITE || getDialect() == SYBASE) {
-      tables+=2;
-    }
-    if (TArrays() == null) {
-      assertEquals(tables,schema.getTables().size());
-    }
- else     if (getDialect() == H2) {
-      assertEquals(tables + 2,schema.getTables().size());
-    }
- else     if (getDialect() == ORACLE) {
-      assertEquals(tables + 3,schema.getTables().size());
-    }
- else     if (getDialect() == HSQLDB) {
-      assertEquals(tables + 11,schema.getTables().size());
-    }
- else {
-      assertEquals(tables + 1,schema.getTables().size());
+      schema.getTables().contains(TIdentityPK());
     }
     if (cUAddressType() == null) {
       assertEquals(0,schema.getUDTs().size());
