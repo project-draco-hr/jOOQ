@@ -11,7 +11,7 @@
   }
   ResultSet rs=stmt.executeQuery();
   Result<Record> result=create().fetch(rs);
-  assertEquals(BOOK_IDS,result.getValues(TBook_ID(),Integer.class));
+  assertEquals(BOOK_IDS,result.getValues(0,Integer.class));
   assertEquals(BOOK_IDS,result.getValues(1,Integer.class));
   try {
     assertEquals(BOOK_IDS,result.getValues(2,Integer.class));
