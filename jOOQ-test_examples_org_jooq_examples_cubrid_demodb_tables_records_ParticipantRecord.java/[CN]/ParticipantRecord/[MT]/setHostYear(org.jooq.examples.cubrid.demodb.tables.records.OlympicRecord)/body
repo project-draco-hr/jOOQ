@@ -1,8 +1,0 @@
-{
-  if (value == null) {
-    setValue(org.jooq.examples.cubrid.demodb.tables.Participant.PARTICIPANT.HOST_YEAR,null);
-  }
- else {
-    setValue(org.jooq.examples.cubrid.demodb.tables.Participant.PARTICIPANT.HOST_YEAR,value.getValue(org.jooq.examples.cubrid.demodb.tables.Olympic.OLYMPIC.HOST_YEAR));
-  }
-}

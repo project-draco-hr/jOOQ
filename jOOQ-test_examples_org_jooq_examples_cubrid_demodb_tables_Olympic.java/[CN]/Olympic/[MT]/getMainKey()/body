@@ -1,3 +1,0 @@
-{
-  return org.jooq.examples.cubrid.demodb.Keys.OLYMPIC__PK_OLYMPIC_HOST_YEAR;
-}

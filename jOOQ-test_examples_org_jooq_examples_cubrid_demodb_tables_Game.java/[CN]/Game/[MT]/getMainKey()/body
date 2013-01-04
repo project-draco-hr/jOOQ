@@ -1,3 +1,0 @@
-{
-  return org.jooq.examples.cubrid.demodb.Keys.GAME__PK_GAME_HOST_YEAR_EVENT_CODE_ATHLETE_CODE;
-}

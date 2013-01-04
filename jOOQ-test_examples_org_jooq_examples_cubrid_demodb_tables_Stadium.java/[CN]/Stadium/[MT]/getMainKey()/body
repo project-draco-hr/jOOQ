@@ -1,3 +1,0 @@
-{
-  return org.jooq.examples.cubrid.demodb.Keys.STADIUM__PK_STADIUM_CODE;
-}

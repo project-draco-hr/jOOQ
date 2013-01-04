@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.examples.cubrid.demodb.tables.records.ParticipantRecord,?>>asList(org.jooq.examples.cubrid.demodb.Keys.PARTICIPANT__FK_PARTICIPANT_HOST_YEAR,org.jooq.examples.cubrid.demodb.Keys.PARTICIPANT__FK_PARTICIPANT_NATION_CODE);
-}

@@ -1,3 +1,0 @@
-{
-  super("nation",org.jooq.examples.cubrid.demodb.Public.PUBLIC);
-}

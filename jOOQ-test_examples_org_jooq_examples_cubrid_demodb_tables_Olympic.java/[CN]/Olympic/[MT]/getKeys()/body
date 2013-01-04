@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.examples.cubrid.demodb.tables.records.OlympicRecord>>asList(org.jooq.examples.cubrid.demodb.Keys.OLYMPIC__PK_OLYMPIC_HOST_YEAR);
-}

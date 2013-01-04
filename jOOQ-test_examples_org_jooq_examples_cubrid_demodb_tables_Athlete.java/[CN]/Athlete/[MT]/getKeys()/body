@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.examples.cubrid.demodb.tables.records.AthleteRecord>>asList(org.jooq.examples.cubrid.demodb.Keys.ATHLETE__PK_ATHLETE_CODE);
-}

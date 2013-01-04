@@ -1,3 +1,0 @@
-{
-  return org.jooq.examples.cubrid.demodb.Keys.PARTICIPANT__PK_PARTICIPANT_HOST_YEAR_NATION_CODE;
-}
