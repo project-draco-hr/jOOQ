@@ -1,3 +1,3 @@
 {
-  super("t_639_numbers_table");
+  super("t_639_numbers_table",org.jooq.test.sqlite.generatedclasses.DefaultSchema.DEFAULT_SCHEMA);
 }

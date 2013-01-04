@@ -1,3 +1,3 @@
 {
-  super("t_dates");
+  super("t_dates",org.jooq.test.sqlite.generatedclasses.DefaultSchema.DEFAULT_SCHEMA);
 }
