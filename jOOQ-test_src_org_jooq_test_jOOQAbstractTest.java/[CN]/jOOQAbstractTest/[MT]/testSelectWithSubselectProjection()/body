@@ -1,0 +1,3 @@
+{
+  new SelectTests(this).testSelectWithSubselectProjection();
+}
