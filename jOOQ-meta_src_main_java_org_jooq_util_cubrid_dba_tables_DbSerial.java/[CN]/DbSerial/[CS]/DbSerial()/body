@@ -1,3 +1,3 @@
 {
-  super("db_serial",org.jooq.util.cubrid.dba.Dba.DBA);
+  super("db_serial",org.jooq.util.cubrid.dba.DefaultSchema.DEFAULT_SCHEMA);
 }
