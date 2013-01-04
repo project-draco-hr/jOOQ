@@ -5,6 +5,9 @@
     for (    String name : schemas.getValues(0,String.class)) {
       result.add(new MetaSchema(name));
     }
+    if (result.isEmpty()) {
+      result.add(new MetaSchema(""));
+    }
     return result;
   }
  catch (  SQLException e) {
