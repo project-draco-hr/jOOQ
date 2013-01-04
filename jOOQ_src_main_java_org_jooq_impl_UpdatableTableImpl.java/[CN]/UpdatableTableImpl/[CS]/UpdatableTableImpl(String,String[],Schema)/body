@@ -1,3 +1,0 @@
-{
-  super(name,aliasedFields,schema,null);
-}

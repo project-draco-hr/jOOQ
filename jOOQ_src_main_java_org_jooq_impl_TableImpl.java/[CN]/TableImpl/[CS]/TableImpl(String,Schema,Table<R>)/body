@@ -1,3 +1,10 @@
 {
-  this(name,null,schema,aliased);
+  super(name,schema);
+  this.fields=new FieldList();
+  if (aliased != null) {
+    alias=new Alias<Table<R>>(aliased,name);
+  }
+ else {
+    alias=null;
+  }
 }

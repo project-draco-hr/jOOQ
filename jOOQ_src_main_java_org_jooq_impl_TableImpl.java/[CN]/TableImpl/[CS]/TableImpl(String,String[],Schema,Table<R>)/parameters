@@ -1,4 +1,0 @@
-String name
-String[] fieldAliases
-Schema schema
-Table<R> aliased
