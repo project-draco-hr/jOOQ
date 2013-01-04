@@ -1,3 +1,3 @@
 {
-  return create().select(concat(DB_CLASS.CLASS_NAME,val("__"),DB_INDEX.INDEX_NAME).as("constraint_name"),DB_INDEX_KEY.KEY_ATTR_NAME,DB_CLASS.CLASS_NAME,DB_CLASS.OWNER_NAME).from(DB_INDEX).join(DB_CLASS).on(DB_INDEX.CLASS_NAME.equal(DB_CLASS.CLASS_NAME)).join(DB_INDEX_KEY).on(DB_INDEX_KEY.INDEX_NAME.equal(DB_INDEX.INDEX_NAME).and(DB_INDEX_KEY.CLASS_NAME.equal(DB_INDEX.CLASS_NAME))).where(condition).and(DB_CLASS.OWNER_NAME.in(getInputSchemata())).orderBy(DB_CLASS.OWNER_NAME.asc(),DB_INDEX.INDEX_NAME.asc()).fetch();
+  return create().select(concat(DB_CLASS.CLASS_NAME,val("__"),DB_INDEX.INDEX_NAME).as("constraint_name"),DB_INDEX_KEY.KEY_ATTR_NAME,DB_CLASS.CLASS_NAME).from(DB_INDEX).join(DB_CLASS).on(DB_INDEX.CLASS_NAME.equal(DB_CLASS.CLASS_NAME)).join(DB_INDEX_KEY).on(DB_INDEX_KEY.INDEX_NAME.equal(DB_INDEX.INDEX_NAME).and(DB_INDEX_KEY.CLASS_NAME.equal(DB_INDEX.CLASS_NAME))).where(condition).orderBy(DB_INDEX.INDEX_NAME.asc()).fetch();
 }

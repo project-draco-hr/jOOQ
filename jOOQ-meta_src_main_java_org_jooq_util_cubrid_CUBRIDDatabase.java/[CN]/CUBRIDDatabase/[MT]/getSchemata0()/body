@@ -1,7 +1,5 @@
 {
   List<SchemaDefinition> result=new ArrayList<SchemaDefinition>();
-  for (  String name : create().select(DB_USER.NAME).from(DB_USER).fetch(DB_USER.NAME)) {
-    result.add(new SchemaDefinition(this,name,""));
-  }
+  result.add(new SchemaDefinition(this,"",""));
   return result;
 }

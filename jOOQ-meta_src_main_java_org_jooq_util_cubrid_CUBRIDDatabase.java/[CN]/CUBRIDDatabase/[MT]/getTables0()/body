@@ -1,9 +1,8 @@
 {
   List<TableDefinition> result=new ArrayList<TableDefinition>();
-  for (  Record record : create().select(DB_CLASS.OWNER_NAME,DB_CLASS.CLASS_NAME).from(DB_CLASS).where(DB_CLASS.OWNER_NAME.in(getInputSchemata())).orderBy(DB_CLASS.OWNER_NAME.asc(),DB_CLASS.CLASS_NAME.asc()).fetch()) {
-    SchemaDefinition schema=getSchema(record.getValue(DB_CLASS.OWNER_NAME));
+  for (  Record record : create().select(DB_CLASS.CLASS_NAME).from(DB_CLASS).orderBy(DB_CLASS.CLASS_NAME.asc()).fetch()) {
     String name=record.getValue(DB_CLASS.CLASS_NAME);
-    CUBRIDTableDefinition table=new CUBRIDTableDefinition(schema,name,null);
+    CUBRIDTableDefinition table=new CUBRIDTableDefinition(getSchemata().get(0),name,null);
     result.add(table);
   }
   return result;
