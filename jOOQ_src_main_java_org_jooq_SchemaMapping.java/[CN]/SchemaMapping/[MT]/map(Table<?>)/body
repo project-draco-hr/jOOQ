@@ -5,7 +5,7 @@
     Schema schema=table.getSchema();
     String schemaName=(schema == null) ? "" : schema.getName();
     String tableName=table.getName();
-    String key=(schema == null) ? tableName : (schemaName + "." + tableName);
+    String key=(schema == null || StringUtils.isEmpty(schemaName)) ? tableName : (schemaName + "." + tableName);
     if (!getTables().containsKey(key)) {
 synchronized (this) {
         if (!getTables().containsKey(key)) {
