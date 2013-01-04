@@ -1,3 +1,3 @@
 {
-  super("t_triggers");
+  super("t_triggers",org.jooq.test.cubrid.generatedclasses.DefaultSchema.DEFAULT_SCHEMA);
 }

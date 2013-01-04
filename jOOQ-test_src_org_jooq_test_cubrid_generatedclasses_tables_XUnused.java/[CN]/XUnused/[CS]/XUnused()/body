@@ -1,3 +1,3 @@
 {
-  super("x_unused");
+  super("x_unused",org.jooq.test.cubrid.generatedclasses.DefaultSchema.DEFAULT_SCHEMA);
 }

@@ -1,3 +1,3 @@
 {
-  super("t_language");
+  super("t_language",org.jooq.test.cubrid.generatedclasses.DefaultSchema.DEFAULT_SCHEMA);
 }

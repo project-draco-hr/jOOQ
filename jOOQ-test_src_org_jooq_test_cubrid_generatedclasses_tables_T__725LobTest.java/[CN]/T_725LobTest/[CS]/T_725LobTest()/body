@@ -1,3 +1,3 @@
 {
-  super("t_725_lob_test");
+  super("t_725_lob_test",org.jooq.test.cubrid.generatedclasses.DefaultSchema.DEFAULT_SCHEMA);
 }
