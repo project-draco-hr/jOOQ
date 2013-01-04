@@ -1,3 +1,0 @@
-{
-  super(alias,fieldAliases,(org.jooq.Schema)null,org.jooq.util.firebird.rdb.tables.Rdb$fields.RDB$FIELDS);
-}
