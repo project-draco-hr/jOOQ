@@ -1,8 +1,0 @@
-{
-  if (value == null) {
-    setValue(org.jooq.test.cubrid.generatedclasses.tables.TBookToBookStore.BOOK_STORE_NAME,null);
-  }
- else {
-    setValue(org.jooq.test.cubrid.generatedclasses.tables.TBookToBookStore.BOOK_STORE_NAME,value.getValue(org.jooq.test.cubrid.generatedclasses.tables.TBookStore.NAME));
-  }
-}

@@ -1,3 +1,3 @@
 {
-  super("v_library",org.jooq.test.cubrid.generatedclasses.Dba.DBA);
+  super("v_library");
 }

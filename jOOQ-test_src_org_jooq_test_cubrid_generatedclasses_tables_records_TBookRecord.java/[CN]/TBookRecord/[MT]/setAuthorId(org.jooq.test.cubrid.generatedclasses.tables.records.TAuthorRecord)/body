@@ -1,8 +1,0 @@
-{
-  if (value == null) {
-    setValue(org.jooq.test.cubrid.generatedclasses.tables.TBook.AUTHOR_ID,null);
-  }
- else {
-    setValue(org.jooq.test.cubrid.generatedclasses.tables.TBook.AUTHOR_ID,value.getValue(org.jooq.test.cubrid.generatedclasses.tables.TAuthor.ID));
-  }
-}
