@@ -1,3 +1,0 @@
-{
-  return create().selectFrom(org.jooq.test.sqlserver.generatedclasses.tables.XUnused.X_UNUSED).where(org.jooq.test.sqlserver.generatedclasses.tables.XUnused.X_UNUSED.ID.equal(getValue(org.jooq.test.sqlserver.generatedclasses.tables.XTestCase_64_69.X_TEST_CASE_64_69.UNUSED_ID))).fetchOne();
-}
