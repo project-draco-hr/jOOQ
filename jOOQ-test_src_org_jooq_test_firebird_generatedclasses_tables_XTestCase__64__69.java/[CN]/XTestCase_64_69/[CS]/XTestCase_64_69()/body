@@ -1,3 +1,3 @@
 {
-  super("X_TEST_CASE_64_69");
+  super("X_TEST_CASE_64_69",org.jooq.test.firebird.generatedclasses.DefaultSchema.DEFAULT_SCHEMA);
 }

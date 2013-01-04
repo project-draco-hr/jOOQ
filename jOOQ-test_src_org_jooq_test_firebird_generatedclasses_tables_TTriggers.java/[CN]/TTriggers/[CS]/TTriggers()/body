@@ -1,3 +1,3 @@
 {
-  super("T_TRIGGERS");
+  super("T_TRIGGERS",org.jooq.test.firebird.generatedclasses.DefaultSchema.DEFAULT_SCHEMA);
 }
