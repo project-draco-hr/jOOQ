@@ -39,10 +39,10 @@
     out.tab(1).javadoc(NO_FURTHER_INSTANCES_ALLOWED);
     out.tab(1).println("private %s() {",className);
   }
-  out.tab(2).println("super(\"%s\"[[before=, ][%s]]);",table.getOutputName(),list(schema.isDefaultSchema() ? null : getStrategy().getFullJavaIdentifier(schema)));
+  out.tab(2).println("super(\"%s\", %s);",table.getOutputName(),getStrategy().getFullJavaIdentifier(schema));
   out.tab(1).println("}");
   if (generateInstanceFields()) {
-    final String schemaId=schema.isDefaultSchema() ? "(org.jooq.Schema) null" : getStrategy().getFullJavaIdentifier(schema);
+    final String schemaId=getStrategy().getFullJavaIdentifier(schema);
     out.tab(1).javadoc("Create an aliased <code>%s</code> table reference",table.getQualifiedOutputName());
     out.tab(1).println("public %s(%s alias) {",className,String.class);
     out.tab(2).println("super(alias, %s, %s);",schemaId,fullTableId);

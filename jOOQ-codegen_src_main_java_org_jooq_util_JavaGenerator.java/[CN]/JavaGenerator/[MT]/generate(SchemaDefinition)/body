@@ -1,7 +1,5 @@
 {
-  if (!schema.isDefaultSchema()) {
-    generateSchema(schema);
-  }
+  generateSchema(schema);
   if (database.getSequences(schema).size() > 0) {
     generateSequences(schema);
   }

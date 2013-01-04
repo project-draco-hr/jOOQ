@@ -8,7 +8,7 @@
     final String seqType=getJavaType(sequence.getType());
     final String seqId=getStrategy().getJavaIdentifier(sequence);
     final String seqName=sequence.getOutputName();
-    final String schemaId=!schema.isDefaultSchema() ? getStrategy().getFullJavaIdentifier(schema) : "null";
+    final String schemaId=getStrategy().getFullJavaIdentifier(schema);
     final String typeRef=getJavaTypeReference(sequence.getDatabase(),sequence.getType());
     out.tab(1).javadoc("The sequence <code>%s</code>",sequence.getQualifiedOutputName());
     out.tab(1).println("public static final %s<%s> %s = new %s<%s>(\"%s\", %s, %s);",Sequence.class,seqType,seqId,SequenceImpl.class,seqType,seqName,schemaId,typeRef);

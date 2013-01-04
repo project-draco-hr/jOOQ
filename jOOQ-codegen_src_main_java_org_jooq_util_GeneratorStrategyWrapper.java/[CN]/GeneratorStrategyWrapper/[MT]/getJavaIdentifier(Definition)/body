@@ -2,6 +2,9 @@
   if (definition instanceof IdentityDefinition) {
     return "IDENTITY_" + getJavaIdentifier(((IdentityDefinition)definition).getColumn().getContainer());
   }
+  if (definition instanceof SchemaDefinition && ((SchemaDefinition)definition).isDefaultSchema()) {
+    return "DEFAULT_SCHEMA";
+  }
   String identifier=convertToJavaIdentifier(delegate.getJavaIdentifier(definition));
   if (definition instanceof ColumnDefinition || definition instanceof AttributeDefinition) {
     TypedElementDefinition<?> e=(TypedElementDefinition<?>)definition;

@@ -43,7 +43,7 @@
   }
   out.tab(1).javadoc(NO_FURTHER_INSTANCES_ALLOWED);
   out.tab(1).println("private %s() {",className);
-  out.tab(2).println("super(\"%s\"[[before=, ][%s]]);",udt.getOutputName(),list(schemaId));
+  out.tab(2).println("super(\"%s\", %s);",udt.getOutputName(),schemaId);
   out.println();
   out.tab(2).println("// Initialise data type");
   out.tab(2).println("getDataType();");

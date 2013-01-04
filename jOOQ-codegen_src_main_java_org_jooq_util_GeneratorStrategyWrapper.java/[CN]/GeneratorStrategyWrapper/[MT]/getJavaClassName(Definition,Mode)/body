@@ -2,6 +2,9 @@
   if (!generator.generateRecords() && mode == Mode.RECORD && definition instanceof TableDefinition) {
     return Record.class.getSimpleName();
   }
+  if (definition instanceof SchemaDefinition && ((SchemaDefinition)definition).isDefaultSchema()) {
+    return "DefaultSchema";
+  }
   String className;
   className=delegate.getJavaClassName(definition,mode);
   className=overload(definition,mode,className);
