@@ -1,3 +1,4 @@
 {
-  context.bind(table);
+  boolean declareTables=context.declareFields();
+  context.declareTables(true).bind(table).declareTables(declareTables);
 }
