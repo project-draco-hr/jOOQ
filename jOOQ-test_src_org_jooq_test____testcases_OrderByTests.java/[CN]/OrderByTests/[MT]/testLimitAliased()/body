@@ -1,0 +1,10 @@
+{
+  if (getDialect() == SQLDialect.ASE) {
+    log.info("SKIPPING","LIMIT .. OFFSET tests");
+    return;
+  }
+  Result<Record> r1=create().select(TBook_ID().as("xx"),TBook_TITLE().as("yy")).from(TBook()).limit(1,2).fetch();
+  assertEquals(2,r1.size());
+  Result<Record> r2=create().select(TBook_ID().as("xx"),TBook_TITLE().as("yy")).from(TBook()).limit(param("x",1),param("y",2)).fetch();
+  assertEquals(2,r2.size());
+}
