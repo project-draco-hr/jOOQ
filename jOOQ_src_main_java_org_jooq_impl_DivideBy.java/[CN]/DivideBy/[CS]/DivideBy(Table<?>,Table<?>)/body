@@ -1,5 +1,4 @@
 {
-  super("division");
   this.dividend=dividend;
   this.divisor=divisor;
   this.condition=new ConditionProviderImpl();

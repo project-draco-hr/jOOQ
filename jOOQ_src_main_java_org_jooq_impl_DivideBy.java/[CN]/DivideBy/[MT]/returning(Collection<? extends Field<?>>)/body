@@ -1,4 +1,4 @@
 {
   returning.addAll(fields);
-  return this;
+  return table();
 }

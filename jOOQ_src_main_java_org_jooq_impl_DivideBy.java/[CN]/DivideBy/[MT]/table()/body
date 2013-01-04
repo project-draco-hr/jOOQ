@@ -1,5 +1,4 @@
 {
-  Executor create=create(configuration);
   ConditionProviderImpl selfJoin=new ConditionProviderImpl();
   FieldList select=new FieldList();
   Table<?> outer=dividend.as("dividend");
@@ -13,5 +12,5 @@
       selfJoin(selfJoin,outer,dividend,field);
     }
   }
-  return create.selectDistinct(select).from(outer).whereNotExists(create.selectOne().from(divisor).whereNotExists(create.selectOne().from(dividend).where(selfJoin).and(condition))).asTable();
+  return selectDistinct(select).from(outer).whereNotExists(selectOne().from(divisor).whereNotExists(selectOne().from(dividend).where(selfJoin).and(condition))).asTable();
 }
