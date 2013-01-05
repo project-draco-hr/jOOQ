@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.postgres.generatedclasses.tables.TExoticTypes.T_EXOTIC_TYPES.UU,value);
+}
