@@ -1,5 +1,5 @@
 {
-  Result<Record> result=create().select().from(create().selectOne(),create().select(val(2)),create().select(val(2)),create().select(val(2)),create().select(val(3).add(4)),create().select(val(3).add(4)),create().select(trim(" test ")),create().select(trim(" test "))).fetch();
+  Result<Record> result=create().select().from(selectOne(),select(val(2)),select(val(2)),select(val(2)),select(val(3).add(4)),select(val(3).add(4)),select(trim(" test ")),select(trim(" test "))).fetch();
   assertEquals(1,result.size());
   assertEquals(Integer.valueOf(1),result.getValue(0,0));
   assertEquals(Integer.valueOf(2),result.getValue(0,1));

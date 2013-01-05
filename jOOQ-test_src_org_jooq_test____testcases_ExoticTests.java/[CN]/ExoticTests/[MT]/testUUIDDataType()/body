@@ -1,0 +1,9 @@
+{
+  jOOQAbstractTest.reset=false;
+  UUID uuid1=UUID.randomUUID();
+  UUID uuid2=UUID.randomUUID();
+  assertEquals(1,create().insertInto(TExoticTypes(),TExoticTypes_ID(),TExoticTypes_UUID()).values(1,uuid1).execute());
+  assertEquals(uuid1,create().fetchOne(TExoticTypes()).getValue(TExoticTypes_UUID()));
+  assertEquals(1,create().update(TExoticTypes()).set(TExoticTypes_UUID(),uuid2).where(TExoticTypes_UUID().eq(uuid1)).execute());
+  assertEquals(uuid2,create().fetchOne(TExoticTypes()).getValue(TExoticTypes_UUID()));
+}
