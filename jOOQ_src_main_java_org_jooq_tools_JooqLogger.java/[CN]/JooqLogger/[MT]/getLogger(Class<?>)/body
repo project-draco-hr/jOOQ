@@ -11,5 +11,23 @@
       result.util=java.util.logging.Logger.getLogger(clazz.getName());
     }
   }
+  try {
+    result.isInfoEnabled();
+  }
+ catch (  Throwable e) {
+    result.supportsInfo=false;
+  }
+  try {
+    result.isDebugEnabled();
+  }
+ catch (  Throwable e) {
+    result.supportsDebug=false;
+  }
+  try {
+    result.isTraceEnabled();
+  }
+ catch (  Throwable e) {
+    result.supportsTrace=false;
+  }
   return result;
 }
