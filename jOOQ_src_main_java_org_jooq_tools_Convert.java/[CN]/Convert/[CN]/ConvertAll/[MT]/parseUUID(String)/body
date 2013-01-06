@@ -1,0 +1,11 @@
+{
+  if (string == null) {
+    return null;
+  }
+ else   if (string.contains("-")) {
+    return UUID.fromString(string);
+  }
+ else {
+    return UUID.fromString(UUID_PATTERN.matcher(string).replaceAll("$1-$2-$3-$4-$5"));
+  }
+}

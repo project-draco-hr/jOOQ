@@ -215,7 +215,15 @@
         @SuppressWarnings("rawtypes") Class raw=toClass;
         return (U)java.lang.Enum.valueOf(raw,(String)from);
       }
- catch (      java.lang.IllegalArgumentException e) {
+ catch (      IllegalArgumentException e) {
+        return null;
+      }
+    }
+ else     if ((fromClass == String.class) && toClass == UUID.class) {
+      try {
+        return (U)parseUUID((String)from);
+      }
+ catch (      IllegalArgumentException e) {
         return null;
       }
     }

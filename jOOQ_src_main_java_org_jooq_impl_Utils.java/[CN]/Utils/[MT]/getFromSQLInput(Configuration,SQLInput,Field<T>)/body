@@ -86,6 +86,9 @@
     String string=stream.readString();
     return (T)(string == null ? null : ULong.valueOf(string));
   }
+ else   if (type == UUID.class) {
+    return (T)Convert.convert(stream.readString(),UUID.class);
+  }
  else   if (type.isArray()) {
     Array result=stream.readArray();
     return (T)(result == null ? null : result.getArray());

@@ -85,27 +85,42 @@
     String string=stmt.getString(index);
     return (T)(string == null ? null : ULong.valueOf(string));
   }
- else   if (type.isArray()) {
-    return (T)convertArray(stmt.getObject(index),(Class<? extends Object[]>)type);
-  }
- else   if (ArrayRecord.class.isAssignableFrom(type)) {
-    return (T)getArrayRecord(ctx,stmt.getArray(index),(Class<? extends ArrayRecord<?>>)type);
-  }
- else   if (EnumType.class.isAssignableFrom(type)) {
-    return getEnumType(type,stmt.getString(index));
-  }
- else   if (UDTRecord.class.isAssignableFrom(type)) {
+ else   if (type == UUID.class) {
+switch (ctx.getDialect()) {
+case H2:
+case POSTGRES:
+{
+        return (T)stmt.getObject(index);
+      }
+case SQLSERVER:
+case SYBASE:
+default :
+{
+      return (T)Convert.convert(stmt.getString(index),UUID.class);
+    }
+}
+}
+ else if (type.isArray()) {
+return (T)convertArray(stmt.getObject(index),(Class<? extends Object[]>)type);
+}
+ else if (ArrayRecord.class.isAssignableFrom(type)) {
+return (T)getArrayRecord(ctx,stmt.getArray(index),(Class<? extends ArrayRecord<?>>)type);
+}
+ else if (EnumType.class.isAssignableFrom(type)) {
+return getEnumType(type,stmt.getString(index));
+}
+ else if (UDTRecord.class.isAssignableFrom(type)) {
 switch (ctx.getDialect()) {
 case POSTGRES:
-      return (T)pgNewUDTRecord(type,stmt.getObject(index));
-  }
-  return (T)stmt.getObject(index,DataTypes.udtRecords());
+  return (T)pgNewUDTRecord(type,stmt.getObject(index));
+}
+return (T)stmt.getObject(index,DataTypes.udtRecords());
 }
  else if (Result.class.isAssignableFrom(type)) {
-  ResultSet nested=(ResultSet)stmt.getObject(index);
-  return (T)new Executor(ctx).fetch(nested);
+ResultSet nested=(ResultSet)stmt.getObject(index);
+return (T)new Executor(ctx).fetch(nested);
 }
  else {
-  return (T)stmt.getObject(index);
+return (T)stmt.getObject(index);
 }
 }

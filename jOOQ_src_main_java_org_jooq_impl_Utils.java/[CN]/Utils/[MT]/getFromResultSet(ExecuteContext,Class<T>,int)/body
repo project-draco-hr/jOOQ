@@ -95,14 +95,29 @@
     String string=rs.getString(index);
     return (T)(string == null ? null : ULong.valueOf(string));
   }
- else   if (type.isArray()) {
+ else   if (type == UUID.class) {
+switch (ctx.getDialect()) {
+case H2:
+case POSTGRES:
+{
+        return (T)rs.getObject(index);
+      }
+case SQLSERVER:
+case SYBASE:
+default :
+{
+      return (T)Convert.convert(rs.getString(index),UUID.class);
+    }
+}
+}
+ else if (type.isArray()) {
 switch (ctx.getDialect()) {
 case POSTGRES:
 {
-        return pgGetArray(ctx,type,index);
-      }
+    return pgGetArray(ctx,type,index);
+  }
 default :
-    return (T)convertArray(rs.getArray(index),(Class<? extends Object[]>)type);
+return (T)convertArray(rs.getArray(index),(Class<? extends Object[]>)type);
 }
 }
  else if (ArrayRecord.class.isAssignableFrom(type)) {
@@ -114,7 +129,7 @@ return getEnumType(type,rs.getString(index));
  else if (UDTRecord.class.isAssignableFrom(type)) {
 switch (ctx.getDialect()) {
 case POSTGRES:
-  return (T)pgNewUDTRecord(type,rs.getObject(index));
+return (T)pgNewUDTRecord(type,rs.getObject(index));
 }
 return (T)rs.getObject(index,DataTypes.udtRecords());
 }

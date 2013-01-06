@@ -131,16 +131,33 @@
  else   if (UNumber.class.isAssignableFrom(type)) {
     stmt.setString(nextIndex(),value.toString());
   }
- else   if (type.isArray()) {
+ else   if (type == UUID.class) {
+switch (dialect) {
+case H2:
+case POSTGRES:
+{
+        stmt.setObject(nextIndex(),value);
+        break;
+      }
+case SQLSERVER:
+case SYBASE:
+default :
+{
+      stmt.setString(nextIndex(),value.toString());
+      break;
+    }
+}
+}
+ else if (type.isArray()) {
 switch (dialect) {
 case POSTGRES:
 {
-        stmt.setString(nextIndex(),toPGArrayString((Object[])value));
-        break;
-      }
+    stmt.setString(nextIndex(),toPGArrayString((Object[])value));
+    break;
+  }
 case HSQLDB:
-    stmt.setArray(nextIndex(),new DefaultArray(dialect,(Object[])value,type));
-  break;
+stmt.setArray(nextIndex(),new DefaultArray(dialect,(Object[])value,type));
+break;
 case H2:
 stmt.setObject(nextIndex(),value);
 break;

@@ -87,6 +87,9 @@
  else   if (UNumber.class.isAssignableFrom(type)) {
     stream.writeString(value.toString());
   }
+ else   if (type == UUID.class) {
+    stream.writeString(value.toString());
+  }
  else   if (ArrayRecord.class.isAssignableFrom(type)) {
     Connection connection=DefaultExecuteContext.registeredConfiguration().getConnectionProvider().acquire();
     ArrayRecord<?> arrayRecord=(ArrayRecord<?>)value;
