@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.mysql.generatedclasses.tables.T_959.SPECIAL_CHARACTERS,value);
+}

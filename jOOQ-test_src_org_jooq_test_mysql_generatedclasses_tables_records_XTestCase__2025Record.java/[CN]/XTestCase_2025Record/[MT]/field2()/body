@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.mysql.generatedclasses.tables.XTestCase_2025.REF_NAME;
+}

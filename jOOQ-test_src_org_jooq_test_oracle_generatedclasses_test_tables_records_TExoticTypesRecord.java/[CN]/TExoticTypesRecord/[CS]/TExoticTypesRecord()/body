@@ -1,0 +1,3 @@
+{
+  super(org.jooq.test.oracle.generatedclasses.test.tables.TExoticTypes.T_EXOTIC_TYPES);
+}

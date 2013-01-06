@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.firebird.generatedclasses.tables.TExoticTypes.T_EXOTIC_TYPES.ID,value);
+}

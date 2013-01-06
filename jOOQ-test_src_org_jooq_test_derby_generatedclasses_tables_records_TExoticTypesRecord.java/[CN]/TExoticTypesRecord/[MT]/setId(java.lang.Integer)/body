@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.derby.generatedclasses.tables.TExoticTypes.ID,value);
+}

@@ -1,0 +1,3 @@
+{
+  super("t_exotic_types",org.jooq.test.sqlserver.generatedclasses.Dbo.DBO);
+}

@@ -1,3 +1,0 @@
-{
-  return create().selectFrom(org.jooq.test.mysql.generatedclasses.tables.XUnused.X_UNUSED).where(org.jooq.test.mysql.generatedclasses.tables.XUnused.ID.equal(getValue(org.jooq.test.mysql.generatedclasses.tables.XTestCase_85.X_UNUSED_ID))).and(org.jooq.test.mysql.generatedclasses.tables.XUnused.NAME.equal(getValue(org.jooq.test.mysql.generatedclasses.tables.XTestCase_85.X_UNUSED_NAME))).fetchOne();
-}
