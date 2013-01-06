@@ -1,10 +1,10 @@
 {
   try {
-    String configuration=System.getProperty("jdbc.properties");
+    String configuration=System.getProperty("org.jooq.configuration");
     if (configuration == null) {
-      log.error("No system property 'jdbc.properties' found");
+      log.error("No system property 'org.jooq.configuration' found");
       log.error("-----------");
-      log.error("Please be sure property is set; example: -Djdbc.properties=/org/jooq/configuration/${env_var:USERNAME}/db2/library.properties");
+      log.error("Please be sure property is set; example: -Dorg.jooq.configuration=/org/jooq/configuration/${env_var:USERNAME}/db2/library.xml");
       throw new Error();
     }
     InputStream in=GenerationTool.class.getResourceAsStream(configuration);
@@ -15,18 +15,13 @@
       log.error("If it is located at the current working directory, try adding a '/' to the path");
       throw new Error();
     }
-    Properties properties=new Properties();
-    try {
-      properties.load(in);
-    }
-  finally {
-      in.close();
-    }
-    String driver=properties.getProperty(JDBC_DRIVER);
-    jdbcURL=properties.getProperty(JDBC_URL) + getSchemaSuffix();
-    jdbcUser=jdbcUser != null ? jdbcUser : properties.getProperty(JDBC_USER);
-    jdbcPassword=jdbcPassword != null ? jdbcPassword : properties.getProperty(JDBC_PASSWORD);
-    jdbcSchema=properties.getProperty(JDBC_SCHEMA) + getSchemaSuffix();
+    Configuration c=GenerationTool.load(in);
+    Jdbc jdbc=c.getJdbc();
+    String driver=jdbc.getDriver();
+    jdbcURL=jdbc.getUrl() + getSchemaSuffix();
+    jdbcSchema=jdbc.getSchema() + getSchemaSuffix();
+    jdbcUser=jdbcUser != null ? jdbcUser : jdbc.getUser() != null ? jdbc.getUser() : getProperty(jdbc.getProperties(),"user");
+    jdbcPassword=jdbcPassword != null ? jdbcPassword : jdbc.getPassword() != null ? jdbc.getPassword() : getProperty(jdbc.getProperties(),"password");
     Class.forName(driver);
     if (StringUtils.isBlank(jdbcUser)) {
       Properties p=new Properties();

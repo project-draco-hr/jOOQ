@@ -1,0 +1,8 @@
+{
+  for (  Property p : properties) {
+    if (p.getKey().equals(key)) {
+      return p.getValue();
+    }
+  }
+  return null;
+}
