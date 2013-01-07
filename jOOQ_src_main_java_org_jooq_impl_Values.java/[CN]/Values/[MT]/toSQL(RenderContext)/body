@@ -1,10 +1,14 @@
 {
 switch (context.getDialect()) {
 case FIREBIRD:
+case MYSQL:
 case ORACLE:
+case SQLITE:
 case SYBASE:
+case H2:
 {
       Select<Record> selects=null;
+      boolean subquery=context.subquery();
       for (      Row row : rows) {
         Select<Record> select=create().select(row.getFields());
         if (selects == null) {
@@ -14,15 +18,17 @@ case SYBASE:
           selects=selects.unionAll(select);
         }
       }
-      context.formatIndentStart().formatNewLine().sql(selects).formatIndentEnd().formatNewLine();
+      context.formatIndentStart().formatNewLine().subquery(true).sql(selects).subquery(subquery).formatIndentEnd().formatNewLine();
       break;
     }
 case CUBRID:
 case DERBY:
-case H2:
 case HSQLDB:
 case POSTGRES:
 case SQLSERVER:
+case ASE:
+case DB2:
+case INGRES:
 default :
 {
     context.keyword("values").formatIndentLockStart();
@@ -34,7 +40,7 @@ default :
       context.sql(row);
       firstRow=false;
     }
-    context.formatIndentEnd();
+    context.formatIndentLockEnd();
     break;
   }
 }

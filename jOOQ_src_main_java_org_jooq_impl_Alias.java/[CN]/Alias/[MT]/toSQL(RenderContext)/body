@@ -1,14 +1,21 @@
 {
   if (context.declareFields() || context.declareTables()) {
     SQLDialect dialect=context.getDialect();
-    boolean simulateDerivedColumnList=asList(ORACLE).contains(dialect);
-    if (fieldAliases != null && simulateDerivedColumnList) {
-      context.sql("(").formatIndentStart().formatNewLine().keyword("with").sql(" v");
-      toSQLDerivedColumnList(context);
-      context.sql(" ").keyword("as").sql(" (").formatIndentStart().formatNewLine().keyword("select * from").sql(" (").sql(wrapped).sql(")").formatIndentEnd().formatNewLine().sql(")").formatSeparator().keyword("select * from").sql(" v").formatIndentEnd().formatNewLine().sql(")");
-    }
- else     if (fieldAliases != null && asList(CUBRID,FIREBIRD,SQLSERVER,SYBASE).contains(dialect) && wrapped instanceof TableImpl) {
+    boolean simulateDerivedColumnList=false;
+    if (fieldAliases != null && asList(CUBRID,FIREBIRD,SQLSERVER,SYBASE).contains(dialect) && wrapped instanceof TableImpl) {
       context.sql("(").formatIndentStart().formatNewLine().keyword("select * from").sql(wrapped).formatIndentEnd().formatNewLine().sql(")");
+    }
+ else     if (fieldAliases != null && asList(H2,MYSQL,ORACLE,SQLITE).contains(dialect)) {
+      simulateDerivedColumnList=true;
+      FieldList fields=new SelectFieldList();
+      for (      String fieldAlias : fieldAliases) {
+        fields.add(field("null").as(fieldAlias));
+      }
+      context.sql("(").formatIndentStart().formatNewLine().keyword("select ").declareFields(true).sql(fields).declareFields(false).formatSeparator();
+      if (!"".equals(new DefaultRenderContext(context).render(new Dual()))) {
+        context.keyword("from ").sql(new Dual()).formatSeparator();
+      }
+      context.keyword("where ").sql("1 = 0").formatSeparator().keyword("union all").formatSeparator().keyword("select * from ").sql("(").sql(wrapped).sql(")").formatIndentEnd().formatNewLine().sql(")");
     }
  else {
       if (wrapInParentheses) {
