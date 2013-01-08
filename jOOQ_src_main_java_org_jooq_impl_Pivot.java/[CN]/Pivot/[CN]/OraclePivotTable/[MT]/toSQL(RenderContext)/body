@@ -1,6 +1,6 @@
 {
   boolean inline=context.inline();
   boolean declareFields=context.declareFields();
-  boolean declareTables=context.declareFields();
+  boolean declareTables=context.declareTables();
   context.declareTables(true).sql(table).declareTables(declareTables).formatSeparator().keyword("pivot (").inline(true).declareFields(true).formatIndentStart().sql(aggregateFunctions).formatSeparator().keyword("for ").literal(on.getName()).formatSeparator().keyword("in (").sql(in).declareFields(declareFields).inline(inline).sql(")").formatIndentEnd().formatNewLine().sql(")");
 }
