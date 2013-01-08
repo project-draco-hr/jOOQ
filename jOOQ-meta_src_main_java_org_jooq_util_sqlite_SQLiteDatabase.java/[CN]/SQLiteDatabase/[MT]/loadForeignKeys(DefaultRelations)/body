@@ -17,7 +17,7 @@
       TableDefinition referencingTable=getTable(getSchemata().get(0),foreignKeyTable);
       TableDefinition referencedTable=getTable(getSchemata().get(0),record.getValue("table",String.class),true);
       if (referencedTable != null) {
-        String uniqueKey="pk_" + referencedTable.getName() + "_"+ referencedTable.getColumn(record.getValue("to",String.class),true).getName();
+        String uniqueKey="pk_" + referencedTable.getName();
         if (referencingTable != null) {
           ColumnDefinition referencingColumn=referencingTable.getColumn(foreignKeyColumn);
           relations.addForeignKey(foreignKey,uniqueKey,referencingColumn,getSchemata().get(0));

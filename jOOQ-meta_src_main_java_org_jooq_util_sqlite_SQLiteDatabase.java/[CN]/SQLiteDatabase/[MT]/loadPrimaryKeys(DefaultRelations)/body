@@ -3,7 +3,7 @@
     for (    Record record : create().fetch("pragma table_info('" + tableName + "')")) {
       if (record.getValue("pk",boolean.class)) {
         String columnName=record.getValue("name",String.class);
-        String key="pk_" + tableName + "_"+ columnName;
+        String key="pk_" + tableName;
         TableDefinition table=getTable(getSchemata().get(0),tableName);
         if (table != null) {
           ColumnDefinition column=table.getColumn(columnName);
