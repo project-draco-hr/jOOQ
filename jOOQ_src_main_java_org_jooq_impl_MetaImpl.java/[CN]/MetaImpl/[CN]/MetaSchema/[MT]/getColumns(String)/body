@@ -1,0 +1,11 @@
+{
+  if (columnCache == null && executor.getDialect() != SQLITE) {
+    columnCache=getColumns0("%").intoGroups(fieldByName(String.class,"TABLE_NAME"));
+  }
+  if (columnCache != null) {
+    return columnCache.get(tableName);
+  }
+ else {
+    return getColumns0(tableName);
+  }
+}

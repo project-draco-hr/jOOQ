@@ -95,13 +95,13 @@ throw new SQLDialectNotSupportedException("Date time arithmetic not supported in
 }
 case SQLITE:
 {
-String prefix=(sign > 0) ? "+" : "-";
-if (rhs.get(0).getType() == YearToMonth.class) {
-return field("{datetime}({0}, '" + prefix + rhsAsYTM().intValue()+ " months')",getDataType(),lhs);
+boolean ytm=rhs.get(0).getType() == YearToMonth.class;
+Field<?> interval=val(ytm ? rhsAsYTM().intValue() : rhsAsDTS().getTotalSeconds());
+if (sign < 0) {
+interval=interval.neg();
 }
- else {
-return field("{datetime}({0}, '" + prefix + rhsAsDTS().getTotalSeconds()+ " seconds')",getDataType(),lhs);
-}
+interval=interval.concat(inline(ytm ? " months" : " seconds"));
+return field("{datetime}({0}, {1})",getDataType(),lhs,interval);
 }
 case ORACLE:
 case POSTGRES:

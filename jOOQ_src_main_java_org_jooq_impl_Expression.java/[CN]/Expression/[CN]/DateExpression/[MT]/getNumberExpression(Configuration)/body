@@ -63,10 +63,10 @@ return lhs.sub(rhsAsNumber().concat(" day").cast(DayToSecond.class));
 }
 case SQLITE:
 if (operator == ADD) {
-return field("{datetime}({0}, '+" + rhsAsNumber() + " day')",getDataType(),lhs);
+return field("{datetime}({0}, {1})",getDataType(),lhs,rhsAsNumber().concat(inline(" day")));
 }
  else {
-return field("{datetime}({0}, '-" + rhsAsNumber() + " day')",getDataType(),lhs);
+return field("{datetime}({0}, {1})",getDataType(),lhs,rhsAsNumber().neg().concat(inline(" day")));
 }
 case H2:
 case ORACLE:
