@@ -1,0 +1,5 @@
+{
+  if (asList(DERBY,HSQLDB,MYSQL,POSTGRES).contains(context.getDialect())) {
+    context.keyword(" as");
+  }
+}
