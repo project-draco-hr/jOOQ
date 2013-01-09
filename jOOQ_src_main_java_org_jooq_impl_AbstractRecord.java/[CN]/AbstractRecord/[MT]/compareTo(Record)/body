@@ -1,0 +1,50 @@
+{
+  if (that == null) {
+    throw new NullPointerException();
+  }
+  if (size() != that.size()) {
+    throw new ClassCastException(String.format("Trying to compare incomparable records (wrong degree):\n%s\n%s",this,that));
+  }
+  Class<?>[] thisTypes=getTypes();
+  Class<?>[] thatTypes=getTypes(that);
+  if (!asList(thisTypes).equals(asList(thatTypes))) {
+    throw new ClassCastException(String.format("Trying to compare incomparable records (type mismatch):\n%s\n%s",this,that));
+  }
+  for (int i=0; i < size(); i++) {
+    final Object thisValue=getValue(i);
+    final Object thatValue=that.getValue(i);
+    if (thisValue == null && thatValue == null) {
+      continue;
+    }
+ else     if (thisValue == null) {
+      return 1;
+    }
+ else     if (thatValue == null) {
+      return -1;
+    }
+ else     if (thisValue.getClass().isArray() && thatValue.getClass().isArray()) {
+      if (thisValue.getClass() == byte[].class) {
+        int compare=compare((byte[])thisValue,(byte[])thatValue);
+        if (compare != 0) {
+          return compare;
+        }
+      }
+ else       if (!thisValue.getClass().getComponentType().isPrimitive()) {
+        int compare=compare((Object[])thisValue,(Object[])thatValue);
+        if (compare != 0) {
+          return compare;
+        }
+      }
+ else {
+        throw new ClassCastException(String.format("Unsupported data type in natural ordering: %s",thisValue.getClass()));
+      }
+    }
+ else {
+      int compare=((Comparable)thisValue).compareTo(thatValue);
+      if (compare != 0) {
+        return compare;
+      }
+    }
+  }
+  return 0;
+}
