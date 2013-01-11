@@ -1,0 +1,7 @@
+{
+  Class<?>[] result=new Class[fields.length];
+  for (int i=0; i < fields.length; i++) {
+    result[i]=fields[i].getType();
+  }
+  return result;
+}
