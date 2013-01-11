@@ -1,6 +1,6 @@
 {
   ResultSetMetaData meta=rs.getMetaData();
-  assertEquals(row.getDegree(),meta.getColumnCount());
+  assertEquals(row.size(),meta.getColumnCount());
   assertEquals(Integer.class.getName(),meta.getColumnClassName(1));
   assertEquals(Types.INTEGER,meta.getColumnType(1));
   assertEquals("integer",meta.getColumnTypeName(1));

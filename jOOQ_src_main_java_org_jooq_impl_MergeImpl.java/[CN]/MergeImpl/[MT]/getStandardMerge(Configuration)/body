@@ -11,7 +11,7 @@ case SYBASE:
       if (h2Select != null) {
         FieldList v=new FieldList();
         Row row=h2Select.fieldsRow();
-        for (int i=0; i < row.getDegree(); i++) {
+        for (int i=0; i < row.size(); i++) {
           v.add(row.field(i).as("s" + (i + 1)));
         }
         src=create(config).select(v).from(h2Select).asTable("src");
@@ -61,7 +61,7 @@ case SYBASE:
       }
       Map<Field<?>,Field<?>> update=new LinkedHashMap<Field<?>,Field<?>>();
       Map<Field<?>,Field<?>> insert=new LinkedHashMap<Field<?>,Field<?>>();
-      for (int i=0; i < src.fieldsRow().getDegree(); i++) {
+      for (int i=0; i < src.fieldsRow().size(); i++) {
         if (!onFields.contains(getH2Fields().get(i))) {
           update.put(getH2Fields().get(i),src.field(i));
         }

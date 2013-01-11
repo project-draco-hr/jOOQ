@@ -50,7 +50,7 @@ assertEquals(asList(3,10,10,10,1,2,2,2,1,1,1,1,1),asList(result2.get(2).into(Int
 Field<Integer> lang=TBook_LANGUAGE_ID().cast(Integer.class).as("lang");
 Result<Record> result3=create().select().from(table(select(TBook_AUTHOR_ID(),lang).from(TBook())).pivot(count()).on(lang).in(1,2,3,4)).fetch();
 assertEquals(2,result3.size());
-assertEquals(5,result3.fieldsRow().getDegree());
+assertEquals(5,result3.fieldsRow().size());
 assertEquals(AUTHOR_IDS,result3.getValues(0));
 assertEquals(asList(1,2,0,0,0),asList(result3.get(0).into(Integer[].class)));
 }

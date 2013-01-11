@@ -1,4 +1,4 @@
 {
   checkNotClosed();
-  return result.fieldsRow().getDegree();
+  return result.fieldsRow().size();
 }

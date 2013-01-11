@@ -12,10 +12,10 @@
   assertEquals(Integer.valueOf(1),result.getValue(0,1));
   assertEquals(Integer.valueOf(1),result.getValue(1,0));
   assertEquals(Integer.valueOf(2),result.getValue(1,1));
-  result=create().select().from(TAuthor().as("x")).crossJoin(TAuthor()).orderBy(1,1 + TAuthor().fieldsRow().getDegree()).fetch();
+  result=create().select().from(TAuthor().as("x")).crossJoin(TAuthor()).orderBy(1,1 + TAuthor().fieldsRow().size()).fetch();
   assertEquals(4,result.size());
   assertEquals(asList(1,1,2,2),result.getValues(0,Integer.class));
-  assertEquals(asList(1,2,1,2),result.getValues(0 + TAuthor().fieldsRow().getDegree(),Integer.class));
+  assertEquals(asList(1,2,1,2),result.getValues(0 + TAuthor().fieldsRow().size(),Integer.class));
   assertEquals(8,(int)create().selectCount().from(TAuthor().join(TBook(),JoinType.JOIN)).fetchOne(0,int.class));
   assertEquals(8,(int)create().selectCount().from(TAuthor()).join(TBook(),JoinType.CROSS_JOIN).fetchOne(0,int.class));
 }
