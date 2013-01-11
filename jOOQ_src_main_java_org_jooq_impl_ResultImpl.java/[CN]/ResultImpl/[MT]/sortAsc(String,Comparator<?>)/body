@@ -1,3 +1,3 @@
 {
-  return sortAsc(getIndex(fieldName),comparator);
+  return sortAsc(fieldsRow().indexOf(fieldName),comparator);
 }

@@ -1,9 +1,8 @@
 {
-  final int size=getFields().size();
   List<Map<String,String>> f=new ArrayList<Map<String,String>>();
   List<List<Object>> r=new ArrayList<List<Object>>();
   Map<String,String> fieldMap;
-  for (  Field<?> field : getFields()) {
+  for (  Field<?> field : fields) {
     fieldMap=new LinkedHashMap<String,String>();
     fieldMap.put("name",field.getName());
     fieldMap.put("type",field.getDataType().getTypeName().toUpperCase());
@@ -11,7 +10,7 @@
   }
   for (  Record record : this) {
     List<Object> list=new ArrayList<Object>();
-    for (int index=0; index < size; index++) {
+    for (int index=0; index < fields.length; index++) {
       list.add(record.getValue(index));
     }
     r.add(list);

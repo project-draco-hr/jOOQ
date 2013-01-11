@@ -1,8 +1,8 @@
 {
   try {
     R result=Utils.newRecord(table,getConfiguration());
-    for (    Field<?> targetField : table.getFields()) {
-      Field<?> sourceField=getField(targetField);
+    for (    Field<?> targetField : table.fields()) {
+      Field<?> sourceField=field(targetField);
       if (sourceField != null) {
         Utils.setValue(result,targetField,this,sourceField);
       }
@@ -12,7 +12,7 @@
       if (key != null) {
         boolean isKeySet=true;
         for (        Field<?> field : key.getFields()) {
-          isKeySet&=(getField(field) != null);
+          isKeySet&=(field(field) != null);
         }
         if (isKeySet) {
           ((AbstractRecord)result).setAllChanged(false);

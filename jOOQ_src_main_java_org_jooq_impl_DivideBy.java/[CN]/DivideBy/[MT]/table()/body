@@ -3,7 +3,7 @@
   FieldList select=new FieldList();
   Table<?> outer=dividend.as("dividend");
   for (  Field<?> field : returning) {
-    Field<?> outerField=outer.getField(field);
+    Field<?> outerField=outer.field(field);
     if (outerField == null) {
       select.add(field);
     }

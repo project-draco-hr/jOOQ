@@ -3,12 +3,10 @@
   final int COL_MAX_WIDTH=50;
   final int NUM_COL_MAX_WIDTH=100;
   final int MAX_RECORDS=min(50,maxRecords);
-  final int size=getFields().size();
-  final int[] decimalPlaces=new int[size];
-  final int[] widths=new int[size];
-  for (int index=0; index < size; index++) {
-    Field<?> f=getField(index);
-    if (Number.class.isAssignableFrom(f.getType())) {
+  final int[] decimalPlaces=new int[fields.length];
+  final int[] widths=new int[fields.length];
+  for (int index=0; index < fields.length; index++) {
+    if (Number.class.isAssignableFrom(fields[index].getType())) {
       List<Integer> decimalPlacesList=new ArrayList<Integer>();
       decimalPlacesList.add(0);
       String value;
@@ -20,12 +18,11 @@
     }
   }
   int colMaxWidth;
-  for (int index=0; index < size; index++) {
-    Field<?> f=getField(index);
-    boolean isNumCol=Number.class.isAssignableFrom(f.getType());
+  for (int index=0; index < fields.length; index++) {
+    boolean isNumCol=Number.class.isAssignableFrom(fields[index].getType());
     colMaxWidth=isNumCol ? NUM_COL_MAX_WIDTH : COL_MAX_WIDTH;
     List<Integer> widthList=new ArrayList<Integer>();
-    widthList.add(min(colMaxWidth,max(COL_MIN_WIDTH,f.getName().length())));
+    widthList.add(min(colMaxWidth,max(COL_MIN_WIDTH,fields[index].getName().length())));
     String value;
     for (int i=0; i < min(MAX_RECORDS,size()); i++) {
       value=format0(getValue(i,index),get(i).changed(index));
@@ -38,35 +35,33 @@
   }
   StringBuilder sb=new StringBuilder();
   sb.append("+");
-  for (int index=0; index < size; index++) {
+  for (int index=0; index < fields.length; index++) {
     sb.append(rightPad("",widths[index],"-"));
     sb.append("+");
   }
   sb.append("\n|");
-  for (int index=0; index < size; index++) {
-    Field<?> f=getField(index);
+  for (int index=0; index < fields.length; index++) {
     String padded;
-    if (Number.class.isAssignableFrom(f.getType())) {
-      padded=leftPad(f.getName(),widths[index]);
+    if (Number.class.isAssignableFrom(fields[index].getType())) {
+      padded=leftPad(fields[index].getName(),widths[index]);
     }
  else {
-      padded=rightPad(f.getName(),widths[index]);
+      padded=rightPad(fields[index].getName(),widths[index]);
     }
     sb.append(abbreviate(padded,widths[index]));
     sb.append("|");
   }
   sb.append("\n+");
-  for (int index=0; index < size; index++) {
+  for (int index=0; index < fields.length; index++) {
     sb.append(rightPad("",widths[index],"-"));
     sb.append("+");
   }
   for (int i=0; i < min(maxRecords,size()); i++) {
     sb.append("\n|");
-    for (int index=0; index < size; index++) {
-      Field<?> f=getField(index);
+    for (int index=0; index < fields.length; index++) {
       String value=format0(getValue(i,index),get(i).changed(index)).replace("\n","{lf}").replace("\r","{cr}");
       String padded;
-      if (Number.class.isAssignableFrom(f.getType())) {
+      if (Number.class.isAssignableFrom(fields[index].getType())) {
         value=alignNumberValue(decimalPlaces[index],value);
         padded=leftPad(value,widths[index]);
       }
@@ -79,7 +74,7 @@
   }
   if (size() > 0) {
     sb.append("\n+");
-    for (int index=0; index < size; index++) {
+    for (int index=0; index < fields.length; index++) {
       sb.append(rightPad("",widths[index],"-"));
       sb.append("+");
     }

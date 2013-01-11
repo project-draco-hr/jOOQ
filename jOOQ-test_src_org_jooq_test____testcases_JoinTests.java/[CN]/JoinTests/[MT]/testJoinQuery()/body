@@ -4,9 +4,9 @@
   q1.addConditions(VLibrary_TITLE().notEqual("1984"));
   Table<A> a=TAuthor().as("a");
   Table<B> b=TBook().as("b");
-  Field<Integer> a_authorID=a.getField(TAuthor_ID());
-  Field<Integer> b_authorID=b.getField(TBook_AUTHOR_ID());
-  Field<String> b_title=b.getField(TBook_TITLE());
+  Field<Integer> a_authorID=a.field(TAuthor_ID());
+  Field<Integer> b_authorID=b.field(TBook_AUTHOR_ID());
+  Field<String> b_title=b.field(TBook_TITLE());
   SelectQuery<?> q2=create().selectQuery();
   q2.addFrom(a);
   q2.addJoin(b,b_authorID.equal(a_authorID));
@@ -31,13 +31,13 @@
     assertEquals("Animal Farm",result.getValue(1,TBook_TITLE()));
     assertEquals("Brida",result.getValue(2,TBook_TITLE()));
     Select<A> author=create().selectFrom(TAuthor());
-    result=create().select().from(author).join(TBook()).on(author.getField(TAuthor_ID()).equal(TBook_AUTHOR_ID())).and(TBook_LANGUAGE_ID().in(select(field("id",Integer.class)).from("t_language").where("upper(cd) in (?, ?)","DE","EN"))).orExists(selectOne().where(falseCondition())).orderBy(TBook_ID()).fetch();
+    result=create().select().from(author).join(TBook()).on(author.field(TAuthor_ID()).equal(TBook_AUTHOR_ID())).and(TBook_LANGUAGE_ID().in(select(field("id",Integer.class)).from("t_language").where("upper(cd) in (?, ?)","DE","EN"))).orExists(selectOne().where(falseCondition())).orderBy(TBook_ID()).fetch();
     assertEquals(3,result.size());
     assertEquals("1984",result.getValue(0,TBook_TITLE()));
     assertEquals("Animal Farm",result.getValue(1,TBook_TITLE()));
     assertEquals("Brida",result.getValue(2,TBook_TITLE()));
     Select<B> book=create().selectFrom(TBook());
-    result=create().select().from(TAuthor()).join(book).on(TAuthor_ID().equal(book.getField(TBook_AUTHOR_ID()))).and(book.getField(TBook_LANGUAGE_ID()).in(select(field("id",Integer.class)).from("t_language").where("upper(cd) in (?, ?)","DE","EN"))).orExists(selectOne().where(falseCondition())).orderBy(book.getField(TBook_ID())).fetch();
+    result=create().select().from(TAuthor()).join(book).on(TAuthor_ID().equal(book.field(TBook_AUTHOR_ID()))).and(book.field(TBook_LANGUAGE_ID()).in(select(field("id",Integer.class)).from("t_language").where("upper(cd) in (?, ?)","DE","EN"))).orExists(selectOne().where(falseCondition())).orderBy(book.field(TBook_ID())).fetch();
     assertEquals(3,result.size());
     assertEquals("1984",result.getValue(0,TBook_TITLE()));
     assertEquals("Animal Farm",result.getValue(1,TBook_TITLE()));

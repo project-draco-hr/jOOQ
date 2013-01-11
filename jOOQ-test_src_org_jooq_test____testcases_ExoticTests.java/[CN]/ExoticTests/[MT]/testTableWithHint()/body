@@ -17,7 +17,7 @@ case SQLITE:
 }
 Table<B> b=TBook().as("b").with("READUNCOMMITTED");
 Table<A> a=TAuthor().with("READUNCOMMITTED").as("a");
-Result<?> result=create().select().from(b).join(a).on(b.getField(TBook_AUTHOR_ID()).eq(a.getField(TAuthor_ID()))).orderBy(b.getField(TBook_ID())).fetch();
+Result<?> result=create().select().from(b).join(a).on(b.field(TBook_AUTHOR_ID()).eq(a.field(TAuthor_ID()))).orderBy(b.field(TBook_ID())).fetch();
 assertEquals(4,result.size());
 assertEquals(BOOK_IDS,result.getValues(TBook_ID()));
 }

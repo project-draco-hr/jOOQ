@@ -1,8 +1,9 @@
 {
   int size=record.size();
   Class<?>[] result=new Class[size];
+  Field<?>[] fields=record.fields();
   for (int i=0; i < size; i++) {
-    result[i]=record.getField(i).getType();
+    result[i]=fields[i].getType();
   }
   return result;
 }

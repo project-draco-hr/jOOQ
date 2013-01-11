@@ -1,3 +1,3 @@
 {
-  return new FieldList(rows[0].getFields());
+  return new FieldList(rows[0].fields());
 }

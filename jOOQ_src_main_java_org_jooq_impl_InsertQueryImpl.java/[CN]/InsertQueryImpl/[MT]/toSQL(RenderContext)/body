@@ -35,7 +35,7 @@ break;
 case CUBRID:
 {
 FieldMapForUpdate update=new FieldMapForUpdate();
-Field<?> field=getInto().getField(0);
+Field<?> field=getInto().field(0);
 update.put(field,field);
 toSQLInsert(context);
 context.formatSeparator().keyword("on duplicate key update ").sql(update);

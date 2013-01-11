@@ -8,7 +8,7 @@
   if (record == null) {
     throw new DataChangedException("Database record no longer exists");
   }
-  for (  Field<?> field : getFields()) {
+  for (  Field<?> field : fields) {
     Value<?> thisValue=getValue0(field);
     Value<?> thatValue=((AbstractRecord)record).getValue0(field);
     Object thisObject=thisValue.getOriginal();

@@ -18,7 +18,7 @@ case SYBASE:
 }
 Result<?> r1=create().select().from(TBookToBookStore().pivot(max(TBookToBookStore_STOCK()).as("max"),count(TBookToBookStore_STOCK()).as("cnt")).on(TBookToBookStore_BOOK_STORE_NAME()).in("Orell F??ssli","Ex Libris","Buchhandlung im Volkshaus").as("pivot_table","book_id","of_max","of_cnt","ex_max","ex_cnt","bv_max","bv_cnt")).orderBy(val(1).asc()).fetch();
 assertEquals(3,r1.size());
-assertEquals(7,r1.getFields().size());
+assertEquals(7,r1.fieldsRow().getDegree());
 assertEquals(asList(1,2,3),r1.getValues("book_id",Integer.class));
 assertEquals(asList(10,10,10),r1.getValues("of_max",Integer.class));
 assertEquals(asList(1,1,1),r1.getValues("of_cnt",Integer.class));
@@ -28,7 +28,7 @@ assertEquals(asList(null,null,1),r1.getValues("bv_max",Integer.class));
 assertEquals(asList(0,0,1),r1.getValues("bv_cnt",Integer.class));
 Result<?> r2=create().select().from(table(select(level().as("lvl")).connectBy(level().le(5))).pivot(max(fieldByName("lvl"))).on(fieldByName("lvl")).in(1,2,3,4,5).as("t","a","b","c","d","e")).fetch();
 assertEquals(1,r2.size());
-assertEquals(5,r2.getFields().size());
+assertEquals(5,r2.fieldsRow().getDegree());
 assertEquals(1,(int)r2.get(0).getValue("a",Integer.class));
 assertEquals(2,(int)r2.get(0).getValue("b",Integer.class));
 assertEquals(3,(int)r2.get(0).getValue("c",Integer.class));

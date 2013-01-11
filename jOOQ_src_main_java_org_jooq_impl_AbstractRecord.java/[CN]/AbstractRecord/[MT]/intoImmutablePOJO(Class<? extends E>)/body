@@ -8,7 +8,7 @@
   }
   for (  Constructor<E> constructor : constructors) {
     Class<?>[] parameterTypes=constructor.getParameterTypes();
-    if (parameterTypes.length == getFields().size()) {
+    if (parameterTypes.length == size()) {
       Object[] converted=Convert.convert(intoArray(),parameterTypes);
       return accessible(constructor).newInstance(converted);
     }

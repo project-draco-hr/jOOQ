@@ -1,5 +1,5 @@
 {
-  int size=getFields().size();
+  int size=size();
   if (size > result.length) {
     result=(Object[])Array.newInstance(componentType,size);
   }

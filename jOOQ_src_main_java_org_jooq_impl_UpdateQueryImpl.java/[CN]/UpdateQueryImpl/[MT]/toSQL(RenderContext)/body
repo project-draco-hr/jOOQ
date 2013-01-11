@@ -9,7 +9,7 @@
  else {
       Select<?> select=multiSelect;
       if (multiValue != null) {
-        select=select(multiValue.getFields());
+        select=select(multiValue.fields());
       }
       context.sql("(").formatIndentStart().formatNewLine().subquery(true).sql(select).subquery(false).formatIndentEnd().formatNewLine().sql(")");
     }

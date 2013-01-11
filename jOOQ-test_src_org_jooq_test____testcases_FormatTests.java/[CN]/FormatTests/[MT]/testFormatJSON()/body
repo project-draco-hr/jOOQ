@@ -1,5 +1,5 @@
 {
-  List<Field<?>> fields=TBook().getFields();
+  Row row=TBook().fieldsRow();
   Result<B> books=create().selectFrom(TBook()).fetch();
   String json=books.formatJSON();
   String token1="{\"fields\":[";
@@ -7,7 +7,7 @@
   json=json.replace(token1,"");
   String token2="";
   String separator="";
-  for (  Field<?> field : fields) {
+  for (  Field<?> field : row.fields()) {
     token2+=separator + "{\"name\":\"" + field.getName()+ "\""+ ",\"type\":\""+ field.getDataType().getTypeName().toUpperCase()+ "\"}";
     separator=",";
   }
@@ -24,7 +24,7 @@
       token4=",[";
     }
     separator="";
-    for (    Field<?> field : fields) {
+    for (    Field<?> field : row.fields()) {
       Object value=record.getValue(field);
       if (value == null) {
         token4+=separator + null;

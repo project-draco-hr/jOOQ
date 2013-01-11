@@ -1,5 +1,5 @@
 {
-  List<Field<?>> fields=TBook().getFields();
+  Row row=TBook().fieldsRow();
   Result<B> books=create().selectFrom(TBook()).fetch();
   String html=books.formatHTML();
   InputStream is=new ByteArrayInputStream(html.getBytes());
@@ -12,15 +12,15 @@
   assertEquals("1",xp.evaluate("count(/table/thead)",doc));
   assertEquals("1",xp.evaluate("count(/table/thead/tr)",doc));
   assertEquals("0",xp.evaluate("count(/table/thead/tr/td)",doc));
-  assertEquals("" + fields.size(),xp.evaluate("count(/table/thead/tr/th)",doc));
-  for (int i=0; i < fields.size(); i++) {
-    assertEquals(fields.get(i).getName(),xp.evaluate("/table/thead/tr/th[" + (i + 1) + "]/text()",doc));
+  assertEquals("" + row.getDegree(),xp.evaluate("count(/table/thead/tr/th)",doc));
+  for (int i=0; i < row.getDegree(); i++) {
+    assertEquals(row.field(i).getName(),xp.evaluate("/table/thead/tr/th[" + (i + 1) + "]/text()",doc));
   }
   assertEquals("1",xp.evaluate("count(/table/tbody)",doc));
   assertEquals("4",xp.evaluate("count(/table/tbody/tr)",doc));
-  assertEquals("" + 4 * fields.size(),xp.evaluate("count(/table/tbody/tr/td)",doc));
+  assertEquals("" + 4 * row.getDegree(),xp.evaluate("count(/table/tbody/tr/td)",doc));
   for (int j=0; j < books.size(); j++) {
-    for (int i=0; i < fields.size(); i++) {
+    for (int i=0; i < row.getDegree(); i++) {
       assertEquals(books.get(j).getValue(i,String.class,"{null}"),xp.evaluate("/table/tbody/tr[" + (j + 1) + "]/td["+ (i + 1)+ "]/text()",doc));
     }
   }

@@ -3,7 +3,7 @@
   List<String> propertyNames=Arrays.asList(properties.value());
   Class<?>[] parameterTypes=constructor.getParameterTypes();
   Object[] parameterValues=new Object[parameterTypes.length];
-  for (  Field<?> field : getFields()) {
+  for (  Field<?> field : fields) {
     List<java.lang.reflect.Field> members;
     Method method;
     if (useAnnotations) {

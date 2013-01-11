@@ -1,5 +1,5 @@
 {
-  int index=getIndex(key);
+  int index=fieldsRow().indexOf(key);
   Map<K,List<E>> map=new LinkedHashMap<K,List<E>>();
   for (  R record : this) {
     K keyVal=(K)record.getValue(index);

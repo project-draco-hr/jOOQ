@@ -1,7 +1,7 @@
 {
   SelectQuery<?> q=create().selectQuery();
   q.addFrom(TAuthor());
-  q.addSelect(TAuthor().getFields());
+  q.addSelect(TAuthor().fields());
   q.addOrderBy(TAuthor_LAST_NAME());
   Result<?> result=q.fetch();
   assertEquals(2,result.size());

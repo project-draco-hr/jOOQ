@@ -1,5 +1,4 @@
 {
-  final int size=getFields().size();
   try {
     DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
     DocumentBuilder builder=factory.newDocumentBuilder();
@@ -9,7 +8,7 @@
     document.appendChild(eResult);
     Element eFields=document.createElement("fields");
     eResult.appendChild(eFields);
-    for (    Field<?> field : getFields()) {
+    for (    Field<?> field : fields) {
       Element eField=document.createElement("field");
       eField.setAttribute("name",field.getName());
       eField.setAttribute("type",field.getDataType().getTypeName().toUpperCase());
@@ -20,8 +19,8 @@
     for (    Record record : this) {
       Element eRecord=document.createElement("record");
       eRecords.appendChild(eRecord);
-      for (int index=0; index < size; index++) {
-        Field<?> field=getField(index);
+      for (int index=0; index < fields.length; index++) {
+        Field<?> field=fields[index];
         Object value=record.getValue(index);
         Element eValue=document.createElement("value");
         eValue.setAttribute("field",field.getName());

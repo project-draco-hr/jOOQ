@@ -1,0 +1,3 @@
+{
+  return addAll(index,list(c));
+}

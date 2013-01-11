@@ -1,0 +1,3 @@
+{
+  fieldNames(context,list(fields));
+}

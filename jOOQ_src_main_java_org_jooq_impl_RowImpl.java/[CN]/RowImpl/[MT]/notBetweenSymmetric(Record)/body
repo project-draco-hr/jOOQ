@@ -1,5 +1,4 @@
 {
-  List<Field<?>> f=record.getFields();
-  RowN row=new RowImpl(vals(record.intoArray(),f.toArray(new Field[f.size()])));
+  RowN row=new RowImpl(vals(record.intoArray(),record.fields()));
   return notBetweenSymmetric(row);
 }

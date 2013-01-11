@@ -6,7 +6,7 @@ case ORACLE:
 case DB2:
 case POSTGRES:
 {
-  for (  Field<?> field : record.getFields()) {
+  for (  Field<?> field : record.fields()) {
     context.bind(val(record.getValue(field)));
   }
   break;

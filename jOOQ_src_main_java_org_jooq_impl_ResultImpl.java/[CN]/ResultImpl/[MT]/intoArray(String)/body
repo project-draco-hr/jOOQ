@@ -1,5 +1,5 @@
 {
-  Class<?> type=getField(fieldName).getType();
+  Class<?> type=field(fieldName).getType();
   List<?> list=getValues(fieldName);
   return list.toArray((Object[])Array.newInstance(type,list.size()));
 }

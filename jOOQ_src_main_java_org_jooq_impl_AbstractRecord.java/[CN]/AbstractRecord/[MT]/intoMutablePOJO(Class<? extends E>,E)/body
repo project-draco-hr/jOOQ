@@ -1,6 +1,6 @@
 {
   boolean useAnnotations=hasColumnAnnotations(type);
-  for (  Field<?> field : getFields()) {
+  for (  Field<?> field : fields) {
     List<java.lang.reflect.Field> members;
     List<java.lang.reflect.Method> methods;
     if (useAnnotations) {

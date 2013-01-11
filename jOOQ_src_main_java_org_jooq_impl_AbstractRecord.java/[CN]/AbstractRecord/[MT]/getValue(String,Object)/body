@@ -1,3 +1,3 @@
 {
-  return getValue((Field<Object>)getField(fieldName),defaultValue);
+  return getValue((Field<Object>)field(fieldName),defaultValue);
 }

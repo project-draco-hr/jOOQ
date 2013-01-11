@@ -1,3 +1,3 @@
 {
-  return (Field<T10>)getField(9);
+  return (Field<T10>)fields[9];
 }

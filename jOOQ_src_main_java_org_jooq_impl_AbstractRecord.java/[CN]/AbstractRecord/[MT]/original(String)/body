@@ -1,3 +1,3 @@
 {
-  return original(getIndex(fieldName));
+  return original(fieldsRow().indexOf(fieldName));
 }

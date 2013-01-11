@@ -2,7 +2,7 @@
   int id=create().select().from(TBookToBookStore().divideBy(TBookStore()).on(TBookToBookStore_BOOK_STORE_NAME().equal(TBookStore_NAME())).returning(TBookToBookStore_BOOK_ID())).fetchOne(0,Integer.class);
   assertEquals(3,id);
   Table<?> notAllBookStores=create().select().from(TBookStore()).where(TBookStore_NAME().notEqual("Buchhandlung im Volkshaus")).asTable("not_all_bookstores");
-  Result<?> result=create().select().from(TBookToBookStore().divideBy(notAllBookStores).on(TBookToBookStore_BOOK_STORE_NAME().equal(notAllBookStores.getField(TBookStore_NAME()))).returning(TBookToBookStore_BOOK_ID(),field("'abc'").as("abc"))).orderBy(1).fetch();
+  Result<?> result=create().select().from(TBookToBookStore().divideBy(notAllBookStores).on(TBookToBookStore_BOOK_STORE_NAME().equal(notAllBookStores.field(TBookStore_NAME()))).returning(TBookToBookStore_BOOK_ID(),field("'abc'").as("abc"))).orderBy(1).fetch();
   assertEquals(asList((Object)1,"abc"),asList(result.get(0).intoArray()));
   assertEquals(asList((Object)3,"abc"),asList(result.get(1).intoArray()));
 }

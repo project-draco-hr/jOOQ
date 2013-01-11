@@ -1,6 +1,6 @@
 {
   Table<B> b=TBook().as("b");
-  Field<Integer> b_ID=b.getField(TBook_ID());
+  Field<Integer> b_ID=b.field(TBook_ID());
   List<Integer> ids=create().select(b_ID).from(b).orderBy(b_ID).fetch(b_ID);
   assertEquals(4,ids.size());
   assertEquals(BOOK_IDS,ids);

@@ -3,7 +3,7 @@
   assertEquals("(select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" where \"TABLE1\".\"ID1\" = 1) union (select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" where \"TABLE1\".\"ID1\" = 2)",r_refI().render(combine));
   assertEquals("(select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" where \"TABLE1\".\"ID1\" = ?) union (select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" where \"TABLE1\".\"ID1\" = ?)",r_ref().render(combine));
   assertEquals(combine,createCombinedSelect());
-  combine=create.select(createCombinedSelectQuery().getField(FIELD_ID1)).from(createCombinedSelectQuery()).orderBy(FIELD_ID1);
+  combine=create.select(createCombinedSelectQuery().field(FIELD_ID1)).from(createCombinedSelectQuery()).orderBy(FIELD_ID1);
   Pattern p=Pattern.compile("\"alias_\\d+\"");
   Matcher m=p.matcher(r_ref().render(combine));
   m.find();

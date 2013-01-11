@@ -3,7 +3,7 @@
     if (asList(ASE,CUBRID,DB2,H2,SQLSERVER,SYBASE).contains(context.getDialect())) {
       String glue="on ";
       for (      Field<?> field : using) {
-        context.formatSeparator().keyword(glue).sql(lhs.getField(field)).sql(" = ").sql(rhs.getField(field));
+        context.formatSeparator().keyword(glue).sql(lhs.field(field)).sql(" = ").sql(rhs.field(field));
         glue="and ";
       }
     }
@@ -15,8 +15,8 @@
   }
  else   if (simulateNaturalJoin(context) || simulateNaturalLeftOuterJoin(context) || simulateNaturalRightOuterJoin(context)) {
     String glue="on ";
-    for (    Field<?> field : lhs.getFields()) {
-      Field<?> other=rhs.getField(field);
+    for (    Field<?> field : lhs.fields()) {
+      Field<?> other=rhs.field(field);
       if (other != null) {
         context.formatSeparator().keyword(glue).sql(field).sql(" = ").sql(other);
         glue="and ";

@@ -1,4 +1,4 @@
 {
   checkNotClosed();
-  return result.getField(column - 1).getName();
+  return result.field(column - 1).getName();
 }

@@ -1,11 +1,11 @@
 {
   Result<Record> result1=create().fetchFromCSV("A,B,\"C\",\"\"\"D\"\n" + "1,,a,b\n" + "1,2,a\n"+ "1,2,a,b,c");
-  assertEquals(4,result1.getFields().size());
+  assertEquals(4,result1.fieldsRow().getDegree());
   assertEquals(3,result1.size());
-  assertEquals("A",result1.getField(0).getName());
-  assertEquals("B",result1.getField(1).getName());
-  assertEquals("C",result1.getField(2).getName());
-  assertEquals("\"D",result1.getField(3).getName());
+  assertEquals("A",result1.field(0).getName());
+  assertEquals("B",result1.field(1).getName());
+  assertEquals("C",result1.field(2).getName());
+  assertEquals("\"D",result1.field(3).getName());
   assertEquals(asList("1","1","1"),result1.getValues(0));
   assertEquals(asList(1,1,1),result1.getValues(0,Integer.class));
   assertEquals(asList("","2","2"),result1.getValues(1));

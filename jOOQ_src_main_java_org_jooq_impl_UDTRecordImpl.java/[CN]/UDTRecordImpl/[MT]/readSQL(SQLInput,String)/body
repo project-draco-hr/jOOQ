@@ -1,5 +1,5 @@
 {
-  for (  Field<?> field : getUDT().getFields()) {
+  for (  Field<?> field : getUDT().fields()) {
     setValue(DefaultExecuteContext.registeredConfiguration(),stream,field);
   }
 }

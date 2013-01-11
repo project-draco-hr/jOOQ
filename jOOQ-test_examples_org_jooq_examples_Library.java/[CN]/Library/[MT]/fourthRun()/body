@@ -6,6 +6,6 @@
     System.out.println("Author : " + record.getFirstName() + " "+ record.getLastName()+ " has english or portuguese books");
   }
   Select<?> union=create().select(TBook.TITLE,TBook.AUTHOR_ID).from(T_BOOK).where(TBook.PUBLISHED_IN.greaterThan(1990)).union(create().select(TBook.TITLE,TBook.AUTHOR_ID).from(T_BOOK).where(TBook.AUTHOR_ID.equal(1)));
-  System.out.println(create().select(union.getField(TBook.TITLE)).from(union).orderBy(union.getField(TBook.AUTHOR_ID).desc()));
-  System.out.println(create().select(union.getField(TBook.TITLE),union.getField(TBook.AUTHOR_ID)).from(union).orderBy(union.getField(TBook.AUTHOR_ID).desc()).fetch());
+  System.out.println(create().select(union.field(TBook.TITLE)).from(union).orderBy(union.field(TBook.AUTHOR_ID).desc()));
+  System.out.println(create().select(union.field(TBook.TITLE),union.fieldsRow().field(TBook.AUTHOR_ID)).from(union).orderBy(union.field(TBook.AUTHOR_ID).desc()).fetch());
 }

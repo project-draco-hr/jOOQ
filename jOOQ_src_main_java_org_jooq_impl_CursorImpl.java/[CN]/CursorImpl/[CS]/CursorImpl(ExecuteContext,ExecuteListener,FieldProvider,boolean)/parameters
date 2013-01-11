@@ -1,4 +1,0 @@
-ExecuteContext ctx
-ExecuteListener listener
-FieldProvider fields
-boolean keepStatement

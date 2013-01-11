@@ -6,8 +6,8 @@
   assertEquals(BOOK_TITLES,result1.getValues(TBook_TITLE()));
   assertEquals(BOOK_AUTHOR_IDS,result1.getValues(TBook_AUTHOR_ID()));
   assertEquals(BOOK_NULLS,result1.getValues(TBook_PUBLISHED_IN()));
-  assertNull(result1.getField(TAuthor_FIRST_NAME()));
-  assertNull(result1.getField(TAuthor_LAST_NAME()));
+  assertNull(result1.field(TAuthor_FIRST_NAME()));
+  assertNull(result1.field(TAuthor_LAST_NAME()));
   result1.get(0).setValue(TBook_TITLE(),"Changed");
   assertEquals(1,result1.get(0).store());
   Result<B> books1=create().selectFrom(TBook()).orderBy(TBook_ID()).fetch();

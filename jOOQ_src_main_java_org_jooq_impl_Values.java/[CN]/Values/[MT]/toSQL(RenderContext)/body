@@ -10,7 +10,7 @@ case H2:
       Select<Record> selects=null;
       boolean subquery=context.subquery();
       for (      Row row : rows) {
-        Select<Record> select=create().select(row.getFields());
+        Select<Record> select=create().select(row.fields());
         if (selects == null) {
           selects=select;
         }

@@ -1,8 +1,6 @@
 {
-  List<Field<?>> f=getFields();
-  int size=f.size();
-  for (int i=0; i < size; i++) {
-    Field<?> field=f.get(i);
+  for (int i=0; i < fields.length; i++) {
+    Field<?> field=fields[i];
     String name=field.getName();
     if (map.containsKey(name)) {
       Utils.setValue(this,field,map.get(name));

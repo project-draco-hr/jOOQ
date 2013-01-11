@@ -1,6 +1,6 @@
 {
   FieldList result=new FieldList();
-  result.addAll(lhs.asTable().getFields());
-  result.addAll(rhs.asTable().getFields());
+  result.addAll(lhs.asTable().fields());
+  result.addAll(rhs.asTable().fields());
   return result;
 }

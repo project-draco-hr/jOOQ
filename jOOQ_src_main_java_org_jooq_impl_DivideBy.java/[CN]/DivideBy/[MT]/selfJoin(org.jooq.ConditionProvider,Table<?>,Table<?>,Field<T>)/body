@@ -1,6 +1,6 @@
 {
-  Field<T> outerField=outer.getField(field);
-  Field<T> innerField=inner.getField(field);
+  Field<T> outerField=outer.field(field);
+  Field<T> innerField=inner.field(field);
   if (outerField == null || innerField == null) {
     return;
   }

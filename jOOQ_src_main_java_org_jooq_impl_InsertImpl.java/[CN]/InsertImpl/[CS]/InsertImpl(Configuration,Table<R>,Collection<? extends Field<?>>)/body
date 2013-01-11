@@ -1,5 +1,5 @@
 {
   super(new InsertQueryImpl<R>(configuration,into));
   this.into=into;
-  this.fields=new ArrayList<Field<?>>(fields);
+  this.fields=(fields == null || fields.size() == 0) ? into.fields() : fields.toArray(new Field[fields.size()]);
 }

@@ -5,7 +5,7 @@
   checkStatement(ctx,true);
   checkResultSet(ctx,true);
   assertNotNull(ctx.record());
-  assertEquals(2,ctx.record().getFields().size());
+  assertEquals(2,ctx.record().fieldsRow().getDegree());
   assertNotNull(ctx.result());
   assertEquals(2,ctx.result().size());
 }

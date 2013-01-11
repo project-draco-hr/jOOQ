@@ -1,3 +1,3 @@
 {
-  return (T)original(getIndex(field));
+  return (T)original(fieldsRow().indexOf(field));
 }

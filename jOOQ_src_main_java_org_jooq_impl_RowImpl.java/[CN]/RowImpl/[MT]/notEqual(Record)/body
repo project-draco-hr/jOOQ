@@ -1,5 +1,4 @@
 {
-  List<Field<?>> f=record.getFields();
-  Row row=new RowImpl(vals(record.intoArray(),f.toArray(new Field[f.size()])));
+  Row row=new RowImpl(vals(record.intoArray(),record.fields()));
   return new RowCondition(this,row,Comparator.NOT_EQUALS);
 }

@@ -5,8 +5,8 @@
       if (generatedTable != null) {
         assertNotNull(generatedTable);
         assertEquals(metaTable,generatedTable);
-        List<Field<?>> metaFields=metaTable.getFields();
-        assertTrue(metaFields.containsAll(generatedTable.getFields()));
+        List<Field<?>> metaFields=asList(metaTable.fields());
+        assertTrue(metaFields.containsAll(asList(generatedTable.fields())));
         if (generatedTable instanceof UpdatableTable && metaTable instanceof UpdatableTable) {
           UpdatableTable<?> generatedUTable=(UpdatableTable<?>)generatedTable;
           UpdatableTable<?> metaUTable=(UpdatableTable<?>)metaTable;

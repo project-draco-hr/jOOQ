@@ -1,7 +1,5 @@
 {
-  List<Field<?>> f=getFields();
-  int size=f.size();
-  for (int i=0; i < size && i < array.length; i++) {
-    Utils.setValue(this,f.get(i),array[i]);
+  for (int i=0; i < fields.length && i < array.length; i++) {
+    Utils.setValue(this,fields[i],array[i]);
   }
 }

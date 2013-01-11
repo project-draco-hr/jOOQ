@@ -1,8 +1,8 @@
 {
   checkNotClosed();
-  Field<?> field=result.getField(columnLabel);
+  Field<?> field=result.field(columnLabel);
   if (field == null) {
     throw new SQLException("No such column : " + columnLabel);
   }
-  return result.getFields().indexOf(field) + 1;
+  return result.fieldsRow().indexOf(field) + 1;
 }

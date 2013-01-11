@@ -8,7 +8,7 @@ case SYBASE:
         int hash=Utils.hash(using);
         context.keyword(" as ").sql("dummy_").sql(hash).sql("(");
         String separator="";
-        for (        Field<?> field : ((Select<?>)using).getFields()) {
+        for (        Field<?> field : ((Select<?>)using).fields()) {
           String name=StringUtils.isBlank(field.getName()) ? "dummy_" + hash + "_"+ Utils.hash(field) : field.getName();
           context.sql(separator).literal(name);
           separator=", ";

@@ -1,5 +1,0 @@
-ExecuteContext ctx
-ExecuteListener listener
-FieldProvider fields
-Class<? extends R> type
-boolean keepStatement

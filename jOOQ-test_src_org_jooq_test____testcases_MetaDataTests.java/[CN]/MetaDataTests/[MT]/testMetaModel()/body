@@ -114,7 +114,7 @@
   assertEquals(0,TAuthor_LAST_NAME().getDataType().precision());
   assertEquals(0,TAuthor_LAST_NAME().getDataType().scale());
   assertEquals(50,TAuthor_LAST_NAME().getDataType().length());
-  for (  Field<?> field : T639().getFields()) {
+  for (  Field<?> field : T639().fields()) {
     if ("BYTE".equalsIgnoreCase(field.getName())) {
       assertEquals(Byte.class,field.getType());
       assertEquals(SQLDataType.TINYINT,field.getDataType());

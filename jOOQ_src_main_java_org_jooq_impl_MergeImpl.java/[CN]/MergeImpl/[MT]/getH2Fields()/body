@@ -1,7 +1,6 @@
 {
   if (h2Fields == null) {
-    h2Fields=new FieldList();
-    h2Fields.addAll(table.getFields());
+    h2Fields=new FieldList(table.fields());
   }
   return h2Fields;
 }

@@ -1,9 +1,8 @@
 {
-  final int size=getFields().size();
   StringBuilder sb=new StringBuilder();
   sb.append("<result xmlns=\"http://www.jooq.org/xsd/jooq-export-2.6.0.xsd\">");
   sb.append("<fields>");
-  for (  Field<?> field : getFields()) {
+  for (  Field<?> field : fields) {
     sb.append("<field name=\"");
     sb.append(escapeXML(field.getName()));
     sb.append("\" ");
@@ -15,11 +14,10 @@
   sb.append("<records>");
   for (  Record record : this) {
     sb.append("<record>");
-    for (int index=0; index < size; index++) {
-      Field<?> field=getField(index);
+    for (int index=0; index < fields.length; index++) {
       Object value=record.getValue(index);
       sb.append("<value field=\"");
-      sb.append(escapeXML(field.getName()));
+      sb.append(escapeXML(fields[index].getName()));
       sb.append("\"");
       if (value == null) {
         sb.append("/>");

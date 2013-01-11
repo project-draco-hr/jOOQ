@@ -1,0 +1,10 @@
+{
+  Field<?> compareWith=field(field);
+  if (compareWith != null) {
+    int size=size();
+    for (int i=0; i < size; i++) {
+      if (get(i).equals(compareWith))       return i;
+    }
+  }
+  return -1;
+}

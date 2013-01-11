@@ -1,5 +1,5 @@
 {
-  for (  Field<?> field : record.getFields()) {
+  for (  Field<?> field : record.fields()) {
     if (((AbstractRecord)record).getValue0(field).isChanged()) {
       addValue(record,field);
     }

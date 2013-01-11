@@ -19,7 +19,7 @@
     listener.executeEnd(ctx);
     if (!many) {
       if (ctx.resultSet() != null) {
-        FieldList fields=new FieldList(getFields(ctx.resultSet().getMetaData()));
+        Field<?>[] fields=getFields(ctx.resultSet().getMetaData());
         cursor=new CursorImpl<R>(ctx,listener,fields,getRecordType(),keepStatement());
         if (!lazy) {
           result=cursor.fetch();
@@ -35,7 +35,7 @@
       boolean anyResults=false;
       while (ctx.resultSet() != null) {
         anyResults=true;
-        FieldProvider fields=new MetaDataFieldProvider(ctx,ctx.resultSet().getMetaData());
+        Field<?>[] fields=new MetaDataFieldProvider(ctx,ctx.resultSet().getMetaData()).getFields();
         Cursor<Record> c=new CursorImpl<Record>(ctx,listener,fields,true);
         results.add(c.fetch());
         if (ctx.statement().getMoreResults()) {

@@ -28,7 +28,7 @@
   check4(rs1);
   assertFalse(rs1.relative(1));
   check5(rs1);
-  checkMetaData(result,rs1);
+  checkMetaData(result.fieldsRow(),rs1);
   B book=create().selectFrom(TBook()).where(TBook_ID().eq(1)).fetchOne();
   ResultSet rs2=book.intoResultSet();
   check0(rs2);
@@ -58,5 +58,5 @@
   check1(rs2,true);
   assertFalse(rs2.relative(1));
   check5(rs2);
-  checkMetaData(book,rs2);
+  checkMetaData(book.fieldsRow(),rs2);
 }

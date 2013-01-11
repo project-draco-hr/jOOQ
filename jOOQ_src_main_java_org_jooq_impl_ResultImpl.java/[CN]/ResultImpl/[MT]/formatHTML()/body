@@ -1,10 +1,9 @@
 {
-  final int size=getFields().size();
   StringBuilder sb=new StringBuilder();
   sb.append("<table>");
   sb.append("<thead>");
   sb.append("<tr>");
-  for (  Field<?> field : getFields()) {
+  for (  Field<?> field : fields) {
     sb.append("<th>");
     sb.append(field.getName());
     sb.append("</th>");
@@ -14,7 +13,7 @@
   sb.append("<tbody>");
   for (  Record record : this) {
     sb.append("<tr>");
-    for (int index=0; index < size; index++) {
+    for (int index=0; index < fields.length; index++) {
       sb.append("<td>");
       sb.append(format0(record.getValue(index),false));
       sb.append("</td>");

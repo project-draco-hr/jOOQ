@@ -1,11 +1,11 @@
 {
   SelectQuery<?> select=create().selectQuery();
-  select.addSelect(fields);
+  select.addSelect(f);
   select.addFrom(getTable());
   Utils.addConditions(select,this,getMainKey().getFieldsArray());
   if (select.execute() == 1) {
     AbstractRecord record=(AbstractRecord)select.getResult().get(0);
-    for (    Field<?> field : fields) {
+    for (    Field<?> field : f) {
       setValue(field,record.getValue0(field));
     }
   }

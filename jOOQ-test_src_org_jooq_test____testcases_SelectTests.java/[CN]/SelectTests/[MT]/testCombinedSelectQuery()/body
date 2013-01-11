@@ -6,6 +6,6 @@
   Select<?> union=q1.unionAll(q2);
   int rows=union.execute();
   assertEquals(3,rows);
-  rows=create().selectDistinct(union.getField(TBook_AUTHOR_ID()),TAuthor_FIRST_NAME()).from(union).join(TAuthor()).on(union.getField(TBook_AUTHOR_ID()).equal(TAuthor_ID())).orderBy(TAuthor_FIRST_NAME()).execute();
+  rows=create().selectDistinct(union.field(TBook_AUTHOR_ID()),TAuthor_FIRST_NAME()).from(union).join(TAuthor()).on(union.field(TBook_AUTHOR_ID()).equal(TAuthor_ID())).orderBy(TAuthor_FIRST_NAME()).execute();
   assertEquals(2,rows);
 }

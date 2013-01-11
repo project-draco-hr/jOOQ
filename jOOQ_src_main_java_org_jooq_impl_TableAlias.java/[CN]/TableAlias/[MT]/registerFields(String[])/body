@@ -1,8 +1,8 @@
 {
-  List<Field<?>> fields=this.alias.wrapped().getFields();
-  int size=fields.size();
+  Row row=this.alias.wrapped().fieldsRow();
+  int size=row.getDegree();
   for (int i=0; i < size; i++) {
-    Field<?> field=fields.get(i);
+    Field<?> field=row.field(i);
     String name=field.getName();
     if (fieldAliases != null && fieldAliases.length > i) {
       name=fieldAliases[i];
