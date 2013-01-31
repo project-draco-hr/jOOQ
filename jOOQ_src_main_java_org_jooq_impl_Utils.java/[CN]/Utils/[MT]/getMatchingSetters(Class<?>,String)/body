@@ -4,7 +4,7 @@
   String camelCaseLC=StringUtils.toLC(camelCase);
   for (  Method method : getInstanceMethods(type)) {
     Class<?>[] parameterTypes=method.getParameterTypes();
-    if (parameterTypes.length == 1 && !Record.class.isAssignableFrom(parameterTypes[0])) {
+    if (parameterTypes.length == 1) {
       if (name.equals(method.getName())) {
         result.add(accessible(method));
       }
