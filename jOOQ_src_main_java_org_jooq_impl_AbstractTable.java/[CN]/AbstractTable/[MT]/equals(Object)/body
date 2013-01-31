@@ -1,0 +1,9 @@
+{
+  if (that instanceof AbstractTable) {
+    if (name.equals(((AbstractTable<?>)that).name)) {
+      return super.equals(that);
+    }
+    return false;
+  }
+  return false;
+}

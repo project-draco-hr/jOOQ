@@ -1,3 +1,3 @@
 {
-  return (Value<T>)getValues()[fieldsRow().indexOf(field)];
+  return getValue0(fieldsRow().indexOf(field));
 }

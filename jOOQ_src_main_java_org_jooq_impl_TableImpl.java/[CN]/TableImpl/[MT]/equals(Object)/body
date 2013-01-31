@@ -1,0 +1,7 @@
+{
+  if (that instanceof TableImpl) {
+    TableImpl<?> other=(TableImpl<?>)that;
+    return StringUtils.equals(getSchema(),other.getSchema()) && getName().equals(other.getName());
+  }
+  return super.equals(that);
+}

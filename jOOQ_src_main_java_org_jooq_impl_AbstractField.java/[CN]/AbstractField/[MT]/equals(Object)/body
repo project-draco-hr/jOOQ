@@ -1,0 +1,9 @@
+{
+  if (that instanceof AbstractField) {
+    if (name.equals(((AbstractField<?>)that).name)) {
+      return super.equals(that);
+    }
+    return false;
+  }
+  return false;
+}

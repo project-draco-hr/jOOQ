@@ -1,0 +1,7 @@
+{
+  if (that instanceof TableField) {
+    TableField<?,?> other=(TableField<?,?>)that;
+    return getTable().equals(other.getTable()) && getName().equals(other.getName());
+  }
+  return super.equals(that);
+}

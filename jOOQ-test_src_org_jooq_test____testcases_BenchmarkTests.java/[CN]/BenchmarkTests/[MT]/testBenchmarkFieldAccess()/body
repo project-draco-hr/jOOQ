@@ -1,0 +1,7 @@
+{
+  B book=create().newRecord(TBook());
+  for (int i=0; i < REPETITIONS_FIELD_ACCESS; i++) {
+    book.setValue(TBook_ID(),i);
+    book.setValue(TBook_AUTHOR_ID(),book.getValue(TBook_ID()));
+  }
+}
