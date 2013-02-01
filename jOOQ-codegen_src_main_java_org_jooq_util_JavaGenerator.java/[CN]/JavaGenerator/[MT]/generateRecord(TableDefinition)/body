@@ -63,11 +63,11 @@
     out.tab(1).header("Record%s type implementation",degree);
     out.tab(1).overrideInherit();
     out.tab(1).println("public %s%s<%s> fieldsRow() {",Row.class,degree,rowType);
-    out.tab(2).println("return %s.row([[field%s()]]);",Factory.class,range(1,degree));
+    out.tab(2).println("return (%s%s) super.fieldsRow();",Row.class,degree);
     out.tab(1).println("}");
     out.tab(1).overrideInherit();
     out.tab(1).println("public %s%s<%s> valuesRow() {",Row.class,degree,rowType);
-    out.tab(2).println("return %s.row([[value%s()]]);",Factory.class,range(1,degree));
+    out.tab(2).println("return (%s%s) super.valuesRow();",Row.class,degree);
     out.tab(1).println("}");
     for (int i=1; i <= degree; i++) {
       ColumnDefinition column=table.getColumn(i - 1);

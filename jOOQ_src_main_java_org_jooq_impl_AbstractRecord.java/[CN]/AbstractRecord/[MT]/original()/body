@@ -1,5 +1,5 @@
 {
-  AbstractRecord result=Utils.newRecord(getClass(),fields,getConfiguration());
+  AbstractRecord result=Utils.newRecord(getClass(),fields.fields,getConfiguration());
   Value<?>[] v=getValues();
   for (int i=0; i < v.length; i++) {
     result.setValue(i,new Value<Object>(v[i].getOriginal()));

@@ -1,5 +1,6 @@
 {
-  for (int i=0; i < fields.length && i < array.length; i++) {
-    Utils.setValue(this,fields[i],array[i]);
+  int size=fields.size();
+  for (int i=0; i < size && i < array.length; i++) {
+    Utils.setValue(this,fields.field(i),array[i]);
   }
 }

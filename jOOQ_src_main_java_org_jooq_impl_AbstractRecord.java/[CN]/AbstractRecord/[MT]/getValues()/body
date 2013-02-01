@@ -1,6 +1,6 @@
 {
   if (values == null) {
-    values=new Value<?>[fields.length];
+    values=new Value<?>[fields.size()];
     for (int i=0; i < values.length; i++) {
       values[i]=new Value<Object>(null);
     }

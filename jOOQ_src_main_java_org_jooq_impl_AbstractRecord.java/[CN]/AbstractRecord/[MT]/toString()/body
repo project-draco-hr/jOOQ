@@ -1,5 +1,5 @@
 {
-  Result<AbstractRecord> result=new ResultImpl<AbstractRecord>(getConfiguration(),fields);
+  Result<AbstractRecord> result=new ResultImpl<AbstractRecord>(getConfiguration(),fields.fields);
   result.add(this);
   return result.toString();
 }

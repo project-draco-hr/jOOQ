@@ -1,3 +1,3 @@
 {
-  return (Field<T21>)fields[20];
+  return fields.field(20);
 }

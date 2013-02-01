@@ -1,5 +1,5 @@
 {
-  ResultImpl<Record> result=new ResultImpl<Record>(getConfiguration(),fields);
+  ResultImpl<Record> result=new ResultImpl<Record>(getConfiguration(),fields.fields);
   result.add(this);
   return result.intoResultSet();
 }
