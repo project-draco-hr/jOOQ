@@ -1,7 +1,0 @@
-{
-  List<T> list=new ArrayList<T>(size());
-  for (  R record : this) {
-    list.add(record.into(type));
-  }
-  return list;
-}

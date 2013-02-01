@@ -1,0 +1,3 @@
+{
+  this.localDelegate=new MutablePOJOMapper(null);
+}

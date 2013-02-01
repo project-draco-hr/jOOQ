@@ -1,0 +1,4 @@
+{
+  this.constructor=accessible(constructor);
+  this.parameterTypes=parameterTypes;
+}

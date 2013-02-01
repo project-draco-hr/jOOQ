@@ -1,16 +1,3 @@
 {
-  try {
-    if (type.isArray()) {
-      return intoArray(type);
-    }
- else {
-      return intoPOJO(type);
-    }
-  }
- catch (  MappingException e) {
-    throw e;
-  }
-catch (  Exception e) {
-    throw new MappingException("An error ocurred when mapping record to " + type,e);
-  }
+  return new ReflectionMapper<Record,E>(fields.fields(),type).map(this);
 }

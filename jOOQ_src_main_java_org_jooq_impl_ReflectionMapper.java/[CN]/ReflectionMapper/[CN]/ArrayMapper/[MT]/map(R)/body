@@ -1,0 +1,12 @@
+{
+  int size=record.size();
+  Class<?> componentType=type.getComponentType();
+  Object[] result=(Object[])(instance != null ? instance : Array.newInstance(componentType,size));
+  if (size > result.length) {
+    result=(Object[])Array.newInstance(componentType,size);
+  }
+  for (int i=0; i < size; i++) {
+    result[i]=Convert.convert(record.getValue(i),componentType);
+  }
+  return (E)result;
+}

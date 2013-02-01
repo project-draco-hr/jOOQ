@@ -1,0 +1,20 @@
+{
+  this.constructor=constructor;
+  this.propertyNames=Arrays.asList(properties.value());
+  this.useAnnotations=hasColumnAnnotations(type);
+  this.parameterTypes=constructor.getParameterTypes();
+  this.parameterValues=new Object[parameterTypes.length];
+  this.members=new List[fields.length];
+  this.methods=new Method[fields.length];
+  for (int i=0; i < fields.length; i++) {
+    Field<?> field=fields[i];
+    if (useAnnotations) {
+      members[i]=getAnnotatedMembers(type,field.getName());
+      methods[i]=getAnnotatedGetter(type,field.getName());
+    }
+ else {
+      members[i]=getMatchingMembers(type,field.getName());
+      methods[i]=getMatchingGetter(type,field.getName());
+    }
+  }
+}

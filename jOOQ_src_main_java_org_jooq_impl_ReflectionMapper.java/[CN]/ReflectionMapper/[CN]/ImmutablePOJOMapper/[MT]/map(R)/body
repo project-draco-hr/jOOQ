@@ -1,0 +1,9 @@
+{
+  try {
+    Object[] converted=Convert.convert(record.intoArray(),parameterTypes);
+    return constructor.newInstance(converted);
+  }
+ catch (  Exception e) {
+    throw new MappingException("An error ocurred when mapping record to " + type,e);
+  }
+}

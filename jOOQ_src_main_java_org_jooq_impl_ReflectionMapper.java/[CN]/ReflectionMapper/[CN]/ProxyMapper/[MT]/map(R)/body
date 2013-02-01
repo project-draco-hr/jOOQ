@@ -1,0 +1,10 @@
+{
+  E previous=instance;
+  try {
+    instance=Reflect.on(HashMap.class).create().as(type);
+    return localDelegate.map(record);
+  }
+  finally {
+    instance=previous;
+  }
+}

@@ -1,3 +1,0 @@
-Class<? extends E> type
-Constructor<E> constructor
-ConstructorProperties properties

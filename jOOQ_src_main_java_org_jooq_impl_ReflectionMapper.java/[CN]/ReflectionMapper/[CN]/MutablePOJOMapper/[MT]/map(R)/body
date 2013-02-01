@@ -1,0 +1,20 @@
+{
+  try {
+    E result=instance != null ? instance : constructor.newInstance();
+    for (int i=0; i < fields.length; i++) {
+      Field<?> field=fields[i];
+      for (      java.lang.reflect.Field member : members[i]) {
+        if ((member.getModifiers() & Modifier.FINAL) == 0) {
+          map(record,result,member,field);
+        }
+      }
+      for (      java.lang.reflect.Method method : methods[i]) {
+        method.invoke(result,record.getValue(field,method.getParameterTypes()[0]));
+      }
+    }
+    return result;
+  }
+ catch (  Exception e) {
+    throw new MappingException("An error ocurred when mapping record to " + type,e);
+  }
+}

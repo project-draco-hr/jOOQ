@@ -1,0 +1,6 @@
+{
+  this.fields=fields;
+  this.type=type;
+  this.instance=instance;
+  initDelegate();
+}

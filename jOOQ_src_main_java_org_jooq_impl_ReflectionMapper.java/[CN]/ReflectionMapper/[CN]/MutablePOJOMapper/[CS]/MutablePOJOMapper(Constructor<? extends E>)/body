@@ -1,0 +1,17 @@
+{
+  this.constructor=accessible(constructor);
+  this.useAnnotations=hasColumnAnnotations(type);
+  this.members=new List[fields.length];
+  this.methods=new List[fields.length];
+  for (int i=0; i < fields.length; i++) {
+    Field<?> field=fields[i];
+    if (useAnnotations) {
+      members[i]=getAnnotatedMembers(type,field.getName());
+      methods[i]=getAnnotatedSetters(type,field.getName());
+    }
+ else {
+      members[i]=getMatchingMembers(type,field.getName());
+      methods[i]=getMatchingSetters(type,field.getName());
+    }
+  }
+}

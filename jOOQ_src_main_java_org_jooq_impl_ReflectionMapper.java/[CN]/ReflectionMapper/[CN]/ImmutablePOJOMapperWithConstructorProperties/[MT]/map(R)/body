@@ -1,0 +1,25 @@
+{
+  try {
+    for (int i=0; i < fields.length; i++) {
+      Field<?> field=fields[i];
+      for (      java.lang.reflect.Field member : members[i]) {
+        int index=propertyNames.indexOf(member.getName());
+        if (index >= 0) {
+          parameterValues[index]=record.getValue(field);
+        }
+      }
+      if (methods[i] != null) {
+        String name=getPropertyName(methods[i].getName());
+        int index=propertyNames.indexOf(name);
+        if (index >= 0) {
+          parameterValues[index]=record.getValue(field);
+        }
+      }
+    }
+    Object[] converted=Convert.convert(parameterValues,parameterTypes);
+    return accessible(constructor).newInstance(converted);
+  }
+ catch (  Exception e) {
+    throw new MappingException("An error ocurred when mapping record to " + type,e);
+  }
+}
