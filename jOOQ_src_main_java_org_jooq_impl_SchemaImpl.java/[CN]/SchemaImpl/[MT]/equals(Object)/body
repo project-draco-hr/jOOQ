@@ -1,6 +1,6 @@
 {
   if (that instanceof SchemaImpl) {
-    return getName().equals(((SchemaImpl)that).getName());
+    return StringUtils.equals(getName(),(((SchemaImpl)that).getName()));
   }
   return super.equals(that);
 }
