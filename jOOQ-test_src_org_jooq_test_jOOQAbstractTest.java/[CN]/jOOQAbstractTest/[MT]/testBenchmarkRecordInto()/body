@@ -1,0 +1,3 @@
+{
+  new BenchmarkTests(this).testBenchmarkRecordInto();
+}
