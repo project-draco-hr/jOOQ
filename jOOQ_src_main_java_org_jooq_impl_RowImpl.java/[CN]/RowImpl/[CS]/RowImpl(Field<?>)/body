@@ -1,4 +1,4 @@
 {
   super();
-  this.fields=fields;
+  this.fields=new FieldList(fields);
 }

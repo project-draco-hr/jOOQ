@@ -1,7 +1,8 @@
 {
-  DataType<?>[] result=new DataType[fields.length];
-  for (int i=0; i < fields.length; i++) {
-    result[i]=fields[i].getDataType();
+  int size=fields.size();
+  DataType<?>[] result=new DataType[size];
+  for (int i=0; i < size; i++) {
+    result[i]=fields.field(i).getDataType();
   }
   return result;
 }

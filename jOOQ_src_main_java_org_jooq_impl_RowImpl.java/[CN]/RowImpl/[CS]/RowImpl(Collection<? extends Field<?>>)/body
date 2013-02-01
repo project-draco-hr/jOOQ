@@ -1,3 +1,4 @@
 {
-  this(fields.toArray(new Field[fields.size()]));
+  super();
+  this.fields=new FieldList(fields);
 }

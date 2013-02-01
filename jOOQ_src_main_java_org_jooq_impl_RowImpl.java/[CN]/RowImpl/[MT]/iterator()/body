@@ -1,3 +1,3 @@
 {
-  return asList(fields).iterator();
+  return fields.iterator();
 }
