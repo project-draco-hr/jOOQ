@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.test.h2.generatedclasses.tables.TBooleans.Y_N_UC,value);
+  setValue(7,value);
 }
