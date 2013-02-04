@@ -1,5 +1,5 @@
 {
-  Result<Record> result=create().select(TAuthor_LAST_NAME(),TBook_TITLE()).from(TAuthor()).join(TBook()).using(TAuthor_ID()).orderBy(getDialect() == SQLDialect.ORACLE ? field("id") : TBook_ID()).fetch();
+  Result<Record2<String,String>> result=create().select(TAuthor_LAST_NAME(),TBook_TITLE()).from(TAuthor()).join(TBook()).using(TAuthor_ID()).orderBy(getDialect() == SQLDialect.ORACLE ? field("id") : TBook_ID()).fetch();
   assertEquals(2,result.size());
   assertEquals("1984",result.getValue(0,TBook_TITLE()));
   assertEquals("Orwell",result.getValue(0,TAuthor_LAST_NAME()));

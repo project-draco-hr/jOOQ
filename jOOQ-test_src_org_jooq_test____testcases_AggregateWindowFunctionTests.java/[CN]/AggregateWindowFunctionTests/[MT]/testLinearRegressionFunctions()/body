@@ -21,7 +21,7 @@ case DB2:
 log.info("SKIPPING","Skipping linear regression window function tests");
 return;
 }
-Result<Record> result=create().select(regrAvgX(TBook_ID(),TBook_AUTHOR_ID()).over(),regrAvgY(TBook_ID(),TBook_AUTHOR_ID()).over(),regrCount(TBook_ID(),TBook_AUTHOR_ID()).over(),regrIntercept(TBook_ID(),TBook_AUTHOR_ID()).over(),regrR2(TBook_ID(),TBook_AUTHOR_ID()).over(),regrSlope(TBook_ID(),TBook_AUTHOR_ID()).over(),regrSXX(TBook_ID(),TBook_AUTHOR_ID()).over(),regrSXY(TBook_ID(),TBook_AUTHOR_ID()).over(),regrSYY(TBook_ID(),TBook_AUTHOR_ID()).over()).from(TBook()).orderBy(TBook_ID()).fetch();
+Result<Record9<BigDecimal,BigDecimal,BigDecimal,BigDecimal,BigDecimal,BigDecimal,BigDecimal,BigDecimal,BigDecimal>> result=create().select(regrAvgX(TBook_ID(),TBook_AUTHOR_ID()).over(),regrAvgY(TBook_ID(),TBook_AUTHOR_ID()).over(),regrCount(TBook_ID(),TBook_AUTHOR_ID()).over(),regrIntercept(TBook_ID(),TBook_AUTHOR_ID()).over(),regrR2(TBook_ID(),TBook_AUTHOR_ID()).over(),regrSlope(TBook_ID(),TBook_AUTHOR_ID()).over(),regrSXX(TBook_ID(),TBook_AUTHOR_ID()).over(),regrSXY(TBook_ID(),TBook_AUTHOR_ID()).over(),regrSYY(TBook_ID(),TBook_AUTHOR_ID()).over()).from(TBook()).orderBy(TBook_ID()).fetch();
 assertEquals(values,Arrays.asList(roundStrings(1,result.get(0).into(String[].class))));
 assertEquals(values,Arrays.asList(roundStrings(1,result.get(1).into(String[].class))));
 assertEquals(values,Arrays.asList(roundStrings(1,result.get(2).into(String[].class))));

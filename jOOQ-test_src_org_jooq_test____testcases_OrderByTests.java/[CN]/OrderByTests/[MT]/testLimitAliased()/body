@@ -3,14 +3,14 @@
     log.info("SKIPPING","LIMIT .. OFFSET tests");
     return;
   }
-  Result<Record> r1=create().select(TBook_ID().as("xx"),TBook_TITLE().as("yy")).from(TBook()).limit(1,2).fetch();
+  Result<Record2<Integer,String>> r1=create().select(TBook_ID().as("xx"),TBook_TITLE().as("yy")).from(TBook()).limit(1,2).fetch();
   assertEquals(2,r1.size());
-  Result<Record> r2=create().select(TBook_ID().as("xx"),TBook_TITLE().as("yy")).from(TBook()).limit(param("x",1),param("y",2)).fetch();
+  Result<Record2<Integer,String>> r2=create().select(TBook_ID().as("xx"),TBook_TITLE().as("yy")).from(TBook()).limit(param("x",1),param("y",2)).fetch();
   assertEquals(2,r2.size());
-  Result<Record> r3=create().select(TBook_TITLE().as("yy"),TBook_ID().as("xx")).from(TBook()).orderBy(TBook_ID().as("xx").desc()).limit(1,2).fetch();
+  Result<Record2<String,Integer>> r3=create().select(TBook_TITLE().as("yy"),TBook_ID().as("xx")).from(TBook()).orderBy(TBook_ID().as("xx").desc()).limit(1,2).fetch();
   assertEquals(2,r3.size());
   assertEquals(asList(3,2),r3.getValues("xx"));
-  Result<Record> r4=create().select(TBook_TITLE().as("yy"),TBook_ID().as("xx")).from(TBook()).orderBy(TBook_ID().as("xx").desc()).limit(param("x",1),param("y",2)).fetch();
+  Result<Record2<String,Integer>> r4=create().select(TBook_TITLE().as("yy"),TBook_ID().as("xx")).from(TBook()).orderBy(TBook_ID().as("xx").desc()).limit(param("x",1),param("y",2)).fetch();
   assertEquals(2,r4.size());
   assertEquals(asList(3,2),r4.getValues("xx"));
 }

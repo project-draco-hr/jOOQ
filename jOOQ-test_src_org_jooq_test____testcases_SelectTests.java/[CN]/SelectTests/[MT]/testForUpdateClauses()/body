@@ -62,7 +62,7 @@ log.info("SKIPPING","LIMIT .. OFFSET .. FOR UPDATE");
 break;
 default :
 {
-Result<Record> result3=create().select(TAuthor_ID()).from(TAuthor()).limit(5).offset(0).forUpdate().fetch();
+Result<Record1<Integer>> result3=create().select(TAuthor_ID()).from(TAuthor()).limit(5).offset(0).forUpdate().fetch();
 assertEquals(2,result3.size());
 Result<A> result4=create().selectFrom(TAuthor()).limit(5).offset(0).forUpdate().fetch();
 assertEquals(2,result4.size());
@@ -84,12 +84,12 @@ case POSTGRES:
 case ORACLE:
 default :
 {
-Result<Record> r1a=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().noWait().fetch();
+Result<Record1<Integer>> r1a=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().noWait().fetch();
 assertEquals(2,r1a.size());
 if (getDialect() == ORACLE) {
-Result<Record> r2a=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().wait(2).fetch();
+Result<Record1<Integer>> r2a=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().wait(2).fetch();
 assertEquals(2,r2a.size());
-Result<Record> r3a=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().skipLocked().fetch();
+Result<Record1<Integer>> r3a=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().skipLocked().fetch();
 assertEquals(2,r3a.size());
 Result<A> r2b=create().selectFrom(TAuthor()).forUpdate().of(TAuthor_LAST_NAME(),TAuthor_FIRST_NAME()).wait(2).fetch();
 assertEquals(2,r2b.size());
@@ -107,7 +107,7 @@ log.info("SKIPPING","FOR UPDATE OF tests");
 break;
 default :
 {
-Result<Record> result=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().of(TAuthor_ID(),TAuthor_LAST_NAME(),TAuthor_FIRST_NAME()).fetch();
+Result<Record1<Integer>> result=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().of(TAuthor_ID(),TAuthor_LAST_NAME(),TAuthor_FIRST_NAME()).fetch();
 assertEquals(2,result.size());
 Result<A> result2=create().selectFrom(TAuthor()).forUpdate().of(TAuthor_ID(),TAuthor_LAST_NAME(),TAuthor_FIRST_NAME()).fetch();
 assertEquals(2,result2.size());
@@ -121,7 +121,7 @@ break;
 case POSTGRES:
 default :
 {
-Result<Record> result=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().of(TAuthor()).fetch();
+Result<Record1<Integer>> result=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().of(TAuthor()).fetch();
 assertEquals(2,result.size());
 Result<A> result2=create().selectFrom(TAuthor()).forUpdate().of(TAuthor()).fetch();
 assertEquals(2,result2.size());
@@ -132,7 +132,7 @@ switch (getDialect()) {
 case MYSQL:
 case POSTGRES:
 {
-Result<Record> result=create().select(TAuthor_ID()).from(TAuthor()).forShare().fetch();
+Result<Record1<Integer>> result=create().select(TAuthor_ID()).from(TAuthor()).forShare().fetch();
 assertEquals(2,result.size());
 Result<A> result2=create().selectFrom(TAuthor()).forShare().fetch();
 assertEquals(2,result2.size());

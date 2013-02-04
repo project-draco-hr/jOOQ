@@ -52,7 +52,7 @@
   assertEquals("1",create().select(decode(sNull,val("2"),val("2"),sNull,val("1"))).fetchOne(0));
   assertEquals("1",create().select(decode(sNull,val("2"),val("2"),sNull,val("1"),val("3"))).fetchOne(0));
   Field<Integer> lang=TBook_LANGUAGE_ID().cast(Integer.class);
-  Result<Record> result=create().select(decode(lang,1,"EN"),decode(lang,1,"EN","Other"),decode(lang,1,"EN",2,"DE"),decode(lang,1,"EN",2,"DE","Other")).from(TBook()).orderBy(TBook_ID()).fetch();
+  Result<Record4<String,String,String,String>> result=create().select(decode(lang,1,"EN"),decode(lang,1,"EN","Other"),decode(lang,1,"EN",2,"DE"),decode(lang,1,"EN",2,"DE","Other")).from(TBook()).orderBy(TBook_ID()).fetch();
   assertEquals("EN",result.getValue(0,0));
   assertEquals("EN",result.getValue(1,0));
   assertEquals(null,result.getValue(2,0));

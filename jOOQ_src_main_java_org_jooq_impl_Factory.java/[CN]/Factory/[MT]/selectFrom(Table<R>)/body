@@ -1,0 +1,3 @@
+{
+  return new SelectImpl<R>(new DefaultConfiguration()).from(table);
+}

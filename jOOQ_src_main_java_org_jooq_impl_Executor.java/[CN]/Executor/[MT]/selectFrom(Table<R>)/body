@@ -1,3 +1,5 @@
 {
-  return new SelectImpl<R>(this).from(table);
+  SelectWhereStep<R> result=Factory.selectFrom(table);
+  result.attach(this);
+  return result;
 }

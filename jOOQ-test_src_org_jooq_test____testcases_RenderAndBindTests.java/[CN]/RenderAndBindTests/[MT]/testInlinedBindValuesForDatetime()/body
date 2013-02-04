@@ -12,7 +12,7 @@
   date.setValue(TDates_T(),t1);
   date.setValue(TDates_TS(),ts1);
   assertEquals(1,date.store());
-  Result<Record> dates=create.select(TDates_ID(),TDates_D(),TDates_T(),TDates_TS()).from(TDates()).orderBy(TDates_ID()).fetch();
+  Result<Record4<Integer,Date,Time,Timestamp>> dates=create.select(TDates_ID(),TDates_D(),TDates_T(),TDates_TS()).from(TDates()).orderBy(TDates_ID()).fetch();
   assertEquals(2,dates.size());
   assertEquals(asList(1,2),dates.getValues(TDates_ID()));
   assertEquals(asList(1,null,null,null),asList(dates.get(0).intoArray()));

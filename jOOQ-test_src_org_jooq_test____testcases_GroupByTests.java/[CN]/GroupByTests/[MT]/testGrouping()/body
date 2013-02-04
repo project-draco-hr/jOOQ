@@ -1,19 +1,19 @@
 {
   Field<Integer> count=count().as("c");
-  Result<Record> result=create().select(TBook_AUTHOR_ID(),count).from(TBook()).groupBy(TBook_AUTHOR_ID()).fetch();
+  Result<Record2<Integer,Integer>> result=create().select(TBook_AUTHOR_ID(),count).from(TBook()).groupBy(TBook_AUTHOR_ID()).fetch();
   assertEquals(2,result.size());
   assertEquals(2,(int)result.get(0).getValue(count));
   assertEquals(2,(int)result.get(1).getValue(count));
-  result=create().select(TAuthor_LAST_NAME(),count).from(TBook()).join(TAuthor()).on(TBook_AUTHOR_ID().equal(TAuthor_ID())).where(TBook_TITLE().notEqual("1984")).groupBy(TAuthor_LAST_NAME()).having(count().equal(2)).fetch();
-  assertEquals(1,result.size());
-  assertEquals(2,(int)result.getValue(0,count));
-  assertEquals("Coelho",result.getValue(0,TAuthor_LAST_NAME()));
-  result=create().select(TAuthor_LAST_NAME(),count).from(TBook()).join(TAuthor()).on(TBook_AUTHOR_ID().equal(TAuthor_ID())).where(TBook_TITLE().notEqual("1984")).groupBy(TAuthor_LAST_NAME()).having(count().equal(2)).or(count().greaterOrEqual(2)).andExists(selectOne()).fetch();
-  assertEquals(1,result.size());
-  assertEquals(2,(int)result.getValue(0,count));
-  assertEquals("Coelho",result.getValue(0,TAuthor_LAST_NAME()));
-  result=create().select(VLibrary_AUTHOR(),count).from(VLibrary()).where(VLibrary_TITLE().notEqual("1984")).groupBy(VLibrary_AUTHOR()).having("v_library.author like ?","Paulo%").fetch();
-  assertEquals(1,result.size());
-  assertEquals(2,(int)result.getValue(0,count));
-  assertEquals("Paulo",result.getValue(0,VLibrary_AUTHOR()).substring(0,5));
+  Result<Record2<String,Integer>> result2=create().select(TAuthor_LAST_NAME(),count).from(TBook()).join(TAuthor()).on(TBook_AUTHOR_ID().equal(TAuthor_ID())).where(TBook_TITLE().notEqual("1984")).groupBy(TAuthor_LAST_NAME()).having(count().equal(2)).fetch();
+  assertEquals(1,result2.size());
+  assertEquals(2,(int)result2.getValue(0,count));
+  assertEquals("Coelho",result2.getValue(0,TAuthor_LAST_NAME()));
+  Result<Record2<String,Integer>> result3=create().select(TAuthor_LAST_NAME(),count).from(TBook()).join(TAuthor()).on(TBook_AUTHOR_ID().equal(TAuthor_ID())).where(TBook_TITLE().notEqual("1984")).groupBy(TAuthor_LAST_NAME()).having(count().equal(2)).or(count().greaterOrEqual(2)).andExists(selectOne()).fetch();
+  assertEquals(1,result3.size());
+  assertEquals(2,(int)result3.getValue(0,count));
+  assertEquals("Coelho",result3.getValue(0,TAuthor_LAST_NAME()));
+  Result<Record2<String,Integer>> result4=create().select(VLibrary_AUTHOR(),count).from(VLibrary()).where(VLibrary_TITLE().notEqual("1984")).groupBy(VLibrary_AUTHOR()).having("v_library.author like ?","Paulo%").fetch();
+  assertEquals(1,result4.size());
+  assertEquals(2,(int)result4.getValue(0,count));
+  assertEquals("Paulo",result4.getValue(0,VLibrary_AUTHOR()).substring(0,5));
 }

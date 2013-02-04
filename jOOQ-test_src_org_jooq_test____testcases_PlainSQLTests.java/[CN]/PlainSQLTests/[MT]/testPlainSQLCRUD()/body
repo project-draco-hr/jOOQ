@@ -5,7 +5,7 @@
   Field<String> firstName=field("first_name",String.class);
   Field<String> lastName=field(TAuthor_LAST_NAME().getName(),String.class);
   assertEquals(2,create().insertInto(table,id,firstName,lastName).values(10,"Herbert","Meier").values(11,"Friedrich","Glauser").execute());
-  Result<Record> authors1=create().select(id,firstName,lastName).from(table).where(id.in(10,11)).orderBy(id).fetch();
+  Result<Record3<Integer,String,String>> authors1=create().select(id,firstName,lastName).from(table).where(id.in(10,11)).orderBy(id).fetch();
   assertEquals(2,authors1.size());
   assertEquals(10,(int)authors1.getValue(0,id));
   assertEquals(11,(int)authors1.getValue(1,id));
@@ -14,7 +14,7 @@
   assertEquals("Meier",authors1.getValue(0,lastName));
   assertEquals("Glauser",authors1.getValue(1,lastName));
   assertEquals(2,create().update(table).set(firstName,"Friedrich").set(lastName,"Schiller").where(id.in(10,11)).execute());
-  Result<Record> authors2=create().select(id,firstName,lastName).from(table).where(id.in(10,11)).orderBy(id).fetch();
+  Result<Record3<Integer,String,String>> authors2=create().select(id,firstName,lastName).from(table).where(id.in(10,11)).orderBy(id).fetch();
   assertEquals(2,authors2.size());
   assertEquals(10,(int)authors2.getValue(0,id));
   assertEquals(11,(int)authors2.getValue(1,id));

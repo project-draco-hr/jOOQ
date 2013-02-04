@@ -8,7 +8,7 @@
   Record record=create().select(nestedID,count()).from(nested).groupBy(nestedID).orderBy(nestedID).fetchOne();
   assertEquals(Integer.valueOf(2),record.getValue(nestedID));
   assertEquals(Integer.valueOf(2),record.getValue(1));
-  Result<Record> result=create().select(nestedID,count()).from(create().selectFrom(TBook()).orderBy(TBook_ID().desc()).limit(1,2).asTable("nested")).groupBy(nestedID).orderBy(nestedID).fetch();
+  Result<Record2<Integer,Integer>> result=create().select(nestedID,count()).from(create().selectFrom(TBook()).orderBy(TBook_ID().desc()).limit(1,2).asTable("nested")).groupBy(nestedID).orderBy(nestedID).fetch();
   assertEquals(2,result.size());
   assertEquals(Integer.valueOf(1),result.getValue(0,nestedID));
   assertEquals(Integer.valueOf(1),result.getValue(0,1));

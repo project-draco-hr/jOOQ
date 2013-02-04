@@ -1,6 +1,6 @@
 {
   if (TArrays_NUMBER_R() != null) {
-    Result<Record> result;
+    Result<?> result;
     assertTrue(TArrays_NUMBER_R().getDataType().isArray());
     assertFalse(TBook_ID().getDataType().isArray());
     ArrayRecord<Integer> array=newNUMBER_R();
@@ -62,7 +62,7 @@
     assertEquals("2","" + result.getValue(3,0));
   }
  else   if (TArrays_NUMBER() != null) {
-    Result<Record> result;
+    Result<?> result;
     Table<?> table;
     Integer[] array;
     assertTrue(TArrays_NUMBER().getDataType().isArray());

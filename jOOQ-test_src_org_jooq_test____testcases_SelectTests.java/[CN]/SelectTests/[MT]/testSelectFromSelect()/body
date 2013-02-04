@@ -1,5 +1,5 @@
 {
-  Table<Record> nested=create().select(TBook_AUTHOR_ID(),count().as("books")).from(TBook()).groupBy(TBook_AUTHOR_ID()).asTable("nested");
+  Table<Record2<Integer,Integer>> nested=create().select(TBook_AUTHOR_ID(),count().as("books")).from(TBook()).groupBy(TBook_AUTHOR_ID()).asTable("nested");
   Result<Record> records=create().select(nested.fields()).from(nested).orderBy(nested.field("books"),nested.field(TBook_AUTHOR_ID())).fetch();
   assertEquals(2,records.size());
   assertEquals(Integer.valueOf(1),records.getValue(0,nested.field(TBook_AUTHOR_ID())));

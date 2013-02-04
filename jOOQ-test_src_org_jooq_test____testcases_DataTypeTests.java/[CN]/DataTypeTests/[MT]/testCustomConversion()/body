@@ -15,7 +15,7 @@
   }
 ;
   List<StringBuilder> prefixed=asList(new StringBuilder("prefix_1984"),new StringBuilder("prefix_Animal Farm"),new StringBuilder("prefix_O Alquimista"),new StringBuilder("prefix_Brida"));
-  Result<Record> result=create().select(TBook_TITLE()).from(TBook()).orderBy(TBook_ID()).fetch();
+  Result<Record1<String>> result=create().select(TBook_TITLE()).from(TBook()).orderBy(TBook_ID()).fetch();
   assertEquals(strings(prefixed),strings(result.getValues(TBook_TITLE(),converter)));
   assertEquals(strings(prefixed),strings(result.getValues(TBook_TITLE().getName(),converter)));
   assertEquals(strings(prefixed),strings(result.getValues(0,converter)));

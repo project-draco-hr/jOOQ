@@ -1,5 +1,5 @@
 {
-  Result<Record> result;
+  Result<?> result;
   Integer[] array=new Integer[0];
   result=create().select().from(table(new Integer[0])).fetch();
   assertEquals(0,result.size());
