@@ -1,5 +1,6 @@
 {
-  Executor create=create(new Settings().withExecuteListeners(CustomExceptionListener.class.getName()));
+  Executor create=create();
+  create.getExecuteListeners().add(new CustomExceptionListener());
   try {
     create.fetch("invalid sql");
   }

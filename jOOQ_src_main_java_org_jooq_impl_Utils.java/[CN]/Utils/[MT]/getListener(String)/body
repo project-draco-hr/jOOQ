@@ -1,9 +1,0 @@
-{
-  try {
-    Class<?> type=Thread.currentThread().getContextClassLoader().loadClass(name);
-    return (ExecuteListener)Reflect.accessible(type.getDeclaredConstructor()).newInstance();
-  }
- catch (  Exception e) {
-    throw new RuntimeException(e);
-  }
-}

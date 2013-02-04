@@ -1,7 +1,8 @@
 {
-  Settings settings=new Settings().withExecuteListeners(KeepStatementListener.class.getName());
+  Executor create=create();
+  create.getExecuteListeners().add(new KeepStatementListener());
   KeepStatementListener.reset();
-  ResultQuery<Record1<Integer>> query=create(settings).select(val(1));
+  ResultQuery<Record1<Integer>> query=create.select(val(1));
   assertEquals(1,query.fetchOne(0));
   assertEquals(2,query.bind(1,2).fetchOne(0));
   assertEquals(2,KeepStatementListener.statements.size());

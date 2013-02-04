@@ -4,7 +4,8 @@
     return;
   }
   jOOQAbstractTest.reset=false;
-  Executor create=create(new Settings().withExecuteListeners(BatchSingleListener.class.getName()));
+  Executor create=create();
+  create.getExecuteListeners().add(new BatchSingleListener());
   create.setData("Foo","Bar");
   create.setData("Bar","Baz");
   int[] result=create.batch(create().insertInto(TAuthor()).set(TAuthor_ID(),param("id",Integer.class)).set(TAuthor_LAST_NAME(),param("name",String.class))).bind(8,"Gamma").bind(9,"Helm").bind(10,"Johnson").execute();

@@ -4,4 +4,5 @@
   this.settings=settings != null ? settings : SettingsTools.defaultSettings();
   this.mapping=new org.jooq.SchemaMapping(this.settings);
   this.data=data != null ? data : new HashMap<String,Object>();
+  this.listeners=new ArrayList<ExecuteListener>();
 }

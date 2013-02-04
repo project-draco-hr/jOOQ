@@ -1,11 +1,11 @@
 {
   Map<String,List<Query>> queries=new LinkedHashMap<String,List<Query>>();
-  Settings work=create.getSettings();
-  Settings orig=SettingsTools.clone(work);
+  Boolean executeLogging=create.getSettings().isExecuteLogging();
+  QueryCollector collector=new QueryCollector();
   try {
     create.setData(Utils.DATA_OMIT_RETURNING_CLAUSE,true);
-    work.setExecuteListeners(Arrays.asList(QueryCollector.class.getName()));
-    work.setExecuteLogging(false);
+    create.getExecuteListeners().add(collector);
+    create.getSettings().setExecuteLogging(false);
     for (int i=0; i < records.length; i++) {
       Configuration previous=((AttachableInternal)records[i]).getConfiguration();
       try {
@@ -31,8 +31,8 @@
   }
   finally {
     create.getData().remove(Utils.DATA_OMIT_RETURNING_CLAUSE);
-    work.setExecuteListeners(orig.getExecuteListeners());
-    work.setExecuteLogging(orig.isExecuteLogging());
+    create.getExecuteListeners().remove(collector);
+    create.getSettings().setExecuteLogging(executeLogging);
   }
   List<Integer> result=new ArrayList<Integer>();
   for (  Entry<String,List<Query>> entry : queries.entrySet()) {

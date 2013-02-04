@@ -1,9 +1,8 @@
 {
   List<Query> queries=new ArrayList<Query>();
-  Settings work=create.getSettings();
-  Settings orig=SettingsTools.clone(work);
+  QueryCollector collector=new QueryCollector();
   try {
-    work.setExecuteListeners(Arrays.asList(QueryCollector.class.getName()));
+    create.getExecuteListeners().add(collector);
     for (int i=0; i < records.length; i++) {
       Configuration previous=((AttachableInternal)records[i]).getConfiguration();
       try {
@@ -22,7 +21,7 @@
     }
   }
   finally {
-    work.setExecuteListeners(orig.getExecuteListeners());
+    create.getExecuteListeners().remove(collector);
   }
   int[] result=create.batch(queries).execute();
   updateChangedFlag();
