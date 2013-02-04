@@ -5,11 +5,11 @@
       Field<?> field=fields[i];
       for (      java.lang.reflect.Field member : members[i]) {
         if ((member.getModifiers() & Modifier.FINAL) == 0) {
-          map(record,result,member,field);
+          map(record,result,member,i);
         }
       }
       for (      java.lang.reflect.Method method : methods[i]) {
-        method.invoke(result,record.getValue(field,method.getParameterTypes()[0]));
+        method.invoke(result,record.getValue(i,method.getParameterTypes()[0]));
       }
     }
     return result;

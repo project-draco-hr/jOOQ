@@ -1,18 +1,17 @@
 {
   try {
     for (int i=0; i < fields.length; i++) {
-      Field<?> field=fields[i];
       for (      java.lang.reflect.Field member : members[i]) {
         int index=propertyNames.indexOf(member.getName());
         if (index >= 0) {
-          parameterValues[index]=record.getValue(field);
+          parameterValues[index]=record.getValue(i);
         }
       }
       if (methods[i] != null) {
         String name=getPropertyName(methods[i].getName());
         int index=propertyNames.indexOf(name);
         if (index >= 0) {
-          parameterValues[index]=record.getValue(field);
+          parameterValues[index]=record.getValue(i);
         }
       }
     }
