@@ -1,0 +1,10 @@
+{
+  if (keepStatement() && statement != null) {
+    if (param.isInline()) {
+      close();
+    }
+ else     if (SettingsTools.executeStaticStatements(getConfiguration().getSettings())) {
+      close();
+    }
+  }
+}

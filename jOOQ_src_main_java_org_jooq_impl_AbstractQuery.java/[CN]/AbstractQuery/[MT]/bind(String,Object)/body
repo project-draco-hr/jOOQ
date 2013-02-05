@@ -9,6 +9,7 @@
       throw new IllegalArgumentException("No such parameter : " + param);
     }
     p.setConverted(value);
+    closeIfNecessary(p);
     return this;
   }
 }
