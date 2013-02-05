@@ -2,7 +2,7 @@
   jOOQAbstractTest.reset=false;
   long timeIn=0;
   long timeOut=-3600000;
-  assertEquals(1,create().insertInto(TAuthor(),TAuthor_ID(),TAuthor_LAST_NAME(),TAuthor_DATE_OF_BIRTH(),TAuthor_YEAR_OF_BIRTH()).values("5","Smith",timeIn,new BigDecimal("1980")).execute());
+  assertEquals(1,create().insertInto(TAuthor(),(Field<String>)(Field)TAuthor_ID(),TAuthor_LAST_NAME(),(Field<Long>)(Field)TAuthor_DATE_OF_BIRTH(),(Field<BigDecimal>)(Field)TAuthor_YEAR_OF_BIRTH()).values("5","Smith",timeIn,new BigDecimal("1980")).execute());
   A author1=create().selectFrom(TAuthor()).where(TAuthor_ID().equal(5)).fetchOne();
   assertNotNull(author1);
   assertEquals(5,(int)author1.getValue(TAuthor_ID()));

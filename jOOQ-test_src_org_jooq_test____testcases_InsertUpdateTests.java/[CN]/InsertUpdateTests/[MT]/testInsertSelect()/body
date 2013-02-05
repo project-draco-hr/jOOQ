@@ -17,7 +17,7 @@ assertEquals(1000,(int)author1.getValue(TAuthor_ID()));
 assertEquals("Lukas",author1.getValue(TAuthor_FIRST_NAME()));
 assertEquals("Eder",author1.getValue(TAuthor_LAST_NAME()));
 assertEquals(null,author1.getValue(TAuthor_YEAR_OF_BIRTH()));
-i=create().insertInto(TAuthor(),TAuthor_ID(),TAuthor_LAST_NAME()).select(select(vals(1001,"Hesse")));
+i=create().insertInto(TAuthor(),TAuthor_ID(),TAuthor_LAST_NAME()).select(select(val(1001),val("Hesse")));
 assertEquals(1,i.execute());
 A author2=create().fetchOne(TAuthor(),TAuthor_LAST_NAME().equal("Hesse"));
 assertEquals(1001,(int)author2.getValue(TAuthor_ID()));

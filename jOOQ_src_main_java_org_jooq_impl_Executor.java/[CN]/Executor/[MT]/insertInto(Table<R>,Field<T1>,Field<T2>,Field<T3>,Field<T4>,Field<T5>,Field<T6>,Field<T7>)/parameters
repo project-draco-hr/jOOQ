@@ -1,0 +1,8 @@
+Table<R> into
+Field<T1> field1
+Field<T2> field2
+Field<T3> field3
+Field<T4> field4
+Field<T5> field5
+Field<T6> field6
+Field<T7> field7

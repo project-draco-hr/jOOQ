@@ -13,7 +13,7 @@ ID3=create().select(max(TAuthor_ID()).add(1)).from(TAuthor()).asField();
 ID4=create().select(max(TAuthor_ID()).add(1)).from(TAuthor()).asField();
 break;
 }
-create().insertInto(TAuthor(),TAuthor_ID(),TAuthor_LAST_NAME()).values(ID3,create().select(val("Hornby")).asField()).execute();
+create().insertInto(TAuthor(),TAuthor_ID(),TAuthor_LAST_NAME()).values(ID3,create().select(val("Hornby")).<String>asField()).execute();
 A author=create().fetchOne(TAuthor(),TAuthor_LAST_NAME().equal("Hornby"));
 assertEquals(Integer.valueOf(3),author.getValue(TAuthor_ID()));
 assertEquals("Hornby",author.getValue(TAuthor_LAST_NAME()));

@@ -4,7 +4,7 @@
     return;
   }
   jOOQAbstractTest.reset=false;
-  assertEquals(1,create().insertInto(TUnsigned(),TUnsigned_U_BYTE(),TUnsigned_U_SHORT(),TUnsigned_U_INT(),TUnsigned_U_LONG()).values(null,null,null,null).execute());
+  assertEquals(1,create().insertInto(TUnsigned(),TUnsigned_U_BYTE(),TUnsigned_U_SHORT(),TUnsigned_U_INT(),TUnsigned_U_LONG()).values((UByte)null,null,null,null).execute());
   assertEquals(1,create().selectCount().from(TUnsigned()).fetchOne(0));
   U u=create().selectFrom(TUnsigned()).fetchOne();
   assertNotNull(u);

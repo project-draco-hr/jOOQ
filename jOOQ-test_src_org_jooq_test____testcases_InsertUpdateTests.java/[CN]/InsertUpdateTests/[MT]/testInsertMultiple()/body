@@ -1,6 +1,6 @@
 {
   jOOQAbstractTest.reset=false;
-  create().insertInto(TAuthor(),TAuthor_ID(),TAuthor_LAST_NAME()).values(val(37),"D??rrenmatt").values(Arrays.<Object>asList(88,"Schmitt")).values(val(93),val("K??stner")).execute();
+  create().insertInto(TAuthor(),Arrays.<Field<?>>asList(TAuthor_ID(),TAuthor_LAST_NAME())).values(val(37),"D??rrenmatt").values(Arrays.<Object>asList(88,"Schmitt")).values(val(93),val("K??stner")).execute();
   Result<A> authors=create().selectFrom(TAuthor()).where(TAuthor_ID().greaterThan(30)).orderBy(TAuthor_ID()).fetch();
   assertEquals(3,authors.size());
   assertEquals(Integer.valueOf(37),authors.getValue(0,TAuthor_ID()));
