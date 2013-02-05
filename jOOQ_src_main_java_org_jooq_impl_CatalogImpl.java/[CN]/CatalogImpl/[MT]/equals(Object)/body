@@ -1,0 +1,6 @@
+{
+  if (that instanceof CatalogImpl) {
+    return StringUtils.equals(getName(),(((CatalogImpl)that).getName()));
+  }
+  return super.equals(that);
+}

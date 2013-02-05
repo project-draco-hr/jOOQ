@@ -1,0 +1,6 @@
+{
+  if (that instanceof ParameterImpl) {
+    return StringUtils.equals(name,((ParameterImpl<?>)that).name);
+  }
+  return super.equals(that);
+}

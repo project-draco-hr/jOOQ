@@ -1,0 +1,6 @@
+{
+  if (that instanceof NameImpl) {
+    return Arrays.equals(getName(),(((NameImpl)that).getName()));
+  }
+  return super.equals(that);
+}

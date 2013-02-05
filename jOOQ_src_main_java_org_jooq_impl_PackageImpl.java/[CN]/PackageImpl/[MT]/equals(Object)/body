@@ -1,0 +1,6 @@
+{
+  if (that instanceof PackageImpl) {
+    return StringUtils.equals(schema,((PackageImpl)that).getSchema()) && StringUtils.equals(name,((PackageImpl)that).name);
+  }
+  return super.equals(that);
+}
