@@ -1,0 +1,21 @@
+{
+  testConversion(null,null,Long.class);
+  testConversion(0L,null,long.class);
+  testConversion(1L,"1",Long.class);
+  testConversion(1L,true,Long.class);
+  testConversion(0L,false,Long.class);
+  testConversion(1L,(byte)1,Long.class);
+  testConversion(1L,(short)1,Long.class);
+  testConversion(1L,1,Long.class);
+  testConversion(1L,1L,Long.class);
+  testConversion(1L,1.0d,Long.class);
+  testConversion(1L,1.0f,Long.class);
+  testConversion(1L,BigInteger.ONE,Long.class);
+  testConversion(1L,BigDecimal.ONE,Long.class);
+  testConversion(0L,new Date(0),Long.class);
+  testConversion(10L,new Date(10),Long.class);
+  testConversion(0L,new Time(0),Long.class);
+  testConversion(10L,new Time(10),Long.class);
+  testConversion(0L,new Timestamp(0),Long.class);
+  testConversion(10L,new Timestamp(10),Long.class);
+}

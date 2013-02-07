@@ -1,0 +1,18 @@
+{
+  testConversion(null,null,Integer.class);
+  testConversion(0,null,int.class);
+  testConversion(1,"1",Integer.class);
+  testConversion(1,true,Integer.class);
+  testConversion(0,false,Integer.class);
+  testConversion(1,(byte)1,Integer.class);
+  testConversion(1,(short)1,Integer.class);
+  testConversion(1,1,Integer.class);
+  testConversion(1,1L,Integer.class);
+  testConversion(1,1.0d,Integer.class);
+  testConversion(1,1.0f,Integer.class);
+  testConversion(1,BigInteger.ONE,Integer.class);
+  testConversion(1,BigDecimal.ONE,Integer.class);
+  testConversion(null,new Date(0),Integer.class);
+  testConversion(null,new Time(0),Integer.class);
+  testConversion(null,new Timestamp(0),Integer.class);
+}

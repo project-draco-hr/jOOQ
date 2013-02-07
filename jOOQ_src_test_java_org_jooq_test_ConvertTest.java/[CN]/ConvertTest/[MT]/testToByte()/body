@@ -1,0 +1,18 @@
+{
+  testConversion(null,null,Byte.class);
+  testConversion((byte)0,null,byte.class);
+  testConversion((byte)1,"1",Byte.class);
+  testConversion((byte)1,true,Byte.class);
+  testConversion((byte)0,false,Byte.class);
+  testConversion((byte)1,(byte)1,Byte.class);
+  testConversion((byte)1,(short)1,Byte.class);
+  testConversion((byte)1,1,Byte.class);
+  testConversion((byte)1,1L,Byte.class);
+  testConversion((byte)1,1.0d,Byte.class);
+  testConversion((byte)1,1.0f,Byte.class);
+  testConversion((byte)1,BigInteger.ONE,Byte.class);
+  testConversion((byte)1,BigDecimal.ONE,Byte.class);
+  testConversion(null,new Date(0),Byte.class);
+  testConversion(null,new Time(0),Byte.class);
+  testConversion(null,new Timestamp(0),Byte.class);
+}
