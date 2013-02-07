@@ -1,0 +1,3 @@
+{
+  return new MergeImpl(this,table,Arrays.asList(field1,field2,field3,field4,field5,field6,field7));
+}
