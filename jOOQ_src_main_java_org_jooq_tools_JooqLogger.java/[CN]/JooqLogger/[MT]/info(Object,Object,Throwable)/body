@@ -1,11 +1,11 @@
 {
   if (slf4j != null) {
-    slf4j.info(getMessage(message,details),t);
+    slf4j.info(getMessage(message,details),throwable);
   }
  else   if (log4j != null) {
-    log4j.info(getMessage(message,details),t);
+    log4j.info(getMessage(message,details),throwable);
   }
  else {
-    util.log(Level.INFO,"" + getMessage(message,details),t);
+    util.log(Level.INFO,"" + getMessage(message,details),throwable);
   }
 }

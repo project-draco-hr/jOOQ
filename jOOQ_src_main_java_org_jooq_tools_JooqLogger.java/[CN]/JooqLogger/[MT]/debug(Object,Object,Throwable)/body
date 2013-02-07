@@ -1,11 +1,11 @@
 {
   if (slf4j != null) {
-    slf4j.debug(getMessage(message,details),t);
+    slf4j.debug(getMessage(message,details),throwable);
   }
  else   if (log4j != null) {
-    log4j.debug(getMessage(message,details),t);
+    log4j.debug(getMessage(message,details),throwable);
   }
  else {
-    util.log(Level.FINE,"" + getMessage(message,details),t);
+    util.log(Level.FINE,"" + getMessage(message,details),throwable);
   }
 }
