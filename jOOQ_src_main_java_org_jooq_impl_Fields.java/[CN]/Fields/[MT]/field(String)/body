@@ -2,7 +2,7 @@
   if (name == null) {
     return null;
   }
-  for (  Field<?> f : this) {
+  for (  Field<?> f : fields) {
     if (f.getName().equals(name)) {
       return f;
     }

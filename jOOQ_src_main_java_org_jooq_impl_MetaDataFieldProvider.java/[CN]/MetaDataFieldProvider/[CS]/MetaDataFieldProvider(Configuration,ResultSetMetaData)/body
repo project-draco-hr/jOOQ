@@ -1,5 +1,3 @@
 {
-  this.configuration=configuration;
-  this.fields=new FieldList();
-  init(meta);
+  this.fields=init(configuration,meta);
 }

@@ -4,6 +4,6 @@
   this.on=new ConditionProviderImpl();
   if (fields != null) {
     h2Style=true;
-    h2Fields=new FieldList(fields);
+    h2Fields=new Fields(fields);
   }
 }

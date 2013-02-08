@@ -62,10 +62,10 @@ case SYBASE:
       Map<Field<?>,Field<?>> update=new LinkedHashMap<Field<?>,Field<?>>();
       Map<Field<?>,Field<?>> insert=new LinkedHashMap<Field<?>,Field<?>>();
       for (int i=0; i < src.fieldsRow().size(); i++) {
-        if (!onFields.contains(getH2Fields().get(i))) {
-          update.put(getH2Fields().get(i),src.field(i));
+        if (!onFields.contains(getH2Fields().field(i))) {
+          update.put(getH2Fields().field(i),src.field(i));
         }
-        insert.put(getH2Fields().get(i),src.field(i));
+        insert.put(getH2Fields().field(i),src.field(i));
       }
       return create(config).mergeInto(table).using(src).on(condition).whenMatchedThenUpdate().set(update).whenNotMatchedThenInsert().set(insert);
     }

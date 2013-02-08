@@ -2,13 +2,13 @@
   if (field == null) {
     return null;
   }
-  for (  Field<?> f : this) {
+  for (  Field<?> f : fields) {
     if (f.equals(field)) {
       return (Field<T>)f;
     }
   }
   String name=field.getName();
-  for (  Field<?> f1 : this) {
+  for (  Field<?> f1 : fields) {
     if (f1.getName().equals(name)) {
       return (Field<T>)f1;
     }

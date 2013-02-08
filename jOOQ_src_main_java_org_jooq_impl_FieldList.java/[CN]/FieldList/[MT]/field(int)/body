@@ -1,6 +1,0 @@
-{
-  if (index >= 0 && index < size()) {
-    return get(index);
-  }
-  return null;
-}

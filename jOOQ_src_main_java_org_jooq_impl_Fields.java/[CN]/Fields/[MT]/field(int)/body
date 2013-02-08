@@ -1,0 +1,6 @@
+{
+  if (index >= 0 && index < fields.length) {
+    return fields[index];
+  }
+  return null;
+}

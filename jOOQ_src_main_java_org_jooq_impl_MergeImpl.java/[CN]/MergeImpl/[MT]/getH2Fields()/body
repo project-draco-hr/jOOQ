@@ -1,6 +1,6 @@
 {
   if (h2Fields == null) {
-    h2Fields=new FieldList(table.fields());
+    h2Fields=new Fields(table.fields());
   }
   return h2Fields;
 }
