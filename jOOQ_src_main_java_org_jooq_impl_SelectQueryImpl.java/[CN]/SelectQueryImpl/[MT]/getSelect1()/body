@@ -1,6 +1,6 @@
 {
   if (getSelect0().isEmpty()) {
-    FieldList result=new SelectFieldList();
+    SelectFieldList result=new SelectFieldList();
     if (knownTableSource()) {
       for (      TableLike<?> table : getFrom()) {
         for (        Field<?> field : table.asTable().fields()) {

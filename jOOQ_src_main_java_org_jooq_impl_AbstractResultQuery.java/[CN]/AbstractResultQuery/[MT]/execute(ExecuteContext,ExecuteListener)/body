@@ -27,7 +27,7 @@
         }
       }
  else {
-        result=new ResultImpl<R>(ctx,new FieldList());
+        result=new ResultImpl<R>(ctx);
       }
     }
  else {
