@@ -1,6 +1,8 @@
 {
-  FieldList result=new FieldList();
-  result.addAll(lhs.asTable().fields());
-  result.addAll(rhs.asTable().fields());
-  return result;
+  Field<?>[] l=lhs.asTable().fields();
+  Field<?>[] r=rhs.asTable().fields();
+  Field<?>[] all=new Field[l.length + r.length];
+  System.arraycopy(l,0,all,0,l.length);
+  System.arraycopy(r,0,all,l.length,r.length);
+  return new FieldList(all);
 }
