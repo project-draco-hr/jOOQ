@@ -1,3 +1,0 @@
-{
-  return ArrayTable.this.getFieldList();
-}
