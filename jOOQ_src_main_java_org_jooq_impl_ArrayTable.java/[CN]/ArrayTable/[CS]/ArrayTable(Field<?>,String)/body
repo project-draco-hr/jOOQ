@@ -16,19 +16,6 @@
   }
   this.array=array;
   this.alias=alias;
-  this.field=new FieldList();
-  if (UDTRecord.class.isAssignableFrom(arrayType)) {
-    try {
-      UDTRecord<?> record=(UDTRecord<?>)arrayType.newInstance();
-      for (      Field<?> f : record.fields()) {
-        this.field.add(fieldByName(f.getDataType(),alias,f.getName()));
-      }
-    }
- catch (    Exception e) {
-      throw new DataTypeException("Bad UDT Type : " + arrayType,e);
-    }
-  }
- else {
-    this.field.add(fieldByName(Factory.getDataType(arrayType),alias,"COLUMN_VALUE"));
-  }
+  this.field=init(alias,arrayType);
+  init(alias,arrayType);
 }

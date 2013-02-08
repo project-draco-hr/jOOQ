@@ -1,0 +1,18 @@
+{
+  List<Field<?>> result=new ArrayList<Field<?>>();
+  if (UDTRecord.class.isAssignableFrom(arrayType)) {
+    try {
+      UDTRecord<?> record=(UDTRecord<?>)arrayType.newInstance();
+      for (      Field<?> f : record.fields()) {
+        result.add(fieldByName(f.getDataType(),alias,f.getName()));
+      }
+    }
+ catch (    Exception e) {
+      throw new DataTypeException("Bad UDT Type : " + arrayType,e);
+    }
+  }
+ else {
+    result.add(fieldByName(Factory.getDataType(arrayType),alias,"COLUMN_VALUE"));
+  }
+  return new Fields(result);
+}

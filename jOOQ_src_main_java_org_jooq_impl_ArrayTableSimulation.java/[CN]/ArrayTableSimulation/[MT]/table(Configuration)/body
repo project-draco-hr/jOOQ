@@ -2,7 +2,7 @@
   if (table == null) {
     Select<Record> select=null;
     for (    Object element : array) {
-      Field<?> val=Factory.val(element,field.get(0).getDataType());
+      Field<?> val=Factory.val(element,field.fields[0].getDataType());
       Select<Record> subselect=create(configuration).select(val.as("COLUMN_VALUE")).select();
       if (select == null) {
         select=subselect;

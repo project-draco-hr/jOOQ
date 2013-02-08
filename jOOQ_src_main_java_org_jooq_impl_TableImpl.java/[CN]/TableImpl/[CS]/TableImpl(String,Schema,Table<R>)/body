@@ -1,6 +1,6 @@
 {
   super(name,schema);
-  this.fields=new FieldList();
+  this.fields=new Fields();
   if (aliased != null) {
     alias=new Alias<Table<R>>(aliased,name);
   }

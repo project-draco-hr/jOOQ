@@ -1,8 +1,7 @@
 {
   super(alias);
   this.array=array;
-  this.field=new FieldList();
   this.alias=alias;
   this.fieldAlias=fieldAlias == null ? "COLUMN_VALUE" : fieldAlias;
-  this.field.add(fieldByName(Factory.getDataType(array.getClass().getComponentType()),alias,this.fieldAlias));
+  this.field=new Fields(fieldByName(Factory.getDataType(array.getClass().getComponentType()),alias,this.fieldAlias));
 }
