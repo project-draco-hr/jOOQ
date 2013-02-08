@@ -1,0 +1,7 @@
+{
+  this.fields=fields;
+  this.values=new Value<?>[fields.size()];
+  for (int i=0; i < values.length; i++) {
+    values[i]=new Value<Object>(null);
+  }
+}
