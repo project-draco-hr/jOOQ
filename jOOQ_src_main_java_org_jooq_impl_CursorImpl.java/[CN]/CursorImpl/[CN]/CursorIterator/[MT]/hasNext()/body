@@ -1,6 +1,6 @@
 {
   if (hasNext == null) {
-    next=fetch();
+    next=fetchOne();
     hasNext=(next != null);
   }
   return hasNext;

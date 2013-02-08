@@ -1,6 +1,6 @@
 {
   if (hasNext == null) {
-    return fetch();
+    return fetchOne();
   }
   R result=next;
   hasNext=null;
