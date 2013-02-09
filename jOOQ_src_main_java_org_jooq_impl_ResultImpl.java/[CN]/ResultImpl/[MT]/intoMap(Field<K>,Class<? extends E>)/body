@@ -1,5 +1,5 @@
 {
-  RecordMapper<R,E> mapper=new ReflectionMapper<R,E>(fields,type);
+  RecordMapper<R,E> mapper=new ReflectionMapper<R,E>(fields.fields,type);
   int index=fieldsRow().indexOf(key);
   Map<K,E> map=new LinkedHashMap<K,E>();
   for (  R record : this) {

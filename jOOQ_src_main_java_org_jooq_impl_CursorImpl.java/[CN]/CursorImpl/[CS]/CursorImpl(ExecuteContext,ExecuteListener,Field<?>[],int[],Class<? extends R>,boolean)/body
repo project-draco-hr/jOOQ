@@ -4,4 +4,10 @@
   this.fields=fields;
   this.type=type;
   this.rs=new CursorResultSet(keepStatement);
+  this.intern=new boolean[fields.length];
+  if (internIndexes != null) {
+    for (    int i : internIndexes) {
+      intern[i]=true;
+    }
+  }
 }

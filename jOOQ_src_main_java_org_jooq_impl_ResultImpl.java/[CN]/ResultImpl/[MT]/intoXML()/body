@@ -19,8 +19,8 @@
     for (    Record record : this) {
       Element eRecord=document.createElement("record");
       eRecords.appendChild(eRecord);
-      for (int index=0; index < fields.length; index++) {
-        Field<?> field=fields[index];
+      for (int index=0; index < fields.fields.length; index++) {
+        Field<?> field=fields.fields[index];
         Object value=record.getValue(index);
         Element eValue=document.createElement("value");
         eValue.setAttribute("field",field.getName());

@@ -14,10 +14,10 @@
   sb.append("<records>");
   for (  Record record : this) {
     sb.append("<record>");
-    for (int index=0; index < fields.length; index++) {
+    for (int index=0; index < fields.fields.length; index++) {
       Object value=record.getValue(index);
       sb.append("<value field=\"");
-      sb.append(escapeXML(fields[index].getName()));
+      sb.append(escapeXML(fields.fields[index].getName()));
       sb.append("\"");
       if (value == null) {
         sb.append("/>");

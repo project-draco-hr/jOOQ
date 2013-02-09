@@ -1,0 +1,4 @@
+{
+  this.internIndexes=fieldIndexes;
+  return this;
+}

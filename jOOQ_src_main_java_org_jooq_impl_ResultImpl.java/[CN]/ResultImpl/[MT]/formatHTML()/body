@@ -13,7 +13,7 @@
   sb.append("<tbody>");
   for (  Record record : this) {
     sb.append("<tr>");
-    for (int index=0; index < fields.length; index++) {
+    for (int index=0; index < fields.fields.length; index++) {
       sb.append("<td>");
       sb.append(format0(record.getValue(index),false));
       sb.append("</td>");

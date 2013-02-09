@@ -9,7 +9,7 @@
   sb.append("\n");
   for (  Record record : this) {
     String sep2="";
-    for (int index=0; index < fields.length; index++) {
+    for (int index=0; index < fields.fields.length; index++) {
       sb.append(sep2);
       sb.append(formatCSV0(record.getValue(index),nullString));
       sep2=Character.toString(delimiter);

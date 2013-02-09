@@ -11,6 +11,9 @@
       listener.recordStart(ctx);
       for (int i=0; i < fields.length; i++) {
         setValue((AbstractRecord)record,fields[i],i);
+        if (intern[i]) {
+          ((AbstractRecord)record).getValue0(i).intern();
+        }
       }
       ctx.record(record);
       listener.recordEnd(ctx);

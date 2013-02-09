@@ -1,0 +1,4 @@
+{
+  this.internFields=fields;
+  return this;
+}
