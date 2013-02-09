@@ -17,6 +17,5 @@
  else {
     result=storeInsert();
   }
-  setAllChanged(false);
   return result;
 }

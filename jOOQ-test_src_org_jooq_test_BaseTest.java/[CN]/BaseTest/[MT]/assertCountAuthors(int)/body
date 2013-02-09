@@ -1,0 +1,3 @@
+{
+  assertEquals(count,(int)create().selectCount().from(TAuthor()).fetchOne(0,Integer.class));
+}
