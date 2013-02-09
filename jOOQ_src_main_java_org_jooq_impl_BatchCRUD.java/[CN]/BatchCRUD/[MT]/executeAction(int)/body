@@ -1,8 +1,16 @@
 {
-  if (action == Action.STORE) {
+switch (action) {
+case STORE:
     records[i].store();
-  }
- else   if (action == Action.DELETE) {
-    records[i].delete();
-  }
+  break;
+case INSERT:
+records[i].insert();
+break;
+case UPDATE:
+records[i].update();
+break;
+case DELETE:
+records[i].delete();
+break;
+}
 }

@@ -1,8 +1,8 @@
 {
   if (objects.size() > 1) {
-    create.batchStore(records(objects,true)).execute();
+    create.batchUpdate(records(objects,true)).execute();
   }
  else   if (objects.size() == 1) {
-    records(objects,true).get(0).store();
+    records(objects,true).get(0).update();
   }
 }

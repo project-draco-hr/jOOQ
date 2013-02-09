@@ -1,5 +1,0 @@
-{
-  for (  Value<?> value : getValues()) {
-    value.setChanged(changed);
-  }
-}

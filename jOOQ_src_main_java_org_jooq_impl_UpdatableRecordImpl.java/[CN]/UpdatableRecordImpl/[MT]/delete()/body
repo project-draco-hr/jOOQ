@@ -16,6 +16,6 @@
     return result;
   }
   finally {
-    setAllChanged(true);
+    changed(true);
   }
 }

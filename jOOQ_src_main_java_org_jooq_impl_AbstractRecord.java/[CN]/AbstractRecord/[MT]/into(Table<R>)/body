@@ -15,7 +15,7 @@
           isKeySet&=(field(field) != null);
         }
         if (isKeySet) {
-          ((AbstractRecord)result).setAllChanged(false);
+          result.changed(false);
         }
       }
     }

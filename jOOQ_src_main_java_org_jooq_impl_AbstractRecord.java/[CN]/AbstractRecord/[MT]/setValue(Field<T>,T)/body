@@ -10,7 +10,7 @@
  else {
     val.setValue(value,true);
     if (val.isChanged()) {
-      setAllChanged(true);
+      changed(true);
     }
   }
 }

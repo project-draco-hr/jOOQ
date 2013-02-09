@@ -20,7 +20,7 @@
         }
       }
     }
-    setAllChanged(false);
+    changed(false);
   }
   return result;
 }

@@ -16,7 +16,7 @@
   int result=update.execute();
   checkIfChanged(result,version,timestamp);
   if (result > 0) {
-    setAllChanged(false);
+    changed(false);
   }
   return result;
 }
