@@ -1,4 +1,5 @@
 {
+  RecordMapper<R,E> mapper=new ReflectionMapper<R,E>(fields,type);
   if (keys == null) {
     keys=new Field[0];
   }
@@ -13,7 +14,7 @@
       list=new ArrayList<E>();
       map.put(key,list);
     }
-    list.add(record.into(type));
+    list.add(mapper.map(record));
   }
   return map;
 }

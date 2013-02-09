@@ -1,4 +1,7 @@
 {
+  if (record == null) {
+    return null;
+  }
   try {
     return delegate.map(record);
   }

@@ -1,4 +1,5 @@
 {
+  RecordMapper<R,E> mapper=new ReflectionMapper<R,E>(fields,type);
   if (keys == null) {
     keys=new Field[0];
   }
@@ -8,7 +9,7 @@
     for (    Field<?> key : keys) {
       keyValueList.add(record.getValue(key));
     }
-    if (map.put(keyValueList,record.into(type)) != null) {
+    if (map.put(keyValueList,mapper.map(record)) != null) {
       throw new InvalidResultException("Key list " + keyValueList + " is not unique in Result for "+ this);
     }
   }

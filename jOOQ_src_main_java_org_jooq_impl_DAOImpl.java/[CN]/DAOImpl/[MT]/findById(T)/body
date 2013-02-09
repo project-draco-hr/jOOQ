@@ -4,5 +4,5 @@
   if (pk != null) {
     record=create.selectFrom(table).where(equal(pk,id)).fetchOne();
   }
-  return record == null ? null : record.into(type);
+  return mapper.map(record);
 }

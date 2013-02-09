@@ -1,4 +1,4 @@
 {
   R record=create.selectFrom(table).where(field.equal(value)).fetchOne();
-  return record == null ? null : record.into(type);
+  return mapper.map(record);
 }
