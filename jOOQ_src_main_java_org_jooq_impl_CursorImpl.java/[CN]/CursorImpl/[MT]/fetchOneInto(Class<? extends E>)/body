@@ -1,3 +1,4 @@
 {
-  return fetchOne().into(clazz);
+  R record=fetchOne();
+  return record == null ? null : record.into(clazz);
 }
