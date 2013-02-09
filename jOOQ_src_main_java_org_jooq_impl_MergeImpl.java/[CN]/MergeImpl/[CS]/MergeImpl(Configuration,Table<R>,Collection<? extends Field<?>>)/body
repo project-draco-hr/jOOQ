@@ -4,6 +4,6 @@
   this.on=new ConditionProviderImpl();
   if (fields != null) {
     h2Style=true;
-    h2Fields=new Fields(fields);
+    h2Fields=new QueryPartList<Field<?>>(fields);
   }
 }

@@ -13,6 +13,6 @@
   if (from != null) {
     this.from.add(from.asTable());
   }
-  this.forUpdateOf=new FieldList();
+  this.forUpdateOf=new QueryPartList<Field<?>>();
   this.forUpdateOfTables=new TableList();
 }

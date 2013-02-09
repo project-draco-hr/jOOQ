@@ -1,6 +1,6 @@
 {
   if (h2Values == null) {
-    h2Values=new FieldList();
+    h2Values=new QueryPartList<Field<?>>();
   }
   return h2Values;
 }

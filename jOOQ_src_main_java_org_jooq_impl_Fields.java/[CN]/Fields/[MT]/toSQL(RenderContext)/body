@@ -1,3 +1,3 @@
 {
-  new FieldList(fields).toSQL(context);
+  new QueryPartList<Field<?>>(fields).toSQL(context);
 }

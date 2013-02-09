@@ -1,7 +1,7 @@
 {
-  FieldList groupingFields=new FieldList();
-  FieldList aliasedGroupingFields=new FieldList();
-  FieldList aggregatedFields=new FieldList();
+  List<Field<?>> groupingFields=new ArrayList<Field<?>>();
+  List<Field<?>> aliasedGroupingFields=new ArrayList<Field<?>>();
+  List<Field<?>> aggregatedFields=new ArrayList<Field<?>>();
   Table<?> pivot=table.as("pivot_outer");
   for (  Field<?> field : aggregateFunctions) {
     if (field instanceof Function) {
@@ -20,7 +20,7 @@
       }
     }
   }
-  FieldList aggregationSelects=new FieldList();
+  List<Field<?>> aggregationSelects=new ArrayList<Field<?>>();
   for (  Field<?> inField : in) {
     for (    Field<?> aggregateFunction : aggregateFunctions) {
       Condition join=trueCondition();

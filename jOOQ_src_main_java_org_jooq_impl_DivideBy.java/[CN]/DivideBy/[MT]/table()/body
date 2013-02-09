@@ -1,6 +1,6 @@
 {
   ConditionProviderImpl selfJoin=new ConditionProviderImpl();
-  FieldList select=new FieldList();
+  List<Field<?>> select=new ArrayList<Field<?>>();
   Table<?> outer=dividend.as("dividend");
   for (  Field<?> field : returning) {
     Field<?> outerField=outer.field(field);

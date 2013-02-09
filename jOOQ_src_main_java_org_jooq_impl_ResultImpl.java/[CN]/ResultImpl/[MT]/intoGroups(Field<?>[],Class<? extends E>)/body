@@ -3,9 +3,8 @@
     keys=new Field[0];
   }
   Map<Record,List<E>> map=new LinkedHashMap<Record,List<E>>();
-  FieldList keyList=new FieldList(keys);
   for (  R record : this) {
-    @SuppressWarnings({"rawtypes","unchecked"}) Record key=new RecordImpl(keyList);
+    @SuppressWarnings({"rawtypes","unchecked"}) Record key=new RecordImpl(keys);
     for (    Field<?> field : keys) {
       Utils.setValue(key,field,record,field);
     }

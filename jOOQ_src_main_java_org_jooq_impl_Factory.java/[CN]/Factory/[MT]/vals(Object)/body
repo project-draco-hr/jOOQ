@@ -1,5 +1,5 @@
 {
-  FieldList result=new FieldList();
+  List<Field<?>> result=new ArrayList<Field<?>>();
   if (values != null) {
     for (    Object value : values) {
       if (value instanceof Field<?>) {

@@ -3,14 +3,13 @@
     keys=new Field[0];
   }
   Map<Record,R> map=new LinkedHashMap<Record,R>();
-  FieldList keyList=new FieldList(keys);
   for (  R record : this) {
-    @SuppressWarnings({"rawtypes","unchecked"}) Record key=new RecordImpl(keyList);
+    @SuppressWarnings({"rawtypes","unchecked"}) Record key=new RecordImpl(keys);
     for (    Field<?> field : keys) {
       Utils.setValue(key,field,record,field);
     }
     if (map.put(key,record) != null) {
-      throw new InvalidResultException("Key list " + keyList + " is not unique in Result for "+ this);
+      throw new InvalidResultException("Key list " + Arrays.asList(keys) + " is not unique in Result for "+ this);
     }
   }
   return map;

@@ -9,7 +9,7 @@ case SYBASE:
 {
       Table<?> src;
       if (h2Select != null) {
-        FieldList v=new FieldList();
+        List<Field<?>> v=new ArrayList<Field<?>>();
         Row row=h2Select.fieldsRow();
         for (int i=0; i < row.size(); i++) {
           v.add(row.field(i).as("s" + (i + 1)));
@@ -17,7 +17,7 @@ case SYBASE:
         src=create(config).select(v).from(h2Select).asTable("src");
       }
  else {
-        FieldList v=new FieldList();
+        List<Field<?>> v=new ArrayList<Field<?>>();
         for (int i=0; i < getH2Values().size(); i++) {
           v.add(getH2Values().get(i).as("s" + (i + 1)));
         }
@@ -62,10 +62,10 @@ case SYBASE:
       Map<Field<?>,Field<?>> update=new LinkedHashMap<Field<?>,Field<?>>();
       Map<Field<?>,Field<?>> insert=new LinkedHashMap<Field<?>,Field<?>>();
       for (int i=0; i < src.fieldsRow().size(); i++) {
-        if (!onFields.contains(getH2Fields().field(i))) {
-          update.put(getH2Fields().field(i),src.field(i));
+        if (!onFields.contains(getH2Fields().get(i))) {
+          update.put(getH2Fields().get(i),src.field(i));
         }
-        insert.put(getH2Fields().field(i),src.field(i));
+        insert.put(getH2Fields().get(i),src.field(i));
       }
       return create(config).mergeInto(table).using(src).on(condition).whenMatchedThenUpdate().set(update).whenNotMatchedThenInsert().set(insert);
     }

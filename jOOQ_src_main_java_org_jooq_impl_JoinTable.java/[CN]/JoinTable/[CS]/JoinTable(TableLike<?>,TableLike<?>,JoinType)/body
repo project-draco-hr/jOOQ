@@ -2,8 +2,8 @@
   super("join");
   this.lhs=lhs.asTable();
   this.rhs=rhs.asTable();
-  this.rhsPartitionBy=new FieldList();
+  this.rhsPartitionBy=new QueryPartList<Field<?>>();
   this.type=type;
   this.condition=new ConditionProviderImpl();
-  this.using=new FieldList();
+  this.using=new QueryPartList<Field<?>>();
 }
