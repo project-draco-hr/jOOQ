@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.test.oracle2.generatedclasses.tables.DateAsTimestampT_976.DATE_AS_TIMESTAMP_T_976.DATE_AS_TIMESTAMP_O);
+  return (org.jooq.test.oracle2.generatedclasses.udt.records.DateAsTimestampT_976ObjectTypeRecord)getValue(3);
 }
