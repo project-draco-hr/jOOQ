@@ -17,6 +17,7 @@
     out.tab(1).println("public void %s(%s value);",setter,type);
     out.tab(1).javadoc("Getter for <code>%s</code>. %s",name,comment);
     printColumnJPAAnnotation(out,column);
+    printColumnValidationAnnotation(out,column);
     out.tab(1).println("public %s %s();",type,getter);
   }
   String local=getStrategy().getJavaClassName(table,Mode.INTERFACE);

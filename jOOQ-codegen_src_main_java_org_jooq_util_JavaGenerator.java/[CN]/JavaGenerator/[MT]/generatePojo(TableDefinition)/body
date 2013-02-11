@@ -18,7 +18,6 @@
     maxLength=Math.max(maxLength,getJavaType(column.getType()).length());
   }
   for (  ColumnDefinition column : table.getColumns()) {
-    printColumnValidationAnnotation(out,column);
     out.tab(1).println("private %s%s %s;",generateImmutablePojos() ? "final " : "",StringUtils.rightPad(getJavaType(column.getType()),maxLength),getStrategy().getJavaMemberName(column,Mode.POJO));
   }
   if (generateImmutablePojos()) {
@@ -45,6 +44,7 @@
     final String columnMember=getStrategy().getJavaMemberName(column,Mode.POJO);
     out.println();
     printColumnJPAAnnotation(out,column);
+    printColumnValidationAnnotation(out,column);
     out.tab(1).overrideIf(generateInterfaces());
     out.tab(1).println("public %s %s() {",columnType,columnGetter);
     out.tab(2).println("return this.%s;",columnMember);
