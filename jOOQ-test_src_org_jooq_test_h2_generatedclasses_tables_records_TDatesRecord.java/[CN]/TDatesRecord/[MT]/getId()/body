@@ -1,3 +1,3 @@
 {
-  return (java.lang.Integer)getValue(org.jooq.test.h2.generatedclasses.tables.TDates.ID);
+  return (java.lang.Integer)getValue(0);
 }

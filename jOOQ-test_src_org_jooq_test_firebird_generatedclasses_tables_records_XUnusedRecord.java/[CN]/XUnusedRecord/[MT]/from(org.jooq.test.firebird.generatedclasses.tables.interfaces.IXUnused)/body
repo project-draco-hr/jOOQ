@@ -4,7 +4,7 @@
   setBigInteger(from.getBigInteger());
   setIdRef(from.getIdRef());
   setClass_(from.getClass_());
-  setFields_(from.getFields_());
+  setFields(from.getFields());
   setConfiguration_(from.getConfiguration_());
   setUDT(from.getUDT());
   setMetaData(from.getMetaData());

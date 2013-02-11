@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.test.firebird.generatedclasses.tables.XUnused.X_UNUSED.NAME_REF);
+  return (java.lang.String)getValue(12);
 }

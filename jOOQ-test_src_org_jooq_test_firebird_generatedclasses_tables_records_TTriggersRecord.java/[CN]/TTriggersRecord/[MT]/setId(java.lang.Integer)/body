@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.test.firebird.generatedclasses.tables.TTriggers.T_TRIGGERS.ID,value);
+  setValue(1,value);
 }
