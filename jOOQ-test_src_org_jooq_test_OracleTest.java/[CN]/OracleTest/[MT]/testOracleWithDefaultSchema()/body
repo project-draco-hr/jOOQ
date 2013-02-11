@@ -1,0 +1,12 @@
+{
+  assertEquals(TEST.getSequences().size(),DEFAULT_SCHEMA.getSequences().size());
+  assertEquals(TEST.getTables().size(),DEFAULT_SCHEMA.getTables().size());
+  assertEquals(TEST.getUDTs().size(),DEFAULT_SCHEMA.getUDTs().size());
+  Select<Record3<String,String,String>> select=create().select(org.jooq.test.oracle3.generatedclasses.Tables.T_AUTHOR.FIRST_NAME,org.jooq.test.oracle3.generatedclasses.Tables.T_AUTHOR.LAST_NAME,org.jooq.test.oracle3.generatedclasses.Tables.T_BOOK.TITLE).from(org.jooq.test.oracle3.generatedclasses.Tables.T_BOOK).join(org.jooq.test.oracle3.generatedclasses.Tables.T_AUTHOR).on(org.jooq.test.oracle3.generatedclasses.Tables.T_BOOK.AUTHOR_ID.eq(org.jooq.test.oracle3.generatedclasses.Tables.T_AUTHOR.ID)).orderBy(org.jooq.test.oracle3.generatedclasses.Tables.T_BOOK.ID);
+  assertFalse(select.getSQL().contains("TEST"));
+  Result<Record3<String,String,String>> result=select.fetch();
+  assertEquals(4,result.size());
+  assertEquals(BOOK_FIRST_NAMES,result.getValues(org.jooq.test.oracle3.generatedclasses.Tables.T_AUTHOR.FIRST_NAME));
+  assertEquals(BOOK_LAST_NAMES,result.getValues(org.jooq.test.oracle3.generatedclasses.Tables.T_AUTHOR.LAST_NAME));
+  assertEquals(BOOK_TITLES,result.getValues(org.jooq.test.oracle3.generatedclasses.Tables.T_BOOK.TITLE));
+}
