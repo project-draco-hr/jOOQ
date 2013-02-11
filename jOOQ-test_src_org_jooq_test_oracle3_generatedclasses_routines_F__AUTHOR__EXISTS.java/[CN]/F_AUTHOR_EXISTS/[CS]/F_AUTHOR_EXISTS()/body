@@ -1,5 +1,5 @@
 {
-  super("F_AUTHOR_EXISTS",org.jooq.test.oracle3.generatedclasses.TEST.TEST,org.jooq.impl.SQLDataType.NUMERIC);
+  super("F_AUTHOR_EXISTS",org.jooq.test.oracle3.generatedclasses.DefaultSchema.DEFAULT_SCHEMA,org.jooq.impl.SQLDataType.NUMERIC);
   setReturnParameter(RETURN_VALUE);
   addInParameter(AUTHOR_NAME);
 }

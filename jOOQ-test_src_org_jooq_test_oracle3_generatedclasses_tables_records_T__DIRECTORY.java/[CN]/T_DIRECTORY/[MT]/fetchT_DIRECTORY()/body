@@ -1,3 +1,0 @@
-{
-  return create().selectFrom(org.jooq.test.oracle3.generatedclasses.tables.T_DIRECTORY.T_DIRECTORY).where(org.jooq.test.oracle3.generatedclasses.tables.T_DIRECTORY.T_DIRECTORY.ID.equal(getValue(org.jooq.test.oracle3.generatedclasses.tables.T_DIRECTORY.T_DIRECTORY.PARENT_ID))).fetchOne();
-}

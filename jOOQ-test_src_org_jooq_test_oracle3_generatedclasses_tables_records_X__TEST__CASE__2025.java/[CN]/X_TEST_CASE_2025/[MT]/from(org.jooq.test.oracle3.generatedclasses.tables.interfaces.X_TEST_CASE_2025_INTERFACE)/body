@@ -1,0 +1,4 @@
+{
+  setREF_ID(from.getREF_ID());
+  setREF_NAME(from.getREF_NAME());
+}

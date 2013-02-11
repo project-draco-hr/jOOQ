@@ -1,5 +1,5 @@
 {
-  super("F_TABLES3",org.jooq.test.oracle3.generatedclasses.TEST.TEST,org.jooq.impl.SQLDataType.VARCHAR.asArrayDataType(org.jooq.test.oracle3.generatedclasses.udt.records.U_STRING_TABLE.class));
+  super("F_TABLES3",org.jooq.test.oracle3.generatedclasses.DefaultSchema.DEFAULT_SCHEMA,org.jooq.impl.SQLDataType.VARCHAR.length(20).asArrayDataType(org.jooq.test.oracle3.generatedclasses.udt.records.U_STRING_TABLE.class));
   setReturnParameter(RETURN_VALUE);
   addInParameter(IN_TABLE);
 }

@@ -1,0 +1,4 @@
+{
+  setID(from.getID());
+  setUU(from.getUU());
+}

@@ -1,5 +1,5 @@
 {
-  super("NEW_AUTHOR",org.jooq.test.oracle3.generatedclasses.TEST.TEST,org.jooq.test.oracle3.generatedclasses.udt.U_AUTHOR_TYPE.U_AUTHOR_TYPE);
+  super("NEW_AUTHOR",org.jooq.test.oracle3.generatedclasses.DefaultSchema.DEFAULT_SCHEMA,org.jooq.test.oracle3.generatedclasses.udt.U_AUTHOR_TYPE.U_AUTHOR_TYPE);
   addInParameter(P_ID);
   addInParameter(P_FIRST_NAME);
   addInParameter(P_LAST_NAME);

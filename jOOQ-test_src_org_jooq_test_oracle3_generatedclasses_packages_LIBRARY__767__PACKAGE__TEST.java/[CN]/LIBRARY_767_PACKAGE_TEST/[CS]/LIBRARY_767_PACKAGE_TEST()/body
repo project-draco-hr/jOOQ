@@ -1,3 +1,3 @@
 {
-  super("LIBRARY_767_PACKAGE_TEST",org.jooq.test.oracle3.generatedclasses.TEST.TEST);
+  super("LIBRARY_767_PACKAGE_TEST",org.jooq.test.oracle3.generatedclasses.DefaultSchema.DEFAULT_SCHEMA);
 }

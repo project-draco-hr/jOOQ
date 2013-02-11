@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.test.oracle3.generatedclasses.tables.V_BOOK.V_BOOK.PUBLISHED_IN);
+  return (java.lang.Integer)getValue(5);
 }

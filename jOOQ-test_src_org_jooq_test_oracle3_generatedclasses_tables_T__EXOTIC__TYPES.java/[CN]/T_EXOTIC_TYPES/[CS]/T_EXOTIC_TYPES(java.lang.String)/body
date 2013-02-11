@@ -1,0 +1,3 @@
+{
+  super(alias,org.jooq.test.oracle3.generatedclasses.DefaultSchema.DEFAULT_SCHEMA,org.jooq.test.oracle3.generatedclasses.tables.T_EXOTIC_TYPES.T_EXOTIC_TYPES);
+}

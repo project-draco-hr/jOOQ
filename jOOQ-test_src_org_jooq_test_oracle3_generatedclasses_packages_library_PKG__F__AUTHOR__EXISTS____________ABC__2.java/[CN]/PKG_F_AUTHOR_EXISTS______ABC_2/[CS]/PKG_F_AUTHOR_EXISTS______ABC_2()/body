@@ -1,5 +1,5 @@
 {
-  super("PKG_F_AUTHOR_EXISTS",org.jooq.test.oracle3.generatedclasses.TEST.TEST,org.jooq.test.oracle3.generatedclasses.packages.LIBRARY.LIBRARY,org.jooq.impl.SQLDataType.NUMERIC);
+  super("PKG_F_AUTHOR_EXISTS",org.jooq.test.oracle3.generatedclasses.DefaultSchema.DEFAULT_SCHEMA,org.jooq.test.oracle3.generatedclasses.packages.LIBRARY.LIBRARY,org.jooq.impl.SQLDataType.NUMERIC);
   setReturnParameter(RETURN_VALUE);
   addInParameter(AUTHOR_NAME);
   addInParameter(UNUSED);

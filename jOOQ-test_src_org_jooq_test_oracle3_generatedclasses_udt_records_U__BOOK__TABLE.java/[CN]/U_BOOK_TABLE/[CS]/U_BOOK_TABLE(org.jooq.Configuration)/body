@@ -1,3 +1,3 @@
 {
-  super(org.jooq.test.oracle3.generatedclasses.TEST.TEST,"U_BOOK_TABLE",org.jooq.test.oracle3.generatedclasses.udt.U_BOOK_TYPE.U_BOOK_TYPE.getDataType(),configuration);
+  super(org.jooq.test.oracle3.generatedclasses.DefaultSchema.DEFAULT_SCHEMA,"U_BOOK_TABLE",org.jooq.test.oracle3.generatedclasses.udt.U_BOOK_TYPE.U_BOOK_TYPE.getDataType(),configuration);
 }

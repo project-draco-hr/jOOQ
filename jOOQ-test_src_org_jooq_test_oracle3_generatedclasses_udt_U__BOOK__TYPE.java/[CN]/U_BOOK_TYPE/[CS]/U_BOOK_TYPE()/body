@@ -1,4 +1,4 @@
 {
-  super("U_BOOK_TYPE",org.jooq.test.oracle3.generatedclasses.TEST.TEST);
+  super("U_BOOK_TYPE",org.jooq.test.oracle3.generatedclasses.DefaultSchema.DEFAULT_SCHEMA);
   getDataType();
 }

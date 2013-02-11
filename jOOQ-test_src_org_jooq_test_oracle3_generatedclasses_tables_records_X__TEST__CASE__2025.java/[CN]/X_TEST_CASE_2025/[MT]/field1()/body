@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.oracle3.generatedclasses.tables.X_TEST_CASE_2025.X_TEST_CASE_2025.REF_ID;
+}
