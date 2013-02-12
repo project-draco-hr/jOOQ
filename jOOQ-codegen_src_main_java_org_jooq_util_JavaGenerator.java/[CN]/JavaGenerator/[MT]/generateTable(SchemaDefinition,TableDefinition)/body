@@ -1,16 +1,16 @@
 {
-  UniqueKeyDefinition mainKey=table.getMainUniqueKey();
+  UniqueKeyDefinition primaryKey=table.getPrimaryKey();
   final String className=getStrategy().getJavaClassName(table);
   final String fullClassName=getStrategy().getFullJavaClassName(table);
   final String fullTableId=getStrategy().getFullJavaIdentifier(table);
   final String recordType=getStrategy().getFullJavaClassName(table,Mode.RECORD);
   final List<String> interfaces=getStrategy().getJavaClassImplements(table,Mode.DEFAULT);
-  log.info("Generating table",getStrategy().getFileName(table) + " [input=" + table.getInputName()+ ", output="+ table.getOutputName()+ ", pk="+ (mainKey != null ? mainKey.getName() : "N/A")+ "]");
+  log.info("Generating table",getStrategy().getFileName(table) + " [input=" + table.getInputName()+ ", output="+ table.getOutputName()+ ", pk="+ (primaryKey != null ? primaryKey.getName() : "N/A")+ "]");
   JavaWriter out=new JavaWriter(getStrategy().getFile(table));
   printPackage(out,table);
   printClassJavadoc(out,table);
   Class<?> baseClass;
-  if (generateRelations() && mainKey != null) {
+  if (generateRelations() && primaryKey != null) {
     baseClass=UpdatableTableImpl.class;
   }
  else {
@@ -58,10 +58,10 @@
       out.tab(2).println("return %s;",identityFullId);
       out.tab(1).println("}");
     }
-    if (mainKey != null) {
-      final String keyFullId=getStrategy().getFullJavaIdentifier(mainKey);
+    if (primaryKey != null) {
+      final String keyFullId=getStrategy().getFullJavaIdentifier(primaryKey);
       out.tab(1).overrideInherit();
-      out.tab(1).println("public %s<%s> getMainKey() {",UniqueKey.class,recordType);
+      out.tab(1).println("public %s<%s> getPrimaryKey() {",UniqueKey.class,recordType);
       out.tab(2).println("return %s;",keyFullId);
       out.tab(1).println("}");
     }

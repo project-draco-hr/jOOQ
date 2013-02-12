@@ -1,5 +1,5 @@
 {
-  TableField<R,?>[] keys=getMainKey().getFieldsArray();
+  TableField<R,?>[] keys=getPrimaryKey().getFieldsArray();
   boolean executeUpdate=false;
   for (  TableField<R,?> field : keys) {
     if (getValue(field) == null || getValue0(field).isChanged()) {

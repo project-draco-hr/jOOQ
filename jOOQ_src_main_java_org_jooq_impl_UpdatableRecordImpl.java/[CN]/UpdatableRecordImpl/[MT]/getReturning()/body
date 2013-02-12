@@ -4,6 +4,6 @@
   if (identity != null) {
     result.add(identity.getField());
   }
-  result.addAll(getMainKey().getFields());
+  result.addAll(getPrimaryKey().getFields());
   return result;
 }

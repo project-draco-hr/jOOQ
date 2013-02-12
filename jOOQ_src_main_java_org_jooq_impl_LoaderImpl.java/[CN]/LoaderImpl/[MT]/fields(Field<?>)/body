@@ -1,11 +1,11 @@
 {
   this.fields=f;
-  this.mainKey=new boolean[f.length];
+  this.primaryKey=new boolean[f.length];
   if (updatable != null) {
     for (int i=0; i < fields.length; i++) {
       if (fields[i] != null) {
-        if (updatable.getMainKey().getFields().contains(fields[i])) {
-          mainKey[i]=true;
+        if (updatable.getPrimaryKey().getFields().contains(fields[i])) {
+          primaryKey[i]=true;
         }
       }
     }

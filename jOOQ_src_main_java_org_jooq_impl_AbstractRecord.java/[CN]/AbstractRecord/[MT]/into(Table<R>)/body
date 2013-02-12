@@ -8,7 +8,7 @@
       }
     }
     if (result instanceof AbstractRecord) {
-      UniqueKey<?> key=((AbstractRecord)result).getMainKey();
+      UniqueKey<?> key=((AbstractRecord)result).getPrimaryKey();
       if (key != null) {
         boolean isKeySet=true;
         for (        Field<?> field : key.getFields()) {

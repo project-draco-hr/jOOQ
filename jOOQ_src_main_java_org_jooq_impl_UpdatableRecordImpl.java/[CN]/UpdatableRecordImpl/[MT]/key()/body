@@ -1,5 +1,5 @@
 {
-  RecordImpl result=new RecordImpl(getMainKey().getFields());
+  RecordImpl result=new RecordImpl(getPrimaryKey().getFields());
   for (  Field<?> field : result.fields) {
     result.setValue(field,getValue0(field));
   }

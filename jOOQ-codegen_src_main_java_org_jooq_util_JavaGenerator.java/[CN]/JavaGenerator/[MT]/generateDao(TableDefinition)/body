@@ -5,7 +5,7 @@
   final String tableIdentifier=getStrategy().getFullJavaIdentifier(table);
   String tType="Void";
   String pType=getStrategy().getFullJavaClassName(table,Mode.POJO);
-  UniqueKeyDefinition key=table.getMainUniqueKey();
+  UniqueKeyDefinition key=table.getPrimaryKey();
   ColumnDefinition keyColumn=null;
   if (key != null) {
     List<ColumnDefinition> columns=key.getKeyColumns();

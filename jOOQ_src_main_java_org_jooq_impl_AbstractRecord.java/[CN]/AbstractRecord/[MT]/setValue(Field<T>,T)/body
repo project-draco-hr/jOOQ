@@ -1,7 +1,7 @@
 {
-  UniqueKey<?> mainKey=getMainKey();
+  UniqueKey<?> key=getPrimaryKey();
   Value<T> val=getValue0(field);
-  if (mainKey == null || !mainKey.getFields().contains(field)) {
+  if (key == null || !key.getFields().contains(field)) {
     val.setValue(value);
   }
  else   if (val.isChanged()) {

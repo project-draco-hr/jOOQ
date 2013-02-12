@@ -1,0 +1,12 @@
+{
+  if (!primaryKeyLoaded) {
+    primaryKeyLoaded=true;
+    for (    ColumnDefinition column : getColumns()) {
+      if (column.getPrimaryKey() != null) {
+        primaryKey=column.getPrimaryKey();
+        return primaryKey;
+      }
+    }
+  }
+  return primaryKey;
+}

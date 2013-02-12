@@ -1,6 +1,6 @@
 {
   R copy=create().newRecord(getTable());
-  List<TableField<R,?>> key=getMainKey().getFields();
+  List<TableField<R,?>> key=getPrimaryKey().getFields();
   for (  Field<?> field : fields) {
     if (!key.contains(field)) {
       setValue(copy,field);

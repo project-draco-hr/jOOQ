@@ -1,6 +1,6 @@
 {
   log.info("Generating record",getStrategy().getFileName(table,Mode.RECORD));
-  final UniqueKeyDefinition key=table.getMainUniqueKey();
+  final UniqueKeyDefinition key=table.getPrimaryKey();
   final String className=getStrategy().getJavaClassName(table,Mode.RECORD);
   final String tableIdentifier=getStrategy().getFullJavaIdentifier(table);
   final String recordType=getStrategy().getFullJavaClassName(table,Mode.RECORD);

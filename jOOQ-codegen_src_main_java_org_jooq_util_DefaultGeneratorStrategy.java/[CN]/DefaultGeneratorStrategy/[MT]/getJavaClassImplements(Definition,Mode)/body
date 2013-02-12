@@ -2,7 +2,7 @@
   List<String> result=new ArrayList<String>();
   if (mode == Mode.DAO) {
     TableDefinition table=(TableDefinition)definition;
-    List<ColumnDefinition> keyColumns=table.getMainUniqueKey().getKeyColumns();
+    List<ColumnDefinition> keyColumns=table.getPrimaryKey().getKeyColumns();
     String name=DAO.class.getName();
     name+="<";
     name+=getFullJavaClassName(table,Mode.POJO);

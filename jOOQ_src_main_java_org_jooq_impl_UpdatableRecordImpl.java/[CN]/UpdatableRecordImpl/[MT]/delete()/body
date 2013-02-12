@@ -1,5 +1,5 @@
 {
-  TableField<R,?>[] keys=getMainKey().getFieldsArray();
+  TableField<R,?>[] keys=getPrimaryKey().getFieldsArray();
   try {
     DeleteQuery<R> delete1=create().deleteQuery(getTable());
     Utils.addConditions(delete1,this,keys);
