@@ -2,9 +2,9 @@
   context.sql(getInlineConstructor(context));
   context.sql("(");
   String separator="";
-  for (  Field<?> field : record.fields()) {
+  for (  Field<?> field : value.fields()) {
     context.sql(separator);
-    context.sql(val(record.getValue(field),field));
+    context.sql(val(value.getValue(field),field));
     separator=", ";
   }
   context.sql(")");

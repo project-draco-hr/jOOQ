@@ -1,7 +1,7 @@
 {
 switch (context.castMode()) {
 case NEVER:
-    toSQL(context,getValue(),getType());
+    toSQL(context,value,getType());
   return;
 case ALWAYS:
 toSQLCast(context);
@@ -14,7 +14,7 @@ toSQLCast(context);
 toSQLCast(context);
 }
  else {
-toSQL(context,getValue(),getType());
+toSQL(context,value,getType());
 }
 return;
 }
@@ -22,6 +22,6 @@ if (shouldCast(context)) {
 toSQLCast(context);
 }
  else {
-toSQL(context,getValue(),getType());
+toSQL(context,value,getType());
 }
 }

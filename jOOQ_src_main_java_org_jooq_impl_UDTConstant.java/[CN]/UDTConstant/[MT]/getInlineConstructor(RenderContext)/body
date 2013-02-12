@@ -6,7 +6,7 @@ case ORACLE:
 case DB2:
 default :
 {
-    UDT<?> udt=record.getUDT();
+    UDT<?> udt=value.getUDT();
     Schema mappedSchema=Utils.getMappedSchema(context,udt.getSchema());
     if (mappedSchema != null) {
       return mappedSchema + "." + udt.getName();

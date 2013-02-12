@@ -20,11 +20,11 @@ case DB2:
   context.sql(getInlineConstructor(context));
   context.sql("()");
   String separator="..";
-  for (  Field<?> field : record.fields()) {
+  for (  Field<?> field : value.fields()) {
     context.sql(separator);
     context.sql(field.getName());
     context.sql("(");
-    context.sql(val(record.getValue(field)));
+    context.sql(val(value.getValue(field)));
     context.sql(")");
   }
   return;

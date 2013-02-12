@@ -1,13 +1,13 @@
 {
 switch (context.getDialect()) {
 case ORACLE:
-    context.bindValues(record);
+    context.bindValues(value);
   break;
 case DB2:
 case POSTGRES:
 {
-  for (  Field<?> field : record.fields()) {
-    context.bind(val(record.getValue(field)));
+  for (  Field<?> field : value.fields()) {
+    context.bind(val(value.getValue(field)));
   }
   break;
 }

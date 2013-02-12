@@ -1,4 +1,3 @@
 {
   super(value,value.getUDT().getDataType());
-  this.record=value;
 }
