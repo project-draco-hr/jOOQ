@@ -13,4 +13,5 @@
     context.bind(updateMap);
   }
   context.bind(condition);
+  bindReturning(context);
 }

@@ -1,0 +1,11 @@
+{
+  if (!returning.isEmpty()) {
+switch (context.getDialect()) {
+case FIREBIRD:
+case POSTGRES:
+      context.formatSeparator().keyword("returning ").sql(returning);
+    break;
+default :
+}
+}
+}

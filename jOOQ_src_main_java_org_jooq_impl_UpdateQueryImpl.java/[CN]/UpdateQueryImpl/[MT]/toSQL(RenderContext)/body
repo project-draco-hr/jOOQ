@@ -20,4 +20,5 @@
   if (!(getWhere() instanceof TrueCondition)) {
     context.formatSeparator().keyword("where ").sql(getWhere());
   }
+  toSQLReturning(context);
 }

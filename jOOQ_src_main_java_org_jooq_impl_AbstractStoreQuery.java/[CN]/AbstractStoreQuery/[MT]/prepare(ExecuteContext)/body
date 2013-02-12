@@ -25,6 +25,9 @@ case MYSQL:
 case SQLSERVER:
   ctx.statement(connection.prepareStatement(ctx.sql(),Statement.RETURN_GENERATED_KEYS));
 return;
+case DB2:
+case HSQLDB:
+case ORACLE:
 default :
 {
 List<String> names=new ArrayList<String>();

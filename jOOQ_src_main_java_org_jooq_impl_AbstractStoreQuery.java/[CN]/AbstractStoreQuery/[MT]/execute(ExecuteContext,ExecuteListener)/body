@@ -37,14 +37,16 @@ case SQLSERVER:
     rs=ctx.statement().getGeneratedKeys();
     try {
       List<Object> list=new ArrayList<Object>();
-      while (rs.next()) {
-        list.add(rs.getObject(1));
+      if (rs != null) {
+        while (rs.next()) {
+          list.add(rs.getObject(1));
+        }
       }
       selectReturning(ctx,list.toArray());
       return result;
     }
   finally {
-      rs.close();
+      JDBCUtils.safeClose(rs);
     }
   }
 case FIREBIRD:

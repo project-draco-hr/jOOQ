@@ -1,0 +1,4 @@
+{
+  getDelegate().execute();
+  return getDelegate().getReturnedRecords();
+}

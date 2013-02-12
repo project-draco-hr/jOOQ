@@ -1,0 +1,9 @@
+{
+switch (context.getDialect()) {
+case FIREBIRD:
+case POSTGRES:
+    context.bind((QueryPart)returning);
+  break;
+default :
+}
+}

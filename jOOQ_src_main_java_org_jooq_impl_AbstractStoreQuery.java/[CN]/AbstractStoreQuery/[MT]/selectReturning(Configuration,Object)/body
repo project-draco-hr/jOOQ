@@ -1,6 +1,5 @@
 {
   if (values != null && values.length > 0) {
-    Table<R> into=getInto();
     if (into.getIdentity() != null) {
       Field<Number> field=(Field<Number>)into.getIdentity().getField();
       Number[] ids=new Number[values.length];
