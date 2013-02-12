@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.test.postgres.generatedclasses.tables.TArrays.T_ARRAYS.ENUM_ARRAY);
+  return (org.jooq.test.postgres.generatedclasses.enums.UCountry[])getValue(5);
 }

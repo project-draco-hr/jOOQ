@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.test.oracle.generatedclasses.test.tables.TDates.T_DATES.D);
+  return (java.sql.Date)getValue(1);
 }

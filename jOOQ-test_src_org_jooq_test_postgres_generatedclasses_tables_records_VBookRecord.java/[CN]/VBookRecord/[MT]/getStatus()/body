@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.test.postgres.generatedclasses.tables.VBook.V_BOOK.STATUS);
+  return (org.jooq.test.postgres.generatedclasses.enums.UBookStatus)getValue(9);
 }

@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.test.oracle.generatedclasses.test.tables.TDirectory.T_DIRECTORY.NAME);
+  return (java.lang.String)getValue(3);
 }

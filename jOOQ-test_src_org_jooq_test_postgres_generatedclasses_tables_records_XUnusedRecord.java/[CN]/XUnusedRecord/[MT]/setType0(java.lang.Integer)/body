@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.test.postgres.generatedclasses.tables.XUnused.X_UNUSED.TYPE0,value);
+  setValue(10,value);
 }

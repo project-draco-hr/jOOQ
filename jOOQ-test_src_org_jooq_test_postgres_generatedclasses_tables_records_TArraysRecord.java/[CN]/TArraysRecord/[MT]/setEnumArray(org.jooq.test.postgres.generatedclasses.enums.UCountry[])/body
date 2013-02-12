@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.test.postgres.generatedclasses.tables.TArrays.T_ARRAYS.ENUM_ARRAY,value);
+  setValue(5,value);
 }

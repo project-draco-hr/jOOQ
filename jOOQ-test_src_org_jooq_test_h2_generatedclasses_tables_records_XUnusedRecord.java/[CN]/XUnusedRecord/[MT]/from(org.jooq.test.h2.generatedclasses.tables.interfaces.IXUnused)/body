@@ -12,7 +12,7 @@
   setMetaData(from.getMetaData());
   setValues_(from.getValues_());
   setType0(from.getType0());
-  setPrimaryKey(from.getPrimaryKey());
+  setPrimaryKey_(from.getPrimaryKey_());
   setPrimarykey(from.getPrimarykey());
   setField_737(from.getField_737());
 }
