@@ -11,8 +11,8 @@
     toSQLCast(context,dataType,0,precision,scale);
   }
  else   if (SQLDataType.OTHER == type) {
-    if (value != null) {
-      toSQLCast(context,DefaultDataType.getDataType(dialect,value.getClass()),0,0,0);
+    if (getValue() != null) {
+      toSQLCast(context,DefaultDataType.getDataType(dialect,getValue().getClass()),0,0,0);
     }
  else     if (asList(INGRES,SYBASE).contains(dialect)) {
       context.sql(getBindVariable(context));

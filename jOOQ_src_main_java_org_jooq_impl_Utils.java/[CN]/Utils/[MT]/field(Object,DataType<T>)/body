@@ -1,0 +1,8 @@
+{
+  if (value instanceof Field<?>) {
+    return (Field<T>)value;
+  }
+ else {
+    return val(value,type);
+  }
+}

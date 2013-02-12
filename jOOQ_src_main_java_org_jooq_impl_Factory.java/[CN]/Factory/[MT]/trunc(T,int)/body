@@ -1,3 +1,3 @@
 {
-  return trunc(val(number),inline(decimals));
+  return trunc(Utils.field(number),inline(decimals));
 }

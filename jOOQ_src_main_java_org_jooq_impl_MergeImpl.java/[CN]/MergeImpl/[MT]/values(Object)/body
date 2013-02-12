@@ -1,11 +1,11 @@
 {
   if (using == null) {
     h2Style=true;
-    getH2Values().addAll(vals(convert(values,getH2Fields().toArray(new Field[0]))));
+    getH2Values().addAll(Utils.fields(convert(values,getH2Fields().toArray(new Field[0]))));
   }
  else {
     Field<?>[] fields=notMatchedInsert.keySet().toArray(new Field[0]);
-    notMatchedInsert.putValues(vals(convert(values,fields)));
+    notMatchedInsert.putValues(Utils.fields(convert(values,fields)));
   }
   return this;
 }

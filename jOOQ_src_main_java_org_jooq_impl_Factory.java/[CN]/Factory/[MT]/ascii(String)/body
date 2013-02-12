@@ -1,3 +1,3 @@
 {
-  return ascii(val(field,String.class));
+  return ascii(Utils.field(field,String.class));
 }

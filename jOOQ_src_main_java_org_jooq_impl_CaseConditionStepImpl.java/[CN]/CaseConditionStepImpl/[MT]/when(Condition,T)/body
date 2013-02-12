@@ -1,3 +1,3 @@
 {
-  return when(condition,val(result));
+  return when(condition,Utils.field(result));
 }

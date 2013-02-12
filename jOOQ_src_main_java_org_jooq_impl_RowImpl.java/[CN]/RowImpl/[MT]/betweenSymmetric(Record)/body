@@ -1,4 +1,4 @@
 {
-  RowN row=new RowImpl(vals(record.intoArray(),record.fields()));
+  RowN row=new RowImpl(Utils.fields(record.intoArray(),record.fields()));
   return betweenSymmetric(row);
 }

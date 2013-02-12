@@ -1,3 +1,3 @@
 {
-  return row(vals(values).toArray(new Field[0]));
+  return row(Utils.fields(values).toArray(new Field[0]));
 }

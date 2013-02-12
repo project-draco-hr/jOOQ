@@ -1,9 +1,4 @@
 {
-  if (value instanceof Field<?>) {
-    return (Field<T>)value;
-  }
- else {
-    Class<?> type=(value == null) ? Object.class : value.getClass();
-    return (Field<T>)val(value,getDataType(type));
-  }
+  Class<?> type=(value == null) ? Object.class : value.getClass();
+  return (Param<T>)val(value,getDataType(type));
 }

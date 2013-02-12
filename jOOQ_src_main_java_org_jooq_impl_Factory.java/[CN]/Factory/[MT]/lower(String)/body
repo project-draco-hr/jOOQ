@@ -1,3 +1,3 @@
 {
-  return lower(val(value,String.class));
+  return lower(Utils.field(value,String.class));
 }

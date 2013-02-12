@@ -1,3 +1,3 @@
 {
-  return decode(val(value),val(search),val(result),vals(more).toArray(new Field[0]));
+  return decode(Utils.field(value),Utils.field(search),Utils.field(result),Utils.fields(more).toArray(new Field[0]));
 }

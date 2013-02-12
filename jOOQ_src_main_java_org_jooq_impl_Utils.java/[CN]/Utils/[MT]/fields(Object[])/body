@@ -2,12 +2,7 @@
   List<Field<?>> result=new ArrayList<Field<?>>();
   if (values != null) {
     for (    Object value : values) {
-      if (value instanceof Field<?>) {
-        result.add((Field<?>)value);
-      }
- else {
-        result.add(val(value));
-      }
+      result.add(field(value));
     }
   }
   return result;

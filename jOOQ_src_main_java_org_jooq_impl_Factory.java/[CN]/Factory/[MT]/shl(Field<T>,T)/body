@@ -1,3 +1,3 @@
 {
-  return shl(nullSafe(value1),val(value2));
+  return shl(nullSafe(value1),Utils.field(value2));
 }

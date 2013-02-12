@@ -1,3 +1,3 @@
 {
-  return timestampAdd(val(timestamp),val(interval));
+  return timestampAdd(Utils.field(timestamp),Utils.field(interval));
 }

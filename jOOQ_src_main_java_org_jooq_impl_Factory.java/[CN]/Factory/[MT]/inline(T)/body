@@ -1,5 +1,5 @@
 {
-  Param<T> val=(Param<T>)val(value);
+  Param<T> val=val(value);
   val.setInline(true);
   return val;
 }

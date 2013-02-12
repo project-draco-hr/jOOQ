@@ -1,3 +1,3 @@
 {
-  return abs(val(value));
+  return abs(Utils.field(value));
 }

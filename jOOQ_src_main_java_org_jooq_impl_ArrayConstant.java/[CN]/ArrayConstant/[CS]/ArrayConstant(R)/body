@@ -1,0 +1,4 @@
+{
+  super(array,(DataType)array.getDataType());
+  this.array=array;
+}

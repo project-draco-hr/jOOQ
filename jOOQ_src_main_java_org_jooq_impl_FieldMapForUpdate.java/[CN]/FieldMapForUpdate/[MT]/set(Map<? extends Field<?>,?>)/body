@@ -2,6 +2,6 @@
   for (  Entry<? extends Field<?>,?> entry : map.entrySet()) {
     Field<?> field=entry.getKey();
     Object value=entry.getValue();
-    put(entry.getKey(),val(value,field));
+    put(entry.getKey(),Utils.field(value,field));
   }
 }

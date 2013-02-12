@@ -3,6 +3,6 @@
     return trueCondition();
   }
  else {
-    return notIn(vals(values).toArray(new Field<?>[0]));
+    return notIn(Utils.fields(values).toArray(new Field<?>[0]));
   }
 }

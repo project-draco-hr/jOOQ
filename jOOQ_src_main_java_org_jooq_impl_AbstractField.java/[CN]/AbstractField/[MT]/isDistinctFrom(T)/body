@@ -1,3 +1,3 @@
 {
-  return isDistinctFrom(val(value,this));
+  return isDistinctFrom(Utils.field(value,this));
 }

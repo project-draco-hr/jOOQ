@@ -1,3 +1,3 @@
 {
-  return concat(vals((Object[])values).toArray(new Field[0]));
+  return concat(Utils.fields(values).toArray(new Field[0]));
 }

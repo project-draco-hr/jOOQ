@@ -1,3 +1,3 @@
 {
-  return deg(val(value));
+  return deg(Utils.field(value));
 }

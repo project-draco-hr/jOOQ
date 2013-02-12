@@ -1,8 +1,5 @@
 {
-  if (value instanceof Field<?>) {
-    return (Field<T>)value;
-  }
- else   if (value instanceof UDTRecord) {
+  if (value instanceof UDTRecord) {
     return new UDTConstant((UDTRecord)value);
   }
  else   if (value instanceof ArrayRecord) {
