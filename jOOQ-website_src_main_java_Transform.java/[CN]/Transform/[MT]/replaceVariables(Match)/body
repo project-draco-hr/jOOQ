@@ -8,6 +8,10 @@
         content=content.replace("{jooq-version}",version + ".0");
         changed=true;
       }
+      if (content.contains("{max-row-degree}")) {
+        content=content.replace("{max-row-degree}","" + Constants.MAX_ROW_DEGREE);
+        changed=true;
+      }
       if (changed) {
         $(context.element()).content(content);
       }
