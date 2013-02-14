@@ -6,8 +6,4 @@
   System.out.println("Transforming single-page manual");
   System.out.println("-------------------------------");
   singlePage();
-  System.out.println();
-  System.out.println("Transforming PDF manual");
-  System.out.println("-------------------------------");
-  pdf();
 }
