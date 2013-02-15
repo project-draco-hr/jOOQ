@@ -1,6 +1,0 @@
-{
-  checkNotClosed();
-  Field<?> field=result.field(column - 1);
-  Class<?> type=field.getType();
-  return Number.class.isAssignableFrom(type) && !UNumber.class.isAssignableFrom(type);
-}

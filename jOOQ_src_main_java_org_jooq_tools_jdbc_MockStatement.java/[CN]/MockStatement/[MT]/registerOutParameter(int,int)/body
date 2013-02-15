@@ -1,0 +1,4 @@
+{
+  checkNotClosed();
+  ensureBindingsCapacity(parameterIndex);
+}

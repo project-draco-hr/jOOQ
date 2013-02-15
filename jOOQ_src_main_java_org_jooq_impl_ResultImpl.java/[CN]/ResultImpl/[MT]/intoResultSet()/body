@@ -1,3 +1,3 @@
 {
-  return new ResultSetImpl(this);
+  return new MockResultSet(this);
 }

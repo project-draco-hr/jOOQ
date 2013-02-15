@@ -1,0 +1,8 @@
+{
+  if (maxRows == 0) {
+    return result.size();
+  }
+ else {
+    return Math.min(maxRows,result.size());
+  }
+}

@@ -1,0 +1,3 @@
+{
+  return (index > size()) ? 0 : index;
+}

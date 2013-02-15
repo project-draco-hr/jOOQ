@@ -1,0 +1,4 @@
+{
+  checkNotClosed();
+  return (result != null && resultIndex < result.length && result[resultIndex].data != null) ? new MockResultSet(result[resultIndex].data,maxRows) : null;
+}

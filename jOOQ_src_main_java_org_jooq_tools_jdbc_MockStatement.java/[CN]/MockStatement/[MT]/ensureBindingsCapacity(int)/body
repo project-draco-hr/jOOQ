@@ -1,0 +1,6 @@
+{
+  List<Object> b=bindings();
+  if (b.size() < index) {
+    b.addAll(nCopies(index - b.size(),null));
+  }
+}

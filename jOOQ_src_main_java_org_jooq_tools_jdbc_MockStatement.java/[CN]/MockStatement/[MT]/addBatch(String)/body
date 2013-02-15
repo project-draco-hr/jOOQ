@@ -1,0 +1,4 @@
+{
+  checkNotClosed();
+  sql.add(localSql);
+}

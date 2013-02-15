@@ -1,0 +1,4 @@
+{
+  checkNotClosed();
+  throw new SQLException("Can this be ignored?");
+}

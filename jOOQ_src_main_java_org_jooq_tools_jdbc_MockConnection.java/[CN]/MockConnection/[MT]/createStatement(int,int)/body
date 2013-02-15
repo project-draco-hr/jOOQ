@@ -1,0 +1,3 @@
+{
+  return createStatement(resultSetType,resultSetConcurrency,ResultSet.CLOSE_CURSORS_AT_COMMIT);
+}

@@ -1,0 +1,4 @@
+{
+  checkNotClosed();
+  bindings.add(new ArrayList<Object>());
+}

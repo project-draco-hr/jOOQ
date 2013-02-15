@@ -1,0 +1,8 @@
+{
+  checkNotClosed();
+  MockStatement result=new MockStatement(this,data,sql);
+  result.resultSetType=resultSetType;
+  result.resultSetConcurrency=resultSetConcurrency;
+  result.resultSetHoldability=resultSetHoldability;
+  return result;
+}

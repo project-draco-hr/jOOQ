@@ -1,0 +1,4 @@
+{
+  checkNotClosed();
+  return (size() > 0 && index == 1);
+}

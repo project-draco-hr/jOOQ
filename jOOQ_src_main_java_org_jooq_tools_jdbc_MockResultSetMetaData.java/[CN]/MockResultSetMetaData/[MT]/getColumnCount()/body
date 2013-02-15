@@ -1,0 +1,4 @@
+{
+  rs.checkNotClosed();
+  return rs.result.fieldsRow().size();
+}

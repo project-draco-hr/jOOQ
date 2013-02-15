@@ -1,0 +1,6 @@
+{
+  checkNotClosed();
+  sql.clear();
+  bindings.clear();
+  bindings.add(new ArrayList<Object>());
+}

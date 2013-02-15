@@ -1,0 +1,4 @@
+{
+  execute0(localSql,resultSetType,resultSetConcurrency,resultSetHoldability,Statement.RETURN_GENERATED_KEYS,null,localColumnNames);
+  return getUpdateCount();
+}

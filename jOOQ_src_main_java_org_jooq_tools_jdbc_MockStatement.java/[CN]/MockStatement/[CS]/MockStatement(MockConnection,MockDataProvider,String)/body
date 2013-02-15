@@ -1,0 +1,10 @@
+{
+  this.connection=connection;
+  this.data=data;
+  this.sql=new ArrayList<String>();
+  this.bindings=new ArrayList<List<Object>>();
+  if (sql != null) {
+    this.sql.add(sql);
+  }
+  this.bindings.add(new ArrayList<Object>());
+}
