@@ -1,0 +1,8 @@
+{
+  Map<Field<?>,Object> result=new LinkedHashMap<Field<?>,Object>();
+  int size=record.size();
+  for (int i=0; i < size; i++) {
+    result.put(record.field(i),record.getValue(i));
+  }
+  return result;
+}
