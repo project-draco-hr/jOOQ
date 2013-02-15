@@ -1,2 +1,2 @@
 Configuration configuration
-Table<?> table
+Table<R> table
