@@ -1,0 +1,6 @@
+{
+  for (  Object[] v : bindValues) {
+    bind(v);
+  }
+  return this;
+}
