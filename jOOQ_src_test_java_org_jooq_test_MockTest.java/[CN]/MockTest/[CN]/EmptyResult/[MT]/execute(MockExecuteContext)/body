@@ -1,4 +1,4 @@
 {
   execute0(ctx);
-  return new MockResult[]{new MockResult(0,create.newResult(Table1.TABLE1))};
+  return new MockResult[]{new MockResult(0,resultEmpty)};
 }

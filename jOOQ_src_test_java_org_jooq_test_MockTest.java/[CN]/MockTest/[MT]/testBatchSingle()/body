@@ -1,0 +1,7 @@
+{
+  Executor e=new Executor(new MockConnection(new BatchSingle()),SQLDialect.H2);
+  int[] result=e.batch(e.query("insert into x values(1)"),e.query("insert into x values(2)")).execute();
+  assertEquals(2,result.length);
+  assertEquals(0,result[0]);
+  assertEquals(1,result[1]);
+}

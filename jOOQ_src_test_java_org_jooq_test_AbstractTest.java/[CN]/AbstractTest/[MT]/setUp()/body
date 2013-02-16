@@ -2,4 +2,19 @@
   context=new Mockery();
   statement=context.mock(PreparedStatement.class);
   create=new Executor(SQLDialect.ORACLE);
+  resultEmpty=create.newResult(TABLE1);
+  resultOne=create.newResult(TABLE1);
+  resultOne.add(create.newRecord(TABLE1));
+  resultOne.get(0).setValue(FIELD_ID1,1);
+  resultOne.get(0).setValue(FIELD_NAME1,"1");
+  resultOne.get(0).changed(false);
+  resultTwo=create.newResult(TABLE1);
+  resultTwo.add(create.newRecord(TABLE1));
+  resultTwo.add(create.newRecord(TABLE1));
+  resultTwo.get(0).setValue(FIELD_ID1,2);
+  resultTwo.get(0).setValue(FIELD_NAME1,"2");
+  resultTwo.get(0).changed(false);
+  resultTwo.get(1).setValue(FIELD_ID1,3);
+  resultTwo.get(1).setValue(FIELD_NAME1,"3");
+  resultTwo.get(1).changed(false);
 }

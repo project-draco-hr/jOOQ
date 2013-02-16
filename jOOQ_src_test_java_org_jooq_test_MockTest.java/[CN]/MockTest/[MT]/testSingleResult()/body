@@ -1,16 +1,13 @@
 {
   Executor e=new Executor(new MockConnection(new SingleResult()),SQLDialect.H2);
   Result<Record> result=e.fetch("select ?, ? from dual",1,2);
-  assertEquals(2,result.size());
+  assertEquals(1,result.size());
   assertEquals(3,result.fields().length);
   for (int i=0; i < 3; i++) {
     assertEquals(TABLE1.field(i).getName(),result.field(i).getName());
     assertEquals(TABLE1.field(i).getType(),result.field(i).getType());
   }
   assertEquals(1,(int)result.getValue(0,FIELD_ID1));
-  assertEquals(2,(int)result.getValue(1,FIELD_ID1));
   assertEquals("1",result.getValue(0,FIELD_NAME1));
-  assertEquals("2",result.getValue(1,FIELD_NAME1));
   assertNull(result.getValue(0,Table1.FIELD_DATE1));
-  assertNull(result.getValue(1,Table1.FIELD_DATE1));
 }

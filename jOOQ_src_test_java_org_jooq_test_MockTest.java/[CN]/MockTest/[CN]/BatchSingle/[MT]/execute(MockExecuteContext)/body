@@ -1,0 +1,9 @@
+{
+  assertEquals(2,ctx.getBatchSQL().length);
+  assertEquals("insert into x values(1)",ctx.getBatchSQL()[0]);
+  assertEquals("insert into x values(2)",ctx.getBatchSQL()[1]);
+  assertEquals("insert into x values(1)",ctx.getSQL());
+  assertEquals(0,ctx.getBatchBindings().length);
+  assertEquals(asList(),asList(ctx.getBindings()));
+  return new MockResult[]{new MockResult(0,null),new MockResult(1,null)};
+}
