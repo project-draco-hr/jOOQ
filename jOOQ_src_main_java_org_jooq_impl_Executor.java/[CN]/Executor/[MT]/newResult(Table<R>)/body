@@ -1,0 +1,3 @@
+{
+  return new ResultImpl<R>(this,table.fields());
+}
