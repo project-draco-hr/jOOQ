@@ -1,0 +1,3 @@
+{
+  Result<Record2<Integer,String>> r=MOCK.select(FIELD_ID1,FIELD_NAME1).from(TABLE1).fetch();
+}

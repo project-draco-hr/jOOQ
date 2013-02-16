@@ -1,0 +1,98 @@
+{
+  new Loader(){
+    private InputStream is=new FileInputStream(file);
+    private LineNumberReader in=new LineNumberReader(new InputStreamReader(is,encoding));
+    private StringBuilder currentSQL=new StringBuilder();
+    private StringBuilder currentResult=new StringBuilder();
+    private String previousSQL=null;
+    @Override public void load() throws FileNotFoundException, IOException {
+      try {
+        while (true) {
+          String line=readLine();
+          if (line == null) {
+            if (currentResult.length() > 0) {
+              loadOneResult("");
+              currentResult=new StringBuilder();
+            }
+            break;
+          }
+ else           if (line.startsWith("#")) {
+            continue;
+          }
+ else           if (line.startsWith(">")) {
+            if (!line.startsWith("> -")) {
+              currentResult.append(line.substring(2));
+              currentResult.append("\n");
+            }
+          }
+ else           if (line.startsWith("@")) {
+            loadOneResult(line);
+            currentResult=new StringBuilder();
+          }
+ else           if (line.endsWith(";")) {
+            currentSQL.append(line.substring(0,line.length() - 1));
+            if (!matchExactly.containsKey(previousSQL)) {
+              matchExactly.put(previousSQL,null);
+            }
+            previousSQL=currentSQL.toString();
+            currentSQL=new StringBuilder();
+            if (log.isDebugEnabled()) {
+              log.debug("Loaded SQL",previousSQL);
+            }
+          }
+ else {
+            if (currentResult.length() > 0) {
+              loadOneResult("");
+              currentResult=new StringBuilder();
+            }
+            currentSQL.append(line);
+          }
+        }
+      }
+  finally {
+        if (is != null) {
+          is.close();
+        }
+        if (in != null) {
+          in.close();
+        }
+      }
+    }
+    private void loadOneResult(    String line){
+      List<MockResult> results=matchExactly.get(previousSQL);
+      if (results == null) {
+        results=new ArrayList<MockResult>();
+        matchExactly.put(previousSQL,results);
+      }
+      MockResult mock=parse(line);
+      results.add(mock);
+      if (log.isDebugEnabled()) {
+        String comment="Loaded Result";
+        for (        String l : mock.data.format(5).split("\n")) {
+          log.debug(comment,l);
+          comment="";
+        }
+      }
+    }
+    private MockResult parse(    String rowString){
+      int rows=0;
+      if (rowString.startsWith("@ rows:")) {
+        rows=Integer.parseInt(rowString.substring(7).trim());
+      }
+      return new MockResult(rows,create.fetchFromCSV(currentResult.toString(),' '));
+    }
+    private String readLine() throws IOException {
+      while (true) {
+        String line=in.readLine();
+        if (line == null) {
+          return line;
+        }
+        line=line.trim();
+        if (line.length() > 0) {
+          return line;
+        }
+      }
+    }
+  }
+.load();
+}

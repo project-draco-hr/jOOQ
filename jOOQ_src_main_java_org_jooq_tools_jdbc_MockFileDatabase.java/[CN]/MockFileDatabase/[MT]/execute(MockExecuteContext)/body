@@ -1,0 +1,25 @@
+{
+  if (ctx.batch()) {
+    throw new SQLFeatureNotSupportedException("Not yet supported");
+  }
+ else {
+    String sql=ctx.sql();
+    String inlined=null;
+    List<MockResult> list=matchExactly.get(sql);
+    if (list == null) {
+      inlined=create.query(sql,ctx.bindings()).toString();
+      list=matchExactly.get(inlined);
+    }
+    if (list == null) {
+      for (      Entry<Pattern,List<MockResult>> entry : matchPattern.entrySet()) {
+        if (entry.getKey().matcher(sql).matches() || entry.getKey().matcher(inlined).matches()) {
+          list=entry.getValue();
+        }
+      }
+    }
+    if (list == null) {
+      throw new SQLException("Invalid SQL: " + sql);
+    }
+    return list.toArray(new MockResult[list.size()]);
+  }
+}
