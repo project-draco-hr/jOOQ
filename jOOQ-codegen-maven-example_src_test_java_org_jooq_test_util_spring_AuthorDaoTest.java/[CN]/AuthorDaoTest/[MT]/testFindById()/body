@@ -1,4 +1,0 @@
-{
-  Author a=authorDao.findById(1);
-  Assert.assertEquals("George",a.getFirstName());
-}

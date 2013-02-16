@@ -1,6 +1,0 @@
-{
-  Author c=authorDao.findById(1);
-  authorDao.delete(c);
-  List<Author> authors=authorDao.findAll();
-  Assert.assertEquals(1,authors.size());
-}

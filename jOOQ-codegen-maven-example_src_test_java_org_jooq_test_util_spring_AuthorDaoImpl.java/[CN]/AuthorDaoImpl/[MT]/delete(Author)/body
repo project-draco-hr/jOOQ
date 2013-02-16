@@ -1,3 +1,0 @@
-{
-  factory.delete(T_AUTHOR).where(T_AUTHOR.ID.equal(author.getId())).execute();
-}

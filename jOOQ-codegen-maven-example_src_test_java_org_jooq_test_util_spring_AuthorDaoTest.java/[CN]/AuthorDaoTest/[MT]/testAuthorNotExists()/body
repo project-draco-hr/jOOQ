@@ -1,4 +1,0 @@
-{
-  boolean exists=authorDao.authorExists(1000);
-  Assert.assertFalse(exists);
-}

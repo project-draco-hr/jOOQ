@@ -1,4 +1,0 @@
-{
-  TAuthorRecord authorRecord=factory.selectFrom(T_AUTHOR).where(T_AUTHOR.ID.equal(id)).fetchOne();
-  return authorRecord == null ? null : authorRecord.into(Author.class);
-}

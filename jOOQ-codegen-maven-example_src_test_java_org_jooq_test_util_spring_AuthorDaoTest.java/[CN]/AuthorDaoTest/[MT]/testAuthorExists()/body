@@ -1,5 +1,0 @@
-{
-  Author c=authorDao.findById(1);
-  boolean exists=authorDao.authorExists(c);
-  Assert.assertTrue(exists);
-}

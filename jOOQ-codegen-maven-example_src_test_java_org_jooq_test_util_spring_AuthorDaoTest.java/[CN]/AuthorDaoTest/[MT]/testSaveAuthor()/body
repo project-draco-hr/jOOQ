@@ -1,8 +1,0 @@
-{
-  Author author=authorDao.findById(1);
-  author.setFirstName("Arthur Conan");
-  author.setLastName("Doyle");
-  authorDao.save(author);
-  Author found=authorDao.findById(1);
-  Assert.assertEquals("Arthur Conan",found.getFirstName());
-}

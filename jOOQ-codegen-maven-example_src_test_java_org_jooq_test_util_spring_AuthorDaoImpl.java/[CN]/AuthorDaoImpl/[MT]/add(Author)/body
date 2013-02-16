@@ -1,5 +1,0 @@
-{
-  Integer id=factory.nextval(S_AUTHOR_ID);
-  factory.insertInto(T_AUTHOR).set(T_AUTHOR.ID,id).set(T_AUTHOR.FIRST_NAME,author.getFirstName()).set(T_AUTHOR.LAST_NAME,author.getLastName()).execute();
-  return id;
-}

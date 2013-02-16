@@ -1,4 +1,0 @@
-{
-  List<Author> authors=authorDao.findAll();
-  Assert.assertEquals(2,authors.size());
-}

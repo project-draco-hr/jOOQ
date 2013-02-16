@@ -1,12 +1,12 @@
 {
-  Class.forName("com.mysql.jdbc.Driver");
-  Connection connection=DriverManager.getConnection("jdbc:mysql://localhost/test2","root","");
-  Factory create=new Factory(connection,SQLDialect.MYSQL);
+  Class.forName("org.h2.Driver");
+  Connection connection=DriverManager.getConnection("jdbc:h2:~/maven-test","sa","");
+  Executor create=new Executor(connection,SQLDialect.H2);
   TBook b=T_BOOK.as("b");
   TAuthor a=T_AUTHOR.as("a");
   TBookStore s=T_BOOK_STORE.as("s");
   TBookToBookStore t=T_BOOK_TO_BOOK_STORE.as("t");
-  Result<Record> result=create.select(a.FIRST_NAME,a.LAST_NAME,countDistinct(s.NAME)).from(a).join(b).on(b.AUTHOR_ID.equal(a.ID)).join(t).on(t.BOOK_ID.equal(b.ID)).join(s).on(t.BOOK_STORE_NAME.equal(s.NAME)).groupBy(a.FIRST_NAME,a.LAST_NAME).orderBy(countDistinct(s.NAME).desc()).fetch();
+  Result<Record3<String,String,Integer>> result=create.select(a.FIRST_NAME,a.LAST_NAME,countDistinct(s.NAME)).from(a).join(b).on(b.AUTHOR_ID.equal(a.ID)).join(t).on(t.BOOK_ID.equal(b.ID)).join(s).on(t.BOOK_STORE_NAME.equal(s.NAME)).groupBy(a.FIRST_NAME,a.LAST_NAME).orderBy(countDistinct(s.NAME).desc()).fetch();
   assertEquals(2,result.size());
   assertEquals("Paulo",result.getValue(0,a.FIRST_NAME));
   assertEquals("George",result.getValue(1,a.FIRST_NAME));

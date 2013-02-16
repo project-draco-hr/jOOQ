@@ -1,3 +1,0 @@
-{
-  return factory.selectFrom(T_AUTHOR).fetchInto(Author.class);
-}
