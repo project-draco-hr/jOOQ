@@ -1,5 +1,5 @@
 {
-  if (getDialect() == SQLDialect.ASE) {
+  if (asList(ASE,SQLSERVER).contains(getDialect())) {
     log.info("SKIPPING","LIMIT .. OFFSET tests");
     return;
   }
