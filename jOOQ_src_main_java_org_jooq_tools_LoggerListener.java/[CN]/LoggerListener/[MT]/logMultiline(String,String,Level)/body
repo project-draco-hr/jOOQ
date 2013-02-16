@@ -1,0 +1,11 @@
+{
+  for (  String line : message.split("\n")) {
+    if (level == Level.DEBUG) {
+      log.debug(comment,line);
+    }
+ else {
+      log.trace(comment,line);
+    }
+    comment="";
+  }
+}
