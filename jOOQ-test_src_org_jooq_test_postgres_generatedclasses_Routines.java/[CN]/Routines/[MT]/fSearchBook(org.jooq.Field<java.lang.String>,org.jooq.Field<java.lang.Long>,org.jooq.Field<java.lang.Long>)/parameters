@@ -1,0 +1,3 @@
+org.jooq.Field<java.lang.String> pTitle
+org.jooq.Field<java.lang.Long> pLimit
+org.jooq.Field<java.lang.Long> pOffset

@@ -1,0 +1,4 @@
+{
+  create().select().from(fSearchBook("Animal",1L,0L).toString()).fetch();
+  System.out.println(create().select(fSearchBook("Animal",1L,0L)).fetch());
+}
