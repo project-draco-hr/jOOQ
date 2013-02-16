@@ -10,7 +10,7 @@
     Class<?> type=source.getClass();
     try {
       boolean useAnnotations=hasColumnAnnotations(type);
-      for (      Field<?> field : fields) {
+      for (      Field<?> field : fields.fields) {
         List<java.lang.reflect.Field> members;
         Method method;
         if (useAnnotations) {

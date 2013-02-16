@@ -1,5 +1,5 @@
 {
-  for (  Field<?> field : fields) {
+  for (  Field<?> field : fields.fields) {
     if (getValue0(field).isChanged()) {
       addValue(query,field);
     }

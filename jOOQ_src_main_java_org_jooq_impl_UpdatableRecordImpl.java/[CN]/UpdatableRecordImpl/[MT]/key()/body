@@ -1,6 +1,6 @@
 {
   RecordImpl result=new RecordImpl(getPrimaryKey().getFields());
-  for (  Field<?> field : result.fields) {
+  for (  Field<?> field : result.fields.fields) {
     result.setValue(field,getValue0(field));
   }
   return result;
