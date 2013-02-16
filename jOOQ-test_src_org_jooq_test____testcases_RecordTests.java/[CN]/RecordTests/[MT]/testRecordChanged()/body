@@ -20,7 +20,7 @@
   assertEquals("abc",book.original().getValue(TBook_TITLE()));
   assertEquals("abc",book.original(TBook_TITLE()));
   book.changed(false);
-  book.changed(true,TBook_TITLE());
+  book.changed(TBook_TITLE(),true);
   assertTrue(book.changed());
   assertTrue(book.changed(TBook_TITLE()));
   assertTrue(book.changed(TBook_TITLE().getName()));
