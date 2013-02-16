@@ -4,7 +4,7 @@
     return;
   }
   jOOQAbstractTest.reset=false;
-  Result<A> authors=create().selectFrom(TAuthor()).fetch();
+  Result<A> authors=create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).fetch();
   UDTRecord<?> a1=authors.get(0).getValue(TAuthor_ADDRESS());
   UDTRecord<?> a2=authors.get(1).getValue(TAuthor_ADDRESS());
   Object street1=on(a1).call("getStreet").get();
