@@ -1,0 +1,24 @@
+{
+  Executor e=new Executor(new MockConnection(new DoubleResult()),SQLDialect.H2);
+  List<Result<Record>> result=e.fetchMany("select ?, ? from dual",1,2);
+  assertEquals(2,result.size());
+  assertEquals(1,result.get(0).size());
+  assertEquals(2,result.get(1).size());
+  assertEquals(3,result.get(0).fields().length);
+  assertEquals(3,result.get(1).fields().length);
+  for (int j=0; j < 2; j++) {
+    for (int i=0; i < 3; i++) {
+      assertEquals(TABLE1.field(i).getName(),result.get(j).field(i).getName());
+      assertEquals(TABLE1.field(i).getType(),result.get(j).field(i).getType());
+    }
+  }
+  assertEquals(1,(int)result.get(0).getValue(0,FIELD_ID1));
+  assertEquals(2,(int)result.get(1).getValue(0,FIELD_ID1));
+  assertEquals(3,(int)result.get(1).getValue(1,FIELD_ID1));
+  assertEquals("1",result.get(0).getValue(0,FIELD_NAME1));
+  assertEquals("2",result.get(1).getValue(0,FIELD_NAME1));
+  assertEquals("3",result.get(1).getValue(1,FIELD_NAME1));
+  assertNull(result.get(0).getValue(0,Table1.FIELD_DATE1));
+  assertNull(result.get(1).getValue(0,Table1.FIELD_DATE1));
+  assertNull(result.get(1).getValue(1,Table1.FIELD_DATE1));
+}

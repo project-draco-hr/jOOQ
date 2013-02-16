@@ -1,0 +1,8 @@
+{
+  assertEquals(1,ctx.getBatchSQL().length);
+  assertEquals("select ?, ? from dual",ctx.getBatchSQL()[0]);
+  assertEquals("select ?, ? from dual",ctx.getSQL());
+  assertEquals(1,ctx.getBatchBindings().length);
+  assertEquals(asList(1,2),asList(ctx.getBatchBindings()[0]));
+  assertEquals(asList(1,2),asList(ctx.getBindings()));
+}

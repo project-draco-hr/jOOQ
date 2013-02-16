@@ -1,0 +1,11 @@
+{
+  execute0(ctx);
+  Result<Table1Record> result=create.newResult(TABLE1);
+  result.add(create.newRecord(TABLE1));
+  result.add(create.newRecord(TABLE1));
+  result.get(0).setValue(FIELD_ID1,1);
+  result.get(1).setValue(FIELD_ID1,2);
+  result.get(0).setValue(FIELD_NAME1,"1");
+  result.get(1).setValue(FIELD_NAME1,"2");
+  return new MockResult[]{new MockResult(0,result)};
+}

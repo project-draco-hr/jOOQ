@@ -1,5 +1,5 @@
 {
-  Field<?> f=new CustomField<Integer>("test",TestDataType.INTEGER_TYPE){
+  Field<?> f=new CustomField<Integer>("test",SQLDataType.INTEGER){
     private static final long serialVersionUID=1L;
     @Override public void toSQL(    RenderContext ctx){
       if (ctx.inline()) {
