@@ -14,7 +14,7 @@
         context.sql(((Boolean)val) ? "1" : "0");
       }
  else {
-        context.keyword(val.toString());
+        context.keyword(((Boolean)val).toString());
       }
     }
  else     if (type == byte[].class) {
@@ -39,48 +39,48 @@
       }
     }
  else     if (Interval.class.isAssignableFrom(type)) {
-      context.sql("'").sql(val.toString()).sql("'");
+      context.sql("'").sql(escape(val)).sql("'");
     }
  else     if (Number.class.isAssignableFrom(type)) {
-      context.sql(val.toString());
+      context.sql(((Number)val).toString());
     }
  else     if (type == Date.class) {
       if (asList(ASE,SQLITE,SQLSERVER,SYBASE).contains(dialect)) {
-        context.sql("'").sql(val.toString()).sql("'");
+        context.sql("'").sql(escape(val)).sql("'");
       }
  else       if (dialect == DERBY) {
-        context.keyword("date('").sql(val.toString()).sql("')");
+        context.keyword("date('").sql(escape(val)).sql("')");
       }
  else {
-        context.keyword("date '").sql(val.toString()).sql("'");
+        context.keyword("date '").sql(escape(val)).sql("'");
       }
     }
  else     if (type == Timestamp.class) {
       if (asList(ASE,SQLITE,SQLSERVER,SYBASE).contains(dialect)) {
-        context.sql("'").sql(val.toString()).sql("'");
+        context.sql("'").sql(escape(val)).sql("'");
       }
  else       if (dialect == DERBY) {
-        context.keyword("timestamp('").sql(val.toString()).sql("')");
+        context.keyword("timestamp('").sql(escape(val)).sql("')");
       }
  else       if (dialect == CUBRID) {
-        context.keyword("datetime '").sql(val.toString()).sql("'");
+        context.keyword("datetime '").sql(escape(val)).sql("'");
       }
  else {
-        context.keyword("timestamp '").sql(val.toString()).sql("'");
+        context.keyword("timestamp '").sql(escape(val)).sql("'");
       }
     }
  else     if (type == Time.class) {
       if (asList(ASE,SQLITE,SQLSERVER,SYBASE).contains(dialect)) {
-        context.sql("'").sql(val.toString()).sql("'");
+        context.sql("'").sql(escape(val)).sql("'");
       }
  else       if (dialect == DERBY) {
-        context.keyword("time('").sql(val.toString()).sql("')");
+        context.keyword("time('").sql(escape(val)).sql("')");
       }
  else       if (dialect == ORACLE) {
-        context.keyword("timestamp '1970-01-01 ").sql(val.toString()).sql("'");
+        context.keyword("timestamp '1970-01-01 ").sql(escape(val)).sql("'");
       }
  else {
-        context.keyword("time '").sql(val.toString()).sql("'");
+        context.keyword("time '").sql(escape(val)).sql("'");
       }
     }
  else     if (type.isArray()) {
@@ -101,7 +101,7 @@
       context.sql("[UDT]");
     }
  else {
-      context.sql("'").sql(val.toString().replace("'","''")).sql("'");
+      context.sql("'").sql(escape(val)).sql("'");
     }
   }
  else   if (dialect == SQLDialect.POSTGRES) {
