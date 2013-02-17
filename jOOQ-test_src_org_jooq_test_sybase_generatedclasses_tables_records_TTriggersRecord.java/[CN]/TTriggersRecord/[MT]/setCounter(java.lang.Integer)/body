@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.test.sybase.generatedclasses.tables.TTriggers.T_TRIGGERS.COUNTER,value);
+  setValue(2,value);
 }

@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.test.mysql2.generatedclasses.tables.TBook.T_BOOK.CONTENT_PDF,value);
+  setValue(8,value);
 }

@@ -1,3 +1,0 @@
-{
-  return create().selectFrom(org.jooq.examples.mysql.sakila.tables.Store.STORE).where(org.jooq.examples.mysql.sakila.tables.Store.STORE.STORE_ID.equal(getValue(org.jooq.examples.mysql.sakila.tables.Inventory.INVENTORY.STORE_ID))).fetchOne();
-}

@@ -1,8 +1,0 @@
-{
-  if (value == null) {
-    setValue(org.jooq.examples.mysql.sakila.tables.FilmActor.FILM_ACTOR.ACTOR_ID,null);
-  }
- else {
-    setValue(org.jooq.examples.mysql.sakila.tables.FilmActor.FILM_ACTOR.ACTOR_ID,value.getValue(org.jooq.examples.mysql.sakila.tables.Actor.ACTOR.ACTOR_ID));
-  }
-}

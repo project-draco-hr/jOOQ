@@ -1,3 +1,0 @@
-{
-  return create().selectFrom(org.jooq.examples.mysql.sakila.tables.Rental.RENTAL).where(org.jooq.examples.mysql.sakila.tables.Rental.RENTAL.RENTAL_ID.equal(getValue(org.jooq.examples.mysql.sakila.tables.Payment.PAYMENT.RENTAL_ID))).fetchOne();
-}

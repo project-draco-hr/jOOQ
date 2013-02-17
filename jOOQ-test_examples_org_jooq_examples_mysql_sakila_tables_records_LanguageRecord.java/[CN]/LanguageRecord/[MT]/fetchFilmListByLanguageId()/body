@@ -1,3 +1,0 @@
-{
-  return create().selectFrom(org.jooq.examples.mysql.sakila.tables.Film.FILM).where(org.jooq.examples.mysql.sakila.tables.Film.FILM.LANGUAGE_ID.equal(getValue(org.jooq.examples.mysql.sakila.tables.Language.LANGUAGE.LANGUAGE_ID))).fetch();
-}

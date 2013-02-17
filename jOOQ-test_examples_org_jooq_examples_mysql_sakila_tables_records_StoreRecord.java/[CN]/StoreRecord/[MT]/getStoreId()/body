@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.examples.mysql.sakila.tables.Store.STORE.STORE_ID);
+  return (java.lang.Byte)getValue(0);
 }

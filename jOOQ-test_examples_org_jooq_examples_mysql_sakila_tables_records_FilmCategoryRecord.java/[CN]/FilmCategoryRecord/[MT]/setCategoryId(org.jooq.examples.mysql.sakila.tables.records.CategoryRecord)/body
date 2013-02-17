@@ -1,8 +1,0 @@
-{
-  if (value == null) {
-    setValue(org.jooq.examples.mysql.sakila.tables.FilmCategory.FILM_CATEGORY.CATEGORY_ID,null);
-  }
- else {
-    setValue(org.jooq.examples.mysql.sakila.tables.FilmCategory.FILM_CATEGORY.CATEGORY_ID,value.getValue(org.jooq.examples.mysql.sakila.tables.Category.CATEGORY.CATEGORY_ID));
-  }
-}

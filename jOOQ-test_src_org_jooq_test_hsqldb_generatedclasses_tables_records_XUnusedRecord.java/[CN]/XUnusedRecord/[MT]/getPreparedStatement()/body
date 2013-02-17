@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.test.hsqldb.generatedclasses.tables.XUnused.X_UNUSED.PREPARED_STATEMENT);
+  return (java.lang.Integer)getValue(15);
 }

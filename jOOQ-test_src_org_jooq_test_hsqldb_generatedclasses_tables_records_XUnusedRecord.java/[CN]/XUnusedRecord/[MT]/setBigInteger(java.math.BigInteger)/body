@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.test.hsqldb.generatedclasses.tables.XUnused.X_UNUSED.BIG_INTEGER,value);
+  setValue(2,value);
 }

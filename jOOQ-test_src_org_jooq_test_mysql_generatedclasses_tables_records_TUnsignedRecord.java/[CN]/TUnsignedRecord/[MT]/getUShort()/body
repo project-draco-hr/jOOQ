@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.test.mysql.generatedclasses.tables.TUnsigned.U_SHORT);
+  return (org.jooq.types.UShort)getValue(1);
 }

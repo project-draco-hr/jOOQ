@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.test.sqlserver.generatedclasses.tables.TLanguage.T_LANGUAGE.DESCRIPTION,value);
+  setValue(1,value);
 }

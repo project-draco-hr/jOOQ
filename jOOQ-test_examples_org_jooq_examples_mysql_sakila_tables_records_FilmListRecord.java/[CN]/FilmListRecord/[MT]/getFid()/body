@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.examples.mysql.sakila.tables.FilmList.FILM_LIST.FID);
+  return (java.lang.Short)getValue(0);
 }

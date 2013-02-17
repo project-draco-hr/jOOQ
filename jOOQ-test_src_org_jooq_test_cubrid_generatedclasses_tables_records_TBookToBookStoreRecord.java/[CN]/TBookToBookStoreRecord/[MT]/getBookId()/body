@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.test.cubrid.generatedclasses.tables.TBookToBookStore.BOOK_ID);
+  return (java.lang.Integer)getValue(1);
 }

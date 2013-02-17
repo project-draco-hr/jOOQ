@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.examples.mysql.sakila.tables.Payment.PAYMENT.RENTAL_ID,value);
+  setValue(3,value);
 }

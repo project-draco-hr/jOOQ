@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.test.cubrid.generatedclasses.tables.TBooleans.ONE_ZERO);
+  return (org.jooq.test._.converters.Boolean_10)getValue(1);
 }

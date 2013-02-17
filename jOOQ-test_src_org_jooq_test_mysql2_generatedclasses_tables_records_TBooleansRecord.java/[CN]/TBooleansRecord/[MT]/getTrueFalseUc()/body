@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.test.mysql2.generatedclasses.tables.TBooleans.T_BOOLEANS.TRUE_FALSE_UC);
+  return (org.jooq.test._.converters.Boolean_TF_UC)getValue(3);
 }

@@ -1,8 +1,0 @@
-{
-  if (value == null) {
-    setValue(org.jooq.examples.mysql.sakila.tables.Rental.RENTAL.STAFF_ID,null);
-  }
- else {
-    setValue(org.jooq.examples.mysql.sakila.tables.Rental.RENTAL.STAFF_ID,value.getValue(org.jooq.examples.mysql.sakila.tables.Staff.STAFF.STAFF_ID));
-  }
-}

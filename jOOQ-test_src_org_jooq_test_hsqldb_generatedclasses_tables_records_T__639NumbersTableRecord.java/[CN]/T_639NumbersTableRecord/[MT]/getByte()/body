@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.test.hsqldb.generatedclasses.tables.T_639NumbersTable.T_639_NUMBERS_TABLE.BYTE);
+  return (java.lang.Byte)getValue(1);
 }

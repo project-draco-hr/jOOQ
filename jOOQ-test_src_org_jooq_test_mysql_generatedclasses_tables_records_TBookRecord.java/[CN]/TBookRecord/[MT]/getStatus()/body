@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.test.mysql.generatedclasses.tables.TBook.STATUS);
+  return (org.jooq.test.mysql.generatedclasses.enums.TBookStatus)getValue(9);
 }

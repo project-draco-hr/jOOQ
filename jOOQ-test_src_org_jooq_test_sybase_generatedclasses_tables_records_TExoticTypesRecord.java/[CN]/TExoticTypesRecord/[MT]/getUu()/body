@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.test.sybase.generatedclasses.tables.TExoticTypes.T_EXOTIC_TYPES.UU);
+  return (java.util.UUID)getValue(1);
 }

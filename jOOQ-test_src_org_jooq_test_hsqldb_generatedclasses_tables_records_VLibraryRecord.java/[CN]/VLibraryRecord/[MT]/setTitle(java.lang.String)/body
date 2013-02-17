@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.test.hsqldb.generatedclasses.tables.VLibrary.V_LIBRARY.TITLE,value);
+  setValue(1,value);
 }

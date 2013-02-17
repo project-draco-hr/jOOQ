@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.test.cubrid.generatedclasses.tables.VAuthor.YEAR_OF_BIRTH);
+  return (java.lang.Integer)getValue(4);
 }

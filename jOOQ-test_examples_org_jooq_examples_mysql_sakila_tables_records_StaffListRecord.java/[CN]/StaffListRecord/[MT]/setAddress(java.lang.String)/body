@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.examples.mysql.sakila.tables.StaffList.STAFF_LIST.ADDRESS,value);
+  setValue(2,value);
 }

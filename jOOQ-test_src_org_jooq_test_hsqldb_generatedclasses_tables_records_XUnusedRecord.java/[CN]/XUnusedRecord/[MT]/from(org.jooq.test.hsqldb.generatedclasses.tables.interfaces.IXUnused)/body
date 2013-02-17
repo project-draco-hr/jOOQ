@@ -4,12 +4,12 @@
   setBigInteger(from.getBigInteger());
   setIdRef(from.getIdRef());
   setClass_(from.getClass_());
-  setFields_(from.getFields_());
+  setFields(from.getFields());
   setConfiguration_(from.getConfiguration_());
   setUDT(from.getUDT());
   setMetaData(from.getMetaData());
   setType0(from.getType0());
-  setPrimaryKey(from.getPrimaryKey());
+  setPrimaryKey_(from.getPrimaryKey_());
   setPrimarykey(from.getPrimarykey());
   setNameRef(from.getNameRef());
   setField_737(from.getField_737());

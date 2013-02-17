@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.examples.mysql.sakila.tables.Address.ADDRESS.LAST_UPDATE);
+  return (java.sql.Timestamp)getValue(7);
 }

@@ -1,3 +1,0 @@
-{
-  return getValue(org.jooq.test.sqlserver.generatedclasses.tables.XUnused.X_UNUSED.FIELDS);
-}
