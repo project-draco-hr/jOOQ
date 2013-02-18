@@ -1,12 +1,17 @@
 {
-  if (!uniqueKeysByColumn.containsKey(column)) {
-    List<UniqueKeyDefinition> list=new ArrayList<UniqueKeyDefinition>();
+  if (uniqueKeysByColumn == null) {
+    uniqueKeysByColumn=new LinkedHashMap<ColumnDefinition,List<UniqueKeyDefinition>>();
     for (    UniqueKeyDefinition uniqueKey : uniqueKeys.values()) {
-      if (uniqueKey.getKeyColumns().contains(column)) {
+      for (      ColumnDefinition keyColumn : uniqueKey.getKeyColumns()) {
+        List<UniqueKeyDefinition> list=uniqueKeysByColumn.get(keyColumn);
+        if (list == null) {
+          list=new ArrayList<UniqueKeyDefinition>();
+          uniqueKeysByColumn.put(keyColumn,list);
+        }
         list.add(uniqueKey);
       }
     }
-    uniqueKeysByColumn.put(column,list);
   }
-  return uniqueKeysByColumn.get(column);
+  List<UniqueKeyDefinition> list=uniqueKeysByColumn.get(column);
+  return list != null ? list : Collections.<UniqueKeyDefinition>emptyList();
 }

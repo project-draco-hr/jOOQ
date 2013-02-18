@@ -1,13 +1,11 @@
 {
-  if (!primaryKeysByColumn.containsKey(column)) {
-    UniqueKeyDefinition key=null;
+  if (primaryKeysByColumn == null) {
+    primaryKeysByColumn=new LinkedHashMap<ColumnDefinition,UniqueKeyDefinition>();
     for (    UniqueKeyDefinition primaryKey : primaryKeys.values()) {
-      if (primaryKey.getKeyColumns().contains(column)) {
-        key=primaryKey;
-        break;
+      for (      ColumnDefinition keyColumn : primaryKey.getKeyColumns()) {
+        primaryKeysByColumn.put(keyColumn,primaryKey);
       }
     }
-    primaryKeysByColumn.put(column,key);
   }
   return primaryKeysByColumn.get(column);
 }

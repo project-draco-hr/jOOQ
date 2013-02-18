@@ -1,12 +1,17 @@
 {
-  if (!foreignKeysByColumn.containsKey(column)) {
-    List<ForeignKeyDefinition> list=new ArrayList<ForeignKeyDefinition>();
+  if (foreignKeysByColumn == null) {
+    foreignKeysByColumn=new LinkedHashMap<ColumnDefinition,List<ForeignKeyDefinition>>();
     for (    ForeignKeyDefinition foreignKey : foreignKeys.values()) {
-      if (foreignKey.getKeyColumns().contains(column)) {
+      for (      ColumnDefinition keyColumn : foreignKey.getKeyColumns()) {
+        List<ForeignKeyDefinition> list=foreignKeysByColumn.get(keyColumn);
+        if (list == null) {
+          list=new ArrayList<ForeignKeyDefinition>();
+          foreignKeysByColumn.put(keyColumn,list);
+        }
         list.add(foreignKey);
       }
     }
-    foreignKeysByColumn.put(column,list);
   }
-  return foreignKeysByColumn.get(column);
+  List<ForeignKeyDefinition> list=foreignKeysByColumn.get(column);
+  return list != null ? list : Collections.<ForeignKeyDefinition>emptyList();
 }
