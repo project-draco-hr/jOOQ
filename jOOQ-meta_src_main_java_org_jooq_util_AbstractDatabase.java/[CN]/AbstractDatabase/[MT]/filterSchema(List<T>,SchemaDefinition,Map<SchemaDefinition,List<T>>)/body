@@ -1,0 +1,8 @@
+{
+  List<T> result=cache.get(schema);
+  if (result == null) {
+    result=filterSchema(definitions,schema);
+    cache.put(schema,result);
+  }
+  return result;
+}

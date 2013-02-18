@@ -1,0 +1,3 @@
+List<T> definitions
+SchemaDefinition schema
+Map<SchemaDefinition,List<T>> cache

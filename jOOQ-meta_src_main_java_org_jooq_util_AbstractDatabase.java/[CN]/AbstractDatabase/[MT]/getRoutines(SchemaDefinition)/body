@@ -10,5 +10,8 @@
       log.error("Error while fetching functions",e);
     }
   }
-  return filterSchema(routines,schema);
+  if (routinesBySchema == null) {
+    routinesBySchema=new LinkedHashMap<SchemaDefinition,List<RoutineDefinition>>();
+  }
+  return filterSchema(routines,schema,routinesBySchema);
 }

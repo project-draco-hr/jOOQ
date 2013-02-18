@@ -10,5 +10,8 @@
       log.error("Error while fetching packages",e);
     }
   }
-  return filterSchema(packages,schema);
+  if (packagesBySchema == null) {
+    packagesBySchema=new LinkedHashMap<SchemaDefinition,List<PackageDefinition>>();
+  }
+  return filterSchema(packages,schema,packagesBySchema);
 }

@@ -10,5 +10,8 @@
       log.error("Error while fetching udts",e);
     }
   }
-  return filterSchema(udts,schema);
+  if (udtsBySchema == null) {
+    udtsBySchema=new LinkedHashMap<SchemaDefinition,List<UDTDefinition>>();
+  }
+  return filterSchema(udts,schema,udtsBySchema);
 }

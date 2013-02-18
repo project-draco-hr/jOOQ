@@ -10,5 +10,8 @@
       log.error("Error while fetching tables",e);
     }
   }
-  return filterSchema(tables,schema);
+  if (tablesBySchema == null) {
+    tablesBySchema=new LinkedHashMap<SchemaDefinition,List<TableDefinition>>();
+  }
+  return filterSchema(tables,schema,tablesBySchema);
 }

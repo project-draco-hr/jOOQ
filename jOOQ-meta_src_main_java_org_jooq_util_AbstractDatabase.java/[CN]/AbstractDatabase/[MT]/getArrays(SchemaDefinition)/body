@@ -10,5 +10,8 @@
       log.error("Error while fetching ARRAYS",e);
     }
   }
-  return filterSchema(arrays,schema);
+  if (arraysBySchema == null) {
+    arraysBySchema=new LinkedHashMap<SchemaDefinition,List<ArrayDefinition>>();
+  }
+  return filterSchema(arrays,schema,arraysBySchema);
 }
