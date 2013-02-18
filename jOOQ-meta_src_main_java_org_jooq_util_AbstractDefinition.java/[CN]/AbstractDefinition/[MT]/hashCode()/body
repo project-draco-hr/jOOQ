@@ -1,3 +1,6 @@
 {
-  return getQualifiedName().hashCode();
+  if (hashCode == null) {
+    hashCode=getQualifiedName().hashCode();
+  }
+  return hashCode;
 }
