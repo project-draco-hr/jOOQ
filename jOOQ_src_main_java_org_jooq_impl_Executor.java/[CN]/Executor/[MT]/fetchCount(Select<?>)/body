@@ -1,0 +1,3 @@
+{
+  return selectCount().from(query).fetchOne(0,int.class);
+}
