@@ -1,0 +1,17 @@
+{
+  if (identities == null) {
+    identities=new ArrayList<IdentityDefinition>();
+    for (    SchemaDefinition s : getSchemata()) {
+      for (      TableDefinition table : getTables(s)) {
+        IdentityDefinition identity=table.getIdentity();
+        if (identity != null) {
+          identities.add(identity);
+        }
+      }
+    }
+  }
+  if (identitiesBySchema == null) {
+    identitiesBySchema=new LinkedHashMap<SchemaDefinition,List<IdentityDefinition>>();
+  }
+  return filterSchema(identities,schema,identitiesBySchema);
+}
