@@ -1,6 +1,6 @@
 {
   generateSchema(schema);
-  if (database.getSequences(schema).size() > 0) {
+  if (generateGlobalObjectReferences() && database.getSequences(schema).size() > 0) {
     generateSequences(schema);
   }
   if (database.getTables(schema).size() > 0) {
@@ -12,7 +12,7 @@
   if (generateDaos() && database.getTables(schema).size() > 0) {
     generateDaos(schema);
   }
-  if (database.getTables(schema).size() > 0) {
+  if (generateGlobalObjectReferences() && database.getTables(schema).size() > 0) {
     generateTableReferences(schema);
   }
   if (generateRelations() && database.getTables(schema).size() > 0) {
@@ -33,7 +33,7 @@
   if (database.getUDTs(schema).size() > 0) {
     generateUDTRoutines(schema);
   }
-  if (database.getUDTs(schema).size() > 0) {
+  if (generateGlobalObjectReferences() && database.getUDTs(schema).size() > 0) {
     generateUDTReferences(schema);
   }
   if (database.getArrays(schema).size() > 0) {

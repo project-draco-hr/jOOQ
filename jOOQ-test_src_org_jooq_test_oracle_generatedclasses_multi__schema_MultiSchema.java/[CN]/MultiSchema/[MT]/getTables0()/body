@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.Table<?>>asList(org.jooq.test.oracle.generatedclasses.multi_schema.tables.TAuthor.T_AUTHOR,org.jooq.test.oracle.generatedclasses.multi_schema.tables.TBook.T_BOOK,org.jooq.test.oracle.generatedclasses.multi_schema.tables.TBookSale.T_BOOK_SALE);
+}

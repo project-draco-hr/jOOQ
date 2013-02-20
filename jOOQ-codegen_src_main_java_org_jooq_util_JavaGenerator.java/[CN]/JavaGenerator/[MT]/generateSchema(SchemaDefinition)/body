@@ -16,7 +16,9 @@
   out.tab(1).println("private %s() {",className);
   out.tab(2).println("super(\"%s\");",schema.getOutputName());
   out.tab(1).println("}");
-  printSchemaReferences(out,database.getSequences(schema),Sequence.class,true);
+  if (generateGlobalObjectReferences()) {
+    printSchemaReferences(out,database.getSequences(schema),Sequence.class,true);
+  }
   printSchemaReferences(out,database.getTables(schema),Table.class,true);
   printSchemaReferences(out,database.getUDTs(schema),UDT.class,true);
   out.println("}");

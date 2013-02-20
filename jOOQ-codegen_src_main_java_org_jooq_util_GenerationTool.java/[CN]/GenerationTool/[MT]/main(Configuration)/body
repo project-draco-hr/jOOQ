@@ -81,6 +81,7 @@
     if (g.getGenerate().isDaos() != null)     generator.setGenerateDaos(g.getGenerate().isDaos());
     if (g.getGenerate().isJpaAnnotations() != null)     generator.setGenerateJPAAnnotations(g.getGenerate().isJpaAnnotations());
     if (g.getGenerate().isValidationAnnotations() != null)     generator.setGenerateValidationAnnotations(g.getGenerate().isValidationAnnotations());
+    if (g.getGenerate().isGlobalObjectReferences() != null)     generator.setGenerateGlobalObjectReferences(g.getGenerate().isGlobalObjectReferences());
     strategy.setInstanceFields(generator.generateInstanceFields());
     generator.generate(database);
   }
