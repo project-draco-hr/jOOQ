@@ -1,0 +1,11 @@
+{
+  Schema schema=new SchemaImpl("S");
+  Table<?> table=new TableImpl<Record>("T",schema);
+  Executor create0=new Executor(SQLDialect.ORACLE);
+  assertEquals("\"S\".\"T\"",create0.render(table));
+  Executor create1=new Executor(SQLDialect.ORACLE,new Settings().withRenderSchema(false));
+  assertEquals("\"T\"",create1.render(table));
+  Executor create2=new Executor(SQLDialect.ORACLE);
+  create2.getSettings().setRenderSchema(false);
+  assertEquals("\"T\"",create2.render(table));
+}
