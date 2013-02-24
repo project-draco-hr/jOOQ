@@ -1,5 +1,5 @@
 {
   StringWriter writer=new StringWriter();
-  JAXB.marshal(mapping,writer);
+  JAXB.marshal(mapping(),writer);
   return writer.toString();
 }

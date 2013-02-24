@@ -2,7 +2,7 @@
   if (ignoreMapping)   return;
   logDeprecation();
   MappedSchema schema=null;
-  for (  MappedSchema s : mapping.getSchemata()) {
+  for (  MappedSchema s : mapping().getSchemata()) {
     if (inputSchema.equals(s.getInput())) {
       schema=s;
       break;
@@ -10,7 +10,7 @@
   }
   if (schema == null) {
     schema=new MappedSchema().withInput(inputSchema);
-    mapping.getSchemata().add(schema);
+    mapping().getSchemata().add(schema);
   }
   schema.setOutput(outputSchema);
 }

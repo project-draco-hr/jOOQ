@@ -1,0 +1,10 @@
+{
+  Settings settings=configuration.getSettings();
+  boolean isRenderSchema=true;
+  if (settings.isRenderSchema() != null) {
+    isRenderSchema=settings.isRenderSchema();
+  }
+  this.configuration=configuration;
+  this.renderSchema=isRenderSchema;
+  this.ignoreMapping=ignore;
+}

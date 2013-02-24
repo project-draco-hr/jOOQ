@@ -3,7 +3,7 @@
   logDeprecation();
   MappedSchema schema=null;
   MappedTable table=null;
-  for (  MappedSchema s : mapping.getSchemata()) {
+  for (  MappedSchema s : mapping().getSchemata()) {
     if (inputTable.getSchema().getName().equals(s.getInput())) {
       tableLoop:       for (      MappedTable t : s.getTables()) {
         if (inputTable.getName().equals(t.getInput())) {
@@ -17,7 +17,7 @@
   }
   if (schema == null) {
     schema=new MappedSchema().withInput(inputTable.getSchema().getName());
-    mapping.getSchemata().add(schema);
+    mapping().getSchemata().add(schema);
   }
   if (table == null) {
     table=new MappedTable().withInput(inputTable.getName());

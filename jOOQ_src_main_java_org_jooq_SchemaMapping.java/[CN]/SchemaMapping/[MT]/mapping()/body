@@ -1,0 +1,3 @@
+{
+  return SettingsTools.getRenderMapping(configuration.getSettings());
+}
