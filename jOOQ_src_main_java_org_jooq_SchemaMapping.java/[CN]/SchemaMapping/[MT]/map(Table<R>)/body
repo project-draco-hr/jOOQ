@@ -1,5 +1,4 @@
 {
-  if (ignoreMapping)   return table;
   Table<R> result=null;
   if (table != null) {
     Schema schema=table.getSchema();

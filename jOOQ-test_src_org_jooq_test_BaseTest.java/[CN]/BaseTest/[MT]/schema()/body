@@ -1,5 +1,5 @@
 {
   Schema schema=TAuthor().getSchema();
-  Schema mapped=create().getSchemaMapping().map(schema);
+  Schema mapped=create().map(schema);
   return mapped != null ? mapped : schema;
 }

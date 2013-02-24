@@ -1,5 +1,4 @@
 {
-  if (ignoreMapping)   return;
   logDeprecation();
   mapping().setDefaultSchema(schemaName);
 }

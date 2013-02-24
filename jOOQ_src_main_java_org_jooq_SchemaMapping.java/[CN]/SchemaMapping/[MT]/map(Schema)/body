@@ -1,6 +1,5 @@
 {
   if (!renderSchema())   return null;
-  if (ignoreMapping)   return schema;
   Schema result=null;
   if (schema != null) {
     String schemaName=schema.getName();

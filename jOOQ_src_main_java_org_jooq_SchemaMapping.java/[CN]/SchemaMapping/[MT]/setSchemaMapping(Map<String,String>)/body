@@ -1,5 +1,4 @@
 {
-  if (ignoreMapping)   return;
   for (  Entry<String,String> entry : schemaMap.entrySet()) {
     add(entry.getKey(),entry.getValue());
   }

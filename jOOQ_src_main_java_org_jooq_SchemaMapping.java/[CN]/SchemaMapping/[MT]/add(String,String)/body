@@ -1,5 +1,4 @@
 {
-  if (ignoreMapping)   return;
   logDeprecation();
   MappedSchema schema=null;
   for (  MappedSchema s : mapping().getSchemata()) {

@@ -1,4 +1,3 @@
 {
-  if (ignoreMapping)   return;
   add(inputTable,outputTable.getName());
 }
