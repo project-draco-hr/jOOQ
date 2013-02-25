@@ -1,0 +1,34 @@
+{
+  type=(Class<T>)wrapper(type);
+  if (byte[].class != type && type.isArray()) {
+    return (DataType<T>)getDataType(dialect,type.getComponentType()).getArrayDataType();
+  }
+ else {
+    DataType<?> result=null;
+    if (dialect != null) {
+      result=TYPES_BY_TYPE[dialect.ordinal()].get(type);
+    }
+    if (result == null) {
+      if (EnumType.class.isAssignableFrom(type) || UDTRecord.class.isAssignableFrom(type) || ArrayRecord.class.isAssignableFrom(type)) {
+        for (        SQLDialect d : SQLDialect.values()) {
+          result=TYPES_BY_TYPE[d.ordinal()].get(type);
+          if (result != null) {
+            break;
+          }
+        }
+      }
+    }
+    if (result == null) {
+      if (SQL_DATATYPES_BY_TYPE.get(type) != null) {
+        return (DataType<T>)SQL_DATATYPES_BY_TYPE.get(type);
+      }
+ else       if (fallbackDataType != null) {
+        return fallbackDataType;
+      }
+ else {
+        throw new SQLDialectNotSupportedException("Type " + type + " is not supported in dialect "+ dialect);
+      }
+    }
+    return (DataType<T>)result;
+  }
+}
