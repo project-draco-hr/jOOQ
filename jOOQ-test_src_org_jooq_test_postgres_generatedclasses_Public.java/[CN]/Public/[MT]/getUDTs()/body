@@ -1,3 +1,5 @@
 {
-  return java.util.Arrays.<org.jooq.UDT<?>>asList(org.jooq.test.postgres.generatedclasses.udt.UAddressType.U_ADDRESS_TYPE,org.jooq.test.postgres.generatedclasses.udt.UStreetType.U_STREET_TYPE);
+  java.util.List result=new java.util.ArrayList();
+  result.addAll(getUDTs0());
+  return result;
 }

@@ -1,0 +1,3 @@
+{
+  super("t_pg_extensions",org.jooq.test.postgres.generatedclasses.Public.PUBLIC);
+}

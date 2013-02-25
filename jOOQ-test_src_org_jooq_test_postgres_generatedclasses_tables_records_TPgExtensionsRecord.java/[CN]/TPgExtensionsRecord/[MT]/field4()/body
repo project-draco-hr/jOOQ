@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.postgres.generatedclasses.tables.TPgExtensions.T_PG_EXTENSIONS.PG_HSTORE;
+}
