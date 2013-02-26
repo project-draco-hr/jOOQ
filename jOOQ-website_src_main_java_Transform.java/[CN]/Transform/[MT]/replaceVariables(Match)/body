@@ -4,8 +4,12 @@
       String content=$(context.element()).content();
       content=content.replaceAll("^<content>((?s:.*))</content>$","$1");
       boolean changed=false;
+      if (content.contains("{jooq-minor-version}")) {
+        content=content.replace("{jooq-minor-version}",minorVersion + ".0");
+        changed=true;
+      }
       if (content.contains("{jooq-version}")) {
-        content=content.replace("{jooq-version}",version + ".0");
+        content=content.replace("{jooq-version}",version);
         changed=true;
       }
       if (content.contains("{max-row-degree}")) {
