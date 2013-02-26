@@ -1,0 +1,4 @@
+{
+  super("u_uuids",org.jooq.test.postgres.generatedclasses.Public.PUBLIC);
+  getDataType();
+}
