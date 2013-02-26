@@ -134,9 +134,9 @@
     assertEquals("1",n[0].toString());
     assertEquals("2",n[1].toString());
     assertEquals("3",n[2].toString());
-    assertEquals("1970-01-01",d[0].toString());
-    assertEquals("1970-01-02",d[1].toString());
-    assertEquals("1970-01-03",d[2].toString());
+    assertEquals(zeroDate(),d[0].toString());
+    assertEquals(zeroDatePlusOneDay(),d[1].toString());
+    assertEquals(zeroDatePlusTwoDays(),d[2].toString());
     UpdateQuery<X> update=create().updateQuery(TArrays());
     update.addValue(TArrays_NUMBER(),new Integer[]{3,2,1});
     update.addValue(TArrays_STRING(),new String[]{"d\"\\d","c","b","a"});
@@ -160,8 +160,8 @@
     assertEquals("3",n[0].toString());
     assertEquals("2",n[1].toString());
     assertEquals("1",n[2].toString());
-    assertEquals("1970-01-03",d[0].toString());
-    assertEquals("1970-01-02",d[1].toString());
-    assertEquals("1970-01-01",d[2].toString());
+    assertEquals(zeroDatePlusTwoDays(),d[0].toString());
+    assertEquals(zeroDatePlusOneDay(),d[1].toString());
+    assertEquals(zeroDate(),d[2].toString());
   }
 }

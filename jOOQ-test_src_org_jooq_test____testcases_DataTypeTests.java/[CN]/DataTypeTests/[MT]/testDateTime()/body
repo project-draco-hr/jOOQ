@@ -1,9 +1,8 @@
 {
-  long tsShift=-3600000;
-  Record record=create().select(val(new Date(0)).as("d"),val(new Time(0)).as("t"),val(new Timestamp(0)).as("ts")).fetchOne();
-  if (getDialect() != SQLITE)   assertEquals(new Date(tsShift),record.getValue("d"));
-  assertEquals(new Time(0),record.getValue("t"));
-  assertEquals(new Timestamp(0),record.getValue("ts"));
+  Record record=create().select(val(Date.valueOf(zeroDate())).as("d"),val(Time.valueOf("00:00:00")).as("t"),val(Timestamp.valueOf(zeroTimestamp())).as("ts")).fetchOne();
+  if (getDialect() != SQLITE)   assertEquals(Date.valueOf(zeroDate()),record.getValue("d"));
+  assertEquals(Time.valueOf("00:00:00"),record.getValue("t"));
+  assertEquals(Timestamp.valueOf(zeroTimestamp()),record.getValue("ts"));
   if (getDialect() == ASE || getDialect() == CUBRID || getDialect() == DB2 || getDialect() == DERBY || getDialect() == FIREBIRD || getDialect() == H2 || getDialect() == INGRES || getDialect() == MYSQL || getDialect() == SQLSERVER || getDialect() == SQLITE || getDialect() == SYBASE) {
     log.info("SKIPPING","Interval tests");
   }
