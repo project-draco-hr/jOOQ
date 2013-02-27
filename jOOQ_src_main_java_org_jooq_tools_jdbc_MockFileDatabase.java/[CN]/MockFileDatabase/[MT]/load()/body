@@ -5,7 +5,7 @@
     private StringBuilder currentSQL=new StringBuilder();
     private StringBuilder currentResult=new StringBuilder();
     private String previousSQL=null;
-    public void load() throws FileNotFoundException, IOException {
+    private void load() throws FileNotFoundException, IOException {
       try {
         while (true) {
           String line=readLine();
