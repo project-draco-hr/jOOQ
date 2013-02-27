@@ -1,8 +1,8 @@
 {
   CSVReader reader=new CSVReader(new StringReader(string),delimiter);
-  List<String[]> all=null;
+  List<String[]> data=null;
   try {
-    all=reader.readAll();
+    data=reader.readAll();
   }
  catch (  IOException e) {
     throw new DataAccessException("Could not read the CSV string",e);
@@ -14,24 +14,5 @@
  catch (    IOException ignore) {
     }
   }
-  if (all.size() == 0) {
-    return new ResultImpl<Record>(this);
-  }
- else {
-    List<Field<?>> fields=new ArrayList<Field<?>>();
-    for (    String name : all.get(0)) {
-      fields.add(fieldByName(String.class,name));
-    }
-    Result<Record> result=new ResultImpl<Record>(this,fields);
-    if (all.size() > 1) {
-      for (      String[] values : all.subList(1,all.size())) {
-        RecordImpl record=new RecordImpl(fields);
-        for (int i=0; i < Math.min(values.length,fields.size()); i++) {
-          record.setValue(i,new Value<Object>(values[i]));
-        }
-        result.add(record);
-      }
-    }
-    return result;
-  }
+  return fetchFromStringData(data);
 }
