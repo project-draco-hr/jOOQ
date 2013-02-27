@@ -1,11 +1,11 @@
 {
-  new Loader(){
+  new Object(){
     private InputStream is=new FileInputStream(file);
     private LineNumberReader in=new LineNumberReader(new InputStreamReader(is,encoding));
     private StringBuilder currentSQL=new StringBuilder();
     private StringBuilder currentResult=new StringBuilder();
     private String previousSQL=null;
-    @Override public void load() throws FileNotFoundException, IOException {
+    public void load() throws FileNotFoundException, IOException {
       try {
         while (true) {
           String line=readLine();
