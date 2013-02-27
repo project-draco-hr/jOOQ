@@ -1,0 +1,25 @@
+{
+  List<Result<Record>> results=MOCK.fetchMany("select complex_data");
+  assertEquals(2,results.size());
+  Result<Record> r1=results.get(0);
+  Result<Record> r2=results.get(1);
+  assertEquals(2,r1.size());
+  assertEquals(3,r1.fields().length);
+  assertEquals("F1",r1.field(0).getName());
+  assertEquals("F2",r1.field(1).getName());
+  assertEquals("F3 is a bit more complex",r1.field(2).getName());
+  assertEquals("1",r1.getValue(0,0));
+  assertEquals("2",r1.getValue(0,1));
+  assertEquals("and a string containing data",r1.getValue(0,2));
+  assertEquals("1.1",r1.getValue(1,0));
+  assertEquals("x",r1.getValue(1,1));
+  assertEquals("another string",r1.getValue(1,2));
+  assertEquals(1,r2.size());
+  assertEquals(3,r2.fields().length);
+  assertEquals("A",r2.field(0).getName());
+  assertEquals("B",r2.field(1).getName());
+  assertEquals("\"C D\"",r2.field(2).getName());
+  assertEquals("x",r2.getValue(0,0));
+  assertEquals("y",r2.getValue(0,1));
+  assertEquals("z",r2.getValue(0,2));
+}

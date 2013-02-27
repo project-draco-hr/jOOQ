@@ -1,0 +1,3 @@
+{
+  return fetchFromStringData(Utils.parseTXT(string,nullLiteral));
+}

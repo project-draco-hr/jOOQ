@@ -1,0 +1,17 @@
+{
+  String[] strings=string.split("[\\r\\n]+");
+  if (strings.length < 2) {
+    throw new DataAccessException("String must contain at least two lines");
+  }
+  List<int[]> positions=new ArrayList<int[]>();
+  Matcher m=DASH_PATTERN.matcher(strings[1]);
+  while (m.find()) {
+    positions.add(new int[]{m.start(1),m.end(1)});
+  }
+  List<String[]> result=new ArrayList<String[]>();
+  parseTXTLine(positions,result,strings[0],nullLiteral);
+  for (int j=2; j < strings.length; j++) {
+    parseTXTLine(positions,result,strings[j],nullLiteral);
+  }
+  return result;
+}
