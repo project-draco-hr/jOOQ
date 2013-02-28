@@ -1,5 +1,5 @@
 {
-  Jdbc j=configuration.getJdbc();
+  Jdbc j=defaultIfNull(configuration.getJdbc(),new Jdbc());
   org.jooq.util.jaxb.Generator g=configuration.getGenerator();
   if (g.getStrategy() == null)   g.setStrategy(new Strategy());
   if (g.getTarget() == null)   g.setTarget(new Target());
