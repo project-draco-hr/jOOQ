@@ -1,0 +1,31 @@
+{
+  log.info("Generating ForeignKeys");
+  if (database.getForeignKeys(schema).size() == 0) {
+    return;
+  }
+  JavaWriter out=new JavaWriter(new File(getStrategy().getFile(schema).getParentFile(),"ForeignKeys.java"));
+  printPackage(out,schema);
+  printClassJavadoc(out,"A class modelling foreign key relationships between tables of the <code>" + schema.getOutputName() + "</code> schema");
+  out.println("public final class ForeignKeys {");
+  for (  TableDefinition table : database.getTables(schema)) {
+    final List<ForeignKeyDefinition> foreignKeys=table.getForeignKeys();
+    try {
+      if (foreignKeys.size() > 0) {
+        out.println();
+        out.tab(1).println("public static final class %s extends %s {",getStrategy().getJavaClassName(table),AbstractKeys.class);
+        for (        ForeignKeyDefinition foreignKey : foreignKeys) {
+          out.tab(2).println("public static final %s<%s, %s> %s = createForeignKey(%s, %s, [[%s]]);",ForeignKey.class,getStrategy().getFullJavaClassName(foreignKey.getKeyTable(),Mode.RECORD),getStrategy().getFullJavaClassName(foreignKey.getReferencedTable(),Mode.RECORD),getStrategy().getJavaIdentifier(foreignKey),getStrategy().getFullJavaIdentifier(foreignKey.getReferencedKey()),getStrategy().getFullJavaIdentifier(foreignKey.getKeyTable()),getStrategy().getFullJavaIdentifiers(foreignKey.getKeyColumns()));
+        }
+        out.tab(1).println("}");
+      }
+    }
+ catch (    Exception e) {
+      log.error("Error while generating unique key " + table,e);
+    }
+  }
+  out.tab(1).javadoc(NO_FURTHER_INSTANCES_ALLOWED);
+  out.tab(1).println("private ForeignKeys() {}");
+  out.println("}");
+  out.close();
+  watch.splitInfo("ForeignKeys generated");
+}

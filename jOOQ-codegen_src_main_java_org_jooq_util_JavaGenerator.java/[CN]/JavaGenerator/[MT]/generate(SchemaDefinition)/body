@@ -16,7 +16,9 @@
     generateTableReferences(schema);
   }
   if (generateRelations() && database.getTables(schema).size() > 0) {
-    generateRelations(schema);
+    generateIdentities(schema);
+    generateUniqueKeys(schema);
+    generateForeignKeys(schema);
   }
   if (generateRecords() && database.getTables(schema).size() > 0) {
     generateRecords(schema);
