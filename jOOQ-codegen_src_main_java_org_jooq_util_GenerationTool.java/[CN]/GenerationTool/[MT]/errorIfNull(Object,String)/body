@@ -1,0 +1,6 @@
+{
+  if (o == null) {
+    log.error(message + " For details, see http://www.jooq.org/xsd/jooq-codegen-3.0.0.xsd");
+    System.exit(-1);
+  }
+}
