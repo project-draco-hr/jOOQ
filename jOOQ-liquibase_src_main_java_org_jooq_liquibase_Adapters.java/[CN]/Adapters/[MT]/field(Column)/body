@@ -1,0 +1,7 @@
+{
+  View view=column.getView();
+  if (view != null) {
+    return table(view).field(column.getName());
+  }
+  return table(column.getTable()).field(column.getName());
+}

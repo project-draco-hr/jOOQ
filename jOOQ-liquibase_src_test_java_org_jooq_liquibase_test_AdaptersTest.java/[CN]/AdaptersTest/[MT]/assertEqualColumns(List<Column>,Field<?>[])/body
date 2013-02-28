@@ -1,0 +1,9 @@
+{
+  for (int i=0; i < c1.size(); i++) {
+    Field<?> f1=field(c1.get(i));
+    Field<?> f2=c2[i];
+    assertEquals(f2,f1);
+    assertEquals(f2.getName(),f1.getName());
+    assertEquals(f2.getType(),f1.getType());
+  }
+}

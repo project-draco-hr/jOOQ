@@ -1,4 +1,4 @@
 {
-  Table<?> table=table(snapshot.getView("V_LIBRARY"));
-  testEqualTables(V_LIBRARY,table);
+  org.jooq.Table<?> table=table(snapshot.getView("V_LIBRARY"));
+  assertEqualTables(V_LIBRARY,table);
 }
