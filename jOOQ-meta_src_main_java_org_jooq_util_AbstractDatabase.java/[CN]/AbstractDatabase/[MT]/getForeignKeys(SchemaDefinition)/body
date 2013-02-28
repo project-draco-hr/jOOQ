@@ -1,0 +1,16 @@
+{
+  if (foreignKeys == null) {
+    foreignKeys=new ArrayList<ForeignKeyDefinition>();
+    for (    SchemaDefinition s : getSchemata()) {
+      for (      TableDefinition table : getTables(s)) {
+        for (        ForeignKeyDefinition foreignKey : table.getForeignKeys()) {
+          foreignKeys.add(foreignKey);
+        }
+      }
+    }
+  }
+  if (foreignKeysBySchema == null) {
+    foreignKeysBySchema=new LinkedHashMap<SchemaDefinition,List<ForeignKeyDefinition>>();
+  }
+  return filterSchema(foreignKeys,schema,foreignKeysBySchema);
+}
