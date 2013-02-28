@@ -1,3 +1,3 @@
 {
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.oracle.generatedclasses.test.tables.records.TDatesRecord>>asList(org.jooq.test.oracle.generatedclasses.test.Keys.PK_T_DATES);
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.oracle.generatedclasses.test.tables.records.TDatesRecord>>asList(org.jooq.test.oracle.generatedclasses.test.UniqueKeys.TDates.PK_T_DATES);
 }
