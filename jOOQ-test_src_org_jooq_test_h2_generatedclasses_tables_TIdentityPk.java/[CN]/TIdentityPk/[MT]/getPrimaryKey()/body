@@ -1,3 +1,3 @@
 {
-  return org.jooq.test.h2.generatedclasses.Keys.PK_T_IDENTITY_PK;
+  return org.jooq.test.h2.generatedclasses.UniqueKeys.TIdentityPk.PK_T_IDENTITY_PK;
 }
