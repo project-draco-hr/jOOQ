@@ -1,0 +1,3 @@
+{
+  super(sequence.getName(),new LiquibaseSchema(sequence.getSchema()),Adapters.dataType(sequence));
+}

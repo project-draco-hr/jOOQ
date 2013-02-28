@@ -1,0 +1,4 @@
+{
+  Sequence<?> sequence=sequence(snapshot.getSequence("S_AUTHOR_ID"));
+  assertEquals(create.nextval(Sequences.S_AUTHOR_ID) + 1,create.nextval(sequence));
+}
