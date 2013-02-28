@@ -1,0 +1,7 @@
+{
+  View view=column.getView();
+  if (view != null) {
+    return dialect(view);
+  }
+  return dialect(column.getTable());
+}

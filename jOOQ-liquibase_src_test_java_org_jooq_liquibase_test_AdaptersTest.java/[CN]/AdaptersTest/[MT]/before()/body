@@ -1,0 +1,8 @@
+{
+  Class.forName("org.h2.Driver");
+  connection=DriverManager.getConnection("jdbc:h2:~/liquibase-test","sa","");
+  database=new H2Database();
+  database.setConnection(new JdbcConnection(connection));
+  snapshot=DatabaseSnapshotGeneratorFactory.getInstance().createSnapshot(database,"PUBLIC",null);
+  create=new Executor(connection,SQLDialect.H2);
+}

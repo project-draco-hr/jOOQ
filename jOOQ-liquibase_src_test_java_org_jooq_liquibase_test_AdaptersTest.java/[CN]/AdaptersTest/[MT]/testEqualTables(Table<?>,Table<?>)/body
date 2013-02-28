@@ -1,0 +1,6 @@
+{
+  assertEquals(t1.getName(),t2.getName());
+  assertEquals(asList(t1.fields()),asList(t2.fields()));
+  assertEquals(asList(t1.fieldsRow().types()),asList(t2.fieldsRow().types()));
+  assertEquals(create.select().from(t1).orderBy(1).fetch(),create.select().from(t2).orderBy(1).fetch());
+}

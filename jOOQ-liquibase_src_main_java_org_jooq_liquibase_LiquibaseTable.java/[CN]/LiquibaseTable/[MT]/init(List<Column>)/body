@@ -1,0 +1,7 @@
+{
+  for (  Column column : columns) {
+    DataType<?> type=DefaultDataType.getDataType(dialect(column),column.getTypeName(),column.getColumnSize(),column.getDecimalDigits());
+    column.getDataType();
+    createField(column.getName(),type,this);
+  }
+}

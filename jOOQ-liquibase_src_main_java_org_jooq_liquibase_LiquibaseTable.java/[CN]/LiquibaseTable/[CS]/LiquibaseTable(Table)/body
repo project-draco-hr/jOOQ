@@ -1,0 +1,4 @@
+{
+  super(table.getName(),new LiquibaseSchema(table.getSchema()));
+  init(table.getColumns());
+}

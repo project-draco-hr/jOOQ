@@ -1,0 +1,4 @@
+{
+  Table<?> table=table(snapshot.getTable("T_BOOK"));
+  testEqualTables(T_BOOK,table);
+}
