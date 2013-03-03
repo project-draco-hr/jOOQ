@@ -1,0 +1,5 @@
+{
+  Result<TBookRecord> result=create.selectFrom(T_BOOK).orderBy(T_BOOK.ID).fetch();
+  assertEquals(4,result.size());
+  assertEquals(asList(1,2,3,4),result.getValues(0));
+}
