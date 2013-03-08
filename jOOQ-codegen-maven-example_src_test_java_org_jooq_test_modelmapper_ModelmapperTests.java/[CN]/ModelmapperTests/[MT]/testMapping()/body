@@ -1,0 +1,11 @@
+{
+  final ModelMapper mapper=new ModelMapper();
+  final TypeMap<Record,Book> map=mapper.createTypeMap(Record.class,Book.class);
+  List<Book> books=create.select().from(T_BOOK.join(T_AUTHOR).on(T_BOOK.AUTHOR_ID.eq(T_AUTHOR.ID))).orderBy(T_BOOK.ID).fetch(new RecordMapper<Record,Book>(){
+    @Override public Book map(    Record record){
+      return map.map(record);
+    }
+  }
+);
+  System.out.println(books);
+}

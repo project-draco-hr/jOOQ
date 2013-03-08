@@ -1,0 +1,3 @@
+{
+  return String.format("Book '%s' written by %s",title,author);
+}
