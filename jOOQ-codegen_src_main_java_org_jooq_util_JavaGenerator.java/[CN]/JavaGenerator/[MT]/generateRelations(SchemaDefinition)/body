@@ -60,8 +60,6 @@
       log.error("Error while generating reference " + table,e);
     }
   }
-  out.tab(1).javadoc(NO_FURTHER_INSTANCES_ALLOWED);
-  out.tab(1).println("private Keys() {}");
   int identityCounter=0;
   int uniqueKeyCounter=0;
   int foreignKeyCounter=0;
