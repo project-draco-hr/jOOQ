@@ -7,7 +7,7 @@
   JavaWriter out=new JavaWriter(new File(getStrategy().getFile(schema).getParentFile(),"Identities.java"));
   printPackage(out,schema);
   printClassJavadoc(out,"A class modelling identity columns of the <code>" + schema.getOutputName() + "</code> schema");
-  out.println("public final class Identities {");
+  out.println("public class Identities {");
   out.println();
   for (int i=0; i < identities.size(); i++) {
     final IdentityDefinition identity=identities.get(i);
@@ -39,8 +39,6 @@
   if (identityCounter > 0) {
     out.println("\t}");
   }
-  out.tab(1).javadoc(NO_FURTHER_INSTANCES_ALLOWED);
-  out.tab(1).println("private Identities() {}");
   out.println("}");
   out.close();
   watch.splitInfo("Identities generated");
