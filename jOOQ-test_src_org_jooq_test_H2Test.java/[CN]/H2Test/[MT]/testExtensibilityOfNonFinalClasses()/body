@@ -1,16 +1,8 @@
 {
-class MyForeignKeys extends ForeignKeys {
-  }
-class MyForeignKeys_TBook extends ForeignKeys.TBook {
-  }
-class MyIdentities extends Identities {
+class MyKeys extends Keys {
   }
 class MySequences extends Sequences {
   }
 class MyTables extends Tables {
-  }
-class MyUniqueKeys extends UniqueKeys {
-  }
-class MyUniqueKeys_TBook extends UniqueKeys.TBook {
   }
 }

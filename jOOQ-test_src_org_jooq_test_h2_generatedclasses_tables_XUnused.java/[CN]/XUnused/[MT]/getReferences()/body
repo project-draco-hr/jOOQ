@@ -1,3 +1,3 @@
 {
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.test.h2.generatedclasses.tables.records.XUnusedRecord,?>>asList(org.jooq.test.h2.generatedclasses.ForeignKeys.XUnused.FK_X_UNUSED_SELF);
+  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.test.h2.generatedclasses.tables.records.XUnusedRecord,?>>asList(org.jooq.test.h2.generatedclasses.Keys.FK_X_UNUSED_SELF);
 }

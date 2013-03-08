@@ -1,3 +1,3 @@
 {
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.h2.generatedclasses.tables.records.XUnusedRecord>>asList(org.jooq.test.h2.generatedclasses.UniqueKeys.XUnused.PK_X_UNUSED,org.jooq.test.h2.generatedclasses.UniqueKeys.XUnused.UK_X_UNUSED_ID);
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.h2.generatedclasses.tables.records.XUnusedRecord>>asList(org.jooq.test.h2.generatedclasses.Keys.PK_X_UNUSED,org.jooq.test.h2.generatedclasses.Keys.UK_X_UNUSED_ID);
 }
