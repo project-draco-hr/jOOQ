@@ -51,7 +51,7 @@
       assertEquals(7,schema.getUDTs().size());
     }
  else {
-      assertEquals(2,schema.getUDTs().size());
+      assertEquals(3,schema.getUDTs().size());
     }
   }
   assertNull(TAuthor().getIdentity());
