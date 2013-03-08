@@ -1,0 +1,11 @@
+{
+  final int block=identityCounter / INITIALISER_SIZE;
+  if (identityCounter % INITIALISER_SIZE == 0) {
+    if (identityCounter > 0) {
+      out.tab(1).println("}");
+    }
+    out.println();
+    out.tab(1).println("private static class Identities%s extends %s {",block,AbstractKeys.class);
+  }
+  out.tab(2).println("public static %s<%s, %s> %s = createIdentity(%s, %s);",Identity.class,getStrategy().getFullJavaClassName(identity.getTable(),Mode.RECORD),getJavaType(identity.getColumn().getType()),getStrategy().getJavaIdentifier(identity),getStrategy().getFullJavaIdentifier(identity.getColumn().getContainer()),getStrategy().getFullJavaIdentifier(identity.getColumn()));
+}
