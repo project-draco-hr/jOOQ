@@ -1,5 +1,5 @@
 {
-  if (TArrays() == null) {
+  if (TArrays_STRING() == null) {
     log.info("SKIPPING","Skipping UUID ARRAY data type tests");
     return;
   }
