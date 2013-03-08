@@ -1,3 +1,3 @@
 {
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.test.sybase.generatedclasses.tables.records.XTestCase_64_69Record,?>>asList(org.jooq.test.sybase.generatedclasses.Keys.X_TEST_CASE_64_69__FK_X_TEST_CASE_64_69A,org.jooq.test.sybase.generatedclasses.Keys.X_TEST_CASE_64_69__FK_X_TEST_CASE_64_69B);
+  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.test.sybase.generatedclasses.tables.records.XTestCase_64_69Record,?>>asList(org.jooq.test.sybase.generatedclasses.ForeignKeys.XTestCase_64_69.X_TEST_CASE_64_69__FK_X_TEST_CASE_64_69A,org.jooq.test.sybase.generatedclasses.ForeignKeys.XTestCase_64_69.X_TEST_CASE_64_69__FK_X_TEST_CASE_64_69B);
 }

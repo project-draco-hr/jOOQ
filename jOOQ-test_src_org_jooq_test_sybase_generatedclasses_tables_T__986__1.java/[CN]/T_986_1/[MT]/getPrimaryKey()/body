@@ -1,3 +1,3 @@
 {
-  return org.jooq.test.sybase.generatedclasses.Keys.T_986_1__PK_986;
+  return org.jooq.test.sybase.generatedclasses.UniqueKeys.T_986_1.T_986_1__PK_986;
 }
