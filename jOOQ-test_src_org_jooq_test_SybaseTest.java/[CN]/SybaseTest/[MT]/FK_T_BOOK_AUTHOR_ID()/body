@@ -1,3 +1,3 @@
 {
-  return ForeignKeys.TBook.T_BOOK__FK_T_BOOK_AUTHOR_ID;
+  return Keys.T_BOOK__FK_T_BOOK_AUTHOR_ID;
 }

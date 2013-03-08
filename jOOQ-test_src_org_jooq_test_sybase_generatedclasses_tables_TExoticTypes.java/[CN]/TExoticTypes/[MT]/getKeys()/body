@@ -1,3 +1,3 @@
 {
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.sybase.generatedclasses.tables.records.TExoticTypesRecord>>asList(org.jooq.test.sybase.generatedclasses.UniqueKeys.TExoticTypes.T_EXOTIC_TYPES__PK_T_EXOTIC_TYPES);
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.sybase.generatedclasses.tables.records.TExoticTypesRecord>>asList(org.jooq.test.sybase.generatedclasses.Keys.T_EXOTIC_TYPES__PK_T_EXOTIC_TYPES);
 }

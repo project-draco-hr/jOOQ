@@ -1,3 +1,3 @@
 {
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.sybase.generatedclasses.tables.records.T_986_2Record>>asList(org.jooq.test.sybase.generatedclasses.UniqueKeys.T_986_2.T_986_2__PK_986,org.jooq.test.sybase.generatedclasses.UniqueKeys.T_986_2.T_986_2__UK_986);
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.sybase.generatedclasses.tables.records.T_986_2Record>>asList(org.jooq.test.sybase.generatedclasses.Keys.T_986_2__PK_986,org.jooq.test.sybase.generatedclasses.Keys.T_986_2__UK_986);
 }
