@@ -156,11 +156,21 @@ case POSTGRES:
     break;
   }
 case HSQLDB:
-stmt.setArray(nextIndex(),new DefaultArray(dialect,(Object[])value,type));
-break;
+{
+  Object[] a=(Object[])value;
+  Class<?> t=type;
+  if (type == UUID[].class) {
+    a=Convert.convertArray(a,String[].class);
+    t=String[].class;
+  }
+  stmt.setArray(nextIndex(),new DefaultArray(dialect,a,t));
+  break;
+}
 case H2:
+{
 stmt.setObject(nextIndex(),value);
 break;
+}
 default :
 throw new SQLDialectNotSupportedException("Cannot bind ARRAY types in dialect " + dialect);
 }
