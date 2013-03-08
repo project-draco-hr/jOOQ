@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.UDT<?>>asList(org.jooq.examples.oracle.sys.udt.DbmsXplanType.DBMS_XPLAN_TYPE);
+}
