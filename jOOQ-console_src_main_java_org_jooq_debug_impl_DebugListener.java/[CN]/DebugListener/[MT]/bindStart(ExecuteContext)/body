@@ -1,6 +1,3 @@
 {
-  if (!hasDebuggers) {
-    return;
-  }
-  startBindTime=System.currentTimeMillis();
+  getDebugProcessor(ctx).bindStart(ctx);
 }

@@ -1,6 +1,3 @@
 {
-  if (!hasDebuggers) {
-    return;
-  }
-  startPreparationTime=System.currentTimeMillis();
+  getDebugProcessor(ctx).prepareStart(ctx);
 }

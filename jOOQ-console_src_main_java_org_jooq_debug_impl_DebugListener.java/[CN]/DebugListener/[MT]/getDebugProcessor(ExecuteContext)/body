@@ -1,0 +1,3 @@
+{
+  return (DebugProcessor)ctx.getData("org.jooq.debug.DebugProcessor");
+}
