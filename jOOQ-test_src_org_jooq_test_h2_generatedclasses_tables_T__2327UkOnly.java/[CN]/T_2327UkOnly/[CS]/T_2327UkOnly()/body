@@ -1,0 +1,3 @@
+{
+  super("T_2327_UK_ONLY",org.jooq.test.h2.generatedclasses.Public.PUBLIC);
+}
