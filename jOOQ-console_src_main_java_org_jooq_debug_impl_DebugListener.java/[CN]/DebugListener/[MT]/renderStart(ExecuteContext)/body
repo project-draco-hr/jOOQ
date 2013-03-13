@@ -1,9 +1,3 @@
 {
-  hasDebuggers=!DebuggerRegistry.get().isEmpty();
-  startPreparationTime=0;
-  aggregatedPreparationDuration=0;
-  startBindTime=0;
-  endBindTime=0;
-  startExecutionTime=0;
-  endExecutionTime=0;
+  getDebugProcessor(ctx).renderStart(ctx);
 }

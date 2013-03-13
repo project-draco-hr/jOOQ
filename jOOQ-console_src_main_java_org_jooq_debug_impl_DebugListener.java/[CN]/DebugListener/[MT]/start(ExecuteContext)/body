@@ -1,0 +1,4 @@
+{
+  DebugProcessor debugProcessor=new DebugProcessor();
+  ctx.setData("org.jooq.debug.DebugProcessor",debugProcessor);
+}

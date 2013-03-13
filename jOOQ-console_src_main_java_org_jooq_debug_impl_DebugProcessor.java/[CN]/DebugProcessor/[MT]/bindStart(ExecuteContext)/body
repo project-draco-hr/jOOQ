@@ -1,0 +1,6 @@
+{
+  if (!hasDebuggers) {
+    return;
+  }
+  startBindTime=System.currentTimeMillis();
+}
