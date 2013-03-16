@@ -1,5 +1,5 @@
 {
   if (log.isDebugEnabled() && ctx.result() != null) {
-    logMultiline("Fetched result",ctx.result().format(5),Level.DEBUG);
+    logMultiline("Fetched result",ctx.result().format(5),Level.FINE);
   }
 }

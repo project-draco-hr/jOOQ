@@ -1,6 +1,6 @@
 {
   for (  String line : message.split("\n")) {
-    if (level == Level.DEBUG) {
+    if (level == Level.FINE) {
       log.debug(comment,line);
     }
  else {
