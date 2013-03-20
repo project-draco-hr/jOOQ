@@ -1,4 +1,5 @@
 {
+  if (this == obj)   return true;
   if (obj instanceof Definition) {
     Definition that=(Definition)obj;
     return that.getQualifiedName().equals(getQualifiedName());

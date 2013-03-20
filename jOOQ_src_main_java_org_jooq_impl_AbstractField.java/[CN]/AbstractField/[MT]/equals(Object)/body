@@ -1,4 +1,7 @@
 {
+  if (this == that) {
+    return true;
+  }
   if (that instanceof AbstractField) {
     if (StringUtils.equals(name,(((AbstractField<?>)that).name))) {
       return super.equals(that);

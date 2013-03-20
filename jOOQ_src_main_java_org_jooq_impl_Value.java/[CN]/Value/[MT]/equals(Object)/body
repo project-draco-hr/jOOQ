@@ -1,4 +1,7 @@
 {
+  if (this == obj) {
+    return true;
+  }
   if (obj instanceof Value<?>) {
     Value<?> other=(Value<?>)obj;
     if (value == null) {

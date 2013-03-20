@@ -1,4 +1,7 @@
 {
+  if (this == obj) {
+    return true;
+  }
   if (obj instanceof AbstractStore) {
     final AbstractStore that=(AbstractStore)obj;
     if (size() == that.size()) {

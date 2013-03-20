@@ -1,4 +1,5 @@
 {
+  if (this == obj)   return true;
   if (obj instanceof DefaultDataTypeDefinition) {
     DefaultDataTypeDefinition other=(DefaultDataTypeDefinition)obj;
     if (normalise(typeName).equals(normalise(other.typeName)) && normalise(udtName).equals(normalise(other.udtName))) {

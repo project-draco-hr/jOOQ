@@ -1,4 +1,7 @@
 {
+  if (this == that) {
+    return true;
+  }
   if (that instanceof TableField) {
     TableField<?,?> other=(TableField<?,?>)that;
     return StringUtils.equals(getTable(),other.getTable()) && StringUtils.equals(getName(),other.getName());

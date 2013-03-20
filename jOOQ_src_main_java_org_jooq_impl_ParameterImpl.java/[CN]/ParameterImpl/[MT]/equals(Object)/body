@@ -1,4 +1,7 @@
 {
+  if (this == that) {
+    return true;
+  }
   if (that instanceof ParameterImpl) {
     return StringUtils.equals(name,((ParameterImpl<?>)that).name);
   }

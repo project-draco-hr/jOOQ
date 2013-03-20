@@ -1,4 +1,7 @@
 {
+  if (this == that) {
+    return true;
+  }
   if (that instanceof NameImpl) {
     return Arrays.equals(getName(),(((NameImpl)that).getName()));
   }

@@ -1,4 +1,7 @@
 {
+  if (this == that) {
+    return true;
+  }
   if (that instanceof QueryPart) {
     String sql1=create().renderInlined(this);
     String sql2=create().renderInlined((QueryPart)that);

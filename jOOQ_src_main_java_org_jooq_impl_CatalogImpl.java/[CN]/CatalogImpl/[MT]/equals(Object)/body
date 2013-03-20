@@ -1,4 +1,7 @@
 {
+  if (this == that) {
+    return true;
+  }
   if (that instanceof CatalogImpl) {
     return StringUtils.equals(getName(),(((CatalogImpl)that).getName()));
   }

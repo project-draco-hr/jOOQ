@@ -1,4 +1,5 @@
 {
+  if (this == obj)   return true;
   if (obj instanceof ULong) {
     return value.equals(((ULong)obj).value);
   }
