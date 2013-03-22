@@ -1,5 +1,6 @@
 {
+  Configuration configuration=localConfiguration();
   for (  Field<?> field : getUDT().fields()) {
-    setValue(DefaultExecuteContext.registeredConfiguration(),stream,field);
+    setValue(configuration,stream,field);
   }
 }

@@ -1,10 +1,16 @@
 {
   if (meta == null) {
+    ConnectionProvider provider=executor.getConnectionProvider();
+    Connection connection=null;
     try {
-      meta=executor.getConnectionProvider().acquire().getMetaData();
+      connection=provider.acquire();
+      meta=connection.getMetaData();
     }
  catch (    SQLException e) {
       throw new DataAccessException("Error while accessing DatabaseMetaData",e);
+    }
+ finally {
+      provider.release(connection);
     }
   }
   return meta;

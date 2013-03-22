@@ -1,6 +1,6 @@
 {
   StringBuilder sb=new StringBuilder();
-  Configuration configuration=DefaultExecuteContext.registeredConfiguration();
+  Configuration configuration=localConfiguration();
   if (configuration != null) {
     Schema schema=Utils.getMappedSchema(configuration,getUDT().getSchema());
     if (schema != null) {

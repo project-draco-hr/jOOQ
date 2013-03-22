@@ -1,10 +1,11 @@
 {
   ConnectionProvider provider=connectionProvider != null ? connectionProvider : getConnectionProvider();
-  if (provider != null) {
-    Connection connection=provider.acquire();
-    if (connection != null) {
-      return new SettingsEnabledConnection(new ProviderEnabledConnection(provider,connection),getSettings());
+  if (connection == null && provider != null) {
+    Connection c=provider.acquire();
+    if (c != null) {
+      LOCAL_CONNECTION.set(c);
+      connection=new SettingsEnabledConnection(new ProviderEnabledConnection(provider,c),getSettings());
     }
   }
-  return null;
+  return connection;
 }
