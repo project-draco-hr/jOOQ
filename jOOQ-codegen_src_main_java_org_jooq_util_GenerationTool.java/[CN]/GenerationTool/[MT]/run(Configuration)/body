@@ -1,0 +1,106 @@
+{
+  Jdbc j=configuration.getJdbc();
+  org.jooq.util.jaxb.Generator g=configuration.getGenerator();
+  errorIfNull(g,"The <generator/> tag is mandatory.");
+  if (g.getStrategy() == null)   g.setStrategy(new Strategy());
+  if (g.getTarget() == null)   g.setTarget(new Target());
+  try {
+    if (connection == null) {
+      errorIfNull(j,"The <jdbc/> tag is mandatory.");
+      loadClass(j.getDriver());
+      Properties properties=new Properties();
+      for (      Property p : j.getProperties()) {
+        properties.put(p.getKey(),p.getValue());
+      }
+      if (!properties.containsKey("user"))       properties.put("user",defaultString(j.getUser()));
+      if (!properties.containsKey("password"))       properties.put("password",defaultString(j.getPassword()));
+      connection=DriverManager.getConnection(defaultString(j.getUrl()),properties);
+      close=true;
+    }
+ else {
+      j=defaultIfNull(j,new Jdbc());
+    }
+    Class<Generator> generatorClass=(Class<Generator>)(!isBlank(g.getName()) ? loadClass(trim(g.getName())) : JavaGenerator.class);
+    Generator generator=generatorClass.newInstance();
+    Class<GeneratorStrategy> strategyClass=(Class<GeneratorStrategy>)(!isBlank(g.getStrategy().getName()) ? loadClass(trim(g.getStrategy().getName())) : DefaultGeneratorStrategy.class);
+    GeneratorStrategy strategy=strategyClass.newInstance();
+    generator.setStrategy(strategy);
+    org.jooq.util.jaxb.Database d=g.getDatabase();
+    errorIfNull(d,"The <database/> tag is mandatory.");
+    Class<Database> databaseClass=(Class<Database>)loadClass(trim(d.getName()));
+    Database database=databaseClass.newInstance();
+    List<Schema> schemata=d.getSchemata();
+    if (schemata.isEmpty()) {
+      Schema schema=new Schema();
+      schema.setInputSchema(trim(d.getInputSchema()));
+      schema.setOutputSchema(trim(d.getOutputSchema()));
+      schemata.add(schema);
+    }
+ else {
+      if (!StringUtils.isBlank(d.getInputSchema())) {
+        log.warn("WARNING: Cannot combine configuration properties /configuration/generator/database/inputSchema and /configuration/generator/database/schemata");
+      }
+      if (!StringUtils.isBlank(d.getOutputSchema())) {
+        log.warn("WARNING: Cannot combine configuration properties /configuration/generator/database/outputSchema and /configuration/generator/database/schemata");
+      }
+    }
+    for (    Schema schema : schemata) {
+      if (StringUtils.isBlank(schema.getInputSchema())) {
+        if (!StringUtils.isBlank(j.getSchema())) {
+          log.warn("WARNING: The configuration property jdbc.Schema is deprecated and will be removed in the future. Use /configuration/generator/database/inputSchema instead");
+        }
+        schema.setInputSchema(trim(j.getSchema()));
+      }
+      if (schema.getOutputSchema() == null) {
+        schema.setOutputSchema(trim(schema.getInputSchema()));
+      }
+    }
+    if (schemata.size() == 1) {
+      if (StringUtils.isBlank(schemata.get(0).getInputSchema())) {
+        log.info("No <inputSchema/> was provided. Generating ALL available schemata instead!");
+      }
+    }
+    database.setConnection(connection);
+    database.setConfiguredSchemata(schemata);
+    database.setIncludes(new String[]{defaultString(d.getIncludes())});
+    database.setExcludes(new String[]{defaultString(d.getExcludes())});
+    database.setRecordVersionFields(new String[]{defaultString(d.getRecordVersionFields())});
+    database.setRecordTimestampFields(new String[]{defaultString(d.getRecordTimestampFields())});
+    database.setConfiguredCustomTypes(d.getCustomTypes());
+    database.setConfiguredEnumTypes(d.getEnumTypes());
+    database.setConfiguredForcedTypes(d.getForcedTypes());
+    if (d.getEnumTypes().size() > 0) {
+      log.warn("WARNING: The configuration property /configuration/generator/database/enumTypes is experimental and deprecated and will be removed in the future.");
+    }
+    if (d.isDateAsTimestamp() != null)     database.setDateAsTimestamp(d.isDateAsTimestamp());
+    if (d.isUnsignedTypes() != null)     database.setSupportsUnsignedTypes(d.isUnsignedTypes());
+    if (StringUtils.isBlank(g.getTarget().getPackageName()))     g.getTarget().setPackageName("org.jooq.generated");
+    if (StringUtils.isBlank(g.getTarget().getDirectory()))     g.getTarget().setDirectory("target/generated-sources/jooq");
+    generator.setTargetPackage(g.getTarget().getPackageName());
+    generator.setTargetDirectory(g.getTarget().getDirectory());
+    if (g.getGenerate() == null)     g.setGenerate(new Generate());
+    if (g.getGenerate().isRelations() != null)     generator.setGenerateRelations(g.getGenerate().isRelations());
+    if (g.getGenerate().isDeprecated() != null)     generator.setGenerateDeprecated(g.getGenerate().isDeprecated());
+    if (g.getGenerate().isInstanceFields() != null)     generator.setGenerateInstanceFields(g.getGenerate().isInstanceFields());
+    if (g.getGenerate().isGeneratedAnnotation() != null)     generator.setGenerateGeneratedAnnotation(g.getGenerate().isGeneratedAnnotation());
+    if (g.getGenerate().isRecords() != null)     generator.setGenerateRecords(g.getGenerate().isRecords());
+    if (g.getGenerate().isPojos() != null)     generator.setGeneratePojos(g.getGenerate().isPojos());
+    if (g.getGenerate().isImmutablePojos() != null)     generator.setGenerateImmutablePojos(g.getGenerate().isImmutablePojos());
+    if (g.getGenerate().isInterfaces() != null)     generator.setGenerateInterfaces(g.getGenerate().isInterfaces());
+    if (g.getGenerate().isDaos() != null)     generator.setGenerateDaos(g.getGenerate().isDaos());
+    if (g.getGenerate().isJpaAnnotations() != null)     generator.setGenerateJPAAnnotations(g.getGenerate().isJpaAnnotations());
+    if (g.getGenerate().isValidationAnnotations() != null)     generator.setGenerateValidationAnnotations(g.getGenerate().isValidationAnnotations());
+    if (g.getGenerate().isGlobalObjectReferences() != null)     generator.setGenerateGlobalObjectReferences(g.getGenerate().isGlobalObjectReferences());
+    strategy.setInstanceFields(generator.generateInstanceFields());
+    generator.generate(database);
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+    throw e;
+  }
+ finally {
+    if (close && connection != null) {
+      connection.close();
+    }
+  }
+}
