@@ -1,7 +1,7 @@
 {
   Connection connection=ctx.connection();
   boolean autoCommit=false;
-  if (ctx.getDialect() == SQLDialect.POSTGRES && isSelectingRefCursor()) {
+  if (ctx.configuration().getDialect() == SQLDialect.POSTGRES && isSelectingRefCursor()) {
     autoCommit=connection.getAutoCommit();
     if (autoCommit) {
       if (log.isDebugEnabled())       log.debug("Unsetting auto-commit",false);
@@ -10,7 +10,7 @@
   }
   try {
     listener.executeStart(ctx);
-    if (ctx.getDialect() == ASE) {
+    if (ctx.configuration().getDialect() == ASE) {
       ctx.resultSet(ctx.statement().executeQuery());
     }
  else     if (ctx.statement().execute()) {
@@ -27,7 +27,7 @@
         }
       }
  else {
-        result=new ResultImpl<R>(ctx);
+        result=new ResultImpl<R>(ctx.configuration());
       }
     }
  else {
@@ -35,7 +35,7 @@
       boolean anyResults=false;
       while (ctx.resultSet() != null) {
         anyResults=true;
-        Field<?>[] fields=new MetaDataFieldProvider(ctx,ctx.resultSet().getMetaData()).getFields();
+        Field<?>[] fields=new MetaDataFieldProvider(ctx.configuration(),ctx.resultSet().getMetaData()).getFields();
         Cursor<Record> c=new CursorImpl<Record>(ctx,listener,fields,internIndexes(fields),true);
         results.add(c.fetch());
         if (ctx.statement().getMoreResults()) {

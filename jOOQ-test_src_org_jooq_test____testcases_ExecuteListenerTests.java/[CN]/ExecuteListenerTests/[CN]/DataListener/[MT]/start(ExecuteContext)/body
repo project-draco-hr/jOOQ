@@ -1,0 +1,5 @@
+{
+  assertTrue(ctx.data().isEmpty());
+  assertNull(ctx.data("X"));
+  assertNull(ctx.data("X","start"));
+}

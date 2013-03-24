@@ -5,15 +5,15 @@
   assertTrue(ctx.batchQueries()[0].toString().toLowerCase().contains("select"));
   assertEquals(ctx.query(),ctx.batchQueries()[0]);
   assertEquals(1,ctx.batchSQL().length);
-  assertEquals("Bar",ctx.getData("Foo"));
-  assertEquals("Baz",ctx.getData("Bar"));
+  assertEquals("Bar",ctx.configuration().getData("Foo"));
+  assertEquals("Baz",ctx.configuration().getData("Bar"));
   assertEquals(new HashMap<String,String>(){
 {
       put("Foo","Bar");
       put("Bar","Baz");
     }
   }
-,ctx.getData());
+,ctx.configuration().getData());
   assertNull(ctx.routine());
   assertEquals(ExecuteType.READ,ctx.type());
 }

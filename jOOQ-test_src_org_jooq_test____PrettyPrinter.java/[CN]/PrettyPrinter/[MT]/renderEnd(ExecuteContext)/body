@@ -1,6 +1,6 @@
 {
-  Executor pretty=new Executor(ctx.getDialect(),SettingsTools.clone(ctx.getSettings()).withRenderFormatted(true));
-  Executor normal=new Executor(ctx.getDialect());
+  Executor pretty=new Executor(ctx.configuration().getDialect(),SettingsTools.clone(ctx.configuration().getSettings()).withRenderFormatted(true));
+  Executor normal=new Executor(ctx.configuration().getDialect());
   String n="" + count.incrementAndGet();
   System.out.println();
   System.out.println("Executing #" + n);

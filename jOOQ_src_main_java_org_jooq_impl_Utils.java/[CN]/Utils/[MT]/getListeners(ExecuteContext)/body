@@ -1,9 +1,9 @@
 {
   List<ExecuteListener> result=new ArrayList<ExecuteListener>();
-  if (!FALSE.equals(configuration.getSettings().isExecuteLogging())) {
+  if (!FALSE.equals(ctx.configuration().getSettings().isExecuteLogging())) {
     result.add(new StopWatchListener());
     result.add(new LoggerListener());
   }
-  result.addAll(configuration.getExecuteListeners());
+  result.addAll(ctx.configuration().getExecuteListeners());
   return result;
 }

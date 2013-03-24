@@ -1,10 +1,10 @@
 {
-  ConnectionProvider provider=connectionProvider != null ? connectionProvider : getConnectionProvider();
+  ConnectionProvider provider=connectionProvider != null ? connectionProvider : configuration.getConnectionProvider();
   if (connection == null && provider != null) {
     Connection c=provider.acquire();
     if (c != null) {
       LOCAL_CONNECTION.set(c);
-      connection=new SettingsEnabledConnection(new ProviderEnabledConnection(provider,c),getSettings());
+      connection=new SettingsEnabledConnection(new ProviderEnabledConnection(provider,c),configuration.getSettings());
     }
   }
   return connection;

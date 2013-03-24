@@ -5,13 +5,13 @@
  else {
     int result=1;
     ResultSet rs;
-switch (ctx.getDialect()) {
+switch (ctx.configuration().getDialect()) {
 case SQLITE:
 {
         listener.executeStart(ctx);
         result=ctx.statement().executeUpdate();
         listener.executeEnd(ctx);
-        Executor create=new Executor(ctx.connection(),SQLDialect.SQLITE,ctx.getSettings());
+        Executor create=new Executor(ctx.connection(),SQLDialect.SQLITE,ctx.configuration().getSettings());
         returned=create.select(returning).from(getInto()).where(rowid().equal(rowid().getDataType().convert(create.lastID()))).fetchInto(getInto());
         return result;
       }
@@ -21,7 +21,7 @@ case SYBASE:
       listener.executeStart(ctx);
       result=ctx.statement().executeUpdate();
       listener.executeEnd(ctx);
-      selectReturning(ctx.configuration(),create(ctx).lastID());
+      selectReturning(ctx.configuration(),create(ctx.configuration()).lastID());
       return result;
     }
 case ASE:
@@ -42,7 +42,7 @@ case SQLSERVER:
           list.add(rs.getObject(1));
         }
       }
-      selectReturning(ctx,list.toArray());
+      selectReturning(ctx.configuration(),list.toArray());
       return result;
     }
   finally {

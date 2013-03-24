@@ -1,5 +1,6 @@
 {
-  super(configuration);
+  this.configuration=configuration;
+  this.data=new HashMap<Object,Object>();
   this.query=query;
   this.batchQueries=(batchQueries == null ? new Query[0] : batchQueries);
   this.routine=routine;

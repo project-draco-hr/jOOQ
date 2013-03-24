@@ -6,15 +6,15 @@
   assertTrue(ctx.batchQueries()[2].toString().toLowerCase().contains("insert"));
   assertTrue(ctx.batchQueries()[3].toString().toLowerCase().contains("insert"));
   assertEquals(4,ctx.batchSQL().length);
-  assertEquals("Bar",ctx.getData("Foo"));
-  assertEquals("Baz",ctx.getData("Bar"));
+  assertEquals("Bar",ctx.configuration().getData("Foo"));
+  assertEquals("Baz",ctx.configuration().getData("Bar"));
   assertEquals(new HashMap<String,String>(){
 {
       put("Foo","Bar");
       put("Bar","Baz");
     }
   }
-,ctx.getData());
+,ctx.configuration().getData());
   assertNull(ctx.routine());
   assertNull(ctx.resultSet());
   assertNull(ctx.record());

@@ -50,7 +50,7 @@
     return (T)stmt.getTimestamp(index);
   }
  else   if (type == YearToMonth.class) {
-    if (ctx.getDialect() == POSTGRES) {
+    if (ctx.configuration().getDialect() == POSTGRES) {
       Object object=stmt.getObject(index);
       return (T)(object == null ? null : PostgresUtils.toYearToMonth(object));
     }
@@ -60,7 +60,7 @@
     }
   }
  else   if (type == DayToSecond.class) {
-    if (ctx.getDialect() == POSTGRES) {
+    if (ctx.configuration().getDialect() == POSTGRES) {
       Object object=stmt.getObject(index);
       return (T)(object == null ? null : PostgresUtils.toDayToSecond(object));
     }
@@ -86,7 +86,7 @@
     return (T)(string == null ? null : ULong.valueOf(string));
   }
  else   if (type == UUID.class) {
-switch (ctx.getDialect()) {
+switch (ctx.configuration().getDialect()) {
 case H2:
 case POSTGRES:
 {
@@ -104,13 +104,13 @@ default :
 return (T)convertArray(stmt.getObject(index),(Class<? extends Object[]>)type);
 }
  else if (ArrayRecord.class.isAssignableFrom(type)) {
-return (T)getArrayRecord(ctx,stmt.getArray(index),(Class<? extends ArrayRecord<?>>)type);
+return (T)getArrayRecord(ctx.configuration(),stmt.getArray(index),(Class<? extends ArrayRecord<?>>)type);
 }
  else if (EnumType.class.isAssignableFrom(type)) {
 return getEnumType(type,stmt.getString(index));
 }
  else if (UDTRecord.class.isAssignableFrom(type)) {
-switch (ctx.getDialect()) {
+switch (ctx.configuration().getDialect()) {
 case POSTGRES:
   return (T)pgNewUDTRecord(type,stmt.getObject(index));
 }
@@ -118,7 +118,7 @@ return (T)stmt.getObject(index,DataTypes.udtRecords());
 }
  else if (Result.class.isAssignableFrom(type)) {
 ResultSet nested=(ResultSet)stmt.getObject(index);
-return (T)new Executor(ctx).fetch(nested);
+return (T)new Executor(ctx.configuration()).fetch(nested);
 }
  else {
 return (T)stmt.getObject(index);
