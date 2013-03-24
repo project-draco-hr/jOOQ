@@ -1,5 +1,6 @@
 {
   UniqueKeyDefinition primaryKey=table.getPrimaryKey();
+  final boolean updatable=generateRelations() && primaryKey != null;
   final String className=getStrategy().getJavaClassName(table);
   final String fullClassName=getStrategy().getFullJavaClassName(table);
   final String fullTableId=getStrategy().getFullJavaIdentifier(table);
@@ -9,14 +10,7 @@
   JavaWriter out=new JavaWriter(getStrategy().getFile(table));
   printPackage(out,table);
   printClassJavadoc(out,table);
-  Class<?> baseClass;
-  if (generateRelations() && primaryKey != null) {
-    baseClass=UpdatableTableImpl.class;
-  }
- else {
-    baseClass=TableImpl.class;
-  }
-  out.println("public class %s extends %s<%s>[[before= implements ][%s]] {",className,baseClass,recordType,interfaces);
+  out.println("public class %s extends %s<%s>[[before= implements ][%s]] {",className,TableImpl.class,recordType,interfaces);
   out.printSerial();
   printSingletonInstance(out,table);
   printRecordTypeMethod(out,table);
@@ -82,7 +76,7 @@
       out.tab(1).println("}");
     }
   }
-  if (baseClass == UpdatableTableImpl.class) {
+  if (updatable) {
     patternLoop:     for (    String pattern : database.getRecordVersionFields()) {
       for (      ColumnDefinition column : table.getColumns()) {
         if ((column.getName().matches(pattern.trim()) || column.getQualifiedName().matches(pattern.trim()))) {

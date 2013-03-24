@@ -1,6 +1,6 @@
 {
-  if (getInto() instanceof UpdatableTable) {
-    UpdatableTable<R> into=(UpdatableTable<R>)getInto();
+  Table<R> into=getInto();
+  if (into.getPrimaryKey() != null) {
     Condition condition=null;
     List<Field<?>> key=new ArrayList<Field<?>>();
     for (    Field<?> f : into.getPrimaryKey().getFields()) {

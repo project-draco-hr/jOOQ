@@ -2,10 +2,4 @@
   this.create=create;
   this.table=table;
   this.errors=new ArrayList<LoaderError>();
-  if (table instanceof UpdatableTable) {
-    this.updatable=(UpdatableTable<R>)table;
-  }
- else {
-    this.updatable=null;
-  }
 }

@@ -1,6 +1,6 @@
 {
-  if (updatable == null) {
-    throw new IllegalStateException("ON DUPLICATE KEY UPDATE only works on UpdatableTable. Table is not updatable : " + table);
+  if (table.getPrimaryKey() == null) {
+    throw new IllegalStateException("ON DUPLICATE KEY UPDATE only works on tables with explicit primary keys. Table is not updatable : " + table);
   }
   onDuplicate=ON_DUPLICATE_KEY_UPDATE;
   return this;
