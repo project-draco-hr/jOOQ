@@ -1,1 +1,1 @@
-org.jooq.impl.UpdatableTableImpl<org.jooq.test.sybase.generatedclasses.tables.records.XUnusedRecord>
+org.jooq.impl.TableImpl<org.jooq.test.sybase.generatedclasses.tables.records.XUnusedRecord>

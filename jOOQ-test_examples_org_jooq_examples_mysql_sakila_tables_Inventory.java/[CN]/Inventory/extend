@@ -1,1 +1,1 @@
-org.jooq.impl.UpdatableTableImpl<org.jooq.examples.mysql.sakila.tables.records.InventoryRecord>
+org.jooq.impl.TableImpl<org.jooq.examples.mysql.sakila.tables.records.InventoryRecord>

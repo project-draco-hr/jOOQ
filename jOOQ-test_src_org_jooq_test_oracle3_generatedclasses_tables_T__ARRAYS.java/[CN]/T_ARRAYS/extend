@@ -1,1 +1,1 @@
-org.jooq.impl.UpdatableTableImpl<org.jooq.test.oracle3.generatedclasses.tables.records.T_ARRAYS>
+org.jooq.impl.TableImpl<org.jooq.test.oracle3.generatedclasses.tables.records.T_ARRAYS>

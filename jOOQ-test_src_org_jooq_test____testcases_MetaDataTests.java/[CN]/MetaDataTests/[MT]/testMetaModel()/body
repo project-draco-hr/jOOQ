@@ -95,16 +95,14 @@
     assertEquals(TBook().getReferencesTo(TAuthor()),TBook().getReferencesTo(a));
     assertEquals(TBook().getReferencesTo(TAuthor()),b.getReferencesTo(a));
     assertEquals(TBook().getReferencesTo(TAuthor()),b.getReferencesTo(TAuthor()));
-    if (a instanceof UpdatableTable && b instanceof UpdatableTable) {
-      UpdatableTable<A> ua=(UpdatableTable<A>)a;
-      UpdatableTable<B> ub=(UpdatableTable<B>)b;
-      assertEquals(2,ua.getPrimaryKey().getReferences().size());
-      assertEquals(TBook(),ua.getPrimaryKey().getReferences().get(0).getTable());
-      assertEquals(TBook(),ua.getPrimaryKey().getReferences().get(1).getTable());
-      assertTrue(b.getReferences().containsAll(ua.getReferencesFrom(b)));
-      assertTrue(b.getReferences().containsAll(ub.getReferencesFrom(a)));
-      assertEquals(b.getReferencesTo(a),ua.getReferencesFrom(b));
-      assertEquals(TBook().getReferencesTo(a),ua.getReferencesFrom(b));
+    if (a.getPrimaryKey() != null && b.getPrimaryKey() != null) {
+      assertEquals(2,a.getPrimaryKey().getReferences().size());
+      assertEquals(TBook(),a.getPrimaryKey().getReferences().get(0).getTable());
+      assertEquals(TBook(),a.getPrimaryKey().getReferences().get(1).getTable());
+      assertTrue(b.getReferences().containsAll(a.getReferencesFrom(b)));
+      assertTrue(b.getReferences().containsAll(b.getReferencesFrom(a)));
+      assertEquals(b.getReferencesTo(a),a.getReferencesFrom(b));
+      assertEquals(TBook().getReferencesTo(a),a.getReferencesFrom(b));
       assertEquals(b.getReferencesTo(a),TAuthor().getReferencesFrom(b));
     }
   }

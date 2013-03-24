@@ -7,12 +7,10 @@
         assertEquals(metaTable,generatedTable);
         List<Field<?>> metaFields=asList(metaTable.fields());
         assertTrue(metaFields.containsAll(asList(generatedTable.fields())));
-        if (generatedTable instanceof UpdatableTable && metaTable instanceof UpdatableTable) {
-          UpdatableTable<?> generatedUTable=(UpdatableTable<?>)generatedTable;
-          UpdatableTable<?> metaUTable=(UpdatableTable<?>)metaTable;
+        if (generatedTable.getPrimaryKey() != null && metaTable.getPrimaryKey() != null) {
         }
  else {
-          assertFalse(metaTable instanceof UpdatableTable);
+          assertNull(metaTable.getPrimaryKey());
         }
       }
     }

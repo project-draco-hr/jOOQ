@@ -1,1 +1,1 @@
-org.jooq.impl.UpdatableTableImpl<org.jooq.test.postgres.generatedclasses.tables.records.TPgExtensionsRecord>
+org.jooq.impl.TableImpl<org.jooq.test.postgres.generatedclasses.tables.records.TPgExtensionsRecord>

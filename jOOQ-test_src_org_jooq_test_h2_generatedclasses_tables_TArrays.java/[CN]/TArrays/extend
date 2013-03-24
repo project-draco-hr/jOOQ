@@ -1,1 +1,1 @@
-org.jooq.impl.UpdatableTableImpl<org.jooq.test.h2.generatedclasses.tables.records.TArraysRecord>
+org.jooq.impl.TableImpl<org.jooq.test.h2.generatedclasses.tables.records.TArraysRecord>

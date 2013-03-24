@@ -1,1 +1,1 @@
-org.jooq.impl.UpdatableTableImpl<org.jooq.test.ase.generatedclasses.tables.records.T_986_2Record>
+org.jooq.impl.TableImpl<org.jooq.test.ase.generatedclasses.tables.records.T_986_2Record>
