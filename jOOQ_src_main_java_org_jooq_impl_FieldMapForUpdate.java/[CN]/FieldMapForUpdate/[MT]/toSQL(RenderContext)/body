@@ -2,7 +2,7 @@
   if (size() > 0) {
     String separator="";
     boolean restoreQualify=context.qualify();
-    boolean supportsQualify=asList(POSTGRES,SQLITE).contains(context.getDialect()) ? false : restoreQualify;
+    boolean supportsQualify=asList(POSTGRES,SQLITE).contains(context.configuration().getDialect()) ? false : restoreQualify;
     for (    Entry<Field<?>,Field<?>> entry : entrySet()) {
       context.sql(separator);
       if (!"".equals(separator)) {

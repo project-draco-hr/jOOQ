@@ -1,3 +1,3 @@
 {
-  return type == NATURAL_JOIN && asList(ASE,CUBRID,DB2,INGRES,SQLSERVER).contains(context.getDialect());
+  return type == NATURAL_JOIN && asList(ASE,CUBRID,DB2,INGRES,SQLSERVER).contains(context.configuration().getDialect());
 }

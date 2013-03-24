@@ -2,13 +2,13 @@
   if (!over) {
     return;
   }
-  if (over && term == ROW_NUMBER && context.getDialect() == HSQLDB) {
+  if (over && term == ROW_NUMBER && context.configuration().getDialect() == HSQLDB) {
     return;
   }
   String glue="";
   context.keyword(" over (");
   if (!partitionBy.isEmpty()) {
-    if (partitionByOne && asList(CUBRID,SYBASE).contains(context.getDialect())) {
+    if (partitionByOne && asList(CUBRID,SYBASE).contains(context.configuration().getDialect())) {
     }
  else {
       context.sql(glue).keyword("partition by ").sql(partitionBy);

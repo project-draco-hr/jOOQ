@@ -1,10 +1,10 @@
 {
   if (h2Style) {
-    if (context.getDialect() == H2) {
+    if (context.configuration().getDialect() == H2) {
       bindH2(context);
     }
  else {
-      context.bind(getStandardMerge(context));
+      context.bind(getStandardMerge(context.configuration()));
     }
   }
  else {

@@ -1,10 +1,10 @@
 {
   if (h2Style) {
-    if (context.getDialect() == H2) {
+    if (context.configuration().getDialect() == H2) {
       toSQLH2(context);
     }
  else {
-      context.sql(getStandardMerge(context));
+      context.sql(getStandardMerge(context.configuration()));
     }
   }
  else {

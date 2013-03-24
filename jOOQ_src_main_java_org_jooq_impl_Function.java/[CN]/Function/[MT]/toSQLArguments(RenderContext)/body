@@ -1,5 +1,5 @@
 {
-  context.sql(getFNName(context.getDialect()));
+  context.sql(getFNName(context.configuration().getDialect()));
   context.sql("(");
   if (distinct) {
     context.keyword("distinct ");
@@ -8,7 +8,7 @@
     context.sql(arguments);
   }
   if (ignoreNulls) {
-    if (context.getDialect() == SQLDialect.DB2) {
+    if (context.configuration().getDialect() == SQLDialect.DB2) {
       context.sql(", 'IGNORE NULLS'");
     }
  else {
@@ -16,7 +16,7 @@
     }
   }
  else   if (respectNulls) {
-    if (context.getDialect() == SQLDialect.DB2) {
+    if (context.configuration().getDialect() == SQLDialect.DB2) {
       context.sql(", 'RESPECT NULLS'");
     }
  else {

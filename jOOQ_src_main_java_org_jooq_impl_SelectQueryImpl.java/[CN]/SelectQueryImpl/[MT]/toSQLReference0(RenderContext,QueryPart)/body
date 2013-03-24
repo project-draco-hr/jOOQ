@@ -1,5 +1,5 @@
 {
-  SQLDialect dialect=context.getDialect();
+  SQLDialect dialect=context.configuration().getDialect();
   context.keyword("select ");
   if (!StringUtils.isBlank(hint)) {
     context.sql(hint).sql(" ");
@@ -33,14 +33,14 @@ case INGRES:
 }
 }
 context.declareFields(true);
-if (context.subquery() && dialect == H2 && context.getData(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY) != null) {
-Object data=context.getData(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY);
+if (context.subquery() && dialect == H2 && context.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY) != null) {
+Object data=context.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY);
 try {
-context.setData(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY,null);
+context.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY,null);
 context.sql("(").sql(getSelect1()).sql(")");
 }
   finally {
-context.setData(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY,data);
+context.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY,data);
 }
 }
  else {

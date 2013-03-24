@@ -1,5 +1,5 @@
 {
-switch (context.getDialect()) {
+switch (context.configuration().getDialect()) {
 case ASE:
 case DERBY:
 case FIREBIRD:

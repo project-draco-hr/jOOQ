@@ -1,0 +1,3 @@
+{
+  return getFunction0(ctx);
+}

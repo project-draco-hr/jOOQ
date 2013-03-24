@@ -5,7 +5,7 @@ case ALWAYS:
 case NEVER:
   return false;
 case SOME:
-return asList(castDialects).contains(getDialect());
+return asList(castDialects).contains(configuration.getDialect());
 }
 return null;
 }

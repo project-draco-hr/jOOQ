@@ -1,5 +1,5 @@
 {
-  this((Configuration)context);
+  this(context.configuration());
   inline(context.inline());
   namedParams(context.namedParams());
   qualify(context.qualify());

@@ -1,12 +1,12 @@
 {
   CastMode castMode=context.castMode();
-  if (context.getDialect() == SQLDialect.DERBY) {
+  if (context.configuration().getDialect() == SQLDialect.DERBY) {
     if (field.getDataType().isNumeric() && VARCHAR.equals(getSQLDataType())) {
-      context.keyword("trim(cast(").keyword("cast(").castMode(CastMode.NEVER).sql(field).castMode(castMode).keyword(" as char(38))").keyword(" as ").keyword(getDataType(context).getCastTypeName(context)).sql("))");
+      context.keyword("trim(cast(").keyword("cast(").castMode(CastMode.NEVER).sql(field).castMode(castMode).keyword(" as char(38))").keyword(" as ").keyword(getDataType(context.configuration()).getCastTypeName(context.configuration())).sql("))");
       return;
     }
  else     if (field.getDataType().isString() && asList(FLOAT,DOUBLE,REAL).contains(getSQLDataType())) {
-      context.keyword("cast(").keyword("cast(").castMode(CastMode.NEVER).sql(field).castMode(castMode).keyword(" as decimal)").keyword(" as ").keyword(getDataType(context).getCastTypeName(context)).sql(")");
+      context.keyword("cast(").keyword("cast(").castMode(CastMode.NEVER).sql(field).castMode(castMode).keyword(" as decimal)").keyword(" as ").keyword(getDataType(context.configuration()).getCastTypeName(context.configuration())).sql(")");
       return;
     }
  else     if (field.getDataType().isNumeric() && BOOLEAN.equals(getSQLDataType())) {
@@ -18,5 +18,5 @@
       return;
     }
   }
-  context.keyword("cast(").castMode(CastMode.NEVER).sql(field).castMode(castMode).keyword(" as ").keyword(getDataType(context).getCastTypeName(context)).sql(")");
+  context.keyword("cast(").castMode(CastMode.NEVER).sql(field).castMode(castMode).keyword(" as ").keyword(getDataType(context.configuration()).getCastTypeName(context.configuration())).sql(")");
 }

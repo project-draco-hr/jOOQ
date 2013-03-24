@@ -3,7 +3,7 @@
     Select<Record> select=null;
     for (    Object element : array) {
       Field<?> val=Factory.val(element,field.fields[0].getDataType());
-      Select<Record> subselect=create(configuration).select(val.as("COLUMN_VALUE")).select();
+      Select<Record> subselect=create(ctx).select(val.as("COLUMN_VALUE")).select();
       if (select == null) {
         select=subselect;
       }
@@ -12,7 +12,7 @@
       }
     }
     if (select == null) {
-      select=create(configuration).select(one().as("COLUMN_VALUE")).select().where(falseCondition());
+      select=create(ctx).select(one().as("COLUMN_VALUE")).select().where(falseCondition());
     }
     table=select.asTable(alias);
   }

@@ -1,6 +1,6 @@
 {
   if (context.declareFields() || context.declareTables()) {
-    SQLDialect dialect=context.getDialect();
+    SQLDialect dialect=context.configuration().getDialect();
     boolean simulateDerivedColumnList=false;
     if (fieldAliases != null && asList(CUBRID,FIREBIRD,SQLSERVER,SYBASE).contains(dialect) && wrapped instanceof TableImpl) {
       @SuppressWarnings("unchecked") Select<Record> select=select(list(field("*"))).from(((Table<?>)wrapped).as(alias));

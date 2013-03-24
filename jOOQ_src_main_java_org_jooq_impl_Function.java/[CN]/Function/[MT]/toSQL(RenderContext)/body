@@ -1,11 +1,11 @@
 {
-  if (term == LIST_AGG && asList(CUBRID,H2,HSQLDB,MYSQL).contains(context.getDialect())) {
+  if (term == LIST_AGG && asList(CUBRID,H2,HSQLDB,MYSQL).contains(context.configuration().getDialect())) {
     toSQLGroupConcat(context);
   }
- else   if (term == LIST_AGG && asList(POSTGRES,SYBASE).contains(context.getDialect())) {
+ else   if (term == LIST_AGG && asList(POSTGRES,SYBASE).contains(context.configuration().getDialect())) {
     toSQLStringAgg(context);
   }
- else   if (term == LIST_AGG && asList(DB2).contains(context.getDialect())) {
+ else   if (term == LIST_AGG && asList(DB2).contains(context.configuration().getDialect())) {
     toSQLXMLAGG(context);
   }
  else {

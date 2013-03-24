@@ -1,5 +1,5 @@
 {
-switch (configuration.getDialect()) {
+switch (ctx.configuration().getDialect()) {
 case ORACLE:
 {
       if (array.getDataType().getType().isArray()) {
@@ -24,7 +24,7 @@ if (array.getDataType().getType().isArray() && array instanceof Param) {
   return simulate();
 }
  else {
-  throw new SQLDialectNotSupportedException("ARRAY TABLE is not supported for " + configuration.getDialect());
+  throw new SQLDialectNotSupportedException("ARRAY TABLE is not supported for " + ctx.configuration().getDialect());
 }
 }
 }

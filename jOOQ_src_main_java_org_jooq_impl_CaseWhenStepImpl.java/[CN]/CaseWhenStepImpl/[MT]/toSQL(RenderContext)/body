@@ -1,45 +1,45 @@
 {
-  context.formatIndentLockStart().keyword("case");
+  ctx.formatIndentLockStart().keyword("case");
   int size=compareValues.size();
-switch (context.getDialect()) {
+switch (ctx.configuration().getDialect()) {
 case DERBY:
 {
-      context.formatIndentLockStart();
+      ctx.formatIndentLockStart();
       for (int i=0; i < size; i++) {
         if (i > 0) {
-          context.formatNewLine();
+          ctx.formatNewLine();
         }
-        context.keyword(" when ");
-        context.sql(value.equal(compareValues.get(i)));
-        context.keyword(" then ");
-        context.sql(results.get(i));
+        ctx.keyword(" when ");
+        ctx.sql(value.equal(compareValues.get(i)));
+        ctx.keyword(" then ");
+        ctx.sql(results.get(i));
       }
       break;
     }
 default :
 {
-    context.sql(" ").sql(value).formatIndentLockStart();
+    ctx.sql(" ").sql(value).formatIndentLockStart();
     for (int i=0; i < size; i++) {
       if (i > 0) {
-        context.formatNewLine();
+        ctx.formatNewLine();
       }
-      context.keyword(" when ");
-      context.sql(compareValues.get(i));
-      context.keyword(" then ");
-      context.sql(results.get(i));
+      ctx.keyword(" when ");
+      ctx.sql(compareValues.get(i));
+      ctx.keyword(" then ");
+      ctx.sql(results.get(i));
     }
     break;
   }
 }
 if (otherwise != null) {
-context.formatNewLine().keyword(" else ").sql(otherwise);
+ctx.formatNewLine().keyword(" else ").sql(otherwise);
 }
-context.formatIndentLockEnd();
+ctx.formatIndentLockEnd();
 if (size > 1 || otherwise != null) {
-context.formatSeparator();
+ctx.formatSeparator();
 }
  else {
-context.sql(" ");
+ctx.sql(" ");
 }
-context.keyword("end").formatIndentLockEnd();
+ctx.keyword("end").formatIndentLockEnd();
 }

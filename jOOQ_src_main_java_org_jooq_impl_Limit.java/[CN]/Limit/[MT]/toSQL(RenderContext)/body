@@ -1,7 +1,7 @@
 {
   boolean inline=context.inline();
   CastMode castMode=context.castMode();
-switch (context.getDialect()) {
+switch (context.configuration().getDialect()) {
 case MYSQL:
 case H2:
 case HSQLDB:

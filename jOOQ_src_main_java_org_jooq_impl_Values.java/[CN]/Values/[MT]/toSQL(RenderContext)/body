@@ -1,5 +1,5 @@
 {
-switch (context.getDialect()) {
+switch (context.configuration().getDialect()) {
 case FIREBIRD:
 case MYSQL:
 case ORACLE:

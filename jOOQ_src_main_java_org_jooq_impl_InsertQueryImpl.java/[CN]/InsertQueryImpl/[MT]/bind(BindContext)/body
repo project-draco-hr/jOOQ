@@ -1,6 +1,6 @@
 {
   if (onDuplicateKeyUpdate) {
-switch (context.getDialect()) {
+switch (context.configuration().getDialect()) {
 case CUBRID:
 case MYSQL:
 {
@@ -9,7 +9,7 @@ case MYSQL:
       }
 case H2:
 {
-      throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY UPDATE clause cannot be simulated for " + context.getDialect());
+      throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY UPDATE clause cannot be simulated for " + context.configuration().getDialect());
     }
 case DB2:
 case HSQLDB:
@@ -17,15 +17,15 @@ case ORACLE:
 case SQLSERVER:
 case SYBASE:
 {
-    context.bind(toMerge(context));
+    context.bind(toMerge(context.configuration()));
     break;
   }
 default :
-throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY UPDATE clause cannot be simulated for " + context.getDialect());
+throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY UPDATE clause cannot be simulated for " + context.configuration().getDialect());
 }
 }
  else if (onDuplicateKeyIgnore) {
-switch (context.getDialect()) {
+switch (context.configuration().getDialect()) {
 case MYSQL:
 {
 bindInsert(context);
@@ -38,7 +38,7 @@ break;
 }
 case H2:
 {
-throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY IGNORE clause cannot be simulated for " + context.getDialect());
+throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY IGNORE clause cannot be simulated for " + context.configuration().getDialect());
 }
 case DB2:
 case HSQLDB:
@@ -46,11 +46,11 @@ case ORACLE:
 case SQLSERVER:
 case SYBASE:
 {
-context.bind(toMerge(context));
+context.bind(toMerge(context.configuration()));
 break;
 }
 default :
-throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY IGNORE clause cannot be simulated for " + context.getDialect());
+throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY IGNORE clause cannot be simulated for " + context.configuration().getDialect());
 }
 }
  else {

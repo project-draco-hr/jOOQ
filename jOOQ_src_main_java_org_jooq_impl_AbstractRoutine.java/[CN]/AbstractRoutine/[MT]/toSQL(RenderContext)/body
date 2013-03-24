@@ -19,7 +19,7 @@
     }
  else {
       Field<?> value=getInValues().get(parameter);
-      if (SQLDialect.POSTGRES == context.getDialect() && isOverloaded()) {
+      if (SQLDialect.POSTGRES == context.configuration().getDialect() && isOverloaded()) {
         value=value.cast(parameter.getType());
       }
       context.sql(separator);

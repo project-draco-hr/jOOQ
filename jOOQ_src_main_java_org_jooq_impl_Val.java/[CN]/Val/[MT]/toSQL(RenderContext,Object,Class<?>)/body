@@ -1,5 +1,5 @@
 {
-  SQLDialect dialect=context.getDialect();
+  SQLDialect dialect=context.configuration().getDialect();
   Converter<?,?> converter=DataTypes.converter(type);
   if (converter != null) {
     val=((Converter)converter).to(val);
@@ -122,7 +122,7 @@
     if (type.isArray() && byte[].class != type) {
       context.sql(getBindVariable(context));
       context.sql("::");
-      context.keyword(DefaultDataType.getDataType(dialect,type).getCastTypeName(context));
+      context.keyword(DefaultDataType.getDataType(dialect,type).getCastTypeName(context.configuration()));
     }
  else     if (EnumType.class.isAssignableFrom(type)) {
       context.sql(getBindVariable(context));

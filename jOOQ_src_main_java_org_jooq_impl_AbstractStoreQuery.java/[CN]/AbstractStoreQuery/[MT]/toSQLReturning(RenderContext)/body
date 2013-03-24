@@ -1,6 +1,6 @@
 {
   if (!returning.isEmpty()) {
-switch (context.getDialect()) {
+switch (context.configuration().getDialect()) {
 case FIREBIRD:
 case POSTGRES:
       context.formatSeparator().keyword("returning ").sql(returning);
