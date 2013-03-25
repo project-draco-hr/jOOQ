@@ -16,7 +16,7 @@ synchronized (threadIDToExecuteContextMap) {
     @Override public void releaseConnection(    Connection connection){
     }
     @Override public SQLDialect getSQLDialect(){
-      return ctx.getDialect();
+      return ctx.configuration().getDialect();
     }
     @Override public String[] getTableNames(){
       return LocalDebugger.this.getTableNames();
