@@ -48,8 +48,8 @@
   }
 ;
   Executor create=create();
-  create.setData("Foo-Field","Bar");
-  create.setData("Foo-Condition","Bar");
+  create.configuration().setData("Foo-Field","Bar");
+  create.configuration().setData("Foo-Condition","Bar");
   Result<Record2<Integer,Integer>> result=create.select(TBook_ID(),IDx2).from(TBook()).where(c).orderBy(IDx2).fetch();
   assertEquals(3,result.size());
   assertEquals(Integer.valueOf(2),result.getValue(0,TBook_ID()));
@@ -58,6 +58,6 @@
   assertEquals(Integer.valueOf(4),result.getValue(0,IDx2));
   assertEquals(Integer.valueOf(6),result.getValue(1,IDx2));
   assertEquals(Integer.valueOf(8),result.getValue(2,IDx2));
-  assertEquals("Baz",create.getData("Foo-Field"));
-  assertEquals("Baz",create.getData("Foo-Condition"));
+  assertEquals("Baz",create.configuration().getData("Foo-Field"));
+  assertEquals("Baz",create.configuration().getData("Foo-Condition"));
 }

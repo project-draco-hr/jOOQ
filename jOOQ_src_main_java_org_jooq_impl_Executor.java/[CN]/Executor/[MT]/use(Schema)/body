@@ -29,7 +29,7 @@ break;
 }
   finally {
 getRenderMapping(getSettings()).setDefaultSchema(schema.getName());
-getSchemaMapping().use(schema);
+configuration.getSchemaMapping().use(schema);
 }
 return result;
 }

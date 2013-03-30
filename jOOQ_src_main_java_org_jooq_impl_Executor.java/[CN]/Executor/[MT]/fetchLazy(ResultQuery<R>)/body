@@ -1,7 +1,7 @@
 {
   final Configuration previous=Utils.getConfiguration(query);
   try {
-    query.attach(this);
+    query.attach(configuration);
     return query.fetchLazy();
   }
   finally {

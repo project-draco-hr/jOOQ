@@ -1,0 +1,6 @@
+{
+  this.create=new Executor(configuration);
+  this.configuration=configuration;
+  this.query=query;
+  this.allBindValues=new ArrayList<Object[]>();
+}

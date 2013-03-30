@@ -1,5 +1,5 @@
 {
-  if (columnCache == null && executor.getDialect() != SQLITE) {
+  if (columnCache == null && configuration.getDialect() != SQLITE) {
     columnCache=getColumns0("%").intoGroups(fieldByName(String.class,"TABLE_NAME"));
   }
   if (columnCache != null) {

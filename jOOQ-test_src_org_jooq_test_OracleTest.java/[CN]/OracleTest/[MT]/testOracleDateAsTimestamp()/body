@@ -14,7 +14,7 @@
   assertEquals(record,create().fetchOne(DATE_AS_TIMESTAMP_T_976,DATE_AS_TIMESTAMP_T_976.DATE_AS_TIMESTAMP_ID.equal(1)));
   DateAsTimestampT_976ObjectTypeRecord o=create().newRecord(DATE_AS_TIMESTAMP_T_976_OBJECT_TYPE);
   o.setD(now);
-  DateAsTimestampT_976VarrayTypeRecord t=new DateAsTimestampT_976VarrayTypeRecord(create());
+  DateAsTimestampT_976VarrayTypeRecord t=new DateAsTimestampT_976VarrayTypeRecord(create().configuration());
   t.set(now,now);
   record=create().newRecord(DATE_AS_TIMESTAMP_T_976);
   record.setId(2);
@@ -30,10 +30,10 @@
   record.changed(DATE_AS_TIMESTAMP_T_976.DATE_AS_TIMESTAMP_T,true);
   record.store();
   assertEquals(record,create().fetchOne(DATE_AS_TIMESTAMP_T_976,DATE_AS_TIMESTAMP_T_976.DATE_AS_TIMESTAMP_ID.equal(2)));
-  assertEquals(now,org.jooq.test.oracle2.generatedclasses.Routines.p_976(create(),now));
-  assertEquals(now,org.jooq.test.oracle2.generatedclasses.Routines.f_976(create(),now));
+  assertEquals(now,org.jooq.test.oracle2.generatedclasses.Routines.p_976(create().configuration(),now));
+  assertEquals(now,org.jooq.test.oracle2.generatedclasses.Routines.f_976(create().configuration(),now));
   assertEquals(now,create().select(org.jooq.test.oracle2.generatedclasses.Routines.f_976(now)).fetchOne(0));
-  assertEquals(now,org.jooq.test.oracle2.generatedclasses.packages.DateAsTimestampPkg_976.p_976(create(),now));
-  assertEquals(now,org.jooq.test.oracle2.generatedclasses.packages.DateAsTimestampPkg_976.f_976(create(),now));
+  assertEquals(now,org.jooq.test.oracle2.generatedclasses.packages.DateAsTimestampPkg_976.p_976(create().configuration(),now));
+  assertEquals(now,org.jooq.test.oracle2.generatedclasses.packages.DateAsTimestampPkg_976.f_976(create().configuration(),now));
   assertEquals(now,create().select(org.jooq.test.oracle2.generatedclasses.packages.DateAsTimestampPkg_976.f_976(now)).fetchOne(0));
 }

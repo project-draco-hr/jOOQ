@@ -1,6 +1,6 @@
 {
   Executor create=create();
-  create.getExecuteListeners().add(new FetchLazyListener());
+  create.configuration().getExecuteListeners().add(new FetchLazyListener());
   FetchLazyListener.reset();
   create.selectFrom(TAuthor()).fetch();
   assertEquals(1,FetchLazyListener.countStart);

@@ -1,3 +1,3 @@
 {
-  return create().getDialect();
+  return create().configuration().getDialect();
 }

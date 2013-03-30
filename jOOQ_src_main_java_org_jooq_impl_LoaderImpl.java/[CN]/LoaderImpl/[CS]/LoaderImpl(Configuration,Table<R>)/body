@@ -1,5 +1,5 @@
 {
-  this.create=create;
+  this.create=new Executor(configuration);
   this.table=table;
   this.errors=new ArrayList<LoaderError>();
 }

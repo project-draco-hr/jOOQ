@@ -1,4 +1,4 @@
 {
-  ArrayRecord<String> result=TArrays_STRING_R().getType().getConstructor(Configuration.class).newInstance(create());
+  ArrayRecord<String> result=TArrays_STRING_R().getType().getConstructor(Configuration.class).newInstance(create().configuration());
   return result;
 }

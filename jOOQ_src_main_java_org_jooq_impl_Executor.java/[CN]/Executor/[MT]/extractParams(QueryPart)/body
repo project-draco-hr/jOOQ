@@ -1,5 +1,5 @@
 {
-  ParamCollector collector=new ParamCollector(this);
+  ParamCollector collector=new ParamCollector(configuration);
   collector.bind(part);
   return Collections.unmodifiableMap(collector.result);
 }

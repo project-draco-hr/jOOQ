@@ -1,5 +1,5 @@
 {
-  ExecuteContext ctx=new DefaultExecuteContext(create,queries);
+  ExecuteContext ctx=new DefaultExecuteContext(configuration,queries);
   ExecuteListener listener=new ExecuteListeners(ctx);
   Connection connection=ctx.connection();
   try {
@@ -7,7 +7,7 @@
     String[] batchSQL=ctx.batchSQL();
     for (int i=0; i < queries.length; i++) {
       listener.renderStart(ctx);
-      batchSQL[i]=create.renderInlined(queries[i]);
+      batchSQL[i]=new Executor(configuration).renderInlined(queries[i]);
       listener.renderEnd(ctx);
     }
     for (    String sql : batchSQL) {

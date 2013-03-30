@@ -1,5 +1,5 @@
 {
   SelectSelectStep<Record1<Integer>> result=Factory.selectZero();
-  result.attach(this);
+  result.attach(configuration);
   return result;
 }

@@ -1,10 +1,10 @@
 {
   Executor create=create();
-  create.getExecuteListeners().add(new ResultQueryListener());
-  create.setData("Foo","Bar");
-  create.setData("Bar","Baz");
+  create.configuration().getExecuteListeners().add(new ResultQueryListener());
+  create.configuration().setData("Foo","Bar");
+  create.configuration().setData("Bar","Baz");
   Result<?> result=create.select(TBook_ID(),val("Hello")).from(TBook()).where(TBook_ID().in(1,2)).fetch();
-  int plus=(SettingsTools.executePreparedStatements(create.getSettings()) ? 2 : 0);
+  int plus=(SettingsTools.executePreparedStatements(create.configuration().getSettings()) ? 2 : 0);
   assertEquals(1,ResultQueryListener.start);
   assertEquals(2,ResultQueryListener.renderStart);
   assertEquals(3,ResultQueryListener.renderEnd);

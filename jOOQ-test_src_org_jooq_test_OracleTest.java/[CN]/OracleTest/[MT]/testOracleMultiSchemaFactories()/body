@@ -3,5 +3,5 @@
   UAddressTypeRecord address=new UAddressTypeRecord();
   address.setStreet(new UStreetTypeRecord());
   address.getStreet().setNo("15");
-  assertEquals("15",Routines.pEnhanceAddress1(create,address));
+  assertEquals("15",Routines.pEnhanceAddress1(create.configuration(),address));
 }

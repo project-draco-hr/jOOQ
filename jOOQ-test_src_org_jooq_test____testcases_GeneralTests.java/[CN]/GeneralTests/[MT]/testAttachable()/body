@@ -9,7 +9,7 @@
   store2.setValue(TBookStore_NAME(),"Barnes and Noble");
   store2.attach(null);
   failStoreRefreshDelete(store2);
-  store2.attach(create);
+  store2.attach(create.configuration());
   store2.refresh();
   assertEquals(1,store2.delete());
   assertNull(create.fetchOne(TBookStore(),TBookStore_NAME().equal("Barnes and Noble")));
@@ -17,7 +17,7 @@
   S store3=create.newRecord(TBookStore());
   store3.setValue(TBookStore_NAME(),"Barnes and Noble");
   failStoreRefreshDelete(store3);
-  store3.attach(create);
+  store3.attach(create.configuration());
   assertEquals(1,store3.store());
   S store4=create.newRecord(TBookStore());
   store4.setValue(TBookStore_NAME(),"Barnes and Noble");
@@ -26,7 +26,7 @@
   store4.setValue(TBookStore_NAME(),"ABC");
   failStoreRefreshDelete(store4);
   store4=create.fetchOne(TBookStore(),TBookStore_NAME().equal("Barnes and Noble"));
-  store4.attach(create);
+  store4.attach(create.configuration());
   assertEquals(1,store4.delete());
   assertNull(create.fetchOne(TBookStore(),TBookStore_NAME().equal("Barnes and Noble")));
   assertNull(create.fetchOne(TBookStore(),TBookStore_NAME().equal("ABC")));

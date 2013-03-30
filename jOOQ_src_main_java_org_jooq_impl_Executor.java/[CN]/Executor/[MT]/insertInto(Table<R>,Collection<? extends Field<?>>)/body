@@ -1,3 +1,3 @@
 {
-  return new InsertImpl(this,into,fields);
+  return new InsertImpl(configuration,into,fields);
 }

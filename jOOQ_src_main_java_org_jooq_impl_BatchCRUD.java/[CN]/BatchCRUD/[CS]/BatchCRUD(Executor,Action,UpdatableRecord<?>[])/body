@@ -1,5 +1,0 @@
-{
-  this.create=create;
-  this.action=action;
-  this.records=records;
-}

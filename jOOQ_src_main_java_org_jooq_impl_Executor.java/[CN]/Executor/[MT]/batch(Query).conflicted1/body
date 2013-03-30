@@ -1,3 +1,3 @@
 {
-  return new BatchSingle(this,query);
+  return new BatchSingle(configuration,query);
 }

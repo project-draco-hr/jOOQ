@@ -4,7 +4,7 @@
   UAuthorTypeRecord author2;
   author1=new UAuthorTypeRecord();
   author1.setId(1);
-  author2=load(create(),author1);
+  author2=load(create().configuration(),author1);
   assertEquals(1,(int)author1.getId());
   assertEquals(1,(int)author2.getId());
   assertNull(author1.getFirstName());
@@ -43,11 +43,11 @@
   assertEquals(1,(int)author1.getId());
   assertEquals("George",author1.getFirstName());
   assertEquals("Orwell",author1.getLastName());
-  UAuthorTypeRecord author3=UAuthorType.newAuthor(create(),3,"first","last");
+  UAuthorTypeRecord author3=UAuthorType.newAuthor(create().configuration(),3,"first","last");
   assertEquals(3,(int)author3.getId());
   assertEquals("first",author3.getFirstName());
   assertEquals("last",author3.getLastName());
-  UAuthorTypeRecord author4=UAuthorType.getAuthor(create(),3);
+  UAuthorTypeRecord author4=UAuthorType.getAuthor(create().configuration(),3);
   assertEquals(author3,author4);
   assertEquals(3,(int)author4.getId());
   assertEquals("first",author4.getFirstName());

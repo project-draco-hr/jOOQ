@@ -1,15 +1,15 @@
 {
   Map<String,List<Query>> queries=new LinkedHashMap<String,List<Query>>();
-  Boolean executeLogging=create.getSettings().isExecuteLogging();
+  Boolean executeLogging=configuration.getSettings().isExecuteLogging();
   QueryCollector collector=new QueryCollector();
   try {
-    create.setData(Utils.DATA_OMIT_RETURNING_CLAUSE,true);
-    create.getExecuteListeners().add(collector);
-    create.getSettings().setExecuteLogging(false);
+    configuration.setData(Utils.DATA_OMIT_RETURNING_CLAUSE,true);
+    configuration.getExecuteListeners().add(collector);
+    configuration.getSettings().setExecuteLogging(false);
     for (int i=0; i < records.length; i++) {
       Configuration previous=((AttachableInternal)records[i]).getConfiguration();
       try {
-        records[i].attach(create);
+        records[i].attach(configuration);
         executeAction(i);
       }
  catch (      QueryCollectorException e) {
@@ -30,9 +30,9 @@
     }
   }
   finally {
-    create.getData().remove(Utils.DATA_OMIT_RETURNING_CLAUSE);
-    create.getExecuteListeners().remove(collector);
-    create.getSettings().setExecuteLogging(executeLogging);
+    configuration.getData().remove(Utils.DATA_OMIT_RETURNING_CLAUSE);
+    configuration.getExecuteListeners().remove(collector);
+    configuration.getSettings().setExecuteLogging(executeLogging);
   }
   List<Integer> result=new ArrayList<Integer>();
   for (  Entry<String,List<Query>> entry : queries.entrySet()) {

@@ -1,7 +1,7 @@
 {
   Executor create=create();
-  create.getSettings().setExecuteLogging(false);
-  create.setExecuteListeners(Collections.<ExecuteListener>emptyList());
+  create.configuration().getSettings().setExecuteLogging(false);
+  create.configuration().setExecuteListeners(Collections.<ExecuteListener>emptyList());
   testBenchmarkFullExecution(create,1);
   testBenchmarkReuseSelect(create,1);
   testBenchmarkReuseSQLString(create,1);

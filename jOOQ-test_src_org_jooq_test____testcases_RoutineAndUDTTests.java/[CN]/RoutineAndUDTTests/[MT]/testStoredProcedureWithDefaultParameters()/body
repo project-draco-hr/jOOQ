@@ -16,7 +16,7 @@
     return;
   }
   Reflect executedWithDefaults=pdefault.create();
-  executedWithDefaults.call("execute",create());
+  executedWithDefaults.call("execute",create().configuration());
   assertEquals(0,executedWithDefaults.call("getPOutNumber").<Number>get().intValue());
   assertEquals("0",executedWithDefaults.call("getPOutVarchar").get());
   assertEquals(Date.valueOf("1981-07-10"),executedWithDefaults.call("getPOutDate").get());
@@ -24,7 +24,7 @@
   executedWithoutDefault.call("setPInNumber",123);
   executedWithoutDefault.call("setPInVarchar","abc");
   executedWithoutDefault.call("setPInDate",Date.valueOf("2012-01-01"));
-  executedWithoutDefault.call("execute",create());
+  executedWithoutDefault.call("execute",create().configuration());
   assertEquals(123,executedWithoutDefault.call("getPOutNumber").<Number>get().intValue());
   assertEquals("abc",executedWithoutDefault.call("getPOutVarchar").get());
   assertEquals(Date.valueOf("2012-01-01"),executedWithoutDefault.call("getPOutDate").get());

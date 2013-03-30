@@ -1,0 +1,6 @@
+{
+  this.create=new Executor(configuration);
+  this.configuration=configuration;
+  this.action=action;
+  this.records=records;
+}

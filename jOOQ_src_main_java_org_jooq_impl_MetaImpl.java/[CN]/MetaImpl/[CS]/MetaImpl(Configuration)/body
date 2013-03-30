@@ -1,0 +1,4 @@
+{
+  this.create=new Executor(configuration);
+  this.configuration=configuration;
+}

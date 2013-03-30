@@ -1,3 +1,3 @@
 {
-  return new BatchCRUD(this,Action.UPDATE,records);
+  return new BatchCRUD(configuration,Action.UPDATE,records);
 }

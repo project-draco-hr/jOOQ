@@ -1,5 +1,5 @@
 {
   SelectWhereStep<R> result=Factory.selectFrom(table);
-  result.attach(this);
+  result.attach(configuration);
   return result;
 }

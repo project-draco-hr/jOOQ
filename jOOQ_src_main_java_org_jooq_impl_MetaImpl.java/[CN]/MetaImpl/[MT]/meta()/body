@@ -1,6 +1,6 @@
 {
   if (meta == null) {
-    ConnectionProvider provider=executor.getConnectionProvider();
+    ConnectionProvider provider=configuration.getConnectionProvider();
     Connection connection=null;
     try {
       connection=provider.acquire();

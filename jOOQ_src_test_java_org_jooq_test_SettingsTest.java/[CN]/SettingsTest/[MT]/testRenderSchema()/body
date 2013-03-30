@@ -6,6 +6,6 @@
   Executor create1=new Executor(SQLDialect.ORACLE,new Settings().withRenderSchema(false));
   assertEquals("\"T\"",create1.render(table));
   Executor create2=new Executor(SQLDialect.ORACLE);
-  create2.getSettings().setRenderSchema(false);
+  create2.configuration().getSettings().setRenderSchema(false);
   assertEquals("\"T\"",create2.render(table));
 }

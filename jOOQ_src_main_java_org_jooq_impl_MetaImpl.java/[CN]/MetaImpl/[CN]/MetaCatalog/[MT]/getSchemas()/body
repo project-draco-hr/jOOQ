@@ -1,7 +1,7 @@
 {
   try {
     List<Schema> result=new ArrayList<Schema>();
-    Result<Record> schemas=executor.fetch(meta().getSchemas());
+    Result<Record> schemas=create.fetch(meta().getSchemas());
     for (    String name : schemas.getValues(0,String.class)) {
       result.add(new MetaSchema(name));
     }

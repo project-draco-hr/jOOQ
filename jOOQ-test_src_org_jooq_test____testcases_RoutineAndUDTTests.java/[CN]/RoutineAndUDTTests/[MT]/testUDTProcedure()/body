@@ -16,9 +16,9 @@
   UDTRecord<?> street=cUStreetType().newInstance();
   invoke(street,"setNo","35");
   invoke(address,"setStreet",street);
-  Object result=invoke(cRoutines(),"pEnhanceAddress1",create(),address);
+  Object result=invoke(cRoutines(),"pEnhanceAddress1",create().configuration(),address);
   assertEquals("35",result);
-  address=invoke(cRoutines(),"pEnhanceAddress2",create());
+  address=invoke(cRoutines(),"pEnhanceAddress2",create().configuration());
   street=invoke(address,"getStreet");
   assertEquals("Parliament Hill",invoke(street,"getStreet"));
   assertEquals("77",invoke(street,"getNo"));
@@ -28,7 +28,7 @@
   if (TArrays_NUMBER() != null) {
     assertEquals(Arrays.asList(1,2,3),Arrays.asList((Object[])invoke(street,"getFloors")));
   }
-  address=(UDTRecord<?>)invoke(cRoutines(),"pEnhanceAddress3",create(),address);
+  address=(UDTRecord<?>)invoke(cRoutines(),"pEnhanceAddress3",create().configuration(),address);
   street=(UDTRecord<?>)invoke(address,"getStreet");
   assertEquals("Zwinglistrasse",invoke(street,"getStreet"));
   assertEquals("17",invoke(street,"getNo"));

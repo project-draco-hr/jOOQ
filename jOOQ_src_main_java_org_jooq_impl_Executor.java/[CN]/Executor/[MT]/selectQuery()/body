@@ -1,3 +1,3 @@
 {
-  return new SelectQueryImpl(this);
+  return new SelectQueryImpl(configuration);
 }

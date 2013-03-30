@@ -1,5 +1,5 @@
 {
   Executor create=create();
-  create.getExecuteListeners().add(new DataListener());
+  create.configuration().getExecuteListeners().add(new DataListener());
   create.selectOne().fetch();
 }

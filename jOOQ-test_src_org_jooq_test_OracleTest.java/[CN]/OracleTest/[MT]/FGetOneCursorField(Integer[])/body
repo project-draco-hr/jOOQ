@@ -3,6 +3,6 @@
     return Routines.fGetOneCursor((UNumberArrayRecord)null);
   }
  else {
-    return Routines.fGetOneCursor(new UNumberArrayRecord(create(),array));
+    return Routines.fGetOneCursor(new UNumberArrayRecord(create().configuration(),array));
   }
 }

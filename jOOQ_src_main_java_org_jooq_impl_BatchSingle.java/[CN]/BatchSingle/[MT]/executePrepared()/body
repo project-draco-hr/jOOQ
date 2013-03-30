@@ -1,5 +1,5 @@
 {
-  ExecuteContext ctx=new DefaultExecuteContext(create,new Query[]{query});
+  ExecuteContext ctx=new DefaultExecuteContext(configuration,new Query[]{query});
   ExecuteListener listener=new ExecuteListeners(ctx);
   Connection connection=ctx.connection();
   List<Param<?>> params=new ArrayList<Param<?>>(query.getParams().values());
@@ -19,7 +19,7 @@
       for (int i=0; i < params.size(); i++) {
         params.get(i).setConverted(bindValues[i]);
       }
-      new DefaultBindContext(create,ctx.statement()).bind(params);
+      new DefaultBindContext(configuration,ctx.statement()).bind(params);
       listener.bindEnd(ctx);
       ctx.statement().addBatch();
     }
