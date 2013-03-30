@@ -2,7 +2,7 @@
   int result=0;
   try {
     String schemaName=render(schema);
-switch (getDialect()) {
+switch (configuration.getDialect()) {
 case DB2:
 case DERBY:
 case H2:
@@ -28,7 +28,7 @@ break;
 }
 }
   finally {
-getRenderMapping(getSettings()).setDefaultSchema(schema.getName());
+getRenderMapping(configuration.getSettings()).setDefaultSchema(schema.getName());
 configuration.getSchemaMapping().use(schema);
 }
 return result;
