@@ -1,0 +1,3 @@
+{
+  return System.getProperty("org.jooq.util.example.java-class-name-prefix","") + super.getJavaClassName(definition) + System.getProperty("org.jooq.util.example.java-class-name-suffix","");
+}
