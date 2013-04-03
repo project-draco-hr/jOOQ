@@ -1,3 +1,0 @@
-{
-  return org.jooq.examples.mysql.sakila.tables.Category.CATEGORY.CATEGORY_ID;
-}

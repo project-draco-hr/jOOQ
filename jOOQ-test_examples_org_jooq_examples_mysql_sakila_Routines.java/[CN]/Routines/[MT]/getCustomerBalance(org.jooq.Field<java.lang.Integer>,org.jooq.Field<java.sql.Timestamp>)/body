@@ -1,5 +1,5 @@
 {
-  org.jooq.examples.mysql.sakila.routines.GetCustomerBalance f=new org.jooq.examples.mysql.sakila.routines.GetCustomerBalance();
+  org.jooq.examples.mysql.sakila.routines.SakilaGetCustomerBalance f=new org.jooq.examples.mysql.sakila.routines.SakilaGetCustomerBalance();
   f.setPCustomerId(pCustomerId);
   f.setPEffectiveDate(pEffectiveDate);
   return f.asField();

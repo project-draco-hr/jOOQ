@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.examples.mysql.sakila.tables.records.StaffRecord,?>>asList(org.jooq.examples.mysql.sakila.Keys.FK_STAFF_ADDRESS,org.jooq.examples.mysql.sakila.Keys.FK_STAFF_STORE);
-}

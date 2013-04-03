@@ -1,3 +1,0 @@
-{
-  super("staff_list",org.jooq.examples.mysql.sakila.Sakila.SAKILA);
-}

@@ -1,3 +1,0 @@
-{
-  return org.jooq.examples.mysql.sakila.tables.StaffList.STAFF_LIST.ZIP_CODE;
-}

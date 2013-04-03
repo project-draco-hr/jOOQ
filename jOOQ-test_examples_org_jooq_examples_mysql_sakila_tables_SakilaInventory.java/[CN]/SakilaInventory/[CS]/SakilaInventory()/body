@@ -1,0 +1,3 @@
+{
+  super("inventory",org.jooq.examples.mysql.sakila.SakilaSakila.SAKILA);
+}

@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.examples.mysql.sakila.routines.SakilaGetCustomerBalance.P_CUSTOMER_ID,value);
+}

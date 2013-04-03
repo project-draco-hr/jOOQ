@@ -1,3 +1,0 @@
-{
-  super("language",org.jooq.examples.mysql.sakila.Sakila.SAKILA);
-}

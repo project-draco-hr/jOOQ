@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.examples.mysql.sakila.routines.SakilaRewardsReport.MIN_MONTHLY_PURCHASES,value);
+}

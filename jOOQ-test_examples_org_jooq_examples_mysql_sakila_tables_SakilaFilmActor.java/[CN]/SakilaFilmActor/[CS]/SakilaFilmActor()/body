@@ -1,0 +1,3 @@
+{
+  super("film_actor",org.jooq.examples.mysql.sakila.SakilaSakila.SAKILA);
+}

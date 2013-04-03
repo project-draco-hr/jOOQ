@@ -1,3 +1,0 @@
-{
-  return org.jooq.examples.mysql.sakila.tables.Film.FILM.RELEASE_YEAR;
-}

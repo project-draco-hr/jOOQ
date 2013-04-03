@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.examples.mysql.sakila.routines.SakilaInventoryHeldByCustomer.P_INVENTORY_ID,value);
+}

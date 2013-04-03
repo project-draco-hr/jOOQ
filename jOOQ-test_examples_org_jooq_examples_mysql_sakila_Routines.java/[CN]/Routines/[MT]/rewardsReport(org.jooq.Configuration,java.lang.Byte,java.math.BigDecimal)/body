@@ -1,5 +1,5 @@
 {
-  org.jooq.examples.mysql.sakila.routines.RewardsReport p=new org.jooq.examples.mysql.sakila.routines.RewardsReport();
+  org.jooq.examples.mysql.sakila.routines.SakilaRewardsReport p=new org.jooq.examples.mysql.sakila.routines.SakilaRewardsReport();
   p.setMinMonthlyPurchases(minMonthlyPurchases);
   p.setMinDollarAmountPurchased(minDollarAmountPurchased);
   p.execute(configuration);

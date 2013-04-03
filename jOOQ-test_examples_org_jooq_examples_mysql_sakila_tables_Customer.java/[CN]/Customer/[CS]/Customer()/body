@@ -1,3 +1,0 @@
-{
-  super("customer",org.jooq.examples.mysql.sakila.Sakila.SAKILA);
-}

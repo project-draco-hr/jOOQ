@@ -1,3 +1,0 @@
-{
-  return org.jooq.examples.mysql.sakila.tables.Customer.CUSTOMER.LAST_NAME;
-}

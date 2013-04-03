@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.examples.mysql.sakila.routines.FilmInStock.P_FILM_ID,value);
-}

@@ -1,3 +1,0 @@
-{
-  return org.jooq.examples.mysql.sakila.tables.Payment.PAYMENT.STAFF_ID;
-}

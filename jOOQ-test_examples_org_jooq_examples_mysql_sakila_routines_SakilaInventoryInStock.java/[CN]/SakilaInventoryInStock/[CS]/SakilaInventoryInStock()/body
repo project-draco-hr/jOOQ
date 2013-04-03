@@ -1,0 +1,5 @@
+{
+  super("inventory_in_stock",org.jooq.examples.mysql.sakila.SakilaSakila.SAKILA,org.jooq.impl.SQLDataType.TINYINT);
+  setReturnParameter(RETURN_VALUE);
+  addInParameter(P_INVENTORY_ID);
+}

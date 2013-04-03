@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.examples.mysql.sakila.tables.records.SakilaAddressRecord,?>>asList(org.jooq.examples.mysql.sakila.Keys.FK_ADDRESS_CITY);
+}
