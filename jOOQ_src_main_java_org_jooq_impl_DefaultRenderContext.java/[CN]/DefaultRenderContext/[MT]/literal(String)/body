@@ -2,7 +2,7 @@
   if (literal == null) {
     return this;
   }
-  boolean needsQuote=RenderNameStyle.QUOTED == cachedRenderNameStyle || !IDENTIFIER_PATTERN.matcher(literal).matches();
+  boolean needsQuote=(RenderNameStyle.QUOTED == cachedRenderNameStyle && configuration.getDialect() != SQLDialect.SQLITE) || (configuration.getDialect() == SQLDialect.SQLITE && SQLITE_KEYWORDS.contains(literal.toUpperCase())) || (!IDENTIFIER_PATTERN.matcher(literal).matches());
   if (RenderNameStyle.LOWER == cachedRenderNameStyle) {
     literal=literal.toLowerCase();
   }
@@ -17,14 +17,12 @@ switch (configuration.getDialect()) {
 case MYSQL:
       sql("`").sql(StringUtils.replace(literal,"`","``")).sql("`");
     break;
-case SQLITE:
-  sql(literal);
-break;
 case ASE:
 case SQLSERVER:
 case SYBASE:
-sql("[").sql(StringUtils.replace(literal,"]","]]")).sql("]");
+  sql("[").sql(StringUtils.replace(literal,"]","]]")).sql("]");
 break;
+case SQLITE:
 case CUBRID:
 case DB2:
 case DERBY:
