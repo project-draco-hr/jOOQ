@@ -16,4 +16,14 @@
   }
   log.info("---------------");
   log.info("Total",total);
+  log.info("");
+  log.info("EXECUTE LIFECYCLE STATS");
+  log.info("-----------------------");
+  for (  Method m : LifecycleWatcherListener.START_COUNT.keySet()) {
+    Integer starts=LifecycleWatcherListener.START_COUNT.get(m);
+    Integer ends=LifecycleWatcherListener.END_COUNT.get(m);
+    if (!StringUtils.equals(starts,ends)) {
+      log.info("Unbalanced",String.format("(start, end): (%1$3s, %2$3s) at %3$s",starts,ends == null ? 0 : ends,m.toString().replace("public void ","").replaceAll("( throws.*)?","")));
+    }
+  }
 }

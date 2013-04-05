@@ -1,0 +1,4 @@
+{
+  super.end(ctx);
+  increment(END_COUNT);
+}
