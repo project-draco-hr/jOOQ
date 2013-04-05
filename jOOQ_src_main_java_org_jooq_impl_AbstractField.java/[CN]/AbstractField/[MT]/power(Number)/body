@@ -1,3 +1,3 @@
 {
-  return Factory.power(numeric(),exponent);
+  return pow(exponent);
 }
