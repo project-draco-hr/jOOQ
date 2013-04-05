@@ -17,5 +17,15 @@
         returned=create(configuration).select(returning).from(into).where(field.in(ids)).fetchInto(into);
       }
     }
+ else {
+      final Field<Object> idField=field(null);
+      final ResultImpl<R> result=new ResultImpl<R>(configuration,idField);
+      for (      final Object value : values) {
+        final Record record=Utils.newRecord(RecordImpl.class,new Field[]{idField});
+        record.setValue(idField,value);
+        result.addRecord((R)record);
+      }
+      returned=result;
+    }
   }
 }
