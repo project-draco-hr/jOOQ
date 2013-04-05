@@ -2,4 +2,5 @@ ExecuteContext ctx
 ExecuteListener listener
 Field<?>[] fields
 int[] internIndexes
+boolean keepResult
 boolean keepStatement

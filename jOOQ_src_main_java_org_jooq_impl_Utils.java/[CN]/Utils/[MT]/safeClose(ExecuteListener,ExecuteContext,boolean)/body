@@ -1,6 +1,3 @@
 {
-  JDBCUtils.safeClose(ctx.resultSet());
-  if (!keepStatement)   JDBCUtils.safeClose(ctx.statement());
-  listener.end(ctx);
-  DefaultExecuteContext.clean();
+  safeClose(listener,ctx,keepStatement,true);
 }

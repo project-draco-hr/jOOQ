@@ -2,5 +2,6 @@ ExecuteContext ctx
 ExecuteListener listener
 Field<?>[] fields
 int[] internIndexes
-Class<? extends R> type
+boolean keepResult
 boolean keepStatement
+Class<? extends R> type

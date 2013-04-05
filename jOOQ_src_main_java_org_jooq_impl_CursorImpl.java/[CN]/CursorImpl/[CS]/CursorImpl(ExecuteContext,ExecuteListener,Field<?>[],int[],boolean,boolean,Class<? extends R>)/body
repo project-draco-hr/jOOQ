@@ -3,7 +3,9 @@
   this.listener=(listener != null ? listener : new ExecuteListeners(ctx));
   this.fields=fields;
   this.type=type;
-  this.rs=new CursorResultSet(keepStatement);
+  this.keepResult=keepResult;
+  this.keepStatement=keepStatement;
+  this.rs=new CursorResultSet();
   this.intern=new boolean[fields.length];
   if (internIndexes != null) {
     for (    int i : internIndexes) {

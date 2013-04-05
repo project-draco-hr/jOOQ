@@ -1,0 +1,3 @@
+{
+  this(ctx,listener,fields,internIndexes,keepResult,keepStatement,(Class<? extends R>)RecordImpl.class);
+}
