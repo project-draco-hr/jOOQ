@@ -5,7 +5,7 @@
     final Connection c=connection;
     if (false)     connection=new MockConnection(new MockDataProvider(){
       @Override public MockResult[] execute(      MockExecuteContext context) throws SQLException {
-        Executor executor=new Executor(c,getDialect());
+        Executor executor=Factory.using(c,getDialect());
         if (context.batchSingle()) {
           Query query=executor.query(context.sql(),new Object[context.batchBindings()[0].length]);
           int[] result=executor.batch(query).bind(context.batchBindings()).execute();

@@ -1,4 +1,4 @@
 {
-  this.create=new Executor(configuration);
+  this.create=Factory.using(configuration);
   this.configuration=configuration;
 }

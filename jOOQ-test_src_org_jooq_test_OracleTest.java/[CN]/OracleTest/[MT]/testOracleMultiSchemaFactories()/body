@@ -1,5 +1,5 @@
 {
-  Executor create=new Executor(getConnectionMultiSchema(),SQLDialect.ORACLE);
+  Executor create=Factory.using(getConnectionMultiSchema(),SQLDialect.ORACLE);
   UAddressTypeRecord address=new UAddressTypeRecord();
   address.setStreet(new UStreetTypeRecord());
   address.getStreet().setNo("15");

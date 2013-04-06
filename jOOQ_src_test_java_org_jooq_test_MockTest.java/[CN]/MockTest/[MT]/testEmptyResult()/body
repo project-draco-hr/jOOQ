@@ -1,5 +1,5 @@
 {
-  Executor e=new Executor(new MockConnection(new EmptyResult()),SQLDialect.H2);
+  Executor e=Factory.using(new MockConnection(new EmptyResult()),SQLDialect.H2);
   Result<Record> result=e.fetch("select ?, ? from dual",1,2);
   assertEquals(0,result.size());
   assertEquals(3,result.fields().length);

@@ -9,7 +9,7 @@
         Configuration configuration=((AttachableInternal)rs.result).getConfiguration();
         Schema mapped=null;
         if (configuration != null) {
-          mapped=new Executor(configuration).map(schema);
+          mapped=Factory.using(configuration).map(schema);
         }
         if (mapped != null) {
           return mapped.getName();

@@ -1,3 +1,3 @@
 {
-  return new Executor(getConnection(),SQLDialect.CUBRID);
+  return Factory.using(getConnection(),SQLDialect.CUBRID);
 }

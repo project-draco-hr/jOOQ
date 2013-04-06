@@ -1,7 +1,7 @@
 {
   context=new Mockery();
   statement=context.mock(PreparedStatement.class);
-  create=new Executor(SQLDialect.ORACLE);
+  create=Factory.using(SQLDialect.ORACLE);
   resultEmpty=create.newResult(TABLE1);
   resultOne=create.newResult(TABLE1);
   resultOne.add(create.newRecord(TABLE1));

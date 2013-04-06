@@ -118,7 +118,7 @@ return (T)stmt.getObject(index,DataTypes.udtRecords());
 }
  else if (Result.class.isAssignableFrom(type)) {
 ResultSet nested=(ResultSet)stmt.getObject(index);
-return (T)new Executor(ctx.configuration()).fetch(nested);
+return (T)Factory.using(ctx.configuration()).fetch(nested);
 }
  else {
 return (T)stmt.getObject(index);

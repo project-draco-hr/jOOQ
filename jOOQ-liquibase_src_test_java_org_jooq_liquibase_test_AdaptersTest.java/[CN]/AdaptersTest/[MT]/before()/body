@@ -4,5 +4,5 @@
   database=new H2Database();
   database.setConnection(new JdbcConnection(connection));
   snapshot=DatabaseSnapshotGeneratorFactory.getInstance().createSnapshot(database,"PUBLIC",null);
-  create=new Executor(connection,SQLDialect.H2);
+  create=Factory.using(connection,SQLDialect.H2);
 }
