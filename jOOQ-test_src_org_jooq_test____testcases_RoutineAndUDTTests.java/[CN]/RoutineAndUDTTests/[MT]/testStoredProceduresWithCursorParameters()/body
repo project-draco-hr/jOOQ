@@ -95,7 +95,7 @@ if (getDialect() == SQLDialect.POSTGRES) {
 log.info("SKIPPING","UDT/Enum types returned in refcursor (see [#707])");
 }
  else if (supportsOUTParameters()) {
-Object result=invoke(cRoutines(),"pGetTwoCursors",create());
+Object result=invoke(cRoutines(),"pGetTwoCursors",create().configuration());
 assertNotNull(result);
 Result<A> aFromTable=create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).fetch();
 Result<B> bFromTable=create().selectFrom(TBook()).orderBy(TBook_ID()).fetch();
