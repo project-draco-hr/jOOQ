@@ -1,3 +1,3 @@
 {
-  return new ContextDSLImpl(datasource,dialect);
+  return new DSLContextImpl(datasource,dialect);
 }

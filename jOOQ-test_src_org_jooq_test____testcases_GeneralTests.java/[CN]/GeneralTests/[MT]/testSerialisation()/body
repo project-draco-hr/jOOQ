@@ -31,7 +31,7 @@
   assertEquals("Georgie",create().fetchOne(TAuthor(),TAuthor_LAST_NAME().equal("Orwell")).getValue(TAuthor_FIRST_NAME()));
   ConnectionProviderListener.c=create().configuration().getConnectionProvider().acquire();
   try {
-    ContextDSL create=create();
+    DSLContext create=create();
     create.configuration().getExecuteListeners().add(new ConnectionProviderListener());
     q=create.selectFrom(TAuthor()).orderBy(TAuthor_LAST_NAME());
     q=runSerialisation(q);

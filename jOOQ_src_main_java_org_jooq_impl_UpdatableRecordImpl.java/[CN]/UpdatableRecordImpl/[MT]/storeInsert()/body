@@ -1,5 +1,5 @@
 {
-  ContextDSL create=create();
+  DSLContext create=create();
   InsertQuery<R> insert=create.insertQuery(getTable());
   addChangedValues(insert);
   if (!insert.isExecutable())   return 0;

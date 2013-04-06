@@ -1,5 +1,5 @@
 {
-  ContextDSL create=create(configuration);
+  DSLContext create=create(configuration);
   Result<?> result=create.selectFrom(table(asField())).fetch();
   results.put(returnParameter,result);
   return 0;

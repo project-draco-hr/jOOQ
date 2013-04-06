@@ -1,5 +1,5 @@
 {
-  ContextDSL create=create();
+  DSLContext create=create();
   create.configuration().getExecuteListeners().add(new FetchLazyListener());
   FetchLazyListener.reset();
   create.selectFrom(TAuthor()).fetch();

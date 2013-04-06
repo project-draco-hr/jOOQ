@@ -11,7 +11,7 @@ case SQLITE:
         listener.executeStart(ctx);
         result=ctx.statement().executeUpdate();
         listener.executeEnd(ctx);
-        ContextDSL create=Factory.using(ctx.connection(),SQLDialect.SQLITE,ctx.configuration().getSettings());
+        DSLContext create=Factory.using(ctx.connection(),SQLDialect.SQLITE,ctx.configuration().getSettings());
         returned=create.select(returning).from(getInto()).where(rowid().equal(rowid().getDataType().convert(create.lastID()))).fetchInto(getInto());
         return result;
       }

@@ -3,7 +3,7 @@
     log.info("SKIPPING","Skipping UUID ARRAY data type tests");
     return;
   }
-  for (  ContextDSL create : asList(create(),create(new Settings().withStatementType(STATIC_STATEMENT)))) {
+  for (  DSLContext create : asList(create(),create(new Settings().withStatementType(STATIC_STATEMENT)))) {
     UUID uuid1=UUID.randomUUID();
     UUID uuid2=UUID.randomUUID();
     UUID[] array=new UUID[]{uuid1,uuid2};

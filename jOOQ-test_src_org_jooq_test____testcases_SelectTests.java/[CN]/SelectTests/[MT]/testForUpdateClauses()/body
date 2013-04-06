@@ -4,8 +4,8 @@ case SQLITE:
     log.info("SKIPPING","FOR UPDATE tests");
   return;
 }
-final ContextDSL create1=create();
-final ContextDSL create2=create();
+final DSLContext create1=create();
+final DSLContext create2=create();
 ((DefaultConnectionProvider)create2.configuration().getConnectionProvider()).setConnection(getNewConnection());
 create2.configuration().getConnectionProvider().acquire().setAutoCommit(false);
 final Vector<String> execOrder=new Vector<String>();

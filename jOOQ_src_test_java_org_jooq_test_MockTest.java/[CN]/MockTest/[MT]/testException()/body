@@ -1,5 +1,5 @@
 {
-  ContextDSL e=Factory.using(new MockConnection(new Exceptional()),SQLDialect.H2);
+  DSLContext e=Factory.using(new MockConnection(new Exceptional()),SQLDialect.H2);
   Query query=e.query("insert into x values(1)");
   try {
     query.execute();

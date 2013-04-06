@@ -1,5 +1,5 @@
 {
-  ContextDSL create=delegate.create(settings);
+  DSLContext create=delegate.create(settings);
   create.configuration().getExecuteListeners().add(new TestStatisticsListener());
   return create;
 }

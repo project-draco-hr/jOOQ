@@ -1,5 +1,5 @@
 {
-  ContextDSL create=create();
+  DSLContext create=create();
   create.configuration().getSettings().setExecuteLogging(false);
   create.configuration().setExecuteListeners(Collections.<ExecuteListener>emptyList());
   testBenchmarkFullExecution(create,1);
