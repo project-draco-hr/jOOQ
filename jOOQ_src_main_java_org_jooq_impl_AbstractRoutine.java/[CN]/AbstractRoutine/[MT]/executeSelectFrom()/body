@@ -1,5 +1,5 @@
 {
-  Executor create=create(configuration);
+  ContextDSL create=create(configuration);
   Result<?> result=create.selectFrom(table(asField())).fetch();
   results.put(returnParameter,result);
   return 0;

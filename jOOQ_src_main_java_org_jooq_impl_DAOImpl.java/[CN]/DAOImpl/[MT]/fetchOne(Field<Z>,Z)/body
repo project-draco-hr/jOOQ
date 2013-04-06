@@ -1,4 +1,4 @@
 {
-  R record=create.selectFrom(table).where(field.equal(value)).fetchOne();
+  R record=using(configuration).selectFrom(table).where(field.equal(value)).fetchOne();
   return mapper.map(record);
 }

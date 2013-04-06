@@ -25,13 +25,13 @@
   printPackage(out,table,Mode.DAO);
   printClassJavadoc(out,table);
   out.println("public class %s extends %s<%s, %s, %s> {",className,daoImpl,tableRecord,pType,tType);
-  out.tab(1).javadoc("Create a new %s without any factory",className);
+  out.tab(1).javadoc("Create a new %s without any configuration",className);
   out.tab(1).println("public %s() {",className);
   out.tab(2).println("super(%s, %s.class);",tableIdentifier,pType);
   out.tab(1).println("}");
-  out.tab(1).javadoc("Create a new %s with an attached factory",className);
-  out.tab(1).println("public %s(%s factory) {",className,Executor.class);
-  out.tab(2).println("super(%s, %s.class, factory);",tableIdentifier,pType);
+  out.tab(1).javadoc("Create a new %s with an attached configuration",className);
+  out.tab(1).println("public %s(%s configuration) {",className,Configuration.class);
+  out.tab(2).println("super(%s, %s.class, configuration);",tableIdentifier,pType);
   out.tab(1).println("}");
   out.tab(1).overrideInherit();
   out.tab(1).println("protected %s getId(%s object) {",tType,pType);

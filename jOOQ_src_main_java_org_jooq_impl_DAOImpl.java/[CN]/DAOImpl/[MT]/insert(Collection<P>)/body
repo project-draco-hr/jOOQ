@@ -1,6 +1,6 @@
 {
   if (objects.size() > 1) {
-    create.batchInsert(records(objects,false)).execute();
+    using(configuration).batchInsert(records(objects,false)).execute();
   }
  else   if (objects.size() == 1) {
     records(objects,false).get(0).insert();

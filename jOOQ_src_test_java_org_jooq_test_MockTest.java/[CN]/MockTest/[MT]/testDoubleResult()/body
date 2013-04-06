@@ -1,5 +1,5 @@
 {
-  Executor e=Factory.using(new MockConnection(new DoubleResult()),SQLDialect.H2);
+  ContextDSL e=Factory.using(new MockConnection(new DoubleResult()),SQLDialect.H2);
   List<Result<Record>> result=e.fetchMany("select ?, ? from dual",1,2);
   assertEquals(2,result.size());
   assertEquals(1,result.get(0).size());

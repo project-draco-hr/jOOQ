@@ -1,3 +1,0 @@
-{
-  super(org.jooq.test.oracle.generatedclasses.multi_schema.tables.TBookSale.T_BOOK_SALE,org.jooq.test.oracle.generatedclasses.multi_schema.tables.pojos.TBookSale.class,factory);
-}

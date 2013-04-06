@@ -1,5 +1,5 @@
 {
-  Executor create=create(new Settings().withExecuteWithOptimisticLocking(true));
+  ContextDSL create=create(new Settings().withExecuteWithOptimisticLocking(true));
   R record1=create.fetchOne(table,id.equal(1));
   assertEquals(0,record1.store());
   assertEquals(0,record1.store());

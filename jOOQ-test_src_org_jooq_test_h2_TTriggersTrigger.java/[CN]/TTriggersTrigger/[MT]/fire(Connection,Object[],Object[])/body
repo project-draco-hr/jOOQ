@@ -1,5 +1,5 @@
 {
-  Executor create=Factory.using(conn,SQLDialect.H2);
+  ContextDSL create=Factory.using(conn,SQLDialect.H2);
   int maxID=create.nextval(Sequences.S_TRIGGERS_SEQUENCE).intValue();
   newRow[0]=maxID;
   newRow[1]=maxID;

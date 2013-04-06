@@ -2,7 +2,7 @@
   Field<?> pk=pk();
   R record=null;
   if (pk != null) {
-    record=create.selectFrom(table).where(equal(pk,id)).fetchOne();
+    record=using(configuration).selectFrom(table).where(equal(pk,id)).fetchOne();
   }
   return mapper.map(record);
 }

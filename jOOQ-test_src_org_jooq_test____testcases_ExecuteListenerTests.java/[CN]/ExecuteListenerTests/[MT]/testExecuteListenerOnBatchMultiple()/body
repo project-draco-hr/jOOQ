@@ -1,6 +1,6 @@
 {
   jOOQAbstractTest.reset=false;
-  Executor create=create();
+  ContextDSL create=create();
   create.configuration().getExecuteListeners().add(new BatchMultipleListener());
   create.configuration().setData("Foo","Bar");
   create.configuration().setData("Bar","Baz");

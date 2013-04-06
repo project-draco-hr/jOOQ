@@ -1,6 +1,0 @@
-{
-  this.table=table;
-  this.type=type;
-  this.create=create;
-  this.mapper=new ReflectionMapper<R,P>(table.fields(),type);
-}

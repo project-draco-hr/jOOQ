@@ -3,7 +3,7 @@
   Double db1=1234.5678E9;
   Float f1=1234.5678E9f;
 {
-    Executor create=create(new Settings().withStatementType(StatementType.STATIC_STATEMENT));
+    ContextDSL create=create(new Settings().withStatementType(StatementType.STATIC_STATEMENT));
     assertEquals(2,create.insertInto(T639(),T639_ID(),(Field<Object>)(Field)T639_BIG_DECIMAL()).values(1,db1).values(2,f1).execute());
     Result<T639> result=create.selectFrom(T639()).orderBy(T639_ID()).fetch();
     assertEquals(1,(int)result.getValue(0,T639_ID()));

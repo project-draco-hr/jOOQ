@@ -47,7 +47,7 @@
     }
   }
 ;
-  Executor create=create();
+  ContextDSL create=create();
   create.configuration().setData("Foo-Field","Bar");
   create.configuration().setData("Foo-Condition","Bar");
   Result<Record2<Integer,Integer>> result=create.select(TBook_ID(),IDx2).from(TBook()).where(c).orderBy(IDx2).fetch();

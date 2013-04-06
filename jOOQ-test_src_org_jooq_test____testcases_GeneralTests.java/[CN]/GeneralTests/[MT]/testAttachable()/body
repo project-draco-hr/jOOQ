@@ -1,6 +1,6 @@
 {
   jOOQAbstractTest.reset=false;
-  Executor create=create();
+  ContextDSL create=create();
   S store1=create.newRecord(TBookStore());
   assertNotNull(store1);
   store1.setValue(TBookStore_NAME(),"Barnes and Noble");

@@ -1,6 +1,6 @@
 {
   Field<?> pk=pk();
   if (pk != null) {
-    create.delete(table).where(equal(pk,ids)).execute();
+    using(configuration).delete(table).where(equal(pk,ids)).execute();
   }
 }

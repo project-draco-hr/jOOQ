@@ -1,0 +1,3 @@
+{
+  super(org.jooq.test.mysql.generatedclasses.tables.TBookStore.T_BOOK_STORE,org.jooq.test.mysql.generatedclasses.tables.pojos.TBookStore.class,configuration);
+}

@@ -1,7 +1,7 @@
 {
   Field<?> pk=pk();
   if (pk != null) {
-    return create.selectCount().from(table).where(equal(pk,id)).fetchOne(0,Integer.class) > 0;
+    return using(configuration).selectCount().from(table).where(equal(pk,id)).fetchOne(0,Integer.class) > 0;
   }
  else {
     return false;

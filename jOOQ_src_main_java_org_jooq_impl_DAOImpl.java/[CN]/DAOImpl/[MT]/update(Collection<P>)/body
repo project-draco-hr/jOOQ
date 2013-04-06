@@ -1,6 +1,6 @@
 {
   if (objects.size() > 1) {
-    create.batchUpdate(records(objects,true)).execute();
+    using(configuration).batchUpdate(records(objects,true)).execute();
   }
  else   if (objects.size() == 1) {
     records(objects,true).get(0).update();
