@@ -1,7 +1,4 @@
 {
   super(name,type);
   this.table=table;
-  if (table instanceof TableImpl) {
-    ((TableImpl<?>)table).fields0().add(this);
-  }
 }
