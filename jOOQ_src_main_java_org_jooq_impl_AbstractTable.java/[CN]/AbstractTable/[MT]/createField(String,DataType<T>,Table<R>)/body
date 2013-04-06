@@ -1,3 +1,7 @@
 {
-  return new TableFieldImpl<R,T>(name,type,table);
+  final TableFieldImpl<R,T> tableField=new TableFieldImpl<R,T>(name,type,table);
+  if (table instanceof TableImpl) {
+    ((TableImpl<?>)table).fields0().add(tableField);
+  }
+  return tableField;
 }
