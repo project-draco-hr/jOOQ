@@ -135,7 +135,7 @@ return (T)rs.getObject(index,DataTypes.udtRecords());
 }
  else if (Result.class.isAssignableFrom(type)) {
 ResultSet nested=(ResultSet)rs.getObject(index);
-return (T)Factory.using(ctx.configuration()).fetch(nested);
+return (T)DSL.using(ctx.configuration()).fetch(nested);
 }
  else {
 return (T)rs.getObject(index);

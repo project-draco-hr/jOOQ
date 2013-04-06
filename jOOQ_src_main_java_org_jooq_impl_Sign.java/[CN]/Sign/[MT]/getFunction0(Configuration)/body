@@ -1,7 +1,7 @@
 {
 switch (configuration.getDialect()) {
 case SQLITE:
-    return Factory.decode().when(((Field<Integer>)argument).greaterThan(zero()),one()).when(((Field<Integer>)argument).lessThan(zero()),one().neg()).otherwise(zero());
+    return DSL.decode().when(((Field<Integer>)argument).greaterThan(zero()),one()).when(((Field<Integer>)argument).lessThan(zero()),one().neg()).otherwise(zero());
 default :
   return function("sign",getDataType(),argument);
 }

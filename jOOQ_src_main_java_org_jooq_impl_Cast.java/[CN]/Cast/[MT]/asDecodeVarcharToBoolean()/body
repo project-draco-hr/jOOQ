@@ -1,4 +1,4 @@
 {
   Field<String> s=(Field<String>)field;
-  return Factory.decode().when(s.equal(inline("0")),inline(false)).when(Factory.lower(s).equal(inline("false")),inline(false)).when(Factory.lower(s).equal(inline("f")),inline(false)).when(s.isNull(),inline((Boolean)null)).otherwise(inline(true));
+  return DSL.decode().when(s.equal(inline("0")),inline(false)).when(DSL.lower(s).equal(inline("false")),inline(false)).when(DSL.lower(s).equal(inline("f")),inline(false)).when(s.isNull(),inline((Boolean)null)).otherwise(inline(true));
 }

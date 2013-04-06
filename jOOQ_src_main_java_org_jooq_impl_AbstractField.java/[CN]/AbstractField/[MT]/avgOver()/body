@@ -1,3 +1,3 @@
 {
-  return Factory.avg(numeric()).over();
+  return DSL.avg(numeric()).over();
 }

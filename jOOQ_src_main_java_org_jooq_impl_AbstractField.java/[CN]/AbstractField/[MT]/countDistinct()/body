@@ -1,3 +1,3 @@
 {
-  return Factory.countDistinct(this);
+  return DSL.countDistinct(this);
 }

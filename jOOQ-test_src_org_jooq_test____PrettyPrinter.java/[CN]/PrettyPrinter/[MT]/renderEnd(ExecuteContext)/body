@@ -1,6 +1,6 @@
 {
-  DSLContext pretty=Factory.using(ctx.configuration().getDialect(),SettingsTools.clone(ctx.configuration().getSettings()).withRenderFormatted(true));
-  DSLContext normal=Factory.using(ctx.configuration().getDialect());
+  DSLContext pretty=DSL.using(ctx.configuration().getDialect(),SettingsTools.clone(ctx.configuration().getSettings()).withRenderFormatted(true));
+  DSLContext normal=DSL.using(ctx.configuration().getDialect());
   String n="" + count.incrementAndGet();
   System.out.println();
   System.out.println("Executing #" + n);

@@ -1,3 +1,3 @@
 {
-  return Factory.tan(numeric());
+  return DSL.tan(numeric());
 }

@@ -1,5 +1,5 @@
 {
-  this.create=Factory.using(configuration);
+  this.create=DSL.using(configuration);
   this.configuration=configuration;
   this.action=action;
   this.records=records;

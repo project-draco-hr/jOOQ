@@ -25,10 +25,10 @@
     return (Field<T>)bitAnd(bitNot(bitAnd(lhsAsNumber(),rhsAsNumber())),bitOr(lhsAsNumber(),rhsAsNumber()));
   }
  else   if (SHL == operator && asList(ASE,DB2,H2,HSQLDB,INGRES,ORACLE,SQLSERVER,SYBASE).contains(dialect)) {
-    return lhs.mul(Factory.power(two(),rhsAsNumber()));
+    return lhs.mul(DSL.power(two(),rhsAsNumber()));
   }
  else   if (SHR == operator && asList(ASE,DB2,H2,HSQLDB,INGRES,ORACLE,SQLSERVER,SYBASE).contains(dialect)) {
-    return lhs.div(Factory.power(two(),rhsAsNumber()));
+    return lhs.div(DSL.power(two(),rhsAsNumber()));
   }
  else   if (SHL == operator && FIREBIRD == dialect) {
     return function("bin_shl",getDataType(),getArguments());

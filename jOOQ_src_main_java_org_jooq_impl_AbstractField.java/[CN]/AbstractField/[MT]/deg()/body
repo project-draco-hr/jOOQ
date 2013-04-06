@@ -1,3 +1,3 @@
 {
-  return Factory.deg(numeric());
+  return DSL.deg(numeric());
 }

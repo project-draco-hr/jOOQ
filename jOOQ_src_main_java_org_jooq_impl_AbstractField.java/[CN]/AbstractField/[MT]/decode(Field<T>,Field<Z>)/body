@@ -1,3 +1,3 @@
 {
-  return Factory.decode(this,search,result);
+  return DSL.decode(this,search,result);
 }

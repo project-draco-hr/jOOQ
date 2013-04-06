@@ -1,5 +1,5 @@
 {
-  DSLContext e=Factory.using(new MockConnection(new InsertReturning()),SQLDialect.ORACLE);
+  DSLContext e=DSL.using(new MockConnection(new InsertReturning()),SQLDialect.ORACLE);
   InsertResultStep<Table1Record> query=e.insertInto(TABLE1,FIELD_ID1).values(1).returning();
   assertEquals(1,query.execute());
   Table1Record record=query.fetchOne();

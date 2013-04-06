@@ -1,7 +1,7 @@
 {
   R first=first(records);
   if (first instanceof AttachableInternal) {
-    return Factory.using(((AttachableInternal)first).getConfiguration());
+    return DSL.using(((AttachableInternal)first).getConfiguration());
   }
  else {
     throw new DetachedException("Supply at least one attachable record");

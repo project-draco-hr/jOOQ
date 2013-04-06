@@ -1,5 +1,5 @@
 {
-  DSLContext create=Factory.using(getConnectionMultiSchema(),SQLDialect.ORACLE);
+  DSLContext create=DSL.using(getConnectionMultiSchema(),SQLDialect.ORACLE);
   UAddressTypeRecord address=new UAddressTypeRecord();
   address.setStreet(new UStreetTypeRecord());
   address.getStreet().setNo("15");

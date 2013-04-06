@@ -1,7 +1,7 @@
 {
 switch (configuration.getDialect()) {
 case SQLITE:
-    return Factory.power(argument,0.5);
+    return DSL.power(argument,0.5);
 default :
   return function("sqrt",SQLDataType.NUMERIC,argument);
 }

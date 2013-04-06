@@ -13,7 +13,7 @@ case ORACLE:
 case POSTGRES:
 case SQLSERVER:
 case SYBASE:
-    return Factory.exp(one());
+    return DSL.exp(one());
 case SQLITE:
   return inline(Math.E,BigDecimal.class);
 default :

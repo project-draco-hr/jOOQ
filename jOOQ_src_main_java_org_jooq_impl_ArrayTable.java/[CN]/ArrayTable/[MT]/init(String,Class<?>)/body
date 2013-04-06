@@ -12,7 +12,7 @@
     }
   }
  else {
-    result.add(fieldByName(Factory.getDataType(arrayType),alias,"COLUMN_VALUE"));
+    result.add(fieldByName(DSL.getDataType(arrayType),alias,"COLUMN_VALUE"));
   }
   return new Fields(result);
 }

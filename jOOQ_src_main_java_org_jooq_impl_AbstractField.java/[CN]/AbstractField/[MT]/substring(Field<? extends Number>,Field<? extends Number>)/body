@@ -1,3 +1,3 @@
 {
-  return Factory.substring(varchar(),startingPosition,length);
+  return DSL.substring(varchar(),startingPosition,length);
 }

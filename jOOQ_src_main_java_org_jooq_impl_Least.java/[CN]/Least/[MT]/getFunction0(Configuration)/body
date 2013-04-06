@@ -13,10 +13,10 @@ case SYBASE:
       if (getArguments().length > 2) {
         Field<?>[] remaining=new Field<?>[getArguments().length - 2];
         System.arraycopy(getArguments(),2,remaining,0,remaining.length);
-        return Factory.decode().when(first.lessThan(other),Factory.least(first,remaining)).otherwise(Factory.least(other,remaining));
+        return DSL.decode().when(first.lessThan(other),DSL.least(first,remaining)).otherwise(DSL.least(other,remaining));
       }
  else {
-        return Factory.decode().when(first.lessThan(other),first).otherwise(other);
+        return DSL.decode().when(first.lessThan(other),first).otherwise(other);
       }
     }
 case FIREBIRD:

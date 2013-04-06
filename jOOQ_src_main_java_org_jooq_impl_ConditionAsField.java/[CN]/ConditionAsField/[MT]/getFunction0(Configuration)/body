@@ -6,7 +6,7 @@ case FIREBIRD:
 case ORACLE:
 case SQLSERVER:
 case SYBASE:
-    return Factory.decode().when(condition,inline(true)).otherwise(inline(false));
+    return DSL.decode().when(condition,inline(true)).otherwise(inline(false));
 case DERBY:
 case H2:
 case HSQLDB:

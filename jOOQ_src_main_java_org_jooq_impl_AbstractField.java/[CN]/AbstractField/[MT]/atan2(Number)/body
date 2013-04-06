@@ -1,3 +1,3 @@
 {
-  return Factory.atan2(numeric(),y);
+  return DSL.atan2(numeric(),y);
 }

@@ -10,7 +10,7 @@
       }
  else {
         @SuppressWarnings("unchecked") Class<Object> type=(Class<Object>)(substitute != null ? substitute.getClass() : Object.class);
-        result.add(new Val<Object>(substitute,Factory.getDataType(type)));
+        result.add(new Val<Object>(substitute,DSL.getDataType(type)));
       }
     }
     return result;

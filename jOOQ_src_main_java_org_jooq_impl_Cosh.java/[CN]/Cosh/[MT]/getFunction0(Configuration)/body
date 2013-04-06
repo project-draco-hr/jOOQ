@@ -8,7 +8,7 @@ case MYSQL:
 case POSTGRES:
 case SQLSERVER:
 case SYBASE:
-    return Factory.exp(argument.mul(two())).add(one()).div(Factory.exp(argument).mul(two()));
+    return DSL.exp(argument.mul(two())).add(one()).div(DSL.exp(argument).mul(two()));
 default :
   return function("cosh",SQLDataType.NUMERIC,argument);
 }

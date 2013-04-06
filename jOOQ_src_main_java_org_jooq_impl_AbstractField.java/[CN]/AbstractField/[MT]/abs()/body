@@ -1,3 +1,3 @@
 {
-  return (Field<T>)Factory.abs(numeric());
+  return (Field<T>)DSL.abs(numeric());
 }

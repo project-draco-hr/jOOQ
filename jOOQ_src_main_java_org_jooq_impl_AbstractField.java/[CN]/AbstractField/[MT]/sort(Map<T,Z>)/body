@@ -1,5 +1,5 @@
 {
-  CaseValueStep<T> decode=Factory.decode().value(this);
+  CaseValueStep<T> decode=DSL.decode().value(this);
   CaseWhenStep<T,Z> result=null;
   for (  Entry<T,Z> entry : sortMap.entrySet()) {
     if (result == null) {

@@ -4,11 +4,11 @@ case ASE:
 case SQLSERVER:
 case SYBASE:
 {
-      return Factory.concat(Factory.repeat(character,length.sub(Factory.length(field))),field);
+      return DSL.concat(DSL.repeat(character,length.sub(DSL.length(field))),field);
     }
 case SQLITE:
 {
-    return Factory.field("substr(" + "replace(" + "replace("+ "substr("+ "quote("+ "zeroblob((({1} - length({0}) - 1 + length({2})) / length({2}) + 1) / 2)"+ "), 3"+ "), '''', ''"+ "), '0', {2}"+ "), 1, ({1} - length({0}))"+ ") || {0}",String.class,field,length,character);
+    return DSL.field("substr(" + "replace(" + "replace("+ "substr("+ "quote("+ "zeroblob((({1} - length({0}) - 1 + length({2})) / length({2}) + 1) / 2)"+ "), 3"+ "), '''', ''"+ "), '0', {2}"+ "), 1, ({1} - length({0}))"+ ") || {0}",String.class,field,length,character);
   }
 case FIREBIRD:
 {

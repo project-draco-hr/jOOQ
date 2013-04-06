@@ -1,4 +1,4 @@
 {
   File file=new File(MockTest.class.getResource("/org/jooq/test/data/db.txt").toURI());
-  MOCK=Factory.using(new MockConnection(new MockFileDatabase(file)),SQLDialect.ORACLE);
+  MOCK=DSL.using(new MockConnection(new MockFileDatabase(file)),SQLDialect.ORACLE);
 }

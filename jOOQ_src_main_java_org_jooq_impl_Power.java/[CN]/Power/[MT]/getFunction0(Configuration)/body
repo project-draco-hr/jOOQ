@@ -2,7 +2,7 @@
 switch (configuration.getDialect()) {
 case DERBY:
 case SQLITE:
-    return Factory.exp(Factory.ln(arg1).mul(arg2));
+    return DSL.exp(DSL.ln(arg1).mul(arg2));
 default :
   return function("power",SQLDataType.NUMERIC,getArguments());
 }

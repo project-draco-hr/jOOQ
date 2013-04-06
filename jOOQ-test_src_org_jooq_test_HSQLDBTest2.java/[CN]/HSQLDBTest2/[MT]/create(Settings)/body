@@ -8,5 +8,5 @@
  else {
     schemata.get(0).withInput(TAuthor().getSchema().getName()).withOutput(Public.PUBLIC.getName());
   }
-  return Factory.using(getConnection(),SQLDialect.HSQLDB,settings);
+  return DSL.using(getConnection(),SQLDialect.HSQLDB,settings);
 }
