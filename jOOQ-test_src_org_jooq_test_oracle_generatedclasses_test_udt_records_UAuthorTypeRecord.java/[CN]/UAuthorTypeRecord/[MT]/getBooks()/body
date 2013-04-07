@@ -1,7 +1,7 @@
 {
   org.jooq.test.oracle.generatedclasses.test.udt.u_author_type.GetBooks p=new org.jooq.test.oracle.generatedclasses.test.udt.u_author_type.GetBooks();
   p.setSelf(this);
-  p.execute(getConfiguration());
+  p.execute(configuration());
   from(p.getSelf());
   return p;
 }

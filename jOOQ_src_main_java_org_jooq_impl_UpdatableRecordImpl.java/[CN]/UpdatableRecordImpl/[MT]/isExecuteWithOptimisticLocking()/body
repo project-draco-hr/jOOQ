@@ -1,5 +1,5 @@
 {
-  Configuration configuration=getConfiguration();
+  Configuration configuration=configuration();
   if (configuration != null) {
     return TRUE.equals(configuration.settings().isExecuteWithOptimisticLocking());
   }

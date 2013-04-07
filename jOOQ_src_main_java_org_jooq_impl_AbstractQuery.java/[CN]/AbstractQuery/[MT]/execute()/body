@@ -1,6 +1,6 @@
 {
   if (isExecutable()) {
-    Configuration c=getConfiguration();
+    Configuration c=configuration();
     ExecuteContext ctx=new DefaultExecuteContext(c,this);
     ExecuteListener listener=new ExecuteListeners(ctx);
     int result=0;

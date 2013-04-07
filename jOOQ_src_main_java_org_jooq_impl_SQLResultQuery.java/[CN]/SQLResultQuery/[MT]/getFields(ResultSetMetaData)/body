@@ -1,4 +1,4 @@
 {
-  Configuration configuration=getConfiguration();
+  Configuration configuration=configuration();
   return new MetaDataFieldProvider(configuration,meta).getFields();
 }

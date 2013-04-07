@@ -1,6 +1,6 @@
 {
   try {
-    R result=Utils.newRecord(table,getConfiguration());
+    R result=Utils.newRecord(table,configuration());
     for (    Field<?> targetField : table.fields()) {
       Field<?> sourceField=field(targetField);
       if (sourceField != null) {

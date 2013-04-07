@@ -1,6 +1,6 @@
 {
   if (attachable instanceof AttachableInternal) {
-    return ((AttachableInternal)attachable).getConfiguration();
+    return ((AttachableInternal)attachable).configuration();
   }
   return null;
 }

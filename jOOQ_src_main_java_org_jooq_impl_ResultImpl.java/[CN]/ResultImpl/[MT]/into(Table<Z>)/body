@@ -1,5 +1,5 @@
 {
-  Result<Z> list=new ResultImpl<Z>(getConfiguration(),table.fields());
+  Result<Z> list=new ResultImpl<Z>(configuration(),table.fields());
   for (  R record : this) {
     list.add(record.into(table));
   }

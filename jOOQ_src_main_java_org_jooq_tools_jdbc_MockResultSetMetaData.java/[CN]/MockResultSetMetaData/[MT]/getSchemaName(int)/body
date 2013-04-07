@@ -6,7 +6,7 @@
     if (table != null) {
       Schema schema=table.getSchema();
       if (schema != null) {
-        Configuration configuration=((AttachableInternal)rs.result).getConfiguration();
+        Configuration configuration=((AttachableInternal)rs.result).configuration();
         Schema mapped=null;
         if (configuration != null) {
           mapped=DSL.using(configuration).map(schema);
