@@ -3,6 +3,6 @@
   this.dialect=dialect;
   this.settings=settings != null ? settings : SettingsTools.defaultSettings();
   this.mapping=new org.jooq.SchemaMapping(this);
-  this.data=data != null ? data : new HashMap<Object,Object>();
+  this.data=data != null ? new ConcurrentHashMap<Object,Object>(data) : new ConcurrentHashMap<Object,Object>();
   this.listeners=new ArrayList<ExecuteListener>();
 }

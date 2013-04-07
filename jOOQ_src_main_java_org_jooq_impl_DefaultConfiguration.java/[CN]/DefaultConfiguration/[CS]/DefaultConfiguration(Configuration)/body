@@ -1,0 +1,3 @@
+{
+  this(configuration.getConnectionProvider(),configuration.getDialect(),configuration.getSettings(),configuration.getData());
+}

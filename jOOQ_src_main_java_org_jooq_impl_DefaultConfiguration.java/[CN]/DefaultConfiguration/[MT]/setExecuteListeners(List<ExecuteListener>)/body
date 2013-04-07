@@ -1,3 +1,6 @@
 {
-  this.listeners=listeners != null ? listeners : new ArrayList<ExecuteListener>();
+  this.listeners.clear();
+  if (listeners != null) {
+    listeners.addAll(listeners);
+  }
 }

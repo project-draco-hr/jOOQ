@@ -1,0 +1,5 @@
+{
+  DSLContext create=DSL.using(configuration);
+  create.configuration().getExecuteListeners().add(new TestStatisticsListener());
+  return create;
+}

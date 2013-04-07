@@ -1,7 +1,8 @@
 {
-  DSLContext create=create();
-  create.configuration().getSettings().setExecuteLogging(false);
-  create.configuration().setExecuteListeners(Collections.<ExecuteListener>emptyList());
+  DefaultConfiguration configuration=new DefaultConfiguration(create().configuration());
+  configuration.getSettings().setExecuteLogging(false);
+  configuration.setExecuteListeners(new ArrayList<ExecuteListener>());
+  DSLContext create=create(configuration);
   testBenchmarkFullExecution(create,1);
   testBenchmarkReuseSelect(create,1);
   testBenchmarkReuseSQLString(create,1);
