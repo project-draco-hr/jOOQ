@@ -1,5 +1,5 @@
 {
-switch (getDialect()) {
+switch (dialect()) {
 case ASE:
 case DERBY:
 case INGRES:
@@ -16,7 +16,7 @@ assertEquals("2, 1",result1.getValue(0,"books1"));
 assertEquals("2, 1",result1.getValue(0,"books2"));
 assertEquals("4, 3",result1.getValue(1,"books1"));
 assertEquals("4, 3",result1.getValue(1,"books2"));
-switch (getDialect()) {
+switch (dialect()) {
 case CUBRID:
 case DB2:
 case H2:

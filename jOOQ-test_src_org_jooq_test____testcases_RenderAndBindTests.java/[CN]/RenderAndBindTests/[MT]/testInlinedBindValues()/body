@@ -1,5 +1,5 @@
 {
-  boolean derby=(getDialect() == DERBY);
+  boolean derby=(dialect() == DERBY);
   String s1="test";
   String s2="no SQL 'injection here; <<`'";
   String s3="''";

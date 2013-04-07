@@ -1,7 +1,7 @@
 {
   Schema schema=TAuthor().getSchema();
   if (schema == null) {
-    Class<?> tables=Class.forName("org.jooq.test." + getDialect().getName().toLowerCase() + ".generatedclasses.Tables");
+    Class<?> tables=Class.forName("org.jooq.test." + dialect().getName().toLowerCase() + ".generatedclasses.Tables");
     return (Table<?>)tables.getField(name).get(tables);
   }
  else {

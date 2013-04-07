@@ -1,5 +1,5 @@
 {
-  if (getDialect() != H2) {
+  if (dialect() != H2) {
     log.info("SKIPPING","Skip comments tests");
     return;
   }

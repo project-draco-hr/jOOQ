@@ -1,5 +1,5 @@
 {
-switch (getDialect()) {
+switch (dialect()) {
 case DB2:
 case DERBY:
 case FIREBIRD:
@@ -9,7 +9,7 @@ case ORACLE:
 case POSTGRES:
 case SQLSERVER:
 case SQLITE:
-    log.info("SKIPPING","UPDATE T1 JOIN T2 .. integration test. This syntax is not supported by " + getDialect());
+    log.info("SKIPPING","UPDATE T1 JOIN T2 .. integration test. This syntax is not supported by " + dialect());
   return;
 }
 jOOQAbstractTest.reset=false;

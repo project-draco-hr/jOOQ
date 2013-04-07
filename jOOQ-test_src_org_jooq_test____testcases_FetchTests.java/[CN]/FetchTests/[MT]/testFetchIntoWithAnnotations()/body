@@ -1,5 +1,5 @@
 {
-switch (getDialect()) {
+switch (dialect()) {
 case ASE:
 case CUBRID:
 case INGRES:

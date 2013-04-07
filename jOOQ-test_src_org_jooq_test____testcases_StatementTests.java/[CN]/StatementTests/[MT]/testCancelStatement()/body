@@ -1,5 +1,5 @@
 {
-  if (getDialect() != H2) {
+  if (dialect() != H2) {
     log.info("SKIPPING","Dangerous timeout query");
     return;
   }

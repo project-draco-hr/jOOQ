@@ -2,7 +2,7 @@
   jOOQAbstractTest.reset=false;
   try {
     create().truncate(TAuthor()).execute();
-    if (!Arrays.asList(CUBRID,FIREBIRD,INGRES,SQLITE).contains(getDialect())) {
+    if (!Arrays.asList(CUBRID,FIREBIRD,INGRES,SQLITE).contains(dialect())) {
       fail();
     }
   }

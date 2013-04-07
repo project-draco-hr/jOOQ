@@ -4,7 +4,7 @@
     assertEquals(null,create().selectOne().from(TBook()).where(TBook_AUTHOR_ID().equal(1)).having(count().greaterOrEqual(3)).fetchOne(0));
   }
  catch (  DataAccessException e) {
-switch (getDialect()) {
+switch (dialect()) {
 case SQLITE:
       log.info("SKIPPING","HAVING without GROUP BY is not supported: " + e.getMessage());
     break;

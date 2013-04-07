@@ -1,5 +1,5 @@
 {
-switch (getDialect()) {
+switch (dialect()) {
 case DERBY:
     log.info("SKIPPING","RPAD and LPAD functions");
   break;

@@ -9,7 +9,7 @@
   assertEquals(r1.get(0).getValue(TBook_TITLE()),r1.get(1).getValue(TBook_TITLE()));
   assertEquals(r2.get(0).getValue(TBook_TITLE()),r2.get(1).getValue(TBook_TITLE()));
   assertEquals(r3.get(0).getValue(TBook_TITLE()),r3.get(1).getValue(TBook_TITLE()));
-  if (getDialect() == ORACLE) {
+  if (dialect() == ORACLE) {
     Assert.assertNotSame(r1.get(0).getValue(TBook_TITLE()),r1.get(1).getValue(TBook_TITLE()));
   }
   Assert.assertSame(r2.get(0).getValue(TBook_TITLE()),r2.get(1).getValue(TBook_TITLE()));

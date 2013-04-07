@@ -1,5 +1,5 @@
 {
-switch (getDialect()) {
+switch (dialect()) {
 case SQLITE:
     log.info("SKIPPING","FOR UPDATE tests");
   return;
@@ -55,7 +55,7 @@ try {
  catch (Exception e) {
 }
 }
-switch (getDialect()) {
+switch (dialect()) {
 case INGRES:
 case ORACLE:
 log.info("SKIPPING","LIMIT .. OFFSET .. FOR UPDATE");
@@ -68,7 +68,7 @@ Result<A> result4=create().selectFrom(TAuthor()).limit(5).offset(0).forUpdate().
 assertEquals(2,result4.size());
 }
 }
-switch (getDialect()) {
+switch (dialect()) {
 case ASE:
 case DB2:
 case DERBY:
@@ -86,7 +86,7 @@ default :
 {
 Result<Record1<Integer>> r1a=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().noWait().fetch();
 assertEquals(2,r1a.size());
-if (getDialect() == ORACLE) {
+if (dialect() == ORACLE) {
 Result<Record1<Integer>> r2a=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().wait(2).fetch();
 assertEquals(2,r2a.size());
 Result<Record1<Integer>> r3a=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().skipLocked().fetch();
@@ -100,7 +100,7 @@ assertEquals(2,r3b.size());
 }
 }
 }
-switch (getDialect()) {
+switch (dialect()) {
 case MYSQL:
 case POSTGRES:
 log.info("SKIPPING","FOR UPDATE OF tests");
@@ -113,7 +113,7 @@ Result<A> result2=create().selectFrom(TAuthor()).forUpdate().of(TAuthor_ID(),TAu
 assertEquals(2,result2.size());
 }
 }
-switch (getDialect()) {
+switch (dialect()) {
 case ASE:
 case MYSQL:
 log.info("SKIPPING","FOR UPDATE OF tests");
@@ -128,7 +128,7 @@ assertEquals(2,result2.size());
 break;
 }
 }
-switch (getDialect()) {
+switch (dialect()) {
 case MYSQL:
 case POSTGRES:
 {

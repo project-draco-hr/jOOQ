@@ -2,7 +2,7 @@
   long now=System.currentTimeMillis();
   long day=1000L * 60 * 60* 24;
   assertEquals(2,(int)create().selectCount().from(TAuthor()).where(row(TAuthor_DATE_OF_BIRTH(),currentDate()).overlaps(new Date(now - day),new Date(now + day))).fetchOne(0,Integer.class));
-  if (asList(INGRES).contains(getDialect())) {
+  if (asList(INGRES).contains(dialect())) {
     log.info("SKIPPING","Ingres INTERVAL OVERLAPS tests");
   }
  else {

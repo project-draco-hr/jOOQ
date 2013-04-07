@@ -43,7 +43,7 @@
   assertEquals(2,loader.stored());
   assertEquals(0,loader.ignored());
   assertEquals(0,loader.errors().size());
-  assertEquals(2,(int)create().select(count).from(TAuthor()).where(TAuthor_ID().in(3,4)).and(TAuthor_LAST_NAME().in("Hesse","Frisch")).and(getDialect() == ORACLE ? TAuthor_FIRST_NAME().isNull() : TAuthor_FIRST_NAME().equal("")).fetchOne(count));
+  assertEquals(2,(int)create().select(count).from(TAuthor()).where(TAuthor_ID().in(3,4)).and(TAuthor_LAST_NAME().in("Hesse","Frisch")).and(dialect() == ORACLE ? TAuthor_FIRST_NAME().isNull() : TAuthor_FIRST_NAME().equal("")).fetchOne(count));
   assertEquals(2,create().delete(TAuthor()).where(TAuthor_ID().in(3,4)).execute());
   loader=create().loadInto(TAuthor()).loadCSV("\"ID\",ignore,\"First Qualifier\",\"Last Qualifier\"\r" + "5,asdf,{null},Hesse\n" + "6,asdf,\"\",Frisch").fields(TAuthor_ID(),null,TAuthor_FIRST_NAME(),TAuthor_LAST_NAME()).nullString("{null}").execute();
   assertEquals(2,loader.processed());
@@ -57,9 +57,9 @@
   assertEquals("Hesse",result.getValue(0,TAuthor_LAST_NAME()));
   assertEquals("Frisch",result.getValue(1,TAuthor_LAST_NAME()));
   assertEquals(null,result.getValue(0,TAuthor_FIRST_NAME()));
-  assertEquals(getDialect() == ORACLE ? null : "",result.getValue(1,TAuthor_FIRST_NAME()));
+  assertEquals(dialect() == ORACLE ? null : "",result.getValue(1,TAuthor_FIRST_NAME()));
   assertEquals(2,create().delete(TAuthor()).where(TAuthor_ID().in(5,6)).execute());
-switch (getDialect()) {
+switch (dialect()) {
 case ASE:
 case DERBY:
 case H2:

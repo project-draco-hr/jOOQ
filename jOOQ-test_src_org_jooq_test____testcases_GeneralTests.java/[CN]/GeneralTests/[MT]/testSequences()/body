@@ -10,7 +10,7 @@
   assertEquals("3","" + create().select(nextval).fetchOne(nextval));
   assertEquals("4","" + create().select(nextval).fetchOne(nextval));
   assertEquals("5","" + create().select(nextval).fetchOne(nextval));
-switch (getDialect()) {
+switch (dialect()) {
 case HSQLDB:
 case DERBY:
 case INGRES:

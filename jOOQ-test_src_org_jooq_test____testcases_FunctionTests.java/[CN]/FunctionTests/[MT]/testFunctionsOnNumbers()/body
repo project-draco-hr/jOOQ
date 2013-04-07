@@ -1,6 +1,6 @@
 {
-  boolean sqlite=(getDialect() == SQLITE);
-  boolean ingres=(getDialect() == INGRES);
+  boolean sqlite=(dialect() == SQLITE);
+  boolean ingres=(dialect() == INGRES);
   BigDecimal rand=create().select(rand()).fetchOne(rand());
   assertNotNull(rand);
   Field<Float> f1a=round(1.111f);
@@ -75,7 +75,7 @@
   assertEquals(BOOK_IDS,result.getValues(TBook_ID()));
   assertEquals(asList(1,2,4,4),result.getValues(1));
   assertEquals(asList(1,1,2,2),result.getValues(2));
-switch (getDialect()) {
+switch (dialect()) {
 case SQLITE:
     log.info("SKIPPING","Tests for mathematical functions");
   break;

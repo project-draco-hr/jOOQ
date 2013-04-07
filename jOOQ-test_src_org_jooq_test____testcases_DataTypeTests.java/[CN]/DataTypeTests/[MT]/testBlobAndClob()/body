@@ -17,7 +17,7 @@
   record.setValue(T725_LOB(),new byte[0]);
   assertEquals(1,record.store());
   record.refresh();
-switch (getDialect()) {
+switch (dialect()) {
 case ASE:
     assertEquals(1,record.getValue(T725_LOB()).length);
   assertEquals(0,record.getValue(T725_LOB())[0]);
@@ -42,7 +42,7 @@ record.refresh();
 assertNull(record.getValue(T725_LOB()));
 record.setValue(T725_ID(),3);
 record.refresh();
-switch (getDialect()) {
+switch (dialect()) {
 case ASE:
 assertEquals(1,record.getValue(T725_LOB()).length);
 assertEquals(0,record.getValue(T725_LOB())[0]);
@@ -62,7 +62,7 @@ Result<Record> result=create().fetch("select " + T725_ID().getName() + ", "+ T72
 assertEquals(4,result.size());
 assertEquals(BOOK_IDS,result.getValues(0));
 assertNull(result.getValue(1,1));
-switch (getDialect()) {
+switch (dialect()) {
 case ASE:
 assertEquals(1,result.getValue(2,T725_LOB()).length);
 assertEquals(0,result.getValue(2,T725_LOB())[0]);

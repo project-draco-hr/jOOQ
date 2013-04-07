@@ -1,6 +1,6 @@
 {
   jOOQAbstractTest.reset=false;
-  if (getDialect() == SQLDialect.ASE) {
+  if (dialect() == SQLDialect.ASE) {
     create().truncate(table("t_book_to_book_store")).execute();
   }
   testStoreWithOptimisticLock0(TBook(),TBook_ID(),TBook_TITLE());

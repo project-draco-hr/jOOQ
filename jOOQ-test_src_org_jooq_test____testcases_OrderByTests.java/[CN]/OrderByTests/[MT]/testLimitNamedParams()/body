@@ -1,9 +1,9 @@
 {
-  if (asList(ASE,INGRES).contains(getDialect())) {
+  if (asList(ASE,INGRES).contains(dialect())) {
     log.info("SKIPPING","Parameterised LIMIT .. OFFSET tests");
     return;
   }
-  int lower=asList(DB2,DERBY,HSQLDB,SYBASE).contains(getDialect()) ? 1 : 0;
+  int lower=asList(DB2,DERBY,HSQLDB,SYBASE).contains(dialect()) ? 1 : 0;
   for (int i=lower; i < 6; i++) {
     Select<?> s1=create().selectFrom(TBook()).limit(param("limit",i));
     Select<?> s2=create().select().from(TBook()).limit(param("limit",i));

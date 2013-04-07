@@ -1,5 +1,5 @@
 {
-switch (getDialect()) {
+switch (dialect()) {
 case ASE:
 case INGRES:
     log.info("SKIPPING","Ordered subqueries");

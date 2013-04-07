@@ -27,7 +27,7 @@
     assertEquals(2,rs.getInt(TAuthor_ID().getName()));
     assertFalse(rs.next());
     rs.close();
-    if (getDialect() == POSTGRES && i == 0) {
+    if (dialect() == POSTGRES && i == 0) {
       create().execute("set bytea_output to escape");
     }
  else {

@@ -21,7 +21,7 @@
   Record record=q1.getResult().get(0);
   String timestamp=record.getValue(ts).toString().replaceFirst("\\.\\d+$","");
   assertEquals(timestamp.split(" ")[0],record.getValue(date).toString());
-  if (getDialect() != SQLDialect.POSTGRES) {
+  if (dialect() != SQLDialect.POSTGRES) {
     assertEquals(timestamp.split(" ")[1],record.getValue(time).toString());
   }
   assertEquals(Integer.valueOf(timestamp.split(" ")[0].split("-")[0]),record.getValue(year1));

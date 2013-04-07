@@ -1,5 +1,5 @@
 {
-switch (getDialect()) {
+switch (dialect()) {
 case FIREBIRD:
 case SQLITE:
     log.info("SKIPPING","SchemaMapping tests");
@@ -15,7 +15,7 @@ assertEquals("Brida",result.getValue(3,TBook_TITLE()));
 String sql=query.getSQL();
 log.info("Executing",sql);
 assertEquals(result,create().fetch(sql,query.getBindValues().toArray()));
-switch (getDialect()) {
+switch (dialect()) {
 case ASE:
 case CUBRID:
 case DB2:

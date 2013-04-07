@@ -2,7 +2,7 @@
   jOOQAbstractTest.reset=false;
   Field<Integer> ID3;
   Field<Integer> ID4;
-switch (getDialect()) {
+switch (dialect()) {
 case ASE:
 case MYSQL:
     ID3=create().select(val(3)).asField();

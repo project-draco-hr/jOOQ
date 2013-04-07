@@ -1,10 +1,10 @@
 {
-  int lower=asList(DB2,DERBY,HSQLDB,INGRES,SYBASE).contains(getDialect()) ? 1 : 0;
+  int lower=asList(DB2,DERBY,HSQLDB,INGRES,SYBASE).contains(dialect()) ? 1 : 0;
   for (int i=lower; i < 6; i++) {
     assertEquals(Math.min(i,4),create().selectFrom(TBook()).limit(i).fetch().size());
     assertEquals(Math.min(i,4),create().select().from(TBook()).limit(i).fetch().size());
   }
-  if (getDialect() == SQLDialect.ASE) {
+  if (dialect() == SQLDialect.ASE) {
     log.info("SKIPPING","LIMIT .. OFFSET tests");
     return;
   }

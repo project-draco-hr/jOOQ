@@ -1,7 +1,7 @@
 {
   SelectQuery<?> q=create().selectQuery();
   Field<String> constant=val("abc");
-switch (getDialect()) {
+switch (dialect()) {
 case DERBY:
     log.info("SKIPPING","replace function test");
   break;
@@ -25,7 +25,7 @@ q.execute();
 Record record=q.getResult().get(0);
 assertEquals(Integer.valueOf(3),record.getValue(length));
 assertEquals(Integer.valueOf(3),record.getValue(charLength));
-switch (getDialect()) {
+switch (dialect()) {
 case HSQLDB:
 case H2:
 assertEquals(Integer.valueOf(48),record.getValue(bitLength));

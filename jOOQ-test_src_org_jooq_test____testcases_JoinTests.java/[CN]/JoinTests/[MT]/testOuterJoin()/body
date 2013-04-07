@@ -3,7 +3,7 @@
   assertEquals(asList(1,1,1,2,2,2,2),result1.getValues(0,Integer.class));
   assertEquals(asList(1,1,2,3,3,3,4),result1.getValues(1,Integer.class));
   assertEquals(asList("Ex Libris","Orell F??ssli","Orell F??ssli","Buchhandlung im Volkshaus","Ex Libris","Orell F??ssli",null),result1.getValues(2));
-switch (getDialect()) {
+switch (dialect()) {
 case SQLITE:
     log.info("SKIPPING","RIGHT OUTER JOIN tests");
   break;
@@ -17,7 +17,7 @@ default :
   break;
 }
 }
-switch (getDialect()) {
+switch (dialect()) {
 case ASE:
 case CUBRID:
 case DERBY:

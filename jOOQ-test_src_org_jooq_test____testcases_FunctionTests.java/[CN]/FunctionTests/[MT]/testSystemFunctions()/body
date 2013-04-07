@@ -1,5 +1,5 @@
 {
-  if (getDialect() == SQLDialect.SQLITE) {
+  if (dialect() == SQLDialect.SQLITE) {
     log.info("SKIPPING","System functions test");
     return;
   }

@@ -1,5 +1,5 @@
 {
-switch (getDialect()) {
+switch (dialect()) {
 case SQLITE:
 case INGRES:
     log.info("SKIPPING","= { ALL | ANY | SOME } tests");

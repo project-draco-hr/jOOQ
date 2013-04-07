@@ -67,7 +67,7 @@
     Integer[] array;
     assertTrue(TArrays_NUMBER().getDataType().isArray());
     assertFalse(TBook_ID().getDataType().isArray());
-switch (getDialect()) {
+switch (dialect()) {
 case POSTGRES:
 case H2:
 case HSQLDB:

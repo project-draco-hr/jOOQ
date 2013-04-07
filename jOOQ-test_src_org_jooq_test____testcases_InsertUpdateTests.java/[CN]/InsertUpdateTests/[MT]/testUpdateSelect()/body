@@ -1,8 +1,8 @@
 {
-switch (getDialect()) {
+switch (dialect()) {
 case SQLITE:
 case MYSQL:
-    log.info("SKIPPING","UPDATE .. SET .. = (SELECT ..) integration test. This syntax is poorly supported by " + getDialect());
+    log.info("SKIPPING","UPDATE .. SET .. = (SELECT ..) integration test. This syntax is poorly supported by " + dialect());
   return;
 }
 jOOQAbstractTest.reset=false;

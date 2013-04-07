@@ -6,7 +6,7 @@
   assertEquals(Arrays.asList(),create().select().from(TBook()).where(TBook_ID().in(new Integer[0])).fetch(TBook_ID()));
   assertEquals(BOOK_IDS,create().select().from(TBook()).where(TBook_ID().notIn(new Integer[0])).orderBy(TBook_ID()).fetch(TBook_ID()));
   assertEquals(asList(1),create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(val(1),castNull(Integer.class))).fetch(TBook_ID()));
-  if (asList(ASE).contains(getDialect())) {
+  if (asList(ASE).contains(dialect())) {
     assertEquals(asList(2,3,4),create().select(TBook_ID()).from(TBook()).where(TBook_ID().notIn(val(1),castNull(Integer.class))).orderBy(TBook_ID()).fetch(TBook_ID()));
   }
  else {

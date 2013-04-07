@@ -39,7 +39,7 @@
   assertEquals(++ID,(int)returned.getValue(TTriggers_ID_GENERATED()));
   assertNull(returned.getValue(TTriggers_ID()));
   assertNull(returned.getValue(TTriggers_COUNTER()));
-switch (getDialect()) {
+switch (dialect()) {
 case ASE:
 case CUBRID:
 case DERBY:

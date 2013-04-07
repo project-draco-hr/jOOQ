@@ -1,7 +1,7 @@
 {
   jOOQAbstractTest.reset=false;
   Field<String> notLike=TBook_PUBLISHED_IN().cast(String.class);
-  if (getDialect() == DB2) {
+  if (dialect() == DB2) {
     notLike=val("bbb");
   }
   Result<B> books=create().selectFrom(TBook()).where(TBook_TITLE().like("%a%")).and(TBook_TITLE().notLike(notLike)).fetch();
@@ -10,7 +10,7 @@
   books=create().selectFrom(TBook()).where(TBook_TITLE().like("%(!%)%",'!')).and(TBook_TITLE().like("%(#_)%",'#')).and(TBook_TITLE().notLike("%(!%)%",'#')).and(TBook_TITLE().notLike("%(#_)%",'!')).fetch();
   assertEquals(1,books.size());
   assertEquals(5,(int)books.get(0).getValue(TBook_ID()));
-  boolean derby=getDialect() == DERBY;
+  boolean derby=dialect() == DERBY;
   books=create().selectFrom(TBook()).where(TBook_TITLE().like(concat("19","84"))).and(TBook_TITLE().like(upper(concat("198","4")))).and(TBook_TITLE().like(lower(concat("1","984")))).fetch();
   assertEquals(1,books.size());
   assertEquals(1,(int)books.get(0).getValue(TBook_ID()));

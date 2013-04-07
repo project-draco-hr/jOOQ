@@ -1,5 +1,5 @@
 {
-  if (asList(ASE,CUBRID,DB2,DERBY,FIREBIRD,INGRES,ORACLE,SQLSERVER,SQLITE,SYBASE).contains(getDialect())) {
+  if (asList(ASE,CUBRID,DB2,DERBY,FIREBIRD,INGRES,ORACLE,SQLSERVER,SQLITE,SYBASE).contains(dialect())) {
     log.info("SKIPPING","Tuples and subselects");
   }
  else {

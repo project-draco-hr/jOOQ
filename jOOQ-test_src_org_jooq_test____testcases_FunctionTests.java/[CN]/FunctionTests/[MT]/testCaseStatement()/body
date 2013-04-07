@@ -1,6 +1,6 @@
 {
   Field<String> case1=decode().value(TBook_PUBLISHED_IN()).when(0,"ancient book").as("case1");
-  Field<?> case2=getDialect() == SQLDialect.INGRES ? decode().value(TBook_AUTHOR_ID()).when(1,"Orwell").otherwise("unknown") : decode().value(TBook_AUTHOR_ID()).when(1,create().select(TAuthor_LAST_NAME()).from(TAuthor()).where(TAuthor_ID().equal(TBook_AUTHOR_ID())).asField()).otherwise("unknown");
+  Field<?> case2=dialect() == SQLDialect.INGRES ? decode().value(TBook_AUTHOR_ID()).when(1,"Orwell").otherwise("unknown") : decode().value(TBook_AUTHOR_ID()).when(1,create().select(TAuthor_LAST_NAME()).from(TAuthor()).where(TAuthor_ID().equal(TBook_AUTHOR_ID())).asField()).otherwise("unknown");
   Field<?> case3=decode().value(1).when(1,"A").when(2,"B").otherwise("C");
   SelectQuery<?> query=create().selectQuery();
   query.addSelect(case1,case2,case3);

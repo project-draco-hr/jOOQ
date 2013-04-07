@@ -1,6 +1,6 @@
 {
   Field<BigDecimal> median=median(TBook_ID());
-switch (getDialect()) {
+switch (dialect()) {
 case ASE:
 case CUBRID:
 case DERBY:
@@ -42,7 +42,7 @@ assertEquals(1,distinct2);
 assertEquals(2,distinct3);
 assertEquals(3,distinct4);
 assertTrue(asList(1.0,1.5,2.0).contains(distinct5));
-switch (getDialect()) {
+switch (dialect()) {
 case DERBY:
 case FIREBIRD:
 case SQLITE:
@@ -55,7 +55,7 @@ assertEquals(0.5,result2.get(0).getValue(1,Double.class));
 assertEquals(0.25,result2.get(0).getValue(3,Double.class));
 assertEquals(0.5,result2.get(1).getValue(1,Double.class));
 assertEquals(0.25,result2.get(1).getValue(3,Double.class));
-if (getDialect() != SQLDialect.DB2) {
+if (dialect() != SQLDialect.DB2) {
 assertEquals("0.707",result2.get(0).getValue(2,String.class).substring(0,5));
 assertEquals(0.5,result2.get(0).getValue(4,Double.class));
 assertEquals("0.707",result2.get(1).getValue(2,String.class).substring(0,5));

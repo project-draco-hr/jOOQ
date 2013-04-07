@@ -1,13 +1,13 @@
 {
-  if (getDialect() != SQLDialect.HSQLDB) {
+  if (dialect() != SQLDialect.HSQLDB) {
     assertEquals(true,create().select(cast(1,Boolean.class)).fetchOne(0));
-    if (getDialect() != SQLDialect.INGRES) {
+    if (dialect() != SQLDialect.INGRES) {
       assertEquals(true,create().select(cast("1",Boolean.class)).fetchOne(0));
     }
   }
   assertEquals(BigInteger.ONE,create().select(cast("1",BigInteger.class)).fetchOne(0));
   assertEquals(BigInteger.ONE,create().select(cast(1,BigInteger.class)).fetchOne(0));
-  if (getDialect() == SQLDialect.SYBASE) {
+  if (dialect() == SQLDialect.SYBASE) {
     BigDecimal result=(BigDecimal)create().select(cast("1",BigDecimal.class)).fetchOne(0);
     result=result.setScale(0);
     assertEquals(BigDecimal.ONE,result);
@@ -33,14 +33,14 @@
   assertEquals(1.0f,create().select(cast(1,Float.class)).fetchOne(0));
   assertEquals(1.0,create().select(cast(1,Double.class)).fetchOne(0));
   assertEquals("1",create().select(cast(1,String.class)).fetchOne(0));
-  if (getDialect() != SQLDialect.ASE) {
+  if (dialect() != SQLDialect.ASE) {
     assertEquals(null,create().select(castNull(Boolean.class)).fetchOne(0));
   }
   assertEquals(null,create().select(castNull(Byte.class)).fetchOne(0));
   assertEquals(null,create().select(castNull(Short.class)).fetchOne(0));
   assertEquals(null,create().select(castNull(Integer.class)).fetchOne(0));
   assertEquals(null,create().select(castNull(Long.class)).fetchOne(0));
-  if (getDialect() != SQLDialect.SQLITE) {
+  if (dialect() != SQLDialect.SQLITE) {
     assertEquals(null,create().select(castNull(BigInteger.class)).fetchOne(0));
     assertEquals(null,create().select(castNull(BigDecimal.class)).fetchOne(0));
   }

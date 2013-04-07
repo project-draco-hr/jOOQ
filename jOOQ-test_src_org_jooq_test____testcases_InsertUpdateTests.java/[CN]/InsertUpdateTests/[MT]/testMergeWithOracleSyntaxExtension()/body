@@ -1,5 +1,5 @@
 {
-switch (getDialect()) {
+switch (dialect()) {
 case ASE:
 case DB2:
 case DERBY:

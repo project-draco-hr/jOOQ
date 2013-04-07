@@ -1,5 +1,5 @@
 {
-  if (getDialect() == FIREBIRD) {
+  if (dialect() == FIREBIRD) {
     log.info("SKIPPING","Thread-safety tests. This can crash Firebird");
     return;
   }

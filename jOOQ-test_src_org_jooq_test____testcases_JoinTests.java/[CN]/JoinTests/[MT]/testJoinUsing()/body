@@ -1,11 +1,11 @@
 {
-  Result<Record2<String,String>> result=create().select(TAuthor_LAST_NAME(),TBook_TITLE()).from(TAuthor()).join(TBook()).using(TAuthor_ID()).orderBy(getDialect() == SQLDialect.ORACLE ? field("id") : TBook_ID()).fetch();
+  Result<Record2<String,String>> result=create().select(TAuthor_LAST_NAME(),TBook_TITLE()).from(TAuthor()).join(TBook()).using(TAuthor_ID()).orderBy(dialect() == SQLDialect.ORACLE ? field("id") : TBook_ID()).fetch();
   assertEquals(2,result.size());
   assertEquals("1984",result.getValue(0,TBook_TITLE()));
   assertEquals("Orwell",result.getValue(0,TAuthor_LAST_NAME()));
   assertEquals("Animal Farm",result.getValue(1,TBook_TITLE()));
   assertEquals("Coelho",result.getValue(1,TAuthor_LAST_NAME()));
-  result=create().select(TAuthor_LAST_NAME(),TBook_TITLE()).from(TBook()).leftOuterJoin(TAuthor()).using(TAuthor_ID()).orderBy(getDialect() == SQLDialect.ORACLE ? field("id") : TBook_ID()).fetch();
+  result=create().select(TAuthor_LAST_NAME(),TBook_TITLE()).from(TBook()).leftOuterJoin(TAuthor()).using(TAuthor_ID()).orderBy(dialect() == SQLDialect.ORACLE ? field("id") : TBook_ID()).fetch();
   assertEquals(4,result.size());
   assertEquals("1984",result.getValue(0,TBook_TITLE()));
   assertEquals("Orwell",result.getValue(0,TAuthor_LAST_NAME()));

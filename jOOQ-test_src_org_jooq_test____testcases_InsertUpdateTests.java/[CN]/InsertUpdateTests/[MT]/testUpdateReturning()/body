@@ -1,5 +1,5 @@
 {
-switch (getDialect()) {
+switch (dialect()) {
 case ASE:
 case CUBRID:
 case DB2:
@@ -20,7 +20,7 @@ Result<?> result1=create().update(TBook()).set(TBook_TITLE(),"XYZ").where(TBook_
 assertEquals(1,result1.size());
 assertEquals(1,(int)result1.get(0).getValue(TBook_ID()));
 assertEquals("XYZ",result1.get(0).getValue(TBook_TITLE()));
-switch (getDialect()) {
+switch (dialect()) {
 case FIREBIRD:
 {
   break;

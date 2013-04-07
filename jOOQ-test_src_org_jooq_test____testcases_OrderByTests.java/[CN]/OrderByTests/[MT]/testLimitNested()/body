@@ -1,5 +1,5 @@
 {
-  if (getDialect() == SQLDialect.INGRES || getDialect() == SQLDialect.ASE) {
+  if (dialect() == SQLDialect.INGRES || dialect() == SQLDialect.ASE) {
     log.info("SKIPPING","LIMIT clauses in nested SELECTs");
     return;
   }

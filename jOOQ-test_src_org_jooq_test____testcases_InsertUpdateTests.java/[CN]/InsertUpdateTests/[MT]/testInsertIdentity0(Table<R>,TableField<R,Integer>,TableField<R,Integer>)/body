@@ -1,19 +1,19 @@
 {
   assertEquals(1,create().insertInto(table,val).values(10).execute());
-  if (getDialect() != POSTGRES && getDialect() != DB2) {
+  if (dialect() != POSTGRES && dialect() != DB2) {
     assertEquals(new BigInteger("1"),create().lastID());
   }
   R r1=create().selectFrom(table).fetchOne();
   assertEquals(1,(int)r1.getValue(id));
   assertEquals(10,(int)r1.getValue(val));
   R r2=create().insertInto(table,val).values(11).returning().fetchOne();
-  if (getDialect() != POSTGRES && getDialect() != DB2) {
+  if (dialect() != POSTGRES && dialect() != DB2) {
     assertEquals(new BigInteger("2"),create().lastID());
     assertEquals(new BigInteger("2"),create().lastID());
   }
   assertEquals(2,(int)r2.getValue(id));
   assertEquals(11,(int)r2.getValue(val));
-  if (getDialect() == CUBRID || getDialect() == SYBASE || getDialect() == SQLSERVER || getDialect() == INGRES || getDialect() == H2 || getDialect() == DERBY || getDialect() == ASE) {
+  if (dialect() == CUBRID || dialect() == SYBASE || dialect() == SQLSERVER || dialect() == INGRES || dialect() == H2 || dialect() == DERBY || dialect() == ASE) {
     log.info("SKIPPING","Multi-record INSERT .. RETURNING statement");
   }
  else {

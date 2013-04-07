@@ -1,5 +1,5 @@
 {
-switch (getDialect()) {
+switch (dialect()) {
 case H2:
 case HSQLDB:
 case ORACLE:
@@ -33,7 +33,7 @@ compareBookResults(bFromCursor,bFromTable);
 {
 Field<Result<Record>> field=FGetOneCursorField(null);
 Result<Record> bFromCursor;
-switch (getDialect()) {
+switch (dialect()) {
 case HSQLDB:
 bFromCursor=create().select().from(table(field)).fetch();
 break;
@@ -45,7 +45,7 @@ assertNotNull(bFromCursor);
 assertTrue(bFromCursor.isEmpty());
 assertEquals(0,bFromCursor.size());
 field=FGetOneCursorField(new Integer[]{1,2,4,6});
-switch (getDialect()) {
+switch (dialect()) {
 case HSQLDB:
 bFromCursor=create().select().from(table(field)).fetch();
 break;
@@ -59,7 +59,7 @@ assertFalse(bFromCursor.isEmpty());
 assertEquals(3,bFromCursor.size());
 compareBookResults(bFromCursor,bFromTable);
 }
-if (getDialect() == SQLDialect.HSQLDB) {
+if (dialect() == SQLDialect.HSQLDB) {
 log.info("SKIPPING","Cursor OUT parameter tests");
 return;
 }
@@ -91,7 +91,7 @@ compareBookResults(bFromCursor,bFromTable);
  else {
 log.info("SKIPPING","One cursor OUT parameter test");
 }
-if (getDialect() == SQLDialect.POSTGRES) {
+if (dialect() == SQLDialect.POSTGRES) {
 log.info("SKIPPING","UDT/Enum types returned in refcursor (see [#707])");
 }
  else if (supportsOUTParameters()) {
