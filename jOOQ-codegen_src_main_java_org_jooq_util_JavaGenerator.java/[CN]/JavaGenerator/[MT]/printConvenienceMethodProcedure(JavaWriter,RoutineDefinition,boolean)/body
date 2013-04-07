@@ -45,7 +45,7 @@
     out.tab(2).println("p.%s(%s);",setter,arg);
   }
   out.println();
-  out.tab(2).println("p.execute(%s);",instance ? "getConfiguration()" : "configuration");
+  out.tab(2).println("p.execute(%s);",instance ? "configuration()" : "configuration");
   if (procedure.getOutParameters().size() > 0) {
     final String getter=getStrategy().getJavaGetterName(procedure.getOutParameters().get(0),Mode.DEFAULT);
     if (instance) {
