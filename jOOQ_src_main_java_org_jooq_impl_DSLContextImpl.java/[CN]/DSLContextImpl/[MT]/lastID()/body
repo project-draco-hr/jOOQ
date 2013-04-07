@@ -1,5 +1,5 @@
 {
-switch (configuration.getDialect()) {
+switch (configuration.dialect()) {
 case DERBY:
 {
       Field<BigInteger> field=field("identity_val_local()",BigInteger.class);
@@ -35,6 +35,6 @@ Field<BigInteger> field=field("@@identity",BigInteger.class);
 return select(field).fetchOne(field);
 }
 default :
-throw new SQLDialectNotSupportedException("identity functionality not supported by " + configuration.getDialect());
+throw new SQLDialectNotSupportedException("identity functionality not supported by " + configuration.dialect());
 }
 }

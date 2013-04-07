@@ -1,5 +1,5 @@
 {
-  org.jooq.SchemaMapping mapping=configuration.getSchemaMapping();
+  org.jooq.SchemaMapping mapping=configuration.schemaMapping();
   if (mapping != null) {
     return mapping.map(table);
   }

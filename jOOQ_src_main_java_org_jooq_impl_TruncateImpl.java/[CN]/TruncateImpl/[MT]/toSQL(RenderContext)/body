@@ -1,5 +1,5 @@
 {
-switch (context.configuration().getDialect()) {
+switch (context.configuration().dialect()) {
 case FIREBIRD:
 case INGRES:
 case SQLITE:
@@ -11,7 +11,7 @@ default :
 {
     context.keyword("truncate table ");
     context.sql(table);
-    if (context.configuration().getDialect() == SQLDialect.DB2) {
+    if (context.configuration().dialect() == SQLDialect.DB2) {
       context.keyword(" immediate");
     }
     break;

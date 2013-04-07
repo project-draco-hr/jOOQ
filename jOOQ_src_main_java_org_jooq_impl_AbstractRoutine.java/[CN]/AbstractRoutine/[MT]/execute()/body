@@ -3,7 +3,7 @@
     return executeCallableStatement();
   }
  else {
-switch (configuration.getDialect()) {
+switch (configuration.dialect()) {
 case HSQLDB:
       if (SQLDataType.RESULT.equals(type.getSQLDataType())) {
         return executeSelectFrom();

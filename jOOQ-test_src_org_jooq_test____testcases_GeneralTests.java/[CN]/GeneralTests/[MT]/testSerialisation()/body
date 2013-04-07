@@ -29,7 +29,7 @@
   create().attach(result);
   assertEquals(1,result.get(1).store());
   assertEquals("Georgie",create().fetchOne(TAuthor(),TAuthor_LAST_NAME().equal("Orwell")).getValue(TAuthor_FIRST_NAME()));
-  ConnectionProviderListener.c=create().configuration().getConnectionProvider().acquire();
+  ConnectionProviderListener.c=create().configuration().connectionProvider().acquire();
   try {
     DSLContext create=create();
     addListeners(create.configuration(),new ConnectionProviderListener());
@@ -44,7 +44,7 @@
     result.get(1).store();
   }
   finally {
-    create().configuration().getConnectionProvider().release(ConnectionProviderListener.c);
+    create().configuration().connectionProvider().release(ConnectionProviderListener.c);
     ConnectionProviderListener.c=null;
   }
   if (cSequences() == null) {

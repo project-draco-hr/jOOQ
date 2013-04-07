@@ -1,6 +1,6 @@
 {
   if (h2Style) {
-    if (context.configuration().getDialect() == H2) {
+    if (context.configuration().dialect() == H2) {
       bindH2(context);
     }
  else {

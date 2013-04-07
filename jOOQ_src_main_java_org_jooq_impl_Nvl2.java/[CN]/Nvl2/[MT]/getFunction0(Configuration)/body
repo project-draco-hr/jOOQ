@@ -1,5 +1,5 @@
 {
-switch (configuration.getDialect()) {
+switch (configuration.dialect()) {
 case H2:
 case HSQLDB:
 case INGRES:

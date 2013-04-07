@@ -7,7 +7,7 @@
     return (T)wasNull(rs,Boolean.valueOf(rs.getBoolean(index)));
   }
  else   if (type == BigInteger.class) {
-    if (ctx.configuration().getDialect() == SQLDialect.SQLITE) {
+    if (ctx.configuration().dialect() == SQLDialect.SQLITE) {
       return Convert.convert(rs.getString(index),(Class<T>)BigInteger.class);
     }
  else {
@@ -16,7 +16,7 @@
     }
   }
  else   if (type == BigDecimal.class) {
-    if (ctx.configuration().getDialect() == SQLDialect.SQLITE) {
+    if (ctx.configuration().dialect() == SQLDialect.SQLITE) {
       return Convert.convert(rs.getString(index),(Class<T>)BigDecimal.class);
     }
  else {
@@ -33,7 +33,7 @@
     return (T)rs.getClob(index);
   }
  else   if (type == Date.class) {
-    return (T)getDate(ctx.configuration().getDialect(),rs,index);
+    return (T)getDate(ctx.configuration().dialect(),rs,index);
   }
  else   if (type == Double.class) {
     return (T)wasNull(rs,Double.valueOf(rs.getDouble(index)));
@@ -54,13 +54,13 @@
     return (T)rs.getString(index);
   }
  else   if (type == Time.class) {
-    return (T)getTime(ctx.configuration().getDialect(),rs,index);
+    return (T)getTime(ctx.configuration().dialect(),rs,index);
   }
  else   if (type == Timestamp.class) {
-    return (T)getTimestamp(ctx.configuration().getDialect(),rs,index);
+    return (T)getTimestamp(ctx.configuration().dialect(),rs,index);
   }
  else   if (type == YearToMonth.class) {
-    if (ctx.configuration().getDialect() == POSTGRES) {
+    if (ctx.configuration().dialect() == POSTGRES) {
       Object object=rs.getObject(index);
       return (T)(object == null ? null : PostgresUtils.toYearToMonth(object));
     }
@@ -70,7 +70,7 @@
     }
   }
  else   if (type == DayToSecond.class) {
-    if (ctx.configuration().getDialect() == POSTGRES) {
+    if (ctx.configuration().dialect() == POSTGRES) {
       Object object=rs.getObject(index);
       return (T)(object == null ? null : PostgresUtils.toDayToSecond(object));
     }
@@ -96,7 +96,7 @@
     return (T)(string == null ? null : ULong.valueOf(string));
   }
  else   if (type == UUID.class) {
-switch (ctx.configuration().getDialect()) {
+switch (ctx.configuration().dialect()) {
 case H2:
 case POSTGRES:
 {
@@ -111,7 +111,7 @@ default :
 }
 }
  else if (type.isArray()) {
-switch (ctx.configuration().getDialect()) {
+switch (ctx.configuration().dialect()) {
 case POSTGRES:
 {
     return pgGetArray(ctx,type,index);
@@ -127,7 +127,7 @@ return (T)getArrayRecord(ctx.configuration(),rs.getArray(index),(Class<? extends
 return getEnumType(type,rs.getString(index));
 }
  else if (UDTRecord.class.isAssignableFrom(type)) {
-switch (ctx.configuration().getDialect()) {
+switch (ctx.configuration().dialect()) {
 case POSTGRES:
 return (T)pgNewUDTRecord(type,rs.getObject(index));
 }

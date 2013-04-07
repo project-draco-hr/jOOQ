@@ -6,7 +6,7 @@
     context.sql(insertMaps.get(0));
   }
  else {
-switch (context.configuration().getDialect()) {
+switch (context.configuration().dialect()) {
 case ASE:
 case FIREBIRD:
 case INGRES:

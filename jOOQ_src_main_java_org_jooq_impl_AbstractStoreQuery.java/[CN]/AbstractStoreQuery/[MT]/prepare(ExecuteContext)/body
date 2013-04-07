@@ -1,6 +1,6 @@
 {
   Connection connection=ctx.connection();
-  if (ctx.configuration().getDialect() == SQLDialect.ASE) {
+  if (ctx.configuration().dialect() == SQLDialect.ASE) {
     ctx.statement(connection.prepareStatement(ctx.sql(),Statement.RETURN_GENERATED_KEYS));
     return;
   }
@@ -9,7 +9,7 @@
     return;
   }
  else {
-switch (ctx.configuration().getDialect()) {
+switch (ctx.configuration().dialect()) {
 case FIREBIRD:
 case POSTGRES:
 case SQLITE:

@@ -6,7 +6,7 @@
     int scale=column.getValue("DECIMAL_DIGITS",int.class);
     DataType<?> type=null;
     try {
-      type=DefaultDataType.getDataType(configuration.getDialect(),typeName,precision,scale);
+      type=DefaultDataType.getDataType(configuration.dialect(),typeName,precision,scale);
       if (type.hasPrecision()) {
         type=type.precision(precision);
       }

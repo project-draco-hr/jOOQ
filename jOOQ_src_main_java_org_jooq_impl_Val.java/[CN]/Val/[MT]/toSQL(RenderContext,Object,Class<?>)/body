@@ -1,5 +1,5 @@
 {
-  SQLDialect dialect=context.configuration().getDialect();
+  SQLDialect dialect=context.configuration().dialect();
   Converter<?,?> converter=DataTypes.converter(type);
   if (converter != null) {
     val=((Converter)converter).to(val);

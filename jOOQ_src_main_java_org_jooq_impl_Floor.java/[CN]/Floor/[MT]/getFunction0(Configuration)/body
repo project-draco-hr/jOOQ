@@ -1,5 +1,5 @@
 {
-switch (configuration.getDialect()) {
+switch (configuration.dialect()) {
 case SQLITE:
     return DSL.round(argument.sub(0.499999999999999));
 default :

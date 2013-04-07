@@ -1,6 +1,6 @@
 {
   Field<?>[] args=getArguments();
-switch (configuration.getDialect()) {
+switch (configuration.dialect()) {
 case ASE:
 {
       if (args.length == 2) {

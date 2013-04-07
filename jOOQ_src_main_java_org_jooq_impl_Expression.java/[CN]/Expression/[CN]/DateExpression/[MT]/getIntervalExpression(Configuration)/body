@@ -1,5 +1,5 @@
 {
-  SQLDialect dialect=configuration.getDialect();
+  SQLDialect dialect=configuration.dialect();
   int sign=(operator == ADD) ? 1 : -1;
 switch (dialect) {
 case ASE:

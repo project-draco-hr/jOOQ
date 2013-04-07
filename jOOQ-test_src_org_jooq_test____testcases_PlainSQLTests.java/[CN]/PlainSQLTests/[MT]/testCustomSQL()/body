@@ -2,11 +2,11 @@
   final Field<Integer> IDx2=new CustomField<Integer>(TBook_ID().getName(),TBook_ID().getDataType()){
     private static final long serialVersionUID=1L;
     @Override public void toSQL(    RenderContext context){
-      context.configuration().setData("Foo-Field","Baz");
+      context.configuration().data("Foo-Field","Baz");
       if (context.inline()) {
         context.sql(TBook_ID().getName() + " * 2");
       }
- else       if (context.configuration().getDialect() == FIREBIRD) {
+ else       if (context.configuration().dialect() == FIREBIRD) {
         context.sql(TBook_ID().getName() + " * cast (? as int)");
       }
  else {
@@ -26,7 +26,7 @@
   Condition c=new CustomCondition(){
     private static final long serialVersionUID=-629253722638033620L;
     @Override public void toSQL(    RenderContext context){
-      context.configuration().setData("Foo-Condition","Baz");
+      context.configuration().data("Foo-Condition","Baz");
       context.sql(IDx2);
       context.sql(" > ");
       if (context.inline()) {
@@ -48,8 +48,8 @@
   }
 ;
   DSLContext create=create();
-  create.configuration().setData("Foo-Field","Bar");
-  create.configuration().setData("Foo-Condition","Bar");
+  create.configuration().data("Foo-Field","Bar");
+  create.configuration().data("Foo-Condition","Bar");
   Result<Record2<Integer,Integer>> result=create.select(TBook_ID(),IDx2).from(TBook()).where(c).orderBy(IDx2).fetch();
   assertEquals(3,result.size());
   assertEquals(Integer.valueOf(2),result.getValue(0,TBook_ID()));
@@ -58,6 +58,6 @@
   assertEquals(Integer.valueOf(4),result.getValue(0,IDx2));
   assertEquals(Integer.valueOf(6),result.getValue(1,IDx2));
   assertEquals(Integer.valueOf(8),result.getValue(2,IDx2));
-  assertEquals("Baz",create.configuration().getData("Foo-Field"));
-  assertEquals("Baz",create.configuration().getData("Foo-Condition"));
+  assertEquals("Baz",create.configuration().data("Foo-Field"));
+  assertEquals("Baz",create.configuration().data("Foo-Condition"));
 }

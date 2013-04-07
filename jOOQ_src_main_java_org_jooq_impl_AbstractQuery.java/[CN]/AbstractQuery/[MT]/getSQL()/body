@@ -1,5 +1,5 @@
 {
-  if (executePreparedStatements(getConfiguration().getSettings())) {
+  if (executePreparedStatements(getConfiguration().settings())) {
     return getSQL(false);
   }
  else {

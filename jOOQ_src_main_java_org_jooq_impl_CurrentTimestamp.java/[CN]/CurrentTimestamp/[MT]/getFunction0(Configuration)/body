@@ -1,5 +1,5 @@
 {
-switch (configuration.getDialect()) {
+switch (configuration.dialect()) {
 case ASE:
     return function("current_bigdatetime",SQLDataType.TIMESTAMP);
 case ORACLE:

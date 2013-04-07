@@ -2,6 +2,6 @@
   DSLContext create1=DSL.using(SQLDialect.ORACLE,new Settings().withRenderMapping(mapping()));
   assertEquals("\"TABLEX\"",create1.render(TABLE1));
   DSLContext create2=DSL.using(SQLDialect.ORACLE);
-  create2.configuration().getSettings().setRenderMapping(mapping());
+  create2.configuration().settings().setRenderMapping(mapping());
   assertEquals("\"TABLEX\"",create2.render(TABLE1));
 }

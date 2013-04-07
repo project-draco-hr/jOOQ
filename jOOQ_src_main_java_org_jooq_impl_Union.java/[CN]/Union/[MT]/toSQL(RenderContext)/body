@@ -1,7 +1,7 @@
 {
   for (int i=0; i < queries.size(); i++) {
     if (i != 0) {
-      context.formatSeparator().keyword(operator.toSQL(context.configuration().getDialect())).formatSeparator();
+      context.formatSeparator().keyword(operator.toSQL(context.configuration().dialect())).formatSeparator();
     }
     wrappingParenthesis(context,"(");
     context.sql(queries.get(i));

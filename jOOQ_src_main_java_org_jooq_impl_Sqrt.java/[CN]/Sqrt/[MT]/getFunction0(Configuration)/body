@@ -1,5 +1,5 @@
 {
-switch (configuration.getDialect()) {
+switch (configuration.dialect()) {
 case SQLITE:
     return DSL.power(argument,0.5);
 default :

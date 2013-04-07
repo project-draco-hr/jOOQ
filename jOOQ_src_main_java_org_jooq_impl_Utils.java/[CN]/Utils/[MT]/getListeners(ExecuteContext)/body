@@ -1,10 +1,10 @@
 {
   List<ExecuteListener> result=new ArrayList<ExecuteListener>();
-  if (!FALSE.equals(ctx.configuration().getSettings().isExecuteLogging())) {
+  if (!FALSE.equals(ctx.configuration().settings().isExecuteLogging())) {
     result.add(new StopWatchListener());
     result.add(new LoggerListener());
   }
-  ExecuteListenerProvider provider=ctx.configuration().getExecuteListenerProvider();
+  ExecuteListenerProvider provider=ctx.configuration().executeListenerProvider();
   if (provider != null) {
     result.addAll(provider.provide());
   }

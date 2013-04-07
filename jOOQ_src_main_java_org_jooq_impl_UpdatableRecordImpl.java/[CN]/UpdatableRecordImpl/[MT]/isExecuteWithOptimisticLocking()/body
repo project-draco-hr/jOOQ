@@ -1,7 +1,7 @@
 {
   Configuration configuration=getConfiguration();
   if (configuration != null) {
-    return TRUE.equals(configuration.getSettings().isExecuteWithOptimisticLocking());
+    return TRUE.equals(configuration.settings().isExecuteWithOptimisticLocking());
   }
   return false;
 }

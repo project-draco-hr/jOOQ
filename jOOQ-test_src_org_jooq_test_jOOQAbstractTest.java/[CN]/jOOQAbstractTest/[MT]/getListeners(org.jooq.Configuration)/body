@@ -1,4 +1,4 @@
 {
-  DefaultExecuteListenerProvider provider=(DefaultExecuteListenerProvider)configuration.getExecuteListenerProvider();
+  DefaultExecuteListenerProvider provider=(DefaultExecuteListenerProvider)configuration.executeListenerProvider();
   return provider.provide();
 }

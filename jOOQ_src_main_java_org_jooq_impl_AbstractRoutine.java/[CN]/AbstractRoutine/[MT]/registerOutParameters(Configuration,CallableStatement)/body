@@ -3,7 +3,7 @@
     if (parameter.equals(getReturnParameter()) || getOutParameters().contains(parameter)) {
       int index=parameterIndexes.get(parameter);
       int sqlType=parameter.getDataType().getDataType(c).getSQLType();
-switch (c.getDialect()) {
+switch (c.dialect()) {
 case ORACLE:
 {
           if (sqlType == Types.STRUCT) {

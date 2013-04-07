@@ -1,7 +1,7 @@
 {
   Connection connection=ctx.connection();
   boolean autoCommit=false;
-  if (ctx.configuration().getDialect() == SQLDialect.POSTGRES && isSelectingRefCursor()) {
+  if (ctx.configuration().dialect() == SQLDialect.POSTGRES && isSelectingRefCursor()) {
     autoCommit=connection.getAutoCommit();
     if (autoCommit) {
       if (log.isDebugEnabled())       log.debug("Unsetting auto-commit",false);
@@ -10,7 +10,7 @@
   }
   try {
     listener.executeStart(ctx);
-    if (ctx.configuration().getDialect() == ASE) {
+    if (ctx.configuration().dialect() == ASE) {
       ctx.resultSet(ctx.statement().executeQuery());
     }
  else     if (ctx.statement().execute()) {

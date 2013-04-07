@@ -1,5 +1,5 @@
 {
-  SQLDialect dialect=configuration.getDialect();
+  SQLDialect dialect=configuration.dialect();
   if (BIT_AND == operator && asList(DB2,H2,HSQLDB,ORACLE).contains(dialect)) {
     return function("bitand",getDataType(),getArguments());
   }

@@ -1,7 +1,7 @@
 {
   List<Field<?>> list=Arrays.asList(values);
   if (list.size() > IN_LIMIT) {
-switch (context.configuration().getDialect()) {
+switch (context.configuration().dialect()) {
 case FIREBIRD:
 case INGRES:
 case ORACLE:

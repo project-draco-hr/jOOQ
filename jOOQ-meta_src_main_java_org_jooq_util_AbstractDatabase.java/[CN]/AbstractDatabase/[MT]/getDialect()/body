@@ -1,6 +1,6 @@
 {
   if (dialect == null) {
-    dialect=create().configuration().getDialect();
+    dialect=create().configuration().dialect();
   }
   return dialect;
 }

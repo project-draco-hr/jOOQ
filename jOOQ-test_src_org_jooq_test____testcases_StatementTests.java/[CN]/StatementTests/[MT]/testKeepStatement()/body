@@ -17,7 +17,7 @@
   assertEquals(3,query.fetchOne(0));
   assertEquals(4,KeepStatementListener.statements.size());
   assertEquals(0,KeepStatementListener.closed);
-  assertEquals(create().configuration().getSettings().getStatementType() == StatementType.PREPARED_STATEMENT,KeepStatementListener.statements.get(0) == KeepStatementListener.statements.get(1));
+  assertEquals(create().configuration().settings().getStatementType() == StatementType.PREPARED_STATEMENT,KeepStatementListener.statements.get(0) == KeepStatementListener.statements.get(1));
   assertTrue(KeepStatementListener.statements.get(1) == KeepStatementListener.statements.get(2));
   assertTrue(KeepStatementListener.statements.get(2) == KeepStatementListener.statements.get(3));
   KeepStatementListener.reset();

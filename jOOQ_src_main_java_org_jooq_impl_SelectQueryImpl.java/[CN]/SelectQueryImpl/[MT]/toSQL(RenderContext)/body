@@ -1,6 +1,6 @@
 {
   if (getLimit().isApplicable()) {
-switch (context.configuration().getDialect()) {
+switch (context.configuration().dialect()) {
 case ORACLE:
       toSQLReferenceLimitOracle(context);
     break;
@@ -45,7 +45,7 @@ break;
  else {
 toSQLReference0(context);
 }
-if (forUpdate && !asList(CUBRID,SQLSERVER).contains(context.configuration().getDialect())) {
+if (forUpdate && !asList(CUBRID,SQLSERVER).contains(context.configuration().dialect())) {
 context.formatSeparator().keyword("for update");
 if (!forUpdateOf.isEmpty()) {
 context.keyword(" of ");
@@ -53,7 +53,7 @@ Utils.fieldNames(context,forUpdateOf);
 }
  else if (!forUpdateOfTables.isEmpty()) {
 context.keyword(" of ");
-switch (context.configuration().getDialect()) {
+switch (context.configuration().dialect()) {
 case DB2:
 case DERBY:
 case INGRES:
@@ -77,7 +77,7 @@ context.sql(forUpdateWait);
 }
 }
  else if (forShare) {
-switch (context.configuration().getDialect()) {
+switch (context.configuration().dialect()) {
 case MYSQL:
 context.formatSeparator().keyword("lock in share mode");
 break;

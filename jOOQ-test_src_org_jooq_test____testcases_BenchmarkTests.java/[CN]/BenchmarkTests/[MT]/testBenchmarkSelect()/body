@@ -1,6 +1,6 @@
 {
   Configuration configuration=create().configuration().derive();
-  configuration.getSettings().setExecuteLogging(false);
+  configuration.settings().setExecuteLogging(false);
   getListeners(configuration).clear();
   DSLContext create=create(configuration);
   testBenchmarkFullExecution(create,1);

@@ -1,5 +1,5 @@
 {
-switch (config.getDialect()) {
+switch (config.dialect()) {
 case CUBRID:
 case DB2:
 case HSQLDB:
@@ -70,6 +70,6 @@ case SYBASE:
       return create(config).mergeInto(table).using(src).on(condition).whenMatchedThenUpdate().set(update).whenNotMatchedThenInsert().set(insert);
     }
 default :
-  throw new SQLDialectNotSupportedException("The H2-specific MERGE syntax is not supported in dialect : " + config.getDialect());
+  throw new SQLDialectNotSupportedException("The H2-specific MERGE syntax is not supported in dialect : " + config.dialect());
 }
 }

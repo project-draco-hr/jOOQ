@@ -1,5 +1,5 @@
 {
-  SQLDialect dialect=configuration.getDialect();
+  SQLDialect dialect=configuration.dialect();
   Converter<?,?> converter=DataTypes.converter(type);
   if (converter != null) {
     value=((Converter)converter).to(value);
@@ -23,16 +23,16 @@
       String typeName=Utils.newRecord((Class<UDTRecord<?>>)type).getUDT().getName();
       stmt.setNull(nextIndex(),sqlType,typeName);
     }
- else     if (asList(POSTGRES,SYBASE).contains(configuration.getDialect()) && sqlType == Types.BLOB) {
+ else     if (asList(POSTGRES,SYBASE).contains(configuration.dialect()) && sqlType == Types.BLOB) {
       stmt.setNull(nextIndex(),Types.BINARY);
     }
  else     if (sqlType != Types.OTHER) {
       stmt.setNull(nextIndex(),sqlType);
     }
- else     if (configuration.getDialect() == SQLSERVER) {
+ else     if (configuration.dialect() == SQLSERVER) {
       stmt.setNull(nextIndex(),sqlType);
     }
- else     if (configuration.getDialect() == SYBASE) {
+ else     if (configuration.dialect() == SYBASE) {
       stmt.setNull(nextIndex(),Types.VARCHAR);
     }
  else {

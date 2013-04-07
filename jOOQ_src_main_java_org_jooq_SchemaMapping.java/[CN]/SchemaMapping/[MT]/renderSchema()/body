@@ -1,3 +1,3 @@
 {
-  return Boolean.TRUE.equals(configuration.getSettings().isRenderSchema());
+  return Boolean.TRUE.equals(configuration.settings().isRenderSchema());
 }

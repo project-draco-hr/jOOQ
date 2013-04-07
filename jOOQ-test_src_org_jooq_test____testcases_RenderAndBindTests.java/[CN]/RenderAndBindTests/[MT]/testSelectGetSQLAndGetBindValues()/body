@@ -3,7 +3,7 @@
   assertEquals(asList(6,2,3,2),select.getBindValues());
   log.info("Executing",select.getSQL());
   PreparedStatement stmt=jOOQAbstractTest.connection.prepareStatement(select.getSQL());
-  if (executePreparedStatements(create().configuration().getSettings())) {
+  if (executePreparedStatements(create().configuration().settings())) {
     int i=0;
     for (    Object value : select.getBindValues()) {
       stmt.setObject(++i,value);

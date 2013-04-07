@@ -1,5 +1,5 @@
 {
-switch (configuration.getDialect()) {
+switch (configuration.dialect()) {
 case SQLITE:
     return DSL.decode().when(((Field<Integer>)argument).greaterThan(zero()),one()).when(((Field<Integer>)argument).lessThan(zero()),one().neg()).otherwise(zero());
 default :

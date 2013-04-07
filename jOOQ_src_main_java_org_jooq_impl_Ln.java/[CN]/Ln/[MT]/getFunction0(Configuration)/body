@@ -1,6 +1,6 @@
 {
   if (base == null) {
-switch (configuration.getDialect()) {
+switch (configuration.dialect()) {
 case ASE:
 case H2:
 case SQLSERVER:
@@ -10,7 +10,7 @@ default :
 }
 }
  else {
-switch (configuration.getDialect()) {
+switch (configuration.dialect()) {
 case ASE:
 case DB2:
 case DERBY:

@@ -1,6 +1,6 @@
 {
   super(configuration);
-  Settings settings=configuration.getSettings();
+  Settings settings=configuration.settings();
   this.sql=new StringBuilder();
   this.cachedRenderKeywordStyle=settings.getRenderKeywordStyle();
   this.cachedRenderFormatted=Boolean.TRUE.equals(settings.isRenderFormatted());

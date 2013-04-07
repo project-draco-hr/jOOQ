@@ -3,7 +3,7 @@
     return query;
   }
  else {
-switch (context.getDialect()) {
+switch (context.dialect()) {
 case POSTGRES:
 {
         return array;

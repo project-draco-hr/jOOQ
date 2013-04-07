@@ -5,13 +5,13 @@
  else {
     int result=1;
     ResultSet rs;
-switch (ctx.configuration().getDialect()) {
+switch (ctx.configuration().dialect()) {
 case SQLITE:
 {
         listener.executeStart(ctx);
         result=ctx.statement().executeUpdate();
         listener.executeEnd(ctx);
-        DSLContext create=DSL.using(ctx.connection(),SQLDialect.SQLITE,ctx.configuration().getSettings());
+        DSLContext create=DSL.using(ctx.connection(),SQLDialect.SQLITE,ctx.configuration().settings());
         returned=create.select(returning).from(getInto()).where(rowid().equal(rowid().getDataType().convert(create.lastID()))).fetchInto(getInto());
         return result;
       }

@@ -1,5 +1,5 @@
 {
-  SQLDialect dialect=configuration.getDialect();
+  SQLDialect dialect=configuration.dialect();
   if (asList(EQUALS,NOT_EQUALS).contains(comparator) && asList(ASE,DERBY,FIREBIRD,INGRES,SQLSERVER,SQLITE,SYBASE).contains(dialect)) {
     List<Condition> conditions=new ArrayList<Condition>();
     Field<?>[] leftFields=left.fields();

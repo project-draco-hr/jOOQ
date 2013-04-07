@@ -1,7 +1,7 @@
 {
   ctx.formatIndentLockStart().keyword("case");
   int size=compareValues.size();
-switch (ctx.configuration().getDialect()) {
+switch (ctx.configuration().dialect()) {
 case DERBY:
 {
       ctx.formatIndentLockStart();

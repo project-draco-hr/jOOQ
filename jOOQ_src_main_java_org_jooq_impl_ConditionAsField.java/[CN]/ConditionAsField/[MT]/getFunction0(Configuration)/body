@@ -1,5 +1,5 @@
 {
-switch (configuration.getDialect()) {
+switch (configuration.dialect()) {
 case CUBRID:
 case DB2:
 case FIREBIRD:

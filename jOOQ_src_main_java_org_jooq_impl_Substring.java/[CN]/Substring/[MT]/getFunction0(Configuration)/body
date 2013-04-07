@@ -1,6 +1,6 @@
 {
   String functionName="substring";
-switch (configuration.getDialect()) {
+switch (configuration.dialect()) {
 case ASE:
 case SQLSERVER:
 {

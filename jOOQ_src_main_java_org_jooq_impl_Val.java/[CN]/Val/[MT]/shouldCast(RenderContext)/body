@@ -1,7 +1,7 @@
 {
   if (!isInline(context)) {
     if (!(value instanceof EnumType)) {
-switch (context.configuration().getDialect()) {
+switch (context.configuration().dialect()) {
 case DB2:
 case DERBY:
 case FIREBIRD:
@@ -17,7 +17,7 @@ case SYBASE:
   }
 }
 if (getDataType().isInterval()) {
-switch (context.configuration().getDialect()) {
+switch (context.configuration().dialect()) {
 case ORACLE:
 case POSTGRES:
     return true;

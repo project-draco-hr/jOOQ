@@ -1,5 +1,5 @@
 {
-switch (context.configuration().getDialect()) {
+switch (context.configuration().dialect()) {
 case DERBY:
 {
       context.bind(offsetOrZero);

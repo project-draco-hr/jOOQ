@@ -3,7 +3,7 @@
     if (param.isInline()) {
       close();
     }
- else     if (SettingsTools.executeStaticStatements(getConfiguration().getSettings())) {
+ else     if (SettingsTools.executeStaticStatements(getConfiguration().settings())) {
       close();
     }
   }

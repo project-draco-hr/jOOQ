@@ -2,7 +2,7 @@
   if (literal == null) {
     return this;
   }
-  boolean needsQuote=(RenderNameStyle.QUOTED == cachedRenderNameStyle && configuration.getDialect() != SQLDialect.SQLITE) || (configuration.getDialect() == SQLDialect.SQLITE && SQLITE_KEYWORDS.contains(literal.toUpperCase())) || (!IDENTIFIER_PATTERN.matcher(literal).matches());
+  boolean needsQuote=(RenderNameStyle.QUOTED == cachedRenderNameStyle && configuration.dialect() != SQLDialect.SQLITE) || (configuration.dialect() == SQLDialect.SQLITE && SQLITE_KEYWORDS.contains(literal.toUpperCase())) || (!IDENTIFIER_PATTERN.matcher(literal).matches());
   if (RenderNameStyle.LOWER == cachedRenderNameStyle) {
     literal=literal.toLowerCase();
   }
@@ -13,7 +13,7 @@
     sql(literal);
   }
  else {
-switch (configuration.getDialect()) {
+switch (configuration.dialect()) {
 case MYSQL:
       sql("`").sql(StringUtils.replace(literal,"`","``")).sql("`");
     break;

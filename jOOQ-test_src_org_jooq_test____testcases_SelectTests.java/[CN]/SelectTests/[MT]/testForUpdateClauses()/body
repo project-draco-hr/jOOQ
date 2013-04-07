@@ -6,8 +6,8 @@ case SQLITE:
 }
 final DSLContext create1=create();
 final DSLContext create2=create();
-((DefaultConnectionProvider)create2.configuration().getConnectionProvider()).setConnection(getNewConnection());
-create2.configuration().getConnectionProvider().acquire().setAutoCommit(false);
+((DefaultConnectionProvider)create2.configuration().connectionProvider()).setConnection(getNewConnection());
+create2.configuration().connectionProvider().acquire().setAutoCommit(false);
 final Vector<String> execOrder=new Vector<String>();
 try {
 final Thread t1=new Thread(new Runnable(){
@@ -34,8 +34,8 @@ final Thread t2=new Thread(new Runnable(){
     sleep(4000);
     execOrder.add("t1-fail-or-t2-commit");
     try {
-      create2.configuration().getConnectionProvider().acquire().commit();
-      create2.configuration().getConnectionProvider().acquire().close();
+      create2.configuration().connectionProvider().acquire().commit();
+      create2.configuration().connectionProvider().acquire().close();
     }
  catch (    Exception e) {
     }
@@ -50,7 +50,7 @@ assertEquals(asList("t2-exec","t2-signal","t1-block","t1-fail-or-t2-commit","t1-
 }
   finally {
 try {
-  create2.configuration().getConnectionProvider().acquire().close();
+  create2.configuration().connectionProvider().acquire().close();
 }
  catch (Exception e) {
 }

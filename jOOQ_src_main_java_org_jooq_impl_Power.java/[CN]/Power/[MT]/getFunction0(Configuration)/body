@@ -1,5 +1,5 @@
 {
-switch (configuration.getDialect()) {
+switch (configuration.dialect()) {
 case DERBY:
 case SQLITE:
     return DSL.exp(DSL.ln(arg1).mul(arg2));

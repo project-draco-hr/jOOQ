@@ -1,5 +1,5 @@
 {
-  SQLDialect dialect=context.configuration().getDialect();
+  SQLDialect dialect=context.configuration().dialect();
   context.keyword("select ");
   if (!StringUtils.isBlank(hint)) {
     context.sql(hint).sql(" ");

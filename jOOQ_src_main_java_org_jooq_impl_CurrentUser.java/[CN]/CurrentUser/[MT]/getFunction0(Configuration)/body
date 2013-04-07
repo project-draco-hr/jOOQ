@@ -1,5 +1,5 @@
 {
-switch (configuration.getDialect()) {
+switch (configuration.dialect()) {
 case ASE:
 case ORACLE:
     return field("user",SQLDataType.VARCHAR);

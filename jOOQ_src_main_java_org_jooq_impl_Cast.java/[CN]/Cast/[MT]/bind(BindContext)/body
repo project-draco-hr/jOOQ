@@ -1,5 +1,5 @@
 {
-  if (context.configuration().getDialect() == SQLDialect.DERBY) {
+  if (context.configuration().dialect() == SQLDialect.DERBY) {
     if (field.getDataType().isNumeric() && BOOLEAN.equals(getSQLDataType())) {
       context.bind(asDecodeNumberToBoolean());
       return;

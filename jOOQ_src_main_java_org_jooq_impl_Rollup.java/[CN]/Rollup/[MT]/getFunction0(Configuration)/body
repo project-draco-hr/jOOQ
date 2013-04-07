@@ -1,5 +1,5 @@
 {
-switch (configuration.getDialect()) {
+switch (configuration.dialect()) {
 case CUBRID:
 case MYSQL:
     return field("{0} {with rollup}",new QueryPartList<Field<?>>(getArguments()));

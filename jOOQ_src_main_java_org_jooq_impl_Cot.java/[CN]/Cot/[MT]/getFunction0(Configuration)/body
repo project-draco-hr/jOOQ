@@ -1,5 +1,5 @@
 {
-switch (configuration.getDialect()) {
+switch (configuration.dialect()) {
 case INGRES:
 case ORACLE:
     return DSL.cos(argument).div(DSL.sin(argument));
