@@ -1,7 +1,7 @@
 {
-  DefaultConfiguration configuration=new DefaultConfiguration(create().configuration());
+  Configuration configuration=create().configuration().derive();
   configuration.getSettings().setExecuteLogging(false);
-  configuration.setExecuteListeners(new ArrayList<ExecuteListener>());
+  getListeners(configuration).clear();
   DSLContext create=create(configuration);
   testBenchmarkFullExecution(create,1);
   testBenchmarkReuseSelect(create,1);

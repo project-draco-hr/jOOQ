@@ -1,6 +1,0 @@
-{
-  this.listeners.clear();
-  if (listeners != null) {
-    listeners.addAll(listeners);
-  }
-}

@@ -1,0 +1,5 @@
+{
+  oos.defaultWriteObject();
+  oos.writeObject(connectionProvider instanceof Serializable ? connectionProvider : null);
+  oos.writeObject(listenerProvider instanceof Serializable ? listenerProvider : null);
+}

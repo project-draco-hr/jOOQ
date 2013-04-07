@@ -1,6 +1,6 @@
 {
   DSLContext create=create();
-  create.configuration().getExecuteListeners().add(new KeepStatementListener());
+  addListeners(create.configuration(),new KeepStatementListener());
   KeepStatementListener.reset();
   ResultQuery<Record2<Integer,Integer>> query=create.select(val(1),inline(2));
   assertEquals(1,query.fetchOne(0));

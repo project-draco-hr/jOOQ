@@ -3,8 +3,6 @@
   Boolean renderSchema=Boolean.valueOf(System.getProperty("org.jooq.settings.renderSchema","true"));
   Settings settings=SettingsTools.defaultSettings().withRenderSchema(renderSchema).withRenderMapping(new RenderMapping().withDefaultSchema(defaultSchema));
   DSLContext create=create(settings);
-  create.configuration().getExecuteListeners().add(new TestStatisticsListener());
-  create.configuration().getExecuteListeners().add(new PrettyPrinter());
-  create.configuration().getExecuteListeners().add(new LifecycleWatcherListener());
+  addListeners(create.configuration(),new TestStatisticsListener(),new PrettyPrinter(),new LifecycleWatcherListener());
   return create;
 }

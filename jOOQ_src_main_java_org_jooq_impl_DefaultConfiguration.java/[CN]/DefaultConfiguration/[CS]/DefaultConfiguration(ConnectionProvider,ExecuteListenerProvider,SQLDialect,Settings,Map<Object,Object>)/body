@@ -1,0 +1,8 @@
+{
+  this.connectionProvider=connectionProvider;
+  this.listenerProvider=listenerProvider != null ? listenerProvider : new DefaultExecuteListenerProvider();
+  this.dialect=dialect;
+  this.settings=settings != null ? SettingsTools.clone(settings) : SettingsTools.defaultSettings();
+  this.data=data != null ? new ConcurrentHashMap<Object,Object>(data) : new ConcurrentHashMap<Object,Object>();
+  this.mapping=new org.jooq.SchemaMapping(this);
+}

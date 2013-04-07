@@ -1,6 +1,6 @@
 {
   DSLContext create=create();
-  create.configuration().getExecuteListeners().add(new CustomExceptionListener());
+  addListeners(create.configuration(),new CustomExceptionListener());
   try {
     create.fetch("invalid sql");
   }

@@ -32,7 +32,7 @@
   ConnectionProviderListener.c=create().configuration().getConnectionProvider().acquire();
   try {
     DSLContext create=create();
-    create.configuration().getExecuteListeners().add(new ConnectionProviderListener());
+    addListeners(create.configuration(),new ConnectionProviderListener());
     q=create.selectFrom(TAuthor()).orderBy(TAuthor_LAST_NAME());
     q=runSerialisation(q);
     q.execute();

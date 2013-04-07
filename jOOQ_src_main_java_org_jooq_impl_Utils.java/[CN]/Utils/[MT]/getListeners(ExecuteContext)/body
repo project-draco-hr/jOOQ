@@ -4,6 +4,9 @@
     result.add(new StopWatchListener());
     result.add(new LoggerListener());
   }
-  result.addAll(ctx.configuration().getExecuteListeners());
+  ExecuteListenerProvider provider=ctx.configuration().getExecuteListenerProvider();
+  if (provider != null) {
+    result.addAll(provider.provide());
+  }
   return result;
 }

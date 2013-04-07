@@ -1,5 +1,5 @@
 {
   DSLContext create=create();
-  create.configuration().getExecuteListeners().add(new DataListener());
+  addListeners(create.configuration(),new DataListener());
   create.selectOne().fetch();
 }

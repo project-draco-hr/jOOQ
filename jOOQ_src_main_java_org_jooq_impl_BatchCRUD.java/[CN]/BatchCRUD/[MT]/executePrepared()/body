@@ -1,38 +1,32 @@
 {
   Map<String,List<Query>> queries=new LinkedHashMap<String,List<Query>>();
-  Boolean executeLogging=configuration.getSettings().isExecuteLogging();
   QueryCollector collector=new QueryCollector();
-  try {
-    configuration.setData(Utils.DATA_OMIT_RETURNING_CLAUSE,true);
-    configuration.getExecuteListeners().add(collector);
-    configuration.getSettings().setExecuteLogging(false);
-    for (int i=0; i < records.length; i++) {
-      Configuration previous=((AttachableInternal)records[i]).getConfiguration();
-      try {
-        records[i].attach(configuration);
-        executeAction(i);
-      }
- catch (      QueryCollectorException e) {
-        Query query=e.getQuery();
-        String sql=e.getSQL();
-        if (query.isExecutable()) {
-          List<Query> list=queries.get(sql);
-          if (list == null) {
-            list=new ArrayList<Query>();
-            queries.put(sql,list);
-          }
-          list.add(query);
+  List<ExecuteListener> listeners=new ArrayList<ExecuteListener>(configuration.getExecuteListenerProvider().provide());
+  listeners.add(collector);
+  Configuration local=configuration.derive(new DefaultExecuteListenerProvider(listeners));
+  local.setData(Utils.DATA_OMIT_RETURNING_CLAUSE,true);
+  local.getSettings().setExecuteLogging(false);
+  for (int i=0; i < records.length; i++) {
+    Configuration previous=((AttachableInternal)records[i]).getConfiguration();
+    try {
+      records[i].attach(local);
+      executeAction(i);
+    }
+ catch (    QueryCollectorException e) {
+      Query query=e.getQuery();
+      String sql=e.getSQL();
+      if (query.isExecutable()) {
+        List<Query> list=queries.get(sql);
+        if (list == null) {
+          list=new ArrayList<Query>();
+          queries.put(sql,list);
         }
-      }
- finally {
-        records[i].attach(previous);
+        list.add(query);
       }
     }
-  }
-  finally {
-    configuration.getData().remove(Utils.DATA_OMIT_RETURNING_CLAUSE);
-    configuration.getExecuteListeners().remove(collector);
-    configuration.getSettings().setExecuteLogging(executeLogging);
+ finally {
+      records[i].attach(previous);
+    }
   }
   List<Integer> result=new ArrayList<Integer>();
   for (  Entry<String,List<Query>> entry : queries.entrySet()) {

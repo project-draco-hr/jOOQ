@@ -1,0 +1,3 @@
+{
+  getListeners(configuration).addAll(Arrays.asList(listeners));
+}

@@ -1,3 +1,3 @@
 {
-  this(new NoConnectionProvider(),SQL99,SettingsTools.defaultSettings(),null);
+  this(new NoConnectionProvider(),new DefaultExecuteListenerProvider(),SQL99,SettingsTools.defaultSettings(),null);
 }

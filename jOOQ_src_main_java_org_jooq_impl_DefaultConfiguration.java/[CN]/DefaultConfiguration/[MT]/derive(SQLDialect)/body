@@ -1,0 +1,3 @@
+{
+  return new DefaultConfiguration(connectionProvider,listenerProvider,newDialect,settings,data);
+}
