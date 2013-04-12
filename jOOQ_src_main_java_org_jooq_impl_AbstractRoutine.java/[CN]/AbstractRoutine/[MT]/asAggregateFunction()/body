@@ -5,5 +5,13 @@
     array[i]=getInValues().get(p);
     i++;
   }
-  return (AggregateFunction<T>)function(getName(),type,array);
+  List<String> names=new ArrayList<String>();
+  if (schema != null) {
+    names.add(schema.getName());
+  }
+  if (pkg != null) {
+    names.add(pkg.getName());
+  }
+  names.add(name);
+  return (AggregateFunction<T>)function(DSL.name(names.toArray(new String[names.size()])),type,array);
 }
