@@ -7,7 +7,7 @@
   setClass_(from.getClass_());
   setFields(from.getFields());
   setTable_(from.getTable_());
-  setConfiguration_(from.getConfiguration_());
+  setConfiguration(from.getConfiguration());
   setUDT(from.getUDT());
   setMetaData(from.getMetaData());
   setValues_(from.getValues_());

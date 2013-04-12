@@ -5,7 +5,7 @@
   setIdRef(from.getIdRef());
   setClass_(from.getClass_());
   setFields(from.getFields());
-  setConfiguration_(from.getConfiguration_());
+  setConfiguration(from.getConfiguration());
   setUDT(from.getUDT());
   setMetaData(from.getMetaData());
   setType0(from.getType0());
