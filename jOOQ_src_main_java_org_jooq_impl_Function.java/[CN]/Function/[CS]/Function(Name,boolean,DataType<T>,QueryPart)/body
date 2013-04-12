@@ -1,7 +1,7 @@
 {
-  super(name,type);
+  super(last(name.getName()),type);
   this.term=null;
-  this.name=null;
+  this.name=name;
   this.distinct=distinct;
   this.arguments=new QueryPartList<QueryPart>(arguments);
   this.keepDenseRankOrderBy=new SortFieldList();

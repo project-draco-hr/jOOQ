@@ -1,0 +1,11 @@
+{
+  if (name != null) {
+    ctx.sql(name);
+  }
+ else   if (term != null) {
+    ctx.sql(term.translate(ctx.configuration().dialect()));
+  }
+ else {
+    ctx.sql(getName());
+  }
+}

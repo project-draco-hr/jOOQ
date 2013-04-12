@@ -1,0 +1,3 @@
+Name name
+Class<T> type
+Field<?> arguments

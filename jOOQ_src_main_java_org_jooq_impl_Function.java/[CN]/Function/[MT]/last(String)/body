@@ -1,0 +1,6 @@
+{
+  if (strings != null && strings.length > 0) {
+    return strings[strings.length - 1];
+  }
+  return null;
+}

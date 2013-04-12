@@ -1,0 +1,4 @@
+Name name
+boolean distinct
+DataType<T> type
+QueryPart arguments

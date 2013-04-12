@@ -1,6 +1,7 @@
 {
   super(term.name().toLowerCase(),type);
   this.term=term;
+  this.name=null;
   this.distinct=distinct;
   this.arguments=new QueryPartList<QueryPart>(arguments);
   this.keepDenseRankOrderBy=new SortFieldList();

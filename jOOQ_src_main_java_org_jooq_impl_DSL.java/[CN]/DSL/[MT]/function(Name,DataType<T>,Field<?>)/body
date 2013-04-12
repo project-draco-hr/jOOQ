@@ -1,0 +1,3 @@
+{
+  return new Function<T>(name,type,nullSafe(arguments));
+}
