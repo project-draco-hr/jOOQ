@@ -1,9 +1,7 @@
 {
   Map<String,List<Query>> queries=new LinkedHashMap<String,List<Query>>();
   QueryCollector collector=new QueryCollector();
-  List<ExecuteListener> listeners=new ArrayList<ExecuteListener>(configuration.executeListenerProvider().provide());
-  listeners.add(collector);
-  Configuration local=configuration.derive(new DefaultExecuteListenerProvider(listeners));
+  Configuration local=configuration.derive(Utils.combine(configuration.executeListenerProviders(),new DefaultExecuteListenerProvider(collector)));
   local.data(Utils.DATA_OMIT_RETURNING_CLAUSE,true);
   local.settings().setExecuteLogging(false);
   for (int i=0; i < records.length; i++) {

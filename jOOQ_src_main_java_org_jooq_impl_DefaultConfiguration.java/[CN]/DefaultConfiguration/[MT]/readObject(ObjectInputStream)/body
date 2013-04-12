@@ -1,5 +1,5 @@
 {
   ois.defaultReadObject();
   connectionProvider=(ConnectionProvider)ois.readObject();
-  listenerProvider=(ExecuteListenerProvider)ois.readObject();
+  listenerProviders=(ExecuteListenerProvider[])ois.readObject();
 }

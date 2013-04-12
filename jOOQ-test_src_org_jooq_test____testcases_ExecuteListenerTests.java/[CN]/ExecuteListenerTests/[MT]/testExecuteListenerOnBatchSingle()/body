@@ -4,8 +4,7 @@
     return;
   }
   jOOQAbstractTest.reset=false;
-  DSLContext create=create();
-  addListeners(create.configuration(),new BatchSingleListener());
+  DSLContext create=create(new BatchSingleListener());
   create.configuration().data("Foo","Bar");
   create.configuration().data("Bar","Baz");
   int[] result=create.batch(create().insertInto(TAuthor()).set(TAuthor_ID(),param("id",Integer.class)).set(TAuthor_LAST_NAME(),param("name",String.class))).bind(8,"Gamma").bind(9,"Helm").bind(10,"Johnson").execute();

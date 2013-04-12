@@ -1,6 +1,5 @@
 {
-  DSLContext create=create();
-  addListeners(create.configuration(),new ResultQueryListener());
+  DSLContext create=create(new ResultQueryListener());
   create.configuration().data("Foo","Bar");
   create.configuration().data("Bar","Baz");
   Result<?> result=create.select(TBook_ID(),val("Hello")).from(TBook()).where(TBook_ID().in(1,2)).fetch();

@@ -4,9 +4,10 @@
     result.add(new StopWatchListener());
     result.add(new LoggerListener());
   }
-  ExecuteListenerProvider provider=ctx.configuration().executeListenerProvider();
-  if (provider != null) {
-    result.addAll(provider.provide());
+  for (  ExecuteListenerProvider provider : ctx.configuration().executeListenerProviders()) {
+    if (provider != null) {
+      result.add(provider.provide());
+    }
   }
   return result;
 }

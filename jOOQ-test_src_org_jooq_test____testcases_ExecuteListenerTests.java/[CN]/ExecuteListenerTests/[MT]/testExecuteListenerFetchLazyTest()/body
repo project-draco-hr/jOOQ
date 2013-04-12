@@ -1,6 +1,5 @@
 {
-  DSLContext create=create();
-  addListeners(create.configuration(),new FetchLazyListener());
+  DSLContext create=create(new FetchLazyListener());
   FetchLazyListener.reset();
   create.selectFrom(TAuthor()).fetch();
   assertEquals(1,FetchLazyListener.countStart);

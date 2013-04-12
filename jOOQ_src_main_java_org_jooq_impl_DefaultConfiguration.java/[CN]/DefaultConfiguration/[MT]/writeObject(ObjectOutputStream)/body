@@ -1,5 +1,11 @@
 {
   oos.defaultWriteObject();
   oos.writeObject(connectionProvider instanceof Serializable ? connectionProvider : null);
-  oos.writeObject(listenerProvider instanceof Serializable ? listenerProvider : null);
+  ExecuteListenerProvider[] clone=new ExecuteListenerProvider[listenerProviders.length];
+  for (int i=0; i < clone.length; i++) {
+    if (listenerProviders[i] instanceof Serializable) {
+      clone[i]=listenerProviders[i];
+    }
+  }
+  oos.writeObject(clone);
 }

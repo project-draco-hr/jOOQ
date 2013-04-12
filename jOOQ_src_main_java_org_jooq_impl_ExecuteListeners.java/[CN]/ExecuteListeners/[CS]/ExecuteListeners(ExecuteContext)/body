@@ -1,4 +1,4 @@
 {
-  listeners=Utils.getListeners(ctx);
+  listeners=listeners(ctx);
   start(ctx);
 }

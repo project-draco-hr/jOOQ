@@ -1,0 +1,3 @@
+{
+  return DSL.using(configuration.derive(combine(configuration.executeListenerProviders(),new DefaultExecuteListenerProvider(new TestStatisticsListener()))));
+}

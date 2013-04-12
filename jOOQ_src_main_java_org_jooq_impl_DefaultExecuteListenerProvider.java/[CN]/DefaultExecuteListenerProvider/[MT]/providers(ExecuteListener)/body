@@ -1,0 +1,7 @@
+{
+  ExecuteListenerProvider[] result=new ExecuteListenerProvider[listeners.length];
+  for (int i=0; i < listeners.length; i++) {
+    result[i]=new DefaultExecuteListenerProvider(listeners[i]);
+  }
+  return result;
+}
