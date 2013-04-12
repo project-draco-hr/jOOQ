@@ -1,0 +1,5 @@
+{
+  this.settings=newSettings;
+  this.mapping=new SchemaMapping(this);
+  return this;
+}
