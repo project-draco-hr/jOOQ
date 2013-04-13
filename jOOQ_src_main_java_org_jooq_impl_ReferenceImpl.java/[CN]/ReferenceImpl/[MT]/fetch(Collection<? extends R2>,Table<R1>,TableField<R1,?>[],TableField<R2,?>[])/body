@@ -1,8 +1,8 @@
 {
   if (fields1.length == 1) {
-    return extractExecutor(records).selectFrom(table).where(((Field<Object>)fields1[0]).in(extractValues(records,fields2[0]))).fetch();
+    return extractDSLContext(records).selectFrom(table).where(((Field<Object>)fields1[0]).in(extractValues(records,fields2[0]))).fetch();
   }
  else {
-    return extractExecutor(records).selectFrom(table).where(row(fields1).in(extractRows(records,fields2))).fetch();
+    return extractDSLContext(records).selectFrom(table).where(row(fields1).in(extractRows(records,fields2))).fetch();
   }
 }
