@@ -6,4 +6,5 @@
   castMode(context.castMode());
   declareFields(context.declareFields());
   declareTables(context.declareTables());
+  data().putAll(context.data());
 }

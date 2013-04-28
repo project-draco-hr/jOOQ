@@ -1,0 +1,7 @@
+{
+  RenderContext ctx=create.renderContext();
+  ctx.data("key","value");
+  TestDataQueryPart part=new TestDataQueryPart();
+  ctx.render(part);
+  assertEquals("value",part.value);
+}
