@@ -1,5 +1,6 @@
 {
   if (part != null) {
+    checkForceInline(part);
     QueryPartInternal internal=(QueryPartInternal)part;
     if (declareFields() && !internal.declaresFields()) {
       declareFields(false);

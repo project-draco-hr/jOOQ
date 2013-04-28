@@ -1,0 +1,3 @@
+{
+  if (Boolean.TRUE.equals(data(DATA_COUNT_BIND_VALUES)))   if (++params > max)   throw new ForceInlineSignal();
+}

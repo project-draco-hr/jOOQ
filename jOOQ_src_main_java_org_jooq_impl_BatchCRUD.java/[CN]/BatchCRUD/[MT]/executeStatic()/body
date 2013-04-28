@@ -8,7 +8,7 @@
       records[i].attach(local);
       executeAction(i);
     }
- catch (    QueryCollectorException e) {
+ catch (    QueryCollectorSignal e) {
       Query query=e.getQuery();
       if (query.isExecutable()) {
         queries.add(query);

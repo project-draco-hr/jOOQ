@@ -1,0 +1,16 @@
+{
+  if (executePreparedStatements(configuration().settings())) {
+    try {
+      RenderContext render=new DefaultRenderContext(configuration);
+      render.data(DATA_COUNT_BIND_VALUES,true);
+      return render.render(this);
+    }
+ catch (    DefaultRenderContext.ForceInlineSignal e) {
+      ctx.data(DATA_FORCE_STATIC_STATEMENT,true);
+      return getSQL(true);
+    }
+  }
+ else {
+    return getSQL(true);
+  }
+}

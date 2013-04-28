@@ -10,7 +10,7 @@
       records[i].attach(local);
       executeAction(i);
     }
- catch (    QueryCollectorException e) {
+ catch (    QueryCollectorSignal e) {
       Query query=e.getQuery();
       String sql=e.getSQL();
       if (query.isExecutable()) {
