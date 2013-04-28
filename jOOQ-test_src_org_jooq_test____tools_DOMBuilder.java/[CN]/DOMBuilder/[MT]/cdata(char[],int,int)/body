@@ -1,0 +1,6 @@
+{
+  if (isOutsideDocElem())   return;
+  String s=new String(ch,start,length);
+  CDATASection section=(CDATASection)m_currentNode.getLastChild();
+  section.appendData(s);
+}
