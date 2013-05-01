@@ -1,4 +1,8 @@
 {
+  if (asList(SQLITE).contains(dialect())) {
+    log.info("SKIPPING","ResultSet type tests");
+    return;
+  }
   assertEquals(asList(1,1,1,2),create(new DefaultExecuteListener(){
     int repeat;
     @Override public void recordEnd(    ExecuteContext ctx){
