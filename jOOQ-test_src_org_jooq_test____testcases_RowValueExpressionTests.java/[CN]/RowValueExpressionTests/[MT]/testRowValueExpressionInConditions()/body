@@ -1,11 +1,6 @@
 {
-  if (asList(ASE,CUBRID,DERBY,FIREBIRD,INGRES,SQLSERVER,SQLITE,SYBASE).contains(dialect())) {
-    log.info("SKIPPING","Tuples and subselects");
-  }
- else {
-    if (!asList(DB2).contains(dialect())) {
-      assertEquals(1,(int)create().selectOne().where(row(1,2,3).in(select(val(1),val(2),val(3)))).and(row(1,2,3).notIn(select(val(3),val(2),val(1)))).and(row(1,2,"3").equal(select(val(1),val(2),val("3")))).and(row(1,"2",3).notEqual(select(val(1),val("4"),val(3)))).fetchOne(0,Integer.class));
-    }
-    assertEquals(1,(int)create().selectOne().where(row(1,2,3).in(select(val(1),val(2),val(3)))).and(row(3,"2").notIn(select(val(2),val("3")).union(select(val(4),val("3"))))).fetchOne(0,Integer.class));
-  }
+  assertEquals(1,(int)create().selectOne().where(row(1,2,3).in(select(val(1),val(2),val(3)))).and(row(3,"2").notIn(select(val(2),val("3")).union(select(val(4),val("3"))))).fetchOne(0,Integer.class));
+  assertEquals(1,(int)create().selectOne().where(row(1,2,3).in(select(val(1),val(2),val(3)))).and(row(1,2,3).notIn(select(val(3),val(2),val(1)))).and(row(1,2,"3").equal(select(val(1),val(2),val("3")))).and(row(1,"2",3).notEqual(select(val(1),val("4"),val(3)))).fetchOne(0,Integer.class));
+  assertEquals(1,(int)create().select(TBook_ID()).from(TBook()).where(row(TBook_ID(),TBook_AUTHOR_ID()).in(select(val(1),val(1)))).fetchOne(0,Integer.class));
+  assertEquals(asList(1,2),create().select(TBook_ID()).from(TBook()).where(row(TBook_ID(),TBook_AUTHOR_ID()).in(select(val(1),val(1)).unionAll(select(val(2),val(1)).unionAll(select(TBook_ID(),TBook_ID()).from(TBook()))))).orderBy(TBook_ID()).fetch(0,Integer.class));
 }

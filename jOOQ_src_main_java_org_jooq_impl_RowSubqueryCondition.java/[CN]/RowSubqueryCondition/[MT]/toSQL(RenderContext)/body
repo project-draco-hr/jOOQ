@@ -1,9 +1,3 @@
 {
-  boolean extraParentheses=asList(ORACLE).contains(context.configuration().dialect());
-  boolean subquery=context.subquery();
-  context.sql(left).sql(" ").keyword(operator.toSQL()).sql(" (").sql(extraParentheses ? "(" : "");
-  context.data(Utils.DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY,true);
-  context.subquery(true).sql(right).subquery(subquery);
-  context.data(Utils.DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY,null);
-  context.sql(extraParentheses ? ")" : "").sql(")");
+  delegate(context.configuration(),context).toSQL(context);
 }

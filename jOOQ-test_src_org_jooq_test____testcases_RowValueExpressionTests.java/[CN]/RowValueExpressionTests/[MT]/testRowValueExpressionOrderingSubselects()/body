@@ -1,10 +1,5 @@
 {
-  if (asList(ASE,CUBRID,DB2,DERBY,FIREBIRD,INGRES,ORACLE,SQLSERVER,SQLITE,SYBASE).contains(dialect())) {
-    log.info("SKIPPING","Tuples and subselects");
-  }
- else {
-    assertEquals(1,(int)create().selectOne().where(trueCondition()).and(row(1).lt(select(inline(2)))).and(row(1).le(select(inline(1)))).and(row(1).gt(select(inline(0)))).and(row(1).ge(select(inline(1)))).fetchOne(0,Integer.class));
-    assertEquals(1,(int)create().selectOne().where(trueCondition()).and(row(1,1).lt(select(inline(1),inline(2)))).and(row(1,1).le(select(inline(1),inline(2)))).and(row(1,1).gt(select(inline(1),inline(0)))).and(row(1,1).ge(select(inline(1),inline(0)))).fetchOne(0,Integer.class));
-    assertEquals(1,(int)create().selectOne().where(trueCondition()).and(row(1,1,1).lt(select(inline(1),inline(1),inline(2)))).and(row(1,1,1).le(select(inline(1),inline(1),inline(2)))).and(row(1,1,1).gt(select(inline(1),inline(1),inline(0)))).and(row(1,1,1).ge(select(inline(1),inline(1),inline(0)))).fetchOne(0,Integer.class));
-  }
+  assertEquals(1,(int)create().selectOne().where(trueCondition()).and(row(1).lt(select(inline(2)))).and(row(1).le(select(inline(1)))).and(row(1).gt(select(inline(0)))).and(row(1).ge(select(inline(1)))).fetchOne(0,Integer.class));
+  assertEquals(1,(int)create().selectOne().where(trueCondition()).and(row(1,1).lt(select(inline(1),inline(2)))).and(row(1,1).le(select(inline(1),inline(2)))).and(row(1,1).gt(select(inline(1),inline(0)))).and(row(1,1).ge(select(inline(1),inline(0)))).fetchOne(0,Integer.class));
+  assertEquals(1,(int)create().selectOne().where(trueCondition()).and(row(1,1,1).lt(select(inline(1),inline(1),inline(2)))).and(row(1,1,1).le(select(inline(1),inline(1),inline(2)))).and(row(1,1,1).gt(select(inline(1),inline(1),inline(0)))).and(row(1,1,1).ge(select(inline(1),inline(1),inline(0)))).fetchOne(0,Integer.class));
 }
