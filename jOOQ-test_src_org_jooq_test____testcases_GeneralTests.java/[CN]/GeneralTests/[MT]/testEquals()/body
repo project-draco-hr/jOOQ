@@ -1,10 +1,4 @@
 {
-  ProjectRecord record=create().newRecord(Tables.PROJECT);
-  record.setCode("billyboytest");
-  record.setCompany("code1234");
-  record.setName("nca");
-  record.insert();
-  if (true)   return;
   assertEquals(create().selectFrom(TBook()).fetchAny(),create().selectFrom(TBook()).fetchAny());
   assertEquals(create().selectFrom(TBook()).fetchAny(),create().select().from(TBook()).fetchAny());
   assertEquals(create().select(TBook_ID(),TBook_TITLE()).from(TBook()).fetchAny(),create().select(TBook_ID(),TBook_TITLE()).from(TBook()).fetchAny());
