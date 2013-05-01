@@ -1,0 +1,12 @@
+{
+  ResultSet rs=create().select(TBook_ID()).from(TBook()).where(TBook_ID().in(1,2)).orderBy(TBook_ID()).resultSetType(ResultSet.TYPE_SCROLL_INSENSITIVE).fetchResultSet();
+  assertTrue(rs.next());
+  assertEquals(1,rs.getInt(1));
+  assertTrue(rs.next());
+  assertEquals(2,rs.getInt(1));
+  assertTrue(rs.previous());
+  assertEquals(1,rs.getInt(1));
+  assertTrue(rs.last());
+  assertEquals(2,rs.getInt(1));
+  rs.close();
+}

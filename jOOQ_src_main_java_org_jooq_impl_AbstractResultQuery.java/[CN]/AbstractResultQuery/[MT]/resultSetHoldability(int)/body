@@ -1,0 +1,4 @@
+{
+  this.resultSetHoldability=holdability;
+  return this;
+}

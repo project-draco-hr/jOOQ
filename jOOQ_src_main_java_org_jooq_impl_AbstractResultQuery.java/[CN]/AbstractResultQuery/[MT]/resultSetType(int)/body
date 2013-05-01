@@ -1,0 +1,4 @@
+{
+  this.resultSetType=type;
+  return this;
+}

@@ -1,0 +1,3 @@
+{
+  new ResultSetTests(this).testResultSetTypeWithListener();
+}
