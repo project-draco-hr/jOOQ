@@ -1,0 +1,7 @@
+{
+  Query[] result=new Query[queries.length];
+  for (int i=0; i < queries.length; i++) {
+    result[i]=query(queries[i]);
+  }
+  return batch(result);
+}
