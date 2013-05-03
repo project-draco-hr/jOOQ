@@ -1,3 +1,3 @@
 {
-  return new RowSubqueryCondition(this,select,SubqueryOperator.GREATER_OR_EQUAL);
+  return new RowSubqueryCondition(this,select,SubqueryComparator.GREATER_OR_EQUAL);
 }

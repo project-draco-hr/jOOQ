@@ -1,3 +1,3 @@
 {
-  return new RowSubqueryCondition(this,select,SubqueryOperator.IN);
+  return new RowSubqueryCondition(this,select,SubqueryComparator.IN);
 }
