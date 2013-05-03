@@ -1,0 +1,3 @@
+{
+  return Utils.filterOne(selectFrom(table).where(condition).limit(1).fetch());
+}
