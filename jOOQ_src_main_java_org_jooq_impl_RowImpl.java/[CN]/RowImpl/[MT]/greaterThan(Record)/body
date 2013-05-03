@@ -1,4 +1,3 @@
 {
-  Row row=new RowImpl(Utils.fields(record.intoArray(),record.fields()));
-  return new RowCondition(this,row,Comparator.GREATER);
+  return new RowCondition(this,record.valuesRow(),Comparator.GREATER);
 }

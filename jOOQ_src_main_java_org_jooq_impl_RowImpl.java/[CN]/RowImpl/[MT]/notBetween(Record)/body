@@ -1,4 +1,3 @@
 {
-  RowN row=new RowImpl(Utils.fields(record.intoArray(),record.fields()));
-  return notBetween(row);
+  return notBetween(record.valuesRow());
 }
