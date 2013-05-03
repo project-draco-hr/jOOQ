@@ -3,8 +3,12 @@
     return tableCache;
   }
   try {
+    String[] types=null;
+    if (configuration.dialect() == SQLITE) {
+      types=new String[]{"TABLE","VIEW"};
+    }
     List<Table<?>> result=new ArrayList<Table<?>>();
-    Result<Record> tables=create.fetch(meta().getTables(null,getName(),"%",null));
+    Result<Record> tables=create.fetch(meta().getTables(null,getName(),"%",types));
     for (    Record table : tables) {
       String name=table.getValue(2,String.class);
       result.add(new MetaTable(name,this,getColumns(name)));
