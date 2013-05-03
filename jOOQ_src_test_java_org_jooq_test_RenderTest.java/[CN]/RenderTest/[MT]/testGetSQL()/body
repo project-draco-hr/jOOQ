@@ -1,0 +1,4 @@
+{
+  Query q=create.select(val(1),val("A"));
+  testGetSQL0(q,"select ?, ? from dual");
+}

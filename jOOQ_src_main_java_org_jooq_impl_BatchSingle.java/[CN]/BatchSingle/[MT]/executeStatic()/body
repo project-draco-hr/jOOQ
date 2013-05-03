@@ -4,7 +4,7 @@
     for (int i=0; i < bindValues.length; i++) {
       query.bind(i + 1,bindValues[i]);
     }
-    queries.add(create.query(query.getSQL(true)));
+    queries.add(create.query(query.getSQL(INLINED)));
   }
   return create.batch(queries).execute();
 }

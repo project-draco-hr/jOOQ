@@ -1,4 +1,4 @@
 {
-  this.inline=i;
+  this.paramType=i ? INLINED : INDEXED;
   return this;
 }

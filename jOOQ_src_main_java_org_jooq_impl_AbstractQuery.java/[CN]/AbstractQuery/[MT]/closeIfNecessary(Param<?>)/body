@@ -3,7 +3,7 @@
     if (param.isInline()) {
       close();
     }
- else     if (SettingsTools.executeStaticStatements(configuration().settings())) {
+ else     if (getParamType(configuration().settings()) == INLINED) {
       close();
     }
   }

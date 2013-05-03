@@ -1,0 +1,12 @@
+{
+  if (executeStaticStatements(settings)) {
+    return INLINED;
+  }
+ else   if (settings != null) {
+    ParamType result=settings.getParamType();
+    if (result != null) {
+      return result;
+    }
+  }
+  return INDEXED;
+}

@@ -8,12 +8,12 @@
   if (ctx.query() != null) {
     System.out.println(normal.renderInlined(ctx.query()));
     System.out.println();
-    System.out.println(pretty.renderContext().inline(true).render(ctx.query()));
+    System.out.println(pretty.renderContext().paramType(INLINED).render(ctx.query()));
   }
  else   if (ctx.routine() != null) {
     System.out.println(normal.renderInlined(ctx.routine()));
     System.out.println();
-    System.out.println(pretty.renderContext().inline(true).render(ctx.routine()));
+    System.out.println(pretty.renderContext().paramType(INLINED).render(ctx.routine()));
   }
  else   if (!StringUtils.isBlank(ctx.sql())) {
     System.out.println(ctx.sql());

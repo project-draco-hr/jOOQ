@@ -1,0 +1,8 @@
+{
+  assertEquals(defaultSQL,q.getSQL());
+  assertEquals("select ?, ? from dual",q.getSQL(false));
+  assertEquals("select 1, 'A' from dual",q.getSQL(true));
+  assertEquals("select ?, ? from dual",q.getSQL(INDEXED));
+  assertEquals("select :1, :2 from dual",q.getSQL(NAMED));
+  assertEquals("select 1, 'A' from dual",q.getSQL(INLINED));
+}

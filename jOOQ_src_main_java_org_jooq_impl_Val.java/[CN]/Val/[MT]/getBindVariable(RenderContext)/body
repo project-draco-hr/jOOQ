@@ -1,5 +1,5 @@
 {
-  if (context.namedParams()) {
+  if (context.paramType() == NAMED) {
     int index=context.nextIndex();
     if (StringUtils.isBlank(getParamName())) {
       return ":" + index;

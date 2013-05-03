@@ -1,5 +1,5 @@
 {
-  String sql=createSelect(create).getSQL(false);
+  String sql=createSelect(create).getSQL(INDEXED);
   PreparedStatement pst=getConnection().prepareStatement(sql);
   pst.setLong(1,1);
   pst.setString(2,RANDOM);

@@ -2,7 +2,7 @@
   if (log.isDebugEnabled()) {
     if (ctx.query() != null) {
       log.debug("Executing query",ctx.sql());
-      String inlined=ctx.query().getSQL(true);
+      String inlined=ctx.query().getSQL(INLINED);
       if (!ctx.sql().equals(inlined)) {
         log.debug("-> with bind values",inlined);
       }

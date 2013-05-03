@@ -27,7 +27,7 @@
     }
  else     if (sqlChars[i] == '?' && substituteIndex < substitutes.size()) {
       QueryPart substitute=substitutes.get(substituteIndex++);
-      if (render.inline()) {
+      if (render.paramType() == INLINED) {
         render.sql(substitute);
       }
  else {

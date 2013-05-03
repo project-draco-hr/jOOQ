@@ -7,10 +7,10 @@
     }
  catch (    DefaultRenderContext.ForceInlineSignal e) {
       ctx.data(DATA_FORCE_STATIC_STATEMENT,true);
-      return getSQL(true);
+      return getSQL(INLINED);
     }
   }
  else {
-    return getSQL(true);
+    return getSQL(INLINED);
   }
 }

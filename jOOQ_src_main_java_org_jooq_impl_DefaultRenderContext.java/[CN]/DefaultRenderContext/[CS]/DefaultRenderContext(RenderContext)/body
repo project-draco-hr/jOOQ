@@ -1,7 +1,6 @@
 {
   this(context.configuration());
-  inline(context.inline());
-  namedParams(context.namedParams());
+  paramType(context.paramType());
   qualify(context.qualify());
   castMode(context.castMode());
   declareFields(context.declareFields());

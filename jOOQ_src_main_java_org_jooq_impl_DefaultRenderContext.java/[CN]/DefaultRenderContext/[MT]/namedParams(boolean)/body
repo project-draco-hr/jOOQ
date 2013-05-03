@@ -1,4 +1,4 @@
 {
-  this.renderNamedParams=r;
+  this.paramType=r ? NAMED : INDEXED;
   return this;
 }

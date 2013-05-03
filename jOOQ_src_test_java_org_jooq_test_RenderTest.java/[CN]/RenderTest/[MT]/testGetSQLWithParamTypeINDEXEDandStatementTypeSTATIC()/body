@@ -1,0 +1,4 @@
+{
+  Query q=DSL.using(SQLDialect.ORACLE,new Settings().withParamType(INDEXED).withStatementType(STATIC_STATEMENT)).select(val(1),val("A"));
+  testGetSQL0(q,"select 1, 'A' from dual");
+}

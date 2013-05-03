@@ -47,8 +47,8 @@ context.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY,data);
 context.sql(getSelect1());
 }
 if (limitOffsetRownumber != null) {
-boolean inline=context.inline();
-context.inline(true).sql(",").formatIndentStart().formatSeparator().sql(limitOffsetRownumber).formatIndentEnd().inline(inline);
+ParamType paramType=context.paramType();
+context.paramType(INLINED).sql(",").formatIndentStart().formatSeparator().sql(limitOffsetRownumber).formatIndentEnd().paramType(paramType);
 }
 context.declareFields(false);
 context.declareTables(true);

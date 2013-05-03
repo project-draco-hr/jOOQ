@@ -2,7 +2,7 @@
 switch (context.configuration().dialect()) {
 case ORACLE:
 {
-      if (context.inline()) {
+      if (context.paramType() == INLINED) {
         toSQLInline(context);
       }
  else {

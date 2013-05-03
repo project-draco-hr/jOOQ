@@ -1,5 +1,5 @@
 {
-  boolean inline=context.inline();
+  ParamType paramType=context.paramType();
   CastMode castMode=context.castMode();
 switch (context.configuration().dialect()) {
 case MYSQL:
@@ -28,12 +28,12 @@ break;
 }
 case INGRES:
 {
-context.inline(true).formatSeparator().keyword("offset ").sql(offsetOrZero).keyword(" fetch first ").sql(numberOfRows).keyword(" rows only").inline(inline);
+context.paramType(INLINED).formatSeparator().keyword("offset ").sql(offsetOrZero).keyword(" fetch first ").sql(numberOfRows).keyword(" rows only").paramType(paramType);
 break;
 }
 case SYBASE:
 {
-context.inline(true).keyword("top ").sql(numberOfRows).keyword(" start at ").sql(offsetPlusOne).inline(inline);
+context.paramType(INLINED).keyword("top ").sql(numberOfRows).keyword(" start at ").sql(offsetPlusOne).paramType(paramType);
 break;
 }
 case DB2:
@@ -41,7 +41,7 @@ case DB2:
 if (offset != null) {
 throw new DataAccessException("DB2 does not support offsets in FETCH FIRST ROWS ONLY clause");
 }
-context.inline(true).formatSeparator().keyword("fetch first ").sql(numberOfRows).keyword(" rows only").inline(inline);
+context.paramType(INLINED).formatSeparator().keyword("fetch first ").sql(numberOfRows).keyword(" rows only").paramType(paramType);
 break;
 }
 case ASE:
@@ -50,7 +50,7 @@ case SQLSERVER:
 if (offset != null) {
 throw new DataAccessException("Offsets in TOP clause not supported");
 }
-context.inline(true).keyword("top ").sql(numberOfRows).inline(inline);
+context.paramType(INLINED).keyword("top ").sql(numberOfRows).paramType(paramType);
 break;
 }
 default :

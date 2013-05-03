@@ -1,0 +1,11 @@
+{
+switch (paramType) {
+case INDEXED:
+    return create().render(this);
+case INLINED:
+  return create().renderInlined(this);
+case NAMED:
+return create().renderNamedParams(this);
+}
+throw new IllegalArgumentException("ParamType not supported: " + paramType);
+}

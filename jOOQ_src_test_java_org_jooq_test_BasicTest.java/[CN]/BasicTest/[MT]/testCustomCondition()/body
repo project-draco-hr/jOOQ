@@ -2,7 +2,7 @@
   Condition c=new CustomCondition(){
     private static final long serialVersionUID=6302350477408137757L;
     @Override public void toSQL(    RenderContext ctx){
-      if (ctx.inline()) {
+      if (ctx.paramType() == INLINED) {
         ctx.sql("1 = 1");
       }
  else {

@@ -1,3 +1,3 @@
 {
-  return renderContext().inline(true).render(part);
+  return renderContext().paramType(INLINED).render(part);
 }

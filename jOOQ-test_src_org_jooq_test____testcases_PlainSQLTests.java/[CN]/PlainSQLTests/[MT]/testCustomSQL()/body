@@ -3,7 +3,7 @@
     private static final long serialVersionUID=1L;
     @Override public void toSQL(    RenderContext context){
       context.configuration().data("Foo-Field","Baz");
-      if (context.inline()) {
+      if (context.paramType() == INLINED) {
         context.sql(TBook_ID().getName() + " * 2");
       }
  else       if (context.configuration().dialect() == FIREBIRD) {
@@ -29,7 +29,7 @@
       context.configuration().data("Foo-Condition","Baz");
       context.sql(IDx2);
       context.sql(" > ");
-      if (context.inline()) {
+      if (context.paramType() == INLINED) {
         context.sql("3");
       }
  else {
