@@ -1,3 +1,3 @@
 {
-  return notEqual(row(t1,t2,t3,t4));
+  return compare(Comparator.NOT_EQUALS,t1,t2,t3,t4);
 }

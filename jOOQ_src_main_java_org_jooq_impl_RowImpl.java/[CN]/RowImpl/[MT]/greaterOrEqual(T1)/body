@@ -1,3 +1,3 @@
 {
-  return greaterOrEqual(row(t1));
+  return compare(Comparator.GREATER_OR_EQUAL,t1);
 }

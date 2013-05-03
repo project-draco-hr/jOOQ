@@ -1,0 +1,3 @@
+{
+  return compare(comparator,row(t1,t2));
+}

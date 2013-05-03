@@ -1,3 +1,3 @@
 {
-  return new RowCondition(this,row,Comparator.EQUALS);
+  return compare(Comparator.EQUALS,row);
 }
