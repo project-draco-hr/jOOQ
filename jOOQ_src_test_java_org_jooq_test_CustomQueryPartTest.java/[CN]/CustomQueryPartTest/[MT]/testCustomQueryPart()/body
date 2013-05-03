@@ -1,0 +1,23 @@
+{
+  QueryPart p=new CustomQueryPart(){
+    @Override public void toSQL(    RenderContext ctx){
+      ctx.sql(val("abc"));
+    }
+    @Override public void bind(    BindContext ctx){
+      ctx.bind(val("abc"));
+    }
+  }
+;
+  assertEquals("(x = ?)",r_ref().render(DSL.condition("x = {0}",p)));
+  assertEquals("(x = :1)",r_refP().render(DSL.condition("x = {0}",p)));
+  assertEquals("(x = 'abc')",r_refI().render(DSL.condition("x = {0}",p)));
+  context.checking(new Expectations(){
+{
+      oneOf(statement).setString(1,"abc");
+    }
+  }
+);
+  int i=b_ref().bind(DSL.condition("x = {0}",p)).peekIndex();
+  assertEquals(2,i);
+  context.assertIsSatisfied();
+}
