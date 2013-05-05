@@ -1,0 +1,4 @@
+{
+  super(field.getName(),type);
+  this.field=(field instanceof Coerce) ? ((Coerce<?>)field).field : field;
+}
