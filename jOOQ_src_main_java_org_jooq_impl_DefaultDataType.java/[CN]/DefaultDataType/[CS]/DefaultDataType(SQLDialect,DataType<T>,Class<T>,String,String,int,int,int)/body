@@ -6,21 +6,7 @@
   this.castTypeName=castTypeName;
   this.castTypeBase=TYPE_NAME_PATTERN.matcher(castTypeName).replaceAll("").trim();
   this.arrayType=(Class<T[]>)Array.newInstance(type,0).getClass();
-  if (type == Long.class || type == ULong.class) {
-    this.precision=LONG_PRECISION;
-  }
- else   if (type == Integer.class || type == UInteger.class) {
-    this.precision=INTEGER_PRECISION;
-  }
- else   if (type == Short.class || type == UShort.class) {
-    this.precision=SHORT_PRECISION;
-  }
- else   if (type == Byte.class || type == UByte.class) {
-    this.precision=BYTE_PRECISION;
-  }
- else {
-    this.precision=precision;
-  }
+  this.precision=precision;
   this.scale=scale;
   this.length=length;
   int ordinal=dialect == null ? SQLDialect.SQL99.ordinal() : dialect.ordinal();
