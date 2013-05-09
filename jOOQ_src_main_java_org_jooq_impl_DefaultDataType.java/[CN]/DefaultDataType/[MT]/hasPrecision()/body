@@ -1,3 +1,3 @@
 {
-  return isNumeric() || isDateTime();
+  return type == BigInteger.class || type == BigDecimal.class;
 }

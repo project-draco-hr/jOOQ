@@ -2,10 +2,7 @@
   if (precision == p && scale == s) {
     return this;
   }
- else   if (hasPrecision() && (s == 0 || hasScale())) {
-    return new DefaultDataType<T>(dialect,sqlDataType,type,typeName,castTypeName,p,s,length);
-  }
  else {
-    return this;
+    return new DefaultDataType<T>(dialect,sqlDataType,type,typeName,castTypeName,p,s,length);
   }
 }

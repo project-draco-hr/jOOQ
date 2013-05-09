@@ -2,10 +2,7 @@
   if (length == l) {
     return this;
   }
- else   if (hasLength()) {
-    return new DefaultDataType<T>(dialect,sqlDataType,type,typeName,castTypeName,precision,scale,l);
-  }
  else {
-    return this;
+    return new DefaultDataType<T>(dialect,sqlDataType,type,typeName,castTypeName,precision,scale,l);
   }
 }

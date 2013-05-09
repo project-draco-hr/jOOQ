@@ -2,10 +2,7 @@
   if (scale == s) {
     return this;
   }
- else   if (hasScale()) {
-    return new DefaultDataType<T>(dialect,sqlDataType,type,typeName,castTypeName,precision,s,length);
-  }
  else {
-    return this;
+    return new DefaultDataType<T>(dialect,sqlDataType,type,typeName,castTypeName,precision,s,length);
   }
 }
