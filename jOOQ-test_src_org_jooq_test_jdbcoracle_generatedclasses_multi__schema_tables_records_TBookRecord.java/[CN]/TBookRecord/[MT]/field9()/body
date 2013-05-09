@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.jdbcoracle.generatedclasses.multi_schema.tables.TBook.CONTENT_PDF;
+}

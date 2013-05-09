@@ -1,0 +1,3 @@
+{
+  return (org.jooq.Row18)super.valuesRow();
+}

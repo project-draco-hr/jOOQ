@@ -1,0 +1,7 @@
+{
+  setId(from.getId());
+  setBookId(from.getBookId());
+  setBookStoreName(from.getBookStoreName());
+  setSoldAt(from.getSoldAt());
+  setSoldFor(from.getSoldFor());
+}

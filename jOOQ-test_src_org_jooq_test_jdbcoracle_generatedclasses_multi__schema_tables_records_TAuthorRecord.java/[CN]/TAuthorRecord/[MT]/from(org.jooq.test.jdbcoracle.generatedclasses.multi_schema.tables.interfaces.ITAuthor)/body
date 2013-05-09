@@ -1,0 +1,14 @@
+{
+  setId(from.getId());
+  setFirstName(from.getFirstName());
+  setLastName(from.getLastName());
+  setDateOfBirth(from.getDateOfBirth());
+  setYearOfBirth(from.getYearOfBirth());
+  setAddress(from.getAddress());
+  setId(from.getId());
+  setFirstName(from.getFirstName());
+  setLastName(from.getLastName());
+  setDateOfBirth(from.getDateOfBirth());
+  setYearOfBirth(from.getYearOfBirth());
+  setAddress(from.getAddress());
+}

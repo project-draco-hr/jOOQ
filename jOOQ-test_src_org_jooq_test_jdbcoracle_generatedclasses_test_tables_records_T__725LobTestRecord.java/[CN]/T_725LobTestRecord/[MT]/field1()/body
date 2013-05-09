@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.jdbcoracle.generatedclasses.test.tables.T_725LobTest.ID;
+}

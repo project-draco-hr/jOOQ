@@ -1,0 +1,20 @@
+{
+  setId(from.getId());
+  setAuthorId(from.getAuthorId());
+  setCoAuthorId(from.getCoAuthorId());
+  setDetailsId(from.getDetailsId());
+  setTitle(from.getTitle());
+  setPublishedIn(from.getPublishedIn());
+  setLanguageId(from.getLanguageId());
+  setContentText(from.getContentText());
+  setContentPdf(from.getContentPdf());
+  setId(from.getId());
+  setAuthorId(from.getAuthorId());
+  setCoAuthorId(from.getCoAuthorId());
+  setDetailsId(from.getDetailsId());
+  setTitle(from.getTitle());
+  setPublishedIn(from.getPublishedIn());
+  setLanguageId(from.getLanguageId());
+  setContentText(from.getContentText());
+  setContentPdf(from.getContentPdf());
+}

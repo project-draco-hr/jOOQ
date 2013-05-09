@@ -1,0 +1,4 @@
+{
+  setRowNo(from.getRowNo());
+  setData(from.getData());
+}

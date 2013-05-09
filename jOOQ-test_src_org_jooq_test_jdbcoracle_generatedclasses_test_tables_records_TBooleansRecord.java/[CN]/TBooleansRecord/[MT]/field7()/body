@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.jdbcoracle.generatedclasses.test.tables.TBooleans.Y_N_LC;
+}

@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.jdbcoracle.generatedclasses.test.tables.VIncomplete.CONTENT_TEXT;
+}
