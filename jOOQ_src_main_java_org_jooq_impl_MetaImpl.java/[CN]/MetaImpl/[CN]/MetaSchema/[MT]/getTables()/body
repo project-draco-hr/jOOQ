@@ -9,7 +9,7 @@ case SQLITE:
       types=new String[]{"TABLE","VIEW"};
     break;
 case ORACLE:
-  types=new String[]{"TABLE","VIEW","MATERIALIZED VIEW"};
+  types=new String[]{"TABLE","VIEW"};
 break;
 }
 List<Table<?>> result=new ArrayList<Table<?>>();
