@@ -1,4 +1,4 @@
 {
-  super("F_ONE",org.jooq.test.h2.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.INTEGER.precision(10));
+  super("F_ONE",org.jooq.test.h2.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.INTEGER);
   setReturnParameter(RETURN_VALUE);
 }

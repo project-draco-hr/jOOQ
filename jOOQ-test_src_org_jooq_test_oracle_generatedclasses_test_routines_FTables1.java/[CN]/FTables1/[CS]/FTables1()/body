@@ -1,5 +1,5 @@
 {
-  super("F_TABLES1",org.jooq.test.oracle.generatedclasses.test.Test.TEST,org.jooq.impl.SQLDataType.INTEGER.precision(7).asArrayDataType(org.jooq.test.oracle.generatedclasses.test.udt.records.UNumberTableRecord.class));
+  super("F_TABLES1",org.jooq.test.oracle.generatedclasses.test.Test.TEST,org.jooq.impl.SQLDataType.INTEGER.asArrayDataType(org.jooq.test.oracle.generatedclasses.test.udt.records.UNumberTableRecord.class));
   setReturnParameter(RETURN_VALUE);
   addInParameter(IN_TABLE);
 }

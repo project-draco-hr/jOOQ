@@ -1,3 +1,3 @@
 {
-  super(org.jooq.test.oracle.generatedclasses.test.Test.TEST,"U_NUMBER_ARRAY",org.jooq.impl.SQLDataType.INTEGER.precision(7),configuration);
+  super(org.jooq.test.oracle.generatedclasses.test.Test.TEST,"U_NUMBER_ARRAY",org.jooq.impl.SQLDataType.INTEGER,configuration);
 }
