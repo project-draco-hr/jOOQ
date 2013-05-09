@@ -1,3 +1,3 @@
 {
-  return org.jooq.test.jdbcoracle.generatedclasses.test.tables.XUnused.BIG_INTEGER;
+  return org.jooq.test.jdbcoracle.generatedclasses.test.tables.XUnused.CLASS;
 }

@@ -1,8 +1,6 @@
 {
   setId(from.getId());
   setName(from.getName());
-  setId(from.getId());
-  setName(from.getName());
   setBigInteger(from.getBigInteger());
   setIdRef(from.getIdRef());
   setClass_(from.getClass_());

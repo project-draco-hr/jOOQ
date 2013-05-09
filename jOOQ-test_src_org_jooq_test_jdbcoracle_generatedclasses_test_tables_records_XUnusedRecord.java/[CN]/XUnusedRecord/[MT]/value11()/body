@@ -1,3 +1,3 @@
 {
-  return getMetaData();
+  return getPrimaryKey_();
 }

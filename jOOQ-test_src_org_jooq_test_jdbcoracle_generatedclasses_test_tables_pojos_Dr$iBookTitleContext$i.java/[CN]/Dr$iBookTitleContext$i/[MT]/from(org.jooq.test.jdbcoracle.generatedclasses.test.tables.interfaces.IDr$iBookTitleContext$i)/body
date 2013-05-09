@@ -1,8 +1,0 @@
-{
-  setTokenText(from.getTokenText());
-  setTokenType(from.getTokenType());
-  setTokenFirst(from.getTokenFirst());
-  setTokenLast(from.getTokenLast());
-  setTokenCount(from.getTokenCount());
-  setTokenInfo(from.getTokenInfo());
-}

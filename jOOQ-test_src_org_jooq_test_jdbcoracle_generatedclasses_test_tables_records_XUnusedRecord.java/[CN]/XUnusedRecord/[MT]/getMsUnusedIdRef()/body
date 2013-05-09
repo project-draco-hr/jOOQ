@@ -1,3 +1,3 @@
 {
-  return (java.math.BigDecimal)getValue(16);
+  return (java.math.BigDecimal)getValue(14);
 }

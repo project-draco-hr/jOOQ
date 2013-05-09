@@ -1,4 +1,0 @@
-{
-  setDocid(from.getDocid());
-  setTextkey(from.getTextkey());
-}

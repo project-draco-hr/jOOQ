@@ -1,4 +1,0 @@
-{
-  setNltDocid(from.getNltDocid());
-  setNltMark(from.getNltMark());
-}

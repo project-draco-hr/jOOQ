@@ -1,3 +1,0 @@
-{
-  super("DR$I_BOOK_TITLE_CONTEXT$N",org.jooq.test.jdbcoracle.generatedclasses.test.Test.TEST);
-}
