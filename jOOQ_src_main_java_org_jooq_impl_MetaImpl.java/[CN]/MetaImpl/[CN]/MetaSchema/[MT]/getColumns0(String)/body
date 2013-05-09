@@ -1,3 +1,0 @@
-{
-  return create.fetch(meta().getColumns(null,null,tableName,"%"),String.class,String.class,String.class,String.class,int.class,String.class,int.class,String.class,int.class);
-}

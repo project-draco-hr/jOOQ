@@ -10,8 +10,9 @@
     List<Table<?>> result=new ArrayList<Table<?>>();
     Result<Record> tables=create.fetch(meta().getTables(null,getName(),"%",types));
     for (    Record table : tables) {
+      String schema=table.getValue(1,String.class);
       String name=table.getValue(2,String.class);
-      result.add(new MetaTable(name,this,getColumns(name)));
+      result.add(new MetaTable(name,this,getColumns(schema,name)));
     }
     return result;
   }

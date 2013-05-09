@@ -1,0 +1,19 @@
+{
+  if (columnCache == null && configuration.dialect() != SQLITE) {
+    Field<String> tableSchem=fieldByName(String.class,"TABLE_SCHEM");
+    Field<String> tableName=fieldByName(String.class,"TABLE_NAME");
+    Map<Record,Result<Record>> groups=getColumns0(null,"%").intoGroups(new Field[]{tableSchem,tableName});
+    columnCache=new LinkedHashMap<Name,Result<Record>>();
+    for (    Entry<Record,Result<Record>> entry : groups.entrySet()) {
+      Record key=entry.getKey();
+      Result<Record> value=entry.getValue();
+      columnCache.put(name(key.getValue(tableSchem),key.getValue(tableName)),value);
+    }
+  }
+  if (columnCache != null) {
+    return columnCache.get(name(schema,table));
+  }
+ else {
+    return getColumns0(schema,table);
+  }
+}
