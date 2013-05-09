@@ -1,5 +1,5 @@
 {
-  super("F_ARRAYS2",org.jooq.test.oracle.generatedclasses.test.Test.TEST,org.jooq.impl.SQLDataType.BIGINT.asArrayDataType(org.jooq.test.oracle.generatedclasses.test.udt.records.UNumberLongArrayRecord.class));
+  super("F_ARRAYS2",org.jooq.test.oracle.generatedclasses.test.Test.TEST,org.jooq.impl.SQLDataType.BIGINT.precision(11).asArrayDataType(org.jooq.test.oracle.generatedclasses.test.udt.records.UNumberLongArrayRecord.class));
   setReturnParameter(RETURN_VALUE);
   addInParameter(IN_ARRAY);
 }
