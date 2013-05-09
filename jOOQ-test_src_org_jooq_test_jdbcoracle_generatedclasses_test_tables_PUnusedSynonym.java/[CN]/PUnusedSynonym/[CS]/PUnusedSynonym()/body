@@ -1,3 +1,0 @@
-{
-  super("P_UNUSED_SYNONYM",org.jooq.test.jdbcoracle.generatedclasses.test.Test.TEST);
-}

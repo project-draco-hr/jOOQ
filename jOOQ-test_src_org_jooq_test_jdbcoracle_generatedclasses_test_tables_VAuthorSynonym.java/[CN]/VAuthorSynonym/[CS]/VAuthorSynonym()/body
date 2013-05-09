@@ -1,3 +1,0 @@
-{
-  super("V_AUTHOR_SYNONYM",org.jooq.test.jdbcoracle.generatedclasses.test.Test.TEST);
-}
