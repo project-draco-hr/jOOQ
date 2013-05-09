@@ -4,19 +4,24 @@
   }
   try {
     String[] types=null;
-    if (configuration.dialect() == SQLITE) {
+switch (configuration.dialect()) {
+case SQLITE:
       types=new String[]{"TABLE","VIEW"};
-    }
-    List<Table<?>> result=new ArrayList<Table<?>>();
-    Result<Record> tables=create.fetch(meta().getTables(null,getName(),"%",types));
-    for (    Record table : tables) {
-      String schema=table.getValue(1,String.class);
-      String name=table.getValue(2,String.class);
-      result.add(new MetaTable(name,this,getColumns(schema,name)));
-    }
-    return result;
-  }
- catch (  SQLException e) {
-    throw new DataAccessException("Error while accessing DatabaseMetaData",e);
-  }
+    break;
+case ORACLE:
+  types=new String[]{"TABLE","VIEW","MATERIALIZED VIEW"};
+break;
+}
+List<Table<?>> result=new ArrayList<Table<?>>();
+Result<Record> tables=create.fetch(meta().getTables(null,getName(),"%",types));
+for (Record table : tables) {
+String schema=table.getValue(1,String.class);
+String name=table.getValue(2,String.class);
+result.add(new MetaTable(name,this,getColumns(schema,name)));
+}
+return result;
+}
+ catch (SQLException e) {
+throw new DataAccessException("Error while accessing DatabaseMetaData",e);
+}
 }
