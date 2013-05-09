@@ -1,0 +1,8 @@
+{
+  setId(from.getId());
+  setD(from.getD());
+  setT(from.getT());
+  setTs(from.getTs());
+  setDInt(from.getDInt());
+  setTsBigint(from.getTsBigint());
+}

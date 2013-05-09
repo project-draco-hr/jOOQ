@@ -1,0 +1,15 @@
+{
+  setId(from.getId());
+  setByte(from.getByte());
+  setShort(from.getShort());
+  setInteger(from.getInteger());
+  setLong(from.getLong());
+  setByteDecimal(from.getByteDecimal());
+  setShortDecimal(from.getShortDecimal());
+  setIntegerDecimal(from.getIntegerDecimal());
+  setLongDecimal(from.getLongDecimal());
+  setBigInteger(from.getBigInteger());
+  setBigDecimal(from.getBigDecimal());
+  setFloat(from.getFloat());
+  setDouble(from.getDouble());
+}
