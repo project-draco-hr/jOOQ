@@ -1,0 +1,3 @@
+{
+  new JDBCTests(this).testDialectGuessing();
+}
