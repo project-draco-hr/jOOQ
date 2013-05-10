@@ -1,4 +1,4 @@
 ExecuteListener listener
 ExecuteContext ctx
 boolean keepStatement
-boolean end
+boolean keepResultSet
