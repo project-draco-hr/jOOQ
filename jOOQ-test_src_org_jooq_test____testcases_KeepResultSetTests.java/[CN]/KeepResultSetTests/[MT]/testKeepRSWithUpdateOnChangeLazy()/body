@@ -1,18 +1,23 @@
 {
-  jOOQAbstractTest.reset=false;
-  Cursor<B> books=create().selectFrom(TBook()).orderBy(TBook_ID()).keepResultSet(UPDATE_ON_CHANGE).fetchLazy();
-  assertNotNull(books.resultSet());
-  assertFalse(books.closesAfterFetch());
-  while (books.hasNext()) {
-    B book=books.fetchOne();
-    assertNotNull(book.resultSet());
-    book.setValue(TBook_TITLE(),"Title X");
-  }
-  Result<B> booksTest=getBooks();
-  assertEquals(Collections.nCopies(4,"Title X"),booksTest.getValues(TBook_TITLE()));
-  assertNotNull(books.resultSet());
-  assertFalse(books.isClosed());
-  books.close();
-  assertNull(books.resultSet());
-  assertTrue(books.isClosed());
+switch (dialect()) {
+case SQLITE:
+    log.info("SKIPPING","KeepResultSet tests");
+  return;
+}
+jOOQAbstractTest.reset=false;
+Cursor<B> books=create().selectFrom(TBook()).orderBy(TBook_ID()).keepResultSet(UPDATE_ON_CHANGE).fetchLazy();
+assertNotNull(books.resultSet());
+assertFalse(books.closesAfterFetch());
+while (books.hasNext()) {
+B book=books.fetchOne();
+assertNotNull(book.resultSet());
+book.setValue(TBook_TITLE(),"Title X");
+}
+Result<B> booksTest=getBooks();
+assertEquals(Collections.nCopies(4,"Title X"),booksTest.getValues(TBook_TITLE()));
+assertNotNull(books.resultSet());
+assertFalse(books.isClosed());
+books.close();
+assertNull(books.resultSet());
+assertTrue(books.isClosed());
 }

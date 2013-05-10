@@ -1,3 +1,8 @@
 {
-  jOOQAbstractTest.reset=false;
+switch (dialect()) {
+case SQLITE:
+    log.info("SKIPPING","KeepResultSet tests");
+  return;
+}
+jOOQAbstractTest.reset=false;
 }

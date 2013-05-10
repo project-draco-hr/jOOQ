@@ -1,16 +1,21 @@
 {
-  jOOQAbstractTest.reset=false;
-  Result<B> books=create().selectFrom(TBook()).orderBy(TBook_ID()).keepResultSet(UPDATE_ON_CHANGE).fetch();
-  assertNotNull(books.resultSet());
-  for (int i=0; i < books.size(); i++) {
-    assertNotNull(books.get(i).resultSet());
-    books.get(i).setValue(TBook_TITLE(),"Title " + i);
-  }
-  Result<B> booksTest=getBooks();
-  assertEquals(asList("Title 0","Title 1","Title 2","Title 3"),booksTest.getValues(TBook_TITLE()));
-  assertNotNull(books.resultSet());
-  books.close();
-  assertNull(books.resultSet());
-  books.get(0).setValue(TBook_TITLE(),"XX");
-  assertEquals("Title 0",getBook(1).getValue(TBook_TITLE()));
+switch (dialect()) {
+case SQLITE:
+    log.info("SKIPPING","KeepResultSet tests");
+  return;
+}
+jOOQAbstractTest.reset=false;
+Result<B> books=create().selectFrom(TBook()).orderBy(TBook_ID()).keepResultSet(UPDATE_ON_CHANGE).fetch();
+assertNotNull(books.resultSet());
+for (int i=0; i < books.size(); i++) {
+assertNotNull(books.get(i).resultSet());
+books.get(i).setValue(TBook_TITLE(),"Title " + i);
+}
+Result<B> booksTest=getBooks();
+assertEquals(asList("Title 0","Title 1","Title 2","Title 3"),booksTest.getValues(TBook_TITLE()));
+assertNotNull(books.resultSet());
+books.close();
+assertNull(books.resultSet());
+books.get(0).setValue(TBook_TITLE(),"XX");
+assertEquals("Title 0",getBook(1).getValue(TBook_TITLE()));
 }

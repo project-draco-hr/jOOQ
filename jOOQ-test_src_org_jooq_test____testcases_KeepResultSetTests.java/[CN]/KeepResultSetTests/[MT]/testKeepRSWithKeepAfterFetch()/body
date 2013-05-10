@@ -1,22 +1,27 @@
 {
-  Result<B> b2=create().selectFrom(TBook()).keepResultSet(KEEP_AFTER_FETCH).fetch();
-  assertNotNull(b2.resultSet());
-  testFailUpdateRow(b2.resultSet());
-  b2.get(0).setValue(TBook_TITLE(),"XX");
-  assertTrue(b2.get(0).changed());
-  assertFalse(b2.get(0).original().equals(b2.get(0)));
-  assertEquals(BOOK_TITLES.get(0),getBook(1).getValue(TBook_TITLE()));
-  b2.close();
-  assertNull(b2.resultSet());
-  Cursor<B> c1=create().selectFrom(TBook()).keepResultSet(KEEP_AFTER_FETCH).fetchLazy();
-  assertFalse(c1.closesAfterFetch());
-  while (c1.hasNext()) {
-    Result<B> result=c1.fetch(1);
-    assertNotNull(result.get(0).resultSet());
-    assertNotNull(result.resultSet());
-    assertNotNull(c1.resultSet());
-  }
-  assertNotNull(c1.resultSet());
-  c1.close();
-  assertNull(c1.resultSet());
+switch (dialect()) {
+case SQLITE:
+    log.info("SKIPPING","KeepResultSet tests");
+  return;
+}
+Result<B> b2=create().selectFrom(TBook()).keepResultSet(KEEP_AFTER_FETCH).fetch();
+assertNotNull(b2.resultSet());
+testFailUpdateRow(b2.resultSet());
+b2.get(0).setValue(TBook_TITLE(),"XX");
+assertTrue(b2.get(0).changed());
+assertFalse(b2.get(0).original().equals(b2.get(0)));
+assertEquals(BOOK_TITLES.get(0),getBook(1).getValue(TBook_TITLE()));
+b2.close();
+assertNull(b2.resultSet());
+Cursor<B> c1=create().selectFrom(TBook()).keepResultSet(KEEP_AFTER_FETCH).fetchLazy();
+assertFalse(c1.closesAfterFetch());
+while (c1.hasNext()) {
+Result<B> result=c1.fetch(1);
+assertNotNull(result.get(0).resultSet());
+assertNotNull(result.resultSet());
+assertNotNull(c1.resultSet());
+}
+assertNotNull(c1.resultSet());
+c1.close();
+assertNull(c1.resultSet());
 }
