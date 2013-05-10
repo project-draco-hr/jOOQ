@@ -10,7 +10,7 @@ case SQLSERVER:
         context.sql("(").formatIndentStart().formatNewLine();
         for (int i=0; i < list.size(); i+=IN_LIMIT) {
           if (i > 0) {
-            if (operator == SubqueryComparator.IN) {
+            if (comparator == Comparator.IN) {
               context.formatSeparator().keyword("or ");
             }
  else {

@@ -1,5 +1,5 @@
 {
   this.field=field;
   this.values=values;
-  this.operator=operator;
+  this.comparator=comparator;
 }

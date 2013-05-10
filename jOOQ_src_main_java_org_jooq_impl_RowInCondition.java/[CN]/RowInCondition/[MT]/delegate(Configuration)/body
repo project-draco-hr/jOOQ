@@ -5,7 +5,7 @@
       conditions.add(new RowCondition(left,row,EQUALS));
     }
     Condition result=new CombinedCondition(Operator.OR,conditions);
-    if (operator == NOT_IN) {
+    if (comparator == NOT_IN) {
       result=result.not();
     }
     return (QueryPartInternal)result;

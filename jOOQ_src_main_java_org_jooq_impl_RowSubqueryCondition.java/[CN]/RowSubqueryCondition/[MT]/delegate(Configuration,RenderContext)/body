@@ -3,10 +3,10 @@
   if (asList(H2,HSQLDB,MYSQL,POSTGRES).contains(dialect)) {
     return new Native();
   }
- else   if (asList(H2,HSQLDB,MYSQL,ORACLE,POSTGRES).contains(dialect) && asList(EQUALS,NOT_EQUALS).contains(operator)) {
+ else   if (asList(H2,HSQLDB,MYSQL,ORACLE,POSTGRES).contains(dialect) && asList(EQUALS,NOT_EQUALS).contains(comparator)) {
     return new Native();
   }
- else   if (asList(H2,DB2,HSQLDB,MYSQL,ORACLE,POSTGRES).contains(dialect) && asList(IN,NOT_IN).contains(operator)) {
+ else   if (asList(H2,DB2,HSQLDB,MYSQL,ORACLE,POSTGRES).contains(dialect) && asList(IN,NOT_IN).contains(comparator)) {
     return new Native();
   }
  else {
@@ -20,7 +20,7 @@
       fields[i]=fieldByName(table,names.get(i));
     }
     Condition condition;
-switch (operator) {
+switch (comparator) {
 case GREATER:
       condition=((RowN)left).gt(row(fields));
     break;
@@ -42,7 +42,7 @@ condition=((RowN)left).eq(row(fields));
 break;
 }
 Select<Record> subselect=select().from(right.asTable(table,names.toArray(new String[0]))).where(condition);
-switch (operator) {
+switch (comparator) {
 case NOT_IN:
 case NOT_EQUALS:
 return (QueryPartInternal)notExists(subselect);
