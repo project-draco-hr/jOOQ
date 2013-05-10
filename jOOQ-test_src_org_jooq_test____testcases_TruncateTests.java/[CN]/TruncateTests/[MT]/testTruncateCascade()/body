@@ -1,0 +1,16 @@
+{
+switch (dialect()) {
+case CUBRID:
+    log.info("SKIPPING","TRUNCATE CASCADE tests");
+  return;
+}
+jOOQAbstractTest.reset=false;
+try {
+create().truncate(TAuthor()).restrict().execute();
+}
+ catch (Exception expected) {
+}
+create().truncate(TAuthor()).cascade().execute();
+assertEquals(0,create().fetch(TAuthor()).size());
+assertEquals(0,create().fetch(TBook()).size());
+}

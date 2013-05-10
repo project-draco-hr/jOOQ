@@ -17,4 +17,7 @@ default :
     break;
   }
 }
+if (cascade != null) {
+context.sql(" ").keyword(cascade ? "cascade" : "restrict");
+}
 }
