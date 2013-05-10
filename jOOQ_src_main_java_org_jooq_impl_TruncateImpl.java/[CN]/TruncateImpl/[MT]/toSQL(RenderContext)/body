@@ -17,7 +17,10 @@ default :
     break;
   }
 }
+if (restartIdentity != null) {
+context.formatSeparator().keyword(restartIdentity ? "restart identity" : "continue identity");
+}
 if (cascade != null) {
-context.sql(" ").keyword(cascade ? "cascade" : "restrict");
+context.formatSeparator().keyword(cascade ? "cascade" : "restrict");
 }
 }

@@ -1,6 +1,18 @@
 {
 switch (dialect()) {
+case ASE:
 case CUBRID:
+case DB2:
+case DERBY:
+case FIREBIRD:
+case H2:
+case HSQLDB:
+case INGRES:
+case MYSQL:
+case ORACLE:
+case SQLITE:
+case SQLSERVER:
+case SYBASE:
     log.info("SKIPPING","TRUNCATE CASCADE tests");
   return;
 }
