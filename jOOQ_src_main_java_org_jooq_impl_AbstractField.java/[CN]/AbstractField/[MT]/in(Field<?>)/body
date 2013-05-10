@@ -3,6 +3,6 @@
     return falseCondition();
   }
  else {
-    return new InCondition<T>(this,nullSafe(values),Comparator.IN);
+    return new InCondition<T>(this,nullSafe(values),IN);
   }
 }

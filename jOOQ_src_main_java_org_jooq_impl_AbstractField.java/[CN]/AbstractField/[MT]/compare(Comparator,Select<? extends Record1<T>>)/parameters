@@ -1,0 +1,2 @@
+Comparator comparator
+Select<? extends Record1<T>> query

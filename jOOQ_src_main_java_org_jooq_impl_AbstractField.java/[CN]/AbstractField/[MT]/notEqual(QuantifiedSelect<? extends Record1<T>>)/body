@@ -1,3 +1,3 @@
 {
-  return new QuantifiedComparisonCondition(query,this,Comparator.NOT_EQUALS);
+  return compare(NOT_EQUALS,query);
 }

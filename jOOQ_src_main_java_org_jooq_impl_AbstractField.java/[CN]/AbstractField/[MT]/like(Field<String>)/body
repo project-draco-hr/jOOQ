@@ -1,3 +1,3 @@
 {
-  return new CompareCondition(this,nullSafe(field),Comparator.LIKE);
+  return new CompareCondition(this,nullSafe(field),LIKE);
 }
