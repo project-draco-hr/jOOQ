@@ -8,4 +8,5 @@
   assertEquals(author,record);
   assertEquals(author,result.get(0));
   assertEquals(author,cursor.fetchOne());
+  cursor.close();
 }
