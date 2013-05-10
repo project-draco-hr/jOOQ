@@ -1,0 +1,16 @@
+{
+  Result<B> b2=create().selectFrom(TBook()).keepResultSet(KEEP_AFTER_FETCH).fetch();
+  assertNotNull(b2.resultSet());
+  testFailUpdateRow(b2.resultSet());
+  b2.close();
+  assertNull(b2.resultSet());
+  Cursor<B> c1=create().selectFrom(TBook()).keepResultSet(KEEP_AFTER_FETCH).fetchLazy();
+  while (c1.hasNext()) {
+    Result<B> result=c1.fetch(1);
+    assertNotNull(result.resultSet());
+    assertNotNull(c1.resultSet());
+  }
+  assertNotNull(c1.resultSet());
+  c1.close();
+  assertNull(c1.resultSet());
+}

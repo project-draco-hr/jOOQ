@@ -2,5 +2,6 @@ ExecuteContext ctx
 ExecuteListener listener
 Field<?>[] fields
 int[] internIndexes
-boolean keepResult
 boolean keepStatement
+boolean keepResultSet
+KeepResultSetMode keepResultSetMode

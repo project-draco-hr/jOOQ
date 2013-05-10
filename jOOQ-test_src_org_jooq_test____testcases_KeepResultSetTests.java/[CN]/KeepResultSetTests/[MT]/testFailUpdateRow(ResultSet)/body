@@ -1,0 +1,8 @@
+{
+  try {
+    rs.updateRow();
+    fail();
+  }
+ catch (  SQLException expected) {
+  }
+}

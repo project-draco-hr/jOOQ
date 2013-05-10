@@ -1,0 +1,13 @@
+{
+  Result<B> b1=create().selectFrom(TBook()).fetch();
+  assertNull(b1.resultSet());
+  Result<B> b2=create().selectFrom(TBook()).keepResultSet(CLOSE_AFTER_FETCH).fetch();
+  assertNull(b2.resultSet());
+  Cursor<B> c1=create().selectFrom(TBook()).keepResultSet(CLOSE_AFTER_FETCH).fetchLazy();
+  while (c1.hasNext()) {
+    Result<B> result=c1.fetch(1);
+    assertNull(result.resultSet());
+    assertNotNull(c1.resultSet());
+  }
+  assertNull(c1.resultSet());
+}

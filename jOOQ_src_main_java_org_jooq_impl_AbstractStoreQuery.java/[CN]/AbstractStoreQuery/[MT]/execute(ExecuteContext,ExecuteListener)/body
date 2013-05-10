@@ -72,7 +72,7 @@ break;
 ExecuteContext ctx2=new DefaultExecuteContext(ctx.configuration());
 ExecuteListener listener2=new ExecuteListeners(ctx2);
 ctx2.resultSet(rs);
-returned=new CursorImpl<R>(ctx2,listener2,fieldArray(returning),null,true,false).fetch().into(getInto());
+returned=new CursorImpl<R>(ctx2,listener2,fieldArray(returning),null,false,true,CLOSE_AFTER_FETCH).fetch().into(getInto());
 return result;
 }
 }

@@ -13,4 +13,16 @@
       changed(true);
     }
   }
+  if (rs != null) {
+    try {
+      if (rs.getRow() != rsIndex) {
+        rs.absolute(rsIndex);
+      }
+      rs.updateObject(fieldsRow().indexOf(field) + 1,value);
+      rs.updateRow();
+    }
+ catch (    SQLException e) {
+      throw translate("Error when updating ResultSet",e);
+    }
+  }
 }

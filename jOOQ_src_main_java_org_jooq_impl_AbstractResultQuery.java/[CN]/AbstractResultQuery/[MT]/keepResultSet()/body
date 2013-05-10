@@ -1,0 +1,3 @@
+{
+  return lazy || keepResultSetMode == UPDATE_ON_CHANGE || keepResultSetMode == UPDATE_ON_STORE;
+}

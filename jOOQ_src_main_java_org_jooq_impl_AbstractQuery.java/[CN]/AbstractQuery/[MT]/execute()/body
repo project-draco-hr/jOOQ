@@ -39,7 +39,7 @@
       throw ctx.exception();
     }
  finally {
-      if (!keepResult() || ctx.exception() != null) {
+      if (!keepResultSet() || ctx.exception() != null) {
         Utils.safeClose(listener,ctx,keepStatement());
       }
       if (!keepStatement()) {

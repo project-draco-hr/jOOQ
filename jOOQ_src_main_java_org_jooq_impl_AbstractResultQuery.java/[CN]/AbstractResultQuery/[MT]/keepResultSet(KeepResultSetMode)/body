@@ -1,0 +1,5 @@
+{
+  if (mode == UPDATE_ON_STORE)   throw new UnsupportedOperationException("UPDATE_ON_STORE is not yet supported");
+  this.keepResultSetMode=mode;
+  return this;
+}

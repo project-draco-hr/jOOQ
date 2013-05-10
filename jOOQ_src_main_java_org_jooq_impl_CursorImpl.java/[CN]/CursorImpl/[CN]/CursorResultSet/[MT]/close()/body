@@ -1,4 +1,4 @@
 {
   listener.fetchEnd(ctx);
-  Utils.safeClose(listener,ctx,keepStatement,keepResult);
+  Utils.safeClose(listener,ctx,keepStatement,keepResultSet);
 }
