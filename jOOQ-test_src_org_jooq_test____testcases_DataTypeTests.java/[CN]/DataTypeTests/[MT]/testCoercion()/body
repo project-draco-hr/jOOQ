@@ -1,7 +1,7 @@
 {
   Field<Long> id1=TBook_ID().coerce(Long.class);
   Field<String> id2=TBook_ID().coerce(String.class);
-  Result<Record4<Long,String,Short,String>> result=create().select(id1,id2,val("1").coerce(Short.class),val(2).coerce(String.class)).from(TBook()).where(id1.in(1L,2L)).and(id2.in("1","2")).orderBy(id1,id2).fetch();
+  Result<Record4<Long,String,Short,String>> result=create().select(id1,id2,val("1").coerce(Short.class),val(2).coerce(String.class)).from(TBook()).where(id1.in(val(1).coerce(Long.class),val(2).coerce(Long.class))).and(id2.in(val(1).coerce(String.class),val(2).coerce(String.class))).orderBy(id1,id2).fetch();
   assertEquals(2,result.size());
   assertEquals(1L,result.getValue(0,0));
   assertEquals(2L,result.getValue(1,0));
