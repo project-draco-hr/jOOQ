@@ -5,28 +5,30 @@
     connection.createStatement().execute("dump tran TEST with truncate_only");
   }
   connection.close();
-  log.info("TEST STATISTICS");
-  log.info("---------------");
+  JooqLogger logStat=JooqLogger.getLogger(TestStatisticsListener.class);
+  logStat.info("TEST STATISTICS");
+  logStat.info("---------------");
   int total=0;
   for (  ExecuteType type : ExecuteType.values()) {
     Integer count=TestStatisticsListener.STATISTICS.get(type);
     if (count == null)     count=0;
     total+=count;
-    log.info(type.name(),count + " executions");
+    logStat.info(type.name(),count + " executions");
   }
-  log.info("---------------");
-  log.info("Total",total);
-  log.info("");
-  log.info("EXECUTE LIFECYCLE STATS");
-  log.info("-----------------------");
+  logStat.info("---------------");
+  logStat.info("Total",total);
+  logStat.info("");
+  JooqLogger logLife=JooqLogger.getLogger(LifecycleWatcherListener.class);
+  logLife.info("EXECUTE LIFECYCLE STATS");
+  logLife.info("-----------------------");
   int unbalanced=0;
   for (  Method m : LifecycleWatcherListener.START_COUNT.keySet()) {
     Integer starts=LifecycleWatcherListener.START_COUNT.get(m);
     Integer ends=LifecycleWatcherListener.END_COUNT.get(m);
     if (!StringUtils.equals(starts,ends)) {
       unbalanced++;
-      log.info("Unbalanced",String.format("(start, end): (%1$3s, %2$3s) at %3$s",starts,ends == null ? 0 : ends,m.toString().replace("public void ","").replaceAll("( throws.*)?","")));
+      logLife.info("Unbalanced",String.format("(start, end): (%1$3s, %2$3s) at %3$s",starts,ends == null ? 0 : ends,m.toString().replace("public void ","").replaceAll("( throws.*)?","")));
     }
   }
-  log.info("Unbalanced test: ",unbalanced);
+  logLife.info("Unbalanced test: ",unbalanced);
 }
