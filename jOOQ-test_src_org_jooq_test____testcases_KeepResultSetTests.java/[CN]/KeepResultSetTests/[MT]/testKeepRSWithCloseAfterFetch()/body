@@ -4,8 +4,10 @@
   Result<B> b2=create().selectFrom(TBook()).keepResultSet(CLOSE_AFTER_FETCH).fetch();
   assertNull(b2.resultSet());
   Cursor<B> c1=create().selectFrom(TBook()).keepResultSet(CLOSE_AFTER_FETCH).fetchLazy();
+  assertTrue(c1.closesAfterFetch());
   while (c1.hasNext()) {
     Result<B> result=c1.fetch(1);
+    assertNotNull(result.get(0).resultSet());
     assertNull(result.resultSet());
     assertNotNull(c1.resultSet());
   }

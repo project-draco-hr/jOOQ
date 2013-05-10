@@ -1,4 +1,20 @@
 {
+  if (rs != null) {
+    int columnIndex=fieldsRow().indexOf(field) + 1;
+    if (log.isDebugEnabled()) {
+      log.debug("Updating Result","Updating Result position " + rsIndex + ":"+ columnIndex+ " with value "+ value);
+    }
+    try {
+      if (rs.getRow() != rsIndex) {
+        rs.absolute(rsIndex);
+      }
+      rs.updateObject(columnIndex,value);
+      rs.updateRow();
+    }
+ catch (    SQLException e) {
+      throw translate("Error when updating ResultSet",e);
+    }
+  }
   UniqueKey<?> key=getPrimaryKey();
   Value<T> val=getValue0(field);
   if (key == null || !key.getFields().contains(field)) {
@@ -11,18 +27,6 @@
     val.setValue(value,true);
     if (val.isChanged()) {
       changed(true);
-    }
-  }
-  if (rs != null) {
-    try {
-      if (rs.getRow() != rsIndex) {
-        rs.absolute(rsIndex);
-      }
-      rs.updateObject(fieldsRow().indexOf(field) + 1,value);
-      rs.updateRow();
-    }
- catch (    SQLException e) {
-      throw translate("Error when updating ResultSet",e);
     }
   }
 }
