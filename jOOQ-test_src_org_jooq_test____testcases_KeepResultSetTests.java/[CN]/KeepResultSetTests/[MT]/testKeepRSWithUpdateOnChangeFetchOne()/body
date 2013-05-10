@@ -2,10 +2,16 @@
   jOOQAbstractTest.reset=false;
   B book=create().selectFrom(TBook()).where(TBook_ID().eq(1)).keepResultSet(UPDATE_ON_CHANGE).fetchOne();
   assertNotNull(book.resultSet());
+  assertFalse(book.changed());
+  assertEquals(book,book.original());
   book.setValue(TBook_AUTHOR_ID(),2);
   assertEquals(2,(int)book.getValue(TBook_AUTHOR_ID()));
+  assertFalse(book.changed());
+  assertEquals(book,book.original());
   book.refresh();
   assertEquals(2,(int)book.getValue(TBook_AUTHOR_ID()));
+  assertFalse(book.changed());
+  assertEquals(book,book.original());
   try {
     book.setValue(TBook_AUTHOR_ID(),-1);
     fail();
@@ -13,6 +19,8 @@
  catch (  DataAccessException expected) {
   }
   assertEquals(2,(int)book.getValue(TBook_AUTHOR_ID()));
+  assertFalse(book.changed());
+  assertEquals(book,book.original());
   book.close();
   assertNull(book.resultSet());
 }

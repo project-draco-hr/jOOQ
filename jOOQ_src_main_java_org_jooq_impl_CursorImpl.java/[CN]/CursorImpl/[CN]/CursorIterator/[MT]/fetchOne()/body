@@ -9,6 +9,7 @@
       }
       record=(AbstractRecord)Utils.newRecord(type,fields,ctx.configuration());
       if (!closesAfterFetch()) {
+        record.keepResultSetMode=keepResultSetMode;
         record.rs=rs;
         record.rsIndex=rsIndex;
       }

@@ -2,6 +2,10 @@
   Result<B> b2=create().selectFrom(TBook()).keepResultSet(KEEP_AFTER_FETCH).fetch();
   assertNotNull(b2.resultSet());
   testFailUpdateRow(b2.resultSet());
+  b2.get(0).setValue(TBook_TITLE(),"XX");
+  assertTrue(b2.get(0).changed());
+  assertFalse(b2.get(0).original().equals(b2.get(0)));
+  assertEquals(BOOK_TITLES.get(0),getBook(1).getValue(TBook_TITLE()));
   b2.close();
   assertNull(b2.resultSet());
   Cursor<B> c1=create().selectFrom(TBook()).keepResultSet(KEEP_AFTER_FETCH).fetchLazy();

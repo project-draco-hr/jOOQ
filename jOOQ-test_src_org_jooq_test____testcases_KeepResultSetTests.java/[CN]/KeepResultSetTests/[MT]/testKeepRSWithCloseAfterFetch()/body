@@ -3,11 +3,15 @@
   assertNull(b1.resultSet());
   Result<B> b2=create().selectFrom(TBook()).keepResultSet(CLOSE_AFTER_FETCH).fetch();
   assertNull(b2.resultSet());
+  b2.get(0).setValue(TBook_TITLE(),"XX");
+  assertTrue(b2.get(0).changed());
+  assertFalse(b2.get(0).original().equals(b2.get(0)));
+  assertEquals(BOOK_TITLES.get(0),getBook(1).getValue(TBook_TITLE()));
   Cursor<B> c1=create().selectFrom(TBook()).keepResultSet(CLOSE_AFTER_FETCH).fetchLazy();
   assertTrue(c1.closesAfterFetch());
   while (c1.hasNext()) {
     Result<B> result=c1.fetch(1);
-    assertNotNull(result.get(0).resultSet());
+    assertNull(result.get(0).resultSet());
     assertNull(result.resultSet());
     assertNotNull(c1.resultSet());
   }
