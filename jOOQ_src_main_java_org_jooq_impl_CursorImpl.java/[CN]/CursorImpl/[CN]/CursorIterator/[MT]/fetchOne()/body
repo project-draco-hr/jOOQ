@@ -8,7 +8,7 @@
         rs.updateRow();
       }
       record=(AbstractRecord)Utils.newRecord(type,fields,ctx.configuration());
-      if (!closeAfterFetch()) {
+      if (!closesAfterFetch()) {
         record.rs=rs;
         record.rsIndex=rsIndex;
       }
@@ -29,7 +29,7 @@
     listener.exception(ctx);
     throw ctx.exception();
   }
-  if (record == null && closeAfterFetch()) {
+  if (record == null && closesAfterFetch()) {
     CursorImpl.this.close();
   }
   return (R)record;
