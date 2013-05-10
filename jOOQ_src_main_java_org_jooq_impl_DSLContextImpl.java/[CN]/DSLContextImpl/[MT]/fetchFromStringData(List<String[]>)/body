@@ -1,13 +1,13 @@
 {
   if (data.size() == 0) {
-    return new ResultImpl<Record>(configuration);
+    return new ResultImpl<Record>(configuration,null);
   }
  else {
     List<Field<?>> fields=new ArrayList<Field<?>>();
     for (    String name : data.get(0)) {
       fields.add(fieldByName(String.class,name));
     }
-    Result<Record> result=new ResultImpl<Record>(configuration,fields);
+    Result<Record> result=new ResultImpl<Record>(configuration,null,fields);
     if (data.size() > 1) {
       for (      String[] values : data.subList(1,data.size())) {
         RecordImpl record=new RecordImpl(fields);

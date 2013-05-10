@@ -1,0 +1,3 @@
+{
+  this(configuration,rs,new Fields(fields));
+}

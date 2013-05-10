@@ -1,6 +1,6 @@
 {
   if (returned == null) {
-    returned=new ResultImpl<R>(configuration(),returning);
+    returned=new ResultImpl<R>(configuration(),null,returning);
   }
   return returned;
 }
