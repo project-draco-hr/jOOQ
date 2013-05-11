@@ -1,7 +1,8 @@
 {
-  Result<B> b1=create().selectFrom(TBook()).fetch();
+  DSLContext create=create(new NoSelectAfterRefreshListener());
+  Result<B> b1=create.selectFrom(TBook()).fetch();
   assertNull(b1.resultSet());
-  Result<Record> b2=create().select().from(TBook().getName()).keepResultSet(CLOSE_AFTER_FETCH).fetch();
+  Result<Record> b2=create.select().from(TBook().getName()).keepResultSet(CLOSE_AFTER_FETCH).fetch();
   assertNull(b2.resultSet());
   Record r=b2.get(0);
   r.setValue(TBook_TITLE(),"XX");
@@ -9,7 +10,7 @@
   assertFalse(r.original().equals(r));
   assertEquals(BOOK_TITLES.get(0),getBook(1).getValue(TBook_TITLE()));
   testFailRefresh(r);
-  Cursor<Record> c1=create().select().from(TBook().getName()).keepResultSet(CLOSE_AFTER_FETCH).fetchLazy();
+  Cursor<Record> c1=create.select().from(TBook().getName()).keepResultSet(CLOSE_AFTER_FETCH).fetchLazy();
   assertTrue(c1.closesAfterFetch());
   while (c1.hasNext()) {
     Result<Record> result=c1.fetch(1);

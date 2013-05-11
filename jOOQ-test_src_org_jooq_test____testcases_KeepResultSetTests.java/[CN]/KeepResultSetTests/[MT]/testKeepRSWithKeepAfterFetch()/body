@@ -4,7 +4,8 @@ case SQLITE:
     log.info("SKIPPING","KeepResultSet tests");
   return;
 }
-Result<Record> b2=create().select().from(TBook().getName()).keepResultSet(KEEP_AFTER_FETCH).fetch();
+DSLContext create=create(new NoSelectAfterRefreshListener());
+Result<Record> b2=create.select().from(TBook().getName()).keepResultSet(KEEP_AFTER_FETCH).fetch();
 Record r=b2.get(0);
 assertNotNull(b2.resultSet());
 assertNotNull(r.resultSet());
@@ -31,7 +32,7 @@ assertEquals(r.original(),r);
 b2.close();
 assertNull(b2.resultSet());
 testFailRefresh(r);
-Cursor<Record> c1=create().select().from(TBook().getName()).keepResultSet(KEEP_AFTER_FETCH).fetchLazy();
+Cursor<Record> c1=create.select().from(TBook().getName()).keepResultSet(KEEP_AFTER_FETCH).fetchLazy();
 assertFalse(c1.closesAfterFetch());
 while (c1.hasNext()) {
 Result<Record> result=c1.fetch(1);

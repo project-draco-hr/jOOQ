@@ -5,7 +5,8 @@ case SQLITE:
   return;
 }
 jOOQAbstractTest.reset=false;
-Cursor<B> books=create().selectFrom(TBook()).orderBy(TBook_ID()).keepResultSet(UPDATE_ON_CHANGE).fetchLazy();
+DSLContext create=create(new NoSelectAfterRefreshListener());
+Cursor<B> books=create.selectFrom(TBook()).orderBy(TBook_ID()).keepResultSet(UPDATE_ON_CHANGE).fetchLazy();
 assertNotNull(books.resultSet());
 assertFalse(books.closesAfterFetch());
 while (books.hasNext()) {
