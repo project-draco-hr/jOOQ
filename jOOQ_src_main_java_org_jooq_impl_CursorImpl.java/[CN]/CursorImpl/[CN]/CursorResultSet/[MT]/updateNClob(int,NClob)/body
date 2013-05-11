@@ -1,3 +1,4 @@
 {
-  ctx.resultSet().updateNClob(columnIndex,nClob);
+  logUpdate(columnIndex,x);
+  ctx.resultSet().updateNClob(columnIndex,x);
 }

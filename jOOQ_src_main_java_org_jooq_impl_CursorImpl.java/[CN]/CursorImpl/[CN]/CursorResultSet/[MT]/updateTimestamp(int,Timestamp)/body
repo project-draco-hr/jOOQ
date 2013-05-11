@@ -1,3 +1,4 @@
 {
+  logUpdate(columnIndex,x);
   ctx.resultSet().updateTimestamp(columnIndex,x);
 }

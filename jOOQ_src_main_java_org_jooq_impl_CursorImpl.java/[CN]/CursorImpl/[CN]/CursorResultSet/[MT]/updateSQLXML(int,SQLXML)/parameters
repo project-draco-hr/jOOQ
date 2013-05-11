@@ -1,2 +1,2 @@
 int columnIndex
-SQLXML xmlObject
+SQLXML x

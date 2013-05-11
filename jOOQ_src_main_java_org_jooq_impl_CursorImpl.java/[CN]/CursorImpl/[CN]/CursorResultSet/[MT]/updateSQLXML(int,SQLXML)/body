@@ -1,3 +1,4 @@
 {
-  ctx.resultSet().updateSQLXML(columnIndex,xmlObject);
+  logUpdate(columnIndex,x);
+  ctx.resultSet().updateSQLXML(columnIndex,x);
 }

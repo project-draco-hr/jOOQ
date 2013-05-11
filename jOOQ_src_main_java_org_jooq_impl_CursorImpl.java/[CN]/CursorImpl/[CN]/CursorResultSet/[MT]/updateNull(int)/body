@@ -1,3 +1,4 @@
 {
+  logUpdate(columnIndex,null);
   ctx.resultSet().updateNull(columnIndex);
 }

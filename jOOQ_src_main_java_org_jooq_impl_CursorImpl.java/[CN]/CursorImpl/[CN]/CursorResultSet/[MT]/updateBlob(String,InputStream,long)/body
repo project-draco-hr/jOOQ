@@ -1,3 +1,4 @@
 {
-  ctx.resultSet().updateBlob(columnLabel,inputStream,length);
+  logUpdate(columnLabel,x);
+  ctx.resultSet().updateBlob(columnLabel,x,length);
 }

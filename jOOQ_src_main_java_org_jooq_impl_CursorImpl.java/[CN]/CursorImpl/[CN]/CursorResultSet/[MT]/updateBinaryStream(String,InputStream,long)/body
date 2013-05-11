@@ -1,3 +1,4 @@
 {
+  logUpdate(columnLabel,x);
   ctx.resultSet().updateBinaryStream(columnLabel,x,length);
 }

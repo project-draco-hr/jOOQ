@@ -1,3 +1,4 @@
 {
-  ctx.resultSet().updateCharacterStream(columnLabel,reader,length);
+  logUpdate(columnLabel,x);
+  ctx.resultSet().updateCharacterStream(columnLabel,x,length);
 }

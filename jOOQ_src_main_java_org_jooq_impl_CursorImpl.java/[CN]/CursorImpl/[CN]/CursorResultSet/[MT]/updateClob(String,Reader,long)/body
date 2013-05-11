@@ -1,3 +1,4 @@
 {
-  ctx.resultSet().updateClob(columnLabel,reader,length);
+  logUpdate(columnLabel,x);
+  ctx.resultSet().updateClob(columnLabel,x,length);
 }
