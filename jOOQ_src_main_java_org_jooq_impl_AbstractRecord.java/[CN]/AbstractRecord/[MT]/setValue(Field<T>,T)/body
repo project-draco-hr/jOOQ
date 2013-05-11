@@ -3,9 +3,6 @@
   if (rs != null && keepResultSetMode == UPDATE_ON_CHANGE) {
     int index=fieldsRow().indexOf(field);
     int columnIndex=index + 1;
-    if (log.isDebugEnabled()) {
-      log.debug("Updating Result","Updating Result position " + rsIndex + ":"+ columnIndex+ " with value "+ value);
-    }
     try {
       if (rs.getRow() != rsIndex) {
         rs.absolute(rsIndex);
