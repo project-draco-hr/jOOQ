@@ -1,15 +1,11 @@
 {
-  if (rs != null) {
-    try {
-      rs.absolute(rsIndex - 1);
-      AbstractRecord record=(AbstractRecord)create().fetchLazy(rs).fetchOne();
-      setValues(f,record);
-    }
- catch (    SQLException e) {
-      throw translate("Cannot refresh record",e);
-    }
+  checkRsAvailable("Cannot refresh record. No ResultSet available");
+  try {
+    rs.absolute(rsIndex - 1);
+    AbstractRecord record=(AbstractRecord)create().fetchLazy(rs).fetchOne();
+    setValues(f,record);
   }
- else {
-    throw new DataAccessException("Cannot refresh record. No ResultSet available");
+ catch (  SQLException e) {
+    throw translate("Cannot refresh record",e);
   }
 }

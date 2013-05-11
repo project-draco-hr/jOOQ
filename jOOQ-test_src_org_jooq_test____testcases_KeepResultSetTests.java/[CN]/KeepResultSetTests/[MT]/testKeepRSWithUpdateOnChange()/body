@@ -5,7 +5,7 @@ case SQLITE:
   return;
 }
 jOOQAbstractTest.reset=false;
-DSLContext create=create(new NoSelectAfterRefreshListener());
+DSLContext create=create(new NoStatementAfterCRUDListener(Select.class,"refresh"));
 Result<B> books=create.selectFrom(TBook()).orderBy(TBook_ID()).keepResultSet(UPDATE_ON_CHANGE).fetch();
 assertNotNull(books.resultSet());
 for (int i=0; i < books.size(); i++) {

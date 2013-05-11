@@ -1,3 +1,0 @@
-{
-  new KeepResultSetTests(this).testKeepRSWithUpdateOnChangeRemove();
-}

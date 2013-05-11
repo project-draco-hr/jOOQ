@@ -1,0 +1,12 @@
+{
+  super.start(ctx);
+  if (ctx.query() != null) {
+    if (type.isAssignableFrom(ctx.query().getClass())) {
+      for (      StackTraceElement e : Thread.currentThread().getStackTrace()) {
+        if (e.getMethodName().equals(crudMethod)) {
+          fail("Record." + crudMethod + "() should not execute any "+ type.getName()+ " queries");
+        }
+      }
+    }
+  }
+}

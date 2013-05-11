@@ -4,7 +4,7 @@ case SQLITE:
     log.info("SKIPPING","KeepResultSet tests");
   return;
 }
-DSLContext create=create(new NoSelectAfterRefreshListener());
+DSLContext create=create(new NoStatementAfterCRUDListener(Select.class,"refresh"));
 Result<B> b2=create.selectFrom(TBook()).keepResultSet(KEEP_AFTER_FETCH).fetch();
 B r=b2.get(0);
 assertNotNull(b2.resultSet());

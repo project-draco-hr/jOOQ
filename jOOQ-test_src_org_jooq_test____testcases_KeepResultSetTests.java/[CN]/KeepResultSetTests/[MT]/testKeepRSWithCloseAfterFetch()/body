@@ -1,5 +1,5 @@
 {
-  DSLContext create=create(new NoSelectAfterRefreshListener());
+  DSLContext create=create(new NoStatementAfterCRUDListener(Select.class,"refresh"));
   Result<B> b1=create.selectFrom(TBook()).fetch();
   assertNull(b1.resultSet());
   Result<Record> b2=create.select().from(TBook().getName()).keepResultSet(CLOSE_AFTER_FETCH).fetch();
