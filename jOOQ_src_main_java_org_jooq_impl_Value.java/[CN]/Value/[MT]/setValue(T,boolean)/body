@@ -4,10 +4,10 @@
   }
  else {
     if (value == null) {
-      isChanged|=val != null;
+      isChanged=isChanged || (val != null);
     }
  else {
-      isChanged|=!value.equals(val);
+      isChanged=isChanged || (!value.equals(val));
     }
   }
   value=val;
