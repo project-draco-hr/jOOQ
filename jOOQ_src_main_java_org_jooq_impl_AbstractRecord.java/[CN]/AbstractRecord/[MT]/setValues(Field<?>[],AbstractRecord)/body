@@ -1,0 +1,5 @@
+{
+  for (  Field<?> field : fields) {
+    setValue(field,record.getValue0(field));
+  }
+}

@@ -3,9 +3,7 @@
     try {
       rs.absolute(rsIndex - 1);
       AbstractRecord record=(AbstractRecord)create().fetchLazy(rs).fetchOne();
-      for (      Field<?> field : f) {
-        setValue(field,record.getValue0(field));
-      }
+      setValues(f,record);
     }
  catch (    SQLException e) {
       throw translate("Cannot refresh record",e);
