@@ -1,17 +1,3 @@
 {
-  if (rs != null) {
-    try {
-      rs.absolute(rsIndex - 1);
-      Record record=create().fetchLazy(rs).fetchOne();
-      for (int i=0; i < record.size(); i++) {
-        setValue(i,new Value<Object>(record.getValue(i)));
-      }
-    }
- catch (    SQLException e) {
-      throw translate("Cannot refresh record",e);
-    }
-  }
- else {
-    throw new DataAccessException("Cannot refresh record. No ResultSet available");
-  }
+  refresh(fields.fields.fields);
 }
