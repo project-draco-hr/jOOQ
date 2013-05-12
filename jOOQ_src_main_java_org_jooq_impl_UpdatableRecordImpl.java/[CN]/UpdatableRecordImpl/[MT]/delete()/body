@@ -1,26 +1,21 @@
 {
-  if (rs != null) {
-    return super.delete();
-  }
- else {
-    TableField<R,?>[] keys=getPrimaryKey().getFieldsArray();
-    try {
-      DeleteQuery<R> delete1=create().deleteQuery(getTable());
-      Utils.addConditions(delete1,this,keys);
-      if (isExecuteWithOptimisticLocking()) {
-        if (isTimestampOrVersionAvailable()) {
-          addConditionForVersionAndTimestamp(delete1);
-        }
- else {
-          checkIfChanged(keys);
-        }
+  TableField<R,?>[] keys=getPrimaryKey().getFieldsArray();
+  try {
+    DeleteQuery<R> delete1=create().deleteQuery(getTable());
+    Utils.addConditions(delete1,this,keys);
+    if (isExecuteWithOptimisticLocking()) {
+      if (isTimestampOrVersionAvailable()) {
+        addConditionForVersionAndTimestamp(delete1);
       }
-      int result=delete1.execute();
-      checkIfChanged(result,null,null);
-      return result;
+ else {
+        checkIfChanged(keys);
+      }
     }
+    int result=delete1.execute();
+    checkIfChanged(result,null,null);
+    return result;
+  }
   finally {
-      changed(true);
-    }
+    changed(true);
   }
 }
