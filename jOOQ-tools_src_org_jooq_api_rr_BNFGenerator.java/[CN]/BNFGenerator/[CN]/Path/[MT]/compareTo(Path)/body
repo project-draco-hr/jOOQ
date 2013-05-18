@@ -1,0 +1,12 @@
+{
+  int result=0;
+  if (to != null) {
+    result=to.compareTo(o.to);
+    if (result != 0)     return result;
+  }
+  if (from != null) {
+    result=from.compareTo(o.from);
+    if (result != 0)     return result;
+  }
+  return result;
+}

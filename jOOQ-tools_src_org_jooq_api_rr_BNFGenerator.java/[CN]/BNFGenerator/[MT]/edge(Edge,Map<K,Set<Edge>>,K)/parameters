@@ -1,0 +1,3 @@
+Edge edge
+Map<K,Set<Edge>> map
+K key

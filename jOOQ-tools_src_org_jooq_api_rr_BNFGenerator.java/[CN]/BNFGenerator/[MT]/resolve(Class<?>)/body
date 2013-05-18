@@ -1,0 +1,9 @@
+{
+  if (!visited.contains(type)) {
+    visited.add(type);
+    for (    Class<?> i : type.getInterfaces()) {
+      resolve(i);
+    }
+    resolve(type.getDeclaredMethods());
+  }
+}

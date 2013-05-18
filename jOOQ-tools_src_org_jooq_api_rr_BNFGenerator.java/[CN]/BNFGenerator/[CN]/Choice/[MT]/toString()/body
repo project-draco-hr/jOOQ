@@ -1,0 +1,21 @@
+{
+  StringBuilder sb=new StringBuilder();
+  boolean optional=false;
+  boolean any=false;
+  if (expr.length > 1)   sb.append("( ");
+  String separator="";
+  for (  Expr e : expr) {
+    String s=e.toString();
+    if ("".equals(s)) {
+      optional=true;
+      continue;
+    }
+    any=true;
+    sb.append(separator);
+    sb.append(e);
+    separator=" | ";
+  }
+  if (expr.length > 1)   sb.append(" )");
+  if (optional)   sb.append(" ?");
+  return any ? sb.toString() : "";
+}

@@ -1,0 +1,15 @@
+{
+  if (this == obj)   return true;
+  if (obj == null)   return false;
+  if (getClass() != obj.getClass())   return false;
+  Edge other=(Edge)obj;
+  if (expr == null) {
+    if (other.expr != null)     return false;
+  }
+ else   if (!expr.equals(other.expr))   return false;
+  if (path == null) {
+    if (other.path != null)     return false;
+  }
+ else   if (!path.equals(other.path))   return false;
+  return true;
+}

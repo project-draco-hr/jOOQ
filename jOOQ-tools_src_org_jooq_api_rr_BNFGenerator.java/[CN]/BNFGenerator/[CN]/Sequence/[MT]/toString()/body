@@ -1,0 +1,13 @@
+{
+  StringBuilder sb=new StringBuilder();
+  String separator="";
+  for (  Expr e : expr) {
+    String s=e.toString();
+    if (s.length() > 0) {
+      sb.append(separator);
+      sb.append(e);
+      separator=" ";
+    }
+  }
+  return sb.toString();
+}

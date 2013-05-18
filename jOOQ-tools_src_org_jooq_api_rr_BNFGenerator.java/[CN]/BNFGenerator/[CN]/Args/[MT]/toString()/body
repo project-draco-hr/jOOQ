@@ -1,0 +1,27 @@
+{
+  StringBuilder sb=new StringBuilder();
+  if (!"".equals(name)) {
+    sb.append("'");
+    sb.append(name);
+    sb.append("'");
+  }
+  if (notEmpty(args)) {
+    sb.append(" ");
+    String separator="";
+    for (    String arg : args) {
+      sb.append(separator);
+      if (arg.endsWith("+")) {
+        String sub=arg.substring(0,arg.length() - 1);
+        sb.append(sub);
+        sb.append(" { ',' ");
+        sb.append(sub);
+        sb.append(" }");
+      }
+ else {
+        sb.append(arg);
+      }
+      separator=" ',' ";
+    }
+  }
+  return sb.toString();
+}

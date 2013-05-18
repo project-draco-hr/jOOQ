@@ -1,0 +1,12 @@
+{
+  int result=0;
+  if (path != null) {
+    result=path.compareTo(o.path);
+    if (result != 0)     return result;
+  }
+  if (expr != null) {
+    result=expr.compareTo(o.expr);
+    if (result != 0)     return result;
+  }
+  return result;
+}

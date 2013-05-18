@@ -1,0 +1,42 @@
+{
+  for (  Method method : methods) {
+    Transition transition=method.getAnnotation(Transition.class);
+    if (transition != null) {
+      Class<?> declaringClass=method.getDeclaringClass();
+      Class<?> returnType=method.getReturnType();
+      String from=transition.from();
+      if ("".equals(from)) {
+        State fromState=declaringClass.getAnnotation(State.class);
+        if (fromState == null) {
+          System.err.println("No State defined on " + declaringClass.getName());
+        }
+ else {
+          from=fromState.name();
+        }
+      }
+      if ("".equals(from)) {
+        from=declaringClass.getSimpleName();
+      }
+      String to=transition.to();
+      if ("".equals(to)) {
+        State toState=returnType.getAnnotation(State.class);
+        if (toState == null) {
+          System.err.println("No State defined on " + returnType.getName());
+        }
+ else {
+          to=toState.name();
+        }
+      }
+      if ("".equals(to)) {
+        to=returnType.getSimpleName();
+      }
+      String name=transition.name();
+      if ("".equals(name)) {
+        name=method.getName();
+      }
+      String[] args=transition.args();
+      edge(new Edge(new Path(from,to),new Args(name,args)));
+      resolve(returnType);
+    }
+  }
+}
