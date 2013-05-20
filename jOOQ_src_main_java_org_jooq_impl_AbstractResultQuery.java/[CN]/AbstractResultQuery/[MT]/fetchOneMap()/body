@@ -1,3 +1,4 @@
 {
-  return fetchOne().intoMap();
+  R record=fetchOne();
+  return record == null ? null : record.intoMap();
 }
