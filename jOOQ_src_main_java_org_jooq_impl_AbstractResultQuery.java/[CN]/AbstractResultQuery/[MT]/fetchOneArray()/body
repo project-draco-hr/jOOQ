@@ -1,3 +1,4 @@
 {
-  return fetchOne().intoArray();
+  R record=fetchOne();
+  return record == null ? null : record.intoArray();
 }
