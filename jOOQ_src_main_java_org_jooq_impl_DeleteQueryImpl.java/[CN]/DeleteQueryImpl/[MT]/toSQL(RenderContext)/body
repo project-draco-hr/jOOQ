@@ -1,6 +1,10 @@
 {
   boolean declare=context.declareTables();
-  context.keyword("delete from ");
+  context.keyword("delete ");
+  if (getFrom() instanceof TableAlias && context.configuration().dialect() == MYSQL) {
+    context.sql(getFrom()).sql(" ");
+  }
+  context.keyword("from ");
   context.declareTables(true).sql(getFrom()).declareTables(declare);
   if (!(getWhere() instanceof TrueCondition)) {
     context.formatSeparator().keyword("where ").sql(getWhere());
