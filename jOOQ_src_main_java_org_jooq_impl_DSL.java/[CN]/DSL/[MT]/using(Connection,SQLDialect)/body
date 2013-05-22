@@ -1,3 +1,3 @@
 {
-  return new DSLContextImpl(connection,dialect,null);
+  return new DefaultDSLContext(connection,dialect,null);
 }

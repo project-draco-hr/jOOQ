@@ -1,3 +1,3 @@
 {
-  return new DSLContextImpl(connection,JDBCUtils.dialect(connection),null);
+  return new DefaultDSLContext(connection,JDBCUtils.dialect(connection),null);
 }
