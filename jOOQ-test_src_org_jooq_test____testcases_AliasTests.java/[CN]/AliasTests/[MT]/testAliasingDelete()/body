@@ -1,0 +1,8 @@
+{
+  jOOQAbstractTest.reset=false;
+  Table<B2S> b=TBookToBookStore().as("b");
+  assertEquals(2,create().delete(b).where(b.field(TBookToBookStore_BOOK_ID()).eq(1)).execute());
+  assertEquals(4,create().fetchCount(selectFrom(TBookToBookStore())));
+  assertEquals(4,create().delete(b).execute());
+  assertEquals(0,create().fetchCount(selectFrom(TBookToBookStore())));
+}

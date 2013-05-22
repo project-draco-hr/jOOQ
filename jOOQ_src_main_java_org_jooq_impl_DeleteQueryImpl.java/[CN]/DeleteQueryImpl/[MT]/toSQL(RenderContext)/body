@@ -1,6 +1,7 @@
 {
+  boolean declare=context.declareTables();
   context.keyword("delete from ");
-  context.sql(getFrom());
+  context.declareTables(true).sql(getFrom()).declareTables(declare);
   if (!(getWhere() instanceof TrueCondition)) {
     context.formatSeparator().keyword("where ").sql(getWhere());
   }
