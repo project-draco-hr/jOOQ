@@ -1,59 +1,42 @@
 {
-  Connection connection=ctx.connection();
-  boolean autoCommit=false;
-  if (ctx.configuration().dialect() == SQLDialect.POSTGRES && isSelectingRefCursor()) {
-    autoCommit=connection.getAutoCommit();
-    if (autoCommit) {
-      if (log.isDebugEnabled())       log.debug("Unsetting auto-commit",false);
-      connection.setAutoCommit(false);
+  listener.executeStart(ctx);
+  if (ctx.configuration().dialect() == ASE) {
+    ctx.resultSet(ctx.statement().executeQuery());
+  }
+ else   if (ctx.statement().execute()) {
+    ctx.resultSet(ctx.statement().getResultSet());
+  }
+  listener.executeEnd(ctx);
+  if (!many) {
+    if (ctx.resultSet() != null) {
+      Field<?>[] fields=getFields(ctx.resultSet().getMetaData());
+      cursor=new CursorImpl<R>(ctx,listener,fields,internIndexes(fields),keepStatement(),keepResultSet(),keepResultSetMode,getRecordType());
+      if (!lazy) {
+        result=cursor.fetch();
+        cursor=null;
+      }
+    }
+ else {
+      result=new ResultImpl<R>(ctx.configuration(),null);
     }
   }
-  try {
-    listener.executeStart(ctx);
-    if (ctx.configuration().dialect() == ASE) {
-      ctx.resultSet(ctx.statement().executeQuery());
-    }
- else     if (ctx.statement().execute()) {
-      ctx.resultSet(ctx.statement().getResultSet());
-    }
-    listener.executeEnd(ctx);
-    if (!many) {
-      if (ctx.resultSet() != null) {
-        Field<?>[] fields=getFields(ctx.resultSet().getMetaData());
-        cursor=new CursorImpl<R>(ctx,listener,fields,internIndexes(fields),keepStatement(),keepResultSet(),keepResultSetMode,getRecordType());
-        if (!lazy) {
-          result=cursor.fetch();
-          cursor=null;
-        }
+ else {
+    results=new ArrayList<Result<Record>>();
+    boolean anyResults=false;
+    while (ctx.resultSet() != null) {
+      anyResults=true;
+      Field<?>[] fields=new MetaDataFieldProvider(ctx.configuration(),ctx.resultSet().getMetaData()).getFields();
+      Cursor<Record> c=new CursorImpl<Record>(ctx,listener,fields,internIndexes(fields),true,false,CLOSE_AFTER_FETCH);
+      results.add(c.fetch());
+      if (ctx.statement().getMoreResults()) {
+        ctx.resultSet(ctx.statement().getResultSet());
       }
  else {
-        result=new ResultImpl<R>(ctx.configuration(),null);
+        ctx.resultSet(null);
       }
     }
- else {
-      results=new ArrayList<Result<Record>>();
-      boolean anyResults=false;
-      while (ctx.resultSet() != null) {
-        anyResults=true;
-        Field<?>[] fields=new MetaDataFieldProvider(ctx.configuration(),ctx.resultSet().getMetaData()).getFields();
-        Cursor<Record> c=new CursorImpl<Record>(ctx,listener,fields,internIndexes(fields),true,false,CLOSE_AFTER_FETCH);
-        results.add(c.fetch());
-        if (ctx.statement().getMoreResults()) {
-          ctx.resultSet(ctx.statement().getResultSet());
-        }
- else {
-          ctx.resultSet(null);
-        }
-      }
-      if (anyResults) {
-        ctx.statement().getMoreResults(Statement.CLOSE_ALL_RESULTS);
-      }
-    }
-  }
-  finally {
-    if (autoCommit) {
-      if (log.isDebugEnabled())       log.debug("Resetting auto-commit",autoCommit);
-      connection.setAutoCommit(autoCommit);
+    if (anyResults) {
+      ctx.statement().getMoreResults(Statement.CLOSE_ALL_RESULTS);
     }
   }
   return result != null ? result.size() : 0;

@@ -9,6 +9,9 @@ default :
   log.info("SKIPPING","Stored procedures tests with CURSOR type parameters");
 return;
 }
+boolean autoCommit=getConnection().getAutoCommit();
+try {
+getConnection().setAutoCommit(false);
 {
 Object integerArray=null;
 Result<Record> bFromCursor=invoke(cRoutines(),"fGetOneCursor",create().configuration(),integerArray);
@@ -16,12 +19,12 @@ assertNotNull(bFromCursor);
 assertTrue(bFromCursor.isEmpty());
 assertEquals(0,bFromCursor.size());
 if (TArrays_STRING_R() != null) {
-ArrayRecord<Integer> i=newNUMBER_R();
-i.set(1,2,4,6);
-integerArray=i;
+  ArrayRecord<Integer> i=newNUMBER_R();
+  i.set(1,2,4,6);
+  integerArray=i;
 }
  else if (TArrays_STRING() != null) {
-integerArray=new Integer[]{1,2,4,6};
+  integerArray=new Integer[]{1,2,4,6};
 }
 bFromCursor=invoke(cRoutines(),"fGetOneCursor",create().configuration(),integerArray);
 Result<B> bFromTable=create().selectFrom(TBook()).where(TBook_ID().in(1,2,4)).orderBy(TBook_ID()).fetch();
@@ -35,7 +38,7 @@ Field<Result<Record>> field=FGetOneCursorField(null);
 Result<Record> bFromCursor;
 switch (dialect()) {
 case HSQLDB:
-bFromCursor=create().select().from(table(field)).fetch();
+  bFromCursor=create().select().from(table(field)).fetch();
 break;
 default :
 bFromCursor=create().select(field).fetchOne(field);
@@ -112,5 +115,9 @@ compareBookResults(bFromCursor,bFromTable);
 }
  else {
 log.info("SKIPPING","Two cursor OUT parameter test");
+}
+}
+  finally {
+getConnection().setAutoCommit(autoCommit);
 }
 }
