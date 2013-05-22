@@ -1,16 +1,16 @@
 {
   pruneLoop:   while (true) {
-    String check="UpdateSetMoreStep";
+    String check="WindowPartitionByStep";
     Set<Edge> e=edgesTo.get(check);
     if (e != null) {
-      System.out.println();
-      System.out.println();
-      System.out.println();
-      System.out.println(string(e,false));
-      System.out.println(string(edgesFrom.get(check),false));
-      System.out.println();
-      System.out.println();
-      System.out.println();
+      System.err.println();
+      System.err.println();
+      System.err.println();
+      System.err.println(string(e,false));
+      System.err.println(string(edgesFrom.get(check),false));
+      System.err.println();
+      System.err.println();
+      System.err.println();
     }
     for (    Path path : new ArrayList<Path>(edges.keySet())) {
       Set<Edge> set=edges.get(path);
@@ -69,14 +69,30 @@
         }
       }
     }
-    substitutionLoop:     for (    String name : new ArrayList<String>(edgesFrom.keySet())) {
+    for (    int maxSize : new int[]{1,Integer.MAX_VALUE})     substitutionLoop:     for (    String name : new ArrayList<String>(edgesFrom.keySet())) {
       if (terminals.contains(name)) {
         continue substitutionLoop;
       }
       if (edgesFrom.get(name).size() == 1) {
         Edge from=edgesFrom.get(name).iterator().next();
         Set<Edge> set=edgesTo.get(name);
-        if (set != null && set.size() == 1) {
+        if (set != null) {
+          if (set.size() > maxSize) {
+            continue substitutionLoop;
+          }
+          if (set.size() > 1) {
+            if (!"".equals(from.expr.toString())) {
+              continue substitutionLoop;
+            }
+ else {
+              System.out.println();
+              System.out.println();
+              System.out.println("Substituting multi-sequence");
+              System.out.println(string(from));
+              System.out.println("...");
+              System.out.println(string(set));
+            }
+          }
           List<Edge> list=new ArrayList<Edge>(set);
           List<Edge> substitutes=new ArrayList<Edge>();
           remove(from);
