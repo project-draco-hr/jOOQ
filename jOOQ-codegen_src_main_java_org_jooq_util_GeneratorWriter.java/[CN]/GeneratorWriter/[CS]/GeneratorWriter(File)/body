@@ -2,9 +2,9 @@
   file.getParentFile().mkdirs();
   this.file=file;
   try {
-    this.writer=new PrintWriter(file);
+    this.writer=new PrintWriter(new OutputStreamWriter(new FileOutputStream(file),"UTF-8"));
   }
- catch (  FileNotFoundException e) {
+ catch (  IOException e) {
     throw new GeneratorException("Error writing " + file.getAbsolutePath());
   }
   this.sb=new StringBuilder();
