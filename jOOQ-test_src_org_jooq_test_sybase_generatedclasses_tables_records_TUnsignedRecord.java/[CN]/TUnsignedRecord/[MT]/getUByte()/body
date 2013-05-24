@@ -1,0 +1,3 @@
+{
+  return (org.jooq.types.UByte)getValue(0);
+}
