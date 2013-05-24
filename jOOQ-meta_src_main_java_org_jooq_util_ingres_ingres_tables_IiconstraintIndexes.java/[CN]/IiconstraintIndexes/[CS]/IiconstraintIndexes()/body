@@ -1,3 +1,0 @@
-{
-  super("iiconstraint_indexes",org.jooq.util.ingres.ingres.$ingres.$INGRES);
-}

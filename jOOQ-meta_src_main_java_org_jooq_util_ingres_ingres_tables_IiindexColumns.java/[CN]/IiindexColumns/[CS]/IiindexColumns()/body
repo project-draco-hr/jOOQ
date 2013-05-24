@@ -1,3 +1,0 @@
-{
-  super("iiindex_columns",org.jooq.util.ingres.ingres.$ingres.$INGRES);
-}
