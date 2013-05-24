@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.test.ingres.generatedclasses.tables.TTriggers.COUNTER);
+  return (java.lang.Integer)getValue(2);
 }

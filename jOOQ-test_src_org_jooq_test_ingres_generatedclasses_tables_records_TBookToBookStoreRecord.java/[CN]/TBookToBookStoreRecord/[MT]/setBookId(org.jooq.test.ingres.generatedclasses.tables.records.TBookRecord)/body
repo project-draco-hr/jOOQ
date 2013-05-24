@@ -1,8 +1,0 @@
-{
-  if (value == null) {
-    setValue(org.jooq.test.ingres.generatedclasses.tables.TBookToBookStore.BOOK_ID,null);
-  }
- else {
-    setValue(org.jooq.test.ingres.generatedclasses.tables.TBookToBookStore.BOOK_ID,value.getValue(org.jooq.test.ingres.generatedclasses.tables.TBook.ID));
-  }
-}
