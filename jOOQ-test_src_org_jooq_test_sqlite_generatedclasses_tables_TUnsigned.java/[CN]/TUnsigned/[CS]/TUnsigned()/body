@@ -1,0 +1,3 @@
+{
+  super("t_unsigned",org.jooq.test.sqlite.generatedclasses.DefaultSchema.DEFAULT_SCHEMA);
+}
