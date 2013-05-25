@@ -1,0 +1,8 @@
+{
+  if (maxValue == null) {
+    return and(row(f));
+  }
+ else {
+    return super.and(f);
+  }
+}

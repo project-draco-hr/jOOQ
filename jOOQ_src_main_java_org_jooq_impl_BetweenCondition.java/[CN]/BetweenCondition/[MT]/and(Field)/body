@@ -1,0 +1,9 @@
+{
+  if (maxValue == null) {
+    this.maxValue=f;
+    return this;
+  }
+ else {
+    return super.and(f);
+  }
+}

@@ -1,0 +1,10 @@
+{
+  Param<Boolean> t=val(true);
+  Param<Boolean> f=val(false);
+  assertEquals(1,create().selectOne().where(condition(t)).fetchOne(0));
+  assertNull(create().selectOne().where(condition(f)).fetchOne());
+  assertEquals(1,create().selectOne().where(t).fetchOne(0));
+  assertNull(create().selectOne().where(f).fetchOne());
+  assertEquals(1,create().selectOne().where(trueCondition().andNot(f)).fetchOne(0));
+  assertNull(create().selectOne().where(trueCondition().andNot(t)).fetchOne());
+}
