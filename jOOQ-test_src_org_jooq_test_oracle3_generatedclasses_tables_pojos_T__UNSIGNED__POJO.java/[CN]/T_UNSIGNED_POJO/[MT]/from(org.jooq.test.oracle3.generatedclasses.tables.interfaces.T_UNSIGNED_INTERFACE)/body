@@ -1,0 +1,6 @@
+{
+  setU_BYTE(from.getU_BYTE());
+  setU_SHORT(from.getU_SHORT());
+  setU_INT(from.getU_INT());
+  setU_LONG(from.getU_LONG());
+}
