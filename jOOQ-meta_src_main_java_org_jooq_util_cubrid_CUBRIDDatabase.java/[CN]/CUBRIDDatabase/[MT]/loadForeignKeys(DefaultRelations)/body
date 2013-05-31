@@ -19,6 +19,8 @@
     }
   }
   finally {
-    provider.release(connection);
+    if (connection != null) {
+      provider.release(connection);
+    }
   }
 }

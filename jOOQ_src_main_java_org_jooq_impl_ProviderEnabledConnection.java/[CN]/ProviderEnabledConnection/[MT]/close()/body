@@ -1,3 +1,6 @@
 {
-  connectionProvider.release(getDelegate());
+  Connection connection=getDelegate();
+  if (connection != null) {
+    connectionProvider.release(connection);
+  }
 }
