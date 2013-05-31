@@ -66,7 +66,6 @@ assertEquals(Integer.valueOf(1),result.getValue(3,column));
 switch (dialect()) {
 case CUBRID:
 case DB2:
-case SQLSERVER:
 log.info("SKIPPING","PERCENT_RANK() and CUME_DIST() window function tests");
 break;
 default :
@@ -74,24 +73,24 @@ default :
 column=0;
 result=create().select(TBook_ID(),percentRank().over().orderBy(TBook_ID().desc()),percentRank().over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().desc()),cumeDist().over().orderBy(TBook_ID().desc()),cumeDist().over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID().desc())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
 column++;
-assertEquals("1",result.get(0).getValue(column,String.class));
+assertEquals("1",result.get(0).getValue(column,String.class).substring(0,1));
 assertEquals("0.6",result.get(1).getValue(column,String.class).substring(0,3));
 assertEquals("0.3",result.get(2).getValue(column,String.class).substring(0,3));
-assertEquals("0",result.get(3).getValue(column,String.class));
+assertEquals("0",result.get(3).getValue(column,String.class).substring(0,1));
 column++;
-assertEquals("1",result.get(0).getValue(column,String.class));
-assertEquals("0",result.get(1).getValue(column,String.class));
-assertEquals("1",result.get(2).getValue(column,String.class));
-assertEquals("0",result.get(3).getValue(column,String.class));
+assertEquals("1",result.get(0).getValue(column,String.class).substring(0,1));
+assertEquals("0",result.get(1).getValue(column,String.class).substring(0,1));
+assertEquals("1",result.get(2).getValue(column,String.class).substring(0,1));
+assertEquals("0",result.get(3).getValue(column,String.class).substring(0,1));
 column++;
-assertEquals("1",result.get(0).getValue(column,String.class));
+assertEquals("1",result.get(0).getValue(column,String.class).substring(0,1));
 assertEquals("0.75",result.get(1).getValue(column,String.class));
 assertEquals("0.5",result.get(2).getValue(column,String.class));
 assertEquals("0.25",result.get(3).getValue(column,String.class));
 column++;
-assertEquals("1",result.get(0).getValue(column,String.class));
+assertEquals("1",result.get(0).getValue(column,String.class).substring(0,1));
 assertEquals("0.5",result.get(1).getValue(column,String.class));
-assertEquals("1",result.get(2).getValue(column,String.class));
+assertEquals("1",result.get(2).getValue(column,String.class).substring(0,1));
 assertEquals("0.5",result.get(3).getValue(column,String.class));
 break;
 }
@@ -132,7 +131,7 @@ assertEquals(asList(1,1,2,2),result.getValues(3));
 assertEquals(asList(1,2,1,2),result.getValues(4));
 }
 column=0;
-if (asList(CUBRID,SQLSERVER).contains(dialect())) {
+if (asList(CUBRID).contains(dialect())) {
 log.info("SKIPPING","ROWS UNBOUNDED PRECEDING and similar tests");
 }
  else {
