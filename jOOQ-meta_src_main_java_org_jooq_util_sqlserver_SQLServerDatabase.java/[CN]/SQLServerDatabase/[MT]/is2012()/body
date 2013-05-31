@@ -1,0 +1,6 @@
+{
+  if (is2012 == null) {
+    is2012=create().selectCount().from(SEQUENCES).fetchOne(0,boolean.class);
+  }
+  return is2012;
+}

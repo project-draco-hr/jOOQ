@@ -18,6 +18,7 @@ case POSTGRES:
 case FIREBIRD:
 case DERBY:
 case HSQLDB:
+case SQLSERVER:
 {
   if ("nextval".equals(method)) {
     String field="next value for " + getQualifiedName(configuration);
@@ -25,6 +26,9 @@ case HSQLDB:
   }
  else   if (dialect == FIREBIRD) {
     return field("gen_id(" + getQualifiedName(configuration) + ", 0)",getDataType());
+  }
+ else   if (dialect == SQLSERVER) {
+    return select(field("current_value")).from("sys.sequences sq").join("sys.schemas sc").on("sq.schema_id = sc.schema_id").where("sq.name = ?",name).and("sc.name = ?",schema.getName()).asField().cast(type);
   }
  else {
     throw new SQLDialectNotSupportedException("The sequence's current value functionality is not supported for the " + dialect + " dialect.");
