@@ -2,7 +2,7 @@
   if (getArguments().length == 1) {
     return (Field<T>)getArguments()[0];
   }
-switch (configuration.dialect()) {
+switch (configuration.dialect().family()) {
 case ASE:
 case DERBY:
 case SQLSERVER:

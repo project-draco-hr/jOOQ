@@ -1,5 +1,5 @@
 {
-  SQLDialect dialect=context.configuration().dialect();
+  SQLDialect family=context.configuration().dialect().family();
   Converter<?,?> converter=DataTypes.converter(type);
   if (converter != null) {
     val=((Converter)converter).to(val);
@@ -10,7 +10,7 @@
       context.keyword("null");
     }
  else     if (type == Boolean.class) {
-      if (asList(ASE,DB2,FIREBIRD,ORACLE,SQLSERVER,SQLITE,SYBASE).contains(dialect)) {
+      if (asList(ASE,DB2,FIREBIRD,ORACLE,SQLSERVER,SQLITE,SYBASE).contains(family)) {
         context.sql(((Boolean)val) ? "1" : "0");
       }
  else {
@@ -19,19 +19,19 @@
     }
  else     if (type == byte[].class) {
       byte[] binary=(byte[])val;
-      if (asList(ASE,SQLSERVER,SYBASE).contains(dialect)) {
+      if (asList(ASE,SQLSERVER,SYBASE).contains(family)) {
         context.sql("0x").sql(convertBytesToHex(binary));
       }
- else       if (dialect == DB2) {
+ else       if (family == DB2) {
         context.keyword("blob").sql("(X'").sql(convertBytesToHex(binary)).sql("')");
       }
- else       if (asList(DERBY,H2,HSQLDB,INGRES,MYSQL,SQLITE).contains(dialect)) {
+ else       if (asList(DERBY,H2,HSQLDB,INGRES,MYSQL,SQLITE).contains(family)) {
         context.sql("X'").sql(convertBytesToHex(binary)).sql("'");
       }
- else       if (asList(ORACLE).contains(dialect)) {
+ else       if (asList(ORACLE).contains(family)) {
         context.keyword("hextoraw('").sql(convertBytesToHex(binary)).sql("')");
       }
- else       if (dialect == POSTGRES) {
+ else       if (family == POSTGRES) {
         context.sql("E'").sql(convertBytesToPostgresOctal(binary)).keyword("'::bytea");
       }
  else {
@@ -45,10 +45,10 @@
       context.sql(((Number)val).toString());
     }
  else     if (type == Date.class) {
-      if (asList(ASE,SQLITE,SQLSERVER,SYBASE).contains(dialect)) {
+      if (asList(ASE,SQLITE,SQLSERVER,SYBASE).contains(family)) {
         context.sql("'").sql(escape(val)).sql("'");
       }
- else       if (dialect == DERBY) {
+ else       if (family == DERBY) {
         context.keyword("date('").sql(escape(val)).sql("')");
       }
  else {
@@ -56,13 +56,13 @@
       }
     }
  else     if (type == Timestamp.class) {
-      if (asList(ASE,SQLITE,SQLSERVER,SYBASE).contains(dialect)) {
+      if (asList(ASE,SQLITE,SQLSERVER,SYBASE).contains(family)) {
         context.sql("'").sql(escape(val)).sql("'");
       }
- else       if (dialect == DERBY) {
+ else       if (family == DERBY) {
         context.keyword("timestamp('").sql(escape(val)).sql("')");
       }
- else       if (dialect == CUBRID) {
+ else       if (family == CUBRID) {
         context.keyword("datetime '").sql(escape(val)).sql("'");
       }
  else {
@@ -70,13 +70,13 @@
       }
     }
  else     if (type == Time.class) {
-      if (asList(ASE,SQLITE,SQLSERVER,SYBASE).contains(dialect)) {
+      if (asList(ASE,SQLITE,SQLSERVER,SYBASE).contains(family)) {
         context.sql("'").sql(escape(val)).sql("'");
       }
- else       if (dialect == DERBY) {
+ else       if (family == DERBY) {
         context.keyword("time('").sql(escape(val)).sql("')");
       }
- else       if (dialect == ORACLE) {
+ else       if (family == ORACLE) {
         context.keyword("timestamp '1970-01-01 ").sql(escape(val)).sql("'");
       }
  else {
@@ -85,7 +85,7 @@
     }
  else     if (type.isArray()) {
       String separator="";
-      if (dialect == H2) {
+      if (family == H2) {
         context.sql("(");
         for (        Object o : ((Object[])val)) {
           context.sql(separator);
@@ -118,11 +118,11 @@
       context.sql("'").sql(escape(val)).sql("'");
     }
   }
- else   if (dialect == SQLDialect.POSTGRES) {
+ else   if (family == SQLDialect.POSTGRES) {
     if (type.isArray() && byte[].class != type) {
       context.sql(getBindVariable(context));
       context.sql("::");
-      context.keyword(DefaultDataType.getDataType(dialect,type).getCastTypeName(context.configuration()));
+      context.keyword(DefaultDataType.getDataType(family,type).getCastTypeName(context.configuration()));
     }
  else     if (EnumType.class.isAssignableFrom(type)) {
       context.sql(getBindVariable(context));

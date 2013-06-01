@@ -3,8 +3,7 @@
     log.info("SKIPPING","Parameterised LIMIT .. OFFSET tests");
     return;
   }
-  int lower=asList(DB2,DERBY,HSQLDB,SYBASE).contains(dialect()) ? 1 : 0;
-  for (int i=lower; i < 6; i++) {
+  for (int i=1; i < 6; i++) {
     Select<?> s1=create().selectFrom(TBook()).limit(param("limit",i));
     Select<?> s2=create().select().from(TBook()).limit(param("limit",i));
     assertEquals(Math.min(i,4),s1.fetch().size());
@@ -12,7 +11,7 @@
     assertEquals(Math.min(i + 1,4),s1.bind("limit",i + 1).fetch().size());
     assertEquals(Math.min(i + 1,4),s2.bind("limit",i + 1).fetch().size());
   }
-  for (int i=lower; i < 6; i++) {
+  for (int i=1; i < 6; i++) {
     Select<?> s1a=create().selectFrom(TBook()).limit(param("offset",1),i);
     Select<?> s1b=create().selectFrom(TBook()).limit(1,param("limit",i));
     Select<?> s1c=create().selectFrom(TBook()).limit(param("offset",1),param("limit",i));

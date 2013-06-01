@@ -1,5 +1,5 @@
 {
-switch (dialect()) {
+switch (dialect().family()) {
 case DB2:
 case DERBY:
 case FIREBIRD:

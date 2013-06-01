@@ -159,7 +159,7 @@ assertEquals(Integer.valueOf(2),result.getValue(1,column));
 assertEquals(Integer.valueOf(3),result.getValue(2,column));
 assertEquals(Integer.valueOf(3),result.getValue(3,column));
 }
-switch (dialect()) {
+switch (dialect().family()) {
 case CUBRID:
 case POSTGRES:
 case SQLSERVER:

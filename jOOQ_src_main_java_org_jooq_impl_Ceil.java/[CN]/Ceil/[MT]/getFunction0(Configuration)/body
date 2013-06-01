@@ -1,5 +1,5 @@
 {
-switch (configuration.dialect()) {
+switch (configuration.dialect().family()) {
 case SQLITE:
     return DSL.round(argument.add(0.499999999999999));
 case ASE:

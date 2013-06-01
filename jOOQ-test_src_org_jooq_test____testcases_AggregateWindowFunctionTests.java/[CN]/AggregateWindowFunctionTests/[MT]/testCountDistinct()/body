@@ -1,5 +1,5 @@
 {
-  if (asList(ASE,CUBRID,DB2,DERBY,FIREBIRD,H2,INGRES,ORACLE,POSTGRES,SQLITE,SQLSERVER,SYBASE).contains(dialect())) {
+  if (asList(ASE,CUBRID,DB2,DERBY,FIREBIRD,H2,INGRES,ORACLE,POSTGRES,SQLITE,SQLSERVER,SYBASE).contains(dialect().family())) {
     log.info("SKIPPING","Multi-expression COUNT(DISTINCT) test");
   }
  else {

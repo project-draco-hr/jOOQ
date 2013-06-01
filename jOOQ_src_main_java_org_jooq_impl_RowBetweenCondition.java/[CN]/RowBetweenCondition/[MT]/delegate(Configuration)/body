@@ -2,7 +2,7 @@
   RowN r=(RowN)row;
   RowN min=(RowN)minValue;
   RowN max=(RowN)maxValue;
-  if (symmetric && asList(ASE,CUBRID,DB2,DERBY,FIREBIRD,H2,MYSQL,ORACLE,SQLITE,SQLSERVER,SYBASE).contains(configuration.dialect())) {
+  if (symmetric && asList(ASE,CUBRID,DB2,DERBY,FIREBIRD,H2,MYSQL,ORACLE,SQLITE,SQLSERVER,SYBASE).contains(configuration.dialect().family())) {
     if (not) {
       return (QueryPartInternal)r.notBetween(min,max).and(r.notBetween(max,min));
     }
@@ -10,7 +10,7 @@
       return (QueryPartInternal)r.between(min,max).or(r.between(max,min));
     }
   }
- else   if (row.size() > 1 && asList(CUBRID,DERBY,FIREBIRD,MYSQL,ORACLE,SQLITE,SQLSERVER,SYBASE).contains(configuration.dialect())) {
+ else   if (row.size() > 1 && asList(CUBRID,DERBY,FIREBIRD,MYSQL,ORACLE,SQLITE,SQLSERVER,SYBASE).contains(configuration.dialect().family())) {
     Condition result=r.ge(min).and(r.le(max));
     if (not) {
       result=result.not();

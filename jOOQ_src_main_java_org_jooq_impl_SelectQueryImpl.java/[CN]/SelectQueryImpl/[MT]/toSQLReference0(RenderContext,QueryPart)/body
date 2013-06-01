@@ -7,15 +7,15 @@
   if (distinct) {
     context.keyword("distinct ");
   }
-switch (dialect) {
+switch (dialect.family()) {
 case ASE:
 case SQLSERVER:
 {
-      if (getLimit().isApplicable() && getLimit().offsetZero() && !getLimit().rendersParams()) {
+      if (asList(ASE,SQLSERVER2008).contains(dialect) && getLimit().isApplicable() && getLimit().offsetZero()&& !getLimit().rendersParams()) {
         context.sql(getLimit()).sql(" ");
       }
- else       if (dialect == SQLSERVER && !getOrderBy().isEmpty()) {
-        if (context.subquery() || getLimit().isApplicable()) {
+ else       if (dialect.family() == SQLSERVER && context.subquery() && !getOrderBy().isEmpty()) {
+        if (dialect == SQLSERVER2008 || !getLimit().isApplicable()) {
           context.keyword("top 100 percent ");
         }
       }
@@ -88,5 +88,8 @@ context.formatSeparator().keyword("having ").sql(getHaving());
 }
 if (!getOrderBy().isEmpty()) {
 context.formatSeparator().keyword("order ").keyword(orderBySiblings ? "siblings " : "").keyword("by ").sql(getOrderBy());
+}
+ else if (getLimit().isApplicable() && asList(SQLSERVER,SQLSERVER2012).contains(dialect)) {
+context.formatSeparator().keyword("order by 1");
 }
 }

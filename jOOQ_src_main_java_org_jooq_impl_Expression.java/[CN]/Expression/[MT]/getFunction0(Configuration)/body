@@ -24,10 +24,10 @@
  else   if (BIT_XOR == operator && asList(ORACLE,SQLITE).contains(dialect)) {
     return (Field<T>)bitAnd(bitNot(bitAnd(lhsAsNumber(),rhsAsNumber())),bitOr(lhsAsNumber(),rhsAsNumber()));
   }
- else   if (SHL == operator && asList(ASE,DB2,H2,HSQLDB,INGRES,ORACLE,SQLSERVER,SYBASE).contains(dialect)) {
+ else   if (SHL == operator && asList(ASE,DB2,H2,HSQLDB,INGRES,ORACLE,SQLSERVER,SYBASE).contains(dialect.family())) {
     return lhs.mul(DSL.power(two(),rhsAsNumber()));
   }
- else   if (SHR == operator && asList(ASE,DB2,H2,HSQLDB,INGRES,ORACLE,SQLSERVER,SYBASE).contains(dialect)) {
+ else   if (SHR == operator && asList(ASE,DB2,H2,HSQLDB,INGRES,ORACLE,SQLSERVER,SYBASE).contains(dialect.family())) {
     return lhs.div(DSL.power(two(),rhsAsNumber()));
   }
  else   if (SHL == operator && FIREBIRD == dialect) {

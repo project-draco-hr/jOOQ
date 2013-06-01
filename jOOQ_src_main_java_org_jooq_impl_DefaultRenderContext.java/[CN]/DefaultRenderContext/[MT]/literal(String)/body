@@ -13,7 +13,7 @@
     sql(literal);
   }
  else {
-switch (configuration.dialect()) {
+switch (configuration.dialect().family()) {
 case MYSQL:
       sql("`").sql(StringUtils.replace(literal,"`","``")).sql("`");
     break;

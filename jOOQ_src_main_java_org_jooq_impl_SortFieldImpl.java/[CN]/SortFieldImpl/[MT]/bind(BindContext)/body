@@ -1,6 +1,6 @@
 {
   if (nullsFirst || nullsLast) {
-switch (context.configuration().dialect()) {
+switch (context.configuration().dialect().family()) {
 case DB2:
 case ASE:
 case CUBRID:

@@ -4,7 +4,7 @@
   Field<?>[] array=new Field<?>[getInParameters().size()];
   int i=0;
   for (  Parameter<?> p : getInParameters()) {
-    if (SQLDialect.POSTGRES == c.dialect() && isOverloaded()) {
+    if (POSTGRES == c.dialect() && isOverloaded()) {
       array[i]=getInValues().get(p).cast(p.getType());
     }
  else {

@@ -10,18 +10,18 @@ case DB2:
       toSQLReferenceLimitDefault(context);
     }
  else {
-      toSQLReferenceLimitDB2SQLServerSybase(context);
+      toSQLReferenceLimitDB2SQLServer2008Sybase(context);
     }
     break;
   }
 case ASE:
-case SQLSERVER:
+case SQLSERVER2008:
 {
   if (getLimit().offsetZero() && !getLimit().rendersParams()) {
     toSQLReference0(context);
   }
  else {
-    toSQLReferenceLimitDB2SQLServerSybase(context);
+    toSQLReferenceLimitDB2SQLServer2008Sybase(context);
   }
   break;
 }
@@ -31,7 +31,7 @@ if (!getLimit().rendersParams()) {
   toSQLReference0(context);
 }
  else {
-  toSQLReferenceLimitDB2SQLServerSybase(context);
+  toSQLReferenceLimitDB2SQLServer2008Sybase(context);
 }
 break;
 }
@@ -45,7 +45,7 @@ break;
  else {
 toSQLReference0(context);
 }
-if (forUpdate && !asList(CUBRID,SQLSERVER).contains(context.configuration().dialect())) {
+if (forUpdate && !asList(CUBRID,SQLSERVER).contains(context.configuration().dialect().family())) {
 context.formatSeparator().keyword("for update");
 if (!forUpdateOf.isEmpty()) {
 context.keyword(" of ");

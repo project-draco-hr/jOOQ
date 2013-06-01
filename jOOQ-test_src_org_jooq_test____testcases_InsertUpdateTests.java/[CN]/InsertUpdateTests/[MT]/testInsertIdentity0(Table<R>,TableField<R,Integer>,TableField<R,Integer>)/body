@@ -14,7 +14,7 @@
   }
   assertEquals(firstId + 1,(int)r2.getValue(id));
   assertEquals(11,(int)r2.getValue(val));
-  if (dialect() == CUBRID || dialect() == SYBASE || dialect() == SQLSERVER || dialect() == INGRES || dialect() == H2 || dialect() == DERBY || dialect() == ASE) {
+  if (dialect() == CUBRID || dialect() == SYBASE || dialect().family() == SQLSERVER || dialect() == INGRES || dialect() == H2 || dialect() == DERBY || dialect() == ASE) {
     log.info("SKIPPING","Multi-record INSERT .. RETURNING statement");
   }
  else {

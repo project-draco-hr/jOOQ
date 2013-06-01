@@ -22,6 +22,8 @@ case FIREBIRD:
   break;
 }
 case DERBY:
+case SQLSERVER:
+case SQLSERVER2012:
 {
 context.castMode(NEVER).formatSeparator().keyword("offset ").sql(offsetOrZero).keyword(" rows fetch next ").sql(numberOfRows).keyword(" rows only").castMode(castMode);
 break;
@@ -45,7 +47,7 @@ context.paramType(INLINED).formatSeparator().keyword("fetch first ").sql(numberO
 break;
 }
 case ASE:
-case SQLSERVER:
+case SQLSERVER2008:
 {
 if (offset != null) {
 throw new DataAccessException("Offsets in TOP clause not supported");

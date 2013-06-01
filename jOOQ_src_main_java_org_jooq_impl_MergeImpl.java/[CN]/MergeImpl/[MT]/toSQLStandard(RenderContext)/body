@@ -1,6 +1,6 @@
 {
   context.keyword("merge into ").declareTables(true).sql(table).formatSeparator().keyword("using ").formatIndentStart().formatNewLine().sql(Utils.wrapInParentheses(context.render(using))).formatIndentEnd().declareTables(false);
-switch (context.configuration().dialect()) {
+switch (context.configuration().dialect().family()) {
 case SQLSERVER:
 case SYBASE:
 {
@@ -34,7 +34,7 @@ if (notMatchedInsert != null) {
 if (notMatchedWhere != null) {
   context.formatSeparator().keyword("where ").sql(notMatchedWhere);
 }
-switch (context.configuration().dialect()) {
+switch (context.configuration().dialect().family()) {
 case SQLSERVER:
   context.sql(";");
 break;

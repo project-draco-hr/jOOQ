@@ -1,5 +1,5 @@
 {
-switch (config.dialect()) {
+switch (config.dialect().family()) {
 case CUBRID:
 case DB2:
 case HSQLDB:

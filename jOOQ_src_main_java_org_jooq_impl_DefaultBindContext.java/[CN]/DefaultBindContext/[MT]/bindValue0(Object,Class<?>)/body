@@ -29,7 +29,7 @@
  else     if (sqlType != Types.OTHER) {
       stmt.setNull(nextIndex(),sqlType);
     }
- else     if (configuration.dialect() == SQLSERVER) {
+ else     if (configuration.dialect().family() == SQLSERVER) {
       stmt.setNull(nextIndex(),sqlType);
     }
  else     if (configuration.dialect() == SYBASE) {
@@ -141,7 +141,7 @@
     stmt.setBigDecimal(nextIndex(),new BigDecimal(value.toString()));
   }
  else   if (type == UUID.class) {
-switch (dialect) {
+switch (dialect.family()) {
 case H2:
 case POSTGRES:
 {

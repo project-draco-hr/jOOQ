@@ -1,5 +1,5 @@
 {
-switch (configuration.dialect()) {
+switch (configuration.dialect().family()) {
 case ASE:
     Field<Integer> days=field("{datediff}(day, {0}, {1})",INTEGER,timestamp2,timestamp1);
   Field<Integer> milli=field("{datediff}(ms, {0}, {1})",INTEGER,timestamp2.add(days),timestamp1);

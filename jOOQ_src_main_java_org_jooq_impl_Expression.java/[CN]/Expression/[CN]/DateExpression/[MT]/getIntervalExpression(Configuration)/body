@@ -1,7 +1,7 @@
 {
   SQLDialect dialect=configuration.dialect();
   int sign=(operator == ADD) ? 1 : -1;
-switch (dialect) {
+switch (dialect.family()) {
 case ASE:
 case SYBASE:
 case SQLSERVER:

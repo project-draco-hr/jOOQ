@@ -9,7 +9,7 @@
     return;
   }
  else {
-switch (ctx.configuration().dialect()) {
+switch (ctx.configuration().dialect().family()) {
 case FIREBIRD:
 case POSTGRES:
 case SQLITE:

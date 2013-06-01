@@ -15,7 +15,7 @@
  else   if (keepResultSetMode == UPDATE_ON_CHANGE || keepResultSetMode == UPDATE_ON_STORE) {
     ctx.statement(ctx.connection().prepareStatement(ctx.sql(),TYPE_SCROLL_SENSITIVE,CONCUR_UPDATABLE));
   }
- else   if (isForUpdate() && asList(CUBRID,SQLSERVER).contains(ctx.configuration().dialect())) {
+ else   if (isForUpdate() && asList(CUBRID,SQLSERVER).contains(ctx.configuration().dialect().family())) {
     ctx.data(DATA_LOCK_ROWS_FOR_UPDATE,true);
     ctx.statement(ctx.connection().prepareStatement(ctx.sql(),TYPE_SCROLL_SENSITIVE,CONCUR_UPDATABLE));
   }

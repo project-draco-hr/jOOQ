@@ -1,6 +1,8 @@
 {
 switch (context.configuration().dialect()) {
 case DERBY:
+case SQLSERVER:
+case SQLSERVER2012:
 {
       context.bind(offsetOrZero);
       context.bind(numberOfRows);
@@ -44,7 +46,7 @@ context.bind(getUpperRownum());
 break;
 }
 case DB2:
-case SQLSERVER:
+case SQLSERVER2008:
 {
 if (offset == null && !rendersParams) {
 }

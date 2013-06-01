@@ -1,5 +1,5 @@
 {
-switch (configuration.dialect()) {
+switch (configuration.dialect().family()) {
 case DERBY:
 {
       if (decimals == 0) {

@@ -6,7 +6,7 @@ case INGRES:
   return;
 }
 Field<Integer> bitCount=bitCount(3);
-if (asList(ASE,DB2,SQLSERVER).contains(dialect())) {
+if (asList(ASE,DB2,SQLSERVER).contains(dialect().family())) {
 bitCount=val(2);
 }
 Record result=create().select(bitCount,bitNot(bitNot(3)),bitAnd(3,5),bitOr(3,5),bitXor(3,5),bitNot(bitNand(3,5)),bitNot(bitNor(3,5)),bitNot(bitXNor(3,5)),shl(333,3),shr(333,3)).fetchOne();

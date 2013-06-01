@@ -1,0 +1,3 @@
+{
+  return DSL.using(getConnection(),SQLDialect.SQLSERVER2008,settings);
+}
