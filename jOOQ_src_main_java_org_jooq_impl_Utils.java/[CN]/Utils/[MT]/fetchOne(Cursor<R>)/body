@@ -7,8 +7,6 @@
     return record;
   }
   finally {
-    if (cursor.closesAfterFetch()) {
-      cursor.close();
-    }
+    cursor.close();
   }
 }

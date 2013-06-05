@@ -4,8 +4,6 @@
     return c.fetchOne();
   }
   finally {
-    if (c.closesAfterFetch()) {
-      c.close();
-    }
+    c.close();
   }
 }

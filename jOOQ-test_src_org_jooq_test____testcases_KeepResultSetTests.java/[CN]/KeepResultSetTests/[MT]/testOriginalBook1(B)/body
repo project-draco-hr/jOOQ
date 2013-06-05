@@ -1,7 +1,0 @@
-{
-  assertEquals(BOOK_TITLES.get(0),book.getValue(TBook_TITLE()));
-  assertEquals(BOOK_AUTHOR_IDS.get(0),book.getValue(TBook_AUTHOR_ID()));
-  assertFalse(book.changed());
-  assertEquals(book.original(),book);
-  assertNotNull(book.resultSet());
-}

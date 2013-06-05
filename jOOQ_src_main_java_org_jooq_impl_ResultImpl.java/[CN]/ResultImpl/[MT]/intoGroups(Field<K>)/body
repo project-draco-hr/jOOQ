@@ -5,7 +5,7 @@
     K val=(K)record.getValue(index);
     Result<R> result=map.get(val);
     if (result == null) {
-      result=new ResultImpl<R>(configuration,rs,fields);
+      result=new ResultImpl<R>(configuration,fields);
       map.put(val,result);
     }
     result.add(record);

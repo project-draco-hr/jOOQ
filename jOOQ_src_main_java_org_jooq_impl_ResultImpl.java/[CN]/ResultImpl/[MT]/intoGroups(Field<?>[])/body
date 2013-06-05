@@ -10,7 +10,7 @@
     }
     Result<R> result=map.get(key);
     if (result == null) {
-      result=new ResultImpl<R>(configuration(),rs,this.fields);
+      result=new ResultImpl<R>(configuration(),this.fields);
       map.put(key,result);
     }
     result.add(record);

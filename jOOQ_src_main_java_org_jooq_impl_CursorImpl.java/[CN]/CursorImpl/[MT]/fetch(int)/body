@@ -1,6 +1,6 @@
 {
   iterator();
-  ResultImpl<R> result=new ResultImpl<R>(ctx.configuration(),closesAfterFetch() ? null : rs,fields);
+  ResultImpl<R> result=new ResultImpl<R>(ctx.configuration(),fields);
   R record=null;
   ctx.result(result);
   listener.resultStart(ctx);

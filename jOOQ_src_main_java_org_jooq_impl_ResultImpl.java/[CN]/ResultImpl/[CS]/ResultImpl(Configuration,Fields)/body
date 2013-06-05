@@ -1,0 +1,5 @@
+{
+  this.configuration=configuration;
+  this.fields=fields;
+  this.records=new ArrayList<R>();
+}

@@ -1,3 +1,0 @@
-{
-  return keepResultSetMode == null || keepResultSetMode == CLOSE_AFTER_FETCH;
-}

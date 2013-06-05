@@ -10,14 +10,14 @@
   if (!many) {
     if (ctx.resultSet() != null) {
       Field<?>[] fields=getFields(ctx.resultSet().getMetaData());
-      cursor=new CursorImpl<R>(ctx,listener,fields,internIndexes(fields),keepStatement(),keepResultSet(),keepResultSetMode,getRecordType());
+      cursor=new CursorImpl<R>(ctx,listener,fields,internIndexes(fields),keepStatement(),keepResultSet(),getRecordType());
       if (!lazy) {
         result=cursor.fetch();
         cursor=null;
       }
     }
  else {
-      result=new ResultImpl<R>(ctx.configuration(),null);
+      result=new ResultImpl<R>(ctx.configuration());
     }
   }
  else {
@@ -26,7 +26,7 @@
     while (ctx.resultSet() != null) {
       anyResults=true;
       Field<?>[] fields=new MetaDataFieldProvider(ctx.configuration(),ctx.resultSet().getMetaData()).getFields();
-      Cursor<Record> c=new CursorImpl<Record>(ctx,listener,fields,internIndexes(fields),true,false,CLOSE_AFTER_FETCH);
+      Cursor<Record> c=new CursorImpl<Record>(ctx,listener,fields,internIndexes(fields),true,false);
       results.add(c.fetch());
       if (ctx.statement().getMoreResults()) {
         ctx.resultSet(ctx.statement().getResultSet());

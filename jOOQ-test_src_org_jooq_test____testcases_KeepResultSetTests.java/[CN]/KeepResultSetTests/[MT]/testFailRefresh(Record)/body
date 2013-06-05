@@ -1,8 +1,0 @@
-{
-  try {
-    record.refresh();
-    fail();
-  }
- catch (  DataAccessException expected) {
-  }
-}

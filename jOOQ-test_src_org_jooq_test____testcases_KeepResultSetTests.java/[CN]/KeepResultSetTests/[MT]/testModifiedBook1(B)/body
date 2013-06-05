@@ -1,8 +1,0 @@
-{
-  book.setValue(TBook_TITLE(),"XX");
-  book.setValue(TBook_AUTHOR_ID(),15);
-  assertEquals("XX",book.getValue(TBook_TITLE()));
-  assertEquals(15,(int)book.getValue(TBook_AUTHOR_ID()));
-  assertTrue(book.changed());
-  assertFalse(book.original().equals(book));
-}

@@ -1,5 +1,0 @@
-{
-  if (rs == null) {
-    throw new DataAccessException(message);
-  }
-}
