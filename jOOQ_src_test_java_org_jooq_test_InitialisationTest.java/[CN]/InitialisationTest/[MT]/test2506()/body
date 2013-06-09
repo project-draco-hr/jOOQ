@@ -1,0 +1,3 @@
+{
+  DSL.inline("Test",String.class);
+}

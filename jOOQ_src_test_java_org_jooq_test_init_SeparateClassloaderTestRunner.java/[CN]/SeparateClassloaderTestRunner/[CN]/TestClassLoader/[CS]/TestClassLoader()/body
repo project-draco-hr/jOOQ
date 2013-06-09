@@ -1,0 +1,3 @@
+{
+  super(((URLClassLoader)getSystemClassLoader()).getURLs());
+}

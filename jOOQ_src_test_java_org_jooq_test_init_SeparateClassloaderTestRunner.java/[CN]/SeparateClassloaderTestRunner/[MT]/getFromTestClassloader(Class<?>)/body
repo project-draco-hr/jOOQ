@@ -1,0 +1,9 @@
+{
+  try {
+    ClassLoader testClassLoader=new TestClassLoader();
+    return Class.forName(clazz.getName(),true,testClassLoader);
+  }
+ catch (  ClassNotFoundException e) {
+    throw new InitializationError(e);
+  }
+}
