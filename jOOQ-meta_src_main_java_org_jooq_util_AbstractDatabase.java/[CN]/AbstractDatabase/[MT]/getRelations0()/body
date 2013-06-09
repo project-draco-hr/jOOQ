@@ -3,5 +3,6 @@
   loadPrimaryKeys(result);
   loadUniqueKeys(result);
   loadForeignKeys(result);
+  loadCheckConstraints(result);
   return result;
 }

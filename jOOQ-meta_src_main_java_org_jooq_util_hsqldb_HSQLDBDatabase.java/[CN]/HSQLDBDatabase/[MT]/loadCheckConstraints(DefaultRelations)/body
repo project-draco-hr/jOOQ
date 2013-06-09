@@ -1,0 +1,11 @@
+{
+  TableConstraints tc=TABLE_CONSTRAINTS.as("tc");
+  CheckConstraints cc=CHECK_CONSTRAINTS.as("cc");
+  for (  Record record : create().select(tc.TABLE_SCHEMA,tc.TABLE_NAME,cc.CONSTRAINT_NAME,cc.CHECK_CLAUSE).from(tc).join(cc).using(tc.CONSTRAINT_CATALOG,tc.CONSTRAINT_SCHEMA,tc.CONSTRAINT_NAME).where(tc.TABLE_SCHEMA.in(getInputSchemata())).fetch()) {
+    SchemaDefinition schema=getSchema(record.getValue(tc.TABLE_SCHEMA));
+    TableDefinition table=getTable(schema,record.getValue(tc.TABLE_NAME));
+    if (table != null) {
+      relations.addCheckConstraint(table,new DefaultCheckConstraintDefinition(schema,table,record.getValue(cc.CONSTRAINT_NAME),record.getValue(cc.CHECK_CLAUSE)));
+    }
+  }
+}

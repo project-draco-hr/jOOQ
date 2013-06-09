@@ -1,0 +1,15 @@
+{
+  if (checkConstraintsByTable == null) {
+    checkConstraintsByTable=new LinkedHashMap<TableDefinition,List<CheckConstraintDefinition>>();
+    for (    CheckConstraintDefinition constraint : checkConstraints.values()) {
+      List<CheckConstraintDefinition> list=checkConstraintsByTable.get(table);
+      if (list == null) {
+        list=new ArrayList<CheckConstraintDefinition>();
+        checkConstraintsByTable.put(table,list);
+      }
+      list.add(constraint);
+    }
+  }
+  List<CheckConstraintDefinition> list=checkConstraintsByTable.get(table);
+  return list != null ? list : Collections.<CheckConstraintDefinition>emptyList();
+}

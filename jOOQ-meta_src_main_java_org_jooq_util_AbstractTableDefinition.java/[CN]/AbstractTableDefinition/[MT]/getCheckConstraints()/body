@@ -1,0 +1,6 @@
+{
+  if (checkConstraints == null) {
+    checkConstraints=getDatabase().getRelations().getCheckConstraints(this);
+  }
+  return checkConstraints;
+}

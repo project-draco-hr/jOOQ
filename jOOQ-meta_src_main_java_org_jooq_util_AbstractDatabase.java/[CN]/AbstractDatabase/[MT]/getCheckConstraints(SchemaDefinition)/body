@@ -1,0 +1,16 @@
+{
+  if (checkConstraints == null) {
+    checkConstraints=new ArrayList<CheckConstraintDefinition>();
+    for (    SchemaDefinition s : getSchemata()) {
+      for (      TableDefinition table : getTables(s)) {
+        for (        CheckConstraintDefinition checkConstraint : table.getCheckConstraints()) {
+          checkConstraints.add(checkConstraint);
+        }
+      }
+    }
+  }
+  if (checkConstraintsBySchema == null) {
+    checkConstraintsBySchema=new LinkedHashMap<SchemaDefinition,List<CheckConstraintDefinition>>();
+  }
+  return filterSchema(checkConstraints,schema,checkConstraintsBySchema);
+}
