@@ -1,6 +1,6 @@
 {
   StringBuilder result=new StringBuilder();
-  for (  String word : string.split("_")) {
+  for (  String word : string.split("_",-1)) {
     if (word.length() > 0) {
       if (Character.isDigit(word.charAt(0))) {
         result.append("_");
