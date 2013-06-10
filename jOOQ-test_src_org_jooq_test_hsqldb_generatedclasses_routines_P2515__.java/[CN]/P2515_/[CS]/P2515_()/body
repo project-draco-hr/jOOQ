@@ -1,0 +1,6 @@
+{
+  super("P2515_",org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.INTEGER);
+  setReturnParameter(RETURN_VALUE);
+  addInParameter(A_A);
+  addInParameter(A_A_);
+}

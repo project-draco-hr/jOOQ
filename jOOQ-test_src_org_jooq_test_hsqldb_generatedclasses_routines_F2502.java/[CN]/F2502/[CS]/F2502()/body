@@ -1,0 +1,5 @@
+{
+  super("F2502",org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.INTEGER);
+  setReturnParameter(RETURN_VALUE);
+  addInParameter(CONFIGURATION);
+}

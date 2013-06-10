@@ -1,0 +1,7 @@
+{
+  org.jooq.test.hsqldb.generatedclasses.routines.F2502_1 f=new org.jooq.test.hsqldb.generatedclasses.routines.F2502_1();
+  f.setConfiguration(configuration);
+  f.setConfiguration_(configuration_);
+  f.execute(configuration__);
+  return f.getReturnValue();
+}
