@@ -7,11 +7,12 @@
   final String functionName=function.getQualifiedOutputName();
   final String functionType=getJavaType(function.getReturnType());
   final String methodName=getStrategy().getJavaMethodName(function,Mode.DEFAULT);
+  final String configurationArgument=disambiguateJavaMemberName(function.getInParameters(),"configuration");
   out.tab(1).javadoc("Call <code>%s</code>",functionName);
   out.tab(1).print("public %s%s %s(",!instance ? "static " : "",functionType,methodName);
   String glue="";
   if (!instance) {
-    out.print("%s configuration",Configuration.class);
+    out.print("%s %s",Configuration.class,configurationArgument);
     glue=", ";
   }
   for (  ParameterDefinition parameter : function.getInParameters()) {
@@ -31,7 +32,7 @@
     out.tab(2).println("f.%s(%s);",paramSetter,paramMember);
   }
   out.println();
-  out.tab(2).println("f.execute(%s);",instance ? "configuration()" : "configuration");
+  out.tab(2).println("f.execute(%s);",instance ? "configuration()" : configurationArgument);
   out.tab(2).println("return f.getReturnValue();");
   out.tab(1).println("}");
 }

@@ -1,0 +1,11 @@
+{
+  Set<String> names=new HashSet<String>();
+  for (  Definition definition : definitions) {
+    names.add(getStrategy().getJavaMemberName(definition));
+  }
+  String name=defaultName;
+  while (names.contains(name)) {
+    name+="_";
+  }
+  return name;
+}

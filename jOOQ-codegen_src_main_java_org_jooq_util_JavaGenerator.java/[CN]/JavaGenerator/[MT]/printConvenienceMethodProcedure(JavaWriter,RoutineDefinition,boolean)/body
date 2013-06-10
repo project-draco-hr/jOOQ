@@ -4,6 +4,7 @@
     return;
   }
   final String className=getStrategy().getFullJavaClassName(procedure);
+  final String configurationArgument=disambiguateJavaMemberName(procedure.getInParameters(),"configuration");
   out.tab(1).javadoc("Call <code>%s</code>",procedure.getQualifiedOutputName());
   out.print("\tpublic ");
   if (!instance) {
@@ -24,7 +25,8 @@
   String glue="";
   if (!instance) {
     out.print(Configuration.class);
-    out.print(" configuration");
+    out.print(" ");
+    out.print(configurationArgument);
     glue=", ";
   }
   for (  ParameterDefinition parameter : procedure.getInParameters()) {
@@ -45,7 +47,7 @@
     out.tab(2).println("p.%s(%s);",setter,arg);
   }
   out.println();
-  out.tab(2).println("p.execute(%s);",instance ? "configuration()" : "configuration");
+  out.tab(2).println("p.execute(%s);",instance ? "configuration()" : configurationArgument);
   if (procedure.getOutParameters().size() > 0) {
     final String getter=getStrategy().getJavaGetterName(procedure.getOutParameters().get(0),Mode.DEFAULT);
     if (instance) {

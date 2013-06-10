@@ -1,0 +1,2 @@
+Collection<? extends Definition> definitions
+String defaultName
