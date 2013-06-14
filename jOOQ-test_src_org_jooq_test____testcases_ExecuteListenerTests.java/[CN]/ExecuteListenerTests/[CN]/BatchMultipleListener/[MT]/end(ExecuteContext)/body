@@ -2,5 +2,5 @@
   end=++callbackCount;
   checkBase(ctx);
   checkSQL(ctx,true);
-  checkStatement(ctx,true);
+  checkStatement(ctx,true,true);
 }

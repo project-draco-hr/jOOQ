@@ -2,8 +2,8 @@
   end=++callbackCount;
   checkBase(ctx);
   checkSQL(ctx,true);
-  checkStatement(ctx,true);
-  checkResultSet(ctx,true);
+  checkStatement(ctx,true,true);
+  checkResultSet(ctx,true,true);
   assertNotNull(ctx.record());
   assertEquals(2,ctx.record().fieldsRow().size());
   assertNotNull(ctx.result());

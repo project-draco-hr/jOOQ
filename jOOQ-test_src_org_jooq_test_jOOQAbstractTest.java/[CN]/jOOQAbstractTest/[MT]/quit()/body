@@ -17,10 +17,10 @@
   }
   logStat.info("---------------");
   logStat.info("Total",total);
-  logStat.info("");
   JooqLogger logLife=JooqLogger.getLogger(LifecycleWatcherListener.class);
-  logLife.info("EXECUTE LIFECYCLE STATS");
-  logLife.info("-----------------------");
+  logStat.info("");
+  logLife.info("EXECUTE LISTENER LIFECYCLE STATS");
+  logLife.info("--------------------------------");
   int unbalanced=0;
   for (  Method m : LifecycleWatcherListener.START_COUNT.keySet()) {
     Integer starts=LifecycleWatcherListener.START_COUNT.get(m);
@@ -30,5 +30,17 @@
       logLife.info("Unbalanced",String.format("(start, end): (%1$3s, %2$3s) at %3$s",starts,ends == null ? 0 : ends,m.toString().replace("public void ","").replaceAll("( throws.*)?","")));
     }
   }
+  logStat.info("");
+  logLife.info("JDBC OBJECT LIFECYCLE STATS");
+  logLife.info("---------------------------");
+  for (  Method m : JDBCLifecycleListener.STMT_START_COUNT.keySet()) {
+    Integer starts=JDBCLifecycleListener.STMT_START_COUNT.get(m);
+    Integer ends=JDBCLifecycleListener.STMT_CLOSE_COUNT.get(m);
+    if (!StringUtils.equals(starts,ends)) {
+      unbalanced++;
+      logLife.info("Unbalanced",String.format("(open, close): (%1$3s, %2$3s) at %3$s",starts,ends == null ? 0 : ends,m.toString().replace("public void ","").replaceAll("( throws.*)?","")));
+    }
+  }
+  logStat.info("");
   logLife.info("Unbalanced test: ",unbalanced);
 }

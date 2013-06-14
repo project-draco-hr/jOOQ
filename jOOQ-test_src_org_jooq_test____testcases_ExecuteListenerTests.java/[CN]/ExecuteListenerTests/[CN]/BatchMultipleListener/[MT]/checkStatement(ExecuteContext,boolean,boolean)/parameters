@@ -1,0 +1,3 @@
+ExecuteContext ctx
+boolean patched
+boolean isNull
