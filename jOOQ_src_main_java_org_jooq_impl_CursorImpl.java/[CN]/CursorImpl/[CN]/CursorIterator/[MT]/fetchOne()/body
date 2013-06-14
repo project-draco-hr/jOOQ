@@ -2,7 +2,6 @@
   AbstractRecord record=null;
   try {
     if (!isClosed && rs.next()) {
-      ++rsIndex;
       if (TRUE.equals(ctx.data(DATA_LOCK_ROWS_FOR_UPDATE))) {
         rs.updateObject(1,rs.getObject(1));
         rs.updateRow();
