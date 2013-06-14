@@ -1,0 +1,3 @@
+{
+  fromMap(map,fields(fieldIndexes));
+}

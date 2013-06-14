@@ -1,6 +1,3 @@
 {
-  int size=fields.size();
-  for (int i=0; i < size && i < array.length; i++) {
-    Utils.setValue(this,fields.field(i),array[i]);
-  }
+  fromArray(array,fields());
 }

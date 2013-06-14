@@ -1,0 +1,3 @@
+{
+  new FetchTests(this).testRecordFrom();
+}

@@ -1,0 +1,8 @@
+{
+  for (int i=0; i < f.length; i++) {
+    String name=f[i].getName();
+    if (map.containsKey(name)) {
+      Utils.setValue(this,f[i],map.get(name));
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  if (source == null)   return;
+  if (source instanceof Map) {
+    fromMap((Map<String,?>)source,f);
+  }
+ else   if (source instanceof Object[]) {
+    fromArray((Object[])source,f);
+  }
+ else {
+    Class<?> type=source.getClass();
+    try {
+      boolean useAnnotations=hasColumnAnnotations(type);
+      for (      Field<?> field : f) {
+        List<java.lang.reflect.Field> members;
+        Method method;
+        if (useAnnotations) {
+          members=getAnnotatedMembers(type,field.getName());
+          method=getAnnotatedGetter(type,field.getName());
+        }
+ else {
+          members=getMatchingMembers(type,field.getName());
+          method=getMatchingGetter(type,field.getName());
+        }
+        if (method != null) {
+          Utils.setValue(this,field,method.invoke(source));
+        }
+ else         if (members.size() > 0) {
+          from(source,members.get(0),field);
+        }
+      }
+    }
+ catch (    Exception e) {
+      throw new MappingException("An error ocurred when mapping record from " + type,e);
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  Fields accept=new Fields(f);
+  int size=fields.size();
+  for (int i=0; i < size && i < array.length; i++) {
+    Field field=fields.field(i);
+    if (accept.field(field) != null) {
+      Utils.setValue(this,field,array[i]);
+    }
+  }
+}
