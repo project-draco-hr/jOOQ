@@ -1,0 +1,11 @@
+{
+  ApplicationContext context=new ClassPathXmlApplicationContext(new String[]{"jooq-spring-config-minimal.xml"});
+  DSLContext dsl=context.getBean("dsl",DSLContext.class);
+  System.out.println(dsl.selectOne().fetch());
+  PlatformTransactionManager transactionManager=context.getBean("transactionManager",PlatformTransactionManager.class);
+  TransactionStatus tx=transactionManager.getTransaction(new DefaultTransactionDefinition());
+  dsl.selectOne().fetch();
+  dsl.selectOne().fetch();
+  dsl.selectOne().fetch();
+  transactionManager.commit(tx);
+}
