@@ -1,0 +1,11 @@
+{
+  super.fetchStart(ctx);
+  increment(RS_START_COUNT);
+  ctx.resultSet(new DefaultResultSet(ctx.resultSet()){
+    @Override public void close() throws SQLException {
+      increment(RS_CLOSE_COUNT);
+      super.close();
+    }
+  }
+);
+}

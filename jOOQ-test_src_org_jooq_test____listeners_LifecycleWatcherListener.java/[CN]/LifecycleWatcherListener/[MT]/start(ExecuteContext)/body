@@ -1,4 +1,4 @@
 {
   super.start(ctx);
-  increment(START_COUNT);
+  increment(LISTENER_START_COUNT);
 }
