@@ -1,0 +1,3 @@
+{
+  delegate.updateBigDecimal(columnIndex,x);
+}

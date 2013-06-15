@@ -1,0 +1,3 @@
+{
+  delegate.updateBlob(columnIndex,x);
+}

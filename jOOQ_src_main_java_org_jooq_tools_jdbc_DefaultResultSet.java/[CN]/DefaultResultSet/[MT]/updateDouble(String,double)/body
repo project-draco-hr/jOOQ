@@ -1,0 +1,3 @@
+{
+  delegate.updateDouble(columnLabel,x);
+}
