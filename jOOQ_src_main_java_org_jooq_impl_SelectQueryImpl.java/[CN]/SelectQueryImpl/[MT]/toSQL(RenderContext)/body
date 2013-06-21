@@ -86,4 +86,7 @@ context.formatSeparator().keyword("for share");
 break;
 }
 }
+if (!StringUtils.isBlank(option)) {
+context.formatSeparator().sql(option);
+}
 }

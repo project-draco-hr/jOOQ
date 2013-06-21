@@ -1,0 +1,4 @@
+{
+  getQuery().addOption(hint);
+  return this;
+}
