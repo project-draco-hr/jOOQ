@@ -17,7 +17,7 @@
     if (toClass == fromClass) {
       return (U)from;
     }
- else     if (toClass == Object.class) {
+ else     if (toClass.isAssignableFrom(fromClass)) {
       return (U)from;
     }
  else     if (fromClass == byte[].class) {
