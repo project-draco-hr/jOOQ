@@ -4,3 +4,5 @@ java.sql.Time t
 java.sql.Timestamp ts
 java.lang.Integer dInt
 java.lang.Long tsBigint
+java.sql.Date y2
+java.sql.Date y4
