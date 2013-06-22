@@ -1,9 +1,3 @@
 {
-  if (s != null && cachedRenderFormatted) {
-    sql.append(NEWLINE.matcher(s).replaceAll("$0" + indentation()));
-  }
- else {
-    sql.append(s);
-  }
-  return this;
+  return sql(s,s == null || !cachedRenderFormatted);
 }

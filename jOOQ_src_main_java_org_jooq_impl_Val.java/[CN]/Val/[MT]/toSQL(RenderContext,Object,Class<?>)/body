@@ -106,7 +106,7 @@
       }
     }
  else     if (ArrayRecord.class.isAssignableFrom(type)) {
-      context.sql(val.toString());
+      context.sql(val.toString(),true);
     }
  else     if (EnumType.class.isAssignableFrom(type)) {
       toSQL(context,((EnumType)val).getLiteral());
@@ -115,7 +115,7 @@
       context.sql("[UDT]");
     }
  else {
-      context.sql("'").sql(escape(val)).sql("'");
+      context.sql("'").sql(escape(val),true).sql("'");
     }
   }
  else   if (family == SQLDialect.POSTGRES) {

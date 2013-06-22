@@ -1,0 +1,6 @@
+{
+  DSLContext create=create(new Settings().withRenderFormatted(true).withStatementType(StatementType.STATIC_STATEMENT));
+  String value="foo\nbar\n\n  baz";
+  create.update(TBook()).set(TBook_TITLE(),value).where(TBook_ID().eq(1)).execute();
+  assertEquals(value,create.select(TBook_TITLE()).from(TBook()).where(TBook_ID().eq(1)).fetchOne(TBook_TITLE()));
+}
