@@ -1,0 +1,15 @@
+{
+  if (data == null)   return null;
+  byte[] result=new byte[16];
+  long msb=data.getMostSignificantBits();
+  long lsb=data.getLeastSignificantBits();
+  for (int i=7; i >= 0; i--) {
+    result[i]=(byte)(msb & 0xFF);
+    msb>>=8;
+  }
+  for (int i=15; i >= 8; i--) {
+    result[i]=(byte)(lsb & 0xFF);
+    lsb>>=8;
+  }
+  return result;
+}
