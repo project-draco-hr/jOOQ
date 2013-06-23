@@ -21,8 +21,12 @@
   out.tab(2).println("this.literal = literal;");
   out.tab(1).println("}");
   out.tab(1).overrideInherit();
+  out.tab(1).println("public %s getSchema() {",Schema.class);
+  out.tab(2).println("return %s;",(e.isSynthetic() || !(e.getDatabase() instanceof PostgresDatabase)) ? "null" : getStrategy().getFullJavaIdentifier(e.getSchema()));
+  out.tab(1).println("}");
+  out.tab(1).overrideInherit();
   out.tab(1).println("public java.lang.String getName() {");
-  out.tab(2).println("return %s;",e.isSynthetic() ? "null" : "\"" + e.getName() + "\"");
+  out.tab(2).println("return %s;",e.isSynthetic() ? "null" : "\"" + e.getName().replace("\"","\\\"") + "\"");
   out.tab(1).println("}");
   out.tab(1).overrideInherit();
   out.tab(1).println("public java.lang.String getLiteral() {");

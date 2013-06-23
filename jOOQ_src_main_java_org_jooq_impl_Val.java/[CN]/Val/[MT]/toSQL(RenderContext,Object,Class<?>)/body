@@ -126,10 +126,16 @@
     }
  else     if (EnumType.class.isAssignableFrom(type)) {
       context.sql(getBindVariable(context));
-      String name=((EnumType)type.getEnumConstants()[0]).getName();
-      if (!StringUtils.isBlank(name)) {
+      EnumType e=(EnumType)type.getEnumConstants()[0];
+      Schema schema=e.getSchema();
+      if (schema != null) {
         context.sql("::");
-        context.literal(name);
+        schema=using(context.configuration()).map(schema);
+        if (schema != null && TRUE.equals(context.configuration().settings().isRenderSchema())) {
+          context.sql(schema);
+          context.sql(".");
+        }
+        context.sql(name(e.getName()));
       }
     }
  else {

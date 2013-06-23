@@ -1,0 +1,9 @@
+{
+  Param<UCountry> val=val(UCountry.England,UAddressType.COUNTRY.getDataType());
+  assertEquals("'England'",create().renderInlined(val));
+  assertEquals("?::\"public\".\"u_country\"",create().render(val));
+  assertEquals("?::\"u_country\"",create(new Settings().withRenderSchema(false)).render(val));
+  assertEquals("?::PUBLIC.U_COUNTRY",create(new Settings().withRenderNameStyle(RenderNameStyle.UPPER)).render(val));
+  assertEquals("?::\"u_country\"",create(new Settings().withRenderMapping(new RenderMapping().withDefaultSchema("public"))).render(val));
+  assertEquals("?::\"test\".\"u_country\"",create(new Settings().withRenderMapping(new RenderMapping().withSchemata(new MappedSchema().withInput("public").withOutput("test")))).render(val));
+}
