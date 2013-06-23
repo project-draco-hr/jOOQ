@@ -1,16 +1,8 @@
 {
-  String[] split=params.split(",(?!\\s*\\d+\\s*\\))");
-  Matcher matcher=TYPE_PATTERN.matcher(returns);
-  if (matcher.find()) {
-    addParameter(InOutDefinition.RETURN,createParameter(matcher,0,-1,"RETURN_VALUE"));
+  if (is55()) {
+    init55();
   }
-  for (int i=0; i < split.length; i++) {
-    String param=split[i];
-    param=param.trim();
-    matcher=PARAMETER_PATTERN.matcher(param);
-    while (matcher.find()) {
-      InOutDefinition inOut=InOutDefinition.getFromString(matcher.group(2));
-      addParameter(inOut,createParameter(matcher,3,i + 1));
-    }
+ else {
+    init54();
   }
 }

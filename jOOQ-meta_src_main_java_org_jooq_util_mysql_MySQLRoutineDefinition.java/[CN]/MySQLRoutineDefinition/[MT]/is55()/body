@@ -1,0 +1,12 @@
+{
+  if (is55 == null) {
+    try {
+      create().selectOne().from(PARAMETERS).limit(1).fetchOne();
+      is55=true;
+    }
+ catch (    Exception e) {
+      is55=false;
+    }
+  }
+  return is55;
+}
