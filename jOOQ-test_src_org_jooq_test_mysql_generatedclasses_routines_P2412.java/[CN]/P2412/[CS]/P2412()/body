@@ -1,0 +1,8 @@
+{
+  super("p2412",org.jooq.test.mysql.generatedclasses.Test.TEST);
+  addInParameter(P_IN_1);
+  addInParameter(P_IN_2);
+  addOutParameter(P_OUT_1);
+  addOutParameter(P_OUT_2);
+  addInOutParameter(P_IN_OUT);
+}
