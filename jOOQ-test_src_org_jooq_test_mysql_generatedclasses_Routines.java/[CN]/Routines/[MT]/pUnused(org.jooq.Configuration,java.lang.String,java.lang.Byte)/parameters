@@ -1,3 +1,3 @@
 org.jooq.Configuration configuration
 java.lang.String in1
-java.lang.Boolean out2
+java.lang.Byte out2
