@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.Table<?>>asList(org.jooq.util.mysql.mysql.tables.Proc.PROC,org.jooq.util.mysql.mysql.tables.ProcsPriv.PROCS_PRIV);
+}
