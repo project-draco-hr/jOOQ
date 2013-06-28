@@ -2,6 +2,7 @@
 switch (context.configuration().dialect().family()) {
 case CUBRID:
 case H2:
+case MARIADB:
 case MYSQL:
 case SQLITE:
 case SYBASE:

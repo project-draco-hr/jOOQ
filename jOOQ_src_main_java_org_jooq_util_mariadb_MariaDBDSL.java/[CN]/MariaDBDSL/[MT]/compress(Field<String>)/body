@@ -1,0 +1,3 @@
+{
+  return function("compress",String.class,string);
+}

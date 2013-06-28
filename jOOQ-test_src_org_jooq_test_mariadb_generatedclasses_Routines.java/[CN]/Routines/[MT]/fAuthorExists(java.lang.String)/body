@@ -1,0 +1,5 @@
+{
+  org.jooq.test.mariadb.generatedclasses.routines.FAuthorExists f=new org.jooq.test.mariadb.generatedclasses.routines.FAuthorExists();
+  f.setAuthorName(authorName);
+  return f.asField();
+}

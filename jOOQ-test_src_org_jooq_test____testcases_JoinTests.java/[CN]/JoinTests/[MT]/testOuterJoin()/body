@@ -22,6 +22,7 @@ case ASE:
 case CUBRID:
 case DERBY:
 case H2:
+case MARIADB:
 case MYSQL:
 case SQLITE:
 log.info("SKIPPING","FULL OUTER JOIN tests");

@@ -1,0 +1,3 @@
+{
+  return fetch(org.jooq.test.mariadb.generatedclasses.tables.TBookStore.NAME,values);
+}

@@ -28,6 +28,7 @@ case ASE:
 case DERBY:
 case H2:
 case INGRES:
+case MARIADB:
 case MYSQL:
 case SQLSERVER:
 {

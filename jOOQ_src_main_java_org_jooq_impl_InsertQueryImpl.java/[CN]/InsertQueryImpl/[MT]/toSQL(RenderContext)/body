@@ -2,6 +2,7 @@
   if (onDuplicateKeyUpdate) {
 switch (context.configuration().dialect().family()) {
 case CUBRID:
+case MARIADB:
 case MYSQL:
 {
         toSQLInsert(context);
@@ -27,6 +28,7 @@ throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY UPDATE clause ca
 }
  else if (onDuplicateKeyIgnore) {
 switch (context.configuration().dialect().family()) {
+case MARIADB:
 case MYSQL:
 {
 toSQLInsert(context);

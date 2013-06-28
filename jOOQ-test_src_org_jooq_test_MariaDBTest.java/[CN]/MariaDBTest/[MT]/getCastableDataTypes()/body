@@ -1,0 +1,3 @@
+{
+  return new DataType<?>[]{MariaDBDataType.BIGINT,MariaDBDataType.BINARY,MariaDBDataType.BIT,MariaDBDataType.BLOB,MariaDBDataType.BOOL,MariaDBDataType.BOOLEAN,MariaDBDataType.CHAR,MariaDBDataType.DATE,MariaDBDataType.DATETIME,MariaDBDataType.DEC,MariaDBDataType.DECIMAL,MariaDBDataType.DOUBLE,MariaDBDataType.FLOAT,MariaDBDataType.INT,MariaDBDataType.INTEGER,MariaDBDataType.LONGBLOB,MariaDBDataType.LONGTEXT,MariaDBDataType.MEDIUMBLOB,MariaDBDataType.MEDIUMINT,MariaDBDataType.MEDIUMTEXT,MariaDBDataType.SET,MariaDBDataType.SMALLINT,MariaDBDataType.TEXT,MariaDBDataType.TIME,MariaDBDataType.TIMESTAMP,MariaDBDataType.TINYBLOB,MariaDBDataType.TINYINT,MariaDBDataType.VARBINARY,MariaDBDataType.VARCHAR,MariaDBDataType.YEAR};
+}

@@ -190,12 +190,12 @@
       assertEquals(5,field.getDataType().scale());
       assertEquals(0,field.getDataType().length());
     }
- else     if ("FLOAT".equalsIgnoreCase(field.getName()) && dialect() != SQLDialect.HSQLDB && dialect() != SQLDialect.MYSQL && dialect() != SQLDialect.SYBASE) {
+ else     if ("FLOAT".equalsIgnoreCase(field.getName()) && dialect() != SQLDialect.HSQLDB && dialect() != SQLDialect.MARIADB && dialect() != SQLDialect.MYSQL && dialect() != SQLDialect.SYBASE) {
       assertEquals(Float.class,field.getType());
       assertEquals(SQLDataType.REAL,field.getDataType());
       assertEquals(0,field.getDataType().length());
     }
- else     if ("FLOAT".equalsIgnoreCase(field.getName()) && dialect() != SQLDialect.MYSQL && dialect() != SQLDialect.SYBASE) {
+ else     if ("FLOAT".equalsIgnoreCase(field.getName()) && dialect() != SQLDialect.MARIADB && dialect() != SQLDialect.MYSQL && dialect() != SQLDialect.SYBASE) {
       assertEquals(Double.class,field.getType());
       assertEquals(SQLDataType.DOUBLE,field.getDataType());
       assertEquals(0,field.getDataType().length());

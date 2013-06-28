@@ -76,6 +76,7 @@ case FIREBIRD:
 case HSQLDB:
 case H2:
 case INGRES:
+case MARIADB:
 case MYSQL:
 case SYBASE:
 log.info("SKIPPING","FOR UPDATE .. WAIT/NOWAIT tests");
@@ -101,6 +102,7 @@ assertEquals(2,r3b.size());
 }
 }
 switch (dialect()) {
+case MARIADB:
 case MYSQL:
 case POSTGRES:
 log.info("SKIPPING","FOR UPDATE OF tests");
@@ -115,6 +117,7 @@ assertEquals(2,result2.size());
 }
 switch (dialect()) {
 case ASE:
+case MARIADB:
 case MYSQL:
 log.info("SKIPPING","FOR UPDATE OF tests");
 break;
@@ -129,6 +132,7 @@ break;
 }
 }
 switch (dialect()) {
+case MARIADB:
 case MYSQL:
 case POSTGRES:
 {

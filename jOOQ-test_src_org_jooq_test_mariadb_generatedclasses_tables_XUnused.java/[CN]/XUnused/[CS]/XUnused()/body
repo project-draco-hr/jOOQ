@@ -1,0 +1,3 @@
+{
+  super("x_unused",org.jooq.test.mariadb.generatedclasses.Test.TEST);
+}

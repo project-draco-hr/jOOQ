@@ -14,6 +14,7 @@ case SQLSERVER:
 case SYBASE:
     log.info("SKIPPING","MD5 function test");
   break;
+case MARIADB:
 case MYSQL:
 case ORACLE:
 default :

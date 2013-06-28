@@ -4,6 +4,7 @@ case ASE:
 case DERBY:
 case FIREBIRD:
 case SQLITE:
+case MARIADB:
 case MYSQL:
     return;
 }

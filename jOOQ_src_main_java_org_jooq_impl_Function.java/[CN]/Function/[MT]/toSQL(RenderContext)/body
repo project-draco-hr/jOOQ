@@ -1,5 +1,5 @@
 {
-  if (term == LIST_AGG && asList(CUBRID,H2,HSQLDB,MYSQL).contains(context.configuration().dialect())) {
+  if (term == LIST_AGG && asList(CUBRID,H2,HSQLDB,MARIADB,MYSQL).contains(context.configuration().dialect())) {
     toSQLGroupConcat(context);
   }
  else   if (term == LIST_AGG && asList(POSTGRES,SYBASE).contains(context.configuration().dialect())) {

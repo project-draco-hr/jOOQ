@@ -1,6 +1,7 @@
 {
 switch (dialect()) {
 case SQLITE:
+case MARIADB:
 case MYSQL:
     log.info("SKIPPING","UPDATE .. SET .. = (SELECT ..) integration test. This syntax is poorly supported by " + dialect());
   return;

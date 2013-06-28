@@ -1,0 +1,11 @@
+{
+  assertNotNull(create().select(password("abc")).fetchOne(0));
+  assertNotNull(create().select(md5("abc")).fetchOne(0));
+  assertNotNull(create().select(sha1("abc")).fetchOne(0));
+  assertEquals("abc",create().select(decode(encode("abc","pw"),val("pw"))).fetchOne(0));
+  assertEquals("abc",create().select(aesDecrypt(aesEncrypt("abc","pw"),val("pw"))).fetchOne(0));
+  assertEquals("abc",create().select(desDecrypt(desEncrypt("abc","pw"),val("pw"))).fetchOne(0));
+  assertEquals("abc",create().select(desDecrypt(desEncrypt("abc"))).fetchOne(0));
+  assertEquals("abc",create().select(uncompress(compress("abc"))).fetchOne(0));
+  assertEquals(3,create().select(uncompressedLength(compress("abc"))).fetchOne(0));
+}

@@ -1,0 +1,3 @@
+{
+  return fetch(org.jooq.test.mariadb.generatedclasses.tables.TAuthor.DATE_OF_BIRTH,values);
+}

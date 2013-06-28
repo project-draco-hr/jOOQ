@@ -23,6 +23,9 @@
  else   if (url.startsWith("jdbc:ingres:")) {
     return INGRES;
   }
+ else   if (url.startsWith("jdbc:mariadb:")) {
+    return MARIADB;
+  }
  else   if (url.startsWith("jdbc:mysql:") || url.startsWith("jdbc:google:")) {
     return MYSQL;
   }

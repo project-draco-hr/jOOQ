@@ -1,0 +1,3 @@
+{
+  return function("decode",String.class,cryptString,keyString);
+}

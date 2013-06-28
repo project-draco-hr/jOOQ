@@ -72,6 +72,7 @@ default :
 throw new SQLDialectNotSupportedException("DatePart not supported: " + datePart);
 }
 case INGRES:
+case MARIADB:
 case MYSQL:
 case POSTGRES:
 case HSQLDB:

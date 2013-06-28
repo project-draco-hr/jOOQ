@@ -21,6 +21,7 @@ case SQLSERVER:
       }
     }
 case CUBRID:
+case MARIADB:
 case MYSQL:
 {
     Interval interval=rhsAsInterval();
@@ -31,11 +32,11 @@ case MYSQL:
       return field("{date_add}({0}, {interval} {1} {year_month})",getDataType(),lhs,Utils.field(interval,String.class));
     }
  else {
-      if (dialect == MYSQL) {
-        return field("{date_add}({0}, {interval} {1} {day_microsecond})",getDataType(),lhs,Utils.field(interval,String.class));
+      if (dialect == CUBRID) {
+        return field("{date_add}({0}, {interval} {1} {day_millisecond})",getDataType(),lhs,Utils.field(interval,String.class));
       }
  else {
-        return field("{date_add}({0}, {interval} {1} {day_millisecond})",getDataType(),lhs,Utils.field(interval,String.class));
+        return field("{date_add}({0}, {interval} {1} {day_microsecond})",getDataType(),lhs,Utils.field(interval,String.class));
       }
     }
   }

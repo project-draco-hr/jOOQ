@@ -1,5 +1,5 @@
 {
-  if (asList(CUBRID,DB2,DERBY,FIREBIRD,H2,HSQLDB,MYSQL,ORACLE,SQLITE,SQLSERVER,SYBASE).contains(configuration.dialect().family())) {
+  if (asList(CUBRID,DB2,DERBY,FIREBIRD,H2,HSQLDB,MARIADB,MYSQL,ORACLE,SQLITE,SQLSERVER,SYBASE).contains(configuration.dialect().family())) {
     List<Condition> conditions=new ArrayList<Condition>();
     for (    Field<?> field : row.fields()) {
       conditions.add(isNull ? field.isNull() : field.isNotNull());

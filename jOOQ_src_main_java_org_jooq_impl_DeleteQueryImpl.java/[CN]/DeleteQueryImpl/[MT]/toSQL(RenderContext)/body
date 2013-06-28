@@ -1,7 +1,7 @@
 {
   boolean declare=context.declareTables();
   context.keyword("delete ");
-  if (getFrom() instanceof TableAlias && context.configuration().dialect() == MYSQL) {
+  if (getFrom() instanceof TableAlias && asList(MARIADB,MYSQL).contains(context.configuration().dialect())) {
     context.sql(getFrom()).sql(" ");
   }
   context.keyword("from ");

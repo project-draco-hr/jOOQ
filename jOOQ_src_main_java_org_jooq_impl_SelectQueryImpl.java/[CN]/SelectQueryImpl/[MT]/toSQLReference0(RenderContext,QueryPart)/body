@@ -72,7 +72,7 @@ if (getGroupBy().isEmpty()) {
 if (asList(ASE,INGRES).contains(dialect)) {
   context.sql("empty_grouping_dummy_table.x");
 }
- else if (asList(CUBRID,DERBY,FIREBIRD,HSQLDB,MYSQL,POSTGRES,SQLITE).contains(dialect)) {
+ else if (asList(CUBRID,DERBY,FIREBIRD,HSQLDB,MARIADB,MYSQL,POSTGRES,SQLITE).contains(dialect)) {
   context.sql("1");
 }
  else {

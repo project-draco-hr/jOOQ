@@ -1,0 +1,3 @@
+{
+  super("t_booleans",org.jooq.test.mariadb.generatedclasses.Test.TEST);
+}

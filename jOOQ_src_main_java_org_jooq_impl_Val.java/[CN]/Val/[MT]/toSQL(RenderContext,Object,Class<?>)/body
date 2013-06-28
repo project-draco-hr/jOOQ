@@ -25,7 +25,7 @@
  else       if (family == DB2) {
         context.keyword("blob").sql("(X'").sql(convertBytesToHex(binary)).sql("')");
       }
- else       if (asList(DERBY,H2,HSQLDB,INGRES,MYSQL,SQLITE).contains(family)) {
+ else       if (asList(DERBY,H2,HSQLDB,INGRES,MARIADB,MYSQL,SQLITE).contains(family)) {
         context.sql("X'").sql(convertBytesToHex(binary)).sql("'");
       }
  else       if (asList(ORACLE).contains(family)) {

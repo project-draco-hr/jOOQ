@@ -1,0 +1,9 @@
+{
+  super("p391",org.jooq.test.mariadb.generatedclasses.Test.TEST);
+  addInParameter(I1);
+  addInOutParameter(IO1);
+  addOutParameter(O1);
+  addOutParameter(O2);
+  addInOutParameter(IO2);
+  addInParameter(I2);
+}

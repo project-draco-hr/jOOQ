@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.mariadb.generatedclasses.tables.VBook.CONTENT_PDF;
+}

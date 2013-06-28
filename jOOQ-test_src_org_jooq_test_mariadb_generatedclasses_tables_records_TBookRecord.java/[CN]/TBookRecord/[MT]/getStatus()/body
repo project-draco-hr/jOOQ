@@ -1,0 +1,3 @@
+{
+  return (org.jooq.test.mariadb.generatedclasses.enums.TBookStatus)getValue(9);
+}

@@ -21,6 +21,7 @@ case ASE:
 case DERBY:
 case H2:
 case INGRES:
+case MARIADB:
 case MYSQL:
 case SQLSERVER:
   ctx.statement(connection.prepareStatement(ctx.sql(),Statement.RETURN_GENERATED_KEYS));

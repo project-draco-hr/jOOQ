@@ -22,7 +22,7 @@
   invoke(cRoutines(),"pCreateAuthorByName",create().configuration(),null,"Kaestner");
   assertEquals("Kaestner",create().fetchOne(TAuthor(),TAuthor_LAST_NAME().equal("Kaestner")).getValue(TAuthor_LAST_NAME()));
   if (supportsOUTParameters()) {
-    if (dialect() != SQLDialect.MYSQL) {
+    if (dialect() != SQLDialect.MYSQL && dialect() != SQLDialect.MARIADB) {
       Object p391a=invoke(cRoutines(),"p391",create().configuration(),null,null,DUMMY_OUT_INT,DUMMY_OUT_INT,null,null);
       assertEquals(null,invoke(p391a,"getIo1"));
       assertEquals(null,invoke(p391a,"getO1"));

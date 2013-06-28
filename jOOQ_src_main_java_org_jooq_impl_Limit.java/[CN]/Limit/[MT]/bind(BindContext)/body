@@ -8,6 +8,7 @@ case SQLSERVER2012:
       context.bind(numberOfRows);
       break;
     }
+case MARIADB:
 case MYSQL:
 case HSQLDB:
 case H2:

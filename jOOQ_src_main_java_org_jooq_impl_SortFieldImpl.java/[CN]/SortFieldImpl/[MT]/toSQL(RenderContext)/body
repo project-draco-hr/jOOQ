@@ -5,6 +5,7 @@ case DB2:
 case ASE:
 case CUBRID:
 case INGRES:
+case MARIADB:
 case MYSQL:
 case SQLITE:
 case SQLSERVER:

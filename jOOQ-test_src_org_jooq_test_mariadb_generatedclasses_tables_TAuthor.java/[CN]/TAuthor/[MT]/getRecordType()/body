@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.mariadb.generatedclasses.tables.records.TAuthorRecord.class;
+}

@@ -1,0 +1,3 @@
+{
+  super("p_create_author",org.jooq.test.mariadb.generatedclasses.Test.TEST);
+}

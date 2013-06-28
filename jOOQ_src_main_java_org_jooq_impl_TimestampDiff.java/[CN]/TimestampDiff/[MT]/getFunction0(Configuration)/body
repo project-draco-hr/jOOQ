@@ -17,6 +17,7 @@ case HSQLDB:
 return field("{datediff}('ms', {0}, {1})",getDataType(),timestamp2,timestamp1);
 case INGRES:
 throw new SQLDialectNotSupportedException("Date time arithmetic not supported in Ingres. Contributions welcome!");
+case MARIADB:
 case MYSQL:
 return field("{timestampdiff}(microsecond, {0}, {1}) / 1000",getDataType(),timestamp2,timestamp1);
 case SQLSERVER:

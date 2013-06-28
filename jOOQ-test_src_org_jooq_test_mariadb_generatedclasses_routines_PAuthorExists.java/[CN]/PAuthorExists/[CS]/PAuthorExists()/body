@@ -1,0 +1,5 @@
+{
+  super("p_author_exists",org.jooq.test.mariadb.generatedclasses.Test.TEST);
+  addInParameter(AUTHOR_NAME);
+  addOutParameter(RESULT);
+}

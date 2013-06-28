@@ -17,6 +17,7 @@ case INGRES:
   return select(field).fetchOne(field);
 }
 case CUBRID:
+case MARIADB:
 case MYSQL:
 {
 Field<BigInteger> field=field("last_insert_id()",BigInteger.class);

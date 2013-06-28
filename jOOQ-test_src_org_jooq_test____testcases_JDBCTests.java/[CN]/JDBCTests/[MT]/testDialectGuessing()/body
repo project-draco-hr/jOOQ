@@ -1,4 +1,8 @@
 {
+  if (dialect() == MARIADB) {
+    log.info("SKIPPING","Skipping dialect guessing test");
+    return;
+  }
   ConnectionProvider cp=create().configuration().connectionProvider();
   Connection c=cp.acquire();
   try {

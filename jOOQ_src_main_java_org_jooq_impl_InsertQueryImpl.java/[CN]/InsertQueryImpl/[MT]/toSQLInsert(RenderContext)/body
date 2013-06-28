@@ -1,4 +1,4 @@
 {
-  context.keyword("insert ").keyword((onDuplicateKeyIgnore && context.configuration().dialect() == MYSQL) ? "ignore " : "").keyword("into ").sql(getInto()).sql(" ").sql(insertMaps);
+  context.keyword("insert ").keyword((onDuplicateKeyIgnore && asList(MARIADB,MYSQL).contains(context.configuration().dialect())) ? "ignore " : "").keyword("into ").sql(getInto()).sql(" ").sql(insertMaps);
   toSQLReturning(context);
 }

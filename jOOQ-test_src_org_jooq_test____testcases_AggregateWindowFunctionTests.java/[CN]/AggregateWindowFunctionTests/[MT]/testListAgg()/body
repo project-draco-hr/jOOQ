@@ -21,6 +21,7 @@ case CUBRID:
 case DB2:
 case H2:
 case HSQLDB:
+case MARIADB:
 case MYSQL:
 case POSTGRES:
 case SYBASE:

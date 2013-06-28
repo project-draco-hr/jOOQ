@@ -1,6 +1,7 @@
 {
 switch (context.configuration().dialect().family()) {
 case FIREBIRD:
+case MARIADB:
 case MYSQL:
 case ORACLE:
 case SQLITE:

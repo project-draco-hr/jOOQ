@@ -34,6 +34,7 @@ case DERBY:
   return castNonTimestamps(configuration,result);
 }
 case CUBRID:
+case MARIADB:
 case MYSQL:
 {
 if (operator == ADD) {

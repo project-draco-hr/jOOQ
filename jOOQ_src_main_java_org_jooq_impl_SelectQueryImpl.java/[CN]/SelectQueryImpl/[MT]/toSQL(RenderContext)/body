@@ -78,6 +78,7 @@ context.sql(forUpdateWait);
 }
  else if (forShare) {
 switch (context.configuration().dialect()) {
+case MARIADB:
 case MYSQL:
 context.formatSeparator().keyword("lock in share mode");
 break;

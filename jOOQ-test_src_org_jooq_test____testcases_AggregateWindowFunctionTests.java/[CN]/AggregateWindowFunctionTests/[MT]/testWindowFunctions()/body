@@ -3,6 +3,7 @@ switch (dialect()) {
 case ASE:
 case FIREBIRD:
 case INGRES:
+case MARIADB:
 case MYSQL:
 case SQLITE:
     log.info("SKIPPING","Window function tests");

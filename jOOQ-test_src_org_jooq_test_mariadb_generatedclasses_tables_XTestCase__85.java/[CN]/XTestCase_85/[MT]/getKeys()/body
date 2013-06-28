@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.mariadb.generatedclasses.tables.records.XTestCase_85Record>>asList(org.jooq.test.mariadb.generatedclasses.Keys.KEY_X_TEST_CASE_85_PRIMARY);
+}

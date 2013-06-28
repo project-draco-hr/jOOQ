@@ -1,0 +1,6 @@
+{
+  org.jooq.test.mariadb.generatedclasses.routines.FNumber f=new org.jooq.test.mariadb.generatedclasses.routines.FNumber();
+  f.setN(n);
+  f.execute(configuration);
+  return f.getReturnValue();
+}

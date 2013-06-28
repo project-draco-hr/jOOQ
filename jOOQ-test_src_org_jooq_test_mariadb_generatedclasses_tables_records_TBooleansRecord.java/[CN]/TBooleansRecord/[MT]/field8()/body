@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.mariadb.generatedclasses.tables.TBooleans.Y_N_UC;
+}

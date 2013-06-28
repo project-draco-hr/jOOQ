@@ -1,0 +1,3 @@
+{
+  return fetch(org.jooq.test.mariadb.generatedclasses.tables.TTriggers.ID_GENERATED,values);
+}

@@ -14,6 +14,7 @@ case DERBY:
       return DSL.decode().when(field.sign().greaterOrEqual(zero()),field.mul(power).floor().div(power)).otherwise(field.mul(power).ceil().div(power));
     }
 case H2:
+case MARIADB:
 case MYSQL:
   return field("{truncate}({0}, {1})",field.getDataType(),field,decimals);
 case SQLSERVER:

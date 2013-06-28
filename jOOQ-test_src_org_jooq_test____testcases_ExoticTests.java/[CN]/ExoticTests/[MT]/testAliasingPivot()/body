@@ -8,6 +8,7 @@ case FIREBIRD:
 case H2:
 case HSQLDB:
 case INGRES:
+case MARIADB:
 case MYSQL:
 case POSTGRES:
 case SQLITE:

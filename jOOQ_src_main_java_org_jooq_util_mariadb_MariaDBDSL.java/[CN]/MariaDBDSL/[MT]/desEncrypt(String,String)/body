@@ -1,0 +1,3 @@
+{
+  return desEncrypt(val(string),val(keyString));
+}

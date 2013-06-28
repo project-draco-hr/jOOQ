@@ -1,0 +1,3 @@
+{
+  return Routines.fNumber((Integer)n);
+}

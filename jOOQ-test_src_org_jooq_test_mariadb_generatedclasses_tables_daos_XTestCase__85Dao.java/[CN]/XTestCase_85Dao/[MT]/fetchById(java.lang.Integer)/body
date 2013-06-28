@@ -1,0 +1,3 @@
+{
+  return fetch(org.jooq.test.mariadb.generatedclasses.tables.XTestCase_85.ID,values);
+}
