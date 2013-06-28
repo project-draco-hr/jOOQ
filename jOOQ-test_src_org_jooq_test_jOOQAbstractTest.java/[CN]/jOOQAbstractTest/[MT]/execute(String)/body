@@ -69,6 +69,9 @@ case 218:
           continue;
       }
     }
+ else     if (e.getMessage().startsWith("Cannot drop")) {
+      continue;
+    }
  else     if (e.getClass().getName().startsWith("com.sybase")) {
       if (sql.contains("DROP SEQUENCE")) {
         continue;

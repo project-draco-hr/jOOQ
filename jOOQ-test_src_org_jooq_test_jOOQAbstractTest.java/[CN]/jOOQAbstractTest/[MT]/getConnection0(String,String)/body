@@ -22,17 +22,19 @@
     jdbcSchema=jdbc.getSchema() + getSchemaSuffix();
     jdbcUser=jdbcUser != null ? jdbcUser : jdbc.getUser() != null ? jdbc.getUser() : getProperty(jdbc.getProperties(),"user");
     jdbcPassword=jdbcPassword != null ? jdbcPassword : jdbc.getPassword() != null ? jdbc.getPassword() : getProperty(jdbc.getProperties(),"password");
-    Class.forName(driver);
-    if (StringUtils.isBlank(jdbcUser)) {
-      Properties p=new Properties();
-      if (getClass().getSimpleName().toLowerCase().contains("ingres")) {
-        p.setProperty("timezone","EUROPE-CENTRAL");
-      }
-      return DriverManager.getConnection(getJdbcURL(),p);
+    Properties info=new Properties();
+    if (getClass().getSimpleName().toLowerCase().contains("ingres")) {
+      info.setProperty("timezone","EUROPE-CENTRAL");
+    }
+    Driver d=((Driver)Class.forName(driver).newInstance());
+    if (!StringUtils.isBlank(jdbcUser)) {
+      info.put("user",jdbcUser);
+      info.put("password",jdbcPassword);
     }
  else {
       return DriverManager.getConnection(getJdbcURL(),jdbcUser,jdbcPassword);
     }
+    return d != null ? d.connect(getJdbcURL(),info) : DriverManager.getConnection(getJdbcURL(),info);
   }
  catch (  Exception e) {
     throw new Error(e);
