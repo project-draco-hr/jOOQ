@@ -5,6 +5,10 @@
       context.sql(mappedSchema);
       context.sql(".");
     }
+ else     if (getSchema() != null && context.configuration().dialect().family() == SQLSERVER) {
+      context.sql(getSchema());
+      context.sql(".");
+    }
     if (getPackage() != null) {
       context.sql(getPackage());
       context.sql(".");
