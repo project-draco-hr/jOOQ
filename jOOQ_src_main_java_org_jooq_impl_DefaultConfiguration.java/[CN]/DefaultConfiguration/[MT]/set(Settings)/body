@@ -1,5 +1,5 @@
 {
-  this.settings=newSettings;
+  this.settings=newSettings != null ? SettingsTools.clone(newSettings) : SettingsTools.defaultSettings();
   this.mapping=new SchemaMapping(this);
   return this;
 }

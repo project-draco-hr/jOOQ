@@ -4,7 +4,7 @@
   handler.startPrefixMapping("","http://www.jooq.org/xsd/jooq-export-2.6.0.xsd");
   handler.startElement("","","result",empty);
   handler.startElement("","","fields",empty);
-  for (  Field<?> field : fields) {
+  for (  Field<?> field : fields.fields) {
     AttributesImpl attrs=new AttributesImpl();
     attrs.addAttribute("","","name","CDATA",field.getName());
     attrs.addAttribute("","","type","CDATA",field.getDataType().getTypeName().toUpperCase());

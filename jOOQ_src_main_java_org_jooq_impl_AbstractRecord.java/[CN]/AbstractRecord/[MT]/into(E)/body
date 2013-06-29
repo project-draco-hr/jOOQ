@@ -4,7 +4,7 @@
   }
   Class<E> type=(Class<E>)object.getClass();
   try {
-    return new ReflectionMapper<Record,E>(fields.fields(),type,object).map(this);
+    return new DefaultRecordMapper<Record,E>(fields.fields,type,object).map(this);
   }
  catch (  MappingException e) {
     throw e;

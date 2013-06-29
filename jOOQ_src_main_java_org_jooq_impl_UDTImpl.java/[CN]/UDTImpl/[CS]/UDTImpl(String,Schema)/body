@@ -1,5 +1,5 @@
 {
-  this.fields=new Fields();
+  this.fields=new Fields<R>();
   this.name=name;
   this.schema=schema;
 }

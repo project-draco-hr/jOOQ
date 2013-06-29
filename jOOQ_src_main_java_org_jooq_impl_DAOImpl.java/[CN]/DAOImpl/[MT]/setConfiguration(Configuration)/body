@@ -1,3 +1,4 @@
 {
   this.configuration=configuration;
+  this.mapper=Utils.configuration(configuration).recordMapperProvider().provide(table.recordType(),type);
 }

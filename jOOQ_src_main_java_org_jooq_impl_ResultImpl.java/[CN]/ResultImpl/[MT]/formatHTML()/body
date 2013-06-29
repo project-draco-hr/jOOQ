@@ -3,7 +3,7 @@
   sb.append("<table>");
   sb.append("<thead>");
   sb.append("<tr>");
-  for (  Field<?> field : fields) {
+  for (  Field<?> field : fields.fields) {
     sb.append("<th>");
     sb.append(field.getName());
     sb.append("</th>");

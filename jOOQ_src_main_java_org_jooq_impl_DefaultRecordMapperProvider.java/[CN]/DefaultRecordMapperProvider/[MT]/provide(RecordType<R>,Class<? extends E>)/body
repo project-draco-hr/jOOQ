@@ -1,0 +1,3 @@
+{
+  return new DefaultRecordMapper<R,E>(rowType,type);
+}

@@ -1,6 +1,6 @@
 {
   List<E> list=new ArrayList<E>(size());
-  RecordMapper<R,E> mapper=new ReflectionMapper<R,E>(fields.fields,type);
+  RecordMapper<R,E> mapper=Utils.configuration(this).recordMapperProvider().provide(fields,type);
   for (  R record : this) {
     list.add(mapper.map(record));
   }

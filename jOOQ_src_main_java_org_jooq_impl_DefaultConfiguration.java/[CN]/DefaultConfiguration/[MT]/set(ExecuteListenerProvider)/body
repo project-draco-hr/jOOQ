@@ -1,4 +1,4 @@
 {
-  this.listenerProviders=newExecuteListenerProviders;
+  this.listenerProviders=newExecuteListenerProviders != null ? newExecuteListenerProviders : new ExecuteListenerProvider[0];
   return this;
 }

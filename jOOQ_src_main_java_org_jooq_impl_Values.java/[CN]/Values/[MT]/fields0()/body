@@ -1,3 +1,3 @@
 {
-  return new Fields(rows[0].fields());
+  return new Fields<R>(rows[0].fields());
 }

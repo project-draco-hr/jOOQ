@@ -1,0 +1,3 @@
+{
+  return new DefaultConfiguration(connectionProvider,newRecordMapperProvider,listenerProviders,dialect,settings,data);
+}

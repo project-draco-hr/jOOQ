@@ -1,6 +1,5 @@
 {
   this.table=table;
   this.type=type;
-  this.configuration=configuration;
-  this.mapper=new ReflectionMapper<R,P>(table.fields(),type);
+  setConfiguration(configuration);
 }

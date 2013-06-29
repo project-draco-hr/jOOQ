@@ -1,5 +1,6 @@
 {
   ois.defaultReadObject();
   connectionProvider=(ConnectionProvider)ois.readObject();
+  recordMapperProvider=(RecordMapperProvider)ois.readObject();
   listenerProviders=(ExecuteListenerProvider[])ois.readObject();
 }

@@ -14,5 +14,5 @@
  else {
     result.add(fieldByName(DSL.getDataType(arrayType),alias,"COLUMN_VALUE"));
   }
-  return new Fields(result);
+  return new Fields<Record>(result);
 }

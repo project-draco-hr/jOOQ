@@ -1,0 +1,2 @@
+RecordType<R> rowType
+Class<? extends E> type

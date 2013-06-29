@@ -10,5 +10,5 @@
     }
     result.add(new TableFieldImpl(name,field.getDataType(),this));
   }
-  return new Fields(result);
+  return new Fields<R>(result);
 }

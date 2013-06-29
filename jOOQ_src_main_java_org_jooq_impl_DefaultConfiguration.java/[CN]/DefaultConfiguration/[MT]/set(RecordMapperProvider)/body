@@ -1,0 +1,4 @@
+{
+  this.recordMapperProvider=newRecordMapperProvider != null ? newRecordMapperProvider : new DefaultRecordMapperProvider();
+  return this;
+}

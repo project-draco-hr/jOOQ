@@ -1,5 +1,5 @@
 {
-  for (  Field<?> field : fields.fields) {
+  for (  Field<?> field : fields.fields.fields) {
     Field<?> sourceField=source.field(field);
     if (sourceField != null) {
       Utils.setValue(this,field,source,sourceField);

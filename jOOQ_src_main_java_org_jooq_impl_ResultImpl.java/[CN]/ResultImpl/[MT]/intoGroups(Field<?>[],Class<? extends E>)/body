@@ -1,5 +1,5 @@
 {
-  RecordMapper<R,E> mapper=new ReflectionMapper<R,E>(fields.fields,type);
+  RecordMapper<R,E> mapper=Utils.configuration(this).recordMapperProvider().provide(fields,type);
   if (keys == null) {
     keys=new Field[0];
   }
