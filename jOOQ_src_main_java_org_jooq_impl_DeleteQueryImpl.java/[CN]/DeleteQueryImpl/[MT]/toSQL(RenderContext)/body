@@ -1,8 +1,10 @@
 {
   boolean declare=context.declareTables();
   context.keyword("delete ");
-  if (getFrom() instanceof TableAlias && asList(MARIADB,MYSQL).contains(context.configuration().dialect())) {
-    context.sql(getFrom()).sql(" ");
+  if (asList(MARIADB,MYSQL).contains(context.configuration().dialect())) {
+    if (getFrom() instanceof TableAlias || (getFrom() instanceof TableImpl && ((TableImpl<R>)getFrom()).getAliasedTable() != null)) {
+      context.sql(getFrom()).sql(" ");
+    }
   }
   context.keyword("from ");
   context.declareTables(true).sql(getFrom()).declareTables(declare);
