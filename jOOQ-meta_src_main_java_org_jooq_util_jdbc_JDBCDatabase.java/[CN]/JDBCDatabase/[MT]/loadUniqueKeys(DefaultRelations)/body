@@ -1,2 +1,15 @@
 {
+  for (  UniqueKey<?> key : create().meta().getPrimaryKeys()) {
+    Schema schema=key.getTable().getSchema();
+    SchemaDefinition s=getSchema(schema == null ? "" : schema.getName());
+    if (s != null) {
+      TableDefinition t=getTable(s,key.getTable().getName());
+      if (t != null) {
+        for (        Field<?> field : key.getFields()) {
+          ColumnDefinition c=t.getColumn(field.getName());
+          relations.addPrimaryKey("PK_" + key.getTable().getName(),c);
+        }
+      }
+    }
+  }
 }
