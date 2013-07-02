@@ -3,7 +3,6 @@
     Field<String> tableSchem=fieldByName(String.class,"TABLE_SCHEM");
     Field<String> tableName=fieldByName(String.class,"TABLE_NAME");
     Map<Record,Result<Record>> groups=getColumns0(schema,"%").intoGroups(new Field[]{tableSchem,tableName});
-    System.out.println(getColumns0(schema,"%").format(1000));
     columnCache=new LinkedHashMap<Name,Result<Record>>();
     for (    Entry<Record,Result<Record>> entry : groups.entrySet()) {
       Record key=entry.getKey();

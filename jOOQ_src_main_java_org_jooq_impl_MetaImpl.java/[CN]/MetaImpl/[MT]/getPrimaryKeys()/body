@@ -1,0 +1,10 @@
+{
+  List<UniqueKey<?>> result=new ArrayList<UniqueKey<?>>();
+  for (  Table<?> table : getTables()) {
+    UniqueKey<?> pk=table.getPrimaryKey();
+    if (pk != null) {
+      result.add(pk);
+    }
+  }
+  return result;
+}

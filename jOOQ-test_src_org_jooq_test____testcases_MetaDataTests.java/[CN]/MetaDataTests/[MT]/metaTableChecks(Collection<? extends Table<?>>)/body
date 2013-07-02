@@ -7,7 +7,10 @@
         assertEquals(metaTable,generatedTable);
         List<Field<?>> metaFields=asList(metaTable.fields());
         assertTrue(metaFields.containsAll(asList(generatedTable.fields())));
-        if (generatedTable.getPrimaryKey() != null && metaTable.getPrimaryKey() != null) {
+        if (generatedTable.getPrimaryKey() != null) {
+          assertNotNull(metaTable.getPrimaryKey());
+          assertEquals(generatedTable,metaTable.getPrimaryKey().getTable());
+          assertEquals(generatedTable.getPrimaryKey().getFields(),metaTable.getPrimaryKey().getFields());
         }
  else {
           assertNull(metaTable.getPrimaryKey());

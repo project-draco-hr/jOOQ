@@ -1,0 +1,20 @@
+{
+  String schema=getSchema() == null ? null : getSchema().getName();
+  try {
+    Result<Record> result=create.fetch(meta().getPrimaryKeys(null,schema,getName()),String.class,String.class,String.class,String.class,int.class,String.class);
+    result.sortAsc(4);
+    if (result.size() > 0) {
+      TableField<Record,?>[] fields=new TableField[result.size()];
+      for (int i=0; i < fields.length; i++) {
+        fields[i]=(TableField<Record,?>)field(result.get(i).getValue(3,String.class));
+      }
+      return AbstractKeys.createUniqueKey(this,fields);
+    }
+ else {
+      return null;
+    }
+  }
+ catch (  SQLException e) {
+    throw new DataAccessException("Error while accessing DatabaseMetaData",e);
+  }
+}
