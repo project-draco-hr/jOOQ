@@ -31,6 +31,9 @@
       }
     }
  catch (    Exception e) {
+      if (sql.trim().startsWith("DROP")) {
+        continue;
+      }
       if (e.getMessage().contains("ORA-00942")) {
         continue;
       }

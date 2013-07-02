@@ -1,16 +1,24 @@
 {
   try {
     List<Catalog> result=new ArrayList<Catalog>();
-    Result<Record> catalogs=create.fetch(meta().getCatalogs());
-    for (    String name : catalogs.getValues(0,String.class)) {
-      result.add(new MetaCatalog(name));
+switch (configuration.dialect()) {
+case ACCESS:
+      break;
+default :
+{
+      Result<Record> catalogs=create.fetch(meta().getCatalogs());
+      for (      String name : catalogs.getValues(0,String.class)) {
+        result.add(new MetaCatalog(name));
+      }
+      break;
     }
-    if (result.isEmpty()) {
-      result.add(new MetaCatalog(""));
-    }
-    return result;
-  }
- catch (  SQLException e) {
-    throw new DataAccessException("Error while accessing DatabaseMetaData",e);
-  }
+}
+if (result.isEmpty()) {
+  result.add(new MetaCatalog(""));
+}
+return result;
+}
+ catch (SQLException e) {
+throw new DataAccessException("Error while accessing DatabaseMetaData",e);
+}
 }
