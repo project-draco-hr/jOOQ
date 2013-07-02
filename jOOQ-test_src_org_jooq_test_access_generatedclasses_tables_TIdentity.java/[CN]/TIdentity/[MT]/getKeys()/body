@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.access.generatedclasses.tables.records.TIdentityRecord>>asList(org.jooq.test.access.generatedclasses.Keys.PK_T_IDENTITY);
+}
