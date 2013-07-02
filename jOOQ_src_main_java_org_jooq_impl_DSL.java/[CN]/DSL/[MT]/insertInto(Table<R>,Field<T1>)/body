@@ -1,0 +1,3 @@
+{
+  return (InsertValuesStep1)insertInto(into,new Field[]{field1});
+}
