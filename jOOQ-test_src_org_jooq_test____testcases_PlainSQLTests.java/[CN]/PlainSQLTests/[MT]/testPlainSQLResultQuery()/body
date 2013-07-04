@@ -46,11 +46,6 @@
   }
 );
   assertEquals(1,(int)count[0]);
-  FutureResult<Record> fetch9=q.fetchLater();
-  Thread.sleep(50);
-  assertTrue(fetch9.isDone());
-  assertEquals(1,fetch9.get().size());
-  assertEquals("10",fetch9.get().getValue(0,0));
   Cursor<Record> fetch10=q.fetchLazy();
   assertFalse(fetch10.isClosed());
   assertTrue(fetch10.hasNext());
