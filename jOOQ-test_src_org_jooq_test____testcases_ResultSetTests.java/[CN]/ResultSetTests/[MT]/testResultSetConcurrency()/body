@@ -19,5 +19,5 @@ int repeat;
   }
 }
 }
-).select(TBook_ID(),TBook_TITLE()).from(TBook()).resultSetType(ResultSet.TYPE_SCROLL_INSENSITIVE).resultSetConcurrency(ResultSet.CONCUR_UPDATABLE).fetch(TBook_TITLE()));
+).select(TBook_ID(),TBook_TITLE()).from(TBook()).resultSetConcurrency(ResultSet.CONCUR_UPDATABLE).fetch(TBook_TITLE()));
 }
