@@ -1,0 +1,4 @@
+{
+  maxvalue=field;
+  return this;
+}

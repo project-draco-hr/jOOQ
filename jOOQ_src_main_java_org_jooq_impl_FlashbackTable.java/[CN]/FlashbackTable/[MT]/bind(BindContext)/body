@@ -1,0 +1,14 @@
+{
+  context.bind(table);
+  if (asOf != null) {
+    context.bind(asOf);
+  }
+ else {
+    if (minvalue != null) {
+      context.bind(minvalue);
+    }
+    if (maxvalue != null) {
+      context.bind(maxvalue);
+    }
+  }
+}

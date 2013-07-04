@@ -1,0 +1,7 @@
+{
+  super("flashbackquery");
+  this.table=table;
+  this.asOf=asOf;
+  this.minvalue=minvalue;
+  this.type=type;
+}
