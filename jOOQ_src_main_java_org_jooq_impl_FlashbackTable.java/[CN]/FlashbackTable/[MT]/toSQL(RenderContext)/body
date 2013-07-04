@@ -1,22 +1,9 @@
 {
   context.sql(table);
   if (asOf != null) {
-    context.sql(" ").keyword("as of").sql(" ").keyword(type == FlashbackType.SCN ? "scn" : "timestamp").sql(" ").sql(asOf);
+    context.sql(" ").keyword("as of").sql(" ").sql(type).sql(" ").sql(asOf);
   }
  else {
-    context.sql(" ").keyword("versions between").sql(" ").keyword(type == FlashbackType.SCN ? "scn" : "timestamp").sql(" ");
-    if (minvalue != null) {
-      context.sql(minvalue);
-    }
- else {
-      context.keyword("minvalue");
-    }
-    context.sql(" ").keyword("and").sql(" ");
-    if (maxvalue != null) {
-      context.sql(maxvalue);
-    }
- else {
-      context.keyword("maxvalue");
-    }
+    context.sql(" ").keyword("versions between").sql(" ").sql(type).sql(" ").sql(minvalue).sql(" ").keyword("and").sql(" ").sql(maxvalue);
   }
 }

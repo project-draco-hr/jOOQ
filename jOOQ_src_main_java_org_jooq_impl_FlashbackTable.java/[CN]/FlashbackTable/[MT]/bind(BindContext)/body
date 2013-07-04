@@ -4,11 +4,6 @@
     context.bind(asOf);
   }
  else {
-    if (minvalue != null) {
-      context.bind(minvalue);
-    }
-    if (maxvalue != null) {
-      context.bind(maxvalue);
-    }
+    context.bind(minvalue).bind(maxvalue);
   }
 }

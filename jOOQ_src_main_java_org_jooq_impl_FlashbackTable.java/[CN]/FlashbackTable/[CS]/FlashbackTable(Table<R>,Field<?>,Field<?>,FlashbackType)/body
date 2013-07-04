@@ -2,6 +2,6 @@
   super("flashbackquery");
   this.table=table;
   this.asOf=asOf;
-  this.minvalue=minvalue;
-  this.type=type;
+  this.minvalue=minvalue != null ? minvalue : keyword("minvalue");
+  this.type=type == FlashbackType.SCN ? keyword("scn") : keyword("timestamp");
 }
