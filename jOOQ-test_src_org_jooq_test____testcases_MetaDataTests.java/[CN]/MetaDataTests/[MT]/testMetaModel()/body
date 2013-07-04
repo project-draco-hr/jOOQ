@@ -4,13 +4,13 @@
     int sequences=0;
     if (cSequences() != null) {
       sequences++;
-      if (dialect() == DB2 || dialect() == H2) {
+      if (dialect().family() == DB2 || dialect().family() == H2) {
         sequences++;
       }
- else       if (dialect() == CUBRID) {
+ else       if (dialect().family() == CUBRID) {
         sequences+=3;
       }
- else       if (dialect() == ORACLE) {
+ else       if (dialect().family() == ORACLE) {
         sequences+=5;
       }
     }
@@ -47,7 +47,7 @@
     if (cUAddressType() == null) {
       assertEquals(0,schema.getUDTs().size());
     }
- else     if (dialect() == ORACLE) {
+ else     if (dialect().family() == ORACLE) {
       assertEquals(7,schema.getUDTs().size());
     }
  else {
@@ -176,7 +176,7 @@
       assertEquals(0,field.getDataType().scale());
       assertEquals(0,field.getDataType().length());
     }
- else     if ("BIG_DECIMAL".equalsIgnoreCase(field.getName()) && dialect() != SQLDialect.ORACLE && dialect() != SQLDialect.POSTGRES && dialect() != SQLDialect.SQLITE && dialect().family() != SQLDialect.SQLSERVER) {
+ else     if ("BIG_DECIMAL".equalsIgnoreCase(field.getName()) && dialect().family() != SQLDialect.ORACLE && dialect().family() != SQLDialect.POSTGRES && dialect().family() != SQLDialect.SQLITE && dialect().family() != SQLDialect.SQLSERVER) {
       assertEquals(BigDecimal.class,field.getType());
       assertEquals(SQLDataType.DECIMAL.getType(),field.getDataType().getType());
       assertTrue(field.getDataType().precision() > 0);

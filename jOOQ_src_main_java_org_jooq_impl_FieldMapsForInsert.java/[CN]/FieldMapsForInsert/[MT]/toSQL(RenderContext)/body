@@ -6,7 +6,7 @@
     context.sql(insertMaps.get(0));
   }
  else {
-switch (context.configuration().dialect()) {
+switch (context.configuration().dialect().family()) {
 case ASE:
 case FIREBIRD:
 case INGRES:

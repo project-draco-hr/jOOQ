@@ -17,7 +17,7 @@ case SYBASE:
   }
 }
 if (getDataType().isInterval()) {
-switch (context.configuration().dialect()) {
+switch (context.configuration().dialect().family()) {
 case ORACLE:
 case POSTGRES:
     return true;

@@ -1,7 +1,7 @@
 {
   jOOQAbstractTest.reset=false;
   Field<?> nullField=null;
-switch (dialect()) {
+switch (dialect().family()) {
 case ORACLE:
 case POSTGRES:
     nullField=cast(null,TAuthor_ADDRESS());

@@ -3,7 +3,7 @@
   if (multiRow != null) {
     boolean qualify=context.qualify();
     context.qualify(false).sql(multiRow).qualify(qualify).sql(" = ");
-    if (multiValue != null && !asList(INGRES,ORACLE).contains(context.configuration().dialect())) {
+    if (multiValue != null && !asList(INGRES,ORACLE).contains(context.configuration().dialect().family())) {
       context.sql(multiValue);
     }
  else {

@@ -58,6 +58,9 @@ context.bind(getUpperRownum());
 break;
 }
 case ORACLE:
+case ORACLE10G:
+case ORACLE11G:
+case ORACLE12C:
 {
 context.bind(getUpperRownum());
 context.bind(getLowerRownum());

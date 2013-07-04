@@ -55,7 +55,7 @@ try {
  catch (Exception e) {
 }
 }
-switch (dialect()) {
+switch (dialect().family()) {
 case INGRES:
 case ORACLE:
 log.info("SKIPPING","LIMIT .. OFFSET .. FOR UPDATE");
@@ -68,7 +68,7 @@ Result<A> result4=create().selectFrom(TAuthor()).limit(5).offset(0).forUpdate().
 assertEquals(2,result4.size());
 }
 }
-switch (dialect()) {
+switch (dialect().family()) {
 case ASE:
 case DB2:
 case DERBY:
@@ -87,7 +87,7 @@ default :
 {
 Result<Record1<Integer>> r1a=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().noWait().fetch();
 assertEquals(2,r1a.size());
-if (dialect() == ORACLE) {
+if (dialect().family() == ORACLE) {
 Result<Record1<Integer>> r2a=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().wait(2).fetch();
 assertEquals(2,r2a.size());
 Result<Record1<Integer>> r3a=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().skipLocked().fetch();
@@ -101,7 +101,7 @@ assertEquals(2,r3b.size());
 }
 }
 }
-switch (dialect()) {
+switch (dialect().family()) {
 case MARIADB:
 case MYSQL:
 case POSTGRES:

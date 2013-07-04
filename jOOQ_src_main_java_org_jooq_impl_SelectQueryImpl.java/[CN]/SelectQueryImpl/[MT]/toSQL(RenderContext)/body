@@ -2,6 +2,9 @@
   if (getLimit().isApplicable()) {
 switch (context.configuration().dialect()) {
 case ORACLE:
+case ORACLE10G:
+case ORACLE11G:
+case ORACLE12C:
       toSQLReferenceLimitOracle(context);
     break;
 case DB2:
@@ -53,7 +56,7 @@ Utils.fieldNames(context,forUpdateOf);
 }
  else if (!forUpdateOfTables.isEmpty()) {
 context.keyword(" of ");
-switch (context.configuration().dialect()) {
+switch (context.configuration().dialect().family()) {
 case DB2:
 case DERBY:
 case INGRES:

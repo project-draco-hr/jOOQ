@@ -4,7 +4,7 @@
   }
   try {
     String[] types=null;
-switch (configuration.dialect()) {
+switch (configuration.dialect().family()) {
 case SQLITE:
       types=new String[]{"TABLE","VIEW"};
     break;

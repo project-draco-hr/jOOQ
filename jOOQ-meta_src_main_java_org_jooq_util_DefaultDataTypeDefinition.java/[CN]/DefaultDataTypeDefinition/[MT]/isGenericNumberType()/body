@@ -1,5 +1,5 @@
 {
-switch (getDialect()) {
+switch (getDialect().family()) {
 case ORACLE:
 {
       return (OracleDataType.NUMBER.getTypeName().equalsIgnoreCase(typeName) && precision == 0 && scale == 0);

@@ -42,7 +42,7 @@
       assertEquals("3","" + invoke(p391c,"getO2"));
     }
   }
-switch (dialect()) {
+switch (dialect().family()) {
 case ORACLE:
     Object result1a=invoke(cRoutines(),"f378",create().configuration(),null,null);
   assertEquals(null,invoke(result1a,"getIo"));

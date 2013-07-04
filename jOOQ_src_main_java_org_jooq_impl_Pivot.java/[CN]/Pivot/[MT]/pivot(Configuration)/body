@@ -1,6 +1,8 @@
 {
 switch (configuration.dialect()) {
 case ORACLE:
+case ORACLE11G:
+case ORACLE12C:
 {
       return new OraclePivotTable();
     }
