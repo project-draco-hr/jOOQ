@@ -1,0 +1,6 @@
+{
+  if (existsSqliteSequence == null) {
+    existsSqliteSequence=create().selectCount().from(SQLITE_MASTER).where(SQLiteMaster.NAME.lower().eq("sqlite_sequence")).fetchOne(0,boolean.class);
+  }
+  return existsSqliteSequence;
+}
