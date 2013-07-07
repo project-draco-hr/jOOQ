@@ -2,7 +2,7 @@
   ByteArrayOutputStream out=new ByteArrayOutputStream();
   copyLarge(in,out);
   String xml=out.toString();
-  xml=xml.replaceAll("<(\\w+:)?configuration xmlns(:\\w+)?=\"http://www.jooq.org/xsd/jooq-codegen-\\d+\\.\\d+\\.\\d+.xsd\">","<$1configuration xmlns$2=\"http://www.jooq.org/xsd/jooq-codegen-3.0.0.xsd\">");
-  xml=xml.replace("<configuration>","<configuration xmlns=\"http://www.jooq.org/xsd/jooq-codegen-3.0.0.xsd\">");
+  xml=xml.replaceAll("<(\\w+:)?configuration xmlns(:\\w+)?=\"http://www.jooq.org/xsd/jooq-codegen-\\d+\\.\\d+\\.\\d+.xsd\">","<$1configuration xmlns$2=\"http://www.jooq.org/xsd/jooq-codegen-3.2.0.xsd\">");
+  xml=xml.replace("<configuration>","<configuration xmlns=\"http://www.jooq.org/xsd/jooq-codegen-3.2.0.xsd\">");
   return JAXB.unmarshal(new StringReader(xml),Configuration.class);
 }
