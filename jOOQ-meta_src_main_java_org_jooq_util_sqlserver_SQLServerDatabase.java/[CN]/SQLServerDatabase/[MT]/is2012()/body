@@ -1,6 +1,12 @@
 {
   if (is2012 == null) {
-    is2012=create().selectCount().from(SEQUENCES).fetchOne(0,boolean.class);
+    try {
+      create().selectCount().from(SEQUENCES).fetch();
+      is2012=true;
+    }
+ catch (    DataAccessException e) {
+      is2012=false;
+    }
   }
   return is2012;
 }
