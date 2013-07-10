@@ -1,0 +1,4 @@
+{
+  super(delegate.toString());
+  this.delegate=delegate;
+}

@@ -1,5 +1,0 @@
-{
-  super(configuration);
-  this.sql=sql;
-  this.substitutes=Utils.queryParts(substitutes);
-}

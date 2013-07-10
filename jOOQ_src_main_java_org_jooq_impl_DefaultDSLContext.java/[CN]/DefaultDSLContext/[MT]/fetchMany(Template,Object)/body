@@ -1,0 +1,3 @@
+{
+  return resultQuery(template,parameters).fetchMany();
+}

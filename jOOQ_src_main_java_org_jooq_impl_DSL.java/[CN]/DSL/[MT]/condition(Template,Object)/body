@@ -1,0 +1,3 @@
+{
+  return new SQLCondition(queryPart(template,parameters));
+}

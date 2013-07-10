@@ -1,5 +1,5 @@
 {
   context.sql("(");
-  Utils.renderAndBind(context,null,sql,substitutes);
+  context.sql(delegate);
   context.sql(")");
 }
