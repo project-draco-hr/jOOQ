@@ -1,3 +1,0 @@
-{
-  new TemplateTests(this).testTextTemplates();
-}

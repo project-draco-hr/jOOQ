@@ -1,0 +1,3 @@
+org.jooq.Template template
+Class<T> type
+Object parameters

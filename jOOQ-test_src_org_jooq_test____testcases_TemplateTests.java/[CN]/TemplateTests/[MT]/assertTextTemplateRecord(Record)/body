@@ -1,5 +1,0 @@
-{
-  assertEquals(1,record.fields().length);
-  assertEquals("x",record.field(0).getName().toLowerCase());
-  assertEquals(1,(int)record.getValue(0,int.class));
-}
