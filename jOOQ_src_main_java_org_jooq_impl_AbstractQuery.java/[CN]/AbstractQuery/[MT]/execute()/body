@@ -27,7 +27,7 @@
       }
       if (executePreparedStatements(c.settings()) && !Boolean.TRUE.equals(ctx.data(DATA_FORCE_STATIC_STATEMENT))) {
         listener.bindStart(ctx);
-        create(c).bind(this,ctx.statement());
+        using(c).bindContext(ctx.statement()).bind(this);
         listener.bindEnd(ctx);
       }
       result=execute(ctx,listener);
