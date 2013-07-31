@@ -1,3 +1,3 @@
 {
-  return new DefaultConfiguration(connectionProvider,recordMapperProvider,listenerProviders,dialect,newSettings,data);
+  return new DefaultConfiguration(connectionProvider,recordMapperProvider,recordListenerProviders,executeListenerProviders,dialect,newSettings,data);
 }

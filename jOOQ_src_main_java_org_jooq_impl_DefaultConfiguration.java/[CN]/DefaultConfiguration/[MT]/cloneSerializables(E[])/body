@@ -1,0 +1,9 @@
+{
+  E[] clone=array.clone();
+  for (int i=0; i < clone.length; i++) {
+    if (!(clone[i] instanceof Serializable)) {
+      clone[i]=null;
+    }
+  }
+  return clone;
+}

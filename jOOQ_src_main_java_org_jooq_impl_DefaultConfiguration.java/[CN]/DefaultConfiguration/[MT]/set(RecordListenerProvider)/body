@@ -1,0 +1,4 @@
+{
+  this.recordListenerProviders=newRecordListenerProviders != null ? newRecordListenerProviders : new RecordListenerProvider[0];
+  return this;
+}
