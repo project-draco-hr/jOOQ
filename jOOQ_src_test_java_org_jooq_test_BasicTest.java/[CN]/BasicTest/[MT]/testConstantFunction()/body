@@ -25,9 +25,9 @@
     }
   }
 );
-  int i=b_decF().bind(f1).peekIndex();
-  int j=b_decF().bind(f2).peekIndex();
-  int k=b_decF().bind(f3).peekIndex();
+  int i=b_decF().visit(f1).peekIndex();
+  int j=b_decF().visit(f2).peekIndex();
+  int k=b_decF().visit(f3).peekIndex();
   assertEquals(2,i);
   assertEquals(2,j);
   assertEquals(2,k);

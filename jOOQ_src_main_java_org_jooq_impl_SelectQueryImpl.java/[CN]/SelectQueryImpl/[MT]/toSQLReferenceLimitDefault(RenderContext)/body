@@ -1,4 +1,4 @@
 {
   toSQLReference0(context);
-  context.sql(getLimit());
+  context.visit(getLimit());
 }

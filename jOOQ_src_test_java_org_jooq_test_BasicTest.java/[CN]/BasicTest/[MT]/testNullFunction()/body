@@ -8,7 +8,7 @@
     }
   }
 );
-  int i=b_ref().bind(f).peekIndex();
+  int i=b_ref().visit(f).peekIndex();
   assertEquals(2,i);
   context.assertIsSatisfied();
 }

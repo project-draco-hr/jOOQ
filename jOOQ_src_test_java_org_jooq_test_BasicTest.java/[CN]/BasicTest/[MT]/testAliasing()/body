@@ -24,12 +24,12 @@
     }
   }
 );
-  int f1=b_ref().bind(val(1).as("c1")).peekIndex();
-  int f2=b_decF().bind(val(2).as("c2")).peekIndex();
-  int f3=b_decT().bind(val(2).as("c2")).peekIndex();
-  int t1=b_ref().bind(create.select(val(3)).asTable("t1")).peekIndex();
-  int t2=b_decF().bind(create.select(val(4)).asTable("t2")).peekIndex();
-  int t3=b_decT().bind(create.select(val(4)).asTable("t2")).peekIndex();
+  int f1=b_ref().visit(val(1).as("c1")).peekIndex();
+  int f2=b_decF().visit(val(2).as("c2")).peekIndex();
+  int f3=b_decT().visit(val(2).as("c2")).peekIndex();
+  int t1=b_ref().visit(create.select(val(3)).asTable("t1")).peekIndex();
+  int t2=b_decF().visit(create.select(val(4)).asTable("t2")).peekIndex();
+  int t3=b_decT().visit(create.select(val(4)).asTable("t2")).peekIndex();
   assertEquals(1,f1);
   assertEquals(2,f2);
   assertEquals(1,f3);

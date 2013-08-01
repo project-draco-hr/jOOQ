@@ -3,7 +3,7 @@
     context.sql("[ no fields are inserted ]");
   }
  else   if (insertMaps.size() == 1 || insertMaps.get(1) == null) {
-    context.sql(insertMaps.get(0));
+    context.visit(insertMaps.get(0));
   }
  else {
 switch (context.configuration().dialect().family()) {

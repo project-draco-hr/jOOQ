@@ -1,3 +1,3 @@
 {
-  context.bind(pivot(context.configuration()));
+  context.visit(pivot(context.configuration()));
 }

@@ -12,7 +12,7 @@ case ASE:
 case SQLSERVER:
 {
       if (asList(ASE,SQLSERVER2008).contains(dialect) && getLimit().isApplicable() && getLimit().offsetZero()&& !getLimit().rendersParams()) {
-        context.sql(getLimit()).sql(" ");
+        context.visit(getLimit()).sql(" ");
       }
  else       if (dialect.family() == SQLSERVER && context.subquery() && !getOrderBy().isEmpty()) {
         if (dialect == SQLSERVER2008 || !getLimit().isApplicable()) {
@@ -24,7 +24,7 @@ case SQLSERVER:
 case SYBASE:
 {
     if (getLimit().isApplicable() && !getLimit().rendersParams()) {
-      context.sql(getLimit()).sql(" ");
+      context.visit(getLimit()).sql(" ");
     }
     break;
   }
@@ -37,30 +37,30 @@ if (context.subquery() && dialect == H2 && context.data(DATA_ROW_VALUE_EXPRESSIO
 Object data=context.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY);
 try {
 context.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY,null);
-context.sql("(").sql(getSelect1()).sql(")");
+context.sql("(").visit(getSelect1()).sql(")");
 }
   finally {
 context.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY,data);
 }
 }
  else {
-context.sql(getSelect1());
+context.visit(getSelect1());
 }
 if (limitOffsetRownumber != null) {
 ParamType paramType=context.paramType();
-context.paramType(INLINED).sql(",").formatIndentStart().formatSeparator().sql(limitOffsetRownumber).formatIndentEnd().paramType(paramType);
+context.paramType(INLINED).sql(",").formatIndentStart().formatSeparator().visit(limitOffsetRownumber).formatIndentEnd().paramType(paramType);
 }
 context.declareFields(false);
 context.declareTables(true);
 if (!context.render(getFrom()).isEmpty()) {
-context.formatSeparator().keyword("from ").sql(getFrom());
+context.formatSeparator().keyword("from ").visit(getFrom());
 if (grouping && getGroupBy().isEmpty() && asList(ASE,INGRES).contains(dialect)) {
 context.sql(", (select 1 as x) as empty_grouping_dummy_table");
 }
 }
 context.declareTables(false);
 if (!(getWhere().getWhere() instanceof TrueCondition)) {
-context.formatSeparator().keyword("where ").sql(getWhere());
+context.formatSeparator().keyword("where ").visit(getWhere());
 }
 if (!(getConnectBy().getWhere() instanceof TrueCondition)) {
 toSQLStartWith(context);
@@ -80,14 +80,14 @@ if (asList(ASE,INGRES).contains(dialect)) {
 }
 }
  else {
-context.sql(getGroupBy());
+context.visit(getGroupBy());
 }
 }
 if (!(getHaving().getWhere() instanceof TrueCondition)) {
-context.formatSeparator().keyword("having ").sql(getHaving());
+context.formatSeparator().keyword("having ").visit(getHaving());
 }
 if (!getOrderBy().isEmpty()) {
-context.formatSeparator().keyword("order ").keyword(orderBySiblings ? "siblings " : "").keyword("by ").sql(getOrderBy());
+context.formatSeparator().keyword("order ").keyword(orderBySiblings ? "siblings " : "").keyword("by ").visit(getOrderBy());
 }
  else if (getLimit().isApplicable() && asList(SQLSERVER,SQLSERVER2012).contains(dialect)) {
 context.formatSeparator().keyword("order by 1");

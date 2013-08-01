@@ -2,7 +2,7 @@
 switch (context.configuration().dialect()) {
 case HSQLDB:
 {
-      context.keyword("table(").sql(function).sql(")");
+      context.keyword("table(").visit(function).sql(")");
       break;
     }
 default :

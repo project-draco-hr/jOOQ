@@ -1,0 +1,19 @@
+{
+  if (part != null) {
+    QueryPartInternal internal=(QueryPartInternal)part;
+    if (declareFields() && !internal.declaresFields()) {
+      declareFields(false);
+      visit0(internal);
+      declareFields(true);
+    }
+ else     if (declareTables() && !internal.declaresTables()) {
+      declareTables(false);
+      visit0(internal);
+      declareTables(true);
+    }
+ else {
+      visit0(internal);
+    }
+  }
+  return (C)this;
+}

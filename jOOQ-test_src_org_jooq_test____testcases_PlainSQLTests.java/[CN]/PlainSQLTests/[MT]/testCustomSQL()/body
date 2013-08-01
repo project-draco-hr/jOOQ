@@ -27,7 +27,7 @@
     private static final long serialVersionUID=-629253722638033620L;
     @Override public void toSQL(    RenderContext context){
       context.configuration().data("Foo-Condition","Baz");
-      context.sql(IDx2);
+      context.visit(IDx2);
       context.sql(" > ");
       if (context.paramType() == INLINED) {
         context.sql("3");
@@ -38,7 +38,7 @@
     }
     @Override public void bind(    BindContext context){
       try {
-        context.bind(IDx2);
+        context.visit(IDx2);
         context.statement().setInt(context.nextIndex(),3);
       }
  catch (      SQLException e) {

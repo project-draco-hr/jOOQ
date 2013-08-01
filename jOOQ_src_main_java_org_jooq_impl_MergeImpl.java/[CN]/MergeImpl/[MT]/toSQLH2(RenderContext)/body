@@ -1,5 +1,5 @@
 {
-  context.keyword("merge into ").declareTables(true).sql(table).formatSeparator();
+  context.keyword("merge into ").declareTables(true).visit(table).formatSeparator();
   context.sql("(");
   Utils.fieldNames(context,getH2Fields());
   context.sql(")");
@@ -9,9 +9,9 @@
     context.sql(")");
   }
   if (h2Select != null) {
-    context.sql(" ").sql(h2Select);
+    context.sql(" ").visit(h2Select);
   }
  else {
-    context.keyword(" values (").sql(getH2Values()).sql(")");
+    context.keyword(" values (").visit(getH2Values()).sql(")");
   }
 }

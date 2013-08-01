@@ -12,7 +12,7 @@
     }
   }
 );
-  int i=b_ref().bind(c2).peekIndex();
+  int i=b_ref().visit(c2).peekIndex();
   assertEquals(3,i);
   context.assertIsSatisfied();
 }

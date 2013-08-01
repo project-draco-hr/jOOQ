@@ -11,9 +11,9 @@
     rhs=rhs.lower();
     op=(op == LIKE_IGNORE_CASE ? LIKE : NOT_LIKE);
   }
-  context.sql(lhs).sql(" ");
+  context.visit(lhs).sql(" ");
   boolean castRhs=(dialect == DB2 && rhs instanceof Concat);
-  context.keyword(op.toSQL()).sql(" ").keyword(castRhs ? "cast(" : "").sql(rhs).keyword(castRhs ? " as varchar(4000))" : "");
+  context.keyword(op.toSQL()).sql(" ").keyword(castRhs ? "cast(" : "").visit(rhs).keyword(castRhs ? " as varchar(4000))" : "");
   if (escape != null) {
     context.keyword(" escape '").sql(escape).sql("'");
   }

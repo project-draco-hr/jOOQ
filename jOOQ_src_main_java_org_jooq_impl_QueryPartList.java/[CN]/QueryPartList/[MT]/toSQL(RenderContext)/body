@@ -9,7 +9,7 @@
     for (    T queryPart : this) {
       context.sql(separator);
       if (indent)       context.formatNewLine();
-      context.sql(queryPart);
+      context.visit(queryPart);
       separator=", ";
     }
     if (indent)     context.formatIndentEnd();

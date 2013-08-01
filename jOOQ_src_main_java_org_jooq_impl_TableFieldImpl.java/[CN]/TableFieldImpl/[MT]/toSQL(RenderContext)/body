@@ -1,6 +1,6 @@
 {
   if (context.qualify()) {
-    context.sql(table);
+    context.visit(table);
     context.sql(".");
   }
   context.literal(getName());

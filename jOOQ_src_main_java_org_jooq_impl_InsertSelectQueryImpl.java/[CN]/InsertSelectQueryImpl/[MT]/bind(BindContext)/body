@@ -1,5 +1,5 @@
 {
-  context.bind(into);
-  context.bind(fields);
-  context.bind(select);
+  context.visit(into);
+  visitAll(context,fields);
+  context.visit(select);
 }

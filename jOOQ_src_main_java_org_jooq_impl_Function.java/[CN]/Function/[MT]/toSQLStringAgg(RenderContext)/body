@@ -4,16 +4,16 @@
   if (distinct) {
     context.keyword("distinct ");
   }
-  context.sql(((Field<?>)arguments.get(0)).cast(String.class));
+  context.visit(((Field<?>)arguments.get(0)).cast(String.class));
   if (arguments.size() > 1) {
     context.sql(", ");
-    context.sql(arguments.get(1));
+    context.visit(arguments.get(1));
   }
  else {
     context.sql(", ''");
   }
   if (!withinGroupOrderBy.isEmpty()) {
-    context.keyword(" order by ").sql(withinGroupOrderBy);
+    context.keyword(" order by ").visit(withinGroupOrderBy);
   }
   context.sql(")");
   toSQLOverClause(context);

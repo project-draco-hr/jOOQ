@@ -5,8 +5,8 @@
   Condition c2=FIELD_ID1.isNotNull();
   assertEquals("\"TABLE1\".\"ID1\" is not null",r_refI().render(c2));
   assertEquals("\"TABLE1\".\"ID1\" is not null",r_ref().render(c2));
-  int i=b_ref().bind(c1).peekIndex();
+  int i=b_ref().visit(c1).peekIndex();
   assertEquals(1,i);
-  int j=b_ref().bind(c2).peekIndex();
+  int j=b_ref().visit(c2).peekIndex();
   assertEquals(1,j);
 }

@@ -1,20 +1,3 @@
 {
-  if (part != null) {
-    checkForceInline(part);
-    QueryPartInternal internal=(QueryPartInternal)part;
-    if (declareFields() && !internal.declaresFields()) {
-      declareFields(false);
-      internal.toSQL(this);
-      declareFields(true);
-    }
- else     if (declareTables() && !internal.declaresTables()) {
-      declareTables(false);
-      internal.toSQL(this);
-      declareTables(true);
-    }
- else {
-      internal.toSQL(this);
-    }
-  }
-  return this;
+  return visit(part);
 }

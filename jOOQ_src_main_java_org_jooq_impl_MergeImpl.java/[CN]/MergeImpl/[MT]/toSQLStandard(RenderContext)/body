@@ -1,5 +1,5 @@
 {
-  context.keyword("merge into ").declareTables(true).sql(table).formatSeparator().keyword("using ").formatIndentStart().formatNewLine().sql(Utils.wrapInParentheses(context.render(using))).formatIndentEnd().declareTables(false);
+  context.keyword("merge into ").declareTables(true).visit(table).formatSeparator().keyword("using ").formatIndentStart().formatNewLine().sql(Utils.wrapInParentheses(context.render(using))).formatIndentEnd().declareTables(false);
 switch (context.configuration().dialect().family()) {
 case SQLSERVER:
 case SYBASE:
@@ -20,19 +20,19 @@ case SYBASE:
 }
 context.formatSeparator().keyword("on ").sql(Utils.wrapInParentheses(context.render(on)));
 if (matchedUpdate != null) {
-  context.formatSeparator().keyword("when matched then update set ").sql(matchedUpdate);
+  context.formatSeparator().keyword("when matched then update set ").visit(matchedUpdate);
 }
 if (matchedWhere != null) {
-  context.formatSeparator().keyword("where ").sql(matchedWhere);
+  context.formatSeparator().keyword("where ").visit(matchedWhere);
 }
 if (matchedDeleteWhere != null) {
-  context.formatSeparator().keyword("delete where ").sql(matchedDeleteWhere);
+  context.formatSeparator().keyword("delete where ").visit(matchedDeleteWhere);
 }
 if (notMatchedInsert != null) {
-  context.formatSeparator().sql("when not matched then insert ").sql(notMatchedInsert);
+  context.formatSeparator().sql("when not matched then insert ").visit(notMatchedInsert);
 }
 if (notMatchedWhere != null) {
-  context.formatSeparator().keyword("where ").sql(notMatchedWhere);
+  context.formatSeparator().keyword("where ").visit(notMatchedWhere);
 }
 switch (context.configuration().dialect().family()) {
 case SQLSERVER:

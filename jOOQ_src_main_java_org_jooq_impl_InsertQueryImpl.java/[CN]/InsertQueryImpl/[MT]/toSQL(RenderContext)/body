@@ -6,7 +6,7 @@ case MARIADB:
 case MYSQL:
 {
         toSQLInsert(context);
-        context.formatSeparator().keyword("on duplicate key update ").sql(updateMap);
+        context.formatSeparator().keyword("on duplicate key update ").visit(updateMap);
         break;
       }
 case H2:
@@ -19,7 +19,7 @@ case ORACLE:
 case SQLSERVER:
 case SYBASE:
 {
-    context.sql(toMerge(context.configuration()));
+    context.visit(toMerge(context.configuration()));
     break;
   }
 default :
@@ -40,7 +40,7 @@ FieldMapForUpdate update=new FieldMapForUpdate();
 Field<?> field=getInto().field(0);
 update.put(field,field);
 toSQLInsert(context);
-context.formatSeparator().keyword("on duplicate key update ").sql(update);
+context.formatSeparator().keyword("on duplicate key update ").visit(update);
 break;
 }
 case H2:
@@ -53,7 +53,7 @@ case ORACLE:
 case SQLSERVER:
 case SYBASE:
 {
-context.sql(toMerge(context.configuration()));
+context.visit(toMerge(context.configuration()));
 break;
 }
 default :

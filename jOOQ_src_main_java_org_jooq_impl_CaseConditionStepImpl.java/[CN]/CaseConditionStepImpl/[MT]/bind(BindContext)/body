@@ -1,9 +1,9 @@
 {
   for (int i=0; i < conditions.size(); i++) {
-    context.bind(conditions.get(i));
-    context.bind(results.get(i));
+    context.visit(conditions.get(i));
+    context.visit(results.get(i));
   }
   if (otherwise != null) {
-    context.bind(otherwise);
+    context.visit(otherwise);
   }
 }

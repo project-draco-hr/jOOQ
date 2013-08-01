@@ -1,3 +1,4 @@
 {
-  context.bind(keySet()).bind(values());
+  visitAll(context,keySet());
+  visitAll(context,values());
 }

@@ -1,6 +1,6 @@
 {
   if (name != null) {
-    ctx.sql(name);
+    ctx.visit(name);
   }
  else   if (term != null) {
     ctx.sql(term.translate(ctx.configuration().dialect()));

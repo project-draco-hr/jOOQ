@@ -4,7 +4,7 @@
     boolean simulateDerivedColumnList=false;
     if (fieldAliases != null && asList(CUBRID,FIREBIRD,SQLSERVER,SYBASE).contains(dialect.family()) && wrapped instanceof TableImpl) {
       @SuppressWarnings("unchecked") Select<Record> select=select(list(field("*"))).from(((Table<?>)wrapped).as(alias));
-      context.sql("(").formatIndentStart().formatNewLine().sql(select).formatIndentEnd().formatNewLine().sql(")");
+      context.sql("(").formatIndentStart().formatNewLine().visit(select).formatIndentEnd().formatNewLine().sql(")");
     }
  else     if (fieldAliases != null && asList(H2,MARIADB,MYSQL,ORACLE,SQLITE).contains(dialect.family())) {
       simulateDerivedColumnList=true;
@@ -13,7 +13,7 @@
         fields.add(field("null").as(fieldAlias));
       }
       Select<Record> select=select(fields).where(falseCondition()).unionAll(select(field("*")).from(((Table<?>)wrapped).as(alias)));
-      context.sql("(").formatIndentStart().formatNewLine().sql(select).formatIndentEnd().formatNewLine().sql(")");
+      context.sql("(").formatIndentStart().formatNewLine().visit(select).formatIndentEnd().formatNewLine().sql(")");
     }
  else {
       toSQLWrapped(context);

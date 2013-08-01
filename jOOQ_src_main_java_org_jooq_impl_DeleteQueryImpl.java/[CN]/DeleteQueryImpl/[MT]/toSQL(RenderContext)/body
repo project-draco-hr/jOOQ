@@ -3,12 +3,12 @@
   context.keyword("delete ");
   if (asList(MARIADB,MYSQL).contains(context.configuration().dialect())) {
     if (getFrom() instanceof TableAlias || (getFrom() instanceof TableImpl && ((TableImpl<R>)getFrom()).getAliasedTable() != null)) {
-      context.sql(getFrom()).sql(" ");
+      context.visit(getFrom()).sql(" ");
     }
   }
   context.keyword("from ");
-  context.declareTables(true).sql(getFrom()).declareTables(declare);
+  context.declareTables(true).visit(getFrom()).declareTables(declare);
   if (!(getWhere() instanceof TrueCondition)) {
-    context.formatSeparator().keyword("where ").sql(getWhere());
+    context.formatSeparator().keyword("where ").visit(getWhere());
   }
 }

@@ -1,0 +1,4 @@
+{
+  checkForceInline(internal);
+  internal.toSQL(this);
+}

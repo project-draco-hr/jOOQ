@@ -24,7 +24,7 @@ case DB2:
     context.sql(separator);
     context.sql(field.getName());
     context.sql("(");
-    context.sql(val(value.getValue(field)));
+    context.visit(val(value.getValue(field)));
     context.sql(")");
   }
   return;

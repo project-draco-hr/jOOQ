@@ -1,24 +1,24 @@
 {
-  context.keyword("update ").declareTables(true).sql(getInto()).declareTables(false).formatSeparator().keyword("set ");
+  context.keyword("update ").declareTables(true).visit(getInto()).declareTables(false).formatSeparator().keyword("set ");
   if (multiRow != null) {
     boolean qualify=context.qualify();
-    context.qualify(false).sql(multiRow).qualify(qualify).sql(" = ");
+    context.qualify(false).visit(multiRow).qualify(qualify).sql(" = ");
     if (multiValue != null && !asList(INGRES,ORACLE).contains(context.configuration().dialect().family())) {
-      context.sql(multiValue);
+      context.visit(multiValue);
     }
  else {
       Select<?> select=multiSelect;
       if (multiValue != null) {
         select=select(multiValue.fields());
       }
-      context.sql("(").formatIndentStart().formatNewLine().subquery(true).sql(select).subquery(false).formatIndentEnd().formatNewLine().sql(")");
+      context.sql("(").formatIndentStart().formatNewLine().subquery(true).visit(select).subquery(false).formatIndentEnd().formatNewLine().sql(")");
     }
   }
  else {
-    context.formatIndentLockStart().sql(updateMap).formatIndentLockEnd();
+    context.formatIndentLockStart().visit(updateMap).formatIndentLockEnd();
   }
   if (!(getWhere() instanceof TrueCondition)) {
-    context.formatSeparator().keyword("where ").sql(getWhere());
+    context.formatSeparator().keyword("where ").visit(getWhere());
   }
   toSQLReturning(context);
 }

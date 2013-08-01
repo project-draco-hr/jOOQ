@@ -3,7 +3,7 @@
   String separator="";
   for (  Field<?> field : fields.fields) {
     context.sql(separator);
-    context.sql(field);
+    context.visit(field);
     separator=", ";
   }
   context.sql(")");

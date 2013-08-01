@@ -1,17 +1,17 @@
 {
-  context.bind(getInto());
+  context.visit(getInto());
   if (multiRow != null) {
-    context.bind(multiRow);
+    context.visit(multiRow);
     if (multiValue != null) {
-      context.bind(multiValue);
+      context.visit(multiValue);
     }
  else {
-      context.subquery(true).bind(multiSelect).subquery(false);
+      context.subquery(true).visit(multiSelect).subquery(false);
     }
   }
  else {
-    context.bind(updateMap);
+    context.visit(updateMap);
   }
-  context.bind(condition);
+  context.visit(condition);
   bindReturning(context);
 }

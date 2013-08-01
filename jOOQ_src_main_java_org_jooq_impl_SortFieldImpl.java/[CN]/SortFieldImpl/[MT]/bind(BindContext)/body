@@ -11,9 +11,9 @@ case SQLITE:
 case SQLSERVER:
 case SYBASE:
 {
-        context.bind(field);
+        context.visit(field);
       }
   }
 }
-context.bind(field);
+context.visit(field);
 }

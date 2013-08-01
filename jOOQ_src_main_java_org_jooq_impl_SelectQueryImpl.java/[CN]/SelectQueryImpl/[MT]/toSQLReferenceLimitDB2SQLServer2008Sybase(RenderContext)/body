@@ -9,5 +9,5 @@
   local.subquery(true);
   toSQLReference0(local,rowNumber().over().orderBy(getNonEmptyOrderBy()).as(rownumName));
   String enclosed=local.render();
-  context.keyword("select * from (").formatIndentStart().formatNewLine().sql(enclosed).formatIndentEnd().formatNewLine().keyword(") as ").sql(name(subqueryName)).formatSeparator().keyword("where ").sql(name(rownumName)).sql(" > ").sql(getLimit().getLowerRownum()).formatSeparator().keyword("and ").sql(name(rownumName)).sql(" <= ").sql(getLimit().getUpperRownum());
+  context.keyword("select * from (").formatIndentStart().formatNewLine().sql(enclosed).formatIndentEnd().formatNewLine().keyword(") as ").visit(name(subqueryName)).formatSeparator().keyword("where ").visit(name(rownumName)).sql(" > ").visit(getLimit().getLowerRownum()).formatSeparator().keyword("and ").visit(name(rownumName)).sql(" <= ").visit(getLimit().getUpperRownum());
 }

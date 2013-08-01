@@ -10,7 +10,7 @@
     if (indent) {
       context.formatNewLine();
     }
-    context.sql(field);
+    context.visit(field);
     separator=", ";
   }
   if (indent) {

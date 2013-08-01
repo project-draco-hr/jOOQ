@@ -3,7 +3,7 @@
 switch (context.configuration().dialect()) {
 case FIREBIRD:
 case POSTGRES:
-      context.formatSeparator().keyword("returning ").sql(returning);
+      context.formatSeparator().keyword("returning ").visit(returning);
     break;
 default :
 }

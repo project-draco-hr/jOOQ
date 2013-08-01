@@ -3,7 +3,7 @@
     if (asList(ASE,CUBRID,DB2,H2,SQLSERVER,SYBASE).contains(context.configuration().dialect().family())) {
       String glue="on ";
       for (      Field<?> field : using) {
-        context.formatSeparator().keyword(glue).sql(lhs.field(field)).sql(" = ").sql(rhs.field(field));
+        context.formatSeparator().keyword(glue).visit(lhs.field(field)).sql(" = ").visit(rhs.field(field));
         glue="and ";
       }
     }
@@ -18,12 +18,12 @@
     for (    Field<?> field : lhs.fields()) {
       Field<?> other=rhs.field(field);
       if (other != null) {
-        context.formatSeparator().keyword(glue).sql(field).sql(" = ").sql(other);
+        context.formatSeparator().keyword(glue).visit(field).sql(" = ").visit(other);
         glue="and ";
       }
     }
   }
  else {
-    context.formatSeparator().keyword("on ").sql(condition);
+    context.formatSeparator().keyword("on ").visit(condition);
   }
 }

@@ -1,0 +1,8 @@
+{
+  if (parts != null) {
+    for (    QueryPart part : parts) {
+      ctx.visit(part);
+    }
+  }
+  return ctx;
+}

@@ -13,5 +13,5 @@
       }
     }
   }
-  context.sql(select);
+  context.visit(select);
 }

@@ -4,7 +4,7 @@
       context.formatSeparator().keyword(operator.toSQL(context.configuration().dialect())).formatSeparator();
     }
     wrappingParenthesis(context,"(");
-    context.sql(queries.get(i));
+    context.visit(queries.get(i));
     wrappingParenthesis(context,")");
   }
 }

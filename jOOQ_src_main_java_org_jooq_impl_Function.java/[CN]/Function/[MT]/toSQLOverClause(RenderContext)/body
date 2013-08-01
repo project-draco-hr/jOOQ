@@ -11,12 +11,12 @@
     if (partitionByOne && asList(CUBRID,SYBASE).contains(context.configuration().dialect())) {
     }
  else {
-      context.sql(glue).keyword("partition by ").sql(partitionBy);
+      context.sql(glue).keyword("partition by ").visit(partitionBy);
       glue=" ";
     }
   }
   if (!orderBy.isEmpty()) {
-    context.sql(glue).keyword("order by ").sql(orderBy);
+    context.sql(glue).keyword("order by ").visit(orderBy);
     glue=" ";
   }
   if (rowsStart != null) {

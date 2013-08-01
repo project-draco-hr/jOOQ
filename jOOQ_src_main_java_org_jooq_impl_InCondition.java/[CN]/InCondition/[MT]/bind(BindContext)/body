@@ -1,3 +1,4 @@
 {
-  context.bind(field).bind(values);
+  context.visit(field);
+  visitAll(context,values);
 }

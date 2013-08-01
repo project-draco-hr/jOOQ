@@ -11,7 +11,7 @@
       }
     }
 );
-    assertEquals(2,b_ref().bind(int_int).peekIndex());
+    assertEquals(2,b_ref().visit(int_int).peekIndex());
     context.assertIsSatisfied();
   }
 {
@@ -23,7 +23,7 @@
       }
     }
 );
-    assertEquals(2,b_ref().bind(string_string).peekIndex());
+    assertEquals(2,b_ref().visit(string_string).peekIndex());
     context.assertIsSatisfied();
   }
 {
@@ -35,7 +35,7 @@
       }
     }
 );
-    assertEquals(2,b_ref().bind(int_string).peekIndex());
+    assertEquals(2,b_ref().visit(int_string).peekIndex());
     context.assertIsSatisfied();
     Condition string_int=string.eq(1);
     assertEquals("\"TABLE1\".\"NAME1\" = '1'",r_refI().render(string_int));
@@ -45,7 +45,7 @@
       }
     }
 );
-    assertEquals(2,b_ref().bind(string_int).peekIndex());
+    assertEquals(2,b_ref().visit(string_int).peekIndex());
     context.assertIsSatisfied();
   }
 {
@@ -57,7 +57,7 @@
       }
     }
 );
-    assertEquals(2,b_ref().bind(object_int).peekIndex());
+    assertEquals(2,b_ref().visit(object_int).peekIndex());
     context.assertIsSatisfied();
   }
 {
@@ -69,7 +69,7 @@
       }
     }
 );
-    assertEquals(2,b_ref().bind(object_string).peekIndex());
+    assertEquals(2,b_ref().visit(object_string).peekIndex());
     context.assertIsSatisfied();
   }
 {
@@ -81,7 +81,7 @@
       }
     }
 );
-    assertEquals(2,b_ref().bind(object_date).peekIndex());
+    assertEquals(2,b_ref().visit(object_date).peekIndex());
     context.assertIsSatisfied();
   }
 }

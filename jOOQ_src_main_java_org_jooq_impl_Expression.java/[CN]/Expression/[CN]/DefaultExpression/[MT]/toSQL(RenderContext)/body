@@ -4,9 +4,9 @@
     op="#";
   }
   context.sql("(");
-  context.sql(lhs);
+  context.visit(lhs);
   for (  Field<?> field : rhs) {
-    context.sql(" ").sql(op).sql(" ").sql(field);
+    context.sql(" ").sql(op).sql(" ").visit(field);
   }
   context.sql(")");
 }

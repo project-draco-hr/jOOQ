@@ -1,8 +1,8 @@
 {
   if (context.subquery()) {
-    context.sql(field).sql(" ").keyword(comparator.toSQL()).sql(" (").formatIndentStart().formatNewLine().sql(query).formatIndentEnd().formatNewLine().sql(")");
+    context.visit(field).sql(" ").keyword(comparator.toSQL()).sql(" (").formatIndentStart().formatNewLine().visit(query).formatIndentEnd().formatNewLine().sql(")");
   }
  else {
-    context.sql(field).sql(" ").keyword(comparator.toSQL()).sql(" (").subquery(true).formatIndentStart().formatNewLine().sql(query).formatIndentEnd().formatNewLine().subquery(false).sql(")");
+    context.visit(field).sql(" ").keyword(comparator.toSQL()).sql(" (").subquery(true).formatIndentStart().formatNewLine().visit(query).formatIndentEnd().formatNewLine().subquery(false).sql(")");
   }
 }

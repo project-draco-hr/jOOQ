@@ -4,7 +4,7 @@
       bindH2(context);
     }
  else {
-      context.bind(getStandardMerge(context.configuration()));
+      context.visit(getStandardMerge(context.configuration()));
     }
   }
  else {

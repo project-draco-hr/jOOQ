@@ -4,7 +4,7 @@
       toSQLH2(context);
     }
  else {
-      context.sql(getStandardMerge(context.configuration()));
+      context.visit(getStandardMerge(context.configuration()));
     }
   }
  else {

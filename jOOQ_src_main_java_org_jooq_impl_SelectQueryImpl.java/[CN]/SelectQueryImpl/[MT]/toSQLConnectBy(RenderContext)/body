@@ -3,5 +3,5 @@
   if (connectByNoCycle) {
     context.keyword(" nocycle");
   }
-  context.sql(" ").sql(getConnectBy());
+  context.sql(" ").visit(getConnectBy());
 }

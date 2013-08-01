@@ -2,15 +2,15 @@
   Schema mappedSchema=Utils.getMappedSchema(context.configuration(),getSchema());
   if (context.qualify()) {
     if (mappedSchema != null) {
-      context.sql(mappedSchema);
+      context.visit(mappedSchema);
       context.sql(".");
     }
  else     if (getSchema() != null && context.configuration().dialect().family() == SQLSERVER) {
-      context.sql(getSchema());
+      context.visit(getSchema());
       context.sql(".");
     }
     if (getPackage() != null) {
-      context.sql(getPackage());
+      context.visit(getPackage());
       context.sql(".");
     }
   }

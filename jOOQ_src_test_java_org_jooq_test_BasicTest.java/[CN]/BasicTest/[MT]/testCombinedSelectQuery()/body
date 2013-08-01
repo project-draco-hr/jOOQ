@@ -21,7 +21,7 @@
     }
   }
 );
-  int i=b_ref().bind(combine).peekIndex();
+  int i=b_ref().visit(combine).peekIndex();
   assertEquals(3,i);
   context.assertIsSatisfied();
 }

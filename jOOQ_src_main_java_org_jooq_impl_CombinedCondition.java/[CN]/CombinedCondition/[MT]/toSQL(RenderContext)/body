@@ -1,9 +1,9 @@
 {
   if (conditions.isEmpty()) {
-    context.sql(trueCondition());
+    context.visit(trueCondition());
   }
  else   if (conditions.size() == 1) {
-    context.sql(conditions.get(0));
+    context.visit(conditions.get(0));
   }
  else {
     context.sql("(").formatIndentStart().formatNewLine();
@@ -14,7 +14,7 @@
         context.formatSeparator();
       }
       context.keyword(separator);
-      context.sql(conditions.get(i));
+      context.visit(conditions.get(i));
       separator=operatorName;
     }
     context.formatIndentEnd().formatNewLine().sql(")");

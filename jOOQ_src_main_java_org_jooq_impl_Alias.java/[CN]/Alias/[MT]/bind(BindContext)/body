@@ -1,6 +1,6 @@
 {
   if (context.declareFields() || context.declareTables()) {
-    context.bind(wrapped);
+    context.visit(wrapped);
   }
  else {
   }

@@ -1,4 +1,4 @@
 {
   boolean declareTables=context.declareFields();
-  context.declareTables(true).bind(table).declareTables(declareTables);
+  context.declareTables(true).visit(table).declareTables(declareTables);
 }

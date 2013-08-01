@@ -18,7 +18,7 @@
     }
   }
 );
-  int i=b_decF().bind(sum2).peekIndex();
+  int i=b_decF().visit(sum2).peekIndex();
   assertEquals(3,i);
   context.assertIsSatisfied();
 }

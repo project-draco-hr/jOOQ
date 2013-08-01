@@ -5,7 +5,7 @@
     String separator="";
     for (    Object object : array.get()) {
       context.sql(separator);
-      context.sql(val(object));
+      context.visit(val(object));
       separator=", ";
     }
     context.sql(")");

@@ -1,6 +1,3 @@
 {
-  if (parts != null) {
-    bind(Arrays.asList(parts));
-  }
-  return this;
+  return visitAll(this,parts);
 }

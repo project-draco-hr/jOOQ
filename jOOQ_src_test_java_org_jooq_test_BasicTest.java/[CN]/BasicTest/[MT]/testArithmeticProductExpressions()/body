@@ -18,7 +18,7 @@
     }
   }
 );
-  int i=b_decF().bind(product2).peekIndex();
+  int i=b_decF().visit(product2).peekIndex();
   assertEquals(3,i);
   context.assertIsSatisfied();
 }

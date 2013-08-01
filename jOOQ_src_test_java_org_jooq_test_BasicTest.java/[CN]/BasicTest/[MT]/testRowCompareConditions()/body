@@ -41,6 +41,6 @@
     }
   }
 );
-  assertEquals(19,b_ref().bind(row(1,"2",3,"4",5,"6",7,"8",9).eq(1,"2",3,"4",5,"6",7,"8",9)).peekIndex());
+  assertEquals(19,b_ref().visit(row(1,"2",3,"4",5,"6",7,"8",9).eq(1,"2",3,"4",5,"6",7,"8",9)).peekIndex());
   context.assertIsSatisfied();
 }

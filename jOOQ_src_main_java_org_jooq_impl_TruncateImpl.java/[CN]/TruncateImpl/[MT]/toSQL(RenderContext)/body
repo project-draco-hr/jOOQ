@@ -4,13 +4,13 @@ case FIREBIRD:
 case INGRES:
 case SQLITE:
 {
-      context.sql(create(context).delete(table));
+      context.visit(create(context).delete(table));
       break;
     }
 default :
 {
     context.keyword("truncate table ");
-    context.sql(table);
+    context.visit(table);
     if (context.configuration().dialect() == SQLDialect.DB2) {
       context.keyword(" immediate");
     }

@@ -5,6 +5,6 @@
   assertEquals("select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\", \"TABLE2\".\"ID2\", \"TABLE2\".\"NAME2\", \"TABLE2\".\"DATE2\" from \"TABLE1\" left outer join \"TABLE2\" on \"TABLE1\".\"ID1\" = \"TABLE2\".\"ID2\"",r_refI().render(q));
   assertEquals("select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\", \"TABLE2\".\"ID2\", \"TABLE2\".\"NAME2\", \"TABLE2\".\"DATE2\" from \"TABLE1\" left outer join \"TABLE2\" on \"TABLE1\".\"ID1\" = \"TABLE2\".\"ID2\"",r_ref().render(q));
   assertEquals(q,create.select().from(TABLE1).leftOuterJoin(TABLE2).on(FIELD_ID1.equal(FIELD_ID2)));
-  int i=b_ref().bind(q).peekIndex();
+  int i=b_ref().visit(q).peekIndex();
   assertEquals(1,i);
 }

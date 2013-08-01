@@ -28,13 +28,13 @@
  else     if (sqlChars[i] == '?' && substituteIndex < substitutes.size()) {
       QueryPart substitute=substitutes.get(substituteIndex++);
       if (render.paramType() == INLINED) {
-        render.sql(substitute);
+        render.visit(substitute);
       }
  else {
         render.sql(sqlChars[i]);
       }
       if (bind != null) {
-        bind.bind(substitute);
+        bind.visit(substitute);
       }
     }
  else     if (sqlChars[i] == '{') {
@@ -48,9 +48,9 @@
         String token=sql.substring(start,end);
         try {
           QueryPart substitute=substitutes.get(Integer.valueOf(token));
-          render.sql(substitute);
+          render.visit(substitute);
           if (bind != null) {
-            bind.bind(substitute);
+            bind.visit(substitute);
           }
         }
  catch (        NumberFormatException e) {

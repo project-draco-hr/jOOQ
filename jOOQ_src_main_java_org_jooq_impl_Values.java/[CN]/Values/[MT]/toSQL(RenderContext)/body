@@ -19,7 +19,7 @@ case H2:
           selects=selects.unionAll(select);
         }
       }
-      context.formatIndentStart().formatNewLine().subquery(true).sql(selects).subquery(subquery).formatIndentEnd().formatNewLine();
+      context.formatIndentStart().formatNewLine().subquery(true).visit(selects).subquery(subquery).formatIndentEnd().formatNewLine();
       break;
     }
 case CUBRID:
@@ -38,7 +38,7 @@ default :
       if (!firstRow) {
         context.sql(",").formatSeparator();
       }
-      context.sql(row);
+      context.visit(row);
       firstRow=false;
     }
     context.formatIndentLockEnd();

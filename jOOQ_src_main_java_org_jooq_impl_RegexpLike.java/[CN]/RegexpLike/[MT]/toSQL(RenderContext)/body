@@ -7,22 +7,22 @@ case MYSQL:
 case SQLITE:
 case SYBASE:
 {
-      context.sql(search).keyword(" regexp ").sql(pattern);
+      context.visit(search).keyword(" regexp ").visit(pattern);
       break;
     }
 case HSQLDB:
 {
-    context.sql(DSL.condition("{regexp_matches}({0}, {1})",search,pattern));
+    context.visit(DSL.condition("{regexp_matches}({0}, {1})",search,pattern));
     break;
   }
 case POSTGRES:
 {
-  context.sql(DSL.condition("{0} ~ {1}",search,pattern));
+  context.visit(DSL.condition("{0} ~ {1}",search,pattern));
   break;
 }
 case ORACLE:
 {
-context.sql(DSL.condition("{regexp_like}({0}, {1})",search,pattern));
+context.visit(DSL.condition("{regexp_like}({0}, {1})",search,pattern));
 break;
 }
 case ASE:
@@ -33,7 +33,7 @@ case INGRES:
 case SQLSERVER:
 default :
 {
-context.sql(search).keyword(" like_regex ").sql(pattern);
+context.visit(search).keyword(" like_regex ").visit(pattern);
 break;
 }
 }

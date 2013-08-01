@@ -1,3 +1,3 @@
 {
-  context.declareTables(true).bind(table).bind(using).declareTables(false).bind(on).bind(matchedUpdate).bind(matchedWhere).bind(matchedDeleteWhere).bind(notMatchedInsert).bind(notMatchedWhere);
+  context.declareTables(true).visit(table).visit(using).declareTables(false).visit(on).visit(matchedUpdate).visit(matchedWhere).visit(matchedDeleteWhere).visit(notMatchedInsert).visit(notMatchedWhere);
 }

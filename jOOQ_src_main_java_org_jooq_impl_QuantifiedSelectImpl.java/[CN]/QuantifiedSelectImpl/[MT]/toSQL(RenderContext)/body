@@ -1,8 +1,8 @@
 {
   if (context.subquery()) {
-    context.keyword(quantifier.toSQL()).sql(" (").formatIndentStart().formatNewLine().sql(part(context.configuration())).formatIndentEnd().formatNewLine().sql(")");
+    context.keyword(quantifier.toSQL()).sql(" (").formatIndentStart().formatNewLine().visit(part(context.configuration())).formatIndentEnd().formatNewLine().sql(")");
   }
  else {
-    context.keyword(quantifier.toSQL()).sql(" (").subquery(true).formatIndentStart().formatNewLine().sql(part(context.configuration())).formatIndentEnd().formatNewLine().subquery(false).sql(")");
+    context.keyword(quantifier.toSQL()).sql(" (").subquery(true).formatIndentStart().formatNewLine().visit(part(context.configuration())).formatIndentEnd().formatNewLine().subquery(false).sql(")");
   }
 }

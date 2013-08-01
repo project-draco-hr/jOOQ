@@ -10,7 +10,7 @@
     ctx.statement(connection.prepareCall(ctx.sql()));
     listener.prepareEnd(ctx);
     listener.bindStart(ctx);
-    using(configuration).bindContext(ctx.statement()).bind(this);
+    using(configuration).bindContext(ctx.statement()).visit(this);
     registerOutParameters(configuration,(CallableStatement)ctx.statement());
     listener.bindEnd(ctx);
     listener.executeStart(ctx);

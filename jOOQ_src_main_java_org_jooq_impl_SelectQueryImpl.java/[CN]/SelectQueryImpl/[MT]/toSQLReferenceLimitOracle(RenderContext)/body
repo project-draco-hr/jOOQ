@@ -4,5 +4,5 @@
   String enclosed=local.render();
   String subqueryName="limit_" + Utils.hash(enclosed);
   String rownumName="rownum_" + Utils.hash(enclosed);
-  context.keyword("select * from (").formatIndentStart().formatNewLine().keyword("select ").sql(name(subqueryName)).keyword(".*, rownum as ").sql(name(rownumName)).formatSeparator().keyword("from (").formatIndentStart().formatNewLine().sql(enclosed).formatIndentEnd().formatNewLine().sql(") ").sql(name(subqueryName)).formatSeparator().keyword("where rownum <= ").sql(getLimit().getUpperRownum()).formatIndentEnd().formatNewLine().sql(") ").formatSeparator().keyword("where ").sql(name(rownumName)).sql(" > ").sql(getLimit().getLowerRownum());
+  context.keyword("select * from (").formatIndentStart().formatNewLine().keyword("select ").visit(name(subqueryName)).keyword(".*, rownum as ").visit(name(rownumName)).formatSeparator().keyword("from (").formatIndentStart().formatNewLine().sql(enclosed).formatIndentEnd().formatNewLine().sql(") ").visit(name(subqueryName)).formatSeparator().keyword("where rownum <= ").visit(getLimit().getUpperRownum()).formatIndentEnd().formatNewLine().sql(") ").formatSeparator().keyword("where ").visit(name(rownumName)).sql(" > ").visit(getLimit().getLowerRownum());
 }

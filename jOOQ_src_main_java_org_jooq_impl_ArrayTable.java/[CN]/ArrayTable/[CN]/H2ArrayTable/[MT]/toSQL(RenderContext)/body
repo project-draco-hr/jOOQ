@@ -6,5 +6,5 @@
  else {
     context.keyword(array.getDataType().getTypeName());
   }
-  context.sql(" = ").sql(array).sql(")");
+  context.sql(" = ").visit(array).sql(")");
 }

@@ -4,12 +4,12 @@
   if (distinct) {
     context.keyword("distinct ");
   }
-  context.sql(arguments.get(0));
+  context.visit(arguments.get(0));
   if (!withinGroupOrderBy.isEmpty()) {
-    context.keyword(" order by ").sql(withinGroupOrderBy);
+    context.keyword(" order by ").visit(withinGroupOrderBy);
   }
   if (arguments.size() > 1) {
-    context.keyword(" separator ").sql(arguments.get(1));
+    context.keyword(" separator ").visit(arguments.get(1));
   }
   context.sql(")");
 }

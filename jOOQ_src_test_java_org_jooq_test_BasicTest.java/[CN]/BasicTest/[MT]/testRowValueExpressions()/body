@@ -81,6 +81,6 @@
     }
   }
 );
-  assertEquals(24,b_ref().bind(t23).peekIndex());
+  assertEquals(24,b_ref().visit(t23).peekIndex());
   context.assertIsSatisfied();
 }

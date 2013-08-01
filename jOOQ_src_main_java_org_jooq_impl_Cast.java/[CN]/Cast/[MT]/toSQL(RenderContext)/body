@@ -2,21 +2,21 @@
   CastMode castMode=context.castMode();
   if (context.configuration().dialect() == SQLDialect.DERBY) {
     if (field.getDataType().isNumeric() && VARCHAR.equals(getSQLDataType())) {
-      context.keyword("trim(cast(").keyword("cast(").castMode(CastMode.NEVER).sql(field).castMode(castMode).keyword(" as char(38))").keyword(" as ").keyword(getDataType(context.configuration()).getCastTypeName(context.configuration())).sql("))");
+      context.keyword("trim(cast(").keyword("cast(").castMode(CastMode.NEVER).visit(field).castMode(castMode).keyword(" as char(38))").keyword(" as ").keyword(getDataType(context.configuration()).getCastTypeName(context.configuration())).sql("))");
       return;
     }
  else     if (field.getDataType().isString() && asList(FLOAT,DOUBLE,REAL).contains(getSQLDataType())) {
-      context.keyword("cast(").keyword("cast(").castMode(CastMode.NEVER).sql(field).castMode(castMode).keyword(" as decimal)").keyword(" as ").keyword(getDataType(context.configuration()).getCastTypeName(context.configuration())).sql(")");
+      context.keyword("cast(").keyword("cast(").castMode(CastMode.NEVER).visit(field).castMode(castMode).keyword(" as decimal)").keyword(" as ").keyword(getDataType(context.configuration()).getCastTypeName(context.configuration())).sql(")");
       return;
     }
  else     if (field.getDataType().isNumeric() && BOOLEAN.equals(getSQLDataType())) {
-      context.sql(asDecodeNumberToBoolean());
+      context.visit(asDecodeNumberToBoolean());
       return;
     }
  else     if (field.getDataType().isString() && BOOLEAN.equals(getSQLDataType())) {
-      context.sql(asDecodeVarcharToBoolean());
+      context.visit(asDecodeVarcharToBoolean());
       return;
     }
   }
-  context.keyword("cast(").castMode(CastMode.NEVER).sql(field).castMode(castMode).keyword(" as ").keyword(getDataType(context.configuration()).getCastTypeName(context.configuration())).sql(")");
+  context.keyword("cast(").castMode(CastMode.NEVER).visit(field).castMode(castMode).keyword(" as ").keyword(getDataType(context.configuration()).getCastTypeName(context.configuration())).sql(")");
 }

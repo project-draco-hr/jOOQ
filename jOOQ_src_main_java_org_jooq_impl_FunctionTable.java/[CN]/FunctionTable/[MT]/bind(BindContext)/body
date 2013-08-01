@@ -1,7 +1,7 @@
 {
 switch (context.configuration().dialect()) {
 case HSQLDB:
-    context.bind(function);
+    context.visit(function);
   break;
 default :
 throw new SQLDialectNotSupportedException("FUNCTION TABLE is not supported for " + context.configuration().dialect());

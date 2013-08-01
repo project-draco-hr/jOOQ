@@ -1,5 +1,5 @@
 {
   if (!(getConnectByStartWith().getWhere() instanceof TrueCondition)) {
-    context.formatSeparator().keyword("start with ").sql(getConnectByStartWith());
+    context.formatSeparator().keyword("start with ").visit(getConnectByStartWith());
   }
 }

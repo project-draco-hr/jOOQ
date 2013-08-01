@@ -19,7 +19,7 @@
       for (int i=0; i < params.size(); i++) {
         params.get(i).setConverted(bindValues[i]);
       }
-      new DefaultBindContext(configuration,ctx.statement()).bind(params);
+      visitAll(new DefaultBindContext(configuration,ctx.statement()),params);
       listener.bindEnd(ctx);
       ctx.statement().addBatch();
     }

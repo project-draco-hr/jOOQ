@@ -13,12 +13,12 @@ case SYBASE:
 {
         Field<Integer> ifNull=nullsFirst ? zero() : one();
         Field<Integer> ifNotNull=nullsFirst ? one() : zero();
-        context.sql(nvl2(field,ifNotNull,ifNull)).sql(", ").sql(field).sql(" ").keyword(order.toSQL());
+        context.visit(nvl2(field,ifNotNull,ifNull)).sql(", ").visit(field).sql(" ").keyword(order.toSQL());
         break;
       }
 default :
 {
-      context.sql(field).sql(" ").keyword(order.toSQL());
+      context.visit(field).sql(" ").keyword(order.toSQL());
       if (nullsFirst) {
         context.keyword(" nulls first");
       }
@@ -30,6 +30,6 @@ default :
 }
 }
  else {
-context.sql(field).sql(" ").keyword(order.toSQL());
+context.visit(field).sql(" ").keyword(order.toSQL());
 }
 }

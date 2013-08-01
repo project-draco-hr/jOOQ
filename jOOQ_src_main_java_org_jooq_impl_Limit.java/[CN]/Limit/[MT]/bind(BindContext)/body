@@ -4,8 +4,8 @@ case DERBY:
 case SQLSERVER:
 case SQLSERVER2012:
 {
-      context.bind(offsetOrZero);
-      context.bind(numberOfRows);
+      context.visit(offsetOrZero);
+      context.visit(numberOfRows);
       break;
     }
 case MARIADB:
@@ -15,20 +15,20 @@ case H2:
 case POSTGRES:
 case SQLITE:
 {
-    context.bind(numberOfRows);
-    context.bind(offsetOrZero);
+    context.visit(numberOfRows);
+    context.visit(offsetOrZero);
     break;
   }
 case CUBRID:
 {
-  context.bind(offsetOrZero);
-  context.bind(numberOfRows);
+  context.visit(offsetOrZero);
+  context.visit(numberOfRows);
   break;
 }
 case FIREBIRD:
 {
-context.bind(getLowerRownum());
-context.bind(getUpperRownum());
+context.visit(getLowerRownum());
+context.visit(getUpperRownum());
 break;
 }
 case ASE:
@@ -41,8 +41,8 @@ case SYBASE:
 if (!rendersParams) {
 }
  else {
-context.bind(getLowerRownum());
-context.bind(getUpperRownum());
+context.visit(getLowerRownum());
+context.visit(getUpperRownum());
 }
 break;
 }
@@ -52,8 +52,8 @@ case SQLSERVER2008:
 if (offset == null && !rendersParams) {
 }
  else {
-context.bind(getLowerRownum());
-context.bind(getUpperRownum());
+context.visit(getLowerRownum());
+context.visit(getUpperRownum());
 }
 break;
 }
@@ -62,14 +62,14 @@ case ORACLE10G:
 case ORACLE11G:
 case ORACLE12C:
 {
-context.bind(getUpperRownum());
-context.bind(getLowerRownum());
+context.visit(getUpperRownum());
+context.visit(getLowerRownum());
 break;
 }
 default :
 {
-context.bind(numberOfRows);
-context.bind(offsetOrZero);
+context.visit(numberOfRows);
+context.visit(offsetOrZero);
 break;
 }
 }

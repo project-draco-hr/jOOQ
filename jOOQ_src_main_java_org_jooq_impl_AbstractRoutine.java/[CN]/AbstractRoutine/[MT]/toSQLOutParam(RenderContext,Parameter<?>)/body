@@ -1,7 +1,7 @@
 {
 switch (context.configuration().dialect().family()) {
 case ORACLE:
-    context.sql(parameter);
+    context.visit(parameter);
   context.sql(" => ");
 break;
 default :

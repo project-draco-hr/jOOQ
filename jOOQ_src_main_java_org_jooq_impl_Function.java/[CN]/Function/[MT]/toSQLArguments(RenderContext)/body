@@ -5,7 +5,7 @@
     context.keyword("distinct ");
   }
   if (!arguments.isEmpty()) {
-    context.sql(arguments);
+    context.visit(arguments);
   }
   if (ignoreNulls) {
     if (context.configuration().dialect() == SQLDialect.DB2) {

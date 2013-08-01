@@ -1,9 +1,9 @@
 {
-  context.bind(lhs).bind(rhs).bind((QueryPart)rhsPartitionBy);
+  context.visit(lhs).visit(rhs).visit(rhsPartitionBy);
   if (!using.isEmpty()) {
-    context.bind((QueryPart)using);
+    context.visit(using);
   }
  else {
-    context.bind(condition);
+    context.visit(condition);
   }
 }

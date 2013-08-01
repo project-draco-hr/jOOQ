@@ -1,9 +1,9 @@
 {
   if (comparator == NOT_EQUALS && asList(DB2).contains(context.configuration().dialect().family())) {
-    context.keyword("not(").sql(left).sql(" = ").sql(right).sql(")");
+    context.keyword("not(").visit(left).sql(" = ").visit(right).sql(")");
   }
  else {
     boolean extraParentheses=asList(ORACLE).contains(context.configuration().dialect().family());
-    context.sql(left).sql(" ").sql(comparator.toSQL()).sql(" ").sql(extraParentheses ? "(" : "").sql(right).sql(extraParentheses ? ")" : "");
+    context.visit(left).sql(" ").sql(comparator.toSQL()).sql(" ").sql(extraParentheses ? "(" : "").visit(right).sql(extraParentheses ? ")" : "");
   }
 }

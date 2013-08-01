@@ -5,6 +5,6 @@
   assertEquals("select distinct \"TABLE1\".\"ID1\", \"TABLE2\".\"ID2\" from dual",r_refI().render(q));
   assertEquals("select distinct \"TABLE1\".\"ID1\", \"TABLE2\".\"ID2\" from dual",r_ref().render(q));
   assertEquals(q,create.selectDistinct(FIELD_ID1,FIELD_ID2));
-  int i=b_ref().bind(q).peekIndex();
+  int i=b_ref().visit(q).peekIndex();
   assertEquals(1,i);
 }
