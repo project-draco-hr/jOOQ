@@ -4,7 +4,7 @@
   String s2="no SQL 'injection here; <<`'";
   String s3="''";
   String s4=(derby ? s1 : null);
-  String s5="no SQL \\'injection\\' in MySQL either";
+  String s5="no SQL \\injection\\ in MySQL either\\";
   Byte b1=Byte.valueOf("1");
   Byte b2=(derby ? b1 : null);
   Short sh1=Short.valueOf("2");
