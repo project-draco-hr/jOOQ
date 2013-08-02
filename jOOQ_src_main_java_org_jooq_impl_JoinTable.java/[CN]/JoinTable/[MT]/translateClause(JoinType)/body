@@ -1,0 +1,22 @@
+{
+switch (translatedType) {
+case JOIN:
+    return TABLE_JOIN_INNER;
+case CROSS_JOIN:
+  return TABLE_JOIN_CROSS;
+case NATURAL_JOIN:
+return TABLE_JOIN_NATURAL;
+case LEFT_OUTER_JOIN:
+return TABLE_JOIN_OUTER_LEFT;
+case RIGHT_OUTER_JOIN:
+return TABLE_JOIN_OUTER_RIGHT;
+case FULL_OUTER_JOIN:
+return TABLE_JOIN_OUTER_FULL;
+case NATURAL_LEFT_OUTER_JOIN:
+return TABLE_JOIN_NATURAL_OUTER_LEFT;
+case NATURAL_RIGHT_OUTER_JOIN:
+return TABLE_JOIN_NATURAL_OUTER_RIGHT;
+default :
+throw new IllegalArgumentException("Bad join type: " + translatedType);
+}
+}

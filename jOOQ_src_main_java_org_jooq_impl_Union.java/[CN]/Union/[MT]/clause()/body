@@ -1,0 +1,14 @@
+{
+switch (operator) {
+case EXCEPT:
+    return SELECT_EXCEPT;
+case INTERSECT:
+  return SELECT_INTERSECT;
+case UNION:
+return SELECT_UNION;
+case UNION_ALL:
+return SELECT_UNION_ALL;
+default :
+throw new IllegalArgumentException("Operator not supported : " + operator);
+}
+}

@@ -1,0 +1,6 @@
+{
+  visitParts.addLast(part);
+  for (  VisitListener listener : visitListeners) {
+    listener.visitStart(visitContext);
+  }
+}

@@ -1,0 +1,10 @@
+{
+  set(connectionProvider);
+  set(recordMapperProvider);
+  set(recordListenerProviders);
+  set(executeListenerProviders);
+  set(visitListenerProviders);
+  set(dialect);
+  set(settings);
+  this.data=data != null ? new ConcurrentHashMap<Object,Object>(data) : new ConcurrentHashMap<Object,Object>();
+}

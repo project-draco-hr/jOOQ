@@ -1,0 +1,10 @@
+{
+  if (context.clause() == Clause.DUMMY)   return;
+  if (clause == SELECT_WHERE) {
+    if (context.renderContext() != null) {
+      context.renderContext().sql(" ").keyword(where).sql(" ").sql("SecurityCode IN (1, 2, 3)");
+    }
+  }
+  clause=null;
+  indent-=2;
+}

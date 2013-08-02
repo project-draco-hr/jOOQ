@@ -1,0 +1,2 @@
+Clause clause
+Collection<? extends T> wrappedList

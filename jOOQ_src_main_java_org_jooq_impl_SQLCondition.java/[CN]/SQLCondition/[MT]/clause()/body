@@ -1,0 +1,6 @@
+{
+  if (delegate instanceof QueryPartInternal) {
+    return ((QueryPartInternal)delegate).clause();
+  }
+  return CONDITION;
+}

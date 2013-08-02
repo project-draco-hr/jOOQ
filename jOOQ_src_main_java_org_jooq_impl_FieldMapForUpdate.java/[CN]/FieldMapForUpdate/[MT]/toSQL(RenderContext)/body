@@ -8,7 +8,7 @@
       if (!"".equals(separator)) {
         context.formatNewLine();
       }
-      context.qualify(supportsQualify).visit(entry.getKey()).qualify(restoreQualify).sql(" = ").visit(entry.getValue());
+      context.start(UPDATE_SET_ASSIGNMENT).qualify(supportsQualify).visit(entry.getKey()).qualify(restoreQualify).sql(" = ").visit(entry.getValue()).end(UPDATE_SET_ASSIGNMENT);
       separator=", ";
     }
   }

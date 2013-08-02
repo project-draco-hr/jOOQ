@@ -1,0 +1,6 @@
+{
+  if (context.clause() == Clause.DUMMY)   return;
+  clause=context.clause();
+  indent+=2;
+  System.out.println(leftPad("+-",indent,"| ") + context.clause());
+}

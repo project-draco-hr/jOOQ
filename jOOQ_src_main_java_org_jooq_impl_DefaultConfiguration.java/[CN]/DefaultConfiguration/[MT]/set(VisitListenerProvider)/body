@@ -1,0 +1,4 @@
+{
+  this.visitListenerProviders=newVisitListenerProviders != null ? newVisitListenerProviders : new VisitListenerProvider[0];
+  return this;
+}

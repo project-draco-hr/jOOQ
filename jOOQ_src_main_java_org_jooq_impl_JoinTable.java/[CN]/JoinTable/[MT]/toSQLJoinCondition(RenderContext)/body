@@ -1,29 +1,45 @@
 {
   if (!using.isEmpty()) {
     if (asList(ASE,CUBRID,DB2,H2,SQLSERVER,SYBASE).contains(context.configuration().dialect().family())) {
-      String glue="on ";
+      boolean first=true;
       for (      Field<?> field : using) {
-        context.formatSeparator().keyword(glue).visit(lhs.field(field)).sql(" = ").visit(rhs.field(field));
-        glue="and ";
+        context.formatSeparator();
+        if (first) {
+          first=false;
+          context.start(TABLE_JOIN_ON).keyword("on");
+        }
+ else {
+          context.keyword("and");
+        }
+        context.sql(" ").visit(lhs.field(field)).sql(" = ").visit(rhs.field(field));
       }
+      context.end(TABLE_JOIN_ON);
     }
  else {
-      context.formatSeparator().keyword("using (");
+      context.formatSeparator().start(TABLE_JOIN_USING).keyword("using").sql("( ");
       Utils.fieldNames(context,using);
-      context.sql(")");
+      context.sql(")").end(TABLE_JOIN_USING);
     }
   }
  else   if (simulateNaturalJoin(context) || simulateNaturalLeftOuterJoin(context) || simulateNaturalRightOuterJoin(context)) {
-    String glue="on ";
+    boolean first=true;
     for (    Field<?> field : lhs.fields()) {
       Field<?> other=rhs.field(field);
       if (other != null) {
-        context.formatSeparator().keyword(glue).visit(field).sql(" = ").visit(other);
-        glue="and ";
+        context.formatSeparator();
+        if (first) {
+          first=false;
+          context.start(TABLE_JOIN_ON).keyword("on");
+        }
+ else {
+          context.keyword("and");
+        }
+        context.sql(" ").visit(field).sql(" = ").visit(other);
       }
     }
+    context.end(TABLE_JOIN_ON);
   }
  else {
-    context.formatSeparator().keyword("on ").visit(condition);
+    context.formatSeparator().start(TABLE_JOIN_ON).keyword("on").sql(" ").visit(condition).end(TABLE_JOIN_ON);
   }
 }

@@ -11,10 +11,10 @@ case SQLSERVER:
         for (int i=0; i < list.size(); i+=IN_LIMIT) {
           if (i > 0) {
             if (comparator == Comparator.IN) {
-              context.formatSeparator().keyword("or ");
+              context.formatSeparator().keyword("or").sql(" ");
             }
  else {
-              context.formatSeparator().keyword("and ");
+              context.formatSeparator().keyword("and").sql(" ");
             }
           }
           toSQLSubValues(context,list.subList(i,Math.min(i + IN_LIMIT,list.size())));

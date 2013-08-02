@@ -4,4 +4,5 @@
   recordMapperProvider=(RecordMapperProvider)ois.readObject();
   executeListenerProviders=(ExecuteListenerProvider[])ois.readObject();
   recordListenerProviders=(RecordListenerProvider[])ois.readObject();
+  visitListenerProviders=(VisitListenerProvider[])ois.readObject();
 }

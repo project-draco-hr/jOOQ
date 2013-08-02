@@ -1,6 +1,6 @@
 {
   if (h2Values == null) {
-    h2Values=new QueryPartList<Field<?>>();
+    h2Values=new QueryPartList<Field<?>>(DUMMY);
   }
   return h2Values;
 }

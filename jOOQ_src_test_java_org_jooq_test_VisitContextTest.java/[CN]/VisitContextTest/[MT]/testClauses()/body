@@ -1,0 +1,6 @@
+{
+  Configuration c=create.configuration().derive(providers(new ClausesListener()));
+  String sql=using(c).select(FIELD_ID1,FIELD_NAME1).from(select(FIELD_NAME1).from(TABLE1)).getSQL();
+  System.out.println();
+  System.out.println(sql);
+}

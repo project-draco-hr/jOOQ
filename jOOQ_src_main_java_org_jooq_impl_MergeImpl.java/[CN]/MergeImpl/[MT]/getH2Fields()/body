@@ -1,6 +1,6 @@
 {
   if (h2Fields == null) {
-    h2Fields=new QueryPartList<Field<?>>(table.fields());
+    h2Fields=new QueryPartList<Field<?>>(DUMMY,table.fields());
   }
   return h2Fields;
 }

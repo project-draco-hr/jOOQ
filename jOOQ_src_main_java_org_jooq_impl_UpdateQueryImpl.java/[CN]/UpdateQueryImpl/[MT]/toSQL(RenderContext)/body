@@ -1,8 +1,8 @@
 {
-  context.keyword("update ").declareTables(true).visit(getInto()).declareTables(false).formatSeparator().keyword("set ");
+  context.start(UPDATE_UPDATE).keyword("update").sql(" ").declareTables(true).visit(getInto()).declareTables(false).end(UPDATE_UPDATE).formatSeparator().start(UPDATE_SET).keyword("set").sql(" ");
   if (multiRow != null) {
     boolean qualify=context.qualify();
-    context.qualify(false).visit(multiRow).qualify(qualify).sql(" = ");
+    context.start(UPDATE_SET_ASSIGNMENT).qualify(false).visit(multiRow).qualify(qualify).sql(" = ");
     if (multiValue != null && !asList(INGRES,ORACLE).contains(context.configuration().dialect().family())) {
       context.visit(multiValue);
     }
@@ -13,12 +13,14 @@
       }
       context.sql("(").formatIndentStart().formatNewLine().subquery(true).visit(select).subquery(false).formatIndentEnd().formatNewLine().sql(")");
     }
+    context.end(UPDATE_SET_ASSIGNMENT);
   }
  else {
     context.formatIndentLockStart().visit(updateMap).formatIndentLockEnd();
   }
+  context.end(UPDATE_SET);
   if (!(getWhere() instanceof TrueCondition)) {
-    context.formatSeparator().keyword("where ").visit(getWhere());
+    context.formatSeparator().start(UPDATE_WHERE).keyword("where ").visit(getWhere()).end(UPDATE_WHERE);
   }
-  toSQLReturning(context);
+  toSQLReturning(context,UPDATE_RETURNING);
 }

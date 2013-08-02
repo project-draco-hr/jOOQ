@@ -1,5 +1,8 @@
 {
   if (part != null) {
+    Clause clause=visitListeners.length > 0 ? clause(part) : null;
+    if (clause != null)     start(clause);
+    start(part);
     QueryPartInternal internal=(QueryPartInternal)part;
     if (declareFields() && !internal.declaresFields()) {
       declareFields(false);
@@ -14,6 +17,8 @@
  else {
       visit0(internal);
     }
+    end(part);
+    if (clause != null)     end(clause);
   }
   return (C)this;
 }

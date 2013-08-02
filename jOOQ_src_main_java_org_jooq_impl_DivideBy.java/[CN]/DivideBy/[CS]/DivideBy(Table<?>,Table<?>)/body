@@ -2,5 +2,5 @@
   this.dividend=dividend;
   this.divisor=divisor;
   this.condition=new ConditionProviderImpl();
-  this.returning=new QueryPartList<Field<?>>();
+  this.returning=new QueryPartList<Field<?>>(DUMMY);
 }

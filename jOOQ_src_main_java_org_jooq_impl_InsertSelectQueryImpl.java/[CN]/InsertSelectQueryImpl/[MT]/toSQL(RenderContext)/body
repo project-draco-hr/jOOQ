@@ -1,5 +1,5 @@
 {
-  context.keyword("insert into ").visit(into).sql(" (");
+  context.keyword("insert into").sql(" ").visit(into).sql(" (");
   String separator="";
   for (  Field<?> field : fields) {
     context.sql(separator).literal(field.getName());

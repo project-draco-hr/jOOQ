@@ -1,0 +1,6 @@
+{
+  for (  VisitListener listener : visitListeners) {
+    listener.visitEnd(visitContext);
+  }
+  if (visitParts.removeLast() != part)   throw new RuntimeException("Mismatch between visited query parts");
+}

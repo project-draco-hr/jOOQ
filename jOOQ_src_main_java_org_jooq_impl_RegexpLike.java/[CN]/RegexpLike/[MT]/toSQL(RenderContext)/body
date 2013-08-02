@@ -7,7 +7,7 @@ case MYSQL:
 case SQLITE:
 case SYBASE:
 {
-      context.visit(search).keyword(" regexp ").visit(pattern);
+      context.visit(search).sql(" ").keyword("regexp").sql(" ").visit(pattern);
       break;
     }
 case HSQLDB:
@@ -33,7 +33,7 @@ case INGRES:
 case SQLSERVER:
 default :
 {
-context.visit(search).keyword(" like_regex ").visit(pattern);
+context.visit(search).sql(" ").keyword("like_regex").sql(" ").visit(pattern);
 break;
 }
 }

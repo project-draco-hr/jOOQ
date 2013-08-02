@@ -1,0 +1,3 @@
+{
+  this(new NoConnectionProvider(),new DefaultRecordMapperProvider(),new RecordListenerProvider[0],new ExecuteListenerProvider[0],new VisitListenerProvider[0],dialect,SettingsTools.defaultSettings(),null);
+}

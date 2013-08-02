@@ -1,7 +1,0 @@
-ConnectionProvider connectionProvider
-RecordMapperProvider recordMapperProvider
-RecordListenerProvider[] recordListenerProviders
-ExecuteListenerProvider[] executeListenerProviders
-SQLDialect dialect
-Settings settings
-Map<Object,Object> data

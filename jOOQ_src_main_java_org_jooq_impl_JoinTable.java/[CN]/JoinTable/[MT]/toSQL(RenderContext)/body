@@ -1,5 +1,7 @@
 {
-  context.visit(lhs).formatIndentStart().formatSeparator().keyword(translateType(context).toSQL()).sql(" ");
+  JoinType translatedType=translateType(context);
+  Clause translatedClause=translateClause(translatedType);
+  context.visit(lhs).formatIndentStart().formatSeparator().start(translatedClause).keyword(translatedType.toSQL()).sql(" ");
   if (rhs instanceof JoinTable) {
     context.sql("(").formatIndentStart().formatNewLine();
   }
@@ -8,10 +10,10 @@
     context.formatIndentEnd().formatNewLine().sql(")");
   }
   if (!rhsPartitionBy.isEmpty()) {
-    context.formatSeparator().keyword("partition by (").visit(rhsPartitionBy).sql(")");
+    context.formatSeparator().start(TABLE_JOIN_PARTITION_BY).keyword("partition by").sql(" (").visit(rhsPartitionBy).sql(")").end(TABLE_JOIN_PARTITION_BY);
   }
-  if (!asList(CROSS_JOIN,NATURAL_JOIN,NATURAL_LEFT_OUTER_JOIN,NATURAL_RIGHT_OUTER_JOIN).contains(translateType(context))) {
+  if (!asList(CROSS_JOIN,NATURAL_JOIN,NATURAL_LEFT_OUTER_JOIN,NATURAL_RIGHT_OUTER_JOIN).contains(translatedType)) {
     toSQLJoinCondition(context);
   }
-  context.formatIndentEnd();
+  context.end(translatedClause).formatIndentEnd();
 }

@@ -1,0 +1,3 @@
+{
+  this(clause,Arrays.asList(wrappedList));
+}

@@ -1,0 +1,6 @@
+{
+  if (part instanceof QueryPartInternal) {
+    return ((QueryPartInternal)part).clause();
+  }
+  return null;
+}
