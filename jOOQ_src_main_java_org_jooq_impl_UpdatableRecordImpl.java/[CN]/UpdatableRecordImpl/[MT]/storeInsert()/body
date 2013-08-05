@@ -1,26 +1,11 @@
 {
-  DSLContext create=create();
-  InsertQuery<R> insert=create.insertQuery(getTable());
-  addChangedValues(insert);
-  if (!insert.isExecutable())   return 0;
-  BigInteger version=addRecordVersion(insert);
-  Timestamp timestamp=addRecordTimestamp(insert);
-  Collection<Field<?>> key=null;
-  if (!TRUE.equals(create.configuration().data(Utils.DATA_OMIT_RETURNING_CLAUSE))) {
-    key=getReturning();
-    insert.setReturning(key);
-  }
-  int result=insert.execute();
-  if (result > 0) {
-    setRecordVersionAndTimestamp(version,timestamp);
-    if (key != null && !key.isEmpty()) {
-      if (insert.getReturnedRecord() != null) {
-        for (        Field<?> field : key) {
-          setValue(field,new Value<Object>(insert.getReturnedRecord().getValue(field)));
-        }
-      }
+  final int[] result=new int[1];
+  delegate(configuration(),(Record)this,INSERT).operate(new RecordOperation<Record,RuntimeException>(){
+    @Override public Record operate(    Record record) throws RuntimeException {
+      result[0]=storeInsert0();
+      return record;
     }
-    changed(false);
   }
-  return result;
+);
+  return result[0];
 }

@@ -1,21 +1,11 @@
 {
-  TableField<R,?>[] keys=getPrimaryKey().getFieldsArray();
-  try {
-    DeleteQuery<R> delete1=create().deleteQuery(getTable());
-    Utils.addConditions(delete1,this,keys);
-    if (isExecuteWithOptimisticLocking()) {
-      if (isTimestampOrVersionAvailable()) {
-        addConditionForVersionAndTimestamp(delete1);
-      }
- else {
-        checkIfChanged(keys);
-      }
+  final int[] result=new int[1];
+  delegate(configuration(),(Record)this,DELETE).operate(new RecordOperation<Record,RuntimeException>(){
+    @Override public Record operate(    Record record) throws RuntimeException {
+      result[0]=delete0();
+      return record;
     }
-    int result=delete1.execute();
-    checkIfChanged(result,null,null);
-    return result;
   }
-  finally {
-    changed(true);
-  }
+);
+  return result[0];
 }

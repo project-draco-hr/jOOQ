@@ -1,11 +1,3 @@
 {
-  final int[] result=new int[1];
-  delegate(configuration(),(Record)this,UPDATE).operate(new RecordOperation<Record,RuntimeException>(){
-    @Override public Record operate(    Record record) throws RuntimeException {
-      result[0]=storeUpdate(getPrimaryKey().getFieldsArray());
-      return record;
-    }
-  }
-);
-  return result[0];
+  return storeUpdate(getPrimaryKey().getFieldsArray());
 }

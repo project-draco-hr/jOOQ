@@ -1,22 +1,11 @@
 {
-  UpdateQuery<R> update=create().updateQuery(getTable());
-  addChangedValues(update);
-  Utils.addConditions(update,this,keys);
-  if (!update.isExecutable())   return 0;
-  BigInteger version=addRecordVersion(update);
-  Timestamp timestamp=addRecordTimestamp(update);
-  if (isExecuteWithOptimisticLocking()) {
-    if (isTimestampOrVersionAvailable()) {
-      addConditionForVersionAndTimestamp(update);
-    }
- else {
-      checkIfChanged(keys);
+  final int[] result=new int[1];
+  delegate(configuration(),(Record)this,UPDATE).operate(new RecordOperation<Record,RuntimeException>(){
+    @Override public Record operate(    Record record) throws RuntimeException {
+      result[0]=storeUpdate0(keys);
+      return record;
     }
   }
-  int result=update.execute();
-  checkIfChanged(result,version,timestamp);
-  if (result > 0) {
-    changed(false);
-  }
-  return result;
+);
+  return result[0];
 }
