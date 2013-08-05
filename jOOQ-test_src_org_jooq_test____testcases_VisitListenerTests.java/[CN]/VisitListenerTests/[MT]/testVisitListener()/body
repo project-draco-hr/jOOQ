@@ -1,0 +1,11 @@
+{
+  Result<?> result1=create(new OnlyAuthorIDEq1VisitListener()).select(TBook_ID()).from(TBook()).orderBy(TBook_ID()).fetch();
+  assertEquals(2,result1.size());
+  assertEquals(asList(1,2),result1.getValues(TBook_ID()));
+  Result<?> result2=create(new OnlyAuthorIDEq1VisitListener()).select(TBook_ID()).from(TBook()).where(TBook_ID().in(BOOK_IDS)).orderBy(TBook_ID()).fetch();
+  assertEquals(2,result2.size());
+  assertEquals(asList(1,2),result2.getValues(TBook_ID()));
+  Result<?> result3=create(new OnlyAuthorIDEq1VisitListener()).select(TBook_ID()).from(TBook().join(TAuthor()).on(TBook_AUTHOR_ID().eq(TAuthor_ID()))).orderBy(TBook_ID()).fetch();
+  assertEquals(2,result3.size());
+  assertEquals(asList(1,2),result3.getValues(TBook_ID()));
+}

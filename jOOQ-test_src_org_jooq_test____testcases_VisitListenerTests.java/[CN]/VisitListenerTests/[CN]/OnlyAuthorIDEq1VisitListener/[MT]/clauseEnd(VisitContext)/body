@@ -1,0 +1,14 @@
+{
+  if (context.renderContext() == null)   return;
+  if (context.clause() == SELECT_WHERE) {
+    if (TRUE.equals(context.data("book present"))) {
+      context.renderContext().sql(" ").keyword(TRUE.equals(context.data("where present")) ? "and" : "where").sql(" ");
+      if (TRUE.equals(context.data("author present"))) {
+        context.renderContext().visit(TAuthor_ID().eq(inline(1)));
+      }
+ else {
+        context.renderContext().visit(TBook_AUTHOR_ID().eq(inline(1)));
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  if (context.visiting() == TBook()) {
+    if (asList(context.clauses()).contains(Clause.SELECT_FROM)) {
+      context.data("book present",true);
+    }
+  }
+  if (context.visiting() == TAuthor()) {
+    if (asList(context.clauses()).contains(Clause.SELECT_FROM)) {
+      context.data("author present",true);
+    }
+  }
+  if (context.visiting() instanceof Condition) {
+    if (asList(context.clauses()).contains(Clause.SELECT_WHERE)) {
+      context.data("where present",true);
+    }
+  }
+}
