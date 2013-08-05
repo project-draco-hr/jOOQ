@@ -7,7 +7,7 @@ switch (c.dialect().family()) {
 case ORACLE:
 {
           if (sqlType == Types.STRUCT) {
-            UDTRecord<?> record=Utils.newRecord((Class<? extends UDTRecord<?>>)parameter.getType()).<RuntimeException>initialise(null);
+            UDTRecord<?> record=Utils.newRecord((Class<? extends UDTRecord<?>>)parameter.getType()).<RuntimeException>operate(null);
             statement.registerOutParameter(index,Types.STRUCT,record.getSQLTypeName());
           }
  else           if (sqlType == Types.ARRAY) {

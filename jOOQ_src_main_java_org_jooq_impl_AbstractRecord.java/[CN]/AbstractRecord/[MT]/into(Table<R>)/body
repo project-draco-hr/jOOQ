@@ -1,6 +1,6 @@
 {
-  return Utils.newRecord(table,configuration()).initialise(new RecordInitialiser<R,MappingException>(){
-    @Override public R initialise(    R record) throws MappingException {
+  return Utils.newRecord(table,configuration()).operate(new RecordOperation<R,MappingException>(){
+    @Override public R operate(    R record) throws MappingException {
       try {
         for (        Field<?> targetField : table.fields()) {
           Field<?> sourceField=field(targetField);

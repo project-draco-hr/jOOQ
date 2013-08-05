@@ -1,0 +1,71 @@
+{
+  RecordListenerProvider[] providers=null;
+  RecordListener[] listeners=null;
+  RecordContext ctx=null;
+  if (configuration != null) {
+    providers=configuration.recordListenerProviders();
+    if (providers != null) {
+      listeners=new RecordListener[providers.length];
+      ctx=new DefaultRecordContext(configuration,executeType(),record);
+      for (int i=0; i < providers.length; i++) {
+        listeners[i]=providers[i].provide();
+      }
+    }
+  }
+  if (listeners != null) {
+    for (    RecordListener listener : listeners) {
+switch (type) {
+case LOAD:
+        listener.loadStart(ctx);
+      break;
+case REFRESH:
+    listener.refreshStart(ctx);
+  break;
+case STORE:
+listener.storeStart(ctx);
+break;
+case INSERT:
+listener.insertStart(ctx);
+break;
+case UPDATE:
+listener.updateStart(ctx);
+break;
+case DELETE:
+listener.deleteStart(ctx);
+break;
+default :
+throw new IllegalStateException("Type not supported: " + type);
+}
+}
+}
+if (operation != null) {
+operation.operate(record);
+}
+if (listeners != null) {
+for (RecordListener listener : listeners) {
+switch (type) {
+case LOAD:
+listener.loadEnd(ctx);
+break;
+case REFRESH:
+listener.refreshEnd(ctx);
+break;
+case STORE:
+listener.storeEnd(ctx);
+break;
+case INSERT:
+listener.insertEnd(ctx);
+break;
+case UPDATE:
+listener.updateEnd(ctx);
+break;
+case DELETE:
+listener.deleteEnd(ctx);
+break;
+default :
+throw new IllegalStateException("Type not supported: " + type);
+}
+}
+}
+return record;
+}

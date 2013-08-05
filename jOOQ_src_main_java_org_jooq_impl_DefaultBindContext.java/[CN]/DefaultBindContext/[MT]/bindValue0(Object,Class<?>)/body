@@ -20,7 +20,7 @@
       stmt.setNull(nextIndex(),sqlType,typeName);
     }
  else     if (UDTRecord.class.isAssignableFrom(type)) {
-      String typeName=Utils.newRecord((Class<UDTRecord<?>>)type).<RuntimeException>initialise(null).getUDT().getName();
+      String typeName=Utils.newRecord((Class<UDTRecord<?>>)type).<RuntimeException>operate(null).getUDT().getName();
       stmt.setNull(nextIndex(),sqlType,typeName);
     }
  else     if (asList(POSTGRES,SYBASE).contains(configuration.dialect()) && sqlType == Types.BLOB) {

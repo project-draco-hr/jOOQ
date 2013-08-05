@@ -8,8 +8,8 @@
       }
       if (returning.size() == 1 && new Fields<Record>(returning).field(field) != null) {
         for (        final Number id : ids) {
-          getReturnedRecords().add(Utils.newRecord(into,configuration).initialise(new RecordInitialiser<R,RuntimeException>(){
-            @Override public R initialise(            R record) throws RuntimeException {
+          getReturnedRecords().add(Utils.newRecord(into,configuration).operate(new RecordOperation<R,RuntimeException>(){
+            @Override public R operate(            R record) throws RuntimeException {
               ((AbstractRecord)record).setValue(field,new Value<Number>(id));
               return record;
             }

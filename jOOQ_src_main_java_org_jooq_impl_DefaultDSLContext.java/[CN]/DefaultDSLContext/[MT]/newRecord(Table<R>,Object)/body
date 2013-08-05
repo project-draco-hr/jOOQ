@@ -1,6 +1,6 @@
 {
-  return Utils.newRecord(table,configuration).initialise(new RecordInitialiser<R,RuntimeException>(){
-    @Override public R initialise(    R record){
+  return Utils.newRecord(table,configuration).operate(new RecordOperation<R,RuntimeException>(){
+    @Override public R operate(    R record){
       record.from(source);
       return record;
     }

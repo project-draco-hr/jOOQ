@@ -1,11 +1,16 @@
 {
-  SelectQuery<?> select=create().selectQuery();
+  SelectQuery<Record> select=create().selectQuery();
   select.addSelect(f);
   select.addFrom(getTable());
   Utils.addConditions(select,this,getPrimaryKey().getFieldsArray());
   if (select.execute() == 1) {
-    AbstractRecord record=(AbstractRecord)select.getResult().get(0);
-    setValues(f,record);
+    delegate(configuration(),select.getResult().get(0),REFRESH).operate(new RecordOperation<Record,RuntimeException>(){
+      @Override public Record operate(      Record record) throws RuntimeException {
+        setValues(f,(AbstractRecord)record);
+        return record;
+      }
+    }
+);
   }
  else {
     throw new InvalidResultException("Exactly one row expected for refresh. Record does not exist in database.");

@@ -1,0 +1,8 @@
+{
+  jOOQAbstractTest.reset=false;
+  B book=create().selectFrom(TBook()).where(TBook_ID().eq(1)).fetchOne();
+  SimpleRecordListener listener1=new SimpleRecordListener();
+  book.attach(create(listener1).configuration());
+  book.refresh();
+  assertEquals(asList("loadStart","loadEnd","refreshStart","refreshEnd"),listener1.events);
+}
