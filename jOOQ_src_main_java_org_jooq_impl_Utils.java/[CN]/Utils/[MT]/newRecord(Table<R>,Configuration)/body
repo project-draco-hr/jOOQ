@@ -1,3 +1,3 @@
 {
-  return newRecord(type.getRecordType(),type.fields(),configuration);
+  return (RecordStub<R>)newRecord(type.getRecordType(),type.fields(),configuration);
 }

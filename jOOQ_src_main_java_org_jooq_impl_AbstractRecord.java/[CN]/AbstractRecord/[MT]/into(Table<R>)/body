@@ -1,27 +1,31 @@
 {
-  try {
-    R result=Utils.newRecord(table,configuration());
-    for (    Field<?> targetField : table.fields()) {
-      Field<?> sourceField=field(targetField);
-      if (sourceField != null) {
-        Utils.setValue(result,targetField,this,sourceField);
+  return Utils.newRecord(table,configuration()).initialise(new RecordInitialiser<R,MappingException>(){
+    @Override public R initialise(    R record) throws MappingException {
+      try {
+        for (        Field<?> targetField : table.fields()) {
+          Field<?> sourceField=field(targetField);
+          if (sourceField != null) {
+            Utils.setValue(record,targetField,AbstractRecord.this,sourceField);
+          }
+        }
+        if (record instanceof AbstractRecord) {
+          UniqueKey<?> key=((AbstractRecord)record).getPrimaryKey();
+          if (key != null) {
+            boolean isKeySet=true;
+            for (            Field<?> field : key.getFields()) {
+              isKeySet=isKeySet && (field(field) != null);
+            }
+            if (isKeySet) {
+              record.changed(false);
+            }
+          }
+        }
+        return record;
+      }
+ catch (      Exception e) {
+        throw new MappingException("An error ocurred when mapping record to " + table,e);
       }
     }
-    if (result instanceof AbstractRecord) {
-      UniqueKey<?> key=((AbstractRecord)result).getPrimaryKey();
-      if (key != null) {
-        boolean isKeySet=true;
-        for (        Field<?> field : key.getFields()) {
-          isKeySet=isKeySet && (field(field) != null);
-        }
-        if (isKeySet) {
-          result.changed(false);
-        }
-      }
-    }
-    return result;
   }
- catch (  Exception e) {
-    throw new MappingException("An error ocurred when mapping record to " + table,e);
-  }
+);
 }

@@ -1,0 +1,3 @@
+{
+  return records != null && records.length > 0 ? records[0] : null;
+}

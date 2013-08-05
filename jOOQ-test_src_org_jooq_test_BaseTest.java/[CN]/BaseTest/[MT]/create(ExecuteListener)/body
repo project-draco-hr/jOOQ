@@ -1,5 +1,3 @@
 {
-  ExecuteListenerProvider[] providers=new ExecuteListenerProvider[listeners.length];
-  for (int i=0; i < listeners.length; i++)   providers[i]=new DefaultExecuteListenerProvider(listeners[i]);
-  return create(create().configuration().derive(providers));
+  return create(create().configuration().derive(DefaultExecuteListenerProvider.providers(listeners)));
 }

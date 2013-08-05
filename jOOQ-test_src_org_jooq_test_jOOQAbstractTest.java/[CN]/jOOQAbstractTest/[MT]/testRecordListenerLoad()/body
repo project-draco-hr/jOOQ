@@ -1,0 +1,3 @@
+{
+  new RecordListenerTests(this).testRecordListenerLoad();
+}

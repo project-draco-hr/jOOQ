@@ -1,8 +1,12 @@
 {
-  AbstractRecord result=Utils.newRecord(getClass(),fields.fields.fields,configuration());
-  Value<?>[] v=getValues();
-  for (int i=0; i < v.length; i++) {
-    result.setValue(i,new Value<Object>(v[i].getOriginal()));
+  return Utils.newRecord((Class<AbstractRecord>)getClass(),fields.fields.fields,configuration()).initialise(new RecordInitialiser<AbstractRecord,RuntimeException>(){
+    @Override public AbstractRecord initialise(    AbstractRecord record) throws RuntimeException {
+      Value<?>[] v=getValues();
+      for (int i=0; i < v.length; i++) {
+        record.setValue(i,new Value<Object>(v[i].getOriginal()));
+      }
+      return record;
+    }
   }
-  return result;
+);
 }

@@ -1,10 +1,20 @@
 {
-  R copy=create().newRecord(getTable());
-  List<TableField<R,?>> key=getPrimaryKey().getFields();
-  for (  Field<?> field : fields.fields.fields) {
-    if (!key.contains(field)) {
-      setValue(copy,field);
+  return Utils.newRecord(getTable(),configuration()).initialise(new RecordInitialiser<R,RuntimeException>(){
+    @Override public R initialise(    R copy) throws RuntimeException {
+      List<TableField<R,?>> key=getPrimaryKey().getFields();
+      for (      Field<?> field : fields.fields.fields) {
+        if (!key.contains(field)) {
+          setValue(copy,field);
+        }
+      }
+      return copy;
+    }
+    /** 
+ * Extracted method to ensure generic type safety.
+ */
+    private final <T>void setValue(    Record record,    Field<T> field){
+      record.setValue(field,getValue(field));
     }
   }
-  return copy;
+);
 }

@@ -6,17 +6,7 @@
         rs.updateObject(1,rs.getObject(1));
         rs.updateRow();
       }
-      record=(AbstractRecord)Utils.newRecord(type,fields,ctx.configuration());
-      ctx.record(record);
-      listener.recordStart(ctx);
-      for (int i=0; i < fields.length; i++) {
-        setValue(record,fields[i],i);
-        if (intern[i]) {
-          record.getValue0(i).intern();
-        }
-      }
-      ctx.record(record);
-      listener.recordEnd(ctx);
+      record=Utils.newRecord((Class<AbstractRecord>)type,fields,ctx.configuration()).initialise(initialiser);
     }
   }
  catch (  SQLException e) {
