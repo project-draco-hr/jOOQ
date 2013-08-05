@@ -1,21 +1,11 @@
 {
-  TableField<R,?>[] keys=getPrimaryKey().getFieldsArray();
-  boolean executeUpdate=false;
-  for (  TableField<R,?> field : keys) {
-    if (getValue(field) == null || getValue0(field).isChanged()) {
-      executeUpdate=false;
-      break;
-    }
- else {
-      executeUpdate=true;
+  final int[] result=new int[1];
+  delegate(configuration(),(Record)this,STORE).operate(new RecordOperation<Record,RuntimeException>(){
+    @Override public Record operate(    Record record) throws RuntimeException {
+      result[0]=store0();
+      return record;
     }
   }
-  int result=0;
-  if (executeUpdate) {
-    result=storeUpdate(keys);
-  }
- else {
-    result=storeInsert();
-  }
-  return result;
+);
+  return result[0];
 }

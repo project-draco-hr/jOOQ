@@ -1,3 +1,11 @@
 {
-  return storeInsert();
+  final int[] result=new int[1];
+  delegate(configuration(),(Record)this,INSERT).operate(new RecordOperation<Record,RuntimeException>(){
+    @Override public Record operate(    Record record) throws RuntimeException {
+      result[0]=storeInsert();
+      return record;
+    }
+  }
+);
+  return result[0];
 }
