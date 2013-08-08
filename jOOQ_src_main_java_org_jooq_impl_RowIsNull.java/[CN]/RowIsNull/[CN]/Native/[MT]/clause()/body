@@ -1,3 +1,0 @@
-{
-  return isNull ? CONDITION_NULL : CONDITION_NULL_NOT;
-}

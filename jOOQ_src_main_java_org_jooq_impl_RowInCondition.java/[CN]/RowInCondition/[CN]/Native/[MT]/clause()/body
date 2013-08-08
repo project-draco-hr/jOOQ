@@ -1,3 +1,0 @@
-{
-  return comparator == IN ? CONDITION_IN : CONDITION_IN_NOT;
-}

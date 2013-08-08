@@ -1,0 +1,3 @@
+{
+  return comparator == IN ? CLAUSES_IN : CLAUSES_IN_NOT;
+}
