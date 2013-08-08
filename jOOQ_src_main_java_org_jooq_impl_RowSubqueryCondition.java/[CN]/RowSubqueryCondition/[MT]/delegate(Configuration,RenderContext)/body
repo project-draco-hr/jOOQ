@@ -10,7 +10,7 @@
     return new Native();
   }
  else {
-    String table=context == null ? "t" : context.nextAlias();
+    String table=ctx == null ? "t" : ctx.nextAlias();
     List<String> names=new ArrayList<String>();
     for (int i=0; i < left.size(); i++) {
       names.add(table + "_" + i);

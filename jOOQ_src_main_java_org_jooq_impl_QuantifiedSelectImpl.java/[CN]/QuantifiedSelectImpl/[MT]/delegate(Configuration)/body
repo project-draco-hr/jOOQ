@@ -1,0 +1,19 @@
+{
+  if (query != null) {
+    return (QueryPartInternal)query;
+  }
+ else {
+switch (ctx.dialect()) {
+case POSTGRES:
+{
+        return (QueryPartInternal)array;
+      }
+case H2:
+case HSQLDB:
+default :
+{
+      return (QueryPartInternal)create(ctx).select().from(table(array));
+    }
+}
+}
+}

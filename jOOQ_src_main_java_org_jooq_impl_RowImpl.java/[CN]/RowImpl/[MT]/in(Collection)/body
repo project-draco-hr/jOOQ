@@ -1,4 +1,4 @@
 {
-  QueryPartList<Row> list=new QueryPartList<Row>(DUMMY,rows);
+  QueryPartList<Row> list=new QueryPartList<Row>(rows);
   return new RowInCondition(this,list,Comparator.IN);
 }

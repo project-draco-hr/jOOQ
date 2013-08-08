@@ -1,6 +1,5 @@
 {
   super();
-  this.clause=clause;
   this.wrappedList=new ArrayList<T>();
   if (wrappedList != null) {
     addAll(wrappedList);

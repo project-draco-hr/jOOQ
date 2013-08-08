@@ -2,5 +2,5 @@
   super(operator.toSQL(),lhs.getDataType(),Utils.combine(lhs,rhs));
   this.operator=operator;
   this.lhs=lhs;
-  this.rhs=new QueryPartList<Field<?>>(DUMMY,rhs);
+  this.rhs=new QueryPartList<Field<?>>(rhs);
 }

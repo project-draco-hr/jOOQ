@@ -3,9 +3,9 @@
   this.term=term;
   this.name=null;
   this.distinct=distinct;
-  this.arguments=new QueryPartList<QueryPart>(DUMMY,arguments);
+  this.arguments=new QueryPartList<QueryPart>(arguments);
   this.keepDenseRankOrderBy=new SortFieldList();
   this.withinGroupOrderBy=new SortFieldList();
-  this.partitionBy=new QueryPartList<Field<?>>(DUMMY);
+  this.partitionBy=new QueryPartList<Field<?>>();
   this.orderBy=new SortFieldList();
 }

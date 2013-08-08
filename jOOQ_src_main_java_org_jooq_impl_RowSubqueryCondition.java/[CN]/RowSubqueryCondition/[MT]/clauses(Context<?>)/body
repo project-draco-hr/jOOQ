@@ -1,3 +1,3 @@
 {
-  return new Clause[]{DUMMY};
+  return delegate(ctx.configuration(),null).clauses(ctx);
 }

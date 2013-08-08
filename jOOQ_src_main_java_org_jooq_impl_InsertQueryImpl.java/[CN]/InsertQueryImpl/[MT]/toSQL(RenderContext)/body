@@ -6,7 +6,7 @@ case MARIADB:
 case MYSQL:
 {
         toSQLInsert(context);
-        context.formatSeparator().keyword("on duplicate key update ").visit(updateMap);
+        context.formatSeparator().keyword("on duplicate key update").sql(" ").visit(updateMap);
         break;
       }
 case H2:
@@ -36,11 +36,11 @@ break;
 }
 case CUBRID:
 {
-FieldMapForUpdate update=new FieldMapForUpdate();
+FieldMapForUpdate update=new FieldMapForUpdate(INSERT_ON_DUPLICATE_KEY_UPDATE_ASSIGNMENT);
 Field<?> field=getInto().field(0);
 update.put(field,field);
 toSQLInsert(context);
-context.formatSeparator().keyword("on duplicate key update ").visit(update);
+context.formatSeparator().keyword("on duplicate key update").sql(" ").visit(update);
 break;
 }
 case H2:

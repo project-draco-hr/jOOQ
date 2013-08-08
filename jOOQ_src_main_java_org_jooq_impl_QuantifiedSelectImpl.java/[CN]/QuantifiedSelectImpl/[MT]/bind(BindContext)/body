@@ -1,8 +1,8 @@
 {
-  if (context.subquery()) {
-    context.visit(part(context.configuration()));
+  if (ctx.subquery()) {
+    ctx.visit(delegate(ctx.configuration()));
   }
  else {
-    context.subquery(true).visit(part(context.configuration())).subquery(false);
+    ctx.subquery(true).visit(delegate(ctx.configuration())).subquery(false);
   }
 }
