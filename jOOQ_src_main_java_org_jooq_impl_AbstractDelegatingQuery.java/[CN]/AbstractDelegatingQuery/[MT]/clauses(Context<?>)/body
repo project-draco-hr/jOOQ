@@ -1,6 +1,3 @@
 {
-  if (delegate instanceof QueryPartInternal) {
-    return ((QueryPartInternal)delegate).clauses(null);
-  }
   return null;
 }
