@@ -1,0 +1,3 @@
+{
+  return delegate(ctx.configuration()).clauses(ctx);
+}
