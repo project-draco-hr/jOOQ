@@ -1,6 +1,6 @@
 {
-  if (part instanceof QueryPartInternal) {
-    return ((QueryPartInternal)part).clause();
+  if (part instanceof QueryPartInternal && data(DATA_OMIT_CLAUSE_EVENT_EMISSION) == null) {
+    return ((QueryPartInternal)part).clauses();
   }
   return null;
 }

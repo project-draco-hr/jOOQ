@@ -1,3 +1,0 @@
-{
-  return operator == AND ? CONDITION_AND : CONDITION_OR;
-}

@@ -1,0 +1,11 @@
+{
+  if (!returning.isEmpty()) {
+switch (context.configuration().dialect()) {
+case FIREBIRD:
+case POSTGRES:
+      context.formatSeparator().keyword("returning").sql(" ").visit(returning);
+    break;
+default :
+}
+}
+}

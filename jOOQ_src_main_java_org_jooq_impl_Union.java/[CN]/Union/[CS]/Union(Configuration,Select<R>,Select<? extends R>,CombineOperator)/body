@@ -4,4 +4,20 @@
   this.queries.add(query1);
   this.queries.add(query2);
   this.operator=operator;
+switch (operator) {
+case EXCEPT:
+    this.clauses=new Clause[]{SELECT_EXCEPT};
+  break;
+case INTERSECT:
+this.clauses=new Clause[]{SELECT_INTERSECT};
+break;
+case UNION:
+this.clauses=new Clause[]{SELECT_UNION};
+break;
+case UNION_ALL:
+this.clauses=new Clause[]{SELECT_UNION_ALL};
+break;
+default :
+throw new IllegalArgumentException("Operator not supported : " + operator);
+}
 }

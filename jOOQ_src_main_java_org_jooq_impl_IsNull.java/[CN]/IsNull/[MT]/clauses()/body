@@ -1,0 +1,3 @@
+{
+  return isNull ? CLAUSES_NULL : CLAUSES_NULL_NOT;
+}

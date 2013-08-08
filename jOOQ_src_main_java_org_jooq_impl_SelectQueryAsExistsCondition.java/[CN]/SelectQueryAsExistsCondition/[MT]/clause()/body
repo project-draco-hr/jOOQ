@@ -1,3 +1,0 @@
-{
-  return operator == EXISTS ? CONDITION_EXISTS : CONDITION_EXISTS_NOT;
-}

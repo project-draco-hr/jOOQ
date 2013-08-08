@@ -1,0 +1,4 @@
+{
+  listener=new SimpleListener();
+  ctx=DSL.using(create.configuration().derive(providers(listener)));
+}

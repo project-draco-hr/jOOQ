@@ -18,9 +18,11 @@
  else {
     context.formatIndentLockStart().visit(updateMap).formatIndentLockEnd();
   }
-  context.end(UPDATE_SET);
+  context.end(UPDATE_SET).start(UPDATE_WHERE);
   if (!(getWhere() instanceof TrueCondition)) {
-    context.formatSeparator().start(UPDATE_WHERE).keyword("where ").visit(getWhere()).end(UPDATE_WHERE);
+    context.formatSeparator().keyword("where ").visit(getWhere());
   }
-  toSQLReturning(context,UPDATE_RETURNING);
+  context.end(UPDATE_WHERE).start(UPDATE_RETURNING);
+  toSQLReturning(context);
+  context.end(UPDATE_RETURNING);
 }
