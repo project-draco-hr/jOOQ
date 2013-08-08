@@ -1,6 +1,6 @@
 {
   if (delegate instanceof QueryPartInternal) {
-    return ((QueryPartInternal)delegate).clauses(null);
+    return ((QueryPartInternal)delegate).clauses(ctx);
   }
   return null;
 }
