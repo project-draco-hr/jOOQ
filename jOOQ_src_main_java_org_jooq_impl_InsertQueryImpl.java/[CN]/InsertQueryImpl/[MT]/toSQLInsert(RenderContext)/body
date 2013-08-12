@@ -1,5 +1,7 @@
 {
-  context.start(INSERT_INSERT_INTO).keyword("insert").sql(" ").keyword((onDuplicateKeyIgnore && asList(MARIADB,MYSQL).contains(context.configuration().dialect())) ? "ignore " : "").keyword("into").sql(" ").visit(getInto()).end(INSERT_INSERT_INTO).sql(" ").visit(insertMaps);
+  context.start(INSERT_INSERT_INTO).keyword("insert").sql(" ").keyword((onDuplicateKeyIgnore && asList(MARIADB,MYSQL).contains(context.configuration().dialect())) ? "ignore " : "").keyword("into").sql(" ").visit(getInto()).sql(" ");
+  insertMaps.insertMaps.get(0).toSQLReferenceKeys(context);
+  context.sql(" ").end(INSERT_INSERT_INTO).visit(insertMaps);
   context.start(INSERT_RETURNING);
   toSQLReturning(context);
   context.end(INSERT_RETURNING);

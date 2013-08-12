@@ -3,7 +3,7 @@
     context.sql("[ no fields are inserted ]");
   }
  else   if (insertMaps.size() == 1 || insertMaps.get(1) == null) {
-    context.visit(insertMaps.get(0));
+    context.formatSeparator().start(INSERT_VALUES).keyword("values").sql(" ").visit(insertMaps.get(0)).end(INSERT_VALUES);
   }
  else {
 switch (context.configuration().dialect().family()) {
@@ -17,7 +17,9 @@ case SQLITE:
   context.end(INSERT_SELECT);
 break;
 default :
+context.formatSeparator().start(INSERT_VALUES).keyword("values").sql(" ");
 toSQL92Values(context);
+context.end(INSERT_VALUES);
 break;
 }
 }

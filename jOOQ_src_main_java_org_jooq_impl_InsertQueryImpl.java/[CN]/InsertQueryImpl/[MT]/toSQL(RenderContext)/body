@@ -6,7 +6,7 @@ case MARIADB:
 case MYSQL:
 {
         toSQLInsert(context);
-        context.formatSeparator().keyword("on duplicate key update").sql(" ").visit(updateMap);
+        context.formatSeparator().start(INSERT_ON_DUPLICATE_KEY_UPDATE).keyword("on duplicate key update").sql(" ").visit(updateMap).end(INSERT_ON_DUPLICATE_KEY_UPDATE);
         break;
       }
 case H2:

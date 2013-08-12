@@ -29,7 +29,9 @@ if (matchedDeleteWhere != null) {
   context.formatSeparator().keyword("delete where").sql(" ").visit(matchedDeleteWhere);
 }
 if (notMatchedInsert != null) {
-  context.formatSeparator().keyword("when not matched then insert").sql(" ").visit(notMatchedInsert);
+  context.formatSeparator().keyword("when not matched then insert").sql(" ");
+  notMatchedInsert.toSQLReferenceKeys(context);
+  context.formatSeparator().keyword("values").sql(" ").visit(notMatchedInsert);
 }
 if (notMatchedWhere != null) {
   context.formatSeparator().keyword("where").sql(" ").visit(notMatchedWhere);
