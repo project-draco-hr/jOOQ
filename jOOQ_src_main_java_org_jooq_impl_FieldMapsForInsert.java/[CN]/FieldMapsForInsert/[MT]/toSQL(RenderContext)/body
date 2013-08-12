@@ -12,10 +12,12 @@ case FIREBIRD:
 case INGRES:
 case ORACLE:
 case SQLITE:
-      toSQLInsertSelect(context);
-    break;
+      context.start(INSERT_SELECT);
+    toSQLInsertSelect(context);
+  context.end(INSERT_SELECT);
+break;
 default :
-  toSQL92Values(context);
+toSQL92Values(context);
 break;
 }
 }

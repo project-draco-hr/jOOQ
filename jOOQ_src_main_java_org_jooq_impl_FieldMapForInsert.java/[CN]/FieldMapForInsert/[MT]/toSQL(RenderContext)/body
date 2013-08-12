@@ -1,5 +1,6 @@
 {
   toSQLReferenceKeys(context);
-  context.formatSeparator().keyword("values ");
+  context.formatSeparator().start(INSERT_VALUES).keyword("values").sql(" ");
   toSQLReferenceValues(context);
+  context.end(INSERT_VALUES);
 }
