@@ -20,7 +20,7 @@
   }
   context.end(UPDATE_SET).start(UPDATE_WHERE);
   if (!(getWhere() instanceof TrueCondition)) {
-    context.formatSeparator().keyword("where ").visit(getWhere());
+    context.formatSeparator().keyword("where").sql(" ").visit(getWhere());
   }
   context.end(UPDATE_WHERE).start(UPDATE_RETURNING);
   toSQLReturning(context);

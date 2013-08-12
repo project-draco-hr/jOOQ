@@ -1,12 +1,12 @@
 {
-  context.keyword("merge into ").declareTables(true).visit(table).formatSeparator().keyword("using ").formatIndentStart().formatNewLine().sql(Utils.wrapInParentheses(context.render(using))).formatIndentEnd().declareTables(false);
+  context.keyword("merge into").sql(" ").declareTables(true).visit(table).formatSeparator().keyword("using").sql(" ").formatIndentStart().formatNewLine().sql(Utils.wrapInParentheses(context.render(using))).formatIndentEnd().declareTables(false);
 switch (context.configuration().dialect().family()) {
 case SQLSERVER:
 case SYBASE:
 {
       if (using instanceof Select) {
         int hash=Utils.hash(using);
-        context.keyword(" as ").sql("dummy_").sql(hash).sql("(");
+        context.sql(" ").keyword("as").sql(" ").sql("dummy_").sql(hash).sql("(");
         String separator="";
         for (        Field<?> field : ((Select<?>)using).fields()) {
           String name=StringUtils.isBlank(field.getName()) ? "dummy_" + hash + "_"+ Utils.hash(field) : field.getName();
@@ -18,21 +18,21 @@ case SYBASE:
       break;
     }
 }
-context.formatSeparator().keyword("on ").sql(Utils.wrapInParentheses(context.render(on)));
+context.formatSeparator().keyword("on").sql(" ").sql(Utils.wrapInParentheses(context.render(on)));
 if (matchedUpdate != null) {
-  context.formatSeparator().keyword("when matched then update set ").visit(matchedUpdate);
+  context.formatSeparator().keyword("when matched then update set").sql(" ").visit(matchedUpdate);
 }
 if (matchedWhere != null) {
-  context.formatSeparator().keyword("where ").visit(matchedWhere);
+  context.formatSeparator().keyword("where").sql(" ").visit(matchedWhere);
 }
 if (matchedDeleteWhere != null) {
-  context.formatSeparator().keyword("delete where ").visit(matchedDeleteWhere);
+  context.formatSeparator().keyword("delete where").sql(" ").visit(matchedDeleteWhere);
 }
 if (notMatchedInsert != null) {
-  context.formatSeparator().sql("when not matched then insert ").visit(notMatchedInsert);
+  context.formatSeparator().keyword("when not matched then insert").sql(" ").visit(notMatchedInsert);
 }
 if (notMatchedWhere != null) {
-  context.formatSeparator().keyword("where ").visit(notMatchedWhere);
+  context.formatSeparator().keyword("where").sql(" ").visit(notMatchedWhere);
 }
 switch (context.configuration().dialect().family()) {
 case SQLSERVER:

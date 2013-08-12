@@ -51,11 +51,11 @@ toSQLReference0(context);
 if (forUpdate && !asList(CUBRID,SQLSERVER).contains(context.configuration().dialect().family())) {
 context.formatSeparator().keyword("for update");
 if (!forUpdateOf.isEmpty()) {
-context.keyword(" of ");
+context.sql(" ").keyword("of").sql(" ");
 Utils.fieldNames(context,forUpdateOf);
 }
  else if (!forUpdateOfTables.isEmpty()) {
-context.keyword(" of ");
+context.sql(" ").keyword("of").sql(" ");
 switch (context.configuration().dialect().family()) {
 case DB2:
 case DERBY:

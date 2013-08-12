@@ -1,5 +1,5 @@
 {
   if (!withinGroupOrderBy.isEmpty()) {
-    context.keyword(" within group (order by ").visit(withinGroupOrderBy).sql(")");
+    context.sql(" ").keyword("within group").sql(" (").keyword("order by").sql(" ").visit(withinGroupOrderBy).sql(")");
   }
 }

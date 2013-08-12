@@ -2,7 +2,7 @@
   toSQLFunctionName(context);
   context.sql("(");
   if (distinct) {
-    context.keyword("distinct ");
+    context.keyword("distinct").sql(" ");
   }
   context.visit(((Field<?>)arguments.get(0)).cast(String.class));
   if (arguments.size() > 1) {
@@ -13,7 +13,7 @@
     context.sql(", ''");
   }
   if (!withinGroupOrderBy.isEmpty()) {
-    context.keyword(" order by ").visit(withinGroupOrderBy);
+    context.sql(" ").keyword("order by").sql(" ").visit(withinGroupOrderBy);
   }
   context.sql(")");
   toSQLOverClause(context);

@@ -9,10 +9,10 @@ case SQLITE:
     }
 default :
 {
-    context.keyword("truncate table ");
+    context.keyword("truncate table").sql(" ");
     context.visit(table);
     if (context.configuration().dialect() == SQLDialect.DB2) {
-      context.keyword(" immediate");
+      context.sql(" ").keyword("immediate");
     }
     break;
   }

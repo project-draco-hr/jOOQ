@@ -1,5 +1,5 @@
 {
   if (asList(DERBY,HSQLDB,MARIADB,MYSQL,POSTGRES).contains(context.configuration().dialect())) {
-    context.keyword(" as");
+    context.sql(" ").keyword("as");
   }
 }

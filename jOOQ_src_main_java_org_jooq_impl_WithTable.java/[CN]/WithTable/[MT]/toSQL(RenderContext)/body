@@ -1,3 +1,3 @@
 {
-  context.visit(delegate).keyword(" with ").sql("(").sql(hint).sql(")");
+  context.visit(delegate).sql(" ").keyword("with").sql(" (").sql(hint).sql(")");
 }

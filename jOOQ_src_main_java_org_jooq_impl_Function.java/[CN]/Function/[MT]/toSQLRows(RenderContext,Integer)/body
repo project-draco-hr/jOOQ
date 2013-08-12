@@ -7,11 +7,11 @@
   }
  else   if (rows < 0) {
     context.sql(-rows);
-    context.keyword(" preceding");
+    context.sql(" ").keyword("preceding");
   }
  else   if (rows > 0) {
     context.sql(rows);
-    context.keyword(" following");
+    context.sql(" ").keyword("following");
   }
  else {
     context.keyword("current row");
