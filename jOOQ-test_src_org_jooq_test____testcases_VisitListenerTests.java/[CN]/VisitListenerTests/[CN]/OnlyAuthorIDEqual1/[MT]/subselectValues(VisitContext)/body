@@ -1,0 +1,3 @@
+{
+  return subselectValueMap(context).get(nestingLevel(context,0));
+}

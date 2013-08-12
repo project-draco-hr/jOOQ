@@ -1,0 +1,11 @@
+{
+  Integer level=(Integer)context.data(Key.NESTING_LEVEL);
+  if (level == null) {
+    level=0;
+  }
+  if (increase == -1)   subselectValueMap(context).remove(level);
+  level+=increase;
+  if (increase != 0)   context.data(Key.NESTING_LEVEL,level);
+  if (increase == 1)   subselectValueMap(context).put(level,EnumSet.noneOf(Value.class));
+  return level;
+}

@@ -1,0 +1,17 @@
+{
+  if (context.visiting() == TBook()) {
+    if (subselectClauses(context).contains(Clause.SELECT_FROM)) {
+      subselectValues(context).add(Value.SUBSELECT_SELECTS_FROM_BOOK);
+    }
+  }
+  if (context.visiting() == TAuthor()) {
+    if (subselectClauses(context).contains(Clause.SELECT_FROM)) {
+      subselectValues(context).add(Value.SUBSELECT_SELECTS_FROM_AUTHOR);
+    }
+  }
+  if (context.visiting() instanceof Condition) {
+    if (subselectClauses(context).contains(Clause.SELECT_WHERE)) {
+      subselectValues(context).add(Value.SUBSELECT_HAS_WHERE_CLAUSE_PREDICATES);
+    }
+  }
+}

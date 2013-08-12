@@ -1,0 +1,6 @@
+{
+  if (context.renderContext() == null)   return;
+  if (context.clause() == SELECT) {
+    nestingLevel(context,1);
+  }
+}

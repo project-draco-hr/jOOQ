@@ -1,0 +1,4 @@
+{
+  List<Clause> result=asList(context.clauses());
+  return result.subList(result.lastIndexOf(SELECT),result.size() - 1);
+}

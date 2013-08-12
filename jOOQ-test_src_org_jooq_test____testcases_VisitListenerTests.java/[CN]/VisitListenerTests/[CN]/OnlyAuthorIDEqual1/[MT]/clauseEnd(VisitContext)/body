@@ -1,0 +1,17 @@
+{
+  if (context.renderContext() == null)   return;
+  if (context.clause() == SELECT_WHERE) {
+    if (subselectValues(context).contains(Value.SUBSELECT_SELECTS_FROM_BOOK) || subselectValues(context).contains(Value.SUBSELECT_SELECTS_FROM_AUTHOR)) {
+      context.renderContext().sql(" ").keyword(subselectValues(context).contains(Value.SUBSELECT_HAS_WHERE_CLAUSE_PREDICATES) ? "and" : "where").sql(" ");
+      if (subselectValues(context).contains(Value.SUBSELECT_SELECTS_FROM_AUTHOR)) {
+        context.renderContext().visit(TAuthor_ID().eq(inline(1)));
+      }
+ else {
+        context.renderContext().visit(TBook_AUTHOR_ID().eq(inline(1)));
+      }
+    }
+  }
+  if (context.clause() == SELECT) {
+    nestingLevel(context,-1);
+  }
+}
