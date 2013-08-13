@@ -1,0 +1,4 @@
+{
+  ctx.renderContext().declareTables(true).render(TABLE1.as("x"));
+  assertEvents(asList(asList(TABLE),asList(TABLE,TABLE_ALIAS),asList(TABLE,TABLE_ALIAS,TABLE),asList(TABLE,TABLE_ALIAS,TABLE,TABLE_REFERENCE)));
+}

@@ -1,0 +1,4 @@
+{
+  ctx.renderContext().declareFields(true).render(FIELD_ID1.as("x"));
+  assertEvents(asList(asList(FIELD),asList(FIELD,FIELD_ALIAS),asList(FIELD,FIELD_ALIAS,FIELD),asList(FIELD,FIELD_ALIAS,FIELD,FIELD_REFERENCE)));
+}

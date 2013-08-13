@@ -1,3 +1,10 @@
 {
-  return new Clause[]{DUMMY};
+  if (ctx.declareFields() || ctx.declareTables()) {
+    if (wrapped instanceof Table)     return CLAUSES_TABLE_ALIAS;
+ else     return CLAUSES_FIELD_ALIAS;
+  }
+ else {
+    if (wrapped instanceof Table)     return CLAUSES_TABLE_REFERENCE;
+ else     return CLAUSES_FIELD_REFERENCE;
+  }
 }
