@@ -1,5 +1,5 @@
 {
-  if (clause != null && clause != DUMMY) {
+  if (clause != null) {
     for (    VisitListener listener : visitListeners) {
       listener.clauseEnd(visitContext);
     }
