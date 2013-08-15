@@ -1,7 +1,9 @@
 {
   String separator="";
   for (  String name : qualifiedName) {
-    context.sql(separator).literal(name);
-    separator=".";
+    if (!StringUtils.isEmpty(name)) {
+      context.sql(separator).literal(name);
+      separator=".";
+    }
   }
 }
