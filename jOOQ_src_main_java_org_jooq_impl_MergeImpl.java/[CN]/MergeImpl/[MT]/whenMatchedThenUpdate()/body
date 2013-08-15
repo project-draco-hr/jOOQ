@@ -1,6 +1,6 @@
 {
   matchedClause=true;
-  matchedUpdate=new FieldMapForUpdate(MERGE_WHEN_MATCHED_THEN_UPDATE_SET_ASSIGNMENT);
+  matchedUpdate=new FieldMapForUpdate(MERGE_SET_ASSIGNMENT);
   notMatchedClause=false;
   return this;
 }
