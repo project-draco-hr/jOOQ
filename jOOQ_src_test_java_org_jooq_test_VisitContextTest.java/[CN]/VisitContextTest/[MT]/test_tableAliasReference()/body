@@ -1,4 +1,3 @@
 {
-  ctx.render(TABLE1.as("x"));
-  assertEvents(asList(asList(TABLE),asList(TABLE,TABLE_REFERENCE)));
+  assertEvents(asList(asList(TABLE),asList(TABLE,TABLE_REFERENCE)),TABLE1.as("x"));
 }
