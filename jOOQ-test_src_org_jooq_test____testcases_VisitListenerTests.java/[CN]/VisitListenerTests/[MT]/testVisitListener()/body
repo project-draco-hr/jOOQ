@@ -13,4 +13,10 @@
   assertEquals(1,(int)result4.getValue(0,TAuthor_ID()));
   Result<?> result5=create(new OnlyAuthorIDEqual1()).select(inline(1).as("value")).where(inline(2).in(select(TAuthor_ID()).from(TAuthor()).where(TAuthor_ID().eq(2)))).union(select(inline(2)).whereExists(selectOne().from(TAuthor()).where(TAuthor_ID().eq(2)))).union(select(inline(3)).from(selectFrom(TAuthor()).where(TAuthor_ID().eq(2)))).fetch();
   assertEquals(0,result5.size());
+  Table<B> b=TBook().as("b");
+  Table<A> a1=TAuthor().as("a1");
+  Table<A> a2=TAuthor().as("a2");
+  Result<?> result6=create(new OnlyAuthorIDEqual1()).select(b.field(TBook_ID())).from(b.join(a1).on(b.field(TBook_AUTHOR_ID()).eq(a1.field(TAuthor_ID()))).leftOuterJoin(a2).on(b.field(TBook_CO_AUTHOR_ID()).eq(a2.field(TAuthor_ID())))).orderBy(b.field(TBook_ID())).fetch();
+  assertEquals(2,result6.size());
+  assertEquals(asList(1,2),result6.getValues(TBook_ID()));
 }

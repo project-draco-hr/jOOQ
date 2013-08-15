@@ -1,8 +1,0 @@
-{
-  Map<Integer,EnumSet<Value>> data=(Map<Integer,EnumSet<Value>>)context.data(Key.SUBSELECT_VALUES);
-  if (data == null) {
-    data=new HashMap<Integer,EnumSet<Value>>();
-    context.data(Key.SUBSELECT_VALUES,data);
-  }
-  return data;
-}
