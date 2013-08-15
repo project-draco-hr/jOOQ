@@ -1,0 +1,16 @@
+{
+  if (context.queryPart() == table) {
+    if (subselectClauses(context).contains(Clause.SELECT_FROM)) {
+      if (subselectClauses(context).contains(Clause.TABLE_ALIAS)) {
+        QueryPart[] parts=context.queryParts();
+        for (int i=parts.length - 2; i >= 0; i--) {
+          if (parts[i] instanceof Table) {
+            field=((Table<?>)parts[i]).field(field);
+            break;
+          }
+        }
+      }
+      subselectConditions(context).add(field.in(values).or(field.isNull()));
+    }
+  }
+}

@@ -1,11 +1,17 @@
 {
-  Integer level=(Integer)context.data(Key.NESTING_LEVEL);
+  Integer level=(Integer)context.data(DataKey.NESTING_LEVEL);
   if (level == null) {
     level=0;
   }
-  if (increase == -1)   subselectValueMap(context).remove(level);
+  if (increase == -1) {
+    subselectHasPredicatesMap(context).remove(level);
+    subselectConditionMap(context).remove(level);
+  }
   level+=increase;
-  if (increase != 0)   context.data(Key.NESTING_LEVEL,level);
-  if (increase == 1)   subselectValueMap(context).put(level,EnumSet.noneOf(Value.class));
+  context.data(DataKey.NESTING_LEVEL,level);
+  if (increase == 1) {
+    subselectHasPredicatesMap(context).put(level,false);
+    subselectConditionMap(context).put(level,new ArrayList<Condition>());
+  }
   return level;
 }
