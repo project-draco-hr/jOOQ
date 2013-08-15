@@ -6,7 +6,8 @@
       context.renderContext().formatSeparator().keyword(subselectHasPredicates(context) ? "and" : "where").sql(" ");
       Condition condition=trueCondition();
       for (      Condition c : conditions)       condition=condition.and(c);
-      context.renderContext().visit(condition);
+      ParamType previous=context.renderContext().paramType();
+      context.renderContext().paramType(ParamType.INLINED).visit(condition).paramType(previous);
     }
   }
   if (context.clause() == SELECT) {
