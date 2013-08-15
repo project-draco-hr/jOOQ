@@ -1,0 +1,3 @@
+{
+  return delegate.TBook_CO_AUTHOR_ID();
+}
