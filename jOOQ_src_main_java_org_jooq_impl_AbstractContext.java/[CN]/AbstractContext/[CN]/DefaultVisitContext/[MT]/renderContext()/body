@@ -1,3 +1,0 @@
-{
-  return (RenderContext)(AbstractContext.this instanceof RenderContext ? AbstractContext.this : null);
-}

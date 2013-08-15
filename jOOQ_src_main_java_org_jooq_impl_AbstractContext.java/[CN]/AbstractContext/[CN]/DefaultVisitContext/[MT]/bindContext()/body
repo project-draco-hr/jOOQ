@@ -1,3 +1,0 @@
-{
-  return (BindContext)(AbstractContext.this instanceof BindContext ? AbstractContext.this : null);
-}
