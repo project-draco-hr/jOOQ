@@ -2,7 +2,15 @@
   if (elements == null) {
     elements=new ArrayList<E>();
     try {
-      elements=getElements0();
+      Database db=getDatabase();
+      List<E> e=getElements0();
+      if (this instanceof TableDefinition && db.getIncludeExcludeColumns()) {
+        elements=filterExcludeInclude(e,db.getExcludes(),db.getIncludes());
+        log.info("Columns fetched",fetchedSize(e,elements));
+      }
+ else {
+        elements=e;
+      }
     }
  catch (    SQLException e) {
       log.error("Error while initialising type",e);
