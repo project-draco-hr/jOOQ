@@ -3,4 +3,5 @@
   for (  VisitListener listener : visitListeners) {
     listener.visitStart(visitContext);
   }
+  return visitParts.peekLast();
 }
