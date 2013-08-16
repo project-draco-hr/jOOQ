@@ -1,16 +1,16 @@
 {
   if (context.renderContext() == null)   return;
-  if (context.clause() == SELECT_WHERE) {
+  if (context.clause() == SELECT_WHERE || context.clause() == UPDATE_WHERE || context.clause() == DELETE_WHERE) {
     List<Condition> conditions=subselectConditions(context);
     if (conditions.size() > 0) {
-      context.renderContext().formatSeparator().keyword(subselectHasPredicates(context) ? "and" : "where").sql(" ");
+      context.renderContext().formatSeparator().keyword(anyPredicates(context) ? "and" : "where").sql(" ");
       Condition condition=trueCondition();
       for (      Condition c : conditions)       condition=condition.and(c);
       ParamType previous=context.renderContext().paramType();
       context.renderContext().paramType(ParamType.INLINED).visit(condition).paramType(previous);
     }
   }
-  if (context.clause() == SELECT) {
+  if (context.clause() == SELECT || context.clause() == UPDATE || context.clause() == DELETE || context.clause() == INSERT) {
     nestingLevel(context,-1);
   }
 }

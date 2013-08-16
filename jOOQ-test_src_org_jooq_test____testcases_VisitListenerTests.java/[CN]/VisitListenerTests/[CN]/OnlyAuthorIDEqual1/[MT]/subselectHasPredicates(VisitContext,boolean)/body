@@ -1,3 +1,0 @@
-{
-  subselectHasPredicatesMap(context).put(nestingLevel(context),value);
-}

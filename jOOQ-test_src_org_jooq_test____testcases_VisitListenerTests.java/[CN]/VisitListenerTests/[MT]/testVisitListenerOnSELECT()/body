@@ -19,4 +19,5 @@
   Result<?> result6=create(new OnlyAuthorIDEqual1()).select(b.field(TBook_ID())).from(b.join(a1).on(b.field(TBook_AUTHOR_ID()).eq(a1.field(TAuthor_ID()))).leftOuterJoin(a2).on(b.field(TBook_CO_AUTHOR_ID()).eq(a2.field(TAuthor_ID())))).orderBy(b.field(TBook_ID())).fetch();
   assertEquals(2,result6.size());
   assertEquals(asList(1,2),result6.getValues(TBook_ID()));
+  assertEquals(2,create(new OnlyAuthorIDEqual1()).fetchCount(selectOne().from(TBook())));
 }

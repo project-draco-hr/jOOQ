@@ -1,7 +1,8 @@
 {
   if (context.queryPart() == table) {
-    if (subselectClauses(context).contains(Clause.SELECT_FROM)) {
-      if (subselectClauses(context).contains(Clause.TABLE_ALIAS)) {
+    List<Clause> clauses=subselectClauses(context);
+    if (clauses.contains(SELECT_FROM) || clauses.contains(UPDATE_UPDATE) || clauses.contains(DELETE_DELETE)) {
+      if (clauses.contains(TABLE_ALIAS)) {
         QueryPart[] parts=context.queryParts();
         for (int i=parts.length - 2; i >= 0; i--) {
           if (parts[i] instanceof Table) {

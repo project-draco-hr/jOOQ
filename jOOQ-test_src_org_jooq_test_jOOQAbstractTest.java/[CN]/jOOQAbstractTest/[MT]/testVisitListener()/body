@@ -1,3 +1,0 @@
-{
-  new VisitListenerTests(this).testVisitListener();
-}
