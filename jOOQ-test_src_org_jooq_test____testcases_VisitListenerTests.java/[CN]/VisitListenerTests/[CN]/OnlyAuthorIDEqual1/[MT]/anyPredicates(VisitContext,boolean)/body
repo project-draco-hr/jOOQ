@@ -1,0 +1,3 @@
+{
+  anyPredicatesMap(context).put(nestingLevel(context),value);
+}

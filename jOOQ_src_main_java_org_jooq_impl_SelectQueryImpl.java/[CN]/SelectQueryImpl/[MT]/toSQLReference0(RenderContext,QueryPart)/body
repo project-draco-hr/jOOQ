@@ -16,7 +16,7 @@ case SQLSERVER:
       }
  else       if (dialect.family() == SQLSERVER && context.subquery() && !getOrderBy().isEmpty()) {
         if (dialect == SQLSERVER2008 || !getLimit().isApplicable()) {
-          context.keyword("top 100 percent ");
+          context.keyword("top").sql(" 100 ").keyword("percent").sql(" ");
         }
       }
       break;
@@ -75,7 +75,7 @@ context.start(SELECT_CONNECT_BY);
 if (!(getConnectBy().getWhere() instanceof TrueCondition)) {
 context.formatSeparator().keyword("connect by");
 if (connectByNoCycle) {
-context.keyword(" nocycle");
+context.sql(" ").keyword("nocycle");
 }
 context.sql(" ").visit(getConnectBy());
 }

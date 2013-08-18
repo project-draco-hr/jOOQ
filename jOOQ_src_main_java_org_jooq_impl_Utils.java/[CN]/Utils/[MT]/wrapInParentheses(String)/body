@@ -1,8 +1,0 @@
-{
-  if (sql.startsWith("(")) {
-    return sql;
-  }
- else {
-    return "(" + sql + ")";
-  }
-}

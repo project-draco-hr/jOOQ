@@ -1,0 +1,25 @@
+{
+  jOOQAbstractTest.reset=false;
+  assertEquals(2,create(new OnlyAuthorIDEqual1()).update(TBook()).set(TBook_TITLE(),"changed").execute());
+  assertEquals(2,create().fetchCount(selectOne().from(TBook()).where(TBook_TITLE().eq("changed"))));
+  assertEquals(2,create(new OnlyAuthorIDEqual1()).delete(TBook()).execute());
+  assertEquals(0,create().fetchCount(selectOne().from(TBook()).where(TBook_TITLE().eq("changed"))));
+  if (dialect().family() == ORACLE) {
+    try {
+      create(new OnlyAuthorIDEqual1()).insertInto(TBook()).set(TBook_ID(),5).set(TBook_AUTHOR_ID(),2).set(TBook_TITLE(),"1234").set(TBook_PUBLISHED_IN(),2000).set(TBook_LANGUAGE_ID(),1).execute();
+      fail();
+    }
+ catch (    DataAccessException expected) {
+      assertTrue(expected.getMessage(),expected.getMessage().toUpperCase().contains("ORA-01402"));
+    }
+    assertEquals(1,create(new OnlyAuthorIDEqual1()).insertInto(TBook()).set(TBook_ID(),5).set(TBook_AUTHOR_ID(),1).set(TBook_TITLE(),"1234").set(TBook_PUBLISHED_IN(),2000).set(TBook_LANGUAGE_ID(),1).execute());
+    assertEquals(1,create().selectFrom(TBook()).where(TBook_ID().eq(5)).fetch().size());
+    try {
+      create(new OnlyAuthorIDEqual1()).insertInto(TAuthor()).set(TAuthor_ID(),3).set(TAuthor_FIRST_NAME(),"Jon").set(TAuthor_LAST_NAME(),"Doe").execute();
+      fail();
+    }
+ catch (    DataAccessException expected) {
+      assertTrue(expected.getMessage(),expected.getMessage().toUpperCase().contains("ORA-01402"));
+    }
+  }
+}

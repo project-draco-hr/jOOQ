@@ -9,34 +9,34 @@ case HSQLDB:
 case POSTGRES:
 case SQLITE:
 {
-      context.castMode(NEVER).formatSeparator().keyword("limit ").visit(numberOfRows).keyword(" offset ").visit(offsetOrZero).castMode(castMode);
+      context.castMode(NEVER).formatSeparator().keyword("limit").sql(" ").visit(numberOfRows).sql(" ").keyword("offset").sql(" ").visit(offsetOrZero).castMode(castMode);
       break;
     }
 case CUBRID:
 {
-    context.castMode(NEVER).formatSeparator().keyword("limit ").visit(offsetOrZero).sql(", ").visit(numberOfRows).castMode(castMode);
+    context.castMode(NEVER).formatSeparator().keyword("limit").sql(" ").visit(offsetOrZero).sql(", ").visit(numberOfRows).castMode(castMode);
     break;
   }
 case FIREBIRD:
 {
-  context.castMode(NEVER).formatSeparator().keyword("rows ").visit(getLowerRownum().add(inline(1))).keyword(" to ").visit(getUpperRownum()).castMode(castMode);
+  context.castMode(NEVER).formatSeparator().keyword("rows").sql(" ").visit(getLowerRownum().add(inline(1))).sql(" ").keyword("to").sql(" ").visit(getUpperRownum()).castMode(castMode);
   break;
 }
 case DERBY:
 case SQLSERVER:
 case SQLSERVER2012:
 {
-context.castMode(NEVER).formatSeparator().keyword("offset ").visit(offsetOrZero).keyword(" rows fetch next ").visit(numberOfRows).keyword(" rows only").castMode(castMode);
+context.castMode(NEVER).formatSeparator().keyword("offset").sql(" ").visit(offsetOrZero).sql(" ").keyword("rows fetch next").sql(" ").visit(numberOfRows).sql(" ").keyword("rows only").castMode(castMode);
 break;
 }
 case INGRES:
 {
-context.paramType(INLINED).formatSeparator().keyword("offset ").visit(offsetOrZero).keyword(" fetch first ").visit(numberOfRows).keyword(" rows only").paramType(paramType);
+context.paramType(INLINED).formatSeparator().keyword("offset").sql(" ").visit(offsetOrZero).sql(" ").keyword("fetch first").sql(" ").visit(numberOfRows).sql(" ").keyword("rows only").paramType(paramType);
 break;
 }
 case SYBASE:
 {
-context.paramType(INLINED).keyword("top ").visit(numberOfRows).keyword(" start at ").visit(offsetPlusOne).paramType(paramType);
+context.paramType(INLINED).keyword("top").sql(" ").visit(numberOfRows).sql(" ").keyword("start at").sql(" ").visit(offsetPlusOne).paramType(paramType);
 break;
 }
 case DB2:
@@ -44,7 +44,7 @@ case DB2:
 if (offset != null) {
 throw new DataAccessException("DB2 does not support offsets in FETCH FIRST ROWS ONLY clause");
 }
-context.paramType(INLINED).formatSeparator().keyword("fetch first ").visit(numberOfRows).keyword(" rows only").paramType(paramType);
+context.paramType(INLINED).formatSeparator().keyword("fetch first").sql(" ").visit(numberOfRows).sql(" ").keyword("rows only").paramType(paramType);
 break;
 }
 case ASE:
@@ -53,12 +53,12 @@ case SQLSERVER2008:
 if (offset != null) {
 throw new DataAccessException("Offsets in TOP clause not supported");
 }
-context.paramType(INLINED).keyword("top ").visit(numberOfRows).paramType(paramType);
+context.paramType(INLINED).keyword("top").sql(" ").visit(numberOfRows).paramType(paramType);
 break;
 }
 default :
 {
-context.castMode(NEVER).formatSeparator().keyword("limit ").visit(numberOfRows).keyword(" offset ").visit(offsetOrZero).castMode(castMode);
+context.castMode(NEVER).formatSeparator().keyword("limit").sql(" ").visit(numberOfRows).sql(" ").keyword("offset").sql(" ").visit(offsetOrZero).castMode(castMode);
 break;
 }
 }

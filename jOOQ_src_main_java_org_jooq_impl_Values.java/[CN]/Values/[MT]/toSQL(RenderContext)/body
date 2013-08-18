@@ -32,7 +32,7 @@ case DB2:
 case INGRES:
 default :
 {
-    context.keyword("values").formatIndentLockStart();
+    context.start(TABLE_VALUES).keyword("values").formatIndentLockStart();
     boolean firstRow=true;
     for (    Row row : rows) {
       if (!firstRow) {
@@ -41,7 +41,7 @@ default :
       context.visit(row);
       firstRow=false;
     }
-    context.formatIndentLockEnd();
+    context.formatIndentLockEnd().end(TABLE_VALUES);
     break;
   }
 }

@@ -2,14 +2,14 @@
   toSQLFunctionName(context);
   context.sql("(");
   if (distinct) {
-    context.keyword("distinct ");
+    context.keyword("distinct").sql(" ");
   }
   context.visit(arguments.get(0));
   if (!withinGroupOrderBy.isEmpty()) {
-    context.keyword(" order by ").visit(withinGroupOrderBy);
+    context.sql(" ").keyword("order by").sql(" ").visit(withinGroupOrderBy);
   }
   if (arguments.size() > 1) {
-    context.keyword(" separator ").visit(arguments.get(1));
+    context.sql(" ").keyword("separator").sql(" ").visit(arguments.get(1));
   }
   context.sql(")");
 }

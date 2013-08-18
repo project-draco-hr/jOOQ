@@ -6,6 +6,7 @@ case POSTGRES:
       context.formatSeparator().keyword("returning").sql(" ").visit(returning);
     break;
 default :
+  break;
 }
 }
 }

@@ -1,0 +1,4 @@
+{
+  visitParts.pollLast();
+  visitParts.addLast(part);
+}

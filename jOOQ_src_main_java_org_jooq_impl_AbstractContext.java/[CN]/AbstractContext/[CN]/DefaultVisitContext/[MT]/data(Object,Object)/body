@@ -1,3 +1,0 @@
-{
-  return AbstractContext.this.data(key,value);
-}

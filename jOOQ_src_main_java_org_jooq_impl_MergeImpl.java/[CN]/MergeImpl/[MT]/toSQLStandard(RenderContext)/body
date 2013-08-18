@@ -1,12 +1,16 @@
 {
-  context.keyword("merge into ").declareTables(true).visit(table).formatSeparator().keyword("using ").formatIndentStart().formatNewLine().sql(Utils.wrapInParentheses(context.render(using))).formatIndentEnd().declareTables(false);
+  context.start(MERGE_MERGE_INTO).keyword("merge into").sql(" ").declareTables(true).visit(table).declareTables(false).end(MERGE_MERGE_INTO).formatSeparator().start(MERGE_USING).declareTables(true).keyword("using").sql(" ").formatIndentStart().formatNewLine();
+  context.data(DATA_WRAP_DERIVED_TABLES_IN_PARENTHESES,true);
+  context.visit(using);
+  context.data(DATA_WRAP_DERIVED_TABLES_IN_PARENTHESES,null);
+  context.formatIndentEnd().declareTables(false);
 switch (context.configuration().dialect().family()) {
 case SQLSERVER:
 case SYBASE:
 {
       if (using instanceof Select) {
         int hash=Utils.hash(using);
-        context.keyword(" as ").sql("dummy_").sql(hash).sql("(");
+        context.sql(" ").keyword("as").sql(" ").sql("dummy_").sql(hash).sql("(");
         String separator="";
         for (        Field<?> field : ((Select<?>)using).fields()) {
           String name=StringUtils.isBlank(field.getName()) ? "dummy_" + hash + "_"+ Utils.hash(field) : field.getName();
@@ -18,22 +22,30 @@ case SYBASE:
       break;
     }
 }
-context.formatSeparator().keyword("on ").sql(Utils.wrapInParentheses(context.render(on)));
+boolean onParentheses=context.configuration().dialect().family() == ORACLE;
+context.end(MERGE_USING).formatSeparator().start(MERGE_ON).keyword("on").sql(onParentheses ? " (" : " ").visit(on).sql(onParentheses ? ")" : "").end(MERGE_ON).start(MERGE_WHEN_MATCHED_THEN_UPDATE).start(MERGE_SET);
 if (matchedUpdate != null) {
-  context.formatSeparator().keyword("when matched then update set ").visit(matchedUpdate);
+  context.formatSeparator().keyword("when matched then update set").sql(" ").visit(matchedUpdate);
 }
+context.end(MERGE_SET).start(MERGE_WHERE);
 if (matchedWhere != null) {
-  context.formatSeparator().keyword("where ").visit(matchedWhere);
+  context.formatSeparator().keyword("where").sql(" ").visit(matchedWhere);
 }
+context.end(MERGE_WHERE).start(MERGE_DELETE_WHERE);
 if (matchedDeleteWhere != null) {
-  context.formatSeparator().keyword("delete where ").visit(matchedDeleteWhere);
+  context.formatSeparator().keyword("delete where").sql(" ").visit(matchedDeleteWhere);
 }
+context.end(MERGE_DELETE_WHERE).end(MERGE_WHEN_MATCHED_THEN_UPDATE).start(MERGE_WHEN_NOT_MATCHED_THEN_INSERT);
 if (notMatchedInsert != null) {
-  context.formatSeparator().sql("when not matched then insert ").visit(notMatchedInsert);
+  context.formatSeparator().keyword("when not matched then insert").sql(" ");
+  notMatchedInsert.toSQLReferenceKeys(context);
+  context.formatSeparator().start(MERGE_VALUES).keyword("values").sql(" ").visit(notMatchedInsert).end(MERGE_VALUES);
 }
+context.start(MERGE_WHERE);
 if (notMatchedWhere != null) {
-  context.formatSeparator().keyword("where ").visit(notMatchedWhere);
+  context.formatSeparator().keyword("where").sql(" ").visit(notMatchedWhere);
 }
+context.end(MERGE_WHERE).end(MERGE_WHEN_NOT_MATCHED_THEN_INSERT);
 switch (context.configuration().dialect().family()) {
 case SQLSERVER:
   context.sql(";");

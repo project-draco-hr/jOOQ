@@ -1,0 +1,14 @@
+{
+  if (context.queryPart() == table) {
+    List<Clause> clauses=subselectClauses(context);
+    if (clauses.contains(INSERT_INSERT_INTO) && !clauses.contains(CUSTOM)) {
+      context.queryPart(new CustomQueryPart(){
+        @Override public void toSQL(        RenderContext ctx){
+          ParamType previous=ctx.paramType();
+          ctx.paramType(INLINED).visit(queryPart("(SELECT * FROM {0} WHERE {1} WITH CHECK OPTION)",table,field.in(values).or(field.isNull()))).paramType(previous);
+        }
+      }
+);
+    }
+  }
+}

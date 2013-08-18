@@ -5,10 +5,10 @@
     if (i > 0) {
       context.formatNewLine();
     }
-    context.keyword(" when ").visit(conditions.get(i)).keyword(" then ").visit(results.get(i));
+    context.sql(" ").keyword("when").sql(" ").visit(conditions.get(i)).sql(" ").keyword("then").sql(" ").visit(results.get(i));
   }
   if (otherwise != null) {
-    context.formatNewLine().keyword(" else ").visit(otherwise);
+    context.formatNewLine().sql(" ").keyword("else").sql(" ").visit(otherwise);
   }
   context.formatIndentLockEnd();
   if (size > 1 || otherwise != null) {

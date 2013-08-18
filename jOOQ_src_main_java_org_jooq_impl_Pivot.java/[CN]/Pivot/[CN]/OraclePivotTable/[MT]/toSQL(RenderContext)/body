@@ -2,5 +2,5 @@
   ParamType paramType=context.paramType();
   boolean declareFields=context.declareFields();
   boolean declareTables=context.declareTables();
-  context.declareTables(true).visit(table).declareTables(declareTables).formatSeparator().keyword("pivot (").paramType(INLINED).declareFields(true).formatIndentStart().visit(aggregateFunctions).formatSeparator().keyword("for ").literal(on.getName()).formatSeparator().keyword("in (").visit(in).declareFields(declareFields).paramType(paramType).sql(")").formatIndentEnd().formatNewLine().sql(")");
+  context.declareTables(true).visit(table).declareTables(declareTables).formatSeparator().keyword("pivot").sql(" (").paramType(INLINED).declareFields(true).formatIndentStart().visit(aggregateFunctions).formatSeparator().keyword("for").sql(" ").literal(on.getName()).formatSeparator().keyword("in").sql(" (").visit(in).declareFields(declareFields).paramType(paramType).sql(")").formatIndentEnd().formatNewLine().sql(")");
 }

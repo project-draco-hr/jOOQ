@@ -74,13 +74,13 @@
         context.sql("'").sql(escape(val)).sql("'");
       }
  else       if (family == DERBY) {
-        context.keyword("time('").sql(escape(val)).sql("')");
+        context.keyword("time").sql("('").sql(escape(val)).sql("')");
       }
  else       if (family == ORACLE) {
-        context.keyword("timestamp '1970-01-01 ").sql(escape(val)).sql("'");
+        context.keyword("timestamp").sql(" '1970-01-01 ").sql(escape(val)).sql("'");
       }
  else {
-        context.keyword("time '").sql(escape(val)).sql("'");
+        context.keyword("time").sql(" '").sql(escape(val)).sql("'");
       }
     }
  else     if (type.isArray()) {

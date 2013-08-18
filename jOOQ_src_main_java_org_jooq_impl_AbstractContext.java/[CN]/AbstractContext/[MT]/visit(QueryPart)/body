@@ -1,8 +1,5 @@
 {
   if (part != null) {
-    Clause[] clauses=visitListeners.length > 0 ? clause(part) : null;
-    if (clauses != null)     for (int i=0; i < clauses.length; i++)     start(clauses[i]);
-    start(part);
     QueryPartInternal internal=(QueryPartInternal)part;
     if (declareFields() && !internal.declaresFields()) {
       declareFields(false);
@@ -17,8 +14,6 @@
  else {
       visit0(internal);
     }
-    end(part);
-    if (clauses != null)     for (int i=clauses.length - 1; i >= 0; i--)     end(clauses[i]);
   }
   return (C)this;
 }

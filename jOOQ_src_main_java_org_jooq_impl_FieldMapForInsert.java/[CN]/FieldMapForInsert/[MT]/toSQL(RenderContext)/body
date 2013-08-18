@@ -1,5 +1,20 @@
 {
-  toSQLReferenceKeys(context);
-  context.formatSeparator().keyword("values ");
-  toSQLReferenceValues(context);
+  boolean indent=(size() > 1);
+  context.sql("(");
+  if (indent) {
+    context.formatIndentStart();
+  }
+  String separator="";
+  for (  Field<?> field : values()) {
+    context.sql(separator);
+    if (indent) {
+      context.formatNewLine();
+    }
+    context.visit(field);
+    separator=", ";
+  }
+  if (indent) {
+    context.formatIndentEnd().formatNewLine();
+  }
+  context.sql(")");
 }

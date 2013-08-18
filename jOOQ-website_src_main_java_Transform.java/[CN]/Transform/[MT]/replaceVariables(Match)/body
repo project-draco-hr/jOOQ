@@ -17,15 +17,15 @@
         changed=true;
       }
       if (content.contains("{codegen-xsd-version}")) {
-        content=content.replace("{codegen-xsd-version}","3.0.0");
+        content=content.replace("{codegen-xsd-version}",codegenXSDVersion);
         changed=true;
       }
       if (content.contains("{export-xsd-version}")) {
-        content=content.replace("{export-xsd-version}","2.6.0");
+        content=content.replace("{export-xsd-version}",exportXSDVersion);
         changed=true;
       }
       if (content.contains("{runtime-xsd-version}")) {
-        content=content.replace("{runtime-xsd-version}","3.0.0");
+        content=content.replace("{runtime-xsd-version}",runtimeXSDVersion);
         changed=true;
       }
       if (changed) {

@@ -2,7 +2,7 @@
   toSQLFunctionName(context);
   context.sql("(");
   if (distinct) {
-    context.keyword("distinct ");
+    context.keyword("distinct").sql(" ");
   }
   if (!arguments.isEmpty()) {
     context.visit(arguments);
@@ -12,7 +12,7 @@
       context.sql(", 'IGNORE NULLS'");
     }
  else {
-      context.keyword(" ignore nulls");
+      context.sql(" ").keyword("ignore nulls");
     }
   }
  else   if (respectNulls) {
@@ -20,7 +20,7 @@
       context.sql(", 'RESPECT NULLS'");
     }
  else {
-      context.keyword(" respect nulls");
+      context.sql(" ").keyword("respect nulls");
     }
   }
   context.sql(")");

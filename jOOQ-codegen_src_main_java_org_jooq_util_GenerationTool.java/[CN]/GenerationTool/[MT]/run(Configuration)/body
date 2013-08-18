@@ -64,6 +64,7 @@
     database.setConfiguredSchemata(schemata);
     database.setIncludes(new String[]{defaultString(d.getIncludes())});
     database.setExcludes(new String[]{defaultString(d.getExcludes())});
+    database.setIncludeExcludeColumns(TRUE.equals(d.isIncludeExcludeColumns()));
     database.setRecordVersionFields(new String[]{defaultString(d.getRecordVersionFields())});
     database.setRecordTimestampFields(new String[]{defaultString(d.getRecordTimestampFields())});
     database.setConfiguredCustomTypes(d.getCustomTypes());

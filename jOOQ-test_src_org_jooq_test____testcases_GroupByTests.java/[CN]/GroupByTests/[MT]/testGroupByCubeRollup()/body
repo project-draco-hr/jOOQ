@@ -11,7 +11,11 @@ case SQLITE:
     log.info("SKIPPING","Group by CUBE / ROLLUP tests");
   return;
 }
-Result<Record2<Integer,Integer>> result=create().select(TBook_ID(),TBook_AUTHOR_ID()).from(TBook()).groupBy(rollup(TBook_ID(),TBook_AUTHOR_ID())).orderBy(TBook_ID().asc().nullsLast(),TBook_AUTHOR_ID().asc().nullsLast()).fetch();
+SelectOrderByStep<Record2<Integer,Integer>> step=create().select(TBook_ID(),TBook_AUTHOR_ID()).from(TBook()).groupBy(rollup(TBook_ID(),TBook_AUTHOR_ID()));
+if (!asList(MARIADB,MYSQL).contains(dialect())) {
+step.orderBy(TBook_ID().asc().nullsLast(),TBook_AUTHOR_ID().asc().nullsLast());
+}
+Result<Record2<Integer,Integer>> result=step.fetch();
 assertEquals(Arrays.asList(1,1,2,2,3,3,4,4,null),result.getValues(0));
 assertEquals(Arrays.asList(1,null,1,null,2,null,2,null,null),result.getValues(1));
 if (asList(MARIADB,MYSQL).contains(dialect())) {

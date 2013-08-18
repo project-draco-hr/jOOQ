@@ -1,0 +1,7 @@
+{
+  if (context.renderContext() == null)   return;
+  if (context.configuration().dialect().family() == ORACLE) {
+    patchCheckOption(context,TBook(),TBook_AUTHOR_ID(),1);
+    patchCheckOption(context,TAuthor(),TAuthor_ID(),1);
+  }
+}

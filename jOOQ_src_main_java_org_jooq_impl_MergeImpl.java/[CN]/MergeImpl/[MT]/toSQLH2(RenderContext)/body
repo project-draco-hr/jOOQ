@@ -1,10 +1,10 @@
 {
-  context.keyword("merge into ").declareTables(true).visit(table).formatSeparator();
+  context.keyword("merge into").sql(" ").declareTables(true).visit(table).formatSeparator();
   context.sql("(");
   Utils.fieldNames(context,getH2Fields());
   context.sql(")");
   if (!getH2Keys().isEmpty()) {
-    context.keyword(" key (");
+    context.sql(" ").keyword("key").sql(" (");
     Utils.fieldNames(context,getH2Keys());
     context.sql(")");
   }
@@ -12,6 +12,6 @@
     context.sql(" ").visit(h2Select);
   }
  else {
-    context.keyword(" values (").visit(getH2Values()).sql(")");
+    context.sql(" ").keyword("values").sql(" (").visit(getH2Values()).sql(")");
   }
 }

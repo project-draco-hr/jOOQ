@@ -2,9 +2,6 @@
   if (!connectionInitialised) {
     connectionInitialised=true;
     connection=getConnection0(null,null);
-    if (asList(MARIADB,MYSQL).contains(create().configuration().dialect().family())) {
-      create().execute("SET @@sql_mode=CONCAT_WS(',', @@sql_mode, 'NO_BACKSLASH_ESCAPES');");
-    }
     final Connection c=connection;
     if (false)     connection=new MockConnection(new MockDataProvider(){
       @Override public MockResult[] execute(      MockExecuteContext context) throws SQLException {

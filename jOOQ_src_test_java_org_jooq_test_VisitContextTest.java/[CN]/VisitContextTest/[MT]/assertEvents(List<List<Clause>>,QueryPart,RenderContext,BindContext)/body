@@ -1,0 +1,10 @@
+{
+  listener.clauses.clear();
+  r_ctx.visit(part);
+  assertEvents0(expected);
+  if (false) {
+    listener.clauses.clear();
+    b_ctx.visit(part);
+    assertEvents0(expected);
+  }
+}

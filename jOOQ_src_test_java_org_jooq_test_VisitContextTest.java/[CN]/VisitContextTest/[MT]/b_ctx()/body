@@ -1,0 +1,9 @@
+{
+  MockDataProvider p=new MockDataProvider(){
+    @Override public MockResult[] execute(    MockExecuteContext c) throws SQLException {
+      return new MockResult[0];
+    }
+  }
+;
+  return ctx.bindContext(new MockStatement(new MockConnection(p),p));
+}

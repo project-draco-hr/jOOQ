@@ -1,6 +1,4 @@
 {
-  insertMaps.get(0).toSQLReferenceKeys(context);
-  context.sql(" ");
   Select<Record> select=null;
   for (  FieldMapForInsert map : insertMaps) {
     if (map != null) {

@@ -1,0 +1,3 @@
+{
+  assertEvents(asList(asList(FIELD),asList(FIELD,FIELD_REFERENCE)),FIELD_ID1.as("x"));
+}

@@ -12,10 +12,10 @@
   }
   context.sql(")");
   if (!withinGroupOrderBy.isEmpty()) {
-    context.keyword(" order by ").visit(withinGroupOrderBy);
+    context.sql(" ").keyword("order by").sql(" ").visit(withinGroupOrderBy);
   }
   context.sql(")");
-  context.keyword(" as ");
+  context.sql(" ").keyword("as").sql(" ");
   context.sql(DB2DataType.VARCHAR.getCastTypeName());
   context.sql(")");
   if (arguments.size() > 1) {

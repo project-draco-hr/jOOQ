@@ -1,4 +1,8 @@
 {
+  Boolean wrapDerivedTables=(Boolean)context.data(DATA_WRAP_DERIVED_TABLES_IN_PARENTHESES);
+  if (TRUE.equals(wrapDerivedTables)) {
+    context.sql("(").data(DATA_WRAP_DERIVED_TABLES_IN_PARENTHESES,null);
+  }
   if (getLimit().isApplicable()) {
 switch (context.configuration().dialect()) {
 case ORACLE:
@@ -51,11 +55,11 @@ toSQLReference0(context);
 if (forUpdate && !asList(CUBRID,SQLSERVER).contains(context.configuration().dialect().family())) {
 context.formatSeparator().keyword("for update");
 if (!forUpdateOf.isEmpty()) {
-context.keyword(" of ");
+context.sql(" ").keyword("of").sql(" ");
 Utils.fieldNames(context,forUpdateOf);
 }
  else if (!forUpdateOfTables.isEmpty()) {
-context.keyword(" of ");
+context.sql(" ").keyword("of").sql(" ");
 switch (context.configuration().dialect().family()) {
 case DB2:
 case DERBY:
@@ -92,5 +96,8 @@ break;
 }
 if (!StringUtils.isBlank(option)) {
 context.formatSeparator().sql(option);
+}
+if (TRUE.equals(wrapDerivedTables)) {
+context.sql(")").data(DATA_WRAP_DERIVED_TABLES_IN_PARENTHESES,true);
 }
 }

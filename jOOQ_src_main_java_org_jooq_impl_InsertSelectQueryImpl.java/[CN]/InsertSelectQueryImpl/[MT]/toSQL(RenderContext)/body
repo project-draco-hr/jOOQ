@@ -1,9 +1,12 @@
 {
-  context.keyword("insert into").sql(" ").visit(into).sql(" (");
+  context.start(INSERT_INSERT_INTO).keyword("insert into").sql(" ").visit(into).sql(" (");
+  boolean qualify=context.qualify();
+  context.qualify(false);
   String separator="";
   for (  Field<?> field : fields) {
-    context.sql(separator).literal(field.getName());
+    context.sql(separator).visit(field);
     separator=", ";
   }
-  context.sql(")").formatSeparator().visit(select);
+  context.qualify(qualify);
+  context.sql(")").end(INSERT_INSERT_INTO).formatSeparator().start(INSERT_SELECT).visit(select).end(INSERT_SELECT).start(INSERT_ON_DUPLICATE_KEY_UPDATE).end(INSERT_ON_DUPLICATE_KEY_UPDATE).start(INSERT_RETURNING).end(INSERT_RETURNING);
 }

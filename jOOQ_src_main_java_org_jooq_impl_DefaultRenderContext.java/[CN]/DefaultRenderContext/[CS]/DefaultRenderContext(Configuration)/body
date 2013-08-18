@@ -5,4 +5,12 @@
   this.cachedRenderKeywordStyle=settings.getRenderKeywordStyle();
   this.cachedRenderFormatted=Boolean.TRUE.equals(settings.isRenderFormatted());
   this.cachedRenderNameStyle=settings.getRenderNameStyle();
+  VisitListenerProvider[] providers=configuration.visitListenerProviders();
+  this.visitListeners=new VisitListener[providers.length];
+  this.visitContext=new DefaultVisitContext();
+  this.visitClauses=new ArrayDeque<Clause>();
+  this.visitParts=new ArrayDeque<QueryPart>();
+  for (int i=0; i < providers.length; i++) {
+    this.visitListeners[i]=providers[i].provide();
+  }
 }
