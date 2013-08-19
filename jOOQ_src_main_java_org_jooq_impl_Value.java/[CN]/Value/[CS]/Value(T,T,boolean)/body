@@ -1,0 +1,5 @@
+{
+  this.value=value;
+  this.original=original;
+  this.isChanged=isChanged;
+}

@@ -5,9 +5,9 @@
   }
   Map<Record,List<E>> map=new LinkedHashMap<Record,List<E>>();
   for (  R record : this) {
-    @SuppressWarnings({"rawtypes","unchecked"}) Record key=new RecordImpl(keys);
+    @SuppressWarnings({"rawtypes","unchecked"}) RecordImpl key=new RecordImpl(keys);
     for (    Field<?> field : keys) {
-      Utils.setValue(key,field,record,field);
+      Utils.copyValue(key,field,record,field);
     }
     List<E> list=map.get(key);
     if (list == null) {

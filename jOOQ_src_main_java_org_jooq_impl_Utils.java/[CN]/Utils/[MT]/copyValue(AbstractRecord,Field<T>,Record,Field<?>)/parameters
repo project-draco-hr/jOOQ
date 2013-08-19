@@ -1,0 +1,4 @@
+AbstractRecord target
+Field<T> targetField
+Record source
+Field<?> sourceField
