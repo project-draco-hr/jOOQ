@@ -8,7 +8,7 @@
   String root=root();
   Match manual=$(isXML);
   replaceVariables(manual);
-  File dir=new File(path("manual-single-page"));
+  File dir=new File(baseDir + path("manual-single-page"));
   dir.mkdirs();
   System.out.println("Transforming manual");
   File file=new File(dir,"index.php");

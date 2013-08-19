@@ -26,7 +26,7 @@
     String path=path(StringUtils.join(sections.ids(),"/"));
     String relativePath=relative(path);
     String root=root();
-    File dir=new File(path);
+    File dir=new File(baseDir + path);
     dir.mkdirs();
     File file=new File(dir,"index.php");
     file.delete();

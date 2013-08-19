@@ -8,7 +8,7 @@
   Match manual=$(isXML);
   replaceVariables(manual);
   checkCodeBlockLengths(manual);
-  File dir=new File(path("manual-pdf"));
+  File dir=new File(baseDir + path("manual-pdf"));
   dir.mkdirs();
   FileOutputStream fout=new FileOutputStream(new File(dir,file("jOOQ-manual.fo.xml")));
   Source source=new DOMSource(manual.document());
