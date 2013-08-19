@@ -9,8 +9,8 @@
     Number scale=parseScale(record.getValue("type",String.class));
     boolean pk=record.getValue("pk",Boolean.class);
     boolean identity=pk && existsSqliteSequence() && create().fetchOne("select count(*) from sqlite_sequence where name = ?",getName()).getValue(0,Boolean.class);
-    DefaultDataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),dataType,precision,precision,scale);
-    ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getSchema(),getName()),name,position,type,!record.getValue("notnull",boolean.class),identity,null);
+    DefaultDataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),dataType,precision,precision,scale,!record.getValue("notnull",boolean.class),record.getValue("dflt_value") != null);
+    ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getSchema(),getName()),name,position,type,identity,null);
     result.add(column);
   }
   return result;

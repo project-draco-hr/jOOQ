@@ -4,4 +4,6 @@ String typeName
 Number length
 Number precision
 Number scale
+Boolean nullable
+Boolean defaultable
 String udtName

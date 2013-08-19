@@ -7,11 +7,11 @@
     int position=record.getValue(Funcparms.ORDINAL);
     String paramName=record.getValue(Funcparms.PARMNAME);
     if ("C".equals(rowType)) {
-      DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),dataType,precision,precision,scale);
+      DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),dataType,precision,precision,scale,null,null);
       addParameter(InOutDefinition.RETURN,new DefaultParameterDefinition(this,"RETURN_VALUE",-1,type));
     }
  else     if ("P".equals(rowType)) {
-      DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),dataType,precision,precision,scale);
+      DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),dataType,precision,precision,scale,null,null);
       ParameterDefinition column=new DefaultParameterDefinition(this,paramName,position,type);
       addParameter(InOutDefinition.IN,column);
     }

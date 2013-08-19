@@ -26,7 +26,7 @@
  else {
     DataType<?> dataType=null;
     try {
-      dataType=DefaultDataType.getDataType(db.getDialect(),t,p,s);
+      dataType=DefaultDataType.getDataType(db.getDialect(),t,p,s).nullable(n).defaulted(d);
     }
  catch (    SQLDialectNotSupportedException ignore) {
     }
@@ -44,6 +44,12 @@
       }
       if (dataType.hasLength() && l > 0) {
         sb.append(".length(").append(l).append(")");
+      }
+      if (!dataType.nullable()) {
+        sb.append(".nullable(false)");
+      }
+      if (dataType.defaulted()) {
+        sb.append(".defaulted(true)");
       }
       if (db.getConfiguredCustomType(u) != null) {
         sb.append(".asConvertedDataType(new ");

@@ -1,7 +1,7 @@
 {
   List<AttributeDefinition> result=new ArrayList<AttributeDefinition>();
-  for (  Record record : create().select(ATTRIBUTES.ATTRIBUTE_NAME,ATTRIBUTES.ORDINAL_POSITION,ATTRIBUTES.DATA_TYPE,ATTRIBUTES.CHARACTER_MAXIMUM_LENGTH,ATTRIBUTES.NUMERIC_PRECISION,ATTRIBUTES.NUMERIC_SCALE,ATTRIBUTES.ATTRIBUTE_UDT_NAME).from(ATTRIBUTES).where(ATTRIBUTES.UDT_SCHEMA.equal(getSchema().getName())).and(ATTRIBUTES.UDT_NAME.equal(getName())).orderBy(ATTRIBUTES.ORDINAL_POSITION).fetch()) {
-    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),record.getValue(ATTRIBUTES.DATA_TYPE),record.getValue(ATTRIBUTES.CHARACTER_MAXIMUM_LENGTH),record.getValue(ATTRIBUTES.NUMERIC_PRECISION),record.getValue(ATTRIBUTES.NUMERIC_SCALE),record.getValue(ATTRIBUTES.ATTRIBUTE_UDT_NAME));
+  for (  Record record : create().select(ATTRIBUTES.ATTRIBUTE_NAME,ATTRIBUTES.ORDINAL_POSITION,ATTRIBUTES.DATA_TYPE,ATTRIBUTES.CHARACTER_MAXIMUM_LENGTH,ATTRIBUTES.NUMERIC_PRECISION,ATTRIBUTES.NUMERIC_SCALE,ATTRIBUTES.IS_NULLABLE,ATTRIBUTES.ATTRIBUTE_DEFAULT,ATTRIBUTES.ATTRIBUTE_UDT_NAME).from(ATTRIBUTES).where(ATTRIBUTES.UDT_SCHEMA.equal(getSchema().getName())).and(ATTRIBUTES.UDT_NAME.equal(getName())).orderBy(ATTRIBUTES.ORDINAL_POSITION).fetch()) {
+    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),record.getValue(ATTRIBUTES.DATA_TYPE),record.getValue(ATTRIBUTES.CHARACTER_MAXIMUM_LENGTH),record.getValue(ATTRIBUTES.NUMERIC_PRECISION),record.getValue(ATTRIBUTES.NUMERIC_SCALE),record.getValue(ATTRIBUTES.IS_NULLABLE,boolean.class),record.getValue(ATTRIBUTES.ATTRIBUTE_DEFAULT) != null,record.getValue(ATTRIBUTES.ATTRIBUTE_UDT_NAME));
     AttributeDefinition column=new DefaultAttributeDefinition(this,record.getValue(ATTRIBUTES.ATTRIBUTE_NAME),record.getValue(ATTRIBUTES.ORDINAL_POSITION),type);
     result.add(column);
   }

@@ -1,6 +1,6 @@
 {
   List<ColumnDefinition> result=new ArrayList<ColumnDefinition>();
-  for (  Record record : create().select(Iicolumns.COLUMN_SEQUENCE,trim(Iicolumns.COLUMN_NAME),trim(Iicolumns.COLUMN_DATATYPE),Iicolumns.COLUMN_LENGTH,Iicolumns.COLUMN_SCALE,Iicolumns.COLUMN_NULLS,Iicolumns.COLUMN_ALWAYS_IDENT,Iicolumns.COLUMN_BYDEFAULT_IDENT,trim(IidbSubcomments.LONG_REMARK)).from(IICOLUMNS).leftOuterJoin(IIDB_SUBCOMMENTS).on(IidbSubcomments.OBJECT_NAME.equal(Iicolumns.TABLE_NAME)).and(IidbSubcomments.OBJECT_OWNER.equal(Iicolumns.TABLE_OWNER)).and(IidbSubcomments.SUBOBJECT_NAME.equal(Iicolumns.COLUMN_NAME)).and(IidbSubcomments.SUBOBJECT_TYPE.equal("C")).and(IidbSubcomments.TEXT_SEQUENCE.equal(1L)).where(Iicolumns.TABLE_OWNER.equal(getSchema().getName())).and(trim(Iicolumns.TABLE_NAME).equal(getName())).orderBy(Iicolumns.COLUMN_SEQUENCE).fetch()) {
+  for (  Record record : create().select(Iicolumns.COLUMN_SEQUENCE,trim(Iicolumns.COLUMN_NAME),trim(Iicolumns.COLUMN_DATATYPE),Iicolumns.COLUMN_LENGTH,Iicolumns.COLUMN_SCALE,Iicolumns.COLUMN_NULLS,Iicolumns.COLUMN_HAS_DEFAULT,Iicolumns.COLUMN_ALWAYS_IDENT,Iicolumns.COLUMN_BYDEFAULT_IDENT,trim(IidbSubcomments.LONG_REMARK)).from(IICOLUMNS).leftOuterJoin(IIDB_SUBCOMMENTS).on(IidbSubcomments.OBJECT_NAME.equal(Iicolumns.TABLE_NAME)).and(IidbSubcomments.OBJECT_OWNER.equal(Iicolumns.TABLE_OWNER)).and(IidbSubcomments.SUBOBJECT_NAME.equal(Iicolumns.COLUMN_NAME)).and(IidbSubcomments.SUBOBJECT_TYPE.equal("C")).and(IidbSubcomments.TEXT_SEQUENCE.equal(1L)).where(Iicolumns.TABLE_OWNER.equal(getSchema().getName())).and(trim(Iicolumns.TABLE_NAME).equal(getName())).orderBy(Iicolumns.COLUMN_SEQUENCE).fetch()) {
     String typeName=record.getValue(trim(Iicolumns.COLUMN_DATATYPE));
     if (IngresDataType.INTEGER.getTypeName().equalsIgnoreCase(typeName)) {
 switch (record.getValue(Iicolumns.COLUMN_LENGTH)) {
@@ -25,8 +25,8 @@ typeName=IngresDataType.FLOAT4.getTypeName();
 break;
 }
 }
-DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),typeName,record.getValue(Iicolumns.COLUMN_LENGTH),record.getValue(Iicolumns.COLUMN_LENGTH),record.getValue(Iicolumns.COLUMN_SCALE));
-ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getSchema(),getName()),record.getValue(trim(Iicolumns.COLUMN_NAME)),record.getValue(Iicolumns.COLUMN_SEQUENCE),type,record.getValue(Iicolumns.COLUMN_NULLS,boolean.class),record.getValue(Iicolumns.COLUMN_ALWAYS_IDENT,boolean.class) || record.getValue(Iicolumns.COLUMN_BYDEFAULT_IDENT,boolean.class),record.getValue(trim(IidbSubcomments.LONG_REMARK)));
+DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),typeName,record.getValue(Iicolumns.COLUMN_LENGTH),record.getValue(Iicolumns.COLUMN_LENGTH),record.getValue(Iicolumns.COLUMN_SCALE),record.getValue(Iicolumns.COLUMN_NULLS,boolean.class),record.getValue(Iicolumns.COLUMN_HAS_DEFAULT,boolean.class));
+ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getSchema(),getName()),record.getValue(trim(Iicolumns.COLUMN_NAME)),record.getValue(Iicolumns.COLUMN_SEQUENCE),type,record.getValue(Iicolumns.COLUMN_ALWAYS_IDENT,boolean.class) || record.getValue(Iicolumns.COLUMN_BYDEFAULT_IDENT,boolean.class),record.getValue(trim(IidbSubcomments.LONG_REMARK)));
 result.add(column);
 }
 return result;

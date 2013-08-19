@@ -23,7 +23,7 @@
     if (s != null && !"null".equalsIgnoreCase(s.trim())) {
       scale=Integer.valueOf(s.trim());
     }
-    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),record.getValue("Type",String.class),length,precision,scale);
+    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),record.getValue("Type",String.class),length,precision,scale,null,null);
     ParameterDefinition parameter=new DefaultParameterDefinition(this,n.replaceAll("@",""),o,type);
     addParameter(InOutDefinition.getFromString(inOut),parameter);
   }
