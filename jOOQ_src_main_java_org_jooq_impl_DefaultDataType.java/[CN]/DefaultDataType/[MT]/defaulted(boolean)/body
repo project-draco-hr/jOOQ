@@ -1,0 +1,3 @@
+{
+  return new DefaultDataType<T>(dialect,sqlDataType,type,typeName,castTypeName,precision,scale,length,nullable,d);
+}

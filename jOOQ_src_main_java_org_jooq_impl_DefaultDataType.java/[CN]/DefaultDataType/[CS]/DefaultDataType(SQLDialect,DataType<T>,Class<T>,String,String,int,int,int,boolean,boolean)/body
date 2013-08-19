@@ -20,6 +20,8 @@
       precision=BYTE_PRECISION;
     }
   }
+  this.nullable=nullable;
+  this.defaulted=defaulted;
   this.precision=precision;
   this.scale=scale;
   this.length=length;

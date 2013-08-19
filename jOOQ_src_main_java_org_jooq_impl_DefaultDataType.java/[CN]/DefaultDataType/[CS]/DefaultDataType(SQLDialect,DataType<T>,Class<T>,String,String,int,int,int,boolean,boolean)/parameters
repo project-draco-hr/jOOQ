@@ -6,3 +6,5 @@ String castTypeName
 int precision
 int scale
 int length
+boolean nullable
+boolean defaulted

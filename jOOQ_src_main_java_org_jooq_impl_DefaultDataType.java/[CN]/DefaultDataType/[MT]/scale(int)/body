@@ -3,6 +3,6 @@
     return this;
   }
  else {
-    return new DefaultDataType<T>(dialect,sqlDataType,type,typeName,castTypeName,precision,s,length);
+    return new DefaultDataType<T>(dialect,sqlDataType,type,typeName,castTypeName,precision,s,length,nullable,defaulted);
   }
 }
