@@ -1,8 +1,5 @@
 {
-  if (url.startsWith("jdbc:ucanaccess:")) {
-    return ACCESS;
-  }
- else   if (url.startsWith("jdbc:jtds:sybase:")) {
+  if (url.startsWith("jdbc:jtds:sybase:")) {
     return ASE;
   }
  else   if (url.startsWith("jdbc:cubrid:")) {

@@ -1,24 +1,16 @@
 {
   try {
     List<Schema> result=new ArrayList<Schema>();
-switch (configuration.dialect()) {
-case ACCESS:
-      break;
-default :
-{
-      Result<Record> schemas=create.fetch(meta().getSchemas());
-      for (      String name : schemas.getValues(0,String.class)) {
-        result.add(new MetaSchema(name));
-      }
-      break;
+    Result<Record> schemas=create.fetch(meta().getSchemas());
+    for (    String name : schemas.getValues(0,String.class)) {
+      result.add(new MetaSchema(name));
     }
-}
-if (result.isEmpty()) {
-  result.add(new MetaSchema(""));
-}
-return result;
-}
- catch (SQLException e) {
-throw new DataAccessException("Error while accessing DatabaseMetaData",e);
-}
+    if (result.isEmpty()) {
+      result.add(new MetaSchema(""));
+    }
+    return result;
+  }
+ catch (  SQLException e) {
+    throw new DataAccessException("Error while accessing DatabaseMetaData",e);
+  }
 }

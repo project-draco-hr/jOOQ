@@ -18,7 +18,6 @@ case MARIADB:
 case MYSQL:
       sql("`").sql(StringUtils.replace(literal,"`","``")).sql("`");
     break;
-case ACCESS:
 case ASE:
 case SQLSERVER:
 case SYBASE:
