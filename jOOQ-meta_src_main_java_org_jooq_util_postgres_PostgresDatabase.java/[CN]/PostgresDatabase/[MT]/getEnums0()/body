@@ -1,15 +1,20 @@
 {
   List<EnumDefinition> result=new ArrayList<EnumDefinition>();
-  Result<Record3<String,String,String>> records=create().select(PG_NAMESPACE.NSPNAME,PG_TYPE.TYPNAME,PG_ENUM.ENUMLABEL).from(PG_ENUM).join(PG_TYPE).on("pg_enum.enumtypid = pg_type.oid").join(PG_NAMESPACE).on("pg_type.typnamespace = pg_namespace.oid").where(PG_NAMESPACE.NSPNAME.in(getInputSchemata())).orderBy(PG_NAMESPACE.NSPNAME,PG_TYPE.TYPNAME,PG_ENUM.ENUMLABEL).fetch();
-  DefaultEnumDefinition definition=null;
-  for (  Record record : records) {
-    SchemaDefinition schema=getSchema(record.getValue(PG_NAMESPACE.NSPNAME));
-    String typeName=String.valueOf(record.getValue(PG_TYPE.TYPNAME));
-    if (definition == null || !definition.getName().equals(typeName)) {
-      definition=new DefaultEnumDefinition(schema,typeName,null);
-      result.add(definition);
+  Result<Record2<String,String>> types=create().select(PG_NAMESPACE.NSPNAME,PG_TYPE.TYPNAME).from(PG_TYPE).join(PG_NAMESPACE).on("pg_type.typnamespace = pg_namespace.oid").where(PG_NAMESPACE.NSPNAME.in(getInputSchemata())).and(field("pg_type.oid",Long.class).in(select(PG_ENUM.ENUMTYPID).from(PG_ENUM))).orderBy(PG_NAMESPACE.NSPNAME,PG_TYPE.TYPNAME).fetch();
+  for (  Record2<String,String> type : types) {
+    String nspname=type.getValue(PG_NAMESPACE.NSPNAME);
+    String typname=type.getValue(PG_TYPE.TYPNAME);
+    List<String> labels=create().select(PG_ENUM.ENUMLABEL).from(PG_ENUM).join(PG_TYPE).on("pg_enum.enumtypid = pg_type.oid").join(PG_NAMESPACE).on("pg_type.typnamespace = pg_namespace.oid").where(PG_NAMESPACE.NSPNAME.eq(nspname)).and(PG_TYPE.TYPNAME.eq(typname)).orderBy(field("{0}::{1}",PG_ENUM.ENUMLABEL,name(nspname,typname))).fetch(PG_ENUM.ENUMLABEL);
+    DefaultEnumDefinition definition=null;
+    for (    String label : labels) {
+      SchemaDefinition schema=getSchema(nspname);
+      String typeName=String.valueOf(typname);
+      if (definition == null || !definition.getName().equals(typeName)) {
+        definition=new DefaultEnumDefinition(schema,typeName,null);
+        result.add(definition);
+      }
+      definition.addLiteral(label);
     }
-    definition.addLiteral(String.valueOf(record.getValue(PG_ENUM.ENUMLABEL)));
   }
   return result;
 }
