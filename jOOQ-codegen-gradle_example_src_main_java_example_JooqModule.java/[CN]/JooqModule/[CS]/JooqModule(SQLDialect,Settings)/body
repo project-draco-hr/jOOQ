@@ -1,0 +1,4 @@
+{
+  this.dialect=checkNotNull(dialect);
+  this.setting=checkNotNull(setting);
+}
