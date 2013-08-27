@@ -1,0 +1,3 @@
+{
+  return Objects.toStringHelper(this).add("firstName",firstName).add("lastName",lastName).toString();
+}

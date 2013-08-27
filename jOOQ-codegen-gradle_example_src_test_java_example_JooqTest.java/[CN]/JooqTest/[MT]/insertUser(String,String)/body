@@ -1,0 +1,6 @@
+{
+  UserRecord record=new UserRecord();
+  record.setFirstName(firstName);
+  record.setLastName(lastName);
+  return db.insertInto(USER).set(record).returning().fetchOne().map(recordMapper);
+}

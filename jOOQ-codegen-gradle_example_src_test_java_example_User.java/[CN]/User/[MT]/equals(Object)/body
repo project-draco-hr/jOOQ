@@ -1,0 +1,10 @@
+{
+  if (o == this) {
+    return true;
+  }
+ else   if (!(o instanceof User)) {
+    return false;
+  }
+  User user=(User)o;
+  return Objects.equal(id,user.id) && Objects.equal(name,user.name);
+}

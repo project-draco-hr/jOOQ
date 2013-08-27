@@ -1,0 +1,10 @@
+{
+  if (o == this) {
+    return true;
+  }
+ else   if (!(o instanceof Name)) {
+    return false;
+  }
+  Name name=(Name)o;
+  return Objects.equal(firstName,name.firstName) && Objects.equal(lastName,name.lastName);
+}
