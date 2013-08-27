@@ -1,0 +1,18 @@
+{
+  TextWriter out=new TextWriter(new File(targetPackageDir,"LICENSE.txt"));
+  if (LicenseChecker.isValid(getLicense())) {
+    printParagraph(out,"This code is licensed to " + getLicense().getLicenseHolder() + " through a jOOQ Per Seat License or a jOOQ Site License","");
+  }
+ else {
+    printParagraph(out,"Copyright (c) " + Calendar.getInstance().get(Calendar.YEAR) + " by Data Geekery GmbH","");
+    out.println();
+    printParagraph(out,"This program is free software: you can redistribute it and/or modify " + "it under the terms of the GNU Affero General Public License as " + "published by the Free Software Foundation, either version 3 of the "+ "License, or (at your option) any later version.","");
+    printParagraph(out,"","");
+    out.println();
+    printParagraph(out,"This program is distributed in the hope that it will be useful, " + "but WITHOUT ANY WARRANTY; without even the implied warranty of " + "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the "+ "GNU Affero General Public License for more details.","");
+    printParagraph(out,"","");
+    out.println();
+    printParagraph(out,"You should have received a copy of the GNU Affero General Public License " + "along with this program.  If not, see <http://www.gnu.org/licenses/>.","");
+  }
+  out.close();
+}

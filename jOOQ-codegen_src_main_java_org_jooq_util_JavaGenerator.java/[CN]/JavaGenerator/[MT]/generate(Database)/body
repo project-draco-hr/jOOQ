@@ -1,5 +1,20 @@
 {
   this.database=db;
+  log.info("License parameters");
+  log.info("----------------------------------------------------------");
+  log.info("  Thank you for using jOOQ and jOOQ's code generator");
+  log.info("");
+  if (LicenseChecker.isValid(getLicense())) {
+    log.info("  You are using jOOQ's code generator with a valid license.");
+    log.info("  The generated code belongs to " + getLicense().getLicenseHolder());
+  }
+ else {
+    log.info("  YOU ARE USING jOOQ's CODE GENERATOR WITH THE jOOQ COMMUNITY LICENSE");
+    log.info("  Data Geekery GmbH will license generated code to you");
+    log.info("  through the GNU Affero General Public License (AFFERO GPL)");
+    log.info("  See http://www.gnu.org/licenses for details");
+  }
+  log.info("");
   log.info("Database parameters");
   log.info("----------------------------------------------------------");
   log.info("  dialect",database.getDialect());
@@ -30,6 +45,7 @@
   File targetPackageDir=new File(getTargetDirectory() + File.separator + targetPackage.replace('.',File.separatorChar));
   log.info("Emptying",targetPackageDir.getAbsolutePath());
   empty(targetPackageDir,".java");
+  license(targetPackageDir);
   log.info("Generating schemata","Total: " + database.getSchemata().size());
   for (  SchemaDefinition schema : database.getSchemata()) {
     try {

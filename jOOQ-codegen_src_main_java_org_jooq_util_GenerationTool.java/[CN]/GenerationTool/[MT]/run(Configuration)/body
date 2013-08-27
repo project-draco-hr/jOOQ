@@ -79,6 +79,7 @@
     if (StringUtils.isBlank(g.getTarget().getDirectory()))     g.getTarget().setDirectory("target/generated-sources/jooq");
     generator.setTargetPackage(g.getTarget().getPackageName());
     generator.setTargetDirectory(g.getTarget().getDirectory());
+    generator.setLicense(configuration.getLicense());
     if (g.getGenerate() == null)     g.setGenerate(new Generate());
     if (g.getGenerate().isRelations() != null)     generator.setGenerateRelations(g.getGenerate().isRelations());
     if (g.getGenerate().isDeprecated() != null)     generator.setGenerateDeprecated(g.getGenerate().isDeprecated());
