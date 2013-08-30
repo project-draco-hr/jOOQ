@@ -1,6 +1,10 @@
 {
+  if (foreignKeyColumn == null) {
+    log.info("Ignoring foreign key",foreignKeyColumn + "(column unavailable)");
+    return;
+  }
   if (uniqueKeySchema == null) {
-    log.warn("Unused foreign key",foreignKeyName + " (" + foreignKeyColumn+ ") referencing "+ uniqueKeyName+ " references a schema out of scope for jooq-meta");
+    log.warn("Ignoring foreign key",foreignKeyName + " (" + foreignKeyColumn+ ") referencing "+ uniqueKeyName+ " references a schema out of scope for jooq-meta");
     return;
   }
   log.info("Adding foreign key",foreignKeyName + " (" + foreignKeyColumn+ ") referencing "+ uniqueKeyName);

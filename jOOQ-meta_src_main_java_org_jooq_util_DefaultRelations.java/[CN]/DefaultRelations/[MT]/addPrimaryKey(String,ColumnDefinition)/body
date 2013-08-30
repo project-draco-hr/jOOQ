@@ -1,4 +1,8 @@
 {
+  if (column == null) {
+    log.info("Ignoring primary key",keyName + "(column unavailable)");
+    return;
+  }
   if (log.isDebugEnabled()) {
     log.debug("Adding primary key",keyName + " (" + column+ ")");
   }
