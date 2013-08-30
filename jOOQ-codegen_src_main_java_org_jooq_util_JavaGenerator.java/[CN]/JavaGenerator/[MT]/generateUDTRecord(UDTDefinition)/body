@@ -46,6 +46,7 @@
   out.tab(1).println("public %s() {",className);
   out.tab(2).println("super(%s);",udtId);
   out.tab(1).println("}");
+  generateUDTRecordClassFooter(udt,out);
   out.println("}");
   out.close();
 }

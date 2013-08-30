@@ -60,6 +60,7 @@
   if (generateInterfaces()) {
     printFromAndInto(out,table);
   }
+  generatePojoClassFooter(table,out);
   out.println("}");
   out.close();
 }

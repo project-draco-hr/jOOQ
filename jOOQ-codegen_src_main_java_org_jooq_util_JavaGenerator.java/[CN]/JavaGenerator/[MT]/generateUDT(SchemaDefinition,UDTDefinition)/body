@@ -48,6 +48,7 @@
   out.tab(2).println("// Initialise data type");
   out.tab(2).println("getDataType();");
   out.tab(1).println("}");
+  generateUDTClassFooter(udt,out);
   out.println("}");
   out.close();
 }

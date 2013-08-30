@@ -32,6 +32,7 @@
   out.tab(1).println("public java.lang.String getLiteral() {");
   out.tab(2).println("return literal;");
   out.tab(1).println("}");
+  generateEnumClassFooter(e,out);
   out.println("}");
   out.close();
 }

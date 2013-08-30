@@ -25,6 +25,7 @@
   out.tab(2).println("this(configuration);");
   out.tab(2).println("setList(list);");
   out.tab(1).println("}");
+  generateArrayClassFooter(array,out);
   out.println("}");
   out.close();
 }

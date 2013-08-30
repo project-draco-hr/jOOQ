@@ -79,6 +79,7 @@
       out.tab(1).println("}");
     }
   }
+  generateRoutineClassFooter(routine,out);
   out.println("}");
   out.close();
 }

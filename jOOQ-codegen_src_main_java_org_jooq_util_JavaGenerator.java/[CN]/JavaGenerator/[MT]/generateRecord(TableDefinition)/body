@@ -114,6 +114,7 @@
     out.tab(2).println("setValue(%s, %s);",i,columnMember);
   }
   out.tab(1).println("}");
+  generateRecordClassFooter(table,out);
   out.println("}");
   out.close();
 }

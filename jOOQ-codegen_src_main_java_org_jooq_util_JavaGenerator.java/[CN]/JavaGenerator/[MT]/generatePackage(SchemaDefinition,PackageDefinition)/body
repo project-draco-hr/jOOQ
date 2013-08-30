@@ -22,6 +22,7 @@
   out.tab(1).println("private %s() {",className);
   out.tab(2).println("super(\"%s\", %s);",pkg.getOutputName(),schemaIdentifier);
   out.tab(1).println("}");
+  generatePackageClassFooter(pkg,out);
   out.println("}");
   out.close();
 }

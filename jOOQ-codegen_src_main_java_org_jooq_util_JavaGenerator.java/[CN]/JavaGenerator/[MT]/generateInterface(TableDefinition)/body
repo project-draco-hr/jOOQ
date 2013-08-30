@@ -27,6 +27,7 @@
   out.tab(1).println("public void from(%s from);",qualified);
   out.tab(1).javadoc("Copy data into another generated Record/POJO implementing the common interface %s",local);
   out.tab(1).println("public <E extends %s> E into(E into);",qualified);
+  generateInterfaceClassFooter(table,out);
   out.println("}");
   out.close();
 }

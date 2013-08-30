@@ -21,6 +21,7 @@
   }
   printSchemaReferences(out,database.getTables(schema),Table.class,true);
   printSchemaReferences(out,database.getUDTs(schema),UDT.class,true);
+  generateSchemaClassFooter(schema,out);
   out.println("}");
   out.close();
 }

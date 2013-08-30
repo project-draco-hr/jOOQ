@@ -110,6 +110,7 @@
     out.tab(2).println("return new %s(alias);",fullClassName);
     out.tab(1).println("}");
   }
+  generateTableClassFooter(table,out);
   out.println("}");
   out.close();
 }
