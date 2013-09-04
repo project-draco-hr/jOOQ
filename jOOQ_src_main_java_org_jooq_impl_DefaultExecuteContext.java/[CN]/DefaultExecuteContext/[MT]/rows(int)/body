@@ -1,0 +1,6 @@
+{
+  this.rows=r;
+  if (batchRows.length == 1) {
+    batchRows[0]=r;
+  }
+}

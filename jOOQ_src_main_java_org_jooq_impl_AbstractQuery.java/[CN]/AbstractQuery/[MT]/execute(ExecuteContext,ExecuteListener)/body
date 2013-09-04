@@ -3,6 +3,7 @@
   listener.executeStart(ctx);
   if (!ctx.statement().execute()) {
     result=ctx.statement().getUpdateCount();
+    ctx.rows(result);
   }
   listener.executeEnd(ctx);
   return result;

@@ -10,6 +10,7 @@ case SQLITE:
 {
         listener.executeStart(ctx);
         result=ctx.statement().executeUpdate();
+        ctx.rows(result);
         listener.executeEnd(ctx);
         DSLContext create=DSL.using(ctx.configuration());
         returned=create.select(returning).from(getInto()).where(rowid().equal(rowid().getDataType().convert(create.lastID()))).fetchInto(getInto());
@@ -20,6 +21,7 @@ case SYBASE:
 {
       listener.executeStart(ctx);
       result=ctx.statement().executeUpdate();
+      ctx.rows(result);
       listener.executeEnd(ctx);
       selectReturning(ctx.configuration(),create(ctx.configuration()).lastID());
       return result;
@@ -34,6 +36,7 @@ case SQLSERVER:
 {
     listener.executeStart(ctx);
     result=ctx.statement().executeUpdate();
+    ctx.rows(result);
     listener.executeEnd(ctx);
     rs=ctx.statement().getGeneratedKeys();
     try {
@@ -65,6 +68,7 @@ default :
 {
 listener.executeStart(ctx);
 result=ctx.statement().executeUpdate();
+ctx.rows(result);
 listener.executeEnd(ctx);
 rs=ctx.statement().getGeneratedKeys();
 break;

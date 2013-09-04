@@ -1,4 +1,5 @@
 {
+  ctx.rows(rows);
   listener.fetchEnd(ctx);
   Utils.safeClose(listener,ctx,keepStatement,keepResultSet);
 }
