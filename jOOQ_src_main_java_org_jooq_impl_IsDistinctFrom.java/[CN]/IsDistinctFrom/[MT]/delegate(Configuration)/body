@@ -1,5 +1,5 @@
 {
-  if (asList(ASE,CUBRID,DB2,DERBY,INGRES,ORACLE,SQLSERVER,SQLITE,SYBASE).contains(configuration.dialect().family())) {
+  if (asList(ASE,CUBRID,DB2,DERBY,INGRES,ORACLE,SQLSERVER,SYBASE).contains(configuration.dialect().family())) {
     if (caseExpression == null) {
       if (comparator == Comparator.IS_DISTINCT_FROM) {
         caseExpression=(QueryPartInternal)decode().when(lhs.isNull().and(rhs.isNull()),zero()).when(lhs.isNull().and(rhs.isNotNull()),one()).when(lhs.isNotNull().and(rhs.isNull()),one()).when(lhs.equal(rhs),zero()).otherwise(one()).equal(one());
@@ -13,13 +13,24 @@
  else   if (asList(MARIADB,MYSQL).contains(configuration.dialect())) {
     if (mySQLCondition == null) {
       if (comparator == Comparator.IS_DISTINCT_FROM) {
-        mySQLCondition=(QueryPartInternal)condition("not({0} <=> {1})",lhs,rhs);
+        mySQLCondition=(QueryPartInternal)condition("{not}({0} <=> {1})",lhs,rhs);
       }
  else {
         mySQLCondition=(QueryPartInternal)condition("{0} <=> {1}",lhs,rhs);
       }
     }
     return mySQLCondition;
+  }
+ else   if (SQLITE == configuration.dialect()) {
+    if (sqliteCondition == null) {
+      if (comparator == Comparator.IS_DISTINCT_FROM) {
+        sqliteCondition=(QueryPartInternal)condition("{0} {is not} {1}",lhs,rhs);
+      }
+ else {
+        sqliteCondition=(QueryPartInternal)condition("{0} {is} {1}",lhs,rhs);
+      }
+    }
+    return sqliteCondition;
   }
  else {
     if (compareCondition == null) {
