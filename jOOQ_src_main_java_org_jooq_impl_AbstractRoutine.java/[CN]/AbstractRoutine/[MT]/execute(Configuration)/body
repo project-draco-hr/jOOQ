@@ -1,4 +1,10 @@
 {
-  attach(c);
-  return execute();
+  Configuration previous=configuration();
+  try {
+    attach(c);
+    return execute();
+  }
+  finally {
+    attach(previous);
+  }
 }
