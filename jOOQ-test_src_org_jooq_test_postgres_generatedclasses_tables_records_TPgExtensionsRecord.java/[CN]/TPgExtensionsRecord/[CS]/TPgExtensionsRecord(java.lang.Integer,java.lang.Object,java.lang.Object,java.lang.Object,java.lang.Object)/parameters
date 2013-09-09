@@ -1,0 +1,5 @@
+java.lang.Integer id
+java.lang.Object pgInterval
+java.lang.Object pgBox
+java.lang.Object pgHstore
+java.lang.Object pgGeometry

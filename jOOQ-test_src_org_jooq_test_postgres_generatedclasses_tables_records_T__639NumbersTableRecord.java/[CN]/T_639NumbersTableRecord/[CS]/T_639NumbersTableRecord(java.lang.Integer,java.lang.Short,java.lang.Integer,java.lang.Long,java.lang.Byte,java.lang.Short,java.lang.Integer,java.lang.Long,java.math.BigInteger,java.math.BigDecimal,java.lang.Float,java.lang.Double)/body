@@ -1,0 +1,15 @@
+{
+  super(org.jooq.test.postgres.generatedclasses.tables.T_639NumbersTable.T_639_NUMBERS_TABLE);
+  setValue(0,id);
+  setValue(1,short_);
+  setValue(2,integer);
+  setValue(3,long_);
+  setValue(4,byteDecimal);
+  setValue(5,shortDecimal);
+  setValue(6,integerDecimal);
+  setValue(7,longDecimal);
+  setValue(8,bigInteger);
+  setValue(9,bigDecimal);
+  setValue(10,float_);
+  setValue(11,double_);
+}
