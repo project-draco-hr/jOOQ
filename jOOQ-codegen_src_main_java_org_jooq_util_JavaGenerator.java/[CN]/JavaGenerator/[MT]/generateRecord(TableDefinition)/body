@@ -37,7 +37,7 @@
     final String type=getJavaType(column.getType());
     final String name=column.getQualifiedOutputName();
     out.tab(1).javadoc("Setter for <code>%s</code>. %s",name,comment);
-    out.tab(1).overrideIf(generateInterfaces());
+    out.tab(1).overrideIf(generateInterfaces() && !generateImmutablePojos());
     out.tab(1).println("public void %s(%s value) {",setter,type);
     out.tab(2).println("setValue(%s, value);",i);
     out.tab(1).println("}");
@@ -89,7 +89,7 @@
       out.tab(1).println("}");
     }
   }
-  if (generateInterfaces()) {
+  if (generateInterfaces() && !generateImmutablePojos()) {
     printFromAndInto(out,table);
   }
   out.tab(1).header("Constructors");

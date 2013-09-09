@@ -30,6 +30,11 @@
   log.info("  relations",generateRelations() + ((!generateRelations && generateDaos) ? " (forced to true because of <daos/>)" : ""));
   log.info("  global references",generateGlobalObjectReferences());
   log.info("----------------------------------------------------------");
+  log.info("");
+  log.info("Generation remarks");
+  log.info("----------------------------------------------------------");
+  if (generateImmutablePojos && generateInterfaces)   log.info("  immutable pojos","Immutable POJOs do not have any setters. Hence, setters are also missing from interfaces");
+  log.info("----------------------------------------------------------");
   String targetPackage=getTargetPackage();
   File targetPackageDir=new File(getTargetDirectory() + File.separator + targetPackage.replace('.',File.separatorChar));
   log.info("Emptying",targetPackageDir.getAbsolutePath());

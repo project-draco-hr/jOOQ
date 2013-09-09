@@ -57,7 +57,7 @@
       out.tab(1).println("}");
     }
   }
-  if (generateInterfaces()) {
+  if (generateInterfaces() && !generateImmutablePojos()) {
     printFromAndInto(out,table);
   }
   generatePojoClassFooter(table,out);
