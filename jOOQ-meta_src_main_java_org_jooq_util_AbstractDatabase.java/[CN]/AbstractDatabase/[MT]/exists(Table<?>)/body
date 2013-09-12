@@ -1,0 +1,14 @@
+{
+  Boolean result=exists.get(table);
+  if (result == null) {
+    try {
+      create().selectOne().from(table).where(falseCondition()).fetch();
+      result=true;
+    }
+ catch (    DataAccessException e) {
+      result=false;
+    }
+    exists.put(table,result);
+  }
+  return result;
+}

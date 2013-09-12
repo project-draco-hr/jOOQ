@@ -1,9 +1,11 @@
 {
   List<UDTDefinition> result=new ArrayList<UDTDefinition>();
-  for (  Record record : create().selectDistinct(ATTRIBUTES.UDT_SCHEMA,ATTRIBUTES.UDT_NAME).from(ATTRIBUTES).where(ATTRIBUTES.UDT_SCHEMA.in(getInputSchemata())).orderBy(ATTRIBUTES.UDT_SCHEMA,ATTRIBUTES.UDT_NAME).fetch()) {
-    SchemaDefinition schema=getSchema(record.getValue(ATTRIBUTES.UDT_SCHEMA));
-    String name=record.getValue(ATTRIBUTES.UDT_NAME);
-    result.add(new PostgresUDTDefinition(schema,name,null));
+  if (exists(ATTRIBUTES)) {
+    for (    Record record : create().selectDistinct(ATTRIBUTES.UDT_SCHEMA,ATTRIBUTES.UDT_NAME).from(ATTRIBUTES).where(ATTRIBUTES.UDT_SCHEMA.in(getInputSchemata())).orderBy(ATTRIBUTES.UDT_SCHEMA,ATTRIBUTES.UDT_NAME).fetch()) {
+      SchemaDefinition schema=getSchema(record.getValue(ATTRIBUTES.UDT_SCHEMA));
+      String name=record.getValue(ATTRIBUTES.UDT_NAME);
+      result.add(new PostgresUDTDefinition(schema,name,null));
+    }
   }
   return result;
 }
