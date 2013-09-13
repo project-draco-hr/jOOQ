@@ -1,0 +1,13 @@
+{
+  this.id=id;
+  this.oneZero=oneZero;
+  this.trueFalseLc=trueFalseLc;
+  this.trueFalseUc=trueFalseUc;
+  this.yesNoLc=yesNoLc;
+  this.yesNoUc=yesNoUc;
+  this.yNLc=yNLc;
+  this.yNUc=yNUc;
+  this.vcBoolean=vcBoolean;
+  this.cBoolean=cBoolean;
+  this.nBoolean=nBoolean;
+}

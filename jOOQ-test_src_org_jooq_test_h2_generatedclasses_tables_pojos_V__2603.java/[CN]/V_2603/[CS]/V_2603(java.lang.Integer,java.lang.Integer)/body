@@ -1,0 +1,4 @@
+{
+  this.col1=col1;
+  this.col4=col4;
+}
