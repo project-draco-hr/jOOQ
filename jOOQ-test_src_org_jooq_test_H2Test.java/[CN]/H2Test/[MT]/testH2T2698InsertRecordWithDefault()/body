@@ -1,4 +1,5 @@
 {
+  jOOQAbstractTest.reset=false;
   T_2698Record record=create().newRecord(T_2698);
   record.setId(1);
   assertEquals(1,record.store());
