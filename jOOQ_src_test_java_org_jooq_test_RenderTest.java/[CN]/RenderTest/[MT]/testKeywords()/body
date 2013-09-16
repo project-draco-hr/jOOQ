@@ -1,9 +1,9 @@
 {
   Keyword keyword=DSL.keyword("Abc");
   Field<?> f=DSL.field("{0} Untouched {Xx} Untouched {1}",keyword,keyword);
-  DSLContext def=DSL.using(ORACLE);
-  DSLContext lower=DSL.using(ORACLE,new Settings().withRenderKeywordStyle(LOWER));
-  DSLContext upper=DSL.using(ORACLE,new Settings().withRenderKeywordStyle(UPPER));
+  DSLContext def=DSL.using(MYSQL);
+  DSLContext lower=DSL.using(MYSQL,new Settings().withRenderKeywordStyle(LOWER));
+  DSLContext upper=DSL.using(MYSQL,new Settings().withRenderKeywordStyle(UPPER));
   assertEquals("abc Untouched xx Untouched abc",def.render(f));
   assertEquals("abc Untouched xx Untouched abc",lower.render(f));
   assertEquals("ABC Untouched XX Untouched ABC",upper.render(f));
