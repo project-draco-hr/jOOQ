@@ -9,11 +9,11 @@ case ASE:
 case INGRES:
   checkForceInline(1024);
 return;
-case SQLITE:
-checkForceInline(999);
-return;
 case SQLSERVER:
 checkForceInline(2100);
+return;
+case SQLITE:
+checkForceInline(999);
 return;
 default :
 return;

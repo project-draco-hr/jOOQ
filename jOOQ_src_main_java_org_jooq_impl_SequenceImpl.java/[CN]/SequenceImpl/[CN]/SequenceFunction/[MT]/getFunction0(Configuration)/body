@@ -15,10 +15,10 @@ case POSTGRES:
     String field=method + "('" + getQualifiedName(configuration)+ "')";
     return field(field,getDataType());
   }
+case SQLSERVER:
 case FIREBIRD:
 case DERBY:
 case HSQLDB:
-case SQLSERVER:
 {
   if ("nextval".equals(method)) {
     String field="next value for " + getQualifiedName(configuration);

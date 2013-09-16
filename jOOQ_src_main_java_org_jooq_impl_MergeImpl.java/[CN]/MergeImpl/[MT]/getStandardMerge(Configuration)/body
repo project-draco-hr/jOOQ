@@ -1,11 +1,11 @@
 {
 switch (config.dialect().family()) {
-case CUBRID:
 case DB2:
-case HSQLDB:
 case ORACLE:
 case SQLSERVER:
 case SYBASE:
+case CUBRID:
+case HSQLDB:
 {
       Table<?> src;
       if (h2Select != null) {

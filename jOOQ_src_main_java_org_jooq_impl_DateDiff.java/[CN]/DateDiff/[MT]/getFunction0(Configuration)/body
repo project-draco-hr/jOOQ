@@ -1,16 +1,10 @@
 {
 switch (configuration.dialect().family()) {
-case ASE:
-case SQLSERVER:
-case SYBASE:
-    return field("{datediff}(day, {0}, {1})",getDataType(),date2,date1);
 case MARIADB:
 case MYSQL:
-  return function("datediff",getDataType(),date1,date2);
-case DB2:
-return function("days",getDataType(),date1).sub(function("days",getDataType(),date2));
+    return function("datediff",getDataType(),date1,date2);
 case DERBY:
-return field("{fn {timestampdiff}({sql_tsi_day}, {0}, {1}) }",getDataType(),date2,date1);
+  return field("{fn {timestampdiff}({sql_tsi_day}, {0}, {1}) }",getDataType(),date2,date1);
 case FIREBIRD:
 return field("{datediff}(day, {0}, {1})",getDataType(),date2,date1);
 case H2:
@@ -18,10 +12,16 @@ case HSQLDB:
 return field("{datediff}('day', {0}, {1})",getDataType(),date2,date1);
 case SQLITE:
 return field("({strftime}('%s', {0}) - {strftime}('%s', {1})) / 86400",getDataType(),date1,date2);
-case CUBRID:
 case ORACLE:
+case CUBRID:
 case POSTGRES:
 return field("{0} - {1}",getDataType(),date1,date2);
+case ASE:
+case SQLSERVER:
+case SYBASE:
+return field("{datediff}(day, {0}, {1})",getDataType(),date2,date1);
+case DB2:
+return function("days",getDataType(),date1).sub(function("days",getDataType(),date2));
 case INGRES:
 }
 return date1.sub(date2).cast(Integer.class);

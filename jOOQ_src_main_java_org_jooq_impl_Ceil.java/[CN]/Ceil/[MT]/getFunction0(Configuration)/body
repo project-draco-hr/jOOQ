@@ -3,8 +3,8 @@ switch (configuration.dialect().family()) {
 case SQLITE:
     return DSL.round(argument.add(0.499999999999999));
 case ASE:
-case H2:
 case SQLSERVER:
+case H2:
   return function("ceiling",getDataType(),argument);
 default :
 return function("ceil",getDataType(),argument);

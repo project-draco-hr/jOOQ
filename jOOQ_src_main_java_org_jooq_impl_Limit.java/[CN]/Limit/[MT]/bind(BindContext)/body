@@ -1,8 +1,8 @@
 {
 switch (context.configuration().dialect()) {
-case DERBY:
 case SQLSERVER:
 case SQLSERVER2012:
+case DERBY:
 {
       context.visit(offsetOrZero);
       context.visit(numberOfRows);

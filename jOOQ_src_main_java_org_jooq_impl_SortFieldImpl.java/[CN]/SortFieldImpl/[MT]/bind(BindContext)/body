@@ -1,15 +1,15 @@
 {
   if (nullsFirst || nullsLast) {
 switch (context.configuration().dialect().family()) {
-case DB2:
 case ASE:
-case CUBRID:
+case DB2:
 case INGRES:
+case SQLSERVER:
+case SYBASE:
+case CUBRID:
 case MARIADB:
 case MYSQL:
 case SQLITE:
-case SQLSERVER:
-case SYBASE:
 {
         context.visit(field);
       }

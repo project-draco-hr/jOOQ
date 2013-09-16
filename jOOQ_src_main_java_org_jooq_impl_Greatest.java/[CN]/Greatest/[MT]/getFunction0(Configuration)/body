@@ -4,9 +4,9 @@
   }
 switch (configuration.dialect().family()) {
 case ASE:
-case DERBY:
 case SQLSERVER:
 case SYBASE:
+case DERBY:
 {
       Field<T> first=(Field<T>)getArguments()[0];
       Field<T> other=(Field<T>)getArguments()[1];

@@ -2,8 +2,8 @@
   if (base == null) {
 switch (configuration.dialect().family()) {
 case ASE:
-case H2:
 case SQLSERVER:
+case H2:
       return function("log",SQLDataType.NUMERIC,argument);
 default :
     return function("ln",SQLDataType.NUMERIC,argument);
@@ -13,12 +13,12 @@ default :
 switch (configuration.dialect().family()) {
 case ASE:
 case DB2:
-case DERBY:
-case H2:
-case HSQLDB:
 case INGRES:
 case SQLSERVER:
 case SYBASE:
+case DERBY:
+case H2:
+case HSQLDB:
   return DSL.ln(argument).div(DSL.ln(inline(base)));
 default :
 return function("log",SQLDataType.NUMERIC,inline(base),argument);

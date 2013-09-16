@@ -12,7 +12,8 @@
     op=(op == LIKE_IGNORE_CASE ? LIKE : NOT_LIKE);
   }
   context.visit(lhs).sql(" ");
-  boolean castRhs=(dialect == DB2 && rhs instanceof Concat);
+  boolean castRhs=false;
+  if (dialect == DB2 && rhs instanceof Concat)   castRhs=true;
   context.keyword(op.toSQL()).sql(" ");
   if (castRhs)   context.keyword("cast").sql("(");
   context.visit(rhs);

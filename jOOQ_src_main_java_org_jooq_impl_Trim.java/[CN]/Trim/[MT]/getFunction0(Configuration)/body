@@ -4,7 +4,6 @@ case ASE:
 case INGRES:
 case SQLSERVER:
     return DSL.ltrim(DSL.rtrim(argument));
-default :
-  return function("trim",SQLDataType.VARCHAR,argument);
 }
+return function("trim",SQLDataType.VARCHAR,argument);
 }

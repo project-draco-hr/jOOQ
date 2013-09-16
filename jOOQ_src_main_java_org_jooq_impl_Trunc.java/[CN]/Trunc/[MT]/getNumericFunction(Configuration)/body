@@ -17,17 +17,17 @@ case H2:
 case MARIADB:
 case MYSQL:
   return field("{truncate}({0}, {1})",field.getDataType(),field,decimals);
+case POSTGRES:
+return field("{trunc}({0}, {1})",SQLDataType.NUMERIC,field.cast(BigDecimal.class),decimals).cast(field.getDataType());
 case SQLSERVER:
 return field("{round}({0}, {1}, {2})",field.getDataType(),field,decimals,one());
 case SYBASE:
 return field("{truncnum}({0}, {1})",field.getDataType(),field,decimals);
-case POSTGRES:
-return field("{trunc}({0}, {1})",SQLDataType.NUMERIC,field.cast(BigDecimal.class),decimals).cast(field.getDataType());
-case CUBRID:
 case DB2:
-case HSQLDB:
 case INGRES:
 case ORACLE:
+case CUBRID:
+case HSQLDB:
 default :
 return field("{trunc}({0}, {1})",field.getDataType(),field,decimals);
 }

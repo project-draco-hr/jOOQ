@@ -8,8 +8,8 @@ case FIREBIRD:
 case H2:
 case HSQLDB:
 case CUBRID:
-case POSTGRES:
 case SYBASE:
+case POSTGRES:
 {
           return true;
         }

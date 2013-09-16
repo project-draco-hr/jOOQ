@@ -16,8 +16,8 @@ case SQLITE:
         returned=create.select(returning).from(getInto()).where(rowid().equal(rowid().getDataType().convert(create.lastID()))).fetchInto(getInto());
         return result;
       }
-case CUBRID:
 case SYBASE:
+case CUBRID:
 {
       listener.executeStart(ctx);
       result=ctx.statement().executeUpdate();
@@ -27,12 +27,12 @@ case SYBASE:
       return result;
     }
 case ASE:
+case INGRES:
+case SQLSERVER:
 case DERBY:
 case H2:
-case INGRES:
 case MARIADB:
 case MYSQL:
-case SQLSERVER:
 {
     listener.executeStart(ctx);
     result=ctx.statement().executeUpdate();
@@ -62,8 +62,8 @@ case POSTGRES:
   break;
 }
 case DB2:
-case HSQLDB:
 case ORACLE:
+case HSQLDB:
 default :
 {
 listener.executeStart(ctx);

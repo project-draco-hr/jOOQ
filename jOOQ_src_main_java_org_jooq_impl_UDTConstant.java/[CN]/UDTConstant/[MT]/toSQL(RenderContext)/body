@@ -10,23 +10,23 @@ case ORACLE:
       }
       return;
     }
-case POSTGRES:
-{
-    toSQLInline(context);
-    return;
-  }
 case DB2:
 {
-  context.sql(getInlineConstructor(context));
-  context.sql("()");
-  String separator="..";
-  for (  Field<?> field : value.fields()) {
-    context.sql(separator);
-    context.sql(field.getName());
-    context.sql("(");
-    context.visit(val(value.getValue(field)));
-    context.sql(")");
+    context.sql(getInlineConstructor(context));
+    context.sql("()");
+    String separator="..";
+    for (    Field<?> field : value.fields()) {
+      context.sql(separator);
+      context.sql(field.getName());
+      context.sql("(");
+      context.visit(val(value.getValue(field)));
+      context.sql(")");
+    }
+    return;
   }
+case POSTGRES:
+{
+  toSQLInline(context);
   return;
 }
 default :

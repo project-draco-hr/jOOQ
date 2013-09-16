@@ -1,8 +1,8 @@
 {
 switch (configuration.dialect().family()) {
-case FIREBIRD:
 case INGRES:
 case ORACLE:
+case FIREBIRD:
     return DSL.rpad(string,DSL.length(string).mul(count),string);
 case SQLITE:
   return DSL.field("replace(substr(quote(zeroblob(({0} + 1) / 2)), 3, {0}), '0', {1})",String.class,count,string);

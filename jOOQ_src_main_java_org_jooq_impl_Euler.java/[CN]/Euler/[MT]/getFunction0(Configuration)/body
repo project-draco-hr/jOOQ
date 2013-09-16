@@ -1,19 +1,19 @@
 {
 switch (configuration.dialect().family()) {
 case ASE:
-case CUBRID:
 case DB2:
+case INGRES:
+case ORACLE:
+case SQLSERVER:
+case SYBASE:
+case CUBRID:
 case DERBY:
 case FIREBIRD:
 case H2:
 case HSQLDB:
-case INGRES:
 case MARIADB:
 case MYSQL:
-case ORACLE:
 case POSTGRES:
-case SQLSERVER:
-case SYBASE:
     return DSL.exp(one());
 case SQLITE:
   return inline(Math.E,BigDecimal.class);

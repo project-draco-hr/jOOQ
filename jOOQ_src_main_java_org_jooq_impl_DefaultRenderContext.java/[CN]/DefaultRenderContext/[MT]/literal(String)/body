@@ -23,16 +23,16 @@ case SQLSERVER:
 case SYBASE:
   sql("[").sql(StringUtils.replace(literal,"]","]]")).sql("]");
 break;
-case SQLITE:
-case CUBRID:
 case DB2:
+case INGRES:
+case ORACLE:
+case CUBRID:
 case DERBY:
 case FIREBIRD:
 case H2:
 case HSQLDB:
-case INGRES:
-case ORACLE:
 case POSTGRES:
+case SQLITE:
 default :
 sql('"').sql(StringUtils.replace(literal,"\"","\"\"")).sql('"');
 break;

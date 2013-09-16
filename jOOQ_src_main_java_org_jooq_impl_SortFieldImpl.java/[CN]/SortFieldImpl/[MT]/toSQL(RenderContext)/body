@@ -3,13 +3,13 @@
 switch (context.configuration().dialect().family()) {
 case DB2:
 case ASE:
-case CUBRID:
 case INGRES:
+case SQLSERVER:
+case SYBASE:
+case CUBRID:
 case MARIADB:
 case MYSQL:
 case SQLITE:
-case SQLSERVER:
-case SYBASE:
 {
         Field<Integer> ifNull=nullsFirst ? zero() : one();
         Field<Integer> ifNotNull=nullsFirst ? one() : zero();

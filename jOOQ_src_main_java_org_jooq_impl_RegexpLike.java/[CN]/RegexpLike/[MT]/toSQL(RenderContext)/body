@@ -1,11 +1,11 @@
 {
 switch (context.configuration().dialect().family()) {
+case SYBASE:
 case CUBRID:
 case H2:
 case MARIADB:
 case MYSQL:
 case SQLITE:
-case SYBASE:
 {
       context.visit(search).sql(" ").keyword("regexp").sql(" ").visit(pattern);
       break;
@@ -27,10 +27,10 @@ break;
 }
 case ASE:
 case DB2:
-case DERBY:
-case FIREBIRD:
 case INGRES:
 case SQLSERVER:
+case DERBY:
+case FIREBIRD:
 default :
 {
 context.visit(search).sql(" ").keyword("like_regex").sql(" ").visit(pattern);

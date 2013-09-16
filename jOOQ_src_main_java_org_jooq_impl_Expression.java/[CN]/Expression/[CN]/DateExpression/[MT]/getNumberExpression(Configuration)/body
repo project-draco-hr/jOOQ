@@ -1,9 +1,9 @@
 {
 switch (configuration.dialect().family()) {
 case ASE:
-case FIREBIRD:
 case SQLSERVER:
 case SYBASE:
+case FIREBIRD:
 {
       if (operator == ADD) {
         return field("{dateadd}(day, {0}, {1})",getDataType(),rhsAsNumber(),lhs);
@@ -69,8 +69,8 @@ return field("{datetime}({0}, {1})",getDataType(),lhs,rhsAsNumber().concat(inlin
  else {
 return field("{datetime}({0}, {1})",getDataType(),lhs,rhsAsNumber().neg().concat(inline(" day")));
 }
-case H2:
 case ORACLE:
+case H2:
 default :
 return new DefaultExpression();
 }

@@ -1,9 +1,9 @@
 {
 switch (configuration.dialect().family()) {
-case H2:
-case HSQLDB:
 case INGRES:
 case ORACLE:
+case H2:
+case HSQLDB:
     return function("nvl2",getDataType(),getArguments());
 default :
   return DSL.decode().when(arg1.isNotNull(),arg2).otherwise(arg3);

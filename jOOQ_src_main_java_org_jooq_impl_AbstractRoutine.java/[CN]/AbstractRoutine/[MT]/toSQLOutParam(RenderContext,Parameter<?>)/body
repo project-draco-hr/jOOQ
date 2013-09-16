@@ -4,8 +4,6 @@ case ORACLE:
     context.visit(parameter);
   context.sql(" => ");
 break;
-default :
-break;
 }
 context.sql("?");
 }

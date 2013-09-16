@@ -1,23 +1,23 @@
 {
   String functionName="substring";
 switch (configuration.dialect().family()) {
+case FIREBIRD:
+{
+      if (getArguments().length == 2) {
+        return field("{substring}({0} {from} {1})",SQLDataType.VARCHAR,getArguments());
+      }
+ else {
+        return field("{substring}({0} {from} {1} {for} {2})",SQLDataType.VARCHAR,getArguments());
+      }
+    }
 case ASE:
 case SQLSERVER:
 {
-      if (getArguments().length == 2) {
-        return function(functionName,SQLDataType.VARCHAR,getArguments()[0],getArguments()[1],inline(Integer.MAX_VALUE));
-      }
- else {
-        break;
-      }
-    }
-case FIREBIRD:
-{
     if (getArguments().length == 2) {
-      return field("{substring}({0} {from} {1})",SQLDataType.VARCHAR,getArguments());
+      return function(functionName,SQLDataType.VARCHAR,getArguments()[0],getArguments()[1],inline(Integer.MAX_VALUE));
     }
  else {
-      return field("{substring}({0} {from} {1} {for} {2})",SQLDataType.VARCHAR,getArguments());
+      break;
     }
   }
 case INGRES:
@@ -30,8 +30,8 @@ case INGRES:
   }
 }
 case DB2:
-case DERBY:
 case ORACLE:
+case DERBY:
 case SQLITE:
 functionName="substr";
 break;

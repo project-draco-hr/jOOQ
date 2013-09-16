@@ -3,10 +3,10 @@ switch (configuration.dialect().family()) {
 case ORACLE:
     return field("sysdate",SQLDataType.TIME);
 case DB2:
+case INGRES:
 case DERBY:
 case FIREBIRD:
 case HSQLDB:
-case INGRES:
 case POSTGRES:
 case SQLITE:
   return field("current_time",SQLDataType.TIME);

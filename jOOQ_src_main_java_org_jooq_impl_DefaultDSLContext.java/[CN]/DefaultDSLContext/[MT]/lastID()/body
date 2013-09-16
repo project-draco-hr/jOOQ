@@ -11,21 +11,21 @@ case HSQLDB:
     Field<BigInteger> field=field("identity()",BigInteger.class);
     return select(field).fetchOne(field);
   }
-case INGRES:
-{
-  Field<BigInteger> field=field("last_identity()",BigInteger.class);
-  return select(field).fetchOne(field);
-}
 case CUBRID:
 case MARIADB:
 case MYSQL:
 {
-Field<BigInteger> field=field("last_insert_id()",BigInteger.class);
-return select(field).fetchOne(field);
+  Field<BigInteger> field=field("last_insert_id()",BigInteger.class);
+  return select(field).fetchOne(field);
 }
 case SQLITE:
 {
 Field<BigInteger> field=field("last_insert_rowid()",BigInteger.class);
+return select(field).fetchOne(field);
+}
+case INGRES:
+{
+Field<BigInteger> field=field("last_identity()",BigInteger.class);
 return select(field).fetchOne(field);
 }
 case ASE:

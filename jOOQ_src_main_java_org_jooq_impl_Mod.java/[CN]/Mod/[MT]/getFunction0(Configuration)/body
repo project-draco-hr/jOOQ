@@ -1,8 +1,8 @@
 {
 switch (configuration.dialect().family()) {
 case ASE:
-case SQLITE:
 case SQLSERVER:
+case SQLITE:
     return new Expression<T>(MODULO,arg1,arg2);
 }
 return function("mod",getDataType(),arg1,arg2);

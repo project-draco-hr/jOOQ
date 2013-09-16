@@ -2,10 +2,10 @@
   List<Field<?>> list=Arrays.asList(values);
   if (list.size() > IN_LIMIT) {
 switch (context.configuration().dialect().family()) {
-case FIREBIRD:
 case INGRES:
 case ORACLE:
 case SQLSERVER:
+case FIREBIRD:
 {
         context.sql("(").formatIndentStart().formatNewLine();
         for (int i=0; i < list.size(); i+=IN_LIMIT) {

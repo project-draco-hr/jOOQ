@@ -1,11 +1,11 @@
 {
 switch (context.configuration().dialect().family()) {
+case ORACLE:
+case SYBASE:
 case FIREBIRD:
 case MARIADB:
 case MYSQL:
-case ORACLE:
 case SQLITE:
-case SYBASE:
 case H2:
 {
       Select<Record> selects=null;

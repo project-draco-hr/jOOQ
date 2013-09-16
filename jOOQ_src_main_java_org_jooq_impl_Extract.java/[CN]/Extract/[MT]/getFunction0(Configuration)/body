@@ -17,8 +17,8 @@ return field("{strftime}('%S', {0})",SQLDataType.INTEGER,field);
 default :
 throw new SQLDialectNotSupportedException("DatePart not supported: " + datePart);
 }
-case DERBY:
 case DB2:
+case DERBY:
 switch (datePart) {
 case YEAR:
 return function("year",SQLDataType.INTEGER,field);
