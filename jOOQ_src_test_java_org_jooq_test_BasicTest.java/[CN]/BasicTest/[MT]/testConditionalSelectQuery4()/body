@@ -5,8 +5,8 @@
   q.addConditions(c1);
   q.addConditions(c2);
   q.addConditions(c2,c1);
-  assertEquals("select 1 from dual where (\"TABLE1\".\"ID1\" = 10 and \"TABLE1\".\"ID1\" = 20 and \"TABLE1\".\"ID1\" = 20 and \"TABLE1\".\"ID1\" = 10)",r_refI().render(q));
-  assertEquals("select 1 from dual where (\"TABLE1\".\"ID1\" = ? and \"TABLE1\".\"ID1\" = ? and \"TABLE1\".\"ID1\" = ? and \"TABLE1\".\"ID1\" = ?)",r_ref().render(q));
+  assertEquals("select 1 from dual where (`TABLE1`.`ID1` = 10 and `TABLE1`.`ID1` = 20 and `TABLE1`.`ID1` = 20 and `TABLE1`.`ID1` = 10)",r_refI().render(q));
+  assertEquals("select 1 from dual where (`TABLE1`.`ID1` = ? and `TABLE1`.`ID1` = ? and `TABLE1`.`ID1` = ? and `TABLE1`.`ID1` = ?)",r_ref().render(q));
   assertEquals(q,create.select().where(c1.and(c2).and(c2.and(c1))));
   context.checking(new Expectations(){
 {

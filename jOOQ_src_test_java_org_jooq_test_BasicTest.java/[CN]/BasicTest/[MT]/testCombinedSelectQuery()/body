@@ -1,19 +1,19 @@
 {
   Select<?> combine=createCombinedSelectQuery();
-  assertEquals("(select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" where \"TABLE1\".\"ID1\" = 1) union (select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" where \"TABLE1\".\"ID1\" = 2)",r_refI().render(combine));
-  assertEquals("(select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" where \"TABLE1\".\"ID1\" = ?) union (select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" where \"TABLE1\".\"ID1\" = ?)",r_ref().render(combine));
+  assertEquals("select `TABLE1`.`ID1`, `TABLE1`.`NAME1`, `TABLE1`.`DATE1` from `TABLE1` where `TABLE1`.`ID1` = 1 union select `TABLE1`.`ID1`, `TABLE1`.`NAME1`, `TABLE1`.`DATE1` from `TABLE1` where `TABLE1`.`ID1` = 2",r_refI().render(combine));
+  assertEquals("select `TABLE1`.`ID1`, `TABLE1`.`NAME1`, `TABLE1`.`DATE1` from `TABLE1` where `TABLE1`.`ID1` = ? union select `TABLE1`.`ID1`, `TABLE1`.`NAME1`, `TABLE1`.`DATE1` from `TABLE1` where `TABLE1`.`ID1` = ?",r_ref().render(combine));
   assertEquals(combine,createCombinedSelect());
   combine=create.select(createCombinedSelectQuery().field(FIELD_ID1)).from(createCombinedSelectQuery()).orderBy(FIELD_ID1);
-  Pattern p=Pattern.compile("\"alias_\\d+\"");
+  Pattern p=Pattern.compile("`alias_\\d+`");
   Matcher m=p.matcher(r_ref().render(combine));
   m.find();
   String match=m.group();
-  assertEquals("select " + match + ".\"ID1\" from ((select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" where \"TABLE1\".\"ID1\" = 1) union (select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" where \"TABLE1\".\"ID1\" = 2)) "+ match+ " order by \"TABLE1\".\"ID1\" asc",r_refI().render(combine));
-  assertEquals("select " + match + ".\"ID1\" from ((select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" where \"TABLE1\".\"ID1\" = ?) union (select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" where \"TABLE1\".\"ID1\" = ?)) "+ match+ " order by \"TABLE1\".\"ID1\" asc",r_ref().render(combine));
+  assertEquals("select " + match + ".`ID1` from (select `TABLE1`.`ID1`, `TABLE1`.`NAME1`, `TABLE1`.`DATE1` from `TABLE1` where `TABLE1`.`ID1` = 1 union select `TABLE1`.`ID1`, `TABLE1`.`NAME1`, `TABLE1`.`DATE1` from `TABLE1` where `TABLE1`.`ID1` = 2) as "+ match+ " order by `TABLE1`.`ID1` asc",r_refI().render(combine));
+  assertEquals("select " + match + ".`ID1` from (select `TABLE1`.`ID1`, `TABLE1`.`NAME1`, `TABLE1`.`DATE1` from `TABLE1` where `TABLE1`.`ID1` = ? union select `TABLE1`.`ID1`, `TABLE1`.`NAME1`, `TABLE1`.`DATE1` from `TABLE1` where `TABLE1`.`ID1` = ?) as "+ match+ " order by `TABLE1`.`ID1` asc",r_ref().render(combine));
   combine=createCombinedSelectQuery();
   combine=create.select().from(createCombinedSelectQuery()).join(TABLE2).on(FIELD_ID1.equal(FIELD_ID2)).orderBy(FIELD_ID1);
-  assertEquals("select " + match + ".\"ID1\", "+ match+ ".\"NAME1\", "+ match+ ".\"DATE1\", \"TABLE2\".\"ID2\", \"TABLE2\".\"NAME2\", \"TABLE2\".\"DATE2\" from ((select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" where \"TABLE1\".\"ID1\" = 1) union (select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" where \"TABLE1\".\"ID1\" = 2)) "+ match+ " join \"TABLE2\" on \"TABLE1\".\"ID1\" = \"TABLE2\".\"ID2\" order by \"TABLE1\".\"ID1\" asc",r_refI().render(combine));
-  assertEquals("select " + match + ".\"ID1\", "+ match+ ".\"NAME1\", "+ match+ ".\"DATE1\", \"TABLE2\".\"ID2\", \"TABLE2\".\"NAME2\", \"TABLE2\".\"DATE2\" from ((select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" where \"TABLE1\".\"ID1\" = ?) union (select \"TABLE1\".\"ID1\", \"TABLE1\".\"NAME1\", \"TABLE1\".\"DATE1\" from \"TABLE1\" where \"TABLE1\".\"ID1\" = ?)) "+ match+ " join \"TABLE2\" on \"TABLE1\".\"ID1\" = \"TABLE2\".\"ID2\" order by \"TABLE1\".\"ID1\" asc",r_ref().render(combine));
+  assertEquals("select " + match + ".`ID1`, "+ match+ ".`NAME1`, "+ match+ ".`DATE1`, `TABLE2`.`ID2`, `TABLE2`.`NAME2`, `TABLE2`.`DATE2` from (select `TABLE1`.`ID1`, `TABLE1`.`NAME1`, `TABLE1`.`DATE1` from `TABLE1` where `TABLE1`.`ID1` = 1 union select `TABLE1`.`ID1`, `TABLE1`.`NAME1`, `TABLE1`.`DATE1` from `TABLE1` where `TABLE1`.`ID1` = 2) as "+ match+ " join `TABLE2` on `TABLE1`.`ID1` = `TABLE2`.`ID2` order by `TABLE1`.`ID1` asc",r_refI().render(combine));
+  assertEquals("select " + match + ".`ID1`, "+ match+ ".`NAME1`, "+ match+ ".`DATE1`, `TABLE2`.`ID2`, `TABLE2`.`NAME2`, `TABLE2`.`DATE2` from (select `TABLE1`.`ID1`, `TABLE1`.`NAME1`, `TABLE1`.`DATE1` from `TABLE1` where `TABLE1`.`ID1` = ? union select `TABLE1`.`ID1`, `TABLE1`.`NAME1`, `TABLE1`.`DATE1` from `TABLE1` where `TABLE1`.`ID1` = ?) as "+ match+ " join `TABLE2` on `TABLE1`.`ID1` = `TABLE2`.`ID2` order by `TABLE1`.`ID1` asc",r_ref().render(combine));
   context.checking(new Expectations(){
 {
       oneOf(statement).setInt(1,1);

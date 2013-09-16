@@ -1,5 +1,5 @@
 {
   Truncate<Table1Record> t=create.truncate(TABLE1);
-  assertEquals("truncate table \"TABLE1\"",r_dec().render(t));
-  assertEquals("truncate table \"TABLE1\"",r_ref().render(t));
+  assertEquals("truncate table `TABLE1`",r_dec().render(t));
+  assertEquals("truncate table `TABLE1`",r_ref().render(t));
 }

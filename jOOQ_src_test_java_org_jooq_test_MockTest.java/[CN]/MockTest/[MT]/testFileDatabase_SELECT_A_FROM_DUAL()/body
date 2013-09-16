@@ -1,6 +1,6 @@
 {
-  Result<Record> r1=MOCK.fetch("select 'A' from dual");
-  Result<Record> r2=MOCK.fetch("select ? from dual","A");
+  Result<Record> r1=MOCK.fetch("select 'A'");
+  Result<Record> r2=MOCK.fetch("select ?","A");
   Result<Record1<String>> r3=MOCK.select(val("A")).fetch();
   assertEquals(1,r1.size());
   assertEquals(1,r1.fields().length);

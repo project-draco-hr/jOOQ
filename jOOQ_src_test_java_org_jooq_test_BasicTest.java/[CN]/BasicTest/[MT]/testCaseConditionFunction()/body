@@ -1,20 +1,20 @@
 {
   Case decode=decode();
   CaseConditionStep<String> c=decode.when(FIELD_ID1.equal(1),"one");
-  assertEquals("case when \"TABLE1\".\"ID1\" = 1 then 'one' end",r_refI().render(c));
-  assertEquals("case when \"TABLE1\".\"ID1\" = ? then ? end",r_ref().render(c));
-  assertEquals("case when \"TABLE1\".\"ID1\" = 1 then 'one' end",r_decI().render(c));
-  assertEquals("case when \"TABLE1\".\"ID1\" = ? then ? end",r_dec().render(c));
+  assertEquals("case when `TABLE1`.`ID1` = 1 then 'one' end",r_refI().render(c));
+  assertEquals("case when `TABLE1`.`ID1` = ? then ? end",r_ref().render(c));
+  assertEquals("case when `TABLE1`.`ID1` = 1 then 'one' end",r_decI().render(c));
+  assertEquals("case when `TABLE1`.`ID1` = ? then ? end",r_dec().render(c));
   c.otherwise("nothing");
-  assertEquals("case when \"TABLE1\".\"ID1\" = 1 then 'one' else 'nothing' end",r_refI().render(c));
-  assertEquals("case when \"TABLE1\".\"ID1\" = ? then ? else ? end",r_ref().render(c));
-  assertEquals("case when \"TABLE1\".\"ID1\" = 1 then 'one' else 'nothing' end",r_decI().render(c));
-  assertEquals("case when \"TABLE1\".\"ID1\" = ? then ? else ? end",r_dec().render(c));
+  assertEquals("case when `TABLE1`.`ID1` = 1 then 'one' else 'nothing' end",r_refI().render(c));
+  assertEquals("case when `TABLE1`.`ID1` = ? then ? else ? end",r_ref().render(c));
+  assertEquals("case when `TABLE1`.`ID1` = 1 then 'one' else 'nothing' end",r_decI().render(c));
+  assertEquals("case when `TABLE1`.`ID1` = ? then ? else ? end",r_dec().render(c));
   c.when(FIELD_ID1.equal(2),"two").when(FIELD_ID1.equal(3),"three");
-  assertEquals("case when \"TABLE1\".\"ID1\" = 1 then 'one' when \"TABLE1\".\"ID1\" = 2 then 'two' when \"TABLE1\".\"ID1\" = 3 then 'three' else 'nothing' end",r_refI().render(c));
-  assertEquals("case when \"TABLE1\".\"ID1\" = ? then ? when \"TABLE1\".\"ID1\" = ? then ? when \"TABLE1\".\"ID1\" = ? then ? else ? end",r_ref().render(c));
-  assertEquals("case when \"TABLE1\".\"ID1\" = 1 then 'one' when \"TABLE1\".\"ID1\" = 2 then 'two' when \"TABLE1\".\"ID1\" = 3 then 'three' else 'nothing' end",r_decI().render(c));
-  assertEquals("case when \"TABLE1\".\"ID1\" = ? then ? when \"TABLE1\".\"ID1\" = ? then ? when \"TABLE1\".\"ID1\" = ? then ? else ? end",r_dec().render(c));
+  assertEquals("case when `TABLE1`.`ID1` = 1 then 'one' when `TABLE1`.`ID1` = 2 then 'two' when `TABLE1`.`ID1` = 3 then 'three' else 'nothing' end",r_refI().render(c));
+  assertEquals("case when `TABLE1`.`ID1` = ? then ? when `TABLE1`.`ID1` = ? then ? when `TABLE1`.`ID1` = ? then ? else ? end",r_ref().render(c));
+  assertEquals("case when `TABLE1`.`ID1` = 1 then 'one' when `TABLE1`.`ID1` = 2 then 'two' when `TABLE1`.`ID1` = 3 then 'three' else 'nothing' end",r_decI().render(c));
+  assertEquals("case when `TABLE1`.`ID1` = ? then ? when `TABLE1`.`ID1` = ? then ? when `TABLE1`.`ID1` = ? then ? else ? end",r_dec().render(c));
   context.checking(new Expectations(){
 {
       oneOf(statement).setInt(1,1);

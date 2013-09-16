@@ -1,5 +1,5 @@
 {
   Field<String> f=replace(FIELD_NAME1,"a","b");
-  assertEquals("replace(\"TABLE1\".\"NAME1\", 'a', 'b')",r_refI().render(f));
-  assertEquals("replace(\"TABLE1\".\"NAME1\", ?, ?)",r_ref().render(f));
+  assertEquals("replace(`TABLE1`.`NAME1`, 'a', 'b')",r_refI().render(f));
+  assertEquals("replace(`TABLE1`.`NAME1`, ?, ?)",r_ref().render(f));
 }

@@ -13,10 +13,10 @@
   assertEquals("?",r_dec().render(f2));
   Field<Integer> f3=val(Integer.valueOf(1)).as("value");
   assertEquals(Integer.class,f3.getType());
-  assertEquals("\"value\"",r_refI().render(f3));
-  assertEquals("\"value\"",r_ref().render(f3));
-  assertEquals("1 \"value\"",r_decI().render(f3));
-  assertEquals("? \"value\"",r_dec().render(f3));
+  assertEquals("`value`",r_refI().render(f3));
+  assertEquals("`value`",r_ref().render(f3));
+  assertEquals("1 as `value`",r_decI().render(f3));
+  assertEquals("? as `value`",r_dec().render(f3));
   context.checking(new Expectations(){
 {
       oneOf(statement).setInt(1,1);

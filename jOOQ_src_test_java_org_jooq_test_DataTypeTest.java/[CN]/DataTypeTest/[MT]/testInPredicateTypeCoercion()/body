@@ -4,7 +4,7 @@
   Field object=fieldByName("ANY");
 {
     Condition int_int=integer.in(1);
-    assertEquals("\"TABLE1\".\"ID1\" in (1)",r_refI().render(int_int));
+    assertEquals("`TABLE1`.`ID1` in (1)",r_refI().render(int_int));
     context.checking(new Expectations(){
 {
         oneOf(statement).setInt(1,1);
@@ -16,7 +16,7 @@
   }
 {
     Condition string_string=string.in("1");
-    assertEquals("\"TABLE1\".\"NAME1\" in ('1')",r_refI().render(string_string));
+    assertEquals("`TABLE1`.`NAME1` in ('1')",r_refI().render(string_string));
     context.checking(new Expectations(){
 {
         oneOf(statement).setString(1,"1");
@@ -28,7 +28,7 @@
   }
 {
     Condition int_string=integer.in("1");
-    assertEquals("\"TABLE1\".\"ID1\" in (1)",r_refI().render(int_string));
+    assertEquals("`TABLE1`.`ID1` in (1)",r_refI().render(int_string));
     context.checking(new Expectations(){
 {
         oneOf(statement).setInt(1,1);
@@ -38,7 +38,7 @@
     assertEquals(2,b_ref().visit(int_string).peekIndex());
     context.assertIsSatisfied();
     Condition string_int=string.in(1);
-    assertEquals("\"TABLE1\".\"NAME1\" in ('1')",r_refI().render(string_int));
+    assertEquals("`TABLE1`.`NAME1` in ('1')",r_refI().render(string_int));
     context.checking(new Expectations(){
 {
         oneOf(statement).setString(1,"1");
@@ -50,7 +50,7 @@
   }
 {
     Condition object_int=object.in(1);
-    assertEquals("\"ANY\" in (1)",r_refI().render(object_int));
+    assertEquals("`ANY` in (1)",r_refI().render(object_int));
     context.checking(new Expectations(){
 {
         oneOf(statement).setInt(1,1);
@@ -62,7 +62,7 @@
   }
 {
     Condition object_string=object.in("1");
-    assertEquals("\"ANY\" in ('1')",r_refI().render(object_string));
+    assertEquals("`ANY` in ('1')",r_refI().render(object_string));
     context.checking(new Expectations(){
 {
         oneOf(statement).setString(1,"1");

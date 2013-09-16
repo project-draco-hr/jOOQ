@@ -1,10 +1,10 @@
 {
   Condition c1=FIELD_ID1.isNull();
-  assertEquals("\"TABLE1\".\"ID1\" is null",r_refI().render(c1));
-  assertEquals("\"TABLE1\".\"ID1\" is null",r_ref().render(c1));
+  assertEquals("`TABLE1`.`ID1` is null",r_refI().render(c1));
+  assertEquals("`TABLE1`.`ID1` is null",r_ref().render(c1));
   Condition c2=FIELD_ID1.isNotNull();
-  assertEquals("\"TABLE1\".\"ID1\" is not null",r_refI().render(c2));
-  assertEquals("\"TABLE1\".\"ID1\" is not null",r_ref().render(c2));
+  assertEquals("`TABLE1`.`ID1` is not null",r_refI().render(c2));
+  assertEquals("`TABLE1`.`ID1` is not null",r_ref().render(c2));
   int i=b_ref().visit(c1).peekIndex();
   assertEquals(1,i);
   int j=b_ref().visit(c2).peekIndex();

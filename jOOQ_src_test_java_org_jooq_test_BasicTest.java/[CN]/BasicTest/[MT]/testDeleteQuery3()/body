@@ -4,8 +4,8 @@
   Condition c2=FIELD_ID1.equal(20);
   q.addConditions(c1);
   q.addConditions(c2);
-  assertEquals("delete from \"TABLE1\" where (\"TABLE1\".\"ID1\" = 10 and \"TABLE1\".\"ID1\" = 20)",r_refI().render(q));
-  assertEquals("delete from \"TABLE1\" where (\"TABLE1\".\"ID1\" = ? and \"TABLE1\".\"ID1\" = ?)",r_ref().render(q));
+  assertEquals("delete from `TABLE1` where (`TABLE1`.`ID1` = 10 and `TABLE1`.`ID1` = 20)",r_refI().render(q));
+  assertEquals("delete from `TABLE1` where (`TABLE1`.`ID1` = ? and `TABLE1`.`ID1` = ?)",r_ref().render(q));
   assertEquals(q,create.delete(TABLE1).where(c1,c2));
   context.checking(new Expectations(){
 {

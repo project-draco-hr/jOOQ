@@ -3,10 +3,10 @@
   Condition c2=not(FIELD_ID1.equal(10));
   assertEquals(c1,c2);
   for (  Condition c : Arrays.asList(c1,c2)) {
-    assertEquals("not(\"TABLE1\".\"ID1\" = 10)",r_refI().render(c));
-    assertEquals("not(\"TABLE1\".\"ID1\" = ?)",r_ref().render(c));
-    assertEquals("not(not(\"TABLE1\".\"ID1\" = 10))",r_refI().render(c.not()));
-    assertEquals("not(not(\"TABLE1\".\"ID1\" = ?))",r_ref().render(c.not()));
+    assertEquals("not(`TABLE1`.`ID1` = 10)",r_refI().render(c));
+    assertEquals("not(`TABLE1`.`ID1` = ?)",r_ref().render(c));
+    assertEquals("not(not(`TABLE1`.`ID1` = 10))",r_refI().render(c.not()));
+    assertEquals("not(not(`TABLE1`.`ID1` = ?))",r_ref().render(c.not()));
     context.checking(new Expectations(){
 {
         oneOf(statement).setInt(1,10);

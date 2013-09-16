@@ -1,7 +1,7 @@
 {
-  DSLContext create1=DSL.using(SQLDialect.ORACLE,new Settings().withRenderMapping(mapping()));
+  DSLContext create1=DSL.using(SQLDialect.POSTGRES,new Settings().withRenderMapping(mapping()));
   assertEquals("\"TABLEX\"",create1.render(TABLE1));
-  DSLContext create2=DSL.using(SQLDialect.ORACLE);
+  DSLContext create2=DSL.using(SQLDialect.POSTGRES);
   create2.configuration().settings().setRenderMapping(mapping());
   assertEquals("\"TABLEX\"",create2.render(TABLE1));
 }
