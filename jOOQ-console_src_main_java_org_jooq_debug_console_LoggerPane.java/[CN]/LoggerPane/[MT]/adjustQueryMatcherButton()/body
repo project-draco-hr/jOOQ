@@ -1,4 +1,0 @@
-{
-  QueryMatcher[] matchers=loggingListener.getMatchers();
-  queryMatcherButton.setSelected(matchers != null);
-}

@@ -1,4 +1,0 @@
-{
-  stmt.setNClob(parameterIndex,x);
-  logValue(parameterIndex,x == null ? null : "<NClob>");
-}

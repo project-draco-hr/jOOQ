@@ -1,7 +1,0 @@
-{
-  Component component=super.prepareRenderer(renderer,row,column);
-  if (component instanceof JComponent) {
-    ((JComponent)component).setOpaque(isCellSelected(row,column));
-  }
-  return component;
-}

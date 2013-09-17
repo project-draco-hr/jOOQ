@@ -1,4 +1,0 @@
-{
-  writeCount++;
-  resultSet.updateClob(columnIndex,reader,length);
-}

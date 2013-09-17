@@ -1,5 +1,0 @@
-int queryLogId
-long lifeTime
-int readRows
-int readCount
-int writeCount

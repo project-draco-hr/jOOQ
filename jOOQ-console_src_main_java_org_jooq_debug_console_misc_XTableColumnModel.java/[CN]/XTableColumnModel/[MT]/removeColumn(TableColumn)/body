@@ -1,7 +1,0 @@
-{
-  int allColumnsIndex=allTableColumns.indexOf(column);
-  if (allColumnsIndex != -1) {
-    allTableColumns.removeElementAt(allColumnsIndex);
-  }
-  super.removeColumn(column);
-}

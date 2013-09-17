@@ -1,3 +1,0 @@
-{
-  stmt.setBinaryStream(parameterName,x);
-}

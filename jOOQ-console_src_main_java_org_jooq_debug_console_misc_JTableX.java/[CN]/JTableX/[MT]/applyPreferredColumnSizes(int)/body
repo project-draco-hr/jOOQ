@@ -1,3 +1,0 @@
-{
-  autoFitTableColumn(this,-1,maxWidth,false);
-}

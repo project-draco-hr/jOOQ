@@ -1,4 +1,0 @@
-{
-  stmt.addBatch();
-  commitParameterDescription();
-}

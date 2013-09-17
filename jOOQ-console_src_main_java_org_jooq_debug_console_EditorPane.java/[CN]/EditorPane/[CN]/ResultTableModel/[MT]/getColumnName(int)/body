@@ -1,3 +1,0 @@
-{
-  return column == 0 ? "" : resultSetResult.getColumnNames()[column - 1].toString();
-}

@@ -1,5 +1,0 @@
-{
-  matcherTypeComboBox.setEnabled(!isLocked);
-  textField.setEnabled(!isLocked);
-  caseSensitiveCheckBox.setEnabled(!isLocked);
-}

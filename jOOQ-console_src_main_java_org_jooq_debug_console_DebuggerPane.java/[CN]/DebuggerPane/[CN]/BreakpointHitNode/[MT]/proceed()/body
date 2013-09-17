@@ -1,6 +1,0 @@
-{
-synchronized (this) {
-    isLocked=false;
-    notifyAll();
-  }
-}

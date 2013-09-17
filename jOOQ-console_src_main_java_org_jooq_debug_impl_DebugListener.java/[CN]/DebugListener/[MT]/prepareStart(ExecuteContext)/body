@@ -1,3 +1,0 @@
-{
-  getDebugProcessor(ctx).prepareStart(ctx);
-}

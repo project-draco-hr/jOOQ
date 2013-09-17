@@ -1,4 +1,0 @@
-TextMatcher threadNameTextMatcher
-TextMatcher queryTextMatcher
-Set<QueryType> queryTypeSet
-boolean isActive

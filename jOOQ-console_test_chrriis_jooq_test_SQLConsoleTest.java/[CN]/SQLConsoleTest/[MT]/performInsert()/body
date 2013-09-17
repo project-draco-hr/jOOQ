@@ -1,6 +1,0 @@
-{
-  SqlQueryDebuggerData sqlQueryDebuggerData=new SqlQueryDebuggerData(SqlQueryType.WRITE,new String[]{"INSERT INTO Table" + Math.round(Math.random() * 10) + " (Col1, Col2, Col3) VALUES ('abc', NULL, "+ Math.round(Math.random() * 150)+ ")"},null,null,Math.round(Math.random() * 1500));
-  for (  SqlQueryDebugger debugger : SqlQueryDebuggerRegister.getSqlQueryDebuggerList()) {
-    debugger.debugQueries(sqlQueryDebuggerData);
-  }
-}

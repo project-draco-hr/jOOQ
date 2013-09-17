@@ -1,6 +1,0 @@
-{
-  if (obj instanceof Breakpoint) {
-    return id.equals(((Breakpoint)obj).id);
-  }
-  return false;
-}

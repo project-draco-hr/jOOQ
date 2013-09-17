@@ -1,4 +1,0 @@
-{
-  readCount++;
-  return resultSet.getDate(columnIndex);
-}

@@ -1,7 +1,0 @@
-{
-  String name=getClass().getName();
-  if (name.startsWith("chrriis.dj.nativeswing.")) {
-    name=name.substring("chrriis.dj.nativeswing.".length());
-  }
-  return name;
-}

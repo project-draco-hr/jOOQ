@@ -1,3 +1,0 @@
-{
-  resultSetResult.setValueAt(o,row,col - 1);
-}

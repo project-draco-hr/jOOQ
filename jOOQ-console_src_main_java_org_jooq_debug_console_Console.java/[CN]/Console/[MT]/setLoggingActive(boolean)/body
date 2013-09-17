@@ -1,6 +1,0 @@
-{
-  if (sqlLoggerPane != null) {
-    sqlLoggerPane.setLogging(isLoggingActive);
-    mainTabbedPane.setSelectedIndex(mainTabbedPane.getTabCount() - 1);
-  }
-}

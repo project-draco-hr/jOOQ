@@ -1,8 +1,0 @@
-{
-  this.queryLogId=queryLogId;
-  this.id=nextID++;
-  this.lifeTime=lifeTime;
-  this.readRows=readRows;
-  this.readCount=readCount;
-  this.writeCount=writeCount;
-}

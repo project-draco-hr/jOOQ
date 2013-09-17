@@ -1,9 +1,0 @@
-{
-  if (IS_SYNCING_MESSAGES) {
-    syncSend(message);
-  }
- else {
-    checkOpen();
-    messagingInterface.asyncSend(message);
-  }
-}

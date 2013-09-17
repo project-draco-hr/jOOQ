@@ -1,4 +1,0 @@
-{
-  String[] tableNames=debugger.getCommunicationInterface().syncSend(new CMS_getStatementExecutorTableNames(id));
-  return tableNames == null ? new String[0] : tableNames;
-}

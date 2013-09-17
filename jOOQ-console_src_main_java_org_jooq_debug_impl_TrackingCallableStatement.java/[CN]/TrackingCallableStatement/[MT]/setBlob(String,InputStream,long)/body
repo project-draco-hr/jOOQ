@@ -1,3 +1,0 @@
-{
-  stmt.setBlob(parameterName,inputStream,length);
-}

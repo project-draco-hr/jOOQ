@@ -1,4 +1,0 @@
-JTable table
-int columnIndex
-int maxWidth
-boolean isSettingMinimumSize

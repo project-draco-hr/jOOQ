@@ -1,4 +1,0 @@
-{
-  writeCount++;
-  resultSet.updateTimestamp(columnIndex,x);
-}

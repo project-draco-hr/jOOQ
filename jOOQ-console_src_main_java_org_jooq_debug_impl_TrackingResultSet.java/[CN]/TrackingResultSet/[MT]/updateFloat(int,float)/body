@@ -1,4 +1,0 @@
-{
-  writeCount++;
-  resultSet.updateFloat(columnIndex,x);
-}

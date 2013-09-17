@@ -1,4 +1,0 @@
-{
-  this.executionDuration=executionDuration;
-  this.results=results;
-}

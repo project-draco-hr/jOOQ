@@ -1,3 +1,0 @@
-DatabaseDescriptor editorDatabaseDescriptor
-boolean isShowingLoggingTab
-boolean isShowingDebugger

@@ -1,7 +1,0 @@
-{
-  if (hit.isBeforeExecution()) {
-    replacePane.setVisible(replaceCheckbox.isSelected());
-    revalidate();
-    repaint();
-  }
-}

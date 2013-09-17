@@ -1,8 +1,0 @@
-{
-  for (  DataFlavor flavor_ : getTransferDataFlavors()) {
-    if (flavor_.equals(flavor)) {
-      return true;
-    }
-  }
-  return false;
-}

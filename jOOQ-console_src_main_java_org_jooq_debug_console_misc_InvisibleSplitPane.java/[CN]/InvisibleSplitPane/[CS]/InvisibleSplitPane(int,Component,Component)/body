@@ -1,4 +1,0 @@
-{
-  super(newOrientation,newLeftComponent,newRightComponent);
-  initialize();
-}

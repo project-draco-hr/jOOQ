@@ -1,9 +1,0 @@
-{
-  super(stackTraceElement);
-  String className=stackTraceElement.getClassName();
-  className=className.substring(className.lastIndexOf('.') + 1);
-  String fileName=stackTraceElement.getFileName();
-  int lineNumber=stackTraceElement.getLineNumber();
-  String fileInfo=fileName != null && lineNumber >= 0 ? fileName + ":" + lineNumber : "";
-  name=className + '.' + stackTraceElement.getMethodName()+ "("+ fileInfo+ ")";
-}

@@ -1,4 +1,0 @@
-String sql
-int maxRSRowsParsing
-int retainParsedRSDataRowCountThreshold
-boolean isUpdatable

@@ -1,4 +1,0 @@
-{
-  writeCount++;
-  resultSet.updateNClob(columnIndex,reader,length);
-}

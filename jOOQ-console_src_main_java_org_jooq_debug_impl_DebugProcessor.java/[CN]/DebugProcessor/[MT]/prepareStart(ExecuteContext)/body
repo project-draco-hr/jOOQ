@@ -1,6 +1,0 @@
-{
-  if (!hasDebuggers) {
-    return;
-  }
-  startPreparationTime=System.currentTimeMillis();
-}

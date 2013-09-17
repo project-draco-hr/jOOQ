@@ -1,4 +1,0 @@
-{
-  stmt.setDate(parameterIndex,x);
-  logValue(parameterIndex,x);
-}

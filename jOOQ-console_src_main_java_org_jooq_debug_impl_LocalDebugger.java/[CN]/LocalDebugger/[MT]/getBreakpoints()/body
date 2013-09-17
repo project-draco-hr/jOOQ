@@ -1,5 +1,0 @@
-{
-synchronized (BREAKPOINT_LOCK) {
-    return breakpoints;
-  }
-}

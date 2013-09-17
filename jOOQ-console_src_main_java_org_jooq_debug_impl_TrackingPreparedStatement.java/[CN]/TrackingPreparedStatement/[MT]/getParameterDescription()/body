@@ -1,7 +1,0 @@
-{
-  if (paramList.isEmpty() && sb.length() == 0) {
-    return null;
-  }
-  commitParameterDescription();
-  return sb.toString();
-}

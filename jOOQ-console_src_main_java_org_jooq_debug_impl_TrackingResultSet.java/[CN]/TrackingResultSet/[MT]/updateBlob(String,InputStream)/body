@@ -1,4 +1,0 @@
-{
-  writeCount++;
-  resultSet.updateBlob(columnLabel,inputStream);
-}

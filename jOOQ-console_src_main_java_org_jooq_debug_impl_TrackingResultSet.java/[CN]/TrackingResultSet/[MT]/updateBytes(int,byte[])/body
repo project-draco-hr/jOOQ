@@ -1,4 +1,0 @@
-{
-  writeCount++;
-  resultSet.updateBytes(columnIndex,x);
-}

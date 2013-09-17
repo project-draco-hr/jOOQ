@@ -1,5 +1,0 @@
-{
-  id=nextID.incrementAndGet();
-  this.debugger=debugger;
-  debugger.getCommunicationInterface().asyncSend((CommandMessage<?>)new CMS_createServerStatementExecutor(id,executionContextName,breakpointHitThreadID));
-}

@@ -1,4 +1,0 @@
-{
-  renderer=new CheckBoxNodeRenderer(tree);
-  this.tree=tree;
-}

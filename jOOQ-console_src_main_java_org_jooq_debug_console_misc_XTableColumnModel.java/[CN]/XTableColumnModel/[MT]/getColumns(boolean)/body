@@ -1,4 +1,0 @@
-{
-  Vector<TableColumn> columns=(onlyVisible ? tableColumns : allTableColumns);
-  return columns.elements();
-}

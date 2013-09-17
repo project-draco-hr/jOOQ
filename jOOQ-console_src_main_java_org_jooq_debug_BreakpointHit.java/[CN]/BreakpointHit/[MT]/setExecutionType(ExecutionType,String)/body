@@ -1,5 +1,0 @@
-{
-  this.breakpointID=null;
-  this.executionType=executionType;
-  this.sql=sql;
-}

@@ -1,3 +1,0 @@
-{
-  return databaseDescriptor != null ? new String[]{"default"} : new String[0];
-}

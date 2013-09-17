@@ -1,9 +1,0 @@
-{
-synchronized (BREAKPOINT_HIT_HANDLER_LOCK) {
-    if (this.breakpointHitHandler == breakpointHitHandler) {
-      return;
-    }
-    this.breakpointHitHandler=breakpointHitHandler;
-  }
-  comm.asyncSend(new CMS_setBreakpointHitHandlerActive(breakpointHitHandler != null));
-}

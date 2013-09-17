@@ -1,3 +1,0 @@
-{
-  return new TextMatcher((TextMatchingType)matcherTypeComboBox.getSelectedItem(),textField.getText(),caseSensitiveCheckBox.isSelected());
-}

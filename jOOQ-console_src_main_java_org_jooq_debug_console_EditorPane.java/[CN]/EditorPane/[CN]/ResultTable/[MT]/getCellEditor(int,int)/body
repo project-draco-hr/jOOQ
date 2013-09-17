@@ -1,8 +1,0 @@
-{
-  TableCellEditor editor=super.getCellEditor(row,column);
-  if (editor instanceof DefaultCellEditor) {
-    DefaultCellEditor defaultEditor=(DefaultCellEditor)editor;
-    defaultEditor.setClickCountToStart(2);
-  }
-  return editor;
-}

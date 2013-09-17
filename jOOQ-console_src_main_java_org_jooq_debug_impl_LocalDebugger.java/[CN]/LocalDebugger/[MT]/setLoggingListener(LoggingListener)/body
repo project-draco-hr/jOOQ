@@ -1,5 +1,0 @@
-{
-synchronized (LOGGING_LISTENER_LOCK) {
-    this.loggingListener=loggingListener;
-  }
-}

@@ -1,4 +1,0 @@
-{
-  this.threadID=threadID;
-  this.message=message;
-}

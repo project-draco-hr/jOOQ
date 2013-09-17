@@ -1,4 +1,0 @@
-{
-  writeCount++;
-  resultSet.updateBlob(columnIndex,x);
-}

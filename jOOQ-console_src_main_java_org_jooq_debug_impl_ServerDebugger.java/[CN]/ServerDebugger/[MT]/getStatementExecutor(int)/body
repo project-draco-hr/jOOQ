@@ -1,5 +1,0 @@
-{
-synchronized (idToStatementExecutorMap) {
-    return idToStatementExecutorMap.get(id);
-  }
-}

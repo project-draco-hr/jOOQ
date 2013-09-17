@@ -1,3 +1,0 @@
-{
-  return DateFormat.getDateTimeInstance(DateFormat.SHORT,DateFormat.LONG).format(date);
-}

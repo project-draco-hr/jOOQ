@@ -1,3 +1,0 @@
-{
-  getFocusedEditorPane().adjustDefaultFocus();
-}

@@ -1,3 +1,0 @@
-{
-  ctx.data().remove("org.jooq.debug.DebugProcessor");
-}

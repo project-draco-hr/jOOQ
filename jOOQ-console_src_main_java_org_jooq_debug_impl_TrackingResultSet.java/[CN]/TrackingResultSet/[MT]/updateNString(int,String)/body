@@ -1,4 +1,0 @@
-{
-  writeCount++;
-  resultSet.updateNString(columnIndex,nString);
-}

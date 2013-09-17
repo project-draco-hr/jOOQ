@@ -1,4 +1,0 @@
-{
-  DebugProcessor debugProcessor=new DebugProcessor();
-  ctx.data("org.jooq.debug.DebugProcessor",debugProcessor);
-}

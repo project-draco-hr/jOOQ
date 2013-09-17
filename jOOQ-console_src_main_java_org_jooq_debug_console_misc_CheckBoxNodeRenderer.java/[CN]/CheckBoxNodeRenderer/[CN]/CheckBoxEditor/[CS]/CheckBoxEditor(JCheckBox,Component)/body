@@ -1,7 +1,0 @@
-{
-  super(new FlowLayout(FlowLayout.LEFT,0,0));
-  setOpaque(false);
-  this.checkBoxRenderer=checkBoxRenderer;
-  add(checkBoxRenderer);
-  add(c);
-}

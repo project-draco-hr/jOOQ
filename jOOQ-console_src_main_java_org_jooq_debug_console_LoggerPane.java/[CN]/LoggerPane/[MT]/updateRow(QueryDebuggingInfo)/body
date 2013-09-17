@@ -1,6 +1,0 @@
-{
-  int displayedRow=queryDebuggingInfo.getDisplayedRow();
-  if (displayedRow >= 0) {
-    ((AbstractTableModel)table.getModel()).fireTableRowsUpdated(displayedRow,displayedRow);
-  }
-}

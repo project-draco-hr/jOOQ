@@ -1,3 +1,0 @@
-{
-  return (ServerDebugger)context.getDebugger();
-}

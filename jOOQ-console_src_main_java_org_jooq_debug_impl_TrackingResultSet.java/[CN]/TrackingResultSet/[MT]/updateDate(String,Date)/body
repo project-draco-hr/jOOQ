@@ -1,4 +1,0 @@
-{
-  writeCount++;
-  resultSet.updateDate(columnLabel,x);
-}

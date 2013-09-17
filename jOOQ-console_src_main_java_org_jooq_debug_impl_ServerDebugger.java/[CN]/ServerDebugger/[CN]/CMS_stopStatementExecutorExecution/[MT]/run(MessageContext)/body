@@ -1,4 +1,0 @@
-{
-  getServerDebugger(context).removeStatementExecutor(id).stopExecution();
-  return null;
-}

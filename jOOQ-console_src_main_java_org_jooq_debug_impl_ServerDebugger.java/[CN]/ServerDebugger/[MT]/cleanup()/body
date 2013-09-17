@@ -1,8 +1,0 @@
-{
-synchronized (idToStatementExecutorMap) {
-    for (    QueryExecutor executor : idToStatementExecutorMap.values()) {
-      executor.stopExecution();
-    }
-    idToStatementExecutorMap.clear();
-  }
-}

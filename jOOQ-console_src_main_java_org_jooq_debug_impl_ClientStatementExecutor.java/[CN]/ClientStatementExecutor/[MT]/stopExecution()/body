@@ -1,3 +1,0 @@
-{
-  debugger.getCommunicationInterface().asyncSend((CommandMessage<?>)new CMS_stopStatementExecutorExecution(id));
-}

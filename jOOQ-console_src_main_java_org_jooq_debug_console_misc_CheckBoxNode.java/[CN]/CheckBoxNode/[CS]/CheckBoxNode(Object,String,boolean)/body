@@ -1,5 +1,0 @@
-{
-  super(o);
-  this.text=text;
-  this.selected=selected;
-}

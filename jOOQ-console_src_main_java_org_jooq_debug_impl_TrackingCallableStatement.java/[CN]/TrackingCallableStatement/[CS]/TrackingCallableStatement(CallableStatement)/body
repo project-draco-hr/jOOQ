@@ -1,4 +1,0 @@
-{
-  super(stmt);
-  this.stmt=stmt;
-}

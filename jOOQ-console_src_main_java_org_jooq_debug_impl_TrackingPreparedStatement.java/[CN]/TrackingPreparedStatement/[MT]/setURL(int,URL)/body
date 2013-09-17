@@ -1,4 +1,0 @@
-{
-  stmt.setURL(parameterIndex,x);
-  logValue(parameterIndex,x);
-}

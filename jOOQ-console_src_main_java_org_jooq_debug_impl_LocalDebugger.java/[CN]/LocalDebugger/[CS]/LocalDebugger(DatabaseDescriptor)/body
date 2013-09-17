@@ -1,4 +1,0 @@
-{
-  this.databaseDescriptor=databaseDescriptor;
-  DebuggerRegistry.add(this);
-}

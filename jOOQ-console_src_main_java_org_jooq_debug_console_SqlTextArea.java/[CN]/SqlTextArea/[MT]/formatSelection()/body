@@ -1,7 +1,0 @@
-{
-  String text=getSelectedText();
-  String newText=Utils.getFormattedSql(text);
-  if (!Utils.equals(text,newText)) {
-    replaceSelection(newText);
-  }
-}

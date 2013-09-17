@@ -1,4 +1,0 @@
-{
-  sqlDebuggerPane=new DebuggerPane(debugger);
-  mainTabbedPane.addTab("Debugger",sqlDebuggerPane);
-}

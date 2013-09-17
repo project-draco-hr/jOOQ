@@ -1,4 +1,0 @@
-{
-  QueryProcessor.ProcessorExecutionType type=(QueryProcessor.ProcessorExecutionType)processorTypeComboBox.getSelectedItem();
-  return new QueryProcessor(type,type == QueryProcessor.ProcessorExecutionType.STATIC ? processorStaticSQLTextArea.getText() : processorTextField.getText());
-}

@@ -1,9 +1,0 @@
-{
-synchronized (LOGGING_LISTENER_LOCK) {
-    if (this.loggingListener == listener) {
-      return;
-    }
-    this.loggingListener=listener;
-  }
-  comm.asyncSend(new CMS_setLoggingActive(listener != null,listener != null ? listener.getMatchers() : null));
-}

@@ -1,5 +1,0 @@
-{
-  editorsPane=new EditorsPane(debugger,true);
-  editorsPane.setBorder(BorderFactory.createEmptyBorder(2,5,5,5));
-  mainTabbedPane.addTab("Editor",editorsPane);
-}

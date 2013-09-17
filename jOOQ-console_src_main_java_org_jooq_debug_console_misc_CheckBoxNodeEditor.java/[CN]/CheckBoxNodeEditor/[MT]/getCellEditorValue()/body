@@ -1,4 +1,0 @@
-{
-  JCheckBox checkbox=renderer.getCheckBoxRenderer();
-  return new CheckBoxNode(null,checkbox.getText(),checkbox.isSelected());
-}

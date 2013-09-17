@@ -1,4 +1,0 @@
-{
-  stmt.setTimestamp(parameterIndex,x);
-  logValue(parameterIndex,x);
-}

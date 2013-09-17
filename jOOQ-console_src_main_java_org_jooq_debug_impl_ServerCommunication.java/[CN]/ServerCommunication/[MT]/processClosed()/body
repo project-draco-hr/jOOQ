@@ -1,4 +1,0 @@
-{
-  getDebugger().close();
-  getDebugger().cleanup();
-}

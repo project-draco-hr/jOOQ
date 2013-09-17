@@ -1,4 +1,0 @@
-{
-  writeCount++;
-  resultSet.updateLong(columnLabel,x);
-}

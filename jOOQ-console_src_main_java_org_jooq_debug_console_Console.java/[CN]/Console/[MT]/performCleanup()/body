@@ -1,8 +1,0 @@
-{
-  if (sqlLoggerPane != null) {
-    sqlLoggerPane.setLogging(false);
-  }
-  if (editorsPane != null) {
-    editorsPane.performCleanup();
-  }
-}

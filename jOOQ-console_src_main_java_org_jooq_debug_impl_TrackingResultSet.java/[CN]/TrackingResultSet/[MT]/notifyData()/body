@@ -1,3 +1,0 @@
-{
-  notifyData(disposeTime - creationTime,readRows,readCount,writeCount);
-}

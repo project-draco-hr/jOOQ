@@ -1,4 +1,0 @@
-{
-  stmt.setFloat(parameterIndex,x);
-  logValue(parameterIndex,x);
-}

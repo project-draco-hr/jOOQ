@@ -1,4 +1,0 @@
-{
-  writeCount++;
-  resultSet.updateBinaryStream(columnLabel,x);
-}

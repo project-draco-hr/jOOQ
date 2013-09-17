@@ -1,7 +1,0 @@
-{
-  setFillsViewportHeight(true);
-  setAutoAdjustingColumn(Integer.MAX_VALUE);
-  setRowHeight(getRowHeight() + 3);
-  setOpaque(false);
-  setGridColor(GRID_COLOR);
-}

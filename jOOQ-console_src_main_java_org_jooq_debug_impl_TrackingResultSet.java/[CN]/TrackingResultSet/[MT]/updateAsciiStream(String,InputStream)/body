@@ -1,4 +1,0 @@
-{
-  writeCount++;
-  resultSet.updateAsciiStream(columnLabel,x);
-}

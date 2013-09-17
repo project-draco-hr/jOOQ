@@ -1,4 +1,0 @@
-{
-  paintStripedBackground(g);
-  super.paintComponent(g);
-}

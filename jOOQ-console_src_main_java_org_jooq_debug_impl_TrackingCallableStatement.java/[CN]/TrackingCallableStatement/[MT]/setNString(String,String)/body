@@ -1,3 +1,0 @@
-{
-  stmt.setNString(parameterName,value);
-}

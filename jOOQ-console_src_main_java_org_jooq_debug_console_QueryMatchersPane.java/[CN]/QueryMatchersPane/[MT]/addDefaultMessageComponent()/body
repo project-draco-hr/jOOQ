@@ -1,5 +1,0 @@
-{
-  JLabel messageLabel=new JLabel("No query filters, logging everything.");
-  messageLabel.setFont(messageLabel.getFont().deriveFont(Font.ITALIC));
-  matcherPanesContainer.add(messageLabel);
-}

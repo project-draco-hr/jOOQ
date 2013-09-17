@@ -1,7 +1,0 @@
-{
-  resultSet.close();
-  if (disposeTime == 0) {
-    disposeTime=System.currentTimeMillis();
-    notifyData();
-  }
-}

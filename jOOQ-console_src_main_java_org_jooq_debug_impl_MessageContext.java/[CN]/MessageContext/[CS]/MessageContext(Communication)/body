@@ -1,3 +1,0 @@
-{
-  this(comm.getDebugger(),comm.getMessagingInterface());
-}

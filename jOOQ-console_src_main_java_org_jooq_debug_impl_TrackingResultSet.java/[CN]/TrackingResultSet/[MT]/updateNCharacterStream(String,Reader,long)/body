@@ -1,4 +1,0 @@
-{
-  writeCount++;
-  resultSet.updateNCharacterStream(columnLabel,reader,length);
-}

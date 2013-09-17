@@ -1,4 +1,0 @@
-{
-  stmt.setBinaryStream(parameterIndex,x,length);
-  logValue(parameterIndex,x == null ? null : "<BinaryStream>");
-}

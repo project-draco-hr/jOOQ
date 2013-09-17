@@ -1,4 +1,0 @@
-{
-  getServerDebugger(context).setLoggingActive(isActive,matchers);
-  return null;
-}
