@@ -1,7 +1,7 @@
 {
 switch (dialect()) {
-case SQLITE:
 case INGRES:
+case SQLITE:
     log.info("SKIPPING","= { ALL | ANY | SOME } tests");
   break;
 default :

@@ -29,7 +29,7 @@
       assertEquals(null,invoke(p391a,"getIo2"));
       assertEquals(null,invoke(p391a,"getO2"));
     }
-    if (dialect() != SQLDialect.SYBASE) {
+    if (true && dialect() != SQLDialect.SYBASE) {
       Object p391b=invoke(cRoutines(),"p391",create().configuration(),null,2,DUMMY_OUT_INT,DUMMY_OUT_INT,3,null);
       assertEquals(null,invoke(p391b,"getIo1"));
       assertEquals("2","" + invoke(p391b,"getO1"));

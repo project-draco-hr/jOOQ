@@ -176,7 +176,7 @@
       assertEquals(0,field.getDataType().scale());
       assertEquals(0,field.getDataType().length());
     }
- else     if ("BIG_DECIMAL".equalsIgnoreCase(field.getName()) && dialect().family() != SQLDialect.ORACLE && dialect().family() != SQLDialect.POSTGRES && dialect().family() != SQLDialect.SQLITE && dialect().family() != SQLDialect.SQLSERVER) {
+ else     if ("BIG_DECIMAL".equalsIgnoreCase(field.getName()) && dialect().family() != SQLDialect.ORACLE && dialect().family() != SQLDialect.SQLSERVER && dialect().family() != SQLDialect.POSTGRES && dialect().family() != SQLDialect.SQLITE) {
       assertEquals(BigDecimal.class,field.getType());
       assertEquals(SQLDataType.DECIMAL.getType(),field.getDataType().getType());
       assertTrue(field.getDataType().precision() > 0);

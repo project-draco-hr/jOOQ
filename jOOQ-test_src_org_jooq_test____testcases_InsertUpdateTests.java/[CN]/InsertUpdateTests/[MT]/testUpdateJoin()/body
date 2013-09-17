@@ -1,13 +1,13 @@
 {
 switch (dialect().family()) {
 case DB2:
+case ORACLE:
+case SQLSERVER:
 case DERBY:
 case FIREBIRD:
 case H2:
 case HSQLDB:
-case ORACLE:
 case POSTGRES:
-case SQLSERVER:
 case SQLITE:
     log.info("SKIPPING","UPDATE T1 JOIN T2 .. integration test. This syntax is not supported by " + dialect());
   return;

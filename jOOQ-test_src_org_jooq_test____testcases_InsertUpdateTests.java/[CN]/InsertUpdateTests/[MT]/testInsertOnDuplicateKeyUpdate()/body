@@ -1,9 +1,9 @@
 {
 switch (dialect()) {
 case ASE:
+case INGRES:
 case DERBY:
 case H2:
-case INGRES:
 case POSTGRES:
 case SQLITE:
     log.info("SKIPPING","ON DUPLICATE KEY UPDATE test");

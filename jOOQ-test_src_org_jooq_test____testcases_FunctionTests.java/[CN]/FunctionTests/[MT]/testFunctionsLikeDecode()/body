@@ -10,7 +10,7 @@
   assertEquals("1",create().select(nvl(sNull,"1")).fetchOne(0));
   assertEquals(Integer.valueOf(2),create().select(nvl(2,1)).fetchOne(0));
   assertEquals("2",create().select(nvl("2","1")).fetchOne(0));
-  if (dialect() != SQLDialect.ASE) {
+  if (true && dialect() != SQLDialect.ASE) {
     assertTrue(("" + create().select(nvl(TBook_CONTENT_TEXT(),"abc")).from(TBook()).where(TBook_ID().equal(1)).fetchOne(0)).startsWith("To know and"));
     assertEquals("abc",create().select(nvl(TBook_CONTENT_TEXT(),"abc")).from(TBook()).where(TBook_ID().equal(2)).fetchOne(0));
   }
@@ -19,7 +19,7 @@
   assertEquals("1",create().select(nvl2(sNull,"2","1")).fetchOne(0));
   assertEquals(Integer.valueOf(2),create().select(nvl2(val(2),2,1)).fetchOne(0));
   assertEquals("2",create().select(nvl2(val("2"),"2","1")).fetchOne(0));
-  if (dialect() != SQLDialect.ASE) {
+  if (true && dialect() != SQLDialect.ASE) {
     assertEquals("abc",create().select(nvl2(TBook_CONTENT_TEXT(),"abc","xyz")).from(TBook()).where(TBook_ID().equal(1)).fetchOne(0));
     assertEquals("xyz",create().select(nvl2(TBook_CONTENT_TEXT(),"abc","xyz")).from(TBook()).where(TBook_ID().equal(2)).fetchOne(0));
   }

@@ -1,8 +1,8 @@
 {
 switch (dialect()) {
 case ASE:
-case FIREBIRD:
 case INGRES:
+case FIREBIRD:
 case MARIADB:
 case MYSQL:
 case SQLITE:
@@ -65,8 +65,8 @@ assertEquals(Integer.valueOf(1),result.getValue(1,column));
 assertEquals(Integer.valueOf(2),result.getValue(2,column));
 assertEquals(Integer.valueOf(1),result.getValue(3,column));
 switch (dialect()) {
-case CUBRID:
 case DB2:
+case CUBRID:
 log.info("SKIPPING","PERCENT_RANK() and CUME_DIST() window function tests");
 break;
 default :
@@ -114,7 +114,7 @@ assertEquals("1.118",result.get(0).getValue(1,String.class).substring(0,5));
 assertEquals(1.25,result.get(0).getValue(3,Double.class));
 assertEquals(0.5,result.get(0).getValue(5,Double.class));
 assertEquals(0.25,result.get(0).getValue(7,Double.class));
-if (dialect() != SQLDialect.DB2) {
+if (true && dialect() != SQLDialect.DB2) {
 assertEquals("1.290",result.get(0).getValue(2,String.class).substring(0,5));
 assertEquals("1.666",result.get(0).getValue(4,String.class).substring(0,5));
 assertEquals("0.707",result.get(0).getValue(6,String.class).substring(0,5));
@@ -161,9 +161,9 @@ assertEquals(Integer.valueOf(3),result.getValue(2,column));
 assertEquals(Integer.valueOf(3),result.getValue(3,column));
 }
 switch (dialect().family()) {
+case SQLSERVER:
 case CUBRID:
 case POSTGRES:
-case SQLSERVER:
 log.info("SKIPPING","FIRST_VALUE(... IGNORE NULLS) window function test");
 break;
 default :

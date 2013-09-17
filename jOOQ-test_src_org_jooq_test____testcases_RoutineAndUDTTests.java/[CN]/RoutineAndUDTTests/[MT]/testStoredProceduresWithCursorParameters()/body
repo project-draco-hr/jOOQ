@@ -1,8 +1,8 @@
 {
 switch (dialect().family()) {
+case ORACLE:
 case H2:
 case HSQLDB:
-case ORACLE:
 case POSTGRES:
     break;
 default :

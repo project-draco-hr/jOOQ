@@ -1,16 +1,16 @@
 {
 switch (dialect().family()) {
 case ASE:
-case CUBRID:
 case DB2:
+case INGRES:
+case ORACLE:
+case CUBRID:
 case DERBY:
 case FIREBIRD:
 case H2:
 case HSQLDB:
-case INGRES:
 case MARIADB:
 case MYSQL:
-case ORACLE:
 case POSTGRES:
 case SQLITE:
     log.info("SKIPPING","[ table ] WITH [ hint ] tests");

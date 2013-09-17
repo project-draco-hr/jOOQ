@@ -1,11 +1,11 @@
 {
 switch (dialect()) {
 case ASE:
+case INGRES:
 case DERBY:
 case FIREBIRD:
 case H2:
 case HSQLDB:
-case INGRES:
 case POSTGRES:
 case SQLITE:
     log.info("SKIPPING","Group by CUBE / ROLLUP tests");

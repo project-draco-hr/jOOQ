@@ -1,16 +1,16 @@
 {
 switch (dialect().family()) {
 case ASE:
+case INGRES:
+case SQLSERVER:
 case CUBRID:
 case DERBY:
 case FIREBIRD:
 case H2:
 case HSQLDB:
-case INGRES:
 case MARIADB:
 case MYSQL:
 case SQLITE:
-case SQLSERVER:
     log.info("SKIPPING","Skipping linear regression function tests");
   return;
 }

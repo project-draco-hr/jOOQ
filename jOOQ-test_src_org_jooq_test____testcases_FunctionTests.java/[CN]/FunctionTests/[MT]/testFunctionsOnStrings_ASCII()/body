@@ -1,7 +1,7 @@
 {
 switch (dialect()) {
-case DERBY:
 case INGRES:
+case DERBY:
 case SQLITE:
     log.info("SKIPPING","ASCII function test");
   break;

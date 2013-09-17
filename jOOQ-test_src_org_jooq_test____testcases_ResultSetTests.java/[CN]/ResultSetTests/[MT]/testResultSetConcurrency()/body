@@ -1,8 +1,8 @@
 {
 switch (dialect()) {
+case SYBASE:
 case MARIADB:
 case SQLITE:
-case SYBASE:
     log.info("SKIPPING","ResultSet concurrency tests");
   return;
 }

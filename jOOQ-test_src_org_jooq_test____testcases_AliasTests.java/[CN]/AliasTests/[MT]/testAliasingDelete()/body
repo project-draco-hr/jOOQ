@@ -1,7 +1,7 @@
 {
 switch (dialect().family()) {
-case SQLITE:
 case SQLSERVER:
+case SQLITE:
     log.info("SKIPPING","Aliasing DELETE tests");
   return;
 }

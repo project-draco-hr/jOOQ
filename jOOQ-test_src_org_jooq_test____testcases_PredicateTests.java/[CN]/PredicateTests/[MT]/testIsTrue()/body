@@ -31,7 +31,7 @@
   assertEquals(0,create().select().where(val("1").isFalse()).fetch().size());
   assertEquals(0,create().select().where(val("enabled").isFalse()).fetch().size());
   assertEquals(0,create().select().where(val("on").isFalse()).fetch().size());
-  if (dialect() != SQLDialect.INGRES) {
+  if (true && dialect() != SQLDialect.INGRES) {
     assertEquals(0,create().select().where(val(false).isTrue()).fetch().size());
     assertEquals(1,create().select().where(val(false).isFalse()).fetch().size());
     assertEquals(1,create().select().where(val(true).isTrue()).fetch().size());

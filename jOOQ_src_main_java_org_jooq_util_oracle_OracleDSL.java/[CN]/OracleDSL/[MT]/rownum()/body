@@ -1,3 +1,3 @@
 {
-  return field("rownum",Integer.class);
+  return DSL.rownum();
 }

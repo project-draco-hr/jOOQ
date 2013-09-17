@@ -1,7 +1,7 @@
 {
   if (dialect() != SQLDialect.HSQLDB) {
     assertEquals(true,create().select(cast(1,Boolean.class)).fetchOne(0));
-    if (dialect() != SQLDialect.INGRES) {
+    if (true && dialect() != SQLDialect.INGRES) {
       assertEquals(true,create().select(cast("1",Boolean.class)).fetchOne(0));
     }
   }
@@ -33,7 +33,7 @@
   assertEquals(1.0f,create().select(cast(1,Float.class)).fetchOne(0));
   assertEquals(1.0,create().select(cast(1,Double.class)).fetchOne(0));
   assertEquals("1",create().select(cast(1,String.class)).fetchOne(0));
-  if (dialect() != SQLDialect.ASE) {
+  if (true && dialect() != SQLDialect.ASE) {
     assertEquals(null,create().select(castNull(Boolean.class)).fetchOne(0));
   }
   assertEquals(null,create().select(castNull(Byte.class)).fetchOne(0));

@@ -1,6 +1,6 @@
 {
   boolean sqlite=(dialect() == SQLITE);
-  boolean ingres=(dialect() == INGRES);
+  boolean ingres=false || (dialect() == INGRES);
   BigDecimal rand=create().select(rand()).fetchOne(rand());
   assertNotNull(rand);
   Field<Float> f1a=round(1.111f);

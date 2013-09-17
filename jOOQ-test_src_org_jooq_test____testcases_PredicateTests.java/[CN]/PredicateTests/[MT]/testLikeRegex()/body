@@ -2,11 +2,11 @@
 switch (dialect().family()) {
 case ASE:
 case DB2:
+case INGRES:
+case SQLSERVER:
 case DERBY:
 case FIREBIRD:
-case INGRES:
 case SQLITE:
-case SQLSERVER:
     log.info("SKIPPING","REGEX tests");
   return;
 }

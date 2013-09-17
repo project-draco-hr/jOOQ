@@ -1,9 +1,9 @@
 {
 switch (dialect()) {
 case ASE:
+case INGRES:
 case DERBY:
 case H2:
-case INGRES:
 case MARIADB:
 case MYSQL:
 case POSTGRES:
