@@ -1,5 +1,0 @@
-{
-  for (  Column column : columns) {
-    createField(column.getName(),dataType(column),this);
-  }
-}

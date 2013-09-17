@@ -1,6 +1,0 @@
-{
-  Table table=snapshot.getTable("T_BOOK");
-  assertEqualColumns(table.getColumns(),table(table).fields());
-  View view=snapshot.getView("V_LIBRARY");
-  assertEqualColumns(view.getColumns(),table(view).fields());
-}

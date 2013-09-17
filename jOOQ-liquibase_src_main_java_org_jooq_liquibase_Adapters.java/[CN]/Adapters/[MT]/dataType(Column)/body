@@ -1,3 +1,0 @@
-{
-  return DefaultDataType.getDataType(dialect(column),column.getTypeName(),column.getColumnSize(),column.getDecimalDigits());
-}

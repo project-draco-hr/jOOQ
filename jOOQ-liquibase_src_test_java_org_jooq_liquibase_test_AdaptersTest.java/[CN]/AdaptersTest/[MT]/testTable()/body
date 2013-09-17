@@ -1,4 +1,0 @@
-{
-  org.jooq.Table<?> table=table(snapshot.getTable("T_BOOK"));
-  assertEqualTables(T_BOOK,table);
-}

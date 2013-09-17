@@ -1,4 +1,0 @@
-{
-  super(view.getName(),new LiquibaseSchema(view.getSchema()));
-  init(view.getColumns());
-}
