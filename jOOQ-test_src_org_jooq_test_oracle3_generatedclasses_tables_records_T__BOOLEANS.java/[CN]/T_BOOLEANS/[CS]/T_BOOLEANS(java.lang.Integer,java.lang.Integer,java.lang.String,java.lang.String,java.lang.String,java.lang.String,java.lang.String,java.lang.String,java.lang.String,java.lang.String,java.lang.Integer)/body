@@ -1,0 +1,14 @@
+{
+  super(org.jooq.test.oracle3.generatedclasses.tables.T_BOOLEANS.T_BOOLEANS);
+  setValue(0,ID);
+  setValue(1,ONE_ZERO);
+  setValue(2,TRUE_FALSE_LC);
+  setValue(3,TRUE_FALSE_UC);
+  setValue(4,YES_NO_LC);
+  setValue(5,YES_NO_UC);
+  setValue(6,Y_N_LC);
+  setValue(7,Y_N_UC);
+  setValue(8,VC_BOOLEAN);
+  setValue(9,C_BOOLEAN);
+  setValue(10,N_BOOLEAN);
+}

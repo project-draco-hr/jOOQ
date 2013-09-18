@@ -1,0 +1,10 @@
+{
+  this.ID=ID;
+  this.D=D;
+  this.T=T;
+  this.TS=TS;
+  this.D_INT=D_INT;
+  this.TS_BIGINT=TS_BIGINT;
+  this.I_Y=I_Y;
+  this.I_D=I_D;
+}

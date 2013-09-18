@@ -1,0 +1,3 @@
+java.lang.String BOOK_STORE_NAME
+java.lang.Integer BOOK_ID
+java.lang.Integer STOCK

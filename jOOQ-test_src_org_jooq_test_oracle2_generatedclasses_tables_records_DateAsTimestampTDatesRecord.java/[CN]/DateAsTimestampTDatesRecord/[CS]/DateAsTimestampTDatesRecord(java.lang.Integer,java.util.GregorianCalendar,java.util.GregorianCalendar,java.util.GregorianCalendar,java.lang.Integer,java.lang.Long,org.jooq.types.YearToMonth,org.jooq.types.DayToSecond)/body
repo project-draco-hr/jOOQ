@@ -1,0 +1,11 @@
+{
+  super(org.jooq.test.oracle2.generatedclasses.tables.DateAsTimestampTDates.DATE_AS_TIMESTAMP_T_DATES);
+  setValue(0,dateAsTimestampid);
+  setValue(1,dateAsTimestampd);
+  setValue(2,dateAsTimestampt);
+  setValue(3,dateAsTimestampts);
+  setValue(4,dateAsTimestampdInt);
+  setValue(5,dateAsTimestamptsBigint);
+  setValue(6,dateAsTimestampiY);
+  setValue(7,dateAsTimestampiD);
+}

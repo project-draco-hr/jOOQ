@@ -1,0 +1,6 @@
+{
+  this.uByte=uByte;
+  this.uShort=uShort;
+  this.uInt=uInt;
+  this.uLong=uLong;
+}

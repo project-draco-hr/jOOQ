@@ -1,0 +1,18 @@
+{
+  this.id=id;
+  this.name=name;
+  this.bigInteger=bigInteger;
+  this.idRef=idRef;
+  this.class_=class_;
+  this.fields=fields;
+  this.configuration=configuration;
+  this.uDT=uDT;
+  this.metaData=metaData;
+  this.type0=type0;
+  this.primaryKey=primaryKey;
+  this.primarykey=primarykey;
+  this.nameRef=nameRef;
+  this.field_737=field_737;
+  this.msUnusedIdRef=msUnusedIdRef;
+  this.msUnusedNameRef=msUnusedNameRef;
+}

@@ -1,0 +1,5 @@
+java.lang.Integer id
+org.jooq.test.oracle.generatedclasses.test.udt.records.UStringArrayRecord stringArray
+org.jooq.test.oracle.generatedclasses.test.udt.records.UNumberArrayRecord numberArray
+org.jooq.test.oracle.generatedclasses.test.udt.records.UNumberLongArrayRecord numberLongArray
+org.jooq.test.oracle.generatedclasses.test.udt.records.UDateArrayRecord dateArray

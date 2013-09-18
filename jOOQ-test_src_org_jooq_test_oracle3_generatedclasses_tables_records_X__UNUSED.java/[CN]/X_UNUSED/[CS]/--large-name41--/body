@@ -1,0 +1,19 @@
+{
+  super(org.jooq.test.oracle3.generatedclasses.tables.X_UNUSED.X_UNUSED);
+  setValue(0,ID);
+  setValue(1,NAME);
+  setValue(2,BIG_INTEGER);
+  setValue(3,ID_REF);
+  setValue(4,CLASS);
+  setValue(5,FIELDS);
+  setValue(6,CONFIGURATION);
+  setValue(7,U_D_T);
+  setValue(8,META_DATA);
+  setValue(9,TYPE0);
+  setValue(10,PRIMARY_KEY);
+  setValue(11,PRIMARYKEY);
+  setValue(12,NAME_REF);
+  setValue(13,FIELD_737);
+  setValue(14,MS_UNUSED_ID_REF);
+  setValue(15,MS_UNUSED_NAME_REF);
+}

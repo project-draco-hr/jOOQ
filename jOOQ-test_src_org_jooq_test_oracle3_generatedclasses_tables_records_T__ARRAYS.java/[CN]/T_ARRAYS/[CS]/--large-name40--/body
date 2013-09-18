@@ -1,0 +1,8 @@
+{
+  super(org.jooq.test.oracle3.generatedclasses.tables.T_ARRAYS.T_ARRAYS);
+  setValue(0,ID);
+  setValue(1,STRING_ARRAY);
+  setValue(2,NUMBER_ARRAY);
+  setValue(3,NUMBER_LONG_ARRAY);
+  setValue(4,DATE_ARRAY);
+}

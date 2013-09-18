@@ -1,0 +1,4 @@
+{
+  this.REF_ID=REF_ID;
+  this.REF_NAME=REF_NAME;
+}

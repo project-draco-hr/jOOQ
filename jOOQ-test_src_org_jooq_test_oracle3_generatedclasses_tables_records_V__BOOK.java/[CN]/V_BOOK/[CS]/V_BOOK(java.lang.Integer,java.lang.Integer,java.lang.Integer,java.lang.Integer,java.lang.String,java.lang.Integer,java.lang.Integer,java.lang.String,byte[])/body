@@ -1,0 +1,12 @@
+{
+  super(org.jooq.test.oracle3.generatedclasses.tables.V_BOOK.V_BOOK);
+  setValue(0,ID);
+  setValue(1,AUTHOR_ID);
+  setValue(2,CO_AUTHOR_ID);
+  setValue(3,DETAILS_ID);
+  setValue(4,TITLE);
+  setValue(5,PUBLISHED_IN);
+  setValue(6,LANGUAGE_ID);
+  setValue(7,CONTENT_TEXT);
+  setValue(8,CONTENT_PDF);
+}

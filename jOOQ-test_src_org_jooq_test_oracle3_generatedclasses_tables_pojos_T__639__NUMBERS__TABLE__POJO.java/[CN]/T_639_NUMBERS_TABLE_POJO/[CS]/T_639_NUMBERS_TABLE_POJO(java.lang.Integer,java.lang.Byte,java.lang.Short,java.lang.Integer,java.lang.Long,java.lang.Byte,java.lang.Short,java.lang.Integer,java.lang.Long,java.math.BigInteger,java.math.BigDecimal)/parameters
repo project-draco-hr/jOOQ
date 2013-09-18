@@ -1,0 +1,11 @@
+java.lang.Integer ID
+java.lang.Byte BYTE
+java.lang.Short SHORT
+java.lang.Integer INTEGER
+java.lang.Long LONG
+java.lang.Byte BYTE_DECIMAL
+java.lang.Short SHORT_DECIMAL
+java.lang.Integer INTEGER_DECIMAL
+java.lang.Long LONG_DECIMAL
+java.math.BigInteger BIG_INTEGER
+java.math.BigDecimal BIG_DECIMAL

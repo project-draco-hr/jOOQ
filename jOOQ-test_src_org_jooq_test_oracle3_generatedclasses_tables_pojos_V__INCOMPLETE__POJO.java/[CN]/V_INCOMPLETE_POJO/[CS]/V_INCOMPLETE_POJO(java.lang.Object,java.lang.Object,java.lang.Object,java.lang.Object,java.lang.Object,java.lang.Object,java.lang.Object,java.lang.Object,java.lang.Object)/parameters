@@ -1,0 +1,9 @@
+java.lang.Object ID
+java.lang.Object AUTHOR_ID
+java.lang.Object CO_AUTHOR_ID
+java.lang.Object DETAILS_ID
+java.lang.Object TITLE
+java.lang.Object PUBLISHED_IN
+java.lang.Object LANGUAGE_ID
+java.lang.Object CONTENT_TEXT
+java.lang.Object CONTENT_PDF

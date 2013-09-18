@@ -1,0 +1,6 @@
+{
+  super(org.jooq.test.oracle3.generatedclasses.tables.T_785.T_785);
+  setValue(0,ID);
+  setValue(1,NAME);
+  setValue(2,VALUE);
+}

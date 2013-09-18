@@ -1,0 +1,11 @@
+java.lang.Integer ID
+java.lang.Integer ONE_ZERO
+java.lang.String TRUE_FALSE_LC
+java.lang.String TRUE_FALSE_UC
+java.lang.String YES_NO_LC
+java.lang.String YES_NO_UC
+java.lang.String Y_N_LC
+java.lang.String Y_N_UC
+java.lang.String VC_BOOLEAN
+java.lang.String C_BOOLEAN
+java.lang.Integer N_BOOLEAN

@@ -1,0 +1,5 @@
+{
+  this.ID=ID;
+  this.X_UNUSED_ID=X_UNUSED_ID;
+  this.X_UNUSED_NAME=X_UNUSED_NAME;
+}

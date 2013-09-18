@@ -1,0 +1,6 @@
+{
+  super(org.jooq.test.oracle3.generatedclasses.tables.T_TRIGGERS.T_TRIGGERS);
+  setValue(0,ID_GENERATED);
+  setValue(1,ID);
+  setValue(2,COUNTER);
+}

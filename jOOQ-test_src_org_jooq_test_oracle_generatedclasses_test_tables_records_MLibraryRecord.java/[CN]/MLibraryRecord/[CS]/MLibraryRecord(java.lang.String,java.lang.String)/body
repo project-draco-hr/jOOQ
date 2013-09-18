@@ -1,0 +1,5 @@
+{
+  super(org.jooq.test.oracle.generatedclasses.test.tables.MLibrary.M_LIBRARY);
+  setValue(0,author);
+  setValue(1,title);
+}

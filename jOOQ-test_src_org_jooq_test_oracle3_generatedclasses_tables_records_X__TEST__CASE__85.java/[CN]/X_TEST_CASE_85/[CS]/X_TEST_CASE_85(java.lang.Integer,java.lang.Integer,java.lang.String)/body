@@ -1,0 +1,6 @@
+{
+  super(org.jooq.test.oracle3.generatedclasses.tables.X_TEST_CASE_85.X_TEST_CASE_85);
+  setValue(0,ID);
+  setValue(1,X_UNUSED_ID);
+  setValue(2,X_UNUSED_NAME);
+}

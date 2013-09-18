@@ -1,0 +1,5 @@
+{
+  this.ID=ID;
+  this.NAME=NAME;
+  this.VALUE=VALUE;
+}

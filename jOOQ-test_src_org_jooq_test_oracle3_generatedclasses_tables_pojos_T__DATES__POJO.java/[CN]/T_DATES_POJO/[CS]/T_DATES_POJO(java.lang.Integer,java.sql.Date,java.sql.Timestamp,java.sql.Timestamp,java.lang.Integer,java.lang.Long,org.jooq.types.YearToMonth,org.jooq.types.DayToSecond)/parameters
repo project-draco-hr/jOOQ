@@ -1,0 +1,8 @@
+java.lang.Integer ID
+java.sql.Date D
+java.sql.Timestamp T
+java.sql.Timestamp TS
+java.lang.Integer D_INT
+java.lang.Long TS_BIGINT
+org.jooq.types.YearToMonth I_Y
+org.jooq.types.DayToSecond I_D

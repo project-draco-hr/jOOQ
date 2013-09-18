@@ -1,0 +1,7 @@
+{
+  super(org.jooq.test.oracle3.generatedclasses.tables.T_DIRECTORY.T_DIRECTORY);
+  setValue(0,ID);
+  setValue(1,PARENT_ID);
+  setValue(2,IS_DIRECTORY);
+  setValue(3,name);
+}

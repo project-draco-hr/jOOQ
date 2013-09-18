@@ -1,0 +1,6 @@
+{
+  this.ID=ID;
+  this.PARENT_ID=PARENT_ID;
+  this.IS_DIRECTORY=IS_DIRECTORY;
+  this.name=name;
+}

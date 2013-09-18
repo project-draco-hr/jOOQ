@@ -1,0 +1,9 @@
+{
+  super(org.jooq.test.oracle3.generatedclasses.tables.T_AUTHOR.T_AUTHOR);
+  setValue(0,ID);
+  setValue(1,FIRST_NAME);
+  setValue(2,LAST_NAME);
+  setValue(3,DATE_OF_BIRTH);
+  setValue(4,YEAR_OF_BIRTH);
+  setValue(5,ADDRESS);
+}

@@ -1,0 +1,13 @@
+{
+  this.ID=ID;
+  this.ONE_ZERO=ONE_ZERO;
+  this.TRUE_FALSE_LC=TRUE_FALSE_LC;
+  this.TRUE_FALSE_UC=TRUE_FALSE_UC;
+  this.YES_NO_LC=YES_NO_LC;
+  this.YES_NO_UC=YES_NO_UC;
+  this.Y_N_LC=Y_N_LC;
+  this.Y_N_UC=Y_N_UC;
+  this.VC_BOOLEAN=VC_BOOLEAN;
+  this.C_BOOLEAN=C_BOOLEAN;
+  this.N_BOOLEAN=N_BOOLEAN;
+}

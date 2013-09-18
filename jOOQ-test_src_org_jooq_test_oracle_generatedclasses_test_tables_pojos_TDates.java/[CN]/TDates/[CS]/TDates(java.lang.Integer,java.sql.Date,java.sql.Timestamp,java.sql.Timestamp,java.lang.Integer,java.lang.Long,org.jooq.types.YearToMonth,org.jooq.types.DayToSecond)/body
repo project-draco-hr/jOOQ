@@ -1,0 +1,10 @@
+{
+  this.id=id;
+  this.d=d;
+  this.t=t;
+  this.ts=ts;
+  this.dInt=dInt;
+  this.tsBigint=tsBigint;
+  this.iY=iY;
+  this.iD=iD;
+}

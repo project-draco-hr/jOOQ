@@ -1,0 +1,4 @@
+java.lang.Integer ID
+java.lang.Integer PARENT_ID
+java.lang.Integer IS_DIRECTORY
+java.lang.String name
