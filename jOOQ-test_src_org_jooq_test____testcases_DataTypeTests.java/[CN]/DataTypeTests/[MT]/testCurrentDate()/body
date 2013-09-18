@@ -1,0 +1,6 @@
+{
+  Field<Timestamp> ts=currentDate().cast(Timestamp.class).as("ts");
+  Field<Date> d=currentDate().as("d");
+  Record2<Date,Timestamp> record=create().select(d,ts).fetchOne();
+  assertEquals(record.value1().getTime(),record.value2().getTime());
+}
