@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.test.db2.generatedclasses.tables.T_639NumbersTable.DOUBLE);
+  return (java.lang.Double)getValue(11);
 }

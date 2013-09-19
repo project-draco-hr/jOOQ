@@ -1,5 +1,5 @@
 {
-  super("P_DEFAULT",org.jooq.test.db2.generatedclasses.Lukas.LUKAS);
+  super("P_DEFAULT",org.jooq.test.db2.generatedclasses.Library.LIBRARY);
   addInParameter(P_IN_NUMBER);
   addOutParameter(P_OUT_NUMBER);
   addInParameter(P_IN_VARCHAR);

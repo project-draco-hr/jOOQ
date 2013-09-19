@@ -1,0 +1,4 @@
+{
+  super(org.jooq.test.db2.generatedclasses.tables.TBookStore.T_BOOK_STORE);
+  setValue(0,name);
+}

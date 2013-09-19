@@ -1,0 +1,4 @@
+{
+  super(org.jooq.test.db2.generatedclasses.tables.T_986_1.T_986_1);
+  setValue(0,ref);
+}

@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.test.db2.generatedclasses.tables.TBook.TITLE);
+  return (java.lang.String)getValue(4);
 }

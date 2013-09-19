@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.test.db2.generatedclasses.tables.T_986_1.REF);
+  return (java.lang.Integer)getValue(0);
 }

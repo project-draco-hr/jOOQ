@@ -1,3 +1,3 @@
 {
-  setValue(org.jooq.test.db2.generatedclasses.tables.TBookToBookStore.BOOK_STORE_NAME,value);
+  setValue(0,value);
 }
