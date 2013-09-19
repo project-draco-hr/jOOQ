@@ -10,7 +10,7 @@ case SQLITE:
 default :
 {
     context.start(TRUNCATE_TRUNCATE).keyword("truncate table").sql(" ").visit(table);
-    if (context.configuration().dialect() == SQLDialect.DB2) {
+    if (context.configuration().dialect().family() == SQLDialect.DB2) {
       context.sql(" ").keyword("immediate");
     }
     if (restartIdentity != null) {

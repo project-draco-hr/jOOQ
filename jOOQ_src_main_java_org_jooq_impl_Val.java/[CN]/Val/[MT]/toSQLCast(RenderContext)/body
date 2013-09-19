@@ -1,30 +1,30 @@
 {
   DataType<T> dataType=getDataType(context.configuration());
   DataType<T> type=dataType.getSQLDataType();
-  SQLDialect dialect=context.configuration().dialect();
-  if (value != null && getType() == BigDecimal.class && asList(CUBRID,DB2,DERBY,FIREBIRD,HSQLDB).contains(dialect)) {
+  SQLDialect family=context.configuration().dialect().family();
+  if (value != null && getType() == BigDecimal.class && asList(CUBRID,DB2,DERBY,FIREBIRD,HSQLDB).contains(family)) {
     int scale=((BigDecimal)value).scale();
     int precision=scale + ((BigDecimal)value).precision();
-    if (dialect == FIREBIRD) {
+    if (family == FIREBIRD) {
       precision=Math.min(precision,18);
     }
     toSQLCast(context,dataType,0,precision,scale);
   }
  else   if (SQLDataType.OTHER == type) {
     if (value != null) {
-      toSQLCast(context,DefaultDataType.getDataType(dialect,value.getClass()),0,0,0);
+      toSQLCast(context,DefaultDataType.getDataType(family,value.getClass()),0,0,0);
     }
- else     if (asList(INGRES,SYBASE).contains(dialect)) {
+ else     if (asList(INGRES,SYBASE).contains(family)) {
       context.sql(getBindVariable(context));
     }
  else {
-      toSQLCast(context,DefaultDataType.getDataType(dialect,String.class),0,0,0);
+      toSQLCast(context,DefaultDataType.getDataType(family,String.class),0,0,0);
     }
   }
- else   if (dialect == POSTGRES && (type == null || !type.isTemporal())) {
+ else   if (family == POSTGRES && (type == null || !type.isTemporal())) {
     toSQL(context,value,getType());
   }
- else   if ((type == SQLDataType.VARCHAR || type == SQLDataType.CHAR) && asList(FIREBIRD).contains(dialect)) {
+ else   if ((type == SQLDataType.VARCHAR || type == SQLDataType.CHAR) && asList(FIREBIRD).contains(family)) {
     toSQLCast(context,dataType,getValueLength(),0,0);
   }
  else {

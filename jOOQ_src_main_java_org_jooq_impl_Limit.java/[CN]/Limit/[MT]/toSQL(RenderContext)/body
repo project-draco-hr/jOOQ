@@ -40,6 +40,8 @@ context.paramType(INLINED).keyword("top").sql(" ").visit(numberOfRows).sql(" ").
 break;
 }
 case DB2:
+case DB2_9:
+case DB2_10:
 {
 if (offset != null) {
 throw new DataAccessException("DB2 does not support offsets in FETCH FIRST ROWS ONLY clause");

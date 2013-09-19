@@ -47,6 +47,8 @@ context.visit(getUpperRownum());
 break;
 }
 case DB2:
+case DB2_9:
+case DB2_10:
 case SQLSERVER2008:
 {
 if (offset == null && !rendersParams) {

@@ -1,7 +1,7 @@
 {
   if (!isInline(context)) {
     if (!(value instanceof EnumType)) {
-switch (context.configuration().dialect()) {
+switch (context.configuration().dialect().family()) {
 case DB2:
 case DERBY:
 case FIREBIRD:

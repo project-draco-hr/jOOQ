@@ -8,7 +8,7 @@
     context.visit(arguments);
   }
   if (ignoreNulls) {
-    if (context.configuration().dialect() == SQLDialect.DB2) {
+    if (context.configuration().dialect().family() == SQLDialect.DB2) {
       context.sql(", 'IGNORE NULLS'");
     }
  else {
@@ -16,7 +16,7 @@
     }
   }
  else   if (respectNulls) {
-    if (context.configuration().dialect() == SQLDialect.DB2) {
+    if (context.configuration().dialect().family() == SQLDialect.DB2) {
       context.sql(", 'RESPECT NULLS'");
     }
  else {

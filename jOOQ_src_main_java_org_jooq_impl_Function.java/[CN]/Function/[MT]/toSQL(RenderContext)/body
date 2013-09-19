@@ -5,7 +5,7 @@
  else   if (term == LIST_AGG && asList(POSTGRES,SYBASE).contains(context.configuration().dialect())) {
     toSQLStringAgg(context);
   }
- else   if (term == LIST_AGG && asList(DB2).contains(context.configuration().dialect())) {
+ else   if (term == LIST_AGG && asList(DB2).contains(context.configuration().dialect().family())) {
     toSQLXMLAGG(context);
   }
  else {

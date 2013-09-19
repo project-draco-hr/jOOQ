@@ -1,19 +1,19 @@
 {
-  SQLDialect dialect=context.configuration().dialect();
+  SQLDialect family=context.configuration().dialect().family();
   Field<?> lhs=field1;
   Field<?> rhs=field2;
   Comparator op=comparator;
-  if ((op == LIKE || op == NOT_LIKE) && field1.getType() != String.class && asList(ASE,DERBY,POSTGRES).contains(dialect)) {
+  if ((op == LIKE || op == NOT_LIKE) && field1.getType() != String.class && asList(ASE,DERBY,POSTGRES).contains(family)) {
     lhs=lhs.cast(String.class);
   }
- else   if ((op == LIKE_IGNORE_CASE || op == NOT_LIKE_IGNORE_CASE) && POSTGRES != dialect) {
+ else   if ((op == LIKE_IGNORE_CASE || op == NOT_LIKE_IGNORE_CASE) && POSTGRES != family) {
     lhs=lhs.lower();
     rhs=rhs.lower();
     op=(op == LIKE_IGNORE_CASE ? LIKE : NOT_LIKE);
   }
   context.visit(lhs).sql(" ");
   boolean castRhs=false;
-  if (dialect == DB2 && rhs instanceof Concat)   castRhs=true;
+  if (family == DB2 && rhs instanceof Concat)   castRhs=true;
   context.keyword(op.toSQL()).sql(" ");
   if (castRhs)   context.keyword("cast").sql("(");
   context.visit(rhs);
