@@ -2,13 +2,13 @@
 switch (configuration.dialect().family()) {
 case CUBRID:
 case FIREBIRD:
+case DB2:
 case INGRES:
 case ORACLE:
 case SQLSERVER:
 case SYBASE:
     return (QueryPartInternal)condition("{0} = {1}",field,inline(true));
 case ASE:
-case DB2:
 case DERBY:
 case H2:
 case HSQLDB:
