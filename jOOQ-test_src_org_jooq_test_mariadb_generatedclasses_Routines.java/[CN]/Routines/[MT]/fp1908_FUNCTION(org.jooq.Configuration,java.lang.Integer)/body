@@ -1,0 +1,6 @@
+{
+  org.jooq.test.mariadb.generatedclasses.routines.Fp1908_FUNCTION f=new org.jooq.test.mariadb.generatedclasses.routines.Fp1908_FUNCTION();
+  f.setP1(p1);
+  f.execute(configuration);
+  return f.getReturnValue();
+}

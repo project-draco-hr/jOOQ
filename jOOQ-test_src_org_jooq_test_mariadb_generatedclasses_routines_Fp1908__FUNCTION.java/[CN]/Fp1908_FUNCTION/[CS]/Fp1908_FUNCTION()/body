@@ -1,0 +1,6 @@
+{
+  super("fp1908",org.jooq.test.mariadb.generatedclasses.Test.TEST,org.jooq.impl.SQLDataType.INTEGER);
+  setReturnParameter(RETURN_VALUE);
+  addInParameter(P1);
+  setOverloaded(true);
+}
