@@ -1,0 +1,17 @@
+{
+  super(org.jooq.test.mariadb.generatedclasses.tables.XUnused.X_UNUSED);
+  setValue(0,id);
+  setValue(1,name);
+  setValue(2,bigInteger);
+  setValue(3,idRef);
+  setValue(4,nameRef);
+  setValue(5,class_);
+  setValue(6,fields);
+  setValue(7,configuration);
+  setValue(8,uDT);
+  setValue(9,metaData);
+  setValue(10,type0);
+  setValue(11,primaryKey);
+  setValue(12,primarykey);
+  setValue(13,field_737);
+}
