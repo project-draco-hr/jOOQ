@@ -1,0 +1,6 @@
+{
+  super(schema,null,name,comment,overload);
+  this.params=params;
+  this.returns=returns;
+  this.procType=procType;
+}

@@ -1,5 +1,3 @@
 {
-  super(schema,null,name,comment,null);
-  this.params=params;
-  this.returns=returns;
+  this(schema,name,comment,params,returns,null,null);
 }

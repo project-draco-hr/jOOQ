@@ -1,12 +1,24 @@
 {
   List<RoutineDefinition> result=new ArrayList<RoutineDefinition>();
-  for (  Record record : create().select(Proc.DB,Proc.NAME,Proc.COMMENT,Proc.PARAM_LIST,Proc.RETURNS).from(PROC).where(DB.in(getInputSchemata())).orderBy(DB,Proc.NAME).fetch()) {
-    SchemaDefinition schema=getSchema(record.getValue(DB));
-    String name=record.getValue(Proc.NAME);
-    String comment=record.getValue(Proc.COMMENT);
-    String params=new String(record.getValue(Proc.PARAM_LIST));
-    String returns=new String(record.getValue(Proc.RETURNS));
-    result.add(new MySQLRoutineDefinition(schema,name,comment,params,returns));
+  Result<Record6<String,String,String,byte[],byte[],ProcType>> records=create().select(Proc.DB,Proc.NAME,Proc.COMMENT,Proc.PARAM_LIST,Proc.RETURNS,Proc.TYPE).from(PROC).where(DB.in(getInputSchemata())).orderBy(DB,Proc.NAME).fetch();
+  Map<Record,Result<Record6<String,String,String,byte[],byte[],ProcType>>> groups=records.intoGroups(new Field[]{Proc.DB,Proc.NAME});
+  for (  Entry<Record,Result<Record6<String,String,String,byte[],byte[],ProcType>>> entry : groups.entrySet()) {
+    Result<?> overloads=entry.getValue();
+    for (int i=0; i < overloads.size(); i++) {
+      Record record=overloads.get(i);
+      SchemaDefinition schema=getSchema(record.getValue(DB));
+      String name=record.getValue(Proc.NAME);
+      String comment=record.getValue(Proc.COMMENT);
+      String params=new String(record.getValue(Proc.PARAM_LIST));
+      String returns=new String(record.getValue(Proc.RETURNS));
+      ProcType type=record.getValue(Proc.TYPE);
+      if (overloads.size() > 1) {
+        result.add(new MySQLRoutineDefinition(schema,name,comment,params,returns,type,"_" + type.name()));
+      }
+ else {
+        result.add(new MySQLRoutineDefinition(schema,name,comment,params,returns,type,null));
+      }
+    }
   }
   return result;
 }
