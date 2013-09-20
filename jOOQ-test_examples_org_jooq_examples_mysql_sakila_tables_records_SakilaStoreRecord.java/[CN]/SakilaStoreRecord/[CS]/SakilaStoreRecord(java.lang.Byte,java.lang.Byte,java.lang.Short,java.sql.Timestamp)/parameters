@@ -1,0 +1,4 @@
+java.lang.Byte storeId
+java.lang.Byte managerStaffId
+java.lang.Short addressId
+java.sql.Timestamp lastUpdate

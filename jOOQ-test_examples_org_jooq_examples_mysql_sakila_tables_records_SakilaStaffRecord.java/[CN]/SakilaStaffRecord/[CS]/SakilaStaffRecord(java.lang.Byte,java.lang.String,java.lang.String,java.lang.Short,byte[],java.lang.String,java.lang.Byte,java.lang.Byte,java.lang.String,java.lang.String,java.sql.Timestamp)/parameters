@@ -1,0 +1,11 @@
+java.lang.Byte staffId
+java.lang.String firstName
+java.lang.String lastName
+java.lang.Short addressId
+byte[] picture
+java.lang.String email
+java.lang.Byte storeId
+java.lang.Byte active
+java.lang.String username
+java.lang.String password
+java.sql.Timestamp lastUpdate

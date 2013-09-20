@@ -1,0 +1,4 @@
+java.lang.Integer inventoryId
+java.lang.Short filmId
+java.lang.Byte storeId
+java.sql.Timestamp lastUpdate

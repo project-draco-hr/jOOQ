@@ -1,0 +1,11 @@
+{
+  super(org.jooq.examples.mysql.sakila.tables.SakilaAddress.ADDRESS);
+  setValue(0,addressId);
+  setValue(1,address);
+  setValue(2,address2);
+  setValue(3,district);
+  setValue(4,cityId);
+  setValue(5,postalCode);
+  setValue(6,phone);
+  setValue(7,lastUpdate);
+}

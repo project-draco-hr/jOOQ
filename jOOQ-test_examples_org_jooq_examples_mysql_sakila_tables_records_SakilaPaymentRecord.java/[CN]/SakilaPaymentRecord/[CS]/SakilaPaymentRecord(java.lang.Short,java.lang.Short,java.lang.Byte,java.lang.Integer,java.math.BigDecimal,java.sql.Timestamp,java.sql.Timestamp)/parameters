@@ -1,0 +1,7 @@
+java.lang.Short paymentId
+java.lang.Short customerId
+java.lang.Byte staffId
+java.lang.Integer rentalId
+java.math.BigDecimal amount
+java.sql.Timestamp paymentDate
+java.sql.Timestamp lastUpdate

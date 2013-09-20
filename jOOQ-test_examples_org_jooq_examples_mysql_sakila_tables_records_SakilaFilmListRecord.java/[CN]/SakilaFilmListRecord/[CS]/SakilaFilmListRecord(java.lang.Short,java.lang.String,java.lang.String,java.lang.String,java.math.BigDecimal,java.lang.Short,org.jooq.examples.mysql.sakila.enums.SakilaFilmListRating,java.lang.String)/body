@@ -1,0 +1,11 @@
+{
+  super(org.jooq.examples.mysql.sakila.tables.SakilaFilmList.FILM_LIST);
+  setValue(0,fid);
+  setValue(1,title);
+  setValue(2,description);
+  setValue(3,category);
+  setValue(4,price);
+  setValue(5,length);
+  setValue(6,rating);
+  setValue(7,actors);
+}

@@ -1,0 +1,3 @@
+java.lang.Short filmId
+java.lang.Byte categoryId
+java.sql.Timestamp lastUpdate

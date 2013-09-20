@@ -1,0 +1,7 @@
+{
+  super(org.jooq.examples.mysql.sakila.tables.SakilaActorInfo.ACTOR_INFO);
+  setValue(0,actorId);
+  setValue(1,firstName);
+  setValue(2,lastName);
+  setValue(3,filmInfo);
+}

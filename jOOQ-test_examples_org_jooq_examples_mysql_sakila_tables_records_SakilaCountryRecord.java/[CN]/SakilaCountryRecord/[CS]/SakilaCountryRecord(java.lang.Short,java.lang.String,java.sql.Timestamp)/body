@@ -1,0 +1,6 @@
+{
+  super(org.jooq.examples.mysql.sakila.tables.SakilaCountry.COUNTRY);
+  setValue(0,countryId);
+  setValue(1,country);
+  setValue(2,lastUpdate);
+}

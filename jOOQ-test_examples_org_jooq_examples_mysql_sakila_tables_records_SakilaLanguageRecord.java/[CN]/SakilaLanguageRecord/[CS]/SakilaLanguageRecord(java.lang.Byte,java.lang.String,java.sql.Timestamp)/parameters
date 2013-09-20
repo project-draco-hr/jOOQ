@@ -1,0 +1,3 @@
+java.lang.Byte languageId
+java.lang.String name
+java.sql.Timestamp lastUpdate

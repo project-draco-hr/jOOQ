@@ -1,0 +1,3 @@
+java.lang.Short countryId
+java.lang.String country
+java.sql.Timestamp lastUpdate

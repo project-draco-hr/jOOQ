@@ -1,0 +1,6 @@
+{
+  super(org.jooq.examples.mysql.sakila.tables.SakilaFilmText.FILM_TEXT);
+  setValue(0,filmId);
+  setValue(1,title);
+  setValue(2,description);
+}

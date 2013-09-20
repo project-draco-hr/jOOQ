@@ -1,0 +1,6 @@
+{
+  super(org.jooq.examples.mysql.sakila.tables.SakilaFilmCategory.FILM_CATEGORY);
+  setValue(0,filmId);
+  setValue(1,categoryId);
+  setValue(2,lastUpdate);
+}
