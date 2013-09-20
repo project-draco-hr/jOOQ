@@ -1,0 +1,14 @@
+{
+switch (configuration.dialect().family()) {
+case SQLSERVER:
+case SYBASE:
+{
+      List<Field<?>> fields=query.getSelect();
+      String[] names=new String[fields.size()];
+      for (int i=0; i < names.length; i++)       names[i]="f" + (i + 1);
+      return select(count).from(query.asTable("q",names));
+    }
+default :
+  return select(count).from(query.asTable("q"));
+}
+}
