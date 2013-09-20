@@ -1,7 +1,14 @@
 {
   String schema=getSchema() == null ? null : getSchema().getName();
   try {
-    Result<Record> result=create.fetch(meta().getPrimaryKeys(null,schema,getName()),String.class,String.class,String.class,String.class,int.class,String.class);
+    ResultSet rs;
+    if (!asList(MYSQL,MARIADB).contains(configuration.dialect().family())) {
+      rs=meta().getPrimaryKeys(null,schema,getName());
+    }
+ else {
+      rs=meta().getPrimaryKeys(schema,null,getName());
+    }
+    Result<Record> result=create.fetch(rs,String.class,String.class,String.class,String.class,int.class,String.class);
     result.sortAsc(4);
     if (result.size() > 0) {
       TableField<Record,?>[] fields=new TableField[result.size()];

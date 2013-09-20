@@ -1,3 +1,10 @@
 {
-  return create.fetch(meta().getColumns(null,schema,table,"%"),String.class,String.class,String.class,String.class,int.class,String.class,int.class,String.class,int.class);
+  ResultSet rs;
+  if (!asList(MYSQL,MARIADB).contains(configuration.dialect().family())) {
+    rs=meta().getColumns(null,schema,table,"%");
+  }
+ else {
+    rs=meta().getColumns(schema,null,table,"%");
+  }
+  return create.fetch(rs,String.class,String.class,String.class,String.class,int.class,String.class,int.class,String.class,int.class);
 }

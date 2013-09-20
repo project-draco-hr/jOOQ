@@ -1,9 +1,11 @@
 {
   try {
     List<Catalog> result=new ArrayList<Catalog>();
-    Result<Record> catalogs=create.fetch(meta().getCatalogs(),SQLDataType.VARCHAR);
-    for (    String name : catalogs.getValues(0,String.class)) {
-      result.add(new MetaCatalog(name));
+    if (!asList(MYSQL,MARIADB).contains(configuration.dialect().family())) {
+      Result<Record> catalogs=create.fetch(meta().getCatalogs(),SQLDataType.VARCHAR);
+      for (      String name : catalogs.getValues(0,String.class)) {
+        result.add(new MetaCatalog(name));
+      }
     }
     if (result.isEmpty()) {
       result.add(new MetaCatalog(""));
