@@ -1,0 +1,21 @@
+{
+  if (object instanceof Blob) {
+    Blob blob=(Blob)object;
+    try {
+      return blob.getBytes(1,(int)blob.length());
+    }
+  finally {
+      blob.free();
+    }
+  }
+ else   if (object instanceof Clob) {
+    Clob clob=(Clob)object;
+    try {
+      return clob.getSubString(1,(int)clob.length());
+    }
+  finally {
+      clob.free();
+    }
+  }
+  return object;
+}

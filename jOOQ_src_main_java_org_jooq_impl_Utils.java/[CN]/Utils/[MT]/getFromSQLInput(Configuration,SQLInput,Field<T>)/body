@@ -103,6 +103,6 @@
     return (T)stream.readObject();
   }
  else {
-    return (T)stream.readObject();
+    return (T)unlob(stream.readObject());
   }
 }

@@ -138,6 +138,6 @@ ResultSet nested=(ResultSet)rs.getObject(index);
 return (T)DSL.using(ctx.configuration()).fetch(nested);
 }
  else {
-return (T)rs.getObject(index);
+return (T)unlob(rs.getObject(index));
 }
 }
