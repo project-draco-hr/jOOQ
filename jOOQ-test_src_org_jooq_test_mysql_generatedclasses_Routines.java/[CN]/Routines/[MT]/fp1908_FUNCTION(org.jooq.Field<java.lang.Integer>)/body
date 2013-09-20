@@ -1,0 +1,5 @@
+{
+  org.jooq.test.mysql.generatedclasses.routines.Fp1908_FUNCTION f=new org.jooq.test.mysql.generatedclasses.routines.Fp1908_FUNCTION();
+  f.setP1(p1);
+  return f.asField();
+}
