@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.Sequence<?>>asList(org.jooq.test.h2.generatedclasses.Sequences.SEQUENCE_S_AUTHOR_ID,org.jooq.test.h2.generatedclasses.Sequences.SEQUENCE_S_TRIGGERS_SEQUENCE);
+}

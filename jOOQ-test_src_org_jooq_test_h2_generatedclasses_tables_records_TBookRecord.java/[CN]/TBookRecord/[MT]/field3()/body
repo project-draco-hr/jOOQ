@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.h2.generatedclasses.tables.TBook.CO_AUTHOR_ID;
-}

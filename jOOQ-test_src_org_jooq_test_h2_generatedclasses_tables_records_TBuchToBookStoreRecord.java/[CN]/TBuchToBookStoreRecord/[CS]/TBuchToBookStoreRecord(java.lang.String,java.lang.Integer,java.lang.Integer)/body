@@ -1,0 +1,6 @@
+{
+  super(org.jooq.test.h2.generatedclasses.tables.TBuchToBookStore.T_BUCH_TO_BOOK_STORE);
+  setValue(0,bookStoreName);
+  setValue(1,bookId);
+  setValue(2,stock);
+}
