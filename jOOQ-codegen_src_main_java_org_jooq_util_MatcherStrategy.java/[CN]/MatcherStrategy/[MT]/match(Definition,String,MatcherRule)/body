@@ -1,0 +1,6 @@
+{
+  if (rule != null) {
+    return match(definition,expression,rule.getExpression(),rule.getTransform());
+  }
+  return null;
+}

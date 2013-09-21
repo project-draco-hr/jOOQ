@@ -1,0 +1,17 @@
+{
+  if (transform == null)   return string;
+switch (transform) {
+case AS_IS:
+    return string;
+case LOWER:
+  return string.toLowerCase();
+case UPPER:
+return string.toUpperCase();
+case CAMEL:
+return StringUtils.toCamelCaseLC(string);
+case PASCAL:
+return StringUtils.toCamelCase(string);
+default :
+throw new UnsupportedOperationException("Transform Type not supported : " + transform);
+}
+}

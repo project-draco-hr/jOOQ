@@ -1,0 +1,12 @@
+{
+  for (  Tables tables : tables(definition)) {
+    String result=null;
+switch (mode) {
+case POJO:
+      result=match(definition,tables.getExpression(),tables.getPojoExtends());
+    break;
+}
+if (result != null) return result;
+}
+return super.getJavaClassExtends(definition,mode);
+}

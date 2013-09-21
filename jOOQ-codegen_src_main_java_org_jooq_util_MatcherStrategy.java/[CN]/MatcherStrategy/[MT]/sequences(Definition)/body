@@ -1,0 +1,6 @@
+{
+  if (definition instanceof SequenceDefinition) {
+    return matchers.getSequences();
+  }
+  return emptyList();
+}

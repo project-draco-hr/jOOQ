@@ -1,0 +1,6 @@
+{
+  if (definition instanceof RoutineDefinition) {
+    return matchers.getRoutines();
+  }
+  return emptyList();
+}

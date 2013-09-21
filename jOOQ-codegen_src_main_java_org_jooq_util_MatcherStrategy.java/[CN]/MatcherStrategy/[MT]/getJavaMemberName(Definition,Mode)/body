@@ -1,0 +1,7 @@
+{
+  for (  Fields fields : fields(definition)) {
+    String result=match(definition,fields.getExpression(),fields.getFieldMember());
+    if (result != null)     return result;
+  }
+  return super.getJavaMemberName(definition,mode);
+}

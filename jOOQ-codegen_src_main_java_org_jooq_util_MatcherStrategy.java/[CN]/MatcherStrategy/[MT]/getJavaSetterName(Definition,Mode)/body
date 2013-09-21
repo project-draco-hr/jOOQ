@@ -1,0 +1,7 @@
+{
+  for (  Fields fields : fields(definition)) {
+    String result=match(definition,fields.getExpression(),fields.getFieldSetter());
+    if (result != null)     return result;
+  }
+  return super.getJavaSetterName(definition,mode);
+}

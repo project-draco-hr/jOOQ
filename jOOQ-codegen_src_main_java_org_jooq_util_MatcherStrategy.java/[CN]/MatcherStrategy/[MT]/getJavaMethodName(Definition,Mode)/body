@@ -1,0 +1,7 @@
+{
+  for (  Routines routines : routines(definition)) {
+    String result=match(definition,routines.getExpression(),routines.getRoutineMethod());
+    if (result != null)     return result;
+  }
+  return super.getJavaMethodName(definition,mode);
+}

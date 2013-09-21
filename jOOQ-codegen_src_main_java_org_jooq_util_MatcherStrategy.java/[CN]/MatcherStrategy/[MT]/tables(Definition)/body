@@ -1,0 +1,6 @@
+{
+  if (definition instanceof TableDefinition) {
+    return matchers.getTables();
+  }
+  return emptyList();
+}
