@@ -1,0 +1,9 @@
+java.lang.Integer id
+java.sql.Date d
+java.sql.Time t
+java.sql.Timestamp ts
+java.lang.Integer dInt
+java.lang.Long tsBigint
+java.lang.String offset1
+java.sql.Timestamp offset2
+java.sql.Date offset3

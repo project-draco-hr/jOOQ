@@ -1,0 +1,5 @@
+{
+  super(org.jooq.test.sqlserver.generatedclasses.tables.VLibrary.V_LIBRARY);
+  setValue(0,author);
+  setValue(1,title);
+}

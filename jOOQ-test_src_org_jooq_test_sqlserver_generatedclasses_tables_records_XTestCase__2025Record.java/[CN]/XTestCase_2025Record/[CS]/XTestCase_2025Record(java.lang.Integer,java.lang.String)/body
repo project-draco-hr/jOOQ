@@ -1,0 +1,5 @@
+{
+  super(org.jooq.test.sqlserver.generatedclasses.tables.XTestCase_2025.X_TEST_CASE_2025);
+  setValue(0,refId);
+  setValue(1,refName);
+}

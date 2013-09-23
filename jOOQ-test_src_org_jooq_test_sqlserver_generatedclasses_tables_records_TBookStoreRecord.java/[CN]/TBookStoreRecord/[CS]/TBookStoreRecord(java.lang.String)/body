@@ -1,0 +1,4 @@
+{
+  super(org.jooq.test.sqlserver.generatedclasses.tables.TBookStore.T_BOOK_STORE);
+  setValue(0,name);
+}
