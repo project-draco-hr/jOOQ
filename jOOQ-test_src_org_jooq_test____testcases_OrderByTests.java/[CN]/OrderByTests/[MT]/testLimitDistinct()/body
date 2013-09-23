@@ -1,0 +1,4 @@
+{
+  assertEquals(1,(int)create().selectDistinct(TBookToBookStore_BOOK_ID()).from(TBookToBookStore()).orderBy(TBookToBookStore_BOOK_ID()).limit(1).fetchOne(TBookToBookStore_BOOK_ID()));
+  assertEquals(2,(int)create().selectDistinct(TBookToBookStore_BOOK_ID()).from(TBookToBookStore()).orderBy(TBookToBookStore_BOOK_ID()).limit(1).offset(1).fetchOne(TBookToBookStore_BOOK_ID()));
+}
