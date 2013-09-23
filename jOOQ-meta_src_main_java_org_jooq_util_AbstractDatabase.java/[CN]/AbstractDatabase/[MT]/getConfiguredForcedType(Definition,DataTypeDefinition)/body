@@ -1,0 +1,17 @@
+{
+  for (  ForcedType forcedType : getConfiguredForcedTypes()) {
+    String expressions=forcedType.getExpressions();
+    String types=forcedType.getTypes();
+    boolean match=true;
+    if (expressions != null && !definition.getQualifiedName().matches(expressions)) {
+      match=false;
+    }
+    if (types != null && definedType != null && !definedType.getType().matches(types)) {
+      match=false;
+    }
+    if (match) {
+      return forcedType;
+    }
+  }
+  return null;
+}
