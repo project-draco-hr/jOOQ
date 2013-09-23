@@ -1,0 +1,3 @@
+{
+  return fetch(org.jooq.test.h2.generatedclasses.tables.T_2718.EXCLUDE_ME,values);
+}

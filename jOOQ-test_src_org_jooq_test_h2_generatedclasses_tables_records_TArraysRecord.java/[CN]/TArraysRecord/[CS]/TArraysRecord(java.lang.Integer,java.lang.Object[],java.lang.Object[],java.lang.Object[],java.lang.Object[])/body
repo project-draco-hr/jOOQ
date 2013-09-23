@@ -1,0 +1,8 @@
+{
+  super(org.jooq.test.h2.generatedclasses.tables.TArrays.T_ARRAYS);
+  setValue(0,id);
+  setValue(1,stringArray);
+  setValue(2,stringList);
+  setValue(3,numberArray);
+  setValue(4,dateArray);
+}

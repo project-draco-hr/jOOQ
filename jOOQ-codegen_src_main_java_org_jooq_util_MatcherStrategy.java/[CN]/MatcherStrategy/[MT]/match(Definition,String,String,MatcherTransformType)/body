@@ -1,0 +1,14 @@
+{
+  if (ruleExpression != null) {
+    Pattern p=compile(defaultIfEmpty(expression,"^.*$").trim());
+    Matcher m=p.matcher(definition.getName());
+    if (m.matches()) {
+      return transform(m.replaceAll(ruleExpression),ruleTransformType);
+    }
+    m=p.matcher(definition.getQualifiedName());
+    if (m.matches()) {
+      return transform(m.replaceAll(ruleExpression),ruleTransformType);
+    }
+  }
+  return null;
+}

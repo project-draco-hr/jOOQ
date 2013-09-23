@@ -1,0 +1,7 @@
+{
+  List<String> list=new ArrayList<String>();
+  for (  String string : result.split(",")) {
+    list.add(string.trim());
+  }
+  return list;
+}

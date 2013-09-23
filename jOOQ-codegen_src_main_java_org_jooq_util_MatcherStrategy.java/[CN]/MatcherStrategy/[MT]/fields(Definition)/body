@@ -1,0 +1,6 @@
+{
+  if (definition instanceof ColumnDefinition) {
+    return matchers.getFields();
+  }
+  return emptyList();
+}

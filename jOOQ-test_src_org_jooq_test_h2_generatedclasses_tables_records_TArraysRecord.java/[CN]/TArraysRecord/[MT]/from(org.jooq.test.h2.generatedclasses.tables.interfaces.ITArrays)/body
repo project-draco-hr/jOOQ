@@ -1,6 +1,7 @@
 {
   setId(from.getId());
   setStringArray(from.getStringArray());
+  setStringList(from.getStringList());
   setNumberArray(from.getNumberArray());
   setDateArray(from.getDateArray());
 }

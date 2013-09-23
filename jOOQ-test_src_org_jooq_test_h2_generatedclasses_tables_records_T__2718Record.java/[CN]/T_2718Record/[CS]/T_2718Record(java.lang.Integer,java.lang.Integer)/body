@@ -1,0 +1,5 @@
+{
+  super(org.jooq.test.h2.generatedclasses.tables.T_2718.T_2718);
+  setValue(0,excludeMe);
+  setValue(1,xx);
+}

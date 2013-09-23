@@ -1,4 +1,4 @@
 {
   this.author=author;
-  this.title=title;
+  this.the__title=the__title;
 }

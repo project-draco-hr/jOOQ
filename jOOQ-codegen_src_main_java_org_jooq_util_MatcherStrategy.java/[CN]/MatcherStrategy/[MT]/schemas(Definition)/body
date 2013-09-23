@@ -1,0 +1,6 @@
+{
+  if (definition instanceof SchemaDefinition) {
+    return matchers.getSchemas();
+  }
+  return emptyList();
+}

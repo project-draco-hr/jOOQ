@@ -1,0 +1,32 @@
+{
+  for (  Schemas schemas : schemas(definition)) {
+    String result=match(definition,schemas.getExpression(),schemas.getSchemaClass());
+    if (result != null)     return result;
+  }
+  for (  Tables tables : tables(definition)) {
+    String result=null;
+switch (mode) {
+case DEFAULT:
+      result=match(definition,tables.getExpression(),tables.getTableClass());
+    break;
+case DAO:
+  result=match(definition,tables.getExpression(),tables.getDaoClass());
+break;
+case INTERFACE:
+result=match(definition,tables.getExpression(),tables.getInterfaceClass());
+break;
+case POJO:
+result=match(definition,tables.getExpression(),tables.getPojoClass());
+break;
+case RECORD:
+result=match(definition,tables.getExpression(),tables.getRecordClass());
+break;
+}
+if (result != null) return result;
+}
+for (Routines routines : routines(definition)) {
+String result=match(definition,routines.getExpression(),routines.getRoutineClass());
+if (result != null) return result;
+}
+return super.getJavaClassName(definition,mode);
+}

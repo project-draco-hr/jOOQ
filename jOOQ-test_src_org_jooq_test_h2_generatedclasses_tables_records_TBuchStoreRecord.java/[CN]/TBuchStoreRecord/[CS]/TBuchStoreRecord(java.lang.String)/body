@@ -1,0 +1,4 @@
+{
+  super(org.jooq.test.h2.generatedclasses.tables.TBuchStore.T_BUCH_STORE);
+  setValue(0,name);
+}
