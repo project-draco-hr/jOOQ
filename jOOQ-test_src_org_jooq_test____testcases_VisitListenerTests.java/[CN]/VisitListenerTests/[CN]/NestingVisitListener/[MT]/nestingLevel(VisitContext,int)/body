@@ -10,8 +10,8 @@
   level+=increase;
   context.data(DataKey.NESTING_LEVEL,level);
   if (increase == 1) {
-    anyPredicatesMap(context).put(level,false);
     subselectConditionMap(context).put(level,new ArrayList<Condition>());
+    anyPredicatesMap(context).put(level,false);
   }
   return level;
 }

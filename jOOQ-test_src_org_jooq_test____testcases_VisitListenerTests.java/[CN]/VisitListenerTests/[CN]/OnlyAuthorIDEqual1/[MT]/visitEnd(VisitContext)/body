@@ -2,10 +2,5 @@
   if (context.renderContext() == null)   return;
   pushConditions(context,TBook(),TBook_AUTHOR_ID(),1);
   pushConditions(context,TAuthor(),TAuthor_ID(),1);
-  if (context.queryPart() instanceof Condition) {
-    List<Clause> clauses=subselectClauses(context);
-    if (clauses.contains(SELECT_WHERE) || clauses.contains(UPDATE_WHERE) || clauses.contains(DELETE_WHERE)) {
-      anyPredicates(context,true);
-    }
-  }
+  super.visitEnd(context);
 }

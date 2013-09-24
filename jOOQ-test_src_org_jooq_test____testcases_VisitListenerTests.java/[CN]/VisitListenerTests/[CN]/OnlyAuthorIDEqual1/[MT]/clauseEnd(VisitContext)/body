@@ -10,7 +10,5 @@
       context.renderContext().paramType(ParamType.INLINED).visit(condition).paramType(previous);
     }
   }
-  if (context.clause() == SELECT || context.clause() == UPDATE || context.clause() == DELETE || context.clause() == INSERT) {
-    nestingLevel(context,-1);
-  }
+  super.clauseEnd(context);
 }
