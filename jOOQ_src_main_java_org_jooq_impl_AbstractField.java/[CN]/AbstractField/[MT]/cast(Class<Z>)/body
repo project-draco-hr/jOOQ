@@ -1,3 +1,8 @@
 {
-  return cast(DefaultDataType.getDataType(null,type));
+  if (getType() == type) {
+    return (Field<Z>)this;
+  }
+ else {
+    return cast(DefaultDataType.getDataType(null,type));
+  }
 }
