@@ -7,7 +7,15 @@
   String rownumName="rownum_" + Utils.hash(tmpEnclosed);
   RenderContext local=new DefaultRenderContext(context);
   local.subquery(true);
-  toSQLReference0(local,rowNumber().over().orderBy(getNonEmptyOrderBy()).as(rownumName));
+  if (distinct) {
+    List<SortField<?>> order=new ArrayList<SortField<?>>();
+    order.addAll(getNonEmptyOrderBy());
+    for (    Field<?> field : getSelect())     order.add(field.asc());
+    toSQLReference0(local,denseRank().over().orderBy(order).as(rownumName));
+  }
+ else {
+    toSQLReference0(local,rowNumber().over().orderBy(getNonEmptyOrderBy()).as(rownumName));
+  }
   String enclosed=local.render();
   context.keyword("select * from (").formatIndentStart().formatNewLine().sql(enclosed).formatIndentEnd().formatNewLine().sql(") ").keyword("as").sql(" ").visit(name(subqueryName)).formatSeparator().keyword("where").sql(" ").visit(name(rownumName)).sql(" > ").visit(getLimit().getLowerRownum()).formatSeparator().keyword("and").sql(" ").visit(name(rownumName)).sql(" <= ").visit(getLimit().getUpperRownum());
 }
