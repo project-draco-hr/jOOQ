@@ -1,0 +1,3 @@
+{
+  return arrayAppend(array,val(value));
+}

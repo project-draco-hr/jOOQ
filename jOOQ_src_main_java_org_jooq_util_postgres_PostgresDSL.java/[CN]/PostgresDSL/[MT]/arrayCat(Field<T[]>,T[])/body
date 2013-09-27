@@ -1,0 +1,3 @@
+{
+  return arrayCat(array1,val(array2));
+}

@@ -1,0 +1,3 @@
+{
+  return stringToArray(string,val(delimiter));
+}

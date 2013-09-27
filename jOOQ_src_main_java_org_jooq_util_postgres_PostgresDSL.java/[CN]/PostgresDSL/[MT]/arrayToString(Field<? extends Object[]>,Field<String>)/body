@@ -1,0 +1,3 @@
+{
+  return field("{array_to_string}({0}, {1})",SQLDataType.VARCHAR,nullSafe(array),nullSafe(delimiter));
+}
