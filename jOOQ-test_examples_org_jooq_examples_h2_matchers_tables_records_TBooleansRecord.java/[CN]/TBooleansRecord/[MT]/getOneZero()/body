@@ -1,0 +1,3 @@
+{
+  return (org.jooq.test._.converters.Boolean_10)getValue(1);
+}

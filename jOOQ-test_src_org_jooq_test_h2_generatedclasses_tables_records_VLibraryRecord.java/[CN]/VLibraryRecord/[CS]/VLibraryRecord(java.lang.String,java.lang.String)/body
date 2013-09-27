@@ -1,5 +1,5 @@
 {
   super(org.jooq.test.h2.generatedclasses.tables.VLibrary.V_LIBRARY);
   setValue(0,author);
-  setValue(1,the__title);
+  setValue(1,title);
 }

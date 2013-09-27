@@ -1,0 +1,6 @@
+{
+  org.jooq.examples.h2.matchers.routines.FGetOneCursor f=new org.jooq.examples.h2.matchers.routines.FGetOneCursor();
+  f.setP2(p2);
+  f.execute(configuration);
+  return f.getReturnValue();
+}

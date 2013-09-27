@@ -1,3 +1,0 @@
-{
-  super(org.jooq.test.h2.generatedclasses.tables.TBuch.THE_BOOK,org.jooq.test.h2.generatedclasses.tables.pojos.T_BUCH.class);
-}

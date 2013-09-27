@@ -1,4 +1,0 @@
-{
-  org.jooq.test.h2.generatedclasses.routines.F_ONE_FUNCTION f=new org.jooq.test.h2.generatedclasses.routines.F_ONE_FUNCTION();
-  return f.asField();
-}

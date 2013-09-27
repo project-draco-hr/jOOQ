@@ -1,0 +1,4 @@
+{
+  super("F_ONE",org.jooq.examples.h2.matchers.NonPublic.NON_PUBLIC,org.jooq.impl.SQLDataType.INTEGER);
+  setReturnParameter(RETURN_VALUE);
+}

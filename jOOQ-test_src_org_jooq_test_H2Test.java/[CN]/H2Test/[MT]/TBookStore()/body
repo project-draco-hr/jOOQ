@@ -1,3 +1,3 @@
 {
-  return T_BUCH_STORE;
+  return T_BOOK_STORE;
 }

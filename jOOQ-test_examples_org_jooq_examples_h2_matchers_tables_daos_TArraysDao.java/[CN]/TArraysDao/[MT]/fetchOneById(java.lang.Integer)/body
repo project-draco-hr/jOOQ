@@ -1,0 +1,3 @@
+{
+  return fetchOne(org.jooq.examples.h2.matchers.tables.TArrays.ID,value);
+}

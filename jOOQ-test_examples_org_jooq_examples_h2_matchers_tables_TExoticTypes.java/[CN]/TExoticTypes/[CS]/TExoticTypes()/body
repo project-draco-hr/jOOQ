@@ -1,0 +1,3 @@
+{
+  super("T_EXOTIC_TYPES",org.jooq.examples.h2.matchers.NonPublic.NON_PUBLIC);
+}

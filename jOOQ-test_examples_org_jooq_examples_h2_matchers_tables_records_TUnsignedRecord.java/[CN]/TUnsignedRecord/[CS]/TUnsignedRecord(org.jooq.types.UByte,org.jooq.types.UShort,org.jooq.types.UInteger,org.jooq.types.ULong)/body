@@ -1,0 +1,7 @@
+{
+  super(org.jooq.examples.h2.matchers.tables.TUnsigned.T_UNSIGNED);
+  setValue(0,uByte);
+  setValue(1,uShort);
+  setValue(2,uInt);
+  setValue(3,uLong);
+}

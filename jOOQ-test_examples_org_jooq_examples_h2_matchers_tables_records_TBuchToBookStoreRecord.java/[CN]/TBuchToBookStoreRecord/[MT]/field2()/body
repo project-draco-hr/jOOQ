@@ -1,0 +1,3 @@
+{
+  return org.jooq.examples.h2.matchers.tables.TBuchToBookStore.BOOK_ID;
+}

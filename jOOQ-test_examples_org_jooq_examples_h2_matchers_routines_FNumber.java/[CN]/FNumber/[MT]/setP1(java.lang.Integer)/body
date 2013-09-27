@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.examples.h2.matchers.routines.FNumber.P1,value);
+}

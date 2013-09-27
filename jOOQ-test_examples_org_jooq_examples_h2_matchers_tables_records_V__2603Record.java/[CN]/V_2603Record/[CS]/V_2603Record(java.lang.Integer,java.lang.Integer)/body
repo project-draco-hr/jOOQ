@@ -1,0 +1,5 @@
+{
+  super(org.jooq.examples.h2.matchers.tables.V_2603.V_2603);
+  setValue(0,col1);
+  setValue(1,col4);
+}

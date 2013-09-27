@@ -1,0 +1,3 @@
+{
+  super("T_IDENTITY",org.jooq.examples.h2.matchers.NonPublic.NON_PUBLIC);
+}

@@ -1,0 +1,3 @@
+{
+  return fetch(org.jooq.examples.h2.matchers.tables.TAuthor.FIRST_NAME,values);
+}

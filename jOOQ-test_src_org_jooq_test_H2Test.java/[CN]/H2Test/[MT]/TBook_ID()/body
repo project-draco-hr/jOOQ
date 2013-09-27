@@ -1,3 +1,3 @@
 {
-  return TBuch.ID;
+  return TBook.ID;
 }

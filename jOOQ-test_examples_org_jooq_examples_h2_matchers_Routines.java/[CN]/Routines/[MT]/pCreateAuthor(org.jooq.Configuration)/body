@@ -1,0 +1,4 @@
+{
+  org.jooq.examples.h2.matchers.routines.PCreateAuthor p=new org.jooq.examples.h2.matchers.routines.PCreateAuthor();
+  p.execute(configuration);
+}

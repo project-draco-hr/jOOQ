@@ -1,0 +1,3 @@
+{
+  super(org.jooq.examples.h2.matchers.tables.TBuchStore.T_BUCH_STORE,org.jooq.examples.h2.matchers.tables.pojos.T_BUCH_STORE.class,configuration);
+}

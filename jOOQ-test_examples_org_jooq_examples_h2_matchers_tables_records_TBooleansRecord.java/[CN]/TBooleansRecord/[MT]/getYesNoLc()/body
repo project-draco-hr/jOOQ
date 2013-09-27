@@ -1,0 +1,3 @@
+{
+  return (org.jooq.test._.converters.Boolean_YES_NO_LC)getValue(4);
+}
