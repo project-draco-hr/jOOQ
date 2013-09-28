@@ -1,3 +1,8 @@
 {
-  provider.addConditions(field.equal(record.getValue(field)));
+  if (updatablePrimaryKeys(settings(record))) {
+    provider.addConditions(field.equal(record.original(field)));
+  }
+ else {
+    provider.addConditions(field.equal(record.getValue(field)));
+  }
 }
