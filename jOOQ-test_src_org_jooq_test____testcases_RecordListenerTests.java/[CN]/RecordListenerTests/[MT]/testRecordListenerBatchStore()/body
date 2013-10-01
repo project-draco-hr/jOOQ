@@ -4,6 +4,5 @@
   B book1=newBook(5);
   B book2=newBook(6);
   create(listener1).batchStore(book1,book2).execute();
-  System.out.println(listener1.events);
-  throw new RuntimeException("Support for RecordListener and batch store is not yet implemented");
+  assertEquals(asList("storeStart","storeStart","insertStart","insertStart","insertEnd","insertEnd","storeEnd","storeEnd"),listener1.events);
 }
