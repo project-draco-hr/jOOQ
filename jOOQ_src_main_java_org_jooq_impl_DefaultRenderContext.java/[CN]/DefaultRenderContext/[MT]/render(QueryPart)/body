@@ -1,3 +1,5 @@
 {
-  return new DefaultRenderContext(this).visit(part).render();
+  RenderContext local=new DefaultRenderContext(this).visit(part);
+  if (part instanceof Select)   local.sql(" -- SQL rendered with a free trial version of jOOQ " + Constants.FULL_VERSION);
+  return local.render();
 }
