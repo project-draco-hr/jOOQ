@@ -2,13 +2,19 @@
   TableField<R,?>[] keys=getPrimaryKey().getFieldsArray();
   boolean executeUpdate=false;
   for (  TableField<R,?> field : keys) {
-    if (getValue(field) == null || getValue0(field).isChanged()) {
-      executeUpdate=false;
-      break;
+    if (updatablePrimaryKeys(settings(this))) {
+      if (original(field) == null) {
+        executeUpdate=false;
+        break;
+      }
     }
  else {
-      executeUpdate=true;
+      if (getValue(field) == null || getValue0(field).isChanged()) {
+        executeUpdate=false;
+        break;
+      }
     }
+    executeUpdate=true;
   }
   int result=0;
   if (executeUpdate) {
