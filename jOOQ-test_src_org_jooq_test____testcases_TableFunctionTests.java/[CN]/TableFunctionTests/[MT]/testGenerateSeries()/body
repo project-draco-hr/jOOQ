@@ -1,0 +1,10 @@
+{
+  if (!asList(CUBRID,POSTGRES,ORACLE).contains(dialect().family()))   return;
+  List<Integer> expected=asList(0,1,2,3);
+  Table<Record1<Integer>> series=generateSeries(0,3);
+  Table<Record1<Integer>> t=series.as("t","a");
+  assertEquals(expected,create().select().from(series).orderBy(1).fetch(0,Integer.class));
+  assertEquals(0,(int)create().selectFrom(series).orderBy(1).fetch().get(0).value1());
+  assertEquals(expected,create().select().from(t).orderBy(t.field("a")).fetch(t.field("a")));
+  assertEquals(3,create().fetchCount(selectOne().from(t).join(TBook()).on(TBook_ID().eq(t.field("a").coerce(Integer.class)))));
+}

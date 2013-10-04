@@ -1,0 +1,5 @@
+{
+  super("generate_series");
+  this.from=from;
+  this.to=to;
+}

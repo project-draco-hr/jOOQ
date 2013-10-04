@@ -1,0 +1,3 @@
+{
+  return new Fields<Record1<Integer>>(DSL.fieldByName(Integer.class,"generate_series"));
+}

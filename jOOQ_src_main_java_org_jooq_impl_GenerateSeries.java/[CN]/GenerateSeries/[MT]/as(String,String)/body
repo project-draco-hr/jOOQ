@@ -1,0 +1,3 @@
+{
+  return new TableAlias<Record1<Integer>>(this,alias,fieldAliases);
+}

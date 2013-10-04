@@ -1,0 +1,3 @@
+{
+  return generateSeries(val(from),val(to));
+}
