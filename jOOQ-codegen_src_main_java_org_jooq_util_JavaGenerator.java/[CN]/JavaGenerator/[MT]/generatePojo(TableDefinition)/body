@@ -39,8 +39,9 @@
   }
   for (  ColumnDefinition column : table.getColumns()) {
     final String columnType=getJavaType(column.getType());
-    final String columnGetter=getStrategy().getJavaGetterName(column,Mode.POJO);
+    final String columnSetterReturnType=fluentSetters() ? className : "void";
     final String columnSetter=getStrategy().getJavaSetterName(column,Mode.POJO);
+    final String columnGetter=getStrategy().getJavaGetterName(column,Mode.POJO);
     final String columnMember=getStrategy().getJavaMemberName(column,Mode.POJO);
     out.println();
     printColumnJPAAnnotation(out,column);
@@ -52,8 +53,9 @@
     if (!generateImmutablePojos()) {
       out.println();
       out.tab(1).overrideIf(generateInterfaces());
-      out.tab(1).println("public void %s(%s %s) {",columnSetter,columnType,columnMember);
+      out.tab(1).println("public %s %s(%s %s) {",columnSetterReturnType,columnSetter,columnType,columnMember);
       out.tab(2).println("this.%s = %s;",columnMember,columnMember);
+      if (fluentSetters())       out.tab(2).println("return this;");
       out.tab(1).println("}");
     }
   }
