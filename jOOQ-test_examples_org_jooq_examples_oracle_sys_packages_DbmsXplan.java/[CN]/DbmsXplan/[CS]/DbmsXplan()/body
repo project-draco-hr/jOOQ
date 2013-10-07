@@ -1,3 +1,0 @@
-{
-  super("DBMS_XPLAN",org.jooq.examples.oracle.sys.Sys.SYS);
-}

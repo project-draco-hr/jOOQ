@@ -1,3 +1,0 @@
-{
-  super("iiref_constraints",org.jooq.util.ingres.ingres.$ingres.$INGRES);
-}

@@ -1,6 +1,0 @@
-{
-  org.jooq.examples.oracle.sys.packages.dbms_xplan.FormatNumber f=new org.jooq.examples.oracle.sys.packages.dbms_xplan.FormatNumber();
-  f.setNum(num);
-  f.execute(configuration);
-  return f.getReturnValue();
-}

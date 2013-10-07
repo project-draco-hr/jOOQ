@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.test.ase.generatedclasses.tables.TLanguage.DESCRIPTION_ENGLISH,value);
-}

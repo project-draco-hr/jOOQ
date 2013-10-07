@@ -1,3 +1,0 @@
-{
-  return fetch(org.jooq.test.oracle.generatedclasses.multi_schema.tables.TBook.T_BOOK.PUBLISHED_IN,values);
-}

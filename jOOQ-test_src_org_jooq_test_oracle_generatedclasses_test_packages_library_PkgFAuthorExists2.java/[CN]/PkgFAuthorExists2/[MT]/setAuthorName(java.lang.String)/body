@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.test.oracle.generatedclasses.test.packages.library.PkgFAuthorExists2.AUTHOR_NAME,value);
-}

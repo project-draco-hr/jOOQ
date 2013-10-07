@@ -1,3 +1,0 @@
-{
-  return getEmp_Loc_City();
-}

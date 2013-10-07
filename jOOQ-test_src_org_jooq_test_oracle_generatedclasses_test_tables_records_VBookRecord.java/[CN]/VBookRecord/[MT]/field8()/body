@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.oracle.generatedclasses.test.tables.VBook.V_BOOK.CONTENT_TEXT;
-}

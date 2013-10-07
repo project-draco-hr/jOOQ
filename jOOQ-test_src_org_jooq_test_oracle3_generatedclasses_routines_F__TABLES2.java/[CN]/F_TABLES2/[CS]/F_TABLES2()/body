@@ -1,5 +1,0 @@
-{
-  super("F_TABLES2",org.jooq.test.oracle3.generatedclasses.DefaultSchema.DEFAULT_SCHEMA,org.jooq.impl.SQLDataType.BIGINT.asArrayDataType(org.jooq.test.oracle3.generatedclasses.udt.records.U_NUMBER_LONG_TABLE.class));
-  setReturnParameter(RETURN_VALUE);
-  addInParameter(IN_TABLE);
-}

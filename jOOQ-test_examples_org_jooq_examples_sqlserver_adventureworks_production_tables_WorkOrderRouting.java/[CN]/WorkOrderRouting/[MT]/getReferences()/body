@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.examples.sqlserver.adventureworks.production.tables.records.WorkOrderRouting,?>>asList(org.jooq.examples.sqlserver.adventureworks.production.Keys.FK_WorkOrderRouting_WorkOrder_WorkOrderID,org.jooq.examples.sqlserver.adventureworks.production.Keys.FK_WorkOrderRouting_Location_LocationID);
-}

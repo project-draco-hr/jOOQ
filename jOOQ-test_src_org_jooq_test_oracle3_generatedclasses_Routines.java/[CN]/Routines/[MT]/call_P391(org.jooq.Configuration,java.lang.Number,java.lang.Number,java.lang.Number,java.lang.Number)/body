@@ -1,9 +1,0 @@
-{
-  org.jooq.test.oracle3.generatedclasses.routines.P391 p=new org.jooq.test.oracle3.generatedclasses.routines.P391();
-  p.setI1(I1);
-  p.setIO1(IO1);
-  p.setIO2(IO2);
-  p.setI2(I2);
-  p.execute(configuration);
-  return p;
-}

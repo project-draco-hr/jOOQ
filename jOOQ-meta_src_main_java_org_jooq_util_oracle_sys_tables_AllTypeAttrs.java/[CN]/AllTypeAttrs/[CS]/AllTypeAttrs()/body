@@ -1,3 +1,0 @@
-{
-  super("ALL_TYPE_ATTRS",org.jooq.util.oracle.sys.Sys.SYS);
-}

@@ -1,3 +1,0 @@
-{
-  super("t_dates",org.jooq.test.sybase.generatedclasses.Dba.DBA);
-}

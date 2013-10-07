@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.examples.oracle.sys.packages.dbms_xplan.DiffPlanSqlBaseline.BASELINE_PLAN_NAME1,value);
-}

@@ -1,3 +1,0 @@
-{
-  return getValue(org.jooq.test.ase.generatedclasses.tables.XUnused.U_D_T);
-}

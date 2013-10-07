@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.examples.sqlserver.adventureworks.purchasing.tables.PurchaseOrderHeader.PurchaseOrderHeader.ShipDate,value);
-}

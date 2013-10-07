@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.UDT<?>>asList(org.jooq.test.oracle2.generatedclasses.udt.DateAsTimestampT_976ObjectType.DATE_AS_TIMESTAMP_T_976_OBJECT_TYPE);
-}

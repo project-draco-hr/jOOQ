@@ -1,9 +1,0 @@
-{
-  org.jooq.test.sybase.generatedclasses.routines.P391 p=new org.jooq.test.sybase.generatedclasses.routines.P391();
-  p.setI1(i1);
-  p.setIo1(io1);
-  p.setIo2(io2);
-  p.setI2(i2);
-  p.execute(configuration);
-  return p;
-}

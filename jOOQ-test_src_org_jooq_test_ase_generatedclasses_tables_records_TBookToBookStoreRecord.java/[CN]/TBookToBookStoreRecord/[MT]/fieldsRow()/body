@@ -1,3 +1,0 @@
-{
-  return org.jooq.impl.DSL.row(field1(),field2(),field3());
-}

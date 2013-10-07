@@ -1,9 +1,0 @@
-{
-  super("P_DEFAULT",org.jooq.test.oracle3.generatedclasses.DefaultSchema.DEFAULT_SCHEMA);
-  addInParameter(P_IN_NUMBER);
-  addOutParameter(P_OUT_NUMBER);
-  addInParameter(P_IN_VARCHAR);
-  addOutParameter(P_OUT_VARCHAR);
-  addInParameter(P_IN_DATE);
-  addOutParameter(P_OUT_DATE);
-}

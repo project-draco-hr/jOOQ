@@ -1,6 +1,0 @@
-{
-  org.jooq.examples.sqlserver.adventureworks.dbo.routines.uspGetWhereUsedProductID p=new org.jooq.examples.sqlserver.adventureworks.dbo.routines.uspGetWhereUsedProductID();
-  p.setStartProductID(StartProductID);
-  p.setCheckDate(CheckDate);
-  p.execute(configuration);
-}

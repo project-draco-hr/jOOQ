@@ -1,4 +1,0 @@
-{
-  org.jooq.test.db2.generatedclasses.routines.FOne f=new org.jooq.test.db2.generatedclasses.routines.FOne();
-  return f.asField();
-}

@@ -1,3 +1,0 @@
-{
-  super(alias,org.jooq.util.sqlserver.information_schema.InformationSchema.INFORMATION_SCHEMA,org.jooq.util.sqlserver.information_schema.tables.Parameters.PARAMETERS);
-}

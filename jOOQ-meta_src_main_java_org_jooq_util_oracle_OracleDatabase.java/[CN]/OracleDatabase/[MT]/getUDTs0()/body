@@ -1,9 +1,0 @@
-{
-  List<UDTDefinition> result=new ArrayList<UDTDefinition>();
-  for (  Record record : create().selectDistinct(ALL_TYPES.OWNER,ALL_TYPES.TYPE_NAME).from(ALL_TYPES).where(ALL_TYPES.OWNER.upper().in(getInputSchemata())).and(ALL_TYPES.TYPECODE.equal("OBJECT")).orderBy(ALL_TYPES.OWNER,ALL_TYPES.TYPE_NAME).fetch()) {
-    SchemaDefinition schema=getSchema(record.getValue(ALL_TYPES.OWNER));
-    String name=record.getValue(ALL_TYPES.TYPE_NAME);
-    result.add(new OracleUDTDefinition(schema,name,null));
-  }
-  return result;
-}

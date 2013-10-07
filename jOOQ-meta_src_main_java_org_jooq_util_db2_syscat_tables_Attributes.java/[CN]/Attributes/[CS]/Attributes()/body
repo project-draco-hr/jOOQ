@@ -1,3 +1,0 @@
-{
-  super("ATTRIBUTES",org.jooq.util.db2.syscat.Syscat.SYSCAT);
-}

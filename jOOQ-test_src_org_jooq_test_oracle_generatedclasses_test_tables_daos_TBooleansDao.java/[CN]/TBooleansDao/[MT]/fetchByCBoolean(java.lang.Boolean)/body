@@ -1,3 +1,0 @@
-{
-  return fetch(org.jooq.test.oracle.generatedclasses.test.tables.TBooleans.T_BOOLEANS.C_BOOLEAN,values);
-}

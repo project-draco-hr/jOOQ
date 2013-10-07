@@ -1,4 +1,0 @@
-{
-  super("P21",org.jooq.test.oracle3.generatedclasses.DefaultSchema.DEFAULT_SCHEMA,org.jooq.test.oracle3.generatedclasses.packages.PKG_1358.PKG_1358);
-  addInParameter(I);
-}

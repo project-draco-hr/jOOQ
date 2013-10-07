@@ -1,3 +1,0 @@
-{
-  return (org.jooq.test.oracle.generatedclasses.test.udt.records.UDateArrayRecord)getValue(4);
-}

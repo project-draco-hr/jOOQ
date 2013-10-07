@@ -1,3 +1,0 @@
-{
-  super("X_TEST_CASE_64_69",org.jooq.test.oracle3.generatedclasses.DefaultSchema.DEFAULT_SCHEMA);
-}

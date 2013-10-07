@@ -1,5 +1,0 @@
-{
-  setForUpdate(true);
-  forUpdateMode=ForUpdateMode.WAIT;
-  forUpdateWait=seconds;
-}

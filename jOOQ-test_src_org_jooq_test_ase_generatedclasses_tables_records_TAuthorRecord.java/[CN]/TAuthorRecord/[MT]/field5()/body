@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.ase.generatedclasses.tables.TAuthor.YEAR_OF_BIRTH;
-}

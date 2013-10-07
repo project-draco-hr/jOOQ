@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.test.sybase.generatedclasses.routines.PCreateAuthorByName.P_LAST_NAME,value);
-}

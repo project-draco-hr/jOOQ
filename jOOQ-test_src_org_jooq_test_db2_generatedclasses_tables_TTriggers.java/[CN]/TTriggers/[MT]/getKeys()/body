@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.db2.generatedclasses.tables.records.TTriggersRecord>>asList(org.jooq.test.db2.generatedclasses.Keys.T_TRIGGERS__PK_T_TRIGGERS);
-}

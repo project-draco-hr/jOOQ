@@ -1,8 +1,0 @@
-{
-  super("DISPLAY_AWR",org.jooq.examples.oracle.sys.Sys.SYS,org.jooq.examples.oracle.sys.packages.DbmsXplan.DBMS_XPLAN,org.jooq.examples.oracle.sys.udt.DbmsXplanType.DBMS_XPLAN_TYPE.getDataType().asArrayDataType(org.jooq.examples.oracle.sys.udt.records.DbmsXplanTypeTableRecord.class));
-  setReturnParameter(RETURN_VALUE);
-  addInParameter(SQL_ID);
-  addInParameter(PLAN_HASH_VALUE);
-  addInParameter(DB_ID);
-  addInParameter(FORMAT);
-}

@@ -1,5 +1,0 @@
-{
-  super(org.jooq.test.oracle3.generatedclasses.tables.V_LIBRARY.V_LIBRARY);
-  setValue(0,AUTHOR);
-  setValue(1,TITLE);
-}

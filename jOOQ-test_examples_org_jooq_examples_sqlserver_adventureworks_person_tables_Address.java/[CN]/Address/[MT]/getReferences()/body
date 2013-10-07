@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.examples.sqlserver.adventureworks.person.tables.records.Address,?>>asList(org.jooq.examples.sqlserver.adventureworks.person.Keys.FK_Address_StateProvince_StateProvinceID);
-}

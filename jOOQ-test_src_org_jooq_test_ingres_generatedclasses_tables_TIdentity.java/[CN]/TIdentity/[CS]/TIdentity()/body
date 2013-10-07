@@ -1,3 +1,0 @@
-{
-  super("t_identity",org.jooq.test.ingres.generatedclasses.Test.TEST);
-}

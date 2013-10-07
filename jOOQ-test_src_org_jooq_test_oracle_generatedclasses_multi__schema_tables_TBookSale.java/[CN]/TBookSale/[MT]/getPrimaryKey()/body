@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.oracle.generatedclasses.multi_schema.Keys.PK_T_BOOK_SALE;
-}

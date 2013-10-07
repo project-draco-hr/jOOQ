@@ -1,3 +1,0 @@
-{
-  return this.YEAR_OF_BIRTH;
-}

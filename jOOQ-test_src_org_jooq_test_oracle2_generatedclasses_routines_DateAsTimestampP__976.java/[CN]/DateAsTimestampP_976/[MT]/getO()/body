@@ -1,3 +1,0 @@
-{
-  return getValue(DATE_AS_TIMESTAMP_O);
-}

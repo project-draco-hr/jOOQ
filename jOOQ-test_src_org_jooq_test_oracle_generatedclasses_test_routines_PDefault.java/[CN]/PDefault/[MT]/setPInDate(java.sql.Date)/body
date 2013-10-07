@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.test.oracle.generatedclasses.test.routines.PDefault.P_IN_DATE,value);
-}

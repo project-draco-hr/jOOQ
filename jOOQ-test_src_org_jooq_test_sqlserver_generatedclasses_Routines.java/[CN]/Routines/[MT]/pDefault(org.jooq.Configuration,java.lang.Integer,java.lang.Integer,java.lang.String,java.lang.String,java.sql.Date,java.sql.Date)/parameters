@@ -1,7 +1,0 @@
-org.jooq.Configuration configuration
-java.lang.Integer pInNumber
-java.lang.Integer pOutNumber
-java.lang.String pInVarchar
-java.lang.String pOutVarchar
-java.sql.Date pInDate
-java.sql.Date pOutDate

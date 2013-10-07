@@ -1,4 +1,0 @@
-java.lang.Integer id
-java.lang.Integer parentId
-java.lang.Integer isDirectory
-java.lang.String name

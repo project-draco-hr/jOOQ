@@ -1,3 +1,0 @@
-{
-  return getLANGUAGE_ID();
-}

@@ -1,6 +1,0 @@
-{
-  org.jooq.test.oracle3.generatedclasses.routines.P_GET_ONE_CURSOR p=new org.jooq.test.oracle3.generatedclasses.routines.P_GET_ONE_CURSOR();
-  p.setBOOK_IDS(BOOK_IDS);
-  p.execute(configuration);
-  return p;
-}

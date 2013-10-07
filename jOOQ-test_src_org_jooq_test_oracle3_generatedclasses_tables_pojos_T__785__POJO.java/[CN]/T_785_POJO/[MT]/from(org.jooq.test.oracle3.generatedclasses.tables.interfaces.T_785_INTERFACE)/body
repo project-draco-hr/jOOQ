@@ -1,5 +1,0 @@
-{
-  setID(from.getID());
-  setNAME(from.getNAME());
-  setVALUE(from.getVALUE());
-}

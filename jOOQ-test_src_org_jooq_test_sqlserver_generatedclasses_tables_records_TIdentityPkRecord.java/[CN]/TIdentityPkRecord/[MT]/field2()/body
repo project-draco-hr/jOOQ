@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.sqlserver.generatedclasses.tables.TIdentityPk.T_IDENTITY_PK.VAL;
-}

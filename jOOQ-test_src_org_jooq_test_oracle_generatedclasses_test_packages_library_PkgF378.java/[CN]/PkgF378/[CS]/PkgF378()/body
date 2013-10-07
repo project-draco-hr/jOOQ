@@ -1,7 +1,0 @@
-{
-  super("PKG_F378",org.jooq.test.oracle.generatedclasses.test.Test.TEST,org.jooq.test.oracle.generatedclasses.test.packages.Library.LIBRARY,org.jooq.impl.SQLDataType.NUMERIC);
-  setReturnParameter(RETURN_VALUE);
-  addInParameter(I);
-  addInOutParameter(IO);
-  addOutParameter(O);
-}

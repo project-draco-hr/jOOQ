@@ -1,4 +1,0 @@
-{
-  super("P1490",org.jooq.test.oracle3.generatedclasses.DefaultSchema.DEFAULT_SCHEMA);
-  addInParameter(value);
-}

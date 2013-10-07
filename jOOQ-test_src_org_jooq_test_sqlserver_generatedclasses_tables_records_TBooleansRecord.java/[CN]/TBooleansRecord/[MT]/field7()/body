@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.sqlserver.generatedclasses.tables.TBooleans.T_BOOLEANS.Y_N_LC;
-}

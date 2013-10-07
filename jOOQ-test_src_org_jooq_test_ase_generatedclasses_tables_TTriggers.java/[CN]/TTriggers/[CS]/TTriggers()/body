@@ -1,3 +1,0 @@
-{
-  super("t_triggers",org.jooq.test.ase.generatedclasses.Dbo.DBO);
-}

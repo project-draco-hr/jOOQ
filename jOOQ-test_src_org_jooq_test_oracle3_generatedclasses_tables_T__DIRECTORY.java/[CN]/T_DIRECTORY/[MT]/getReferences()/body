@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.test.oracle3.generatedclasses.tables.records.T_DIRECTORY,?>>asList(org.jooq.test.oracle3.generatedclasses.Keys.PK_T_DIRECTORY_SELF);
-}

@@ -1,3 +1,0 @@
-{
-  super(alias,org.jooq.test.sybase.generatedclasses.Dba.DBA,org.jooq.test.sybase.generatedclasses.tables.TUnsigned.T_UNSIGNED);
-}

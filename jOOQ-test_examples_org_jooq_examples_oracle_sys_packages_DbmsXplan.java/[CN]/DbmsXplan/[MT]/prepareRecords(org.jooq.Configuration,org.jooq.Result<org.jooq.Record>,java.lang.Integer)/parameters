@@ -1,3 +1,0 @@
-org.jooq.Configuration configuration
-org.jooq.Result<org.jooq.Record> planCur
-java.lang.Integer iFormatFlags

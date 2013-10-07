@@ -1,6 +1,0 @@
-{
-  org.jooq.test.oracle3.generatedclasses.routines.F_TABLES4 f=new org.jooq.test.oracle3.generatedclasses.routines.F_TABLES4();
-  f.setIN_TABLE(IN_TABLE);
-  f.execute(configuration);
-  return f.getReturnValue();
-}

@@ -1,3 +1,0 @@
-{
-  super("t_book_to_book_store",org.jooq.test.ingres.generatedclasses.Test.TEST);
-}

@@ -1,4 +1,0 @@
-{
-  super("LIBRARY_767_PACKAGE_TEST",org.jooq.test.oracle3.generatedclasses.DefaultSchema.DEFAULT_SCHEMA,org.jooq.test.oracle3.generatedclasses.packages.LIBRARY_767_PACKAGE_TEST.LIBRARY_767_PACKAGE_TEST,org.jooq.impl.SQLDataType.NUMERIC);
-  setReturnParameter(RETURN_VALUE);
-}

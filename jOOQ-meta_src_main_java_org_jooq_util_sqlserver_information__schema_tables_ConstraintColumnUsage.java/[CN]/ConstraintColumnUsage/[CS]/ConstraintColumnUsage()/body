@@ -1,3 +1,0 @@
-{
-  super("CONSTRAINT_COLUMN_USAGE",org.jooq.util.sqlserver.information_schema.InformationSchema.INFORMATION_SCHEMA);
-}

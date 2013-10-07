@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.sybase.generatedclasses.tables.T_785.T_785.NAME;
-}

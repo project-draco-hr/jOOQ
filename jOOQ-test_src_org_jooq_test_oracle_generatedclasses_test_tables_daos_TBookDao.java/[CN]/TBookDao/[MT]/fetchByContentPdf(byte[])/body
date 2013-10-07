@@ -1,3 +1,0 @@
-{
-  return fetch(org.jooq.test.oracle.generatedclasses.test.tables.TBook.T_BOOK.CONTENT_PDF,values);
-}

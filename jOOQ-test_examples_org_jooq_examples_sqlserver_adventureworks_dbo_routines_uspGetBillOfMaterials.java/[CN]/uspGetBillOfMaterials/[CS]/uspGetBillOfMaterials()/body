@@ -1,5 +1,0 @@
-{
-  super("uspGetBillOfMaterials",org.jooq.examples.sqlserver.adventureworks.dbo.dbo.dbo);
-  addInParameter(StartProductID);
-  addInParameter(CheckDate);
-}

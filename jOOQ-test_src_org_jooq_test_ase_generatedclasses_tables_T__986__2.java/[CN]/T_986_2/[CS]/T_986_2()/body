@@ -1,3 +1,0 @@
-{
-  super("t_986_2",org.jooq.test.ase.generatedclasses.Dbo.DBO);
-}

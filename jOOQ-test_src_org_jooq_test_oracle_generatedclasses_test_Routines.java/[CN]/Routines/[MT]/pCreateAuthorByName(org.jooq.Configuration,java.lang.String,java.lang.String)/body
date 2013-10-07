@@ -1,6 +1,0 @@
-{
-  org.jooq.test.oracle.generatedclasses.test.routines.PCreateAuthorByName p=new org.jooq.test.oracle.generatedclasses.test.routines.PCreateAuthorByName();
-  p.setFirstName(firstName);
-  p.setLastName(lastName);
-  p.execute(configuration);
-}

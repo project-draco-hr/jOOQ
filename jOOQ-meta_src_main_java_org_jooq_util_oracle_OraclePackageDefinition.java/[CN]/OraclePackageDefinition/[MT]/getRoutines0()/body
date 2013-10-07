@@ -1,7 +1,0 @@
-{
-  List<RoutineDefinition> result=new ArrayList<RoutineDefinition>();
-  for (  Record record : create().selectDistinct(ALL_ARGUMENTS.OBJECT_NAME,ALL_ARGUMENTS.OBJECT_ID,ALL_ARGUMENTS.OVERLOAD).from(ALL_ARGUMENTS).where(ALL_ARGUMENTS.OWNER.in(getSchema().getName())).and(ALL_ARGUMENTS.PACKAGE_NAME.equal(getName())).orderBy(ALL_ARGUMENTS.OBJECT_NAME,ALL_ARGUMENTS.OVERLOAD).fetch()) {
-    result.add(new OracleRoutineDefinition(getSchema(),this,record.getValue(ALL_ARGUMENTS.OBJECT_NAME),"",record.getValue(ALL_ARGUMENTS.OBJECT_ID),record.getValue(ALL_ARGUMENTS.OVERLOAD)));
-  }
-  return result;
-}

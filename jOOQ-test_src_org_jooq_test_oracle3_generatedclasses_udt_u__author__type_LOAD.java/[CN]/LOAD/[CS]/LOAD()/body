@@ -1,4 +1,0 @@
-{
-  super("LOAD",org.jooq.test.oracle3.generatedclasses.DefaultSchema.DEFAULT_SCHEMA,org.jooq.test.oracle3.generatedclasses.udt.U_AUTHOR_TYPE.U_AUTHOR_TYPE);
-  addInOutParameter(SELF);
-}

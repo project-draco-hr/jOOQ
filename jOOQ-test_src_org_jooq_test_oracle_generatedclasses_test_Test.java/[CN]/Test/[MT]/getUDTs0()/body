@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.UDT<?>>asList(org.jooq.test.oracle.generatedclasses.test.udt.OInvalidType.O_INVALID_TYPE,org.jooq.test.oracle.generatedclasses.test.udt.UAddressType.U_ADDRESS_TYPE,org.jooq.test.oracle.generatedclasses.test.udt.UAuthorType.U_AUTHOR_TYPE,org.jooq.test.oracle.generatedclasses.test.udt.UBookType.U_BOOK_TYPE,org.jooq.test.oracle.generatedclasses.test.udt.UInvalidTable.U_INVALID_TABLE,org.jooq.test.oracle.generatedclasses.test.udt.UInvalidType.U_INVALID_TYPE,org.jooq.test.oracle.generatedclasses.test.udt.UStreetType.U_STREET_TYPE);
-}

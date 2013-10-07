@@ -1,6 +1,0 @@
-{
-  org.jooq.test.oracle3.generatedclasses.routines.P_ARRAYS1 p=new org.jooq.test.oracle3.generatedclasses.routines.P_ARRAYS1();
-  p.setIN_ARRAY(IN_ARRAY);
-  p.execute(configuration);
-  return p.getOUT_ARRAY();
-}

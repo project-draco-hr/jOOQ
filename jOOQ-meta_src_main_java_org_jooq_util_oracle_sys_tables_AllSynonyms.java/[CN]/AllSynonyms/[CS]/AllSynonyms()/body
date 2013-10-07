@@ -1,3 +1,0 @@
-{
-  super("ALL_SYNONYMS",org.jooq.util.oracle.sys.Sys.SYS);
-}

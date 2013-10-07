@@ -1,7 +1,0 @@
-{
-  this.id=id;
-  this.bookId=bookId;
-  this.bookStoreName=bookStoreName;
-  this.soldAt=soldAt;
-  this.soldFor=soldFor;
-}

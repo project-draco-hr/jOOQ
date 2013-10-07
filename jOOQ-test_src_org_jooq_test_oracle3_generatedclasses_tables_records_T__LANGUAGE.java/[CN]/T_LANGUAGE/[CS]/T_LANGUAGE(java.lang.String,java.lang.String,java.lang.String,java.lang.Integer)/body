@@ -1,7 +1,0 @@
-{
-  super(org.jooq.test.oracle3.generatedclasses.tables.T_LANGUAGE.T_LANGUAGE);
-  setValue(0,CD);
-  setValue(1,DESCRIPTION);
-  setValue(2,DESCRIPTION_ENGLISH);
-  setValue(3,ID);
-}

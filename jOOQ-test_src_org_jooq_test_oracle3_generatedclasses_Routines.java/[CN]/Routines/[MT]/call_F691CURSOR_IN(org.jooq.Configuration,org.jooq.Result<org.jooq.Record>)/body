@@ -1,6 +1,0 @@
-{
-  org.jooq.test.oracle3.generatedclasses.routines.F691CURSOR_IN f=new org.jooq.test.oracle3.generatedclasses.routines.F691CURSOR_IN();
-  f.setC(C);
-  f.execute(configuration);
-  return f.getReturnValue();
-}

@@ -1,8 +1,0 @@
-{
-  setID(from.getID());
-  setFIRST_NAME(from.getFIRST_NAME());
-  setLAST_NAME(from.getLAST_NAME());
-  setDATE_OF_BIRTH(from.getDATE_OF_BIRTH());
-  setYEAR_OF_BIRTH(from.getYEAR_OF_BIRTH());
-  setADDRESS(from.getADDRESS());
-}

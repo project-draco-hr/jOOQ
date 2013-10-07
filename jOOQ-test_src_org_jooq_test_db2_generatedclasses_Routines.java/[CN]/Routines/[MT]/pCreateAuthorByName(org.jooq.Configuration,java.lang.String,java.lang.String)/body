@@ -1,6 +1,0 @@
-{
-  org.jooq.test.db2.generatedclasses.routines.PCreateAuthorByName p=new org.jooq.test.db2.generatedclasses.routines.PCreateAuthorByName();
-  p.setFirstName(firstName);
-  p.setLastName(lastName);
-  p.execute(configuration);
-}

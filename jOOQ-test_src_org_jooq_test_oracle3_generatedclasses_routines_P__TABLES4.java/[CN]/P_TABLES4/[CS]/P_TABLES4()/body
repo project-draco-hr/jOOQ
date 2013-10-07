@@ -1,5 +1,0 @@
-{
-  super("P_TABLES4",org.jooq.test.oracle3.generatedclasses.DefaultSchema.DEFAULT_SCHEMA);
-  addInParameter(IN_TABLE);
-  addOutParameter(OUT_TABLE);
-}

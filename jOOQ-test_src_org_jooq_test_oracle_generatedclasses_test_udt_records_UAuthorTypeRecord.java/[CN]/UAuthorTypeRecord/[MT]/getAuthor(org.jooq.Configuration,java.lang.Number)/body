@@ -1,6 +1,0 @@
-{
-  org.jooq.test.oracle.generatedclasses.test.udt.u_author_type.GetAuthor f=new org.jooq.test.oracle.generatedclasses.test.udt.u_author_type.GetAuthor();
-  f.setPId(pId);
-  f.execute(configuration);
-  return f.getReturnValue();
-}

@@ -1,4 +1,0 @@
-{
-  super("DBMS_XPLAN_TYPE",org.jooq.examples.oracle.sys.Sys.SYS);
-  getDataType();
-}

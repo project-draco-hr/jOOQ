@@ -1,7 +1,0 @@
-{
-  super(org.jooq.test.oracle3.generatedclasses.tables.T_UNSIGNED.T_UNSIGNED);
-  setValue(0,U_BYTE);
-  setValue(1,U_SHORT);
-  setValue(2,U_INT);
-  setValue(3,U_LONG);
-}

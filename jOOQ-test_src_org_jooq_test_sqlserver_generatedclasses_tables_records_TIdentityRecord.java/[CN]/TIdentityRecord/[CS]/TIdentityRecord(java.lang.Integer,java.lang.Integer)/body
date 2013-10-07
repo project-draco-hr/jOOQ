@@ -1,5 +1,0 @@
-{
-  super(org.jooq.test.sqlserver.generatedclasses.tables.TIdentity.T_IDENTITY);
-  setValue(0,id);
-  setValue(1,val);
-}

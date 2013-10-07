@@ -1,4 +1,0 @@
-{
-  super("U_AUTHOR_TYPE",org.jooq.test.oracle3.generatedclasses.DefaultSchema.DEFAULT_SCHEMA);
-  getDataType();
-}

@@ -1,8 +1,0 @@
-{
-  org.jooq.examples.oracle.sys.packages.dbms_xplan.DiffPlanAwr f=new org.jooq.examples.oracle.sys.packages.dbms_xplan.DiffPlanAwr();
-  f.setSqlId(sqlId);
-  f.setPlanHashValue1(planHashValue1);
-  f.setPlanHashValue2(planHashValue2);
-  f.execute(configuration);
-  return f.getReturnValue();
-}

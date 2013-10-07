@@ -1,3 +1,0 @@
-{
-  return fetch(org.jooq.test.oracle.generatedclasses.test.tables.TAuthor.T_AUTHOR.LAST_NAME,values);
-}

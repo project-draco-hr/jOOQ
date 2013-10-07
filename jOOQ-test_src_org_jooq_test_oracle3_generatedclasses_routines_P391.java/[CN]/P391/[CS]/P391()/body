@@ -1,9 +1,0 @@
-{
-  super("P391",org.jooq.test.oracle3.generatedclasses.DefaultSchema.DEFAULT_SCHEMA);
-  addInParameter(I1);
-  addInOutParameter(IO1);
-  addOutParameter(O1);
-  addOutParameter(O2);
-  addInOutParameter(IO2);
-  addInParameter(I2);
-}

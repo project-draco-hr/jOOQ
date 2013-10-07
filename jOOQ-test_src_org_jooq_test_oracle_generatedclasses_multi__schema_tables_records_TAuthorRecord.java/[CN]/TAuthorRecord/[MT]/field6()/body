@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.oracle.generatedclasses.multi_schema.tables.TAuthor.T_AUTHOR.ADDRESS;
-}

@@ -1,0 +1,39 @@
+{
+  int index=getFrom().size() - 1;
+  Table<?> joined=null;
+switch (type) {
+case JOIN:
+    joined=getFrom().get(index).join(table).on(conditions);
+  break;
+case LEFT_OUTER_JOIN:
+{
+  TablePartitionByStep p=getFrom().get(index).leftOuterJoin(table);
+  TableOnStep o=p;
+  joined=o.on(conditions);
+  break;
+}
+case RIGHT_OUTER_JOIN:
+{
+TablePartitionByStep p=getFrom().get(index).rightOuterJoin(table);
+TableOnStep o=p;
+joined=o.on(conditions);
+break;
+}
+case FULL_OUTER_JOIN:
+joined=getFrom().get(index).fullOuterJoin(table).on(conditions);
+break;
+case CROSS_JOIN:
+joined=getFrom().get(index).crossJoin(table);
+break;
+case NATURAL_JOIN:
+joined=getFrom().get(index).naturalJoin(table);
+break;
+case NATURAL_LEFT_OUTER_JOIN:
+joined=getFrom().get(index).naturalLeftOuterJoin(table);
+break;
+case NATURAL_RIGHT_OUTER_JOIN:
+joined=getFrom().get(index).naturalRightOuterJoin(table);
+break;
+}
+getFrom().set(index,joined);
+}

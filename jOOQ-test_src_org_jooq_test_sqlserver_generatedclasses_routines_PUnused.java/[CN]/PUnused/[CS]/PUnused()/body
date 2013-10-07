@@ -1,6 +1,0 @@
-{
-  super("p_unused",org.jooq.test.sqlserver.generatedclasses.Dbo.DBO);
-  addInParameter(IN1);
-  addInOutParameter(OUT1);
-  addInOutParameter(OUT2);
-}

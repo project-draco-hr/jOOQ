@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.oracle.generatedclasses.test.tables.TAuthor.T_AUTHOR.FIRST_NAME;
-}

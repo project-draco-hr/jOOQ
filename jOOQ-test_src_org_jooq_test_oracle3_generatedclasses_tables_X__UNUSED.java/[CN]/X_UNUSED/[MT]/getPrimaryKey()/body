@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.oracle3.generatedclasses.Keys.PK_X_UNUSED;
-}

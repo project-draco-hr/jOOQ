@@ -1,7 +1,0 @@
-{
-  this.id=id;
-  this.stringArray=stringArray;
-  this.numberArray=numberArray;
-  this.numberLongArray=numberLongArray;
-  this.dateArray=dateArray;
-}

@@ -1,7 +1,0 @@
-{
-  List<SchemaDefinition> result=new ArrayList<SchemaDefinition>();
-  for (  String name : create().select(SCHEMATA.SCHEMA_NAME).from(SCHEMATA).fetch(SCHEMATA.SCHEMA_NAME)) {
-    result.add(new SchemaDefinition(this,name,""));
-  }
-  return result;
-}

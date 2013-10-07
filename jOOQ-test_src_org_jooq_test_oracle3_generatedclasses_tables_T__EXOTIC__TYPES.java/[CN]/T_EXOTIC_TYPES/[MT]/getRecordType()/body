@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.oracle3.generatedclasses.tables.records.T_EXOTIC_TYPES.class;
-}

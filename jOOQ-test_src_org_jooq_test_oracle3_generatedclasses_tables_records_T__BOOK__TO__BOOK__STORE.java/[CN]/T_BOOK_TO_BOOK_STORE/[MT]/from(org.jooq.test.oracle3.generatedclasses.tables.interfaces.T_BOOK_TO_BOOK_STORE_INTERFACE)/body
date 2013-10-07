@@ -1,5 +1,0 @@
-{
-  setBOOK_STORE_NAME(from.getBOOK_STORE_NAME());
-  setBOOK_ID(from.getBOOK_ID());
-  setSTOCK(from.getSTOCK());
-}

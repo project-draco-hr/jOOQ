@@ -1,3 +1,0 @@
-{
-  return new org.jooq.util.oracle.sys.tables.AllSynonyms(alias);
-}

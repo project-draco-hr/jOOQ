@@ -1,4 +1,0 @@
-{
-  setID(from.getID());
-  setTEST_CASE_64_69_ID(from.getTEST_CASE_64_69_ID());
-}

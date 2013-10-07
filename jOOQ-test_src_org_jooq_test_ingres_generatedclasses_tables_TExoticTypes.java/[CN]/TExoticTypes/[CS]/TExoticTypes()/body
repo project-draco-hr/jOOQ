@@ -1,3 +1,0 @@
-{
-  super("t_exotic_types",org.jooq.test.ingres.generatedclasses.Test.TEST);
-}

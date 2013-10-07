@@ -1,5 +1,0 @@
-{
-  super("f_number",org.jooq.test.sqlserver.generatedclasses.Dbo.DBO,org.jooq.impl.SQLDataType.INTEGER);
-  setReturnParameter(RETURN_VALUE);
-  addInParameter(N);
-}

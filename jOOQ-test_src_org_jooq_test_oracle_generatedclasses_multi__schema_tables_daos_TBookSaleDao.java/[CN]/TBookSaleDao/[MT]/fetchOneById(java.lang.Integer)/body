@@ -1,3 +1,0 @@
-{
-  return fetchOne(org.jooq.test.oracle.generatedclasses.multi_schema.tables.TBookSale.T_BOOK_SALE.ID,value);
-}

@@ -1,3 +1,0 @@
-{
-  super(org.jooq.test.oracle3.generatedclasses.udt.U_ADDRESS_TYPE.U_ADDRESS_TYPE);
-}

@@ -1,5 +1,0 @@
-{
-  setID_GENERATED(from.getID_GENERATED());
-  setID(from.getID());
-  setCOUNTER(from.getCOUNTER());
-}

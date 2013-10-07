@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.examples.sqlserver.adventureworks.dbo.tables.ErrorLog.ErrorLog.ErrorLogID,value);
-}

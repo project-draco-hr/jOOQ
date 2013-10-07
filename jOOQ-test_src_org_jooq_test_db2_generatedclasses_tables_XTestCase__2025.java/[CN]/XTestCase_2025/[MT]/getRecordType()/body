@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.db2.generatedclasses.tables.records.XTestCase_2025Record.class;
-}

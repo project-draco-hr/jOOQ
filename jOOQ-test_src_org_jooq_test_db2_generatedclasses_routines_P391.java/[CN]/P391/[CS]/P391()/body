@@ -1,9 +1,0 @@
-{
-  super("P391",org.jooq.test.db2.generatedclasses.Library.LIBRARY);
-  addInParameter(I1);
-  addInOutParameter(IO1);
-  addOutParameter(O1);
-  addOutParameter(O2);
-  addInOutParameter(IO2);
-  addInParameter(I2);
-}

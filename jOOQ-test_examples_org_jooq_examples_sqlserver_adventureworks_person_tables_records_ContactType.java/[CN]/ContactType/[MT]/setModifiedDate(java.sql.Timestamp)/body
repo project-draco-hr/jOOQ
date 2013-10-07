@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.examples.sqlserver.adventureworks.person.tables.ContactType.ContactType.ModifiedDate,value);
-}

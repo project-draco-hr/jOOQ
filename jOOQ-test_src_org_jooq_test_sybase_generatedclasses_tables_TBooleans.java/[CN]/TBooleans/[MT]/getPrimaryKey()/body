@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.sybase.generatedclasses.Keys.T_BOOLEANS__PK_T_BOOLEANS;
-}

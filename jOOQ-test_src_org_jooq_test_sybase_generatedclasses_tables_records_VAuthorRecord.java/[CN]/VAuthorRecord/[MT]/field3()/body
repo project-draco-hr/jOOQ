@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.sybase.generatedclasses.tables.VAuthor.V_AUTHOR.LAST_NAME;
-}

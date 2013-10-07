@@ -1,3 +1,0 @@
-{
-  return create().select(trim(Iiconstraints.SCHEMA_NAME),trim(Iiconstraints.TABLE_NAME),trim(Iiconstraints.CONSTRAINT_NAME),trim(Iikeys.COLUMN_NAME)).from(IICONSTRAINTS).join(IIKEYS).on(row(Iiconstraints.CONSTRAINT_NAME,Iiconstraints.SCHEMA_NAME).eq(Iikeys.CONSTRAINT_NAME,Iikeys.SCHEMA_NAME)).where(Iiconstraints.SCHEMA_NAME.in(getInputSchemata())).and(Iiconstraints.CONSTRAINT_TYPE.trim().equal(constraintType)).orderBy(Iiconstraints.SCHEMA_NAME.asc(),Iiconstraints.TABLE_NAME.asc(),Iiconstraints.CONSTRAINT_NAME.asc(),Iikeys.KEY_POSITION.asc()).fetch();
-}

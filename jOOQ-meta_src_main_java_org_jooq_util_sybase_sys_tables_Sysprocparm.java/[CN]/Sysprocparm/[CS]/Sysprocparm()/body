@@ -1,3 +1,0 @@
-{
-  super("SYSPROCPARM",org.jooq.util.sybase.sys.Sys.SYS);
-}

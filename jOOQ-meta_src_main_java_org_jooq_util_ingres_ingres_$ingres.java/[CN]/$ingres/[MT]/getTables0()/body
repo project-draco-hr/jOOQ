@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.Table<?>>asList(org.jooq.util.ingres.ingres.tables.Iicolumns.IICOLUMNS,org.jooq.util.ingres.ingres.tables.Iiconstraints.IICONSTRAINTS,org.jooq.util.ingres.ingres.tables.IidbComments.IIDB_COMMENTS,org.jooq.util.ingres.ingres.tables.IidbSubcomments.IIDB_SUBCOMMENTS,org.jooq.util.ingres.ingres.tables.Iikeys.IIKEYS,org.jooq.util.ingres.ingres.tables.IirefConstraints.IIREF_CONSTRAINTS,org.jooq.util.ingres.ingres.tables.Iischema.IISCHEMA,org.jooq.util.ingres.ingres.tables.Iisequences.IISEQUENCES,org.jooq.util.ingres.ingres.tables.Iitables.IITABLES);
-}

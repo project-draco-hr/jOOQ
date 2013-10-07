@@ -1,5 +1,0 @@
-{
-  org.jooq.test.oracle3.generatedclasses.routines.P1490 p=new org.jooq.test.oracle3.generatedclasses.routines.P1490();
-  p.setvalue(value);
-  p.execute(configuration);
-}

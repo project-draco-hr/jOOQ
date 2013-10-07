@@ -1,5 +1,0 @@
-{
-  org.jooq.test.oracle3.generatedclasses.routines.F691CURSOR_OUT f=new org.jooq.test.oracle3.generatedclasses.routines.F691CURSOR_OUT();
-  f.execute(configuration);
-  return f.getReturnValue();
-}

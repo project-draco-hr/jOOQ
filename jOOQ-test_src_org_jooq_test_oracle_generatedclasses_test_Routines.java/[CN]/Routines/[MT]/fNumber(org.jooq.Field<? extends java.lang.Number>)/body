@@ -1,5 +1,0 @@
-{
-  org.jooq.test.oracle.generatedclasses.test.routines.FNumber f=new org.jooq.test.oracle.generatedclasses.test.routines.FNumber();
-  f.setN(n);
-  return f.asField();
-}

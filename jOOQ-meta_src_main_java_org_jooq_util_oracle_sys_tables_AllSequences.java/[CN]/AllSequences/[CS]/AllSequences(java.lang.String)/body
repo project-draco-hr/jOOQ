@@ -1,3 +1,0 @@
-{
-  super(alias,org.jooq.util.oracle.sys.Sys.SYS,org.jooq.util.oracle.sys.tables.AllSequences.ALL_SEQUENCES);
-}

@@ -1,3 +1,0 @@
-{
-  super("SEQUENCES",org.jooq.util.sqlserver.information_schema.InformationSchema.INFORMATION_SCHEMA);
-}

@@ -1,7 +1,0 @@
-{
-  List<SchemaDefinition> result=new ArrayList<SchemaDefinition>();
-  for (  String name : create().selectDistinct(ALL_USERS.USERNAME).from(ALL_USERS).fetch(ALL_USERS.USERNAME)) {
-    result.add(new SchemaDefinition(this,name,""));
-  }
-  return result;
-}

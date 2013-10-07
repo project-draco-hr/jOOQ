@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.test.oracle3.generatedclasses.udt.u_author_type.NEW_AUTHOR.P_LAST_NAME,value);
-}

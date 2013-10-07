@@ -1,3 +1,0 @@
-{
-  super("t_unsigned",org.jooq.test.ingres.generatedclasses.Test.TEST);
-}

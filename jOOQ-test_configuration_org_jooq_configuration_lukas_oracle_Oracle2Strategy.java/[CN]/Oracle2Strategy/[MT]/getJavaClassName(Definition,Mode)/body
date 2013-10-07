@@ -1,3 +1,0 @@
-{
-  return "DateAsTimestamp" + super.getJavaClassName(definition,mode);
-}

@@ -1,6 +1,0 @@
-{
-  org.jooq.examples.sqlserver.adventureworks.dbo.routines.uspGetBillOfMaterials p=new org.jooq.examples.sqlserver.adventureworks.dbo.routines.uspGetBillOfMaterials();
-  p.setStartProductID(StartProductID);
-  p.setCheckDate(CheckDate);
-  p.execute(configuration);
-}

@@ -1,3 +1,0 @@
-{
-  super("sysusers",org.jooq.util.ase.sys.Dbo.DBO);
-}

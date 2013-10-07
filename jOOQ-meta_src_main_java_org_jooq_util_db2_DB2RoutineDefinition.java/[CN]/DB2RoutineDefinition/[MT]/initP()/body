@@ -1,7 +1,0 @@
-{
-  for (  Record record : create().select(Procparms.PARMNAME,Procparms.TYPENAME,Procparms.LENGTH,Procparms.SCALE,Procparms.ORDINAL,Procparms.PARM_MODE).from(PROCPARMS).where(Procparms.PROCSCHEMA.equal(getSchema().getName())).and(Procparms.PROCNAME.equal(getName())).orderBy(Procparms.ORDINAL).fetch()) {
-    String paramMode=record.getValue(Procparms.PARM_MODE);
-    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),record.getValue(Procparms.TYPENAME),record.getValue(Procparms.LENGTH),record.getValue(Procparms.LENGTH),record.getValue(Procparms.SCALE),null,null);
-    addParameter(InOutDefinition.getFromString(paramMode),new DefaultParameterDefinition(this,record.getValue(Procparms.PARMNAME),record.getValue(Procparms.ORDINAL),type));
-  }
-}

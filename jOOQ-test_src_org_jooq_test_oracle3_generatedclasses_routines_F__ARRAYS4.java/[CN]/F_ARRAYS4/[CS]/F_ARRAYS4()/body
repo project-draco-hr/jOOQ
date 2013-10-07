@@ -1,5 +1,0 @@
-{
-  super("F_ARRAYS4",org.jooq.test.oracle3.generatedclasses.DefaultSchema.DEFAULT_SCHEMA,org.jooq.test.oracle3.generatedclasses.udt.U_BOOK_TYPE.U_BOOK_TYPE.getDataType().asArrayDataType(org.jooq.test.oracle3.generatedclasses.udt.records.U_BOOK_ARRAY.class));
-  setReturnParameter(RETURN_VALUE);
-  addInParameter(IN_ARRAY);
-}

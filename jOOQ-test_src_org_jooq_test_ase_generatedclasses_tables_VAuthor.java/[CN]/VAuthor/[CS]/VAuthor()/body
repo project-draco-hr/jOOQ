@@ -1,3 +1,0 @@
-{
-  super("v_author",org.jooq.test.ase.generatedclasses.Dbo.DBO);
-}

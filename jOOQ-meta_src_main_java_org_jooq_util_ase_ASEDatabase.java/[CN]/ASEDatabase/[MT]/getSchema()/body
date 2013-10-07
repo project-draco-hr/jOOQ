@@ -1,8 +1,0 @@
-{
-  List<SchemaDefinition> schemata=getSchemata();
-  if (schemata.size() > 1) {
-    log.error("NOT SUPPORTED","jOOQ does not support multiple schemata in Sybase ASE.");
-    log.error("-----------------------------------------------------------------------");
-  }
-  return schemata.get(0);
-}

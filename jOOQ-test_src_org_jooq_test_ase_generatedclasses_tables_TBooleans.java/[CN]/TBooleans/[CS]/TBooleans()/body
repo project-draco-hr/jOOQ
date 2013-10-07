@@ -1,3 +1,0 @@
-{
-  super("t_booleans",org.jooq.test.ase.generatedclasses.Dbo.DBO);
-}

@@ -1,9 +1,0 @@
-{
-  super("uspUpdateEmployeeLogin",org.jooq.examples.sqlserver.adventureworks.humanresources.HumanResources.HumanResources);
-  addInParameter(EmployeeID);
-  addInParameter(ManagerID);
-  addInParameter(LoginID);
-  addInParameter(Title);
-  addInParameter(HireDate);
-  addInParameter(CurrentFlag);
-}

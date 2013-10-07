@@ -1,3 +1,0 @@
-{
-  super("V_INCOMPLETE",org.jooq.test.oracle3.generatedclasses.DefaultSchema.DEFAULT_SCHEMA);
-}

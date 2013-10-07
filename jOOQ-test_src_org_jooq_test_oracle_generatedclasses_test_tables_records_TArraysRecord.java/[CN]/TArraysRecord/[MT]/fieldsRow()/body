@@ -1,3 +1,0 @@
-{
-  return (org.jooq.Row5)super.fieldsRow();
-}

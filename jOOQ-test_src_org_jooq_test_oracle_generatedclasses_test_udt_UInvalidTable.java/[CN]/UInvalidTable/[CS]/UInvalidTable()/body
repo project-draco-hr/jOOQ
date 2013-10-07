@@ -1,4 +1,0 @@
-{
-  super("U_INVALID_TABLE",org.jooq.test.oracle.generatedclasses.test.Test.TEST);
-  getDataType();
-}

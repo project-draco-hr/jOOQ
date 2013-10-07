@@ -1,3 +1,0 @@
-{
-  super("ALL_MVIEW_COMMENTS",org.jooq.util.oracle.sys.Sys.SYS);
-}

@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.ase.generatedclasses.Keys.IDENTITY_T_TRIGGERS;
-}

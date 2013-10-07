@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.sybase.generatedclasses.tables.TLanguage.T_LANGUAGE.DESCRIPTION_ENGLISH;
-}

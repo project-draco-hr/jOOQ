@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.test.ase.generatedclasses.tables.VBook.AUTHOR_ID,value);
-}

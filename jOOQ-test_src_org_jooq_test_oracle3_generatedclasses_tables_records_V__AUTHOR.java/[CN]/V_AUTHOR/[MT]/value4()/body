@@ -1,3 +1,0 @@
-{
-  return getDATE_OF_BIRTH();
-}

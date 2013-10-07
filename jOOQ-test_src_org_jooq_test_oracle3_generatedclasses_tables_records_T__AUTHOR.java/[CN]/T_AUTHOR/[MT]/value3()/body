@@ -1,3 +1,0 @@
-{
-  return getLAST_NAME();
-}

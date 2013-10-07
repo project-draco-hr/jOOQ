@@ -1,5 +1,0 @@
-{
-  super("P_GET_TWO_CURSORS",org.jooq.test.oracle.generatedclasses.test.Test.TEST);
-  addOutParameter(BOOKS);
-  addOutParameter(AUTHORS);
-}

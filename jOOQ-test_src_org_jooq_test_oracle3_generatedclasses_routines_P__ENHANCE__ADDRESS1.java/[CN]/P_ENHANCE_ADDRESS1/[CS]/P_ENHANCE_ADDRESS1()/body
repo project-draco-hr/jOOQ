@@ -1,5 +1,0 @@
-{
-  super("P_ENHANCE_ADDRESS1",org.jooq.test.oracle3.generatedclasses.DefaultSchema.DEFAULT_SCHEMA);
-  addInParameter(ADDRESS);
-  addOutParameter(NO);
-}

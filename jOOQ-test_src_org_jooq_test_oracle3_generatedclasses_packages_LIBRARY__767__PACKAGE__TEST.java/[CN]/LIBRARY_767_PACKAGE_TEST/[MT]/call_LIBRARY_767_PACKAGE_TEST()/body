@@ -1,4 +1,0 @@
-{
-  org.jooq.test.oracle3.generatedclasses.packages.library_767_package_test.LIBRARY_767_PACKAGE_TEST f=new org.jooq.test.oracle3.generatedclasses.packages.library_767_package_test.LIBRARY_767_PACKAGE_TEST();
-  return f.asField();
-}

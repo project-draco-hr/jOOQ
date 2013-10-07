@@ -1,9 +1,0 @@
-{
-  org.jooq.test.oracle3.generatedclasses.routines.F317 f=new org.jooq.test.oracle3.generatedclasses.routines.F317();
-  f.setP1(P1);
-  f.setP2(P2);
-  f.setP3(P3);
-  f.setP4(P4);
-  f.execute(configuration);
-  return f.getReturnValue();
-}

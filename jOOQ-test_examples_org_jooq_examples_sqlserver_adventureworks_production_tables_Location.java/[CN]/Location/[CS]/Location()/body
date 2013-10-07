@@ -1,3 +1,0 @@
-{
-  super("Location",org.jooq.examples.sqlserver.adventureworks.production.Production.Production);
-}

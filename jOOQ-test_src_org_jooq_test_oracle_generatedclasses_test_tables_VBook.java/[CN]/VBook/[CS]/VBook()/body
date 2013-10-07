@@ -1,3 +1,0 @@
-{
-  super("V_BOOK",org.jooq.test.oracle.generatedclasses.test.Test.TEST);
-}

@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.oracle.generatedclasses.test.tables.TUnsigned.T_UNSIGNED.U_BYTE;
-}

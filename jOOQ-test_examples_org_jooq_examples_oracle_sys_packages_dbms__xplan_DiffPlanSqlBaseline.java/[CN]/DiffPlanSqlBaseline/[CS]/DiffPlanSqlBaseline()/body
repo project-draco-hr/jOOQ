@@ -1,6 +1,0 @@
-{
-  super("DIFF_PLAN_SQL_BASELINE",org.jooq.examples.oracle.sys.Sys.SYS,org.jooq.examples.oracle.sys.packages.DbmsXplan.DBMS_XPLAN,org.jooq.impl.SQLDataType.VARCHAR);
-  setReturnParameter(RETURN_VALUE);
-  addInParameter(BASELINE_PLAN_NAME1);
-  addInParameter(BASELINE_PLAN_NAME2);
-}

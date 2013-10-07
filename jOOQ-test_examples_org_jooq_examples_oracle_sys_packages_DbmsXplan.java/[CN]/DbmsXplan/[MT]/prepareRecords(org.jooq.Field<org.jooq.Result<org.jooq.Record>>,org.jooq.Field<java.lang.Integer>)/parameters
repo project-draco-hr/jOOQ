@@ -1,2 +1,0 @@
-org.jooq.Field<org.jooq.Result<org.jooq.Record>> planCur
-org.jooq.Field<java.lang.Integer> iFormatFlags

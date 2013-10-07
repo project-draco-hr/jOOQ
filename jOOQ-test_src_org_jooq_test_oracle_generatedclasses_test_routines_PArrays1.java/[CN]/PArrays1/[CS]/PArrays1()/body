@@ -1,5 +1,0 @@
-{
-  super("P_ARRAYS1",org.jooq.test.oracle.generatedclasses.test.Test.TEST);
-  addInParameter(IN_ARRAY);
-  addOutParameter(OUT_ARRAY);
-}

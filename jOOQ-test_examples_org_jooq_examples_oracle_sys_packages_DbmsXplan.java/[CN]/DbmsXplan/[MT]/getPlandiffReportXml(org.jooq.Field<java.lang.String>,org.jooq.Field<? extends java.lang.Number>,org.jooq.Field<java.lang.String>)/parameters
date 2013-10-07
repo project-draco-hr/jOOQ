@@ -1,3 +1,0 @@
-org.jooq.Field<java.lang.String> reportRef
-org.jooq.Field<? extends java.lang.Number> tid
-org.jooq.Field<java.lang.String> method

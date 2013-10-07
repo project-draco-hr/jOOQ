@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.sqlserver.generatedclasses.tables.records.XTestCase_71Record.class;
-}

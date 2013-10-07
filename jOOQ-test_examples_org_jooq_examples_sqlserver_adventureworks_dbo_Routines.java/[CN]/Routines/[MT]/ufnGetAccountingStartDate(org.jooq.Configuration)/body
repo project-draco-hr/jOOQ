@@ -1,5 +1,0 @@
-{
-  org.jooq.examples.sqlserver.adventureworks.dbo.routines.ufnGetAccountingStartDate f=new org.jooq.examples.sqlserver.adventureworks.dbo.routines.ufnGetAccountingStartDate();
-  f.execute(configuration);
-  return f.getReturnValue();
-}

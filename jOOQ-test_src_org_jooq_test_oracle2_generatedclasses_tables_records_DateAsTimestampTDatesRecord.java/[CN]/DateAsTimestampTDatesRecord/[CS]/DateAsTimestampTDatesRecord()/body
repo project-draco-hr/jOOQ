@@ -1,3 +1,0 @@
-{
-  super(org.jooq.test.oracle2.generatedclasses.tables.DateAsTimestampTDates.DATE_AS_TIMESTAMP_T_DATES);
-}

@@ -1,5 +1,0 @@
-{
-  super(org.jooq.test.oracle3.generatedclasses.tables.T_725_LOB_TEST.T_725_LOB_TEST);
-  setValue(0,ID);
-  setValue(1,LOB);
-}

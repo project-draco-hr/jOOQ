@@ -1,7 +1,0 @@
-{
-  org.jooq.examples.oracle.sys.packages.dbms_xplan.DiffPlan f=new org.jooq.examples.oracle.sys.packages.dbms_xplan.DiffPlan();
-  f.setSqlText(sqlText);
-  f.setOutline(outline);
-  f.setUserName(userName);
-  return f.asField();
-}

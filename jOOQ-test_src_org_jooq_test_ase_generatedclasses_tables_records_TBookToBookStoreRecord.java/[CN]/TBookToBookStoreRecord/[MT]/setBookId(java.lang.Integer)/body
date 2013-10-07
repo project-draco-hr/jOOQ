@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.test.ase.generatedclasses.tables.TBookToBookStore.BOOK_ID,value);
-}

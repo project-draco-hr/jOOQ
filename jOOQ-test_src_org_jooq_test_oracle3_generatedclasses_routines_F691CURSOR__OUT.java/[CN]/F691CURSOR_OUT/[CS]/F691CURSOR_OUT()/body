@@ -1,4 +1,0 @@
-{
-  super("F691CURSOR_OUT",org.jooq.test.oracle3.generatedclasses.DefaultSchema.DEFAULT_SCHEMA,org.jooq.impl.SQLDataType.RESULT);
-  setReturnParameter(RETURN_VALUE);
-}

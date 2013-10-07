@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.oracle3.generatedclasses.tables.records.T_LANGUAGE>>asList(org.jooq.test.oracle3.generatedclasses.Keys.PK_T_LANGUAGE);
-}

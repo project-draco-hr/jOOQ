@@ -1,3 +1,0 @@
-{
-  setNumber(org.jooq.examples.oracle.sys.packages.dbms_xplan.FormatNumber2.NUM,value);
-}

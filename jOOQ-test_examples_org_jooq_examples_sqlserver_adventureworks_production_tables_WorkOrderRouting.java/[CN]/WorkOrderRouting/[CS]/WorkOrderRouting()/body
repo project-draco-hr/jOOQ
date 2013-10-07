@@ -1,3 +1,0 @@
-{
-  super("WorkOrderRouting",org.jooq.examples.sqlserver.adventureworks.production.Production.Production);
-}

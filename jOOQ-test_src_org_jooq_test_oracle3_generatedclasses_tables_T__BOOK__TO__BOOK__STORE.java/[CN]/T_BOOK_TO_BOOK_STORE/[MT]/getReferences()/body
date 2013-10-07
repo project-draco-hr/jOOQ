@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.test.oracle3.generatedclasses.tables.records.T_BOOK_TO_BOOK_STORE,?>>asList(org.jooq.test.oracle3.generatedclasses.Keys.FK_B2BS_BS_NAME,org.jooq.test.oracle3.generatedclasses.Keys.FK_B2BS_B_ID);
-}

@@ -1,3 +1,0 @@
-{
-  super("Culture",org.jooq.examples.sqlserver.adventureworks.production.Production.Production);
-}

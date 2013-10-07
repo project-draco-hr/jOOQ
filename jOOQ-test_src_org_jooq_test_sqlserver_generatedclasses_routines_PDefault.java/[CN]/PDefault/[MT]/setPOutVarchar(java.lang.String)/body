@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.test.sqlserver.generatedclasses.routines.PDefault.P_OUT_VARCHAR,value);
-}

@@ -1,3 +1,0 @@
-{
-  super(alias,org.jooq.test.sqlserver.generatedclasses.Dbo.DBO,org.jooq.test.sqlserver.generatedclasses.tables.VLibrary.V_LIBRARY);
-}

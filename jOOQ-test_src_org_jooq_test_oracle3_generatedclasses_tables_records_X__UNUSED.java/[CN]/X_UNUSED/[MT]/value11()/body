@@ -1,3 +1,0 @@
-{
-  return getPRIMARY_KEY();
-}

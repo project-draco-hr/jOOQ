@@ -1,3 +1,0 @@
-{
-  super("iisequences",org.jooq.util.ingres.ingres.$ingres.$INGRES);
-}

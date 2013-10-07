@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.sqlserver.generatedclasses.tables.TTriggers.T_TRIGGERS.ID_GENERATED;
-}

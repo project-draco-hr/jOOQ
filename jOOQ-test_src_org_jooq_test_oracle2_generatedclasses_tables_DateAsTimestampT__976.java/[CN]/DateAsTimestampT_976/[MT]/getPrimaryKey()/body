@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.oracle2.generatedclasses.Keys.DATE_AS_TIMESTAMP_PK_T_976;
-}

@@ -1,7 +1,0 @@
-{
-  org.jooq.examples.oracle.sys.packages.dbms_xplan.PrepareRecords f=new org.jooq.examples.oracle.sys.packages.dbms_xplan.PrepareRecords();
-  f.setPlanCur(planCur);
-  f.setIFormatFlags(iFormatFlags);
-  f.execute(configuration);
-  return f.getReturnValue();
-}

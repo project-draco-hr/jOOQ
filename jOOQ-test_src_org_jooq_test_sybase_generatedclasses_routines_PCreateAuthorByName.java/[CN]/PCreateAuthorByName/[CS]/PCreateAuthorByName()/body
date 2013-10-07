@@ -1,5 +1,0 @@
-{
-  super("p_create_author_by_name",org.jooq.test.sybase.generatedclasses.Dba.DBA);
-  addInParameter(P_FIRST_NAME);
-  addInParameter(P_LAST_NAME);
-}

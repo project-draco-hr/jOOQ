@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.oracle.generatedclasses.test.tables.TArrays.T_ARRAYS.STRING_ARRAY;
-}

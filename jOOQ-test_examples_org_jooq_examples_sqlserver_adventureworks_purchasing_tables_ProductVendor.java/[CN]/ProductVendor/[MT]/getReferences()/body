@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.examples.sqlserver.adventureworks.purchasing.tables.records.ProductVendor,?>>asList(org.jooq.examples.sqlserver.adventureworks.purchasing.Keys.FK_ProductVendor_Product_ProductID,org.jooq.examples.sqlserver.adventureworks.purchasing.Keys.FK_ProductVendor_Vendor_VendorID,org.jooq.examples.sqlserver.adventureworks.purchasing.Keys.FK_ProductVendor_UnitMeasure_UnitMeasureCode);
-}

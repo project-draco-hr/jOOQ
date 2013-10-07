@@ -1,3 +1,0 @@
-{
-  return org.jooq.examples.sqlserver.adventureworks.dbo.Keys.PK_ErrorLog_ErrorLogID;
-}

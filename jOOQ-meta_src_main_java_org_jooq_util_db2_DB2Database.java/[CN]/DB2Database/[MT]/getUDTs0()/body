@@ -1,7 +1,0 @@
-{
-  List<UDTDefinition> result=new ArrayList<UDTDefinition>();
-  for (  Record record : create().selectDistinct(Datatypes.TYPESCHEMA.trim(),Datatypes.TYPENAME).from(DATATYPES).where(Datatypes.TYPESCHEMA.in(getInputSchemata())).orderBy(Datatypes.TYPENAME).fetch()) {
-    result.add(new DB2UDTDefinition(getSchema(record.getValue(Datatypes.TYPESCHEMA.trim())),record.getValue(Datatypes.TYPENAME),null));
-  }
-  return result;
-}

@@ -1,7 +1,0 @@
-SchemaDefinition schema
-String name
-String specificName
-String dataType
-Number length
-Number precision
-Number scale

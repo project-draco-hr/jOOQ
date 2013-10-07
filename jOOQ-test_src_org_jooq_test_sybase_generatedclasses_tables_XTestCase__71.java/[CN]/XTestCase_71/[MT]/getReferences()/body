@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.test.sybase.generatedclasses.tables.records.XTestCase_71Record,?>>asList(org.jooq.test.sybase.generatedclasses.Keys.X_TEST_CASE_71__FK_X_TEST_CASE_71);
-}

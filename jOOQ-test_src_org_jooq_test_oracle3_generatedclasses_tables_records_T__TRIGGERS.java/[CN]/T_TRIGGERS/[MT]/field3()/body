@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.oracle3.generatedclasses.tables.T_TRIGGERS.T_TRIGGERS.COUNTER;
-}

@@ -1,3 +1,0 @@
-{
-  super(alias,org.jooq.test.sybase.generatedclasses.Dba.DBA,org.jooq.test.sybase.generatedclasses.tables.TBookToBookStore.T_BOOK_TO_BOOK_STORE);
-}

@@ -1,5 +1,0 @@
-{
-  super("COUNT_BOOKS",org.jooq.test.oracle.generatedclasses.test.Test.TEST,org.jooq.test.oracle.generatedclasses.test.udt.UAuthorType.U_AUTHOR_TYPE,org.jooq.impl.SQLDataType.NUMERIC);
-  setReturnParameter(RETURN_VALUE);
-  addInParameter(SELF);
-}

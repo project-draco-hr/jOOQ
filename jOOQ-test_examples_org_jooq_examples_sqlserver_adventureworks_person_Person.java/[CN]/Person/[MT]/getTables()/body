@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.Table<?>>asList(org.jooq.examples.sqlserver.adventureworks.person.tables.Address.Address,org.jooq.examples.sqlserver.adventureworks.person.tables.AddressType.AddressType,org.jooq.examples.sqlserver.adventureworks.person.tables.Contact.Contact,org.jooq.examples.sqlserver.adventureworks.person.tables.ContactType.ContactType,org.jooq.examples.sqlserver.adventureworks.person.tables.CountryRegion.CountryRegion,org.jooq.examples.sqlserver.adventureworks.person.tables.StateProvince.StateProvince,org.jooq.examples.sqlserver.adventureworks.person.tables.vAdditionalContactInfo.vAdditionalContactInfo,org.jooq.examples.sqlserver.adventureworks.person.tables.vStateProvinceCountryRegion.vStateProvinceCountryRegion);
-}

@@ -1,5 +1,0 @@
-{
-  super(org.jooq.test.db2.generatedclasses.tables.XTestCase_71.X_TEST_CASE_71);
-  setValue(0,id);
-  setValue(1,testCase_64_69Id);
-}

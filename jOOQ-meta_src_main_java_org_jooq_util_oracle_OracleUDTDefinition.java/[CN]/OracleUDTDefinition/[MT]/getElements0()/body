@@ -1,9 +1,0 @@
-{
-  List<AttributeDefinition> result=new ArrayList<AttributeDefinition>();
-  for (  Record record : create().select(ALL_TYPE_ATTRS.ATTR_NAME,ALL_TYPE_ATTRS.ATTR_NO,ALL_TYPE_ATTRS.ATTR_TYPE_NAME,ALL_TYPE_ATTRS.LENGTH,ALL_TYPE_ATTRS.PRECISION,ALL_TYPE_ATTRS.SCALE).from(ALL_TYPE_ATTRS).where(ALL_TYPE_ATTRS.OWNER.equal(getSchema().getName())).and(ALL_TYPE_ATTRS.TYPE_NAME.equal(getName())).orderBy(ALL_TYPE_ATTRS.ATTR_NO).fetch()) {
-    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),record.getValue(ALL_TYPE_ATTRS.ATTR_TYPE_NAME),record.getValue(ALL_TYPE_ATTRS.LENGTH,int.class),record.getValue(ALL_TYPE_ATTRS.PRECISION,int.class),record.getValue(ALL_TYPE_ATTRS.SCALE,int.class),null,null);
-    AttributeDefinition attribute=new DefaultAttributeDefinition(this,record.getValue(ALL_TYPE_ATTRS.ATTR_NAME),record.getValue(ALL_TYPE_ATTRS.ATTR_NO,int.class),type);
-    result.add(attribute);
-  }
-  return result;
-}

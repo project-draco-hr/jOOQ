@@ -1,3 +1,0 @@
-{
-  super("iidb_comments",org.jooq.util.ingres.ingres.$ingres.$INGRES);
-}

@@ -1,5 +1,0 @@
-{
-  super("F691CURSOR_IN",org.jooq.test.oracle.generatedclasses.test.Test.TEST,org.jooq.impl.SQLDataType.NUMERIC);
-  setReturnParameter(RETURN_VALUE);
-  addInParameter(C);
-}

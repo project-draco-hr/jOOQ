@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.examples.oracle.sys.packages.dbms_xplan.DisplayCursor.CURSOR_CHILD_NO,value);
-}

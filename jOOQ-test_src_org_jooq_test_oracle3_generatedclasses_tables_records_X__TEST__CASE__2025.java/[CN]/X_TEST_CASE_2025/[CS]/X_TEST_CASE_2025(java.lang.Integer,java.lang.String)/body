@@ -1,5 +1,0 @@
-{
-  super(org.jooq.test.oracle3.generatedclasses.tables.X_TEST_CASE_2025.X_TEST_CASE_2025);
-  setValue(0,REF_ID);
-  setValue(1,REF_NAME);
-}

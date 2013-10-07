@@ -1,5 +1,0 @@
-{
-  org.jooq.test.oracle3.generatedclasses.packages.library.PKG_F_UNUSED f=new org.jooq.test.oracle3.generatedclasses.packages.library.PKG_F_UNUSED();
-  f.execute(configuration);
-  return f.getReturnValue();
-}

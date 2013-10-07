@@ -1,4 +1,0 @@
-{
-  super("P1490",org.jooq.test.oracle.generatedclasses.test.Test.TEST);
-  addInParameter(VALUE);
-}

@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.oracle3.generatedclasses.tables.records.T_BOOK_STORE>>asList(org.jooq.test.oracle3.generatedclasses.Keys.UK_T_BOOK_STORE_NAME);
-}

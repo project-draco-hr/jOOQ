@@ -1,5 +1,0 @@
-{
-  org.jooq.test.oracle3.generatedclasses.routines.F_GET_ONE_CURSOR f=new org.jooq.test.oracle3.generatedclasses.routines.F_GET_ONE_CURSOR();
-  f.setBOOK_IDS(BOOK_IDS);
-  return f.asField();
-}

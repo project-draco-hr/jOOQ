@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.db2.generatedclasses.tables.records.TExoticTypesRecord.class;
-}

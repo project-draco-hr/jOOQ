@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.examples.oracle.sys.packages.dbms_xplan.DiffPlanOutline.USER_NAME,value);
-}

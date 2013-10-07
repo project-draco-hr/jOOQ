@@ -1,9 +1,0 @@
-{
-  org.jooq.examples.oracle.sys.packages.dbms_xplan.Display f=new org.jooq.examples.oracle.sys.packages.dbms_xplan.Display();
-  f.setTableName(tableName);
-  f.setStatementId(statementId);
-  f.setFormat(format);
-  f.setFilterPreds(filterPreds);
-  f.execute(configuration);
-  return f.getReturnValue();
-}

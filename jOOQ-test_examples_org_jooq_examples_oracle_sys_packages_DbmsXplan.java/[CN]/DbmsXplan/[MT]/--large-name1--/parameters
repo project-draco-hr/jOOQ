@@ -1,7 +1,0 @@
-org.jooq.Field<java.lang.String> tableName
-org.jooq.Field<java.lang.String> statementId
-org.jooq.Field<? extends java.lang.Number> planId
-org.jooq.Field<java.lang.String> format
-org.jooq.Field<java.lang.String> filterPreds
-org.jooq.Field<java.lang.String> planTag
-org.jooq.Field<java.lang.String> reportRef

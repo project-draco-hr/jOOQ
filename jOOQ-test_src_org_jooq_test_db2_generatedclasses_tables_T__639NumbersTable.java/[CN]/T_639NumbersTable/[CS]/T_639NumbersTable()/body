@@ -1,3 +1,0 @@
-{
-  super("T_639_NUMBERS_TABLE",org.jooq.test.db2.generatedclasses.Library.LIBRARY);
-}

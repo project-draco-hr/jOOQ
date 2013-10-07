@@ -1,3 +1,0 @@
-{
-  return getValue(org.jooq.test.ase.generatedclasses.tables.T_639NumbersTable.BYTE_DECIMAL);
-}

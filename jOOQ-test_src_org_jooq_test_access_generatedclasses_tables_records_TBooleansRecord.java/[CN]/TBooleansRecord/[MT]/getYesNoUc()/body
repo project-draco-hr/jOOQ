@@ -1,3 +1,0 @@
-{
-  return (org.jooq.test._.converters.Boolean_YES_NO_UC)getValue(5);
-}

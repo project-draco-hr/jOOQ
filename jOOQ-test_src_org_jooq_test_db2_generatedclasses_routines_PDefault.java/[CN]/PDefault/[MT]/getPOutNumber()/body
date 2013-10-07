@@ -1,3 +1,0 @@
-{
-  return getValue(P_OUT_NUMBER);
-}

@@ -1,3 +1,0 @@
-{
-  return function("sys_context",SQLDataType.VARCHAR,val(namespace),val(parameter));
-}

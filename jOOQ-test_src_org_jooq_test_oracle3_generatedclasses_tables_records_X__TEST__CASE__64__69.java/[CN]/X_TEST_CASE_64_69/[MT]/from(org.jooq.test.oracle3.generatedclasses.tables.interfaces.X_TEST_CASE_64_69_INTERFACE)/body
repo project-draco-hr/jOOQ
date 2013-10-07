@@ -1,4 +1,0 @@
-{
-  setID(from.getID());
-  setUNUSED_ID(from.getUNUSED_ID());
-}

@@ -1,6 +1,0 @@
-{
-  org.jooq.test.oracle2.generatedclasses.routines.DateAsTimestampF_976 f=new org.jooq.test.oracle2.generatedclasses.routines.DateAsTimestampF_976();
-  f.setI(dateAsTimestampi);
-  f.execute(configuration);
-  return f.getReturnValue();
-}

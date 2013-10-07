@@ -1,3 +1,0 @@
-{
-  return getValue(org.jooq.examples.sqlserver.adventureworks.person.tables.Contact.Contact.Title);
-}

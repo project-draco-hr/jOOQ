@@ -1,5 +1,0 @@
-{
-  org.jooq.test.sqlserver.generatedclasses.routines.P1490 p=new org.jooq.test.sqlserver.generatedclasses.routines.P1490();
-  p.setValue(value);
-  p.execute(configuration);
-}

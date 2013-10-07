@@ -1,3 +1,0 @@
-{
-  super(org.jooq.examples.oracle.sys.udt.DbmsXplanType.DBMS_XPLAN_TYPE);
-}

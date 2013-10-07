@@ -1,9 +1,0 @@
-{
-  if (mode == Mode.POJO) {
-    return definition.getOutputName() + "_POJO";
-  }
-  if (mode == Mode.INTERFACE) {
-    return definition.getOutputName() + "_INTERFACE";
-  }
-  return definition.getOutputName();
-}

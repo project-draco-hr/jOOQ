@@ -1,8 +1,0 @@
-{
-  org.jooq.test.oracle3.generatedclasses.routines.P_DEFAULT p=new org.jooq.test.oracle3.generatedclasses.routines.P_DEFAULT();
-  p.setP_IN_NUMBER(P_IN_NUMBER);
-  p.setP_IN_VARCHAR(P_IN_VARCHAR);
-  p.setP_IN_DATE(P_IN_DATE);
-  p.execute(configuration);
-  return p;
-}

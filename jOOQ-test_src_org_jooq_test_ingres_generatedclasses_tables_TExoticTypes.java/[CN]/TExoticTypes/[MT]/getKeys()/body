@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.ingres.generatedclasses.tables.records.TExoticTypesRecord>>asList(org.jooq.test.ingres.generatedclasses.Keys.PK_T_EXOTIC_TYPES);
-}

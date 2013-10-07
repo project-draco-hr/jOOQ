@@ -1,3 +1,0 @@
-{
-  super("t_author",org.jooq.test.ingres.generatedclasses.Test.TEST);
-}

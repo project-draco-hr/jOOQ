@@ -1,7 +1,0 @@
-{
-  super("PKG_P_AUTHOR_EXISTS",org.jooq.test.oracle3.generatedclasses.DefaultSchema.DEFAULT_SCHEMA,org.jooq.test.oracle3.generatedclasses.packages.LIBRARY.LIBRARY);
-  addInParameter(AUTHOR_NAME);
-  addOutParameter(RESULT);
-  addInOutParameter(UNUSED);
-  setOverloaded(true);
-}

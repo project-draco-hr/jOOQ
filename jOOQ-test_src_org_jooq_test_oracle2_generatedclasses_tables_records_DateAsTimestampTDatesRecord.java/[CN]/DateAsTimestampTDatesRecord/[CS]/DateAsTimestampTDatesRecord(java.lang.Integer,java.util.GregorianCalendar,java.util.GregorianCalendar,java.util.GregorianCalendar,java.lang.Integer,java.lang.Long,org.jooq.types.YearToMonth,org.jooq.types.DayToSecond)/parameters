@@ -1,8 +1,0 @@
-java.lang.Integer dateAsTimestampid
-java.util.GregorianCalendar dateAsTimestampd
-java.util.GregorianCalendar dateAsTimestampt
-java.util.GregorianCalendar dateAsTimestampts
-java.lang.Integer dateAsTimestampdInt
-java.lang.Long dateAsTimestamptsBigint
-org.jooq.types.YearToMonth dateAsTimestampiY
-org.jooq.types.DayToSecond dateAsTimestampiD

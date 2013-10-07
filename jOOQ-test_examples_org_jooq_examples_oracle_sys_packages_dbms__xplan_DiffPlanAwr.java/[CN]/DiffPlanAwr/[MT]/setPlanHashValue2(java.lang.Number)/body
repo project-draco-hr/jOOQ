@@ -1,3 +1,0 @@
-{
-  setNumber(org.jooq.examples.oracle.sys.packages.dbms_xplan.DiffPlanAwr.PLAN_HASH_VALUE2,value);
-}

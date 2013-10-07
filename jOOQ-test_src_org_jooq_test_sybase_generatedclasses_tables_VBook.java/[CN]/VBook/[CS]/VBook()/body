@@ -1,3 +1,0 @@
-{
-  super("v_book",org.jooq.test.sybase.generatedclasses.Dba.DBA);
-}

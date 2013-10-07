@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.oracle3.generatedclasses.tables.T_AUTHOR.T_AUTHOR.DATE_OF_BIRTH;
-}

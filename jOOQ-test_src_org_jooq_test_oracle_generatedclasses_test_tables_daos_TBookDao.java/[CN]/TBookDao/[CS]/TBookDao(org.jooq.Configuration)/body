@@ -1,3 +1,0 @@
-{
-  super(org.jooq.test.oracle.generatedclasses.test.tables.TBook.T_BOOK,org.jooq.test.oracle.generatedclasses.test.tables.pojos.TBook.class,configuration);
-}

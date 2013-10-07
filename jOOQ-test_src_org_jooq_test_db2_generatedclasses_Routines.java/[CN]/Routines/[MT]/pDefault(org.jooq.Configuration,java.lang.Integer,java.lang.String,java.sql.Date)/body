@@ -1,8 +1,0 @@
-{
-  org.jooq.test.db2.generatedclasses.routines.PDefault p=new org.jooq.test.db2.generatedclasses.routines.PDefault();
-  p.setPInNumber(pInNumber);
-  p.setPInVarchar(pInVarchar);
-  p.setPInDate(pInDate);
-  p.execute(configuration);
-  return p;
-}

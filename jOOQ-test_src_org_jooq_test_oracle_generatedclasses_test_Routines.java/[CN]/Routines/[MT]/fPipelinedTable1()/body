@@ -1,4 +1,0 @@
-{
-  org.jooq.test.oracle.generatedclasses.test.routines.FPipelinedTable1 f=new org.jooq.test.oracle.generatedclasses.test.routines.FPipelinedTable1();
-  return f.asField();
-}

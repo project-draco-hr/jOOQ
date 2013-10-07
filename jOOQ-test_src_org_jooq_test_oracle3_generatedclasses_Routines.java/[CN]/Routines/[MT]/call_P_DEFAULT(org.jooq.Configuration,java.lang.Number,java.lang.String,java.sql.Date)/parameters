@@ -1,4 +1,0 @@
-org.jooq.Configuration configuration
-java.lang.Number P_IN_NUMBER
-java.lang.String P_IN_VARCHAR
-java.sql.Date P_IN_DATE

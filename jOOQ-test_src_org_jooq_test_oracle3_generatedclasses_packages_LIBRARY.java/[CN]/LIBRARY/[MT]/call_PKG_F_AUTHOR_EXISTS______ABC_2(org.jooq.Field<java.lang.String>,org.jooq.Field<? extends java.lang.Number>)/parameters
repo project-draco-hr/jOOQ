@@ -1,2 +1,0 @@
-org.jooq.Field<java.lang.String> AUTHOR_NAME
-org.jooq.Field<? extends java.lang.Number> UNUSED

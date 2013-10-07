@@ -1,4 +1,0 @@
-{
-  List<SequenceDefinition> result=new ArrayList<SequenceDefinition>();
-  return result;
-}

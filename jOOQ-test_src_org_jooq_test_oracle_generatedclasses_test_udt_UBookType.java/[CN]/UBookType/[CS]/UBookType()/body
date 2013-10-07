@@ -1,4 +1,0 @@
-{
-  super("U_BOOK_TYPE",org.jooq.test.oracle.generatedclasses.test.Test.TEST);
-  getDataType();
-}

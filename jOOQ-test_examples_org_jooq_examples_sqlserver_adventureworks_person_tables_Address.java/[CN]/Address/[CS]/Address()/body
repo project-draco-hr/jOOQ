@@ -1,3 +1,0 @@
-{
-  super("Address",org.jooq.examples.sqlserver.adventureworks.person.Person.Person);
-}

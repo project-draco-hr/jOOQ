@@ -1,5 +1,0 @@
-{
-  super("F_976",org.jooq.test.oracle2.generatedclasses.DateAsTimestampTest.DATE_AS_TIMESTAMP_TEST,org.jooq.impl.SQLDataType.TIMESTAMP);
-  setReturnParameter(DATE_AS_TIMESTAMP_RETURN_VALUE);
-  addInParameter(DATE_AS_TIMESTAMP_I);
-}

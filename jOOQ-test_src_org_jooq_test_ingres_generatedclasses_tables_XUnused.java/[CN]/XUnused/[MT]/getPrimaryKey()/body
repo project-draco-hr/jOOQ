@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.ingres.generatedclasses.Keys.UK_X_UNUSED_ID;
-}

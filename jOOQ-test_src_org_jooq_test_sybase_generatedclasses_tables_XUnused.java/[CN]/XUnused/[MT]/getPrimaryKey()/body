@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.sybase.generatedclasses.Keys.X_UNUSED__PK_X_UNUSED;
-}

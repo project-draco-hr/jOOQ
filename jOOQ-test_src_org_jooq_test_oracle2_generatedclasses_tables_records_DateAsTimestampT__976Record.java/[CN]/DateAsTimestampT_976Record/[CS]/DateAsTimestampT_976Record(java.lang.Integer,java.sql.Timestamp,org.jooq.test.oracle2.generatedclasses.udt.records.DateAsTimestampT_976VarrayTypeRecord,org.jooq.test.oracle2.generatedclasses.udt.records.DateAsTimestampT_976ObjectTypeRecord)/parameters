@@ -1,4 +1,0 @@
-java.lang.Integer dateAsTimestampid
-java.sql.Timestamp dateAsTimestampd
-org.jooq.test.oracle2.generatedclasses.udt.records.DateAsTimestampT_976VarrayTypeRecord dateAsTimestampt
-org.jooq.test.oracle2.generatedclasses.udt.records.DateAsTimestampT_976ObjectTypeRecord dateAsTimestampo

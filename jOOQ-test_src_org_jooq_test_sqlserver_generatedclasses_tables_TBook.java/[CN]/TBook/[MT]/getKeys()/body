@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.sqlserver.generatedclasses.tables.records.TBookRecord>>asList(org.jooq.test.sqlserver.generatedclasses.Keys.PK_T_BOOK);
-}

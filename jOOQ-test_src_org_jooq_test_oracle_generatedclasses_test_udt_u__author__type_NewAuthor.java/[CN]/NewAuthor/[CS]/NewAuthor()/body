@@ -1,7 +1,0 @@
-{
-  super("NEW_AUTHOR",org.jooq.test.oracle.generatedclasses.test.Test.TEST,org.jooq.test.oracle.generatedclasses.test.udt.UAuthorType.U_AUTHOR_TYPE);
-  addInParameter(P_ID);
-  addInParameter(P_FIRST_NAME);
-  addInParameter(P_LAST_NAME);
-  addOutParameter(P_AUTHOR);
-}

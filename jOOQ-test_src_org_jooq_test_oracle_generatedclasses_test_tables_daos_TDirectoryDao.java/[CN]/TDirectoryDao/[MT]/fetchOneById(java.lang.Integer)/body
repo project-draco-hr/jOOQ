@@ -1,3 +1,0 @@
-{
-  return fetchOne(org.jooq.test.oracle.generatedclasses.test.tables.TDirectory.T_DIRECTORY.ID,value);
-}

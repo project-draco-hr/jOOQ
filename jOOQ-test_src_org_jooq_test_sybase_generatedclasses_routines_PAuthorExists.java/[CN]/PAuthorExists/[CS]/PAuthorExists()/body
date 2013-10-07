@@ -1,5 +1,0 @@
-{
-  super("p_author_exists",org.jooq.test.sybase.generatedclasses.Dba.DBA);
-  addInParameter(AUTHOR_NAME);
-  addOutParameter(RESULT);
-}

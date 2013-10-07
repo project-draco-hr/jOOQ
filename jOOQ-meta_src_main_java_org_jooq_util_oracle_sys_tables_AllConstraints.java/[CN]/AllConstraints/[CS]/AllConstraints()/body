@@ -1,3 +1,0 @@
-{
-  super("ALL_CONSTRAINTS",org.jooq.util.oracle.sys.Sys.SYS);
-}

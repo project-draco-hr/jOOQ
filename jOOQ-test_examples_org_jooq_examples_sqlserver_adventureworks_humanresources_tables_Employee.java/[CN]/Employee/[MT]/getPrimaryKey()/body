@@ -1,3 +1,0 @@
-{
-  return org.jooq.examples.sqlserver.adventureworks.humanresources.Keys.PK_Employee_EmployeeID;
-}

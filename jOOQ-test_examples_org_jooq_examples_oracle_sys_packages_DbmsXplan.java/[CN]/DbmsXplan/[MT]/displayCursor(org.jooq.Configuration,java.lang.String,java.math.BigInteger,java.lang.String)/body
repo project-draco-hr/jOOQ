@@ -1,8 +1,0 @@
-{
-  org.jooq.examples.oracle.sys.packages.dbms_xplan.DisplayCursor f=new org.jooq.examples.oracle.sys.packages.dbms_xplan.DisplayCursor();
-  f.setSqlId(sqlId);
-  f.setCursorChildNo(cursorChildNo);
-  f.setFormat(format);
-  f.execute(configuration);
-  return f.getReturnValue();
-}

@@ -1,3 +1,0 @@
-{
-  super("SYSTAB",org.jooq.util.sybase.sys.Sys.SYS);
-}

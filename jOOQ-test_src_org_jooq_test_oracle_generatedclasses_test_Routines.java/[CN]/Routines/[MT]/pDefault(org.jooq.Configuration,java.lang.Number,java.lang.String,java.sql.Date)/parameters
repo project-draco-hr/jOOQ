@@ -1,4 +1,0 @@
-org.jooq.Configuration configuration
-java.lang.Number pInNumber
-java.lang.String pInVarchar
-java.sql.Date pInDate

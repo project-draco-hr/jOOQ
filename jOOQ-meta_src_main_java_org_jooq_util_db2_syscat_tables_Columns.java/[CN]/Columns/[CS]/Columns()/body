@@ -1,3 +1,0 @@
-{
-  super("COLUMNS",org.jooq.util.db2.syscat.Syscat.SYSCAT);
-}

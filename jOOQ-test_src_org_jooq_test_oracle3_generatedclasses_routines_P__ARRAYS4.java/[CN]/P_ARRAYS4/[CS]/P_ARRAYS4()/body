@@ -1,5 +1,0 @@
-{
-  super("P_ARRAYS4",org.jooq.test.oracle3.generatedclasses.DefaultSchema.DEFAULT_SCHEMA);
-  addInParameter(IN_ARRAY);
-  addOutParameter(OUT_ARRAY);
-}

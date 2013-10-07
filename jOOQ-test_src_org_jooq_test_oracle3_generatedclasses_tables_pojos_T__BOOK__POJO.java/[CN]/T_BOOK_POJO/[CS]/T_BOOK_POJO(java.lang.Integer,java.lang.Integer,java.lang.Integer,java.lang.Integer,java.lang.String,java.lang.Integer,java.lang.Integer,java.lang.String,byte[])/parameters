@@ -1,9 +1,0 @@
-java.lang.Integer ID
-java.lang.Integer AUTHOR_ID
-java.lang.Integer CO_AUTHOR_ID
-java.lang.Integer DETAILS_ID
-java.lang.String TITLE
-java.lang.Integer PUBLISHED_IN
-java.lang.Integer LANGUAGE_ID
-java.lang.String CONTENT_TEXT
-byte[] CONTENT_PDF

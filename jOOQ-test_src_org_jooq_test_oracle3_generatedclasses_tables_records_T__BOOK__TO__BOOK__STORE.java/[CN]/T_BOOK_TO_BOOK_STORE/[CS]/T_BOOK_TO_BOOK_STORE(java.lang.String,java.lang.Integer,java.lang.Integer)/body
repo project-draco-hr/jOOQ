@@ -1,6 +1,0 @@
-{
-  super(org.jooq.test.oracle3.generatedclasses.tables.T_BOOK_TO_BOOK_STORE.T_BOOK_TO_BOOK_STORE);
-  setValue(0,BOOK_STORE_NAME);
-  setValue(1,BOOK_ID);
-  setValue(2,STOCK);
-}

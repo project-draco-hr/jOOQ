@@ -1,3 +1,0 @@
-{
-  return getYES_NO_LC();
-}

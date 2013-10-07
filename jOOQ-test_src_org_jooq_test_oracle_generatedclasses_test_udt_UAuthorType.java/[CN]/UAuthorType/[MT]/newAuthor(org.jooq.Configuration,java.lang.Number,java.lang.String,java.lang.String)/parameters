@@ -1,4 +1,0 @@
-org.jooq.Configuration configuration
-java.lang.Number pId
-java.lang.String pFirstName
-java.lang.String pLastName
