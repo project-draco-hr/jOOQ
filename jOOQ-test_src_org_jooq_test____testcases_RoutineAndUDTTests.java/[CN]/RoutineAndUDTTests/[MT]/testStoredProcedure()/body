@@ -29,7 +29,7 @@
       assertEquals(null,invoke(p391a,"getIo2"));
       assertEquals(null,invoke(p391a,"getO2"));
     }
-    if (true && dialect() != SQLDialect.SYBASE) {
+    if (true) {
       Object p391b=invoke(cRoutines(),"p391",create().configuration(),null,2,DUMMY_OUT_INT,DUMMY_OUT_INT,3,null);
       assertEquals(null,invoke(p391b,"getIo1"));
       assertEquals("2","" + invoke(p391b,"getO1"));
@@ -42,32 +42,4 @@
       assertEquals("3","" + invoke(p391c,"getO2"));
     }
   }
-switch (dialect().family()) {
-case ORACLE:
-    Object result1a=invoke(cRoutines(),"f378",create().configuration(),null,null);
-  assertEquals(null,invoke(result1a,"getIo"));
-assertEquals(null,invoke(result1a,"getO"));
-assertEquals(null,invoke(result1a,"getReturnValue"));
-Object result2a=invoke(cRoutines(),"f378",create().configuration(),null,2);
-assertEquals(null,invoke(result2a,"getIo"));
-assertEquals("2","" + invoke(result2a,"getO"));
-assertEquals(null,invoke(result2a,"getReturnValue"));
-Object result3a=invoke(cRoutines(),"f378",create().configuration(),1,2);
-assertEquals("1","" + invoke(result3a,"getIo"));
-assertEquals("2","" + invoke(result3a,"getO"));
-assertEquals("3","" + invoke(result3a,"getReturnValue"));
-Object result1b=invoke(cLibrary(),"pkgF378",create().configuration(),null,null);
-assertEquals(null,invoke(result1b,"getIo"));
-assertEquals(null,invoke(result1b,"getO"));
-assertEquals(null,invoke(result1b,"getReturnValue"));
-Object result2b=invoke(cLibrary(),"pkgF378",create().configuration(),null,2);
-assertEquals(null,invoke(result2b,"getIo"));
-assertEquals("2","" + invoke(result2b,"getO"));
-assertEquals(null,invoke(result2b,"getReturnValue"));
-Object result3b=invoke(cLibrary(),"pkgF378",create().configuration(),1,2);
-assertEquals("1","" + invoke(result3b,"getIo"));
-assertEquals("2","" + invoke(result3b,"getO"));
-assertEquals("3","" + invoke(result3b,"getReturnValue"));
-break;
-}
 }

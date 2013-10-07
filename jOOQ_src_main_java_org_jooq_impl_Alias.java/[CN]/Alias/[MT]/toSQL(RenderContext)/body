@@ -2,11 +2,11 @@
   if (context.declareFields() || context.declareTables()) {
     SQLDialect dialect=context.configuration().dialect();
     boolean simulateDerivedColumnList=false;
-    if (fieldAliases != null && asList(CUBRID,FIREBIRD,SQLSERVER,SYBASE).contains(dialect.family()) && wrapped instanceof TableImpl) {
+    if (fieldAliases != null && asList(CUBRID,FIREBIRD).contains(dialect.family()) && wrapped instanceof TableImpl) {
       @SuppressWarnings("unchecked") Select<Record> select=select(list(field("*"))).from(((Table<?>)wrapped).as(alias));
       context.sql("(").formatIndentStart().formatNewLine().visit(select).formatIndentEnd().formatNewLine().sql(")");
     }
- else     if (fieldAliases != null && asList(H2,MARIADB,MYSQL,ORACLE,SQLITE).contains(dialect.family())) {
+ else     if (fieldAliases != null && asList(H2,MARIADB,MYSQL,SQLITE).contains(dialect.family())) {
       simulateDerivedColumnList=true;
       SelectFieldList fields=new SelectFieldList();
       for (      String fieldAlias : fieldAliases) {

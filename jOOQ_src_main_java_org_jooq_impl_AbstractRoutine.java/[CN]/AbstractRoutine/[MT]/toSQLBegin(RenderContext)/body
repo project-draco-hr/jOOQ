@@ -1,10 +1,7 @@
 {
 switch (context.configuration().dialect().family()) {
-case ORACLE:
-    context.keyword("begin").formatIndentStart().formatSeparator();
-  break;
 default :
-context.sql("{ ");
-break;
+    context.sql("{ ");
+  break;
 }
 }

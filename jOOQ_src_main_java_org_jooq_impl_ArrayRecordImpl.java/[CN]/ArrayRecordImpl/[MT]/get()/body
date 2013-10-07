@@ -1,8 +1,0 @@
-{
-  if (array == null) {
-    return (T[])Array.newInstance(type.getType(),0);
-  }
- else {
-    return array;
-  }
-}

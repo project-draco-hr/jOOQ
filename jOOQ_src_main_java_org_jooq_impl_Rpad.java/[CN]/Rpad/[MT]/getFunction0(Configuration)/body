@@ -1,22 +1,16 @@
 {
 switch (configuration.dialect().family()) {
-case ASE:
-case SQLSERVER:
-case SYBASE:
-{
-      return DSL.concat(field,DSL.repeat(character,length.sub(DSL.length(field))));
-    }
 case SQLITE:
 {
-    return DSL.field("{0} || substr(" + "replace(" + "replace("+ "substr("+ "quote("+ "zeroblob((({1} - length({0}) - 1 + length({2})) / length({2}) + 1) / 2)"+ "), 3"+ "), '''', ''"+ "), '0', {2}"+ "), 1, ({1} - length({0}))"+ ")",String.class,field,length,character);
-  }
+      return DSL.field("{0} || substr(" + "replace(" + "replace("+ "substr("+ "quote("+ "zeroblob((({1} - length({0}) - 1 + length({2})) / length({2}) + 1) / 2)"+ "), 3"+ "), '''', ''"+ "), '0', {2}"+ "), 1, ({1} - length({0}))"+ ")",String.class,field,length,character);
+    }
 case FIREBIRD:
 {
-  return field("cast(rpad({0}, {1}, {2}) as varchar(4000))",SQLDataType.VARCHAR,field,length,character);
-}
+    return field("cast(rpad({0}, {1}, {2}) as varchar(4000))",SQLDataType.VARCHAR,field,length,character);
+  }
 default :
 {
-return function("rpad",SQLDataType.VARCHAR,field,length,character);
+  return function("rpad",SQLDataType.VARCHAR,field,length,character);
 }
 }
 }

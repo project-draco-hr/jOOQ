@@ -1,3 +1,0 @@
-{
-  return partitionBy(fields.toArray(new Field[fields.size()]));
-}

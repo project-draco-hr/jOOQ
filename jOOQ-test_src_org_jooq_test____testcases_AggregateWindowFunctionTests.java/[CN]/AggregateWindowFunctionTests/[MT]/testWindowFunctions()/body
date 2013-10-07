@@ -1,7 +1,5 @@
 {
 switch (dialect()) {
-case ASE:
-case INGRES:
 case FIREBIRD:
 case MARIADB:
 case MYSQL:
@@ -65,7 +63,6 @@ assertEquals(Integer.valueOf(1),result.getValue(1,column));
 assertEquals(Integer.valueOf(2),result.getValue(2,column));
 assertEquals(Integer.valueOf(1),result.getValue(3,column));
 switch (dialect()) {
-case DB2:
 case CUBRID:
 log.info("SKIPPING","PERCENT_RANK() and CUME_DIST() window function tests");
 break;
@@ -114,16 +111,13 @@ assertEquals("1.118",result.get(0).getValue(1,String.class).substring(0,5));
 assertEquals(1.25,result.get(0).getValue(3,Double.class));
 assertEquals(0.5,result.get(0).getValue(5,Double.class));
 assertEquals(0.25,result.get(0).getValue(7,Double.class));
-if (true && dialect() != SQLDialect.DB2) {
+if (true) {
 assertEquals("1.290",result.get(0).getValue(2,String.class).substring(0,5));
 assertEquals("1.666",result.get(0).getValue(4,String.class).substring(0,5));
 assertEquals("0.707",result.get(0).getValue(6,String.class).substring(0,5));
 assertEquals(0.5,result.get(0).getValue(8,Double.class));
 }
-if (asList(DB2,SYBASE).contains(dialect())) {
-log.info("SKIPPING","NTILE tests");
-}
- else {
+{
 result=create().select(TBook_ID(),ntile(1).over().orderBy(TBook_ID()),ntile(1).over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID()),ntile(2).over().orderBy(TBook_ID()),ntile(2).over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
 assertEquals(BOOK_IDS,result.getValues(0));
 assertEquals(nCopies(4,1),result.getValues(1));
@@ -160,28 +154,7 @@ assertEquals(Integer.valueOf(2),result.getValue(1,column));
 assertEquals(Integer.valueOf(3),result.getValue(2,column));
 assertEquals(Integer.valueOf(3),result.getValue(3,column));
 }
-switch (dialect().family()) {
-case SQLSERVER:
-case CUBRID:
-case POSTGRES:
-log.info("SKIPPING","FIRST_VALUE(... IGNORE NULLS) window function test");
-break;
-default :
-{
-column=0;
-result=create().select(TBook_ID(),firstValue(TBook_ID()).ignoreNulls().over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_PUBLISHED_IN().asc()).rowsBetweenUnboundedPreceding().andUnboundedFollowing()).from(TBook()).orderBy(TBook_ID().asc()).fetch();
-column++;
-assertEquals(Integer.valueOf(2),result.getValue(0,column));
-assertEquals(Integer.valueOf(2),result.getValue(1,column));
-assertEquals(Integer.valueOf(3),result.getValue(2,column));
-assertEquals(Integer.valueOf(3),result.getValue(3,column));
-break;
-}
-}
 switch (dialect()) {
-case SYBASE:
-log.info("SKIPPING","LEAD/LAG tests");
-break;
 default :
 {
 column=0;

@@ -3,7 +3,6 @@
   Field<Integer> ID3;
   Field<Integer> ID4;
 switch (dialect()) {
-case ASE:
 case MARIADB:
 case MYSQL:
     ID3=create().select(val(3)).asField();

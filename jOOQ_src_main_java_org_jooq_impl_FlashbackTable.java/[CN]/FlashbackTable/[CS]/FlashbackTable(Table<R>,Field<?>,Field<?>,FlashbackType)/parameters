@@ -1,4 +1,0 @@
-Table<R> table
-Field<?> asOf
-Field<?> minvalue
-FlashbackType type

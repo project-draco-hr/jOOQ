@@ -1,11 +1,5 @@
 {
   for (  DataType<?> type : getCastableDataTypes()) {
-    if (dialect() == SQLDialect.ASE || dialect() == SQLDialect.DB2 || dialect() == SQLDialect.SYBASE) {
-      if (type.getType() == Boolean.class) {
-        log.info("SKIPPING","Casting to bit type in Sybase ASE / SQL Anywhere");
-        continue;
-      }
-    }
     assertEquals(null,create().select(val(null,type).cast(type)).fetchOne(0));
   }
 }

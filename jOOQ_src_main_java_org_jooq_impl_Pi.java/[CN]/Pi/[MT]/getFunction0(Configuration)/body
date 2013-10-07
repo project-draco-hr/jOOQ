@@ -1,11 +1,8 @@
 {
 switch (configuration.dialect().family()) {
-case DB2:
-case ORACLE:
-    return DSL.asin(one()).mul(two());
 case SQLITE:
-  return inline(Math.PI,BigDecimal.class);
+    return inline(Math.PI,BigDecimal.class);
 default :
-return function("pi",getDataType());
+  return function("pi",getDataType());
 }
 }

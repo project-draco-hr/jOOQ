@@ -1,8 +1,4 @@
 {
-  if (asList(ASE,INGRES).contains(dialect())) {
-    log.info("SKIPPING","Parameterised LIMIT .. OFFSET tests");
-    return;
-  }
   for (int i=1; i < 6; i++) {
     Select<?> s1=create().selectFrom(TBook()).limit(param("limit",i));
     Select<?> s2=create().select().from(TBook()).limit(param("limit",i));

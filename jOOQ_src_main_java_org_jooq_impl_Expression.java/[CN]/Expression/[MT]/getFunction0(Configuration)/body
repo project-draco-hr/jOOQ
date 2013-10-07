@@ -1,33 +1,30 @@
 {
   SQLDialect family=configuration.dialect().family();
-  if (BIT_AND == operator && asList(DB2,H2,HSQLDB,ORACLE).contains(family)) {
+  if (BIT_AND == operator && asList(H2,HSQLDB).contains(family)) {
     return function("bitand",getDataType(),getArguments());
   }
  else   if (BIT_AND == operator && FIREBIRD == family) {
     return function("bin_and",getDataType(),getArguments());
   }
- else   if (BIT_XOR == operator && asList(DB2,H2,HSQLDB).contains(family)) {
+ else   if (BIT_XOR == operator && asList(H2,HSQLDB).contains(family)) {
     return function("bitxor",getDataType(),getArguments());
   }
  else   if (BIT_XOR == operator && FIREBIRD == family) {
     return function("bin_xor",getDataType(),getArguments());
   }
- else   if (BIT_OR == operator && asList(DB2,H2,HSQLDB).contains(family)) {
+ else   if (BIT_OR == operator && asList(H2,HSQLDB).contains(family)) {
     return function("bitor",getDataType(),getArguments());
   }
  else   if (BIT_OR == operator && FIREBIRD == family) {
     return function("bin_or",getDataType(),getArguments());
   }
- else   if (BIT_OR == operator && ORACLE == family) {
-    return lhs.sub(bitAnd(lhsAsNumber(),rhsAsNumber())).add(rhsAsNumber());
-  }
- else   if (BIT_XOR == operator && asList(ORACLE,SQLITE).contains(family)) {
+ else   if (BIT_XOR == operator && asList(SQLITE).contains(family)) {
     return (Field<T>)bitAnd(bitNot(bitAnd(lhsAsNumber(),rhsAsNumber())),bitOr(lhsAsNumber(),rhsAsNumber()));
   }
- else   if (SHL == operator && asList(ASE,DB2,H2,HSQLDB,INGRES,ORACLE,SQLSERVER,SYBASE).contains(family)) {
+ else   if (SHL == operator && asList(H2,HSQLDB).contains(family)) {
     return lhs.mul(DSL.power(two(),rhsAsNumber()));
   }
- else   if (SHR == operator && asList(ASE,DB2,H2,HSQLDB,INGRES,ORACLE,SQLSERVER,SYBASE).contains(family)) {
+ else   if (SHR == operator && asList(H2,HSQLDB).contains(family)) {
     return lhs.div(DSL.power(two(),rhsAsNumber()));
   }
  else   if (SHL == operator && FIREBIRD == family) {

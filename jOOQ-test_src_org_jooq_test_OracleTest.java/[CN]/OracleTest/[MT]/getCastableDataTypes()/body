@@ -1,3 +1,0 @@
-{
-  return new DataType<?>[]{OracleDataType.CHAR,OracleDataType.DATE,OracleDataType.DEC,OracleDataType.DECIMAL,OracleDataType.FLOAT,OracleDataType.INT,OracleDataType.INTEGER,OracleDataType.NCHAR,OracleDataType.NUMBER,OracleDataType.NUMERIC,OracleDataType.NVARCHAR,OracleDataType.NVARCHAR2,OracleDataType.REAL,OracleDataType.SMALLINT,OracleDataType.TIMESTAMP,OracleDataType.VARCHAR,OracleDataType.VARCHAR2};
-}

@@ -3,7 +3,7 @@
   if (dialect() != SQLITE)   assertEquals(Date.valueOf(zeroDate()),record.getValue("d"));
   assertEquals(Time.valueOf("00:00:00"),record.getValue("t"));
   assertEquals(Timestamp.valueOf(zeroTimestamp()),record.getValue("ts"));
-  if (dialect() == ASE || dialect() == DB2 || dialect() == INGRES || dialect().family() == SQLSERVER || dialect() == SYBASE || dialect() == CUBRID || dialect() == DERBY || dialect() == FIREBIRD || dialect() == H2 || dialect() == MARIADB || dialect() == MYSQL || dialect() == SQLITE) {
+  if (dialect() == CUBRID || dialect() == DERBY || dialect() == FIREBIRD || dialect() == H2 || dialect() == MARIADB || dialect() == MYSQL || dialect() == SQLITE) {
     log.info("SKIPPING","Interval tests");
   }
  else {

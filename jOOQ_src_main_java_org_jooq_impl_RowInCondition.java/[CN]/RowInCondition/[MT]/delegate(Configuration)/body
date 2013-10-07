@@ -1,5 +1,5 @@
 {
-  if (asList(ASE,DB2,DERBY,FIREBIRD,INGRES,SQLSERVER,SQLITE,SYBASE).contains(configuration.dialect().family())) {
+  if (asList(DERBY,FIREBIRD,SQLITE).contains(configuration.dialect().family())) {
     List<Condition> conditions=new ArrayList<Condition>();
     for (    Row row : right) {
       conditions.add(new RowCondition(left,row,EQUALS));

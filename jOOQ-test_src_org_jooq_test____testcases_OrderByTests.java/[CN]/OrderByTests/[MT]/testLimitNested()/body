@@ -1,8 +1,4 @@
 {
-  if (dialect() == SQLDialect.INGRES || dialect() == SQLDialect.ASE) {
-    log.info("SKIPPING","LIMIT clauses in nested SELECTs");
-    return;
-  }
   Table<B> nested=table(create().selectFrom(TBook()).orderBy(TBook_ID().desc()).limit(2)).as("nested");
   Field<Integer> nestedID=nested.field(TBook_AUTHOR_ID());
   Record record=create().select(nestedID,count()).from(nested).groupBy(nestedID).orderBy(nestedID).fetchOne();

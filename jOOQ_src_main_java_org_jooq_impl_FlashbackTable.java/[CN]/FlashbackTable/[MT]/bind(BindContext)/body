@@ -1,9 +1,0 @@
-{
-  context.visit(table);
-  if (asOf != null) {
-    context.visit(asOf);
-  }
- else {
-    context.visit(minvalue).visit(maxvalue);
-  }
-}

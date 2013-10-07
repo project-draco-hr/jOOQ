@@ -1,9 +1,6 @@
 {
   listener.executeStart(ctx);
-  if (ctx.configuration().dialect() == ASE) {
-    ctx.resultSet(ctx.statement().executeQuery());
-  }
- else   if (ctx.statement().execute()) {
+  if (ctx.statement().execute()) {
     ctx.resultSet(ctx.statement().getResultSet());
   }
   listener.executeEnd(ctx);

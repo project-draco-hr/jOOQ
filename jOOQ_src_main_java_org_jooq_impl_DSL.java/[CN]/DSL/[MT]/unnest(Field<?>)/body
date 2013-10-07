@@ -5,12 +5,6 @@
  else   if (cursor.getType() == Result.class) {
     return new FunctionTable<Record>(cursor);
   }
- else   if (ArrayConstant.class.isAssignableFrom(cursor.getClass())) {
-    return new ArrayTable(cursor);
-  }
- else   if (ArrayRecord.class.isAssignableFrom(cursor.getDataType().getType())) {
-    return new ArrayTable(cursor);
-  }
  else   if (cursor.getType().isArray() && cursor.getType() != byte[].class) {
     return new ArrayTable(cursor);
   }

@@ -1,17 +1,8 @@
 {
 switch (configuration.dialect().family()) {
-case DB2:
 case DERBY:
     return function("locate",SQLDataType.INTEGER,search,in);
-case INGRES:
-case SYBASE:
-  return function("locate",SQLDataType.INTEGER,in,search);
-case ORACLE:
-return function("instr",SQLDataType.INTEGER,in,search);
-case ASE:
-case SQLSERVER:
-return function("charindex",SQLDataType.INTEGER,search,in);
 default :
-return field("{position}({0} {in} {1})",SQLDataType.INTEGER,search,in);
+  return field("{position}({0} {in} {1})",SQLDataType.INTEGER,search,in);
 }
 }

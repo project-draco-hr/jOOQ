@@ -1,12 +1,9 @@
 {
 switch (configuration.dialect().family()) {
-case ORACLE:
-    return field("dbms_random.random",BigDecimal.class);
-case INGRES:
 case DERBY:
 case POSTGRES:
 case SQLITE:
-  return function("random",SQLDataType.NUMERIC);
+    return function("random",SQLDataType.NUMERIC);
 }
 return function("rand",SQLDataType.NUMERIC);
 }

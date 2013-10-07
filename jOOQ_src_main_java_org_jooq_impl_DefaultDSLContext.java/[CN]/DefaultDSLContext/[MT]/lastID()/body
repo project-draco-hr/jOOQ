@@ -23,18 +23,6 @@ case SQLITE:
 Field<BigInteger> field=field("last_insert_rowid()",BigInteger.class);
 return select(field).fetchOne(field);
 }
-case INGRES:
-{
-Field<BigInteger> field=field("last_identity()",BigInteger.class);
-return select(field).fetchOne(field);
-}
-case ASE:
-case SQLSERVER:
-case SYBASE:
-{
-Field<BigInteger> field=field("@@identity",BigInteger.class);
-return select(field).fetchOne(field);
-}
 default :
 throw new SQLDialectNotSupportedException("identity functionality not supported by " + configuration.dialect());
 }

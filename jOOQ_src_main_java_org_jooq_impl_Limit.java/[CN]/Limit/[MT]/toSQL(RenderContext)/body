@@ -22,40 +22,9 @@ case FIREBIRD:
   context.castMode(NEVER).formatSeparator().keyword("rows").sql(" ").visit(getLowerRownum().add(inline(1))).sql(" ").keyword("to").sql(" ").visit(getUpperRownum()).castMode(castMode);
   break;
 }
-case SQLSERVER:
-case SQLSERVER2012:
 case DERBY:
 {
 context.castMode(NEVER).formatSeparator().keyword("offset").sql(" ").visit(offsetOrZero).sql(" ").keyword("rows fetch next").sql(" ").visit(numberOfRows).sql(" ").keyword("rows only").castMode(castMode);
-break;
-}
-case INGRES:
-{
-context.paramType(INLINED).formatSeparator().keyword("offset").sql(" ").visit(offsetOrZero).sql(" ").keyword("fetch first").sql(" ").visit(numberOfRows).sql(" ").keyword("rows only").paramType(paramType);
-break;
-}
-case SYBASE:
-{
-context.paramType(INLINED).keyword("top").sql(" ").visit(numberOfRows).sql(" ").keyword("start at").sql(" ").visit(offsetPlusOne).paramType(paramType);
-break;
-}
-case DB2:
-case DB2_9:
-case DB2_10:
-{
-if (offset != null) {
-throw new DataAccessException("DB2 does not support offsets in FETCH FIRST ROWS ONLY clause");
-}
-context.paramType(INLINED).formatSeparator().keyword("fetch first").sql(" ").visit(numberOfRows).sql(" ").keyword("rows only").paramType(paramType);
-break;
-}
-case ASE:
-case SQLSERVER2008:
-{
-if (offset != null) {
-throw new DataAccessException("Offsets in TOP clause not supported");
-}
-context.paramType(INLINED).keyword("top").sql(" ").visit(numberOfRows).paramType(paramType);
 break;
 }
 default :

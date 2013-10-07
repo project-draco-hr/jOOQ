@@ -1,4 +1,0 @@
-Schema schema
-String name
-DataType<T> type
-Configuration configuration

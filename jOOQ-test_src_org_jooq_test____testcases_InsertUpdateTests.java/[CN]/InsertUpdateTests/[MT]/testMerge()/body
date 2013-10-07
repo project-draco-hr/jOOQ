@@ -1,7 +1,5 @@
 {
 switch (dialect()) {
-case ASE:
-case INGRES:
 case DERBY:
 case H2:
 case MARIADB:

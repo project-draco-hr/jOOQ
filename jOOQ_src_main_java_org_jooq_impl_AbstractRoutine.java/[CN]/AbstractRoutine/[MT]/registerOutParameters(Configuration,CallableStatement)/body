@@ -4,27 +4,12 @@
       int index=parameterIndexes.get(parameter);
       int sqlType=parameter.getDataType().getDataType(c).getSQLType();
 switch (c.dialect().family()) {
-case ORACLE:
-{
-          if (sqlType == Types.STRUCT) {
-            UDTRecord<?> record=Utils.newRecord((Class<? extends UDTRecord<?>>)parameter.getType()).<RuntimeException>operate(null);
-            statement.registerOutParameter(index,Types.STRUCT,record.getSQLTypeName());
-          }
- else           if (sqlType == Types.ARRAY) {
-            ArrayRecord<?> record=Utils.newArrayRecord((Class<? extends ArrayRecord<?>>)parameter.getType(),c);
-            statement.registerOutParameter(index,Types.ARRAY,record.getName());
-          }
- else {
-            statement.registerOutParameter(index,sqlType);
-          }
-          break;
-        }
 default :
 {
-        statement.registerOutParameter(index,sqlType);
-        break;
-      }
+          statement.registerOutParameter(index,sqlType);
+          break;
+        }
+    }
   }
-}
 }
 }

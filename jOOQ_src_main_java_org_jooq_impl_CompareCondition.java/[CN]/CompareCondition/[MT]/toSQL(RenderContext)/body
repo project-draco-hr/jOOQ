@@ -3,7 +3,7 @@
   Field<?> lhs=field1;
   Field<?> rhs=field2;
   Comparator op=comparator;
-  if ((op == LIKE || op == NOT_LIKE) && field1.getType() != String.class && asList(ASE,DERBY,POSTGRES).contains(family)) {
+  if ((op == LIKE || op == NOT_LIKE) && field1.getType() != String.class && asList(DERBY,POSTGRES).contains(family)) {
     lhs=lhs.cast(String.class);
   }
  else   if ((op == LIKE_IGNORE_CASE || op == NOT_LIKE_IGNORE_CASE) && POSTGRES != family) {
@@ -13,7 +13,6 @@
   }
   context.visit(lhs).sql(" ");
   boolean castRhs=false;
-  if (family == DB2 && rhs instanceof Concat)   castRhs=true;
   context.keyword(op.toSQL()).sql(" ");
   if (castRhs)   context.keyword("cast").sql("(");
   context.visit(rhs);

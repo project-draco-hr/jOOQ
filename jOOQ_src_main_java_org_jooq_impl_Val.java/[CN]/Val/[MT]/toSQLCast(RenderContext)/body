@@ -2,7 +2,7 @@
   DataType<T> dataType=getDataType(context.configuration());
   DataType<T> type=dataType.getSQLDataType();
   SQLDialect family=context.configuration().dialect().family();
-  if (value != null && getType() == BigDecimal.class && asList(CUBRID,DB2,DERBY,FIREBIRD,HSQLDB).contains(family)) {
+  if (value != null && getType() == BigDecimal.class && asList(CUBRID,DERBY,FIREBIRD,HSQLDB).contains(family)) {
     int scale=((BigDecimal)value).scale();
     int precision=scale + ((BigDecimal)value).precision();
     if (family == FIREBIRD) {
@@ -14,7 +14,7 @@
     if (value != null) {
       toSQLCast(context,DefaultDataType.getDataType(family,value.getClass()),0,0,0);
     }
- else     if (asList(INGRES,SYBASE).contains(family)) {
+ else     if (asList().contains(family)) {
       context.sql(getBindVariable(context));
     }
  else {

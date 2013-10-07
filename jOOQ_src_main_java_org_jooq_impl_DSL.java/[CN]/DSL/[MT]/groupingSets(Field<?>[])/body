@@ -1,7 +1,0 @@
-{
-  List<Field<?>>[] array=new List[fieldSets.length];
-  for (int i=0; i < fieldSets.length; i++) {
-    array[i]=Arrays.asList(fieldSets[i]);
-  }
-  return groupingSets(array);
-}

@@ -1,36 +1,12 @@
 {
 switch (context.configuration().dialect().family()) {
-case ORACLE:
-{
-      if (context.paramType() == INLINED) {
-        toSQLInline(context);
-      }
- else {
-        context.sql("?");
-      }
-      return;
-    }
-case DB2:
-{
-    context.sql(getInlineConstructor(context));
-    context.sql("()");
-    String separator="..";
-    for (    Field<?> field : value.fields()) {
-      context.sql(separator);
-      context.sql(field.getName());
-      context.sql("(");
-      context.visit(val(value.getValue(field)));
-      context.sql(")");
-    }
-    return;
-  }
 case POSTGRES:
 {
-  toSQLInline(context);
-  return;
-}
+      toSQLInline(context);
+      return;
+    }
 default :
-toSQLInline(context);
+  toSQLInline(context);
 return;
 }
 }

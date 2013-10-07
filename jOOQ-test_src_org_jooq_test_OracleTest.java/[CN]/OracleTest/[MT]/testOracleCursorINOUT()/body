@@ -1,3 +1,0 @@
-{
-  assertEquals(4,(int)create().select(f691cursorIn(f691cursorOut())).fetchOne(0,Integer.class));
-}

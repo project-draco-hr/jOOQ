@@ -40,11 +40,6 @@
   assertNull(returned.getValue(TTriggers_ID()));
   assertNull(returned.getValue(TTriggers_COUNTER()));
 switch (dialect().family()) {
-case ASE:
-case INGRES:
-case ORACLE:
-case SQLSERVER:
-case SYBASE:
 case CUBRID:
 case DERBY:
 case FIREBIRD:

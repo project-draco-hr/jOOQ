@@ -22,9 +22,6 @@
   street=invoke(address,"getStreet");
   assertEquals("Parliament Hill",invoke(street,"getStreet"));
   assertEquals("77",invoke(street,"getNo"));
-  if (TArrays_NUMBER_R() != null) {
-    assertEquals(Arrays.asList(1,2,3),invoke(invoke(street,"getFloors"),"getList"));
-  }
   if (TArrays_NUMBER() != null) {
     assertEquals(Arrays.asList(1,2,3),Arrays.asList((Object[])invoke(street,"getFloors")));
   }

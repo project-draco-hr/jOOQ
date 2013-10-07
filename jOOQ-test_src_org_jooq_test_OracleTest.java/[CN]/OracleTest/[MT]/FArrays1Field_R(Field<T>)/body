@@ -1,3 +1,0 @@
-{
-  return (Field<T>)Routines.fArrays1((Field<UNumberArrayRecord>)array);
-}

@@ -9,7 +9,7 @@
       result=TYPES_BY_TYPE[dialect.ordinal()].get(type);
     }
     if (result == null) {
-      if (EnumType.class.isAssignableFrom(type) || UDTRecord.class.isAssignableFrom(type) || ArrayRecord.class.isAssignableFrom(type)) {
+      if (EnumType.class.isAssignableFrom(type) || UDTRecord.class.isAssignableFrom(type)) {
         for (        SQLDialect d : SQLDialect.values()) {
           result=TYPES_BY_TYPE[d.ordinal()].get(type);
           if (result != null) {

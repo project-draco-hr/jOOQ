@@ -1,4 +1,0 @@
-{
-  joinPartitionBy=fields;
-  return this;
-}

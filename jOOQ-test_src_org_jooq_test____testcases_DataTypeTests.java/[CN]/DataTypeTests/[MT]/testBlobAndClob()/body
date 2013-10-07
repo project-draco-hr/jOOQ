@@ -18,14 +18,9 @@
   assertEquals(1,record.store());
   record.refresh();
 switch (dialect().family()) {
-case ASE:
-    assertEquals(1,record.getValue(T725_LOB()).length);
-  assertEquals(0,record.getValue(T725_LOB())[0]);
-break;
-case ORACLE:
 case SQLITE:
-assertNull(record.getValue(T725_LOB()));
-break;
+    assertNull(record.getValue(T725_LOB()));
+  break;
 default :
 assertEquals(0,record.getValue(T725_LOB()).length);
 break;
@@ -43,11 +38,6 @@ assertNull(record.getValue(T725_LOB()));
 record.setValue(T725_ID(),3);
 record.refresh();
 switch (dialect().family()) {
-case ASE:
-assertEquals(1,record.getValue(T725_LOB()).length);
-assertEquals(0,record.getValue(T725_LOB())[0]);
-break;
-case ORACLE:
 case SQLITE:
 assertNull(record.getValue(T725_LOB()));
 break;
@@ -63,11 +53,6 @@ assertEquals(4,result.size());
 assertEquals(BOOK_IDS,result.getValues(0));
 assertNull(result.getValue(1,1));
 switch (dialect().family()) {
-case ASE:
-assertEquals(1,result.getValue(2,T725_LOB()).length);
-assertEquals(0,result.getValue(2,T725_LOB())[0]);
-break;
-case ORACLE:
 case SQLITE:
 assertNull(result.getValue(2,T725_LOB()));
 break;

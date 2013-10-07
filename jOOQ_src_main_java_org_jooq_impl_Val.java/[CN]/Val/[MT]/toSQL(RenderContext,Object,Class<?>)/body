@@ -10,7 +10,7 @@
       context.keyword("null");
     }
  else     if (type == Boolean.class) {
-      if (asList(ASE,DB2,FIREBIRD,ORACLE,SQLSERVER,SQLITE,SYBASE).contains(family)) {
+      if (asList(FIREBIRD,SQLITE).contains(family)) {
         context.sql(((Boolean)val) ? "1" : "0");
       }
  else {
@@ -19,16 +19,13 @@
     }
  else     if (type == byte[].class) {
       byte[] binary=(byte[])val;
-      if (asList(ASE,SQLSERVER,SYBASE).contains(family)) {
+      if (asList().contains(family)) {
         context.sql("0x").sql(convertBytesToHex(binary));
       }
- else       if (family == DB2) {
-        context.keyword("blob").sql("(X'").sql(convertBytesToHex(binary)).sql("')");
-      }
- else       if (asList(DERBY,H2,HSQLDB,INGRES,MARIADB,MYSQL,SQLITE).contains(family)) {
+ else       if (asList(DERBY,H2,HSQLDB,MARIADB,MYSQL,SQLITE).contains(family)) {
         context.sql("X'").sql(convertBytesToHex(binary)).sql("'");
       }
- else       if (asList(ORACLE).contains(family)) {
+ else       if (asList().contains(family)) {
         context.keyword("hextoraw('").sql(convertBytesToHex(binary)).sql("')");
       }
  else       if (family == POSTGRES) {
@@ -45,7 +42,7 @@
       context.sql(((Number)val).toString());
     }
  else     if (type == Date.class) {
-      if (asList(ASE,SQLITE,SQLSERVER,SYBASE).contains(family)) {
+      if (asList(SQLITE).contains(family)) {
         context.sql("'").sql(escape(val)).sql("'");
       }
  else       if (family == DERBY) {
@@ -56,7 +53,7 @@
       }
     }
  else     if (type == Timestamp.class) {
-      if (asList(ASE,SQLITE,SQLSERVER,SYBASE).contains(family)) {
+      if (asList(SQLITE).contains(family)) {
         context.sql("'").sql(escape(val)).sql("'");
       }
  else       if (family == DERBY) {
@@ -70,14 +67,11 @@
       }
     }
  else     if (type == Time.class) {
-      if (asList(ASE,SQLITE,SQLSERVER,SYBASE).contains(family)) {
+      if (asList(SQLITE).contains(family)) {
         context.sql("'").sql(escape(val)).sql("'");
       }
  else       if (family == DERBY) {
         context.keyword("time").sql("('").sql(escape(val)).sql("')");
-      }
- else       if (family == ORACLE) {
-        context.keyword("timestamp").sql(" '1970-01-01 ").sql(escape(val)).sql("'");
       }
  else {
         context.keyword("time").sql(" '").sql(escape(val)).sql("'");
@@ -104,9 +98,6 @@
         }
         context.sql("]");
       }
-    }
- else     if (ArrayRecord.class.isAssignableFrom(type)) {
-      context.sql(val.toString(),true);
     }
  else     if (EnumType.class.isAssignableFrom(type)) {
       toSQL(context,((EnumType)val).getLiteral());

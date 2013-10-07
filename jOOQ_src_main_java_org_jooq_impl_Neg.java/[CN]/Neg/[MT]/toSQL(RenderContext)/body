@@ -1,10 +1,7 @@
 {
   SQLDialect family=context.configuration().dialect().family();
-  if (operator == BIT_NOT && asList(H2,HSQLDB,INGRES,ORACLE).contains(family)) {
+  if (operator == BIT_NOT && asList(H2,HSQLDB).contains(family)) {
     context.sql("(0 -").visit(field).sql(" - 1)");
-  }
- else   if (operator == BIT_NOT && family == DB2) {
-    context.keyword("bitnot(").visit(field).sql(")");
   }
  else   if (operator == BIT_NOT && family == FIREBIRD) {
     context.keyword("bin_not(").visit(field).sql(")");

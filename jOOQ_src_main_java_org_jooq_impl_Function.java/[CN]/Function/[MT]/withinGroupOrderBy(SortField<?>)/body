@@ -1,4 +1,0 @@
-{
-  withinGroupOrderBy.addAll(Arrays.asList(fields));
-  return this;
-}

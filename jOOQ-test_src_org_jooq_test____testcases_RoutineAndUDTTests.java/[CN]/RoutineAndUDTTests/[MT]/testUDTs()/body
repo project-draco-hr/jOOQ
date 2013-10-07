@@ -16,9 +16,6 @@
   assertEquals("England","" + on(a1).call("getCountry").get());
   assertEquals(null,on(a1).call("getCode").get());
   assertTrue(Arrays.equals(new byte[]{0x71,0x71},on(a1).call("getF_1323").<byte[]>get()));
-  if (TArrays_NUMBER_R() != null) {
-    assertEquals(Arrays.asList(1,2,3),invoke(invoke(street1,"getFloors"),"getList"));
-  }
   if (TArrays_NUMBER() != null) {
     assertEquals(Arrays.asList(1,2,3),Arrays.asList((Object[])invoke(street1,"getFloors")));
   }
@@ -31,9 +28,6 @@
   assertEquals("Brazil","" + on(a2).call("getCountry").get());
   assertEquals(2,on(a2).call("getCode").get());
   assertEquals(null,on(a2).call("getF_1323").<byte[]>get());
-  if (TArrays_NUMBER_R() != null) {
-    assertEquals(null,invoke(street2,"getFloors"));
-  }
   if (TArrays_NUMBER() != null) {
     assertEquals(null,invoke(street2,"getFloors"));
   }

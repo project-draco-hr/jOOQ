@@ -102,8 +102,6 @@ case POSTGRES:
 {
         return (T)rs.getObject(index);
       }
-case SQLSERVER:
-case SYBASE:
 default :
 {
       return (T)Convert.convert(rs.getString(index),UUID.class);
@@ -119,9 +117,6 @@ case POSTGRES:
 default :
 return (T)convertArray(rs.getArray(index),(Class<? extends Object[]>)type);
 }
-}
- else if (ArrayRecord.class.isAssignableFrom(type)) {
-return (T)getArrayRecord(ctx.configuration(),rs.getArray(index),(Class<? extends ArrayRecord<?>>)type);
 }
  else if (EnumType.class.isAssignableFrom(type)) {
 return getEnumType(type,rs.getString(index));

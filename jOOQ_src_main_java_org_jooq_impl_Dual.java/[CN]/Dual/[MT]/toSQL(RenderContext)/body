@@ -4,8 +4,6 @@
   }
  else {
 switch (context.configuration().dialect().family()) {
-case ASE:
-case SQLSERVER:
 case POSTGRES:
 case SQLITE:
       break;
@@ -17,15 +15,6 @@ context.literal("INFORMATION_SCHEMA").sql(".").literal("SYSTEM_USERS");
 break;
 case CUBRID:
 context.literal("db_root");
-break;
-case INGRES:
-context.keyword("(select 1 as dual) as dual");
-break;
-case DB2:
-context.literal("SYSIBM").sql(".").literal("DUAL");
-break;
-case SYBASE:
-context.literal("SYS").sql(".").literal("DUMMY");
 break;
 case DERBY:
 context.literal("SYSIBM").sql(".").literal("SYSDUMMY1");

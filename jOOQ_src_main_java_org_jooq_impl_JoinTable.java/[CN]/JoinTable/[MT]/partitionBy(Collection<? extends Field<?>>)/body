@@ -1,4 +1,0 @@
-{
-  rhsPartitionBy.addAll(fields);
-  return this;
-}

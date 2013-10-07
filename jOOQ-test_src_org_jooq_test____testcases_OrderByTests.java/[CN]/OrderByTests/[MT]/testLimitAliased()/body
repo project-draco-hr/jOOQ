@@ -1,8 +1,4 @@
 {
-  if (asList(ASE,SQLSERVER).contains(dialect().family())) {
-    log.info("SKIPPING","LIMIT .. OFFSET tests");
-    return;
-  }
   Result<Record2<Integer,String>> r1=create().select(TBook_ID().as("xx"),TBook_TITLE().as("yy")).from(TBook()).limit(1,2).fetch();
   assertEquals(2,r1.size());
   Result<Record2<Integer,String>> r2=create().select(TBook_ID().as("xx"),TBook_TITLE().as("yy")).from(TBook()).limit(param("x",1),param("y",2)).fetch();

@@ -1,5 +1,0 @@
-{
-  settings=(settings != null) ? settings : new Settings();
-  settings.withStatementType(StatementType.STATIC_STATEMENT);
-  return DSL.using(getConnection(),SQLDialect.SQLSERVER,settings);
-}

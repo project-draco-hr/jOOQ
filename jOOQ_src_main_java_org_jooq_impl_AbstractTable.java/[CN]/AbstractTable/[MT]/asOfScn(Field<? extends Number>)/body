@@ -1,3 +1,0 @@
-{
-  return new FlashbackTable<R,Number>(this,scn,null,FlashbackType.SCN);
-}

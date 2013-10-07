@@ -1,17 +1,13 @@
 {
 switch (context.configuration().dialect().family()) {
-case ORACLE:
-    context.bindValues(value);
-  break;
-case DB2:
 case POSTGRES:
 {
-  for (  Field<?> field : value.fields()) {
-    context.visit(val(value.getValue(field)));
-  }
-  break;
-}
+      for (      Field<?> field : value.fields()) {
+        context.visit(val(value.getValue(field)));
+      }
+      break;
+    }
 default :
-throw new SQLDialectNotSupportedException("UDTs not supported in dialect " + context.configuration().dialect());
+  throw new SQLDialectNotSupportedException("UDTs not supported in dialect " + context.configuration().dialect());
 }
 }

@@ -1,3 +1,0 @@
-{
-  System.out.println(Routines.fPipelinedArray1(create().configuration()));
-}

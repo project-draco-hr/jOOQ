@@ -17,7 +17,6 @@ return field("{strftime}('%S', {0})",SQLDataType.INTEGER,field);
 default :
 throw new SQLDialectNotSupportedException("DatePart not supported: " + datePart);
 }
-case DB2:
 case DERBY:
 switch (datePart) {
 case YEAR:
@@ -35,43 +34,6 @@ return function("second",SQLDataType.INTEGER,field);
 default :
 throw new SQLDialectNotSupportedException("DatePart not supported: " + datePart);
 }
-case ORACLE:
-switch (datePart) {
-case YEAR:
-return field("{to_char}({0}, 'YYYY')",SQLDataType.INTEGER,field);
-case MONTH:
-return field("{to_char}({0}, 'MM')",SQLDataType.INTEGER,field);
-case DAY:
-return field("{to_char}({0}, 'DD')",SQLDataType.INTEGER,field);
-case HOUR:
-return field("{to_char}({0}, 'HH24')",SQLDataType.INTEGER,field);
-case MINUTE:
-return field("{to_char}({0}, 'MI')",SQLDataType.INTEGER,field);
-case SECOND:
-return field("{to_char}({0}, 'SS')",SQLDataType.INTEGER,field);
-default :
-throw new SQLDialectNotSupportedException("DatePart not supported: " + datePart);
-}
-case ASE:
-case SQLSERVER:
-case SYBASE:
-switch (datePart) {
-case YEAR:
-return field("{datepart}(yy, {0})",SQLDataType.INTEGER,field);
-case MONTH:
-return field("{datepart}(mm, {0})",SQLDataType.INTEGER,field);
-case DAY:
-return field("{datepart}(dd, {0})",SQLDataType.INTEGER,field);
-case HOUR:
-return field("{datepart}(hh, {0})",SQLDataType.INTEGER,field);
-case MINUTE:
-return field("{datepart}(mi, {0})",SQLDataType.INTEGER,field);
-case SECOND:
-return field("{datepart}(ss, {0})",SQLDataType.INTEGER,field);
-default :
-throw new SQLDialectNotSupportedException("DatePart not supported: " + datePart);
-}
-case INGRES:
 case MARIADB:
 case MYSQL:
 case POSTGRES:

@@ -1,5 +1,0 @@
-{
-  assertEquals(1,create().selectOne().hint("/*+ALL_ROWS*/").fetchOne(0));
-  assertEquals(1,create().select(val(1)).hint("/*+ALL_ROWS*/").fetchOne(0));
-  assertEquals(1,create().selectDistinct(val(1)).hint("/*+ALL_ROWS*/").fetchOne(0));
-}

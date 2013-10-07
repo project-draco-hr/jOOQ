@@ -1,7 +1,5 @@
 {
 switch (context.configuration().dialect().family()) {
-case ORACLE:
-case SYBASE:
 case FIREBIRD:
 case MARIADB:
 case MYSQL:
@@ -26,10 +24,6 @@ case CUBRID:
 case DERBY:
 case HSQLDB:
 case POSTGRES:
-case SQLSERVER:
-case ASE:
-case DB2:
-case INGRES:
 default :
 {
     context.start(TABLE_VALUES).keyword("values").formatIndentLockStart();

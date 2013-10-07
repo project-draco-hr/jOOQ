@@ -1,7 +1,5 @@
 {
 switch (context.configuration().dialect()) {
-case SQLSERVER:
-case SQLSERVER2012:
 case DERBY:
 {
       context.visit(offsetOrZero);
@@ -29,43 +27,6 @@ case FIREBIRD:
 {
 context.visit(getLowerRownum());
 context.visit(getUpperRownum());
-break;
-}
-case ASE:
-case INGRES:
-{
-break;
-}
-case SYBASE:
-{
-if (!rendersParams) {
-}
- else {
-context.visit(getLowerRownum());
-context.visit(getUpperRownum());
-}
-break;
-}
-case DB2:
-case DB2_9:
-case DB2_10:
-case SQLSERVER2008:
-{
-if (offset == null && !rendersParams) {
-}
- else {
-context.visit(getLowerRownum());
-context.visit(getUpperRownum());
-}
-break;
-}
-case ORACLE:
-case ORACLE10G:
-case ORACLE11G:
-case ORACLE12C:
-{
-context.visit(getUpperRownum());
-context.visit(getLowerRownum());
 break;
 }
 default :

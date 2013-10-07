@@ -85,9 +85,6 @@ case 218:
         continue;
       }
     }
- else     if (e.getMessage().contains("doesn't exist") && getDialect() == SQLDialect.ASE) {
-      continue;
-    }
  else     if (getDialect() == CUBRID && sql.trim().startsWith("DROP")) {
       continue;
     }

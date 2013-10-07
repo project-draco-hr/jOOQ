@@ -1,7 +1,5 @@
 {
 switch (dialect().family()) {
-case ORACLE:
-case SYBASE:
 case SQLITE:
     log.info("SKIPPING","Fetch Many tests");
   return;

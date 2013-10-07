@@ -1,5 +1,0 @@
-{
-  ignoreNulls=true;
-  respectNulls=false;
-  return this;
-}

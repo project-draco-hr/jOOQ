@@ -1,4 +1,0 @@
-{
-  maxvalue=keyword("maxvalue");
-  return this;
-}

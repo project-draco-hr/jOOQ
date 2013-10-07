@@ -1,3 +1,0 @@
-{
-  throw new UnsupportedOperationException("KEEP() not supported on GROUP_CONCAT aggregate function");
-}

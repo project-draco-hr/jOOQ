@@ -1,8 +1,4 @@
 {
-  if (dialect() == INGRES) {
-    log.info("SKIPPING","Date time arithmetic tests");
-    return;
-  }
   long tsShift=-3600000;
   Record record=create().select(val(new Date(0)).add(1).as("d1"),dateAdd(new Date(0),1).as("d1a"),val(new Date(0)).add(-1).as("d2a"),val(new Date(0)).sub(1).as("d2b"),val(new Date(0)).add(new YearToMonth(1,6)).as("d3"),dateAdd(new Date(0),new YearToMonth(1,6)).as("d3a"),val(new Date(0)).add(new YearToMonth(1,6).neg()).as("d4a"),val(new Date(0)).sub(new YearToMonth(1,6)).as("d4b"),val(new Date(0)).add(new DayToSecond(2)).as("d5"),dateAdd(new Date(0),new DayToSecond(2)).as("d5a"),val(new Date(0)).add(new DayToSecond(2).neg()).as("d6a"),val(new Date(0)).sub(new DayToSecond(2)).as("d6b"),val(new Timestamp(0)).add(1).as("ts1"),timestampAdd(new Timestamp(0),1).as("ts1a"),val(new Timestamp(0)).add(-1).as("ts2a"),val(new Timestamp(0)).sub(1).as("ts2b"),val(new Timestamp(0)).add(new YearToMonth(1,6)).as("ts3"),timestampAdd(new Timestamp(0),new YearToMonth(1,6)).as("ts3a"),val(new Timestamp(0)).add(new YearToMonth(1,6).neg()).as("ts4a"),val(new Timestamp(0)).sub(new YearToMonth(1,6)).as("ts4b"),val(new Timestamp(0)).add(new DayToSecond(2)).as("ts5"),timestampAdd(new Timestamp(0),new DayToSecond(2)).as("ts5a"),val(new Timestamp(0)).add(new DayToSecond(2).neg()).as("ts6a"),val(new Timestamp(0)).sub(new DayToSecond(2)).as("ts6b"),val(new Timestamp(0)).add(new DayToSecond(2,6)).as("ts7"),val(new Timestamp(0)).add(new DayToSecond(2,6).neg()).as("ts8a"),val(new Timestamp(0)).sub(new DayToSecond(2,6)).as("ts8b"),inline("dummy")).fetchOne();
   Calendar cal;

@@ -1,8 +1,0 @@
-{
-  try {
-    return type.getConstructor(Configuration.class).newInstance(configuration);
-  }
- catch (  Exception e) {
-    throw new IllegalStateException("ArrayRecord type does not provide a constructor with signature ArrayRecord(FieldProvider) : " + type + ". Exception : "+ e.getMessage());
-  }
-}

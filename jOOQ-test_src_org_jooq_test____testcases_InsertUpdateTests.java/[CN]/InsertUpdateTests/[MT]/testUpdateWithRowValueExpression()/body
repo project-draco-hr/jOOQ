@@ -1,5 +1,5 @@
 {
-  if (asList(ASE,CUBRID,DERBY,FIREBIRD,MARIADB,MYSQL,SQLSERVER,SQLITE,SYBASE).contains(dialect().family())) {
+  if (asList(CUBRID,DERBY,FIREBIRD,MARIADB,MYSQL,SQLITE).contains(dialect().family())) {
     log.info("SKIPPING","UPDATE with row value expression tests");
     return;
   }

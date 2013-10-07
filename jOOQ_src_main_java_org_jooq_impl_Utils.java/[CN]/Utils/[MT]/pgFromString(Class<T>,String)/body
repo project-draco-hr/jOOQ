@@ -69,8 +69,6 @@
  else   if (type.isArray()) {
     return (T)pgNewArray(type,string);
   }
- else   if (ArrayRecord.class.isAssignableFrom(type)) {
-  }
  else   if (EnumType.class.isAssignableFrom(type)) {
     return getEnumType(type,string);
   }

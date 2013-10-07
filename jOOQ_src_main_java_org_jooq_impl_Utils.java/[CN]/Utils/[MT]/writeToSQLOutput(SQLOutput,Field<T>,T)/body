@@ -90,10 +90,6 @@
  else   if (type == UUID.class) {
     stream.writeString(value.toString());
   }
- else   if (ArrayRecord.class.isAssignableFrom(type)) {
-    ArrayRecord<?> arrayRecord=(ArrayRecord<?>)value;
-    stream.writeArray(on(localConnection()).call("createARRAY",arrayRecord.getName(),arrayRecord.get()).<Array>get());
-  }
  else   if (EnumType.class.isAssignableFrom(type)) {
     stream.writeString(((EnumType)value).getLiteral());
   }

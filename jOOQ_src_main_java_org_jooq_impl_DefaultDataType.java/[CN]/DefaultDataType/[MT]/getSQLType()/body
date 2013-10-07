@@ -50,9 +50,6 @@
  else   if (type.isArray()) {
     return Types.ARRAY;
   }
- else   if (ArrayRecord.class.isAssignableFrom(type)) {
-    return Types.ARRAY;
-  }
  else   if (EnumType.class.isAssignableFrom(type)) {
     return Types.VARCHAR;
   }
@@ -61,7 +58,6 @@
   }
  else   if (Result.class.isAssignableFrom(type)) {
 switch (dialect.family()) {
-case ORACLE:
 case H2:
       return -10;
 case POSTGRES:

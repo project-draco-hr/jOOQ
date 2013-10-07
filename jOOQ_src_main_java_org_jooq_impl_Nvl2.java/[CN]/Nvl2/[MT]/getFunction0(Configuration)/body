@@ -1,7 +1,5 @@
 {
 switch (configuration.dialect().family()) {
-case INGRES:
-case ORACLE:
 case H2:
 case HSQLDB:
     return function("nvl2",getDataType(),getArguments());

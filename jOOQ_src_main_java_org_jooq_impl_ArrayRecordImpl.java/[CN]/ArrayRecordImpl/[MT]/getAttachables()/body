@@ -1,9 +1,0 @@
-{
-  List<Attachable> result=new ArrayList<Attachable>();
-  if (Attachable.class.isAssignableFrom(type.getType())) {
-    for (    T element : get()) {
-      result.add((Attachable)element);
-    }
-  }
-  return result;
-}

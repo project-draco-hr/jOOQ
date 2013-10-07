@@ -1,8 +1,0 @@
-{
-  if (list == null) {
-    array=null;
-  }
- else {
-    array=list.toArray((T[])Array.newInstance(type.getType(),0));
-  }
-}

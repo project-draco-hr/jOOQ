@@ -12,10 +12,6 @@ case H2:
 {
       throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY UPDATE clause cannot be simulated for " + context.configuration().dialect());
     }
-case DB2:
-case ORACLE:
-case SQLSERVER:
-case SYBASE:
 case HSQLDB:
 {
     context.visit(toMerge(context.configuration()));
@@ -42,10 +38,6 @@ case H2:
 {
 throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY IGNORE clause cannot be simulated for " + context.configuration().dialect());
 }
-case DB2:
-case ORACLE:
-case SQLSERVER:
-case SYBASE:
 case HSQLDB:
 {
 context.visit(toMerge(context.configuration()));

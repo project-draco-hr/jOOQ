@@ -1,3 +1,0 @@
-{
-  return keepDenseRankFirstOrderBy(Arrays.asList(fields));
-}

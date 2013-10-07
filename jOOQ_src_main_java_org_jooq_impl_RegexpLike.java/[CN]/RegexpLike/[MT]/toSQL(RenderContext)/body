@@ -1,6 +1,5 @@
 {
 switch (context.configuration().dialect().family()) {
-case SYBASE:
 case CUBRID:
 case H2:
 case MARIADB:
@@ -20,15 +19,6 @@ case POSTGRES:
   context.visit(DSL.condition("{0} ~ {1}",search,pattern));
   break;
 }
-case ORACLE:
-{
-context.visit(DSL.condition("{regexp_like}({0}, {1})",search,pattern));
-break;
-}
-case ASE:
-case DB2:
-case INGRES:
-case SQLSERVER:
 case DERBY:
 case FIREBIRD:
 default :

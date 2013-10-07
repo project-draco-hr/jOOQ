@@ -37,9 +37,6 @@
   assertEquals(id,book2.getValue(TBook_ID()));
   assertEquals("1985",book1.getValue(TBook_TITLE()));
   assertEquals("1985",book2.getValue(TBook_TITLE()));
-  if (dialect() == SQLDialect.ASE) {
-    create().truncate(table("t_book_to_book_store")).execute();
-  }
   assertEquals(1,book1.delete());
   assertEquals(0,book1.delete());
   assertEquals(0,book2.delete());

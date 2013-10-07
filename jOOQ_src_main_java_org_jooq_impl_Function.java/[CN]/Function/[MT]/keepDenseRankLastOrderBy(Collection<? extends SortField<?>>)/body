@@ -1,4 +1,0 @@
-{
-  keepDenseRankOrderBy.addAll(fields);
-  return this;
-}

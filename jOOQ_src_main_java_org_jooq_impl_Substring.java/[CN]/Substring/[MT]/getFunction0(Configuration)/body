@@ -10,30 +10,9 @@ case FIREBIRD:
         return field("{substring}({0} {from} {1} {for} {2})",SQLDataType.VARCHAR,getArguments());
       }
     }
-case ASE:
-case SQLSERVER:
-{
-    if (getArguments().length == 2) {
-      return function(functionName,SQLDataType.VARCHAR,getArguments()[0],getArguments()[1],inline(Integer.MAX_VALUE));
-    }
- else {
-      break;
-    }
-  }
-case INGRES:
-{
-  if (getArguments().length == 2) {
-    return field("{substring}({0}, {cast}({1} {as integer}))",SQLDataType.VARCHAR,getArguments());
-  }
- else {
-    return field("{substring}({0}, {cast}({1} {as integer}), {cast}({2} {as integer}))",SQLDataType.VARCHAR,getArguments());
-  }
-}
-case DB2:
-case ORACLE:
 case DERBY:
 case SQLITE:
-functionName="substr";
+  functionName="substr";
 break;
 }
 return function(functionName,SQLDataType.VARCHAR,getArguments());

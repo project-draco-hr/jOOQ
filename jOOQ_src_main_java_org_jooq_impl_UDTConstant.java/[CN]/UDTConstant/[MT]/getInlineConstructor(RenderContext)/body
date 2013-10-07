@@ -2,8 +2,6 @@
 switch (context.configuration().dialect().family()) {
 case POSTGRES:
     return "ROW";
-case ORACLE:
-case DB2:
 default :
 {
     UDT<?> udt=value.getUDT();

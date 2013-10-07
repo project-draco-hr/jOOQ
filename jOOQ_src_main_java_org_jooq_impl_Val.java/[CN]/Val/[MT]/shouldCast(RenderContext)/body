@@ -2,13 +2,11 @@
   if (!isInline(context)) {
     if (!(value instanceof EnumType)) {
 switch (context.configuration().dialect().family()) {
-case DB2:
 case DERBY:
 case FIREBIRD:
 case H2:
 case HSQLDB:
 case CUBRID:
-case SYBASE:
 case POSTGRES:
 {
           return true;
@@ -18,7 +16,6 @@ case POSTGRES:
 }
 if (getDataType().isInterval()) {
 switch (context.configuration().dialect().family()) {
-case ORACLE:
 case POSTGRES:
     return true;
 }

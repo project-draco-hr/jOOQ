@@ -1,5 +1,5 @@
 {
-  if (!asList(CUBRID,POSTGRES,ORACLE).contains(dialect().family()))   return;
+  if (!asList(CUBRID,POSTGRES).contains(dialect().family()))   return;
   List<Integer> expected=asList(0,1,2,3);
   Table<Record1<Integer>> series=generateSeries(0,3);
   Table<Record1<Integer>> t=series.as("t","a");

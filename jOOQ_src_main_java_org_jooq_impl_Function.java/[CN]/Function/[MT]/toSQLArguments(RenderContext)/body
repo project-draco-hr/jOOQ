@@ -8,18 +8,12 @@
     context.visit(arguments);
   }
   if (ignoreNulls) {
-    if (context.configuration().dialect().family() == SQLDialect.DB2) {
-      context.sql(", 'IGNORE NULLS'");
-    }
- else {
+{
       context.sql(" ").keyword("ignore nulls");
     }
   }
  else   if (respectNulls) {
-    if (context.configuration().dialect().family() == SQLDialect.DB2) {
-      context.sql(", 'RESPECT NULLS'");
-    }
- else {
+{
       context.sql(" ").keyword("respect nulls");
     }
   }

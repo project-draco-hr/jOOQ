@@ -1,8 +1,5 @@
 {
 switch (dialect().family()) {
-case DB2:
-case ORACLE:
-case SQLSERVER:
 case DERBY:
 case FIREBIRD:
 case H2:

@@ -1,3 +1,0 @@
-{
-  assertEquals(4,create().selectFrom(T_BOOK).option("OPTION(OPTIMIZE FOR UNKNOWN)").fetch().size());
-}

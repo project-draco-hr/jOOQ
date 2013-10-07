@@ -1,4 +1,0 @@
-{
-  this.on=(Field<T>)field;
-  return (Pivot<Z>)this;
-}

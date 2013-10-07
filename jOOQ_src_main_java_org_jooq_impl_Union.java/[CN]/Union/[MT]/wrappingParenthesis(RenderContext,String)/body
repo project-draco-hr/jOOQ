@@ -1,6 +1,5 @@
 {
 switch (context.configuration().dialect()) {
-case ASE:
 case DERBY:
 case FIREBIRD:
 case SQLITE:

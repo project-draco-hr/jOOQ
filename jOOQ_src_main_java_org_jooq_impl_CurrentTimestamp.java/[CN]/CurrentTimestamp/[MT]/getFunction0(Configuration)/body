@@ -1,20 +1,11 @@
 {
 switch (configuration.dialect().family()) {
-case ASE:
-    return function("current_bigdatetime",SQLDataType.TIMESTAMP);
-case ORACLE:
-  return field("sysdate",SQLDataType.TIMESTAMP);
-case SYBASE:
-return field("current timestamp",SQLDataType.TIMESTAMP);
-case DB2:
-case INGRES:
-case SQLSERVER:
 case DERBY:
 case FIREBIRD:
 case HSQLDB:
 case POSTGRES:
 case SQLITE:
-return field("current_timestamp",SQLDataType.TIMESTAMP);
+    return field("current_timestamp",SQLDataType.TIMESTAMP);
 }
 return function("current_timestamp",SQLDataType.TIMESTAMP);
 }

@@ -1,21 +1,17 @@
 {
 switch (configuration.dialect().family()) {
-case ORACLE:
-{
-      return function("decode",getDataType(),getArguments());
-    }
 default :
 {
-    CaseConditionStep<Z> when=DSL.decode().when(field.isNotDistinctFrom(search),result);
-    for (int i=0; i < more.length; i+=2) {
-      if (i + 1 < more.length) {
-        when=when.when(field.isNotDistinctFrom((Field<T>)more[i]),(Field<Z>)more[i + 1]);
-      }
+      CaseConditionStep<Z> when=DSL.decode().when(field.isNotDistinctFrom(search),result);
+      for (int i=0; i < more.length; i+=2) {
+        if (i + 1 < more.length) {
+          when=when.when(field.isNotDistinctFrom((Field<T>)more[i]),(Field<Z>)more[i + 1]);
+        }
  else {
-        return when.otherwise((Field<Z>)more[i]);
+          return when.otherwise((Field<Z>)more[i]);
+        }
       }
+      return when;
     }
-    return when;
-  }
 }
 }

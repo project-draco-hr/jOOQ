@@ -13,12 +13,9 @@
 switch (dialect()) {
 case HSQLDB:
 case DERBY:
-case INGRES:
-    log.info("SKIPPING","Sequence CURRVAL tests");
-  break;
 default :
-currval=sequence.currval();
-assertEquals("5","" + create().select(currval).fetchOne(currval));
+    currval=sequence.currval();
+  assertEquals("5","" + create().select(currval).fetchOne(currval));
 assertEquals("5","" + create().select(currval).fetchOne(currval));
 assertEquals(5,create().currval(sequence).intValue());
 assertEquals(5,create().currval(sequence).intValue());

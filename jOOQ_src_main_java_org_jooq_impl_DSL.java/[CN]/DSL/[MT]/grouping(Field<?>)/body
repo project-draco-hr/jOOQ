@@ -1,3 +1,0 @@
-{
-  return function("grouping",Integer.class,nullSafe(field));
-}

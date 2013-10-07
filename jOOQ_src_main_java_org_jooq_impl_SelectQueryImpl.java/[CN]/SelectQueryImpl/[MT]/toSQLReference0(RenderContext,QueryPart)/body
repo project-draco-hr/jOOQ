@@ -7,109 +7,84 @@
   if (distinct) {
     context.keyword("distinct").sql(" ");
   }
-switch (dialect.family()) {
-case ASE:
-case SQLSERVER:
-{
-      if (asList(ASE,SQLSERVER2008).contains(dialect) && getLimit().isApplicable() && getLimit().offsetZero()&& !getLimit().rendersParams()) {
-        context.visit(getLimit()).sql(" ");
-      }
- else       if (dialect.family() == SQLSERVER && context.subquery() && !getOrderBy().isEmpty()) {
-        if (dialect == SQLSERVER2008 || !getLimit().isApplicable()) {
-          context.keyword("top").sql(" 100 ").keyword("percent").sql(" ");
-        }
-      }
-      break;
+  context.declareFields(true);
+  if (context.subquery() && dialect == H2 && context.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY) != null) {
+    Object data=context.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY);
+    try {
+      context.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY,null);
+      context.sql("(").visit(getSelect1()).sql(")");
     }
-case SYBASE:
-{
-    if (getLimit().isApplicable() && !getLimit().rendersParams()) {
-      context.visit(getLimit()).sql(" ");
-    }
-    break;
-  }
-case INGRES:
-{
-}
-}
-context.declareFields(true);
-if (context.subquery() && dialect == H2 && context.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY) != null) {
-Object data=context.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY);
-try {
-context.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY,null);
-context.sql("(").visit(getSelect1()).sql(")");
-}
   finally {
-context.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY,data);
-}
-}
+      context.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY,data);
+    }
+  }
  else {
-context.visit(getSelect1());
-}
-if (limitOffsetRownumber != null) {
-ParamType paramType=context.paramType();
-context.paramType(INLINED).sql(",").formatIndentStart().formatSeparator().visit(limitOffsetRownumber).formatIndentEnd().paramType(paramType);
-}
-context.declareFields(false).end(SELECT_SELECT);
-context.start(SELECT_FROM).declareTables(true);
-DefaultConfiguration c=new DefaultConfiguration(context.configuration().dialect());
-String renderedFrom=new DefaultRenderContext(c).render(getFrom());
-if (!renderedFrom.isEmpty()) {
-context.formatSeparator().keyword("from").sql(" ").visit(getFrom());
-if (grouping && getGroupBy().isEmpty() && asList(ASE,INGRES).contains(dialect)) {
-context.sql(", (select 1 as x) as empty_grouping_dummy_table");
-}
-}
-context.declareTables(false).end(SELECT_FROM);
-context.start(SELECT_WHERE);
-if (!(getWhere().getWhere() instanceof TrueCondition)) {
-context.formatSeparator().keyword("where").sql(" ").visit(getWhere());
-}
-context.end(SELECT_WHERE);
-context.start(SELECT_START_WITH);
-if (!(getConnectByStartWith().getWhere() instanceof TrueCondition)) {
-context.formatSeparator().keyword("start with").sql(" ").visit(getConnectByStartWith());
-}
-context.end(SELECT_START_WITH);
-context.start(SELECT_CONNECT_BY);
-if (!(getConnectBy().getWhere() instanceof TrueCondition)) {
-context.formatSeparator().keyword("connect by");
-if (connectByNoCycle) {
-context.sql(" ").keyword("nocycle");
-}
-context.sql(" ").visit(getConnectBy());
-}
-context.end(SELECT_CONNECT_BY);
-context.start(SELECT_GROUP_BY);
-if (grouping) {
-context.formatSeparator().keyword("group by").sql(" ");
-if (getGroupBy().isEmpty()) {
-if (asList(ASE,INGRES).contains(dialect)) {
-  context.sql("empty_grouping_dummy_table.x");
-}
- else if (asList(CUBRID,DERBY,FIREBIRD,HSQLDB,MARIADB,MYSQL,POSTGRES,SQLITE).contains(dialect)) {
-  context.sql("1");
-}
+    context.visit(getSelect1());
+  }
+  if (limitOffsetRownumber != null) {
+    ParamType paramType=context.paramType();
+    context.paramType(INLINED).sql(",").formatIndentStart().formatSeparator().visit(limitOffsetRownumber).formatIndentEnd().paramType(paramType);
+  }
+  context.declareFields(false).end(SELECT_SELECT);
+  context.start(SELECT_FROM).declareTables(true);
+  DefaultConfiguration c=new DefaultConfiguration(context.configuration().dialect());
+  String renderedFrom=new DefaultRenderContext(c).render(getFrom());
+  if (!renderedFrom.isEmpty()) {
+    context.formatSeparator().keyword("from").sql(" ").visit(getFrom());
+    if (grouping && getGroupBy().isEmpty() && asList().contains(dialect)) {
+      context.sql(", (select 1 as x) as empty_grouping_dummy_table");
+    }
+  }
+  context.declareTables(false).end(SELECT_FROM);
+  context.start(SELECT_WHERE);
+  if (!(getWhere().getWhere() instanceof TrueCondition)) {
+    context.formatSeparator().keyword("where").sql(" ").visit(getWhere());
+  }
+  context.end(SELECT_WHERE);
+  context.start(SELECT_START_WITH);
+  if (!(getConnectByStartWith().getWhere() instanceof TrueCondition)) {
+    context.formatSeparator().keyword("start with").sql(" ").visit(getConnectByStartWith());
+  }
+  context.end(SELECT_START_WITH);
+  context.start(SELECT_CONNECT_BY);
+  if (!(getConnectBy().getWhere() instanceof TrueCondition)) {
+    context.formatSeparator().keyword("connect by");
+    if (connectByNoCycle) {
+      context.sql(" ").keyword("nocycle");
+    }
+    context.sql(" ").visit(getConnectBy());
+  }
+  context.end(SELECT_CONNECT_BY);
+  context.start(SELECT_GROUP_BY);
+  if (grouping) {
+    context.formatSeparator().keyword("group by").sql(" ");
+    if (getGroupBy().isEmpty()) {
+      if (asList().contains(dialect)) {
+        context.sql("empty_grouping_dummy_table.x");
+      }
+ else       if (asList(CUBRID,DERBY,FIREBIRD,HSQLDB,MARIADB,MYSQL,POSTGRES,SQLITE).contains(dialect)) {
+        context.sql("1");
+      }
  else {
-  context.sql("()");
-}
-}
+        context.sql("()");
+      }
+    }
  else {
-context.visit(getGroupBy());
-}
-}
-context.end(SELECT_GROUP_BY);
-context.start(SELECT_HAVING);
-if (!(getHaving().getWhere() instanceof TrueCondition)) {
-context.formatSeparator().keyword("having").sql(" ").visit(getHaving());
-}
-context.end(SELECT_HAVING);
-context.start(SELECT_ORDER_BY);
-if (!getOrderBy().isEmpty()) {
-context.formatSeparator().keyword("order").sql(orderBySiblings ? " " : "").keyword(orderBySiblings ? "siblings" : "").sql(" ").keyword("by").sql(" ").visit(getOrderBy());
-}
- else if (getLimit().isApplicable() && asList(SQLSERVER,SQLSERVER2012).contains(dialect)) {
-context.formatSeparator().keyword("order by").sql(" 1");
-}
-context.end(SELECT_ORDER_BY);
+      context.visit(getGroupBy());
+    }
+  }
+  context.end(SELECT_GROUP_BY);
+  context.start(SELECT_HAVING);
+  if (!(getHaving().getWhere() instanceof TrueCondition)) {
+    context.formatSeparator().keyword("having").sql(" ").visit(getHaving());
+  }
+  context.end(SELECT_HAVING);
+  context.start(SELECT_ORDER_BY);
+  if (!getOrderBy().isEmpty()) {
+    context.formatSeparator().keyword("order").sql(orderBySiblings ? " " : "").keyword(orderBySiblings ? "siblings" : "").sql(" ").keyword("by").sql(" ").visit(getOrderBy());
+  }
+ else   if (getLimit().isApplicable() && asList().contains(dialect)) {
+    context.formatSeparator().keyword("order by").sql(" 1");
+  }
+  context.end(SELECT_ORDER_BY);
 }

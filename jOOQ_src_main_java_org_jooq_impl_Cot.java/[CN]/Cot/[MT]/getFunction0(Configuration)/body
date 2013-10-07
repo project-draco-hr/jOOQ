@@ -1,9 +1,6 @@
 {
 switch (configuration.dialect().family()) {
-case INGRES:
-case ORACLE:
-    return DSL.cos(argument).div(DSL.sin(argument));
 default :
-  return function("cot",SQLDataType.NUMERIC,argument);
+    return function("cot",SQLDataType.NUMERIC,argument);
 }
 }

@@ -1,3 +1,0 @@
-{
-  return new DataType<?>[]{SQLServerDataType.BIGINT,SQLServerDataType.BINARY,SQLServerDataType.BIT,SQLServerDataType.CHAR,SQLServerDataType.DATE,SQLServerDataType.DATETIME,SQLServerDataType.DECIMAL,SQLServerDataType.FLOAT,SQLServerDataType.IMAGE,SQLServerDataType.INT,SQLServerDataType.MONEY,SQLServerDataType.NCHAR,SQLServerDataType.NTEXT,SQLServerDataType.NUMERIC,SQLServerDataType.NVARCHAR,SQLServerDataType.REAL,SQLServerDataType.SMALLDATETIME,SQLServerDataType.SMALLINT,SQLServerDataType.SMALLMONEY,SQLServerDataType.TEXT,SQLServerDataType.TINYINT,SQLServerDataType.VARBINARY,SQLServerDataType.VARCHAR};
-}

@@ -1,7 +1,5 @@
 {
 switch (dialect()) {
-case ASE:
-case INGRES:
 case DERBY:
 case FIREBIRD:
 case H2:
@@ -22,24 +20,4 @@ if (asList(MARIADB,MYSQL).contains(dialect())) {
 log.info("SKIPPING","CUBE and GROUPING SETS tests");
 return;
 }
-Field<Integer> groupingId=groupingId(TBook_ID(),TBook_AUTHOR_ID());
-if (asList(DB2,SYBASE).contains(dialect())) groupingId=one();
-Result<Record4<Integer,Integer,Integer,Integer>> result2=create().select(TBook_ID(),TBook_AUTHOR_ID(),grouping(TBook_ID()),groupingId).from(TBook()).groupBy(rollup(TBook_ID(),TBook_AUTHOR_ID())).orderBy(TBook_ID().asc().nullsFirst(),TBook_AUTHOR_ID().asc().nullsFirst()).fetch();
-assertEquals(9,result2.size());
-assertEquals(Arrays.asList(null,1,1,2,2,3,3,4,4),result2.getValues(0));
-assertEquals(Arrays.asList(null,null,1,null,1,null,2,null,2),result2.getValues(1));
-assertEquals(Arrays.asList(1,0,0,0,0,0,0,0,0),result2.getValues(2));
-if (!asList(DB2,SYBASE).contains(dialect())) assertEquals(Arrays.asList(3,1,0,1,0,1,0,1,0),result2.getValues(3));
-Result<Record4<Integer,Integer,Integer,Integer>> result3=create().select(TBook_ID(),TBook_AUTHOR_ID(),grouping(TBook_ID()),groupingId).from(TBook()).groupBy(cube(TBook_ID(),TBook_AUTHOR_ID())).orderBy(TBook_ID().asc().nullsFirst(),TBook_AUTHOR_ID().asc().nullsFirst()).fetch();
-assertEquals(11,result3.size());
-assertEquals(Arrays.asList(null,null,null,1,1,2,2,3,3,4,4),result3.getValues(0));
-assertEquals(Arrays.asList(null,1,2,null,1,null,1,null,2,null,2),result3.getValues(1));
-assertEquals(Arrays.asList(1,1,1,0,0,0,0,0,0,0,0),result3.getValues(2));
-if (!asList(DB2,SYBASE).contains(dialect())) assertEquals(Arrays.asList(3,2,2,1,0,1,0,1,0,1,0),result3.getValues(3));
-Result<Record4<Integer,Integer,Integer,Integer>> result4=create().select(TBook_ID(),TBook_AUTHOR_ID(),grouping(TBook_ID()),groupingId).from(TBook()).groupBy(groupingSets(new Field<?>[]{TBook_AUTHOR_ID(),TBook_ID()},new Field<?>[]{TBook_AUTHOR_ID(),TBook_LANGUAGE_ID()},new Field<?>[0],new Field<?>[0])).orderBy(TBook_ID().asc().nullsFirst(),TBook_AUTHOR_ID().asc().nullsFirst()).fetch();
-assertEquals(9,result4.size());
-assertEquals(Arrays.asList(null,null,null,null,null,1,2,3,4),result4.getValues(0));
-assertEquals(Arrays.asList(null,null,1,2,2,1,1,2,2),result4.getValues(1));
-assertEquals(Arrays.asList(1,1,1,1,1,0,0,0,0),result4.getValues(2));
-if (!asList(DB2,SYBASE).contains(dialect())) assertEquals(Arrays.asList(3,3,2,2,2,0,0,0,0),result4.getValues(3));
 }

@@ -1,3 +1,0 @@
-{
-  return UStreetType.U_STREET_TYPE.getRecordType();
-}

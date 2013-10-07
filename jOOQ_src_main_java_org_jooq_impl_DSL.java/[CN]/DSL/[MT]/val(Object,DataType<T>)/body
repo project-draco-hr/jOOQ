@@ -2,9 +2,6 @@
   if (value instanceof UDTRecord) {
     return new UDTConstant((UDTRecord)value);
   }
- else   if (value instanceof ArrayRecord) {
-    return new ArrayConstant((ArrayRecord)value);
-  }
  else {
     T converted=type.convert(value);
     return new Val<T>(converted,mostSpecific(converted,type));

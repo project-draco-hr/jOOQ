@@ -18,14 +18,6 @@ case MARIADB:
 case MYSQL:
       sql("`").sql(StringUtils.replace(literal,"`","``")).sql("`");
     break;
-case ASE:
-case SQLSERVER:
-case SYBASE:
-  sql("[").sql(StringUtils.replace(literal,"]","]]")).sql("]");
-break;
-case DB2:
-case INGRES:
-case ORACLE:
 case CUBRID:
 case DERBY:
 case FIREBIRD:
@@ -34,7 +26,7 @@ case HSQLDB:
 case POSTGRES:
 case SQLITE:
 default :
-sql('"').sql(StringUtils.replace(literal,"\"","\"\"")).sql('"');
+  sql('"').sql(StringUtils.replace(literal,"\"","\"\"")).sql('"');
 break;
 }
 }

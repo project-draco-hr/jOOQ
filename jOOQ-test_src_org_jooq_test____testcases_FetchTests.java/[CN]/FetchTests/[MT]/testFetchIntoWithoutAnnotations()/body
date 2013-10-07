@@ -1,7 +1,5 @@
 {
 switch (dialect()) {
-case ASE:
-case INGRES:
 case CUBRID:
 case POSTGRES:
     log.info("SKIPPING","fetchInto() tests");

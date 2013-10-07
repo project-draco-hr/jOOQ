@@ -1,6 +1,5 @@
 {
 switch (dialect().family()) {
-case ORACLE:
 case H2:
 case HSQLDB:
 case POSTGRES:
@@ -18,12 +17,7 @@ Result<Record> bFromCursor=invoke(cRoutines(),"fGetOneCursor",create().configura
 assertNotNull(bFromCursor);
 assertTrue(bFromCursor.isEmpty());
 assertEquals(0,bFromCursor.size());
-if (TArrays_STRING_R() != null) {
-  ArrayRecord<Integer> i=newNUMBER_R();
-  i.set(1,2,4,6);
-  integerArray=i;
-}
- else if (TArrays_STRING() != null) {
+if (TArrays_STRING() != null) {
   integerArray=new Integer[]{1,2,4,6};
 }
 bFromCursor=invoke(cRoutines(),"fGetOneCursor",create().configuration(),integerArray);
@@ -74,12 +68,7 @@ assertEquals("0","" + invoke(result,"getTotal"));
 Result<Record> bFromCursor=invoke(result,"getBooks");
 assertTrue(bFromCursor.isEmpty());
 assertEquals(0,bFromCursor.size());
-if (TArrays_STRING_R() != null) {
-ArrayRecord<Integer> i=newNUMBER_R();
-i.set(1,2,4,6);
-integerArray=i;
-}
- else if (TArrays_STRING() != null) {
+if (TArrays_STRING() != null) {
 integerArray=new Integer[]{1,2,4,6};
 }
 result=invoke(cRoutines(),"pGetOneCursor",create().configuration(),integerArray);

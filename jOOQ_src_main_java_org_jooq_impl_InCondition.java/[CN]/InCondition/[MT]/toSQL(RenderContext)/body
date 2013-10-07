@@ -2,9 +2,6 @@
   List<Field<?>> list=Arrays.asList(values);
   if (list.size() > IN_LIMIT) {
 switch (context.configuration().dialect().family()) {
-case INGRES:
-case ORACLE:
-case SQLSERVER:
 case FIREBIRD:
 {
         context.sql("(").formatIndentStart().formatNewLine();

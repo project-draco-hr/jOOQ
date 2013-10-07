@@ -1,6 +1,5 @@
 {
   boolean unqualified=false;
-  if (dialect().family() == SQLDialect.ORACLE)   unqualified=true;
   Result<Record2<String,String>> result=create().select(TAuthor_LAST_NAME(),TBook_TITLE()).from(TBook()).naturalJoin(TAuthor()).orderBy(unqualified ? field("id") : TBook_ID()).fetch();
   assertEquals(2,result.size());
   assertEquals("1984",result.getValue(0,TBook_TITLE()));

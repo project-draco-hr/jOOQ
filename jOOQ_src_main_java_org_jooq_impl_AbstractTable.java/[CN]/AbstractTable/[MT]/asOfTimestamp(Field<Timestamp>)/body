@@ -1,3 +1,0 @@
-{
-  return new FlashbackTable<R,Timestamp>(this,timestamp,null,FlashbackType.TIMESTAMP);
-}

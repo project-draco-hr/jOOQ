@@ -1,6 +1,6 @@
 {
   if (!using.isEmpty()) {
-    if (asList(ASE,CUBRID,DB2,H2,SQLSERVER,SYBASE).contains(context.configuration().dialect().family())) {
+    if (asList(CUBRID,H2).contains(context.configuration().dialect().family())) {
       boolean first=true;
       for (      Field<?> field : using) {
         context.formatSeparator();

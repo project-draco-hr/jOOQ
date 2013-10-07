@@ -44,7 +44,6 @@
   assertEquals(0,loader.ignored());
   assertEquals(0,loader.errors().size());
   boolean oracle=false;
-  if (dialect().family() == ORACLE)   oracle=true;
   assertEquals(2,(int)create().select(count).from(TAuthor()).where(TAuthor_ID().in(3,4)).and(TAuthor_LAST_NAME().in("Hesse","Frisch")).and(oracle ? TAuthor_FIRST_NAME().isNull() : TAuthor_FIRST_NAME().equal("")).fetchOne(count));
   assertEquals(2,create().delete(TAuthor()).where(TAuthor_ID().in(3,4)).execute());
   loader=create().loadInto(TAuthor()).loadCSV("\"ID\",ignore,\"First Qualifier\",\"Last Qualifier\"\r" + "5,asdf,{null},Hesse\n" + "6,asdf,\"\",Frisch").fields(TAuthor_ID(),null,TAuthor_FIRST_NAME(),TAuthor_LAST_NAME()).nullString("{null}").execute();
@@ -62,8 +61,6 @@
   assertEquals(oracle ? null : "",result.getValue(1,TAuthor_FIRST_NAME()));
   assertEquals(2,create().delete(TAuthor()).where(TAuthor_ID().in(5,6)).execute());
 switch (dialect()) {
-case ASE:
-case INGRES:
 case DERBY:
 case H2:
 case POSTGRES:

@@ -1,8 +1,5 @@
 {
 switch (configuration.dialect().family()) {
-case ASE:
-case SQLSERVER:
-case SYBASE:
 case FIREBIRD:
 {
       if (operator == ADD) {
@@ -12,7 +9,6 @@ case FIREBIRD:
         return field("{dateadd}(day, {0}, {1})",getDataType(),rhsAsNumber().neg(),lhs);
       }
     }
-case DB2:
 case HSQLDB:
 {
     if (operator == ADD) {
@@ -44,15 +40,6 @@ if (operator == ADD) {
   return field("{date_add}({0}, {interval} {1} {day})",getDataType(),lhs,rhsAsNumber().neg());
 }
 }
-case INGRES:
-{
-if (operator == ADD) {
-return lhs.add(field("{date}({0} || ' days')",Object.class,rhsAsNumber()));
-}
- else {
-return lhs.sub(field("{date}({0} || ' days')",Object.class,rhsAsNumber()));
-}
-}
 case POSTGRES:
 {
 if (operator == ADD) {
@@ -69,7 +56,6 @@ return field("{datetime}({0}, {1})",getDataType(),lhs,rhsAsNumber().concat(inlin
  else {
 return field("{datetime}({0}, {1})",getDataType(),lhs,rhsAsNumber().neg().concat(inline(" day")));
 }
-case ORACLE:
 case H2:
 default :
 return new DefaultExpression();

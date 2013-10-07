@@ -11,30 +11,23 @@ case DERBY:
         return DSL.decode().when(mul.sub(DSL.floor(mul)).lessThan((T)Double.valueOf(0.5)),DSL.floor(mul).div(factor)).otherwise(DSL.ceil(mul).div(factor));
       }
     }
-case ASE:
-case INGRES:
-case SQLSERVER:
-case SYBASE:
-{
-    return function("round",getDataType(),argument,val(decimals));
-  }
 case POSTGRES:
+{
+    if (decimals == 0) {
+      return function("round",getDataType(),argument);
+    }
+ else {
+      return function("round",getDataType(),argument.cast(BigDecimal.class),val(decimals));
+    }
+  }
+default :
 {
   if (decimals == 0) {
     return function("round",getDataType(),argument);
   }
  else {
-    return function("round",getDataType(),argument.cast(BigDecimal.class),val(decimals));
+    return function("round",getDataType(),argument,val(decimals));
   }
-}
-default :
-{
-if (decimals == 0) {
-  return function("round",getDataType(),argument);
-}
- else {
-  return function("round",getDataType(),argument,val(decimals));
-}
 }
 }
 }

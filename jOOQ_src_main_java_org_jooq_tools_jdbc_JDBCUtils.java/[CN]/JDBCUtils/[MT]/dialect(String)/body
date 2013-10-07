@@ -26,23 +26,5 @@
  else   if (url.startsWith("jdbc:sqlite:")) {
     return SQLITE;
   }
- else   if (url.startsWith("jdbc:jtds:sybase:")) {
-    return ASE;
-  }
- else   if (url.startsWith("jdbc:db2:")) {
-    return DB2;
-  }
- else   if (url.startsWith("jdbc:ingres:")) {
-    return INGRES;
-  }
- else   if (url.startsWith("jdbc:oracle:") || url.startsWith("jdbc:oracle:oci")) {
-    return ORACLE;
-  }
- else   if (url.startsWith("jdbc:sqlserver:") || url.startsWith("jdbc:jtds:sqlserver:") || url.startsWith("jdbc:microsoft:sqlserver:")|| url.contains(":mssql")) {
-    return SQLSERVER;
-  }
- else   if (url.startsWith("jdbc:sybase:")) {
-    return SYBASE;
-  }
   return SQLDialect.SQL99;
 }

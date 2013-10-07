@@ -9,7 +9,7 @@
       ctx.statement(ctx.connection().prepareStatement(ctx.sql(),type,concurrency,resultSetHoldability));
     }
   }
- else   if (isForUpdate() && asList(CUBRID,SQLSERVER).contains(ctx.configuration().dialect().family())) {
+ else   if (isForUpdate() && asList(CUBRID).contains(ctx.configuration().dialect().family())) {
     ctx.data(DATA_LOCK_ROWS_FOR_UPDATE,true);
     ctx.statement(ctx.connection().prepareStatement(ctx.sql(),TYPE_SCROLL_SENSITIVE,CONCUR_UPDATABLE));
   }

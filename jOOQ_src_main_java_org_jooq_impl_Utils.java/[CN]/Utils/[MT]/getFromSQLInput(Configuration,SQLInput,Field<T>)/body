@@ -93,9 +93,6 @@
     Array result=stream.readArray();
     return (T)(result == null ? null : result.getArray());
   }
- else   if (ArrayRecord.class.isAssignableFrom(type)) {
-    return (T)getArrayRecord(configuration,stream.readArray(),(Class<? extends ArrayRecord<?>>)type);
-  }
  else   if (EnumType.class.isAssignableFrom(type)) {
     return getEnumType(type,stream.readString());
   }

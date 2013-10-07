@@ -1,4 +1,0 @@
-{
-  ArrayRecord<Integer> result=TArrays_NUMBER_R().getType().getConstructor(Configuration.class).newInstance(create().configuration());
-  return result;
-}

@@ -1,9 +1,5 @@
 {
 switch (configuration.dialect().family()) {
-case DB2:
-case ORACLE:
-case SQLSERVER:
-case SYBASE:
 case CUBRID:
 case FIREBIRD:
     return DSL.decode().when(condition,inline(true)).otherwise(inline(false));
@@ -14,8 +10,6 @@ case MARIADB:
 case MYSQL:
 case POSTGRES:
 case SQLITE:
-case ASE:
-case INGRES:
   return condition;
 }
 return condition;

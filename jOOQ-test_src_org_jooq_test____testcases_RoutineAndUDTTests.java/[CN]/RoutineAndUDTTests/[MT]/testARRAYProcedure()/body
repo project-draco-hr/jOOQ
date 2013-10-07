@@ -8,50 +8,6 @@
     return;
   }
   jOOQAbstractTest.reset=false;
-  if (TArrays_STRING_R() != null) {
-    ArrayRecord<Integer> i;
-    ArrayRecord<Long> l;
-    ArrayRecord<String> s;
-    assertEquals(null,invoke(cRoutines(),"pArrays1",create().configuration(),null));
-    assertEquals(null,invoke(cRoutines(),"pArrays2",create().configuration(),null));
-    assertEquals(null,invoke(cRoutines(),"pArrays3",create().configuration(),null));
-    assertEquals(null,invoke(cRoutines(),"fArrays1",create().configuration(),null));
-    assertEquals(null,invoke(cRoutines(),"fArrays2",create().configuration(),null));
-    assertEquals(null,invoke(cRoutines(),"fArrays3",create().configuration(),null));
-    i=newNUMBER_R();
-    l=newNUMBER_LONG_R();
-    s=newSTRING_R();
-    assertEquals(Arrays.asList(new Integer[0]),Arrays.asList(((ArrayRecord<?>)invoke(cRoutines(),"pArrays1",create().configuration(),i)).get()));
-    assertEquals(Arrays.asList(new Long[0]),Arrays.asList(((ArrayRecord<?>)invoke(cRoutines(),"pArrays2",create().configuration(),l)).get()));
-    assertEquals(Arrays.asList(new String[0]),Arrays.asList(((ArrayRecord<?>)invoke(cRoutines(),"pArrays3",create().configuration(),s)).get()));
-    assertEquals(Arrays.asList(new Integer[0]),Arrays.asList(((ArrayRecord<?>)invoke(cRoutines(),"fArrays1",create().configuration(),i)).get()));
-    assertEquals(Arrays.asList(new Long[0]),Arrays.asList(((ArrayRecord<?>)invoke(cRoutines(),"fArrays2",create().configuration(),l)).get()));
-    assertEquals(Arrays.asList(new String[0]),Arrays.asList(((ArrayRecord<?>)invoke(cRoutines(),"fArrays3",create().configuration(),s)).get()));
-    i=newNUMBER_R();
-    l=newNUMBER_LONG_R();
-    s=newSTRING_R();
-    i.set((Integer)null);
-    l.set((Long)null);
-    s.set((String)null);
-    assertEquals(Arrays.asList((Integer)null),Arrays.asList(((ArrayRecord<?>)invoke(cRoutines(),"pArrays1",create().configuration(),i)).get()));
-    assertEquals(Arrays.asList((Long)null),Arrays.asList(((ArrayRecord<?>)invoke(cRoutines(),"pArrays2",create().configuration(),l)).get()));
-    assertEquals(Arrays.asList((String)null),Arrays.asList(((ArrayRecord<?>)invoke(cRoutines(),"pArrays3",create().configuration(),s)).get()));
-    assertEquals(Arrays.asList((Integer)null),Arrays.asList(((ArrayRecord<?>)invoke(cRoutines(),"fArrays1",create().configuration(),i)).get()));
-    assertEquals(Arrays.asList((Long)null),Arrays.asList(((ArrayRecord<?>)invoke(cRoutines(),"fArrays2",create().configuration(),l)).get()));
-    assertEquals(Arrays.asList((String)null),Arrays.asList(((ArrayRecord<?>)invoke(cRoutines(),"fArrays3",create().configuration(),s)).get()));
-    i=newNUMBER_R();
-    l=newNUMBER_LONG_R();
-    s=newSTRING_R();
-    i.set(1,2);
-    l.set(1L,2L);
-    s.set("1","2");
-    assertEquals(Arrays.asList(1,2),Arrays.asList(((ArrayRecord<?>)invoke(cRoutines(),"pArrays1",create().configuration(),i)).get()));
-    assertEquals(Arrays.asList(1L,2L),Arrays.asList(((ArrayRecord<?>)invoke(cRoutines(),"pArrays2",create().configuration(),l)).get()));
-    assertEquals(Arrays.asList("1","2"),Arrays.asList(((ArrayRecord<?>)invoke(cRoutines(),"pArrays3",create().configuration(),s)).get()));
-    assertEquals(Arrays.asList(1,2),Arrays.asList(((ArrayRecord<?>)invoke(cRoutines(),"fArrays1",create().configuration(),i)).get()));
-    assertEquals(Arrays.asList(1L,2L),Arrays.asList(((ArrayRecord<?>)invoke(cRoutines(),"fArrays2",create().configuration(),l)).get()));
-    assertEquals(Arrays.asList("1","2"),Arrays.asList(((ArrayRecord<?>)invoke(cRoutines(),"fArrays3",create().configuration(),s)).get()));
-  }
   if (TArrays_STRING() != null) {
     if (supportsOUTParameters()) {
       assertEquals(null,invoke(cRoutines(),"pArrays1",create().configuration(),null));

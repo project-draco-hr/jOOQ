@@ -1,4 +1,0 @@
-{
-  this.in=new SelectFieldList(f);
-  return this;
-}

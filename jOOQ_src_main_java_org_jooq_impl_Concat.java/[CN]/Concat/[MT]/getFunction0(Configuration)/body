@@ -10,9 +10,7 @@ switch (configuration.dialect().family()) {
 case MARIADB:
 case MYSQL:
     return function("concat",SQLDataType.VARCHAR,cast);
-case SQLSERVER:
-  return new Expression<String>(ADD,first,others);
 default :
-return new Expression<String>(CONCAT,first,others);
+  return new Expression<String>(CONCAT,first,others);
 }
 }

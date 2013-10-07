@@ -1,9 +1,6 @@
 {
   jOOQAbstractTest.reset=false;
   Field<String> notLike=TBook_PUBLISHED_IN().cast(String.class);
-  if (dialect() == DB2) {
-    notLike=val("bbb");
-  }
   Result<B> books=create().selectFrom(TBook()).where(TBook_TITLE().like("%a%")).and(TBook_TITLE().notLike(notLike)).fetch();
   assertEquals(3,books.size());
   assertEquals(1,create().insertInto(TBook()).set(TBook_ID(),5).set(TBook_AUTHOR_ID(),2).set(TBook_PUBLISHED_IN(),2012).set(TBook_LANGUAGE_ID(),1).set(TBook_TITLE(),"About percentages (%) and underscores (_), a critical review! Check exclamation marks, too!").execute());

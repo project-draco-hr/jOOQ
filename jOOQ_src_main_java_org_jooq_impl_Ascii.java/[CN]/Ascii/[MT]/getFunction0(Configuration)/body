@@ -2,7 +2,6 @@
 switch (configuration.dialect()) {
 case FIREBIRD:
     return function("ascii_val",SQLDataType.INTEGER,string);
-case INGRES:
 case DERBY:
 case SQLITE:
 default :

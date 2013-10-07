@@ -1,3 +1,0 @@
-{
-  return unnest(val(array));
-}

@@ -56,23 +56,15 @@ try {
 }
 }
 switch (dialect().family()) {
-case INGRES:
-case ORACLE:
-log.info("SKIPPING","LIMIT .. OFFSET .. FOR UPDATE");
-break;
 default :
 {
-Result<Record1<Integer>> result3=create().select(TAuthor_ID()).from(TAuthor()).limit(5).offset(0).forUpdate().fetch();
-assertEquals(2,result3.size());
-Result<A> result4=create().selectFrom(TAuthor()).limit(5).offset(0).forUpdate().fetch();
-assertEquals(2,result4.size());
+  Result<Record1<Integer>> result3=create().select(TAuthor_ID()).from(TAuthor()).limit(5).offset(0).forUpdate().fetch();
+  assertEquals(2,result3.size());
+  Result<A> result4=create().selectFrom(TAuthor()).limit(5).offset(0).forUpdate().fetch();
+  assertEquals(2,result4.size());
 }
 }
 switch (dialect().family()) {
-case ASE:
-case DB2:
-case INGRES:
-case SYBASE:
 case DERBY:
 case FIREBIRD:
 case HSQLDB:
@@ -81,24 +73,11 @@ case MARIADB:
 case MYSQL:
 log.info("SKIPPING","FOR UPDATE .. WAIT/NOWAIT tests");
 break;
-case ORACLE:
 case POSTGRES:
 default :
 {
 Result<Record1<Integer>> r1a=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().noWait().fetch();
 assertEquals(2,r1a.size());
-if (dialect().family() == ORACLE) {
-Result<Record1<Integer>> r2a=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().wait(2).fetch();
-assertEquals(2,r2a.size());
-Result<Record1<Integer>> r3a=create().select(TAuthor_ID()).from(TAuthor()).forUpdate().skipLocked().fetch();
-assertEquals(2,r3a.size());
-Result<A> r2b=create().selectFrom(TAuthor()).forUpdate().of(TAuthor_LAST_NAME(),TAuthor_FIRST_NAME()).wait(2).fetch();
-assertEquals(2,r2b.size());
-Result<A> r1b=create().selectFrom(TAuthor()).forUpdate().of(TAuthor_LAST_NAME(),TAuthor_FIRST_NAME()).noWait().fetch();
-assertEquals(2,r1b.size());
-Result<A> r3b=create().selectFrom(TAuthor()).forUpdate().of(TAuthor_LAST_NAME(),TAuthor_FIRST_NAME()).skipLocked().fetch();
-assertEquals(2,r3b.size());
-}
 }
 }
 switch (dialect().family()) {
@@ -116,7 +95,6 @@ assertEquals(2,result2.size());
 }
 }
 switch (dialect()) {
-case ASE:
 case MARIADB:
 case MYSQL:
 log.info("SKIPPING","FOR UPDATE OF tests");

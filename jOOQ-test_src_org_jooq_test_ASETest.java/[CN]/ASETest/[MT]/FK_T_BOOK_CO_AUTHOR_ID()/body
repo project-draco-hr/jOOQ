@@ -1,3 +1,0 @@
-{
-  return Keys.T_BOOK__FK_T_BOOK_CO_AUTHOR_ID;
-}

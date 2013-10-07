@@ -1,10 +1,6 @@
 {
   Field<BigDecimal> median=median(TBook_ID());
 switch (dialect().family()) {
-case ASE:
-case INGRES:
-case DB2:
-case SQLSERVER:
 case CUBRID:
 case DERBY:
 case FIREBIRD:
@@ -56,7 +52,7 @@ assertEquals(0.5,result2.get(0).getValue(1,Double.class));
 assertEquals(0.25,result2.get(0).getValue(3,Double.class));
 assertEquals(0.5,result2.get(1).getValue(1,Double.class));
 assertEquals(0.25,result2.get(1).getValue(3,Double.class));
-if (true && dialect() != SQLDialect.DB2) {
+if (true) {
 assertEquals("0.707",result2.get(0).getValue(2,String.class).substring(0,5));
 assertEquals(0.5,result2.get(0).getValue(4,Double.class));
 assertEquals("0.707",result2.get(1).getValue(2,String.class).substring(0,5));

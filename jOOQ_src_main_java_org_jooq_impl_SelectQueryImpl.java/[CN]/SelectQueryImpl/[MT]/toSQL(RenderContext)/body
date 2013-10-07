@@ -5,75 +5,33 @@
   }
   if (getLimit().isApplicable()) {
 switch (context.configuration().dialect()) {
-case ORACLE:
-case ORACLE10G:
-case ORACLE11G:
-case ORACLE12C:
-      toSQLReferenceLimitOracle(context);
-    break;
-case DB2:
-case DB2_9:
-case DB2_10:
+default :
 {
-    if (getLimit().offsetZero() && !getLimit().rendersParams()) {
-      toSQLReferenceLimitDefault(context);
-    }
- else {
-      toSQLReferenceLimitDB2SQLServer2008Sybase(context);
-    }
-    break;
+        toSQLReferenceLimitDefault(context);
+        break;
+      }
   }
-case ASE:
-case SQLSERVER2008:
-{
-  if (getLimit().offsetZero() && !getLimit().rendersParams()) {
-    toSQLReference0(context);
-  }
- else {
-    toSQLReferenceLimitDB2SQLServer2008Sybase(context);
-  }
-  break;
 }
-case SYBASE:
-{
-if (!getLimit().rendersParams()) {
+ else {
   toSQLReference0(context);
 }
- else {
-  toSQLReferenceLimitDB2SQLServer2008Sybase(context);
-}
-break;
-}
-default :
-{
-toSQLReferenceLimitDefault(context);
-break;
-}
-}
-}
- else {
-toSQLReference0(context);
-}
-if (forUpdate && !asList(CUBRID,SQLSERVER).contains(context.configuration().dialect().family())) {
-context.formatSeparator().keyword("for update");
-if (!forUpdateOf.isEmpty()) {
-context.sql(" ").keyword("of").sql(" ");
-Utils.fieldNames(context,forUpdateOf);
-}
- else if (!forUpdateOfTables.isEmpty()) {
-context.sql(" ").keyword("of").sql(" ");
+if (forUpdate && !asList(CUBRID).contains(context.configuration().dialect().family())) {
+  context.formatSeparator().keyword("for update");
+  if (!forUpdateOf.isEmpty()) {
+    context.sql(" ").keyword("of").sql(" ");
+    Utils.fieldNames(context,forUpdateOf);
+  }
+ else   if (!forUpdateOfTables.isEmpty()) {
+    context.sql(" ").keyword("of").sql(" ");
 switch (context.configuration().dialect().family()) {
-case DB2:
-case INGRES:
-case ORACLE:
 case DERBY:
 {
-forUpdateOfTables.toSQLFieldNames(context);
-break;
-}
+        forUpdateOfTables.toSQLFieldNames(context);
+        break;
+      }
 default :
-Utils.tableNames(context,forUpdateOfTables);
-break;
+    Utils.tableNames(context,forUpdateOfTables);
+  break;
 }
 }
 if (forUpdateMode != null) {

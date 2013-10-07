@@ -1,9 +1,0 @@
-{
-  Result<Record2<String,String>> result1=create().select(TAuthor_FIRST_NAME(),TBook_TITLE()).from(TAuthor().leftOuterJoin(TBook()).partitionBy(TBook_TITLE()).on(TAuthor_ID().equal(TBook_AUTHOR_ID()))).orderBy(TAuthor_FIRST_NAME(),TBook_ID()).fetch();
-  assertEquals(8,result1.size());
-  assertEquals(BOOK_TITLES,result1.getValues(TBook_TITLE()).subList(0,4));
-  assertEquals(Collections.nCopies(4,"George"),result1.getValues(TAuthor_FIRST_NAME()).subList(0,4));
-  assertEquals(Collections.nCopies(4,"Paulo"),result1.getValues(TAuthor_FIRST_NAME()).subList(4,8));
-  Result<Record2<String,String>> result2=create().select(TAuthor_FIRST_NAME(),TBook_TITLE()).from(TAuthor()).leftOuterJoin(TBook()).partitionBy(TBook_TITLE()).on(TAuthor_ID().equal(TBook_AUTHOR_ID())).orderBy(TAuthor_FIRST_NAME(),TBook_ID()).fetch();
-  assertEquals(result1,result2);
-}

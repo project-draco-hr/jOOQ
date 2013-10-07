@@ -1,3 +1,0 @@
-{
-  return new org.jooq.test.oracle.generatedclasses.test.tables.daos.TAuthorDao(create().configuration());
-}

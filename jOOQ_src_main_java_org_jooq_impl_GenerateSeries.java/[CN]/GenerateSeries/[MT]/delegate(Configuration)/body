@@ -1,7 +1,6 @@
 {
 switch (configuration.dialect().family()) {
 case CUBRID:
-case ORACLE:
     Field<Integer> level=from.add(level()).sub(one());
   return table("({select} {0} {as} {1} {from} {2} {connect by} {level} <= {3})",level,name("generate_series"),new Dual(),to.add(one()).sub(from));
 case POSTGRES:

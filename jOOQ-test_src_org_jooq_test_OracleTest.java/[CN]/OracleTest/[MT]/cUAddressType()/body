@@ -1,3 +1,0 @@
-{
-  return UAddressType.U_ADDRESS_TYPE.getRecordType();
-}

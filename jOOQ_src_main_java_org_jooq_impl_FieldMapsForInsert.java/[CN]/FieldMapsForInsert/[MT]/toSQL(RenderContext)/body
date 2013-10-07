@@ -7,9 +7,6 @@
   }
  else {
 switch (context.configuration().dialect().family()) {
-case ASE:
-case INGRES:
-case ORACLE:
 case FIREBIRD:
 case SQLITE:
       context.start(INSERT_SELECT);

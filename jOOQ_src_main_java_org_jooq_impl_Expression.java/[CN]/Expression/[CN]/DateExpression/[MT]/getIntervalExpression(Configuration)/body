@@ -62,49 +62,6 @@ interval=interval.neg();
 interval=interval.concat(inline(ytm ? " months" : " seconds"));
 return field("{datetime}({0}, {1})",getDataType(),lhs,interval);
 }
-case ASE:
-case SYBASE:
-case SQLSERVER:
-{
-if (rhs.get(0).getType() == YearToMonth.class) {
-return field("{dateadd}(mm, {0}, {1})",getDataType(),val(sign * rhsAsYTM().intValue()),lhs);
-}
- else {
-Field<Timestamp> lhsAsTS=lhs.cast(Timestamp.class);
-DayToSecond interval=rhsAsDTS();
-if (interval.getNano() != 0) {
-return field("{dateadd}(ss, {0}, {dateadd}(us, {1}, {2}))",getDataType(),val(sign * (long)interval.getTotalSeconds()),val(sign * interval.getMicro()),lhsAsTS);
-}
- else {
-return field("{dateadd}(ss, {0}, {1})",getDataType(),val(sign * (long)interval.getTotalSeconds()),lhsAsTS);
-}
-}
-}
-case DB2:
-{
-if (rhs.get(0).getType() == YearToMonth.class) {
-if (operator == ADD) {
-return lhs.add(field("{0} month",val(rhsAsYTM().intValue())));
-}
- else {
-return lhs.sub(field("{0} month",val(rhsAsYTM().intValue())));
-}
-}
- else {
-DataType<T> type=lhs.getDataType();
-if (operator == ADD) {
-return lhs.cast(Timestamp.class).add(field("{0} microseconds",val(rhsAsDTS().getTotalMicro()))).cast(type);
-}
- else {
-return lhs.cast(Timestamp.class).sub(field("{0} microseconds",val(rhsAsDTS().getTotalMicro()))).cast(type);
-}
-}
-}
-case INGRES:
-{
-throw new SQLDialectNotSupportedException("Date time arithmetic not supported in Ingres. Contributions welcome!");
-}
-case ORACLE:
 case POSTGRES:
 default :
 return new DefaultExpression();

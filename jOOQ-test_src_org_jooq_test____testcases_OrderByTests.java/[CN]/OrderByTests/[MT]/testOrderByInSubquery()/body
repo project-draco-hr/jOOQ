@@ -1,11 +1,5 @@
 {
-switch (dialect()) {
-case ASE:
-case INGRES:
-    log.info("SKIPPING","Ordered subqueries");
-  return;
-}
-Select<?> nested=create().select(TBook_ID()).from(TBook()).orderBy(TBook_ID().asc());
-List<Integer> result=create().select(nested.field(TBook_ID())).from(nested).orderBy(nested.field(TBook_ID()).desc()).fetch(nested.field(TBook_ID()));
-assertEquals(Arrays.asList(4,3,2,1),result);
+  Select<?> nested=create().select(TBook_ID()).from(TBook()).orderBy(TBook_ID().asc());
+  List<Integer> result=create().select(nested.field(TBook_ID())).from(nested).orderBy(nested.field(TBook_ID()).desc()).fetch(nested.field(TBook_ID()));
+  assertEquals(Arrays.asList(4,3,2,1),result);
 }

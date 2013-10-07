@@ -13,10 +13,7 @@
     }
  else {
       for (      Schema schema : configuredSchemata) {
-        if (this instanceof OracleDatabase) {
-          inputSchemata.add(schema.getInputSchema().toUpperCase());
-        }
- else {
+{
           inputSchemata.add(schema.getInputSchema());
         }
       }

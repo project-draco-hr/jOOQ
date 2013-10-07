@@ -1,7 +1,5 @@
 {
 switch (configuration.dialect().family()) {
-case INGRES:
-case ORACLE:
 case FIREBIRD:
 case SQLITE:
     return argument.cast(BigDecimal.class).mul(pi()).div(inline(180));

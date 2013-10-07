@@ -1,8 +1,5 @@
 {
 switch (dialect().family()) {
-case ASE:
-case INGRES:
-case SQLSERVER:
 case DERBY:
 case SQLITE:
     log.info("SKIPPING","LISTAGG tests");
@@ -17,8 +14,6 @@ assertEquals("2, 1",result1.getValue(0,"books2"));
 assertEquals("4, 3",result1.getValue(1,"books1"));
 assertEquals("4, 3",result1.getValue(1,"books2"));
 switch (dialect()) {
-case DB2:
-case SYBASE:
 case CUBRID:
 case H2:
 case HSQLDB:

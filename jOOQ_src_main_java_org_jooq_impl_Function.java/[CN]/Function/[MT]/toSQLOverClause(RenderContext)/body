@@ -8,7 +8,7 @@
   String glue="";
   context.sql(" ").keyword("over").sql(" (");
   if (!partitionBy.isEmpty()) {
-    if (partitionByOne && asList(CUBRID,SYBASE).contains(context.configuration().dialect())) {
+    if (partitionByOne && asList(CUBRID).contains(context.configuration().dialect())) {
     }
  else {
       context.sql(glue).keyword("partition by").sql(" ").visit(partitionBy);

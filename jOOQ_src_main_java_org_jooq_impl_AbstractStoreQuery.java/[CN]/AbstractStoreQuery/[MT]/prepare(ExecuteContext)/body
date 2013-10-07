@@ -1,10 +1,6 @@
 {
   Connection connection=ctx.connection();
-  if (ctx.configuration().dialect() == SQLDialect.ASE) {
-    ctx.statement(connection.prepareStatement(ctx.sql(),Statement.RETURN_GENERATED_KEYS));
-    return;
-  }
- else   if (returning.isEmpty()) {
+  if (returning.isEmpty()) {
     super.prepare(ctx);
     return;
   }
@@ -14,20 +10,14 @@ case FIREBIRD:
 case POSTGRES:
 case SQLITE:
 case CUBRID:
-case SYBASE:
       super.prepare(ctx);
     return;
-case ASE:
-case INGRES:
-case SQLSERVER:
 case DERBY:
 case H2:
 case MARIADB:
 case MYSQL:
   ctx.statement(connection.prepareStatement(ctx.sql(),Statement.RETURN_GENERATED_KEYS));
 return;
-case DB2:
-case ORACLE:
 case HSQLDB:
 default :
 {

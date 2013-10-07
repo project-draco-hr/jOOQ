@@ -1,3 +1,0 @@
-{
-  assertEquals(Arrays.asList(3,7),Arrays.asList(create().select(sum(TBook_ID()).keepDenseRankFirstOrderBy(TBook_AUTHOR_ID()),sum(TBook_ID()).keepDenseRankLastOrderBy(TBook_AUTHOR_ID())).from(TBook()).fetchOne().into(Integer[].class)));
-}

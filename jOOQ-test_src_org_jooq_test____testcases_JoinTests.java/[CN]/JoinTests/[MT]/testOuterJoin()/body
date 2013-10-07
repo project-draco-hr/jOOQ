@@ -18,7 +18,6 @@ default :
 }
 }
 switch (dialect()) {
-case ASE:
 case CUBRID:
 case DERBY:
 case H2:

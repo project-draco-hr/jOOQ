@@ -1,9 +1,5 @@
 {
 switch (config.dialect().family()) {
-case DB2:
-case ORACLE:
-case SQLSERVER:
-case SYBASE:
 case CUBRID:
 case HSQLDB:
 {

@@ -11,8 +11,6 @@ case HSQLDB:
  else {
       }
 case H2:
-case DB2:
-case SYBASE:
     return executeSelect();
 default :
   return executeCallableStatement();

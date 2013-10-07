@@ -3,10 +3,10 @@
   if (asList(H2,HSQLDB,MARIADB,MYSQL,POSTGRES).contains(family)) {
     return new Native();
   }
- else   if (asList(H2,HSQLDB,MARIADB,MYSQL,ORACLE,POSTGRES).contains(family) && asList(EQUALS,NOT_EQUALS).contains(comparator)) {
+ else   if (asList(H2,HSQLDB,MARIADB,MYSQL,POSTGRES).contains(family) && asList(EQUALS,NOT_EQUALS).contains(comparator)) {
     return new Native();
   }
- else   if (asList(H2,DB2,HSQLDB,MARIADB,MYSQL,ORACLE,POSTGRES).contains(family) && asList(IN,NOT_IN).contains(comparator)) {
+ else   if (asList(H2,HSQLDB,MARIADB,MYSQL,POSTGRES).contains(family) && asList(IN,NOT_IN).contains(comparator)) {
     return new Native();
   }
  else {

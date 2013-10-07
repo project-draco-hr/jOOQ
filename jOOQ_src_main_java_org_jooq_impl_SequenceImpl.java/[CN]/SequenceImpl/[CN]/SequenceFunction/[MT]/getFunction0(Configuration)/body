@@ -1,49 +1,37 @@
 {
   SQLDialect family=configuration.dialect().family();
 switch (family) {
-case DB2:
-case INGRES:
-case ORACLE:
-case SYBASE:
-{
-      String field=getQualifiedName(configuration) + "." + method;
-      return field(field,getDataType());
-    }
 case H2:
 case POSTGRES:
 {
-    String field=method + "('" + getQualifiedName(configuration)+ "')";
-    return field(field,getDataType());
-  }
-case SQLSERVER:
+      String field=method + "('" + getQualifiedName(configuration)+ "')";
+      return field(field,getDataType());
+    }
 case FIREBIRD:
 case DERBY:
 case HSQLDB:
 {
-  if ("nextval".equals(method)) {
-    String field="next value for " + getQualifiedName(configuration);
-    return field(field,getDataType());
-  }
- else   if (family == FIREBIRD) {
-    return field("gen_id(" + getQualifiedName(configuration) + ", 0)",getDataType());
-  }
- else   if (family == SQLSERVER) {
-    return select(field("current_value")).from("sys.sequences sq").join("sys.schemas sc").on("sq.schema_id = sc.schema_id").where("sq.name = ?",name).and("sc.name = ?",schema.getName()).asField().cast(type);
-  }
+    if ("nextval".equals(method)) {
+      String field="next value for " + getQualifiedName(configuration);
+      return field(field,getDataType());
+    }
+ else     if (family == FIREBIRD) {
+      return field("gen_id(" + getQualifiedName(configuration) + ", 0)",getDataType());
+    }
  else {
-    throw new SQLDialectNotSupportedException("The sequence's current value functionality is not supported for the " + family + " dialect.");
+      throw new SQLDialectNotSupportedException("The sequence's current value functionality is not supported for the " + family + " dialect.");
+    }
   }
-}
 case CUBRID:
 {
-String field=getQualifiedName(configuration) + ".";
-if ("nextval".equals(method)) {
-  field+="next_value";
-}
+  String field=getQualifiedName(configuration) + ".";
+  if ("nextval".equals(method)) {
+    field+="next_value";
+  }
  else {
-  field+="current_value";
-}
-return field(field,getDataType());
+    field+="current_value";
+  }
+  return field(field,getDataType());
 }
 default :
 {

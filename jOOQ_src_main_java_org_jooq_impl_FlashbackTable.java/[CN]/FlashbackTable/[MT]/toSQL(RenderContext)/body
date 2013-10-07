@@ -1,9 +1,0 @@
-{
-  context.visit(table);
-  if (asOf != null) {
-    context.sql(" ").keyword("as of").sql(" ").visit(type).sql(" ").visit(asOf);
-  }
- else {
-    context.sql(" ").keyword("versions between").sql(" ").visit(type).sql(" ").visit(minvalue).sql(" ").keyword("and").sql(" ").visit(maxvalue);
-  }
-}

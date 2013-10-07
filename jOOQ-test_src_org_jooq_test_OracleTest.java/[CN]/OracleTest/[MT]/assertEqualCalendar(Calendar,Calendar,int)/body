@@ -1,5 +1,0 @@
-{
-  for (  int field : fields) {
-    assertEquals(c1.get(field),c2.get(field));
-  }
-}

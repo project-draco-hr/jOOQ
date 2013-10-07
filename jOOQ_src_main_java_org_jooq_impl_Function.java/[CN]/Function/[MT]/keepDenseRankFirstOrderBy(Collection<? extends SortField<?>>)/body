@@ -1,5 +1,0 @@
-{
-  first=true;
-  keepDenseRankOrderBy.addAll(fields);
-  return this;
-}

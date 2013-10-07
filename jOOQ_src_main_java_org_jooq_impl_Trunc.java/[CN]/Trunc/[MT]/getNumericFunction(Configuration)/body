@@ -1,6 +1,5 @@
 {
 switch (configuration.dialect().family()) {
-case ASE:
 case DERBY:
 {
       Field<BigDecimal> power;
@@ -19,13 +18,6 @@ case MYSQL:
   return field("{truncate}({0}, {1})",field.getDataType(),field,decimals);
 case POSTGRES:
 return field("{trunc}({0}, {1})",SQLDataType.NUMERIC,field.cast(BigDecimal.class),decimals).cast(field.getDataType());
-case SQLSERVER:
-return field("{round}({0}, {1}, {2})",field.getDataType(),field,decimals,one());
-case SYBASE:
-return field("{truncnum}({0}, {1})",field.getDataType(),field,decimals);
-case DB2:
-case INGRES:
-case ORACLE:
 case CUBRID:
 case HSQLDB:
 default :
