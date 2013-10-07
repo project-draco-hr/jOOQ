@@ -49,6 +49,7 @@
   }
   out.tab(1).println("}");
   for (  ParameterDefinition parameter : routine.getInParameters()) {
+    final String setterReturnType=fluentSetters() ? className : "void";
     final String setter=getStrategy().getJavaSetterName(parameter,Mode.DEFAULT);
     final String numberValue=parameter.getType().isGenericNumberType() ? "Number" : "Value";
     final String numberField=parameter.getType().isGenericNumberType() ? "Number" : "Field";
@@ -60,8 +61,9 @@
     out.tab(1).println("}");
     if (routine.isSQLUsable()) {
       out.tab(1).javadoc("Set the <code>%s</code> parameter to the function to be used with a {@link org.jooq.Select} statement",parameter.getOutputName());
-      out.tab(1).println("public void %s(%s<%s> field) {",setter,Field.class,getExtendsNumberType(parameter.getType()));
+      out.tab(1).println("public %s %s(%s<%s> field) {",setterReturnType,setter,Field.class,getExtendsNumberType(parameter.getType()));
       out.tab(2).println("set%s(%s, field);",numberField,paramId);
+      if (fluentSetters())       out.tab(2).println("return this;");
       out.tab(1).println("}");
     }
   }
