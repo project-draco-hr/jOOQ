@@ -1,0 +1,3 @@
+{
+  new TableFunctionTests(this).testDualExplicit();
+}

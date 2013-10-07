@@ -1,13 +1,17 @@
 {
+  if (force) {
+    context.visit(FORCED_DUAL);
+  }
+ else {
 switch (context.configuration().dialect().family()) {
 case ASE:
 case SQLSERVER:
 case POSTGRES:
 case SQLITE:
-    break;
+      break;
 case FIREBIRD:
-  context.literal("RDB$DATABASE");
-break;
+    context.literal("RDB$DATABASE");
+  break;
 case HSQLDB:
 context.literal("INFORMATION_SCHEMA").sql(".").literal("SYSTEM_USERS");
 break;
@@ -29,5 +33,6 @@ break;
 default :
 context.keyword("dual");
 break;
+}
 }
 }

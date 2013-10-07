@@ -1,3 +1,8 @@
 {
-  return new TableAlias<Record>(this,alias);
+  if (force) {
+    return FORCED_DUAL.as(alias);
+  }
+ else {
+    return new TableAlias<Record>(this,alias);
+  }
 }
