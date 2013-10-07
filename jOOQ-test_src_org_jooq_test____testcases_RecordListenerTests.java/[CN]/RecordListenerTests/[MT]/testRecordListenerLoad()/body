@@ -1,8 +1,8 @@
 {
-  SimpleRecordListener listener1=new SimpleRecordListener();
+  ReadListener listener1=new ReadListener();
   create(listener1).newRecord(TBook());
   assertEquals(asList("loadStart","loadEnd"),listener1.events);
-  SimpleRecordListener listener2=new SimpleRecordListener();
+  ReadListener listener2=new ReadListener();
   B book1=create(listener2).selectFrom(TBook()).where(TBook_ID().eq(1)).fetchOne();
   assertEquals(asList("loadStart","loadEnd"),listener2.events);
   listener2.events.clear();
