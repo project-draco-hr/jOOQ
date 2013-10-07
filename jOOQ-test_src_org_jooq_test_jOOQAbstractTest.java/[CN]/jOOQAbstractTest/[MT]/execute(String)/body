@@ -65,46 +65,39 @@
           continue;
         }
       }
- else       if (e.getClass().getName().startsWith("com.microsoft")) {
-switch (((SQLServerException)e).getErrorCode()) {
-case 3701:
-case 218:
+ else       if (e.getMessage().startsWith("Cannot drop")) {
+        continue;
+      }
+ else       if (e.getClass().getName().startsWith("com.sybase")) {
+        if (sql.contains("DROP SEQUENCE")) {
           continue;
+        }
       }
-    }
- else     if (e.getMessage().startsWith("Cannot drop")) {
-      continue;
-    }
- else     if (e.getClass().getName().startsWith("com.sybase")) {
-      if (sql.contains("DROP SEQUENCE")) {
+ else       if (e instanceof SQLSyntaxErrorException) {
+        if (sql.contains("DROP SEQUENCE") || sql.contains("DROP RULE")) {
+          continue;
+        }
+      }
+ else       if (getDialect() == CUBRID && sql.trim().startsWith("DROP")) {
         continue;
       }
-    }
- else     if (e instanceof SQLSyntaxErrorException) {
-      if (sql.contains("DROP SEQUENCE") || sql.contains("DROP RULE")) {
+ else       if (getDialect() == FIREBIRD && sql.trim().startsWith("DROP")) {
         continue;
       }
+      System.out.println("Error while executing : " + sql.trim());
+      System.out.println();
+      System.out.println();
+      e.printStackTrace();
+      System.exit(-1);
     }
- else     if (getDialect() == CUBRID && sql.trim().startsWith("DROP")) {
-      continue;
-    }
- else     if (getDialect() == FIREBIRD && sql.trim().startsWith("DROP")) {
-      continue;
-    }
-    System.out.println("Error while executing : " + sql.trim());
-    System.out.println();
-    System.out.println();
-    e.printStackTrace();
-    System.exit(-1);
-  }
  finally {
-    if (stmt != null) {
-      try {
-        stmt.close();
-      }
- catch (      SQLException e) {
+      if (stmt != null) {
+        try {
+          stmt.close();
+        }
+ catch (        SQLException e) {
+        }
       }
     }
   }
-}
 }
