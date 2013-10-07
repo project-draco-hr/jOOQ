@@ -1,8 +1,0 @@
-{
-  System.out.println("Transforming manual: " + file("manual.xml"));
-  System.out.println();
-  System.out.println();
-  System.out.println("Transforming PDF manual");
-  System.out.println("-------------------------------");
-  pdf();
-}

@@ -1,8 +1,0 @@
-{
-  Set<Edge> set=map.get(key);
-  if (set == null) {
-    set=new TreeSet<Edge>();
-    map.put(key,set);
-  }
-  set.add(edge);
-}

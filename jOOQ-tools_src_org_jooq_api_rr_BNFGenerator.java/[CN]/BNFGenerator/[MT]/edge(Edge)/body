@@ -1,5 +1,0 @@
-{
-  edge(edge,edges,edge.path);
-  edge(edge,edgesFrom,edge.path.from);
-  edge(edge,edgesTo,edge.path.to);
-}

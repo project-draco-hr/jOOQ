@@ -1,6 +1,0 @@
-{
-  if (minorVersion == null || minorVersion.equals("")) {
-    return "";
-  }
-  return "doc/" + minorVersion + "/";
-}

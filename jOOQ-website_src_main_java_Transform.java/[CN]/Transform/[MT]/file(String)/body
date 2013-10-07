@@ -1,6 +1,0 @@
-{
-  if (minorVersion == null || minorVersion.equals("")) {
-    return name;
-  }
-  return name.replaceAll("\\.\\w{3}$","-" + minorVersion + "$0");
-}

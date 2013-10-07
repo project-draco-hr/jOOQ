@@ -1,9 +1,0 @@
-{
-  Set<Edge> set=map.get(key);
-  if (set != null) {
-    set.remove(edge);
-    if (set.isEmpty()) {
-      map.remove(key);
-    }
-  }
-}

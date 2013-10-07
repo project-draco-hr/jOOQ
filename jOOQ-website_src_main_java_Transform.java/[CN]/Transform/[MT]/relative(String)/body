@@ -1,3 +1,0 @@
-{
-  return StringUtils.join(Collections.nCopies(path.split("/").length,".."),"/") + "/";
-}

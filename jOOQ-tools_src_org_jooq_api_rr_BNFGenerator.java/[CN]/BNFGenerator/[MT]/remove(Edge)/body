@@ -1,5 +1,0 @@
-{
-  remove(edge,edges,edge.path);
-  remove(edge,edgesFrom,edge.path.from);
-  remove(edge,edgesTo,edge.path.to);
-}
