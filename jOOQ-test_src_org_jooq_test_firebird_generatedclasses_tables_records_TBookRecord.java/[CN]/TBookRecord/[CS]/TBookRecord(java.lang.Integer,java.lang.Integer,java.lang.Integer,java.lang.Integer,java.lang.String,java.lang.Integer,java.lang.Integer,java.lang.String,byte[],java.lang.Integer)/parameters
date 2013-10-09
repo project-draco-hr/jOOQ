@@ -1,0 +1,10 @@
+java.lang.Integer id
+java.lang.Integer authorId
+java.lang.Integer coAuthorId
+java.lang.Integer detailsId
+java.lang.String title
+java.lang.Integer publishedIn
+java.lang.Integer languageId
+java.lang.String contentText
+byte[] contentPdf
+java.lang.Integer recVersion

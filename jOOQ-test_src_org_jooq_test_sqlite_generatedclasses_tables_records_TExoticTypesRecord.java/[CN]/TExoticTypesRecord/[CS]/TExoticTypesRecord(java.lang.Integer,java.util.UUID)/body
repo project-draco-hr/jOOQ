@@ -1,0 +1,5 @@
+{
+  super(org.jooq.test.sqlite.generatedclasses.tables.TExoticTypes.T_EXOTIC_TYPES);
+  setValue(0,id);
+  setValue(1,uu);
+}

@@ -1,0 +1,6 @@
+{
+  super(org.jooq.test.cubrid.generatedclasses.tables.T_785.T_785);
+  setValue(0,id);
+  setValue(1,name);
+  setValue(2,value);
+}

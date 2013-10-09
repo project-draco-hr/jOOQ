@@ -1,3 +1,4 @@
 {
   setValue(org.jooq.test.postgres.generatedclasses.udt.UUuids.U2,value);
+  return this;
 }

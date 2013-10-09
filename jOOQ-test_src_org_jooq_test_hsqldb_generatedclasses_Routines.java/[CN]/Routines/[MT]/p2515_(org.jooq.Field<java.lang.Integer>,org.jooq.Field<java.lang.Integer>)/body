@@ -1,6 +1,0 @@
-{
-  org.jooq.test.hsqldb.generatedclasses.routines.P2515_ f=new org.jooq.test.hsqldb.generatedclasses.routines.P2515_();
-  f.setAA(aA);
-  f.setAA_(aA_);
-  return f.asField();
-}

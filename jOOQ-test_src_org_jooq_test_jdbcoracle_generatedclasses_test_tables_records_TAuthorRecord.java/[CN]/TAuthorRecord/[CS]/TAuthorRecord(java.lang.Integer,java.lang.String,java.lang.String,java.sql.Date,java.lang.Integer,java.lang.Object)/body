@@ -1,0 +1,9 @@
+{
+  super(org.jooq.test.jdbcoracle.generatedclasses.test.tables.TAuthor.T_AUTHOR);
+  setValue(0,id);
+  setValue(1,firstName);
+  setValue(2,lastName);
+  setValue(3,dateOfBirth);
+  setValue(4,yearOfBirth);
+  setValue(5,address);
+}

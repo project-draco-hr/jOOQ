@@ -1,0 +1,8 @@
+{
+  super(org.jooq.test.jdbcoracle.generatedclasses.test.tables.TArrays.T_ARRAYS);
+  setValue(0,id);
+  setValue(1,stringArray);
+  setValue(2,numberArray);
+  setValue(3,numberLongArray);
+  setValue(4,dateArray);
+}

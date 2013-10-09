@@ -1,3 +1,4 @@
 {
   setField(AUTHOR_NAME,field);
+  return this;
 }

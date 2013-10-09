@@ -1,0 +1,5 @@
+java.lang.Integer id
+java.lang.Integer bookId
+java.lang.String bookStoreName
+java.sql.Date soldAt
+java.math.BigDecimal soldFor

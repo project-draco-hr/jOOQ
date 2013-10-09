@@ -1,0 +1,8 @@
+{
+  super(org.jooq.test.jdbcoracle.generatedclasses.multi_schema.tables.TBookSale.T_BOOK_SALE);
+  setValue(0,id);
+  setValue(1,bookId);
+  setValue(2,bookStoreName);
+  setValue(3,soldAt);
+  setValue(4,soldFor);
+}

@@ -1,0 +1,9 @@
+{
+  super(org.jooq.test.cubrid.generatedclasses.tables.TDates.T_DATES);
+  setValue(0,id);
+  setValue(1,d);
+  setValue(2,t);
+  setValue(3,ts);
+  setValue(4,dInt);
+  setValue(5,tsBigint);
+}

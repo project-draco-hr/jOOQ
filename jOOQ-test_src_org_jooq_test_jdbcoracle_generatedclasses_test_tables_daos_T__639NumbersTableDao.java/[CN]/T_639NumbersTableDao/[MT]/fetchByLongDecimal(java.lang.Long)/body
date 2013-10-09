@@ -1,0 +1,3 @@
+{
+  return fetch(org.jooq.test.jdbcoracle.generatedclasses.test.tables.T_639NumbersTable.LONG_DECIMAL,values);
+}

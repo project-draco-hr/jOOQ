@@ -1,0 +1,3 @@
+{
+  return fetch(org.jooq.test.jdbcoracle.generatedclasses.test.tables.TAuthor.ID,values);
+}

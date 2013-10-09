@@ -1,0 +1,3 @@
+{
+  return fetch(org.jooq.test.jdbcoracle.generatedclasses.multi_schema.tables.TAuthor.ADDRESS,values);
+}

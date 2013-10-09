@@ -1,3 +1,4 @@
 {
   setField(IN_ARRAY,field);
+  return this;
 }

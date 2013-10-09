@@ -1,0 +1,5 @@
+{
+  super(org.jooq.test.derby.generatedclasses.tables.XTestCase_64_69.X_TEST_CASE_64_69);
+  setValue(0,id);
+  setValue(1,unusedId);
+}

@@ -1,0 +1,3 @@
+{
+  return fetch(org.jooq.test.jdbcoracle.generatedclasses.multi_schema.tables.TBookSale.SOLD_FOR,values);
+}

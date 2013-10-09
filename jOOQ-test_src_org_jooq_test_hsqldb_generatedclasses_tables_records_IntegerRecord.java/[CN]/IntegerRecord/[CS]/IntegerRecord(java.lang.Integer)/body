@@ -1,0 +1,4 @@
+{
+  super(org.jooq.test.hsqldb.generatedclasses.tables.Integer.INTEGER);
+  setValue(0,id);
+}

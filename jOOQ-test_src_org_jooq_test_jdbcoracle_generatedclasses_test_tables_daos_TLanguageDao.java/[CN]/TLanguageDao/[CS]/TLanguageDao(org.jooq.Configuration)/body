@@ -1,0 +1,3 @@
+{
+  super(org.jooq.test.jdbcoracle.generatedclasses.test.tables.TLanguage.T_LANGUAGE,org.jooq.test.jdbcoracle.generatedclasses.test.tables.pojos.TLanguage.class,configuration);
+}

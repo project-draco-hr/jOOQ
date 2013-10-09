@@ -1,0 +1,14 @@
+{
+  super(org.jooq.test.hsqldb.generatedclasses.tables.VBook.V_BOOK);
+  setValue(0,id);
+  setValue(1,authorId);
+  setValue(2,coAuthorId);
+  setValue(3,detailsId);
+  setValue(4,title);
+  setValue(5,publishedIn);
+  setValue(6,languageId);
+  setValue(7,contentText);
+  setValue(8,contentPdf);
+  setValue(9,recVersion);
+  setValue(10,recTimestamp);
+}
