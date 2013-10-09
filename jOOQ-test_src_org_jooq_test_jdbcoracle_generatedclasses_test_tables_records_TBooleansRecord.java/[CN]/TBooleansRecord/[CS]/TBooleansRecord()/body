@@ -1,3 +1,0 @@
-{
-  super(org.jooq.test.jdbcoracle.generatedclasses.test.tables.TBooleans.T_BOOLEANS);
-}

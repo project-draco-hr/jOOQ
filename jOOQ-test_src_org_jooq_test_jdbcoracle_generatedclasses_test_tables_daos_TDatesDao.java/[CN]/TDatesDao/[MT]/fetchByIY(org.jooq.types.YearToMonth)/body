@@ -1,3 +1,0 @@
-{
-  return fetch(org.jooq.test.jdbcoracle.generatedclasses.test.tables.TDates.I_Y,values);
-}

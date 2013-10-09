@@ -1,3 +1,0 @@
-{
-  return fetch(org.jooq.test.jdbcoracle.generatedclasses.test.tables.TDirectory.PARENT_ID,values);
-}

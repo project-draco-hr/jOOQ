@@ -1,3 +1,0 @@
-{
-  return fetchOne(org.jooq.test.jdbcoracle.generatedclasses.test.tables.TTriggers.ID_GENERATED,value);
-}

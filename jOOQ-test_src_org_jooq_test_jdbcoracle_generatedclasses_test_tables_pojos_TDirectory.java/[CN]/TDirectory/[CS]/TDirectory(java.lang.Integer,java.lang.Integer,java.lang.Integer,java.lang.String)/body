@@ -1,6 +1,0 @@
-{
-  this.id=id;
-  this.parentId=parentId;
-  this.isDirectory=isDirectory;
-  this.name=name;
-}

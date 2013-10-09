@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.jdbcoracle.generatedclasses.test.tables.records.TAuthorRecord.class;
-}

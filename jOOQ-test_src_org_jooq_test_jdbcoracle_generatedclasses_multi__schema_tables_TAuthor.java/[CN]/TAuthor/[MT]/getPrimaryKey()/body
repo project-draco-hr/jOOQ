@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.jdbcoracle.generatedclasses.multi_schema.Keys.PK_T_AUTHOR;
-}

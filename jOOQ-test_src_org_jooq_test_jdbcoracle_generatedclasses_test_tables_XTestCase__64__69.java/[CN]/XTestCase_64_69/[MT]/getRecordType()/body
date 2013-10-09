@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.jdbcoracle.generatedclasses.test.tables.records.XTestCase_64_69Record.class;
-}

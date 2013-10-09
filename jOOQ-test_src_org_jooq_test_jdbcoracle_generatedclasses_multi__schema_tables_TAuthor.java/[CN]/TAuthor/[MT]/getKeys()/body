@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.jdbcoracle.generatedclasses.multi_schema.tables.records.TAuthorRecord>>asList(org.jooq.test.jdbcoracle.generatedclasses.multi_schema.Keys.PK_T_AUTHOR);
-}

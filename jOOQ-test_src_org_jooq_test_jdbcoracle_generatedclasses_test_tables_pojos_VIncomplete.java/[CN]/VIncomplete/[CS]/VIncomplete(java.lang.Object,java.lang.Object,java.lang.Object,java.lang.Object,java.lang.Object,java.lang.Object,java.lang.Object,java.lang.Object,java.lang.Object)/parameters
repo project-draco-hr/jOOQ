@@ -1,9 +1,0 @@
-java.lang.Object id
-java.lang.Object authorId
-java.lang.Object coAuthorId
-java.lang.Object detailsId
-java.lang.Object title
-java.lang.Object publishedIn
-java.lang.Object languageId
-java.lang.Object contentText
-java.lang.Object contentPdf

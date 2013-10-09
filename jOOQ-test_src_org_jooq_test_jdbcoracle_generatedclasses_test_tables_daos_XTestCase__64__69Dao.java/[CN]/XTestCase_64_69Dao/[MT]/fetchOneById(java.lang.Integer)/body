@@ -1,3 +1,0 @@
-{
-  return fetchOne(org.jooq.test.jdbcoracle.generatedclasses.test.tables.XTestCase_64_69.ID,value);
-}

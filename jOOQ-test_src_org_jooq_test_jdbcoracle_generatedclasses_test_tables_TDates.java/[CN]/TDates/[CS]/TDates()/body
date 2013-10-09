@@ -1,3 +1,0 @@
-{
-  super("T_DATES",org.jooq.test.jdbcoracle.generatedclasses.test.Test.TEST);
-}

@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.jdbcoracle.generatedclasses.test.tables.XTestCase_2025.REF_NAME;
-}

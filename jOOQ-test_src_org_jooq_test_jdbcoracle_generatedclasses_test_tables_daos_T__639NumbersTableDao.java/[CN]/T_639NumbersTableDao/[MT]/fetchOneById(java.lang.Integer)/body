@@ -1,3 +1,0 @@
-{
-  return fetchOne(org.jooq.test.jdbcoracle.generatedclasses.test.tables.T_639NumbersTable.ID,value);
-}
