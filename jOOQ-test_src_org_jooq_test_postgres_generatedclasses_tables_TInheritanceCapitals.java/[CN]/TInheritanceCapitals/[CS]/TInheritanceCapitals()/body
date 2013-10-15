@@ -1,0 +1,3 @@
+{
+  super("t_inheritance_capitals",org.jooq.test.postgres.generatedclasses.Public.PUBLIC);
+}

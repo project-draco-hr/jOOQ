@@ -1,0 +1,7 @@
+{
+  super(org.jooq.test.postgres.generatedclasses.tables.TInheritanceCapitals.T_INHERITANCE_CAPITALS);
+  setValue(0,name);
+  setValue(1,population);
+  setValue(2,altitude);
+  setValue(3,state);
+}
