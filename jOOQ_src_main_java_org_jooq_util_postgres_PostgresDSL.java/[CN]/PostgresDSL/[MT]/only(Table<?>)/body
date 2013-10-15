@@ -1,0 +1,3 @@
+{
+  return table("{only} {0}",table);
+}
