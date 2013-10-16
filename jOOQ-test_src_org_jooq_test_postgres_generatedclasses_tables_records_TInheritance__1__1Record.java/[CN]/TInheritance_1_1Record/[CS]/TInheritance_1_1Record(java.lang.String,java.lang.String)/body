@@ -1,0 +1,5 @@
+{
+  super(org.jooq.test.postgres.generatedclasses.tables.TInheritance_1_1.T_INHERITANCE_1_1);
+  setValue(0,text_1);
+  setValue(1,text_1_1);
+}

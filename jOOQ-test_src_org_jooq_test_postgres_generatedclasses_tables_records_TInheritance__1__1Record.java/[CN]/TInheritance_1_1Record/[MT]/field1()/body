@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.postgres.generatedclasses.tables.TInheritance_1_1.T_INHERITANCE_1_1.TEXT_1;
+}

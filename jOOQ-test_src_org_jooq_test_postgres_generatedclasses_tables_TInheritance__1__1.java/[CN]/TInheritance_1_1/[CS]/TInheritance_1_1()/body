@@ -1,0 +1,3 @@
+{
+  super("t_inheritance_1_1",org.jooq.test.postgres.generatedclasses.Public.PUBLIC);
+}
