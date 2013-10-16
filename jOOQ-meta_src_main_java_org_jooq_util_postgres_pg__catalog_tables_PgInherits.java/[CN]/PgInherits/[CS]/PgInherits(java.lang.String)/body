@@ -1,0 +1,3 @@
+{
+  super(alias,org.jooq.util.postgres.pg_catalog.PgCatalog.PG_CATALOG,org.jooq.util.postgres.pg_catalog.tables.PgInherits.PG_INHERITS);
+}
