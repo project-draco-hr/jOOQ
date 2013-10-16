@@ -1,11 +1,11 @@
 {
   List<EnumDefinition> result=new ArrayList<EnumDefinition>();
   if (exists(PG_ENUM)) {
-    Result<Record2<String,String>> types=create().select(PG_NAMESPACE.NSPNAME,PG_TYPE.TYPNAME).from(PG_TYPE).join(PG_NAMESPACE).on("pg_type.typnamespace = pg_namespace.oid").where(PG_NAMESPACE.NSPNAME.in(getInputSchemata())).and(field("pg_type.oid",Long.class).in(select(PG_ENUM.ENUMTYPID).from(PG_ENUM))).orderBy(PG_NAMESPACE.NSPNAME,PG_TYPE.TYPNAME).fetch();
+    Result<Record2<String,String>> types=create().select(PG_NAMESPACE.NSPNAME,PG_TYPE.TYPNAME).from(PG_TYPE).join(PG_NAMESPACE).on(PG_TYPE.TYPNAMESPACE.eq(oid(PG_NAMESPACE))).where(PG_NAMESPACE.NSPNAME.in(getInputSchemata())).and(oid(PG_TYPE).in(select(PG_ENUM.ENUMTYPID).from(PG_ENUM))).orderBy(PG_NAMESPACE.NSPNAME,PG_TYPE.TYPNAME).fetch();
     for (    Record2<String,String> type : types) {
       String nspname=type.getValue(PG_NAMESPACE.NSPNAME);
       String typname=type.getValue(PG_TYPE.TYPNAME);
-      List<String> labels=create().select(PG_ENUM.ENUMLABEL).from(PG_ENUM).join(PG_TYPE).on("pg_enum.enumtypid = pg_type.oid").join(PG_NAMESPACE).on("pg_type.typnamespace = pg_namespace.oid").where(PG_NAMESPACE.NSPNAME.eq(nspname)).and(PG_TYPE.TYPNAME.eq(typname)).orderBy(field("{0}::{1}",PG_ENUM.ENUMLABEL,name(nspname,typname))).fetch(PG_ENUM.ENUMLABEL);
+      List<String> labels=create().select(PG_ENUM.ENUMLABEL).from(PG_ENUM).join(PG_TYPE).on(PG_ENUM.ENUMTYPID.eq(oid(PG_TYPE))).join(PG_NAMESPACE).on(PG_TYPE.TYPNAMESPACE.eq(oid(PG_NAMESPACE))).where(PG_NAMESPACE.NSPNAME.eq(nspname)).and(PG_TYPE.TYPNAME.eq(typname)).orderBy(field("{0}::{1}",PG_ENUM.ENUMLABEL,name(nspname,typname))).fetch(PG_ENUM.ENUMLABEL);
       DefaultEnumDefinition definition=null;
       for (      String label : labels) {
         SchemaDefinition schema=getSchema(nspname);

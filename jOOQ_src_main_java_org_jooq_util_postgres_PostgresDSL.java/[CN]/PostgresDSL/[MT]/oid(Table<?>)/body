@@ -1,0 +1,3 @@
+{
+  return field("{0}.oid",Long.class,table);
+}
