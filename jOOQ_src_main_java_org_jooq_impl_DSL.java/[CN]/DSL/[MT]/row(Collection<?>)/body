@@ -1,0 +1,5 @@
+{
+  Collection<Field<?>> fields=new ArrayList<Field<?>>();
+  for (  Object o : values)   fields.add(o instanceof Field<?> ? (Field<?>)o : val(o));
+  return new RowImpl(fields);
+}
