@@ -1,0 +1,3 @@
+{
+  return right(Utils.field(field),Utils.field(length));
+}

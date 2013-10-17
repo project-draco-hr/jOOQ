@@ -1,0 +1,5 @@
+{
+  super("left",field.getDataType());
+  this.field=field;
+  this.length=length;
+}

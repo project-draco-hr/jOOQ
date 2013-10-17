@@ -1,0 +1,17 @@
+{
+switch (configuration.dialect().family()) {
+case DERBY:
+    return DSL.substring(field,field.length().add(one()).sub(length));
+case SQLITE:
+  return DSL.substring(field,length.neg());
+case CUBRID:
+case FIREBIRD:
+case H2:
+case HSQLDB:
+case MARIADB:
+case MYSQL:
+case POSTGRES:
+default :
+return field("{right}({0}, {1})",field,length);
+}
+}
