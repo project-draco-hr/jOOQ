@@ -1,3 +1,3 @@
 {
-  return new SelectImpl<R>(getDelegate().except(select));
+  return new SelectImpl(getDelegate().except(select));
 }

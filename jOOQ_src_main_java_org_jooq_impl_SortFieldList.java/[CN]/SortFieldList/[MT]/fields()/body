@@ -1,0 +1,5 @@
+{
+  List<Field<?>> result=new ArrayList<Field<?>>();
+  for (  SortField<?> field : this)   result.add(((SortFieldImpl<?>)field).getField());
+  return result;
+}

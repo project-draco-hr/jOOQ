@@ -1,3 +1,41 @@
 {
-  return condition;
+  if (getOrderBy().isEmpty() || getSeek().isEmpty()) {
+    return condition;
+  }
+ else {
+    SortFieldList o=getOrderBy();
+    Condition c=null;
+    if (o.nulls()) {
+    }
+    if (o.size() > 1 && o.uniform()) {
+      if (o.get(0).getOrder() == ASC) {
+        c=row(o.fields()).gt(row(getSeek()));
+      }
+ else {
+        c=row(o.fields()).lt(row(getSeek()));
+      }
+    }
+ else {
+      ConditionProviderImpl or=new ConditionProviderImpl();
+      for (int i=0; i < o.size(); i++) {
+        ConditionProviderImpl and=new ConditionProviderImpl();
+        for (int j=0; j < i; j++) {
+          SortFieldImpl<?> s=(SortFieldImpl<?>)o.get(j);
+          and.addConditions(((Field)s.getField()).eq(seek.get(j)));
+        }
+        SortFieldImpl<?> s=(SortFieldImpl<?>)o.get(i);
+        if (s.getOrder() == ASC) {
+          and.addConditions(((Field)s.getField()).gt(seek.get(i)));
+        }
+ else {
+          and.addConditions(((Field)s.getField()).lt(seek.get(i)));
+        }
+        or.addConditions(OR,and);
+      }
+      c=or;
+    }
+    ConditionProviderImpl result=new ConditionProviderImpl();
+    result.addConditions(condition,c);
+    return result;
+  }
 }

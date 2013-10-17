@@ -1,0 +1,4 @@
+{
+  getQuery().addSeek(t1,t2);
+  return this;
+}

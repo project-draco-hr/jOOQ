@@ -1,3 +1,3 @@
 {
-  return new SelectImpl<Record>(new DefaultConfiguration(),true).select(fields);
+  return new SelectImpl(new DefaultConfiguration(),true).select(fields);
 }

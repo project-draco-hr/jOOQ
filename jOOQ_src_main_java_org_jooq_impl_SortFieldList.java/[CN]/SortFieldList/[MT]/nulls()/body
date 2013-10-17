@@ -1,0 +1,4 @@
+{
+  for (  SortField<?> field : this)   if (((SortFieldImpl<?>)field).getNullsFirst() || ((SortFieldImpl<?>)field).getNullsFirst())   return true;
+  return false;
+}

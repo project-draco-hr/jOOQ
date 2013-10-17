@@ -1,0 +1,4 @@
+{
+  for (  SortField<?> field : this)   if (field.getOrder() != get(0).getOrder())   return false;
+  return true;
+}
