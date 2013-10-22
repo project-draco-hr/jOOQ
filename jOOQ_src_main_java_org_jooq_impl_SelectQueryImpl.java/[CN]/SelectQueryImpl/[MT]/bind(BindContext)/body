@@ -1,5 +1,5 @@
 {
-  context.declareFields(true).visit(getSelect0()).declareFields(false).declareTables(true).visit(getFrom()).declareTables(false).visit(getWhere()).visit(getConnectByStartWith()).visit(getConnectBy()).visit(getGroupBy()).visit(getHaving()).visit(getOrderBy());
+  context.declareFields(true).visit(getSelect0()).declareFields(false).declareTables(true).visit(getFrom()).declareTables(false).visit(getWhere()).visit(getConnectByStartWith()).visit(getConnectBy()).visit(getGroupBy()).visit(getHaving()).visit(getWindow()).visit(getOrderBy());
   if (getLimit().isApplicable()) {
     context.visit(getLimit());
   }

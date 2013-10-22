@@ -11,6 +11,11 @@
       visit0(internal);
       declareTables(true);
     }
+ else     if (declareWindows() && !internal.declaresWindows()) {
+      declareWindows(false);
+      visit0(internal);
+      declareWindows(true);
+    }
  else {
       visit0(internal);
     }

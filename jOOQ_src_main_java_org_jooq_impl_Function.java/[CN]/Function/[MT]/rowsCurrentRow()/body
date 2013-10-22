@@ -1,4 +1,4 @@
 {
-  rowsStart=0;
+  windowSpecification.rowsCurrentRow();
   return this;
 }

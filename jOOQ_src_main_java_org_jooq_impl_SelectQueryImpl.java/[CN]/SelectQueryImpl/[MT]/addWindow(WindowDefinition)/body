@@ -1,0 +1,3 @@
+{
+  addWindow(Arrays.asList(definitions));
+}

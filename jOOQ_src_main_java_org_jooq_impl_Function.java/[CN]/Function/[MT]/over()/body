@@ -1,4 +1,4 @@
 {
-  over=true;
+  windowSpecification=new WindowSpecificationImpl();
   return this;
 }

@@ -6,6 +6,4 @@
   this.arguments=new QueryPartList<QueryPart>(arguments);
   this.keepDenseRankOrderBy=new SortFieldList();
   this.withinGroupOrderBy=new SortFieldList();
-  this.partitionBy=new QueryPartList<Field<?>>();
-  this.orderBy=new SortFieldList();
 }

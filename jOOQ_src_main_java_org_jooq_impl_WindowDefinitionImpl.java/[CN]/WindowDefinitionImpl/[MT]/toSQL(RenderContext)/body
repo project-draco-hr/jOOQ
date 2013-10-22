@@ -1,0 +1,11 @@
+{
+  if (ctx.declareWindows()) {
+    ctx.visit(name).sql(" ").keyword("as").sql(" (").visit(window).sql(")");
+  }
+ else   if (asList(ctx.configuration().dialect()).contains(POSTGRES)) {
+    ctx.visit(name);
+  }
+ else {
+    ctx.visit(window);
+  }
+}

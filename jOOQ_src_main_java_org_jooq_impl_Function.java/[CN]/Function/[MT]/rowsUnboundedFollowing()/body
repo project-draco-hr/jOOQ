@@ -1,4 +1,4 @@
 {
-  rowsStart=Integer.MAX_VALUE;
+  windowSpecification.rowsUnboundedFollowing();
   return this;
 }

@@ -1,4 +1,4 @@
 {
-  rowsStart=Integer.MIN_VALUE;
+  windowSpecification.rowsUnboundedPreceding();
   return this;
 }

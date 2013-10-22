@@ -1,0 +1,4 @@
+{
+  rowsEnd=-number;
+  return this;
+}

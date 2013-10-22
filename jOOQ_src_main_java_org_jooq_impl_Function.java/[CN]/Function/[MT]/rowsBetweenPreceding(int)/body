@@ -1,4 +1,4 @@
 {
-  rowsPreceding(number);
+  windowSpecification.rowsBetweenPreceding(number);
   return this;
 }

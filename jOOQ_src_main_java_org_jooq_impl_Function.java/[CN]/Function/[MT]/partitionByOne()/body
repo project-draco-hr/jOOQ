@@ -1,5 +1,4 @@
 {
-  partitionByOne=true;
-  partitionBy.add(one());
+  windowSpecification.partitionByOne();
   return this;
 }

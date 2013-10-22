@@ -1,4 +1,4 @@
 {
-  rowsEnd=0;
+  windowSpecification.andCurrentRow();
   return this;
 }

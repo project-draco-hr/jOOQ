@@ -1,14 +1,15 @@
 {
-  if (term == LIST_AGG && asList(CUBRID,H2,HSQLDB,MARIADB,MYSQL).contains(context.configuration().dialect())) {
-    toSQLGroupConcat(context);
+  if (term == LIST_AGG && asList(CUBRID,H2,HSQLDB,MARIADB,MYSQL).contains(ctx.configuration().dialect())) {
+    toSQLGroupConcat(ctx);
   }
- else   if (term == LIST_AGG && asList(POSTGRES).contains(context.configuration().dialect())) {
-    toSQLStringAgg(context);
+ else   if (term == LIST_AGG && asList(POSTGRES).contains(ctx.configuration().dialect())) {
+    toSQLStringAgg(ctx);
+    toSQLOverClause(ctx);
   }
  else {
-    toSQLArguments(context);
-    toSQLKeepDenseRankOrderByClause(context);
-    toSQLWithinGroupClause(context);
-    toSQLOverClause(context);
+    toSQLArguments(ctx);
+    toSQLKeepDenseRankOrderByClause(ctx);
+    toSQLWithinGroupClause(ctx);
+    toSQLOverClause(ctx);
   }
 }

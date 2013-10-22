@@ -1,21 +1,21 @@
 {
-  toSQLFunctionName(context);
-  context.sql("(");
+  toSQLFunctionName(ctx);
+  ctx.sql("(");
   if (distinct) {
-    context.keyword("distinct").sql(" ");
+    ctx.keyword("distinct").sql(" ");
   }
   if (!arguments.isEmpty()) {
-    context.visit(arguments);
+    ctx.visit(arguments);
   }
   if (ignoreNulls) {
 {
-      context.sql(" ").keyword("ignore nulls");
+      ctx.sql(" ").keyword("ignore nulls");
     }
   }
  else   if (respectNulls) {
 {
-      context.sql(" ").keyword("respect nulls");
+      ctx.sql(" ").keyword("respect nulls");
     }
   }
-  context.sql(")");
+  ctx.sql(")");
 }

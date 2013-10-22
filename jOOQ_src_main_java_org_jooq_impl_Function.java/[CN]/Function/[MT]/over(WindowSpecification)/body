@@ -1,0 +1,4 @@
+{
+  this.windowSpecification=(WindowSpecificationImpl)specification;
+  return this;
+}

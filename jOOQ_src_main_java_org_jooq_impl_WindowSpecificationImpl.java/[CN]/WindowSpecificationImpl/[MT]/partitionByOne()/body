@@ -1,0 +1,5 @@
+{
+  partitionByOne=true;
+  partitionBy.add(one());
+  return null;
+}

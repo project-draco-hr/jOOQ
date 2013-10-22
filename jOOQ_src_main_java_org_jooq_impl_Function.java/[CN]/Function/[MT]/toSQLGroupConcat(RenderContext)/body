@@ -1,15 +1,15 @@
 {
-  toSQLFunctionName(context);
-  context.sql("(");
+  toSQLFunctionName(ctx);
+  ctx.sql("(");
   if (distinct) {
-    context.keyword("distinct").sql(" ");
+    ctx.keyword("distinct").sql(" ");
   }
-  context.visit(arguments.get(0));
+  ctx.visit(arguments.get(0));
   if (!withinGroupOrderBy.isEmpty()) {
-    context.sql(" ").keyword("order by").sql(" ").visit(withinGroupOrderBy);
+    ctx.sql(" ").keyword("order by").sql(" ").visit(withinGroupOrderBy);
   }
   if (arguments.size() > 1) {
-    context.sql(" ").keyword("separator").sql(" ").visit(arguments.get(1));
+    ctx.sql(" ").keyword("separator").sql(" ").visit(arguments.get(1));
   }
-  context.sql(")");
+  ctx.sql(")");
 }

@@ -1,0 +1,3 @@
+{
+  return partitionBy(Arrays.asList(fields));
+}

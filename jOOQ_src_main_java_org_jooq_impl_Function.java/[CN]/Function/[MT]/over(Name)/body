@@ -1,0 +1,4 @@
+{
+  this.windowName=n;
+  return this;
+}

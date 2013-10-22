@@ -1,0 +1,4 @@
+{
+  this.windowDefinition=(WindowDefinitionImpl)definition;
+  return this;
+}

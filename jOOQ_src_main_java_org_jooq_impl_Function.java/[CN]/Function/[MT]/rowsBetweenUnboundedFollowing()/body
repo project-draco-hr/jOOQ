@@ -1,4 +1,4 @@
 {
-  rowsUnboundedFollowing();
+  windowSpecification.rowsBetweenUnboundedFollowing();
   return this;
 }

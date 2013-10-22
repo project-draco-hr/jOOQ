@@ -1,4 +1,4 @@
 {
-  partitionBy.addAll(Arrays.asList(fields));
+  windowSpecification.partitionBy(fields);
   return this;
 }

@@ -1,37 +1,5 @@
 {
-  if (!over) {
-    return;
-  }
-  if (over && term == ROW_NUMBER && context.configuration().dialect() == HSQLDB) {
-    return;
-  }
-  String glue="";
-  context.sql(" ").keyword("over").sql(" (");
-  if (!partitionBy.isEmpty()) {
-    if (partitionByOne && asList(CUBRID).contains(context.configuration().dialect())) {
-    }
- else {
-      context.sql(glue).keyword("partition by").sql(" ").visit(partitionBy);
-      glue=" ";
-    }
-  }
-  if (!orderBy.isEmpty()) {
-    context.sql(glue).keyword("order by").sql(" ").visit(orderBy);
-    glue=" ";
-  }
-  if (rowsStart != null) {
-    context.sql(glue);
-    context.keyword("rows").sql(" ");
-    if (rowsEnd != null) {
-      context.keyword("between").sql(" ");
-      toSQLRows(context,rowsStart);
-      context.sql(" ").keyword("and").sql(" ");
-      toSQLRows(context,rowsEnd);
-    }
- else {
-      toSQLRows(context,rowsStart);
-    }
-    glue=" ";
-  }
-  context.sql(")");
+  if (windowSpecification == null && windowDefinition == null && windowName == null)   return;
+  if (term == ROW_NUMBER && ctx.configuration().dialect() == HSQLDB)   return;
+  ctx.sql(" ").keyword("over").sql(" (").visit(windowSpecification != null ? windowSpecification : windowDefinition != null ? windowDefinition : windowName).sql(")");
 }

@@ -1,0 +1,4 @@
+{
+  rowsEnd=Integer.MIN_VALUE;
+  return this;
+}

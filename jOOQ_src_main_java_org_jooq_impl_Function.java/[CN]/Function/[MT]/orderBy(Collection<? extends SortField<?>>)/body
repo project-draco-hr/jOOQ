@@ -1,4 +1,4 @@
 {
-  orderBy.addAll(fields);
+  windowSpecification.orderBy(fields);
   return this;
 }

@@ -1,0 +1,4 @@
+{
+  this.partitionBy=new QueryPartList<Field<?>>();
+  this.orderBy=new SortFieldList();
+}

@@ -9,6 +9,9 @@
  else   if (declareTables) {
     sb.append("tables");
   }
+ else   if (declareWindows) {
+    sb.append("windows");
+  }
  else {
     sb.append("-");
   }

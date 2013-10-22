@@ -1,12 +1,15 @@
 {
-  if (term == LIST_AGG && asList(CUBRID,H2,HSQLDB,MARIADB,MYSQL).contains(context.configuration().dialect())) {
-    context.visit(arguments.get(0));
-    context.visit(withinGroupOrderBy);
+  if (term == LIST_AGG && asList(CUBRID,H2,HSQLDB,MARIADB,MYSQL).contains(ctx.configuration().dialect())) {
+    ctx.visit(arguments.get(0));
+    ctx.visit(withinGroupOrderBy);
     if (arguments.size() > 1) {
-      context.visit(arguments.get(1));
+      ctx.visit(arguments.get(1));
     }
   }
  else {
-    context.visit(arguments).visit(keepDenseRankOrderBy).visit(withinGroupOrderBy).visit(partitionBy).visit(orderBy);
+    ctx.visit(arguments).visit(keepDenseRankOrderBy).visit(withinGroupOrderBy);
+    if (windowSpecification != null)     ctx.visit(windowSpecification);
+ else     if (windowDefinition != null)     ctx.visit(windowDefinition);
+ else     if (windowName != null)     ctx.visit(windowName);
   }
 }

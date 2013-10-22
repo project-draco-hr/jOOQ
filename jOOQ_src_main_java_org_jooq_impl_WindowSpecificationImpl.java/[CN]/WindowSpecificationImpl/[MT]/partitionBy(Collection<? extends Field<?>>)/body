@@ -1,0 +1,4 @@
+{
+  partitionBy.addAll(fields);
+  return this;
+}
