@@ -80,7 +80,7 @@
   }
   context.end(SELECT_HAVING);
   context.start(SELECT_WINDOW);
-  if (!getWindow().isEmpty()) {
+  if (!getWindow().isEmpty() && asList(POSTGRES).contains(dialect.family())) {
     context.formatSeparator().keyword("window").sql(" ").declareWindows(true).visit(getWindow()).declareWindows(false);
   }
   context.end(SELECT_WINDOW);
