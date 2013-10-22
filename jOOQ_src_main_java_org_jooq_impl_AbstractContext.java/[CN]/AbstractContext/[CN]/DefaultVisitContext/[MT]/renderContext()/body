@@ -1,0 +1,3 @@
+{
+  return context() instanceof RenderContext ? (RenderContext)context() : null;
+}

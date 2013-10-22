@@ -1,3 +1,0 @@
-{
-  throw new UnsupportedOperationException("QueryPart traversal listening is currently only supported for RenderContext");
-}

@@ -1,0 +1,6 @@
+{
+  if (ctx.clause() == SELECT) {
+    stack.push(ctx.context().data(DATA_LOCALLY_SCOPED_DATA_MAP));
+    ctx.context().data(DATA_LOCALLY_SCOPED_DATA_MAP,new HashMap<Object,Object>());
+  }
+}

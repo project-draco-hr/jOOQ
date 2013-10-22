@@ -1,3 +1,0 @@
-{
-  return DefaultRenderContext.this.data(key);
-}

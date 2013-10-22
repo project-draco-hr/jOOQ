@@ -1,9 +1,0 @@
-{
-  if (clause != null) {
-    for (    VisitListener listener : visitListeners) {
-      listener.clauseEnd(visitContext);
-    }
-    if (visitClauses.removeLast() != clause)     throw new IllegalStateException("Mismatch between visited clauses!");
-  }
-  return this;
-}

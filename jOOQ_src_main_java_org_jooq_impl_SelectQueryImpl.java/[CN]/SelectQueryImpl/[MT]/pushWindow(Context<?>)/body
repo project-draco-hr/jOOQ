@@ -1,0 +1,5 @@
+{
+  if (!getWindow().isEmpty()) {
+    ((Map<Object,Object>)context.data(DATA_LOCALLY_SCOPED_DATA_MAP)).put(DATA_WINDOW_DEFINITIONS,getWindow());
+  }
+}

@@ -1,24 +1,13 @@
 {
   if (part != null) {
-    QueryPartInternal internal=(QueryPartInternal)part;
-    if (declareFields() && !internal.declaresFields()) {
-      declareFields(false);
-      visit0(internal);
-      declareFields(true);
-    }
- else     if (declareTables() && !internal.declaresTables()) {
-      declareTables(false);
-      visit0(internal);
-      declareTables(true);
-    }
- else     if (declareWindows() && !internal.declaresWindows()) {
-      declareWindows(false);
-      visit0(internal);
-      declareWindows(true);
-    }
- else {
-      visit0(internal);
-    }
+    Clause[] clauses=visitListeners.length > 0 ? clause(part) : null;
+    if (clauses != null)     for (int i=0; i < clauses.length; i++)     start(clauses[i]);
+    QueryPart original=part;
+    QueryPart replacement=start(part);
+    if (original == replacement)     visit0(original);
+ else     visit0(replacement);
+    end(replacement);
+    if (clauses != null)     for (int i=clauses.length - 1; i >= 0; i--)     end(clauses[i]);
   }
   return (C)this;
 }

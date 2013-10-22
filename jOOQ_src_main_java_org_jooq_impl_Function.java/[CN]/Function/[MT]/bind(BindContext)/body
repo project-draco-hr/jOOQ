@@ -8,8 +8,7 @@
   }
  else {
     ctx.visit(arguments).visit(keepDenseRankOrderBy).visit(withinGroupOrderBy);
-    if (windowSpecification != null)     ctx.visit(windowSpecification);
- else     if (windowDefinition != null)     ctx.visit(windowDefinition);
- else     if (windowName != null)     ctx.visit(windowName);
+    QueryPart window=window(ctx);
+    if (window != null)     ctx.visit(window);
   }
 }

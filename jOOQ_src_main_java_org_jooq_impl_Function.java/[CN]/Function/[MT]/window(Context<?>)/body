@@ -1,0 +1,17 @@
+{
+  if (windowSpecification != null)   return windowSpecification;
+  if (windowDefinition != null)   return windowDefinition;
+  if (windowName != null) {
+    if (asList(POSTGRES).contains(ctx.configuration().dialect().family())) {
+      return windowName;
+    }
+    Map<Object,Object> map=(Map<Object,Object>)ctx.data(DATA_LOCALLY_SCOPED_DATA_MAP);
+    QueryPartList<WindowDefinition> windows=(QueryPartList<WindowDefinition>)map.get(DATA_WINDOW_DEFINITIONS);
+    for (    WindowDefinition window : windows) {
+      if (((WindowDefinitionImpl)window).getName().equals(windowName)) {
+        return window;
+      }
+    }
+  }
+  return null;
+}
