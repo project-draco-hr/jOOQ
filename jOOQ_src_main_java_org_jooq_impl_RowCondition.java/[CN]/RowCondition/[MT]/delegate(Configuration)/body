@@ -15,6 +15,7 @@
   }
  else   if (asList(GREATER,GREATER_OR_EQUAL,LESS,LESS_OR_EQUAL).contains(comparator) && asList(DERBY,CUBRID,FIREBIRD,SQLITE).contains(dialect.family())) {
     Comparator order=(comparator == GREATER) ? GREATER : (comparator == GREATER_OR_EQUAL) ? GREATER : (comparator == LESS) ? LESS : (comparator == LESS_OR_EQUAL) ? LESS : null;
+    Comparator factoredOrder=(comparator == GREATER) ? GREATER_OR_EQUAL : (comparator == GREATER_OR_EQUAL) ? GREATER_OR_EQUAL : (comparator == LESS) ? LESS_OR_EQUAL : (comparator == LESS_OR_EQUAL) ? LESS_OR_EQUAL : null;
     boolean equal=(comparator == GREATER_OR_EQUAL) || (comparator == LESS_OR_EQUAL);
     List<Condition> outer=new ArrayList<Condition>();
     Field<?>[] leftFields=left.fields();
@@ -31,6 +32,9 @@
       outer.add(new RowCondition(left,right,Comparator.EQUALS));
     }
     Condition result=new CombinedCondition(Operator.OR,outer);
+    if (leftFields.length > 1) {
+      result=leftFields[0].compare(factoredOrder,(Field)rightFields[0]).and(result);
+    }
     return (QueryPartInternal)result;
   }
  else {
