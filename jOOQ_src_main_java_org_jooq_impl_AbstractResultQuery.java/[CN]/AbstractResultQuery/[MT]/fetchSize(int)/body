@@ -1,0 +1,4 @@
+{
+  this.fetchSize=rows;
+  return this;
+}
