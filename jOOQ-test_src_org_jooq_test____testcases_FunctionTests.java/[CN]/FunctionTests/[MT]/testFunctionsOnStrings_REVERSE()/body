@@ -3,7 +3,6 @@ switch (dialect().family()) {
 case DERBY:
 case FIREBIRD:
 case H2:
-case INGRES:
 case SQLITE:
     log.info("SKIPPING","REVERSE function");
   break;

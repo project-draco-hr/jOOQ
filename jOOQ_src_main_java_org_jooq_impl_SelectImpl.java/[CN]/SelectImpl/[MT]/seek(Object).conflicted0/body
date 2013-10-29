@@ -1,3 +1,3 @@
 {
-  return seek(val(t1));
+  return seek(new Object[]{t1});
 }

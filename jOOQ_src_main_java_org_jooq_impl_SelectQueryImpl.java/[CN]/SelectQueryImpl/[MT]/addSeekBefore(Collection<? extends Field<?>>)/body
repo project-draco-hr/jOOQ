@@ -1,0 +1,4 @@
+{
+  seekBefore=true;
+  getSeek().addAll(fields);
+}

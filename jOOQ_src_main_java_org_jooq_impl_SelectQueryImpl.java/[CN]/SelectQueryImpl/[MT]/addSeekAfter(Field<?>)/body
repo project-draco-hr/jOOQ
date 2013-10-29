@@ -1,0 +1,3 @@
+{
+  addSeekAfter(Arrays.asList(fields));
+}
