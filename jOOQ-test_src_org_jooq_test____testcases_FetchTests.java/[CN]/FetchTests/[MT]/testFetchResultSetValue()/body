@@ -1,6 +1,6 @@
 {
-  assertEquals(1,create().fetchValue(create().fetchLazy("select 1 from " + TBook().getName() + " where "+ TBook_ID()+ " = 1").resultSet()));
-  assertEquals("1",create().fetchValue(create().fetchLazy("select 1 from " + TBook().getName() + " where "+ TBook_ID()+ " = 1").resultSet(),String.class));
-  assertEquals("1",create().fetchValue(create().fetchLazy("select 1 from " + TBook().getName() + " where "+ TBook_ID()+ " = 1").resultSet(),SQLDataType.VARCHAR));
-  assertEquals("1",create().fetchValue(create().fetchLazy("select 1 from " + TBook().getName() + " where "+ TBook_ID()+ " = 1").resultSet(),TBook_TITLE()));
+  assertEquals("1","" + create().fetchValue(create().fetchLazy("select 1 from " + TBook().getName() + " where "+ TBook_ID().getName()+ " = 1").resultSet()));
+  assertEquals("1",create().fetchValue(create().fetchLazy("select 1 from " + TBook().getName() + " where "+ TBook_ID().getName()+ " = 1").resultSet(),String.class));
+  assertEquals("1",create().fetchValue(create().fetchLazy("select 1 from " + TBook().getName() + " where "+ TBook_ID().getName()+ " = 1").resultSet(),SQLDataType.VARCHAR));
+  assertEquals("1",create().fetchValue(create().fetchLazy("select 1 from " + TBook().getName() + " where "+ TBook_ID().getName()+ " = 1").resultSet(),TBook_TITLE()));
 }
