@@ -1,7 +1,6 @@
 {
   Field<BigDecimal> median=median(TBook_ID());
 switch (dialect().family()) {
-case CUBRID:
 case DERBY:
 case FIREBIRD:
 case H2:
