@@ -1,13 +1,21 @@
 {
-  if (loader == null) {
-    try {
-      return Class.forName(className);
+  try {
+    if (loader == null) {
+      try {
+        return Class.forName(className);
+      }
+ catch (      ClassNotFoundException e) {
+        return Thread.currentThread().getContextClassLoader().loadClass(className);
+      }
     }
- catch (    ClassNotFoundException e) {
-      return Thread.currentThread().getContextClassLoader().loadClass(className);
+ else {
+      return loader.loadClass(className);
     }
   }
- else {
-    return loader.loadClass(className);
+ catch (  ClassNotFoundException e) {
+    if (className.startsWith("org.jooq.util.")) {
+      log.warn("Licensing","With jOOQ 3.2, licensing has changed, and your database may no longer be supported with jOOQ Open Source Edition. See http://www.jooq.org/licensing for details");
+    }
+    throw e;
   }
 }
