@@ -1,0 +1,19 @@
+{
+switch (dialect().family()) {
+case DERBY:
+case FIREBIRD:
+case H2:
+case INGRES:
+case SQLITE:
+    log.info("SKIPPING","REVERSE function");
+  break;
+default :
+{
+  Record result=create().select(reverse("a"),reverse("ab"),reverse("abc")).fetchOne();
+  assertEquals("a",result.getValue(0));
+  assertEquals("ba",result.getValue(1));
+  assertEquals("cba",result.getValue(2));
+  break;
+}
+}
+}

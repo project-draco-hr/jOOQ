@@ -1,0 +1,4 @@
+{
+  super("reverse",field.getDataType(),field);
+  this.field=field;
+}
