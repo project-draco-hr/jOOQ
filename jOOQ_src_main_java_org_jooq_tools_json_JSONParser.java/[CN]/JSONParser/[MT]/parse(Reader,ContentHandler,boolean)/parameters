@@ -1,0 +1,3 @@
+Reader in
+ContentHandler contentHandler
+boolean isResume

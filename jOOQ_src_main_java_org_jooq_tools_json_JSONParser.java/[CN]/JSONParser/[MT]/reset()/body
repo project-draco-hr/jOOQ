@@ -1,0 +1,5 @@
+{
+  token=null;
+  status=S_INIT;
+  handlerStatusStack=null;
+}

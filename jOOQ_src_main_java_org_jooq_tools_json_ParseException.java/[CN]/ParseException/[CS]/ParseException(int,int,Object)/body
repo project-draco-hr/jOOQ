@@ -1,0 +1,5 @@
+{
+  this.position=position;
+  this.errorType=errorType;
+  this.unexpectedObject=unexpectedObject;
+}
