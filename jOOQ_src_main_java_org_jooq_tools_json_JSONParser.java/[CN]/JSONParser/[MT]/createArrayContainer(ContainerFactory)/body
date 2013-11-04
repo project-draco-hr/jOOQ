@@ -1,0 +1,6 @@
+{
+  if (containerFactory == null)   return new JSONArray();
+  List l=containerFactory.creatArrayContainer();
+  if (l == null)   return new JSONArray();
+  return l;
+}

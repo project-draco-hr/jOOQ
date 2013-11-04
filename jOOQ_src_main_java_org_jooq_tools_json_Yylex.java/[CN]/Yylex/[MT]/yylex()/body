@@ -1,0 +1,219 @@
+{
+  int zzInput;
+  int zzAction;
+  int zzCurrentPosL;
+  int zzMarkedPosL;
+  int zzEndReadL=zzEndRead;
+  char[] zzBufferL=zzBuffer;
+  char[] zzCMapL=ZZ_CMAP;
+  int[] zzTransL=ZZ_TRANS;
+  int[] zzRowMapL=ZZ_ROWMAP;
+  int[] zzAttrL=ZZ_ATTRIBUTE;
+  while (true) {
+    zzMarkedPosL=zzMarkedPos;
+    yychar+=zzMarkedPosL - zzStartRead;
+    zzAction=-1;
+    zzCurrentPosL=zzCurrentPos=zzStartRead=zzMarkedPosL;
+    zzState=ZZ_LEXSTATE[zzLexicalState];
+    zzForAction: {
+      while (true) {
+        if (zzCurrentPosL < zzEndReadL)         zzInput=zzBufferL[zzCurrentPosL++];
+ else         if (zzAtEOF) {
+          zzInput=YYEOF;
+          break zzForAction;
+        }
+ else {
+          zzCurrentPos=zzCurrentPosL;
+          zzMarkedPos=zzMarkedPosL;
+          boolean eof=zzRefill();
+          zzCurrentPosL=zzCurrentPos;
+          zzMarkedPosL=zzMarkedPos;
+          zzBufferL=zzBuffer;
+          zzEndReadL=zzEndRead;
+          if (eof) {
+            zzInput=YYEOF;
+            break zzForAction;
+          }
+ else {
+            zzInput=zzBufferL[zzCurrentPosL++];
+          }
+        }
+        int zzNext=zzTransL[zzRowMapL[zzState] + zzCMapL[zzInput]];
+        if (zzNext == -1)         break zzForAction;
+        zzState=zzNext;
+        int zzAttributes=zzAttrL[zzState];
+        if ((zzAttributes & 1) == 1) {
+          zzAction=zzState;
+          zzMarkedPosL=zzCurrentPosL;
+          if ((zzAttributes & 8) == 8)           break zzForAction;
+        }
+      }
+    }
+    zzMarkedPos=zzMarkedPosL;
+switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
+case 11:
+{
+        sb.append(yytext());
+      }
+case 25:
+    break;
+case 4:
+{
+    sb=null;
+    sb=new StringBuffer();
+    yybegin(STRING_BEGIN);
+  }
+case 26:
+break;
+case 16:
+{
+sb.append('\b');
+}
+case 27:
+break;
+case 6:
+{
+return new Yytoken(Yytoken.TYPE_RIGHT_BRACE,null);
+}
+case 28:
+break;
+case 23:
+{
+Boolean val=Boolean.valueOf(yytext());
+return new Yytoken(Yytoken.TYPE_VALUE,val);
+}
+case 29:
+break;
+case 22:
+{
+return new Yytoken(Yytoken.TYPE_VALUE,null);
+}
+case 30:
+break;
+case 13:
+{
+yybegin(YYINITIAL);
+return new Yytoken(Yytoken.TYPE_VALUE,sb.toString());
+}
+case 31:
+break;
+case 12:
+{
+sb.append('\\');
+}
+case 32:
+break;
+case 21:
+{
+Double val=Double.valueOf(yytext());
+return new Yytoken(Yytoken.TYPE_VALUE,val);
+}
+case 33:
+break;
+case 1:
+{
+throw new ParseException(yychar,ParseException.ERROR_UNEXPECTED_CHAR,new Character(yycharat(0)));
+}
+case 34:
+break;
+case 8:
+{
+return new Yytoken(Yytoken.TYPE_RIGHT_SQUARE,null);
+}
+case 35:
+break;
+case 19:
+{
+sb.append('\r');
+}
+case 36:
+break;
+case 15:
+{
+sb.append('/');
+}
+case 37:
+break;
+case 10:
+{
+return new Yytoken(Yytoken.TYPE_COLON,null);
+}
+case 38:
+break;
+case 14:
+{
+sb.append('"');
+}
+case 39:
+break;
+case 5:
+{
+return new Yytoken(Yytoken.TYPE_LEFT_BRACE,null);
+}
+case 40:
+break;
+case 17:
+{
+sb.append('\f');
+}
+case 41:
+break;
+case 24:
+{
+try {
+int ch=Integer.parseInt(yytext().substring(2),16);
+sb.append((char)ch);
+}
+ catch (Exception e) {
+throw new ParseException(yychar,ParseException.ERROR_UNEXPECTED_EXCEPTION,e);
+}
+}
+case 42:
+break;
+case 20:
+{
+sb.append('\t');
+}
+case 43:
+break;
+case 7:
+{
+return new Yytoken(Yytoken.TYPE_LEFT_SQUARE,null);
+}
+case 44:
+break;
+case 2:
+{
+Long val=Long.valueOf(yytext());
+return new Yytoken(Yytoken.TYPE_VALUE,val);
+}
+case 45:
+break;
+case 18:
+{
+sb.append('\n');
+}
+case 46:
+break;
+case 9:
+{
+return new Yytoken(Yytoken.TYPE_COMMA,null);
+}
+case 47:
+break;
+case 3:
+{
+}
+case 48:
+break;
+default :
+if (zzInput == YYEOF && zzStartRead == zzCurrentPos) {
+zzAtEOF=true;
+return null;
+}
+ else {
+zzScanError(ZZ_NO_MATCH);
+}
+}
+}
+}

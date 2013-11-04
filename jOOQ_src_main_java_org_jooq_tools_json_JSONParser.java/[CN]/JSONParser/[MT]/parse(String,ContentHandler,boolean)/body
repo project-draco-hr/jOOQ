@@ -1,0 +1,9 @@
+{
+  StringReader in=new StringReader(s);
+  try {
+    parse(in,contentHandler,isResume);
+  }
+ catch (  IOException ie) {
+    throw new ParseException(-1,ParseException.ERROR_UNEXPECTED_EXCEPTION,ie);
+  }
+}

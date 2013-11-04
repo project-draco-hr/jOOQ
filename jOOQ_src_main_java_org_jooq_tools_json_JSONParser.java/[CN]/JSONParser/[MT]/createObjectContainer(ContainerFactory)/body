@@ -1,0 +1,6 @@
+{
+  if (containerFactory == null)   return new JSONObject();
+  Map m=containerFactory.createObjectContainer();
+  if (m == null)   return new JSONObject();
+  return m;
+}

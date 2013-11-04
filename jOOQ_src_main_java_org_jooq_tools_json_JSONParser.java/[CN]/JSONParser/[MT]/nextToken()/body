@@ -1,0 +1,4 @@
+{
+  token=lexer.yylex();
+  if (token == null)   token=new Yytoken(Yytoken.TYPE_EOF,null);
+}

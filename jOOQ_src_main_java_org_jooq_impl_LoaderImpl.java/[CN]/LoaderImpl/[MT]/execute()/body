@@ -5,6 +5,9 @@
  else   if (content == CONTENT_XML) {
     throw new UnsupportedOperationException();
   }
+ else   if (content == CONTENT_JSON) {
+    executeJSON();
+  }
  else {
     throw new IllegalStateException();
   }

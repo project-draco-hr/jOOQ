@@ -1,0 +1,4 @@
+{
+  JSONParser parser=new JSONParser();
+  return parser.parse(s);
+}

@@ -1,0 +1,4 @@
+{
+  lexer.yyreset(in);
+  reset();
+}
