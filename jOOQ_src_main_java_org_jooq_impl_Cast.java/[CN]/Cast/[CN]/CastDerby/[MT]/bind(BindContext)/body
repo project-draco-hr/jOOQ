@@ -1,0 +1,11 @@
+{
+  if (field.getDataType().isNumeric() && BOOLEAN.equals(getSQLDataType())) {
+    context.visit(asDecodeNumberToBoolean());
+    return;
+  }
+ else   if (field.getDataType().isString() && BOOLEAN.equals(getSQLDataType())) {
+    context.visit(asDecodeVarcharToBoolean());
+    return;
+  }
+  super.bind(context);
+}

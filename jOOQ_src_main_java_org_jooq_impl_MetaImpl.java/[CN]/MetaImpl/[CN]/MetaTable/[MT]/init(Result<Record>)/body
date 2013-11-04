@@ -1,9 +1,9 @@
 {
   for (  Record column : columns) {
-    String columnName=column.getValue("COLUMN_NAME",String.class);
-    String typeName=column.getValue("TYPE_NAME",String.class);
-    int precision=column.getValue("COLUMN_SIZE",int.class);
-    int scale=column.getValue("DECIMAL_DIGITS",int.class);
+    String columnName=column.getValue(3,String.class);
+    String typeName=column.getValue(5,String.class);
+    int precision=column.getValue(6,int.class);
+    int scale=column.getValue(8,int.class);
     DataType<?> type=null;
     try {
       type=DefaultDataType.getDataType(configuration.dialect(),typeName,precision,scale);

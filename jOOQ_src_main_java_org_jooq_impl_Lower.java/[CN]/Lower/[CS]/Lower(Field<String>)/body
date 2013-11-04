@@ -1,0 +1,4 @@
+{
+  super("lower",field.getDataType(),field);
+  this.field=field;
+}

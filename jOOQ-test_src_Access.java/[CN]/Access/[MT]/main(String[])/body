@@ -1,0 +1,7 @@
+{
+  Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+  Connection con=DriverManager.getConnection("jdbc:odbc:TEST");
+  DatabaseMetaData md=con.getMetaData();
+  DSL.using(con).fetch(md.getProcedures(null,null,null));
+  con.close();
+}

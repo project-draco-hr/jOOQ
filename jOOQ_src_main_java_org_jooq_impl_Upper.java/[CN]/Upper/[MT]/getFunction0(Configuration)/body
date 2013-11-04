@@ -1,0 +1,6 @@
+{
+switch (configuration.dialect().family()) {
+default :
+    return field("{upper}({0})",getDataType(),field);
+}
+}

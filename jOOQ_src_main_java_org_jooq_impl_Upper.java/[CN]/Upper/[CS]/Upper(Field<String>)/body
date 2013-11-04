@@ -1,0 +1,4 @@
+{
+  super("upper",field.getDataType(),field);
+  this.field=field;
+}

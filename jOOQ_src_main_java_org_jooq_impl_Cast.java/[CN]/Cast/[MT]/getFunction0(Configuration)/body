@@ -1,0 +1,8 @@
+{
+switch (configuration.dialect().family()) {
+case DERBY:
+    return new CastDerby();
+default :
+  return new Native();
+}
+}

@@ -1,0 +1,12 @@
+{
+  if (result.size() > 0) {
+    TableField<Record,?>[] fields=new TableField[result.size()];
+    for (int i=0; i < fields.length; i++) {
+      fields[i]=(TableField<Record,?>)field(result.get(i).getValue(columnName,String.class));
+    }
+    return AbstractKeys.createUniqueKey(this,fields);
+  }
+ else {
+    return null;
+  }
+}

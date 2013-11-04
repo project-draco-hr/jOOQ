@@ -1,7 +1,8 @@
 {
   JoinType translatedType=translateType(context);
   Clause translatedClause=translateClause(translatedType);
-  context.visit(lhs).formatIndentStart().formatSeparator().start(translatedClause).keyword(translatedType.toSQL()).sql(" ");
+  String keyword=translatedType.toSQL();
+  context.visit(lhs).formatIndentStart().formatSeparator().start(translatedClause).keyword(keyword).sql(" ");
   if (rhs instanceof JoinTable) {
     context.sql("(").formatIndentStart().formatNewLine();
   }

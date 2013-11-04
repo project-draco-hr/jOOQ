@@ -31,9 +31,6 @@
   String renderedFrom=new DefaultRenderContext(c).render(getFrom());
   if (!renderedFrom.isEmpty()) {
     context.formatSeparator().keyword("from").sql(" ").visit(getFrom());
-    if (grouping && getGroupBy().isEmpty() && asList().contains(dialect)) {
-      context.sql(", (select 1 as x) as empty_grouping_dummy_table");
-    }
   }
   context.declareTables(false).end(SELECT_FROM);
   context.start(SELECT_WHERE);

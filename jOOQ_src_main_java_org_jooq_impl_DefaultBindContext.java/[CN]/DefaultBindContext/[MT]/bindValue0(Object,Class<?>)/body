@@ -36,7 +36,7 @@
     stmt.setBoolean(nextIndex(),(Boolean)value);
   }
  else   if (type == BigDecimal.class) {
-    if (dialect == SQLITE) {
+    if (asList(SQLITE).contains(dialect.family())) {
       stmt.setString(nextIndex(),value.toString());
     }
  else {
@@ -44,7 +44,7 @@
     }
   }
  else   if (type == BigInteger.class) {
-    if (dialect == SQLITE) {
+    if (asList(SQLITE).contains(dialect.family())) {
       stmt.setString(nextIndex(),value.toString());
     }
  else {
@@ -70,7 +70,9 @@
     stmt.setInt(nextIndex(),(Integer)value);
   }
  else   if (type == Long.class) {
-    stmt.setLong(nextIndex(),(Long)value);
+{
+      stmt.setLong(nextIndex(),(Long)value);
+    }
   }
  else   if (type == Short.class) {
     stmt.setShort(nextIndex(),(Short)value);

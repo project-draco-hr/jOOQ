@@ -1,0 +1,15 @@
+{
+  if (lhs.getDataType().isArray()) {
+    return new PostgresArrayContains();
+  }
+ else {
+    Field<String> concat;
+    if (rhs == null) {
+      concat=DSL.concat(inline("%"),Utils.escapeForLike(value,configuration),inline("%"));
+    }
+ else {
+      concat=DSL.concat(inline("%"),Utils.escapeForLike(rhs,configuration),inline("%"));
+    }
+    return lhs.like(concat,Utils.ESCAPE);
+  }
+}

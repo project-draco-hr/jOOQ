@@ -4,16 +4,20 @@
   Result<B> books=create().selectFrom(TBook()).where(TBook_TITLE().like("%a%")).and(TBook_TITLE().notLike(notLike)).fetch();
   assertEquals(3,books.size());
   assertEquals(1,create().insertInto(TBook()).set(TBook_ID(),5).set(TBook_AUTHOR_ID(),2).set(TBook_PUBLISHED_IN(),2012).set(TBook_LANGUAGE_ID(),1).set(TBook_TITLE(),"About percentages (%) and underscores (_), a critical review! Check exclamation marks, too!").execute());
-  books=create().selectFrom(TBook()).where(TBook_TITLE().like("%(!%)%",'!')).and(TBook_TITLE().like("%(#_)%",'#')).and(TBook_TITLE().notLike("%(!%)%",'#')).and(TBook_TITLE().notLike("%(#_)%",'!')).fetch();
-  assertEquals(1,books.size());
-  assertEquals(5,(int)books.get(0).getValue(TBook_ID()));
+  if (!asList().contains(dialect().family())) {
+    books=create().selectFrom(TBook()).where(TBook_TITLE().like("%(!%)%",'!')).and(TBook_TITLE().like("%(#_)%",'#')).and(TBook_TITLE().notLike("%(!%)%",'#')).and(TBook_TITLE().notLike("%(#_)%",'!')).fetch();
+    assertEquals(1,books.size());
+    assertEquals(5,(int)books.get(0).getValue(TBook_ID()));
+  }
   boolean derby=dialect() == DERBY;
   books=create().selectFrom(TBook()).where(TBook_TITLE().like(concat("19","84"))).and(TBook_TITLE().like(upper(concat("198","4")))).and(TBook_TITLE().like(lower(concat("1","984")))).fetch();
   assertEquals(1,books.size());
   assertEquals(1,(int)books.get(0).getValue(TBook_ID()));
-  books=create().selectFrom(TBook()).where(TBook_TITLE().like(concat("%",escape("(%)",'!'),"%"),'!')).and(derby ? trueCondition() : TBook_TITLE().like(concat(val("%"),escape(val("(_)"),'#'),val("%")),'#')).and(TBook_TITLE().notLike(concat("%",escape("(!%)",'#'),"%"),'#')).and(derby ? trueCondition() : TBook_TITLE().notLike(concat(val("%"),escape(val("(#_)"),'!'),val("%")),'!')).fetch();
-  assertEquals(1,books.size());
-  assertEquals(5,(int)books.get(0).getValue(TBook_ID()));
+  if (!asList().contains(dialect().family())) {
+    books=create().selectFrom(TBook()).where(TBook_TITLE().like(concat("%",escape("(%)",'!'),"%"),'!')).and(derby ? trueCondition() : TBook_TITLE().like(concat(val("%"),escape(val("(_)"),'#'),val("%")),'#')).and(TBook_TITLE().notLike(concat("%",escape("(!%)",'#'),"%"),'#')).and(derby ? trueCondition() : TBook_TITLE().notLike(concat(val("%"),escape(val("(#_)"),'!'),val("%")),'!')).fetch();
+    assertEquals(1,books.size());
+    assertEquals(5,(int)books.get(0).getValue(TBook_ID()));
+  }
   books=create().selectFrom(TBook()).where(TBook_TITLE().contains("%")).and(TBook_TITLE().contains("review!")).and(derby ? trueCondition() : TBook_TITLE().contains(val("(_"))).and(TBook_TITLE().startsWith("About")).and(derby ? trueCondition() : TBook_TITLE().startsWith(val("Abo"))).and(TBook_TITLE().endsWith("too!")).and(derby ? trueCondition() : TBook_TITLE().endsWith(val("too!"))).fetch();
   assertEquals(1,books.size());
   assertEquals(5,(int)books.get(0).getValue(TBook_ID()));

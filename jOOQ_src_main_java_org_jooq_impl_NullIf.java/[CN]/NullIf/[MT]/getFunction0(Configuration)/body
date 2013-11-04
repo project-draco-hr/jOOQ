@@ -1,0 +1,6 @@
+{
+switch (configuration.dialect().family()) {
+default :
+    return DSL.field("{nullif}({0}, {1})",getDataType(),arg1,arg2);
+}
+}

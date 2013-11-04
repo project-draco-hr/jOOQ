@@ -1,5 +1,5 @@
 {
-switch (dialect()) {
+switch (dialect().family()) {
 case SQLITE:
     log.info("SKIPPING","FOR UPDATE tests");
   return;
