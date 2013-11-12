@@ -34,6 +34,8 @@
   log.info("Generation remarks");
   log.info("----------------------------------------------------------");
   if (generateImmutablePojos && generateInterfaces)   log.info("  immutable pojos","Immutable POJOs do not have any setters. Hence, setters are also missing from interfaces");
+ else   log.info("  none");
+  log.info("");
   log.info("----------------------------------------------------------");
   String targetPackage=getTargetPackage();
   File targetPackageDir=new File(getTargetDirectory() + File.separator + targetPackage.replace('.',File.separatorChar));
