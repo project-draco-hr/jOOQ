@@ -1,0 +1,6 @@
+{
+  if (fieldMetaData == null) {
+    readAll();
+  }
+  return fieldMetaData;
+}

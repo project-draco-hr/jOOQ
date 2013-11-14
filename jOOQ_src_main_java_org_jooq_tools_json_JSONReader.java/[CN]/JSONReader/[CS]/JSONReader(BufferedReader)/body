@@ -1,4 +1,0 @@
-{
-  this.br=reader;
-  this.parser=new JSONParser();
-}

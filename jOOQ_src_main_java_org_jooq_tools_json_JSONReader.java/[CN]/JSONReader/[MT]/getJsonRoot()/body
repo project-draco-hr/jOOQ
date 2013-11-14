@@ -1,0 +1,12 @@
+{
+  Object parse=parser.parse(br,new ContainerFactory(){
+    @Override public LinkedHashMap createObjectContainer(){
+      return new LinkedHashMap();
+    }
+    @Override public List createArrayContainer(){
+      return new LinkedList();
+    }
+  }
+);
+  return (LinkedHashMap)parse;
+}

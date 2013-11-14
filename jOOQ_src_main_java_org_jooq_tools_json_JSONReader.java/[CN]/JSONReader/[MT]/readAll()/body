@@ -1,24 +1,14 @@
 {
-  List<String[]> all;
+  if (this.records != null) {
+    return this.records;
+  }
   try {
-    Object parse=parser.parse(br);
-    JSONObject obj2=(JSONObject)parse;
-    JSONArray records=(JSONArray)obj2.get("records");
-    all=new ArrayList(records.size());
-    for (    Object record : records) {
-      JSONArray values=(JSONArray)record;
-      List<String> v=new ArrayList<String>(values.size());
-      for (      Object value : values) {
-        v.add(String.valueOf(value));
-      }
-      all.add(v.toArray(new String[v.size()]));
-    }
+    LinkedHashMap jsonRoot=getJsonRoot();
+    readFields(jsonRoot);
+    records=readRecords(jsonRoot);
   }
- catch (  ParseException e1) {
-    throw new RuntimeException(e1);
+ catch (  ParseException ex) {
+    throw new RuntimeException(ex);
   }
-catch (  IOException e1) {
-    throw e1;
-  }
-  return all;
+  return records;
 }

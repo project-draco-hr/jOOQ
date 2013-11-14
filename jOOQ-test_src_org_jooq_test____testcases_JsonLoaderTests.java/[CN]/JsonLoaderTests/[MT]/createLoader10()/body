@@ -1,0 +1,7 @@
+{
+  Loader<A> loader;
+  String json="{\"fields\":[{\"name\":\"ID\",\"type\":\"INTEGER\"},{\"name\":\"FIRST_NAME\",\"type\":\"VARCHAR\"},{\"name\":\"LAST_NAME\",\"type\":\"VARCHAR\"}]," + "\"records\":[[8,\"Hermann\",\"Hesse\"],[1,\"Max\",\"Frisch\"],[2,\"Friedrich\",\"D??rrenmatt\"]]}";
+  String csv="\"ID\",\"First Qualifier\",\"Last Qualifier\"\r" + "8,Hermann,Hesse\n" + "1,\"Max\",Frisch\n"+ "2,Friedrich,D??rrenmatt";
+  loader=create().loadInto(TAuthor()).commitAll().onDuplicateKeyIgnore().onErrorAbort().loadJSON(json).fields(TAuthor_ID(),null,TAuthor_LAST_NAME()).execute();
+  return loader;
+}

@@ -1,3 +1,0 @@
-{
-  new LoaderTests(this).testLoader();
-}

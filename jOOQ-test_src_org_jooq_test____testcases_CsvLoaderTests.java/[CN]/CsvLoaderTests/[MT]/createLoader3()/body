@@ -1,0 +1,6 @@
+{
+  Loader<A> loader;
+  String csv="3\n" + "4";
+  loader=create().loadInto(TAuthor()).onErrorIgnore().loadCSV(csv).fields(TAuthor_ID()).ignoreRows(0).execute();
+  return loader;
+}
