@@ -1,5 +1,9 @@
 {
-  if (record == null)   return null;
-  if (record.size() != 1)   throw new InvalidResultException("Record contains more than one value : " + record);
+  if (record == null) {
+    return null;
+  }
+  if (record.size() != 1) {
+    throw new InvalidResultException("Record contains more than one value : " + record);
+  }
   return record.value1();
 }
