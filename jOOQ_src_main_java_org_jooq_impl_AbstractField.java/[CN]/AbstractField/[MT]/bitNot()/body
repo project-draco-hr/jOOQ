@@ -1,0 +1,3 @@
+{
+  return DSL.bitNot((Field)this);
+}

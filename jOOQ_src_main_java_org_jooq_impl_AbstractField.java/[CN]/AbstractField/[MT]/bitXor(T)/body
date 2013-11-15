@@ -1,0 +1,3 @@
+{
+  return DSL.bitXor((Field)this,(Field)val(value,this));
+}

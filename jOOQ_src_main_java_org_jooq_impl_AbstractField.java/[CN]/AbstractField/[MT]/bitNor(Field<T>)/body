@@ -1,0 +1,3 @@
+{
+  return DSL.bitNor((Field)this,(Field)value);
+}

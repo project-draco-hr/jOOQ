@@ -19,7 +19,7 @@
     return function("bin_or",getDataType(),getArguments());
   }
  else   if (BIT_XOR == operator && asList(SQLITE).contains(family)) {
-    return (Field<T>)bitAnd(bitNot(bitAnd(lhsAsNumber(),rhsAsNumber())),bitOr(lhsAsNumber(),rhsAsNumber()));
+    return (Field<T>)DSL.bitAnd(DSL.bitNot(DSL.bitAnd(lhsAsNumber(),rhsAsNumber())),DSL.bitOr(lhsAsNumber(),rhsAsNumber()));
   }
  else   if (SHL == operator && asList(H2,HSQLDB).contains(family)) {
     return lhs.mul(DSL.power(two(),rhsAsNumber()));
@@ -34,13 +34,13 @@
     return function("bin_shr",getDataType(),getArguments());
   }
  else   if (BIT_NAND == operator) {
-    return (Field<T>)bitNot(bitAnd(lhsAsNumber(),rhsAsNumber()));
+    return (Field<T>)DSL.bitNot(DSL.bitAnd(lhsAsNumber(),rhsAsNumber()));
   }
  else   if (BIT_NOR == operator) {
-    return (Field<T>)bitNot(bitOr(lhsAsNumber(),rhsAsNumber()));
+    return (Field<T>)DSL.bitNot(DSL.bitOr(lhsAsNumber(),rhsAsNumber()));
   }
  else   if (BIT_XNOR == operator) {
-    return (Field<T>)bitNot(bitXor(lhsAsNumber(),rhsAsNumber()));
+    return (Field<T>)DSL.bitNot(DSL.bitXor(lhsAsNumber(),rhsAsNumber()));
   }
  else   if (asList(ADD,SUBTRACT).contains(operator) && lhs.getDataType().isDateTime() && (rhs.get(0).getDataType().isNumeric() || rhs.get(0).getDataType().isInterval())) {
     return new DateExpression();

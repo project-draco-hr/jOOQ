@@ -1,0 +1,3 @@
+{
+  return DSL.bitNand((Field)this,(Field)value);
+}
