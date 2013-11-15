@@ -20,6 +20,12 @@
     assertEquals(key.getValue(0),record.getValue(TBook_ID()));
     assertEquals(key.getValue(1),record.getValue(TBook_LANGUAGE_ID()));
     assertEquals(key.getValue(2),record.getValue(TBook_TITLE()));
+    Record3<Integer,Integer,String> k=create().newRecord(TBook_ID(),TBook_LANGUAGE_ID(),TBook_TITLE());
+    k.setValue(TBook_ID(),record.getValue(TBook_ID()));
+    k.setValue(TBook_LANGUAGE_ID(),record.getValue(TBook_LANGUAGE_ID()));
+    k.setValue(TBook_TITLE(),record.getValue(TBook_TITLE()));
+    assertEquals(key,k);
+    assertEquals(record,map3.get(k));
   }
   Result<B> books=create().selectFrom(TBook()).orderBy(TBook_ID()).fetch();
   List<Map<String,Object>> list=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchMaps();
