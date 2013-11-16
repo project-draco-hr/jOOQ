@@ -1,0 +1,3 @@
+{
+  System.out.println(dsl().select(CUSTOMER.FIRST_NAME,CUSTOMER.LAST_NAME,getCustomerBalance(CUSTOMER.CUSTOMER_ID.cast(Integer.class),currentTimestamp())).from(CUSTOMER).orderBy(inline(3).asc()).fetch());
+}

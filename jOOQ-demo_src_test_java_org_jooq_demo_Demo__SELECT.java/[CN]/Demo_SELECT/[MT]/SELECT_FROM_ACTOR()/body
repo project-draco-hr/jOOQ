@@ -1,0 +1,5 @@
+{
+  Actor a=ACTOR.as("a");
+  FilmActor fa=FILM_ACTOR.as("fa");
+  dsl().select(a.FIRST_NAME,a.LAST_NAME,count(),groupConcatDistinct(CATEGORY.NAME).separator(", ")).from(a).join(FILM_ACTOR).on(FILM_ACTOR.ACTOR_ID.eq(a.ACTOR_ID)).join(FILM).on(FILM_ACTOR.FILM_ID.eq(FILM.FILM_ID)).join(FILM_CATEGORY).on(FILM_CATEGORY.FILM_ID.eq(FILM.FILM_ID)).join(CATEGORY).on(CATEGORY.CATEGORY_ID.eq(FILM_CATEGORY.CATEGORY_ID)).groupBy(a.ACTOR_ID,a.FIRST_NAME,a.LAST_NAME).having(count().gt(40)).orderBy(count().desc()).fetch();
+}
