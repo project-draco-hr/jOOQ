@@ -1,0 +1,7 @@
+{
+  String csv="1;'Kafka'\n" + "2;Frisch";
+  String json="{\"fields\":[{\"name\":\"ID\",\"type\":\"INTEGER\"},{\"name\":\"LAST_NAME\",\"type\":\"VARCHAR\"}]," + "\"records\":[[1,\"Kafka\"],[2,\"Frisch\"]]}";
+  Loader<A> loader=create().loadInto(TAuthor()).onDuplicateKeyError().onErrorAbort().loadJSON(json).fields(TAuthor_ID(),TAuthor_LAST_NAME()).ignoreRows(0).execute();
+  System.out.println("Loader 4 " + create().selectFrom(TAuthor()).fetch().formatJSON());
+  return loader;
+}

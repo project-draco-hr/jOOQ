@@ -1,0 +1,12 @@
+{
+  if (fieldMetaData != null) {
+    return;
+  }
+  LinkedList fieldEntries=(LinkedList)jsonRoot.get("fields");
+  fieldMetaData=new String[fieldEntries.size()];
+  int i=0;
+  for (  Object key : fieldEntries) {
+    fieldMetaData[i]=(String)((LinkedHashMap)key).get("name");
+    i++;
+  }
+}

@@ -1,0 +1,4 @@
+{
+  this.br=new BufferedReader(reader);
+  this.parser=new JSONParser();
+}

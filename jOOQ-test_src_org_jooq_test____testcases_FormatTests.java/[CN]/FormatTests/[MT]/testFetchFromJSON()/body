@@ -1,0 +1,9 @@
+{
+  String json=create().selectFrom(TBook()).orderBy(TBook_ID()).fetch().formatJSON();
+  Result<Record> result2=create().fetchFromJSON(json);
+  int expectedRecords=create().selectFrom(TBook()).fetchCount();
+  assertEquals(expectedRecords,result2.size());
+  assertEquals(BOOK_IDS,result2.getValues(TBook_ID(),Integer.class));
+  assertEquals(BOOK_AUTHOR_IDS,result2.getValues(TBook_AUTHOR_ID(),Integer.class));
+  assertEquals(BOOK_TITLES,result2.getValues(TBook_TITLE()));
+}
