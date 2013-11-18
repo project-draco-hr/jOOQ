@@ -2,13 +2,13 @@
   jOOQAbstractTest.reset=false;
   jOOQAbstractTest.connection.setAutoCommit(false);
   Field<Integer> count=count();
-  Loader<A> loader=createLoader1();
+  Loader<A> loader=createForEmptyFile();
   assertEquals(0,loader.processed());
   assertEquals(0,loader.errors().size());
   assertEquals(0,loader.stored());
   assertEquals(0,loader.ignored());
   assertEquals(2,(int)create().select(count).from(TAuthor()).fetchOne(count));
-  loader=createLoader2();
+  loader=createLoaderAbortingOnConstraintViolationOnLAST_NAME();
   resetLoaderConnection();
   assertEquals(1,loader.processed());
   assertEquals(1,loader.errors().size());
@@ -16,7 +16,7 @@
   assertEquals(0,loader.stored());
   assertEquals(1,loader.ignored());
   assertEquals(2,(int)create().select(count).from(TAuthor()).fetchOne(count));
-  loader=createLoader3();
+  loader=createLoaderIgnoringConstraintViolationOnLAST_NAME();
   resetLoaderConnection();
   assertEquals(2,loader.processed());
   assertEquals(2,loader.errors().size());
@@ -25,7 +25,7 @@
   assertEquals(0,loader.stored());
   assertEquals(2,loader.ignored());
   assertEquals(2,(int)create().select(count).from(TAuthor()).fetchOne(count));
-  loader=createLoader4();
+  loader=createLoaderAbortingOnDuplicateRecords();
   resetLoaderConnection();
   assertEquals(1,loader.processed());
   assertEquals(1,loader.errors().size());
@@ -33,12 +33,12 @@
   assertEquals(0,loader.stored());
   assertEquals(1,loader.ignored());
   assertEquals(2,(int)create().select(count).from(TAuthor()).fetchOne(count));
-  loader=createLoader5();
+  loader=createLoaderIgnoringDuplicateRecords();
   assertEquals(2,loader.processed());
   assertEquals(0,loader.errors().size());
   assertEquals(2,loader.ignored());
   assertEquals(2,(int)create().select(count).from(TAuthor()).fetchOne(count));
-  loader=createLoader6();
+  loader=createLoaderWithDifferentNulls();
   assertEquals(2,loader.processed());
   assertEquals(2,loader.stored());
   assertEquals(0,loader.ignored());
@@ -46,7 +46,7 @@
   boolean oracle=false;
   assertEquals(2,(int)create().select(count).from(TAuthor()).where(TAuthor_ID().in(3,4)).and(TAuthor_LAST_NAME().in("Hesse","Frisch")).and(oracle ? TAuthor_FIRST_NAME().isNull() : TAuthor_FIRST_NAME().equal("")).fetchOne(count));
   assertEquals(2,create().delete(TAuthor()).where(TAuthor_ID().in(3,4)).execute());
-  loader=createLoader7();
+  loader=createLoaderButDontLoadAllColumns();
   assertEquals(2,loader.processed());
   assertEquals(2,loader.stored());
   assertEquals(0,loader.ignored());
@@ -69,7 +69,7 @@ case SQLITE:
   break;
 default :
 {
-  loader=createLoader8();
+  loader=createLoaderUpdatingDuplicateRecords();
   assertEquals(2,loader.processed());
   assertEquals(2,loader.stored());
   assertEquals(0,loader.ignored());
@@ -86,7 +86,7 @@ default :
 }
 }
 resetLoaderConnection();
-loader=createLoader9();
+loader=createLoaderWithRollbackOnDuplicateKeys();
 assertEquals(2,loader.processed());
 assertEquals(0,loader.stored());
 assertEquals(1,loader.ignored());
@@ -95,7 +95,7 @@ assertEquals(1,loader.errors().get(0).rowIndex());
 assertEquals(Arrays.asList("1","Max","Frisch"),Arrays.asList(loader.errors().get(0).row()));
 result=create().selectFrom(TAuthor()).where(TAuthor_ID().in(8)).orderBy(TAuthor_ID()).fetch();
 assertEquals(0,result.size());
-loader=createLoader10();
+loader=createLoaderCommittingAndIgnoringDuplicates();
 assertEquals(3,loader.processed());
 assertEquals(1,loader.stored());
 assertEquals(2,loader.ignored());
