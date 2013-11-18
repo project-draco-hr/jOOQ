@@ -9,7 +9,7 @@
   assertEquals(2 * ID,(int)create().selectFrom(TTriggers()).fetchOne(TTriggers_COUNTER()));
   InsertQuery<T> query;
   query=create().insertQuery(TTriggers());
-  query.addValue(TTriggers_COUNTER(),(Field)null);
+  query.addValue(TTriggers_COUNTER(),null);
   query.addValue(TTriggers_COUNTER(),0);
   query.setReturning();
   assertEquals(1,query.execute());

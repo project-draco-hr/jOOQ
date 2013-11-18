@@ -1,7 +1,7 @@
 {
   InsertQuery<T> query;
   query=create().insertQuery(TTriggers());
-  query.addValue(TTriggers_ID(),(Field)null);
+  query.addValue(TTriggers_ID(),null);
   query.addValue(TTriggers_COUNTER(),0);
   assertEquals(1,query.execute());
   assertNull(query.getReturnedRecord());
