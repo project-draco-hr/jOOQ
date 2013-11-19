@@ -1,0 +1,3 @@
+{
+  new InsertUpdateTests(this).testInsertReturningWithRenderNameStyleAS_IS();
+}

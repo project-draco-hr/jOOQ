@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.hsqldb.generatedclasses.tables.records.T_2845CaseSensitivityRecord.class;
+}

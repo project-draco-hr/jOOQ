@@ -1,0 +1,7 @@
+{
+  setId(from.getId());
+  setInsensitive(from.getInsensitive());
+  setUpper(from.getUpper());
+  setLower(from.getLower());
+  setMixed(from.getMixed());
+}

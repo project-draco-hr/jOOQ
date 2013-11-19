@@ -1,0 +1,5 @@
+java.lang.Integer id
+java.lang.Integer insensitive
+java.lang.Integer upper
+java.lang.Integer lower
+java.lang.Integer mixed

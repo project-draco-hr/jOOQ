@@ -1,0 +1,3 @@
+{
+  return (TableField<CASE,Integer>)CASE().field(4);
+}
