@@ -16,7 +16,7 @@
       context.end(TABLE_JOIN_ON);
     }
  else {
-      context.formatSeparator().start(TABLE_JOIN_USING).keyword("using").sql("( ");
+      context.formatSeparator().start(TABLE_JOIN_USING).keyword("using").sql("(");
       Utils.fieldNames(context,using);
       context.sql(")").end(TABLE_JOIN_USING);
     }
