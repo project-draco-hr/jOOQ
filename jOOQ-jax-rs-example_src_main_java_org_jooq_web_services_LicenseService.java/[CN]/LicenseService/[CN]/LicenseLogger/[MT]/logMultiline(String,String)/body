@@ -1,0 +1,6 @@
+{
+  for (  String line : message.split("\n")) {
+    log.info(comment,line);
+    comment="";
+  }
+}

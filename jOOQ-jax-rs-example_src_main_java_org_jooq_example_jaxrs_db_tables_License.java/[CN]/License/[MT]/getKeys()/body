@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.example.jaxrs.db.tables.records.LicenseRecord>>asList(org.jooq.example.jaxrs.db.Keys.PK_LICENSE,org.jooq.example.jaxrs.db.Keys.UK_LICENSE);
+}

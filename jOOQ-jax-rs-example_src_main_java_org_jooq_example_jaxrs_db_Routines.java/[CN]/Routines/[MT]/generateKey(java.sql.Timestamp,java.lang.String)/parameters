@@ -1,0 +1,2 @@
+java.sql.Timestamp licenseDate
+java.lang.String email

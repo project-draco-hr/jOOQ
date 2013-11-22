@@ -1,0 +1,6 @@
+{
+  org.jooq.example.jaxrs.db.routines.GenerateKey f=new org.jooq.example.jaxrs.db.routines.GenerateKey();
+  f.setLicenseDate(licenseDate);
+  f.setEmail(email);
+  return f.asField();
+}

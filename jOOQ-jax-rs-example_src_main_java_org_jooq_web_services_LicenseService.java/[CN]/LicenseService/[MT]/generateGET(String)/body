@@ -1,0 +1,9 @@
+{
+  return run(new CtxRunnable(){
+    @Override public String run(    DSLContext ctx){
+      Timestamp licenseDate=new Timestamp(System.currentTimeMillis());
+      return ctx.insertInto(LICENSE).set(LICENSE.LICENSE_,generateKey(inline(licenseDate),inline(mail))).set(LICENSE.LICENSE_DATE,licenseDate).set(LICENSE.LICENSEE,mail).returning().fetchOne().getLicense();
+    }
+  }
+);
+}

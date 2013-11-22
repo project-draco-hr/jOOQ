@@ -1,0 +1,5 @@
+{
+  if (log.isDebugEnabled() && ctx.result() != null) {
+    logMultiline("Result",ctx.result().format(5));
+  }
+}

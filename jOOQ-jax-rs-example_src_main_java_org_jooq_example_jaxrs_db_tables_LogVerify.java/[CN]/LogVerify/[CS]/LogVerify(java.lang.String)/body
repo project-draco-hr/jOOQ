@@ -1,0 +1,3 @@
+{
+  super(alias,org.jooq.example.jaxrs.db.LicenseServer.LICENSE_SERVER,org.jooq.example.jaxrs.db.tables.LogVerify.LOG_VERIFY);
+}

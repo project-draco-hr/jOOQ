@@ -1,0 +1,9 @@
+{
+  return run(new CtxRunnable(){
+    @Override public String run(    DSLContext ctx){
+      String v=(version == null || version.equals("")) ? "" : version;
+      return ctx.insertInto(LOG_VERIFY).set(LOG_VERIFY.LICENSE,license).set(LOG_VERIFY.LICENSEE,mail).set(LOG_VERIFY.REQUEST_IP,request.getRemoteAddr()).set(LOG_VERIFY.MATCH,field(selectCount().from(LICENSE).where(LICENSE.LICENSEE.eq(mail)).and(LICENSE.LICENSE_.eq(license)).and(val(v).likeRegex(LICENSE.VERSION)).asField().gt(0))).set(LOG_VERIFY.VERSION,v).returning(LOG_VERIFY.MATCH).fetchOne().getValue(LOG_VERIFY.MATCH,String.class);
+    }
+  }
+);
+}

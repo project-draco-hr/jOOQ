@@ -1,0 +1,3 @@
+{
+  return org.jooq.example.jaxrs.db.tables.License.LICENSE.LICENSE_DATE;
+}

@@ -1,0 +1,6 @@
+{
+  super("generate_key",org.jooq.example.jaxrs.db.LicenseServer.LICENSE_SERVER,org.jooq.impl.SQLDataType.VARCHAR);
+  setReturnParameter(RETURN_VALUE);
+  addInParameter(LICENSE_DATE);
+  addInParameter(EMAIL);
+}

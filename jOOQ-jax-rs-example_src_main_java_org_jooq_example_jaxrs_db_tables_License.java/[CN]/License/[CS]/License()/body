@@ -1,0 +1,3 @@
+{
+  super("license",org.jooq.example.jaxrs.db.LicenseServer.LICENSE_SERVER);
+}
