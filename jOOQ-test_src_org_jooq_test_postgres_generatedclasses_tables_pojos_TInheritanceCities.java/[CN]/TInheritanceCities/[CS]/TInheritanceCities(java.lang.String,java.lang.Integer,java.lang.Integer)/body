@@ -1,5 +1,0 @@
-{
-  this.name=name;
-  this.population=population;
-  this.altitude=altitude;
-}

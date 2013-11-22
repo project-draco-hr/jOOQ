@@ -1,6 +1,0 @@
-{
-  super(org.jooq.test.postgres.generatedclasses.tables.TInheritanceCities.T_INHERITANCE_CITIES);
-  setValue(0,name);
-  setValue(1,population);
-  setValue(2,altitude);
-}

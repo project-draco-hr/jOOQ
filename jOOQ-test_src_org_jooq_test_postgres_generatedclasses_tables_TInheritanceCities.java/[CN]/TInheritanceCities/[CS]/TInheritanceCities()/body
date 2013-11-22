@@ -1,3 +1,0 @@
-{
-  super("t_inheritance_cities",org.jooq.test.postgres.generatedclasses.Public.PUBLIC);
-}
