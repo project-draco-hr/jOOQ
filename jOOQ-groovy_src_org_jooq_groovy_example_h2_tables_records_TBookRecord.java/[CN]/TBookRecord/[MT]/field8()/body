@@ -1,0 +1,3 @@
+{
+  return org.jooq.groovy.example.h2.tables.TBook.T_BOOK.CONTENT_TEXT;
+}
