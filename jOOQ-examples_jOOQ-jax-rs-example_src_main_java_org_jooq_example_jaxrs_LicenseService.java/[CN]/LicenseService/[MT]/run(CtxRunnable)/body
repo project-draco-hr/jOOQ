@@ -3,7 +3,7 @@
   try {
     Class.forName("org.postgresql.Driver");
     c=getConnection("jdbc:postgresql:postgres","postgres",System.getProperty("pw","test"));
-    DSLContext ctx=DSL.using(new DefaultConfiguration().set(new DefaultConnectionProvider(c)).set(SQLDialect.POSTGRES).set(new DefaultExecuteListenerProvider(new LicenseLogger())).set(new Settings().withExecuteLogging(false)));
+    DSLContext ctx=DSL.using(new DefaultConfiguration().set(new DefaultConnectionProvider(c)).set(SQLDialect.POSTGRES).set(new Settings().withExecuteLogging(false)));
     return runnable.run(ctx);
   }
  catch (  Exception e) {

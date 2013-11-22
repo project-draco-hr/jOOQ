@@ -1,5 +1,0 @@
-{
-  if (ctx.query() != null) {
-    log.info("Query",ctx.query().getSQL(INLINED));
-  }
-}
