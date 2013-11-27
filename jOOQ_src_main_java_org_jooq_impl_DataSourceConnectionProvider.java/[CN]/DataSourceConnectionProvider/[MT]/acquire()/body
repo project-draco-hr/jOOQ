@@ -1,11 +1,8 @@
 {
-  if (null == connection) {
-    try {
-      connection=dataSource.getConnection();
-    }
- catch (    SQLException e) {
-      throw new DataAccessException("Error getting connection from data source " + dataSource,e);
-    }
+  try {
+    return dataSource.getConnection();
   }
-  return connection;
+ catch (  SQLException e) {
+    throw new DataAccessException("Error getting connection from data source " + dataSource,e);
+  }
 }
