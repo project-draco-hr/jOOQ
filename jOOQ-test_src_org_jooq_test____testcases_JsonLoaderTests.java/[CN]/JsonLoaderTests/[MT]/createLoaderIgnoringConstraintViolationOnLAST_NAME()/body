@@ -1,7 +1,6 @@
 {
   Loader<A> loader;
   String json="{\"fields\":[{\"name\":\"ID\",\"type\":\"INTEGER\"}],\"records\":[[3],[4]]}";
-  String csv="3\n" + "4";
   loader=create().loadInto(TAuthor()).onErrorIgnore().loadJSON(json).fields(TAuthor_ID()).ignoreRows(0).execute();
   return loader;
 }
