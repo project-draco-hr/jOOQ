@@ -8,7 +8,10 @@
   interfaces.add(EnumType.class.getName());
   out.println("public enum %s[[before= implements ][%s]] {",className,interfaces);
   for (  String literal : e.getLiterals()) {
-    final String identifier=GenerationUtil.convertToJavaIdentifier(literal);
+    String identifier=GenerationUtil.convertToJavaIdentifier(literal);
+    if (identifier.equals(getStrategy().getJavaPackageName(e).replaceAll("\\..*",""))) {
+      identifier+="_";
+    }
     out.println();
     out.tab(1).println("%s(\"%s\"),",identifier,literal);
   }

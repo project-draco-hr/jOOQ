@@ -11,6 +11,9 @@
     if (identifier.equals(getJavaIdentifier(e.getContainer()))) {
       return identifier + "_";
     }
+    if (identifier.equals(getJavaPackageName(e.getContainer()).replaceAll("\\..*",""))) {
+      return identifier + "_";
+    }
   }
   return identifier;
 }

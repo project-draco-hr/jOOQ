@@ -1,3 +1,7 @@
 {
-  return convertToJavaIdentifier(delegate.getJavaMemberName(definition,mode));
+  String identifier=convertToJavaIdentifier(delegate.getJavaMemberName(definition,mode));
+  if (identifier.equals(getJavaPackageName(definition,mode).replaceAll("\\..*",""))) {
+    return identifier + "_";
+  }
+  return identifier;
 }
