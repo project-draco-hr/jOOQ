@@ -1,0 +1,3 @@
+{
+  return dataType.getType() == Date.class ? "date" : dataType.getType() == Time.class ? "time" : "timestamp";
+}

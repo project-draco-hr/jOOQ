@@ -1,0 +1,10 @@
+{
+switch (configuration.dialect().family()) {
+case MYSQL:
+case MARIADB:
+    return DSL.field("{" + name(getDataType()) + "}({0})",getDataType(),field);
+default :
+case H2:
+  return field.cast(getDataType());
+}
+}
