@@ -2,6 +2,5 @@
   Loader<A> loader;
   String json="{\"fields\":[{\"name\":\"ID\",\"type\":\"INTEGER\"},{\"name\":\"LAST_NAME\",\"type\":\"VARCHAR\"}]," + "\"records\":[[1,\"Kafka\"],[2,\"Frisch\"]]}";
   loader=create().loadInto(TAuthor()).onDuplicateKeyIgnore().onErrorAbort().loadJSON(json).fields(TAuthor_ID(),TAuthor_LAST_NAME()).ignoreRows(0).execute();
-  System.out.println("Loader 5 " + create().selectFrom(TAuthor()).fetch().formatJSON());
   return loader;
 }
