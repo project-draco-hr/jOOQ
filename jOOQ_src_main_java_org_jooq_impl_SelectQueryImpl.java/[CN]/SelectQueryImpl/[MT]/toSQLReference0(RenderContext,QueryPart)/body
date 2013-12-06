@@ -27,9 +27,13 @@
   }
   context.declareFields(false).end(SELECT_SELECT);
   context.start(SELECT_FROM).declareTables(true);
-  DefaultConfiguration c=new DefaultConfiguration(context.configuration().dialect());
-  String renderedFrom=new DefaultRenderContext(c).render(getFrom());
-  if (!renderedFrom.isEmpty()) {
+  boolean hasFrom=(context.data(DATA_RENDERING_DB2_FINAL_TABLE_CLAUSE) != null);
+  if (!hasFrom) {
+    DefaultConfiguration c=new DefaultConfiguration(context.configuration().dialect());
+    String renderedFrom=new DefaultRenderContext(c).render(getFrom());
+    hasFrom=!renderedFrom.isEmpty();
+  }
+  if (hasFrom) {
     context.formatSeparator().keyword("from").sql(" ").visit(getFrom());
   }
   context.declareTables(false).end(SELECT_FROM);

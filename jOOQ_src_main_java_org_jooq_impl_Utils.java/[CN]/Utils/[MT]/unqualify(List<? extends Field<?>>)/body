@@ -1,0 +1,5 @@
+{
+  QueryPartList<Field<?>> result=new QueryPartList<Field<?>>();
+  for (  Field<?> field : fields)   result.add(fieldByName(field.getName()));
+  return result;
+}

@@ -1,9 +1,9 @@
 {
-  Table<R> into=getInto();
-  if (into.getPrimaryKey() != null) {
+  Table<R> i=getInto();
+  if (i.getPrimaryKey() != null) {
     Condition condition=null;
     List<Field<?>> key=new ArrayList<Field<?>>();
-    for (    Field<?> f : into.getPrimaryKey().getFields()) {
+    for (    Field<?> f : i.getPrimaryKey().getFields()) {
       Field<Object> field=(Field<Object>)f;
       Field<Object> value=(Field<Object>)insertMaps.getMap().get(field);
       key.add(value);
@@ -15,7 +15,7 @@
         condition=condition.and(other);
       }
     }
-    MergeOnConditionStep<R> on=create(configuration).mergeInto(into).usingDual().on(condition);
+    MergeOnConditionStep<R> on=create(configuration).mergeInto(i).usingDual().on(condition);
     MergeNotMatchedStep<R> notMatched=on;
     if (onDuplicateKeyUpdate) {
       notMatched=on.whenMatchedThenUpdate().set(updateMap);
