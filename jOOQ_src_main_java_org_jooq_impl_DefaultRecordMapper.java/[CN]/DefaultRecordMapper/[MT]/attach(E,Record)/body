@@ -1,0 +1,10 @@
+{
+  if (attachable instanceof Attachable && record instanceof AttachableInternal) {
+    Attachable a=(Attachable)attachable;
+    AttachableInternal r=(AttachableInternal)record;
+    if (Utils.attachRecords(r.configuration())) {
+      a.attach(r.configuration());
+    }
+  }
+  return attachable;
+}

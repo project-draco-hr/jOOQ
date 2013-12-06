@@ -1,5 +1,4 @@
 {
-  jOOQAbstractTest.reset=false;
   List<B> result1=create().select(TBook_ID(),TBook_TITLE(),TBook_AUTHOR_ID(),TAuthor_FIRST_NAME(),TAuthor_LAST_NAME()).from(TBook()).join(TAuthor()).on(TBook_AUTHOR_ID().equal(TAuthor_ID())).orderBy(TBook_ID()).fetch().into(TBook().getRecordType());
   assertEquals(4,result1.size());
   for (int i=0; i < 4; i++) {

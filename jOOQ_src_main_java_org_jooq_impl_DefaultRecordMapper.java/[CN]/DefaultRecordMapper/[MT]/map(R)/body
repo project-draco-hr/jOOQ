@@ -3,7 +3,7 @@
     return null;
   }
   try {
-    return delegate.map(record);
+    return attach(delegate.map(record),record);
   }
  catch (  MappingException e) {
     throw e;
