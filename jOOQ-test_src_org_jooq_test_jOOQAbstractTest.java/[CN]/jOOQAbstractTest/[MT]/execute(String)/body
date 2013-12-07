@@ -31,6 +31,7 @@
       }
     }
  catch (    Exception e) {
+      log.debug("Ignoring",e.getMessage().replaceAll("\n"," "));
       if (sql.trim().startsWith("DROP")) {
         continue;
       }
