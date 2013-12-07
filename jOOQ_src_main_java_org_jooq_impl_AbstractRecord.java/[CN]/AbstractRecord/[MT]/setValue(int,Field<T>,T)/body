@@ -1,0 +1,19 @@
+{
+  Value<T> val=getValue0(index);
+  UniqueKey<?> key=getPrimaryKey();
+  if (key == null || !key.getFields().contains(field)) {
+    val.setValue(value);
+  }
+ else   if (val.isChanged()) {
+    val.setValue(value);
+  }
+ else   if (updatablePrimaryKeys(settings(this))) {
+    val.setValue(value);
+  }
+ else {
+    val.setValue(value,true);
+    if (val.isChanged()) {
+      changed(true);
+    }
+  }
+}
