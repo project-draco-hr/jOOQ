@@ -3,7 +3,9 @@
   TableField<?,?>[] references=key.getFieldsArray();
   TableField<?,?>[] referenced=key.getKey().getFieldsArray();
   for (int i=0; i < references.length; i++) {
-    result.and(((Field<Void>)references[i]).equal((Field<Void>)referenced[i]));
+    Field f1=references[i];
+    Field f2=referenced[i];
+    result.and(f1.equal(f2));
   }
   return result;
 }
