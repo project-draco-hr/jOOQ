@@ -1,5 +1,0 @@
-{
-  for (  Field<?> field : record.fields()) {
-    addValue(record,field);
-  }
-}
