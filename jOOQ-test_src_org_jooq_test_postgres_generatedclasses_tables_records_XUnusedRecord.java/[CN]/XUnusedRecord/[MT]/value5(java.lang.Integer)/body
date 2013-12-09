@@ -1,0 +1,4 @@
+{
+  setClass_(value);
+  return this;
+}

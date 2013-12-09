@@ -1,0 +1,4 @@
+{
+  setBigDecimal(value);
+  return this;
+}

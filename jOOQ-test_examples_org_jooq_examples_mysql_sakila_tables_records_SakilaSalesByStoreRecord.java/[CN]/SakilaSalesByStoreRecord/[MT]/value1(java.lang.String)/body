@@ -1,0 +1,4 @@
+{
+  setStore(value);
+  return this;
+}

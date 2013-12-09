@@ -1,0 +1,4 @@
+{
+  setStock(value);
+  return this;
+}

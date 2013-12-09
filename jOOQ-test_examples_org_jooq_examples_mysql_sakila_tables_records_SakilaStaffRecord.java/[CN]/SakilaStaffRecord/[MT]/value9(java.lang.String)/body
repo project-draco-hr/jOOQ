@@ -1,0 +1,4 @@
+{
+  setUsername(value);
+  return this;
+}

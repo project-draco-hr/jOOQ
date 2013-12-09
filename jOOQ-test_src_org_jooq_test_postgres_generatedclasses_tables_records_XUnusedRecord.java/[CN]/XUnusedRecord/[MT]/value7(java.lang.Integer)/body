@@ -1,0 +1,4 @@
+{
+  setConfiguration(value);
+  return this;
+}

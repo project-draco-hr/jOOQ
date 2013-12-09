@@ -1,0 +1,19 @@
+{
+  super(org.jooq.test.jdbc.generatedclasses.tables.XUnused.X_UNUSED);
+  setValue(0,id);
+  setValue(1,name);
+  setValue(2,bigInteger);
+  setValue(3,idRef);
+  setValue(4,nameRef);
+  setValue(5,class_);
+  setValue(6,fields);
+  setValue(7,table);
+  setValue(8,configuration);
+  setValue(9,uDT);
+  setValue(10,metaData);
+  setValue(11,values);
+  setValue(12,type0);
+  setValue(13,primaryKey);
+  setValue(14,primarykey);
+  setValue(15,field_737);
+}

@@ -1,0 +1,7 @@
+{
+  super(org.jooq.test.jdbc.generatedclasses.tables.V_2603.V_2603);
+  setValue(0,col1);
+  setValue(1,col2);
+  setValue(2,col3);
+  setValue(3,col4);
+}

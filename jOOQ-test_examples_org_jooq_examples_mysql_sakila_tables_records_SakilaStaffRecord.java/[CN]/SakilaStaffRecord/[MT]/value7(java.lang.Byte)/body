@@ -1,0 +1,4 @@
+{
+  setStoreId(value);
+  return this;
+}

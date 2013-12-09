@@ -1,0 +1,4 @@
+org.jooq.types.UByte value1
+org.jooq.types.UShort value2
+org.jooq.types.UInteger value3
+org.jooq.types.ULong value4

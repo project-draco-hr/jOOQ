@@ -1,0 +1,4 @@
+{
+  setSpecialCharacters(value);
+  return this;
+}

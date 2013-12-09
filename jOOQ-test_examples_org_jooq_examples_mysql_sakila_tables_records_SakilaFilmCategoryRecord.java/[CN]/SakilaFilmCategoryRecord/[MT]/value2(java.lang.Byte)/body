@@ -1,0 +1,4 @@
+{
+  setCategoryId(value);
+  return this;
+}

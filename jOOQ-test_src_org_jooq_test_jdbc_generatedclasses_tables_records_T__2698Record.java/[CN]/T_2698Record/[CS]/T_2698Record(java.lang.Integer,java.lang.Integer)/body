@@ -1,0 +1,5 @@
+{
+  super(org.jooq.test.jdbc.generatedclasses.tables.T_2698.T_2698);
+  setValue(0,id);
+  setValue(1,xx);
+}

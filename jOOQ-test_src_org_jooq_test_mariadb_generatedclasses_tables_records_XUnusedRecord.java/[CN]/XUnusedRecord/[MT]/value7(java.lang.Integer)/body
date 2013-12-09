@@ -1,0 +1,4 @@
+{
+  setFields(value);
+  return this;
+}

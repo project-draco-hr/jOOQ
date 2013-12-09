@@ -1,0 +1,4 @@
+{
+  setDescriptionEnglish(value);
+  return this;
+}

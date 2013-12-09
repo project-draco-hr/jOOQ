@@ -1,0 +1,4 @@
+{
+  this.excludeMe=excludeMe;
+  this.xx=xx;
+}

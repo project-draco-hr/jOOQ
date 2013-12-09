@@ -1,0 +1,8 @@
+java.lang.Short value1
+java.lang.String value2
+java.lang.String value3
+java.lang.String value4
+java.math.BigDecimal value5
+java.lang.Short value6
+org.jooq.examples.mysql.sakila.enums.SakilaFilmListRating value7
+java.lang.String value8

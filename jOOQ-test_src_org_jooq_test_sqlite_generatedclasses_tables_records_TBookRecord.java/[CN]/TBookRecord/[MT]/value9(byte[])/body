@@ -1,0 +1,4 @@
+{
+  setContentPdf(value);
+  return this;
+}

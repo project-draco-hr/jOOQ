@@ -1,0 +1,4 @@
+{
+  setRentalRate(value);
+  return this;
+}

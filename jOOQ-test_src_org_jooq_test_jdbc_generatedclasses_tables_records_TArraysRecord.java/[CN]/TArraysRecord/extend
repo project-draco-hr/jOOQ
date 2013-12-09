@@ -1,1 +1,1 @@
-org.jooq.impl.TableRecordImpl<org.jooq.test.jdbc.generatedclasses.tables.records.TArraysRecord>
+org.jooq.impl.UpdatableRecordImpl<org.jooq.test.jdbc.generatedclasses.tables.records.TArraysRecord>

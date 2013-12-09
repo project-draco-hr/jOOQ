@@ -1,0 +1,4 @@
+{
+  setDetailsId(value);
+  return this;
+}

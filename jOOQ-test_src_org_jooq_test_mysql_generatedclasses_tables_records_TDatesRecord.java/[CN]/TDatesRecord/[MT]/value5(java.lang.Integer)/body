@@ -1,0 +1,4 @@
+{
+  setDInt(value);
+  return this;
+}

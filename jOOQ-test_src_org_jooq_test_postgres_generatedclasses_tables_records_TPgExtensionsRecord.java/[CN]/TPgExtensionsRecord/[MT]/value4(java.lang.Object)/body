@@ -1,0 +1,4 @@
+{
+  setPgHstore(value);
+  return this;
+}

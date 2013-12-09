@@ -1,0 +1,4 @@
+{
+  setBookId(value);
+  return this;
+}

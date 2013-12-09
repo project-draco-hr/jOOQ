@@ -1,0 +1,4 @@
+{
+  setCol3(value);
+  return this;
+}

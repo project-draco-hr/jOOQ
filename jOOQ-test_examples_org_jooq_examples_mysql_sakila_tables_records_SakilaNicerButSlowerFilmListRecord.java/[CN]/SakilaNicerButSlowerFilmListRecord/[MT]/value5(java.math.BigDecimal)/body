@@ -1,0 +1,4 @@
+{
+  setPrice(value);
+  return this;
+}

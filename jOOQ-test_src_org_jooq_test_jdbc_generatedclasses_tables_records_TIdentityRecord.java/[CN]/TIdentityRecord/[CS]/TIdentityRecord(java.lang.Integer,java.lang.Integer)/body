@@ -1,0 +1,5 @@
+{
+  super(org.jooq.test.jdbc.generatedclasses.tables.TIdentity.T_IDENTITY);
+  setValue(0,id);
+  setValue(1,val);
+}

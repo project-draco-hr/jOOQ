@@ -1,0 +1,10 @@
+java.lang.Integer value1
+java.lang.Integer value2
+java.lang.Integer value3
+java.lang.Integer value4
+java.lang.String value5
+java.lang.Integer value6
+java.lang.Integer value7
+java.lang.String value8
+byte[] value9
+org.jooq.test.cubrid.generatedclasses.enums.TBookStatus value10

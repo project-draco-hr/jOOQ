@@ -1,0 +1,4 @@
+{
+  setCoAuthorId(value);
+  return this;
+}

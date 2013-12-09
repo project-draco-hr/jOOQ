@@ -1,0 +1,4 @@
+{
+  setSpecialFeatures(value);
+  return this;
+}

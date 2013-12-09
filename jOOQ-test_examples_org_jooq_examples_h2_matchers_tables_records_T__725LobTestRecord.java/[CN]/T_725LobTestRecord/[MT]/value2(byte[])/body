@@ -1,0 +1,4 @@
+{
+  setLob(value);
+  return this;
+}

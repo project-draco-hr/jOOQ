@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.jdbc.generatedclasses.Keys.PK_T_639_NUMBERS_TABLE;
+}

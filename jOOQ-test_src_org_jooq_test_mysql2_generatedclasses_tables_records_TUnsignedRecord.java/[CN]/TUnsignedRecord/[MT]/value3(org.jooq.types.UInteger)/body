@@ -1,0 +1,4 @@
+{
+  setUInt(value);
+  return this;
+}

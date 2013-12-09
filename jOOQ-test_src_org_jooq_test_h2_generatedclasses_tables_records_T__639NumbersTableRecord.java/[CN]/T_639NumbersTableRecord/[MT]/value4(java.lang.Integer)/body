@@ -1,0 +1,4 @@
+{
+  setInteger(value);
+  return this;
+}

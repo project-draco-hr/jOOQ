@@ -1,0 +1,4 @@
+{
+  setCBoolean(value);
+  return this;
+}

@@ -1,0 +1,4 @@
+{
+  setUdtArray(value);
+  return this;
+}

@@ -1,0 +1,4 @@
+{
+  setShortDecimal(value);
+  return this;
+}

@@ -1,0 +1,4 @@
+{
+  setUpper(value);
+  return this;
+}

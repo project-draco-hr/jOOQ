@@ -1,0 +1,4 @@
+{
+  setNBoolean(value);
+  return this;
+}

@@ -1,0 +1,4 @@
+{
+  setNotes(value);
+  return this;
+}

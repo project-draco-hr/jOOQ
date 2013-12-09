@@ -1,0 +1,4 @@
+{
+  setExcludeMe(value);
+  return this;
+}

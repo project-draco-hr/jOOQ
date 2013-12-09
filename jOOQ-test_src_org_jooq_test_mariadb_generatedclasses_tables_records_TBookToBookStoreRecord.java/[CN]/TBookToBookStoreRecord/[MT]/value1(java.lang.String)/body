@@ -1,0 +1,4 @@
+{
+  setBookStoreName(value);
+  return this;
+}

@@ -1,0 +1,11 @@
+java.lang.Integer value1
+org.jooq.test._.converters.Boolean_10 value2
+org.jooq.test._.converters.Boolean_TF_LC value3
+org.jooq.test._.converters.Boolean_TF_UC value4
+org.jooq.test._.converters.Boolean_YES_NO_LC value5
+org.jooq.test._.converters.Boolean_YES_NO_UC value6
+org.jooq.test._.converters.Boolean_YN_LC value7
+org.jooq.test._.converters.Boolean_YN_UC value8
+java.lang.Boolean value9
+java.lang.Boolean value10
+java.lang.Boolean value11

@@ -1,0 +1,4 @@
+{
+  setStringArray(value);
+  return this;
+}

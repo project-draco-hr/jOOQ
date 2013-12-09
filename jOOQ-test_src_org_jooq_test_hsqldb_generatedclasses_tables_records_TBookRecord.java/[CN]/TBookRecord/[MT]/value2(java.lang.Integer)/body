@@ -1,0 +1,4 @@
+{
+  setAuthorId(value);
+  return this;
+}

@@ -1,0 +1,4 @@
+{
+  setPicture(value);
+  return this;
+}

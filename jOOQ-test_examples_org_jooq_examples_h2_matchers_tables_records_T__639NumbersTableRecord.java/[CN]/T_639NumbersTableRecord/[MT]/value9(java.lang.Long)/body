@@ -1,0 +1,4 @@
+{
+  setLongDecimal(value);
+  return this;
+}

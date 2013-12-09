@@ -1,0 +1,4 @@
+{
+  setFilmId(value);
+  return this;
+}

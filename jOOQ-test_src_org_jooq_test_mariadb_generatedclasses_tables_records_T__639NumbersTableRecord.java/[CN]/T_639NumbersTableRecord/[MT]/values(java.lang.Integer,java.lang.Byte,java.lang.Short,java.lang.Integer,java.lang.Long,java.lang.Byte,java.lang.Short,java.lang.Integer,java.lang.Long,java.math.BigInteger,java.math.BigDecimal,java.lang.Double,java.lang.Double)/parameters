@@ -1,0 +1,13 @@
+java.lang.Integer value1
+java.lang.Byte value2
+java.lang.Short value3
+java.lang.Integer value4
+java.lang.Long value5
+java.lang.Byte value6
+java.lang.Short value7
+java.lang.Integer value8
+java.lang.Long value9
+java.math.BigInteger value10
+java.math.BigDecimal value11
+java.lang.Double value12
+java.lang.Double value13

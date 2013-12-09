@@ -1,0 +1,4 @@
+{
+  setContentText(value);
+  return this;
+}

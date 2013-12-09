@@ -1,0 +1,4 @@
+{
+  super(org.jooq.test.jdbc.generatedclasses.tables.T_2327UkOnly.T_2327_UK_ONLY);
+  setValue(0,id);
+}

@@ -1,0 +1,7 @@
+java.lang.Integer value1
+java.lang.String[] value2
+java.lang.Integer[] value3
+java.sql.Date[] value4
+org.jooq.test.postgres.generatedclasses.udt.records.UStreetTypeRecord[] value5
+org.jooq.test.postgres.generatedclasses.enums.UCountry[] value6
+java.lang.Integer[] value7

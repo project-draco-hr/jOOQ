@@ -1,0 +1,4 @@
+{
+  setPgInterval(value);
+  return this;
+}

@@ -1,0 +1,4 @@
+{
+  setInventoryId(value);
+  return this;
+}

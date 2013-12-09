@@ -1,0 +1,4 @@
+{
+  setXx(value);
+  return this;
+}

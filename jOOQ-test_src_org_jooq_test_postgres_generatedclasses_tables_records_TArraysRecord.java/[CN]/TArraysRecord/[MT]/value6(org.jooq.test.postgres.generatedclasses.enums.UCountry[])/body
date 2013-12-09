@@ -1,0 +1,4 @@
+{
+  setEnumArray(value);
+  return this;
+}
