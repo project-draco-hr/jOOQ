@@ -4,6 +4,8 @@ case CROSS_JOIN:
 case NATURAL_JOIN:
 case NATURAL_LEFT_OUTER_JOIN:
 case NATURAL_RIGHT_OUTER_JOIN:
+case CROSS_APPLY:
+case OUTER_APPLY:
 {
       getQuery().addJoin(table,type);
       joinTable=null;

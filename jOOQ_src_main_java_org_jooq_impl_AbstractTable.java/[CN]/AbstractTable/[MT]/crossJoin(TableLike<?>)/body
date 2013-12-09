@@ -1,3 +1,3 @@
 {
-  return join(table,JoinType.CROSS_JOIN);
+  return join(table,CROSS_JOIN);
 }

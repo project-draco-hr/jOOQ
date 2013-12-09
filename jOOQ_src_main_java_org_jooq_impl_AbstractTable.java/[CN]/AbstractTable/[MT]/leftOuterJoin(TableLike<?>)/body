@@ -1,3 +1,3 @@
 {
-  return join(table,JoinType.LEFT_OUTER_JOIN);
+  return join(table,LEFT_OUTER_JOIN);
 }

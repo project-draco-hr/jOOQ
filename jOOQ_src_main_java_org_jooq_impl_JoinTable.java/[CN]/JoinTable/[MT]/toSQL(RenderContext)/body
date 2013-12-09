@@ -13,7 +13,7 @@
   if (!rhsPartitionBy.isEmpty()) {
     context.formatSeparator().start(TABLE_JOIN_PARTITION_BY).keyword("partition by").sql(" (").visit(rhsPartitionBy).sql(")").end(TABLE_JOIN_PARTITION_BY);
   }
-  if (!asList(CROSS_JOIN,NATURAL_JOIN,NATURAL_LEFT_OUTER_JOIN,NATURAL_RIGHT_OUTER_JOIN).contains(translatedType)) {
+  if (!asList(CROSS_JOIN,NATURAL_JOIN,NATURAL_LEFT_OUTER_JOIN,NATURAL_RIGHT_OUTER_JOIN,CROSS_APPLY,OUTER_APPLY).contains(translatedType)) {
     toSQLJoinCondition(context);
   }
   context.end(translatedClause).formatIndentEnd();
