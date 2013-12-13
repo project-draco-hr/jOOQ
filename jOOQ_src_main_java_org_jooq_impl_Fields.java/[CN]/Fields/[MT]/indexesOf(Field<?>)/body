@@ -1,7 +1,7 @@
 {
   int[] result=new int[f.length];
   for (int i=0; i < f.length; i++) {
-    result[i]=indexOf(f[i]);
+    result[i]=indexOrFail(this,f[i]);
   }
   return result;
 }

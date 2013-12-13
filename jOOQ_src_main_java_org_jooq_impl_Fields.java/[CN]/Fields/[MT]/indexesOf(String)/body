@@ -1,7 +1,7 @@
 {
   int[] result=new int[fieldNames.length];
   for (int i=0; i < fieldNames.length; i++) {
-    result[i]=indexOf(fieldNames[i]);
+    result[i]=indexOrFail(this,fieldNames[i]);
   }
   return result;
 }

@@ -1,3 +1,3 @@
 {
-  return dataType(indexOf(fieldName));
+  return dataType(indexOrFail(this,fieldName));
 }

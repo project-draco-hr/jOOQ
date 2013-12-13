@@ -1,6 +1,6 @@
 {
-  int kIndex=fieldsRow().indexOf(key);
-  int vIndex=fieldsRow().indexOf(value);
+  int kIndex=indexOrFail(fieldsRow(),key);
+  int vIndex=indexOrFail(fieldsRow(),value);
   Map<K,List<V>> map=new LinkedHashMap<K,List<V>>();
   for (  R record : this) {
     K k=(K)record.getValue(kIndex);
