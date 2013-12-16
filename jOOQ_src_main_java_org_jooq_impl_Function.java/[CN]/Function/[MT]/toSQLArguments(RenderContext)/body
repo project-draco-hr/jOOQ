@@ -2,10 +2,21 @@
   toSQLFunctionName(ctx);
   ctx.sql("(");
   if (distinct) {
-    ctx.keyword("distinct").sql(" ");
+    ctx.keyword("distinct");
+    if (ctx.configuration().dialect().family() == POSTGRES && arguments.size() > 1) {
+      ctx.sql("(");
+    }
+ else {
+      ctx.sql(" ");
+    }
   }
   if (!arguments.isEmpty()) {
     ctx.visit(arguments);
+  }
+  if (distinct) {
+    if (ctx.configuration().dialect().family() == POSTGRES && arguments.size() > 1) {
+      ctx.sql(")");
+    }
   }
   if (ignoreNulls) {
 {
