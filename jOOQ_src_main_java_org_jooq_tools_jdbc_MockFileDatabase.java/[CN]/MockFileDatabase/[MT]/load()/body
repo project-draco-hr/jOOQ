@@ -1,7 +1,5 @@
 {
   new Object(){
-    private InputStream is=new FileInputStream(file);
-    private LineNumberReader in=new LineNumberReader(new InputStreamReader(is,encoding));
     private StringBuilder currentSQL=new StringBuilder();
     private StringBuilder currentResult=new StringBuilder();
     private String previousSQL=null;
@@ -48,9 +46,6 @@
         }
       }
   finally {
-        if (is != null) {
-          is.close();
-        }
         if (in != null) {
           in.close();
         }

@@ -1,4 +1,8 @@
 {
-  File file=new File(MockTest.class.getResource("/org/jooq/test/data/db.txt").toURI());
-  MOCK=DSL.using(new MockConnection(new MockFileDatabase(file)),SQLDialect.POSTGRES);
+  RandomAccessFile f=new RandomAccessFile(new File(MockTest.class.getResource("/org/jooq/test/data/db.txt").toURI()),"r");
+  byte[] b=new byte[(int)f.length()];
+  f.readFully(b);
+  String s=new String(b);
+  s=s.replace("{version}",Constants.FULL_VERSION);
+  MOCK=DSL.using(new MockConnection(new MockFileDatabase(s)),SQLDialect.POSTGRES);
 }
