@@ -1,0 +1,13 @@
+{
+switch (dialect()) {
+case POSTGRES:
+    break;
+default :
+  log.info("SKIPPING","LATERAL tests");
+return;
+}
+assertEquals(asList(2,2),create().select().from(TAuthor(),lateral(select(count().as("c")).from(TBook()).where(TBook_AUTHOR_ID().eq(TAuthor_ID())))).fetch("c",int.class));
+assertEquals(asList(2,2),create().select().from(TAuthor().crossJoin(lateral(select(count().as("c")).from(TBook()).where(TBook_AUTHOR_ID().eq(TAuthor_ID()))))).fetch("c",int.class));
+assertEquals(asList(2,2),create().select().from(TAuthor(),lateral(select(count()).from(TBook()).where(TBook_AUTHOR_ID().eq(TAuthor_ID()))).as("x","c")).fetch("c",int.class));
+assertEquals(asList(2,2),create().select().from(TAuthor(),lateral(select(count()).from(TBook()).where(TBook_AUTHOR_ID().eq(TAuthor_ID())).asTable("x","c"))).fetch("c",int.class));
+}
