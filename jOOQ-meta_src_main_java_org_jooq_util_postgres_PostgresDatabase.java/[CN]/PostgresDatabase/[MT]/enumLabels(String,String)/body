@@ -1,0 +1,13 @@
+{
+  Field<Object> cast=field("{0}::{1}",PG_ENUM.ENUMLABEL,name(nspname,typname));
+  if (canCastToEnumType == null) {
+    try {
+      canCastToEnumType=true;
+      return enumLabels(nspname,typname,cast);
+    }
+ catch (    DataAccessException e) {
+      canCastToEnumType=false;
+    }
+  }
+  return canCastToEnumType ? enumLabels(nspname,typname,cast) : enumLabels(nspname,typname,PG_ENUM.ENUMLABEL);
+}

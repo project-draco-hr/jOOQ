@@ -1,0 +1,3 @@
+{
+  return create().select(PG_ENUM.ENUMLABEL).from(PG_ENUM).join(PG_TYPE).on(PG_ENUM.ENUMTYPID.eq(oid(PG_TYPE))).join(PG_NAMESPACE).on(PG_TYPE.TYPNAMESPACE.eq(oid(PG_NAMESPACE))).where(PG_NAMESPACE.NSPNAME.eq(nspname)).and(PG_TYPE.TYPNAME.eq(typname)).orderBy(orderBy).fetch(PG_ENUM.ENUMLABEL);
+}
