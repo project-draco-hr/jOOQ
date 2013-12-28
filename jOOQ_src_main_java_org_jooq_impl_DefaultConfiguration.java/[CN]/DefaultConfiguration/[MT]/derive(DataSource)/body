@@ -1,0 +1,3 @@
+{
+  return derive(new DataSourceConnectionProvider(newDataSource));
+}
