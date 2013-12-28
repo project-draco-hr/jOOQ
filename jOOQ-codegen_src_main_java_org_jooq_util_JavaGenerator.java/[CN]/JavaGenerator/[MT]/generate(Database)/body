@@ -1,5 +1,11 @@
 {
   this.database=db;
+  String url=null;
+  try {
+    url=database.getConnection().getMetaData().getURL();
+  }
+ catch (  SQLException ignore) {
+  }
   log.info("License parameters");
   log.info("----------------------------------------------------------");
   log.info("  Thank you for using jOOQ and jOOQ's code generator");
@@ -7,6 +13,7 @@
   log.info("Database parameters");
   log.info("----------------------------------------------------------");
   log.info("  dialect",database.getDialect());
+  log.info("  URL",url);
   log.info("  target dir",getTargetDirectory());
   log.info("  target package",getTargetPackage());
   log.info("  includes",Arrays.asList(database.getIncludes()));
