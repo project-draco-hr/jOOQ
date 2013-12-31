@@ -1,5 +1,31 @@
 {
-  context.start(INSERT_INSERT_INTO).keyword("insert").sql(" ").keyword((onDuplicateKeyIgnore && asList(MARIADB,MYSQL).contains(context.configuration().dialect())) ? "ignore " : "").keyword("into").sql(" ").visit(getInto()).sql(" ");
-  insertMaps.insertMaps.get(0).toSQLReferenceKeys(context);
-  context.end(INSERT_INSERT_INTO).visit(insertMaps);
+  context.start(INSERT_INSERT_INTO).keyword("insert").sql(" ").keyword((onDuplicateKeyIgnore && asList(MARIADB,MYSQL).contains(context.configuration().dialect())) ? "ignore " : "").keyword("into").sql(" ").visit(getInto());
+  if (insertMaps.isExecutable()) {
+    context.sql(" ");
+    insertMaps.insertMaps.get(0).toSQLReferenceKeys(context);
+  }
+  context.end(INSERT_INSERT_INTO);
+  if (defaultValues) {
+switch (context.configuration().dialect().family()) {
+case DERBY:
+case MARIADB:
+case MYSQL:
+      context.sql(" ").keyword("values").sql("(");
+    int count=getInto().fields().length;
+  String separator="";
+for (int i=0; i < count; i++) {
+  context.sql(separator);
+  context.keyword("default");
+  separator=", ";
+}
+context.sql(")");
+break;
+default :
+context.sql(" ").keyword("default values");
+break;
+}
+}
+ else {
+context.visit(insertMaps);
+}
 }
