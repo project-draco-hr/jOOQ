@@ -1,0 +1,3 @@
+{
+  super(alias,org.jooq.test.postgres.generatedclasses.Public.PUBLIC,aliased);
+}
