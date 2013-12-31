@@ -1,9 +1,9 @@
 {
-  for (  Schemas schemas : schemas(definition)) {
+  for (  MatchersSchemaType schemas : schemas(definition)) {
     String result=match(definition,schemas.getExpression(),schemas.getSchemaClass());
     if (result != null)     return result;
   }
-  for (  Tables tables : tables(definition)) {
+  for (  MatchersTableType tables : tables(definition)) {
     String result=null;
 switch (mode) {
 case DEFAULT:
@@ -24,7 +24,7 @@ break;
 }
 if (result != null) return result;
 }
-for (Routines routines : routines(definition)) {
+for (MatchersRoutineType routines : routines(definition)) {
 String result=match(definition,routines.getExpression(),routines.getRoutineClass());
 if (result != null) return result;
 }

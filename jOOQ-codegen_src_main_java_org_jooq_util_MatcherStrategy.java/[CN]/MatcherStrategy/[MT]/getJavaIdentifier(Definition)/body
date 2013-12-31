@@ -1,17 +1,17 @@
 {
-  for (  Schemas schemas : schemas(definition)) {
+  for (  MatchersSchemaType schemas : schemas(definition)) {
     String result=match(definition,schemas.getExpression(),schemas.getSchemaIdentifier());
     if (result != null)     return result;
   }
-  for (  Tables tables : tables(definition)) {
+  for (  MatchersTableType tables : tables(definition)) {
     String result=match(definition,tables.getExpression(),tables.getTableIdentifier());
     if (result != null)     return result;
   }
-  for (  Fields fields : fields(definition)) {
+  for (  MatchersFieldType fields : fields(definition)) {
     String result=match(definition,fields.getExpression(),fields.getFieldIdentifier());
     if (result != null)     return result;
   }
-  for (  Sequences sequences : sequences(definition)) {
+  for (  MatchersSequenceType sequences : sequences(definition)) {
     String result=match(definition,sequences.getExpression(),sequences.getSequenceIdentifier());
     if (result != null)     return result;
   }

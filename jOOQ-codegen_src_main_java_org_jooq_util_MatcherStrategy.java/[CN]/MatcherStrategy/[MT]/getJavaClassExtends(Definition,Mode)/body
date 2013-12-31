@@ -1,5 +1,5 @@
 {
-  for (  Tables tables : tables(definition)) {
+  for (  MatchersTableType tables : tables(definition)) {
     String result=null;
 switch (mode) {
 case POJO:
