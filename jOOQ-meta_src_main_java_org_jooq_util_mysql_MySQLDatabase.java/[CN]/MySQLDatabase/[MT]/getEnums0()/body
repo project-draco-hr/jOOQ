@@ -14,8 +14,9 @@
       if (columnDefinition != null) {
         if (getConfiguredForcedType(columnDefinition) == null) {
           DefaultEnumDefinition definition=new DefaultEnumDefinition(schema,name,comment);
-          for (          String string : columnType.replaceAll("enum\\(|\\)","").split(",")) {
-            definition.addLiteral(string.trim().replaceAll("'",""));
+          CSVReader reader=new CSVReader(new StringReader(columnType.replaceAll("(^enum\\()|(\\)$)","")),',','\'',true);
+          for (          String string : reader.next()) {
+            definition.addLiteral(string);
           }
           result.add(definition);
         }
