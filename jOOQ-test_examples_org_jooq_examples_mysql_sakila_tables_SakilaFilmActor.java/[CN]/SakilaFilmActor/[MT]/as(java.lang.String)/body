@@ -1,3 +1,3 @@
 {
-  return new org.jooq.examples.mysql.sakila.tables.SakilaFilmActor(alias);
+  return new org.jooq.examples.mysql.sakila.tables.SakilaFilmActor(alias,this);
 }

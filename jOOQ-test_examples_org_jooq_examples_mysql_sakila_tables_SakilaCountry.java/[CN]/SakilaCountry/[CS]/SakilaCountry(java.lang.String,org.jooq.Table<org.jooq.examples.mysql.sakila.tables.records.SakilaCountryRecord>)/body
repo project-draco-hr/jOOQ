@@ -1,0 +1,3 @@
+{
+  super(alias,org.jooq.examples.mysql.sakila.SakilaSakila.SAKILA,aliased);
+}
