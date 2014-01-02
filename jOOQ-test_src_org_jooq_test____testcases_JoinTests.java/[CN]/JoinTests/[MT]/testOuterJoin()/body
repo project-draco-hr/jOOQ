@@ -17,26 +17,4 @@ default :
   break;
 }
 }
-switch (dialect()) {
-case CUBRID:
-case DERBY:
-case H2:
-case MARIADB:
-case MYSQL:
-case SQLITE:
-log.info("SKIPPING","FULL OUTER JOIN tests");
-break;
-default :
-{
-Select<?> z=create().select(zero().as("z"));
-Select<?> o=create().select(one().as("o"));
-Result<Record> result3=create().select().from(z).fullOuterJoin(o).on(z.field("z").cast(Integer.class).equal(o.field("o").cast(Integer.class))).fetch();
-assertEquals("z",result3.field(0).getName());
-assertEquals("o",result3.field(1).getName());
-@SuppressWarnings("unchecked") List<List<Integer>> list=asList(asList(0,null),asList(null,1));
-assertTrue(list.contains(asList(result3.get(0).into(Integer[].class))));
-assertTrue(list.contains(asList(result3.get(1).into(Integer[].class))));
-break;
-}
-}
 }

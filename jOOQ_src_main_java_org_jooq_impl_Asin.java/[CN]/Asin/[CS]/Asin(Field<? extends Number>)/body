@@ -1,0 +1,4 @@
+{
+  super("asin",SQLDataType.NUMERIC);
+  this.arg=arg;
+}

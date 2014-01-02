@@ -2,14 +2,9 @@
   JoinType translatedType=translateType(context);
   Clause translatedClause=translateClause(translatedType);
   String keyword=translatedType.toSQL();
-  context.visit(lhs).formatIndentStart().formatSeparator().start(translatedClause).keyword(keyword).sql(" ");
-  if (rhs instanceof JoinTable) {
-    context.sql("(").formatIndentStart().formatNewLine();
-  }
-  context.visit(rhs);
-  if (rhs instanceof JoinTable) {
-    context.formatIndentEnd().formatNewLine().sql(")");
-  }
+  toSQLTable(context,lhs);
+  context.formatIndentStart().formatSeparator().start(translatedClause).keyword(keyword).sql(" ");
+  toSQLTable(context,rhs);
   if (!rhsPartitionBy.isEmpty()) {
     context.formatSeparator().start(TABLE_JOIN_PARTITION_BY).keyword("partition by").sql(" (").visit(rhsPartitionBy).sql(")").end(TABLE_JOIN_PARTITION_BY);
   }

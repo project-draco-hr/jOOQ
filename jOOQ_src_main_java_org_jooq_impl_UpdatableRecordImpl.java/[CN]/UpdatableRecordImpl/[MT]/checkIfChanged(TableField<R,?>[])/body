@@ -1,7 +1,7 @@
 {
   SelectQuery<R> select=create().selectQuery(getTable());
   Utils.addConditions(select,this,keys);
-  if (create().configuration().dialect() != SQLDialect.SQLITE) {
+  if (!asList(SQLITE).contains(create().configuration().dialect().family())) {
     select.setForUpdate(true);
   }
   R record=select.fetchOne();

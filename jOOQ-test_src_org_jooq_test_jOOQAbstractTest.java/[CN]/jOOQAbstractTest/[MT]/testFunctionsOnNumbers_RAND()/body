@@ -1,0 +1,3 @@
+{
+  new FunctionTests(this).testFunctionsOnNumbers_RAND();
+}

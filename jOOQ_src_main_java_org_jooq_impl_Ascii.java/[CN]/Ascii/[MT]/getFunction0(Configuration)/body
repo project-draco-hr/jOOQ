@@ -1,10 +1,10 @@
 {
 switch (configuration.dialect()) {
 case FIREBIRD:
-    return function("ascii_val",SQLDataType.INTEGER,string);
+    return field("{ascii_val}({0})",SQLDataType.INTEGER,string);
 case DERBY:
 case SQLITE:
 default :
-  return function("ascii",SQLDataType.INTEGER,string);
+  return field("{ascii}({0})",SQLDataType.INTEGER,string);
 }
 }

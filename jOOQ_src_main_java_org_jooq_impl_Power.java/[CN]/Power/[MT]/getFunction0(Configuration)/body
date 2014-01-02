@@ -1,9 +1,9 @@
 {
-switch (configuration.dialect()) {
+switch (configuration.dialect().family()) {
 case DERBY:
 case SQLITE:
     return DSL.exp(DSL.ln(arg1).mul(arg2));
 default :
-  return function("power",SQLDataType.NUMERIC,getArguments());
+  return field("{power}({0})",SQLDataType.NUMERIC,getArguments());
 }
 }
