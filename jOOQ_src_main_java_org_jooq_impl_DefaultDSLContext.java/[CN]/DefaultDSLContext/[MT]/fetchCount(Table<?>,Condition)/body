@@ -1,0 +1,3 @@
+{
+  return selectCount().from(table).where(condition).fetchOne(0,int.class);
+}
