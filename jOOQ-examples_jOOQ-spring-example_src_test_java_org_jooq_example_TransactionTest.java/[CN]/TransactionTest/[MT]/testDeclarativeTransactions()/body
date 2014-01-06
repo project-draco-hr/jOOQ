@@ -7,6 +7,6 @@
  catch (  DataAccessException ignore) {
     rollback=true;
   }
-  assertEquals(4,dsl.fetchCount(T_BOOK));
+  assertEquals(4,dsl.fetchCount(BOOK));
   assertTrue(rollback);
 }
