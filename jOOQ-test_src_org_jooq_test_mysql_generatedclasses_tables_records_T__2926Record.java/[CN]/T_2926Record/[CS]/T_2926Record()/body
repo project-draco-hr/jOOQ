@@ -1,0 +1,3 @@
+{
+  super(org.jooq.test.mysql.generatedclasses.tables.T_2926.T_2926);
+}
