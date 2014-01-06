@@ -1,0 +1,3 @@
+{
+  for (int i=0; i < 2; i++)   dsl.insertInto(T_BOOK).set(T_BOOK.ID,id).set(T_BOOK.AUTHOR_ID,authorId).set(T_BOOK.TITLE,title).execute();
+}

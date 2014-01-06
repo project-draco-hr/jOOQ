@@ -1,0 +1,13 @@
+{
+  boolean rollback=false;
+  TransactionStatus tx=txMgr.getTransaction(new DefaultTransactionDefinition());
+  try {
+    books.create(5,1,"Book 5");
+  }
+ catch (  DataAccessException e) {
+    txMgr.rollback(tx);
+    rollback=true;
+  }
+  assertEquals(4,dsl.fetchCount(T_BOOK));
+  assertTrue(rollback);
+}
