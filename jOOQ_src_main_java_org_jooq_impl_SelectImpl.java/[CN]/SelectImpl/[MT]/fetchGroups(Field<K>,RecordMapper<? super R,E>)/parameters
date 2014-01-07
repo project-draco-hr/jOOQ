@@ -1,0 +1,2 @@
+Field<K> key
+RecordMapper<? super R,E> mapper

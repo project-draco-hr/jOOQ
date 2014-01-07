@@ -1,0 +1,19 @@
+{
+  if (keys == null) {
+    keys=new Field[0];
+  }
+  Map<Record,List<E>> map=new LinkedHashMap<Record,List<E>>();
+  for (  R record : this) {
+    @SuppressWarnings({"rawtypes","unchecked"}) RecordImpl key=new RecordImpl(keys);
+    for (    Field<?> field : keys) {
+      Utils.copyValue(key,field,record,field);
+    }
+    List<E> list=map.get(key);
+    if (list == null) {
+      list=new ArrayList<E>();
+      map.put(key,list);
+    }
+    list.add(mapper.map(record));
+  }
+  return map;
+}

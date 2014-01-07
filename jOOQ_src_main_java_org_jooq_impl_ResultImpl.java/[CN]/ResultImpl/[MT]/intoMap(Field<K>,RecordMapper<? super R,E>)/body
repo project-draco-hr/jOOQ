@@ -1,0 +1,10 @@
+{
+  int index=indexOrFail(fieldsRow(),key);
+  Map<K,E> map=new LinkedHashMap<K,E>();
+  for (  R record : this) {
+    if (map.put((K)record.getValue(index),mapper.map(record)) != null) {
+      throw new InvalidResultException("Key " + key + " is not unique in Result for "+ this);
+    }
+  }
+  return map;
+}

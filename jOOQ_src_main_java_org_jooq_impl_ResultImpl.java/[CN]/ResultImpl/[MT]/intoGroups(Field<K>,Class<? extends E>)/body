@@ -1,15 +1,3 @@
 {
-  RecordMapper<R,E> mapper=Utils.configuration(this).recordMapperProvider().provide(fields,type);
-  int index=indexOrFail(fieldsRow(),key);
-  Map<K,List<E>> map=new LinkedHashMap<K,List<E>>();
-  for (  R record : this) {
-    K keyVal=(K)record.getValue(index);
-    List<E> list=map.get(keyVal);
-    if (list == null) {
-      list=new ArrayList<E>();
-      map.put(keyVal,list);
-    }
-    list.add(mapper.map(record));
-  }
-  return map;
+  return intoGroups(key,Utils.configuration(this).recordMapperProvider().provide(fields,type));
 }

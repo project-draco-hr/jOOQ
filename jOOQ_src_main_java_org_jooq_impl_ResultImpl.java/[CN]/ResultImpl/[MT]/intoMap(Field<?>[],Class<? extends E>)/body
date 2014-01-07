@@ -1,17 +1,3 @@
 {
-  RecordMapper<R,E> mapper=Utils.configuration(this).recordMapperProvider().provide(fields,type);
-  if (keys == null) {
-    keys=new Field[0];
-  }
-  Map<List<?>,E> map=new LinkedHashMap<List<?>,E>();
-  for (  R record : this) {
-    List<Object> keyValueList=new ArrayList<Object>();
-    for (    Field<?> key : keys) {
-      keyValueList.add(record.getValue(key));
-    }
-    if (map.put(keyValueList,mapper.map(record)) != null) {
-      throw new InvalidResultException("Key list " + keyValueList + " is not unique in Result for "+ this);
-    }
-  }
-  return map;
+  return intoMap(keys,Utils.configuration(this).recordMapperProvider().provide(fields,type));
 }
