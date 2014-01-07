@@ -37,7 +37,8 @@
     generator.setStrategy(strategy);
     org.jooq.util.jaxb.Database d=g.getDatabase();
     errorIfNull(d,"The <database/> tag is mandatory.");
-    Class<Database> databaseClass=(Class<Database>)loadClass(trim(d.getName()));
+    String databaseName=trim(d.getName());
+    Class<? extends Database> databaseClass=isBlank(databaseName) ? databaseClass(j) : (Class<? extends Database>)loadClass(databaseName);
     Database database=databaseClass.newInstance();
     List<Schema> schemata=d.getSchemata();
     if (schemata.isEmpty()) {
