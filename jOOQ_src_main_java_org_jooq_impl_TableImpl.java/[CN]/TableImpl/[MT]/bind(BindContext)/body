@@ -2,4 +2,9 @@
   if (alias != null) {
     alias.bind(context);
   }
+ else   if (parameters != null && context.declareTables()) {
+    for (    Field<?> parameter : parameters) {
+      context.visit(parameter);
+    }
+  }
 }

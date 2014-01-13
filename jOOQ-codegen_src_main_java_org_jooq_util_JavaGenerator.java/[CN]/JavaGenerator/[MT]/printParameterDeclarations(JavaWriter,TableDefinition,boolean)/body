@@ -1,0 +1,14 @@
+{
+  String sep1="";
+  for (  ParameterDefinition parameter : function.getParameters()) {
+    out.print(sep1);
+    if (parametersAsField) {
+      out.print("%s<%s>",Field.class,getExtendsNumberType(parameter.getType()));
+    }
+ else {
+      out.print(getNumberType(parameter.getType()));
+    }
+    out.print(" %s",getStrategy().getJavaMemberName(parameter));
+    sep1=", ";
+  }
+}

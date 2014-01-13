@@ -11,5 +11,8 @@
       }
     }
     context.literal(Utils.getMappedTable(context.configuration(),this).getName());
+    if (parameters != null && context.declareTables()) {
+      context.sql("(").visit(new QueryPartList<Field<?>>(parameters)).sql(")");
+    }
   }
 }

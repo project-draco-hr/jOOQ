@@ -4,7 +4,7 @@
   }
   if (that instanceof TableImpl) {
     TableImpl<?> other=(TableImpl<?>)that;
-    return StringUtils.equals(getSchema(),other.getSchema()) && StringUtils.equals(getName(),other.getName());
+    return StringUtils.equals(getSchema(),other.getSchema()) && StringUtils.equals(getName(),other.getName()) && Arrays.equals(parameters,other.parameters);
   }
   return super.equals(that);
 }

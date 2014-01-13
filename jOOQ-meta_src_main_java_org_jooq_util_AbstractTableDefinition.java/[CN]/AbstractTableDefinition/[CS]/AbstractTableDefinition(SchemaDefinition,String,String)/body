@@ -1,5 +1,5 @@
 {
   super(schema,name,comment);
-  parentTable=null;
-  childTables=new ArrayList<TableDefinition>();
+  this.parentTable=null;
+  this.childTables=new ArrayList<TableDefinition>();
 }

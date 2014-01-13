@@ -1,0 +1,23 @@
+{
+  if (function.getParameters().size() > 254) {
+    log.warn("Too many parameters","Function " + function + " has more than 254 in parameters. Skipping generation of convenience method.");
+    return;
+  }
+  if (parametersAsField && function.getParameters().isEmpty()) {
+    return;
+  }
+  final String className=getStrategy().getFullJavaClassName(function);
+  out.tab(1).javadoc("Get <code>%s</code> as a field",function.getQualifiedOutputName());
+  out.tab(1).print("public static %s %s(",className,getStrategy().getJavaMethodName(function,Mode.DEFAULT));
+  printParameterDeclarations(out,function,parametersAsField);
+  out.println(") {");
+  out.tab(2).print("return %s.call(",getStrategy().getFullJavaIdentifier(function));
+  String separator="";
+  for (  ParameterDefinition parameter : function.getParameters()) {
+    out.print(separator);
+    out.print("%s",getStrategy().getJavaMemberName(parameter));
+    separator=", ";
+  }
+  out.println(");");
+  out.tab(1).println("}");
+}

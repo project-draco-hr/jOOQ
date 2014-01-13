@@ -35,12 +35,20 @@
   }
   out.tab(2).println("super(\"%s\", %s);",table.getOutputName(),getStrategy().getFullJavaIdentifier(schema));
   out.tab(1).println("}");
+  final String schemaId=getStrategy().getFullJavaIdentifier(schema);
   if (generateInstanceFields()) {
-    final String schemaId=getStrategy().getFullJavaIdentifier(schema);
     out.tab(1).javadoc("Create an aliased <code>%s</code> table reference",table.getQualifiedOutputName());
     out.tab(1).println("public %s(%s alias) {",className,String.class);
     out.tab(2).println("super(alias, %s, %s);",schemaId,fullTableId);
     out.tab(1).println("}");
+  }
+  if (table.isTableValuedFunction()) {
+    out.println();
+    out.tab(1).println("private %s(%s alias, %s<%s> aliased, %s<?>[] parameters) {",className,String.class,Table.class,recordType,Field.class);
+    out.tab(2).println("super(alias, %s, aliased, parameters);",schemaId);
+    out.tab(1).println("}");
+  }
+ else {
     out.println();
     out.tab(1).println("private %s(%s alias, %s<%s> aliased) {",className,String.class,Table.class,recordType);
     out.tab(2).println("super(alias, %s, aliased);",schemaId);
@@ -111,14 +119,39 @@
   if (generateInstanceFields()) {
     out.tab(1).overrideInherit();
     out.tab(1).println("public %s as(%s alias) {",fullClassName,String.class);
-    out.tab(2).println("return new %s(alias, this);",fullClassName);
+    if (table.isTableValuedFunction())     out.tab(2).println("return new %s(alias, this, parameters);",fullClassName);
+ else     out.tab(2).println("return new %s(alias, this);",fullClassName);
     out.tab(1).println("}");
   }
   if (generateInstanceFields()) {
     out.tab(1).javadoc("Rename this table");
     out.tab(1).println("public %s rename(%s name) {",fullClassName,String.class);
-    out.tab(2).println("return new %s(name, null);",fullClassName);
+    if (table.isTableValuedFunction())     out.tab(2).println("return new %s(name, null, parameters);",fullClassName);
+ else     out.tab(2).println("return new %s(name, null);",fullClassName);
     out.tab(1).println("}");
+  }
+  if (table.isTableValuedFunction()) {
+    for (    boolean parametersAsField : new boolean[]{false,true}) {
+      if (parametersAsField && table.getParameters().size() == 0)       break;
+      out.tab(1).javadoc("Call this table-valued function");
+      out.tab(1).print("public %s call(",fullClassName);
+      printParameterDeclarations(out,table,parametersAsField);
+      out.println(") {");
+      out.tab(2).print("return new %s(getName(), null, new %s[] { ",fullClassName,Field.class);
+      String separator="";
+      for (      ParameterDefinition parameter : table.getParameters()) {
+        out.print(separator);
+        if (parametersAsField) {
+          out.print("%s",getStrategy().getJavaMemberName(parameter));
+        }
+ else {
+          out.print("%s.val(%s)",DSL.class,getStrategy().getJavaMemberName(parameter));
+        }
+        separator=", ";
+      }
+      out.println(" });");
+      out.tab(1).println("}");
+    }
   }
   generateTableClassFooter(table,out);
   out.println("}");
