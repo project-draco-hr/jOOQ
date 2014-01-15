@@ -1,0 +1,6 @@
+{
+  super();
+  this.schema=schema;
+  this.name=name;
+  this.comment=comment;
+}

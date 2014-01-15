@@ -1,0 +1,4 @@
+String name
+DataType<T> type
+Table<R> table
+String comment

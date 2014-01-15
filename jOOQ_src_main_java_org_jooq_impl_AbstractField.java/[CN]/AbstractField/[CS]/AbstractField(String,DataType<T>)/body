@@ -1,5 +1,3 @@
 {
-  super();
-  this.name=name;
-  this.dataType=type;
+  this(name,type,null);
 }

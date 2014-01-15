@@ -1,0 +1,5 @@
+String name
+Schema schema
+Table<R> aliased
+Field<?>[] parameters
+String comment

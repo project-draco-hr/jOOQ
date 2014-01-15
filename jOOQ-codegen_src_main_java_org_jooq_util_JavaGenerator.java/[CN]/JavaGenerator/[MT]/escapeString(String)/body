@@ -1,0 +1,3 @@
+{
+  return comment.replace("\"","\\\"").replace("\n","\\n").replace("\r","\\r");
+}

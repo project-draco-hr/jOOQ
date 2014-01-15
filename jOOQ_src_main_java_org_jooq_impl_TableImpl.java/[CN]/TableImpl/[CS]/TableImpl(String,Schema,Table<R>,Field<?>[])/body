@@ -1,11 +1,3 @@
 {
-  super(name,schema);
-  this.fields=new Fields<R>();
-  if (aliased != null) {
-    alias=new Alias<Table<R>>(aliased,name);
-  }
- else {
-    alias=null;
-  }
-  this.parameters=parameters;
+  this(name,schema,aliased,parameters,null);
 }
