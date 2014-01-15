@@ -42,7 +42,7 @@
   if (database.getEnums(schema).size() > 0) {
     generateEnums(schema);
   }
-  if (database.getRoutines(schema).size() > 0 || database.getTables(schema).size() > 0) {
+  if (database.getRoutines(schema).size() > 0 || hasTableValuedFunctions(schema)) {
     generateRoutines(schema);
   }
   if (database.getPackages(schema).size() > 0) {

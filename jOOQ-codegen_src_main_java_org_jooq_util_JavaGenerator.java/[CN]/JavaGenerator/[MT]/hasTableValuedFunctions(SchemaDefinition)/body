@@ -1,0 +1,8 @@
+{
+  for (  TableDefinition table : database.getTables(schema)) {
+    if (table.isTableValuedFunction()) {
+      return true;
+    }
+  }
+  return false;
+}
