@@ -37,13 +37,13 @@
     final String getter=getStrategy().getJavaGetterName(column,Mode.DEFAULT);
     final String type=getJavaType(column.getType());
     final String name=column.getQualifiedOutputName();
-    out.tab(1).javadoc("Setter for <code>%s</code>. %s",name,comment);
+    out.tab(1).javadoc("Setter for <code>%s</code>.%s",name,defaultIfBlank(" " + comment,""));
     out.tab(1).overrideIf(generateInterfaces() && !generateImmutablePojos());
     out.tab(1).println("public %s %s(%s value) {",setterReturnType,setter,type);
     out.tab(2).println("setValue(%s, value);",i);
     if (fluentSetters())     out.tab(2).println("return this;");
     out.tab(1).println("}");
-    out.tab(1).javadoc("Getter for <code>%s</code>. %s",name,comment);
+    out.tab(1).javadoc("Getter for <code>%s</code>.%s",name,defaultIfBlank(" " + comment,""));
     printColumnJPAAnnotation(out,column);
     printColumnValidationAnnotation(out,column);
     out.tab(1).overrideIf(generateInterfaces());

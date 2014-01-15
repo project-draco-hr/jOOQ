@@ -18,12 +18,12 @@
     final String type=getJavaType((attribute).getType());
     final String id=getStrategy().getFullJavaIdentifier(attribute);
     final String name=attribute.getQualifiedOutputName();
-    out.tab(1).javadoc("Setter for <code>%s</code>. %s",name,comment);
+    out.tab(1).javadoc("Setter for <code>%s</code>.%s",name,defaultIfBlank(" " + comment,""));
     out.tab(1).println("public %s %s(%s value) {",setterReturnType,setter,type);
     out.tab(2).println("setValue(%s, value);",id);
     if (fluentSetters())     out.tab(2).println("return this;");
     out.tab(1).println("}");
-    out.tab(1).javadoc("Getter for <code>%s</code>. %s",name,comment);
+    out.tab(1).javadoc("Getter for <code>%s</code>.%s",name,defaultIfBlank(" " + comment,""));
     out.tab(1).println("public %s %s() {",type,getter);
     out.tab(2).println("return getValue(%s);",id);
     out.tab(1).println("}");

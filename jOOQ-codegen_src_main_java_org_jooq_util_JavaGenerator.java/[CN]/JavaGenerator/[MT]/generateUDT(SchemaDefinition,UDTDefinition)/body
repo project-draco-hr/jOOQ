@@ -21,7 +21,7 @@
     final String attrId=getStrategy().getJavaIdentifier(attribute);
     final String attrName=attribute.getName();
     final String attrComment=StringUtils.defaultString(attribute.getComment());
-    out.tab(1).javadoc("The attribute <code>%s</code>. %s",attribute.getQualifiedOutputName(),attrComment);
+    out.tab(1).javadoc("The attribute <code>%s</code>.%s",attribute.getQualifiedOutputName(),defaultIfBlank(" " + attrComment,""));
     out.tab(1).println("public static final %s<%s, %s> %s = createField(\"%s\", %s, %s);",UDTField.class,recordType,attrType,attrId,attrName,attrTypeRef,udtId);
   }
   for (  RoutineDefinition routine : udt.getRoutines()) {

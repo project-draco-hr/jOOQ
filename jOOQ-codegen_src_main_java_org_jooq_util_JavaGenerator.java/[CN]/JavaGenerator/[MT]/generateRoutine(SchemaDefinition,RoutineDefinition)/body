@@ -18,7 +18,7 @@
     final String paramName=parameter.getName();
     final String paramComment=StringUtils.defaultString(parameter.getComment());
     final List<String> isDefaulted=list(parameter.isDefaulted() ? "true" : null);
-    out.tab(1).javadoc("The parameter <code>%s</code>. %s",parameter.getQualifiedOutputName(),paramComment);
+    out.tab(1).javadoc("The parameter <code>%s</code>.%s",parameter.getQualifiedOutputName(),defaultIfBlank(" " + paramComment,""));
     out.tab(1).println("public static final %s<%s> %s = createParameter(\"%s\", %s[[before=, ][%s]]);",Parameter.class,paramType,paramId,paramName,paramTypeRef,isDefaulted);
   }
   out.tab(1).javadoc("Create a new routine call instance");
