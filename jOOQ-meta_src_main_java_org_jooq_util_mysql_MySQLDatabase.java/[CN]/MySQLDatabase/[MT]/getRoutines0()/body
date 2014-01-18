@@ -1,5 +1,12 @@
 {
   List<RoutineDefinition> result=new ArrayList<RoutineDefinition>();
+  try {
+    create().fetchCount(PROC);
+  }
+ catch (  DataAccessException e) {
+    log.warn("Table unavailable","The `mysql`.`proc` table is unavailable. Stored procedures cannot be loaded. Check if you have sufficient grants");
+    return result;
+  }
   Result<Record6<String,String,String,byte[],byte[],ProcType>> records=create().select(Proc.DB,Proc.NAME,Proc.COMMENT,Proc.PARAM_LIST,Proc.RETURNS,Proc.TYPE).from(PROC).where(DB.in(getInputSchemata())).orderBy(DB,Proc.NAME).fetch();
   Map<Record,Result<Record6<String,String,String,byte[],byte[],ProcType>>> groups=records.intoGroups(new Field[]{Proc.DB,Proc.NAME});
   for (  Entry<Record,Result<Record6<String,String,String,byte[],byte[],ProcType>>> entry : groups.entrySet()) {
