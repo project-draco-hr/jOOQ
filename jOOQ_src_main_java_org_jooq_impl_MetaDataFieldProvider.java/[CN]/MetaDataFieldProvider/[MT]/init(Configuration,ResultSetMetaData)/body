@@ -5,7 +5,7 @@
     columnCount=meta.getColumnCount();
   }
  catch (  SQLException e) {
-    log.warn("Cannot fetch column count for cursor : " + e.getMessage());
+    log.info("Cannot fetch column count for cursor : " + e.getMessage());
     fieldList.add(field("dummy"));
   }
   try {
@@ -28,7 +28,7 @@
         }
       }
  catch (      SQLDialectNotSupportedException ignore) {
-        log.warn("Not supported by dialect",ignore.getMessage());
+        log.debug("Not supported by dialect",ignore.getMessage());
       }
       fieldList.add(field(name,dataType));
     }
