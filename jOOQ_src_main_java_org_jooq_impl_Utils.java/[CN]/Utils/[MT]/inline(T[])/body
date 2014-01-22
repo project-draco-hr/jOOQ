@@ -1,0 +1,9 @@
+{
+  List<Field<T>> result=new ArrayList<Field<T>>();
+  if (values != null) {
+    for (    T value : values) {
+      result.add(DSL.inline(value));
+    }
+  }
+  return result;
+}

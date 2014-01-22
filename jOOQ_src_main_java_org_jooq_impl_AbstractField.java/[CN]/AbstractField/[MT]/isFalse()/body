@@ -1,15 +1,15 @@
 {
   Class<?> type=getType();
   if (type == String.class) {
-    return ((Field<String>)this).in(Convert.FALSE_VALUES);
+    return ((Field<String>)this).in((Collection)Utils.inline(FALSE_VALUES.toArray(new String[FALSE_VALUES.size()])));
   }
  else   if (Number.class.isAssignableFrom(type)) {
-    return ((Field<Number>)this).equal((Number)getDataType().convert(0));
+    return ((Field<Number>)this).equal(inline((Number)getDataType().convert(0)));
   }
  else   if (Boolean.class.isAssignableFrom(type)) {
-    return ((Field<Boolean>)this).equal(false);
+    return ((Field<Boolean>)this).equal(inline(false));
   }
  else {
-    return cast(String.class).in(Convert.FALSE_VALUES);
+    return cast(String.class).in((Collection)Utils.inline(FALSE_VALUES.toArray(new String[FALSE_VALUES.size()])));
   }
 }
