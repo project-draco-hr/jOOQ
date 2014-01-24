@@ -1,0 +1,3 @@
+{
+  return DSL.using(configuration).mergeInto(AUTHOR,AUTHOR.ID,AUTHOR.FIRST_NAME,AUTHOR.LAST_NAME).key(AUTHOR.ID).values(author.getId(),author.getFirstName(),author.getLastName()).execute();
+}

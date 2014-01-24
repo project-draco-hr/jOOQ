@@ -1,0 +1,3 @@
+{
+  return DataSourceUtils.getConnection(dataSource);
+}

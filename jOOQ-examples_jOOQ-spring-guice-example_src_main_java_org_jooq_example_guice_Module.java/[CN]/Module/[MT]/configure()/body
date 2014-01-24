@@ -1,0 +1,8 @@
+{
+  bind(Service.class).in(Singleton.class);
+  TransactionalMethodInterceptor interceptor=new TransactionalMethodInterceptor();
+  requestInjection(interceptor);
+  bindInterceptor(annotatedWith(Transactional.class),any(),interceptor);
+  bindInterceptor(any(),annotatedWith(Transactional.class),interceptor);
+  install(new DataSources());
+}

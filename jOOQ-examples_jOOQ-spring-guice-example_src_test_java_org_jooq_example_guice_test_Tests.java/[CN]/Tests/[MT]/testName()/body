@@ -1,0 +1,5 @@
+{
+  Author author=service.getAuthor(1);
+  assertEquals("George",author.getFirstName());
+  assertEquals("Orwell",author.getLastName());
+}

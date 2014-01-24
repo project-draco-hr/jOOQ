@@ -1,0 +1,23 @@
+{
+  try {
+    service.transactional(new Runnable(){
+      @Override public void run(){
+        Author author=service.getAuthor(1);
+        author.setFirstName("John");
+        author.setLastName("Smith");
+        assertEquals(1,service.mergeNames(author));
+        author=service.getAuthor(1);
+        assertEquals("John",author.getFirstName());
+        assertEquals("Smith",author.getLastName());
+        service.deleteAuthor(1);
+        fail();
+      }
+    }
+);
+    fail();
+  }
+ catch (  DataAccessException expected) {
+  }
+  testSize();
+  testName();
+}

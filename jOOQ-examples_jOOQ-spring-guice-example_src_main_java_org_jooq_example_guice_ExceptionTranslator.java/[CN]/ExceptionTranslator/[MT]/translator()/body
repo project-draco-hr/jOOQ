@@ -1,0 +1,3 @@
+{
+  return ds == null ? new SQLStateSQLExceptionTranslator() : new SQLErrorCodeSQLExceptionTranslator(ds);
+}

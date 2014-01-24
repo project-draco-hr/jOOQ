@@ -1,0 +1,6 @@
+{
+  this.ds=ds;
+  this.configuration=new DefaultConfiguration().set(new SpringConnectionProvider(ds)).set(SQLDialect.H2).set(new DefaultExecuteListenerProvider(new ExceptionTranslator(ds)));
+  this.authors=new AuthorDao(configuration);
+  this.books=new BookDao(configuration);
+}

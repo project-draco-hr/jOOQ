@@ -1,0 +1,3 @@
+{
+  ctx.exception(translator().translate("jOOQ",ctx.sql(),ctx.sqlException()));
+}
