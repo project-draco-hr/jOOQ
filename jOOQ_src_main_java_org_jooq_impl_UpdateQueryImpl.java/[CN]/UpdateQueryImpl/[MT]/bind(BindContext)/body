@@ -1,5 +1,6 @@
 {
-  context.visit(getInto());
+  boolean declareTables=context.declareTables();
+  context.declareTables(true).visit(getInto()).declareTables(declareTables);
   if (multiRow != null) {
     context.visit(multiRow);
     if (multiValue != null) {
