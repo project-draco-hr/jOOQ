@@ -1,0 +1,5 @@
+{
+  String[] columns=new String[rows.length];
+  for (int i=0; i < rows.length; i++)   columns[i]="c" + i;
+  return new Values<Record>(rows).as("v",columns);
+}
