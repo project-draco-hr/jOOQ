@@ -8,6 +8,13 @@
         log.debug("-> with bind values",inlined);
       }
     }
+ else     if (ctx.routine() != null) {
+      log.debug("Calling routine",ctx.sql());
+      String inlined=DSL.using(ctx.configuration()).renderInlined(ctx.routine());
+      if (!ctx.sql().equals(inlined)) {
+        log.debug("-> with bind values",inlined);
+      }
+    }
  else     if (!StringUtils.isBlank(ctx.sql())) {
       if (ctx.type() == ExecuteType.BATCH) {
         log.debug("Executing batch query",ctx.sql());
