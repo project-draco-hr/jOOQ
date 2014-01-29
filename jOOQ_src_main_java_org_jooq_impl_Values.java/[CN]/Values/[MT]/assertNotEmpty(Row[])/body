@@ -1,0 +1,4 @@
+{
+  if (rows == null || rows.length == 0)   throw new IllegalArgumentException("Cannot create a VALUES() constructor with an empty set of rows");
+  return rows;
+}

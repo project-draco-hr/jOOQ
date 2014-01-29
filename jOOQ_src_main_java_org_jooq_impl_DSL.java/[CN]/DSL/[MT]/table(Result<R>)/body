@@ -1,0 +1,9 @@
+{
+  int size=result.size();
+  RowN[] rows=new RowN[size];
+  for (int i=0; i < size; i++)   rows[i]=(RowN)result.get(i).valuesRow();
+  Field<?>[] fields=result.fields();
+  String[] columns=new String[fields.length];
+  for (int i=0; i < fields.length; i++)   columns[i]=fields[i].getName();
+  return (Table<R>)values(rows).as("v",columns);
+}
