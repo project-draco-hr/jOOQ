@@ -1,5 +1,6 @@
 {
-  context.start(UPDATE_UPDATE).keyword("update").sql(" ").declareTables(true).visit(getInto()).declareTables(false).end(UPDATE_UPDATE).formatSeparator().start(UPDATE_SET).keyword("set").sql(" ");
+  context.start(UPDATE_UPDATE).keyword("update").sql(" ").declareTables(true).visit(getInto()).declareTables(false).end(UPDATE_UPDATE);
+  context.formatSeparator().start(UPDATE_SET).keyword("set").sql(" ");
   if (multiRow != null) {
     boolean qualify=context.qualify();
     context.start(UPDATE_SET_ASSIGNMENT).qualify(false).visit(multiRow).qualify(qualify).sql(" = ");
@@ -18,11 +19,21 @@
  else {
     context.formatIndentLockStart().visit(updateMap).formatIndentLockEnd();
   }
-  context.end(UPDATE_SET).start(UPDATE_WHERE);
-  if (!(getWhere() instanceof TrueCondition)) {
-    context.formatSeparator().keyword("where").sql(" ").visit(getWhere());
+  context.end(UPDATE_SET);
+switch (context.configuration().dialect().family()) {
+default :
+    context.start(UPDATE_FROM);
+  if (!from.isEmpty()) {
+    context.formatSeparator().keyword("from").sql(" ").visit(from);
   }
-  context.end(UPDATE_WHERE).start(UPDATE_RETURNING);
-  toSQLReturning(context);
-  context.end(UPDATE_RETURNING);
+context.end(UPDATE_FROM);
+break;
+}
+context.start(UPDATE_WHERE);
+if (!(getWhere() instanceof TrueCondition)) {
+context.formatSeparator().keyword("where").sql(" ").visit(getWhere());
+}
+context.end(UPDATE_WHERE).start(UPDATE_RETURNING);
+toSQLReturning(context);
+context.end(UPDATE_RETURNING);
 }

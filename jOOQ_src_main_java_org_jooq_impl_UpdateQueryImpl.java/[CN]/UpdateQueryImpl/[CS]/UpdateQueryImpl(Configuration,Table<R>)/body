@@ -1,5 +1,6 @@
 {
   super(configuration,table);
-  this.condition=new ConditionProviderImpl();
   this.updateMap=new FieldMapForUpdate(UPDATE_SET_ASSIGNMENT);
+  this.from=new TableList();
+  this.condition=new ConditionProviderImpl();
 }

@@ -13,6 +13,11 @@
  else {
     context.visit(updateMap);
   }
-  context.visit(condition);
-  bindReturning(context);
+switch (context.configuration().dialect().family()) {
+default :
+    context.visit(from);
+  break;
+}
+context.visit(condition);
+bindReturning(context);
 }
