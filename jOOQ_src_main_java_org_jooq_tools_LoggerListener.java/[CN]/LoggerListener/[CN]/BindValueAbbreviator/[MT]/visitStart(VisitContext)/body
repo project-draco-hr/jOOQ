@@ -1,0 +1,17 @@
+{
+  if (context.renderContext() != null) {
+    QueryPart part=context.queryPart();
+    if (part instanceof Param<?>) {
+      Param<?> param=(Param<?>)part;
+      Object value=param.getValue();
+      if (value instanceof String && ((String)value).length() > maxLength) {
+        anyAbbreviations=true;
+        context.queryPart(val(abbreviate((String)value,maxLength)));
+      }
+ else       if (value instanceof byte[] && ((byte[])value).length > maxLength) {
+        anyAbbreviations=true;
+        context.queryPart(val(Arrays.copyOf((byte[])value,maxLength)));
+      }
+    }
+  }
+}

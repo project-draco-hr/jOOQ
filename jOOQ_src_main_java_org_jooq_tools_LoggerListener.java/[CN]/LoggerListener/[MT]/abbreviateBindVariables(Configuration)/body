@@ -1,0 +1,7 @@
+{
+  VisitListenerProvider[] oldProviders=configuration.visitListenerProviders();
+  VisitListenerProvider[] newProviders=new VisitListenerProvider[oldProviders.length + 1];
+  System.arraycopy(oldProviders,0,newProviders,0,oldProviders.length);
+  newProviders[newProviders.length - 1]=new DefaultVisitListenerProvider(new BindValueAbbreviator());
+  return configuration.derive(newProviders);
+}

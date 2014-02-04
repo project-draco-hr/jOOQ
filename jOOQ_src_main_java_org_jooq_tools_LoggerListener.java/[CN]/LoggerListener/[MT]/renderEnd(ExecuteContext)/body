@@ -1,16 +1,20 @@
 {
   if (log.isDebugEnabled()) {
+    Configuration configuration=ctx.configuration();
+    if (!log.isTraceEnabled()) {
+      configuration=abbreviateBindVariables(configuration);
+    }
     String[] batchSQL=ctx.batchSQL();
     if (ctx.query() != null) {
       log.debug("Executing query",ctx.sql());
-      String inlined=ctx.query().getSQL(INLINED);
+      String inlined=DSL.using(configuration).renderInlined(ctx.query());
       if (!ctx.sql().equals(inlined)) {
         log.debug("-> with bind values",inlined);
       }
     }
  else     if (ctx.routine() != null) {
       log.debug("Calling routine",ctx.sql());
-      String inlined=DSL.using(ctx.configuration()).renderInlined(ctx.routine());
+      String inlined=DSL.using(configuration).renderInlined(ctx.routine());
       if (!ctx.sql().equals(inlined)) {
         log.debug("-> with bind values",inlined);
       }
