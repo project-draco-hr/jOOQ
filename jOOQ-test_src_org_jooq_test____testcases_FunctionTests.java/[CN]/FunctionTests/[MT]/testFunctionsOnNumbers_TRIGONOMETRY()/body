@@ -35,7 +35,7 @@ default :
   Field<BigDecimal> t9=atan(Math.PI / 6);
   Field<BigDecimal> ta=round(deg(atan2(1,1)));
   Field<BigDecimal> tb=sinh(1.0).div(cosh(1.0)).mul(tanh(1.0)).mul(power(coth(1.0),2).add(0.1));
-  record=create().select(t1,t2,t3,t4,t6,t7,t8,t9,tb).fetchOne();
+  record=create().select(t1,t2,t3,t4,t6,t7,t8,t9,ta,tb).fetchOne();
   assertNotNull(record);
   assertEquals("0.5",record.getValue(t1,String.class).substring(0,3));
   assertEquals("0.866",record.getValue(t2,String.class).substring(0,5));
