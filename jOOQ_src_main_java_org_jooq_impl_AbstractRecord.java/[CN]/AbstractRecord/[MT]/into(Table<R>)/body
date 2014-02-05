@@ -1,31 +1,3 @@
 {
-  return Utils.newRecord(table,configuration()).operate(new RecordOperation<R,MappingException>(){
-    @Override public R operate(    R record) throws MappingException {
-      try {
-        for (        Field<?> targetField : table.fields()) {
-          Field<?> sourceField=field(targetField);
-          if (sourceField != null) {
-            Utils.setValue(record,targetField,AbstractRecord.this,sourceField);
-          }
-        }
-        if (record instanceof AbstractRecord) {
-          UniqueKey<?> key=((AbstractRecord)record).getPrimaryKey();
-          if (key != null) {
-            boolean isKeySet=true;
-            for (            Field<?> field : key.getFields()) {
-              isKeySet=isKeySet && (field(field) != null);
-            }
-            if (isKeySet) {
-              record.changed(false);
-            }
-          }
-        }
-        return record;
-      }
- catch (      Exception e) {
-        throw new MappingException("An error ocurred when mapping record to " + table,e);
-      }
-    }
-  }
-);
+  return Utils.newRecord(table,configuration()).operate(new RecordCopyOperation<R>());
 }

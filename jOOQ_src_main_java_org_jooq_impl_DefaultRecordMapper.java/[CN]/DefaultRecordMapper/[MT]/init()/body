@@ -7,6 +7,10 @@
     delegate=new ProxyMapper();
     return;
   }
+  if (AbstractRecord.class.isAssignableFrom(type)) {
+    delegate=(RecordMapper<R,E>)new RecordToRecordMapper();
+    return;
+  }
   try {
     delegate=new MutablePOJOMapper(type.getDeclaredConstructor());
     return;

@@ -1,0 +1,11 @@
+{
+  try {
+    if (record instanceof AbstractRecord) {
+      return ((AbstractRecord)record).intoRecord((Class<AbstractRecord>)type);
+    }
+    throw new MappingException("Cannot map record " + record + " to type "+ type);
+  }
+ catch (  Exception e) {
+    throw new MappingException("An error ocurred when mapping record to " + type,e);
+  }
+}
