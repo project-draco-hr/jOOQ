@@ -1,0 +1,3 @@
+{
+  return new DateAdd<Date>(Utils.field(date),Utils.field(interval),datePart);
+}

@@ -1,0 +1,3 @@
+Timestamp date
+Field<? extends Number> interval
+DatePart datePart
