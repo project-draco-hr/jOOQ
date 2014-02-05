@@ -1,0 +1,29 @@
+{
+  AbstractRecord source=AbstractRecord.this;
+  try {
+    if (target instanceof AbstractRecord) {
+      AbstractRecord t=(AbstractRecord)target;
+      for (int targetIndex=0; targetIndex < t.size(); targetIndex++) {
+        Field<?> targetField=t.field(targetIndex);
+        int sourceIndex=fields.indexOf(targetField);
+        if (sourceIndex >= 0) {
+          DataType<?> targetType=targetField.getDataType();
+          Value<?> sourceValue=values[sourceIndex];
+          t.values[targetIndex]=new Value<Object>(targetType.convert(sourceValue.getValue()),targetType.convert(sourceValue.getOriginal()),sourceValue.isChanged());
+        }
+      }
+    }
+ else {
+      for (      Field<?> targetField : target.fields()) {
+        Field<?> sourceField=field(targetField);
+        if (sourceField != null) {
+          Utils.setValue(target,targetField,source,sourceField);
+        }
+      }
+    }
+    return target;
+  }
+ catch (  Exception e) {
+    throw new MappingException("An error ocurred when mapping record to " + target,e);
+  }
+}
