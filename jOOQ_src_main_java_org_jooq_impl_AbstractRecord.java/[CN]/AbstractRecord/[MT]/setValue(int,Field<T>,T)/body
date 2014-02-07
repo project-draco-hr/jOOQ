@@ -10,6 +10,9 @@
  else   if (updatablePrimaryKeys(settings(this))) {
     val.setValue(value);
   }
+ else   if (val.getOriginal() == null) {
+    val.setValue(value);
+  }
  else {
     val.setValue(value,true);
     if (val.isChanged()) {
