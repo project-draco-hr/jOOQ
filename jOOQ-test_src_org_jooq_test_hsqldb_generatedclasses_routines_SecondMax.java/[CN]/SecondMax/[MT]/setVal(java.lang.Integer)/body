@@ -1,0 +1,3 @@
+{
+  setValue(org.jooq.test.hsqldb.generatedclasses.routines.SecondMax.VAL,value);
+}

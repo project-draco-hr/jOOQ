@@ -1,3 +1,3 @@
 {
-  super("T_UNSIGNED",org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC);
+  this("T_UNSIGNED",null);
 }

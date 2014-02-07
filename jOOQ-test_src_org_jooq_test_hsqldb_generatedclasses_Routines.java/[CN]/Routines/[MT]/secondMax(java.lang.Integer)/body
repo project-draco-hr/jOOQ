@@ -1,0 +1,5 @@
+{
+  org.jooq.test.hsqldb.generatedclasses.routines.SecondMax f=new org.jooq.test.hsqldb.generatedclasses.routines.SecondMax();
+  f.setVal(val);
+  return f.asAggregateFunction();
+}

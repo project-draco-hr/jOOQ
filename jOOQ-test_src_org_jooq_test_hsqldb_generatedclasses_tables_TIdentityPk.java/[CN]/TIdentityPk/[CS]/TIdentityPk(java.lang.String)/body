@@ -1,3 +1,3 @@
 {
-  super(alias,org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC,org.jooq.test.hsqldb.generatedclasses.tables.TIdentityPk.T_IDENTITY_PK);
+  this(alias,org.jooq.test.hsqldb.generatedclasses.tables.TIdentityPk.T_IDENTITY_PK);
 }

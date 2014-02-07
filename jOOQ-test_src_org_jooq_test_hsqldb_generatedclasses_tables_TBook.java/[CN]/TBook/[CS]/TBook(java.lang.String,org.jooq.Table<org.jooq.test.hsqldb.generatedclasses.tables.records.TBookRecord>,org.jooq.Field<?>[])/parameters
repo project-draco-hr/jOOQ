@@ -1,0 +1,3 @@
+java.lang.String alias
+org.jooq.Table<org.jooq.test.hsqldb.generatedclasses.tables.records.TBookRecord> aliased
+org.jooq.Field<?>[] parameters
