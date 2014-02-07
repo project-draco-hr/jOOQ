@@ -1,0 +1,6 @@
+{
+  super("dateadd",date.getDataType());
+  this.date=date;
+  this.interval=interval;
+  this.datePart=datePart;
+}
