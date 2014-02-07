@@ -1,5 +1,3 @@
 {
-  Calendar cal=Calendar.getInstance();
-  cal.setTimeInMillis(-3600000);
-  return cal;
+  return cal(0);
 }

@@ -1,0 +1,60 @@
+{
+  String keyword=null;
+switch (configuration.dialect().family()) {
+case CUBRID:
+case HSQLDB:
+{
+switch (part) {
+case YEAR:
+        keyword="YY";
+      break;
+case MONTH:
+    keyword="MM";
+  break;
+case DAY:
+keyword="DD";
+break;
+case HOUR:
+keyword="HH";
+break;
+case MINUTE:
+keyword="MI";
+break;
+case SECOND:
+keyword="SS";
+break;
+default :
+throwUnsupported();
+}
+return field("{trunc}({0}, {1})",getDataType(),date,inline(keyword));
+}
+case POSTGRES:
+{
+switch (part) {
+case YEAR:
+keyword="year";
+break;
+case MONTH:
+keyword="month";
+break;
+case DAY:
+keyword="day";
+break;
+case HOUR:
+keyword="hour";
+break;
+case MINUTE:
+keyword="minute";
+break;
+case SECOND:
+keyword="second";
+break;
+default :
+throwUnsupported();
+}
+return field("{date_trunc}({0}, {1})",getDataType(),inline(keyword),date);
+}
+default :
+return field("{trunc}({0}, {1})",getDataType(),date,inline(part.name()));
+}
+}

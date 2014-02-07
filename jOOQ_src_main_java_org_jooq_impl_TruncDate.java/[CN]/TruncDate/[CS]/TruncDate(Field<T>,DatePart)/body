@@ -1,0 +1,5 @@
+{
+  super("trunc",date.getDataType());
+  this.date=date;
+  this.part=part;
+}
