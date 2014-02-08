@@ -1,0 +1,25 @@
+{
+  if (!reflectionCaching(configuration.settings()))   return operation.call();
+  Map<Object,Object> cache=(Map<Object,Object>)configuration.data(type);
+  if (cache == null) {
+synchronized (type) {
+      cache=(Map<Object,Object>)configuration.data(type);
+      if (cache == null) {
+        cache=new ConcurrentHashMap<Object,Object>();
+        configuration.data(type,cache);
+      }
+    }
+  }
+  Object key=key(keys);
+  Object result=cache.get(key);
+  if (result == null) {
+synchronized (cache) {
+      result=cache.get(key);
+      if (result == null) {
+        result=operation.call();
+        cache.put(key,result == null ? NULL : result);
+      }
+    }
+  }
+  return (V)(result == NULL ? null : result);
+}

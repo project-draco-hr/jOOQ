@@ -1,0 +1,4 @@
+RecordType<R> rowType
+Class<? extends E> type
+E instance
+Configuration configuration

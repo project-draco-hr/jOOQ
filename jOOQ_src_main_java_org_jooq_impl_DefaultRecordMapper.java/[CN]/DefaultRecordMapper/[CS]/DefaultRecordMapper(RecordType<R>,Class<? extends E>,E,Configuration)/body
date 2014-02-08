@@ -1,0 +1,7 @@
+{
+  this.fields=rowType.fields();
+  this.type=type;
+  this.instance=instance;
+  this.configuration=configuration;
+  init();
+}

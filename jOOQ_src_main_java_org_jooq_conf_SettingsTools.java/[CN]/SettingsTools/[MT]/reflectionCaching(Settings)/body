@@ -1,0 +1,3 @@
+{
+  return defaultIfNull(settings.isReflectionCaching(),true);
+}

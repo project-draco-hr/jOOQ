@@ -1,4 +1,4 @@
 {
-  this.connectionProvider=newConnectionProvider;
+  this.connectionProvider=newConnectionProvider != null ? newConnectionProvider : new NoConnectionProvider();
   return this;
 }

@@ -1,6 +1,0 @@
-{
-  Result<B> books=create().fetch(TBook());
-  for (int i=0; i < REPETITIONS_RECORD_INTO; i++) {
-    books.into(TBook().getRecordType());
-  }
-}

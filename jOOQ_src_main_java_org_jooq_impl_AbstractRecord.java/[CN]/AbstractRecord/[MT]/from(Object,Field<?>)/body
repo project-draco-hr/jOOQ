@@ -9,17 +9,17 @@
  else {
     Class<?> type=source.getClass();
     try {
-      boolean useAnnotations=hasColumnAnnotations(type);
+      boolean useAnnotations=hasColumnAnnotations(configuration(),type);
       for (      Field<?> field : f) {
         List<java.lang.reflect.Field> members;
         Method method;
         if (useAnnotations) {
-          members=getAnnotatedMembers(type,field.getName());
-          method=getAnnotatedGetter(type,field.getName());
+          members=getAnnotatedMembers(configuration(),type,field.getName());
+          method=getAnnotatedGetter(configuration(),type,field.getName());
         }
  else {
-          members=getMatchingMembers(type,field.getName());
-          method=getMatchingGetter(type,field.getName());
+          members=getMatchingMembers(configuration(),type,field.getName());
+          method=getMatchingGetter(configuration(),type,field.getName());
         }
         if (method != null) {
           Utils.setValue(this,field,method.invoke(source));

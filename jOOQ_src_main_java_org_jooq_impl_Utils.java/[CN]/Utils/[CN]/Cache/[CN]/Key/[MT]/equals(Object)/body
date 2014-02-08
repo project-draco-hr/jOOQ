@@ -1,0 +1,4 @@
+{
+  if (obj instanceof Key)   return Arrays.equals(key,((Key)obj).key);
+  return false;
+}
