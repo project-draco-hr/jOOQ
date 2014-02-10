@@ -262,6 +262,10 @@
         return null;
       }
     }
+ else     if (Record.class.isAssignableFrom(fromClass)) {
+      Record record=(Record)from;
+      return record.into(toClass);
+    }
   }
   throw fail(from,toClass);
 }
