@@ -1,4 +1,8 @@
 {
+  if (!supportsReferences()) {
+    log.info("SKIPPING","Fetch parent and children tests");
+    return;
+  }
   Result<A> authors=create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).fetch();
   Result<B> books=create().selectFrom(TBook()).orderBy(TBook_ID()).fetch();
   A a1=authors.get(0);

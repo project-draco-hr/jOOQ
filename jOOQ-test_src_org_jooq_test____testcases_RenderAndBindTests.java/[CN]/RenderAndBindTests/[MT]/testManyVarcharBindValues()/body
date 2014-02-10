@@ -1,5 +1,5 @@
 {
-  int n=300;
+  int n=255;
   String s="1234567890";
   Record record=create().select(Collections.nCopies(n,val(s))).fetchOne();
   assertEquals(n,record.size());
