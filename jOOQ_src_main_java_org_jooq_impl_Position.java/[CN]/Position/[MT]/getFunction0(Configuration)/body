@@ -1,7 +1,7 @@
 {
 switch (configuration.dialect().family()) {
 case DERBY:
-    return function("locate",SQLDataType.INTEGER,search,in);
+    return field("{locate}({0}, {1})",SQLDataType.INTEGER,search,in);
 default :
   return field("{position}({0} {in} {1})",SQLDataType.INTEGER,search,in);
 }

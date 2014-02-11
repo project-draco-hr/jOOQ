@@ -18,9 +18,9 @@
   assertEquals(4,result5.size());
   assertEquals(Arrays.asList(1,2,3,4),result5.getValues(ID));
   Field<?> LAST_NAME=field(TAuthor_LAST_NAME().getName());
-  Field<?> COUNT1=field("count(*) x");
-  Field<?> COUNT2=field("count(*) y",Integer.class);
-  Result<?> result6=create().select(LAST_NAME,COUNT1,COUNT2).from("t_author a").join("t_book b").on("a.id = b.author_id").where("b.title != 'Brida'").groupBy(LAST_NAME).orderBy(LAST_NAME).fetch();
+  Field<?> COUNT1=field("count(*)").as("x");
+  Field<?> COUNT2=field("count(*)",Integer.class).as("y");
+  Result<?> result6=create().select(LAST_NAME,COUNT1,COUNT2).from("t_author a").join("t_book b").on("a.id = b.author_id").where("b.title <> 'Brida'").groupBy(LAST_NAME).orderBy(LAST_NAME).fetch();
   assertEquals(2,result6.size());
   assertEquals("Coelho",result6.getValue(0,LAST_NAME));
   assertEquals("Orwell",result6.getValue(1,LAST_NAME));
@@ -28,7 +28,7 @@
   assertEquals("2",result6.get(1).getValue(COUNT1,String.class));
   assertEquals(Integer.valueOf(1),result6.getValue(0,COUNT2));
   assertEquals(Integer.valueOf(2),result6.getValue(1,COUNT2));
-  Result<?> result7=create().select(LAST_NAME,COUNT1,COUNT2).from("t_author a").join("t_book b").on("a.id = b.author_id").where("b.title != 'Brida'").groupBy(LAST_NAME).having("{count}(*) = ?",1).fetch();
+  Result<?> result7=create().select(LAST_NAME,COUNT1,COUNT2).from("t_author a").join("t_book b").on("a.id = b.author_id").where("b.title <> 'Brida'").groupBy(LAST_NAME).having("{count}(*) = ?",1).fetch();
   assertEquals(1,result7.size());
   assertEquals("Coelho",result7.getValue(0,LAST_NAME));
   assertEquals("1",result7.get(0).getValue(COUNT1,String.class));
@@ -53,8 +53,8 @@
   assertEquals(Integer.valueOf(3),author.getValue(TAuthor_ID()));
   assertEquals(null,author.getValue(TAuthor_FIRST_NAME()));
   assertEquals("Roten",author.getValue(TAuthor_LAST_NAME()));
-  assertEquals("ABC",create().select(function("upper",String.class,val("aBc"))).fetchOne(0));
-  assertEquals("abc",create().select(function("lower",SQLDataType.VARCHAR,val("aBc"))).fetchOne(0));
+  assertEquals("4",create().select(function("max",String.class,field("id"))).from("t_book").fetchOne(0));
+  assertEquals("1",create().select(function("min",SQLDataType.VARCHAR,field("id"))).from("t_book").fetchOne(0));
   Result<Record> books=create().fetch("select * from t_book where id in (?, ?) order by id",1,2);
   assertNotNull(books);
   assertEquals(2,books.size());

@@ -10,38 +10,44 @@
       simulateDerivedColumnList=true;
       SelectFieldList fields=new SelectFieldList();
       for (      String fieldAlias : fieldAliases) {
-        fields.add(field("null").as(fieldAlias));
+switch (dialect.family()) {
+default :
+{
+            fields.add(field("null").as(fieldAlias));
+            break;
+          }
       }
-      Select<Record> select=select(fields).where(falseCondition()).unionAll(select(field("*")).from(((Table<?>)wrapped).as(alias)));
-      context.sql("(").formatIndentStart().formatNewLine().visit(select).formatIndentEnd().formatNewLine().sql(")");
     }
+    Select<Record> select=select(fields).where(falseCondition()).unionAll(select(field("*")).from(((Table<?>)wrapped).as(alias)));
+    context.sql("(").formatIndentStart().formatNewLine().visit(select).formatIndentEnd().formatNewLine().sql(")");
+  }
  else {
-      toSQLWrapped(context);
-    }
-    toSQLAs(context);
-    context.sql(" ");
-    context.literal(alias);
-    if (fieldAliases != null && !simulateDerivedColumnList) {
-      toSQLDerivedColumnList(context);
-    }
+    toSQLWrapped(context);
+  }
+  toSQLAs(context);
+  context.sql(" ");
+  context.literal(alias);
+  if (fieldAliases != null && !simulateDerivedColumnList) {
+    toSQLDerivedColumnList(context);
+  }
  else {
 switch (dialect) {
 case HSQLDB:
 case POSTGRES:
 {
-          Object o=wrapped;
-          if (context.declareTables() && o instanceof ArrayTable) {
-            ArrayTable table=(ArrayTable)o;
-            context.sql("(");
-            Utils.fieldNames(context,table.fields());
-            context.sql(")");
-          }
-          break;
+        Object o=wrapped;
+        if (context.declareTables() && o instanceof ArrayTable) {
+          ArrayTable table=(ArrayTable)o;
+          context.sql("(");
+          Utils.fieldNames(context,table.fields());
+          context.sql(")");
         }
-    }
+        break;
+      }
   }
 }
+}
  else {
-  context.literal(alias);
+context.literal(alias);
 }
 }

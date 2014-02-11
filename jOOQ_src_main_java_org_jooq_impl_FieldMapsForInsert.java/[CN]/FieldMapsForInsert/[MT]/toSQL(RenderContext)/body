@@ -9,15 +9,19 @@
 switch (context.configuration().dialect().family()) {
 case FIREBIRD:
 case SQLITE:
-      context.formatSeparator().start(INSERT_SELECT);
-    toSQLInsertSelect(context);
-  context.end(INSERT_SELECT);
-break;
+{
+        context.formatSeparator().start(INSERT_SELECT);
+        context.visit(insertSelect(context));
+        context.end(INSERT_SELECT);
+        break;
+      }
 default :
-context.formatSeparator().start(INSERT_VALUES).keyword("values").sql(" ");
-toSQL92Values(context);
-context.end(INSERT_VALUES);
-break;
+{
+      context.formatSeparator().start(INSERT_VALUES).keyword("values").sql(" ");
+      toSQL92Values(context);
+      context.end(INSERT_VALUES);
+      break;
+    }
 }
 }
 }

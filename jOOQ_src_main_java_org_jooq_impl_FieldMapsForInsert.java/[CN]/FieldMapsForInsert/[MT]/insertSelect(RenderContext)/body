@@ -11,5 +11,5 @@
       }
     }
   }
-  context.visit(select);
+  return select;
 }

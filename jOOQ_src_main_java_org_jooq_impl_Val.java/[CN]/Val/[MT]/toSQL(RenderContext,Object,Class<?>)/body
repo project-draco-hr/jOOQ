@@ -68,7 +68,7 @@
     }
  else     if (type == Time.class) {
       if (asList(SQLITE).contains(family)) {
-        context.sql("'").sql(escape(val)).sql("'");
+        context.sql("'").sql(new SimpleDateFormat("HH:mm:ss").format((Time)val)).sql("'");
       }
  else       if (family == DERBY) {
         context.keyword("time").sql("('").sql(escape(val)).sql("')");

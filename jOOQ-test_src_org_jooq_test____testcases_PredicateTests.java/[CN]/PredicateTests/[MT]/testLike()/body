@@ -9,15 +9,17 @@
     assertEquals(1,books.size());
     assertEquals(5,(int)books.get(0).getValue(TBook_ID()));
   }
+ else {
+    log.info("SKIPPING","Most LIKE tests");
+    return;
+  }
   boolean derby=dialect() == DERBY;
   books=create().selectFrom(TBook()).where(TBook_TITLE().like(concat("19","84"))).and(TBook_TITLE().like(upper(concat("198","4")))).and(TBook_TITLE().like(lower(concat("1","984")))).fetch();
   assertEquals(1,books.size());
   assertEquals(1,(int)books.get(0).getValue(TBook_ID()));
-  if (!asList().contains(dialect().family())) {
-    books=create().selectFrom(TBook()).where(TBook_TITLE().like(concat("%",escape("(%)",'!'),"%"),'!')).and(derby ? trueCondition() : TBook_TITLE().like(concat(val("%"),escape(val("(_)"),'#'),val("%")),'#')).and(TBook_TITLE().notLike(concat("%",escape("(!%)",'#'),"%"),'#')).and(derby ? trueCondition() : TBook_TITLE().notLike(concat(val("%"),escape(val("(#_)"),'!'),val("%")),'!')).fetch();
-    assertEquals(1,books.size());
-    assertEquals(5,(int)books.get(0).getValue(TBook_ID()));
-  }
+  books=create().selectFrom(TBook()).where(TBook_TITLE().like(concat("%",escape("(%)",'!'),"%"),'!')).and(derby ? trueCondition() : TBook_TITLE().like(concat(val("%"),escape(val("(_)"),'#'),val("%")),'#')).and(TBook_TITLE().notLike(concat("%",escape("(!%)",'#'),"%"),'#')).and(derby ? trueCondition() : TBook_TITLE().notLike(concat(val("%"),escape(val("(#_)"),'!'),val("%")),'!')).fetch();
+  assertEquals(1,books.size());
+  assertEquals(5,(int)books.get(0).getValue(TBook_ID()));
   books=create().selectFrom(TBook()).where(TBook_TITLE().contains("%")).and(TBook_TITLE().contains("review!")).and(derby ? trueCondition() : TBook_TITLE().contains(val("(_"))).and(TBook_TITLE().startsWith("About")).and(derby ? trueCondition() : TBook_TITLE().startsWith(val("Abo"))).and(TBook_TITLE().endsWith("too!")).and(derby ? trueCondition() : TBook_TITLE().endsWith(val("too!"))).fetch();
   assertEquals(1,books.size());
   assertEquals(5,(int)books.get(0).getValue(TBook_ID()));
