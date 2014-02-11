@@ -1,5 +1,5 @@
 {
-  Select<?> select=create().select(TAuthor_ID()).from(TAuthor()).where(TAuthor_ID().in(field("?",Integer.class,(Object[])null),field("?",Integer.class,(Object[])null))).and(TAuthor_ID().getName() + " != ? or 'abc' = '???'",37).orderBy(TAuthor_ID().asc());
+  Select<?> select=create().select(TAuthor_ID()).from(TAuthor()).where(TAuthor_ID().in(field("?",Integer.class,(Object[])null),field("?",Integer.class,(Object[])null))).and(TAuthor_ID().getName() + " <> ? or 'abc' = '???'",37).orderBy(TAuthor_ID().asc());
   assertEquals(0,select.fetch().size());
   Result<?> result1=select.bind(1,1L).bind(2,1).fetch();
   assertEquals(1,result1.size());

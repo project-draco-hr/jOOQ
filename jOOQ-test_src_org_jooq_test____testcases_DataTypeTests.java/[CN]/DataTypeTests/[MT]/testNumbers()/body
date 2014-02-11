@@ -8,7 +8,7 @@
   assertEquals(1,set.execute());
   T639 record=create().fetchOne(T639());
   assertEquals(1,(int)record.getValue(T639_ID()));
-  assertTrue(new BigDecimal("1234.567").compareTo(record.getValue(T639_BIG_DECIMAL())) == 0);
+  assertTrue(new BigDecimal("1234.567").compareTo(record.getValue(T639_BIG_DECIMAL()).movePointRight(3).setScale(0,RoundingMode.DOWN).movePointLeft(3)) == 0);
   assertEquals(2,(byte)record.getValue(T639_BYTE_DECIMAL()));
   assertEquals(3,(int)record.getValue(T639_INTEGER()));
   assertEquals(4,(int)record.getValue(T639_INTEGER_DECIMAL()));
@@ -20,7 +20,7 @@
   if (T639_BYTE() != null)   assertEquals(9,(byte)record.getValue(T639_BYTE()));
   if (T639_DOUBLE() != null)   assertEquals(10.125,(double)record.getValue(T639_DOUBLE()));
   if (T639_FLOAT() != null)   assertEquals(11.375f,(float)record.getValue(T639_FLOAT()));
-  if (dialect() == SQLDialect.SQLITE) {
+  if (asList(SQLITE).contains(dialect().family())) {
     log.info("SKIPPING","Advanced BigDecimal tests");
   }
  else {
