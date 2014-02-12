@@ -1,0 +1,3 @@
+java.lang.String alias
+org.jooq.Table<org.jooq.test.h2.generatedclasses.tables.records.TDatesRecord> aliased
+org.jooq.Field<?>[] parameters

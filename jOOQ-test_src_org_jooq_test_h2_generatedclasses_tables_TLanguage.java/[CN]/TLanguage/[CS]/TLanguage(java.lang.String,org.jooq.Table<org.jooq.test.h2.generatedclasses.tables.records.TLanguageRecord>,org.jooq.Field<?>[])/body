@@ -1,0 +1,3 @@
+{
+  super(alias,org.jooq.test.h2.generatedclasses.Public.PUBLIC,aliased,parameters,"An entity holding language master data");
+}

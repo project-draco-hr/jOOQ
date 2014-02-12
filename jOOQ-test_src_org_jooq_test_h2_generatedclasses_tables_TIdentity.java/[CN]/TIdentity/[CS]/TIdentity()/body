@@ -1,3 +1,3 @@
 {
-  super("T_IDENTITY",org.jooq.test.h2.generatedclasses.Public.PUBLIC);
+  this("T_IDENTITY",null);
 }

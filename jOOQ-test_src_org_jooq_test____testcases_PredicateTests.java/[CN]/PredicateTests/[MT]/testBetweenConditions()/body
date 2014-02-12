@@ -1,0 +1,6 @@
+{
+  assertEquals(Arrays.asList(2,3),create().select().from(TBook()).where(TBook_ID().between(2,3)).and(TBook_ID().betweenSymmetric(2,3)).and(TBook_ID().betweenSymmetric(3,2)).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(3,4),create().select().from(TBook()).where(val(3).between(TBook_AUTHOR_ID(),TBook_ID())).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(1,4),create().select().from(TBook()).where(TBook_ID().notBetween(2,3)).and(TBook_ID().notBetweenSymmetric(2,3)).and(TBook_ID().notBetweenSymmetric(3,2)).orderBy(TBook_ID()).fetch(TBook_ID()));
+  assertEquals(Arrays.asList(1,2),create().select().from(TBook()).where(val(3).notBetween(TBook_AUTHOR_ID(),TBook_ID())).orderBy(TBook_ID()).fetch(TBook_ID()));
+}

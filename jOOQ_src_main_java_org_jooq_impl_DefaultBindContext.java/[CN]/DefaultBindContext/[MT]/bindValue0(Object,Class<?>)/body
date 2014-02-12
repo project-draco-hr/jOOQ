@@ -129,7 +129,7 @@
       stmt.setInt(nextIndex(),((UShort)value).intValue());
     }
  else     if (type == UInteger.class) {
-      stmt.setLong(nextIndex(),(Long)value);
+      stmt.setLong(nextIndex(),((UInteger)value).longValue());
     }
  else     if (type == ULong.class) {
       stmt.setBigDecimal(nextIndex(),new BigDecimal(value.toString()));
