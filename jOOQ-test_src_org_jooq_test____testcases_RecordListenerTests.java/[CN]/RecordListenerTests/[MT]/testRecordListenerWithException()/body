@@ -1,0 +1,13 @@
+{
+  jOOQAbstractTest.reset=false;
+  WriteListener listener1=new WriteListener();
+  B book=create(listener1).fetchOne(TBook(),TBook_ID().eq(1));
+  try {
+    book.changed(true);
+    book.insert();
+    fail();
+  }
+ catch (  DataAccessException expected) {
+  }
+  assertEquals(asList("insertStart","insertEnd"),listener1.events);
+}
