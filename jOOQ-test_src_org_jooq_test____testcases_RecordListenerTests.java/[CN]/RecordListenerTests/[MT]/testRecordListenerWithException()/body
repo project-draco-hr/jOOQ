@@ -10,4 +10,5 @@
  catch (  DataAccessException expected) {
   }
   assertEquals(asList("insertStart","insertEnd"),listener1.events);
+  assertEquals(1,listener1.exceptions.size());
 }

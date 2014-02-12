@@ -1,7 +1,7 @@
 {
   RecordListenerProvider[] providers=null;
   RecordListener[] listeners=null;
-  RecordContext ctx=null;
+  DefaultRecordContext ctx=null;
   E exception=null;
   if (configuration != null) {
     providers=configuration.recordListenerProviders();
@@ -45,6 +45,10 @@ operation.operate(record);
 }
  catch (Exception e) {
 exception=(E)e;
+if (!(e instanceof ControlFlowSignal)) {
+if (ctx != null) ctx.exception=e;
+if (listeners != null) for (RecordListener listener : listeners) listener.exception(ctx);
+}
 }
 }
 if (listeners != null) {
