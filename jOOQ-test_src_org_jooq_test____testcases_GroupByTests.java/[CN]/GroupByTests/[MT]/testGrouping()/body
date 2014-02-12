@@ -12,7 +12,7 @@
   assertEquals(1,result3.size());
   assertEquals(2,(int)result3.getValue(0,count));
   assertEquals("Coelho",result3.getValue(0,TAuthor_LAST_NAME()));
-  Result<Record2<String,Integer>> result4=create().select(VLibrary_AUTHOR(),count).from(VLibrary()).where(VLibrary_TITLE().notEqual("1984")).groupBy(VLibrary_AUTHOR()).having("v_library.author like ?","Paulo%").fetch();
+  Result<Record2<String,Integer>> result4=create().select(VLibrary_AUTHOR(),count).from(VLibrary()).where(VLibrary_TITLE().notEqual("1984")).groupBy(VLibrary_AUTHOR()).having("count(*) >= ?",2).fetch();
   assertEquals(1,result4.size());
   assertEquals(2,(int)result4.getValue(0,count));
   assertEquals("Paulo",result4.getValue(0,VLibrary_AUTHOR()).substring(0,5));

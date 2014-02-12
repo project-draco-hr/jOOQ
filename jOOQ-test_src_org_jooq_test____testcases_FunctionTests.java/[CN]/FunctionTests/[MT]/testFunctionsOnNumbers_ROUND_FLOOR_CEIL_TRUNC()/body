@@ -24,7 +24,7 @@
   Field<Double> f5b=sqlite || ingres ? inline(1.0) : trunc(1.111);
   Field<Double> f6b=sqlite || ingres ? inline(1.11) : trunc(1.111,2);
   Field<Double> f7b=sqlite || ingres ? inline(10.0) : trunc(11.111,-1);
-  Record r2=create().select(f1b,f2b,f3b,f4b,f6b,f6b,f7b).fetchOne();
+  Record r2=create().select(f1b,f2b,f3b,f4b,f5b,f6b,f7b).fetchOne();
   assertEquals("-1.0",r2.getValue(f1b,String.class));
   assertEquals("-1.11",r2.getValue(f2b,String.class));
   assertEquals("-2.0",r2.getValue(f3b,String.class));
