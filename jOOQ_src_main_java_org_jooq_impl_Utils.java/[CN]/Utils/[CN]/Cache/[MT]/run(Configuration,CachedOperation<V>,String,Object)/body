@@ -1,4 +1,5 @@
 {
+  if (configuration == null)   configuration=new DefaultConfiguration();
   if (!reflectionCaching(configuration.settings()))   return operation.call();
   Map<Object,Object> cache=(Map<Object,Object>)configuration.data(type);
   if (cache == null) {
