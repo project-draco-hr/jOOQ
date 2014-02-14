@@ -3,10 +3,13 @@
   String separator="";
   result.append(create().render(getUDT()));
   result.append("(");
-  for (  Object o : intoArray()) {
-    result.append(separator);
-    result.append(o);
-    separator=", ";
+  Object[] array=intoArray();
+  if (array != null) {
+    for (    Object o : array) {
+      result.append(separator);
+      result.append(o);
+      separator=", ";
+    }
   }
   result.append(")");
   return result.toString();
