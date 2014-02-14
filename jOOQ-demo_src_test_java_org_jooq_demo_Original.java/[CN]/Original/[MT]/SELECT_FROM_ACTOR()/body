@@ -1,3 +1,0 @@
-{
-  System.out.println(dsl().select().from(ACTOR).fetch().format());
-}

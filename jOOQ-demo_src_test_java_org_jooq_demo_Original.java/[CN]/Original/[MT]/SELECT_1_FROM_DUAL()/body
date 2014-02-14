@@ -1,3 +1,0 @@
-{
-  DSL.using(connection,SQLDialect.MYSQL).selectOne().fetch();
-}

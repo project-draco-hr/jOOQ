@@ -1,3 +1,0 @@
-{
-  System.out.println(dsl().select(CUSTOMER.FIRST_NAME,CUSTOMER.LAST_NAME).from(CUSTOMER).where(row(CUSTOMER.FIRST_NAME,CUSTOMER.LAST_NAME).in(select(ACTOR.FIRST_NAME,ACTOR.LAST_NAME).from(ACTOR))).fetch());
-}

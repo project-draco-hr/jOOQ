@@ -1,3 +1,0 @@
-{
-  System.out.println(dsl().select(ACTOR.FIRST_NAME,ACTOR.LAST_NAME).from(ACTOR).union(select(CUSTOMER.FIRST_NAME,CUSTOMER.LAST_NAME).from(CUSTOMER)).union(select(STAFF.FIRST_NAME,STAFF.LAST_NAME).from(STAFF)).fetch());
-}

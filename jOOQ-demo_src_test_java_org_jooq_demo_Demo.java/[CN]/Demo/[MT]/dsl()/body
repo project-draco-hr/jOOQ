@@ -1,4 +1,0 @@
-{
-  final DSLContext dsl=DSL.using(connection,SQLDialect.MYSQL,new Settings().withRenderFormatted(true).withRenderNameStyle(RenderNameStyle.AS_IS).withRenderKeywordStyle(RenderKeywordStyle.UPPER).withRenderSchema(false));
-  return dsl;
-}
