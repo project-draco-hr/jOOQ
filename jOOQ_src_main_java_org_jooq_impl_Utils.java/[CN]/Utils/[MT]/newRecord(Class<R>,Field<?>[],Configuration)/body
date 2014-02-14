@@ -7,9 +7,6 @@
  else {
       record=Reflect.accessible(type.getDeclaredConstructor()).newInstance();
     }
-    if (attachRecords(configuration)) {
-      record.attach(configuration);
-    }
     return new RecordDelegate<R>(configuration,record);
   }
  catch (  Exception e) {

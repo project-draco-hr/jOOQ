@@ -51,6 +51,9 @@ if (listeners != null) for (RecordListener listener : listeners) listener.except
 }
 }
 }
+if (attachRecords(configuration)) {
+record.attach(configuration);
+}
 if (listeners != null) {
 for (RecordListener listener : listeners) {
 switch (type) {
