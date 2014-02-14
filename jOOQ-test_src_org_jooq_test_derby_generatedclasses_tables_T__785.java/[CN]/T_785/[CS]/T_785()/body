@@ -1,3 +1,3 @@
 {
-  super("T_785",org.jooq.test.derby.generatedclasses.Test.TEST);
+  this("T_785",null);
 }

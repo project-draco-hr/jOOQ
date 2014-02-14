@@ -1,5 +1,6 @@
 {
 switch (dialect().family()) {
+case DERBY:
 case H2:
     log.info("SKIPPING","Insert Returning Test");
   return;
