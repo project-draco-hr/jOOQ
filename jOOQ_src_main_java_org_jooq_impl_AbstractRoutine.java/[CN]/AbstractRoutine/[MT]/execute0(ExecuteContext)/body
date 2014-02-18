@@ -1,0 +1,9 @@
+{
+  try {
+    ctx.statement().execute();
+  }
+ catch (  SQLException e) {
+    consumeExceptions(ctx.configuration(),ctx.statement(),e);
+    throw e;
+  }
+}

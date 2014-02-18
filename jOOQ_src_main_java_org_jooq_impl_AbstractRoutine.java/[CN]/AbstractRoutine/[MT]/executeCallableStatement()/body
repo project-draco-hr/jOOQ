@@ -14,7 +14,7 @@
     registerOutParameters(configuration,(CallableStatement)ctx.statement());
     listener.bindEnd(ctx);
     listener.executeStart(ctx);
-    ctx.statement().execute();
+    execute0(ctx);
     listener.executeEnd(ctx);
     fetchOutParameters(ctx);
     return 0;

@@ -1,9 +1,16 @@
 {
   int result=0;
   listener.executeStart(ctx);
-  if (!ctx.statement().execute()) {
-    result=ctx.statement().getUpdateCount();
-    ctx.rows(result);
+  PreparedStatement stmt=ctx.statement();
+  try {
+    if (!stmt.execute()) {
+      result=stmt.getUpdateCount();
+      ctx.rows(result);
+    }
+  }
+ catch (  SQLException e) {
+    consumeExceptions(ctx.configuration(),stmt,e);
+    throw e;
   }
   listener.executeEnd(ctx);
   return result;
