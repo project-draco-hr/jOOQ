@@ -1,3 +1,4 @@
 {
   this.float_=float_;
+  return this;
 }

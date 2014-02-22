@@ -1,3 +1,4 @@
 {
   this.yearOfBirth=yearOfBirth;
+  return this;
 }

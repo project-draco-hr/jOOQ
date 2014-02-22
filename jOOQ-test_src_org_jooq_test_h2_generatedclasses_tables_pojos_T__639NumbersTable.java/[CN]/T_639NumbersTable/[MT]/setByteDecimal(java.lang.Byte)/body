@@ -1,3 +1,4 @@
 {
   this.byteDecimal=byteDecimal;
+  return this;
 }

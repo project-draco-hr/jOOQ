@@ -1,3 +1,4 @@
 {
   this.integer=integer;
+  return this;
 }

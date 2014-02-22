@@ -1,3 +1,4 @@
 {
   this.uShort=uShort;
+  return this;
 }

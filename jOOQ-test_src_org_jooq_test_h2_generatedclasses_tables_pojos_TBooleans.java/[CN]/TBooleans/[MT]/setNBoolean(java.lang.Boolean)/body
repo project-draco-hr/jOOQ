@@ -1,3 +1,4 @@
 {
   this.nBoolean=nBoolean;
+  return this;
 }

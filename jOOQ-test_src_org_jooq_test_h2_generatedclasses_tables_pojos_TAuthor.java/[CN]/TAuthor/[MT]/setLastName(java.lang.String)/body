@@ -1,3 +1,4 @@
 {
   this.lastName=lastName;
+  return this;
 }

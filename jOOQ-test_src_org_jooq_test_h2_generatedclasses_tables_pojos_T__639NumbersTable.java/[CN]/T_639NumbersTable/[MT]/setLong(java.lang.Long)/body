@@ -1,3 +1,4 @@
 {
   this.long_=long_;
+  return this;
 }

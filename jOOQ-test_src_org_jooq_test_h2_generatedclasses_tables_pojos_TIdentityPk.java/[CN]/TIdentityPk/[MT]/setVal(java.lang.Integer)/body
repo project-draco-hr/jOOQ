@@ -1,3 +1,4 @@
 {
   this.val=val;
+  return this;
 }

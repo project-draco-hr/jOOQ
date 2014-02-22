@@ -1,3 +1,4 @@
 {
   setField(P4,field);
+  return this;
 }

@@ -1,3 +1,4 @@
 {
   this.refName=refName;
+  return this;
 }

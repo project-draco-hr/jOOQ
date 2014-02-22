@@ -1,3 +1,4 @@
 {
   this.uInt=uInt;
+  return this;
 }

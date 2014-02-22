@@ -1,3 +1,4 @@
 {
   this.nameRef=nameRef;
+  return this;
 }

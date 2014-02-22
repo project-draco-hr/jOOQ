@@ -1,3 +1,4 @@
 {
   this.shortDecimal=shortDecimal;
+  return this;
 }

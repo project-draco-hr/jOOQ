@@ -1,3 +1,4 @@
 {
   setValue(0,value);
+  return this;
 }

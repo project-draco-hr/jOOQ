@@ -1,3 +1,4 @@
 {
   this.recTimestamp=recTimestamp;
+  return this;
 }

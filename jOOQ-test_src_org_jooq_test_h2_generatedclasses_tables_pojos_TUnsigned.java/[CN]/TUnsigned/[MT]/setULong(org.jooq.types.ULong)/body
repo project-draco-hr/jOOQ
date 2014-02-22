@@ -1,3 +1,4 @@
 {
   this.uLong=uLong;
+  return this;
 }

@@ -1,3 +1,4 @@
 {
   this.excludeMe=excludeMe;
+  return this;
 }

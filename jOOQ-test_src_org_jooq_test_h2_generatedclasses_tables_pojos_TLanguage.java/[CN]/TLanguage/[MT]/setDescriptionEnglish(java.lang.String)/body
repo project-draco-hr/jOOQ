@@ -1,3 +1,4 @@
 {
   this.descriptionEnglish=descriptionEnglish;
+  return this;
 }

@@ -1,3 +1,4 @@
 {
   this.longDecimal=longDecimal;
+  return this;
 }

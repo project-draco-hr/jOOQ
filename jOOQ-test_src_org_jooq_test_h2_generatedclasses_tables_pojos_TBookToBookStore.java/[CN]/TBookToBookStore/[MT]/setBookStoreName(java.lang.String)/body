@@ -1,3 +1,4 @@
 {
   this.bookStoreName=bookStoreName;
+  return this;
 }

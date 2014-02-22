@@ -1,3 +1,4 @@
 {
   this.authorId=authorId;
+  return this;
 }

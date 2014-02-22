@@ -1,3 +1,4 @@
 {
   this.integerDecimal=integerDecimal;
+  return this;
 }

@@ -1,3 +1,4 @@
 {
   this.ts=ts;
+  return this;
 }
