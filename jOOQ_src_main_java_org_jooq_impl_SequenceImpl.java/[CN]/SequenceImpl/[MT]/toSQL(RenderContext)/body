@@ -1,0 +1,8 @@
+{
+  Schema mappedSchema=Utils.getMappedSchema(ctx.configuration(),schema);
+  if (mappedSchema != null && ctx.configuration().dialect() != CUBRID) {
+    ctx.visit(mappedSchema);
+    ctx.sql(".");
+  }
+  ctx.literal(name);
+}
