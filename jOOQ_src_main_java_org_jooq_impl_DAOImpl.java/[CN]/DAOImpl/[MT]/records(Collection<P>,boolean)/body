@@ -1,11 +1,9 @@
 {
   List<R> result=new ArrayList<R>();
-  Field<?> pk=pk();
+  Field<?>[] pk=pk();
   for (  P object : objects) {
     R record=using(configuration).newRecord(table,object);
-    if (forUpdate && pk != null) {
-      ((AbstractRecord)record).getValue0(pk).setChanged(false);
-    }
+    if (forUpdate && pk != null)     for (    Field<?> field : pk)     ((AbstractRecord)record).getValue0(field).setChanged(false);
     result.add(record);
   }
   return result;

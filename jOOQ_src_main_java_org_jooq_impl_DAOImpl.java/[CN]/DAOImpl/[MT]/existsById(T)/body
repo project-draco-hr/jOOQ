@@ -1,5 +1,5 @@
 {
-  Field<?> pk=pk();
+  Field<?>[] pk=pk();
   if (pk != null) {
     return using(configuration).selectCount().from(table).where(equal(pk,id)).fetchOne(0,Integer.class) > 0;
   }

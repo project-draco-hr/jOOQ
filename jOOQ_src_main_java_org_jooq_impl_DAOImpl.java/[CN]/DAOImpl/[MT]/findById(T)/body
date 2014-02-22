@@ -1,5 +1,5 @@
 {
-  Field<?> pk=pk();
+  Field<?>[] pk=pk();
   R record=null;
   if (pk != null) {
     record=using(configuration).selectFrom(table).where(equal(pk,id)).fetchOne();

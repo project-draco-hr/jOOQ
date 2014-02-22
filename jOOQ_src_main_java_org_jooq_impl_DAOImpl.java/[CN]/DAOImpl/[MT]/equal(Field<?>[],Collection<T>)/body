@@ -1,0 +1,13 @@
+{
+  if (pk.length == 1) {
+    if (ids.size() == 1) {
+      return equal(pk,ids.iterator().next());
+    }
+ else {
+      return ((Field<Object>)pk[0]).in(pk[0].getDataType().convert(ids));
+    }
+  }
+ else {
+    return row(pk).in(ids.toArray(new Record[ids.size()]));
+  }
+}

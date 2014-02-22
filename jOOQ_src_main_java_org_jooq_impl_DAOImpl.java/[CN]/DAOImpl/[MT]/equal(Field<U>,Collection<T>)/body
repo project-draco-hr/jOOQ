@@ -1,8 +1,0 @@
-{
-  if (ids.size() == 1) {
-    return equal(pk,ids.iterator().next());
-  }
- else {
-    return pk.in(pk.getDataType().convert(ids));
-  }
-}

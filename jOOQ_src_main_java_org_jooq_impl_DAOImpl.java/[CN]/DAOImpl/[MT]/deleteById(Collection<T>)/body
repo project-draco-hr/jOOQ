@@ -1,5 +1,5 @@
 {
-  Field<?> pk=pk();
+  Field<?>[] pk=pk();
   if (pk != null) {
     using(configuration).delete(table).where(equal(pk,ids)).execute();
   }

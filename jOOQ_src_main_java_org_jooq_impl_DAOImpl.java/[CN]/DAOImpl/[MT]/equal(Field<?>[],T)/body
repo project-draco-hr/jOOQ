@@ -1,0 +1,8 @@
+{
+  if (pk.length == 1) {
+    return ((Field<Object>)pk[0]).equal(pk[0].getDataType().convert(id));
+  }
+ else {
+    return row(pk).equal((Record)id);
+  }
+}

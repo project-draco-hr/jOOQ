@@ -1,9 +1,4 @@
 {
   UniqueKey<?> key=table.getPrimaryKey();
-  if (key != null) {
-    if (key.getFields().size() == 1) {
-      return key.getFields().get(0);
-    }
-  }
-  return null;
+  return key == null ? null : key.getFieldsArray();
 }
