@@ -1,0 +1,11 @@
+{
+  ctx.start(ALTER_SEQUENCE).keyword("alter sequence").start(ALTER_SEQUENCE_SEQUENCE).sql(" ").visit(sequence).end(ALTER_SEQUENCE_SEQUENCE).start(ALTER_SEQUENCE_RESTART);
+  T with=restartWith;
+  if (with == null) {
+    ctx.sql(" ").keyword("restart");
+  }
+ else {
+    ctx.sql(" ").keyword("restart with").sql(" ").sql(with.toString());
+  }
+  ctx.end(ALTER_SEQUENCE_RESTART).end(ALTER_SEQUENCE);
+}
