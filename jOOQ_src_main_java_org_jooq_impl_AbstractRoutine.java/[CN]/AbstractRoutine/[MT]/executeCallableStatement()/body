@@ -13,9 +13,7 @@
     using(configuration).bindContext(ctx.statement()).visit(this);
     registerOutParameters(configuration,(CallableStatement)ctx.statement());
     listener.bindEnd(ctx);
-    listener.executeStart(ctx);
-    execute0(ctx);
-    listener.executeEnd(ctx);
+    execute0(ctx,listener);
     fetchOutParameters(ctx);
     return 0;
   }

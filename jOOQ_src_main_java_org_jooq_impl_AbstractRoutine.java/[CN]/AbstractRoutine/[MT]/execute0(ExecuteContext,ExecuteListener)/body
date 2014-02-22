@@ -1,9 +1,14 @@
 {
   try {
+    listener.executeStart(ctx);
     ctx.statement().execute();
+    listener.executeEnd(ctx);
   }
  catch (  SQLException e) {
     consumeExceptions(ctx.configuration(),ctx.statement(),e);
     throw e;
+  }
+ finally {
+    consumeWarnings(ctx,listener);
   }
 }

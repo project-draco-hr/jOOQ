@@ -8,20 +8,30 @@
 switch (ctx.configuration().dialect().family()) {
 case SQLITE:
 {
-        listener.executeStart(ctx);
-        result=ctx.statement().executeUpdate();
-        ctx.rows(result);
-        listener.executeEnd(ctx);
+        try {
+          listener.executeStart(ctx);
+          result=ctx.statement().executeUpdate();
+          ctx.rows(result);
+          listener.executeEnd(ctx);
+        }
+  finally {
+          consumeWarnings(ctx,listener);
+        }
         DSLContext create=DSL.using(ctx.configuration());
         returned=create.select(returning).from(getInto()).where(rowid().equal(rowid().getDataType().convert(create.lastID()))).fetchInto(getInto());
         return result;
       }
 case CUBRID:
 {
-      listener.executeStart(ctx);
-      result=ctx.statement().executeUpdate();
-      ctx.rows(result);
-      listener.executeEnd(ctx);
+      try {
+        listener.executeStart(ctx);
+        result=ctx.statement().executeUpdate();
+        ctx.rows(result);
+        listener.executeEnd(ctx);
+      }
+  finally {
+        consumeWarnings(ctx,listener);
+      }
       selectReturning(ctx.configuration(),create(ctx.configuration()).lastID());
       return result;
     }
@@ -30,10 +40,15 @@ case H2:
 case MARIADB:
 case MYSQL:
 {
-    listener.executeStart(ctx);
-    result=ctx.statement().executeUpdate();
-    ctx.rows(result);
-    listener.executeEnd(ctx);
+    try {
+      listener.executeStart(ctx);
+      result=ctx.statement().executeUpdate();
+      ctx.rows(result);
+      listener.executeEnd(ctx);
+    }
+  finally {
+      consumeWarnings(ctx,listener);
+    }
     rs=ctx.statement().getGeneratedKeys();
     try {
       List<Object> list=new ArrayList<Object>();
@@ -52,18 +67,28 @@ case MYSQL:
 case FIREBIRD:
 case POSTGRES:
 {
-  listener.executeStart(ctx);
-  rs=ctx.statement().executeQuery();
-  listener.executeEnd(ctx);
+  try {
+    listener.executeStart(ctx);
+    rs=ctx.statement().executeQuery();
+    listener.executeEnd(ctx);
+  }
+  finally {
+    consumeWarnings(ctx,listener);
+  }
   break;
 }
 case HSQLDB:
 default :
 {
-listener.executeStart(ctx);
-result=ctx.statement().executeUpdate();
-ctx.rows(result);
-listener.executeEnd(ctx);
+try {
+  listener.executeStart(ctx);
+  result=ctx.statement().executeUpdate();
+  ctx.rows(result);
+  listener.executeEnd(ctx);
+}
+  finally {
+  consumeWarnings(ctx,listener);
+}
 rs=ctx.statement().getGeneratedKeys();
 break;
 }

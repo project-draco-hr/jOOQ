@@ -1,9 +1,14 @@
 {
-  listener.executeStart(ctx);
-  if (ctx.statement().execute()) {
-    ctx.resultSet(ctx.statement().getResultSet());
+  try {
+    listener.executeStart(ctx);
+    if (ctx.statement().execute()) {
+      ctx.resultSet(ctx.statement().getResultSet());
+    }
+    listener.executeEnd(ctx);
   }
-  listener.executeEnd(ctx);
+  finally {
+    consumeWarnings(ctx,listener);
+  }
   if (!many) {
     if (ctx.resultSet() != null) {
       Field<?>[] fields=getFields(ctx.resultSet().getMetaData());

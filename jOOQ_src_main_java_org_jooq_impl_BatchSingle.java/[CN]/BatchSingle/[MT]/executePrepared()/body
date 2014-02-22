@@ -23,12 +23,17 @@
       listener.bindEnd(ctx);
       ctx.statement().addBatch();
     }
-    listener.executeStart(ctx);
-    int[] result=ctx.statement().executeBatch();
-    int[] batchRows=ctx.batchRows();
-    for (int i=0; i < batchRows.length && i < result.length; i++)     batchRows[i]=result[i];
-    listener.executeEnd(ctx);
-    return result;
+    try {
+      listener.executeStart(ctx);
+      int[] result=ctx.statement().executeBatch();
+      int[] batchRows=ctx.batchRows();
+      for (int i=0; i < batchRows.length && i < result.length; i++)       batchRows[i]=result[i];
+      listener.executeEnd(ctx);
+      return result;
+    }
+  finally {
+      consumeWarnings(ctx,listener);
+    }
   }
  catch (  SQLException e) {
     ctx.sqlException(e);
