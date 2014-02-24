@@ -33,6 +33,9 @@
   if (database.getUDTs(schema).size() > 0) {
     generateUDTRecords(schema);
   }
+  if (generateInterfaces() && database.getUDTs(schema).size() > 0) {
+    generateUDTInterfaces(schema);
+  }
   if (database.getUDTs(schema).size() > 0) {
     generateUDTRoutines(schema);
   }

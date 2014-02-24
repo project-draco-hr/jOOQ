@@ -1,12 +1,12 @@
 {
-  log.info("Generating interfaces");
+  log.info("Generating table interfaces");
   for (  TableDefinition table : database.getTables(schema)) {
     try {
       generateInterface(table);
     }
  catch (    Exception e) {
-      log.error("Error while generating table record " + table,e);
+      log.error("Error while generating table interface " + table,e);
     }
   }
-  watch.splitInfo("Table records generated");
+  watch.splitInfo("Table interfaces generated");
 }

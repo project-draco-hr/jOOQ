@@ -45,7 +45,7 @@
     out.tab(1).println("}");
     out.tab(1).javadoc("Getter for <code>%s</code>.%s",name,defaultIfBlank(" " + comment,""));
     printColumnJPAAnnotation(out,column);
-    printColumnValidationAnnotation(out,column);
+    printValidationAnnotation(out,column);
     out.tab(1).overrideIf(generateInterfaces());
     out.tab(1).println("public %s %s() {",type,getter);
     out.tab(2).println("return (%s) getValue(%s);",type,i);

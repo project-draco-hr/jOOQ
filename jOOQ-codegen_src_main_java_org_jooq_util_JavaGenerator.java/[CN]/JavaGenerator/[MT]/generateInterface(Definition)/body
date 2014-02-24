@@ -1,0 +1,43 @@
+{
+  log.info("Generating interface",getStrategy().getFileName(tableOrUDT,Mode.INTERFACE));
+  final String className=getStrategy().getJavaClassName(tableOrUDT,Mode.INTERFACE);
+  final List<String> interfaces=getStrategy().getJavaClassImplements(tableOrUDT,Mode.INTERFACE);
+  JavaWriter out=new JavaWriter(getStrategy().getFile(tableOrUDT,Mode.INTERFACE));
+  printPackage(out,tableOrUDT,Mode.INTERFACE);
+  printClassJavadoc(out,tableOrUDT);
+  if (tableOrUDT instanceof TableDefinition)   printTableJPAAnnotation(out,(TableDefinition)tableOrUDT);
+  out.println("public interface %s [[before=extends ][%s]] {",className,interfaces);
+  for (  TypedElementDefinition<?> column : getTypedElements(tableOrUDT)) {
+    final String comment=StringUtils.defaultString(column.getComment());
+    final String setterReturnType=fluentSetters() ? className : "void";
+    final String setter=getStrategy().getJavaSetterName(column,Mode.DEFAULT);
+    final String getter=getStrategy().getJavaGetterName(column,Mode.DEFAULT);
+    final String type=getJavaType((column).getType());
+    final String name=column.getQualifiedOutputName();
+    if (!generateImmutablePojos()) {
+      out.tab(1).javadoc("Setter for <code>%s</code>.%s",name,defaultIfBlank(" " + comment,""));
+      out.tab(1).println("public %s %s(%s value);",setterReturnType,setter,type);
+    }
+    out.tab(1).javadoc("Getter for <code>%s</code>.%s",name,defaultIfBlank(" " + comment,""));
+    if (column instanceof ColumnDefinition)     printColumnJPAAnnotation(out,(ColumnDefinition)column);
+    printValidationAnnotation(out,column);
+    out.tab(1).println("public %s %s();",type,getter);
+  }
+  if (!generateImmutablePojos()) {
+    String local=getStrategy().getJavaClassName(tableOrUDT,Mode.INTERFACE);
+    String qualified=getStrategy().getFullJavaClassName(tableOrUDT,Mode.INTERFACE);
+    out.tab(1).header("FROM and INTO");
+    out.tab(1).javadoc("Load data from another generated Record/POJO implementing the common interface %s",local);
+    out.tab(1).println("public void from(%s from);",qualified);
+    out.tab(1).javadoc("Copy data into another generated Record/POJO implementing the common interface %s",local);
+    out.tab(1).println("public <E extends %s> E into(E into);",qualified);
+  }
+  if (tableOrUDT instanceof TableDefinition) {
+    generateInterfaceClassFooter((TableDefinition)tableOrUDT,out);
+  }
+ else {
+    generateUDTInterfaceClassFooter((UDTDefinition)tableOrUDT,out);
+  }
+  out.println("}");
+  out.close();
+}

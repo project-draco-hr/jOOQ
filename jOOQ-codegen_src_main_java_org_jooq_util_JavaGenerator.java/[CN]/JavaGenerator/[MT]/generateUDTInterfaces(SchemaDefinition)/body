@@ -1,0 +1,12 @@
+{
+  log.info("Generating UDT interfaces");
+  for (  UDTDefinition udt : database.getUDTs(schema)) {
+    try {
+      generateInterface(udt);
+    }
+ catch (    Exception e) {
+      log.error("Error while generating UDT interface " + udt,e);
+    }
+  }
+  watch.splitInfo("UDT interfaces generated");
+}
