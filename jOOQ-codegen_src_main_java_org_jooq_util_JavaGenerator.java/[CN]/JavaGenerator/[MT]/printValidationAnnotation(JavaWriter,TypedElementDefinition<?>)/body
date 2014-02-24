@@ -1,0 +1,14 @@
+{
+  if (generateValidationAnnotations()) {
+    DataTypeDefinition type=column.getType();
+    if (!column.getType().isNullable()) {
+      out.tab(1).println("@javax.validation.constraints.NotNull");
+    }
+    if ("java.lang.String".equals(getJavaType(type))) {
+      int length=type.getLength();
+      if (length > 0) {
+        out.tab(1).println("@javax.validation.constraints.Size(max = %s)",length);
+      }
+    }
+  }
+}

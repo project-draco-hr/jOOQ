@@ -1,0 +1,12 @@
+{
+  log.info("Generating UDT POJOs");
+  for (  UDTDefinition udt : database.getUDTs(schema)) {
+    try {
+      generatePojo(udt);
+    }
+ catch (    Exception e) {
+      log.error("Error while generating UDT POJO " + udt,e);
+    }
+  }
+  watch.splitInfo("UDT POJOs generated");
+}

@@ -1,0 +1,14 @@
+{
+  if (definition instanceof TableDefinition) {
+    return ((TableDefinition)definition).getColumns();
+  }
+ else   if (definition instanceof UDTDefinition) {
+    return ((UDTDefinition)definition).getAttributes();
+  }
+ else   if (definition instanceof RoutineDefinition) {
+    return ((RoutineDefinition)definition).getAllParameters();
+  }
+ else {
+    throw new IllegalArgumentException("Unsupported type : " + definition);
+  }
+}

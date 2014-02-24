@@ -27,6 +27,9 @@
   if (database.getUDTs(schema).size() > 0) {
     generateUDTs(schema);
   }
+  if (generatePojos() && database.getUDTs(schema).size() > 0) {
+    generateUDTPojos(schema);
+  }
   if (database.getUDTs(schema).size() > 0) {
     generateUDTRecords(schema);
   }

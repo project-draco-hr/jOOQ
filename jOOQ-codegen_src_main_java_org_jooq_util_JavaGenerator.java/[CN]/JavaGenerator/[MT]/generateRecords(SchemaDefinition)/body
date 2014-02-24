@@ -1,5 +1,5 @@
 {
-  log.info("Generating records");
+  log.info("Generating table records");
   for (  TableDefinition table : database.getTables(schema)) {
     try {
       generateRecord(table);
