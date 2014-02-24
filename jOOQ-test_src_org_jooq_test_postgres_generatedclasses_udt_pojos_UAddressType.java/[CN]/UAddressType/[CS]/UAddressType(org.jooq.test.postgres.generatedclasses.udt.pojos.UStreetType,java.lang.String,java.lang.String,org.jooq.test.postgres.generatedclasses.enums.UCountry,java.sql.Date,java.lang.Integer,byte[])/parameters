@@ -1,4 +1,4 @@
-org.jooq.test.postgres.generatedclasses.udt.records.UStreetTypeRecord street
+org.jooq.test.postgres.generatedclasses.udt.pojos.UStreetType street
 java.lang.String zip
 java.lang.String city
 org.jooq.test.postgres.generatedclasses.enums.UCountry country

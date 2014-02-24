@@ -3,4 +3,4 @@ java.lang.String firstName
 java.lang.String lastName
 java.sql.Date dateOfBirth
 java.lang.Integer yearOfBirth
-org.jooq.test.postgres.generatedclasses.udt.records.UAddressTypeRecord address
+org.jooq.test.postgres.generatedclasses.udt.pojos.UAddressType address
