@@ -1,0 +1,6 @@
+{
+  this.street=street;
+  this.no=no;
+  this.floors=floors;
+  this.f_1323=f_1323;
+}

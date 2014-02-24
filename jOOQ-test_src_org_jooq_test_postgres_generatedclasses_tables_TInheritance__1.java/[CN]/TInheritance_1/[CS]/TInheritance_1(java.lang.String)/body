@@ -1,3 +1,3 @@
 {
-  super(alias,org.jooq.test.postgres.generatedclasses.Public.PUBLIC,org.jooq.test.postgres.generatedclasses.tables.TInheritance_1.T_INHERITANCE_1);
+  this(alias,org.jooq.test.postgres.generatedclasses.tables.TInheritance_1.T_INHERITANCE_1);
 }

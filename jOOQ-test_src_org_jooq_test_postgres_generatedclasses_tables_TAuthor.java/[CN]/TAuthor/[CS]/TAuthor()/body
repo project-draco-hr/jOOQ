@@ -1,3 +1,3 @@
 {
-  super("t_author",org.jooq.test.postgres.generatedclasses.Public.PUBLIC);
+  this("t_author",null);
 }

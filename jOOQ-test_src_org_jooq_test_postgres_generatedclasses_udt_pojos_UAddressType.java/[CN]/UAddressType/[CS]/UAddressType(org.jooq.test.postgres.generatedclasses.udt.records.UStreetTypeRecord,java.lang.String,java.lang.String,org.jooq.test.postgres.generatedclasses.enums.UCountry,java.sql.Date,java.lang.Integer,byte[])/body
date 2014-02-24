@@ -1,0 +1,9 @@
+{
+  this.street=street;
+  this.zip=zip;
+  this.city=city;
+  this.country=country;
+  this.since=since;
+  this.code=code;
+  this.f_1323=f_1323;
+}
