@@ -1,0 +1,41 @@
+{
+  String type=defaultType;
+  if (db.isArrayType(t)) {
+    String baseType=GenerationUtil.getArrayBaseType(db.getDialect(),t,u);
+    type=getType(db,schema,baseType,p,s,baseType,defaultType) + "[]";
+  }
+ else   if (db.getArray(schema,u) != null) {
+    type=getStrategy().getFullJavaClassName(db.getArray(schema,u),Mode.RECORD);
+  }
+ else   if (db.getEnum(schema,u) != null) {
+    type=getStrategy().getFullJavaClassName(db.getEnum(schema,u));
+  }
+ else   if (db.getUDT(schema,u) != null) {
+    type=getStrategy().getFullJavaClassName(db.getUDT(schema,u),udtMode);
+  }
+ else   if (db.getConfiguredCustomType(u) != null) {
+    type=u;
+  }
+ else {
+    try {
+      Class<?> clazz=DefaultDataType.getType(db.getDialect(),t,p,s);
+      type=clazz.getCanonicalName();
+      if (clazz.getTypeParameters().length > 0) {
+        type+="<";
+        String separator="";
+        for (        TypeVariable<?> var : clazz.getTypeParameters()) {
+          type+=separator;
+          type+=((Class<?>)var.getBounds()[0]).getCanonicalName();
+          separator=", ";
+        }
+        type+=">";
+      }
+    }
+ catch (    SQLDialectNotSupportedException e) {
+      if (defaultType == null) {
+        throw e;
+      }
+    }
+  }
+  return type;
+}

@@ -1,0 +1,3 @@
+{
+  return getType(type.getDatabase(),type.getSchema(),type.getType(),type.getPrecision(),type.getScale(),type.getUserType(),Object.class.getName(),udtMode);
+}
