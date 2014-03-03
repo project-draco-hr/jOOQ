@@ -1,0 +1,7 @@
+{
+  Set<UniqueKeyDefinition> result=new LinkedHashSet<UniqueKeyDefinition>();
+  for (  TableDefinition table : schema.getDatabase().getTables(schema)) {
+    result.addAll(getUniqueKeys(table));
+  }
+  return new ArrayList<UniqueKeyDefinition>(result);
+}
