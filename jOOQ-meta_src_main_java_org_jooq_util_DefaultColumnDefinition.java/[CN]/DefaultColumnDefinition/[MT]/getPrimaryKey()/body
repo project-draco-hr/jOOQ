@@ -1,7 +1,3 @@
 {
-  if (!primaryKeyLoaded) {
-    primaryKeyLoaded=true;
-    primaryKey=getDatabase().getRelations().getPrimaryKey(this);
-  }
-  return primaryKey;
+  return getDatabase().getRelations().getPrimaryKey(this);
 }

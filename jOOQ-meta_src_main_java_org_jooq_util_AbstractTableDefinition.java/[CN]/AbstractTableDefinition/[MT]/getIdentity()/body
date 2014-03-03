@@ -1,11 +1,9 @@
 {
-  if (!identityLoaded) {
-    identityLoaded=true;
-    for (    ColumnDefinition column : getColumns()) {
-      if (column.isIdentity()) {
-        identity=new DefaultIdentityDefinition(column);
-        break;
-      }
+  IdentityDefinition identity=null;
+  for (  ColumnDefinition column : getColumns()) {
+    if (column.isIdentity()) {
+      identity=new DefaultIdentityDefinition(column);
+      break;
     }
   }
   return identity;
