@@ -24,5 +24,11 @@
  catch (  Exception e) {
     log.error("Error while fetching check constraints",e);
   }
+  try {
+    overridePrimaryKeys(result);
+  }
+ catch (  Exception e) {
+    log.error("Error while overriding primary keys",e);
+  }
   return result;
 }

@@ -1,0 +1,15 @@
+{
+  UniqueKeyDefinition old=null;
+  primaryKeysByColumn=null;
+  Iterator<Entry<Key,UniqueKeyDefinition>> it=primaryKeys.entrySet().iterator();
+  while (it.hasNext()) {
+    Entry<Key,UniqueKeyDefinition> entry=it.next();
+    if (entry.getValue().getTable().equals(key.getTable())) {
+      old=entry.getValue();
+      it.remove();
+      break;
+    }
+  }
+  primaryKeys.put(key(key.getTable(),key.getName()),key);
+  log.info("Overriding primary key","Table : " + key.getTable() + ", previous key : "+ ((old == null) ? "none" : old.getName())+ ", new key : "+ key.getName());
+}

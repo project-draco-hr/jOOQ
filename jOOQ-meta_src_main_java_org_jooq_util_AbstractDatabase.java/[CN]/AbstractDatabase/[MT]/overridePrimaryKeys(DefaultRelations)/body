@@ -1,0 +1,8 @@
+{
+  List<UniqueKeyDefinition> allKeys=r.getUniqueKeys();
+  List<UniqueKeyDefinition> filteredKeys=filterExcludeInclude(allKeys,null,overridePrimaryKeys);
+  log.info("Overriding primary keys",fetchedSize(allKeys,filteredKeys));
+  for (  UniqueKeyDefinition key : filteredKeys) {
+    r.overridePrimaryKey(key);
+  }
+}
