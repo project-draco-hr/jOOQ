@@ -1,0 +1,9 @@
+{
+  Field<Boolean> field=field("B",Boolean.class);
+  Record1<Boolean> record=create.newRecord(field);
+  record.setValue(field,true);
+  BooleansWithAnnotations pojo=record.into(BooleansWithAnnotations.class);
+  assertTrue(pojo.oneZero);
+  assertTrue(pojo.oneZero1);
+  assertTrue(pojo.oneZero2);
+}

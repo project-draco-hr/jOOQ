@@ -1,0 +1,3 @@
+{
+  return "Boolean [oneZero=" + oneZero + ", oneZero1="+ oneZero1+ ", oneZero2="+ oneZero2+ "]";
+}
