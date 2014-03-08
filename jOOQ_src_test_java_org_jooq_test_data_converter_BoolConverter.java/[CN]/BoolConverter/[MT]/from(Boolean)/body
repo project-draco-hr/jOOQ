@@ -1,0 +1,3 @@
+{
+  return b == null ? Bool.NULL : b == true ? Bool.TRUE : Bool.FALSE;
+}

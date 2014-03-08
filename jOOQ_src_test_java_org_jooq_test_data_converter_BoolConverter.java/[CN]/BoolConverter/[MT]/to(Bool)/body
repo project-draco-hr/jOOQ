@@ -1,0 +1,3 @@
+{
+  return b == null ? null : b == Bool.NULL ? null : b == Bool.TRUE ? true : false;
+}

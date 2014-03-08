@@ -1,0 +1,17 @@
+{
+  Result<BoolRecord> result=DSL.using(new MockConnection(new MockDataProvider(){
+    @Override public MockResult[] execute(    MockExecuteContext ctx) throws SQLException {
+      Result<BoolRecord> r=create.newResult(BOOL_TABLE);
+      r.add(create.newRecord(BOOL_TABLE,new Object[]{Bool.TRUE}));
+      r.add(create.newRecord(BOOL_TABLE,new Object[]{Bool.FALSE}));
+      r.add(create.newRecord(BOOL_TABLE,new Object[]{Bool.NULL}));
+      return new MockResult[]{new MockResult(r.size(),r)};
+    }
+  }
+)).selectFrom(BOOL_TABLE).fetch();
+  assertEquals(3,result.size());
+  assertEquals(1,result.fields().length);
+  assertEquals(Bool.TRUE,result.getValue(0,0));
+  assertEquals(Bool.FALSE,result.getValue(1,0));
+  assertEquals(Bool.NULL,result.getValue(2,0));
+}
