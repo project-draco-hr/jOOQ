@@ -10,7 +10,7 @@
       }
     }
     @Override public void bind(    BindContext ctx){
-      ctx.bindValues(1);
+      ctx.bindValue(1,DSL.val(1));
     }
   }
 ;

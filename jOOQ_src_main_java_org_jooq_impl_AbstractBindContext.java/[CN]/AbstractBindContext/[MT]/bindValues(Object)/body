@@ -5,7 +5,7 @@
  else {
     for (    Object value : values) {
       Class<?> type=(value == null) ? Object.class : value.getClass();
-      bindValue(value,type);
+      bindValue(value,DSL.val(value,type));
     }
   }
   return this;

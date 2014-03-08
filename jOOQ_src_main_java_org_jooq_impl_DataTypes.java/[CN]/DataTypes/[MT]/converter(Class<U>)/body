@@ -1,3 +1,0 @@
-{
-  return (Converter<?,U>)CONVERTERS.get(customType);
-}

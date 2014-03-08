@@ -21,10 +21,17 @@
     final String columnId=getStrategy().getJavaIdentifier(column);
     final String columnName=column.getName();
     final String columnComment=StringUtils.defaultString(column.getComment());
+    final CustomType columnCustomType=database.getConfiguredCustomType(column.getType().getUserType());
     String isStatic=generateInstanceFields() ? "" : "static ";
     String tableRef=generateInstanceFields() ? "this" : getStrategy().getJavaIdentifier(table);
     out.tab(1).javadoc("The column <code>%s</code>.%s",column.getQualifiedOutputName(),defaultIfBlank(" " + columnComment,""));
-    out.tab(1).println("public %sfinal %s<%s, %s> %s = createField(\"%s\", %s, %s, \"%s\");",isStatic,TableField.class,recordType,columnType,columnId,columnName,columnTypeRef,tableRef,escapeString(columnComment));
+    if (columnCustomType != null) {
+      String converter=columnCustomType.getConverter();
+      out.tab(1).println("public %sfinal %s<%s, %s> %s = createField(\"%s\", %s, %s, \"%s\", new %s());",isStatic,TableField.class,recordType,columnType,columnId,columnName,columnTypeRef,tableRef,escapeString(columnComment),converter);
+    }
+ else {
+      out.tab(1).println("public %sfinal %s<%s, %s> %s = createField(\"%s\", %s, %s, \"%s\");",isStatic,TableField.class,recordType,columnType,columnId,columnName,columnTypeRef,tableRef,escapeString(columnComment));
+    }
   }
   if (generateInstanceFields()) {
     out.tab(1).javadoc("Create a <code>%s</code> table reference",table.getQualifiedOutputName());

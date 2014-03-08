@@ -1,0 +1,3 @@
+{
+  testCustomEnums0(create(new Settings().withStatementType(StatementType.STATIC_STATEMENT)));
+}

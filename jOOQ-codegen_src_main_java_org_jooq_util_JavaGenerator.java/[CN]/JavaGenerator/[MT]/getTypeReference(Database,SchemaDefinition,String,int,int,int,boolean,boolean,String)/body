@@ -51,11 +51,6 @@
       if (dataType.defaulted()) {
         sb.append(".defaulted(true)");
       }
-      if (db.getConfiguredCustomType(u) != null) {
-        sb.append(".asConvertedDataType(new ");
-        sb.append(db.getConfiguredCustomType(u).getConverter());
-        sb.append("())");
-      }
     }
  else {
       String typeClass="org.jooq.util." + db.getDialect().getName().toLowerCase() + "."+ db.getDialect().getName()+ "DataType";

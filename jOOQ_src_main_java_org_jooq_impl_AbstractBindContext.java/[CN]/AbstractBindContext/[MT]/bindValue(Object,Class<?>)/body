@@ -1,6 +1,6 @@
 {
   try {
-    return bindValue0(value,type);
+    return bindValue0(value,DSL.val(value,type));
   }
  catch (  SQLException e) {
     throw Utils.translate(null,e);

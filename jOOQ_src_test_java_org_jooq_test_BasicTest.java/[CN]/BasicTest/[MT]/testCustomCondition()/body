@@ -12,7 +12,7 @@
     @Override public void bind(    BindContext ctx){
       try {
         ctx.statement().setInt(ctx.nextIndex(),1);
-        ctx.bindValues(1);
+        ctx.bindValue(1,DSL.val(1));
       }
  catch (      SQLException ignore) {
       }
