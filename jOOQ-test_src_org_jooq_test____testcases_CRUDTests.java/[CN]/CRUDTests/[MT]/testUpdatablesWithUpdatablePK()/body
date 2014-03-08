@@ -36,7 +36,7 @@
   assertEquals(4,(int)r1.getValue(T639_ID()));
   assertEquals(4,(int)r1.original(T639_ID()));
   assertFalse(r1.changed(T639_ID()));
-  assertEquals(asList(3,4),create.select(T639_ID()).from(T639()).fetch(T639_ID()));
+  assertEquals(asList(3,4),create.select(T639_ID()).from(T639()).orderBy(T639_ID()).fetch(T639_ID()));
   T639 r2=r1.copy();
   assertNull(r2.getValue(T639_ID()));
   assertNull(r2.original(T639_ID()));
