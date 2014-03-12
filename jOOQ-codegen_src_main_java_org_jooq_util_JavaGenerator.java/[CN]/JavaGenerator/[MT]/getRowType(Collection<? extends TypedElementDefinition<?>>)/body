@@ -1,7 +1,7 @@
 {
   StringBuilder result=new StringBuilder();
   String separator="";
-  for (  ColumnDefinition column : columns) {
+  for (  TypedElementDefinition<?> column : columns) {
     result.append(separator);
     result.append(getJavaType(column.getType()));
     separator=", ";
