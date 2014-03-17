@@ -1,0 +1,14 @@
+{
+  Query query=create.select(val(1),inline(2)).where(val(3).ne(inline(4)));
+  List<Param<?>> values=new ArrayList<Param<?>>(query.getParams().values());
+  assertEquals(asList(val(1),inline(2),val(3),inline(4)),values);
+  assertEquals(1,values.get(0).getValue());
+  assertEquals(2,values.get(1).getValue());
+  assertEquals(3,values.get(2).getValue());
+  assertEquals(4,values.get(3).getValue());
+  assertFalse(values.get(0).isInline());
+  assertTrue(values.get(1).isInline());
+  assertFalse(values.get(2).isInline());
+  assertTrue(values.get(3).isInline());
+  assertEquals(asList(1,3),query.getBindValues());
+}

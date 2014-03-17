@@ -1,5 +1,3 @@
 {
-  ParamCollector collector=new ParamCollector(configuration);
-  collector.visit(part);
-  return Collections.unmodifiableMap(collector.result);
+  return extractParams0(part,true);
 }
