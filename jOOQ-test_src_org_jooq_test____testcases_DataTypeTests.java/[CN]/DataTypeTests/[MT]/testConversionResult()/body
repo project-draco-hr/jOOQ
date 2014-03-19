@@ -55,8 +55,8 @@
   assertEquals(ushort((short)1),create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).limit(1).fetchOne(0,UShort.class));
   assertEquals(uint(1),create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).limit(1).fetchOne(0,UInteger.class));
   assertEquals(ulong(1L),create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).limit(1).fetchOne(0,ULong.class));
-  assertEquals(1.0f,create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).limit(1).fetchOne(0,Float.class));
-  assertEquals(1.0,create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).limit(1).fetchOne(0,Double.class));
+  assertEquals(1.0f,create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).limit(1).fetchOne(0,Float.class),0.0f);
+  assertEquals(1.0,create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).limit(1).fetchOne(0,Double.class),0.0);
   assertEquals(new BigInteger("1"),create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).limit(1).fetchOne(0,BigInteger.class));
   assertEquals(new BigDecimal("1"),create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).limit(1).fetchOne(0,BigDecimal.class));
   assertEquals((byte)1,(byte)create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).limit(1).fetchOne(TAuthor_ID().getName(),Byte.class));
@@ -67,8 +67,8 @@
   assertEquals(ushort((short)1),create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).limit(1).fetchOne(TAuthor_ID().getName(),UShort.class));
   assertEquals(uint(1),create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).limit(1).fetchOne(TAuthor_ID().getName(),UInteger.class));
   assertEquals(ulong(1L),create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).limit(1).fetchOne(TAuthor_ID().getName(),ULong.class));
-  assertEquals(1.0f,create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).limit(1).fetchOne(TAuthor_ID().getName(),Float.class));
-  assertEquals(1.0,create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).limit(1).fetchOne(TAuthor_ID().getName(),Double.class));
+  assertEquals(1.0f,create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).limit(1).fetchOne(TAuthor_ID().getName(),Float.class),0.0f);
+  assertEquals(1.0,create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).limit(1).fetchOne(TAuthor_ID().getName(),Double.class),0.0);
   assertEquals(new BigInteger("1"),create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).limit(1).fetchOne(TAuthor_ID().getName(),BigInteger.class));
   assertEquals(new BigDecimal("1"),create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).limit(1).fetchOne(TAuthor_ID().getName(),BigDecimal.class));
 }

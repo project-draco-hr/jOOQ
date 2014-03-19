@@ -105,14 +105,14 @@ assertEquals(Integer.valueOf(4),result.getValue(3,column));
 column=0;
 result=create().select(TBook_ID(),stddevPop(TBook_ID()).over().partitionByOne(),stddevSamp(TBook_ID()).over().partitionByOne(),varPop(TBook_ID()).over().partitionByOne(),varSamp(TBook_ID()).over().partitionByOne(),stddevPop(TBook_ID()).over().partitionBy(TBook_AUTHOR_ID()),stddevSamp(TBook_ID()).over().partitionBy(TBook_AUTHOR_ID()),varPop(TBook_ID()).over().partitionBy(TBook_AUTHOR_ID()),varSamp(TBook_ID()).over().partitionBy(TBook_AUTHOR_ID())).from(TBook()).orderBy(TBook_ID().asc()).fetch();
 assertEquals("1.118",result.get(0).getValue(1,String.class).substring(0,5));
-assertEquals(1.25,result.get(0).getValue(3,Double.class));
-assertEquals(0.5,result.get(0).getValue(5,Double.class));
-assertEquals(0.25,result.get(0).getValue(7,Double.class));
+assertEquals(1.25,result.get(0).getValue(3,Double.class),0.0);
+assertEquals(0.5,result.get(0).getValue(5,Double.class),0.0);
+assertEquals(0.25,result.get(0).getValue(7,Double.class),0.0);
 if (true) {
 assertEquals("1.290",result.get(0).getValue(2,String.class).substring(0,5));
 assertEquals("1.666",result.get(0).getValue(4,String.class).substring(0,5));
 assertEquals("0.707",result.get(0).getValue(6,String.class).substring(0,5));
-assertEquals(0.5,result.get(0).getValue(8,Double.class));
+assertEquals(0.5,result.get(0).getValue(8,Double.class),0.0);
 }
 {
 result=create().select(TBook_ID(),ntile(1).over().orderBy(TBook_ID()),ntile(1).over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID()),ntile(2).over().orderBy(TBook_ID()),ntile(2).over().partitionBy(TBook_AUTHOR_ID()).orderBy(TBook_ID())).from(TBook()).orderBy(TBook_ID().asc()).fetch();

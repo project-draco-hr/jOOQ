@@ -6,11 +6,11 @@
   jOOQAbstractTest.reset=false;
   if (TArrays_STRING() != null) {
     Result<?> arrays=create().select(TArrays_STRING(),TArrays_NUMBER(),TArrays_DATE(),TArrays_UDT() == null ? val(0) : TArrays_UDT()).from(TArrays()).orderBy(TArrays_ID()).fetch();
-    assertEquals(null,arrays.getValue(0,TArrays_STRING()));
-    assertEquals(null,arrays.getValue(0,TArrays_NUMBER()));
-    assertEquals(null,arrays.getValue(0,TArrays_DATE()));
+    assertNull(arrays.getValue(0,TArrays_STRING()));
+    assertNull(arrays.getValue(0,TArrays_NUMBER()));
+    assertNull(arrays.getValue(0,TArrays_DATE()));
     if (TArrays_UDT() != null) {
-      assertEquals(null,arrays.getValue(0,TArrays_UDT()));
+      assertNull(arrays.getValue(0,TArrays_UDT()));
     }
     Object[] s=(Object[])arrays.getValue(1,0);
     Object[] n=(Object[])arrays.getValue(1,1);

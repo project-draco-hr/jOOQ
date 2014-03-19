@@ -18,8 +18,8 @@
   assertEquals(8,(short)record.getValue(T639_SHORT_DECIMAL()));
   if (T639_BIG_INTEGER() != null)   assertEquals(new BigInteger("1234567890"),record.getValue(T639_BIG_INTEGER()));
   if (T639_BYTE() != null)   assertEquals(9,(byte)record.getValue(T639_BYTE()));
-  if (T639_DOUBLE() != null)   assertEquals(10.125,(double)record.getValue(T639_DOUBLE()));
-  if (T639_FLOAT() != null)   assertEquals(11.375f,(float)record.getValue(T639_FLOAT()));
+  if (T639_DOUBLE() != null)   assertEquals(10.125,record.getValue(T639_DOUBLE()),0.0);
+  if (T639_FLOAT() != null)   assertEquals(11.375f,record.getValue(T639_FLOAT()),0.0f);
   if (asList(SQLITE).contains(dialect().family())) {
     log.info("SKIPPING","Advanced BigDecimal tests");
   }

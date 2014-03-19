@@ -14,8 +14,8 @@
   assertEquals((byte)4,rs.getByte(1));
   assertEquals((short)4,rs.getShort(1));
   assertEquals(4L,rs.getLong(1));
-  assertEquals(4.0f,rs.getFloat(1));
-  assertEquals(4.0,rs.getDouble(1));
+  assertEquals(4.0f,rs.getFloat(1),0.0f);
+  assertEquals(4.0,rs.getDouble(1),0.0);
   assertEquals(new BigDecimal("4"),rs.getBigDecimal(1));
   assertEquals(0,rs.getInt(3));
   assertTrue(rs.wasNull());
