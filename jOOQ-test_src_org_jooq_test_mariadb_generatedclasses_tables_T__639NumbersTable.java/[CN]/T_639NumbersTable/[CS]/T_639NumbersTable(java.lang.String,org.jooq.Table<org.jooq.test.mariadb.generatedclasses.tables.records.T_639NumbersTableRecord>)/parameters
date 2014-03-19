@@ -1,0 +1,2 @@
+java.lang.String alias
+org.jooq.Table<org.jooq.test.mariadb.generatedclasses.tables.records.T_639NumbersTableRecord> aliased

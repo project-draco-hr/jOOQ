@@ -1,0 +1,3 @@
+{
+  super(alias,org.jooq.test.cubrid.generatedclasses.DefaultSchema.DEFAULT_SCHEMA,aliased,parameters,"");
+}

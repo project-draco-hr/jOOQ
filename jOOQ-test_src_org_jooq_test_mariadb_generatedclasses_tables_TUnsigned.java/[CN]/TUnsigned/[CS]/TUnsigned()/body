@@ -1,3 +1,3 @@
 {
-  super("t_unsigned",org.jooq.test.mariadb.generatedclasses.Test.TEST);
+  this("t_unsigned",null);
 }

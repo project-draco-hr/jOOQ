@@ -1,3 +1,3 @@
 {
-  super("t_language",org.jooq.test.sqlite.generatedclasses.DefaultSchema.DEFAULT_SCHEMA);
+  this("t_language",null);
 }

@@ -1,0 +1,3 @@
+{
+  return fetch(org.jooq.test.mysql.generatedclasses.tables.TBookToBookStore.BOOK_ID,values);
+}

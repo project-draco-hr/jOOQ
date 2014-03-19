@@ -1,0 +1,2 @@
+java.lang.String alias
+org.jooq.Table<org.jooq.test.mysql.generatedclasses.tables.records.TDatesRecord> aliased
