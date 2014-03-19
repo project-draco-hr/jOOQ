@@ -1,0 +1,4 @@
+{
+  assertFalse(TBook_ID().getDataType().defaulted());
+  assertTrue(TBook_LANGUAGE_ID().getDataType().defaulted());
+}
