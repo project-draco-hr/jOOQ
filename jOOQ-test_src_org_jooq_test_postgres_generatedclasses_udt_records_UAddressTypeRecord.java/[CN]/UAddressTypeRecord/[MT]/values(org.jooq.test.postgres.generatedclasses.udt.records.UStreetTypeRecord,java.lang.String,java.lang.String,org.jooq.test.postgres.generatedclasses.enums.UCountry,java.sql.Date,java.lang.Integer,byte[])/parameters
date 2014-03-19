@@ -1,0 +1,7 @@
+org.jooq.test.postgres.generatedclasses.udt.records.UStreetTypeRecord value1
+java.lang.String value2
+java.lang.String value3
+org.jooq.test.postgres.generatedclasses.enums.UCountry value4
+java.sql.Date value5
+java.lang.Integer value6
+byte[] value7

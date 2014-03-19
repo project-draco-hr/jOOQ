@@ -1,3 +1,3 @@
 {
-  super("check_constraints",org.jooq.util.postgres.information_schema.InformationSchema.INFORMATION_SCHEMA);
+  this("check_constraints",null);
 }

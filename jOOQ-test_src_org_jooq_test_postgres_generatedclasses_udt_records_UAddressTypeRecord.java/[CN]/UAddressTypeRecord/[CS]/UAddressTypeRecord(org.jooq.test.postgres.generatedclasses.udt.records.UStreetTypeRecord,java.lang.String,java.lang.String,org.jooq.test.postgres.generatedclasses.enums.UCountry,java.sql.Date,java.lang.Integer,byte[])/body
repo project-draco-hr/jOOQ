@@ -1,0 +1,10 @@
+{
+  super(org.jooq.test.postgres.generatedclasses.udt.UAddressType.U_ADDRESS_TYPE);
+  setValue(0,street);
+  setValue(1,zip);
+  setValue(2,city);
+  setValue(3,country);
+  setValue(4,since);
+  setValue(5,code);
+  setValue(6,f_1323);
+}

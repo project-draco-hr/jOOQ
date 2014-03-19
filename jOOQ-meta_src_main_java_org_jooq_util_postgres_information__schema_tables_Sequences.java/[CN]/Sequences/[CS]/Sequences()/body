@@ -1,3 +1,3 @@
 {
-  super("sequences",org.jooq.util.postgres.information_schema.InformationSchema.INFORMATION_SCHEMA);
+  this("sequences",null);
 }

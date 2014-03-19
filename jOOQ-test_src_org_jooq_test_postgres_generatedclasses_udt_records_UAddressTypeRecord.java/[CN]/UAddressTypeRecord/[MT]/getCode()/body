@@ -1,3 +1,3 @@
 {
-  return getValue(org.jooq.test.postgres.generatedclasses.udt.UAddressType.CODE);
+  return (java.lang.Integer)getValue(5);
 }

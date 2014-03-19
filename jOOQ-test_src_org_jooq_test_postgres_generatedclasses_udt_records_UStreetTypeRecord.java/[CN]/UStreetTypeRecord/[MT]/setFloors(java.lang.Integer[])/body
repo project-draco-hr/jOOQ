@@ -1,4 +1,4 @@
 {
-  setValue(org.jooq.test.postgres.generatedclasses.udt.UStreetType.FLOORS,value);
+  setValue(2,value);
   return this;
 }

@@ -1,4 +1,4 @@
 {
-  setValue(org.jooq.test.postgres.generatedclasses.udt.UAddressType.CODE,value);
+  setValue(5,value);
   return this;
 }

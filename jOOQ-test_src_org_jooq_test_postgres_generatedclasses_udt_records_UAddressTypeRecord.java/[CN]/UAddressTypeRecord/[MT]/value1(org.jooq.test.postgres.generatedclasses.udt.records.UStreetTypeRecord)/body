@@ -1,0 +1,4 @@
+{
+  setStreet(value);
+  return this;
+}

@@ -1,3 +1,3 @@
 {
-  super("pg_inherits",org.jooq.util.postgres.pg_catalog.PgCatalog.PG_CATALOG);
+  this("pg_inherits",null);
 }
