@@ -3,10 +3,10 @@
   CaseWhenStep<T,Z> result=null;
   for (  Entry<T,Z> entry : sortMap.entrySet()) {
     if (result == null) {
-      result=decode.when(entry.getKey(),entry.getValue());
+      result=decode.when(entry.getKey(),inline(entry.getValue()));
     }
  else {
-      result.when(entry.getKey(),entry.getValue());
+      result.when(entry.getKey(),inline(entry.getValue()));
     }
   }
   if (result == null) {
