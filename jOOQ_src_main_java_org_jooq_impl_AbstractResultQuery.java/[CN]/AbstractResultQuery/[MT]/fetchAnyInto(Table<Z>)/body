@@ -1,0 +1,4 @@
+{
+  R record=fetchAny();
+  return record == null ? null : record.into(table);
+}
