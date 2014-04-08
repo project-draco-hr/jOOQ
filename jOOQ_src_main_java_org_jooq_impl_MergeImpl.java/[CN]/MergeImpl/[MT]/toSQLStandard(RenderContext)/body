@@ -7,7 +7,7 @@
   boolean onParentheses=false;
   context.end(MERGE_USING).formatSeparator().start(MERGE_ON).keyword("on").sql(onParentheses ? " (" : " ").visit(on).sql(onParentheses ? ")" : "").end(MERGE_ON).start(MERGE_WHEN_MATCHED_THEN_UPDATE).start(MERGE_SET);
   if (matchedUpdate != null) {
-    context.formatSeparator().keyword("when matched then update set").sql(" ").visit(matchedUpdate);
+    context.formatSeparator().keyword("when matched then update set").sql(" ").formatIndentStart().formatSeparator().visit(matchedUpdate).formatIndentEnd();
   }
   context.end(MERGE_SET).start(MERGE_WHERE);
   if (matchedWhere != null) {
