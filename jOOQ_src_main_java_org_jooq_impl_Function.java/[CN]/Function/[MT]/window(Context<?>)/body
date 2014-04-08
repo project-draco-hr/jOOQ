@@ -7,10 +7,15 @@
     }
     Map<Object,Object> map=(Map<Object,Object>)ctx.data(DATA_LOCALLY_SCOPED_DATA_MAP);
     QueryPartList<WindowDefinition> windows=(QueryPartList<WindowDefinition>)map.get(DATA_WINDOW_DEFINITIONS);
-    for (    WindowDefinition window : windows) {
-      if (((WindowDefinitionImpl)window).getName().equals(windowName)) {
-        return window;
+    if (windows != null) {
+      for (      WindowDefinition window : windows) {
+        if (((WindowDefinitionImpl)window).getName().equals(windowName)) {
+          return window;
+        }
       }
+    }
+ else {
+      return windowName;
     }
   }
   return null;
