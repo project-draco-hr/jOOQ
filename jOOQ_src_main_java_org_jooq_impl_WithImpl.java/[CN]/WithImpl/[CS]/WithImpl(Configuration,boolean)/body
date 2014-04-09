@@ -1,0 +1,5 @@
+{
+  this.configuration=configuration;
+  this.recursive=recursive;
+  this.cte=new CommonTableExpressionList();
+}

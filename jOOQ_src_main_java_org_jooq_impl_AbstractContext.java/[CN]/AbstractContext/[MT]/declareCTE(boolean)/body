@@ -1,0 +1,4 @@
+{
+  this.declareCTE=d;
+  return (C)this;
+}

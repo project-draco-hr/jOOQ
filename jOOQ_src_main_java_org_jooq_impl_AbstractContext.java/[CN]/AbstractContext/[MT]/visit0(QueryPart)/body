@@ -16,6 +16,11 @@
       visit0(internal);
       declareWindows(true);
     }
+ else     if (declareCTE() && !internal.declaresCTE()) {
+      declareCTE(false);
+      visit0(internal);
+      declareCTE(true);
+    }
  else {
       visit0(internal);
     }

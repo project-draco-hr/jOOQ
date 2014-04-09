@@ -1,0 +1,6 @@
+{
+  cte.add(name(alias).fields(fieldAliases).as(select));
+  this.alias=null;
+  this.fieldAliases=null;
+  return this;
+}

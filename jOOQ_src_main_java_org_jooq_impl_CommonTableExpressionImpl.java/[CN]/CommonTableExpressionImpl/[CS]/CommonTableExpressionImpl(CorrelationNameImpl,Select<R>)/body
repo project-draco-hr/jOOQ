@@ -1,0 +1,6 @@
+{
+  super(name.name);
+  this.name=name;
+  this.select=select;
+  this.fields=fields1();
+}

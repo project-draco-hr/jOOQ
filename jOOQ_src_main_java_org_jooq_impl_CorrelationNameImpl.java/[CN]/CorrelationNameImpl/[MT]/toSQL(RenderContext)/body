@@ -1,0 +1,11 @@
+{
+  ctx.visit(name(name));
+  if (fieldNames != null && fieldNames.length > 0) {
+    ctx.sql("(");
+    for (int i=0; i < fieldNames.length; i++) {
+      if (i > 0)       ctx.sql(", ");
+      ctx.visit(name(fieldNames[i]));
+    }
+    ctx.sql(")");
+  }
+}

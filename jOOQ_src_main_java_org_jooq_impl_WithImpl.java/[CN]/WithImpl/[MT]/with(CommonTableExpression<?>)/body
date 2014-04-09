@@ -1,0 +1,4 @@
+{
+  for (  CommonTableExpression<?> table : tables)   cte.add(table);
+  return this;
+}

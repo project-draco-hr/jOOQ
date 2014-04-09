@@ -1,0 +1,7 @@
+{
+  if (ctx.declareCTE()) {
+    ctx.visit(name).visit(select);
+  }
+ else {
+  }
+}

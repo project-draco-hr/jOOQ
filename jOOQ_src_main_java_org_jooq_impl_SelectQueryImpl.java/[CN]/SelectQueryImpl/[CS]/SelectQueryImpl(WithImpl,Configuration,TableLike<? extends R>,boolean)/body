@@ -1,0 +1,21 @@
+{
+  super(configuration);
+  this.with=with;
+  this.distinct=distinct;
+  this.select=new SelectFieldList();
+  this.from=new TableList();
+  this.condition=new ConditionProviderImpl();
+  this.connectBy=new ConditionProviderImpl();
+  this.connectByStartWith=new ConditionProviderImpl();
+  this.groupBy=new QueryPartList<GroupField>();
+  this.having=new ConditionProviderImpl();
+  this.window=new WindowList();
+  this.orderBy=new SortFieldList();
+  this.seek=new QueryPartList<Field<?>>();
+  this.limit=new Limit();
+  if (from != null) {
+    this.from.add(from.asTable());
+  }
+  this.forUpdateOf=new QueryPartList<Field<?>>();
+  this.forUpdateOfTables=new TableList();
+}

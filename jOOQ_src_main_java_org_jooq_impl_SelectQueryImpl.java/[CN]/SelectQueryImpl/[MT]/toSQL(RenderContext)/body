@@ -1,4 +1,5 @@
 {
+  if (with != null)   context.visit(with).formatSeparator();
   pushWindow(context);
   Boolean wrapDerivedTables=(Boolean)context.data(DATA_WRAP_DERIVED_TABLES_IN_PARENTHESES);
   if (TRUE.equals(wrapDerivedTables)) {

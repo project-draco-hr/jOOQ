@@ -1,4 +1,5 @@
 {
+  if (with != null)   context.visit(with);
   pushWindow(context);
   context.declareFields(true).visit(getSelect0()).declareFields(false).declareTables(true).visit(getFrom()).declareTables(false).visit(getWhere()).visit(getConnectByStartWith()).visit(getConnectBy()).visit(getGroupBy()).visit(getHaving());
   if (asList(POSTGRES).contains(context.configuration().dialect().family())) {

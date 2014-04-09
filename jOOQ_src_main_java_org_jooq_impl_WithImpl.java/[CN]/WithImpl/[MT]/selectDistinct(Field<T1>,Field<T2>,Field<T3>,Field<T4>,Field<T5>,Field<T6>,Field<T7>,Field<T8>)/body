@@ -1,0 +1,3 @@
+{
+  return (SelectSelectStep)selectDistinct(new Field[]{field1,field2,field3,field4,field5,field6,field7,field8});
+}

@@ -1,0 +1,8 @@
+{
+  if (ctx.declareCTE()) {
+    ctx.visit(name).sql(" ").keyword("as").sql(" (").formatIndentStart().formatNewLine().visit(select).formatIndentEnd().formatNewLine().sql(")");
+  }
+ else {
+    ctx.visit(DSL.name(name.name));
+  }
+}

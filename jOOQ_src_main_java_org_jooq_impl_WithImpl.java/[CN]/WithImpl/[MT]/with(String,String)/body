@@ -1,0 +1,5 @@
+{
+  this.alias=a;
+  this.fieldAliases=f;
+  return this;
+}
