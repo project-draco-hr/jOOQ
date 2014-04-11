@@ -135,7 +135,7 @@
   out.tab(1).println("public %s() {",className);
   out.tab(2).println("super(%s);",tableIdentifier);
   out.tab(1).println("}");
-  if (degree > 0) {
+  if (degree > 0 && degree < 256) {
     List<String> arguments=new ArrayList<String>();
     for (int i=0; i < degree; i++) {
       final TypedElementDefinition<?> column=columns.get(i);
