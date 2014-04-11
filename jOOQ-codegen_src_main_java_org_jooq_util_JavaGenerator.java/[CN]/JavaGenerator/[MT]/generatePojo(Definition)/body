@@ -25,7 +25,7 @@
     out.tab(1).print("public %s() {}",className);
     out.println();
   }
-  if (getTypedElements(tableOrUDT).size() > 0) {
+  if (getTypedElements(tableOrUDT).size() > 0 && getTypedElements(tableOrUDT).size() < 256) {
     out.println();
     out.tab(1).print("public %s(",className);
     String separator1="";
