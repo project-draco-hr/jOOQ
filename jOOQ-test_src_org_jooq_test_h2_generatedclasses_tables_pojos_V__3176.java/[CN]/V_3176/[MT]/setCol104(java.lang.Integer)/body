@@ -1,0 +1,4 @@
+{
+  this.col104=col104;
+  return this;
+}
