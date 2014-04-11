@@ -1,0 +1,17 @@
+{
+switch (dialect().family()) {
+case MARIADB:
+case MYSQL:
+    log.info("SKIPPING","Common Table Expression tests");
+  return;
+}
+Result<Record> result1=create().with("t","f1","f2").as(select(val(1),val("a"))).select().from(tableByName("t")).fetch();
+assertEquals(1,result1.size());
+assertEquals(2,result1.fields().length);
+assertEquals("f1",result1.field(0).getName());
+assertEquals("f2",result1.field(1).getName());
+assertEquals(Integer.class,result1.field(0).getType());
+assertEquals(String.class,result1.field(1).getType());
+assertEquals(1,result1.getValue(0,0));
+assertEquals("a",result1.getValue(0,1));
+}

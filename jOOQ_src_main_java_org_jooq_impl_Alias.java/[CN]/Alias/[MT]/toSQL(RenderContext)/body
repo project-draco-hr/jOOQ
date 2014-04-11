@@ -2,7 +2,7 @@
   if (context.declareFields() || context.declareTables()) {
     SQLDialect dialect=context.configuration().dialect();
     boolean simulateDerivedColumnList=false;
-    if (fieldAliases != null && asList(CUBRID,FIREBIRD).contains(dialect.family()) && wrapped instanceof TableImpl) {
+    if (fieldAliases != null && asList(CUBRID,FIREBIRD).contains(dialect.family()) && (wrapped instanceof TableImpl || wrapped instanceof CommonTableExpressionImpl)) {
       @SuppressWarnings("unchecked") Select<Record> select=select(list(field("*"))).from(((Table<?>)wrapped).as(alias));
       context.sql("(").formatIndentStart().formatNewLine().visit(select).formatIndentEnd().formatNewLine().sql(")");
     }
