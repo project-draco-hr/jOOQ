@@ -1,0 +1,30 @@
+{
+switch (ctx.configuration().dialect().family()) {
+case CUBRID:
+case H2:
+case MARIADB:
+case MYSQL:
+case SQLITE:
+{
+      ctx.visit(search).sql(" ").keyword("regexp").sql(" ").visit(pattern);
+      break;
+    }
+case HSQLDB:
+{
+    ctx.visit(DSL.condition("{regexp_matches}({0}, {1})",search,pattern));
+    break;
+  }
+case POSTGRES:
+{
+  ctx.visit(DSL.condition("{0} ~ {1}",search,pattern));
+  break;
+}
+case DERBY:
+case FIREBIRD:
+default :
+{
+ctx.visit(search).sql(" ").keyword("like_regex").sql(" ").visit(pattern);
+break;
+}
+}
+}

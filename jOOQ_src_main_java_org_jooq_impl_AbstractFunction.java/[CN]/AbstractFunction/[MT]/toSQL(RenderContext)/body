@@ -1,3 +1,0 @@
-{
-  ctx.visit(getFunction0(ctx.configuration()));
-}

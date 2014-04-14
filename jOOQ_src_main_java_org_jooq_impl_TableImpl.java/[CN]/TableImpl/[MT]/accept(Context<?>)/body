@@ -1,0 +1,18 @@
+{
+  if (alias != null) {
+    alias.accept(ctx);
+  }
+ else {
+    if (ctx.qualify()) {
+      Schema mappedSchema=Utils.getMappedSchema(ctx.configuration(),getSchema());
+      if (mappedSchema != null) {
+        ctx.visit(mappedSchema);
+        ctx.sql(".");
+      }
+    }
+    ctx.literal(Utils.getMappedTable(ctx.configuration(),this).getName());
+    if (parameters != null && ctx.declareTables()) {
+      ctx.sql("(").visit(new QueryPartList<Field<?>>(parameters)).sql(")");
+    }
+  }
+}

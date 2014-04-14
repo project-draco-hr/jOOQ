@@ -1,9 +1,0 @@
-{
-switch (context.configuration().dialect()) {
-case FIREBIRD:
-case POSTGRES:
-    context.visit(returning);
-  break;
-default :
-}
-}

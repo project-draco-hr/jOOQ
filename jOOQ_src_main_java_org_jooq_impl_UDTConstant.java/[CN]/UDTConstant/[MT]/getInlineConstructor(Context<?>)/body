@@ -1,0 +1,17 @@
+{
+switch (ctx.configuration().dialect().family()) {
+case POSTGRES:
+    return "ROW";
+default :
+{
+    UDT<?> udt=value.getUDT();
+    Schema mappedSchema=Utils.getMappedSchema(ctx.configuration(),udt.getSchema());
+    if (mappedSchema != null) {
+      return mappedSchema + "." + udt.getName();
+    }
+ else {
+      return udt.getName();
+    }
+  }
+}
+}

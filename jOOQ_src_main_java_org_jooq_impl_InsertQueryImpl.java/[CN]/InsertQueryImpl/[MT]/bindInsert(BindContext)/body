@@ -1,4 +1,0 @@
-{
-  context.visit(getInto()).visit(insertMaps).visit(updateMap);
-  bindReturning(context);
-}

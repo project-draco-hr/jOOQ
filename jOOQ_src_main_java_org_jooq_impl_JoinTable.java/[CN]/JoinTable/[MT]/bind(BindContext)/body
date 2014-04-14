@@ -1,9 +1,0 @@
-{
-  context.visit(lhs).visit(rhs).visit(rhsPartitionBy);
-  if (!using.isEmpty()) {
-    context.visit(using);
-  }
- else {
-    context.visit(condition);
-  }
-}

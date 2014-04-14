@@ -1,0 +1,9 @@
+{
+  if (comparator == NOT_EQUALS && asList().contains(ctx.configuration().dialect().family())) {
+    ctx.keyword("not").sql("(").visit(left).sql(" = ").visit(right).sql(")");
+  }
+ else {
+    boolean extraParentheses=asList().contains(ctx.configuration().dialect().family());
+    ctx.visit(left).sql(" ").sql(comparator.toSQL()).sql(" ").sql(extraParentheses ? "(" : "").visit(right).sql(extraParentheses ? ")" : "");
+  }
+}

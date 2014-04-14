@@ -1,3 +1,0 @@
-{
-  context.declareTables(true).visit(table).declareTables(false).visit(getH2Fields()).visit(getH2Keys()).visit(h2Select).visit(getH2Values());
-}

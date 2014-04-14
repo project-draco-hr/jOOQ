@@ -1,0 +1,63 @@
+{
+  if (onDuplicateKeyUpdate) {
+switch (ctx.configuration().dialect().family()) {
+case CUBRID:
+case MARIADB:
+case MYSQL:
+{
+        toSQLInsert(ctx);
+        ctx.formatSeparator().start(INSERT_ON_DUPLICATE_KEY_UPDATE).keyword("on duplicate key update").sql(" ").visit(updateMap).end(INSERT_ON_DUPLICATE_KEY_UPDATE);
+        break;
+      }
+case H2:
+{
+      throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY UPDATE clause cannot be simulated for " + ctx.configuration().dialect());
+    }
+case HSQLDB:
+{
+    ctx.visit(toMerge(ctx.configuration()));
+    break;
+  }
+default :
+throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY UPDATE clause cannot be simulated for " + ctx.configuration().dialect());
+}
+}
+ else if (onDuplicateKeyIgnore) {
+switch (ctx.configuration().dialect().family()) {
+case MARIADB:
+case MYSQL:
+{
+toSQLInsert(ctx);
+ctx.start(INSERT_ON_DUPLICATE_KEY_UPDATE).end(INSERT_ON_DUPLICATE_KEY_UPDATE);
+break;
+}
+case CUBRID:
+{
+FieldMapForUpdate update=new FieldMapForUpdate(INSERT_ON_DUPLICATE_KEY_UPDATE_ASSIGNMENT);
+Field<?> field=getInto().field(0);
+update.put(field,field);
+toSQLInsert(ctx);
+ctx.formatSeparator().start(INSERT_ON_DUPLICATE_KEY_UPDATE).keyword("on duplicate key update").sql(" ").visit(update).end(INSERT_ON_DUPLICATE_KEY_UPDATE);
+break;
+}
+case H2:
+{
+throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY IGNORE clause cannot be simulated for " + ctx.configuration().dialect());
+}
+case HSQLDB:
+{
+ctx.visit(toMerge(ctx.configuration()));
+break;
+}
+default :
+throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY IGNORE clause cannot be simulated for " + ctx.configuration().dialect());
+}
+}
+ else {
+toSQLInsert(ctx);
+ctx.start(INSERT_ON_DUPLICATE_KEY_UPDATE).end(INSERT_ON_DUPLICATE_KEY_UPDATE);
+}
+ctx.start(INSERT_RETURNING);
+toSQLReturning(ctx);
+ctx.end(INSERT_RETURNING);
+}

@@ -1,8 +1,0 @@
-{
-  if (ctx.subquery()) {
-    ctx.visit(delegate(ctx.configuration()));
-  }
- else {
-    ctx.subquery(true).visit(delegate(ctx.configuration())).subquery(false);
-  }
-}

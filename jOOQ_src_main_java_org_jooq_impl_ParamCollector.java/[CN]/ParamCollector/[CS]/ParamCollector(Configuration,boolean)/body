@@ -1,4 +1,4 @@
 {
-  super(configuration);
+  super(configuration,null);
   this.includeInlinedParams=includeInlinedParams;
 }

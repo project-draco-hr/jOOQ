@@ -1,9 +1,0 @@
-{
-  context.data(DATA_OMIT_CLAUSE_EVENT_EMISSION,true);
-  if (context.qualify()) {
-    context.visit(table);
-    context.sql(".");
-  }
-  context.literal(getName());
-  context.data(DATA_OMIT_CLAUSE_EVENT_EMISSION,null);
-}

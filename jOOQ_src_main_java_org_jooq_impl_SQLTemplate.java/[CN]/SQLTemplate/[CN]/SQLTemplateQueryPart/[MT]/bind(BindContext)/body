@@ -1,3 +1,0 @@
-{
-  Utils.renderAndBind(null,context,sql,substitutes);
-}

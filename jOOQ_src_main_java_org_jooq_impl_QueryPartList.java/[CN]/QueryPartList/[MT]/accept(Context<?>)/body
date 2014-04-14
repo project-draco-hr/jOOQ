@@ -1,0 +1,17 @@
+{
+  if (isEmpty()) {
+    toSQLEmptyList(ctx);
+  }
+ else {
+    String separator="";
+    boolean indent=(size() > 1);
+    if (indent)     ctx.formatIndentStart();
+    for (    T queryPart : this) {
+      ctx.sql(separator);
+      if (indent)       ctx.formatNewLine();
+      ctx.visit(queryPart);
+      separator=", ";
+    }
+    if (indent)     ctx.formatIndentEnd();
+  }
+}

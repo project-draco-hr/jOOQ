@@ -1,0 +1,45 @@
+{
+  if (!using.isEmpty()) {
+    if (asList(CUBRID,H2).contains(context.configuration().dialect().family())) {
+      boolean first=true;
+      for (      Field<?> field : using) {
+        context.formatSeparator();
+        if (first) {
+          first=false;
+          context.start(TABLE_JOIN_ON).keyword("on");
+        }
+ else {
+          context.keyword("and");
+        }
+        context.sql(" ").visit(lhs.field(field)).sql(" = ").visit(rhs.field(field));
+      }
+      context.end(TABLE_JOIN_ON);
+    }
+ else {
+      context.formatSeparator().start(TABLE_JOIN_USING).keyword("using").sql("(");
+      Utils.fieldNames(context,using);
+      context.sql(")").end(TABLE_JOIN_USING);
+    }
+  }
+ else   if (emulateNaturalJoin(context) || emulateNaturalLeftOuterJoin(context) || emulateNaturalRightOuterJoin(context)) {
+    boolean first=true;
+    for (    Field<?> field : lhs.fields()) {
+      Field<?> other=rhs.field(field);
+      if (other != null) {
+        context.formatSeparator();
+        if (first) {
+          first=false;
+          context.start(TABLE_JOIN_ON).keyword("on");
+        }
+ else {
+          context.keyword("and");
+        }
+        context.sql(" ").visit(field).sql(" = ").visit(other);
+      }
+    }
+    context.end(TABLE_JOIN_ON);
+  }
+ else {
+    context.formatSeparator().start(TABLE_JOIN_ON).keyword("on").sql(" ").visit(condition).end(TABLE_JOIN_ON);
+  }
+}

@@ -1,3 +1,0 @@
-{
-  delegate(context.configuration()).bind(context);
-}

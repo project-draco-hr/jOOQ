@@ -1,4 +1,0 @@
-RenderContext render
-BindContext bind
-String sql
-List<QueryPart> substitutes

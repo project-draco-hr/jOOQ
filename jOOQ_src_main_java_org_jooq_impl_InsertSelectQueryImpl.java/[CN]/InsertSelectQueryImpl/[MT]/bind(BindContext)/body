@@ -1,5 +1,0 @@
-{
-  context.visit(into);
-  visitAll(context,fields);
-  context.visit(select);
-}

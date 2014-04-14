@@ -1,0 +1,8 @@
+{
+  if (ctx.subquery()) {
+    ctx.formatIndentStart().formatNewLine().visit(query).formatIndentEnd().formatNewLine();
+  }
+ else {
+    ctx.subquery(true).formatIndentStart().formatNewLine().visit(query).formatIndentEnd().formatNewLine().subquery(false);
+  }
+}

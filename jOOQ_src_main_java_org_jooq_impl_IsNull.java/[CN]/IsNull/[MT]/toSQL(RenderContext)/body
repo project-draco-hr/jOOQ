@@ -1,3 +1,0 @@
-{
-  context.visit(field).sql(" ").keyword(isNull ? "is null" : "is not null");
-}

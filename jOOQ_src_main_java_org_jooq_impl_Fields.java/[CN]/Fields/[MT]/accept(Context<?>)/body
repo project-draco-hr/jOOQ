@@ -1,0 +1,3 @@
+{
+  new QueryPartList<Field<?>>(fields).accept(ctx);
+}

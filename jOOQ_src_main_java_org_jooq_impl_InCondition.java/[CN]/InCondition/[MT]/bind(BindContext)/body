@@ -1,4 +1,0 @@
-{
-  context.visit(field);
-  visitAll(context,values);
-}

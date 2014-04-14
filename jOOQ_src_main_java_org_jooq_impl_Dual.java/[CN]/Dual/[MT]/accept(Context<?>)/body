@@ -1,0 +1,27 @@
+{
+  if (force) {
+    ctx.visit(FORCED_DUAL);
+  }
+ else {
+switch (ctx.configuration().dialect().family()) {
+case POSTGRES:
+case SQLITE:
+      break;
+case FIREBIRD:
+    ctx.literal("RDB$DATABASE");
+  break;
+case HSQLDB:
+ctx.literal("INFORMATION_SCHEMA").sql(".").literal("SYSTEM_USERS");
+break;
+case CUBRID:
+ctx.literal("db_root");
+break;
+case DERBY:
+ctx.literal("SYSIBM").sql(".").literal("SYSDUMMY1");
+break;
+default :
+ctx.keyword("dual");
+break;
+}
+}
+}

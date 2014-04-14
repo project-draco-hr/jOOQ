@@ -1,4 +1,0 @@
-{
-  CastMode castMode=context.castMode();
-  context.keyword("cast").sql("(").castMode(CastMode.NEVER).visit(field).castMode(castMode).sql(" ").keyword("as").sql(" ").keyword(getDataType(context.configuration()).getCastTypeName(context.configuration())).sql(")");
-}

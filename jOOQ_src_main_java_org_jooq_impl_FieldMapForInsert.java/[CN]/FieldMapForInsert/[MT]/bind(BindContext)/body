@@ -1,4 +1,0 @@
-{
-  visitAll(context,keySet());
-  visitAll(context,values());
-}

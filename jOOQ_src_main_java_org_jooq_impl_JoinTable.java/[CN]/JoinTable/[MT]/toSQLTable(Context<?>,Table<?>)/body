@@ -1,0 +1,10 @@
+{
+  boolean wrap=table instanceof JoinTable && (table == rhs || asList().contains(ctx.configuration().dialect().family()));
+  if (wrap) {
+    ctx.sql("(").formatIndentStart().formatNewLine();
+  }
+  ctx.visit(table);
+  if (wrap) {
+    ctx.formatIndentEnd().formatNewLine().sql(")");
+  }
+}

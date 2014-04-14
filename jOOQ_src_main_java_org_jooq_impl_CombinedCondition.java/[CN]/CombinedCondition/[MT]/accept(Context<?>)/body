@@ -1,0 +1,22 @@
+{
+  if (conditions.isEmpty()) {
+    ctx.visit(trueCondition());
+  }
+ else   if (conditions.size() == 1) {
+    ctx.visit(conditions.get(0));
+  }
+ else {
+    ctx.sql("(").formatIndentStart().formatNewLine();
+    String operatorName=operator.name().toLowerCase() + " ";
+    String separator="";
+    for (int i=0; i < conditions.size(); i++) {
+      if (i > 0) {
+        ctx.formatSeparator();
+      }
+      ctx.keyword(separator);
+      ctx.visit(conditions.get(i));
+      separator=operatorName;
+    }
+    ctx.formatIndentEnd().formatNewLine().sql(")");
+  }
+}

@@ -1,0 +1,3 @@
+{
+  ctx.visit(pivot(ctx.configuration()));
+}

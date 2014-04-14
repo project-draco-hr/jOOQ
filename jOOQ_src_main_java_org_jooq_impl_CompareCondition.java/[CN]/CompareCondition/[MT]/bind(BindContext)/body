@@ -1,3 +1,0 @@
-{
-  context.visit(field1).visit(field2);
-}

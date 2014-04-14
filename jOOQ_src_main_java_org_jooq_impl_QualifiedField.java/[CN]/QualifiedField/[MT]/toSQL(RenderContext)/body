@@ -1,8 +1,0 @@
-{
-  String separator="";
-  for (  String string : sql) {
-    context.sql(separator);
-    context.literal(string);
-    separator=".";
-  }
-}

@@ -1,0 +1,9 @@
+{
+  boolean extraParentheses=asList().contains(ctx.configuration().dialect().family());
+  boolean subquery=ctx.subquery();
+  ctx.visit(left).sql(" ").keyword(comparator.toSQL()).sql(" (").sql(extraParentheses ? "(" : "");
+  ctx.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY,true);
+  ctx.subquery(true).visit(right).subquery(subquery);
+  ctx.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY,null);
+  ctx.sql(extraParentheses ? ")" : "").sql(")");
+}

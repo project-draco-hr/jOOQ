@@ -1,3 +1,0 @@
-{
-  context.visit(row).visit(minValue).visit(maxValue);
-}

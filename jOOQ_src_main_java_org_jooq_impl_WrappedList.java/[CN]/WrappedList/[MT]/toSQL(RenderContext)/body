@@ -1,3 +1,0 @@
-{
-  context.sql("(").visit(wrapped).sql(")");
-}

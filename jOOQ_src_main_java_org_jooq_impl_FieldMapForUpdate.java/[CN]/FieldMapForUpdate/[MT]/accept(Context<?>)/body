@@ -1,0 +1,18 @@
+{
+  if (size() > 0) {
+    String separator="";
+    boolean restoreQualify=ctx.qualify();
+    boolean supportsQualify=asList(POSTGRES,SQLITE).contains(ctx.configuration().dialect()) ? false : restoreQualify;
+    for (    Entry<Field<?>,Field<?>> entry : entrySet()) {
+      ctx.sql(separator);
+      if (!"".equals(separator)) {
+        ctx.formatNewLine();
+      }
+      ctx.start(assignmentClause).qualify(supportsQualify).visit(entry.getKey()).qualify(restoreQualify).sql(" = ").visit(entry.getValue()).end(assignmentClause);
+      separator=", ";
+    }
+  }
+ else {
+    ctx.sql("[ no fields are updated ]");
+  }
+}

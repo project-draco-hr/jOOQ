@@ -1,9 +1,0 @@
-{
-  boolean extraParentheses=asList().contains(context.configuration().dialect().family());
-  boolean subquery=context.subquery();
-  context.visit(left).sql(" ").keyword(comparator.toSQL()).sql(" (").sql(extraParentheses ? "(" : "");
-  context.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY,true);
-  context.subquery(true).visit(right).subquery(subquery);
-  context.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY,null);
-  context.sql(extraParentheses ? ")" : "").sql(")");
-}

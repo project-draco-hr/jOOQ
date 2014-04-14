@@ -1,0 +1,11 @@
+{
+switch (ctx.configuration().dialect()) {
+case HSQLDB:
+{
+      ctx.keyword("table(").visit(function).sql(")");
+      break;
+    }
+default :
+  throw new SQLDialectNotSupportedException("FUNCTION TABLE is not supported for " + ctx.configuration().dialect());
+}
+}

@@ -1,0 +1,17 @@
+{
+  if (emulateCrossJoin(context)) {
+    return JOIN;
+  }
+ else   if (emulateNaturalJoin(context)) {
+    return JOIN;
+  }
+ else   if (emulateNaturalLeftOuterJoin(context)) {
+    return LEFT_OUTER_JOIN;
+  }
+ else   if (emulateNaturalRightOuterJoin(context)) {
+    return RIGHT_OUTER_JOIN;
+  }
+ else {
+    return type;
+  }
+}

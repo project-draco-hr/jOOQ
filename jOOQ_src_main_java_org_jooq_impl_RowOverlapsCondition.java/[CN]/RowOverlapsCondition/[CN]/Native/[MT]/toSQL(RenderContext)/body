@@ -1,3 +1,0 @@
-{
-  context.sql("(").visit(left).sql(" ").keyword("overlaps").sql(" ").visit(right).sql(")");
-}

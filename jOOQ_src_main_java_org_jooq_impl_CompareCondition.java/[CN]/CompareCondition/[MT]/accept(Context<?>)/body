@@ -1,0 +1,23 @@
+{
+  SQLDialect family=ctx.configuration().dialect().family();
+  Field<?> lhs=field1;
+  Field<?> rhs=field2;
+  Comparator op=comparator;
+  if ((op == LIKE || op == NOT_LIKE) && field1.getType() != String.class && asList(DERBY,POSTGRES).contains(family)) {
+    lhs=lhs.cast(String.class);
+  }
+ else   if ((op == LIKE_IGNORE_CASE || op == NOT_LIKE_IGNORE_CASE) && POSTGRES != family) {
+    lhs=lhs.lower();
+    rhs=rhs.lower();
+    op=(op == LIKE_IGNORE_CASE ? LIKE : NOT_LIKE);
+  }
+  ctx.visit(lhs).sql(" ");
+  boolean castRhs=false;
+  ctx.keyword(op.toSQL()).sql(" ");
+  if (castRhs)   ctx.keyword("cast").sql("(");
+  ctx.visit(rhs);
+  if (castRhs)   ctx.sql(" ").keyword("as").sql(" ").keyword("varchar").sql("(4000))");
+  if (escape != null) {
+    ctx.sql(" ").keyword("escape").sql(" '").sql(escape).sql("'");
+  }
+}

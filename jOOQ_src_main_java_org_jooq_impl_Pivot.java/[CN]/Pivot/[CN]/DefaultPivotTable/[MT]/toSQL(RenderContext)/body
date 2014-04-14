@@ -1,3 +1,0 @@
-{
-  ctx.declareTables(true).visit(select(ctx.configuration())).declareTables(false);
-}

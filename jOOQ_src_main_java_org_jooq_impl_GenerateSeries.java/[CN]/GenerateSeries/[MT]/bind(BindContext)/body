@@ -1,3 +1,0 @@
-{
-  ctx.visit(delegate(ctx.configuration()));
-}

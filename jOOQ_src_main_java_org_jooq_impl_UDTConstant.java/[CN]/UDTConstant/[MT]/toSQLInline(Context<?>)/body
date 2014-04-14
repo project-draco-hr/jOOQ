@@ -1,0 +1,11 @@
+{
+  ctx.sql(getInlineConstructor(ctx));
+  ctx.sql("(");
+  String separator="";
+  for (  Field<?> field : value.fields()) {
+    ctx.sql(separator);
+    ctx.visit(val(value.getValue(field),field));
+    separator=", ";
+  }
+  ctx.sql(")");
+}

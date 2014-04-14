@@ -1,0 +1,3 @@
+{
+  ctx.visit(left).sql(" ").keyword(comparator.toSQL()).sql(" (").visit(right).sql(")");
+}

@@ -1,3 +1,0 @@
-{
-  ctx.declareCTE(true).visit(cte).declareCTE(false);
-}

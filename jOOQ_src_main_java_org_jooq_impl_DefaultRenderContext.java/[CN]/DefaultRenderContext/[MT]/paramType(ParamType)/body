@@ -1,4 +1,0 @@
-{
-  paramType=p;
-  return this;
-}

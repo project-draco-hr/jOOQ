@@ -1,3 +1,0 @@
-{
-  context.visit(field).sql(" ").keyword(comparator.toSQL()).sql(" ").visit(query);
-}

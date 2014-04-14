@@ -1,0 +1,30 @@
+{
+  if (nullsFirst || nullsLast) {
+switch (ctx.configuration().dialect().family()) {
+case CUBRID:
+case MARIADB:
+case MYSQL:
+case SQLITE:
+{
+        Field<Integer> ifNull=nullsFirst ? zero() : one();
+        Field<Integer> ifNotNull=nullsFirst ? one() : zero();
+        ctx.visit(nvl2(field,ifNotNull,ifNull)).sql(", ").visit(field).sql(" ").keyword(order.toSQL());
+        break;
+      }
+default :
+{
+      ctx.visit(field).sql(" ").keyword(order.toSQL());
+      if (nullsFirst) {
+        ctx.sql(" ").keyword("nulls first");
+      }
+ else {
+        ctx.sql(" ").keyword("nulls last");
+      }
+      break;
+    }
+}
+}
+ else {
+ctx.visit(field).sql(" ").keyword(order.toSQL());
+}
+}

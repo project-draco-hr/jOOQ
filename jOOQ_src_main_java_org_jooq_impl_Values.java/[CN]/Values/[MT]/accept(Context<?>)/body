@@ -1,0 +1,42 @@
+{
+switch (ctx.configuration().dialect().family()) {
+case FIREBIRD:
+case MARIADB:
+case MYSQL:
+case SQLITE:
+case H2:
+{
+      Select<Record> selects=null;
+      boolean subquery=ctx.subquery();
+      for (      Row row : rows) {
+        Select<Record> select=create().select(row.fields());
+        if (selects == null) {
+          selects=select;
+        }
+ else {
+          selects=selects.unionAll(select);
+        }
+      }
+      ctx.formatIndentStart().formatNewLine().subquery(true).visit(selects).subquery(subquery).formatIndentEnd().formatNewLine();
+      break;
+    }
+case CUBRID:
+case DERBY:
+case HSQLDB:
+case POSTGRES:
+default :
+{
+    ctx.start(TABLE_VALUES).keyword("values").formatIndentLockStart();
+    boolean firstRow=true;
+    for (    Row row : rows) {
+      if (!firstRow) {
+        ctx.sql(",").formatSeparator();
+      }
+      ctx.visit(row);
+      firstRow=false;
+    }
+    ctx.formatIndentLockEnd().end(TABLE_VALUES);
+    break;
+  }
+}
+}

@@ -1,0 +1,55 @@
+{
+  final Configuration configuration=ctx.configuration();
+  final RenderContext render=ctx instanceof RenderContext ? (RenderContext)ctx : null;
+  SQLDialect family=configuration.dialect().family();
+  if (asList(H2,HSQLDB,MARIADB,MYSQL,POSTGRES).contains(family)) {
+    return new Native();
+  }
+ else   if (asList(H2,HSQLDB,MARIADB,MYSQL,POSTGRES).contains(family) && asList(EQUALS,NOT_EQUALS).contains(comparator)) {
+    return new Native();
+  }
+ else   if (asList(H2,HSQLDB,MARIADB,MYSQL,POSTGRES).contains(family) && asList(IN,NOT_IN).contains(comparator)) {
+    return new Native();
+  }
+ else {
+    String table=render == null ? "t" : render.nextAlias();
+    List<String> names=new ArrayList<String>();
+    for (int i=0; i < left.size(); i++) {
+      names.add(table + "_" + i);
+    }
+    Field<?>[] fields=new Field[names.size()];
+    for (int i=0; i < fields.length; i++) {
+      fields[i]=fieldByName(table,names.get(i));
+    }
+    Condition condition;
+switch (comparator) {
+case GREATER:
+      condition=((RowN)left).gt(row(fields));
+    break;
+case GREATER_OR_EQUAL:
+  condition=((RowN)left).ge(row(fields));
+break;
+case LESS:
+condition=((RowN)left).lt(row(fields));
+break;
+case LESS_OR_EQUAL:
+condition=((RowN)left).le(row(fields));
+break;
+case IN:
+case EQUALS:
+case NOT_IN:
+case NOT_EQUALS:
+default :
+condition=((RowN)left).eq(row(fields));
+break;
+}
+Select<Record> subselect=select().from(right.asTable(table,names.toArray(new String[0]))).where(condition);
+switch (comparator) {
+case NOT_IN:
+case NOT_EQUALS:
+return (QueryPartInternal)notExists(subselect);
+default :
+return (QueryPartInternal)exists(subselect);
+}
+}
+}

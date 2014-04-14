@@ -1,3 +1,0 @@
-{
-  context.visit(lhs).sql(" @> ").visit(rhs());
-}

@@ -1,0 +1,19 @@
+{
+  if (rows == Integer.MIN_VALUE) {
+    ctx.keyword("unbounded preceding");
+  }
+ else   if (rows == Integer.MAX_VALUE) {
+    ctx.keyword("unbounded following");
+  }
+ else   if (rows < 0) {
+    ctx.sql(-rows);
+    ctx.sql(" ").keyword("preceding");
+  }
+ else   if (rows > 0) {
+    ctx.sql(rows);
+    ctx.sql(" ").keyword("following");
+  }
+ else {
+    ctx.keyword("current row");
+  }
+}

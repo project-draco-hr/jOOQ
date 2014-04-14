@@ -1,4 +1,4 @@
 {
   checkForceInline(internal);
-  internal.toSQL(this);
+  internal.accept(this);
 }

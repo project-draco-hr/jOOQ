@@ -1,8 +1,0 @@
-{
-  if (context.subquery()) {
-    context.visit(field).visit(query);
-  }
- else {
-    context.visit(field).subquery(true).visit(query).subquery(false);
-  }
-}

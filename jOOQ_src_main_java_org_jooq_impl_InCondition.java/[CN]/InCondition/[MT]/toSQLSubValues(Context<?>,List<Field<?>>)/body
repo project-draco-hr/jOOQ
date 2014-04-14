@@ -1,0 +1,15 @@
+{
+  ctx.visit(field).sql(" ").keyword(comparator.toSQL()).sql(" (");
+  if (subValues.size() > 1) {
+    ctx.formatIndentStart().formatNewLine();
+  }
+  String separator="";
+  for (  Field<?> value : subValues) {
+    ctx.sql(separator).formatNewLineAfterPrintMargin().visit(value);
+    separator=", ";
+  }
+  if (subValues.size() > 1) {
+    ctx.formatIndentEnd().formatNewLine();
+  }
+  ctx.sql(")");
+}

@@ -1,3 +1,0 @@
-{
-  delegate(context.configuration()).toSQL(context);
-}

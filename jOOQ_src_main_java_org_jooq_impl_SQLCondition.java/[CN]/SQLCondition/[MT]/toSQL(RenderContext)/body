@@ -1,5 +1,0 @@
-{
-  context.sql("(");
-  context.visit(delegate);
-  context.sql(")");
-}

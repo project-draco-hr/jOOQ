@@ -1,0 +1,10 @@
+{
+  ctx.keyword("table(").sql("COLUMN_VALUE ");
+  if (array.getDataType().getType() == Object[].class) {
+    ctx.keyword(H2DataType.VARCHAR.getTypeName());
+  }
+ else {
+    ctx.keyword(array.getDataType().getTypeName());
+  }
+  ctx.sql(" = ").visit(array).sql(")");
+}

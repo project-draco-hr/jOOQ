@@ -1,0 +1,12 @@
+{
+  String op=operator.toSQL();
+  if (operator == BIT_XOR && ctx.configuration().dialect() == POSTGRES) {
+    op="#";
+  }
+  ctx.sql("(");
+  ctx.visit(lhs);
+  for (  Field<?> field : rhs) {
+    ctx.sql(" ").sql(op).sql(" ").visit(field);
+  }
+  ctx.sql(")");
+}

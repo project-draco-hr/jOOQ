@@ -1,0 +1,67 @@
+{
+  RenderContext render=(RenderContext)((ctx instanceof RenderContext) ? ctx : null);
+  BindContext bind=(BindContext)((ctx instanceof BindContext) ? ctx : null);
+  int substituteIndex=0;
+  char[] sqlChars=sql.toCharArray();
+  if (render == null)   render=new DefaultRenderContext(bind.configuration());
+  for (int i=0; i < sqlChars.length; i++) {
+    if (peek(sqlChars,i,"--")) {
+      for (; i < sqlChars.length && sqlChars[i] != '\r' && sqlChars[i] != '\n'; render.sql(sqlChars[i++]))       ;
+      if (i < sqlChars.length)       render.sql(sqlChars[i]);
+    }
+ else     if (peek(sqlChars,i,"/*")) {
+      for (; !peek(sqlChars,i,"*/"); render.sql(sqlChars[i++]))       ;
+      render.sql(sqlChars[i++]);
+      render.sql(sqlChars[i]);
+    }
+ else     if (sqlChars[i] == '\'') {
+      render.sql(sqlChars[i++]);
+      for (; ; ) {
+        if (peek(sqlChars,i,"''")) {
+          render.sql(sqlChars[i++]);
+        }
+ else         if (peek(sqlChars,i,"'")) {
+          break;
+        }
+        render.sql(sqlChars[i++]);
+      }
+      render.sql(sqlChars[i]);
+    }
+ else     if (sqlChars[i] == '?' && substituteIndex < substitutes.size()) {
+      QueryPart substitute=substitutes.get(substituteIndex++);
+      if (render.paramType() == INLINED) {
+        render.visit(substitute);
+      }
+ else {
+        render.sql(sqlChars[i]);
+      }
+      if (bind != null) {
+        bind.visit(substitute);
+      }
+    }
+ else     if (sqlChars[i] == '{') {
+      if (JDBC_ESCAPE_PATTERN.matcher(sql.substring(i)).matches()) {
+        render.sql(sqlChars[i]);
+      }
+ else {
+        int start=++i;
+        for (; i < sqlChars.length && sqlChars[i] != '}'; i++)         ;
+        int end=i;
+        String token=sql.substring(start,end);
+        try {
+          QueryPart substitute=substitutes.get(Integer.valueOf(token));
+          render.visit(substitute);
+          if (bind != null) {
+            bind.visit(substitute);
+          }
+        }
+ catch (        NumberFormatException e) {
+          render.keyword(token);
+        }
+      }
+    }
+ else {
+      render.sql(sqlChars[i]);
+    }
+  }
+}

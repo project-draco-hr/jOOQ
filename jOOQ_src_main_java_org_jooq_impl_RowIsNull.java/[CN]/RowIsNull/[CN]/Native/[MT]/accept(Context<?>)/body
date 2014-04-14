@@ -1,0 +1,3 @@
+{
+  ctx.visit(row).sql(" ").keyword(isNull ? "is null" : "is not null");
+}

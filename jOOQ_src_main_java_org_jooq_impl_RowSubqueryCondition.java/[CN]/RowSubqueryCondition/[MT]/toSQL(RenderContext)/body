@@ -1,3 +1,0 @@
-{
-  delegate(ctx.configuration(),ctx).toSQL(ctx);
-}

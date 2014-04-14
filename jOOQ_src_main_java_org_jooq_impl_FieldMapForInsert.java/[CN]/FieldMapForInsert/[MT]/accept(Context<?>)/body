@@ -1,0 +1,20 @@
+{
+  boolean indent=(size() > 1);
+  ctx.sql("(");
+  if (indent) {
+    ctx.formatIndentStart();
+  }
+  String separator="";
+  for (  Field<?> field : values()) {
+    ctx.sql(separator);
+    if (indent) {
+      ctx.formatNewLine();
+    }
+    ctx.visit(field);
+    separator=", ";
+  }
+  if (indent) {
+    ctx.formatIndentEnd().formatNewLine();
+  }
+  ctx.sql(")");
+}
