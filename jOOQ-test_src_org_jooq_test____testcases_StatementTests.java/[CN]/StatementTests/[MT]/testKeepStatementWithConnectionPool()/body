@@ -1,0 +1,31 @@
+{
+  CountingDataSource ds1=new CountingDataSource(getConnection());
+  Configuration c1=create().configuration().derive(new DataSourceConnectionProvider(ds1));
+  for (int i=0; i < 5; i++) {
+    ResultQuery<Record1<Integer>> query=DSL.using(c1).select(TBook_ID()).from(TBook()).where(TBook_ID().eq(param("p",0)));
+    query.bind("p",1);
+    assertEquals(1,(int)query.fetchOne().getValue(TBook_ID()));
+    query.bind("p",2);
+    assertEquals(2,(int)query.fetchOne().getValue(TBook_ID()));
+    assertEquals((i + 1) * 2,ds1.open);
+    assertEquals((i + 1) * 2,ds1.close);
+  }
+  assertEquals(10,ds1.open);
+  assertEquals(10,ds1.close);
+  CountingDataSource ds2=new CountingDataSource(getConnection());
+  Configuration c2=create().configuration().derive(new DataSourceConnectionProvider(ds2));
+  for (int i=0; i < 5; i++) {
+    ResultQuery<Record1<Integer>> query=DSL.using(c2).select(TBook_ID()).from(TBook()).where(TBook_ID().eq(param("p",0))).keepStatement(true);
+    query.bind("p",1);
+    assertEquals(1,(int)query.fetchOne().getValue(TBook_ID()));
+    query.bind("p",2);
+    assertEquals(2,(int)query.fetchOne().getValue(TBook_ID()));
+    assertEquals(i + 1,ds2.open);
+    assertEquals(i,ds2.close);
+    query.close();
+    assertEquals(i + 1,ds2.open);
+    assertEquals(i + 1,ds2.close);
+  }
+  assertEquals(5,ds1.open);
+  assertEquals(5,ds1.close);
+}
