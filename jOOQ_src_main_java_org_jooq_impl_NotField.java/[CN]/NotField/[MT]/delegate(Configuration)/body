@@ -1,0 +1,16 @@
+{
+switch (configuration.dialect().family()) {
+case CUBRID:
+case FIREBIRD:
+    return (QueryPartInternal)DSL.field(DSL.not(DSL.condition(field)));
+case DERBY:
+case H2:
+case HSQLDB:
+case MARIADB:
+case MYSQL:
+case POSTGRES:
+case SQLITE:
+default :
+  return (QueryPartInternal)DSL.field("{not}({0})",getDataType(),field);
+}
+}

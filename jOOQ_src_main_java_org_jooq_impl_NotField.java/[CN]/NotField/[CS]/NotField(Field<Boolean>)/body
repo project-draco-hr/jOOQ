@@ -1,0 +1,4 @@
+{
+  super("not",field.getDataType());
+  this.field=field;
+}
