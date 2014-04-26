@@ -3,14 +3,16 @@
   definitionsLoop:   for (  T definition : definitions) {
     if (excludes != null) {
       for (      String exclude : excludes) {
-        if (exclude != null && (definition.getName().matches(exclude.trim()) || definition.getQualifiedName().matches(exclude.trim()))) {
+        Pattern p=Pattern.compile(exclude,Pattern.COMMENTS);
+        if (exclude != null && (p.matcher(definition.getName()).matches() || p.matcher(definition.getQualifiedName()).matches())) {
           continue definitionsLoop;
         }
       }
     }
     if (includes != null) {
       for (      String include : includes) {
-        if (include != null && (definition.getName().matches(include.trim()) || definition.getQualifiedName().matches(include.trim()))) {
+        Pattern p=Pattern.compile(include,Pattern.COMMENTS);
+        if (include != null && (p.matcher(definition.getName()).matches() || p.matcher(definition.getQualifiedName()).matches())) {
           result.add(definition);
           continue definitionsLoop;
         }
