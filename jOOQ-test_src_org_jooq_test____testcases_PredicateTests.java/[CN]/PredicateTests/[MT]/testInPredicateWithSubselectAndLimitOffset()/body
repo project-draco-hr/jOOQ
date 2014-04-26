@@ -1,0 +1,5 @@
+{
+  Result<Record1<Integer>> result=create().select(TBook_ID()).from(TBook()).where(TBook_AUTHOR_ID().in(select(TAuthor_ID()).from(TAuthor()).orderBy(TAuthor_ID()).limit(1))).orderBy(TBook_ID()).limit(1).fetch();
+  assertEquals(1,result.size());
+  assertEquals(1,(int)result.get(0).value1());
+}
