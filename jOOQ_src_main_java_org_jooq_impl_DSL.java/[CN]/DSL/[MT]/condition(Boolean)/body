@@ -1,0 +1,3 @@
+{
+  return condition(Utils.field(value,Boolean.class));
+}
