@@ -1,0 +1,3 @@
+{
+  return unmodifiableCollection(SQL_DATATYPES_BY_TYPE.keySet());
+}

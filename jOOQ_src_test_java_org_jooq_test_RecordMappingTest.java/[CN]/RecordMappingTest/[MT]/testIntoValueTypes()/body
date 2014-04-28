@@ -1,0 +1,15 @@
+{
+  Field<Boolean> field=field("B",Boolean.class);
+  Result<Record1<Boolean>> result=create.newResult(field);
+  result.add(create.newRecord(field));
+  result.add(create.newRecord(field));
+  result.add(create.newRecord(field));
+  result.get(0).setValue(field,true);
+  result.get(1).setValue(field,false);
+  result.get(2).setValue(field,null);
+  assertEquals(Arrays.asList(true,false,false),result.into(boolean.class));
+  assertEquals(Arrays.asList(true,false,null),result.into(Boolean.class));
+  assertEquals(Arrays.asList(1,0,0),result.into(int.class));
+  assertEquals(Arrays.asList(1,0,null),result.into(Integer.class));
+  assertEquals(Arrays.asList("true","false",null),result.into(String.class));
+}

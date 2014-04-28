@@ -3,6 +3,10 @@
     delegate=new ArrayMapper();
     return;
   }
+  if (type.isPrimitive() || DefaultDataType.types().contains(type)) {
+    delegate=new ValueTypeMapper();
+    return;
+  }
   if (Modifier.isAbstract(type.getModifiers())) {
     delegate=new ProxyMapper();
     return;
