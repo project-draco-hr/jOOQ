@@ -94,6 +94,9 @@
           separator=", ";
         }
         context.sql("]");
+        if (family == POSTGRES && EnumType.class.isAssignableFrom(type.getComponentType())) {
+          context.sql("::").keyword(DefaultDataType.getDataType(family,type).getCastTypeName(context.configuration()));
+        }
       }
     }
  else     if (EnumType.class.isAssignableFrom(type)) {

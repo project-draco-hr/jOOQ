@@ -1,3 +1,4 @@
 {
-  return new DefaultDataType<E>(dialect,enumDataType,typeName,castTypeName);
+  String enumTypeName=enumDataType.getEnumConstants()[0].getName();
+  return new DefaultDataType<E>(dialect,enumDataType,enumTypeName,enumTypeName);
 }
