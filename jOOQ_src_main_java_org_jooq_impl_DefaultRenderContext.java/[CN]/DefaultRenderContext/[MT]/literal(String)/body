@@ -2,18 +2,19 @@
   if (literal == null) {
     return this;
   }
-  boolean needsQuote=(RenderNameStyle.QUOTED == cachedRenderNameStyle && configuration.dialect() != SQLDialect.SQLITE) || (configuration.dialect() == SQLDialect.SQLITE && SQLITE_KEYWORDS.contains(literal.toUpperCase())) || (!IDENTIFIER_PATTERN.matcher(literal).matches());
-  if (RenderNameStyle.LOWER == cachedRenderNameStyle) {
-    literal=literal.toLowerCase();
-  }
- else   if (RenderNameStyle.UPPER == cachedRenderNameStyle) {
-    literal=literal.toUpperCase();
-  }
+  SQLDialect family=configuration.dialect().family();
+  boolean needsQuote=(QUOTED == cachedRenderNameStyle && family != SQLDialect.SQLITE) || (family == SQLDialect.SQLITE && SQLITE_KEYWORDS.contains(literal.toUpperCase()));
   if (!needsQuote) {
+    if (LOWER == cachedRenderNameStyle) {
+      literal=literal.toLowerCase();
+    }
+ else     if (UPPER == cachedRenderNameStyle) {
+      literal=literal.toUpperCase();
+    }
     sql(literal);
   }
  else {
-switch (configuration.dialect().family()) {
+switch (family) {
 case MARIADB:
 case MYSQL:
       sql("`").sql(StringUtils.replace(literal,"`","``")).sql("`");
