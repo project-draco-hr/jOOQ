@@ -1,0 +1,3 @@
+{
+  this(connectionProvider,null,recordMapperProvider,recordListenerProviders,executeListenerProviders,visitListenerProviders,dialect,settings,data);
+}
