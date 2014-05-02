@@ -1,0 +1,4 @@
+{
+  this.transactionProvider=newTransactionProvider != null ? newTransactionProvider : new NoTransactionProvider();
+  return this;
+}

@@ -1,6 +1,7 @@
 {
   oos.defaultWriteObject();
   oos.writeObject(connectionProvider instanceof Serializable ? connectionProvider : null);
+  oos.writeObject(transactionProvider instanceof Serializable ? transactionProvider : null);
   oos.writeObject(recordMapperProvider instanceof Serializable ? recordMapperProvider : null);
   oos.writeObject(cloneSerializables(executeListenerProviders));
   oos.writeObject(cloneSerializables(recordListenerProviders));

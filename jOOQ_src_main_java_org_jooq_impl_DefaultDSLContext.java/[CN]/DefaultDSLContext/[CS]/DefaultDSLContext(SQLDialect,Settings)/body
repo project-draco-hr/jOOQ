@@ -1,3 +1,3 @@
 {
-  this(new DefaultConfiguration(new NoConnectionProvider(),null,null,null,null,dialect,settings,null));
+  this(new DefaultConfiguration(new NoConnectionProvider(),null,null,null,null,null,dialect,settings,null));
 }

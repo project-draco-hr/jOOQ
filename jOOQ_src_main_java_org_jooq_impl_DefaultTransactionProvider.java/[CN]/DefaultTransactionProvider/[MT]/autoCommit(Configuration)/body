@@ -1,0 +1,8 @@
+{
+  Boolean autoCommit=(Boolean)configuration.data(DATA_DEFAULT_TRANSACTION_PROVIDER_AUTOCOMMIT);
+  if (autoCommit == null) {
+    autoCommit=connection.getAutoCommit();
+    configuration.data(DATA_DEFAULT_TRANSACTION_PROVIDER_AUTOCOMMIT,autoCommit);
+  }
+  return autoCommit;
+}

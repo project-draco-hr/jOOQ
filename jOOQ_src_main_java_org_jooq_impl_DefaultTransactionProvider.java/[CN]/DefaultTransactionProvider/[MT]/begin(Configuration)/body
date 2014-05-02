@@ -1,0 +1,8 @@
+{
+  Stack<Savepoint> savepoints=savepoints(configuration);
+  if (savepoints.isEmpty()) {
+    autoCommit(configuration,false);
+  }
+  savepoints.push(connection.setSavepoint());
+  return null;
+}

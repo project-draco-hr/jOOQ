@@ -1,0 +1,32 @@
+{
+  jOOQAbstractTest.reset=false;
+  final int[] inserted=new int[1];
+  final int[] updated=new int[1];
+  Integer result=create().transaction(new Transactional<Integer>(){
+    @Override public Integer run(    Configuration c1) throws MyCheckedException {
+      assertFalse(((DefaultConnectionProvider)c1.connectionProvider()).getAutoCommit());
+      inserted[0]=DSL.using(c1).insertInto(TAuthor(),TAuthor_ID(),TAuthor_LAST_NAME()).values(3,"Koontz").execute();
+      assertEquals(1,inserted[0]);
+      try {
+        DSL.using(c1).transaction(new Transactional<Integer>(){
+          @Override public Integer run(          Configuration c2) throws Exception {
+            assertFalse(((DefaultConnectionProvider)c2.connectionProvider()).getAutoCommit());
+            updated[0]=DSL.using(c2).update(TAuthor()).set(TAuthor_FIRST_NAME(),"Dean").where(TAuthor_ID().eq(3)).execute();
+            assertEquals(1,updated[0]);
+            throw new MyRuntimeException("No");
+          }
+        }
+);
+      }
+ catch (      MyRuntimeException expected) {
+        assertNull(DSL.using(c1).fetchOne(TAuthor(),TAuthor_ID().eq(3)).getValue(TAuthor_FIRST_NAME()));
+        assertEquals(MyRuntimeException.class,expected.getClass());
+        assertEquals("No",expected.getMessage());
+      }
+      return 42;
+    }
+  }
+);
+  assertEquals(3,create().fetchCount(TAuthor()));
+  assertEquals(42,(int)result);
+}

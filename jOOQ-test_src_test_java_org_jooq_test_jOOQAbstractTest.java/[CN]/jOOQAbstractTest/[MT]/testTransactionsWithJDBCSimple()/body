@@ -1,0 +1,3 @@
+{
+  new TransactionTests(this).testTransactionsWithJDBCSimple();
+}

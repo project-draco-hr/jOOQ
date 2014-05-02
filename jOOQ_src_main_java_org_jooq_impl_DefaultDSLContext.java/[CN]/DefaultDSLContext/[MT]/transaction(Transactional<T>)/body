@@ -1,0 +1,21 @@
+{
+  Configuration local=configuration.derive();
+  TransactionProvider provider=local.transactionProvider();
+  Transaction transaction=null;
+  T result=null;
+  try {
+    transaction=provider.begin(local);
+    result=transactional.run(local);
+    provider.commit(local,transaction);
+  }
+ catch (  Exception cause) {
+    provider.rollback(local,transaction,cause);
+    if (cause instanceof RuntimeException) {
+      throw (RuntimeException)cause;
+    }
+ else {
+      throw new DataAccessException("Rollback caused",cause);
+    }
+  }
+  return result;
+}

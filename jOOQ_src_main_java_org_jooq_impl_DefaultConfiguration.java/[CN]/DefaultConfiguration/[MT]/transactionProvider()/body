@@ -1,0 +1,6 @@
+{
+  if (transactionProvider instanceof NoTransactionProvider && connectionProvider instanceof DefaultConnectionProvider) {
+    return new DefaultTransactionProvider((DefaultConnectionProvider)connectionProvider);
+  }
+  return transactionProvider;
+}
