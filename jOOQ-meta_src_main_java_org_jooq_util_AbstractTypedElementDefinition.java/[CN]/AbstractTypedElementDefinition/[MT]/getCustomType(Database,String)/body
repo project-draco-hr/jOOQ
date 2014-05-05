@@ -1,0 +1,13 @@
+{
+  for (  CustomType type : db.getConfiguredCustomTypes()) {
+    if (name.equals(type.getName())) {
+      if (!StringUtils.isBlank(type.getType())) {
+        return type.getType();
+      }
+ else {
+        return type.getName();
+      }
+    }
+  }
+  return name;
+}
