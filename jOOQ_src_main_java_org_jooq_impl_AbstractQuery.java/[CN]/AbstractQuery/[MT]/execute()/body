@@ -1,10 +1,13 @@
 {
   if (isExecutable()) {
     Configuration c=configuration();
-    ExecuteContext ctx=new DefaultExecuteContext(c,this);
+    DefaultExecuteContext ctx=new DefaultExecuteContext(c,this);
     ExecuteListener listener=new ExecuteListeners(ctx);
     int result=0;
     try {
+      if (statement != null) {
+        ctx.connection(c.connectionProvider(),statement.getConnection());
+      }
       if (ctx.connection() == null) {
         throw new DetachedException("Cannot execute query. No Connection configured");
       }

@@ -1,0 +1,4 @@
+{
+  acquire++;
+  return delegate.acquire();
+}

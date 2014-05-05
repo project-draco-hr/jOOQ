@@ -1,0 +1,4 @@
+{
+  release++;
+  delegate.release(connection);
+}
