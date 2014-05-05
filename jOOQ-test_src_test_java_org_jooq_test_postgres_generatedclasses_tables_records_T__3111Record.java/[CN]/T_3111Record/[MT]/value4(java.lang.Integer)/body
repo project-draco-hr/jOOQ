@@ -1,0 +1,4 @@
+{
+  setBool2(value);
+  return this;
+}

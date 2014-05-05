@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.postgres.generatedclasses.tables.T_3111.T_3111.BOOL2;
+}

@@ -1,0 +1,33 @@
+{
+  try {
+    T_3111Record record;
+    record=create().newRecord(T_3111);
+    record.setId(1);
+    assertEquals(1,record.store());
+    record=create().newRecord(T_3111);
+    record.setId(2);
+    record.setInverse(0);
+    record.setBool1(0);
+    record.setBool2(0);
+    assertEquals(1,record.store());
+    record=create().newRecord(T_3111);
+    record.setId(3);
+    record.setInverse(1);
+    record.setBool1(1);
+    record.setBool2(-1);
+    assertEquals(1,record.store());
+    Result<Record3<Integer,Integer,Integer>> r1=create().select(T_3111.INVERSE,T_3111.BOOL1,T_3111.BOOL2).from(T_3111).orderBy(T_3111.ID).fetch();
+    assertEquals(3,r1.size());
+    assertEquals(asList(null,0,1),r1.getValues(T_3111.INVERSE));
+    assertEquals(asList(null,0,1),r1.getValues(T_3111.BOOL1));
+    assertEquals(asList(null,0,-1),r1.getValues(T_3111.BOOL2));
+    Result<?> r2=create().select(field("inverse"),field("bool1"),field("bool2")).from("t_3111").orderBy(field("id")).fetch();
+    assertEquals(3,r2.size());
+    assertEquals(asList(null,0,-1),r2.getValues(0));
+    assertEquals(asList(null,false,true),r2.getValues(1));
+    assertEquals(asList(null,false,true),r2.getValues(2));
+  }
+  finally {
+    create().delete(T_3111).execute();
+  }
+}

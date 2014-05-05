@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.postgres.generatedclasses.tables.records.T_3111Record.class;
+}

@@ -1,0 +1,6 @@
+{
+  this.id=id;
+  this.inverse=inverse;
+  this.bool1=bool1;
+  this.bool2=bool2;
+}
