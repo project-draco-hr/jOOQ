@@ -26,9 +26,11 @@
   this.scale=scale;
   this.length=length;
   int ordinal=dialect == null ? SQLDialect.SQL99.ordinal() : dialect.ordinal();
-  String normalised=DefaultDataType.normalise(typeName);
-  if (TYPES_BY_NAME[ordinal].get(normalised) == null) {
-    TYPES_BY_NAME[ordinal].put(normalised,this);
+  if (!TYPES_BY_NAME[ordinal].containsKey(typeName.toUpperCase())) {
+    String normalised=DefaultDataType.normalise(typeName);
+    if (TYPES_BY_NAME[ordinal].get(normalised) == null) {
+      TYPES_BY_NAME[ordinal].put(normalised,this);
+    }
   }
   if (TYPES_BY_TYPE[ordinal].get(type) == null) {
     TYPES_BY_TYPE[ordinal].put(type,this);

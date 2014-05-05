@@ -1,0 +1,6 @@
+{
+  if (indentLock == null) {
+    indentLock=new Stack<Integer>();
+  }
+  return indentLock;
+}
