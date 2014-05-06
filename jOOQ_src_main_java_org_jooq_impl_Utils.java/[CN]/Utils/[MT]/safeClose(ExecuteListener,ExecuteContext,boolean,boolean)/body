@@ -2,8 +2,17 @@
   JDBCUtils.safeClose(ctx.resultSet());
   ctx.resultSet(null);
   if (!keepStatement) {
-    JDBCUtils.safeClose(ctx.statement());
-    ctx.statement(null);
+    PreparedStatement statement=ctx.statement();
+    if (statement != null) {
+      JDBCUtils.safeClose(statement);
+      ctx.statement(null);
+    }
+ else {
+      Connection connection=localConnection();
+      if (connection != null) {
+        ctx.configuration().connectionProvider().release(connection);
+      }
+    }
   }
   if (keepResultSet)   listener.end(ctx);
   DefaultExecuteContext.clean();
