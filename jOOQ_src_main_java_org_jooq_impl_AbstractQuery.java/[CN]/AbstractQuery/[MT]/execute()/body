@@ -5,21 +5,19 @@
     ExecuteListener listener=new ExecuteListeners(ctx);
     int result=0;
     try {
-      if (statement != null) {
-        ctx.connection(c.connectionProvider(),statement.getConnection());
-      }
-      if (ctx.connection() == null) {
-        throw new DetachedException("Cannot execute query. No Connection configured");
-      }
       if (keepStatement() && statement != null) {
         ctx.sql(sql);
         ctx.statement(statement);
+        ctx.connection(c.connectionProvider(),statement.getConnection());
       }
  else {
         listener.renderStart(ctx);
         ctx.sql(getSQL0(ctx));
         listener.renderEnd(ctx);
         sql=ctx.sql();
+        if (ctx.connection() == null) {
+          throw new DetachedException("Cannot execute query. No Connection configured");
+        }
         listener.prepareStart(ctx);
         prepare(ctx);
         listener.prepareEnd(ctx);
