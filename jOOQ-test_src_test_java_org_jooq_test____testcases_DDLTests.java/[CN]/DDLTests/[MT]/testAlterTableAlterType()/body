@@ -12,6 +12,6 @@
     }
   }
   finally {
-    create().execute("drop table t");
+    create().dropTable("t").execute();
   }
 }

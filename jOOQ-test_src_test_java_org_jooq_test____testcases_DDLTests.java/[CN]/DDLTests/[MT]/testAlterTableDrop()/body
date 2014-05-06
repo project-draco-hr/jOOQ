@@ -9,6 +9,6 @@
     assertEquals(asList(1),asList(create().fetchOne(table("t")).intoArray()));
   }
   finally {
-    create().execute("drop table t");
+    create().dropTable("t").execute();
   }
 }

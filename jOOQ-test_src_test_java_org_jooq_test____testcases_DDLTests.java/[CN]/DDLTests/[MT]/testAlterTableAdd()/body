@@ -25,6 +25,6 @@
     create().alterTable("t").add("h",SQLDataType.INTEGER.nullable(false)).execute();
   }
   finally {
-    create().execute("drop table t");
+    create().dropTable("t").execute();
   }
 }
