@@ -18,7 +18,11 @@
   logStat.info("---------------");
   logStat.info("Total",total);
   int unbalanced=0;
-  JooqLogger logLife=JooqLogger.getLogger(LifecycleWatcherListener.class);
+  JooqLogger logLife=JooqLogger.getLogger(Lifecycle.class);
+  logLife.info("");
+  logLife.info("CONNECTION PROVIDER LIFECYCLE STATS");
+  logLife.info("-----------------------------------");
+  unbalanced=extracted(logLife,unbalanced,ACQUIRE_COUNT,RELEASE_COUNT);
   logLife.info("");
   logLife.info("EXECUTE LISTENER LIFECYCLE STATS");
   logLife.info("--------------------------------");

@@ -1,0 +1,4 @@
+{
+  increment(RELEASE_COUNT);
+  delegate.release(connection);
+}
