@@ -1,0 +1,4 @@
+{
+  alterType=type;
+  return this;
+}

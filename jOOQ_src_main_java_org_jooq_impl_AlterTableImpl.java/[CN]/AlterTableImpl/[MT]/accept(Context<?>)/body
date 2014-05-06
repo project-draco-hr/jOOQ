@@ -1,0 +1,27 @@
+{
+  ctx.start(ALTER_TABLE_TABLE).keyword("alter table").sql(" ").visit(table).end(ALTER_TABLE_TABLE);
+  if (add != null) {
+    ctx.start(ALTER_TABLE_ADD).sql(" ").keyword("add").sql(" ").qualify(false).visit(add).sql(" ").qualify(true).keyword(addType.getCastTypeName(ctx.configuration()));
+    if (!addType.nullable()) {
+      ctx.sql(" ").keyword("not null");
+    }
+    ctx.end(ALTER_TABLE_ADD);
+  }
+ else   if (alter != null) {
+    ctx.start(ALTER_TABLE_ALTER).sql(" ").keyword("alter").sql(" ").qualify(false).visit(alter).qualify(true);
+    if (alterType != null) {
+      ctx.sql(" ").keyword(alterType.getCastTypeName(ctx.configuration()));
+    }
+ else     if (alterDefault != null) {
+      ctx.sql(" ").keyword("set default").sql(" ").visit(alterDefault);
+    }
+    ctx.end(ALTER_TABLE_ALTER);
+  }
+ else   if (drop != null) {
+    ctx.start(ALTER_TABLE_DROP).sql(" ").keyword("drop").sql(" ").qualify(false).visit(drop).qualify(true);
+    if (dropCascade) {
+      ctx.sql(" ").keyword("cascade");
+    }
+    ctx.end(ALTER_TABLE_DROP);
+  }
+}
