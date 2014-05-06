@@ -13,7 +13,7 @@
       ctx.sql(" ").keyword(alterType.getCastTypeName(ctx.configuration()));
     }
  else     if (alterDefault != null) {
-      ctx.sql(" ").keyword("set default").sql(" ").visit(alterDefault);
+      ctx.start(ALTER_TABLE_ALTER_DEFAULT).sql(" ").keyword("set default").sql(" ").visit(alterDefault).end(ALTER_TABLE_ALTER_DEFAULT);
     }
     ctx.end(ALTER_TABLE_ALTER);
   }
