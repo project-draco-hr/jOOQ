@@ -1,6 +1,9 @@
 {
+  DSLContext create=create();
+  TransactionalConnectionProvider provider=new TransactionalConnectionProvider(create.configuration().connectionProvider());
+  create.configuration().set(provider);
   try {
-    create().transaction(new Transactional<Integer>(){
+    create.transaction(new Transactional<Integer>(){
       @Override public Integer run(      Configuration configuration) throws MyCheckedException {
         assertAutoCommit(configuration.connectionProvider(),false);
         assertEquals(1,DSL.using(configuration).insertInto(TAuthor(),TAuthor_ID(),TAuthor_LAST_NAME()).values(3,"Koontz").execute());
@@ -11,10 +14,12 @@
     fail();
   }
  catch (  DataAccessException expected) {
+    assertEquals(1,provider.acquire.get());
+    assertEquals(1,provider.release.get());
     assertEquals(MyCheckedException.class,expected.getCause().getClass());
     assertEquals("No",expected.getCause().getMessage());
-    assertEquals(2,create().fetchCount(TAuthor()));
-    assertAutoCommit(create().configuration().connectionProvider(),true);
+    assertEquals(2,create.fetchCount(TAuthor()));
+    assertAutoCommit(create.configuration().connectionProvider(),true);
   }
-  assertEquals(2,create().fetchCount(TAuthor()));
+  assertEquals(2,create.fetchCount(TAuthor()));
 }

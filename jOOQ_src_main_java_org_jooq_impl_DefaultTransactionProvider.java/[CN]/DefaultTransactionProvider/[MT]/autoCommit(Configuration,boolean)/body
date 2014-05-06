@@ -1,6 +1,0 @@
-{
-  boolean oldValue=autoCommit(configuration);
-  if (oldValue == true) {
-    connection.setAutoCommit(newValue);
-  }
-}

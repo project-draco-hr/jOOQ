@@ -1,0 +1,10 @@
+{
+  Stack<Savepoint> savepoints=savepoints(ctx.configuration());
+  savepoints.pop();
+  if (savepoints.isEmpty()) {
+    connection(ctx.configuration()).commit();
+    brace(ctx.configuration(),false);
+  }
+ else {
+  }
+}

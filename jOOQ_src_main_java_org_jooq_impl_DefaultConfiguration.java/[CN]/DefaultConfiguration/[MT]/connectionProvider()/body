@@ -1,3 +1,4 @@
 {
-  return connectionProvider;
+  ConnectionProvider transactional=(ConnectionProvider)data(DATA_DEFAULT_TRANSACTION_PROVIDER_CONNECTION);
+  return transactional == null ? connectionProvider : transactional;
 }

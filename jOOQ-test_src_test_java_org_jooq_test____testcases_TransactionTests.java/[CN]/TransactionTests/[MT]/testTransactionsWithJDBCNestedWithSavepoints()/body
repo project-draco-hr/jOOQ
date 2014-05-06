@@ -2,7 +2,10 @@
   jOOQAbstractTest.reset=false;
   final int[] inserted=new int[1];
   final int[] updated=new int[1];
-  Integer result=create().transaction(new Transactional<Integer>(){
+  DSLContext create=create();
+  TransactionalConnectionProvider provider=new TransactionalConnectionProvider(create.configuration().connectionProvider());
+  create.configuration().set(provider);
+  Integer result=create.transaction(new Transactional<Integer>(){
     @Override public Integer run(    Configuration c1) throws MyCheckedException {
       assertAutoCommit(c1.connectionProvider(),false);
       inserted[0]=DSL.using(c1).insertInto(TAuthor(),TAuthor_ID(),TAuthor_LAST_NAME()).values(3,"Koontz").execute();
@@ -27,6 +30,8 @@
     }
   }
 );
-  assertEquals(3,create().fetchCount(TAuthor()));
+  assertEquals(1,provider.acquire.get());
+  assertEquals(1,provider.release.get());
+  assertEquals(3,create.fetchCount(TAuthor()));
   assertEquals(42,(int)result);
 }

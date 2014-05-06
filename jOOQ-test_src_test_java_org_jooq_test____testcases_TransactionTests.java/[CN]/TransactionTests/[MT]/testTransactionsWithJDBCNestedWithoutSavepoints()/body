@@ -1,8 +1,11 @@
 {
   final int[] inserted=new int[1];
   final int[] updated=new int[1];
+  DSLContext create=create();
+  TransactionalConnectionProvider provider=new TransactionalConnectionProvider(create.configuration().connectionProvider());
+  create.configuration().set(provider);
   try {
-    create().transaction(new Transactional<Integer>(){
+    create.transaction(new Transactional<Integer>(){
       @Override public Integer run(      Configuration c1) throws MyCheckedException {
         assertAutoCommit(c1.connectionProvider(),false);
         inserted[0]=DSL.using(c1).insertInto(TAuthor(),TAuthor_ID(),TAuthor_LAST_NAME()).values(3,"Koontz").execute();
@@ -23,7 +26,9 @@
 );
   }
  catch (  MyRuntimeException expected) {
-    assertEquals(2,create().fetchCount(TAuthor()));
+    assertEquals(1,provider.acquire.get());
+    assertEquals(1,provider.release.get());
+    assertEquals(2,create.fetchCount(TAuthor()));
     assertEquals(MyRuntimeException.class,expected.getClass());
     assertEquals("No",expected.getMessage());
   }

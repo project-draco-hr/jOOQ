@@ -4,5 +4,5 @@
   Settings settings=SettingsTools.defaultSettings().withRenderSchema(renderSchema).withRenderMapping(new RenderMapping().withDefaultSchema(defaultSchema));
   org.jooq.Configuration c=create0(settings).configuration();
   ConnectionProviderLifecycleListener cp=new ConnectionProviderLifecycleListener(c.connectionProvider());
-  return DSL.using(c.derive(cp).derive(new DefaultTransactionProvider((DefaultConnectionProvider)c.connectionProvider())).derive(DefaultExecuteListenerProvider.providers(new JDBCLifecycleListener(),new LifecycleWatcherListener(),new TestStatisticsListener(),new PrettyPrinter())));
+  return DSL.using(c.derive(cp).derive(DefaultExecuteListenerProvider.providers(new JDBCLifecycleListener(),new LifecycleWatcherListener(),new TestStatisticsListener(),new PrettyPrinter())));
 }
