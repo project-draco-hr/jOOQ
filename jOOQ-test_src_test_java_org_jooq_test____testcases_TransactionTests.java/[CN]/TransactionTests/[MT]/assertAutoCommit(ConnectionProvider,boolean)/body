@@ -1,0 +1,13 @@
+{
+  Connection c=null;
+  try {
+    c=provider.acquire();
+    assertEquals(autoCommit,c.getAutoCommit());
+  }
+ catch (  SQLException e) {
+    throw new RuntimeException(e);
+  }
+ finally {
+    if (c != null)     provider.release(c);
+  }
+}

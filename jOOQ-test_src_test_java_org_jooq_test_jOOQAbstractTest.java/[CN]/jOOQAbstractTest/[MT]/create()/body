@@ -3,5 +3,6 @@
   Boolean renderSchema=Boolean.valueOf(System.getProperty("org.jooq.settings.renderSchema","true"));
   Settings settings=SettingsTools.defaultSettings().withRenderSchema(renderSchema).withRenderMapping(new RenderMapping().withDefaultSchema(defaultSchema));
   org.jooq.Configuration c=create0(settings).configuration();
-  return DSL.using(c.derive(new ConnectionProviderLifecycleListener(c.connectionProvider())).derive(DefaultExecuteListenerProvider.providers(new JDBCLifecycleListener(),new LifecycleWatcherListener(),new TestStatisticsListener(),new PrettyPrinter())));
+  ConnectionProviderLifecycleListener cp=new ConnectionProviderLifecycleListener(c.connectionProvider());
+  return DSL.using(c.derive(cp).derive(new DefaultTransactionProvider((DefaultConnectionProvider)c.connectionProvider())).derive(DefaultExecuteListenerProvider.providers(new JDBCLifecycleListener(),new LifecycleWatcherListener(),new TestStatisticsListener(),new PrettyPrinter())));
 }

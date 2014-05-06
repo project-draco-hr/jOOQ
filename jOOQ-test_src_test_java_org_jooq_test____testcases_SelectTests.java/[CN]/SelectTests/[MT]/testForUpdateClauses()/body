@@ -4,12 +4,13 @@ case SQLITE:
     log.info("SKIPPING","FOR UPDATE tests");
   return;
 }
-final DSLContext create1=create();
-final DSLContext create2=create();
-((DefaultConnectionProvider)create2.configuration().connectionProvider()).setConnection(getNewConnection());
-create2.configuration().connectionProvider().acquire().setAutoCommit(false);
-final Vector<String> execOrder=new Vector<String>();
+Connection connection2=null;
 try {
+connection2=getNewConnection();
+connection2.setAutoCommit(false);
+final DSLContext create1=create();
+final DSLContext create2=create(create().configuration().derive(new DefaultConnectionProvider(connection2)));
+final Vector<String> execOrder=new Vector<String>();
 final Thread t1=new Thread(new Runnable(){
   @Override public void run(){
     sleep(2000);
@@ -49,11 +50,7 @@ t2.join();
 assertEquals(asList("t2-exec","t2-signal","t1-block","t1-fail-or-t2-commit","t1-fail-or-t2-commit"),execOrder);
 }
   finally {
-try {
-  create2.configuration().connectionProvider().acquire().close();
-}
- catch (Exception e) {
-}
+JDBCUtils.safeClose(connection2);
 }
 switch (dialect().family()) {
 default :
