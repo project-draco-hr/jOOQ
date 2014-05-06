@@ -4,5 +4,4 @@
     brace(ctx.configuration(),true);
   }
   savepoints.push(connection(ctx.configuration()).setSavepoint());
-  return null;
 }
