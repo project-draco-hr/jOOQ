@@ -1,11 +1,10 @@
 {
   iterator();
   ResultImpl<R> result=new ResultImpl<R>(ctx.configuration(),fields);
-  R record=null;
   ctx.result(result);
   listener.resultStart(ctx);
-  for (int i=0; i < number && ((record=iterator().next()) != null); i++) {
-    result.addRecord(record);
+  for (int i=0; i < number && iterator().hasNext(); i++) {
+    result.addRecord(iterator().next());
   }
   ctx.result(result);
   listener.resultEnd(ctx);

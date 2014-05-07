@@ -25,8 +25,18 @@
     assertFalse(it.hasNext());
     assertFalse(cursor.hasNext());
     assertTrue(cursor.isClosed());
-    assertEquals(null,it.next());
-    assertEquals(null,it.next());
+    try {
+      it.next();
+      fail();
+    }
+ catch (    NoSuchElementException expected) {
+    }
+    try {
+      it.next();
+      fail();
+    }
+ catch (    NoSuchElementException expected) {
+    }
     assertEquals(null,cursor.fetchOne());
     assertEquals(null,cursor.fetchOne());
     cursor.close();

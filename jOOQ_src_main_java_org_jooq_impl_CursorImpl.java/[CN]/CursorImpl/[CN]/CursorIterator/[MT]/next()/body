@@ -1,7 +1,5 @@
 {
-  if (hasNext == null) {
-    return fetchOne();
-  }
+  if (!hasNext())   throw new NoSuchElementException("There are no more records to fetch from this Cursor");
   R result=next;
   hasNext=null;
   next=null;
