@@ -1,4 +1,0 @@
-{
-  increment(ACQUIRE_COUNT);
-  return delegate.acquire();
-}

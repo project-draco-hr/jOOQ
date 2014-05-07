@@ -1,9 +1,0 @@
-{
-  assertEquals(2,create().select(countDistinct(TBook_AUTHOR_ID())).from(TBook()).fetchOne(0));
-  if (asList(CUBRID,DERBY,FIREBIRD,H2,SQLITE).contains(dialect().family())) {
-    log.info("SKIPPING","Multi-expression COUNT(DISTINCT) test");
-  }
- else {
-    assertEquals(3,(int)create().select(countDistinct(TBook_AUTHOR_ID(),TBook_LANGUAGE_ID())).from(TBook()).fetchOne(0,Integer.class));
-  }
-}

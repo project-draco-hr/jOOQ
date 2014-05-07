@@ -1,8 +1,0 @@
-{
-  if (dialect() == SQLDialect.SQLITE) {
-    log.info("SKIPPING","System functions test");
-    return;
-  }
-  Field<?> user=trim(lower(currentUser()));
-  create().select(user).fetchOne();
-}

@@ -1,6 +1,0 @@
-{
-  assertFalse(ctx.data().isEmpty());
-  assertEquals(1,ctx.data().size());
-  assertEquals(oldValue,ctx.data("X"));
-  assertEquals(oldValue,ctx.data("X",newValue));
-}

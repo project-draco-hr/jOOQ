@@ -1,4 +1,0 @@
-{
-  assertEquals(4,create().selectCount().from(TBook()).fetchOne(0));
-  assertEquals(2,create().selectCount().from(TAuthor()).fetchOne(0));
-}

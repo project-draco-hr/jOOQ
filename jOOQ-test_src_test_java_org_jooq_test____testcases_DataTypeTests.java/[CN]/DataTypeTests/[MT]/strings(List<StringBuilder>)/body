@@ -1,7 +1,0 @@
-{
-  List<String> result=new ArrayList<String>();
-  for (  StringBuilder sb : prefixed) {
-    result.add(sb.toString());
-  }
-  return result;
-}

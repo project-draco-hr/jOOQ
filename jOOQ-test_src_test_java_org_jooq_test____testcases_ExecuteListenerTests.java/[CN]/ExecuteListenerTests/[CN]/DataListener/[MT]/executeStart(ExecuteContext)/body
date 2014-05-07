@@ -1,8 +1,0 @@
-{
-  if (SettingsTools.executePreparedStatements(ctx.configuration().settings())) {
-    assertThings(ctx,"bindEnd","executeStart");
-  }
- else {
-    assertThings(ctx,"prepareEnd","executeStart");
-  }
-}

@@ -1,6 +1,0 @@
-{
-  this.ID=ID.intValue();
-  this.firstName=firstName;
-  this.lastName=lastName;
-  this.dateOfBirth=null;
-}

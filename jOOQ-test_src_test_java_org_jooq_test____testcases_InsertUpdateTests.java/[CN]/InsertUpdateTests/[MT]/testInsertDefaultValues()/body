@@ -1,6 +1,0 @@
-{
-  jOOQAbstractTest.reset=false;
-  assertEquals(1,create().insertInto(TTriggers()).defaultValues().execute());
-  assertEquals(1,(int)create().fetchOne(selectCount().from(TTriggers())).getValue(0,int.class));
-  assertEquals(1,create().delete(TTriggers()).execute());
-}

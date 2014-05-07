@@ -1,8 +1,0 @@
-{
-  Map<Integer,List<Condition>> data=(Map<Integer,List<Condition>>)context.data(DataKey.SUBSELECT_CONDITIONS);
-  if (data == null) {
-    data=new HashMap<Integer,List<Condition>>();
-    context.data(DataKey.SUBSELECT_CONDITIONS,data);
-  }
-  return data;
-}

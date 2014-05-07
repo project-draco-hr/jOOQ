@@ -1,3 +1,0 @@
-{
-  assertThings(ctx,"renderEnd","prepareStart");
-}

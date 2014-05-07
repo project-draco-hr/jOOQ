@@ -1,6 +1,0 @@
-{
-  if (context.renderContext() == null)   return;
-  pushConditions(context,TBook(),TBook_AUTHOR_ID(),1);
-  pushConditions(context,TAuthor(),TAuthor_ID(),1);
-  super.visitEnd(context);
-}

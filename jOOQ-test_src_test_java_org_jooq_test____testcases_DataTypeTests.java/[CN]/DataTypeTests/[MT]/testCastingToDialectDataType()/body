@@ -1,5 +1,0 @@
-{
-  for (  DataType<?> type : getCastableDataTypes()) {
-    assertEquals(null,create().select(val(null,type).cast(type)).fetchOne(0));
-  }
-}

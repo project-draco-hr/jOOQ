@@ -1,5 +1,0 @@
-{
-  if (isOutsideDocElem())   return;
-  String s=new String(ch,start,length);
-  append(m_doc.createTextNode(s));
-}

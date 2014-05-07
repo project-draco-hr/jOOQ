@@ -1,4 +1,0 @@
-{
-  assertEquals(0,create().execute(create().render(create().selectOne())));
-  assertEquals(0,create().query(create().render(create().selectOne())).execute());
-}

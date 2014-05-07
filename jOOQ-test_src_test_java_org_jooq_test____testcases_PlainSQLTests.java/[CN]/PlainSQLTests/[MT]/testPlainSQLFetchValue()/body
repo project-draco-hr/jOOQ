@@ -1,5 +1,0 @@
-{
-  assertEquals("1","" + create().fetchValue("select 1 from " + TBook().getName() + " where "+ TBook_ID().getName()+ " = 1"));
-  assertEquals("1","" + create().fetchValue("select 1 from " + TBook().getName() + " where "+ TBook_ID().getName()+ " = ?",1));
-  assertEquals("1","" + create().fetchValue("select {0} from {1} where {2} = {3}",inline(1),TBook(),TBook_ID(),val(1)));
-}

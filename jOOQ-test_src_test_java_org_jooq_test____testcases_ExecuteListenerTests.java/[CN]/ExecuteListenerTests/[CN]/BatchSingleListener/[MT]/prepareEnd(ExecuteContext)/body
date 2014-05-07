@@ -1,7 +1,0 @@
-{
-  prepareEnd=++callbackCount;
-  checkBase(ctx);
-  checkSQL(ctx,true);
-  checkStatement(ctx,false);
-  checkStatement(ctx,true);
-}

@@ -1,4 +1,0 @@
-{
-  Record record=create().select().from(TBookToBookStore().divideBy(TBookStore()).on(TBookToBookStore_BOOK_STORE_NAME().equal(TBookStore_NAME())).returning(TBookToBookStore_BOOK_ID()).as("division","x")).fetchOne();
-  assertEquals(3,record.getValue("x"));
-}

@@ -1,5 +1,0 @@
-{
-  assertEquals(names.length == 3 ? 5 : 4,create().fetch(TAuthor()).size());
-  assertEquals(names.length == 3 ? Arrays.asList(8,9,10) : Arrays.asList(8,9),create().select(TAuthor_ID()).from(TAuthor()).where(TAuthor_ID().in(8,9,10)).orderBy(TAuthor_ID()).fetch(TAuthor_ID()));
-  assertEquals(Arrays.asList(names),create().select(TAuthor_LAST_NAME()).from(TAuthor()).where(TAuthor_ID().in(8,9,10)).orderBy(TAuthor_ID()).fetch(TAuthor_LAST_NAME()));
-}

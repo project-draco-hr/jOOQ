@@ -1,5 +1,0 @@
-{
-  jOOQAbstractTest.reset=false;
-  assertEquals(1,create().insertInto(TBook()).set(newBook(5)).set(TBook_LANGUAGE_ID(),defaultValue(int.class)).execute());
-  assertEquals(1,(int)create().fetchOne(TBook(),TBook_ID().eq(5)).getValue(TBook_LANGUAGE_ID()));
-}

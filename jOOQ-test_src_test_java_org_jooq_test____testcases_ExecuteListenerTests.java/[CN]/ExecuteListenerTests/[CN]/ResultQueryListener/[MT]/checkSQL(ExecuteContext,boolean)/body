@@ -1,8 +1,0 @@
-{
-  assertTrue(ctx.batchSQL()[0].toLowerCase().contains("select"));
-  assertTrue(ctx.sql().toLowerCase().contains("select"));
-  assertEquals(ctx.sql(),ctx.batchSQL()[0]);
-  if (patched) {
-    assertTrue(ctx.sql().toLowerCase().contains("as my_field"));
-  }
-}

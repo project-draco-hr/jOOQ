@@ -1,6 +1,0 @@
-{
-  Result<Record2<Integer,String>> booksResult=create().select(TBook_ID(),TBook_TITLE()).from(TBook()).orderBy(TBook_ID()).fetch();
-  Table<Record2<Integer,String>> booksTable=table(booksResult);
-  assertEquals(booksResult,create().selectFrom(booksTable).fetch());
-  assertEquals(BOOK_IDS,create().select(booksTable.field(TBook_ID())).from(booksTable).fetch(TBook_ID()));
-}

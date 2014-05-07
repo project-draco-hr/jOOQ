@@ -1,6 +1,0 @@
-{
-  Loader<A> loader;
-  String csv="\"ID\",\"First Qualifier\",\"Last Qualifier\"\r" + "8,Hermann,Hesse\n" + "1,\"Max\",Frisch\n"+ "2,Friedrich,D??rrenmatt";
-  loader=create().loadInto(TAuthor()).commitAll().onDuplicateKeyIgnore().onErrorAbort().loadCSV(csv).fields(TAuthor_ID(),null,TAuthor_LAST_NAME()).execute();
-  return loader;
-}

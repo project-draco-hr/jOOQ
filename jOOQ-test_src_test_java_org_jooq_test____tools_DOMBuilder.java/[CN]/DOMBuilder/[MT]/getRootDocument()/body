@@ -1,3 +1,0 @@
-{
-  return (null != m_docFrag) ? (Node)m_docFrag : (Node)m_doc;
-}

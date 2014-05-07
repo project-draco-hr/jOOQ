@@ -1,5 +1,5 @@
 {
-  assumeFamilyNotIn(CUBRID,MARIADB,MYSQL);
+  assumeFamilyNotIn(CUBRID,H2,MARIADB,MYSQL);
   Result<Record> result1=create().with("a").as(select(val(1).as("x"),val("a").as("y"))).select().from("a").fetch();
   assertEquals(1,result1.size());
   assertEquals(2,result1.fields().length);

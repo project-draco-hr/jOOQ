@@ -1,5 +1,0 @@
-{
-  Calendar cal=Calendar.getInstance();
-  cal.setTimeInMillis(-3600000 + offset);
-  return cal;
-}

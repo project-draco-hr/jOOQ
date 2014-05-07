@@ -1,6 +1,0 @@
-{
-  Result<Record> result=create().select().from(table(select(TBook_ID(),TAuthor_ID()).from(TBook()).join(TAuthor()).on(TBook_AUTHOR_ID().eq(TAuthor_ID()))).as("t","a","b")).orderBy(fieldByName("a")).fetch();
-  assertEquals(4,result.size());
-  assertEquals(BOOK_IDS,result.getValues("a"));
-  assertEquals(BOOK_AUTHOR_IDS,result.getValues("b"));
-}

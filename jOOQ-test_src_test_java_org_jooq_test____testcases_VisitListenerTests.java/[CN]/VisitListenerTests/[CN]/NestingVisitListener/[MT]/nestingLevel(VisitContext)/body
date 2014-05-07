@@ -1,3 +1,0 @@
-{
-  return nestingLevel(context,0);
-}

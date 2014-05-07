@@ -1,5 +1,0 @@
-{
-  assertNull(author.getValue(TAuthor_ID()));
-  assertEquals(object.firstName,author.getValue(TAuthor_FIRST_NAME()));
-  assertEquals(object.lastName,author.getValue(TAuthor_LAST_NAME()));
-}

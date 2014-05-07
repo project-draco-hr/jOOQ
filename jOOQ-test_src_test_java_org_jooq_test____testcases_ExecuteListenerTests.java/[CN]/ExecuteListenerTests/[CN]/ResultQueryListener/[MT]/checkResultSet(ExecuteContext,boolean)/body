@@ -1,3 +1,0 @@
-{
-  checkResultSet(ctx,patched,false);
-}

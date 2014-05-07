@@ -1,3 +1,0 @@
-{
-  return subselectConditionMap(context).get(nestingLevel(context));
-}

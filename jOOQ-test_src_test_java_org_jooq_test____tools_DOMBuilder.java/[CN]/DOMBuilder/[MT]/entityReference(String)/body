@@ -1,3 +1,0 @@
-{
-  append(m_doc.createEntityReference(name));
-}

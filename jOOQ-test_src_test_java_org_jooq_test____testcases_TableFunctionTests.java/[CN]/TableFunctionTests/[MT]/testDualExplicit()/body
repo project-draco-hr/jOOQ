@@ -1,4 +1,0 @@
-{
-  assertEquals("X",create().selectFrom(dual()).fetchOne(0,String.class));
-  assertEquals(asList("X","X","X"),asList(create().select().from(dual().as("a"),dual().as("b"),dual().as("c")).fetchOne().intoArray()));
-}

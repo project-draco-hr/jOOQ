@@ -1,3 +1,0 @@
-{
-  return u == null ? null : u == 1;
-}

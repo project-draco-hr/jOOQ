@@ -1,3 +1,0 @@
-{
-  return create().loadInto(TAuthor()).loadCSV("").fields(TAuthor_ID()).execute();
-}

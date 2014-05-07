@@ -1,3 +1,0 @@
-{
-  super(String.class,Boolean_YN_UC.class);
-}

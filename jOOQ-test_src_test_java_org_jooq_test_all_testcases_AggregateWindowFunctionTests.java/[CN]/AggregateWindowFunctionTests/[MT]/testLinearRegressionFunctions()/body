@@ -1,22 +1,11 @@
 {
-switch (dialect().family()) {
-case CUBRID:
-case DERBY:
-case FIREBIRD:
-case H2:
-case HSQLDB:
-case MARIADB:
-case MYSQL:
-case SQLITE:
-    log.info("SKIPPING","Skipping linear regression function tests");
-  return;
-}
-Record record=create().select(regrAvgX(TBook_ID(),TBook_AUTHOR_ID()),regrAvgY(TBook_ID(),TBook_AUTHOR_ID()),regrCount(TBook_ID(),TBook_AUTHOR_ID()),regrIntercept(TBook_ID(),TBook_AUTHOR_ID()),regrR2(TBook_ID(),TBook_AUTHOR_ID()),regrSlope(TBook_ID(),TBook_AUTHOR_ID()),regrSXX(TBook_ID(),TBook_AUTHOR_ID()),regrSXY(TBook_ID(),TBook_AUTHOR_ID()),regrSYY(TBook_ID(),TBook_AUTHOR_ID())).from(TBook()).fetchOne();
-List<String> values=Arrays.asList("1.5","2.5","4.0","-0.5","0.8","2.0","1.0","2.0","5.0");
-assertEquals(values,Arrays.asList(roundStrings(1,record.into(String[].class))));
-Result<Record9<BigDecimal,BigDecimal,BigDecimal,BigDecimal,BigDecimal,BigDecimal,BigDecimal,BigDecimal,BigDecimal>> result=create().select(regrAvgX(TBook_ID(),TBook_AUTHOR_ID()).over(),regrAvgY(TBook_ID(),TBook_AUTHOR_ID()).over(),regrCount(TBook_ID(),TBook_AUTHOR_ID()).over(),regrIntercept(TBook_ID(),TBook_AUTHOR_ID()).over(),regrR2(TBook_ID(),TBook_AUTHOR_ID()).over(),regrSlope(TBook_ID(),TBook_AUTHOR_ID()).over(),regrSXX(TBook_ID(),TBook_AUTHOR_ID()).over(),regrSXY(TBook_ID(),TBook_AUTHOR_ID()).over(),regrSYY(TBook_ID(),TBook_AUTHOR_ID()).over()).from(TBook()).orderBy(TBook_ID()).fetch();
-assertEquals(values,Arrays.asList(roundStrings(1,result.get(0).into(String[].class))));
-assertEquals(values,Arrays.asList(roundStrings(1,result.get(1).into(String[].class))));
-assertEquals(values,Arrays.asList(roundStrings(1,result.get(2).into(String[].class))));
-assertEquals(values,Arrays.asList(roundStrings(1,result.get(3).into(String[].class))));
+  assumeFamilyNotIn(CUBRID,DERBY,FIREBIRD,H2,HSQLDB,MARIADB,MYSQL,SQLITE);
+  Record record=create().select(regrAvgX(TBook_ID(),TBook_AUTHOR_ID()),regrAvgY(TBook_ID(),TBook_AUTHOR_ID()),regrCount(TBook_ID(),TBook_AUTHOR_ID()),regrIntercept(TBook_ID(),TBook_AUTHOR_ID()),regrR2(TBook_ID(),TBook_AUTHOR_ID()),regrSlope(TBook_ID(),TBook_AUTHOR_ID()),regrSXX(TBook_ID(),TBook_AUTHOR_ID()),regrSXY(TBook_ID(),TBook_AUTHOR_ID()),regrSYY(TBook_ID(),TBook_AUTHOR_ID())).from(TBook()).fetchOne();
+  List<String> values=Arrays.asList("1.5","2.5","4.0","-0.5","0.8","2.0","1.0","2.0","5.0");
+  assertEquals(values,Arrays.asList(roundStrings(1,record.into(String[].class))));
+  Result<Record9<BigDecimal,BigDecimal,BigDecimal,BigDecimal,BigDecimal,BigDecimal,BigDecimal,BigDecimal,BigDecimal>> result=create().select(regrAvgX(TBook_ID(),TBook_AUTHOR_ID()).over(),regrAvgY(TBook_ID(),TBook_AUTHOR_ID()).over(),regrCount(TBook_ID(),TBook_AUTHOR_ID()).over(),regrIntercept(TBook_ID(),TBook_AUTHOR_ID()).over(),regrR2(TBook_ID(),TBook_AUTHOR_ID()).over(),regrSlope(TBook_ID(),TBook_AUTHOR_ID()).over(),regrSXX(TBook_ID(),TBook_AUTHOR_ID()).over(),regrSXY(TBook_ID(),TBook_AUTHOR_ID()).over(),regrSYY(TBook_ID(),TBook_AUTHOR_ID()).over()).from(TBook()).orderBy(TBook_ID()).fetch();
+  assertEquals(values,Arrays.asList(roundStrings(1,result.get(0).into(String[].class))));
+  assertEquals(values,Arrays.asList(roundStrings(1,result.get(1).into(String[].class))));
+  assertEquals(values,Arrays.asList(roundStrings(1,result.get(2).into(String[].class))));
+  assertEquals(values,Arrays.asList(roundStrings(1,result.get(3).into(String[].class))));
 }

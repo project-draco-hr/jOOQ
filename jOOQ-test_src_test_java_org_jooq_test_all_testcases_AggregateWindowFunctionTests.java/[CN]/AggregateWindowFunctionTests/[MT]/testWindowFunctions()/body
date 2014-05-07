@@ -1,18 +1,11 @@
 {
-switch (dialect()) {
-case FIREBIRD:
-case MARIADB:
-case MYSQL:
-case SQLITE:
-    log.info("SKIPPING","Window function tests");
-  return;
-}
+  assumeDialectNotIn(FIREBIRD,MARIADB,MYSQL,SQLITE);
 switch (dialect()) {
 case DERBY:
 case H2:
 case HSQLDB:
-List<Integer> rows=create().select(rowNumber().over()).from(TBook()).orderBy(TBook_ID()).fetch(0,Integer.class);
-assertEquals(asList(1,2,3,4),rows);
+    List<Integer> rows=create().select(rowNumber().over()).from(TBook()).orderBy(TBook_ID()).fetch(0,Integer.class);
+  assertEquals(asList(1,2,3,4),rows);
 log.info("SKIPPING","Advanced window function tests");
 return;
 }

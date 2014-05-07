@@ -1,6 +1,0 @@
-{
-  prepareStart.add(++callbackCount);
-  checkBase(ctx);
-  checkStatement(ctx,false);
-  checkSQL(ctx,true);
-}

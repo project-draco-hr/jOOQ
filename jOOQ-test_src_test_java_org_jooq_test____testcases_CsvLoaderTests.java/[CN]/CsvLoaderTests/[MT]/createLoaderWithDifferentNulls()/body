@@ -1,5 +1,0 @@
-{
-  String csv="####Some Data####\n" + "\"ID\",\"Last Qualifier\"\r" + "3,\"\",Hesse\n"+ "4,,Frisch";
-  Loader<A> execute=create().loadInto(TAuthor()).loadCSV(csv).fields(TAuthor_ID(),TAuthor_FIRST_NAME(),TAuthor_LAST_NAME()).quote('"').separator(',').ignoreRows(2).execute();
-  return execute;
-}
