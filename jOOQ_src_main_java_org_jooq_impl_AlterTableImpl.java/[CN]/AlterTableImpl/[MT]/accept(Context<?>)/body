@@ -1,4 +1,5 @@
 {
+  SQLDialect family=ctx.configuration().dialect().family();
   ctx.start(ALTER_TABLE_TABLE).keyword("alter table").sql(" ").visit(table).end(ALTER_TABLE_TABLE);
   if (add != null) {
     ctx.start(ALTER_TABLE_ADD).sql(" ").keyword("add").sql(" ").qualify(false).visit(add).sql(" ").qualify(true).keyword(addType.getCastTypeName(ctx.configuration()));
@@ -10,7 +11,13 @@
  else   if (alter != null) {
     ctx.start(ALTER_TABLE_ALTER).sql(" ").keyword("alter").sql(" ").qualify(false).visit(alter).qualify(true);
     if (alterType != null) {
+      if (asList(POSTGRES).contains(family)) {
+        ctx.sql(" ").keyword("type");
+      }
       ctx.sql(" ").keyword(alterType.getCastTypeName(ctx.configuration()));
+      if (!alterType.nullable()) {
+        ctx.sql(" ").keyword("not null");
+      }
     }
  else     if (alterDefault != null) {
       ctx.start(ALTER_TABLE_ALTER_DEFAULT).sql(" ").keyword("set default").sql(" ").visit(alterDefault).end(ALTER_TABLE_ALTER_DEFAULT);

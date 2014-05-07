@@ -1,8 +1,8 @@
 {
   try {
-    create().execute("create table t (a int, b varchar)");
+    create().execute("create table t (a int, b " + SQLDataType.VARCHAR.length(10).getCastTypeName(create().configuration()) + ")");
     create().alterTable("t").alter("b").defaultValue("empty").execute();
-    create().execute("insert into t (a) values (1)");
+    create().insertInto(table("t"),field("a")).values(1).execute();
     assertEquals("empty",create().fetchOne("select b from t").getValue(0));
   }
   finally {
