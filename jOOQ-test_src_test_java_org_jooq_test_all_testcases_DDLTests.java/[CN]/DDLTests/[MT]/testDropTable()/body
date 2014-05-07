@@ -1,7 +1,7 @@
 {
-  create().execute("create table t (a int, b int, c int)");
-  create().insertInto(table("t"),field("a"),field("b"),field("c")).values(1,2,3).execute();
-  assertEquals(asList(1,2,3),asList(create().fetchOne(table("t")).intoArray()));
+  create().execute("create table t (a " + varchar() + ", b "+ varchar()+ ", c "+ varchar()+ ")");
+  create().insertInto(table("t"),field("a"),field("b"),field("c")).values("1","2","3").execute();
+  assertEquals(asList("1","2","3"),asList(create().fetchOne(table("t")).intoArray()));
   create().dropTable("t").execute();
   try {
     create().fetch(table("t"));

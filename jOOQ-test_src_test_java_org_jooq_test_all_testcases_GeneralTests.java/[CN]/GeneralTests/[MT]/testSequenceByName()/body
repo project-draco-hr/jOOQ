@@ -1,6 +1,4 @@
 {
-  Sequence<? extends Number> sequence=SAuthorID();
-  if (sequence != null) {
-    testSequences0(DSL.sequenceByName(sequence.getSchema().getName(),sequence.getName()));
-  }
+  assumeNotNull(SAuthorID());
+  testSequences0(DSL.sequenceByName(SAuthorID().getSchema().getName(),SAuthorID().getName()));
 }

@@ -1,8 +1,9 @@
 {
+  assumeFamilyNotIn(FIREBIRD);
   try {
     create().execute("create table t (a int)");
-    create().insertInto(table("t"),field("a")).values(1).execute();
     create().alterTable("t").alter("a").set(SQLDataType.VARCHAR).execute();
+    create().insertInto(table("t"),field("a")).values("1").execute();
     assertEquals("1",create().fetchOne("select * from t").getValue(0));
   }
   finally {

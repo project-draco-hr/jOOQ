@@ -9,26 +9,46 @@
     ctx.end(ALTER_TABLE_ADD);
   }
  else   if (alter != null) {
-    ctx.start(ALTER_TABLE_ALTER).sql(" ").keyword("alter").sql(" ").qualify(false).visit(alter).qualify(true);
-    if (alterType != null) {
-      if (asList(POSTGRES).contains(family)) {
-        ctx.sql(" ").keyword("type");
-      }
-      ctx.sql(" ").keyword(alterType.getCastTypeName(ctx.configuration()));
-      if (!alterType.nullable()) {
-        ctx.sql(" ").keyword("not null");
-      }
-    }
- else     if (alterDefault != null) {
-      ctx.start(ALTER_TABLE_ALTER_DEFAULT).sql(" ").keyword("set default").sql(" ").visit(alterDefault).end(ALTER_TABLE_ALTER_DEFAULT);
-    }
-    ctx.end(ALTER_TABLE_ALTER);
-  }
- else   if (drop != null) {
-    ctx.start(ALTER_TABLE_DROP).sql(" ").keyword("drop").sql(" ").qualify(false).visit(drop).qualify(true);
-    if (dropCascade) {
-      ctx.sql(" ").keyword("cascade");
-    }
-    ctx.end(ALTER_TABLE_DROP);
-  }
+    ctx.start(ALTER_TABLE_ALTER);
+switch (family) {
+default :
+      ctx.sql(" ").keyword("alter");
+    break;
+}
+ctx.sql(" ").qualify(false).visit(alter).qualify(true);
+if (alterType != null) {
+switch (family) {
+case POSTGRES:
+    ctx.sql(" ").keyword("type");
+  break;
+}
+ctx.sql(" ").keyword(alterType.getCastTypeName(ctx.configuration()));
+if (!alterType.nullable()) {
+ctx.sql(" ").keyword("not null");
+}
+}
+ else if (alterDefault != null) {
+ctx.start(ALTER_TABLE_ALTER_DEFAULT);
+switch (family) {
+default :
+ctx.sql(" ").keyword("set default");
+break;
+}
+ctx.sql(" ").visit(alterDefault).end(ALTER_TABLE_ALTER_DEFAULT);
+}
+ctx.end(ALTER_TABLE_ALTER);
+}
+ else if (drop != null) {
+ctx.start(ALTER_TABLE_DROP);
+switch (family) {
+default :
+ctx.sql(" ").keyword("drop");
+break;
+}
+ctx.sql(" ").qualify(false).visit(drop).qualify(true);
+if (dropCascade) {
+ctx.sql(" ").keyword("cascade");
+}
+ctx.end(ALTER_TABLE_DROP);
+}
 }

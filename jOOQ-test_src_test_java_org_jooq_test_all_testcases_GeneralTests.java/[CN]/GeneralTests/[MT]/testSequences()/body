@@ -1,3 +1,4 @@
 {
+  assumeNotNull(SAuthorID());
   testSequences0(SAuthorID());
 }
