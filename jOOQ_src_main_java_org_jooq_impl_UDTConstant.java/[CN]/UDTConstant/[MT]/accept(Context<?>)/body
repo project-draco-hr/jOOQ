@@ -1,12 +1,4 @@
 {
-switch (ctx.configuration().dialect().family()) {
-case POSTGRES:
-{
-      toSQLInline(ctx);
-      return;
-    }
-default :
-  toSQLInline(ctx);
-return;
-}
+  if (ctx instanceof RenderContext)   toSQL((RenderContext)ctx);
+ else   bind((BindContext)ctx);
 }

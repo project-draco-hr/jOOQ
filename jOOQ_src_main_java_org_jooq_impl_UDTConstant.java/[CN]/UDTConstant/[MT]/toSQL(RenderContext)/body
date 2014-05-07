@@ -1,0 +1,12 @@
+{
+switch (context.configuration().dialect().family()) {
+case POSTGRES:
+{
+      toSQLInline(context);
+      return;
+    }
+default :
+  toSQLInline(context);
+return;
+}
+}
