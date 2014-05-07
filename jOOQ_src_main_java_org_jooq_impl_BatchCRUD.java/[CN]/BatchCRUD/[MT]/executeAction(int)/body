@@ -1,16 +1,16 @@
 {
 switch (action) {
 case STORE:
-    records[i].store();
+    ((UpdatableRecord<?>)records[i]).store();
   break;
 case INSERT:
 records[i].insert();
 break;
 case UPDATE:
-records[i].update();
+((UpdatableRecord<?>)records[i]).update();
 break;
 case DELETE:
-records[i].delete();
+((UpdatableRecord<?>)records[i]).delete();
 break;
 }
 }

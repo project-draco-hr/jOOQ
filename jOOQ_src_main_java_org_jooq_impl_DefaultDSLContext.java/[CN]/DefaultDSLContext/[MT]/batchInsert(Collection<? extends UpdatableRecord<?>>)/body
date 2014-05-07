@@ -1,3 +1,0 @@
-{
-  return batchInsert(records.toArray(new UpdatableRecord[records.size()]));
-}
