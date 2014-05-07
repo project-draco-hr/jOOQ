@@ -1,4 +1,5 @@
 {
+  assumeFamilyNotIn(FIREBIRD);
   jOOQAbstractTest.reset=false;
   assertEquals(4,create().update(TBook()).set(TBook_LANGUAGE_ID(),defaultValue(int.class)).execute());
   assertEquals(nCopies(4,1),create().fetch(TBook()).getValues(TBook_LANGUAGE_ID()));
