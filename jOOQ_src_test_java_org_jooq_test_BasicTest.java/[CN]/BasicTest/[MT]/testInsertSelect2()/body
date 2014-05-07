@@ -2,7 +2,7 @@
   Insert<Table1Record> q=create.insertInto(TABLE1).select(create.selectQuery());
   assertEquals("insert into `TABLE1` (`ID1`, `NAME1`, `DATE1`) select 1 from dual",r_refI().render(q));
   assertEquals("insert into `TABLE1` (`ID1`, `NAME1`, `DATE1`) select 1 from dual",r_ref().render(q));
-  q=create.insertInto(TABLE1,FIELD_ID1).select(selectOne());
+  q=create.insertInto(TABLE1,FIELD_ID1).select(select(one()));
   assertEquals("insert into `TABLE1` (`ID1`) select 1 from dual",r_refI().render(q));
   assertEquals("insert into `TABLE1` (`ID1`) select 1 from dual",r_ref().render(q));
   q=create.insertInto(TABLE1,FIELD_ID1,FIELD_NAME1).select(select(one(),inline("a")));
