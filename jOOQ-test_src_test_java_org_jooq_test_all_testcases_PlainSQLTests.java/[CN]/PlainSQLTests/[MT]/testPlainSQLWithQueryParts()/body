@@ -1,0 +1,12 @@
+{
+  String sql="{select} {0}, a.{1} {from} {2} a {where} {3} = {4}";
+  QueryPart[] parts={val("a"),name(TAuthor_LAST_NAME().getName()),name(TAuthor().getName()),name(TAuthor_ID().getName()),inline(1)};
+  Record author=create().select(val("a"),TAuthor_LAST_NAME()).from(TAuthor()).where(TAuthor_ID().equal(1)).fetchOne();
+  Record record=create().fetchOne(sql,parts);
+  Result<Record> result=create().fetch(sql,parts);
+  Cursor<Record> cursor=create().fetchLazy(sql,parts);
+  assertEquals(author,record);
+  assertEquals(author,result.get(0));
+  assertEquals(author,cursor.fetchOne());
+  cursor.close();
+}

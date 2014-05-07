@@ -1,0 +1,6 @@
+{
+  DSLContext create=create();
+  for (int i=0; i < REPETITIONS_NEW_RECORD; i++) {
+    create.newRecord(TBook());
+  }
+}

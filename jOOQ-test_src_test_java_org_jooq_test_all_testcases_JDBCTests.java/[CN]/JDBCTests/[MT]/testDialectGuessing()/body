@@ -1,0 +1,15 @@
+{
+  if (dialect() == MARIADB) {
+    log.info("SKIPPING","Skipping dialect guessing test");
+    return;
+  }
+  ConnectionProvider cp=create().configuration().connectionProvider();
+  Connection c=cp.acquire();
+  try {
+    assertEquals(create().configuration().dialect().family(),JDBCUtils.dialect(getConnection()).family());
+    assertEquals(create().configuration().dialect().family(),JDBCUtils.dialect(c).family());
+  }
+  finally {
+    cp.release(c);
+  }
+}

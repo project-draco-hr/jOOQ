@@ -1,0 +1,17 @@
+{
+  jOOQAbstractTest.reset=false;
+  assertEquals(1,create().insertInto(TAuthor(),(Field<String>)(Field)TAuthor_ID(),TAuthor_LAST_NAME(),(Field<String>)(Field)TAuthor_DATE_OF_BIRTH(),(Field<BigDecimal>)(Field)TAuthor_YEAR_OF_BIRTH()).values("5","Smith",zeroDate(),new BigDecimal("1980")).execute());
+  A author1=create().selectFrom(TAuthor()).where(TAuthor_ID().equal(5)).fetchOne();
+  assertNotNull(author1);
+  assertEquals(5,(int)author1.getValue(TAuthor_ID()));
+  assertEquals("Smith",author1.getValue(TAuthor_LAST_NAME()));
+  if (dialect() != SQLITE)   assertEquals(Date.valueOf(zeroDate()),author1.getValue(TAuthor_DATE_OF_BIRTH()));
+  assertEquals(1980,(int)author1.getValue(TAuthor_YEAR_OF_BIRTH()));
+  assertEquals(1,create().insertInto(TAuthor()).values("37","Erich","K??stner",null,null,null).execute());
+  A author2=create().selectFrom(TAuthor()).where(TAuthor_ID().equal(37)).fetchOne();
+  assertNotNull(author2);
+  assertEquals(37,(int)author2.getValue(TAuthor_ID()));
+  assertEquals("Erich",author2.getValue(TAuthor_FIRST_NAME()));
+  assertEquals("K??stner",author2.getValue(TAuthor_LAST_NAME()));
+  if (false)   assertEquals(1,create().insertInto(TAuthor()).values(create().select(val(38)),val("Alfred"),inline("Hitchcock"),val(null),inline((Object)null),create().select(val(null)).asField()).execute());
+}

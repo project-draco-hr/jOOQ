@@ -1,0 +1,45 @@
+{
+  if (cRoutines() == null) {
+    log.info("SKIPPING","ARRAY procedure test (no procedure support)");
+    return;
+  }
+  if (TArrays() == null) {
+    log.info("SKIPPING","ARRAY procedure test (no array support)");
+    return;
+  }
+  jOOQAbstractTest.reset=false;
+  if (TArrays_STRING() != null) {
+    if (supportsOUTParameters()) {
+      assertEquals(null,invoke(cRoutines(),"pArrays1",create().configuration(),null));
+      assertEquals(null,invoke(cRoutines(),"pArrays2",create().configuration(),null));
+      assertEquals(null,invoke(cRoutines(),"pArrays3",create().configuration(),null));
+    }
+    assertEquals(null,invoke(cRoutines(),"fArrays1",create().configuration(),null));
+    assertEquals(null,invoke(cRoutines(),"fArrays2",create().configuration(),null));
+    assertEquals(null,invoke(cRoutines(),"fArrays3",create().configuration(),null));
+    if (supportsOUTParameters()) {
+      assertEquals(Arrays.asList(new Integer[0]),Arrays.asList((Integer[])invoke(cRoutines(),"pArrays1",create().configuration(),new Integer[0])));
+      assertEquals(Arrays.asList(new Long[0]),Arrays.asList((Long[])invoke(cRoutines(),"pArrays2",create().configuration(),new Long[0])));
+      assertEquals(Arrays.asList(new String[0]),Arrays.asList((String[])invoke(cRoutines(),"pArrays3",create().configuration(),new String[0])));
+    }
+    assertEquals(Arrays.asList(new Integer[0]),Arrays.asList((Object[])invoke(cRoutines(),"fArrays1",create().configuration(),new Integer[0])));
+    assertEquals(Arrays.asList(new Long[0]),Arrays.asList((Object[])invoke(cRoutines(),"fArrays2",create().configuration(),new Long[0])));
+    assertEquals(Arrays.asList(new String[0]),Arrays.asList((Object[])invoke(cRoutines(),"fArrays3",create().configuration(),new String[0])));
+    if (supportsOUTParameters()) {
+      assertEquals(Arrays.asList((Integer)null),Arrays.asList((Integer[])invoke(cRoutines(),"pArrays1",create().configuration(),new Integer[]{null})));
+      assertEquals(Arrays.asList((Long)null),Arrays.asList((Long[])invoke(cRoutines(),"pArrays2",create().configuration(),new Long[]{null})));
+      assertEquals(Arrays.asList((String)null),Arrays.asList((String[])invoke(cRoutines(),"pArrays3",create().configuration(),new String[]{null})));
+    }
+    assertEquals(Arrays.asList((Integer)null),Arrays.asList((Object[])invoke(cRoutines(),"fArrays1",create().configuration(),new Integer[]{null})));
+    assertEquals(Arrays.asList((Long)null),Arrays.asList((Object[])invoke(cRoutines(),"fArrays2",create().configuration(),new Long[]{null})));
+    assertEquals(Arrays.asList((String)null),Arrays.asList((Object[])invoke(cRoutines(),"fArrays3",create().configuration(),new String[]{null})));
+    if (supportsOUTParameters()) {
+      assertEquals(Arrays.asList(1,2),Arrays.asList((Integer[])invoke(cRoutines(),"pArrays1",create().configuration(),new Integer[]{1,2})));
+      assertEquals(Arrays.asList(1L,2L),Arrays.asList((Long[])invoke(cRoutines(),"pArrays2",create().configuration(),new Long[]{1L,2L})));
+      assertEquals(Arrays.asList("1","2"),Arrays.asList((String[])invoke(cRoutines(),"pArrays3",create().configuration(),new String[]{"1","2"})));
+    }
+    assertEquals(Arrays.asList(1,2),Arrays.asList((Object[])invoke(cRoutines(),"fArrays1",create().configuration(),new Integer[]{1,2})));
+    assertEquals(Arrays.asList(1L,2L),Arrays.asList((Object[])invoke(cRoutines(),"fArrays2",create().configuration(),new Long[]{1L,2L})));
+    assertEquals(Arrays.asList("1","2"),Arrays.asList((Object[])invoke(cRoutines(),"fArrays3",create().configuration(),new String[]{"1","2"})));
+  }
+}

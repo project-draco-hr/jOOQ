@@ -1,0 +1,5 @@
+{
+  if (ctx.sql().matches("^(?i:(UPDATE|DELETE)(?!.* WHERE ).*)$")) {
+    throw new DELETEorUPDATEwithoutWHEREException();
+  }
+}

@@ -1,0 +1,4 @@
+{
+  assertEquals(1,(int)create().selectOne().from(TBook()).groupBy().fetchOne(0,Integer.class));
+  assertEquals(1,(int)create().selectOne().from(TBook()).groupBy().having("1 = 1").fetchOne(0,Integer.class));
+}

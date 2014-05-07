@@ -1,0 +1,5 @@
+{
+  String json="{\"fields\":[{\"name\":\"ID\",\"type\":\"INTEGER\"},{\"name\":\"FIRST_NAME\",\"type\":\"VARCHAR\"},{\"name\":\"LAST_NAME\",\"type\":\"VARCHAR\"}]," + "\"records\":[[3,\"\",\"Hesse\"],[4,\"\",\"Frisch\"]]}";
+  Loader<A> execute=create().loadInto(TAuthor()).loadJSON(json).fields(TAuthor_ID(),TAuthor_FIRST_NAME(),TAuthor_LAST_NAME()).execute();
+  return execute;
+}

@@ -1,0 +1,21 @@
+{
+  DSLContext pretty=DSL.using(new DefaultConfiguration().set(ctx.configuration().dialect()).set(SettingsTools.clone(ctx.configuration().settings()).withRenderFormatted(true)).set(ctx.configuration().visitListenerProviders()));
+  DSLContext normal=DSL.using(new DefaultConfiguration().set(ctx.configuration().dialect()).set(ctx.configuration().visitListenerProviders()));
+  String n="" + count.incrementAndGet();
+  System.out.println();
+  System.out.println("Executing #" + n);
+  System.out.println("-----------" + StringUtils.leftPad("",n.length(),'-'));
+  if (ctx.query() != null) {
+    System.out.println(normal.renderInlined(ctx.query()));
+    System.out.println();
+    System.out.println(pretty.renderContext().paramType(INLINED).render(ctx.query()));
+  }
+ else   if (ctx.routine() != null) {
+    System.out.println(normal.renderInlined(ctx.routine()));
+    System.out.println();
+    System.out.println(pretty.renderContext().paramType(INLINED).render(ctx.routine()));
+  }
+ else   if (!StringUtils.isBlank(ctx.sql())) {
+    System.out.println(ctx.sql());
+  }
+}

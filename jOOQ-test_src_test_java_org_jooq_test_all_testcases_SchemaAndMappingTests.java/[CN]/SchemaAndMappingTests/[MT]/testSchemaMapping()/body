@@ -1,0 +1,65 @@
+{
+switch (dialect()) {
+case FIREBIRD:
+case SQLITE:
+    log.info("SKIPPING","SchemaMapping tests");
+  return;
+}
+Settings settings=new Settings().withRenderMapping(new RenderMapping().withSchemata(new MappedSchema().withInput(TAuthor().getSchema().getName()).withOutput(TAuthor().getSchema().getName()).withTables(new MappedTable().withInput(TAuthor().getName()).withOutput(TAuthor().getName()),new MappedTable().withInput(TBook().getName()).withOutput(TBook().getName()))));
+Select<Record1<String>> query=create(settings).select(TBook_TITLE()).from(TAuthor()).join(TBook()).on(TAuthor_ID().equal(TBook_AUTHOR_ID())).orderBy(TBook_ID().asc());
+Result<Record1<String>> result=query.fetch();
+assertEquals("1984",result.getValue(0,TBook_TITLE()));
+assertEquals("Animal Farm",result.getValue(1,TBook_TITLE()));
+assertEquals("O Alquimista",result.getValue(2,TBook_TITLE()));
+assertEquals("Brida",result.getValue(3,TBook_TITLE()));
+String sql=query.getSQL();
+log.info("Executing",sql);
+assertEquals(result,create().fetch(sql,query.getBindValues().toArray()));
+switch (dialect().family()) {
+case CUBRID:
+case DERBY:
+case H2:
+case HSQLDB:
+case MARIADB:
+case POSTGRES:
+case SQLITE:
+log.info("SKIPPING","Schema mapping test");
+return;
+case MYSQL:
+if (delegate.getClass() == MySQLTestSchemaRewrite.class) {
+log.info("SKIPPING","Schema mapping test");
+return;
+}
+}
+settings=new Settings().withRenderMapping(new RenderMapping().withSchemata(new MappedSchema().withInput(TAuthor().getSchema().getName()).withOutput(TAuthor().getSchema().getName() + "2")));
+Select<Record1<String>> q1=create(settings).select(TBook_TITLE()).from(TAuthor()).join(TBook()).on(TAuthor_ID().equal(TBook_AUTHOR_ID())).orderBy(TBook_ID().asc());
+assertTrue(create(settings).render(q1).contains(TAuthor().getSchema().getName() + "2"));
+assertTrue(q1.getSQL().contains(TAuthor().getSchema().getName() + "2"));
+assertEquals(create(settings).render(q1),q1.getSQL());
+Result<Record1<String>> result1=q1.fetch();
+assertEquals("1984",result1.getValue(0,TBook_TITLE()));
+assertEquals("Animal Farm",result1.getValue(1,TBook_TITLE()));
+assertEquals("O Alquimista",result1.getValue(2,TBook_TITLE()));
+assertEquals("Brida",result1.getValue(3,TBook_TITLE()));
+Field<Integer> f1=FOneField().cast(Integer.class);
+Field<Integer> f2=FNumberField(42).cast(Integer.class);
+Select<Record2<Integer,Integer>> q2=create(settings).select(f1,f2);
+assertTrue(create(settings).render(q2).contains(TAuthor().getSchema().getName() + "2"));
+assertTrue(q2.getSQL().contains(TAuthor().getSchema().getName() + "2"));
+assertEquals(create(settings).render(q2),q2.getSQL());
+Record record=q2.fetchOne();
+assertEquals(1,(int)record.getValue(f1));
+assertEquals(42,(int)record.getValue(f2));
+settings=new Settings().withRenderMapping(new RenderMapping().withSchemata(new MappedSchema().withInput(TAuthor().getSchema().getName()).withOutput(TAuthor().getSchema().getName() + "2").withTables(new MappedTable().withInput(TAuthor().getName()).withOutput(VAuthor().getName()),new MappedTable().withInput(TBook().getName()).withOutput(VBook().getName()))));
+Select<Record1<String>> q3=create(settings).select(TBook_TITLE()).from(TAuthor()).join(TBook()).on(TAuthor_ID().equal(TBook_AUTHOR_ID())).orderBy(TBook_ID().asc());
+assertTrue(create(settings).render(q3).contains(VAuthor().getName()));
+assertTrue(create(settings).render(q3).contains(VBook().getName()));
+assertTrue(create(settings).render(q3).contains("test2"));
+assertFalse(create(settings).render(q3).contains(TAuthor().getName()));
+assertFalse(create(settings).render(q3).contains(TBook().getName()));
+Result<Record1<String>> result3=q3.fetch();
+assertEquals("1984",result3.getValue(0,TBook_TITLE()));
+assertEquals("Animal Farm",result3.getValue(1,TBook_TITLE()));
+assertEquals("O Alquimista",result3.getValue(2,TBook_TITLE()));
+assertEquals("Brida",result3.getValue(3,TBook_TITLE()));
+}

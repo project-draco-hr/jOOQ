@@ -1,0 +1,47 @@
+{
+  if (dialect() != SQLDialect.HSQLDB) {
+    assertEquals(true,create().select(cast(1,Boolean.class)).fetchOne(0));
+    if (true) {
+      assertEquals(true,create().select(cast("1",Boolean.class)).fetchOne(0));
+    }
+  }
+  assertEquals(BigInteger.ONE,create().select(cast("1",BigInteger.class)).fetchOne(0));
+  assertEquals(BigInteger.ONE,create().select(cast(1,BigInteger.class)).fetchOne(0));
+{
+    assertEquals(0,BigDecimal.ONE.compareTo((BigDecimal)create().select(cast("1",BigDecimal.class)).fetchOne(0)));
+    assertEquals(0,BigDecimal.ONE.compareTo((BigDecimal)create().select(cast(1,BigDecimal.class)).fetchOne(0)));
+  }
+  assertEquals((byte)1,create().select(cast("1",Byte.class)).fetchOne(0));
+  assertEquals((short)1,create().select(cast("1",Short.class)).fetchOne(0));
+  assertEquals(1,create().select(cast("1",Integer.class)).fetchOne(0));
+  assertEquals(1L,create().select(cast("1",Long.class)).fetchOne(0));
+  assertEquals(1.0f,create().select(cast("1",Float.class)).fetchOne(0));
+  assertEquals(1.0,create().select(cast("1",Double.class)).fetchOne(0));
+  assertEquals("1",create().select(cast("1",String.class)).fetchOne(0));
+  assertEquals((byte)1,create().select(cast(1,Byte.class)).fetchOne(0));
+  assertEquals((short)1,create().select(cast(1,Short.class)).fetchOne(0));
+  assertEquals(1,create().select(cast(1,Integer.class)).fetchOne(0));
+  assertEquals(1L,create().select(cast(1,Long.class)).fetchOne(0));
+  assertEquals(1.0f,create().select(cast(1,Float.class)).fetchOne(0));
+  assertEquals(1.0,create().select(cast(1,Double.class)).fetchOne(0));
+  assertEquals("1",create().select(cast(1,String.class)).fetchOne(0));
+  if (true) {
+    assertEquals(null,create().select(castNull(Boolean.class)).fetchOne(0));
+  }
+  assertEquals(null,create().select(castNull(Byte.class)).fetchOne(0));
+  assertEquals(null,create().select(castNull(Short.class)).fetchOne(0));
+  assertEquals(null,create().select(castNull(Integer.class)).fetchOne(0));
+  assertEquals(null,create().select(castNull(Long.class)).fetchOne(0));
+  if (dialect() != SQLDialect.SQLITE) {
+    assertEquals(null,create().select(castNull(BigInteger.class)).fetchOne(0));
+    assertEquals(null,create().select(castNull(BigDecimal.class)).fetchOne(0));
+  }
+  assertEquals(null,create().select(castNull(Float.class)).fetchOne(0));
+  assertEquals(null,create().select(castNull(Double.class)).fetchOne(0));
+  assertEquals(null,create().select(castNull(String.class)).fetchOne(0));
+  assertEquals(null,create().select(castNull(Date.class)).fetchOne(0));
+  assertEquals(null,create().select(castNull(Time.class)).fetchOne(0));
+  assertEquals(null,create().select(castNull(Timestamp.class)).fetchOne(0));
+  assertEquals(1984,create().select(TBook_TITLE().cast(Integer.class)).from(TBook()).where(TBook_ID().equal(1)).fetch().getValue(0,0));
+  assertEquals(1984L,create().select(TBook_TITLE().cast(Long.class)).from(TBook()).where(TBook_ID().equal(1)).fetch().getValue(0,0));
+}

@@ -1,0 +1,6 @@
+{
+  if (context.renderContext() == null)   return;
+  if (context.clause() == SELECT || context.clause() == UPDATE || context.clause() == DELETE || context.clause() == INSERT) {
+    nestingLevel(context,1);
+  }
+}

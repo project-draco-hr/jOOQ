@@ -1,0 +1,11 @@
+{
+  renderEnd=++callbackCount;
+  checkBase(ctx);
+  checkSQL(ctx,false);
+  assertNull(ctx.statement());
+  assertNull(ctx.resultSet());
+  assertNull(ctx.record());
+  assertNull(ctx.result());
+  ctx.sql(ctx.sql().replaceFirst("(?i:from)","as my_field from"));
+  checkSQL(ctx,true);
+}

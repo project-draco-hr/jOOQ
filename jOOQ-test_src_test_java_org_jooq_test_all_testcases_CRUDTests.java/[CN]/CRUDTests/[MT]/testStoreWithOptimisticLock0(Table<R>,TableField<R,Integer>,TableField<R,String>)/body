@@ -1,0 +1,57 @@
+{
+  DSLContext create=create(new Settings().withExecuteWithOptimisticLocking(true));
+  R record1=create.fetchOne(table,id.equal(1));
+  assertEquals(0,record1.store());
+  assertEquals(0,record1.store());
+  record1.setValue(string,"New Title 1");
+  assertEquals(1,record1.store());
+  assertEquals("New Title 1",create.fetchOne(table,id.equal(1)).getValue(string));
+  R record2=create.fetchOne(table,id.equal(1));
+  R record3=create.fetchOne(table,id.equal(1));
+  record2.setValue(string,"New Title 2");
+  assertEquals(1,record2.store());
+  assertEquals("New Title 2",create.fetchOne(table,id.equal(1)).getValue(string));
+  assertEquals(0,record3.store());
+  record3.setValue(string,"New Title 3");
+  try {
+    record3.store();
+    fail();
+  }
+ catch (  DataChangedException expected) {
+  }
+  assertEquals("New Title 2",create.fetchOne(table,id.equal(1)).getValue(string));
+  record3.refresh();
+  record3.setValue(string,"New Title 3");
+  assertEquals(1,record3.store());
+  assertEquals("New Title 3",create.fetchOne(table,id.equal(1)).getValue(string));
+  R record4=create.fetchOne(table,id.equal(1));
+  R record5=create.fetchOne(table,id.equal(1));
+  assertEquals(1,record4.delete());
+  assertEquals(0,record5.store());
+  record5.setValue(string,"New Title 5");
+  try {
+    record5.store();
+    fail();
+  }
+ catch (  DataChangedException expected) {
+  }
+  assertEquals(1,record4.store());
+  record5.refresh();
+  record5.setValue(string,"New Title 5");
+  assertEquals(1,record5.store());
+  assertEquals("New Title 5",create.fetchOne(table,id.equal(1)).getValue(string));
+  try {
+    record4.delete();
+    fail();
+  }
+ catch (  DataChangedException expected) {
+  }
+  record4.refresh();
+  assertEquals(1,record4.delete());
+  try {
+    record5.delete();
+    fail();
+  }
+ catch (  DataChangedException expected) {
+  }
+}

@@ -1,0 +1,5 @@
+{
+  Record record=create().select(field(one().eq(zero())),field(one().eq(1))).fetchOne();
+  assertEquals(false,record.getValue(0));
+  assertEquals(true,record.getValue(1));
+}

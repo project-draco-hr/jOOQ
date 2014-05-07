@@ -1,0 +1,5 @@
+{
+  String json="{\"fields\":[{\"name\":\"ID\",\"type\":\"INTEGER\"},{\"name\":\"LAST_NAME\",\"type\":\"VARCHAR\"}]," + "\"records\":[[1,\"Kafka\"],[2,\"Frisch\"]]}";
+  Loader<A> loader=create().loadInto(TAuthor()).onDuplicateKeyError().onErrorAbort().loadJSON(json).fields(TAuthor_ID(),TAuthor_LAST_NAME()).ignoreRows(0).execute();
+  return loader;
+}

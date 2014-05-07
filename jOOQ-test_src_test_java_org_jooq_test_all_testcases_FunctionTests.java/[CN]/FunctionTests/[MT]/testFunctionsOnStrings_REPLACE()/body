@@ -1,0 +1,39 @@
+{
+  SelectQuery<?> q=create().selectQuery();
+  Field<String> constant=val("abc");
+switch (dialect()) {
+case DERBY:
+    log.info("SKIPPING","replace function test");
+  break;
+default :
+{
+  Field<String> x=replace(constant,"b","x");
+  Field<String> y=replace(constant,"b","y");
+  Field<String> z=replace(constant,"b");
+  Record record=create().select(x,y,z).fetchOne();
+  assertEquals("axc",record.getValue(x));
+  assertEquals("ayc",record.getValue(y));
+  assertEquals("ac",record.getValue(z));
+}
+}
+Field<Integer> length=length(constant);
+Field<Integer> charLength=charLength(constant);
+Field<Integer> bitLength=bitLength(constant);
+Field<Integer> octetLength=octetLength(constant);
+q.addSelect(length,charLength,bitLength,octetLength);
+q.execute();
+Record record=q.getResult().get(0);
+assertEquals(Integer.valueOf(3),record.getValue(length));
+assertEquals(Integer.valueOf(3),record.getValue(charLength));
+switch (dialect()) {
+case HSQLDB:
+case H2:
+assertEquals(Integer.valueOf(48),record.getValue(bitLength));
+assertEquals(Integer.valueOf(6),record.getValue(octetLength));
+break;
+default :
+assertEquals(Integer.valueOf(24),record.getValue(bitLength));
+assertEquals(Integer.valueOf(3),record.getValue(octetLength));
+break;
+}
+}

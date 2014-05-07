@@ -1,0 +1,11 @@
+{
+  if (TIdentityPK() == null) {
+    log.info("SKIPPING","Reflection with IDENTITY tests");
+    return;
+  }
+  jOOQAbstractTest.reset=false;
+  IPK record=create().newRecord(TIdentityPK(),new Identity());
+  assertEquals(10,(int)record.getValue(TIdentityPK_ID()));
+  assertEquals(11,(int)record.getValue(TIdentityPK_VAL()));
+  assertEquals(1,record.store());
+}

@@ -1,0 +1,41 @@
+{
+  for (int i=0; i < 2; i++) {
+    assertEquals(create().fetch("select * from t_author order by id"),create().fetch(create().resultQuery("select * from t_author order by id").fetchResultSet()));
+    Result<Record> c1=create().fetch("select * from t_author order by id");
+    Cursor<Record> c2=create().fetchLazy(create().resultQuery("select * from t_author order by id").fetchResultSet());
+    for (int j=0; j < 2; j++) {
+      assertTrue(c2.hasNext());
+      assertEquals(c1.remove(0),c2.fetchOne());
+    }
+    assertFalse(c2.hasNext());
+    ResultSet rs=create().resultQuery("select * from t_author order by id").fetchResultSet();
+    assertTrue(rs.next());
+    assertEquals(1,rs.getInt(1));
+    assertFalse(rs.wasNull());
+    assertEquals(AUTHOR_FIRST_NAMES.get(0),rs.getString(2));
+    assertEquals(AUTHOR_LAST_NAMES.get(0),rs.getString(3));
+    if (!asList().contains(dialect().family())) {
+      assertEquals(1,rs.getInt(1));
+      assertEquals(1,rs.getInt(TAuthor_ID().getName()));
+      assertEquals((short)1,rs.getShort(TAuthor_ID().getName()));
+      assertEquals(1L,rs.getLong(TAuthor_ID().getName()));
+      assertEquals(AUTHOR_FIRST_NAMES.get(0),rs.getString(TAuthor_FIRST_NAME().getName()));
+      assertEquals(AUTHOR_LAST_NAMES.get(0),rs.getString(TAuthor_LAST_NAME().getName()));
+    }
+    assertTrue(rs.next());
+    assertEquals(2,rs.getInt(1));
+    assertFalse(rs.wasNull());
+    if (!asList().contains(dialect().family())) {
+      assertEquals(2,rs.getInt(1));
+      assertEquals(2,rs.getInt(TAuthor_ID().getName()));
+    }
+    assertFalse(rs.next());
+    rs.close();
+    if (dialect() == POSTGRES && i == 0) {
+      create().execute("set bytea_output to escape");
+    }
+ else {
+      break;
+    }
+  }
+}

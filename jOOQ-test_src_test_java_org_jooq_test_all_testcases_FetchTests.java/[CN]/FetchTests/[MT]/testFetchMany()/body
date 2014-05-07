@@ -1,0 +1,12 @@
+{
+switch (dialect().family()) {
+case SQLITE:
+    log.info("SKIPPING","Fetch Many tests");
+  return;
+}
+List<Result<Record>> results=create().fetchMany("select * from t_book order by " + TBook_ID().getName());
+assertEquals(1,results.size());
+assertEquals(4,results.get(0).size());
+assertEquals(BOOK_IDS,results.get(0).getValues(TBook_ID(),Integer.class));
+assertEquals(BOOK_TITLES,results.get(0).getValues(TBook_TITLE()));
+}

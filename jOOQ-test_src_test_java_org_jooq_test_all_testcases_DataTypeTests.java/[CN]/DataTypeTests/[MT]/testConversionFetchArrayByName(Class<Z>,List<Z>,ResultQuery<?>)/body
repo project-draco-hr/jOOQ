@@ -1,0 +1,4 @@
+{
+  assertEquals(expected,Arrays.asList(select.fetchArray(TAuthor_ID().getName(),type)));
+  assertEquals(expected,Arrays.asList(select.fetch().intoArray(TAuthor_ID().getName(),type)));
+}

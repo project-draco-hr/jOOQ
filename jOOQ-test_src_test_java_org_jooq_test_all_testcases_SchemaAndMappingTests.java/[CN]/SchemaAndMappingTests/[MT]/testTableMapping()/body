@@ -1,0 +1,13 @@
+{
+  Settings settings=new Settings().withRenderMapping(new RenderMapping().withSchemata(new MappedSchema().withInput(TAuthor().getSchema() == null ? "" : TAuthor().getSchema().getName()).withTables(new MappedTable().withInput(TAuthor().getName()).withOutput(VAuthor().getName()),new MappedTable().withInput(TBook().getName()).withOutput(VBook().getName()))));
+  Select<Record1<String>> q=create(settings).select(TBook_TITLE()).from(TAuthor()).join(TBook()).on(TAuthor_ID().equal(TBook_AUTHOR_ID())).orderBy(TBook_ID().asc());
+  assertTrue(create(settings).render(q).contains(VAuthor().getName()));
+  assertTrue(create(settings).render(q).contains(VBook().getName()));
+  assertFalse(create(settings).render(q).contains(TAuthor().getName()));
+  assertFalse(create(settings).render(q).contains(TBook().getName()));
+  Result<Record1<String>> result=q.fetch();
+  assertEquals("1984",result.getValue(0,TBook_TITLE()));
+  assertEquals("Animal Farm",result.getValue(1,TBook_TITLE()));
+  assertEquals("O Alquimista",result.getValue(2,TBook_TITLE()));
+  assertEquals("Brida",result.getValue(3,TBook_TITLE()));
+}

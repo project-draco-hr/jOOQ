@@ -1,0 +1,36 @@
+{
+switch (dialect().family()) {
+case DERBY:
+case FIREBIRD:
+case H2:
+case HSQLDB:
+case MARIADB:
+case MYSQL:
+case POSTGRES:
+case SQLITE:
+    log.info("SKIPPING","Oracle-specific MERGE syntax test");
+  return;
+}
+jOOQAbstractTest.reset=false;
+A author;
+assertEquals(1,create().mergeInto(TAuthor()).usingDual().on(TAuthor_ID().equal(1)).whenMatchedThenUpdate().set(TAuthor_LAST_NAME(),"Frisch").where(TAuthor_ID().equal(1)).execute());
+author=create().fetchOne(TAuthor(),TAuthor_ID().equal(1));
+assertEquals(2,create().selectCount().from(TAuthor()).fetchOne(0));
+assertEquals(1,(int)author.getValue(TAuthor_ID()));
+assertEquals(AUTHOR_FIRST_NAMES.get(0),author.getValue(TAuthor_FIRST_NAME()));
+assertEquals("Frisch",author.getValue(TAuthor_LAST_NAME()));
+assertEquals(0,create().mergeInto(TAuthor()).usingDual().on(TAuthor_ID().equal(1)).whenMatchedThenUpdate().set(TAuthor_LAST_NAME(),"Frisch").where(TAuthor_ID().equal(3)).execute());
+author=create().fetchOne(TAuthor(),TAuthor_ID().equal(1));
+assertEquals(2,create().selectCount().from(TAuthor()).fetchOne(0));
+assertEquals(1,(int)author.getValue(TAuthor_ID()));
+assertEquals(AUTHOR_FIRST_NAMES.get(0),author.getValue(TAuthor_FIRST_NAME()));
+assertEquals("Frisch",author.getValue(TAuthor_LAST_NAME()));
+create().delete(TBook()).execute();
+assertEquals(1,create().mergeInto(TAuthor()).usingDual().on(trueCondition()).whenMatchedThenUpdate().set(TAuthor_LAST_NAME(),"Frisch").where(TAuthor_ID().equal(2)).deleteWhere(TAuthor_ID().equal(2)).execute());
+author=create().fetchOne(TAuthor(),TAuthor_ID().equal(1));
+assertEquals(1,create().selectCount().from(TAuthor()).fetchOne(0));
+assertEquals(1,(int)author.getValue(TAuthor_ID()));
+assertEquals(AUTHOR_FIRST_NAMES.get(0),author.getValue(TAuthor_FIRST_NAME()));
+assertEquals("Frisch",author.getValue(TAuthor_LAST_NAME()));
+assertEquals(0,create().mergeInto(TAuthor()).usingDual().on(trueCondition()).whenNotMatchedThenInsert(TAuthor_ID(),TAuthor_FIRST_NAME(),TAuthor_LAST_NAME()).values(3,"Yvette","Z'Graggen").where(falseCondition()).execute());
+}

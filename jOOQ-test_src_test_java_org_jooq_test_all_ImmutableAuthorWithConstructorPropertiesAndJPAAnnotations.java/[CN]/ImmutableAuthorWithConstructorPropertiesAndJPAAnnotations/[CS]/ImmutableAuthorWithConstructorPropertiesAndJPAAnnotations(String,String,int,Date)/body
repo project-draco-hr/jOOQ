@@ -1,0 +1,6 @@
+{
+  this.f1=firstName;
+  this.f2=lastName;
+  this.f3=id;
+  this.f4=dateOfBirth;
+}

@@ -1,0 +1,7 @@
+{
+  jOOQAbstractTest.reset=false;
+  Insert<A> insert1=create().insertInto(TAuthor()).set(TAuthor_ID(),1).set(TAuthor_FIRST_NAME(),(String)null).set(TAuthor_LAST_NAME(),"Koontz");
+  assertEquals(asList((Object)1,null,"Koontz"),insert1.getBindValues());
+  Insert<A> insert2=create().insertInto(TAuthor(),TAuthor_ID(),TAuthor_FIRST_NAME(),TAuthor_LAST_NAME()).values(1,null,"Hesse");
+  assertEquals(asList((Object)1,null,"Hesse"),insert2.getBindValues());
+}

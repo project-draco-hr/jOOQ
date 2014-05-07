@@ -1,0 +1,25 @@
+{
+  Record record=create().select(val(Date.valueOf(zeroDate())).as("d"),val(Time.valueOf("00:00:00")).as("t"),val(Timestamp.valueOf(zeroTimestamp())).as("ts")).fetchOne();
+  if (dialect() != SQLITE)   assertEquals(Date.valueOf(zeroDate()),record.getValue("d"));
+  assertEquals(Time.valueOf("00:00:00"),record.getValue("t"));
+  assertEquals(Timestamp.valueOf(zeroTimestamp()),record.getValue("ts"));
+  if (dialect() == CUBRID || dialect() == DERBY || dialect() == FIREBIRD || dialect() == H2 || dialect() == MARIADB || dialect() == MYSQL || dialect() == SQLITE) {
+    log.info("SKIPPING","Interval tests");
+  }
+ else {
+    record=create().select(val(new YearToMonth(1,1)).as("iyplus"),val(new YearToMonth(0)).as("iy"),val(new YearToMonth(1,1).neg()).as("iyminus"),val(new DayToSecond(1,1,1,1)).as("idplus"),val(new DayToSecond(0)).as("id"),val(new DayToSecond(1,1,1,1).neg()).as("idminus")).fetchOne();
+    assertEquals(new YearToMonth(1,1),record.getValue("iyplus"));
+    assertEquals(new YearToMonth(0),record.getValue("iy"));
+    assertEquals(new YearToMonth(1,1).neg(),record.getValue("iyminus"));
+    assertEquals(new DayToSecond(1,1,1,1),record.getValue("idplus"));
+    assertEquals(new DayToSecond(0),record.getValue("id"));
+    assertEquals(new DayToSecond(1,1,1,1).neg(),record.getValue("idminus"));
+    record=create().select(val(new YearToMonth(1)).div(2).as("y1"),val(new YearToMonth(1)).mul(2).as("y2"),val(new YearToMonth(1)).div(2).mul(2).as("y3"),val(new DayToSecond(1)).div(2).as("d1"),val(new DayToSecond(1)).mul(2).as("d2"),val(new DayToSecond(1)).div(2).mul(2).as("d3")).fetchOne();
+    assertEquals(new YearToMonth(0,6),record.getValue("y1"));
+    assertEquals(new YearToMonth(2),record.getValue("y2"));
+    assertEquals(new YearToMonth(1),record.getValue("y3"));
+    assertEquals(new DayToSecond(0,12),record.getValue("d1"));
+    assertEquals(new DayToSecond(2),record.getValue("d2"));
+    assertEquals(new DayToSecond(1),record.getValue("d3"));
+  }
+}

@@ -1,0 +1,30 @@
+{
+  A author;
+  AuthorWithoutAnnotations object=new AuthorWithoutAnnotations();
+  object.firstName="A";
+  object.lastName="B";
+  object.ID=13;
+  author=create().newRecord(TAuthor());
+  author.from(object,TAuthor_FIRST_NAME(),TAuthor_LAST_NAME());
+  testRecordFromAssertions(object,author);
+  author=create().newRecord(TAuthor());
+  author.from(object,TAuthor_FIRST_NAME().getName(),TAuthor_LAST_NAME().getName());
+  testRecordFromAssertions(object,author);
+  Map<String,Object> map=new HashMap<String,Object>();
+  map.put(TAuthor_FIRST_NAME().getName(),"A");
+  map.put(TAuthor_LAST_NAME().getName(),"B");
+  map.put(TAuthor_ID().getName(),13);
+  author=create().newRecord(TAuthor());
+  author.fromMap(map,TAuthor_FIRST_NAME(),TAuthor_LAST_NAME());
+  testRecordFromAssertions(object,author);
+  author=create().newRecord(TAuthor());
+  author.fromMap(map,TAuthor_FIRST_NAME().getName(),TAuthor_LAST_NAME().getName());
+  testRecordFromAssertions(object,author);
+  Object[] array={13,"A","B"};
+  author=create().newRecord(TAuthor());
+  author.fromArray(array,new Field[]{TAuthor_FIRST_NAME(),TAuthor_LAST_NAME()});
+  testRecordFromAssertions(object,author);
+  author=create().newRecord(TAuthor());
+  author.fromArray(array,new String[]{TAuthor_FIRST_NAME().getName(),TAuthor_LAST_NAME().getName()});
+  testRecordFromAssertions(object,author);
+}

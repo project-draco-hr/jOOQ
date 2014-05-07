@@ -1,0 +1,4 @@
+{
+  assertEquals(expected,Arrays.asList(select.fetchArray(0,type)));
+  assertEquals(expected,Arrays.asList(select.fetch().intoArray(0,type)));
+}

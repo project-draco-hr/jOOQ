@@ -1,0 +1,31 @@
+{
+  jOOQAbstractTest.reset=false;
+  InsertQuery<A> i=create().insertQuery(TAuthor());
+  i.addValue(TAuthor_ID(),100);
+  i.addValue(TAuthor_FIRST_NAME(),"Hermann");
+  i.addValue(TAuthor_LAST_NAME(),"Hesse");
+  i.addValue(TAuthor_DATE_OF_BIRTH(),Date.valueOf(zeroDate()));
+  i.addValue(TAuthor_YEAR_OF_BIRTH(),2010);
+  if (TAuthor_ADDRESS() != null) {
+    addAddressValue(i,TAuthor_ADDRESS());
+  }
+  assertEquals(1,i.execute());
+  A author=create().fetchOne(TAuthor(),TAuthor_FIRST_NAME().equal("Hermann"));
+  assertEquals("Hermann",author.getValue(TAuthor_FIRST_NAME()));
+  assertEquals("Hesse",author.getValue(TAuthor_LAST_NAME()));
+  if (dialect() != SQLITE)   assertEquals(Date.valueOf(zeroDate()),author.getValue(TAuthor_DATE_OF_BIRTH()));
+  Map<Field<?>,String> map=new HashMap<Field<?>,String>();
+  map.put(TAuthor_FIRST_NAME(),"Hermie");
+  assertEquals(1,create().update(TAuthor()).set(map).where(TAuthor_ID().equal(100)).execute());
+  author=create().fetchOne(TAuthor(),TAuthor_FIRST_NAME().equal("Hermie"));
+  assertEquals("Hermie",author.getValue(TAuthor_FIRST_NAME()));
+  assertEquals("Hesse",author.getValue(TAuthor_LAST_NAME()));
+  if (TAuthor_ADDRESS() != null) {
+    UDTRecord<?> address=author.getValue(TAuthor_ADDRESS());
+    Object street1=invoke(address,"getStreet");
+    Object street2=invoke(street1,"getStreet");
+    assertEquals("Bahnhofstrasse",street2);
+  }
+  create().delete(TAuthor()).where(TAuthor_ID().equal(100)).execute();
+  assertEquals(null,create().fetchOne(TAuthor(),TAuthor_FIRST_NAME().equal("Hermie")));
+}

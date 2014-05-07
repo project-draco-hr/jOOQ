@@ -1,0 +1,10 @@
+{
+  B b1=create().selectFrom(TBook()).where(TBook_ID().eq(1)).fetchOne();
+  B b2=b1.into(TBook().getRecordType());
+  assertNotNull(((AttachableInternal)b1).configuration());
+  assertNotNull(((AttachableInternal)b2).configuration());
+  B b3=create(new Settings().withAttachRecords(false)).selectFrom(TBook()).where(TBook_ID().eq(1)).fetchOne();
+  B b4=b3.into(TBook().getRecordType());
+  assertNull(((AttachableInternal)b3).configuration());
+  assertNull(((AttachableInternal)b4).configuration());
+}

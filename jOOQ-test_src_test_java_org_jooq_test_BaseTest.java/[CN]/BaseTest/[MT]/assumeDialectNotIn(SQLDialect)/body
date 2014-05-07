@@ -1,0 +1,3 @@
+{
+  Assume.assumeThat(dialect(),not(isOneOf(dialects)));
+}

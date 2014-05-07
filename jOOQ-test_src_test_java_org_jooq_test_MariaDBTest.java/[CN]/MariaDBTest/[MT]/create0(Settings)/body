@@ -1,3 +1,0 @@
-{
-  return DSL.using(getConnection(),SQLDialect.MARIADB,settings);
-}

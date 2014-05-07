@@ -1,0 +1,13 @@
+{
+synchronized (INCREMENT_MONITOR) {
+    Method m=testMethod();
+    if (m != null) {
+      Integer count=map.get(m);
+      if (count == null) {
+        count=0;
+      }
+      count=count + 1;
+      map.put(m,count);
+    }
+  }
+}

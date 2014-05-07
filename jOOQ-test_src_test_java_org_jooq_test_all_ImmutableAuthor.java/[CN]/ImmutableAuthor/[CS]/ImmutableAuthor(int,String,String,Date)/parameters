@@ -1,0 +1,4 @@
+int ID
+String firstName
+String lastName
+Date dateOfBirth

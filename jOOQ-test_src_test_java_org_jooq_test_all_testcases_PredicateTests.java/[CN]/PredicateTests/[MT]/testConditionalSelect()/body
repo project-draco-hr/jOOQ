@@ -1,0 +1,10 @@
+{
+  Condition c=trueCondition();
+  assertEquals(4,create().selectFrom(TBook()).where(c).execute());
+  c=c.and(TBook_PUBLISHED_IN().greaterThan(1945));
+  assertEquals(3,create().selectFrom(TBook()).where(c).execute());
+  c=c.not();
+  assertEquals(1,create().selectFrom(TBook()).where(c).execute());
+  c=c.or(TBook_AUTHOR_ID().equal(select(TAuthor_ID()).from(TAuthor()).where(TAuthor_FIRST_NAME().equal("Paulo"))));
+  assertEquals(3,create().selectFrom(TBook()).where(c).execute());
+}

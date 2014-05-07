@@ -1,0 +1,73 @@
+{
+  for (  int fetchSize : Arrays.asList(0,1)) {
+    Cursor<B> cursor=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchSize(fetchSize).fetchLazy();
+    assertTrue(cursor.hasNext());
+    assertTrue(cursor.hasNext());
+    assertEquals(Integer.valueOf(1),cursor.fetchOne().getValue(TBook_ID()));
+    assertEquals(Integer.valueOf(2),cursor.fetchOne().getValue(TBook_ID()));
+    assertTrue(cursor.hasNext());
+    assertTrue(cursor.hasNext());
+    assertFalse(cursor.isClosed());
+    Iterator<B> it=cursor.iterator();
+    assertTrue(it.hasNext());
+    assertTrue(cursor.hasNext());
+    assertTrue(it.hasNext());
+    assertTrue(cursor.hasNext());
+    assertTrue(it.hasNext());
+    assertTrue(cursor.hasNext());
+    assertEquals(Integer.valueOf(3),it.next().getValue(TBook_ID()));
+    assertEquals(Integer.valueOf(4),it.next().getValue(TBook_ID()));
+    assertFalse(cursor.isClosed());
+    assertFalse(it.hasNext());
+    assertFalse(cursor.hasNext());
+    assertFalse(it.hasNext());
+    assertFalse(cursor.hasNext());
+    assertFalse(it.hasNext());
+    assertFalse(cursor.hasNext());
+    assertTrue(cursor.isClosed());
+    try {
+      it.next();
+      fail();
+    }
+ catch (    NoSuchElementException expected) {
+    }
+    try {
+      it.next();
+      fail();
+    }
+ catch (    NoSuchElementException expected) {
+    }
+    assertEquals(null,cursor.fetchOne());
+    assertEquals(null,cursor.fetchOne());
+    cursor.close();
+    cursor.close();
+    assertTrue(cursor.isClosed());
+    cursor=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchSize(fetchSize).fetchLazy();
+    assertTrue(cursor.hasNext());
+    assertTrue(cursor.hasNext());
+    assertEquals(Integer.valueOf(1),cursor.fetchOne().getValue(TBook_ID()));
+    assertEquals(Integer.valueOf(2),cursor.fetchOne().getValue(TBook_ID()));
+    assertFalse(cursor.isClosed());
+    cursor.close();
+    assertTrue(cursor.isClosed());
+    assertFalse(cursor.hasNext());
+    assertNull(cursor.fetchOne());
+    cursor=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchSize(fetchSize).fetchLazy();
+    Result<B> fetch0=cursor.fetch(0);
+    assertTrue(fetch0.isEmpty());
+    assertFalse(fetch0.isNotEmpty());
+    assertTrue(fetch0.isEmpty());
+    assertFalse(fetch0.isNotEmpty());
+    Result<B> fetch1=cursor.fetch(1);
+    assertEquals(1,fetch1.size());
+    assertEquals(Integer.valueOf(1),fetch1.get(0).getValue(TBook_ID()));
+    fetch1=cursor.fetch(2);
+    assertEquals(2,fetch1.size());
+    assertEquals(Integer.valueOf(2),fetch1.get(0).getValue(TBook_ID()));
+    assertEquals(Integer.valueOf(3),fetch1.get(1).getValue(TBook_ID()));
+    fetch1=cursor.fetch(2);
+    assertTrue(cursor.isClosed());
+    assertEquals(1,fetch1.size());
+    assertEquals(Integer.valueOf(4),fetch1.get(0).getValue(TBook_ID()));
+  }
+}

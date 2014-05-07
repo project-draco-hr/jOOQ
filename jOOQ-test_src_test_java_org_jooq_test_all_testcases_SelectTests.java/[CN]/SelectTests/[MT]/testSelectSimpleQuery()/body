@@ -1,0 +1,24 @@
+{
+  SelectQuery<?> q=create().selectQuery();
+  Field<Integer> f1=val(1).as("f1");
+  Field<Double> f2=val(2d).as("f2");
+  Field<String> f3=val("test").as("f3");
+  q.addSelect(f1);
+  q.addSelect(f2);
+  q.addSelect(f3);
+  int i=q.execute();
+  Result<?> result=q.getResult();
+  assertEquals(1,i);
+  assertEquals(1,result.size());
+  assertEquals(3,result.fieldsRow().size());
+  assertTrue(asList(result.fields()).contains(f1));
+  assertTrue(asList(result.fields()).contains(f2));
+  assertTrue(asList(result.fields()).contains(f3));
+  assertEquals(3,result.get(0).fieldsRow().size());
+  assertTrue(asList(result.get(0).fields()).contains(f1));
+  assertTrue(asList(result.get(0).fields()).contains(f2));
+  assertTrue(asList(result.get(0).fields()).contains(f3));
+  assertEquals(Integer.valueOf(1),result.get(0).getValue(f1));
+  assertEquals(2d,result.get(0).getValue(f2),0.0);
+  assertEquals("test",result.get(0).getValue(f3));
+}

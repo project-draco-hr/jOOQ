@@ -1,0 +1,16 @@
+{
+  jOOQAbstractTest.reset=false;
+  create().insertInto(TAuthor(),TAuthor_ID(),TAuthor_LAST_NAME()).values(3,"D??blin").execute();
+  Result<A> authors1=create().selectFrom(TAuthor()).orderBy(TAuthor_FIRST_NAME().asc().nullsFirst()).fetch();
+  assertNull(authors1.getValue(0,TAuthor_FIRST_NAME()));
+  assertEquals("George",authors1.getValue(1,TAuthor_FIRST_NAME()));
+  assertEquals("Paulo",authors1.getValue(2,TAuthor_FIRST_NAME()));
+  Result<A> authors2=create().selectFrom(TAuthor()).orderBy(TAuthor_FIRST_NAME().asc().nullsLast()).fetch();
+  assertEquals("George",authors2.getValue(0,TAuthor_FIRST_NAME()));
+  assertEquals("Paulo",authors2.getValue(1,TAuthor_FIRST_NAME()));
+  assertNull(authors2.getValue(2,TAuthor_FIRST_NAME()));
+  Result<A> authors3=create().selectFrom(TAuthor()).orderBy(TAuthor_FIRST_NAME().substring(3).asc().nullsLast()).fetch();
+  assertEquals("George",authors3.getValue(0,TAuthor_FIRST_NAME()));
+  assertEquals("Paulo",authors3.getValue(1,TAuthor_FIRST_NAME()));
+  assertNull(authors3.getValue(2,TAuthor_FIRST_NAME()));
+}

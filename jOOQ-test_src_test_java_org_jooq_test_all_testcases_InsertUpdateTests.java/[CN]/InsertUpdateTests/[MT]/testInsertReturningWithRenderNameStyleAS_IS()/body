@@ -1,0 +1,12 @@
+{
+switch (dialect().family()) {
+case DERBY:
+case H2:
+    log.info("SKIPPING","Insert Returning Test");
+  return;
+}
+jOOQAbstractTest.reset=false;
+A author=create(new Settings().withRenderNameStyle(RenderNameStyle.AS_IS)).insertInto(TAuthor(),TAuthor_ID(),TAuthor_LAST_NAME()).values(5,"XMF").returning().fetchOne();
+assertEquals(5,(int)author.getValue(TAuthor_ID()));
+assertEquals("XMF",author.getValue(TAuthor_LAST_NAME()));
+}

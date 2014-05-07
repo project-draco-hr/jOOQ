@@ -1,0 +1,15 @@
+{
+  for (int i=1; i < 6; i++) {
+    assertEquals(Math.min(i,4),create().selectFrom(TBook()).limit(i).fetch().size());
+    assertEquals(Math.min(i,4),create().select().from(TBook()).limit(i).fetch().size());
+  }
+  for (int i=1; i < 6; i++) {
+    assertEquals(Math.min(i,3),create().selectFrom(TBook()).limit(1,i).fetch().size());
+    assertEquals(Math.min(i,3),create().selectFrom(TBook()).limit(i).offset(1).fetch().size());
+    assertEquals(Math.min(i,3),create().select().from(TBook()).limit(1,i).fetch().size());
+    assertEquals(Math.min(i,3),create().select().from(TBook()).limit(i).offset(1).fetch().size());
+  }
+  Result<B> result=create().selectFrom(TBook()).orderBy(TBook_ID(),TBook_AUTHOR_ID()).limit(1,2).fetch();
+  assertEquals(Integer.valueOf(2),result.getValue(0,TBook_ID()));
+  assertEquals(Integer.valueOf(3),result.getValue(1,TBook_ID()));
+}

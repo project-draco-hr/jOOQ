@@ -1,0 +1,16 @@
+{
+  try {
+    create(new DELETEorUPDATEwithoutWHERElistener()).update(TBook()).set(TBook_TITLE(),"abc").execute();
+    fail();
+  }
+ catch (  DELETEorUPDATEwithoutWHEREException expected) {
+  }
+  try {
+    create(new DELETEorUPDATEwithoutWHERElistener()).delete(TBook()).execute();
+    fail();
+  }
+ catch (  DELETEorUPDATEwithoutWHEREException expected) {
+  }
+  assertEquals(0,create(new DELETEorUPDATEwithoutWHERElistener()).update(TBook()).set(TBook_TITLE(),"abc").where(TBook_ID().eq(5)).execute());
+  assertEquals(0,create(new DELETEorUPDATEwithoutWHERElistener()).delete(TBook()).where(TBook_ID().eq(5)).execute());
+}

@@ -1,0 +1,17 @@
+{
+  if (context.queryPart() == table) {
+    List<Clause> clauses=subselectClauses(context);
+    if (clauses.contains(SELECT_FROM) || clauses.contains(UPDATE_UPDATE) || clauses.contains(DELETE_DELETE)) {
+      if (clauses.contains(TABLE_ALIAS)) {
+        QueryPart[] parts=context.queryParts();
+        for (int i=parts.length - 2; i >= 0; i--) {
+          if (parts[i] instanceof Table) {
+            field=((Table<?>)parts[i]).field(field);
+            break;
+          }
+        }
+      }
+      subselectConditions(context).add(field.in(values).or(field.isNull()));
+    }
+  }
+}

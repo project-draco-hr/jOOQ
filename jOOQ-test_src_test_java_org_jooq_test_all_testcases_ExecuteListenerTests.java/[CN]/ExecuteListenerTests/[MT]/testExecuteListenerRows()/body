@@ -1,0 +1,12 @@
+{
+  RowsListener listener1=new RowsListener();
+  DSLContext create1=create(listener1);
+  create1.selectFrom(TBook()).fetch();
+  assertEquals(-1,listener1.executeRows);
+  assertEquals(4,listener1.fetchRows);
+  RowsListener listener2=new RowsListener();
+  DSLContext create2=create(listener2);
+  create2.update(TBook()).set(TBook_TITLE(),"abc").where(falseCondition()).execute();
+  assertEquals(0,listener2.executeRows);
+  assertEquals(-2,listener2.fetchRows);
+}

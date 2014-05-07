@@ -1,0 +1,16 @@
+{
+  Pattern pattern=Pattern.compile("(\\s*-?\\d+)(\\.?(?:\\d*\\s*))");
+  Set<Integer> lhs=new HashSet<Integer>();
+  Set<Integer> rhs=new HashSet<Integer>();
+  for (  String formatLine : format.split("\n")) {
+    if (formatLine.matches("^\\|\\s*\\d+\\|.*") && !formatLine.contains("{null}")) {
+      String bigDecimalValue=formatLine.replaceAll("^\\|\\s*\\d+\\|([^\\|]+)\\|","$1");
+      Matcher matcher=pattern.matcher(bigDecimalValue);
+      assertTrue(matcher.find());
+      lhs.add(matcher.group(1).length());
+      rhs.add(matcher.group(2).length());
+    }
+  }
+  assertEquals(1,lhs.size());
+  assertEquals(1,rhs.size());
+}

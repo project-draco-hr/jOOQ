@@ -1,0 +1,59 @@
+{
+  String sql=create().select(param("p","abc").as("p")).getSQL(INDEXED);
+  ResultQuery<Record> q=create().resultQuery(sql,"10");
+  Result<Record> fetch1=q.fetch();
+  assertEquals(1,fetch1.size());
+  assertEquals(1,fetch1.fieldsRow().size());
+  assertEquals("p",fetch1.field(0).getName());
+  assertEquals("p",fetch1.field("p").getName());
+  assertEquals("10",fetch1.getValue(0,0));
+  assertEquals("10",fetch1.getValue(0,"p"));
+  assertEquals("10",fetch1.getValue(0,fetch1.field("p")));
+  List<?> fetch2=q.fetch("p");
+  assertEquals(1,fetch2.size());
+  assertEquals("10",fetch2.get(0));
+  List<Long> fetch3=q.fetch(0,Long.class);
+  assertEquals(1,fetch3.size());
+  assertEquals(10L,(long)fetch3.get(0));
+  Record fetch4=q.fetchAny();
+  assertEquals(1,fetch4.fieldsRow().size());
+  assertEquals("p",fetch4.field(0).getName());
+  assertEquals("p",fetch4.field("p").getName());
+  assertEquals("10",fetch4.getValue(0));
+  assertEquals("10",fetch4.getValue("p"));
+  assertEquals("10",fetch4.getValue(fetch4.field("p")));
+  Object[] fetch5=q.fetchArray("p");
+  assertEquals(1,fetch5.length);
+  assertEquals("10",fetch5[0]);
+  assertTrue(fetch5 instanceof String[]);
+  Object[] fetch6=q.fetchArray(0);
+  assertEquals(1,fetch6.length);
+  assertEquals("10",fetch6[0]);
+  assertTrue(fetch6 instanceof String[]);
+  Long[] fetch7=q.fetchArray(0,Long.class);
+  assertEquals(1,fetch7.length);
+  assertEquals(10L,(long)fetch7[0]);
+  List<TestPlainSQLResultQuery> fetch8=q.fetchInto(TestPlainSQLResultQuery.class);
+  assertEquals(1,fetch8.size());
+  assertEquals(10,fetch8.get(0).p);
+  final Integer[] count=new Integer[]{0};
+  q.fetchInto(new RecordHandler<Record>(){
+    @Override public void next(    Record record){
+      assertEquals(1,record.fieldsRow().size());
+      assertEquals("10",record.getValue(0));
+      count[0]+=1;
+    }
+  }
+);
+  assertEquals(1,(int)count[0]);
+  Cursor<Record> fetch10=q.fetchLazy();
+  assertFalse(fetch10.isClosed());
+  assertTrue(fetch10.hasNext());
+  assertEquals(1,fetch10.fieldsRow().size());
+  assertEquals("p",fetch10.field(0).getName());
+  assertEquals("10",fetch10.fetchOne().getValue(0));
+  assertFalse(fetch10.isClosed());
+  assertFalse(fetch10.hasNext());
+  assertTrue(fetch10.isClosed());
+  assertEquals(fetch1.get(0),q.fetchOne());
+}

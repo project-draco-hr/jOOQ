@@ -1,0 +1,17 @@
+{
+  Integer level=(Integer)context.data(DataKey.NESTING_LEVEL);
+  if (level == null) {
+    level=0;
+  }
+  if (increase == -1) {
+    anyPredicatesMap(context).remove(level);
+    subselectConditionMap(context).remove(level);
+  }
+  level+=increase;
+  context.data(DataKey.NESTING_LEVEL,level);
+  if (increase == 1) {
+    subselectConditionMap(context).put(level,new ArrayList<Condition>());
+    anyPredicatesMap(context).put(level,false);
+  }
+  return level;
+}

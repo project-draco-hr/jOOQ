@@ -1,0 +1,37 @@
+{
+  assertFalse(rs.isClosed());
+  assertFalse(rs.isBeforeFirst());
+  assertFalse(rs.isAfterLast());
+  assertFalse(rs.isFirst());
+  assertTrue(rs.isLast());
+  assertEquals(4,rs.getRow());
+  assertEquals(4,rs.getInt(1));
+  assertFalse(rs.wasNull());
+  assertEquals(4,rs.getInt(TBook_ID().getName()));
+  assertFalse(rs.wasNull());
+  assertFalse(rs.wasNull());
+  assertEquals("4",rs.getString(1));
+  assertEquals((byte)4,rs.getByte(1));
+  assertEquals((short)4,rs.getShort(1));
+  assertEquals(4L,rs.getLong(1));
+  assertEquals(4.0f,rs.getFloat(1),0.0f);
+  assertEquals(4.0,rs.getDouble(1),0.0);
+  assertEquals(new BigDecimal("4"),rs.getBigDecimal(1));
+  assertEquals(0,rs.getInt(3));
+  assertTrue(rs.wasNull());
+  assertTrue(rs.wasNull());
+  assertEquals("Brida",rs.getString(5));
+  assertFalse(rs.wasNull());
+  try {
+    rs.getObject(0);
+    fail();
+  }
+ catch (  SQLException expected) {
+  }
+  try {
+    rs.getObject(100);
+    fail();
+  }
+ catch (  SQLException expected) {
+  }
+}

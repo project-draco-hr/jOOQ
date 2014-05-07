@@ -1,0 +1,35 @@
+{
+  Field<String> case1=decode().value(TBook_PUBLISHED_IN()).when(0,"ancient book").as("case1");
+  boolean noSubselects=false;
+  Field<?> case2=noSubselects ? decode().value(TBook_AUTHOR_ID()).when(1,"Orwell").otherwise("unknown") : decode().value(TBook_AUTHOR_ID()).when(1,create().select(TAuthor_LAST_NAME()).from(TAuthor()).where(TAuthor_ID().equal(TBook_AUTHOR_ID())).asField()).otherwise("unknown");
+  Field<?> case3=decode().value(1).when(1,"A").when(2,"B").otherwise("C");
+  SelectQuery<?> query=create().selectQuery();
+  query.addSelect(case1,case2,case3);
+  query.addFrom(TBook());
+  query.addOrderBy(TBook_PUBLISHED_IN());
+  query.execute();
+  Result<?> result=query.getResult();
+  assertEquals(null,result.getValue(0,case1));
+  assertEquals(null,result.getValue(1,case1));
+  assertEquals(null,result.getValue(2,case1));
+  assertEquals(null,result.getValue(3,case1));
+  assertEquals("Orwell",result.getValue(0,case2));
+  assertEquals("Orwell",result.getValue(1,case2));
+  assertEquals("unknown",result.getValue(2,case2));
+  assertEquals("unknown",result.getValue(3,case2));
+  assertEquals("A",result.getValue(0,case3));
+  assertEquals("A",result.getValue(1,case3));
+  assertEquals("A",result.getValue(2,case3));
+  assertEquals("A",result.getValue(3,case3));
+  Field<String> case4=decode().when(TBook_PUBLISHED_IN().equal(1948),"probably orwell").when(TBook_PUBLISHED_IN().equal(1988),"probably coelho").otherwise("don't know").as("case3");
+  query=create().selectQuery();
+  query.addSelect(case4);
+  query.addFrom(TBook());
+  query.addOrderBy(TBook_PUBLISHED_IN());
+  query.execute();
+  result=query.getResult();
+  assertEquals("don't know",result.getValue(0,case4).trim());
+  assertEquals("probably orwell",result.getValue(1,case4).trim());
+  assertEquals("probably coelho",result.getValue(2,case4).trim());
+  assertEquals("don't know",result.getValue(3,case4).trim());
+}

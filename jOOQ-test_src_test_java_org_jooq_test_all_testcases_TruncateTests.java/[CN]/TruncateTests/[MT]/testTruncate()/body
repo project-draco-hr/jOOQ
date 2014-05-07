@@ -1,0 +1,13 @@
+{
+  jOOQAbstractTest.reset=false;
+  try {
+    create().truncate(TAuthor()).execute();
+    if (!Arrays.asList(CUBRID,FIREBIRD,SQLITE).contains(dialect())) {
+      fail();
+    }
+  }
+ catch (  Exception expected) {
+  }
+  create().truncate(TDates()).execute();
+  assertEquals(0,create().fetch(TDates()).size());
+}

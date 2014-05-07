@@ -1,0 +1,11 @@
+{
+  fetchEnd=++callbackCount;
+  checkBase(ctx);
+  checkSQL(ctx,true);
+  checkStatement(ctx,true,true);
+  checkResultSet(ctx,true,true);
+  assertNotNull(ctx.record());
+  assertEquals(2,ctx.record().fieldsRow().size());
+  assertNotNull(ctx.result());
+  assertEquals(2,ctx.result().size());
+}

@@ -1,0 +1,14 @@
+{
+  jOOQAbstractTest.reset=false;
+  assertEquals(1,create().update(TBook()).set(TBook_TITLE(),"1984").where(TBook_ID().eq(2)).execute());
+  Result<B> r1=create().selectFrom(TBook()).orderBy(TBook_ID()).fetch();
+  Result<B> r2=create().selectFrom(TBook()).orderBy(TBook_ID()).fetch().intern(TBook_AUTHOR_ID(),TBook_TITLE());
+  Result<B> r3=create().selectFrom(TBook()).orderBy(TBook_ID()).intern(TBook_AUTHOR_ID(),TBook_TITLE()).fetch();
+  assertEquals(r1,r2);
+  assertEquals(r1,r3);
+  assertEquals(r1.get(0).getValue(TBook_TITLE()),r1.get(1).getValue(TBook_TITLE()));
+  assertEquals(r2.get(0).getValue(TBook_TITLE()),r2.get(1).getValue(TBook_TITLE()));
+  assertEquals(r3.get(0).getValue(TBook_TITLE()),r3.get(1).getValue(TBook_TITLE()));
+  Assert.assertSame(r2.get(0).getValue(TBook_TITLE()),r2.get(1).getValue(TBook_TITLE()));
+  Assert.assertSame(r3.get(0).getValue(TBook_TITLE()),r3.get(1).getValue(TBook_TITLE()));
+}

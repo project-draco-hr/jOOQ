@@ -1,0 +1,11 @@
+{
+  if (TTriggers() == null) {
+    log.info("SKIPPING","INSERT RETURNING tests");
+    return;
+  }
+  jOOQAbstractTest.reset=false;
+  int ID=testInsertReturningCreateDummyRecord();
+  Record returned=create().insertInto(tableByName(TTriggers().getName())).set(fieldByName(TTriggers_COUNTER().getName()),0).returning(fieldByName(TTriggers_ID_GENERATED().getName())).fetchOne();
+  assertNotNull(returned);
+  assertEquals(++ID,(int)returned.getValue(0,int.class));
+}

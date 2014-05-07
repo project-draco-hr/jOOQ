@@ -1,0 +1,12 @@
+{
+  assertEquals(1,(int)create().selectOne().where(trueCondition()).and(row(1).lt(2)).and(row(1).le(1)).and(row(1).gt(0)).and(row(1).ge(1)).fetchOne(0,Integer.class));
+  assertEquals(1,(int)create().selectOne().where(trueCondition()).and(row(1,1).lt(1,2)).and(row(1,1).le(1,2)).and(row(1,1).gt(1,0)).and(row(1,1).ge(1,0)).fetchOne(0,Integer.class));
+  assertEquals(1,(int)create().selectOne().where(trueCondition()).and(row(1,1,1).lt(1,1,2)).and(row(1,1,1).le(1,1,2)).and(row(1,1,1).gt(1,1,0)).and(row(1,1,1).ge(1,1,0)).fetchOne(0,Integer.class));
+  assertEquals(1,(int)create().selectOne().where(trueCondition()).and(row(1,1,1,1).lt(1,1,1,2)).and(row(1,1,1,1).le(1,1,1,2)).and(row(1,1,1,1).gt(1,1,1,0)).and(row(1,1,1,1).ge(1,1,1,0)).fetchOne(0,Integer.class));
+  assertEquals(1,(int)create().selectOne().where(trueCondition()).and(row(1,1,1,1,1).lt(1,1,1,1,2)).and(row(1,1,1,1,1).le(1,1,1,1,2)).and(row(1,1,1,1,1).gt(1,1,1,1,0)).and(row(1,1,1,1,1).ge(1,1,1,1,0)).fetchOne(0,Integer.class));
+  assertEquals(1,(int)create().selectOne().where(trueCondition()).and(row(1,1,1,1,1,1).lt(1,1,1,1,1,2)).and(row(1,1,1,1,1,1).le(1,1,1,1,1,2)).and(row(1,1,1,1,1,1).gt(1,1,1,1,1,0)).and(row(1,1,1,1,1,1).ge(1,1,1,1,1,0)).fetchOne(0,Integer.class));
+  assertEquals(1,(int)create().selectOne().where(trueCondition()).and(row(1,1,1,1,1,1,1).lt(1,1,1,1,1,1,2)).and(row(1,1,1,1,1,1,1).le(1,1,1,1,1,1,2)).and(row(1,1,1,1,1,1,1).gt(1,1,1,1,1,1,0)).and(row(1,1,1,1,1,1,1).ge(1,1,1,1,1,1,0)).fetchOne(0,Integer.class));
+  assertEquals(1,(int)create().selectOne().where(trueCondition()).and(row(1,1,1,1,1,1,1,1).lt(1,1,1,1,1,1,1,2)).and(row(1,1,1,1,1,1,1,1).le(1,1,1,1,1,1,1,2)).and(row(1,1,1,1,1,1,1,1).gt(1,1,1,1,1,1,1,0)).and(row(1,1,1,1,1,1,1,1).ge(1,1,1,1,1,1,1,0)).fetchOne(0,Integer.class));
+  assertEquals(1,(int)create().selectOne().where(trueCondition()).and(row(1,1,1,1,1,1,1,1,1).lt(1,1,1,1,1,1,1,1,2)).and(row(1,1,1,1,1,1,1,1,1).le(1,1,1,1,1,1,1,1,2)).and(row(1,1,1,1,1,1,1,1,1).gt(1,1,1,1,1,1,1,1,0)).and(row(1,1,1,1,1,1,1,1,1).ge(1,1,1,1,1,1,1,1,0)).fetchOne(0,Integer.class));
+  assertEquals(1,(int)create().selectOne().where(trueCondition()).and(row(1,1,1,1,1,1,1,1,1,1).lt(1,1,1,1,1,1,1,1,1,2)).and(row(1,1,1,1,1,1,1,1,1,1).le(1,1,1,1,1,1,1,1,1,2)).and(row(1,1,1,1,1,1,1,1,1,1).gt(1,1,1,1,1,1,1,1,1,0)).and(row(1,1,1,1,1,1,1,1,1,1).ge(1,1,1,1,1,1,1,1,1,0)).fetchOne(0,Integer.class));
+}

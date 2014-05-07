@@ -1,0 +1,7 @@
+{
+  B book=create().selectFrom(TBook()).where(TBook_ID().eq(1)).fetchOne();
+  ReadListener listener1=new ReadListener();
+  book.attach(create(listener1).configuration());
+  book.refresh();
+  assertEquals(asList("loadStart","loadEnd","refreshStart","refreshEnd"),listener1.events);
+}

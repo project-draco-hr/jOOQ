@@ -1,0 +1,15 @@
+{
+switch (dialect()) {
+case DERBY:
+case SQLITE:
+    log.info("SKIPPING","ASCII function test");
+  break;
+default :
+Record record=create().select(ascii("A"),ascii("a"),ascii("-"),ascii(" ")).fetchOne();
+assertEquals('A',(int)record.getValue(0,Integer.class));
+assertEquals('a',(int)record.getValue(1,Integer.class));
+assertEquals('-',(int)record.getValue(2,Integer.class));
+assertEquals(' ',(int)record.getValue(3,Integer.class));
+break;
+}
+}

@@ -1,0 +1,3 @@
+{
+  fetchRows=ctx.rows();
+}

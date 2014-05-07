@@ -1,0 +1,6 @@
+{
+  if (true)   return;
+  assertEquals(1,create().select(val(1).cast(Long.class).cast(Integer.class)).fetchOne(0));
+  assertEquals(3,create().select(val(1).cast(Long.class).add(val(2).cast(String.class).cast(Integer.class)).cast(Integer.class)).fetchOne(0));
+  assertEquals("3",create().select(val(1).add(val("2")).cast(String.class)).fetchOne(0));
+}

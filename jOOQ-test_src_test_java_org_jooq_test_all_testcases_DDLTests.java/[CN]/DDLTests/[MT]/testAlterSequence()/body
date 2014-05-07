@@ -1,0 +1,25 @@
+{
+  if (cSequences() == null || asList(DERBY).contains(dialect().family())) {
+    log.info("SKIPPING","Skipping ALTER SEQUENCE test");
+    return;
+  }
+  jOOQAbstractTest.reset=false;
+  Sequence<Number> S_AUTHOR_ID=(Sequence<Number>)SAuthorID();
+switch (dialect().family()) {
+case FIREBIRD:
+case H2:
+    break;
+default :
+  create().alterSequence(S_AUTHOR_ID).restart().execute();
+assertEquals(1,create().nextval(S_AUTHOR_ID).intValue());
+assertEquals(2,create().nextval(S_AUTHOR_ID).intValue());
+create().alterSequence(S_AUTHOR_ID).restart().execute();
+assertEquals(1,create().nextval(S_AUTHOR_ID).intValue());
+assertEquals(2,create().nextval(S_AUTHOR_ID).intValue());
+}
+int i=5;
+if (dialect().family() == FIREBIRD) i++;
+create().alterSequence(S_AUTHOR_ID).restartWith(5).execute();
+assertEquals(i++,create().nextval(S_AUTHOR_ID).intValue());
+assertEquals(i++,create().nextval(S_AUTHOR_ID).intValue());
+}

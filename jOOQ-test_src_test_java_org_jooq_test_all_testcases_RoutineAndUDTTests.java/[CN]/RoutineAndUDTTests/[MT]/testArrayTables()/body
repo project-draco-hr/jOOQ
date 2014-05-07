@@ -1,0 +1,50 @@
+{
+  if (TArrays_NUMBER() != null) {
+    Result<?> result;
+    Table<?> table;
+    Integer[] array;
+    assertTrue(TArrays_NUMBER().getDataType().isArray());
+    assertFalse(TBook_ID().getDataType().isArray());
+switch (dialect()) {
+case POSTGRES:
+case H2:
+case HSQLDB:
+      log.info("SKIPPING","Cross join of table with unnested array is not supported");
+    break;
+default :
+  table=table(TArrays_STRING()).as("t");
+result=create().select(TArrays_ID(),table.field(0)).from(TArrays(),table).orderBy(TArrays_ID()).fetch();
+assertEquals(3,result.size());
+assertEquals(Integer.valueOf(3),result.getValue(0,TArrays_ID()));
+assertEquals(Integer.valueOf(4),result.getValue(1,TArrays_ID()));
+assertEquals(Integer.valueOf(4),result.getValue(2,TArrays_ID()));
+assertEquals("a",result.getValue(0,1));
+assertEquals("a",result.getValue(1,1));
+assertEquals("b",result.getValue(2,1));
+}
+result=create().select().from(table(FArrays1Field(null))).fetch();
+assertEquals(0,result.size());
+assertEquals(1,result.fieldsRow().size());
+array=new Integer[0];
+result=create().select().from(table(FArrays1Field(val(array)))).fetch();
+assertEquals(0,result.size());
+assertEquals(1,result.fieldsRow().size());
+array=new Integer[]{null,1};
+result=create().select().from(table(FArrays1Field(val(array)))).fetch();
+assertEquals(2,result.size());
+assertEquals(1,result.fieldsRow().size());
+assertEquals(null,result.getValue(0,0));
+assertEquals("1","" + result.getValue(1,0));
+array=new Integer[]{null,1,null,2};
+result=create().select().from(table(FArrays1Field(val(array)))).fetch();
+assertEquals(4,result.size());
+assertEquals(1,result.fieldsRow().size());
+assertEquals(null,result.getValue(0,0));
+assertEquals("1","" + result.getValue(1,0));
+assertEquals(null,result.getValue(2,0));
+assertEquals("2","" + result.getValue(3,0));
+}
+ else {
+log.info("SKIPPING","ARRAY TABLE tests");
+}
+}

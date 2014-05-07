@@ -1,0 +1,8 @@
+{
+  Record2<String,String> result=create().select(left(val("abcde"),3),right(val("abcde"),3)).fetchOne();
+  assertEquals("abc",result.value1());
+  assertEquals("cde",result.value2());
+  result=create().select(left(TAuthor_FIRST_NAME(),3),right(TAuthor_FIRST_NAME(),3)).from(TAuthor()).where(TAuthor_ID().equal(1)).fetchOne();
+  assertEquals("Geo",result.value1());
+  assertEquals("rge",result.value2());
+}

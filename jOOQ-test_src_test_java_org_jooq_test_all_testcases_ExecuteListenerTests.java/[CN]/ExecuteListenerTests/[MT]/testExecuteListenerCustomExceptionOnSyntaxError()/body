@@ -1,0 +1,10 @@
+{
+  DSLContext create=create(new CustomExceptionListener());
+  try {
+    create.fetch("invalid sql");
+    fail();
+  }
+ catch (  E e) {
+    assertEquals("ERROR",e.getMessage());
+  }
+}

@@ -1,0 +1,6 @@
+{
+  bindEnd.add(++callbackCount);
+  checkBase(ctx);
+  checkSQL(ctx,true);
+  checkStatement(ctx,true);
+}

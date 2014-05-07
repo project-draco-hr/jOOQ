@@ -1,0 +1,19 @@
+{
+  if (dialect() == FIREBIRD) {
+    log.info("SKIPPING","Thread-safety tests. This can crash Firebird");
+    return;
+  }
+  Object lock=new Object();
+  for (int i=0; i < 64; i++) {
+    new Thread(new RunnableTest(lock)).start();
+  }
+  try {
+    Thread.sleep(1000);
+  }
+ catch (  InterruptedException e) {
+    e.printStackTrace();
+  }
+synchronized (lock) {
+    lock.notifyAll();
+  }
+}

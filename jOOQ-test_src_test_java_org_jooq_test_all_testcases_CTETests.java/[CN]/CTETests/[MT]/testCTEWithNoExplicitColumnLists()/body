@@ -1,0 +1,12 @@
+{
+  assumeFamilyNotIn(CUBRID,MARIADB,MYSQL);
+  Result<Record> result1=create().with("a").as(select(val(1).as("x"),val("a").as("y"))).select().from("a").fetch();
+  assertEquals(1,result1.size());
+  assertEquals(2,result1.fields().length);
+  assertEquals("x",result1.field(0).getName());
+  assertEquals("y",result1.field(1).getName());
+  assertEquals(Integer.class,result1.field(0).getType());
+  assertEquals(String.class,result1.field(1).getType());
+  assertEquals(1,result1.getValue(0,0));
+  assertEquals("a",result1.getValue(0,1));
+}

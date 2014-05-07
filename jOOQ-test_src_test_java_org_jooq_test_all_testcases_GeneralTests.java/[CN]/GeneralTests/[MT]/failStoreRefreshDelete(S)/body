@@ -1,0 +1,20 @@
+{
+  try {
+    store.store();
+    fail();
+  }
+ catch (  DetachedException expected) {
+  }
+  try {
+    store.refresh();
+    fail();
+  }
+ catch (  DetachedException expected) {
+  }
+  try {
+    store.delete();
+    fail();
+  }
+ catch (  DetachedException expected) {
+  }
+}

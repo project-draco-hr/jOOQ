@@ -1,0 +1,13 @@
+{
+  Table<B> nested=table(create().selectFrom(TBook()).orderBy(TBook_ID().desc()).limit(2)).as("nested");
+  Field<Integer> nestedID=nested.field(TBook_AUTHOR_ID());
+  Record record=create().select(nestedID,count()).from(nested).groupBy(nestedID).orderBy(nestedID).fetchOne();
+  assertEquals(Integer.valueOf(2),record.getValue(nestedID));
+  assertEquals(Integer.valueOf(2),record.getValue(1));
+  Result<Record2<Integer,Integer>> result=create().select(nestedID,count()).from(create().selectFrom(TBook()).orderBy(TBook_ID().desc()).limit(1,2).asTable("nested")).groupBy(nestedID).orderBy(nestedID).fetch();
+  assertEquals(2,result.size());
+  assertEquals(Integer.valueOf(1),result.getValue(0,nestedID));
+  assertEquals(Integer.valueOf(1),result.getValue(0,1));
+  assertEquals(Integer.valueOf(2),result.getValue(1,nestedID));
+  assertEquals(Integer.valueOf(1),result.getValue(1,1));
+}

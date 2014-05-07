@@ -1,0 +1,20 @@
+{
+  boolean unqualified=false;
+  if (asList(HSQLDB).contains(dialect().family()))   unqualified=true;
+  Result<Record2<String,String>> result=create().select(TAuthor_LAST_NAME(),TBook_TITLE()).from(TAuthor()).join(TBook()).using(TAuthor_ID()).orderBy(unqualified ? field("id") : TBook_ID()).fetch();
+  assertEquals(2,result.size());
+  assertEquals("1984",result.getValue(0,TBook_TITLE()));
+  assertEquals("Orwell",result.getValue(0,TAuthor_LAST_NAME()));
+  assertEquals("Animal Farm",result.getValue(1,TBook_TITLE()));
+  assertEquals("Coelho",result.getValue(1,TAuthor_LAST_NAME()));
+  result=create().select(TAuthor_LAST_NAME(),TBook_TITLE()).from(TBook()).leftOuterJoin(TAuthor()).using(TAuthor_ID()).orderBy(unqualified ? field("id") : TBook_ID()).fetch();
+  assertEquals(4,result.size());
+  assertEquals("1984",result.getValue(0,TBook_TITLE()));
+  assertEquals("Orwell",result.getValue(0,TAuthor_LAST_NAME()));
+  assertEquals("Animal Farm",result.getValue(1,TBook_TITLE()));
+  assertEquals("Coelho",result.getValue(1,TAuthor_LAST_NAME()));
+  assertEquals("O Alquimista",result.getValue(2,TBook_TITLE()));
+  assertNull(result.getValue(2,TAuthor_LAST_NAME()));
+  assertEquals("Brida",result.getValue(3,TBook_TITLE()));
+  assertNull(result.getValue(3,TAuthor_LAST_NAME()));
+}

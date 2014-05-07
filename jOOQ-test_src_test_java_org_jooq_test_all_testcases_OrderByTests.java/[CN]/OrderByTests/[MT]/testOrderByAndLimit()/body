@@ -1,0 +1,6 @@
+{
+  List<Integer> result1=create().select(TBook_ID()).from(TBook()).where(TBook_ID().between(2).and(4)).orderBy(TBook_AUTHOR_ID().mul(2).asc(),lower(TBook_TITLE()).asc()).limit(2).fetch(TBook_ID());
+  assertEquals(asList(2,4),result1);
+  List<Integer> result2=create().select(TBook_ID()).from(TBook()).where(TBook_ID().between(2).and(4)).orderBy(TBook_AUTHOR_ID().mul(2).asc(),lower(TBook_TITLE()).asc()).limit(inline(2)).offset(1).fetch(TBook_ID());
+  assertEquals(asList(4,3),result2);
+}

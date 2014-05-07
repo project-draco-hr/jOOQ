@@ -1,0 +1,20 @@
+{
+switch (dialect().family()) {
+case DERBY:
+case FIREBIRD:
+case H2:
+case HSQLDB:
+case MARIADB:
+case MYSQL:
+case POSTGRES:
+case SQLITE:
+    log.info("SKIPPING","Connect by tests");
+  return;
+}
+Result<Record4<String,Boolean,Boolean,String>> paths=create().select(lower(connectByRoot(TDirectory_NAME())),connectByIsLeaf(),connectByIsCycle(),substring(sysConnectByPath(lower(TDirectory_NAME()),"/"),2).as("dir")).from(TDirectory()).where(trueCondition()).and(trueCondition()).connectByNoCycle(prior(TDirectory_ID()).equal(TDirectory_PARENT_ID())).startWith(TDirectory_PARENT_ID().isNull()).orderSiblingsBy(TDirectory_NAME().lower()).fetch();
+assertEquals(25,paths.size());
+assertEquals(Collections.nCopies(25,"c:"),paths.getValues(0));
+assertEquals(Arrays.asList(false,false,true,true,true,true,true,true,false,true,true,false,false,true,true,true,false,false,false,true,true,true,false,true,true),paths.getValues(1));
+assertEquals(Collections.nCopies(25,false),paths.getValues(2));
+assertEquals(Arrays.asList("c:","c:/eclipse","c:/eclipse/configuration","c:/eclipse/dropins","c:/eclipse/eclipse.exe","c:/eclipse/eclipse.ini","c:/eclipse/features","c:/eclipse/plugins","c:/eclipse/readme","c:/eclipse/readme/readme_eclipse.html","c:/eclipse/src","c:/program files","c:/program files/internet explorer","c:/program files/internet explorer/de-de","c:/program files/internet explorer/ielowutil.exe","c:/program files/internet explorer/iexplore.exe","c:/program files/java","c:/program files/java/jre6","c:/program files/java/jre6/bin","c:/program files/java/jre6/bin/java.exe","c:/program files/java/jre6/bin/javaw.exe","c:/program files/java/jre6/bin/javaws.exe","c:/program files/java/jre6/lib","c:/program files/java/jre6/lib/javaws.jar","c:/program files/java/jre6/lib/rt.jar"),paths.getValues(3));
+}

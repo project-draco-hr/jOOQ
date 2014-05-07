@@ -1,0 +1,4 @@
+{
+  acquire.incrementAndGet();
+  return delegate.acquire();
+}
