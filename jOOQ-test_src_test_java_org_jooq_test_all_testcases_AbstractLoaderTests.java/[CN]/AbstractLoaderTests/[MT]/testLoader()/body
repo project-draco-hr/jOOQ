@@ -62,6 +62,7 @@
   assertEquals(2,create().delete(TAuthor()).where(TAuthor_ID().in(5,6)).execute());
 switch (dialect()) {
 case DERBY:
+case FIREBIRD:
 case H2:
 case POSTGRES:
 case SQLITE:
