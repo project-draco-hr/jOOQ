@@ -1,3 +1,8 @@
 {
-  return converter.from(delegate.convert(converter.to((U)object)));
+  if (converter.toType().isInstance(object)) {
+    return (U)object;
+  }
+ else {
+    return converter.from(delegate.convert(object));
+  }
 }
