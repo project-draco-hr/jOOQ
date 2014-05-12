@@ -1,0 +1,9 @@
+{
+  transactionResult(new TransactionalCallable<Void>(){
+    @Override public Void run(    Configuration c) throws Exception {
+      transactional.run(c);
+      return null;
+    }
+  }
+);
+}
