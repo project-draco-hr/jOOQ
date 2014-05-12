@@ -1,0 +1,3 @@
+{
+  new OrderByTests(this).testLimitWithLOBs();
+}

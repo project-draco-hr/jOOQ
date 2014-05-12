@@ -1,0 +1,4 @@
+{
+  Result<Record1<String>> result=create().select(TBook_CONTENT_TEXT()).from(TBook()).limit(2).fetch();
+  assertEquals(2,result.size());
+}
