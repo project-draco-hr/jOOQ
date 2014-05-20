@@ -9,4 +9,14 @@
     reset=true;
     execute(getResetScript());
   }
+  if (clean != null && clean.length > 0) {
+    for (    Table<?> table : clean) {
+      try {
+        create().delete(table);
+      }
+ catch (      Exception e) {
+        e.printStackTrace();
+      }
+    }
+  }
 }
