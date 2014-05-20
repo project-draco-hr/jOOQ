@@ -1,3 +1,3 @@
 {
-  super("X_UNUSED",org.jooq.test.jdbc.generatedclasses.Public.PUBLIC);
+  this("X_UNUSED",null);
 }

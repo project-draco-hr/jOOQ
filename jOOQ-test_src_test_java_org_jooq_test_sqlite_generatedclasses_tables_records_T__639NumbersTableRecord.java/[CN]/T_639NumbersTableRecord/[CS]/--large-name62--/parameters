@@ -1,0 +1,13 @@
+java.lang.Integer id
+java.lang.Byte byte_
+java.lang.Short short_
+java.lang.Integer integer
+java.lang.Long long_
+java.lang.Object byteDecimal
+java.lang.Object shortDecimal
+java.lang.Object integerDecimal
+java.lang.Object longDecimal
+java.lang.Object bigInteger
+java.lang.Object bigDecimal
+java.lang.Float float_
+java.lang.Double double_

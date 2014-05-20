@@ -1,0 +1,3 @@
+String jdbcUser
+String jdbcPassword
+String driver

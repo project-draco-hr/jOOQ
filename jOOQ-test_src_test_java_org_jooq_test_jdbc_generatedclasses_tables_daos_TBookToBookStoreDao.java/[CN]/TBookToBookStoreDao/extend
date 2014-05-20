@@ -1,0 +1,1 @@
+org.jooq.impl.DAOImpl<org.jooq.test.jdbc.generatedclasses.tables.records.TBookToBookStoreRecord,org.jooq.test.jdbc.generatedclasses.tables.pojos.TBookToBookStore,org.jooq.Record2<java.lang.String,java.lang.Integer>>

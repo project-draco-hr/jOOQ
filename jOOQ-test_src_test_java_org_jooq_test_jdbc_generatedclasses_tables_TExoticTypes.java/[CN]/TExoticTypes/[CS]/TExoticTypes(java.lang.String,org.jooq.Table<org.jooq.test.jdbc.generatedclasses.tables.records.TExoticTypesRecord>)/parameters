@@ -1,0 +1,2 @@
+java.lang.String alias
+org.jooq.Table<org.jooq.test.jdbc.generatedclasses.tables.records.TExoticTypesRecord> aliased
