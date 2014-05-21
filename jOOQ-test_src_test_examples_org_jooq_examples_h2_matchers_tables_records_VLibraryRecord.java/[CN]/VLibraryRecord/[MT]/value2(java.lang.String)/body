@@ -1,4 +1,0 @@
-{
-  setTheTitle(value);
-  return this;
-}

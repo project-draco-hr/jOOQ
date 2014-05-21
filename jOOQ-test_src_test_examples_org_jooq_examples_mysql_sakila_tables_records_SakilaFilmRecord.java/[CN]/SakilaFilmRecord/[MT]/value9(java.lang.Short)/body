@@ -1,4 +1,0 @@
-{
-  setLength(value);
-  return this;
-}

@@ -1,4 +1,0 @@
-{
-  setFilmId(value);
-  return this;
-}

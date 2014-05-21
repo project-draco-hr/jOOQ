@@ -1,3 +1,0 @@
-{
-  super(org.jooq.examples.h2.matchers.tables.TAuthor.T_AUTHOR,org.jooq.examples.h2.matchers.tables.pojos.TAuthor.class,configuration);
-}

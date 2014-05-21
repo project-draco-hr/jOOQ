@@ -1,3 +1,0 @@
-{
-  return org.jooq.examples.mysql.sakila.tables.SakilaStore.STORE.MANAGER_STAFF_ID;
-}

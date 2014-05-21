@@ -1,0 +1,3 @@
+{
+  super(alias,org.jooq.test.mysql2.generatedclasses.Test2.TEST2,aliased,parameters,"An unused table in the same schema.");
+}

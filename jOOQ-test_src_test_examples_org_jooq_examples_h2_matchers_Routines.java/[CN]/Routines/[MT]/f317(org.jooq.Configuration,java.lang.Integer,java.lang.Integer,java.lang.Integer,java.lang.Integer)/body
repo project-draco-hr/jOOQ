@@ -1,9 +1,0 @@
-{
-  org.jooq.examples.h2.matchers.routines.F317 f=new org.jooq.examples.h2.matchers.routines.F317();
-  f.setP1(p1);
-  f.setP2(p2);
-  f.setP3(p3);
-  f.setP4(p4);
-  f.execute(configuration);
-  return f.getReturnValue();
-}

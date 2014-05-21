@@ -1,3 +1,0 @@
-{
-  return org.jooq.examples.mysql.sakila.tables.SakilaActorInfo.ACTOR_INFO.LAST_NAME;
-}

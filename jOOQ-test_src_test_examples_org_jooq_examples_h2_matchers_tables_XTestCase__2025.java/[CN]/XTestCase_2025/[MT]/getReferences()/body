@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.examples.h2.matchers.tables.records.XTestCase_2025Record,?>>asList(org.jooq.examples.h2.matchers.Keys.FK_X_TEST_CASE_2025_1,org.jooq.examples.h2.matchers.Keys.FK_X_TEST_CASE_2025_2,org.jooq.examples.h2.matchers.Keys.FK_X_TEST_CASE_2025_3);
-}

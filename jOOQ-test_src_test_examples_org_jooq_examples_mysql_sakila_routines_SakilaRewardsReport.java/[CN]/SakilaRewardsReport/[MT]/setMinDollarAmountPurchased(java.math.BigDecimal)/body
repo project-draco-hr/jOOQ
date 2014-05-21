@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.examples.mysql.sakila.routines.SakilaRewardsReport.MIN_DOLLAR_AMOUNT_PURCHASED,value);
-}

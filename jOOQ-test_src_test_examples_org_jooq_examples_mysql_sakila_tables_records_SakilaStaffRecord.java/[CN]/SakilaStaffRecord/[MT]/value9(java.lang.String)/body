@@ -1,4 +1,0 @@
-{
-  setUsername(value);
-  return this;
-}

@@ -1,4 +1,0 @@
-{
-  setCity(value);
-  return this;
-}

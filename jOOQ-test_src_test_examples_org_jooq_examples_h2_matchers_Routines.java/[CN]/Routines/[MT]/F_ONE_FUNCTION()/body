@@ -1,4 +1,0 @@
-{
-  org.jooq.examples.h2.matchers.routines.F_ONE_FUNCTION f=new org.jooq.examples.h2.matchers.routines.F_ONE_FUNCTION();
-  return f.asField();
-}

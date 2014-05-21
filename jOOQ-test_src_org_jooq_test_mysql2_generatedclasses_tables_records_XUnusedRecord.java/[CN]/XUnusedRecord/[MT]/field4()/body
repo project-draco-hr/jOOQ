@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.mysql2.generatedclasses.tables.XUnused.X_UNUSED.ID_REF;
+}

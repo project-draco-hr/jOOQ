@@ -1,4 +1,0 @@
-{
-  setManagerStaffId(value);
-  return this;
-}

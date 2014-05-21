@@ -1,4 +1,0 @@
-{
-  setPaymentId(value);
-  return this;
-}

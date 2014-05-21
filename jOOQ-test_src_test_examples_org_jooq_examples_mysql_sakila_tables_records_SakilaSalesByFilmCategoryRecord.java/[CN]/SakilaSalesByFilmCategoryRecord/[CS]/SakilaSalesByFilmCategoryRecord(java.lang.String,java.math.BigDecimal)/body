@@ -1,5 +1,0 @@
-{
-  super(org.jooq.examples.mysql.sakila.tables.SakilaSalesByFilmCategory.SALES_BY_FILM_CATEGORY);
-  setValue(0,category);
-  setValue(1,totalSales);
-}

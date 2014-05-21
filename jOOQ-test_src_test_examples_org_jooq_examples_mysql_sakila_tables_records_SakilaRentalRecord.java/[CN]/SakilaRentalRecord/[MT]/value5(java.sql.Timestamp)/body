@@ -1,4 +1,0 @@
-{
-  setReturnDate(value);
-  return this;
-}

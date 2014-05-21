@@ -1,4 +1,0 @@
-{
-  setAmount(value);
-  return this;
-}

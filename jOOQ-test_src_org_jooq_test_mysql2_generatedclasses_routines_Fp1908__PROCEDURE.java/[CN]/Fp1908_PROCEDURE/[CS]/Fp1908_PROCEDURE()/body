@@ -1,0 +1,6 @@
+{
+  super("fp1908",org.jooq.test.mysql2.generatedclasses.Test2.TEST2);
+  addInParameter(P1);
+  addOutParameter(P2);
+  setOverloaded(true);
+}

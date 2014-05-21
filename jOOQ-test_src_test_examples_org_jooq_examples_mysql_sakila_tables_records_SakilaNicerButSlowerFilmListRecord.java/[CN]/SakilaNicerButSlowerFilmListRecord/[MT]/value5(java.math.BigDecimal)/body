@@ -1,4 +1,0 @@
-{
-  setPrice(value);
-  return this;
-}

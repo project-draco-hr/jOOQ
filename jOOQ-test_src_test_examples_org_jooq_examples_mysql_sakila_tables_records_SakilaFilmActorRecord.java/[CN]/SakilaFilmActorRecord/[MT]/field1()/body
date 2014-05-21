@@ -1,3 +1,0 @@
-{
-  return org.jooq.examples.mysql.sakila.tables.SakilaFilmActor.FILM_ACTOR.ACTOR_ID;
-}

@@ -1,3 +1,0 @@
-{
-  return org.jooq.examples.mysql.sakila.tables.SakilaFilmCategory.FILM_CATEGORY.CATEGORY_ID;
-}

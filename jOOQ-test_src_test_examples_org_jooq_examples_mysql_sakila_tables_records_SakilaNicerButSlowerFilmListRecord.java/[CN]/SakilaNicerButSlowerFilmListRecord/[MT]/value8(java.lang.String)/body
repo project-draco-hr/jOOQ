@@ -1,4 +1,0 @@
-{
-  setActors(value);
-  return this;
-}

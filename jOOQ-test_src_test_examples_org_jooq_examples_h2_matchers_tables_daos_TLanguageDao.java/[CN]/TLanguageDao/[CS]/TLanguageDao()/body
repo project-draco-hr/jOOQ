@@ -1,3 +1,0 @@
-{
-  super(org.jooq.examples.h2.matchers.tables.TLanguage.T_LANGUAGE,org.jooq.examples.h2.matchers.tables.pojos.TLanguage.class);
-}

@@ -1,0 +1,4 @@
+{
+  setStatus(value);
+  return this;
+}

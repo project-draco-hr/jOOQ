@@ -1,4 +1,0 @@
-{
-  setStore(value);
-  return this;
-}

@@ -1,7 +1,0 @@
-{
-  super(org.jooq.examples.mysql.sakila.tables.SakilaCity.CITY);
-  setValue(0,cityId);
-  setValue(1,city);
-  setValue(2,countryId);
-  setValue(3,lastUpdate);
-}

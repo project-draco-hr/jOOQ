@@ -1,4 +1,0 @@
-{
-  setEmail(value);
-  return this;
-}

@@ -1,7 +1,0 @@
-java.lang.Integer rentalId
-java.sql.Timestamp rentalDate
-java.lang.Integer inventoryId
-java.lang.Short customerId
-java.sql.Timestamp returnDate
-java.lang.Byte staffId
-java.sql.Timestamp lastUpdate

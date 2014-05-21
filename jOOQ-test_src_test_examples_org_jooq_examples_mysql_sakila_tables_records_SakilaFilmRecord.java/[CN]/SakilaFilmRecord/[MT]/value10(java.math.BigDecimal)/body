@@ -1,4 +1,0 @@
-{
-  setReplacementCost(value);
-  return this;
-}

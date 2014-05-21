@@ -1,5 +1,0 @@
-{
-  super("P_CREATE_AUTHOR_BY_NAME",org.jooq.examples.h2.matchers.NonPublic.NON_PUBLIC);
-  addInParameter(P2);
-  addInParameter(P3);
-}

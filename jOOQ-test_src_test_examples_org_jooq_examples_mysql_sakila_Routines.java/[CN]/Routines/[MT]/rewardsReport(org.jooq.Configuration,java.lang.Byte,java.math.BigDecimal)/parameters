@@ -1,3 +1,0 @@
-org.jooq.Configuration configuration
-java.lang.Byte minMonthlyPurchases
-java.math.BigDecimal minDollarAmountPurchased

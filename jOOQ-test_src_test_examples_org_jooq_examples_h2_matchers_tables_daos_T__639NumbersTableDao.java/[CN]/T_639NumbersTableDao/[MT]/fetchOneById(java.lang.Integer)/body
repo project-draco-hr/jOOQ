@@ -1,3 +1,0 @@
-{
-  return fetchOne(org.jooq.examples.h2.matchers.tables.T_639NumbersTable.ID,value);
-}

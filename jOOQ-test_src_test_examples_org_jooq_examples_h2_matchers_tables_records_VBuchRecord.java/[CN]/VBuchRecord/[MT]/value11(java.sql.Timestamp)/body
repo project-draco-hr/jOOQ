@@ -1,4 +1,0 @@
-{
-  setRecTimestamp(value);
-  return this;
-}

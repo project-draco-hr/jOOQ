@@ -1,0 +1,5 @@
+{
+  org.jooq.test.mysql2.generatedclasses.routines.FNumber f=new org.jooq.test.mysql2.generatedclasses.routines.FNumber();
+  f.setN(n);
+  return f.asField();
+}

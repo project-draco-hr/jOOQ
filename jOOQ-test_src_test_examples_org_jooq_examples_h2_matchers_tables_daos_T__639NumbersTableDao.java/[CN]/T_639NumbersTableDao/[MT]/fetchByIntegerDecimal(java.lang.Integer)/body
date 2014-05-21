@@ -1,3 +1,0 @@
-{
-  return fetch(org.jooq.examples.h2.matchers.tables.T_639NumbersTable.INTEGER_DECIMAL,values);
-}

@@ -1,3 +1,0 @@
-{
-  return org.jooq.examples.h2.matchers.tables.XTestCase_71.ID;
-}

@@ -1,4 +1,0 @@
-{
-  setManager(value);
-  return this;
-}

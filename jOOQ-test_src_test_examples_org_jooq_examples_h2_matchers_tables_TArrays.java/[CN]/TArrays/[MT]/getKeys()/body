@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.examples.h2.matchers.tables.records.TArraysRecord>>asList(org.jooq.examples.h2.matchers.Keys.PK_T_ARRAYS);
-}

@@ -1,6 +1,0 @@
-{
-  Class.forName("com.mysql.jdbc.Driver");
-  Connection connection=DriverManager.getConnection("jdbc:mysql://localhost/sakila","root","");
-  DSLContext create=DSL.using(connection,SQLDialect.MYSQL);
-  System.out.println(create.select().from(CUSTOMER).join(ADDRESS).using(ADDRESS.ADDRESS_ID).join(CITY).using(CITY.CITY_ID).join(COUNTRY).using(COUNTRY.COUNTRY_ID).fetch().formatCSV());
-}

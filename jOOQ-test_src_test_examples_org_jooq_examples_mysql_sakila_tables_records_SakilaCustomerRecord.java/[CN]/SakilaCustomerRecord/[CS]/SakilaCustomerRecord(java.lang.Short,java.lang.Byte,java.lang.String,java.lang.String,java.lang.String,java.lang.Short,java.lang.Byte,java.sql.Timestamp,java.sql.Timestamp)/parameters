@@ -1,9 +1,0 @@
-java.lang.Short customerId
-java.lang.Byte storeId
-java.lang.String firstName
-java.lang.String lastName
-java.lang.String email
-java.lang.Short addressId
-java.lang.Byte active
-java.sql.Timestamp createDate
-java.sql.Timestamp lastUpdate

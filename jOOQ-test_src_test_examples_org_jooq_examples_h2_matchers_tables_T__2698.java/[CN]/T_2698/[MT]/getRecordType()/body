@@ -1,3 +1,0 @@
-{
-  return org.jooq.examples.h2.matchers.tables.records.T_2698Record.class;
-}

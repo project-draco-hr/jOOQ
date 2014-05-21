@@ -1,9 +1,0 @@
-java.lang.Short id
-java.lang.String name
-java.lang.String address
-java.lang.String zip_code
-java.lang.String phone
-java.lang.String city
-java.lang.String country
-java.lang.String notes
-java.lang.Byte sid

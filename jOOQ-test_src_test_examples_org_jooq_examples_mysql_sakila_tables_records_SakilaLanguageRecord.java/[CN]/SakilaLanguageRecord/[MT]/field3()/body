@@ -1,3 +1,0 @@
-{
-  return org.jooq.examples.mysql.sakila.tables.SakilaLanguage.LANGUAGE.LAST_UPDATE;
-}

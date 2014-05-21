@@ -1,3 +1,0 @@
-{
-  return org.jooq.examples.mysql.sakila.tables.SakilaNicerButSlowerFilmList.NICER_BUT_SLOWER_FILM_LIST.PRICE;
-}

@@ -1,4 +1,0 @@
-{
-  setLastUpdate(value);
-  return this;
-}

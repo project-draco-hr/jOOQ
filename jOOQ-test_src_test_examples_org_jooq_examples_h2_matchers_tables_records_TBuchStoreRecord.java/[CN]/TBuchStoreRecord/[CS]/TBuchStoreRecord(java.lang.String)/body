@@ -1,4 +1,0 @@
-{
-  super(org.jooq.examples.h2.matchers.tables.TBuchStore.T_BUCH_STORE);
-  setValue(0,name);
-}

@@ -1,4 +1,0 @@
-{
-  setFilmInfo(value);
-  return this;
-}

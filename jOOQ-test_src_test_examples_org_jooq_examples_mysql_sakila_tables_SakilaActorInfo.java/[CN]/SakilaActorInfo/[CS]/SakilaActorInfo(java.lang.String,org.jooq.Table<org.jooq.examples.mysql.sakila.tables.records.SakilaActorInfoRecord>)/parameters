@@ -1,2 +1,0 @@
-java.lang.String alias
-org.jooq.Table<org.jooq.examples.mysql.sakila.tables.records.SakilaActorInfoRecord> aliased

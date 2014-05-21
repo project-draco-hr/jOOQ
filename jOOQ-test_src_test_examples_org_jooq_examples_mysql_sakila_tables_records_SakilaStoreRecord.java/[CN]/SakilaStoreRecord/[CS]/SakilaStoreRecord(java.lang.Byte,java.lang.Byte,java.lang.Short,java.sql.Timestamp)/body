@@ -1,7 +1,0 @@
-{
-  super(org.jooq.examples.mysql.sakila.tables.SakilaStore.STORE);
-  setValue(0,storeId);
-  setValue(1,managerStaffId);
-  setValue(2,addressId);
-  setValue(3,lastUpdate);
-}

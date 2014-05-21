@@ -1,4 +1,0 @@
-{
-  setCol1(value);
-  return this;
-}

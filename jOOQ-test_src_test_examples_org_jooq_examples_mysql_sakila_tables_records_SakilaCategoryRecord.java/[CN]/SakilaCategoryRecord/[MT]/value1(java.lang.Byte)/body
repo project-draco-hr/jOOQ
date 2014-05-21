@@ -1,4 +1,0 @@
-{
-  setCategoryId(value);
-  return this;
-}

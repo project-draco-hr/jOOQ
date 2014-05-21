@@ -1,3 +1,0 @@
-{
-  return (java.lang.Byte)getValue(0);
-}

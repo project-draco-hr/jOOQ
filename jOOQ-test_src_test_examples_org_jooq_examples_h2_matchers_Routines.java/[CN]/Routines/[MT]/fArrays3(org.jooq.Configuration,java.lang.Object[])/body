@@ -1,6 +1,0 @@
-{
-  org.jooq.examples.h2.matchers.routines.FArrays3 f=new org.jooq.examples.h2.matchers.routines.FArrays3();
-  f.setP1(p1);
-  f.execute(configuration);
-  return f.getReturnValue();
-}

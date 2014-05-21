@@ -1,4 +1,0 @@
-{
-  setPostalCode(value);
-  return this;
-}

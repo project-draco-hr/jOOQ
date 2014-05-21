@@ -1,0 +1,3 @@
+{
+  return (org.jooq.test.mysql2.generatedclasses.enums.T_959JavaKeywords)getValue(0);
+}

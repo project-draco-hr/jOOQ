@@ -1,6 +1,0 @@
-{
-  super(org.jooq.examples.mysql.sakila.tables.SakilaSalesByStore.SALES_BY_STORE);
-  setValue(0,store);
-  setValue(1,manager);
-  setValue(2,totalSales);
-}

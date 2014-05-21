@@ -1,4 +1,0 @@
-{
-  setRating(value);
-  return this;
-}

@@ -1,4 +1,0 @@
-{
-  setActive(value);
-  return this;
-}

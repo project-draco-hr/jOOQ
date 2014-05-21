@@ -1,0 +1,5 @@
+{
+  super(org.jooq.test.mysql2.generatedclasses.tables.TIdentityPk.T_IDENTITY_PK);
+  setValue(0,id);
+  setValue(1,val);
+}

@@ -1,4 +1,0 @@
-{
-  setRentalRate(value);
-  return this;
-}

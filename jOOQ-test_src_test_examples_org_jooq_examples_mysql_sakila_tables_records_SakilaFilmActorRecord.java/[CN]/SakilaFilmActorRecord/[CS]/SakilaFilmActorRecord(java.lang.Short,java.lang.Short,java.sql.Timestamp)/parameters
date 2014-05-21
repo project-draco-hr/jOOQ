@@ -1,3 +1,0 @@
-java.lang.Short actorId
-java.lang.Short filmId
-java.sql.Timestamp lastUpdate

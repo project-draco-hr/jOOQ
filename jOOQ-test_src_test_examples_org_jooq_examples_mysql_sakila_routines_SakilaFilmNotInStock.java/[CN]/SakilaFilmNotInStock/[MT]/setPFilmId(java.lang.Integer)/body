@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.examples.mysql.sakila.routines.SakilaFilmNotInStock.P_FILM_ID,value);
-}

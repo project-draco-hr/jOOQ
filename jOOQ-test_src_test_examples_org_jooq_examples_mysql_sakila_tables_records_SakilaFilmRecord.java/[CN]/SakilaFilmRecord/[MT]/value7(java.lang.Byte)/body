@@ -1,4 +1,0 @@
-{
-  setRentalDuration(value);
-  return this;
-}

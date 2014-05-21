@@ -1,8 +1,0 @@
-java.lang.Short fid
-java.lang.String title
-java.lang.String description
-java.lang.String category
-java.math.BigDecimal price
-java.lang.Short length
-org.jooq.examples.mysql.sakila.enums.SakilaNicerButSlowerFilmListRating rating
-java.lang.String actors

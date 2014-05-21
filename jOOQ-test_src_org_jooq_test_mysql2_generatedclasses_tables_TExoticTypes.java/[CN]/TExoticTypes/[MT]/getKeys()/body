@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.mysql2.generatedclasses.tables.records.TExoticTypesRecord>>asList(org.jooq.test.mysql2.generatedclasses.Keys.KEY_T_EXOTIC_TYPES_PRIMARY);
+}

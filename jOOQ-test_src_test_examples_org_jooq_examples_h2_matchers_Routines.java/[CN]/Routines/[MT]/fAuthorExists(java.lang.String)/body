@@ -1,5 +1,0 @@
-{
-  org.jooq.examples.h2.matchers.routines.FAuthorExists f=new org.jooq.examples.h2.matchers.routines.FAuthorExists();
-  f.setP2(p2);
-  return f.asField();
-}

@@ -1,3 +1,0 @@
-{
-  super(alias,org.jooq.examples.mysql.sakila.SakilaSakila.SAKILA,org.jooq.examples.mysql.sakila.tables.SakilaActor.ACTOR);
-}

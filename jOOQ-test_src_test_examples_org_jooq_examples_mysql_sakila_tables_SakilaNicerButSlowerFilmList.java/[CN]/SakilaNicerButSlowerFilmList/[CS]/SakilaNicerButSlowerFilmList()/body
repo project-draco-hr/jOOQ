@@ -1,3 +1,0 @@
-{
-  super("nicer_but_slower_film_list",org.jooq.examples.mysql.sakila.SakilaSakila.SAKILA);
-}

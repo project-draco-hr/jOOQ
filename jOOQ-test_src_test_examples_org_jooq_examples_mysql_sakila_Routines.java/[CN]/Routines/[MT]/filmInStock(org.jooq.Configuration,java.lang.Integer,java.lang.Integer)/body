@@ -1,7 +1,0 @@
-{
-  org.jooq.examples.mysql.sakila.routines.SakilaFilmInStock p=new org.jooq.examples.mysql.sakila.routines.SakilaFilmInStock();
-  p.setPFilmId(pFilmId);
-  p.setPStoreId(pStoreId);
-  p.execute(configuration);
-  return p.getPFilmCount();
-}

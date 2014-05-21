@@ -1,4 +1,0 @@
-{
-  setLastName(value);
-  return this;
-}

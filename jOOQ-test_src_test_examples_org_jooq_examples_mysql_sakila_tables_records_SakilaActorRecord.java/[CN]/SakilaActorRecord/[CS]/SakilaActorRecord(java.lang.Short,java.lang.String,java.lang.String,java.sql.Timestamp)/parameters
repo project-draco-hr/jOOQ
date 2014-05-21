@@ -1,4 +1,0 @@
-java.lang.Short actorId
-java.lang.String firstName
-java.lang.String lastName
-java.sql.Timestamp lastUpdate

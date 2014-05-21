@@ -1,0 +1,3 @@
+{
+  this(alias,org.jooq.test.mysql2.generatedclasses.tables.VLibrary.V_LIBRARY);
+}

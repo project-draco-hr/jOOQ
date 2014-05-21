@@ -1,4 +1,0 @@
-{
-  setCategory(value);
-  return this;
-}

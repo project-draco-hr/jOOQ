@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.mysql2.generatedclasses.tables.records.TTriggersRecord>>asList(org.jooq.test.mysql2.generatedclasses.Keys.KEY_T_TRIGGERS_PRIMARY);
+}

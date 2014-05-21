@@ -1,4 +1,0 @@
-{
-  setDistrict(value);
-  return this;
-}

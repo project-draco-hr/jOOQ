@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.examples.h2.matchers.routines.PCreateAuthorByName.P2,value);
-}

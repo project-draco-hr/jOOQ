@@ -1,4 +1,0 @@
-{
-  setPaymentDate(value);
-  return this;
-}

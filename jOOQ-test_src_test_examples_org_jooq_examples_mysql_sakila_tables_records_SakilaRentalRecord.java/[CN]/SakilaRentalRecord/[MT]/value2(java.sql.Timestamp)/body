@@ -1,4 +1,0 @@
-{
-  setRentalDate(value);
-  return this;
-}

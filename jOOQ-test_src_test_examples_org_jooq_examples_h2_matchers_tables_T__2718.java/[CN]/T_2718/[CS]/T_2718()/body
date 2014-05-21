@@ -1,3 +1,0 @@
-{
-  super("T_2718",org.jooq.examples.h2.matchers.NonPublic.NON_PUBLIC);
-}

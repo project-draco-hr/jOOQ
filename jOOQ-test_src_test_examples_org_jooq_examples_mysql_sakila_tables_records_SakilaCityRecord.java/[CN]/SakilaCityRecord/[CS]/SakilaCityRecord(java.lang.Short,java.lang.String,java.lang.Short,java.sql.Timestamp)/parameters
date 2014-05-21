@@ -1,4 +1,0 @@
-java.lang.Short cityId
-java.lang.String city
-java.lang.Short countryId
-java.sql.Timestamp lastUpdate

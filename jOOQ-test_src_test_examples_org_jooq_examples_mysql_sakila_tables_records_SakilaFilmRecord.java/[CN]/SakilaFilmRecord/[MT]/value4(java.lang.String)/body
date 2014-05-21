@@ -1,4 +1,0 @@
-{
-  setReleaseYear(value);
-  return this;
-}

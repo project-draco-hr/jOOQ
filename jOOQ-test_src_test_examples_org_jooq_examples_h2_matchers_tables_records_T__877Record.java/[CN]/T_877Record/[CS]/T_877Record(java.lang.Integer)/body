@@ -1,4 +1,0 @@
-{
-  super(org.jooq.examples.h2.matchers.tables.T_877.T_877);
-  setValue(0,id);
-}

@@ -1,3 +1,0 @@
-{
-  return (org.jooq.examples.mysql.sakila.enums.SakilaFilmRating)getValue(10);
-}

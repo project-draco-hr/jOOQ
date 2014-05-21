@@ -1,7 +1,0 @@
-{
-  super(org.jooq.examples.mysql.sakila.tables.SakilaInventory.INVENTORY);
-  setValue(0,inventoryId);
-  setValue(1,filmId);
-  setValue(2,storeId);
-  setValue(3,lastUpdate);
-}

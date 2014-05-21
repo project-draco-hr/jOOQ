@@ -1,4 +1,0 @@
-{
-  setRefId(from.getRefId());
-  setRefName(from.getRefName());
-}

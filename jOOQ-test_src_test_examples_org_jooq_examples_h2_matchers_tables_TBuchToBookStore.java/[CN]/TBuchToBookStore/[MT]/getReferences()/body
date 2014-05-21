@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.examples.h2.matchers.tables.records.TBuchToBookStoreRecord,?>>asList(org.jooq.examples.h2.matchers.Keys.FK_B2BS_BS_NAME,org.jooq.examples.h2.matchers.Keys.FK_B2BS_B_ID);
-}

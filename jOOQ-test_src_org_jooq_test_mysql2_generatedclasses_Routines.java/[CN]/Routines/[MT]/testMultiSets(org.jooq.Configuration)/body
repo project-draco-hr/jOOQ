@@ -1,0 +1,4 @@
+{
+  org.jooq.test.mysql2.generatedclasses.routines.TestMultiSets p=new org.jooq.test.mysql2.generatedclasses.routines.TestMultiSets();
+  p.execute(configuration);
+}

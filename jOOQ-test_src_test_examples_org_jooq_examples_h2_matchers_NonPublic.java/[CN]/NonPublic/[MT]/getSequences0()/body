@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.Sequence<?>>asList(org.jooq.examples.h2.matchers.Sequences.SEQUENCE_S_AUTHOR_ID,org.jooq.examples.h2.matchers.Sequences.SEQUENCE_S_TRIGGERS_SEQUENCE);
-}
