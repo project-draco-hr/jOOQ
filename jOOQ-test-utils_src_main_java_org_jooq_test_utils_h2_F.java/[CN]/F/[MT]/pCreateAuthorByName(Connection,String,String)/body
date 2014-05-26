@@ -1,0 +1,4 @@
+{
+  DSLContext create=create(connection);
+  create.insertInto(table("t_author")).set(field("id"),create.select(max(field("id")).add(1)).from(table("t_author")).<Integer>asField()).set(field("first_name"),firstName).set(field("last_name"),lastName).execute();
+}

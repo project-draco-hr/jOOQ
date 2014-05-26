@@ -1,0 +1,5 @@
+{
+  super.generatePojoClassFooter(table,out);
+  out.println();
+  out.tab(1).println("// Here, a toString() method could be generated");
+}

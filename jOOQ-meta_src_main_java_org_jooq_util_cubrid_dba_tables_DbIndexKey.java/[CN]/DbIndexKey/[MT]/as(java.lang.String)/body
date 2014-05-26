@@ -1,3 +1,3 @@
 {
-  return new org.jooq.util.cubrid.dba.tables.DbIndexKey(alias);
+  return new org.jooq.util.cubrid.dba.tables.DbIndexKey(alias,this);
 }

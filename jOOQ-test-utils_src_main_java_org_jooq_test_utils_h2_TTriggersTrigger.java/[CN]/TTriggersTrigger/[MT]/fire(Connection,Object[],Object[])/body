@@ -1,0 +1,6 @@
+{
+  int maxID=using(conn,SQLDialect.H2).nextval(new SequenceImpl<Integer>("s_triggers_sequence",new SchemaImpl("public"),SQLDataType.INTEGER)).intValue();
+  newRow[0]=maxID;
+  newRow[1]=maxID;
+  newRow[2]=maxID * 2;
+}
