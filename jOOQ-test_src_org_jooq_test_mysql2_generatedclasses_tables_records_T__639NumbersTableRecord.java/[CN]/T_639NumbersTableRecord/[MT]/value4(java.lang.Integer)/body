@@ -1,4 +1,0 @@
-{
-  setInteger(value);
-  return this;
-}

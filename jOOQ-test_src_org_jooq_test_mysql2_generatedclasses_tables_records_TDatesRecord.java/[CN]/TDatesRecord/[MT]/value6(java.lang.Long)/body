@@ -1,4 +1,0 @@
-{
-  setTsBigint(value);
-  return this;
-}

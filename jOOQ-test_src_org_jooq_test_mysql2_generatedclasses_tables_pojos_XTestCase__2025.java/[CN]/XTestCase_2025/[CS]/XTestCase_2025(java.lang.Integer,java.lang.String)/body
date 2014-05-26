@@ -1,4 +1,0 @@
-{
-  this.refId=refId;
-  this.refName=refName;
-}

@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.mysql2.generatedclasses.tables.records.TLanguageRecord>>asList(org.jooq.test.mysql2.generatedclasses.Keys.KEY_T_LANGUAGE_PRIMARY);
-}

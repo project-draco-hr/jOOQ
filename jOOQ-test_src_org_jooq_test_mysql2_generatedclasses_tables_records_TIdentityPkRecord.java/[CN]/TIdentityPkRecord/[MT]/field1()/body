@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.mysql2.generatedclasses.tables.TIdentityPk.T_IDENTITY_PK.ID;
-}

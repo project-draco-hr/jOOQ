@@ -1,4 +1,0 @@
-{
-  setContentText(value);
-  return this;
-}
