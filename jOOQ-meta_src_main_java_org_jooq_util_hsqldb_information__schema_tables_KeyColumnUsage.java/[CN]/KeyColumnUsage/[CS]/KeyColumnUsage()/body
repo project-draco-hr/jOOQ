@@ -1,3 +1,3 @@
 {
-  super("KEY_COLUMN_USAGE",org.jooq.util.hsqldb.information_schema.InformationSchema.INFORMATION_SCHEMA);
+  this("KEY_COLUMN_USAGE",null);
 }

@@ -1,5 +1,5 @@
 {
-  super("F_GET_ONE_CURSOR",org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.RESULT);
+  super("F_GET_ONE_CURSOR",org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC,org.jooq.impl.DefaultDataType.getDefaultDataType("ROW(INTEGER,INTEGER,INTEGER,INTEGER,VARCHAR(400),INTEGER,INTEGER,VARCHAR(16777216),VARBINARY(16777216))"));
   setReturnParameter(RETURN_VALUE);
   addInParameter(BOOK_IDS);
 }
