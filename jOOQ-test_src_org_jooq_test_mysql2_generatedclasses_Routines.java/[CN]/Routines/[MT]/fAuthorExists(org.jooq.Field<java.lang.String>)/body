@@ -1,5 +1,0 @@
-{
-  org.jooq.test.mysql2.generatedclasses.routines.FAuthorExists f=new org.jooq.test.mysql2.generatedclasses.routines.FAuthorExists();
-  f.setAuthorName(authorName);
-  return f.asField();
-}

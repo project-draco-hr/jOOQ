@@ -1,3 +1,0 @@
-{
-  super(alias,org.jooq.test.mysql2.generatedclasses.Test2.TEST2,aliased,parameters,"An m:n relation between books and book stores");
-}

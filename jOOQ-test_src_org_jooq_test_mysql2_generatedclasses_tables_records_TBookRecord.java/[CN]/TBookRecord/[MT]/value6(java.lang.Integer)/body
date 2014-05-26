@@ -1,4 +1,0 @@
-{
-  setPublishedIn(value);
-  return this;
-}

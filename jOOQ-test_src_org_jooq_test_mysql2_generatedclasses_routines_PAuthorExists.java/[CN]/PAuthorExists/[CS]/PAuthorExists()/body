@@ -1,5 +1,0 @@
-{
-  super("p_author_exists",org.jooq.test.mysql2.generatedclasses.Test2.TEST2);
-  addInParameter(AUTHOR_NAME);
-  addOutParameter(RESULT);
-}

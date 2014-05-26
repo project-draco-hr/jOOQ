@@ -1,4 +1,0 @@
-{
-  setYearOfBirth(value);
-  return this;
-}

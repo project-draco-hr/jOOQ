@@ -1,4 +1,0 @@
-{
-  this.javaKeywords=javaKeywords;
-  this.specialCharacters=specialCharacters;
-}

@@ -1,4 +1,0 @@
-{
-  setDescription(value);
-  return this;
-}
