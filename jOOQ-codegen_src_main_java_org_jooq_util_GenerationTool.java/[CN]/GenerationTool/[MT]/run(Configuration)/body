@@ -45,6 +45,7 @@
       Schema schema=new Schema();
       schema.setInputSchema(trim(d.getInputSchema()));
       schema.setOutputSchema(trim(d.getOutputSchema()));
+      schema.setOutputSchemaToDefault(d.isOutputSchemaToDefault());
       schemata.add(schema);
     }
  else {
@@ -62,7 +63,13 @@
         }
         schema.setInputSchema(trim(j.getSchema()));
       }
-      if (schema.getOutputSchema() == null) {
+      if ("".equals(schema.getOutputSchema())) {
+        log.warn("WARNING: Empty <outputSchema/> should no longer be used to model default outputSchemas. Use <outputSchemaToDefault>true</outputSchemaToDefault>, instead. See also: https://github.com/jOOQ/jOOQ/issues/3018");
+      }
+      if (TRUE.equals(schema.isOutputSchemaToDefault())) {
+        schema.setOutputSchema("");
+      }
+ else       if (schema.getOutputSchema() == null) {
         schema.setOutputSchema(trim(schema.getInputSchema()));
       }
     }
