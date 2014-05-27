@@ -4,7 +4,7 @@
   for (  Record record : create().fetch("pragma table_info('" + getName() + "')")) {
     position++;
     String name=record.getValue("name",String.class);
-    String dataType=record.getValue("type",String.class).replaceAll("\\(\\d+\\)","");
+    String dataType=record.getValue("type",String.class).replaceAll("\\(\\d+(\\s*,\\s*\\d+)?\\)","");
     Number precision=parsePrecision(record.getValue("type",String.class));
     Number scale=parseScale(record.getValue("type",String.class));
     boolean pk=record.getValue("pk",Boolean.class);
