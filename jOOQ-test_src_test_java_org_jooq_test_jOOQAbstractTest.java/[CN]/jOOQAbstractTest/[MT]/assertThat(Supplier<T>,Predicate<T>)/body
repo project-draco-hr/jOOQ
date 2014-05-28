@@ -1,0 +1,3 @@
+{
+  assertThat(actual,expected,DEFAULT_MESSAGE);
+}

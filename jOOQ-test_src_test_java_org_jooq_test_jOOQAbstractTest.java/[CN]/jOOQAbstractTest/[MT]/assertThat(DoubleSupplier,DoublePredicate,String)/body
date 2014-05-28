@@ -1,0 +1,3 @@
+{
+  if (!expected.test(actual.getAsDouble()))   throw new AssertionError(message);
+}

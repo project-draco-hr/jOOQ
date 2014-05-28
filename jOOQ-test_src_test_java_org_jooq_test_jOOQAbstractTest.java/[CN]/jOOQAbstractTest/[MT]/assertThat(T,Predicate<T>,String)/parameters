@@ -1,0 +1,3 @@
+T actual
+Predicate<T> expected
+String message
