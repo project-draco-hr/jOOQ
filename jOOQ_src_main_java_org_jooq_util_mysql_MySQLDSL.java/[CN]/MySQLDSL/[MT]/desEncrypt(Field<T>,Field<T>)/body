@@ -1,0 +1,3 @@
+{
+  return function("des_encrypt",string.getType(),string,keyString);
+}

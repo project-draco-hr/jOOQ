@@ -1,3 +1,0 @@
-{
-  return function("aes_encrypt",String.class,string,keyString);
-}
