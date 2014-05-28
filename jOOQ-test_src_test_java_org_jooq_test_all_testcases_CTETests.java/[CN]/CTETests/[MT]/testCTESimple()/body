@@ -1,5 +1,5 @@
 {
-  assumeFamilyNotIn(CUBRID,H2,MARIADB,MYSQL,SQLITE);
+  assumeFamilyNotIn(CUBRID,DERBY,H2,MARIADB,MYSQL,SQLITE);
   Result<Record> result1=create().with("t","f1","f2").as(select(val(1,Integer.class),val("a"))).select().from(tableByName("t")).fetch();
   assertEquals(1,result1.size());
   assertEquals(2,result1.fields().length);

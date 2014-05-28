@@ -4,7 +4,7 @@
       if (config != null) {
         Properties properties=new Properties();
         properties.load(config);
-        String d=dialect().name().toLowerCase();
+        String d=dialect().family().name().toLowerCase();
         if (properties.containsKey("db." + d + ".driver")) {
           jdbcURL=properties.getProperty("db." + d + ".url") + getSchemaSuffix();
           jdbcSchema=properties.getProperty("db." + d + ".schema") + getSchemaSuffix();
