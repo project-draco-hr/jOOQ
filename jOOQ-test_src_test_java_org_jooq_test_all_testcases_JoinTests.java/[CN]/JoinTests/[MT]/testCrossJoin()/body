@@ -1,8 +1,4 @@
 {
-  if (dialect().family() == ACCESS) {
-    log.info("SKIPPING","CROSS JOIN tests");
-    return;
-  }
   Result<Record> result;
   assertEquals(Integer.valueOf(8),create().select(count()).from(TAuthor()).crossJoin(TBook()).fetchOne(0));
   result=create().select().from(create().select(val(1).cast(Integer.class).as("a"))).crossJoin(TAuthor()).orderBy(TAuthor_ID()).fetch();
