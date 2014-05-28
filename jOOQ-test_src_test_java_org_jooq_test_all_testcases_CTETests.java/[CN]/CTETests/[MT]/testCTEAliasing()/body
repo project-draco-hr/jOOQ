@@ -1,5 +1,5 @@
 {
-  assumeFamilyNotIn(CUBRID,H2,MARIADB,MYSQL);
+  assumeFamilyNotIn(CUBRID,H2,MARIADB,MYSQL,SQLITE);
   CommonTableExpression<Record2<Integer,String>> t1=name("t1").fields("f1","f2").as(select(val(1),val("a")));
   CommonTableExpression<Record2<Integer,String>> t2=name("t2").fields("f3","f4").as(select(val(2),val("b")));
   Table<Record2<Integer,String>> a1=t1.as("a1");
