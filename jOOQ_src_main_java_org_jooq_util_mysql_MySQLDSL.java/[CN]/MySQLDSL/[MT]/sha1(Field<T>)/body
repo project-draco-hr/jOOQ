@@ -1,0 +1,3 @@
+{
+  return function("sha1",string.getType(),string);
+}

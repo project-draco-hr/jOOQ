@@ -1,3 +1,0 @@
-{
-  return function("des_encrypt",String.class,string,keyString);
-}

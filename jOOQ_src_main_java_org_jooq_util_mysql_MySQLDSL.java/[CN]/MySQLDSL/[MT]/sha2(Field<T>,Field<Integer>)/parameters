@@ -1,0 +1,2 @@
+Field<T> string
+Field<Integer> hashLength

@@ -1,3 +1,0 @@
-{
-  return function("sha1",String.class,string);
-}

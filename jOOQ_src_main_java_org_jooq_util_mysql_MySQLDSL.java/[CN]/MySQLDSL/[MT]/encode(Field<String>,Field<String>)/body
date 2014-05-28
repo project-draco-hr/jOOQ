@@ -1,3 +1,0 @@
-{
-  return function("encode",String.class,string,keyString);
-}
