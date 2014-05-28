@@ -1,10 +1,13 @@
 {
   log.info("QUITTING");
-  if (connection.getClass().getPackage().getName().contains("jtds") && !connection.getMetaData().getURL().contains("sqlserver")) {
-    log.info("RUNNING","dump tran TEST with truncate_only");
-    connection.createStatement().execute("dump tran TEST with truncate_only");
+  if (connection != null) {
+    if (connection.getClass().getPackage().getName().contains("jtds") && !connection.getMetaData().getURL().contains("sqlserver")) {
+      log.info("RUNNING","dump tran TEST with truncate_only");
+      connection.createStatement().execute("dump tran TEST with truncate_only");
+    }
+    connection.close();
+    connection=null;
   }
-  connection.close();
   JooqLogger logStat=JooqLogger.getLogger(TestStatisticsListener.class);
   logStat.info("TEST STATISTICS");
   logStat.info("---------------");

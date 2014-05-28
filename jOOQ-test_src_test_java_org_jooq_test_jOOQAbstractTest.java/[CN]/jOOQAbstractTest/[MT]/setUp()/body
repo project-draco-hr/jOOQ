@@ -1,22 +1,2 @@
 {
-  connection=getConnection();
-  autocommit=connection.getAutoCommit();
-  if (!initialised) {
-    initialised=true;
-    execute(getCreateScript());
-  }
-  if (!reset) {
-    reset=true;
-    execute(getResetScript());
-  }
-  if (clean != null && clean.length > 0) {
-    for (    Table<?> table : clean) {
-      try {
-        create().delete(table);
-      }
- catch (      Exception e) {
-        e.printStackTrace();
-      }
-    }
-  }
 }
