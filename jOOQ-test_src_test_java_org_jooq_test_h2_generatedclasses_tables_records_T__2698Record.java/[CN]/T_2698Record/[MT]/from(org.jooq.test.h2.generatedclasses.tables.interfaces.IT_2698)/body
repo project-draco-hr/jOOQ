@@ -1,4 +1,5 @@
 {
   setId(from.getId());
   setXx(from.getXx());
+  setYy(from.getYy());
 }
