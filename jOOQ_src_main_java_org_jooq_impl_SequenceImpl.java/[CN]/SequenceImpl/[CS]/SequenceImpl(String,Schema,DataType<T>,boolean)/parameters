@@ -1,0 +1,4 @@
+String name
+Schema schema
+DataType<T> type
+boolean nameIsPlainSQL

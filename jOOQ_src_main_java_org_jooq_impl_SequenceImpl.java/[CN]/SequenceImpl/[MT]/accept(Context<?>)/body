@@ -4,5 +4,6 @@
     ctx.visit(mappedSchema);
     ctx.sql(".");
   }
-  ctx.literal(name);
+  if (nameIsPlainSQL)   ctx.sql(name);
+ else   ctx.literal(name);
 }
