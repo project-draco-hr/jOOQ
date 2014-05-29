@@ -29,7 +29,7 @@
     }
  else     if (sqlChars[i] == '?' && substituteIndex < substitutes.size()) {
       QueryPart substitute=substitutes.get(substituteIndex++);
-      if (render.paramType() == INLINED) {
+      if (render.paramType() == INLINED || render.paramType() == NAMED) {
         render.visit(substitute);
       }
  else {
