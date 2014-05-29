@@ -1,4 +1,5 @@
 {
+  if (!Boolean.valueOf(System.getProperty("org.jooq.test.pretty-printer","true")))   return;
   DSLContext pretty=DSL.using(new DefaultConfiguration().set(ctx.configuration().dialect()).set(SettingsTools.clone(ctx.configuration().settings()).withRenderFormatted(true)).set(ctx.configuration().visitListenerProviders()));
   DSLContext normal=DSL.using(new DefaultConfiguration().set(ctx.configuration().dialect()).set(ctx.configuration().visitListenerProviders()));
   String n="" + count.incrementAndGet();
