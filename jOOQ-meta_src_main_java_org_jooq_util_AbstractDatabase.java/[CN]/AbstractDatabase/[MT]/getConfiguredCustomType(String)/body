@@ -1,7 +1,17 @@
 {
-  for (  CustomType type : configuredCustomTypes) {
+  Iterator<CustomType> it=configuredCustomTypes.iterator();
+  while (it.hasNext()) {
+    CustomType type=it.next();
     if (type == null || (type.getName() == null && type.getType() == null)) {
-      log.warn("Invalid custom type encountered: " + type);
+      try {
+        StringWriter writer=new StringWriter();
+        JAXB.marshal(type,writer);
+        log.warn("Invalid custom type encountered: " + writer.toString());
+      }
+ catch (      Exception e) {
+        log.warn("Invalid custom type encountered: " + type);
+      }
+      it.remove();
       continue;
     }
     if (StringUtils.equals(type.getType() != null ? type.getType() : type.getName(),typeName)) {
