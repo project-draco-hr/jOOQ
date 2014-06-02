@@ -1,0 +1,6 @@
+{
+  Condition q=condition("a = '?' and b = '{0}' and c = ?",1);
+  assertEquals("(a = '?' and b = '{0}' and c = ?)",create.render(q));
+  assertEquals("(a = '?' and b = '{0}' and c = 1)",create.renderInlined(q));
+  assertEquals("(a = '?' and b = '{0}' and c = :1)",create.renderNamedParams(q));
+}

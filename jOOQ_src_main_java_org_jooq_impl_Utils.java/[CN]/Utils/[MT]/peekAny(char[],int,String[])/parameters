@@ -1,0 +1,3 @@
+char[] sqlChars
+int index
+String[] peekAny

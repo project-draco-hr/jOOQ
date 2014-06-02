@@ -1,0 +1,4 @@
+{
+  for (  String peek : peekAny)   if (peek(sqlChars,index,peek))   return true;
+  return false;
+}

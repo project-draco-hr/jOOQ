@@ -4,6 +4,9 @@
   int substituteIndex=0;
   char[] sqlChars=sql.toCharArray();
   if (render == null)   render=new DefaultRenderContext(bind.configuration());
+  SQLDialect dialect=render.configuration().dialect();
+  SQLDialect family=dialect.family();
+  String[][] quotes=QUOTES.get(family);
   for (int i=0; i < sqlChars.length; i++) {
     if (peek(sqlChars,i,"--")) {
       for (; i < sqlChars.length && sqlChars[i] != '\r' && sqlChars[i] != '\n'; render.sql(sqlChars[i++]))       ;
@@ -26,6 +29,29 @@
         render.sql(sqlChars[i++]);
       }
       render.sql(sqlChars[i]);
+    }
+ else     if (peekAny(sqlChars,i,quotes[QUOTE_START_DELIMITER])) {
+      int delimiter=0;
+      for (int d=0; d < quotes[QUOTE_START_DELIMITER].length; d++) {
+        if (peek(sqlChars,i,quotes[QUOTE_START_DELIMITER][d])) {
+          delimiter=d;
+          break;
+        }
+      }
+      for (int d=0; d < quotes[QUOTE_START_DELIMITER][delimiter].length(); d++)       render.sql(sqlChars[i++]);
+      for (; ; ) {
+        if (peek(sqlChars,i,quotes[QUOTE_END_DELIMITER_ESCAPED][delimiter])) {
+          for (int d=0; d < quotes[QUOTE_END_DELIMITER_ESCAPED][delimiter].length(); d++)           render.sql(sqlChars[i++]);
+        }
+ else         if (peek(sqlChars,i,quotes[QUOTE_END_DELIMITER][delimiter])) {
+          break;
+        }
+        render.sql(sqlChars[i++]);
+      }
+      for (int d=0; d < quotes[QUOTE_END_DELIMITER][delimiter].length(); d++) {
+        if (d > 0)         i++;
+        render.sql(sqlChars[i]);
+      }
     }
  else     if (sqlChars[i] == '?' && substituteIndex < substitutes.size()) {
       QueryPart substitute=substitutes.get(substituteIndex++);
