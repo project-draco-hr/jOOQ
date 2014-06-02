@@ -9,8 +9,4 @@
   assertEquals(TBook_ID(),bKey.field1());
   assertEquals(TBookToBookStore_BOOK_STORE_NAME(),b2sKey.field1());
   assertEquals(TBookToBookStore_BOOK_ID(),b2sKey.field2());
-  bKey.setValue(TBook_ID(),5);
-  assertEquals(5,(int)b.getValue(TBook_ID()));
-  b.setValue(TBook_ID(),6);
-  assertEquals(6,(int)bKey.value1());
 }
