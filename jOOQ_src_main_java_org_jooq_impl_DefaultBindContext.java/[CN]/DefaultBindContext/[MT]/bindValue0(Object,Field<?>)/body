@@ -14,7 +14,7 @@
   if (value == null) {
     int sqlType=DefaultDataType.getDataType(dialect,type).getSQLType();
     if (UDTRecord.class.isAssignableFrom(type)) {
-      String typeName=Utils.newRecord((Class<UDTRecord<?>>)type).<RuntimeException>operate(null).getUDT().getName();
+      String typeName=Utils.newRecord(false,(Class<UDTRecord<?>>)type).<RuntimeException>operate(null).getUDT().getName();
       stmt.setNull(nextIndex(),sqlType,typeName);
     }
  else     if (asList(POSTGRES).contains(configuration.dialect()) && sqlType == Types.BLOB) {

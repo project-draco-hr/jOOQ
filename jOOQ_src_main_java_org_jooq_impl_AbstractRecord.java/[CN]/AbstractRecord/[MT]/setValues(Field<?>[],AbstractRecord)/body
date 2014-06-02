@@ -1,4 +1,5 @@
 {
+  fetched=record.fetched;
   for (  Field<?> field : fields) {
     int targetIndex=indexOrFail(fieldsRow(),field);
     int sourceIndex=indexOrFail(record.fieldsRow(),field);

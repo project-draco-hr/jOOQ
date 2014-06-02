@@ -24,6 +24,7 @@
       }
     }
     changed(false);
+    fetched=true;
   }
   return result;
 }

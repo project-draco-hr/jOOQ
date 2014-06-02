@@ -1,0 +1,3 @@
+{
+  return (RecordDelegate<R>)newRecord(fetched,type.getRecordType(),type.fields(),configuration);
+}

@@ -1,0 +1,16 @@
+{
+  try {
+    R record;
+    if (type == RecordImpl.class || type == Record.class) {
+      record=(R)new RecordImpl(fields);
+    }
+ else {
+      record=Reflect.accessible(type.getDeclaredConstructor()).newInstance();
+    }
+    if (record instanceof AbstractRecord)     ((AbstractRecord)record).fetched=fetched;
+    return new RecordDelegate<R>(configuration,record);
+  }
+ catch (  Exception e) {
+    throw new IllegalStateException("Could not construct new record",e);
+  }
+}

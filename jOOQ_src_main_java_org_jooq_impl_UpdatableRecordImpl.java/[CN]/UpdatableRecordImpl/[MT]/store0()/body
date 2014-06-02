@@ -1,20 +1,17 @@
 {
   TableField<R,?>[] keys=getPrimaryKey().getFieldsArray();
   boolean executeUpdate=false;
-  for (  TableField<R,?> field : keys) {
-    if (updatablePrimaryKeys(settings(this))) {
-      if (original(field) == null) {
-        executeUpdate=false;
-        break;
-      }
-    }
+  if (updatablePrimaryKeys(settings(this))) {
+    executeUpdate=fetched;
+  }
  else {
+    for (    TableField<R,?> field : keys) {
       if (changed(field) || (field.getDataType().nullable() == false && getValue(field) == null)) {
         executeUpdate=false;
         break;
       }
+      executeUpdate=true;
     }
-    executeUpdate=true;
   }
   int result=0;
   if (executeUpdate) {

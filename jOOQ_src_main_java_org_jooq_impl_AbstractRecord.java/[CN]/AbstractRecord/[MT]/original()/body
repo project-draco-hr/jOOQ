@@ -1,5 +1,5 @@
 {
-  return Utils.newRecord((Class<AbstractRecord>)getClass(),fields.fields.fields,configuration()).operate(new RecordOperation<AbstractRecord,RuntimeException>(){
+  return Utils.newRecord(fetched,(Class<AbstractRecord>)getClass(),fields.fields.fields,configuration()).operate(new RecordOperation<AbstractRecord,RuntimeException>(){
     @Override public AbstractRecord operate(    AbstractRecord record) throws RuntimeException {
       for (int i=0; i < originals.length; i++) {
         record.values[i]=originals[i];

@@ -1,3 +1,0 @@
-{
-  return newRecord(type.getRecordType(),type.fields(),configuration);
-}
