@@ -1,5 +1,4 @@
 {
-  for (  Value<?> value : getValues()) {
-    value.reset();
-  }
+  changed.clear();
+  System.arraycopy(originals,0,values,0,originals.length);
 }

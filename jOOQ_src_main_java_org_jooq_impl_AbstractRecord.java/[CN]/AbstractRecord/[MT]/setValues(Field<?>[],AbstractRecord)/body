@@ -1,5 +1,9 @@
 {
   for (  Field<?> field : fields) {
-    setValue(field,record.getValue0(field));
+    int targetIndex=indexOrFail(fieldsRow(),field);
+    int sourceIndex=indexOrFail(record.fieldsRow(),field);
+    values[targetIndex]=record.getValue(sourceIndex);
+    originals[targetIndex]=record.original(sourceIndex);
+    changed.set(targetIndex,record.changed(sourceIndex));
   }
 }

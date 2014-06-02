@@ -3,8 +3,8 @@
   Field<?>[] pk=pk();
   for (  P object : objects) {
     R record=using(configuration).newRecord(table,object);
-    if (forUpdate && pk != null)     for (    Field<?> field : pk)     ((AbstractRecord)record).getValue0(field).setChanged(false);
-    for (int i=0; i < record.size(); i++)     if (record.getValue(i) == null)     if (!record.field(i).getDataType().nullable())     ((AbstractRecord)record).getValue0(i).setChanged(false);
+    if (forUpdate && pk != null)     for (    Field<?> field : pk)     record.changed(field,false);
+    for (int i=0; i < record.size(); i++)     if (record.getValue(i) == null)     if (!record.field(i).getDataType().nullable())     record.changed(i,false);
     result.add(record);
   }
   return result;

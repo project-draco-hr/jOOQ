@@ -1,3 +1,0 @@
-{
-  return getValue0(indexOrFail(fieldsRow(),field));
-}

@@ -16,7 +16,10 @@
     if (key != null && !key.isEmpty()) {
       if (insert.getReturnedRecord() != null) {
         for (        Field<?> field : key) {
-          setValue(field,new Value<Object>(insert.getReturnedRecord().getValue(field)));
+          int index=indexOrFail(fieldsRow(),field);
+          Object value=insert.getReturnedRecord().getValue(field);
+          values[index]=value;
+          originals[index]=value;
         }
       }
     }

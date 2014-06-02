@@ -1,4 +1,5 @@
 {
   T value=Utils.getFromResultSet(ctx,field,index + 1);
-  record.setValue(index,new Value<T>(value));
+  record.values[index]=value;
+  record.originals[index]=value;
 }

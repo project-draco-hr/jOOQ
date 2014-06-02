@@ -2,9 +2,8 @@
   List<Attachable> result=new ArrayList<Attachable>();
   int size=size();
   for (int i=0; i < size; i++) {
-    Object value=getValue0(i).getValue();
-    if (value instanceof Attachable) {
-      result.add((Attachable)value);
+    if (values[i] instanceof Attachable) {
+      result.add((Attachable)values[i]);
     }
   }
   return result;

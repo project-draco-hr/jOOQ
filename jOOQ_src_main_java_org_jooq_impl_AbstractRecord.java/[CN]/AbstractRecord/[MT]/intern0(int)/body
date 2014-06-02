@@ -1,0 +1,7 @@
+{
+  safeIndex(fieldIndex);
+  if (field(fieldIndex).getType() == String.class) {
+    values[fieldIndex]=((String)values[fieldIndex]).intern();
+    originals[fieldIndex]=((String)originals[fieldIndex]).intern();
+  }
+}

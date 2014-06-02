@@ -1,7 +1,0 @@
-{
-  Value<?>[] v=getValues();
-  if (index >= v.length) {
-    throw new IllegalArgumentException("Field " + index + " is not contained in list");
-  }
-  return (Value<T>)v[index];
-}

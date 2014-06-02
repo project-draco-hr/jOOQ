@@ -9,10 +9,8 @@
     throw new DataChangedException("Database record no longer exists");
   }
   for (  Field<?> field : fields.fields.fields) {
-    Value<?> thisValue=getValue0(field);
-    Value<?> thatValue=((AbstractRecord)record).getValue0(field);
-    Object thisObject=thisValue.getOriginal();
-    Object thatObject=thatValue.getOriginal();
+    Object thisObject=original(field);
+    Object thatObject=record.original(field);
     if (!StringUtils.equals(thisObject,thatObject)) {
       throw new DataChangedException("Database record has been changed");
     }

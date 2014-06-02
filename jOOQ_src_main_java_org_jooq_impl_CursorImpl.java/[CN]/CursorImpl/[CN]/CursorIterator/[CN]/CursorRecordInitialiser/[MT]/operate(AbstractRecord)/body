@@ -4,7 +4,7 @@
   for (int i=0; i < fields.length; i++) {
     setValue(record,fields[i],i);
     if (intern[i]) {
-      record.getValue0(i).intern();
+      record.intern0(i);
     }
   }
   ctx.record(record);

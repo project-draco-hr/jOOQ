@@ -1,22 +1,22 @@
 {
-  Value<T> val=getValue0(index);
   UniqueKey<?> key=getPrimaryKey();
   if (key == null || !key.getFields().contains(field)) {
-    val.setValue(value);
+    changed.set(index);
   }
- else   if (val.isChanged()) {
-    val.setValue(value);
+ else   if (changed.get(index)) {
+    changed.set(index);
   }
  else   if (updatablePrimaryKeys(settings(this))) {
-    val.setValue(value);
+    changed.set(index);
   }
- else   if (val.getOriginal() == null) {
-    val.setValue(value);
+ else   if (originals[index] == null) {
+    changed.set(index);
   }
  else {
-    val.setValue(value,true);
-    if (val.isChanged()) {
+    changed.set(index,changed.get(index) || !StringUtils.equals(values[index],value));
+    if (changed.get(index)) {
       changed(true);
     }
   }
+  values[index]=value;
 }

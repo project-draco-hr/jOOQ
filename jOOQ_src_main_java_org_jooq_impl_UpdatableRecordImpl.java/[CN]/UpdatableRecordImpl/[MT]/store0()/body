@@ -9,7 +9,7 @@
       }
     }
  else {
-      if (getValue0(field).isChanged() || (field.getDataType().nullable() == false && getValue(field) == null)) {
+      if (changed(field) || (field.getDataType().nullable() == false && getValue(field) == null)) {
         executeUpdate=false;
         break;
       }

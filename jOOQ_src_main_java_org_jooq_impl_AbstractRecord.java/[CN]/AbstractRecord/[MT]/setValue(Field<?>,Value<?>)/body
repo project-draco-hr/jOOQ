@@ -1,3 +1,0 @@
-{
-  setValue(indexOrFail(fieldsRow(),field),value);
-}

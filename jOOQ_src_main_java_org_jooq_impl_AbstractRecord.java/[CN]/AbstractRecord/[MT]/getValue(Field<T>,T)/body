@@ -1,3 +1,4 @@
 {
-  return getValue0(field).getValue(defaultValue);
+  T result=getValue(field);
+  return result != null ? result : defaultValue;
 }

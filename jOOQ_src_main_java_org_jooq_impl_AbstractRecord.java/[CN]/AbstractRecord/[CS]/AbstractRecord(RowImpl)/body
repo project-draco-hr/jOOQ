@@ -1,7 +1,7 @@
 {
+  int size=fields.size();
   this.fields=fields;
-  this.values=new Value<?>[fields.size()];
-  for (int i=0; i < values.length; i++) {
-    values[i]=new Value<Object>(null);
-  }
+  this.values=new Object[size];
+  this.originals=new Object[size];
+  this.changed=new BitSet(size);
 }

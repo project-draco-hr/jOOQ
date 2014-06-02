@@ -8,8 +8,9 @@
         int sourceIndex=fields.indexOf(targetField);
         if (sourceIndex >= 0) {
           DataType<?> targetType=targetField.getDataType();
-          Value<?> sourceValue=values[sourceIndex];
-          t.values[targetIndex]=new Value<Object>(targetType.convert(sourceValue.getValue()),targetType.convert(sourceValue.getOriginal()),sourceValue.isChanged());
+          t.values[targetIndex]=targetType.convert(values[sourceIndex]);
+          t.originals[targetIndex]=targetType.convert(originals[sourceIndex]);
+          t.changed.set(targetIndex,changed.get(sourceIndex));
         }
       }
     }

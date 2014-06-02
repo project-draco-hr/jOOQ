@@ -1,3 +1,5 @@
 {
-  getValue0(fieldIndex).setChanged(changed);
+  safeIndex(fieldIndex);
+  changed.set(fieldIndex,c);
+  if (!c)   originals[fieldIndex]=values[fieldIndex];
 }
