@@ -1,0 +1,9 @@
+{
+  assumeFamilyNotIn(CUBRID,DERBY,H2,MARIADB,MYSQL,SQLITE);
+  CommonTableExpression<Record3<String,String,Integer>> t1=name("t1").as(select(TAuthor_FIRST_NAME(),TAuthor_LAST_NAME(),TBook_ID()).from(TAuthor()).join(TBook()).on(TBook_AUTHOR_ID().eq(TAuthor_ID())).orderBy(TBook_ID()).limit(3));
+  Result<Record> result=create().with(t1).select(t1.fields()).from(t1).orderBy(t1.field(2).desc()).limit(2).fetch();
+  assertEquals(2,result.size());
+  assertEquals(asList("Paulo","George"),result.getValues(0));
+  assertEquals(asList("Coelho","Orwell"),result.getValues(1));
+  assertEquals(asList(3,2),result.getValues(2,int.class));
+}
