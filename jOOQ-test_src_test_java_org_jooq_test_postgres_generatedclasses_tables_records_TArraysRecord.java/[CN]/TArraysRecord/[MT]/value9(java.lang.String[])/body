@@ -1,0 +1,4 @@
+{
+  setStringList(value);
+  return this;
+}

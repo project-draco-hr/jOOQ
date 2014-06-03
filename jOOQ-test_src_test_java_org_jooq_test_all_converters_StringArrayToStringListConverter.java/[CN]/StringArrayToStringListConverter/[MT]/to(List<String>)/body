@@ -1,0 +1,3 @@
+{
+  return u == null ? null : u.toArray(new String[u.size()]);
+}

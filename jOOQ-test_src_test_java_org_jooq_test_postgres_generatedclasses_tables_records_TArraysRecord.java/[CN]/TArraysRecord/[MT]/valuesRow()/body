@@ -1,3 +1,3 @@
 {
-  return (org.jooq.Row7)super.valuesRow();
+  return (org.jooq.Row10)super.valuesRow();
 }

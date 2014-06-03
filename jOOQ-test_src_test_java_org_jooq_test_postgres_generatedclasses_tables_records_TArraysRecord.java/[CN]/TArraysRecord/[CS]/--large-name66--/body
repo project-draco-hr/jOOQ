@@ -1,0 +1,13 @@
+{
+  super(org.jooq.test.postgres.generatedclasses.tables.TArrays.T_ARRAYS);
+  setValue(0,id);
+  setValue(1,stringArray);
+  setValue(2,numberArray);
+  setValue(3,dateArray);
+  setValue(4,udtArray);
+  setValue(5,enumArray);
+  setValue(6,arrayArray);
+  setValue(7,numberList);
+  setValue(8,stringList);
+  setValue(9,dateList);
+}
