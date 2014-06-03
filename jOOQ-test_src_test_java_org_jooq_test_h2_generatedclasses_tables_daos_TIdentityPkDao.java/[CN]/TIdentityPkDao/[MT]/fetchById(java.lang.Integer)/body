@@ -1,3 +1,3 @@
 {
-  return fetch(org.jooq.test.h2.generatedclasses.tables.TIdentityPk.ID,values);
+  return fetch(org.jooq.test.h2.generatedclasses.tables.TIdentityPk.T_IDENTITY_PK.ID,values);
 }

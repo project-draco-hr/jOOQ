@@ -1,9 +1,9 @@
 {
   jOOQAbstractTest.reset=false;
-  Record2<Integer,String> key1=create().newRecord(org.jooq.test.h2.generatedclasses.tables.XUnused.ID,org.jooq.test.h2.generatedclasses.tables.XUnused.NAME);
-  Record2<Integer,String> key2=create().newRecord(org.jooq.test.h2.generatedclasses.tables.XUnused.ID,org.jooq.test.h2.generatedclasses.tables.XUnused.NAME);
-  key2.setValue(org.jooq.test.h2.generatedclasses.tables.XUnused.ID,1);
-  key2.setValue(org.jooq.test.h2.generatedclasses.tables.XUnused.NAME,"name");
+  Record2<Integer,String> key1=create().newRecord(X_UNUSED.ID,X_UNUSED.NAME);
+  Record2<Integer,String> key2=create().newRecord(X_UNUSED.ID,X_UNUSED.NAME);
+  key2.setValue(X_UNUSED.ID,1);
+  key2.setValue(X_UNUSED.NAME,"name");
   XUnusedDao dao=new XUnusedDao(create().configuration());
   dao.insert(new XUnused().setId(1).setName("name").setFields(1));
   assertNull(dao.findById(key1));

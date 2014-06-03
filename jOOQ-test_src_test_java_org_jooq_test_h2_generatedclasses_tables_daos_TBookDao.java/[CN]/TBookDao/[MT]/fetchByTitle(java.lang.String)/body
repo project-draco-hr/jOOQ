@@ -1,3 +1,3 @@
 {
-  return fetch(org.jooq.test.h2.generatedclasses.tables.TBook.TITLE,values);
+  return fetch(org.jooq.test.h2.generatedclasses.tables.TBook.T_BOOK.TITLE,values);
 }

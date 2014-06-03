@@ -1,3 +1,3 @@
 {
-  return fetch(org.jooq.test.h2.generatedclasses.tables.TArrays.DATE_ARRAY,values);
+  return fetch(org.jooq.test.h2.generatedclasses.tables.TArrays.T_ARRAYS.DATE_ARRAY,values);
 }

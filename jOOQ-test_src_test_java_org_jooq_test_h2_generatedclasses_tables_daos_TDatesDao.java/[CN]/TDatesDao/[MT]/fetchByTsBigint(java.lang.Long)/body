@@ -1,3 +1,3 @@
 {
-  return fetch(org.jooq.test.h2.generatedclasses.tables.TDates.TS_BIGINT,values);
+  return fetch(org.jooq.test.h2.generatedclasses.tables.TDates.T_DATES.TS_BIGINT,values);
 }

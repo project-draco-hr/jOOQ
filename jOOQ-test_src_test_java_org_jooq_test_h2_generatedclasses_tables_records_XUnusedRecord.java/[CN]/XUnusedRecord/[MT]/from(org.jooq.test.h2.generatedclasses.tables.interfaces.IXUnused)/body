@@ -10,7 +10,7 @@
   setConfiguration(from.getConfiguration());
   setUDT(from.getUDT());
   setMetaData(from.getMetaData());
-  setValues_(from.getValues_());
+  setValues(from.getValues());
   setType0(from.getType0());
   setPrimaryKey_(from.getPrimaryKey_());
   setPrimarykey(from.getPrimarykey());

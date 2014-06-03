@@ -1,3 +1,3 @@
 {
-  return fetch(org.jooq.test.h2.generatedclasses.tables.XUnused.NAME_REF,values);
+  return fetch(org.jooq.test.h2.generatedclasses.tables.XUnused.X_UNUSED.NAME_REF,values);
 }

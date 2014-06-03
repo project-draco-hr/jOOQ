@@ -1,3 +1,3 @@
 {
-  return (TableField)TArrays.NUMBER_ARRAY;
+  return (TableField)T_ARRAYS.NUMBER_ARRAY;
 }

@@ -1,6 +1,6 @@
 {
   try {
-    create().execute("CREATE VIEW my_view AS\n{0};",select(FIRST_NAME,LAST_NAME,count().cast(Long.class).as("Books Written")).from(T_AUTHOR).join(T_BOOK).on(TAuthor.ID.eq(AUTHOR_ID)).groupBy(FIRST_NAME,LAST_NAME).orderBy(FIRST_NAME,LAST_NAME));
+    create().execute("CREATE VIEW my_view AS\n{0};",select(T_AUTHOR.FIRST_NAME,T_AUTHOR.LAST_NAME,count().cast(Long.class).as("Books Written")).from(T_AUTHOR).join(T_BOOK).on(T_AUTHOR.ID.eq(T_BOOK.AUTHOR_ID)).groupBy(T_AUTHOR.FIRST_NAME,T_AUTHOR.LAST_NAME).orderBy(T_AUTHOR.FIRST_NAME,T_AUTHOR.LAST_NAME));
     Result<Record> result=create().fetch("SELECT * FROM my_view");
     assertEquals(2,result.size());
     assertEquals(AUTHOR_FIRST_NAMES,result.getValues(0));
