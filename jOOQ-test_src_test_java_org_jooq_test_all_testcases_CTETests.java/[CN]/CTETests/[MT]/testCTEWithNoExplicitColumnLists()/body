@@ -5,6 +5,7 @@
   assertEquals(2,result1.fields().length);
   assertEquals("x",result1.field(0).getName());
   assertEquals("y",result1.field(1).getName());
+  assertTrue(Number.class.isAssignableFrom(result1.field(0).getType()));
   assertEquals(String.class,result1.field(1).getType());
   assertEquals(1,(int)result1.get(0).getValue(0,Integer.class));
   assertEquals("a",result1.getValue(0,1));
