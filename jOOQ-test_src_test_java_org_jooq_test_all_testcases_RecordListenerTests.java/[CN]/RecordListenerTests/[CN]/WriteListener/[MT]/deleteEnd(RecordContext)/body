@@ -1,3 +1,4 @@
 {
   events.add("deleteEnd");
+  assertions(ctx);
 }

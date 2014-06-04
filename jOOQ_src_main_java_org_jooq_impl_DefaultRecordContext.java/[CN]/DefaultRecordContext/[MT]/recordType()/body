@@ -1,0 +1,4 @@
+{
+  Record record=record();
+  return record != null ? new Fields<Record>(record.fields()) : null;
+}

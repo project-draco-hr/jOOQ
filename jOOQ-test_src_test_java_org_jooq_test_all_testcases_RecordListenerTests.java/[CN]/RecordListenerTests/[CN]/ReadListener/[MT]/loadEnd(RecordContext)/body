@@ -1,3 +1,4 @@
 {
   events.add("loadEnd");
+  assertions(ctx);
 }

@@ -1,6 +1,6 @@
 {
   jOOQAbstractTest.reset=false;
-  WriteListener listener1=new WriteListener();
+  WriteListener listener1=new WriteListener(TBook());
   B book1=newBook(5);
   book1.attach(create(listener1).configuration());
   assertEquals(1,book1.store());
@@ -9,7 +9,7 @@
   book1.setValue(TBook_TITLE(),"1234");
   assertEquals(1,book1.store());
   assertEquals(asList("storeStart","updateStart","updateEnd","storeEnd"),listener1.events);
-  WriteListener listener2=new WriteListener();
+  WriteListener listener2=new WriteListener(TBook());
   B book2=newBook(6);
   book2.attach(create(listener2).configuration());
   assertEquals(1,book2.insert());

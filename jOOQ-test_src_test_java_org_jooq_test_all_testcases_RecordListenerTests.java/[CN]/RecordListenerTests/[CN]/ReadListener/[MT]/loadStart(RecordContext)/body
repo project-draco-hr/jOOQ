@@ -1,3 +1,4 @@
 {
   events.add("loadStart");
+  assertions(ctx);
 }

@@ -1,3 +1,4 @@
 {
   events.add("updateEnd");
+  assertions(ctx);
 }
