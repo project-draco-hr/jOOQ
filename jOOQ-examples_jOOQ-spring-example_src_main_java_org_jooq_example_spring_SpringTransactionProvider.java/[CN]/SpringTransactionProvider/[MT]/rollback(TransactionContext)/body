@@ -1,0 +1,4 @@
+{
+  log.info("rollback transaction");
+  txMgr.rollback(((SpringTransaction)ctx.transaction()).tx);
+}

@@ -1,0 +1,4 @@
+{
+  log.info("commit transaction");
+  txMgr.commit(((SpringTransaction)ctx.transaction()).tx);
+}

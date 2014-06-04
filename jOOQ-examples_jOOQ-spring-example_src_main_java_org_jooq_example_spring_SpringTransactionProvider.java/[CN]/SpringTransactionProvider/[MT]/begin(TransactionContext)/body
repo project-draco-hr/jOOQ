@@ -1,0 +1,5 @@
+{
+  log.info("Begin transaction");
+  TransactionStatus tx=txMgr.getTransaction(new DefaultTransactionDefinition(PROPAGATION_NESTED));
+  ctx.transaction(new SpringTransaction(tx));
+}
