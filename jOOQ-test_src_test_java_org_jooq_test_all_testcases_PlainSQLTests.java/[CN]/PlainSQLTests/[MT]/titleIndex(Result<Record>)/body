@@ -1,0 +1,5 @@
+{
+  Field<?>[] fields=r1.fieldsRow().fields();
+  for (int i=0; i < fields.length; i++)   if (fields[i].getName().equalsIgnoreCase("title"))   return i;
+  throw new AssertionError();
+}

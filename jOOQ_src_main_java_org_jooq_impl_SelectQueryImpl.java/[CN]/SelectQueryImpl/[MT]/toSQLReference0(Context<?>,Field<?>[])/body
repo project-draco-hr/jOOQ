@@ -8,7 +8,10 @@
     context.keyword("distinct").sql(" ");
   }
   context.declareFields(true);
-  if (context.subquery() && dialect == H2 && context.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY) != null) {
+  if (alternativeFields != null) {
+    context.visit(new SelectFieldList(alternativeFields));
+  }
+ else   if (context.subquery() && dialect == H2 && context.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY) != null) {
     Object data=context.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY);
     try {
       context.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY,null);
@@ -20,10 +23,6 @@
   }
  else {
     context.visit(getSelect1());
-  }
-  if (limitOffsetRownumber != null) {
-    ParamType paramType=context.paramType();
-    context.paramType(INLINED).sql(",").formatIndentStart().formatSeparator().visit(limitOffsetRownumber).formatIndentEnd().paramType(paramType);
   }
   context.declareFields(false).end(SELECT_SELECT);
   context.start(SELECT_FROM).declareTables(true);
@@ -88,9 +87,6 @@
   context.start(SELECT_ORDER_BY);
   if (!getOrderBy().isEmpty()) {
     context.formatSeparator().keyword("order").sql(orderBySiblings ? " " : "").keyword(orderBySiblings ? "siblings" : "").sql(" ").keyword("by").sql(" ").visit(getOrderBy());
-  }
- else   if (getLimit().isApplicable() && asList().contains(dialect)) {
-    context.formatSeparator().keyword("order by").sql(" ").keyword("@@version");
   }
   context.end(SELECT_ORDER_BY);
 }

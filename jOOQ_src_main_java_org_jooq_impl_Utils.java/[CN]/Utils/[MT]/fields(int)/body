@@ -1,0 +1,6 @@
+{
+  Field<?>[] result=new Field[length];
+  String[] names=fieldNames(length);
+  for (int i=0; i < length; i++)   result[i]=fieldByName(names[i]);
+  return result;
+}

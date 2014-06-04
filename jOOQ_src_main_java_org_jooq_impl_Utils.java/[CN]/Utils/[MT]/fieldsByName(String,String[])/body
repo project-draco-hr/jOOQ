@@ -1,0 +1,5 @@
+{
+  Field<?>[] result=new Field[fieldNames.length];
+  for (int i=0; i < fieldNames.length; i++)   result[i]=fieldByName(tableName,fieldNames[i]);
+  return result;
+}
