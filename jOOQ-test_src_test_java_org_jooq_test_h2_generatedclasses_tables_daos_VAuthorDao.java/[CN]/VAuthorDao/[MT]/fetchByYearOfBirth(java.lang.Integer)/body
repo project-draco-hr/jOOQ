@@ -1,0 +1,3 @@
+{
+  return fetch(org.jooq.test.h2.generatedclasses.tables.VAuthor.V_AUTHOR.YEAR_OF_BIRTH,values);
+}
