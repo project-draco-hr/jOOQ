@@ -1,0 +1,3 @@
+{
+  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.h2.generatedclasses.tables.records.VBookRecord>>asList(org.jooq.test.h2.generatedclasses.Keys.SYNTHETIC_PK_V_BOOK);
+}

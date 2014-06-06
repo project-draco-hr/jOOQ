@@ -25,6 +25,12 @@
     log.error("Error while fetching check constraints",e);
   }
   try {
+    syntheticPrimaryKeys(result);
+  }
+ catch (  Exception e) {
+    log.error("Error while generating synthetic primary keys",e);
+  }
+  try {
     overridePrimaryKeys(result);
   }
  catch (  Exception e) {
