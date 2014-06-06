@@ -1,9 +1,6 @@
 {
   QueryPart p=new CustomQueryPart(){
-    @Override public void toSQL(    RenderContext ctx){
-      ctx.visit(val("abc"));
-    }
-    @Override public void bind(    BindContext ctx){
+    @Override public void accept(    Context<?> ctx){
       ctx.visit(val("abc"));
     }
   }
