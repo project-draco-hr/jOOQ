@@ -1,7 +1,7 @@
 {
   DSLContext create=create();
   InsertQuery<R> insert=create.insertQuery(getTable());
-  addChangedValues(insert);
+  addChangedValues(storeFields,insert);
   if (!insert.isExecutable())   return 0;
   BigInteger version=addRecordVersion(insert);
   Timestamp timestamp=addRecordTimestamp(insert);
@@ -23,7 +23,7 @@
         }
       }
     }
-    changed(false);
+    for (    Field<?> storeField : storeFields)     changed(storeField,false);
     fetched=true;
   }
   return result;

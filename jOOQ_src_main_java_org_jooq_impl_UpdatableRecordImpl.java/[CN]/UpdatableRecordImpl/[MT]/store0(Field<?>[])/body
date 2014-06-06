@@ -15,10 +15,10 @@
   }
   int result=0;
   if (executeUpdate) {
-    result=storeUpdate(keys);
+    result=storeUpdate(storeFields,keys);
   }
  else {
-    result=storeInsert();
+    result=storeInsert(storeFields);
   }
   return result;
 }

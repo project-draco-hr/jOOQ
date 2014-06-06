@@ -1,0 +1,2 @@
+Field<?>[] storeFields
+StoreQuery<R> query

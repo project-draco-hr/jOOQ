@@ -1,6 +1,6 @@
 {
   UpdateQuery<R> update=create().updateQuery(getTable());
-  addChangedValues(update);
+  addChangedValues(storeFields,update);
   Utils.addConditions(update,this,keys);
   if (!update.isExecutable())   return 0;
   BigInteger version=addRecordVersion(update);
@@ -16,7 +16,7 @@
   int result=update.execute();
   checkIfChanged(result,version,timestamp);
   if (result > 0) {
-    changed(false);
+    for (    Field<?> storeField : storeFields)     changed(storeField,false);
   }
   return result;
 }

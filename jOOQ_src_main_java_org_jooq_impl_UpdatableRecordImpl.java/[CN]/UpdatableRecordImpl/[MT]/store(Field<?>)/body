@@ -1,8 +1,8 @@
 {
   final int[] result=new int[1];
-  delegate(configuration(),(Record)this,UPDATE).operate(new RecordOperation<Record,RuntimeException>(){
+  delegate(configuration(),(Record)this,STORE).operate(new RecordOperation<Record,RuntimeException>(){
     @Override public Record operate(    Record record) throws RuntimeException {
-      result[0]=storeUpdate0(keys);
+      result[0]=store0(storeFields);
       return record;
     }
   }

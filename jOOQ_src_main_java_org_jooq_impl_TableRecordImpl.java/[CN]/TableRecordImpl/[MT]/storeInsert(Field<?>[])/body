@@ -2,7 +2,7 @@
   final int[] result=new int[1];
   delegate(configuration(),(Record)this,INSERT).operate(new RecordOperation<Record,RuntimeException>(){
     @Override public Record operate(    Record record) throws RuntimeException {
-      result[0]=storeInsert0();
+      result[0]=storeInsert0(storeFields);
       return record;
     }
   }
