@@ -49,9 +49,17 @@
   out.println();
   out.tab(2).println("p.execute(%s);",instance ? "configuration()" : configurationArgument);
   if (procedure.getOutParameters().size() > 0) {
-    final String getter=getStrategy().getJavaGetterName(procedure.getOutParameters().get(0),Mode.DEFAULT);
+    final ParameterDefinition parameter=procedure.getOutParameters().get(0);
+    final String getter=getStrategy().getJavaGetterName(parameter,Mode.DEFAULT);
+    final String columnTypeInterface=getJavaType(parameter.getType(),Mode.INTERFACE);
+    final boolean isUDT=database.getUDT(parameter.getSchema(),parameter.getType().getUserType()) != null;
     if (instance) {
-      out.tab(2).println("from(p.%s());",getter);
+      if (generateInterfaces() && isUDT) {
+        out.tab(2).println("from((%s) p.%s());",columnTypeInterface,getter);
+      }
+ else {
+        out.tab(2).println("from(p.%s());",getter);
+      }
     }
     if (procedure.getOutParameters().size() == 1) {
       out.tab(2).println("return p.%s();",getter);

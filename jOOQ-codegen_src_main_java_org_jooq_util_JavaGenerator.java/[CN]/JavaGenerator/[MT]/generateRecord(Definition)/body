@@ -34,13 +34,26 @@
     final String setter=getStrategy().getJavaSetterName(column,Mode.DEFAULT);
     final String getter=getStrategy().getJavaGetterName(column,Mode.DEFAULT);
     final String type=getJavaType(column.getType());
+    final String typeInterface=getJavaType(column.getType(),Mode.INTERFACE);
     final String name=column.getQualifiedOutputName();
+    final boolean isUDT=database.getUDT(column.getSchema(),column.getType().getUserType()) != null;
     out.tab(1).javadoc("Setter for <code>%s</code>.%s",name,defaultIfBlank(" " + comment,""));
-    out.tab(1).overrideIf(generateInterfaces() && !generateImmutablePojos());
+    out.tab(1).overrideIf(generateInterfaces() && !generateImmutablePojos() && !isUDT);
     out.tab(1).println("public %s %s(%s value) {",setterReturnType,setter,type);
     out.tab(2).println("setValue(%s, value);",i);
     if (fluentSetters())     out.tab(2).println("return this;");
     out.tab(1).println("}");
+    if (generateInterfaces() && !generateImmutablePojos() && isUDT) {
+      out.tab(1).javadoc("Setter for <code>%s</code>.%s",name,defaultIfBlank(" " + comment,""));
+      out.tab(1).override();
+      out.tab(1).println("public %s %s(%s value) {",setterReturnType,setter,typeInterface);
+      out.tab(2).println("if (value == null)");
+      out.tab(3).println("setValue(%s, null);",i);
+      out.tab(2).println("else");
+      out.tab(3).println("setValue(%s, value.into(new %s()));",i,type);
+      if (fluentSetters())       out.tab(2).println("return this;");
+      out.tab(1).println("}");
+    }
     out.tab(1).javadoc("Getter for <code>%s</code>.%s",name,defaultIfBlank(" " + comment,""));
     if (tableOrUdt instanceof TableDefinition)     printColumnJPAAnnotation(out,(ColumnDefinition)column);
     printValidationAnnotation(out,column);

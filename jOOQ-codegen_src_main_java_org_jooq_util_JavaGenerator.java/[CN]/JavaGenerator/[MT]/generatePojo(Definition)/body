@@ -44,10 +44,12 @@
   }
   for (  TypedElementDefinition<?> column : getTypedElements(tableOrUDT)) {
     final String columnType=getJavaType(column.getType(),Mode.POJO);
+    final String columnTypeInterface=getJavaType(column.getType(),Mode.INTERFACE);
     final String columnSetterReturnType=fluentSetters() ? className : "void";
     final String columnSetter=getStrategy().getJavaSetterName(column,Mode.POJO);
     final String columnGetter=getStrategy().getJavaGetterName(column,Mode.POJO);
     final String columnMember=getStrategy().getJavaMemberName(column,Mode.POJO);
+    final boolean isUDT=database.getUDT(column.getSchema(),column.getType().getUserType()) != null;
     out.println();
     if (column instanceof ColumnDefinition)     printColumnJPAAnnotation(out,(ColumnDefinition)column);
     printValidationAnnotation(out,column);
@@ -57,11 +59,22 @@
     out.tab(1).println("}");
     if (!generateImmutablePojos()) {
       out.println();
-      out.tab(1).overrideIf(generateInterfaces());
+      out.tab(1).overrideIf(generateInterfaces() && !isUDT);
       out.tab(1).println("public %s %s(%s %s) {",columnSetterReturnType,columnSetter,columnType,columnMember);
       out.tab(2).println("this.%s = %s;",columnMember,columnMember);
       if (fluentSetters())       out.tab(2).println("return this;");
       out.tab(1).println("}");
+      if (generateInterfaces() && isUDT) {
+        out.println();
+        out.tab(1).override();
+        out.tab(1).println("public %s %s(%s %s) {",columnSetterReturnType,columnSetter,columnTypeInterface,columnMember);
+        out.tab(2).println("if (%s == null)",columnMember);
+        out.tab(3).println("this.%s = null;",columnMember);
+        out.tab(2).println("else");
+        out.tab(3).println("this.%s = %s.into(new %s());",columnMember,columnMember,columnType);
+        if (fluentSetters())         out.tab(2).println("return this;");
+        out.tab(1).println("}");
+      }
     }
   }
   if (generateInterfaces() && !generateImmutablePojos()) {
