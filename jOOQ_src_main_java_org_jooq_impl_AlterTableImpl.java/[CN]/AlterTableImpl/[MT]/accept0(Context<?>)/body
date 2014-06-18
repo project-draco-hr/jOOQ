@@ -14,16 +14,20 @@
  else   if (alter != null) {
     ctx.start(ALTER_TABLE_ALTER);
 switch (family) {
-default :
-      ctx.sql(" ").keyword("alter");
+case MARIADB:
+case MYSQL:
+      ctx.sql(" ").keyword("change column").sql(" ").qualify(false).visit(alter).qualify(true);
     break;
+default :
+  ctx.sql(" ").keyword("alter");
+break;
 }
 ctx.sql(" ").qualify(false).visit(alter).qualify(true);
 if (alterType != null) {
 switch (family) {
 case POSTGRES:
-    ctx.sql(" ").keyword("type");
-  break;
+ctx.sql(" ").keyword("type");
+break;
 }
 ctx.sql(" ").keyword(alterType.getCastTypeName(ctx.configuration()));
 if (!alterType.nullable()) {
