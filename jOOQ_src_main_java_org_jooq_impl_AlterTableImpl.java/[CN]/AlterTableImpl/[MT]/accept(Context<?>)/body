@@ -6,6 +6,9 @@
     if (!addType.nullable()) {
       ctx.sql(" ").keyword("not null");
     }
+ else {
+      ctx.sql(" ").keyword("null");
+    }
     ctx.end(ALTER_TABLE_ADD);
   }
  else   if (alter != null) {
