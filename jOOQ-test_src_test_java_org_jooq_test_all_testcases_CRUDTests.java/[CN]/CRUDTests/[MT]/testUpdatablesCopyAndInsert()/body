@@ -1,0 +1,11 @@
+{
+  Assume.assumeNotNull(TTriggers());
+  jOOQAbstractTest.reset=false;
+  DSLContext create=create();
+  T r1=create.newRecord(TTriggers());
+  r1.setValue(TTriggers_COUNTER(),1);
+  assertEquals(1,r1.store());
+  T r2=r1.copy();
+  assertEquals(1,r2.insert());
+  assertEquals(2,create.fetchCount(TTriggers()));
+}

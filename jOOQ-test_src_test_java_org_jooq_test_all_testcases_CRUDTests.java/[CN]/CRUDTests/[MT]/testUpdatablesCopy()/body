@@ -13,5 +13,5 @@
   assertEquals(1,r2.store());
   assertEquals(0,r3.store());
   assertEquals(1,r4.store());
-  assertEquals(3,(int)create().selectCount().from(TTriggers()).fetchOne(0,int.class));
+  assertEquals(3,create().fetchCount(TTriggers()));
 }
