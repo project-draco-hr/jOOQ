@@ -1,0 +1,3 @@
+{
+  setB(from.getB());
+}

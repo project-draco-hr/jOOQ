@@ -1,0 +1,4 @@
+{
+  setB(value);
+  return this;
+}
