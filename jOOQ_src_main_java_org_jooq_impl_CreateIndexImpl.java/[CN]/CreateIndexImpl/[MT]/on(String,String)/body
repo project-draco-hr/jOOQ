@@ -1,0 +1,5 @@
+{
+  Field<?>[] f=new Field[fieldNames.length];
+  for (int i=0; i < f.length; i++)   f[i]=DSL.field(fieldNames[i]);
+  return on(DSL.table(tableName),f);
+}

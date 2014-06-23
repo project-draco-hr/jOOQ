@@ -1,0 +1,5 @@
+{
+  this.table=t;
+  this.fields=f;
+  return this;
+}

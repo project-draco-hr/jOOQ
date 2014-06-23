@@ -1,0 +1,3 @@
+{
+  ctx.keyword("create index").sql(" ").visit(DSL.name(index)).sql(" ").keyword("on").sql(" ").visit(table).sql("(").qualify(false).visit(new QueryPartList<QueryPart>(fields)).qualify(true).sql(")");
+}
