@@ -1,0 +1,16 @@
+{
+  try {
+    create().execute("create table t (a int, b int)");
+    create().createIndex("idx1").on("t","a").execute();
+    create().createIndex("idx2").on("t","a","b").execute();
+    try {
+      create().createIndex("idx1").on("t","b").execute();
+      fail();
+    }
+ catch (    DataAccessException expected) {
+    }
+  }
+  finally {
+    create().dropTable("t").execute();
+  }
+}

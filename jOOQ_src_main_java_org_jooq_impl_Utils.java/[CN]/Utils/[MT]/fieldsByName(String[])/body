@@ -1,0 +1,3 @@
+{
+  return fieldsByName(null,fieldNames);
+}
