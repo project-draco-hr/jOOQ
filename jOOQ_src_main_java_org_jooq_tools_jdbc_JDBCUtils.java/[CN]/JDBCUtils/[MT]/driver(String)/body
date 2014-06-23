@@ -1,0 +1,23 @@
+{
+switch (dialect(url).family()) {
+case CUBRID:
+    return "cubrid.jdbc.driver.CUBRIDDriver";
+case DERBY:
+  return "org.apache.derby.jdbc.ClientDriver";
+case FIREBIRD:
+return "org.firebirdsql.jdbc.FBDriver";
+case H2:
+return "org.h2.Driver";
+case HSQLDB:
+return "org.hsqldb.jdbcDriver";
+case MARIADB:
+return "org.mariadb.jdbc.Driver";
+case MYSQL:
+return "com.mysql.jdbc.Driver";
+case POSTGRES:
+return "org.postgresql.Driver";
+case SQLITE:
+return "org.sqlite.JDBC";
+}
+return "java.sql.Driver";
+}

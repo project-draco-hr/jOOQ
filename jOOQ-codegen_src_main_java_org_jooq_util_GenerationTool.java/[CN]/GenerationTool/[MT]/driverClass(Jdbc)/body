@@ -1,0 +1,8 @@
+{
+  String result=j.getDriver();
+  if (result == null) {
+    result=JDBCUtils.driver(j.getUrl());
+    log.info("Database","Inferring driver " + result + " from URL "+ j.getUrl());
+  }
+  return result;
+}

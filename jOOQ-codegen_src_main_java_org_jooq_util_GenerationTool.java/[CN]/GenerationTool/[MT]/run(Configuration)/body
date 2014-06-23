@@ -7,7 +7,7 @@
   try {
     if (connection == null) {
       errorIfNull(j,"The <jdbc/> tag is mandatory.");
-      loadClass(j.getDriver());
+      loadClass(driverClass(j));
       Properties properties=new Properties();
       for (      Property p : j.getProperties()) {
         properties.put(p.getKey(),p.getValue());
