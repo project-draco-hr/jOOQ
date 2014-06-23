@@ -1,0 +1,7 @@
+{
+  Flyway flyway=new Flyway();
+  flyway.setDataSource(JDBC_URL,JDBC_USER,JDBC_PASSWORD);
+  flyway.migrate();
+  Configuration codegen=new Configuration().withJdbc(new Jdbc().withUrl(JDBC_URL).withUser(JDBC_USER).withPassword(JDBC_PASSWORD)).withGenerator(new Generator().withDatabase(new Database().withIncludes(".*").withExcludes("PUBLIC.schema_version").withInputSchema("PUBLIC")).withTarget(new Target().withDirectory(".").withPackageName("org.jooq.flyway.db")));
+  GenerationTool.main(codegen);
+}

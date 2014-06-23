@@ -1,0 +1,5 @@
+{
+  Result<?> result=DSL.using("jdbc:h2:~/flyway-test","sa","").select(AUTHOR.FIRST_NAME,AUTHOR.LAST_NAME,BOOK.ID,BOOK.TITLE).from(AUTHOR).join(BOOK).on(AUTHOR.ID.eq(BOOK.AUTHOR_ID)).orderBy(BOOK.ID.asc()).fetch();
+  assertEquals(4,result.size());
+  assertEquals(asList(1,2,3,4),result.getValues(BOOK.ID));
+}
