@@ -1,0 +1,3 @@
+{
+  assertEvents(asList(asList(DROP_INDEX)),ctx.dropIndex("i"));
+}

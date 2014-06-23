@@ -1,0 +1,12 @@
+{
+  try {
+    create().execute("create table t (a int, b int)");
+    create().createIndex("idx1").on("t","a").execute();
+    create().createIndex("idx2").on("t","a","b").execute();
+    create().dropIndex("idx2").execute();
+    create().createIndex("idx2").on("t","b").execute();
+  }
+  finally {
+    create().dropTable("t").execute();
+  }
+}
