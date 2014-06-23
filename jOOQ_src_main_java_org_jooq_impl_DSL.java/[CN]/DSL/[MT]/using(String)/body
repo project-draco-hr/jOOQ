@@ -1,0 +1,9 @@
+{
+  try {
+    Connection connection=DriverManager.getConnection(url);
+    return using(new DefaultConnectionProvider(connection,true),JDBCUtils.dialect(connection));
+  }
+ catch (  SQLException e) {
+    throw Utils.translate("Error when initialising Connection",e);
+  }
+}
