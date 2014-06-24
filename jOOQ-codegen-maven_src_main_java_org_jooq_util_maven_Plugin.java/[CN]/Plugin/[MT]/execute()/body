@@ -1,5 +1,7 @@
 {
+  ClassLoader oldCL=Thread.currentThread().getContextClassLoader();
   try {
+    Thread.currentThread().setContextClassLoader(getClassLoader());
     String dir=generator.getTarget().getDirectory();
     if (!new File(dir).isAbsolute()) {
       generator.getTarget().setDirectory(project.getBasedir() + File.separator + dir);
@@ -14,6 +16,9 @@
   }
  catch (  Exception ex) {
     throw new MojoExecutionException("Error running jOOQ code generation tool",ex);
+  }
+ finally {
+    Thread.currentThread().setContextClassLoader(oldCL);
   }
   project.addCompileSourceRoot(generator.getTarget().getDirectory());
 }

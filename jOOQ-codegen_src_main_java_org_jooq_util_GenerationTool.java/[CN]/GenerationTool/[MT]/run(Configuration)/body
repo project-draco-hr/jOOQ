@@ -7,14 +7,14 @@
   try {
     if (connection == null) {
       errorIfNull(j,"The <jdbc/> tag is mandatory.");
-      loadClass(driverClass(j));
+      Class<? extends Driver> driver=(Class<? extends Driver>)loadClass(driverClass(j));
       Properties properties=new Properties();
       for (      Property p : j.getProperties()) {
         properties.put(p.getKey(),p.getValue());
       }
       if (!properties.containsKey("user"))       properties.put("user",defaultString(j.getUser()));
       if (!properties.containsKey("password"))       properties.put("password",defaultString(j.getPassword()));
-      connection=DriverManager.getConnection(defaultString(j.getUrl()),properties);
+      connection=driver.newInstance().connect(defaultString(j.getUrl()),properties);
       close=true;
     }
  else {
