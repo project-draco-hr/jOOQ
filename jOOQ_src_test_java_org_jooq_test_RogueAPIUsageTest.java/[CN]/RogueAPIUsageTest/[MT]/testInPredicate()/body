@@ -1,0 +1,8 @@
+{
+  Field<Object> a=DSL.field("a");
+  List<String> values=Arrays.asList("a","b");
+  Condition c=a.in(new Object[]{values});
+  assertEquals("a in (?, ?)",create.render(c));
+  assertEquals("a in ('a', 'b')",create.renderInlined(c));
+  assertEquals("a in (:1, :2)",create.renderNamedParams(c));
+}
