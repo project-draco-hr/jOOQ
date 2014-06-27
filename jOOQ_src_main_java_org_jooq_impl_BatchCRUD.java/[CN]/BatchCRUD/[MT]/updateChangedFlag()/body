@@ -1,5 +1,8 @@
 {
   for (  TableRecord<?> record : records) {
     record.changed(action == Action.DELETE);
+    if (record instanceof AbstractRecord) {
+      ((AbstractRecord)record).fetched=action != Action.DELETE;
+    }
   }
 }
