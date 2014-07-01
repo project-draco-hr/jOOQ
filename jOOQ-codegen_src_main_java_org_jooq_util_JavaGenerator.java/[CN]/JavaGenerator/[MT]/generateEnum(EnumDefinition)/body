@@ -4,7 +4,8 @@
   final List<String> interfaces=getStrategy().getJavaClassImplements(e,Mode.ENUM);
   JavaWriter out=new JavaWriter(getStrategy().getFile(e,Mode.ENUM));
   printPackage(out,e);
-  printClassJavadoc(out,e);
+  generateEnumClassJavadoc(e,out);
+  printClassAnnotations(out);
   interfaces.add(EnumType.class.getName());
   out.println("public enum %s[[before= implements ][%s]] {",className,interfaces);
   List<String> literals=e.getLiterals();

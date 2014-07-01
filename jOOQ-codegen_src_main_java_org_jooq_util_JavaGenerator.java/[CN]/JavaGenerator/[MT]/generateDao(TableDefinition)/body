@@ -29,7 +29,8 @@
   log.info("Generating DAO",getStrategy().getFileName(table,Mode.DAO));
   JavaWriter out=new JavaWriter(getStrategy().getFile(table,Mode.DAO));
   printPackage(out,table,Mode.DAO);
-  printClassJavadoc(out,table);
+  generateDaoClassJavadoc(table,out);
+  printClassAnnotations(out);
   out.println("public class %s extends %s<%s, %s, %s> {",className,daoImpl,tableRecord,pType,tType);
   out.tab(1).javadoc("Create a new %s without any configuration",className);
   out.tab(1).println("public %s() {",className);

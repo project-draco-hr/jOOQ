@@ -10,7 +10,8 @@
   log.info("Generating table",getStrategy().getFileName(table) + " [input=" + table.getInputName()+ ", output="+ table.getOutputName()+ ", pk="+ (primaryKey != null ? primaryKey.getName() : "N/A")+ "]");
   JavaWriter out=new JavaWriter(getStrategy().getFile(table));
   printPackage(out,table);
-  printClassJavadoc(out,table);
+  generateTableClassJavadoc(table,out);
+  printClassAnnotations(out);
   out.println("public class %s extends %s<%s>[[before= implements ][%s]] {",className,TableImpl.class,recordType,interfaces);
   out.printSerial();
   printSingletonInstance(out,table);

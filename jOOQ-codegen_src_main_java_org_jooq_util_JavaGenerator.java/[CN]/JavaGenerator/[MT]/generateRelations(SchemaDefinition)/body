@@ -3,6 +3,7 @@
   JavaWriter out=new JavaWriter(new File(getStrategy().getFile(schema).getParentFile(),"Keys.java"));
   printPackage(out,schema);
   printClassJavadoc(out,"A class modelling foreign key relationships between tables of the <code>" + schema.getOutputName() + "</code> schema");
+  printClassAnnotations(out);
   out.println("public class Keys {");
   out.tab(1).header("IDENTITY definitions");
   out.println();

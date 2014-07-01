@@ -4,7 +4,9 @@
   final List<String> interfaces=getStrategy().getJavaClassImplements(tableOrUDT,Mode.INTERFACE);
   JavaWriter out=new JavaWriter(getStrategy().getFile(tableOrUDT,Mode.INTERFACE));
   printPackage(out,tableOrUDT,Mode.INTERFACE);
-  printClassJavadoc(out,tableOrUDT);
+  if (tableOrUDT instanceof TableDefinition)   generateInterfaceClassJavadoc((TableDefinition)tableOrUDT,out);
+ else   generateUDTInterfaceClassJavadoc((UDTDefinition)tableOrUDT,out);
+  printClassAnnotations(out);
   if (tableOrUDT instanceof TableDefinition)   printTableJPAAnnotation(out,(TableDefinition)tableOrUDT);
   out.println("public interface %s [[before=extends ][%s]] {",className,interfaces);
   for (  TypedElementDefinition<?> column : getTypedElements(tableOrUDT)) {
@@ -32,12 +34,8 @@
     out.tab(1).javadoc("Copy data into another generated Record/POJO implementing the common interface %s",local);
     out.tab(1).println("public <E extends %s> E into(E into);",qualified);
   }
-  if (tableOrUDT instanceof TableDefinition) {
-    generateInterfaceClassFooter((TableDefinition)tableOrUDT,out);
-  }
- else {
-    generateUDTInterfaceClassFooter((UDTDefinition)tableOrUDT,out);
-  }
+  if (tableOrUDT instanceof TableDefinition)   generateInterfaceClassFooter((TableDefinition)tableOrUDT,out);
+ else   generateUDTInterfaceClassFooter((UDTDefinition)tableOrUDT,out);
   out.println("}");
   out.close();
 }

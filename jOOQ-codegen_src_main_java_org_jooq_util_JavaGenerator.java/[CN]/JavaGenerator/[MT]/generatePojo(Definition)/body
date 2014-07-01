@@ -8,7 +8,9 @@
   }
   JavaWriter out=new JavaWriter(getStrategy().getFile(tableOrUDT,Mode.POJO));
   printPackage(out,tableOrUDT,Mode.POJO);
-  printClassJavadoc(out,tableOrUDT);
+  if (tableOrUDT instanceof TableDefinition)   generatePojoClassJavadoc((TableDefinition)tableOrUDT,out);
+ else   generateUDTPojoClassJavadoc((UDTDefinition)tableOrUDT,out);
+  printClassAnnotations(out);
   if (tableOrUDT instanceof TableDefinition)   printTableJPAAnnotation(out,(TableDefinition)tableOrUDT);
   out.println("public class %s[[before= extends ][%s]][[before= implements ][%s]] {",className,list(superName),interfaces);
   out.printSerial();
@@ -80,12 +82,8 @@
   if (generateInterfaces() && !generateImmutablePojos()) {
     printFromAndInto(out,tableOrUDT);
   }
-  if (tableOrUDT instanceof TableDefinition) {
-    generatePojoClassFooter((TableDefinition)tableOrUDT,out);
-  }
- else {
-    generateUDTPojoClassFooter((UDTDefinition)tableOrUDT,out);
-  }
+  if (tableOrUDT instanceof TableDefinition)   generatePojoClassFooter((TableDefinition)tableOrUDT,out);
+ else   generateUDTPojoClassFooter((UDTDefinition)tableOrUDT,out);
   out.println("}");
   out.close();
 }

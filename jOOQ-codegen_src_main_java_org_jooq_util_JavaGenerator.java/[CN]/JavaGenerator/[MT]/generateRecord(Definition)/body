@@ -8,7 +8,9 @@
   final List<? extends TypedElementDefinition<?>> columns=getTypedElements(tableOrUdt);
   JavaWriter out=new JavaWriter(getStrategy().getFile(tableOrUdt,Mode.RECORD));
   printPackage(out,tableOrUdt,Mode.RECORD);
-  printClassJavadoc(out,tableOrUdt);
+  if (tableOrUdt instanceof TableDefinition)   generateRecordClassJavadoc((TableDefinition)tableOrUdt,out);
+ else   generateUDTRecordClassJavadoc((UDTDefinition)tableOrUdt,out);
+  printClassAnnotations(out);
   if (tableOrUdt instanceof TableDefinition)   printTableJPAAnnotation(out,(TableDefinition)tableOrUdt);
   Class<?> baseClass;
   if (tableOrUdt instanceof UDTDefinition)   baseClass=UDTRecordImpl.class;
