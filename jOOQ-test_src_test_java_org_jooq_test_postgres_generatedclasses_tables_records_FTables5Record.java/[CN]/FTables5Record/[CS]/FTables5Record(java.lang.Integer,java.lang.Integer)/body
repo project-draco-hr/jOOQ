@@ -1,0 +1,5 @@
+{
+  super(org.jooq.test.postgres.generatedclasses.tables.FTables5.F_TABLES5);
+  setValue(0,v);
+  setValue(1,s);
+}

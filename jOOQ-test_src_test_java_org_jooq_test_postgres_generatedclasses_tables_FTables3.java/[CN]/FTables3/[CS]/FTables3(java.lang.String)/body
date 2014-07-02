@@ -1,0 +1,3 @@
+{
+  this(alias,org.jooq.test.postgres.generatedclasses.tables.FTables3.F_TABLES3);
+}

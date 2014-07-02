@@ -1,0 +1,3 @@
+{
+  return new org.jooq.test.postgres.generatedclasses.tables.FSearchBook(getName(),null,new org.jooq.Field[]{org.jooq.impl.DSL.val(pTitle),org.jooq.impl.DSL.val(pLimit),org.jooq.impl.DSL.val(pOffset)});
+}

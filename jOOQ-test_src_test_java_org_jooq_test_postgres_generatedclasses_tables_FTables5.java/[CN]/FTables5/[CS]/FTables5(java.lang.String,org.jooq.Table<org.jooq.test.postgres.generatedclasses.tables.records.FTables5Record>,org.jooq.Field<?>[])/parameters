@@ -1,0 +1,3 @@
+java.lang.String alias
+org.jooq.Table<org.jooq.test.postgres.generatedclasses.tables.records.FTables5Record> aliased
+org.jooq.Field<?>[] parameters

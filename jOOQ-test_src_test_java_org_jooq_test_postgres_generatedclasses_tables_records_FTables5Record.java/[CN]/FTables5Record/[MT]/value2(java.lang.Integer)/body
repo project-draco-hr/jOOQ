@@ -1,0 +1,4 @@
+{
+  setS(value);
+  return this;
+}

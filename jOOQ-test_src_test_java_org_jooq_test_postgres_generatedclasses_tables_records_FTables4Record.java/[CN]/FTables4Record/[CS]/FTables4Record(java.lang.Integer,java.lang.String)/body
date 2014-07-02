@@ -1,0 +1,5 @@
+{
+  super(org.jooq.test.postgres.generatedclasses.tables.FTables4.F_TABLES4);
+  setValue(0,id);
+  setValue(1,title);
+}

@@ -1,0 +1,3 @@
+{
+  return org.jooq.test.postgres.generatedclasses.tables.FTables1.F_TABLES1.COLUMN_VALUE;
+}

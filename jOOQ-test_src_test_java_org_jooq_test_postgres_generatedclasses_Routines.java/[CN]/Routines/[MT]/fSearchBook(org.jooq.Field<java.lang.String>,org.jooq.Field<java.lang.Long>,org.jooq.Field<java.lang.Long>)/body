@@ -1,7 +1,3 @@
 {
-  org.jooq.test.postgres.generatedclasses.routines.FSearchBook f=new org.jooq.test.postgres.generatedclasses.routines.FSearchBook();
-  f.setPTitle(pTitle);
-  f.setPLimit(pLimit);
-  f.setPOffset(pOffset);
-  return f.asField();
+  return org.jooq.test.postgres.generatedclasses.tables.FSearchBook.F_SEARCH_BOOK.call(pTitle,pLimit,pOffset);
 }

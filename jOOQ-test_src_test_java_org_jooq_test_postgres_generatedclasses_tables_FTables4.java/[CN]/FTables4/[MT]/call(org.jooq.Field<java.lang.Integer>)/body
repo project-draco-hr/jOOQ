@@ -1,0 +1,3 @@
+{
+  return new org.jooq.test.postgres.generatedclasses.tables.FTables4(getName(),null,new org.jooq.Field[]{inId});
+}
