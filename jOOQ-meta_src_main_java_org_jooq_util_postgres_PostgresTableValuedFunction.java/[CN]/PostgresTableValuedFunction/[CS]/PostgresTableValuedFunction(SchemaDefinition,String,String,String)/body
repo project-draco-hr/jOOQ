@@ -1,0 +1,5 @@
+{
+  super(schema,name,comment);
+  this.routine=new PostgresRoutineDefinition(schema.getDatabase(),schema.getInputName(),name,specificName);
+  this.specificName=specificName;
+}

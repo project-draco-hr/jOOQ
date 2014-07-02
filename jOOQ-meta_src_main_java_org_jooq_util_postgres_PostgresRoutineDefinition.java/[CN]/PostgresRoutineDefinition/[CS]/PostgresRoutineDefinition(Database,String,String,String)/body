@@ -1,0 +1,4 @@
+{
+  super(database.getSchema(schema),null,name,null,null);
+  this.specificName=specificName;
+}
