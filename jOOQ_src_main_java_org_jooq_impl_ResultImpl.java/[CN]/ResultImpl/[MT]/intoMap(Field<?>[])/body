@@ -4,7 +4,7 @@
   }
   Map<Record,R> map=new LinkedHashMap<Record,R>();
   for (  R record : this) {
-    @SuppressWarnings({"rawtypes","unchecked"}) RecordImpl key=new RecordImpl(keys);
+    RecordImpl key=new RecordImpl(keys);
     for (    Field<?> field : keys) {
       Utils.copyValue(key,field,record,field);
     }

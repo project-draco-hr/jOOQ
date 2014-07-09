@@ -1,0 +1,3 @@
+{
+  return (Record1)into(new Field[]{field1});
+}
