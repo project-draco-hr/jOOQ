@@ -1,4 +1,5 @@
 {
+  assertEquals("test with whitespace",create().select(val("test with whitespace").as("test with whitespace")).fetchOne().value1());
   Select<?> s=create(new Settings().withRenderNameStyle(RenderNameStyle.AS_IS)).select(TBook_ID(),TBook_TITLE(),TAuthor_FIRST_NAME(),TAuthor_LAST_NAME()).from(TBook()).join(TAuthor()).on(TBook_AUTHOR_ID().equal(TAuthor_ID())).orderBy(TBook_ID());
   Result<?> result=s.fetch();
   assertEquals(BOOK_IDS,result.getValues(TBook_ID()));
