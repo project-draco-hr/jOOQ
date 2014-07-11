@@ -1,0 +1,3 @@
+{
+  return new CreateSequenceImpl(configuration,sequence);
+}

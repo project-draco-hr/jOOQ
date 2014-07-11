@@ -1,0 +1,3 @@
+{
+  ctx.start(CREATE_SEQUENCE_SEQUENCE).keyword("create sequence").sql(" ").visit(sequence).end(CREATE_SEQUENCE_SEQUENCE);
+}

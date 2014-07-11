@@ -1,0 +1,10 @@
+{
+  assumeNotNull(cSequences());
+  try {
+    create().createSequence("s").execute();
+    assertEquals(BigInteger.ONE,create().nextval("s"));
+  }
+  finally {
+    create().dropSequence("s").execute();
+  }
+}

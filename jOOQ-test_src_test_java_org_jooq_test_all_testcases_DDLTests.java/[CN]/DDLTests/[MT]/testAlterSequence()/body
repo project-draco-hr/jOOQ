@@ -1,8 +1,6 @@
 {
-  if (cSequences() == null || asList(DERBY).contains(dialect().family())) {
-    log.info("SKIPPING","Skipping ALTER SEQUENCE test");
-    return;
-  }
+  assumeNotNull(cSequences());
+  assumeFamilyNotIn(DERBY);
   jOOQAbstractTest.reset=false;
   Sequence<Number> S_AUTHOR_ID=(Sequence<Number>)SAuthorID();
 switch (dialect().family()) {

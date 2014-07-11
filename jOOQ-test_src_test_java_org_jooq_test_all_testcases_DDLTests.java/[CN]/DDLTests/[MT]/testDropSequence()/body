@@ -1,0 +1,10 @@
+{
+  assumeNotNull(SAuthorID());
+  try {
+    create().dropSequence(SAuthorID()).execute();
+    create().nextval(SAuthorID());
+    fail();
+  }
+ catch (  DataAccessException expected) {
+  }
+}
