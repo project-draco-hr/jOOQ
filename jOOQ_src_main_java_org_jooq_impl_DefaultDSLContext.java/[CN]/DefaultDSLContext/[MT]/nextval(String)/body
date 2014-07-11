@@ -1,0 +1,3 @@
+{
+  return nextval(sequence(sequence));
+}

@@ -1,0 +1,3 @@
+{
+  return currval(sequence(sequence));
+}
