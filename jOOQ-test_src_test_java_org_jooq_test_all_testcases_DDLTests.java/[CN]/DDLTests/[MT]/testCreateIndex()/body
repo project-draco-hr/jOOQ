@@ -1,6 +1,6 @@
 {
   try {
-    create().execute("create table t (a int, b int)");
+    create().execute("create table {0} ({1} int, {2} int)",name("t"),name("a"),name("b"));
     create().createIndex("idx1").on("t","a").execute();
     create().createIndex("idx2").on("t","a","b").execute();
     try {

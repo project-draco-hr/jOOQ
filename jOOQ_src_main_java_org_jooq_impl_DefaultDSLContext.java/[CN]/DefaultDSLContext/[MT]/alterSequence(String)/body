@@ -1,3 +1,3 @@
 {
-  return alterSequence(sequence(sequence));
+  return alterSequence(sequenceByName(sequence));
 }

@@ -1,10 +1,10 @@
 {
   assumeFamilyNotIn(FIREBIRD);
   try {
-    create().execute("create table t (a int)");
+    create().execute("create table {0} ({1} int)",name("t"),name("a"));
     create().alterTable("t").alter("a").set(SQLDataType.VARCHAR).execute();
-    create().insertInto(table("t"),field("a")).values("1").execute();
-    assertEquals("1",create().fetchOne("select * from t").getValue(0));
+    create().insertInto(tableByName("t"),fieldByName("a")).values("1").execute();
+    assertEquals("1",create().fetchOne("select * from {0}",name("t")).getValue(0));
   }
   finally {
     create().dropTable("t").execute();

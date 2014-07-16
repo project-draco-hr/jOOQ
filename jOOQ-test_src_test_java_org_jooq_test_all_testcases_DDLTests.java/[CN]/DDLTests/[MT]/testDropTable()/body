@@ -1,10 +1,10 @@
 {
-  create().execute("create table t (a " + varchar() + ", b "+ varchar()+ ", c "+ varchar()+ ")");
-  create().insertInto(table("t"),field("a"),field("b"),field("c")).values("1","2","3").execute();
-  assertEquals(asList("1","2","3"),asList(create().fetchOne(table("t")).intoArray()));
+  create().execute("create table {0} ({1} " + varchar() + ", {2} "+ varchar()+ ", {3} "+ varchar()+ ")",name("t"),name("a"),name("b"),name("c"));
+  create().insertInto(tableByName("t"),fieldByName("a"),fieldByName("b"),fieldByName("c")).values("1","2","3").execute();
+  assertEquals(asList("1","2","3"),asList(create().fetchOne(tableByName("t")).intoArray()));
   create().dropTable("t").execute();
   try {
-    create().fetch(table("t"));
+    create().fetch(tableByName("t"));
     fail();
   }
  catch (  DataAccessException expected) {
