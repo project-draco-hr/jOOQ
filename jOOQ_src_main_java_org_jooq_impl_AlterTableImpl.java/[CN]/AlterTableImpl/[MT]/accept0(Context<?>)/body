@@ -6,7 +6,7 @@
     if (!addType.nullable()) {
       ctx.sql(" ").keyword("not null");
     }
- else {
+ else     if (family != FIREBIRD) {
       ctx.sql(" ").keyword("null");
     }
     ctx.end(ALTER_TABLE_ADD);
