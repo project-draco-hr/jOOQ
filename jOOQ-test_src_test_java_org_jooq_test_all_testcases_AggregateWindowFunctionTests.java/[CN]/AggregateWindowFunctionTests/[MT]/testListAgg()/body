@@ -1,5 +1,5 @@
 {
-  assumeFamilyNotIn(DERBY);
+  assumeFamilyNotIn(DERBY,FIREBIRD);
   if (!asList().contains(dialect().family())) {
     Result<?> result1=create().select(TAuthor_FIRST_NAME(),TAuthor_LAST_NAME(),groupConcat(TBook_ID(),", ").as("books")).from(TAuthor()).join(TBook()).on(TAuthor_ID().equal(TBook_AUTHOR_ID())).groupBy(TAuthor_ID(),TAuthor_FIRST_NAME(),TAuthor_LAST_NAME()).orderBy(TAuthor_ID()).fetch();
     assertEquals(2,result1.size());
