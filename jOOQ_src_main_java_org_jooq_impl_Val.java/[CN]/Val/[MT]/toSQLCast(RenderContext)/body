@@ -24,9 +24,6 @@
  else   if (family == POSTGRES && (type == null || !type.isTemporal())) {
     toSQL(context,value,getConverter());
   }
- else   if ((type == SQLDataType.VARCHAR || type == SQLDataType.CHAR) && asList(FIREBIRD).contains(family)) {
-    toSQLCast(context,dataType,getValueLength(),0,0);
-  }
  else {
     toSQLCast(context,dataType,dataType.length(),dataType.precision(),dataType.scale());
   }
