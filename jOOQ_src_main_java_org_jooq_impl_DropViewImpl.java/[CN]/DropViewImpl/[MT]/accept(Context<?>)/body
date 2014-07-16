@@ -1,0 +1,4 @@
+{
+  ctx.start(DROP_VIEW_TABLE).keyword("drop view").sql(" ").visit(table);
+  ctx.end(DROP_VIEW_TABLE);
+}

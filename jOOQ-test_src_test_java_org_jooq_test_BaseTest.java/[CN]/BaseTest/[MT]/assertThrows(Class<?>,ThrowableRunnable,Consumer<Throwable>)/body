@@ -1,0 +1,12 @@
+{
+  boolean fail=false;
+  try {
+    runnable.run();
+    fail=true;
+  }
+ catch (  Throwable t) {
+    if (!throwable.isInstance(t))     throw new AssertionError("Bad exception type",t);
+    exceptionConsumer.accept(t);
+  }
+  if (fail)   Assert.fail("No exception was thrown");
+}

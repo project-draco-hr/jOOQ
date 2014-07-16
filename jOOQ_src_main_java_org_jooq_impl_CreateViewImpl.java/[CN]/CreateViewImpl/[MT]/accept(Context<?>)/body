@@ -1,0 +1,7 @@
+{
+  ctx.start(CREATE_VIEW_NAME).keyword("create view").sql(" ").visit(name(viewName));
+  if (columnNames != null && columnNames.length > 0) {
+    ctx.sql("(").visit(new QueryPartList<Field<?>>(fieldsByName(columnNames))).sql(")");
+  }
+  ctx.end(CREATE_VIEW_NAME).formatSeparator().keyword("as").formatSeparator().start(CREATE_VIEW_AS).visit(select).end(CREATE_VIEW_AS);
+}
