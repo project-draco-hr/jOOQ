@@ -1,0 +1,3 @@
+{
+  return (List)fetch(query).getValues(0);
+}
