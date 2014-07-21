@@ -1,8 +1,0 @@
-{
-  for (  Field<?> field : getSelect()) {
-    if (Result.class.isAssignableFrom(field.getType())) {
-      return true;
-    }
-  }
-  return false;
-}
