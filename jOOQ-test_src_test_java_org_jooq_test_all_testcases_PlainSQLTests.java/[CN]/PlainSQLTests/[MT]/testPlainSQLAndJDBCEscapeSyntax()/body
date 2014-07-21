@@ -1,0 +1,6 @@
+{
+  Record result=create().select(field("{d '2014-01-01'}",Date.class).as("a"),field("{t '19:00:00'}",Time.class).as("b"),field("{ts '2014-01-01 19:00:00'}",Timestamp.class).as("c")).fetchOne();
+  assertEquals(Date.valueOf("2014-01-01"),result.getValue(0));
+  assertEquals(Time.valueOf("19:00:00"),result.getValue(1));
+  assertEquals(Timestamp.valueOf("2014-01-01 19:00:00"),result.getValue(2));
+}
