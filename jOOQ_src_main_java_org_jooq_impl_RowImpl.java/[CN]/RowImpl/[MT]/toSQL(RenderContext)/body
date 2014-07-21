@@ -1,10 +1,10 @@
 {
-  ctx.sql("(");
+  context.sql("(");
   String separator="";
   for (  Field<?> field : fields.fields) {
-    ctx.sql(separator);
-    ctx.visit(field);
+    context.sql(separator);
+    context.visit(field);
     separator=", ";
   }
-  ctx.sql(")");
+  context.sql(")");
 }
