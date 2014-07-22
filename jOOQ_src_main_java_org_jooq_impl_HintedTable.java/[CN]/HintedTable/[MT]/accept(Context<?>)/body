@@ -1,0 +1,3 @@
+{
+  ctx.visit(delegate).sql(" ").keyword(keywords).sql(" (").visit(arguments).sql(")");
+}

@@ -1,0 +1,3 @@
+AbstractTable<R> delegate
+String keywords
+String arguments

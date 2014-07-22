@@ -1,0 +1,6 @@
+{
+  super(delegate.getName(),delegate.getSchema());
+  this.delegate=delegate;
+  this.keywords=keywords;
+  this.arguments=arguments;
+}

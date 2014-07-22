@@ -1,0 +1,3 @@
+{
+  return new HintedTable<R>(new TableAlias<R>(delegate,alias,fieldAliases),keywords,arguments);
+}
