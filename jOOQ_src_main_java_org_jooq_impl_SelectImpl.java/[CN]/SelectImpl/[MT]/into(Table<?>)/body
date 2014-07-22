@@ -1,0 +1,4 @@
+{
+  getQuery().setInto(table);
+  return this;
+}

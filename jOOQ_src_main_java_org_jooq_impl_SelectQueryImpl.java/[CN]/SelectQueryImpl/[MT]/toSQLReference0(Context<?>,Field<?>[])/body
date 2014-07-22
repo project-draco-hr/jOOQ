@@ -25,6 +25,11 @@
     context.visit(getSelect1());
   }
   context.declareFields(false).end(SELECT_SELECT);
+  context.start(SELECT_INTO);
+  if (into != null && asList(HSQLDB,POSTGRES).contains(dialect.family())) {
+    context.formatSeparator().keyword("into").sql(" ").visit(into);
+  }
+  context.end(SELECT_INTO);
   context.start(SELECT_FROM).declareTables(true);
   boolean hasFrom=(context.data(DATA_RENDERING_DB2_FINAL_TABLE_CLAUSE) != null);
   if (!hasFrom) {

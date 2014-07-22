@@ -1,0 +1,3 @@
+{
+  new DDLTests(this).testSelectInto();
+}
