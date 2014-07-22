@@ -1,3 +1,3 @@
 {
-  return new CreateViewImpl<Record>(configuration,viewName,fieldNames);
+  return createView(tableByName(viewName),Utils.fieldsByName(viewName,fieldNames));
 }

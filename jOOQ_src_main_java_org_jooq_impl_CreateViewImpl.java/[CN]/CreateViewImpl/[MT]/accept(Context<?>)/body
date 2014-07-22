@@ -1,7 +1,8 @@
 {
-  ctx.start(CREATE_VIEW_NAME).keyword("create view").sql(" ").visit(name(viewName));
-  if (columnNames != null && columnNames.length > 0) {
-    ctx.sql("(").visit(new QueryPartList<Field<?>>(fieldsByName(columnNames))).sql(")");
+  ctx.start(CREATE_VIEW_NAME).keyword("create view").sql(" ").visit(view);
+  if (fields != null && fields.length > 0) {
+    boolean qualify=ctx.qualify();
+    ctx.sql("(").qualify(false).visit(new QueryPartList<Field<?>>(fields)).qualify(qualify).sql(")");
   }
   ctx.end(CREATE_VIEW_NAME).formatSeparator().keyword("as").formatSeparator().start(CREATE_VIEW_AS).visit(select).end(CREATE_VIEW_AS);
 }

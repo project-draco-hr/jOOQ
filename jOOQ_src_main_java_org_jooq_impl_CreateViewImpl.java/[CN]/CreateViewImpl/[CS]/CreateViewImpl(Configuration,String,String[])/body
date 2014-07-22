@@ -1,5 +1,0 @@
-{
-  super(configuration);
-  this.viewName=viewName;
-  this.columnNames=columnNames;
-}
