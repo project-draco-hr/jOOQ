@@ -66,7 +66,7 @@
       }
     }
  else     if (sqlChars[i] == '{') {
-      if (JDBC_ESCAPE_PATTERN.matcher(sql.substring(i)).matches()) {
+      if (peekAny(sqlChars,i,JDBC_ESCAPE_PREFIXES,true)) {
         render.sql(sqlChars[i]);
       }
  else {

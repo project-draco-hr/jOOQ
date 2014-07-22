@@ -1,0 +1,4 @@
+char[] sqlChars
+int index
+String peek
+boolean anyWhitespace

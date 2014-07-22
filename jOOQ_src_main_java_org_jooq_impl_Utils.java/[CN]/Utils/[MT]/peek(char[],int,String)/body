@@ -1,12 +1,3 @@
 {
-  char[] peekArray=peek.toCharArray();
-  for (int i=0; i < peekArray.length; i++) {
-    if (index + i >= sqlChars.length) {
-      return false;
-    }
-    if (sqlChars[index + i] != peekArray[i]) {
-      return false;
-    }
-  }
-  return true;
+  return peek(sqlChars,index,peek,false);
 }
