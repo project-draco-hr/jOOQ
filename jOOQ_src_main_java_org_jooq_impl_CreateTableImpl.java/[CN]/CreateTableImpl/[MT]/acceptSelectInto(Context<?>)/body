@@ -1,0 +1,5 @@
+{
+  ctx.data(DATA_SELECT_INTO_TABLE,table);
+  ctx.visit(select);
+  ctx.data().remove(DATA_SELECT_INTO_TABLE);
+}

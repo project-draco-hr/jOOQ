@@ -1,0 +1,8 @@
+{
+  try {
+    runnable.run();
+  }
+ catch (  Throwable t) {
+    t.printStackTrace();
+  }
+}

@@ -1,11 +1,2 @@
 {
-  try {
-    create().execute("create table {0} ({1} int, {2} " + varchar() + ")",name("t"),name("a"),name("b"));
-    create().alterTable("t").alter("b").defaultValue("empty").execute();
-    create().insertInto(tableByName("t"),fieldByName("a")).values(1).execute();
-    assertEquals("empty",create().fetchValue("select {0} from {1}",name("b"),name("t")));
-  }
-  finally {
-    create().dropTable("t").execute();
-  }
 }

@@ -1,13 +1,2 @@
 {
-  try {
-    create().select(val("value").as("value")).into(tableByName("value")).execute();
-    Result<Record> r2=create().selectFrom(tableByName("value")).fetch();
-    assertEquals(1,r2.size());
-    assertEquals(1,r2.fields().length);
-    assertEquals("value",r2.field(0).getName());
-    assertEquals("value",r2.get(0).getValue(0));
-  }
-  finally {
-    create().dropTable("value").execute();
-  }
 }

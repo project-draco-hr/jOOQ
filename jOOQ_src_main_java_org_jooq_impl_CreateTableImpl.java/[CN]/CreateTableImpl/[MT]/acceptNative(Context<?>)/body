@@ -1,0 +1,3 @@
+{
+  ctx.start(CREATE_TABLE).start(CREATE_TABLE_NAME).keyword("create table").sql(" ").visit(table).end(CREATE_TABLE_NAME).formatSeparator().keyword("as").formatSeparator().start(CREATE_TABLE_AS).visit(select).end(CREATE_TABLE_AS).end(CREATE_TABLE);
+}
