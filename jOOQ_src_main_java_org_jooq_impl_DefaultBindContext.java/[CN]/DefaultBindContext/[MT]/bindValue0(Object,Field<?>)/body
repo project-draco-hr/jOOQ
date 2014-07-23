@@ -162,7 +162,7 @@ case HSQLDB:
       a=Convert.convertArray(a,String[].class);
       t=String[].class;
     }
-    stmt.setArray(nextIndex(),new DefaultArray(dialect,a,t));
+    stmt.setArray(nextIndex(),new MockArray(dialect,a,t));
     break;
   }
 case H2:

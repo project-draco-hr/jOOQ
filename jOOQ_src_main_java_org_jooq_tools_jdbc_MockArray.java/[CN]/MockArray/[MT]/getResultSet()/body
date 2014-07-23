@@ -1,0 +1,3 @@
+{
+  return getResultSet0(array);
+}

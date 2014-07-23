@@ -1,0 +1,3 @@
+{
+  return DefaultDataType.getDataType(dialect,type.getComponentType()).getSQLType();
+}

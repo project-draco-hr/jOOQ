@@ -1,0 +1,13 @@
+{
+  DSLContext create=DSL.using(dialect);
+  Field<Long> index=fieldByName(Long.class,"INDEX");
+  Field<T> value=(Field<T>)fieldByName(type.getComponentType(),"VALUE");
+  Result<Record2<Long,T>> result=create.newResult(index,value);
+  for (int i=0; i < a.length; i++) {
+    Record2<Long,T> record=create.newRecord(index,value);
+    record.setValue(index,i + 1L);
+    record.setValue(value,a[i]);
+    result.add(record);
+  }
+  return new MockResultSet(result);
+}
