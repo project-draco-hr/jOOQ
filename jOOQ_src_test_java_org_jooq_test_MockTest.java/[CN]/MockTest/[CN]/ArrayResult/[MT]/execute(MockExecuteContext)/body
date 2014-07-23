@@ -1,0 +1,12 @@
+{
+  Result<Record2<String[],Integer[]>> result=create.newResult(strings,integers);
+  Record2<String[],Integer[]> empty=create.newRecord(strings,integers);
+  result.add(empty);
+  for (int i=0; i < length; i++) {
+    Record2<String[],Integer[]> record=create.newRecord(strings,integers);
+    record.setValue(strings,nCopies(i,"" + i).toArray(new String[i]));
+    record.setValue(integers,nCopies(i,i).toArray(new Integer[i]));
+    result.add(record);
+  }
+  return new MockResult[]{new MockResult(0,result)};
+}
