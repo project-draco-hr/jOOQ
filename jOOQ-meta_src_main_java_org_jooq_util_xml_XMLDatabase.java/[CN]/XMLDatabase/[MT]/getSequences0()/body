@@ -1,0 +1,11 @@
+{
+  List<SequenceDefinition> result=new ArrayList<SequenceDefinition>();
+  for (  Sequence sequence : info().getSequences()) {
+    if (getInputSchemata().contains(sequence.getSequenceSchema())) {
+      SchemaDefinition schema=getSchema(sequence.getSequenceSchema());
+      DataTypeDefinition type=new DefaultDataTypeDefinition(this,schema,sequence.getDataType(),sequence.getCharacterMaximumLength(),sequence.getNumericPrecision(),sequence.getNumericScale(),false,false);
+      result.add(new DefaultSequenceDefinition(schema,sequence.getSequenceName(),type));
+    }
+  }
+  return result;
+}

@@ -1,0 +1,6 @@
+{
+  if (info == null) {
+    info=JAXB.unmarshal(new File(getProperties().getProperty("xml-file")),InformationSchema.class);
+  }
+  return info;
+}

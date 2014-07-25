@@ -1,0 +1,4 @@
+{
+  super(org.jooq.test.oracle4.generatedclasses.tables.TAuthor.T_AUTHOR);
+  setValue(0,id);
+}

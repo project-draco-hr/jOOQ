@@ -1,0 +1,5 @@
+{
+  super(schema,table.getTableName(),"");
+  this.info=info;
+  this.table=table;
+}

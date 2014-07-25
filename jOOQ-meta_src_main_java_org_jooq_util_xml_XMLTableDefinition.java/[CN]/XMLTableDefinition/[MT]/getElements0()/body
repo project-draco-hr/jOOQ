@@ -1,0 +1,11 @@
+{
+  List<ColumnDefinition> result=new ArrayList<ColumnDefinition>();
+  for (  Column column : info.getColumns()) {
+    if (StringUtils.equals(table.getTableCatalog(),column.getTableCatalog()) && StringUtils.equals(table.getTableSchema(),column.getTableSchema()) && StringUtils.equals(table.getTableName(),column.getTableName())) {
+      SchemaDefinition schema=getDatabase().getSchema(column.getTableSchema());
+      DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),schema,column.getDataType(),unbox(column.getCharacterMaximumLength()),unbox(column.getNumericPrecision()),unbox(column.getNumericScale()),column.isIsNullable(),column.getColumnDefault() != null);
+      result.add(new DefaultColumnDefinition(this,column.getColumnName(),unbox(column.getOrdinalPosition()),type,column.getIdentityGeneration() != null,""));
+    }
+  }
+  return result;
+}

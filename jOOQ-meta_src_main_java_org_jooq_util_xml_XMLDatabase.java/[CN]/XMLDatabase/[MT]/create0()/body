@@ -1,0 +1,9 @@
+{
+  @SuppressWarnings("deprecation") SQLDialect dialect=SQLDialect.SQL99;
+  try {
+    dialect=SQLDialect.valueOf(getProperties().getProperty("dialect"));
+  }
+ catch (  Exception ignore) {
+  }
+  return DSL.using(dialect);
+}

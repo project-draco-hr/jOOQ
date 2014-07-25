@@ -1,0 +1,10 @@
+{
+  List<TableDefinition> result=new ArrayList<TableDefinition>();
+  for (  Table table : info().getTables()) {
+    if (getInputSchemata().contains(table.getTableSchema())) {
+      SchemaDefinition schema=getSchema(table.getTableSchema());
+      result.add(new XMLTableDefinition(schema,info(),table));
+    }
+  }
+  return result;
+}
