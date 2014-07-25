@@ -24,7 +24,7 @@ switch (ctx.configuration().dialect().family()) {
 default :
     ctx.start(UPDATE_FROM);
   if (!from.isEmpty()) {
-    ctx.formatSeparator().keyword("from").sql(" ").visit(from);
+    ctx.formatSeparator().keyword("from").sql(" ").declareTables(true).visit(from).declareTables(false);
   }
 ctx.end(UPDATE_FROM);
 break;
