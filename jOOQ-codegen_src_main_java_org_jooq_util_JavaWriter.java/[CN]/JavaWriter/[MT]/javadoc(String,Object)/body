@@ -1,8 +1,9 @@
 {
   final int t=tab();
+  String escaped=string.replace("*/","* /");
   tab(t).println();
   tab(t).println("/**");
-  tab(t).println(" * " + string,args);
+  tab(t).println(" * " + escaped,args);
   tab(t).println(" */");
   return this;
 }
