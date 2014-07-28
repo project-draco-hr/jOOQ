@@ -7,6 +7,7 @@
     return;
   }
   final String className=getStrategy().getFullJavaClassName(function);
+  final String localVar=disambiguateJavaMemberName(function.getInParameters(),"f");
   out.tab(1).javadoc("Get <code>%s</code> as a field",function.getQualifiedOutputName());
   out.tab(1).print("public static %s<%s> %s(",function.isAggregate() ? AggregateFunction.class : Field.class,getJavaType(function.getReturnType()),getStrategy().getJavaMethodName(function,Mode.DEFAULT));
   String separator="";
@@ -22,13 +23,13 @@
     separator=", ";
   }
   out.println(") {");
-  out.tab(2).println("%s f = new %s();",className,className);
+  out.tab(2).println("%s %s = new %s();",className,localVar,className);
   for (  ParameterDefinition parameter : function.getInParameters()) {
     final String paramSetter=getStrategy().getJavaSetterName(parameter,Mode.DEFAULT);
     final String paramMember=getStrategy().getJavaMemberName(parameter);
-    out.tab(2).println("f.%s(%s);",paramSetter,paramMember);
+    out.tab(2).println("%s.%s(%s);",localVar,paramSetter,paramMember);
   }
   out.println();
-  out.tab(2).println("return f.as%s();",function.isAggregate() ? "AggregateFunction" : "Field");
+  out.tab(2).println("return %s.as%s();",localVar,function.isAggregate() ? "AggregateFunction" : "Field");
   out.tab(1).println("}");
 }

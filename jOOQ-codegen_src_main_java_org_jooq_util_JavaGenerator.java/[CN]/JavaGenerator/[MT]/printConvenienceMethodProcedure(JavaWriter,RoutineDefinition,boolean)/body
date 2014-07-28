@@ -5,6 +5,7 @@
   }
   final String className=getStrategy().getFullJavaClassName(procedure);
   final String configurationArgument=disambiguateJavaMemberName(procedure.getInParameters(),"configuration");
+  final String localVar=disambiguateJavaMemberName(procedure.getInParameters(),"p");
   out.tab(1).javadoc("Call <code>%s</code>",procedure.getQualifiedOutputName());
   out.print("\tpublic ");
   if (!instance) {
@@ -40,14 +41,14 @@
     glue=", ";
   }
   out.println(") {");
-  out.tab(2).println("%s p = new %s();",className,className);
+  out.tab(2).println("%s %s = new %s();",className,localVar,className);
   for (  ParameterDefinition parameter : procedure.getInParameters()) {
     final String setter=getStrategy().getJavaSetterName(parameter,Mode.DEFAULT);
     final String arg=(instance && parameter.equals(procedure.getInParameters().get(0))) ? "this" : getStrategy().getJavaMemberName(parameter);
-    out.tab(2).println("p.%s(%s);",setter,arg);
+    out.tab(2).println("%s.%s(%s);",localVar,setter,arg);
   }
   out.println();
-  out.tab(2).println("p.execute(%s);",instance ? "configuration()" : configurationArgument);
+  out.tab(2).println("%s.execute(%s);",localVar,instance ? "configuration()" : configurationArgument);
   if (procedure.getOutParameters().size() > 0) {
     final ParameterDefinition parameter=procedure.getOutParameters().get(0);
     final String getter=getStrategy().getJavaGetterName(parameter,Mode.DEFAULT);
@@ -55,17 +56,17 @@
     final boolean isUDT=database.getUDT(parameter.getSchema(),parameter.getType().getUserType()) != null;
     if (instance) {
       if (generateInterfaces() && isUDT) {
-        out.tab(2).println("from((%s) p.%s());",columnTypeInterface,getter);
+        out.tab(2).println("from((%s) %s.%s());",columnTypeInterface,localVar,getter);
       }
  else {
-        out.tab(2).println("from(p.%s());",getter);
+        out.tab(2).println("from(%s.%s());",localVar,getter);
       }
     }
     if (procedure.getOutParameters().size() == 1) {
-      out.tab(2).println("return p.%s();",getter);
+      out.tab(2).println("return %s.%s();",localVar,getter);
     }
  else     if (procedure.getOutParameters().size() > 1) {
-      out.tab(2).println("return p;");
+      out.tab(2).println("return %s;",localVar);
     }
   }
   out.tab(1).println("}");

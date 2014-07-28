@@ -8,6 +8,7 @@
   final String functionType=getJavaType(function.getReturnType());
   final String methodName=getStrategy().getJavaMethodName(function,Mode.DEFAULT);
   final String configurationArgument=disambiguateJavaMemberName(function.getInParameters(),"configuration");
+  final String localVar=disambiguateJavaMemberName(function.getInParameters(),"f");
   out.tab(1).javadoc("Call <code>%s</code>",functionName);
   out.tab(1).print("public %s%s %s(",!instance ? "static " : "",functionType,methodName);
   String glue="";
@@ -25,14 +26,14 @@
     glue=", ";
   }
   out.println(") {");
-  out.tab(2).println("%s f = new %s();",className,className);
+  out.tab(2).println("%s %s = new %s();",className,localVar,className);
   for (  ParameterDefinition parameter : function.getInParameters()) {
     final String paramSetter=getStrategy().getJavaSetterName(parameter,Mode.DEFAULT);
     final String paramMember=(instance && parameter.equals(function.getInParameters().get(0))) ? "this" : getStrategy().getJavaMemberName(parameter);
-    out.tab(2).println("f.%s(%s);",paramSetter,paramMember);
+    out.tab(2).println("%s.%s(%s);",localVar,paramSetter,paramMember);
   }
   out.println();
-  out.tab(2).println("f.execute(%s);",instance ? "configuration()" : configurationArgument);
-  out.tab(2).println("return f.getReturnValue();");
+  out.tab(2).println("%s.execute(%s);",localVar,instance ? "configuration()" : configurationArgument);
+  out.tab(2).println("return %s.getReturnValue();",localVar);
   out.tab(1).println("}");
 }
