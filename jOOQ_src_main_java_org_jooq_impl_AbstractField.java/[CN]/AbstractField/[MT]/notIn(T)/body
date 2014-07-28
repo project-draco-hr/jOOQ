@@ -1,4 +1,6 @@
 {
+  if (isAccidentalSelect(values))   return notIn((Select<Record1<T>>)values[0]);
+  if (isAccidentalCollection(values))   return notIn((Collection<?>)values[0]);
   if (values == null || values.length == 0) {
     return trueCondition();
   }

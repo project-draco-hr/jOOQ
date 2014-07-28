@@ -1,0 +1,8 @@
+{
+  Field<Object> a=DSL.field("a");
+  Select<?> values=DSL.select(val(1));
+  Condition c=a.in(values);
+  assertEquals("a in (select ? from dual)",create.render(c));
+  assertEquals("a in (select 1 from dual)",create.renderInlined(c));
+  assertEquals("a in (select :1 from dual)",create.renderNamedParams(c));
+}

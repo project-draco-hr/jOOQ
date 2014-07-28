@@ -2,8 +2,7 @@
   List<Field<?>> result=new ArrayList<Field<?>>();
   if (values != null && field != null) {
     for (int i=0; i < values.length; i++) {
-      if (values[i] instanceof Collection)       result.addAll(fields(((Collection<?>)values[i]).toArray(),field));
- else       result.add(field(values[i],field));
+      result.add(field(values[i],field));
     }
   }
   return result;
