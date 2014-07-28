@@ -1,6 +1,10 @@
 {
   List<Field<?>> list=Arrays.asList(values);
-  if (list.size() > IN_LIMIT) {
+  if (list.size() == 0) {
+    if (comparator == IN)     ctx.visit(falseCondition());
+ else     ctx.visit(trueCondition());
+  }
+ else   if (list.size() > IN_LIMIT) {
 switch (ctx.configuration().dialect().family()) {
 case FIREBIRD:
 {

@@ -1,4 +1,5 @@
 {
+  if (fields == null)   return new Field[0];
   Field<?>[] result=new Field<?>[fields.length];
   for (int i=0; i < fields.length; i++) {
     result[i]=nullSafe(fields[i]);
