@@ -1,0 +1,6 @@
+{
+  org.jooq.test.postgres.generatedclasses.routines.P p__=new org.jooq.test.postgres.generatedclasses.routines.P();
+  p__.setP(p);
+  p__.setP_(p_);
+  p__.execute(configuration);
+}

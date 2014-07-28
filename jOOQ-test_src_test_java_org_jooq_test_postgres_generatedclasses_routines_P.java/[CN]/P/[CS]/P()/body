@@ -1,0 +1,5 @@
+{
+  super("p",org.jooq.test.postgres.generatedclasses.Public.PUBLIC);
+  addInParameter(P);
+  addInParameter(P_);
+}

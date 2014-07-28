@@ -1,0 +1,6 @@
+{
+  org.jooq.test.postgres.generatedclasses.routines.F f__=new org.jooq.test.postgres.generatedclasses.routines.F();
+  f__.setF(f);
+  f__.setF_(f_);
+  return f__.asField();
+}
