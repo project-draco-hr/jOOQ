@@ -4,7 +4,7 @@
     return;
   }
   if (uniqueKeySchema == null) {
-    log.warn("Ignoring foreign key",foreignKeyName + " (" + foreignKeyColumn+ ") referencing "+ uniqueKeyName+ " references a schema out of scope for jooq-meta");
+    log.warn("Ignoring foreign key",foreignKeyName + " (" + foreignKeyColumn+ ") referencing "+ uniqueKeyName+ " references a schema out of scope for jooq-meta: "+ uniqueKeySchema);
     return;
   }
   log.info("Adding foreign key",foreignKeyName + " (" + foreignKeyColumn+ ") referencing "+ uniqueKeyName);
