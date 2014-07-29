@@ -1,0 +1,4 @@
+{
+  setVal3(value);
+  return this;
+}

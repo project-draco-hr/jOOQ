@@ -1,0 +1,4 @@
+{
+  setVal8(value);
+  return this;
+}

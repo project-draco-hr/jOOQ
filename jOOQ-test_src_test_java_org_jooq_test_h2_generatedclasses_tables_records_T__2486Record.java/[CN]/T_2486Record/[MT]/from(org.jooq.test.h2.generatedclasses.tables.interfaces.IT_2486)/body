@@ -1,0 +1,10 @@
+{
+  setVal1(from.getVal1());
+  setVal2(from.getVal2());
+  setVal3(from.getVal3());
+  setVal4(from.getVal4());
+  setVal5(from.getVal5());
+  setVal6(from.getVal6());
+  setVal7(from.getVal7());
+  setVal8(from.getVal8());
+}
