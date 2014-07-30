@@ -1,0 +1,3 @@
+{
+  new AggregateWindowFunctionTests(this).testAggregateFunctionsSimple();
+}

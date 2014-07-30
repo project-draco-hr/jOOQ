@@ -12,7 +12,8 @@
     context.sql("(").data(DATA_WRAP_DERIVED_TABLES_IN_PARENTHESES,null);
   }
   if (getLimit().isApplicable()) {
-switch (context.configuration().dialect()) {
+    SQLDialect dialect=context.configuration().dialect();
+switch (dialect) {
 default :
 {
         toSQLReferenceLimitDefault(context);

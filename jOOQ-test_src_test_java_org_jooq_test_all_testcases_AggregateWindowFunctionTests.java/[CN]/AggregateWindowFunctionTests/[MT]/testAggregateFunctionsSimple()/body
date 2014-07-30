@@ -38,30 +38,4 @@ assertEquals(1,distinct2);
 assertEquals(2,distinct3);
 assertEquals(3,distinct4);
 assertTrue(asList(1.0,1.5,2.0).contains(distinct5));
-switch (dialect()) {
-case DERBY:
-case FIREBIRD:
-case SQLITE:
-log.info("SKIPPING","Statistical aggregate functions");
-break;
-default :
-{
-Result<Record5<Integer,BigDecimal,BigDecimal,BigDecimal,BigDecimal>> result2=create().select(TBook_AUTHOR_ID(),stddevPop(TBook_ID()),stddevSamp(TBook_ID()),varPop(TBook_ID()),varSamp(TBook_ID())).from(TBook()).groupBy(TBook_AUTHOR_ID()).orderBy(TBook_AUTHOR_ID()).fetch();
-assertEquals(0.5,result2.get(0).getValue(1,Double.class),0.0);
-assertEquals(0.25,result2.get(0).getValue(3,Double.class),0.0);
-assertEquals(0.5,result2.get(1).getValue(1,Double.class),0.0);
-assertEquals(0.25,result2.get(1).getValue(3,Double.class),0.0);
-if (true) {
-assertEquals("0.707",result2.get(0).getValue(2,String.class).substring(0,5));
-assertEquals(0.5,result2.get(0).getValue(4,Double.class),0.0);
-assertEquals("0.707",result2.get(1).getValue(2,String.class).substring(0,5));
-assertEquals(0.5,result2.get(1).getValue(4,Double.class),0.0);
-}
-}
-}
-Result<Record3<Integer,Integer,Integer>> result3=create().select(TBook_AUTHOR_ID(),max(TBook_ID()),max(TBook_ID())).from(TBook()).groupBy(TBook_AUTHOR_ID()).orderBy(TBook_AUTHOR_ID()).fetch();
-assertEquals(2,(int)result3.get(0).getValue(1,Integer.class));
-assertEquals(2,(int)result3.get(0).getValue(2,Integer.class));
-assertEquals(4,(int)result3.get(1).getValue(1,Integer.class));
-assertEquals(4,(int)result3.get(1).getValue(2,Integer.class));
 }

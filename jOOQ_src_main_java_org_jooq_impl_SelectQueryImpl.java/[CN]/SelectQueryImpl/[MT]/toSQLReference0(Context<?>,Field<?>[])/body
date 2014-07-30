@@ -1,5 +1,6 @@
 {
-  SQLDialect dialect=context.configuration().dialect();
+  SQLDialect dialect=context.dialect();
+  SQLDialect family=dialect.family();
   context.start(SELECT_SELECT).keyword("select").sql(" ");
   if (!StringUtils.isBlank(hint)) {
     context.sql(hint).sql(" ");
@@ -28,7 +29,7 @@
   context.start(SELECT_INTO);
   Table<?> actualInto=(Table<?>)context.data(DATA_SELECT_INTO_TABLE);
   if (actualInto == null)   actualInto=into;
-  if (actualInto != null && context.data(DATA_OMIT_INTO_CLAUSE) == null && asList(HSQLDB,POSTGRES).contains(dialect.family())) {
+  if (actualInto != null && context.data(DATA_OMIT_INTO_CLAUSE) == null && asList(HSQLDB,POSTGRES).contains(family)) {
     context.formatSeparator().keyword("into").sql(" ").visit(actualInto);
   }
   context.end(SELECT_INTO);
@@ -87,7 +88,7 @@
   }
   context.end(SELECT_HAVING);
   context.start(SELECT_WINDOW);
-  if (!getWindow().isEmpty() && asList(POSTGRES).contains(dialect.family())) {
+  if (!getWindow().isEmpty() && asList(POSTGRES).contains(family)) {
     context.formatSeparator().keyword("window").sql(" ").declareWindows(true).visit(getWindow()).declareWindows(false);
   }
   context.end(SELECT_WINDOW);
