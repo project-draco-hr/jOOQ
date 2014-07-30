@@ -1,6 +1,6 @@
 {
   if (!using.isEmpty()) {
-    if (asList(CUBRID,H2).contains(context.configuration().dialect().family())) {
+    if (asList(CUBRID,H2).contains(context.family())) {
       boolean first=true;
       for (      Field<?> field : using) {
         context.formatSeparator();

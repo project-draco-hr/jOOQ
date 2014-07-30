@@ -2,6 +2,7 @@
 switch (dialect()) {
 case DERBY:
 case FIREBIRD:
+case INFORMIX:
 case H2:
 case HSQLDB:
 case POSTGRES:
