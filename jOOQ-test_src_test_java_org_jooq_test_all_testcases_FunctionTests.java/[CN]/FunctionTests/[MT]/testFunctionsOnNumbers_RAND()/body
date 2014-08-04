@@ -1,4 +1,5 @@
 {
+  assumeFamilyNotIn();
   BigDecimal rand=create().select(rand()).fetchOne(rand());
   assertNotNull(rand);
 }
