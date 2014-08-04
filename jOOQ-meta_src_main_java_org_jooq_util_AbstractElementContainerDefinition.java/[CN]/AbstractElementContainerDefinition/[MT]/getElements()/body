@@ -5,7 +5,7 @@
       Database db=getDatabase();
       List<E> e=getElements0();
       if (this instanceof TableDefinition && db.getIncludeExcludeColumns()) {
-        elements=filterExcludeInclude(e,db.getExcludes(),db.getIncludes());
+        elements=filterExcludeInclude(e,db.getExcludes(),db.getIncludes(),db.getFilters());
         log.info("Columns fetched",fetchedSize(e,elements));
       }
  else {

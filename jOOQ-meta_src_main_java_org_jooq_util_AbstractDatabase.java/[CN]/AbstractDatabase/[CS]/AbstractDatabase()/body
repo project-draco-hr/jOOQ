@@ -1,3 +1,4 @@
 {
   exists=new HashMap<Table<?>,Boolean>();
+  filters=new ArrayList<Database.Filter>();
 }

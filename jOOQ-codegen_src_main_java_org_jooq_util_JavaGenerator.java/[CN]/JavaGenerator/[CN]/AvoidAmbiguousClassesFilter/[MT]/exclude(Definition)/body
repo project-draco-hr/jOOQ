@@ -1,0 +1,9 @@
+{
+  if (definition instanceof ColumnDefinition || definition instanceof AttributeDefinition || definition instanceof ParameterDefinition)   return false;
+  String name=getStrategy().getFullJavaClassName(definition);
+  String nameLC=name.toLowerCase();
+  String existing=included.put(nameLC,name);
+  if (existing == null)   return false;
+  log.warn("Ambiguous type name","The object " + definition.getQualifiedOutputName() + " generates a type "+ name+ " which conflicts with the existing type "+ existing+ " on some operating systems. Use a custom generator strategy to disambiguate the types.");
+  return true;
+}

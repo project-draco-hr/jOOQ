@@ -1,3 +1,3 @@
 {
-  return filterExcludeInclude(definitions,excludes,includes);
+  return filterExcludeInclude(definitions,excludes,includes,filters);
 }

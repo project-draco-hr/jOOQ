@@ -1,5 +1,6 @@
 {
   this.database=db;
+  this.database.addFilter(new AvoidAmbiguousClassesFilter());
   String url="";
   try {
     Connection connection=database.getConnection();

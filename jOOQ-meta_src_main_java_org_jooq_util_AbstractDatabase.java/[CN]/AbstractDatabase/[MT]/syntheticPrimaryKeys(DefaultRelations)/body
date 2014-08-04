@@ -2,7 +2,7 @@
   List<UniqueKeyDefinition> syntheticKeys=new ArrayList<UniqueKeyDefinition>();
   for (  SchemaDefinition schema : getSchemata()) {
     for (    TableDefinition table : schema.getTables()) {
-      List<ColumnDefinition> columns=filterExcludeInclude(table.getColumns(),null,getSyntheticPrimaryKeys());
+      List<ColumnDefinition> columns=filterExcludeInclude(table.getColumns(),null,getSyntheticPrimaryKeys(),filters);
       if (!columns.isEmpty()) {
         DefaultUniqueKeyDefinition syntheticKey=new DefaultUniqueKeyDefinition(schema,"SYNTHETIC_PK_" + table.getName(),table,true);
         syntheticKey.getKeyColumns().addAll(columns);

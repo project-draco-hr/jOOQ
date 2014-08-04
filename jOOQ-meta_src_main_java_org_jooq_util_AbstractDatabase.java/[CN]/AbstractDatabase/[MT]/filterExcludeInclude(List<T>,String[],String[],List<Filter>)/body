@@ -9,6 +9,11 @@
         }
       }
     }
+    for (    Filter filter : filters) {
+      if (filter.exclude(definition)) {
+        continue definitionsLoop;
+      }
+    }
     if (includes != null) {
       for (      String include : includes) {
         Pattern p=Pattern.compile(include,Pattern.COMMENTS);
