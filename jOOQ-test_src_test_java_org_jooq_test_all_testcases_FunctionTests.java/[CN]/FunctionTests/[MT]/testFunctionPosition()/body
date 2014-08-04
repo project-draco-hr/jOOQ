@@ -1,8 +1,5 @@
 {
-  if (dialect() == SQLDialect.SQLITE) {
-    log.info("SKIPPING","position function test");
-    return;
-  }
+  assumeFamilyNotIn(SQLITE);
   SelectQuery<?> q=create().selectQuery();
   q.addFrom(VLibrary());
   Field<Integer> position=position(VLibrary_AUTHOR(),"o").as("p");

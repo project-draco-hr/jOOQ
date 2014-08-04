@@ -6,7 +6,7 @@
     ctx.formatSeparator().start(INSERT_VALUES).keyword("values").sql(" ").visit(insertMaps.get(0)).end(INSERT_VALUES);
   }
  else {
-switch (ctx.configuration().dialect().family()) {
+switch (ctx.family()) {
 case FIREBIRD:
 case SQLITE:
 {

@@ -1,10 +1,15 @@
 {
-  context.sql("(");
-  String separator="";
-  for (  Field<?> field : fields.fields) {
-    context.sql(separator);
-    context.visit(field);
-    separator=", ";
+  if (fields.fields.length == 1) {
+    context.visit(fields.fields[0]);
   }
-  context.sql(")");
+ else {
+    context.sql("(");
+    String separator="";
+    for (    Field<?> field : fields.fields) {
+      context.sql(separator);
+      context.visit(field);
+      separator=", ";
+    }
+    context.sql(")");
+  }
 }
