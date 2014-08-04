@@ -55,9 +55,7 @@ catch (    SQLException e) {
     }
   }
  else {
-    if (log.isDebugEnabled()) {
-      log.debug("Query is not executable",this);
-    }
+    if (log.isDebugEnabled())     log.debug("Query is not executable",this);
     return 0;
   }
 }

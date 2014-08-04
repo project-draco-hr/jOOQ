@@ -2,7 +2,10 @@
   DSLContext create=create();
   InsertQuery<R> insert=create.insertQuery(getTable());
   addChangedValues(storeFields,insert);
-  if (!insert.isExecutable())   return 0;
+  if (!insert.isExecutable()) {
+    if (log.isDebugEnabled())     log.debug("Query is not executable",this);
+    return 0;
+  }
   BigInteger version=addRecordVersion(insert);
   Timestamp timestamp=addRecordTimestamp(insert);
   Collection<Field<?>> key=null;
