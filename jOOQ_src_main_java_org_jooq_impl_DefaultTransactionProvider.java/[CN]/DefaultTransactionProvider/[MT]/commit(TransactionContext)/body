@@ -1,6 +1,7 @@
 {
   Stack<Savepoint> savepoints=savepoints(ctx.configuration());
-  savepoints.pop();
+  Savepoint savepoint=savepoints.pop();
+  if (savepoint != null)   connection(ctx.configuration()).releaseSavepoint(savepoint);
   if (savepoints.isEmpty()) {
     connection(ctx.configuration()).commit();
     brace(ctx.configuration(),false);
