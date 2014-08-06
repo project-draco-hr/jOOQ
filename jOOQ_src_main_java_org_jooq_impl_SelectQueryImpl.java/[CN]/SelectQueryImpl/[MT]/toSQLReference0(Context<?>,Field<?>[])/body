@@ -36,7 +36,7 @@
     context.end(SELECT_INTO);
   }
   context.start(SELECT_FROM).declareTables(true);
-  boolean hasFrom=true;
+  boolean hasFrom=false;
   if (!hasFrom) {
     DefaultConfiguration c=new DefaultConfiguration(dialect);
     String renderedFrom=new DefaultRenderContext(c).render(getFrom());

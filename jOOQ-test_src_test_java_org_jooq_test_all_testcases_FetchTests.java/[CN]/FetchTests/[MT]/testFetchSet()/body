@@ -1,0 +1,3 @@
+{
+  assertEquals(new LinkedHashSet<>(AUTHOR_IDS),create().select(TBook_AUTHOR_ID()).from(TBook()).fetchSet(TBook_AUTHOR_ID()));
+}
