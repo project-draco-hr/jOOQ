@@ -1,7 +1,4 @@
 {
-  if (tableCache != null) {
-    return tableCache;
-  }
   try {
     String[] types=null;
 switch (configuration.dialect().family()) {
