@@ -1,0 +1,9 @@
+{
+switch (ctx.family()) {
+default :
+{
+      ctx.visit(DSL.function("coalesce",getDataType(),fields));
+      break;
+    }
+}
+}
