@@ -3,7 +3,7 @@
   addChangedValues(storeFields,update);
   Utils.addConditions(update,this,keys);
   if (!update.isExecutable()) {
-    if (log.isDebugEnabled())     log.debug("Query is not executable",this);
+    if (log.isDebugEnabled())     log.debug("Query is not executable",update);
     return 0;
   }
   BigInteger version=addRecordVersion(update);

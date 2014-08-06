@@ -26,17 +26,19 @@
     context.visit(getSelect1());
   }
   context.declareFields(false).end(SELECT_SELECT);
-  context.start(SELECT_INTO);
-  Table<?> actualInto=(Table<?>)context.data(DATA_SELECT_INTO_TABLE);
-  if (actualInto == null)   actualInto=into;
-  if (actualInto != null && context.data(DATA_OMIT_INTO_CLAUSE) == null && asList(HSQLDB,POSTGRES).contains(family)) {
-    context.formatSeparator().keyword("into").sql(" ").visit(actualInto);
+  if (!asList().contains(family)) {
+    context.start(SELECT_INTO);
+    Table<?> actualInto=(Table<?>)context.data(DATA_SELECT_INTO_TABLE);
+    if (actualInto == null)     actualInto=into;
+    if (actualInto != null && context.data(DATA_OMIT_INTO_CLAUSE) == null && asList(HSQLDB,POSTGRES).contains(family)) {
+      context.formatSeparator().keyword("into").sql(" ").visit(actualInto);
+    }
+    context.end(SELECT_INTO);
   }
-  context.end(SELECT_INTO);
   context.start(SELECT_FROM).declareTables(true);
-  boolean hasFrom=(context.data(DATA_RENDERING_DB2_FINAL_TABLE_CLAUSE) != null);
+  boolean hasFrom=true;
   if (!hasFrom) {
-    DefaultConfiguration c=new DefaultConfiguration(context.configuration().dialect());
+    DefaultConfiguration c=new DefaultConfiguration(dialect);
     String renderedFrom=new DefaultRenderContext(c).render(getFrom());
     hasFrom=!renderedFrom.isEmpty();
   }
@@ -68,7 +70,7 @@
     context.formatSeparator().keyword("group by").sql(" ");
     if (getGroupBy().isEmpty()) {
       if (asList().contains(dialect)) {
-        context.sql("empty_grouping_dummy_table.x");
+        context.sql("empty_grouping_dummy_table.dual");
       }
  else       if (asList(CUBRID,DERBY,FIREBIRD,HSQLDB,MARIADB,MYSQL,POSTGRES,SQLITE).contains(dialect)) {
         context.sql("1");

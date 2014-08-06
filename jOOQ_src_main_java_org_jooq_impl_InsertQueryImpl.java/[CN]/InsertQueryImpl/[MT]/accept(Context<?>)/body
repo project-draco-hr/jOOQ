@@ -11,7 +11,7 @@ case MYSQL:
       }
 case H2:
 {
-      throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY UPDATE clause cannot be simulated for " + ctx.configuration().dialect());
+      throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY UPDATE clause cannot be emulated for " + ctx.configuration().dialect());
     }
 case HSQLDB:
 {
@@ -19,7 +19,7 @@ case HSQLDB:
     break;
   }
 default :
-throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY UPDATE clause cannot be simulated for " + ctx.configuration().dialect());
+throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY UPDATE clause cannot be emulated for " + ctx.configuration().dialect());
 }
 }
  else if (onDuplicateKeyIgnore) {
@@ -42,7 +42,7 @@ break;
 }
 case H2:
 {
-throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY IGNORE clause cannot be simulated for " + ctx.configuration().dialect());
+throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY IGNORE clause cannot be emulated for " + ctx.configuration().dialect());
 }
 case HSQLDB:
 {
@@ -50,7 +50,7 @@ ctx.visit(toMerge(ctx.configuration()));
 break;
 }
 default :
-throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY IGNORE clause cannot be simulated for " + ctx.configuration().dialect());
+throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY IGNORE clause cannot be emulated for " + ctx.configuration().dialect());
 }
 }
  else {

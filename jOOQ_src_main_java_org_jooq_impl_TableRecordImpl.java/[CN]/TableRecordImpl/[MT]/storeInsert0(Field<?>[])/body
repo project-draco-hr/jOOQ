@@ -3,7 +3,7 @@
   InsertQuery<R> insert=create.insertQuery(getTable());
   addChangedValues(storeFields,insert);
   if (!insert.isExecutable()) {
-    if (log.isDebugEnabled())     log.debug("Query is not executable",this);
+    if (log.isDebugEnabled())     log.debug("Query is not executable",insert);
     return 0;
   }
   BigInteger version=addRecordVersion(insert);

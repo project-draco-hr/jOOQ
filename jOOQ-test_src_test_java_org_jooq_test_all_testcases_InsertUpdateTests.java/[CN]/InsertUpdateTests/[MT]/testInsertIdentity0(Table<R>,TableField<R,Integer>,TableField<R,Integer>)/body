@@ -1,14 +1,12 @@
 {
   assertEquals(1,create().insertInto(table,val).values(10).execute());
   int firstId=create().select(max(id)).from(table).fetchOne(max(id));
-  if (dialect() != POSTGRES) {
-    assertEquals(new BigInteger("" + firstId),create().lastID());
-  }
+  if (!asList(POSTGRES).contains(dialect().family()))   assertEquals(new BigInteger("" + firstId),create().lastID());
   R r1=create().selectFrom(table).fetchOne();
   assertEquals(firstId,(int)r1.getValue(id));
   assertEquals(10,(int)r1.getValue(val));
   R r2=create().insertInto(table,val).values(11).returning().fetchOne();
-  if (dialect() != POSTGRES) {
+  if (!asList(POSTGRES).contains(dialect().family())) {
     assertEquals(new BigInteger("" + (firstId + 1)),create().lastID());
     assertEquals(new BigInteger("" + (firstId + 1)),create().lastID());
   }
