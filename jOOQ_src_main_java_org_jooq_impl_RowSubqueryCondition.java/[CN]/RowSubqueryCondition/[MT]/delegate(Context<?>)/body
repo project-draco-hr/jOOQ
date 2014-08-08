@@ -2,7 +2,10 @@
   final Configuration configuration=ctx.configuration();
   final RenderContext render=ctx instanceof RenderContext ? (RenderContext)ctx : null;
   SQLDialect family=configuration.dialect().family();
-  if (asList(H2,HSQLDB,MARIADB,MYSQL,POSTGRES).contains(family)) {
+  if (rightQuantified != null) {
+    return new Native();
+  }
+ else   if (asList(H2,HSQLDB,MARIADB,MYSQL,POSTGRES).contains(family)) {
     return new Native();
   }
  else   if (asList(H2,HSQLDB,MARIADB,MYSQL,POSTGRES).contains(family) && asList(EQUALS,NOT_EQUALS).contains(comparator)) {

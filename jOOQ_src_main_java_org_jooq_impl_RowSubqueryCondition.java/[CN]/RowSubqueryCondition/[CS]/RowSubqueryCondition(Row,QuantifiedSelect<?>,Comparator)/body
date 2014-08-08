@@ -1,6 +1,6 @@
 {
   this.left=left;
-  this.right=right;
-  this.rightQuantified=null;
+  this.right=null;
+  this.rightQuantified=right;
   this.comparator=comparator;
 }
