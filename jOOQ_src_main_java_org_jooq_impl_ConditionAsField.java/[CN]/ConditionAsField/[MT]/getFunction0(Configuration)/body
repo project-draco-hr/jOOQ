@@ -2,7 +2,7 @@
 switch (configuration.dialect().family()) {
 case CUBRID:
 case FIREBIRD:
-    return DSL.decode().when(condition,inline(true)).otherwise(inline(false));
+    return DSL.decode().when(condition,inline(true)).when(not(condition),inline(false)).otherwise(inline((Boolean)null));
 case DERBY:
 case H2:
 case HSQLDB:
