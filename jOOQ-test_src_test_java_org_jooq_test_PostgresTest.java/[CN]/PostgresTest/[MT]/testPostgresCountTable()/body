@@ -1,0 +1,8 @@
+{
+  org.jooq.test.postgres.generatedclasses.tables.TAuthor a=T_AUTHOR.as("a");
+  Record4<Integer,Integer,Integer,Integer> record=create().select(count(T_BOOK),countDistinct(T_BOOK),count(a),countDistinct(a)).from(T_BOOK).join(a).on(a.ID.eq(T_BOOK.AUTHOR_ID)).fetchOne();
+  assertEquals(4,(int)record.value1());
+  assertEquals(4,(int)record.value2());
+  assertEquals(4,(int)record.value3());
+  assertEquals(2,(int)record.value4());
+}
