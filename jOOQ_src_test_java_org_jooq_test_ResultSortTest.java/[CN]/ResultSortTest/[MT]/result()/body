@@ -1,0 +1,11 @@
+{
+  Result<Record3<Integer,Integer,Integer>> result=create.newResult(FIELD_ID1,FIELD_ID2,FIELD_ID3);
+  result.add(record(1,1,1));
+  result.add(record(1,1,2));
+  result.add(record(1,1,3));
+  result.add(record(1,2,1));
+  result.add(record(1,2,2));
+  result.add(record(1,2,3));
+  result.add(record(2,1,1));
+  return result;
+}

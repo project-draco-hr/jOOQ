@@ -1,0 +1,5 @@
+{
+  Record3<Integer,Integer,Integer> record=create.newRecord(FIELD_ID1,FIELD_ID2,FIELD_ID3);
+  record.fromArray(i,j,k);
+  return record;
+}

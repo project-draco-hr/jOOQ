@@ -1,0 +1,8 @@
+{
+  Result<Record3<Integer,Integer,Integer>> original=result();
+  Result<Record3<Integer,Integer,Integer>> result=result();
+  assertEquals(original,result);
+  assertEquals(original,result.sortAsc(FIELD_ID1));
+  assertEquals(original,result.sortDesc(FIELD_ID1).sortAsc(FIELD_ID1));
+  assertEquals(original,result.sortAsc(FIELD_ID3).sortAsc(FIELD_ID2).sortAsc(FIELD_ID1));
+}
