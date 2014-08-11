@@ -1,5 +1,4 @@
 {
-  Connection connection=ctx.connection();
   if (returning.isEmpty()) {
     super.prepare(ctx);
     return;
