@@ -1,0 +1,3 @@
+{
+  formatJSON(new OutputStreamWriter(stream));
+}

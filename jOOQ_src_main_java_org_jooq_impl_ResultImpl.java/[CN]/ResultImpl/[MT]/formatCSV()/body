@@ -1,3 +1,5 @@
 {
-  return formatCSV(',',"");
+  StringWriter writer=new StringWriter();
+  formatCSV(writer);
+  return writer.toString();
 }

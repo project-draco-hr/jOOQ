@@ -1,26 +1,5 @@
 {
-  StringBuilder sb=new StringBuilder();
-  sb.append("<table>");
-  sb.append("<thead>");
-  sb.append("<tr>");
-  for (  Field<?> field : fields.fields) {
-    sb.append("<th>");
-    sb.append(field.getName());
-    sb.append("</th>");
-  }
-  sb.append("</tr>");
-  sb.append("</thead>");
-  sb.append("<tbody>");
-  for (  Record record : this) {
-    sb.append("<tr>");
-    for (int index=0; index < fields.fields.length; index++) {
-      sb.append("<td>");
-      sb.append(format0(record.getValue(index),false));
-      sb.append("</td>");
-    }
-    sb.append("</tr>");
-  }
-  sb.append("</tbody>");
-  sb.append("</table>");
-  return sb.toString();
+  StringWriter writer=new StringWriter();
+  formatHTML(writer);
+  return writer.toString();
 }

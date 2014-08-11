@@ -1,0 +1,3 @@
+OutputStream stream
+char delimiter
+String nullString

@@ -1,0 +1,27 @@
+{
+  try {
+    List<Map<String,String>> f=new ArrayList<Map<String,String>>();
+    List<List<Object>> r=new ArrayList<List<Object>>();
+    Map<String,String> fieldMap;
+    for (    Field<?> field : fields.fields) {
+      fieldMap=new LinkedHashMap<String,String>();
+      fieldMap.put("name",field.getName());
+      fieldMap.put("type",field.getDataType().getTypeName().toUpperCase());
+      f.add(fieldMap);
+    }
+    for (    Record record : this) {
+      List<Object> list=new ArrayList<Object>();
+      for (int index=0; index < fields.fields.length; index++) {
+        list.add(record.getValue(index));
+      }
+      r.add(list);
+    }
+    Map<String,List<?>> map=new LinkedHashMap<String,List<?>>();
+    map.put("fields",f);
+    map.put("records",r);
+    writer.append(JSONObject.toJSONString(map));
+  }
+ catch (  java.io.IOException e) {
+    throw new IOException("Exception while writing JSON",e);
+  }
+}

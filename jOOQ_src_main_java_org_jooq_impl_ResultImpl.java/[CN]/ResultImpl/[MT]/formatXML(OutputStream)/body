@@ -1,0 +1,3 @@
+{
+  formatXML(new OutputStreamWriter(stream));
+}

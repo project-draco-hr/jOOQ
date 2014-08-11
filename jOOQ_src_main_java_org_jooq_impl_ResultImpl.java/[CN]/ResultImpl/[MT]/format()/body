@@ -1,3 +1,5 @@
 {
-  return format(50);
+  StringWriter writer=new StringWriter();
+  format(writer);
+  return writer.toString();
 }

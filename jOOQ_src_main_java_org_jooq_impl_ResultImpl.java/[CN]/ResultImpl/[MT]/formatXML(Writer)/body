@@ -1,0 +1,39 @@
+{
+  try {
+    writer.append("<result xmlns=\"http://www.jooq.org/xsd/jooq-export-2.6.0.xsd\">");
+    writer.append("<fields>");
+    for (    Field<?> field : fields.fields) {
+      writer.append("<field name=\"");
+      writer.append(escapeXML(field.getName()));
+      writer.append("\" ");
+      writer.append("type=\"");
+      writer.append(field.getDataType().getTypeName().toUpperCase());
+      writer.append("\"/>");
+    }
+    writer.append("</fields>");
+    writer.append("<records>");
+    for (    Record record : this) {
+      writer.append("<record>");
+      for (int index=0; index < fields.fields.length; index++) {
+        Object value=record.getValue(index);
+        writer.append("<value field=\"");
+        writer.append(escapeXML(fields.fields[index].getName()));
+        writer.append("\"");
+        if (value == null) {
+          writer.append("/>");
+        }
+ else {
+          writer.append(">");
+          writer.append(escapeXML(format0(value,false)));
+          writer.append("</value>");
+        }
+      }
+      writer.append("</record>");
+    }
+    writer.append("</records>");
+    writer.append("</result>");
+  }
+ catch (  java.io.IOException e) {
+    throw new IOException("Exception while writing XML",e);
+  }
+}
