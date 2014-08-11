@@ -1,4 +1,5 @@
 {
+  final int previousFetchSize=fetchSize;
   lazy=true;
   fetchSize=size;
   try {
@@ -6,7 +7,7 @@
   }
   finally {
     lazy=false;
-    fetchSize=0;
+    fetchSize=previousFetchSize;
   }
   return cursor;
 }

@@ -1,6 +1,9 @@
 {
+  FetchSizeListener listener=new FetchSizeListener();
+  DSLContext create=create(listener);
   for (  int fetchSize : Arrays.asList(0,1)) {
-    Cursor<B> cursor=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchSize(fetchSize).fetchLazy();
+    Cursor<B> cursor=create.selectFrom(TBook()).orderBy(TBook_ID()).fetchSize(fetchSize).fetchLazy();
+    assertFetchSize(fetchSize,listener);
     assertTrue(cursor.hasNext());
     assertTrue(cursor.hasNext());
     assertEquals(Integer.valueOf(1),cursor.fetchOne().getValue(TBook_ID()));
@@ -42,7 +45,8 @@
     cursor.close();
     cursor.close();
     assertTrue(cursor.isClosed());
-    cursor=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchSize(fetchSize).fetchLazy();
+    cursor=create.selectFrom(TBook()).orderBy(TBook_ID()).fetchSize(fetchSize).fetchLazy();
+    assertFetchSize(fetchSize,listener);
     assertTrue(cursor.hasNext());
     assertTrue(cursor.hasNext());
     assertEquals(Integer.valueOf(1),cursor.fetchOne().getValue(TBook_ID()));
@@ -52,7 +56,8 @@
     assertTrue(cursor.isClosed());
     assertFalse(cursor.hasNext());
     assertNull(cursor.fetchOne());
-    cursor=create().selectFrom(TBook()).orderBy(TBook_ID()).fetchSize(fetchSize).fetchLazy();
+    cursor=create.selectFrom(TBook()).orderBy(TBook_ID()).fetchSize(fetchSize).fetchLazy();
+    assertFetchSize(fetchSize,listener);
     Result<B> fetch0=cursor.fetch(0);
     assertTrue(fetch0.isEmpty());
     assertFalse(fetch0.isNotEmpty());

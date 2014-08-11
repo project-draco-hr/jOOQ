@@ -1,0 +1,14 @@
+{
+  ctx.connectionProvider(new DefaultConnectionProvider(new DefaultConnection(getConnection()){
+    @Override public PreparedStatement prepareStatement(    String sql) throws SQLException {
+      return new DefaultPreparedStatement(super.prepareStatement(sql)){
+        @Override public void setFetchSize(        int rows) throws SQLException {
+          super.setFetchSize(rows);
+          stmtSize[0]=rows;
+        }
+      }
+;
+    }
+  }
+));
+}
