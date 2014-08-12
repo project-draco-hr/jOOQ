@@ -1,8 +1,0 @@
-{
-  if (ctx.subquery()) {
-    ctx.visit(field).sql(" ").keyword(comparator.toSQL()).sql(" (").formatIndentStart().formatNewLine().visit(query).formatIndentEnd().formatNewLine().sql(")");
-  }
- else {
-    ctx.visit(field).sql(" ").keyword(comparator.toSQL()).sql(" (").subquery(true).formatIndentStart().formatNewLine().visit(query).formatIndentEnd().formatNewLine().subquery(false).sql(")");
-  }
-}

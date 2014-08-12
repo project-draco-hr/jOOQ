@@ -1,8 +1,0 @@
-{
-  if (ctx.subquery()) {
-    ctx.keyword(exists ? "exists" : "not exists").sql(" (").formatIndentStart().formatNewLine().visit(query).formatIndentEnd().formatNewLine().sql(")");
-  }
- else {
-    ctx.keyword(exists ? "exists" : "not exists").sql(" (").subquery(true).formatIndentStart().formatNewLine().visit(query).formatIndentEnd().formatNewLine().subquery(false).sql(")");
-  }
-}
