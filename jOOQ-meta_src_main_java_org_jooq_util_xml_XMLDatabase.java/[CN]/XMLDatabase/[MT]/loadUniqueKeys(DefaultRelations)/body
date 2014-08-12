@@ -1,2 +1,12 @@
 {
+  for (  KeyColumnUsage usage : keyColumnUsage(UNIQUE)) {
+    SchemaDefinition schema=getSchema(usage.getConstraintSchema());
+    String key=usage.getConstraintName();
+    String tableName=usage.getTableName();
+    String columnName=usage.getColumnName();
+    TableDefinition table=getTable(schema,tableName);
+    if (table != null) {
+      relations.addPrimaryKey(key,table.getColumn(columnName));
+    }
+  }
 }

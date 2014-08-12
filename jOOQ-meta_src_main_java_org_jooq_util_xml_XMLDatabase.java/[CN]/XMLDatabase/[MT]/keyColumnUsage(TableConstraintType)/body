@@ -1,0 +1,26 @@
+{
+  List<KeyColumnUsage> result=new ArrayList<KeyColumnUsage>();
+  for (  TableConstraint constraint : info().getTableConstraints()) {
+    if (constraintType == constraint.getConstraintType() && getInputSchemata().contains(constraint.getConstraintSchema())) {
+      for (      KeyColumnUsage usage : info().getKeyColumnUsages()) {
+        if (StringUtils.equals(constraint.getConstraintCatalog(),usage.getConstraintCatalog()) && StringUtils.equals(constraint.getConstraintSchema(),usage.getConstraintSchema()) && StringUtils.equals(constraint.getConstraintName(),usage.getConstraintName())) {
+          result.add(usage);
+        }
+      }
+    }
+  }
+  Collections.sort(result,new Comparator<KeyColumnUsage>(){
+    @Override public int compare(    KeyColumnUsage o1,    KeyColumnUsage o2){
+      int r=0;
+      r=defaultIfNull(o1.getConstraintCatalog(),"").compareTo(defaultIfNull(o2.getConstraintCatalog(),""));
+      if (r != 0)       return r;
+      r=defaultIfNull(o1.getConstraintSchema(),"").compareTo(defaultIfNull(o2.getConstraintSchema(),""));
+      if (r != 0)       return r;
+      r=defaultIfNull(o1.getConstraintName(),"").compareTo(defaultIfNull(o2.getConstraintName(),""));
+      if (r != 0)       return r;
+      return Integer.valueOf(o1.getOrdinalPosition()).compareTo(o2.getOrdinalPosition());
+    }
+  }
+);
+  return result;
+}
