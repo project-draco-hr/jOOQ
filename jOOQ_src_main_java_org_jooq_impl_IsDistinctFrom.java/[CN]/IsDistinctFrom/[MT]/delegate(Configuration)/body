@@ -1,5 +1,8 @@
 {
   if (asList(CUBRID,DERBY).contains(configuration.dialect().family())) {
+    return (comparator == IS_DISTINCT_FROM) ? (QueryPartInternal)notExists(select(lhs).intersect(select(rhs))) : (QueryPartInternal)exists(select(lhs).intersect(select(rhs)));
+  }
+ else   if (asList().contains(configuration.dialect().family())) {
     if (caseExpression == null) {
       if (comparator == Comparator.IS_DISTINCT_FROM) {
         caseExpression=(QueryPartInternal)decode().when(lhs.isNull().and(rhs.isNull()),zero()).when(lhs.isNull().and(rhs.isNotNull()),one()).when(lhs.isNotNull().and(rhs.isNull()),one()).when(lhs.equal(rhs),zero()).otherwise(one()).equal(one());
@@ -12,7 +15,7 @@
   }
  else   if (asList(MARIADB,MYSQL).contains(configuration.dialect())) {
     if (mySQLCondition == null) {
-      if (comparator == Comparator.IS_DISTINCT_FROM) {
+      if (comparator == IS_DISTINCT_FROM) {
         mySQLCondition=(QueryPartInternal)condition("{not}({0} <=> {1})",lhs,rhs);
       }
  else {
@@ -23,7 +26,7 @@
   }
  else   if (SQLITE == configuration.dialect()) {
     if (sqliteCondition == null) {
-      if (comparator == Comparator.IS_DISTINCT_FROM) {
+      if (comparator == IS_DISTINCT_FROM) {
         sqliteCondition=(QueryPartInternal)condition("{0} {is not} {1}",lhs,rhs);
       }
  else {
