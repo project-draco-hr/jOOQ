@@ -1,15 +1,9 @@
 {
-  if (cRoutines() == null) {
-    log.info("SKIPPING","procedure tests with default parameters");
-    return;
-  }
+  assumeNotNull(cRoutines());
   Reflect pdefault;
   try {
     pdefault=Reflect.on(cRoutines().getPackage().getName() + ".routines.PDefault");
-    if (!pdefault.field("P_IN_NUMBER").call("isDefaulted").<Boolean>get()) {
-      log.info("SKIPPING","procedure tests with default parameters");
-      return;
-    }
+    assumeTrue(pdefault.field("P_IN_NUMBER").call("isDefaulted").<Boolean>get());
   }
  catch (  ReflectException e) {
     log.info("SKIPPING","procedure tests with default parameters");

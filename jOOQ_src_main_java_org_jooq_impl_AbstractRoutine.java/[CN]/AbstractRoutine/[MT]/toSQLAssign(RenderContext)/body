@@ -1,7 +1,5 @@
 {
-switch (context.configuration().dialect().family()) {
-default :
+{
     context.sql("? = ");
-  break;
-}
+  }
 }

@@ -14,7 +14,7 @@
       context.sql(separator);
       toSQLOutParam(context,parameter);
     }
- else     if (!inValuesNonDefaulted.contains(parameter)) {
+ else     if (inValuesDefaulted.contains(parameter)) {
       continue;
     }
  else {

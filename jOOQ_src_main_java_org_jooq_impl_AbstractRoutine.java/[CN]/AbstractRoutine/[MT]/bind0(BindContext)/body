@@ -1,6 +1,6 @@
 {
   for (  Parameter<?> parameter : getParameters()) {
-    if (getInParameters().contains(parameter) && !inValuesNonDefaulted.contains(parameter)) {
+    if (getInParameters().contains(parameter) && inValuesDefaulted.contains(parameter)) {
       continue;
     }
     int index=context.peekIndex();
