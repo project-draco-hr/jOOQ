@@ -1,0 +1,36 @@
+{
+  Connection connection=ctx.connection();
+  if (returning.isEmpty()) {
+    super.prepare(ctx);
+    return;
+  }
+ else {
+switch (ctx.configuration().dialect().family()) {
+case FIREBIRD:
+case POSTGRES:
+case SQLITE:
+case CUBRID:
+      super.prepare(ctx);
+    return;
+case DERBY:
+case H2:
+case MARIADB:
+case MYSQL:
+  ctx.statement(connection.prepareStatement(ctx.sql(),Statement.RETURN_GENERATED_KEYS));
+return;
+case HSQLDB:
+default :
+{
+List<String> names=new ArrayList<String>();
+RenderNameStyle style=configuration().settings().getRenderNameStyle();
+for (Field<?> field : returning) {
+  if (style == UPPER)   names.add(field.getName().toUpperCase());
+ else   if (style == LOWER)   names.add(field.getName().toLowerCase());
+ else   names.add(field.getName());
+}
+ctx.statement(connection.prepareStatement(ctx.sql(),names.toArray(new String[names.size()])));
+return;
+}
+}
+}
+}
