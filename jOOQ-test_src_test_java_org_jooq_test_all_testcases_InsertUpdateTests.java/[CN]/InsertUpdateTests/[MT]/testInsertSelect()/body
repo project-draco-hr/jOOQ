@@ -3,7 +3,7 @@
   Field<?> nullField=null;
 switch (dialect().family()) {
 case POSTGRES:
-    nullField=cast(null,TAuthor_ADDRESS());
+    nullField=val(null,TAuthor_ADDRESS());
   break;
 default :
 nullField=castNull(String.class);
