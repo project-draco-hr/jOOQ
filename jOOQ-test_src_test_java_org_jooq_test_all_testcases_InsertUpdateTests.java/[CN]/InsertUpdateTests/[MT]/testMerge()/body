@@ -7,7 +7,7 @@
   assertEquals(Arrays.asList("John","Alfred"),create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).fetch(TAuthor_FIRST_NAME()));
   Field<String> f=val("Dan").as("f");
   Field<String> l=val("Brown").as("l");
-  MergeFinalStep<A> q=create().mergeInto(TAuthor()).using(select(f,l)).on(TAuthor_LAST_NAME().equal(l)).whenMatchedThenUpdate().set(TAuthor_FIRST_NAME(),"James").set(TAuthor_LAST_NAME(),"Dean").whenNotMatchedThenInsert().set(TAuthor_ID(),3).set(TAuthor_FIRST_NAME(),f).set(TAuthor_LAST_NAME(),l);
+  MergeFinalStep<A> q=create().mergeInto(TAuthor()).using(select(f,l)).on(TAuthor_ID().eq(3)).whenMatchedThenUpdate().set(TAuthor_FIRST_NAME(),"James").set(TAuthor_LAST_NAME(),"Dean").whenNotMatchedThenInsert().set(TAuthor_ID(),3).set(TAuthor_FIRST_NAME(),f).set(TAuthor_LAST_NAME(),l);
   q.execute();
   assertEquals(Arrays.asList("John","Alfred","Dan"),create().selectFrom(TAuthor()).orderBy(TAuthor_ID()).fetch(TAuthor_FIRST_NAME()));
   q.execute();
