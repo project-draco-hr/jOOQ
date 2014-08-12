@@ -1,0 +1,14 @@
+{
+  Schema mappedSchema=Utils.getMappedSchema(ctx.configuration(),schema);
+  if (mappedSchema != null && ctx.family() != CUBRID) {
+    if (asStringLiterals) {
+      ctx.visit(inline(mappedSchema.getName())).sql(", ");
+    }
+ else {
+      ctx.visit(mappedSchema).sql(".");
+    }
+  }
+  if (asStringLiterals)   ctx.visit(inline(name));
+ else   if (nameIsPlainSQL)   ctx.sql(name);
+ else   ctx.literal(name);
+}

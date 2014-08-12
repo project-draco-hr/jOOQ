@@ -1,0 +1,5 @@
+{
+  RenderContext local=create(configuration).renderContext();
+  accept0(local,asStringLiterals);
+  return local.render();
+}

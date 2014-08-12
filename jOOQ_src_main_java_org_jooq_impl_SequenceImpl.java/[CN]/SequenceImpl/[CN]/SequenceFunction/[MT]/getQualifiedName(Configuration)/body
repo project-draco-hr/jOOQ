@@ -1,5 +1,3 @@
 {
-  RenderContext local=create(configuration).renderContext();
-  SequenceImpl.this.toSQL(local);
-  return local.render();
+  return getQualifiedName(configuration,false);
 }
