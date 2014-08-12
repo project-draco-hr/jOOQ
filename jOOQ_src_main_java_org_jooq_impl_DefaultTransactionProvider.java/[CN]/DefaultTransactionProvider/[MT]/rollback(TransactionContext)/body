@@ -1,8 +1,10 @@
 {
   Stack<Savepoint> savepoints=savepoints(ctx.configuration());
-  Savepoint savepoint=savepoints.pop();
+  Savepoint savepoint=null;
+  if (!savepoints.isEmpty())   savepoint=savepoints.pop();
   try {
-    connection(ctx.configuration()).rollback(savepoint);
+    if (savepoint == null)     connection(ctx.configuration()).rollback();
+ else     connection(ctx.configuration()).rollback(savepoint);
   }
   finally {
     if (savepoints.isEmpty())     brace(ctx.configuration(),false);
