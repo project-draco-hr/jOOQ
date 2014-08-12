@@ -15,7 +15,7 @@
  else     if (query instanceof Insert || query instanceof Update || query instanceof Delete|| query instanceof Merge) {
       return ExecuteType.WRITE;
     }
- else     if (query instanceof Truncate) {
+ else     if (query instanceof DDLQuery) {
       return ExecuteType.DDL;
     }
  else {
