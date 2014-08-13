@@ -1,0 +1,3 @@
+{
+  new BatchTests(this).testBatchSinglePlainSQL();
+}
