@@ -38,7 +38,7 @@
     final String type=getJavaType(column.getType());
     final String typeInterface=getJavaType(column.getType(),Mode.INTERFACE);
     final String name=column.getQualifiedOutputName();
-    final boolean isUDT=database.getUDT(column.getSchema(),column.getType().getUserType()) != null;
+    final boolean isUDT=column.getType().isUDT();
     out.tab(1).javadoc("Setter for <code>%s</code>.%s",name,defaultIfBlank(" " + comment,""));
     out.tab(1).overrideIf(generateInterfaces() && !generateImmutablePojos() && !isUDT);
     out.tab(1).println("public %s %s(%s value) {",setterReturnType,setter,type);

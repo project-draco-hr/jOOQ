@@ -53,7 +53,7 @@
     final ParameterDefinition parameter=procedure.getOutParameters().get(0);
     final String getter=getStrategy().getJavaGetterName(parameter,Mode.DEFAULT);
     final String columnTypeInterface=getJavaType(parameter.getType(),Mode.INTERFACE);
-    final boolean isUDT=database.getUDT(parameter.getSchema(),parameter.getType().getUserType()) != null;
+    final boolean isUDT=parameter.getType().isUDT();
     if (instance) {
       if (generateInterfaces() && isUDT) {
         out.tab(2).println("from((%s) %s.%s());",columnTypeInterface,localVar,getter);
