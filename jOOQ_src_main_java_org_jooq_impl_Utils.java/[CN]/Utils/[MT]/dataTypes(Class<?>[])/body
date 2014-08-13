@@ -1,7 +1,5 @@
 {
-  if (types == null) {
-    return null;
-  }
+  if (types == null)   return null;
   DataType<?>[] result=new DataType<?>[types.length];
   for (int i=0; i < types.length; i++) {
     if (types[i] != null) {

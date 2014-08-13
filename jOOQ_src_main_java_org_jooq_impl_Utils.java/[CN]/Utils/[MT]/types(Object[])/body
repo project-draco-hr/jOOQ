@@ -1,7 +1,5 @@
 {
-  if (values == null) {
-    return null;
-  }
+  if (values == null)   return null;
   Class<?>[] result=new Class<?>[values.length];
   for (int i=0; i < values.length; i++) {
     if (values[i] instanceof Field<?>) {
