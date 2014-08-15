@@ -1,0 +1,3 @@
+{
+  return create().select(Statistics.TABLE_SCHEMA,Statistics.TABLE_NAME,Statistics.COLUMN_NAME,Statistics.INDEX_NAME).from(STATISTICS).where(Statistics.TABLE_SCHEMA.in(getInputSchemata())).and(primary ? Statistics.INDEX_NAME.eq(inline("PRIMARY")) : Statistics.INDEX_NAME.ne(inline("PRIMARY")).and(Statistics.NON_UNIQUE.eq(inline(0L)))).orderBy(Statistics.TABLE_SCHEMA,Statistics.TABLE_NAME,Statistics.INDEX_NAME,Statistics.SEQ_IN_INDEX).fetch();
+}
