@@ -1,0 +1,5 @@
+{
+  org.jooq.test.postgres.generatedclasses.routines.SecondMax f=new org.jooq.test.postgres.generatedclasses.routines.SecondMax();
+  f.set__1(__1);
+  return f.asAggregateFunction();
+}
