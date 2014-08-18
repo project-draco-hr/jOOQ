@@ -1,4 +1,4 @@
 {
-  ctx.sqlWarning(ctx.statement().getWarnings());
+  if (!Boolean.FALSE.equals(ctx.settings().isFetchWarnings()))   ctx.sqlWarning(ctx.statement().getWarnings());
   if (ctx.sqlWarning() != null)   listener.warning(ctx);
 }
