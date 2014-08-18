@@ -1,0 +1,3 @@
+{
+  new GenerationTool().run(load(new ByteArrayInputStream(xml.getBytes("UTF-8"))));
+}
