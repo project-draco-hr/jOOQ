@@ -5,7 +5,10 @@
   if (!StringUtils.isBlank(hint)) {
     context.sql(hint).sql(" ");
   }
-  if (distinct) {
+  if (!distinctOn.isEmpty()) {
+    context.keyword("distinct on").sql(" (").visit(distinctOn).sql(") ");
+  }
+ else   if (distinct) {
     context.keyword("distinct").sql(" ");
   }
   context.declareFields(true);

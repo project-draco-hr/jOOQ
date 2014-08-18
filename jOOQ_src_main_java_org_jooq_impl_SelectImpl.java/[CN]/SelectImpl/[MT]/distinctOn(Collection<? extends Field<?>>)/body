@@ -1,0 +1,4 @@
+{
+  getQuery().addDistinctOn(fields);
+  return this;
+}

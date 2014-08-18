@@ -1,0 +1,3 @@
+{
+  return distinctOn(Arrays.asList(fields));
+}
