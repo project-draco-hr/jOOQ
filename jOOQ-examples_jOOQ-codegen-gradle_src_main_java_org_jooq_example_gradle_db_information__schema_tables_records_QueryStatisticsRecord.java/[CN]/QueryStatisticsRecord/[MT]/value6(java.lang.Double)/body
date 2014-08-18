@@ -1,0 +1,4 @@
+{
+  setAverageExecutionTime(value);
+  return this;
+}

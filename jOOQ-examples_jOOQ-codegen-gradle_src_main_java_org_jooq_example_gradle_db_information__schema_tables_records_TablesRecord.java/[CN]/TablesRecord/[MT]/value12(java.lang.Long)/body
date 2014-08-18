@@ -1,0 +1,4 @@
+{
+  setRowCountEstimate(value);
+  return this;
+}

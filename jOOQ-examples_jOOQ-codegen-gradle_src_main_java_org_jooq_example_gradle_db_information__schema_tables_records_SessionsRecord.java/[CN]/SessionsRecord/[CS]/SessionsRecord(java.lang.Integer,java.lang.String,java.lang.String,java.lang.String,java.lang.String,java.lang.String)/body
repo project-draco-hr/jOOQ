@@ -1,0 +1,9 @@
+{
+  super(org.jooq.example.gradle.db.information_schema.tables.Sessions.SESSIONS);
+  setValue(0,id);
+  setValue(1,userName);
+  setValue(2,sessionStart);
+  setValue(3,statement);
+  setValue(4,statementStart);
+  setValue(5,containsUncommitted);
+}

@@ -1,0 +1,4 @@
+{
+  setCaseSensitive(value);
+  return this;
+}

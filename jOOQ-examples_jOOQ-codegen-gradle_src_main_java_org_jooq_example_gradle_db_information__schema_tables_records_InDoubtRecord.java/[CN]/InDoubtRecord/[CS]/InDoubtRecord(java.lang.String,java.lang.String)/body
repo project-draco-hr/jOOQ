@@ -1,0 +1,5 @@
+{
+  super(org.jooq.example.gradle.db.information_schema.tables.InDoubt.IN_DOUBT);
+  setValue(0,transaction);
+  setValue(1,state);
+}

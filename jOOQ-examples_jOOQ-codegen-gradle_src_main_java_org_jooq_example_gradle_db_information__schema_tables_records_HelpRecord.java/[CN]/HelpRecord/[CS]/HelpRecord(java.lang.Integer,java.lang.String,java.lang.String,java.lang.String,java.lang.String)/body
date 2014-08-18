@@ -1,0 +1,8 @@
+{
+  super(org.jooq.example.gradle.db.information_schema.tables.Help.HELP);
+  setValue(0,id);
+  setValue(1,section);
+  setValue(2,topic);
+  setValue(3,syntax);
+  setValue(4,text);
+}

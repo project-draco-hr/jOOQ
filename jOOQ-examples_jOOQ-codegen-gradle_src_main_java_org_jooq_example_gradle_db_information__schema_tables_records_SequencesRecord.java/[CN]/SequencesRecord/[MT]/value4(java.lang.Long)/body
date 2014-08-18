@@ -1,0 +1,4 @@
+{
+  setCurrentValue(value);
+  return this;
+}

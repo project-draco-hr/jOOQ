@@ -1,0 +1,4 @@
+{
+  setPrecision(value);
+  return this;
+}

@@ -1,0 +1,4 @@
+{
+  setStdDevRowCount(value);
+  return this;
+}

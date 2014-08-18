@@ -1,0 +1,4 @@
+{
+  setConstantSchema(value);
+  return this;
+}

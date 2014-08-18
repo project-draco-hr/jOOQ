@@ -1,0 +1,5 @@
+{
+  super(org.jooq.example.gradle.db.information_schema.tables.SessionState.SESSION_STATE);
+  setValue(0,key);
+  setValue(1,sql);
+}

@@ -1,0 +1,4 @@
+{
+  setAliasCatalog(value);
+  return this;
+}

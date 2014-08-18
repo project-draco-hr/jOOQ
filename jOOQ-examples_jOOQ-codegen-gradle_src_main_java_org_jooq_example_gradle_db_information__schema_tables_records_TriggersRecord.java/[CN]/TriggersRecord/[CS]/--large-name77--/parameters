@@ -1,0 +1,14 @@
+java.lang.String triggerCatalog
+java.lang.String triggerSchema
+java.lang.String triggerName
+java.lang.String triggerType
+java.lang.String tableCatalog
+java.lang.String tableSchema
+java.lang.String tableName
+java.lang.Boolean before
+java.lang.String javaClass
+java.lang.Integer queueSize
+java.lang.Boolean noWait
+java.lang.String remarks
+java.lang.String sql
+java.lang.Integer id

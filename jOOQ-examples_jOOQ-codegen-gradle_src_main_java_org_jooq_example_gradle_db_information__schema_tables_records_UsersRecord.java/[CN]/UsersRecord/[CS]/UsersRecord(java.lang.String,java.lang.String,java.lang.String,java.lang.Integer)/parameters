@@ -1,0 +1,4 @@
+java.lang.String name
+java.lang.String admin
+java.lang.String remarks
+java.lang.Integer id

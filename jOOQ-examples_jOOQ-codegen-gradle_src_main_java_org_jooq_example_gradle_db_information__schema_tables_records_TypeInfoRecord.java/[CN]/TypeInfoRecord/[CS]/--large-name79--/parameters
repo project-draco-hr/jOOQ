@@ -1,0 +1,14 @@
+java.lang.String typeName
+java.lang.Integer dataType
+java.lang.Integer precision
+java.lang.String prefix
+java.lang.String suffix
+java.lang.String params
+java.lang.Boolean autoIncrement
+java.lang.Short minimumScale
+java.lang.Short maximumScale
+java.lang.Integer radix
+java.lang.Integer pos
+java.lang.Boolean caseSensitive
+java.lang.Short nullable
+java.lang.Short searchable

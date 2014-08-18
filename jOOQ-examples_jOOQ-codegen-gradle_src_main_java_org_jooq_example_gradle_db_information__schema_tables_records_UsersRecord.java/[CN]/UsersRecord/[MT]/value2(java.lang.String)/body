@@ -1,0 +1,4 @@
+{
+  setAdmin(value);
+  return this;
+}

@@ -1,0 +1,4 @@
+{
+  setStorageType(value);
+  return this;
+}

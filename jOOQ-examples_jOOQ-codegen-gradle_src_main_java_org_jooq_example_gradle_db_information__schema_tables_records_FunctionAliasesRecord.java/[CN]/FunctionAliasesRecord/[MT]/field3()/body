@@ -1,0 +1,3 @@
+{
+  return org.jooq.example.gradle.db.information_schema.tables.FunctionAliases.FUNCTION_ALIASES.ALIAS_NAME;
+}

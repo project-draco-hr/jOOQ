@@ -1,0 +1,4 @@
+{
+  setMaxValue(value);
+  return this;
+}

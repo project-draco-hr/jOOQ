@@ -1,0 +1,4 @@
+{
+  setUpdateRule(value);
+  return this;
+}

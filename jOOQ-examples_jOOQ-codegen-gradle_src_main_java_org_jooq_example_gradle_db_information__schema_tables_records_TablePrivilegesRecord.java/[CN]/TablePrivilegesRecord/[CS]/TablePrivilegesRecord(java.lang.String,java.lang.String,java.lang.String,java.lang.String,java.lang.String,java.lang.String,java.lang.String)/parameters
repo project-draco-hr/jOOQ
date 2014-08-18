@@ -1,0 +1,7 @@
+java.lang.String grantor
+java.lang.String grantee
+java.lang.String tableCatalog
+java.lang.String tableSchema
+java.lang.String tableName
+java.lang.String privilegeType
+java.lang.String isGrantable

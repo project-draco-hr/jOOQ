@@ -1,0 +1,4 @@
+{
+  setConstantName(value);
+  return this;
+}

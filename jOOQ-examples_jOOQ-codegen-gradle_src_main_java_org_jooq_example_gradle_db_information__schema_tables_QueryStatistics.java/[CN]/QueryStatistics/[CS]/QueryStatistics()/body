@@ -1,0 +1,3 @@
+{
+  this("QUERY_STATISTICS",null);
+}

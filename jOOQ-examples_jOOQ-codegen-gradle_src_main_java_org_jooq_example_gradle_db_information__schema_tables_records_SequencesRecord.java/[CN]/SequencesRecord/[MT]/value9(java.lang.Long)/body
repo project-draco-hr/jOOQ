@@ -1,0 +1,4 @@
+{
+  setMinValue(value);
+  return this;
+}

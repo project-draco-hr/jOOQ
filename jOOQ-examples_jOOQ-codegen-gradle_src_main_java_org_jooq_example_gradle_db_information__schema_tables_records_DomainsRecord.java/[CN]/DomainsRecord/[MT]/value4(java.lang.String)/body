@@ -1,0 +1,4 @@
+{
+  setColumnDefault(value);
+  return this;
+}

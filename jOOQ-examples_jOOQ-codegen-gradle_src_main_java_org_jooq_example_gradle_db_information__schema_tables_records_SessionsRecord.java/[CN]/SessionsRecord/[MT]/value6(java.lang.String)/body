@@ -1,0 +1,4 @@
+{
+  setContainsUncommitted(value);
+  return this;
+}

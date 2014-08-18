@@ -1,0 +1,4 @@
+{
+  setIsGenerated(value);
+  return this;
+}

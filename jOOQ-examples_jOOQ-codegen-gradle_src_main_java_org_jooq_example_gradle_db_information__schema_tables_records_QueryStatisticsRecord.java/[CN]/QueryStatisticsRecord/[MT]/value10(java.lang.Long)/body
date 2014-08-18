@@ -1,0 +1,4 @@
+{
+  setCumulativeRowCount(value);
+  return this;
+}

@@ -1,0 +1,7 @@
+java.lang.String grantee
+java.lang.String granteetype
+java.lang.String grantedrole
+java.lang.String rights
+java.lang.String tableSchema
+java.lang.String tableName
+java.lang.Integer id

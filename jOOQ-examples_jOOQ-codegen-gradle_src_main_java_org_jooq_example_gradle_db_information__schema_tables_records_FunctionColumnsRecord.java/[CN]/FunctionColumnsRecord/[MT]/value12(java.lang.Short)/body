@@ -1,0 +1,4 @@
+{
+  setScale(value);
+  return this;
+}

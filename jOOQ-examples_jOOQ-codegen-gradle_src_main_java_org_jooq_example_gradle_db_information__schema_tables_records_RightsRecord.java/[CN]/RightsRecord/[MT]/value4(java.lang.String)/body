@@ -1,0 +1,4 @@
+{
+  setRights(value);
+  return this;
+}

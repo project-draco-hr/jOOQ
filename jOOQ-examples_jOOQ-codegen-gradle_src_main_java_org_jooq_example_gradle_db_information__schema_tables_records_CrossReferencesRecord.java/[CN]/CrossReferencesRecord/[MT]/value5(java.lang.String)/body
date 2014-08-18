@@ -1,0 +1,4 @@
+{
+  setFktableCatalog(value);
+  return this;
+}

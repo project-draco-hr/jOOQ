@@ -1,0 +1,10 @@
+{
+  super(org.jooq.example.gradle.db.information_schema.tables.Constants.CONSTANTS);
+  setValue(0,constantCatalog);
+  setValue(1,constantSchema);
+  setValue(2,constantName);
+  setValue(3,dataType);
+  setValue(4,remarks);
+  setValue(5,sql);
+  setValue(6,id);
+}

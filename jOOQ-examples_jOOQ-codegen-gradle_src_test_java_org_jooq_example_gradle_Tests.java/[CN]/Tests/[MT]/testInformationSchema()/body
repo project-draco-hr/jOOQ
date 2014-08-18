@@ -1,0 +1,4 @@
+{
+  Class.forName("org.h2.Driver");
+  Assert.assertEquals(Arrays.asList("COLUMNS","TABLES"),DSL.using("jdbc:h2:~/test-gradle","sa","").select(TABLES.TABLE_NAME).from(TABLES).where(TABLES.TABLE_NAME.in("COLUMNS","TABLES")).and(TABLES.TABLE_SCHEMA.eq("INFORMATION_SCHEMA")).fetch(TABLES.TABLE_NAME));
+}

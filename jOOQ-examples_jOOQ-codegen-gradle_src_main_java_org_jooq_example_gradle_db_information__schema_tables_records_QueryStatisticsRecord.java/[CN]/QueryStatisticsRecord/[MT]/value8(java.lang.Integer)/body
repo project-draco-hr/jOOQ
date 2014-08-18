@@ -1,0 +1,4 @@
+{
+  setMinRowCount(value);
+  return this;
+}

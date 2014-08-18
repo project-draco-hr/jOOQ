@@ -1,0 +1,17 @@
+{
+  super(org.jooq.example.gradle.db.information_schema.tables.Domains.DOMAINS);
+  setValue(0,domainCatalog);
+  setValue(1,domainSchema);
+  setValue(2,domainName);
+  setValue(3,columnDefault);
+  setValue(4,isNullable);
+  setValue(5,dataType);
+  setValue(6,precision);
+  setValue(7,scale);
+  setValue(8,typeName);
+  setValue(9,selectivity);
+  setValue(10,checkConstraint);
+  setValue(11,remarks);
+  setValue(12,sql);
+  setValue(13,id);
+}

@@ -1,0 +1,4 @@
+{
+  setAscOrDesc(value);
+  return this;
+}

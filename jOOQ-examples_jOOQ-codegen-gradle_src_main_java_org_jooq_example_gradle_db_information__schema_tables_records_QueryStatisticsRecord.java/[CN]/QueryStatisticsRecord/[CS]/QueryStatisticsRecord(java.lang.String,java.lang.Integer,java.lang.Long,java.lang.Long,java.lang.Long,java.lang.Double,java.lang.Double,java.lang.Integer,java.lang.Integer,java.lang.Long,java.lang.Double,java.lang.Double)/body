@@ -1,0 +1,15 @@
+{
+  super(org.jooq.example.gradle.db.information_schema.tables.QueryStatistics.QUERY_STATISTICS);
+  setValue(0,sqlStatement);
+  setValue(1,executionCount);
+  setValue(2,minExecutionTime);
+  setValue(3,maxExecutionTime);
+  setValue(4,cumulativeExecutionTime);
+  setValue(5,averageExecutionTime);
+  setValue(6,stdDevExecutionTime);
+  setValue(7,minRowCount);
+  setValue(8,maxRowCount);
+  setValue(9,cumulativeRowCount);
+  setValue(10,averageRowCount);
+  setValue(11,stdDevRowCount);
+}

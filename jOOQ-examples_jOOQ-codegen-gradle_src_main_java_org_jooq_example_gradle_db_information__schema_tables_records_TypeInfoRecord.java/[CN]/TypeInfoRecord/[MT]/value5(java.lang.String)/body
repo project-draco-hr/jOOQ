@@ -1,0 +1,4 @@
+{
+  setSuffix(value);
+  return this;
+}

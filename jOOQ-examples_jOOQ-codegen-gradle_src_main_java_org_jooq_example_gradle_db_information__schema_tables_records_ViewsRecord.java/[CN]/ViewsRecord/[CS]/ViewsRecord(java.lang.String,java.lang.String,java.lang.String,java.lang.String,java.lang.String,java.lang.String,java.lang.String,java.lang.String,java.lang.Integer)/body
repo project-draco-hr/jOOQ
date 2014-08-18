@@ -1,0 +1,12 @@
+{
+  super(org.jooq.example.gradle.db.information_schema.tables.Views.VIEWS);
+  setValue(0,tableCatalog);
+  setValue(1,tableSchema);
+  setValue(2,tableName);
+  setValue(3,viewDefinition);
+  setValue(4,checkOption);
+  setValue(5,isUpdatable);
+  setValue(6,status);
+  setValue(7,remarks);
+  setValue(8,id);
+}

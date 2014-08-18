@@ -1,0 +1,12 @@
+java.lang.String sqlStatement
+java.lang.Integer executionCount
+java.lang.Long minExecutionTime
+java.lang.Long maxExecutionTime
+java.lang.Long cumulativeExecutionTime
+java.lang.Double averageExecutionTime
+java.lang.Double stdDevExecutionTime
+java.lang.Integer minRowCount
+java.lang.Integer maxRowCount
+java.lang.Long cumulativeRowCount
+java.lang.Double averageRowCount
+java.lang.Double stdDevRowCount

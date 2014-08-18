@@ -1,0 +1,4 @@
+{
+  setConstantCatalog(value);
+  return this;
+}

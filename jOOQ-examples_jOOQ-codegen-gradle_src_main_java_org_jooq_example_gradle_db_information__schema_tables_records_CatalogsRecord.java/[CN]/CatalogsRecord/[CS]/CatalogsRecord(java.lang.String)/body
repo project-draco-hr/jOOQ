@@ -1,0 +1,4 @@
+{
+  super(org.jooq.example.gradle.db.information_schema.tables.Catalogs.CATALOGS);
+  setValue(0,catalogName);
+}

@@ -1,0 +1,4 @@
+{
+  setSequenceSchema(value);
+  return this;
+}

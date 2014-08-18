@@ -1,0 +1,4 @@
+{
+  setCache(value);
+  return this;
+}

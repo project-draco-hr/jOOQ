@@ -1,0 +1,14 @@
+java.lang.String pktableCatalog
+java.lang.String pktableSchema
+java.lang.String pktableName
+java.lang.String pkcolumnName
+java.lang.String fktableCatalog
+java.lang.String fktableSchema
+java.lang.String fktableName
+java.lang.String fkcolumnName
+java.lang.Short ordinalPosition
+java.lang.Short updateRule
+java.lang.Short deleteRule
+java.lang.String fkName
+java.lang.String pkName
+java.lang.Short deferrability

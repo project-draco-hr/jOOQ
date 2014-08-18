@@ -1,0 +1,12 @@
+java.lang.String aliasCatalog
+java.lang.String aliasSchema
+java.lang.String aliasName
+java.lang.String javaClass
+java.lang.String javaMethod
+java.lang.Integer dataType
+java.lang.String typeName
+java.lang.Integer columnCount
+java.lang.Short returnsResult
+java.lang.String remarks
+java.lang.Integer id
+java.lang.String source

@@ -1,0 +1,4 @@
+{
+  setSortType(value);
+  return this;
+}

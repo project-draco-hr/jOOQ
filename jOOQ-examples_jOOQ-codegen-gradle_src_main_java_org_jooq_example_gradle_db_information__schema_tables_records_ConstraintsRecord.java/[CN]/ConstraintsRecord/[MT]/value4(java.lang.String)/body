@@ -1,0 +1,4 @@
+{
+  setConstraintType(value);
+  return this;
+}

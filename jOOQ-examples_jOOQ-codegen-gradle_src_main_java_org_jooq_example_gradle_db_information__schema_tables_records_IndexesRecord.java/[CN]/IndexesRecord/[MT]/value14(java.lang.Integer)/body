@@ -1,0 +1,4 @@
+{
+  setPages(value);
+  return this;
+}

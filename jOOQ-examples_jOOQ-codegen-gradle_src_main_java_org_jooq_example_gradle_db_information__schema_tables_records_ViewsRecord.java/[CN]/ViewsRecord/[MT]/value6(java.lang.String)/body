@@ -1,0 +1,4 @@
+{
+  setIsUpdatable(value);
+  return this;
+}

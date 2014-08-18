@@ -1,0 +1,24 @@
+{
+  super(org.jooq.example.gradle.db.information_schema.tables.Indexes.INDEXES);
+  setValue(0,tableCatalog);
+  setValue(1,tableSchema);
+  setValue(2,tableName);
+  setValue(3,nonUnique);
+  setValue(4,indexName);
+  setValue(5,ordinalPosition);
+  setValue(6,columnName);
+  setValue(7,cardinality);
+  setValue(8,primaryKey);
+  setValue(9,indexTypeName);
+  setValue(10,isGenerated);
+  setValue(11,indexType);
+  setValue(12,ascOrDesc);
+  setValue(13,pages);
+  setValue(14,filterCondition);
+  setValue(15,remarks);
+  setValue(16,sql);
+  setValue(17,id);
+  setValue(18,sortType);
+  setValue(19,constraintName);
+  setValue(20,indexClass);
+}

@@ -1,0 +1,17 @@
+{
+  super(org.jooq.example.gradle.db.information_schema.tables.TypeInfo.TYPE_INFO);
+  setValue(0,typeName);
+  setValue(1,dataType);
+  setValue(2,precision);
+  setValue(3,prefix);
+  setValue(4,suffix);
+  setValue(5,params);
+  setValue(6,autoIncrement);
+  setValue(7,minimumScale);
+  setValue(8,maximumScale);
+  setValue(9,radix);
+  setValue(10,pos);
+  setValue(11,caseSensitive);
+  setValue(12,nullable);
+  setValue(13,searchable);
+}

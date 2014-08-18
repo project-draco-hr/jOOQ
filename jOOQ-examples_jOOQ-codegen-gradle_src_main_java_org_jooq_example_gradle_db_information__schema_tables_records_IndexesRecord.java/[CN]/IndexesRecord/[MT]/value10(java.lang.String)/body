@@ -1,0 +1,4 @@
+{
+  setIndexTypeName(value);
+  return this;
+}

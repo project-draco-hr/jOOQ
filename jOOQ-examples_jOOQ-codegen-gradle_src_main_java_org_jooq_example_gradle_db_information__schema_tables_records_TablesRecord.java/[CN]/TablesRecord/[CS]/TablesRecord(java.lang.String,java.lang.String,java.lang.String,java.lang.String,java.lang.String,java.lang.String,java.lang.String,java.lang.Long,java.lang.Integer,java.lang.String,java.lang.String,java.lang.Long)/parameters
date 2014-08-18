@@ -1,0 +1,12 @@
+java.lang.String tableCatalog
+java.lang.String tableSchema
+java.lang.String tableName
+java.lang.String tableType
+java.lang.String storageType
+java.lang.String sql
+java.lang.String remarks
+java.lang.Long lastModification
+java.lang.Integer id
+java.lang.String typeName
+java.lang.String tableClass
+java.lang.Long rowCountEstimate

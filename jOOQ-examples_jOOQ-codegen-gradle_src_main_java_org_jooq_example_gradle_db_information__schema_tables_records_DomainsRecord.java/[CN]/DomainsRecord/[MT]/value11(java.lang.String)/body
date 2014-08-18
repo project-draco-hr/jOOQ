@@ -1,0 +1,4 @@
+{
+  setCheckConstraint(value);
+  return this;
+}

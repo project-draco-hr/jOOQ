@@ -1,0 +1,4 @@
+{
+  setCumulativeExecutionTime(value);
+  return this;
+}

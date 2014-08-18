@@ -1,0 +1,4 @@
+{
+  setJavaClass(value);
+  return this;
+}

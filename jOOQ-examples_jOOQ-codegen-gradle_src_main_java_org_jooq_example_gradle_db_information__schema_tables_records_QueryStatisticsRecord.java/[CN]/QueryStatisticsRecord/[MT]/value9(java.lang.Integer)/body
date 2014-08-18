@@ -1,0 +1,4 @@
+{
+  setMaxRowCount(value);
+  return this;
+}

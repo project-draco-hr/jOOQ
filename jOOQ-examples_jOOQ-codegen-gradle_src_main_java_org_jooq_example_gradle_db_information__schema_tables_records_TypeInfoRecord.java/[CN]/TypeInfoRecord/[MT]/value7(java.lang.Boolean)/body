@@ -1,0 +1,4 @@
+{
+  setAutoIncrement(value);
+  return this;
+}

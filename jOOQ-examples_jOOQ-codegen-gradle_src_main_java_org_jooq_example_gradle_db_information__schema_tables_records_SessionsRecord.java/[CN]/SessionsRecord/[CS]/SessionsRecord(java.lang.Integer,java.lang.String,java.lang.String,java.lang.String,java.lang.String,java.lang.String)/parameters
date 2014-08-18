@@ -1,0 +1,6 @@
+java.lang.Integer id
+java.lang.String userName
+java.lang.String sessionStart
+java.lang.String statement
+java.lang.String statementStart
+java.lang.String containsUncommitted

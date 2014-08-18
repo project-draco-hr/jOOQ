@@ -1,0 +1,4 @@
+{
+  setColumnType(value);
+  return this;
+}

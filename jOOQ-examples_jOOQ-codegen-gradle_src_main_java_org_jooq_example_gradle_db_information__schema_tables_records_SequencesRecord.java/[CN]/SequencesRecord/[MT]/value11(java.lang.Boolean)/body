@@ -1,0 +1,4 @@
+{
+  setIsCycle(value);
+  return this;
+}

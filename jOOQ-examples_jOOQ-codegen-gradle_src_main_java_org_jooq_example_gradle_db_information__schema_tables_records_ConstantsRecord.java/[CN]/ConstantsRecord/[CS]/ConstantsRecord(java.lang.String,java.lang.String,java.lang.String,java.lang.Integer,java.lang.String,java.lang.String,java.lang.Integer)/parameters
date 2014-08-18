@@ -1,0 +1,7 @@
+java.lang.String constantCatalog
+java.lang.String constantSchema
+java.lang.String constantName
+java.lang.Integer dataType
+java.lang.String remarks
+java.lang.String sql
+java.lang.Integer id

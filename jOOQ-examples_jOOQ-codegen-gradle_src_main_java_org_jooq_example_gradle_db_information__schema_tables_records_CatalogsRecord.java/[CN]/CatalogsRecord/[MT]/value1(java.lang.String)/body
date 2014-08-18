@@ -1,0 +1,4 @@
+{
+  setCatalogName(value);
+  return this;
+}

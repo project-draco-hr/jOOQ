@@ -1,0 +1,4 @@
+{
+  setDomainName(value);
+  return this;
+}

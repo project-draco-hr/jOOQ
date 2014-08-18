@@ -1,0 +1,4 @@
+{
+  setDefaultCollationName(value);
+  return this;
+}

@@ -1,0 +1,3 @@
+java.lang.String alias
+org.jooq.Table<org.jooq.example.gradle.db.information_schema.tables.records.TablesRecord> aliased
+org.jooq.Field<?>[] parameters

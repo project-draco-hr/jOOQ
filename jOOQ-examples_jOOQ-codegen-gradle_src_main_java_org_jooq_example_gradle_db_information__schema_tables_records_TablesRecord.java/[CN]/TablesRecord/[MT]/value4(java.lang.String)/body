@@ -1,0 +1,4 @@
+{
+  setTableType(value);
+  return this;
+}

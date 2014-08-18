@@ -1,0 +1,4 @@
+{
+  setMinimumScale(value);
+  return this;
+}

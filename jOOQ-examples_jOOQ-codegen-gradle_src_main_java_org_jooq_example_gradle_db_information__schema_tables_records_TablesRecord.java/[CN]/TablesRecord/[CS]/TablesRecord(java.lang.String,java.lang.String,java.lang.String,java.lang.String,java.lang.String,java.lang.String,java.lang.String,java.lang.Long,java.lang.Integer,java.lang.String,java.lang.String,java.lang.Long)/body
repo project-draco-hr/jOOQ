@@ -1,0 +1,15 @@
+{
+  super(org.jooq.example.gradle.db.information_schema.tables.Tables.TABLES);
+  setValue(0,tableCatalog);
+  setValue(1,tableSchema);
+  setValue(2,tableName);
+  setValue(3,tableType);
+  setValue(4,storageType);
+  setValue(5,sql);
+  setValue(6,remarks);
+  setValue(7,lastModification);
+  setValue(8,id);
+  setValue(9,typeName);
+  setValue(10,tableClass);
+  setValue(11,rowCountEstimate);
+}

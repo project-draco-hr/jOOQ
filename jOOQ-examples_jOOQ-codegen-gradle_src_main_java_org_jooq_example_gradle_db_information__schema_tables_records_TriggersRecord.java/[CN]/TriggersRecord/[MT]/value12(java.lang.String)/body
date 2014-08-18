@@ -1,0 +1,4 @@
+{
+  setRemarks(value);
+  return this;
+}

@@ -1,0 +1,17 @@
+{
+  super(org.jooq.example.gradle.db.information_schema.tables.Triggers.TRIGGERS);
+  setValue(0,triggerCatalog);
+  setValue(1,triggerSchema);
+  setValue(2,triggerName);
+  setValue(3,triggerType);
+  setValue(4,tableCatalog);
+  setValue(5,tableSchema);
+  setValue(6,tableName);
+  setValue(7,before);
+  setValue(8,javaClass);
+  setValue(9,queueSize);
+  setValue(10,noWait);
+  setValue(11,remarks);
+  setValue(12,sql);
+  setValue(13,id);
+}

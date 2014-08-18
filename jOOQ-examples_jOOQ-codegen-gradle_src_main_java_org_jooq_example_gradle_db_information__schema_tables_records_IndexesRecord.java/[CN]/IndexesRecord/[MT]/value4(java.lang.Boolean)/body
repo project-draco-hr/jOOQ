@@ -1,0 +1,4 @@
+{
+  setNonUnique(value);
+  return this;
+}

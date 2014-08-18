@@ -1,0 +1,4 @@
+{
+  setTriggerSchema(value);
+  return this;
+}

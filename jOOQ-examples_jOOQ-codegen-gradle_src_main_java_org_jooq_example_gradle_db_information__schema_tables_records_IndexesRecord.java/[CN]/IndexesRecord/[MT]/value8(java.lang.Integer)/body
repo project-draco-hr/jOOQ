@@ -1,0 +1,4 @@
+{
+  setCardinality(value);
+  return this;
+}

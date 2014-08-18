@@ -1,0 +1,4 @@
+{
+  setTableSchema(value);
+  return this;
+}

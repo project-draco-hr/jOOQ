@@ -1,0 +1,26 @@
+{
+  super(org.jooq.example.gradle.db.information_schema.tables.Columns.COLUMNS);
+  setValue(0,tableCatalog);
+  setValue(1,tableSchema);
+  setValue(2,tableName);
+  setValue(3,columnName);
+  setValue(4,ordinalPosition);
+  setValue(5,columnDefault);
+  setValue(6,isNullable);
+  setValue(7,dataType);
+  setValue(8,characterMaximumLength);
+  setValue(9,characterOctetLength);
+  setValue(10,numericPrecision);
+  setValue(11,numericPrecisionRadix);
+  setValue(12,numericScale);
+  setValue(13,characterSetName);
+  setValue(14,collationName);
+  setValue(15,typeName);
+  setValue(16,nullable);
+  setValue(17,isComputed);
+  setValue(18,selectivity);
+  setValue(19,checkConstraint);
+  setValue(20,sequenceName);
+  setValue(21,remarks);
+  setValue(22,sourceDataType);
+}

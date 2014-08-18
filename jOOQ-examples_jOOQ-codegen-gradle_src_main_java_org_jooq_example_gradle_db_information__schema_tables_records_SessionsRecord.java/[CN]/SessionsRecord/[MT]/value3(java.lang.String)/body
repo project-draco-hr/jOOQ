@@ -1,0 +1,4 @@
+{
+  setSessionStart(value);
+  return this;
+}

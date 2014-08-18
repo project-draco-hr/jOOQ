@@ -1,0 +1,16 @@
+{
+  super(org.jooq.example.gradle.db.information_schema.tables.Constraints.CONSTRAINTS);
+  setValue(0,constraintCatalog);
+  setValue(1,constraintSchema);
+  setValue(2,constraintName);
+  setValue(3,constraintType);
+  setValue(4,tableCatalog);
+  setValue(5,tableSchema);
+  setValue(6,tableName);
+  setValue(7,uniqueIndexName);
+  setValue(8,checkExpression);
+  setValue(9,columnList);
+  setValue(10,remarks);
+  setValue(11,sql);
+  setValue(12,id);
+}

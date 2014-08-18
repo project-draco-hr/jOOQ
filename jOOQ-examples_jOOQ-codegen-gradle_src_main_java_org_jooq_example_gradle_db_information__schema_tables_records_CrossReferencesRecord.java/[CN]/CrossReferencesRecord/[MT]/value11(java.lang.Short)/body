@@ -1,0 +1,4 @@
+{
+  setDeleteRule(value);
+  return this;
+}

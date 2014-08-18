@@ -1,0 +1,4 @@
+{
+  setType(value);
+  return this;
+}

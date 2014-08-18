@@ -1,0 +1,20 @@
+{
+  super(org.jooq.example.gradle.db.information_schema.tables.FunctionColumns.FUNCTION_COLUMNS);
+  setValue(0,aliasCatalog);
+  setValue(1,aliasSchema);
+  setValue(2,aliasName);
+  setValue(3,javaClass);
+  setValue(4,javaMethod);
+  setValue(5,columnCount);
+  setValue(6,pos);
+  setValue(7,columnName);
+  setValue(8,dataType);
+  setValue(9,typeName);
+  setValue(10,precision);
+  setValue(11,scale);
+  setValue(12,radix);
+  setValue(13,nullable);
+  setValue(14,columnType);
+  setValue(15,remarks);
+  setValue(16,columnDefault);
+}

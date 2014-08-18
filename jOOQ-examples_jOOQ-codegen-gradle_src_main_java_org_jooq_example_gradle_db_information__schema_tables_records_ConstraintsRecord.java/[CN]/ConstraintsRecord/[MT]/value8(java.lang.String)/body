@@ -1,0 +1,4 @@
+{
+  setUniqueIndexName(value);
+  return this;
+}

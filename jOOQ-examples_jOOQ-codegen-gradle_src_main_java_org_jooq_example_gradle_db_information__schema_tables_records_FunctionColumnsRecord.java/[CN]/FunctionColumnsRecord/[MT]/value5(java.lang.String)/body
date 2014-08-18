@@ -1,0 +1,4 @@
+{
+  setJavaMethod(value);
+  return this;
+}

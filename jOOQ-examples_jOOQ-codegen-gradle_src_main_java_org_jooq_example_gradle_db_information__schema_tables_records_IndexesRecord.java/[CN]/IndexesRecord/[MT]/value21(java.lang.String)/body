@@ -1,0 +1,4 @@
+{
+  setIndexClass(value);
+  return this;
+}

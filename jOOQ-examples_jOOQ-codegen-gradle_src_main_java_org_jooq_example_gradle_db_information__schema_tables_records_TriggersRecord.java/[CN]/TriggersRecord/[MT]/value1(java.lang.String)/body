@@ -1,0 +1,4 @@
+{
+  setTriggerCatalog(value);
+  return this;
+}

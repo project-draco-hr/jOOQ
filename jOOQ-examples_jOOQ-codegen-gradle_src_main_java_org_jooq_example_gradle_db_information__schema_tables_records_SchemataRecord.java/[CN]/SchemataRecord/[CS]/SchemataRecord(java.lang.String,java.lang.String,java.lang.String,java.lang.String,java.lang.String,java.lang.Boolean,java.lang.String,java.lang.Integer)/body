@@ -1,0 +1,11 @@
+{
+  super(org.jooq.example.gradle.db.information_schema.tables.Schemata.SCHEMATA);
+  setValue(0,catalogName);
+  setValue(1,schemaName);
+  setValue(2,schemaOwner);
+  setValue(3,defaultCharacterSetName);
+  setValue(4,defaultCollationName);
+  setValue(5,isDefault);
+  setValue(6,remarks);
+  setValue(7,id);
+}

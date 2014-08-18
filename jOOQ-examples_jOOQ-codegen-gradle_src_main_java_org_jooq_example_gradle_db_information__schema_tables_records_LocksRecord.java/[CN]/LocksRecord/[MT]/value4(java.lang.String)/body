@@ -1,0 +1,4 @@
+{
+  setLockType(value);
+  return this;
+}

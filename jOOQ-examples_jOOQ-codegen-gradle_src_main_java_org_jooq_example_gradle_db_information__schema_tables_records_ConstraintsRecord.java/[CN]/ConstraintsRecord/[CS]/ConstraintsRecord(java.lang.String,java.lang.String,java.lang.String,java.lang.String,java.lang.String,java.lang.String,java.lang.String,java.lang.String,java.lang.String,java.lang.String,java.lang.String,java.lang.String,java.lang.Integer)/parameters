@@ -1,0 +1,13 @@
+java.lang.String constraintCatalog
+java.lang.String constraintSchema
+java.lang.String constraintName
+java.lang.String constraintType
+java.lang.String tableCatalog
+java.lang.String tableSchema
+java.lang.String tableName
+java.lang.String uniqueIndexName
+java.lang.String checkExpression
+java.lang.String columnList
+java.lang.String remarks
+java.lang.String sql
+java.lang.Integer id

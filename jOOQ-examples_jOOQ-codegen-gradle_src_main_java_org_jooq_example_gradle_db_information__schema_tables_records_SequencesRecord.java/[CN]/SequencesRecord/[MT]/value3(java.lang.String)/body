@@ -1,0 +1,4 @@
+{
+  setSequenceName(value);
+  return this;
+}

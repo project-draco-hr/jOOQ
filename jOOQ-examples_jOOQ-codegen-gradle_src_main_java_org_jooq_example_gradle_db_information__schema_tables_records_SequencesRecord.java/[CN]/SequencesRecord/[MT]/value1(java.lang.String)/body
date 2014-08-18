@@ -1,0 +1,4 @@
+{
+  setSequenceCatalog(value);
+  return this;
+}

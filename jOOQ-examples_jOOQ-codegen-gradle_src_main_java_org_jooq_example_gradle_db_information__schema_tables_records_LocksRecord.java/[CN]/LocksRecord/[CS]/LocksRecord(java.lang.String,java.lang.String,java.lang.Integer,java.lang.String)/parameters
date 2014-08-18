@@ -1,0 +1,4 @@
+java.lang.String tableSchema
+java.lang.String tableName
+java.lang.Integer sessionId
+java.lang.String lockType

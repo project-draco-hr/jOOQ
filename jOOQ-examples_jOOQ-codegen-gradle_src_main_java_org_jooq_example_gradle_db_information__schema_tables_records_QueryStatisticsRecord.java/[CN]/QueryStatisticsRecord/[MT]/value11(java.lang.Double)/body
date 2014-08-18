@@ -1,0 +1,4 @@
+{
+  setAverageRowCount(value);
+  return this;
+}

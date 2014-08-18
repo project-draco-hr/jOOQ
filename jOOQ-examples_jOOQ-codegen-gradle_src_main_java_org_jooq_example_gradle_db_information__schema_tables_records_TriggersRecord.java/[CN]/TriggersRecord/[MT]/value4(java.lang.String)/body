@@ -1,0 +1,4 @@
+{
+  setTriggerType(value);
+  return this;
+}

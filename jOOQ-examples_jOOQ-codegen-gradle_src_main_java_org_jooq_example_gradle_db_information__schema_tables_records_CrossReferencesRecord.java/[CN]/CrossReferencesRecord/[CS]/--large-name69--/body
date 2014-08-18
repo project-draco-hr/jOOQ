@@ -1,0 +1,17 @@
+{
+  super(org.jooq.example.gradle.db.information_schema.tables.CrossReferences.CROSS_REFERENCES);
+  setValue(0,pktableCatalog);
+  setValue(1,pktableSchema);
+  setValue(2,pktableName);
+  setValue(3,pkcolumnName);
+  setValue(4,fktableCatalog);
+  setValue(5,fktableSchema);
+  setValue(6,fktableName);
+  setValue(7,fkcolumnName);
+  setValue(8,ordinalPosition);
+  setValue(9,updateRule);
+  setValue(10,deleteRule);
+  setValue(11,fkName);
+  setValue(12,pkName);
+  setValue(13,deferrability);
+}

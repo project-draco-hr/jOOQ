@@ -1,0 +1,5 @@
+java.lang.Integer id
+java.lang.String section
+java.lang.String topic
+java.lang.String syntax
+java.lang.String text

@@ -1,0 +1,10 @@
+{
+  super(org.jooq.example.gradle.db.information_schema.tables.Rights.RIGHTS);
+  setValue(0,grantee);
+  setValue(1,granteetype);
+  setValue(2,grantedrole);
+  setValue(3,rights);
+  setValue(4,tableSchema);
+  setValue(5,tableName);
+  setValue(6,id);
+}

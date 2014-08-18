@@ -1,0 +1,4 @@
+{
+  setSearchable(value);
+  return this;
+}

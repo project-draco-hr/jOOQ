@@ -1,0 +1,14 @@
+java.lang.String domainCatalog
+java.lang.String domainSchema
+java.lang.String domainName
+java.lang.String columnDefault
+java.lang.String isNullable
+java.lang.Integer dataType
+java.lang.Integer precision
+java.lang.Integer scale
+java.lang.String typeName
+java.lang.Integer selectivity
+java.lang.String checkConstraint
+java.lang.String remarks
+java.lang.String sql
+java.lang.Integer id

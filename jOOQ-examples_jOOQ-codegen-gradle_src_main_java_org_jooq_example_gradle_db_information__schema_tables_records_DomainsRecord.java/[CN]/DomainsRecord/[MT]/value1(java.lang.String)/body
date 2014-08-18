@@ -1,0 +1,4 @@
+{
+  setDomainCatalog(value);
+  return this;
+}

@@ -1,0 +1,4 @@
+{
+  super(org.jooq.example.gradle.db.information_schema.tables.TableTypes.TABLE_TYPES);
+  setValue(0,type);
+}

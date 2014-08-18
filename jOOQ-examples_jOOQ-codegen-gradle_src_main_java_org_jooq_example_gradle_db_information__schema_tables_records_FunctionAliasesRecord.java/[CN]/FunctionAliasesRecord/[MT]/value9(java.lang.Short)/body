@@ -1,0 +1,4 @@
+{
+  setReturnsResult(value);
+  return this;
+}

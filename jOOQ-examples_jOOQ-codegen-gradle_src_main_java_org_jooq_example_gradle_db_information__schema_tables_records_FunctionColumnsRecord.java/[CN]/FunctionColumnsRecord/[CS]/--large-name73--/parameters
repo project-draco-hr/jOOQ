@@ -1,0 +1,17 @@
+java.lang.String aliasCatalog
+java.lang.String aliasSchema
+java.lang.String aliasName
+java.lang.String javaClass
+java.lang.String javaMethod
+java.lang.Integer columnCount
+java.lang.Integer pos
+java.lang.String columnName
+java.lang.Integer dataType
+java.lang.String typeName
+java.lang.Integer precision
+java.lang.Short scale
+java.lang.Short radix
+java.lang.Short nullable
+java.lang.Short columnType
+java.lang.String remarks
+java.lang.String columnDefault

@@ -1,0 +1,7 @@
+{
+  super(org.jooq.example.gradle.db.information_schema.tables.Locks.LOCKS);
+  setValue(0,tableSchema);
+  setValue(1,tableName);
+  setValue(2,sessionId);
+  setValue(3,lockType);
+}

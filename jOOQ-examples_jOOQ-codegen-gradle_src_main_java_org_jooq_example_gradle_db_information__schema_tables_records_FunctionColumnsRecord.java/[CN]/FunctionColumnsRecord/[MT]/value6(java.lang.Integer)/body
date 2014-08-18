@@ -1,0 +1,4 @@
+{
+  setColumnCount(value);
+  return this;
+}

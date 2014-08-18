@@ -1,0 +1,4 @@
+{
+  setFilterCondition(value);
+  return this;
+}

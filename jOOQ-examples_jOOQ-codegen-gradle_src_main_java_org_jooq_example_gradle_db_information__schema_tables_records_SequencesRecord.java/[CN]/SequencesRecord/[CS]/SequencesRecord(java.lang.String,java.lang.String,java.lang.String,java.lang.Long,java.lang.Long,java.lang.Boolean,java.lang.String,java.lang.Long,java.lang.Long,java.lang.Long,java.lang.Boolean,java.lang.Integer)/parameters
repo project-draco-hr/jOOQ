@@ -1,0 +1,12 @@
+java.lang.String sequenceCatalog
+java.lang.String sequenceSchema
+java.lang.String sequenceName
+java.lang.Long currentValue
+java.lang.Long increment
+java.lang.Boolean isGenerated
+java.lang.String remarks
+java.lang.Long cache
+java.lang.Long minValue
+java.lang.Long maxValue
+java.lang.Boolean isCycle
+java.lang.Integer id

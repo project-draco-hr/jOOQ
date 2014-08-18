@@ -1,0 +1,10 @@
+{
+  super(org.jooq.example.gradle.db.information_schema.tables.TablePrivileges.TABLE_PRIVILEGES);
+  setValue(0,grantor);
+  setValue(1,grantee);
+  setValue(2,tableCatalog);
+  setValue(3,tableSchema);
+  setValue(4,tableName);
+  setValue(5,privilegeType);
+  setValue(6,isGrantable);
+}

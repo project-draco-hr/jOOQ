@@ -1,0 +1,15 @@
+{
+  super(org.jooq.example.gradle.db.information_schema.tables.FunctionAliases.FUNCTION_ALIASES);
+  setValue(0,aliasCatalog);
+  setValue(1,aliasSchema);
+  setValue(2,aliasName);
+  setValue(3,javaClass);
+  setValue(4,javaMethod);
+  setValue(5,dataType);
+  setValue(6,typeName);
+  setValue(7,columnCount);
+  setValue(8,returnsResult);
+  setValue(9,remarks);
+  setValue(10,id);
+  setValue(11,source);
+}

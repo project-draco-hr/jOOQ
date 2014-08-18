@@ -1,0 +1,15 @@
+{
+  super(org.jooq.example.gradle.db.information_schema.tables.Sequences.SEQUENCES);
+  setValue(0,sequenceCatalog);
+  setValue(1,sequenceSchema);
+  setValue(2,sequenceName);
+  setValue(3,currentValue);
+  setValue(4,increment);
+  setValue(5,isGenerated);
+  setValue(6,remarks);
+  setValue(7,cache);
+  setValue(8,minValue);
+  setValue(9,maxValue);
+  setValue(10,isCycle);
+  setValue(11,id);
+}

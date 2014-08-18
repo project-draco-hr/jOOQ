@@ -1,0 +1,4 @@
+{
+  setMaximumScale(value);
+  return this;
+}

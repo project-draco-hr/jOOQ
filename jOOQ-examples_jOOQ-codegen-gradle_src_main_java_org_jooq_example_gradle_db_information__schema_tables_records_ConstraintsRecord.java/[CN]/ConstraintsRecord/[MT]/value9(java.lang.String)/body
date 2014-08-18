@@ -1,0 +1,4 @@
+{
+  setCheckExpression(value);
+  return this;
+}

@@ -1,0 +1,4 @@
+{
+  setSyntax(value);
+  return this;
+}

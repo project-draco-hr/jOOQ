@@ -1,0 +1,9 @@
+java.lang.String tableCatalog
+java.lang.String tableSchema
+java.lang.String tableName
+java.lang.String viewDefinition
+java.lang.String checkOption
+java.lang.String isUpdatable
+java.lang.String status
+java.lang.String remarks
+java.lang.Integer id

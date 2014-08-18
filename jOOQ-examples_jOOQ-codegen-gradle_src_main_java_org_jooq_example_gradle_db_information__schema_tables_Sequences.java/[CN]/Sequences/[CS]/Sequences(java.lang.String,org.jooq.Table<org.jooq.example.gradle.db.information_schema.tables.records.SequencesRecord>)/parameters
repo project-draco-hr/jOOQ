@@ -1,0 +1,2 @@
+java.lang.String alias
+org.jooq.Table<org.jooq.example.gradle.db.information_schema.tables.records.SequencesRecord> aliased

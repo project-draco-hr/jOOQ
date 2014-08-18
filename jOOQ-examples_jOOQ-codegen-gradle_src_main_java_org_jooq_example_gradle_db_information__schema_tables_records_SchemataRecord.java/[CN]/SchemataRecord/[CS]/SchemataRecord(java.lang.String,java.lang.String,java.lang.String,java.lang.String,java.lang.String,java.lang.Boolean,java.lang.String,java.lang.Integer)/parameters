@@ -1,0 +1,8 @@
+java.lang.String catalogName
+java.lang.String schemaName
+java.lang.String schemaOwner
+java.lang.String defaultCharacterSetName
+java.lang.String defaultCollationName
+java.lang.Boolean isDefault
+java.lang.String remarks
+java.lang.Integer id

@@ -1,0 +1,6 @@
+{
+  super(org.jooq.example.gradle.db.information_schema.tables.Roles.ROLES);
+  setValue(0,name);
+  setValue(1,remarks);
+  setValue(2,id);
+}

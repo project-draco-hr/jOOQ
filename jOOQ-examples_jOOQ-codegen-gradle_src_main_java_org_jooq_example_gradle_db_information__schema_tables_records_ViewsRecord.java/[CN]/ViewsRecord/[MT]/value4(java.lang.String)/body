@@ -1,0 +1,4 @@
+{
+  setViewDefinition(value);
+  return this;
+}

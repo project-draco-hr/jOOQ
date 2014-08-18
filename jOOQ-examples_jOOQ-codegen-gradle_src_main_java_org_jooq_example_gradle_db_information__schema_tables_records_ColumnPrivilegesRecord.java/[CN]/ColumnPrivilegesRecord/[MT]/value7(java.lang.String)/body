@@ -1,0 +1,4 @@
+{
+  setPrivilegeType(value);
+  return this;
+}
