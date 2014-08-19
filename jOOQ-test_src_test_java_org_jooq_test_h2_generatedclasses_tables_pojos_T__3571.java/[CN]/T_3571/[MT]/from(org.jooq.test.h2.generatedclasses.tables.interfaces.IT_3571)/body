@@ -1,0 +1,6 @@
+{
+  setE1(from.getE1());
+  setE2(from.getE2());
+  setE3(from.getE3());
+  setE4(from.getE4());
+}

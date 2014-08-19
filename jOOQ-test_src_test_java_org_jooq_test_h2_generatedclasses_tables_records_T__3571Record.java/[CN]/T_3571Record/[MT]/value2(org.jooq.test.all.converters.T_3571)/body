@@ -1,0 +1,4 @@
+{
+  setE2(value);
+  return this;
+}
