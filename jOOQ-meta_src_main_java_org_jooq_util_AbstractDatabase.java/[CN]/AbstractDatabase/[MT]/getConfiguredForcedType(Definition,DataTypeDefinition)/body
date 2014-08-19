@@ -1,21 +1,18 @@
 {
-  for (  ForcedType forcedType : getConfiguredForcedTypes()) {
+  forcedTypeLoop:   for (  ForcedType forcedType : getConfiguredForcedTypes()) {
     String expression=forcedType.getExpression();
     if (forcedType.getExpressions() != null) {
       expression=forcedType.getExpressions();
       log.warn("DEPRECATED","The <expressions/> element in <forcedType/> is deprecated. Use <expression/> instead");
     }
     String types=forcedType.getTypes();
-    boolean match=true;
-    if (expression != null && !definition.getQualifiedName().matches(expression)) {
-      match=false;
+    if (expression != null && !definition.getName().matches(expression) && !definition.getQualifiedName().matches(expression)) {
+      continue forcedTypeLoop;
     }
     if (types != null && definedType != null && !definedType.getType().matches(types)) {
-      match=false;
+      continue forcedTypeLoop;
     }
-    if (match) {
-      return forcedType;
-    }
+    return forcedType;
   }
   return null;
 }
