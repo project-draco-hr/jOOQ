@@ -1,0 +1,3 @@
+{
+  super(Integer.class,T_3571.class);
+}

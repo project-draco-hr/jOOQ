@@ -1,0 +1,9 @@
+SQLDialect dialect
+Class<T> type
+String typeName
+String castTypeName
+int precision
+int scale
+int length
+boolean nullable
+boolean defaulted
