@@ -1,4 +1,5 @@
 {
+  Field<?> actualField=field(ctx);
   if (nullsFirst || nullsLast) {
 switch (ctx.configuration().dialect().family()) {
 case CUBRID:
@@ -8,12 +9,12 @@ case SQLITE:
 {
         Field<Integer> ifNull=nullsFirst ? zero() : one();
         Field<Integer> ifNotNull=nullsFirst ? one() : zero();
-        ctx.visit(nvl2(field,ifNotNull,ifNull)).sql(", ").visit(field).sql(" ").keyword(order.toSQL());
+        ctx.visit(nvl2(actualField,ifNotNull,ifNull)).sql(", ").visit(actualField).sql(" ").keyword(order.toSQL());
         break;
       }
 default :
 {
-      ctx.visit(field).sql(" ").keyword(order.toSQL());
+      ctx.visit(actualField).sql(" ").keyword(order.toSQL());
       if (nullsFirst) {
         ctx.sql(" ").keyword("nulls first");
       }
@@ -25,6 +26,6 @@ default :
 }
 }
  else {
-ctx.visit(field).sql(" ").keyword(order.toSQL());
+ctx.visit(actualField).sql(" ").keyword(order.toSQL());
 }
 }

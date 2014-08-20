@@ -48,7 +48,6 @@ case POSTGRES:
 }
 }
  else {
-String actualAlias=alias;
-context.literal(actualAlias);
+context.literal(alias);
 }
 }
