@@ -99,7 +99,10 @@
   context.end(SELECT_WINDOW);
   context.start(SELECT_ORDER_BY);
   if (!getOrderBy().isEmpty()) {
-    context.formatSeparator().keyword("order").sql(orderBySiblings ? " " : "").keyword(orderBySiblings ? "siblings" : "").sql(" ").keyword("by").sql(" ").visit(getOrderBy());
+    context.formatSeparator().keyword("order").sql(orderBySiblings ? " " : "").keyword(orderBySiblings ? "siblings" : "").sql(" ").keyword("by").sql(" ");
+{
+      context.visit(getOrderBy());
+    }
   }
   context.end(SELECT_ORDER_BY);
 }
