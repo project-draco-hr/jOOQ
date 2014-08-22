@@ -1,8 +1,5 @@
 {
-  if (TIdentityPK() == null) {
-    log.info("SKIPPING","store() vs. executeInsert() tests");
-    return;
-  }
+  Assume.assumeNotNull(TIdentityPK());
   jOOQAbstractTest.reset=false;
   IPK i1=create().newRecord(TIdentityPK());
   i1.setValue(TIdentityPK_VAL(),1);

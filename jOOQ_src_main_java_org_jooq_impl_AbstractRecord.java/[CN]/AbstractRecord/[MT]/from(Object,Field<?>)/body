@@ -33,4 +33,5 @@
       throw new MappingException("An error ocurred when mapping record from " + type,e);
     }
   }
+  resetChangedOnNotNull(this);
 }
