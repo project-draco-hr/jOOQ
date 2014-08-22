@@ -1,0 +1,3 @@
+{
+  new UnionTests(this).testUnionAndOrderBy();
+}

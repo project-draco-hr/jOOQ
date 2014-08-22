@@ -1,0 +1,2 @@
+CombineOperator op
+Select<? extends R> other

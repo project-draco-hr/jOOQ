@@ -1,0 +1,3 @@
+{
+  return new DerivedTable<R>(this).as(alias,fieldAliases);
+}

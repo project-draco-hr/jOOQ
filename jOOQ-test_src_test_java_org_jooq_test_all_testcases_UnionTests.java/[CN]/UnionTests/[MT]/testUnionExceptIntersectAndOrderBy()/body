@@ -1,0 +1,8 @@
+{
+  assumeFamilyNotIn(FIREBIRD);
+  Field<String> x=val("A").as("x");
+  assertEquals(asList("A"),create().select(x).union(select(val("B"))).union(select(val("C"))).intersect(select(val("A"))).orderBy(x).fetch(x));
+  assertEquals(asList("A","B"),create().select(x).union(select(val("B"))).union(select(val("C"))).intersect(select(val("A")).union(select(val("B")))).orderBy(x).fetch(x));
+  assertEquals(asList("C"),create().select(x).union(select(val("B"))).union(select(val("C"))).except(select(val("A")).union(select(val("B")))).orderBy(x).fetch(x));
+  assertEquals(asList("B"),create().select(x).union(select(val("B"))).union(select(val("C"))).except(select(val("A")).union(select(val("D")))).intersect(select(val("A")).union(select(val("B")))).orderBy(x).fetch(x));
+}

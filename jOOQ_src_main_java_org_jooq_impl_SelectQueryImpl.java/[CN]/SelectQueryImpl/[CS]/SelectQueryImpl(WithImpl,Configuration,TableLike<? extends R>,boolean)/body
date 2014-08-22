@@ -11,6 +11,8 @@
   this.groupBy=new QueryPartList<GroupField>();
   this.having=new ConditionProviderImpl();
   this.window=new WindowList();
+  this.unionOp=new ArrayList<CombineOperator>();
+  this.union=new ArrayList<QueryPartList<Select<?>>>();
   this.orderBy=new SortFieldList();
   this.seek=new QueryPartList<Field<?>>();
   this.limit=new Limit();

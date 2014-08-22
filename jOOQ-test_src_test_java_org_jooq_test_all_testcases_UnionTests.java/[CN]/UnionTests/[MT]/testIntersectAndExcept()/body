@@ -1,4 +1,5 @@
 {
+  assumeFamilyNotIn(FIREBIRD);
   Result<Record1<Integer>> r1=create().select(TBook_ID()).from(TBook()).where(TBook_ID().le(3)).intersect(select(TBook_ID()).from(TBook()).where(TBook_ID().ge(3))).fetch();
   assertEquals(1,r1.size());
   assertEquals(3,(int)r1.get(0).getValue(TBook_ID()));

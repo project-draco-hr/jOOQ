@@ -1,1 +1,1 @@
-AbstractSelect<R>
+AbstractResultQuery<R>

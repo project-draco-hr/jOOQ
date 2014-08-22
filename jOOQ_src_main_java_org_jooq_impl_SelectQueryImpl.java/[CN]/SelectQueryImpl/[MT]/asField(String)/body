@@ -1,0 +1,3 @@
+{
+  return this.<T>asField().as(alias);
+}

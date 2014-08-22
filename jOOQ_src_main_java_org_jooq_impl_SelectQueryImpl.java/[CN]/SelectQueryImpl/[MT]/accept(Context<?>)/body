@@ -11,7 +11,7 @@
   pushWindow(context);
   Boolean wrapDerivedTables=(Boolean)context.data(DATA_WRAP_DERIVED_TABLES_IN_PARENTHESES);
   if (TRUE.equals(wrapDerivedTables)) {
-    context.sql("(").data(DATA_WRAP_DERIVED_TABLES_IN_PARENTHESES,null);
+    context.sql("(").formatIndentStart().formatNewLine().data(DATA_WRAP_DERIVED_TABLES_IN_PARENTHESES,null);
   }
   if (getLimit().isApplicable()) {
 switch (dialect) {
@@ -71,6 +71,6 @@ if (!StringUtils.isBlank(option)) {
 context.formatSeparator().sql(option);
 }
 if (TRUE.equals(wrapDerivedTables)) {
-context.sql(")").data(DATA_WRAP_DERIVED_TABLES_IN_PARENTHESES,true);
+context.formatIndentEnd().formatNewLine().sql(")").data(DATA_WRAP_DERIVED_TABLES_IN_PARENTHESES,true);
 }
 }

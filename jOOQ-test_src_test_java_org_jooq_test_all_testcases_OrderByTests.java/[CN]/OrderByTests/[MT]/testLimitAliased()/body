@@ -12,6 +12,7 @@
   assertEquals(asList(3,2),r4.getValues("xx"));
 switch (dialect().family()) {
 case H2:
+case POSTGRES:
 default :
 {
       Result<Record2<String,Integer>> r5=create().select(TBook_TITLE().as("yy"),TBook_ID().as("xx")).from(TBook()).orderBy(TBook_ID().as("xx").sortAsc(4,1,3,2)).limit(param("x",1),param("y",2)).fetch();
@@ -20,6 +21,7 @@ default :
     }
 }
 switch (dialect().family()) {
+case H2:
 default :
 {
     Result<Record2<String,Integer>> r6=create().select(TBook_TITLE().as("yy"),TBook_ID().as("xx")).from(TBook()).orderBy(select(TAuthor_LAST_NAME().as("xx")).from(TAuthor()).where(TAuthor_ID().eq(TBook_AUTHOR_ID())).asField()).limit(param("x",1),param("y",2)).fetch();
