@@ -1,4 +1,4 @@
 {
-  paramType=p;
+  paramType=(p == null ? INDEXED : p);
   return (C)this;
 }

@@ -1,0 +1,6 @@
+{
+  assertEquals(INDEXED,create.renderContext().paramType());
+  assertEquals(INDEXED,r_ref().paramType());
+  assertEquals(INLINED,r_refI().paramType());
+  assertEquals(NAMED,r_refP().paramType());
+}
