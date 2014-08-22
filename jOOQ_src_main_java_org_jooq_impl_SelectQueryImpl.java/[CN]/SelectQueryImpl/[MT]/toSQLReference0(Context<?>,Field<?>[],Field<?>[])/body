@@ -21,6 +21,8 @@ break;
 if (i > 0) unionParenthesis(context,"(");
 }
 }
+boolean wrapQueryExpressionInDerivedTable=false;
+boolean wrapQueryExpressionBodyInDerivedTable=false;
 context.start(SELECT_SELECT).keyword("select").sql(" ");
 if (!StringUtils.isBlank(hint)) {
 context.sql(hint).sql(" ");
