@@ -11,6 +11,7 @@
   assertEquals(2,r4.size());
   assertEquals(asList(3,2),r4.getValues("xx"));
 switch (dialect().family()) {
+case H2:
 default :
 {
       Result<Record2<String,Integer>> r5=create().select(TBook_TITLE().as("yy"),TBook_ID().as("xx")).from(TBook()).orderBy(TBook_ID().as("xx").sortAsc(4,1,3,2)).limit(param("x",1),param("y",2)).fetch();

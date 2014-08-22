@@ -9,7 +9,9 @@ case HSQLDB:
 case POSTGRES:
 case SQLITE:
 {
-      context.castMode(NEVER).formatSeparator().keyword("limit").sql(" ").visit(numberOfRows).sql(" ").keyword("offset").sql(" ").visit(offsetOrZero).castMode(castMode);
+      context.castMode(NEVER).formatSeparator().keyword("limit").sql(" ").visit(numberOfRows);
+      if (!offsetZero())       context.sql(" ").keyword("offset").sql(" ").visit(offsetOrZero);
+      context.castMode(castMode);
       break;
     }
 case CUBRID:
@@ -29,7 +31,9 @@ break;
 }
 default :
 {
-context.castMode(NEVER).formatSeparator().keyword("limit").sql(" ").visit(numberOfRows).sql(" ").keyword("offset").sql(" ").visit(offsetOrZero).castMode(castMode);
+context.castMode(NEVER).formatSeparator().keyword("limit").sql(" ").visit(numberOfRows);
+if (!offsetZero()) context.sql(" ").keyword("offset").sql(" ").visit(offsetOrZero);
+context.castMode(castMode);
 break;
 }
 }
