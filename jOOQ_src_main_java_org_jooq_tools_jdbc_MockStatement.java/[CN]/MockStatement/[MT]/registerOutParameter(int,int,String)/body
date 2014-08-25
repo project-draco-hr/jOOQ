@@ -1,4 +1,3 @@
 {
-  checkNotClosed();
-  ensureBindingsCapacity(parameterIndex);
+  registerOutParameter(parameterIndex,sqlType);
 }

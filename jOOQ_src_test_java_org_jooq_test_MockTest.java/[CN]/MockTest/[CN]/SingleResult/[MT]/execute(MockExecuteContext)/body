@@ -1,4 +1,4 @@
 {
   execute0(ctx);
-  return new MockResult[]{new MockResult(0,resultOne)};
+  return new MockResult[]{new MockResult(recordOne)};
 }

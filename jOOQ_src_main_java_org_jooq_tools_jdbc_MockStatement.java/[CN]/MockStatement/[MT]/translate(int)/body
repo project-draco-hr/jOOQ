@@ -1,0 +1,6 @@
+{
+  if (parameterIndex > outParameterTypes.size())   throw new SQLException("OUT parameter index too high: " + parameterIndex);
+  int index=-1;
+  for (int i=0; i < parameterIndex; i++)   if (outParameterTypes.get(i) != null)   index++;
+  return index;
+}

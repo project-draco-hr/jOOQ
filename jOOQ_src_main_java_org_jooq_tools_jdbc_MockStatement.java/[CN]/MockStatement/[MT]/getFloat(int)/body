@@ -1,3 +1,5 @@
 {
-  return 0;
+  Float value=outParameters().getValue(translate(parameterIndex),Float.class);
+  resultWasNull=value == null;
+  return value == null ? 0.0f : value;
 }

@@ -1,3 +1,5 @@
 {
-  return null;
+  Timestamp value=outParameters().getValue(translate(parameterIndex),Timestamp.class);
+  resultWasNull=value == null;
+  return value;
 }

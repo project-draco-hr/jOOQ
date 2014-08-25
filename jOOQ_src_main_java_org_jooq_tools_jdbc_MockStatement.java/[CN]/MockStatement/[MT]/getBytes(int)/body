@@ -1,3 +1,5 @@
 {
-  return null;
+  byte[] value=outParameters().getValue(translate(parameterIndex),byte[].class);
+  resultWasNull=value == null;
+  return value;
 }

@@ -1,3 +1,5 @@
 {
-  return 0;
+  Double value=outParameters().getValue(translate(parameterIndex),Double.class);
+  resultWasNull=value == null;
+  return value == null ? 0.0 : value;
 }

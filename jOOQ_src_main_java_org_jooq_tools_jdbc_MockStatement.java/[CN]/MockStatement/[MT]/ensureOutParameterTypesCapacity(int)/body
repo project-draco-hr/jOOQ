@@ -1,0 +1,5 @@
+{
+  if (outParameterTypes.size() < index) {
+    outParameterTypes.addAll(nCopies(index - outParameterTypes.size(),(Integer)null));
+  }
+}

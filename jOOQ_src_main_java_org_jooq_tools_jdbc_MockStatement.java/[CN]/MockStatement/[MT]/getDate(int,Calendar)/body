@@ -1,3 +1,5 @@
 {
-  return null;
+  Date value=outParameters().getValue(translate(parameterIndex),Date.class);
+  resultWasNull=value == null;
+  return value;
 }

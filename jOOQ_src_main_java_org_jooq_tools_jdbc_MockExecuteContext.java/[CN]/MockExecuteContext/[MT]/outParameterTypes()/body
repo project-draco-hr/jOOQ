@@ -1,0 +1,3 @@
+{
+  return outParameterTypes == null ? new int[0] : outParameterTypes.clone();
+}

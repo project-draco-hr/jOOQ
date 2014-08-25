@@ -1,4 +1,6 @@
 {
   checkNotClosed();
   ensureBindingsCapacity(parameterIndex);
+  ensureOutParameterTypesCapacity(parameterIndex);
+  outParameterTypes.set(parameterIndex - 1,sqlType);
 }

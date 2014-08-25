@@ -4,7 +4,7 @@
   create=DSL.using(SQLDialect.MYSQL);
   resultEmpty=create.newResult(TABLE1);
   resultOne=create.newResult(TABLE1);
-  resultOne.add(create.newRecord(TABLE1));
+  resultOne.add(recordOne=create.newRecord(TABLE1));
   resultOne.get(0).setValue(FIELD_ID1,1);
   resultOne.get(0).setValue(FIELD_NAME1,"1");
   resultOne.get(0).changed(false);

@@ -1,3 +1,5 @@
 {
-  return null;
+  Time value=outParameters().getValue(translate(parameterIndex),Time.class);
+  resultWasNull=value == null;
+  return value;
 }

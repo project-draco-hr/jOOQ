@@ -3,6 +3,7 @@
   this.data=data;
   this.sql=new ArrayList<String>();
   this.bindings=new ArrayList<List<Object>>();
+  this.outParameterTypes=new ArrayList<Integer>();
   if (sql != null) {
     this.sql.add(sql);
   }

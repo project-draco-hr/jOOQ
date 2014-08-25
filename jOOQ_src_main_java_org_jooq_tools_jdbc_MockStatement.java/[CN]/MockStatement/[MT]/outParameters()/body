@@ -1,0 +1,4 @@
+{
+  if (result == null || result.length == 0 || result[0].data == null || result[0].data.size() == 0)   throw new SQLException("No OUT Parameters available");
+  return result[0].data.get(0);
+}

@@ -1,3 +1,5 @@
 {
-  return null;
+  URL value=outParameters().getValue(translate(parameterIndex),URL.class);
+  resultWasNull=value == null;
+  return value;
 }
