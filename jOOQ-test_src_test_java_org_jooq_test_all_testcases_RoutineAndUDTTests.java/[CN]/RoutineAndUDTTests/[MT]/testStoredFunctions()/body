@@ -1,8 +1,5 @@
 {
-  if (cRoutines() == null) {
-    log.info("SKIPPING","functions test");
-    return;
-  }
+  Assume.assumeNotNull(cRoutines());
   jOOQAbstractTest.reset=false;
   assertEquals("0","" + invoke(cRoutines(),"fAuthorExists",create().configuration(),null));
   assertEquals("1","" + invoke(cRoutines(),"fAuthorExists",create().configuration(),"Paulo"));

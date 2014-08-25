@@ -1,0 +1,9 @@
+{
+  Assume.assumeNotNull(cRoutines());
+  DSLContext create=create(create().settings().withRenderScalarSubqueriesForStoredFunctions(true));
+  Field<Number> f=(Field<Number>)FOneField();
+  Select<Record1<Number>> select=create.select(f).where(f.eq(f));
+  assertEquals(FOneField().getDataType().convert(1),create.fetchValue(select));
+  assertTrue(create.render(select).contains("select (select"));
+  assertTrue(create.render(select).contains("= (select"));
+}

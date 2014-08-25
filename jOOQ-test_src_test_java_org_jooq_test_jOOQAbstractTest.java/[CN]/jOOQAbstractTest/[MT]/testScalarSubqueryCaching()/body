@@ -1,0 +1,3 @@
+{
+  new RoutineAndUDTTests(this).testScalarSubqueryCaching();
+}

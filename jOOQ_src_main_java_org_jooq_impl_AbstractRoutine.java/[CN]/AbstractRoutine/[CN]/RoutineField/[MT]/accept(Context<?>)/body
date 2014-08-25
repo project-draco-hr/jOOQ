@@ -1,0 +1,20 @@
+{
+  RenderContext local=create(ctx).renderContext();
+  toSQLQualifiedName(local);
+  Field<?>[] array=new Field<?>[getInParameters().size()];
+  int i=0;
+  for (  Parameter<?> p : getInParameters()) {
+    if (POSTGRES == ctx.dialect() && isOverloaded()) {
+      array[i]=getInValues().get(p).cast(p.getType());
+    }
+ else {
+      array[i]=getInValues().get(p);
+    }
+    i++;
+  }
+  Field<T> result=function(local.render(),getDataType(),array);
+  if (TRUE.equals(settings(ctx.configuration()).isRenderScalarSubqueriesForStoredFunctions())) {
+    result=DSL.select(result).asField();
+  }
+  ctx.visit(result);
+}
