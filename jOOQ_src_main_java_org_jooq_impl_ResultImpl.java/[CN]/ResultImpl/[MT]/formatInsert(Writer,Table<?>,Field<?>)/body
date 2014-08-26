@@ -1,0 +1,12 @@
+{
+  DSLContext ctx=DSL.using(configuration());
+  try {
+    for (    R record : this) {
+      writer.append(ctx.renderInlined(insertInto(table,f).values(record.intoArray())));
+      writer.append(";\n");
+    }
+  }
+ catch (  java.io.IOException e) {
+    throw new IOException("Exception while writing INSERTs",e);
+  }
+}
