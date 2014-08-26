@@ -1,4 +1,7 @@
 {
+  File targetPackage=getStrategy().getFile(schema).getParentFile();
+  log.info("Emptying",targetPackage.getAbsolutePath());
+  empty(getStrategy().getFile(schema).getParentFile(),".java");
   generateSchema(schema);
   if (generateGlobalObjectReferences() && database.getSequences(schema).size() > 0) {
     generateSequences(schema);

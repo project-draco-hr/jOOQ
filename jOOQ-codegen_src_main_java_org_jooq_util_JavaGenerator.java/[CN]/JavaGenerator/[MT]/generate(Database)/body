@@ -53,10 +53,6 @@
  else   log.info("  none");
   log.info("");
   log.info("----------------------------------------------------------");
-  String targetPackage=getTargetPackage();
-  File targetPackageDir=new File(getTargetDirectory() + File.separator + targetPackage.replace('.',File.separatorChar));
-  log.info("Emptying",targetPackageDir.getAbsolutePath());
-  empty(targetPackageDir,".java");
   log.info("Generating schemata","Total: " + database.getSchemata().size());
   for (  SchemaDefinition schema : database.getSchemata()) {
     try {
