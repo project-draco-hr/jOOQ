@@ -10,7 +10,7 @@
   printPackage(out,tableOrUDT,Mode.POJO);
   if (tableOrUDT instanceof TableDefinition)   generatePojoClassJavadoc((TableDefinition)tableOrUDT,out);
  else   generateUDTPojoClassJavadoc((UDTDefinition)tableOrUDT,out);
-  printClassAnnotations(out);
+  printClassAnnotations(out,tableOrUDT.getSchema());
   if (tableOrUDT instanceof TableDefinition)   printTableJPAAnnotation(out,(TableDefinition)tableOrUDT);
   out.println("public class %s[[before= extends ][%s]][[before= implements ][%s]] {",className,list(superName),interfaces);
   out.printSerial();

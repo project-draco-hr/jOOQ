@@ -8,7 +8,7 @@
   JavaWriter out=new JavaWriter(getStrategy().getFile(udt));
   printPackage(out,udt);
   generateUDTClassJavadoc(udt,out);
-  printClassAnnotations(out);
+  printClassAnnotations(out,schema);
   if (udt.getRoutines().size() > 0) {
     interfaces.add(org.jooq.Package.class.getName());
   }

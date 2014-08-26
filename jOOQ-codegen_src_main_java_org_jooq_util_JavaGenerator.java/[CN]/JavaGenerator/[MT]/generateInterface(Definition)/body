@@ -6,7 +6,7 @@
   printPackage(out,tableOrUDT,Mode.INTERFACE);
   if (tableOrUDT instanceof TableDefinition)   generateInterfaceClassJavadoc((TableDefinition)tableOrUDT,out);
  else   generateUDTInterfaceClassJavadoc((UDTDefinition)tableOrUDT,out);
-  printClassAnnotations(out);
+  printClassAnnotations(out,tableOrUDT.getSchema());
   if (tableOrUDT instanceof TableDefinition)   printTableJPAAnnotation(out,(TableDefinition)tableOrUDT);
   out.println("public interface %s [[before=extends ][%s]] {",className,interfaces);
   for (  TypedElementDefinition<?> column : getTypedElements(tableOrUDT)) {

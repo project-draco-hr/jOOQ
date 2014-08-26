@@ -1,0 +1,3 @@
+{
+  return "" + DSL.using(new DefaultConfiguration().set(connection).set(new Settings().withStatementType(STATIC_STATEMENT))).fetchValue(sql.replace(":schema_name","?"),param("schema_name",schema.getInputName()));
+}

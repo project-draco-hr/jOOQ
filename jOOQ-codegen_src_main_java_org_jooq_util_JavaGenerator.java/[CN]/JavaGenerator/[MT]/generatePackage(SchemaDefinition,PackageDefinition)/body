@@ -6,7 +6,7 @@
   JavaWriter out=new JavaWriter(getStrategy().getFile(pkg));
   printPackage(out,pkg);
   generatePackageClassJavadoc(pkg,out);
-  printClassAnnotations(out);
+  printClassAnnotations(out,schema);
   out.println("public class %s extends %s[[before= implements ][%s]] {",className,PackageImpl.class,interfaces);
   out.printSerial();
   printSingletonInstance(out,pkg);

@@ -10,7 +10,7 @@
   printPackage(out,tableOrUdt,Mode.RECORD);
   if (tableOrUdt instanceof TableDefinition)   generateRecordClassJavadoc((TableDefinition)tableOrUdt,out);
  else   generateUDTRecordClassJavadoc((UDTDefinition)tableOrUdt,out);
-  printClassAnnotations(out);
+  printClassAnnotations(out,tableOrUdt.getSchema());
   if (tableOrUdt instanceof TableDefinition)   printTableJPAAnnotation(out,(TableDefinition)tableOrUdt);
   Class<?> baseClass;
   if (tableOrUdt instanceof UDTDefinition)   baseClass=UDTRecordImpl.class;

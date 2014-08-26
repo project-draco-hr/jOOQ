@@ -5,7 +5,7 @@
   JavaWriter out=new JavaWriter(getStrategy().getFile(e,Mode.ENUM));
   printPackage(out,e);
   generateEnumClassJavadoc(e,out);
-  printClassAnnotations(out);
+  printClassAnnotations(out,e.getSchema());
   interfaces.add(EnumType.class.getName());
   out.println("public enum %s[[before= implements ][%s]] {",className,interfaces);
   List<String> literals=e.getLiterals();

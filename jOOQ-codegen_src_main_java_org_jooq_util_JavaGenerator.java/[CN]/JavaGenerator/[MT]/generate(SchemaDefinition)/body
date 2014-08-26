@@ -1,4 +1,22 @@
 {
+  String newVersion=schema.getDatabase().getSchemaVersionProvider().version(schema);
+  if (StringUtils.isBlank(newVersion)) {
+    log.info("No schema version is applied for schema " + schema.getInputName() + ". Regenerating.");
+  }
+ else {
+    schemaVersions.put(schema,newVersion);
+    String oldVersion=readVersion(getStrategy().getFile(schema));
+    if (StringUtils.isBlank(oldVersion)) {
+      log.info("No previous version available for schema " + schema.getInputName() + ". Regenerating.");
+    }
+ else     if (!oldVersion.equals(newVersion)) {
+      log.info("Existing version " + oldVersion + " is not up to date with "+ newVersion+ " for schema "+ schema.getInputName()+ ". Regenerating.");
+    }
+ else {
+      log.info("Existing version " + oldVersion + " is up to date with "+ newVersion+ " for schema "+ schema.getInputName()+ ". Ignoring schema.");
+      return;
+    }
+  }
   File targetPackage=getStrategy().getFile(schema).getParentFile();
   log.info("Emptying",targetPackage.getAbsolutePath());
   empty(getStrategy().getFile(schema).getParentFile(),".java");

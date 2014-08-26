@@ -3,7 +3,7 @@
   JavaWriter out=new JavaWriter(new File(getStrategy().getFile(schema).getParentFile(),"Sequences.java"));
   printPackage(out,schema);
   printClassJavadoc(out,"Convenience access to all sequences in " + schema.getOutputName());
-  printClassAnnotations(out);
+  printClassAnnotations(out,schema);
   out.println("public class Sequences {");
   for (  SequenceDefinition sequence : database.getSequences(schema)) {
     final String seqType=getJavaType(sequence.getType());

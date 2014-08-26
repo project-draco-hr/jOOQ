@@ -9,7 +9,7 @@
   JavaWriter out=new JavaWriter(getStrategy().getFile(routine));
   printPackage(out,routine);
   generateRoutineClassJavadoc(routine,out);
-  printClassAnnotations(out);
+  printClassAnnotations(out,schema);
   out.println("public class %s extends %s<%s>[[before= implements ][%s]] {",className,AbstractRoutine.class,returnType,interfaces);
   out.printSerial();
   for (  ParameterDefinition parameter : routine.getAllParameters()) {
