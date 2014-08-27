@@ -1,5 +1,5 @@
 {
-  Field<BigDecimal> median=median(TBook_ID());
+  Field<BigDecimal> median;
 switch (dialect().family()) {
 case DERBY:
 case FIREBIRD:
@@ -10,6 +10,9 @@ case SQLITE:
 case POSTGRES:
     median=avg(TBook_ID());
   break;
+default :
+median=median(TBook_ID());
+break;
 }
 Result<Record9<Integer,Integer,Integer,Integer,BigDecimal,BigDecimal,Integer,Integer,BigDecimal>> result1=create().select(TBook_AUTHOR_ID(),count(),count(TBook_ID()),countDistinct(TBook_AUTHOR_ID()),sum(TBook_ID()),avg(TBook_ID()),min(TBook_ID()),max(TBook_ID()),median).from(TBook()).groupBy(TBook_AUTHOR_ID()).orderBy(TBook_AUTHOR_ID()).fetch();
 assertEquals(2,(int)result1.get(0).value2());

@@ -1,0 +1,3 @@
+{
+  coveredMethods.put(methodName,dialects);
+}

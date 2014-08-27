@@ -1,0 +1,31 @@
+{
+  className=className.replace("/",".");
+  if (!className.startsWith("org.jooq."))   return null;
+  classPool.appendClassPath(new ByteArrayClassPath(className,classfileBuffer));
+  try {
+    CtClass ctClass=classPool.get(className);
+    boolean isClassModified=false;
+    for (    CtMethod method : ctClass.getDeclaredMethods()) {
+      Support support=support(ctClass,method);
+      if (support != null) {
+        if (method.getMethodInfo().getCodeAttribute() == null)         continue;
+        StringBuilder dialects=new StringBuilder();
+        String separator="";
+        for (        SQLDialect dialect : support.value()) {
+          dialects.append(separator);
+          dialects.append("org.jooq.SQLDialect.");
+          dialects.append(dialect.name());
+          separator=", ";
+        }
+        method.insertBefore("org.jooq.test.jOOQAbstractTest.call" + "(\"" + method.getLongName() + "\", "+ (dialects.length() > 0 ? "new org.jooq.SQLDialect[] { " + dialects + " }" : "new org.jooq.SQLDialect[0]")+ ");");
+        isClassModified=true;
+      }
+    }
+    if (!isClassModified)     return null;
+    return ctClass.toBytecode();
+  }
+ catch (  Exception e) {
+    log.info("Skip class " + className,e.getMessage());
+    return null;
+  }
+}

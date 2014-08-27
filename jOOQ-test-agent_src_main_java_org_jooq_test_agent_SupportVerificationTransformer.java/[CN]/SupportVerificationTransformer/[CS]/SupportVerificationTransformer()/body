@@ -1,0 +1,10 @@
+{
+  classPool=new ClassPool();
+  classPool.appendSystemPath();
+  try {
+    classPool.appendPathList(System.getProperty("java.class.path"));
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}
