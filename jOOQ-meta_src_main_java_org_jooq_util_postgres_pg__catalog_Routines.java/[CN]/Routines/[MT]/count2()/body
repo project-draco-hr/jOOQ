@@ -1,4 +1,4 @@
 {
   org.jooq.util.postgres.pg_catalog.routines.Count2 f=new org.jooq.util.postgres.pg_catalog.routines.Count2();
-  return f.asField();
+  return f.asAggregateFunction();
 }

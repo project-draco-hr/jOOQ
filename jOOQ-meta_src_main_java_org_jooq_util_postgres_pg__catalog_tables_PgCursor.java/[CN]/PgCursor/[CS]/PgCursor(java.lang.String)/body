@@ -1,0 +1,3 @@
+{
+  this(alias,org.jooq.util.postgres.pg_catalog.tables.PgCursor.PG_CURSOR);
+}

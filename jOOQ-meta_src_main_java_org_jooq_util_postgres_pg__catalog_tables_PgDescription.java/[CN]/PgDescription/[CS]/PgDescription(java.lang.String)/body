@@ -1,0 +1,3 @@
+{
+  this(alias,org.jooq.util.postgres.pg_catalog.tables.PgDescription.PG_DESCRIPTION);
+}

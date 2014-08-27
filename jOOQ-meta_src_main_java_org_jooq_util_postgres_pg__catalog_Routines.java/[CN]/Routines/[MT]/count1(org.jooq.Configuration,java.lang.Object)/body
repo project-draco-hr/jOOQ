@@ -1,6 +1,0 @@
-{
-  org.jooq.util.postgres.pg_catalog.routines.Count1 f=new org.jooq.util.postgres.pg_catalog.routines.Count1();
-  f.set__1(__1);
-  f.execute(configuration);
-  return f.getReturnValue();
-}
