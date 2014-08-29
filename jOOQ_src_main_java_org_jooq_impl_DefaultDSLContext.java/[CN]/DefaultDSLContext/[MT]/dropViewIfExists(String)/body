@@ -1,0 +1,3 @@
+{
+  return dropViewIfExists(tableByName(table));
+}

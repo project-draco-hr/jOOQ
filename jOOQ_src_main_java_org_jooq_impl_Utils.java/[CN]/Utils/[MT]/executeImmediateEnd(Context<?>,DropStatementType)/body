@@ -1,0 +1,11 @@
+{
+switch (ctx.family()) {
+case FIREBIRD:
+{
+      ctx.sql("';").formatSeparator().keyword("when").sql(" sqlcode -607 ").keyword("do").formatIndentStart().formatSeparator().keyword("begin end").formatIndentEnd().formatIndentEnd().formatSeparator().keyword("end");
+      break;
+    }
+default :
+  break;
+}
+}

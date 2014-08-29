@@ -1,4 +1,10 @@
 {
-  ctx.start(DROP_VIEW_TABLE).keyword("drop view").sql(" ").visit(table);
-  ctx.end(DROP_VIEW_TABLE);
+  if (ifExists && !supportsIfExists(ctx)) {
+    Utils.executeImmediateBegin(ctx,VIEW);
+    accept0(ctx);
+    Utils.executeImmediateEnd(ctx,VIEW);
+  }
+ else {
+    accept0(ctx);
+  }
 }

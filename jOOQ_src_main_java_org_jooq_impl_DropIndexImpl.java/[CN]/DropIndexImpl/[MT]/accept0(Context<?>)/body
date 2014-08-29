@@ -1,0 +1,5 @@
+{
+  ctx.keyword("drop index").sql(" ");
+  if (ifExists && supportsIfExists(ctx))   ctx.keyword("if exists").sql(" ");
+  ctx.visit(name(index));
+}

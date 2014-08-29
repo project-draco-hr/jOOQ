@@ -1,0 +1,5 @@
+{
+  super(configuration);
+  this.table=table;
+  this.ifExists=ifExists;
+}

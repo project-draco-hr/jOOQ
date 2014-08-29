@@ -1,0 +1,3 @@
+{
+  return dropSequenceIfExists(sequenceByName(sequence));
+}

@@ -1,7 +1,10 @@
 {
-  ctx.start(DROP_TABLE_TABLE).keyword("drop table").sql(" ").visit(table);
-  if (cascade) {
-    ctx.sql(" ").keyword("cascade");
+  if (ifExists && !supportsIfExists(ctx)) {
+    Utils.executeImmediateBegin(ctx,TABLE);
+    accept0(ctx);
+    Utils.executeImmediateEnd(ctx,TABLE);
   }
-  ctx.end(DROP_TABLE_TABLE);
+ else {
+    accept0(ctx);
+  }
 }

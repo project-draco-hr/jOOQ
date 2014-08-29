@@ -1,3 +1,10 @@
 {
-  ctx.keyword("drop index").sql(" ").visit(name(index));
+  if (ifExists && !supportsIfExists(ctx)) {
+    Utils.executeImmediateBegin(ctx,INDEX);
+    accept0(ctx);
+    Utils.executeImmediateEnd(ctx,INDEX);
+  }
+ else {
+    accept0(ctx);
+  }
 }

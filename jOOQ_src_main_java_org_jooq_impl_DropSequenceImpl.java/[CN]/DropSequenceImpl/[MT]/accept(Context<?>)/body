@@ -1,3 +1,10 @@
 {
-  ctx.start(DROP_SEQUENCE_SEQUENCE).keyword("drop sequence").sql(" ").visit(sequence).end(DROP_SEQUENCE_SEQUENCE);
+  if (ifExists && !supportsIfExists(ctx)) {
+    Utils.executeImmediateBegin(ctx,SEQUENCE);
+    accept0(ctx);
+    Utils.executeImmediateEnd(ctx,SEQUENCE);
+  }
+ else {
+    accept0(ctx);
+  }
 }
