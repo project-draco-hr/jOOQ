@@ -1,3 +1,0 @@
-{
-  super(org.jooq.test.postgres.generatedclasses.tables.FTables5.F_TABLES5);
-}

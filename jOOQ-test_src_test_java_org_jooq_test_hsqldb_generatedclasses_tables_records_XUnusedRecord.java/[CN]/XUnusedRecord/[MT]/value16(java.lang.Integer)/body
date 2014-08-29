@@ -1,4 +1,0 @@
-{
-  setPreparedStatement(value);
-  return this;
-}

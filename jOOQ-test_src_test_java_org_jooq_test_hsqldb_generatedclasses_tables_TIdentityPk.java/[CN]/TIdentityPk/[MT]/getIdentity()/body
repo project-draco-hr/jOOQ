@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.hsqldb.generatedclasses.Keys.IDENTITY_T_IDENTITY_PK;
-}

@@ -1,4 +1,0 @@
-{
-  setArrayArray(value);
-  return this;
-}

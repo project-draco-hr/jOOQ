@@ -1,4 +1,0 @@
-{
-  setYesNoUc(value);
-  return this;
-}

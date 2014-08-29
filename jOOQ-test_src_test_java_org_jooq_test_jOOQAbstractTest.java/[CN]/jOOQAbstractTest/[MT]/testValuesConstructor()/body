@@ -1,3 +1,0 @@
-{
-  new ValuesConstructorTests(this).testValuesConstructor();
-}

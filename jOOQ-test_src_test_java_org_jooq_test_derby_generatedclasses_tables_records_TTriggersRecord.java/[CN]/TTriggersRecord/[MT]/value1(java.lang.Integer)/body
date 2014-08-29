@@ -1,4 +1,0 @@
-{
-  setIdGenerated(value);
-  return this;
-}

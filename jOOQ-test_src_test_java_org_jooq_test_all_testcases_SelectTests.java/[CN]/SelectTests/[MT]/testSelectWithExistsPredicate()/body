@@ -1,3 +1,0 @@
-{
-  assertEquals(3,create().selectFrom(TBook()).whereNotExists(selectOne().from(TAuthor()).where(TAuthor_YEAR_OF_BIRTH().greaterOrEqual(TBook_PUBLISHED_IN()))).orNotExists(select()).andExists(select()).execute());
-}

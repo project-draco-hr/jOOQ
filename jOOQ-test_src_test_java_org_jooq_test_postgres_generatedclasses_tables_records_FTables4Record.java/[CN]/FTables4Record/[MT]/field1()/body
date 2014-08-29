@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.postgres.generatedclasses.tables.FTables4.F_TABLES4.ID;
-}

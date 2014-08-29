@@ -1,3 +1,0 @@
-{
-  new ThreadSafetyTests(this).testConcurrentExecution();
-}

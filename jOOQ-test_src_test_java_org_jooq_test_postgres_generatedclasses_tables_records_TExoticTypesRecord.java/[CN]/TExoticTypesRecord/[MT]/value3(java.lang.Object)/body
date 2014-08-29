@@ -1,4 +1,0 @@
-{
-  setJs(value);
-  return this;
-}

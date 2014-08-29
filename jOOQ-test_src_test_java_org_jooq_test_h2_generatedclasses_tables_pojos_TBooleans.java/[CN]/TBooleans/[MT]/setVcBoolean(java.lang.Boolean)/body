@@ -1,4 +1,0 @@
-{
-  this.vcBoolean=vcBoolean;
-  return this;
-}

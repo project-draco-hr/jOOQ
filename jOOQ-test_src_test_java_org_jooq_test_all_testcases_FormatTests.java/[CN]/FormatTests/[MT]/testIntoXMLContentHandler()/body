@@ -1,5 +1,0 @@
-{
-  Document document=DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
-  Result<B> books=create().selectFrom(TBook()).fetch();
-  testXML((Document)books.intoXML(new DOMBuilder(document)).getRootDocument(),books);
-}

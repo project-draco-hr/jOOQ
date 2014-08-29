@@ -1,6 +1,0 @@
-{
-  Record2<Integer,BigDecimal> record=create().select(TBook_AUTHOR_ID(),sum(TBook_ID())).from(TBook()).groupBy(TBook_AUTHOR_ID()).having(sum(TBook_ID()).ge(new BigDecimal("4"))).fetchOne();
-  assertNotNull(record);
-  assertEquals(2,record.value1().intValue());
-  assertEquals(7,record.value2().intValue());
-}

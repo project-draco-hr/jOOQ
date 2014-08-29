@@ -1,4 +1,0 @@
-{
-  setPgBox(value);
-  return this;
-}

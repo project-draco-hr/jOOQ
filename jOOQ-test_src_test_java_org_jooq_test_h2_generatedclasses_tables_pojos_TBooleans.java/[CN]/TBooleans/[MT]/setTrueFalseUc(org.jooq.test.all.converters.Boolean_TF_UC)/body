@@ -1,4 +1,0 @@
-{
-  this.trueFalseUc=trueFalseUc;
-  return this;
-}

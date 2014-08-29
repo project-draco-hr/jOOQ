@@ -1,3 +1,0 @@
-{
-  return "Author [firstName=" + firstName + ", lastName="+ lastName+ "]";
-}

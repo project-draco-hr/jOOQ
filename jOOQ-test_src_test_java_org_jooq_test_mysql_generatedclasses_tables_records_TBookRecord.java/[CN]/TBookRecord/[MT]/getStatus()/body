@@ -1,3 +1,0 @@
-{
-  return (org.jooq.test.mysql.generatedclasses.enums.TBookStatus)getValue(9);
-}

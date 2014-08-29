@@ -1,3 +1,0 @@
-{
-  assertEquals(count,(int)create().selectCount().from(TBook()).fetchOne(0,Integer.class));
-}

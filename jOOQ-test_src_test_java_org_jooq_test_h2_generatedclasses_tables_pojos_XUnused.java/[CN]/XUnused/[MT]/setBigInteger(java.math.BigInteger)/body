@@ -1,4 +1,0 @@
-{
-  this.bigInteger=bigInteger;
-  return this;
-}

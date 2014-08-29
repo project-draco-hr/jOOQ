@@ -1,4 +1,0 @@
-{
-  this.contentPdf=contentPdf;
-  return this;
-}

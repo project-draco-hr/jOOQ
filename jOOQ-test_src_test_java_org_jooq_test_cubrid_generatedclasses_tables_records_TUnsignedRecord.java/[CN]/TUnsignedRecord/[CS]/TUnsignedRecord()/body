@@ -1,3 +1,0 @@
-{
-  super(org.jooq.test.cubrid.generatedclasses.tables.TUnsigned.T_UNSIGNED);
-}

@@ -1,4 +1,0 @@
-{
-  assertEquals(listener.stmtSize[0],fetchSize);
-  listener.stmtSize[0]=0;
-}

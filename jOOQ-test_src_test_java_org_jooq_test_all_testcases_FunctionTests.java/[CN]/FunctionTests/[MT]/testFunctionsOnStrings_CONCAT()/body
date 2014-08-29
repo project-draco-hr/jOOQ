@@ -1,5 +1,0 @@
-{
-  assertEquals("abc",create().select(concat("a","b","c")).fetchOne(0));
-  assertEquals("George Orwell",create().select(concat(TAuthor_FIRST_NAME(),val(" "),TAuthor_LAST_NAME())).from(TAuthor()).where(TAuthor_FIRST_NAME().equal("George")).fetchOne(0));
-  assertEquals("1ab45",create().select(concat(val(1),val("ab"),val(45))).fetchOne(0));
-}

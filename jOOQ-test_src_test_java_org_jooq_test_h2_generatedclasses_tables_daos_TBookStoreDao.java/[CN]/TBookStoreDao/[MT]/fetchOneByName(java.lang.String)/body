@@ -1,3 +1,0 @@
-{
-  return fetchOne(org.jooq.test.h2.generatedclasses.tables.TBookStore.T_BOOK_STORE.NAME,value);
-}

@@ -1,7 +1,0 @@
-{
-  super(org.jooq.test.h2.generatedclasses.tables.T_3571.T_3571);
-  setValue(0,e1);
-  setValue(1,e2);
-  setValue(2,e3);
-  setValue(3,e4);
-}

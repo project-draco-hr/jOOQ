@@ -1,9 +1,0 @@
-{
-  renderEnd.add(++callbackCount);
-  rendered++;
-  checkBase(ctx);
-  checkStatement(ctx,false);
-  checkSQL(ctx,false);
-  ctx.batchSQL()[rendered - 1]=ctx.batchSQL()[rendered - 1].replaceFirst("(?i:values\\s+)","values    ");
-  checkSQL(ctx,true);
-}

@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.sqlite.generatedclasses.tables.TDates.D_INT;
-}

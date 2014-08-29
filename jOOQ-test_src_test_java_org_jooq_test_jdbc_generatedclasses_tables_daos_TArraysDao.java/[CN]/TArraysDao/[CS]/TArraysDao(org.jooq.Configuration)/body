@@ -1,3 +1,0 @@
-{
-  super(org.jooq.test.jdbc.generatedclasses.tables.TArrays.T_ARRAYS,org.jooq.test.jdbc.generatedclasses.tables.pojos.TArrays.class,configuration);
-}

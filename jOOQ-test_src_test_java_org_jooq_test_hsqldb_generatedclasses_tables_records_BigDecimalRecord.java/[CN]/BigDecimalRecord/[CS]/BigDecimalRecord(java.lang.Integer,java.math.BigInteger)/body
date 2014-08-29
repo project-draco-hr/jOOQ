@@ -1,5 +1,0 @@
-{
-  super(org.jooq.test.hsqldb.generatedclasses.tables.BigDecimal.BIG_DECIMAL);
-  setValue(0,id);
-  setValue(1,other);
-}

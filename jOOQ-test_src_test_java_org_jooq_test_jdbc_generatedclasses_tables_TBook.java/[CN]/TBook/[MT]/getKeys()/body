@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.jdbc.generatedclasses.tables.records.TBookRecord>>asList(org.jooq.test.jdbc.generatedclasses.Keys.PK_T_BOOK);
-}

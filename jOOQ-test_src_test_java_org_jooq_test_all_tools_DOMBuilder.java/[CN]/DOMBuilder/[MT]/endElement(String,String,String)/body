@@ -1,4 +1,0 @@
-{
-  m_elemStack.pop();
-  m_currentNode=m_elemStack.isEmpty() ? null : (Node)m_elemStack.peek();
-}

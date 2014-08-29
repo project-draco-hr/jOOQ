@@ -1,4 +1,0 @@
-{
-  setTable_(value);
-  return this;
-}

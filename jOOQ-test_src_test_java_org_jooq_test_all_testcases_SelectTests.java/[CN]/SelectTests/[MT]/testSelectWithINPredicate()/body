@@ -1,3 +1,0 @@
-{
-  assertEquals(3,create().selectFrom(TBook()).where(TBook_TITLE().notIn(select(TBook_TITLE()).from(TBook()).where(TBook_TITLE().in("1984")))).execute());
-}

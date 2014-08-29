@@ -1,4 +1,0 @@
-{
-  setBool1(value);
-  return this;
-}

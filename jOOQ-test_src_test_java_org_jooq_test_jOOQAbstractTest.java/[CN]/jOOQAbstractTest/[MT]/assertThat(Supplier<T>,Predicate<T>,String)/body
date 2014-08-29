@@ -1,3 +1,0 @@
-{
-  if (!expected.test(actual.get()))   throw new AssertionError(message);
-}

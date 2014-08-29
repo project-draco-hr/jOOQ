@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.mariadb.generatedclasses.tables.TDates.ID;
-}

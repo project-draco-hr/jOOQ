@@ -1,3 +1,0 @@
-{
-  assertEquals(4,(int)create().selectCount().from(TBook()).where(row(TBook_CO_AUTHOR_ID(),TBook_CO_AUTHOR_ID()).isNull()).and(row(TBook_ID(),TBook_AUTHOR_ID()).isNotNull()).fetchOne(0,Integer.class));
-}

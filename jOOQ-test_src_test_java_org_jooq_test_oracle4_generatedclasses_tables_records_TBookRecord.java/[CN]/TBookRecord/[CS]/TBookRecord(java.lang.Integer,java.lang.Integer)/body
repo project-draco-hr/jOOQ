@@ -1,5 +1,0 @@
-{
-  super(org.jooq.test.oracle4.generatedclasses.tables.TBook.T_BOOK);
-  setValue(0,id);
-  setValue(1,authorId);
-}

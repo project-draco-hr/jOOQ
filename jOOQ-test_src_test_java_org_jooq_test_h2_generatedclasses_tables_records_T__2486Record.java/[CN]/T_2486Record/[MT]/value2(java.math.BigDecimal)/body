@@ -1,4 +1,0 @@
-{
-  setVal2(value);
-  return this;
-}

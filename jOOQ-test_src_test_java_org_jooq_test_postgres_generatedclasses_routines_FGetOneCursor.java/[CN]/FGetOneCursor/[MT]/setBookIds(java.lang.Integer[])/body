@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.test.postgres.generatedclasses.routines.FGetOneCursor.BOOK_IDS,value);
-}

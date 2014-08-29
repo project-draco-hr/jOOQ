@@ -1,4 +1,0 @@
-{
-  setBigInteger(value);
-  return this;
-}

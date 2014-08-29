@@ -1,4 +1,0 @@
-{
-  setOneZero(value);
-  return this;
-}

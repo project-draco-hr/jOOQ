@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.postgres.generatedclasses.tables.records.FTables5Record.class;
-}

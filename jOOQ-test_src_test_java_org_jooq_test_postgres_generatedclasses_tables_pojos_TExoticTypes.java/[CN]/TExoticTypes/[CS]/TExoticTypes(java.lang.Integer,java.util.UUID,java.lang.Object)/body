@@ -1,5 +1,0 @@
-{
-  this.id=id;
-  this.uu=uu;
-  this.js=js;
-}

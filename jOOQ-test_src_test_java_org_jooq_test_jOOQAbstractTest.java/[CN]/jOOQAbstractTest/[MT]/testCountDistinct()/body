@@ -1,3 +1,0 @@
-{
-  new AggregateWindowFunctionTests(this).testCountDistinct();
-}

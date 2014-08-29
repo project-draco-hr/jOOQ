@@ -1,7 +1,0 @@
-{
-switch (dialect()) {
-default :
-    log.info("SKIPPING","CROSS APPLY tests");
-  return;
-}
-}

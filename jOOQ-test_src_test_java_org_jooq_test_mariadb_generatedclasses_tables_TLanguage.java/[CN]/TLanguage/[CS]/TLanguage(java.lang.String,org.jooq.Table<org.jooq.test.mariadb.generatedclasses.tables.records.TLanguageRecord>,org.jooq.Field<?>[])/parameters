@@ -1,3 +1,0 @@
-java.lang.String alias
-org.jooq.Table<org.jooq.test.mariadb.generatedclasses.tables.records.TLanguageRecord> aliased
-org.jooq.Field<?>[] parameters

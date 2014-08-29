@@ -1,3 +1,0 @@
-{
-  if (connection != null)   connection.setAutoCommit(autocommit);
-}

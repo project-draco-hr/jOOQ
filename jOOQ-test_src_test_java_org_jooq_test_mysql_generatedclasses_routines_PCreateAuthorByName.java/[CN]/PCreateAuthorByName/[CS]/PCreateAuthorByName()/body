@@ -1,5 +1,0 @@
-{
-  super("p_create_author_by_name",org.jooq.test.mysql.generatedclasses.Test.TEST);
-  addInParameter(FIRST_NAME);
-  addInParameter(LAST_NAME);
-}

@@ -1,5 +1,0 @@
-{
-  setId(from.getId());
-  setXUnusedId(from.getXUnusedId());
-  setXUnusedName(from.getXUnusedName());
-}

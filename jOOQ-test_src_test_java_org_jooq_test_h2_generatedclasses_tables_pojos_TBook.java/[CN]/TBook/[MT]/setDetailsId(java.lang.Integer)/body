@@ -1,4 +1,0 @@
-{
-  this.detailsId=detailsId;
-  return this;
-}

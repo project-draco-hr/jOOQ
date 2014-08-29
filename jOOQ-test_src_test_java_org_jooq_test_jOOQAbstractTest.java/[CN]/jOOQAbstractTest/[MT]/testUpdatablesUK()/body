@@ -1,3 +1,0 @@
-{
-  new CRUDTests(this).testUpdatablesUK();
-}

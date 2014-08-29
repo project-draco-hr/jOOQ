@@ -1,4 +1,0 @@
-{
-  this.class_=class_;
-  return this;
-}

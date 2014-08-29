@@ -1,6 +1,0 @@
-{
-  assertFalse(TBook_ID().getDataType().defaulted());
-  if (!asList().contains(dialect().family())) {
-    assertTrue(TBook_LANGUAGE_ID().getDataType().defaulted());
-  }
-}

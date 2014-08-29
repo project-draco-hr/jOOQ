@@ -1,3 +1,0 @@
-{
-  return new DataType<?>[]{FirebirdDataType.BIGINT,FirebirdDataType.BIT,FirebirdDataType.BOOLEAN,FirebirdDataType.CHAR,FirebirdDataType.CHARACTER,FirebirdDataType.CHARACTERVARYING,FirebirdDataType.DATE,FirebirdDataType.DECIMAL,FirebirdDataType.DOUBLEPRECISION,FirebirdDataType.FLOAT,FirebirdDataType.INT,FirebirdDataType.INTEGER,FirebirdDataType.NUMERIC,FirebirdDataType.OTHER,FirebirdDataType.SMALLINT,FirebirdDataType.TIME,FirebirdDataType.TIMESTAMP,FirebirdDataType.VARCHAR};
-}

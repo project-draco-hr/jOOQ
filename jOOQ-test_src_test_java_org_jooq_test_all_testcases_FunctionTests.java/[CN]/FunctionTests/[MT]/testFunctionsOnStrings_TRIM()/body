@@ -1,8 +1,0 @@
-{
-  assertEquals("abc",create().select(trim("abc")).fetchOne(0));
-  assertEquals("abc",create().select(trim("abc  ")).fetchOne(0));
-  assertEquals("abc",create().select(trim("  abc")).fetchOne(0));
-  assertEquals("abc",create().select(trim("  abc  ")).fetchOne(0));
-  assertEquals("  abc",create().select(rtrim("  abc  ")).fetchOne(0));
-  assertEquals("abc  ",create().select(ltrim("  abc  ")).fetchOne(0));
-}

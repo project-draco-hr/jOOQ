@@ -1,1 +1,0 @@
-jOOQAbstractTest<TAuthorRecord,org.jooq.test.h2.generatedclasses.tables.pojos.TAuthor,TBookRecord,TBookStoreRecord,TBookToBookStoreRecord,XUnusedRecord,VLibraryRecord,TArraysRecord,TDatesRecord,TBooleansRecord,XUnusedRecord,TTriggersRecord,TUnsignedRecord,TExoticTypesRecord,TIdentityRecord,TIdentityPkRecord,T_725LobTestRecord,T_639NumbersTableRecord,T_785Record,XUnusedRecord>

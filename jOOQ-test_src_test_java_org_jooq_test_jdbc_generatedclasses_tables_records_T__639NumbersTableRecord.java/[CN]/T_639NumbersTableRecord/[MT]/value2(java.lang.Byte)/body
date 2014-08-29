@@ -1,4 +1,0 @@
-{
-  setByte(value);
-  return this;
-}

@@ -1,3 +1,0 @@
-{
-  super(org.jooq.test.mariadb.generatedclasses.tables.TBook.T_BOOK,org.jooq.test.mariadb.generatedclasses.tables.pojos.TBook.class,configuration);
-}

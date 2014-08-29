@@ -1,5 +1,0 @@
-{
-  super("P_ARRAYS2",org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC);
-  addInParameter(IN_ARRAY);
-  addOutParameter(OUT_ARRAY);
-}

@@ -1,3 +1,0 @@
-{
-  super(alias,org.jooq.test.mariadb.generatedclasses.Test.TEST,aliased,parameters,"An m:n relation between books and book stores");
-}

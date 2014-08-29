@@ -1,8 +1,0 @@
-{
-  jOOQAbstractTest.reset=false;
-  WriteListener listener1=new WriteListener(TBook());
-  B book1=newBook(5);
-  B book2=newBook(6);
-  create(listener1).batchStore(book1,book2).execute();
-  assertEquals(asList("storeStart","insertStart","insertEnd","storeEnd","storeStart","insertStart","insertEnd","storeEnd"),listener1.events);
-}

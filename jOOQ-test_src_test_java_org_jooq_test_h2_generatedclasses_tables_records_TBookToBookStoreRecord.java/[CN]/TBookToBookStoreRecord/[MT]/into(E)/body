@@ -1,4 +1,0 @@
-{
-  into.from(this);
-  return into;
-}

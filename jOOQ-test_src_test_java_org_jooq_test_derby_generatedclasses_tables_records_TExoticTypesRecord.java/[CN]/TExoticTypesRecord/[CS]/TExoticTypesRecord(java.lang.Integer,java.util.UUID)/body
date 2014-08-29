@@ -1,5 +1,0 @@
-{
-  super(org.jooq.test.derby.generatedclasses.tables.TExoticTypes.T_EXOTIC_TYPES);
-  setValue(0,id);
-  setValue(1,uu);
-}

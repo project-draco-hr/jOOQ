@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.h2.generatedclasses.tables.T_2698.T_2698.ID;
-}

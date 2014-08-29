@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.test.mysql2.generatedclasses.routines.PCreateAuthorByName.LAST_NAME,value);
-}

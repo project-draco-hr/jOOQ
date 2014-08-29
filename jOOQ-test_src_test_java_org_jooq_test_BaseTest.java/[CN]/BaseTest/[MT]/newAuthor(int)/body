@@ -1,6 +1,0 @@
-{
-  A record=create().newRecord(TAuthor());
-  record.setValue(TAuthor_ID(),id);
-  record.setValue(TAuthor_LAST_NAME(),"XX");
-  return record;
-}

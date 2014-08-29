@@ -1,3 +1,0 @@
-{
-  new UnionTests(this).testCombinedSelectQuery();
-}

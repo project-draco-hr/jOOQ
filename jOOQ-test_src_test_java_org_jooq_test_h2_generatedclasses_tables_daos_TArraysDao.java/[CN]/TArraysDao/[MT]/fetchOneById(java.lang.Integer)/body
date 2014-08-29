@@ -1,3 +1,0 @@
-{
-  return fetchOne(org.jooq.test.h2.generatedclasses.tables.TArrays.T_ARRAYS.ID,value);
-}

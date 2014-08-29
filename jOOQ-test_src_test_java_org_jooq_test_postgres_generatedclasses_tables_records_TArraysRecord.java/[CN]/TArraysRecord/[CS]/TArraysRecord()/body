@@ -1,3 +1,0 @@
-{
-  super(org.jooq.test.postgres.generatedclasses.tables.TArrays.T_ARRAYS);
-}

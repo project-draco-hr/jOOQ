@@ -1,9 +1,0 @@
-{
-  clean(TBooleans());
-  insertBooleans(create());
-  List<B1> b1=create().select(TBooleans_BOOLEAN_10()).from(TBooleans()).orderBy(TBooleans_ID()).fetchInto(B1.class);
-  assertEquals(3,b1.size());
-  assertEquals("ZERO",b1.get(0).oneZero);
-  assertEquals("ONE",b1.get(1).oneZero);
-  assertNull(b1.get(2).oneZero);
-}

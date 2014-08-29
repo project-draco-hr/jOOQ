@@ -1,4 +1,0 @@
-{
-  this.primarykey=primarykey;
-  return this;
-}

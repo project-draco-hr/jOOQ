@@ -1,4 +1,0 @@
-{
-  super(org.jooq.test.firebird.generatedclasses.tables.T_937.T_937);
-  setValue(0,t_937);
-}

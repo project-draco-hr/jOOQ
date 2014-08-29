@@ -1,3 +1,0 @@
-{
-  new PredicateTests(this).testConditionalSelect();
-}

@@ -1,5 +1,0 @@
-{
-  super("P_CREATE_AUTHOR_BY_NAME",org.jooq.test.h2.generatedclasses.Public.PUBLIC);
-  addInParameter(P2);
-  addInParameter(P3);
-}

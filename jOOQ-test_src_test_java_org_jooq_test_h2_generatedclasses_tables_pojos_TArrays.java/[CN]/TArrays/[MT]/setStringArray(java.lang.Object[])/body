@@ -1,4 +1,0 @@
-{
-  this.stringArray=stringArray;
-  return this;
-}

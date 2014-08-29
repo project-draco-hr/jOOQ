@@ -1,4 +1,0 @@
-{
-  assertEquals(3,create().fetchCount(selectOne().from(T_INHERITANCE_1)));
-  assertEquals(2,create().fetchCount(selectOne().from(only(T_INHERITANCE_1))));
-}

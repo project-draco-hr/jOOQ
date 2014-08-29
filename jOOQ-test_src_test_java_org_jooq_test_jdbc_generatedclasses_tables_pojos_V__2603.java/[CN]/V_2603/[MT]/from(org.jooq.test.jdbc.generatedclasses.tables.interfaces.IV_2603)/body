@@ -1,6 +1,0 @@
-{
-  setCol1(from.getCol1());
-  setCol2(from.getCol2());
-  setCol3(from.getCol3());
-  setCol4(from.getCol4());
-}

@@ -1,3 +1,0 @@
-{
-  return fetchOne(org.jooq.test.mysql.generatedclasses.tables.XTestCase_85.ID,value);
-}

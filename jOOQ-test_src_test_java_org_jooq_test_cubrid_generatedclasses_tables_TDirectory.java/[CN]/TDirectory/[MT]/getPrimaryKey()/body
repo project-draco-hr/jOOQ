@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.cubrid.generatedclasses.Keys.T_DIRECTORY__PK_T_DIRECTORY;
-}

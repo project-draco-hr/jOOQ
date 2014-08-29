@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.derby.generatedclasses.tables.TBookToBookStore.BOOK_STORE_NAME;
-}

@@ -1,3 +1,0 @@
-{
-  return Routines.fGetOneCursor(array);
-}

@@ -1,4 +1,0 @@
-{
-  super(org.jooq.test.mariadb.generatedclasses.tables.TBookStore.T_BOOK_STORE);
-  setValue(0,name);
-}

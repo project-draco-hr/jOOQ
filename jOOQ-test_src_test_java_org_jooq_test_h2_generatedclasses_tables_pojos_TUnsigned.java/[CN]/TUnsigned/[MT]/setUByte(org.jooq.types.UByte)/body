@@ -1,4 +1,0 @@
-{
-  this.uByte=uByte;
-  return this;
-}

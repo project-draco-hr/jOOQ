@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.sqlite.generatedclasses.tables.T_725LobTest.LOB;
-}

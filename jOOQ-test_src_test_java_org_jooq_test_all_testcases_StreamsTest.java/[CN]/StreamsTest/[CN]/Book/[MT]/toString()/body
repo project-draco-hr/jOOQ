@@ -1,3 +1,0 @@
-{
-  return "Book [bookId=" + bookId + ", title="+ title+ "]";
-}

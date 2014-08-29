@@ -1,4 +1,0 @@
-{
-  setColumnValue(value);
-  return this;
-}

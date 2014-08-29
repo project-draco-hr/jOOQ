@@ -1,8 +1,0 @@
-{
-  if (isNull) {
-    assertNull(ctx.statement());
-  }
- else {
-    assertNotNull(ctx.statement());
-  }
-}

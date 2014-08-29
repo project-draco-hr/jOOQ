@@ -1,5 +1,0 @@
-{
-  super("P2502",org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC);
-  addInParameter(CONFIGURATION);
-  addOutParameter(CONFIGURATION_);
-}

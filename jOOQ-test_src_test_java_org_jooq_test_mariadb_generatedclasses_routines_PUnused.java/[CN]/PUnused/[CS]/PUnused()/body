@@ -1,6 +1,0 @@
-{
-  super("p_unused",org.jooq.test.mariadb.generatedclasses.Test.TEST);
-  addInParameter(IN1);
-  addOutParameter(OUT1);
-  addInOutParameter(OUT2);
-}

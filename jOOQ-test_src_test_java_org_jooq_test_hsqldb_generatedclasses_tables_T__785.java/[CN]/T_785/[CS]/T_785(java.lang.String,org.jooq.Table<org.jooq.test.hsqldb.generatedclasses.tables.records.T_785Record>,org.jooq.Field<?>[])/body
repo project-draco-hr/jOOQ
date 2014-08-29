@@ -1,3 +1,0 @@
-{
-  super(alias,org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC,aliased,parameters,"");
-}

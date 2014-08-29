@@ -1,4 +1,0 @@
-{
-  setDateArray(value);
-  return this;
-}

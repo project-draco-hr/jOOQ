@@ -1,4 +1,0 @@
-{
-  setDouble(value);
-  return this;
-}

@@ -1,4 +1,0 @@
-{
-  this.trueFalseLc=trueFalseLc;
-  return this;
-}

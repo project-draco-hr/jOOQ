@@ -1,4 +1,0 @@
-{
-  setJooq(value);
-  return this;
-}

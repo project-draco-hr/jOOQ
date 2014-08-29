@@ -1,5 +1,0 @@
-{
-  super("f_get_one_cursor",org.jooq.test.postgres.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.RESULT);
-  setReturnParameter(RETURN_VALUE);
-  addInParameter(BOOK_IDS);
-}

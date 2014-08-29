@@ -1,6 +1,0 @@
-{
-  setUByte(from.getUByte());
-  setUShort(from.getUShort());
-  setUInt(from.getUInt());
-  setULong(from.getULong());
-}

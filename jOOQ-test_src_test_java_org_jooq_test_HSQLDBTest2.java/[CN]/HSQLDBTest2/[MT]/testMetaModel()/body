@@ -1,3 +1,0 @@
-{
-  log.info("SKIPPING","Meta model tests");
-}

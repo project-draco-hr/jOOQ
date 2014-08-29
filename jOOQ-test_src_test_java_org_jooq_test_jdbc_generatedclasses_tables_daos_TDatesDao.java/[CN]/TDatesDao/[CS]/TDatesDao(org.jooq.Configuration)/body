@@ -1,3 +1,0 @@
-{
-  super(org.jooq.test.jdbc.generatedclasses.tables.TDates.T_DATES,org.jooq.test.jdbc.generatedclasses.tables.pojos.TDates.class,configuration);
-}

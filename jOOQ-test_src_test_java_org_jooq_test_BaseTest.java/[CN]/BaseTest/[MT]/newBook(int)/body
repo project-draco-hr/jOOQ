@@ -1,9 +1,0 @@
-{
-  B record=create().newRecord(TBook());
-  record.setValue(TBook_ID(),id);
-  record.setValue(TBook_AUTHOR_ID(),1);
-  record.setValue(TBook_TITLE(),"XX");
-  record.setValue(TBook_PUBLISHED_IN(),2000);
-  record.setValue(TBook_LANGUAGE_ID(),1);
-  return record;
-}

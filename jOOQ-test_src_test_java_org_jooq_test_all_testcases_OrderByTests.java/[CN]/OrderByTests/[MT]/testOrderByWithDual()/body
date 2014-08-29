@@ -1,3 +1,0 @@
-{
-  assertEquals(1,(int)create().selectOne().orderBy(1).fetchOne(0,int.class));
-}

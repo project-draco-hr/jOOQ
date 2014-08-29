@@ -1,4 +1,0 @@
-{
-  setShort(value);
-  return this;
-}

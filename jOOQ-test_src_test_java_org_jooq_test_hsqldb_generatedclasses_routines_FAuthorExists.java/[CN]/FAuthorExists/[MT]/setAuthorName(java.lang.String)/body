@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.test.hsqldb.generatedclasses.routines.FAuthorExists.AUTHOR_NAME,value);
-}

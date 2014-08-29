@@ -1,6 +1,0 @@
-{
-  org.jooq.test.postgres.generatedclasses.routines.PAuthorExists p=new org.jooq.test.postgres.generatedclasses.routines.PAuthorExists();
-  p.setAuthorName(authorName);
-  p.execute(configuration);
-  return p.getResult();
-}

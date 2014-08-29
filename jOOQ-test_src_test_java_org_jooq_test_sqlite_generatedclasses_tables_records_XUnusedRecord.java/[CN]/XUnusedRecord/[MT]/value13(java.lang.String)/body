@@ -1,4 +1,0 @@
-{
-  setNameRef(value);
-  return this;
-}

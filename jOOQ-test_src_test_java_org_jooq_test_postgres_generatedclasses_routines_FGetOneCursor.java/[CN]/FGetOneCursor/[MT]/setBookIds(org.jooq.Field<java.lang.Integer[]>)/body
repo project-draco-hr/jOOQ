@@ -1,4 +1,0 @@
-{
-  setField(BOOK_IDS,field);
-  return this;
-}

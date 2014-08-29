@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.hsqldb.generatedclasses.tables.TArrays.T_ARRAYS.STRING_ARRAY;
-}

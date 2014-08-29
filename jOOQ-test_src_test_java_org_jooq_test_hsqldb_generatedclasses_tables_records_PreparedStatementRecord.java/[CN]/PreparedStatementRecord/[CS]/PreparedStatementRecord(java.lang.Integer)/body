@@ -1,4 +1,0 @@
-{
-  super(org.jooq.test.hsqldb.generatedclasses.tables.PreparedStatement.PREPARED_STATEMENT);
-  setValue(0,id);
-}

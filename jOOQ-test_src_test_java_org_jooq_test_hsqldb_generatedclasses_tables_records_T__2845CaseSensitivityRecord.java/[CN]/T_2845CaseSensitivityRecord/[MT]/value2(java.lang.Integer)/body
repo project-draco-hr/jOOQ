@@ -1,4 +1,0 @@
-{
-  setInsensitive(value);
-  return this;
-}

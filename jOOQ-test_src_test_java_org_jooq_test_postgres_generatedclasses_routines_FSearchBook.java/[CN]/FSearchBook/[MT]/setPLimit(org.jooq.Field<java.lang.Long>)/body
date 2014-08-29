@@ -1,4 +1,0 @@
-{
-  setField(P_LIMIT,field);
-  return this;
-}

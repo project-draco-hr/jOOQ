@@ -1,3 +1,0 @@
-{
-  return anyPredicatesMap(context).get(nestingLevel(context));
-}

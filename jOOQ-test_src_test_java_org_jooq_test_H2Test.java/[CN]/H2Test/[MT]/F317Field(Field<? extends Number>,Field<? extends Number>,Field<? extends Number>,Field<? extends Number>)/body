@@ -1,3 +1,0 @@
-{
-  return Routines.f317((Field<Integer>)n1,(Field<Integer>)n2,(Field<Integer>)n3,(Field<Integer>)n4);
-}

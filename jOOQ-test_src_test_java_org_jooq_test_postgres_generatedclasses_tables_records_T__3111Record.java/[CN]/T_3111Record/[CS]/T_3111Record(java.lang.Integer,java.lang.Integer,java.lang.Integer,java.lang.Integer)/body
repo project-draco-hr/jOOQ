@@ -1,7 +1,0 @@
-{
-  super(org.jooq.test.postgres.generatedclasses.tables.T_3111.T_3111);
-  setValue(0,id);
-  setValue(1,inverse);
-  setValue(2,bool1);
-  setValue(3,bool2);
-}

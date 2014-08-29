@@ -1,4 +1,0 @@
-{
-  setT(value);
-  return this;
-}

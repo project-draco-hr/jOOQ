@@ -1,6 +1,0 @@
-{
-  super("fp1908",org.jooq.test.mariadb.generatedclasses.Test.TEST);
-  addInParameter(P1);
-  addOutParameter(P2);
-  setOverloaded(true);
-}

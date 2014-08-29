@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.h2.generatedclasses.tables.records.TIdentityPkRecord>>asList(org.jooq.test.h2.generatedclasses.Keys.PK_T_IDENTITY_PK);
-}

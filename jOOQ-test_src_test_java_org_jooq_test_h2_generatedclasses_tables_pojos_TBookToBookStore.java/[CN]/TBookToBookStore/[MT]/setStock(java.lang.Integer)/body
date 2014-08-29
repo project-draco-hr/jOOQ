@@ -1,4 +1,0 @@
-{
-  this.stock=stock;
-  return this;
-}

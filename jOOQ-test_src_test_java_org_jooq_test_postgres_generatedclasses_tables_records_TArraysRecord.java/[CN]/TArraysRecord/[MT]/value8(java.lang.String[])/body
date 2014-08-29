@@ -1,4 +1,0 @@
-{
-  setNumberList(value);
-  return this;
-}

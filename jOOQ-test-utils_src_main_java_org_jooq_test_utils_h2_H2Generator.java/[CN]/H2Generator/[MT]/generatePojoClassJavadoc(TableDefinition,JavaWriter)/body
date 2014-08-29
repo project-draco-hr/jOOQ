@@ -1,9 +1,0 @@
-{
-  out.println("/**");
-  out.println(" * This is a POJO for table " + table.getOutputName() + ".");
-  if (table.getComment() != null && !"".equals(table.getComment())) {
-    out.println(" * <p>");
-    out.println(" * " + table.getComment());
-  }
-  out.println(" */");
-}

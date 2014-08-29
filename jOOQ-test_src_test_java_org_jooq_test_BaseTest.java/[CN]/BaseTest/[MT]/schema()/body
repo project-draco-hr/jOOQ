@@ -1,5 +1,0 @@
-{
-  Schema schema=TAuthor().getSchema();
-  Schema mapped=create().map(schema);
-  return mapped != null ? mapped : schema;
-}

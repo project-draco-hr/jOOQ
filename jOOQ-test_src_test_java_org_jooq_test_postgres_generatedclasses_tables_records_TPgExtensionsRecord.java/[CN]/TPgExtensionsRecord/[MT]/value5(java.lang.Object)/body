@@ -1,4 +1,0 @@
-{
-  setPgGeometry(value);
-  return this;
-}

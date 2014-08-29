@@ -1,6 +1,0 @@
-{
-  super(org.jooq.test.h2.generatedclasses.tables.T_2698.T_2698);
-  setValue(0,id);
-  setValue(1,xx);
-  setValue(2,yy);
-}

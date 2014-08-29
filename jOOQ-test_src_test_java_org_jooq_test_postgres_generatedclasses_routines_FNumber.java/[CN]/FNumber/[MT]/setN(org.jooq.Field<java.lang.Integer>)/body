@@ -1,4 +1,0 @@
-{
-  setField(N,field);
-  return this;
-}

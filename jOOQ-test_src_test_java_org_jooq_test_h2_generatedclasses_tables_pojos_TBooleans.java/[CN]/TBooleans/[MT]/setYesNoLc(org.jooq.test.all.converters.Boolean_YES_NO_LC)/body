@@ -1,4 +1,0 @@
-{
-  this.yesNoLc=yesNoLc;
-  return this;
-}

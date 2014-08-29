@@ -1,4 +1,0 @@
-{
-  setDetailsId(value);
-  return this;
-}

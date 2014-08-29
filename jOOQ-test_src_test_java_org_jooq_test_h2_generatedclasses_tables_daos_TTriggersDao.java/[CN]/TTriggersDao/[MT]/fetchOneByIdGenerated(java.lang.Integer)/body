@@ -1,3 +1,0 @@
-{
-  return fetchOne(org.jooq.test.h2.generatedclasses.tables.TTriggers.T_TRIGGERS.ID_GENERATED,value);
-}

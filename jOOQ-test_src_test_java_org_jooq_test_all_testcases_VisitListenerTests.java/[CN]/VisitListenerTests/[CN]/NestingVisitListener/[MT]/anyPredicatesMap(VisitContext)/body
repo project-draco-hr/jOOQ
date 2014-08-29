@@ -1,8 +1,0 @@
-{
-  Map<Integer,Boolean> data=(Map<Integer,Boolean>)context.data(DataKey.SUBSELECT_HAS_PREDICATES);
-  if (data == null) {
-    data=new HashMap<Integer,Boolean>();
-    context.data(DataKey.SUBSELECT_HAS_PREDICATES,data);
-  }
-  return data;
-}

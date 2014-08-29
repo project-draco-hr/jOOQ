@@ -1,3 +1,0 @@
-{
-  return Routines.fArrays3(array);
-}

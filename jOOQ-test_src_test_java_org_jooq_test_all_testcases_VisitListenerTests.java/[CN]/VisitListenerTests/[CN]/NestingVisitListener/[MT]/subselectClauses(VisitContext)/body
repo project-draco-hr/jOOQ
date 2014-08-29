@@ -1,6 +1,0 @@
-{
-  List<Clause> result=asList(context.clauses());
-  int index=result.lastIndexOf(SELECT);
-  if (index > 0)   return result.subList(index,result.size() - 1);
- else   return result;
-}

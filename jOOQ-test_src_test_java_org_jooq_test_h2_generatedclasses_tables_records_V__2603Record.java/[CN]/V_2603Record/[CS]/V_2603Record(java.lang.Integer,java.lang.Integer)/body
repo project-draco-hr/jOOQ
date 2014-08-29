@@ -1,5 +1,0 @@
-{
-  super(org.jooq.test.h2.generatedclasses.tables.V_2603.V_2603);
-  setValue(0,col1);
-  setValue(1,col4);
-}

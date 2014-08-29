@@ -1,4 +1,0 @@
-{
-  this.oneZero=oneZero;
-  return this;
-}

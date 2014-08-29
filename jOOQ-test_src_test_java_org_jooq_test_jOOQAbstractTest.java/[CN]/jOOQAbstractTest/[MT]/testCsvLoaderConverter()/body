@@ -1,3 +1,0 @@
-{
-  new CsvLoaderTests(this).testLoaderConverter();
-}

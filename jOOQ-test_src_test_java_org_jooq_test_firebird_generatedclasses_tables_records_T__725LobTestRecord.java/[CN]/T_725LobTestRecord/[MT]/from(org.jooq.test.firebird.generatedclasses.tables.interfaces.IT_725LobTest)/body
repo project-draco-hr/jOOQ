@@ -1,4 +1,0 @@
-{
-  setId(from.getId());
-  setLob(from.getLob());
-}

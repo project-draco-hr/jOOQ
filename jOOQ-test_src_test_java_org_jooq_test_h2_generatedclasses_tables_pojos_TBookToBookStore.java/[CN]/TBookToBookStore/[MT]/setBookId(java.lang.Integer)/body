@@ -1,4 +1,0 @@
-{
-  this.bookId=bookId;
-  return this;
-}

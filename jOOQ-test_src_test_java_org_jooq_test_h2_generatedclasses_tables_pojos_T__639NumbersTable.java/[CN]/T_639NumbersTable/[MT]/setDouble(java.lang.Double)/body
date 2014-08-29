@@ -1,4 +1,0 @@
-{
-  this.double_=double_;
-  return this;
-}

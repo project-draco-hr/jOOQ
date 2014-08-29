@@ -1,4 +1,0 @@
-{
-  DSLContext create=create(new DataListener());
-  create.selectOne().fetch();
-}

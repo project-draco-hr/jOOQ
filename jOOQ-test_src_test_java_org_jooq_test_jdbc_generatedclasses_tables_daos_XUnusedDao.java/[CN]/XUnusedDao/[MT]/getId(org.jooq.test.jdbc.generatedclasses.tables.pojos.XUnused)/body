@@ -1,3 +1,0 @@
-{
-  return compositeKeyRecord(object.getId(),object.getName());
-}

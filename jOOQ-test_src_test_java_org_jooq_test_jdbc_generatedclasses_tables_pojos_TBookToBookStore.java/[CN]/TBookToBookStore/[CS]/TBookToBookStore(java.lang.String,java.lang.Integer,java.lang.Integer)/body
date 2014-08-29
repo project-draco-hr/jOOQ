@@ -1,5 +1,0 @@
-{
-  this.bookStoreName=bookStoreName;
-  this.bookId=bookId;
-  this.stock=stock;
-}

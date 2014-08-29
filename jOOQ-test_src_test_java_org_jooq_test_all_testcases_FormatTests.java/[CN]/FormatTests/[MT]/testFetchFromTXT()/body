@@ -1,4 +1,0 @@
-{
-  Result<L> result=create().fetch(VLibrary());
-  assertEquals(result,create().fetchFromTXT(result.format()));
-}

@@ -1,5 +1,0 @@
-{
-  super("f_number",org.jooq.test.mariadb.generatedclasses.Test.TEST,org.jooq.impl.SQLDataType.INTEGER);
-  setReturnParameter(RETURN_VALUE);
-  addInParameter(N);
-}

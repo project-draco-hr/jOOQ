@@ -1,6 +1,0 @@
-java.lang.Integer value1
-java.lang.String value2
-java.lang.String value3
-java.sql.Date value4
-java.lang.Integer value5
-org.jooq.test.postgres.generatedclasses.udt.records.UAddressTypeRecord value6

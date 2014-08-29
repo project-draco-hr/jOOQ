@@ -1,3 +1,0 @@
-{
-  return new Timestamp(0).toString();
-}

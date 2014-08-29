@@ -1,3 +1,0 @@
-{
-  return TDirectory.PARENT_ID;
-}

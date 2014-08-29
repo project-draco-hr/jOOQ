@@ -1,4 +1,0 @@
-{
-  setE4(value);
-  return this;
-}

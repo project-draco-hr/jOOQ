@@ -1,3 +1,0 @@
-{
-  new PlainSQLTests(this).testPlainSQLWithSelfJoins();
-}

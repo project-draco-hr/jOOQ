@@ -1,4 +1,0 @@
-{
-  super("f_one",org.jooq.test.postgres.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.INTEGER);
-  setReturnParameter(RETURN_VALUE);
-}

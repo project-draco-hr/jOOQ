@@ -1,4 +1,0 @@
-{
-  super.setUp();
-  create().query("use " + TAuthor().getSchema().getName() + getSchemaSuffix()).execute();
-}

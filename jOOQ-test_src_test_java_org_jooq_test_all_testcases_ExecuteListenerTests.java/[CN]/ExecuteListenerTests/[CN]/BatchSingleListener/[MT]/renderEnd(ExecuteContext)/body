@@ -1,8 +1,0 @@
-{
-  renderEnd=++callbackCount;
-  checkBase(ctx);
-  checkSQL(ctx,false);
-  assertNull(ctx.statement());
-  ctx.sql(ctx.sql().replaceFirst("(?i:values\\s+)","values    "));
-  checkSQL(ctx,true);
-}

@@ -1,4 +1,0 @@
-{
-  setFirstName(value);
-  return this;
-}

@@ -1,7 +1,0 @@
-{
-  jOOQAbstractTest.reset=false;
-  String inserts=create().select(TBookStore_NAME(),val(4),val(10)).from(TBookStore()).fetch().formatInsert(TBookToBookStore(),TBookToBookStore_BOOK_STORE_NAME(),TBookToBookStore_BOOK_ID(),TBookToBookStore_STOCK());
-  for (  String insert : inserts.split(";"))   if (!StringUtils.isBlank(insert))   assertEquals(1,create().execute(insert));
-  assertEquals(9,create().fetchCount(TBookToBookStore()));
-  assertEquals(3,create().fetchCount(selectFrom(TBookToBookStore()).where(TBookToBookStore_BOOK_ID().eq(4))));
-}

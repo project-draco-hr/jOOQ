@@ -1,3 +1,0 @@
-{
-  return TBookToBookStore.BOOK_ID;
-}

@@ -1,4 +1,0 @@
-{
-  this.byte_=byte_;
-  return this;
-}

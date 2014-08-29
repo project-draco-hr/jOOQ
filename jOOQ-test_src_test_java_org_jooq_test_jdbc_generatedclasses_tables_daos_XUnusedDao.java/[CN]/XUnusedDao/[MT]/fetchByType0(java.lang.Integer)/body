@@ -1,3 +1,0 @@
-{
-  return fetch(org.jooq.test.jdbc.generatedclasses.tables.XUnused.TYPE0,values);
-}

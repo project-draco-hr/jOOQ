@@ -1,3 +1,0 @@
-{
-  return (Field)Routines.fArrays3((Field)array);
-}

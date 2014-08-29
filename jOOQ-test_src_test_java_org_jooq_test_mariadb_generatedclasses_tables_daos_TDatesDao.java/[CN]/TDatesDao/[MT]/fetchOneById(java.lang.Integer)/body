@@ -1,3 +1,0 @@
-{
-  return fetchOne(org.jooq.test.mariadb.generatedclasses.tables.TDates.ID,value);
-}

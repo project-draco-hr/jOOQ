@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.postgres.generatedclasses.tables.TUnsigned.T_UNSIGNED.U_BYTE;
-}

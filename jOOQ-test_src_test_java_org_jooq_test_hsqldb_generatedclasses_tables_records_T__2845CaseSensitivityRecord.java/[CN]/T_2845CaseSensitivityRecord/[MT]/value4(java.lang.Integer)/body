@@ -1,4 +1,0 @@
-{
-  setLower(value);
-  return this;
-}

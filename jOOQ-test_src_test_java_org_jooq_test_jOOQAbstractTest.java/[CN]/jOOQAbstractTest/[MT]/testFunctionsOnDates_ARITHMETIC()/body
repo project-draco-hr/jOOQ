@@ -1,3 +1,0 @@
-{
-  new FunctionTests(this).testFunctionsOnDates_ARITHMETIC();
-}

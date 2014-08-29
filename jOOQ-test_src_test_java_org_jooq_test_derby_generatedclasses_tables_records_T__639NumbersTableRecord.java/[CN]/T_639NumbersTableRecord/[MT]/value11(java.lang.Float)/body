@@ -1,4 +1,0 @@
-{
-  setFloat(value);
-  return this;
-}

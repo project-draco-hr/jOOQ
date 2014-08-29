@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.cubrid.generatedclasses.tables.records.T_639NumbersTableRecord>>asList(org.jooq.test.cubrid.generatedclasses.Keys.T_639_NUMBERS_TABLE__PK_T_639_NUMBERS_TABLE);
-}

@@ -1,3 +1,0 @@
-{
-  pCreateAuthorByName(connection,"William","Shakespeare");
-}

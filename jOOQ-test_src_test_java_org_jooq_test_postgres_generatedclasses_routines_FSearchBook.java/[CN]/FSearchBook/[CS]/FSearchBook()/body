@@ -1,7 +1,0 @@
-{
-  super("f_search_book",org.jooq.test.postgres.generatedclasses.Public.PUBLIC,org.jooq.impl.DefaultDataType.getDefaultDataType("USER-DEFINED"));
-  setReturnParameter(RETURN_VALUE);
-  addInParameter(P_TITLE);
-  addInParameter(P_LIMIT);
-  addInParameter(P_OFFSET);
-}

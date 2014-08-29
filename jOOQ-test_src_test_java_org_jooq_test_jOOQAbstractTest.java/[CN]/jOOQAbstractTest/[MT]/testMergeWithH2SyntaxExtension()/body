@@ -1,3 +1,0 @@
-{
-  new InsertUpdateTests(this).testMergeWithH2SyntaxExtension();
-}

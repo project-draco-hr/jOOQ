@@ -1,3 +1,0 @@
-{
-  return "JPABook [id=" + id + ", title="+ title+ ", firstName="+ firstName+ ", lastName="+ lastName+ "]";
-}

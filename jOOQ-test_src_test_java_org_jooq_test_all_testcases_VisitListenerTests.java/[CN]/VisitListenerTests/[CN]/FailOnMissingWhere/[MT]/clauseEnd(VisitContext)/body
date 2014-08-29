@@ -1,8 +1,0 @@
-{
-  if (context.renderContext() == null)   return;
-  if (context.clause() == SELECT_WHERE || context.clause() == UPDATE_WHERE || context.clause() == DELETE_WHERE) {
-    if (!anyPredicates(context)) {
-      throw new MissingWhereException();
-    }
-  }
-}

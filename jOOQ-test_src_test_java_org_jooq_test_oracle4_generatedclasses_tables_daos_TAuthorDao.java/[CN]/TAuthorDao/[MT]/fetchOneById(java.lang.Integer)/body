@@ -1,3 +1,0 @@
-{
-  return fetchOne(org.jooq.test.oracle4.generatedclasses.tables.TAuthor.T_AUTHOR.ID,value);
-}

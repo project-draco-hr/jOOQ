@@ -1,4 +1,0 @@
-{
-  setConnection(value);
-  return this;
-}

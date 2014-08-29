@@ -1,4 +1,0 @@
-{
-  setExcludeMe(from.getExcludeMe());
-  setXx(from.getXx());
-}

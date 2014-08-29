@@ -1,3 +1,0 @@
-{
-  new CTETests(this).testCTEWithNoExplicitColumnLists();
-}

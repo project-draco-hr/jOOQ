@@ -1,4 +1,0 @@
-{
-  assumeNotNull(SAuthorID());
-  testSequences0(DSL.sequenceByName(SAuthorID().getSchema().getName(),SAuthorID().getName()));
-}

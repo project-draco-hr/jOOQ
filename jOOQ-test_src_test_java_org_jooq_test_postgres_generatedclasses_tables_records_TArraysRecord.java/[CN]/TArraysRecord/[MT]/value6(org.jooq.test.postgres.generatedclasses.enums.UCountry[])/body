@@ -1,4 +1,0 @@
-{
-  setEnumArray(value);
-  return this;
-}

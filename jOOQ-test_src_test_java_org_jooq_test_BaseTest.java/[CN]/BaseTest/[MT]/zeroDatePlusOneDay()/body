@@ -1,3 +1,0 @@
-{
-  return new Date(1000L * 60L * 60L* 24L).toString();
-}

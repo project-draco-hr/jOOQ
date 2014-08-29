@@ -1,3 +1,0 @@
-{
-  super(Integer.class,OrdinalEnum1.class);
-}

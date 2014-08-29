@@ -1,4 +1,0 @@
-{
-  setIdRef(value);
-  return this;
-}

@@ -1,4 +1,0 @@
-{
-  this.lob=lob;
-  return this;
-}

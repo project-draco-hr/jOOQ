@@ -1,4 +1,0 @@
-{
-  super("p_enhance_address3",org.jooq.test.postgres.generatedclasses.Public.PUBLIC);
-  addInOutParameter(ADDRESS);
-}

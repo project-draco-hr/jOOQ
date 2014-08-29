@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.test.oracle4.generatedclasses.tables.records.TBookRecord,?>>asList(org.jooq.test.oracle4.generatedclasses.Keys.FK_T_BOOK_AUTHOR_ID);
-}

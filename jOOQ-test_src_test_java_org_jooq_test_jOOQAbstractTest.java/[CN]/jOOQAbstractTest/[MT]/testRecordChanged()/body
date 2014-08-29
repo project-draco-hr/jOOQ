@@ -1,3 +1,0 @@
-{
-  new RecordTests(this).testRecordChanged();
-}

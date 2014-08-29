@@ -1,4 +1,0 @@
-{
-  this.dateArray=dateArray;
-  return this;
-}

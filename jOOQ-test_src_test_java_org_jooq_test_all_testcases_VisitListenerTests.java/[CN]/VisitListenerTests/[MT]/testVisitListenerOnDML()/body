@@ -1,7 +1,0 @@
-{
-  jOOQAbstractTest.reset=false;
-  assertEquals(2,create(new OnlyAuthorIDEqual1()).update(TBook()).set(TBook_TITLE(),"changed").execute());
-  assertEquals(2,create().fetchCount(selectOne().from(TBook()).where(TBook_TITLE().eq("changed"))));
-  assertEquals(2,create(new OnlyAuthorIDEqual1()).delete(TBook()).execute());
-  assertEquals(0,create().fetchCount(selectOne().from(TBook()).where(TBook_TITLE().eq("changed"))));
-}

@@ -1,4 +1,0 @@
-{
-  setY4(value);
-  return this;
-}

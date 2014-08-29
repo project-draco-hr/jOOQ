@@ -1,4 +1,0 @@
-{
-  org.jooq.test.mariadb.generatedclasses.routines.FOne f=new org.jooq.test.mariadb.generatedclasses.routines.FOne();
-  return f.asField();
-}

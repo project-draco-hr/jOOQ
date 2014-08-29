@@ -1,6 +1,0 @@
-{
-  super(org.jooq.test.jdbc.generatedclasses.tables.TBookToBookStore.T_BOOK_TO_BOOK_STORE);
-  setValue(0,bookStoreName);
-  setValue(1,bookId);
-  setValue(2,stock);
-}

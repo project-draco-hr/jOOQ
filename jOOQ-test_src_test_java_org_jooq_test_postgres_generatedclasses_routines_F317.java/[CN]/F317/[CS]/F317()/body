@@ -1,8 +1,0 @@
-{
-  super("f317",org.jooq.test.postgres.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.INTEGER);
-  setReturnParameter(RETURN_VALUE);
-  addInParameter(P1);
-  addInParameter(P2);
-  addInParameter(P3);
-  addInParameter(P4);
-}

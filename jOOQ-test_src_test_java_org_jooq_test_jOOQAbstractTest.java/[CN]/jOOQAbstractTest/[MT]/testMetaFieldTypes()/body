@@ -1,3 +1,0 @@
-{
-  new MetaDataTests(this).testMetaFieldTypes();
-}

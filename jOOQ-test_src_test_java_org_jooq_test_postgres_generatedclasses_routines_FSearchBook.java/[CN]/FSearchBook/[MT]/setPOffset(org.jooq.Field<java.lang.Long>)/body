@@ -1,4 +1,0 @@
-{
-  setField(P_OFFSET,field);
-  return this;
-}

@@ -1,3 +1,0 @@
-{
-  return (TableField)T_ARRAYS.DATE_ARRAY;
-}

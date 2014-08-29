@@ -1,8 +1,0 @@
-{
-  assertNull(MariaDBDSL.enumType(TBookStatus.class,-1));
-  assertNull(MariaDBDSL.enumType(TBookStatus.class,0));
-  assertEquals(TBookStatus.SOLD_OUT,MariaDBDSL.enumType(TBookStatus.class,1));
-  assertEquals(TBookStatus.ORDERED,MariaDBDSL.enumType(TBookStatus.class,2));
-  assertEquals(TBookStatus.ON_STOCK,MariaDBDSL.enumType(TBookStatus.class,3));
-  assertNull(MariaDBDSL.enumType(TBookStatus.class,4));
-}

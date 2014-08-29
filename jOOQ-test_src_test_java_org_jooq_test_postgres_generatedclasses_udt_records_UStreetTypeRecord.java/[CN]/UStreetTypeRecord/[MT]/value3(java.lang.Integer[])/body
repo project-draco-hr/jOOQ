@@ -1,4 +1,0 @@
-{
-  setFloors(value);
-  return this;
-}

@@ -1,4 +1,0 @@
-{
-  setAuthorId(value);
-  return this;
-}

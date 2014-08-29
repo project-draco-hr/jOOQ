@@ -1,9 +1,0 @@
-{
-  open++;
-  return new DefaultConnection(connection){
-    @Override public void close() throws SQLException {
-      close++;
-    }
-  }
-;
-}

@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.jdbc.generatedclasses.tables.TArrays.NUMBER_ARRAY;
-}

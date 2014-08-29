@@ -1,3 +1,0 @@
-{
-  return fetch(org.jooq.test.mariadb.generatedclasses.tables.T_639NumbersTable.FLOAT,values);
-}

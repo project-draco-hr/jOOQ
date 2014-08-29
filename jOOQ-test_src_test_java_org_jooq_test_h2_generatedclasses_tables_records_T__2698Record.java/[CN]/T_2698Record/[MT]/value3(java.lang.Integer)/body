@@ -1,4 +1,0 @@
-{
-  setYy(value);
-  return this;
-}

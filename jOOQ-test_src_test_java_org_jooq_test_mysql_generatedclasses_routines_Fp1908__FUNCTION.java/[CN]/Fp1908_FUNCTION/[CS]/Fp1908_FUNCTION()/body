@@ -1,6 +1,0 @@
-{
-  super("fp1908",org.jooq.test.mysql.generatedclasses.Test.TEST,org.jooq.impl.SQLDataType.INTEGER);
-  setReturnParameter(RETURN_VALUE);
-  addInParameter(P1);
-  setOverloaded(true);
-}

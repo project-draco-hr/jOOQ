@@ -1,3 +1,0 @@
-{
-  super(alias,org.jooq.test.oracle4.generatedclasses.Test.TEST,aliased,parameters,"");
-}

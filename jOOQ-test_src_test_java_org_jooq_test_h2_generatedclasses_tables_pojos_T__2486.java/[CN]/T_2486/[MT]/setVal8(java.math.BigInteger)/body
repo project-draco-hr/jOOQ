@@ -1,4 +1,0 @@
-{
-  this.val8=val8;
-  return this;
-}

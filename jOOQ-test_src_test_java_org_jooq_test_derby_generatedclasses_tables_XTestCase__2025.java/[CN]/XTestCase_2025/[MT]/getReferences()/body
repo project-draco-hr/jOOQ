@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.test.derby.generatedclasses.tables.records.XTestCase_2025Record,?>>asList(org.jooq.test.derby.generatedclasses.Keys.FK_X_TEST_CASE_2025_3,org.jooq.test.derby.generatedclasses.Keys.FK_X_TEST_CASE_2025_2,org.jooq.test.derby.generatedclasses.Keys.FK_X_TEST_CASE_2025_1);
-}

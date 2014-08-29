@@ -1,4 +1,0 @@
-{
-  this.tsBigint=tsBigint;
-  return this;
-}

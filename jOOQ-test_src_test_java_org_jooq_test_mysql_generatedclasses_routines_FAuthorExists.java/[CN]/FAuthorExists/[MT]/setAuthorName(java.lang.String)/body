@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.test.mysql.generatedclasses.routines.FAuthorExists.AUTHOR_NAME,value);
-}

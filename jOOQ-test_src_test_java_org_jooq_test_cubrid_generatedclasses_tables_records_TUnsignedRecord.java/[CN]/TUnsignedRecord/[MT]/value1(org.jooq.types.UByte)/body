@@ -1,4 +1,0 @@
-{
-  setUByte(value);
-  return this;
-}

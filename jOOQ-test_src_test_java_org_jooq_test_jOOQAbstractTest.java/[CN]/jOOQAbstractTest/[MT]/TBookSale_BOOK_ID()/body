@@ -1,3 +1,0 @@
-{
-  return (TableField<BS,Integer>)TBookSale().field("BOOK_ID");
-}

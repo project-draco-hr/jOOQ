@@ -1,4 +1,0 @@
-{
-  super("u_address_type",org.jooq.test.postgres.generatedclasses.Public.PUBLIC);
-  getDataType();
-}

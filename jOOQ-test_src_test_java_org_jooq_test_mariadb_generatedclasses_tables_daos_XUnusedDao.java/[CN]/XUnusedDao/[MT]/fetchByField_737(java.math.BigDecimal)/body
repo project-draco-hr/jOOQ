@@ -1,3 +1,0 @@
-{
-  return fetch(org.jooq.test.mariadb.generatedclasses.tables.XUnused.FIELD_737,values);
-}

@@ -1,8 +1,0 @@
-{
-  try {
-    return on(TBook().getClass().getPackage().getName() + ".pojos." + TBook().getClass().getSimpleName()).get();
-  }
- catch (  ReflectException ignore) {
-    return null;
-  }
-}

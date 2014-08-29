@@ -1,4 +1,0 @@
-{
-  events.add("updateStart");
-  assertions(ctx);
-}

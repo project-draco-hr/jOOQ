@@ -1,4 +1,0 @@
-{
-  this.counter=counter;
-  return this;
-}

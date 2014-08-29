@@ -1,3 +1,0 @@
-{
-  new DataTypeTests(this).testFunctionsOnDates_DATE_ADD();
-}

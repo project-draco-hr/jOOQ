@@ -1,3 +1,0 @@
-{
-  return (TableField<DATE,Timestamp>)getField(TDates(),"TS");
-}

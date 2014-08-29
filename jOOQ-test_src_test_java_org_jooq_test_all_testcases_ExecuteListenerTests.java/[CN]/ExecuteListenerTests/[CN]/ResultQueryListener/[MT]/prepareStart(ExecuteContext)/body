@@ -1,9 +1,0 @@
-{
-  prepareStart=++callbackCount;
-  checkBase(ctx);
-  checkSQL(ctx,true);
-  assertNull(ctx.statement());
-  assertNull(ctx.resultSet());
-  assertNull(ctx.record());
-  assertNull(ctx.result());
-}

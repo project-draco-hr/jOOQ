@@ -1,5 +1,0 @@
-{
-  org.jooq.test.hsqldb.generatedclasses.routines.F2502 f=new org.jooq.test.hsqldb.generatedclasses.routines.F2502();
-  f.setConfiguration(configuration);
-  return f.asField();
-}

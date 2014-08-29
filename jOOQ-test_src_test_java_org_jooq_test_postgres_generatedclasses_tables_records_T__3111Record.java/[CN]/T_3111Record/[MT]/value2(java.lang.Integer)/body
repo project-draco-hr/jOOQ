@@ -1,4 +1,0 @@
-{
-  setInverse(value);
-  return this;
-}

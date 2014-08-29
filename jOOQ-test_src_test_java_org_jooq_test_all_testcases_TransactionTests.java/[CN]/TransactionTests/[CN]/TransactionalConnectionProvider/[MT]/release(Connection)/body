@@ -1,4 +1,0 @@
-{
-  release.incrementAndGet();
-  delegate.release(connection);
-}

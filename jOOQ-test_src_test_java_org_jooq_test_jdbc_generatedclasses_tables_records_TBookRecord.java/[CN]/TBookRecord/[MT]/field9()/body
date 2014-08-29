@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.jdbc.generatedclasses.tables.TBook.CONTENT_PDF;
-}

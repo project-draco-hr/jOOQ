@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.hsqldb.generatedclasses.tables.XUnused.X_UNUSED.ID_REF;
-}

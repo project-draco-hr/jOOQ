@@ -1,3 +1,0 @@
-{
-  return fetchOne(org.jooq.test.jdbc.generatedclasses.tables.TLanguage.ID,value);
-}

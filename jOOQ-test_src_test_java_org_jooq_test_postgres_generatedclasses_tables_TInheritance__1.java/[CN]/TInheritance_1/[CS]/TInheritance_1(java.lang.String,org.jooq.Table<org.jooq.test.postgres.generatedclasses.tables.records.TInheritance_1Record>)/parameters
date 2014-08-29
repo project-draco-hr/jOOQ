@@ -1,2 +1,0 @@
-java.lang.String alias
-org.jooq.Table<org.jooq.test.postgres.generatedclasses.tables.records.TInheritance_1Record> aliased

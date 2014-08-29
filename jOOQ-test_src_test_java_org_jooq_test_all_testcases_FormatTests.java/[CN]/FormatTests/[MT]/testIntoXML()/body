@@ -1,4 +1,0 @@
-{
-  Result<B> books=create().selectFrom(TBook()).fetch();
-  testXML(books.intoXML(),books);
-}

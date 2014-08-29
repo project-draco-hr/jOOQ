@@ -1,3 +1,0 @@
-{
-  super(alias,org.jooq.test.mysql.generatedclasses.Test.TEST,aliased,parameters,"An entity holding language master data");
-}

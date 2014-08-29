@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.hsqldb.generatedclasses.tables.TUnsigned.T_UNSIGNED.U_INT;
-}

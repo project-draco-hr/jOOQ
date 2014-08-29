@@ -1,4 +1,0 @@
-{
-  super("p_triggers",org.jooq.test.postgres.generatedclasses.Public.PUBLIC,org.jooq.impl.DefaultDataType.getDefaultDataType("trigger"));
-  setReturnParameter(RETURN_VALUE);
-}

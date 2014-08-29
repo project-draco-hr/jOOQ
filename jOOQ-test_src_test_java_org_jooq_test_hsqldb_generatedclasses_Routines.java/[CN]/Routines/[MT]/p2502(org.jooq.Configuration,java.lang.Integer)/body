@@ -1,6 +1,0 @@
-{
-  org.jooq.test.hsqldb.generatedclasses.routines.P2502 p=new org.jooq.test.hsqldb.generatedclasses.routines.P2502();
-  p.setConfiguration(configuration);
-  p.execute(configuration_);
-  return p.getConfiguration_();
-}

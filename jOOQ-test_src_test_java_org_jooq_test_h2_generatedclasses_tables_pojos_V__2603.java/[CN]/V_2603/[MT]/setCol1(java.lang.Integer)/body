@@ -1,4 +1,0 @@
-{
-  this.col1=col1;
-  return this;
-}

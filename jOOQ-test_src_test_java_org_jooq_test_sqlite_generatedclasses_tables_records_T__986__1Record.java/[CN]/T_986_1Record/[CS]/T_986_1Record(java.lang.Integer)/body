@@ -1,4 +1,0 @@
-{
-  super(org.jooq.test.sqlite.generatedclasses.tables.T_986_1.T_986_1);
-  setValue(0,ref);
-}

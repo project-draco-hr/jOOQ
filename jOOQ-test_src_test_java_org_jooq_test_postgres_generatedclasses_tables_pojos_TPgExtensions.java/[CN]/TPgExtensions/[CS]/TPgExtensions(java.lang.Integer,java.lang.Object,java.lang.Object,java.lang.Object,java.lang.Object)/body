@@ -1,7 +1,0 @@
-{
-  this.id=id;
-  this.pgInterval=pgInterval;
-  this.pgBox=pgBox;
-  this.pgHstore=pgHstore;
-  this.pgGeometry=pgGeometry;
-}

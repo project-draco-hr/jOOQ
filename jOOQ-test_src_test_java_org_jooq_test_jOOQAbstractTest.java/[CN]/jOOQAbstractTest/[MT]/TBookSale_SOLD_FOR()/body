@@ -1,3 +1,0 @@
-{
-  return (TableField<BS,BigDecimal>)TBookSale().field("SOLD_FOR");
-}

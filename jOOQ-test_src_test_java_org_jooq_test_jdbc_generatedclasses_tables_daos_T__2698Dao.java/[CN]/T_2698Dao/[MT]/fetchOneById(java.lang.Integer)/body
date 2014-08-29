@@ -1,3 +1,0 @@
-{
-  return fetchOne(org.jooq.test.jdbc.generatedclasses.tables.T_2698.ID,value);
-}

@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.mysql.generatedclasses.tables.TBooleans.TRUE_FALSE_LC;
-}

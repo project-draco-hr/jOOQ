@@ -1,3 +1,0 @@
-{
-  assume(actual,expected,DEFAULT_MESSAGE);
-}

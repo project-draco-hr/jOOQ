@@ -1,4 +1,0 @@
-{
-  this.contentText=contentText;
-  return this;
-}

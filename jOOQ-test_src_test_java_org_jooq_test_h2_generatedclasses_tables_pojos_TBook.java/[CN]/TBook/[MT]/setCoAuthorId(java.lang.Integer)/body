@@ -1,4 +1,0 @@
-{
-  this.coAuthorId=coAuthorId;
-  return this;
-}

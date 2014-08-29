@@ -1,6 +1,0 @@
-{
-  org.jooq.test.h2.generatedclasses.routines.FArrays3 f=new org.jooq.test.h2.generatedclasses.routines.FArrays3();
-  f.setP1(p1);
-  f.execute(configuration);
-  return f.getReturnValue();
-}

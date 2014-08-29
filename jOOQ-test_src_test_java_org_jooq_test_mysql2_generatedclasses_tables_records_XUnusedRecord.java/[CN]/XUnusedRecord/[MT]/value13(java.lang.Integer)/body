@@ -1,4 +1,0 @@
-{
-  setPrimarykey(value);
-  return this;
-}

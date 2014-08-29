@@ -1,3 +1,0 @@
-{
-  new FunctionTests(this).testFunctionsOnNumbers_TRIGONOMETRY();
-}

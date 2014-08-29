@@ -1,5 +1,0 @@
-{
-  assumeNotNull(secondMax(null));
-  List<Integer> result1=create().select(secondMax(TBook_ID())).from(TBook()).groupBy(TBook_AUTHOR_ID()).orderBy(TBook_AUTHOR_ID().asc()).fetch(0,Integer.class);
-  assertEquals(asList(1,3),result1);
-}

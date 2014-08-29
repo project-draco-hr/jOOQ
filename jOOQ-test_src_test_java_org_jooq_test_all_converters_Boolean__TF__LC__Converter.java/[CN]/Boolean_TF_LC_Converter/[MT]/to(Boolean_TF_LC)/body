@@ -1,3 +1,0 @@
-{
-  return userObject == null ? null : userObject.getValue();
-}

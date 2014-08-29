@@ -1,8 +1,0 @@
-{
-  org.jooq.test.mariadb.generatedclasses.routines.P2412 p=new org.jooq.test.mariadb.generatedclasses.routines.P2412();
-  p.setPIn_1(pIn_1);
-  p.setPIn_2(pIn_2);
-  p.setPInOut(pInOut);
-  p.execute(configuration);
-  return p;
-}

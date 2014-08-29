@@ -1,3 +1,0 @@
-{
-  return fetch(org.jooq.test.mysql.generatedclasses.tables.TAuthor.LAST_NAME,values);
-}

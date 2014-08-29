@@ -1,4 +1,0 @@
-{
-  setVcBoolean(value);
-  return this;
-}

@@ -1,4 +1,0 @@
-{
-  super(org.jooq.test.hsqldb.generatedclasses.tables.Class.CLASS);
-  setValue(0,class_);
-}

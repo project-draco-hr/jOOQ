@@ -1,5 +1,0 @@
-{
-  super("F_ARRAYS2",org.jooq.test.h2.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.OTHER.getArrayDataType());
-  setReturnParameter(RETURN_VALUE);
-  addInParameter(P1);
-}

@@ -1,8 +1,0 @@
-{
-  jOOQAbstractTest.reset=false;
-  A a=create().newRecord(TAuthor());
-  a.setValue(TAuthor_ID(),3);
-  a.setValue(TAuthor_LAST_NAME(),"ABCDEFGHIJ1234567890ABCDEFGHIJ1234567890");
-  assertEquals(1,a.store());
-  assertEquals(3,(int)create().select(TAuthor_ID()).from(TAuthor()).where(TAuthor_LAST_NAME().equalIgnoreCase("abcdefghij1234567890abcdefghij1234567890")).fetchOne(TAuthor_ID()));
-}

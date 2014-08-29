@@ -1,4 +1,0 @@
-{
-  setValue(255,value);
-  return this;
-}

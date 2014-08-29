@@ -1,3 +1,0 @@
-{
-  return delegate.FK_T_BOOK_CO_AUTHOR_ID();
-}

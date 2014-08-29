@@ -1,4 +1,0 @@
-{
-  setIntegerDecimal(value);
-  return this;
-}

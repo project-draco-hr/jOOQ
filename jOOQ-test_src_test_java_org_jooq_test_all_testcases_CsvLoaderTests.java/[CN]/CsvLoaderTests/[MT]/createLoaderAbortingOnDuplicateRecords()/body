@@ -1,5 +1,0 @@
-{
-  String csv="1;'Kafka'\n" + "2;Frisch";
-  Loader<A> loader=create().loadInto(TAuthor()).onDuplicateKeyError().onErrorAbort().loadCSV(csv).fields(TAuthor_ID(),TAuthor_LAST_NAME()).quote('\'').separator(';').ignoreRows(0).execute();
-  return loader;
-}

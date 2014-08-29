@@ -1,4 +1,0 @@
-{
-  setByteDecimal(value);
-  return this;
-}

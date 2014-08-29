@@ -1,8 +1,0 @@
-{
-  super(org.jooq.test.postgres.generatedclasses.tables.TPgExtensions.T_PG_EXTENSIONS);
-  setValue(0,id);
-  setValue(1,pgInterval);
-  setValue(2,pgBox);
-  setValue(3,pgHstore);
-  setValue(4,pgGeometry);
-}

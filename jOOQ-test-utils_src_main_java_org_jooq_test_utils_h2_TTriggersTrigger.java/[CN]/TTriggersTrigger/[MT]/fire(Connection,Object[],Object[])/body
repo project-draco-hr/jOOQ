@@ -1,6 +1,0 @@
-{
-  int maxID=using(conn,SQLDialect.H2).nextval(DSL.sequence("public.s_triggers_sequence",SQLDataType.INTEGER));
-  newRow[0]=maxID;
-  newRow[1]=maxID;
-  newRow[2]=maxID * 2;
-}

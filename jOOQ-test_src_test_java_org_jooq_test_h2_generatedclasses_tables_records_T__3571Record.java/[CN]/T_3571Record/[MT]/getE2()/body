@@ -1,3 +1,0 @@
-{
-  return (org.jooq.test.all.converters.T_3571)getValue(1);
-}

@@ -1,6 +1,0 @@
-{
-  super("P_UNUSED",org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC);
-  addInParameter(IN1);
-  addOutParameter(OUT1);
-  addInOutParameter(OUT2);
-}

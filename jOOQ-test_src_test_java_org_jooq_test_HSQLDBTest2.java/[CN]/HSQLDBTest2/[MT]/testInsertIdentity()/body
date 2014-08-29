@@ -1,3 +1,0 @@
-{
-  log.info("SKIPPING","Identity tests");
-}

@@ -1,3 +1,0 @@
-{
-  return (org.jooq.types.ULong)getValue(3);
-}

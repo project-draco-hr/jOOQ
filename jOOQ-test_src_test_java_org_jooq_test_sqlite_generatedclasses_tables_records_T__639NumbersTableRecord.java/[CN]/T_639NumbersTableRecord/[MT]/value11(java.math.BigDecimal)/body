@@ -1,4 +1,0 @@
-{
-  setBigDecimal(value);
-  return this;
-}

@@ -1,9 +1,0 @@
-{
-  V_2603Record record=create().selectFrom(V_2603).fetchOne();
-  assertEquals(2,record.size());
-  assertEquals(1,(int)record.getCol1());
-  assertEquals(4,(int)record.getCol4());
-  Record r=create().selectFrom(table(V_2603.getName())).fetchOne();
-  assertEquals(4,r.size());
-  assertEquals(asList(1,2,3,4),asList(r.intoArray()));
-}

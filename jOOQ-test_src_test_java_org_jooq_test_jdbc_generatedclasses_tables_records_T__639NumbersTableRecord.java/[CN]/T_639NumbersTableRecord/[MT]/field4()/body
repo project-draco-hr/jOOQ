@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.jdbc.generatedclasses.tables.T_639NumbersTable.INTEGER;
-}

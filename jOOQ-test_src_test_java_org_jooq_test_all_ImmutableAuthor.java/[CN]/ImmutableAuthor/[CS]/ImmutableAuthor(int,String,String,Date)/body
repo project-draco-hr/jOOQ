@@ -1,6 +1,0 @@
-{
-  this.ID=ID;
-  this.firstName=firstName;
-  this.lastName=lastName;
-  this.dateOfBirth=dateOfBirth;
-}

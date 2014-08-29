@@ -1,4 +1,0 @@
-{
-  setYesNoLc(value);
-  return this;
-}

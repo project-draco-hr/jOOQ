@@ -1,3 +1,0 @@
-{
-  super(org.jooq.test.mysql.generatedclasses.tables.TUnsigned.T_UNSIGNED);
-}

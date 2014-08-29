@@ -1,7 +1,0 @@
-{
-  super(org.jooq.test.cubrid.generatedclasses.tables.TDirectory.T_DIRECTORY);
-  setValue(0,id);
-  setValue(1,parentId);
-  setValue(2,isDirectory);
-  setValue(3,name);
-}

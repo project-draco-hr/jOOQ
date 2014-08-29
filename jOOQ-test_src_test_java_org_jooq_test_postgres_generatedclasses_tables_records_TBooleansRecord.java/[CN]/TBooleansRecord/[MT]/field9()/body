@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.postgres.generatedclasses.tables.TBooleans.T_BOOLEANS.VC_BOOLEAN;
-}

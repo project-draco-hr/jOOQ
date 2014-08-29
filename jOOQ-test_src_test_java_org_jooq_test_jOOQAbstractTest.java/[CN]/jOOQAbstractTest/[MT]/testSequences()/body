@@ -1,3 +1,0 @@
-{
-  new GeneralTests(this).testSequences();
-}

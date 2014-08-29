@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.test.sqlite.generatedclasses.tables.records.XTestCase_64_69Record,?>>asList(org.jooq.test.sqlite.generatedclasses.Keys.FK_X_TEST_CASE_64_69_X_UNUSED_1,org.jooq.test.sqlite.generatedclasses.Keys.FK_X_TEST_CASE_64_69_X_UNUSED_2);
-}

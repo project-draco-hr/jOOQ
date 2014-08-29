@@ -1,3 +1,0 @@
-{
-  super("test_multi_sets",org.jooq.test.mysql.generatedclasses.Test.TEST);
-}

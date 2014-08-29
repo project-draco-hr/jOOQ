@@ -1,6 +1,0 @@
-{
-  super("p_get_one_cursor",org.jooq.test.postgres.generatedclasses.Public.PUBLIC);
-  addOutParameter(TOTAL);
-  addOutParameter(BOOKS);
-  addInParameter(BOOK_IDS);
-}

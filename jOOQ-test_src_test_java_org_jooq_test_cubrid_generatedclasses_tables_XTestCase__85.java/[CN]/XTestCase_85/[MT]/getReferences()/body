@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.ForeignKey<org.jooq.test.cubrid.generatedclasses.tables.records.XTestCase_85Record,?>>asList(org.jooq.test.cubrid.generatedclasses.Keys.X_TEST_CASE_85__FK_X_TEST_CASE_85);
-}

@@ -1,3 +1,0 @@
-{
-  new FunctionTests(this).testFunctionsOnStrings_TRIM();
-}

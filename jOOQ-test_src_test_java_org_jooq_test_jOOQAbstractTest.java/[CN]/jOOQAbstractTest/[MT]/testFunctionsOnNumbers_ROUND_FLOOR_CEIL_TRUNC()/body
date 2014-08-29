@@ -1,3 +1,0 @@
-{
-  new FunctionTests(this).testFunctionsOnNumbers_ROUND_FLOOR_CEIL_TRUNC();
-}

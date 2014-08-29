@@ -1,3 +1,0 @@
-{
-  return Routines.f317((Integer)n1,(Integer)n2,(Integer)n3,(Integer)n4);
-}

@@ -1,5 +1,0 @@
-{
-  org.jooq.test.h2.generatedclasses.routines.FArrays1 f=new org.jooq.test.h2.generatedclasses.routines.FArrays1();
-  f.setP1(p1);
-  return f.asField();
-}

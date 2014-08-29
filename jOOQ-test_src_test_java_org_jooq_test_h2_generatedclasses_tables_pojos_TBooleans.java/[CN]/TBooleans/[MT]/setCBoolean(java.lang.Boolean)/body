@@ -1,4 +1,0 @@
-{
-  this.cBoolean=cBoolean;
-  return this;
-}

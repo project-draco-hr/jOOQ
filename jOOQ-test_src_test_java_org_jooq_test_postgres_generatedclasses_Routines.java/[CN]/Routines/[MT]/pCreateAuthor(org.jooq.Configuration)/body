@@ -1,4 +1,0 @@
-{
-  org.jooq.test.postgres.generatedclasses.routines.PCreateAuthor p=new org.jooq.test.postgres.generatedclasses.routines.PCreateAuthor();
-  p.execute(configuration);
-}

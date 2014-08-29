@@ -1,4 +1,0 @@
-{
-  events.add("storeEnd");
-  assertions(ctx);
-}

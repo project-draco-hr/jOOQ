@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.cubrid.generatedclasses.Keys.T_IDENTITY_PK__PK_T_IDENTITY_PK;
-}

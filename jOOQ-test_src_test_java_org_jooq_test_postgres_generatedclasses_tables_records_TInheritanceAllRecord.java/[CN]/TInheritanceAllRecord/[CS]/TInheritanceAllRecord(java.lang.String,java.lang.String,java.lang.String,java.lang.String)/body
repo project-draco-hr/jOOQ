@@ -1,7 +1,0 @@
-{
-  super(org.jooq.test.postgres.generatedclasses.tables.TInheritanceAll.T_INHERITANCE_ALL);
-  setValue(0,text_1);
-  setValue(1,text_1_1);
-  setValue(2,text_1_2);
-  setValue(3,text_1All);
-}

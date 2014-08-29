@@ -1,3 +1,0 @@
-{
-  super(alias,org.jooq.test.firebird.generatedclasses.DefaultSchema.DEFAULT_SCHEMA,aliased,parameters,"");
-}

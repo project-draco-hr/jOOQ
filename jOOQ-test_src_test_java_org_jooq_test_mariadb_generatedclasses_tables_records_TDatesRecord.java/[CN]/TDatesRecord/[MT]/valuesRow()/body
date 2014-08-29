@@ -1,3 +1,0 @@
-{
-  return (org.jooq.Row8)super.valuesRow();
-}

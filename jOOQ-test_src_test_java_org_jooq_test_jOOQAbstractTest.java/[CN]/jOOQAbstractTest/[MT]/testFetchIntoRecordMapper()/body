@@ -1,3 +1,0 @@
-{
-  new RecordMapperTests(this).testFetchIntoRecordMapper();
-}

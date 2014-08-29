@@ -1,3 +1,0 @@
-{
-  return SQLDataType.VARCHAR.length(10).getCastTypeName(create().configuration());
-}

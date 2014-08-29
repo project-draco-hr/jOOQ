@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.cubrid.generatedclasses.tables.records.TBooleansRecord>>asList(org.jooq.test.cubrid.generatedclasses.Keys.T_BOOLEANS__PK_T_BOOLEANS);
-}

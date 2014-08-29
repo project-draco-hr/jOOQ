@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.cubrid.generatedclasses.tables.TAuthor.ADDRESS;
-}

@@ -1,4 +1,0 @@
-{
-  this.bigDecimal=bigDecimal;
-  return this;
-}

@@ -1,6 +1,0 @@
-{
-  super(org.jooq.test.postgres.generatedclasses.tables.TExoticTypes.T_EXOTIC_TYPES);
-  setValue(0,id);
-  setValue(1,uu);
-  setValue(2,js);
-}

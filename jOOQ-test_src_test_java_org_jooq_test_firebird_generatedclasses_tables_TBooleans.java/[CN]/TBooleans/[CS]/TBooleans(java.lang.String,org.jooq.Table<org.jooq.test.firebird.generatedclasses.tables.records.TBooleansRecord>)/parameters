@@ -1,2 +1,0 @@
-java.lang.String alias
-org.jooq.Table<org.jooq.test.firebird.generatedclasses.tables.records.TBooleansRecord> aliased

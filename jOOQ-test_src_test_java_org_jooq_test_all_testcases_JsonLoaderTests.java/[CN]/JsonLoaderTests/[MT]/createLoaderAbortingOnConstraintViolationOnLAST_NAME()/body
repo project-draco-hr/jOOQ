@@ -1,5 +1,0 @@
-{
-  String json="{\"fields\":[{\"name\":\"ID\",\"type\":\"INTEGER\"}],\"records\":[[3],[4]]}";
-  Loader<A> execute=create().loadInto(TAuthor()).loadJSON(json).fields(TAuthor_ID()).ignoreRows(0).execute();
-  return execute;
-}

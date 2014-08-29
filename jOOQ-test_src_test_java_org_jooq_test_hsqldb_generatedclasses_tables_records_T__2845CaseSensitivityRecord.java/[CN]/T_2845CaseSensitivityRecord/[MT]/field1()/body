@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.hsqldb.generatedclasses.tables.T_2845CaseSensitivity.T_2845_CASE_SENSITIVITY.ID;
-}

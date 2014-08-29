@@ -1,6 +1,0 @@
-{
-  super("f_arrays",org.jooq.test.postgres.generatedclasses.Public.PUBLIC,org.jooq.impl.SQLDataType.INTEGER.getArrayDataType());
-  setReturnParameter(RETURN_VALUE);
-  addInParameter(IN_ARRAY);
-  setOverloaded(true);
-}

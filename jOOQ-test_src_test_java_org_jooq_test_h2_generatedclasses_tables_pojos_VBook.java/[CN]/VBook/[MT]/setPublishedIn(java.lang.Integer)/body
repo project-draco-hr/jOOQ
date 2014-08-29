@@ -1,4 +1,0 @@
-{
-  this.publishedIn=publishedIn;
-  return this;
-}

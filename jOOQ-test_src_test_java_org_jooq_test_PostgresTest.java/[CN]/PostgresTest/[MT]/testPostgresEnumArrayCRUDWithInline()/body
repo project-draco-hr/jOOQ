@@ -1,3 +1,0 @@
-{
-  testPostgresEnumArrayCRUD0(create(new Settings().withStatementType(STATIC_STATEMENT)));
-}

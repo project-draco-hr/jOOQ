@@ -1,5 +1,0 @@
-{
-  super("P_AUTHOR_EXISTS",org.jooq.test.hsqldb.generatedclasses.Public.PUBLIC);
-  addInParameter(AUTHOR_NAME);
-  addOutParameter(RESULT);
-}

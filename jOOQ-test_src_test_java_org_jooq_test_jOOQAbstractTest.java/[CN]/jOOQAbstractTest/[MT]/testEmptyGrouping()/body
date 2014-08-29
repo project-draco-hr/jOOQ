@@ -1,3 +1,0 @@
-{
-  new GroupByTests(this).testEmptyGrouping();
-}

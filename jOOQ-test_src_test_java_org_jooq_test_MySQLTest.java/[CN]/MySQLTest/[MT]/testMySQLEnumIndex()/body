@@ -1,8 +1,0 @@
-{
-  assertNull(MySQLDSL.enumType(TBookStatus.class,-1));
-  assertNull(MySQLDSL.enumType(TBookStatus.class,0));
-  assertEquals(TBookStatus.SOLD_OUT,MySQLDSL.enumType(TBookStatus.class,1));
-  assertEquals(TBookStatus.ORDERED,MySQLDSL.enumType(TBookStatus.class,2));
-  assertEquals(TBookStatus.ON_STOCK,MySQLDSL.enumType(TBookStatus.class,3));
-  assertNull(MySQLDSL.enumType(TBookStatus.class,4));
-}

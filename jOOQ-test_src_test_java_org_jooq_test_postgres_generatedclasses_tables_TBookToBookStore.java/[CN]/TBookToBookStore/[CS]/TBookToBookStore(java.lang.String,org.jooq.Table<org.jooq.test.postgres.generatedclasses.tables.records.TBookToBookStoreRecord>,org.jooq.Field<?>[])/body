@@ -1,3 +1,0 @@
-{
-  super(alias,org.jooq.test.postgres.generatedclasses.Public.PUBLIC,aliased,parameters,"An m:n relation between books and book stores");
-}

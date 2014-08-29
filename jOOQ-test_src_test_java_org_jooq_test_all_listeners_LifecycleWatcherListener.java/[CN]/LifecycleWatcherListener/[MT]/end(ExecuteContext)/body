@@ -1,4 +1,0 @@
-{
-  super.end(ctx);
-  increment(LISTENER_END_COUNT);
-}

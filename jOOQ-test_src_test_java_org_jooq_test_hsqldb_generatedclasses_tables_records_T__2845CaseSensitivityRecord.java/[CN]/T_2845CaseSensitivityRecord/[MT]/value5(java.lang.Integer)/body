@@ -1,4 +1,0 @@
-{
-  setMixed(value);
-  return this;
-}

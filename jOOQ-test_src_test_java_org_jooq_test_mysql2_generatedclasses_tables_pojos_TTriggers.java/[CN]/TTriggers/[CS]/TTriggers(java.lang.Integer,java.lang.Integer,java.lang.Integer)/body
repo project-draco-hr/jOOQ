@@ -1,5 +1,0 @@
-{
-  this.idGenerated=idGenerated;
-  this.id=id;
-  this.counter=counter;
-}

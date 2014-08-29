@@ -1,3 +1,0 @@
-{
-  return create(create().configuration().derive(DefaultVisitListenerProvider.providers(listeners)));
-}

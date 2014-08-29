@@ -1,5 +1,0 @@
-{
-  super(org.jooq.test.firebird.generatedclasses.tables.T_725LobTest.T_725_LOB_TEST);
-  setValue(0,id);
-  setValue(1,lob);
-}

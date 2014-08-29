@@ -1,5 +1,0 @@
-{
-  DSLContext create=create(connection);
-  Integer result=create.select(sign(count())).from(table("t_author")).where(field("first_name").equal(authorName)).or(field("last_name").equal(authorName)).fetchOne(0,Integer.class);
-  return result;
-}

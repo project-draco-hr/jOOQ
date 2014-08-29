@@ -1,9 +1,0 @@
-{
-  Record record=create().select(abs(2),abs(1),abs(0),abs(-1),abs(-2)).fetchOne();
-  assertNotNull(record);
-  assertEquals(Integer.valueOf(2),record.getValue(0));
-  assertEquals(Integer.valueOf(1),record.getValue(1));
-  assertEquals(Integer.valueOf(0),record.getValue(2));
-  assertEquals(Integer.valueOf(1),record.getValue(3));
-  assertEquals(Integer.valueOf(2),record.getValue(4));
-}

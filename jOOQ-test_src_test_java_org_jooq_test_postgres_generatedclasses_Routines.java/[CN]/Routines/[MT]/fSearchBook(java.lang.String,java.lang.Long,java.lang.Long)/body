@@ -1,3 +1,0 @@
-{
-  return org.jooq.test.postgres.generatedclasses.tables.FSearchBook.F_SEARCH_BOOK.call(pTitle,pLimit,pOffset);
-}

@@ -1,5 +1,0 @@
-{
-  this.delegate=delegate;
-  this.acquire=new AtomicInteger();
-  this.release=new AtomicInteger();
-}

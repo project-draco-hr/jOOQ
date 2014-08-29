@@ -1,5 +1,0 @@
-{
-  super(org.jooq.test.postgres.generatedclasses.tables.T_2781.T_2781);
-  setValue(0,org_);
-  setValue(1,jooq);
-}

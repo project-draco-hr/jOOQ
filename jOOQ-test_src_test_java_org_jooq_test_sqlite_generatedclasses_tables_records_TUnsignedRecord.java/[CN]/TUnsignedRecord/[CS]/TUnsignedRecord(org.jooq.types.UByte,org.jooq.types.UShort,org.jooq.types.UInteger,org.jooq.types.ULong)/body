@@ -1,7 +1,0 @@
-{
-  super(org.jooq.test.sqlite.generatedclasses.tables.TUnsigned.T_UNSIGNED);
-  setValue(0,uByte);
-  setValue(1,uShort);
-  setValue(2,uInt);
-  setValue(3,uLong);
-}

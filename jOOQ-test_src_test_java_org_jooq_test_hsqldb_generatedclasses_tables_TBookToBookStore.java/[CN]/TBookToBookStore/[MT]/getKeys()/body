@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.hsqldb.generatedclasses.tables.records.TBookToBookStoreRecord>>asList(org.jooq.test.hsqldb.generatedclasses.Keys.PK_B2BS);
-}

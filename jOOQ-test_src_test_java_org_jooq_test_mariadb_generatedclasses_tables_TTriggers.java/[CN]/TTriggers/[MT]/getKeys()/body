@@ -1,3 +1,0 @@
-{
-  return java.util.Arrays.<org.jooq.UniqueKey<org.jooq.test.mariadb.generatedclasses.tables.records.TTriggersRecord>>asList(org.jooq.test.mariadb.generatedclasses.Keys.KEY_T_TRIGGERS_PRIMARY);
-}

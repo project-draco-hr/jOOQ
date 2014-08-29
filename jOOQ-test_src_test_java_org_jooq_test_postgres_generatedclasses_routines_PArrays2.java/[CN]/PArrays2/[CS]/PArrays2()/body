@@ -1,6 +1,0 @@
-{
-  super("p_arrays",org.jooq.test.postgres.generatedclasses.Public.PUBLIC);
-  addInParameter(IN_ARRAY);
-  addOutParameter(OUT_ARRAY);
-  setOverloaded(true);
-}

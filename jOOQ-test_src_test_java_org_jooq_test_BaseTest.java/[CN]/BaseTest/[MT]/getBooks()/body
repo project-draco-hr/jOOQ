@@ -1,3 +1,0 @@
-{
-  return create().selectFrom(TBook()).orderBy(TBook_ID()).fetch();
-}

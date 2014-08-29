@@ -1,9 +1,0 @@
-{
-  if (context.renderContext() == null)   return;
-  if (context.queryPart() instanceof Condition) {
-    List<Clause> clauses=subselectClauses(context);
-    if (clauses.contains(SELECT_WHERE) || clauses.contains(UPDATE_WHERE) || clauses.contains(DELETE_WHERE)) {
-      anyPredicates(context,true);
-    }
-  }
-}

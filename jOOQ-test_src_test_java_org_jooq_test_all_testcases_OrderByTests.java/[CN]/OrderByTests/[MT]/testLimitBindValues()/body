@@ -1,5 +1,0 @@
-{
-  Select<?> s2=DSL.select().limit(1).offset(2);
-  assertSame(asList(1,2),s2.getBindValues());
-  assertSame(asList(val(1),val(2)),s2.getParams().values());
-}

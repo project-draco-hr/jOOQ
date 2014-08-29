@@ -1,8 +1,0 @@
-{
-  jOOQAbstractTest.reset=false;
-  T_2698Record record=create().newRecord(T_2698);
-  record.setId(1);
-  assertEquals(1,record.store());
-  record.refresh();
-  assertEquals(-1,(int)record.getXx());
-}

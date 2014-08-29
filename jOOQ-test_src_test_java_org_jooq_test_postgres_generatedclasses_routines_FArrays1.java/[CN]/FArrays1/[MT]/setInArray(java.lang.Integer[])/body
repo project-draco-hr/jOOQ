@@ -1,3 +1,0 @@
-{
-  setValue(org.jooq.test.postgres.generatedclasses.routines.FArrays1.IN_ARRAY,value);
-}

@@ -1,4 +1,0 @@
-{
-  setULong(value);
-  return this;
-}

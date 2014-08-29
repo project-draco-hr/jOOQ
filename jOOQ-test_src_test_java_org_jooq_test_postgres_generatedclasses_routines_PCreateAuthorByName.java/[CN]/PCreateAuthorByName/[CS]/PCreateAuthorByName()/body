@@ -1,5 +1,0 @@
-{
-  super("p_create_author_by_name",org.jooq.test.postgres.generatedclasses.Public.PUBLIC);
-  addInParameter(FIRST_NAME);
-  addInParameter(LAST_NAME);
-}
