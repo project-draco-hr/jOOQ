@@ -29,7 +29,10 @@
       consumeWarnings(ctx,listener);
     }
   }
- catch (  RuntimeException e) {
+ catch (  ControlFlowSignal e) {
+    throw e;
+  }
+catch (  RuntimeException e) {
     ctx.exception(e);
     listener.exception(ctx);
     throw ctx.exception();

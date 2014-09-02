@@ -17,7 +17,10 @@
     fetchOutParameters(ctx);
     return 0;
   }
- catch (  RuntimeException e) {
+ catch (  ControlFlowSignal e) {
+    throw e;
+  }
+catch (  RuntimeException e) {
     ctx.exception(e);
     listener.exception(ctx);
     throw ctx.exception();
