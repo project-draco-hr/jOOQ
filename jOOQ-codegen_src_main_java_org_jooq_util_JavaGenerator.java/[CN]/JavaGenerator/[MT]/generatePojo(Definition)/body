@@ -79,7 +79,7 @@
       }
     }
   }
-  if (generateEqualsAndHashCode()) {
+  if (generatePojosEqualsAndHashCode()) {
     out.println();
     out.tab(1).println("@Override");
     out.tab(1).println("public boolean equals(Object obj) {");
@@ -107,7 +107,7 @@
     out.tab(2).println("return true;");
     out.tab(1).println("}");
   }
-  if (generateEqualsAndHashCode()) {
+  if (generatePojosEqualsAndHashCode()) {
     out.println();
     out.tab(1).println("@Override");
     out.tab(1).println("public int hashCode() {");
@@ -115,7 +115,12 @@
     out.tab(2).println("int result = 1;");
     for (    TypedElementDefinition<?> column : getTypedElements(tableOrUDT)) {
       final String columnMember=getStrategy().getJavaMemberName(column,Mode.POJO);
-      out.tab(2).println("result = prime * result + ((%s == null) ? 0 : %s.hashCode());",columnMember,columnMember);
+      if (getJavaType(column.getType()).endsWith("[]")) {
+        out.tab(2).println("result = prime * result + ((%s == null) ? 0 : java.util.Arrays.hashCode(%s));",columnMember,columnMember);
+      }
+ else {
+        out.tab(2).println("result = prime * result + ((%s == null) ? 0 : %s.hashCode());",columnMember,columnMember);
+      }
     }
     out.tab(2).println("return result;");
     out.tab(1).println("}");
