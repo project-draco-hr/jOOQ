@@ -127,6 +127,7 @@
     if (g.getGenerate().isValidationAnnotations() != null)     generator.setGenerateValidationAnnotations(g.getGenerate().isValidationAnnotations());
     if (g.getGenerate().isGlobalObjectReferences() != null)     generator.setGenerateGlobalObjectReferences(g.getGenerate().isGlobalObjectReferences());
     if (g.getGenerate().isFluentSetters() != null)     generator.setFluentSetters(g.getGenerate().isFluentSetters());
+    if (g.getGenerate().isGenerateEqualsAndHashCode() != null)     generator.setGenerateEqualsAndHashCode(g.getGenerate().isGenerateEqualsAndHashCode());
     if (!StringUtils.isBlank(g.getDatabase().getSchemaVersionProvider()))     generator.setUseSchemaVersionProvider(true);
     strategy.setInstanceFields(generator.generateInstanceFields());
     generator.generate(database);
