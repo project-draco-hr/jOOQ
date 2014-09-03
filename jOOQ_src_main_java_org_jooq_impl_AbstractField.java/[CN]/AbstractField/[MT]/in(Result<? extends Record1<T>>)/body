@@ -1,0 +1,3 @@
+{
+  return in(result.getValues(0,getType()));
+}

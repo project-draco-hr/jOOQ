@@ -1,0 +1,3 @@
+{
+  return notIn(result.getValues(0,getType()));
+}

@@ -1,0 +1,5 @@
+{
+  List<Row> rows=new ArrayList<Row>();
+  for (  Record record : result)   rows.add(record.valuesRow());
+  return rows;
+}

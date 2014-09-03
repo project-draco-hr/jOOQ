@@ -1,0 +1,4 @@
+{
+  QueryPartList<Row> list=new QueryPartList<Row>(Utils.rows(result));
+  return new RowInCondition(this,list,Comparator.NOT_IN);
+}
