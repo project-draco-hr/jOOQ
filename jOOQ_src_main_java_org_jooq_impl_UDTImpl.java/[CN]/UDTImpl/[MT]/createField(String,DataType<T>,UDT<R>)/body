@@ -1,3 +1,3 @@
 {
-  return new UDTFieldImpl<R,T>(name,type,udt);
+  return createField(name,type,udt,"",null);
 }

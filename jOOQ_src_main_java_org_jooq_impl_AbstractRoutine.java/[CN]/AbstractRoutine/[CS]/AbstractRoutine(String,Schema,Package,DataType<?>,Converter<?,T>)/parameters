@@ -1,0 +1,5 @@
+String name
+Schema schema
+Package pkg
+DataType<?> type
+Converter<?,T> converter

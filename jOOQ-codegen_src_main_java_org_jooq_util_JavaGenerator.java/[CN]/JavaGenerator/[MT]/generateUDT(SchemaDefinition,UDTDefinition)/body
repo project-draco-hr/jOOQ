@@ -22,8 +22,14 @@
     final String attrId=getStrategy().getJavaIdentifier(attribute);
     final String attrName=attribute.getName();
     final String attrComment=StringUtils.defaultString(attribute.getComment());
+    final String attrConverterType=attribute.getType().getConverter();
     out.tab(1).javadoc("The attribute <code>%s</code>.%s",attribute.getQualifiedOutputName(),defaultIfBlank(" " + attrComment,""));
-    out.tab(1).println("public static final %s<%s, %s> %s = createField(\"%s\", %s, %s);",UDTField.class,recordType,attrType,attrId,attrName,attrTypeRef,udtId);
+    if (attrConverterType != null) {
+      out.tab(1).println("public static final %s<%s, %s> %s = createField(\"%s\", %s, %s, \"%s\", new %s());",UDTField.class,recordType,attrType,attrId,attrName,attrTypeRef,udtId,escapeString(""),attrConverterType);
+    }
+ else {
+      out.tab(1).println("public static final %s<%s, %s> %s = createField(\"%s\", %s, %s, \"%s\");",UDTField.class,recordType,attrType,attrId,attrName,attrTypeRef,udtId,escapeString(""));
+    }
   }
   for (  RoutineDefinition routine : udt.getRoutines()) {
     try {

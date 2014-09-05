@@ -1,5 +1,5 @@
 {
-  super(name,type);
+  super(name,type,comment,converter);
   this.udt=udt;
   if (udt instanceof UDTImpl) {
     ((UDTImpl<?>)udt).fields0().add(this);

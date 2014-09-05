@@ -1,0 +1,5 @@
+{
+  this.name=name;
+  this.isDefaulted=isDefaulted;
+  this.type=converter == null ? (DataType<T>)type : type.asConvertedDataType((Converter)converter);
+}
