@@ -1,0 +1,12 @@
+{
+  boolean rollback=false;
+  try {
+    books.create(5,1,"Book 5");
+    Assert.fail();
+  }
+ catch (  DataAccessException ignore) {
+    rollback=true;
+  }
+  assertEquals(4,dsl.fetchCount(BOOK));
+  assertTrue(rollback);
+}

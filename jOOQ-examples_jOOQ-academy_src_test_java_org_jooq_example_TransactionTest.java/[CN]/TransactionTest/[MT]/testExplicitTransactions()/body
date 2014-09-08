@@ -1,0 +1,14 @@
+{
+  boolean rollback=false;
+  TransactionStatus tx=txMgr.getTransaction(new DefaultTransactionDefinition());
+  try {
+    for (int i=0; i < 2; i++)     dsl.insertInto(BOOK).set(BOOK.ID,5).set(BOOK.AUTHOR_ID,1).set(BOOK.TITLE,"Book 5").execute();
+    Assert.fail();
+  }
+ catch (  DataAccessException e) {
+    txMgr.rollback(tx);
+    rollback=true;
+  }
+  assertEquals(4,dsl.fetchCount(BOOK));
+  assertTrue(rollback);
+}
