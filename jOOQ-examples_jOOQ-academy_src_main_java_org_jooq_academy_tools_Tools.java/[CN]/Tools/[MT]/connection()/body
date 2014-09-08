@@ -1,0 +1,11 @@
+{
+  try {
+    Properties properties=new Properties();
+    properties.load(Tools.class.getResourceAsStream("/config.properties"));
+    Class.forName(properties.getProperty("db.driver"));
+    return DriverManager.getConnection(properties.getProperty("db.url"),properties.getProperty("db.username"),properties.getProperty("db.password"));
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

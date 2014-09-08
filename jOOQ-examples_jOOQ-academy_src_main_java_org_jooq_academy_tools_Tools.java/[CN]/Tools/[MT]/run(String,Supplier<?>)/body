@@ -1,0 +1,10 @@
+{
+  String dashes="-----------------------------------------------------------------------------------------------";
+  System.out.println();
+  System.out.println(title);
+  System.out.println(dashes);
+  System.out.println();
+  System.out.println(supplier.get());
+  System.out.println();
+  System.out.println(dashes);
+}
