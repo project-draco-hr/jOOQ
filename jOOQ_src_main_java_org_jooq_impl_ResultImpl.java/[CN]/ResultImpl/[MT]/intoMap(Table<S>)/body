@@ -1,0 +1,10 @@
+{
+  Map<S,R> map=new LinkedHashMap<S,R>();
+  for (  R record : this) {
+    S key=record.into(table);
+    if (map.put(key,record) != null) {
+      throw new InvalidResultException("Key list " + key + " is not unique in Result for "+ this);
+    }
+  }
+  return map;
+}

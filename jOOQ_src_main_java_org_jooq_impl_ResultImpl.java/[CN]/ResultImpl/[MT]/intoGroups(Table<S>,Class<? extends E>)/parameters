@@ -1,0 +1,2 @@
+Table<S> table
+Class<? extends E> type

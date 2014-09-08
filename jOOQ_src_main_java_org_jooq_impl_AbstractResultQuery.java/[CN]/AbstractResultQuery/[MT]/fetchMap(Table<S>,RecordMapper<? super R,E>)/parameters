@@ -1,0 +1,2 @@
+Table<S> table
+RecordMapper<? super R,E> mapper

@@ -1,0 +1,13 @@
+{
+  Map<S,List<E>> map=new LinkedHashMap<S,List<E>>();
+  for (  R record : this) {
+    S key=record.into(table);
+    List<E> list=map.get(key);
+    if (list == null) {
+      list=new ArrayList<E>();
+      map.put(key,list);
+    }
+    list.add(mapper.map(record));
+  }
+  return map;
+}
