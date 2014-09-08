@@ -1,5 +1,5 @@
 {
-  if (!isInline() && context.paramType() != INLINED) {
+  if (!isInline(context)) {
     context.bindValue(value,this);
   }
 }

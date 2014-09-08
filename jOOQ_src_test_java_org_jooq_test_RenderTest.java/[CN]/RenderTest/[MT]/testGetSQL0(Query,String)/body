@@ -3,6 +3,7 @@
   assertEquals("select ?, ? from dual",q.getSQL(false));
   assertEquals("select 1, 'A' from dual",q.getSQL(true));
   assertEquals("select ?, ? from dual",q.getSQL(INDEXED));
-  assertEquals("select :1, :2 from dual",q.getSQL(NAMED));
+  assertEquals("select :var, :2 from dual",q.getSQL(NAMED));
+  assertEquals("select :var, 'A' from dual",q.getSQL(NAMED_OR_INLINED));
   assertEquals("select 1, 'A' from dual",q.getSQL(INLINED));
 }

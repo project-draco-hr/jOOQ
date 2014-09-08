@@ -1,0 +1,3 @@
+{
+  return renderContext().paramType(NAMED_OR_INLINED).render(part);
+}

@@ -1,4 +1,4 @@
 {
-  Query q=DSL.using(SQLDialect.MYSQL,new Settings().withParamType(INLINED)).select(val(1),val("A"));
+  Query q=DSL.using(SQLDialect.MYSQL,new Settings().withParamType(INLINED)).select(param("var",1),val("A"));
   testGetSQL0(q,"select 1, 'A' from dual");
 }
