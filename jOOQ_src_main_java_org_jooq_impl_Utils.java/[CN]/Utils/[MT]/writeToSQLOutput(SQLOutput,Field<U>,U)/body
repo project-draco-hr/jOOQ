@@ -1,6 +1,8 @@
 {
-  Class<T> type=field.getType();
-  DataType<T> dataType=field.getDataType();
+  DataType<U> dataType=field.getDataType();
+  Converter<T,U> converter=(Converter<T,U>)field.getConverter();
+  Class<?> type=converter.fromType();
+  T value=converter.to(v);
   if (value == null) {
     stream.writeObject(null);
   }

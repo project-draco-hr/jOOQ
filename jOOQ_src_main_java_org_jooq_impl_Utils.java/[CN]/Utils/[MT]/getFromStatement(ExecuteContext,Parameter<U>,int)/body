@@ -1,0 +1,130 @@
+{
+  CallableStatement stmt=(CallableStatement)ctx.statement();
+  Converter<T,U> converter=(Converter<T,U>)parameter.getConverter();
+  Class<T> type=converter.fromType();
+  T result=null;
+  if (type == Blob.class) {
+    result=(T)stmt.getBlob(index);
+  }
+ else   if (type == Boolean.class) {
+    result=(T)wasNull(stmt,Boolean.valueOf(stmt.getBoolean(index)));
+  }
+ else   if (type == BigInteger.class) {
+    BigDecimal d=stmt.getBigDecimal(index);
+    result=(T)(d == null ? null : d.toBigInteger());
+  }
+ else   if (type == BigDecimal.class) {
+    result=(T)stmt.getBigDecimal(index);
+  }
+ else   if (type == Byte.class) {
+    result=(T)wasNull(stmt,Byte.valueOf(stmt.getByte(index)));
+  }
+ else   if (type == byte[].class) {
+    result=(T)stmt.getBytes(index);
+  }
+ else   if (type == Clob.class) {
+    result=(T)stmt.getClob(index);
+  }
+ else   if (type == Date.class) {
+    result=(T)stmt.getDate(index);
+  }
+ else   if (type == Double.class) {
+    result=(T)wasNull(stmt,Double.valueOf(stmt.getDouble(index)));
+  }
+ else   if (type == Float.class) {
+    result=(T)wasNull(stmt,Float.valueOf(stmt.getFloat(index)));
+  }
+ else   if (type == Integer.class) {
+    result=(T)wasNull(stmt,Integer.valueOf(stmt.getInt(index)));
+  }
+ else   if (type == Long.class) {
+    result=(T)wasNull(stmt,Long.valueOf(stmt.getLong(index)));
+  }
+ else   if (type == Short.class) {
+    result=(T)wasNull(stmt,Short.valueOf(stmt.getShort(index)));
+  }
+ else   if (type == String.class) {
+    result=(T)stmt.getString(index);
+  }
+ else   if (type == Time.class) {
+    result=(T)stmt.getTime(index);
+  }
+ else   if (type == Timestamp.class) {
+    result=(T)stmt.getTimestamp(index);
+  }
+ else   if (type == YearToMonth.class) {
+    if (ctx.configuration().dialect() == POSTGRES) {
+      Object object=stmt.getObject(index);
+      result=(T)(object == null ? null : PostgresUtils.toYearToMonth(object));
+    }
+ else {
+      String string=stmt.getString(index);
+      result=(T)(string == null ? null : YearToMonth.valueOf(string));
+    }
+  }
+ else   if (type == DayToSecond.class) {
+    if (ctx.configuration().dialect() == POSTGRES) {
+      Object object=stmt.getObject(index);
+      result=(T)(object == null ? null : PostgresUtils.toDayToSecond(object));
+    }
+ else {
+      String string=stmt.getString(index);
+      result=(T)(string == null ? null : DayToSecond.valueOf(string));
+    }
+  }
+ else   if (type == UByte.class) {
+    String string=stmt.getString(index);
+    result=(T)(string == null ? null : UByte.valueOf(string));
+  }
+ else   if (type == UShort.class) {
+    String string=stmt.getString(index);
+    result=(T)(string == null ? null : UShort.valueOf(string));
+  }
+ else   if (type == UInteger.class) {
+    String string=stmt.getString(index);
+    result=(T)(string == null ? null : UInteger.valueOf(string));
+  }
+ else   if (type == ULong.class) {
+    String string=stmt.getString(index);
+    result=(T)(string == null ? null : ULong.valueOf(string));
+  }
+ else   if (type == UUID.class) {
+switch (ctx.configuration().dialect().family()) {
+case H2:
+case POSTGRES:
+{
+        result=(T)stmt.getObject(index);
+        break;
+      }
+default :
+{
+      result=(T)Convert.convert(stmt.getString(index),UUID.class);
+      break;
+    }
+}
+}
+ else if (type.isArray()) {
+result=(T)convertArray(stmt.getObject(index),(Class<? extends Object[]>)type);
+}
+ else if (EnumType.class.isAssignableFrom(type)) {
+result=getEnumType(type,stmt.getString(index));
+}
+ else if (UDTRecord.class.isAssignableFrom(type)) {
+switch (ctx.configuration().dialect()) {
+case POSTGRES:
+  result=(T)pgNewUDTRecord(type,stmt.getObject(index));
+break;
+default :
+result=(T)stmt.getObject(index,DataTypes.udtRecords());
+break;
+}
+}
+ else if (Result.class.isAssignableFrom(type)) {
+ResultSet nested=(ResultSet)stmt.getObject(index);
+result=(T)DSL.using(ctx.configuration()).fetch(nested);
+}
+ else {
+result=(T)stmt.getObject(index);
+}
+return converter.from(result);
+}
