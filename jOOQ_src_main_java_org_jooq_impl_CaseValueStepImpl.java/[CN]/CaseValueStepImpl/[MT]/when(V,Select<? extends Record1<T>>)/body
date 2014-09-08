@@ -1,0 +1,3 @@
+{
+  return when(Utils.field(compareValue),DSL.field(result));
+}
