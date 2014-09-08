@@ -1,0 +1,14 @@
+{
+  Connection connection=connection();
+  DSLContext dsl=DSL.using(connection);
+  try {
+    Tools.title("Loading and changing active records");
+    AuthorRecord author=dsl.selectFrom(AUTHOR).where(AUTHOR.ID.eq(1)).fetchOne();
+    author.setDateOfBirth(Date.valueOf("2000-01-01"));
+    author.store();
+    Tools.print(author);
+  }
+  finally {
+    connection.rollback();
+  }
+}

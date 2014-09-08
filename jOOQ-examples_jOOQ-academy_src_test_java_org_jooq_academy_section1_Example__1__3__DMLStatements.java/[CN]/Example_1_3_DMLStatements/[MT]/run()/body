@@ -1,0 +1,21 @@
+{
+  Connection connection=connection();
+  DSLContext dsl=DSL.using(connection);
+  try {
+    Tools.title("Inserting a new AUTHOR");
+    Tools.print(dsl.insertInto(AUTHOR,AUTHOR.ID,AUTHOR.FIRST_NAME,AUTHOR.LAST_NAME).values(3,"Alfred","Hitchcock").execute());
+    Tools.title("Check if our latest record was really created");
+    Tools.print(dsl.select().from(AUTHOR).where(AUTHOR.ID.eq(3)).fetch());
+    Tools.title("Update the DATE_OF_BIRTH column");
+    Tools.print(dsl.update(AUTHOR).set(AUTHOR.DATE_OF_BIRTH,Date.valueOf("1899-08-13")).where(AUTHOR.ID.eq(3)).execute());
+    Tools.title("Check if our latest record was really updated");
+    Tools.print(dsl.select().from(AUTHOR).where(AUTHOR.ID.eq(3)).fetch());
+    Tools.title("Delete the new record again");
+    Tools.print(dsl.delete(AUTHOR).where(AUTHOR.ID.eq(3)).execute());
+    Tools.title("Check if the record was really deleted");
+    Tools.print(dsl.select().from(AUTHOR).fetch());
+  }
+  finally {
+    connection.rollback();
+  }
+}

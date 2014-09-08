@@ -1,0 +1,19 @@
+{
+  Connection connection=connection();
+  DSLContext dsl=DSL.using(connection,new Settings().withExecuteWithOptimisticLocking(true));
+  try {
+    Tools.title("Applying optimistic locking");
+    BookRecord book1=dsl.selectFrom(BOOK).where(BOOK.ID.eq(1)).fetchOne();
+    BookRecord book2=dsl.selectFrom(BOOK).where(BOOK.ID.eq(1)).fetchOne();
+    book1.setTitle("New Title");
+    book1.store();
+    book2.setTitle("Another Title");
+    book2.store();
+  }
+ catch (  DataChangedException expected) {
+    expected.printStackTrace();
+  }
+ finally {
+    connection.rollback();
+  }
+}

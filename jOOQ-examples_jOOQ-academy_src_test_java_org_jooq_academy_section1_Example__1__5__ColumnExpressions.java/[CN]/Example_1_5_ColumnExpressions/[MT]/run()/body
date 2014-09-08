@@ -1,0 +1,7 @@
+{
+  DSLContext dsl=DSL.using(connection());
+  Tools.title("CONCAT() function with prefix notation");
+  Tools.print(dsl.select(concat(AUTHOR.FIRST_NAME,val(" "),AUTHOR.LAST_NAME)).from(AUTHOR).orderBy(AUTHOR.ID).fetch());
+  Tools.title("CONCAT() function with infix notation");
+  Tools.print(dsl.select(AUTHOR.FIRST_NAME.concat(" ").concat(AUTHOR.LAST_NAME)).from(AUTHOR).orderBy(AUTHOR.ID).fetch());
+}

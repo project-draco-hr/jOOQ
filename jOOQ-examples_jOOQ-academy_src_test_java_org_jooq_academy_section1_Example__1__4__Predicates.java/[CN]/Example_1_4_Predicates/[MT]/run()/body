@@ -1,0 +1,7 @@
+{
+  DSLContext dsl=DSL.using(connection());
+  Tools.title("Combine predicates using AND");
+  Tools.print(dsl.select().from(BOOK).where(BOOK.TITLE.like("%a%").and(BOOK.AUTHOR_ID.eq(1))).fetch());
+  Tools.title("Use an IN-predicate");
+  Tools.print(dsl.select().from(AUTHOR).where(AUTHOR.ID.in(select(BOOK.AUTHOR_ID).from(BOOK))).fetch());
+}
