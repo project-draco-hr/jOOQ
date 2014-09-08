@@ -1,8 +1,0 @@
-{
-  recordMapper=new RecordMapper<Record,User>(){
-    @Override public User map(    Record record){
-      return mapper.map(record,User.class);
-    }
-  }
-;
-}

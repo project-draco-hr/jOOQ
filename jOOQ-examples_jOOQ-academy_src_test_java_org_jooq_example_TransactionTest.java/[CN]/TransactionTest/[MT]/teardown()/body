@@ -1,3 +1,0 @@
-{
-  dsl.delete(BOOK).where(BOOK.ID.gt(4)).execute();
-}
