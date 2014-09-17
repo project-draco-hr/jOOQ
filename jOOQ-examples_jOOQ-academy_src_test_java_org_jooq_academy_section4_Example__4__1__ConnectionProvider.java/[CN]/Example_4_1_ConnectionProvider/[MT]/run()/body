@@ -1,0 +1,12 @@
+{
+  Connection connection=connection();
+  Tools.title("Using jOOQ with a standalone connection");
+  System.out.println(DSL.using(connection).select().from(AUTHOR).fetch());
+  Tools.title("Using jOOQ with a DBCP connection pool");
+  BasicDataSource ds=new BasicDataSource();
+  ds.setDriverClassName(Tools.driver());
+  ds.setUrl(Tools.url());
+  ds.setUsername(Tools.username());
+  ds.setPassword(Tools.password());
+  System.out.println(DSL.using(ds,SQLDialect.H2).select().from(AUTHOR).fetch());
+}

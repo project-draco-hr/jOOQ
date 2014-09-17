@@ -1,0 +1,12 @@
+{
+  if (properties == null) {
+    try {
+      properties=new Properties();
+      properties.load(Tools.class.getResourceAsStream("/config.properties"));
+    }
+ catch (    Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+  return properties;
+}
