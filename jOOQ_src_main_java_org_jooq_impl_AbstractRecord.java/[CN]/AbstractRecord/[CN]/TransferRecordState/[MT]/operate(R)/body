@@ -3,8 +3,8 @@
   try {
     if (target instanceof AbstractRecord) {
       AbstractRecord t=(AbstractRecord)target;
-      for (int targetIndex=0; targetIndex < t.size(); targetIndex++) {
-        Field<?> targetField=t.field(targetIndex);
+      for (int targetIndex=0; targetIndex < (targetFields != null ? targetFields.length : t.size()); targetIndex++) {
+        Field<?> targetField=(targetFields != null ? targetFields[targetIndex] : t.field(targetIndex));
         int sourceIndex=fields.indexOf(targetField);
         if (sourceIndex >= 0) {
           DataType<?> targetType=targetField.getDataType();
