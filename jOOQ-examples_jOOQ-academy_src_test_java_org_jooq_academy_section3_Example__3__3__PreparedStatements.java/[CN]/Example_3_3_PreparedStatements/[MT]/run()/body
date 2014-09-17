@@ -1,0 +1,13 @@
+{
+  Connection connection=connection();
+  Tools.title("Distinguishing between static and prepared statements with JDBC");
+  try (Statement stmt=connection.createStatement()){
+    stmt.execute("SELECT * FROM AUTHOR");
+  }
+   try (PreparedStatement stmt=connection.prepareStatement("SELECT * FROM AUTHOR")){
+    stmt.execute();
+  }
+   Tools.title("Distinguishing between static and prepared statements with jOOQ");
+  System.out.println(DSL.using(connection,new Settings().withStatementType(StatementType.STATIC_STATEMENT)).fetch("SELECT * FROM AUTHOR"));
+  System.out.println(DSL.using(connection).fetch("SELECT * FROM AUTHOR"));
+}
