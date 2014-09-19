@@ -1,0 +1,25 @@
+{
+  Connection result=localConnection();
+  for (; ; ) {
+    try {
+      Connection r=Reflect.on(result).call("getTargetConnection").get();
+      if (result != r && r != null) {
+        result=r;
+        continue;
+      }
+    }
+ catch (    ReflectException ignore) {
+    }
+    try {
+      Connection r=Reflect.on(result).call("getDelegate").get();
+      if (result != r && r != null) {
+        result=r;
+        continue;
+      }
+    }
+ catch (    ReflectException ignore) {
+    }
+    break;
+  }
+  return result;
+}
