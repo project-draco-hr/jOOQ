@@ -1,0 +1,4 @@
+{
+  getDelegate().addFrom(table);
+  return this;
+}
