@@ -3,7 +3,7 @@
   q.addValue(FIELD_ID1,10);
   q.addValue(FIELD_NAME1,"ABC");
   q.addValue(FIELD_DATE1,new Date(0));
-  assertEquals("insert into `TABLE1` (`ID1`, `NAME1`, `DATE1`) values (10, 'ABC', date '" + zeroDate() + "')",r_refI().render(q));
+  assertEquals("insert into `TABLE1` (`ID1`, `NAME1`, `DATE1`) values (10, 'ABC', {d '" + zeroDate() + "'})",r_refI().render(q));
   assertEquals("insert into `TABLE1` (`ID1`, `NAME1`, `DATE1`) values (?, ?, ?)",r_ref().render(q));
   assertEquals(q,create.insertInto(TABLE1,FIELD_ID1,FIELD_NAME1,FIELD_DATE1).values(10,"ABC",new Date(0)));
   assertEquals(q,create.insertInto(TABLE1).set(FIELD_ID1,10).set(FIELD_NAME1,"ABC").set(FIELD_DATE1,new Date(0)));
