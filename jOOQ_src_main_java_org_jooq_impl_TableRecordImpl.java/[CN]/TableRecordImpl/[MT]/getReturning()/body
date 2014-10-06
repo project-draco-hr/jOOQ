@@ -1,9 +1,8 @@
 {
   Collection<Field<?>> result=new LinkedHashSet<Field<?>>();
   Identity<R,?> identity=getTable().getIdentity();
-  if (identity != null) {
-    result.add(identity.getField());
-  }
-  result.addAll(getPrimaryKey().getFields());
+  if (identity != null)   result.add(identity.getField());
+  UniqueKey<?> key=getPrimaryKey();
+  if (key != null)   result.addAll(key.getFields());
   return result;
 }
