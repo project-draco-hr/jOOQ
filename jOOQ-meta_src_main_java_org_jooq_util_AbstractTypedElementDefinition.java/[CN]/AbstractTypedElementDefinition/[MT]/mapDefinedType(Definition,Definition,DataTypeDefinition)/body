@@ -24,7 +24,7 @@
       type=(!StringUtils.isBlank(customType.getType())) ? customType.getType() : customType.getName();
       converter=customType.getConverter();
     }
-    log.info("Forcing type",child + " into " + type+ (converter != null ? " using converter " + converter : ""));
+    log.info("Forcing type",child + " with type " + definedType.getType()+ " into "+ type+ (converter != null ? " using converter " + converter : ""));
     DataType<?> forcedDataType=null;
     boolean n=result.isNullable();
     boolean d=result.isDefaulted();
