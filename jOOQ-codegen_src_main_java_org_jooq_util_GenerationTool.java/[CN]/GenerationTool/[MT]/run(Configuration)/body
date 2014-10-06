@@ -128,6 +128,7 @@
     if (g.getGenerate().isGlobalObjectReferences() != null)     generator.setGenerateGlobalObjectReferences(g.getGenerate().isGlobalObjectReferences());
     if (g.getGenerate().isFluentSetters() != null)     generator.setFluentSetters(g.getGenerate().isFluentSetters());
     if (g.getGenerate().isPojosEqualsAndHashCode() != null)     generator.setGeneratePojosEqualsAndHashCode(g.getGenerate().isPojosEqualsAndHashCode());
+    if (g.getDatabase() == null)     g.setDatabase(new org.jooq.util.jaxb.Database());
     if (!StringUtils.isBlank(g.getDatabase().getSchemaVersionProvider()))     generator.setUseSchemaVersionProvider(true);
     strategy.setInstanceFields(generator.generateInstanceFields());
     generator.generate(database);
