@@ -1,6 +1,7 @@
 {
   DataTypeDefinition result=definedType;
   Database db=container.getDatabase();
+  log.debug("Type mapping",child + " with type " + definedType.getType());
   if (db.dateAsTimestamp()) {
     DataType<?> dataType=null;
     try {
