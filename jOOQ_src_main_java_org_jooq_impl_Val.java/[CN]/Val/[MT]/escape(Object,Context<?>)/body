@@ -1,0 +1,6 @@
+{
+  BackslashEscaping escaping=settings(context.configuration()).getBackslashEscaping();
+  String result=val.toString();
+  if (escaping == ON)   result=result.replace("\\","\\\\");
+  return result.replace("'","''");
+}
