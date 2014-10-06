@@ -4,6 +4,7 @@
   int substituteIndex=0;
   char[] sqlChars=sql.toCharArray();
   if (render == null)   render=new DefaultRenderContext(bind.configuration());
+  BackslashEscaping escaping=getBackslashEscaping(ctx.configuration().settings());
   SQLDialect dialect=render.configuration().dialect();
   SQLDialect family=dialect.family();
   String[][] quotes=QUOTES.get(family);
@@ -20,7 +21,10 @@
  else     if (sqlChars[i] == '\'') {
       render.sql(sqlChars[i++]);
       for (; ; ) {
-        if (peek(sqlChars,i,"''")) {
+        if (sqlChars[i] == '\\' && escaping == ON) {
+          render.sql(sqlChars[i++]);
+        }
+ else         if (peek(sqlChars,i,"''")) {
           render.sql(sqlChars[i++]);
         }
  else         if (peek(sqlChars,i,"'")) {

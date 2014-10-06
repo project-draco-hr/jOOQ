@@ -1,0 +1,9 @@
+{
+  if (settings != null) {
+    BackslashEscaping result=settings.getBackslashEscaping();
+    if (result != null) {
+      return result;
+    }
+  }
+  return BackslashEscaping.OFF;
+}
