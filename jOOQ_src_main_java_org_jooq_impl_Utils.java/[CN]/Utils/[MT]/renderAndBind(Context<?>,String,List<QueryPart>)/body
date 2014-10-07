@@ -4,10 +4,11 @@
   int substituteIndex=0;
   char[] sqlChars=sql.toCharArray();
   if (render == null)   render=new DefaultRenderContext(bind.configuration());
-  BackslashEscaping escaping=getBackslashEscaping(ctx.configuration().settings());
   SQLDialect dialect=render.configuration().dialect();
   SQLDialect family=dialect.family();
   String[][] quotes=QUOTES.get(family);
+  BackslashEscaping escaping=getBackslashEscaping(ctx.configuration().settings());
+  boolean needsBackslashEscaping=escaping == ON || (escaping == DEFAULT && EnumSet.of(MARIADB,MYSQL).contains(family));
   for (int i=0; i < sqlChars.length; i++) {
     if (peek(sqlChars,i,"--")) {
       for (; i < sqlChars.length && sqlChars[i] != '\r' && sqlChars[i] != '\n'; render.sql(sqlChars[i++]))       ;
@@ -21,7 +22,7 @@
  else     if (sqlChars[i] == '\'') {
       render.sql(sqlChars[i++]);
       for (; ; ) {
-        if (sqlChars[i] == '\\' && escaping == ON) {
+        if (sqlChars[i] == '\\' && needsBackslashEscaping) {
           render.sql(sqlChars[i++]);
         }
  else         if (peek(sqlChars,i,"''")) {

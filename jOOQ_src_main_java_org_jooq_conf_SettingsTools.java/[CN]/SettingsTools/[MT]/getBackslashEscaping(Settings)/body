@@ -5,5 +5,5 @@
       return result;
     }
   }
-  return BackslashEscaping.OFF;
+  return BackslashEscaping.DEFAULT;
 }
