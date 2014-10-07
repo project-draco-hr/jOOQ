@@ -1,0 +1,3 @@
+{
+  return concat(Utils.field(value,String.class),nullSafe(field));
+}
