@@ -1,6 +1,5 @@
 {
-  BackslashEscaping escaping=settings(context.configuration()).getBackslashEscaping();
   String result=val.toString();
-  if (escaping == ON)   result=result.replace("\\","\\\\");
+  if (needsBackslashEscaping(context.configuration()))   result=result.replace("\\","\\\\");
   return result.replace("'","''");
 }

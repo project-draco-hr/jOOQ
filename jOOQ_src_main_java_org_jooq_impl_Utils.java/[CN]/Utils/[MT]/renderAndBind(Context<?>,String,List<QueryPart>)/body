@@ -7,8 +7,7 @@
   SQLDialect dialect=render.configuration().dialect();
   SQLDialect family=dialect.family();
   String[][] quotes=QUOTES.get(family);
-  BackslashEscaping escaping=getBackslashEscaping(ctx.configuration().settings());
-  boolean needsBackslashEscaping=escaping == ON || (escaping == DEFAULT && EnumSet.of(MARIADB,MYSQL).contains(family));
+  boolean needsBackslashEscaping=needsBackslashEscaping(ctx.configuration());
   for (int i=0; i < sqlChars.length; i++) {
     if (peek(sqlChars,i,"--")) {
       for (; i < sqlChars.length && sqlChars[i] != '\r' && sqlChars[i] != '\n'; render.sql(sqlChars[i++]))       ;

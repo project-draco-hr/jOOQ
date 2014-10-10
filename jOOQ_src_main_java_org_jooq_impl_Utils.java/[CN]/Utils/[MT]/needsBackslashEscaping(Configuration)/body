@@ -1,0 +1,4 @@
+{
+  BackslashEscaping escaping=getBackslashEscaping(configuration.settings());
+  return escaping == ON || (escaping == DEFAULT && EnumSet.of(MARIADB,MYSQL).contains(configuration.dialect().family()));
+}
