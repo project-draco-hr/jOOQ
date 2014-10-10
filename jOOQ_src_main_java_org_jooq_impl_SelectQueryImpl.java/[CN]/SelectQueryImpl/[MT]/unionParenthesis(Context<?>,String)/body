@@ -1,17 +1,35 @@
 {
-switch (ctx.configuration().dialect()) {
+  if (")".equals(parenthesis)) {
+    ctx.formatIndentEnd().formatNewLine();
+  }
+ else   if ("(".equals(parenthesis)) {
+switch (ctx.family()) {
 case DERBY:
-case FIREBIRD:
 case SQLITE:
 case MARIADB:
 case MYSQL:
-    return;
+      ctx.formatNewLine().keyword("select").sql(" *").formatSeparator().keyword("from").sql(" ");
+    break;
 }
-if (")".equals(parenthesis)) {
-  ctx.formatIndentEnd().formatNewLine();
 }
+switch (ctx.family()) {
+case FIREBIRD:
+break;
+default :
 ctx.sql(parenthesis);
+break;
+}
 if ("(".equals(parenthesis)) {
-  ctx.formatIndentStart().formatNewLine();
+ctx.formatIndentStart().formatNewLine();
+}
+ else if (")".equals(parenthesis)) {
+switch (ctx.family()) {
+case DERBY:
+case SQLITE:
+case MARIADB:
+case MYSQL:
+ctx.sql(" x");
+break;
+}
 }
 }
