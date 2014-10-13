@@ -1,0 +1,5 @@
+{
+  Result<BookRecord> result=create.selectFrom(BOOK).orderBy(BOOK.ID).fetch();
+  assertEquals(4,result.size());
+  assertEquals(asList(1,2,3,4),result.getValues(0));
+}
