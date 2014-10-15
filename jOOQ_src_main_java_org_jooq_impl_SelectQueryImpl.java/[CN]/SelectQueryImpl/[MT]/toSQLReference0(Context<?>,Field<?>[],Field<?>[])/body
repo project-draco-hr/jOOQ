@@ -18,7 +18,7 @@ case UNION_ALL:
 context.start(SELECT_UNION_ALL);
 break;
 }
-if (i > 0) unionParenthesis(context,"(");
+unionParenthesis(context,"(");
 }
 }
 boolean wrapQueryExpressionInDerivedTable=false;
@@ -120,7 +120,9 @@ if (!getWindow().isEmpty() && asList(POSTGRES).contains(family)) {
 context.formatSeparator().keyword("window").sql(" ").declareWindows(true).visit(getWindow()).declareWindows(false);
 }
 context.end(SELECT_WINDOW);
+toSQLOrderBy(context,originalFields,alternativeFields,false,wrapQueryExpressionBodyInDerivedTable,orderBy,limit);
 if (unionOpSize > 0) {
+unionParenthesis(context,")");
 for (int i=0; i < unionOpSize; i++) {
 CombineOperator op=unionOp.get(i);
 for (Select<?> other : union.get(i)) {
@@ -146,12 +148,5 @@ break;
 }
 }
 }
-context.start(SELECT_ORDER_BY);
-if (!getOrderBy().isEmpty()) {
-context.formatSeparator().keyword("order").sql(orderBySiblings ? " " : "").keyword(orderBySiblings ? "siblings" : "").sql(" ").keyword("by").sql(" ");
-{
-context.visit(getOrderBy());
-}
-}
-context.end(SELECT_ORDER_BY);
+toSQLOrderBy(context,originalFields,alternativeFields,wrapQueryExpressionInDerivedTable,wrapQueryExpressionBodyInDerivedTable,unionOrderBy,unionLimit);
 }

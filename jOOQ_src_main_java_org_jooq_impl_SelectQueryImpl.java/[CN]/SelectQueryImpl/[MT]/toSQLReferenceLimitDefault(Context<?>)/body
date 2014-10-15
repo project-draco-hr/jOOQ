@@ -1,4 +1,7 @@
 {
+  Object data=context.data(DATA_RENDER_TRAILING_LIMIT_IF_APPLICABLE);
+  context.data(DATA_RENDER_TRAILING_LIMIT_IF_APPLICABLE,true);
   toSQLReference0(context);
-  context.visit(getLimit());
+  if (data == null)   context.data().remove(DATA_RENDER_TRAILING_LIMIT_IF_APPLICABLE);
+ else   context.data(DATA_RENDER_TRAILING_LIMIT_IF_APPLICABLE,data);
 }

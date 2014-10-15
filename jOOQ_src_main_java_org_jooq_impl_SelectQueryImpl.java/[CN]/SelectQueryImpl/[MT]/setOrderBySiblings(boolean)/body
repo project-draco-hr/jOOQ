@@ -1,3 +1,4 @@
 {
-  this.orderBySiblings=orderBySiblings;
+  if (unionOp.size() == 0)   this.orderBySiblings=orderBySiblings;
+ else   this.unionOrderBySiblings=orderBySiblings;
 }

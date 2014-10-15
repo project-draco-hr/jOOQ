@@ -13,17 +13,12 @@
   if (TRUE.equals(wrapDerivedTables)) {
     context.sql("(").formatIndentStart().formatNewLine().data(DATA_WRAP_DERIVED_TABLES_IN_PARENTHESES,null);
   }
-  if (getLimit().isApplicable()) {
 switch (dialect) {
 default :
 {
-        toSQLReferenceLimitDefault(context);
-        break;
-      }
-  }
-}
- else {
-  toSQLReference0(context);
+      toSQLReferenceLimitDefault(context);
+      break;
+    }
 }
 if (forUpdate && !asList(CUBRID).contains(family)) {
   context.formatSeparator().keyword("for update");

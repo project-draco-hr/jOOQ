@@ -1,4 +1,5 @@
 {
-  seekBefore=false;
+  if (unionOp.size() == 0)   seekBefore=false;
+ else   unionSeekBefore=false;
   getSeek().addAll(fields);
 }

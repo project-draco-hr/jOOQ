@@ -1,4 +1,4 @@
 {
-  limit.setOffset(offset);
-  limit.setNumberOfRows(numberOfRows);
+  getLimit().setOffset(offset);
+  getLimit().setNumberOfRows(numberOfRows);
 }

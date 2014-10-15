@@ -1,0 +1,7 @@
+Context<?> context
+Field<?>[] originalFields
+Field<?>[] alternativeFields
+boolean wrapQueryExpressionInDerivedTable
+boolean wrapQueryExpressionBodyInDerivedTable
+SortFieldList actualOrderBy
+Limit actualLimit
