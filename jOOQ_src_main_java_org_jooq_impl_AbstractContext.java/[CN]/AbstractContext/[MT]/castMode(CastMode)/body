@@ -1,5 +1,4 @@
 {
   this.castMode=mode;
-  this.castDialects=null;
   return (C)this;
 }

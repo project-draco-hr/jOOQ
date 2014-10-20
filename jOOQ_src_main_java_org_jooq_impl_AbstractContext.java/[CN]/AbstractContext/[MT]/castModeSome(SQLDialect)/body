@@ -1,5 +1,3 @@
 {
-  this.castMode=CastMode.SOME;
-  this.castDialects=dialects;
   return (C)this;
 }

@@ -6,17 +6,6 @@ case NEVER:
 case ALWAYS:
 toSQLCast(context);
 return;
-case SOME:
-if (context.cast()) {
-toSQLCast(context);
-}
- else if (shouldCast(context)) {
-toSQLCast(context);
-}
- else {
-toSQL(context,value,getConverter());
-}
-return;
 }
 if (shouldCast(context)) {
 toSQLCast(context);
