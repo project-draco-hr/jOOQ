@@ -1,0 +1,153 @@
+{
+  SQLDialect family=ctx.family();
+  RenderContext render=ctx.render();
+  if (render.paramType() == INLINED) {
+    if (val == null) {
+      render.keyword("null");
+    }
+ else     if (type == Boolean.class) {
+      if (asList(FIREBIRD,SQLITE).contains(family)) {
+        render.sql(((Boolean)val) ? "1" : "0");
+      }
+ else {
+        render.keyword(((Boolean)val).toString());
+      }
+    }
+ else     if (type == byte[].class) {
+      byte[] binary=(byte[])val;
+      if (asList().contains(family)) {
+        render.sql("0x").sql(convertBytesToHex(binary));
+      }
+ else       if (asList(DERBY,H2,HSQLDB,MARIADB,MYSQL,SQLITE).contains(family)) {
+        render.sql("X'").sql(convertBytesToHex(binary)).sql("'");
+      }
+ else       if (asList().contains(family)) {
+        render.keyword("hextoraw('").sql(convertBytesToHex(binary)).sql("')");
+      }
+ else       if (family == POSTGRES) {
+        render.sql("E'").sql(convertBytesToPostgresOctal(binary)).keyword("'::bytea");
+      }
+ else {
+        render.sql("X'").sql(convertBytesToHex(binary)).sql("'");
+      }
+    }
+ else     if (Interval.class.isAssignableFrom(type)) {
+      render.sql("'").sql(escape(val,render)).sql("'");
+    }
+ else     if (Number.class.isAssignableFrom(type)) {
+      render.sql(((Number)val).toString());
+    }
+ else     if (type == Date.class) {
+      if (asList(SQLITE).contains(family)) {
+        render.sql("'").sql(escape(val,render)).sql("'");
+      }
+ else       if (family == DERBY) {
+        render.keyword("date('").sql(escape(val,render)).sql("')");
+      }
+ else       if (family == MYSQL) {
+        render.keyword("{d '").sql(escape(val,render)).sql("'}");
+      }
+ else {
+        render.keyword("date '").sql(escape(val,render)).sql("'");
+      }
+    }
+ else     if (type == Timestamp.class) {
+      if (asList(SQLITE).contains(family)) {
+        render.sql("'").sql(escape(val,render)).sql("'");
+      }
+ else       if (family == DERBY) {
+        render.keyword("timestamp('").sql(escape(val,render)).sql("')");
+      }
+ else       if (family == CUBRID) {
+        render.keyword("datetime '").sql(escape(val,render)).sql("'");
+      }
+ else       if (family == MYSQL) {
+        render.keyword("{ts '").sql(escape(val,render)).sql("'}");
+      }
+ else {
+        render.keyword("timestamp '").sql(escape(val,render)).sql("'");
+      }
+    }
+ else     if (type == Time.class) {
+      if (asList(SQLITE).contains(family)) {
+        render.sql("'").sql(new SimpleDateFormat("HH:mm:ss").format((Time)val)).sql("'");
+      }
+ else       if (family == DERBY) {
+        render.keyword("time").sql("('").sql(escape(val,render)).sql("')");
+      }
+ else       if (family == MYSQL) {
+        render.keyword("{t '").sql(escape(val,render)).sql("'}");
+      }
+ else {
+        render.keyword("time").sql(" '").sql(escape(val,render)).sql("'");
+      }
+    }
+ else     if (type.isArray()) {
+      String separator="";
+      if (family == H2) {
+        render.sql("(");
+        for (        Object o : ((Object[])val)) {
+          render.sql(separator);
+          new DefaultBinding<Object,Object>(new IdentityConverter(type.getComponentType()),isLob).sql(new DefaultBindingSQLContext<Object>(ctx.configuration(),ctx.render(),o));
+          separator=", ";
+        }
+        render.sql(")");
+      }
+ else {
+        render.keyword("ARRAY");
+        render.sql("[");
+        for (        Object o : ((Object[])val)) {
+          render.sql(separator);
+          new DefaultBinding<Object,Object>(new IdentityConverter(type.getComponentType()),isLob).sql(new DefaultBindingSQLContext<Object>(ctx.configuration(),ctx.render(),o));
+          separator=", ";
+        }
+        render.sql("]");
+        if (family == POSTGRES && EnumType.class.isAssignableFrom(type.getComponentType())) {
+          render.sql("::").keyword(DefaultDataType.getDataType(family,type).getCastTypeName(render.configuration()));
+        }
+      }
+    }
+ else     if (EnumType.class.isAssignableFrom(type)) {
+      String literal=((EnumType)val).getLiteral();
+      if (literal == null) {
+        new DefaultBinding<Object,Object>(new IdentityConverter(String.class),isLob).sql(new DefaultBindingSQLContext<Object>(ctx.configuration(),ctx.render(),literal));
+      }
+ else {
+        new DefaultBinding<Object,Object>(new IdentityConverter(String.class),isLob).sql(new DefaultBindingSQLContext<Object>(ctx.configuration(),ctx.render(),literal));
+      }
+    }
+ else     if (UDTRecord.class.isAssignableFrom(type)) {
+      render.sql("[UDT]");
+    }
+ else {
+      render.sql("'").sql(escape(val,render),true).sql("'");
+    }
+  }
+ else   if (family == SQLDialect.POSTGRES) {
+    if (type.isArray() && byte[].class != type) {
+      render.sql(getBindVariable(render));
+      render.sql("::");
+      render.keyword(DefaultDataType.getDataType(family,type).getCastTypeName(render.configuration()));
+    }
+ else     if (EnumType.class.isAssignableFrom(type)) {
+      render.sql(getBindVariable(render));
+      EnumType e=(EnumType)type.getEnumConstants()[0];
+      Schema schema=e.getSchema();
+      if (schema != null) {
+        render.sql("::");
+        schema=using(render.configuration()).map(schema);
+        if (schema != null && TRUE.equals(render.configuration().settings().isRenderSchema())) {
+          render.visit(schema);
+          render.sql(".");
+        }
+        render.visit(name(e.getName()));
+      }
+    }
+ else {
+      render.sql(getBindVariable(render));
+    }
+  }
+ else {
+    render.sql(getBindVariable(render));
+  }
+}

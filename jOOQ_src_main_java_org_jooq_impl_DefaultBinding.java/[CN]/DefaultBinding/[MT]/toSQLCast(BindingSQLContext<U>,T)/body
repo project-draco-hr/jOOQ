@@ -1,0 +1,33 @@
+{
+  DataType<T> dataType=DefaultDataType.getDataType(ctx.dialect(),type);
+  DataType<T> sqlDataType=dataType.getSQLDataType();
+  SQLDialect family=ctx.family();
+  if (converted != null && type == BigDecimal.class && asList(CUBRID,DERBY,FIREBIRD,HSQLDB).contains(family)) {
+    int scale=((BigDecimal)converted).scale();
+    int precision=scale + ((BigDecimal)converted).precision();
+    if (family == FIREBIRD) {
+      precision=Math.min(precision,18);
+    }
+    toSQLCast(ctx,converted,dataType,0,precision,scale);
+  }
+ else   if (SQLDataType.OTHER == sqlDataType) {
+    if (converted != null) {
+      toSQLCast(ctx,converted,DefaultDataType.getDataType(family,converted.getClass()),0,0,0);
+    }
+ else     if (asList().contains(family)) {
+      ctx.render().sql(getBindVariable(ctx.render()));
+    }
+ else {
+      toSQLCast(ctx,converted,DefaultDataType.getDataType(family,String.class),0,0,0);
+    }
+  }
+ else   if (family == POSTGRES && (sqlDataType == null || !sqlDataType.isTemporal())) {
+    toSQL(ctx,converted);
+  }
+ else   if ((sqlDataType == SQLDataType.VARCHAR || sqlDataType == SQLDataType.CHAR) && asList(FIREBIRD).contains(family)) {
+    toSQLCast(ctx,converted,dataType,getValueLength(converted),0,0);
+  }
+ else {
+    toSQLCast(ctx,converted,dataType,dataType.length(),dataType.precision(),dataType.scale());
+  }
+}

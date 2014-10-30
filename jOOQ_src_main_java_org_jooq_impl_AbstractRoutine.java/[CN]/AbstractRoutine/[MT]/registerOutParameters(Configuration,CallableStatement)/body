@@ -1,15 +1,7 @@
 {
   for (  Parameter<?> parameter : getParameters()) {
     if (parameter.equals(getReturnParameter()) || getOutParameters().contains(parameter)) {
-      int index=parameterIndexes.get(parameter);
-      int sqlType=parameter.getDataType().getDataType(c).getSQLType();
-switch (c.dialect().family()) {
-default :
-{
-          statement.registerOutParameter(index,sqlType);
-          break;
-        }
+      registerOutParameter(c,statement,parameter);
     }
   }
-}
 }

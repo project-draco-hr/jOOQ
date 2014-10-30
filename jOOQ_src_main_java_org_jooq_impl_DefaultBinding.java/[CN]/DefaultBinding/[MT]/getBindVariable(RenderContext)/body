@@ -1,0 +1,14 @@
+{
+  if (context.paramType() == NAMED || context.paramType() == NAMED_OR_INLINED) {
+    int index=context.nextIndex();
+    if (StringUtils.isBlank(paramName)) {
+      return ":" + index;
+    }
+ else {
+      return ":" + paramName;
+    }
+  }
+ else {
+    return "?";
+  }
+}

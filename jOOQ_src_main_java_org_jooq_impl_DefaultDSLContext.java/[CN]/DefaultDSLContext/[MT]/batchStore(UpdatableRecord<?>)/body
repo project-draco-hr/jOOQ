@@ -1,3 +1,3 @@
 {
-  return new BatchCRUD(configuration,Action.STORE,records);
+  return new BatchCRUD(configuration(),Action.STORE,records);
 }

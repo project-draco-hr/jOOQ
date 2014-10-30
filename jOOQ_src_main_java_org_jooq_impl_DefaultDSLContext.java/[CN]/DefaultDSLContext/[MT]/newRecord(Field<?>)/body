@@ -1,3 +1,3 @@
 {
-  return Utils.newRecord(false,RecordImpl.class,fields,configuration).<RuntimeException>operate(null);
+  return Utils.newRecord(false,RecordImpl.class,fields,configuration()).<RuntimeException>operate(null);
 }

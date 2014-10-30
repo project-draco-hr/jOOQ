@@ -1,0 +1,5 @@
+{
+  ctx.render().keyword("cast").sql("(");
+  toSQL(ctx,converted);
+  ctx.render().sql(" ").keyword("as").sql(" ").sql(dataType.length(length).precision(precision,scale).getCastTypeName(ctx.configuration())).sql(")");
+}

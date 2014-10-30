@@ -2,7 +2,7 @@
   if (literal == null) {
     return this;
   }
-  SQLDialect family=configuration.dialect().family();
+  SQLDialect family=family();
   boolean needsQuote=(family != SQLITE && QUOTED == cachedRenderNameStyle) || (family == SQLITE && SQLITE_KEYWORDS.contains(literal.toUpperCase())) || (family == SQLITE && !IDENTIFIER_PATTERN.matcher(literal).matches());
   if (!needsQuote) {
     if (LOWER == cachedRenderNameStyle) {

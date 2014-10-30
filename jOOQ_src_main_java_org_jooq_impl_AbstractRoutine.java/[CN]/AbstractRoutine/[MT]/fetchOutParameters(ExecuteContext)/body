@@ -1,8 +1,7 @@
 {
   for (  Parameter<?> parameter : getParameters()) {
     if (parameter.equals(getReturnParameter()) || getOutParameters().contains(parameter)) {
-      int index=parameterIndexes.get(parameter);
-      results.put(parameter,Utils.getFromStatement(ctx,parameter,index));
+      fetchOutParameter(ctx,parameter);
     }
   }
 }

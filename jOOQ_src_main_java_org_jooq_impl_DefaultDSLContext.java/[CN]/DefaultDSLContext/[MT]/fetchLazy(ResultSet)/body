@@ -1,6 +1,6 @@
 {
   try {
-    return fetchLazy(rs,new MetaDataFieldProvider(configuration,rs.getMetaData()).getFields());
+    return fetchLazy(rs,new MetaDataFieldProvider(configuration(),rs.getMetaData()).getFields());
   }
  catch (  SQLException e) {
     throw new DataAccessException("Error while accessing ResultSet meta data",e);

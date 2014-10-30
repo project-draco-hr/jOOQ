@@ -1,0 +1,142 @@
+{
+  T result=null;
+  if (type == Blob.class) {
+    result=(T)ctx.resultSet().getBlob(ctx.index());
+  }
+ else   if (type == Boolean.class) {
+    result=(T)wasNull(ctx.resultSet(),Boolean.valueOf(ctx.resultSet().getBoolean(ctx.index())));
+  }
+ else   if (type == BigInteger.class) {
+    if (ctx.configuration().dialect() == SQLDialect.SQLITE) {
+      result=Convert.convert(ctx.resultSet().getString(ctx.index()),(Class<T>)BigInteger.class);
+    }
+ else {
+      BigDecimal b=ctx.resultSet().getBigDecimal(ctx.index());
+      result=(T)(b == null ? null : b.toBigInteger());
+    }
+  }
+ else   if (type == BigDecimal.class) {
+    if (ctx.configuration().dialect() == SQLDialect.SQLITE) {
+      result=Convert.convert(ctx.resultSet().getString(ctx.index()),(Class<T>)BigDecimal.class);
+    }
+ else {
+      result=(T)ctx.resultSet().getBigDecimal(ctx.index());
+    }
+  }
+ else   if (type == Byte.class) {
+    result=(T)wasNull(ctx.resultSet(),Byte.valueOf(ctx.resultSet().getByte(ctx.index())));
+  }
+ else   if (type == byte[].class) {
+    result=(T)ctx.resultSet().getBytes(ctx.index());
+  }
+ else   if (type == Clob.class) {
+    result=(T)ctx.resultSet().getClob(ctx.index());
+  }
+ else   if (type == Date.class) {
+    result=(T)getDate(ctx.configuration().dialect(),ctx.resultSet(),ctx.index());
+  }
+ else   if (type == Double.class) {
+    result=(T)wasNull(ctx.resultSet(),Double.valueOf(ctx.resultSet().getDouble(ctx.index())));
+  }
+ else   if (type == Float.class) {
+    result=(T)wasNull(ctx.resultSet(),Float.valueOf(ctx.resultSet().getFloat(ctx.index())));
+  }
+ else   if (type == Integer.class) {
+    result=(T)wasNull(ctx.resultSet(),Integer.valueOf(ctx.resultSet().getInt(ctx.index())));
+  }
+ else   if (type == Long.class) {
+    result=(T)wasNull(ctx.resultSet(),Long.valueOf(ctx.resultSet().getLong(ctx.index())));
+  }
+ else   if (type == Short.class) {
+    result=(T)wasNull(ctx.resultSet(),Short.valueOf(ctx.resultSet().getShort(ctx.index())));
+  }
+ else   if (type == String.class) {
+    result=(T)ctx.resultSet().getString(ctx.index());
+  }
+ else   if (type == Time.class) {
+    result=(T)getTime(ctx.configuration().dialect(),ctx.resultSet(),ctx.index());
+  }
+ else   if (type == Timestamp.class) {
+    result=(T)getTimestamp(ctx.configuration().dialect(),ctx.resultSet(),ctx.index());
+  }
+ else   if (type == YearToMonth.class) {
+    if (ctx.configuration().dialect() == POSTGRES) {
+      Object object=ctx.resultSet().getObject(ctx.index());
+      result=(T)(object == null ? null : PostgresUtils.toYearToMonth(object));
+    }
+ else {
+      String string=ctx.resultSet().getString(ctx.index());
+      result=(T)(string == null ? null : YearToMonth.valueOf(string));
+    }
+  }
+ else   if (type == DayToSecond.class) {
+    if (ctx.configuration().dialect() == POSTGRES) {
+      Object object=ctx.resultSet().getObject(ctx.index());
+      result=(T)(object == null ? null : PostgresUtils.toDayToSecond(object));
+    }
+ else {
+      String string=ctx.resultSet().getString(ctx.index());
+      result=(T)(string == null ? null : DayToSecond.valueOf(string));
+    }
+  }
+ else   if (type == UByte.class) {
+    result=(T)Convert.convert(ctx.resultSet().getString(ctx.index()),UByte.class);
+  }
+ else   if (type == UShort.class) {
+    result=(T)Convert.convert(ctx.resultSet().getString(ctx.index()),UShort.class);
+  }
+ else   if (type == UInteger.class) {
+    result=(T)Convert.convert(ctx.resultSet().getString(ctx.index()),UInteger.class);
+  }
+ else   if (type == ULong.class) {
+    result=(T)Convert.convert(ctx.resultSet().getString(ctx.index()),ULong.class);
+  }
+ else   if (type == UUID.class) {
+switch (ctx.configuration().dialect().family()) {
+case H2:
+case POSTGRES:
+{
+        result=(T)ctx.resultSet().getObject(ctx.index());
+        break;
+      }
+default :
+{
+      result=(T)Convert.convert(ctx.resultSet().getString(ctx.index()),UUID.class);
+      break;
+    }
+}
+}
+ else if (type.isArray()) {
+switch (ctx.configuration().dialect()) {
+case POSTGRES:
+{
+    result=pgGetArray(ctx,ctx.resultSet(),type,ctx.index());
+    break;
+  }
+default :
+result=(T)convertArray(ctx.resultSet().getArray(ctx.index()),(Class<? extends Object[]>)type);
+break;
+}
+}
+ else if (EnumType.class.isAssignableFrom(type)) {
+result=getEnumType(type,ctx.resultSet().getString(ctx.index()));
+}
+ else if (UDTRecord.class.isAssignableFrom(type)) {
+switch (ctx.configuration().dialect()) {
+case POSTGRES:
+result=(T)pgNewUDTRecord(type,ctx.resultSet().getObject(ctx.index()));
+break;
+default :
+result=(T)ctx.resultSet().getObject(ctx.index(),DataTypes.udtRecords());
+break;
+}
+}
+ else if (Result.class.isAssignableFrom(type)) {
+ResultSet nested=(ResultSet)ctx.resultSet().getObject(ctx.index());
+result=(T)DSL.using(ctx.configuration()).fetch(nested);
+}
+ else {
+result=(T)unlob(ctx.resultSet().getObject(ctx.index()));
+}
+ctx.value(converter.from(result));
+}

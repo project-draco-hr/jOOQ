@@ -1,0 +1,11 @@
+{
+  Configuration configuration=ctx.configuration();
+  int sqlType=DefaultDataType.getDataType(ctx.dialect(),type).getSQLType();
+switch (configuration.dialect().family()) {
+default :
+{
+      ctx.statement().registerOutParameter(ctx.index(),sqlType);
+      break;
+    }
+}
+}

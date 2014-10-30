@@ -1,0 +1,17 @@
+{
+  T converted=converter.to(ctx.value());
+switch (ctx.render().castMode()) {
+case NEVER:
+    toSQL(ctx,converted);
+  return;
+case ALWAYS:
+toSQLCast(ctx,converted);
+return;
+}
+if (shouldCast(ctx,converted)) {
+toSQLCast(ctx,converted);
+}
+ else {
+toSQL(ctx,converted);
+}
+}

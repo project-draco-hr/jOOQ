@@ -1,7 +1,6 @@
 {
-  this.configuration=configuration;
+  super(configuration);
   this.stmt=stmt;
-  this.data=new HashMap<Object,Object>();
   this.visitClauses=new ArrayDeque<Clause>();
   VisitListenerProvider[] providers=configuration.visitListenerProviders();
   this.visitListeners=new VisitListener[providers.length + 1];

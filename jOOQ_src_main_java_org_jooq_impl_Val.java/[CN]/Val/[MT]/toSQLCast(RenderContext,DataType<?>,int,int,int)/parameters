@@ -1,5 +1,0 @@
-RenderContext context
-DataType<?> type
-int length
-int precision
-int scale

@@ -1,5 +1,5 @@
 {
   SelectSelectStep<Record> result=DSL.selectDistinct(fields);
-  result.attach(configuration);
+  result.attach(configuration());
   return result;
 }

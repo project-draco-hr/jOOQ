@@ -1,0 +1,5 @@
+{
+  super(configuration);
+  this.output=output;
+  this.value=value;
+}

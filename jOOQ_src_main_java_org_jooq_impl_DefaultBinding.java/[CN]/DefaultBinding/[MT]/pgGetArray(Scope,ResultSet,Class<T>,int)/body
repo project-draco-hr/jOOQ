@@ -1,0 +1,25 @@
+{
+  Array array=rs.getArray(index);
+  if (array == null) {
+    return null;
+  }
+  try {
+    return (T)convertArray(rs.getArray(index),(Class<? extends Object[]>)type);
+  }
+ catch (  Exception e) {
+    List<Object> result=new ArrayList<Object>();
+    try {
+      while (rs.next()) {
+        DefaultBindingGetResultSetContext<T> out=new DefaultBindingGetResultSetContext<T>(ctx.configuration(),rs,2);
+        new DefaultBinding<T,T>(new IdentityConverter<T>((Class<T>)type.getComponentType()),false).get(out);
+        result.add(out.value());
+      }
+    }
+ catch (    Exception fatal) {
+      log.error("Cannot parse Postgres array: " + rs.getString(index));
+      log.error(fatal);
+      return null;
+    }
+    return (T)convertArray(result.toArray(),(Class<? extends Object[]>)type);
+  }
+}

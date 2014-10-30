@@ -1,0 +1,24 @@
+{
+  if (ctx.render().paramType() != INLINED) {
+    if (!(converted instanceof EnumType)) {
+switch (ctx.family()) {
+case DERBY:
+case FIREBIRD:
+case H2:
+case HSQLDB:
+case CUBRID:
+case POSTGRES:
+{
+          return true;
+        }
+    }
+  }
+}
+if (Interval.class.isAssignableFrom(type)) {
+switch (ctx.family()) {
+case POSTGRES:
+    return true;
+}
+}
+return false;
+}

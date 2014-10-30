@@ -1,5 +1,5 @@
 {
   for (  Attachable attachable : attachables) {
-    attachable.attach(configuration);
+    attachable.attach(configuration());
   }
 }

@@ -1,4 +1,0 @@
-{
-  @SuppressWarnings("unchecked") Converter<T,U> converter=(Converter<T,U>)field.getConverter();
-  return converter.from(getFromResultSet(ctx,converter.fromType(),index));
-}

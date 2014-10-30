@@ -1,3 +1,3 @@
 {
-  return new ResultImpl<Record>(configuration,fields);
+  return new ResultImpl<Record>(configuration(),fields);
 }

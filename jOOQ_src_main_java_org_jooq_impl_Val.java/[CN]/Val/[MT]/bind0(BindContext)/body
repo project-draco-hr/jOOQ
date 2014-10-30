@@ -1,5 +1,0 @@
-{
-  if (!isInline(context)) {
-    context.bindValue(value,this);
-  }
-}

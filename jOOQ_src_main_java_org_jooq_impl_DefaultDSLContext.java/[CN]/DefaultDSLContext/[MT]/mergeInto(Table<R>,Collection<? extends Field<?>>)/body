@@ -1,3 +1,3 @@
 {
-  return new MergeImpl(configuration,table,fields);
+  return new MergeImpl(configuration(),table,fields);
 }

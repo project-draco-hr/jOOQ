@@ -1,5 +1,5 @@
 {
-switch (configuration.dialect().family()) {
+switch (configuration().dialect().family()) {
 case DERBY:
 {
       Field<BigInteger> field=field("identity_val_local()",BigInteger.class);
@@ -24,6 +24,6 @@ Field<BigInteger> field=field("last_insert_rowid()",BigInteger.class);
 return select(field).fetchOne(field);
 }
 default :
-throw new SQLDialectNotSupportedException("identity functionality not supported by " + configuration.dialect());
+throw new SQLDialectNotSupportedException("identity functionality not supported by " + configuration().dialect());
 }
 }

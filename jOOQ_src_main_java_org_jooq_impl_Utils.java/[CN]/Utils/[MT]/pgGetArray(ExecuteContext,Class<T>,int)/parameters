@@ -1,3 +1,0 @@
-ExecuteContext ctx
-Class<T> type
-int index

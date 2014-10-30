@@ -1,5 +1,7 @@
 {
-  T value=Utils.getFromResultSet(ctx,field,index + 1);
+  DefaultBindingGetResultSetContext<T> out=new DefaultBindingGetResultSetContext<T>(ctx.configuration(),ctx.resultSet(),index + 1);
+  field.getBinding().get(out);
+  T value=out.value();
   record.values[index]=value;
   record.originals[index]=value;
 }

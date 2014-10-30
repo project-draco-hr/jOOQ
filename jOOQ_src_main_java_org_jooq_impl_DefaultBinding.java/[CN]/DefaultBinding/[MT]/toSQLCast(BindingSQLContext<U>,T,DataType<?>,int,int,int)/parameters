@@ -1,0 +1,6 @@
+BindingSQLContext<U> ctx
+T converted
+DataType<?> dataType
+int length
+int precision
+int scale

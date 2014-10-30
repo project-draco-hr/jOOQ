@@ -1,5 +1,5 @@
 {
   SelectWhereStep<R> result=DSL.selectFrom(table);
-  result.attach(configuration);
+  result.attach(configuration());
   return result;
 }

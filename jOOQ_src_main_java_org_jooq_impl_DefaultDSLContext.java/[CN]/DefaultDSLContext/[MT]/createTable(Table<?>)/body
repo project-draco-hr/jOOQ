@@ -1,3 +1,3 @@
 {
-  return new CreateTableImpl<Record>(configuration,table);
+  return new CreateTableImpl<Record>(configuration(),table);
 }

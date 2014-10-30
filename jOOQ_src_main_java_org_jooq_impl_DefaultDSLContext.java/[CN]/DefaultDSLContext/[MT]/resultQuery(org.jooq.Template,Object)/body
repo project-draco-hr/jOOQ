@@ -1,3 +1,3 @@
 {
-  return new SQLResultQuery(configuration,queryPart(template,parameters));
+  return new SQLResultQuery(configuration(),queryPart(template,parameters));
 }
