@@ -13,9 +13,9 @@
     }
  catch (    Exception suppress) {
       try {
-        cause.addSuppressed(suppress);
+        Reflect.on(cause).call("addSuppressed",suppress);
       }
- catch (      NoSuchMethodError logJDBC_4_0) {
+ catch (      ReflectException ignore) {
         log.error("Error when rolling back",suppress);
       }
     }
