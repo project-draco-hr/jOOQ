@@ -1,0 +1,14 @@
+{
+  List<ColumnDefinition> result=new ArrayList<ColumnDefinition>();
+  String schemaName=getSchemaName();
+  SchemaDefinition schema=getDatabase().getSchema(schemaName);
+  int position=0;
+  for (  Column column : table.getColumns()) {
+    ++position;
+    DataType<?> dataType=DefaultDataType.getDataType(getDialect(),column.getType());
+    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),schema,dataType.getTypeName(),dataType.hasLength() ? dataType.length() : null,dataType.hasPrecision() ? dataType.precision() : null,dataType.hasScale() ? dataType.scale() : null,column.isNullable(),!StringUtils.isEmpty(column.getDefaultValue()));
+    ColumnDefinition columnDefinition=new DefaultColumnDefinition(this,column.getName(),position,type,false,column.getDescription());
+    result.add(columnDefinition);
+  }
+  return result;
+}
