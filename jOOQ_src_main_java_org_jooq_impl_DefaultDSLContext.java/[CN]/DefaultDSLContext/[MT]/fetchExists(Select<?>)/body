@@ -1,0 +1,3 @@
+{
+  return selectOne().whereExists(query).fetchOne() != null;
+}

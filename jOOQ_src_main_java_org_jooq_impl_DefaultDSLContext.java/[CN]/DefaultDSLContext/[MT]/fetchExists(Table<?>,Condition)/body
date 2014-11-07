@@ -1,0 +1,3 @@
+{
+  return fetchExists(selectOne().from(table).where(condition));
+}
