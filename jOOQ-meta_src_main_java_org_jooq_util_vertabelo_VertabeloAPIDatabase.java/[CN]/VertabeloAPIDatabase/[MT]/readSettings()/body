@@ -1,0 +1,11 @@
+{
+  apiToken=getProperties().getProperty(API_TOKEN_PARAM);
+  if (StringUtils.isEmpty(apiToken)) {
+    throw new IllegalStateException("Lack of \"" + API_TOKEN_PARAM + "\" parameter.");
+  }
+  modelId=getProperties().getProperty(MODEL_ID_PARAM);
+  if (StringUtils.isEmpty(modelId)) {
+    throw new IllegalStateException("Lack of \"" + MODEL_ID_PARAM + "\" parameter.");
+  }
+  tagName=getProperties().getProperty(TAG_NAME_PARAM);
+}

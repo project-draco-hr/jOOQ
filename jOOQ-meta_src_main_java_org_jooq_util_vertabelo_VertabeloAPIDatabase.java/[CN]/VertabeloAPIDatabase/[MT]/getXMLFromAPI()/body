@@ -1,0 +1,32 @@
+{
+  String xml=null;
+  String apiUrl=getApiUrl();
+  try {
+    log.info("Creating connection to Vertabelo server...");
+    URL url=new URL(apiUrl);
+    HttpsURLConnection connection=(HttpsURLConnection)url.openConnection();
+    connection.setConnectTimeout(5000);
+    connection.setReadTimeout(5000);
+    String encodedAuthData=Base64Coder.encodeString(apiToken + ":");
+    connection.addRequestProperty("Authorization","Basic " + encodedAuthData);
+    int responseCode=connection.getResponseCode();
+    log.info("Response code: " + responseCode);
+    if (responseCode != HttpsURLConnection.HTTP_OK) {
+      throw new RuntimeException("Request failed with status code: " + responseCode);
+    }
+    String response="";
+    String line;
+    BufferedReader br=new BufferedReader(new InputStreamReader(connection.getInputStream()));
+    while ((line=br.readLine()) != null) {
+      response+=line;
+    }
+    xml=response;
+  }
+ catch (  MalformedURLException e) {
+    throw new RuntimeException(e);
+  }
+catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+  return xml;
+}

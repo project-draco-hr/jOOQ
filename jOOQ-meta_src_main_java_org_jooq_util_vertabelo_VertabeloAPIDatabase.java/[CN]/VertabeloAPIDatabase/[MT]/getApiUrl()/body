@@ -1,0 +1,7 @@
+{
+  String apiUrl=API_URL_PREFIX + modelId;
+  if (!StringUtils.isEmpty(tagName)) {
+    apiUrl+="/" + tagName;
+  }
+  return apiUrl;
+}
