@@ -1,4 +1,6 @@
 {
+  results.clear();
+  outValues.clear();
   if (type == null) {
     return executeCallableStatement();
   }

@@ -1,4 +1,4 @@
 {
-  this.internNames=fieldNames;
+  intern.internNames=fieldNames;
   return this;
 }

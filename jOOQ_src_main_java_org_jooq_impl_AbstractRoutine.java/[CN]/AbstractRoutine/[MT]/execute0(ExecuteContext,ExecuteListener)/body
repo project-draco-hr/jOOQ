@@ -1,7 +1,7 @@
 {
   try {
     listener.executeStart(ctx);
-    ctx.statement().execute();
+    if (ctx.statement().execute())     ctx.resultSet(ctx.statement().getResultSet());
     listener.executeEnd(ctx);
   }
  catch (  SQLException e) {
