@@ -6,7 +6,7 @@
   if (generateInterfaces()) {
     interfaces.add(getStrategy().getFullJavaClassName(tableOrUDT,Mode.INTERFACE));
   }
-  JavaWriter out=new JavaWriter(getStrategy().getFile(tableOrUDT,Mode.POJO));
+  JavaWriter out=newJavaWriter(getStrategy().getFile(tableOrUDT,Mode.POJO));
   printPackage(out,tableOrUDT,Mode.POJO);
   if (tableOrUDT instanceof TableDefinition)   generatePojoClassJavadoc((TableDefinition)tableOrUDT,out);
  else   generateUDTPojoClassJavadoc((UDTDefinition)tableOrUDT,out);

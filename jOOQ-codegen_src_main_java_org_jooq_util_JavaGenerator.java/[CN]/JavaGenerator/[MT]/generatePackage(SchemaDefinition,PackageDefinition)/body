@@ -3,7 +3,7 @@
   final String className=getStrategy().getJavaClassName(pkg);
   final String schemaIdentifier=getStrategy().getFullJavaIdentifier(schema);
   final List<String> interfaces=getStrategy().getJavaClassImplements(pkg,Mode.DEFAULT);
-  JavaWriter out=new JavaWriter(getStrategy().getFile(pkg));
+  JavaWriter out=newJavaWriter(getStrategy().getFile(pkg));
   printPackage(out,pkg);
   generatePackageClassJavadoc(pkg,out);
   printClassAnnotations(out,schema);

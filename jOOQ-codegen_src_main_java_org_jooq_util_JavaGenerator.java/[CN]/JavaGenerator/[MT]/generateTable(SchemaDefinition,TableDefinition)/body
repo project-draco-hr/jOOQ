@@ -8,7 +8,7 @@
   final List<String> interfaces=getStrategy().getJavaClassImplements(table,Mode.DEFAULT);
   final String comment=defaultString(table.getComment());
   log.info("Generating table",getStrategy().getFileName(table) + " [input=" + table.getInputName()+ ", output="+ table.getOutputName()+ ", pk="+ (primaryKey != null ? primaryKey.getName() : "N/A")+ "]");
-  JavaWriter out=new JavaWriter(getStrategy().getFile(table));
+  JavaWriter out=newJavaWriter(getStrategy().getFile(table));
   printPackage(out,table);
   generateTableClassJavadoc(table,out);
   printClassAnnotations(out,schema);

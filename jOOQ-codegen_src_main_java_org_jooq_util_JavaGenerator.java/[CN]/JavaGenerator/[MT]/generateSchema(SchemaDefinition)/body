@@ -5,7 +5,7 @@
   final String schemaId=getStrategy().getJavaIdentifier(schema);
   final String className=getStrategy().getJavaClassName(schema);
   final List<String> interfaces=getStrategy().getJavaClassImplements(schema,Mode.DEFAULT);
-  JavaWriter out=new JavaWriter(getStrategy().getFile(schema));
+  JavaWriter out=newJavaWriter(getStrategy().getFile(schema));
   printPackage(out,schema);
   generateSchemaClassJavadoc(schema,out);
   printClassAnnotations(out,schema);

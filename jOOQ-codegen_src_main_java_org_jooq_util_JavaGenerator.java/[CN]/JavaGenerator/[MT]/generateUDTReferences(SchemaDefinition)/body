@@ -1,6 +1,6 @@
 {
   log.info("Generating UDT references");
-  JavaWriter out=new JavaWriter(new File(getStrategy().getFile(schema).getParentFile(),"UDTs.java"));
+  JavaWriter out=newJavaWriter(new File(getStrategy().getFile(schema).getParentFile(),"UDTs.java"));
   printPackage(out,schema);
   printClassJavadoc(out,"Convenience access to all UDTs in " + schema.getOutputName());
   printClassAnnotations(out,schema);
