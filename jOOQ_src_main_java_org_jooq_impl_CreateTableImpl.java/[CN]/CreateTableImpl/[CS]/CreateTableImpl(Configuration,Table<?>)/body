@@ -1,4 +1,6 @@
 {
   super(configuration);
   this.table=table;
+  this.columnFields=new ArrayList<Field<?>>();
+  this.columnTypes=new ArrayList<DataType<?>>();
 }
