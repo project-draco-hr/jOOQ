@@ -1,8 +1,11 @@
 {
   JDBCUtils.safeClose(ctx.resultSet());
   ctx.resultSet(null);
+  PreparedStatement statement=ctx.statement();
+  if (statement != null) {
+    consumeWarnings(ctx,listener);
+  }
   if (!keepStatement) {
-    PreparedStatement statement=ctx.statement();
     if (statement != null) {
       JDBCUtils.safeClose(statement);
       ctx.statement(null);
