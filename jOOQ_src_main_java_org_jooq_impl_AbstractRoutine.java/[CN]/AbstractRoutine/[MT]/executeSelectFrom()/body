@@ -1,6 +1,6 @@
 {
   DSLContext create=create(configuration);
   Result<?> result=create.selectFrom(table(asField())).fetch();
-  results.put(returnParameter,result);
+  outValues.put(returnParameter,result);
   return 0;
 }

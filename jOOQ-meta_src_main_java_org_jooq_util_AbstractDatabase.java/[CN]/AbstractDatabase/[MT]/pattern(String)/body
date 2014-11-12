@@ -1,0 +1,9 @@
+{
+  if (patterns == null)   patterns=new HashMap<String,Pattern>();
+  Pattern pattern=patterns.get(regex);
+  if (pattern == null) {
+    pattern=Pattern.compile(regex,Pattern.COMMENTS);
+    patterns.put(regex,pattern);
+  }
+  return pattern;
+}

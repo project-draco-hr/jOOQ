@@ -27,7 +27,7 @@
     tType=Record.class.getName();
   }
   log.info("Generating DAO",getStrategy().getFileName(table,Mode.DAO));
-  JavaWriter out=new JavaWriter(getStrategy().getFile(table,Mode.DAO));
+  JavaWriter out=newJavaWriter(getStrategy().getFile(table,Mode.DAO));
   printPackage(out,table,Mode.DAO);
   generateDaoClassJavadoc(table,out);
   printClassAnnotations(out,table.getSchema());

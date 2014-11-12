@@ -2,7 +2,7 @@
   log.info("Generating interface",getStrategy().getFileName(tableOrUDT,Mode.INTERFACE));
   final String className=getStrategy().getJavaClassName(tableOrUDT,Mode.INTERFACE);
   final List<String> interfaces=getStrategy().getJavaClassImplements(tableOrUDT,Mode.INTERFACE);
-  JavaWriter out=new JavaWriter(getStrategy().getFile(tableOrUDT,Mode.INTERFACE));
+  JavaWriter out=newJavaWriter(getStrategy().getFile(tableOrUDT,Mode.INTERFACE));
   printPackage(out,tableOrUDT,Mode.INTERFACE);
   if (tableOrUDT instanceof TableDefinition)   generateInterfaceClassJavadoc((TableDefinition)tableOrUDT,out);
  else   generateUDTInterfaceClassJavadoc((UDTDefinition)tableOrUDT,out);

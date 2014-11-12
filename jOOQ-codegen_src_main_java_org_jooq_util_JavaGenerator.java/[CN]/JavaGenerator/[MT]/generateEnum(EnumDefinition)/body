@@ -2,7 +2,7 @@
   log.info("Generating ENUM",getStrategy().getFileName(e,Mode.ENUM));
   final String className=getStrategy().getJavaClassName(e,Mode.ENUM);
   final List<String> interfaces=getStrategy().getJavaClassImplements(e,Mode.ENUM);
-  JavaWriter out=new JavaWriter(getStrategy().getFile(e,Mode.ENUM));
+  JavaWriter out=newJavaWriter(getStrategy().getFile(e,Mode.ENUM));
   printPackage(out,e);
   generateEnumClassJavadoc(e,out);
   printClassAnnotations(out,e.getSchema());

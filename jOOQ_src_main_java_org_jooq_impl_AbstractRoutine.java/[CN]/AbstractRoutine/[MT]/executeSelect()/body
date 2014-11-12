@@ -1,5 +1,5 @@
 {
   final Field<T> field=asField();
-  results.put(returnParameter,create(configuration).select(field).fetchOne(field));
+  outValues.put(returnParameter,create(configuration).select(field).fetchOne(field));
   return 0;
 }

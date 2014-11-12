@@ -6,11 +6,17 @@
       log.warn("DEPRECATED","The <expressions/> element in <forcedType/> is deprecated. Use <expression/> instead");
     }
     String types=forcedType.getTypes();
-    if (expression != null && !definition.getName().matches(expression) && !definition.getQualifiedName().matches(expression)) {
-      continue forcedTypeLoop;
+    if (expression != null) {
+      Pattern p=pattern(expression);
+      if (!p.matcher(definition.getName()).matches() && !p.matcher(definition.getQualifiedName()).matches()) {
+        continue forcedTypeLoop;
+      }
     }
-    if (types != null && definedType != null && !definedType.getType().matches(types)) {
-      continue forcedTypeLoop;
+    if (types != null && definedType != null) {
+      Pattern p=pattern(types);
+      if ((!p.matcher(definedType.getType()).matches()) && (definedType.getLength() == 0 || !p.matcher(definedType.getType() + "(" + definedType.getLength()+ ")").matches()) && (definedType.getScale() != 0 || !p.matcher(definedType.getType() + "(" + definedType.getPrecision()+ ")").matches())&& (!p.matcher(definedType.getType() + "(" + definedType.getPrecision()+ ","+ definedType.getScale()+ ")").matches())&& (!p.matcher(definedType.getType() + "(" + definedType.getPrecision()+ ", "+ definedType.getScale()+ ")").matches())) {
+        continue forcedTypeLoop;
+      }
     }
     return forcedType;
   }

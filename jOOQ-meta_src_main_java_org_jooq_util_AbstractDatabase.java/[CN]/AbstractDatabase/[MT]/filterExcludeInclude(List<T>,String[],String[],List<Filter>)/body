@@ -3,7 +3,7 @@
   definitionsLoop:   for (  T definition : definitions) {
     if (excludes != null) {
       for (      String exclude : excludes) {
-        Pattern p=Pattern.compile(exclude,Pattern.COMMENTS);
+        Pattern p=pattern(exclude);
         if (exclude != null && (p.matcher(definition.getName()).matches() || p.matcher(definition.getQualifiedName()).matches())) {
           if (log.isDebugEnabled())           log.debug("Exclude","Excluding " + definition.getQualifiedName() + " because of pattern "+ exclude);
           continue definitionsLoop;
@@ -12,7 +12,7 @@
     }
     if (includes != null) {
       for (      String include : includes) {
-        Pattern p=Pattern.compile(include,Pattern.COMMENTS);
+        Pattern p=pattern(include);
         if (include != null && (p.matcher(definition.getName()).matches() || p.matcher(definition.getQualifiedName()).matches())) {
           for (          Filter filter : filters) {
             if (filter.exclude(definition)) {

@@ -1,0 +1,5 @@
+{
+  columnFields.add(fieldByName(type,field));
+  columnTypes.add(type);
+  return this;
+}

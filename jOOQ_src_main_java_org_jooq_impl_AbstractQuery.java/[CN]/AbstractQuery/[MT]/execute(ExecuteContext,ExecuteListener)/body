@@ -14,7 +14,4 @@
     consumeExceptions(ctx.configuration(),stmt,e);
     throw e;
   }
- finally {
-    consumeWarnings(ctx,listener);
-  }
 }

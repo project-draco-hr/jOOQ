@@ -6,7 +6,7 @@
   final String recordType=getStrategy().getFullJavaClassName(tableOrUdt,Mode.RECORD);
   final List<String> interfaces=getStrategy().getJavaClassImplements(tableOrUdt,Mode.RECORD);
   final List<? extends TypedElementDefinition<?>> columns=getTypedElements(tableOrUdt);
-  JavaWriter out=new JavaWriter(getStrategy().getFile(tableOrUdt,Mode.RECORD));
+  JavaWriter out=newJavaWriter(getStrategy().getFile(tableOrUdt,Mode.RECORD));
   printPackage(out,tableOrUdt,Mode.RECORD);
   if (tableOrUdt instanceof TableDefinition)   generateRecordClassJavadoc((TableDefinition)tableOrUdt,out);
  else   generateUDTRecordClassJavadoc((UDTDefinition)tableOrUdt,out);

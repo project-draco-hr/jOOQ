@@ -1,6 +1,6 @@
 {
   log.info("Generating table references");
-  JavaWriter out=new JavaWriter(new File(getStrategy().getFile(schema).getParentFile(),"Tables.java"));
+  JavaWriter out=newJavaWriter(new File(getStrategy().getFile(schema).getParentFile(),"Tables.java"));
   printPackage(out,schema);
   printClassJavadoc(out,"Convenience access to all tables in " + schema.getOutputName());
   printClassAnnotations(out,schema);

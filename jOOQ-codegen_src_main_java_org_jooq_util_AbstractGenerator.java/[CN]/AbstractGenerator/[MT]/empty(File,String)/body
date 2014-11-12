@@ -1,17 +1,3 @@
 {
-  if (file != null) {
-    if (file.isDirectory()) {
-      File[] children=file.listFiles();
-      if (children != null) {
-        for (        File child : children) {
-          empty(child,suffix);
-        }
-      }
-    }
- else {
-      if (file.getName().endsWith(suffix)) {
-        file.delete();
-      }
-    }
-  }
+  empty(file,suffix,Collections.<File>emptySet());
 }
