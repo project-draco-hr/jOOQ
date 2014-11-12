@@ -1,8 +1,3 @@
 {
-  final DataType<U> actualType=converter == null ? (DataType<U>)type : type.asConvertedDataType(converter);
-  final TableFieldImpl<R,U> tableField=new TableFieldImpl<R,U>(name,actualType,table,comment,converter);
-  if (table instanceof TableImpl) {
-    ((TableImpl<?>)table).fields0().add(tableField);
-  }
-  return tableField;
+  return createField(name,type,table,comment,converter == null ? null : new DefaultBinding<T,U>(converter,type.isLob()));
 }

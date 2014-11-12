@@ -1,8 +1,0 @@
-{
-  super();
-  this.name=name;
-  this.comment=defaultString(comment);
-  this.dataType=type;
-  this.converter=converter != null ? converter : type instanceof ConvertedDataType ? ((ConvertedDataType<?,T>)type).converter() : new IdentityConverter<T>(type.getType());
-  this.binding=new DefaultBinding(this.converter,type.isLob());
-}

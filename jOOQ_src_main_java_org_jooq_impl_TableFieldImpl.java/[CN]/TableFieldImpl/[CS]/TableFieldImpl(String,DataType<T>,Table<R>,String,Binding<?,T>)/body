@@ -1,0 +1,4 @@
+{
+  super(name,type,comment,binding);
+  this.table=table;
+}

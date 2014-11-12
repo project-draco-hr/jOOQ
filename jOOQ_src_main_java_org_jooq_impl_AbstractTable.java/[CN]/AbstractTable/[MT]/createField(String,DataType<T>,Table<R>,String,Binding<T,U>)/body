@@ -1,0 +1,8 @@
+{
+  final DataType<U> actualType=binding == null ? (DataType<U>)type : type.asConvertedDataType(binding);
+  final TableFieldImpl<R,U> tableField=new TableFieldImpl<R,U>(name,actualType,table,comment,binding);
+  if (table instanceof TableImpl) {
+    ((TableImpl<?>)table).fields0().add(tableField);
+  }
+  return tableField;
+}

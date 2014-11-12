@@ -1,2 +1,0 @@
-DataType<T> delegate
-Converter<? super T,U> converter

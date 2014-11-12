@@ -1,3 +1,3 @@
 {
-  return new ConvertedDataType<T,U>(this,converter);
+  return asConvertedDataType(new DefaultBinding<T,U>((Converter)converter,isLob()));
 }

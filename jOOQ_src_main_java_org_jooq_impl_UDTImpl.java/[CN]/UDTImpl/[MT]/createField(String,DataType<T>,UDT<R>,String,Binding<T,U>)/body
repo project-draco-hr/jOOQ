@@ -1,0 +1,5 @@
+{
+  final DataType<U> actualType=binding == null ? (DataType<U>)type : type.asConvertedDataType(binding);
+  final UDTFieldImpl<R,U> udtField=new UDTFieldImpl<R,U>(name,actualType,udt,comment,binding);
+  return udtField;
+}

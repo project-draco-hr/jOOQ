@@ -1,4 +1,0 @@
-{
-  super(name,type,comment,converter);
-  this.table=table;
-}

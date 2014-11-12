@@ -1,5 +1,5 @@
 String name
 DataType<T> type
-UDT<R> udt
+Table<R> table
 String comment
-Converter<?,T> converter
+Binding<?,T> binding

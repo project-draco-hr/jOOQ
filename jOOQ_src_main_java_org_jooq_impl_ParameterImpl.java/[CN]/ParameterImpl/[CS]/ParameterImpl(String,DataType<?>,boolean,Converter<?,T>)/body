@@ -1,7 +1,0 @@
-{
-  this.name=name;
-  this.isDefaulted=isDefaulted;
-  this.type=converter == null ? (DataType<T>)type : type.asConvertedDataType((Converter)converter);
-  this.converter=converter != null ? converter : type instanceof ConvertedDataType ? ((ConvertedDataType<?,T>)type).converter() : new IdentityConverter<T>((Class<T>)type.getType());
-  this.binding=new DefaultBinding(this.converter,type.isLob());
-}
