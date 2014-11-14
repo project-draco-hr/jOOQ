@@ -11,7 +11,7 @@ case FIREBIRD:
     ctx.literal("RDB$DATABASE");
   break;
 case HSQLDB:
-ctx.literal("INFORMATION_SCHEMA").sql(".").literal("SYSTEM_USERS");
+ctx.sql("(").sql(DUAL_HSQLDB).sql(") as dual");
 break;
 case CUBRID:
 ctx.literal("db_root");
