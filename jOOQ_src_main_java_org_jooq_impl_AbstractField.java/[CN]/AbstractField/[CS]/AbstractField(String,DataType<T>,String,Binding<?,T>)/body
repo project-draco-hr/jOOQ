@@ -3,5 +3,5 @@
   this.name=name;
   this.comment=defaultString(comment);
   this.dataType=type;
-  this.binding=binding != null ? binding : type instanceof ConvertedDataType ? ((ConvertedDataType<?,T>)type).binding() : new DefaultBinding<T,T>(new IdentityConverter<T>(type.getType()));
+  this.binding=binding != null ? binding : type instanceof ConvertedDataType ? ((ConvertedDataType<?,T>)type).binding() : new DefaultBinding<T,T>(new IdentityConverter<T>(type.getType()),type.isLob());
 }
