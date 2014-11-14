@@ -1,0 +1,3 @@
+AbstractScope scope
+ResultSet resultSet
+int index

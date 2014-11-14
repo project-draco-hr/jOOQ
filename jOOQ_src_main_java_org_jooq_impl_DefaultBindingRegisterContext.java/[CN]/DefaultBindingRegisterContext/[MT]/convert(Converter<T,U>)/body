@@ -1,0 +1,3 @@
+{
+  return new DefaultBindingRegisterContext<T>(this,statement,index);
+}

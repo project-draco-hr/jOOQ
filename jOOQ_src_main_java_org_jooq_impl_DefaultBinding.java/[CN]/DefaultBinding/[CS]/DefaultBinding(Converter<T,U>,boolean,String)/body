@@ -1,6 +1,0 @@
-{
-  this.type=converter.fromType();
-  this.converter=converter;
-  this.isLob=isLob;
-  this.paramName=paramName;
-}

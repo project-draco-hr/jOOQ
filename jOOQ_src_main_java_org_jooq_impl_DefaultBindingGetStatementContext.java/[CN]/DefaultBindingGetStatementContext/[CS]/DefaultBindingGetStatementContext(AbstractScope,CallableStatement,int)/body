@@ -1,0 +1,5 @@
+{
+  super(scope);
+  this.statement=statement;
+  this.index=index;
+}

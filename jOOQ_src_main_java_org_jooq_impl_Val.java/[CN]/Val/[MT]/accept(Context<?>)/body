@@ -2,7 +2,12 @@
   if (ctx instanceof RenderContext) {
     ParamType paramType=ctx.paramType();
     if (isInline(ctx))     ctx.paramType(ParamType.INLINED);
-    new DefaultBinding(getConverter(),getDataType().isLob(),getParamName()).sql(new DefaultBindingSQLContext<T>(ctx.configuration(),(RenderContext)ctx,value));
+    try {
+      getBinding().sql(new DefaultBindingSQLContext<T>(ctx.configuration(),(RenderContext)ctx,value,getBindVariable(ctx)));
+    }
+ catch (    SQLException e) {
+      throw new DataAccessException("Error while generating SQL for Binding",e);
+    }
     ctx.paramType(paramType);
   }
  else {

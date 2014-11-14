@@ -1,0 +1,14 @@
+{
+  if (ctx.paramType() == NAMED || ctx.paramType() == NAMED_OR_INLINED) {
+    int index=ctx.nextIndex();
+    if (StringUtils.isBlank(getParamName())) {
+      return ":" + index;
+    }
+ else {
+      return ":" + getParamName();
+    }
+  }
+ else {
+    return "?";
+  }
+}

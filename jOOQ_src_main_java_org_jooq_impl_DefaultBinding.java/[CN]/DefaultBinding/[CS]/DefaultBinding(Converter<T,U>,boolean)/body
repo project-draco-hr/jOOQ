@@ -1,3 +1,5 @@
 {
-  this(converter,isLob,null);
+  this.type=converter.fromType();
+  this.converter=converter;
+  this.isLob=isLob;
 }

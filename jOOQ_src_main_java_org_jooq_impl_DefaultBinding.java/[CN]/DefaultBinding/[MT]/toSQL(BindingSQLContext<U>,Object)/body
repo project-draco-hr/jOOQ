@@ -125,12 +125,12 @@
   }
  else   if (family == SQLDialect.POSTGRES) {
     if (type.isArray() && byte[].class != type) {
-      render.sql(getBindVariable(render));
+      render.sql(ctx.variable());
       render.sql("::");
       render.keyword(DefaultDataType.getDataType(family,type).getCastTypeName(render.configuration()));
     }
  else     if (EnumType.class.isAssignableFrom(type)) {
-      render.sql(getBindVariable(render));
+      render.sql(ctx.variable());
       EnumType e=(EnumType)type.getEnumConstants()[0];
       Schema schema=e.getSchema();
       if (schema != null) {
@@ -144,10 +144,10 @@
       }
     }
  else {
-      render.sql(getBindVariable(render));
+      render.sql(ctx.variable());
     }
   }
  else {
-    render.sql(getBindVariable(render));
+    render.sql(ctx.variable());
   }
 }

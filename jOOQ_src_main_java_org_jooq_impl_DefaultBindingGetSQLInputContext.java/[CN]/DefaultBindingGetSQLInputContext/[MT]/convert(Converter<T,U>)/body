@@ -1,0 +1,8 @@
+{
+  return new DefaultBindingGetSQLInputContext<T>(this,input){
+    @Override public void value(    T v){
+      value=converter.from(v);
+    }
+  }
+;
+}
