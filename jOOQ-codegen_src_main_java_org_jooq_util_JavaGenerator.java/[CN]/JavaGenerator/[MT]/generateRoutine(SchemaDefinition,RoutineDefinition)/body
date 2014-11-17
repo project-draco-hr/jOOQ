@@ -3,7 +3,7 @@
   final String className=getStrategy().getJavaClassName(routine);
   final String returnType=(routine.getReturnValue() == null) ? Void.class.getName() : getJavaType(routine.getReturnType());
   final List<?> returnTypeRef=list((routine.getReturnValue() != null) ? getJavaTypeReference(database,routine.getReturnType()) : null);
-  final List<?> returnConverterType=list((routine.getReturnValue() != null) ? routine.getReturnType().getConverter() : null);
+  final List<?> returnConverterType=list((routine.getReturnValue() != null) ? routine.getReturnType().getConverter() : null,(routine.getReturnValue() != null) ? routine.getReturnType().getBinding() : null);
   final List<String> interfaces=getStrategy().getJavaClassImplements(routine,Mode.DEFAULT);
   final String schemaId=getStrategy().getFullJavaIdentifier(schema);
   final List<String> packageId=getStrategy().getFullJavaIdentifiers(routine.getPackage());

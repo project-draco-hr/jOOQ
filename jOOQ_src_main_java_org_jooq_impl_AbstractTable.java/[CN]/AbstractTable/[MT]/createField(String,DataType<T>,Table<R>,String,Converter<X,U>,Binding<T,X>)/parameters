@@ -1,0 +1,6 @@
+String name
+DataType<T> type
+Table<R> table
+String comment
+Converter<X,U> converter
+Binding<T,X> binding

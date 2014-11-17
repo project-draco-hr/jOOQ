@@ -1,4 +1,0 @@
-String name
-Schema schema
-DataType<?> type
-Converter<?,T> converter

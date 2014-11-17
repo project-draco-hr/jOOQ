@@ -1,3 +1,3 @@
 {
-  this(name,schema,pkg,type,(Binding<?,T>)null);
+  this(name,schema,pkg,type,null,null);
 }

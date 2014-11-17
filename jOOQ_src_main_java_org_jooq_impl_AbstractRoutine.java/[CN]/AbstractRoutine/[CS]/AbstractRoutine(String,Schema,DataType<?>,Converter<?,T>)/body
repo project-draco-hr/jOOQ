@@ -1,3 +1,0 @@
-{
-  this(name,schema,type,DefaultBinding.newBinding(converter,type));
-}

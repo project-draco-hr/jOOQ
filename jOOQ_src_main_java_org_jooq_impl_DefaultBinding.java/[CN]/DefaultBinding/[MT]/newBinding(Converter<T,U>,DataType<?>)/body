@@ -1,3 +1,0 @@
-{
-  return new DefaultBinding(converter != null ? converter : new IdentityConverter(type.getType()),type.isLob());
-}

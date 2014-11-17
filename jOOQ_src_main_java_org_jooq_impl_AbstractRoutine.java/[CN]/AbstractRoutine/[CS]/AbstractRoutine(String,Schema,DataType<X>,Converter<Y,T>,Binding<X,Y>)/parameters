@@ -1,0 +1,5 @@
+String name
+Schema schema
+DataType<X> type
+Converter<Y,T> converter
+Binding<X,Y> binding

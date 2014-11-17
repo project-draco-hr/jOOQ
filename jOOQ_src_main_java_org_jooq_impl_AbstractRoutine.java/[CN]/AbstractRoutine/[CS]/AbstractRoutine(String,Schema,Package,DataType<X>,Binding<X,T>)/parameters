@@ -1,5 +1,5 @@
 String name
 Schema schema
 Package pkg
-DataType<?> type
-Binding<?,T> binding
+DataType<X> type
+Binding<X,T> binding

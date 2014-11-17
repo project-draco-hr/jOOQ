@@ -22,14 +22,9 @@
     final String attrId=getStrategy().getJavaIdentifier(attribute);
     final String attrName=attribute.getName();
     final String attrComment=StringUtils.defaultString(attribute.getComment());
-    final String attrConverterType=attribute.getType().getConverter();
+    final List<String> converters=list(attribute.getType().getConverter(),attribute.getType().getBinding());
     out.tab(1).javadoc("The attribute <code>%s</code>.%s",attribute.getQualifiedOutputName(),defaultIfBlank(" " + attrComment,""));
-    if (attrConverterType != null) {
-      out.tab(1).println("public static final %s<%s, %s> %s = createField(\"%s\", %s, %s, \"%s\", new %s());",UDTField.class,recordType,attrType,attrId,attrName,attrTypeRef,udtId,escapeString(""),attrConverterType);
-    }
- else {
-      out.tab(1).println("public static final %s<%s, %s> %s = createField(\"%s\", %s, %s, \"%s\");",UDTField.class,recordType,attrType,attrId,attrName,attrTypeRef,udtId,escapeString(""));
-    }
+    out.tab(1).println("public static final %s<%s, %s> %s = createField(\"%s\", %s, %s, \"%s\"[[before=, ][new %s()]]);",UDTField.class,recordType,attrType,attrId,attrName,attrTypeRef,udtId,escapeString(""),converters);
   }
   for (  RoutineDefinition routine : udt.getRoutines()) {
     try {
