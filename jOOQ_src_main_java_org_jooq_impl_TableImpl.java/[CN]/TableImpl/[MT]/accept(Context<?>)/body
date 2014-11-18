@@ -12,7 +12,8 @@
     }
     ctx.literal(Utils.getMappedTable(ctx.configuration(),this).getName());
     if (parameters != null && ctx.declareTables()) {
-      ctx.sql("(").visit(new QueryPartList<Field<?>>(parameters)).sql(")");
+      if (ctx.family() == FIREBIRD && parameters.length == 0)       ctx.visit(new QueryPartList<Field<?>>(parameters));
+ else       ctx.sql("(").visit(new QueryPartList<Field<?>>(parameters)).sql(")");
     }
   }
 }

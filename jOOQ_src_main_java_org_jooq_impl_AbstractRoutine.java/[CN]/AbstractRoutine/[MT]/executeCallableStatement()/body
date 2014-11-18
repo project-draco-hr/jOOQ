@@ -14,7 +14,7 @@
     registerOutParameters(configuration,(CallableStatement)ctx.statement());
     listener.bindEnd(ctx);
     execute0(ctx,listener);
-    Utils.consumeResultSets(ctx,listener,results,null);
+    if (ctx.family() != FIREBIRD)     Utils.consumeResultSets(ctx,listener,results,null);
     fetchOutParameters(ctx);
     return 0;
   }

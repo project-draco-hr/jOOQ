@@ -1,0 +1,11 @@
+{
+  List<ColumnDefinition> result=new ArrayList<ColumnDefinition>();
+  Rdb$procedureParameters p=RDB$PROCEDURE_PARAMETERS.as("p");
+  Rdb$fields f=RDB$FIELDS.as("f");
+  for (  Record record : create().select(p.RDB$PARAMETER_NUMBER,p.RDB$PARAMETER_NAME.trim(),p.RDB$DESCRIPTION,p.RDB$DEFAULT_VALUE,DSL.bitOr(p.RDB$NULL_FLAG.nvl((short)0),f.RDB$NULL_FLAG.nvl((short)0)).as(p.RDB$NULL_FLAG),p.RDB$DEFAULT_SOURCE,CHARACTER_LENGTH(f).as("CHARACTER_LENGTH"),f.RDB$FIELD_PRECISION,FIELD_SCALE(f).as("FIELD_SCALE"),FIELD_TYPE(f).as("FIELD_TYPE"),f.RDB$FIELD_SUB_TYPE).from(p).leftOuterJoin(f).on(p.RDB$FIELD_SOURCE.eq(f.RDB$FIELD_NAME)).where(p.RDB$PROCEDURE_NAME.eq(getName())).and(p.RDB$PARAMETER_TYPE.eq((short)1)).orderBy(p.RDB$PARAMETER_NUMBER)) {
+    DefaultDataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),record.getValue("FIELD_TYPE",String.class),record.getValue("CHARACTER_LENGTH",short.class),record.getValue(f.RDB$FIELD_PRECISION),record.getValue("FIELD_SCALE",Integer.class),record.getValue(p.RDB$NULL_FLAG) == 0,record.getValue(p.RDB$DEFAULT_SOURCE) != null);
+    ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getSchema(),getName()),record.getValue(p.RDB$PARAMETER_NAME.trim()),record.getValue(p.RDB$PARAMETER_NUMBER),type,false,null);
+    result.add(column);
+  }
+  return result;
+}

@@ -1,8 +1,12 @@
 {
   List<TableDefinition> result=new ArrayList<TableDefinition>();
-  for (  String tableName : create().select(RDB$RELATIONS.RDB$RELATION_NAME.trim()).from(RDB$RELATIONS).orderBy(1).fetch(0,String.class)) {
-    TableDefinition tableDef=new FirebirdTableDefinition(getSchemata().get(0),tableName,"");
-    result.add(tableDef);
+  for (  Record2<String,Boolean> record : create().select(RDB$RELATIONS.RDB$RELATION_NAME.trim(),inline(false).as("table_valued_function")).from(RDB$RELATIONS).unionAll(select(RDB$PROCEDURES.RDB$PROCEDURE_NAME.trim(),inline(true).as("table_valued_function")).from(RDB$PROCEDURES).where(RDB$PROCEDURES.RDB$PROCEDURE_TYPE.eq((short)1))).orderBy(1)) {
+    if (record.value2()) {
+      result.add(new FirebirdTableValuedFunction(getSchemata().get(0),record.value1(),""));
+    }
+ else {
+      result.add(new FirebirdTableDefinition(getSchemata().get(0),record.value1(),""));
+    }
   }
   return result;
 }

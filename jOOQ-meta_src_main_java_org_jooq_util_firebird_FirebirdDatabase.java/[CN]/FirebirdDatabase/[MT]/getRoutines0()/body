@@ -1,4 +1,7 @@
 {
   List<RoutineDefinition> result=new ArrayList<RoutineDefinition>();
+  for (  String procedureName : create().select(RDB$PROCEDURES.RDB$PROCEDURE_NAME.trim()).from(RDB$PROCEDURES).where(RDB$PROCEDURES.RDB$PROCEDURE_TYPE.eq((short)2)).orderBy(1).fetch(0,String.class)) {
+    result.add(new FirebirdRoutineDefinition(getSchemata().get(0),procedureName));
+  }
   return result;
 }
