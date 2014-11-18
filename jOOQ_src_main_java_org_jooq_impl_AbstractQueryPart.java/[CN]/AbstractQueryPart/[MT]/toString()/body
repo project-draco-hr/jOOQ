@@ -1,6 +1,6 @@
 {
   try {
-    return create().renderInlined(this);
+    return create(configuration().derive(SettingsTools.clone(configuration().settings()).withRenderFormatted(true))).renderInlined(this);
   }
  catch (  SQLDialectNotSupportedException e) {
     return "[ ... " + e.getMessage() + " ... ]";
