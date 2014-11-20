@@ -1,35 +1,5 @@
 {
-  SQLDialect dialect=JDBCUtils.dialect(j.getUrl());
-  Class<? extends Database> result=JDBCDatabase.class;
-switch (dialect.family()) {
-case CUBRID:
-    result=CUBRIDDatabase.class;
-  break;
-case DERBY:
-result=DerbyDatabase.class;
-break;
-case FIREBIRD:
-result=FirebirdDatabase.class;
-break;
-case H2:
-result=H2Database.class;
-break;
-case HSQLDB:
-result=HSQLDBDatabase.class;
-break;
-case MARIADB:
-result=MariaDBDatabase.class;
-break;
-case MYSQL:
-result=MySQLDatabase.class;
-break;
-case POSTGRES:
-result=PostgresDatabase.class;
-break;
-case SQLITE:
-result=SQLiteDatabase.class;
-break;
-}
-log.info("Database","Inferring database " + result.getName() + " from URL "+ j.getUrl());
-return result;
+  Class<? extends Database> result=Databases.databaseClass(JDBCUtils.dialect(j.getUrl()));
+  log.info("Database","Inferring database " + result.getName() + " from URL "+ j.getUrl());
+  return result;
 }
