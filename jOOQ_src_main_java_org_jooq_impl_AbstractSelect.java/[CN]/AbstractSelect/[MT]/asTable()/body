@@ -1,3 +1,0 @@
-{
-  return new DerivedTable<R>(this).as("alias_" + Utils.hash(this));
-}

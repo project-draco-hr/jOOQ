@@ -1,4 +1,0 @@
-Configuration configuration
-Select<R> query1
-Select<? extends R> query2
-CombineOperator operator

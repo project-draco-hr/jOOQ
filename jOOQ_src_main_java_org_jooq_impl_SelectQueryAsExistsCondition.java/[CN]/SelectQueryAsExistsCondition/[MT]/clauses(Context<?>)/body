@@ -1,3 +1,0 @@
-{
-  return operator == EXISTS ? CLAUSES_EXISTS : CLAUSES_EXISTS_NOT;
-}
