@@ -8,7 +8,7 @@
   }
   final String className=getStrategy().getFullJavaClassName(function);
   out.tab(1).javadoc("Get <code>%s</code> as a field",function.getQualifiedOutputName());
-  out.tab(1).print("public static %s %s(",className,getStrategy().getJavaMethodName(function,Mode.DEFAULT));
+  out.tab(1).print("public static %s %s(",className,javaMethodName);
   printParameterDeclarations(out,function,parametersAsField);
   out.println(") {");
   out.tab(2).print("return %s.call(",getStrategy().getFullJavaIdentifier(function));

@@ -12,6 +12,9 @@
     final String comment=!StringUtils.isBlank(table.getComment()) ? table.getComment() : "The table " + table.getQualifiedOutputName();
     out.tab(1).javadoc(comment);
     out.tab(1).println("public static final %s %s = %s;",className,id,fullId);
+    if (table.isTableValuedFunction()) {
+      printTableValuedFunction(out,table,getStrategy().getJavaIdentifier(table));
+    }
   }
   out.println("}");
   out.close();

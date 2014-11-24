@@ -16,7 +16,7 @@
   }
   for (  TableDefinition table : database.getTables(schema)) {
     if (table.isTableValuedFunction()) {
-      printTableValuedFunction(out,table);
+      printTableValuedFunction(out,table,getStrategy().getJavaMethodName(table,Mode.DEFAULT));
     }
   }
   out.println("}");

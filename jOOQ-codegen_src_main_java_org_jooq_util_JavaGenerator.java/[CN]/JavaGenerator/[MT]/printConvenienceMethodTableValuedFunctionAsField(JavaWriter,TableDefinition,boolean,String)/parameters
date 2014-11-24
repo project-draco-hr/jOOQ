@@ -1,3 +1,4 @@
 JavaWriter out
 TableDefinition function
 boolean parametersAsField
+String javaMethodName

@@ -1,4 +1,0 @@
-{
-  printConvenienceMethodTableValuedFunctionAsField(out,table,false);
-  printConvenienceMethodTableValuedFunctionAsField(out,table,true);
-}

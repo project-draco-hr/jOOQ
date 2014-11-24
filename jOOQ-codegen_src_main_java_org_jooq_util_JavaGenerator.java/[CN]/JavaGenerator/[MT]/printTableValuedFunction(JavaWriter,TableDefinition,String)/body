@@ -1,0 +1,4 @@
+{
+  printConvenienceMethodTableValuedFunctionAsField(out,table,false,javaMethodName);
+  printConvenienceMethodTableValuedFunctionAsField(out,table,true,javaMethodName);
+}
