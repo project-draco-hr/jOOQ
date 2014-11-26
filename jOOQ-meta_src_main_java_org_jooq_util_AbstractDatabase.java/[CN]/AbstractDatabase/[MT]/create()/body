@@ -1,6 +1,17 @@
 {
   if (create == null) {
-    create=create0();
+    final Configuration configuration=create0().configuration();
+    final Settings newSettings=SettingsTools.clone(configuration.settings()).withRenderFormatted(true);
+    final ExecuteListenerProvider[] oldProviders=configuration.executeListenerProviders();
+    final ExecuteListenerProvider[] newProviders=new ExecuteListenerProvider[oldProviders.length + 1];
+    System.arraycopy(oldProviders,0,newProviders,0,oldProviders.length);
+    newProviders[oldProviders.length]=new DefaultExecuteListenerProvider(new DefaultExecuteListener(){
+      @Override public void exception(      ExecuteContext ctx){
+        log.warn("SQL exception","Exception while executing meta query: " + ctx.sqlException().getMessage() + "\n\n"+ "Please report this bug here: https://github.com/jOOQ/jOOQ/issues/new\n\n"+ DSL.using(configuration.derive(newSettings)).renderInlined(ctx.query()));
+      }
+    }
+);
+    create=DSL.using(configuration.derive(newProviders));
   }
   return create;
 }
