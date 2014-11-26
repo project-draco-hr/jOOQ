@@ -4,5 +4,5 @@
   if (pk != null) {
     record=using(configuration).selectFrom(table).where(equal(pk,id)).fetchOne();
   }
-  return mapper().map(record);
+  return record == null ? null : mapper().map(record);
 }
