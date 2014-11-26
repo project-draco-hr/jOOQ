@@ -1,5 +1,6 @@
 {
   String keyword=null;
+  String format=null;
 switch (configuration.dialect().family()) {
 case CUBRID:
 case HSQLDB:
@@ -27,6 +28,32 @@ default :
 throwUnsupported();
 }
 return field("{trunc}({0}, {1})",getDataType(),date,inline(keyword));
+}
+case H2:
+{
+switch (part) {
+case YEAR:
+format="yyyy";
+break;
+case MONTH:
+format="yyyy-MM";
+break;
+case DAY:
+format="yyyy-MM-dd";
+break;
+case HOUR:
+format="yyyy-MM-dd HH";
+break;
+case MINUTE:
+format="yyyy-MM-dd HH:mm";
+break;
+case SECOND:
+format="yyyy-MM-dd HH:mm:ss";
+break;
+default :
+throwUnsupported();
+}
+return field("{parsedatetime}({formatdatetime}({0}, {1}), {1})",getDataType(),date,inline(format));
 }
 case POSTGRES:
 {
