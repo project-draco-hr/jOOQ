@@ -148,5 +148,12 @@ break;
 }
 }
 }
+boolean qualify=context.qualify();
+try {
+context.qualify(false);
 toSQLOrderBy(context,originalFields,alternativeFields,wrapQueryExpressionInDerivedTable,wrapQueryExpressionBodyInDerivedTable,unionOrderBy,unionLimit);
+}
+  finally {
+context.qualify(qualify);
+}
 }
