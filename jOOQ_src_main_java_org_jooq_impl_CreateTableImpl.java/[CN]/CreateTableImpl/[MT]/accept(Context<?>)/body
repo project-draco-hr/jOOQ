@@ -8,6 +8,8 @@
     ctx.start(CREATE_TABLE).start(CREATE_TABLE_NAME).keyword("create table").sql(" ").visit(table).end(CREATE_TABLE_NAME).start(CREATE_TABLE_COLUMNS).sql("(").formatIndentStart().formatNewLine();
     for (int i=0; i < columnFields.size(); i++) {
       ctx.visit(columnFields.get(i)).sql(" ").sql(columnTypes.get(i).getCastTypeName(ctx.configuration()));
+      if (columnTypes.get(i).nullable())       ctx.sql(" ").keyword("null");
+ else       ctx.sql(" ").keyword("not null");
       if (i < columnFields.size() - 1)       ctx.sql(",").formatSeparator();
     }
     ctx.formatIndentEnd().formatNewLine().sql(")").end(CREATE_TABLE_COLUMNS).end(CREATE_TABLE);
