@@ -1,0 +1,3 @@
+{
+  return every(field(condition));
+}
