@@ -1,3 +1,0 @@
-{
-  return encodeLines(in,0,in.length,76,systemLineSeparator);
-}

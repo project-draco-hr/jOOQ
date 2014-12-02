@@ -1,6 +1,6 @@
 {
   if (databaseModel == null) {
-    databaseModel=JAXB.unmarshal(new File(getProperties().getProperty(XML_FILE_PARAM)),DatabaseModel.class);
+    databaseModel=JAXB.unmarshal(new File(getProperties().getProperty(XMLDatabase.P_XML_FILE)),DatabaseModel.class);
   }
   return databaseModel;
 }

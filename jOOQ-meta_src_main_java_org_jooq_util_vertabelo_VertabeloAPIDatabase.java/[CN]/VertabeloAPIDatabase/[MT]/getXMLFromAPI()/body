@@ -7,7 +7,7 @@
     HttpsURLConnection connection=(HttpsURLConnection)url.openConnection();
     connection.setConnectTimeout(5000);
     connection.setReadTimeout(5000);
-    String encodedAuthData=Base64Coder.encodeString(apiToken + ":");
+    String encodedAuthData=DatatypeConverter.printBase64Binary((apiToken + ":").getBytes());
     connection.addRequestProperty("Authorization","Basic " + encodedAuthData);
     int responseCode=connection.getResponseCode();
     log.info("Response code: " + responseCode);
