@@ -1,6 +1,51 @@
 {
   if (info == null) {
-    info=JAXB.unmarshal(new File(getProperties().getProperty("xml-file")),InformationSchema.class);
+    String xml=getProperties().getProperty(P_XML_FILE);
+    String xsl=getProperties().getProperty(P_XSL_FILE);
+    InputStream xmlIs=null;
+    InputStream xslIs=null;
+    log.info("Using XML file",xml);
+    try {
+      xmlIs=XMLDatabase.class.getResourceAsStream(xml);
+      if (xmlIs == null)       xmlIs=new FileInputStream(xml);
+      if (StringUtils.isBlank(xsl)) {
+        info=JAXB.unmarshal(new File(xml),InformationSchema.class);
+      }
+ else {
+        log.info("Using XSL file",xsl);
+        xslIs=XMLDatabase.class.getResourceAsStream(xsl);
+        if (xslIs == null)         xslIs=new FileInputStream(xsl);
+        try {
+          StringWriter writer=new StringWriter();
+          TransformerFactory factory=TransformerFactory.newInstance();
+          Transformer transformer=factory.newTransformer(new StreamSource(xslIs));
+          transformer.transform(new StreamSource(xmlIs),new StreamResult(writer));
+          info=JAXB.unmarshal(new StringReader(writer.getBuffer().toString()),InformationSchema.class);
+        }
+ catch (        TransformerException e) {
+          throw new RuntimeException("Error while transforming XML file " + xml + " with XSL file "+ xsl,e);
+        }
+      }
+    }
+ catch (    IOException e) {
+      throw new RuntimeException("Error while opening files " + xml + " or "+ xsl,e);
+    }
+ finally {
+      if (xmlIs != null) {
+        try {
+          xmlIs.close();
+        }
+ catch (        Exception ignore) {
+        }
+      }
+      if (xslIs != null) {
+        try {
+          xslIs.close();
+        }
+ catch (        Exception ignore) {
+        }
+      }
+    }
   }
   return info;
 }
