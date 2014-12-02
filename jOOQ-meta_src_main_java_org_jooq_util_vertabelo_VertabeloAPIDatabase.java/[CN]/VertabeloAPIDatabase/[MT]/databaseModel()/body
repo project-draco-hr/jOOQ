@@ -1,0 +1,15 @@
+{
+  if (databaseModel == null) {
+    readSettings();
+    String xml=getXMLFromAPI();
+    ByteArrayInputStream stream;
+    try {
+      stream=new ByteArrayInputStream(xml.getBytes("UTF-8"));
+    }
+ catch (    UnsupportedEncodingException e) {
+      throw new RuntimeException(e);
+    }
+    databaseModel=JAXB.unmarshal(stream,DatabaseModel.class);
+  }
+  return databaseModel;
+}
