@@ -43,10 +43,10 @@ if (operator == ADD) {
 case POSTGRES:
 {
 if (operator == ADD) {
-return lhs.add(rhsAsNumber().concat(" day").cast(DayToSecond.class));
+return new DateAdd(lhs,rhsAsNumber(),DatePart.DAY);
 }
  else {
-return lhs.sub(rhsAsNumber().concat(" day").cast(DayToSecond.class));
+return new DateAdd(lhs,rhsAsNumber().neg(),DatePart.DAY);
 }
 }
 case SQLITE:

@@ -133,7 +133,8 @@ break;
 default :
 throwUnsupported();
 }
-return date.add(field("({0} || {1})::interval",interval,inline(keyword)));
+if (getDataType().getType() == Date.class) return field("({0} + ({1} || {2})::interval)::date",getDataType(),date,interval,inline(keyword));
+ else return field("({0} + ({1} || {2})::interval)",getDataType(),date,interval,inline(keyword));
 }
 case SQLITE:
 {
