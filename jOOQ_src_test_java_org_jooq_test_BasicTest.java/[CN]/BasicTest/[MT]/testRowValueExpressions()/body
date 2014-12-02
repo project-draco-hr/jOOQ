@@ -53,8 +53,8 @@
   assertEquals(val("6"),t8.field6());
   assertEquals(val(7),t8.field7());
   assertEquals(val("8"),t8.field8());
-  assertEquals("?",r_ref().render(t1));
-  assertEquals("1",r_refI().render(t1));
+  assertEquals("(?)",r_ref().render(t1));
+  assertEquals("(1)",r_refI().render(t1));
   assertEquals("(?, ?)",r_ref().render(t2));
   assertEquals("(1, '2')",r_refI().render(t2));
   assertEquals("(?, ?, ?)",r_ref().render(t3));
