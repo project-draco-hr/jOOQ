@@ -1,0 +1,17 @@
+{
+switch (ctx.family()) {
+case POSTGRES:
+    super.accept(ctx);
+  break;
+default :
+final Field<Integer> sum=DSL.field("{0}",Integer.class,new CustomQueryPart(){
+  @Override public void accept(  Context<?> c){
+    c.visit(DSL.sum(DSL.decode().when(condition,zero()).otherwise(one())));
+    toSQLOverClause(c);
+  }
+}
+);
+ctx.visit(DSL.decode().when(sum.eq(zero()),inline(true)).otherwise(inline(false)));
+break;
+}
+}
