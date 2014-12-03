@@ -1,0 +1,4 @@
+{
+  if (authors == null)   authors=ejb.fetchAuthors(sort.get(AUTHOR));
+  return authors;
+}

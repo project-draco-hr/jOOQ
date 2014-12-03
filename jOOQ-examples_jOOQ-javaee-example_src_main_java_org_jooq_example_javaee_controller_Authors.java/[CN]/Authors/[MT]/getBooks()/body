@@ -1,0 +1,4 @@
+{
+  if (books == null)   books=ejb.fetchBooks(sort.get(BOOK));
+  return books;
+}

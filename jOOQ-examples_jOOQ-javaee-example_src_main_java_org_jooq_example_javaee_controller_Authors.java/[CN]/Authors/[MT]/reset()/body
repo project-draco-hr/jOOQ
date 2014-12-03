@@ -1,0 +1,8 @@
+{
+  authors=null;
+  authorsAlphanumeric=null;
+  books=null;
+  edit=null;
+  newAuthor=ejb.newAuthor();
+  newBook=ejb.newBook();
+}

@@ -1,0 +1,3 @@
+{
+  return DSL.using(ds,H2).newRecord(BOOK);
+}

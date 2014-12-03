@@ -1,0 +1,5 @@
+{
+  SortField<?> previous=sort.get(field.getTable());
+  sort.put(field.getTable(),!previous.getName().equals(field.getName()) ? field.asc() : previous.getOrder() == ASC ? field.desc() : field.asc());
+  reset();
+}
