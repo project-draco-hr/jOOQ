@@ -1,4 +1,0 @@
-{
-  if (newBook == null)   newBook=ejb.newBook();
-  return newBook;
-}

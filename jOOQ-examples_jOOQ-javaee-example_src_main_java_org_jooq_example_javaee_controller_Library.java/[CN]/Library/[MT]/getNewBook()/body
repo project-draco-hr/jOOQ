@@ -1,0 +1,4 @@
+{
+  if (newBook == null)   newBook=DSL.using(H2).newRecord(BOOK);
+  return newBook;
+}

@@ -1,4 +1,0 @@
-{
-  if (newAuthor == null)   newAuthor=ejb.newAuthor();
-  return newAuthor;
-}

@@ -1,0 +1,4 @@
+{
+  if (newAuthor == null)   newAuthor=DSL.using(H2).newRecord(AUTHOR);
+  return newAuthor;
+}

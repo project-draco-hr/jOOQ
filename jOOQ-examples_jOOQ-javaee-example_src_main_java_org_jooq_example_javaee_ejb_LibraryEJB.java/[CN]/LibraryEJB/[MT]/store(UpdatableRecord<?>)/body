@@ -1,0 +1,4 @@
+{
+  DSL.using(ds,H2).attach(record);
+  record.store();
+}
