@@ -1,13 +1,3 @@
 {
-  if (ctx.qualify()) {
-    String separator="";
-    for (    String string : sql) {
-      ctx.sql(separator);
-      ctx.literal(string);
-      separator=".";
-    }
-  }
- else {
-    ctx.literal(sql[sql.length - 1]);
-  }
+  ctx.visit(name);
 }

@@ -1,9 +1,14 @@
 {
-  String separator="";
-  for (  String name : qualifiedName) {
-    if (!StringUtils.isEmpty(name)) {
-      ctx.sql(separator).literal(name);
-      separator=".";
+  if (ctx.qualify()) {
+    String separator="";
+    for (    String name : qualifiedName) {
+      if (!StringUtils.isEmpty(name)) {
+        ctx.sql(separator).literal(name);
+        separator=".";
+      }
     }
+  }
+ else {
+    ctx.literal(qualifiedName[qualifiedName.length - 1]);
   }
 }
