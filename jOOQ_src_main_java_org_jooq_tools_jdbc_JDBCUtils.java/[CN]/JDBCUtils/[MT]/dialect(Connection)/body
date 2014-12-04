@@ -1,5 +1,5 @@
 {
-  SQLDialect result=SQLDialect.SQL99;
+  SQLDialect result=SQLDialect.DEFAULT;
   try {
     DatabaseMetaData m=connection.getMetaData();
     String url=m.getURL();
@@ -7,7 +7,7 @@
   }
  catch (  SQLException ignore) {
   }
-  if (result == SQLDialect.SQL99) {
+  if (result == SQLDialect.DEFAULT) {
   }
   return result;
 }

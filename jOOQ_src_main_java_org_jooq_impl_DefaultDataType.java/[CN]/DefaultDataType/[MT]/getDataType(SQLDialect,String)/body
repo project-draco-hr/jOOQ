@@ -5,7 +5,7 @@
     result=TYPES_BY_NAME[dialect.ordinal()].get(typeName);
   }
   if (result == null) {
-    result=TYPES_BY_NAME[SQLDialect.SQL99.ordinal()].get(typeName);
+    result=TYPES_BY_NAME[SQLDialect.DEFAULT.ordinal()].get(typeName);
   }
   if (result == null) {
     throw new SQLDialectNotSupportedException("Type " + typeName + " is not supported in dialect "+ dialect,false);

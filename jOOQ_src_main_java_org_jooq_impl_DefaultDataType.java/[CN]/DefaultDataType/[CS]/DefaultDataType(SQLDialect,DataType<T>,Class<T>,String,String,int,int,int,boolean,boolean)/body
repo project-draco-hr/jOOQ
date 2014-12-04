@@ -25,7 +25,7 @@
   this.precision=precision;
   this.scale=scale;
   this.length=length;
-  int ordinal=dialect == null ? SQLDialect.SQL99.ordinal() : dialect.ordinal();
+  int ordinal=dialect == null ? SQLDialect.DEFAULT.ordinal() : dialect.ordinal();
   if (!TYPES_BY_NAME[ordinal].containsKey(typeName.toUpperCase())) {
     String normalised=DefaultDataType.normalise(typeName);
     if (TYPES_BY_NAME[ordinal].get(normalised) == null) {
