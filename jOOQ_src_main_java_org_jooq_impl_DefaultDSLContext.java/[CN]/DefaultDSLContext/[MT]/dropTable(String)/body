@@ -1,3 +1,3 @@
 {
-  return dropTable(tableByName(table));
+  return dropTable(table(name(table)));
 }

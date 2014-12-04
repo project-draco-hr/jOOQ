@@ -5,7 +5,7 @@
  else {
     List<Field<?>> fields=new ArrayList<Field<?>>();
     for (    String name : data.get(0)) {
-      fields.add(fieldByName(String.class,name));
+      fields.add(field(name(name),String.class));
     }
     Result<Record> result=new ResultImpl<Record>(configuration(),fields);
     if (data.size() > 1) {

@@ -1,10 +1,10 @@
 {
   List<String> v1=Arrays.asList("1","2");
-  Condition c1=fieldByName(String.class,"A","b").in(v1);
+  Condition c1=field(name("A","b"),String.class).in(v1);
   assertEquals("`A`.`b` in (?, ?)",r_ref().render(c1));
   assertEquals("`A`.`b` in ('1', '2')",r_refI().render(c1));
   Set<String> v2=new TreeSet<String>(Arrays.asList("1","2"));
-  Condition c2=fieldByName(String.class,"A","b").in(v2);
+  Condition c2=field(name("A","b"),String.class).in(v2);
   assertEquals("`A`.`b` in (?, ?)",r_ref().render(c2));
   assertEquals("`A`.`b` in ('1', '2')",r_refI().render(c2));
 }

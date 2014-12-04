@@ -1,6 +1,6 @@
 {
   Table<?> table=null;
   if (records.size() > 0 && records.get(0) instanceof TableRecord)   table=((TableRecord<?>)records.get(0)).getTable();
-  if (table == null)   table=tableByName("UNKNOWN_TABLE");
+  if (table == null)   table=table(name("UNKNOWN_TABLE"));
   formatInsert(writer,table,fields());
 }

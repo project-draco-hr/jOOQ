@@ -1,3 +1,3 @@
 {
-  return drop(fieldByName(field));
+  return drop(field(name(field)));
 }

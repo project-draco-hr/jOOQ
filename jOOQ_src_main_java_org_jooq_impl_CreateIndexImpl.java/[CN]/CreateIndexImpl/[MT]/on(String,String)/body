@@ -1,5 +1,5 @@
 {
   Field<?>[] f=new Field[fieldNames.length];
-  for (int i=0; i < f.length; i++)   f[i]=fieldByName(fieldNames[i]);
-  return on(tableByName(tableName),f);
+  for (int i=0; i < f.length; i++)   f[i]=field(name(fieldNames[i]));
+  return on(table(name(tableName)),f);
 }

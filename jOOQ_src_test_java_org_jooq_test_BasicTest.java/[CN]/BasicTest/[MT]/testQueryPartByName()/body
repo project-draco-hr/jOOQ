@@ -1,6 +1,6 @@
 {
-  Field<Object> field=fieldByName("A","b","';`");
-  Table<Record> table=tableByName("A","b","';`");
+  Field<Object> field=field(name("A","b","';`"));
+  Table<Record> table=table(name("A","b","';`"));
   assertEquals("`A`.`b`.`';```",r_ref().render(field));
   assertEquals("`A`.`b`.`';```",r_refI().render(field));
   assertEquals("`A`.`b`.`';```",r_ref().render(table));

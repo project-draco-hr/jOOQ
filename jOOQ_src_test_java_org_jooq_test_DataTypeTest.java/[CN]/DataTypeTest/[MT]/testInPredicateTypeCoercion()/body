@@ -1,7 +1,7 @@
 {
   Field integer=Table1.FIELD_ID1;
   Field string=Table1.FIELD_NAME1;
-  Field object=fieldByName("ANY");
+  Field object=field(name("ANY"));
 {
     Condition int_int=integer.in(1);
     assertEquals("`TABLE1`.`ID1` in (1)",r_refI().render(int_int));

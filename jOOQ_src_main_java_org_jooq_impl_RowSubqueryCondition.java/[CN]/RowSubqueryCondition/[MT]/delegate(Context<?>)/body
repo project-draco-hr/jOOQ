@@ -22,7 +22,7 @@
     }
     Field<?>[] fields=new Field[names.size()];
     for (int i=0; i < fields.length; i++) {
-      fields[i]=fieldByName(table,names.get(i));
+      fields[i]=field(name(table,names.get(i)));
     }
     Condition condition;
 switch (comparator) {

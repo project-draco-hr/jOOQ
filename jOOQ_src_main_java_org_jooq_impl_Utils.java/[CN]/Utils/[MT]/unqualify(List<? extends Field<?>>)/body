@@ -1,5 +1,5 @@
 {
   QueryPartList<Field<?>> result=new QueryPartList<Field<?>>();
-  for (  Field<?> field : fields)   result.add(fieldByName(field.getName()));
+  for (  Field<?> field : fields)   result.add(DSL.field(name(field.getName())));
   return result;
 }
