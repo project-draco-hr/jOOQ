@@ -1,0 +1,3 @@
+{
+  return dateSub(Utils.field(date),nullSafe(interval),datePart);
+}
