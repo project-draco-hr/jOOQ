@@ -1,3 +1,0 @@
-{
-  return new SQLQuery(configuration(),queryPart(template,parameters));
-}

@@ -1,3 +1,3 @@
 {
-  return field(template(sql),getDataType(type),bindings);
+  return field(sql,getDataType(type),bindings);
 }

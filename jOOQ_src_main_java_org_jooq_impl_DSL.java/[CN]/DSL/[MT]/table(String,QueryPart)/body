@@ -1,3 +1,3 @@
 {
-  return table(template(sql),(Object[])parts);
+  return table(sql,(Object[])parts);
 }

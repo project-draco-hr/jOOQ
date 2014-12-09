@@ -1,3 +1,3 @@
 {
-  return condition(template(sql),(Object[])parts);
+  return condition(sql,(Object[])parts);
 }

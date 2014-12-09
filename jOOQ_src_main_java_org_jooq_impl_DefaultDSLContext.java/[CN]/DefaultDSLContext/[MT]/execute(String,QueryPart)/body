@@ -1,3 +1,3 @@
 {
-  return query(sql,parts).execute();
+  return query(sql,(Object[])parts).execute();
 }

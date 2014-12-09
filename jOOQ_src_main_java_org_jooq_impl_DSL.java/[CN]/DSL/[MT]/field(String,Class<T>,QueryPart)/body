@@ -1,3 +1,3 @@
 {
-  return field(template(sql),type,(Object[])parts);
+  return field(sql,getDataType(type),(Object[])parts);
 }

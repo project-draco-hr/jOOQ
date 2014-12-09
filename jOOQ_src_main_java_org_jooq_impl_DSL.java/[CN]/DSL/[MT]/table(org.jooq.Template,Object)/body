@@ -1,3 +1,0 @@
-{
-  return new SQLTable(queryPart(template,parameters));
-}

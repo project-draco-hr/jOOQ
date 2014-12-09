@@ -1,3 +1,0 @@
-{
-  return query(template,parameters).execute();
-}

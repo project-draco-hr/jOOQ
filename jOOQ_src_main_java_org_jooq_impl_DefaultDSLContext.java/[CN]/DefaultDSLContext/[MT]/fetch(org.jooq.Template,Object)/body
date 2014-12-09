@@ -1,3 +1,0 @@
-{
-  return resultQuery(template,parameters).fetch();
-}
