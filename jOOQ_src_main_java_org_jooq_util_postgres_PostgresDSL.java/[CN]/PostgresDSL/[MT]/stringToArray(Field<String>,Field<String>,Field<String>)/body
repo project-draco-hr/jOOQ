@@ -1,0 +1,3 @@
+{
+  return field("{string_to_array}({0}, {1}, {2})",SQLDataType.VARCHAR.getArrayDataType(),nullSafe(string),nullSafe(delimiter),nullSafe(nullString));
+}

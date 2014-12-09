@@ -1,0 +1,3 @@
+{
+  return stringToArray(string,val(delimiter,String.class),val(nullString,String.class));
+}
