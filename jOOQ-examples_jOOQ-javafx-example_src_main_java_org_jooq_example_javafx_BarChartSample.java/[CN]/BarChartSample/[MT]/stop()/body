@@ -1,0 +1,4 @@
+{
+  JDBCUtils.safeClose(connection);
+  super.stop();
+}

@@ -1,0 +1,10 @@
+{
+  stage.setTitle("Country statistics with jOOQ and JavaFX");
+  BarChart<String,Number> chart1=chart(COUNTRIES.GDP_PER_CAPITA,"GDP per Capita","USD");
+  BarChart<String,Number> chart2=chart(COUNTRIES.GOVT_DEBT,"Government Debt","% of GDP");
+  GridPane pane=new GridPane();
+  pane.addColumn(0,chart1,chart2);
+  Scene scene=new Scene(pane,500,800);
+  stage.setScene(scene);
+  stage.show();
+}
