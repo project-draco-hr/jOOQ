@@ -4,7 +4,7 @@ case POSTGRES:
 case H2:
     return "ARRAY".equals(dataType);
 case HSQLDB:
+default :
   return dataType.endsWith("ARRAY");
 }
-return false;
 }
