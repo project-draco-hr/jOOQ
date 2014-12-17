@@ -1,4 +1,4 @@
 List<T> definitions
-String[] excludes
-String[] includes
-List<Filter> filters
+String[] e
+String[] i
+List<Filter> f

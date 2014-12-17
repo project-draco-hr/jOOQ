@@ -1,9 +1,45 @@
 {
-  if (patterns == null)   patterns=new HashMap<String,Pattern>();
   Pattern pattern=patterns.get(regex);
   if (pattern == null) {
-    pattern=Pattern.compile(regex,Pattern.COMMENTS);
-    patterns.put(regex,pattern);
-  }
-  return pattern;
+    int flags=0;
+    List<RegexFlag> list=new ArrayList<RegexFlag>(getRegexFlags());
+    if (list.isEmpty()) {
+      list.add(RegexFlag.COMMENTS);
+      list.add(RegexFlag.CASE_INSENSITIVE);
+    }
+    for (    RegexFlag flag : list) {
+switch (flag) {
+case CANON_EQ:
+        flags|=Pattern.CANON_EQ;
+      break;
+case CASE_INSENSITIVE:
+    flags|=Pattern.CASE_INSENSITIVE;
+  break;
+case COMMENTS:
+flags|=Pattern.COMMENTS;
+break;
+case DOTALL:
+flags|=Pattern.DOTALL;
+break;
+case LITERAL:
+flags|=Pattern.LITERAL;
+break;
+case MULTILINE:
+flags|=Pattern.MULTILINE;
+break;
+case UNICODE_CASE:
+flags|=Pattern.UNICODE_CASE;
+break;
+case UNICODE_CHARACTER_CLASS:
+flags|=0x100;
+break;
+case UNIX_LINES:
+flags|=Pattern.UNIX_LINES;
+break;
+}
+}
+pattern=Pattern.compile(regex,flags);
+patterns.put(regex,pattern);
+}
+return pattern;
 }

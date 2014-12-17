@@ -1,8 +1,8 @@
 {
   List<T> result=new ArrayList<T>();
   definitionsLoop:   for (  T definition : definitions) {
-    if (excludes != null) {
-      for (      String exclude : excludes) {
+    if (e != null) {
+      for (      String exclude : e) {
         Pattern p=pattern(exclude);
         if (exclude != null && (p.matcher(definition.getName()).matches() || p.matcher(definition.getQualifiedName()).matches())) {
           if (log.isDebugEnabled())           log.debug("Exclude","Excluding " + definition.getQualifiedName() + " because of pattern "+ exclude);
@@ -10,11 +10,11 @@
         }
       }
     }
-    if (includes != null) {
-      for (      String include : includes) {
+    if (i != null) {
+      for (      String include : i) {
         Pattern p=pattern(include);
         if (include != null && (p.matcher(definition.getName()).matches() || p.matcher(definition.getQualifiedName()).matches())) {
-          for (          Filter filter : filters) {
+          for (          Filter filter : f) {
             if (filter.exclude(definition)) {
               if (log.isDebugEnabled())               log.debug("Exclude","Excluding " + definition.getQualifiedName() + " because of filter "+ filter);
               continue definitionsLoop;
