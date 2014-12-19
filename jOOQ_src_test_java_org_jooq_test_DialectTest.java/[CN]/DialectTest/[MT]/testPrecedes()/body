@@ -1,0 +1,20 @@
+{
+  assertTrue(DEFAULT.precedes(DEFAULT));
+  assertFalse(DEFAULT.precedes(H2));
+  assertTrue(ORACLE10G.precedes(ORACLE10G));
+  assertTrue(ORACLE10G.precedes(ORACLE11G));
+  assertTrue(ORACLE10G.precedes(ORACLE12C));
+  assertTrue(ORACLE10G.precedes(ORACLE));
+  assertFalse(ORACLE11G.precedes(ORACLE10G));
+  assertTrue(ORACLE11G.precedes(ORACLE11G));
+  assertTrue(ORACLE11G.precedes(ORACLE12C));
+  assertTrue(ORACLE11G.precedes(ORACLE));
+  assertFalse(ORACLE12C.precedes(ORACLE10G));
+  assertFalse(ORACLE12C.precedes(ORACLE11G));
+  assertTrue(ORACLE12C.precedes(ORACLE12C));
+  assertTrue(ORACLE12C.precedes(ORACLE));
+  assertFalse(ORACLE.precedes(ORACLE10G));
+  assertFalse(ORACLE.precedes(ORACLE11G));
+  assertFalse(ORACLE.precedes(ORACLE12C));
+  assertTrue(ORACLE.precedes(ORACLE));
+}
