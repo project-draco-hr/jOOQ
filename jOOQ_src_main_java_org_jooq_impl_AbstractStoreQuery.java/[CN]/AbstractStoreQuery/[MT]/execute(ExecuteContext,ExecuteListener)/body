@@ -5,7 +5,7 @@
  else {
     int result=1;
     ResultSet rs;
-switch (ctx.configuration().dialect().family()) {
+switch (ctx.family()) {
 case SQLITE:
 {
         listener.executeStart(ctx);

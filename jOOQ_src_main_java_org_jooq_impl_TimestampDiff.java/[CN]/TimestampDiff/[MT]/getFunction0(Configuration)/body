@@ -1,5 +1,5 @@
 {
-switch (configuration.dialect().family()) {
+switch (configuration.family()) {
 case POSTGRES:
     return field("{0} - {1}",getDataType(),timestamp1,timestamp2);
 case CUBRID:

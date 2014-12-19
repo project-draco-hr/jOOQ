@@ -1,5 +1,5 @@
 {
-switch (configuration.dialect()) {
+switch (configuration.family()) {
 case HSQLDB:
     return dataType + " array";
 case POSTGRES:

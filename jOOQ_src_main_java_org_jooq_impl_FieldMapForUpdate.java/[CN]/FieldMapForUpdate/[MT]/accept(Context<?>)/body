@@ -2,7 +2,7 @@
   if (size() > 0) {
     String separator="";
     boolean restoreQualify=ctx.qualify();
-    boolean supportsQualify=asList(POSTGRES,SQLITE).contains(ctx.configuration().dialect()) ? false : restoreQualify;
+    boolean supportsQualify=asList(POSTGRES,SQLITE).contains(ctx.family()) ? false : restoreQualify;
     for (    Entry<Field<?>,Field<?>> entry : entrySet()) {
       ctx.sql(separator);
       if (!"".equals(separator)) {

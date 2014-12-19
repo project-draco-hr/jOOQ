@@ -3,7 +3,7 @@
     return (QueryPartInternal)query;
   }
  else {
-switch (ctx.dialect()) {
+switch (ctx.family()) {
 case POSTGRES:
 {
         return (QueryPartInternal)array;

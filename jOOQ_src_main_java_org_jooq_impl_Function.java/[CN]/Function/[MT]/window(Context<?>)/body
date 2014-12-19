@@ -2,7 +2,7 @@
   if (windowSpecification != null)   return windowSpecification;
   if (windowDefinition != null)   return windowDefinition;
   if (windowName != null) {
-    if (asList(POSTGRES).contains(ctx.configuration().dialect().family())) {
+    if (asList(POSTGRES).contains(ctx.family())) {
       return windowName;
     }
     Map<Object,Object> map=(Map<Object,Object>)ctx.data(DATA_LOCALLY_SCOPED_DATA_MAP);

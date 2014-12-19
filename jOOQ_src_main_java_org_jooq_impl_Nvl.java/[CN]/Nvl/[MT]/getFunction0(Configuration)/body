@@ -1,5 +1,5 @@
 {
-switch (configuration.dialect().family()) {
+switch (configuration.family()) {
 case H2:
 case HSQLDB:
     return field("{nvl}({0}, {1})",getDataType(),arg1,arg2);

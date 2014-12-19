@@ -1,6 +1,6 @@
 {
   Field<?>[] args=getArguments();
-switch (configuration.dialect().family()) {
+switch (configuration.family()) {
 case FIREBIRD:
 case HSQLDB:
 case MARIADB:

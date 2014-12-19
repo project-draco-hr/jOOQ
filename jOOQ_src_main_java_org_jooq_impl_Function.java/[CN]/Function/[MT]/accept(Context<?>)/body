@@ -1,8 +1,8 @@
 {
-  if (term == LIST_AGG && asList(CUBRID,H2,HSQLDB,MARIADB,MYSQL).contains(ctx.configuration().dialect())) {
+  if (term == LIST_AGG && asList(CUBRID,H2,HSQLDB,MARIADB,MYSQL).contains(ctx.family())) {
     toSQLGroupConcat(ctx);
   }
- else   if (term == LIST_AGG && asList(POSTGRES).contains(ctx.configuration().dialect())) {
+ else   if (term == LIST_AGG && asList(POSTGRES).contains(ctx.family())) {
     toSQLStringAgg(ctx);
     toSQLOverClause(ctx);
   }

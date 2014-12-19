@@ -1,5 +1,5 @@
 {
-switch (configuration.dialect().family()) {
+switch (configuration.family()) {
 case MARIADB:
 case MYSQL:
     return function("datediff",getDataType(),date1,date2);

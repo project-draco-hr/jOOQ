@@ -1,5 +1,5 @@
 {
-switch (configuration.dialect().family()) {
+switch (configuration.family()) {
 case DERBY:
     return DSL.substring(field,field.length().add(one()).sub(length));
 case SQLITE:

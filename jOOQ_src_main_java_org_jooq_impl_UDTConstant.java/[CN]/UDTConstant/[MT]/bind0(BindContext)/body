@@ -1,5 +1,5 @@
 {
-switch (context.configuration().dialect().family()) {
+switch (context.family()) {
 case POSTGRES:
 {
       for (      Field<?> field : value.fields()) {
@@ -8,6 +8,6 @@ case POSTGRES:
       break;
     }
 default :
-  throw new SQLDialectNotSupportedException("UDTs not supported in dialect " + context.configuration().dialect());
+  throw new SQLDialectNotSupportedException("UDTs not supported in dialect " + context.dialect());
 }
 }

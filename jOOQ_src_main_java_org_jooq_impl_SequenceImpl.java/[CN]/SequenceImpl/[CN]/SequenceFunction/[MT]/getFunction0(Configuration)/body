@@ -1,5 +1,5 @@
 {
-  SQLDialect family=configuration.dialect().family();
+  SQLDialect family=configuration.family();
 switch (family) {
 case POSTGRES:
 {

@@ -1,7 +1,7 @@
 {
   String keyword=null;
   String format=null;
-switch (configuration.dialect().family()) {
+switch (configuration.family()) {
 case CUBRID:
 case HSQLDB:
 {

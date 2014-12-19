@@ -16,7 +16,7 @@
       String typeName=Utils.newRecord(false,(Class<UDTRecord<?>>)type).<RuntimeException>operate(null).getUDT().getName();
       ctx.statement().setNull(ctx.index(),sqlType,typeName);
     }
- else     if (asList(POSTGRES).contains(configuration.dialect()) && sqlType == Types.BLOB) {
+ else     if (asList(POSTGRES).contains(configuration.family()) && sqlType == Types.BLOB) {
       ctx.statement().setNull(ctx.index(),Types.BINARY);
     }
  else     if (sqlType != Types.OTHER) {
@@ -105,7 +105,7 @@
       }
     }
  else     if (actualType == YearToMonth.class) {
-      if (dialect == POSTGRES) {
+      if (dialect.family() == POSTGRES) {
         ctx.statement().setObject(ctx.index(),toPGInterval((YearToMonth)value));
       }
  else {
@@ -113,7 +113,7 @@
       }
     }
  else     if (actualType == DayToSecond.class) {
-      if (dialect == POSTGRES) {
+      if (dialect.family() == POSTGRES) {
         ctx.statement().setObject(ctx.index(),toPGInterval((DayToSecond)value));
       }
  else {
@@ -148,7 +148,7 @@ default :
   }
 }
  else if (actualType.isArray()) {
-switch (dialect) {
+switch (dialect.family()) {
 case POSTGRES:
 {
       ctx.statement().setString(ctx.index(),toPGArrayString((Object[])value));

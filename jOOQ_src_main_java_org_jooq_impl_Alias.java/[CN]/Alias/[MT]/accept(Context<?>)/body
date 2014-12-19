@@ -1,16 +1,16 @@
 {
   if (context.declareFields() || context.declareTables()) {
-    SQLDialect dialect=context.configuration().dialect();
+    SQLDialect family=context.family();
     boolean simulateDerivedColumnList=false;
-    if (fieldAliases != null && asList(CUBRID,FIREBIRD).contains(dialect.family()) && (wrapped instanceof TableImpl || wrapped instanceof CommonTableExpressionImpl)) {
+    if (fieldAliases != null && asList(CUBRID,FIREBIRD).contains(family) && (wrapped instanceof TableImpl || wrapped instanceof CommonTableExpressionImpl)) {
       @SuppressWarnings("unchecked") Select<Record> select=select(list(field("*"))).from(((Table<?>)wrapped).as(alias));
       context.sql("(").formatIndentStart().formatNewLine().visit(select).formatIndentEnd().formatNewLine().sql(")");
     }
- else     if (fieldAliases != null && asList(H2,MARIADB,MYSQL,SQLITE).contains(dialect.family())) {
+ else     if (fieldAliases != null && asList(H2,MARIADB,MYSQL,SQLITE).contains(family)) {
       simulateDerivedColumnList=true;
       SelectFieldList fields=new SelectFieldList();
       for (      String fieldAlias : fieldAliases) {
-switch (dialect.family()) {
+switch (family) {
 default :
 {
             fields.add(field("null").as(fieldAlias));
@@ -31,7 +31,7 @@ default :
     toSQLDerivedColumnList(context);
   }
  else {
-switch (dialect) {
+switch (family) {
 case HSQLDB:
 case POSTGRES:
 {

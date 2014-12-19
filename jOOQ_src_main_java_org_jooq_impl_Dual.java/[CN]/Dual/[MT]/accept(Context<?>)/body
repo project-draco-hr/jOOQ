@@ -3,7 +3,7 @@
     ctx.visit(FORCED_DUAL);
   }
  else {
-switch (ctx.configuration().dialect().family()) {
+switch (ctx.family()) {
 case POSTGRES:
 case SQLITE:
       break;

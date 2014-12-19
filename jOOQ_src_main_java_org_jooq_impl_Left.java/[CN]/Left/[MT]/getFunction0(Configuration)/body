@@ -1,5 +1,5 @@
 {
-switch (configuration.dialect().family()) {
+switch (configuration.family()) {
 case DERBY:
 case SQLITE:
     return DSL.substring(field,inline(1),length);

@@ -3,7 +3,7 @@
   ctx.sql("(");
   if (distinct) {
     ctx.keyword("distinct");
-    if (ctx.configuration().dialect().family() == POSTGRES && arguments.size() > 1) {
+    if (ctx.family() == POSTGRES && arguments.size() > 1) {
       ctx.sql("(");
     }
  else {
@@ -14,7 +14,7 @@
     ctx.visit(arguments);
   }
   if (distinct) {
-    if (ctx.configuration().dialect().family() == POSTGRES && arguments.size() > 1) {
+    if (ctx.family() == POSTGRES && arguments.size() > 1) {
       ctx.sql(")");
     }
   }

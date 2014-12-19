@@ -1,12 +1,14 @@
 {
   ParamType paramType=context.paramType();
   CastMode castMode=context.castMode();
-switch (context.configuration().dialect()) {
+switch (context.dialect()) {
 case MARIADB:
 case MYSQL:
 case H2:
 case HSQLDB:
 case POSTGRES:
+case POSTGRES_9_3:
+case POSTGRES_9_4:
 case SQLITE:
 {
       context.castMode(NEVER).formatSeparator().keyword("limit").sql(" ").visit(numberOfRows);

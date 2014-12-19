@@ -1,5 +1,5 @@
 {
-switch (getDialect()) {
+switch (getDialect().family()) {
 case POSTGRES:
 case H2:
     return "ARRAY".equals(dataType);

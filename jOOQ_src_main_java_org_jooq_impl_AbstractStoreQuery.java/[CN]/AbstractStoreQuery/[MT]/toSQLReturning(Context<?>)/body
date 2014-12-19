@@ -1,6 +1,6 @@
 {
   if (!returning.isEmpty()) {
-switch (ctx.configuration().dialect()) {
+switch (ctx.family()) {
 case FIREBIRD:
 case POSTGRES:
       ctx.formatSeparator().keyword("returning").sql(" ").visit(returning);
