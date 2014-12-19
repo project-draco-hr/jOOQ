@@ -1,0 +1,21 @@
+{
+  this.converter=new Converter<Object,Node>(){
+    /** 
+ * Generated UID
+ */
+    private static final long serialVersionUID=-2153155338260706262L;
+    @Override public Node from(    Object t){
+      return t == null ? null : XMLasDOMBinding.fromString("" + t);
+    }
+    @Override public Object to(    Node u){
+      return u == null ? null : XMLasDOMBinding.toString(u);
+    }
+    @Override public Class<Object> fromType(){
+      return Object.class;
+    }
+    @Override public Class<Node> toType(){
+      return Node.class;
+    }
+  }
+;
+}

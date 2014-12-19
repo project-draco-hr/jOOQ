@@ -1,0 +1,3 @@
+{
+  SQLXMLS.get().add(xml);
+}

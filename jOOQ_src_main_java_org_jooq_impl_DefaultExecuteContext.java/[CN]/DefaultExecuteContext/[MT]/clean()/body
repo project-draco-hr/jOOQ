@@ -1,6 +1,8 @@
 {
   List<Blob> blobs=BLOBS.get();
   List<Clob> clobs=CLOBS.get();
+  List<SQLXML> xmls=SQLXMLS.get();
+  List<Array> arrays=ARRAYS.get();
   if (blobs != null) {
     for (    Blob blob : blobs) {
       JDBCUtils.safeFree(blob);
@@ -12,6 +14,18 @@
       JDBCUtils.safeFree(clob);
     }
     CLOBS.remove();
+  }
+  if (xmls != null) {
+    for (    SQLXML xml : xmls) {
+      JDBCUtils.safeFree(xml);
+    }
+    SQLXMLS.remove();
+  }
+  if (arrays != null) {
+    for (    Array array : arrays) {
+      JDBCUtils.safeFree(array);
+    }
+    SQLXMLS.remove();
   }
   LOCAL_CONFIGURATION.remove();
   LOCAL_CONNECTION.remove();

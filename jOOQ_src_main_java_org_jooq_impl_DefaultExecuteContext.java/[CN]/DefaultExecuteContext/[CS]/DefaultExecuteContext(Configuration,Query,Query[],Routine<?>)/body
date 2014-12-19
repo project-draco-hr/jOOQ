@@ -20,5 +20,7 @@
   clean();
   BLOBS.set(new ArrayList<Blob>());
   CLOBS.set(new ArrayList<Clob>());
+  SQLXMLS.set(new ArrayList<SQLXML>());
+  ARRAYS.set(new ArrayList<Array>());
   LOCAL_CONFIGURATION.set(configuration);
 }

@@ -1,0 +1,11 @@
+{
+  if (array != null) {
+    try {
+      array.free();
+    }
+ catch (    Exception ignore) {
+    }
+catch (    AbstractMethodError ignore) {
+    }
+  }
+}

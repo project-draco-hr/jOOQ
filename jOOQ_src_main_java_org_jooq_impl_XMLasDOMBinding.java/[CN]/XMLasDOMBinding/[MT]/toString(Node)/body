@@ -1,0 +1,14 @@
+{
+  try {
+    ByteArrayOutputStream out=new ByteArrayOutputStream();
+    Transformer transformer=TransformerFactory.newInstance().newTransformer();
+    transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION,"yes");
+    Source source=new DOMSource(node);
+    Result target=new StreamResult(out);
+    transformer.transform(source,target);
+    return out.toString("UTF-8");
+  }
+ catch (  Exception e) {
+    return "[ ERROR IN toString() : " + e.getMessage() + " ]";
+  }
+}

@@ -1,0 +1,11 @@
+{
+  Document document=builder().newDocument();
+  DocumentFragment fragment=createContent(document,name);
+  if (fragment != null) {
+    document.appendChild(fragment);
+  }
+ else {
+    document.appendChild(document.createElement(name));
+  }
+  return document;
+}

@@ -1,0 +1,11 @@
+{
+  if (xml != null) {
+    try {
+      xml.free();
+    }
+ catch (    Exception ignore) {
+    }
+catch (    AbstractMethodError ignore) {
+    }
+  }
+}
