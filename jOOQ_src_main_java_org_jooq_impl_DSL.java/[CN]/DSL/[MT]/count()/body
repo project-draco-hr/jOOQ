@@ -1,3 +1,3 @@
 {
-  return count(field("*",Integer.class));
+  return count(Function.ASTERISK);
 }

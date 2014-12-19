@@ -4,12 +4,14 @@
   }
  else   if (term == LIST_AGG && asList(POSTGRES).contains(ctx.family())) {
     toSQLStringAgg(ctx);
+    toSQLFilterClause(ctx);
     toSQLOverClause(ctx);
   }
  else {
     toSQLArguments(ctx);
     toSQLKeepDenseRankOrderByClause(ctx);
     toSQLWithinGroupClause(ctx);
+    toSQLFilterClause(ctx);
     toSQLOverClause(ctx);
   }
 }

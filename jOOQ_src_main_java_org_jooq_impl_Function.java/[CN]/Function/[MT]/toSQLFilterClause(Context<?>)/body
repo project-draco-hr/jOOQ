@@ -1,0 +1,5 @@
+{
+  if (filter != null && POSTGRES_9_4.precedes(ctx.dialect())) {
+    ctx.sql(" ").keyword("filter").sql(" (").keyword("where").sql(" ").visit(filter).sql(")");
+  }
+}
