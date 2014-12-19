@@ -1,8 +1,7 @@
 {
   assertEquals(DEFAULT,DEFAULT.predecessor());
   assertEquals(H2,H2.predecessor());
-  assertEquals(ORACLE10G,ORACLE10G.predecessor());
-  assertEquals(ORACLE10G,ORACLE11G.predecessor());
-  assertEquals(ORACLE11G,ORACLE12C.predecessor());
-  assertEquals(ORACLE12C,ORACLE.predecessor());
+  assertEquals(POSTGRES_9_3,POSTGRES_9_3.predecessor());
+  assertEquals(POSTGRES_9_3,POSTGRES_9_4.predecessor());
+  assertEquals(POSTGRES_9_4,POSTGRES.predecessor());
 }
