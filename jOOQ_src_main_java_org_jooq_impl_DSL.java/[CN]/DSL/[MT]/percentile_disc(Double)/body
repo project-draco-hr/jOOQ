@@ -1,0 +1,3 @@
+{
+  return new Function<Double>("percentile_disc",SQLDataType.DOUBLE,val(number,Double.class));
+}
