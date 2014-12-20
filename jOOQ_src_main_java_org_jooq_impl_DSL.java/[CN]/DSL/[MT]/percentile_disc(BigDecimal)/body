@@ -1,3 +1,0 @@
-{
-  return new Function<BigDecimal>("percentile_disc",SQLDataType.NUMERIC,val(number,BigDecimal.class));
-}

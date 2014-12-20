@@ -1,0 +1,3 @@
+{
+  return new Function<BigDecimal>("percentile_cont",SQLDataType.NUMERIC,nullSafe(field));
+}

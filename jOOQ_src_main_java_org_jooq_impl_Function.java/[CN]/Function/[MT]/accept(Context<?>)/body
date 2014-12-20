@@ -7,6 +7,11 @@
     toSQLFilterClause(ctx);
     toSQLOverClause(ctx);
   }
+ else   if (term == MEDIAN && asList(POSTGRES).contains(ctx.family())) {
+    Field<?>[] fields=new Field[arguments.size()];
+    for (int i=0; i < fields.length; i++)     fields[i]=DSL.field("{0}",arguments.get(i));
+    ctx.visit(percentileCont(new BigDecimal("0.5")).withinGroupOrderBy(fields));
+  }
  else {
     toSQLArguments(ctx);
     toSQLKeepDenseRankOrderByClause(ctx);
