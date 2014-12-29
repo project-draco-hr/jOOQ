@@ -1,0 +1,3 @@
+{
+  getSelect0().addAll(Utils.fields(fields));
+}

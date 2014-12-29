@@ -1,0 +1,3 @@
+{
+  return (SelectSelectStep)select(new SelectField[]{field1,field2,field3});
+}

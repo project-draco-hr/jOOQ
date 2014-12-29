@@ -1,0 +1,3 @@
+{
+  return field instanceof Field ? (Field<T>)field : field("{0}",field.getDataType(),field);
+}

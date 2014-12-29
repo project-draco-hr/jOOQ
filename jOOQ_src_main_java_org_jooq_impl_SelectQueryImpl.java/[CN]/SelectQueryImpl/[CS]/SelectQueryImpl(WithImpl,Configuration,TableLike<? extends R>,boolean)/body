@@ -2,7 +2,7 @@
   super(configuration);
   this.with=with;
   this.distinct=distinct;
-  this.distinctOn=new QueryPartList<Field<?>>();
+  this.distinctOn=new QueryPartList<SelectField<?>>();
   this.select=new SelectFieldList();
   this.from=new TableList();
   this.condition=new ConditionProviderImpl();
