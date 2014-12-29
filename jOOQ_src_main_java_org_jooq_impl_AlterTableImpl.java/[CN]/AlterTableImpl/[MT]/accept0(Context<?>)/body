@@ -2,7 +2,8 @@
   SQLDialect family=ctx.configuration().dialect().family();
   ctx.start(ALTER_TABLE_TABLE).keyword("alter table").sql(" ").visit(table).end(ALTER_TABLE_TABLE);
   if (add != null) {
-    ctx.start(ALTER_TABLE_ADD).sql(" ").keyword("add").sql(" ").qualify(false).visit(add).sql(" ").qualify(true).keyword(addType.getCastTypeName(ctx.configuration()));
+    ctx.start(ALTER_TABLE_ADD).sql(" ").keyword("add").sql(" ");
+    ctx.qualify(false).visit(add).sql(" ").qualify(true).keyword(addType.getCastTypeName(ctx.configuration()));
     if (!addType.nullable()) {
       ctx.sql(" ").keyword("not null");
     }
@@ -53,6 +54,10 @@ ctx.sql(" ").keyword("drop");
 break;
 }
 ctx.sql(" ").qualify(false).visit(drop).qualify(true);
+switch (family) {
+default :
+break;
+}
 if (dropCascade) {
 ctx.sql(" ").keyword("cascade");
 }
