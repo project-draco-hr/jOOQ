@@ -1,8 +1,8 @@
 {
   SchemaDefinition schema=table.getSchema();
   if (generateJPAAnnotations()) {
-    out.println("@javax.persistence.Entity");
-    out.print("@javax.persistence.Table(name = \"");
+    out.println("@%s",out.ref("javax.persistence.Entity"));
+    out.print("@%s(name = \"",out.ref("javax.persistence.Table"));
     out.print(table.getName().replace("\"","\\\""));
     out.print("\"");
     if (!schema.isDefaultSchema()) {
@@ -15,7 +15,7 @@
     for (    UniqueKeyDefinition uk : table.getUniqueKeys()) {
       if (uk.getKeyColumns().size() > 1) {
         sb.append(glue1);
-        sb.append("\t@javax.persistence.UniqueConstraint(columnNames = {");
+        sb.append("\t@").append(out.ref("javax.persistence.UniqueConstraint")).append("(columnNames = {");
         String glue2="";
         for (        ColumnDefinition column : uk.getKeyColumns()) {
           sb.append(glue2);

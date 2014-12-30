@@ -10,7 +10,7 @@
     for (; ; ) {
       for (      Object arg : originals) {
         if (arg instanceof Class) {
-          translated.add(((Class<?>)arg).getName());
+          translated.add(ref((Class<?>)arg));
         }
  else         if (arg instanceof Object[] || arg instanceof Collection) {
           if (arg instanceof Collection) {

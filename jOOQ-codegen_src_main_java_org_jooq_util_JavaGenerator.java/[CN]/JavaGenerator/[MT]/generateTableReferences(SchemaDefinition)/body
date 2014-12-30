@@ -6,7 +6,7 @@
   printClassAnnotations(out,schema);
   out.println("public class Tables {");
   for (  TableDefinition table : database.getTables(schema)) {
-    final String className=getStrategy().getFullJavaClassName(table);
+    final String className=out.ref(getStrategy().getFullJavaClassName(table));
     final String id=getStrategy().getJavaIdentifier(table);
     final String fullId=getStrategy().getFullJavaIdentifier(table);
     final String comment=!StringUtils.isBlank(table.getComment()) ? table.getComment() : "The table " + table.getQualifiedOutputName();

@@ -1,0 +1,3 @@
+{
+  return clazzOrId == null ? new String[0] : ref(Arrays.asList(clazzOrId),keepSegments).toArray(new String[clazzOrId.length]);
+}

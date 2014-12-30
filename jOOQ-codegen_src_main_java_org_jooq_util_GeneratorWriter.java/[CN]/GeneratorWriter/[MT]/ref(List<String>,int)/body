@@ -1,0 +1,3 @@
+{
+  return clazzOrId == null ? Collections.<String>emptyList() : clazzOrId;
+}

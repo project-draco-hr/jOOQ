@@ -3,7 +3,7 @@
     log.warn("Too many parameters","Procedure " + procedure + " has more than 254 in parameters. Skipping generation of convenience method.");
     return;
   }
-  final String className=getStrategy().getFullJavaClassName(procedure);
+  final String className=out.ref(getStrategy().getFullJavaClassName(procedure));
   final String configurationArgument=disambiguateJavaMemberName(procedure.getInParameters(),"configuration");
   final String localVar=disambiguateJavaMemberName(procedure.getInParameters(),"p");
   out.tab(1).javadoc("Call <code>%s</code>",procedure.getQualifiedOutputName());
@@ -15,7 +15,7 @@
     out.print("void ");
   }
  else   if (procedure.getOutParameters().size() == 1) {
-    out.print(getJavaType(procedure.getOutParameters().get(0).getType()));
+    out.print(out.ref(getJavaType(procedure.getOutParameters().get(0).getType())));
     out.print(" ");
   }
  else {
@@ -35,7 +35,7 @@
       continue;
     }
     out.print(glue);
-    out.print(getNumberType(parameter.getType()));
+    out.print(refNumberType(out,parameter.getType()));
     out.print(" ");
     out.print(getStrategy().getJavaMemberName(parameter));
     glue=", ";
@@ -52,7 +52,7 @@
   if (procedure.getOutParameters().size() > 0) {
     final ParameterDefinition parameter=procedure.getOutParameters().get(0);
     final String getter=getStrategy().getJavaGetterName(parameter,Mode.DEFAULT);
-    final String columnTypeInterface=getJavaType(parameter.getType(),Mode.INTERFACE);
+    final String columnTypeInterface=out.ref(getJavaType(parameter.getType(),Mode.INTERFACE));
     final boolean isUDT=parameter.getType().isUDT();
     if (instance) {
       if (generateInterfaces() && isUDT) {

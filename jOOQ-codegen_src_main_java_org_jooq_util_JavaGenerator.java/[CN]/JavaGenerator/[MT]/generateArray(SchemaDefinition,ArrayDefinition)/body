@@ -1,3 +1,2 @@
 {
-  log.info("Generating ARRAY",getStrategy().getFileName(array,Mode.RECORD));
 }

@@ -1,0 +1,3 @@
+{
+  return clazzOrId == null ? null : ref(Arrays.asList(clazzOrId),1).get(0);
+}

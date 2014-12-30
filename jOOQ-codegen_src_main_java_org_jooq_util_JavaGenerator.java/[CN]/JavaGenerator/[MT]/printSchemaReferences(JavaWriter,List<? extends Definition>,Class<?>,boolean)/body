@@ -1,7 +1,7 @@
 {
   if (out != null && !definitions.isEmpty()) {
     final String generic=isGeneric ? "<?>" : "";
-    final List<String> references=getStrategy().getFullJavaIdentifiers(definitions);
+    final List<String> references=out.ref(getStrategy().getFullJavaIdentifiers(definitions),2);
     out.println();
     out.tab(1).override();
     out.tab(1).println("public final %s<%s%s> get%ss() {",List.class,type,generic,type.getSimpleName());

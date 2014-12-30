@@ -1,6 +1,6 @@
 {
   if (generateGeneratedAnnotation()) {
-    out.println("@javax.annotation.Generated(");
+    out.println("@%s(",out.ref("javax.annotation.Generated"));
     if (useSchemaVersionProvider()) {
       out.tab(1).println("value = {");
       out.tab(2).println("\"http://www.jooq.org\",");
@@ -19,5 +19,5 @@
     }
     out.println(")");
   }
-  out.println("@java.lang.SuppressWarnings({ \"all\", \"unchecked\", \"rawtypes\" })");
+  out.println("@%s({ \"all\", \"unchecked\", \"rawtypes\" })",out.ref("java.lang.SuppressWarnings"));
 }

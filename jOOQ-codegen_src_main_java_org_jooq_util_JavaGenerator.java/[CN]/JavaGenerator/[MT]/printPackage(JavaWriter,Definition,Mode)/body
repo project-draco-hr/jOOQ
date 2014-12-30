@@ -4,4 +4,6 @@
   out.println(" */");
   out.println("package %s;",getStrategy().getJavaPackageName(definition,mode));
   out.println();
+  out.printImports();
+  out.println();
 }

@@ -1,3 +1,8 @@
 {
-  return getNumberType(type,"");
+  if (type.isGenericNumberType()) {
+    return Number.class.getName();
+  }
+ else {
+    return getJavaType(type);
+  }
 }

@@ -1,8 +1,8 @@
 {
   log.info("Generating interface",getStrategy().getFileName(tableOrUDT,Mode.INTERFACE));
-  final String className=getStrategy().getJavaClassName(tableOrUDT,Mode.INTERFACE);
-  final List<String> interfaces=getStrategy().getJavaClassImplements(tableOrUDT,Mode.INTERFACE);
   JavaWriter out=newJavaWriter(getStrategy().getFile(tableOrUDT,Mode.INTERFACE));
+  final String className=getStrategy().getJavaClassName(tableOrUDT,Mode.INTERFACE);
+  final List<String> interfaces=out.ref(getStrategy().getJavaClassImplements(tableOrUDT,Mode.INTERFACE));
   printPackage(out,tableOrUDT,Mode.INTERFACE);
   if (tableOrUDT instanceof TableDefinition)   generateInterfaceClassJavadoc((TableDefinition)tableOrUDT,out);
  else   generateUDTInterfaceClassJavadoc((UDTDefinition)tableOrUDT,out);
@@ -14,7 +14,7 @@
     final String setterReturnType=fluentSetters() ? className : "void";
     final String setter=getStrategy().getJavaSetterName(column,Mode.DEFAULT);
     final String getter=getStrategy().getJavaGetterName(column,Mode.DEFAULT);
-    final String type=getJavaType((column).getType(),Mode.INTERFACE);
+    final String type=out.ref(getJavaType((column).getType(),Mode.INTERFACE));
     final String name=column.getQualifiedOutputName();
     if (!generateImmutablePojos()) {
       out.tab(1).javadoc("Setter for <code>%s</code>.%s",name,defaultIfBlank(" " + comment,""));
@@ -27,7 +27,7 @@
   }
   if (!generateImmutablePojos()) {
     String local=getStrategy().getJavaClassName(tableOrUDT,Mode.INTERFACE);
-    String qualified=getStrategy().getFullJavaClassName(tableOrUDT,Mode.INTERFACE);
+    String qualified=out.ref(getStrategy().getFullJavaClassName(tableOrUDT,Mode.INTERFACE));
     out.tab(1).header("FROM and INTO");
     out.tab(1).javadoc("Load data from another generated Record/POJO implementing the common interface %s",local);
     out.tab(1).println("public void from(%s from);",qualified);

@@ -6,10 +6,10 @@
   printClassAnnotations(out,schema);
   out.println("public class Sequences {");
   for (  SequenceDefinition sequence : database.getSequences(schema)) {
-    final String seqType=getJavaType(sequence.getType());
+    final String seqType=out.ref(getJavaType(sequence.getType()));
     final String seqId=getStrategy().getJavaIdentifier(sequence);
     final String seqName=sequence.getOutputName();
-    final String schemaId=getStrategy().getFullJavaIdentifier(schema);
+    final String schemaId=out.ref(getStrategy().getFullJavaIdentifier(schema),2);
     final String typeRef=getJavaTypeReference(sequence.getDatabase(),sequence.getType());
     out.tab(1).javadoc("The sequence <code>%s</code>",sequence.getQualifiedOutputName());
     out.tab(1).println("public static final %s<%s> %s = new %s<%s>(\"%s\", %s, %s);",Sequence.class,seqType,seqId,SequenceImpl.class,seqType,seqName,schemaId,typeRef);

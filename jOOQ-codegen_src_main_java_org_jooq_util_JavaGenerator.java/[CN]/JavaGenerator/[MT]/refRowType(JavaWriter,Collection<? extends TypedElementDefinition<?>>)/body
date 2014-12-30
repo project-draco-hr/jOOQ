@@ -3,7 +3,7 @@
   String separator="";
   for (  TypedElementDefinition<?> column : columns) {
     result.append(separator);
-    result.append(getJavaType(column.getType()));
+    result.append(out.ref(getJavaType(column.getType())));
     separator=", ";
   }
   return result.toString();

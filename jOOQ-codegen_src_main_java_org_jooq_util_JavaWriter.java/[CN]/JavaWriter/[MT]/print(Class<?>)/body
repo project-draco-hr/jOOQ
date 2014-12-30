@@ -1,4 +1,4 @@
 {
-  print(clazz.getCanonicalName());
+  printClass(clazz.getCanonicalName());
   return this;
 }

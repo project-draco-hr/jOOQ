@@ -1,12 +1,12 @@
 {
   log.info("Generating POJO",getStrategy().getFileName(tableOrUDT,Mode.POJO));
-  final String className=getStrategy().getJavaClassName(tableOrUDT,Mode.POJO);
-  final String superName=getStrategy().getJavaClassExtends(tableOrUDT,Mode.POJO);
-  final List<String> interfaces=getStrategy().getJavaClassImplements(tableOrUDT,Mode.POJO);
-  if (generateInterfaces()) {
-    interfaces.add(getStrategy().getFullJavaClassName(tableOrUDT,Mode.INTERFACE));
-  }
   JavaWriter out=newJavaWriter(getStrategy().getFile(tableOrUDT,Mode.POJO));
+  final String className=getStrategy().getJavaClassName(tableOrUDT,Mode.POJO);
+  final String superName=out.ref(getStrategy().getJavaClassExtends(tableOrUDT,Mode.POJO));
+  final List<String> interfaces=out.ref(getStrategy().getJavaClassImplements(tableOrUDT,Mode.POJO));
+  if (generateInterfaces()) {
+    interfaces.add(out.ref(getStrategy().getFullJavaClassName(tableOrUDT,Mode.INTERFACE)));
+  }
   printPackage(out,tableOrUDT,Mode.POJO);
   if (tableOrUDT instanceof TableDefinition)   generatePojoClassJavadoc((TableDefinition)tableOrUDT,out);
  else   generateUDTPojoClassJavadoc((UDTDefinition)tableOrUDT,out);
@@ -17,10 +17,10 @@
   out.println();
   int maxLength=0;
   for (  TypedElementDefinition<?> column : getTypedElements(tableOrUDT)) {
-    maxLength=Math.max(maxLength,getJavaType(column.getType(),Mode.POJO).length());
+    maxLength=Math.max(maxLength,out.ref(getJavaType(column.getType(),Mode.POJO)).length());
   }
   for (  TypedElementDefinition<?> column : getTypedElements(tableOrUDT)) {
-    out.tab(1).println("private %s%s %s;",generateImmutablePojos() ? "final " : "",StringUtils.rightPad(getJavaType(column.getType(),Mode.POJO),maxLength),getStrategy().getJavaMemberName(column,Mode.POJO));
+    out.tab(1).println("private %s%s %s;",generateImmutablePojos() ? "final " : "",StringUtils.rightPad(out.ref(getJavaType(column.getType(),Mode.POJO)),maxLength),getStrategy().getJavaMemberName(column,Mode.POJO));
   }
   if (!generateImmutablePojos()) {
     out.println();
@@ -33,7 +33,7 @@
     String separator1="";
     for (    TypedElementDefinition<?> column : getTypedElements(tableOrUDT)) {
       out.println(separator1);
-      out.tab(2).print("%s %s",StringUtils.rightPad(getJavaType(column.getType(),Mode.POJO),maxLength),getStrategy().getJavaMemberName(column,Mode.POJO));
+      out.tab(2).print("%s %s",StringUtils.rightPad(out.ref(getJavaType(column.getType(),Mode.POJO)),maxLength),getStrategy().getJavaMemberName(column,Mode.POJO));
       separator1=",";
     }
     out.println();
@@ -45,8 +45,8 @@
     out.tab(1).println("}");
   }
   for (  TypedElementDefinition<?> column : getTypedElements(tableOrUDT)) {
-    final String columnType=getJavaType(column.getType(),Mode.POJO);
-    final String columnTypeInterface=getJavaType(column.getType(),Mode.INTERFACE);
+    final String columnType=out.ref(getJavaType(column.getType(),Mode.POJO));
+    final String columnTypeInterface=out.ref(getJavaType(column.getType(),Mode.INTERFACE));
     final String columnSetterReturnType=fluentSetters() ? className : "void";
     final String columnSetter=getStrategy().getJavaSetterName(column,Mode.POJO);
     final String columnGetter=getStrategy().getJavaGetterName(column,Mode.POJO);

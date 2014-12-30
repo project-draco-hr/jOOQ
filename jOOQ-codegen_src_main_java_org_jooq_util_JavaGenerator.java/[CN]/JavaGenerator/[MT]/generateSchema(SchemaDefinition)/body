@@ -1,11 +1,11 @@
 {
   log.info("Generating schema",getStrategy().getFileName(schema));
   log.info("----------------------------------------------------------");
+  JavaWriter out=newJavaWriter(getStrategy().getFile(schema));
   final String schemaName=schema.getQualifiedOutputName();
   final String schemaId=getStrategy().getJavaIdentifier(schema);
   final String className=getStrategy().getJavaClassName(schema);
-  final List<String> interfaces=getStrategy().getJavaClassImplements(schema,Mode.DEFAULT);
-  JavaWriter out=newJavaWriter(getStrategy().getFile(schema));
+  final List<String> interfaces=out.ref(getStrategy().getJavaClassImplements(schema,Mode.DEFAULT));
   printPackage(out,schema);
   generateSchemaClassJavadoc(schema,out);
   printClassAnnotations(out,schema);

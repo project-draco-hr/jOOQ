@@ -7,5 +7,5 @@
     out.println();
     out.tab(1).println("private static class Identities%s extends %s {",block,AbstractKeys.class);
   }
-  out.tab(2).println("public static %s<%s, %s> %s = createIdentity(%s, %s);",Identity.class,getStrategy().getFullJavaClassName(identity.getTable(),Mode.RECORD),getJavaType(identity.getColumn().getType()),getStrategy().getJavaIdentifier(identity),getStrategy().getFullJavaIdentifier(identity.getColumn().getContainer()),getStrategy().getFullJavaIdentifier(identity.getColumn()));
+  out.tab(2).println("public static %s<%s, %s> %s = createIdentity(%s, %s);",Identity.class,out.ref(getStrategy().getFullJavaClassName(identity.getTable(),Mode.RECORD)),out.ref(getJavaType(identity.getColumn().getType())),getStrategy().getJavaIdentifier(identity),out.ref(getStrategy().getFullJavaIdentifier(identity.getColumn().getContainer()),2),out.ref(getStrategy().getFullJavaIdentifier(identity.getColumn()),3));
 }

@@ -6,7 +6,7 @@
   printClassAnnotations(out,schema);
   out.println("public class UDTs {");
   for (  UDTDefinition udt : database.getUDTs(schema)) {
-    final String className=getStrategy().getFullJavaClassName(udt);
+    final String className=out.ref(getStrategy().getFullJavaClassName(udt));
     final String id=getStrategy().getJavaIdentifier(udt);
     final String fullId=getStrategy().getFullJavaIdentifier(udt);
     out.tab(1).javadoc("The type <code>%s</code>",udt.getQualifiedOutputName());

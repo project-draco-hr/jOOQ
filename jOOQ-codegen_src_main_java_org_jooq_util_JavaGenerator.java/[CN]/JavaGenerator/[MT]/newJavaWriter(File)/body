@@ -1,4 +1,4 @@
 {
   files.add(file);
-  return new JavaWriter(file);
+  return new JavaWriter(file,fullyQualifiedTypes());
 }

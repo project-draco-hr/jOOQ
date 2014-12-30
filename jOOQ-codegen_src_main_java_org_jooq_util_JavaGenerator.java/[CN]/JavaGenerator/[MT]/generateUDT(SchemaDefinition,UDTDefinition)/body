@@ -1,28 +1,28 @@
 {
   log.info("Generating UDT ",getStrategy().getFileName(udt));
-  final String className=getStrategy().getJavaClassName(udt);
-  final String recordType=getStrategy().getFullJavaClassName(udt,Mode.RECORD);
-  final List<String> interfaces=getStrategy().getJavaClassImplements(udt,Mode.DEFAULT);
-  final String schemaId=getStrategy().getFullJavaIdentifier(schema);
-  final String udtId=getStrategy().getJavaIdentifier(udt);
   JavaWriter out=newJavaWriter(getStrategy().getFile(udt));
+  final String className=getStrategy().getJavaClassName(udt);
+  final String recordType=out.ref(getStrategy().getFullJavaClassName(udt,Mode.RECORD));
+  final List<String> interfaces=out.ref(getStrategy().getJavaClassImplements(udt,Mode.DEFAULT));
+  final String schemaId=out.ref(getStrategy().getFullJavaIdentifier(schema),2);
+  final String udtId=out.ref(getStrategy().getJavaIdentifier(udt),2);
   printPackage(out,udt);
   generateUDTClassJavadoc(udt,out);
   printClassAnnotations(out,schema);
   if (udt.getRoutines().size() > 0) {
-    interfaces.add(org.jooq.Package.class.getName());
+    interfaces.add(out.ref(Package.class));
   }
   out.println("public class %s extends %s<%s>[[before= implements ][%s]] {",className,UDTImpl.class,recordType,interfaces);
   out.printSerial();
   printSingletonInstance(out,udt);
   printRecordTypeMethod(out,udt);
   for (  AttributeDefinition attribute : udt.getAttributes()) {
-    final String attrType=getJavaType(attribute.getType());
+    final String attrType=out.ref(getJavaType(attribute.getType()));
     final String attrTypeRef=getJavaTypeReference(attribute.getDatabase(),attribute.getType());
-    final String attrId=getStrategy().getJavaIdentifier(attribute);
+    final String attrId=out.ref(getStrategy().getJavaIdentifier(attribute),3);
     final String attrName=attribute.getName();
     final String attrComment=StringUtils.defaultString(attribute.getComment());
-    final List<String> converters=list(attribute.getType().getConverter(),attribute.getType().getBinding());
+    final List<String> converters=out.ref(list(attribute.getType().getConverter(),attribute.getType().getBinding()));
     out.tab(1).javadoc("The attribute <code>%s</code>.%s",attribute.getQualifiedOutputName(),defaultIfBlank(" " + attrComment,""));
     out.tab(1).println("public static final %s<%s, %s> %s = createField(\"%s\", %s, %s, \"%s\"[[before=, ][new %s()]]);",UDTField.class,recordType,attrType,attrId,attrName,attrTypeRef,udtId,escapeString(""),converters);
   }

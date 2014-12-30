@@ -3,9 +3,9 @@
     log.warn("Too many parameters","Function " + function + " has more than 254 in parameters. Skipping generation of convenience method.");
     return;
   }
-  final String className=getStrategy().getFullJavaClassName(function);
+  final String className=out.ref(getStrategy().getFullJavaClassName(function));
   final String functionName=function.getQualifiedOutputName();
-  final String functionType=getJavaType(function.getReturnType());
+  final String functionType=out.ref(getJavaType(function.getReturnType()));
   final String methodName=getStrategy().getJavaMethodName(function,Mode.DEFAULT);
   final String configurationArgument=disambiguateJavaMemberName(function.getInParameters(),"configuration");
   final String localVar=disambiguateJavaMemberName(function.getInParameters(),"f");
@@ -20,7 +20,7 @@
     if (instance && parameter.equals(function.getInParameters().get(0))) {
       continue;
     }
-    final String paramType=getNumberType(parameter.getType());
+    final String paramType=refNumberType(out,parameter.getType());
     final String paramMember=getStrategy().getJavaMemberName(parameter);
     out.print("%s%s %s",glue,paramType,paramMember);
     glue=", ";

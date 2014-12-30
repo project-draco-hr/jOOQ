@@ -1,5 +1,5 @@
 {
-  String qualified=getStrategy().getFullJavaClassName(tableOrUDT,Mode.INTERFACE);
+  String qualified=out.ref(getStrategy().getFullJavaClassName(tableOrUDT,Mode.INTERFACE));
   out.tab(1).header("FROM and INTO");
   out.tab(1).overrideInherit();
   out.tab(1).println("public void from(%s from) {",qualified);

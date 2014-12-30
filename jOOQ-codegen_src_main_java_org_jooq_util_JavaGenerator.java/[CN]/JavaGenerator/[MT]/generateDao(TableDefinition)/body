@@ -1,10 +1,12 @@
 {
+  log.info("Generating DAO",getStrategy().getFileName(table,Mode.DAO));
+  JavaWriter out=newJavaWriter(getStrategy().getFile(table,Mode.DAO));
   final String className=getStrategy().getJavaClassName(table,Mode.DAO);
-  final String tableRecord=getStrategy().getFullJavaClassName(table,Mode.RECORD);
-  final String daoImpl=DAOImpl.class.getName();
-  final String tableIdentifier=getStrategy().getFullJavaIdentifier(table);
+  final String tableRecord=out.ref(getStrategy().getFullJavaClassName(table,Mode.RECORD));
+  final String daoImpl=out.ref(DAOImpl.class);
+  final String tableIdentifier=out.ref(getStrategy().getFullJavaIdentifier(table),2);
   String tType="Void";
-  String pType=getStrategy().getFullJavaClassName(table,Mode.POJO);
+  String pType=out.ref(getStrategy().getFullJavaClassName(table,Mode.POJO));
   UniqueKeyDefinition key=table.getPrimaryKey();
   if (key == null) {
     log.info("Skipping DAO generation",getStrategy().getFileName(table,Mode.DAO));
@@ -18,7 +20,7 @@
     String generics="";
     String separator="";
     for (    ColumnDefinition column : keyColumns) {
-      generics+=separator + getJavaType(column.getType());
+      generics+=separator + out.ref(getJavaType(column.getType()));
       separator=", ";
     }
     tType=Record.class.getName() + keyColumns.size() + "<"+ generics+ ">";
@@ -26,8 +28,7 @@
  else {
     tType=Record.class.getName();
   }
-  log.info("Generating DAO",getStrategy().getFileName(table,Mode.DAO));
-  JavaWriter out=newJavaWriter(getStrategy().getFile(table,Mode.DAO));
+  tType=out.ref(tType);
   printPackage(out,table,Mode.DAO);
   generateDaoClassJavadoc(table,out);
   printClassAnnotations(out,table.getSchema());
@@ -58,8 +59,8 @@
   for (  ColumnDefinition column : table.getColumns()) {
     final String colName=column.getOutputName();
     final String colClass=getStrategy().getJavaClassName(column,Mode.POJO);
-    final String colType=getJavaType(column.getType());
-    final String colIdentifier=getStrategy().getFullJavaIdentifier(column);
+    final String colType=out.ref(getJavaType(column.getType()));
+    final String colIdentifier=out.ref(getStrategy().getFullJavaIdentifier(column),3);
     out.tab(1).javadoc("Fetch records that have <code>%s IN (values)</code>",colName);
     out.tab(1).println("public %s<%s> fetchBy%s(%s... values) {",List.class,pType,colClass,colType);
     out.tab(2).println("return fetch(%s, values);",colIdentifier);

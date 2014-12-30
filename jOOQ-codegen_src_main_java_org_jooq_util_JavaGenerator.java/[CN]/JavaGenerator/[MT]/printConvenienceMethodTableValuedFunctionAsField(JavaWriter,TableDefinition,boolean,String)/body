@@ -6,12 +6,12 @@
   if (parametersAsField && function.getParameters().isEmpty()) {
     return;
   }
-  final String className=getStrategy().getFullJavaClassName(function);
+  final String className=out.ref(getStrategy().getFullJavaClassName(function));
   out.tab(1).javadoc("Get <code>%s</code> as a field",function.getQualifiedOutputName());
   out.tab(1).print("public static %s %s(",className,javaMethodName);
   printParameterDeclarations(out,function,parametersAsField);
   out.println(") {");
-  out.tab(2).print("return %s.call(",getStrategy().getFullJavaIdentifier(function));
+  out.tab(2).print("return %s.call(",out.ref(getStrategy().getFullJavaIdentifier(function),2));
   String separator="";
   for (  ParameterDefinition parameter : function.getParameters()) {
     out.print(separator);

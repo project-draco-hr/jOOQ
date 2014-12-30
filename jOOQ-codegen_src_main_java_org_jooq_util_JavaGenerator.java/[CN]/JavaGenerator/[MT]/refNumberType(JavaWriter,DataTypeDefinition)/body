@@ -1,0 +1,8 @@
+{
+  if (type.isGenericNumberType()) {
+    return out.ref(Number.class);
+  }
+ else {
+    return out.ref(getJavaType(type));
+  }
+}

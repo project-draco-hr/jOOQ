@@ -1,4 +1,14 @@
 {
+  StringBuilder importString=new StringBuilder();
+  String previous="";
+  for (  String imp : qualifiedTypes) {
+    if (imp.startsWith("java.lang."))     continue;
+    String topLevelPackage=imp.split("\\.")[0];
+    if (!topLevelPackage.equals(previous))     importString.append("\n");
+    importString.append("import ").append(imp).append(";\n");
+    previous=topLevelPackage;
+  }
+  string=string.replaceAll(IMPORT_STATEMENT,Matcher.quoteReplacement(importString.toString()));
   string=string.replaceAll(SERIAL_STATEMENT,Matcher.quoteReplacement(String.valueOf(string.hashCode())));
   return string;
 }

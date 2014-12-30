@@ -4,7 +4,7 @@
     List<UniqueKeyDefinition> uks=column.getUniqueKeys();
     if (pk != null) {
       if (pk.getKeyColumns().size() == 1) {
-        out.println("\t@javax.persistence.Id");
+        out.println("\t@%s",out.ref("javax.persistence.Id"));
       }
     }
     String unique="";
@@ -30,7 +30,7 @@
         scale=", scale = " + column.getType().getScale();
       }
     }
-    out.print("\t@javax.persistence.Column(name = \"");
+    out.print("\t@%s(name = \"",out.ref("javax.persistence.Column"));
     out.print(column.getName().replace("\"","\\\""));
     out.print("\"");
     out.print(unique);

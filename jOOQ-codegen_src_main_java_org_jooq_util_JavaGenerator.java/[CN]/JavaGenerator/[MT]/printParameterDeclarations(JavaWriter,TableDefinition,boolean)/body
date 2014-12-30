@@ -3,10 +3,10 @@
   for (  ParameterDefinition parameter : function.getParameters()) {
     out.print(sep1);
     if (parametersAsField) {
-      out.print("%s<%s>",Field.class,getExtendsNumberType(parameter.getType()));
+      out.print("%s<%s>",Field.class,refExtendsNumberType(out,parameter.getType()));
     }
  else {
-      out.print(getNumberType(parameter.getType()));
+      out.print(refNumberType(out,parameter.getType()));
     }
     out.print(" %s",getStrategy().getJavaMemberName(parameter));
     sep1=", ";

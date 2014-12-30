@@ -1,9 +1,9 @@
 {
   log.info("Generating package",pkg);
-  final String className=getStrategy().getJavaClassName(pkg);
-  final String schemaIdentifier=getStrategy().getFullJavaIdentifier(schema);
-  final List<String> interfaces=getStrategy().getJavaClassImplements(pkg,Mode.DEFAULT);
   JavaWriter out=newJavaWriter(getStrategy().getFile(pkg));
+  final String className=getStrategy().getJavaClassName(pkg);
+  final String schemaIdentifier=out.ref(getStrategy().getFullJavaIdentifier(schema),2);
+  final List<String> interfaces=out.ref(getStrategy().getJavaClassImplements(pkg,Mode.DEFAULT));
   printPackage(out,pkg);
   generatePackageClassJavadoc(pkg,out);
   printClassAnnotations(out,schema);
