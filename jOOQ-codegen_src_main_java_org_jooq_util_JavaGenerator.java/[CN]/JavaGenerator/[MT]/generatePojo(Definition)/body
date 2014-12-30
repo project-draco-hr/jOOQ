@@ -46,7 +46,6 @@
   }
   for (  TypedElementDefinition<?> column : getTypedElements(tableOrUDT)) {
     final String columnType=out.ref(getJavaType(column.getType(),Mode.POJO));
-    final String columnTypeInterface=out.ref(getJavaType(column.getType(),Mode.INTERFACE));
     final String columnSetterReturnType=fluentSetters() ? className : "void";
     final String columnSetter=getStrategy().getJavaSetterName(column,Mode.POJO);
     final String columnGetter=getStrategy().getJavaGetterName(column,Mode.POJO);
@@ -67,6 +66,7 @@
       if (fluentSetters())       out.tab(2).println("return this;");
       out.tab(1).println("}");
       if (generateInterfaces() && isUDT) {
+        final String columnTypeInterface=out.ref(getJavaType(column.getType(),Mode.INTERFACE));
         out.println();
         out.tab(1).override();
         out.tab(1).println("public %s %s(%s %s) {",columnSetterReturnType,columnSetter,columnTypeInterface,columnMember);

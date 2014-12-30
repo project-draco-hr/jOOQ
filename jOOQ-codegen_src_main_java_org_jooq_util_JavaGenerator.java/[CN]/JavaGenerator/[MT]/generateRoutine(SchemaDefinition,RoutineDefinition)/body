@@ -16,7 +16,7 @@
   for (  ParameterDefinition parameter : routine.getAllParameters()) {
     final String paramType=out.ref(getJavaType(parameter.getType()));
     final String paramTypeRef=getJavaTypeReference(parameter.getDatabase(),parameter.getType());
-    final String paramId=out.ref(getStrategy().getJavaIdentifier(parameter),3);
+    final String paramId=out.ref(getStrategy().getJavaIdentifier(parameter),2);
     final String paramName=parameter.getName();
     final String paramComment=StringUtils.defaultString(parameter.getComment());
     final String isDefaulted=parameter.isDefaulted() ? "true" : "false";

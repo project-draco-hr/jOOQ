@@ -18,7 +18,7 @@
   for (  ColumnDefinition column : table.getColumns()) {
     final String columnType=out.ref(getJavaType(column.getType()));
     final String columnTypeRef=getJavaTypeReference(column.getDatabase(),column.getType());
-    final String columnId=out.ref(getStrategy().getJavaIdentifier(column),3);
+    final String columnId=out.ref(getStrategy().getJavaIdentifier(column),colRefSegments(column));
     final String columnName=column.getName();
     final String columnComment=StringUtils.defaultString(column.getComment());
     final List<String> converters=out.ref(list(column.getType().getConverter(),column.getType().getBinding()));

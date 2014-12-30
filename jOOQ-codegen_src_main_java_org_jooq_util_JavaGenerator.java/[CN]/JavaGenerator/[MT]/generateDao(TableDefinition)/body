@@ -60,7 +60,7 @@
     final String colName=column.getOutputName();
     final String colClass=getStrategy().getJavaClassName(column,Mode.POJO);
     final String colType=out.ref(getJavaType(column.getType()));
-    final String colIdentifier=out.ref(getStrategy().getFullJavaIdentifier(column),3);
+    final String colIdentifier=out.ref(getStrategy().getFullJavaIdentifier(column),colRefSegments(column));
     out.tab(1).javadoc("Fetch records that have <code>%s IN (values)</code>",colName);
     out.tab(1).println("public %s<%s> fetchBy%s(%s... values) {",List.class,pType,colClass,colType);
     out.tab(2).println("return fetch(%s, values);",colIdentifier);

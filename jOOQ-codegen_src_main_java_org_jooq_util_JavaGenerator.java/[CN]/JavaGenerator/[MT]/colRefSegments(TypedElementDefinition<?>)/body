@@ -1,0 +1,5 @@
+{
+  if (column != null && column.getContainer() instanceof UDTDefinition)   return 2;
+  if (!getStrategy().getInstanceFields())   return 2;
+  return 3;
+}

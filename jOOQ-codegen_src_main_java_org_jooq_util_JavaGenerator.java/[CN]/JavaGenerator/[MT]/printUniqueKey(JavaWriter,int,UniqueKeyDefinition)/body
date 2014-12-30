@@ -7,5 +7,5 @@
     out.println();
     out.tab(1).println("private static class UniqueKeys%s extends %s {",block,AbstractKeys.class);
   }
-  out.tab(2).println("public static final %s<%s> %s = createUniqueKey(%s, [[%s]]);",UniqueKey.class,out.ref(getStrategy().getFullJavaClassName(uniqueKey.getTable(),Mode.RECORD)),getStrategy().getJavaIdentifier(uniqueKey),out.ref(getStrategy().getFullJavaIdentifier(uniqueKey.getTable()),2),out.ref(getStrategy().getFullJavaIdentifiers(uniqueKey.getKeyColumns()),3));
+  out.tab(2).println("public static final %s<%s> %s = createUniqueKey(%s, [[%s]]);",UniqueKey.class,out.ref(getStrategy().getFullJavaClassName(uniqueKey.getTable(),Mode.RECORD)),getStrategy().getJavaIdentifier(uniqueKey),out.ref(getStrategy().getFullJavaIdentifier(uniqueKey.getTable()),2),out.ref(getStrategy().getFullJavaIdentifiers(uniqueKey.getKeyColumns()),colRefSegments(null)));
 }
