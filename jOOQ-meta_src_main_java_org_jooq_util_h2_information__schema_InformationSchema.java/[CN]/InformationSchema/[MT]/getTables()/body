@@ -1,5 +1,5 @@
 {
-  java.util.List result=new java.util.ArrayList();
+  List result=new ArrayList();
   result.addAll(getTables0());
   return result;
 }

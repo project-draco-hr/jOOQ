@@ -1,0 +1,3 @@
+String alias
+Table<Record> aliased
+Field<?>[] parameters

@@ -1,0 +1,3 @@
+{
+  this(alias,PG_PROC);
+}

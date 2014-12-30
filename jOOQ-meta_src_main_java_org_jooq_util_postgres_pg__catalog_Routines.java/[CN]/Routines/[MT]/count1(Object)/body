@@ -1,0 +1,5 @@
+{
+  Count1 f=new Count1();
+  f.set__1(__1);
+  return f.asAggregateFunction();
+}

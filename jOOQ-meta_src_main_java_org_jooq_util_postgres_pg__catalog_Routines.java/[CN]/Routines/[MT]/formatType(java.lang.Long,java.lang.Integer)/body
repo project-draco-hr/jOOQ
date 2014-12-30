@@ -1,6 +1,0 @@
-{
-  org.jooq.util.postgres.pg_catalog.routines.FormatType f=new org.jooq.util.postgres.pg_catalog.routines.FormatType();
-  f.set__1(__1);
-  f.set__2(__2);
-  return f.asField();
-}
