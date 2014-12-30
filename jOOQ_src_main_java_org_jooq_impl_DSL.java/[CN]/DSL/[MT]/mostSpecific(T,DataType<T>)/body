@@ -1,5 +1,5 @@
 {
-  if (value != null) {
+  if (value != null && !(dataType instanceof ConvertedDataType)) {
     Class<T> valueType=(Class<T>)value.getClass();
     Class<T> coercionType=dataType.getType();
     if (valueType != coercionType && coercionType.isAssignableFrom(valueType)) {
