@@ -58,7 +58,7 @@
   out.tab(1).println("}");
   for (  ColumnDefinition column : table.getColumns()) {
     final String colName=column.getOutputName();
-    final String colClass=getStrategy().getJavaClassName(column,Mode.POJO);
+    final String colClass=getStrategy().getJavaClassName(column);
     final String colType=out.ref(getJavaType(column.getType()));
     final String colIdentifier=out.ref(getStrategy().getFullJavaIdentifier(column),colRefSegments(column));
     out.tab(1).javadoc("Fetch records that have <code>%s IN (values)</code>",colName);
