@@ -11,6 +11,20 @@
         method.invoke(result,record.getValue(i,method.getParameterTypes()[0]));
       }
     }
+    for (    Entry<String,List<RecordMapper<R,Object>>> entry : nested.entrySet()) {
+      String prefix=entry.getKey();
+      for (      RecordMapper<R,Object> mapper : entry.getValue()) {
+        Object value=mapper.map(record);
+        for (        java.lang.reflect.Field member : getMatchingMembers(configuration,type,prefix)) {
+          if ((member.getModifiers() & Modifier.FINAL) == 0) {
+            map(value,result,member);
+          }
+        }
+        for (        Method method : getMatchingSetters(configuration,type,prefix)) {
+          method.invoke(result,value);
+        }
+      }
+    }
     return result;
   }
  catch (  Exception e) {

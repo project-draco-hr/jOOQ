@@ -1,0 +1,3 @@
+RecordMapper<R,Object> d
+Field<?>[] fields
+String prefix

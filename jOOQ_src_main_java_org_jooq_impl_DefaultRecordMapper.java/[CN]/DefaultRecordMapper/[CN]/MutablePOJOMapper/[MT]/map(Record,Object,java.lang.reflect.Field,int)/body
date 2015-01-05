@@ -2,31 +2,31 @@
   Class<?> mType=member.getType();
   if (mType.isPrimitive()) {
     if (mType == byte.class) {
-      member.setByte(result,record.getValue(index,byte.class));
+      map(record.getValue(index,byte.class),result,member);
     }
  else     if (mType == short.class) {
-      member.setShort(result,record.getValue(index,short.class));
+      map(record.getValue(index,short.class),result,member);
     }
  else     if (mType == int.class) {
-      member.setInt(result,record.getValue(index,int.class));
+      map(record.getValue(index,int.class),result,member);
     }
  else     if (mType == long.class) {
-      member.setLong(result,record.getValue(index,long.class));
+      map(record.getValue(index,long.class),result,member);
     }
  else     if (mType == float.class) {
-      member.setFloat(result,record.getValue(index,float.class));
+      map(record.getValue(index,float.class),result,member);
     }
  else     if (mType == double.class) {
-      member.setDouble(result,record.getValue(index,double.class));
+      map(record.getValue(index,double.class),result,member);
     }
  else     if (mType == boolean.class) {
-      member.setBoolean(result,record.getValue(index,boolean.class));
+      map(record.getValue(index,boolean.class),result,member);
     }
  else     if (mType == char.class) {
-      member.setChar(result,record.getValue(index,char.class));
+      map(record.getValue(index,char.class),result,member);
     }
   }
  else {
-    member.set(result,record.getValue(index,mType));
+    map(record.getValue(index,mType),result,member);
   }
 }

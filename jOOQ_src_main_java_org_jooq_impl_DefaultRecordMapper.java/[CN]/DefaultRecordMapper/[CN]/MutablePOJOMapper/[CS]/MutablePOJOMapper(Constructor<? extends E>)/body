@@ -3,15 +3,43 @@
   this.useAnnotations=hasColumnAnnotations(configuration,type);
   this.members=new List[fields.length];
   this.methods=new List[fields.length];
+  this.nested=new HashMap<String,List<RecordMapper<R,Object>>>();
+  Map<String,Field<?>[]> nestedFields=new HashMap<String,Field<?>[]>();
   for (int i=0; i < fields.length; i++) {
     Field<?> field=fields[i];
+    String name=field.getName();
     if (useAnnotations) {
-      members[i]=getAnnotatedMembers(configuration,type,field.getName());
-      methods[i]=getAnnotatedSetters(configuration,type,field.getName());
+      members[i]=getAnnotatedMembers(configuration,type,name);
+      methods[i]=getAnnotatedSetters(configuration,type,name);
     }
  else {
-      members[i]=getMatchingMembers(configuration,type,field.getName());
-      methods[i]=getMatchingSetters(configuration,type,field.getName());
+      int dot=name.indexOf('.');
+      if (dot > -1) {
+        String prefix=name.substring(0,dot);
+        Field<?>[] f=nestedFields.get(prefix);
+        if (f == null) {
+          f=nCopies(fields.length,field("")).toArray(new Field[fields.length]);
+          nestedFields.put(prefix,f);
+        }
+        f[i]=field(name(name.substring(prefix.length() + 1)),field.getDataType());
+        members[i]=Collections.emptyList();
+        methods[i]=Collections.emptyList();
+      }
+ else {
+        members[i]=getMatchingMembers(configuration,type,name);
+        methods[i]=getMatchingSetters(configuration,type,name);
+      }
     }
+  }
+  for (  Entry<String,Field<?>[]> entry : nestedFields.entrySet()) {
+    String prefix=entry.getKey();
+    List<RecordMapper<R,Object>> list=new ArrayList<RecordMapper<R,Object>>();
+    for (    java.lang.reflect.Field member : getMatchingMembers(configuration,type,prefix)) {
+      list.add(new RemovingPrefixRecordMapper(new DefaultRecordMapper<R,Object>(new Fields<R>(entry.getValue()),member.getType(),instance,configuration),fields,prefix));
+    }
+    for (    Method method : getMatchingSetters(configuration,type,prefix)) {
+      list.add(new RemovingPrefixRecordMapper(new DefaultRecordMapper<R,Object>(new Fields<R>(entry.getValue()),method.getParameterTypes()[0],instance,configuration),fields,prefix));
+    }
+    nested.put(prefix,list);
   }
 }

@@ -1,0 +1,6 @@
+{
+  this.d=d;
+  this.f=new Field[fields.length];
+  String dotted=prefix + ".";
+  for (int i=0; i < fields.length; i++)   if (fields[i].getName().startsWith(dotted))   f[i]=field(name(fields[i].getName().substring(dotted.length() + 1)),fields[i].getDataType());
+}

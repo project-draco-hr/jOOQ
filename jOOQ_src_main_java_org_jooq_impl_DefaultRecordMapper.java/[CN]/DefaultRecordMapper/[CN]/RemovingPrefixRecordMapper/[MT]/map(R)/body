@@ -1,0 +1,5 @@
+{
+  AbstractRecord copy=(AbstractRecord)DSL.using(configuration).newRecord(f);
+  for (int i=0; i < f.length; i++)   if (f[i] != null)   copy.setValue(i,record.getValue(i));
+  return d.map(record);
+}
