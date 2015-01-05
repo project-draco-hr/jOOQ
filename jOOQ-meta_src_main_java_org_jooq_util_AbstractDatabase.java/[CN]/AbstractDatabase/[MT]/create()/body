@@ -7,7 +7,7 @@
     System.arraycopy(oldProviders,0,newProviders,0,oldProviders.length);
     newProviders[oldProviders.length]=new DefaultExecuteListenerProvider(new DefaultExecuteListener(){
       @Override public void exception(      ExecuteContext ctx){
-        log.warn("SQL exception","Exception while executing meta query: " + ctx.sqlException().getMessage() + "\n\n"+ "Please report this bug here: https://github.com/jOOQ/jOOQ/issues/new\n\n"+ DSL.using(configuration.derive(newSettings)).renderInlined(ctx.query()));
+        log.warn("SQL exception","Exception while executing meta query: " + (ctx.sqlException() != null ? ctx.sqlException().getMessage() : ctx.exception() != null ? ctx.exception().getMessage() : "No exception available") + "\n\n"+ "Please report this bug here: https://github.com/jOOQ/jOOQ/issues/new\n\n"+ DSL.using(configuration.derive(newSettings)).renderInlined(ctx.query()));
       }
     }
 );
