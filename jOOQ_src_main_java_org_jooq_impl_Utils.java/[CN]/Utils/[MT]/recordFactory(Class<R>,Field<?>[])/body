@@ -1,0 +1,29 @@
+{
+  if (type == RecordImpl.class || type == Record.class) {
+    return new RecordFactory<R>(){
+      @Override public R newInstance(){
+        return (R)new RecordImpl(fields);
+      }
+    }
+;
+  }
+ else {
+    try {
+      final Constructor<R> constructor=Reflect.accessible(type.getDeclaredConstructor());
+      return new RecordFactory<R>(){
+        @Override public R newInstance(){
+          try {
+            return constructor.newInstance();
+          }
+ catch (          Exception e) {
+            throw new IllegalStateException("Could not construct new record",e);
+          }
+        }
+      }
+;
+    }
+ catch (    Exception e) {
+      throw new IllegalStateException("Could not construct new record",e);
+    }
+  }
+}
