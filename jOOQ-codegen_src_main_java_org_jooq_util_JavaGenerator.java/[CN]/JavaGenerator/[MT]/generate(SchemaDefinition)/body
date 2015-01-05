@@ -19,7 +19,7 @@
   }
   File targetPackage=getStrategy().getFile(schema).getParentFile();
   generateSchema(schema);
-  if (generateGlobalObjectReferences() && database.getSequences(schema).size() > 0) {
+  if (generateGlobalObjectReferences() && generateGlobalSequenceReferences() && database.getSequences(schema).size() > 0) {
     generateSequences(schema);
   }
   if (database.getTables(schema).size() > 0) {
@@ -31,7 +31,7 @@
   if (generateDaos() && database.getTables(schema).size() > 0) {
     generateDaos(schema);
   }
-  if (generateGlobalObjectReferences() && database.getTables(schema).size() > 0) {
+  if (generateGlobalObjectReferences() && generateGlobalTableReferences() && database.getTables(schema).size() > 0) {
     generateTableReferences(schema);
   }
   if (generateRelations() && database.getTables(schema).size() > 0) {
@@ -58,7 +58,7 @@
   if (database.getUDTs(schema).size() > 0) {
     generateUDTRoutines(schema);
   }
-  if (generateGlobalObjectReferences() && database.getUDTs(schema).size() > 0) {
+  if (generateGlobalObjectReferences() && generateGlobalUDTReferences() && database.getUDTs(schema).size() > 0) {
     generateUDTReferences(schema);
   }
   if (database.getArrays(schema).size() > 0) {
@@ -67,7 +67,7 @@
   if (database.getEnums(schema).size() > 0) {
     generateEnums(schema);
   }
-  if (database.getRoutines(schema).size() > 0 || hasTableValuedFunctions(schema)) {
+  if (generateGlobalObjectReferences() && generateGlobalRoutineReferences() && database.getRoutines(schema).size() > 0 || hasTableValuedFunctions(schema)) {
     generateRoutines(schema);
   }
   if (database.getPackages(schema).size() > 0) {
