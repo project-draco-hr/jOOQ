@@ -1,11 +1,13 @@
 {
   SQLDialect result=SQLDialect.DEFAULT;
-  try {
-    DatabaseMetaData m=connection.getMetaData();
-    String url=m.getURL();
-    result=dialect(url);
-  }
- catch (  SQLException ignore) {
+  if (connection != null) {
+    try {
+      DatabaseMetaData m=connection.getMetaData();
+      String url=m.getURL();
+      result=dialect(url);
+    }
+ catch (    SQLException ignore) {
+    }
   }
   if (result == SQLDialect.DEFAULT) {
   }

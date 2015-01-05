@@ -1,0 +1,6 @@
+{
+  if (isBlank(url))   throw new RuntimeException("No JDBC URL configured.");
+  Class<? extends Database> result=Databases.databaseClass(JDBCUtils.dialect(url));
+  log.info("Database","Inferring database " + result.getName() + " from URL "+ url);
+  return result;
+}

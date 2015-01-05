@@ -33,7 +33,7 @@
     generator.setStrategy(strategy);
     org.jooq.util.jaxb.Database d=defaultIfNull(g.getDatabase(),new org.jooq.util.jaxb.Database());
     String databaseName=trim(d.getName());
-    Class<? extends Database> databaseClass=isBlank(databaseName) ? databaseClass(j) : (Class<? extends Database>)loadClass(databaseName);
+    Class<? extends Database> databaseClass=!isBlank(databaseName) ? (Class<? extends Database>)loadClass(databaseName) : connection != null ? databaseClass(connection) : databaseClass(j);
     Database database=databaseClass.newInstance();
     database.setProperties(properties(d.getProperties()));
     List<Schema> schemata=d.getSchemata();

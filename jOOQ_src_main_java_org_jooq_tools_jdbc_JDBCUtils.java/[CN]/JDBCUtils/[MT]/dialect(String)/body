@@ -1,4 +1,5 @@
 {
+  if (url == null)   return DEFAULT;
   if (url.startsWith("jdbc:cubrid:")) {
     return CUBRID;
   }
@@ -26,5 +27,5 @@
  else   if (url.startsWith("jdbc:sqlite:")) {
     return SQLITE;
   }
-  return SQLDialect.DEFAULT;
+  return DEFAULT;
 }

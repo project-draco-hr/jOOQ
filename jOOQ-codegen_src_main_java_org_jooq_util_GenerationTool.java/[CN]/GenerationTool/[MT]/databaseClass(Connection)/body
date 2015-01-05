@@ -1,0 +1,8 @@
+{
+  try {
+    return databaseClass(c.getMetaData().getURL());
+  }
+ catch (  SQLException e) {
+    throw new RuntimeException(e);
+  }
+}
