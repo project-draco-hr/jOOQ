@@ -1,0 +1,4 @@
+{
+  Result<R> r=fetch();
+  return r.toArray((R[])Array.newInstance(getRecordType(),r.size()));
+}
