@@ -5,13 +5,13 @@
  else {
     String separator="";
     boolean indent=(size() > 1);
-    if (indent)     ctx.formatIndentStart();
-    for (    T queryPart : this) {
+    if (indent && ctx.data(DATA_LIST_ALREADY_INDENTED) == null)     ctx.formatIndentStart();
+    for (int i=0; i < size(); i++) {
       ctx.sql(separator);
-      if (indent)       ctx.formatNewLine();
-      ctx.visit(queryPart);
+      if (i > 0 || ctx.data(DATA_LIST_ALREADY_INDENTED) == null)       ctx.formatNewLine();
+      ctx.visit(get(i));
       separator=", ";
     }
-    if (indent)     ctx.formatIndentEnd();
+    if (indent && ctx.data(DATA_LIST_ALREADY_INDENTED) == null)     ctx.formatIndentEnd();
   }
 }

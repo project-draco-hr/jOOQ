@@ -1,4 +1,0 @@
-{
-  super("row",(DataType)SQLDataType.RECORD);
-  this.row=row;
-}

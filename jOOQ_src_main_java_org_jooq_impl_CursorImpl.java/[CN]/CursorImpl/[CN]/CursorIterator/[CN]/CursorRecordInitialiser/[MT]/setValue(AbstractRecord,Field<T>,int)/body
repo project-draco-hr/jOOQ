@@ -1,7 +1,15 @@
 {
-  DefaultBindingGetResultSetContext<T> out=new DefaultBindingGetResultSetContext<T>(ctx.configuration(),ctx.resultSet(),index + 1);
-  field.getBinding().get(out);
-  T value=out.value();
+  T value;
+  if (field instanceof RowField) {
+    Field<?>[] emulatedFields=((RowField<?,?>)field).emulatedFields();
+    value=(T)Utils.newRecord(true,RecordImpl.class,emulatedFields,ctx.configuration()).operate(new CursorRecordInitialiser(emulatedFields,offset + index));
+    offset+=emulatedFields.length - 1;
+  }
+ else {
+    DefaultBindingGetResultSetContext<T> out=new DefaultBindingGetResultSetContext<T>(ctx.configuration(),ctx.resultSet(),offset + index + 1);
+    field.getBinding().get(out);
+    value=out.value();
+  }
   record.values[index]=value;
   record.originals[index]=value;
 }

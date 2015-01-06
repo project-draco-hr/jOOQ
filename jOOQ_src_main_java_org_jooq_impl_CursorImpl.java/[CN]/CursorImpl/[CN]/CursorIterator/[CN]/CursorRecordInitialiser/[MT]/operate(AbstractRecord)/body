@@ -1,8 +1,8 @@
 {
   ctx.record(record);
   listener.recordStart(ctx);
-  for (int i=0; i < fields.length; i++) {
-    setValue(record,fields[i],i);
+  for (int i=0; i < initaliserFields.length; i++) {
+    setValue(record,initaliserFields[i],i);
     if (intern[i]) {
       record.intern0(i);
     }

@@ -1,0 +1,4 @@
+{
+  this.initaliserFields=fields;
+  this.offset=offset;
+}

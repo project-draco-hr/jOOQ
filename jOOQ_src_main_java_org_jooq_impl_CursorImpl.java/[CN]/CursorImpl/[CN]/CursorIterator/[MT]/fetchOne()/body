@@ -6,7 +6,7 @@
         rs.updateObject(1,rs.getObject(1));
         rs.updateRow();
       }
-      record=Utils.newRecord(true,(RecordFactory<AbstractRecord>)factory,ctx.configuration()).operate(initialiser);
+      record=Utils.newRecord(true,(RecordFactory<AbstractRecord>)factory,ctx.configuration()).operate(new CursorRecordInitialiser(cursorFields,0));
       rows++;
     }
   }

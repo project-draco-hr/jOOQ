@@ -1,0 +1,7 @@
+{
+  super(as,(DataType)SQLDataType.RECORD);
+  this.row=row;
+  this.as=as;
+  this.emulatedFields=new Field[row.fields().length];
+  for (int i=0; i < emulatedFields.length; i++)   emulatedFields[i]=row.field(i).as(as + "." + row.field(i).getName());
+}

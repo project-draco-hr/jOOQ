@@ -1,3 +1,11 @@
 {
-  ctx.visit(row);
+  if (ctx.declareFields()) {
+    Object previous=ctx.data(DATA_LIST_ALREADY_INDENTED);
+    ctx.data(DATA_LIST_ALREADY_INDENTED,true);
+    ctx.visit(new SelectFieldList(emulatedFields()));
+    ctx.data(DATA_LIST_ALREADY_INDENTED,previous);
+  }
+ else {
+    ctx.visit(row);
+  }
 }
