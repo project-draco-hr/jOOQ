@@ -4,14 +4,14 @@
   }
  else {
     String separator="";
-    boolean indent=(size() > 1);
-    if (indent && ctx.data(DATA_LIST_ALREADY_INDENTED) == null)     ctx.formatIndentStart();
+    boolean indent=(size() > 1) && ctx.data(DATA_LIST_ALREADY_INDENTED) == null;
+    if (indent)     ctx.formatIndentStart();
     for (int i=0; i < size(); i++) {
       ctx.sql(separator);
-      if (i > 0 || ctx.data(DATA_LIST_ALREADY_INDENTED) == null)       ctx.formatNewLine();
+      if (i > 0 || indent)       ctx.formatNewLine();
       ctx.visit(get(i));
       separator=", ";
     }
-    if (indent && ctx.data(DATA_LIST_ALREADY_INDENTED) == null)     ctx.formatIndentEnd();
+    if (indent)     ctx.formatIndentEnd();
   }
 }
