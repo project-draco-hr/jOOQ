@@ -1,5 +1,5 @@
 {
-  boolean unguarded=(guard.tl.get() != null);
+  boolean unguarded=(guard.tl.get() == null);
   if (unguarded)   guard.tl.set(Guard.class);
   try {
     if (unguarded)     return operation.unguarded();
