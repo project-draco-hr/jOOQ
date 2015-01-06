@@ -1,5 +1,13 @@
 {
-  Result<AbstractRecord> result=new ResultImpl<AbstractRecord>(configuration(),fields.fields.fields);
-  result.add(this);
-  return result.toString();
+  return ThreadGuard.run(RECORD_TOSTRING,new GuardedOperation<String>(){
+    @Override public String unguarded(){
+      Result<AbstractRecord> result=new ResultImpl<AbstractRecord>(configuration(),fields.fields.fields);
+      result.add(AbstractRecord.this);
+      return result.toString();
+    }
+    @Override public String guarded(){
+      return valuesRow().toString();
+    }
+  }
+);
 }
