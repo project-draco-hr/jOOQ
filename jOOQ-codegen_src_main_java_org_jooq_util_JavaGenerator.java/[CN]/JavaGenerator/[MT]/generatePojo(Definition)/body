@@ -27,6 +27,12 @@
     out.tab(1).print("public %s() {}",className);
     out.println();
   }
+  out.println();
+  out.tab(1).println("public %s(%s value) {",className,className);
+  for (  TypedElementDefinition<?> column : getTypedElements(tableOrUDT)) {
+    out.tab(2).println("this.%s = value.%s;",getStrategy().getJavaMemberName(column,Mode.POJO),getStrategy().getJavaMemberName(column,Mode.POJO));
+  }
+  out.tab(1).println("}");
   if (getTypedElements(tableOrUDT).size() > 0 && getTypedElements(tableOrUDT).size() < 256) {
     out.println();
     out.tab(1).print("public %s(",className);
