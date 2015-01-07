@@ -4,7 +4,7 @@
     for (    Row row : right) {
       conditions.add(new RowCondition(left,row,EQUALS));
     }
-    Condition result=new CombinedCondition(Operator.OR,conditions);
+    Condition result=DSL.or(conditions);
     if (comparator == NOT_IN) {
       result=result.not();
     }

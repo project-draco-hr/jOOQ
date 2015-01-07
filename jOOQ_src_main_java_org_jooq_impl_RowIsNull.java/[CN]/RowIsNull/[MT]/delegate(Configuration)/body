@@ -4,7 +4,7 @@
     for (    Field<?> field : row.fields()) {
       conditions.add(isNull ? field.isNull() : field.isNotNull());
     }
-    Condition result=new CombinedCondition(Operator.AND,conditions);
+    Condition result=DSL.and(conditions);
     return (QueryPartInternal)result;
   }
  else {
