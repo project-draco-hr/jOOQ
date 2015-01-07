@@ -1,0 +1,4 @@
+{
+  this.fromType=fromType;
+  this.toType=toType;
+}

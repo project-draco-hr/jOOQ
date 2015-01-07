@@ -3,9 +3,9 @@
     return null;
   }
  else   if (enumType == EnumType.ORDINAL) {
-    return convert(userObject.ordinal(),fromType);
+    return convert(userObject.ordinal(),fromType());
   }
  else {
-    return convert(userObject.name(),fromType);
+    return convert(userObject.name(),fromType());
   }
 }

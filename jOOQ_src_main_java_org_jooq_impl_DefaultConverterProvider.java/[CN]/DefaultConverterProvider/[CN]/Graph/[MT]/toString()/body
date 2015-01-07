@@ -1,0 +1,27 @@
+{
+  build();
+synchronized (paths) {
+    StringBuilder sb=new StringBuilder();
+    Class<?>[] classes=vertices.toArray(new Class[0]);
+    Arrays.sort(classes,new Comparator<Class<?>>(){
+      @Override public int compare(      Class<?> o1,      Class<?> o2){
+        return o1.getName().compareTo(o2.getName());
+      }
+    }
+);
+    int maxLength=Integer.MIN_VALUE;
+    for (    Class<?> c : classes)     maxLength=Math.max(maxLength,c.getName().length());
+    String sep1="";
+    for (    Class<?> c1 : classes) {
+      sb.append(sep1);
+      sb.append(rightPad(c1.getName(),maxLength));
+      for (      Class<?> c2 : classes) {
+        if (paths.containsKey(new Endpoints(c1,c2))) {
+          sb.append("\n -> ").append(c2.getName());
+        }
+      }
+      sep1="\n\n";
+    }
+    return sb.toString();
+  }
+}

@@ -1,3 +1,3 @@
 {
-  this(configuration.connectionProvider(),configuration.transactionProvider(),configuration.recordMapperProvider(),configuration.recordListenerProviders(),configuration.executeListenerProviders(),configuration.visitListenerProviders(),configuration.dialect(),configuration.settings(),configuration.data());
+  this(configuration.connectionProvider(),configuration.transactionProvider(),configuration.recordMapperProvider(),configuration.recordListenerProviders(),configuration.executeListenerProviders(),configuration.visitListenerProviders(),configuration.converterProvider(),configuration.dialect(),configuration.settings(),configuration.data());
 }

@@ -1,0 +1,12 @@
+{
+  StringBuilder sb=new StringBuilder();
+  String separator=" -> ";
+  sb.append("Converters [ ");
+  sb.append(chain[0].fromType().getName());
+  for (  Converter<?,?> converter : chain) {
+    sb.append(separator);
+    sb.append(converter.toType().getName());
+  }
+  sb.append(" ]");
+  return sb.toString();
+}

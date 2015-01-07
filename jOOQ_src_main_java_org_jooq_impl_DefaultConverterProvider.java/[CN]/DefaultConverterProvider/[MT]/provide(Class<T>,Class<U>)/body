@@ -1,0 +1,4 @@
+{
+  if (tType == uType)   return (Converter<T,U>)new IdentityConverter<T>(tType);
+ else   return graph.get(new Endpoints<T,U>(tType,uType));
+}

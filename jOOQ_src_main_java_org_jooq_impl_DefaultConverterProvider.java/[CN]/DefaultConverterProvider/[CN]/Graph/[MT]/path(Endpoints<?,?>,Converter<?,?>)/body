@@ -1,0 +1,3 @@
+{
+  if (key.fromType != key.toType)   if (!paths.containsKey(key))   paths.put(key,converter);
+}

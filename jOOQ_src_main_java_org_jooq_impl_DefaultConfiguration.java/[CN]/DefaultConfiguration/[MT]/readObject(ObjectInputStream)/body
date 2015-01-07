@@ -6,4 +6,5 @@
   executeListenerProviders=(ExecuteListenerProvider[])ois.readObject();
   recordListenerProviders=(RecordListenerProvider[])ois.readObject();
   visitListenerProviders=(VisitListenerProvider[])ois.readObject();
+  converterProvider=(ConverterProvider)ois.readObject();
 }

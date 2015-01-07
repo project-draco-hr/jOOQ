@@ -1,0 +1,3 @@
+{
+  return 17 * fromType.hashCode() + toType.hashCode();
+}

@@ -1,0 +1,24 @@
+{
+  return new Converter<U,T>(){
+    /** 
+ * Generated UID
+ */
+    private static final long serialVersionUID=-4307758248063822630L;
+    @Override public T from(    U u){
+      return converter.to(u);
+    }
+    @Override public U to(    T t){
+      return converter.from(t);
+    }
+    @Override public Class<U> fromType(){
+      return converter.toType();
+    }
+    @Override public Class<T> toType(){
+      return converter.fromType();
+    }
+    @Override public String toString(){
+      return "InverseConverter [ " + fromType().getName() + " -> "+ toType().getName()+ " ]";
+    }
+  }
+;
+}

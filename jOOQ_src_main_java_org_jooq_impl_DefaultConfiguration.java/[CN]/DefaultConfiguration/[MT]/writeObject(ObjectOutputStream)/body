@@ -6,4 +6,5 @@
   oos.writeObject(cloneSerializables(executeListenerProviders));
   oos.writeObject(cloneSerializables(recordListenerProviders));
   oos.writeObject(cloneSerializables(visitListenerProviders));
+  oos.writeObject(converterProvider instanceof Serializable ? converterProvider : null);
 }
