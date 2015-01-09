@@ -6,15 +6,24 @@
   this.parameterValues=new Object[parameterTypes.length];
   this.members=new List[fields.length];
   this.methods=new Method[fields.length];
+  this.propertyIndexes=new Integer[fields.length];
   for (int i=0; i < fields.length; i++) {
     Field<?> field=fields[i];
+    String name=field.getName();
+    String nameLC=StringUtils.toCamelCaseLC(name);
     if (useAnnotations) {
-      members[i]=getAnnotatedMembers(configuration,type,field.getName());
-      methods[i]=getAnnotatedGetter(configuration,type,field.getName());
+      members[i]=getAnnotatedMembers(configuration,type,name);
+      methods[i]=getAnnotatedGetter(configuration,type,name);
     }
  else {
-      members[i]=getMatchingMembers(configuration,type,field.getName());
-      methods[i]=getMatchingGetter(configuration,type,field.getName());
+      members[i]=getMatchingMembers(configuration,type,name);
+      methods[i]=getMatchingGetter(configuration,type,name);
+    }
+    for (int j=0; j < propertyNames.size(); j++) {
+      if (name.equals(propertyNames.get(j)) || nameLC.equals(propertyNames.get(j))) {
+        propertyIndexes[i]=j;
+        break;
+      }
     }
   }
 }
