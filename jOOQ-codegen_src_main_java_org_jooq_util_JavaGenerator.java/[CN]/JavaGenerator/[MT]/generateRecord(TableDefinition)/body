@@ -1,3 +1,6 @@
 {
-  generateRecord((Definition)table);
+  log.info("Generating record",getStrategy().getFileName(table,Mode.RECORD));
+  JavaWriter out=newJavaWriter(getStrategy().getFile(table,Mode.RECORD));
+  generateRecord(table,out);
+  out.close();
 }

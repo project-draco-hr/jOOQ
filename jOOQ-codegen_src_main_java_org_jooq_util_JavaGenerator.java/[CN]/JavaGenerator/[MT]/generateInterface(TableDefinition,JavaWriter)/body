@@ -1,0 +1,3 @@
+{
+  generateInterface((Definition)table,out);
+}

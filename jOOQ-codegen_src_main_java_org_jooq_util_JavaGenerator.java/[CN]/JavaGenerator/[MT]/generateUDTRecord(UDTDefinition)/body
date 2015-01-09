@@ -1,3 +1,6 @@
 {
-  generateRecord(udt);
+  log.info("Generating record",getStrategy().getFileName(udt,Mode.RECORD));
+  JavaWriter out=newJavaWriter(getStrategy().getFile(udt,Mode.RECORD));
+  generateRecord(udt,out);
+  out.close();
 }

@@ -1,6 +1,4 @@
 {
-  log.info("Generating record",getStrategy().getFileName(tableOrUdt,Mode.RECORD));
-  JavaWriter out=newJavaWriter(getStrategy().getFile(tableOrUdt,Mode.RECORD));
   final UniqueKeyDefinition key=(tableOrUdt instanceof TableDefinition) ? ((TableDefinition)tableOrUdt).getPrimaryKey() : null;
   final String className=getStrategy().getJavaClassName(tableOrUdt,Mode.RECORD);
   final String tableIdentifier=out.ref(getStrategy().getFullJavaIdentifier(tableOrUdt),2);
@@ -171,5 +169,4 @@
   if (tableOrUdt instanceof TableDefinition)   generateRecordClassFooter((TableDefinition)tableOrUdt,out);
  else   generateUDTRecordClassFooter((UDTDefinition)tableOrUdt,out);
   out.println("}");
-  out.close();
 }

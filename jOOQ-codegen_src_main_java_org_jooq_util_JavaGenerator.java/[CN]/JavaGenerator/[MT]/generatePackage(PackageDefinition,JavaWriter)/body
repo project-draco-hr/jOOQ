@@ -1,0 +1,27 @@
+{
+  final SchemaDefinition schema=pkg.getSchema();
+  final String className=getStrategy().getJavaClassName(pkg);
+  final String schemaIdentifier=out.ref(getStrategy().getFullJavaIdentifier(schema),2);
+  final List<String> interfaces=out.ref(getStrategy().getJavaClassImplements(pkg,Mode.DEFAULT));
+  printPackage(out,pkg);
+  generatePackageClassJavadoc(pkg,out);
+  printClassAnnotations(out,schema);
+  out.println("public class %s extends %s[[before= implements ][%s]] {",className,PackageImpl.class,interfaces);
+  out.printSerial();
+  printSingletonInstance(out,pkg);
+  for (  RoutineDefinition routine : pkg.getRoutines()) {
+    printRoutine(out,routine);
+    try {
+      generateRoutine(schema,routine);
+    }
+ catch (    Exception e) {
+      log.error("Error while generating routine " + routine,e);
+    }
+  }
+  out.tab(1).javadoc(NO_FURTHER_INSTANCES_ALLOWED);
+  out.tab(1).println("private %s() {",className);
+  out.tab(2).println("super(\"%s\", %s);",pkg.getOutputName(),schemaIdentifier);
+  out.tab(1).println("}");
+  generatePackageClassFooter(pkg,out);
+  out.println("}");
+}

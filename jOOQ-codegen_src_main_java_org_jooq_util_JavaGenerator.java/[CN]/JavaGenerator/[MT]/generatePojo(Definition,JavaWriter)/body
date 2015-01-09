@@ -1,6 +1,4 @@
 {
-  log.info("Generating POJO",getStrategy().getFileName(tableOrUDT,Mode.POJO));
-  JavaWriter out=newJavaWriter(getStrategy().getFile(tableOrUDT,Mode.POJO));
   final String className=getStrategy().getJavaClassName(tableOrUDT,Mode.POJO);
   final String superName=out.ref(getStrategy().getJavaClassExtends(tableOrUDT,Mode.POJO));
   final List<String> interfaces=out.ref(getStrategy().getJavaClassImplements(tableOrUDT,Mode.POJO));

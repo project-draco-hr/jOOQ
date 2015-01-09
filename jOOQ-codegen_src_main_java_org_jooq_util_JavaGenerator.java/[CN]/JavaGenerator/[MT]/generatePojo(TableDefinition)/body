@@ -1,3 +1,6 @@
 {
-  generatePojo((Definition)table);
+  log.info("Generating POJO",getStrategy().getFileName(table,Mode.POJO));
+  JavaWriter out=newJavaWriter(getStrategy().getFile(table,Mode.POJO));
+  generatePojo(table,out);
+  out.close();
 }

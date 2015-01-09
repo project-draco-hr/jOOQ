@@ -1,43 +1,6 @@
 {
   log.info("Generating ENUM",getStrategy().getFileName(e,Mode.ENUM));
   JavaWriter out=newJavaWriter(getStrategy().getFile(e,Mode.ENUM));
-  final String className=getStrategy().getJavaClassName(e,Mode.ENUM);
-  final List<String> interfaces=out.ref(getStrategy().getJavaClassImplements(e,Mode.ENUM));
-  printPackage(out,e);
-  generateEnumClassJavadoc(e,out);
-  printClassAnnotations(out,e.getSchema());
-  interfaces.add(out.ref(EnumType.class));
-  out.println("public enum %s[[before= implements ][%s]] {",className,interfaces);
-  List<String> literals=e.getLiterals();
-  for (int i=0; i < literals.size(); i++) {
-    String literal=literals.get(i);
-    String terminator=(i == literals.size() - 1) ? ";" : ",";
-    String identifier=GenerationUtil.convertToJavaIdentifier(literal);
-    if (identifier.equals(getStrategy().getJavaPackageName(e).replaceAll("\\..*",""))) {
-      identifier+="_";
-    }
-    out.println();
-    out.tab(1).println("%s(\"%s\")%s",identifier,literal,terminator);
-  }
-  out.println();
-  out.tab(1).println("private final %s literal;",String.class);
-  out.println();
-  out.tab(1).println("private %s(%s literal) {",className,String.class);
-  out.tab(2).println("this.literal = literal;");
-  out.tab(1).println("}");
-  out.tab(1).overrideInherit();
-  out.tab(1).println("public %s getSchema() {",Schema.class);
-  out.tab(2).println("return %s;",(e.isSynthetic() || !(e.getDatabase() instanceof PostgresDatabase)) ? "null" : out.ref(getStrategy().getFullJavaIdentifier(e.getSchema()),2));
-  out.tab(1).println("}");
-  out.tab(1).overrideInherit();
-  out.tab(1).println("public %s getName() {",String.class);
-  out.tab(2).println("return %s;",e.isSynthetic() ? "null" : "\"" + e.getName().replace("\"","\\\"") + "\"");
-  out.tab(1).println("}");
-  out.tab(1).overrideInherit();
-  out.tab(1).println("public %s getLiteral() {",String.class);
-  out.tab(2).println("return literal;");
-  out.tab(1).println("}");
-  generateEnumClassFooter(e,out);
-  out.println("}");
+  generateEnum(e,out);
   out.close();
 }

@@ -1,3 +1,6 @@
 {
-  generateInterface((Definition)table);
+  log.info("Generating interface",getStrategy().getFileName(table,Mode.INTERFACE));
+  JavaWriter out=newJavaWriter(getStrategy().getFile(table,Mode.INTERFACE));
+  generateInterface(table,out);
+  out.close();
 }

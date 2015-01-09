@@ -1,0 +1,6 @@
+{
+  log.info("Generating POJO",getStrategy().getFileName(udt,Mode.POJO));
+  JavaWriter out=newJavaWriter(getStrategy().getFile(udt,Mode.POJO));
+  generatePojo(udt,out);
+  out.close();
+}

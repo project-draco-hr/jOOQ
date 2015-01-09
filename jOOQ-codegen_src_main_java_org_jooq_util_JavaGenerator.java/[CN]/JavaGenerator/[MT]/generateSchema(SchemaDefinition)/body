@@ -2,27 +2,6 @@
   log.info("Generating schema",getStrategy().getFileName(schema));
   log.info("----------------------------------------------------------");
   JavaWriter out=newJavaWriter(getStrategy().getFile(schema));
-  final String schemaName=schema.getQualifiedOutputName();
-  final String schemaId=getStrategy().getJavaIdentifier(schema);
-  final String className=getStrategy().getJavaClassName(schema);
-  final List<String> interfaces=out.ref(getStrategy().getJavaClassImplements(schema,Mode.DEFAULT));
-  printPackage(out,schema);
-  generateSchemaClassJavadoc(schema,out);
-  printClassAnnotations(out,schema);
-  out.println("public class %s extends %s[[before= implements ][%s]] {",className,SchemaImpl.class,interfaces);
-  out.printSerial();
-  out.tab(1).javadoc("The reference instance of <code>%s</code>",schemaName);
-  out.tab(1).println("public static final %s %s = new %s();",className,schemaId,className);
-  out.tab(1).javadoc(NO_FURTHER_INSTANCES_ALLOWED);
-  out.tab(1).println("private %s() {",className);
-  out.tab(2).println("super(\"%s\");",schema.getOutputName());
-  out.tab(1).println("}");
-  if (generateGlobalObjectReferences() && generateGlobalSequenceReferences()) {
-    printSchemaReferences(out,database.getSequences(schema),Sequence.class,true);
-  }
-  printSchemaReferences(out,database.getTables(schema),Table.class,true);
-  printSchemaReferences(out,database.getUDTs(schema),UDT.class,true);
-  generateSchemaClassFooter(schema,out);
-  out.println("}");
+  generateSchema(schema,out);
   out.close();
 }

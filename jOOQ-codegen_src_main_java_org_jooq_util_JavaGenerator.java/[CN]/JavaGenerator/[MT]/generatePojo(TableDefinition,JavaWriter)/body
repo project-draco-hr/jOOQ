@@ -1,0 +1,3 @@
+{
+  generatePojo((Definition)table,out);
+}

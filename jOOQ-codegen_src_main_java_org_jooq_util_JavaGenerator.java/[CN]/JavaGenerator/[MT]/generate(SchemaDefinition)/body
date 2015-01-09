@@ -17,7 +17,6 @@
       return;
     }
   }
-  File targetPackage=getStrategy().getFile(schema).getParentFile();
   generateSchema(schema);
   if (generateGlobalObjectReferences() && generateGlobalSequenceReferences() && database.getSequences(schema).size() > 0) {
     generateSequences(schema);
