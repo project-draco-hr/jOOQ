@@ -1,4 +1,3 @@
 {
-  RenderContext local=new DefaultRenderContext(this).visit(part);
-  return local.render();
+  return new DefaultRenderContext(this).visit(part).render();
 }
