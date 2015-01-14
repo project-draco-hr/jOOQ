@@ -1,4 +1,0 @@
-{
-  super(scope);
-  this.input=input;
-}

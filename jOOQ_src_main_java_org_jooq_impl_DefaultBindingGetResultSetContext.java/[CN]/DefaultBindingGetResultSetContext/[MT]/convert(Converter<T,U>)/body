@@ -1,5 +1,5 @@
 {
-  return new DefaultBindingGetResultSetContext<T>(this,resultSet,index){
+  return new DefaultBindingGetResultSetContext<T>(configuration,data,resultSet,index){
     @Override public void value(    T v){
       value=converter.from(v);
     }

@@ -1,5 +1,5 @@
 {
-  return new DefaultBindingGetStatementContext<T>(this,statement,index){
+  return new DefaultBindingGetStatementContext<T>(configuration,data,statement,index){
     @Override public void value(    T v){
       value=converter.from(v);
     }

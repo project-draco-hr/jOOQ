@@ -1,0 +1,5 @@
+{
+  super(configuration,data);
+  this.statement=statement;
+  this.index=index;
+}

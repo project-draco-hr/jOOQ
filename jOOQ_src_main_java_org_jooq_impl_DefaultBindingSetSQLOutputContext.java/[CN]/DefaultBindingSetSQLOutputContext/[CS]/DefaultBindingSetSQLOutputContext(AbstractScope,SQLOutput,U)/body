@@ -1,5 +1,0 @@
-{
-  super(other);
-  this.output=output;
-  this.value=value;
-}

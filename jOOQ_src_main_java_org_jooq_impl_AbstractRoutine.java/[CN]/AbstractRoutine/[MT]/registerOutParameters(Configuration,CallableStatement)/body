@@ -1,7 +1,0 @@
-{
-  for (  Parameter<?> parameter : getParameters()) {
-    if (parameter.equals(getReturnParameter()) || getOutParameters().contains(parameter)) {
-      registerOutParameter(c,statement,parameter);
-    }
-  }
-}

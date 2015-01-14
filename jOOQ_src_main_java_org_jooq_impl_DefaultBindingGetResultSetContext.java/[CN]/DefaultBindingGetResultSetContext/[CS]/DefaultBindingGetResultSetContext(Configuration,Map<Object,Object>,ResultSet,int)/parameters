@@ -1,0 +1,4 @@
+Configuration configuration
+Map<Object,Object> data
+ResultSet resultSet
+int index

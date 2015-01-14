@@ -1,0 +1,6 @@
+{
+  super(configuration,data);
+  this.render=render;
+  this.value=value;
+  this.variable=variable;
+}

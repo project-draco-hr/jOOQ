@@ -11,7 +11,7 @@
     listener.prepareEnd(ctx);
     listener.bindStart(ctx);
     using(configuration).bindContext(ctx.statement()).visit(this);
-    registerOutParameters(configuration,(CallableStatement)ctx.statement());
+    registerOutParameters(ctx);
     listener.bindEnd(ctx);
     execute0(ctx,listener);
     if (ctx.family() != FIREBIRD)     Utils.consumeResultSets(ctx,listener,results,null);

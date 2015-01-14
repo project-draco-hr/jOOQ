@@ -1,0 +1,10 @@
+{
+  if (configuration == null) {
+    configuration=new DefaultConfiguration();
+  }
+  if (data == null) {
+    data=new HashMap<Object,Object>();
+  }
+  this.configuration=configuration;
+  this.data=data;
+}

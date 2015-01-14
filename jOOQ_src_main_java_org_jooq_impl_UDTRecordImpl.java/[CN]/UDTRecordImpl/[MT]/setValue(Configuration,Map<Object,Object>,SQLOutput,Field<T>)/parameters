@@ -1,0 +1,4 @@
+Configuration configuration
+Map<Object,Object> data
+SQLOutput stream
+Field<T> field

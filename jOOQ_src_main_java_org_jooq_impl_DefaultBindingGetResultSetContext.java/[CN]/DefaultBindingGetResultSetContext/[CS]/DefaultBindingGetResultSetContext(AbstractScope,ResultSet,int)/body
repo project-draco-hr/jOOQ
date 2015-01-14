@@ -1,5 +1,0 @@
-{
-  super(scope);
-  this.resultSet=resultSet;
-  this.index=index;
-}

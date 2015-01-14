@@ -1,4 +1,0 @@
-{
-  this.data=scope.data;
-  this.configuration=scope.configuration;
-}

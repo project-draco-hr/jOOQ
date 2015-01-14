@@ -1,4 +1,4 @@
 {
-  ((Field<Object>)field).getBinding().set(new DefaultBindingSetStatementContext<Object>(configuration(),stmt,nextIndex(),value));
+  ((Field<Object>)field).getBinding().set(new DefaultBindingSetStatementContext<Object>(configuration(),data(),stmt,nextIndex(),value));
   return this;
 }

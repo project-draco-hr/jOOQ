@@ -1,5 +1,7 @@
 {
+  Configuration configuration=localConfiguration();
+  Map<Object,Object> data=localData();
   for (  Field<?> field : getUDT().fields()) {
-    setValue(stream,field);
+    setValue(configuration,data,stream,field);
   }
 }

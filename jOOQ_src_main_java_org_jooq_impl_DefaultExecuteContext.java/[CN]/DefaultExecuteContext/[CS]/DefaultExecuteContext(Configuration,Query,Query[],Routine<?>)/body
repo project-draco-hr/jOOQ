@@ -23,4 +23,5 @@
   SQLXMLS.set(new ArrayList<SQLXML>());
   ARRAYS.set(new ArrayList<Array>());
   LOCAL_CONFIGURATION.set(configuration);
+  LOCAL_DATA.set(this.data);
 }

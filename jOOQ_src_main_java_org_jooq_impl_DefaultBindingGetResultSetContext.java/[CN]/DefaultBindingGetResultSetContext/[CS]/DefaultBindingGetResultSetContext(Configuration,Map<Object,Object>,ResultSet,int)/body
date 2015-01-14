@@ -1,0 +1,5 @@
+{
+  super(configuration,data);
+  this.resultSet=resultSet;
+  this.index=index;
+}

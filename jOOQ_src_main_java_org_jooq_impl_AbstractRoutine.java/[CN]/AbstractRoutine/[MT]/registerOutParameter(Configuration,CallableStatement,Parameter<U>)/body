@@ -1,3 +1,0 @@
-{
-  parameter.getBinding().register(new DefaultBindingRegisterContext<U>(c,statement,parameterIndexes.get(parameter)));
-}

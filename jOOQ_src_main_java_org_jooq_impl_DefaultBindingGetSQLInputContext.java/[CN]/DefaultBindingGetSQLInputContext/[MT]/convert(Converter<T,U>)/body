@@ -1,5 +1,5 @@
 {
-  return new DefaultBindingGetSQLInputContext<T>(this,input){
+  return new DefaultBindingGetSQLInputContext<T>(configuration,data,input){
     @Override public void value(    T v){
       value=converter.from(v);
     }

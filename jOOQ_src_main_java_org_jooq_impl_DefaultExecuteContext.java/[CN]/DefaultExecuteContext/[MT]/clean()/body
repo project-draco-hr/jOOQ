@@ -28,5 +28,6 @@
     SQLXMLS.remove();
   }
   LOCAL_CONFIGURATION.remove();
+  LOCAL_DATA.remove();
   LOCAL_CONNECTION.remove();
 }
