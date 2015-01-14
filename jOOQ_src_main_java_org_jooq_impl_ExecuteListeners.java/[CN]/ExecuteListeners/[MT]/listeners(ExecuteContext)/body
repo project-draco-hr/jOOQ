@@ -9,5 +9,5 @@
     result.add(new LoggerListener());
     result.add(new StopWatchListener());
   }
-  return result;
+  return result.toArray(new ExecuteListener[result.size()]);
 }
