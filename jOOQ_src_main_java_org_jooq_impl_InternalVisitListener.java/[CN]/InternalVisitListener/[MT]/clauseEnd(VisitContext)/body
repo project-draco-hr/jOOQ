@@ -1,5 +1,0 @@
-{
-  if (ctx.clause() == SELECT) {
-    ctx.context().data(DATA_LOCALLY_SCOPED_DATA_MAP,stack.pop());
-  }
-}
