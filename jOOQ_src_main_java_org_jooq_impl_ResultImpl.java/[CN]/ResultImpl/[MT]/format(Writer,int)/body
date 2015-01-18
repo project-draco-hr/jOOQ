@@ -12,7 +12,7 @@
         decimalPlacesList.add(0);
         String value;
         for (int i=0; i < min(MAX_RECORDS,size()); i++) {
-          value=format0(getValue(i,index),get(i).changed(index));
+          value=format0(getValue(i,index),get(i).changed(index),true);
           decimalPlacesList.add(getDecimalPlaces(value));
         }
         decimalPlaces[index]=Collections.max(decimalPlacesList);
@@ -26,7 +26,7 @@
       widthList.add(min(colMaxWidth,max(COL_MIN_WIDTH,fields.fields[index].getName().length())));
       String value;
       for (int i=0; i < min(MAX_RECORDS,size()); i++) {
-        value=format0(getValue(i,index),get(i).changed(index));
+        value=format0(getValue(i,index),get(i).changed(index),true);
         if (isNumCol) {
           value=alignNumberValue(decimalPlaces[index],value);
         }
@@ -59,7 +59,7 @@
     for (int i=0; i < min(maxRecords,size()); i++) {
       writer.append("\n|");
       for (int index=0; index < fields.fields.length; index++) {
-        String value=format0(getValue(i,index),get(i).changed(index)).replace("\n","{lf}").replace("\r","{cr}");
+        String value=format0(getValue(i,index),get(i).changed(index),true).replace("\n","{lf}").replace("\r","{cr}");
         String padded;
         if (Number.class.isAssignableFrom(fields.fields[index].getType())) {
           value=alignNumberValue(decimalPlaces[index],value);

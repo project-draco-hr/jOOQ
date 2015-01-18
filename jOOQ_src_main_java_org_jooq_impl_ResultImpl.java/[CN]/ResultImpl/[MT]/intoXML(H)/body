@@ -22,7 +22,7 @@
       attrs.addAttribute("","","field","CDATA",field.getName());
       handler.startElement("","","value",attrs);
       if (value != null) {
-        char[] chars=format0(value,false).toCharArray();
+        char[] chars=format0(value,false,false).toCharArray();
         handler.characters(chars,0,chars.length);
       }
       handler.endElement("","","value");

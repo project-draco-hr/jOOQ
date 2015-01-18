@@ -1,10 +1,10 @@
 {
-  String formatted=changed ? "*" : "";
+  String formatted=changed && visual ? "*" : "";
   if (value == null) {
-    formatted+="{null}";
+    formatted+=visual ? "{null}" : null;
   }
  else   if (value.getClass() == byte[].class) {
-    formatted+=Arrays.toString((byte[])value);
+    formatted+=DatatypeConverter.printBase64Binary((byte[])value);
   }
  else   if (value.getClass().isArray()) {
     formatted+=Arrays.toString((Object[])value);

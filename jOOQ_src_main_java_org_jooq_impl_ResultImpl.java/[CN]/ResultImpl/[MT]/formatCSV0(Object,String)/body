@@ -7,7 +7,7 @@
       return nullString;
     }
   }
-  String result=format0(value,false);
+  String result=format0(value,false,false);
   if (StringUtils.containsAny(result,',',';','\t','"','\n','\r','\'','\\')) {
     return "\"" + result.replace("\\","\\\\").replace("\"","\"\"") + "\"";
   }

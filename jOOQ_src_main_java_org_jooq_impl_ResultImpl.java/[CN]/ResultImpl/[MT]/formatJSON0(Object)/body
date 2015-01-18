@@ -1,0 +1,4 @@
+{
+  if (value instanceof byte[])   return DatatypeConverter.printBase64Binary((byte[])value);
+  return value;
+}

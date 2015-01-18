@@ -24,7 +24,7 @@
         }
  else {
           writer.append(">");
-          writer.append(escapeXML(format0(value,false)));
+          writer.append(escapeXML(format0(value,false,false)));
           writer.append("</value>");
         }
       }
