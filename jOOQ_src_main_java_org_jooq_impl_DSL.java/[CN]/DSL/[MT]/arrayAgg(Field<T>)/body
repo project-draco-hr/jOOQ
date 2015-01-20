@@ -1,0 +1,3 @@
+{
+  return new Function<T[]>(Term.ARRAY_AGG,field.getDataType().getArrayDataType(),nullSafe(field));
+}

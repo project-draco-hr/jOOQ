@@ -1,4 +1,5 @@
 {
-  windowSpecification.orderBy(fields);
+  if (windowSpecification != null)   windowSpecification.orderBy(fields);
+ else   withinGroupOrderBy(fields);
   return this;
 }
