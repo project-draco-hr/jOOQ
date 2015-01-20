@@ -3,4 +3,14 @@
   this.configuration=configuration;
   this.query=query;
   this.allBindValues=new ArrayList<Object[]>();
+  this.nameToIndexMapping=new LinkedHashMap<String,List<Integer>>();
+  int i=0;
+  for (  Entry<String,Param<?>> entry : query.getParams().entrySet()) {
+    List<Integer> list=nameToIndexMapping.get(entry.getKey());
+    if (list == null) {
+      list=new ArrayList<Integer>();
+      nameToIndexMapping.put(entry.getKey(),list);
+    }
+    list.add(i++);
+  }
 }

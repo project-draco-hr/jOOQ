@@ -1,0 +1,3 @@
+{
+  return bind(new Map[]{namedBindValues});
+}

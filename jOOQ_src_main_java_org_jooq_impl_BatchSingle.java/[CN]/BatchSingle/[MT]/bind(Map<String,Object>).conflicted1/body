@@ -1,0 +1,17 @@
+{
+  List<Object> defaultValues=query.getBindValues();
+  Object[][] bindValues=new Object[namedBindValues.length][];
+  for (int row=0; row < bindValues.length; row++) {
+    bindValues[row]=defaultValues.toArray();
+    for (    Entry<String,Object> entry : namedBindValues[row].entrySet()) {
+      List<Integer> indexes=nameToIndexMapping.get(entry.getKey());
+      if (indexes != null) {
+        for (        int index : indexes) {
+          bindValues[row][index]=entry.getValue();
+        }
+      }
+    }
+  }
+  bind(bindValues);
+  return this;
+}
