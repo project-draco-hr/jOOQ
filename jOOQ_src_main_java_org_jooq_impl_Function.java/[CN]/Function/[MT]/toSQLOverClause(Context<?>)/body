@@ -2,5 +2,5 @@
   QueryPart window=window(ctx);
   if (window == null)   return;
   if (term == ROW_NUMBER && ctx.configuration().dialect() == HSQLDB)   return;
-  ctx.sql(" ").keyword("over").sql(" (").visit(window).sql(")");
+  ctx.sql(" ").keyword("over").sql(" ").visit(window);
 }

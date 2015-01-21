@@ -1,5 +1,5 @@
 {
-  if (windowSpecification != null)   return windowSpecification;
+  if (windowSpecification != null)   return DSL.sql("({0})",windowSpecification);
   if (windowDefinition != null)   return windowDefinition;
   if (windowName != null) {
     if (asList(POSTGRES).contains(ctx.family())) {
