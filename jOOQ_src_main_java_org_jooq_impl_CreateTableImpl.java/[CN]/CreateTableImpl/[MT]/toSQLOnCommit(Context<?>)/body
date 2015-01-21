@@ -1,0 +1,15 @@
+{
+  if (temporary && onCommit != null) {
+switch (onCommit) {
+case DELETE_ROWS:
+      ctx.formatSeparator().keyword("on commit delete rows");
+    break;
+case PRESERVE_ROWS:
+  ctx.formatSeparator().keyword("on commit preserve rows");
+break;
+case DROP:
+ctx.formatSeparator().keyword("on commit drop");
+break;
+}
+}
+}

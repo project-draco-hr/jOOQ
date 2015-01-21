@@ -1,6 +1,7 @@
 {
   super(configuration);
   this.table=table;
+  this.temporary=temporary;
   this.columnFields=new ArrayList<Field<?>>();
   this.columnTypes=new ArrayList<DataType<?>>();
 }

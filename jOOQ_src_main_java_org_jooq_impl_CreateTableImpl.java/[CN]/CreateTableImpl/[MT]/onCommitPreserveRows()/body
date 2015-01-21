@@ -1,0 +1,4 @@
+{
+  onCommit=OnCommit.PRESERVE_ROWS;
+  return this;
+}

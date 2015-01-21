@@ -1,0 +1,4 @@
+{
+  onCommit=OnCommit.DELETE_ROWS;
+  return this;
+}

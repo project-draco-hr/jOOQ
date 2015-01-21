@@ -1,0 +1,3 @@
+{
+  return createTemporaryTable(table(name(tableName)));
+}

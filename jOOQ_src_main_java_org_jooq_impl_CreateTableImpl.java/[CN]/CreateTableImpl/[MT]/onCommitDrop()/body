@@ -1,0 +1,4 @@
+{
+  onCommit=OnCommit.DROP;
+  return this;
+}

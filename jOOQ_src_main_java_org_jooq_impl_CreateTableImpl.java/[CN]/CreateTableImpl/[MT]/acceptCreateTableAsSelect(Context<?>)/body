@@ -1,5 +1,8 @@
 {
-  ctx.start(CREATE_TABLE).start(CREATE_TABLE_NAME).keyword("create table").sql(" ").visit(table).end(CREATE_TABLE_NAME).formatSeparator().keyword("as");
+  ctx.start(CREATE_TABLE);
+  toSQLCreateTableName(ctx);
+  toSQLOnCommit(ctx);
+  ctx.formatSeparator().keyword("as");
 {
     ctx.formatSeparator();
   }

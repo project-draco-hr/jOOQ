@@ -5,7 +5,9 @@
     }
   }
  else {
-    ctx.start(CREATE_TABLE).start(CREATE_TABLE_NAME).keyword("create table").sql(" ").visit(table).end(CREATE_TABLE_NAME).start(CREATE_TABLE_COLUMNS).sql("(").formatIndentStart().formatNewLine();
+    ctx.start(CREATE_TABLE);
+    toSQLCreateTableName(ctx);
+    ctx.start(CREATE_TABLE_COLUMNS).sql("(").formatIndentStart().formatNewLine();
     boolean qualify=ctx.qualify();
     ctx.qualify(false);
     for (int i=0; i < columnFields.size(); i++) {
@@ -15,6 +17,8 @@
       if (i < columnFields.size() - 1)       ctx.sql(",").formatSeparator();
     }
     ctx.qualify(qualify);
-    ctx.formatIndentEnd().formatNewLine().sql(")").end(CREATE_TABLE_COLUMNS).end(CREATE_TABLE);
+    ctx.formatIndentEnd().formatNewLine().sql(")").end(CREATE_TABLE_COLUMNS);
+    toSQLOnCommit(ctx);
+    ctx.end(CREATE_TABLE);
   }
 }
