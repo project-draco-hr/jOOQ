@@ -2,23 +2,26 @@
   try {
     String[] types=null;
 switch (configuration.dialect().family()) {
-case SQLITE:
-      types=new String[]{"TABLE","VIEW"};
+case POSTGRES:
+      types=new String[]{"TABLE","VIEW","SYSTEM_TABLE","SYSTEM_VIEW","MATERIALIZED VIEW"};
     break;
+case SQLITE:
+  types=new String[]{"TABLE","VIEW"};
+break;
 }
 ResultSet rs;
 if (!asList(MYSQL,MARIADB).contains(configuration.dialect().family())) {
-  rs=meta().getTables(null,getName(),"%",types);
+rs=meta().getTables(null,getName(),"%",types);
 }
  else {
-  rs=meta().getTables(getName(),null,"%",types);
+rs=meta().getTables(getName(),null,"%",types);
 }
 List<Table<?>> result=new ArrayList<Table<?>>();
 Result<Record> tables=create.fetch(rs,SQLDataType.VARCHAR,SQLDataType.VARCHAR,SQLDataType.VARCHAR,SQLDataType.VARCHAR);
 for (Record table : tables) {
-  String schema=table.getValue(1,String.class);
-  String name=table.getValue(2,String.class);
-  result.add(new MetaTable(name,this,getColumns(schema,name)));
+String schema=table.getValue(1,String.class);
+String name=table.getValue(2,String.class);
+result.add(new MetaTable(name,this,getColumns(schema,name)));
 }
 return result;
 }
