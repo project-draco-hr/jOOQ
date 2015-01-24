@@ -1,0 +1,2 @@
+Table<Record> table
+TableField<Record,?>[] fields

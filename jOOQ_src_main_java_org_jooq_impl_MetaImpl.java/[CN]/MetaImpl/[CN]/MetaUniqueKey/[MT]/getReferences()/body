@@ -1,0 +1,26 @@
+{
+  List<ForeignKey<?,Record>> references=new ArrayList<ForeignKey<?,Record>>();
+  try {
+    ResultSet rs=meta().getExportedKeys(null,pkTable.getSchema().getName(),pkTable.getName());
+    Result<Record> result=create.fetch(rs,String.class,String.class,String.class,String.class,String.class,String.class,String.class,String.class,Short.class,Short.class,Short.class,String.class,String.class);
+    Map<Record,Result<Record>> groups=result.intoGroups(new Field[]{result.field(4),result.field(5),result.field(6),result.field(11)});
+    Map<String,Schema> schemas=new HashMap<String,Schema>();
+    for (    Schema schema : getSchemas()) {
+      schemas.put(schema.getName(),schema);
+    }
+    for (    Entry<Record,Result<Record>> entry : groups.entrySet()) {
+      Schema schema=schemas.get(entry.getKey().getValue(1));
+      Table<Record> fkTable=(Table<Record>)schema.getTable(entry.getKey().getValue(2,String.class));
+      TableField<Record,?>[] fkFields=new TableField[entry.getValue().size()];
+      for (int i=0; i < entry.getValue().size(); i++) {
+        Record record=entry.getValue().get(i);
+        fkFields[i]=(TableField<Record,?>)fkTable.field(record.getValue(7,String.class));
+      }
+      references.add(new ReferenceImpl<Record,Record>(this,fkTable,fkFields));
+    }
+  }
+ catch (  SQLException e) {
+    log.info("Foreign key access error",e.getMessage());
+  }
+  return references;
+}

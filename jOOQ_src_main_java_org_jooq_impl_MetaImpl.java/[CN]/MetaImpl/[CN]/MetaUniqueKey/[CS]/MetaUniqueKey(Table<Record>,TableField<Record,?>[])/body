@@ -1,0 +1,4 @@
+{
+  this.pkTable=table;
+  this.pkFields=fields;
+}
