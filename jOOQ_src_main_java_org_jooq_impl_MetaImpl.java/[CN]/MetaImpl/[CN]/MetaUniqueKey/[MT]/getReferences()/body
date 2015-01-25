@@ -3,7 +3,7 @@
   try {
     ResultSet rs=meta().getExportedKeys(null,pkTable.getSchema().getName(),pkTable.getName());
     Result<Record> result=create.fetch(rs,String.class,String.class,String.class,String.class,String.class,String.class,String.class,String.class,Short.class,Short.class,Short.class,String.class,String.class);
-    Map<Record,Result<Record>> groups=result.intoGroups(new Field[]{result.field(4),result.field(5),result.field(6),result.field(11)});
+    Map<Record,Result<Record>> groups=result.intoGroups(new Field[]{result.field(4),result.field(5),result.field(6),result.field(11),result.field(12)});
     Map<String,Schema> schemas=new HashMap<String,Schema>();
     for (    Schema schema : getSchemas()) {
       schemas.put(schema.getName(),schema);
