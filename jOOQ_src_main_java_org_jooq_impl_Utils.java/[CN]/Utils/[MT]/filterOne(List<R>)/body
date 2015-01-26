@@ -4,7 +4,7 @@
     return list.get(0);
   }
  else   if (size > 1) {
-    throw new InvalidResultException("Too many rows selected : " + size);
+    throw new TooManyRowsException("Too many rows selected : " + size);
   }
   return null;
 }

@@ -14,6 +14,6 @@
 );
   }
  else {
-    throw new InvalidResultException("Exactly one row expected for refresh. Record does not exist in database.");
+    throw new NoDataFoundException("Exactly one row expected for refresh. Record does not exist in database.");
   }
 }
