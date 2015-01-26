@@ -1,6 +1,7 @@
 {
   if (conditions.isEmpty()) {
-    ctx.visit(trueCondition());
+    if (operator == AND)     ctx.visit(trueCondition());
+ else     ctx.visit(falseCondition());
   }
  else   if (conditions.size() == 1) {
     ctx.visit(conditions.get(0));
