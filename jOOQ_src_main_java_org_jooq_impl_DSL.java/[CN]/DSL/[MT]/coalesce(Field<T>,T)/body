@@ -1,0 +1,3 @@
+{
+  return coalesce(field,Utils.field(value));
+}
