@@ -1,3 +1,3 @@
 {
-  return DSL.decode().value((Field<Integer>)field).when(inline(0),inline(false)).when(inline((Integer)null),inline((Boolean)null)).otherwise(inline(true));
+  return DSL.choose((Field<Integer>)field).when(inline(0),inline(false)).when(inline((Integer)null),inline((Boolean)null)).otherwise(inline(true));
 }

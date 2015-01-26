@@ -1,3 +1,3 @@
 {
-  return decode().value(f.RDB$FIELD_TYPE).when((short)261,(short)0).otherwise(f.RDB$CHARACTER_LENGTH);
+  return choose(f.RDB$FIELD_TYPE).when((short)261,(short)0).otherwise(f.RDB$CHARACTER_LENGTH);
 }

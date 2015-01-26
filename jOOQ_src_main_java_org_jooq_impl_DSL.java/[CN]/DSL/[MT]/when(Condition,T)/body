@@ -1,0 +1,3 @@
+{
+  return decode().when(condition,result);
+}

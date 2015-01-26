@@ -10,10 +10,10 @@ case DERBY:
       if (getArguments().length > 2) {
         Field<?>[] remaining=new Field[getArguments().length - 2];
         System.arraycopy(getArguments(),2,remaining,0,remaining.length);
-        return DSL.decode().when(first.greaterThan(other),DSL.greatest(first,remaining)).otherwise(DSL.greatest(other,remaining));
+        return DSL.when(first.greaterThan(other),DSL.greatest(first,remaining)).otherwise(DSL.greatest(other,remaining));
       }
  else {
-        return DSL.decode().when(first.greaterThan(other),first).otherwise(other);
+        return DSL.when(first.greaterThan(other),first).otherwise(other);
       }
     }
 case FIREBIRD:
