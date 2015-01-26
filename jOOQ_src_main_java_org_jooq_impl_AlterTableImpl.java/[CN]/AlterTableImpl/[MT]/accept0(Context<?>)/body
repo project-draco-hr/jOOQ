@@ -3,7 +3,8 @@
   ctx.start(ALTER_TABLE_TABLE).keyword("alter table").sql(" ").visit(table).end(ALTER_TABLE_TABLE);
   if (add != null) {
     ctx.start(ALTER_TABLE_ADD).sql(" ").keyword("add").sql(" ");
-    ctx.qualify(false).visit(add).sql(" ").qualify(true).keyword(addType.getCastTypeName(ctx.configuration()));
+    ctx.qualify(false).visit(add).sql(" ").qualify(true);
+    toSQLDDLTypeDeclaration(ctx,addType);
     if (!addType.nullable()) {
       ctx.sql(" ").keyword("not null");
     }
@@ -30,7 +31,8 @@ case POSTGRES:
 ctx.sql(" ").keyword("type");
 break;
 }
-ctx.sql(" ").keyword(alterType.getCastTypeName(ctx.configuration()));
+ctx.sql(" ");
+toSQLDDLTypeDeclaration(ctx,alterType);
 if (!alterType.nullable()) {
 ctx.sql(" ").keyword("not null");
 }
