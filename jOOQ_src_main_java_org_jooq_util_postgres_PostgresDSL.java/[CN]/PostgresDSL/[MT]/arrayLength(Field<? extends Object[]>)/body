@@ -1,0 +1,3 @@
+{
+  return field("{array_length}({0}, 1)",SQLDataType.INTEGER,array);
+}
