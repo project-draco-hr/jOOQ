@@ -1,0 +1,3 @@
+{
+  return arrayRemove(nullSafe(array),val(element));
+}

@@ -1,0 +1,3 @@
+{
+  return arrayReplace(nullSafe(array),val(search),val(replace));
+}
