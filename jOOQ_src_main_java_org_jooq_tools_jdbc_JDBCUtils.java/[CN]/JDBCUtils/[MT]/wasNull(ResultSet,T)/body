@@ -1,3 +1,0 @@
-{
-  return rs.wasNull() ? null : value;
-}

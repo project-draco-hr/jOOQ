@@ -1,0 +1,3 @@
+{
+  return (value == null || stream.wasNull()) ? null : value;
+}
