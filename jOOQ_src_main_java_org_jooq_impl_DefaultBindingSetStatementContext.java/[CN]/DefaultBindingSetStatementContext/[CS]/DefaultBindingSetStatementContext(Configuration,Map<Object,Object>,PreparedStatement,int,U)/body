@@ -1,5 +1,5 @@
 {
-  super(configuration,configuration.data());
+  super(configuration,data);
   this.statement=statement;
   this.index=index;
   this.value=value;
