@@ -1,4 +1,5 @@
 {
+  checkFlags();
   if (content == CONTENT_CSV) {
     executeCSV();
   }
