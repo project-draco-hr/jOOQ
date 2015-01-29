@@ -68,7 +68,7 @@
         }
         if (commit == COMMIT_AFTER) {
           if ((processed % batchAfter == 0) && ((processed / batchAfter) % commitAfter == 0)) {
-            configuration.connectionProvider().acquire().commit();
+            commit();
           }
         }
       }
@@ -103,15 +103,15 @@
     if (commit == COMMIT_ALL) {
       if (!errors.isEmpty()) {
         stored=0;
-        configuration.connectionProvider().acquire().rollback();
+        rollback();
       }
  else {
-        configuration.connectionProvider().acquire().commit();
+        commit();
       }
     }
  else     if (commit == COMMIT_AFTER) {
       if ((processed % batchAfter != 0) || ((processed / batchAfter) % commitAfter != 0)) {
-        configuration.connectionProvider().acquire().commit();
+        commit();
       }
     }
   }

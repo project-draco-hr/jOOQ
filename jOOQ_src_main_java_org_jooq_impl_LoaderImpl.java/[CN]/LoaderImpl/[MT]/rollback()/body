@@ -1,0 +1,9 @@
+{
+  Connection connection=configuration.connectionProvider().acquire();
+  try {
+    connection.rollback();
+  }
+  finally {
+    configuration.connectionProvider().release(connection);
+  }
+}

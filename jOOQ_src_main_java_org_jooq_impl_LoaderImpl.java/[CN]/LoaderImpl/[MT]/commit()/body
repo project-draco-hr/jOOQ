@@ -1,0 +1,9 @@
+{
+  Connection connection=configuration.connectionProvider().acquire();
+  try {
+    connection.commit();
+  }
+  finally {
+    configuration.connectionProvider().release(connection);
+  }
+}
