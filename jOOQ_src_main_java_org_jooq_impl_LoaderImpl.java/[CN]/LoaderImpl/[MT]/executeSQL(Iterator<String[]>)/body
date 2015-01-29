@@ -1,59 +1,101 @@
 {
-  String[] row;
-  rowloop:   while (reader.hasNext() && ((row=reader.next()) != null)) {
-    for (int i=0; i < row.length; i++) {
-      if (StringUtils.equals(nullString,row[i])) {
-        row[i]=null;
-      }
-    }
-    processed++;
-    InsertQuery<R> insert=create.insertQuery(table);
-    for (int i=0; i < row.length; i++) {
-      if (i < fields.length && fields[i] != null) {
-        addValue0(insert,fields[i],row[i]);
-      }
-    }
-    if (onDuplicate == ON_DUPLICATE_KEY_UPDATE) {
-      insert.onDuplicateKeyUpdate(true);
+  String[] row=null;
+  BatchBindStep bind=null;
+  InsertQuery<R> insert=null;
+  execution: {
+    rows:     while (reader.hasNext() && ((row=reader.next()) != null)) {
       for (int i=0; i < row.length; i++) {
-        if (i < fields.length && fields[i] != null && !primaryKey[i]) {
-          addValueForUpdate0(insert,fields[i],row[i]);
+        if (StringUtils.equals(nullString,row[i])) {
+          row[i]=null;
         }
       }
-    }
- else     if (onDuplicate == ON_DUPLICATE_KEY_IGNORE) {
-      SelectQuery<R> select=create.selectQuery(table);
+      processed++;
+      insert=create.insertQuery(table);
       for (int i=0; i < row.length; i++) {
-        if (i < fields.length && primaryKey[i]) {
-          select.addConditions(getCondition(fields[i],row[i]));
+        if (i < fields.length && fields[i] != null) {
+          addValue0(insert,fields[i],row[i]);
         }
+      }
+      if (onDuplicate == ON_DUPLICATE_KEY_UPDATE) {
+        insert.onDuplicateKeyUpdate(true);
+        for (int i=0; i < row.length; i++) {
+          if (i < fields.length && fields[i] != null && !primaryKey[i]) {
+            addValueForUpdate0(insert,fields[i],row[i]);
+          }
+        }
+      }
+ else       if (onDuplicate == ON_DUPLICATE_KEY_IGNORE) {
+        SelectQuery<R> select=create.selectQuery(table);
+        for (int i=0; i < row.length; i++) {
+          if (i < fields.length && primaryKey[i]) {
+            select.addConditions(getCondition(fields[i],row[i]));
+          }
+        }
+        try {
+          if (select.execute() > 0) {
+            ignored++;
+            continue rows;
+          }
+        }
+ catch (        DataAccessException e) {
+          errors.add(new LoaderErrorImpl(e,row,processed - 1,select));
+        }
+      }
+ else       if (onDuplicate == ON_DUPLICATE_KEY_ERROR) {
       }
       try {
-        if (select.execute() > 0) {
-          ignored++;
-          continue rowloop;
+        if (batch == BATCH_NONE) {
+          batched=1;
+          insert.execute();
+          stored++;
+          executed++;
+        }
+ else {
+          if (bind == null)           bind=create.batch(insert);
+          batched++;
+          bind.bind(insert.getBindValues().toArray());
+        }
+        if (batch == BATCH_AFTER) {
+          if (processed % batchAfter == 0) {
+            if (bind != null) {
+              bind.execute();
+              stored+=batched;
+              batched=0;
+              executed++;
+              bind=null;
+            }
+          }
+        }
+        if (commit == COMMIT_AFTER) {
+          if ((processed % batchAfter == 0) && ((processed / batchAfter) % commitAfter == 0)) {
+            configuration.connectionProvider().acquire().commit();
+          }
         }
       }
  catch (      DataAccessException e) {
-        errors.add(new LoaderErrorImpl(e,row,processed - 1,select));
-      }
-    }
- else     if (onDuplicate == ON_DUPLICATE_KEY_ERROR) {
-    }
-    try {
-      insert.execute();
-      stored++;
-      if (commit == COMMIT_AFTER) {
-        if (processed % commitAfter == 0) {
-          configuration.connectionProvider().acquire().commit();
+        errors.add(new LoaderErrorImpl(e,row,processed - 1,insert));
+        ignored+=batched;
+        batched=0;
+        if (onError == ON_ERROR_ABORT) {
+          break execution;
         }
       }
     }
- catch (    DataAccessException e) {
-      errors.add(new LoaderErrorImpl(e,row,processed - 1,insert));
-      ignored++;
+    if (bind != null) {
+      try {
+        bind.execute();
+        stored+=batched;
+        batched=0;
+        executed++;
+        bind=null;
+      }
+ catch (      DataAccessException e) {
+        errors.add(new LoaderErrorImpl(e,row,processed - 1,insert));
+        ignored+=batched;
+        batched=0;
+      }
       if (onError == ON_ERROR_ABORT) {
-        break rowloop;
+        break execution;
       }
     }
   }
@@ -68,7 +110,7 @@
       }
     }
  else     if (commit == COMMIT_AFTER) {
-      if (processed % commitAfter != 0) {
+      if ((processed % batchAfter != 0) || ((processed / batchAfter) % commitAfter != 0)) {
         configuration.connectionProvider().acquire().commit();
       }
     }

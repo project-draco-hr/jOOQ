@@ -1,0 +1,4 @@
+{
+  batch=BATCH_ALL;
+  return this;
+}
