@@ -7,8 +7,8 @@
     String dataType=record.getValue("type",String.class).replaceAll("\\(\\d+(\\s*,\\s*\\d+)?\\)","");
     Number precision=parsePrecision(record.getValue("type",String.class));
     Number scale=parseScale(record.getValue("type",String.class));
-    boolean pk=record.getValue("pk",Boolean.class);
-    boolean identity=pk && existsSqliteSequence() && create().fetchOne("select count(*) from sqlite_sequence where name = ?",getName()).getValue(0,Boolean.class);
+    int pk=record.getValue("pk",int.class);
+    boolean identity=pk > 0 && existsSqliteSequence() && create().fetchOne("select count(*) from sqlite_sequence where name = ?",getName()).getValue(0,Boolean.class);
     DefaultDataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),dataType,precision,precision,scale,!record.getValue("notnull",boolean.class),record.getValue("dflt_value") != null);
     ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getSchema(),getName()),name,position,type,identity,null);
     result.add(column);
