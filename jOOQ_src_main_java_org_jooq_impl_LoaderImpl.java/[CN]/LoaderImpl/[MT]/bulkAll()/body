@@ -1,0 +1,4 @@
+{
+  bulk=BULK_ALL;
+  return this;
+}

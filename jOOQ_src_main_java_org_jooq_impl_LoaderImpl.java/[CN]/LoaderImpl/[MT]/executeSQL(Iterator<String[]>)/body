@@ -4,33 +4,11 @@
   InsertQuery<R> insert=null;
   execution: {
     rows:     while (reader.hasNext() && ((row=reader.next()) != null)) {
-      for (int i=0; i < row.length; i++) {
-        if (StringUtils.equals(nullString,row[i])) {
-          row[i]=null;
-        }
-      }
+      for (int i=0; i < row.length; i++)       if (StringUtils.equals(nullString,row[i]))       row[i]=null;
       processed++;
-      insert=create.insertQuery(table);
-      for (int i=0; i < row.length; i++) {
-        if (i < fields.length && fields[i] != null) {
-          addValue0(insert,fields[i],row[i]);
-        }
-      }
-      if (onDuplicate == ON_DUPLICATE_KEY_UPDATE) {
-        insert.onDuplicateKeyUpdate(true);
-        for (int i=0; i < row.length; i++) {
-          if (i < fields.length && fields[i] != null && !primaryKey[i]) {
-            addValueForUpdate0(insert,fields[i],row[i]);
-          }
-        }
-      }
- else       if (onDuplicate == ON_DUPLICATE_KEY_IGNORE) {
+      if (onDuplicate == ON_DUPLICATE_KEY_IGNORE) {
         SelectQuery<R> select=create.selectQuery(table);
-        for (int i=0; i < row.length; i++) {
-          if (i < fields.length && primaryKey[i]) {
-            select.addConditions(getCondition(fields[i],row[i]));
-          }
-        }
+        for (int i=0; i < row.length; i++)         if (i < fields.length && primaryKey[i])         select.addConditions(getCondition(fields[i],row[i]));
         try {
           if (select.execute() > 0) {
             ignored++;
@@ -41,62 +19,58 @@
           errors.add(new LoaderErrorImpl(e,row,processed - 1,select));
         }
       }
+      buffered++;
+      if (insert == null)       insert=create.insertQuery(table);
+      for (int i=0; i < row.length; i++)       if (i < fields.length && fields[i] != null)       addValue0(insert,fields[i],row[i]);
+      if (onDuplicate == ON_DUPLICATE_KEY_UPDATE) {
+        insert.onDuplicateKeyUpdate(true);
+        for (int i=0; i < row.length; i++)         if (i < fields.length && fields[i] != null && !primaryKey[i])         addValueForUpdate0(insert,fields[i],row[i]);
+      }
  else       if (onDuplicate == ON_DUPLICATE_KEY_ERROR) {
       }
       try {
-        if (batch == BATCH_NONE) {
-          batched=1;
-          insert.execute();
-          stored++;
-          executed++;
+        if (bulk != BULK_NONE) {
+          if (bulk == BULK_ALL || processed % bulkAfter != 0) {
+            insert.newRecord();
+            continue rows;
+          }
         }
- else {
+        if (batch != BATCH_NONE) {
           if (bind == null)           bind=create.batch(insert);
-          batched++;
           bind.bind(insert.getBindValues().toArray());
+          insert=null;
+          if (batch == BATCH_ALL || processed % (bulkAfter * batchAfter) != 0)           continue rows;
         }
-        if (batch == BATCH_AFTER) {
-          if (processed % batchAfter == 0) {
-            if (bind != null) {
-              bind.execute();
-              stored+=batched;
-              batched=0;
-              executed++;
-              bind=null;
-            }
-          }
-        }
-        if (commit == COMMIT_AFTER) {
-          if ((processed % batchAfter == 0) && ((processed / batchAfter) % commitAfter == 0)) {
-            commit();
-          }
-        }
+        if (bind != null)         bind.execute();
+ else         if (insert != null)         insert.execute();
+        stored+=buffered;
+        executed++;
+        buffered=0;
+        bind=null;
+        insert=null;
+        if (commit == COMMIT_AFTER)         if ((processed % batchAfter == 0) && ((processed / batchAfter) % commitAfter == 0))         commit();
       }
  catch (      DataAccessException e) {
         errors.add(new LoaderErrorImpl(e,row,processed - 1,insert));
-        ignored+=batched;
-        batched=0;
-        if (onError == ON_ERROR_ABORT) {
-          break execution;
-        }
+        ignored+=buffered;
+        buffered=0;
+        if (onError == ON_ERROR_ABORT)         break execution;
       }
     }
-    if (bind != null) {
+    if (buffered != 0) {
       try {
-        bind.execute();
-        stored+=batched;
-        batched=0;
+        if (bind != null)         bind.execute();
+        if (insert != null)         insert.execute();
+        stored+=buffered;
         executed++;
-        bind=null;
+        buffered=0;
       }
  catch (      DataAccessException e) {
         errors.add(new LoaderErrorImpl(e,row,processed - 1,insert));
-        ignored+=batched;
-        batched=0;
+        ignored+=buffered;
+        buffered=0;
       }
-      if (onError == ON_ERROR_ABORT) {
-        break execution;
-      }
+      if (onError == ON_ERROR_ABORT)       break execution;
     }
   }
   try {
@@ -110,9 +84,7 @@
       }
     }
  else     if (commit == COMMIT_AFTER) {
-      if ((processed % batchAfter != 0) || ((processed / batchAfter) % commitAfter != 0)) {
-        commit();
-      }
+      commit();
     }
   }
  catch (  DataAccessException e) {

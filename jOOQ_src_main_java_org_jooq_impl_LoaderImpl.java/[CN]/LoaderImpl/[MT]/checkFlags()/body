@@ -1,3 +1,4 @@
 {
   if (batch != BATCH_NONE && onDuplicate == ON_DUPLICATE_KEY_IGNORE)   throw new LoaderConfigurationException("Cannot apply batch loading with onDuplicateKeyIgnore flag. Turn off either flag.");
+  if (bulk != BULK_NONE && onDuplicate != ON_DUPLICATE_KEY_ERROR)   throw new LoaderConfigurationException("Cannot apply bulk loading with onDuplicateKey flags. Turn off either flag.");
 }

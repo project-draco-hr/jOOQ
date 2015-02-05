@@ -1,0 +1,5 @@
+{
+  bulk=BULK_AFTER;
+  bulkAfter=number;
+  return this;
+}
