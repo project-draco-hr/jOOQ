@@ -10,7 +10,7 @@
         SelectQuery<R> select=create.selectQuery(table);
         for (int i=0; i < row.length; i++)         if (i < fields.length && primaryKey[i])         select.addConditions(getCondition(fields[i],row[i]));
         try {
-          if (select.execute() > 0) {
+          if (create.fetchExists(select)) {
             ignored++;
             continue rows;
           }
