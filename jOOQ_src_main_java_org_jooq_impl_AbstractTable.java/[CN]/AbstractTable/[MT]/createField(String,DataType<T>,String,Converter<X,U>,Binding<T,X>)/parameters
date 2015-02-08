@@ -1,0 +1,5 @@
+String name
+DataType<T> type
+String comment
+Converter<X,U> converter
+Binding<T,X> binding

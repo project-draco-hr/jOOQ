@@ -1,0 +1,3 @@
+{
+  return createField(name,type,this,comment,null,null);
+}
