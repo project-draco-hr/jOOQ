@@ -18,6 +18,7 @@
     out.print("%s",getStrategy().getJavaMemberName(parameter));
     separator=", ";
   }
-  out.println(");");
+  if (scala)   out.println(")");
+ else   out.println(");");
   out.tab(1).println("}");
 }

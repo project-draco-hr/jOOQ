@@ -1,0 +1,10 @@
+{
+  List<T> result=new ArrayList<T>();
+  if (objects != null) {
+    for (    T object : objects) {
+      result.add(object);
+      break;
+    }
+  }
+  return result;
+}

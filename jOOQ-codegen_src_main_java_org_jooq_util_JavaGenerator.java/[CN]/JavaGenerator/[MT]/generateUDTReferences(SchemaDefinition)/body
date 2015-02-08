@@ -4,13 +4,15 @@
   printPackage(out,schema);
   printClassJavadoc(out,"Convenience access to all UDTs in " + schema.getOutputName());
   printClassAnnotations(out,schema);
-  out.println("public class UDTs {");
+  if (scala)   out.println("object UDTs {");
+ else   out.println("public class UDTs {");
   for (  UDTDefinition udt : database.getUDTs(schema)) {
     final String className=out.ref(getStrategy().getFullJavaClassName(udt));
     final String id=getStrategy().getJavaIdentifier(udt);
     final String fullId=getStrategy().getFullJavaIdentifier(udt);
     out.tab(1).javadoc("The type <code>%s</code>",udt.getQualifiedOutputName());
-    out.tab(1).println("public static %s %s = %s;",className,id,fullId);
+    if (scala)     out.tab(1).println("val %s = %s",id,fullId);
+ else     out.tab(1).println("public static %s %s = %s;",className,id,fullId);
   }
   out.println("}");
   out.close();

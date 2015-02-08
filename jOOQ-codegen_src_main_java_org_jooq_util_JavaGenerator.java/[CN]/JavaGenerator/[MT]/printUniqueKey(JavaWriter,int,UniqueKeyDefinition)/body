@@ -5,7 +5,9 @@
       out.tab(1).println("}");
     }
     out.println();
-    out.tab(1).println("private static class UniqueKeys%s extends %s {",block,AbstractKeys.class);
+    if (scala)     out.tab(1).println("private object UniqueKeys%s extends %s {",block,AbstractKeys.class);
+ else     out.tab(1).println("private static class UniqueKeys%s extends %s {",block,AbstractKeys.class);
   }
-  out.tab(2).println("public static final %s<%s> %s = createUniqueKey(%s, [[%s]]);",UniqueKey.class,out.ref(getStrategy().getFullJavaClassName(uniqueKey.getTable(),Mode.RECORD)),getStrategy().getJavaIdentifier(uniqueKey),out.ref(getStrategy().getFullJavaIdentifier(uniqueKey.getTable()),2),out.ref(getStrategy().getFullJavaIdentifiers(uniqueKey.getKeyColumns()),colRefSegments(null)));
+  if (scala)   out.tab(2).println("val %s : %s[%s] = %s.createUniqueKey(%s, [[%s]])",getStrategy().getJavaIdentifier(uniqueKey),UniqueKey.class,out.ref(getStrategy().getFullJavaClassName(uniqueKey.getTable(),Mode.RECORD)),AbstractKeys.class,out.ref(getStrategy().getFullJavaIdentifier(uniqueKey.getTable()),2),out.ref(getStrategy().getFullJavaIdentifiers(uniqueKey.getKeyColumns()),colRefSegments(null)));
+ else   out.tab(2).println("public static final %s<%s> %s = createUniqueKey(%s, [[%s]]);",UniqueKey.class,out.ref(getStrategy().getFullJavaClassName(uniqueKey.getTable(),Mode.RECORD)),getStrategy().getJavaIdentifier(uniqueKey),out.ref(getStrategy().getFullJavaIdentifier(uniqueKey.getTable()),2),out.ref(getStrategy().getFullJavaIdentifiers(uniqueKey.getKeyColumns()),colRefSegments(null)));
 }

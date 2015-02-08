@@ -4,7 +4,8 @@
   printPackage(out,schema);
   printClassJavadoc(out,"Convenience access to all sequences in " + schema.getOutputName());
   printClassAnnotations(out,schema);
-  out.println("public class Sequences {");
+  if (scala)   out.println("object Sequences {");
+ else   out.println("public class Sequences {");
   for (  SequenceDefinition sequence : database.getSequences(schema)) {
     final String seqType=out.ref(getJavaType(sequence.getType()));
     final String seqId=getStrategy().getJavaIdentifier(sequence);
@@ -12,7 +13,8 @@
     final String schemaId=out.ref(getStrategy().getFullJavaIdentifier(schema),2);
     final String typeRef=getJavaTypeReference(sequence.getDatabase(),sequence.getType());
     out.tab(1).javadoc("The sequence <code>%s</code>",sequence.getQualifiedOutputName());
-    out.tab(1).println("public static final %s<%s> %s = new %s<%s>(\"%s\", %s, %s);",Sequence.class,seqType,seqId,SequenceImpl.class,seqType,seqName,schemaId,typeRef);
+    if (scala)     out.tab(1).println("val %s : %s[%s] = new %s[%s](\"%s\", %s, %s)",seqId,Sequence.class,seqType,SequenceImpl.class,seqType,seqName,schemaId,typeRef);
+ else     out.tab(1).println("public static final %s<%s> %s = new %s<%s>(\"%s\", %s, %s);",Sequence.class,seqType,seqId,SequenceImpl.class,seqType,seqName,schemaId,typeRef);
   }
   out.println("}");
   out.close();

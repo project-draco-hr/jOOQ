@@ -2,7 +2,8 @@
   String type=defaultType;
   if (db.isArrayType(t)) {
     String baseType=GenerationUtil.getArrayBaseType(db.getDialect(),t,u);
-    type=getType(db,schema,baseType,p,s,baseType,defaultType) + "[]";
+    if (scala)     type="Array[" + getType(db,schema,baseType,p,s,baseType,defaultType) + "]";
+ else     type=getType(db,schema,baseType,p,s,baseType,defaultType) + "[]";
   }
  else   if (db.getArray(schema,u) != null) {
     type=getStrategy().getFullJavaClassName(db.getArray(schema,u),Mode.RECORD);
@@ -19,16 +20,17 @@
  else {
     try {
       Class<?> clazz=DefaultDataType.getType(db.getDialect(),t,p,s);
-      type=clazz.getCanonicalName();
+      if (scala && clazz == byte[].class)       type="scala.Array[scala.Byte]";
+ else       type=clazz.getCanonicalName();
       if (clazz.getTypeParameters().length > 0) {
-        type+="<";
+        type+=(scala ? "[" : "<");
         String separator="";
         for (        TypeVariable<?> var : clazz.getTypeParameters()) {
           type+=separator;
           type+=((Class<?>)var.getBounds()[0]).getCanonicalName();
           separator=", ";
         }
-        type+=">";
+        type+=(scala ? "]" : ">");
       }
     }
  catch (    SQLDialectNotSupportedException e) {

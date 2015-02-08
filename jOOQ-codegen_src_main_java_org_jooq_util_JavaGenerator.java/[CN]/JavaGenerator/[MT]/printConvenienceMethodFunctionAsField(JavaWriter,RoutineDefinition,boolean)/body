@@ -9,27 +9,47 @@
   final String className=out.ref(getStrategy().getFullJavaClassName(function));
   final String localVar=disambiguateJavaMemberName(function.getInParameters(),"f");
   out.tab(1).javadoc("Get <code>%s</code> as a field",function.getQualifiedOutputName());
-  out.tab(1).print("public static %s<%s> %s(",function.isAggregate() ? AggregateFunction.class : Field.class,out.ref(getJavaType(function.getReturnType())),getStrategy().getJavaMethodName(function,Mode.DEFAULT));
+  if (scala)   out.tab(1).print("def %s(",getStrategy().getJavaMethodName(function,Mode.DEFAULT));
+ else   out.tab(1).print("public static %s<%s> %s(",function.isAggregate() ? AggregateFunction.class : Field.class,out.ref(getJavaType(function.getReturnType())),getStrategy().getJavaMethodName(function,Mode.DEFAULT));
   String separator="";
   for (  ParameterDefinition parameter : function.getInParameters()) {
     out.print(separator);
-    if (parametersAsField) {
-      out.print("%s<%s>",Field.class,refExtendsNumberType(out,parameter.getType()));
+    if (scala) {
+      out.print("%s : ",getStrategy().getJavaMemberName(parameter));
+      if (parametersAsField) {
+        out.print("%s[%s]",Field.class,refExtendsNumberType(out,parameter.getType()));
+      }
+ else {
+        out.print(refNumberType(out,parameter.getType()));
+      }
     }
  else {
-      out.print(refNumberType(out,parameter.getType()));
+      if (parametersAsField) {
+        out.print("%s<%s>",Field.class,refExtendsNumberType(out,parameter.getType()));
+      }
+ else {
+        out.print(refNumberType(out,parameter.getType()));
+      }
+      out.print(" %s",getStrategy().getJavaMemberName(parameter));
     }
-    out.print(" %s",getStrategy().getJavaMemberName(parameter));
     separator=", ";
   }
-  out.println(") {");
-  out.tab(2).println("%s %s = new %s();",className,localVar,className);
+  if (scala) {
+    out.println(") : %s[%s] = {",function.isAggregate() ? AggregateFunction.class : Field.class,out.ref(getJavaType(function.getReturnType())));
+    out.tab(2).println("val %s = new %s",localVar,className);
+  }
+ else {
+    out.println(") {");
+    out.tab(2).println("%s %s = new %s();",className,localVar,className);
+  }
   for (  ParameterDefinition parameter : function.getInParameters()) {
     final String paramSetter=getStrategy().getJavaSetterName(parameter,Mode.DEFAULT);
     final String paramMember=getStrategy().getJavaMemberName(parameter);
-    out.tab(2).println("%s.%s(%s);",localVar,paramSetter,paramMember);
+    if (scala)     out.tab(2).println("%s.%s(%s)",localVar,paramSetter,paramMember);
+ else     out.tab(2).println("%s.%s(%s);",localVar,paramSetter,paramMember);
   }
   out.println();
-  out.tab(2).println("return %s.as%s();",localVar,function.isAggregate() ? "AggregateFunction" : "Field");
+  if (scala)   out.tab(2).println("return %s.as%s",localVar,function.isAggregate() ? "AggregateFunction" : "Field");
+ else   out.tab(2).println("return %s.as%s();",localVar,function.isAggregate() ? "AggregateFunction" : "Field");
   out.tab(1).println("}");
 }

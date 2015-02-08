@@ -73,7 +73,7 @@
     generatePackages(schema);
   }
   log.info("Removing excess files");
-  empty(getStrategy().getFile(schema).getParentFile(),".java",files);
+  empty(getStrategy().getFile(schema).getParentFile(),(scala ? ".scala" : ".java"),files);
   files.clear();
   watch.splitInfo("GENERATION FINISHED: " + schema.getQualifiedName());
 }

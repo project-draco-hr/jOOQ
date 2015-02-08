@@ -4,8 +4,7 @@
     for (    String c : clazz) {
       if (c.contains(".")) {
         if (fullyQualifiedTypes == null || !fullyQualifiedTypes.matcher(c).matches()) {
-          Pattern p=Pattern.compile("((?:[\\p{L}_$][\\p{L}\\p{N}_$]*\\.)*[\\p{L}_$][\\p{L}\\p{N}_$]*)((?:<.*>|\\[\\])*)");
-          Matcher m=p.matcher(c);
+          Matcher m=REF_PATTERN.matcher(c);
           if (m.find()) {
             List<String> split=Arrays.asList(m.group(1).split("\\."));
             String qualifiedType=StringUtils.join(split.subList(0,split.size() - keepSegments + 1).toArray(),".");

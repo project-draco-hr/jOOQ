@@ -7,27 +7,31 @@
   final String configurationArgument=disambiguateJavaMemberName(procedure.getInParameters(),"configuration");
   final String localVar=disambiguateJavaMemberName(procedure.getInParameters(),"p");
   out.tab(1).javadoc("Call <code>%s</code>",procedure.getQualifiedOutputName());
-  out.print("\tpublic ");
-  if (!instance) {
-    out.print("static ");
-  }
-  if (procedure.getOutParameters().size() == 0) {
-    out.print("void ");
-  }
- else   if (procedure.getOutParameters().size() == 1) {
-    out.print(out.ref(getJavaType(procedure.getOutParameters().get(0).getType())));
-    out.print(" ");
+  if (scala) {
+    out.tab(1).print("def ");
   }
  else {
-    out.print(className + " ");
+    out.tab(1).print("public ");
+    if (!instance) {
+      out.print("static ");
+    }
+    if (procedure.getOutParameters().size() == 0) {
+      out.print("void ");
+    }
+ else     if (procedure.getOutParameters().size() == 1) {
+      out.print(out.ref(getJavaType(procedure.getOutParameters().get(0).getType())));
+      out.print(" ");
+    }
+ else {
+      out.print(className + " ");
+    }
   }
   out.print(getStrategy().getJavaMethodName(procedure,Mode.DEFAULT));
   out.print("(");
   String glue="";
   if (!instance) {
-    out.print(Configuration.class);
-    out.print(" ");
-    out.print(configurationArgument);
+    if (scala)     out.print("%s : %s",configurationArgument,Configuration.class);
+ else     out.print("%s %s",Configuration.class,configurationArgument);
     glue=", ";
   }
   for (  ParameterDefinition parameter : procedure.getInParameters()) {
@@ -35,20 +39,37 @@
       continue;
     }
     out.print(glue);
-    out.print(refNumberType(out,parameter.getType()));
-    out.print(" ");
-    out.print(getStrategy().getJavaMemberName(parameter));
+    if (scala)     out.print("%s : %s",getStrategy().getJavaMemberName(parameter),refNumberType(out,parameter.getType()));
+ else     out.print("%s %s",refNumberType(out,parameter.getType()),getStrategy().getJavaMemberName(parameter));
     glue=", ";
   }
-  out.println(") {");
-  out.tab(2).println("%s %s = new %s();",className,localVar,className);
+  if (scala) {
+    out.print(") : ");
+    if (procedure.getOutParameters().size() == 0) {
+      out.print("Unit");
+    }
+ else     if (procedure.getOutParameters().size() == 1) {
+      out.print(out.ref(getJavaType(procedure.getOutParameters().get(0).getType())));
+    }
+ else {
+      out.print(className);
+    }
+    out.println(" = {");
+    out.tab(2).println("val %s = new %s",localVar,className);
+  }
+ else {
+    out.println(") {");
+    out.tab(2).println("%s %s = new %s();",className,localVar,className);
+  }
   for (  ParameterDefinition parameter : procedure.getInParameters()) {
     final String setter=getStrategy().getJavaSetterName(parameter,Mode.DEFAULT);
     final String arg=(instance && parameter.equals(procedure.getInParameters().get(0))) ? "this" : getStrategy().getJavaMemberName(parameter);
-    out.tab(2).println("%s.%s(%s);",localVar,setter,arg);
+    if (scala)     out.tab(2).println("%s.%s(%s)",localVar,setter,arg);
+ else     out.tab(2).println("%s.%s(%s);",localVar,setter,arg);
   }
   out.println();
-  out.tab(2).println("%s.execute(%s);",localVar,instance ? "configuration()" : configurationArgument);
+  if (scala)   out.tab(2).println("%s.execute(%s)",localVar,instance ? "configuration()" : configurationArgument);
+ else   out.tab(2).println("%s.execute(%s);",localVar,instance ? "configuration()" : configurationArgument);
   if (procedure.getOutParameters().size() > 0) {
     final ParameterDefinition parameter=procedure.getOutParameters().get(0);
     final String getter=getStrategy().getJavaGetterName(parameter,Mode.DEFAULT);
@@ -56,17 +77,21 @@
     if (instance) {
       if (generateInterfaces() && isUDT) {
         final String columnTypeInterface=out.ref(getJavaType(parameter.getType(),Mode.INTERFACE));
-        out.tab(2).println("from((%s) %s.%s());",columnTypeInterface,localVar,getter);
+        if (scala)         out.tab(2).println("from(%s.%s.asInstanceOf[%s])",localVar,getter,columnTypeInterface);
+ else         out.tab(2).println("from((%s) %s.%s());",columnTypeInterface,localVar,getter);
       }
  else {
-        out.tab(2).println("from(%s.%s());",localVar,getter);
+        if (scala)         out.tab(2).println("from(%s.%s)",localVar,getter);
+ else         out.tab(2).println("from(%s.%s());",localVar,getter);
       }
     }
     if (procedure.getOutParameters().size() == 1) {
-      out.tab(2).println("return %s.%s();",localVar,getter);
+      if (scala)       out.tab(2).println("return %s.%s",localVar,getter);
+ else       out.tab(2).println("return %s.%s();",localVar,getter);
     }
  else     if (procedure.getOutParameters().size() > 1) {
-      out.tab(2).println("return %s;",localVar);
+      if (scala)       out.tab(2).println("return %s",localVar);
+ else       out.tab(2).println("return %s;",localVar);
     }
   }
   out.tab(1).println("}");

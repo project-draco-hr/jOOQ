@@ -2,5 +2,6 @@
   final String className=getStrategy().getJavaClassName(definition);
   final String identifier=getStrategy().getJavaIdentifier(definition);
   out.tab(1).javadoc("The reference instance of <code>%s</code>",definition.getQualifiedOutputName());
-  out.tab(1).println("public static final %s %s = new %s();",className,identifier,className);
+  if (scala)   out.tab(1).println("val %s = new %s",identifier,className);
+ else   out.tab(1).println("public static final %s %s = new %s();",className,identifier,className);
 }

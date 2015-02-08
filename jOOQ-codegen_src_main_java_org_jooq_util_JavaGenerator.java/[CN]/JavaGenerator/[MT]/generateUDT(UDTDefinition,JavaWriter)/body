@@ -6,14 +6,31 @@
   final String schemaId=out.ref(getStrategy().getFullJavaIdentifier(schema),2);
   final String udtId=out.ref(getStrategy().getJavaIdentifier(udt),2);
   printPackage(out,udt);
+  if (scala) {
+    out.println("object %s {",className);
+    printSingletonInstance(out,udt);
+    for (    AttributeDefinition attribute : udt.getAttributes()) {
+      final String attrId=out.ref(getStrategy().getJavaIdentifier(attribute),2);
+      final String attrComment=StringUtils.defaultString(attribute.getComment());
+      out.tab(1).javadoc("The attribute <code>%s</code>.%s",attribute.getQualifiedOutputName(),defaultIfBlank(" " + attrComment,""));
+      out.tab(1).println("val %s = %s.%s",attrId,udtId,attrId);
+    }
+    out.println("}");
+    out.println();
+  }
   generateUDTClassJavadoc(udt,out);
   printClassAnnotations(out,schema);
   if (udt.getRoutines().size() > 0) {
     interfaces.add(out.ref(Package.class));
   }
-  out.println("public class %s extends %s<%s>[[before= implements ][%s]] {",className,UDTImpl.class,recordType,interfaces);
-  out.printSerial();
-  printSingletonInstance(out,udt);
+  if (scala) {
+    out.println("class %s extends %s[%s](\"%s\", %s)[[before= with ][%s]] {",className,UDTImpl.class,recordType,udt.getOutputName(),schemaId,interfaces);
+  }
+ else {
+    out.println("public class %s extends %s<%s>[[before= implements ][%s]] {",className,UDTImpl.class,recordType,interfaces);
+    out.printSerial();
+    printSingletonInstance(out,udt);
+  }
   printRecordTypeMethod(out,udt);
   for (  AttributeDefinition attribute : udt.getAttributes()) {
     final String attrType=out.ref(getJavaType(attribute.getType()));
@@ -22,8 +39,13 @@
     final String attrName=attribute.getName();
     final String attrComment=StringUtils.defaultString(attribute.getComment());
     final List<String> converters=out.ref(list(attribute.getType().getConverter(),attribute.getType().getBinding()));
-    out.tab(1).javadoc("The attribute <code>%s</code>.%s",attribute.getQualifiedOutputName(),defaultIfBlank(" " + attrComment,""));
-    out.tab(1).println("public static final %s<%s, %s> %s = createField(\"%s\", %s, %s, \"%s\"[[before=, ][new %s()]]);",UDTField.class,recordType,attrType,attrId,attrName,attrTypeRef,udtId,escapeString(""),converters);
+    if (scala) {
+      out.tab(1).println("private val %s : %s[%s, %s] = %s.createField(\"%s\", %s, this, \"%s\"[[before=, ][new %s]])",attrId,UDTField.class,recordType,attrType,UDTImpl.class,attrName,attrTypeRef,escapeString(""),converters);
+    }
+ else {
+      out.tab(1).javadoc("The attribute <code>%s</code>.%s",attribute.getQualifiedOutputName(),defaultIfBlank(" " + attrComment,""));
+      out.tab(1).println("public static final %s<%s, %s> %s = createField(\"%s\", %s, %s, \"%s\"[[before=, ][new %s()]]);",UDTField.class,recordType,attrType,attrId,attrName,attrTypeRef,udtId,escapeString(""),converters);
+    }
   }
   for (  RoutineDefinition routine : udt.getRoutines()) {
     try {
@@ -42,13 +64,22 @@
       log.error("Error while generating routine " + routine,e);
     }
   }
-  out.tab(1).javadoc(NO_FURTHER_INSTANCES_ALLOWED);
-  out.tab(1).println("private %s() {",className);
-  out.tab(2).println("super(\"%s\", %s);",udt.getOutputName(),schemaId);
-  out.println();
-  out.tab(2).println("// Initialise data type");
-  out.tab(2).println("getDataType();");
-  out.tab(1).println("}");
+  if (scala) {
+    out.println();
+    out.tab(1).println("{",className);
+    out.tab(2).println("// Initialise data type");
+    out.tab(2).println("getDataType");
+    out.tab(1).println("}");
+  }
+ else {
+    out.tab(1).javadoc(NO_FURTHER_INSTANCES_ALLOWED);
+    out.tab(1).println("private %s() {",className);
+    out.tab(2).println("super(\"%s\", %s);",udt.getOutputName(),schemaId);
+    out.println();
+    out.tab(2).println("// Initialise data type");
+    out.tab(2).println("getDataType();");
+    out.tab(1).println("}");
+  }
   generateUDTClassFooter(udt,out);
   out.println("}");
   out.close();

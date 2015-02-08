@@ -11,11 +11,11 @@
       out.print("\"");
     }
     StringBuilder sb=new StringBuilder();
-    String glue1="";
+    String glue1="\n";
     for (    UniqueKeyDefinition uk : table.getUniqueKeys()) {
       if (uk.getKeyColumns().size() > 1) {
         sb.append(glue1);
-        sb.append("\t@").append(out.ref("javax.persistence.UniqueConstraint")).append("(columnNames = {");
+        sb.append("\t").append(scala ? "new " : "@").append(out.ref("javax.persistence.UniqueConstraint")).append("(columnNames = ").append(scala ? "Array(" : "{");
         String glue2="";
         for (        ColumnDefinition column : uk.getKeyColumns()) {
           sb.append(glue2);
@@ -24,14 +24,14 @@
           sb.append("\"");
           glue2=", ";
         }
-        sb.append("})");
+        sb.append(scala ? ")" : "}").append(")");
         glue1=",\n";
       }
     }
     if (sb.length() > 0) {
-      out.println(", uniqueConstraints = {");
+      out.print(", uniqueConstraints = ").print(scala ? "Array(" : "{");
       out.println(sb.toString());
-      out.print("}");
+      out.print(scala ? ")" : "}");
     }
     out.println(")");
   }

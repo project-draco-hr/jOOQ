@@ -1,5 +1,7 @@
 {
   super(file);
   this.className=file.getName().replace(".java","");
+  this.isJava=file.getName().endsWith(".java");
+  this.isScala=file.getName().endsWith(".scala");
   this.fullyQualifiedTypes=fullyQualifiedTypes == null ? null : Pattern.compile(fullyQualifiedTypes);
 }

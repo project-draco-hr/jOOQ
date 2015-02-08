@@ -4,7 +4,8 @@
   printPackage(out,schema);
   printClassJavadoc(out,"Convenience access to all stored procedures and functions in " + schema.getOutputName());
   printClassAnnotations(out,schema);
-  out.println("public class Routines {");
+  if (scala)   out.println("object Routines {");
+ else   out.println("public class Routines {");
   for (  RoutineDefinition routine : database.getRoutines(schema)) {
     printRoutine(out,routine);
     try {

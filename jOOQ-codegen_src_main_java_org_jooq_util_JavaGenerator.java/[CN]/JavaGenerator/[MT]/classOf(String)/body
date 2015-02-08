@@ -1,0 +1,4 @@
+{
+  if (scala)   return "classOf[" + string + "]";
+ else   return string + ".class";
+}

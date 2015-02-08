@@ -1,4 +1,6 @@
 {
-  println();
-  println("\tprivate static final long serialVersionUID = %s;",SERIAL_STATEMENT);
+  if (isJava) {
+    println();
+    println("\tprivate static final long serialVersionUID = %s;",SERIAL_STATEMENT);
+  }
 }

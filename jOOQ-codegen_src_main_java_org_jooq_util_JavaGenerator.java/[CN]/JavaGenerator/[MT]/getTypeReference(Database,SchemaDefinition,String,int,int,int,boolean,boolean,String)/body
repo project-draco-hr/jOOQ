@@ -4,8 +4,8 @@
     ArrayDefinition array=database.getArray(schema,u);
     sb.append(getJavaTypeReference(db,array.getElementType()));
     sb.append(".asArrayDataType(");
-    sb.append(getStrategy().getFullJavaClassName(array,Mode.RECORD));
-    sb.append(".class)");
+    sb.append(classOf(getStrategy().getFullJavaClassName(array,Mode.RECORD)));
+    sb.append(")");
   }
  else   if (db.getUDT(schema,u) != null) {
     UDTDefinition udt=db.getUDT(schema,u);
@@ -20,8 +20,8 @@
     sb.append("DataType.");
     sb.append(DefaultDataType.normalise(DefaultDataType.getDataType(db.getDialect(),String.class).getTypeName()));
     sb.append(".asEnumDataType(");
-    sb.append(getStrategy().getFullJavaClassName(db.getEnum(schema,u)));
-    sb.append(".class)");
+    sb.append(classOf(getStrategy().getFullJavaClassName(db.getEnum(schema,u))));
+    sb.append(")");
   }
  else {
     DataType<?> dataType=null;
@@ -65,8 +65,8 @@
         if (!type1.equals(type2)) {
           Class<?> clazz=DefaultDataType.getType(db.getDialect(),t,p,s);
           sb.append(".asNumberDataType(");
-          sb.append(clazz.getCanonicalName());
-          sb.append(".class)");
+          sb.append(classOf(clazz.getCanonicalName()));
+          sb.append(")");
         }
       }
  catch (      SQLDialectNotSupportedException e) {

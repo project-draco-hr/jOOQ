@@ -1,0 +1,8 @@
+{
+  List<T> result=new ArrayList<T>();
+  if (objects != null) {
+    result.addAll(objects);
+    if (result.size() > 0)     result.remove(0);
+  }
+  return result;
+}
