@@ -35,9 +35,15 @@
   if (!generateImmutablePojos()) {
     out.println();
     if (scala) {
-      out.tab(1).println("def this() = {",className);
-      out.tab(2).println("this([[%s]])",Collections.nCopies(getTypedElements(tableOrUDT).size(),"null"));
-      out.tab(1).println("}");
+      int size=getTypedElements(tableOrUDT).size();
+      if (size > 0) {
+        List<String> nulls=new ArrayList<String>();
+        for (        TypedElementDefinition<?> column : getTypedElements(tableOrUDT))         if (size == 1)         nulls.add("null : " + out.ref(getJavaType(column.getType(),Mode.POJO)));
+ else         nulls.add("null");
+        out.tab(1).println("def this() = {",className);
+        out.tab(2).println("this([[%s]])",nulls);
+        out.tab(1).println("}");
+      }
     }
  else {
       out.tab(1).println("public %s() {}",className);

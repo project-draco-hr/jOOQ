@@ -84,7 +84,7 @@
     out.tab(1).javadoc("Fetch records that have <code>%s IN (values)</code>",colName);
     if (scala) {
       out.tab(1).println("def fetchBy%s(values : %s*) : %s[%s] = {",colClass,colType,List.class,pType);
-      out.tab(2).println("fetch(%s, values)",colIdentifier);
+      out.tab(2).println("fetch(%s, values:_*)",colIdentifier);
       out.tab(1).println("}");
     }
  else {
@@ -96,7 +96,7 @@
       if (uk.getKeyColumns().size() == 1 && uk.getKeyColumns().get(0).equals(column)) {
         out.tab(1).javadoc("Fetch a unique record that has <code>%s = value</code>",colName);
         if (scala) {
-          out.tab(1).println("def fetchOneBy%s(value : %s) : %s = {",colClass,pType,colType);
+          out.tab(1).println("def fetchOneBy%s(value : %s) : %s = {",colClass,colType,pType);
           out.tab(2).println("fetchOne(%s, value)",colIdentifier);
           out.tab(1).println("}");
         }
