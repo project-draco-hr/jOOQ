@@ -1,4 +1,3 @@
 {
-  drop=field;
-  return this;
+  return dropColumn(field);
 }

@@ -1,3 +1,3 @@
 {
-  return drop(field(name(field)));
+  return dropColumn(field);
 }

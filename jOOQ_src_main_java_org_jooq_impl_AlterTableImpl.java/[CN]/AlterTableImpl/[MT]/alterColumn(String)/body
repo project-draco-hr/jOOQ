@@ -1,0 +1,3 @@
+{
+  return alterColumn(field(name(field)));
+}
