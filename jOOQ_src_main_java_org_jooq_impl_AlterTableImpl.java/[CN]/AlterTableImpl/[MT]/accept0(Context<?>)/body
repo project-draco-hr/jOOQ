@@ -14,7 +14,9 @@
     ctx.end(ALTER_TABLE_ADD);
   }
  else   if (addConstraint != null) {
-    throw new UnsupportedOperationException();
+    ctx.start(ALTER_TABLE_ADD);
+    ctx.sql(" ").keyword("add").sql(" ").visit(addConstraint);
+    ctx.end(ALTER_TABLE_ADD);
   }
  else   if (alterColumn != null) {
     ctx.start(ALTER_TABLE_ALTER);

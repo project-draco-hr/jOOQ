@@ -1,5 +1,12 @@
 {
   ctx.keyword("constraint").sql(" ").visit(name);
   if (ctx.data(DATA_DROP_CONSTRAINT) == null) {
+    boolean qualify=ctx.qualify();
+    if (unique != null) {
+      ctx.sql(" ").keyword("unique").sql(" (").qualify(false).visit(new QueryPartList<Field<?>>(unique)).qualify(qualify).sql(")");
+    }
+ else     if (primaryKey != null) {
+      ctx.sql(" ").keyword("primary key").sql(" (").qualify(false).visit(new QueryPartList<Field<?>>(primaryKey)).qualify(qualify).sql(")");
+    }
   }
 }

@@ -1,0 +1,4 @@
+{
+  primaryKey=fields;
+  return this;
+}

@@ -1,0 +1,4 @@
+{
+  unique=fields;
+  return this;
+}
