@@ -13,5 +13,8 @@
       if (onDelete != null)       ctx.sql(" ").keyword("on delete").sql(" ").keyword(onDelete.sql);
       if (onUpdate != null)       ctx.sql(" ").keyword("on update").sql(" ").keyword(onUpdate.sql);
     }
+ else     if (check != null) {
+      ctx.sql(" ").keyword("check").sql(" (").qualify(false).visit(check).qualify(qualify).sql(")");
+    }
   }
 }
