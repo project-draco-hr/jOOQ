@@ -1,0 +1,4 @@
+{
+  onUpdate=RESTRICT;
+  return this;
+}

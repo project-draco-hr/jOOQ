@@ -1,0 +1,4 @@
+{
+  onDelete=CASCADE;
+  return this;
+}

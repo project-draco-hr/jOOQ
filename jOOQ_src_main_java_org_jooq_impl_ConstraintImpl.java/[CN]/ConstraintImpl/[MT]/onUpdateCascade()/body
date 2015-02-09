@@ -1,0 +1,4 @@
+{
+  onUpdate=CASCADE;
+  return this;
+}

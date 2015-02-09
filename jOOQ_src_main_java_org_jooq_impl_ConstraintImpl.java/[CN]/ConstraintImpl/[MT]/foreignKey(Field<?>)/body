@@ -1,0 +1,4 @@
+{
+  foreignKey=fields;
+  return this;
+}

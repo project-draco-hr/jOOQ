@@ -1,0 +1,5 @@
+{
+  referencesTable=table;
+  references=fields;
+  return this;
+}

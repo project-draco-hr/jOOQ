@@ -1,0 +1,4 @@
+{
+  onUpdate=SET_NULL;
+  return this;
+}

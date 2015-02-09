@@ -1,0 +1,3 @@
+{
+  return references(table,new String[]{field1,field2});
+}

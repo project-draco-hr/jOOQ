@@ -1,0 +1,3 @@
+{
+  return references(table(name(table)),fieldsByName(fields));
+}

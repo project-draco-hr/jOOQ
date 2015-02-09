@@ -1,0 +1,4 @@
+{
+  onDelete=RESTRICT;
+  return this;
+}

@@ -1,0 +1,4 @@
+{
+  onDelete=SET_NULL;
+  return this;
+}
