@@ -103,7 +103,7 @@
         }
         render.sql("]");
         if (family == POSTGRES && EnumType.class.isAssignableFrom(type.getComponentType())) {
-          render.sql("::").keyword(DefaultDataType.getDataType(family,type).getCastTypeName(render.configuration()));
+          pgRenderEnumCast(render,type);
         }
       }
     }
@@ -124,24 +124,14 @@
     }
   }
  else   if (family == SQLDialect.POSTGRES) {
-    if (type.isArray() && byte[].class != type) {
+    if (EnumType.class.isAssignableFrom(type) || (type.isArray() && EnumType.class.isAssignableFrom(type.getComponentType()))) {
+      render.sql(ctx.variable());
+      pgRenderEnumCast(render,type);
+    }
+ else     if (type.isArray() && byte[].class != type) {
       render.sql(ctx.variable());
       render.sql("::");
       render.keyword(DefaultDataType.getDataType(family,type).getCastTypeName(render.configuration()));
-    }
- else     if (EnumType.class.isAssignableFrom(type)) {
-      render.sql(ctx.variable());
-      EnumType e=(EnumType)type.getEnumConstants()[0];
-      Schema schema=e.getSchema();
-      if (schema != null) {
-        render.sql("::");
-        schema=using(render.configuration()).map(schema);
-        if (schema != null && TRUE.equals(render.configuration().settings().isRenderSchema())) {
-          render.visit(schema);
-          render.sql(".");
-        }
-        render.visit(name(e.getName()));
-      }
     }
  else {
       render.sql(ctx.variable());

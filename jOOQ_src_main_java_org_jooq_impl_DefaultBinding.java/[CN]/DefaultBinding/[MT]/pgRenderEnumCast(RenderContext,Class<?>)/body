@@ -1,0 +1,15 @@
+{
+  Class<?> enumType=type.isArray() ? type.getComponentType() : type;
+  EnumType e=(EnumType)enumType.getEnumConstants()[0];
+  Schema schema=e.getSchema();
+  if (schema != null) {
+    render.sql("::");
+    schema=using(render.configuration()).map(schema);
+    if (schema != null && TRUE.equals(render.configuration().settings().isRenderSchema())) {
+      render.visit(schema);
+      render.sql(".");
+    }
+    render.visit(name(e.getName()));
+  }
+  if (type.isArray())   render.sql("[]");
+}
