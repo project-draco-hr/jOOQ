@@ -1,4 +1,4 @@
 {
-  alter=field;
+  alterColumn=field;
   return this;
 }

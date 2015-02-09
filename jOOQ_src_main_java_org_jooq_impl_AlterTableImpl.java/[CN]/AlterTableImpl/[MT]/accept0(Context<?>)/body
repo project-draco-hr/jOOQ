@@ -1,11 +1,11 @@
 {
   SQLDialect family=ctx.configuration().dialect().family();
   ctx.start(ALTER_TABLE_TABLE).keyword("alter table").sql(" ").visit(table).end(ALTER_TABLE_TABLE);
-  if (add != null) {
+  if (addColumn != null) {
     ctx.start(ALTER_TABLE_ADD).sql(" ").keyword("add").sql(" ");
-    ctx.qualify(false).visit(add).sql(" ").qualify(true);
-    toSQLDDLTypeDeclaration(ctx,addType);
-    if (!addType.nullable()) {
+    ctx.qualify(false).visit(addColumn).sql(" ").qualify(true);
+    toSQLDDLTypeDeclaration(ctx,addColumnType);
+    if (!addColumnType.nullable()) {
       ctx.sql(" ").keyword("not null");
     }
  else     if (family != FIREBIRD) {
@@ -13,56 +13,66 @@
     }
     ctx.end(ALTER_TABLE_ADD);
   }
- else   if (alter != null) {
+ else   if (addConstraint != null) {
+    throw new UnsupportedOperationException();
+  }
+ else   if (alterColumn != null) {
     ctx.start(ALTER_TABLE_ALTER);
 switch (family) {
 case MARIADB:
 case MYSQL:
-      ctx.sql(" ").keyword("change column").sql(" ").qualify(false).visit(alter).qualify(true);
+      ctx.sql(" ").keyword("change column").sql(" ").qualify(false).visit(alterColumn).qualify(true);
     break;
 default :
   ctx.sql(" ").keyword("alter");
 break;
 }
-ctx.sql(" ").qualify(false).visit(alter).qualify(true);
-if (alterType != null) {
+ctx.sql(" ").qualify(false).visit(alterColumn).qualify(true);
+if (alterColumnType != null) {
 switch (family) {
 case POSTGRES:
 ctx.sql(" ").keyword("type");
 break;
 }
 ctx.sql(" ");
-toSQLDDLTypeDeclaration(ctx,alterType);
-if (!alterType.nullable()) {
+toSQLDDLTypeDeclaration(ctx,alterColumnType);
+if (!alterColumnType.nullable()) {
 ctx.sql(" ").keyword("not null");
 }
 }
- else if (alterDefault != null) {
+ else if (alterColumnDefault != null) {
 ctx.start(ALTER_TABLE_ALTER_DEFAULT);
 switch (family) {
 default :
 ctx.sql(" ").keyword("set default");
 break;
 }
-ctx.sql(" ").visit(alterDefault).end(ALTER_TABLE_ALTER_DEFAULT);
+ctx.sql(" ").visit(alterColumnDefault).end(ALTER_TABLE_ALTER_DEFAULT);
 }
 ctx.end(ALTER_TABLE_ALTER);
 }
- else if (drop != null) {
+ else if (dropColumn != null) {
 ctx.start(ALTER_TABLE_DROP);
 switch (family) {
 default :
 ctx.sql(" ").keyword("drop");
 break;
 }
-ctx.sql(" ").qualify(false).visit(drop).qualify(true);
+ctx.sql(" ").qualify(false).visit(dropColumn).qualify(true);
 switch (family) {
 default :
 break;
 }
-if (dropCascade) {
+if (dropColumnCascade) {
 ctx.sql(" ").keyword("cascade");
 }
+ctx.end(ALTER_TABLE_DROP);
+}
+ else if (dropConstraint != null) {
+ctx.start(ALTER_TABLE_DROP);
+ctx.data(DATA_DROP_CONSTRAINT,true);
+ctx.sql(" ").keyword("drop").sql(" ").visit(dropConstraint);
+ctx.data().remove(DATA_DROP_CONSTRAINT);
 ctx.end(ALTER_TABLE_DROP);
 }
 }

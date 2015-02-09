@@ -1,0 +1,5 @@
+{
+  ctx.keyword("constraint").sql(" ").visit(name);
+  if (ctx.data(DATA_DROP_CONSTRAINT) == null) {
+  }
+}

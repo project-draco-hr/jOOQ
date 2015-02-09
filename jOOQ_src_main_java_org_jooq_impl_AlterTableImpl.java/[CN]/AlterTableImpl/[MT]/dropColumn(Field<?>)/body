@@ -1,4 +1,4 @@
 {
-  drop=field;
+  dropColumn=field;
   return this;
 }

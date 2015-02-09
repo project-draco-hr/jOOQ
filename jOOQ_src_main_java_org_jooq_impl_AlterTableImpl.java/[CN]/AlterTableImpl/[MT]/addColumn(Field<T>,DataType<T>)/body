@@ -1,5 +1,5 @@
 {
-  add=field;
-  addType=type;
+  addColumn=field;
+  addColumnType=type;
   return this;
 }

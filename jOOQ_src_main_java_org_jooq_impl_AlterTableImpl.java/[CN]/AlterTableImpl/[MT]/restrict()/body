@@ -1,4 +1,4 @@
 {
-  dropCascade=false;
+  dropColumnCascade=false;
   return this;
 }

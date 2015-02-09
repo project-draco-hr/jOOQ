@@ -1,4 +1,4 @@
 {
-  alterDefault=expression;
+  alterColumnDefault=expression;
   return this;
 }
