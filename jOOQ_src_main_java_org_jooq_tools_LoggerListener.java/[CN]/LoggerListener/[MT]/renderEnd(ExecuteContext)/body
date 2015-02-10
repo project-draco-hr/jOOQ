@@ -1,36 +1,37 @@
 {
   if (log.isDebugEnabled()) {
     Configuration configuration=ctx.configuration();
+    String newline=TRUE.equals(configuration.settings().isRenderFormatted()) ? "\n" : "";
     if (!log.isTraceEnabled()) {
       configuration=abbreviateBindVariables(configuration);
     }
     String[] batchSQL=ctx.batchSQL();
     if (ctx.query() != null) {
-      log.debug("Executing query",ctx.sql());
+      log.debug("Executing query",newline + ctx.sql());
       String inlined=DSL.using(configuration).renderInlined(ctx.query());
       if (!ctx.sql().equals(inlined)) {
-        log.debug("-> with bind values",inlined);
+        log.debug("-> with bind values",newline + inlined);
       }
     }
  else     if (ctx.routine() != null) {
-      log.debug("Calling routine",ctx.sql());
+      log.debug("Calling routine",newline + ctx.sql());
       String inlined=DSL.using(configuration).renderInlined(ctx.routine());
       if (!ctx.sql().equals(inlined)) {
-        log.debug("-> with bind values",inlined);
+        log.debug("-> with bind values",newline + inlined);
       }
     }
  else     if (!StringUtils.isBlank(ctx.sql())) {
       if (ctx.type() == ExecuteType.BATCH) {
-        log.debug("Executing batch query",ctx.sql());
+        log.debug("Executing batch query",newline + ctx.sql());
       }
  else {
-        log.debug("Executing query",ctx.sql());
+        log.debug("Executing query",newline + ctx.sql());
       }
     }
  else     if (batchSQL.length > 0) {
       if (batchSQL[batchSQL.length - 1] != null) {
         for (        String sql : batchSQL) {
-          log.debug("Executing batch query",sql);
+          log.debug("Executing batch query",newline + sql);
         }
       }
     }
