@@ -1,4 +1,5 @@
 {
+  if (ruleTransformType != null && ruleExpression == null)   ruleExpression="$0";
   if (ruleExpression != null) {
     Pattern p=compile(defaultIfEmpty(expression,"^.*$").trim());
     Matcher m=p.matcher(definition.getName());
