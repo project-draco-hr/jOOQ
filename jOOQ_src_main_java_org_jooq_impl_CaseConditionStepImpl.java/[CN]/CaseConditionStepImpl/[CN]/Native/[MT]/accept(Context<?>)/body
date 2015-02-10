@@ -5,17 +5,17 @@
     if (i > 0) {
       ctx.formatNewLine();
     }
-    ctx.sql(" ").keyword("when").sql(" ").visit(conditions.get(i)).sql(" ").keyword("then").sql(" ").visit(results.get(i));
+    ctx.sql(' ').keyword("when").sql(' ').visit(conditions.get(i)).sql(' ').keyword("then").sql(' ').visit(results.get(i));
   }
   if (otherwise != null) {
-    ctx.formatNewLine().sql(" ").keyword("else").sql(" ").visit(otherwise);
+    ctx.formatNewLine().sql(' ').keyword("else").sql(' ').visit(otherwise);
   }
   ctx.formatIndentLockEnd();
   if (size > 1 || otherwise != null) {
     ctx.formatSeparator();
   }
  else {
-    ctx.sql(" ");
+    ctx.sql(' ');
   }
   ctx.keyword("end").formatIndentLockEnd();
 }

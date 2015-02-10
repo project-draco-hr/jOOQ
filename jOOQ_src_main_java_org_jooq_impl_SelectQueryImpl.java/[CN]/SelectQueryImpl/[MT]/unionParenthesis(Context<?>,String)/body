@@ -8,7 +8,7 @@ case DERBY:
 case SQLITE:
 case MARIADB:
 case MYSQL:
-      ctx.formatNewLine().keyword("select").sql(" *").formatSeparator().keyword("from").sql(" ");
+      ctx.formatNewLine().keyword("select").sql(" *").formatSeparator().keyword("from").sql(' ');
     break;
 }
 }

@@ -1,6 +1,6 @@
 {
   if (ctx.declareWindows()) {
-    ctx.visit(name).sql(" ").keyword("as").sql(" (").visit(window).sql(")");
+    ctx.visit(name).sql(' ').keyword("as").sql(" (").visit(window).sql(')');
   }
  else   if (asList(ctx.family()).contains(POSTGRES)) {
     ctx.visit(name);

@@ -11,13 +11,13 @@ case FIREBIRD:
     ctx.literal("RDB$DATABASE");
   break;
 case HSQLDB:
-ctx.sql("(").sql(DUAL_HSQLDB).sql(") as dual");
+ctx.sql('(').sql(DUAL_HSQLDB).sql(") as dual");
 break;
 case CUBRID:
 ctx.literal("db_root");
 break;
 case DERBY:
-ctx.literal("SYSIBM").sql(".").literal("SYSDUMMY1");
+ctx.literal("SYSIBM").sql('.').literal("SYSDUMMY1");
 break;
 default :
 ctx.keyword("dual");

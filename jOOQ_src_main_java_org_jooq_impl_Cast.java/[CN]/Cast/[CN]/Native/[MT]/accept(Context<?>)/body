@@ -1,4 +1,4 @@
 {
   CastMode castMode=ctx.castMode();
-  ctx.keyword("cast").sql("(").castMode(CastMode.NEVER).visit(field).castMode(castMode).sql(" ").keyword("as").sql(" ").keyword(getDataType(ctx.configuration()).getCastTypeName(ctx.configuration())).sql(")");
+  ctx.keyword("cast").sql('(').castMode(CastMode.NEVER).visit(field).castMode(castMode).sql(' ').keyword("as").sql(' ').keyword(getDataType(ctx.configuration()).getCastTypeName(ctx.configuration())).sql(')');
 }

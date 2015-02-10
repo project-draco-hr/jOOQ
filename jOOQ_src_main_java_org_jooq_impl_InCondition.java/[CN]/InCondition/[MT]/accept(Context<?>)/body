@@ -8,19 +8,19 @@
 switch (ctx.configuration().dialect().family()) {
 case FIREBIRD:
 {
-        ctx.sql("(").formatIndentStart().formatNewLine();
+        ctx.sql('(').formatIndentStart().formatNewLine();
         for (int i=0; i < list.size(); i+=IN_LIMIT) {
           if (i > 0) {
             if (comparator == Comparator.IN) {
-              ctx.formatSeparator().keyword("or").sql(" ");
+              ctx.formatSeparator().keyword("or").sql(' ');
             }
  else {
-              ctx.formatSeparator().keyword("and").sql(" ");
+              ctx.formatSeparator().keyword("and").sql(' ');
             }
           }
           toSQLSubValues(ctx,list.subList(i,Math.min(i + IN_LIMIT,list.size())));
         }
-        ctx.formatIndentEnd().formatNewLine().sql(")");
+        ctx.formatIndentEnd().formatNewLine().sql(')');
         break;
       }
 default :

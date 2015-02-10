@@ -2,7 +2,7 @@
   ctx.data(DATA_OMIT_CLAUSE_EVENT_EMISSION,true);
   if (ctx.qualify()) {
     ctx.visit(table);
-    ctx.sql(".");
+    ctx.sql('.');
   }
   ctx.literal(getName());
   ctx.data(DATA_OMIT_CLAUSE_EVENT_EMISSION,null);

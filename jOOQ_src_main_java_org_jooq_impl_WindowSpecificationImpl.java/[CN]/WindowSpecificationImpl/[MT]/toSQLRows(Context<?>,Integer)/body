@@ -7,11 +7,11 @@
   }
  else   if (rows < 0) {
     ctx.sql(-rows);
-    ctx.sql(" ").keyword("preceding");
+    ctx.sql(' ').keyword("preceding");
   }
  else   if (rows > 0) {
     ctx.sql(rows);
-    ctx.sql(" ").keyword("following");
+    ctx.sql(' ').keyword("following");
   }
  else {
     ctx.keyword("current row");

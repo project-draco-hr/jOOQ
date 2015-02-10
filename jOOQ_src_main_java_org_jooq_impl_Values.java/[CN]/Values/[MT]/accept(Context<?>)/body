@@ -30,7 +30,7 @@ default :
     boolean firstRow=true;
     for (    Row row : rows) {
       if (!firstRow) {
-        ctx.sql(",").formatSeparator();
+        ctx.sql(',').formatSeparator();
       }
       ctx.visit(row);
       firstRow=false;

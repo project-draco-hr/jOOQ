@@ -1,5 +1,5 @@
 {
   if (asList(DERBY,HSQLDB,MARIADB,MYSQL,POSTGRES).contains(context.family())) {
-    context.sql(" ").keyword("as");
+    context.sql(' ').keyword("as");
   }
 }

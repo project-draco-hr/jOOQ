@@ -1,6 +1,6 @@
 {
-  ctx.start(DROP_VIEW_TABLE).keyword("drop view").sql(" ");
-  if (ifExists && supportsIfExists(ctx))   ctx.keyword("if exists").sql(" ");
+  ctx.start(DROP_VIEW_TABLE).keyword("drop view").sql(' ');
+  if (ifExists && supportsIfExists(ctx))   ctx.keyword("if exists").sql(' ');
   ctx.visit(table);
   ctx.end(DROP_VIEW_TABLE);
 }

@@ -3,11 +3,11 @@
   if (context.qualify()) {
     if (mappedSchema != null) {
       context.visit(mappedSchema);
-      context.sql(".");
+      context.sql('.');
     }
     if (getPackage() != null) {
       context.visit(getPackage());
-      context.sql(".");
+      context.sql('.');
     }
   }
   context.literal(getName());

@@ -8,7 +8,7 @@ case SQLITE:
     }
 default :
 {
-    ctx.start(TRUNCATE_TRUNCATE).keyword("truncate table").sql(" ").visit(table);
+    ctx.start(TRUNCATE_TRUNCATE).keyword("truncate table").sql(' ').visit(table);
     if (restartIdentity != null) {
       ctx.formatSeparator().keyword(restartIdentity ? "restart identity" : "continue identity");
     }

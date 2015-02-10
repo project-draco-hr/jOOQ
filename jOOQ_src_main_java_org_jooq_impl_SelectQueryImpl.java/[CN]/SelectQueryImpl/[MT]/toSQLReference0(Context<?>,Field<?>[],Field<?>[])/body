@@ -23,15 +23,15 @@ break;
 unionParenthesis(context,"(");
 }
 }
-context.start(SELECT_SELECT).keyword("select").sql(" ");
+context.start(SELECT_SELECT).keyword("select").sql(' ');
 if (!StringUtils.isBlank(hint)) {
-context.sql(hint).sql(" ");
+context.sql(hint).sql(' ');
 }
 if (!distinctOn.isEmpty()) {
 context.keyword("distinct on").sql(" (").visit(distinctOn).sql(") ");
 }
  else if (distinct) {
-context.keyword("distinct").sql(" ");
+context.keyword("distinct").sql(' ');
 }
 context.declareFields(true);
 if (alternativeFields != null) {
@@ -42,7 +42,7 @@ if (wrapQueryExpressionBodyInDerivedTable && originalFields.length < alternative
 Object data=context.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY);
 try {
 context.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY,null);
-context.sql("(").visit(getSelect1()).sql(")");
+context.sql('(').visit(getSelect1()).sql(')');
 }
   finally {
 context.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY,data);
@@ -57,7 +57,7 @@ context.start(SELECT_INTO);
 Table<?> actualInto=(Table<?>)context.data(DATA_SELECT_INTO_TABLE);
 if (actualInto == null) actualInto=into;
 if (actualInto != null && context.data(DATA_OMIT_INTO_CLAUSE) == null && asList(HSQLDB,POSTGRES).contains(family)) {
-context.formatSeparator().keyword("into").sql(" ").visit(actualInto);
+context.formatSeparator().keyword("into").sql(' ').visit(actualInto);
 }
 context.end(SELECT_INTO);
 }
@@ -69,37 +69,37 @@ String renderedFrom=new DefaultRenderContext(c).render(getFrom());
 hasFrom=!renderedFrom.isEmpty();
 }
 if (hasFrom) {
-context.formatSeparator().keyword("from").sql(" ").visit(getFrom());
+context.formatSeparator().keyword("from").sql(' ').visit(getFrom());
 }
 context.declareTables(false).end(SELECT_FROM);
 context.start(SELECT_WHERE);
 if (!(getWhere().getWhere() instanceof TrueCondition)) {
-context.formatSeparator().keyword("where").sql(" ").visit(getWhere());
+context.formatSeparator().keyword("where").sql(' ').visit(getWhere());
 }
 context.end(SELECT_WHERE);
 context.start(SELECT_START_WITH);
 if (!(getConnectByStartWith().getWhere() instanceof TrueCondition)) {
-context.formatSeparator().keyword("start with").sql(" ").visit(getConnectByStartWith());
+context.formatSeparator().keyword("start with").sql(' ').visit(getConnectByStartWith());
 }
 context.end(SELECT_START_WITH);
 context.start(SELECT_CONNECT_BY);
 if (!(getConnectBy().getWhere() instanceof TrueCondition)) {
 context.formatSeparator().keyword("connect by");
 if (connectByNoCycle) {
-context.sql(" ").keyword("nocycle");
+context.sql(' ').keyword("nocycle");
 }
-context.sql(" ").visit(getConnectBy());
+context.sql(' ').visit(getConnectBy());
 }
 context.end(SELECT_CONNECT_BY);
 context.start(SELECT_GROUP_BY);
 if (grouping) {
-context.formatSeparator().keyword("group by").sql(" ");
+context.formatSeparator().keyword("group by").sql(' ');
 if (getGroupBy().isEmpty()) {
 if (asList().contains(dialect)) {
 context.sql("empty_grouping_dummy_table.dual");
 }
  else if (asList(CUBRID,DERBY,FIREBIRD,HSQLDB,MARIADB,MYSQL,POSTGRES,SQLITE).contains(dialect)) {
-context.sql("1");
+context.sql('1');
 }
  else {
 context.sql("()");
@@ -112,12 +112,12 @@ context.visit(getGroupBy());
 context.end(SELECT_GROUP_BY);
 context.start(SELECT_HAVING);
 if (!(getHaving().getWhere() instanceof TrueCondition)) {
-context.formatSeparator().keyword("having").sql(" ").visit(getHaving());
+context.formatSeparator().keyword("having").sql(' ').visit(getHaving());
 }
 context.end(SELECT_HAVING);
 context.start(SELECT_WINDOW);
 if (!getWindow().isEmpty() && asList(POSTGRES).contains(family)) {
-context.formatSeparator().keyword("window").sql(" ").declareWindows(true).visit(getWindow()).declareWindows(false);
+context.formatSeparator().keyword("window").sql(' ').declareWindows(true).visit(getWindow()).declareWindows(false);
 }
 context.end(SELECT_WINDOW);
 toSQLOrderBy(context,originalFields,alternativeFields,false,wrapQueryExpressionBodyInDerivedTable,orderBy,limit);
@@ -126,7 +126,7 @@ unionParenthesis(context,")");
 for (int i=0; i < unionOpSize; i++) {
 CombineOperator op=unionOp.get(i);
 for (Select<?> other : union.get(i)) {
-context.formatSeparator().keyword(op.toSQL(dialect)).sql(" ");
+context.formatSeparator().keyword(op.toSQL(dialect)).sql(' ');
 unionParenthesis(context,"(");
 context.visit(other);
 unionParenthesis(context,")");

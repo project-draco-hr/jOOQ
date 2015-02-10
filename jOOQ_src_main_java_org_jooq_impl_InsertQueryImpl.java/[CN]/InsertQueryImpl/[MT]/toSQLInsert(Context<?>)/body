@@ -1,8 +1,8 @@
 {
   boolean declareTables=ctx.declareTables();
-  ctx.start(INSERT_INSERT_INTO).keyword("insert").sql(" ").keyword((onDuplicateKeyIgnore && asList(MARIADB,MYSQL).contains(ctx.configuration().dialect())) ? "ignore " : "").keyword("into").sql(" ").declareTables(true).visit(getInto()).declareTables(declareTables);
+  ctx.start(INSERT_INSERT_INTO).keyword("insert").sql(' ').keyword((onDuplicateKeyIgnore && asList(MARIADB,MYSQL).contains(ctx.configuration().dialect())) ? "ignore " : "").keyword("into").sql(' ').declareTables(true).visit(getInto()).declareTables(declareTables);
   if (insertMaps.isExecutable()) {
-    ctx.sql(" ");
+    ctx.sql(' ');
     insertMaps.insertMaps.get(0).toSQLReferenceKeys(ctx);
   }
   ctx.end(INSERT_INSERT_INTO);
@@ -11,7 +11,7 @@ switch (ctx.configuration().dialect().family()) {
 case DERBY:
 case MARIADB:
 case MYSQL:
-      ctx.sql(" ").keyword("values").sql("(");
+      ctx.sql(' ').keyword("values").sql('(');
     int count=getInto().fields().length;
   String separator="";
 for (int i=0; i < count; i++) {
@@ -19,10 +19,10 @@ for (int i=0; i < count; i++) {
   ctx.keyword("default");
   separator=", ";
 }
-ctx.sql(")");
+ctx.sql(')');
 break;
 default :
-ctx.sql(" ").keyword("default values");
+ctx.sql(' ').keyword("default values");
 break;
 }
 }

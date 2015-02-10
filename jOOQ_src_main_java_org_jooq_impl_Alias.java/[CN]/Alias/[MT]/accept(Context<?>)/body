@@ -4,7 +4,7 @@
     boolean simulateDerivedColumnList=false;
     if (fieldAliases != null && asList(CUBRID,FIREBIRD).contains(family) && (wrapped instanceof TableImpl || wrapped instanceof CommonTableExpressionImpl)) {
       @SuppressWarnings("unchecked") Select<Record> select=select(list(field("*"))).from(((Table<?>)wrapped).as(alias));
-      context.sql("(").formatIndentStart().formatNewLine().visit(select).formatIndentEnd().formatNewLine().sql(")");
+      context.sql('(').formatIndentStart().formatNewLine().visit(select).formatIndentEnd().formatNewLine().sql(')');
     }
  else     if (fieldAliases != null && asList(H2,MARIADB,MYSQL,SQLITE).contains(family)) {
       simulateDerivedColumnList=true;
@@ -19,13 +19,13 @@ default :
       }
     }
     Select<Record> select=select(fields).where(falseCondition()).unionAll(wrapped instanceof Select ? (Select<?>)wrapped : wrapped instanceof DerivedTable ? ((DerivedTable<?>)wrapped).query() : select(field("*")).from(((Table<?>)wrapped).as(alias)));
-    context.sql("(").formatIndentStart().formatNewLine().visit(select).formatIndentEnd().formatNewLine().sql(")");
+    context.sql('(').formatIndentStart().formatNewLine().visit(select).formatIndentEnd().formatNewLine().sql(')');
   }
  else {
     toSQLWrapped(context);
   }
   toSQLAs(context);
-  context.sql(" ");
+  context.sql(' ');
   context.literal(alias);
   if (fieldAliases != null && !simulateDerivedColumnList) {
     toSQLDerivedColumnList(context);
@@ -38,9 +38,9 @@ case POSTGRES:
         Object o=wrapped;
         if (context.declareTables() && o instanceof ArrayTable) {
           ArrayTable table=(ArrayTable)o;
-          context.sql("(");
+          context.sql('(');
           Utils.fieldNames(context,table.fields());
-          context.sql(")");
+          context.sql(')');
         }
         break;
       }

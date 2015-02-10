@@ -16,7 +16,7 @@
     pushWindow(context);
     Boolean wrapDerivedTables=(Boolean)context.data(DATA_WRAP_DERIVED_TABLES_IN_PARENTHESES);
     if (TRUE.equals(wrapDerivedTables)) {
-      context.sql("(").formatIndentStart().formatNewLine().data(DATA_WRAP_DERIVED_TABLES_IN_PARENTHESES,null);
+      context.sql('(').formatIndentStart().formatNewLine().data(DATA_WRAP_DERIVED_TABLES_IN_PARENTHESES,null);
     }
 switch (dialect) {
 default :
@@ -28,11 +28,11 @@ default :
   if (forUpdate && !asList(CUBRID).contains(family)) {
     context.formatSeparator().keyword("for update");
     if (!forUpdateOf.isEmpty()) {
-      context.sql(" ").keyword("of").sql(" ");
+      context.sql(' ').keyword("of").sql(' ');
       Utils.fieldNames(context,forUpdateOf);
     }
  else     if (!forUpdateOfTables.isEmpty()) {
-      context.sql(" ").keyword("of").sql(" ");
+      context.sql(' ').keyword("of").sql(' ');
 switch (family) {
 case DERBY:
 {
@@ -45,13 +45,13 @@ default :
 }
 }
 if (family == FIREBIRD) {
-context.sql(" ").keyword("with lock");
+context.sql(' ').keyword("with lock");
 }
 if (forUpdateMode != null) {
-context.sql(" ");
+context.sql(' ');
 context.keyword(forUpdateMode.toSQL());
 if (forUpdateMode == ForUpdateMode.WAIT) {
-  context.sql(" ");
+  context.sql(' ');
   context.sql(forUpdateWait);
 }
 }
@@ -71,7 +71,7 @@ if (!StringUtils.isBlank(option)) {
 context.formatSeparator().sql(option);
 }
 if (TRUE.equals(wrapDerivedTables)) {
-context.formatIndentEnd().formatNewLine().sql(")").data(DATA_WRAP_DERIVED_TABLES_IN_PARENTHESES,true);
+context.formatIndentEnd().formatNewLine().sql(')').data(DATA_WRAP_DERIVED_TABLES_IN_PARENTHESES,true);
 }
 }
   finally {

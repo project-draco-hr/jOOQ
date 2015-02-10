@@ -7,7 +7,7 @@
     schema=using(render.configuration()).map(schema);
     if (schema != null && TRUE.equals(render.configuration().settings().isRenderSchema())) {
       render.visit(schema);
-      render.sql(".");
+      render.sql('.');
     }
     render.visit(name(e.getName()));
   }

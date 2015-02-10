@@ -6,7 +6,7 @@ case MARIADB:
 case MYSQL:
 {
         toSQLInsert(ctx);
-        ctx.formatSeparator().start(INSERT_ON_DUPLICATE_KEY_UPDATE).keyword("on duplicate key update").sql(" ").visit(updateMap).end(INSERT_ON_DUPLICATE_KEY_UPDATE);
+        ctx.formatSeparator().start(INSERT_ON_DUPLICATE_KEY_UPDATE).keyword("on duplicate key update").sql(' ').visit(updateMap).end(INSERT_ON_DUPLICATE_KEY_UPDATE);
         break;
       }
 case H2:
@@ -37,7 +37,7 @@ FieldMapForUpdate update=new FieldMapForUpdate(INSERT_ON_DUPLICATE_KEY_UPDATE_AS
 Field<?> field=getInto().field(0);
 update.put(field,field);
 toSQLInsert(ctx);
-ctx.formatSeparator().start(INSERT_ON_DUPLICATE_KEY_UPDATE).keyword("on duplicate key update").sql(" ").visit(update).end(INSERT_ON_DUPLICATE_KEY_UPDATE);
+ctx.formatSeparator().start(INSERT_ON_DUPLICATE_KEY_UPDATE).keyword("on duplicate key update").sql(' ').visit(update).end(INSERT_ON_DUPLICATE_KEY_UPDATE);
 break;
 }
 case H2:

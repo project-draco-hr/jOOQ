@@ -1,5 +1,5 @@
 {
-  ctx.visit(field).sql(" ").keyword(comparator.toSQL()).sql(" (");
+  ctx.visit(field).sql(' ').keyword(comparator.toSQL()).sql(" (");
   if (subValues.size() > 1) {
     ctx.formatIndentStart().formatNewLine();
   }
@@ -11,5 +11,5 @@
   if (subValues.size() > 1) {
     ctx.formatIndentEnd().formatNewLine();
   }
-  ctx.sql(")");
+  ctx.sql(')');
 }

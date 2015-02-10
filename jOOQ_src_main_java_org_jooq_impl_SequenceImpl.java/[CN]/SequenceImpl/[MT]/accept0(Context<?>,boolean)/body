@@ -5,7 +5,7 @@
       ctx.visit(inline(mappedSchema.getName())).sql(", ");
     }
  else {
-      ctx.visit(mappedSchema).sql(".");
+      ctx.visit(mappedSchema).sql('.');
     }
   }
   if (asStringLiterals)   ctx.visit(inline(name));

@@ -1,13 +1,13 @@
 {
   toSQLFunctionName(ctx);
-  ctx.sql("(");
+  ctx.sql('(');
   if (distinct) {
     ctx.keyword("distinct");
     if (ctx.family() == POSTGRES && arguments.size() > 1) {
-      ctx.sql("(");
+      ctx.sql('(');
     }
  else {
-      ctx.sql(" ");
+      ctx.sql(' ');
     }
   }
   if (!arguments.isEmpty()) {
@@ -24,18 +24,18 @@
   }
   if (distinct) {
     if (ctx.family() == POSTGRES && arguments.size() > 1) {
-      ctx.sql(")");
+      ctx.sql(')');
     }
   }
   if (ignoreNulls) {
 {
-      ctx.sql(" ").keyword("ignore nulls");
+      ctx.sql(' ').keyword("ignore nulls");
     }
   }
  else   if (respectNulls) {
 {
-      ctx.sql(" ").keyword("respect nulls");
+      ctx.sql(' ').keyword("respect nulls");
     }
   }
-  ctx.sql(")");
+  ctx.sql(')');
 }

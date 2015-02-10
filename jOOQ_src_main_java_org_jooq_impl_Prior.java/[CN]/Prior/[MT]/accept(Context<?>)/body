@@ -2,7 +2,7 @@
 switch (ctx.family()) {
 case CUBRID:
 default :
-    ctx.keyword("prior").sql(" ").visit(field);
+    ctx.keyword("prior").sql(' ').visit(field);
   break;
 }
 }

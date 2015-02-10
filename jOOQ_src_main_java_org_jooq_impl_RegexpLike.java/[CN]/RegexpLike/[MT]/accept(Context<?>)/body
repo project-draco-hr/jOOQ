@@ -6,7 +6,7 @@ case MARIADB:
 case MYSQL:
 case SQLITE:
 {
-      ctx.visit(search).sql(" ").keyword("regexp").sql(" ").visit(pattern);
+      ctx.visit(search).sql(' ').keyword("regexp").sql(' ').visit(pattern);
       break;
     }
 case HSQLDB:
@@ -23,7 +23,7 @@ case DERBY:
 case FIREBIRD:
 default :
 {
-ctx.visit(search).sql(" ").keyword("like_regex").sql(" ").visit(pattern);
+ctx.visit(search).sql(' ').keyword("like_regex").sql(' ').visit(pattern);
 break;
 }
 }

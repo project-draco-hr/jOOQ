@@ -1,5 +1,5 @@
 {
-  ctx.keyword("with").sql(" ");
-  if (recursive && !asList().contains(ctx.configuration().dialect().family()))   ctx.keyword("recursive").sql(" ");
+  ctx.keyword("with").sql(' ');
+  if (recursive && !asList().contains(ctx.configuration().dialect().family()))   ctx.keyword("recursive").sql(' ');
   ctx.declareCTE(true).visit(cte).declareCTE(false);
 }

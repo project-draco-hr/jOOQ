@@ -1,5 +1,5 @@
 {
   if (!withinGroupOrderBy.isEmpty()) {
-    ctx.sql(" ").keyword("within group").sql(" (").keyword("order by").sql(" ").visit(withinGroupOrderBy).sql(")");
+    ctx.sql(' ').keyword("within group").sql(" (").keyword("order by").sql(' ').visit(withinGroupOrderBy).sql(')');
   }
 }

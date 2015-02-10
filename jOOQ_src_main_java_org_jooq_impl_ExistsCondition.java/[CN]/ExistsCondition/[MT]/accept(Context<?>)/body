@@ -1,4 +1,4 @@
 {
   boolean subquery=ctx.subquery();
-  ctx.keyword(exists ? "exists" : "not exists").sql(" (").subquery(true).formatIndentStart().formatNewLine().visit(query).formatIndentEnd().formatNewLine().subquery(subquery).sql(")");
+  ctx.keyword(exists ? "exists" : "not exists").sql(" (").subquery(true).formatIndentStart().formatNewLine().visit(query).formatIndentEnd().formatNewLine().subquery(subquery).sql(')');
 }

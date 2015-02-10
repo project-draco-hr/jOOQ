@@ -2,7 +2,7 @@
   boolean parentheses=rightQuantified == null;
   boolean extraParentheses=asList().contains(ctx.configuration().dialect().family());
   boolean subquery=ctx.subquery();
-  ctx.visit(left).sql(" ").keyword(comparator.toSQL()).sql(" ").sql(parentheses ? "(" : "").sql(extraParentheses ? "(" : "");
+  ctx.visit(left).sql(' ').keyword(comparator.toSQL()).sql(' ').sql(parentheses ? "(" : "").sql(extraParentheses ? "(" : "");
   ctx.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY,true);
   ctx.subquery(true).visit(right != null ? right : rightQuantified).subquery(subquery);
   ctx.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY,null);

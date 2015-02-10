@@ -1,21 +1,21 @@
 {
   SQLDialect family=ctx.configuration().dialect().family();
-  ctx.start(ALTER_TABLE_TABLE).keyword("alter table").sql(" ").visit(table).end(ALTER_TABLE_TABLE);
+  ctx.start(ALTER_TABLE_TABLE).keyword("alter table").sql(' ').visit(table).end(ALTER_TABLE_TABLE);
   if (addColumn != null) {
-    ctx.start(ALTER_TABLE_ADD).sql(" ").keyword("add").sql(" ");
-    ctx.qualify(false).visit(addColumn).sql(" ").qualify(true);
+    ctx.start(ALTER_TABLE_ADD).sql(' ').keyword("add").sql(' ');
+    ctx.qualify(false).visit(addColumn).sql(' ').qualify(true);
     toSQLDDLTypeDeclaration(ctx,addColumnType);
     if (!addColumnType.nullable()) {
-      ctx.sql(" ").keyword("not null");
+      ctx.sql(' ').keyword("not null");
     }
  else     if (family != FIREBIRD) {
-      ctx.sql(" ").keyword("null");
+      ctx.sql(' ').keyword("null");
     }
     ctx.end(ALTER_TABLE_ADD);
   }
  else   if (addConstraint != null) {
     ctx.start(ALTER_TABLE_ADD);
-    ctx.sql(" ").keyword("add").sql(" ").visit(addConstraint);
+    ctx.sql(' ').keyword("add").sql(' ').visit(addConstraint);
     ctx.end(ALTER_TABLE_ADD);
   }
  else   if (alterColumn != null) {
@@ -23,33 +23,33 @@
 switch (family) {
 case MARIADB:
 case MYSQL:
-      ctx.sql(" ").keyword("change column").sql(" ").qualify(false).visit(alterColumn).qualify(true);
+      ctx.sql(' ').keyword("change column").sql(' ').qualify(false).visit(alterColumn).qualify(true);
     break;
 default :
-  ctx.sql(" ").keyword("alter");
+  ctx.sql(' ').keyword("alter");
 break;
 }
-ctx.sql(" ").qualify(false).visit(alterColumn).qualify(true);
+ctx.sql(' ').qualify(false).visit(alterColumn).qualify(true);
 if (alterColumnType != null) {
 switch (family) {
 case POSTGRES:
-ctx.sql(" ").keyword("type");
+ctx.sql(' ').keyword("type");
 break;
 }
-ctx.sql(" ");
+ctx.sql(' ');
 toSQLDDLTypeDeclaration(ctx,alterColumnType);
 if (!alterColumnType.nullable()) {
-ctx.sql(" ").keyword("not null");
+ctx.sql(' ').keyword("not null");
 }
 }
  else if (alterColumnDefault != null) {
 ctx.start(ALTER_TABLE_ALTER_DEFAULT);
 switch (family) {
 default :
-ctx.sql(" ").keyword("set default");
+ctx.sql(' ').keyword("set default");
 break;
 }
-ctx.sql(" ").visit(alterColumnDefault).end(ALTER_TABLE_ALTER_DEFAULT);
+ctx.sql(' ').visit(alterColumnDefault).end(ALTER_TABLE_ALTER_DEFAULT);
 }
 ctx.end(ALTER_TABLE_ALTER);
 }
@@ -57,23 +57,23 @@ ctx.end(ALTER_TABLE_ALTER);
 ctx.start(ALTER_TABLE_DROP);
 switch (family) {
 default :
-ctx.sql(" ").keyword("drop");
+ctx.sql(' ').keyword("drop");
 break;
 }
-ctx.sql(" ").qualify(false).visit(dropColumn).qualify(true);
+ctx.sql(' ').qualify(false).visit(dropColumn).qualify(true);
 switch (family) {
 default :
 break;
 }
 if (dropColumnCascade) {
-ctx.sql(" ").keyword("cascade");
+ctx.sql(' ').keyword("cascade");
 }
 ctx.end(ALTER_TABLE_DROP);
 }
  else if (dropConstraint != null) {
 ctx.start(ALTER_TABLE_DROP);
 ctx.data(DATA_DROP_CONSTRAINT,true);
-ctx.sql(" ").keyword("drop").sql(" ").visit(dropConstraint);
+ctx.sql(' ').keyword("drop").sql(' ').visit(dropConstraint);
 ctx.data().remove(DATA_DROP_CONSTRAINT);
 ctx.end(ALTER_TABLE_DROP);
 }

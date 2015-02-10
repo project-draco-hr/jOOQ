@@ -6,5 +6,5 @@
  else {
     ctx.keyword(array.getDataType().getTypeName());
   }
-  ctx.sql(" = ").visit(array).sql(")");
+  ctx.sql(" = ").visit(array).sql(')');
 }

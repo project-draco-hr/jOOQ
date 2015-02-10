@@ -1,5 +1,5 @@
 {
   if (!keepDenseRankOrderBy.isEmpty()) {
-    ctx.sql(" ").keyword("keep").sql(" (").keyword("dense_rank").sql(" ").keyword(first ? "first" : "last").sql(" ").keyword("order by").sql(" ").visit(keepDenseRankOrderBy).sql(")");
+    ctx.sql(' ').keyword("keep").sql(" (").keyword("dense_rank").sql(' ').keyword(first ? "first" : "last").sql(' ').keyword("order by").sql(' ').visit(keepDenseRankOrderBy).sql(')');
   }
 }

@@ -4,7 +4,7 @@
     toSQLAssign(context);
   }
   toSQLCall(context);
-  context.sql("(");
+  context.sql('(');
   String separator="";
   for (  Parameter<?> parameter : getParameters()) {
     if (parameter.equals(getReturnParameter())) {
@@ -27,6 +27,6 @@
     }
     separator=", ";
   }
-  context.sql(")");
+  context.sql(')');
   toSQLEnd(context);
 }

@@ -4,9 +4,9 @@
     ctx.sql("(0 -").visit(field).sql(" - 1)");
   }
  else   if (operator == BIT_NOT && family == FIREBIRD) {
-    ctx.keyword("bin_not(").visit(field).sql(")");
+    ctx.keyword("bin_not(").visit(field).sql(')');
   }
  else {
-    ctx.sql(operator.toSQL()).sql("(").visit(field).sql(")");
+    ctx.sql(operator.toSQL()).sql('(').visit(field).sql(')');
   }
 }

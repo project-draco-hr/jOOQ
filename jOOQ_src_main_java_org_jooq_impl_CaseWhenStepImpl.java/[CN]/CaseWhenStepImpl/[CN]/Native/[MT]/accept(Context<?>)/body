@@ -9,37 +9,37 @@ case DERBY:
         if (i > 0) {
           ctx.formatNewLine();
         }
-        ctx.sql(" ").keyword("when").sql(" ");
+        ctx.sql(' ').keyword("when").sql(' ');
         ctx.visit(value.equal(compareValues.get(i)));
-        ctx.sql(" ").keyword("then").sql(" ");
+        ctx.sql(' ').keyword("then").sql(' ');
         ctx.visit(results.get(i));
       }
       break;
     }
 default :
 {
-    ctx.sql(" ").visit(value).formatIndentLockStart();
+    ctx.sql(' ').visit(value).formatIndentLockStart();
     for (int i=0; i < size; i++) {
       if (i > 0) {
         ctx.formatNewLine();
       }
-      ctx.sql(" ").keyword("when").sql(" ");
+      ctx.sql(' ').keyword("when").sql(' ');
       ctx.visit(compareValues.get(i));
-      ctx.sql(" ").keyword("then").sql(" ");
+      ctx.sql(' ').keyword("then").sql(' ');
       ctx.visit(results.get(i));
     }
     break;
   }
 }
 if (otherwise != null) {
-ctx.formatNewLine().sql(" ").keyword("else").sql(" ").visit(otherwise);
+ctx.formatNewLine().sql(' ').keyword("else").sql(' ').visit(otherwise);
 }
 ctx.formatIndentLockEnd();
 if (size > 1 || otherwise != null) {
 ctx.formatSeparator();
 }
  else {
-ctx.sql(" ");
+ctx.sql(' ');
 }
 ctx.keyword("end").formatIndentLockEnd();
 }

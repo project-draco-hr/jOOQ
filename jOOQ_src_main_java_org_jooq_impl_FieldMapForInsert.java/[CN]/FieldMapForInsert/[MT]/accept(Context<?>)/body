@@ -1,6 +1,6 @@
 {
   boolean indent=(size() > 1);
-  ctx.sql("(");
+  ctx.sql('(');
   if (indent) {
     ctx.formatIndentStart();
   }
@@ -16,5 +16,5 @@
   if (indent) {
     ctx.formatIndentEnd().formatNewLine();
   }
-  ctx.sql(")");
+  ctx.sql(')');
 }

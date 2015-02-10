@@ -3,10 +3,10 @@
     private static final long serialVersionUID=1L;
     @Override public void toSQL(    RenderContext ctx){
       if (ctx.paramType() == INLINED) {
-        ctx.sql("1");
+        ctx.sql('1');
       }
  else {
-        ctx.sql("?");
+        ctx.sql('?');
       }
     }
     @Override public void bind(    BindContext ctx){

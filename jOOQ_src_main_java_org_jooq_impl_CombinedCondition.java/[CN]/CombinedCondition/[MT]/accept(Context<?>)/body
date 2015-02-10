@@ -7,7 +7,7 @@
     ctx.visit(conditions.get(0));
   }
  else {
-    ctx.sql("(").formatIndentStart().formatNewLine();
+    ctx.sql('(').formatIndentStart().formatNewLine();
     String operatorName=operator.name().toLowerCase() + " ";
     String separator="";
     for (int i=0; i < conditions.size(); i++) {
@@ -18,6 +18,6 @@
       ctx.visit(conditions.get(i));
       separator=operatorName;
     }
-    ctx.formatIndentEnd().formatNewLine().sql(")");
+    ctx.formatIndentEnd().formatNewLine().sql(')');
   }
 }

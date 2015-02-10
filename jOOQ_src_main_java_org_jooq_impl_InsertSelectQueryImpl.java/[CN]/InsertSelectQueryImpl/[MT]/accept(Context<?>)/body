@@ -1,5 +1,5 @@
 {
-  ctx.start(INSERT_INSERT_INTO).keyword("insert into").sql(" ").visit(into).sql(" (");
+  ctx.start(INSERT_INSERT_INTO).keyword("insert into").sql(' ').visit(into).sql(" (");
   boolean qualify=ctx.qualify();
   ctx.qualify(false);
   String separator="";
@@ -8,5 +8,5 @@
     separator=", ";
   }
   ctx.qualify(qualify);
-  ctx.sql(")").end(INSERT_INSERT_INTO).formatSeparator().start(INSERT_SELECT).visit(select).end(INSERT_SELECT).start(INSERT_ON_DUPLICATE_KEY_UPDATE).end(INSERT_ON_DUPLICATE_KEY_UPDATE).start(INSERT_RETURNING).end(INSERT_RETURNING);
+  ctx.sql(')').end(INSERT_INSERT_INTO).formatSeparator().start(INSERT_SELECT).visit(select).end(INSERT_SELECT).start(INSERT_ON_DUPLICATE_KEY_UPDATE).end(INSERT_ON_DUPLICATE_KEY_UPDATE).start(INSERT_RETURNING).end(INSERT_RETURNING);
 }

@@ -2,7 +2,7 @@
 switch (ctx.configuration().dialect()) {
 case HSQLDB:
 {
-      ctx.keyword("table(").visit(function).sql(")");
+      ctx.keyword("table(").visit(function).sql(')');
       break;
     }
 default :

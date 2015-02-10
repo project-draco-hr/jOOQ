@@ -2,7 +2,7 @@
   Schema mappedSchema=Utils.getMappedSchema(ctx.configuration(),getSchema());
   if (mappedSchema != null) {
     ctx.visit(mappedSchema);
-    ctx.sql(".");
+    ctx.sql('.');
   }
   ctx.visit(DSL.name(getName()));
 }

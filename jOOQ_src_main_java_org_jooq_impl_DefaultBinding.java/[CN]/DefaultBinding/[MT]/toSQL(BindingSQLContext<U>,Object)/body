@@ -19,7 +19,7 @@
         render.sql("0x").sql(convertBytesToHex(binary));
       }
  else       if (asList(DERBY,H2,HSQLDB,MARIADB,MYSQL,SQLITE).contains(family)) {
-        render.sql("X'").sql(convertBytesToHex(binary)).sql("'");
+        render.sql("X'").sql(convertBytesToHex(binary)).sql('\'');
       }
  else       if (asList().contains(family)) {
         render.keyword("hextoraw('").sql(convertBytesToHex(binary)).sql("')");
@@ -28,18 +28,18 @@
         render.sql("E'").sql(convertBytesToPostgresOctal(binary)).keyword("'::bytea");
       }
  else {
-        render.sql("X'").sql(convertBytesToHex(binary)).sql("'");
+        render.sql("X'").sql(convertBytesToHex(binary)).sql('\'');
       }
     }
  else     if (Interval.class.isAssignableFrom(type)) {
-      render.sql("'").sql(escape(val,render)).sql("'");
+      render.sql('\'').sql(escape(val,render)).sql('\'');
     }
  else     if (Number.class.isAssignableFrom(type)) {
       render.sql(((Number)val).toString());
     }
  else     if (type == Date.class) {
       if (asList(SQLITE).contains(family)) {
-        render.sql("'").sql(escape(val,render)).sql("'");
+        render.sql('\'').sql(escape(val,render)).sql('\'');
       }
  else       if (family == DERBY) {
         render.keyword("date('").sql(escape(val,render)).sql("')");
@@ -48,29 +48,29 @@
         render.keyword("{d '").sql(escape(val,render)).sql("'}");
       }
  else {
-        render.keyword("date '").sql(escape(val,render)).sql("'");
+        render.keyword("date '").sql(escape(val,render)).sql('\'');
       }
     }
  else     if (type == Timestamp.class) {
       if (asList(SQLITE).contains(family)) {
-        render.sql("'").sql(escape(val,render)).sql("'");
+        render.sql('\'').sql(escape(val,render)).sql('\'');
       }
  else       if (family == DERBY) {
         render.keyword("timestamp('").sql(escape(val,render)).sql("')");
       }
  else       if (family == CUBRID) {
-        render.keyword("datetime '").sql(escape(val,render)).sql("'");
+        render.keyword("datetime '").sql(escape(val,render)).sql('\'');
       }
  else       if (family == MYSQL) {
         render.keyword("{ts '").sql(escape(val,render)).sql("'}");
       }
  else {
-        render.keyword("timestamp '").sql(escape(val,render)).sql("'");
+        render.keyword("timestamp '").sql(escape(val,render)).sql('\'');
       }
     }
  else     if (type == Time.class) {
       if (asList(SQLITE).contains(family)) {
-        render.sql("'").sql(new SimpleDateFormat("HH:mm:ss").format((Time)val)).sql("'");
+        render.sql('\'').sql(new SimpleDateFormat("HH:mm:ss").format((Time)val)).sql('\'');
       }
  else       if (family == DERBY) {
         render.keyword("time").sql("('").sql(escape(val,render)).sql("')");
@@ -79,29 +79,29 @@
         render.keyword("{t '").sql(escape(val,render)).sql("'}");
       }
  else {
-        render.keyword("time").sql(" '").sql(escape(val,render)).sql("'");
+        render.keyword("time").sql(" '").sql(escape(val,render)).sql('\'');
       }
     }
  else     if (type.isArray()) {
       String separator="";
       if (family == H2) {
-        render.sql("(");
+        render.sql('(');
         for (        Object o : ((Object[])val)) {
           render.sql(separator);
           new DefaultBinding<Object,Object>(new IdentityConverter(type.getComponentType()),isLob).sql(new DefaultBindingSQLContext<Object>(ctx.configuration(),ctx.data(),ctx.render(),o));
           separator=", ";
         }
-        render.sql(")");
+        render.sql(')');
       }
  else {
         render.keyword("ARRAY");
-        render.sql("[");
+        render.sql('[');
         for (        Object o : ((Object[])val)) {
           render.sql(separator);
           new DefaultBinding<Object,Object>(new IdentityConverter(type.getComponentType()),isLob).sql(new DefaultBindingSQLContext<Object>(ctx.configuration(),ctx.data(),ctx.render(),o));
           separator=", ";
         }
-        render.sql("]");
+        render.sql(']');
         if (family == POSTGRES && EnumType.class.isAssignableFrom(type.getComponentType())) {
           pgRenderEnumCast(render,type);
         }
@@ -120,7 +120,7 @@
       render.sql("[UDT]");
     }
  else {
-      render.sql("'").sql(escape(val,render),true).sql("'");
+      render.sql('\'').sql(escape(val,render),true).sql('\'');
     }
   }
  else   if (family == SQLDialect.POSTGRES) {

@@ -3,10 +3,10 @@
   if (operator == BIT_XOR && ctx.family() == POSTGRES) {
     op="#";
   }
-  ctx.sql("(");
+  ctx.sql('(');
   ctx.visit(lhs);
   for (  Field<?> field : rhs) {
-    ctx.sql(" ").sql(op).sql(" ").visit(field);
+    ctx.sql(' ').sql(op).sql(' ').visit(field);
   }
-  ctx.sql(")");
+  ctx.sql(')');
 }
