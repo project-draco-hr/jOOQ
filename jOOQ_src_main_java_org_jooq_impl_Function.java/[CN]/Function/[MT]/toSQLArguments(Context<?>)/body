@@ -11,7 +11,7 @@
     }
   }
   if (!arguments.isEmpty()) {
-    if (filter == null || POSTGRES_9_4.precedes(ctx.dialect())) {
+    if (filter == null || HSQLDB == ctx.family() || POSTGRES_9_4.precedes(ctx.dialect())) {
       ctx.visit(arguments);
     }
  else {
