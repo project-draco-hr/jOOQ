@@ -1,0 +1,8 @@
+{
+  List<Param<?>> list=result.get(key);
+  if (list == null) {
+    list=new ArrayList<Param<?>>();
+    result.put(key,list);
+  }
+  return list;
+}

@@ -4,10 +4,12 @@
     if (includeInlinedParams || !param.isInline()) {
       String i=String.valueOf(nextIndex());
       if (StringUtils.isBlank(param.getParamName())) {
-        result.put(i,param);
+        resultFlat.put(i,param);
+        result(i).add(param);
       }
  else {
-        result.put(param.getParamName(),param);
+        resultFlat.put(param.getParamName(),param);
+        result(param.getParamName()).add(param);
       }
     }
   }

@@ -1,5 +1,5 @@
 {
   ParamCollector collector=new ParamCollector(configuration(),includeInlinedParams);
   collector.visit(part);
-  return Collections.unmodifiableMap(collector.result);
+  return Collections.unmodifiableMap(collector.resultFlat);
 }
