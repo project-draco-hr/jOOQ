@@ -23,6 +23,11 @@ case SQLITE:
 Field<BigInteger> field=field("last_insert_rowid()",BigInteger.class);
 return select(field).fetchOne(field);
 }
+case POSTGRES:
+{
+Field<BigInteger> field=field("lastval()",BigInteger.class);
+return select(field).fetchOne(field);
+}
 default :
 throw new SQLDialectNotSupportedException("identity functionality not supported by " + configuration().dialect());
 }
