@@ -3,6 +3,7 @@
   String previous="";
   for (  String imp : qualifiedTypes) {
     if (isJava && imp.startsWith("java.lang."))     continue;
+    if (imp.endsWith("." + className))     continue;
     String topLevelPackage=imp.split("\\.")[0];
     if (!topLevelPackage.equals(previous))     importString.append("\n");
     importString.append("import ").append(imp).append(isScala ? "\n" : ";\n");
