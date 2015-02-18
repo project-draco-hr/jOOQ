@@ -3,12 +3,15 @@
     Param<?> param=(Param<?>)internal;
     if (includeInlinedParams || !param.isInline()) {
       String i=String.valueOf(nextIndex());
-      if (StringUtils.isBlank(param.getParamName())) {
+      String paramName=param.getParamName();
+      if (StringUtils.isBlank(paramName)) {
         resultFlat.put(i,param);
+        resultList.add(new SimpleImmutableEntry<String,Param<?>>(i,param));
         result(i).add(param);
       }
  else {
         resultFlat.put(param.getParamName(),param);
+        resultList.add(new SimpleImmutableEntry<String,Param<?>>(param.getParamName(),param));
         result(param.getParamName()).add(param);
       }
     }

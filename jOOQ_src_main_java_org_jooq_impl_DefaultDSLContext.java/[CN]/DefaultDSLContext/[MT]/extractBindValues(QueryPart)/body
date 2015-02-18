@@ -1,7 +1,7 @@
 {
   List<Object> result=new ArrayList<Object>();
-  for (  Param<?> param : extractParams0(part,false).values()) {
-    result.add(param.getValue());
-  }
+  ParamCollector collector=new ParamCollector(configuration(),false);
+  collector.visit(part);
+  for (  Entry<String,Param<?>> entry : collector.resultList)   result.add(entry.getValue().getValue());
   return Collections.unmodifiableList(result);
 }
