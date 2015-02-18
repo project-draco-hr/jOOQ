@@ -2,7 +2,11 @@
   ExecuteContext ctx=new DefaultExecuteContext(configuration,new Query[]{query});
   ExecuteListener listener=new ExecuteListeners(ctx);
   Connection connection=ctx.connection();
-  DataType<?>[] paramTypes=dataTypes(new DefaultDSLContext(configuration).extractParams0(query,false).values().toArray(new Field[0]));
+  ParamCollector collector=new ParamCollector(configuration,false);
+  collector.visit(query);
+  List<Param<?>> params=new ArrayList<Param<?>>();
+  for (  Entry<String,Param<?>> entry : collector.resultList)   params.add(entry.getValue());
+  DataType<?>[] paramTypes=dataTypes(params.toArray(new Field[0]));
   try {
     listener.renderStart(ctx);
     ctx.sql(create.render(query));
@@ -12,8 +16,7 @@
     listener.prepareEnd(ctx);
     for (    Object[] bindValues : allBindValues) {
       listener.bindStart(ctx);
-      List<Field<?>> params=(paramTypes.length > 0) ? fields(bindValues,paramTypes) : fields(bindValues);
-      visitAll(new DefaultBindContext(configuration,ctx.statement()),params);
+      visitAll(new DefaultBindContext(configuration,ctx.statement()),(paramTypes.length > 0) ? fields(bindValues,paramTypes) : fields(bindValues));
       listener.bindEnd(ctx);
       ctx.statement().addBatch();
     }
