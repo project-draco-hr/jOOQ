@@ -2,7 +2,7 @@
   ExecuteContext ctx=new DefaultExecuteContext(configuration,new Query[]{query});
   ExecuteListener listener=new ExecuteListeners(ctx);
   Connection connection=ctx.connection();
-  DataType<?>[] paramTypes=dataTypes(query.getParams().values().toArray(new Field[0]));
+  DataType<?>[] paramTypes=dataTypes(new DefaultDSLContext(configuration).extractParams0(query,false).values().toArray(new Field[0]));
   try {
     listener.renderStart(ctx);
     ctx.sql(create.render(query));
