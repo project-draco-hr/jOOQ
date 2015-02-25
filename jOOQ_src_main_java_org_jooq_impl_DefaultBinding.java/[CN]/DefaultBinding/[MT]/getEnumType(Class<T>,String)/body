@@ -9,7 +9,7 @@
     }
   }
  catch (  Exception e) {
-    throw new SQLException("Unknown enum literal found : " + literal);
+    throw new DataTypeException("Unknown enum literal found : " + literal);
   }
   return null;
 }

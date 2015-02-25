@@ -121,10 +121,10 @@ break;
  else if (EnumType.class.isAssignableFrom(type)) {
 result=getEnumType(type,ctx.resultSet().getString(ctx.index()));
 }
- else if (UDTRecord.class.isAssignableFrom(type)) {
+ else if (Record.class.isAssignableFrom(type)) {
 switch (ctx.family()) {
 case POSTGRES:
-result=(T)pgNewUDTRecord(type,ctx.resultSet().getObject(ctx.index()));
+result=(T)pgNewRecord(type,null,ctx.resultSet().getObject(ctx.index()));
 break;
 default :
 result=(T)ctx.resultSet().getObject(ctx.index(),DataTypes.udtRecords());

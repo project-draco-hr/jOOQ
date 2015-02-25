@@ -1,23 +1,10 @@
 {
   super(as,(DataType)SQLDataType.RECORD,"",new DefaultBinding<Object,REC>(new Converter<Object,REC>(){
     @Override public REC from(    final Object t){
-      return t == null ? null : Utils.newRecord(true,(Class<REC>)RecordImpl.class,row.fields()).operate(new RecordOperation<REC,RuntimeException>(){
-        @Override public REC operate(        REC record){
-          List<String> values=PostgresUtils.toPGObject(t.toString());
-          for (int i=0; i < row.size(); i++) {
-            try {
-              DefaultBinding.pgSetValue(record,row.field(i),values.get(i));
-            }
- catch (            SQLException ignore) {
-            }
-          }
-          return record;
-        }
-      }
-);
+      return (REC)(t == null ? null : DefaultBinding.pgNewRecord(Record.class,row.fields(),t));
     }
     @Override public Object to(    REC u){
-      return null;
+      throw new UnsupportedOperationException("Converting from nested records to bind values is not yet supported");
     }
     @Override public Class<Object> fromType(){
       return Object.class;
@@ -28,7 +15,6 @@
   }
 ));
   this.row=row;
-  this.as=as;
   this.emulatedFields=new Field[row.fields().length];
   for (int i=0; i < emulatedFields.length; i++)   emulatedFields[i]=row.field(i).as(as + "." + row.field(i).getName());
 }
