@@ -1,7 +1,7 @@
 {
   if (windowSpecification != null)   return DSL.sql("({0})",windowSpecification);
   if (windowDefinition != null)   if (POSTGRES == ctx.family())   return windowDefinition;
- else   return DSL.sql("{0}",windowDefinition);
+ else   return DSL.sql("({0})",windowDefinition);
   if (windowName != null) {
     if (asList(POSTGRES).contains(ctx.family())) {
       return windowName;
