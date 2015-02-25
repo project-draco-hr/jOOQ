@@ -1,3 +1,5 @@
 {
-  return new ConvertedDataType<T,U>(this,binding);
+  if (binding == newBinding)   return (DataType<U>)this;
+  if (newBinding == null)   newBinding=(Binding<? super T,U>)new DefaultBinding<T,T>(new IdentityConverter<T>(getType()),isLob());
+  return new ConvertedDataType<T,U>(this,newBinding);
 }

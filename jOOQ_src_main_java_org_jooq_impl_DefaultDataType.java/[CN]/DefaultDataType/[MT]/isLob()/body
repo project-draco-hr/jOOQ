@@ -1,4 +1,5 @@
 {
   DataType<T> t=getSQLDataType();
-  return (t == BLOB || t == CLOB || t == NCLOB);
+  if (t == this)   return getTypeName().endsWith("lob");
+ else   return (t == BLOB || t == CLOB || t == NCLOB);
 }

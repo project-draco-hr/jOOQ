@@ -1,8 +1,8 @@
 {
-  if (binding.converter().toType().isInstance(object)) {
+  if (getConverter().toType().isInstance(object)) {
     return (U)object;
   }
  else {
-    return binding.converter().from(delegate.convert(object));
+    return ((Converter<T,U>)getConverter()).from(delegate.convert(object));
   }
 }

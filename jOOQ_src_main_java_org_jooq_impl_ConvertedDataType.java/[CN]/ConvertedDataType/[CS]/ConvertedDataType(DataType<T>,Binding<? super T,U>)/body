@@ -1,5 +1,4 @@
 {
-  super(null,binding.converter().toType(),delegate.getTypeName(),delegate.getCastTypeName(),delegate.precision(),delegate.scale(),delegate.length(),delegate.nullable(),delegate.defaulted());
+  super(null,binding.converter().toType(),binding,delegate.getTypeName(),delegate.getCastTypeName(),delegate.precision(),delegate.scale(),delegate.length(),delegate.nullable(),delegate.defaulted());
   this.delegate=delegate;
-  this.binding=binding;
 }

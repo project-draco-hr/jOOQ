@@ -1,7 +1,7 @@
 {
   final Binding<T,U> theBinding;
   if (converter == null && binding == null) {
-    theBinding=(Binding)new DefaultBinding<T,T>(new IdentityConverter<T>(type.getType()),type.isLob());
+    theBinding=(Binding)type.getBinding();
   }
  else   if (converter == null) {
     theBinding=(Binding)binding;

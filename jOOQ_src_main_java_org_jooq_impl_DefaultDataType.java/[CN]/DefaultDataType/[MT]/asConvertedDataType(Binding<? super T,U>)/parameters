@@ -1,1 +1,1 @@
-Binding<? super T,U> binding
+Binding<? super T,U> newBinding
