@@ -1,4 +1,0 @@
-{
-  User john=insertUser("John","Doe");
-  assertThat(john.getId(),is(1));
-}

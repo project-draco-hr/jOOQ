@@ -1,3 +1,0 @@
-{
-  return new SelectQueryAsTable<R>(this).as(alias,fieldAliases);
-}

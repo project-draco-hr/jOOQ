@@ -1,3 +1,0 @@
-{
-  this(SQLDialect.H2,new Settings().withRenderSchema(false));
-}

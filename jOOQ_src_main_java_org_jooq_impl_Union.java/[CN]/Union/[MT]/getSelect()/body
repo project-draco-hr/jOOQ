@@ -1,3 +1,0 @@
-{
-  return queries.get(0).getSelect();
-}

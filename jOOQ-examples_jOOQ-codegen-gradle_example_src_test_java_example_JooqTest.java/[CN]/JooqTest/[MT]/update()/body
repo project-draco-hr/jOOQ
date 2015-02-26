@@ -1,8 +1,0 @@
-{
-  User jane=insertUser("Jane","Doe");
-  jane.getName().setLastName("Smith");
-  UserRecord record=mapper.map(jane,UserRecord.class);
-  db.executeUpdate(record);
-  User user=db.selectFrom(USER).where(USER.LAST_NAME.equal("Smith")).fetchOne().map(recordMapper);
-  assertThat(user,is(jane));
-}

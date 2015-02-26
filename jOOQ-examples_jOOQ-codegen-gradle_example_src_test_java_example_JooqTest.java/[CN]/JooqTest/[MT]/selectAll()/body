@@ -1,6 +1,0 @@
-{
-  User john=insertUser("John","Doe");
-  User jane=insertUser("Jane","Doe");
-  List<User> users=db.selectFrom(USER).fetch().map(recordMapper);
-  assertThat(users,contains(john,jane));
-}
