@@ -1,0 +1,5 @@
+{
+  this.dialect=dialect;
+  this.array=array;
+  this.type=type;
+}

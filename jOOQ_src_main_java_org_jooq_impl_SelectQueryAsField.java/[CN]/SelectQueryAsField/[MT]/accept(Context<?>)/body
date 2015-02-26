@@ -1,0 +1,8 @@
+{
+  if (ctx.subquery()) {
+    ctx.sql("(").formatIndentStart().formatNewLine().visit(query).formatIndentEnd().formatNewLine().sql(")");
+  }
+ else {
+    ctx.sql("(").subquery(true).formatIndentStart().formatNewLine().visit(query).formatIndentEnd().formatNewLine().subquery(false).sql(")");
+  }
+}

@@ -1,0 +1,5 @@
+{
+  this.query=query;
+  this.field=field;
+  this.comparator=comparator;
+}

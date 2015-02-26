@@ -1,0 +1,9 @@
+{
+  super("pg_cursor",org.jooq.util.postgres.pg_catalog.PgCatalog.PG_CATALOG);
+  addOutParameter(NAME);
+  addOutParameter(STATEMENT);
+  addOutParameter(IS_HOLDABLE);
+  addOutParameter(IS_BINARY);
+  addOutParameter(IS_SCROLLABLE);
+  addOutParameter(CREATION_TIME);
+}

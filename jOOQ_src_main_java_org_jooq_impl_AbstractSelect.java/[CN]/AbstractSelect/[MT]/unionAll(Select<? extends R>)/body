@@ -1,0 +1,3 @@
+{
+  return new Union<R>(configuration(),this,select,CombineOperator.UNION_ALL);
+}

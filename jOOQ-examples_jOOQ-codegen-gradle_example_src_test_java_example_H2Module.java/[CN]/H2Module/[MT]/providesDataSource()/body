@@ -1,0 +1,8 @@
+{
+  JdbcDataSource dataSource=new JdbcDataSource();
+  dataSource.setURL(String.format(URL,counter.incrementAndGet()));
+  Flyway flyway=new Flyway();
+  flyway.setDataSource(dataSource);
+  flyway.migrate();
+  return dataSource;
+}

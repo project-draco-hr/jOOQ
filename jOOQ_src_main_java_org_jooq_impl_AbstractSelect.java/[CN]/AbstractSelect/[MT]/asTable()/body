@@ -1,0 +1,3 @@
+{
+  return new SelectQueryAsTable<R>(this).as("alias_" + Utils.hash(this));
+}

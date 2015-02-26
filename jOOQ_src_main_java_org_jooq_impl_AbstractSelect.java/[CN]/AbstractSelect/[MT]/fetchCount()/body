@@ -1,0 +1,3 @@
+{
+  return DSL.using(configuration()).fetchCount(this);
+}

@@ -1,0 +1,5 @@
+{
+  User john=insertUser("John","Doe");
+  User user=db.selectFrom(USER).where(USER.FIRST_NAME.equal("John")).fetchOne().map(recordMapper);
+  assertThat(user,is(john));
+}
