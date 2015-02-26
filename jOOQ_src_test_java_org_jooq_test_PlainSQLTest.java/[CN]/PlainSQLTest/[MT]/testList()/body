@@ -1,0 +1,15 @@
+{
+  QueryPart list=list(val(1),inline(2),sql("({0})",list(val("a"),TABLE1)));
+  assertEquals("?, 2, (?, `TABLE1`)",create.render(list));
+  assertEquals("1, 2, ('a', `TABLE1`)",create.renderInlined(list));
+  context.checking(new Expectations(){
+{
+      oneOf(statement).setInt(1,1);
+      oneOf(statement).setString(2,"a");
+    }
+  }
+);
+  int i=b_ref().visit(list).peekIndex();
+  assertEquals(3,i);
+  context.assertIsSatisfied();
+}
