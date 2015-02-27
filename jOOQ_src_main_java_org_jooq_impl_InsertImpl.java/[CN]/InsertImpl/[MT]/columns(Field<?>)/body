@@ -1,0 +1,4 @@
+{
+  this.fields=(f == null || f.length == 0) ? into.fields() : f;
+  return this;
+}
