@@ -7,7 +7,4 @@
   assertEquals("(a = `?` and b = `{0}` and c = ?)",create.render(c2));
   assertEquals("(a = `?` and b = `{0}` and c = 1)",create.renderInlined(c2));
   assertEquals("(a = `?` and b = `{0}` and c = :1)",create.renderNamedParams(c2));
-  assertEquals("(a = `?` and b = `{0}` and c = ?)",DSL.using(POSTGRES).render(c2));
-  assertEquals("(a = `?` and b = `{0}` and c = 1)",DSL.using(POSTGRES).renderInlined(c2));
-  assertEquals("(a = `?` and b = `{0}` and c = :1)",DSL.using(POSTGRES).renderNamedParams(c2));
 }
