@@ -15,7 +15,9 @@
     listener.bindEnd(ctx);
     execute0(ctx,listener);
     if (ctx.family() != FIREBIRD)     Utils.consumeResultSets(ctx,listener,results,null);
+    listener.outStart(ctx);
     fetchOutParameters(ctx);
+    listener.outEnd(ctx);
     return 0;
   }
  catch (  ControlFlowSignal e) {
