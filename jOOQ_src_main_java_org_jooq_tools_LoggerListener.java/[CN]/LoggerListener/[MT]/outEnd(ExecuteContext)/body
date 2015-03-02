@@ -1,0 +1,7 @@
+{
+  if (ctx.routine() != null) {
+    if (log.isDebugEnabled()) {
+      logMultiline("Fetched OUT parameters","" + record(ctx.configuration(),ctx.routine()),Level.FINE);
+    }
+  }
+}

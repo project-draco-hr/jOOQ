@@ -1,5 +1,7 @@
 {
-  if (log.isDebugEnabled() && ctx.rows() >= 0) {
-    log.debug("Affected row(s)",ctx.rows());
+  if (ctx.rows() >= 0) {
+    if (log.isDebugEnabled()) {
+      log.debug("Affected row(s)",ctx.rows());
+    }
   }
 }
