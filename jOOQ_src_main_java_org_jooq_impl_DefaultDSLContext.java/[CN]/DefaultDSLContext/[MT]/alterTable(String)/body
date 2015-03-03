@@ -1,3 +1,3 @@
 {
-  return alterTable(table(name(table)));
+  return alterTable(name(table));
 }

@@ -1,0 +1,3 @@
+{
+  return createView(table(view),Utils.fieldsByName(fields));
+}
