@@ -1,0 +1,3 @@
+{
+  return intoMap0(keyFieldIndex,mapper);
+}

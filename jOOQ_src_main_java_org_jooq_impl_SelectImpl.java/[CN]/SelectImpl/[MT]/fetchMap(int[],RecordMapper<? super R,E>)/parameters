@@ -1,0 +1,2 @@
+int[] keyFieldIndexes
+RecordMapper<? super R,E> mapper

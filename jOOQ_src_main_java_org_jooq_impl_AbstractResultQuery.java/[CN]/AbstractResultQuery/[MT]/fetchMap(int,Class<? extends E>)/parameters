@@ -1,0 +1,2 @@
+int keyFieldIndex
+Class<? extends E> type

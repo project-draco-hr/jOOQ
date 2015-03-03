@@ -1,0 +1,3 @@
+{
+  return (Map)intoGroups0(keyFieldIndex,valueFieldIndex);
+}

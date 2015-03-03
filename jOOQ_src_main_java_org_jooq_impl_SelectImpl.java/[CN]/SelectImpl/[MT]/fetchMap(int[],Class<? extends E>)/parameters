@@ -1,0 +1,2 @@
+int[] keyFieldIndexes
+Class<? extends E> type

@@ -1,0 +1,2 @@
+String[] keyFieldNames
+RecordMapper<? super R,E> mapper

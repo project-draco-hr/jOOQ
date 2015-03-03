@@ -1,0 +1,2 @@
+int keyFieldIndex
+RecordMapper<? super R,E> mapper
