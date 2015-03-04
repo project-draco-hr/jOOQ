@@ -12,6 +12,6 @@
       ctx.visit(get(i));
       separator=", ";
     }
-    if (indent)     ctx.formatIndentEnd().formatNewLine();
+    if (indent)     ctx.formatIndentEnd();
   }
 }
