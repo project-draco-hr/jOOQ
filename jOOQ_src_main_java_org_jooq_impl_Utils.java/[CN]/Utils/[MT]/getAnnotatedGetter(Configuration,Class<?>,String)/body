@@ -3,7 +3,7 @@
     @Override public Method call(){
       for (      Method method : getInstanceMethods(type)) {
         Column annotation=method.getAnnotation(Column.class);
-        if (annotation != null && name.equals(annotation.name())) {
+        if (annotation != null && namesMatch(name,annotation)) {
           if (method.getParameterTypes().length == 0) {
             return accessible(method);
           }

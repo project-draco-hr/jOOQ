@@ -5,7 +5,7 @@
       for (      java.lang.reflect.Field member : getInstanceMembers(type)) {
         Column annotation=member.getAnnotation(Column.class);
         if (annotation != null) {
-          if (name.equals(annotation.name())) {
+          if (namesMatch(name,annotation)) {
             result.add(accessible(member));
           }
         }

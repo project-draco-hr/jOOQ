@@ -1,0 +1,16 @@
+{
+  Field<Boolean> field1=field("a",Boolean.class);
+  Field<Boolean> field2=field("B",Boolean.class);
+  Record2<Boolean,Boolean> record=create.newRecord(field1,field2);
+  record.setValue(field1,true);
+  record.setValue(field2,true);
+  CaseSensitiveWithAnnotations pojo=record.into(CaseSensitiveWithAnnotations.class);
+  assertTrue(pojo.a1);
+  assertTrue(pojo.a2);
+  assertFalse(pojo.a3);
+  assertTrue(pojo.a4);
+  assertTrue(pojo.b1);
+  assertTrue(pojo.b2);
+  assertTrue(pojo.b3);
+  assertFalse(pojo.b4);
+}

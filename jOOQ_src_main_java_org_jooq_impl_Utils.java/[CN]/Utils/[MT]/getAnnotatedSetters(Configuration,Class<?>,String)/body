@@ -4,7 +4,7 @@
       List<Method> result=new ArrayList<Method>();
       for (      Method method : getInstanceMethods(type)) {
         Column annotation=method.getAnnotation(Column.class);
-        if (annotation != null && name.equals(annotation.name())) {
+        if (annotation != null && namesMatch(name,annotation)) {
           if (method.getParameterTypes().length == 1) {
             result.add(accessible(method));
           }
