@@ -1,4 +1,0 @@
-{
-  String a=annotation.name();
-  return a.startsWith("\"") ? ('"' + name + '"').equals(a) : name.equalsIgnoreCase(annotation.name());
-}

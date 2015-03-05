@@ -3,10 +3,18 @@
     @Override public List<java.lang.reflect.Field> call(){
       List<java.lang.reflect.Field> result=new ArrayList<java.lang.reflect.Field>();
       for (      java.lang.reflect.Field member : getInstanceMembers(type)) {
-        Column annotation=member.getAnnotation(Column.class);
-        if (annotation != null) {
-          if (namesMatch(name,annotation)) {
+        Column column=member.getAnnotation(Column.class);
+        if (column != null) {
+          if (namesMatch(name,column.name())) {
             result.add(accessible(member));
+          }
+        }
+ else {
+          Id id=member.getAnnotation(Id.class);
+          if (id != null) {
+            if (namesMatch(name,member.getName())) {
+              result.add(accessible(member));
+            }
           }
         }
       }

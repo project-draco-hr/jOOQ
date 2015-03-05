@@ -1,0 +1,9 @@
+{
+  Field<Long> field=field("xx",Long.class);
+  Record1<Long> record=create.newRecord(field);
+  record.setValue(field,1L);
+  IdWithAnnotations1 pojo1=record.into(IdWithAnnotations1.class);
+  assertEquals(1L,pojo1.xx);
+  IdWithAnnotations2 pojo2=record.into(IdWithAnnotations2.class);
+  assertEquals(1L,pojo2.xx);
+}

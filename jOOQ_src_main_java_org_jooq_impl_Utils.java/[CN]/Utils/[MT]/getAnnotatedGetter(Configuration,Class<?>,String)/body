@@ -2,8 +2,8 @@
   return Cache.run(configuration,new CachedOperation<Method>(){
     @Override public Method call(){
       for (      Method method : getInstanceMethods(type)) {
-        Column annotation=method.getAnnotation(Column.class);
-        if (annotation != null && namesMatch(name,annotation)) {
+        Column column=method.getAnnotation(Column.class);
+        if (column != null && namesMatch(name,column.name())) {
           if (method.getParameterTypes().length == 0) {
             return accessible(method);
           }
