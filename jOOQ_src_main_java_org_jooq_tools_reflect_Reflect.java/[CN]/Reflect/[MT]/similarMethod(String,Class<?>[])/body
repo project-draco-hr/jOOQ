@@ -1,0 +1,18 @@
+{
+  Class<?> type=type();
+  for (  Method method : type.getMethods()) {
+    if (isSimilarSignature(method,name,types)) {
+      return method;
+    }
+  }
+  do {
+    for (    Method method : type.getDeclaredMethods()) {
+      if (isSimilarSignature(method,name,types)) {
+        return method;
+      }
+    }
+    type=type.getSuperclass();
+  }
+ while (type != null);
+  throw new NoSuchMethodException("No similar method " + name + " with params "+ Arrays.toString(types)+ " could be found on type "+ type()+ ".");
+}

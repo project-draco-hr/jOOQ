@@ -1,15 +1,16 @@
 {
   Class<?>[] types=types(args);
   try {
-    Method method=type().getMethod(name,types);
+    Method method=exactMethod(name,types);
     return on(method,object,args);
   }
  catch (  NoSuchMethodException e) {
-    for (    Method method : type().getMethods()) {
-      if (method.getName().equals(name) && match(method.getParameterTypes(),types)) {
-        return on(method,object,args);
-      }
+    try {
+      Method method=similarMethod(name,types);
+      return on(method,object,args);
     }
-    throw new ReflectException(e);
+ catch (    NoSuchMethodException e1) {
+      throw new ReflectException(e1);
+    }
   }
 }

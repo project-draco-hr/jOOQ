@@ -1,14 +1,9 @@
 {
   try {
-    Field field=type().getField(name);
+    Field field=field0(name);
     return on(field.get(object));
   }
- catch (  Exception e1) {
-    try {
-      return on(accessible(type().getDeclaredField(name)).get(object));
-    }
- catch (    Exception e2) {
-      throw new ReflectException(e2);
-    }
+ catch (  Exception e) {
+    throw new ReflectException(e);
   }
 }

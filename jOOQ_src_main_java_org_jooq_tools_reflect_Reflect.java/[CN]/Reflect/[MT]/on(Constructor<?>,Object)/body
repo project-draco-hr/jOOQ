@@ -1,6 +1,6 @@
 {
   try {
-    return on(constructor.newInstance(args));
+    return on(accessible(constructor).newInstance(args));
   }
  catch (  Exception e) {
     throw new ReflectException(e);

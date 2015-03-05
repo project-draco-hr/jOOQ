@@ -1,9 +1,9 @@
 {
   if (declaredTypes.length == actualTypes.length) {
     for (int i=0; i < actualTypes.length; i++) {
-      if (!wrapper(declaredTypes[i]).isAssignableFrom(wrapper(actualTypes[i]))) {
-        return false;
-      }
+      if (actualTypes[i] == NULL.class)       continue;
+      if (wrapper(declaredTypes[i]).isAssignableFrom(wrapper(actualTypes[i])))       continue;
+      return false;
     }
     return true;
   }

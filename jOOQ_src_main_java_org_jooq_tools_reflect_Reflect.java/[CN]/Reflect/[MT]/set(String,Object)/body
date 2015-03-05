@@ -1,16 +1,10 @@
 {
   try {
-    Field field=type().getField(name);
+    Field field=field0(name);
     field.set(object,unwrap(value));
     return this;
   }
- catch (  Exception e1) {
-    try {
-      accessible(type().getDeclaredField(name)).set(object,unwrap(value));
-      return this;
-    }
- catch (    Exception e2) {
-      throw new ReflectException(e2);
-    }
+ catch (  Exception e) {
+    throw new ReflectException(e);
   }
 }
