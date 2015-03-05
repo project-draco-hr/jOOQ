@@ -1,0 +1,4 @@
+{
+  if (connection instanceof MockConnectionWrapper)   delegate.release(((MockConnectionWrapper)connection).connection);
+ else   throw new IllegalArgumentException("Argument connection must be a MockConnectionWrapper");
+}

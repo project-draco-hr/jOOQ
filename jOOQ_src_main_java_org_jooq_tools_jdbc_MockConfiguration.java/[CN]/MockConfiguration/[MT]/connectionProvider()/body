@@ -1,0 +1,3 @@
+{
+  return new MockConnectionProvider(delegate.connectionProvider(),provider);
+}
