@@ -1,0 +1,11 @@
+{
+  try {
+    return mockable.run(new MockConfiguration(configuration,provider));
+  }
+ catch (  RuntimeException e) {
+    throw e;
+  }
+catch (  Exception cause) {
+    throw new DataAccessException("Mock failed",cause);
+  }
+}

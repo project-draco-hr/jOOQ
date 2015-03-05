@@ -1,0 +1,9 @@
+{
+  mockResult(provider,new TransactionalCallable<Void>(){
+    @Override public Void run(    Configuration c) throws Exception {
+      mockable.run(c);
+      return null;
+    }
+  }
+);
+}
