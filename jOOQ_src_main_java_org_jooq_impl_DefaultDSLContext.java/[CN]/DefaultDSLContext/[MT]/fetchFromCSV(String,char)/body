@@ -1,8 +1,8 @@
 {
   CSVReader reader=new CSVReader(new StringReader(string),delimiter);
-  List<String[]> data=null;
+  List<String[]> list=null;
   try {
-    data=reader.readAll();
+    list=reader.readAll();
   }
  catch (  IOException e) {
     throw new DataAccessException("Could not read the CSV string",e);
@@ -14,5 +14,5 @@
  catch (    IOException ignore) {
     }
   }
-  return fetchFromStringData(data);
+  return fetchFromStringData(list);
 }

@@ -1,12 +1,12 @@
 {
-  List<String[]> data=new LinkedList<String[]>();
+  List<String[]> list=new LinkedList<String[]>();
   JSONReader reader=null;
   try {
     reader=new JSONReader(new StringReader(string));
     List<String[]> records=reader.readAll();
     String[] fields=reader.getFields();
-    data.add(fields);
-    data.addAll(records);
+    list.add(fields);
+    list.addAll(records);
   }
  catch (  IOException e) {
     throw new DataAccessException("Could not read the JSON string",e);
@@ -20,5 +20,5 @@
  catch (    IOException ignore) {
     }
   }
-  return fetchFromStringData(data);
+  return fetchFromStringData(list);
 }

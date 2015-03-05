@@ -1,15 +1,15 @@
 {
-  if (data.size() == 0) {
+  if (strings.size() == 0) {
     return new ResultImpl<Record>(configuration());
   }
  else {
     List<Field<?>> fields=new ArrayList<Field<?>>();
-    for (    String name : data.get(0)) {
+    for (    String name : strings.get(0)) {
       fields.add(field(name(name),String.class));
     }
     Result<Record> result=new ResultImpl<Record>(configuration(),fields);
-    if (data.size() > 1) {
-      for (      String[] values : data.subList(1,data.size())) {
+    if (strings.size() > 1) {
+      for (      String[] values : strings.subList(1,strings.size())) {
         RecordImpl record=new RecordImpl(fields);
         for (int i=0; i < Math.min(values.length,fields.size()); i++) {
           record.values[i]=values[i];
