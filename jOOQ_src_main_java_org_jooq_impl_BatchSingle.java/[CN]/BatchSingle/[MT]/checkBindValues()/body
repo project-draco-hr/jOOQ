@@ -1,0 +1,3 @@
+{
+  for (int i=0; i < allBindValues.size(); i++)   if (allBindValues.get(i).length != expectedBindValues)   log.info("Bind value count","Batch bind value set " + i + " has "+ allBindValues.get(i).length+ " values when "+ expectedBindValues+ " values were expected");
+}

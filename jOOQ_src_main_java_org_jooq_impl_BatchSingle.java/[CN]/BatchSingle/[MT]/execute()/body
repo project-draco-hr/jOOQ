@@ -1,4 +1,5 @@
 {
+  checkBindValues();
   if (executeStaticStatements(configuration.settings())) {
     return executeStatic();
   }
