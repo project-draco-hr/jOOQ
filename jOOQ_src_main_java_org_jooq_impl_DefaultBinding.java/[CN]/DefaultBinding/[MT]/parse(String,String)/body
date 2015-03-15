@@ -4,7 +4,8 @@
       return Long.valueOf(date);
     }
  catch (    NumberFormatException e) {
-      return new SimpleDateFormat(pattern).parse(date).getTime();
+      if (pattern.contains(".") && !date.contains("."))       return new SimpleDateFormat(pattern).parse(date + ".0").getTime();
+ else       return new SimpleDateFormat(pattern).parse(date).getTime();
     }
   }
  catch (  ParseException e) {
