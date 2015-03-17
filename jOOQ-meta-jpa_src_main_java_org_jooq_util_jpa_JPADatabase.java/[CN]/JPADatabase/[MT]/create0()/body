@@ -1,0 +1,27 @@
+{
+  if (connection == null) {
+    String packages=getProperties().getProperty("packages");
+    if (isBlank(packages)) {
+      packages="";
+      log.warn("No packages defined","It is highly recommended that you provide explicit packages to scan");
+    }
+    try {
+      connection=DriverManager.getConnection("jdbc:h2:mem:jooq-meta-jpa","sa","");
+      final Configuration configuration=new Configuration().setProperty("hibernate.dialect","org.hibernate.dialect.H2Dialect");
+      ClassPathScanningCandidateComponentProvider scanner=new ClassPathScanningCandidateComponentProvider(true);
+      scanner.addIncludeFilter(new AnnotationTypeFilter(Entity.class));
+      for (      String pkg : packages.split(",")) {
+        for (        BeanDefinition def : scanner.findCandidateComponents(defaultIfBlank(pkg,"").trim())) {
+          configuration.addAnnotatedClass(Class.forName(def.getBeanClassName()));
+        }
+      }
+      configuration.generateSchemaCreationScript(Dialect.getDialect(configuration.getProperties()));
+      SchemaExport export=new SchemaExport(configuration,connection);
+      export.create(true,true);
+    }
+ catch (    Exception e) {
+      throw new DataAccessException("Error while exporting schema",e);
+    }
+  }
+  return DSL.using(connection);
+}
