@@ -2,7 +2,6 @@
   String[] row=null;
   BatchBindStep bind=null;
   InsertQuery<R> insert=null;
-  LoaderContext ctx=new DefaultLoaderContext();
   execution: {
     rows:     while (reader.hasNext() && ((row=reader.next()) != null)) {
       try {
@@ -60,7 +59,7 @@
         }
       }
   finally {
-        if (listener != null)         listener.row(ctx);
+        if (listener != null)         listener.row(result);
       }
     }
     if (buffered != 0) {
