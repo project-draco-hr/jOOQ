@@ -1,0 +1,3 @@
+{
+  return loadXML(new FileInputStream(file),charsetName);
+}

@@ -1,0 +1,3 @@
+{
+  return loadXML(new InputStreamReader(stream,cs));
+}

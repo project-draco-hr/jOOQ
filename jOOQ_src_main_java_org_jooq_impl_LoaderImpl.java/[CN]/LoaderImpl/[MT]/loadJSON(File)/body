@@ -1,5 +1,3 @@
 {
-  content=CONTENT_JSON;
-  data=new BufferedReader(new FileReader(file));
-  return this;
+  return loadJSON(new FileReader(file));
 }

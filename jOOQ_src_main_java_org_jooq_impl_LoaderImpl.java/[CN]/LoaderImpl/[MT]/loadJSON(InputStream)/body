@@ -1,5 +1,3 @@
 {
-  content=CONTENT_JSON;
-  data=new BufferedReader(new InputStreamReader(stream));
-  return this;
+  return loadJSON(new InputStreamReader(stream));
 }

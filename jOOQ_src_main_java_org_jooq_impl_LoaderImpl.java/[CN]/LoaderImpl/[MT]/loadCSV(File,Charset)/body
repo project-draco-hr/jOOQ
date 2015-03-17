@@ -1,0 +1,3 @@
+{
+  return loadCSV(new FileInputStream(file),cs);
+}
