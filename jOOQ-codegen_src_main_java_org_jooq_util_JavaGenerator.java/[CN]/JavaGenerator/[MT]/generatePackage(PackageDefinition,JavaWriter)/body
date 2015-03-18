@@ -17,6 +17,9 @@
     out.printSerial();
     printSingletonInstance(out,pkg);
   }
+  for (  AttributeDefinition constant : pkg.getConstants()) {
+    printConstant(out,constant);
+  }
   for (  RoutineDefinition routine : pkg.getRoutines()) {
     printRoutine(out,routine);
     try {

@@ -1,0 +1,12 @@
+{
+  if (constants == null) {
+    constants=new ArrayList<AttributeDefinition>();
+    try {
+      constants=getConstants0();
+    }
+ catch (    SQLException e) {
+      log.error("Error while initialising package",e);
+    }
+  }
+  return constants;
+}
