@@ -1,12 +1,2 @@
 {
-  log.info("Generating packages");
-  for (  PackageDefinition pkg : database.getPackages(schema)) {
-    try {
-      generatePackage(schema,pkg);
-    }
- catch (    Exception e) {
-      log.error("Error while generating package " + pkg,e);
-    }
-  }
-  watch.splitInfo("Packages generated");
 }

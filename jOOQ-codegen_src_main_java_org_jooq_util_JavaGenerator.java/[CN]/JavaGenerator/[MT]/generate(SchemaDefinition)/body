@@ -69,9 +69,6 @@
   if (generateGlobalObjectReferences() && generateGlobalRoutineReferences() && database.getRoutines(schema).size() > 0 || hasTableValuedFunctions(schema)) {
     generateRoutines(schema);
   }
-  if (database.getPackages(schema).size() > 0) {
-    generatePackages(schema);
-  }
   log.info("Removing excess files");
   empty(getStrategy().getFile(schema).getParentFile(),(scala ? ".scala" : ".java"),files);
   files.clear();

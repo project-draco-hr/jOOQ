@@ -1,6 +1,2 @@
 {
-  log.info("Generating package",pkg);
-  JavaWriter out=newJavaWriter(getStrategy().getFile(pkg));
-  generatePackage(pkg,out);
-  out.close();
 }
