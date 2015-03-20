@@ -15,7 +15,7 @@ default :
     return simulate();
   }
  else {
-    throw new SQLDialectNotSupportedException("ARRAY TABLE is not supported for " + configuration.dialect());
+    return simulate();
   }
 }
 }
