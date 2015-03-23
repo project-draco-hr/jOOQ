@@ -1,6 +1,6 @@
 {
   super();
-  this.schema=schema;
-  this.name=name;
-  this.comment=comment;
+  this.tableschema=schema;
+  this.tablename=name;
+  this.tablecomment=comment;
 }

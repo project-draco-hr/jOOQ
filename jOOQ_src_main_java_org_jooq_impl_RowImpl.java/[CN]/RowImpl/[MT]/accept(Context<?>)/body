@@ -1,10 +1,10 @@
 {
-  context.sql('(');
+  context.sql("(");
   String separator="";
   for (  Field<?> field : fields.fields) {
     context.sql(separator);
     context.visit(field);
     separator=", ";
   }
-  context.sql(')');
+  context.sql(")");
 }

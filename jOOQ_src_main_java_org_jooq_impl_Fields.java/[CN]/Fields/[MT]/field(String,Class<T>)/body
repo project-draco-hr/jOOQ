@@ -1,0 +1,4 @@
+{
+  Field<?> result=field(fieldName);
+  return result == null ? null : result.coerce(type);
+}
