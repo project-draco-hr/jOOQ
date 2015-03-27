@@ -6,7 +6,7 @@
  else {
     DataType<?> result=null;
     if (dialect != null) {
-      result=TYPES_BY_TYPE[dialect.ordinal()].get(type);
+      result=TYPES_BY_TYPE[dialect.family().ordinal()].get(type);
     }
     if (result == null) {
       if (EnumType.class.isAssignableFrom(type) || UDTRecord.class.isAssignableFrom(type)) {

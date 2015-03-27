@@ -1,8 +1,9 @@
 {
-  DataType<?> result=TYPES_BY_NAME[dialect.ordinal()].get(typeName.toUpperCase());
+  int ordinal=dialect.ordinal();
+  DataType<?> result=TYPES_BY_NAME[ordinal].get(typeName.toUpperCase());
   if (result == null) {
     typeName=DefaultDataType.normalise(typeName);
-    result=TYPES_BY_NAME[dialect.ordinal()].get(typeName);
+    result=TYPES_BY_NAME[ordinal].get(typeName);
   }
   if (result == null)   result=TYPES_BY_NAME[SQLDialect.DEFAULT.ordinal()].get(typeName);
   if (result == null && dialect.family() == SQLDialect.POSTGRES && typeName.charAt(0) == '_')   result=getDataType(dialect,typeName.substring(1)).getArrayDataType();
