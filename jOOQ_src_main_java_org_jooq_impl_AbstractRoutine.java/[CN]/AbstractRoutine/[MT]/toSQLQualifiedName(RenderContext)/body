@@ -6,7 +6,7 @@
       context.sql('.');
     }
     if (getPackage() != null) {
-      context.visit(getPackage());
+      context.visit(DSL.name(getPackage().getName()));
       context.sql('.');
     }
   }
