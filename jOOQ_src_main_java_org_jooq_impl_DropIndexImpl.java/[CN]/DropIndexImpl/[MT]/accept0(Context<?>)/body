@@ -2,4 +2,5 @@
   ctx.keyword("drop index").sql(' ');
   if (ifExists && supportsIfExists(ctx))   ctx.keyword("if exists").sql(' ');
   ctx.visit(index);
+  if (on != null)   ctx.sql(' ').keyword("on").sql(' ').visit(on);
 }
