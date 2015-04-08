@@ -28,15 +28,14 @@ default :
   if (forUpdate && !asList(CUBRID).contains(family)) {
     context.formatSeparator().keyword("for update");
     if (!forUpdateOf.isEmpty()) {
-      context.sql(' ').keyword("of").sql(' ');
-      Utils.fieldNames(context,forUpdateOf);
+      context.sql(' ').keyword("of").sql(' ').visit(forUpdateOf);
     }
  else     if (!forUpdateOfTables.isEmpty()) {
       context.sql(' ').keyword("of").sql(' ');
 switch (family) {
 case DERBY:
 {
-          forUpdateOfTables.toSQLFieldNames(context);
+          forUpdateOfTables.toSQLFields(context);
           break;
         }
 default :
