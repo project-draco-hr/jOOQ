@@ -53,10 +53,10 @@
       }
     }
  else {
-      String typeClass="org.jooq.util." + db.getDialect().getName().toLowerCase() + "."+ db.getDialect().getName()+ "DataType";
-      sb.append(typeClass);
-      sb.append(".");
       try {
+        String typeClass=(db.getDialect().getName() == null) ? SQLDataType.class.getName() : "org.jooq.util." + db.getDialect().getName().toLowerCase() + "."+ db.getDialect().getName()+ "DataType";
+        sb.append(typeClass);
+        sb.append(".");
         String type1=getType(db,schema,t,p,s,u,null);
         String type2=getType(db,schema,t,0,0,u,null);
         String typeName=DefaultDataType.normalise(t);
