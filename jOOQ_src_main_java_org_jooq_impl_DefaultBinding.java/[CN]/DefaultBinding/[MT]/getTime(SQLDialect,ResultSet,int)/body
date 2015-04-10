@@ -2,7 +2,7 @@
   if (dialect == SQLDialect.SQLITE) {
     String time=rs.getString(index);
     if (time != null) {
-      return new Time(parse("HH:mm:ss",time));
+      return new Time(parse(Time.class,time));
     }
     return null;
   }

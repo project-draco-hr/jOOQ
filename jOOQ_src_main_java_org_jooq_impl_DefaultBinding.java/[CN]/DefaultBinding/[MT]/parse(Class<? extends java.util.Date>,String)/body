@@ -1,0 +1,11 @@
+{
+  try {
+    return Long.valueOf(date);
+  }
+ catch (  NumberFormatException e) {
+    if (type == Timestamp.class)     return Timestamp.valueOf(date).getTime();
+    if (type == Date.class)     return Date.valueOf(date.split(" ")[0]).getTime();
+    if (type == Time.class)     return Time.valueOf(date).getTime();
+    throw new SQLException("Could not parse date " + date,e);
+  }
+}

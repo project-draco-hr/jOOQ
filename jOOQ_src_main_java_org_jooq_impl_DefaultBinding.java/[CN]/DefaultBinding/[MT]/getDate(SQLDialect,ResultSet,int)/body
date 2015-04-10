@@ -2,7 +2,7 @@
   if (dialect == SQLDialect.SQLITE) {
     String date=rs.getString(index);
     if (date != null) {
-      return new Date(parse("yyyy-MM-dd",date));
+      return new Date(parse(Date.class,date));
     }
     return null;
   }
