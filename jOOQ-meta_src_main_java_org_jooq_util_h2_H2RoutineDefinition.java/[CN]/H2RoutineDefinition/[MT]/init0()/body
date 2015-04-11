@@ -1,5 +1,5 @@
 {
-  for (  Record record : create().select(FunctionColumns.COLUMN_NAME,FunctionColumns.TYPE_NAME,FunctionColumns.PRECISION,FunctionColumns.SCALE,FunctionColumns.POS,FunctionColumns.NULLABLE,FunctionColumns.COLUMN_DEFAULT.nvl2(true,false).as("default")).from(FUNCTION_COLUMNS).where(FunctionColumns.ALIAS_SCHEMA.equal(getSchema().getName())).and(FunctionColumns.ALIAS_NAME.equal(getName())).orderBy(FunctionColumns.POS.asc()).fetch()) {
+  for (  Record record : create().select(FunctionColumns.COLUMN_NAME,FunctionColumns.TYPE_NAME,FunctionColumns.PRECISION,FunctionColumns.SCALE,FunctionColumns.POS,FunctionColumns.NULLABLE,FunctionColumns.COLUMN_DEFAULT.nvl2(true,false).as("default")).from(FUNCTION_COLUMNS).where(FunctionColumns.ALIAS_SCHEMA.equal(getSchema().getName())).and(FunctionColumns.ALIAS_NAME.equal(getName())).and(FunctionColumns.POS.gt(0)).orderBy(FunctionColumns.POS.asc()).fetch()) {
     String paramName=record.getValue(FunctionColumns.COLUMN_NAME);
     String typeName=record.getValue(FunctionColumns.TYPE_NAME);
     Integer precision=record.getValue(FunctionColumns.PRECISION);
