@@ -34,7 +34,7 @@ break;
 case CUBRID:
 {
 FieldMapForUpdate update=new FieldMapForUpdate(INSERT_ON_DUPLICATE_KEY_UPDATE_ASSIGNMENT);
-Field<?> field=getInto().field(0);
+Field<?> field=table.field(0);
 update.put(field,field);
 toSQLInsert(ctx);
 ctx.formatSeparator().start(INSERT_ON_DUPLICATE_KEY_UPDATE).keyword("on duplicate key update").sql(' ').visit(update).end(INSERT_ON_DUPLICATE_KEY_UPDATE);

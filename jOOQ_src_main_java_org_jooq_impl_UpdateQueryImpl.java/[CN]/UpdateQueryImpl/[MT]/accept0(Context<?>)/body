@@ -1,5 +1,5 @@
 {
-  ctx.start(UPDATE_UPDATE).keyword("update").sql(' ').declareTables(true).visit(getInto()).declareTables(false).end(UPDATE_UPDATE);
+  ctx.start(UPDATE_UPDATE).keyword("update").sql(' ').declareTables(true).visit(table).declareTables(false).end(UPDATE_UPDATE);
   ctx.formatSeparator().start(UPDATE_SET).keyword("set").sql(' ');
   if (multiRow != null) {
     boolean qualify=ctx.qualify();

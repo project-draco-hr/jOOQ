@@ -1,9 +1,8 @@
 {
-  Table<R> i=getInto();
-  if (i.getPrimaryKey() != null) {
+  if (table.getPrimaryKey() != null) {
     Condition condition=null;
     List<Field<?>> key=new ArrayList<Field<?>>();
-    for (    Field<?> f : i.getPrimaryKey().getFields()) {
+    for (    Field<?> f : table.getPrimaryKey().getFields()) {
       Field<Object> field=(Field<Object>)f;
       Field<Object> value=(Field<Object>)insertMaps.getMap().get(field);
       key.add(value);
@@ -15,7 +14,7 @@
         condition=condition.and(other);
       }
     }
-    MergeOnConditionStep<R> on=create(configuration).mergeInto(i).usingDual().on(condition);
+    MergeOnConditionStep<R> on=create(configuration).mergeInto(table).usingDual().on(condition);
     MergeNotMatchedStep<R> notMatched=on;
     if (onDuplicateKeyUpdate) {
       notMatched=on.whenMatchedThenUpdate().set(updateMap);
@@ -23,6 +22,6 @@
     return notMatched.whenNotMatchedThenInsert(insertMaps.getMap().keySet()).values(insertMaps.getMap().values());
   }
  else {
-    throw new IllegalStateException("The ON DUPLICATE KEY IGNORE/UPDATE clause cannot be simulated when inserting into non-updatable tables : " + getInto());
+    throw new IllegalStateException("The ON DUPLICATE KEY IGNORE/UPDATE clause cannot be simulated when inserting into non-updatable tables : " + table);
   }
 }

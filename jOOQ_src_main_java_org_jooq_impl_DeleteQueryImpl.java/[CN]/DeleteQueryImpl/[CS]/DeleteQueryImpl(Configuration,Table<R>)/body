@@ -1,5 +1,4 @@
 {
-  super(configuration);
-  this.table=table;
+  super(configuration,table);
   this.condition=new ConditionProviderImpl();
 }

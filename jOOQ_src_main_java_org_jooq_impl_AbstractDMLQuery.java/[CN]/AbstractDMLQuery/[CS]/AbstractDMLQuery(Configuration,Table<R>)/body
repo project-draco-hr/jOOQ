@@ -1,0 +1,5 @@
+{
+  super(configuration);
+  this.table=table;
+  this.returning=new QueryPartList<Field<?>>();
+}

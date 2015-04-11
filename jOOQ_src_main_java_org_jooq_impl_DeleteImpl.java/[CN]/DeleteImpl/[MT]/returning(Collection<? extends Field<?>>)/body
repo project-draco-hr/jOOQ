@@ -1,0 +1,4 @@
+{
+  getDelegate().setReturning(f);
+  return this;
+}

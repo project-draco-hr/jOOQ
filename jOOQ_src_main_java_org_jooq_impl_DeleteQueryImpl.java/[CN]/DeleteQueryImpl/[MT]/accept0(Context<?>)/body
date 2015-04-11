@@ -1,0 +1,16 @@
+{
+  boolean declare=ctx.declareTables();
+  ctx.start(DELETE_DELETE).keyword("delete").sql(' ');
+  if (asList(MARIADB,MYSQL).contains(ctx.configuration().dialect())) {
+    if (table instanceof TableAlias || (table instanceof TableImpl && ((TableImpl<R>)table).getAliasedTable() != null)) {
+      ctx.visit(table).sql(' ');
+    }
+  }
+  ctx.keyword("from").sql(' ').declareTables(true).visit(table).declareTables(declare).end(DELETE_DELETE).start(DELETE_WHERE);
+  if (!(getWhere() instanceof TrueCondition)) {
+    ctx.formatSeparator().keyword("where").sql(' ').visit(getWhere());
+  }
+  ctx.end(DELETE_WHERE).start(DELETE_RETURNING);
+  toSQLReturning(ctx);
+  ctx.end(DELETE_RETURNING);
+}

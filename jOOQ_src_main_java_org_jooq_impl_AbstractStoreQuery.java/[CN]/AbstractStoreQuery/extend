@@ -1,1 +1,1 @@
-AbstractQuery
+AbstractDMLQuery<R>

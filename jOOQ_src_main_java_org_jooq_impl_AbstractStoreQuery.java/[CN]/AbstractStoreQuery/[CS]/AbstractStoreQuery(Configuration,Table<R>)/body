@@ -1,5 +1,3 @@
 {
-  super(configuration);
-  this.into=into;
-  this.returning=new QueryPartList<Field<?>>();
+  super(configuration,table);
 }

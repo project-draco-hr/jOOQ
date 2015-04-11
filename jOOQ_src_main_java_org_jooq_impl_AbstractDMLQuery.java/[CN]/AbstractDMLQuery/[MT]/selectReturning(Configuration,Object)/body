@@ -1,14 +1,14 @@
 {
   if (values != null && values.length > 0) {
-    if (into.getIdentity() != null) {
-      final Field<Number> field=(Field<Number>)into.getIdentity().getField();
+    if (table.getIdentity() != null) {
+      final Field<Number> field=(Field<Number>)table.getIdentity().getField();
       Number[] ids=new Number[values.length];
       for (int i=0; i < values.length; i++) {
         ids[i]=field.getDataType().convert(values[i]);
       }
       if (returning.size() == 1 && new Fields<Record>(returning).field(field) != null) {
         for (        final Number id : ids) {
-          getReturnedRecords().add(Utils.newRecord(true,into,configuration).operate(new RecordOperation<R,RuntimeException>(){
+          getReturnedRecords().add(Utils.newRecord(true,table,configuration).operate(new RecordOperation<R,RuntimeException>(){
             @Override public R operate(            R record) throws RuntimeException {
               int index=record.fieldsRow().indexOf(field);
               ((AbstractRecord)record).values[index]=id;
@@ -20,7 +20,7 @@
         }
       }
  else {
-        returned=create(configuration).select(returning).from(into).where(field.in(ids)).fetchInto(into);
+        returned=create(configuration).select(returning).from(table).where(field.in(ids)).fetchInto(table);
       }
     }
   }

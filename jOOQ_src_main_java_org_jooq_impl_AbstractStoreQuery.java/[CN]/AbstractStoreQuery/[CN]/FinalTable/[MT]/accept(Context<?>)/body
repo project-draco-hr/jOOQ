@@ -1,3 +1,0 @@
-{
-  ctx.keyword("final table").sql(" (").formatIndentStart().formatNewLine().visit(AbstractStoreQuery.this).formatIndentEnd().formatNewLine().sql(')');
-}

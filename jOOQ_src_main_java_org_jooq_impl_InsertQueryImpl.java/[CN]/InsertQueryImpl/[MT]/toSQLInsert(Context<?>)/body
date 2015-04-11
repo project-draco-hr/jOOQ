@@ -1,6 +1,6 @@
 {
   boolean declareTables=ctx.declareTables();
-  ctx.start(INSERT_INSERT_INTO).keyword("insert").sql(' ').keyword((onDuplicateKeyIgnore && asList(MARIADB,MYSQL).contains(ctx.configuration().dialect())) ? "ignore " : "").keyword("into").sql(' ').declareTables(true).visit(getInto()).declareTables(declareTables);
+  ctx.start(INSERT_INSERT_INTO).keyword("insert").sql(' ').keyword((onDuplicateKeyIgnore && asList(MARIADB,MYSQL).contains(ctx.configuration().dialect())) ? "ignore " : "").keyword("into").sql(' ').declareTables(true).visit(table).declareTables(declareTables);
   if (insertMaps.isExecutable()) {
     ctx.sql(' ');
     insertMaps.insertMaps.get(0).toSQLReferenceKeys(ctx);
@@ -12,7 +12,7 @@ case DERBY:
 case MARIADB:
 case MYSQL:
       ctx.sql(' ').keyword("values").sql('(');
-    int count=getInto().fields().length;
+    int count=table.fields().length;
   String separator="";
 for (int i=0; i < count; i++) {
   ctx.sql(separator);

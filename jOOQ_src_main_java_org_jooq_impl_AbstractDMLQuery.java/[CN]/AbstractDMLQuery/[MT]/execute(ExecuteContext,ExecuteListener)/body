@@ -13,7 +13,7 @@ case SQLITE:
         ctx.rows(result);
         listener.executeEnd(ctx);
         DSLContext create=DSL.using(ctx.configuration());
-        returned=create.select(returning).from(getInto()).where(rowid().equal(rowid().getDataType().convert(create.lastID()))).fetchInto(getInto());
+        returned=create.select(returning).from(table).where(rowid().equal(rowid().getDataType().convert(create.lastID()))).fetchInto(table);
         return result;
       }
 case CUBRID:
@@ -72,7 +72,7 @@ ExecuteContext ctx2=new DefaultExecuteContext(ctx.configuration());
 ExecuteListener listener2=new ExecuteListeners(ctx2);
 ctx2.resultSet(rs);
 returned=new CursorImpl<R>(ctx2,listener2,fieldArray(returning),null,false,true).fetch();
-if (getInto().fields().length > 0) returned=returned.into(getInto());
+if (table.fields().length > 0) returned=returned.into(table);
 return result;
 }
 }
