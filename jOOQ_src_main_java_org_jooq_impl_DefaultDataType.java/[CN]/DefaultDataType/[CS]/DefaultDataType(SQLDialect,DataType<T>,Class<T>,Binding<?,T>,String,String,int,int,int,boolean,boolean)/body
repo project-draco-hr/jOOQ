@@ -43,5 +43,5 @@
       SQL_DATATYPES_BY_TYPE.put(type,this);
     }
   }
-  this.binding=binding != null ? binding : new DefaultBinding<T,T>(new IdentityConverter<T>(type),this.isLob());
+  this.binding=binding != null ? binding : new DefaultBinding<T,T>(Converters.identity(type),this.isLob());
 }

@@ -1,4 +1,4 @@
 {
-  this.converter=new IdentityConverter<Timestamp>(Timestamp.class);
+  this.converter=Converters.identity(Timestamp.class);
   this.delegate=new DefaultBinding<Timestamp,Timestamp>(converter);
 }
