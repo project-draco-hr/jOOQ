@@ -1,0 +1,4 @@
+{
+  Blob blob=newBlob(ctx.configuration(),ctx.value());
+  ctx.output().writeBlob(blob);
+}

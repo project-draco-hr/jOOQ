@@ -1,0 +1,4 @@
+{
+  Clob clob=newClob(ctx.configuration(),ctx.value());
+  ctx.statement().setClob(ctx.index(),clob);
+}

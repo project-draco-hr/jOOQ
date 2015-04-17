@@ -1,0 +1,3 @@
+{
+  ctx.statement().registerOutParameter(ctx.index(),Types.BLOB);
+}

@@ -1,0 +1,18 @@
+{
+  Connection c=configuration.connectionProvider().acquire();
+  try {
+    Clob clob=null;
+switch (configuration.family()) {
+default :
+{
+        clob=c.createClob();
+        break;
+      }
+  }
+  clob.setString(1,string);
+  return clob;
+}
+  finally {
+  configuration.connectionProvider().release(c);
+}
+}

@@ -1,0 +1,18 @@
+{
+  Connection c=configuration.connectionProvider().acquire();
+  try {
+    Blob blob=null;
+switch (configuration.family()) {
+default :
+{
+        blob=c.createBlob();
+        break;
+      }
+  }
+  blob.setBytes(1,bytes);
+  return blob;
+}
+  finally {
+  configuration.connectionProvider().release(c);
+}
+}

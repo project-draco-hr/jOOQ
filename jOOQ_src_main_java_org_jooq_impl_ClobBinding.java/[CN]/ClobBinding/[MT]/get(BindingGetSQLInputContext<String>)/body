@@ -1,0 +1,4 @@
+{
+  Clob clob=ctx.input().readClob();
+  ctx.value(clob == null ? null : clob.getSubString(1,(int)clob.length()));
+}

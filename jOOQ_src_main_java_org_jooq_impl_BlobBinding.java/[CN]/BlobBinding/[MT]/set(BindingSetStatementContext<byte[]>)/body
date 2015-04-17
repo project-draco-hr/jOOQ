@@ -1,0 +1,4 @@
+{
+  Blob blob=newBlob(ctx.configuration(),ctx.value());
+  ctx.statement().setBlob(ctx.index(),blob);
+}

@@ -1,0 +1,4 @@
+{
+  Blob blob=ctx.input().readBlob();
+  ctx.value(blob == null ? null : blob.getBytes(1,(int)blob.length()));
+}
