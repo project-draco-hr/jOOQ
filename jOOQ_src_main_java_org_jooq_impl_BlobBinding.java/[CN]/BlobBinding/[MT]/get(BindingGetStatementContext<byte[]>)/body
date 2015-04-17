@@ -1,4 +1,9 @@
 {
   Blob blob=ctx.statement().getBlob(ctx.index());
-  ctx.value(blob == null ? null : blob.getBytes(1,(int)blob.length()));
+  try {
+    ctx.value(blob == null ? null : blob.getBytes(1,(int)blob.length()));
+  }
+  finally {
+    JDBCUtils.safeFree(blob);
+  }
 }

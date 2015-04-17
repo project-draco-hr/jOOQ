@@ -1,4 +1,5 @@
 {
   Clob clob=newClob(ctx.configuration(),ctx.value());
+  DefaultExecuteContext.register(clob);
   ctx.output().writeClob(clob);
 }

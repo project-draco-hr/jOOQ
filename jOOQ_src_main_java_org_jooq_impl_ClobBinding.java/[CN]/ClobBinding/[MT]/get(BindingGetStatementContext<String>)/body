@@ -1,4 +1,9 @@
 {
   Clob clob=ctx.statement().getClob(ctx.index());
-  ctx.value(clob == null ? null : clob.getSubString(1,(int)clob.length()));
+  try {
+    ctx.value(clob == null ? null : clob.getSubString(1,(int)clob.length()));
+  }
+  finally {
+    JDBCUtils.safeFree(clob);
+  }
 }

@@ -1,4 +1,5 @@
 {
   Blob blob=newBlob(ctx.configuration(),ctx.value());
+  DefaultExecuteContext.register(blob);
   ctx.output().writeBlob(blob);
 }
