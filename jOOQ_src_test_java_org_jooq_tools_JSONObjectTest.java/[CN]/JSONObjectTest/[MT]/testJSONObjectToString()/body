@@ -1,0 +1,11 @@
+{
+  HashMap<String,String> map=new HashMap<String,String>();
+  map.put("foo","bar");
+  assertEquals(new JSONObject(map).toString(),"{\"foo\":\"bar\"}");
+  assertEquals(JSONObject.toJSONString(map),"{\"foo\":\"bar\"}");
+  map.put("jOOQ","isfun!");
+  String s=new JSONObject(map).toString();
+  assertTrue(s.equals("{\"foo\":\"bar\",\"jOOQ\":\"isfun!\"}") || s.equals("{\"jOOQ\":\"isfun!\",\"foo\":\"bar\"}"));
+  s=JSONObject.toJSONString(map);
+  assertTrue(s.equals("{\"foo\":\"bar\",\"jOOQ\":\"isfun!\"}") || s.equals("{\"jOOQ\":\"isfun!\",\"foo\":\"bar\"}"));
+}
