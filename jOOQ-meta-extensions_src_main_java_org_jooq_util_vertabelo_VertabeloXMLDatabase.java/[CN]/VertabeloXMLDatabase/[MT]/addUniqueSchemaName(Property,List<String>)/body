@@ -1,0 +1,9 @@
+{
+  String schemaName="";
+  if (additionalProperty != null) {
+    schemaName=additionalProperty.getValue();
+  }
+  if (!schemaNames.contains(schemaName)) {
+    schemaNames.add(schemaName);
+  }
+}

@@ -1,0 +1,17 @@
+{
+  filterTablesBySchema(databaseModel().getTables(),new TableOperation(){
+    @Override public void invoke(    Table table,    String schemaName){
+      SchemaDefinition schema=getSchema(schemaName);
+      TableDefinition tableDefinition=getTable(schema,table.getName());
+      if (tableDefinition != null) {
+        for (        AlternateKey alternateKey : table.getAlternateKeys()) {
+          for (          AlternateKeyColumn alternateKeyColumn : alternateKey.getColumns()) {
+            Column column=(Column)alternateKeyColumn.getColumn();
+            relations.addUniqueKey(alternateKey.getName(),tableDefinition.getColumn(column.getName()));
+          }
+        }
+      }
+    }
+  }
+);
+}

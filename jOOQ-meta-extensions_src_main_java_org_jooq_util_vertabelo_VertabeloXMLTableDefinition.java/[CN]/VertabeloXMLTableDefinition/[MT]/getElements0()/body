@@ -1,0 +1,8 @@
+{
+  if (table != null) {
+    return getTableElements();
+  }
+ else {
+    return getViewElements();
+  }
+}

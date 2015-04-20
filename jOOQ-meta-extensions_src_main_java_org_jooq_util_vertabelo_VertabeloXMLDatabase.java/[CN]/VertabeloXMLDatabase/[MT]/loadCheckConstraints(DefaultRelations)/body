@@ -1,0 +1,21 @@
+{
+  filterTablesBySchema(databaseModel().getTables(),new TableOperation(){
+    @Override public void invoke(    Table table,    String schemaName){
+      SchemaDefinition schema=getSchema(schemaName);
+      TableDefinition tableDefinition=getTable(schema,table.getName());
+      if (tableDefinition != null) {
+        for (        TableCheck tableCheck : table.getTableChecks()) {
+          CheckConstraintDefinition checkConstraintDefinition=new DefaultCheckConstraintDefinition(schema,tableDefinition,tableCheck.getName(),tableCheck.getCheckExpression());
+          relations.addCheckConstraint(tableDefinition,checkConstraintDefinition);
+        }
+        for (        Column column : table.getColumns()) {
+          if (!StringUtils.isBlank(column.getCheckExpression())) {
+            CheckConstraintDefinition checkConstraintDefinition=new DefaultCheckConstraintDefinition(schema,tableDefinition,table.getName() + "_" + column.getName()+ "_check",column.getCheckExpression());
+            relations.addCheckConstraint(tableDefinition,checkConstraintDefinition);
+          }
+        }
+      }
+    }
+  }
+);
+}

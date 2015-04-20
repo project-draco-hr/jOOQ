@@ -1,0 +1,18 @@
+{
+  final List<TableDefinition> result=new ArrayList<TableDefinition>();
+  filterTablesBySchema(databaseModel().getTables(),new TableOperation(){
+    @Override public void invoke(    Table table,    String schemaName){
+      SchemaDefinition schema=getSchema(schemaName);
+      result.add(new VertabeloXMLTableDefinition(schema,table));
+    }
+  }
+);
+  filterViewsBySchema(databaseModel().getViews(),new ViewOperation(){
+    @Override public void invoke(    View view,    String schemaName){
+      SchemaDefinition schema=getSchema(schemaName);
+      result.add(new VertabeloXMLTableDefinition(schema,view));
+    }
+  }
+);
+  return result;
+}
