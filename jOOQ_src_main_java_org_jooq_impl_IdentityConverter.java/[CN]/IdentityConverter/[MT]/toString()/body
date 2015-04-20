@@ -1,3 +1,0 @@
-{
-  return "IdentityConverter [" + type.getName() + "]";
-}

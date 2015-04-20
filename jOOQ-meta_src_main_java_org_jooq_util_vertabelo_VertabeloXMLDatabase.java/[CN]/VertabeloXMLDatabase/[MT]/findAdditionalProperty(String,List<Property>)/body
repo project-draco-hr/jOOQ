@@ -1,8 +1,0 @@
-{
-  for (  Property property : properties) {
-    if (property.getName().equalsIgnoreCase(name)) {
-      return property;
-    }
-  }
-  return null;
-}

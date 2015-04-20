@@ -1,6 +1,0 @@
-{
-  if (additionalProperty != null) {
-    return additionalProperty.getValue();
-  }
-  return "";
-}

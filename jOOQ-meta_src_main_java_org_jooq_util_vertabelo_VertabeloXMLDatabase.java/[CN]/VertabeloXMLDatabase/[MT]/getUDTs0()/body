@@ -1,4 +1,0 @@
-{
-  List<UDTDefinition> result=new ArrayList<UDTDefinition>();
-  return result;
-}
