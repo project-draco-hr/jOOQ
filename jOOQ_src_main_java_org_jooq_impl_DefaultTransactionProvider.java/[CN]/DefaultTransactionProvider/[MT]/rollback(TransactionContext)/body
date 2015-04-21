@@ -3,7 +3,7 @@
   Savepoint savepoint=null;
   if (!savepoints.isEmpty())   savepoint=savepoints.pop();
   try {
-    if (savepoint == null)     connection(ctx.configuration()).rollback();
+    if (savepoint == null || savepoint == DUMMY_SAVEPOINT)     connection(ctx.configuration()).rollback();
  else     connection(ctx.configuration()).rollback(savepoint);
   }
   finally {

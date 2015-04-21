@@ -3,5 +3,7 @@
   if (savepoints.isEmpty()) {
     brace(ctx.configuration(),true);
   }
-  savepoints.push(connection(ctx.configuration()).setSavepoint());
+  Savepoint savepoint=setSavepoint(ctx.configuration());
+  if (savepoint == DUMMY_SAVEPOINT && savepoints.size() > 0)   throw new DataAccessException("Cannot nest transactions because Savepoints are not supported");
+  savepoints.push(savepoint);
 }

@@ -1,7 +1,7 @@
 {
   Stack<Savepoint> savepoints=savepoints(ctx.configuration());
   Savepoint savepoint=savepoints.pop();
-  if (savepoint != null)   try {
+  if (savepoint != null && savepoint != DUMMY_SAVEPOINT)   try {
     connection(ctx.configuration()).releaseSavepoint(savepoint);
   }
  catch (  DataAccessException ignore) {

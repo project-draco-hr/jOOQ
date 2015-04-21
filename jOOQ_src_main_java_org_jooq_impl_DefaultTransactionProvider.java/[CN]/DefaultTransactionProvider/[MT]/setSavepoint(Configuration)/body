@@ -1,0 +1,6 @@
+{
+switch (configuration.family()) {
+default :
+    return connection(configuration).setSavepoint();
+}
+}
