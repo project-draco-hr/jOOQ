@@ -1,5 +1,8 @@
 {
   String separator="";
+  boolean unqualified=asList(H2,HSQLDB).contains(ctx.family());
+  boolean qualify=ctx.qualify();
+  if (unqualified)   ctx.qualify(false);
   for (  Table<?> table : this) {
     for (    Field<?> field : table.fieldsRow().fields()) {
       ctx.sql(separator);
@@ -7,4 +10,5 @@
       separator=", ";
     }
   }
+  if (unqualified)   ctx.qualify(qualify);
 }
