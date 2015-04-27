@@ -1,6 +1,6 @@
 {
-  log.info("Generating ENUM",getStrategy().getFileName(e,Mode.ENUM));
   JavaWriter out=newJavaWriter(getStrategy().getFile(e,Mode.ENUM));
+  log.info("Generating ENUM",out.file().getName());
   generateEnum(e,out);
   out.close();
 }

@@ -1,6 +1,6 @@
 {
-  log.info("Generating routine",getStrategy().getFileName(routine));
   JavaWriter out=newJavaWriter(getStrategy().getFile(routine));
+  log.info("Generating routine",out.file().getName());
   generateRoutine(routine,out);
   out.close();
 }

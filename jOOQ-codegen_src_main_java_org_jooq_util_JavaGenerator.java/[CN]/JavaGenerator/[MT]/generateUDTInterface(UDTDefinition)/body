@@ -1,6 +1,6 @@
 {
-  log.info("Generating interface",getStrategy().getFileName(udt,Mode.INTERFACE));
   JavaWriter out=newJavaWriter(getStrategy().getFile(udt,Mode.INTERFACE));
+  log.info("Generating interface",out.file().getName());
   generateInterface(udt,out);
   out.close();
 }

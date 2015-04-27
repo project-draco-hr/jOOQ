@@ -7,7 +7,7 @@
   String pType=out.ref(getStrategy().getFullJavaClassName(table,Mode.POJO));
   UniqueKeyDefinition key=table.getPrimaryKey();
   if (key == null) {
-    log.info("Skipping DAO generation",getStrategy().getFileName(table,Mode.DAO));
+    log.info("Skipping DAO generation",out.file().getName());
     return;
   }
   List<ColumnDefinition> keyColumns=key.getKeyColumns();
