@@ -1,7 +1,6 @@
 {
   StringBuilder result=new StringBuilder();
-  String cc=StringUtils.toCamelCase(definition.getOutputName());
-  result.append(GenerationUtil.convertToJavaIdentifier(cc));
+  result.append(StringUtils.toCamelCase(definition.getOutputName()));
   if (mode == Mode.RECORD) {
     result.append("Record");
   }

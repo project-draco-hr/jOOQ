@@ -2,6 +2,6 @@
   String methodName;
   methodName=delegate.getJavaMethodName(definition,mode);
   methodName=overload(definition,mode,methodName);
-  methodName=convertToJavaIdentifier(methodName);
+  methodName=convertToIdentifier(methodName,language);
   return disambiguateMethod(definition,methodName);
 }

@@ -10,7 +10,7 @@
   for (int i=0; i < literals.size(); i++) {
     String literal=literals.get(i);
     String terminator=(i == literals.size() - 1) ? ";" : ",";
-    String identifier=GenerationUtil.convertToJavaIdentifier(literal);
+    String identifier=convertToIdentifier(literal,language);
     if (identifier.equals(getStrategy().getJavaPackageName(e).replaceAll("\\..*",""))) {
       identifier+="_";
     }

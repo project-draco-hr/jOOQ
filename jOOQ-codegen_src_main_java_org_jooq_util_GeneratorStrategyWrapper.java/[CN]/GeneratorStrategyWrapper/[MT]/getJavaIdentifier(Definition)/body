@@ -5,7 +5,7 @@
   if (definition instanceof SchemaDefinition && ((SchemaDefinition)definition).isDefaultSchema()) {
     return "DEFAULT_SCHEMA";
   }
-  String identifier=convertToJavaIdentifier(delegate.getJavaIdentifier(definition));
+  String identifier=convertToIdentifier(delegate.getJavaIdentifier(definition),language);
   if (definition instanceof ColumnDefinition || definition instanceof AttributeDefinition) {
     TypedElementDefinition<?> e=(TypedElementDefinition<?>)definition;
     if (identifier.equals(getJavaIdentifier(e.getContainer()))) {

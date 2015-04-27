@@ -8,6 +8,6 @@
   String className;
   className=delegate.getJavaClassName(definition,mode);
   className=overload(definition,mode,className);
-  className=convertToJavaIdentifier(className);
+  className=convertToIdentifier(className,language);
   return className;
 }

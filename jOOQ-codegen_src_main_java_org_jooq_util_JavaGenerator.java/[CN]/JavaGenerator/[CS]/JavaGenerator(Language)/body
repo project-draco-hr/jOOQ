@@ -1,5 +1,5 @@
 {
-  this.language=language;
+  super(language);
   this.scala=(language == SCALA);
   this.tokenVoid=(scala ? "Unit" : "void");
 }

@@ -1,4 +1,5 @@
 {
   this.generator=generator;
   this.delegate=delegate;
+  this.language=language;
 }

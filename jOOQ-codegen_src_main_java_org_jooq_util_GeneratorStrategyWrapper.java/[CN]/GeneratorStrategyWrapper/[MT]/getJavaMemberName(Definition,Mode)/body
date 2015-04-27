@@ -1,5 +1,5 @@
 {
-  String identifier=convertToJavaIdentifier(delegate.getJavaMemberName(definition,mode));
+  String identifier=convertToIdentifier(delegate.getJavaMemberName(definition,mode),language);
   if (identifier.equals(getJavaPackageName(definition,mode).replaceAll("\\..*",""))) {
     return identifier + "_";
   }
