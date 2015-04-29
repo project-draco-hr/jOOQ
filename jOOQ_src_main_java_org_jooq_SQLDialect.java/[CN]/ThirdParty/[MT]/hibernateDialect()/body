@@ -1,0 +1,28 @@
+{
+switch (SQLDialect.this) {
+case CUBRID:
+    return "org.hibernate.dialect.CUBRIDDialect";
+case DERBY:
+  return "org.hibernate.dialect.DerbyTenSevenDialect";
+case FIREBIRD:
+return "org.hibernate.dialect.FirebirdDialect";
+case H2:
+return "org.hibernate.dialect.H2Dialect";
+case HSQLDB:
+return "org.hibernate.dialect.HSQLDialect";
+case MARIADB:
+case MYSQL:
+return "org.hibernate.dialect.MySQL5Dialect";
+case POSTGRES_9_3:
+return "org.hibernate.dialect.PostgreSQL92Dialect";
+case POSTGRES_9_4:
+case POSTGRES:
+return "org.hibernate.dialect.PostgreSQL94Dialect";
+case SQLITE:
+return null;
+case DEFAULT:
+case SQL99:
+default :
+return null;
+}
+}
