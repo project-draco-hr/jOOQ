@@ -20,8 +20,6 @@ case POSTGRES:
 return "org.hibernate.dialect.PostgreSQL94Dialect";
 case SQLITE:
 return null;
-case DEFAULT:
-case SQL99:
 default :
 return null;
 }

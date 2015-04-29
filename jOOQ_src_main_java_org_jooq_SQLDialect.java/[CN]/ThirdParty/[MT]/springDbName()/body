@@ -1,0 +1,17 @@
+{
+switch (SQLDialect.this.family) {
+case DERBY:
+    return "Derby";
+case H2:
+  return "H2";
+case HSQLDB:
+return "HSQL";
+case MARIADB:
+case MYSQL:
+return "MySQL";
+case POSTGRES:
+return "PostgreSQL";
+default :
+return null;
+}
+}
