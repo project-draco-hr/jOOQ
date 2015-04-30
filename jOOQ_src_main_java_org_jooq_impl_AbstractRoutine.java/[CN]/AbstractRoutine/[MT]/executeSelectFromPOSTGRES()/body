@@ -1,0 +1,8 @@
+{
+  DSLContext create=create(configuration);
+  Result<?> result=create.select().from("{0}",asField()).fetch();
+  int i=0;
+  if (returnParameter != null)   outValues.put(returnParameter,returnParameter.getDataType().convert(result.getValue(0,i++)));
+  for (  Parameter<?> p : outParameters)   outValues.put(p,p.getDataType().convert(result.getValue(0,i++)));
+  return 0;
+}

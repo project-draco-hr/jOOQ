@@ -1,14 +1,18 @@
 {
+  SQLDialect family=configuration.family();
   results.clear();
   outValues.clear();
-  if (type == null) {
+  if (family == POSTGRES) {
+    return executeSelectFromPOSTGRES();
+  }
+ else   if (type == null) {
     return executeCallableStatement();
   }
  else {
-switch (configuration.dialect().family()) {
+switch (family) {
 case HSQLDB:
       if (SQLDataType.RESULT.equals(type.getSQLDataType())) {
-        return executeSelectFrom();
+        return executeSelectFromHSQLDB();
       }
  else {
       }

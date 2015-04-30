@@ -5,7 +5,12 @@ case HSQLDB:
       ctx.keyword("table(").visit(function).sql(')');
       break;
     }
+case POSTGRES:
+{
+    ctx.visit(function);
+    break;
+  }
 default :
-  throw new SQLDialectNotSupportedException("FUNCTION TABLE is not supported for " + ctx.configuration().dialect());
+throw new SQLDialectNotSupportedException("FUNCTION TABLE is not supported for " + ctx.configuration().dialect());
 }
 }

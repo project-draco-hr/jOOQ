@@ -18,12 +18,8 @@
       continue;
     }
  else {
-      Field<?> value=getInValues().get(parameter);
-      if (POSTGRES == context.family() && isOverloaded()) {
-        value=value.cast(parameter.getType());
-      }
       context.sql(separator);
-      toSQLInParam(context,parameter,value);
+      toSQLInParam(context,parameter,getInValues().get(parameter));
     }
     separator=", ";
   }
