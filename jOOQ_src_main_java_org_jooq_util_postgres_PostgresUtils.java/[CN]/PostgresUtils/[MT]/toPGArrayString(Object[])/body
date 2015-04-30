@@ -4,15 +4,10 @@
   String separator="";
   for (  Object o : value) {
     sb.append(separator);
-    if (o == null) {
-      sb.append(o);
-    }
- else {
-      sb.append("\"");
-      sb.append(o.toString().replace("\\","\\\\").replace("\"","\\\""));
-      sb.append("\"");
-    }
-    separator=", ";
+    if (o == null)     sb.append(o);
+ else     if (o instanceof byte[])     sb.append(toPGString((byte[])o));
+ else     sb.append("\"").append(toPGString(o).replace("\\","\\\\").replace("\"","\\\"")).append("\"");
+    separator=",";
   }
   sb.append("}");
   return sb.toString();

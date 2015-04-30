@@ -1,0 +1,14 @@
+{
+  if (o instanceof byte[]) {
+    return toPGString((byte[])o);
+  }
+ else   if (o instanceof Object[]) {
+    return toPGArrayString((Object[])o);
+  }
+ else   if (o instanceof Record) {
+    return toPGString((Record)o);
+  }
+ else {
+    return "" + o;
+  }
+}

@@ -25,7 +25,7 @@
         render.keyword("hextoraw('").sql(convertBytesToHex(binary)).sql("')");
       }
  else       if (family == POSTGRES) {
-        render.sql("E'").sql(convertBytesToPostgresOctal(binary)).keyword("'::bytea");
+        render.sql("E'").sql(PostgresUtils.toPGString(binary)).keyword("'::bytea");
       }
  else {
         render.sql("X'").sql(convertBytesToHex(binary)).sql('\'');
@@ -92,6 +92,9 @@
           separator=", ";
         }
         render.sql(')');
+      }
+ else       if (family == POSTGRES) {
+        render.visit(inline(PostgresUtils.toPGArrayString((Object[])val)));
       }
  else {
         render.keyword("ARRAY");
