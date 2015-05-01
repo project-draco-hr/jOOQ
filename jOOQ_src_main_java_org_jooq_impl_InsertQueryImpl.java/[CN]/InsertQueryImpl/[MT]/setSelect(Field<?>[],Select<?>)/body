@@ -1,0 +1,4 @@
+{
+  insertMaps.getMap().putFields(Arrays.asList(f));
+  select=s;
+}

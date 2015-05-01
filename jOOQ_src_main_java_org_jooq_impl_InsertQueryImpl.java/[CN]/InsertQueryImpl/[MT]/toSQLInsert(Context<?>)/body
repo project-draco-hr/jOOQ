@@ -6,7 +6,10 @@
     insertMaps.insertMaps.get(0).toSQLReferenceKeys(ctx);
   }
   ctx.end(INSERT_INSERT_INTO);
-  if (defaultValues) {
+  if (select != null) {
+    ctx.formatSeparator().start(INSERT_SELECT).visit(select).end(INSERT_SELECT);
+  }
+ else   if (defaultValues) {
 switch (ctx.configuration().dialect().family()) {
 case DERBY:
 case MARIADB:
