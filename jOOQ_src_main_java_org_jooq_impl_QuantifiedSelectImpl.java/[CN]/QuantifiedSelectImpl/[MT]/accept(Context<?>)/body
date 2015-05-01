@@ -1,8 +1,10 @@
 {
+  Object data=ctx.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY);
+  boolean extraParentheses=data != null && asList().contains(ctx.family());
   if (ctx.subquery()) {
-    ctx.keyword(quantifier.toSQL()).sql(" (").formatIndentStart().formatNewLine().visit(delegate(ctx.configuration())).formatIndentEnd().formatNewLine().sql(')');
+    ctx.keyword(quantifier.toSQL()).sql(extraParentheses ? " ((" : " (").formatIndentStart().formatNewLine().visit(delegate(ctx.configuration())).formatIndentEnd().formatNewLine().sql(extraParentheses ? "))" : ")");
   }
  else {
-    ctx.keyword(quantifier.toSQL()).sql(" (").subquery(true).formatIndentStart().formatNewLine().visit(delegate(ctx.configuration())).formatIndentEnd().formatNewLine().subquery(false).sql(')');
+    ctx.keyword(quantifier.toSQL()).sql(extraParentheses ? " ((" : " (").subquery(true).formatIndentStart().formatNewLine().visit(delegate(ctx.configuration())).formatIndentEnd().formatNewLine().subquery(false).sql(extraParentheses ? "))" : ")");
   }
 }
