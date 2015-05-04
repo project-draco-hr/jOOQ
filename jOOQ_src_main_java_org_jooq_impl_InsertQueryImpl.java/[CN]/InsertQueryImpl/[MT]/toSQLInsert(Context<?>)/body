@@ -10,11 +10,11 @@
     ctx.formatSeparator().start(INSERT_SELECT).visit(select).end(INSERT_SELECT);
   }
  else   if (defaultValues) {
-switch (ctx.configuration().dialect().family()) {
+switch (ctx.family()) {
 case DERBY:
 case MARIADB:
 case MYSQL:
-      ctx.sql(' ').keyword("values").sql('(');
+      ctx.formatSeparator().keyword("values").sql('(');
     int count=table.fields().length;
   String separator="";
 for (int i=0; i < count; i++) {
@@ -25,7 +25,7 @@ for (int i=0; i < count; i++) {
 ctx.sql(')');
 break;
 default :
-ctx.sql(' ').keyword("default values");
+ctx.formatSeparator().keyword("default values");
 break;
 }
 }
