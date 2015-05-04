@@ -14,31 +14,15 @@
     return caseExpression;
   }
  else   if (asList(MARIADB,MYSQL).contains(configuration.family())) {
-    if (mySQLCondition == null) {
-      if (comparator == IS_DISTINCT_FROM) {
-        mySQLCondition=(QueryPartInternal)condition("{not}({0} <=> {1})",lhs,rhs);
-      }
- else {
-        mySQLCondition=(QueryPartInternal)condition("{0} <=> {1}",lhs,rhs);
-      }
-    }
+    if (mySQLCondition == null)     mySQLCondition=(QueryPartInternal)((comparator == IS_DISTINCT_FROM) ? condition("{not}({0} <=> {1})",lhs,rhs) : condition("{0} <=> {1}",lhs,rhs));
     return mySQLCondition;
   }
  else   if (SQLITE == configuration.family()) {
-    if (sqliteCondition == null) {
-      if (comparator == IS_DISTINCT_FROM) {
-        sqliteCondition=(QueryPartInternal)condition("{0} {is not} {1}",lhs,rhs);
-      }
- else {
-        sqliteCondition=(QueryPartInternal)condition("{0} {is} {1}",lhs,rhs);
-      }
-    }
+    if (sqliteCondition == null)     sqliteCondition=(QueryPartInternal)((comparator == IS_DISTINCT_FROM) ? condition("{0} {is not} {1}",lhs,rhs) : condition("{0} {is} {1}",lhs,rhs));
     return sqliteCondition;
   }
  else {
-    if (compareCondition == null) {
-      compareCondition=new CompareCondition(lhs,rhs,comparator);
-    }
+    if (compareCondition == null)     compareCondition=new CompareCondition(lhs,rhs,comparator);
     return compareCondition;
   }
 }

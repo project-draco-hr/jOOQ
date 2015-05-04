@@ -1,11 +1,6 @@
 {
   if (symmetric && asList(CUBRID,DERBY,FIREBIRD,H2,MARIADB,MYSQL,SQLITE).contains(configuration.dialect().family())) {
-    if (not) {
-      return (QueryPartInternal)field.notBetween(minValue,maxValue).and(field.notBetween(maxValue,minValue));
-    }
- else {
-      return (QueryPartInternal)field.between(minValue,maxValue).or(field.between(maxValue,minValue));
-    }
+    return not ? (QueryPartInternal)field.notBetween(minValue,maxValue).and(field.notBetween(maxValue,minValue)) : (QueryPartInternal)field.between(minValue,maxValue).or(field.between(maxValue,minValue));
   }
  else {
     return new Native();

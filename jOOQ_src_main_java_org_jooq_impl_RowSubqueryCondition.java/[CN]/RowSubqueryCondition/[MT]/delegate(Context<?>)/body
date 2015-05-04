@@ -8,12 +8,6 @@
  else   if (asList(H2,HSQLDB,MARIADB,MYSQL,POSTGRES).contains(family)) {
     return new Native();
   }
- else   if (asList(H2,HSQLDB,MARIADB,MYSQL,POSTGRES).contains(family) && asList(EQUALS,NOT_EQUALS).contains(comparator)) {
-    return new Native();
-  }
- else   if (asList(H2,HSQLDB,MARIADB,MYSQL,POSTGRES).contains(family) && asList(IN,NOT_IN).contains(comparator)) {
-    return new Native();
-  }
  else {
     String table=render == null ? "t" : render.nextAlias();
     List<String> names=new ArrayList<String>();

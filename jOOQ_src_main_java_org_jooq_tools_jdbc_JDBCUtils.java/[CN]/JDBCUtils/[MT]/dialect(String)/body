@@ -1,6 +1,8 @@
 {
-  if (url == null)   return DEFAULT;
-  if (url.startsWith("jdbc:cubrid:")) {
+  if (url == null) {
+    return DEFAULT;
+  }
+ else   if (url.startsWith("jdbc:cubrid:")) {
     return CUBRID;
   }
  else   if (url.startsWith("jdbc:derby:")) {

@@ -3,12 +3,7 @@
   RowN min=(RowN)minValue;
   RowN max=(RowN)maxValue;
   if (symmetric && asList(CUBRID,DERBY,FIREBIRD,H2,MARIADB,MYSQL,SQLITE).contains(configuration.dialect().family())) {
-    if (not) {
-      return (QueryPartInternal)r.notBetween(min,max).and(r.notBetween(max,min));
-    }
- else {
-      return (QueryPartInternal)r.between(min,max).or(r.between(max,min));
-    }
+    return not ? (QueryPartInternal)r.notBetween(min,max).and(r.notBetween(max,min)) : (QueryPartInternal)r.between(min,max).or(r.between(max,min));
   }
  else   if (row.size() > 1 && asList(CUBRID,DERBY,FIREBIRD,MARIADB,MYSQL,SQLITE).contains(configuration.dialect().family())) {
     Condition result=r.ge(min).and(r.le(max));

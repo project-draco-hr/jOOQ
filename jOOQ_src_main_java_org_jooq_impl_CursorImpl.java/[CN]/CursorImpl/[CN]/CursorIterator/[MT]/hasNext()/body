@@ -1,5 +1,6 @@
 {
   if (hasNext == null) {
+    if (maxRows > 0 && rows >= maxRows)     return false;
     next=fetchOne();
     hasNext=(next != null);
   }

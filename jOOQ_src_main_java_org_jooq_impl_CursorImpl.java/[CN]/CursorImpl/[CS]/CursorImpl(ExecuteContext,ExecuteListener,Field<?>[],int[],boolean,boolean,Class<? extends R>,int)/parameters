@@ -5,3 +5,4 @@ int[] internIndexes
 boolean keepStatement
 boolean keepResultSet
 Class<? extends R> type
+int maxRows

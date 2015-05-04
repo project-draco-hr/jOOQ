@@ -8,6 +8,7 @@
   this.rs=new CursorResultSet();
   this.rsContext=new DefaultBindingGetResultSetContext<Object>(ctx.configuration(),ctx.data(),rs,0);
   this.intern=new boolean[fields.length];
+  this.maxRows=maxRows;
   if (internIndexes != null) {
     for (    int i : internIndexes) {
       intern[i]=true;
