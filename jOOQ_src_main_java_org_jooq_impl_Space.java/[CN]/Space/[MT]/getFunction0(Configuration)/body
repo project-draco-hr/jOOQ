@@ -1,16 +1,16 @@
 {
 switch (configuration.family()) {
-case CUBRID:
-case MARIADB:
-case MYSQL:
-case H2:
-    return DSL.field("{space}({0})",getDataType(),count);
 case DERBY:
 case FIREBIRD:
 case HSQLDB:
 case POSTGRES:
 case SQLITE:
+    return DSL.repeat(DSL.inline(" "),count);
+case CUBRID:
+case MARIADB:
+case MYSQL:
+case H2:
 default :
-  return DSL.repeat(DSL.inline(" "),count);
+  return DSL.field("{space}({0})",getDataType(),count);
 }
 }
