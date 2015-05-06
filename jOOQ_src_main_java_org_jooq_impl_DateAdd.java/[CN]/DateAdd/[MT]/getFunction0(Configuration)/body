@@ -1,6 +1,5 @@
 {
   String keyword=null;
-  String function=null;
 switch (configuration.family()) {
 case CUBRID:
 case MARIADB:
