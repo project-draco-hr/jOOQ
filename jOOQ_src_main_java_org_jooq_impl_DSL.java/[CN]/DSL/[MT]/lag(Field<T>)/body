@@ -1,3 +1,3 @@
 {
-  return new Function<T>("lag",nullSafeDataType(field),nullSafe(field));
+  return new LeadLag<T>("lag",nullSafe(field));
 }

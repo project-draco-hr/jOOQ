@@ -1,0 +1,7 @@
+{
+  super(function,field.getDataType(),field);
+  this.function=function;
+  this.field=field;
+  this.offset=0;
+  this.defaultValue=null;
+}
