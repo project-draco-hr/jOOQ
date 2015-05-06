@@ -1,0 +1,12 @@
+{
+  if (is94 == null) {
+    try {
+      create().select(PARAMETERS.PARAMETER_DEFAULT).from(PARAMETERS).where(falseCondition()).fetch();
+      is94=true;
+    }
+ catch (    DataAccessException e) {
+      is94=false;
+    }
+  }
+  return is94;
+}
