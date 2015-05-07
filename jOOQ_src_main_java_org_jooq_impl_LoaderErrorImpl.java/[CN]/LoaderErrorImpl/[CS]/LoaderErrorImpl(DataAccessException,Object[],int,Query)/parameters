@@ -1,4 +1,4 @@
 DataAccessException exception
-String[] row
+Object[] row
 int rowIndex
 Query query

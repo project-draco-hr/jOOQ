@@ -1,2 +1,2 @@
 Field<T> field
-String string
+Object string

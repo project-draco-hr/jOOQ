@@ -1,9 +1,9 @@
 {
-  String[] row=null;
+  Object[] row=null;
   BatchBindStep bind=null;
   InsertQuery<R> insert=null;
   execution: {
-    rows:     while (reader.hasNext() && ((row=reader.next()) != null)) {
+    rows:     while (iterator.hasNext() && ((row=iterator.next()) != null)) {
       try {
         for (int i=0; i < row.length; i++)         if (StringUtils.equals(nullString,row[i]))         row[i]=null;
         processed++;

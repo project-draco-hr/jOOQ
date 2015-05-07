@@ -9,6 +9,9 @@
  else   if (content == CONTENT_JSON) {
     executeJSON();
   }
+ else   if (content == CONTENT_ROWS) {
+    executeRows();
+  }
  else {
     throw new IllegalStateException();
   }
