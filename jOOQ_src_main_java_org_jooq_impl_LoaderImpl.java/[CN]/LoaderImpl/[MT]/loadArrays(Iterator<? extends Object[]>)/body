@@ -1,0 +1,5 @@
+{
+  content=CONTENT_ARRAYS;
+  this.arrays=a;
+  return this;
+}

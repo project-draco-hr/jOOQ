@@ -1,3 +1,0 @@
-{
-  return loadRows(Arrays.asList(r));
-}

@@ -1,0 +1,3 @@
+{
+  return loadArrays(Arrays.asList(a));
+}

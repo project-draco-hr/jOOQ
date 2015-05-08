@@ -9,7 +9,7 @@
  else   if (content == CONTENT_JSON) {
     executeJSON();
   }
- else   if (content == CONTENT_ROWS) {
+ else   if (content == CONTENT_ARRAYS) {
     executeRows();
   }
  else {

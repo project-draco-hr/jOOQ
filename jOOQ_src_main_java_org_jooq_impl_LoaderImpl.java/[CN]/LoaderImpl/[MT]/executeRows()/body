@@ -1,6 +1,6 @@
 {
   try {
-    executeSQL(rows);
+    executeSQL(arrays);
   }
  catch (  SQLException e) {
     throw Utils.translate(null,e);
