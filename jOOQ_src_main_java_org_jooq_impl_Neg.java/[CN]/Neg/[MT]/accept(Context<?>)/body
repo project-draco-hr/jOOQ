@@ -1,7 +1,7 @@
 {
   SQLDialect family=ctx.configuration().dialect().family();
   if (operator == BIT_NOT && asList(H2,HSQLDB).contains(family)) {
-    ctx.sql("(0 -").visit(field).sql(" - 1)");
+    ctx.sql("(0 - ").visit(field).sql(" - 1)");
   }
  else   if (operator == BIT_NOT && family == FIREBIRD) {
     ctx.keyword("bin_not(").visit(field).sql(')');
