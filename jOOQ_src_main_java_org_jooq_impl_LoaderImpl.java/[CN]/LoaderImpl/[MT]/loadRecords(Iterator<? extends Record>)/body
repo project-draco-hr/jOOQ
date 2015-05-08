@@ -1,0 +1,9 @@
+{
+  return loadRows(new MappingIterator<Record,Object[]>(records,new MappingIterator.Function<Record,Object[]>(){
+    @Override public final Object[] map(    Record value){
+      if (value == null)       return null;
+      return value.intoArray();
+    }
+  }
+));
+}

@@ -1,0 +1,3 @@
+{
+  return loadRecords(records.iterator());
+}

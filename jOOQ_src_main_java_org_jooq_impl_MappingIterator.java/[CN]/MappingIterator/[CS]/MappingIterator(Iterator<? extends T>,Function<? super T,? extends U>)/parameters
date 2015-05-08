@@ -1,0 +1,2 @@
+Iterator<? extends T> delegate
+Function<? super T,? extends U> mapper
