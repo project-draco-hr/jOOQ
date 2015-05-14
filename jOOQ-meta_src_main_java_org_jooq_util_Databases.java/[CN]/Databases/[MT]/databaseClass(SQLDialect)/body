@@ -1,6 +1,6 @@
 {
   Class<? extends Database> result=JDBCDatabase.class;
-switch (dialect.family()) {
+switch (dialect) {
 case CUBRID:
     result=CUBRIDDatabase.class;
   break;
@@ -22,11 +22,17 @@ break;
 case MYSQL:
 result=MySQLDatabase.class;
 break;
+case POSTGRES_9_3:
+case POSTGRES_9_4:
 case POSTGRES:
 result=PostgresDatabase.class;
 break;
 case SQLITE:
 result=SQLiteDatabase.class;
+break;
+case DEFAULT:
+case SQL99:
+result=JDBCDatabase.class;
 break;
 }
 return result;
