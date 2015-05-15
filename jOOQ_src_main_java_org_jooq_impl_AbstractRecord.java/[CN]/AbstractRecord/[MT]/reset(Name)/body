@@ -1,0 +1,3 @@
+{
+  reset(indexOrFail(fieldsRow(),fieldName));
+}

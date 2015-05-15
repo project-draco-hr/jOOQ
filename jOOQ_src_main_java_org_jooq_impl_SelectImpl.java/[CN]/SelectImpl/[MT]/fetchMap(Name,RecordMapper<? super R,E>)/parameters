@@ -1,0 +1,2 @@
+Name keyFieldName
+RecordMapper<? super R,E> mapper

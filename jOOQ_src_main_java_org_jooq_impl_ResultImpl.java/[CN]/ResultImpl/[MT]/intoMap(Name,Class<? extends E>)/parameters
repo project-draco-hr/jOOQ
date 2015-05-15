@@ -1,0 +1,2 @@
+Name keyFieldName
+Class<? extends E> type

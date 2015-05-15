@@ -1,0 +1,3 @@
+{
+  return sortAsc(indexOrFail(fieldsRow(),fieldName),comparator);
+}

@@ -1,0 +1,4 @@
+{
+  intern.internNames=fieldNames;
+  return this;
+}

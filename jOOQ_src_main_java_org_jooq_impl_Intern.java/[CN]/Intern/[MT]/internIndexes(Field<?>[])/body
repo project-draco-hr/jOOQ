@@ -5,6 +5,9 @@
  else   if (internFields != null) {
     return new Fields<Record>(fields).indexesOf(internFields);
   }
+ else   if (internNameStrings != null) {
+    return new Fields<Record>(fields).indexesOf(internNameStrings);
+  }
  else   if (internNames != null) {
     return new Fields<Record>(fields).indexesOf(internNames);
   }

@@ -1,0 +1,3 @@
+{
+  return changed(indexOrFail(fieldsRow(),fieldName));
+}
