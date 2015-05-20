@@ -99,7 +99,7 @@ if (asList().contains(dialect)) {
 context.sql("empty_grouping_dummy_table.dual");
 }
  else if (asList(CUBRID,DERBY,FIREBIRD,HSQLDB,MARIADB,MYSQL,POSTGRES,SQLITE).contains(dialect)) {
-context.sql('1');
+context.sql('(').visit(DSL.select(one())).sql(')');
 }
  else {
 context.sql("()");
