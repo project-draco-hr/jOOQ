@@ -1,0 +1,4 @@
+{
+  ParamType paramType=ctx.paramType();
+  ctx.paramType(INLINED).visit(sql).paramType(paramType);
+}
