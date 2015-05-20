@@ -1,6 +1,7 @@
 {
   if (ctx.declareCTE()) {
-    ctx.visit(name).sql(' ').keyword("as").sql(" (").formatIndentStart().formatNewLine().visit(select).formatIndentEnd().formatNewLine().sql(')');
+    boolean subquery=ctx.subquery();
+    ctx.visit(name).sql(' ').keyword("as").sql(" (").subquery(true).formatIndentStart().formatNewLine().visit(select).formatIndentEnd().formatNewLine().subquery(subquery).sql(')');
   }
  else {
     ctx.visit(DSL.name(name.name));
