@@ -1,6 +1,6 @@
 {
   int index=unionOp.size() - 1;
-  if (index == -1 || unionOp.get(index) != op || op == EXCEPT) {
+  if (index == -1 || unionOp.get(index) != op || op == EXCEPT || op == EXCEPT_ALL) {
     unionOp.add(op);
     union.add(new QueryPartList<Select<?>>());
     index++;

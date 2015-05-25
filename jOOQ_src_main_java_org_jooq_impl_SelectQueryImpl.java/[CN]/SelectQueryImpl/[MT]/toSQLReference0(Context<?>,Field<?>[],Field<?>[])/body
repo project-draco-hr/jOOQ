@@ -10,9 +10,15 @@ switch (unionOp.get(i)) {
 case EXCEPT:
         context.start(SELECT_EXCEPT);
       break;
-case INTERSECT:
-    context.start(SELECT_INTERSECT);
+case EXCEPT_ALL:
+    context.start(SELECT_EXCEPT_ALL);
   break;
+case INTERSECT:
+context.start(SELECT_INTERSECT);
+break;
+case INTERSECT_ALL:
+context.start(SELECT_INTERSECT_ALL);
+break;
 case UNION:
 context.start(SELECT_UNION);
 break;
@@ -136,8 +142,14 @@ switch (unionOp.get(i)) {
 case EXCEPT:
 context.end(SELECT_EXCEPT);
 break;
+case EXCEPT_ALL:
+context.end(SELECT_EXCEPT_ALL);
+break;
 case INTERSECT:
 context.end(SELECT_INTERSECT);
+break;
+case INTERSECT_ALL:
+context.end(SELECT_INTERSECT_ALL);
 break;
 case UNION:
 context.end(SELECT_UNION);
