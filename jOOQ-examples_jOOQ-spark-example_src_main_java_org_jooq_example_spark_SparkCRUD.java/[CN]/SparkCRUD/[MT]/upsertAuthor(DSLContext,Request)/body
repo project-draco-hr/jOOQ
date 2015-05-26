@@ -1,0 +1,7 @@
+{
+  AuthorRecord author=ctx.selectFrom(AUTHOR).where(AUTHOR.NAME.eq(request.queryParams("author"))).fetchOne();
+  if (author == null)   author=ctx.newRecord(AUTHOR);
+  author.setName(request.queryParams("author"));
+  author.store();
+  return author;
+}
