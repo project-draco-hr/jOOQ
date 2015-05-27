@@ -1,0 +1,4 @@
+{
+  boolean declareTables=ctx.declareTables();
+  ctx.keyword("rows from").sql(" (").declareTables(true).visit(tables).declareTables(declareTables).sql(')');
+}

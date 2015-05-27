@@ -1,0 +1,4 @@
+{
+  super("rows from");
+  this.tables=new TableList(Arrays.asList(tables));
+}
