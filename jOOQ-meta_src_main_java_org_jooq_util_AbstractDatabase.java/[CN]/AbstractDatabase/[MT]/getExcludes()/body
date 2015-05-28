@@ -1,3 +1,6 @@
 {
+  if (excludes == null) {
+    excludes=new String[0];
+  }
   return excludes;
 }

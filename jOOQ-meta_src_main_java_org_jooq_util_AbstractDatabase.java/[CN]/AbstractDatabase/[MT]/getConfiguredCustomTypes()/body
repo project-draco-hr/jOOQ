@@ -1,3 +1,6 @@
 {
+  if (configuredCustomTypes == null) {
+    configuredCustomTypes=new ArrayList<CustomType>();
+  }
   return configuredCustomTypes;
 }

@@ -1,3 +1,6 @@
 {
+  if (regexFlags == null) {
+    regexFlags=new ArrayList<RegexFlag>();
+  }
   return regexFlags;
 }

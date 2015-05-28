@@ -1,3 +1,6 @@
 {
+  if (configuredForcedTypes == null) {
+    configuredForcedTypes=new ArrayList<ForcedType>();
+  }
   return configuredForcedTypes;
 }

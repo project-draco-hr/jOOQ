@@ -1,3 +1,6 @@
 {
+  if (includes == null) {
+    includes=new String[0];
+  }
   return includes;
 }

@@ -1,3 +1,6 @@
 {
+  if (filters == null) {
+    filters=new ArrayList<Filter>();
+  }
   return Collections.unmodifiableList(filters);
 }

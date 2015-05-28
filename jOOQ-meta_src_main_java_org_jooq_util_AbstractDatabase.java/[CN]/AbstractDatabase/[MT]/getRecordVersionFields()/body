@@ -1,3 +1,6 @@
 {
+  if (recordVersionFields == null) {
+    recordVersionFields=new String[0];
+  }
   return recordVersionFields;
 }

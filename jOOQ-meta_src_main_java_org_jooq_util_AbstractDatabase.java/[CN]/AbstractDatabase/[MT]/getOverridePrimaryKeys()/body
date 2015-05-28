@@ -1,3 +1,6 @@
 {
+  if (overridePrimaryKeys == null) {
+    overridePrimaryKeys=new String[0];
+  }
   return overridePrimaryKeys;
 }

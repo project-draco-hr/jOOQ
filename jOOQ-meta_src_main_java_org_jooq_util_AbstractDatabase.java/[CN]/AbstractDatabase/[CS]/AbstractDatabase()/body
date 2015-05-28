@@ -1,5 +1,5 @@
 {
   exists=new HashMap<Table<?>,Boolean>();
   patterns=new HashMap<String,Pattern>();
-  filters=new ArrayList<Database.Filter>();
+  filters=new ArrayList<Filter>();
 }

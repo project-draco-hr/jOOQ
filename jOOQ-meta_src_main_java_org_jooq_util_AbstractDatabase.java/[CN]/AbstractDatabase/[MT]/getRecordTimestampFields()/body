@@ -1,3 +1,6 @@
 {
+  if (recordTimestampFields == null) {
+    recordTimestampFields=new String[0];
+  }
   return recordTimestampFields;
 }
