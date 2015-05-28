@@ -1,10 +1,11 @@
 {
-  ctx.start(UPDATE_UPDATE).keyword("update").sql(' ').declareTables(true).visit(table).declareTables(false).end(UPDATE_UPDATE);
+  boolean declareTables=ctx.declareTables();
+  ctx.start(UPDATE_UPDATE).keyword("update").sql(' ').declareTables(!asList().contains(ctx.family())).visit(table).declareTables(declareTables).end(UPDATE_UPDATE);
   ctx.formatSeparator().start(UPDATE_SET).keyword("set").sql(' ');
   if (multiRow != null) {
     boolean qualify=ctx.qualify();
     ctx.start(UPDATE_SET_ASSIGNMENT).qualify(false).visit(multiRow).qualify(qualify).sql(" = ");
-    if (multiValue != null && !asList().contains(ctx.configuration().dialect().family())) {
+    if (multiValue != null && !asList().contains(ctx.family())) {
       ctx.visit(multiValue);
     }
  else {
@@ -20,7 +21,7 @@
     ctx.formatIndentLockStart().visit(updateMap).formatIndentLockEnd();
   }
   ctx.end(UPDATE_SET);
-switch (ctx.configuration().dialect().family()) {
+switch (ctx.family()) {
 default :
     ctx.start(UPDATE_FROM);
   if (!from.isEmpty()) {
