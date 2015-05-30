@@ -14,8 +14,12 @@
       DataType<?> type=columnTypes.get(i);
       ctx.visit(columnFields.get(i)).sql(' ');
       Utils.toSQLDDLTypeDeclaration(ctx,type);
-      if (type.nullable())       ctx.sql(' ').keyword("null");
- else       ctx.sql(' ').keyword("not null");
+      if (type.nullable()) {
+        if (!asList(DERBY).contains(ctx.family()))         ctx.sql(' ').keyword("null");
+      }
+ else {
+        ctx.sql(' ').keyword("not null");
+      }
       if (i < columnFields.size() - 1)       ctx.sql(',').formatSeparator();
     }
     ctx.qualify(qualify);
