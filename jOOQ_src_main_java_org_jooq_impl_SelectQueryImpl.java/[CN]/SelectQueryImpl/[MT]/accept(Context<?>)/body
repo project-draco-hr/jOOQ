@@ -28,7 +28,7 @@ default :
   if (forUpdate && !asList(CUBRID).contains(family)) {
     context.formatSeparator().keyword("for update");
     if (!forUpdateOf.isEmpty()) {
-      boolean unqualified=asList(DERBY,H2,HSQLDB).contains(context.family());
+      boolean unqualified=asList(DERBY,FIREBIRD,H2,HSQLDB).contains(context.family());
       boolean qualify=context.qualify();
       if (unqualified)       context.qualify(false);
       context.sql(' ').keyword("of").sql(' ').visit(forUpdateOf);
