@@ -8,7 +8,7 @@
     if (!addColumnType.nullable()) {
       ctx.sql(' ').keyword("not null");
     }
- else     if (family != FIREBIRD) {
+ else     if (!asList(DERBY,FIREBIRD).contains(family)) {
       ctx.sql(' ').keyword("null");
     }
     ctx.end(ALTER_TABLE_ADD);
