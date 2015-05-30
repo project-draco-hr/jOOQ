@@ -32,6 +32,9 @@ break;
 ctx.sql(' ').qualify(false).visit(alterColumn).qualify(true);
 if (alterColumnType != null) {
 switch (family) {
+case DERBY:
+ctx.sql(' ').keyword("set data type");
+break;
 case POSTGRES:
 ctx.sql(' ').keyword("type");
 break;
