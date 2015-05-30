@@ -1,4 +1,5 @@
 {
   ctx.start(CREATE_SEQUENCE_SEQUENCE).keyword("create sequence").sql(' ').visit(sequence);
+  if (asList(DERBY).contains(ctx.family()))   ctx.keyword("start with").sql(" 1");
   ctx.end(CREATE_SEQUENCE_SEQUENCE);
 }
