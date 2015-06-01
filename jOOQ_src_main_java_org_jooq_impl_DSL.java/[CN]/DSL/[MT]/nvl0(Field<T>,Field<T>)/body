@@ -1,0 +1,3 @@
+{
+  return new Nvl<T>(nullSafe(value),nullSafe(defaultValue));
+}

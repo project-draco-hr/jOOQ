@@ -1,3 +1,3 @@
 {
-  return arrayReplace(val(array),val(search),val(replace));
+  return arrayReplace0(val(array),val(search),val(replace));
 }

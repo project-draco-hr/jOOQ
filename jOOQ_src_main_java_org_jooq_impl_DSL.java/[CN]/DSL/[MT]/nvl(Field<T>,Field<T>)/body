@@ -1,3 +1,3 @@
 {
-  return new Nvl<T>(nullSafe(value),nullSafe(defaultValue));
+  return nvl0(value,defaultValue);
 }

@@ -1,0 +1,3 @@
+{
+  return new Coalesce<T>(nullSafeDataType(field),nullSafe(combine(field,fields)));
+}

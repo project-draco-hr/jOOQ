@@ -1,3 +1,3 @@
 {
-  return arrayAppend(val(array),value);
+  return arrayAppend0(val(array),value);
 }
