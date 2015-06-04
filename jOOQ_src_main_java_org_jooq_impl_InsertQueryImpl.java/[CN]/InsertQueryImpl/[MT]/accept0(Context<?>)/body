@@ -1,6 +1,6 @@
 {
   if (onDuplicateKeyUpdate) {
-switch (ctx.configuration().dialect().family()) {
+switch (ctx.family()) {
 case CUBRID:
 case MARIADB:
 case MYSQL:
@@ -11,7 +11,7 @@ case MYSQL:
       }
 case H2:
 {
-      throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY UPDATE clause cannot be emulated for " + ctx.configuration().dialect());
+      throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY UPDATE clause cannot be emulated for " + ctx.dialect());
     }
 case HSQLDB:
 {
@@ -19,11 +19,11 @@ case HSQLDB:
     break;
   }
 default :
-throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY UPDATE clause cannot be emulated for " + ctx.configuration().dialect());
+throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY UPDATE clause cannot be emulated for " + ctx.dialect());
 }
 }
  else if (onDuplicateKeyIgnore) {
-switch (ctx.configuration().dialect().family()) {
+switch (ctx.family()) {
 case MARIADB:
 case MYSQL:
 {
@@ -40,17 +40,16 @@ toSQLInsert(ctx);
 ctx.formatSeparator().start(INSERT_ON_DUPLICATE_KEY_UPDATE).keyword("on duplicate key update").sql(' ').visit(update).end(INSERT_ON_DUPLICATE_KEY_UPDATE);
 break;
 }
-case H2:
-{
-throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY IGNORE clause cannot be emulated for " + ctx.configuration().dialect());
-}
 case HSQLDB:
 {
 ctx.visit(toMerge(ctx.configuration()));
 break;
 }
 default :
-throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY IGNORE clause cannot be emulated for " + ctx.configuration().dialect());
+{
+ctx.visit(toInsertSelect(ctx.configuration()));
+break;
+}
 }
 }
  else {

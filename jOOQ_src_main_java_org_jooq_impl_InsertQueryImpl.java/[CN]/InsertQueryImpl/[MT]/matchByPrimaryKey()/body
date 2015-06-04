@@ -1,0 +1,15 @@
+{
+  Condition condition=null;
+  for (  Field<?> f : table.getPrimaryKey().getFields()) {
+    Field<Object> field=(Field<Object>)f;
+    Field<Object> value=(Field<Object>)insertMaps.getMap().get(field);
+    Condition other=field.equal(value);
+    if (condition == null) {
+      condition=other;
+    }
+ else {
+      condition=condition.and(other);
+    }
+  }
+  return condition;
+}
