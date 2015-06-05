@@ -21,7 +21,7 @@
       toSQLCast(ctx,converted,DefaultDataType.getDataType(family,String.class),0,0,0);
     }
   }
- else   if (family == POSTGRES && (sqlDataType == null || !sqlDataType.isTemporal())) {
+ else   if (asList(POSTGRES).contains(family) && (sqlDataType == null || !sqlDataType.isTemporal())) {
     toSQL(ctx,converted);
   }
  else   if ((sqlDataType == SQLDataType.VARCHAR || sqlDataType == SQLDataType.CHAR) && asList(FIREBIRD).contains(family)) {
