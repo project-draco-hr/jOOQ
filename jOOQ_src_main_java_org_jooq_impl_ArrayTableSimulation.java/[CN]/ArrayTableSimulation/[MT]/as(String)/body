@@ -1,3 +1,0 @@
-{
-  return new ArrayTableSimulation(array,as);
-}
