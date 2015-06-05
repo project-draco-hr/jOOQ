@@ -1,0 +1,9 @@
+{
+  if (fieldAliases == null) {
+    return new ArrayTableEmulation(array,as);
+  }
+ else   if (fieldAliases.length == 1) {
+    return new ArrayTableEmulation(array,as,fieldAliases[0]);
+  }
+  throw new IllegalArgumentException("Array table simulations can only have a single field alias");
+}

@@ -8,6 +8,6 @@
     return notMatched.whenNotMatchedThenInsert(insertMaps.getMap().keySet()).values(insertMaps.getMap().values());
   }
  else {
-    throw new IllegalStateException("The ON DUPLICATE KEY IGNORE/UPDATE clause cannot be simulated when inserting into non-updatable tables : " + table);
+    throw new IllegalStateException("The ON DUPLICATE KEY IGNORE/UPDATE clause cannot be emulated when inserting into non-updatable tables : " + table);
   }
 }

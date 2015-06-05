@@ -12,10 +12,10 @@ case POSTGRES:
 default :
 {
   if (array.getDataType().getType().isArray() && array instanceof Param) {
-    return simulate();
+    return emulate();
   }
  else {
-    return simulate();
+    return emulate();
   }
 }
 }

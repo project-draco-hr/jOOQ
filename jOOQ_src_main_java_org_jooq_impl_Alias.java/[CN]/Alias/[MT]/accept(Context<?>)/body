@@ -1,13 +1,13 @@
 {
   if (context.declareFields() || context.declareTables()) {
     SQLDialect family=context.family();
-    boolean simulateDerivedColumnList=false;
+    boolean emulatedDerivedColumnList=false;
     if (fieldAliases != null && asList(CUBRID,FIREBIRD).contains(family) && (wrapped instanceof TableImpl || wrapped instanceof CommonTableExpressionImpl)) {
       @SuppressWarnings("unchecked") Select<Record> select=select(list(field("*"))).from(((Table<?>)wrapped).as(alias));
       context.sql('(').formatIndentStart().formatNewLine().visit(select).formatIndentEnd().formatNewLine().sql(')');
     }
  else     if (fieldAliases != null && asList(H2,MARIADB,MYSQL,SQLITE).contains(family)) {
-      simulateDerivedColumnList=true;
+      emulatedDerivedColumnList=true;
       SelectFieldList fields=new SelectFieldList();
       for (      String fieldAlias : fieldAliases) {
 switch (family) {
@@ -27,7 +27,7 @@ default :
   toSQLAs(context);
   context.sql(' ');
   context.literal(alias);
-  if (fieldAliases != null && !simulateDerivedColumnList) {
+  if (fieldAliases != null && !emulatedDerivedColumnList) {
     toSQLDerivedColumnList(context);
   }
  else {
