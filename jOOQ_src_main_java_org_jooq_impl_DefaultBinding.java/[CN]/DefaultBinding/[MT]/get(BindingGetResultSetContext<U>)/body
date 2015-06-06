@@ -138,5 +138,6 @@ result=(T)DSL.using(ctx.configuration()).fetch(nested);
  else {
 result=(T)unlob(ctx.resultSet().getObject(ctx.index()));
 }
+if (result instanceof Attachable && attachRecords(ctx.configuration())) ((Attachable)result).attach(ctx.configuration());
 ctx.value(converter.from(result));
 }
