@@ -12,12 +12,7 @@
       provider.rollback(ctx.cause(cause));
     }
  catch (    Exception suppress) {
-      try {
-        Reflect.on(cause).call("addSuppressed",suppress);
-      }
- catch (      ReflectException ignore) {
-        log.error("Error when rolling back",suppress);
-      }
+      cause.addSuppressed(suppress);
     }
     if (cause instanceof RuntimeException) {
       throw (RuntimeException)cause;
