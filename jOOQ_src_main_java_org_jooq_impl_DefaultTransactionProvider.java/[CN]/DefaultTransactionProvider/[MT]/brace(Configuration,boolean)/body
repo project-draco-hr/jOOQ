@@ -1,17 +1,12 @@
 {
-  if (start) {
-    connection=provider.acquire();
-  }
+  DefaultConnectionProvider connection=connection(configuration);
   try {
     boolean autoCommit=autoCommit(configuration);
-    if (autoCommit == true) {
-      connection(configuration).setAutoCommit(!start);
-    }
+    if (autoCommit == true)     connection.setAutoCommit(!start);
   }
   finally {
     if (!start) {
-      provider.release(connection);
-      connection=null;
+      provider.release(connection.connection);
       configuration.data().remove(DATA_DEFAULT_TRANSACTION_PROVIDER_CONNECTION);
     }
   }

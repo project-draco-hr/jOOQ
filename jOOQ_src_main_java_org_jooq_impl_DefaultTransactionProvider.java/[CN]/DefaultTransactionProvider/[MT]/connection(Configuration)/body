@@ -1,7 +1,7 @@
 {
   DefaultConnectionProvider connectionWrapper=(DefaultConnectionProvider)configuration.data(DATA_DEFAULT_TRANSACTION_PROVIDER_CONNECTION);
   if (connectionWrapper == null) {
-    connectionWrapper=new DefaultConnectionProvider(connection);
+    connectionWrapper=new DefaultConnectionProvider(provider.acquire());
     configuration.data(DATA_DEFAULT_TRANSACTION_PROVIDER_CONNECTION,connectionWrapper);
   }
   return connectionWrapper;
