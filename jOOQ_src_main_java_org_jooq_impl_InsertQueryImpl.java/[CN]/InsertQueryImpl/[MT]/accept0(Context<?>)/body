@@ -26,6 +26,7 @@ throw new SQLDialectNotSupportedException("The ON DUPLICATE KEY UPDATE clause ca
 switch (ctx.family()) {
 case MARIADB:
 case MYSQL:
+case SQLITE:
 {
 toSQLInsert(ctx);
 ctx.start(INSERT_ON_DUPLICATE_KEY_UPDATE).end(INSERT_ON_DUPLICATE_KEY_UPDATE);
