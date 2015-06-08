@@ -1,4 +1,5 @@
 {
+  if (!nested())   return IGNORED_SAVEPOINT;
 switch (configuration.family()) {
 default :
     return connection(configuration).setSavepoint();

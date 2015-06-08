@@ -3,8 +3,15 @@
   Savepoint savepoint=null;
   if (!savepoints.isEmpty())   savepoint=savepoints.pop();
   try {
-    if (savepoint == null || savepoint == DUMMY_SAVEPOINT)     connection(ctx.configuration()).rollback();
- else     connection(ctx.configuration()).rollback(savepoint);
+    if (savepoint == null || savepoint == UNSUPPORTED_SAVEPOINT) {
+      connection(ctx.configuration()).rollback();
+    }
+ else     if (savepoint == IGNORED_SAVEPOINT) {
+      if (savepoints.isEmpty())       connection(ctx.configuration()).rollback();
+    }
+ else {
+      connection(ctx.configuration()).rollback(savepoint);
+    }
   }
   finally {
     if (savepoints.isEmpty())     brace(ctx.configuration(),false);
