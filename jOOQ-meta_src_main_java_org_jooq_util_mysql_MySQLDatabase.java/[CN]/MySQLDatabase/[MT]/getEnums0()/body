@@ -12,7 +12,7 @@
     if (tableDefinition != null) {
       ColumnDefinition columnDefinition=tableDefinition.getColumn(column);
       if (columnDefinition != null) {
-        if (getConfiguredForcedType(columnDefinition) == null) {
+        if (getConfiguredForcedType(columnDefinition,columnDefinition.getType()) == null) {
           DefaultEnumDefinition definition=new DefaultEnumDefinition(schema,name,comment);
           CSVReader reader=new CSVReader(new StringReader(columnType.replaceAll("(^enum\\()|(\\)$)","")),',','\'',true);
           for (          String string : reader.next()) {
