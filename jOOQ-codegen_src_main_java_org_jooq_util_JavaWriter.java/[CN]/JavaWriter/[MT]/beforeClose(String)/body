@@ -1,9 +1,14 @@
 {
   StringBuilder importString=new StringBuilder();
+  String pkg="";
+  Matcher m=Pattern.compile("(?s:^.*?\\Rpackage\\s+(.*?);?\\R.*?$)").matcher(string);
+  if (m.find())   pkg=m.group(1);
+  Pattern samePackagePattern=Pattern.compile(pkg + "\\.[^\\.]+");
   String previous="";
   for (  String imp : qualifiedTypes) {
     if (isJava && imp.startsWith("java.lang."))     continue;
     if (imp.endsWith("." + className))     continue;
+    if (isScala && pkg.length() > 0 && samePackagePattern.matcher(imp).matches())     continue;
     String topLevelPackage=imp.split("\\.")[0];
     if (!topLevelPackage.equals(previous))     importString.append("\n");
     importString.append("import ").append(imp).append(isScala ? "\n" : ";\n");
