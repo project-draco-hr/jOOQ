@@ -23,17 +23,24 @@
 switch (family) {
 case MARIADB:
 case MYSQL:
-      ctx.sql(' ').keyword("change column").sql(' ').qualify(false).visit(alterColumn).qualify(true);
-    break;
+{
+        if (alterColumnDefault == null) {
+          ctx.sql(' ').keyword("change column").sql(' ').qualify(false).visit(alterColumn).qualify(true);
+        }
+ else {
+          ctx.sql(' ').keyword("alter column");
+        }
+        break;
+      }
 default :
-  ctx.sql(' ').keyword("alter");
-break;
+    ctx.sql(' ').keyword("alter");
+  break;
 }
 ctx.sql(' ').qualify(false).visit(alterColumn).qualify(true);
 if (alterColumnType != null) {
 switch (family) {
 case DERBY:
-ctx.sql(' ').keyword("set data type");
+  ctx.sql(' ').keyword("set data type");
 break;
 case POSTGRES:
 ctx.sql(' ').keyword("type");
