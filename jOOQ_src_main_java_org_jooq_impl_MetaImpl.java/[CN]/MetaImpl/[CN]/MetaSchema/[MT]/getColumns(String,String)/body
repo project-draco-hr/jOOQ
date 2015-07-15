@@ -1,14 +1,15 @@
 {
   if (columnCache == null && configuration.dialect() != SQLITE) {
     Result<Record> columns=getColumns0(schema,"%");
+    Field<String> tableCat=(Field<String>)columns.field(0);
     Field<String> tableSchem=(Field<String>)columns.field(1);
     Field<String> tableName=(Field<String>)columns.field(2);
-    Map<Record,Result<Record>> groups=columns.intoGroups(new Field[]{tableSchem,tableName});
+    Map<Record,Result<Record>> groups=columns.intoGroups(new Field[]{inverseSchemaCatalog ? tableCat : tableSchem,tableName});
     columnCache=new LinkedHashMap<Name,Result<Record>>();
     for (    Entry<Record,Result<Record>> entry : groups.entrySet()) {
       Record key=entry.getKey();
       Result<Record> value=entry.getValue();
-      columnCache.put(name(key.getValue(tableSchem),key.getValue(tableName)),value);
+      columnCache.put(name(key.getValue(inverseSchemaCatalog ? tableCat : tableSchem),key.getValue(tableName)),value);
     }
   }
   if (columnCache != null) {

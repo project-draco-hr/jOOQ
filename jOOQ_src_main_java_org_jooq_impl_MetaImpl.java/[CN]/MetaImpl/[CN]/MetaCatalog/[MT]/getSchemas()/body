@@ -1,7 +1,7 @@
 {
   try {
     List<Schema> result=new ArrayList<Schema>();
-    if (!asList(MYSQL,MARIADB).contains(configuration.dialect().family())) {
+    if (!inverseSchemaCatalog) {
       Result<Record> schemas=create.fetch(meta().getSchemas(),SQLDataType.VARCHAR);
       for (      String name : schemas.getValues(0,String.class)) {
         result.add(new MetaSchema(name));

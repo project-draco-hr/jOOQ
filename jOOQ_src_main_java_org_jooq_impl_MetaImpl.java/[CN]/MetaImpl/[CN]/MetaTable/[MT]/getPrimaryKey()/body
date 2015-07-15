@@ -3,7 +3,7 @@
   String schema=getSchema() == null ? null : getSchema().getName();
   try {
     ResultSet rs;
-    if (!asList(MYSQL,MARIADB).contains(family)) {
+    if (!inverseSchemaCatalog) {
       rs=meta().getPrimaryKeys(null,schema,getName());
     }
  else {

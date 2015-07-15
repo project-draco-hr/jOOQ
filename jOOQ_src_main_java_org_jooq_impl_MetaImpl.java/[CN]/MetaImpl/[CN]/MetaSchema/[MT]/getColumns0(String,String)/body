@@ -1,6 +1,6 @@
 {
   ResultSet rs;
-  if (!asList(MYSQL,MARIADB).contains(configuration.dialect().family())) {
+  if (!inverseSchemaCatalog) {
     rs=meta().getColumns(null,schema,table,"%");
   }
  else {

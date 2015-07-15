@@ -1,4 +1,5 @@
 {
   this.create=DSL.using(configuration);
   this.configuration=configuration;
+  this.inverseSchemaCatalog=asList(MYSQL,MARIADB).contains(configuration.family());
 }

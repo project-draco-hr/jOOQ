@@ -1,7 +1,7 @@
 {
   try {
     List<Catalog> result=new ArrayList<Catalog>();
-    if (!asList(MYSQL,MARIADB).contains(configuration.dialect().family())) {
+    if (!inverseSchemaCatalog) {
       Result<Record> catalogs=create.fetch(meta().getCatalogs(),SQLDataType.VARCHAR);
       for (      String name : catalogs.getValues(0,String.class)) {
         result.add(new MetaCatalog(name));

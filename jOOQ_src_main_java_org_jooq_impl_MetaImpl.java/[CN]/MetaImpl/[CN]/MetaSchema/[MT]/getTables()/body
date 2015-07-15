@@ -10,7 +10,7 @@ case SQLITE:
 break;
 }
 ResultSet rs;
-if (!asList(MYSQL,MARIADB).contains(configuration.dialect().family())) {
+if (!inverseSchemaCatalog) {
 rs=meta().getTables(null,getName(),"%",types);
 }
  else {
@@ -19,9 +19,10 @@ rs=meta().getTables(getName(),null,"%",types);
 List<Table<?>> result=new ArrayList<Table<?>>();
 Result<Record> tables=create.fetch(rs,SQLDataType.VARCHAR,SQLDataType.VARCHAR,SQLDataType.VARCHAR,SQLDataType.VARCHAR);
 for (Record table : tables) {
+String catalog=table.getValue(0,String.class);
 String schema=table.getValue(1,String.class);
 String name=table.getValue(2,String.class);
-result.add(new MetaTable(name,this,getColumns(schema,name)));
+result.add(new MetaTable(name,this,getColumns(inverseSchemaCatalog ? catalog : schema,name)));
 }
 return result;
 }
