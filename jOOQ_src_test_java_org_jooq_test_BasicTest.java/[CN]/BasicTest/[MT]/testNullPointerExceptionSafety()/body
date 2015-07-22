@@ -107,12 +107,12 @@
   assertEquals(DSL.round((Integer)null,1),DSL.round((Field<Integer>)null,1));
   assertEquals(DSL.rtrim((String)null),DSL.rtrim((Field<String>)null));
   assertEquals(DSL.second((java.util.Date)null),DSL.second((Field<java.util.Date>)null));
-  assertEquals(DSL.shl((Integer)null,(Integer)null),DSL.shl((Integer)null,(Field<Integer>)null));
-  assertEquals(DSL.shl((Integer)null,(Integer)null),DSL.shl((Field<Integer>)null,(Integer)null));
-  assertEquals(DSL.shl((Integer)null,(Integer)null),DSL.shl((Field<Integer>)null,(Field<Integer>)null));
-  assertEquals(DSL.shr((Integer)null,(Integer)null),DSL.shr((Integer)null,(Field<Integer>)null));
-  assertEquals(DSL.shr((Integer)null,(Integer)null),DSL.shr((Field<Integer>)null,(Integer)null));
-  assertEquals(DSL.shr((Integer)null,(Integer)null),DSL.shr((Field<Integer>)null,(Field<Integer>)null));
+  assertEquals(DSL.shl((Long)null,(Integer)null),DSL.shl((Long)null,(Field<Integer>)null));
+  assertEquals(DSL.shl((Long)null,(Integer)null),DSL.shl((Field<Long>)null,(Integer)null));
+  assertEquals(DSL.shl((Long)null,(Integer)null),DSL.shl((Field<Long>)null,(Field<Integer>)null));
+  assertEquals(DSL.shr((Long)null,(Integer)null),DSL.shr((Long)null,(Field<Integer>)null));
+  assertEquals(DSL.shr((Long)null,(Integer)null),DSL.shr((Field<Long>)null,(Integer)null));
+  assertEquals(DSL.shr((Long)null,(Integer)null),DSL.shr((Field<Long>)null,(Field<Integer>)null));
   assertEquals(DSL.sign((Integer)null),DSL.sign((Field<Integer>)null));
   assertEquals(DSL.sin((Integer)null),DSL.sin((Field<Integer>)null));
   assertEquals(DSL.sinh((Integer)null),DSL.sinh((Field<Integer>)null));
