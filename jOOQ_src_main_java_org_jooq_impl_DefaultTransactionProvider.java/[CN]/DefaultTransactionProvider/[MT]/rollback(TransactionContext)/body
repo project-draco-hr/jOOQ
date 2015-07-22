@@ -1,5 +1,5 @@
 {
-  Stack<Savepoint> savepoints=savepoints(ctx.configuration());
+  Deque<Savepoint> savepoints=savepoints(ctx.configuration());
   Savepoint savepoint=null;
   if (!savepoints.isEmpty())   savepoint=savepoints.pop();
   try {

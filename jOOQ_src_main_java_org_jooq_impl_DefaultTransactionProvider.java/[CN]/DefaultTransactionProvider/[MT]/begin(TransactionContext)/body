@@ -1,7 +1,7 @@
 {
-  Stack<Savepoint> savepoints=savepoints(ctx.configuration());
+  Deque<Savepoint> savepoints=savepoints(ctx.configuration());
   if (savepoints.isEmpty())   brace(ctx.configuration(),true);
   Savepoint savepoint=setSavepoint(ctx.configuration());
-  if (savepoint == UNSUPPORTED_SAVEPOINT && savepoints.size() > 0)   throw new DataAccessException("Cannot nest transactions because Savepoints are not supported");
+  if (savepoint == UNSUPPORTED_SAVEPOINT && !savepoints.isEmpty())   throw new DataAccessException("Cannot nest transactions because Savepoints are not supported");
   savepoints.push(savepoint);
 }
