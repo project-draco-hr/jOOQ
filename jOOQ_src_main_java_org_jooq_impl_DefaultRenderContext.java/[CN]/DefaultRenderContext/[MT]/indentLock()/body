@@ -1,6 +1,6 @@
 {
   if (indentLock == null) {
-    indentLock=new Stack<Integer>();
+    indentLock=new ArrayDeque<Integer>();
   }
   return indentLock;
 }
