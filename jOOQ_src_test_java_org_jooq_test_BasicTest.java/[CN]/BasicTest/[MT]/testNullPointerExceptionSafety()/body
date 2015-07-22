@@ -18,6 +18,8 @@
   assertEquals(FIELD_ID1.notEqual((Integer)null),FIELD_ID1.notEqual((Field<Integer>)null));
   assertEquals(FIELD_ID1.notIn((Integer)null),FIELD_ID1.notIn((Field<Integer>)null));
   assertEquals(FIELD_ID1.sub((Integer)null),FIELD_ID1.sub((Field<Integer>)null));
+  assertEquals(FIELD_ID1.shl((Long)null),FIELD_ID1.shl((Field<Long>)null));
+  assertEquals(FIELD_ID1.shr((Long)null),FIELD_ID1.shr((Field<Long>)null));
   assertEquals(DSL.abs((Integer)null),DSL.abs((Field<Integer>)null));
   assertEquals(DSL.acos((Integer)null),DSL.acos((Field<Integer>)null));
   assertEquals(DSL.asin((Integer)null),DSL.asin((Field<Integer>)null));
