@@ -1,3 +1,4 @@
 {
-  return DSL.bitXNor((Field)this,(Field)val(value,this));
+  final Field result=DSL.bitXNor((Field)this,(Field)val(value,this));
+  return result;
 }

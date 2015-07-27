@@ -1,3 +1,4 @@
 {
-  return DSL.bitNot((Field)this);
+  final Field result=DSL.bitNot((Field)this);
+  return result;
 }

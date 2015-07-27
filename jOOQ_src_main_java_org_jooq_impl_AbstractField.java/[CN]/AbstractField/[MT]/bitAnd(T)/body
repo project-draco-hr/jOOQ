@@ -1,3 +1,4 @@
 {
-  return DSL.bitAnd((Field)this,(Field)val(value,this));
+  final Field result=DSL.bitAnd((Field)this,(Field)val(value,this));
+  return result;
 }
