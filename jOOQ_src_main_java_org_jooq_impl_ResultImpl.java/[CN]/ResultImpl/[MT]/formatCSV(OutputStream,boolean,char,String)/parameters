@@ -1,0 +1,4 @@
+OutputStream stream
+boolean header
+char delimiter
+String nullString

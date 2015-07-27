@@ -1,0 +1,4 @@
+Writer writer
+boolean header
+char delimiter
+String nullString

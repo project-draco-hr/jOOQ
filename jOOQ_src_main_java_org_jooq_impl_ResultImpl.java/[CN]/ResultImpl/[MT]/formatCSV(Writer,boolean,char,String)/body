@@ -1,0 +1,25 @@
+{
+  try {
+    if (header) {
+      String sep1="";
+      for (      Field<?> field : fields.fields) {
+        writer.append(sep1);
+        writer.append(formatCSV0(field.getName(),""));
+        sep1=Character.toString(delimiter);
+      }
+      writer.append("\n");
+    }
+    for (    Record record : this) {
+      String sep2="";
+      for (int index=0; index < fields.fields.length; index++) {
+        writer.append(sep2);
+        writer.append(formatCSV0(record.getValue(index),nullString));
+        sep2=Character.toString(delimiter);
+      }
+      writer.append("\n");
+    }
+  }
+ catch (  java.io.IOException e) {
+    throw new IOException("Exception while writing CSV",e);
+  }
+}

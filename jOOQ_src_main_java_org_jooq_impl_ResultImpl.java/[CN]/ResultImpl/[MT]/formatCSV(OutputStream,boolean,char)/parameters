@@ -1,0 +1,3 @@
+OutputStream stream
+boolean header
+char delimiter

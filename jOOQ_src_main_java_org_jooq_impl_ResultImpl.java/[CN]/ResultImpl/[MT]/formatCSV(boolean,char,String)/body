@@ -1,0 +1,5 @@
+{
+  StringWriter writer=new StringWriter();
+  formatCSV(writer,header,delimiter,nullString);
+  return writer.toString();
+}
