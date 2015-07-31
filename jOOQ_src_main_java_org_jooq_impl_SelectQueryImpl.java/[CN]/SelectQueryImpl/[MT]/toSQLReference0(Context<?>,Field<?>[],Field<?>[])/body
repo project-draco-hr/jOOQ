@@ -107,7 +107,10 @@ context.sql("empty_grouping_dummy_table.dual");
  else if (asList(DERBY).contains(family)) {
 context.sql('0');
 }
- else if (asList(CUBRID,FIREBIRD,HSQLDB,MARIADB,MYSQL,POSTGRES,SQLITE).contains(family)) {
+ else if (family == CUBRID) {
+context.sql("1 + 0");
+}
+ else if (asList(FIREBIRD,HSQLDB,MARIADB,MYSQL,POSTGRES,SQLITE).contains(family)) {
 context.sql('(').visit(DSL.select(one())).sql(')');
 }
  else {
