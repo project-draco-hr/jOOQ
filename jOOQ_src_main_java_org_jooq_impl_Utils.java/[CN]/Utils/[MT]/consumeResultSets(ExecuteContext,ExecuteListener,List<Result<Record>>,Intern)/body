@@ -13,5 +13,5 @@
  else     break;
   }
   if (i == maxConsumedResults)   log.warn("Maximum consumed results reached: " + maxConsumedResults + ". This is probably a bug. Please report to https://github.com/jOOQ/jOOQ/issues/new");
-  if (anyResults)   ctx.statement().getMoreResults(Statement.CLOSE_ALL_RESULTS);
+  if (anyResults && ctx.family() != CUBRID)   ctx.statement().getMoreResults(Statement.CLOSE_ALL_RESULTS);
 }
