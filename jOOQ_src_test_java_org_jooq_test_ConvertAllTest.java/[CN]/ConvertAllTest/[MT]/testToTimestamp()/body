@@ -11,4 +11,8 @@
   testConversion(t1,t1.toLocalDateTime(),Timestamp.class);
   testConversion(t2,t2.toLocalDateTime(),Timestamp.class);
   testConversion(t3,t3.toLocalDateTime(),Timestamp.class);
+  OffsetDateTime o1=OffsetDateTime.parse("2001-02-03T04:05:06.789Z");
+  OffsetDateTime o2=OffsetDateTime.parse("2001-02-03T04:05:06.789+02:00");
+  testConversion(new Timestamp(millis(o1)),o1,Timestamp.class);
+  testConversion(new Timestamp(millis(o2)),o2,Timestamp.class);
 }

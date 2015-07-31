@@ -345,6 +345,19 @@
         }
       }
     }
+ else     if ((fromClass == String.class) && toClass == OffsetTime.class) {
+      try {
+        return (U)java.sql.Time.valueOf((String)from).toLocalTime().atOffset(OffsetTime.now().getOffset());
+      }
+ catch (      IllegalArgumentException e1) {
+        try {
+          return (U)OffsetTime.parse((String)from);
+        }
+ catch (        DateTimeParseException e2) {
+          return null;
+        }
+      }
+    }
  else     if ((fromClass == String.class) && toClass == LocalDateTime.class) {
       try {
         return (U)java.sql.Timestamp.valueOf((String)from).toLocalDateTime();
@@ -352,6 +365,19 @@
  catch (      IllegalArgumentException e1) {
         try {
           return (U)LocalDateTime.parse((String)from);
+        }
+ catch (        DateTimeParseException e2) {
+          return null;
+        }
+      }
+    }
+ else     if ((fromClass == String.class) && toClass == OffsetDateTime.class) {
+      try {
+        return (U)java.sql.Timestamp.valueOf((String)from).toLocalDateTime().atOffset(OffsetDateTime.now().getOffset());
+      }
+ catch (      IllegalArgumentException e1) {
+        try {
+          return (U)OffsetDateTime.parse((String)from);
         }
  catch (        DateTimeParseException e2) {
           return null;

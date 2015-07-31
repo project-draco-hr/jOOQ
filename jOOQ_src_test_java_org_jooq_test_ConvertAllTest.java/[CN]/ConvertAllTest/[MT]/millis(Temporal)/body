@@ -1,0 +1,4 @@
+{
+  if (t.isSupported(INSTANT_SECONDS))   return 1000 * t.getLong(INSTANT_SECONDS) + t.getLong(MILLI_OF_SECOND);
+ else   return t.getLong(MILLI_OF_DAY);
+}
