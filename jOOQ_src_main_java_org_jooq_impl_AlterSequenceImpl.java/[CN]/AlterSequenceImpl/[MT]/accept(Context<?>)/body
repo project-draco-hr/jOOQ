@@ -1,5 +1,5 @@
 {
-  ctx.start(ALTER_SEQUENCE_SEQUENCE).keyword("alter sequence").sql(' ').visit(sequence).end(ALTER_SEQUENCE_SEQUENCE).start(ALTER_SEQUENCE_RESTART);
+  ctx.start(ALTER_SEQUENCE_SEQUENCE).keyword("alter").sql(' ').keyword(ctx.family() == CUBRID ? "serial" : "sequence").sql(' ').visit(sequence).end(ALTER_SEQUENCE_SEQUENCE).start(ALTER_SEQUENCE_RESTART);
   T with=restartWith;
   if (with == null) {
     ctx.sql(' ').keyword("restart");
