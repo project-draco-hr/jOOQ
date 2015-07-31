@@ -1,3 +1,3 @@
 {
-  return !asList(CUBRID,DERBY,FIREBIRD).contains(ctx.family());
+  return !asList(DERBY,FIREBIRD).contains(ctx.family());
 }
