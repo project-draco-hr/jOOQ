@@ -1,3 +1,9 @@
 {
-  ctx.visit(left).sql(' ').keyword(comparator.toSQL()).sql(" (").visit(right).sql(')');
+  if (right.size() == 0) {
+    if (comparator == IN)     ctx.visit(falseCondition());
+ else     ctx.visit(trueCondition());
+  }
+ else {
+    ctx.visit(left).sql(' ').keyword(comparator.toSQL()).sql(" (").visit(right).sql(')');
+  }
 }
