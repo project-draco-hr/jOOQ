@@ -1,7 +1,9 @@
 {
   if (!nested())   return IGNORED_SAVEPOINT;
 switch (configuration.family()) {
+case CUBRID:
+    return UNSUPPORTED_SAVEPOINT;
 default :
-    return connection(configuration).setSavepoint();
+  return connection(configuration).setSavepoint();
 }
 }
