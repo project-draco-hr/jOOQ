@@ -12,10 +12,13 @@
   testConversion(1L,1.0f,Long.class);
   testConversion(1L,BigInteger.ONE,Long.class);
   testConversion(1L,BigDecimal.ONE,Long.class);
-  testConversion(0L,new Date(0),Long.class);
-  testConversion(10L,new Date(10),Long.class);
-  testConversion(0L,new Time(0),Long.class);
-  testConversion(10L,new Time(10),Long.class);
-  testConversion(0L,new Timestamp(0),Long.class);
-  testConversion(10L,new Timestamp(10),Long.class);
+  Date date=Date.valueOf("2001-02-03");
+  testConversion(date.getTime(),date,Long.class);
+  testConversion(date.getTime(),date.toLocalDate(),Long.class);
+  Time time=Time.valueOf("04:05:06");
+  testConversion(time.getTime(),time,Long.class);
+  testConversion(time.getTime(),time.toLocalTime(),Long.class);
+  Timestamp timestamp=Timestamp.valueOf("2001-02-03 04:05:06.789");
+  testConversion(timestamp.getTime(),timestamp,Long.class);
+  testConversion(timestamp.getTime(),timestamp.toLocalDateTime(),Long.class);
 }

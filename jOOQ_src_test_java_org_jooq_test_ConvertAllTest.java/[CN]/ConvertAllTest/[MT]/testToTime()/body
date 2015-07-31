@@ -1,0 +1,6 @@
+{
+  Time time=Time.valueOf("04:05:06");
+  testConversion(time,"04:05:06",Time.class);
+  testConversion(time,time.getTime(),Time.class);
+  testConversion(time,time.toLocalTime(),Time.class);
+}

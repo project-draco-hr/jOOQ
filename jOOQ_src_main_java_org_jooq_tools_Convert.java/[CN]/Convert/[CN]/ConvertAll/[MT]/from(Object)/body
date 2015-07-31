@@ -89,6 +89,24 @@
       if (java.util.Date.class.isAssignableFrom(fromClass)) {
         return (U)Long.valueOf(((java.util.Date)from).getTime());
       }
+      if (Temporal.class.isAssignableFrom(fromClass)) {
+        Temporal temporal=(Temporal)from;
+        if (temporal instanceof LocalDate) {
+          return (U)Long.valueOf(Date.valueOf((LocalDate)temporal).getTime());
+        }
+ else         if (temporal instanceof LocalTime) {
+          return (U)Long.valueOf(Time.valueOf((LocalTime)temporal).getTime());
+        }
+ else         if (temporal instanceof LocalDateTime) {
+          return (U)Long.valueOf(Timestamp.valueOf((LocalDateTime)temporal).getTime());
+        }
+ else         if (temporal.isSupported(INSTANT_SECONDS)) {
+          return (U)Long.valueOf(1000 * temporal.getLong(INSTANT_SECONDS) + temporal.getLong(MILLI_OF_SECOND));
+        }
+ else         if (temporal.isSupported(MILLI_OF_DAY)) {
+          return (U)Long.valueOf(temporal.getLong(MILLI_OF_DAY));
+        }
+      }
       try {
         return (U)Long.valueOf(new BigDecimal(from.toString().trim()).longValue());
       }
@@ -144,6 +162,24 @@
       }
       if (java.util.Date.class.isAssignableFrom(fromClass)) {
         return (U)ulong(((java.util.Date)from).getTime());
+      }
+      if (Temporal.class.isAssignableFrom(fromClass)) {
+        Temporal temporal=(Temporal)from;
+        if (temporal instanceof LocalDate) {
+          return (U)ulong(Date.valueOf((LocalDate)temporal).getTime());
+        }
+ else         if (temporal instanceof LocalTime) {
+          return (U)ulong(Time.valueOf((LocalTime)temporal).getTime());
+        }
+ else         if (temporal instanceof LocalDateTime) {
+          return (U)ulong(Timestamp.valueOf((LocalDateTime)temporal).getTime());
+        }
+ else         if (temporal.isSupported(INSTANT_SECONDS)) {
+          return (U)ulong(1000 * temporal.getLong(INSTANT_SECONDS) + temporal.getLong(MILLI_OF_SECOND));
+        }
+ else         if (temporal.isSupported(MILLI_OF_DAY)) {
+          return (U)ulong(temporal.getLong(MILLI_OF_DAY));
+        }
       }
       try {
         return (U)ulong(new BigDecimal(from.toString().trim()).toBigInteger().toString());
@@ -250,7 +286,13 @@
  else     if (java.util.Date.class.isAssignableFrom(fromClass)) {
       return toDate(((java.util.Date)from).getTime(),toClass);
     }
+ else     if (Temporal.class.isAssignableFrom(fromClass)) {
+      return toDate(convert(from,Long.class),toClass);
+    }
  else     if ((fromClass == Long.class || fromClass == long.class) && java.util.Date.class.isAssignableFrom(toClass)) {
+      return toDate((Long)from,toClass);
+    }
+ else     if ((fromClass == Long.class || fromClass == long.class) && Temporal.class.isAssignableFrom(toClass)) {
       return toDate((Long)from,toClass);
     }
  else     if ((fromClass == String.class) && toClass == java.sql.Date.class) {
@@ -275,6 +317,45 @@
       }
  catch (      IllegalArgumentException e) {
         return null;
+      }
+    }
+ else     if ((fromClass == String.class) && toClass == LocalDate.class) {
+      try {
+        return (U)java.sql.Date.valueOf((String)from).toLocalDate();
+      }
+ catch (      IllegalArgumentException e1) {
+        try {
+          return (U)LocalDate.parse((String)from);
+        }
+ catch (        DateTimeParseException e2) {
+          return null;
+        }
+      }
+    }
+ else     if ((fromClass == String.class) && toClass == LocalTime.class) {
+      try {
+        return (U)java.sql.Time.valueOf((String)from).toLocalTime();
+      }
+ catch (      IllegalArgumentException e1) {
+        try {
+          return (U)LocalTime.parse((String)from);
+        }
+ catch (        DateTimeParseException e2) {
+          return null;
+        }
+      }
+    }
+ else     if ((fromClass == String.class) && toClass == LocalDateTime.class) {
+      try {
+        return (U)java.sql.Timestamp.valueOf((String)from).toLocalDateTime();
+      }
+ catch (      IllegalArgumentException e1) {
+        try {
+          return (U)LocalDateTime.parse((String)from);
+        }
+ catch (        DateTimeParseException e2) {
+          return null;
+        }
       }
     }
  else     if ((fromClass == String.class) && java.lang.Enum.class.isAssignableFrom(toClass)) {

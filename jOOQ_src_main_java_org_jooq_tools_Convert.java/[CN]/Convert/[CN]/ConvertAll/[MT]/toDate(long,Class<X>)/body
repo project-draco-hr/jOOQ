@@ -16,5 +16,14 @@
     calendar.setTimeInMillis(time);
     return (X)calendar;
   }
+ else   if (toClass == LocalDate.class) {
+    return (X)new Date(time).toLocalDate();
+  }
+ else   if (toClass == LocalTime.class) {
+    return (X)new Time(time).toLocalTime();
+  }
+ else   if (toClass == LocalDateTime.class) {
+    return (X)new Timestamp(time).toLocalDateTime();
+  }
   throw fail(time,toClass);
 }

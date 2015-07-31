@@ -1,0 +1,14 @@
+{
+  Timestamp t1=Timestamp.valueOf("2001-02-03 04:05:06");
+  Timestamp t2=Timestamp.valueOf("2001-02-03 04:05:06.7");
+  Timestamp t3=Timestamp.valueOf("2001-02-03 04:05:06.789");
+  testConversion(t1,"2001-02-03 04:05:06",Timestamp.class);
+  testConversion(t2,"2001-02-03 04:05:06.7",Timestamp.class);
+  testConversion(t3,"2001-02-03 04:05:06.789",Timestamp.class);
+  testConversion(t1,t1.getTime(),Timestamp.class);
+  testConversion(t2,t2.getTime(),Timestamp.class);
+  testConversion(t3,t3.getTime(),Timestamp.class);
+  testConversion(t1,t1.toLocalDateTime(),Timestamp.class);
+  testConversion(t2,t2.toLocalDateTime(),Timestamp.class);
+  testConversion(t3,t3.toLocalDateTime(),Timestamp.class);
+}
