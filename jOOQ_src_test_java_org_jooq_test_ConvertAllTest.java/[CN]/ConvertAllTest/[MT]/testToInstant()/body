@@ -1,0 +1,15 @@
+{
+  Timestamp t1=Timestamp.valueOf("2001-02-03 04:05:06");
+  Timestamp t2=Timestamp.valueOf("2001-02-03 04:05:06.7");
+  Timestamp t3=Timestamp.valueOf("2001-02-03 04:05:06.789");
+  ZoneOffset offset=OffsetDateTime.now().getOffset();
+  testConversion(t1.toLocalDateTime().atOffset(offset).toInstant(),"2001-02-03 04:05:06",Instant.class);
+  testConversion(t2.toLocalDateTime().atOffset(offset).toInstant(),"2001-02-03 04:05:06.7",Instant.class);
+  testConversion(t3.toLocalDateTime().atOffset(offset).toInstant(),"2001-02-03 04:05:06.789",Instant.class);
+  testConversion(t1.toLocalDateTime().atOffset(offset).toInstant(),t1.getTime(),Instant.class);
+  testConversion(t2.toLocalDateTime().atOffset(offset).toInstant(),t2.getTime(),Instant.class);
+  testConversion(t3.toLocalDateTime().atOffset(offset).toInstant(),t3.getTime(),Instant.class);
+  testConversion(t1.toLocalDateTime().atOffset(offset).toInstant(),t1,Instant.class);
+  testConversion(t2.toLocalDateTime().atOffset(offset).toInstant(),t2,Instant.class);
+  testConversion(t3.toLocalDateTime().atOffset(offset).toInstant(),t3,Instant.class);
+}

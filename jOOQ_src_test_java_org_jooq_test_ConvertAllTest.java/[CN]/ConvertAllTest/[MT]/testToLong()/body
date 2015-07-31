@@ -29,4 +29,7 @@
   OffsetDateTime dt2=OffsetDateTime.parse("2001-02-03T04:05:06.789+02:00");
   testConversion(millis(dt1),dt1,Long.class);
   testConversion(millis(dt2),dt2,Long.class);
+  Instant now=Instant.now();
+  testConversion(0L,Instant.ofEpochMilli(0),Long.class);
+  testConversion(millis(now),now,Long.class);
 }

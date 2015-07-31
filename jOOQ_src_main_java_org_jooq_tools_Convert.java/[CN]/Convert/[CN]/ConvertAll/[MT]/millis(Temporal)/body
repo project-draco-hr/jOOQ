@@ -1,0 +1,18 @@
+{
+  if (temporal instanceof LocalDate) {
+    return Date.valueOf((LocalDate)temporal).getTime();
+  }
+ else   if (temporal instanceof LocalTime) {
+    return Time.valueOf((LocalTime)temporal).getTime();
+  }
+ else   if (temporal instanceof LocalDateTime) {
+    return Timestamp.valueOf((LocalDateTime)temporal).getTime();
+  }
+ else   if (temporal.isSupported(INSTANT_SECONDS)) {
+    return 1000 * temporal.getLong(INSTANT_SECONDS) + temporal.getLong(MILLI_OF_SECOND);
+  }
+ else   if (temporal.isSupported(MILLI_OF_DAY)) {
+    return temporal.getLong(MILLI_OF_DAY);
+  }
+  throw fail(temporal,Long.class);
+}

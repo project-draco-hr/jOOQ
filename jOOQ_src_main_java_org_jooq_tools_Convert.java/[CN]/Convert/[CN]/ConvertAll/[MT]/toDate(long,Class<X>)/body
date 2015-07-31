@@ -31,5 +31,8 @@
  else   if (toClass == OffsetDateTime.class) {
     return (X)new Timestamp(time).toLocalDateTime().atOffset(OffsetDateTime.now().getOffset());
   }
+ else   if (toClass == Instant.class) {
+    return (X)new Timestamp(time).toLocalDateTime().atOffset(OffsetDateTime.now().getOffset()).toInstant();
+  }
   throw fail(time,toClass);
 }

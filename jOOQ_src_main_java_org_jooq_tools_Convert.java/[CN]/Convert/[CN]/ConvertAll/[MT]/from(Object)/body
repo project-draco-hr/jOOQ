@@ -90,22 +90,7 @@
         return (U)Long.valueOf(((java.util.Date)from).getTime());
       }
       if (Temporal.class.isAssignableFrom(fromClass)) {
-        Temporal temporal=(Temporal)from;
-        if (temporal instanceof LocalDate) {
-          return (U)Long.valueOf(Date.valueOf((LocalDate)temporal).getTime());
-        }
- else         if (temporal instanceof LocalTime) {
-          return (U)Long.valueOf(Time.valueOf((LocalTime)temporal).getTime());
-        }
- else         if (temporal instanceof LocalDateTime) {
-          return (U)Long.valueOf(Timestamp.valueOf((LocalDateTime)temporal).getTime());
-        }
- else         if (temporal.isSupported(INSTANT_SECONDS)) {
-          return (U)Long.valueOf(1000 * temporal.getLong(INSTANT_SECONDS) + temporal.getLong(MILLI_OF_SECOND));
-        }
- else         if (temporal.isSupported(MILLI_OF_DAY)) {
-          return (U)Long.valueOf(temporal.getLong(MILLI_OF_DAY));
-        }
+        return (U)Long.valueOf(millis((Temporal)from));
       }
       try {
         return (U)Long.valueOf(new BigDecimal(from.toString().trim()).longValue());
@@ -164,22 +149,7 @@
         return (U)ulong(((java.util.Date)from).getTime());
       }
       if (Temporal.class.isAssignableFrom(fromClass)) {
-        Temporal temporal=(Temporal)from;
-        if (temporal instanceof LocalDate) {
-          return (U)ulong(Date.valueOf((LocalDate)temporal).getTime());
-        }
- else         if (temporal instanceof LocalTime) {
-          return (U)ulong(Time.valueOf((LocalTime)temporal).getTime());
-        }
- else         if (temporal instanceof LocalDateTime) {
-          return (U)ulong(Timestamp.valueOf((LocalDateTime)temporal).getTime());
-        }
- else         if (temporal.isSupported(INSTANT_SECONDS)) {
-          return (U)ulong(1000 * temporal.getLong(INSTANT_SECONDS) + temporal.getLong(MILLI_OF_SECOND));
-        }
- else         if (temporal.isSupported(MILLI_OF_DAY)) {
-          return (U)ulong(temporal.getLong(MILLI_OF_DAY));
-        }
+        return (U)ulong(millis((Temporal)from));
       }
       try {
         return (U)ulong(new BigDecimal(from.toString().trim()).toBigInteger().toString());
@@ -378,6 +348,19 @@
  catch (      IllegalArgumentException e1) {
         try {
           return (U)OffsetDateTime.parse((String)from);
+        }
+ catch (        DateTimeParseException e2) {
+          return null;
+        }
+      }
+    }
+ else     if ((fromClass == String.class) && toClass == Instant.class) {
+      try {
+        return (U)java.sql.Timestamp.valueOf((String)from).toLocalDateTime().atOffset(OffsetDateTime.now().getOffset()).toInstant();
+      }
+ catch (      IllegalArgumentException e1) {
+        try {
+          return (U)Instant.parse((String)from);
         }
  catch (        DateTimeParseException e2) {
           return null;
