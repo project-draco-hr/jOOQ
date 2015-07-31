@@ -21,6 +21,7 @@
  else   if (alterColumn != null) {
     ctx.start(ALTER_TABLE_ALTER);
 switch (family) {
+case CUBRID:
 case MARIADB:
 case MYSQL:
 {
