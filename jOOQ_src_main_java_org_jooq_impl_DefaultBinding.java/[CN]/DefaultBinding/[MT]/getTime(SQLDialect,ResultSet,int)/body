@@ -6,16 +6,6 @@
     }
     return null;
   }
- else   if (dialect == CUBRID) {
-    Time time=rs.getTime(index);
-    if (time != null) {
-      Calendar cal=Calendar.getInstance();
-      cal.setTimeInMillis(time.getTime());
-      cal.set(Calendar.MILLISECOND,0);
-      time=new Time(cal.getTimeInMillis());
-    }
-    return time;
-  }
  else {
     return rs.getTime(index);
   }
