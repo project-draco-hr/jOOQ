@@ -1,16 +1,3 @@
 {
-  StringBuilder result=new StringBuilder();
-  String separator="";
-  result.append(create().render(getUDT()));
-  result.append("(");
-  Object[] array=intoArray();
-  if (array != null) {
-    for (    Object o : array) {
-      result.append(separator);
-      result.append(o);
-      separator=", ";
-    }
-  }
-  result.append(")");
-  return result.toString();
+  return DSL.using(configuration()).renderInlined(DSL.inline(this));
 }
