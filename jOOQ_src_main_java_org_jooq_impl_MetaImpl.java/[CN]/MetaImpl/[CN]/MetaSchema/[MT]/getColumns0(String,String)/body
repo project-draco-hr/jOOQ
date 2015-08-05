@@ -6,5 +6,5 @@
  else {
     rs=meta().getColumns(schema,null,table,"%");
   }
-  return create.fetch(rs,String.class,String.class,String.class,String.class,int.class,String.class,int.class,String.class,int.class);
+  return create.fetch(rs,String.class,String.class,String.class,String.class,int.class,String.class,int.class,String.class,int.class,int.class,int.class);
 }
