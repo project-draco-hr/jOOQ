@@ -1,3 +1,3 @@
 {
-  return paramName != null ? paramName : value instanceof UDTRecord ? ((UDTRecord<?>)value).getUDT().getName() : value instanceof ArrayRecord ? ((ArrayRecord<?>)value).getName() : String.valueOf(value);
+  return paramName != null ? paramName : String.valueOf(value);
 }
