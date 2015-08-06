@@ -5,7 +5,7 @@
     writer.append("<tr>");
     for (    Field<?> field : fields.fields) {
       writer.append("<th>");
-      writer.append(field.getName());
+      writer.append(escapeXML(field.getName()));
       writer.append("</th>");
     }
     writer.append("</tr>");
@@ -15,7 +15,7 @@
       writer.append("<tr>");
       for (int index=0; index < fields.fields.length; index++) {
         writer.append("<td>");
-        writer.append(format0(record.getValue(index),false,true));
+        writer.append(escapeXML(format0(record.getValue(index),false,true)));
         writer.append("</td>");
       }
       writer.append("</tr>");
