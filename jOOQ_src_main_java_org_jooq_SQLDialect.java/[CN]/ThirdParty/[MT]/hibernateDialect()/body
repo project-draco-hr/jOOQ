@@ -16,6 +16,7 @@ return "org.hibernate.dialect.MySQL5Dialect";
 case POSTGRES_9_3:
 return "org.hibernate.dialect.PostgreSQL92Dialect";
 case POSTGRES_9_4:
+case POSTGRES_9_5:
 case POSTGRES:
 return "org.hibernate.dialect.PostgreSQL94Dialect";
 case SQLITE:
