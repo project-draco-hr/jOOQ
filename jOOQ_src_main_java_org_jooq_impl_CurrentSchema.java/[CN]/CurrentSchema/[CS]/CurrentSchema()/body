@@ -1,0 +1,3 @@
+{
+  super("current_schema",SQLDataType.VARCHAR);
+}
