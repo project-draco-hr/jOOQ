@@ -1,0 +1,3 @@
+{
+  return field("{cube}({0})",Object.class,new QueryPartList<FieldOrRow>(fields));
+}

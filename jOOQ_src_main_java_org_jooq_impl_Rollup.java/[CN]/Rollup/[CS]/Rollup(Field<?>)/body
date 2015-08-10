@@ -1,3 +1,0 @@
-{
-  super("rollup",SQLDataType.OTHER,fields);
-}

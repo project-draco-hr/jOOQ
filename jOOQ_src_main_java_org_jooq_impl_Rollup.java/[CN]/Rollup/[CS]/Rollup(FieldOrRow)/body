@@ -1,0 +1,4 @@
+{
+  super("rollup",SQLDataType.OTHER);
+  this.arguments=new QueryPartList<FieldOrRow>(arguments);
+}
