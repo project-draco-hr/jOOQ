@@ -1,5 +1,3 @@
 {
-  Field<?>[] result=new Field[names.length];
-  for (int i=0; i < names.length; i++)   result[i]=field(names[i]);
-  return result;
+  return fields.fields(names);
 }

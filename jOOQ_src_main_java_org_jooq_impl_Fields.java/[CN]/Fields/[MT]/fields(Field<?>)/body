@@ -1,7 +1,5 @@
 {
   Field<?>[] result=new Field[f.length];
-  for (int i=0; i < result.length; i++) {
-    result[i]=field(f[i]);
-  }
+  for (int i=0; i < result.length; i++)   result[i]=field(f[i]);
   return result;
 }

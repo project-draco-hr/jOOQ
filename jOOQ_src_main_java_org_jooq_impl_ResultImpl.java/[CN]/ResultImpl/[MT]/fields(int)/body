@@ -1,5 +1,3 @@
 {
-  Field<?>[] result=new Field[indexes.length];
-  for (int i=0; i < indexes.length; i++)   result[i]=field(indexes[i]);
-  return result;
+  return fields.fields(indexes);
 }
