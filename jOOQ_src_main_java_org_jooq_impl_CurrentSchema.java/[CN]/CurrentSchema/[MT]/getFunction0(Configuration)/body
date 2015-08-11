@@ -1,9 +1,13 @@
 {
 switch (configuration.family()) {
+case CUBRID:
+case FIREBIRD:
+case SQLITE:
+    return inline("");
 case DERBY:
-    return field("{current schema}",String.class);
+  return field("{current schema}",String.class);
 case H2:
-  return field("{schema}()",String.class);
+return field("{schema}()",String.class);
 case MARIADB:
 case MYSQL:
 return field("{database}()",String.class);
