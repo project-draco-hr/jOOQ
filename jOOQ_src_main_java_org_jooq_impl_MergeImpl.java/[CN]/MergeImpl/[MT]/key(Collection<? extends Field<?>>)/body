@@ -1,5 +1,5 @@
 {
-  h2Style=true;
-  getH2Keys().addAll(keys);
+  upsertStyle=true;
+  getUpsertKeys().addAll(keys);
   return this;
 }

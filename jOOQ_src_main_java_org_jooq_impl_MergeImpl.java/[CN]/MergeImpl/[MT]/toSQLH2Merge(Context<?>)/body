@@ -1,0 +1,17 @@
+{
+  ctx.keyword("merge into").sql(' ').declareTables(true).visit(table).formatSeparator();
+  ctx.sql('(');
+  Utils.fieldNames(ctx,getUpsertFields());
+  ctx.sql(')');
+  if (!getUpsertKeys().isEmpty()) {
+    ctx.sql(' ').keyword("key").sql(" (");
+    Utils.fieldNames(ctx,getUpsertKeys());
+    ctx.sql(')');
+  }
+  if (upsertSelect != null) {
+    ctx.sql(' ').visit(upsertSelect);
+  }
+ else {
+    ctx.sql(' ').keyword("values").sql(" (").visit(getUpsertValues()).sql(')');
+  }
+}

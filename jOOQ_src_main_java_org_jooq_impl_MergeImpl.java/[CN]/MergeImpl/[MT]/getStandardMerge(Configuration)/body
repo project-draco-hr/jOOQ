@@ -4,24 +4,24 @@ case CUBRID:
 case HSQLDB:
 {
       Table<?> src;
-      if (h2Select != null) {
+      if (upsertSelect != null) {
         List<Field<?>> v=new ArrayList<Field<?>>();
-        Row row=h2Select.fieldsRow();
+        Row row=upsertSelect.fieldsRow();
         for (int i=0; i < row.size(); i++) {
           v.add(row.field(i).as("s" + (i + 1)));
         }
-        src=create(config).select(v).from(h2Select).asTable("src");
+        src=create(config).select(v).from(upsertSelect).asTable("src");
       }
  else {
         List<Field<?>> v=new ArrayList<Field<?>>();
-        for (int i=0; i < getH2Values().size(); i++) {
-          v.add(getH2Values().get(i).as("s" + (i + 1)));
+        for (int i=0; i < getUpsertValues().size(); i++) {
+          v.add(getUpsertValues().get(i).as("s" + (i + 1)));
         }
         src=create(config).select(v).asTable("src");
       }
       Set<Field<?>> onFields=new HashSet<Field<?>>();
       Condition condition=null;
-      if (getH2Keys().isEmpty()) {
+      if (getUpsertKeys().isEmpty()) {
         UniqueKey<?> key=table.getPrimaryKey();
         if (key != null) {
           onFields.addAll(key.getFields());
@@ -40,13 +40,13 @@ case HSQLDB:
         }
       }
  else {
-        for (int i=0; i < getH2Keys().size(); i++) {
-          int matchIndex=getH2Fields().indexOf(getH2Keys().get(i));
+        for (int i=0; i < getUpsertKeys().size(); i++) {
+          int matchIndex=getUpsertFields().indexOf(getUpsertKeys().get(i));
           if (matchIndex == -1) {
             throw new IllegalStateException("Fields in KEY() clause must be part of the fields specified in MERGE INTO table (...)");
           }
-          onFields.addAll(getH2Keys());
-          Condition rhs=getH2Keys().get(i).equal((Field)src.field(matchIndex));
+          onFields.addAll(getUpsertKeys());
+          Condition rhs=getUpsertKeys().get(i).equal((Field)src.field(matchIndex));
           if (condition == null) {
             condition=rhs;
           }
@@ -58,10 +58,10 @@ case HSQLDB:
       Map<Field<?>,Field<?>> update=new LinkedHashMap<Field<?>,Field<?>>();
       Map<Field<?>,Field<?>> insert=new LinkedHashMap<Field<?>,Field<?>>();
       for (int i=0; i < src.fieldsRow().size(); i++) {
-        if (!onFields.contains(getH2Fields().get(i))) {
-          update.put(getH2Fields().get(i),src.field(i));
+        if (!onFields.contains(getUpsertFields().get(i))) {
+          update.put(getUpsertFields().get(i),src.field(i));
         }
-        insert.put(getH2Fields().get(i),src.field(i));
+        insert.put(getUpsertFields().get(i),src.field(i));
       }
       return create(config).mergeInto(table).using(src).on(condition).whenMatchedThenUpdate().set(update).whenNotMatchedThenInsert().set(insert);
     }

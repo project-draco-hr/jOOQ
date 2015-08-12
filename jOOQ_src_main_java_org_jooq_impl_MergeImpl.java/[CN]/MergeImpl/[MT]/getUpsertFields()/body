@@ -1,0 +1,6 @@
+{
+  if (upsertFields == null) {
+    upsertFields=new QueryPartList<Field<?>>(table.fields());
+  }
+  return upsertFields;
+}

@@ -3,7 +3,7 @@
   this.table=table;
   this.on=new ConditionProviderImpl();
   if (fields != null) {
-    h2Style=true;
-    h2Fields=new QueryPartList<Field<?>>(fields);
+    upsertStyle=true;
+    upsertFields=new QueryPartList<Field<?>>(fields);
   }
 }

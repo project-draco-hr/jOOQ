@@ -1,7 +1,7 @@
 {
-  if (h2Style) {
-    if (ctx.configuration().dialect() == H2) {
-      toSQLH2(ctx);
+  if (upsertStyle) {
+    if (ctx.family() == H2) {
+      toSQLH2Merge(ctx);
     }
  else {
       ctx.visit(getStandardMerge(ctx.configuration()));

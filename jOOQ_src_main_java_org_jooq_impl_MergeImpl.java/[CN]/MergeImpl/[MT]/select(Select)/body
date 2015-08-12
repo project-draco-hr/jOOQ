@@ -1,5 +1,5 @@
 {
-  h2Style=true;
-  h2Select=select;
+  upsertStyle=true;
+  upsertSelect=select;
   return this;
 }

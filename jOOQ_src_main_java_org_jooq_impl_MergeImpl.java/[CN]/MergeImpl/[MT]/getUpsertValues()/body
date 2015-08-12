@@ -1,0 +1,6 @@
+{
+  if (upsertValues == null) {
+    upsertValues=new QueryPartList<Field<?>>();
+  }
+  return upsertValues;
+}

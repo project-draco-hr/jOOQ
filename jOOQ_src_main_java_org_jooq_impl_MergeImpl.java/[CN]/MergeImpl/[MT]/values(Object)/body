@@ -1,7 +1,7 @@
 {
   if (using == null) {
-    h2Style=true;
-    getH2Values().addAll(Utils.fields(values,getH2Fields().toArray(new Field[0])));
+    upsertStyle=true;
+    getUpsertValues().addAll(Utils.fields(values,getUpsertFields().toArray(new Field[0])));
   }
  else {
     Field<?>[] fields=notMatchedInsert.keySet().toArray(new Field[0]);
