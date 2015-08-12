@@ -21,6 +21,12 @@
       visit0(internal);
       declareCTE(true);
     }
+ else     if (castMode() != CastMode.DEFAULT && !internal.generatesCast()) {
+      CastMode previous=castMode();
+      castMode(CastMode.DEFAULT);
+      visit0(internal);
+      castMode(previous);
+    }
  else {
       visit0(internal);
     }
