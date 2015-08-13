@@ -1,0 +1,6 @@
+{
+  if (string == null)   return null;
+  if (string.lastIndexOf('+') == string.length() - 3)   string=string + ":00";
+  if (string.charAt(10) == ' ')   string=string.substring(0,10) + "T" + string.substring(11);
+  return OffsetDateTime.parse(string);
+}

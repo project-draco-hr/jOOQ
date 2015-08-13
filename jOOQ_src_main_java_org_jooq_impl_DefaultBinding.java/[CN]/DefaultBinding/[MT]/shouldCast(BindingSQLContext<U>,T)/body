@@ -20,5 +20,11 @@ case POSTGRES:
     return true;
 }
 }
+if (type == OffsetTime.class || type == OffsetDateTime.class) {
+switch (ctx.family()) {
+case POSTGRES:
+  return true;
+}
+}
 return false;
 }

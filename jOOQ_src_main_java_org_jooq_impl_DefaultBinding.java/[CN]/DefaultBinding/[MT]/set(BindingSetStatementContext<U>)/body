@@ -104,6 +104,21 @@
         ctx.statement().setTimestamp(ctx.index(),(Timestamp)value);
       }
     }
+ else     if (actualType == LocalDate.class) {
+      ctx.statement().setDate(ctx.index(),Date.valueOf((LocalDate)value));
+    }
+ else     if (actualType == LocalTime.class) {
+      ctx.statement().setTime(ctx.index(),Time.valueOf((LocalTime)value));
+    }
+ else     if (actualType == LocalDateTime.class) {
+      ctx.statement().setTimestamp(ctx.index(),Timestamp.valueOf((LocalDateTime)value));
+    }
+ else     if (actualType == OffsetTime.class) {
+      ctx.statement().setString(ctx.index(),value.toString());
+    }
+ else     if (actualType == OffsetDateTime.class) {
+      ctx.statement().setString(ctx.index(),value.toString());
+    }
  else     if (actualType == YearToMonth.class) {
       if (dialect.family() == POSTGRES) {
         ctx.statement().setObject(ctx.index(),toPGInterval((YearToMonth)value));

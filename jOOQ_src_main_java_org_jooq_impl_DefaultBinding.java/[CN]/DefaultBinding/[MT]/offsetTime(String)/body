@@ -1,0 +1,5 @@
+{
+  if (string == null)   return null;
+  if (string.lastIndexOf('+') == string.length() - 3)   string=string + ":00";
+  return OffsetTime.parse(string);
+}
