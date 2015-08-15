@@ -7,11 +7,15 @@
       return (Field<T>)f;
     }
   }
-  String name=field.getName();
-  for (  Field<?> f1 : fields) {
-    if (f1.getName().equals(name)) {
-      return (Field<T>)f1;
+  Field<?> columnMatch=null;
+  String tableName=tableName(field);
+  String fieldName=field.getName();
+  for (  Field<?> f : fields) {
+    if (tableName != null) {
+      String tName=tableName(f);
+      if (tName != null && tableName.equals(tName) && f.getName().equals(fieldName))       return (Field<T>)f;
     }
+    if (columnMatch == null && f.getName().equals(fieldName))     columnMatch=f;
   }
-  return null;
+  return (Field<T>)columnMatch;
 }

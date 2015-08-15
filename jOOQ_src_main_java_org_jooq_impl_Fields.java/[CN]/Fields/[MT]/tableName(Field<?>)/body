@@ -1,0 +1,9 @@
+{
+  if (field instanceof TableField) {
+    Table<?> table=((TableField<?,?>)field).getTable();
+    if (table != null) {
+      return table.getName();
+    }
+  }
+  return null;
+}
