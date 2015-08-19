@@ -1,0 +1,10 @@
+{
+  ConnectionProvider cp=configuration().connectionProvider();
+  if (cp instanceof DefaultConnectionProvider) {
+    DefaultConnectionProvider dcp=(DefaultConnectionProvider)cp;
+    if (dcp.finalize) {
+      JDBCUtils.safeClose(dcp.connection);
+      dcp.connection=null;
+    }
+  }
+}
