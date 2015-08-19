@@ -1,0 +1,10 @@
+{
+  Fields<?> fields=new Fields<Record>(getUpsertFields());
+  Map<Field<?>,Field<?>> map=new LinkedHashMap<Field<?>,Field<?>>();
+  for (  Field<?> field : fields.fields)   map.put(field,getUpsertValues().get(fields.indexOf(field)));
+  if (upsertSelect != null) {
+  }
+ else {
+    ctx.visit(insertInto(table,getUpsertFields()).values(getUpsertValues()).onDuplicateKeyUpdate().set(map));
+  }
+}

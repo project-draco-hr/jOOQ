@@ -1,5 +1,6 @@
 {
-switch (config.dialect().family()) {
+  Configuration config=ctx.configuration();
+switch (ctx.family()) {
 case CUBRID:
 case HSQLDB:
 {

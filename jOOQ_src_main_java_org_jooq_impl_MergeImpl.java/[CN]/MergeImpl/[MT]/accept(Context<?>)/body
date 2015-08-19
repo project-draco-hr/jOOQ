@@ -1,13 +1,18 @@
 {
   if (upsertStyle) {
-    if (ctx.family() == H2) {
+switch (ctx.family()) {
+case H2:
       toSQLH2Merge(ctx);
-    }
+    break;
+case POSTGRES:
+  toPostgresInsertOnConflict(ctx);
+break;
+default :
+ctx.visit(getStandardMerge(ctx));
+break;
+}
+}
  else {
-      ctx.visit(getStandardMerge(ctx.configuration()));
-    }
-  }
- else {
-    toSQLStandard(ctx);
-  }
+toSQLStandard(ctx);
+}
 }

@@ -20,7 +20,7 @@ case POSTGRES:
         boolean qualify=ctx.qualify();
         ctx.qualify(false).visit(new Fields<Record>(table.getPrimaryKey().getFields())).qualify(qualify);
       }
-      ctx.sql(") ").keyword("do update set").sql(' ').visit(updateMap).end(INSERT_ON_DUPLICATE_KEY_UPDATE);
+      ctx.sql(") ").keyword("do update").formatSeparator().keyword("set").sql(' ').formatIndentLockStart().visit(updateMap).formatIndentLockEnd().end(INSERT_ON_DUPLICATE_KEY_UPDATE);
       break;
     }
 case H2:
