@@ -1,7 +1,7 @@
 {
 switch (configuration.family()) {
 case POSTGRES:
-    return field("{0} - {1}",getDataType(),timestamp1,timestamp2);
+    return field("({0} - {1})",getDataType(),timestamp1,timestamp2);
 case CUBRID:
   return (Field)timestamp1.sub(timestamp2);
 case DERBY:
