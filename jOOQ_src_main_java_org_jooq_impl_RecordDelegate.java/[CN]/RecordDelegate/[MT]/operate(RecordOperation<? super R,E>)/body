@@ -39,6 +39,9 @@ throw new IllegalStateException("Type not supported: " + type);
 }
 }
 }
+if (attachRecords(configuration)) {
+record.attach(configuration);
+}
 if (operation != null) {
 try {
 operation.operate(record);
@@ -50,9 +53,6 @@ if (ctx != null) ctx.exception=e;
 if (listeners != null) for (RecordListener listener : listeners) listener.exception(ctx);
 }
 }
-}
-if (attachRecords(configuration)) {
-record.attach(configuration);
 }
 if (listeners != null) {
 for (RecordListener listener : listeners) {
