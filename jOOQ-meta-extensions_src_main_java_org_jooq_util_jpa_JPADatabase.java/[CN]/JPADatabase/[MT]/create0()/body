@@ -15,7 +15,6 @@
           configuration.addAnnotatedClass(Class.forName(def.getBeanClassName()));
         }
       }
-      configuration.generateSchemaCreationScript(Dialect.getDialect(configuration.getProperties()));
       SchemaExport export=new SchemaExport(configuration,connection);
       export.create(true,true);
     }
