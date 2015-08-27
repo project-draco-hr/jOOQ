@@ -1,0 +1,4 @@
+{
+  this.configuration=c;
+  for (  Result<?> result : results)   if (result != null)   result.attach(c);
+}

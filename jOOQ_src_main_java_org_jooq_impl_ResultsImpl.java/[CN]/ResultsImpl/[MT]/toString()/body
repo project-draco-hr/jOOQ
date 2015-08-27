@@ -1,0 +1,9 @@
+{
+  StringBuilder sb=new StringBuilder();
+  String separator="";
+  for (  Result<?> result : this) {
+    sb.append(separator).append(result);
+    separator="\n";
+  }
+  return sb.toString();
+}

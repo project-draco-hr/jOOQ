@@ -1,0 +1,10 @@
+{
+  if (this == obj) {
+    return true;
+  }
+  if (obj instanceof ResultsImpl) {
+    ResultsImpl other=(ResultsImpl)obj;
+    return results.equals(other.results);
+  }
+  return false;
+}

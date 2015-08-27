@@ -18,7 +18,7 @@
     }
   }
  else {
-    results=new ArrayList<Result<Record>>();
+    results=new ResultsImpl(ctx.configuration());
     consumeResultSets(ctx,listener,results,intern);
   }
   return result != null ? result.size() : 0;

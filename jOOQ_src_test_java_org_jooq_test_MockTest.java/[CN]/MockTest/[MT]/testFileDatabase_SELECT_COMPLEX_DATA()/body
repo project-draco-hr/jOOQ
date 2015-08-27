@@ -1,5 +1,5 @@
 {
-  List<Result<Record>> results=MOCK.fetchMany("select complex_data");
+  Results results=MOCK.fetchMany("select complex_data");
   assertEquals(2,results.size());
   Result<Record> r1=results.get(0);
   Result<Record> r2=results.get(1);

@@ -1,8 +1,4 @@
 {
   this.configuration=c;
-  for (  R record : records) {
-    if (record != null) {
-      record.attach(c);
-    }
-  }
+  for (  R record : records)   if (record != null)   record.attach(c);
 }

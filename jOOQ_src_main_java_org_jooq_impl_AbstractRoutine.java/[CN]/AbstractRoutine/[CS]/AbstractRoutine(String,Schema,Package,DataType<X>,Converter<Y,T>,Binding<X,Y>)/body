@@ -6,7 +6,7 @@
   this.allParameters=new ArrayList<Parameter<?>>();
   this.inParameters=new ArrayList<Parameter<?>>();
   this.outParameters=new ArrayList<Parameter<?>>();
-  this.results=new ArrayList<Result<Record>>();
+  this.results=new ResultsImpl(null);
   this.inValues=new HashMap<Parameter<?>,Field<?>>();
   this.inValuesDefaulted=new HashSet<Parameter<?>>();
   this.inValuesNonDefaulted=new HashSet<Parameter<?>>();
