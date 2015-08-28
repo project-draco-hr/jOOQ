@@ -1,4 +1,8 @@
 {
+  if (skip) {
+    getLog().info("Skipping jOOQ code generation");
+    return;
+  }
   ClassLoader oldCL=Thread.currentThread().getContextClassLoader();
   try {
     Thread.currentThread().setContextClassLoader(getClassLoader());
