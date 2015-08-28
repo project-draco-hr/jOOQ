@@ -1,0 +1,5 @@
+{
+  List<Result<Record>> list=new ArrayList<Result<Record>>();
+  for (  ResultOrRows result : results)   if (result.result() != null)   list.add(result.result());
+  return list;
+}

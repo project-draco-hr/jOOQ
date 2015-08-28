@@ -1,0 +1,5 @@
+{
+  int translated=0;
+  for (int i=0; i < index; i++)   while (results.get(translated++).result() == null)   ;
+  return translated;
+}

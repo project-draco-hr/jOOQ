@@ -1,0 +1,12 @@
+{
+  if (this == obj)   return true;
+  if (obj == null)   return false;
+  if (getClass() != obj.getClass())   return false;
+  ResultOrRowsImpl other=(ResultOrRowsImpl)obj;
+  if (result == null) {
+    if (other.result != null)     return false;
+  }
+ else   if (!result.equals(other.result))   return false;
+  if (rows != other.rows)   return false;
+  return true;
+}

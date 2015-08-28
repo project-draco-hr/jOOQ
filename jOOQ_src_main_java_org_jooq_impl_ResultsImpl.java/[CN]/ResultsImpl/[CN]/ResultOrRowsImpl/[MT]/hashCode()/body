@@ -1,0 +1,7 @@
+{
+  final int prime=31;
+  int r=1;
+  r=prime * r + ((this.result == null) ? 0 : this.result.hashCode());
+  r=prime * r + rows;
+  return r;
+}

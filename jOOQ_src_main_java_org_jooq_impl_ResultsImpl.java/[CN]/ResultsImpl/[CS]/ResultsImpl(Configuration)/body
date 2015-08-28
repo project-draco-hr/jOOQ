@@ -1,4 +1,4 @@
 {
   this.configuration=configuration;
-  this.results=new ArrayList<Result<Record>>();
+  this.results=new ArrayList<ResultOrRows>();
 }

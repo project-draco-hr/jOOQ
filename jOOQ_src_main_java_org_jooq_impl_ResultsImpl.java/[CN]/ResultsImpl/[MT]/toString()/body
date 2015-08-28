@@ -1,8 +1,9 @@
 {
   StringBuilder sb=new StringBuilder();
   String separator="";
-  for (  Result<?> result : this) {
-    sb.append(separator).append(result);
+  for (  ResultOrRows result : results) {
+    if (result.result() == null)     sb.append(separator).append("Update count: ").append(result.rows());
+ else     sb.append(separator).append("Result set:\n").append(result.result());
     separator="\n";
   }
   return sb.toString();
