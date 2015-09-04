@@ -1,5 +1,6 @@
 {
   listener.executeStart(ctx);
+  if (ctx.family() == POSTGRES && fetchSize != 0 && ctx.connection().getAutoCommit())   log.info("Fetch Size","A fetch size of " + fetchSize + " was set on a auto-commit PostgreSQL connection, which is not recommended. See http://jdbc.postgresql.org/documentation/head/query.html#query-with-cursor");
   if (ctx.statement().execute()) {
     ctx.resultSet(ctx.statement().getResultSet());
   }
