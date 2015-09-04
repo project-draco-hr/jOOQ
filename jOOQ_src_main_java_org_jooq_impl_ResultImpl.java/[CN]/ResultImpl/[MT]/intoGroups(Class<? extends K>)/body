@@ -1,0 +1,3 @@
+{
+  return intoGroups(Utils.configuration(this).recordMapperProvider().provide(fields,keyType));
+}

@@ -1,7 +1,7 @@
 {
-  Map<S,R> map=new LinkedHashMap<S,R>();
+  Map<K,R> map=new LinkedHashMap<K,R>();
   for (  R record : this) {
-    S key=record.into(table);
+    K key=keyMapper.map(record);
     if (map.put(key,record) != null)     throw new InvalidResultException("Key list " + key + " is not unique in Result for "+ this);
   }
   return map;

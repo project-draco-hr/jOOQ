@@ -1,0 +1,2 @@
+Class<? extends K> keyType
+Class<? extends V> valueType
