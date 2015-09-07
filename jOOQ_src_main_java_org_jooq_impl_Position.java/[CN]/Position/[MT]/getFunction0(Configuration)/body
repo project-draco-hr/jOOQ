@@ -2,7 +2,9 @@
 switch (configuration.dialect().family()) {
 case DERBY:
     return field("{locate}({0}, {1})",SQLDataType.INTEGER,search,in);
+case SQLITE:
+  return field("{instr}({0}, {1})",SQLDataType.INTEGER,in,search);
 default :
-  return field("{position}({0} {in} {1})",SQLDataType.INTEGER,search,in);
+return field("{position}({0} {in} {1})",SQLDataType.INTEGER,search,in);
 }
 }
