@@ -1,5 +1,0 @@
-{
-  if (value instanceof OffsetTime)   return Calendar.getInstance(TimeZone.getTimeZone(((OffsetTime)value).getOffset()));
-  if (value instanceof OffsetDateTime)   return Calendar.getInstance(TimeZone.getTimeZone(((OffsetDateTime)value).getOffset()));
-  throw new IllegalArgumentException("Cannot extract calendar from " + value);
-}
