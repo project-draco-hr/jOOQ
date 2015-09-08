@@ -1,0 +1,3 @@
+ForeignKey<?,?> key
+Table<?> fk
+Table<?> pk

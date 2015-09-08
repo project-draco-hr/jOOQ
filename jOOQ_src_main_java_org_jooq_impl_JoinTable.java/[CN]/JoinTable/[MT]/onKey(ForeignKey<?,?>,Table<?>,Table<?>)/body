@@ -1,0 +1,11 @@
+{
+  JoinTable result=this;
+  TableField<?,?>[] references=key.getFieldsArray();
+  TableField<?,?>[] referenced=key.getKey().getFieldsArray();
+  for (int i=0; i < references.length; i++) {
+    Field f1=fk.field(references[i]);
+    Field f2=pk.field(referenced[i]);
+    result.and(f1.equal(f2));
+  }
+  return result;
+}

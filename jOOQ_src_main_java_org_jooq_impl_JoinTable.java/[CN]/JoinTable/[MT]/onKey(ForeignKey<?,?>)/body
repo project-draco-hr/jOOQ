@@ -1,11 +1,5 @@
 {
-  JoinTable result=this;
-  TableField<?,?>[] references=key.getFieldsArray();
-  TableField<?,?>[] referenced=key.getKey().getFieldsArray();
-  for (int i=0; i < references.length; i++) {
-    Field f1=references[i];
-    Field f2=referenced[i];
-    result.and(f1.equal(f2));
-  }
-  return result;
+  if (key.getTable().equals(unaliased(lhs)))   return onKey(key,lhs,rhs);
+ else   if (key.getTable().equals(unaliased(rhs)))   return onKey(key,rhs,lhs);
+  throw onKeyException();
 }

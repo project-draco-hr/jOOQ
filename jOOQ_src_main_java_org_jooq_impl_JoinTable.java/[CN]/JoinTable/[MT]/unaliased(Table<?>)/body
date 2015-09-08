@@ -1,0 +1,3 @@
+{
+  return (aliased instanceof TableImpl) ? (((TableImpl<?>)aliased).alias == null ? (TableImpl<?>)aliased : ((TableImpl<?>)aliased).alias.wrapped()) : (aliased instanceof TableAlias) ? ((TableAlias<?>)aliased).alias.wrapped() : aliased;
+}
