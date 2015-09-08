@@ -10,7 +10,7 @@ case MARIADB:
 case MYSQL:
 case POSTGRES:
 case SQLITE:
-  return condition;
+default :
+  return DSL.sql("({0})",condition);
 }
-return condition;
 }
