@@ -1,0 +1,3 @@
+String sql
+DataType<T> type
+QueryPart parts
