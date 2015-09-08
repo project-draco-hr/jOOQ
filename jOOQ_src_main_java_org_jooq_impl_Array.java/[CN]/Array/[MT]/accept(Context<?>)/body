@@ -1,0 +1,13 @@
+{
+switch (ctx.family()) {
+case H2:
+    ctx.sql('(').visit(fields).sql(')');
+  break;
+case HSQLDB:
+case POSTGRES:
+default :
+ctx.keyword("array").sql('[').visit(fields).sql(']');
+if (fields.fields.length == 0 && ctx.family() == POSTGRES) ctx.sql("::").keyword("int[]");
+break;
+}
+}

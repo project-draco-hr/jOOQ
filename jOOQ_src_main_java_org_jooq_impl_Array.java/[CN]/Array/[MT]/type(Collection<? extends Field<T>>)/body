@@ -1,0 +1,4 @@
+{
+  if (fields == null || fields.isEmpty())   return (DataType)SQLDataType.OTHER.getArrayDataType();
+ else   return fields.iterator().next().getDataType().getArrayDataType();
+}

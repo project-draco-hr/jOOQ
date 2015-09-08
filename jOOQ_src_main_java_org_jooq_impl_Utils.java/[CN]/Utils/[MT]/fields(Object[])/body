@@ -1,9 +1,0 @@
-{
-  List<Field<?>> result=new ArrayList<Field<?>>();
-  if (values != null) {
-    for (    Object value : values) {
-      result.add(field(value));
-    }
-  }
-  return result;
-}
