@@ -14,7 +14,7 @@
   generateSchemaClassJavadoc(schema,out);
   printClassAnnotations(out,schema);
   if (scala) {
-    out.println("class %s extends %s(\"%s\")[[before= with ][%s]] {",className,SchemaImpl.class,schema.getOutputName(),interfaces);
+    out.println("class %s extends %s(\"%s\")[[before= with ][separator= with ][%s]] {",className,SchemaImpl.class,schema.getOutputName(),interfaces);
   }
  else {
     out.println("public class %s extends %s[[before= implements ][%s]] {",className,SchemaImpl.class,interfaces);

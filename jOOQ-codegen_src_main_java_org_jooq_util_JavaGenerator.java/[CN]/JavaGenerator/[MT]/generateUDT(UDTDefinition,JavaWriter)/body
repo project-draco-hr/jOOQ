@@ -24,7 +24,7 @@
     interfaces.add(out.ref(Package.class));
   }
   if (scala) {
-    out.println("class %s extends %s[%s](\"%s\", %s)[[before= with ][%s]] {",className,UDTImpl.class,recordType,udt.getOutputName(),schemaId,interfaces);
+    out.println("class %s extends %s[%s](\"%s\", %s)[[before= with ][separator= with ][%s]] {",className,UDTImpl.class,recordType,udt.getOutputName(),schemaId,interfaces);
   }
  else {
     out.println("public class %s extends %s<%s>[[before= implements ][%s]] {",className,UDTImpl.class,recordType,interfaces);

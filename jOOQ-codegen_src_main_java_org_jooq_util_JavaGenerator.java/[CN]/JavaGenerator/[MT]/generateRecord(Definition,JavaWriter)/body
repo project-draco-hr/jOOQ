@@ -25,7 +25,7 @@
   if (generateInterfaces()) {
     interfaces.add(out.ref(getStrategy().getFullJavaClassName(tableOrUdt,Mode.INTERFACE)));
   }
-  if (scala)   out.println("class %s extends %s[%s](%s)[[before= with ][%s]] {",className,baseClass,className,tableIdentifier,interfaces);
+  if (scala)   out.println("class %s extends %s[%s](%s)[[before= with ][separator= with ][%s]] {",className,baseClass,className,tableIdentifier,interfaces);
  else   out.println("public class %s extends %s<%s>[[before= implements ][%s]] {",className,baseClass,className,interfaces);
   out.printSerial();
   for (int i=0; i < degree; i++) {
