@@ -1,0 +1,3 @@
+{
+  return boolAnd(condition(nullSafe(field)));
+}

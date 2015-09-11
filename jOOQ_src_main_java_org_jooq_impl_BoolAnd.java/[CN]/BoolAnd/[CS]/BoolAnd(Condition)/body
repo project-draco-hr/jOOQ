@@ -1,0 +1,4 @@
+{
+  super("bool_and",SQLDataType.BOOLEAN,DSL.field(condition));
+  this.condition=condition;
+}

@@ -1,0 +1,17 @@
+{
+switch (ctx.family()) {
+case POSTGRES:
+    super.accept(ctx);
+  break;
+default :
+final Field<Integer> count=DSL.field("{0}",Integer.class,new CustomQueryPart(){
+  @Override public void accept(  Context<?> c){
+    c.visit(DSL.count(DSL.when(condition.not(),one())));
+    toSQLOverClause(c);
+  }
+}
+);
+ctx.visit(DSL.when(count.eq(zero()),inline(true)).otherwise(inline(false)));
+break;
+}
+}
