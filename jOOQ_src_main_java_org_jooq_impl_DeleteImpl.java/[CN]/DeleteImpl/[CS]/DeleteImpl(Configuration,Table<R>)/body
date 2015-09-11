@@ -1,3 +1,0 @@
-{
-  super(new DeleteQueryImpl<R>(configuration,table));
-}

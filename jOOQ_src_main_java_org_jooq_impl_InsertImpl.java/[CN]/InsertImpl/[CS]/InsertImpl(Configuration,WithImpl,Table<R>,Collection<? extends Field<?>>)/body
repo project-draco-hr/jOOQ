@@ -1,0 +1,4 @@
+{
+  this(configuration,with,into);
+  columns(fields);
+}

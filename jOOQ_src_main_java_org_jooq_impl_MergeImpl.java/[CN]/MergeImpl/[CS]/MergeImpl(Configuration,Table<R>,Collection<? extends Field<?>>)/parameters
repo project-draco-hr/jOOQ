@@ -1,3 +1,0 @@
-Configuration configuration
-Table<R> table
-Collection<? extends Field<?>> fields

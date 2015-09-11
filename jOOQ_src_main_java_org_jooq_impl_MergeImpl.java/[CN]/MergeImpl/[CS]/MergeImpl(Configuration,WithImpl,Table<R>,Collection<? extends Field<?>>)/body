@@ -1,0 +1,10 @@
+{
+  super(configuration);
+  this.with=with;
+  this.table=table;
+  this.on=new ConditionProviderImpl();
+  if (fields != null) {
+    upsertStyle=true;
+    upsertFields=new QueryPartList<Field<?>>(fields);
+  }
+}

@@ -1,0 +1,6 @@
+{
+  super(configuration);
+  this.with=with;
+  this.table=table;
+  this.returning=new QueryPartList<Field<?>>();
+}

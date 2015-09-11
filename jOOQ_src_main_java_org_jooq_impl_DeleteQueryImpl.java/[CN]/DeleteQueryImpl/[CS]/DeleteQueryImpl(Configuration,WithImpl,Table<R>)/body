@@ -1,0 +1,4 @@
+{
+  super(configuration,with,table);
+  this.condition=new ConditionProviderImpl();
+}

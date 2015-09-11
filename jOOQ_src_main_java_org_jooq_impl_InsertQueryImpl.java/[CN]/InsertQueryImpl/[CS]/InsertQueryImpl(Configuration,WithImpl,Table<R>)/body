@@ -1,0 +1,5 @@
+{
+  super(configuration,with,into);
+  this.updateMap=new FieldMapForUpdate(INSERT_ON_DUPLICATE_KEY_UPDATE_ASSIGNMENT);
+  this.insertMaps=new FieldMapsForInsert();
+}

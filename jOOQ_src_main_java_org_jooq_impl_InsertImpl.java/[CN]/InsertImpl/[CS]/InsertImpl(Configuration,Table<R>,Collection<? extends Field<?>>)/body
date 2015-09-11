@@ -1,5 +1,0 @@
-{
-  super(new InsertQueryImpl<R>(configuration,into));
-  this.into=into;
-  columns(fields);
-}

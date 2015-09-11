@@ -1,3 +1,3 @@
 {
-  return new InsertImpl(configuration(),into,Arrays.asList(new Field[]{field1,field2}));
+  return new InsertImpl(configuration(),null,into,Arrays.asList(new Field[]{field1,field2}));
 }

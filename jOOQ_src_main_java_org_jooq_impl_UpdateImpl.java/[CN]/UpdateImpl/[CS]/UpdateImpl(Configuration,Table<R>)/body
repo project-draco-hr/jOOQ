@@ -1,3 +1,0 @@
-{
-  super(new UpdateQueryImpl<R>(configuration,table));
-}

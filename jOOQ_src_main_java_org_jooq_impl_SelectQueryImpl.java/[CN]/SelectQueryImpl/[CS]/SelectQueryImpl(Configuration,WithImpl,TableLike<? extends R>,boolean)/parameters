@@ -1,0 +1,4 @@
+Configuration configuration
+WithImpl with
+TableLike<? extends R> from
+boolean distinct

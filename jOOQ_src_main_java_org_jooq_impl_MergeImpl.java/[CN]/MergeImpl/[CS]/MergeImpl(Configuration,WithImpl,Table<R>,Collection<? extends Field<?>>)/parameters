@@ -1,0 +1,4 @@
+Configuration configuration
+WithImpl with
+Table<R> table
+Collection<? extends Field<?>> fields

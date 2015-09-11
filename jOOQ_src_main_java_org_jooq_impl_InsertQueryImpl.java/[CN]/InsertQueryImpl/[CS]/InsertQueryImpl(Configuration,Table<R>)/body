@@ -1,5 +1,0 @@
-{
-  super(configuration,into);
-  updateMap=new FieldMapForUpdate(INSERT_ON_DUPLICATE_KEY_UPDATE_ASSIGNMENT);
-  insertMaps=new FieldMapsForInsert();
-}

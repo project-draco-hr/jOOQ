@@ -1,4 +1,5 @@
 {
+  if (with != null)   ctx.visit(with).formatSeparator();
   if (upsertStyle) {
 switch (ctx.family()) {
 case H2:

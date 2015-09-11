@@ -1,4 +1,5 @@
 {
+  if (with != null)   ctx.visit(with).formatSeparator();
 {
     accept0(ctx);
   }

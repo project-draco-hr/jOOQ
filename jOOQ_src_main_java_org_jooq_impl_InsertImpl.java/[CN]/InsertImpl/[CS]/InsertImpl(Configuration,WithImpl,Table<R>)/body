@@ -1,0 +1,4 @@
+{
+  super(new InsertQueryImpl<R>(configuration,with,into));
+  this.into=into;
+}
