@@ -1,0 +1,3 @@
+{
+  return new Function<T>("nth_value",nullSafeDataType(field),nullSafe(field),nullSafe(nth));
+}
