@@ -151,6 +151,9 @@
   if (generatePojosEqualsAndHashCode()) {
     generatePojoEqualsAndHashCode(tableOrUDT,out);
   }
+  if (generatePojosToString()) {
+    generatePojoToString(tableOrUDT,out);
+  }
   if (generateInterfaces() && !generateImmutablePojos()) {
     printFromAndInto(out,tableOrUDT);
   }
