@@ -2,6 +2,12 @@
   JoinType translatedType=translateType(ctx);
   Clause translatedClause=translateClause(translatedType);
   String keyword=translatedType.toSQL();
+  if (translatedType == CROSS_APPLY && ctx.family() == POSTGRES) {
+    keyword="cross join lateral";
+  }
+ else   if (translatedType == OUTER_APPLY && ctx.family() == POSTGRES) {
+    keyword="left outer join lateral";
+  }
   toSQLTable(ctx,lhs);
   ctx.formatIndentStart().formatSeparator().start(translatedClause).keyword(keyword).sql(' ');
   toSQLTable(ctx,rhs);
@@ -10,6 +16,9 @@
   }
   if (!asList(CROSS_JOIN,NATURAL_JOIN,NATURAL_LEFT_OUTER_JOIN,NATURAL_RIGHT_OUTER_JOIN,CROSS_APPLY,OUTER_APPLY).contains(translatedType)) {
     toSQLJoinCondition(ctx);
+  }
+ else   if (OUTER_APPLY == translatedType && ctx.family() == POSTGRES) {
+    ctx.formatSeparator().start(TABLE_JOIN_ON).keyword("on").sql(" true").end(TABLE_JOIN_ON);
   }
   ctx.end(translatedClause).formatIndentEnd();
 }
