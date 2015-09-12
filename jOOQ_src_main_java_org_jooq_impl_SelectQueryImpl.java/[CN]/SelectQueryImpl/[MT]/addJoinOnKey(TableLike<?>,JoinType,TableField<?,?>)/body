@@ -3,17 +3,13 @@
   Table<?> joined=null;
 switch (type) {
 case JOIN:
-    joined=getFrom().get(index).join(table).onKey(keyFields);
-  break;
 case LEFT_OUTER_JOIN:
-joined=getFrom().get(index).leftOuterJoin(table).onKey(keyFields);
-break;
 case RIGHT_OUTER_JOIN:
-joined=getFrom().get(index).rightOuterJoin(table).onKey(keyFields);
-break;
 case FULL_OUTER_JOIN:
-joined=getFrom().get(index).fullOuterJoin(table).onKey(keyFields);
-break;
+case SEMI_JOIN:
+case ANTI_JOIN:
+    joined=getFrom().get(index).join(table,type).onKey(keyFields);
+  break;
 default :
 throw new IllegalArgumentException("JoinType " + type + " is not supported with the addJoinOnKey() method. Use INNER or OUTER JOINs only");
 }

@@ -3,17 +3,13 @@
   Table<?> joined=null;
 switch (type) {
 case JOIN:
-    joined=getFrom().get(index).join(table).using(fields);
-  break;
 case LEFT_OUTER_JOIN:
-joined=getFrom().get(index).leftOuterJoin(table).using(fields);
-break;
 case RIGHT_OUTER_JOIN:
-joined=getFrom().get(index).rightOuterJoin(table).using(fields);
-break;
 case FULL_OUTER_JOIN:
-joined=getFrom().get(index).fullOuterJoin(table).using(fields);
-break;
+case SEMI_JOIN:
+case ANTI_JOIN:
+    joined=getFrom().get(index).join(table,type).using(fields);
+  break;
 default :
 throw new IllegalArgumentException("JoinType " + type + " is not supported with the addJoinUsing() method. Use INNER or OUTER JOINs only");
 }

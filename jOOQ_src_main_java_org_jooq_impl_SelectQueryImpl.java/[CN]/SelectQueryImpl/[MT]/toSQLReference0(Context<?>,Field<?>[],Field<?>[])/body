@@ -74,13 +74,22 @@ DefaultConfiguration c=new DefaultConfiguration(dialect);
 String renderedFrom=new DefaultRenderContext(c).render(getFrom());
 hasFrom=!renderedFrom.isEmpty();
 }
+List<Condition> semiAntiJoinPredicates=null;
 if (hasFrom) {
+Object previousCollect=context.data(DATA_COLLECT_SEMI_ANTI_JOIN,true);
+Object previousCollected=context.data(DATA_COLLECTED_SEMI_ANTI_JOIN,null);
 context.formatSeparator().keyword("from").sql(' ').visit(getFrom());
+semiAntiJoinPredicates=(List<Condition>)context.data(DATA_COLLECTED_SEMI_ANTI_JOIN,previousCollected);
+context.data(DATA_COLLECT_SEMI_ANTI_JOIN,previousCollect);
 }
 context.declareTables(false).end(SELECT_FROM);
 context.start(SELECT_WHERE);
-if (!(getWhere().getWhere() instanceof TrueCondition)) {
-context.formatSeparator().keyword("where").sql(' ').visit(getWhere());
+if (getWhere().getWhere() instanceof TrueCondition && semiAntiJoinPredicates == null) ;
+ else {
+ConditionProviderImpl where=new ConditionProviderImpl();
+if (semiAntiJoinPredicates != null) where.addConditions(semiAntiJoinPredicates);
+if (!(getWhere().getWhere() instanceof TrueCondition)) where.addConditions(getWhere());
+context.formatSeparator().keyword("where").sql(' ').visit(where);
 }
 context.end(SELECT_WHERE);
 context.start(SELECT_START_WITH);
