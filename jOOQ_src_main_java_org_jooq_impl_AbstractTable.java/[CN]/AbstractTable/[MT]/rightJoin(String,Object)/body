@@ -1,0 +1,3 @@
+{
+  return rightOuterJoin(sql,bindings);
+}
