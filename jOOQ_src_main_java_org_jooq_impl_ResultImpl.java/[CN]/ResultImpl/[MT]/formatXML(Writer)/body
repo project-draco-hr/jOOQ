@@ -1,12 +1,27 @@
 {
   try {
-    writer.append("<result xmlns=\"http://www.jooq.org/xsd/jooq-export-2.6.0.xsd\">");
+    writer.append("<result xmlns=\"http://www.jooq.org/xsd/jooq-export-3.7.0.xsd\">");
     writer.append("<fields>");
     for (    Field<?> field : fields.fields) {
-      writer.append("<field name=\"");
+      writer.append("<field");
+      if (field instanceof TableField) {
+        Table<?> table=((TableField<?,?>)field).getTable();
+        if (table != null) {
+          Schema schema=table.getSchema();
+          if (schema != null) {
+            writer.append(" schema=\"");
+            writer.append(escapeXML(schema.getName()));
+            writer.append("\"");
+          }
+          writer.append(" table=\"");
+          writer.append(escapeXML(table.getName()));
+          writer.append("\"");
+        }
+      }
+      writer.append(" name=\"");
       writer.append(escapeXML(field.getName()));
-      writer.append("\" ");
-      writer.append("type=\"");
+      writer.append("\"");
+      writer.append(" type=\"");
       writer.append(field.getDataType().getTypeName().toUpperCase());
       writer.append("\"/>");
     }
