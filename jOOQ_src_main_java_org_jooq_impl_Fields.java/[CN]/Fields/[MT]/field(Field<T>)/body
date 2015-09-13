@@ -1,12 +1,7 @@
 {
-  if (field == null) {
-    return null;
-  }
-  for (  Field<?> f : fields) {
-    if (f.equals(field)) {
-      return (Field<T>)f;
-    }
-  }
+  if (field == null)   return null;
+  for (  Field<?> f : fields)   if (f == field)   return (Field<T>)f;
+  for (  Field<?> f : fields)   if (f.equals(field))   return (Field<T>)f;
   Field<?> columnMatch=null;
   String tableName=tableName(field);
   String fieldName=field.getName();
