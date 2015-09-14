@@ -4,7 +4,7 @@
     try {
       constants=getConstants0();
     }
- catch (    SQLException e) {
+ catch (    Exception e) {
       log.error("Error while initialising package",e);
     }
   }

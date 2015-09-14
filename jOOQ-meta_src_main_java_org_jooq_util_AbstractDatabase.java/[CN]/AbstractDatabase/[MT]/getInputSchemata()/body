@@ -7,7 +7,7 @@
           inputSchemata.add(schema.getName());
         }
       }
- catch (      SQLException e) {
+ catch (      Exception e) {
         log.error("Could not load schemata",e);
       }
     }

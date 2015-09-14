@@ -4,7 +4,7 @@
     try {
       schemata=getSchemata0();
     }
- catch (    SQLException e) {
+ catch (    Exception e) {
       log.error("Could not load schemata",e);
     }
     Iterator<SchemaDefinition> it=schemata.iterator();
