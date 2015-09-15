@@ -1,0 +1,5 @@
+{
+  Map<K,E> map=new LinkedHashMap<K,E>();
+  for (  R record : this)   if (map.put(record.getValue(keyFieldIndex,keyConverter),mapper.map(record)) != null)   throw new InvalidResultException("Key " + keyFieldIndex + " is not unique in Result for "+ this);
+  return map;
+}

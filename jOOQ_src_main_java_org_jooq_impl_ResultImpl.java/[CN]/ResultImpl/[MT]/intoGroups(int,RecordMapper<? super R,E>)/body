@@ -1,3 +1,3 @@
 {
-  return intoGroups0(keyFieldIndex,mapper);
+  return intoGroups0(keyFieldIndex,identity(Object.class),mapper);
 }

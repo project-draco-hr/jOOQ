@@ -1,2 +1,3 @@
 int keyFieldIndex
+Converter<?,K> keyConverter
 RecordMapper<? super R,E> mapper
