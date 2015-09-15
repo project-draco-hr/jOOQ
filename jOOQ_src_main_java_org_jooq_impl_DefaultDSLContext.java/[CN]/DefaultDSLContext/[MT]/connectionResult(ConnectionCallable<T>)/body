@@ -1,0 +1,12 @@
+{
+  final Connection connection=configuration().connectionProvider().acquire();
+  try {
+    return callable.run(connection);
+  }
+ catch (  Exception e) {
+    throw new DataAccessException("Error while running ConnectionCallable",e);
+  }
+ finally {
+    configuration().connectionProvider().release(connection);
+  }
+}

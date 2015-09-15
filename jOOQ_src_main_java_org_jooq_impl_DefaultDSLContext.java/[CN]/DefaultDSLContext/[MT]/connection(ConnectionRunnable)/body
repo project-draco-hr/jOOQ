@@ -1,0 +1,9 @@
+{
+  connectionResult(new ConnectionCallable<Void>(){
+    @Override public Void run(    Connection connection) throws Exception {
+      runnable.run(connection);
+      return null;
+    }
+  }
+);
+}
