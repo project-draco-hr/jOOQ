@@ -11,9 +11,9 @@
       if (table != null) {
         Schema schema=table.getSchema();
         if (schema != null) {
-          attrs.addAttribute("","","schema","CDATA",field.getName());
+          attrs.addAttribute("","","schema","CDATA",schema.getName());
         }
-        attrs.addAttribute("","","table","CDATA",field.getName());
+        attrs.addAttribute("","","table","CDATA",table.getName());
       }
     }
     attrs.addAttribute("","","name","CDATA",field.getName());
