@@ -1,7 +1,4 @@
 {
-  if (allBindValues.isEmpty()) {
-    return BatchMultiple.execute(configuration,new Query[]{query});
-  }
   ExecuteContext ctx=new DefaultExecuteContext(configuration,new Query[]{query});
   ExecuteListener listener=new ExecuteListeners(ctx);
   Connection connection=ctx.connection();
