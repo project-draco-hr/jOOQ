@@ -1,4 +1,4 @@
 {
-  if (c == ' ' || c == '-')   return "_";
+  if (c == ' ' || c == '-' || c == '.')   return "_";
  else   return "_" + Integer.toHexString(c);
 }
