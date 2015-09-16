@@ -1,5 +1,0 @@
-{
-  QueryPart q=condition("a = ? and b = ? and ? = ?",1,2,"a","b");
-  assertEquals("(a = ? and b = ? and ? = ?)",create.render(q));
-  assertEquals("(a = 1 and b = 2 and 'a' = 'b')",create.renderInlined(q));
-}

@@ -1,8 +1,0 @@
-{
-  assertEquals(DEFAULT,DEFAULT.predecessor());
-  assertEquals(H2,H2.predecessor());
-  assertEquals(POSTGRES_9_3,POSTGRES_9_3.predecessor());
-  assertEquals(POSTGRES_9_3,POSTGRES_9_4.predecessor());
-  assertEquals(POSTGRES_9_4,POSTGRES_9_5.predecessor());
-  assertEquals(POSTGRES_9_5,POSTGRES.predecessor());
-}

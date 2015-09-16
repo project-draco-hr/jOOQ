@@ -1,5 +1,0 @@
-{
-  QueryPart q=sql("{abc}, {{xyz}}");
-  assertEquals("abc, {xyz}",create.render(q));
-  assertEquals("abc, {xyz}",create.renderInlined(q));
-}

@@ -1,3 +1,0 @@
-{
-  return r_dec().paramType(INLINED);
-}

@@ -1,3 +1,0 @@
-{
-  return new RenderMapping().withSchemata(new MappedSchema().withInput("").withTables(new MappedTable().withInput("TABLE1").withOutput("TABLEX")));
-}

@@ -1,4 +1,0 @@
-{
-  super("every",SQLDataType.BOOLEAN,DSL.field(condition));
-  this.condition=condition;
-}

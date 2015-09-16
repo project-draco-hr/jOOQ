@@ -1,7 +1,0 @@
-{
-  Query query=create.select(param("a"),param("a")).where(param("b").eq(param("b")));
-  assertEquals(nCopies(4,null),query.getBindValues());
-  query.bind("a",1);
-  query.bind("b",2);
-  assertEquals(asList(1,1,2,2),query.getBindValues());
-}

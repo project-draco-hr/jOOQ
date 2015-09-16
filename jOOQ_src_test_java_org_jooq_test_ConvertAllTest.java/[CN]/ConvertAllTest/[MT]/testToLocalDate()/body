@@ -1,6 +1,0 @@
-{
-  Date date=Date.valueOf("2001-02-03");
-  testConversion(date.toLocalDate(),"2001-02-03",LocalDate.class);
-  testConversion(date.toLocalDate(),date.getTime(),LocalDate.class);
-  testConversion(date.toLocalDate(),date,LocalDate.class);
-}

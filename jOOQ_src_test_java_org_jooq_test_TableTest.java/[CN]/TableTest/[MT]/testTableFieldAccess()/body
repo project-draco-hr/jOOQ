@@ -1,8 +1,0 @@
-{
-  assertNotNull(TABLE1.field(FIELD_ID1));
-  assertNull(TABLE2.field(FIELD_ID1));
-  assertEquals(FIELD_ID1,TABLE1.field(0));
-  assertEquals(FIELD_NAME1,TABLE1.field(1));
-  assertEquals(FIELD_DATE1,TABLE1.field(2));
-  assertNull(TABLE1.field(3));
-}

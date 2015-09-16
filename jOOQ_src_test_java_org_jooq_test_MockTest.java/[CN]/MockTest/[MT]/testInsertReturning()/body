@@ -1,8 +1,0 @@
-{
-  DSLContext e=DSL.using(new MockConnection(new InsertReturning()),SQLDialect.POSTGRES);
-  InsertResultStep<Table1Record> query=e.insertInto(TABLE1,FIELD_ID1).values(1).returning();
-  assertEquals(1,query.execute());
-  Table1Record record=query.fetchOne();
-  assertEquals(1,(int)record.getValue(FIELD_ID1));
-  assertEquals("1",record.getValue(FIELD_NAME1));
-}

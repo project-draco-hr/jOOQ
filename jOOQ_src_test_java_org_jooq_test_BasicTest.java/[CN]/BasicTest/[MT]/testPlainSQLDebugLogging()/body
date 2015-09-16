@@ -1,4 +1,0 @@
-{
-  Field<?> f=field("Hello ? 'Hello ?' Is there anybody '' ? ' out there '' ? '","A","B");
-  assertEquals("Hello 'A' 'Hello ?' Is there anybody '' 'B' ' out there '' ? '",r_refI().render(f));
-}

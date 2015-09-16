@@ -1,7 +1,0 @@
-{
-  Time time=Time.valueOf("04:05:06");
-  ZoneOffset offset=OffsetDateTime.now().getOffset();
-  testConversion(time.toLocalTime().atOffset(offset),"04:05:06",OffsetTime.class);
-  testConversion(time.toLocalTime().atOffset(offset),time.getTime(),OffsetTime.class);
-  testConversion(time.toLocalTime().atOffset(offset),time,OffsetTime.class);
-}

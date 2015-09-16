@@ -1,7 +1,0 @@
-{
-  List<String> list=new ArrayList<String>();
-  list.add("foo");
-  list.add("bar");
-  assertEquals("[\"foo\",\"bar\"]",new JSONArray(list).toString());
-  assertEquals("[\"foo\",\"bar\"]",JSONArray.toJSONString(list));
-}

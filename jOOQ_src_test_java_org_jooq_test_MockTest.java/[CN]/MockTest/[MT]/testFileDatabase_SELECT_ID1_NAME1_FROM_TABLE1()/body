@@ -1,8 +1,0 @@
-{
-  Result<Record2<Integer,String>> r=MOCK.select(FIELD_ID1,FIELD_NAME1).from(TABLE1).fetch();
-  assertEquals(2,r.size());
-  assertEquals("ID1",r.field(0).getName());
-  assertEquals("NAME1",r.field(1).getName());
-  assertEquals(asList(1,2),r.getValues(0));
-  assertEquals(asList("X","Y"),r.getValues(1));
-}

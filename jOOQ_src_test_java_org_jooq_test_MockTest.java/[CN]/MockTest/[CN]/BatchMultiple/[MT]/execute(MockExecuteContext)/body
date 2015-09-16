@@ -1,9 +1,0 @@
-{
-  assertEquals(2,ctx.batchSQL().length);
-  assertEquals("insert into x values(1)",ctx.batchSQL()[0]);
-  assertEquals("insert into x values(2)",ctx.batchSQL()[1]);
-  assertEquals("insert into x values(1)",ctx.sql());
-  assertEquals(0,ctx.batchBindings().length);
-  assertEquals(asList(),asList(ctx.bindings()));
-  return new MockResult[]{new MockResult(0,null),new MockResult(1,null)};
-}

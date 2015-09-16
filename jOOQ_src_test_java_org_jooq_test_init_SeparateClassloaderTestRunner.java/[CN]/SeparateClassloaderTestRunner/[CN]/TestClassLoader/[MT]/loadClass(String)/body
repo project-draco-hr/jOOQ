@@ -1,6 +1,0 @@
-{
-  if (name.startsWith("org.jooq.")) {
-    return super.findClass(name);
-  }
-  return super.loadClass(name);
-}

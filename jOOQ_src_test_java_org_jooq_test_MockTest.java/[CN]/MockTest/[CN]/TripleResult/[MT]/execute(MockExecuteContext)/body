@@ -1,4 +1,0 @@
-{
-  execute0(ctx);
-  return new MockResult[]{new MockResult(0,resultOne),new MockResult(0,resultTwo),new MockResult(0,resultStrings)};
-}

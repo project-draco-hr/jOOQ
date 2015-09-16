@@ -1,3 +1,0 @@
-{
-  assertEvents(asList(asList(TABLE),asList(TABLE,TABLE_ALIAS),asList(TABLE,TABLE_ALIAS,TABLE),asList(TABLE,TABLE_ALIAS,TABLE,TABLE_REFERENCE)),TABLE1.as("x"),r_ctx().declareTables(true),b_ctx().declareTables(true));
-}

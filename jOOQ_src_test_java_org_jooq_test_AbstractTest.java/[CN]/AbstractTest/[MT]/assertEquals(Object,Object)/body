@@ -1,6 +1,0 @@
-{
-  if (actual instanceof String) {
-    actual=((String)actual).replace(" -- SQL rendered with a free trial version of jOOQ " + Constants.FULL_VERSION,"");
-  }
-  Assert.assertEquals(expected,actual);
-}

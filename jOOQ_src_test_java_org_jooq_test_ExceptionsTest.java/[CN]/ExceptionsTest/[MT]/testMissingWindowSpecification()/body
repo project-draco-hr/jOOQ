@@ -1,3 +1,0 @@
-{
-  assertTrue(create.select(count().over("window")).getSQL().contains("over `window`"));
-}

@@ -1,3 +1,0 @@
-{
-  assertEvents(expected,part,r_ctx(),b_ctx());
-}

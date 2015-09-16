@@ -1,8 +1,0 @@
-{
-  for (int i=0; i < expected.size() && i < listener.clauses.size(); i++) {
-    assertEquals("Mismatch at position " + i + ":",expected.get(i),listener.clauses.get(i));
-  }
-  if (expected.size() != listener.clauses.size()) {
-    fail("Size mismatch:\n\tExpected: " + expected + "\n\tActual: "+ listener.clauses);
-  }
-}

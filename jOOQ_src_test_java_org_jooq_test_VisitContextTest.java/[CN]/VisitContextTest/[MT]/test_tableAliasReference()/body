@@ -1,3 +1,0 @@
-{
-  assertEvents(asList(asList(TABLE),asList(TABLE,TABLE_REFERENCE)),TABLE1.as("x"));
-}

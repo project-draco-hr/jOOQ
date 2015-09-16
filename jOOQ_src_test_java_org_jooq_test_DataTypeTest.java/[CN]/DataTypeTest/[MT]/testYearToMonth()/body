@@ -1,7 +1,0 @@
-{
-  for (int i=0; i <= 5; i++) {
-    intervalChecks(i * 12,new YearToMonth(i));
-    intervalChecks(i * -12,new YearToMonth(i).neg());
-    intervalChecks(i,new YearToMonth(0,i));
-  }
-}

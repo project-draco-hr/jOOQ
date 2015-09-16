@@ -1,8 +1,0 @@
-{
-  DSLContext e=DSL.using(new MockConnection(new BatchSingle()),SQLDialect.H2);
-  Query query=e.query("insert into x values(?, ?)",null,null);
-  int[] result=e.batch(query).bind(1,2).bind(3,4).execute();
-  assertEquals(2,result.length);
-  assertEquals(0,result[0]);
-  assertEquals(1,result[1]);
-}

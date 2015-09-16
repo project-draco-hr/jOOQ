@@ -1,7 +1,0 @@
-{
-  BindContext ctx=create.bindContext(statement);
-  ctx.data("key","value");
-  TestDataQueryPart part=new TestDataQueryPart();
-  ctx.visit(part);
-  assertEquals("value",part.value);
-}
