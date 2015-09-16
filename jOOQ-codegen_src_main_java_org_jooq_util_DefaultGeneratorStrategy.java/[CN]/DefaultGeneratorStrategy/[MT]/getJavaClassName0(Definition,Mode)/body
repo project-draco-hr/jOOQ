@@ -1,6 +1,6 @@
 {
   StringBuilder result=new StringBuilder();
-  result.append(StringUtils.toCamelCase(definition.getOutputName()));
+  result.append(StringUtils.toCamelCase(definition.getOutputName().replace(' ','_').replace('-','_').replace('.','_')));
   if (mode == Mode.RECORD) {
     result.append("Record");
   }
