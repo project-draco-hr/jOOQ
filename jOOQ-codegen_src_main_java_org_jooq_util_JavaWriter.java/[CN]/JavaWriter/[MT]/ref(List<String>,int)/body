@@ -13,7 +13,8 @@
             if (!className.equals(unqualifiedType) && (!unqualifiedTypes.containsKey(unqualifiedType) || qualifiedType.equals(unqualifiedTypes.get(unqualifiedType)))) {
               unqualifiedTypes.put(unqualifiedType,qualifiedType);
               qualifiedTypes.add(qualifiedType);
-              c=remainder + m.group(2);
+              String generic=m.group(2);
+              c=remainder + (generic.startsWith("<") || generic.startsWith("[") ? generic.substring(0,1) + ref(generic.substring(1,generic.length() - 1)) + generic.substring(generic.length() - 1) : generic);
             }
           }
         }
