@@ -89,11 +89,13 @@
   }
   for (  TypedElementDefinition<?> column : getTypedElements(tableOrUDT)) {
     final String columnType=out.ref(getJavaType(column.getType(),Mode.POJO));
+    final String columnTypeInterface=out.ref(getJavaType(column.getType(),Mode.INTERFACE));
     final String columnSetterReturnType=fluentSetters() ? className : (scala ? "Unit" : "void");
     final String columnSetter=getStrategy().getJavaSetterName(column,Mode.POJO);
     final String columnGetter=getStrategy().getJavaGetterName(column,Mode.POJO);
     final String columnMember=getStrategy().getJavaMemberName(column,Mode.POJO);
     final boolean isUDT=column.getType().isUDT();
+    final boolean isUDTArray=column.getType().isArray() && database.getArray(column.getType().getSchema(),column.getType().getUserType()).getElementType().isUDT();
     out.println();
     if (column instanceof ColumnDefinition)     printColumnJPAAnnotation(out,(ColumnDefinition)column);
     printValidationAnnotation(out,column);
@@ -109,22 +111,23 @@
       out.tab(1).println("}");
     }
     if (!generateImmutablePojos()) {
-      out.println();
-      if (scala) {
-        out.tab(1).println("def %s(%s : %s) : %s = {",columnSetter,columnMember,columnType,columnSetterReturnType);
-        out.tab(2).println("this.%s = %s",columnMember,columnMember);
-        if (fluentSetters())         out.tab(2).println("this");
-        out.tab(1).println("}");
-      }
+      if (!(generateInterfaces() && isUDTArray)) {
+        out.println();
+        if (scala) {
+          out.tab(1).println("def %s(%s : %s) : %s = {",columnSetter,columnMember,columnType,columnSetterReturnType);
+          out.tab(2).println("this.%s = %s",columnMember,columnMember);
+          if (fluentSetters())           out.tab(2).println("this");
+          out.tab(1).println("}");
+        }
  else {
-        out.tab(1).overrideIf(generateInterfaces() && !isUDT);
-        out.tab(1).println("public %s %s(%s %s) {",columnSetterReturnType,columnSetter,columnType,columnMember);
-        out.tab(2).println("this.%s = %s;",columnMember,columnMember);
-        if (fluentSetters())         out.tab(2).println("return this;");
-        out.tab(1).println("}");
+          out.tab(1).overrideIf(generateInterfaces() && !isUDT);
+          out.tab(1).println("public %s %s(%s %s) {",columnSetterReturnType,columnSetter,columnType,columnMember);
+          out.tab(2).println("this.%s = %s;",columnMember,columnMember);
+          if (fluentSetters())           out.tab(2).println("return this;");
+          out.tab(1).println("}");
+        }
       }
-      if (generateInterfaces() && isUDT) {
-        final String columnTypeInterface=out.ref(getJavaType(column.getType(),Mode.INTERFACE));
+      if (generateInterfaces() && (isUDT || isUDTArray)) {
         out.println();
         if (scala) {
           out.tab(1).println("def %s(%s : %s) : %s = {",columnSetter,columnMember,columnTypeInterface,columnSetterReturnType);
@@ -140,8 +143,21 @@
           out.tab(1).println("public %s %s(%s %s) {",columnSetterReturnType,columnSetter,columnTypeInterface,columnMember);
           out.tab(2).println("if (%s == null)",columnMember);
           out.tab(3).println("this.%s = null;",columnMember);
-          out.tab(2).println("else");
-          out.tab(3).println("this.%s = %s.into(new %s());",columnMember,columnMember,columnType);
+          if (isUDT) {
+            out.tab(2).println("else");
+            out.tab(3).println("this.%s = %s.into(new %s());",columnMember,columnMember,columnType);
+          }
+ else           if (isUDTArray) {
+            final ArrayDefinition array=database.getArray(column.getType().getSchema(),column.getType().getUserType());
+            final String componentType=out.ref(getJavaType(array.getElementType(),Mode.POJO));
+            final String componentTypeInterface=out.ref(getJavaType(array.getElementType(),Mode.INTERFACE));
+            out.tab(2).println("else {");
+            out.tab(3).println("this.%s = new %s();",columnMember,ArrayList.class);
+            out.println();
+            out.tab(3).println("for (%s i : %s)",componentTypeInterface,columnMember);
+            out.tab(4).println("this.%s.add(i.into(new %s()));",columnMember,componentType);
+            out.tab(2).println("}");
+          }
           if (fluentSetters())           out.tab(2).println("return this;");
           out.tab(1).println("}");
         }

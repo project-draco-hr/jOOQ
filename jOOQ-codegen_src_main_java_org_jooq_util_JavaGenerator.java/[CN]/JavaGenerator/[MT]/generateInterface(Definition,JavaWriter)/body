@@ -13,7 +13,7 @@
     final String setterReturnType=fluentSetters() ? className : "void";
     final String setter=getStrategy().getJavaSetterName(column,Mode.DEFAULT);
     final String getter=getStrategy().getJavaGetterName(column,Mode.DEFAULT);
-    final String type=out.ref(getJavaType((column).getType(),Mode.INTERFACE));
+    final String type=out.ref(getJavaType(column.getType(),Mode.INTERFACE));
     final String name=column.getQualifiedOutputName();
     if (!generateImmutablePojos()) {
       out.tab(1).javadoc("Setter for <code>%s</code>.%s",name,defaultIfBlank(" " + comment,""));

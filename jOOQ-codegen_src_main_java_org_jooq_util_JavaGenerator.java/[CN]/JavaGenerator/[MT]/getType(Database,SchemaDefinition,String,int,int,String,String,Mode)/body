@@ -6,7 +6,18 @@
  else     type=getType(db,schema,baseType,p,s,baseType,defaultType) + "[]";
   }
  else   if (db.getArray(schema,u) != null) {
-    type=getStrategy().getFullJavaClassName(db.getArray(schema,u),Mode.RECORD);
+    boolean udtArray=db.getArray(schema,u).getElementType().isUDT();
+    if (udtMode == Mode.POJO || (udtMode == Mode.INTERFACE && !udtArray)) {
+      if (scala)       type="java.util.List[" + getJavaType(db.getArray(schema,u).getElementType(),udtMode) + "]";
+ else       type="java.util.List<" + getJavaType(db.getArray(schema,u).getElementType(),udtMode) + ">";
+    }
+ else     if (udtMode == Mode.INTERFACE) {
+      if (scala)       type="java.util.List[_ <:" + getJavaType(db.getArray(schema,u).getElementType(),udtMode) + "]";
+ else       type="java.util.List<? extends " + getJavaType(db.getArray(schema,u).getElementType(),udtMode) + ">";
+    }
+ else {
+      type=getStrategy().getFullJavaClassName(db.getArray(schema,u),Mode.RECORD);
+    }
   }
  else   if (db.getEnum(schema,u) != null) {
     type=getStrategy().getFullJavaClassName(db.getEnum(schema,u));

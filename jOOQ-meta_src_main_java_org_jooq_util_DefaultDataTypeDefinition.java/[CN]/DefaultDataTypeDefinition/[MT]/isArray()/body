@@ -1,0 +1,3 @@
+{
+  return getDatabase().getArray(schema,udtName) != null;
+}
