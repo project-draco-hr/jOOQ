@@ -89,7 +89,6 @@
   }
   for (  TypedElementDefinition<?> column : getTypedElements(tableOrUDT)) {
     final String columnType=out.ref(getJavaType(column.getType(),Mode.POJO));
-    final String columnTypeInterface=out.ref(getJavaType(column.getType(),Mode.INTERFACE));
     final String columnSetterReturnType=fluentSetters() ? className : (scala ? "Unit" : "void");
     final String columnSetter=getStrategy().getJavaSetterName(column,Mode.POJO);
     final String columnGetter=getStrategy().getJavaGetterName(column,Mode.POJO);
@@ -128,6 +127,7 @@
         }
       }
       if (generateInterfaces() && (isUDT || isUDTArray)) {
+        final String columnTypeInterface=out.ref(getJavaType(column.getType(),Mode.INTERFACE));
         out.println();
         if (scala) {
           out.tab(1).println("def %s(%s : %s) : %s = {",columnSetter,columnMember,columnTypeInterface,columnSetterReturnType);
