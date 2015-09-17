@@ -8,7 +8,15 @@
         }
       }
       for (      java.lang.reflect.Method method : methods[i]) {
-        method.invoke(result,record.getValue(i,method.getParameterTypes()[0]));
+        Class<?> mType=method.getParameterTypes()[0];
+        Object value=record.getValue(i,mType);
+        if (value instanceof Collection && List.class.isAssignableFrom(mType)) {
+          Class componentType=(Class)((ParameterizedType)method.getGenericParameterTypes()[0]).getActualTypeArguments()[0];
+          method.invoke(result,Convert.convert((Collection)value,componentType));
+        }
+ else {
+          method.invoke(result,record.getValue(i,mType));
+        }
       }
     }
     for (    Entry<String,List<RecordMapper<R,Object>>> entry : nested.entrySet()) {

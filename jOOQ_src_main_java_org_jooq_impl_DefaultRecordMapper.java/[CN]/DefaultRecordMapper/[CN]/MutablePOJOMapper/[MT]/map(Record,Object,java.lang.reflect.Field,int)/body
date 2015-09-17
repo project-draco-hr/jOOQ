@@ -27,6 +27,13 @@
     }
   }
  else {
-    map(record.getValue(index,mType),result,member);
+    Object value=record.getValue(index,mType);
+    if (value instanceof Collection && List.class.isAssignableFrom(mType)) {
+      Class componentType=(Class)((ParameterizedType)member.getGenericType()).getActualTypeArguments()[0];
+      member.set(result,Convert.convert((Collection)value,componentType));
+    }
+ else {
+      map(value,result,member);
+    }
   }
 }
