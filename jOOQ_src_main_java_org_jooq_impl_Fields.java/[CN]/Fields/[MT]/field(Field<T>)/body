@@ -10,7 +10,10 @@
       String tName=tableName(f);
       if (tName != null && tableName.equals(tName) && f.getName().equals(fieldName))       return (Field<T>)f;
     }
-    if (columnMatch == null && f.getName().equals(fieldName))     columnMatch=f;
+    if (f.getName().equals(fieldName)) {
+      if (columnMatch == null)       columnMatch=f;
+ else       log.info("Ambiguous match found for " + fieldName + ". Both "+ columnMatch+ " and "+ f+ " match.");
+    }
   }
   return (Field<T>)columnMatch;
 }
