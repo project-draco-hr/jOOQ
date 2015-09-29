@@ -1,11 +1,20 @@
 {
-  context.sql(getInlineConstructor(context));
-  context.sql('(');
-  String separator="";
-  for (  Field<?> field : value.fields()) {
-    context.sql(separator);
-    context.visit(val(value.getValue(field),field));
-    separator=", ";
-  }
-  context.sql(')');
+switch (context.family()) {
+case POSTGRES:
+    context.keyword("row");
+  break;
+default :
+{
+  context.visit(value.getUDT());
+  break;
+}
+}
+context.sql('(');
+String separator="";
+for (Field<?> field : value.fields()) {
+context.sql(separator);
+context.visit(val(value.getValue(field),field));
+separator=", ";
+}
+context.sql(')');
 }

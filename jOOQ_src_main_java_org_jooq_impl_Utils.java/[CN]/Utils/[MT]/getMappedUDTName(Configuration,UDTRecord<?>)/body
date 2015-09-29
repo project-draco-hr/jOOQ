@@ -1,0 +1,8 @@
+{
+  UDT<?> udt=record.getUDT();
+  Schema mapped=getMappedSchema(configuration,udt.getSchema());
+  StringBuilder sb=new StringBuilder();
+  if (mapped != null)   sb.append(mapped.getName()).append('.');
+  sb.append(record.getUDT().getName());
+  return sb.toString();
+}
