@@ -1,0 +1,3 @@
+{
+  return fetchValue((ResultQuery)resultQuery(sql));
+}

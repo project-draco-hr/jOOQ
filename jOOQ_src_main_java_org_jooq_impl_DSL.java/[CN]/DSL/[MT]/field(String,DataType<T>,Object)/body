@@ -1,3 +1,3 @@
 {
-  return new SQLField(type,sql(sql,bindings));
+  return field(sql(sql,bindings),type);
 }

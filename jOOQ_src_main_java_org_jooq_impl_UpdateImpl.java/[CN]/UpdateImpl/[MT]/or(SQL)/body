@@ -1,0 +1,3 @@
+{
+  return or(condition(sql));
+}

@@ -1,3 +1,3 @@
 {
-  return new SQLQuery(configuration(),sql(sql,bindings));
+  return query(sql(sql,bindings));
 }
