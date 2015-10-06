@@ -1,0 +1,3 @@
+{
+  return (TableOnStep)join(table,LEFT_ANTI_JOIN);
+}

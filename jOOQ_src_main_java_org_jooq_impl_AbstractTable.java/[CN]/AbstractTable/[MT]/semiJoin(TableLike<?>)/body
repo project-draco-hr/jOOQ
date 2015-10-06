@@ -1,3 +1,0 @@
-{
-  return (TableOnStep)join(table,SEMI_JOIN);
-}

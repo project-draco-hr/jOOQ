@@ -1,5 +1,5 @@
 {
-  if (type == SEMI_JOIN || type == ANTI_JOIN) {
+  if (type == LEFT_SEMI_JOIN || type == LEFT_ANTI_JOIN) {
     return new Fields<Record>(lhs.asTable().fields());
   }
  else {
