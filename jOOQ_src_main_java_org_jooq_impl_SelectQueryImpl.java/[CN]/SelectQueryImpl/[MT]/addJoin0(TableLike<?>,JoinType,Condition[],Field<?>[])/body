@@ -3,8 +3,8 @@
   Table<?> joined=null;
 switch (type) {
 case JOIN:
-case SEMI_JOIN:
-case ANTI_JOIN:
+case LEFT_SEMI_JOIN:
+case LEFT_ANTI_JOIN:
 case FULL_OUTER_JOIN:
 {
       joined=getFrom().get(index).join(table,type).on(conditions);

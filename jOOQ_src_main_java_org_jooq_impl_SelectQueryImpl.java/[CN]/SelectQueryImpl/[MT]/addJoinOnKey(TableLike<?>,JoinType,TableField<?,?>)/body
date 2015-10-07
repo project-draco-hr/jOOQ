@@ -6,8 +6,8 @@ case JOIN:
 case LEFT_OUTER_JOIN:
 case RIGHT_OUTER_JOIN:
 case FULL_OUTER_JOIN:
-case SEMI_JOIN:
-case ANTI_JOIN:
+case LEFT_SEMI_JOIN:
+case LEFT_ANTI_JOIN:
     joined=getFrom().get(index).join(table,type).onKey(keyFields);
   break;
 default :
