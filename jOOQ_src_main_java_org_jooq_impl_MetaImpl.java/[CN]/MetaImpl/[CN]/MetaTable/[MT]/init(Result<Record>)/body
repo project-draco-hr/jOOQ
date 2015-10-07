@@ -7,7 +7,7 @@
     int nullable=column.getValue(10,int.class);
     DataType<?> type=null;
     try {
-      type=DefaultDataType.getDataType(configuration.dialect(),typeName,precision,scale);
+      type=DefaultDataType.getDataType(configuration.family(),typeName,precision,scale);
       type=type.precision(precision,scale);
       type=type.length(precision);
       if (nullable == DatabaseMetaData.columnNoNulls)       type=type.nullable(false);
