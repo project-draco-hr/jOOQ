@@ -1,6 +1,23 @@
 {
   try {
     DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
+    try {
+      factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl",true);
+    }
+ catch (    ParserConfigurationException ignore) {
+    }
+    try {
+      factory.setFeature("http://xml.org/sax/features/external-general-entities",false);
+    }
+ catch (    ParserConfigurationException ignore) {
+    }
+    try {
+      factory.setFeature("http://xml.org/sax/features/external-parameter-entities",false);
+    }
+ catch (    ParserConfigurationException ignore) {
+    }
+    factory.setXIncludeAware(false);
+    factory.setExpandEntityReferences(false);
     factory.setNamespaceAware(true);
     DocumentBuilder builder=factory.newDocumentBuilder();
     return builder;
