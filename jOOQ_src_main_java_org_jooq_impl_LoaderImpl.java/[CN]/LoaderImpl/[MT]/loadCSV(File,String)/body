@@ -1,3 +1,4 @@
 {
-  return loadCSV(new FileInputStream(file),charsetName);
+  data.charsetName=charsetName;
+  return loadCSV(file);
 }

@@ -1,3 +1,4 @@
 {
-  return loadJSON(new FileInputStream(file),charsetName);
+  data.charsetName=charsetName;
+  return loadJSON(file);
 }

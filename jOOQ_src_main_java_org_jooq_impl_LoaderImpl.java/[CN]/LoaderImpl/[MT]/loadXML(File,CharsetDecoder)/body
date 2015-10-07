@@ -1,3 +1,4 @@
 {
-  return loadXML(new FileInputStream(file),dec);
+  data.dec=dec;
+  return loadXML(file);
 }

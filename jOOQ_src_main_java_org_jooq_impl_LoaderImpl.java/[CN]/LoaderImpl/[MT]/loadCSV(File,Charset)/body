@@ -1,3 +1,4 @@
 {
-  return loadCSV(new FileInputStream(file),cs);
+  data.cs=cs;
+  return loadCSV(file);
 }

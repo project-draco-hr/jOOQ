@@ -1,12 +1,13 @@
 {
-  CSVReader reader=new CSVReader(data,separator,quote,ignoreRows);
+  CSVReader reader=null;
   try {
+    reader=new CSVReader(data.reader(),separator,quote,ignoreRows);
     executeSQL(reader);
   }
  catch (  SQLException e) {
     throw Utils.translate(null,e);
   }
  finally {
-    reader.close();
+    if (reader != null)     reader.close();
   }
 }

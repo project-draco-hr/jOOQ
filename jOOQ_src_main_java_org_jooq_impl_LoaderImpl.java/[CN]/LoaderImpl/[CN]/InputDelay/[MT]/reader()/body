@@ -1,0 +1,15 @@
+{
+  if (reader != null)   return reader;
+  if (file != null) {
+    try {
+      if (charsetName != null)       return new BufferedReader(new InputStreamReader(new FileInputStream(file),charsetName));
+ else       if (cs != null)       return new BufferedReader(new InputStreamReader(new FileInputStream(file),cs));
+ else       if (dec != null)       return new BufferedReader(new InputStreamReader(new FileInputStream(file),dec));
+ else       return new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+    }
+ catch (    Exception e) {
+      throw new IOException(e);
+    }
+  }
+  return null;
+}

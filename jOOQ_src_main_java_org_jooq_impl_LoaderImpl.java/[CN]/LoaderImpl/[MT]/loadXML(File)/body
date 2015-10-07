@@ -1,3 +1,5 @@
 {
-  return loadXML(new FileReader(file));
+  content=CONTENT_XML;
+  data.file=file;
+  return this;
 }

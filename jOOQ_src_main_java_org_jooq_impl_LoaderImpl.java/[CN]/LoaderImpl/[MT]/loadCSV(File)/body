@@ -1,3 +1,5 @@
 {
-  return loadCSV(new FileReader(file));
+  content=CONTENT_CSV;
+  data.file=file;
+  return this;
 }

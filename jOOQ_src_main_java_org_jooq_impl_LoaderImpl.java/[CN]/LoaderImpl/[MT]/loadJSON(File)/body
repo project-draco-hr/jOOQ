@@ -1,3 +1,5 @@
 {
-  return loadJSON(new FileReader(file));
+  content=CONTENT_JSON;
+  data.file=file;
+  return this;
 }

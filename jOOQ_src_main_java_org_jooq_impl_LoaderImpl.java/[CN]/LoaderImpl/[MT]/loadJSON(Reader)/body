@@ -1,5 +1,5 @@
 {
   content=CONTENT_JSON;
-  data=new BufferedReader(reader);
+  data.reader=new BufferedReader(reader);
   return this;
 }

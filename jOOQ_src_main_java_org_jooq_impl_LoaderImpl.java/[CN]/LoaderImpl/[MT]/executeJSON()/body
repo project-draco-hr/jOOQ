@@ -1,6 +1,7 @@
 {
-  JSONReader reader=new JSONReader(data);
+  JSONReader reader=null;
   try {
+    reader=new JSONReader(data.reader());
     List<String[]> allRecords=reader.readAll();
     executeSQL(allRecords.iterator());
   }
@@ -8,6 +9,6 @@
     throw Utils.translate(null,e);
   }
  finally {
-    reader.close();
+    if (reader != null)     reader.close();
   }
 }

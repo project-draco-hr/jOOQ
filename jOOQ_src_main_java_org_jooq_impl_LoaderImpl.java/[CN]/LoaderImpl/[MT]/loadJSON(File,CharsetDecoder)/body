@@ -1,3 +1,4 @@
 {
-  return loadJSON(new FileInputStream(file),dec);
+  data.dec=dec;
+  return loadJSON(file);
 }
