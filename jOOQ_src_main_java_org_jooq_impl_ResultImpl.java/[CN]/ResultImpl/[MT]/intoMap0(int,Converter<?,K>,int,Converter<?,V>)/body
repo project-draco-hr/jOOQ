@@ -1,5 +1,0 @@
-{
-  Map<K,V> map=new LinkedHashMap<K,V>();
-  for (  R record : this)   if (map.put(record.getValue(kIndex,kConverter),record.getValue(vIndex,vConverter)) != null)   throw new InvalidResultException("Key " + kIndex + " is not unique in Result for "+ this);
-  return map;
-}

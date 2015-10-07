@@ -1,7 +1,7 @@
 {
   Map<K,List<E>> map=new LinkedHashMap<K,List<E>>();
   for (  R record : this) {
-    K keyVal=record.getValue(keyFieldIndex,keyConverter);
+    K keyVal=(K)record.getValue(keyFieldIndex);
     List<E> list=map.get(keyVal);
     if (list == null) {
       list=new ArrayList<E>();

@@ -1,4 +1,0 @@
-int kIndex
-Converter<?,K> kConverter
-int vIndex
-Converter<?,V> vConverter

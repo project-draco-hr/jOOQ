@@ -1,2 +1,0 @@
-int keyFieldIndex
-Converter<?,K> keyConverter

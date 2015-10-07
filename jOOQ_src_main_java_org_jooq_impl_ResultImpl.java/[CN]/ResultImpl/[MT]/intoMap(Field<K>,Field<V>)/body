@@ -1,5 +1,5 @@
 {
   int kIndex=indexOrFail(fieldsRow(),key);
   int vIndex=indexOrFail(fieldsRow(),value);
-  return intoMap0(kIndex,key.getConverter(),vIndex,value.getConverter());
+  return intoMap0(kIndex,vIndex);
 }
