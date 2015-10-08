@@ -11,6 +11,7 @@ return field("{schema}()",String.class);
 case MARIADB:
 case MYSQL:
 return field("{database}()",String.class);
+case HSQLDB:
 case POSTGRES:
 return field("{current_schema}",String.class);
 }
