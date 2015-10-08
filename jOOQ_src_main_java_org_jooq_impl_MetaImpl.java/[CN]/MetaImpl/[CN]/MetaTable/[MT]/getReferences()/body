@@ -3,7 +3,7 @@
   try {
     ResultSet rs=meta().getImportedKeys(null,getSchema().getName(),getName());
     Result<Record> result=create.fetch(rs,String.class,String.class,String.class,String.class,String.class,String.class,String.class,String.class,Short.class,Short.class,Short.class,String.class,String.class);
-    Map<Record,Result<Record>> groups=result.intoGroups(new Field[]{result.field(0),result.field(1),result.field(2),result.field(11),result.field(12)});
+    Map<Record,Result<Record>> groups=result.intoGroups(new Field[]{result.field(inverseSchemaCatalog ? 1 : 0),result.field(inverseSchemaCatalog ? 0 : 1),result.field(2),result.field(11),result.field(12)});
     Map<String,Schema> schemas=new HashMap<String,Schema>();
     for (    Schema schema : getSchemas()) {
       schemas.put(schema.getName(),schema);
