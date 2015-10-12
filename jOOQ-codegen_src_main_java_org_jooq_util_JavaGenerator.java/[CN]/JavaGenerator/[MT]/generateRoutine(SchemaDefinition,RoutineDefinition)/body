@@ -2,5 +2,5 @@
   JavaWriter out=newJavaWriter(getStrategy().getFile(routine));
   log.info("Generating routine",out.file().getName());
   generateRoutine(routine,out);
-  out.close();
+  closeJavaWriter(out);
 }

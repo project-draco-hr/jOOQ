@@ -91,6 +91,6 @@
     out.println("\t}");
   }
   out.println("}");
-  out.close();
+  closeJavaWriter(out);
   watch.splitInfo("Keys generated");
 }

@@ -15,6 +15,6 @@
  else     out.tab(1).println("public static %s %s = %s;",className,id,fullId);
   }
   out.println("}");
-  out.close();
+  closeJavaWriter(out);
   watch.splitInfo("UDT references generated");
 }

@@ -17,6 +17,6 @@
  else     out.tab(1).println("public static final %s<%s> %s = new %s<%s>(\"%s\", %s, %s);",Sequence.class,seqType,seqId,SequenceImpl.class,seqType,seqName,schemaId,typeRef);
   }
   out.println("}");
-  out.close();
+  closeJavaWriter(out);
   watch.splitInfo("Sequences generated");
 }

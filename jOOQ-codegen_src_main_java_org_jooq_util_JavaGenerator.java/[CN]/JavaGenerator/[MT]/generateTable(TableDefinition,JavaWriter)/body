@@ -256,5 +256,5 @@
   }
   generateTableClassFooter(table,out);
   out.println("}");
-  out.close();
+  closeJavaWriter(out);
 }

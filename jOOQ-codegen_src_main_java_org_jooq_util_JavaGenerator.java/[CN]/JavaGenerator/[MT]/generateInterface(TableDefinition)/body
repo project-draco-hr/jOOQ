@@ -2,5 +2,5 @@
   JavaWriter out=newJavaWriter(getStrategy().getFile(table,Mode.INTERFACE));
   log.info("Generating interface",out.file().getName());
   generateInterface(table,out);
-  out.close();
+  closeJavaWriter(out);
 }

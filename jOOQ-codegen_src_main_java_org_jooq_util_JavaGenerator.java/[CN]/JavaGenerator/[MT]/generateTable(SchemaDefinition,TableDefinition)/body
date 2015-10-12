@@ -1,5 +1,5 @@
 {
   JavaWriter out=newJavaWriter(getStrategy().getFile(table));
   generateTable(table,out);
-  out.close();
+  closeJavaWriter(out);
 }

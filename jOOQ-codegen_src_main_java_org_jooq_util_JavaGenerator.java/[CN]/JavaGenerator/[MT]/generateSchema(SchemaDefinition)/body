@@ -3,5 +3,5 @@
   log.info("Generating schema",out.file().getName());
   log.info("----------------------------------------------------------");
   generateSchema(schema,out);
-  out.close();
+  closeJavaWriter(out);
 }

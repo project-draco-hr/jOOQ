@@ -2,5 +2,5 @@
   JavaWriter out=newJavaWriter(getStrategy().getFile(table,Mode.DAO));
   log.info("Generating DAO",out.file().getName());
   generateDao(table,out);
-  out.close();
+  closeJavaWriter(out);
 }

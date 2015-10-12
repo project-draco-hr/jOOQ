@@ -2,5 +2,5 @@
   JavaWriter out=newJavaWriter(getStrategy().getFile(array,Mode.RECORD));
   log.info("Generating ARRAY",out.file().getName());
   generateArray(array,out);
-  out.close();
+  closeJavaWriter(out);
 }

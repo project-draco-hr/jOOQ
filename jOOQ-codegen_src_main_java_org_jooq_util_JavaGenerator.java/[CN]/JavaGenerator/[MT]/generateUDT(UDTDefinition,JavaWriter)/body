@@ -82,5 +82,5 @@
   }
   generateUDTClassFooter(udt,out);
   out.println("}");
-  out.close();
+  closeJavaWriter(out);
 }

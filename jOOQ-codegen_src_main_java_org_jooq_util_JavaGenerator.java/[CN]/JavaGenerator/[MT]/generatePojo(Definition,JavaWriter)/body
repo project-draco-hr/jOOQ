@@ -176,5 +176,5 @@
   if (tableOrUDT instanceof TableDefinition)   generatePojoClassFooter((TableDefinition)tableOrUDT,out);
  else   generateUDTPojoClassFooter((UDTDefinition)tableOrUDT,out);
   out.println("}");
-  out.close();
+  closeJavaWriter(out);
 }

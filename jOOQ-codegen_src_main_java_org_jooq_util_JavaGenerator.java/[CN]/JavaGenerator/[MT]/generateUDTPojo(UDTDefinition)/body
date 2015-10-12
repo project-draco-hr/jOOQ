@@ -2,5 +2,5 @@
   JavaWriter out=newJavaWriter(getStrategy().getFile(udt,Mode.POJO));
   log.info("Generating POJO",out.file().getName());
   generatePojo(udt,out);
-  out.close();
+  closeJavaWriter(out);
 }

@@ -1,5 +1,6 @@
 {
   String newContent=beforeClose(sb.toString());
+  if (StringUtils.isBlank(newContent))   return false;
   try {
     String oldContent=null;
     if (file.exists()) {
@@ -20,6 +21,7 @@
       writer.flush();
       writer.close();
     }
+    return true;
   }
  catch (  IOException e) {
     throw new GeneratorException("Error writing " + file.getAbsolutePath());

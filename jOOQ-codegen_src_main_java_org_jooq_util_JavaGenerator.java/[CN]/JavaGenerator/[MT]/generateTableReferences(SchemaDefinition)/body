@@ -19,6 +19,6 @@
     }
   }
   out.println("}");
-  out.close();
+  closeJavaWriter(out);
   watch.splitInfo("Table refs generated");
 }

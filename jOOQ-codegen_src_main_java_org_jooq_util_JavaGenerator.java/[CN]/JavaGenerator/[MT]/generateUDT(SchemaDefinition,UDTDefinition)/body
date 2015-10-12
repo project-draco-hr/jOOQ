@@ -2,5 +2,5 @@
   JavaWriter out=newJavaWriter(getStrategy().getFile(udt));
   log.info("Generating UDT ",out.file().getName());
   generateUDT(udt,out);
-  out.close();
+  closeJavaWriter(out);
 }

@@ -2,5 +2,5 @@
   JavaWriter out=newJavaWriter(getStrategy().getFile(udt,Mode.RECORD));
   log.info("Generating record",out.file().getName());
   generateRecord(udt,out);
-  out.close();
+  closeJavaWriter(out);
 }
