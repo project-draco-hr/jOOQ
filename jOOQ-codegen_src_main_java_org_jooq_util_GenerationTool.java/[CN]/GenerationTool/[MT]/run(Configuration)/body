@@ -8,7 +8,7 @@
     if (connection == null && j != null) {
       Class<? extends Driver> driver=(Class<? extends Driver>)loadClass(driverClass(j));
       Properties properties=properties(j.getProperties());
-      if (!properties.containsKey("user"))       properties.put("user",defaultString(j.getUser()));
+      if (!properties.containsKey("user"))       properties.put("user",defaultString(defaultString(j.getUser(),j.getUsername())));
       if (!properties.containsKey("password"))       properties.put("password",defaultString(j.getPassword()));
       connection=driver.newInstance().connect(defaultString(j.getUrl()),properties);
       close=true;
