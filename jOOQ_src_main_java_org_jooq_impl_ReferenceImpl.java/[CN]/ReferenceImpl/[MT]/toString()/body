@@ -4,16 +4,16 @@
   String s1="";
   for (  Field<?> field : getFields()) {
     sb.append(s1);
-    sb.append(field);
+    sb.append(DSL.name(field.getName()));
     s1=", ";
   }
   sb.append(") REFERENCES ");
   sb.append(key.getTable());
   sb.append("(");
   String s2="";
-  for (  Field<?> field : getFields()) {
+  for (  Field<?> field : key.getFields()) {
     sb.append(s2);
-    sb.append(field);
+    sb.append(DSL.name(field.getName()));
     s2=", ";
   }
   sb.append(")");
