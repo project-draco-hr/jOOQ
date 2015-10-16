@@ -9,6 +9,7 @@
   this.rsContext=new DefaultBindingGetResultSetContext<Object>(ctx.configuration(),ctx.data(),rs,0);
   this.intern=new boolean[fields.length];
   this.maxRows=maxRows;
+  this.lockRowsForUpdate=TRUE.equals(ctx.data(DATA_LOCK_ROWS_FOR_UPDATE));
   if (internIndexes != null) {
     for (    int i : internIndexes) {
       intern[i]=true;
