@@ -1,5 +1,5 @@
 {
-  if (key.getTable().equals(unaliased(lhs)))   return onKey(key,lhs,rhs);
- else   if (key.getTable().equals(unaliased(rhs)))   return onKey(key,rhs,lhs);
+  if (search(lhs,key.getTable()) != null)   return onKey(key,lhs,rhs);
+ else   if (search(rhs,key.getTable()) != null)   return onKey(key,rhs,lhs);
   throw onKeyException();
 }
