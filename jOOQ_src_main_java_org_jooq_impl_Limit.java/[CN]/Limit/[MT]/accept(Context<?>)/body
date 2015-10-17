@@ -24,7 +24,7 @@ case CUBRID:
   }
 case FIREBIRD:
 {
-  context.castMode(NEVER).formatSeparator().keyword("rows").sql(' ').visit(getLowerRownum().add(inline(1))).sql(' ').keyword("to").sql(' ').visit(getUpperRownum()).castMode(castMode);
+  context.castMode(NEVER).formatSeparator().keyword("rows").sql(' ').visit(getLowerRownum().add(inline(1,SQLDataType.INTEGER))).sql(' ').keyword("to").sql(' ').visit(getUpperRownum()).castMode(castMode);
   break;
 }
 case DERBY:

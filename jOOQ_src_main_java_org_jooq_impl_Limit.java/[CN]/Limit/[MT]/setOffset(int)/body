@@ -1,7 +1,7 @@
 {
   if (offset != 0) {
-    this.offset=val(offset);
+    this.offset=val(offset,SQLDataType.INTEGER);
     this.offsetOrZero=this.offset;
-    this.offsetPlusOne=val(offset + 1);
+    this.offsetPlusOne=val(offset + 1,SQLDataType.INTEGER);
   }
 }
