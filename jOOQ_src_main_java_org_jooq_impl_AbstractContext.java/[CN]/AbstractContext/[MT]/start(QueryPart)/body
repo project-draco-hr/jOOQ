@@ -1,7 +1,10 @@
 {
-  visitParts.addLast(part);
-  for (  VisitListener listener : visitListeners) {
-    listener.visitStart(visitContext);
+  if (visitParts != null) {
+    visitParts.addLast(part);
+    for (    VisitListener listener : visitListeners)     listener.visitStart(visitContext);
+    return visitParts.peekLast();
   }
-  return visitParts.peekLast();
+ else {
+    return part;
+  }
 }

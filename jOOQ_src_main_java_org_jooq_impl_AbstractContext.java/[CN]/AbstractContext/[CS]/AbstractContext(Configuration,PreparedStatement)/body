@@ -1,11 +1,18 @@
 {
   super(configuration);
   this.stmt=stmt;
-  this.visitClauses=new ArrayDeque<Clause>();
   VisitListenerProvider[] providers=configuration.visitListenerProviders();
   boolean userInternalVisitListener=false;
   this.visitListeners=new VisitListener[providers.length + (userInternalVisitListener ? 1 : 0)];
-  this.visitContext=new DefaultVisitContext();
-  this.visitParts=new ArrayDeque<QueryPart>();
   for (int i=0; i < providers.length; i++)   this.visitListeners[i]=providers[i].provide();
+  if (this.visitListeners.length > 0) {
+    this.visitContext=new DefaultVisitContext();
+    this.visitParts=new ArrayDeque<QueryPart>();
+    this.visitClauses=new ArrayDeque<Clause>();
+  }
+ else {
+    this.visitContext=null;
+    this.visitParts=null;
+    this.visitClauses=null;
+  }
 }

@@ -1,9 +1,7 @@
 {
-  if (clause != null) {
+  if (clause != null && visitClauses != null) {
     visitClauses.addLast(clause);
-    for (    VisitListener listener : visitListeners) {
-      listener.clauseStart(visitContext);
-    }
+    for (    VisitListener listener : visitListeners)     listener.clauseStart(visitContext);
   }
   return (C)this;
 }
