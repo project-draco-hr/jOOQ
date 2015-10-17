@@ -1,26 +1,27 @@
 {
   if (!renderSchema())   return null;
-  Schema result=null;
-  if (schema != null) {
-    String schemaName=schema.getName();
+  Schema result=schema;
+  if (result != null) {
+    String schemaName=result.getName();
     if (!StringUtils.isEmpty(schemaName)) {
-      if (!getSchemata().containsKey(schemaName)) {
+      if (!mapping().getSchemata().isEmpty()) {
+        if (!getSchemata().containsKey(schemaName)) {
 synchronized (this) {
-          if (!getSchemata().containsKey(schemaName)) {
-            Schema mapped=schema;
-            for (            MappedSchema s : mapping().getSchemata()) {
-              if (schemaName.equals(s.getInput())) {
-                if (!isBlank(s.getOutput()) && !s.getOutput().equals(s.getInput())) {
-                  mapped=new RenamedSchema(schema,s.getOutput());
+            if (!getSchemata().containsKey(schemaName)) {
+              for (              MappedSchema s : mapping().getSchemata()) {
+                if (schemaName.equals(s.getInput())) {
+                  if (!isBlank(s.getOutput()) && !s.getOutput().equals(s.getInput())) {
+                    result=new RenamedSchema(result,s.getOutput());
+                  }
+                  break;
                 }
-                break;
               }
+              getSchemata().put(schemaName,result);
             }
-            getSchemata().put(schemaName,mapped);
           }
         }
+        result=getSchemata().get(schemaName);
       }
-      result=getSchemata().get(schemaName);
       if (result.getName().equals(mapping().getDefaultSchema())) {
         result=null;
       }

@@ -1,27 +1,26 @@
 {
-  Table<R> result=null;
-  if (table != null) {
-    Schema schema=table.getSchema();
+  Table<R> result=table;
+  if (result != null && !mapping().getSchemata().isEmpty()) {
+    Schema schema=result.getSchema();
     String schemaName=(schema == null) ? "" : schema.getName();
-    String tableName=table.getName();
+    String tableName=result.getName();
     String key=(schema == null || StringUtils.isEmpty(schemaName)) ? tableName : (schemaName + "." + tableName);
     if (!getTables().containsKey(key)) {
 synchronized (this) {
         if (!getTables().containsKey(key)) {
-          Table<R> mapped=table;
           schemaLoop:           for (          MappedSchema s : mapping().getSchemata()) {
             if (schemaName.equals(s.getInput())) {
               for (              MappedTable t : s.getTables()) {
                 if (tableName.equals(t.getInput())) {
                   if (!isBlank(t.getOutput()) && !t.getOutput().equals(t.getInput())) {
-                    mapped=new RenamedTable<R>(table,t.getOutput());
+                    result=new RenamedTable<R>(result,t.getOutput());
                   }
                   break schemaLoop;
                 }
               }
             }
           }
-          getTables().put(key,mapped);
+          getTables().put(key,result);
         }
       }
     }
