@@ -1,3 +1,3 @@
 {
-  return renderContext().paramType(NAMED).render(part);
+  return renderContext().paramType(NAMED).visit(part).render();
 }
