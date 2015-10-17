@@ -1,7 +1,5 @@
 {
   super();
   this.wrappedList=new ArrayList<T>();
-  if (wrappedList != null) {
-    addAll(wrappedList);
-  }
+  if (wrappedList != null && !wrappedList.isEmpty())   addAll(wrappedList);
 }
