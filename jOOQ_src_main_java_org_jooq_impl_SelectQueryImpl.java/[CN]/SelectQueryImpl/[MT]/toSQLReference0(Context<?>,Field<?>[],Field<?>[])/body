@@ -68,7 +68,7 @@ context.formatSeparator().keyword("into").sql(' ').visit(actualInto);
 context.end(SELECT_INTO);
 }
 context.start(SELECT_FROM).declareTables(true);
-boolean hasFrom=!getFrom().isEmpty() || !asList(CUBRID,DERBY,FIREBIRD,HSQLDB).contains(family);
+boolean hasFrom=!getFrom().isEmpty() || asList(CUBRID,DERBY,FIREBIRD,HSQLDB).contains(family);
 List<Condition> semiAntiJoinPredicates=null;
 if (hasFrom) {
 Object previousCollect=context.data(DATA_COLLECT_SEMI_ANTI_JOIN,true);
