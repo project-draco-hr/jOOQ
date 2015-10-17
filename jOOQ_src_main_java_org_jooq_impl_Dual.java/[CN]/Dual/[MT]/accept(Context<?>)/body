@@ -4,6 +4,7 @@
   }
  else {
 switch (ctx.family()) {
+case H2:
 case POSTGRES:
 case SQLITE:
       break;
@@ -19,6 +20,8 @@ break;
 case DERBY:
 ctx.literal("SYSIBM").sql('.').literal("SYSDUMMY1");
 break;
+case MARIADB:
+case MYSQL:
 default :
 ctx.keyword("dual");
 break;
