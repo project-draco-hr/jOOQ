@@ -1,0 +1,3 @@
+{
+  return val((Object)value,SQLDataType.TIMESTAMP);
+}
