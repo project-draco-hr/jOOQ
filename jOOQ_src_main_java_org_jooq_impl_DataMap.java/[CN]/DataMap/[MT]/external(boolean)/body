@@ -1,0 +1,7 @@
+{
+  if (external == null) {
+    if (initialise)     external=new HashMap<Object,Object>();
+ else     return Collections.emptyMap();
+  }
+  return external;
+}

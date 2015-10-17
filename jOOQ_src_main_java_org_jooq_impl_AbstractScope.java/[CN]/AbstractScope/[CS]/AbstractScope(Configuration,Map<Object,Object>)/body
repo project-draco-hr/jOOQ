@@ -3,7 +3,7 @@
     configuration=new DefaultConfiguration();
   }
   if (data == null) {
-    data=new HashMap<Object,Object>();
+    data=new DataMap();
   }
   this.configuration=configuration;
   this.data=data;

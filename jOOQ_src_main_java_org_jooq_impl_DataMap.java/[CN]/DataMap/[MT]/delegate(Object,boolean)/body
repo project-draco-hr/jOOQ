@@ -1,0 +1,3 @@
+{
+  return key instanceof DataKey ? (Map)internal() : external(initialise);
+}

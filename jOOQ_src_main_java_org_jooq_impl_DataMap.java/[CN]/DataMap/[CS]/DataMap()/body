@@ -1,0 +1,4 @@
+{
+  internal=new EnumMap<DataKey,Object>(DataKey.class);
+  entrySet=new EntrySet();
+}

@@ -9,7 +9,7 @@
   BigInteger version=addRecordVersion(insert);
   Timestamp timestamp=addRecordTimestamp(insert);
   Collection<Field<?>> key=null;
-  if (!TRUE.equals(create.configuration().data(Utils.DATA_OMIT_RETURNING_CLAUSE))) {
+  if (!TRUE.equals(create.configuration().data(DATA_OMIT_RETURNING_CLAUSE))) {
     key=getReturning();
     insert.setReturning(key);
   }

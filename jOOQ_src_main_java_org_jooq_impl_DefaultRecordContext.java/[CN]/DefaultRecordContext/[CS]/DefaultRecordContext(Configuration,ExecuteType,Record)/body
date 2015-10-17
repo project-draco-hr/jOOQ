@@ -1,6 +1,6 @@
 {
   this.configuration=configuration;
   this.type=type;
-  this.data=new HashMap<Object,Object>();
+  this.data=new DataMap();
   this.records=records;
 }

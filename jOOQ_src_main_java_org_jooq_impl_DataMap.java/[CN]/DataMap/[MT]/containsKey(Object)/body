@@ -1,0 +1,3 @@
+{
+  return delegate(key,false).containsKey(key);
+}

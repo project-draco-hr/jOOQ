@@ -1,0 +1,3 @@
+{
+  return internal().containsValue(value) || external(false).containsValue(value);
+}
