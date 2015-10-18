@@ -1,0 +1,14 @@
+{
+  if (domains == null) {
+    domains=new ArrayList<DomainDefinition>();
+    try {
+      List<DomainDefinition> e=getDomains0();
+      domains=filterExcludeInclude(e);
+      log.info("Domains fetched",fetchedSize(e,domains));
+    }
+ catch (    Exception e) {
+      log.error("Error while fetching domains",e);
+    }
+  }
+  return domains;
+}

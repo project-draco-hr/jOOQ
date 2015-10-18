@@ -1,0 +1,12 @@
+{
+  log.info("Generating DOMAINs");
+  for (  DomainDefinition d : database.getDomains(schema)) {
+    try {
+      generateDomain(d);
+    }
+ catch (    Exception ex) {
+      log.error("Error while generating domain " + d,ex);
+    }
+  }
+  watch.splitInfo("Domains generated");
+}

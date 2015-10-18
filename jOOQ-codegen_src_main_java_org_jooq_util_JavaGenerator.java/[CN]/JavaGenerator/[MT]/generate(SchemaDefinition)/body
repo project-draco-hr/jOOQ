@@ -66,6 +66,9 @@
   if (database.getEnums(schema).size() > 0) {
     generateEnums(schema);
   }
+  if (database.getDomains(schema).size() > 0) {
+    generateDomains(schema);
+  }
   if (generateGlobalObjectReferences() && generateGlobalRoutineReferences() && database.getRoutines(schema).size() > 0 || hasTableValuedFunctions(schema)) {
     generateRoutines(schema);
   }

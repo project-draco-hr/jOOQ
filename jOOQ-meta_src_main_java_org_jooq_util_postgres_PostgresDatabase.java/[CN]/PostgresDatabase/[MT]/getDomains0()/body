@@ -1,0 +1,18 @@
+{
+  List<DomainDefinition> result=new ArrayList<DomainDefinition>();
+  if (existAll(PG_CONSTRAINT,PG_TYPE)) {
+    PgNamespace n=PG_NAMESPACE.as("n");
+    PgConstraint c=PG_CONSTRAINT.as("c");
+    PgType d=PG_TYPE.as("d");
+    PgType b=PG_TYPE.as("b");
+    Field<String[]> src=field(name("domains","src"),String[].class);
+    for (    Record record : create().withRecursive("domains","domain_id","base_id","typbasetype","src").as(select(oid(d),oid(d),d.TYPBASETYPE,array(c.CONSRC)).from(d).join(n).on(oid(n).eq(d.TYPNAMESPACE)).leftJoin(c).on(oid(d).eq(c.CONTYPID)).where(d.TYPTYPE.eq("d")).and(n.NSPNAME.in(getInputSchemata())).unionAll(select(field(name("domains","domain_id"),Long.class),oid(d),d.TYPBASETYPE,decode().when(c.CONSRC.isNull(),src).otherwise(arrayAppend(src,c.CONSRC))).from(table(name("domains"))).join(d).on(field(name("domains",d.TYPBASETYPE.getName())).eq(oid(d))).leftJoin(c).on(oid(d).eq(c.CONTYPID)))).select(n.NSPNAME,d.TYPNAME,d.TYPNOTNULL,d.TYPDEFAULT,b.TYPNAME,b.TYPLEN,src).from(d).join(table(name("domains"))).on(field(name("domains","typbasetype")).eq(0)).and(field(name("domains","domain_id")).eq(oid(d))).join(b).on(field(name("domains","base_id")).eq(oid(b))).join(n).on(oid(n).eq(d.TYPNAMESPACE)).where(d.TYPTYPE.eq("d")).and(n.NSPNAME.in(getInputSchemata()))) {
+      SchemaDefinition schema=getSchema(record.getValue(n.NSPNAME));
+      DataTypeDefinition baseType=new DefaultDataTypeDefinition(this,schema,record.getValue(b.TYPNAME),record.getValue(b.TYPLEN),record.getValue(b.TYPLEN),0,!record.getValue(d.TYPNOTNULL,boolean.class),record.getValue(d.TYPDEFAULT) != null,record.getValue(b.TYPNAME,String.class));
+      DefaultDomainDefinition domain=new DefaultDomainDefinition(schema,record.getValue(d.TYPNAME),baseType);
+      domain.addCheckClause(record.getValue(src));
+      result.add(domain);
+    }
+  }
+  return result;
+}

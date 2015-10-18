@@ -1,0 +1,4 @@
+{
+  for (  Table<?> table : t)   if (!exists(table))   return false;
+  return true;
+}

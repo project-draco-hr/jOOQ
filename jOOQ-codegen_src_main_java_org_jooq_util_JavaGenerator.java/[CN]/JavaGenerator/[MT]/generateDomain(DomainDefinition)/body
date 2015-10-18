@@ -1,0 +1,6 @@
+{
+  JavaWriter out=newJavaWriter(getStrategy().getFile(d,Mode.DOMAIN));
+  log.info("Generating DOMAIN",out.file().getName());
+  generateDomain(d,out);
+  closeJavaWriter(out);
+}

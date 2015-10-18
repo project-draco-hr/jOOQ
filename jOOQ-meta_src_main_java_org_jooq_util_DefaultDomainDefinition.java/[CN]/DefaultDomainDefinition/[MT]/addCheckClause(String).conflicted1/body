@@ -1,0 +1,3 @@
+{
+  checkClauses.addAll(Arrays.asList(checkClause));
+}
