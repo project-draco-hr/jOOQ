@@ -1,0 +1,3 @@
+{
+  return new WithImpl(configuration(),true).with(alias,fieldAlias1,fieldAlias2,fieldAlias3,fieldAlias4,fieldAlias5,fieldAlias6,fieldAlias7,fieldAlias8,fieldAlias9,fieldAlias10,fieldAlias11);
+}

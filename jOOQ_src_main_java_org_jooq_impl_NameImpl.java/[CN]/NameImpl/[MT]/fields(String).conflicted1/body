@@ -1,0 +1,3 @@
+{
+  return fields(new String[]{fieldName1});
+}

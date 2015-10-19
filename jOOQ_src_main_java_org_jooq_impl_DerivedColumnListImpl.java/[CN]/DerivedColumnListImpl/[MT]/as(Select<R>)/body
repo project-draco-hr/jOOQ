@@ -1,3 +1,0 @@
-{
-  return new CommonTableExpressionImpl<R>(this,select);
-}

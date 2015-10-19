@@ -1,0 +1,5 @@
+{
+  this.alias=a;
+  this.fieldAliases=new String[]{fieldAlias1,fieldAlias2,fieldAlias3,fieldAlias4,fieldAlias5,fieldAlias6,fieldAlias7,fieldAlias8,fieldAlias9,fieldAlias10,fieldAlias11,fieldAlias12,fieldAlias13,fieldAlias14};
+  return this;
+}
