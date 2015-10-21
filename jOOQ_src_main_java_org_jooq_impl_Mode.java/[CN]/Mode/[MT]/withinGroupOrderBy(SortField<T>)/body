@@ -1,0 +1,3 @@
+{
+  return new Function<T>("mode",((SortFieldImpl<T>)field).getField().getDataType()).withinGroupOrderBy(field);
+}
