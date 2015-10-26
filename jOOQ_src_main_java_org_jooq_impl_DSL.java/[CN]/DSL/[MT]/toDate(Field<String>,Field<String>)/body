@@ -1,0 +1,3 @@
+{
+  return DSL.field("to_date({0}, {1})",SQLDataType.DATE,nullSafe(value),nullSafe(format));
+}

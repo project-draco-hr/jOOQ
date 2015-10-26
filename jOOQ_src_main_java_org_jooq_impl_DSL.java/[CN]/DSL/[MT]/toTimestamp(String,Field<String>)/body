@@ -1,0 +1,3 @@
+{
+  return toTimestamp(Utils.field(value,SQLDataType.VARCHAR),nullSafe(format));
+}
