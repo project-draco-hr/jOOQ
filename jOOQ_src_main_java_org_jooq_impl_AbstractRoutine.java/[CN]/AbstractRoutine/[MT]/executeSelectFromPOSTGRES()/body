@@ -1,6 +1,7 @@
 {
   DSLContext create=create(configuration);
   List<Field<?>> fields=new ArrayList<Field<?>>();
+  if (returnParameter != null)   fields.add(DSL.field(DSL.name(getName()),returnParameter.getDataType()));
   for (  Parameter<?> p : outParameters)   fields.add(DSL.field(DSL.name(p.getName()),p.getDataType()));
   Result<?> result=create.select(fields).from("{0}",asField()).fetch();
   int i=0;
