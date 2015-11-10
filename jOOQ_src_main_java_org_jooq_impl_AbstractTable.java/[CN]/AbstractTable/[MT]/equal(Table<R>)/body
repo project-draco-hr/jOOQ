@@ -1,0 +1,10 @@
+{
+  UniqueKey<R> thisPK=this.getPrimaryKey();
+  UniqueKey<R> thatPK=that.getPrimaryKey();
+  if (thisPK != null && thatPK != null) {
+    return row(fields(thisPK.getFieldsArray())).eq(row(that.fields(thatPK.getFieldsArray())));
+  }
+ else {
+    return row(fields()).eq(row(that.fields()));
+  }
+}
