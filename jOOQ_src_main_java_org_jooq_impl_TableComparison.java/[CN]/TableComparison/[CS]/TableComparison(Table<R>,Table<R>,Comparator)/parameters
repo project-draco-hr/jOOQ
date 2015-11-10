@@ -1,0 +1,3 @@
+Table<R> lhs
+Table<R> rhs
+Comparator comparator
