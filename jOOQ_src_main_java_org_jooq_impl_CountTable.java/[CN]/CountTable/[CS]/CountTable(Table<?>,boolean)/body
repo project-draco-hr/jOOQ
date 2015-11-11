@@ -1,0 +1,5 @@
+{
+  super("count",distinct,SQLDataType.INTEGER,DSL.field("{0}",DSL.name(table.getName())));
+  this.table=table;
+  this.distinct=distinct;
+}

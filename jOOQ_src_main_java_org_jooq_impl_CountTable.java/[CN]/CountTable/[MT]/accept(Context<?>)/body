@@ -1,0 +1,16 @@
+{
+switch (ctx.family()) {
+case POSTGRES:
+{
+      super.accept(ctx);
+      break;
+    }
+default :
+{
+    UniqueKey<?> pk=table.getPrimaryKey();
+    if (pk != null)     ctx.visit(new Function<Integer>("count",distinct,SQLDataType.INTEGER,table.fields(pk.getFieldsArray())));
+ else     super.accept(ctx);
+    break;
+  }
+}
+}
