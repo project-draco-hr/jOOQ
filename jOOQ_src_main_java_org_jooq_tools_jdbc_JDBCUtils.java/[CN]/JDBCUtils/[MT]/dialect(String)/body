@@ -23,7 +23,7 @@
  else   if (url.startsWith("jdbc:mysql:") || url.startsWith("jdbc:google:")) {
     return MYSQL;
   }
- else   if (url.startsWith("jdbc:postgresql:")) {
+ else   if (url.startsWith("jdbc:postgresql:") || url.startsWith("jdbc:pgsql:")) {
     return POSTGRES;
   }
  else   if (url.startsWith("jdbc:sqlite:") || url.startsWith("jdbc:sqldroid:")) {
