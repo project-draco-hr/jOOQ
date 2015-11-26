@@ -16,11 +16,13 @@
  else {
     ctx.statement(ctx.connection().prepareStatement(ctx.sql()));
   }
-  if (fetchSize != 0) {
-    if (log.isDebugEnabled())     log.debug("Setting fetch size",fetchSize);
-    ctx.statement().setFetchSize(fetchSize);
+  int f=SettingsTools.getFetchSize(fetchSize,ctx.settings());
+  if (f != 0) {
+    if (log.isDebugEnabled())     log.debug("Setting fetch size",f);
+    ctx.statement().setFetchSize(f);
   }
-  if (maxRows != 0) {
-    ctx.statement().setMaxRows(maxRows);
+  int m=SettingsTools.getMaxRows(maxRows,ctx.settings());
+  if (m != 0) {
+    ctx.statement().setMaxRows(m);
   }
 }

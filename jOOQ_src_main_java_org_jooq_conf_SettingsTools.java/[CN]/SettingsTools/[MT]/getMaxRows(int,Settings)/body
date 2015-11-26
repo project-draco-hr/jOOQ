@@ -1,0 +1,3 @@
+{
+  return maxRows != 0 ? maxRows : settings.getMaxRows() != null ? settings.getMaxRows() : 0;
+}

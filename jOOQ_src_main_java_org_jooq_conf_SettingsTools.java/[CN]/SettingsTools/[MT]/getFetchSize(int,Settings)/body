@@ -1,0 +1,3 @@
+{
+  return fetchSize != 0 ? fetchSize : settings.getFetchSize() != null ? settings.getFetchSize() : 0;
+}

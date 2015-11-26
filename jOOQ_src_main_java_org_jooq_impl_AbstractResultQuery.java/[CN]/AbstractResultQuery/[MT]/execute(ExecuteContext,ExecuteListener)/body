@@ -1,6 +1,7 @@
 {
   listener.executeStart(ctx);
-  if (ctx.family() == POSTGRES && fetchSize != 0 && ctx.connection().getAutoCommit())   log.info("Fetch Size","A fetch size of " + fetchSize + " was set on a auto-commit PostgreSQL connection, which is not recommended. See http://jdbc.postgresql.org/documentation/head/query.html#query-with-cursor");
+  int f=SettingsTools.getFetchSize(fetchSize,ctx.settings());
+  if (ctx.family() == POSTGRES && f != 0 && ctx.connection().getAutoCommit())   log.info("Fetch Size","A fetch size of " + f + " was set on a auto-commit PostgreSQL connection, which is not recommended. See http://jdbc.postgresql.org/documentation/head/query.html#query-with-cursor");
   if (ctx.statement().execute()) {
     ctx.resultSet(ctx.statement().getResultSet());
   }
@@ -8,7 +9,7 @@
   if (!many) {
     if (ctx.resultSet() != null) {
       Field<?>[] fields=getFields(ctx.resultSet().getMetaData());
-      cursor=new CursorImpl<R>(ctx,listener,fields,intern.internIndexes(fields),keepStatement(),keepResultSet(),getRecordType(),maxRows);
+      cursor=new CursorImpl<R>(ctx,listener,fields,intern.internIndexes(fields),keepStatement(),keepResultSet(),getRecordType(),SettingsTools.getMaxRows(maxRows,ctx.settings()));
       if (!lazy) {
         result=cursor.fetch();
         cursor=null;
