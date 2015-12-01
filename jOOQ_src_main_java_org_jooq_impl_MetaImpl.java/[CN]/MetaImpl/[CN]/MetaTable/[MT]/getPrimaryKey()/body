@@ -1,19 +1,19 @@
 {
-  SQLDialect family=configuration.dialect().family();
+  SQLDialect family=configuration.family();
   String schema=getSchema() == null ? null : getSchema().getName();
-  try {
-    ResultSet rs;
-    if (!inverseSchemaCatalog) {
-      rs=meta().getPrimaryKeys(null,schema,getName());
-    }
+  Result<Record> result=meta(new MetaFunction(){
+    @Override public Result<Record> run(    DatabaseMetaData meta) throws SQLException {
+      ResultSet rs;
+      if (!inverseSchemaCatalog) {
+        rs=meta.getPrimaryKeys(null,schema,getName());
+      }
  else {
-      rs=meta().getPrimaryKeys(schema,null,getName());
+        rs=meta.getPrimaryKeys(schema,null,getName());
+      }
+      return create.fetch(rs,String.class,String.class,String.class,String.class,int.class,String.class);
     }
-    Result<Record> result=create.fetch(rs,String.class,String.class,String.class,String.class,int.class,String.class);
-    result.sortAsc(4);
-    return createPrimaryKey(result,3);
   }
- catch (  SQLException e) {
-    throw new DataAccessException("Error while accessing DatabaseMetaData",e);
-  }
+);
+  result.sortAsc(4);
+  return createPrimaryKey(result,3);
 }

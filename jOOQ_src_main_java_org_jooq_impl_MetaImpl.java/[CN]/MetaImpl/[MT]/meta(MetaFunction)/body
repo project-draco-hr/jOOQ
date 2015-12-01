@@ -1,0 +1,14 @@
+{
+  ConnectionProvider provider=configuration.connectionProvider();
+  Connection connection=null;
+  try {
+    connection=provider.acquire();
+    return consumer.run(connection.getMetaData());
+  }
+ catch (  SQLException e) {
+    throw new DataAccessException("Error while accessing DatabaseMetaData",e);
+  }
+ finally {
+    if (connection != null)     provider.release(connection);
+  }
+}

@@ -1,24 +1,29 @@
 {
-  try {
-    List<Schema> result=new ArrayList<Schema>();
-    if (!inverseSchemaCatalog) {
-      Result<Record> schemas=create.fetch(meta().getSchemas(),SQLDataType.VARCHAR);
-      for (      String name : schemas.getValues(0,String.class)) {
-        result.add(new MetaSchema(name));
+  List<Schema> result=new ArrayList<Schema>();
+  if (!inverseSchemaCatalog) {
+    Result<Record> schemas=meta(new MetaFunction(){
+      @Override public Result<Record> run(      DatabaseMetaData meta) throws SQLException {
+        return create.fetch(meta.getSchemas(),SQLDataType.VARCHAR);
       }
     }
+);
+    for (    String name : schemas.getValues(0,String.class)) {
+      result.add(new MetaSchema(name));
+    }
+  }
  else {
-      Result<Record> schemas=create.fetch(meta().getCatalogs(),SQLDataType.VARCHAR);
-      for (      String name : schemas.getValues(0,String.class)) {
-        result.add(new MetaSchema(name));
+    Result<Record> schemas=meta(new MetaFunction(){
+      @Override public Result<Record> run(      DatabaseMetaData meta) throws SQLException {
+        return create.fetch(meta.getCatalogs(),SQLDataType.VARCHAR);
       }
     }
-    if (result.isEmpty()) {
-      result.add(new MetaSchema(""));
+);
+    for (    String name : schemas.getValues(0,String.class)) {
+      result.add(new MetaSchema(name));
     }
-    return result;
   }
- catch (  SQLException e) {
-    throw new DataAccessException("Error while accessing DatabaseMetaData",e);
+  if (result.isEmpty()) {
+    result.add(new MetaSchema(""));
   }
+  return result;
 }

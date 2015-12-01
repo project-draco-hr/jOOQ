@@ -1,18 +1,18 @@
 {
-  try {
-    List<Catalog> result=new ArrayList<Catalog>();
-    if (!inverseSchemaCatalog) {
-      Result<Record> catalogs=create.fetch(meta().getCatalogs(),SQLDataType.VARCHAR);
-      for (      String name : catalogs.getValues(0,String.class)) {
-        result.add(new MetaCatalog(name));
+  List<Catalog> result=new ArrayList<Catalog>();
+  if (!inverseSchemaCatalog) {
+    Result<Record> catalogs=meta(new MetaFunction(){
+      @Override public Result<Record> run(      DatabaseMetaData meta) throws SQLException {
+        return create.fetch(meta.getCatalogs(),SQLDataType.VARCHAR);
       }
     }
-    if (result.isEmpty()) {
-      result.add(new MetaCatalog(""));
+);
+    for (    String name : catalogs.getValues(0,String.class)) {
+      result.add(new MetaCatalog(name));
     }
-    return result;
   }
- catch (  SQLException e) {
-    throw new DataAccessException("Error while accessing DatabaseMetaData",e);
+  if (result.isEmpty()) {
+    result.add(new MetaCatalog(""));
   }
+  return result;
 }

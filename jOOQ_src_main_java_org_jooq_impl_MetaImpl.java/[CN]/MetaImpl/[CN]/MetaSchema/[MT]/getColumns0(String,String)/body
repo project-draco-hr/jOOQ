@@ -1,10 +1,15 @@
 {
-  ResultSet rs;
-  if (!inverseSchemaCatalog) {
-    rs=meta().getColumns(null,schema,table,"%");
-  }
+  return meta(new MetaFunction(){
+    @Override public Result<Record> run(    DatabaseMetaData meta) throws SQLException {
+      ResultSet rs;
+      if (!inverseSchemaCatalog) {
+        rs=meta.getColumns(null,schema,table,"%");
+      }
  else {
-    rs=meta().getColumns(schema,null,table,"%");
+        rs=meta.getColumns(schema,null,table,"%");
+      }
+      return create.fetch(rs,String.class,String.class,String.class,String.class,int.class,String.class,int.class,String.class,int.class,int.class,int.class);
+    }
   }
-  return create.fetch(rs,String.class,String.class,String.class,String.class,int.class,String.class,int.class,String.class,int.class,int.class,int.class);
+);
 }
