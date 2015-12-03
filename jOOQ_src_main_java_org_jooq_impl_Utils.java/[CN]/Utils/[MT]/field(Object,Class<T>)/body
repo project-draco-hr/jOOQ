@@ -2,6 +2,9 @@
   if (value instanceof Field<?>) {
     return (Field<T>)value;
   }
+ else   if (value instanceof QueryPart) {
+    throw fieldExpected(value);
+  }
  else {
     return val(value,type);
   }
