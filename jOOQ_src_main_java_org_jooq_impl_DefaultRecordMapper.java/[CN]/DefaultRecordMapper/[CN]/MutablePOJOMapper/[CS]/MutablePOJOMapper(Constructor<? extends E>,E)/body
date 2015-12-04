@@ -4,6 +4,7 @@
   this.members=new List[fields.length];
   this.methods=new List[fields.length];
   this.nested=new HashMap<String,List<RecordMapper<R,Object>>>();
+  this.instance=instance;
   Map<String,Field<?>[]> nestedFields=new HashMap<String,Field<?>[]>();
   for (int i=0; i < fields.length; i++) {
     Field<?> field=fields[i];
@@ -35,10 +36,10 @@
     String prefix=entry.getKey();
     List<RecordMapper<R,Object>> list=new ArrayList<RecordMapper<R,Object>>();
     for (    java.lang.reflect.Field member : getMatchingMembers(configuration,type,prefix)) {
-      list.add(new RemovingPrefixRecordMapper(new DefaultRecordMapper<R,Object>(new Fields<R>(entry.getValue()),member.getType(),instance,configuration),fields,prefix));
+      list.add(new RemovingPrefixRecordMapper(new DefaultRecordMapper<R,Object>(new Fields<R>(entry.getValue()),member.getType(),null,configuration),fields,prefix));
     }
     for (    Method method : getMatchingSetters(configuration,type,prefix)) {
-      list.add(new RemovingPrefixRecordMapper(new DefaultRecordMapper<R,Object>(new Fields<R>(entry.getValue()),method.getParameterTypes()[0],instance,configuration),fields,prefix));
+      list.add(new RemovingPrefixRecordMapper(new DefaultRecordMapper<R,Object>(new Fields<R>(entry.getValue()),method.getParameterTypes()[0],null,configuration),fields,prefix));
     }
     nested.put(prefix,list);
   }

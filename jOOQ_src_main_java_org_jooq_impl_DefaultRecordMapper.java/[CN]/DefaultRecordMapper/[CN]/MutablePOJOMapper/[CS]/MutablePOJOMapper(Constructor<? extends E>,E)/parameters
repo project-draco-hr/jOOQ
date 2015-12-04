@@ -1,1 +1,2 @@
 Constructor<? extends E> constructor
+E instance

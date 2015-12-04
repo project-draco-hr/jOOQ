@@ -1,6 +1,6 @@
 {
   if (type.isArray()) {
-    delegate=new ArrayMapper();
+    delegate=new ArrayMapper(instance);
     return;
   }
   if (type.isPrimitive() || DefaultDataType.types().contains(type)) {
@@ -16,7 +16,7 @@
     return;
   }
   try {
-    delegate=new MutablePOJOMapper(type.getDeclaredConstructor());
+    delegate=new MutablePOJOMapper(type.getDeclaredConstructor(),instance);
     return;
   }
  catch (  NoSuchMethodException ignore) {
