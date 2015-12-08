@@ -1,0 +1,8 @@
+{
+  try {
+    DEQUEUE_OPTIONS_T deq=new DEQUEUE_OPTIONS_T().wait(NO_WAIT);
+    for (int i=0; i < 99; i++)     DBMS_AQ.dequeue(dsl.configuration(),NEW_AUTHOR_AQ,deq);
+  }
+ catch (  Exception ignore) {
+  }
+}
