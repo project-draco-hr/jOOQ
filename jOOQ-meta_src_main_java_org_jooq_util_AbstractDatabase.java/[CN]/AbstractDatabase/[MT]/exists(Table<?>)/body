@@ -2,7 +2,7 @@
   Boolean result=exists.get(table);
   if (result == null) {
     try {
-      create().selectOne().from(table).where(falseCondition()).fetch();
+      create(true).selectOne().from(table).where(falseCondition()).fetch();
       result=true;
     }
  catch (    DataAccessException e) {

@@ -1,7 +1,7 @@
 {
   if (is84 == null) {
     try {
-      create().select(count().over()).fetch();
+      create(true).select(count().over()).fetch();
       is84=true;
     }
  catch (    DataAccessException e) {
