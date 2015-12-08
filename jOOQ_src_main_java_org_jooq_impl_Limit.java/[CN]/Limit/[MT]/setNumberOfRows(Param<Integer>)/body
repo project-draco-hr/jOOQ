@@ -1,4 +1,5 @@
 {
   this.numberOfRows=numberOfRows;
+  this.numberOfRowsOrMax=numberOfRows;
   this.rendersParams=true;
 }

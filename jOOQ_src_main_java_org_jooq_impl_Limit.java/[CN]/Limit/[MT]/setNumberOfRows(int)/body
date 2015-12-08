@@ -1,3 +1,4 @@
 {
   this.numberOfRows=val(numberOfRows,SQLDataType.INTEGER);
+  this.numberOfRowsOrMax=this.numberOfRows;
 }

@@ -2,9 +2,15 @@
   ParamType paramType=context.paramType();
   CastMode castMode=context.castMode();
 switch (context.dialect()) {
+case H2:
+{
+      context.castMode(NEVER).formatSeparator().keyword("limit").sql(' ').visit(numberOfRowsOrMax);
+      if (!offsetZero())       context.formatSeparator().keyword("offset").sql(' ').visit(offsetOrZero);
+      context.castMode(castMode);
+      break;
+    }
 case MARIADB:
 case MYSQL:
-case H2:
 case HSQLDB:
 case POSTGRES:
 case POSTGRES_9_3:
@@ -12,20 +18,21 @@ case POSTGRES_9_4:
 case POSTGRES_9_5:
 case SQLITE:
 {
-      context.castMode(NEVER).formatSeparator().keyword("limit").sql(' ').visit(numberOfRows);
-      if (!offsetZero())       context.sql(' ').keyword("offset").sql(' ').visit(offsetOrZero);
-      context.castMode(castMode);
-      break;
-    }
-case CUBRID:
-{
-    context.castMode(NEVER).formatSeparator().keyword("limit").sql(' ').visit(offsetOrZero).sql(", ").visit(numberOfRows).castMode(castMode);
+    context.castMode(NEVER);
+    if (!limitZero())     context.formatSeparator().keyword("limit").sql(' ').visit(numberOfRows);
+    if (!offsetZero())     context.formatSeparator().keyword("offset").sql(' ').visit(offsetOrZero);
+    context.castMode(castMode);
     break;
   }
+case CUBRID:
+{
+  context.castMode(NEVER).formatSeparator().keyword("limit").sql(' ').visit(offsetOrZero).sql(", ").visit(numberOfRows).castMode(castMode);
+  break;
+}
 case FIREBIRD:
 {
-  context.castMode(NEVER).formatSeparator().keyword("rows").sql(' ').visit(getLowerRownum().add(inline(1,SQLDataType.INTEGER))).sql(' ').keyword("to").sql(' ').visit(getUpperRownum()).castMode(castMode);
-  break;
+context.castMode(NEVER).formatSeparator().keyword("rows").sql(' ').visit(getLowerRownum().add(inline(1,SQLDataType.INTEGER))).sql(' ').keyword("to").sql(' ').visit(getUpperRownum()).castMode(castMode);
+break;
 }
 case DERBY:
 {
