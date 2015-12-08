@@ -1,2 +1,2 @@
-Param<Integer> offset
-int numberOfRows
+Param<Integer> o
+int l

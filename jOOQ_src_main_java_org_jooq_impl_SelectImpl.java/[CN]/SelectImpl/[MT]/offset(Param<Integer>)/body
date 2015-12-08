@@ -1,9 +1,5 @@
 {
-  if (limit != null) {
-    getQuery().addLimit(offset,limit);
-  }
- else   if (limitParam != null) {
-    getQuery().addLimit(offset,limitParam);
-  }
-  return this;
+  offset=null;
+  offsetParam=o;
+  return limitOffset();
 }

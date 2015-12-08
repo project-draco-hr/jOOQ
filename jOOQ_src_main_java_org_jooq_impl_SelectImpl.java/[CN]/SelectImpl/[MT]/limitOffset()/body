@@ -1,0 +1,17 @@
+{
+  if (limit != null) {
+    if (offset != null)     getQuery().addLimit(offset,limit);
+ else     if (offsetParam != null)     getQuery().addLimit(offsetParam,limit);
+ else     getQuery().addLimit(limit);
+  }
+ else   if (limitParam != null) {
+    if (offset != null)     getQuery().addLimit(offset,limitParam);
+ else     if (offsetParam != null)     getQuery().addLimit(offsetParam,limitParam);
+ else     getQuery().addLimit(limitParam);
+  }
+ else {
+    if (offset != null)     getQuery().addLimit(offset,Integer.MAX_VALUE);
+ else     if (offsetParam != null)     getQuery().addLimit(offsetParam,Integer.MAX_VALUE);
+  }
+  return this;
+}

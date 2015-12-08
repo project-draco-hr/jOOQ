@@ -1,6 +1,5 @@
 {
-  this.limit=null;
-  this.limitParam=numberOfRows;
-  getQuery().addLimit(numberOfRows);
-  return this;
+  limit=null;
+  limitParam=l;
+  return limitOffset();
 }
