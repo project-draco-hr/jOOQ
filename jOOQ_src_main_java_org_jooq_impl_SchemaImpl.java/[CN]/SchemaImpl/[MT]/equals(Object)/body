@@ -3,7 +3,8 @@
     return true;
   }
   if (that instanceof SchemaImpl) {
-    return StringUtils.equals(getName(),(((SchemaImpl)that).getName()));
+    SchemaImpl other=(SchemaImpl)that;
+    return StringUtils.equals(getCatalog(),other.getCatalog()) && StringUtils.equals(getName(),other.getName());
   }
   return super.equals(that);
 }

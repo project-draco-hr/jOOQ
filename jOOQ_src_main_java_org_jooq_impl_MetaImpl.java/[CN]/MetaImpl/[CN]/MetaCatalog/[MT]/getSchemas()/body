@@ -8,7 +8,7 @@
     }
 );
     for (    String name : schemas.getValues(0,String.class)) {
-      result.add(new MetaSchema(name));
+      result.add(new MetaSchema(name,MetaCatalog.this));
     }
   }
  else {
@@ -19,11 +19,11 @@
     }
 );
     for (    String name : schemas.getValues(0,String.class)) {
-      result.add(new MetaSchema(name));
+      result.add(new MetaSchema(name,MetaCatalog.this));
     }
   }
   if (result.isEmpty()) {
-    result.add(new MetaSchema(""));
+    result.add(new MetaSchema("",MetaCatalog.this));
   }
   return result;
 }

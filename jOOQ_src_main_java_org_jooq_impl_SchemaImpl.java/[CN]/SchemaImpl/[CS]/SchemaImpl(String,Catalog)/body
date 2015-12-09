@@ -1,0 +1,5 @@
+{
+  super();
+  this.schemaName=name;
+  this.catalog=catalog;
+}

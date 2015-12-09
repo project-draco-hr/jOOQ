@@ -1,3 +1,8 @@
 {
+  Catalog mappedCatalog=getCatalog();
+  if (mappedCatalog != null) {
+    ctx.visit(mappedCatalog);
+    ctx.sql('.');
+  }
   ctx.literal(getName());
 }
