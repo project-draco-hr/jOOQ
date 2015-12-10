@@ -1,3 +1,4 @@
 {
-  return database.create(muteExceptions);
+  if (database instanceof AbstractDatabase)   return ((AbstractDatabase)database).create(muteExceptions);
+ else   return database.create();
 }
