@@ -1,0 +1,9 @@
+{
+  if (!renderCatalog())   return null;
+  Catalog result=catalog;
+  if (result != null) {
+    String catalogName=result.getName();
+    if (StringUtils.isEmpty(catalogName))     return null;
+  }
+  return result;
+}

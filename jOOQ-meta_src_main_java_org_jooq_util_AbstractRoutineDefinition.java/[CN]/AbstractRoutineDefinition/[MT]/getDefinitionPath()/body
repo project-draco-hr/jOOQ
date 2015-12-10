@@ -1,8 +1,7 @@
 {
-  if (pkg != null) {
-    return Arrays.<Definition>asList(getSchema(),pkg,this);
-  }
- else {
-    return Arrays.<Definition>asList(getSchema(),this);
-  }
+  List<Definition> result=new ArrayList<Definition>();
+  result.addAll(getSchema().getDefinitionPath());
+  if (pkg != null)   result.add(pkg);
+  result.add(this);
+  return result;
 }

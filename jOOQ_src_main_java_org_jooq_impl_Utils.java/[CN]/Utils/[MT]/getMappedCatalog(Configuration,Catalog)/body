@@ -1,0 +1,9 @@
+{
+  org.jooq.SchemaMapping mapping=configuration.schemaMapping();
+  if (mapping != null) {
+    return mapping.map(catalog);
+  }
+ else {
+    return catalog;
+  }
+}
