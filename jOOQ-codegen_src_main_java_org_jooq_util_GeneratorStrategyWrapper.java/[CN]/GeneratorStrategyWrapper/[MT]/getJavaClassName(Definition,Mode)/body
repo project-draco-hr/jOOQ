@@ -1,8 +1,11 @@
 {
-  if (!generator.generateRecords() && mode == Mode.RECORD && definition instanceof TableDefinition) {
+  if (definition instanceof TableDefinition && !generator.generateRecords() && mode == Mode.RECORD) {
     return Record.class.getSimpleName();
   }
-  if (definition instanceof SchemaDefinition && ((SchemaDefinition)definition).isDefaultSchema()) {
+ else   if (definition instanceof CatalogDefinition && ((CatalogDefinition)definition).isDefaultCatalog()) {
+    return "DefaultCatalog";
+  }
+ else   if (definition instanceof SchemaDefinition && ((SchemaDefinition)definition).isDefaultSchema()) {
     return "DefaultSchema";
   }
   String className;

@@ -3,9 +3,8 @@
     StringBuilder sb=new StringBuilder();
     String separator="";
     for (    Definition part : getDefinitionPath()) {
-      if (part instanceof SchemaDefinition && ((SchemaDefinition)part).isDefaultSchema()) {
-        continue;
-      }
+      if (part instanceof CatalogDefinition && ((CatalogDefinition)part).isDefaultCatalog())       continue;
+ else       if (part instanceof SchemaDefinition && ((SchemaDefinition)part).isDefaultSchema())       continue;
       sb.append(separator);
       sb.append(part.getOutputName());
       separator=".";
