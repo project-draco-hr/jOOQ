@@ -1,0 +1,4 @@
+{
+  this.qualifyCatalog=q;
+  return (C)this;
+}

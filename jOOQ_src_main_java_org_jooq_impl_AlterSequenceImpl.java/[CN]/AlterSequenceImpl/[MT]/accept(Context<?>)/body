@@ -1,12 +1,20 @@
 {
-  ctx.start(ALTER_SEQUENCE_SEQUENCE).keyword("alter").sql(' ').keyword(ctx.family() == CUBRID ? "serial" : "sequence").sql(' ').visit(sequence).end(ALTER_SEQUENCE_SEQUENCE).start(ALTER_SEQUENCE_RESTART);
-  T with=restartWith;
-  if (with == null) {
-    ctx.sql(' ').keyword("restart");
-  }
+  ctx.start(ALTER_SEQUENCE_SEQUENCE).keyword("alter").sql(' ').keyword(ctx.family() == CUBRID ? "serial" : "sequence").sql(' ');
+switch (ctx.family()) {
+default :
+{
+      ctx.visit(sequence);
+      break;
+    }
+}
+ctx.end(ALTER_SEQUENCE_SEQUENCE).start(ALTER_SEQUENCE_RESTART);
+T with=restartWith;
+if (with == null) {
+  ctx.sql(' ').keyword("restart");
+}
  else {
-    if (ctx.family() == CUBRID)     ctx.sql(' ').keyword("start with").sql(' ').sql(with.toString());
- else     ctx.sql(' ').keyword("restart with").sql(' ').sql(with.toString());
-  }
-  ctx.end(ALTER_SEQUENCE_RESTART);
+  if (ctx.family() == CUBRID)   ctx.sql(' ').keyword("start with").sql(' ').sql(with.toString());
+ else   ctx.sql(' ').keyword("restart with").sql(' ').sql(with.toString());
+}
+ctx.end(ALTER_SEQUENCE_RESTART);
 }

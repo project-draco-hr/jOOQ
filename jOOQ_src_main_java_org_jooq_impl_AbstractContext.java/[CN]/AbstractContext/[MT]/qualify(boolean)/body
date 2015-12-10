@@ -1,4 +1,3 @@
 {
-  this.qualify=q;
-  return (C)this;
+  return qualifySchema(q);
 }

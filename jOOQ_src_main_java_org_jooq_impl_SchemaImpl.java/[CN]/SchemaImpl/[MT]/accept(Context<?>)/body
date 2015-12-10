@@ -1,6 +1,6 @@
 {
   Catalog mappedCatalog=getCatalog();
-  if (mappedCatalog != null && !StringUtils.isBlank(mappedCatalog.getName())) {
+  if (ctx.qualifyCatalog() && mappedCatalog != null && !StringUtils.isBlank(mappedCatalog.getName())) {
     ctx.visit(mappedCatalog);
     ctx.sql('.');
   }
