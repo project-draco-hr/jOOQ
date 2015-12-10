@@ -6,7 +6,7 @@
  else       out.tab(1).println("value = {");
       out.tab(2).println("\"http://www.jooq.org\",");
       out.tab(2).println("\"jOOQ version:%s\",",Constants.VERSION);
-      out.tab(2).println("\"schema version:%s\"",schemaVersions.get(schema).replace("\"","\\\""));
+      out.tab(2).println("\"catalog version:%s\"",catalogVersions.get(catalog).replace("\"","\\\""));
       if (scala)       out.tab(1).println("),");
  else       out.tab(1).println("},");
       out.tab(1).println("date = \"" + isoDate + "\",");

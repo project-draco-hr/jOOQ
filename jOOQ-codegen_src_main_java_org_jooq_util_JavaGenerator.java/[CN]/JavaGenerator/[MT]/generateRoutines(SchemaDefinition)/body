@@ -3,7 +3,7 @@
   JavaWriter out=newJavaWriter(new File(getStrategy().getFile(schema).getParentFile(),"Routines.java"));
   printPackage(out,schema);
   printClassJavadoc(out,"Convenience access to all stored procedures and functions in " + schema.getOutputName());
-  printClassAnnotations(out,schema);
+  printClassAnnotations(out,schema.getCatalog());
   if (scala)   out.println("object Routines {");
  else   out.println("public class Routines {");
   for (  RoutineDefinition routine : database.getRoutines(schema)) {

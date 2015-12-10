@@ -1,4 +1,5 @@
 {
+  final String catalogId=out.ref(getStrategy().getFullJavaIdentifier(schema.getCatalog()),2);
   final String schemaName=schema.getQualifiedOutputName();
   final String schemaId=getStrategy().getJavaIdentifier(schema);
   final String className=getStrategy().getJavaClassName(schema);
@@ -12,9 +13,9 @@
     out.println();
   }
   generateSchemaClassJavadoc(schema,out);
-  printClassAnnotations(out,schema);
+  printClassAnnotations(out,schema.getCatalog());
   if (scala) {
-    out.println("class %s extends %s(\"%s\")[[before= with ][separator= with ][%s]] {",className,SchemaImpl.class,schema.getOutputName(),interfaces);
+    out.println("class %s extends %s(\"%s\", %s)[[before= with ][separator= with ][%s]] {",className,SchemaImpl.class,schema.getOutputName(),catalogId,interfaces);
   }
  else {
     out.println("public class %s extends %s[[before= implements ][%s]] {",className,SchemaImpl.class,interfaces);
@@ -23,14 +24,14 @@
     out.tab(1).println("public static final %s %s = new %s();",className,schemaId,className);
     out.tab(1).javadoc(NO_FURTHER_INSTANCES_ALLOWED);
     out.tab(1).println("private %s() {",className);
-    out.tab(2).println("super(\"%s\");",schema.getOutputName());
+    out.tab(2).println("super(\"%s\", %s);",schema.getOutputName(),catalogId);
     out.tab(1).println("}");
   }
   if (generateGlobalObjectReferences() && generateGlobalSequenceReferences()) {
-    printSchemaReferences(out,database.getSequences(schema),Sequence.class,true);
+    printReferences(out,database.getSequences(schema),Sequence.class,true);
   }
-  printSchemaReferences(out,database.getTables(schema),Table.class,true);
-  printSchemaReferences(out,database.getUDTs(schema),UDT.class,true);
+  printReferences(out,database.getTables(schema),Table.class,true);
+  printReferences(out,database.getUDTs(schema),UDT.class,true);
   generateSchemaClassFooter(schema,out);
   out.println("}");
 }

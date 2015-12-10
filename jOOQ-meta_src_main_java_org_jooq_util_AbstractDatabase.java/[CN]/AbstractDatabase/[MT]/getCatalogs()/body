@@ -1,0 +1,12 @@
+{
+  if (catalogs == null) {
+    catalogs=new ArrayList<CatalogDefinition>();
+    try {
+      catalogs=getCatalogs0();
+    }
+ catch (    Exception e) {
+      log.error("Could not load catalogs",e);
+    }
+  }
+  return catalogs;
+}

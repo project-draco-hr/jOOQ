@@ -3,7 +3,7 @@
   JavaWriter out=newJavaWriter(new File(getStrategy().getFile(schema).getParentFile(),"Tables.java"));
   printPackage(out,schema);
   printClassJavadoc(out,"Convenience access to all tables in " + schema.getOutputName());
-  printClassAnnotations(out,schema);
+  printClassAnnotations(out,schema.getCatalog());
   if (scala)   out.println("object Tables {");
  else   out.println("public class Tables {");
   for (  TableDefinition table : database.getTables(schema)) {

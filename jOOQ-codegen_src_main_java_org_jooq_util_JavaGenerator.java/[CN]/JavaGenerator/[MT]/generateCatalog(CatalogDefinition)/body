@@ -1,0 +1,8 @@
+{
+  JavaWriter out=newJavaWriter(getStrategy().getFile(catalog));
+  log.info("");
+  log.info("Generating catalog",out.file().getName());
+  log.info("==========================================================");
+  generateCatalog(catalog,out);
+  closeJavaWriter(out);
+}

@@ -1,5 +1,6 @@
 {
   final SchemaDefinition schema=table.getSchema();
+  final CatalogDefinition catalog=table.getCatalog();
   final UniqueKeyDefinition primaryKey=table.getPrimaryKey();
   final boolean updatable=generateRelations() && primaryKey != null;
   final String className=getStrategy().getJavaClassName(table);
@@ -17,7 +18,7 @@
     out.println();
   }
   generateTableClassJavadoc(table,out);
-  printClassAnnotations(out,schema);
+  printClassAnnotations(out,catalog);
   if (scala) {
     out.println("class %s(alias : String, aliased : %s[%s], parameters : Array[ %s[_] ]) extends %s[%s](alias, %s, aliased, parameters, \"%s\")[[before= with ][separator= with ][%s]] {",className,Table.class,recordType,Field.class,TableImpl.class,recordType,schemaId,escapeString(comment),interfaces);
   }

@@ -1,0 +1,4 @@
+{
+  super(database,null,name,comment);
+  this.catalog=catalog == null ? new CatalogDefinition(database,"","") : catalog;
+}

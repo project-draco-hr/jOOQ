@@ -4,7 +4,7 @@
   printPackage(out,tableOrUDT,Mode.INTERFACE);
   if (tableOrUDT instanceof TableDefinition)   generateInterfaceClassJavadoc((TableDefinition)tableOrUDT,out);
  else   generateUDTInterfaceClassJavadoc((UDTDefinition)tableOrUDT,out);
-  printClassAnnotations(out,tableOrUDT.getSchema());
+  printClassAnnotations(out,tableOrUDT.getSchema().getCatalog());
   if (tableOrUDT instanceof TableDefinition)   printTableJPAAnnotation(out,(TableDefinition)tableOrUDT);
   if (scala)   out.println("trait %s [[before=extends ][%s]] {",className,interfaces);
  else   out.println("public interface %s [[before=extends ][%s]] {",className,interfaces);

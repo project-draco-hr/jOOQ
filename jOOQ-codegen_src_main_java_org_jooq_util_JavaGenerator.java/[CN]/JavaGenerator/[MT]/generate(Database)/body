@@ -1,6 +1,6 @@
 {
   this.isoDate=DatatypeConverter.printDateTime(Calendar.getInstance(TimeZone.getTimeZone("UTC")));
-  this.schemaVersions=new LinkedHashMap<SchemaDefinition,String>();
+  this.catalogVersions=new LinkedHashMap<CatalogDefinition,String>();
   this.database=db;
   this.database.addFilter(new AvoidAmbiguousClassesFilter());
   this.database.setIncludeRelations(generateRelations());
@@ -55,13 +55,13 @@
  else   log.info("  none");
   log.info("");
   log.info("----------------------------------------------------------");
-  log.info("Generating schemata","Total: " + database.getSchemata().size());
-  for (  SchemaDefinition schema : database.getSchemata()) {
+  log.info("Generating catalogs","Total: " + database.getCatalogs().size());
+  for (  CatalogDefinition catalog : database.getCatalogs()) {
     try {
-      generate(schema);
+      generate(catalog);
     }
  catch (    Exception e) {
-      throw new GeneratorException("Error generating code for schema " + schema,e);
+      throw new GeneratorException("Error generating code for catalog " + catalog,e);
     }
   }
 }

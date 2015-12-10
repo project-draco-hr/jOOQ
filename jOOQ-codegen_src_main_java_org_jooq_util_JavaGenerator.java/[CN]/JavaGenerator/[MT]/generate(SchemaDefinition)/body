@@ -4,7 +4,7 @@
     log.info("No schema version is applied for schema " + schema.getInputName() + ". Regenerating.");
   }
  else {
-    schemaVersions.put(schema,newVersion);
+    catalogVersions.put(schema.getCatalog(),newVersion);
     String oldVersion=readVersion(getStrategy().getFile(schema));
     if (StringUtils.isBlank(oldVersion)) {
       log.info("No previous version available for schema " + schema.getInputName() + ". Regenerating.");
@@ -75,5 +75,6 @@
   log.info("Removing excess files");
   empty(getStrategy().getFile(schema).getParentFile(),(scala ? ".scala" : ".java"),files);
   files.clear();
-  watch.splitInfo("GENERATION FINISHED: " + schema.getQualifiedName());
+  watch.splitInfo("Generation finished: " + schema.getQualifiedName());
+  log.info("");
 }

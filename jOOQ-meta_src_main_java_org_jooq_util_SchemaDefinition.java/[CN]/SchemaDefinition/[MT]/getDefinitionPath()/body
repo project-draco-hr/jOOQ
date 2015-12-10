@@ -1,3 +1,4 @@
 {
-  return Arrays.<Definition>asList(this);
+  if (StringUtils.isEmpty(catalog.getName()))   return Arrays.<Definition>asList(this);
+ else   return Arrays.<Definition>asList(catalog,this);
 }

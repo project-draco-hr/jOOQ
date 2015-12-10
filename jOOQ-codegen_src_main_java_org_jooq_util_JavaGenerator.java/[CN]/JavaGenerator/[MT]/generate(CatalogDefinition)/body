@@ -1,0 +1,12 @@
+{
+  generateCatalog(catalog);
+  log.info("Generating schemata","Total: " + catalog.getSchemata().size());
+  for (  SchemaDefinition schema : catalog.getSchemata()) {
+    try {
+      generate(schema);
+    }
+ catch (    Exception e) {
+      throw new GeneratorException("Error generating code for schema " + schema,e);
+    }
+  }
+}

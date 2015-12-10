@@ -1,0 +1,32 @@
+{
+  final String catalogName=catalog.getQualifiedOutputName();
+  final String catalogId=getStrategy().getJavaIdentifier(catalog);
+  final String className=getStrategy().getJavaClassName(catalog);
+  final List<String> interfaces=out.ref(getStrategy().getJavaClassImplements(catalog,Mode.DEFAULT));
+  printPackage(out,catalog);
+  if (scala) {
+    out.println("object %s {",className);
+    out.tab(1).javadoc("The reference instance of <code>%s</code>",catalogName);
+    out.tab(1).println("val %s = new %s",catalogId,className);
+    out.println("}");
+    out.println();
+  }
+  generateCatalogClassJavadoc(catalog,out);
+  printClassAnnotations(out,catalog);
+  if (scala) {
+    out.println("class %s extends %s(\"%s\")[[before= with ][separator= with ][%s]] {",className,CatalogImpl.class,catalog.getOutputName(),interfaces);
+  }
+ else {
+    out.println("public class %s extends %s[[before= implements ][%s]] {",className,CatalogImpl.class,interfaces);
+    out.printSerial();
+    out.tab(1).javadoc("The reference instance of <code>%s</code>",catalogName);
+    out.tab(1).println("public static final %s %s = new %s();",className,catalogId,className);
+    out.tab(1).javadoc(NO_FURTHER_INSTANCES_ALLOWED);
+    out.tab(1).println("private %s() {",className);
+    out.tab(2).println("super(\"%s\");",catalog.getOutputName());
+    out.tab(1).println("}");
+  }
+  printReferences(out,database.getSchemata(catalog),Schema.class,false);
+  generateCatalogClassFooter(catalog,out);
+  out.println("}");
+}

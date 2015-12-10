@@ -1,25 +1,33 @@
 {
   StringBuilder sb=new StringBuilder();
   sb.append(getTargetPackage());
-  if (definition.getDatabase().getSchemata().size() > 1) {
+  if (definition.getDatabase().getCatalogs().size() > 1) {
     sb.append(".");
-    sb.append(getJavaIdentifier(definition.getSchema()).toLowerCase());
+    sb.append(getJavaIdentifier(definition.getCatalog()).toLowerCase());
   }
-  if (!StringUtils.isBlank(getSubPackage(definition))) {
-    sb.append(".");
-    sb.append(getSubPackage(definition));
-  }
-  if (mode == Mode.RECORD) {
-    sb.append(".records");
-  }
- else   if (mode == Mode.POJO) {
-    sb.append(".pojos");
-  }
- else   if (mode == Mode.DAO) {
-    sb.append(".daos");
-  }
- else   if (mode == Mode.INTERFACE) {
-    sb.append(".interfaces");
+  if (!(definition instanceof CatalogDefinition)) {
+    if (definition.getDatabase().getSchemata().size() > 1) {
+      sb.append(".");
+      sb.append(getJavaIdentifier(definition.getSchema()).toLowerCase());
+    }
+    if (!(definition instanceof SchemaDefinition)) {
+      if (!StringUtils.isBlank(getSubPackage(definition))) {
+        sb.append(".");
+        sb.append(getSubPackage(definition));
+      }
+      if (mode == Mode.RECORD) {
+        sb.append(".records");
+      }
+ else       if (mode == Mode.POJO) {
+        sb.append(".pojos");
+      }
+ else       if (mode == Mode.DAO) {
+        sb.append(".daos");
+      }
+ else       if (mode == Mode.INTERFACE) {
+        sb.append(".interfaces");
+      }
+    }
   }
   return sb.toString();
 }

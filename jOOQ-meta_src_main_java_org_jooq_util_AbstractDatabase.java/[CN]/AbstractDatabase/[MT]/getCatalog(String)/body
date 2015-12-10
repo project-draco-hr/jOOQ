@@ -1,0 +1,8 @@
+{
+  for (  CatalogDefinition catalog : getCatalogs()) {
+    if (catalog.getName().equals(inputName)) {
+      return catalog;
+    }
+  }
+  return null;
+}

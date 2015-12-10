@@ -3,7 +3,7 @@
   JavaWriter out=newJavaWriter(new File(getStrategy().getFile(schema).getParentFile(),"Sequences.java"));
   printPackage(out,schema);
   printClassJavadoc(out,"Convenience access to all sequences in " + schema.getOutputName());
-  printClassAnnotations(out,schema);
+  printClassAnnotations(out,schema.getCatalog());
   if (scala)   out.println("object Sequences {");
  else   out.println("public class Sequences {");
   for (  SequenceDefinition sequence : database.getSequences(schema)) {

@@ -1,4 +1,5 @@
 {
+  final CatalogDefinition catalog=routine.getCatalog();
   final SchemaDefinition schema=routine.getSchema();
   final String className=getStrategy().getJavaClassName(routine);
   final String returnType=(routine.getReturnValue() == null) ? Void.class.getName() : out.ref(getJavaType(routine.getReturnType()));
@@ -25,7 +26,7 @@
     out.println();
   }
   generateRoutineClassJavadoc(routine,out);
-  printClassAnnotations(out,schema);
+  printClassAnnotations(out,catalog);
   if (scala) {
     out.println("class %s extends %s[%s](\"%s\", %s[[before=, ][%s]][[before=, ][%s]][[before=, ][new %s()]])[[before= with ][separator= with ][%s]] {",className,AbstractRoutine.class,returnType,routine.getName(),schemaId,packageId,returnTypeRef,returnConverterType,interfaces);
   }

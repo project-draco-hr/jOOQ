@@ -1,0 +1,5 @@
+{
+  List<SchemaDefinition> result=new ArrayList<SchemaDefinition>();
+  for (  SchemaDefinition schema : getSchemata())   if (catalog.equals(schema.getCatalog()))   result.add(schema);
+  return result;
+}
