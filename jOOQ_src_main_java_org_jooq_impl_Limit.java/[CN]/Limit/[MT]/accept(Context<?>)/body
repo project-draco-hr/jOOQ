@@ -26,7 +26,7 @@ case POSTGRES_9_5:
   }
 case CUBRID:
 {
-  context.castMode(NEVER).formatSeparator().keyword("limit").sql(' ').visit(offsetOrZero).sql(", ").visit(numberOfRows).castMode(castMode);
+  context.castMode(NEVER).formatSeparator().keyword("limit").sql(' ').visit(offsetOrZero).sql(", ").visit(numberOfRowsOrMax).castMode(castMode);
   break;
 }
 case FIREBIRD:
