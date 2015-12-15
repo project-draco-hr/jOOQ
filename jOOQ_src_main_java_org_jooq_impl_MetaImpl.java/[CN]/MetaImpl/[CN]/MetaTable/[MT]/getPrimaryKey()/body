@@ -1,6 +1,6 @@
 {
   SQLDialect family=configuration.family();
-  String schema=getSchema() == null ? null : getSchema().getName();
+  final String schema=getSchema() == null ? null : getSchema().getName();
   Result<Record> result=meta(new MetaFunction(){
     @Override public Result<Record> run(    DatabaseMetaData meta) throws SQLException {
       ResultSet rs;
