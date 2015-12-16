@@ -32,8 +32,8 @@
     TypedElementDefinition<?> column=columns.get(i);
     final String comment=StringUtils.defaultString(column.getComment());
     final String setterReturnType=fluentSetters() ? className : tokenVoid;
-    final String setter=getStrategy().getJavaSetterName(column,Mode.DEFAULT);
-    final String getter=getStrategy().getJavaGetterName(column,Mode.DEFAULT);
+    final String setter=getStrategy().getJavaSetterName(column,Mode.RECORD);
+    final String getter=getStrategy().getJavaGetterName(column,Mode.RECORD);
     final String type=out.ref(getJavaType(column.getType()));
     final String name=column.getQualifiedOutputName();
     final boolean isUDT=column.getType().isUDT();

@@ -11,8 +11,8 @@
   for (  TypedElementDefinition<?> column : getTypedElements(tableOrUDT)) {
     final String comment=StringUtils.defaultString(column.getComment());
     final String setterReturnType=fluentSetters() ? className : "void";
-    final String setter=getStrategy().getJavaSetterName(column,Mode.DEFAULT);
-    final String getter=getStrategy().getJavaGetterName(column,Mode.DEFAULT);
+    final String setter=getStrategy().getJavaSetterName(column,Mode.INTERFACE);
+    final String getter=getStrategy().getJavaGetterName(column,Mode.INTERFACE);
     final String type=out.ref(getJavaType(column.getType(),Mode.INTERFACE));
     final String name=column.getQualifiedOutputName();
     if (!generateImmutablePojos()) {
