@@ -1,0 +1,5 @@
+{
+  this.delimiter=delimiter;
+  this.nullString=nullString;
+  this.header=header;
+}
