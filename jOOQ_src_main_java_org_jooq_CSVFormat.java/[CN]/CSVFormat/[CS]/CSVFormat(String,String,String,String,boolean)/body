@@ -1,6 +1,7 @@
 {
   this.delimiter=delimiter;
   this.nullString=nullString;
+  this.emptyString=emptyString;
   this.newline=newline;
   this.header=header;
 }

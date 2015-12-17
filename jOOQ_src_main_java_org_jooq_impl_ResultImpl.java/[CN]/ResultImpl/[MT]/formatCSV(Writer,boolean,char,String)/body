@@ -1,3 +1,3 @@
 {
-  formatCSV(writer,new CSVFormat().header(header).delimiter("" + delimiter).nullString(nullString));
+  formatCSV(writer,new CSVFormat().header(header).delimiter(delimiter).nullString(nullString));
 }

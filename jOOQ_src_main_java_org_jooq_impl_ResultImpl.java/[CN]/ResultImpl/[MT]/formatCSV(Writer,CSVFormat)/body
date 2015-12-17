@@ -4,7 +4,7 @@
       String sep1="";
       for (      Field<?> field : fields.fields) {
         writer.append(sep1);
-        writer.append(formatCSV0(field.getName(),""));
+        writer.append(formatCSV0(field.getName(),format));
         sep1=format.delimiter();
       }
       writer.append(format.newline());
@@ -13,7 +13,7 @@
       String sep2="";
       for (int index=0; index < fields.fields.length; index++) {
         writer.append(sep2);
-        writer.append(formatCSV0(record.getValue(index),format.nullString()));
+        writer.append(formatCSV0(record.getValue(index),format));
         sep2=format.delimiter();
       }
       writer.append(format.newline());

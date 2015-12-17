@@ -1,12 +1,6 @@
 {
-  if (value == null || "".equals(value)) {
-    if (StringUtils.isEmpty(nullString)) {
-      return "\"\"";
-    }
- else {
-      return nullString;
-    }
-  }
+  if (value == null)   return format.nullString();
+  if ("".equals(value.toString()))   return format.emptyString();
   String result=format0(value,false,false);
   if (StringUtils.containsAny(result,',',';','\t','"','\n','\r','\'','\\')) {
     return "\"" + result.replace("\\","\\\\").replace("\"","\"\"") + "\"";

@@ -1,4 +1,5 @@
 String delimiter
 String nullString
+String emptyString
 String newline
 boolean header
