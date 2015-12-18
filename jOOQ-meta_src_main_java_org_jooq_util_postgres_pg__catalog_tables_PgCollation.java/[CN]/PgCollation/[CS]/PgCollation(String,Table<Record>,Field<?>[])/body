@@ -1,0 +1,3 @@
+{
+  super(alias,PgCatalog.PG_CATALOG,aliased,parameters,"");
+}

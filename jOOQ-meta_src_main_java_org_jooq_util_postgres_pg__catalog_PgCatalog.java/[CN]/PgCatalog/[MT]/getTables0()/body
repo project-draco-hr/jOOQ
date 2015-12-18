@@ -1,3 +1,3 @@
 {
-  return Arrays.<Table<?>>asList(PgAttribute.PG_ATTRIBUTE,PgClass.PG_CLASS,PgConstraint.PG_CONSTRAINT,PgCursor.PG_CURSOR,PgDescription.PG_DESCRIPTION,PgEnum.PG_ENUM,PgInherits.PG_INHERITS,PgNamespace.PG_NAMESPACE,PgProc.PG_PROC,PgType.PG_TYPE);
+  return Arrays.<Table<?>>asList(PgAttrdef.PG_ATTRDEF,PgAttribute.PG_ATTRIBUTE,PgClass.PG_CLASS,PgCollation.PG_COLLATION,PgConstraint.PG_CONSTRAINT,PgCursor.PG_CURSOR,PgDescription.PG_DESCRIPTION,PgEnum.PG_ENUM,PgInherits.PG_INHERITS,PgNamespace.PG_NAMESPACE,PgProc.PG_PROC,PgType.PG_TYPE);
 }
