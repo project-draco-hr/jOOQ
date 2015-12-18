@@ -1,8 +1,0 @@
-{
-  for (  CustomType type : db.getConfiguredCustomTypes()) {
-    if (name.equals(type.getName())) {
-      return type;
-    }
-  }
-  return null;
-}

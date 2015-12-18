@@ -1,0 +1,16 @@
+{
+  String name=forcedType.getName();
+  if (StringUtils.isBlank(forcedType.getUserType())) {
+    if (name != null) {
+      for (      CustomType type : db.getConfiguredCustomTypes()) {
+        if (name.equals(type.getName())) {
+          return type;
+        }
+      }
+    }
+  }
+ else {
+    return new CustomType().withBinding(forcedType.getBinding()).withConverter(forcedType.getConverter()).withName(name).withType(forcedType.getUserType());
+  }
+  return null;
+}
