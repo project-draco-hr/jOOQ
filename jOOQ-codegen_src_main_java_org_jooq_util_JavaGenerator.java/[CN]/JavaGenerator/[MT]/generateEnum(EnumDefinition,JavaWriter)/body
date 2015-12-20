@@ -3,7 +3,7 @@
   final List<String> interfaces=out.ref(getStrategy().getJavaClassImplements(e,Mode.ENUM));
   printPackage(out,e);
   generateEnumClassJavadoc(e,out);
-  printClassAnnotations(out,e.getSchema().getCatalog());
+  printClassAnnotations(out,e.getSchema());
   interfaces.add(out.ref(EnumType.class));
   out.println("public enum %s[[before= implements ][%s]] {",className,interfaces);
   List<String> literals=e.getLiterals();

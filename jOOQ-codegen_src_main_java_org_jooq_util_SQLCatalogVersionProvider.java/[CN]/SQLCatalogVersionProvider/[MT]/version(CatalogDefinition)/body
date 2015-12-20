@@ -1,0 +1,3 @@
+{
+  return "" + DSL.using(new DefaultConfiguration().set(connection).set(new Settings().withStatementType(STATIC_STATEMENT))).fetchValue(sql.replace(":catalog_name","?"),param("catalog_name",catalog.getInputName()));
+}

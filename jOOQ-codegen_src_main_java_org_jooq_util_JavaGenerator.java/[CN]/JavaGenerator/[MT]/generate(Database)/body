@@ -1,5 +1,6 @@
 {
   this.isoDate=DatatypeConverter.printDateTime(Calendar.getInstance(TimeZone.getTimeZone("UTC")));
+  this.schemaVersions=new LinkedHashMap<SchemaDefinition,String>();
   this.catalogVersions=new LinkedHashMap<CatalogDefinition,String>();
   this.database=db;
   this.database.addFilter(new AvoidAmbiguousClassesFilter());
@@ -30,7 +31,7 @@
   log.info("----------------------------------------------------------");
   log.info("  strategy",strategy.delegate.getClass());
   log.info("  deprecated",generateDeprecated());
-  log.info("  generated annotation",generateGeneratedAnnotation() + ((!generateGeneratedAnnotation && useSchemaVersionProvider) ? " (forced to true because of <schemaVersionProvider/>)" : ""));
+  log.info("  generated annotation",generateGeneratedAnnotation() + ((!generateGeneratedAnnotation && (useSchemaVersionProvider || useCatalogVersionProvider)) ? " (forced to true because of <schemaVersionProvider/> or <catalogVersionProvider/>)" : ""));
   log.info("  JPA annotations",generateJPAAnnotations());
   log.info("  validation annotations",generateValidationAnnotations());
   log.info("  instance fields",generateInstanceFields());

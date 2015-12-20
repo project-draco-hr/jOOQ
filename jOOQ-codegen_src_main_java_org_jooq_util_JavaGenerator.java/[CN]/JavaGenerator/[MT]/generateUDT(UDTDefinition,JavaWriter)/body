@@ -1,5 +1,4 @@
 {
-  final CatalogDefinition catalog=udt.getCatalog();
   final SchemaDefinition schema=udt.getSchema();
   final String className=getStrategy().getJavaClassName(udt);
   final String recordType=out.ref(getStrategy().getFullJavaClassName(udt,Mode.RECORD));
@@ -20,7 +19,7 @@
     out.println();
   }
   generateUDTClassJavadoc(udt,out);
-  printClassAnnotations(out,catalog);
+  printClassAnnotations(out,schema);
   if (udt.getRoutines().size() > 0) {
     interfaces.add(out.ref(Package.class));
   }

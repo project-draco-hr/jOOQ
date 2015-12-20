@@ -4,8 +4,8 @@
     log.info("No schema version is applied for schema " + schema.getInputName() + ". Regenerating.");
   }
  else {
-    catalogVersions.put(schema.getCatalog(),newVersion);
-    String oldVersion=readVersion(getStrategy().getFile(schema));
+    schemaVersions.put(schema,newVersion);
+    String oldVersion=readVersion(getStrategy().getFile(schema),"schema");
     if (StringUtils.isBlank(oldVersion)) {
       log.info("No previous version available for schema " + schema.getInputName() + ". Regenerating.");
     }

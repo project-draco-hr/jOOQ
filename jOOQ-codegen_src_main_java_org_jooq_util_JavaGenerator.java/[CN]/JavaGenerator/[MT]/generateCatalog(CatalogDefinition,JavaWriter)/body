@@ -12,7 +12,7 @@
     out.println();
   }
   generateCatalogClassJavadoc(catalog,out);
-  printClassAnnotations(out,catalog);
+  printClassAnnotations(out,null,catalog);
   if (scala) {
     out.println("class %s extends %s(\"%s\")[[before= with ][separator= with ][%s]] {",className,CatalogImpl.class,catalog.getOutputName(),interfaces);
   }

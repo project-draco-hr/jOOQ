@@ -1,4 +1,22 @@
 {
+  String newVersion=catalog.getDatabase().getCatalogVersionProvider().version(catalog);
+  if (StringUtils.isBlank(newVersion)) {
+    log.info("No schema version is applied for catalog " + catalog.getInputName() + ". Regenerating.");
+  }
+ else {
+    catalogVersions.put(catalog,newVersion);
+    String oldVersion=readVersion(getStrategy().getFile(catalog),"catalog");
+    if (StringUtils.isBlank(oldVersion)) {
+      log.info("No previous version available for catalog " + catalog.getInputName() + ". Regenerating.");
+    }
+ else     if (!oldVersion.equals(newVersion)) {
+      log.info("Existing version " + oldVersion + " is not up to date with "+ newVersion+ " for catalog "+ catalog.getInputName()+ ". Regenerating.");
+    }
+ else {
+      log.info("Existing version " + oldVersion + " is up to date with "+ newVersion+ " for catalog "+ catalog.getInputName()+ ". Ignoring catalog.");
+      return;
+    }
+  }
   generateCatalog(catalog);
   log.info("Generating schemata","Total: " + catalog.getSchemata().size());
   for (  SchemaDefinition schema : catalog.getSchemata()) {

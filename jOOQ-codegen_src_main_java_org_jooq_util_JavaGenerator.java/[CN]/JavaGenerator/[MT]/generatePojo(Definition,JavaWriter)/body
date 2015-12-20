@@ -9,7 +9,7 @@
   printPackage(out,tableOrUDT,Mode.POJO);
   if (tableOrUDT instanceof TableDefinition)   generatePojoClassJavadoc((TableDefinition)tableOrUDT,out);
  else   generateUDTPojoClassJavadoc((UDTDefinition)tableOrUDT,out);
-  printClassAnnotations(out,tableOrUDT.getSchema().getCatalog());
+  printClassAnnotations(out,tableOrUDT.getSchema());
   if (tableOrUDT instanceof TableDefinition)   printTableJPAAnnotation(out,(TableDefinition)tableOrUDT);
   int maxLength=0;
   for (  TypedElementDefinition<?> column : getTypedElements(tableOrUDT)) {

@@ -3,7 +3,7 @@
   JavaWriter out=newJavaWriter(new File(getStrategy().getFile(schema).getParentFile(),"UDTs.java"));
   printPackage(out,schema);
   printClassJavadoc(out,"Convenience access to all UDTs in " + schema.getOutputName());
-  printClassAnnotations(out,schema.getCatalog());
+  printClassAnnotations(out,schema);
   if (scala)   out.println("object UDTs {");
  else   out.println("public class UDTs {");
   for (  UDTDefinition udt : database.getUDTs(schema)) {

@@ -31,7 +31,7 @@
   tType=out.ref(tType);
   printPackage(out,table,Mode.DAO);
   generateDaoClassJavadoc(table,out);
-  printClassAnnotations(out,table.getSchema().getCatalog());
+  printClassAnnotations(out,table.getSchema());
   if (generateSpringAnnotations())   out.println("@%s",out.ref("org.springframework.stereotype.Repository"));
   if (scala)   out.println("class %s(configuration : %s) extends %s[%s, %s, %s](%s, classOf[%s], configuration)[[before= with ][separator= with ][%s]] {",className,Configuration.class,daoImpl,tableRecord,pType,tType,tableIdentifier,pType,interfaces);
  else   out.println("public class %s extends %s<%s, %s, %s>[[before= implements ][%s]] {",className,daoImpl,tableRecord,pType,tType,interfaces);

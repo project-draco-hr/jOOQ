@@ -13,7 +13,7 @@
     out.println();
   }
   generateSchemaClassJavadoc(schema,out);
-  printClassAnnotations(out,schema.getCatalog());
+  printClassAnnotations(out,schema);
   if (scala) {
     out.println("class %s extends %s(\"%s\", %s)[[before= with ][separator= with ][%s]] {",className,SchemaImpl.class,schema.getOutputName(),catalogId,interfaces);
   }

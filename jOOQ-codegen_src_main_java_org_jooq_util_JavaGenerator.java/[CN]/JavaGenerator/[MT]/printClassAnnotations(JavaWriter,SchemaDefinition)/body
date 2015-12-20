@@ -1,0 +1,3 @@
+{
+  printClassAnnotations(out,schema,schema.getCatalog());
+}
