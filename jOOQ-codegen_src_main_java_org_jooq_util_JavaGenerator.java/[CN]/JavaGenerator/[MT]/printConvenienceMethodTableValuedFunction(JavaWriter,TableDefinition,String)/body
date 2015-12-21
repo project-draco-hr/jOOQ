@@ -1,0 +1,25 @@
+{
+  if (function.getParameters().size() > 254) {
+    log.warn("Too many parameters","Function " + function + " has more than 254 in parameters. Skipping generation of convenience method.");
+    return;
+  }
+  final String className=out.ref(getStrategy().getFullJavaClassName(function));
+  final String recordClassName=out.ref(getStrategy().getFullJavaClassName(function,Mode.RECORD));
+  final String configurationArgument=disambiguateJavaMemberName(function.getParameters(),"configuration");
+  out.tab(1).javadoc("Call <code>%s</code>.",function.getQualifiedOutputName());
+  out.tab(1).print("public static %s<%s> %s(%s %s",Result.class,recordClassName,javaMethodName,Configuration.class,configurationArgument);
+  if (!function.getParameters().isEmpty())   out.print(", ");
+  printParameterDeclarations(out,function,false);
+  out.println(") {");
+  out.tab(2).print("return %s.using(%s).selectFrom(%s.call(",DSL.class,configurationArgument,out.ref(getStrategy().getFullJavaIdentifier(function),2));
+  String separator="";
+  for (  ParameterDefinition parameter : function.getParameters()) {
+    out.print(separator);
+    out.print("%s",getStrategy().getJavaMemberName(parameter));
+    separator=", ";
+  }
+  out.print(")).fetch()");
+  if (scala)   ;
+ else   out.println(";");
+  out.tab(1).println("}");
+}
