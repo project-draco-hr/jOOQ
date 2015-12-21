@@ -5,12 +5,17 @@
   sb.append("\ndeclaring    [");
   if (declareFields) {
     sb.append("fields");
+    if (declareAliases)     sb.append(" and aliases");
   }
  else   if (declareTables) {
     sb.append("tables");
+    if (declareAliases)     sb.append(" and aliases");
   }
  else   if (declareWindows) {
     sb.append("windows");
+  }
+ else   if (declareCTE) {
+    sb.append("cte");
   }
  else {
     sb.append("-");

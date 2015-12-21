@@ -1,4 +1,5 @@
 {
   this.declareTables=d;
+  declareAliases(d);
   return (C)this;
 }

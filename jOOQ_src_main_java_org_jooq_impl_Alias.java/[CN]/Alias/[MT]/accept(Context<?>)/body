@@ -1,5 +1,6 @@
 {
-  if (context.declareFields() || context.declareTables()) {
+  if (context.declareAliases() && (context.declareFields() || context.declareTables())) {
+    context.declareAliases(false);
     SQLDialect family=context.family();
     boolean emulatedDerivedColumnList=false;
     if (fieldAliases != null && asList(CUBRID,FIREBIRD).contains(family) && (wrapped instanceof TableImpl || wrapped instanceof CommonTableExpressionImpl)) {
@@ -46,6 +47,7 @@ case POSTGRES:
       }
   }
 }
+context.declareAliases(true);
 }
  else {
 context.literal(alias);

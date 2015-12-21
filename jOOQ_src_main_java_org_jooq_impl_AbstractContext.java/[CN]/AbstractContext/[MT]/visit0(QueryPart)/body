@@ -2,14 +2,18 @@
   if (part != null) {
     QueryPartInternal internal=(QueryPartInternal)part;
     if (declareFields() && !internal.declaresFields()) {
+      boolean aliases=declareAliases();
       declareFields(false);
       visit0(internal);
       declareFields(true);
+      declareAliases(aliases);
     }
  else     if (declareTables() && !internal.declaresTables()) {
+      boolean aliases=declareAliases();
       declareTables(false);
       visit0(internal);
       declareTables(true);
+      declareAliases(aliases);
     }
  else     if (declareWindows() && !internal.declaresWindows()) {
       declareWindows(false);
