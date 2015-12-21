@@ -7,7 +7,7 @@
     return;
   }
   final String className=out.ref(getStrategy().getFullJavaClassName(function));
-  out.tab(1).javadoc("Get <code>%s</code> as a field",function.getQualifiedOutputName());
+  out.tab(1).javadoc("Get <code>%s</code> as a table.",function.getQualifiedOutputName());
   out.tab(1).print("public static %s %s(",className,javaMethodName);
   printParameterDeclarations(out,function,parametersAsField);
   out.println(") {");

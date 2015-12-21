@@ -8,7 +8,7 @@
   }
   final String className=out.ref(getStrategy().getFullJavaClassName(function));
   final String localVar=disambiguateJavaMemberName(function.getInParameters(),"f");
-  out.tab(1).javadoc("Get <code>%s</code> as a field",function.getQualifiedOutputName());
+  out.tab(1).javadoc("Get <code>%s</code> as a field.",function.getQualifiedOutputName());
   if (scala)   out.tab(1).print("def %s(",getStrategy().getJavaMethodName(function,Mode.DEFAULT));
  else   out.tab(1).print("public static %s<%s> %s(",function.isAggregate() ? AggregateFunction.class : Field.class,out.ref(getJavaType(function.getReturnType())),getStrategy().getJavaMethodName(function,Mode.DEFAULT));
   String separator="";
