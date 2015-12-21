@@ -3,7 +3,7 @@
     SQLDialect family=context.family();
     boolean emulatedDerivedColumnList=false;
     if (fieldAliases != null && asList(CUBRID,FIREBIRD).contains(family) && (wrapped instanceof TableImpl || wrapped instanceof CommonTableExpressionImpl)) {
-      @SuppressWarnings("unchecked") Select<Record> select=select(list(field("*"))).from(((Table<?>)wrapped).as(alias));
+      Select<Record> select=select(list(field("*"))).from(((Table<?>)wrapped).as(alias));
       context.sql('(').formatIndentStart().formatNewLine().visit(select).formatIndentEnd().formatNewLine().sql(')');
     }
  else     if (fieldAliases != null && asList(H2,MARIADB,MYSQL,SQLITE).contains(family)) {
