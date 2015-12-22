@@ -1,3 +1,3 @@
 {
-  this.fullyQualifiedTypes=fullyQualifiedTypes;
+  setGenerateFullyQualifiedTypes(fullyQualifiedTypes);
 }

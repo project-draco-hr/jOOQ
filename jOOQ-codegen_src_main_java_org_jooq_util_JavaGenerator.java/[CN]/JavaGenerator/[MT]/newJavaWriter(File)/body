@@ -1,4 +1,4 @@
 {
   if (scala)   file=new File(file.getParentFile(),file.getName().replace(".java",".scala"));
-  return new JavaWriter(file,fullyQualifiedTypes());
+  return new JavaWriter(file,generateFullyQualifiedTypes());
 }
