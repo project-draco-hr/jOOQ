@@ -1,0 +1,9 @@
+{
+  try {
+    log.debug("setting read only",readOnly);
+    connection.setReadOnly(readOnly);
+  }
+ catch (  Exception e) {
+    throw new DataAccessException("Cannot set readOnly",e);
+  }
+}
