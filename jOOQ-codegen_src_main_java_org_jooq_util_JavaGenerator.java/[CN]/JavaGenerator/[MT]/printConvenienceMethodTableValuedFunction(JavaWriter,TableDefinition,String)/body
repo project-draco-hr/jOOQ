@@ -3,7 +3,6 @@
     log.warn("Too many parameters","Function " + function + " has more than 254 in parameters. Skipping generation of convenience method.");
     return;
   }
-  final String className=out.ref(getStrategy().getFullJavaClassName(function));
   final String recordClassName=out.ref(getStrategy().getFullJavaClassName(function,Mode.RECORD));
   final String configurationArgument=disambiguateJavaMemberName(function.getParameters(),"configuration");
   out.tab(1).javadoc("Call <code>%s</code>.",function.getQualifiedOutputName());

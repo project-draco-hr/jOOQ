@@ -1,6 +1,6 @@
 {
   List<TableDefinition> result=new ArrayList<TableDefinition>();
-  for (  Record2<String,Boolean> record : create().select(RDB$RELATIONS.RDB$RELATION_NAME.trim(),inline(false).as("table_valued_function")).from(RDB$RELATIONS).unionAll(select(RDB$PROCEDURES.RDB$PROCEDURE_NAME.trim(),inline(true).as("table_valued_function")).from(RDB$PROCEDURES).where(RDB$PROCEDURES.RDB$PROCEDURE_TYPE.eq((short)1))).orderBy(1)) {
+  for (  Record2<String,Boolean> record : create().select(RDB$RELATIONS.RDB$RELATION_NAME.trim(),inline(false).as("table_valued_function")).from(RDB$RELATIONS).unionAll(select(RDB$PROCEDURES.RDB$PROCEDURE_NAME.trim(),inline(true).as("table_valued_function")).from(RDB$PROCEDURES).where(RDB$PROCEDURES.RDB$PROCEDURE_TYPE.eq((short)1)).and(tableValuedFunctions() ? trueCondition() : falseCondition())).orderBy(1)) {
     if (record.value2()) {
       result.add(new FirebirdTableValuedFunction(getSchemata().get(0),record.value1(),""));
     }

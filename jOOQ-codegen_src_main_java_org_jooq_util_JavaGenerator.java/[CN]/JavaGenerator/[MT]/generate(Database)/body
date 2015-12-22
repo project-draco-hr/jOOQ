@@ -5,6 +5,7 @@
   this.database=db;
   this.database.addFilter(new AvoidAmbiguousClassesFilter());
   this.database.setIncludeRelations(generateRelations());
+  this.database.setTableValuedFunctions(generateTableValuedFunctions());
   String url="";
   try {
     Connection connection=database.getConnection();
@@ -41,6 +42,7 @@
   log.info("  interfaces",generateInterfaces());
   log.info("  daos",generateDaos());
   log.info("  relations",generateRelations() + ((!generateRelations && generateDaos) ? " (forced to true because of <daos/>)" : ""));
+  log.info("  table-valued functions",generateTableValuedFunctions());
   log.info("  global references",generateGlobalObjectReferences());
   log.info("----------------------------------------------------------");
   if (!generateInstanceFields()) {
