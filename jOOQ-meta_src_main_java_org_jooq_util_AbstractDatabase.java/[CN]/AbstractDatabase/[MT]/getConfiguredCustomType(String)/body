@@ -1,4 +1,5 @@
 {
+  if (typeName == null)   return null;
   Iterator<CustomType> it1=configuredCustomTypes.iterator();
   while (it1.hasNext()) {
     CustomType type=it1.next();
@@ -37,7 +38,7 @@
         continue;
       }
     }
-    if (StringUtils.equals(type.getUserType(),typeName)) {
+    if (type.getUserType() != null && StringUtils.equals(type.getUserType(),typeName)) {
       return customType(this,type);
     }
   }
