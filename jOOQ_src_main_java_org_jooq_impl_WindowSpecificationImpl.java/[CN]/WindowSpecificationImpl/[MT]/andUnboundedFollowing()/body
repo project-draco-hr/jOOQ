@@ -1,4 +1,4 @@
 {
-  rowsEnd=Integer.MAX_VALUE;
+  frameEnd=Integer.MAX_VALUE;
   return this;
 }

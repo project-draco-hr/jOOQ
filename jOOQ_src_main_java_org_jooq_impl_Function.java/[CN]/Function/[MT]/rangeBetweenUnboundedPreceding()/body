@@ -1,0 +1,4 @@
+{
+  windowSpecification.rowsBetweenUnboundedPreceding();
+  return this;
+}

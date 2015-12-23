@@ -12,17 +12,17 @@
     ctx.sql(glue).keyword("order by").sql(' ').visit(orderBy);
     glue=" ";
   }
-  if (rowsStart != null) {
+  if (frameStart != null) {
     ctx.sql(glue);
-    ctx.keyword("rows").sql(' ');
-    if (rowsEnd != null) {
+    ctx.keyword(frameUnits.keyword).sql(' ');
+    if (frameEnd != null) {
       ctx.keyword("between").sql(' ');
-      toSQLRows(ctx,rowsStart);
+      toSQLRows(ctx,frameStart);
       ctx.sql(' ').keyword("and").sql(' ');
-      toSQLRows(ctx,rowsEnd);
+      toSQLRows(ctx,frameEnd);
     }
  else {
-      toSQLRows(ctx,rowsStart);
+      toSQLRows(ctx,frameStart);
     }
     glue=" ";
   }

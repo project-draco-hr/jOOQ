@@ -1,0 +1,4 @@
+{
+  windowSpecification.rowsFollowing(number);
+  return this;
+}

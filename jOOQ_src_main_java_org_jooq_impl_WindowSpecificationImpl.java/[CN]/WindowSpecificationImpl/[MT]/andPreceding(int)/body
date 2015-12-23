@@ -1,4 +1,4 @@
 {
-  rowsEnd=-number;
+  frameEnd=-number;
   return this;
 }

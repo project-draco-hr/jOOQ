@@ -1,4 +1,4 @@
 {
-  rowsEnd=Integer.MIN_VALUE;
+  frameEnd=Integer.MIN_VALUE;
   return this;
 }

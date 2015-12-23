@@ -1,4 +1,5 @@
 {
-  rowsStart=0;
+  frameUnits=ROWS;
+  frameStart=0;
   return this;
 }

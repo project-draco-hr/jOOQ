@@ -1,0 +1,4 @@
+{
+  rangeUnboundedFollowing();
+  return this;
+}

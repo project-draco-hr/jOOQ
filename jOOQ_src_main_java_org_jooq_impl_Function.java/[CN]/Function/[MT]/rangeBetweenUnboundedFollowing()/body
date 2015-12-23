@@ -1,0 +1,4 @@
+{
+  windowSpecification.rowsBetweenUnboundedFollowing();
+  return this;
+}

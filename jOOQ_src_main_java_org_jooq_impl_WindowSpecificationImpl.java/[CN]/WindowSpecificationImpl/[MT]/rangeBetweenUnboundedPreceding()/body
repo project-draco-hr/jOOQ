@@ -1,0 +1,4 @@
+{
+  rangeUnboundedPreceding();
+  return this;
+}

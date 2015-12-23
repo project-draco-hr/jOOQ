@@ -1,0 +1,4 @@
+{
+  rangeFollowing(number);
+  return this;
+}

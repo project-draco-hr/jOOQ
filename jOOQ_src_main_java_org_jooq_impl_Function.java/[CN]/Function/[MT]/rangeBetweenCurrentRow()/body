@@ -1,0 +1,4 @@
+{
+  windowSpecification.rowsBetweenCurrentRow();
+  return this;
+}

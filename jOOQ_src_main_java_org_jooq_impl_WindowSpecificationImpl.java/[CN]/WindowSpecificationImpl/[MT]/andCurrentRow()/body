@@ -1,4 +1,4 @@
 {
-  rowsEnd=0;
+  frameEnd=0;
   return this;
 }

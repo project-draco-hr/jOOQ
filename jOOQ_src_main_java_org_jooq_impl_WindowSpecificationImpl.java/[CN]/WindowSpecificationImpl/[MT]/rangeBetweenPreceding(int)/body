@@ -1,0 +1,4 @@
+{
+  rangePreceding(number);
+  return this;
+}

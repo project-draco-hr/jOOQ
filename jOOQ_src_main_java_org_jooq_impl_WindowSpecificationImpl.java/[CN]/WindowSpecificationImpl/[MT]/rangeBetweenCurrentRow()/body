@@ -1,0 +1,4 @@
+{
+  rangeCurrentRow();
+  return this;
+}

@@ -1,4 +1,5 @@
 {
-  rowsStart=Integer.MIN_VALUE;
+  frameUnits=ROWS;
+  frameStart=Integer.MIN_VALUE;
   return this;
 }
