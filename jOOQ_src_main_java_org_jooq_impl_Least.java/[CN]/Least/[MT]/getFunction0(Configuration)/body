@@ -2,7 +2,7 @@
   if (getArguments().length == 1) {
     return (Field<T>)getArguments()[0];
   }
-switch (configuration.dialect().family()) {
+switch (configuration.family()) {
 case DERBY:
 {
       Field<T> first=(Field<T>)getArguments()[0];

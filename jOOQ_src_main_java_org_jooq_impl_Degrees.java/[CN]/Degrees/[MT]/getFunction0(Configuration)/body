@@ -1,5 +1,5 @@
 {
-switch (configuration.dialect().family()) {
+switch (configuration.family()) {
 case FIREBIRD:
 case SQLITE:
     return argument.cast(BigDecimal.class).mul(inline(180)).div(pi());

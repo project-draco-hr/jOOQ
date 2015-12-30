@@ -1,6 +1,6 @@
 {
   String functionName="substring";
-switch (configuration.dialect().family()) {
+switch (configuration.family()) {
 case FIREBIRD:
 {
       if (getArguments().length == 2) {

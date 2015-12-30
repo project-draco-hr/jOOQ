@@ -1,5 +1,5 @@
 {
-switch (ctx.configuration().dialect().family()) {
+switch (ctx.family()) {
 case FIREBIRD:
 case SQLITE:
 {

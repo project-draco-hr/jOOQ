@@ -1,5 +1,5 @@
 {
-switch (configuration.dialect()) {
+switch (configuration.family()) {
 case FIREBIRD:
     return field("{trim}({trailing} {from} {0})",SQLDataType.VARCHAR,argument);
 default :

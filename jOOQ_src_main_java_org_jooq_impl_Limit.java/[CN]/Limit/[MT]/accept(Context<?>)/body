@@ -30,6 +30,8 @@ case CUBRID:
   break;
 }
 case FIREBIRD:
+case FIREBIRD_2_5:
+case FIREBIRD_3_0:
 {
 context.castMode(NEVER).formatSeparator().keyword("rows").sql(' ').visit(getLowerRownum().add(inline(1,SQLDataType.INTEGER))).sql(' ').keyword("to").sql(' ').visit(getUpperRownum()).castMode(castMode);
 break;

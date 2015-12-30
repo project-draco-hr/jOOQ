@@ -7,6 +7,8 @@ case CUBRID:
 case DERBY:
 result=DerbyDatabase.class;
 break;
+case FIREBIRD_2_5:
+case FIREBIRD_3_0:
 case FIREBIRD:
 result=FirebirdDatabase.class;
 break;

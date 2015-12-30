@@ -1,5 +1,5 @@
 {
-switch (configuration.dialect().family()) {
+switch (configuration.family()) {
 case FIREBIRD:
     return DSL.rpad(string,DSL.length(string).mul(count),string);
 case SQLITE:

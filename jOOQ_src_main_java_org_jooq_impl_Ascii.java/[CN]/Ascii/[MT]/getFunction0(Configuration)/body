@@ -1,5 +1,5 @@
 {
-switch (configuration.dialect()) {
+switch (configuration.family()) {
 case FIREBIRD:
     return field("{ascii_val}({0})",SQLDataType.INTEGER,string);
 case DERBY:

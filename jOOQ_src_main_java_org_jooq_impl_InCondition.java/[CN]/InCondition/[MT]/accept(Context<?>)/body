@@ -5,7 +5,7 @@
  else     ctx.visit(trueCondition());
   }
  else   if (list.size() > IN_LIMIT) {
-switch (ctx.configuration().dialect().family()) {
+switch (ctx.family()) {
 case FIREBIRD:
 {
         ctx.sql('(').formatIndentStart().formatNewLine();

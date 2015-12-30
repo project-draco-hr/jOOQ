@@ -7,7 +7,7 @@
   DataType<?> type1=left2.getDataType();
   boolean standardOverlaps=type0.isDateTime() && type1.isTemporal();
   boolean intervalOverlaps=type0.isDateTime() && (type1.isInterval() || type1.isNumeric());
-  if (!standardOverlaps || asList(CUBRID,DERBY,FIREBIRD,H2,MARIADB,MYSQL,SQLITE).contains(configuration.dialect().family())) {
+  if (!standardOverlaps || asList(CUBRID,DERBY,FIREBIRD,H2,MARIADB,MYSQL,SQLITE).contains(configuration.family())) {
     if (intervalOverlaps) {
       return (QueryPartInternal)right1.le(left1.add(left2)).and(left1.le(right1.add(right2)));
     }
