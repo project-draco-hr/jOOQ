@@ -1,4 +1,4 @@
 {
-  String escaped=comment.replace("*/","* /");
+  String escaped=comment.replace("/*","/ *").replace("*/","* /");
   printParagraph(out,escaped,indent + " * ");
 }
