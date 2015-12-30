@@ -2,13 +2,24 @@
   String sep1="";
   for (  ParameterDefinition parameter : function.getParameters()) {
     out.print(sep1);
-    if (parametersAsField) {
-      out.print("%s<%s>",Field.class,refExtendsNumberType(out,parameter.getType()));
+    if (scala) {
+      out.print("%s : ",getStrategy().getJavaMemberName(parameter));
+      if (parametersAsField) {
+        out.print("%s[%s]",Field.class,refExtendsNumberType(out,parameter.getType()));
+      }
+ else {
+        out.print(refNumberType(out,parameter.getType()));
+      }
     }
  else {
-      out.print(refNumberType(out,parameter.getType()));
+      if (parametersAsField) {
+        out.print("%s<%s>",Field.class,refExtendsNumberType(out,parameter.getType()));
+      }
+ else {
+        out.print(refNumberType(out,parameter.getType()));
+      }
+      out.print(" %s",getStrategy().getJavaMemberName(parameter));
     }
-    out.print(" %s",getStrategy().getJavaMemberName(parameter));
     sep1=", ";
   }
 }

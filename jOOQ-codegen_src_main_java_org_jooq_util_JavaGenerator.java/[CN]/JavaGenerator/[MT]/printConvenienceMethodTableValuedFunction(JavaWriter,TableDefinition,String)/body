@@ -6,11 +6,18 @@
   final String recordClassName=out.ref(getStrategy().getFullJavaClassName(function,Mode.RECORD));
   final String configurationArgument=disambiguateJavaMemberName(function.getParameters(),"configuration");
   out.tab(1).javadoc("Call <code>%s</code>.",function.getQualifiedOutputName());
-  out.tab(1).print("public static %s<%s> %s(%s %s",Result.class,recordClassName,javaMethodName,Configuration.class,configurationArgument);
+  if (scala)   out.tab(1).print("def %s(%s : %s",javaMethodName,configurationArgument,Configuration.class);
+ else   out.tab(1).print("public static %s<%s> %s(%s %s",Result.class,recordClassName,javaMethodName,Configuration.class,configurationArgument);
   if (!function.getParameters().isEmpty())   out.print(", ");
   printParameterDeclarations(out,function,false);
-  out.println(") {");
-  out.tab(2).print("return %s.using(%s).selectFrom(%s.call(",DSL.class,configurationArgument,out.ref(getStrategy().getFullJavaIdentifier(function),2));
+  if (scala) {
+    out.println(") : %s[%s] = {",Result.class,recordClassName);
+    out.tab(2).print("%s.using(%s).selectFrom(%s.call(",DSL.class,configurationArgument,out.ref(getStrategy().getFullJavaIdentifier(function),2));
+  }
+ else {
+    out.println(") {");
+    out.tab(2).print("return %s.using(%s).selectFrom(%s.call(",DSL.class,configurationArgument,out.ref(getStrategy().getFullJavaIdentifier(function),2));
+  }
   String separator="";
   for (  ParameterDefinition parameter : function.getParameters()) {
     out.print(separator);
@@ -18,7 +25,7 @@
     separator=", ";
   }
   out.print(")).fetch()");
-  if (scala)   ;
+  if (scala)   out.println();
  else   out.println(";");
   out.tab(1).println("}");
 }

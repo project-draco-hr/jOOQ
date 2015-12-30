@@ -11,12 +11,13 @@
     final String id=getStrategy().getJavaIdentifier(table);
     final String fullId=getStrategy().getFullJavaIdentifier(table);
     final String comment=!StringUtils.isBlank(table.getComment()) ? table.getComment() : "The table <code>" + table.getQualifiedOutputName() + "</code>.";
-    out.tab(1).javadoc(comment);
-    if (scala)     out.tab(1).println("val %s = %s",id,fullId);
- else     out.tab(1).println("public static final %s %s = %s;",className,id,fullId);
-    if (table.isTableValuedFunction()) {
-      printTableValuedFunction(out,table,getStrategy().getJavaIdentifier(table));
+    if (scala && table.isTableValuedFunction() && table.getParameters().isEmpty())     ;
+ else {
+      out.tab(1).javadoc(comment);
+      if (scala)       out.tab(1).println("val %s = %s",id,fullId);
+ else       out.tab(1).println("public static final %s %s = %s;",className,id,fullId);
     }
+    if (table.isTableValuedFunction())     printTableValuedFunction(out,table,getStrategy().getJavaIdentifier(table));
   }
   out.println("}");
   closeJavaWriter(out);

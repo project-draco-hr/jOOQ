@@ -77,7 +77,7 @@
   out.println();
   if (scala) {
     out.tab(1).println("private def this(alias : %s, aliased : %s[%s]) = {",String.class,Table.class,recordType);
-    if (table.isTableValuedFunction())     out.tab(2).println("this(alias, aliased, new %s[%s])",Field.class,table.getParameters().size());
+    if (table.isTableValuedFunction())     out.tab(2).println("this(alias, aliased, new Array[ %s[_] ](%s))",Field.class,table.getParameters().size());
  else     out.tab(2).println("this(alias, aliased, null)");
     out.tab(1).println("}");
   }
@@ -245,23 +245,44 @@
     for (    boolean parametersAsField : new boolean[]{false,true}) {
       if (parametersAsField && table.getParameters().size() == 0)       break;
       out.tab(1).javadoc("Call this table-valued function");
-      out.tab(1).print("public %s call(",className);
-      printParameterDeclarations(out,table,parametersAsField);
-      out.println(") {");
-      out.tab(2).print("return new %s(getName(), null, new %s[] { ",className,Field.class);
-      String separator="";
-      for (      ParameterDefinition parameter : table.getParameters()) {
-        out.print(separator);
-        if (parametersAsField) {
-          out.print("%s",getStrategy().getJavaMemberName(parameter));
-        }
+      if (scala) {
+        out.tab(1).print("def call(");
+        printParameterDeclarations(out,table,parametersAsField);
+        out.println(") : %s = {",className);
+        out.tab(2).print("return new %s(getName(), null, Array(",className);
+        String separator="";
+        for (        ParameterDefinition parameter : table.getParameters()) {
+          out.print(separator);
+          if (parametersAsField) {
+            out.print("%s",getStrategy().getJavaMemberName(parameter));
+          }
  else {
-          out.print("%s.val(%s)",DSL.class,getStrategy().getJavaMemberName(parameter));
+            out.print("%s.value(%s)",DSL.class,getStrategy().getJavaMemberName(parameter));
+          }
+          separator=", ";
         }
-        separator=", ";
+        out.println("));");
+        out.tab(1).println("}");
       }
-      out.println(" });");
-      out.tab(1).println("}");
+ else {
+        out.tab(1).print("public %s call(",className);
+        printParameterDeclarations(out,table,parametersAsField);
+        out.println(") {");
+        out.tab(2).print("return new %s(getName(), null, new %s[] { ",className,Field.class);
+        String separator="";
+        for (        ParameterDefinition parameter : table.getParameters()) {
+          out.print(separator);
+          if (parametersAsField) {
+            out.print("%s",getStrategy().getJavaMemberName(parameter));
+          }
+ else {
+            out.print("%s.val(%s)",DSL.class,getStrategy().getJavaMemberName(parameter));
+          }
+          separator=", ";
+        }
+        out.println(" });");
+        out.tab(1).println("}");
+      }
     }
   }
   generateTableClassFooter(table,out);

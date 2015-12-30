@@ -8,10 +8,17 @@
   }
   final String className=out.ref(getStrategy().getFullJavaClassName(function));
   out.tab(1).javadoc("Get <code>%s</code> as a table.",function.getQualifiedOutputName());
-  out.tab(1).print("public static %s %s(",className,javaMethodName);
+  if (scala)   out.tab(1).print("def %s(",javaMethodName);
+ else   out.tab(1).print("public static %s %s(",className,javaMethodName);
   printParameterDeclarations(out,function,parametersAsField);
-  out.println(") {");
-  out.tab(2).print("return %s.call(",out.ref(getStrategy().getFullJavaIdentifier(function),2));
+  if (scala) {
+    out.println(") : %s = {",className);
+    out.tab(2).print("%s.call(",out.ref(getStrategy().getFullJavaIdentifier(function),2));
+  }
+ else {
+    out.println(") {");
+    out.tab(2).print("return %s.call(",out.ref(getStrategy().getFullJavaIdentifier(function),2));
+  }
   String separator="";
   for (  ParameterDefinition parameter : function.getParameters()) {
     out.print(separator);
