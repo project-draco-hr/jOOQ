@@ -22,9 +22,33 @@
     out.printSerial();
     out.tab(1).javadoc("The reference instance of <code>%s</code>",schemaName);
     out.tab(1).println("public static final %s %s = new %s();",className,schemaId,className);
+    if (generateGlobalObjectReferences() && generateGlobalTableReferences()) {
+      for (      TableDefinition table : schema.getTables()) {
+        final String tableClassName=out.ref(getStrategy().getFullJavaClassName(table));
+        final String tableId=getStrategy().getJavaIdentifier(table);
+        final String tableFullId=getStrategy().getFullJavaIdentifier(table);
+        final String tableComment=!StringUtils.isBlank(table.getComment()) ? table.getComment() : "The table <code>" + table.getQualifiedOutputName() + "</code>.";
+        out.tab(1).javadoc(tableComment);
+        if (scala)         out.tab(1).println("val %s = %s",tableId,tableFullId);
+ else         out.tab(1).println("public final %s %s = %s;",tableClassName,tableId,tableFullId);
+        if (table.isTableValuedFunction()) {
+          printTableValuedFunction(out,table,getStrategy().getJavaIdentifier(table));
+        }
+      }
+    }
     out.tab(1).javadoc(NO_FURTHER_INSTANCES_ALLOWED);
     out.tab(1).println("private %s() {",className);
-    out.tab(2).println("super(\"%s\", %s);",schema.getOutputName(),catalogId);
+    out.tab(2).println("super(\"%s\", null);",schema.getOutputName());
+    out.tab(1).println("}");
+  }
+  out.println();
+  if (scala) {
+    out.tab(1).println("override def getCatalog : %s = %s",Catalog.class,catalogId);
+  }
+ else {
+    out.tab(1).overrideInherit();
+    out.tab(1).println("public %s getCatalog() {",Catalog.class);
+    out.tab(2).println("return %s;",catalogId);
     out.tab(1).println("}");
   }
   if (generateGlobalObjectReferences() && generateGlobalSequenceReferences()) {

@@ -21,6 +21,20 @@
     out.printSerial();
     out.tab(1).javadoc("The reference instance of <code>%s</code>",catalogName);
     out.tab(1).println("public static final %s %s = new %s();",className,catalogId,className);
+  }
+  if (generateGlobalObjectReferences()) {
+    for (    SchemaDefinition schema : catalog.getSchemata()) {
+      final String schemaClassName=out.ref(getStrategy().getFullJavaClassName(schema));
+      final String schemaId=getStrategy().getJavaIdentifier(schema);
+      final String schemaFullId=getStrategy().getFullJavaIdentifier(schema);
+      final String schemaComment=!StringUtils.isBlank(schema.getComment()) ? schema.getComment() : "The schema <code>" + schema.getQualifiedOutputName() + "</code>.";
+      out.tab(1).javadoc(schemaComment);
+      if (scala)       out.tab(1).println("val %s = %s",schemaId,schemaFullId);
+ else       out.tab(1).println("public final %s %s = %s;",schemaClassName,schemaId,schemaFullId);
+    }
+  }
+  if (scala)   ;
+ else {
     out.tab(1).javadoc(NO_FURTHER_INSTANCES_ALLOWED);
     out.tab(1).println("private %s() {",className);
     out.tab(2).println("super(\"%s\");",catalog.getOutputName());
