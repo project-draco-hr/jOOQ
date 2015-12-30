@@ -1,6 +1,6 @@
 {
   if (newline && indentTabs > 0) {
-    sb.append(StringUtils.leftPad("",indentTabs,'\t'));
+    for (int i=0; i < indentTabs; i++)     sb.append(tabString);
     newline=false;
     indentTabs=0;
   }
