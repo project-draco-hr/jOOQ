@@ -1,4 +1,5 @@
 {
+  string=string.replaceAll("\t",tabString);
   if (newline && indentTabs > 0) {
     for (int i=0; i < indentTabs; i++)     sb.append(tabString);
     newline=false;

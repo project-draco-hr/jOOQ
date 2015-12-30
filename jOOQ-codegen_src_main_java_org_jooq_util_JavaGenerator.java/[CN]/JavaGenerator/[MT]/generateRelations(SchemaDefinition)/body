@@ -74,21 +74,21 @@
     identityCounter++;
   }
   if (identityCounter > 0) {
-    out.println("\t}");
+    out.tab(1).println("}");
   }
   for (  UniqueKeyDefinition uniqueKey : allUniqueKeys) {
     printUniqueKey(out,uniqueKeyCounter,uniqueKey);
     uniqueKeyCounter++;
   }
   if (uniqueKeyCounter > 0) {
-    out.println("\t}");
+    out.tab(1).println("}");
   }
   for (  ForeignKeyDefinition foreignKey : allForeignKeys) {
     printForeignKey(out,foreignKeyCounter,foreignKey);
     foreignKeyCounter++;
   }
   if (foreignKeyCounter > 0) {
-    out.println("\t}");
+    out.tab(1).println("}");
   }
   out.println("}");
   closeJavaWriter(out);
