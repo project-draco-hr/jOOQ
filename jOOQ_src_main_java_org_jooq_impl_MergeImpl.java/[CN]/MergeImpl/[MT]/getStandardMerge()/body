@@ -1,0 +1,63 @@
+{
+  Table<?> src;
+  if (upsertSelect != null) {
+    List<Field<?>> v=new ArrayList<Field<?>>();
+    Row row=upsertSelect.fieldsRow();
+    for (int i=0; i < row.size(); i++) {
+      v.add(row.field(i).as("s" + (i + 1)));
+    }
+    src=DSL.select(v).from(upsertSelect).asTable("src");
+  }
+ else {
+    List<Field<?>> v=new ArrayList<Field<?>>();
+    for (int i=0; i < getUpsertValues().size(); i++) {
+      v.add(getUpsertValues().get(i).as("s" + (i + 1)));
+    }
+    src=DSL.select(v).asTable("src");
+  }
+  Set<Field<?>> onFields=new HashSet<Field<?>>();
+  Condition condition=null;
+  if (getUpsertKeys().isEmpty()) {
+    UniqueKey<?> key=table.getPrimaryKey();
+    if (key != null) {
+      onFields.addAll(key.getFields());
+      for (int i=0; i < key.getFields().size(); i++) {
+        Condition rhs=key.getFields().get(i).equal((Field)src.field(i));
+        if (condition == null) {
+          condition=rhs;
+        }
+ else {
+          condition=condition.and(rhs);
+        }
+      }
+    }
+ else {
+      throw new IllegalStateException("Cannot omit KEY() clause on a non-Updatable Table");
+    }
+  }
+ else {
+    for (int i=0; i < getUpsertKeys().size(); i++) {
+      int matchIndex=getUpsertFields().indexOf(getUpsertKeys().get(i));
+      if (matchIndex == -1) {
+        throw new IllegalStateException("Fields in KEY() clause must be part of the fields specified in MERGE INTO table (...)");
+      }
+      onFields.addAll(getUpsertKeys());
+      Condition rhs=getUpsertKeys().get(i).equal((Field)src.field(matchIndex));
+      if (condition == null) {
+        condition=rhs;
+      }
+ else {
+        condition=condition.and(rhs);
+      }
+    }
+  }
+  Map<Field<?>,Field<?>> update=new LinkedHashMap<Field<?>,Field<?>>();
+  Map<Field<?>,Field<?>> insert=new LinkedHashMap<Field<?>,Field<?>>();
+  for (int i=0; i < src.fieldsRow().size(); i++) {
+    if (!onFields.contains(getUpsertFields().get(i))) {
+      update.put(getUpsertFields().get(i),src.field(i));
+    }
+    insert.put(getUpsertFields().get(i),src.field(i));
+  }
+  return DSL.mergeInto(table).using(src).on(condition).whenMatchedThenUpdate().set(update).whenNotMatchedThenInsert().set(insert);
+}

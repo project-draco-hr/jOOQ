@@ -9,7 +9,7 @@ case POSTGRES:
   toPostgresInsertOnConflict(ctx);
 break;
 default :
-ctx.visit(getStandardMerge(ctx));
+ctx.visit(getStandardMerge());
 break;
 }
 }
