@@ -22,7 +22,7 @@
     out.tab(1).javadoc("The reference instance of <code>%s</code>",catalogName);
     out.tab(1).println("public static final %s %s = new %s();",className,catalogId,className);
   }
-  if (generateGlobalObjectReferences()) {
+  if (generateGlobalObjectReferences() && generateGlobalSchemaReferences()) {
     for (    SchemaDefinition schema : catalog.getSchemata()) {
       final String schemaClassName=out.ref(getStrategy().getFullJavaClassName(schema));
       final String schemaId=getStrategy().getJavaIdentifier(schema);

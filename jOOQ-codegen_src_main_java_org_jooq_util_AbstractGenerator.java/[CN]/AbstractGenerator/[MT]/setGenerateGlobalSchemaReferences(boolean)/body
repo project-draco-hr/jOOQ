@@ -1,0 +1,3 @@
+{
+  this.generateGlobalSchemaReferences=globalSchemaReferences;
+}

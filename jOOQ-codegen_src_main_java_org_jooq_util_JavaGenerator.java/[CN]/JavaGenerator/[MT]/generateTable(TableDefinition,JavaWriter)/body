@@ -19,7 +19,7 @@
   generateTableClassJavadoc(table,out);
   printClassAnnotations(out,schema);
   if (scala) {
-    out.println("class %s(alias : String, aliased : %s[%s], parameters : Array[ %s[_] ]) extends %s[%s](alias, null, aliased, parameters, \"%s\")[[before= with ][separator= with ][%s]] {",className,Table.class,recordType,Field.class,TableImpl.class,recordType,escapeString(comment),interfaces);
+    out.println("class %s(alias : String, aliased : %s[%s], parameters : Array[ %s[_] ]) extends %s[%s](alias, %s, aliased, parameters, \"%s\")[[before= with ][separator= with ][%s]] {",className,Table.class,recordType,Field.class,TableImpl.class,recordType,schemaId,escapeString(comment),interfaces);
   }
  else {
     out.println("public class %s extends %s<%s>[[before= implements ][%s]] {",className,TableImpl.class,recordType,interfaces);
