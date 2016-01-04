@@ -5,17 +5,20 @@
   if (g.getStrategy() == null)   g.setStrategy(new Strategy());
   if (g.getTarget() == null)   g.setTarget(new Target());
   try {
-    if (connection == null && j != null) {
-      Class<? extends Driver> driver=(Class<? extends Driver>)loadClass(driverClass(j));
-      Properties properties=properties(j.getProperties());
-      if (!properties.containsKey("user"))       properties.put("user",defaultString(defaultString(j.getUser(),j.getUsername())));
-      if (!properties.containsKey("password"))       properties.put("password",defaultString(j.getPassword()));
-      connection=driver.newInstance().connect(defaultString(j.getUrl()),properties);
+    if (connection == null) {
       close=true;
+      if (dataSource != null) {
+        connection=dataSource.getConnection();
+      }
+ else       if (j != null) {
+        Class<? extends Driver> driver=(Class<? extends Driver>)loadClass(driverClass(j));
+        Properties properties=properties(j.getProperties());
+        if (!properties.containsKey("user"))         properties.put("user",defaultString(defaultString(j.getUser(),j.getUsername())));
+        if (!properties.containsKey("password"))         properties.put("password",defaultString(j.getPassword()));
+        connection=driver.newInstance().connect(defaultString(j.getUrl()),properties);
+      }
     }
- else {
-      j=defaultIfNull(j,new Jdbc());
-    }
+    j=defaultIfNull(j,new Jdbc());
     Class<Generator> generatorClass=(Class<Generator>)(!isBlank(g.getName()) ? loadClass(trim(g.getName())) : JavaGenerator.class);
     Generator generator=generatorClass.newInstance();
     GeneratorStrategy strategy;
