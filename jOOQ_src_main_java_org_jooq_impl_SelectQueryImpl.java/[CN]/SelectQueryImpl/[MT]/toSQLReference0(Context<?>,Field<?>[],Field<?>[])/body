@@ -58,7 +58,7 @@ context.data(DATA_ROW_VALUE_EXPRESSION_PREDICATE_SUBQUERY,data);
 context.visit(getSelect1());
 }
 context.declareFields(false).end(SELECT_SELECT);
-if (!asList().contains(family)) {
+if (!context.subquery() && !asList().contains(family)) {
 context.start(SELECT_INTO);
 Table<?> actualInto=(Table<?>)context.data(DATA_SELECT_INTO_TABLE);
 if (actualInto == null) actualInto=into;
