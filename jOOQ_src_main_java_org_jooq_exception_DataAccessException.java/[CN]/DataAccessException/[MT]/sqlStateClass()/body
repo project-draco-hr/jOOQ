@@ -1,0 +1,5 @@
+{
+  Throwable t=getCause();
+  if (t instanceof SQLException)   return SQLStateClass.fromCode(((SQLException)t).getSQLState());
+  return SQLStateClass.NONE;
+}
