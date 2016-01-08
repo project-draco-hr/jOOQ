@@ -1,0 +1,3 @@
+Table<R> table
+String name
+TableField<R,?> fields

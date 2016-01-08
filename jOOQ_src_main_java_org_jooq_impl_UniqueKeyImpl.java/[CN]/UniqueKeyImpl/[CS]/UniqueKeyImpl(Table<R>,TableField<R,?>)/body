@@ -1,4 +1,3 @@
 {
-  super(table,fields);
-  this.references=new ArrayList<ForeignKey<?,R>>();
+  this(table,null,fields);
 }

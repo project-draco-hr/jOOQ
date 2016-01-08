@@ -1,0 +1,4 @@
+UniqueKey<U> key
+Table<R> table
+String name
+TableField<R,?> fields

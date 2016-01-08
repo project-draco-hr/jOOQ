@@ -1,7 +1,3 @@
 {
-  ForeignKey<R,U> result=new ReferenceImpl<R,U>(key,table,fields);
-  if (key instanceof UniqueKeyImpl) {
-    ((UniqueKeyImpl<U>)key).references.add(result);
-  }
-  return result;
+  return createForeignKey(key,table,null,fields);
 }

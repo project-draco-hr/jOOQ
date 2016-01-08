@@ -1,0 +1,4 @@
+{
+  super(table,name,fields);
+  this.references=new ArrayList<ForeignKey<?,R>>();
+}

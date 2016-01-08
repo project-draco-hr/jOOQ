@@ -1,4 +1,5 @@
 {
+  this.pkName=pkName;
   this.pkTable=table;
   this.pkFields=fields;
 }

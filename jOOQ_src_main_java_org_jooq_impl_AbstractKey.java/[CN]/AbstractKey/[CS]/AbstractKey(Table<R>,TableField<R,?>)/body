@@ -1,4 +1,3 @@
 {
-  this.table=table;
-  this.fields=fields;
+  this(table,null,fields);
 }

@@ -1,4 +1,3 @@
 {
-  super(table,fields);
-  this.key=key;
+  this(key,table,null,fields);
 }

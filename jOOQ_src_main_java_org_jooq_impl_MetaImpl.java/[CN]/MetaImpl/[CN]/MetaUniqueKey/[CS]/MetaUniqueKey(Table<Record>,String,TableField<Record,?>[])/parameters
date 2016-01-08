@@ -1,2 +1,3 @@
 Table<Record> table
+String pkName
 TableField<Record,?>[] fields
