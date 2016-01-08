@@ -1,0 +1,3 @@
+{
+  return DSL.constraint(getName()).foreignKey(getFieldsArray()).references(key.getTable(),key.getFieldsArray());
+}
