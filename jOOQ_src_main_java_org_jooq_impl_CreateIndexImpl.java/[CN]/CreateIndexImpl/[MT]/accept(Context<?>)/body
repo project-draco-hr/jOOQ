@@ -1,3 +1,5 @@
 {
-  ctx.keyword("create index").sql(' ').visit(index).sql(' ').keyword("on").sql(' ').visit(table).sql('(').qualify(false).visit(new QueryPartList<QueryPart>(fields)).qualify(true).sql(')');
+  ctx.keyword("create");
+  if (unique)   ctx.sql(' ').keyword("unique");
+  ctx.sql(' ').keyword("index").sql(' ').visit(index).sql(' ').keyword("on").sql(' ').visit(table).sql('(').qualify(false).visit(new QueryPartList<QueryPart>(fields)).qualify(true).sql(')');
 }

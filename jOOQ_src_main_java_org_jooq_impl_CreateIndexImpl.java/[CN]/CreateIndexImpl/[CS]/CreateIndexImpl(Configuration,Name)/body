@@ -1,4 +1,3 @@
 {
-  super(configuration);
-  this.index=index;
+  this(configuration,index,false);
 }
