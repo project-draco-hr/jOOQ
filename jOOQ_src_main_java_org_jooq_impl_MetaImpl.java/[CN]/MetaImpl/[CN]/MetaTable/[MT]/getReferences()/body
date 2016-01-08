@@ -23,7 +23,7 @@
       pkFields[i]=(TableField<Record,?>)pkTable.field(record.getValue(3,String.class));
       fkFields[i]=(TableField<Record,?>)field(record.getValue(7,String.class));
     }
-    references.add(new ReferenceImpl<Record,Record>(new MetaUniqueKey(pkTable,pkName,pkFields),this,fkFields));
+    references.add(new ReferenceImpl<Record,Record>(new MetaPrimaryKey(pkTable,pkName,pkFields),this,fkFields));
   }
   return references;
 }
