@@ -2,12 +2,8 @@
   for (  Condition condition : cond) {
     if (condition instanceof CombinedCondition) {
       CombinedCondition combinedCondition=(CombinedCondition)condition;
-      if (combinedCondition.operator == op) {
-        this.conditions.addAll(combinedCondition.conditions);
-      }
- else {
-        this.conditions.add(condition);
-      }
+      if (combinedCondition.operator == op)       this.conditions.addAll(combinedCondition.conditions);
+ else       this.conditions.add(condition);
     }
  else {
       this.conditions.add(condition);

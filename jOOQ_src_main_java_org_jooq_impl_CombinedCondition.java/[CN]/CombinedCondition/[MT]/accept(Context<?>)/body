@@ -8,13 +8,11 @@
   }
  else {
     ctx.sql('(').formatIndentStart().formatNewLine();
-    String operatorName=operator.name().toLowerCase() + " ";
-    String separator="";
+    String operatorName=operator == AND ? "and" : "or";
+    String separator=null;
     for (int i=0; i < conditions.size(); i++) {
-      if (i > 0) {
-        ctx.formatSeparator();
-      }
-      ctx.keyword(separator);
+      if (i > 0)       ctx.formatSeparator();
+      if (separator != null)       ctx.keyword(separator).sql(' ');
       ctx.visit(conditions.get(i));
       separator=operatorName;
     }
