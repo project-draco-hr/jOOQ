@@ -1,0 +1,4 @@
+{
+  if (isPrimary())   return DSL.constraint(getName()).primaryKey(getFieldsArray());
+ else   return DSL.constraint(getName()).unique(getFieldsArray());
+}
