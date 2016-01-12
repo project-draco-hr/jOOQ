@@ -1,0 +1,3 @@
+{
+  return delegateOf(delegate.onClose(closeHandler));
+}

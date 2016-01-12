@@ -1,0 +1,12 @@
+{
+  R1 result=null;
+  try {
+    result=supplier.get();
+    close();
+  }
+ catch (  Throwable e) {
+    close();
+    Utils.sneakyThrow(e);
+  }
+  return result;
+}

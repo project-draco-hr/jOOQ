@@ -1,0 +1,2 @@
+IntStream delegate
+Consumer<Optional<Throwable>> onComplete

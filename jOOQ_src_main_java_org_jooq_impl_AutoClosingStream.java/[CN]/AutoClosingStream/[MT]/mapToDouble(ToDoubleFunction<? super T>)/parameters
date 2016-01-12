@@ -1,0 +1,1 @@
+ToDoubleFunction<? super T> mapper

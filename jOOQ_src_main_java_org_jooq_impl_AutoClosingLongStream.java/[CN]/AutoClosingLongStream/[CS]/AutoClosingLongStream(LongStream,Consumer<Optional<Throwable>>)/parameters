@@ -1,0 +1,2 @@
+LongStream delegate
+Consumer<Optional<Throwable>> onComplete

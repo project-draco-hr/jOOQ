@@ -1,0 +1,2 @@
+S delegate
+Consumer<Optional<Throwable>> onComplete

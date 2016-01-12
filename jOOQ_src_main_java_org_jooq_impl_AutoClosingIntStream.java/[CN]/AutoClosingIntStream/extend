@@ -1,0 +1,1 @@
+AutoClosingBaseStream<Integer,IntStream,AutoClosingIntStream>
