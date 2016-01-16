@@ -1,1 +1,0 @@
-AutoClosingBaseStream<T,Stream<T>,AutoClosingStream<T>>

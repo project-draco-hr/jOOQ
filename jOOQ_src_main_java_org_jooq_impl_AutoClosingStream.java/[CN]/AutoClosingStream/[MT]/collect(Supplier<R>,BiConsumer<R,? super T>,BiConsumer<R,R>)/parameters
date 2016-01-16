@@ -1,3 +1,0 @@
-Supplier<R> supplier
-BiConsumer<R,? super T> accumulator
-BiConsumer<R,R> combiner

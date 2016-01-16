@@ -1,3 +1,0 @@
-{
-  Utils.<RuntimeException>sneakyThrow0(throwable);
-}

@@ -1,3 +1,0 @@
-Supplier<R> supplier
-ObjIntConsumer<R> accumulator
-BiConsumer<R,R> combiner

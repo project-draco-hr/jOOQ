@@ -1,2 +1,0 @@
-DoubleStream delegate
-Consumer<Optional<Throwable>> onComplete
