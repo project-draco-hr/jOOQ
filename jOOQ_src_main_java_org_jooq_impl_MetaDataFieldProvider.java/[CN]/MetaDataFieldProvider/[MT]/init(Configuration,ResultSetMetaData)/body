@@ -14,9 +14,14 @@
       String columnLabel=meta.getColumnLabel(i);
       String columnName=meta.getColumnName(i);
       if (columnName.equals(columnLabel)) {
-        String columnSchema=meta.getSchemaName(i);
-        String columnTable=meta.getTableName(i);
-        name=name(columnSchema,columnTable,columnName);
+        try {
+          String columnSchema=meta.getSchemaName(i);
+          String columnTable=meta.getTableName(i);
+          name=name(columnSchema,columnTable,columnName);
+        }
+ catch (        SQLFeatureNotSupportedException e) {
+          name=name(columnLabel);
+        }
       }
  else {
         name=name(columnLabel);
