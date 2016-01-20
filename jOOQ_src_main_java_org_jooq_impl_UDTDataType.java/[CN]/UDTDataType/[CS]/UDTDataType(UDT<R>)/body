@@ -1,4 +1,3 @@
 {
   super(SQLDialect.DEFAULT,udt.getRecordType(),getQualifiedName(udt));
-  DataTypes.registerUDTRecord(getQualifiedName(udt),udt.getRecordType());
 }

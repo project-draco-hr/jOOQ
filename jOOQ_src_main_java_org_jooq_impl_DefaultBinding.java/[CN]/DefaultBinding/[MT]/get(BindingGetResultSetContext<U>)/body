@@ -142,7 +142,7 @@ case POSTGRES:
 result=(T)pgNewRecord(type,null,ctx.resultSet().getObject(ctx.index()));
 break;
 default :
-result=(T)ctx.resultSet().getObject(ctx.index(),DataTypes.udtRecords());
+result=(T)ctx.resultSet().getObject(ctx.index(),typeMap(type,ctx.configuration()));
 break;
 }
 }
