@@ -1,9 +1,7 @@
 {
-  org.jooq.SchemaMapping mapping=configuration.schemaMapping();
-  if (mapping != null) {
-    return mapping.map(schema);
+  if (configuration != null) {
+    org.jooq.SchemaMapping mapping=configuration.schemaMapping();
+    if (mapping != null)     return mapping.map(schema);
   }
- else {
-    return schema;
-  }
+  return schema;
 }
