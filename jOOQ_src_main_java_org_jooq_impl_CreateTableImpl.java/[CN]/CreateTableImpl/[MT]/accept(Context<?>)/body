@@ -1,8 +1,8 @@
 {
   if (ifNotExists && !supportsIfNotExists(ctx)) {
-    Utils.executeImmediateBegin(ctx,VIEW);
+    Utils.executeImmediateBegin(ctx,TABLE);
     accept0(ctx);
-    Utils.executeImmediateEnd(ctx,VIEW);
+    Utils.executeImmediateEnd(ctx,TABLE);
   }
  else {
     accept0(ctx);
