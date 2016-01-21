@@ -1,8 +1,8 @@
 {
   if (ifExists && !supportsIfExists(ctx)) {
-    Utils.executeImmediateBegin(ctx,SEQUENCE);
+    Utils.executeImmediateBegin(ctx,DDLStatementType.DROP_SEQUENCE);
     accept0(ctx);
-    Utils.executeImmediateEnd(ctx,SEQUENCE);
+    Utils.executeImmediateEnd(ctx,DDLStatementType.DROP_SEQUENCE);
   }
  else {
     accept0(ctx);

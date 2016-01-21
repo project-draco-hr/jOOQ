@@ -1,8 +1,8 @@
 {
   if (ifExists && !supportsIfExists(ctx)) {
-    Utils.executeImmediateBegin(ctx,TABLE);
+    Utils.executeImmediateBegin(ctx,DDLStatementType.DROP_TABLE);
     accept0(ctx);
-    Utils.executeImmediateEnd(ctx,TABLE);
+    Utils.executeImmediateEnd(ctx,DDLStatementType.DROP_TABLE);
   }
  else {
     accept0(ctx);
