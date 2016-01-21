@@ -1,3 +1,4 @@
 Configuration configuration
 Table<?> view
 Field<?>[] fields
+boolean ifNotExists

@@ -2,4 +2,5 @@
   super(configuration);
   this.view=view;
   this.fields=fields;
+  this.ifNotExists=ifNotExists;
 }

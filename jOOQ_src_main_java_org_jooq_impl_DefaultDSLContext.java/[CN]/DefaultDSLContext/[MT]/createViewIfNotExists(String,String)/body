@@ -1,0 +1,3 @@
+{
+  return createViewIfNotExists(table(name(view)),Utils.fieldsByName(view,fields));
+}
