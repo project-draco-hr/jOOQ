@@ -1,3 +1,4 @@
 Configuration configuration
 Table<?> table
 boolean temporary
+boolean ifNotExists

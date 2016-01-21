@@ -2,5 +2,7 @@
   ctx.start(CREATE_TABLE_NAME).keyword("create").sql(' ');
   if (temporary)   if (asList(POSTGRES).contains(ctx.family()))   ctx.keyword("temporary").sql(' ');
  else   ctx.keyword("global temporary").sql(' ');
-  ctx.keyword("table").sql(' ').visit(table).end(CREATE_TABLE_NAME);
+  ctx.keyword("table").sql(' ');
+  if (ifNotExists)   ctx.keyword("if not exists").sql(' ');
+  ctx.visit(table).end(CREATE_TABLE_NAME);
 }

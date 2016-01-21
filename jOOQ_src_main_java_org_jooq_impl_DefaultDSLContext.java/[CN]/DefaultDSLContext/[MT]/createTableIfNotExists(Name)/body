@@ -1,0 +1,3 @@
+{
+  return createTableIfNotExists(table(table));
+}

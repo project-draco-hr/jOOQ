@@ -1,0 +1,32 @@
+{
+  if (select != null) {
+{
+      acceptCreateTableAsSelect(ctx);
+    }
+  }
+ else {
+    ctx.start(CREATE_TABLE);
+    toSQLCreateTableName(ctx);
+    ctx.sql('(').start(CREATE_TABLE_COLUMNS).formatIndentStart().formatNewLine();
+    boolean qualify=ctx.qualify();
+    ctx.qualify(false);
+    for (int i=0; i < columnFields.size(); i++) {
+      DataType<?> type=columnTypes.get(i);
+      ctx.visit(columnFields.get(i)).sql(' ');
+      Utils.toSQLDDLTypeDeclaration(ctx,type);
+      if (type.nullable()) {
+        if (!asList(DERBY,FIREBIRD).contains(ctx.family()))         ctx.sql(' ').keyword("null");
+      }
+ else {
+        ctx.sql(' ').keyword("not null");
+      }
+      if (i < columnFields.size() - 1)       ctx.sql(',').formatSeparator();
+    }
+    ctx.qualify(qualify);
+    ctx.end(CREATE_TABLE_COLUMNS).start(CREATE_TABLE_CONSTRAINTS);
+    if (!constraints.isEmpty())     for (    Constraint constraint : constraints)     ctx.sql(',').formatSeparator().visit(constraint);
+    ctx.end(CREATE_TABLE_CONSTRAINTS).formatIndentEnd().formatNewLine().sql(')');
+    toSQLOnCommit(ctx);
+    ctx.end(CREATE_TABLE);
+  }
+}
