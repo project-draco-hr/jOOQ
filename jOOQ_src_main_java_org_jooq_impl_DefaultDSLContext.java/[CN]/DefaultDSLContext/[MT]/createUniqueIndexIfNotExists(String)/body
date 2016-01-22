@@ -1,0 +1,3 @@
+{
+  return createUniqueIndexIfNotExists(name(index));
+}

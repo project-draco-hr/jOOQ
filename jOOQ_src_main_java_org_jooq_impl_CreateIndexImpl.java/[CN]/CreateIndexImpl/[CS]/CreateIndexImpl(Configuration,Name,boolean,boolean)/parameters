@@ -1,2 +1,4 @@
 Configuration configuration
 Name index
+boolean unique
+boolean ifNotExists
