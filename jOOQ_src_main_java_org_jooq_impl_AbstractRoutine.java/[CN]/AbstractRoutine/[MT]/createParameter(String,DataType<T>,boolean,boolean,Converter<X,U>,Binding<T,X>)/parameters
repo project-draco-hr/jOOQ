@@ -1,0 +1,6 @@
+String name
+DataType<T> type
+boolean isDefaulted
+boolean isUnnamed
+Converter<X,U> converter
+Binding<T,X> binding

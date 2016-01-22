@@ -1,4 +1,5 @@
 {
   allParameters.add(parameter);
   hasDefaultedParameters|=parameter.isDefaulted();
+  hasUnnamedParameters|=parameter.isUnnamed();
 }

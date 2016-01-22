@@ -1,0 +1,5 @@
+String name
+DataType<T> type
+Binding<?,T> binding
+boolean isDefaulted
+boolean isUnnamed

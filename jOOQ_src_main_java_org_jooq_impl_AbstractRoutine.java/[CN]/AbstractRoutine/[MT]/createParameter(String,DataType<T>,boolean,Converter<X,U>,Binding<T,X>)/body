@@ -1,5 +1,3 @@
 {
-  final Binding<T,U> actualBinding=DefaultBinding.newBinding(converter,type,binding);
-  final DataType<U> actualType=converter == null && binding == null ? (DataType<U>)type : type.asConvertedDataType(actualBinding);
-  return new ParameterImpl<U>(name,actualType,isDefaulted,actualBinding);
+  return createParameter(name,type,isDefaulted,false,converter,binding);
 }

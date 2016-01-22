@@ -4,8 +4,16 @@
   List<Field<?>> fields=new ArrayList<Field<?>>();
   for (  Parameter<?> parameter : getInParameters()) {
     if (inValuesDefaulted.contains(parameter))     continue;
-    if (ctx.family() == POSTGRES)     if (isOverloaded())     fields.add(field("{0} := {1}",name(parameter.getName()),getInValues().get(parameter).cast(parameter.getType())));
- else     fields.add(field("{0} := {1}",name(parameter.getName()),getInValues().get(parameter)));
+    if (ctx.family() == POSTGRES) {
+      if (hasUnnamedParameters()) {
+        if (isOverloaded())         fields.add(getInValues().get(parameter).cast(parameter.getType()));
+ else         fields.add(getInValues().get(parameter));
+      }
+ else {
+        if (isOverloaded())         fields.add(field("{0} := {1}",name(parameter.getName()),getInValues().get(parameter).cast(parameter.getType())));
+ else         fields.add(field("{0} := {1}",name(parameter.getName()),getInValues().get(parameter)));
+      }
+    }
  else     fields.add(getInValues().get(parameter));
   }
   Field<T> result=function(local.render(),getDataType(),fields.toArray(new Field[fields.size()]));

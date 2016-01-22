@@ -1,0 +1,5 @@
+String name
+DataType<T> type
+boolean isDefaulted
+boolean isUnnamed
+Converter<T,U> converter

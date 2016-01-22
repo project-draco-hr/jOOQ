@@ -1,5 +1,6 @@
 {
   this.name=name;
-  this.isDefaulted=isDefaulted;
   this.type=type.asConvertedDataType((Binding<T,T>)binding);
+  this.isDefaulted=isDefaulted;
+  this.isUnnamed=isUnnamed;
 }
