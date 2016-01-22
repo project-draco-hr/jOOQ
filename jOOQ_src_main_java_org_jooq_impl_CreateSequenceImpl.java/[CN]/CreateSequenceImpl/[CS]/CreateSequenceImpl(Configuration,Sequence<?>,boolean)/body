@@ -1,4 +1,5 @@
 {
   super(configuration);
   this.sequence=sequence;
+  this.ifNotExists=ifNotExists;
 }

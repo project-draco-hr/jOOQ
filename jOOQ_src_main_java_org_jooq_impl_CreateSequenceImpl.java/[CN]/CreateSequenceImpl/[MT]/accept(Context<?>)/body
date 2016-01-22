@@ -1,5 +1,10 @@
 {
-  ctx.start(CREATE_SEQUENCE_SEQUENCE).keyword("create").sql(' ').keyword(ctx.family() == CUBRID ? "serial" : "sequence").sql(' ').visit(sequence);
-  if (asList(DERBY).contains(ctx.family()))   ctx.keyword("start with").sql(" 1");
-  ctx.end(CREATE_SEQUENCE_SEQUENCE);
+  if (ifNotExists && !supportsIfNotExists(ctx)) {
+    Utils.executeImmediateBegin(ctx,DDLStatementType.CREATE_SEQUENCE);
+    accept0(ctx);
+    Utils.executeImmediateEnd(ctx,DDLStatementType.CREATE_SEQUENCE);
+  }
+ else {
+    accept0(ctx);
+  }
 }

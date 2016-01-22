@@ -1,0 +1,7 @@
+{
+  ctx.start(CREATE_SEQUENCE_SEQUENCE).keyword("create").sql(' ').keyword(ctx.family() == CUBRID ? "serial" : "sequence").sql(' ');
+  if (ifNotExists && supportsIfNotExists(ctx))   ctx.keyword("if not exists").sql(' ');
+  ctx.visit(sequence);
+  if (asList(DERBY).contains(ctx.family()))   ctx.keyword("start with").sql(" 1");
+  ctx.end(CREATE_SEQUENCE_SEQUENCE);
+}
