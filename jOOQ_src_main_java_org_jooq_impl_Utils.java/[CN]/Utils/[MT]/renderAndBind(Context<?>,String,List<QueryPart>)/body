@@ -64,7 +64,8 @@
         render.visit(substitute);
       }
  else {
-        render.sql(sqlChars[i]);
+        CastMode previous=render.castMode();
+        render.castMode(CastMode.NEVER).visit(substitute).castMode(previous);
       }
       if (bind != null) {
         bind.visit(substitute);

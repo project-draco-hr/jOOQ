@@ -1,8 +1,10 @@
 {
   if (paramType == INLINED)   return;
   if (part instanceof Param) {
-    if (((Param<?>)part).isInline())     return;
-switch (configuration().dialect().family()) {
+    Param<?> param=(Param<?>)part;
+    if (param.isInline())     return;
+    bindValues.add(param);
+switch (configuration().family()) {
 case SQLITE:
       checkForceInline(999);
     return;

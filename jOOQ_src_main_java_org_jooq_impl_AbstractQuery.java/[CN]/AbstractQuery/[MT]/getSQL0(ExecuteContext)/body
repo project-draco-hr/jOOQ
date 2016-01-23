@@ -1,18 +1,19 @@
 {
-  String result;
+  Rendered result;
   if (executePreparedStatements(configuration().settings())) {
     try {
-      RenderContext render=new DefaultRenderContext(configuration);
+      DefaultRenderContext render=new DefaultRenderContext(configuration);
       render.data(DATA_COUNT_BIND_VALUES,true);
-      result=render.visit(this).render();
+      render.visit(this);
+      result=new Rendered(render.render(),render.bindValues());
     }
  catch (    DefaultRenderContext.ForceInlineSignal e) {
       ctx.data(DATA_FORCE_STATIC_STATEMENT,true);
-      result=getSQL(INLINED);
+      result=new Rendered(getSQL(INLINED));
     }
   }
  else {
-    result=getSQL(INLINED);
+    result=new Rendered(getSQL(INLINED));
   }
   return result;
 }

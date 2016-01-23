@@ -1,6 +1,6 @@
 {
   if (alias != null) {
-    alias.accept(ctx);
+    ctx.visit(alias);
   }
  else {
     accept0(ctx);

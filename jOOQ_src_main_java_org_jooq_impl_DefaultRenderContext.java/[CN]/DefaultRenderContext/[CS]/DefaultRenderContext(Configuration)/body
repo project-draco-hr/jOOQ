@@ -2,6 +2,7 @@
   super(configuration,null);
   Settings settings=configuration.settings();
   this.sql=new StringBuilder();
+  this.bindValues=new QueryPartList<Param<?>>();
   this.cachedRenderKeywordStyle=settings.getRenderKeywordStyle();
   this.cachedRenderFormatted=Boolean.TRUE.equals(settings.isRenderFormatted());
   this.cachedRenderNameStyle=settings.getRenderNameStyle();

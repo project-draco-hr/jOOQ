@@ -6,15 +6,16 @@
     int result=0;
     try {
       if (keepStatement() && statement != null) {
-        ctx.sql(sql);
+        ctx.sql(rendered.sql);
         ctx.statement(statement);
         ctx.connection(c.connectionProvider(),statement.getConnection());
       }
  else {
         listener.renderStart(ctx);
-        ctx.sql(getSQL0(ctx));
+        rendered=getSQL0(ctx);
+        ctx.sql(rendered.sql);
         listener.renderEnd(ctx);
-        sql=ctx.sql();
+        rendered.sql=ctx.sql();
         if (ctx.connection() == null) {
           throw new DetachedException("Cannot execute query. No Connection configured");
         }
@@ -29,7 +30,7 @@
       }
       if (executePreparedStatements(c.settings()) && !Boolean.TRUE.equals(ctx.data(DATA_FORCE_STATIC_STATEMENT))) {
         listener.bindStart(ctx);
-        using(c).bindContext(ctx.statement()).visit(this);
+        if (rendered.bindValues != null)         using(c).bindContext(ctx.statement()).visit(rendered.bindValues);
         listener.bindEnd(ctx);
       }
       result=execute(ctx,listener);
@@ -54,7 +55,7 @@ catch (    SQLException e) {
       }
       if (!keepStatement()) {
         statement=null;
-        sql=null;
+        rendered=null;
       }
     }
   }

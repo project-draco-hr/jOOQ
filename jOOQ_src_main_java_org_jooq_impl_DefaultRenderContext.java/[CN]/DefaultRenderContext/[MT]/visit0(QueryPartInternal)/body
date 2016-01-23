@@ -1,4 +1,4 @@
 {
-  checkForceInline(internal);
+  collectBindVariable(internal);
   internal.accept(this);
 }

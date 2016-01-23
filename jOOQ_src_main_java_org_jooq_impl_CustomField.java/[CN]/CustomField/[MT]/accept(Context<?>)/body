@@ -1,4 +1,0 @@
-{
-  if (ctx instanceof RenderContext)   toSQL((RenderContext)ctx);
- else   bind((BindContext)ctx);
-}
