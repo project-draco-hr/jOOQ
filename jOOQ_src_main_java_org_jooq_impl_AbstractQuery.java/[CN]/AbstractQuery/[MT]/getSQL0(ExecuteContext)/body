@@ -1,6 +1,10 @@
 {
   Rendered result;
-  if (executePreparedStatements(configuration().settings())) {
+  if (ctx.type() == DDL && asList(HSQLDB).contains(ctx.family())) {
+    ctx.data(DATA_FORCE_STATIC_STATEMENT,true);
+    result=new Rendered(getSQL(INLINED));
+  }
+ else   if (executePreparedStatements(configuration().settings())) {
     try {
       DefaultRenderContext render=new DefaultRenderContext(configuration);
       render.data(DATA_COUNT_BIND_VALUES,true);
