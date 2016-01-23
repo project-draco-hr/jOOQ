@@ -3,9 +3,16 @@
   toSQLCreateTableName(ctx);
   toSQLOnCommit(ctx);
   ctx.formatSeparator().keyword("as");
-{
+  if (asList(HSQLDB).contains(ctx.family())) {
+    ctx.sql(" (").formatIndentStart().formatNewLine();
+  }
+ else {
     ctx.formatSeparator();
   }
   ctx.start(CREATE_TABLE_AS).visit(select).end(CREATE_TABLE_AS);
+  if (asList(HSQLDB).contains(ctx.family())) {
+    ctx.formatIndentEnd().formatNewLine().sql(')');
+    if (ctx.family() == HSQLDB)     ctx.sql(' ').keyword("with data");
+  }
   ctx.end(CREATE_TABLE);
 }
