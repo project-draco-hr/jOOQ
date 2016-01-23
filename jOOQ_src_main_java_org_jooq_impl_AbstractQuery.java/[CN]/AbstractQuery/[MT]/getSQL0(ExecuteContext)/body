@@ -1,6 +1,6 @@
 {
   Rendered result;
-  if (ctx.type() == DDL && asList(HSQLDB).contains(ctx.family())) {
+  if (ctx.type() == DDL) {
     ctx.data(DATA_FORCE_STATIC_STATEMENT,true);
     result=new Rendered(getSQL(INLINED));
   }
