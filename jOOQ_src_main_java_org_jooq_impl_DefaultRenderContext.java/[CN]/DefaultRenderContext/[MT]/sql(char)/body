@@ -1,4 +1,5 @@
 {
   sql.append(c);
+  if (c == '\'' && stringLiteral())   sql.append(c);
   return this;
 }

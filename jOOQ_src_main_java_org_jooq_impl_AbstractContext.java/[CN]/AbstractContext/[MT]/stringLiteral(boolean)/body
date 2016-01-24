@@ -1,0 +1,11 @@
+{
+  if (s) {
+    stringLiteral++;
+    stringLiteralEscapedApos=stringLiteralEscapedApos + stringLiteralEscapedApos;
+  }
+ else {
+    stringLiteral--;
+    stringLiteralEscapedApos=stringLiteralEscapedApos.substring(0,stringLiteralEscapedApos.length() / 2);
+  }
+  return (C)this;
+}
