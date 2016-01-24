@@ -91,8 +91,8 @@
     out.tab(2).println("super(alias, null, aliased, parameters, \"%s\");",escapeString(comment));
     out.tab(1).println("}");
   }
-  out.println();
   if (scala) {
+    out.println();
     out.tab(1).println("override def getSchema : %s = %s",Schema.class,schemaId);
   }
  else {
