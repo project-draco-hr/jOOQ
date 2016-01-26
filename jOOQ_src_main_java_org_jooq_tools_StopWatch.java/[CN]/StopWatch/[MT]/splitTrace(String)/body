@@ -1,5 +1,3 @@
 {
-  if (log.isTraceEnabled()) {
-    log.trace(message,splitMessage());
-  }
+  if (log.isTraceEnabled())   log.trace(message,splitMessage(0));
 }

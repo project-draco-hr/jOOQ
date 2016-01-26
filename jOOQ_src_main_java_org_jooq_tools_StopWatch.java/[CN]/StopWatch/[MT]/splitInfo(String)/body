@@ -1,5 +1,3 @@
 {
-  if (log.isInfoEnabled()) {
-    log.info(message,splitMessage());
-  }
+  if (log.isInfoEnabled())   log.info(message,splitMessage(0));
 }

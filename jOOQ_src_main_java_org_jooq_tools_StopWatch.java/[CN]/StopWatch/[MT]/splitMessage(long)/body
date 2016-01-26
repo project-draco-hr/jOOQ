@@ -1,0 +1,8 @@
+{
+  final long temp=split;
+  split=System.nanoTime();
+  final long inc=split - temp;
+  if (thresholdNano > 0 && inc < thresholdNano)   return null;
+  if (temp == start)   return "Total: " + format(split - start);
+ else   return "Total: " + format(split - start) + ", +"+ format(inc);
+}

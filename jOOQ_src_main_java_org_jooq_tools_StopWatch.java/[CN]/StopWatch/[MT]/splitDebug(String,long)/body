@@ -1,0 +1,6 @@
+{
+  if (log.isDebugEnabled()) {
+    String splitMessage=splitMessage(thresholdNano);
+    if (splitMessage != null)     log.debug(message,splitMessage);
+  }
+}

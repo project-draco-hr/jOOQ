@@ -1,0 +1,6 @@
+{
+  if (log.isTraceEnabled()) {
+    String splitMessage=splitMessage(thresholdNano);
+    if (splitMessage != null)     log.trace(message,splitMessage);
+  }
+}
