@@ -4,7 +4,6 @@ case FIREBIRD:
 case MARIADB:
 case MYSQL:
 case SQLITE:
-case H2:
 {
       Select<Record> selects=null;
       boolean subquery=ctx.subquery();
@@ -22,6 +21,7 @@ case H2:
     }
 case CUBRID:
 case DERBY:
+case H2:
 case HSQLDB:
 case POSTGRES:
 default :
