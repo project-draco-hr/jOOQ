@@ -1,0 +1,5 @@
+{
+  upsertStyle=true;
+  upsertFields=new QueryPartList<Field<?>>(fields);
+  return this;
+}
