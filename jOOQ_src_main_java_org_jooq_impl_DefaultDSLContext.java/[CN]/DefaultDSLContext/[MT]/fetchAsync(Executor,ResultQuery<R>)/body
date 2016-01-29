@@ -1,0 +1,10 @@
+{
+  final Configuration previous=Utils.getConfiguration(query);
+  try {
+    query.attach(configuration());
+    return query.fetchAsync(executor);
+  }
+  finally {
+    query.attach(previous);
+  }
+}
