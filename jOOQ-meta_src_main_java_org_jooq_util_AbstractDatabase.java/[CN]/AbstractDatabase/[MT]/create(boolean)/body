@@ -1,9 +1,5 @@
 {
   final Configuration configuration=create0().configuration();
-  if (!initialised) {
-    DSL.using(configuration).selectOne().fetch();
-    initialised=true;
-  }
   if (muteExceptions) {
     return DSL.using(configuration);
   }
@@ -15,6 +11,12 @@
     newProviders[oldProviders.length]=new DefaultExecuteListenerProvider(new DefaultExecuteListener(){
       StopWatch watch;
 class SQLPerformanceWarning extends Exception {
+      }
+      @Override public void start(      ExecuteContext ctx){
+        if (!initialised) {
+          DSL.using(configuration).selectOne().fetch();
+          initialised=true;
+        }
       }
       @Override public void executeStart(      ExecuteContext ctx){
         watch=new StopWatch();
