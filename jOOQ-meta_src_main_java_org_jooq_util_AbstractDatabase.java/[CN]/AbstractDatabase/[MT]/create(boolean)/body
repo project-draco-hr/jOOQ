@@ -1,5 +1,9 @@
 {
   final Configuration configuration=create0().configuration();
+  if (!initialised) {
+    DSL.using(configuration).selectOne().fetch();
+    initialised=true;
+  }
   if (muteExceptions) {
     return DSL.using(configuration);
   }
