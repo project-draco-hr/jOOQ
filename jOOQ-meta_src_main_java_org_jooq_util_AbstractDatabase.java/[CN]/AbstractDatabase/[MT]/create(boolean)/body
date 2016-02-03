@@ -22,7 +22,7 @@ class SQLPerformanceWarning extends Exception {
       }
       @Override public void executeEnd(      ExecuteContext ctx){
         StopWatch watch=(StopWatch)ctx.data("org.jooq.util.AbstractDatabase.watch");
-        if (watch.split() > 5L * 1000 * 1000* 1000) {
+        if (watch.split() > TimeUnit.SECONDS.toNanos(5L)) {
           watch.splitWarn("Slow SQL");
           log.warn("Slow SQL","jOOQ Meta executed a slow query (slower than 5 seconds)" + "\n\n" + "Please report this bug here: https://github.com/jOOQ/jOOQ/issues/new\n\n"+ formatted(ctx.query()),new SQLPerformanceWarning());
         }
