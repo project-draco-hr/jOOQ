@@ -21,7 +21,11 @@ class SQLPerformanceWarning extends Exception {
         ctx.data("org.jooq.util.AbstractDatabase.watch",new StopWatch());
       }
       @Override public void executeEnd(      ExecuteContext ctx){
-        if (((StopWatch)ctx.data("org.jooq.util.AbstractDatabase.watch")).split() > 5 * 1000 * 1000* 1000)         log.warn("Slow SQL","jOOQ Meta executed a slow query (slower than 5 seconds)" + "\n\n" + "Please report this bug here: https://github.com/jOOQ/jOOQ/issues/new\n\n"+ formatted(ctx.query()),new SQLPerformanceWarning());
+        StopWatch watch=(StopWatch)ctx.data("org.jooq.util.AbstractDatabase.watch");
+        if (watch.split() > 5L * 1000 * 1000* 1000) {
+          watch.splitWarn("Slow SQL");
+          log.warn("Slow SQL","jOOQ Meta executed a slow query (slower than 5 seconds)" + "\n\n" + "Please report this bug here: https://github.com/jOOQ/jOOQ/issues/new\n\n"+ formatted(ctx.query()),new SQLPerformanceWarning());
+        }
       }
       @Override public void exception(      ExecuteContext ctx){
         log.warn("SQL exception","Exception while executing meta query: " + (ctx.sqlException() != null ? ctx.sqlException().getMessage() : ctx.exception() != null ? ctx.exception().getMessage() : "No exception available") + "\n\n"+ "Please report this bug here: https://github.com/jOOQ/jOOQ/issues/new\n\n"+ formatted(ctx.query()));

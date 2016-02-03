@@ -1,0 +1,4 @@
+{
+  String splitMessage=splitMessage(thresholdNano);
+  if (splitMessage != null)   log.warn(message,splitMessage);
+}
