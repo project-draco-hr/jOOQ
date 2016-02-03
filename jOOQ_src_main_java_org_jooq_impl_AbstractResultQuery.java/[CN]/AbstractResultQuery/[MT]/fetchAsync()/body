@@ -1,2 +1,3 @@
 {
+  return fetchAsync(Utils.configuration(this).executorProvider().provide());
 }
