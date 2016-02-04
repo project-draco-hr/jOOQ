@@ -1,3 +1,4 @@
 {
-  return null;
+  fromArray(t1);
+  return this;
 }
