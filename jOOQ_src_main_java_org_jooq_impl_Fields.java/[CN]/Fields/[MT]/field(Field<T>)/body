@@ -12,7 +12,7 @@
     }
     if (f.getName().equals(fieldName)) {
       if (columnMatch == null)       columnMatch=f;
- else       log.info("Ambiguous match found for " + fieldName + ". Both "+ columnMatch+ " and "+ f+ " match.");
+ else       log.info("Ambiguous match found for " + fieldName + ". Both "+ columnMatch+ " and "+ f+ " match.",new SQLWarning());
     }
   }
   return (Field<T>)columnMatch;
