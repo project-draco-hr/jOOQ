@@ -1,6 +1,6 @@
 {
   ctx.start(CREATE_TABLE_NAME).keyword("create").sql(' ');
-  if (temporary)   if (asList(POSTGRES).contains(ctx.family()))   ctx.keyword("temporary").sql(' ');
+  if (temporary)   if (asList(MARIADB,MYSQL,POSTGRES).contains(ctx.family()))   ctx.keyword("temporary").sql(' ');
  else   ctx.keyword("global temporary").sql(' ');
   ctx.keyword("table").sql(' ');
   if (ifNotExists && supportsIfNotExists(ctx))   ctx.keyword("if not exists").sql(' ');
