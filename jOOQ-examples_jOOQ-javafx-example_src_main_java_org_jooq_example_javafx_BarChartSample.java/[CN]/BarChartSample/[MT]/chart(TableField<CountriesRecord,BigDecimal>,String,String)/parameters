@@ -1,3 +1,0 @@
-TableField<CountriesRecord,BigDecimal> field
-String title
-String yAxisLabel

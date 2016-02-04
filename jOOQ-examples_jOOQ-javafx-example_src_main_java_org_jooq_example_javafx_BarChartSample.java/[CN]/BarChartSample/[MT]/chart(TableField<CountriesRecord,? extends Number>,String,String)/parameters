@@ -1,0 +1,3 @@
+TableField<CountriesRecord,? extends Number> field
+String title
+String yAxisLabel

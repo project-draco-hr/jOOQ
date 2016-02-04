@@ -1,0 +1,3 @@
+{
+  return DSL.using(connection,new Settings().withUpdatablePrimaryKeys(true));
+}

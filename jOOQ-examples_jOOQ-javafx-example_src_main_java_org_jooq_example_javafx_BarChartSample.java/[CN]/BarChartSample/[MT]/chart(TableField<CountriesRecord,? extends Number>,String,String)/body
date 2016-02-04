@@ -1,0 +1,10 @@
+{
+  CategoryAxis xAxis=new CategoryAxis();
+  NumberAxis yAxis=new NumberAxis();
+  xAxis.setLabel("Country");
+  yAxis.setLabel(yAxisLabel);
+  BarChart<String,Number> bc=new BarChart<>(xAxis,yAxis);
+  bc.setTitle(title);
+  bc.setUserData(field);
+  return bc;
+}

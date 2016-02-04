@@ -1,0 +1,10 @@
+{
+  ColumnConstraints col=new ColumnConstraints();
+  col.setFillWidth(true);
+  col.setHgrow(Priority.ALWAYS);
+  pane.getColumnConstraints().add(col);
+  RowConstraints row=new RowConstraints();
+  row.setFillHeight(true);
+  row.setVgrow(Priority.ALWAYS);
+  pane.getRowConstraints().add(row);
+}
