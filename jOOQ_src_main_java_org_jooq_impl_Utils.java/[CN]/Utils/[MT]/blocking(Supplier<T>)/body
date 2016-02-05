@@ -1,5 +1,5 @@
 {
-  return (S)new Supplier<T>(){
+  return new Supplier<T>(){
     volatile T asyncResult;
     @Override public T get(){
       try {
