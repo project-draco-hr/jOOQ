@@ -1,6 +1,4 @@
 {
-  if (cachedRenderFormatted) {
-    indent-=i;
-  }
+  if (cachedRenderFormatted)   indent-=i;
   return this;
 }

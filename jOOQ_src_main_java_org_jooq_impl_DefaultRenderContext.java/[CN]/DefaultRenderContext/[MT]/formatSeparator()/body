@@ -1,9 +1,8 @@
 {
-  if (cachedRenderFormatted) {
-    formatNewLine();
-  }
- else {
-    sql.append(" ");
+  if (!separator && !newline) {
+    if (cachedRenderFormatted)     formatNewLine();
+ else     sql(" ",true);
+    separator=true;
   }
   return this;
 }

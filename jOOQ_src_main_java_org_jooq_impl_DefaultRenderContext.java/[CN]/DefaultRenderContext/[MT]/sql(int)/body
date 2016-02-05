@@ -1,4 +1,6 @@
 {
   sql.append(i);
+  separator=false;
+  newline=false;
   return this;
 }

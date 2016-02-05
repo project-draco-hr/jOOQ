@@ -1,20 +1,21 @@
 {
-  ctx.keyword("constraint").sql(' ').visit(name);
+  ctx.keyword("constraint").sql(' ').visit(name).formatIndentStart().formatSeparator();
   if (ctx.data(DATA_DROP_CONSTRAINT) == null) {
     boolean qualify=ctx.qualify();
     if (unique != null) {
-      ctx.sql(' ').keyword("unique").sql(" (").qualify(false).visit(new QueryPartList<Field<?>>(unique)).qualify(qualify).sql(')');
+      ctx.keyword("unique").sql(" (").qualify(false).visit(new QueryPartList<Field<?>>(unique)).qualify(qualify).sql(')');
     }
  else     if (primaryKey != null) {
-      ctx.sql(' ').keyword("primary key").sql(" (").qualify(false).visit(new QueryPartList<Field<?>>(primaryKey)).qualify(qualify).sql(')');
+      ctx.keyword("primary key").sql(" (").qualify(false).visit(new QueryPartList<Field<?>>(primaryKey)).qualify(qualify).sql(')');
     }
  else     if (foreignKey != null) {
-      ctx.sql(' ').keyword("foreign key").sql(" (").qualify(false).visit(new QueryPartList<Field<?>>(foreignKey)).qualify(qualify).sql(") ").keyword("references").sql(' ').visit(referencesTable).sql(" (").qualify(false).visit(new QueryPartList<Field<?>>(references)).qualify(qualify).sql(')');
+      ctx.keyword("foreign key").sql(" (").qualify(false).visit(new QueryPartList<Field<?>>(foreignKey)).qualify(qualify).sql(')').formatSeparator().keyword("references").sql(' ').visit(referencesTable).sql(" (").qualify(false).visit(new QueryPartList<Field<?>>(references)).qualify(qualify).sql(')');
       if (onDelete != null)       ctx.sql(' ').keyword("on delete").sql(' ').keyword(onDelete.sql);
       if (onUpdate != null)       ctx.sql(' ').keyword("on update").sql(' ').keyword(onUpdate.sql);
     }
  else     if (check != null) {
-      ctx.sql(' ').keyword("check").sql(" (").qualify(false).visit(check).qualify(qualify).sql(')');
+      ctx.keyword("check").sql(" (").qualify(false).visit(check).qualify(qualify).sql(')');
     }
   }
+  ctx.formatIndentEnd();
 }

@@ -1,7 +1,8 @@
 {
   if (cachedRenderFormatted) {
-    sql.append("\n");
-    sql.append(indentation());
+    sql("\n",true);
+    sql(indentation(),true);
+    newline=true;
   }
   return this;
 }

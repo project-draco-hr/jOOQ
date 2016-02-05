@@ -1,8 +1,4 @@
 {
-  if (cachedRenderFormatted && printMargin > 0) {
-    if (sql.length() - sql.lastIndexOf("\n") > printMargin) {
-      formatNewLine();
-    }
-  }
+  if (cachedRenderFormatted && printMargin > 0)   if (sql.length() - sql.lastIndexOf("\n") > printMargin)   formatNewLine();
   return this;
 }

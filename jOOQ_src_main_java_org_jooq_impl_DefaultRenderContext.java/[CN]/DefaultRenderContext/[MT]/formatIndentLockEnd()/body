@@ -1,6 +1,4 @@
 {
-  if (cachedRenderFormatted) {
-    indent=indentLock().pop();
-  }
+  if (cachedRenderFormatted)   indent=indentLock().pop();
   return this;
 }

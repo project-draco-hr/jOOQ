@@ -1,6 +1,4 @@
 {
-  if (indentLock == null) {
-    indentLock=new ArrayDeque<Integer>();
-  }
+  if (indentLock == null)   indentLock=new ArrayDeque<Integer>();
   return indentLock;
 }

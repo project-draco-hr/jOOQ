@@ -2,5 +2,7 @@
   if (!literal)   s=NEWLINE.matcher(s).replaceAll("$0" + indentation());
   if (stringLiteral())   s=StringUtils.replace(s,"'",stringLiteralEscapedApos);
   sql.append(s);
+  separator=false;
+  newline=false;
   return this;
 }
