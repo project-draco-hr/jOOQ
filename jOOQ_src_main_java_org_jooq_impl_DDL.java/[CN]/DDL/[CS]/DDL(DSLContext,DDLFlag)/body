@@ -1,0 +1,5 @@
+{
+  this.ctx=ctx;
+  this.flags=EnumSet.noneOf(DDLFlag.class);
+  for (  DDLFlag flag : flags)   this.flags.add(flag);
+}

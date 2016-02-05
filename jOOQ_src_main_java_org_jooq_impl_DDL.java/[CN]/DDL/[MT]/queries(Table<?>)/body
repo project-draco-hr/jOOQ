@@ -1,7 +1,9 @@
 {
   List<Constraint> constraints=new ArrayList<Constraint>();
-  for (  UniqueKey<?> key : table.getKeys())   if (key.isPrimary())   constraints.add(constraint(key.getName()).primaryKey(key.getFieldsArray()));
- else   constraints.add(constraint(key.getName()).unique(key.getFieldsArray()));
-  for (  ForeignKey<?,?> key : table.getReferences())   constraints.add(constraint(key.getName()).foreignKey(key.getFieldsArray()).references(key.getKey().getTable(),key.getKey().getFieldsArray()));
+  if (flags.contains(TABLE)) {
+    if (flags.contains(PRIMARY_KEY))     for (    UniqueKey<?> key : table.getKeys())     if (key.isPrimary())     constraints.add(constraint(key.getName()).primaryKey(key.getFieldsArray()));
+    if (flags.contains(UNIQUE))     for (    UniqueKey<?> key : table.getKeys())     if (!key.isPrimary())     constraints.add(constraint(key.getName()).unique(key.getFieldsArray()));
+    if (flags.contains(FOREIGN_KEY))     for (    ForeignKey<?,?> key : table.getReferences())     constraints.add(constraint(key.getName()).foreignKey(key.getFieldsArray()).references(key.getKey().getTable(),key.getKey().getFieldsArray()));
+  }
   return DSL.queries(ctx.createTable(table).columns(table.fields()).constraints(constraints));
 }

@@ -1,0 +1,3 @@
+{
+  return ddl(table,DDLFlag.values());
+}

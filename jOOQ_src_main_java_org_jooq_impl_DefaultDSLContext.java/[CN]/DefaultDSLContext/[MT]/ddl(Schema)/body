@@ -1,0 +1,3 @@
+{
+  return ddl(schema,DDLFlag.values());
+}
