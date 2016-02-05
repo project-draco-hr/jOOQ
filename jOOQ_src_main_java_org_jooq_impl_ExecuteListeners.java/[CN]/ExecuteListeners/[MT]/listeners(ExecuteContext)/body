@@ -1,13 +1,9 @@
 {
   List<ExecuteListener> result=new ArrayList<ExecuteListener>();
-  for (  ExecuteListenerProvider provider : ctx.configuration().executeListenerProviders()) {
-    if (provider != null) {
-      result.add(provider.provide());
-    }
-  }
+  for (  ExecuteListenerProvider provider : ctx.configuration().executeListenerProviders())   if (provider != null)   result.add(provider.provide());
   if (!FALSE.equals(ctx.configuration().settings().isExecuteLogging())) {
     result.add(new LoggerListener());
     result.add(new StopWatchListener());
   }
-  return result.toArray(new ExecuteListener[result.size()]);
+  return result.toArray(new ExecuteListener[0]);
 }

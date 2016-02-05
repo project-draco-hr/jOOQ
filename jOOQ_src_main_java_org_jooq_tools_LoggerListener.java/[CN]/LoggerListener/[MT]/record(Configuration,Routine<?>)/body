@@ -4,7 +4,7 @@
   Parameter<?> returnParam=routine.getReturnParameter();
   if (returnParam != null)   fields.add(field(name(returnParam.getName()),returnParam.getDataType()));
   for (  Parameter<?> param : routine.getOutParameters())   fields.add(field(name(param.getName()),param.getDataType()));
-  result=DSL.using(configuration).newRecord(fields.toArray(new Field[fields.size()]));
+  result=DSL.using(configuration).newRecord(fields.toArray(new Field[0]));
   int i=0;
   if (returnParam != null)   result.setValue((Field)fields.get(i++),routine.getValue(returnParam));
   for (  Parameter<?> param : routine.getOutParameters())   result.setValue((Field)fields.get(i++),routine.getValue(param));

@@ -1,7 +1,5 @@
 {
   checkNotClosed();
   List<Object> b=bindings();
-  for (int i=0; i < b.size(); i++) {
-    b.set(i,null);
-  }
+  for (int i=0; i < b.size(); i++)   b.set(i,null);
 }
