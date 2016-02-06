@@ -1,0 +1,2 @@
+CompletionStage<? extends T> other
+Function<? super T,U> fn

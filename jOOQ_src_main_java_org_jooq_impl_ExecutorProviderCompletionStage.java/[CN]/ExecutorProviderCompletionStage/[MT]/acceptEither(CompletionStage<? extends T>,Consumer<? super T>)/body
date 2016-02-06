@@ -1,0 +1,3 @@
+{
+  return of(delegate.acceptEither(other,action),provider);
+}

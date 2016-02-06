@@ -1,0 +1,3 @@
+{
+  return of(delegate.thenAcceptBothAsync(other,action,executor),provider);
+}

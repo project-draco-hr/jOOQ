@@ -1,0 +1,2 @@
+BiFunction<? super T,Throwable,? extends U> fn
+Executor executor

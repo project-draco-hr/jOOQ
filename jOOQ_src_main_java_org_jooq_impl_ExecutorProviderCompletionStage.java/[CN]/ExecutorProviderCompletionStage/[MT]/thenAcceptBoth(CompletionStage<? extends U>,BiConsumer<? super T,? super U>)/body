@@ -1,0 +1,3 @@
+{
+  return of(delegate.thenAcceptBoth(other,action),provider);
+}

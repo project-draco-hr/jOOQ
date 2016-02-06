@@ -1,0 +1,3 @@
+{
+  return of(delegate.handleAsync(fn,executor),provider);
+}

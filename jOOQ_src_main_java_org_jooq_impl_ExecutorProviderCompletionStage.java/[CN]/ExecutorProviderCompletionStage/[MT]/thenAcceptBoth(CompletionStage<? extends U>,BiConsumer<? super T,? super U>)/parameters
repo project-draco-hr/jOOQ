@@ -1,0 +1,2 @@
+CompletionStage<? extends U> other
+BiConsumer<? super T,? super U> action

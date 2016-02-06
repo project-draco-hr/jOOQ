@@ -1,0 +1,3 @@
+CompletionStage<? extends T> other
+Consumer<? super T> action
+Executor executor
