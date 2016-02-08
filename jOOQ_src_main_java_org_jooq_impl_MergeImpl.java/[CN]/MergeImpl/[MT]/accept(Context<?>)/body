@@ -5,8 +5,12 @@ switch (ctx.family()) {
 case H2:
       toSQLH2Merge(ctx);
     break;
+case MARIADB:
+case MYSQL:
+  toSQLMySQLOnDuplicateKeyUpdate(ctx);
+break;
 case POSTGRES:
-  toPostgresInsertOnConflict(ctx);
+toPostgresInsertOnConflict(ctx);
 break;
 default :
 ctx.visit(getStandardMerge());
