@@ -1,25 +1,2 @@
 {
-  T result=null;
-  DefaultTransactionContext ctx=new DefaultTransactionContext(configuration().derive());
-  TransactionProvider provider=ctx.configuration().transactionProvider();
-  try {
-    provider.begin(ctx);
-    result=transactional.run(ctx.configuration());
-    provider.commit(ctx);
-  }
- catch (  Exception cause) {
-    try {
-      provider.rollback(ctx.cause(cause));
-    }
- catch (    Exception suppress) {
-      cause.addSuppressed(suppress);
-    }
-    if (cause instanceof RuntimeException) {
-      throw (RuntimeException)cause;
-    }
- else {
-      throw new DataAccessException("Rollback caused",cause);
-    }
-  }
-  return result;
 }
