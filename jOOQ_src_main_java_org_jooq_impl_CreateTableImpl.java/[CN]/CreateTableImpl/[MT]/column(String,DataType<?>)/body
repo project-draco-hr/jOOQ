@@ -1,5 +1,3 @@
 {
-  columnFields.add(field(name(field),type));
-  columnTypes.add(type);
-  return this;
+  return column(name(field),type);
 }
