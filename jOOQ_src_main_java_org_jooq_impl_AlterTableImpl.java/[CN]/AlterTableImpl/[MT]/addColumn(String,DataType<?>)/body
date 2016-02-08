@@ -1,3 +1,3 @@
 {
-  return addColumn((Field)field(name(field),type),type);
+  return addColumn(name(field),type);
 }
