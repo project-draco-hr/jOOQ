@@ -1,0 +1,3 @@
+{
+  if (onRecordEnd != null)   onRecordEnd.fire(ctx);
+}

@@ -1,0 +1,3 @@
+{
+  if (onRenderStart != null)   onRenderStart.fire(ctx);
+}

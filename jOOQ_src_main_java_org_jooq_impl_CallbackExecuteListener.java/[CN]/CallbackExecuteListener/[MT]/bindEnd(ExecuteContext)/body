@@ -1,0 +1,3 @@
+{
+  if (onBindEnd != null)   onBindEnd.fire(ctx);
+}

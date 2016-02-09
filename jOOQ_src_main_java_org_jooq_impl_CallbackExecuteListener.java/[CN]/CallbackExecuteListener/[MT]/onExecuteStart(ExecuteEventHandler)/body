@@ -1,0 +1,3 @@
+{
+  return new CallbackExecuteListener(onStart,onEnd,onRenderStart,onRenderEnd,onPrepareStart,onPrepareEnd,onBindStart,onBindEnd,newOnExecuteStart,onExecuteEnd,onOutStart,onOutEnd,onFetchStart,onResultStart,onRecordStart,onRecordEnd,onResultEnd,onFetchEnd,onException,onWarning);
+}

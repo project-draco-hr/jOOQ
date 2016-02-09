@@ -1,0 +1,22 @@
+{
+  this.onStart=onStart;
+  this.onEnd=onEnd;
+  this.onRenderStart=onRenderStart;
+  this.onRenderEnd=onRenderEnd;
+  this.onPrepareStart=onPrepareStart;
+  this.onPrepareEnd=onPrepareEnd;
+  this.onBindStart=onBindStart;
+  this.onBindEnd=onBindEnd;
+  this.onExecuteStart=onExecuteStart;
+  this.onExecuteEnd=onExecuteEnd;
+  this.onOutStart=onOUtStart;
+  this.onOutEnd=onOUtEnd;
+  this.onFetchStart=onFetchStart;
+  this.onResultStart=onResultStart;
+  this.onRecordStart=onRecordStart;
+  this.onRecordEnd=onRecordEnd;
+  this.onResultEnd=onResultEnd;
+  this.onFetchEnd=onFetchEnd;
+  this.onException=onException;
+  this.onWarning=onWarning;
+}

@@ -1,0 +1,3 @@
+{
+  if (onWarning != null)   onWarning.fire(ctx);
+}
