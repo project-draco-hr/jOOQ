@@ -1,14 +1,2 @@
 {
-  Tools.title("Displaying execution time using a custom ExecuteListener");
-  ExecuteListener listener=new DefaultExecuteListener(){
-    @Override public void start(    ExecuteContext ctx){
-      ctx.data("time",System.nanoTime());
-    }
-    @Override public void end(    ExecuteContext ctx){
-      Long time=(Long)ctx.data("time");
-      System.out.println("Execution time : " + ((System.nanoTime() - time) / 1000 / 1000.0) + "ms. Query : "+ ctx.sql());
-    }
-  }
-;
-  DSL.using(new DefaultConfiguration().set(SQLDialect.H2).set(new DefaultConnectionProvider(connection())).set(new DefaultExecuteListenerProvider(listener))).select(AUTHOR.ID).from(AUTHOR).fetch();
 }
