@@ -1,0 +1,3 @@
+{
+  super(SQLDialect.DEFAULT,(Class<R>)table.getRecordType(),getQualifiedName(table));
+}

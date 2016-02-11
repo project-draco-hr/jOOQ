@@ -8,8 +8,11 @@
     sb.append(")");
   }
  else   if (db.getUDT(schema,u) != null) {
-    UDTDefinition udt=db.getUDT(schema,u);
-    sb.append(getStrategy().getFullJavaIdentifier(udt));
+    sb.append(getStrategy().getFullJavaIdentifier(db.getUDT(schema,u)));
+    sb.append(".getDataType()");
+  }
+ else   if (db.getTable(schema,u) != null) {
+    sb.append(getStrategy().getFullJavaIdentifier(db.getTable(schema,u)));
     sb.append(".getDataType()");
   }
  else   if (db.getEnum(schema,u) != null) {
