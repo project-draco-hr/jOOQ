@@ -1,0 +1,6 @@
+{
+  file.getParentFile().mkdirs();
+  this.file=file;
+  this.encoding=encoding;
+  this.sb=new StringBuilder();
+}

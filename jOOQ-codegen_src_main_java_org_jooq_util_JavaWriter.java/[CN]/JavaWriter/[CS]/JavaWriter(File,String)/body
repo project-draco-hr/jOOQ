@@ -1,9 +1,3 @@
 {
-  super(file);
-  this.className=file.getName().replaceAll("\\.(java|scala)$","");
-  this.isJava=file.getName().endsWith(".java");
-  this.isScala=file.getName().endsWith(".scala");
-  this.fullyQualifiedTypes=fullyQualifiedTypes == null ? null : Pattern.compile(fullyQualifiedTypes);
-  if (isJava)   tabString("    ");
- else   if (isScala)   tabString("  ");
+  this(file,fullyQualifiedTypes,null);
 }

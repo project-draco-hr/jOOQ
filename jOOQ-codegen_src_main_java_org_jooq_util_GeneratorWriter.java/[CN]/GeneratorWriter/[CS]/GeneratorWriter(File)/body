@@ -1,5 +1,3 @@
 {
-  file.getParentFile().mkdirs();
-  this.file=file;
-  this.sb=new StringBuilder();
+  this(file,null);
 }

@@ -9,14 +9,14 @@
         old=new RandomAccessFile(file,"r");
         byte[] oldBytes=new byte[(int)old.length()];
         old.readFully(oldBytes);
-        oldContent=new String(oldBytes,"UTF-8");
+        oldContent=new String(oldBytes,encoding());
       }
   finally {
         if (old != null)         old.close();
       }
     }
     if (oldContent == null || !oldContent.equals(newContent)) {
-      PrintWriter writer=new PrintWriter(new OutputStreamWriter(new FileOutputStream(file),"UTF-8"));
+      PrintWriter writer=new PrintWriter(new OutputStreamWriter(new FileOutputStream(file),encoding()));
       writer.append(newContent);
       writer.flush();
       writer.close();
