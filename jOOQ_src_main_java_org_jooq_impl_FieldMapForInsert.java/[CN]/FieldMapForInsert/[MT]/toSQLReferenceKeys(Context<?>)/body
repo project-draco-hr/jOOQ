@@ -1,23 +1,18 @@
 {
+  if (size() == 0)   return;
   boolean indent=(size() > 1);
-  ctx.sql('(');
-  if (indent) {
-    ctx.formatIndentStart();
-  }
+  ctx.sql(" (");
+  if (indent)   ctx.formatIndentStart();
   boolean qualify=ctx.qualify();
   ctx.qualify(false);
   String separator="";
   for (  Field<?> field : keySet()) {
     ctx.sql(separator);
-    if (indent) {
-      ctx.formatNewLine();
-    }
+    if (indent)     ctx.formatNewLine();
     ctx.visit(field);
     separator=", ";
   }
   ctx.qualify(qualify);
-  if (indent) {
-    ctx.formatIndentEnd().formatNewLine();
-  }
+  if (indent)   ctx.formatIndentEnd().formatNewLine();
   ctx.sql(')');
 }

@@ -19,7 +19,7 @@
   }
   ctx.end(MERGE_DELETE_WHERE).end(MERGE_WHEN_MATCHED_THEN_UPDATE).start(MERGE_WHEN_NOT_MATCHED_THEN_INSERT);
   if (notMatchedInsert != null) {
-    ctx.formatSeparator().keyword("when not matched then insert").sql(' ');
+    ctx.formatSeparator().keyword("when not matched then insert");
     notMatchedInsert.toSQLReferenceKeys(ctx);
     ctx.formatSeparator().start(MERGE_VALUES).keyword("values").sql(' ').visit(notMatchedInsert).end(MERGE_VALUES);
   }

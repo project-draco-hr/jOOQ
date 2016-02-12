@@ -1,5 +1,3 @@
 {
-  for (  Field<?> field : fields) {
-    put(field,null);
-  }
+  for (  Field<?> field : fields)   put(field,null);
 }

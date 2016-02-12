@@ -2,7 +2,6 @@
   boolean declareTables=ctx.declareTables();
   ctx.start(INSERT_INSERT_INTO).keyword("insert").sql(' ').keyword((onDuplicateKeyIgnore && asList(MARIADB,MYSQL).contains(ctx.family())) ? "ignore " : (onDuplicateKeyIgnore && SQLDialect.SQLITE == ctx.family()) ? "or ignore " : "").keyword("into").sql(' ').declareTables(true).visit(table).declareTables(declareTables);
   if (insertMaps.isExecutable()) {
-    ctx.sql(' ');
     insertMaps.insertMaps.get(0).toSQLReferenceKeys(ctx);
   }
   ctx.end(INSERT_INSERT_INTO);
