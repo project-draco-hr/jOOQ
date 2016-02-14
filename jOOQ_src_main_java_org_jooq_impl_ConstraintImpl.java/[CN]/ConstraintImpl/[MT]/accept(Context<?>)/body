@@ -1,7 +1,10 @@
 {
-  ctx.keyword("constraint").sql(' ').visit(name).formatIndentStart().formatSeparator();
-  if (ctx.data(DATA_DROP_CONSTRAINT) == null) {
+  if (ctx.data(DATA_CONSTRAINT_REFERENCE) != null) {
+    ctx.visit(name);
+  }
+ else {
     boolean qualify=ctx.qualify();
+    ctx.keyword("constraint").sql(' ').visit(name).formatIndentStart().formatSeparator();
     if (unique != null) {
       ctx.keyword("unique").sql(" (").qualify(false).visit(new QueryPartList<Field<?>>(unique)).qualify(qualify).sql(')');
     }
@@ -16,6 +19,6 @@
  else     if (check != null) {
       ctx.keyword("check").sql(" (").qualify(false).visit(check).qualify(qualify).sql(')');
     }
+    ctx.formatIndentEnd();
   }
-  ctx.formatIndentEnd();
 }

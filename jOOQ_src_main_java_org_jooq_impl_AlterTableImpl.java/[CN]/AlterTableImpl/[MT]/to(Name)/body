@@ -1,3 +1,5 @@
 {
-  return to(field(newName));
+  if (renameColumn != null)   return to(field(newName));
+ else   if (renameConstraint != null)   return to(constraint(newName));
+ else   throw new IllegalStateException();
 }

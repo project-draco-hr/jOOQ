@@ -18,9 +18,18 @@ break;
 }
 ctx.qualify(qualify).end(ALTER_TABLE_RENAME_COLUMN);
 }
+ else if (renameConstraint != null) {
+boolean qualify=ctx.qualify();
+ctx.start(ALTER_TABLE_RENAME_CONSTRAINT);
+ctx.data(DATA_CONSTRAINT_REFERENCE,true);
+ctx.qualify(false).keyword("rename constraint").sql(' ').visit(renameConstraint).formatSeparator().keyword("to").sql(' ').visit(renameConstraintTo).qualify(qualify);
+ctx.data().remove(DATA_CONSTRAINT_REFERENCE);
+ctx.end(ALTER_TABLE_RENAME_CONSTRAINT);
+}
  else if (addColumn != null) {
+boolean qualify=ctx.qualify();
 ctx.start(ALTER_TABLE_ADD).keyword("add").sql(' ');
-ctx.qualify(false).visit(addColumn).sql(' ').qualify(true);
+ctx.qualify(false).visit(addColumn).sql(' ').qualify(qualify);
 toSQLDDLTypeDeclaration(ctx,addColumnType);
 if (!addColumnType.nullable()) {
 ctx.sql(' ').keyword("not null");
@@ -31,8 +40,9 @@ ctx.sql(' ').keyword("null");
 ctx.end(ALTER_TABLE_ADD);
 }
  else if (addConstraint != null) {
+boolean qualify=ctx.qualify();
 ctx.start(ALTER_TABLE_ADD);
-ctx.keyword("add").sql(' ').visit(addConstraint);
+ctx.keyword("add").sql(' ').qualify(false).visit(addConstraint).qualify(qualify);
 ctx.end(ALTER_TABLE_ADD);
 }
  else if (alterColumn != null) {
@@ -100,9 +110,9 @@ ctx.end(ALTER_TABLE_DROP);
 }
  else if (dropConstraint != null) {
 ctx.start(ALTER_TABLE_DROP);
-ctx.data(DATA_DROP_CONSTRAINT,true);
-ctx.keyword("drop").sql(' ').visit(dropConstraint);
-ctx.data().remove(DATA_DROP_CONSTRAINT);
+ctx.data(DATA_CONSTRAINT_REFERENCE,true);
+ctx.keyword("drop constraint").sql(' ').visit(dropConstraint);
+ctx.data().remove(DATA_CONSTRAINT_REFERENCE);
 ctx.end(ALTER_TABLE_DROP);
 }
 ctx.formatIndentEnd();

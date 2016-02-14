@@ -1,0 +1,3 @@
+{
+  return renameConstraint(name(oldName));
+}

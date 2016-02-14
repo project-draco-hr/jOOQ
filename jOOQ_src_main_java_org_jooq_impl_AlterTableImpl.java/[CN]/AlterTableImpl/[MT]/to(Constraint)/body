@@ -1,0 +1,5 @@
+{
+  if (renameConstraint != null)   renameConstraintTo=newName;
+ else   throw new IllegalStateException();
+  return this;
+}
