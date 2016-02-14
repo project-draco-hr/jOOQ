@@ -2,49 +2,63 @@
   SQLDialect family=ctx.configuration().dialect().family();
   ctx.start(ALTER_TABLE_TABLE).keyword("alter table").sql(' ').visit(table).end(ALTER_TABLE_TABLE).formatIndentStart().formatSeparator();
   if (renameTo != null) {
-    ctx.start(ALTER_TABLE_RENAME_TO).keyword("rename to").sql(' ').visit(renameTo).end(ALTER_TABLE_RENAME_TO);
+    boolean qualify=ctx.qualify();
+    ctx.start(ALTER_TABLE_RENAME).qualify(false).keyword("rename to").sql(' ').visit(renameTo).qualify(qualify).end(ALTER_TABLE_RENAME);
   }
- else   if (addColumn != null) {
-    ctx.start(ALTER_TABLE_ADD).keyword("add").sql(' ');
-    ctx.qualify(false).visit(addColumn).sql(' ').qualify(true);
-    toSQLDDLTypeDeclaration(ctx,addColumnType);
-    if (!addColumnType.nullable()) {
-      ctx.sql(' ').keyword("not null");
-    }
- else     if (!asList(DERBY,FIREBIRD).contains(family)) {
-      ctx.sql(' ').keyword("null");
-    }
-    ctx.end(ALTER_TABLE_ADD);
-  }
- else   if (addConstraint != null) {
-    ctx.start(ALTER_TABLE_ADD);
-    ctx.keyword("add").sql(' ').visit(addConstraint);
-    ctx.end(ALTER_TABLE_ADD);
-  }
- else   if (alterColumn != null) {
-    ctx.start(ALTER_TABLE_ALTER);
+ else   if (renameColumn != null) {
+    boolean qualify=ctx.qualify();
+    ctx.start(ALTER_TABLE_RENAME_COLUMN).qualify(false);
+switch (ctx.family()) {
+case H2:
+      ctx.keyword("alter column").sql(' ').visit(renameColumn).formatSeparator().keyword("rename to").sql(' ').visit(renameColumnTo);
+    break;
+default :
+  ctx.keyword("rename column").sql(' ').visit(renameColumn).formatSeparator().keyword("to").sql(' ').visit(renameColumnTo);
+break;
+}
+ctx.qualify(qualify).end(ALTER_TABLE_RENAME_COLUMN);
+}
+ else if (addColumn != null) {
+ctx.start(ALTER_TABLE_ADD).keyword("add").sql(' ');
+ctx.qualify(false).visit(addColumn).sql(' ').qualify(true);
+toSQLDDLTypeDeclaration(ctx,addColumnType);
+if (!addColumnType.nullable()) {
+ctx.sql(' ').keyword("not null");
+}
+ else if (!asList(DERBY,FIREBIRD).contains(family)) {
+ctx.sql(' ').keyword("null");
+}
+ctx.end(ALTER_TABLE_ADD);
+}
+ else if (addConstraint != null) {
+ctx.start(ALTER_TABLE_ADD);
+ctx.keyword("add").sql(' ').visit(addConstraint);
+ctx.end(ALTER_TABLE_ADD);
+}
+ else if (alterColumn != null) {
+ctx.start(ALTER_TABLE_ALTER);
 switch (family) {
 case CUBRID:
 case MARIADB:
 case MYSQL:
 {
-        if (alterColumnDefault == null) {
-          ctx.keyword("change column").sql(' ').qualify(false).visit(alterColumn).qualify(true);
-        }
+if (alterColumnDefault == null) {
+  ctx.keyword("change column").sql(' ').qualify(false).visit(alterColumn).qualify(true);
+}
  else {
-          ctx.keyword("alter column");
-        }
-        break;
-      }
+  ctx.keyword("alter column");
+}
+break;
+}
 default :
-    ctx.keyword("alter");
-  break;
+ctx.keyword("alter");
+break;
 }
 ctx.sql(' ').qualify(false).visit(alterColumn).qualify(true);
 if (alterColumnType != null) {
 switch (family) {
 case DERBY:
-  ctx.sql(' ').keyword("set data type");
+ctx.sql(' ').keyword("set data type");
 break;
 case POSTGRES:
 ctx.sql(' ').keyword("type");

@@ -1,0 +1,5 @@
+{
+  if (renameColumn != null)   renameColumnTo=newName;
+ else   throw new IllegalStateException();
+  return this;
+}

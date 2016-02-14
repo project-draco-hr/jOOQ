@@ -1,0 +1,4 @@
+{
+  renameColumn=oldName;
+  return this;
+}
