@@ -1,5 +1,5 @@
 {
-  SQLDialect family=ctx.configuration().dialect().family();
+  SQLDialect family=ctx.family();
   ctx.start(ALTER_TABLE_TABLE).keyword("alter table").sql(' ').visit(table).end(ALTER_TABLE_TABLE).formatIndentStart().formatSeparator();
   if (renameTo != null) {
     boolean qualify=ctx.qualify();

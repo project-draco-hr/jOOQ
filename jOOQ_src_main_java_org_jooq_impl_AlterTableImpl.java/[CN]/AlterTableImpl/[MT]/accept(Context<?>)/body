@@ -1,6 +1,4 @@
 {
   SQLDialect family=ctx.configuration().dialect().family();
-{
-    accept0(ctx);
-  }
+  accept0(ctx);
 }
