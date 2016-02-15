@@ -1,6 +1,7 @@
 {
   SQLDialect family=ctx.family();
-  ctx.start(ALTER_TABLE_TABLE).keyword("alter table").sql(' ').visit(table).end(ALTER_TABLE_TABLE).formatIndentStart().formatSeparator();
+  boolean omitAlterTable=family == HSQLDB && renameConstraint != null;
+  if (!omitAlterTable)   ctx.start(ALTER_TABLE_TABLE).keyword("alter table").sql(' ').visit(table).end(ALTER_TABLE_TABLE).formatIndentStart().formatSeparator();
   if (renameTo != null) {
     boolean qualify=ctx.qualify();
     ctx.start(ALTER_TABLE_RENAME).qualify(false).keyword("rename to").sql(' ').visit(renameTo).qualify(qualify).end(ALTER_TABLE_RENAME);
@@ -10,6 +11,7 @@
     ctx.start(ALTER_TABLE_RENAME_COLUMN).qualify(false);
 switch (ctx.family()) {
 case H2:
+case HSQLDB:
       ctx.keyword("alter column").sql(' ').visit(renameColumn).formatSeparator().keyword("rename to").sql(' ').visit(renameColumnTo);
     break;
 default :
@@ -22,7 +24,12 @@ ctx.qualify(qualify).end(ALTER_TABLE_RENAME_COLUMN);
 boolean qualify=ctx.qualify();
 ctx.start(ALTER_TABLE_RENAME_CONSTRAINT);
 ctx.data(DATA_CONSTRAINT_REFERENCE,true);
+if (family == HSQLDB) {
+ctx.qualify(false).keyword("alter constraint").sql(' ').visit(renameConstraint).formatSeparator().keyword("rename to").sql(' ').visit(renameConstraintTo).qualify(qualify);
+}
+ else {
 ctx.qualify(false).keyword("rename constraint").sql(' ').visit(renameConstraint).formatSeparator().keyword("to").sql(' ').visit(renameConstraintTo).qualify(qualify);
+}
 ctx.data().remove(DATA_CONSTRAINT_REFERENCE);
 ctx.end(ALTER_TABLE_RENAME_CONSTRAINT);
 }
@@ -115,5 +122,5 @@ ctx.keyword("drop constraint").sql(' ').visit(dropConstraint);
 ctx.data().remove(DATA_CONSTRAINT_REFERENCE);
 ctx.end(ALTER_TABLE_DROP);
 }
-ctx.formatIndentEnd();
+if (!omitAlterTable) ctx.formatIndentEnd();
 }
