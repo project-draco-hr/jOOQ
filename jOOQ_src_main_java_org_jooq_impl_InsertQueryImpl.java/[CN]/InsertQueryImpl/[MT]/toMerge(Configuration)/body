@@ -1,6 +1,6 @@
 {
   if (table.getPrimaryKey() != null) {
-    MergeOnConditionStep<R> on=create(configuration).mergeInto(table).usingDual().on(matchByPrimaryKey());
+    MergeOnConditionStep<R> on=create(configuration).mergeInto(table).usingDual().on(matchByPrimaryKey(insertMaps.getMap()));
     MergeNotMatchedStep<R> notMatched=on;
     if (onDuplicateKeyUpdate) {
       notMatched=on.whenMatchedThenUpdate().set(updateMap);
