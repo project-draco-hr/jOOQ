@@ -47,6 +47,7 @@ ctx.start(INSERT_ON_DUPLICATE_KEY_UPDATE).end(INSERT_ON_DUPLICATE_KEY_UPDATE);
 break;
 }
 case POSTGRES_9_5:
+case POSTGRES:
 {
 toSQLInsert(ctx);
 ctx.formatSeparator().start(INSERT_ON_DUPLICATE_KEY_UPDATE).keyword("on conflict do nothing").end(INSERT_ON_DUPLICATE_KEY_UPDATE);
