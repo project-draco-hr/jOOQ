@@ -1,5 +1,5 @@
 {
-  Timestamp value=outParameters().getValue(translate(parameterIndex),Timestamp.class);
+  Timestamp value=outParameters().get(translate(parameterIndex),Timestamp.class);
   resultWasNull=value == null;
   return value;
 }

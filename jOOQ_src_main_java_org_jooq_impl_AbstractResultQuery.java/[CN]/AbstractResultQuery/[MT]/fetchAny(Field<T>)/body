@@ -1,4 +1,4 @@
 {
   R record=fetchAny();
-  return record == null ? null : record.getValue(field);
+  return record == null ? null : record.get(field);
 }

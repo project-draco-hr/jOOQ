@@ -6,7 +6,7 @@
   for (  R record : this) {
     List<Object> keyValueList=new ArrayList<Object>();
     for (    Field<?> key : keys) {
-      keyValueList.add(record.getValue(key));
+      keyValueList.add(record.get(key));
     }
     if (map.put(keyValueList,mapper.map(record)) != null) {
       throw new InvalidResultException("Key list " + keyValueList + " is not unique in Result for "+ this);

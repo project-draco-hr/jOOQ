@@ -13,15 +13,15 @@
     schemas.put(schema.getName(),schema);
   }
   for (  Entry<Record,Result<Record>> entry : groups.entrySet()) {
-    Schema schema=schemas.get(entry.getKey().getValue(1));
-    String pkName=entry.getKey().getValue(12,String.class);
-    Table<Record> pkTable=(Table<Record>)schema.getTable(entry.getKey().getValue(2,String.class));
+    Schema schema=schemas.get(entry.getKey().get(1));
+    String pkName=entry.getKey().get(12,String.class);
+    Table<Record> pkTable=(Table<Record>)schema.getTable(entry.getKey().get(2,String.class));
     TableField<Record,?>[] pkFields=new TableField[entry.getValue().size()];
     TableField<Record,?>[] fkFields=new TableField[entry.getValue().size()];
     for (int i=0; i < entry.getValue().size(); i++) {
       Record record=entry.getValue().get(i);
-      pkFields[i]=(TableField<Record,?>)pkTable.field(record.getValue(3,String.class));
-      fkFields[i]=(TableField<Record,?>)field(record.getValue(7,String.class));
+      pkFields[i]=(TableField<Record,?>)pkTable.field(record.get(3,String.class));
+      fkFields[i]=(TableField<Record,?>)field(record.get(7,String.class));
     }
     references.add(new ReferenceImpl<Record,Record>(new MetaPrimaryKey(pkTable,pkName,pkFields),this,fkFields));
   }

@@ -1,12 +1,12 @@
 {
   Result<Record> result=create().fetch(getConnection().getMetaData().getExportedKeys(null,null,null)).sortAsc("key_seq").sortAsc("fk_name").sortAsc("fktable_name").sortAsc("fktable_schem");
   for (  Record record : result) {
-    SchemaDefinition foreignKeySchema=getSchema(record.getValue("fktable_schem",String.class));
-    SchemaDefinition uniqueKeySchema=getSchema(record.getValue("pktable_schem",String.class));
-    String foreignKey=record.getValue("fk_name",String.class);
-    String foreignKeyTable=record.getValue("fktable_name",String.class);
-    String foreignKeyColumn=record.getValue("fkcolumn_name",String.class);
-    String uniqueKey=record.getValue("pk_name",String.class);
+    SchemaDefinition foreignKeySchema=getSchema(record.get("fktable_schem",String.class));
+    SchemaDefinition uniqueKeySchema=getSchema(record.get("pktable_schem",String.class));
+    String foreignKey=record.get("fk_name",String.class);
+    String foreignKeyTable=record.get("fktable_name",String.class);
+    String foreignKeyColumn=record.get("fkcolumn_name",String.class);
+    String uniqueKey=record.get("pk_name",String.class);
     TableDefinition referencingTable=getTable(foreignKeySchema,foreignKeyTable);
     if (referencingTable != null) {
       ColumnDefinition referencingColumn=referencingTable.getColumn(foreignKeyColumn);

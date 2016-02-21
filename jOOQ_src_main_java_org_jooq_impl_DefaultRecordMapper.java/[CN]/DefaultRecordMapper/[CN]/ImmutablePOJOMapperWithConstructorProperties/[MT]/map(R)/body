@@ -2,20 +2,20 @@
   try {
     for (int i=0; i < fields.length; i++) {
       if (propertyIndexes[i] != null) {
-        parameterValues[propertyIndexes[i]]=record.getValue(i);
+        parameterValues[propertyIndexes[i]]=record.get(i);
       }
  else {
         for (        java.lang.reflect.Field member : members[i]) {
           int index=propertyNames.indexOf(member.getName());
           if (index >= 0) {
-            parameterValues[index]=record.getValue(i);
+            parameterValues[index]=record.get(i);
           }
         }
         if (methods[i] != null) {
           String name=getPropertyName(methods[i].getName());
           int index=propertyNames.indexOf(name);
           if (index >= 0) {
-            parameterValues[index]=record.getValue(i);
+            parameterValues[index]=record.get(i);
           }
         }
       }

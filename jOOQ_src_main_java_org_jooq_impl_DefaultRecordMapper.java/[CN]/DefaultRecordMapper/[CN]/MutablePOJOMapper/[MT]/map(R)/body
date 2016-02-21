@@ -9,13 +9,13 @@
       }
       for (      java.lang.reflect.Method method : methods[i]) {
         Class<?> mType=method.getParameterTypes()[0];
-        Object value=record.getValue(i,mType);
+        Object value=record.get(i,mType);
         if (value instanceof Collection && List.class.isAssignableFrom(mType)) {
           Class componentType=(Class)((ParameterizedType)method.getGenericParameterTypes()[0]).getActualTypeArguments()[0];
           method.invoke(result,Convert.convert((Collection)value,componentType));
         }
  else {
-          method.invoke(result,record.getValue(i,mType));
+          method.invoke(result,record.get(i,mType));
         }
       }
     }

@@ -2,32 +2,32 @@
   Class<?> mType=member.getType();
   if (mType.isPrimitive()) {
     if (mType == byte.class) {
-      map(record.getValue(index,byte.class),result,member);
+      map(record.get(index,byte.class),result,member);
     }
  else     if (mType == short.class) {
-      map(record.getValue(index,short.class),result,member);
+      map(record.get(index,short.class),result,member);
     }
  else     if (mType == int.class) {
-      map(record.getValue(index,int.class),result,member);
+      map(record.get(index,int.class),result,member);
     }
  else     if (mType == long.class) {
-      map(record.getValue(index,long.class),result,member);
+      map(record.get(index,long.class),result,member);
     }
  else     if (mType == float.class) {
-      map(record.getValue(index,float.class),result,member);
+      map(record.get(index,float.class),result,member);
     }
  else     if (mType == double.class) {
-      map(record.getValue(index,double.class),result,member);
+      map(record.get(index,double.class),result,member);
     }
  else     if (mType == boolean.class) {
-      map(record.getValue(index,boolean.class),result,member);
+      map(record.get(index,boolean.class),result,member);
     }
  else     if (mType == char.class) {
-      map(record.getValue(index,char.class),result,member);
+      map(record.get(index,char.class),result,member);
     }
   }
  else {
-    Object value=record.getValue(index,mType);
+    Object value=record.get(index,mType);
     if (value instanceof Collection && List.class.isAssignableFrom(mType)) {
       Class componentType=(Class)((ParameterizedType)member.getGenericType()).getActualTypeArguments()[0];
       member.set(result,Convert.convert((Collection)value,componentType));

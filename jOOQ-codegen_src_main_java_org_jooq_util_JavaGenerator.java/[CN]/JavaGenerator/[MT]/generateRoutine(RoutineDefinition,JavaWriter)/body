@@ -128,12 +128,12 @@
       out.tab(1).javadoc("Get the <code>%s</code> parameter OUT value from the routine",paramName);
       if (scala) {
         out.tab(1).println("def %s : %s = {",paramGetter,paramType);
-        out.tab(2).println("getValue(%s.%s)",className,paramId);
+        out.tab(2).println("get(%s.%s)",className,paramId);
         out.tab(1).println("}");
       }
  else {
         out.tab(1).println("public %s %s() {",paramType,paramGetter);
-        out.tab(2).println("return getValue(%s);",paramId);
+        out.tab(2).println("return get(%s);",paramId);
         out.tab(1).println("}");
       }
     }

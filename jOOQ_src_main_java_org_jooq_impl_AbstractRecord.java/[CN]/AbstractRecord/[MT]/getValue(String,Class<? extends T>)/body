@@ -1,3 +1,3 @@
 {
-  return Convert.convert(getValue(fieldName),type);
+  return get(fieldName,type);
 }

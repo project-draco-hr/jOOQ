@@ -1,4 +1,4 @@
 {
-  Double value=getValue(columnIndex,Double.class);
+  Double value=get(columnIndex,Double.class);
   return wasNull ? 0.0 : value;
 }

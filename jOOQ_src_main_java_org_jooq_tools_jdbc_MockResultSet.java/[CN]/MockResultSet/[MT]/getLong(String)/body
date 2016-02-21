@@ -1,4 +1,4 @@
 {
-  Long value=getValue(columnLabel,Long.class);
+  Long value=get(columnLabel,Long.class);
   return wasNull ? 0L : value;
 }

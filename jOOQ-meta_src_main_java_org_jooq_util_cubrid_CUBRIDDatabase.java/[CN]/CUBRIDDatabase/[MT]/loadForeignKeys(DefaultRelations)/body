@@ -6,10 +6,10 @@
     DatabaseMetaData meta=connection.getMetaData();
     for (    String table : create().selectDistinct(DB_INDEX.CLASS_NAME).from(DB_INDEX).where(DB_INDEX.IS_FOREIGN_KEY.isTrue()).fetch(DB_INDEX.CLASS_NAME)) {
       for (      Record record : create().fetch(meta.getImportedKeys(null,null,table))) {
-        String foreignKeyName=record.getValue("FKTABLE_NAME",String.class) + "__" + record.getValue("FK_NAME",String.class);
-        String foreignKeyTableName=record.getValue("FKTABLE_NAME",String.class);
-        String foreignKeyColumnName=record.getValue("FKCOLUMN_NAME",String.class);
-        String uniqueKeyName=record.getValue("PKTABLE_NAME",String.class) + "__" + record.getValue("PK_NAME",String.class);
+        String foreignKeyName=record.get("FKTABLE_NAME",String.class) + "__" + record.get("FK_NAME",String.class);
+        String foreignKeyTableName=record.get("FKTABLE_NAME",String.class);
+        String foreignKeyColumnName=record.get("FKCOLUMN_NAME",String.class);
+        String uniqueKeyName=record.get("PKTABLE_NAME",String.class) + "__" + record.get("PK_NAME",String.class);
         TableDefinition referencingTable=getTable(getSchemata().get(0),foreignKeyTableName);
         if (referencingTable != null) {
           ColumnDefinition column=referencingTable.getColumn(foreignKeyColumnName);

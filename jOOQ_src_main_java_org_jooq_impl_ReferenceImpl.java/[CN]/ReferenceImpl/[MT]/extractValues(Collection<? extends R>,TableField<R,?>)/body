@@ -1,7 +1,5 @@
 {
   List<Object> result=new ArrayList<Object>();
-  for (  R record : records) {
-    result.add(record.getValue(field2));
-  }
+  for (  R record : records)   result.add(record.get(field2));
   return result;
 }

@@ -1,4 +1,4 @@
 {
-  final Object result=getValue(index);
+  final Object result=get(index);
   return result == null ? defaultValue : result;
 }

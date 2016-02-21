@@ -1,5 +1,5 @@
 {
   int size=record.size();
   if (size != 1)   throw new MappingException("Cannot map multi-column record of degree " + size + " to value type "+ type);
-  return record.getValue(0,type);
+  return record.get(0,type);
 }

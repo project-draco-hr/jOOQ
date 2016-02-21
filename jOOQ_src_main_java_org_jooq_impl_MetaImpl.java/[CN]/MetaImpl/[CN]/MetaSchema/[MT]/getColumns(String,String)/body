@@ -9,7 +9,7 @@
     for (    Entry<Record,Result<Record>> entry : groups.entrySet()) {
       Record key=entry.getKey();
       Result<Record> value=entry.getValue();
-      columnCache.put(name(key.getValue(inverseSchemaCatalog ? tableCat : tableSchem),key.getValue(tableName)),value);
+      columnCache.put(name(key.get(inverseSchemaCatalog ? tableCat : tableSchem),key.get(tableName)),value);
     }
   }
   if (columnCache != null) {

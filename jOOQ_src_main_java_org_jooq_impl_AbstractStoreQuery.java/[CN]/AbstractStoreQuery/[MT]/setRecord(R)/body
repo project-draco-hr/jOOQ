@@ -1,7 +1,3 @@
 {
-  for (int i=0; i < record.size(); i++) {
-    if (record.changed(i)) {
-      addValue((Field)record.field(i),record.getValue(i));
-    }
-  }
+  for (int i=0; i < record.size(); i++)   if (record.changed(i))   addValue((Field)record.field(i),record.get(i));
 }

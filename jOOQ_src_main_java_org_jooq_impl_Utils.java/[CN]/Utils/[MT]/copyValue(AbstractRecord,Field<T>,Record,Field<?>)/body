@@ -2,7 +2,7 @@
   DataType<T> targetType=targetField.getDataType();
   int targetIndex=indexOrFail(target.fieldsRow(),targetField);
   int sourceIndex=indexOrFail(source.fieldsRow(),sourceField);
-  target.values[targetIndex]=targetType.convert(source.getValue(sourceIndex));
+  target.values[targetIndex]=targetType.convert(source.get(sourceIndex));
   target.originals[targetIndex]=targetType.convert(source.original(sourceIndex));
   target.changed.set(targetIndex,source.changed(sourceIndex));
 }

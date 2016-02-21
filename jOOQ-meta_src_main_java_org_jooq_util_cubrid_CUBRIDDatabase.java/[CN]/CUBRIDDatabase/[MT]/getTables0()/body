@@ -1,7 +1,7 @@
 {
   List<TableDefinition> result=new ArrayList<TableDefinition>();
   for (  Record record : create().select(DB_CLASS.CLASS_NAME).from(DB_CLASS).orderBy(DB_CLASS.CLASS_NAME.asc()).fetch()) {
-    String name=record.getValue(DB_CLASS.CLASS_NAME);
+    String name=record.get(DB_CLASS.CLASS_NAME);
     CUBRIDTableDefinition table=new CUBRIDTableDefinition(getSchemata().get(0),name,null);
     result.add(table);
   }

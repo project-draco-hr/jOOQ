@@ -3,7 +3,7 @@
   int size=fields.size();
   for (int i=0; i < size; i++) {
     Field<?> field=fields.field(i);
-    if (map.put(field.getName(),getValue(i)) != null) {
+    if (map.put(field.getName(),get(i)) != null) {
       throw new InvalidResultException("Field " + field.getName() + " is not unique in Record : "+ this);
     }
   }

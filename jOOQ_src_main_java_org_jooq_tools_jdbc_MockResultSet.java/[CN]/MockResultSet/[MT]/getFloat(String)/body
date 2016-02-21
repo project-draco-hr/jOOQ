@@ -1,4 +1,4 @@
 {
-  Float value=getValue(columnLabel,Float.class);
+  Float value=get(columnLabel,Float.class);
   return wasNull ? 0.0f : value;
 }

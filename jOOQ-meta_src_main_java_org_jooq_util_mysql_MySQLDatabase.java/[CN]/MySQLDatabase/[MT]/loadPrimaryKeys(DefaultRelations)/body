@@ -1,9 +1,9 @@
 {
   for (  Record record : fetchKeys(true)) {
-    SchemaDefinition schema=getSchema(record.getValue(Statistics.TABLE_SCHEMA));
-    String constraintName=record.getValue(Statistics.INDEX_NAME);
-    String tableName=record.getValue(Statistics.TABLE_NAME);
-    String columnName=record.getValue(Statistics.COLUMN_NAME);
+    SchemaDefinition schema=getSchema(record.get(Statistics.TABLE_SCHEMA));
+    String constraintName=record.get(Statistics.INDEX_NAME);
+    String tableName=record.get(Statistics.TABLE_NAME);
+    String columnName=record.get(Statistics.COLUMN_NAME);
     String key=getKeyName(tableName,constraintName);
     TableDefinition table=getTable(schema,tableName);
     if (table != null) {

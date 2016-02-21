@@ -1,5 +1,5 @@
 {
   DefaultBindingGetSQLInputContext<T> out=new DefaultBindingGetSQLInputContext<T>(configuration,data,stream);
   field.getBinding().get(out);
-  setValue(field,out.value());
+  set(field,out.value());
 }

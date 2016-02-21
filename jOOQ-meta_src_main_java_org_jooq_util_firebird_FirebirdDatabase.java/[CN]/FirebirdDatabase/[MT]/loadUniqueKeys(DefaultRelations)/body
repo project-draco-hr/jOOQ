@@ -1,8 +1,8 @@
 {
   for (  Record record : fetchKeys("UNIQUE")) {
-    String tableName=record.getValue(RDB$RELATION_CONSTRAINTS.RDB$RELATION_NAME.trim());
-    String fieldName=record.getValue(RDB$INDEX_SEGMENTS.RDB$FIELD_NAME.trim());
-    String key=record.getValue(RDB$RELATION_CONSTRAINTS.RDB$CONSTRAINT_NAME.trim());
+    String tableName=record.get(RDB$RELATION_CONSTRAINTS.RDB$RELATION_NAME.trim());
+    String fieldName=record.get(RDB$INDEX_SEGMENTS.RDB$FIELD_NAME.trim());
+    String key=record.get(RDB$RELATION_CONSTRAINTS.RDB$CONSTRAINT_NAME.trim());
     TableDefinition td=getTable(this.getSchemata().get(0),tableName);
     if (td != null) {
       ColumnDefinition cd=td.getColumn(fieldName);

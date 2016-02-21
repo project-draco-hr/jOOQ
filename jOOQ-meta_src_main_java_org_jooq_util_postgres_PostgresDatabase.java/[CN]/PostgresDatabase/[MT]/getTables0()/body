@@ -3,13 +3,13 @@
   Map<Name,PostgresTableDefinition> map=new HashMap<Name,PostgresTableDefinition>();
   Select<Record6<String,String,String,Boolean,Boolean,String>> empty=select(inline(""),inline(""),inline(""),inline(false),inline(false),inline("")).where(falseCondition());
   for (  Record record : create().select().from(select(TABLES.TABLE_SCHEMA,TABLES.TABLE_NAME,TABLES.TABLE_NAME.as("specific_name"),inline(false).as("table_valued_function"),inline(false).as("materialized_view"),PG_DESCRIPTION.DESCRIPTION).from(TABLES).join(PG_NAMESPACE).on(TABLES.TABLE_SCHEMA.eq(PG_NAMESPACE.NSPNAME)).join(PG_CLASS).on(PG_CLASS.RELNAME.eq(TABLES.TABLE_NAME)).and(PG_CLASS.RELNAMESPACE.eq(oid(PG_NAMESPACE))).leftOuterJoin(PG_DESCRIPTION).on(PG_DESCRIPTION.OBJOID.eq(oid(PG_CLASS))).and(PG_DESCRIPTION.OBJSUBID.eq(0)).where(TABLES.TABLE_SCHEMA.in(getInputSchemata())).and(row(TABLES.TABLE_SCHEMA,TABLES.TABLE_NAME).notIn(select(PG_NAMESPACE.NSPNAME,PG_CLASS.RELNAME).from(PG_CLASS).join(PG_NAMESPACE).on(PG_CLASS.RELNAMESPACE.eq(oid(PG_NAMESPACE))).where(PG_CLASS.RELKIND.eq(inline("m"))))).unionAll(select(PG_NAMESPACE.NSPNAME,PG_CLASS.RELNAME,PG_CLASS.RELNAME,inline(false).as("table_valued_function"),inline(true).as("materialized_view"),PG_DESCRIPTION.DESCRIPTION).from(PG_CLASS).join(PG_NAMESPACE).on(PG_CLASS.RELNAMESPACE.eq(oid(PG_NAMESPACE))).leftOuterJoin(PG_DESCRIPTION).on(PG_DESCRIPTION.OBJOID.eq(oid(PG_CLASS))).and(PG_DESCRIPTION.OBJSUBID.eq(0)).where(PG_NAMESPACE.NSPNAME.in(getInputSchemata())).and(PG_CLASS.RELKIND.eq(inline("m")))).unionAll(tableValuedFunctions() ? select(ROUTINES.ROUTINE_SCHEMA,ROUTINES.ROUTINE_NAME,ROUTINES.SPECIFIC_NAME,inline(true).as("table_valued_function"),inline(false).as("materialized_view"),inline("")).from(ROUTINES).join(PG_NAMESPACE).on(ROUTINES.SPECIFIC_SCHEMA.eq(PG_NAMESPACE.NSPNAME)).join(PG_PROC).on(PG_PROC.PRONAMESPACE.eq(oid(PG_NAMESPACE))).and(PG_PROC.PRONAME.concat("_").concat(oid(PG_PROC)).eq(ROUTINES.SPECIFIC_NAME)).where(ROUTINES.ROUTINE_SCHEMA.in(getInputSchemata())).and(PG_PROC.PRORETSET) : empty).asTable("tables")).orderBy(1,2).fetch()) {
-    SchemaDefinition schema=getSchema(record.getValue(TABLES.TABLE_SCHEMA));
-    String name=record.getValue(TABLES.TABLE_NAME);
-    boolean tableValuedFunction=record.getValue("table_valued_function",boolean.class);
-    boolean materializedView=record.getValue("materialized_view",boolean.class);
-    String comment=record.getValue(PG_DESCRIPTION.DESCRIPTION,String.class);
+    SchemaDefinition schema=getSchema(record.get(TABLES.TABLE_SCHEMA));
+    String name=record.get(TABLES.TABLE_NAME);
+    boolean tableValuedFunction=record.get("table_valued_function",boolean.class);
+    boolean materializedView=record.get("materialized_view",boolean.class);
+    String comment=record.get(PG_DESCRIPTION.DESCRIPTION,String.class);
     if (tableValuedFunction) {
-      result.add(new PostgresTableValuedFunction(schema,name,record.getValue(ROUTINES.SPECIFIC_NAME),comment));
+      result.add(new PostgresTableValuedFunction(schema,name,record.get(ROUTINES.SPECIFIC_NAME),comment));
     }
  else     if (materializedView) {
       result.add(new PostgresMaterializedViewDefinition(schema,name,comment));

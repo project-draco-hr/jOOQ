@@ -1,0 +1,3 @@
+{
+  set(indexOrFail(fields,field),field,value);
+}

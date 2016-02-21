@@ -2,9 +2,7 @@
   List<RowN> rows=new ArrayList<RowN>();
   for (  R record : records) {
     Object[] values=new Object[fields.length];
-    for (int i=0; i < fields.length; i++) {
-      values[i]=record.getValue(fields[i]);
-    }
+    for (int i=0; i < fields.length; i++)     values[i]=record.get(fields[i]);
     rows.add(row(values));
   }
   return rows;

@@ -6,7 +6,7 @@
     result=(Object[])Array.newInstance(componentType,size);
   }
   for (int i=0; i < size; i++) {
-    result[i]=Convert.convert(record.getValue(i),componentType);
+    result[i]=Convert.convert(record.get(i),componentType);
   }
   return (E)result;
 }

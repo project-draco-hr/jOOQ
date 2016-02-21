@@ -22,7 +22,7 @@
     for (    Record record : this) {
       List<Object> list=new ArrayList<Object>();
       for (int index=0; index < fields.fields.length; index++) {
-        list.add(formatJSON0(record.getValue(index)));
+        list.add(formatJSON0(record.get(index)));
       }
       r.add(list);
     }

@@ -1,5 +1,5 @@
 {
-  String value=outParameters().getValue(translate(parameterIndex),String.class);
+  String value=outParameters().get(translate(parameterIndex),String.class);
   resultWasNull=value == null;
   return value;
 }

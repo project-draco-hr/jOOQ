@@ -30,7 +30,7 @@
     for (    Record record : this) {
       writer.append("<record>");
       for (int index=0; index < fields.fields.length; index++) {
-        Object value=record.getValue(index);
+        Object value=record.get(index);
         writer.append("<value field=\"");
         writer.append(escapeXML(fields.fields[index].getName()));
         writer.append("\"");

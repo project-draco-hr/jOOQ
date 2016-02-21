@@ -1,4 +1,4 @@
 {
-  final T result=getValue(fieldName,type);
+  final T result=get(fieldName,type);
   return result == null ? defaultValue : result;
 }

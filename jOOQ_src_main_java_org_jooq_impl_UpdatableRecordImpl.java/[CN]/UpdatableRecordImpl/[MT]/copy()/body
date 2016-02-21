@@ -13,7 +13,7 @@
  * Extracted method to ensure generic type safety.
  */
     private final <T>void setValue(    Record record,    Field<T> field){
-      record.setValue(field,getValue(field));
+      record.set(field,get(field));
     }
   }
 );

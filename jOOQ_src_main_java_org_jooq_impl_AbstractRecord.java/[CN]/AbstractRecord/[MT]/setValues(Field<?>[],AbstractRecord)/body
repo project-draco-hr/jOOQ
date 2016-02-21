@@ -3,7 +3,7 @@
   for (  Field<?> field : fields) {
     int targetIndex=indexOrFail(fieldsRow(),field);
     int sourceIndex=indexOrFail(record.fieldsRow(),field);
-    values[targetIndex]=record.getValue(sourceIndex);
+    values[targetIndex]=record.get(sourceIndex);
     originals[targetIndex]=record.original(sourceIndex);
     changed.set(targetIndex,record.changed(sourceIndex));
   }

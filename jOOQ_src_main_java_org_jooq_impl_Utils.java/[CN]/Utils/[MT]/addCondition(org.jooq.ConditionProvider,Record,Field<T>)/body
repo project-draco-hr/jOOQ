@@ -3,6 +3,6 @@
     provider.addConditions(condition(field,record.original(field)));
   }
  else {
-    provider.addConditions(condition(field,record.getValue(field)));
+    provider.addConditions(condition(field,record.get(field)));
   }
 }

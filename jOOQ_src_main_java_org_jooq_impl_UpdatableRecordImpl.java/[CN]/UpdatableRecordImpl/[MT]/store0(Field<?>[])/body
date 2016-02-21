@@ -6,7 +6,7 @@
   }
  else {
     for (    TableField<R,?> field : keys) {
-      if (changed(field) || (field.getDataType().nullable() == false && getValue(field) == null)) {
+      if (changed(field) || (field.getDataType().nullable() == false && get(field) == null)) {
         executeUpdate=false;
         break;
       }

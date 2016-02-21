@@ -1,9 +1,9 @@
 {
   List<TableDefinition> result=new ArrayList<TableDefinition>();
   for (  Record record : create().select(Sysschemas.SCHEMANAME,Systables.TABLENAME,Systables.TABLEID).from(SYSTABLES).join(SYSSCHEMAS).on(Systables.SCHEMAID.equal(Sysschemas.SCHEMAID)).where(Sysschemas.SCHEMANAME.in(getInputSchemata())).orderBy(Sysschemas.SCHEMANAME,Systables.TABLENAME).fetch()) {
-    SchemaDefinition schema=getSchema(record.getValue(Sysschemas.SCHEMANAME));
-    String name=record.getValue(Systables.TABLENAME);
-    String id=record.getValue(Systables.TABLEID);
+    SchemaDefinition schema=getSchema(record.get(Sysschemas.SCHEMANAME));
+    String name=record.get(Systables.TABLENAME);
+    String id=record.get(Systables.TABLEID);
     DerbyTableDefinition table=new DerbyTableDefinition(schema,name,id);
     result.add(table);
   }

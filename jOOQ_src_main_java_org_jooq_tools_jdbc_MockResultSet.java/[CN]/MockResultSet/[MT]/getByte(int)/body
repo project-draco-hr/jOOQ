@@ -1,4 +1,4 @@
 {
-  Byte value=getValue(columnIndex,Byte.class);
+  Byte value=get(columnIndex,Byte.class);
   return wasNull ? (byte)0 : value;
 }

@@ -23,9 +23,9 @@ return create.fetch(rs,SQLDataType.VARCHAR,SQLDataType.VARCHAR,SQLDataType.VARCH
 );
 List<Table<?>> result=new ArrayList<Table<?>>();
 for (Record table : tables) {
-String catalog=table.getValue(0,String.class);
-String schema=table.getValue(1,String.class);
-String name=table.getValue(2,String.class);
+String catalog=table.get(0,String.class);
+String schema=table.get(1,String.class);
+String name=table.get(2,String.class);
 result.add(new MetaTable(name,this,getColumns(inverseSchemaCatalog ? catalog : schema,name)));
 }
 return result;

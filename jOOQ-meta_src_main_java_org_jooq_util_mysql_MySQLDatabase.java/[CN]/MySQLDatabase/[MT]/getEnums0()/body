@@ -2,12 +2,12 @@
   List<EnumDefinition> result=new ArrayList<EnumDefinition>();
   Result<Record5<String,String,String,String,String>> records=create().select(Columns.TABLE_SCHEMA,Columns.COLUMN_COMMENT,Columns.TABLE_NAME,Columns.COLUMN_NAME,Columns.COLUMN_TYPE).from(COLUMNS).where(Columns.COLUMN_TYPE.like("enum(%)").and(Columns.TABLE_SCHEMA.in(getInputSchemata()))).orderBy(Columns.TABLE_SCHEMA.asc(),Columns.TABLE_NAME.asc(),Columns.COLUMN_NAME.asc()).fetch();
   for (  Record record : records) {
-    SchemaDefinition schema=getSchema(record.getValue(Columns.TABLE_SCHEMA));
-    String comment=record.getValue(Columns.COLUMN_COMMENT);
-    String table=record.getValue(Columns.TABLE_NAME);
-    String column=record.getValue(Columns.COLUMN_NAME);
+    SchemaDefinition schema=getSchema(record.get(Columns.TABLE_SCHEMA));
+    String comment=record.get(Columns.COLUMN_COMMENT);
+    String table=record.get(Columns.TABLE_NAME);
+    String column=record.get(Columns.COLUMN_NAME);
     String name=table + "_" + column;
-    String columnType=record.getValue(Columns.COLUMN_TYPE);
+    String columnType=record.get(Columns.COLUMN_TYPE);
     TableDefinition tableDefinition=getTable(schema,table);
     if (tableDefinition != null) {
       ColumnDefinition columnDefinition=tableDefinition.getColumn(column);

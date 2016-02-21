@@ -11,8 +11,8 @@
     throw new ClassCastException(String.format("Trying to compare incomparable records (type mismatch):\n%s\n%s",this,that));
   }
   for (int i=0; i < size(); i++) {
-    final Object thisValue=getValue(i);
-    final Object thatValue=that.getValue(i);
+    final Object thisValue=get(i);
+    final Object thatValue=that.get(i);
     if (thisValue == null && thatValue == null) {
       continue;
     }

@@ -1,4 +1,4 @@
 {
-  Boolean value=getValue(columnIndex,Boolean.class);
+  Boolean value=get(columnIndex,Boolean.class);
   return wasNull ? false : value;
 }

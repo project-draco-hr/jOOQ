@@ -2,9 +2,7 @@
 switch (context.family()) {
 case POSTGRES:
 {
-      for (      Field<?> field : value.fields()) {
-        context.visit(val(value.getValue(field)));
-      }
+      for (      Field<?> field : value.fields())       context.visit(val(value.get(field)));
       break;
     }
 default :

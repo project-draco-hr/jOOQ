@@ -13,12 +13,12 @@
     Result<?> overloads=entry.getValue();
     for (int i=0; i < overloads.size(); i++) {
       Record record=overloads.get(i);
-      SchemaDefinition schema=getSchema(record.getValue(DB));
-      String name=record.getValue(Proc.NAME);
-      String comment=record.getValue(Proc.COMMENT);
-      String params=new String(record.getValue(Proc.PARAM_LIST));
-      String returns=new String(record.getValue(Proc.RETURNS));
-      ProcType type=record.getValue(Proc.TYPE);
+      SchemaDefinition schema=getSchema(record.get(DB));
+      String name=record.get(Proc.NAME);
+      String comment=record.get(Proc.COMMENT);
+      String params=new String(record.get(Proc.PARAM_LIST));
+      String returns=new String(record.get(Proc.RETURNS));
+      ProcType type=record.get(Proc.TYPE);
       if (overloads.size() > 1) {
         result.add(new MySQLRoutineDefinition(schema,name,comment,params,returns,type,"_" + type.name()));
       }

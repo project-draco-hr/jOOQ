@@ -1,5 +1,5 @@
 {
-  Boolean value=outParameters().getValue(translate(parameterIndex),Boolean.class);
+  Boolean value=outParameters().get(translate(parameterIndex),Boolean.class);
   resultWasNull=value == null;
   return value == null ? false : value;
 }

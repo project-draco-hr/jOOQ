@@ -1,9 +1,9 @@
 {
   for (  Record record : fetchKeys("PRIMARY KEY")) {
-    SchemaDefinition schema=getSchema(record.getValue(Constraints.TABLE_SCHEMA));
-    String tableName=record.getValue(Constraints.TABLE_NAME);
-    String primaryKey=record.getValue(Constraints.CONSTRAINT_NAME);
-    String columnName=record.getValue(Indexes.COLUMN_NAME);
+    SchemaDefinition schema=getSchema(record.get(Constraints.TABLE_SCHEMA));
+    String tableName=record.get(Constraints.TABLE_NAME);
+    String primaryKey=record.get(Constraints.CONSTRAINT_NAME);
+    String columnName=record.get(Indexes.COLUMN_NAME);
     TableDefinition table=getTable(schema,tableName);
     if (table != null) {
       relations.addPrimaryKey(primaryKey,table.getColumn(columnName));

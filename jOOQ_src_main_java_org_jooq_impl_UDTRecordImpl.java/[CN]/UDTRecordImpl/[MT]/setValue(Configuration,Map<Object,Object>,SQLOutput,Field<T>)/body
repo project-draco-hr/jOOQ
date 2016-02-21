@@ -1,3 +1,0 @@
-{
-  field.getBinding().set(new DefaultBindingSetSQLOutputContext<T>(configuration,data,stream,getValue(field)));
-}

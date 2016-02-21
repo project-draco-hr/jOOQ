@@ -1,11 +1,11 @@
 {
   for (  Record record : create().select(CrossReferences.FK_NAME,CrossReferences.FKTABLE_NAME,CrossReferences.FKTABLE_SCHEMA,CrossReferences.FKCOLUMN_NAME,Constraints.CONSTRAINT_NAME,Constraints.CONSTRAINT_SCHEMA).from(CROSS_REFERENCES).join(CONSTRAINTS).on(CrossReferences.PK_NAME.equal(Constraints.UNIQUE_INDEX_NAME)).and(CrossReferences.PKTABLE_NAME.equal(Constraints.TABLE_NAME)).and(CrossReferences.PKTABLE_SCHEMA.equal(Constraints.TABLE_SCHEMA)).where(CrossReferences.FKTABLE_SCHEMA.in(getInputSchemata())).and(Constraints.CONSTRAINT_TYPE.in("PRIMARY KEY","UNIQUE")).orderBy(CrossReferences.FKTABLE_SCHEMA.asc(),CrossReferences.FK_NAME.asc(),CrossReferences.ORDINAL_POSITION.asc()).fetch()) {
-    SchemaDefinition foreignKeySchema=getSchema(record.getValue(CrossReferences.FKTABLE_SCHEMA));
-    SchemaDefinition uniqueKeySchema=getSchema(record.getValue(Constraints.CONSTRAINT_SCHEMA));
-    String foreignKeyTableName=record.getValue(CrossReferences.FKTABLE_NAME);
-    String foreignKeyColumn=record.getValue(CrossReferences.FKCOLUMN_NAME);
-    String foreignKey=record.getValue(CrossReferences.FK_NAME);
-    String uniqueKey=record.getValue(Constraints.CONSTRAINT_NAME);
+    SchemaDefinition foreignKeySchema=getSchema(record.get(CrossReferences.FKTABLE_SCHEMA));
+    SchemaDefinition uniqueKeySchema=getSchema(record.get(Constraints.CONSTRAINT_SCHEMA));
+    String foreignKeyTableName=record.get(CrossReferences.FKTABLE_NAME);
+    String foreignKeyColumn=record.get(CrossReferences.FKCOLUMN_NAME);
+    String foreignKey=record.get(CrossReferences.FK_NAME);
+    String uniqueKey=record.get(Constraints.CONSTRAINT_NAME);
     TableDefinition foreignKeyTable=getTable(foreignKeySchema,foreignKeyTableName);
     if (foreignKeyTable != null) {
       ColumnDefinition referencingColumn=foreignKeyTable.getColumn(foreignKeyColumn);

@@ -1,5 +1,5 @@
 {
-  BigDecimal value=outParameters().getValue(translate(parameterIndex),BigDecimal.class);
+  BigDecimal value=outParameters().get(translate(parameterIndex),BigDecimal.class);
   resultWasNull=value == null;
   return value;
 }

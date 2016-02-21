@@ -6,8 +6,8 @@
     final AbstractStore that=(AbstractStore)obj;
     if (size() == that.size()) {
       for (int i=0; i < size(); i++) {
-        final Object thisValue=getValue(i);
-        final Object thatValue=that.getValue(i);
+        final Object thisValue=get(i);
+        final Object thatValue=that.get(i);
         if (thisValue == null && thatValue == null) {
           continue;
         }

@@ -1,9 +1,9 @@
 {
   List<SequenceDefinition> result=new ArrayList<SequenceDefinition>();
   for (  Record record : create().select(SEQUENCES.SEQUENCE_SCHEMA,SEQUENCES.SEQUENCE_NAME,SEQUENCES.DATA_TYPE,SEQUENCES.NUMERIC_PRECISION,SEQUENCES.NUMERIC_SCALE).from(SEQUENCES).where(SEQUENCES.SEQUENCE_SCHEMA.in(getInputSchemata())).orderBy(SEQUENCES.SEQUENCE_SCHEMA,SEQUENCES.SEQUENCE_NAME).fetch()) {
-    SchemaDefinition schema=getSchema(record.getValue(SEQUENCES.SEQUENCE_SCHEMA));
-    DataTypeDefinition type=new DefaultDataTypeDefinition(this,schema,record.getValue(SEQUENCES.DATA_TYPE),0,record.getValue(SEQUENCES.NUMERIC_PRECISION),record.getValue(SEQUENCES.NUMERIC_SCALE),false,false);
-    result.add(new DefaultSequenceDefinition(schema,record.getValue(SEQUENCES.SEQUENCE_NAME),type));
+    SchemaDefinition schema=getSchema(record.get(SEQUENCES.SEQUENCE_SCHEMA));
+    DataTypeDefinition type=new DefaultDataTypeDefinition(this,schema,record.get(SEQUENCES.DATA_TYPE),0,record.get(SEQUENCES.NUMERIC_PRECISION),record.get(SEQUENCES.NUMERIC_SCALE),false,false);
+    result.add(new DefaultSequenceDefinition(schema,record.get(SEQUENCES.SEQUENCE_NAME),type));
   }
   return result;
 }

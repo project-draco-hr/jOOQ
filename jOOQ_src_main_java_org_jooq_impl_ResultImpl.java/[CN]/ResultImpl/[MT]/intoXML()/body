@@ -31,7 +31,7 @@
       eRecords.appendChild(eRecord);
       for (int index=0; index < fields.fields.length; index++) {
         Field<?> field=fields.fields[index];
-        Object value=record.getValue(index);
+        Object value=record.get(index);
         Element eValue=document.createElement("value");
         eValue.setAttribute("field",field.getName());
         eRecord.appendChild(eValue);

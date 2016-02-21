@@ -1,5 +1,5 @@
 {
-  Short value=outParameters().getValue(translate(parameterIndex),Short.class);
+  Short value=outParameters().get(translate(parameterIndex),Short.class);
   resultWasNull=value == null;
   return value == null ? (short)0 : value;
 }

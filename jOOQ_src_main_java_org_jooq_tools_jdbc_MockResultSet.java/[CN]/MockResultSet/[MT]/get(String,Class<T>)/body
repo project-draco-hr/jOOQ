@@ -1,7 +1,7 @@
 {
   checkInRange();
   checkField(columnLabel);
-  T value=result.get(index - 1).getValue(columnLabel,type);
+  T value=result.get(index - 1).get(columnLabel,type);
   wasNull=(value == null);
   return value;
 }

@@ -27,7 +27,7 @@
     handler.startElement("","","record",empty);
     for (int index=0; index < fields.fields.length; index++) {
       Field<?> field=fields.fields[index];
-      Object value=record.getValue(index);
+      Object value=record.get(index);
       AttributesImpl attrs=new AttributesImpl();
       attrs.addAttribute("","","field","CDATA",field.getName());
       handler.startElement("","","value",attrs);

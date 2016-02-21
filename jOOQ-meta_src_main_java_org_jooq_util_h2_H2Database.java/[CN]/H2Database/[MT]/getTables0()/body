@@ -1,9 +1,9 @@
 {
   List<TableDefinition> result=new ArrayList<TableDefinition>();
   for (  Record record : create().select(Tables.TABLE_SCHEMA,Tables.TABLE_NAME,Tables.REMARKS).from(TABLES).where(Tables.TABLE_SCHEMA.in(getInputSchemata())).orderBy(Tables.TABLE_SCHEMA,Tables.ID).fetch()) {
-    SchemaDefinition schema=getSchema(record.getValue(Tables.TABLE_SCHEMA));
-    String name=record.getValue(Tables.TABLE_NAME);
-    String comment=record.getValue(Tables.REMARKS);
+    SchemaDefinition schema=getSchema(record.get(Tables.TABLE_SCHEMA));
+    String name=record.get(Tables.TABLE_NAME);
+    String comment=record.get(Tables.REMARKS);
     H2TableDefinition table=new H2TableDefinition(schema,name,comment);
     result.add(table);
   }

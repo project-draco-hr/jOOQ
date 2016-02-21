@@ -3,8 +3,8 @@
   for (  TableDefinition tableDefinition : getTables(getSchemata().get(0))) {
     for (    Record record : create().fetch("SHOW COLUMNS FROM {0} WHERE TYPE LIKE 'ENUM(%)'",fieldByName(tableDefinition.getInputName()))) {
       String table=tableDefinition.getInputName();
-      String column=record.getValue("Field",String.class);
-      String columnType=record.getValue("Type",String.class);
+      String column=record.get("Field",String.class);
+      String columnType=record.get("Type",String.class);
       String name=table + "_" + column;
       ColumnDefinition columnDefinition=tableDefinition.getColumn(column);
       if (getConfiguredForcedType(columnDefinition) == null) {

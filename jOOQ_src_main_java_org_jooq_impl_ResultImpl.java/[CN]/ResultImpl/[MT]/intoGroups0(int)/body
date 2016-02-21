@@ -1,7 +1,7 @@
 {
   Map<K,Result<R>> map=new LinkedHashMap<K,Result<R>>();
   for (  R record : this) {
-    K val=(K)record.getValue(keyFieldIndex);
+    K val=(K)record.get(keyFieldIndex);
     Result<R> result=map.get(val);
     if (result == null) {
       result=new ResultImpl<R>(configuration,fields);

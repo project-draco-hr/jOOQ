@@ -2,20 +2,20 @@
   for (  TableDefinition table : getTables(getSchemata().get(0))) {
     Map<String,Integer> map=new HashMap<String,Integer>();
     for (    Record record : create().fetch("pragma foreign_key_list(" + table.getName() + ")")) {
-      String foreignKeyPrefix="fk_" + table.getName() + "_"+ record.getValue("table");
+      String foreignKeyPrefix="fk_" + table.getName() + "_"+ record.get("table");
       Integer sequence=map.get(foreignKeyPrefix);
       if (sequence == null) {
         sequence=0;
       }
-      if (0 == record.getValue("seq",Integer.class)) {
+      if (0 == record.get("seq",Integer.class)) {
         sequence=sequence + 1;
       }
       map.put(foreignKeyPrefix,sequence);
-      String foreignKey="fk_" + table.getName() + "_"+ record.getValue("table")+ "_"+ sequence;
+      String foreignKey="fk_" + table.getName() + "_"+ record.get("table")+ "_"+ sequence;
       String foreignKeyTable=table.getName();
-      String foreignKeyColumn=record.getValue("from",String.class);
+      String foreignKeyColumn=record.get("from",String.class);
       TableDefinition referencingTable=getTable(getSchemata().get(0),foreignKeyTable);
-      TableDefinition referencedTable=getTable(getSchemata().get(0),record.getValue("table",String.class),true);
+      TableDefinition referencedTable=getTable(getSchemata().get(0),record.get("table",String.class),true);
       if (referencedTable != null) {
         String uniqueKey="pk_" + referencedTable.getName();
         if (referencingTable != null) {

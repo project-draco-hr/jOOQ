@@ -1,9 +1,9 @@
 {
   for (  Record record : fetchKeys("P")) {
-    SchemaDefinition schema=getSchema(record.getValue(Sysschemas.SCHEMANAME));
-    String key=record.getValue(Sysconstraints.CONSTRAINTNAME);
-    String tableName=record.getValue(Systables.TABLENAME);
-    String descriptor=record.getValue(Sysconglomerates.DESCRIPTOR,String.class);
+    SchemaDefinition schema=getSchema(record.get(Sysschemas.SCHEMANAME));
+    String key=record.get(Sysconstraints.CONSTRAINTNAME);
+    String tableName=record.get(Systables.TABLENAME);
+    String descriptor=record.get(Sysconglomerates.DESCRIPTOR,String.class);
     TableDefinition table=getTable(schema,tableName);
     if (table != null) {
       for (      int index : decode(descriptor)) {

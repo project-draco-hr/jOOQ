@@ -1,5 +1,5 @@
 {
-  URL value=outParameters().getValue(translate(parameterIndex),URL.class);
+  URL value=outParameters().get(translate(parameterIndex),URL.class);
   resultWasNull=value == null;
   return value;
 }

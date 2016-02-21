@@ -3,7 +3,7 @@
   if (isTimestampOrVersionAvailable()) {
     TableField<R,? extends Number> version=getTable().getRecordVersion();
     if (version != null) {
-      Number value=getValue(version);
+      Number value=get(version);
       if (value == null) {
         result=BigInteger.ONE;
       }

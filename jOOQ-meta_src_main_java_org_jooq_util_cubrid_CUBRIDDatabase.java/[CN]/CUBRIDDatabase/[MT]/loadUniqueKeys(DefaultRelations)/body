@@ -1,8 +1,8 @@
 {
   for (  Record record : fetchKeys(DB_INDEX.IS_PRIMARY_KEY.isTrue())) {
-    String key=record.getValue("constraint_name",String.class);
-    String tableName=record.getValue(DB_CLASS.CLASS_NAME);
-    String columnName=record.getValue(DB_INDEX_KEY.KEY_ATTR_NAME);
+    String key=record.get("constraint_name",String.class);
+    String tableName=record.get(DB_CLASS.CLASS_NAME);
+    String columnName=record.get(DB_INDEX_KEY.KEY_ATTR_NAME);
     TableDefinition table=getTable(getSchemata().get(0),tableName);
     if (table != null) {
       relations.addPrimaryKey(key,table.getColumn(columnName));

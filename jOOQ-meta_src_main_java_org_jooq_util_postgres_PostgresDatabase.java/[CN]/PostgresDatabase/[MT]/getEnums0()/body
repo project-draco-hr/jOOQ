@@ -3,8 +3,8 @@
   if (exists(PG_ENUM)) {
     Result<Record2<String,String>> types=create().select(PG_NAMESPACE.NSPNAME,PG_TYPE.TYPNAME).from(PG_TYPE).join(PG_NAMESPACE).on(PG_TYPE.TYPNAMESPACE.eq(oid(PG_NAMESPACE))).where(PG_NAMESPACE.NSPNAME.in(getInputSchemata())).and(oid(PG_TYPE).in(select(PG_ENUM.ENUMTYPID).from(PG_ENUM))).orderBy(PG_NAMESPACE.NSPNAME,PG_TYPE.TYPNAME).fetch();
     for (    Record2<String,String> type : types) {
-      String nspname=type.getValue(PG_NAMESPACE.NSPNAME);
-      String typname=type.getValue(PG_TYPE.TYPNAME);
+      String nspname=type.get(PG_NAMESPACE.NSPNAME);
+      String typname=type.get(PG_TYPE.TYPNAME);
       DefaultEnumDefinition definition=null;
       for (      String label : enumLabels(nspname,typname)) {
         SchemaDefinition schema=getSchema(nspname);

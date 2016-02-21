@@ -1,11 +1,11 @@
 {
   List<ColumnDefinition> result=new ArrayList<ColumnDefinition>();
   for (  Record record : create().select(Syscolumns.COLUMNNAME,Syscolumns.COLUMNNUMBER,Syscolumns.COLUMNDATATYPE,Syscolumns.COLUMNDEFAULT,Syscolumns.AUTOINCREMENTINC).from(SYSCOLUMNS).where(Syscolumns.REFERENCEID.equal(inline(tableid))).orderBy(Syscolumns.COLUMNNUMBER).fetch()) {
-    String typeName=record.getValue(Syscolumns.COLUMNDATATYPE,String.class);
+    String typeName=record.get(Syscolumns.COLUMNDATATYPE,String.class);
     Number precision=parsePrecision(typeName);
     Number scale=parseScale(typeName);
-    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),parseTypeName(typeName),precision,precision,scale,!parseNotNull(typeName),record.getValue(Syscolumns.COLUMNDEFAULT) != null);
-    ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getSchema(),getName()),record.getValue(Syscolumns.COLUMNNAME),record.getValue(Syscolumns.COLUMNNUMBER),type,null != record.getValue(Syscolumns.AUTOINCREMENTINC),null);
+    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),parseTypeName(typeName),precision,precision,scale,!parseNotNull(typeName),record.get(Syscolumns.COLUMNDEFAULT) != null);
+    ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getSchema(),getName()),record.get(Syscolumns.COLUMNNAME),record.get(Syscolumns.COLUMNNUMBER),type,null != record.get(Syscolumns.AUTOINCREMENTINC),null);
     result.add(column);
   }
   return result;

@@ -1,4 +1,4 @@
 {
-  setValue(9,value);
+  set(9,value);
   return this;
 }

@@ -6,12 +6,12 @@
   Field<String> ukName=field("pc.constraintname",String.class);
   Field<String> ukSchema=field("ps.schemaname",String.class);
   for (  Record record : create().select(fkName,fkTable,fkSchema,fkDescriptor,ukName,ukSchema).from("sys.sysconstraints   fc").join("sys.sysforeignkeys   f ").on("f.constraintid = fc.constraintid").join("sys.sysconglomerates fg").on("fg.conglomerateid = f.conglomerateid").join("sys.systables        ft").on("ft.tableid = fg.tableid").join("sys.sysschemas       fs").on("ft.schemaid = fs.schemaid").join("sys.sysconstraints   pc").on("pc.constraintid = f.keyconstraintid").join("sys.sysschemas       ps").on("pc.schemaid = ps.schemaid").where("fc.type = 'F'").fetch()) {
-    SchemaDefinition foreignKeySchema=getSchema(record.getValue(fkSchema));
-    SchemaDefinition uniqueKeySchema=getSchema(record.getValue(ukSchema));
-    String foreignKeyName=record.getValue(fkName);
-    String foreignKeyTableName=record.getValue(fkTable);
-    List<Integer> foreignKeyIndexes=decode(record.getValue(fkDescriptor,String.class));
-    String uniqueKeyName=record.getValue(ukName);
+    SchemaDefinition foreignKeySchema=getSchema(record.get(fkSchema));
+    SchemaDefinition uniqueKeySchema=getSchema(record.get(ukSchema));
+    String foreignKeyName=record.get(fkName);
+    String foreignKeyTableName=record.get(fkTable);
+    List<Integer> foreignKeyIndexes=decode(record.get(fkDescriptor,String.class));
+    String uniqueKeyName=record.get(ukName);
     TableDefinition referencingTable=getTable(foreignKeySchema,foreignKeyTableName);
     if (referencingTable != null) {
       for (int i=0; i < foreignKeyIndexes.size(); i++) {

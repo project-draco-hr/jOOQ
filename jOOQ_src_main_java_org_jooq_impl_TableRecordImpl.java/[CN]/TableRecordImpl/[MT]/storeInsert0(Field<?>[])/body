@@ -20,7 +20,7 @@
       if (insert.getReturnedRecord() != null) {
         for (        Field<?> field : key) {
           int index=indexOrFail(fieldsRow(),field);
-          Object value=insert.getReturnedRecord().getValue(field);
+          Object value=insert.getReturnedRecord().get(field);
           values[index]=value;
           originals[index]=value;
         }
