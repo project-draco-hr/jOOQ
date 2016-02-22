@@ -9,7 +9,7 @@
     for (    TypedElementDefinition<?> column : getTypedElements(tableOrUDT)) {
       final String columnMember=getStrategy().getJavaMemberName(column,Mode.POJO);
       final String columnType=getJavaType(column.getType());
-      if (columnType.equals("Array[scala.Byte]")) {
+      if (columnType.equals("scala.Array[scala.Byte]")) {
         out.tab(2).println("sb%s.append(\"[binary...]\")",separator);
       }
  else {

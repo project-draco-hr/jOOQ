@@ -2,7 +2,7 @@
   String type=defaultType;
   if (db.isArrayType(t)) {
     String baseType=GenerationUtil.getArrayBaseType(db.getDialect(),t,u);
-    if (scala)     type="Array[" + getType(db,schema,baseType,p,s,baseType,defaultType) + "]";
+    if (scala)     type="scala.Array[" + getType(db,schema,baseType,p,s,baseType,defaultType) + "]";
  else     type=getType(db,schema,baseType,p,s,baseType,defaultType) + "[]";
   }
  else   if (db.getArray(schema,u) != null) {

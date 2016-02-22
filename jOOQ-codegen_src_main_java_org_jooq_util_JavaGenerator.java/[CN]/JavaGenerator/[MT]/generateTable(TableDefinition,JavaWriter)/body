@@ -19,7 +19,7 @@
   generateTableClassJavadoc(table,out);
   printClassAnnotations(out,schema);
   if (scala) {
-    out.println("class %s(alias : String, aliased : %s[%s], parameters : Array[ %s[_] ]) extends %s[%s](alias, %s, aliased, parameters, \"%s\")[[before= with ][separator= with ][%s]] {",className,Table.class,recordType,Field.class,TableImpl.class,recordType,schemaId,escapeString(comment),interfaces);
+    out.println("class %s(alias : String, aliased : %s[%s], parameters : %s[ %s[_] ]) extends %s[%s](alias, %s, aliased, parameters, \"%s\")[[before= with ][separator= with ][%s]] {",className,Table.class,recordType,out.ref("scala.Array"),Field.class,TableImpl.class,recordType,schemaId,escapeString(comment),interfaces);
   }
  else {
     out.println("public class %s extends %s<%s>[[before= implements ][%s]] {",className,TableImpl.class,recordType,interfaces);
@@ -77,7 +77,7 @@
   out.println();
   if (scala) {
     out.tab(1).println("private def this(alias : %s, aliased : %s[%s]) = {",String.class,Table.class,recordType);
-    if (table.isTableValuedFunction())     out.tab(2).println("this(alias, aliased, new Array[ %s[_] ](%s))",Field.class,table.getParameters().size());
+    if (table.isTableValuedFunction())     out.tab(2).println("this(alias, aliased, new %s[ %s[_] ](%s))",out.ref("scala.Array"),Field.class,table.getParameters().size());
  else     out.tab(2).println("this(alias, aliased, null)");
     out.tab(1).println("}");
   }
@@ -249,7 +249,7 @@
         out.tab(1).print("def call(");
         printParameterDeclarations(out,table,parametersAsField);
         out.println(") : %s = {",className);
-        out.tab(2).print("return new %s(getName(), null, Array(",className);
+        out.tab(2).print("return new %s(getName(), null, %s(",className,out.ref("scala.Array"));
         String separator="";
         for (        ParameterDefinition parameter : table.getParameters()) {
           out.print(separator);
