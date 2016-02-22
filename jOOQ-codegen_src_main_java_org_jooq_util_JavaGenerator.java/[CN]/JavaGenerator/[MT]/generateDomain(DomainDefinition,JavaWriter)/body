@@ -2,11 +2,13 @@
   final String className=getStrategy().getJavaClassName(d,Mode.DOMAIN);
   final String superName=out.ref(getStrategy().getJavaClassExtends(d,Mode.DOMAIN));
   final List<String> interfaces=out.ref(getStrategy().getJavaClassImplements(d,Mode.DOMAIN));
+  final List<String> superTypes=list(superName,interfaces);
   printPackage(out,d);
   generateDomainClassJavadoc(d,out);
   printClassAnnotations(out,d.getSchema());
   for (  String clause : d.getCheckClauses())   out.println("// " + clause);
-  out.println("public class %s[[before= extends ][%s]][[before= implements ][%s]] {",className,list(superName),interfaces);
+  if (scala)   out.println("class %s[[before= extends ][%s]][[before= with ][separator= with ][%s]] {",className,first(superTypes),remaining(superTypes));
+ else   out.println("public class %s[[before= extends ][%s]][[before= implements ][%s]] {",className,list(superName),interfaces);
   generateDomainClassFooter(d,out);
   out.println("}");
 }
