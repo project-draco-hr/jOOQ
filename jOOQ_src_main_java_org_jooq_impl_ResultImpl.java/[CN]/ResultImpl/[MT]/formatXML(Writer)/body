@@ -47,6 +47,7 @@
     }
     writer.append("</records>");
     writer.append("</result>");
+    writer.flush();
   }
  catch (  java.io.IOException e) {
     throw new IOException("Exception while writing XML",e);

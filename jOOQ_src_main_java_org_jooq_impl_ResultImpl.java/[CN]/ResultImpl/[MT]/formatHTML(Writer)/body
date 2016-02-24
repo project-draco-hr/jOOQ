@@ -22,6 +22,7 @@
     }
     writer.append("</tbody>");
     writer.append("</table>");
+    writer.flush();
   }
  catch (  java.io.IOException e) {
     throw new IOException("Exception while writing HTML",e);

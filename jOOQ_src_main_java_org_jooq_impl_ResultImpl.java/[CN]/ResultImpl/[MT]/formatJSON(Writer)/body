@@ -30,6 +30,7 @@
     map.put("fields",f);
     map.put("records",r);
     writer.append(JSONObject.toJSONString(map));
+    writer.flush();
   }
  catch (  java.io.IOException e) {
     throw new IOException("Exception while writing JSON",e);

@@ -18,6 +18,7 @@
       }
       writer.append(format.newline());
     }
+    writer.flush();
   }
  catch (  java.io.IOException e) {
     throw new IOException("Exception while writing CSV",e);
