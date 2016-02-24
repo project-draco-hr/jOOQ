@@ -6,4 +6,4 @@ Number precision
 Number scale
 Boolean nullable
 Boolean defaultable
-String udtName
+String userType

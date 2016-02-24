@@ -1,3 +1,3 @@
 {
-  this(database,schema,typeName,length,precision,scale,nullable,defaultable,udtName,null);
+  this(database,schema,typeName,length,precision,scale,nullable,defaultable,userType,null);
 }

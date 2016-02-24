@@ -1,9 +1,12 @@
 {
   String type=defaultType;
-  if (db.isArrayType(t)) {
+  if (javaType != null) {
+    type=javaType;
+  }
+ else   if (db.isArrayType(t)) {
     String baseType=GenerationUtil.getArrayBaseType(db.getDialect(),t,u);
-    if (scala)     type="scala.Array[" + getType(db,schema,baseType,p,s,baseType,defaultType,udtMode) + "]";
- else     type=getType(db,schema,baseType,p,s,baseType,defaultType,udtMode) + "[]";
+    if (scala)     type="scala.Array[" + getType(db,schema,baseType,p,s,baseType,javaType,defaultType,udtMode) + "]";
+ else     type=getType(db,schema,baseType,p,s,baseType,javaType,defaultType,udtMode) + "[]";
   }
  else   if (db.getArray(schema,u) != null) {
     boolean udtArray=db.getArray(schema,u).getElementType().isUDT();

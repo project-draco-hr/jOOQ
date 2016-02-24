@@ -1,3 +1,3 @@
 {
-  return getDatabase().getArray(schema,udtName) != null;
+  return getDatabase().getArray(schema,userType) != null;
 }

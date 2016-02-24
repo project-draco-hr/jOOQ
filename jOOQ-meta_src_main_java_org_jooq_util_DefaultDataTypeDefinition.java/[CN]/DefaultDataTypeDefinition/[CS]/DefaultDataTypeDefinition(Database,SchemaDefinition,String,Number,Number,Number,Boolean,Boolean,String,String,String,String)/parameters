@@ -9,3 +9,4 @@ Boolean defaultable
 String userType
 String converter
 String binding
+String javaType

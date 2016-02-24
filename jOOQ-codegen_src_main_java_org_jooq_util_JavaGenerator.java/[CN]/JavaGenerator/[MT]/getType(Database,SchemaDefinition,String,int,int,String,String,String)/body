@@ -1,0 +1,3 @@
+{
+  return getType(db,schema,t,p,s,u,javaType,defaultType,Mode.RECORD);
+}
