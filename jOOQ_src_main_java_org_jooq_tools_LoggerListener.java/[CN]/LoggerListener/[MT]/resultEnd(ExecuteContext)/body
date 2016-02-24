@@ -1,10 +1,4 @@
 {
-  if (ctx.result() != null) {
-    if (log.isTraceEnabled()) {
-      logMultiline("Fetched result",ctx.result().format(500),Level.FINE);
-    }
- else     if (log.isDebugEnabled()) {
-      logMultiline("Fetched result",ctx.result().format(5),Level.FINE);
-    }
-  }
+  if (ctx.result() != null)   if (log.isTraceEnabled())   logMultiline("Fetched result",ctx.result().format(500),Level.FINE);
+ else   if (log.isDebugEnabled())   logMultiline("Fetched result",ctx.result().format(5),Level.FINE);
 }
