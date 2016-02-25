@@ -1,5 +1,5 @@
 {
   if (scale == s)   return this;
   if (isLob())   return this;
- else   return new DefaultDataType<T>(dialect,sqlDataType,type,typeName,castTypeName,precision,s,length,nullable,defaulted);
+ else   return new DefaultDataType<T>(this,precision,s,length,nullable,defaulted);
 }

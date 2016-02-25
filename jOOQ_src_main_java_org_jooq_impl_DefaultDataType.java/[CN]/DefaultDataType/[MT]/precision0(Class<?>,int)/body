@@ -1,0 +1,17 @@
+{
+  if (precision == 0) {
+    if (type == Long.class || type == ULong.class) {
+      precision=LONG_PRECISION;
+    }
+ else     if (type == Integer.class || type == UInteger.class) {
+      precision=INTEGER_PRECISION;
+    }
+ else     if (type == Short.class || type == UShort.class) {
+      precision=SHORT_PRECISION;
+    }
+ else     if (type == Byte.class || type == UByte.class) {
+      precision=BYTE_PRECISION;
+    }
+  }
+  return precision;
+}

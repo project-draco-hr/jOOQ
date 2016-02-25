@@ -1,12 +1,13 @@
 {
-  List<Field<?>> fieldList=new ArrayList<Field<?>>();
+  Field<?>[] fields;
   int columnCount=0;
   try {
     columnCount=meta.getColumnCount();
+    fields=new Field[columnCount];
   }
  catch (  SQLException e) {
     log.info("Cannot fetch column count for cursor : " + e.getMessage());
-    fieldList.add(field("dummy"));
+    fields=new Field[]{field("dummy")};
   }
   try {
     for (int i=1; i <= columnCount; i++) {
@@ -31,7 +32,7 @@
       DataType<?> dataType=SQLDataType.OTHER;
       String type=meta.getColumnTypeName(i);
       try {
-        dataType=DefaultDataType.getDataType(configuration.dialect().family(),type,precision,scale);
+        dataType=DefaultDataType.getDataType(configuration.family(),type,precision,scale);
         if (dataType.hasPrecision()) {
           dataType=dataType.precision(precision);
         }
@@ -45,11 +46,11 @@
  catch (      SQLDialectNotSupportedException ignore) {
         log.debug("Not supported by dialect",ignore.getMessage());
       }
-      fieldList.add(field(name,dataType));
+      fields[i - 1]=field(name,dataType);
     }
   }
  catch (  SQLException e) {
     throw Utils.translate(null,e);
   }
-  return new Fields<Record>(fieldList);
+  return new Fields<Record>(fields);
 }

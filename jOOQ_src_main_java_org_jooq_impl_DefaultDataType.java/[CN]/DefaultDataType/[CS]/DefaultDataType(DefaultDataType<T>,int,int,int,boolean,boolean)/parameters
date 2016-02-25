@@ -1,0 +1,6 @@
+DefaultDataType<T> t
+int precision
+int scale
+int length
+boolean nullable
+boolean defaulted

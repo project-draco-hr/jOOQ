@@ -1,0 +1,15 @@
+{
+  this.dialect=t.dialect;
+  this.sqlDataType=t.sqlDataType;
+  this.type=t.type;
+  this.typeName=t.typeName;
+  this.castTypeName=t.castTypeName;
+  this.castTypeBase=t.castTypeBase;
+  this.arrayType=t.arrayType;
+  this.nullable=nullable;
+  this.defaulted=defaulted;
+  this.precision=precision0(type,precision);
+  this.scale=scale;
+  this.length=length;
+  this.binding=t.binding;
+}
