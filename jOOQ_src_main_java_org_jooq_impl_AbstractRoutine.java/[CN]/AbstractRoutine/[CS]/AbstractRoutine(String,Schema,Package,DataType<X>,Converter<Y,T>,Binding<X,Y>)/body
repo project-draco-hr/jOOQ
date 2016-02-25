@@ -1,5 +1,5 @@
 {
-  this.parameterIndexes=new HashMap<Parameter<?>,Integer>();
+  this.resultIndexes=new HashMap<Parameter<?>,Integer>();
   this.schema=schema;
   this.pkg=pkg;
   this.name=name;

@@ -1,7 +1,3 @@
 {
-  for (  Parameter<?> parameter : getParameters()) {
-    if (parameter.equals(getReturnParameter()) || getOutParameters().contains(parameter)) {
-      fetchOutParameter(ctx,parameter);
-    }
-  }
+  for (  Parameter<?> parameter : getParameters())   if (resultParameter(parameter))   fetchOutParameter(ctx,parameter);
 }

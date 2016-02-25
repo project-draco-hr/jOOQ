@@ -1,25 +1,24 @@
 {
+  toSQLDeclare(context);
   toSQLBegin(context);
-  if (getReturnParameter() != null) {
-    toSQLAssign(context);
-  }
+  if (getReturnParameter() != null)   toSQLAssign(context);
   toSQLCall(context);
   context.sql('(');
   String separator="";
-  for (  Parameter<?> parameter : getParameters()) {
-    if (parameter.equals(getReturnParameter())) {
-      continue;
-    }
- else     if (getOutParameters().contains(parameter)) {
+  List<Parameter<?>> parameters=getParameters();
+  for (int i=0; i < parameters.size(); i++) {
+    Parameter<?> parameter=parameters.get(i);
+    if (parameter.equals(getReturnParameter()))     continue;
+    if (getOutParameters().contains(parameter)) {
       context.sql(separator);
-      toSQLOutParam(context,parameter);
+      toSQLOutParam(context,parameter,i);
     }
  else     if (inValuesDefaulted.contains(parameter)) {
       continue;
     }
  else {
       context.sql(separator);
-      toSQLInParam(context,parameter,getInValues().get(parameter));
+      toSQLInParam(context,parameter,i,getInValues().get(parameter));
     }
     separator=", ";
   }

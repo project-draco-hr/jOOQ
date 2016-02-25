@@ -2,9 +2,5 @@
   Configuration c=ctx.configuration();
   Map<Object,Object> data=ctx.data();
   CallableStatement statement=(CallableStatement)ctx.statement();
-  for (  Parameter<?> parameter : getParameters()) {
-    if (parameter.equals(getReturnParameter()) || getOutParameters().contains(parameter)) {
-      registerOutParameter(c,data,statement,parameter);
-    }
-  }
+  for (  Parameter<?> parameter : getParameters())   if (resultParameter(parameter))   registerOutParameter(c,data,statement,parameter);
 }

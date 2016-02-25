@@ -1,18 +1,6 @@
 {
   for (  Parameter<?> parameter : getParameters()) {
-    if (getInParameters().contains(parameter) && inValuesDefaulted.contains(parameter)) {
-      continue;
-    }
-    int index=context.peekIndex();
-    parameterIndexes.put(parameter,index);
-    if (getInValues().get(parameter) != null) {
-      context.visit(getInValues().get(parameter));
-      if (index == context.peekIndex() && getOutParameters().contains(parameter)) {
-        context.nextIndex();
-      }
-    }
- else {
-      context.nextIndex();
-    }
+    if (getInParameters().contains(parameter) && inValuesDefaulted.contains(parameter))     continue;
+    bind1(context,parameter,getInValues().get(parameter) != null,resultParameter(parameter));
   }
 }

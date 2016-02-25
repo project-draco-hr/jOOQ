@@ -1,5 +1,5 @@
 {
-  DefaultBindingGetStatementContext<U> out=new DefaultBindingGetStatementContext<U>(ctx.configuration(),ctx.data(),(CallableStatement)ctx.statement(),parameterIndexes.get(parameter));
+  DefaultBindingGetStatementContext<U> out=new DefaultBindingGetStatementContext<U>(ctx.configuration(),ctx.data(),(CallableStatement)ctx.statement(),resultIndexes.get(parameter));
   parameter.getBinding().get(out);
   outValues.put(parameter,out.value());
 }

@@ -1,0 +1,11 @@
+{
+  int index=context.peekIndex();
+  if (bindAsOut)   resultIndexes.put(parameter,index);
+  if (bindAsIn) {
+    context.visit(getInValues().get(parameter));
+    if (index == context.peekIndex() && bindAsOut)     context.nextIndex();
+  }
+ else {
+    context.nextIndex();
+  }
+}

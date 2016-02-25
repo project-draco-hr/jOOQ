@@ -1,6 +1,4 @@
 {
-  if (returnParameter != null) {
-    return getValue(returnParameter);
-  }
+  if (returnParameter != null)   return getValue(returnParameter);
   return null;
 }
