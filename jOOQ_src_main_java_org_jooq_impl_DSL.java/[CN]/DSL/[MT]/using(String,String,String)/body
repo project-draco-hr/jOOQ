@@ -4,6 +4,6 @@
     return using(new DefaultConnectionProvider(connection,true),JDBCUtils.dialect(connection));
   }
  catch (  SQLException e) {
-    throw Utils.translate("Error when initialising Connection",e);
+    throw Tools.translate("Error when initialising Connection",e);
   }
 }

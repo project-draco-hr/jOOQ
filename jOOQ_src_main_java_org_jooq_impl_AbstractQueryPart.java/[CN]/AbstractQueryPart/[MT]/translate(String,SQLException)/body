@@ -1,3 +1,3 @@
 {
-  return Utils.translate(sql,e);
+  return Tools.translate(sql,e);
 }

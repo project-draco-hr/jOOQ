@@ -5,7 +5,7 @@
     executeSQL(reader);
   }
  catch (  SQLException e) {
-    throw Utils.translate(null,e);
+    throw Tools.translate(null,e);
   }
  finally {
     if (reader != null)     reader.close();

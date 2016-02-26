@@ -1,3 +1,0 @@
-{
-  return newRecord(fetched,recordFactory(type,fields),configuration);
-}

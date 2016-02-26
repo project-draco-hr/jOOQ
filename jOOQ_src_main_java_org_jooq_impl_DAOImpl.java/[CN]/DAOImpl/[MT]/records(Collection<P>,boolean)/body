@@ -4,7 +4,7 @@
   for (  P object : objects) {
     R record=using(configuration).newRecord(table,object);
     if (forUpdate && pk != null)     for (    Field<?> field : pk)     record.changed(field,false);
-    Utils.resetChangedOnNotNull(record);
+    Tools.resetChangedOnNotNull(record);
     result.add(record);
   }
   return result;

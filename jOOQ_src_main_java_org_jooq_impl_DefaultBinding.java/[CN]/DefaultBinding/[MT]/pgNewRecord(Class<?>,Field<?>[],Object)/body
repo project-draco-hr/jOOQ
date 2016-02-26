@@ -2,7 +2,7 @@
   if (object == null) {
     return null;
   }
-  return Utils.newRecord(true,(Class<Record>)type,fields).operate(new RecordOperation<Record,RuntimeException>(){
+  return Tools.newRecord(true,(Class<Record>)type,fields).operate(new RecordOperation<Record,RuntimeException>(){
     @Override public Record operate(    Record record){
       List<String> values=PostgresUtils.toPGObject(object.toString());
       Row row=record.fieldsRow();

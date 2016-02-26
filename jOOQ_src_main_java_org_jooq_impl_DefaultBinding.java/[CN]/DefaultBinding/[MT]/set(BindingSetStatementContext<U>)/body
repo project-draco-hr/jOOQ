@@ -13,7 +13,7 @@
   if (value == null) {
     int sqlType=DefaultDataType.getDataType(dialect,type).getSQLType();
     if (UDTRecord.class.isAssignableFrom(type)) {
-      ctx.statement().setNull(ctx.index(),sqlType,Utils.getMappedUDTName(configuration,(Class<UDTRecord<?>>)type));
+      ctx.statement().setNull(ctx.index(),sqlType,Tools.getMappedUDTName(configuration,(Class<UDTRecord<?>>)type));
     }
  else     if (asList(POSTGRES).contains(configuration.family()) && sqlType == Types.BLOB) {
       ctx.statement().setNull(ctx.index(),Types.BINARY);

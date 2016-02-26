@@ -1,5 +1,5 @@
 {
   DeleteQuery<R> delete=deleteQuery(record.getTable());
-  Utils.addConditions(delete,record,record.getTable().getPrimaryKey().getFieldsArray());
+  Tools.addConditions(delete,record,record.getTable().getPrimaryKey().getFieldsArray());
   return delete.execute();
 }

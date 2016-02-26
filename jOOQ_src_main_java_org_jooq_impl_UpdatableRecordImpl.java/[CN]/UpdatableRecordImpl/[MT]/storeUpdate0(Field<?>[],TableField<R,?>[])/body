@@ -1,7 +1,7 @@
 {
   UpdateQuery<R> update=create().updateQuery(getTable());
   addChangedValues(storeFields,update);
-  Utils.addConditions(update,this,keys);
+  Tools.addConditions(update,this,keys);
   if (!update.isExecutable()) {
     if (log.isDebugEnabled())     log.debug("Query is not executable",update);
     return 0;

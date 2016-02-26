@@ -1,9 +1,0 @@
-{
-  if (configuration != null) {
-    Settings settings=configuration.settings();
-    if (settings != null) {
-      return !FALSE.equals(settings.isAttachRecords());
-    }
-  }
-  return true;
-}

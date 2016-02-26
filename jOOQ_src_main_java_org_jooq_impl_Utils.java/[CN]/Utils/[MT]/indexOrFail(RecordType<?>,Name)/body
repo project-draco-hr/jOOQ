@@ -1,5 +1,0 @@
-{
-  int result=row.indexOf(fieldName);
-  if (result < 0)   throw new IllegalArgumentException("Field (" + fieldName + ") is not contained in RecordType "+ row);
-  return result;
-}

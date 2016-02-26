@@ -3,6 +3,6 @@ switch (context.family()) {
 case POSTGRES:
     return "ROW";
 default :
-  return Utils.getMappedUDTName(context.configuration(),value);
+  return Tools.getMappedUDTName(context.configuration(),value);
 }
 }

@@ -6,7 +6,7 @@
   for (  R record : this) {
     RecordImpl key=new RecordImpl(keys);
     for (    Field<?> field : keys) {
-      Utils.copyValue(key,field,record,field);
+      Tools.copyValue(key,field,record,field);
     }
     Result<R> result=map.get(key);
     if (result == null) {

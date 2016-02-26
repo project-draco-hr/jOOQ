@@ -3,6 +3,6 @@
     executeSQL(arrays);
   }
  catch (  SQLException e) {
-    throw Utils.translate(null,e);
+    throw Tools.translate(null,e);
   }
 }

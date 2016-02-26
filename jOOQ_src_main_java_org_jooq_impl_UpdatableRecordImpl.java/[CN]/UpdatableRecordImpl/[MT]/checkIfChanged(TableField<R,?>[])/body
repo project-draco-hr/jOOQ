@@ -1,6 +1,6 @@
 {
   SelectQuery<R> select=create().selectQuery(getTable());
-  Utils.addConditions(select,this,keys);
+  Tools.addConditions(select,this,keys);
   if (!asList(SQLITE).contains(create().configuration().dialect().family())) {
     select.setForUpdate(true);
   }

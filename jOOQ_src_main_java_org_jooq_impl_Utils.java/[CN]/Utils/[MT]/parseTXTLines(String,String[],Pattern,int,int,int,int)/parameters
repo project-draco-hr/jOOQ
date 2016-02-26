@@ -1,7 +1,0 @@
-String nullLiteral
-String[] strings
-Pattern pattern
-int matchLine
-int headerLine
-int dataLineStart
-int dataLineEnd

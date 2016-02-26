@@ -1,3 +1,3 @@
 {
-  return intoGroups(key,Utils.configuration(this).recordMapperProvider().provide(fields,type));
+  return intoGroups(key,Tools.configuration(this).recordMapperProvider().provide(fields,type));
 }

@@ -1,11 +1,11 @@
 {
   ctx.keyword("merge into").sql(' ').declareTables(true).visit(table).formatSeparator();
   ctx.sql('(');
-  Utils.fieldNames(ctx,getUpsertFields());
+  Tools.fieldNames(ctx,getUpsertFields());
   ctx.sql(')');
   if (!getUpsertKeys().isEmpty()) {
     ctx.sql(' ').keyword("key").sql(" (");
-    Utils.fieldNames(ctx,getUpsertKeys());
+    Tools.fieldNames(ctx,getUpsertKeys());
     ctx.sql(')');
   }
   if (upsertSelect != null) {

@@ -2,7 +2,7 @@
   SelectQuery<Record> select=create().selectQuery();
   select.addSelect(refreshFields);
   select.addFrom(getTable());
-  Utils.addConditions(select,this,getPrimaryKey().getFieldsArray());
+  Tools.addConditions(select,this,getPrimaryKey().getFieldsArray());
   if (select.execute() == 1) {
     final AbstractRecord source=(AbstractRecord)select.getResult().get(0);
     delegate(configuration(),(Record)this,REFRESH).operate(new RecordOperation<Record,RuntimeException>(){

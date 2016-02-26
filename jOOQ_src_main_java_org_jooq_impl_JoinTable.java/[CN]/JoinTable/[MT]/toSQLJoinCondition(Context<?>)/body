@@ -17,7 +17,7 @@
     }
  else {
       context.formatSeparator().start(TABLE_JOIN_USING).keyword("using").sql('(');
-      Utils.fieldNames(context,using);
+      Tools.fieldNames(context,using);
       context.sql(')').end(TABLE_JOIN_USING);
     }
   }

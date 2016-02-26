@@ -51,7 +51,7 @@ catch (    SQLException e) {
     }
  finally {
       if (!keepResultSet() || ctx.exception() != null) {
-        Utils.safeClose(listener,ctx,keepStatement());
+        Tools.safeClose(listener,ctx,keepStatement());
       }
       if (!keepStatement()) {
         statement=null;

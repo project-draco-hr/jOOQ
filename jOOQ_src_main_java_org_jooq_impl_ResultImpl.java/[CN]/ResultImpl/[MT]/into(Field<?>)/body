@@ -1,5 +1,5 @@
 {
-  Result<Record> result=new ResultImpl<Record>(Utils.configuration(this),f);
+  Result<Record> result=new ResultImpl<Record>(Tools.configuration(this),f);
   for (  Record record : this)   result.add(record.into(f));
   return result;
 }

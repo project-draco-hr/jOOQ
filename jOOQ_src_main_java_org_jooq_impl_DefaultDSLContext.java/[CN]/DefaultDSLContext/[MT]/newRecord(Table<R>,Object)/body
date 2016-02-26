@@ -1,5 +1,5 @@
 {
-  return Utils.newRecord(false,table,configuration()).operate(new RecordOperation<R,RuntimeException>(){
+  return Tools.newRecord(false,table,configuration()).operate(new RecordOperation<R,RuntimeException>(){
     @Override public R operate(    R record){
       record.from(source);
       return record;

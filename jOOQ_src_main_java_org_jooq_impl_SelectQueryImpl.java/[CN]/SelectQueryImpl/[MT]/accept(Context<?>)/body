@@ -43,7 +43,7 @@ case DERBY:
           break;
         }
 default :
-      Utils.tableNames(context,forUpdateOfTables);
+      Tools.tableNames(context,forUpdateOfTables);
     break;
 }
 }

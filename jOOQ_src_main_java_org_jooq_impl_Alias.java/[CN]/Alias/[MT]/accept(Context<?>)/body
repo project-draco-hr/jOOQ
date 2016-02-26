@@ -40,7 +40,7 @@ case POSTGRES:
         if (context.declareTables() && o instanceof ArrayTable) {
           ArrayTable table=(ArrayTable)o;
           context.sql('(');
-          Utils.fieldNames(context,table.fields());
+          Tools.fieldNames(context,table.fields());
           context.sql(')');
         }
         break;

@@ -1,3 +1,0 @@
-{
-  return annotation.startsWith("\"") ? ('"' + name + '"').equals(annotation) : name.equalsIgnoreCase(annotation);
-}

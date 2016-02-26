@@ -1,3 +1,0 @@
-ExecuteListener listener
-ExecuteContext ctx
-boolean keepStatement

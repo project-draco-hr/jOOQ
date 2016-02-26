@@ -1,4 +1,4 @@
 {
   Configuration configuration=localConfiguration();
-  return Utils.getMappedUDTName(configuration,this);
+  return Tools.getMappedUDTName(configuration,this);
 }

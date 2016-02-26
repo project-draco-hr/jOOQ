@@ -1,3 +1,0 @@
-{
-  setValue(target,targetField,source.get(sourceField));
-}

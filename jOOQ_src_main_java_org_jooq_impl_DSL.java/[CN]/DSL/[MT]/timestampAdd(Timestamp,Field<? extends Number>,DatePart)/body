@@ -1,3 +1,3 @@
 {
-  return new DateAdd<Timestamp>(Utils.field(date),nullSafe(interval),datePart);
+  return new DateAdd<Timestamp>(Tools.field(date),nullSafe(interval),datePart);
 }

@@ -6,7 +6,7 @@
   for (  R record : this) {
     RecordImpl key=new RecordImpl(keys);
     for (    Field<?> field : keys) {
-      Utils.copyValue(key,field,record,field);
+      Tools.copyValue(key,field,record,field);
     }
     if (map.put(key,record) != null) {
       throw new InvalidResultException("Key list " + Arrays.asList(keys) + " is not unique in Result for "+ this);

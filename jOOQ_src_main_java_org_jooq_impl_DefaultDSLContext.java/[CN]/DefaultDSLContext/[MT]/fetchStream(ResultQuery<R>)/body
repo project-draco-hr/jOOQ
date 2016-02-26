@@ -1,5 +1,5 @@
 {
-  final Configuration previous=Utils.getConfiguration(query);
+  final Configuration previous=Tools.getConfiguration(query);
   try {
     query.attach(configuration());
     return query.stream();

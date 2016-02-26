@@ -1,3 +1,0 @@
-{
-  return fields == null ? fields(Collections.<SelectField<?>>emptyList()) : fields(Arrays.asList(fields));
-}

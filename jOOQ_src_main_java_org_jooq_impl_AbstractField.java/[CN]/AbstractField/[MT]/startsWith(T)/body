@@ -1,4 +1,4 @@
 {
-  Field<String> concat=DSL.concat(Utils.escapeForLike(value),inline("%"));
-  return like(concat,Utils.ESCAPE);
+  Field<String> concat=DSL.concat(Tools.escapeForLike(value),inline("%"));
+  return like(concat,Tools.ESCAPE);
 }

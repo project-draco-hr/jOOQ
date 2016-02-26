@@ -1,8 +1,0 @@
-{
-  if (isVal(field)) {
-    return ((Param<T>)field).getValue();
-  }
- else {
-    return null;
-  }
-}

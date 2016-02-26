@@ -1,5 +1,5 @@
 {
-  Schema mappedSchema=Utils.getMappedSchema(context.configuration(),getSchema());
+  Schema mappedSchema=Tools.getMappedSchema(context.configuration(),getSchema());
   if (context.qualify()) {
     if (mappedSchema != null) {
       context.visit(mappedSchema);

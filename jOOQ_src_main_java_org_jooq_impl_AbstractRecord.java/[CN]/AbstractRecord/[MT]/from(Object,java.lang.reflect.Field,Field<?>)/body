@@ -2,31 +2,31 @@
   Class<?> mType=member.getType();
   if (mType.isPrimitive()) {
     if (mType == byte.class) {
-      Utils.setValue(this,field,member.getByte(source));
+      Tools.setValue(this,field,member.getByte(source));
     }
  else     if (mType == short.class) {
-      Utils.setValue(this,field,member.getShort(source));
+      Tools.setValue(this,field,member.getShort(source));
     }
  else     if (mType == int.class) {
-      Utils.setValue(this,field,member.getInt(source));
+      Tools.setValue(this,field,member.getInt(source));
     }
  else     if (mType == long.class) {
-      Utils.setValue(this,field,member.getLong(source));
+      Tools.setValue(this,field,member.getLong(source));
     }
  else     if (mType == float.class) {
-      Utils.setValue(this,field,member.getFloat(source));
+      Tools.setValue(this,field,member.getFloat(source));
     }
  else     if (mType == double.class) {
-      Utils.setValue(this,field,member.getDouble(source));
+      Tools.setValue(this,field,member.getDouble(source));
     }
  else     if (mType == boolean.class) {
-      Utils.setValue(this,field,member.getBoolean(source));
+      Tools.setValue(this,field,member.getBoolean(source));
     }
  else     if (mType == char.class) {
-      Utils.setValue(this,field,member.getChar(source));
+      Tools.setValue(this,field,member.getChar(source));
     }
   }
  else {
-    Utils.setValue(this,field,member.get(source));
+    Tools.setValue(this,field,member.get(source));
   }
 }

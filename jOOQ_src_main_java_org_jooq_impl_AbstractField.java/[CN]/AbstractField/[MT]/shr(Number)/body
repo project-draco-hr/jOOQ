@@ -1,4 +1,4 @@
 {
-  final Field result=DSL.shr((Field)this,(Field)Utils.field(value));
+  final Field result=DSL.shr((Field)this,(Field)Tools.field(value));
   return result;
 }

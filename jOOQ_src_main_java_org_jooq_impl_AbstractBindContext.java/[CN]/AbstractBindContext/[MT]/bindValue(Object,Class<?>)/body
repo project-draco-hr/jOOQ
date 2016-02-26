@@ -3,6 +3,6 @@
     return bindValue0(value,DSL.val(value,type));
   }
  catch (  SQLException e) {
-    throw Utils.translate(null,e);
+    throw Tools.translate(null,e);
   }
 }

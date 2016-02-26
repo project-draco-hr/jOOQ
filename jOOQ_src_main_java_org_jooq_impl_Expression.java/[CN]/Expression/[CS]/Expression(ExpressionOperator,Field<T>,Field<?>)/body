@@ -1,5 +1,5 @@
 {
-  super(operator.toSQL(),lhs.getDataType(),Utils.combine(lhs,rhs));
+  super(operator.toSQL(),lhs.getDataType(),Tools.combine(lhs,rhs));
   this.operator=operator;
   this.lhs=lhs;
   this.rhs=new QueryPartList<Field<?>>(rhs);

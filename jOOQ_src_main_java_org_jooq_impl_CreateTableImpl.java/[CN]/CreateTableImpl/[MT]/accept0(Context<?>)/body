@@ -13,7 +13,7 @@
     for (int i=0; i < columnFields.size(); i++) {
       DataType<?> type=columnTypes.get(i);
       ctx.visit(columnFields.get(i)).sql(' ');
-      Utils.toSQLDDLTypeDeclaration(ctx,type);
+      Tools.toSQLDDLTypeDeclaration(ctx,type);
       if (type.nullable()) {
         if (!asList(DERBY,FIREBIRD).contains(ctx.family()))         ctx.sql(' ').keyword("null");
       }

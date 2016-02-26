@@ -1,4 +1,4 @@
 {
   this.sqlException=e;
-  exception(Utils.translate(sql(),e));
+  exception(Tools.translate(sql(),e));
 }

@@ -1,8 +1,8 @@
 {
   if (ifNotExists && !supportsIfNotExists(ctx)) {
-    Utils.executeImmediateBegin(ctx,DDLStatementType.CREATE_VIEW);
+    Tools.executeImmediateBegin(ctx,DDLStatementType.CREATE_VIEW);
     accept0(ctx);
-    Utils.executeImmediateEnd(ctx,DDLStatementType.CREATE_VIEW);
+    Tools.executeImmediateEnd(ctx,DDLStatementType.CREATE_VIEW);
   }
  else {
     accept0(ctx);

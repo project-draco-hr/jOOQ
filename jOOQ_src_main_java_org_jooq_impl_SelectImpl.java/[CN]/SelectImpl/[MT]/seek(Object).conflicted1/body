@@ -1,4 +1,4 @@
 {
-  getQuery().addSeekAfter(Utils.fields(values));
+  getQuery().addSeekAfter(Tools.fields(values));
   return this;
 }

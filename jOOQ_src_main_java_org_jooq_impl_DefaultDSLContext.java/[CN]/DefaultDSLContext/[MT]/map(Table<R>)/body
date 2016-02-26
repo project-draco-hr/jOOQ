@@ -1,3 +1,3 @@
 {
-  return Utils.getMappedTable(configuration(),table);
+  return Tools.getMappedTable(configuration(),table);
 }

@@ -14,7 +14,7 @@
     registerOutParameters(ctx);
     listener.bindEnd(ctx);
     execute0(ctx,listener);
-    if (ctx.family() != FIREBIRD)     Utils.consumeResultSets(ctx,listener,results,null);
+    if (ctx.family() != FIREBIRD)     Tools.consumeResultSets(ctx,listener,results,null);
     listener.outStart(ctx);
     fetchOutParameters(ctx);
     listener.outEnd(ctx);
@@ -34,6 +34,6 @@ catch (  SQLException e) {
     throw ctx.exception();
   }
  finally {
-    Utils.safeClose(listener,ctx);
+    Tools.safeClose(listener,ctx);
   }
 }

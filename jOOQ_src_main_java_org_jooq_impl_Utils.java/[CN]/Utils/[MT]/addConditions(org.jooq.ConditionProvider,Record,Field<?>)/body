@@ -1,5 +1,0 @@
-{
-  for (  Field<?> field : keys) {
-    addCondition(query,record,field);
-  }
-}

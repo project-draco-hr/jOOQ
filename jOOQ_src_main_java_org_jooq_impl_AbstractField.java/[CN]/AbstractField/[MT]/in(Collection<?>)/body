@@ -1,5 +1,5 @@
 {
   List<Field<?>> fields=new ArrayList<Field<?>>();
-  for (  Object value : values)   fields.add(Utils.field(value,this));
+  for (  Object value : values)   fields.add(Tools.field(value,this));
   return in(fields.toArray(new Field<?>[0]));
 }

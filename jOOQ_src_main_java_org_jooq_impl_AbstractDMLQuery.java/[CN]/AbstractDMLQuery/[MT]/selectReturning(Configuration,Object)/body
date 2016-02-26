@@ -8,7 +8,7 @@
       }
       if (returning.size() == 1 && new Fields<Record>(returning).field(field) != null) {
         for (        final Object id : ids) {
-          getReturnedRecords().add(Utils.newRecord(true,table,configuration).operate(new RecordOperation<R,RuntimeException>(){
+          getReturnedRecords().add(Tools.newRecord(true,table,configuration).operate(new RecordOperation<R,RuntimeException>(){
             @Override public R operate(            R record) throws RuntimeException {
               int index=record.fieldsRow().indexOf(field);
               ((AbstractRecord)record).values[index]=id;

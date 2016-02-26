@@ -1,4 +1,0 @@
-char[] sqlChars
-int index
-String[] peekAny
-boolean anyWhitespace

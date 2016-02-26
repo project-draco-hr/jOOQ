@@ -9,5 +9,5 @@
     boolean qualify=ctx.qualify();
     ctx.sql('(').qualify(false).visit(new QueryPartList<Field<?>>(fields)).qualify(qualify).sql(')');
   }
-  ctx.end(CREATE_VIEW_NAME).formatSeparator().keyword("as").formatSeparator().start(CREATE_VIEW_AS).paramType(INLINED).visit(rename && !renameSupported ? selectFrom(table(select).as("t",Utils.fieldNames(fields))) : select).paramType(paramType).end(CREATE_VIEW_AS);
+  ctx.end(CREATE_VIEW_NAME).formatSeparator().keyword("as").formatSeparator().start(CREATE_VIEW_AS).paramType(INLINED).visit(rename && !renameSupported ? selectFrom(table(select).as("t",Tools.fieldNames(fields))) : select).paramType(paramType).end(CREATE_VIEW_AS);
 }

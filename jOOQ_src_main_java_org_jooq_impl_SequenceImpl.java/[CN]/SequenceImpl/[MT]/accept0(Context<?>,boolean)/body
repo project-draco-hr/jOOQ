@@ -1,5 +1,5 @@
 {
-  Schema mappedSchema=Utils.getMappedSchema(ctx.configuration(),schema);
+  Schema mappedSchema=Tools.getMappedSchema(ctx.configuration(),schema);
   if (mappedSchema != null && ctx.family() != CUBRID) {
     if (asStringLiterals) {
       ctx.visit(inline(mappedSchema.getName())).sql(", ");

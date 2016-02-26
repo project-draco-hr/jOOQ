@@ -1,3 +1,3 @@
 {
-  return fetchAsync(Utils.configuration(configuration()).executorProvider().provide(),rs);
+  return fetchAsync(Tools.configuration(configuration()).executorProvider().provide(),rs);
 }

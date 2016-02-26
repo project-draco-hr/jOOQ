@@ -1,3 +1,0 @@
-{
-  return configuration(attachable instanceof AttachableInternal ? ((AttachableInternal)attachable).configuration() : null);
-}

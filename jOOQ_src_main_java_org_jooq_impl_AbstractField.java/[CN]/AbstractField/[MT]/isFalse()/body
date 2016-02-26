@@ -1,7 +1,7 @@
 {
   Class<?> type=getType();
-  if (type == String.class)   return ((Field<String>)this).in(Utils.inline(FALSE_VALUES.toArray(new String[0])));
+  if (type == String.class)   return ((Field<String>)this).in(Tools.inline(FALSE_VALUES.toArray(new String[0])));
  else   if (Number.class.isAssignableFrom(type))   return ((Field<Number>)this).equal(inline((Number)getDataType().convert(0)));
  else   if (Boolean.class.isAssignableFrom(type))   return ((Field<Boolean>)this).equal(inline(false));
- else   return cast(String.class).in(Utils.inline(FALSE_VALUES.toArray(new String[0])));
+ else   return cast(String.class).in(Tools.inline(FALSE_VALUES.toArray(new String[0])));
 }

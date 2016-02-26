@@ -1,4 +1,4 @@
 {
-  getQuery().addSeekBefore(Utils.fields(values));
+  getQuery().addSeekBefore(Tools.fields(values));
   return this;
 }

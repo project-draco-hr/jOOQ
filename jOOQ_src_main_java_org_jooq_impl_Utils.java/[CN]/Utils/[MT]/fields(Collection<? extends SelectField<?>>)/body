@@ -1,9 +1,0 @@
-{
-  List<Field<?>> result=new ArrayList<Field<?>>();
-  if (fields != null) {
-    for (    SelectField<?> field : fields) {
-      result.add(DSL.field(field));
-    }
-  }
-  return result;
-}

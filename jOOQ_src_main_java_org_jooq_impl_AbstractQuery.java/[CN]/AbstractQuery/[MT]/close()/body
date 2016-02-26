@@ -5,7 +5,7 @@
       statement=null;
     }
  catch (    SQLException e) {
-      throw Utils.translate(rendered.sql,e);
+      throw Tools.translate(rendered.sql,e);
     }
   }
 }

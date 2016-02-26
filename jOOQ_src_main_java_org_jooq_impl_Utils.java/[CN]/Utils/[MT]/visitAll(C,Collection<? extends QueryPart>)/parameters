@@ -1,2 +1,0 @@
-C ctx
-Collection<? extends QueryPart> parts
