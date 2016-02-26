@@ -4,6 +4,7 @@
       xml.free();
     }
  catch (    Exception ignore) {
+      log.warn("Error while freeing resource",ignore);
     }
 catch (    AbstractMethodError ignore) {
     }
