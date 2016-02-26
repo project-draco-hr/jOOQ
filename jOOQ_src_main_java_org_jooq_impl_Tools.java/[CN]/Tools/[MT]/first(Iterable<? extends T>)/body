@@ -1,0 +1,14 @@
+{
+  if (iterable == null) {
+    return null;
+  }
+ else {
+    Iterator<? extends T> iterator=iterable.iterator();
+    if (iterator.hasNext()) {
+      return iterator.next();
+    }
+ else {
+      return null;
+    }
+  }
+}

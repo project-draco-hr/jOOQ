@@ -1,0 +1,24 @@
+{
+  return new Supplier<T>(){
+    volatile T asyncResult;
+    @Override public T get(){
+      try {
+        ForkJoinPool.managedBlock(new ManagedBlocker(){
+          @Override public boolean block(){
+            asyncResult=supplier.get();
+            return true;
+          }
+          @Override public boolean isReleasable(){
+            return asyncResult != null;
+          }
+        }
+);
+      }
+ catch (      InterruptedException e) {
+        throw new RuntimeException(e);
+      }
+      return asyncResult;
+    }
+  }
+;
+}

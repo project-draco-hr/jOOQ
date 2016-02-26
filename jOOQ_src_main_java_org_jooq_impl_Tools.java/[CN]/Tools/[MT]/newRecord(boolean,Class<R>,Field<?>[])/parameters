@@ -1,0 +1,3 @@
+boolean fetched
+Class<R> type
+Field<?>[] fields

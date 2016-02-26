@@ -1,0 +1,31 @@
+{
+  return Cache.run(configuration,new CachedOperation<List<Method>>(){
+    @Override public List<Method> call(){
+      List<Method> result=new ArrayList<Method>();
+      for (      Method method : getInstanceMethods(type)) {
+        Column column=method.getAnnotation(Column.class);
+        if (column != null && namesMatch(name,column.name())) {
+          if (method.getParameterTypes().length == 1) {
+            result.add(accessible(method));
+          }
+ else           if (method.getParameterTypes().length == 0) {
+            String m=method.getName();
+            String suffix=m.startsWith("get") ? m.substring(3) : m.startsWith("is") ? m.substring(2) : null;
+            if (suffix != null) {
+              try {
+                Method setter=type.getMethod("set" + suffix,method.getReturnType());
+                if (setter.getAnnotation(Column.class) == null) {
+                  result.add(accessible(setter));
+                }
+              }
+ catch (              NoSuchMethodException ignore) {
+              }
+            }
+          }
+        }
+      }
+      return result;
+    }
+  }
+,DATA_REFLECTION_CACHE_GET_ANNOTATED_SETTERS,type,name);
+}

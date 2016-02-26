@@ -1,0 +1,3 @@
+{
+  return peekAny(sqlChars,index,peekAny,false);
+}

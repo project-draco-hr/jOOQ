@@ -1,0 +1,11 @@
+{
+  if (!Boolean.FALSE.equals(ctx.settings().isFetchWarnings())) {
+    try {
+      ctx.sqlWarning(ctx.statement().getWarnings());
+    }
+ catch (    SQLException e) {
+      ctx.sqlWarning(new SQLWarning("Could not fetch SQLWarning",e));
+    }
+  }
+  if (ctx.sqlWarning() != null)   listener.warning(ctx);
+}

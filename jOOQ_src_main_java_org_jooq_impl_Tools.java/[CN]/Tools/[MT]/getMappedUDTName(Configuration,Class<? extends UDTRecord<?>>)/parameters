@@ -1,0 +1,2 @@
+Configuration configuration
+Class<? extends UDTRecord<?>> type

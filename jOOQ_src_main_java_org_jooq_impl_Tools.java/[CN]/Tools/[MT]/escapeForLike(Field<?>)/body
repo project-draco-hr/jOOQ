@@ -1,0 +1,3 @@
+{
+  return escapeForLike(field,new DefaultConfiguration());
+}

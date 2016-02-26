@@ -1,0 +1,9 @@
+{
+  List<Method> result=new ArrayList<Method>();
+  for (  Method method : type.getMethods()) {
+    if ((method.getModifiers() & Modifier.STATIC) == 0) {
+      result.add(method);
+    }
+  }
+  return result;
+}

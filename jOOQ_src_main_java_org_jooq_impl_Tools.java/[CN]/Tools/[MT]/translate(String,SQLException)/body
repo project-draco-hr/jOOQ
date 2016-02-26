@@ -1,0 +1,4 @@
+{
+  String message="SQL [" + sql + "]; "+ e.getMessage();
+  return new DataAccessException(message,e);
+}

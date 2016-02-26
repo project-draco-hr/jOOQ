@@ -1,0 +1,10 @@
+{
+  try {
+    R record=factory.newInstance();
+    if (record instanceof AbstractRecord)     ((AbstractRecord)record).fetched=fetched;
+    return new RecordDelegate<R>(configuration,record);
+  }
+ catch (  Exception e) {
+    throw new IllegalStateException("Could not construct new record",e);
+  }
+}

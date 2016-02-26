@@ -1,0 +1,9 @@
+{
+  List<Field<?>> result=new ArrayList<Field<?>>();
+  if (values != null && type != null) {
+    for (int i=0; i < values.length; i++) {
+      result.add(field(values[i],type));
+    }
+  }
+  return result;
+}

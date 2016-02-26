@@ -1,0 +1,3 @@
+{
+  return getMappedUDTName(configuration,Tools.newRecord(false,(Class<UDTRecord<?>>)type).<RuntimeException>operate(null));
+}

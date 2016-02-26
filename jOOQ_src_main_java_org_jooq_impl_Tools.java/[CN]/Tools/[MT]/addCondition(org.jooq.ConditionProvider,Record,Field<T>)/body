@@ -1,0 +1,8 @@
+{
+  if (updatablePrimaryKeys(settings(record))) {
+    provider.addConditions(condition(field,record.original(field)));
+  }
+ else {
+    provider.addConditions(condition(field,record.get(field)));
+  }
+}

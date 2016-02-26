@@ -1,0 +1,3 @@
+org.jooq.ConditionProvider query
+Record record
+Field<?> keys

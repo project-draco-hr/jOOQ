@@ -1,0 +1,10 @@
+{
+  List<java.lang.reflect.Field> result=new ArrayList<java.lang.reflect.Field>();
+  for (  java.lang.reflect.Field field : type.getFields())   if ((field.getModifiers() & Modifier.STATIC) == 0)   result.add(field);
+  do {
+    for (    java.lang.reflect.Field field : type.getDeclaredFields())     if ((field.getModifiers() & Modifier.STATIC) == 0)     result.add(field);
+    type=type.getSuperclass();
+  }
+ while (type != null);
+  return result;
+}

@@ -1,0 +1,11 @@
+{
+  boolean unguarded=(guard.tl.get() == null);
+  if (unguarded)   guard.tl.set(Guard.class);
+  try {
+    if (unguarded)     return operation.unguarded();
+ else     return operation.guarded();
+  }
+  finally {
+    if (unguarded)     guard.tl.remove();
+  }
+}

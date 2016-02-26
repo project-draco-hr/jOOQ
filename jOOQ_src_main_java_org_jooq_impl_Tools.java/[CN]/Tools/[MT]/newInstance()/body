@@ -1,0 +1,8 @@
+{
+  try {
+    return constructor.newInstance();
+  }
+ catch (  Exception e) {
+    throw new IllegalStateException("Could not construct new record",e);
+  }
+}

@@ -1,0 +1,3 @@
+boolean fetched
+RecordFactory<R> factory
+Configuration configuration
