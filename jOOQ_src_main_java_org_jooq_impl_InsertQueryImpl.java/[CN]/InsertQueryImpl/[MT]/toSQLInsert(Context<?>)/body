@@ -1,12 +1,12 @@
 {
   boolean declareTables=ctx.declareTables();
   ctx.start(INSERT_INSERT_INTO).keyword("insert").sql(' ').keyword((onDuplicateKeyIgnore && asList(MARIADB,MYSQL).contains(ctx.family())) ? "ignore " : (onDuplicateKeyIgnore && SQLDialect.SQLITE == ctx.family()) ? "or ignore " : "").keyword("into").sql(' ').declareTables(true).visit(table).declareTables(declareTables);
-  if (insertMaps.isExecutable()) {
-    insertMaps.insertMaps.get(0).toSQLReferenceKeys(ctx);
-  }
+  if (insertMaps.isExecutable())   insertMaps.insertMaps.get(0).toSQLReferenceKeys(ctx);
   ctx.end(INSERT_INSERT_INTO);
   if (select != null) {
+    if (insertMaps.insertMaps.get(0).size() == 0)     ctx.data(DATA_INSERT_SELECT_WITHOUT_INSERT_COLUMN_LIST,true);
     ctx.formatSeparator().start(INSERT_SELECT).visit(select).end(INSERT_SELECT);
+    ctx.data().remove(DATA_INSERT_SELECT_WITHOUT_INSERT_COLUMN_LIST);
   }
  else   if (defaultValues) {
 switch (ctx.family()) {
