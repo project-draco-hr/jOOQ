@@ -7,5 +7,6 @@
     }
   }
   context.end(SELECT_ORDER_BY);
+  if (wrapQueryExpressionInDerivedTable)   context.formatIndentEnd().formatNewLine().sql(')');
   if (context.data().containsKey(DATA_RENDER_TRAILING_LIMIT_IF_APPLICABLE) && actualLimit.isApplicable())   context.visit(actualLimit);
 }

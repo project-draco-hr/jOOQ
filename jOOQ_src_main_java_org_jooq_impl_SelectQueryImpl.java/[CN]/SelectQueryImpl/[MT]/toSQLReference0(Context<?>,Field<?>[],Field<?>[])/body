@@ -2,8 +2,10 @@
   SQLDialect dialect=context.dialect();
   SQLDialect family=dialect.family();
   int unionOpSize=unionOp.size();
-  boolean wrapQueryExpressionInDerivedTable=false;
+  boolean wrapQueryExpressionInDerivedTable;
   boolean wrapQueryExpressionBodyInDerivedTable=false;
+  wrapQueryExpressionInDerivedTable=false || (context.data(DATA_INSERT_SELECT_WITHOUT_INSERT_COLUMN_LIST) != null && unionOpSize > 0);
+  if (wrapQueryExpressionInDerivedTable)   context.keyword("select").sql(" *").formatSeparator().keyword("from").sql(" (").formatIndentStart().formatNewLine();
   if (unionOpSize > 0) {
     for (int i=unionOpSize - 1; i >= 0; i--) {
 switch (unionOp.get(i)) {
