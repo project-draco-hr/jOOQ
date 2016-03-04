@@ -1,0 +1,3 @@
+{
+  return (s.getInput() != null && schemaName.equals(s.getInput())) || (s.getInputExpression() != null && s.getInputExpression().matcher(schemaName).matches());
+}

@@ -9,10 +9,9 @@
 synchronized (this) {
           if (!getSchemata().containsKey(schemaName)) {
             for (            MappedSchema s : mapping().getSchemata()) {
-              if (schemaName.equals(s.getInput())) {
-                if (!isBlank(s.getOutput()) && !s.getOutput().equals(s.getInput())) {
-                  result=new RenamedSchema(result,s.getOutput());
-                }
+              if (matches(s,schemaName)) {
+                if (!isBlank(s.getOutput()))                 if (s.getInput() != null && !s.getOutput().equals(schemaName))                 result=new RenamedSchema(result,s.getOutput());
+ else                 if (s.getInputExpression() != null)                 result=new RenamedSchema(result,s.getInputExpression().matcher(schemaName).replaceAll(s.getOutput()));
                 break;
               }
             }

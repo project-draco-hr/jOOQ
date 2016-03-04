@@ -9,12 +9,11 @@
 synchronized (this) {
         if (!getTables().containsKey(key)) {
           schemaLoop:           for (          MappedSchema s : mapping().getSchemata()) {
-            if (schemaName.equals(s.getInput())) {
+            if (matches(s,schemaName)) {
               for (              MappedTable t : s.getTables()) {
-                if (tableName.equals(t.getInput())) {
-                  if (!isBlank(t.getOutput()) && !t.getOutput().equals(t.getInput())) {
-                    result=new RenamedTable<R>(result,t.getOutput());
-                  }
+                if (matches(t,tableName)) {
+                  if (!isBlank(t.getOutput()))                   if (t.getInput() != null && !t.getOutput().equals(tableName))                   result=new RenamedTable<R>(result,t.getOutput());
+ else                   if (t.getInputExpression() != null)                   result=new RenamedTable<R>(result,t.getInputExpression().matcher(tableName).replaceAll(t.getOutput()));
                   break schemaLoop;
                 }
               }
