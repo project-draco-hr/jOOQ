@@ -2,10 +2,13 @@
   if (value == null)   return format.nullString();
   if ("".equals(value.toString()))   return format.emptyString();
   String result=format0(value,false,false);
-  if (StringUtils.containsAny(result,',',';','\t','"','\n','\r','\'','\\')) {
-    return "\"" + result.replace("\\","\\\\").replace("\"","\"\"") + "\"";
-  }
- else {
+switch (format.quote()) {
+case NEVER:
     return result;
-  }
+case SPECIAL_CHARACTERS:
+  if (!StringUtils.containsAny(result,',',';','\t','"','\n','\r','\'','\\'))   return result;
+case ALWAYS:
+default :
+return format.quoteString() + result.replace("\\","\\\\").replace(format.quoteString(),format.quoteString() + format.quoteString()) + format.quoteString();
+}
 }

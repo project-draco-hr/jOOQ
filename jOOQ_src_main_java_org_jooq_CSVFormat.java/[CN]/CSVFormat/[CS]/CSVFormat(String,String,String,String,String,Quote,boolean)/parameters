@@ -2,4 +2,6 @@ String delimiter
 String nullString
 String emptyString
 String newline
+String quoteString
+Quote quote
 boolean header
