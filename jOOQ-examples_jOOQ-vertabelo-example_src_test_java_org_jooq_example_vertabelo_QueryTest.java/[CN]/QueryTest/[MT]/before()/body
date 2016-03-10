@@ -1,6 +1,0 @@
-{
-  Properties properties=new Properties();
-  properties.load(QueryTest.class.getResourceAsStream("/config.properties"));
-  Class.forName(properties.getProperty("db.driver"));
-  connection=DriverManager.getConnection(properties.getProperty("db.url"),properties.getProperty("db.username"),properties.getProperty("db.password"));
-}

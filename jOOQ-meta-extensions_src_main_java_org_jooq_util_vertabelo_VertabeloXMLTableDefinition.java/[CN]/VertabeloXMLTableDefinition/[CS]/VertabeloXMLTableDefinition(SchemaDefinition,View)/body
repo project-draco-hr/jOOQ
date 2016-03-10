@@ -1,4 +1,0 @@
-{
-  super(schema,view.getName(),"");
-  this.view=view;
-}

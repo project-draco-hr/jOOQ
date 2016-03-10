@@ -1,9 +1,0 @@
-{
-  for (  Table table : tables) {
-    Property schemaAdditionalProperty=VertabeloXMLDatabase.findAdditionalProperty(SCHEMA_ADDITIONAL_PROPERTY_NAME,table.getProperties());
-    String schemaName=VertabeloXMLDatabase.getAdditionalPropertyValueOrEmpty(schemaAdditionalProperty);
-    if (getInputSchemata().contains(schemaName)) {
-      operation.invoke(table,schemaName);
-    }
-  }
-}

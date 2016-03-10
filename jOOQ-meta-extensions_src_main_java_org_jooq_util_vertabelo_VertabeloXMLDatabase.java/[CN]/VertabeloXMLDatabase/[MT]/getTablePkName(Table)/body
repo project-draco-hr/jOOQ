@@ -1,8 +1,0 @@
-{
-  Property pkAdditionalProperty=VertabeloXMLDatabase.findAdditionalProperty(PK_ADDITIONAL_PROPERTY_NAME,table.getProperties());
-  String pkName=VertabeloXMLDatabase.getAdditionalPropertyValueOrEmpty(pkAdditionalProperty);
-  if (StringUtils.isEmpty(pkName)) {
-    pkName=table.getName().toUpperCase() + "_PK";
-  }
-  return pkName;
-}

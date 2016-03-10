@@ -1,5 +1,0 @@
-{
-  List<CatalogDefinition> result=new ArrayList<CatalogDefinition>();
-  result.add(new CatalogDefinition(this,"",""));
-  return result;
-}

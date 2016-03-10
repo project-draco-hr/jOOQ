@@ -1,9 +1,0 @@
-{
-  SQLDialect dialect=SQLDialect.DEFAULT;
-  try {
-    dialect=SQLDialect.valueOf(getProperties().getProperty(XMLDatabase.P_DIALECT));
-  }
- catch (  Exception ignore) {
-  }
-  return DSL.using(dialect);
-}
