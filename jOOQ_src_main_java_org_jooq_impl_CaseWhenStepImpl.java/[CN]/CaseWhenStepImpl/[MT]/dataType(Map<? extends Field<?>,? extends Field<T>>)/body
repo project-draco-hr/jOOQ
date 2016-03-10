@@ -1,0 +1,4 @@
+{
+  if (map.isEmpty())   return (DataType<T>)SQLDataType.OTHER;
+ else   return map.entrySet().iterator().next().getValue().getDataType();
+}

@@ -1,0 +1,4 @@
+{
+  this(value,dataType(map));
+  for (  Entry<? extends Field<V>,? extends Field<T>> entry : map.entrySet())   when(entry.getKey(),entry.getValue());
+}
