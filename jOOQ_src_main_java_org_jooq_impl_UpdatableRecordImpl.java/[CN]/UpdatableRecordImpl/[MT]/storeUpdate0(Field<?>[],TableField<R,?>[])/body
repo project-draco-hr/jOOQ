@@ -20,7 +20,7 @@
   int result=update.execute();
   checkIfChanged(result,version,timestamp);
   if (result > 0) {
-    if (asList(H2).contains(configuration().family())) {
+    if (asList(DERBY,H2,HSQLDB,MARIADB,MYSQL).contains(configuration().family())) {
       refresh();
     }
  else {

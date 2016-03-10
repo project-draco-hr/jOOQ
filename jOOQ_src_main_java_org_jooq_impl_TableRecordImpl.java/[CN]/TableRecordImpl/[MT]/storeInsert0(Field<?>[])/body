@@ -12,7 +12,7 @@
   int result=insert.execute();
   if (result > 0) {
     setRecordVersionAndTimestamp(version,timestamp);
-    if (asList(H2).contains(configuration().family()) && this instanceof UpdatableRecord) {
+    if (asList(DERBY,H2,MARIADB,MYSQL).contains(configuration().family()) && this instanceof UpdatableRecord) {
       ((UpdatableRecord<?>)this).refresh();
     }
  else {
