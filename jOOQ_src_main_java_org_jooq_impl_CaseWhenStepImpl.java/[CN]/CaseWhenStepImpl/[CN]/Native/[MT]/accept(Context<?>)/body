@@ -6,9 +6,7 @@ case DERBY:
 {
       ctx.formatIndentLockStart();
       for (int i=0; i < size; i++) {
-        if (i > 0) {
-          ctx.formatNewLine();
-        }
+        if (i > 0)         ctx.formatNewLine();
         ctx.sql(' ').keyword("when").sql(' ');
         ctx.visit(value.equal(compareValues.get(i)));
         ctx.sql(' ').keyword("then").sql(' ');
@@ -18,28 +16,14 @@ case DERBY:
     }
 default :
 {
-    ctx.sql(' ').visit(value).formatIndentLockStart();
-    for (int i=0; i < size; i++) {
-      if (i > 0) {
-        ctx.formatNewLine();
-      }
-      ctx.sql(' ').keyword("when").sql(' ');
-      ctx.visit(compareValues.get(i));
-      ctx.sql(' ').keyword("then").sql(' ');
-      ctx.visit(results.get(i));
-    }
+    ctx.sql(' ').visit(value).formatIndentStart();
+    for (int i=0; i < size; i++)     ctx.formatSeparator().keyword("when").sql(' ').visit(compareValues.get(i)).sql(' ').keyword("then").sql(' ').visit(results.get(i));
     break;
   }
 }
-if (otherwise != null) {
-ctx.formatNewLine().sql(' ').keyword("else").sql(' ').visit(otherwise);
-}
-ctx.formatIndentLockEnd();
-if (size > 1 || otherwise != null) {
-ctx.formatSeparator();
-}
- else {
-ctx.sql(' ');
-}
+if (otherwise != null) ctx.formatSeparator().keyword("else").sql(' ').visit(otherwise);
+ctx.formatIndentEnd();
+if (size > 1 || otherwise != null) ctx.formatSeparator();
+ else ctx.sql(' ');
 ctx.keyword("end").formatIndentLockEnd();
 }

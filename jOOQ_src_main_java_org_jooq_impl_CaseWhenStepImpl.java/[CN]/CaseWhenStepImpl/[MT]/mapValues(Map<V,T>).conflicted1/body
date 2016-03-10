@@ -1,0 +1,5 @@
+{
+  Map<Field<V>,Field<T>> fields=new LinkedHashMap<Field<V>,Field<T>>();
+  for (  Entry<V,T> entry : values.entrySet())   fields.put(Tools.field(entry.getKey()),Tools.field(entry.getValue()));
+  return mapFields(fields);
+}
