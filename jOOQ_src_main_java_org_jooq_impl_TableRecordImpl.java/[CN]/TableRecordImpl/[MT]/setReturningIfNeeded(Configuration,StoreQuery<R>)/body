@@ -1,0 +1,9 @@
+{
+  Collection<Field<?>> key=null;
+  if (!TRUE.equals(configuration.data(DATA_OMIT_RETURNING_CLAUSE))) {
+    if (TRUE.equals(configuration.settings().isReturnAllOnUpdatableRecord()))     key=Arrays.asList(fields());
+ else     key=getReturning();
+    query.setReturning(key);
+  }
+  return key;
+}

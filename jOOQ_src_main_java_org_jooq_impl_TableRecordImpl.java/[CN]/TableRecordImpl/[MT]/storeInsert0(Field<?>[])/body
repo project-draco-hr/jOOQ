@@ -8,24 +8,11 @@
   }
   BigInteger version=addRecordVersion(insert);
   Timestamp timestamp=addRecordTimestamp(insert);
-  Collection<Field<?>> key=null;
-  if (!TRUE.equals(create.configuration().data(DATA_OMIT_RETURNING_CLAUSE))) {
-    key=getReturning();
-    insert.setReturning(key);
-  }
+  Collection<Field<?>> key=setReturningIfNeeded(create.configuration(),insert);
   int result=insert.execute();
   if (result > 0) {
     setRecordVersionAndTimestamp(version,timestamp);
-    if (key != null && !key.isEmpty()) {
-      if (insert.getReturnedRecord() != null) {
-        for (        Field<?> field : key) {
-          int index=indexOrFail(fieldsRow(),field);
-          Object value=insert.getReturnedRecord().get(field);
-          values[index]=value;
-          originals[index]=value;
-        }
-      }
-    }
+    getReturningIfNeeded(insert,key);
     for (    Field<?> storeField : storeFields)     changed(storeField,false);
     fetched=true;
   }

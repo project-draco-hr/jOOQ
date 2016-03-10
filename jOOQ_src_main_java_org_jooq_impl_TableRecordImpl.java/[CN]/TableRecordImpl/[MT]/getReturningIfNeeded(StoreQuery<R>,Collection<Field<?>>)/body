@@ -1,0 +1,13 @@
+{
+  if (key != null && !key.isEmpty()) {
+    R record=query.getReturnedRecord();
+    if (record != null) {
+      for (      Field<?> field : key) {
+        int index=indexOrFail(fieldsRow(),field);
+        Object value=record.get(field);
+        values[index]=value;
+        originals[index]=value;
+      }
+    }
+  }
+}

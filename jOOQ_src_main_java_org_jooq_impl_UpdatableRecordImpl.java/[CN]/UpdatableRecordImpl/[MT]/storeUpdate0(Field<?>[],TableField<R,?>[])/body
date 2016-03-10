@@ -16,9 +16,11 @@
       checkIfChanged(keys);
     }
   }
+  Collection<Field<?>> key=setReturningIfNeeded(configuration(),update);
   int result=update.execute();
   checkIfChanged(result,version,timestamp);
   if (result > 0) {
+    getReturningIfNeeded(update,key);
     for (    Field<?> storeField : storeFields)     changed(storeField,false);
   }
   return result;

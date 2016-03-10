@@ -1,0 +1,2 @@
+StoreQuery<R> query
+Collection<Field<?>> key
