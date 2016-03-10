@@ -1,0 +1,4 @@
+{
+  for (  Entry<? extends Field<V>,? extends Field<T>> entry : fields.entrySet())   when(entry.getKey(),entry.getValue());
+  return this;
+}

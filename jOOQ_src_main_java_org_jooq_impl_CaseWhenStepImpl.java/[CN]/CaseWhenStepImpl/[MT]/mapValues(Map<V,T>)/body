@@ -1,0 +1,4 @@
+{
+  for (  Entry<V,T> entry : values.entrySet())   when(entry.getKey(),entry.getValue());
+  return this;
+}
