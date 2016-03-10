@@ -8,12 +8,17 @@
   }
   BigInteger version=addRecordVersion(insert);
   Timestamp timestamp=addRecordTimestamp(insert);
-  Collection<Field<?>> key=setReturningIfNeeded(create.configuration(),insert);
+  Collection<Field<?>> key=setReturningIfNeeded(insert);
   int result=insert.execute();
   if (result > 0) {
     setRecordVersionAndTimestamp(version,timestamp);
-    getReturningIfNeeded(insert,key);
-    for (    Field<?> storeField : storeFields)     changed(storeField,false);
+    if (asList(H2).contains(configuration().family()) && this instanceof UpdatableRecord) {
+      ((UpdatableRecord<?>)this).refresh();
+    }
+ else {
+      getReturningIfNeeded(insert,key);
+      for (      Field<?> storeField : storeFields)       changed(storeField,false);
+    }
     fetched=true;
   }
   return result;
