@@ -58,7 +58,7 @@
         render.sql(sqlChars[i]);
       }
     }
- else     if (substituteIndex < substitutes.size() && ((sqlChars[i] == '?') || (sqlChars[i] == ':' && i + 1 < sqlChars.length && isJavaIdentifierPart(sqlChars[i + 1])))) {
+ else     if (substituteIndex < substitutes.size() && ((sqlChars[i] == '?') || (sqlChars[i] == ':' && i + 1 < sqlChars.length && isJavaIdentifierPart(sqlChars[i + 1]) && (i - 1 < 0 || sqlChars[i - 1] != ':')))) {
       if (sqlChars[i] == ':')       while (++i < sqlChars.length && isJavaIdentifierPart(sqlChars[i]))       ;
       QueryPart substitute=substitutes.get(substituteIndex++);
       if (render.paramType() == INLINED || render.paramType() == NAMED || render.paramType() == NAMED_OR_INLINED) {
