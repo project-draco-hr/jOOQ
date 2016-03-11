@@ -7,7 +7,7 @@
   this.castTypeBase=t.castTypeBase;
   this.arrayType=t.arrayType;
   this.nullable=nullable;
-  this.defaulted=defaulted;
+  this.defaultValue=defaultValue;
   this.precision=precision0(type,precision);
   this.scale=scale;
   this.length=length;

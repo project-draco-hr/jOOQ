@@ -3,4 +3,4 @@ int precision
 int scale
 int length
 boolean nullable
-boolean defaulted
+Field<T> defaultValue

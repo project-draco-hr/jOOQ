@@ -1,3 +1,0 @@
-{
-  this(dialect,null,type,typeName,castTypeName,precision,scale,length,nullable,defaulted);
-}

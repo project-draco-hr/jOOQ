@@ -1,3 +1,3 @@
 {
-  this(dialect,sqlDataType,sqlDataType.getType(),typeName,castTypeName,sqlDataType.precision(),sqlDataType.scale(),sqlDataType.length(),sqlDataType.nullable(),sqlDataType.defaulted());
+  this(dialect,sqlDataType,sqlDataType.getType(),typeName,castTypeName,sqlDataType.precision(),sqlDataType.scale(),sqlDataType.length(),sqlDataType.nullable(),sqlDataType.defaultValue());
 }

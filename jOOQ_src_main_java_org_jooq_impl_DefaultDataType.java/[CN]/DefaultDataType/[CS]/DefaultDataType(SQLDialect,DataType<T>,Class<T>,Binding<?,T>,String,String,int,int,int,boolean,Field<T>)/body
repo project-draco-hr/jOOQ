@@ -7,7 +7,7 @@
   this.castTypeBase=TYPE_NAME_PATTERN.matcher(castTypeName).replaceAll("").trim();
   this.arrayType=(Class<T[]>)Array.newInstance(type,0).getClass();
   this.nullable=nullable;
-  this.defaulted=defaulted;
+  this.defaultValue=defaultValue;
   this.precision=precision0(type,precision);
   this.scale=scale;
   this.length=length;

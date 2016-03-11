@@ -1,3 +1,0 @@
-{
-  this(dialect,sqlDataType,type,null,typeName,castTypeName,precision,scale,length,nullable,defaulted);
-}

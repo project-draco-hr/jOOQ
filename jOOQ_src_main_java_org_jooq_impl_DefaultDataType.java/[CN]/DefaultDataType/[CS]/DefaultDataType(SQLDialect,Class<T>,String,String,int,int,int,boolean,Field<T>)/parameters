@@ -1,5 +1,4 @@
 SQLDialect dialect
-DataType<T> sqlDataType
 Class<T> type
 String typeName
 String castTypeName
@@ -7,4 +6,4 @@ int precision
 int scale
 int length
 boolean nullable
-boolean defaulted
+Field<T> defaultValue

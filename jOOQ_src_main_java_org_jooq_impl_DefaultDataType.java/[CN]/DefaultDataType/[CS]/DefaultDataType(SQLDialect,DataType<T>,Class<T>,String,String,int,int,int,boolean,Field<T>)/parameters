@@ -1,11 +1,10 @@
 SQLDialect dialect
 DataType<T> sqlDataType
 Class<T> type
-Binding<?,T> binding
 String typeName
 String castTypeName
 int precision
 int scale
 int length
 boolean nullable
-boolean defaulted
+Field<T> defaultValue
