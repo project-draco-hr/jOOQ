@@ -1,4 +1,4 @@
 {
-  super(null,binding.converter().toType(),binding,delegate.getTypeName(),delegate.getCastTypeName(),delegate.precision(),delegate.scale(),delegate.length(),delegate.nullable(),delegate.defaulted());
+  super(null,binding.converter().toType(),binding,delegate.getTypeName(),delegate.getCastTypeName(),delegate.precision(),delegate.scale(),delegate.length(),delegate.nullable(),(Field<U>)delegate.defaultValue());
   this.delegate=delegate;
 }
