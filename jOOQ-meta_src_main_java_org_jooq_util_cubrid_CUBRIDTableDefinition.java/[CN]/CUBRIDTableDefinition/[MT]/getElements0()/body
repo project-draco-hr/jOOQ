@@ -2,7 +2,7 @@
   List<ColumnDefinition> result=new ArrayList<ColumnDefinition>();
   for (  Record record : create().select(DB_ATTRIBUTE.ATTR_NAME,DB_ATTRIBUTE.DEF_ORDER,DB_ATTRIBUTE.DATA_TYPE,DB_ATTRIBUTE.PREC,DB_ATTRIBUTE.SCALE,DB_ATTRIBUTE.IS_NULLABLE,DB_ATTRIBUTE.DEFAULT_VALUE,DB_SERIAL.NAME).from(DB_ATTRIBUTE).leftOuterJoin(DB_SERIAL).on(DB_ATTRIBUTE.ATTR_NAME.equal(DB_SERIAL.ATT_NAME).and(DB_ATTRIBUTE.CLASS_NAME.equal(DB_SERIAL.CLASS_NAME))).where(DB_ATTRIBUTE.CLASS_NAME.equal(getName())).orderBy(DB_ATTRIBUTE.DEF_ORDER).fetch()) {
     String dataType=record.get(DB_ATTRIBUTE.DATA_TYPE);
-    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),dataType,record.get(DB_ATTRIBUTE.PREC),record.get(DB_ATTRIBUTE.PREC),record.get(DB_ATTRIBUTE.SCALE),record.get(DB_ATTRIBUTE.IS_NULLABLE,boolean.class),record.get(DB_ATTRIBUTE.DEFAULT_VALUE) != null,getName() + "_" + record.get(DB_ATTRIBUTE.ATTR_NAME));
+    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),dataType,record.get(DB_ATTRIBUTE.PREC),record.get(DB_ATTRIBUTE.PREC),record.get(DB_ATTRIBUTE.SCALE),record.get(DB_ATTRIBUTE.IS_NULLABLE,boolean.class),record.get(DB_ATTRIBUTE.DEFAULT_VALUE),getName() + "_" + record.get(DB_ATTRIBUTE.ATTR_NAME));
     ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getSchema(),getName()),record.get(DB_ATTRIBUTE.ATTR_NAME),record.get(DB_ATTRIBUTE.DEF_ORDER),type,record.get(DB_SERIAL.NAME) != null,null);
     result.add(column);
   }

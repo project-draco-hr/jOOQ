@@ -1,23 +1,3 @@
 {
-  this.database=database;
-  this.schema=schema;
-  this.type=typeName == null ? "OTHER" : typeName;
-  this.userType=userType;
-  this.javaType=javaType;
-  this.converter=converter;
-  this.binding=binding;
-  if (length != null && precision != null && length.intValue() != 0 && precision.intValue() != 0) {
-    if (this.type.toLowerCase().matches(".*?(char|text|lob|xml|graphic|string).*?")) {
-      precision=null;
-      scale=null;
-    }
- else {
-      length=null;
-    }
-  }
-  this.length=length == null ? 0 : length.intValue();
-  this.precision=precision == null ? 0 : precision.intValue();
-  this.scale=scale == null ? 0 : scale.intValue();
-  this.nullable=nullable == null ? true : nullable.booleanValue();
-  this.defaulted=defaultable == null ? false : defaultable.booleanValue();
+  this(database,schema,typeName,length,precision,scale,nullable,defaultValue(defaultable),userType,converter,binding,javaType);
 }

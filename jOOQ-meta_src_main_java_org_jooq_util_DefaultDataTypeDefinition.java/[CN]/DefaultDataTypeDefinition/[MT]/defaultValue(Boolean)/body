@@ -1,0 +1,3 @@
+{
+  return defaultable != null && defaultable ? "NULL" : null;
+}

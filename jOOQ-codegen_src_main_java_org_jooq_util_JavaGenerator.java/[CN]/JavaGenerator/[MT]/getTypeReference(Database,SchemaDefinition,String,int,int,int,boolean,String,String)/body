@@ -29,31 +29,23 @@
  else {
     DataType<?> dataType=null;
     try {
-      dataType=DefaultDataType.getDataType(db.getDialect(),t,p,s).nullable(n).defaulted(d);
+      dataType=DefaultDataType.getDataType(db.getDialect(),t,p,s).nullable(n);
+      if (d != null)       dataType=dataType.defaultValue((Field)DSL.field(d,dataType));
     }
  catch (    SQLDialectNotSupportedException ignore) {
     }
     if (dataType != null && dataType.getSQLDataType() != null) {
       DataType<?> sqlDataType=dataType.getSQLDataType();
-      sb.append(SQLDataType.class.getCanonicalName());
-      sb.append(".");
-      sb.append(DefaultDataType.normalise(sqlDataType.getTypeName()));
+      String sqlDataTypeRef=SQLDataType.class.getCanonicalName() + '.' + DefaultDataType.normalise(sqlDataType.getTypeName());
+      sb.append(sqlDataTypeRef);
       if (dataType.hasPrecision() && p > 0) {
         sb.append(".precision(").append(p);
-        if (dataType.hasScale() && s > 0) {
-          sb.append(", ").append(s);
-        }
+        if (dataType.hasScale() && s > 0)         sb.append(", ").append(s);
         sb.append(")");
       }
-      if (dataType.hasLength() && l > 0) {
-        sb.append(".length(").append(l).append(")");
-      }
-      if (!dataType.nullable()) {
-        sb.append(".nullable(false)");
-      }
-      if (dataType.defaulted()) {
-        sb.append(".defaulted(true)");
-      }
+      if (dataType.hasLength() && l > 0)       sb.append(".length(").append(l).append(")");
+      if (!dataType.nullable())       sb.append(".nullable(false)");
+      if (dataType.defaulted())       sb.append(".defaultValue(org.jooq.impl.DSL.field(\"").append(escapeString(d)).append("\", ").append(sqlDataTypeRef).append("))");
     }
  else {
       try {

@@ -1,0 +1,3 @@
+{
+  this(database,schema,typeName,length,precision,scale,nullable,defaultValue,userType,converter,null);
+}

@@ -2,7 +2,7 @@
   List<ColumnDefinition> result=new ArrayList<ColumnDefinition>();
   int ordinal=0;
   for (  Field<?> field : table.fields()) {
-    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),field.getDataType().getTypeName(),field.getDataType().length(),field.getDataType().precision(),field.getDataType().scale(),field.getDataType().nullable(),field.getDataType().defaulted(),null);
+    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),field.getDataType().getTypeName(),field.getDataType().length(),field.getDataType().precision(),field.getDataType().scale(),field.getDataType().nullable(),create().renderInlined(field.getDataType().defaultValue()),null);
     ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getSchema(),getName()),field.getName(),ordinal,type,false,null);
     result.add(column);
     ordinal++;

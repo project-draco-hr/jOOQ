@@ -1,9 +1,9 @@
 {
   if (database.isArrayType(type.getType())) {
     String baseType=GenerationUtil.getArrayBaseType(db.getDialect(),type.getType(),type.getUserType());
-    return getTypeReference(db,type.getSchema(),baseType,0,0,0,true,false,baseType) + ".getArrayDataType()";
+    return getTypeReference(db,type.getSchema(),baseType,0,0,0,true,null,baseType) + ".getArrayDataType()";
   }
  else {
-    return getTypeReference(db,type.getSchema(),type.getType(),type.getPrecision(),type.getScale(),type.getLength(),type.isNullable(),type.isDefaulted(),type.getUserType());
+    return getTypeReference(db,type.getSchema(),type.getType(),type.getPrecision(),type.getScale(),type.getLength(),type.isNullable(),type.getDefaultValue(),type.getUserType());
   }
 }

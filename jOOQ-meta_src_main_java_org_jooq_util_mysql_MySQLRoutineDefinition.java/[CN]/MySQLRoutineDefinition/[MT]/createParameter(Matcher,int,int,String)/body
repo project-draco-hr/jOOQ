@@ -8,6 +8,6 @@
   if (!StringUtils.isBlank(matcher.group(group + 3))) {
     scale=Integer.valueOf(matcher.group(group + 3));
   }
-  DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),paramType,precision,precision,scale,null,null);
+  DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),paramType,precision,precision,scale,null,(String)null);
   return new DefaultParameterDefinition(this,paramName,columnIndex,type);
 }

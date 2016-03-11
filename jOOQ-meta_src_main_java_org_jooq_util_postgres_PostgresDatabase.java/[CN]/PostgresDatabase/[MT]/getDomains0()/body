@@ -8,7 +8,7 @@
     Field<String[]> src=field(name("domains","src"),String[].class);
     for (    Record record : create().withRecursive("domains","domain_id","base_id","typbasetype","src").as(select(oid(d),oid(d),d.TYPBASETYPE,array(c.CONSRC)).from(d).join(n).on(oid(n).eq(d.TYPNAMESPACE)).leftJoin(c).on(oid(d).eq(c.CONTYPID)).where(d.TYPTYPE.eq("d")).and(n.NSPNAME.in(getInputSchemata())).unionAll(select(field(name("domains","domain_id"),Long.class),oid(d),d.TYPBASETYPE,decode().when(c.CONSRC.isNull(),src).otherwise(arrayAppend(src,c.CONSRC))).from(name("domains")).join(d).on(field(name("domains",d.TYPBASETYPE.getName())).eq(oid(d))).leftJoin(c).on(oid(d).eq(c.CONTYPID)))).select(n.NSPNAME,d.TYPNAME,d.TYPNOTNULL,d.TYPDEFAULT,b.TYPNAME,b.TYPLEN,src).from(d).join(name("domains")).on(field(name("domains","typbasetype")).eq(0)).and(field(name("domains","domain_id")).eq(oid(d))).join(b).on(field(name("domains","base_id")).eq(oid(b))).join(n).on(oid(n).eq(d.TYPNAMESPACE)).where(d.TYPTYPE.eq("d")).and(n.NSPNAME.in(getInputSchemata()))) {
       SchemaDefinition schema=getSchema(record.get(n.NSPNAME));
-      DataTypeDefinition baseType=new DefaultDataTypeDefinition(this,schema,record.get(b.TYPNAME),record.get(b.TYPLEN),record.get(b.TYPLEN),0,!record.get(d.TYPNOTNULL,boolean.class),record.get(d.TYPDEFAULT) != null,record.get(b.TYPNAME,String.class));
+      DataTypeDefinition baseType=new DefaultDataTypeDefinition(this,schema,record.get(b.TYPNAME),record.get(b.TYPLEN),record.get(b.TYPLEN),0,!record.get(d.TYPNOTNULL,boolean.class),record.get(d.TYPDEFAULT),record.get(b.TYPNAME,String.class));
       DefaultDomainDefinition domain=new DefaultDomainDefinition(schema,record.get(d.TYPNAME),baseType);
       domain.addCheckClause(record.get(src));
       result.add(domain);

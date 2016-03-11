@@ -1,7 +1,7 @@
 {
   List<EnumDefinition> result=new ArrayList<EnumDefinition>();
   for (  TableDefinition tableDefinition : getTables(getSchemata().get(0))) {
-    for (    Record record : create().fetch("SHOW COLUMNS FROM {0} WHERE TYPE LIKE 'ENUM(%)'",fieldByName(tableDefinition.getInputName()))) {
+    for (    Record record : create().fetch("SHOW COLUMNS FROM {0} WHERE TYPE LIKE 'ENUM(%)'",field(name(tableDefinition.getInputName())))) {
       String table=tableDefinition.getInputName();
       String column=record.get("Field",String.class);
       String columnType=record.get("Type",String.class);

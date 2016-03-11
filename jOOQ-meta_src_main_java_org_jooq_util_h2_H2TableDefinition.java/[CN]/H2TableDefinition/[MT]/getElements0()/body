@@ -1,7 +1,7 @@
 {
   List<ColumnDefinition> result=new ArrayList<ColumnDefinition>();
-  for (  Record record : create().select(Columns.COLUMN_NAME,Columns.ORDINAL_POSITION,Columns.TYPE_NAME,Columns.CHARACTER_MAXIMUM_LENGTH,Columns.NUMERIC_PRECISION,Columns.NUMERIC_SCALE,Columns.IS_NULLABLE,Columns.COLUMN_DEFAULT.nvl2(true,false).as("default"),Columns.REMARKS,Columns.SEQUENCE_NAME).from(COLUMNS).where(Columns.TABLE_SCHEMA.equal(getSchema().getName())).and(Columns.TABLE_NAME.equal(getName())).orderBy(Columns.ORDINAL_POSITION).fetch()) {
-    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),record.get(Columns.TYPE_NAME),record.get(Columns.CHARACTER_MAXIMUM_LENGTH),record.get(Columns.NUMERIC_PRECISION),record.get(Columns.NUMERIC_SCALE),record.get(Columns.IS_NULLABLE,boolean.class),record.get("default",boolean.class));
+  for (  Record record : create().select(Columns.COLUMN_NAME,Columns.ORDINAL_POSITION,Columns.TYPE_NAME,Columns.CHARACTER_MAXIMUM_LENGTH,Columns.NUMERIC_PRECISION,Columns.NUMERIC_SCALE,Columns.IS_NULLABLE,Columns.COLUMN_DEFAULT,Columns.REMARKS,Columns.SEQUENCE_NAME).from(COLUMNS).where(Columns.TABLE_SCHEMA.equal(getSchema().getName())).and(Columns.TABLE_NAME.equal(getName())).orderBy(Columns.ORDINAL_POSITION).fetch()) {
+    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),record.get(Columns.TYPE_NAME),record.get(Columns.CHARACTER_MAXIMUM_LENGTH),record.get(Columns.NUMERIC_PRECISION),record.get(Columns.NUMERIC_SCALE),record.get(Columns.IS_NULLABLE,boolean.class),record.get(Columns.COLUMN_DEFAULT));
     ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getSchema(),getName()),record.get(Columns.COLUMN_NAME),record.get(Columns.ORDINAL_POSITION),type,null != record.get(Columns.SEQUENCE_NAME),record.get(Columns.REMARKS));
     result.add(column);
   }

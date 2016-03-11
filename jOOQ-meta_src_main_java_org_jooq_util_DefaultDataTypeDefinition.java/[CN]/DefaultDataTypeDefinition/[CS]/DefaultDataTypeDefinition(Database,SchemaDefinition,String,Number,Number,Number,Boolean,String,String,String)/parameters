@@ -1,0 +1,10 @@
+Database database
+SchemaDefinition schema
+String typeName
+Number length
+Number precision
+Number scale
+Boolean nullable
+String defaultValue
+String userType
+String converter

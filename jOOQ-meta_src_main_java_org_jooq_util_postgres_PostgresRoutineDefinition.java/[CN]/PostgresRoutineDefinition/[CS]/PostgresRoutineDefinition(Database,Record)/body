@@ -4,7 +4,7 @@
     SchemaDefinition typeSchema=null;
     String schemaName=record.get(ROUTINES.TYPE_UDT_SCHEMA);
     if (schemaName != null)     typeSchema=getDatabase().getSchema(schemaName);
-    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),typeSchema == null ? database.getSchema(record.get(ROUTINES.ROUTINE_SCHEMA)) : typeSchema,record.get("data_type",String.class),record.get(ROUTINES.CHARACTER_MAXIMUM_LENGTH),record.get(ROUTINES.NUMERIC_PRECISION),record.get(ROUTINES.NUMERIC_SCALE),null,null,record.get(ROUTINES.TYPE_UDT_NAME));
+    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),typeSchema == null ? database.getSchema(record.get(ROUTINES.ROUTINE_SCHEMA)) : typeSchema,record.get("data_type",String.class),record.get(ROUTINES.CHARACTER_MAXIMUM_LENGTH),record.get(ROUTINES.NUMERIC_PRECISION),record.get(ROUTINES.NUMERIC_SCALE),null,(String)null,record.get(ROUTINES.TYPE_UDT_NAME));
     returnValue=new DefaultParameterDefinition(this,"RETURN_VALUE",-1,type);
   }
   specificName=record.get(ROUTINES.SPECIFIC_NAME);
