@@ -71,7 +71,7 @@
     return (T)pgNewArray(type,string);
   }
  else   if (EnumType.class.isAssignableFrom(type)) {
-    return getEnumType(type,string);
+    return (T)getEnumType((Class<EnumType>)type,string);
   }
  else   if (Record.class.isAssignableFrom(type)) {
     return (T)pgNewRecord(type,null,string);

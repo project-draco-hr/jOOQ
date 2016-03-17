@@ -1,6 +1,6 @@
 {
   Class<?> enumType=type.isArray() ? type.getComponentType() : type;
-  EnumType e=(EnumType)enumType.getEnumConstants()[0];
+  EnumType e=getEnumType((Class<EnumType>)enumType,null);
   Schema schema=e.getSchema();
   if (schema != null) {
     render.sql("::");

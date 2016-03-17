@@ -104,7 +104,7 @@ default :
 result=(T)convertArray(ctx.statement().getObject(ctx.index()),(Class<? extends Object[]>)type);
 }
  else if (EnumType.class.isAssignableFrom(type)) {
-result=getEnumType(type,ctx.statement().getString(ctx.index()));
+result=(T)getEnumType((Class<EnumType>)type,ctx.statement().getString(ctx.index()));
 }
  else if (Record.class.isAssignableFrom(type)) {
 switch (ctx.family()) {

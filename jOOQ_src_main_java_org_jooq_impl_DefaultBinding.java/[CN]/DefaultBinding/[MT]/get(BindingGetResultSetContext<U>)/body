@@ -134,7 +134,7 @@ break;
 }
 }
  else if (EnumType.class.isAssignableFrom(type)) {
-result=getEnumType(type,ctx.resultSet().getString(ctx.index()));
+result=(T)getEnumType((Class<EnumType>)type,ctx.resultSet().getString(ctx.index()));
 }
  else if (Record.class.isAssignableFrom(type)) {
 switch (ctx.family()) {

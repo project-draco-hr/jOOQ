@@ -93,7 +93,7 @@
     result=(T)(array == null ? null : array.getArray());
   }
  else   if (EnumType.class.isAssignableFrom(type)) {
-    result=getEnumType(type,ctx.input().readString());
+    result=(T)getEnumType((Class<EnumType>)type,ctx.input().readString());
   }
  else   if (UDTRecord.class.isAssignableFrom(type)) {
     result=(T)ctx.input().readObject();

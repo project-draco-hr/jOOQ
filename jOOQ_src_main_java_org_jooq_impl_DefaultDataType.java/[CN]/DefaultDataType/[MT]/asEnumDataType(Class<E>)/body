@@ -1,4 +1,4 @@
 {
-  String enumTypeName=enumDataType.getEnumConstants()[0].getName();
+  String enumTypeName=Tools.enums(enumDataType)[0].getName();
   return new DefaultDataType<E>(dialect,enumDataType,enumTypeName,enumTypeName);
 }

@@ -1,0 +1,16 @@
+{
+  if (Enum.class.isAssignableFrom(type)) {
+    return type.getEnumConstants();
+  }
+ else {
+    try {
+      Class<?> companionClass=Thread.currentThread().getContextClassLoader().loadClass(type.getName() + "$");
+      java.lang.reflect.Field module=companionClass.getField("MODULE$");
+      Object companion=module.get(companionClass);
+      return (EnumType[])companionClass.getMethod("values").invoke(companion);
+    }
+ catch (    Exception e) {
+      throw new MappingException("Error while looking up Scala enum",e);
+    }
+  }
+}

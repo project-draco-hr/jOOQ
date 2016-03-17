@@ -1,0 +1,14 @@
+{
+  try {
+    EnumType[] list=Tools.enums(type);
+    for (    EnumType e : list) {
+      String l=e.getLiteral();
+      if (literal == null)       return (E)e;
+      if (l.equals(literal))       return (E)e;
+    }
+  }
+ catch (  Exception e) {
+    throw new DataTypeException("Unknown enum literal found : " + literal);
+  }
+  return null;
+}
