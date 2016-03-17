@@ -1,0 +1,17 @@
+{
+  Field<?>[] f=new Field[row.length];
+  if (source == null)   source=Tools.fields(row.length);
+  for (int i=0; i < row.length; i++) {
+    final int index=i;
+    f[i]=fieldMapper.map(new LoaderFieldContext(){
+      @Override public int index(){
+        return index;
+      }
+      @Override public Field<?> field(){
+        return source[index];
+      }
+    }
+);
+  }
+  fields(f);
+}

@@ -2,6 +2,7 @@
   JSONReader reader=null;
   try {
     reader=new JSONReader(data.reader());
+    source=Tools.fieldsByName(reader.getFields());
     List<String[]> allRecords=reader.readAll();
     executeSQL(allRecords.iterator());
   }

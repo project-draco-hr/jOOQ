@@ -1,7 +1,13 @@
 {
   CSVReader reader=null;
   try {
-    reader=new CSVReader(data.reader(),separator,quote,ignoreRows);
+    if (ignoreRows == 1) {
+      reader=new CSVReader(data.reader(),separator,quote,0);
+      source=Tools.fieldsByName(reader.next());
+    }
+ else {
+      reader=new CSVReader(data.reader(),separator,quote,ignoreRows);
+    }
     executeSQL(reader);
   }
  catch (  SQLException e) {

@@ -1,0 +1,4 @@
+{
+  fieldMapper=mapper;
+  return this;
+}

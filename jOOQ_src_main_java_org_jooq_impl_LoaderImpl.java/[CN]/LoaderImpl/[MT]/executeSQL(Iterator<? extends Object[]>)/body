@@ -5,6 +5,7 @@
   execution: {
     rows:     while (iterator.hasNext() && ((row=iterator.next()) != null)) {
       try {
+        if (fields == null)         fields0(row);
         for (int i=0; i < row.length; i++)         if (StringUtils.equals(nullString,row[i]))         row[i]=null;
         processed++;
         if (onDuplicate == ON_DUPLICATE_KEY_IGNORE) {
