@@ -1,17 +1,18 @@
 {
   if (sequences == null) {
     sequences=new ArrayList<SequenceDefinition>();
-    try {
-      List<SequenceDefinition> s=getSequences0();
-      sequences=filterExcludeInclude(s);
-      log.info("Sequences fetched",fetchedSize(s,sequences));
+    if (getIncludeSequences()) {
+      try {
+        List<SequenceDefinition> s=getSequences0();
+        sequences=filterExcludeInclude(s);
+        log.info("Sequences fetched",fetchedSize(s,sequences));
+      }
+ catch (      Exception e) {
+        log.error("Error while fetching sequences",e);
+      }
     }
- catch (    Exception e) {
-      log.error("Error while fetching sequences",e);
-    }
+ else     log.info("Sequences excluded");
   }
-  if (sequencesBySchema == null) {
-    sequencesBySchema=new LinkedHashMap<SchemaDefinition,List<SequenceDefinition>>();
-  }
+  if (sequencesBySchema == null)   sequencesBySchema=new LinkedHashMap<SchemaDefinition,List<SequenceDefinition>>();
   return filterSchema(sequences,schema,sequencesBySchema);
 }

@@ -1,16 +1,8 @@
 {
   if (uniqueKeys == null) {
     uniqueKeys=new ArrayList<UniqueKeyDefinition>();
-    for (    SchemaDefinition s : getSchemata()) {
-      for (      TableDefinition table : getTables(s)) {
-        for (        UniqueKeyDefinition uniqueKey : table.getUniqueKeys()) {
-          uniqueKeys.add(uniqueKey);
-        }
-      }
-    }
+    if (getIncludeUniqueKeys())     for (    SchemaDefinition s : getSchemata())     for (    TableDefinition table : getTables(s))     for (    UniqueKeyDefinition uniqueKey : table.getUniqueKeys())     uniqueKeys.add(uniqueKey);
   }
-  if (uniqueKeysBySchema == null) {
-    uniqueKeysBySchema=new LinkedHashMap<SchemaDefinition,List<UniqueKeyDefinition>>();
-  }
+  if (uniqueKeysBySchema == null)   uniqueKeysBySchema=new LinkedHashMap<SchemaDefinition,List<UniqueKeyDefinition>>();
   return filterSchema(uniqueKeys,schema,uniqueKeysBySchema);
 }

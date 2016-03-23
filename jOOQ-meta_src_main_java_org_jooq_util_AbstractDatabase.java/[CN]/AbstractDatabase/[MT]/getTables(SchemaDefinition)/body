@@ -1,17 +1,18 @@
 {
   if (tables == null) {
     tables=new ArrayList<TableDefinition>();
-    try {
-      List<TableDefinition> t=getTables0();
-      tables=filterExcludeInclude(t);
-      log.info("Tables fetched",fetchedSize(t,tables));
+    if (getIncludeTables()) {
+      try {
+        List<TableDefinition> t=getTables0();
+        tables=filterExcludeInclude(t);
+        log.info("Tables fetched",fetchedSize(t,tables));
+      }
+ catch (      Exception e) {
+        log.error("Error while fetching tables",e);
+      }
     }
- catch (    Exception e) {
-      log.error("Error while fetching tables",e);
-    }
+ else     log.info("Tables excluded");
   }
-  if (tablesBySchema == null) {
-    tablesBySchema=new LinkedHashMap<SchemaDefinition,List<TableDefinition>>();
-  }
+  if (tablesBySchema == null)   tablesBySchema=new LinkedHashMap<SchemaDefinition,List<TableDefinition>>();
   return filterSchema(tables,schema,tablesBySchema);
 }

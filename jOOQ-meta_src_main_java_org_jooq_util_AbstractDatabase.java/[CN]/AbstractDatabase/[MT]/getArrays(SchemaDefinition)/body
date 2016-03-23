@@ -1,17 +1,18 @@
 {
   if (arrays == null) {
     arrays=new ArrayList<ArrayDefinition>();
-    try {
-      List<ArrayDefinition> a=getArrays0();
-      arrays=filterExcludeInclude(a);
-      log.info("ARRAYs fetched",fetchedSize(a,arrays));
+    if (getIncludeUDTs()) {
+      try {
+        List<ArrayDefinition> a=getArrays0();
+        arrays=filterExcludeInclude(a);
+        log.info("ARRAYs fetched",fetchedSize(a,arrays));
+      }
+ catch (      Exception e) {
+        log.error("Error while fetching ARRAYS",e);
+      }
     }
- catch (    Exception e) {
-      log.error("Error while fetching ARRAYS",e);
-    }
+ else     log.info("ARRAYs excluded");
   }
-  if (arraysBySchema == null) {
-    arraysBySchema=new LinkedHashMap<SchemaDefinition,List<ArrayDefinition>>();
-  }
+  if (arraysBySchema == null)   arraysBySchema=new LinkedHashMap<SchemaDefinition,List<ArrayDefinition>>();
   return filterSchema(arrays,schema,arraysBySchema);
 }

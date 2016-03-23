@@ -1,17 +1,18 @@
 {
   if (packages == null) {
     packages=new ArrayList<PackageDefinition>();
-    try {
-      List<PackageDefinition> p=getPackages0();
-      packages=filterExcludeInclude(p);
-      log.info("Packages fetched",fetchedSize(p,packages));
+    if (getIncludePackages()) {
+      try {
+        List<PackageDefinition> p=getPackages0();
+        packages=filterExcludeInclude(p);
+        log.info("Packages fetched",fetchedSize(p,packages));
+      }
+ catch (      Exception e) {
+        log.error("Error while fetching packages",e);
+      }
     }
- catch (    Exception e) {
-      log.error("Error while fetching packages",e);
-    }
+ else     log.info("Packages excluded");
   }
-  if (packagesBySchema == null) {
-    packagesBySchema=new LinkedHashMap<SchemaDefinition,List<PackageDefinition>>();
-  }
+  if (packagesBySchema == null)   packagesBySchema=new LinkedHashMap<SchemaDefinition,List<PackageDefinition>>();
   return filterSchema(packages,schema,packagesBySchema);
 }

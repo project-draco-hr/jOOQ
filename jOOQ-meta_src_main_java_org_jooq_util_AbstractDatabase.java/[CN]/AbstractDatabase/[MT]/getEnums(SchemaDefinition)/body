@@ -11,8 +11,6 @@
       log.error("Error while fetching enums",e);
     }
   }
-  if (enumsBySchema == null) {
-    enumsBySchema=new LinkedHashMap<SchemaDefinition,List<EnumDefinition>>();
-  }
+  if (enumsBySchema == null)   enumsBySchema=new LinkedHashMap<SchemaDefinition,List<EnumDefinition>>();
   return filterSchema(enums,schema,enumsBySchema);
 }
