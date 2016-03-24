@@ -14,13 +14,14 @@
       DataType<?> type=columnTypes.get(i);
       ctx.visit(columnFields.get(i)).sql(' ');
       Tools.toSQLDDLTypeDeclaration(ctx,type);
+      if (asList().contains(ctx.family()))       acceptDefault(ctx,type);
       if (type.nullable()) {
         if (!asList(DERBY,FIREBIRD).contains(ctx.family()))         ctx.sql(' ').keyword("null");
       }
  else {
         ctx.sql(' ').keyword("not null");
       }
-      if (type.defaulted())       ctx.sql(' ').keyword("default").sql(' ').visit(type.defaultValue());
+      if (!asList().contains(ctx.family()))       acceptDefault(ctx,type);
       if (i < columnFields.size() - 1)       ctx.sql(',').formatSeparator();
     }
     ctx.qualify(qualify);
