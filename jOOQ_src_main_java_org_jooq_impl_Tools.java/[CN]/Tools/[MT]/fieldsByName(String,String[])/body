@@ -1,6 +1,7 @@
 {
+  if (fieldNames == null)   return null;
   Field<?>[] result=new Field[fieldNames.length];
-  for (int i=0; i < fieldNames.length; i++)   if (tableName == null)   result[i]=DSL.field(name(fieldNames[i]));
- else   result[i]=DSL.field(name(tableName,fieldNames[i]));
+  if (tableName == null)   for (int i=0; i < fieldNames.length; i++)   result[i]=DSL.field(name(fieldNames[i]));
+ else   for (int i=0; i < fieldNames.length; i++)   result[i]=DSL.field(name(tableName,fieldNames[i]));
   return result;
 }

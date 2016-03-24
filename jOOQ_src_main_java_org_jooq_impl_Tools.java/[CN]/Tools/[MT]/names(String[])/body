@@ -1,4 +1,5 @@
 {
+  if (names == null)   return null;
   Name[] result=new Name[names.length];
   for (int i=0; i < names.length; i++)   result[i]=DSL.name(names[i]);
   return result;

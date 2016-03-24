@@ -1,4 +1,5 @@
 {
+  if (fields == null)   return null;
   String[] result=new String[fields.length];
   for (int i=0; i < fields.length; i++)   result[i]=fields[i].getName();
   return result;
