@@ -11,10 +11,9 @@
   Collection<Field<?>> key=setReturningIfNeeded(insert);
   int result=insert.execute();
   if (result > 0) {
+    for (    Field<?> storeField : storeFields)     changed(storeField,false);
     setRecordVersionAndTimestamp(version,timestamp);
     getReturningIfNeeded(insert,key);
-    if (asList(DERBY,H2,MARIADB,MYSQL).contains(configuration().family()) && this instanceof UpdatableRecord)     ((UpdatableRecord<?>)this).refresh();
- else     for (    Field<?> storeField : storeFields)     changed(storeField,false);
     fetched=true;
   }
   return result;

@@ -9,5 +9,6 @@
         originals[index]=value;
       }
     }
+    if (asList(DERBY,H2,MARIADB,MYSQL).contains(configuration().family()) && this instanceof UpdatableRecord)     ((UpdatableRecord<?>)this).refresh(key.toArray(new Field[0]));
   }
 }

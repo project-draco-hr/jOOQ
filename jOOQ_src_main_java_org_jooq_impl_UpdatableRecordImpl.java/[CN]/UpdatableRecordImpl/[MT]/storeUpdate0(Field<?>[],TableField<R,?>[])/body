@@ -20,13 +20,8 @@
   int result=update.execute();
   checkIfChanged(result,version,timestamp);
   if (result > 0) {
-    if (asList(DERBY,H2,HSQLDB,MARIADB,MYSQL).contains(configuration().family())) {
-      refresh();
-    }
- else {
-      getReturningIfNeeded(update,key);
-      for (      Field<?> storeField : storeFields)       changed(storeField,false);
-    }
+    for (    Field<?> storeField : storeFields)     changed(storeField,false);
+    getReturningIfNeeded(update,key);
   }
   return result;
 }
