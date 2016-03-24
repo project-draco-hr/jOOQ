@@ -1,0 +1,3 @@
+{
+  refresh(refreshFields.toArray(new Field[0]));
+}

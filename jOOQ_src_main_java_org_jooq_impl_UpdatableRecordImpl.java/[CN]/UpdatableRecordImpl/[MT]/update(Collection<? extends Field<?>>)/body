@@ -1,0 +1,3 @@
+{
+  return update(storeFields.toArray(new Field[0]));
+}
