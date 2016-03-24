@@ -12,13 +12,9 @@
   int result=insert.execute();
   if (result > 0) {
     setRecordVersionAndTimestamp(version,timestamp);
-    if (asList(DERBY,H2,MARIADB,MYSQL).contains(configuration().family()) && this instanceof UpdatableRecord) {
-      ((UpdatableRecord<?>)this).refresh();
-    }
- else {
-      getReturningIfNeeded(insert,key);
-      for (      Field<?> storeField : storeFields)       changed(storeField,false);
-    }
+    getReturningIfNeeded(insert,key);
+    if (asList(DERBY,H2,MARIADB,MYSQL).contains(configuration().family()) && this instanceof UpdatableRecord)     ((UpdatableRecord<?>)this).refresh();
+ else     for (    Field<?> storeField : storeFields)     changed(storeField,false);
     fetched=true;
   }
   return result;
