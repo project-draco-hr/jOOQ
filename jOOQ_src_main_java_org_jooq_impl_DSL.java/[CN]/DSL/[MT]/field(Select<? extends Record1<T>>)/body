@@ -1,3 +1,4 @@
 {
-  return select.<T>asField();
+  if (select == null)   return (Field)NULL();
+ else   return select.<T>asField();
 }

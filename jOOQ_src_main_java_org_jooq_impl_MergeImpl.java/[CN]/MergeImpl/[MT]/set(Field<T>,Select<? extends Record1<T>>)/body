@@ -1,3 +1,4 @@
 {
-  return set(field,value.<T>asField());
+  if (value == null)   return set(field,(T)null);
+ else   return set(field,value.<T>asField());
 }
