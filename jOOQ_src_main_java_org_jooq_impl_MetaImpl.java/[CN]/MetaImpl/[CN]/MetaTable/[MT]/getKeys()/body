@@ -1,3 +1,4 @@
 {
-  return unmodifiableList(asList(getPrimaryKey()));
+  UniqueKey<Record> pk=getPrimaryKey();
+  return pk == null ? emptyList() : singletonList(pk);
 }
