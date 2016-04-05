@@ -37,11 +37,7 @@ case MYSQL:
     rs=ctx.statement().getGeneratedKeys();
     try {
       List<Object> list=new ArrayList<Object>();
-      if (rs != null) {
-        while (rs.next()) {
-          list.add(rs.getObject(1));
-        }
-      }
+      if (rs != null)       while (rs.next())       list.add(rs.getObject(1));
       selectReturning(ctx.configuration(),list.toArray());
       return result;
     }
