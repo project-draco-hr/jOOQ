@@ -4,7 +4,7 @@
     if (!TRUE.equals(configuration().data(DATA_OMIT_RETURNING_CLAUSE))) {
       if (TRUE.equals(configuration().settings().isReturnAllOnUpdatableRecord()))       key=Arrays.asList(fields());
  else       key=getReturning();
-      if (query instanceof InsertQuery || !asList().contains(configuration().family()))       query.setReturning(key);
+      query.setReturning(key);
     }
   }
   return key;
