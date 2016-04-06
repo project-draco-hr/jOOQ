@@ -1,8 +1,0 @@
-{
-  try {
-    return f.parse(string);
-  }
- catch (  ParseException e) {
-    throw new DataTypeException("Error while converting date",e);
-  }
-}

@@ -23,8 +23,7 @@
  else   if (type == Clob.class) {
   }
  else   if (type == Date.class) {
-    SimpleDateFormat f=new SimpleDateFormat("yyyy-MM-dd");
-    return (T)new Date(pgParseDate(string,f).getTime());
+    return (T)Date.valueOf(string);
   }
  else   if (type == Double.class) {
     return (T)Double.valueOf(string);
@@ -45,12 +44,10 @@
     return (T)string;
   }
  else   if (type == Time.class) {
-    SimpleDateFormat f=new SimpleDateFormat("HH:mm:ss");
-    return (T)new Time(pgParseDate(string,f).getTime());
+    return (T)Time.valueOf(string);
   }
  else   if (type == Timestamp.class) {
-    SimpleDateFormat f=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    return (T)new Timestamp(pgParseDate(string,f).getTime());
+    return (T)Timestamp.valueOf(string);
   }
  else   if (type == UByte.class) {
     return (T)UByte.valueOf(string);
