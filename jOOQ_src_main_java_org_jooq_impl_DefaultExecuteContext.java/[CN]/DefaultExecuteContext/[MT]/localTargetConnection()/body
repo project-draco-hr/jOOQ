@@ -1,11 +1,11 @@
 {
   Connection result=localConnection();
-  for (int i=0; i < maxUnwrappedConnections; i++) {
+  unwrappingLoop:   for (int i=0; i < maxUnwrappedConnections; i++) {
     try {
       Connection r=Reflect.on(result).call("getTargetConnection").get();
       if (result != r && r != null) {
         result=r;
-        continue;
+        continue unwrappingLoop;
       }
     }
  catch (    ReflectException ignore) {
@@ -14,7 +14,7 @@
       Connection r=Reflect.on(result).call("getDelegate").get();
       if (result != r && r != null) {
         result=r;
-        continue;
+        continue unwrappingLoop;
       }
     }
  catch (    ReflectException ignore) {
