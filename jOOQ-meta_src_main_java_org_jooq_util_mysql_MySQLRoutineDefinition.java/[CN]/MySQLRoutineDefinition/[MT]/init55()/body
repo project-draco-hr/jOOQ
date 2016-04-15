@@ -1,7 +1,15 @@
 {
-  for (  Record record : create().select(Parameters.ORDINAL_POSITION,Parameters.PARAMETER_NAME,Parameters.PARAMETER_MODE,Parameters.DATA_TYPE,Parameters.CHARACTER_MAXIMUM_LENGTH,Parameters.NUMERIC_PRECISION,Parameters.NUMERIC_SCALE).from(PARAMETERS).where(Parameters.SPECIFIC_SCHEMA.eq(getSchema().getInputName())).and(Parameters.SPECIFIC_NAME.eq(getInputName())).and(Parameters.ROUTINE_TYPE.eq(procType.name())).orderBy(Parameters.ORDINAL_POSITION.asc()).fetch()) {
+  for (  Record record : create().select(Parameters.ORDINAL_POSITION,Parameters.PARAMETER_NAME,Parameters.PARAMETER_MODE,Parameters.DATA_TYPE,Parameters.DTD_IDENTIFIER,Parameters.CHARACTER_MAXIMUM_LENGTH,Parameters.NUMERIC_PRECISION,Parameters.NUMERIC_SCALE).from(PARAMETERS).where(Parameters.SPECIFIC_SCHEMA.eq(getSchema().getInputName())).and(Parameters.SPECIFIC_NAME.eq(getInputName())).and(Parameters.ROUTINE_TYPE.eq(procType.name())).orderBy(Parameters.ORDINAL_POSITION.asc()).fetch()) {
     String inOut=record.get(Parameters.PARAMETER_MODE);
-    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),record.get(Parameters.DATA_TYPE),record.get(Parameters.CHARACTER_MAXIMUM_LENGTH),record.get(Parameters.NUMERIC_PRECISION),record.get(Parameters.NUMERIC_SCALE),null,(String)null);
+    String dataType=record.get(Parameters.DATA_TYPE);
+    if (getDatabase().supportsUnsignedTypes()) {
+      if (asList("tinyint","smallint","mediumint","int","bigint").contains(dataType.toLowerCase())) {
+        if (record.get(Parameters.DTD_IDENTIFIER).toLowerCase().contains("unsigned")) {
+          dataType+="unsigned";
+        }
+      }
+    }
+    DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),dataType,record.get(Parameters.CHARACTER_MAXIMUM_LENGTH),record.get(Parameters.NUMERIC_PRECISION),record.get(Parameters.NUMERIC_SCALE),null,(String)null);
     if (inOut == null) {
       addParameter(InOutDefinition.RETURN,new DefaultParameterDefinition(this,"RETURN_VALUE",-1,type));
     }
