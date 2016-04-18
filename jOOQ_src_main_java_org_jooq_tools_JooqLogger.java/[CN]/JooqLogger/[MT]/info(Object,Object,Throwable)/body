@@ -1,11 +1,6 @@
 {
-  if (slf4j != null) {
-    slf4j.info(getMessage(message,details),throwable);
-  }
- else   if (log4j != null) {
-    log4j.info(getMessage(message,details),throwable);
-  }
- else {
-    util.log(Level.INFO,"" + getMessage(message,details),throwable);
-  }
+  if (!globalThreshold.supports(Level.INFO))   return;
+ else   if (slf4j != null)   slf4j.info(getMessage(message,details),throwable);
+ else   if (log4j != null)   log4j.info(getMessage(message,details),throwable);
+ else   util.log(java.util.logging.Level.INFO,"" + getMessage(message,details),throwable);
 }

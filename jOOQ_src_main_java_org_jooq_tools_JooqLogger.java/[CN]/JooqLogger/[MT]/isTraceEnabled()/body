@@ -1,14 +1,7 @@
 {
-  if (!supportsTrace) {
-    return false;
-  }
- else   if (slf4j != null) {
-    return slf4j.isTraceEnabled();
-  }
- else   if (log4j != null) {
-    return log4j.isTraceEnabled();
-  }
- else {
-    return util.isLoggable(Level.FINER);
-  }
+  if (!globalThreshold.supports(Level.TRACE))   return false;
+ else   if (!supportsTrace)   return false;
+ else   if (slf4j != null)   return slf4j.isTraceEnabled();
+ else   if (log4j != null)   return log4j.isTraceEnabled();
+ else   return util.isLoggable(java.util.logging.Level.FINER);
 }

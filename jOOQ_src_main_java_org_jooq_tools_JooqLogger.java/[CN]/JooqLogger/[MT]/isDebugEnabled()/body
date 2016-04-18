@@ -1,14 +1,7 @@
 {
-  if (!supportsDebug) {
-    return false;
-  }
- else   if (slf4j != null) {
-    return slf4j.isDebugEnabled();
-  }
- else   if (log4j != null) {
-    return log4j.isDebugEnabled();
-  }
- else {
-    return util.isLoggable(Level.FINE);
-  }
+  if (!globalThreshold.supports(Level.DEBUG))   return false;
+ else   if (!supportsDebug)   return false;
+ else   if (slf4j != null)   return slf4j.isDebugEnabled();
+ else   if (log4j != null)   return log4j.isDebugEnabled();
+ else   return util.isLoggable(java.util.logging.Level.FINE);
 }

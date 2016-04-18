@@ -1,11 +1,6 @@
 {
-  if (slf4j != null) {
-    slf4j.warn(getMessage(message,details));
-  }
- else   if (log4j != null) {
-    log4j.warn(getMessage(message,details));
-  }
- else {
-    util.warning("" + getMessage(message,details));
-  }
+  if (!globalThreshold.supports(Level.WARN))   return;
+ else   if (slf4j != null)   slf4j.warn(getMessage(message,details));
+ else   if (log4j != null)   log4j.warn(getMessage(message,details));
+ else   util.warning("" + getMessage(message,details));
 }
