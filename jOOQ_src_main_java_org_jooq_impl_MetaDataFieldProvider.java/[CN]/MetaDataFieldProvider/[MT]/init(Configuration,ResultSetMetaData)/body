@@ -20,7 +20,7 @@
           String columnTable=meta.getTableName(i);
           name=name(columnSchema,columnTable,columnName);
         }
- catch (        SQLFeatureNotSupportedException e) {
+ catch (        SQLException e) {
           name=name(columnLabel);
         }
       }
