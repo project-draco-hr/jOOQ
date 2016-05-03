@@ -1,4 +1,4 @@
 {
   UniqueKey<Record> pk=getPrimaryKey();
-  return pk == null ? emptyList() : singletonList(pk);
+  return pk == null ? Collections.<UniqueKey<Record>>emptyList() : Collections.<UniqueKey<Record>>singletonList(pk);
 }
