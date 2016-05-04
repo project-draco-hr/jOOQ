@@ -1,0 +1,3 @@
+{
+  return new RowField<Row3<T1,T2,T3>,Record3<T1,T2,T3>>(row);
+}
