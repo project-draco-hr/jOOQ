@@ -1,7 +1,8 @@
 {
-  Class<?> enumType=type.isArray() ? type.getComponentType() : type;
-  EnumType e=getEnumType((Class<EnumType>)enumType,null);
-  Schema schema=e.getSchema();
+  @SuppressWarnings("unchecked") Class<? extends EnumType> enumType=(Class<? extends EnumType>)(type.isArray() ? type.getComponentType() : type);
+  EnumType[] enums=Tools.enums(enumType);
+  if (enums == null || enums.length == 0)   throw new IllegalArgumentException("Not a valid EnumType : " + type);
+  Schema schema=enums[0].getSchema();
   if (schema != null) {
     render.sql("::");
     schema=using(render.configuration()).map(schema);
@@ -9,7 +10,7 @@
       render.visit(schema);
       render.sql('.');
     }
-    render.visit(name(e.getName()));
+    render.visit(name(enums[0].getName()));
   }
   if (type.isArray())   render.sql("[]");
 }
