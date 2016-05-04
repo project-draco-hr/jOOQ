@@ -33,7 +33,7 @@
     result=(T)ctx.resultSet().getClob(ctx.index());
   }
  else   if (type == Date.class) {
-    result=(T)getDate(ctx.configuration().dialect(),ctx.resultSet(),ctx.index());
+    result=(T)getDate(ctx.family(),ctx.resultSet(),ctx.index());
   }
  else   if (type == Double.class) {
     result=(T)wasNull(ctx.resultSet(),Double.valueOf(ctx.resultSet().getDouble(ctx.index())));
@@ -45,13 +45,13 @@
     result=(T)wasNull(ctx.resultSet(),Integer.valueOf(ctx.resultSet().getInt(ctx.index())));
   }
  else   if (type == LocalDate.class) {
-    result=(T)localDate(getDate(ctx.configuration().dialect(),ctx.resultSet(),ctx.index()));
+    result=(T)localDate(getDate(ctx.family(),ctx.resultSet(),ctx.index()));
   }
  else   if (type == LocalTime.class) {
-    result=(T)localTime(getTime(ctx.configuration().dialect(),ctx.resultSet(),ctx.index()));
+    result=(T)localTime(getTime(ctx.family(),ctx.resultSet(),ctx.index()));
   }
  else   if (type == LocalDateTime.class) {
-    result=(T)localDateTime(getTimestamp(ctx.configuration().dialect(),ctx.resultSet(),ctx.index()));
+    result=(T)localDateTime(getTimestamp(ctx.family(),ctx.resultSet(),ctx.index()));
   }
  else   if (type == Long.class) {
     result=(T)wasNull(ctx.resultSet(),Long.valueOf(ctx.resultSet().getLong(ctx.index())));
@@ -69,10 +69,10 @@
     result=(T)ctx.resultSet().getString(ctx.index());
   }
  else   if (type == Time.class) {
-    result=(T)getTime(ctx.configuration().dialect(),ctx.resultSet(),ctx.index());
+    result=(T)getTime(ctx.family(),ctx.resultSet(),ctx.index());
   }
  else   if (type == Timestamp.class) {
-    result=(T)getTimestamp(ctx.configuration().dialect(),ctx.resultSet(),ctx.index());
+    result=(T)getTimestamp(ctx.family(),ctx.resultSet(),ctx.index());
   }
  else   if (type == YearToMonth.class) {
     if (ctx.family() == POSTGRES) {

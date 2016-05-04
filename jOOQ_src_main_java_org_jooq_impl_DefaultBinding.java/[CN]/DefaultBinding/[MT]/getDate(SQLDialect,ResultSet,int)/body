@@ -1,10 +1,7 @@
 {
-  if (dialect == SQLDialect.SQLITE) {
+  if (family == SQLDialect.SQLITE) {
     String date=rs.getString(index);
-    if (date != null) {
-      return new Date(parse(Date.class,date));
-    }
-    return null;
+    return date == null ? null : new Date(parse(Date.class,date));
   }
  else {
     return rs.getDate(index);

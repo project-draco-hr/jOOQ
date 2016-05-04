@@ -1,10 +1,7 @@
 {
-  if (dialect == SQLDialect.SQLITE) {
+  if (family == SQLDialect.SQLITE) {
     String timestamp=rs.getString(index);
-    if (timestamp != null) {
-      return new Timestamp(parse(Timestamp.class,timestamp));
-    }
-    return null;
+    return timestamp == null ? null : new Timestamp(parse(Timestamp.class,timestamp));
   }
  else {
     return rs.getTimestamp(index);

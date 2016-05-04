@@ -39,7 +39,8 @@
     ctx.output().writeClob((Clob)value);
   }
  else   if (type == Date.class) {
-    ctx.output().writeDate((Date)value);
+    Date date=(Date)value;
+    ctx.output().writeDate(date);
   }
  else   if (type == Double.class) {
     ctx.output().writeDouble((Double)value);

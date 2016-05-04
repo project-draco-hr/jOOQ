@@ -80,27 +80,30 @@
       ctx.statement().setString(ctx.index(),(String)value);
     }
  else     if (actualType == Date.class) {
+      Date date=(Date)value;
       if (dialect == SQLITE) {
-        ctx.statement().setString(ctx.index(),((Date)value).toString());
+        ctx.statement().setString(ctx.index(),date.toString());
       }
  else {
-        ctx.statement().setDate(ctx.index(),(Date)value);
+        ctx.statement().setDate(ctx.index(),date);
       }
     }
  else     if (actualType == Time.class) {
+      Time time=(Time)value;
       if (dialect == SQLITE) {
-        ctx.statement().setString(ctx.index(),((Time)value).toString());
+        ctx.statement().setString(ctx.index(),time.toString());
       }
  else {
-        ctx.statement().setTime(ctx.index(),(Time)value);
+        ctx.statement().setTime(ctx.index(),time);
       }
     }
  else     if (actualType == Timestamp.class) {
+      Timestamp timestamp=(Timestamp)value;
       if (dialect == SQLITE) {
-        ctx.statement().setString(ctx.index(),((Timestamp)value).toString());
+        ctx.statement().setString(ctx.index(),timestamp.toString());
       }
  else {
-        ctx.statement().setTimestamp(ctx.index(),(Timestamp)value);
+        ctx.statement().setTimestamp(ctx.index(),timestamp);
       }
     }
  else     if (actualType == LocalDate.class) {

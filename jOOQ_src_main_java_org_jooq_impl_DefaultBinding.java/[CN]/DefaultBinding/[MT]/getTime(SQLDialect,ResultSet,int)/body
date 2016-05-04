@@ -1,10 +1,7 @@
 {
-  if (dialect == SQLDialect.SQLITE) {
+  if (family == SQLDialect.SQLITE) {
     String time=rs.getString(index);
-    if (time != null) {
-      return new Time(parse(Time.class,time));
-    }
-    return null;
+    return time == null ? null : new Time(parse(Time.class,time));
   }
  else {
     return rs.getTime(index);
