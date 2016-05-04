@@ -15,6 +15,11 @@
  else   if (value instanceof Record) {
     formatted+=((Record)value).valuesRow().toString();
   }
+ else   if (value instanceof Date) {
+    String date=value.toString();
+    if (Date.valueOf(date).equals(value))     formatted+=date;
+ else     formatted+=new Timestamp(((Date)value).getTime());
+  }
  else {
     formatted+=value.toString();
   }
