@@ -34,6 +34,14 @@
  else     if (Interval.class.isAssignableFrom(type)) {
       render.sql('\'').sql(escape(val,render)).sql('\'');
     }
+ else     if (Double.class.isAssignableFrom(type) && ((Double)val).isNaN()) {
+      if (POSTGRES == family)       render.visit(inline("NaN")).sql("::").keyword("float8");
+ else       render.sql(((Number)val).toString());
+    }
+ else     if (Float.class.isAssignableFrom(type) && ((Float)val).isNaN()) {
+      if (POSTGRES == family)       render.visit(inline("NaN")).sql("::").keyword("float4");
+ else       render.sql(((Number)val).toString());
+    }
  else     if (Number.class.isAssignableFrom(type)) {
       render.sql(((Number)val).toString());
     }
