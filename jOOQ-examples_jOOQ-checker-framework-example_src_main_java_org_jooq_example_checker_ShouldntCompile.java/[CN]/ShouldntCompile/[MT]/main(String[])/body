@@ -1,6 +1,0 @@
-{
-  try (Connection c=DriverManager.getConnection("jdbc:h2:~/checker-test","sa","")){
-    Result<?> result=DSL.using(c).select(AUTHOR.FIRST_NAME,AUTHOR.LAST_NAME,BOOK.ID,BOOK.TITLE,DSL.array(1)).from(AUTHOR).join(BOOK).on(AUTHOR.ID.eq(BOOK.AUTHOR_ID)).connectBy("abc").orderBy(BOOK.ID.asc()).fetch();
-    System.out.println(result);
-  }
- }

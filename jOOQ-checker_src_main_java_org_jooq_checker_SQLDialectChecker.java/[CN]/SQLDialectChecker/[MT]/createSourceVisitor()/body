@@ -1,5 +1,5 @@
 {
-  return new SourceVisitor<Void,Void>(this){
+  return new SourceVisitor<Void,Void>(getChecker()){
     @Override public Void visitMethodInvocation(    MethodInvocationTree node,    Void p){
       try {
         ExecutableElement elementFromUse=elementFromUse(node);
