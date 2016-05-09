@@ -1,0 +1,10 @@
+{
+  try (PrintWriter writer=new PrintWriter(new FileWriter("error.txt"))){
+    writer.println("This is probably a bug in jOOQ-checker.");
+    writer.println("Please report this bug here: https://github.com/jOOQ/jOOQ/issues/new");
+    writer.println("---------------------------------------------------------------------");
+    printer.print(writer);
+  }
+ catch (  IOException ignore) {
+  }
+}
