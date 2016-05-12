@@ -1,11 +1,5 @@
 {
-  if (name != null) {
-    ctx.visit(name);
-  }
- else   if (term != null) {
-    ctx.sql(term.translate(ctx.configuration().dialect()));
-  }
- else {
-    ctx.sql(getName());
-  }
+  if (name != null)   ctx.visit(name);
+ else   if (term != null)   ctx.sql(term.translate(ctx.configuration().dialect()));
+ else   ctx.sql(getName());
 }

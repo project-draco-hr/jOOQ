@@ -3,9 +3,7 @@
   if (windowDefinition != null)   if (POSTGRES == ctx.family())   return windowDefinition;
  else   return DSL.sql("({0})",windowDefinition);
   if (windowName != null) {
-    if (asList(POSTGRES).contains(ctx.family())) {
-      return windowName;
-    }
+    if (asList(POSTGRES).contains(ctx.family()))     return windowName;
     Map<Object,Object> map=(Map<Object,Object>)ctx.data(DATA_LOCALLY_SCOPED_DATA_MAP);
     QueryPartList<WindowDefinition> windows=(QueryPartList<WindowDefinition>)map.get(DATA_WINDOW_DEFINITIONS);
     if (windows != null) {

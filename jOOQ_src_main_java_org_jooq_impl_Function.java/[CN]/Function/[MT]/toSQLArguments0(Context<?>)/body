@@ -1,0 +1,28 @@
+{
+  if (distinct) {
+    ctx.keyword("distinct");
+    if (ctx.family() == POSTGRES && arguments.size() > 1) {
+      ctx.sql('(');
+    }
+ else {
+      ctx.sql(' ');
+    }
+  }
+  if (!arguments.isEmpty()) {
+    if (filter == null || HSQLDB == ctx.family() || POSTGRES_9_4.precedes(ctx.dialect())) {
+      ctx.visit(arguments);
+    }
+ else {
+      QueryPartList<Field<?>> expressions=new QueryPartList<Field<?>>();
+      for (      QueryPart argument : arguments)       expressions.add(DSL.when(filter,argument == ASTERISK ? one() : argument));
+      ctx.visit(expressions);
+    }
+  }
+  if (distinct)   if (ctx.family() == POSTGRES && arguments.size() > 1)   ctx.sql(')');
+  if (ignoreNulls) {
+    ctx.sql(' ').keyword("ignore nulls");
+  }
+ else   if (respectNulls) {
+    ctx.sql(' ').keyword("respect nulls");
+  }
+}

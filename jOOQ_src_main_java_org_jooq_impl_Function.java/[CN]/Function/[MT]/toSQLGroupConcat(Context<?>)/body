@@ -1,15 +1,8 @@
 {
   toSQLFunctionName(ctx);
   ctx.sql('(');
-  if (distinct) {
-    ctx.keyword("distinct").sql(' ');
-  }
-  ctx.visit(arguments.get(0));
-  if (!withinGroupOrderBy.isEmpty()) {
-    ctx.sql(' ').keyword("order by").sql(' ').visit(withinGroupOrderBy);
-  }
-  if (arguments.size() > 1) {
-    ctx.sql(' ').keyword("separator").sql(' ').visit(arguments.get(1));
-  }
+  toSQLArguments0(ctx);
+  if (!withinGroupOrderBy.isEmpty())   ctx.sql(' ').keyword("order by").sql(' ').visit(withinGroupOrderBy);
+  if (arguments.size() > 1)   ctx.sql(' ').keyword("separator").sql(' ').visit(arguments.get(1));
   ctx.sql(')');
 }
