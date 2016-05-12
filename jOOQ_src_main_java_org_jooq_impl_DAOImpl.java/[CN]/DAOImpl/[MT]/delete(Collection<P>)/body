@@ -1,7 +1,8 @@
 {
-  List<T> ids=new ArrayList<T>();
-  for (  P object : objects) {
-    ids.add(getId(object));
+  if (objects.size() > 1) {
+    using(configuration).batchDelete(records(objects,true)).execute();
   }
-  deleteById(ids);
+ else   if (objects.size() == 1) {
+    records(objects,true).get(0).delete();
+  }
 }
