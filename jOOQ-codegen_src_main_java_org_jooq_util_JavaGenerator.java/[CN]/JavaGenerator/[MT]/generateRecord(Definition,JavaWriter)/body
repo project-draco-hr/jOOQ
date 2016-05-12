@@ -49,7 +49,7 @@
       }
  else {
         out.tab(1).overrideIf(generateInterfaces() && !generateImmutablePojos() && !isUDT);
-        out.tab(1).println("public %s %s(%s value) {",setterReturnType,setter,type);
+        out.tab(1).println("public %s %s(%s value) {",setterReturnType,setter,varargsIfArray(type));
         out.tab(2).println("set(%s, value);",i);
         if (fluentSetters())         out.tab(2).println("return this;");
         out.tab(1).println("}");
@@ -70,7 +70,7 @@
         out.tab(1).println("}");
       }
  else {
-        out.tab(1).println("public %s %s(%s value) {",setterReturnType,setter,columnTypeInterface);
+        out.tab(1).println("public %s %s(%s value) {",setterReturnType,setter,varargsIfArray(columnTypeInterface));
         out.tab(2).println("if (value == null)");
         out.tab(3).println("set(%s, null);",i);
         if (isUDT) {
@@ -214,7 +214,7 @@
       }
  else {
         out.tab(1).overrideInherit();
-        out.tab(1).println("public %s value%s(%s value) {",className,i,colType);
+        out.tab(1).println("public %s value%s(%s value) {",className,i,varargsIfArray(colType));
         out.tab(2).println("%s(value);",colSetter);
         out.tab(2).println("return this;");
         out.tab(1).println("}");

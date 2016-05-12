@@ -1,0 +1,4 @@
+{
+  if (scala)   return type;
+ else   return SQUARE_BRACKETS.matcher(type).replaceFirst("...");
+}

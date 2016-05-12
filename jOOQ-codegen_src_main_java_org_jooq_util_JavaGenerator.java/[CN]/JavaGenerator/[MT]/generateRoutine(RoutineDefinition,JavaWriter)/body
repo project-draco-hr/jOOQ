@@ -97,7 +97,7 @@
       out.tab(1).println("}");
     }
  else {
-      out.tab(1).println("public void %s(%s %s) {",setter,refNumberType(out,parameter.getType()),paramName);
+      out.tab(1).println("public void %s(%s %s) {",setter,varargsIfArray(refNumberType(out,parameter.getType())),paramName);
       out.tab(2).println("set%s(%s, %s);",numberValue,paramId,paramName);
       out.tab(1).println("}");
     }

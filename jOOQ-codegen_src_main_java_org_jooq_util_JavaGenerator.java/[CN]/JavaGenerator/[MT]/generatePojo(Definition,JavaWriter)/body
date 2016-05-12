@@ -120,7 +120,7 @@
         }
  else {
           out.tab(1).overrideIf(generateInterfaces() && !isUDT);
-          out.tab(1).println("public %s %s(%s %s) {",columnSetterReturnType,columnSetter,columnType,columnMember);
+          out.tab(1).println("public %s %s(%s %s) {",columnSetterReturnType,columnSetter,varargsIfArray(columnType),columnMember);
           out.tab(2).println("this.%s = %s;",columnMember,columnMember);
           if (fluentSetters())           out.tab(2).println("return this;");
           out.tab(1).println("}");
@@ -140,7 +140,7 @@
         }
  else {
           out.tab(1).override();
-          out.tab(1).println("public %s %s(%s %s) {",columnSetterReturnType,columnSetter,columnTypeInterface,columnMember);
+          out.tab(1).println("public %s %s(%s %s) {",columnSetterReturnType,columnSetter,varargsIfArray(columnTypeInterface),columnMember);
           out.tab(2).println("if (%s == null)",columnMember);
           out.tab(3).println("this.%s = null;",columnMember);
           if (isUDT) {
