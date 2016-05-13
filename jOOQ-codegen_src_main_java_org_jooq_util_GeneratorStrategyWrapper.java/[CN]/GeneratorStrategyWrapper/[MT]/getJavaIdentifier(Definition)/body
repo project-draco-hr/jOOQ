@@ -1,22 +1,16 @@
 {
-  if (definition instanceof IdentityDefinition) {
-    return "IDENTITY_" + getJavaIdentifier(((IdentityDefinition)definition).getColumn().getContainer());
-  }
- else   if (definition instanceof CatalogDefinition && ((CatalogDefinition)definition).isDefaultCatalog()) {
-    return "DEFAULT_CATALOG";
-  }
- else   if (definition instanceof SchemaDefinition && ((SchemaDefinition)definition).isDefaultSchema()) {
-    return "DEFAULT_SCHEMA";
-  }
+  if (definition instanceof IdentityDefinition)   return "IDENTITY_" + getJavaIdentifier(((IdentityDefinition)definition).getColumn().getContainer());
+ else   if (definition instanceof CatalogDefinition && ((CatalogDefinition)definition).isDefaultCatalog())   return "DEFAULT_CATALOG";
+ else   if (definition instanceof SchemaDefinition && ((SchemaDefinition)definition).isDefaultSchema())   return "DEFAULT_SCHEMA";
   String identifier=convertToIdentifier(delegate.getJavaIdentifier(definition),language);
   if (definition instanceof ColumnDefinition || definition instanceof AttributeDefinition) {
     TypedElementDefinition<?> e=(TypedElementDefinition<?>)definition;
-    if (identifier.equals(getJavaIdentifier(e.getContainer()))) {
-      return identifier + "_";
-    }
-    if (identifier.equals(getJavaPackageName(e.getContainer()).replaceAll("\\..*",""))) {
-      return identifier + "_";
-    }
+    if (identifier.equals(getJavaIdentifier(e.getContainer())))     return identifier + "_";
+    if (identifier.equals(getJavaPackageName(e.getContainer()).replaceAll("\\..*","")))     return identifier + "_";
+  }
+ else   if (definition instanceof TableDefinition) {
+    SchemaDefinition schema=definition.getSchema();
+    if (identifier.equals(getJavaIdentifier(schema)))     return identifier + "_";
   }
   return identifier;
 }
