@@ -1,0 +1,4 @@
+{
+  renameTo=newName;
+  return this;
+}
