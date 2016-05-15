@@ -1,0 +1,3 @@
+{
+  getChecker().report(Result.warning(message,node),node);
+}

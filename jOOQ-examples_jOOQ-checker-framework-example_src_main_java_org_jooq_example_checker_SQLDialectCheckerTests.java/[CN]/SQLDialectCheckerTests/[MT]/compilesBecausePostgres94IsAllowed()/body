@@ -1,0 +1,3 @@
+{
+  DSL.lateral(DSL.dual());
+}
