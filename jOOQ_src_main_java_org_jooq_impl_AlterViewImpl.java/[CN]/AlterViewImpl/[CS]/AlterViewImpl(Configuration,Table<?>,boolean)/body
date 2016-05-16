@@ -1,0 +1,5 @@
+{
+  super(configuration);
+  this.view=view;
+  this.ifExists=ifExists;
+}

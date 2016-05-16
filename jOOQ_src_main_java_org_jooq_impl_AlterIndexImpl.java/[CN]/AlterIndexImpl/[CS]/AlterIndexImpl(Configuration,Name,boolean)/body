@@ -1,0 +1,5 @@
+{
+  super(configuration);
+  this.index=index;
+  this.ifExists=ifExists;
+}

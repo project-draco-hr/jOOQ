@@ -1,4 +1,3 @@
 {
-  super(configuration);
-  this.view=view;
+  this(configuration,view,false);
 }

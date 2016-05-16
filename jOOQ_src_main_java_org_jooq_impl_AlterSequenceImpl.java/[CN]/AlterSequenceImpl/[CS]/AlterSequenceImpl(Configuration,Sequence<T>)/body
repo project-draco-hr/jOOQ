@@ -1,4 +1,3 @@
 {
-  super(configuration);
-  this.sequence=sequence;
+  this(configuration,sequence,false);
 }

@@ -1,9 +1,10 @@
 {
-  ctx.start(ALTER_SEQUENCE_SEQUENCE).keyword("alter").sql(' ').keyword(ctx.family() == CUBRID ? "serial" : "sequence").sql(' ');
+  ctx.start(ALTER_SEQUENCE_SEQUENCE).keyword("alter").sql(' ').keyword(ctx.family() == CUBRID ? "serial" : "sequence");
+  if (ifExists)   ctx.sql(' ').keyword("if exists");
 switch (ctx.family()) {
 default :
 {
-      ctx.visit(sequence);
+      ctx.sql(' ').visit(sequence);
       break;
     }
 }

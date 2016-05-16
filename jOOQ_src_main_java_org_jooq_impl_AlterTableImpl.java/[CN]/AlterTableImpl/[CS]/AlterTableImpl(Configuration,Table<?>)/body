@@ -1,4 +1,3 @@
 {
-  super(configuration);
-  this.table=table;
+  this(configuration,table,false);
 }
