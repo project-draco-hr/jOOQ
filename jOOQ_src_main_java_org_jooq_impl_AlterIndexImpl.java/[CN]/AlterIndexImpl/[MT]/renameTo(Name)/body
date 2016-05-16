@@ -1,0 +1,4 @@
+{
+  this.renameTo=newName;
+  return this;
+}

@@ -1,0 +1,8 @@
+{
+  ctx.start(ALTER_INDEX_INDEX).keyword("alter index").sql(' ').visit(index).end(ALTER_INDEX_INDEX).formatIndentStart().formatSeparator();
+  if (renameTo != null) {
+    boolean qualify=ctx.qualify();
+    ctx.start(ALTER_INDEX_RENAME).qualify(false).keyword("rename to").sql(' ').visit(renameTo).qualify(qualify).end(ALTER_INDEX_RENAME);
+  }
+  ctx.formatIndentEnd();
+}
