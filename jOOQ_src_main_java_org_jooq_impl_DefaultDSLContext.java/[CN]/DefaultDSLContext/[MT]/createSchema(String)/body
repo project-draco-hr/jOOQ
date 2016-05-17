@@ -1,0 +1,3 @@
+{
+  return createSchema(name(schema));
+}

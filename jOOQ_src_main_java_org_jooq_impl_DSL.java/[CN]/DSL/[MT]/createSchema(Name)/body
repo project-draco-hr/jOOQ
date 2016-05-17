@@ -1,0 +1,3 @@
+{
+  return using(new DefaultConfiguration()).createSchema(table);
+}
