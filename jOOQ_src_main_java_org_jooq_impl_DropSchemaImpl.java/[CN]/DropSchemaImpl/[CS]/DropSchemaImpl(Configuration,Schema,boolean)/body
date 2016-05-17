@@ -1,4 +1,5 @@
 {
   super(configuration);
   this.schema=schema;
+  this.ifExists=ifExists;
 }

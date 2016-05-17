@@ -1,0 +1,3 @@
+{
+  return dropSchema(name(schema));
+}

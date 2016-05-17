@@ -1,0 +1,7 @@
+{
+  ctx.start(DROP_SCHEMA_SCHEMA).keyword("drop schema");
+  if (ifExists && supportsIfExists(ctx))   ctx.sql(' ').keyword("if exists");
+  ctx.sql(' ').visit(schema);
+  if (cascade)   ctx.sql(' ').keyword("cascade");
+  ctx.end(DROP_SCHEMA_SCHEMA);
+}

@@ -1,0 +1,10 @@
+{
+  if (ifExists && !supportsIfExists(ctx)) {
+    Tools.executeImmediateBegin(ctx,DDLStatementType.DROP_SCHEMA);
+    accept0(ctx);
+    Tools.executeImmediateEnd(ctx,DDLStatementType.DROP_SCHEMA);
+  }
+ else {
+    accept0(ctx);
+  }
+}

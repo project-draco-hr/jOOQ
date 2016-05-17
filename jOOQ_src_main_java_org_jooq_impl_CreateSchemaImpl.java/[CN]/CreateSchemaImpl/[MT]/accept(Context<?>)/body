@@ -1,3 +1,5 @@
 {
-  ctx.start(CREATE_SCHEMA_NAME).keyword("create schema").sql(' ').visit(schema).end(CREATE_SCHEMA_NAME);
+  ctx.start(CREATE_SCHEMA_NAME).keyword("create schema");
+  if (ifNotExists)   ctx.sql(' ').keyword("if not exists");
+  ctx.sql(' ').visit(schema).end(CREATE_SCHEMA_NAME);
 }
