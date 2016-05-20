@@ -1,0 +1,10 @@
+{
+  ctx.start(ALTER_SCHEMA_SCHEMA).keyword("alter schema");
+  if (ifExists)   ctx.sql(' ').keyword("if exists");
+  ctx.sql(' ').visit(schema).end(ALTER_SCHEMA_SCHEMA).formatIndentStart().formatSeparator();
+  if (renameTo != null) {
+    boolean qualify=ctx.qualify();
+    ctx.start(ALTER_SCHEMA_RENAME).qualify(false).keyword("rename to").sql(' ').visit(renameTo).qualify(qualify).end(ALTER_SCHEMA_RENAME);
+  }
+  ctx.formatIndentEnd();
+}

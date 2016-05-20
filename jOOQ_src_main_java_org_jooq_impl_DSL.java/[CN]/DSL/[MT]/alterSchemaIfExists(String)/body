@@ -1,0 +1,3 @@
+{
+  return using(new DefaultConfiguration()).alterSchemaIfExists(schema);
+}
