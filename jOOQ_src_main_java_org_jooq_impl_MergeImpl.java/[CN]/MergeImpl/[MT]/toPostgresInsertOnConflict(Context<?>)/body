@@ -6,6 +6,6 @@
     ctx.sql("[ merge with select is not supported in PostgreSQL ]");
   }
  else {
-    ctx.visit(insertInto(table,getUpsertFields()).values(getUpsertValues()).onDuplicateKeyUpdate().set(map));
+    ctx.visit(insertInto(table,getUpsertFields()).values(getUpsertValues()).onConflict(getUpsertKeys()).doUpdate().set(map));
   }
 }

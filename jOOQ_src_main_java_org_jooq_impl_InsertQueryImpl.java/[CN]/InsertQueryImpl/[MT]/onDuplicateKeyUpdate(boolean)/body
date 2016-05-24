@@ -1,4 +1,5 @@
 {
   this.onDuplicateKeyIgnore=false;
   this.onDuplicateKeyUpdate=flag;
+  this.onConflict=null;
 }

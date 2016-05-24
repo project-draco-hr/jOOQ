@@ -1,0 +1,5 @@
+{
+  onDuplicateKeyUpdate=true;
+  getDelegate().onConflict(keys);
+  return this;
+}

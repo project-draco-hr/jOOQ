@@ -13,7 +13,11 @@ case POSTGRES:
 {
       toSQLInsert(ctx);
       ctx.formatSeparator().start(INSERT_ON_DUPLICATE_KEY_UPDATE).keyword("on conflict").sql(" (");
-      if (table.getPrimaryKey() == null) {
+      if (onConflict != null && onConflict.size() > 0) {
+        boolean qualify=ctx.qualify();
+        ctx.qualify(false).visit(onConflict).qualify(qualify);
+      }
+ else       if (table.getPrimaryKey() == null) {
         ctx.sql("[unknown primary key]");
       }
  else {

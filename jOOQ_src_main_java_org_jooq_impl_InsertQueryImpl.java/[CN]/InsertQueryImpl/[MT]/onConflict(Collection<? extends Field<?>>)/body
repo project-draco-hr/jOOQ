@@ -1,0 +1,4 @@
+{
+  onDuplicateKeyUpdate(true);
+  this.onConflict=new QueryPartList<Field<?>>(fields);
+}

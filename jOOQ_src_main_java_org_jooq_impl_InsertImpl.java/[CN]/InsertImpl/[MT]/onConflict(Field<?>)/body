@@ -1,0 +1,3 @@
+{
+  return onConflict(Arrays.asList(keys));
+}
