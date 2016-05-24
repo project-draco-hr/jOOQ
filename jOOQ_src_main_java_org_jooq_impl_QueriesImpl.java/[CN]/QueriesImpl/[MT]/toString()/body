@@ -1,0 +1,5 @@
+{
+  StringBuilder sb=new StringBuilder();
+  for (  Query query : queries)   sb.append(query).append(";\n");
+  return sb.toString();
+}
