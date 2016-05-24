@@ -45,7 +45,12 @@
       }
       if (dataType.hasLength() && l > 0)       sb.append(".length(").append(l).append(")");
       if (!dataType.nullable())       sb.append(".nullable(false)");
-      if (dataType.defaulted())       sb.append(".defaultValue(org.jooq.impl.DSL.field(\"").append(escapeString(d)).append("\", ").append(sqlDataTypeRef).append("))");
+      if (dataType.defaulted()) {
+        sb.append(".defaultValue(");
+        if (asList(MYSQL).contains(db.getDialect().family()))         sb.append("org.jooq.impl.DSL.inline(\"").append(escapeString(d)).append("\"");
+ else         sb.append("org.jooq.impl.DSL.field(\"").append(escapeString(d)).append("\"");
+        sb.append(", ").append(sqlDataTypeRef).append("))");
+      }
     }
  else {
       try {
