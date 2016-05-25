@@ -4,7 +4,6 @@
     if (getIncludeTables()) {
       try {
         List<TableDefinition> t=getTables0();
-        all.addAll(t);
         tables=filterExcludeInclude(t);
         log.info("Tables fetched",fetchedSize(t,tables));
       }

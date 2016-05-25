@@ -4,7 +4,6 @@
     if (getIncludeSequences()) {
       try {
         List<SequenceDefinition> s=getSequences0();
-        all.addAll(s);
         sequences=filterExcludeInclude(s);
         log.info("Sequences fetched",fetchedSize(s,sequences));
       }

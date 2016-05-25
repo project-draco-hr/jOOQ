@@ -4,7 +4,6 @@
     if (getIncludeRoutines()) {
       try {
         List<RoutineDefinition> r=getRoutines0();
-        all.addAll(r);
         routines=filterExcludeInclude(r);
         log.info("Routines fetched",fetchedSize(r,routines));
       }
