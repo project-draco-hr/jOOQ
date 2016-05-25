@@ -1,3 +1,8 @@
 {
-  return filterExcludeInclude(definitions,excludes,includes,filters);
+  List<T> result=filterExcludeInclude(definitions,excludes,includes,filters);
+  this.all.addAll(definitions);
+  this.included.addAll(result);
+  this.excluded.addAll(definitions);
+  this.excluded.removeAll(result);
+  return result;
 }

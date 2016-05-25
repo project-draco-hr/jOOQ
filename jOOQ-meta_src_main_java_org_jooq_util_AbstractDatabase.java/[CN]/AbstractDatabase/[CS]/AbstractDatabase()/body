@@ -2,4 +2,7 @@
   exists=new HashMap<Table<?>,Boolean>();
   patterns=new HashMap<String,Pattern>();
   filters=new ArrayList<Filter>();
+  all=new ArrayList<Definition>();
+  included=new ArrayList<Definition>();
+  excluded=new ArrayList<Definition>();
 }

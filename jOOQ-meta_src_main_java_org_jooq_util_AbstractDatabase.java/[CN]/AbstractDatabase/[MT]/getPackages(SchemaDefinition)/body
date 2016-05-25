@@ -4,6 +4,7 @@
     if (getIncludePackages()) {
       try {
         List<PackageDefinition> p=getPackages0();
+        all.addAll(p);
         packages=filterExcludeInclude(p);
         log.info("Packages fetched",fetchedSize(p,packages));
       }

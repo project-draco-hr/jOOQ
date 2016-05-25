@@ -55,7 +55,8 @@
   log.info("Generation remarks");
   log.info("----------------------------------------------------------");
   if (generateImmutablePojos && generateInterfaces)   log.info("  immutable pojos","Immutable POJOs do not have any setters. Hence, setters are also missing from interfaces");
- else   log.info("  none");
+  if (contains(db.getIncludes(),',') && db.getIncluded().isEmpty())   log.info("  includes","The <includes/> element takes a Java regular expression, not a comma-separated list. This might be why no objects were included.");
+  if (contains(db.getExcludes(),',') && db.getExcluded().isEmpty())   log.info("  excludes","The <excludes/> element takes a Java regular expression, not a comma-separated list. This might be why no objects were excluded.");
   log.info("");
   log.info("----------------------------------------------------------");
   log.info("Generating catalogs","Total: " + database.getCatalogs().size());

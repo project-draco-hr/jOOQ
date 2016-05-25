@@ -4,11 +4,7 @@
   }
  else {
     List<T> result=new ArrayList<T>();
-    for (    T definition : definitions) {
-      if (definition.getSchema().equals(schema)) {
-        result.add(definition);
-      }
-    }
+    for (    T definition : definitions)     if (definition.getSchema().equals(schema))     result.add(definition);
     return result;
   }
 }
