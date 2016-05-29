@@ -1,10 +1,11 @@
 {
   if (ctx.data(DATA_CONSTRAINT_REFERENCE) != null) {
+    if (name == null)     throw new DataAccessException("Cannot ALTER or DROP CONSTRAINT without name");
     ctx.visit(name);
   }
  else {
     boolean qualify=ctx.qualify();
-    ctx.keyword("constraint").sql(' ').visit(name).formatIndentStart().formatSeparator();
+    if (name != null)     ctx.keyword("constraint").sql(' ').visit(name).formatIndentStart().formatSeparator();
     if (unique != null) {
       ctx.keyword("unique").sql(" (").qualify(false).visit(new QueryPartList<Field<?>>(unique)).qualify(qualify).sql(')');
     }
