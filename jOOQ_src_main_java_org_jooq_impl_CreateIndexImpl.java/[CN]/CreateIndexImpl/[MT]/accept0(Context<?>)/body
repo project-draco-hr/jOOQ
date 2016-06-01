@@ -3,5 +3,5 @@
   if (unique)   ctx.sql(' ').keyword("unique");
   ctx.sql(' ').keyword("index").sql(' ');
   if (ifNotExists && supportsIfNotExists(ctx))   ctx.keyword("if not exists").sql(' ');
-  ctx.visit(index).sql(' ').keyword("on").sql(' ').visit(table).sql('(').qualify(false).visit(new QueryPartList<QueryPart>(fields)).qualify(true).sql(')');
+  ctx.visit(index).sql(' ').keyword("on").sql(' ').visit(table).sql('(').qualify(false).visit(fields != null ? new QueryPartList<QueryPart>(fields) : new QueryPartList<QueryPart>(sortFields)).qualify(true).sql(')');
 }

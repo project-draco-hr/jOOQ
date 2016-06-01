@@ -1,0 +1,6 @@
+{
+  if (fields == null)   return null;
+  SortField<?>[] result=new SortField[fields.length];
+  for (int i=0; i < fields.length; i++)   result[i]=fields[i].asc();
+  return result;
+}
