@@ -4,10 +4,8 @@
   SQLDialect family=ctx.family();
   if (converted != null && type == BigDecimal.class && asList(CUBRID,DERBY,FIREBIRD,HSQLDB).contains(family)) {
     int scale=((BigDecimal)converted).scale();
-    int precision=scale + ((BigDecimal)converted).precision();
-    if (family == FIREBIRD) {
-      precision=Math.min(precision,18);
-    }
+    int precision=((BigDecimal)converted).precision();
+    if (scale >= precision)     precision=scale + 1;
     toSQLCast(ctx,converted,dataType,0,precision,scale);
   }
  else   if (SQLDataType.OTHER == sqlDataType) {
