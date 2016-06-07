@@ -11,7 +11,7 @@
     sb.append(getStrategy().getFullJavaIdentifier(db.getUDT(schema,u)));
     sb.append(".getDataType()");
   }
- else   if (db.getTable(schema,u) != null) {
+ else   if (db.getDialect().family() == POSTGRES && db.getTable(schema,u) != null) {
     sb.append(getStrategy().getFullJavaIdentifier(db.getTable(schema,u)));
     sb.append(".getDataType()");
   }

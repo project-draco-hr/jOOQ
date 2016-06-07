@@ -28,7 +28,7 @@
  else   if (db.getUDT(schema,u) != null) {
     type=getStrategy().getFullJavaClassName(db.getUDT(schema,u),udtMode);
   }
- else   if (db.getTable(schema,u) != null) {
+ else   if (db.getDialect().family() == POSTGRES && db.getTable(schema,u) != null) {
     type=getStrategy().getFullJavaClassName(db.getTable(schema,u),udtMode);
   }
  else   if (db.getConfiguredCustomType(u) != null) {
