@@ -4,6 +4,19 @@
     try {
       Database db=getDatabase();
       List<E> e=getElements0();
+      if (this instanceof TableDefinition) {
+        boolean hasIdentity=false;
+        for (        E c : e) {
+          boolean isIdentity=((ColumnDefinition)c).isIdentity();
+          if (isIdentity) {
+            if (hasIdentity) {
+              log.warn("Multiple identities","Table " + getOutputName() + " has multiple identity columns. Only the first one is considered.");
+              break;
+            }
+            hasIdentity=true;
+          }
+        }
+      }
       if (this instanceof TableDefinition && db.getIncludeExcludeColumns()) {
         elements=db.filterExcludeInclude(e);
         log.info("Columns fetched",fetchedSize(e,elements));
