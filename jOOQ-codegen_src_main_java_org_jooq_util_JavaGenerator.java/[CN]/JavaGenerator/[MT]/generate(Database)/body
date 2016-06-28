@@ -39,7 +39,8 @@
   log.info("  records",generateRecords() + ((!generateRecords && generateDaos) ? " (forced to true because of <daos/>)" : ""));
   log.info("  pojos",generatePojos() + ((!generatePojos && generateDaos) ? " (forced to true because of <daos/>)" : ((!generatePojos && generateImmutablePojos) ? " (forced to true because of <immutablePojos/>)" : "")));
   log.info("  immutable pojos",generateImmutablePojos());
-  log.info("  interfaces",generateInterfaces());
+  log.info("  interfaces",generateInterfaces() + ((!generateInterfaces && generateImmutableInterfaces) ? " (forced to true because of <immutableInterfaces/>)" : ""));
+  log.info("  immutable interfaces",generateInterfaces());
   log.info("  daos",generateDaos());
   log.info("  relations",generateRelations() + ((!generateRelations && generateDaos) ? " (forced to true because of <daos/>)" : ""));
   log.info("  table-valued functions",generateTableValuedFunctions());
@@ -54,7 +55,6 @@
   log.info("");
   log.info("Generation remarks");
   log.info("----------------------------------------------------------");
-  if (generateImmutablePojos && generateInterfaces)   log.info("  immutable pojos","Immutable POJOs do not have any setters. Hence, setters are also missing from interfaces");
   if (contains(db.getIncludes(),',') && db.getIncluded().isEmpty())   log.info("  includes","The <includes/> element takes a Java regular expression, not a comma-separated list. This might be why no objects were included.");
   if (contains(db.getExcludes(),',') && db.getExcluded().isEmpty())   log.info("  excludes","The <excludes/> element takes a Java regular expression, not a comma-separated list. This might be why no objects were excluded.");
   log.info("");

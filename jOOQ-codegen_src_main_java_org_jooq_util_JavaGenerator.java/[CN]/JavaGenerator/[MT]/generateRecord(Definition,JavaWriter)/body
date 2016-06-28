@@ -48,14 +48,14 @@
         out.tab(1).println("}");
       }
  else {
-        out.tab(1).overrideIf(generateInterfaces() && !generateImmutablePojos() && !isUDT);
+        out.tab(1).overrideIf(generateInterfaces() && !generateImmutableInterfaces() && !isUDT);
         out.tab(1).println("public %s %s(%s value) {",setterReturnType,setter,varargsIfArray(type));
         out.tab(2).println("set(%s, value);",i);
         if (fluentSetters())         out.tab(2).println("return this;");
         out.tab(1).println("}");
       }
     }
-    if (generateInterfaces() && !generateImmutablePojos() && (isUDT || isArray)) {
+    if (generateInterfaces() && !generateImmutableInterfaces() && (isUDT || isArray)) {
       final String columnType=out.ref(getJavaType(column.getType(),Mode.RECORD));
       final String columnTypeInterface=out.ref(getJavaType(column.getType(),Mode.INTERFACE));
       out.tab(1).javadoc("Setter for <code>%s</code>.%s",name,defaultIfBlank(" " + comment,""));
@@ -249,7 +249,7 @@
       out.tab(1).println("}");
     }
   }
-  if (generateInterfaces() && !generateImmutablePojos()) {
+  if (generateInterfaces()) {
     printFromAndInto(out,tableOrUdt);
   }
   if (scala) {

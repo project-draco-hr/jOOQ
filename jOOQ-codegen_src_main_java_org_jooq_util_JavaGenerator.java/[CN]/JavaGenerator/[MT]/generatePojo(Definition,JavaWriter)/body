@@ -119,7 +119,7 @@
           out.tab(1).println("}");
         }
  else {
-          out.tab(1).overrideIf(generateInterfaces() && !isUDT);
+          out.tab(1).overrideIf(generateInterfaces() && !generateImmutableInterfaces() && !isUDT);
           out.tab(1).println("public %s %s(%s %s) {",columnSetterReturnType,columnSetter,varargsIfArray(columnType),columnMember);
           out.tab(2).println("this.%s = %s;",columnMember,columnMember);
           if (fluentSetters())           out.tab(2).println("return this;");

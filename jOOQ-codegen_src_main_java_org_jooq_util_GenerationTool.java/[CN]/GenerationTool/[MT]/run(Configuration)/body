@@ -177,6 +177,7 @@ if (g.getGenerate().isRecords() != null) generator.setGenerateRecords(g.getGener
 if (g.getGenerate().isPojos() != null) generator.setGeneratePojos(g.getGenerate().isPojos());
 if (g.getGenerate().isImmutablePojos() != null) generator.setGenerateImmutablePojos(g.getGenerate().isImmutablePojos());
 if (g.getGenerate().isInterfaces() != null) generator.setGenerateInterfaces(g.getGenerate().isInterfaces());
+if (g.getGenerate().isImmutableInterfaces() != null) generator.setGenerateImmutableInterfaces(g.getGenerate().isImmutableInterfaces());
 if (g.getGenerate().isDaos() != null) generator.setGenerateDaos(g.getGenerate().isDaos());
 if (g.getGenerate().isJpaAnnotations() != null) generator.setGenerateJPAAnnotations(g.getGenerate().isJpaAnnotations());
 if (g.getGenerate().isValidationAnnotations() != null) generator.setGenerateValidationAnnotations(g.getGenerate().isValidationAnnotations());

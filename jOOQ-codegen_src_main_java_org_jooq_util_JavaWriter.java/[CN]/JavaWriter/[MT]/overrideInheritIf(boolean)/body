@@ -1,0 +1,11 @@
+{
+  final int t=tab();
+  if (override) {
+    tab(t).javadoc("{@inheritDoc}");
+    tab(t).override();
+  }
+ else {
+    tab(t).println();
+  }
+  return this;
+}

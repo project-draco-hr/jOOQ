@@ -15,7 +15,7 @@
     final String getter=getStrategy().getJavaGetterName(column,Mode.INTERFACE);
     final String type=out.ref(getJavaType(column.getType(),Mode.INTERFACE));
     final String name=column.getQualifiedOutputName();
-    if (!generateImmutablePojos()) {
+    if (!generateImmutableInterfaces()) {
       out.tab(1).javadoc("Setter for <code>%s</code>.%s",name,defaultIfBlank(" " + comment,""));
       if (scala)       out.tab(1).println("def %s(value : %s) : %s",setter,type,setterReturnType);
  else       out.tab(1).println("public %s %s(%s value);",setterReturnType,setter,varargsIfArray(type));
@@ -26,7 +26,7 @@
     if (scala)     out.tab(1).println("def %s : %s",getter,type);
  else     out.tab(1).println("public %s %s();",type,getter);
   }
-  if (!generateImmutablePojos()) {
+  if (!generateImmutableInterfaces()) {
     String local=getStrategy().getJavaClassName(tableOrUDT,Mode.INTERFACE);
     String qualified=out.ref(getStrategy().getFullJavaClassName(tableOrUDT,Mode.INTERFACE));
     out.tab(1).header("FROM and INTO");
