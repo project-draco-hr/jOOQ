@@ -1,0 +1,3 @@
+{
+  return position(Tools.field(in,String.class),Tools.field(search,String.class),Tools.field(startIndex));
+}

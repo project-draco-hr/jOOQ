@@ -1,5 +1,0 @@
-{
-  super("position",SQLDataType.INTEGER,search,in);
-  this.search=search;
-  this.in=in;
-}

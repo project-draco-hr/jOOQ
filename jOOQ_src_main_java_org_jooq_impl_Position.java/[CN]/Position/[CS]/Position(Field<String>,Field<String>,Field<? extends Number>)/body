@@ -1,0 +1,6 @@
+{
+  super("position",SQLDataType.INTEGER,search,in,startIndex);
+  this.search=search;
+  this.in=in;
+  this.startIndex=startIndex;
+}
