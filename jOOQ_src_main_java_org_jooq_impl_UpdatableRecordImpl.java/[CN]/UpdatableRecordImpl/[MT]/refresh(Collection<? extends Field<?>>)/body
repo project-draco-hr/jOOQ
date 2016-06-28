@@ -1,3 +1,3 @@
 {
-  refresh(refreshFields.toArray(new Field[0]));
+  refresh(refreshFields.toArray(EMPTY_FIELD));
 }

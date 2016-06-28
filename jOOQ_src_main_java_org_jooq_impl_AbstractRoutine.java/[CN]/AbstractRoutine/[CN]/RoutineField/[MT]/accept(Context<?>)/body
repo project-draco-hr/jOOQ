@@ -16,7 +16,7 @@
     }
  else     fields.add(getInValues().get(parameter));
   }
-  Field<T> result=function(local.render(),getDataType(),fields.toArray(new Field[0]));
+  Field<T> result=function(local.render(),getDataType(),fields.toArray(EMPTY_FIELD));
   if (TRUE.equals(settings(ctx.configuration()).isRenderScalarSubqueriesForStoredFunctions())) {
     result=DSL.select(result).asField();
   }

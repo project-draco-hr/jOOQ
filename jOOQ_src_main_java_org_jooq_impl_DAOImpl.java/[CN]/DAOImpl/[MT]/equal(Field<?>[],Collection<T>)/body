@@ -8,6 +8,6 @@
     }
   }
  else {
-    return row(pk).in(ids.toArray(new Record[0]));
+    return row(pk).in(ids.toArray(EMPTY_RECORD));
   }
 }

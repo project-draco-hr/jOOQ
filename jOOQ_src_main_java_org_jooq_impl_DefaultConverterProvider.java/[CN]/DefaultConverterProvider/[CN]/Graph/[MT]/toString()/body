@@ -2,7 +2,7 @@
   build();
 synchronized (paths) {
     StringBuilder sb=new StringBuilder();
-    Class<?>[] classes=vertices.toArray(new Class[0]);
+    Class<?>[] classes=vertices.toArray(EMPTY_CLASS);
     Arrays.sort(classes,new Comparator<Class<?>>(){
       @Override public int compare(      Class<?> o1,      Class<?> o2){
         return o1.getName().compareTo(o2.getName());

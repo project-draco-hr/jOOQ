@@ -1,3 +1,3 @@
 {
-  return batchStore(records.toArray(new UpdatableRecord[0]));
+  return batchStore(records.toArray(EMPTY_UPDATABLE_RECORD));
 }

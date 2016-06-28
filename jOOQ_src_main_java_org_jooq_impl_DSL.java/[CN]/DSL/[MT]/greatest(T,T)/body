@@ -1,3 +1,3 @@
 {
-  return greatest(Tools.field(value),Tools.fields(values).toArray(new Field[0]));
+  return greatest(Tools.field(value),Tools.fields(values).toArray(EMPTY_FIELD));
 }

@@ -1,10 +1,10 @@
 {
   if (using == null) {
     upsertStyle=true;
-    getUpsertValues().addAll(Tools.fields(values,getUpsertFields().toArray(new Field[0])));
+    getUpsertValues().addAll(Tools.fields(values,getUpsertFields().toArray(EMPTY_FIELD)));
   }
  else {
-    Field<?>[] fields=notMatchedInsert.keySet().toArray(new Field[0]);
+    Field<?>[] fields=notMatchedInsert.keySet().toArray(EMPTY_FIELD);
     notMatchedInsert.putValues(Tools.fields(values,fields));
   }
   return this;

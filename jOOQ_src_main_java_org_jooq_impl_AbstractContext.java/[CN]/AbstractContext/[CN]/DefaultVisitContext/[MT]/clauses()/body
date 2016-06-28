@@ -1,3 +1,3 @@
 {
-  return visitClauses.toArray(new Clause[0]);
+  return visitClauses.toArray(EMPTY_CLAUSE);
 }

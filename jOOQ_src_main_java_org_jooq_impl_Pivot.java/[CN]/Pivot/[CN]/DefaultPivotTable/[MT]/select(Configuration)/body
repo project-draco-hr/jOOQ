@@ -31,6 +31,6 @@
       aggregationSelects.add(aggregateSelect.asField(inField.getName() + "_" + aggregateFunction.getName()));
     }
   }
-  Table<Record> select=using(configuration).select(aliasedGroupingFields).select(aggregationSelects).from(pivot).where(pivot.field(on).in(in.toArray(new Field[0]))).groupBy(aliasedGroupingFields).asTable();
+  Table<Record> select=using(configuration).select(aliasedGroupingFields).select(aggregationSelects).from(pivot).where(pivot.field(on).in(in.toArray(EMPTY_FIELD))).groupBy(aliasedGroupingFields).asTable();
   return select;
 }

@@ -28,7 +28,7 @@ for (Field<?> field : returning) {
  else   if (style == LOWER)   names.add(field.getName().toLowerCase());
  else   names.add(field.getName());
 }
-ctx.statement(connection.prepareStatement(ctx.sql(),names.toArray(new String[0])));
+ctx.statement(connection.prepareStatement(ctx.sql(),names.toArray(EMPTY_STRING)));
 return;
 }
 }

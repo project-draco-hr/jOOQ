@@ -40,7 +40,7 @@ default :
 condition=((RowN)left).eq(row(fields));
 break;
 }
-Select<Record> subselect=select().from(right.asTable(table,names.toArray(new String[0]))).where(condition);
+Select<Record> subselect=select().from(right.asTable(table,names.toArray(EMPTY_STRING))).where(condition);
 switch (comparator) {
 case NOT_IN:
 case NOT_EQUALS:

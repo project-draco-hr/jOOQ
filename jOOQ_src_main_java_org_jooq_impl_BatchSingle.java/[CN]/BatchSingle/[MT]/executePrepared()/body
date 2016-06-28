@@ -6,7 +6,7 @@
   collector.visit(query);
   List<Param<?>> params=new ArrayList<Param<?>>();
   for (  Entry<String,Param<?>> entry : collector.resultList)   params.add(entry.getValue());
-  DataType<?>[] paramTypes=dataTypes(params.toArray(new Field[0]));
+  DataType<?>[] paramTypes=dataTypes(params.toArray(EMPTY_FIELD));
   try {
     listener.renderStart(ctx);
     ctx.sql(create.render(query));

@@ -13,5 +13,5 @@
     names.add(pkg.getName());
   }
   names.add(name);
-  return (AggregateFunction<T>)function(DSL.name(names.toArray(new String[0])),type,array);
+  return (AggregateFunction<T>)function(DSL.name(names.toArray(EMPTY_STRING)),type,array);
 }
