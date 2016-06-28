@@ -6,29 +6,9 @@
   this.database.addFilter(new AvoidAmbiguousClassesFilter());
   this.database.setIncludeRelations(generateRelations());
   this.database.setTableValuedFunctions(generateTableValuedFunctions());
-  String url="";
-  try {
-    Connection connection=database.getConnection();
-    if (connection != null)     url=connection.getMetaData().getURL();
-  }
- catch (  SQLException ignore) {
-  }
-  log.info("License parameters");
-  log.info("----------------------------------------------------------");
-  log.info("  Thank you for using jOOQ and jOOQ's code generator");
+  logDatabaseParameters(db);
   log.info("");
-  log.info("Database parameters");
-  log.info("----------------------------------------------------------");
-  log.info("  dialect",database.getDialect());
-  log.info("  URL",url);
-  log.info("  target dir",getTargetDirectory());
-  log.info("  target package",getTargetPackage());
-  log.info("  includes",Arrays.asList(database.getIncludes()));
-  log.info("  excludes",Arrays.asList(database.getExcludes()));
-  log.info("  includeExcludeColumns",database.getIncludeExcludeColumns());
-  log.info("----------------------------------------------------------");
-  log.info("");
-  log.info("DefaultGenerator parameters");
+  log.info("JavaGenerator parameters");
   log.info("----------------------------------------------------------");
   log.info("  strategy",strategy.delegate.getClass());
   log.info("  deprecated",generateDeprecated());
@@ -53,10 +33,7 @@
     log.warn("  <generateInstanceFields/> = false is deprecated! Please adapt your configuration.");
   }
   log.info("");
-  log.info("Generation remarks");
-  log.info("----------------------------------------------------------");
-  if (contains(db.getIncludes(),',') && db.getIncluded().isEmpty())   log.info("  includes","The <includes/> element takes a Java regular expression, not a comma-separated list. This might be why no objects were included.");
-  if (contains(db.getExcludes(),',') && db.getExcluded().isEmpty())   log.info("  excludes","The <excludes/> element takes a Java regular expression, not a comma-separated list. This might be why no objects were excluded.");
+  logGenerationRemarks(db);
   log.info("");
   log.info("----------------------------------------------------------");
   log.info("Generating catalogs","Total: " + database.getCatalogs().size());

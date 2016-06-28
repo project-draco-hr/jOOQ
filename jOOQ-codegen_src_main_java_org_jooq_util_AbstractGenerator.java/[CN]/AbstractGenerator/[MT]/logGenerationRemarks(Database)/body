@@ -1,0 +1,6 @@
+{
+  log.info("Generation remarks");
+  log.info("----------------------------------------------------------");
+  if (contains(db.getIncludes(),',') && db.getIncluded().isEmpty())   log.info("  includes","The <includes/> element takes a Java regular expression, not a comma-separated list. This might be why no objects were included.");
+  if (contains(db.getExcludes(),',') && db.getExcluded().isEmpty())   log.info("  excludes","The <excludes/> element takes a Java regular expression, not a comma-separated list. This might be why no objects were excluded.");
+}
