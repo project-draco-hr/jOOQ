@@ -1,5 +1,5 @@
 {
-  ctx.start(ALTER_VIEW_VIEW).keyword("alter view");
+  ctx.start(ALTER_VIEW_VIEW).keyword("alter").sql(' ').keyword(ctx.family() == HSQLDB ? "table" : "view");
   if (ifExists)   ctx.sql(' ').keyword("if exists");
   ctx.sql(' ').visit(view).end(ALTER_VIEW_VIEW).formatIndentStart().formatSeparator();
   if (renameTo != null) {
