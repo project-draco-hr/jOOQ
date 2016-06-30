@@ -1,0 +1,3 @@
+{
+  return Arrays.<UniqueKey<CityRecord>>asList(Keys.CITY_PKEY);
+}

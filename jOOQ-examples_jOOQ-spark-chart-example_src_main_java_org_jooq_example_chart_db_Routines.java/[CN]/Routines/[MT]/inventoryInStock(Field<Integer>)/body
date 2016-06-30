@@ -1,0 +1,5 @@
+{
+  InventoryInStock f=new InventoryInStock();
+  f.setPInventoryId(pInventoryId);
+  return f.asField();
+}

@@ -1,0 +1,4 @@
+{
+  setZipCode(value);
+  return this;
+}

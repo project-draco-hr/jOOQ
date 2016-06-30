@@ -1,0 +1,5 @@
+{
+  super(SalesByFilmCategory.SALES_BY_FILM_CATEGORY);
+  set(0,category);
+  set(1,totalSales);
+}

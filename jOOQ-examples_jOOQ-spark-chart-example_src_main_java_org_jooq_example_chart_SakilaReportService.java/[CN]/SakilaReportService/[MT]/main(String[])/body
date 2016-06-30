@@ -1,0 +1,9 @@
+{
+  initDB();
+  initSpark();
+  get("/storeIds",storeIds());
+  get("/countryIds",countryIds());
+  get("/cumulativeEarnings",cumulativeEarnings());
+  get("/rentalsPerCountry",rentalsPerCountry());
+  get("/rentalsPerCategory",rentalsPerCategory());
+}

@@ -1,0 +1,3 @@
+{
+  return SchemaVersion.SCHEMA_VERSION.VERSION;
+}

@@ -1,0 +1,3 @@
+{
+  super(FilmInStock.FILM_IN_STOCK);
+}

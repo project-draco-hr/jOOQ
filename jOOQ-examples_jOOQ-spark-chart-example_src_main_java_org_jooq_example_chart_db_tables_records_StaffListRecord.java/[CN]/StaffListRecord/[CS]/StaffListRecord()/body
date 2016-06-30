@@ -1,0 +1,3 @@
+{
+  super(StaffList.STAFF_LIST);
+}

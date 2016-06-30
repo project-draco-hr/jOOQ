@@ -1,0 +1,6 @@
+{
+  super(Language.LANGUAGE);
+  set(0,languageId);
+  set(1,name);
+  set(2,lastUpdate);
+}

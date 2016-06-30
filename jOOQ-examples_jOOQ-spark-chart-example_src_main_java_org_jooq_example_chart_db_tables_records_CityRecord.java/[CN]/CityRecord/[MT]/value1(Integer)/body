@@ -1,0 +1,4 @@
+{
+  setCityId(value);
+  return this;
+}

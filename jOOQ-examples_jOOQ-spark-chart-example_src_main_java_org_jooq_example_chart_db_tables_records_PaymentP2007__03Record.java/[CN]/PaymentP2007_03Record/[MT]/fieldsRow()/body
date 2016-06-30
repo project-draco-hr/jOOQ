@@ -1,0 +1,3 @@
+{
+  return (Row6)super.fieldsRow();
+}

@@ -1,0 +1,3 @@
+{
+  return Arrays.<ForeignKey<PaymentRecord,?>>asList(Keys.PAYMENT__PAYMENT_CUSTOMER_ID_FKEY,Keys.PAYMENT__PAYMENT_STAFF_ID_FKEY,Keys.PAYMENT__PAYMENT_RENTAL_ID_FKEY);
+}

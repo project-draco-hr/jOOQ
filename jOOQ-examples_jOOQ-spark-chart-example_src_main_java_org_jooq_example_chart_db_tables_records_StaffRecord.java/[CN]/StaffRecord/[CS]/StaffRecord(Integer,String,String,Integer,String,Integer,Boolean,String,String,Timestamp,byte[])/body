@@ -1,0 +1,14 @@
+{
+  super(Staff.STAFF);
+  set(0,staffId);
+  set(1,firstName);
+  set(2,lastName);
+  set(3,addressId);
+  set(4,email);
+  set(5,storeId);
+  set(6,active);
+  set(7,username);
+  set(8,password);
+  set(9,lastUpdate);
+  set(10,picture);
+}

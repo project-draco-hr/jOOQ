@@ -1,0 +1,4 @@
+{
+  setRating(value);
+  return this;
+}

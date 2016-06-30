@@ -1,0 +1,3 @@
+{
+  return DSL.using(configuration).selectFrom(FilmInStock.FILM_IN_STOCK.call(pFilmId,pStoreId)).fetch();
+}

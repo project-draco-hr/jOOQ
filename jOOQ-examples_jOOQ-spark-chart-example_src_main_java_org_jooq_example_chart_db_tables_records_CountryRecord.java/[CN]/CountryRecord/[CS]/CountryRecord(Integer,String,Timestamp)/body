@@ -1,0 +1,6 @@
+{
+  super(Country.COUNTRY);
+  set(0,countryId);
+  set(1,country);
+  set(2,lastUpdate);
+}

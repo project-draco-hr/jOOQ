@@ -1,0 +1,4 @@
+{
+  setVersionRank(value);
+  return this;
+}

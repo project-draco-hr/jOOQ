@@ -1,0 +1,3 @@
+{
+  return Arrays.<UniqueKey<CountryRecord>>asList(Keys.COUNTRY_PKEY);
+}

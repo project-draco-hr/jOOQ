@@ -1,0 +1,6 @@
+{
+  super(FilmCategory.FILM_CATEGORY);
+  set(0,filmId);
+  set(1,categoryId);
+  set(2,lastUpdate);
+}

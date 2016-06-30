@@ -1,0 +1,3 @@
+{
+  return Arrays.<UniqueKey<LanguageRecord>>asList(Keys.LANGUAGE_PKEY);
+}

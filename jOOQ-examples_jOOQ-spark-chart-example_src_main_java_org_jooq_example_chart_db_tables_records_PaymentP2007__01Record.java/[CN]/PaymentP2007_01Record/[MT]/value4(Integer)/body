@@ -1,0 +1,4 @@
+{
+  setRentalId(value);
+  return this;
+}

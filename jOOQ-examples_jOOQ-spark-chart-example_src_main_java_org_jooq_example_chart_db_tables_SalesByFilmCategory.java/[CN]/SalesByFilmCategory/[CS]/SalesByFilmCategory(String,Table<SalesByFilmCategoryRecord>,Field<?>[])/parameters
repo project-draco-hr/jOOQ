@@ -1,0 +1,3 @@
+String alias
+Table<SalesByFilmCategoryRecord> aliased
+Field<?>[] parameters

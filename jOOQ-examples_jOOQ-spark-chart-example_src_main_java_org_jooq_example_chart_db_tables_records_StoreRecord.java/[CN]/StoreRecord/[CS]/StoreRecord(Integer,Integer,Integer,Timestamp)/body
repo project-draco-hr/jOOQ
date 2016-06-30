@@ -1,0 +1,7 @@
+{
+  super(Store.STORE);
+  set(0,storeId);
+  set(1,managerStaffId);
+  set(2,addressId);
+  set(3,lastUpdate);
+}

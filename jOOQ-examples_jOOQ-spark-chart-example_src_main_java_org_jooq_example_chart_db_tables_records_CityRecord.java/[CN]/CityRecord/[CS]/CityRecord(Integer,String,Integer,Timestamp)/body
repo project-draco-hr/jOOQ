@@ -1,0 +1,7 @@
+{
+  super(City.CITY);
+  set(0,cityId);
+  set(1,city);
+  set(2,countryId);
+  set(3,lastUpdate);
+}

@@ -1,0 +1,3 @@
+String alias
+Table<CountryRecord> aliased
+Field<?>[] parameters

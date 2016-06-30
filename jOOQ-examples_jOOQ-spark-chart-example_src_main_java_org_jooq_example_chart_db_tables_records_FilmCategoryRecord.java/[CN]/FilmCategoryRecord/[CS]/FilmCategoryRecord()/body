@@ -1,0 +1,3 @@
+{
+  super(FilmCategory.FILM_CATEGORY);
+}

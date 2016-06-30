@@ -1,0 +1,3 @@
+{
+  return Arrays.<ForeignKey<FilmActorRecord,?>>asList(Keys.FILM_ACTOR__FILM_ACTOR_ACTOR_ID_FKEY,Keys.FILM_ACTOR__FILM_ACTOR_FILM_ID_FKEY);
+}

@@ -1,0 +1,3 @@
+{
+  return StaffRecord.class;
+}

@@ -1,0 +1,3 @@
+{
+  return DSL.using(configuration).selectFrom(RewardsReport.REWARDS_REPORT.call(minMonthlyPurchases,minDollarAmountPurchased)).fetch();
+}

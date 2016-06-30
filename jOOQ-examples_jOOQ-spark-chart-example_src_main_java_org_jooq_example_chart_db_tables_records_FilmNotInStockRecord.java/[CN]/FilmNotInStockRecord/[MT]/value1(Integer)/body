@@ -1,0 +1,4 @@
+{
+  setPFilmCount(value);
+  return this;
+}

@@ -1,0 +1,4 @@
+{
+  setInstalledOn(value);
+  return this;
+}

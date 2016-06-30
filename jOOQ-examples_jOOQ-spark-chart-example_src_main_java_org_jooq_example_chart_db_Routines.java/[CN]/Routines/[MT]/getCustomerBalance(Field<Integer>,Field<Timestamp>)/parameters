@@ -1,0 +1,2 @@
+Field<Integer> pCustomerId
+Field<Timestamp> pEffectiveDate

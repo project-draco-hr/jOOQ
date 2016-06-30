@@ -1,0 +1,2 @@
+Field<Integer> minMonthlyPurchases
+Field<BigDecimal> minDollarAmountPurchased

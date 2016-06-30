@@ -1,0 +1,3 @@
+{
+  return new FilmInStock(getName(),null,new Field[]{DSL.val(pFilmId),DSL.val(pStoreId)});
+}

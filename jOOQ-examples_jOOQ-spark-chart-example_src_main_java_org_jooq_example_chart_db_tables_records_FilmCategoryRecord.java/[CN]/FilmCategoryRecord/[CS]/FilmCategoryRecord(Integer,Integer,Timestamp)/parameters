@@ -1,0 +1,3 @@
+Integer filmId
+Integer categoryId
+Timestamp lastUpdate

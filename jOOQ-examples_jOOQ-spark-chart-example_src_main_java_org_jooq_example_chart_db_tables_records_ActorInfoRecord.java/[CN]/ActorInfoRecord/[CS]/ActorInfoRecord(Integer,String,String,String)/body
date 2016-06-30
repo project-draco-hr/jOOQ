@@ -1,0 +1,7 @@
+{
+  super(ActorInfo.ACTOR_INFO);
+  set(0,actorId);
+  set(1,firstName);
+  set(2,lastName);
+  set(3,filmInfo);
+}

@@ -1,0 +1,3 @@
+{
+  super(RewardsReport.REWARDS_REPORT);
+}

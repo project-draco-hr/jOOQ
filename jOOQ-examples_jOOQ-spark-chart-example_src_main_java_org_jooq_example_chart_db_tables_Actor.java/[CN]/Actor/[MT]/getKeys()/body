@@ -1,0 +1,3 @@
+{
+  return Arrays.<UniqueKey<ActorRecord>>asList(Keys.ACTOR_PKEY);
+}

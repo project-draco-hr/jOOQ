@@ -1,0 +1,3 @@
+Integer countryId
+String country
+Timestamp lastUpdate

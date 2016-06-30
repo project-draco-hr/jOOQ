@@ -1,0 +1,6 @@
+Integer paymentId
+Integer customerId
+Integer staffId
+Integer rentalId
+BigDecimal amount
+Timestamp paymentDate

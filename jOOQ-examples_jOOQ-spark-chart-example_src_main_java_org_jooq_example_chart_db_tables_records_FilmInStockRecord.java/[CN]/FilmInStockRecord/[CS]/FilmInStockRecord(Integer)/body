@@ -1,0 +1,4 @@
+{
+  super(FilmInStock.FILM_IN_STOCK);
+  set(0,pFilmCount);
+}

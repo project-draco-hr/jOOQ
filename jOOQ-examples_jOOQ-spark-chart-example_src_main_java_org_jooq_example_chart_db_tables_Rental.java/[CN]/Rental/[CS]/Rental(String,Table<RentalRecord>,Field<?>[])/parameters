@@ -1,0 +1,3 @@
+String alias
+Table<RentalRecord> aliased
+Field<?>[] parameters

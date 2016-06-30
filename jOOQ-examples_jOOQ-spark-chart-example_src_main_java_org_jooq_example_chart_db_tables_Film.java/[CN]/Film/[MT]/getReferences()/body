@@ -1,0 +1,3 @@
+{
+  return Arrays.<ForeignKey<FilmRecord,?>>asList(Keys.FILM__FILM_LANGUAGE_ID_FKEY,Keys.FILM__FILM_ORIGINAL_LANGUAGE_ID_FKEY);
+}

@@ -1,0 +1,4 @@
+{
+  setChecksum(value);
+  return this;
+}

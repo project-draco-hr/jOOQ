@@ -1,0 +1,4 @@
+{
+  setInstalledRank(value);
+  return this;
+}

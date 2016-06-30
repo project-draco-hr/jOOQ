@@ -1,0 +1,9 @@
+Integer id
+String name
+String address
+String zipCode
+String phone
+String city
+String country
+String notes
+Integer sid

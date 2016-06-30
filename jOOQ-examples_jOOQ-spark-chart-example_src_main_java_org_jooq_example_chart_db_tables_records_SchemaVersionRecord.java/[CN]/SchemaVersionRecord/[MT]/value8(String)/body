@@ -1,0 +1,4 @@
+{
+  setInstalledBy(value);
+  return this;
+}

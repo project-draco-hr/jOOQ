@@ -1,0 +1,6 @@
+{
+  super(Category.CATEGORY);
+  set(0,categoryId);
+  set(1,name);
+  set(2,lastUpdate);
+}

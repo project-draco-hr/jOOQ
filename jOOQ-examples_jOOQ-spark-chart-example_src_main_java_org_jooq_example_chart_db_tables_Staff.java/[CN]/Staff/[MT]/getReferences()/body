@@ -1,0 +1,3 @@
+{
+  return Arrays.<ForeignKey<StaffRecord,?>>asList(Keys.STAFF__STAFF_ADDRESS_ID_FKEY,Keys.STAFF__STAFF_STORE_ID_FKEY);
+}

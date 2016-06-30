@@ -1,0 +1,4 @@
+{
+  super("last_updated",Public.PUBLIC,org.jooq.impl.DefaultDataType.getDefaultDataType("trigger"));
+  setReturnParameter(RETURN_VALUE);
+}

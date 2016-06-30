@@ -1,0 +1,13 @@
+{
+  super(RewardsReport.REWARDS_REPORT);
+  set(0,customerId);
+  set(1,storeId);
+  set(2,firstName);
+  set(3,lastName);
+  set(4,email);
+  set(5,addressId);
+  set(6,activebool);
+  set(7,createDate);
+  set(8,lastUpdate);
+  set(9,active);
+}

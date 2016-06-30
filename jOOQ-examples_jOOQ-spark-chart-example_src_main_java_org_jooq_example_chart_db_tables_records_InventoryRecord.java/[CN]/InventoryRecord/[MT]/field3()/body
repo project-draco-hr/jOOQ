@@ -1,0 +1,3 @@
+{
+  return Inventory.INVENTORY.STORE_ID;
+}

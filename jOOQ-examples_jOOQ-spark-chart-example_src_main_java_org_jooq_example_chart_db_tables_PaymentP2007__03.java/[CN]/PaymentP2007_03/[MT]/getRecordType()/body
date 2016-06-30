@@ -1,0 +1,3 @@
+{
+  return PaymentP2007_03Record.class;
+}

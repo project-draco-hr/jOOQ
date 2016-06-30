@@ -1,0 +1,3 @@
+{
+  return Arrays.<ForeignKey<RentalRecord,?>>asList(Keys.RENTAL__RENTAL_INVENTORY_ID_FKEY,Keys.RENTAL__RENTAL_CUSTOMER_ID_FKEY,Keys.RENTAL__RENTAL_STAFF_ID_FKEY);
+}

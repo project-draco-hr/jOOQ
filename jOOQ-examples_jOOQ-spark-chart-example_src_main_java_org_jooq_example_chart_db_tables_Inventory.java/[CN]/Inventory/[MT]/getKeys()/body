@@ -1,0 +1,3 @@
+{
+  return Arrays.<UniqueKey<InventoryRecord>>asList(Keys.INVENTORY_PKEY);
+}

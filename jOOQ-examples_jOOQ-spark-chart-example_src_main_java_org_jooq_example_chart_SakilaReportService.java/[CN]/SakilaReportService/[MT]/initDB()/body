@@ -1,0 +1,20 @@
+{
+  final Properties properties=new Properties();
+  properties.load(SakilaReportService.class.getResourceAsStream("/config.properties"));
+  Class.forName(properties.getProperty("db.driver"));
+  HikariDataSource ds=new HikariDataSource();
+  ds.setJdbcUrl(properties.getProperty("db.url"));
+  ds.setUsername(properties.getProperty("db.username"));
+  ds.setPassword(properties.getProperty("db.password"));
+  dsl=DSL.using(new DefaultConfiguration().set(ds).set(DefaultExecuteListenerProvider.providers(new DefaultExecuteListener(){
+    @Override public void executeEnd(    ExecuteContext ctx){
+      Configuration config=ctx.configuration().derive();
+      config.settings().setRenderFormatted(true);
+      log.info("\n" + DSL.using(config).renderInlined(ctx.query()));
+    }
+    @Override public void fetchEnd(    ExecuteContext ctx){
+      log.info("\n" + ctx.result().format(5));
+    }
+  }
+)));
+}

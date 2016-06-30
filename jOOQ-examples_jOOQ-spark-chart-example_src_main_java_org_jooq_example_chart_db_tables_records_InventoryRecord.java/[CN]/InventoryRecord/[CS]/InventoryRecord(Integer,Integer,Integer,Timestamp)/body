@@ -1,0 +1,7 @@
+{
+  super(Inventory.INVENTORY);
+  set(0,inventoryId);
+  set(1,filmId);
+  set(2,storeId);
+  set(3,lastUpdate);
+}

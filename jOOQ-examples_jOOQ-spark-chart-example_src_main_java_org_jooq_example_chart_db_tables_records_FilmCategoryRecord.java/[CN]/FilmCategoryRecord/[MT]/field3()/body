@@ -1,0 +1,3 @@
+{
+  return FilmCategory.FILM_CATEGORY.LAST_UPDATE;
+}

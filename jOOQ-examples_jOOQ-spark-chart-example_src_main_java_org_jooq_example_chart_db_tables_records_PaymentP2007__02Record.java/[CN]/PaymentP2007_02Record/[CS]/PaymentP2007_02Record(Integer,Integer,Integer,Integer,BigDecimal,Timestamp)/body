@@ -1,0 +1,9 @@
+{
+  super(PaymentP2007_02.PAYMENT_P2007_02);
+  set(0,paymentId);
+  set(1,customerId);
+  set(2,staffId);
+  set(3,rentalId);
+  set(4,amount);
+  set(5,paymentDate);
+}

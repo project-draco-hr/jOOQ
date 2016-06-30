@@ -1,0 +1,3 @@
+{
+  return Arrays.<UniqueKey<FilmCategoryRecord>>asList(Keys.FILM_CATEGORY_PKEY);
+}

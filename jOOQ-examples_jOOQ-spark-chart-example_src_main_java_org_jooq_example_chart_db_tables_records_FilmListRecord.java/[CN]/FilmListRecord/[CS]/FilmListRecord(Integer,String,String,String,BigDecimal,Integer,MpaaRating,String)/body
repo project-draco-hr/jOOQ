@@ -1,0 +1,11 @@
+{
+  super(FilmList.FILM_LIST);
+  set(0,fid);
+  set(1,title);
+  set(2,description);
+  set(3,category);
+  set(4,price);
+  set(5,length);
+  set(6,rating);
+  set(7,actors);
+}

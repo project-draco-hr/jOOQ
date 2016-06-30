@@ -1,0 +1,6 @@
+{
+  _GroupConcat f=new _GroupConcat();
+  f.set__1(__1);
+  f.set__2(__2);
+  return f.asField();
+}

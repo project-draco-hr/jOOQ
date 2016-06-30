@@ -1,0 +1,3 @@
+{
+  return Payment.PAYMENT.RENTAL_ID;
+}

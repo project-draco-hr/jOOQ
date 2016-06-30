@@ -1,0 +1,3 @@
+String alias
+Table<FilmRecord> aliased
+Field<?>[] parameters

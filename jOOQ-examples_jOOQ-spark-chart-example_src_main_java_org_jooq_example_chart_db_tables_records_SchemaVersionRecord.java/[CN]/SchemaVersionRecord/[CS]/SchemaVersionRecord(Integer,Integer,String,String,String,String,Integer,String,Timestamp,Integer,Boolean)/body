@@ -1,0 +1,14 @@
+{
+  super(SchemaVersion.SCHEMA_VERSION);
+  set(0,versionRank);
+  set(1,installedRank);
+  set(2,version);
+  set(3,description);
+  set(4,type);
+  set(5,script);
+  set(6,checksum);
+  set(7,installedBy);
+  set(8,installedOn);
+  set(9,executionTime);
+  set(10,success);
+}

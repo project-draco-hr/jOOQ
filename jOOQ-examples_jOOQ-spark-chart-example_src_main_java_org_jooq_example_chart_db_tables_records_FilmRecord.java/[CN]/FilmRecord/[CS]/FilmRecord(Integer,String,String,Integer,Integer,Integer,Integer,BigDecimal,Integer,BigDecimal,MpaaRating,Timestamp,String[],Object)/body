@@ -1,0 +1,17 @@
+{
+  super(Film.FILM);
+  set(0,filmId);
+  set(1,title);
+  set(2,description);
+  set(3,releaseYear);
+  set(4,languageId);
+  set(5,originalLanguageId);
+  set(6,rentalDuration);
+  set(7,rentalRate);
+  set(8,length);
+  set(9,replacementCost);
+  set(10,rating);
+  set(11,lastUpdate);
+  set(12,specialFeatures);
+  set(13,fulltext);
+}

@@ -1,0 +1,4 @@
+{
+  setScript(value);
+  return this;
+}

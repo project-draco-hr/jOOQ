@@ -1,0 +1,3 @@
+{
+  return SchemaVersionRecord.class;
+}

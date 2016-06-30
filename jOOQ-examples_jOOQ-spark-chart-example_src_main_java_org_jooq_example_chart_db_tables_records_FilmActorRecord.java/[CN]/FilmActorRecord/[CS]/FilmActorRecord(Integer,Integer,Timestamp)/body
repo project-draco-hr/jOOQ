@@ -1,0 +1,6 @@
+{
+  super(FilmActor.FILM_ACTOR);
+  set(0,actorId);
+  set(1,filmId);
+  set(2,lastUpdate);
+}

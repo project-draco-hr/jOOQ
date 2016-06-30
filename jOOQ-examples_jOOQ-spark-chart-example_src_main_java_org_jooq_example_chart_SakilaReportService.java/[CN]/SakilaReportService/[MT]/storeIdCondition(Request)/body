@@ -1,0 +1,3 @@
+{
+  return storeIdAll(req) ? trueCondition() : STORE.STORE_ID.eq(val(req.queryParams("storeId"),int.class));
+}

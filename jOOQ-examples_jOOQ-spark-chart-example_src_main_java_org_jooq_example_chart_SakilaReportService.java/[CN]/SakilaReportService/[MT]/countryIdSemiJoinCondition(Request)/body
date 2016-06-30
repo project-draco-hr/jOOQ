@@ -1,0 +1,3 @@
+{
+  return countryIdAll(req) ? trueCondition() : RENTAL.CUSTOMER_ID.in(select(CUSTOMER.CUSTOMER_ID).from(CUSTOMER).join(ADDRESS).on(CUSTOMER.ADDRESS_ID.eq(ADDRESS.ADDRESS_ID)).join(CITY).on(ADDRESS.CITY_ID.eq(CITY.CITY_ID)).join(COUNTRY).on(CITY.COUNTRY_ID.eq(COUNTRY.COUNTRY_ID)).where(COUNTRY.COUNTRY_ID.eq(val(req.queryParams("countryId"),int.class))));
+}

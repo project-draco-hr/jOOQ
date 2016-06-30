@@ -1,0 +1,3 @@
+{
+  return Arrays.<ForeignKey<CustomerRecord,?>>asList(Keys.CUSTOMER__CUSTOMER_STORE_ID_FKEY,Keys.CUSTOMER__CUSTOMER_ADDRESS_ID_FKEY);
+}

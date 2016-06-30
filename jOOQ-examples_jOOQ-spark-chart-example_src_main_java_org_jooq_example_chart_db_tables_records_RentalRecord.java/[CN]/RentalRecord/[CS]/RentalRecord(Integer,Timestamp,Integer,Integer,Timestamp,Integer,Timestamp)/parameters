@@ -1,0 +1,7 @@
+Integer rentalId
+Timestamp rentalDate
+Integer inventoryId
+Integer customerId
+Timestamp returnDate
+Integer staffId
+Timestamp lastUpdate

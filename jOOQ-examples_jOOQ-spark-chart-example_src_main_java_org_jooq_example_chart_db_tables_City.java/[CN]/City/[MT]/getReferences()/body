@@ -1,0 +1,3 @@
+{
+  return Arrays.<ForeignKey<CityRecord,?>>asList(Keys.CITY__CITY_COUNTRY_ID_FKEY);
+}

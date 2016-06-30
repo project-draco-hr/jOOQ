@@ -1,0 +1,3 @@
+String alias
+Table<CustomerRecord> aliased
+Field<?>[] parameters

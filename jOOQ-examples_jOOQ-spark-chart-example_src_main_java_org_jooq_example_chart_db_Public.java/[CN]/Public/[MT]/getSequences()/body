@@ -1,0 +1,5 @@
+{
+  List result=new ArrayList();
+  result.addAll(getSequences0());
+  return result;
+}

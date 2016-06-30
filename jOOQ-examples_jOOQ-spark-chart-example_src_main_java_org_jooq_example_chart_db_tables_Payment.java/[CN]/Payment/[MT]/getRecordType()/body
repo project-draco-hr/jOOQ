@@ -1,0 +1,3 @@
+{
+  return PaymentRecord.class;
+}

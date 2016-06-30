@@ -1,0 +1,3 @@
+{
+  return new FilmNotInStock(alias,this,parameters);
+}

@@ -1,0 +1,7 @@
+{
+  _GroupConcat f=new _GroupConcat();
+  f.set__1(__1);
+  f.set__2(__2);
+  f.execute(configuration);
+  return f.getReturnValue();
+}

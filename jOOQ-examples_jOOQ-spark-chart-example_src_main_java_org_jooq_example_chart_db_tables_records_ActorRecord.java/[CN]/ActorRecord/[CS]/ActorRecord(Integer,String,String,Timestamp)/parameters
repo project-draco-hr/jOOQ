@@ -1,0 +1,4 @@
+Integer actorId
+String firstName
+String lastName
+Timestamp lastUpdate

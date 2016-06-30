@@ -1,0 +1,4 @@
+{
+  setSuccess(value);
+  return this;
+}

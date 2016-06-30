@@ -1,0 +1,3 @@
+Configuration configuration
+Integer pCustomerId
+Timestamp pEffectiveDate

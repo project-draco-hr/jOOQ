@@ -1,0 +1,3 @@
+{
+  return FilmInStock.FILM_IN_STOCK.call(pFilmId,pStoreId);
+}

@@ -1,0 +1,5 @@
+{
+  super("inventory_in_stock",Public.PUBLIC,org.jooq.impl.SQLDataType.BOOLEAN);
+  setReturnParameter(RETURN_VALUE);
+  addInParameter(P_INVENTORY_ID);
+}

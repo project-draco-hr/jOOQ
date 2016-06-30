@@ -1,0 +1,3 @@
+{
+  return City.CITY.LAST_UPDATE;
+}

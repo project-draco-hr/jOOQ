@@ -1,0 +1,3 @@
+{
+  return Rental.RENTAL.RENTAL_ID;
+}

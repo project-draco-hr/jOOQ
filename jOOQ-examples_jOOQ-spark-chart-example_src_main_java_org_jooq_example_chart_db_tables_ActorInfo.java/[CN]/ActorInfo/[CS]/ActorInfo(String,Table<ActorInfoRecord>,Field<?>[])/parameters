@@ -1,0 +1,3 @@
+String alias
+Table<ActorInfoRecord> aliased
+Field<?>[] parameters

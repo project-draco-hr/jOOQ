@@ -1,0 +1,6 @@
+{
+  LastDay f=new LastDay();
+  f.set__1(__1);
+  f.execute(configuration);
+  return f.getReturnValue();
+}

@@ -1,0 +1,3 @@
+{
+  return Store.STORE.MANAGER_STAFF_ID;
+}

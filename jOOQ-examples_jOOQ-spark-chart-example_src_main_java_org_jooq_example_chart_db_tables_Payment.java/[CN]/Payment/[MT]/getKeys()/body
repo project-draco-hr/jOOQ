@@ -1,0 +1,3 @@
+{
+  return Arrays.<UniqueKey<PaymentRecord>>asList(Keys.PAYMENT_PKEY);
+}

@@ -1,0 +1,3 @@
+{
+  return countryIdAll(req) ? trueCondition() : COUNTRY.COUNTRY_ID.eq(val(req.queryParams("countryId"),int.class));
+}

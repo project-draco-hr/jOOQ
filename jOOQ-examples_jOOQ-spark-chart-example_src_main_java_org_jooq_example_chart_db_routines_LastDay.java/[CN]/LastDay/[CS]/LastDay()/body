@@ -1,0 +1,5 @@
+{
+  super("last_day",Public.PUBLIC,org.jooq.impl.SQLDataType.DATE);
+  setReturnParameter(RETURN_VALUE);
+  addInParameter(_1);
+}

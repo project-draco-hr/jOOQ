@@ -1,0 +1,4 @@
+Integer cityId
+String city
+Integer countryId
+Timestamp lastUpdate

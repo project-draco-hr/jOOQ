@@ -1,0 +1,3 @@
+{
+  return Customer.CUSTOMER.STORE_ID;
+}

@@ -1,0 +1,5 @@
+{
+  InventoryHeldByCustomer f=new InventoryHeldByCustomer();
+  f.setPInventoryId(pInventoryId);
+  return f.asField();
+}

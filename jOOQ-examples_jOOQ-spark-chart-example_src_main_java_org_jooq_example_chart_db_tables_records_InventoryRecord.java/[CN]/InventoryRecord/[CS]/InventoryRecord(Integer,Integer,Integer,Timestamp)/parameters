@@ -1,0 +1,4 @@
+Integer inventoryId
+Integer filmId
+Integer storeId
+Timestamp lastUpdate

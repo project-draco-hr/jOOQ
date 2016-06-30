@@ -1,0 +1,11 @@
+Integer versionRank
+Integer installedRank
+String version
+String description
+String type
+String script
+Integer checksum
+String installedBy
+Timestamp installedOn
+Integer executionTime
+Boolean success

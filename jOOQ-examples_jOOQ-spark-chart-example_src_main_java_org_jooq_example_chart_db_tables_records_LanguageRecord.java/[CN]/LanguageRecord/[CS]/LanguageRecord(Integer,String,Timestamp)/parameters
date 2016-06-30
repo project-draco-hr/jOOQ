@@ -1,0 +1,3 @@
+Integer languageId
+String name
+Timestamp lastUpdate

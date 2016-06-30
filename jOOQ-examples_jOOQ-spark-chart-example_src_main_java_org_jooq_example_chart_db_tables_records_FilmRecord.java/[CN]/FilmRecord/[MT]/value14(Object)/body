@@ -1,0 +1,4 @@
+{
+  setFulltext(value);
+  return this;
+}

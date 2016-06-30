@@ -1,0 +1,3 @@
+{
+  return FilmNotInStock.FILM_NOT_IN_STOCK.P_FILM_COUNT;
+}

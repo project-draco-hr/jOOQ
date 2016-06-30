@@ -1,0 +1,5 @@
+{
+  LastUpdated f=new LastUpdated();
+  f.execute(configuration);
+  return f.getReturnValue();
+}

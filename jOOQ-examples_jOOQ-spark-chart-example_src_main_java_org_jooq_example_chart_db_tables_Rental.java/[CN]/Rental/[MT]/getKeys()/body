@@ -1,0 +1,3 @@
+{
+  return Arrays.<UniqueKey<RentalRecord>>asList(Keys.RENTAL_PKEY);
+}

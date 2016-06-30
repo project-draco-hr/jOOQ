@@ -1,0 +1,5 @@
+{
+  super("group_concat",Public.PUBLIC,org.jooq.impl.SQLDataType.CLOB);
+  setReturnParameter(RETURN_VALUE);
+  addInParameter(_1);
+}

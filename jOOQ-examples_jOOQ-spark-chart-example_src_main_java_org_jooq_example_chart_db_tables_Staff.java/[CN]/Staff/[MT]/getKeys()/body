@@ -1,0 +1,3 @@
+{
+  return Arrays.<UniqueKey<StaffRecord>>asList(Keys.STAFF_PKEY);
+}

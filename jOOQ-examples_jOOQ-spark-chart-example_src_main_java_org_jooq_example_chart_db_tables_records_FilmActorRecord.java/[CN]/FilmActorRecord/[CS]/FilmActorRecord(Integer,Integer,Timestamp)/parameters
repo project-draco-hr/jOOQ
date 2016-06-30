@@ -1,0 +1,3 @@
+Integer actorId
+Integer filmId
+Timestamp lastUpdate

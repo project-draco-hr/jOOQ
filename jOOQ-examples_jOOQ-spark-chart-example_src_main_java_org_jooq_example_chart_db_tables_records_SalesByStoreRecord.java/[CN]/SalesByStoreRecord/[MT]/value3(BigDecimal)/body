@@ -1,0 +1,4 @@
+{
+  setTotalSales(value);
+  return this;
+}

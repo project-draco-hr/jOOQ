@@ -1,0 +1,3 @@
+{
+  super(SchemaVersion.SCHEMA_VERSION);
+}

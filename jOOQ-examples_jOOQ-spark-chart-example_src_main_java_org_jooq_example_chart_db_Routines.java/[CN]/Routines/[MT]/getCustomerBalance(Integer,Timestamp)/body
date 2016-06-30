@@ -1,0 +1,6 @@
+{
+  GetCustomerBalance f=new GetCustomerBalance();
+  f.setPCustomerId(pCustomerId);
+  f.setPEffectiveDate(pEffectiveDate);
+  return f.asField();
+}

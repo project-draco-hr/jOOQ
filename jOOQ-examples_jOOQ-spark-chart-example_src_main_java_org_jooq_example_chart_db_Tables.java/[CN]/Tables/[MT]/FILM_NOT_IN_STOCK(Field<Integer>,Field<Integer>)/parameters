@@ -1,0 +1,2 @@
+Field<Integer> pFilmId
+Field<Integer> pStoreId

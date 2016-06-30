@@ -1,0 +1,3 @@
+{
+  return RewardsReport.REWARDS_REPORT.STORE_ID;
+}

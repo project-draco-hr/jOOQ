@@ -1,0 +1,3 @@
+{
+  return CustomerList.CUSTOMER_LIST.CITY;
+}

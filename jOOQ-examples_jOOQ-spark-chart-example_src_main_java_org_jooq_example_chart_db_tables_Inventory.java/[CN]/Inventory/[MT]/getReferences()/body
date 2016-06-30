@@ -1,0 +1,3 @@
+{
+  return Arrays.<ForeignKey<InventoryRecord,?>>asList(Keys.INVENTORY__INVENTORY_FILM_ID_FKEY,Keys.INVENTORY__INVENTORY_STORE_ID_FKEY);
+}

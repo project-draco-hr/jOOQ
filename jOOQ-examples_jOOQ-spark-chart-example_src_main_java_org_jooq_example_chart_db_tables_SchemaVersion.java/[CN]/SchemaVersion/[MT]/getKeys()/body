@@ -1,0 +1,3 @@
+{
+  return Arrays.<UniqueKey<SchemaVersionRecord>>asList(Keys.SCHEMA_VERSION_PK);
+}

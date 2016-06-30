@@ -1,0 +1,10 @@
+{
+  super(Rental.RENTAL);
+  set(0,rentalId);
+  set(1,rentalDate);
+  set(2,inventoryId);
+  set(3,customerId);
+  set(4,returnDate);
+  set(5,staffId);
+  set(6,lastUpdate);
+}

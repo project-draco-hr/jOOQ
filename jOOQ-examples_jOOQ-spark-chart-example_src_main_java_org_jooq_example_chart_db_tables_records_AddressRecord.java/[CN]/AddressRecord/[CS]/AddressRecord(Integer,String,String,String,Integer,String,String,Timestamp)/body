@@ -1,0 +1,11 @@
+{
+  super(Address.ADDRESS);
+  set(0,addressId);
+  set(1,address);
+  set(2,address2);
+  set(3,district);
+  set(4,cityId);
+  set(5,postalCode);
+  set(6,phone);
+  set(7,lastUpdate);
+}

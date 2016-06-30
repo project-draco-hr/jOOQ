@@ -1,0 +1,3 @@
+{
+  return Arrays.<ForeignKey<AddressRecord,?>>asList(Keys.ADDRESS__ADDRESS_CITY_ID_FKEY);
+}
