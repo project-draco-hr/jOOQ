@@ -6,7 +6,7 @@
     Number scale=parseScale(typeName);
     DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),parseTypeName(typeName),precision,precision,scale,!parseNotNull(typeName),record.get(Syscolumns.COLUMNDEFAULT));
     ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getSchema(),getName()),record.get(Syscolumns.COLUMNNAME),record.get(Syscolumns.COLUMNNUMBER),type,null != record.get(Syscolumns.AUTOINCREMENTINC),null);
-    result.add(column);
+    result.add(applySyntheticIdentities(column));
   }
   return result;
 }

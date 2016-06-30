@@ -4,7 +4,7 @@
     String dataType=record.get(DB_ATTRIBUTE.DATA_TYPE);
     DataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),dataType,record.get(DB_ATTRIBUTE.PREC),record.get(DB_ATTRIBUTE.PREC),record.get(DB_ATTRIBUTE.SCALE),record.get(DB_ATTRIBUTE.IS_NULLABLE,boolean.class),record.get(DB_ATTRIBUTE.DEFAULT_VALUE),getName() + "_" + record.get(DB_ATTRIBUTE.ATTR_NAME));
     ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getSchema(),getName()),record.get(DB_ATTRIBUTE.ATTR_NAME),record.get(DB_ATTRIBUTE.DEF_ORDER),type,record.get(DB_SERIAL.NAME) != null,null);
-    result.add(column);
+    result.add(applySyntheticIdentities(column));
   }
   return result;
 }
