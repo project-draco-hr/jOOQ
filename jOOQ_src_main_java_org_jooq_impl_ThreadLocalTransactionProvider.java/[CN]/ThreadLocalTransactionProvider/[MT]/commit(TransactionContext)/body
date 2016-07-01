@@ -1,0 +1,5 @@
+{
+  if (transaction.nestingLevel(ctx.configuration()) == 1)   connection.tl.remove();
+  configurations().pop();
+  transaction.commit(ctx);
+}

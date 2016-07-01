@@ -1,0 +1,4 @@
+{
+  Connection result=tl.get();
+  return result != null ? result : delegate.acquire();
+}

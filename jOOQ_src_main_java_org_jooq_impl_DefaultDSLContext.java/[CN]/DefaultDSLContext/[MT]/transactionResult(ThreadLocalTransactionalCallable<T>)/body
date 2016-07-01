@@ -1,0 +1,10 @@
+{
+  TransactionProvider tp=configuration().transactionProvider();
+  if (!(tp instanceof ThreadLocalTransactionProvider))   throw new ConfigurationException("Cannot use ThreadLocalTransactionalCallable with TransactionProvider of type " + tp.getClass());
+  return transactionResult0(new TransactionalCallable<T>(){
+    @Override public T run(    Configuration c) throws Exception {
+      return transactional.run();
+    }
+  }
+,((ThreadLocalTransactionProvider)tp).configuration(configuration()),true);
+}

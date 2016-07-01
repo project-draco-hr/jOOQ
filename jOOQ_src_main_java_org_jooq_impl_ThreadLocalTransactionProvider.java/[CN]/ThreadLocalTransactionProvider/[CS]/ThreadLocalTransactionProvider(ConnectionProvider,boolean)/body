@@ -1,0 +1,5 @@
+{
+  this.connection=new ThreadLocalConnectionProvider(provider);
+  this.transaction=new DefaultTransactionProvider(connection,nested);
+  this.configuration=new ThreadLocal<Deque<Configuration>>();
+}

@@ -1,4 +1,10 @@
 {
-  this.transactionProvider=newTransactionProvider != null ? newTransactionProvider : new NoTransactionProvider();
+  if (newTransactionProvider != null) {
+    this.transactionProvider=newTransactionProvider;
+    if (newTransactionProvider instanceof ThreadLocalTransactionProvider)     this.connectionProvider=((ThreadLocalTransactionProvider)newTransactionProvider).connection;
+  }
+ else {
+    this.transactionProvider=new NoTransactionProvider();
+  }
   return this;
 }

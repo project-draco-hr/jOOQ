@@ -1,4 +1,10 @@
 {
-  this.connectionProvider=newConnectionProvider != null ? newConnectionProvider : new NoConnectionProvider();
+  if (newConnectionProvider != null) {
+    if (transactionProvider instanceof ThreadLocalTransactionProvider && !(newConnectionProvider instanceof ThreadLocalConnectionProvider))     throw new ConfigurationException("Cannot override ConnectionProvider when Configuration contains a ThreadLocalTransactionProvider");
+    this.connectionProvider=newConnectionProvider;
+  }
+ else {
+    this.connectionProvider=new NoConnectionProvider();
+  }
   return this;
 }

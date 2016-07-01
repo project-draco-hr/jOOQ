@@ -1,0 +1,4 @@
+{
+  Deque<Configuration> configurations=configurations();
+  return configurations.isEmpty() ? fallback : configurations.peek();
+}

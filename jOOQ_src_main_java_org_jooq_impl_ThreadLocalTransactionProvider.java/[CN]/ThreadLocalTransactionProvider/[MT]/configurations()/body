@@ -1,0 +1,8 @@
+{
+  Deque<Configuration> result=configuration.get();
+  if (result == null) {
+    result=new ArrayDeque<Configuration>();
+    configuration.set(result);
+  }
+  return result;
+}
