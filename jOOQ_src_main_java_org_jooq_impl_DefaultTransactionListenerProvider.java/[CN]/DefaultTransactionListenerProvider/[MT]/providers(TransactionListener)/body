@@ -1,0 +1,5 @@
+{
+  TransactionListenerProvider[] result=new TransactionListenerProvider[listeners.length];
+  for (int i=0; i < listeners.length; i++)   result[i]=new DefaultTransactionListenerProvider(listeners[i]);
+  return result;
+}

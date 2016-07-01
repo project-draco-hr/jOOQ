@@ -1,13 +1,3 @@
 {
-  set(connectionProvider);
-  set(executorProvider);
-  set(transactionProvider);
-  set(recordMapperProvider);
-  set(recordListenerProviders);
-  set(executeListenerProviders);
-  set(visitListenerProviders);
-  set(converterProvider);
-  set(dialect);
-  set(settings);
-  this.data=data != null ? new ConcurrentHashMap<Object,Object>(data) : new ConcurrentHashMap<Object,Object>();
+  this(connectionProvider,executorProvider,transactionProvider,recordMapperProvider,recordListenerProviders,executeListenerProviders,visitListenerProviders,null,converterProvider,dialect,settings,data);
 }

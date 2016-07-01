@@ -1,3 +1,3 @@
 {
-  this(connectionProvider,null,null,recordMapperProvider,null,executeListenerProviders,null,null,dialect,settings,data);
+  this(connectionProvider,null,null,recordMapperProvider,null,executeListenerProviders,null,null,null,dialect,settings,data);
 }

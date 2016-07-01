@@ -1,0 +1,3 @@
+{
+  return new DefaultConfiguration(connectionProvider,executorProvider,transactionProvider,recordMapperProvider,recordListenerProviders,executeListenerProviders,visitListenerProviders,newTransactionListenerProviders,converterProvider,dialect,settings,data);
+}

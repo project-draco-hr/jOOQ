@@ -1,0 +1,4 @@
+{
+  this.transactionListenerProviders=newTransactionListenerProviders != null ? newTransactionListenerProviders : new TransactionListenerProvider[0];
+  return this;
+}

@@ -1,7 +1,5 @@
 {
   RecordListenerProvider[] result=new RecordListenerProvider[listeners.length];
-  for (int i=0; i < listeners.length; i++) {
-    result[i]=new DefaultRecordListenerProvider(listeners[i]);
-  }
+  for (int i=0; i < listeners.length; i++)   result[i]=new DefaultRecordListenerProvider(listeners[i]);
   return result;
 }

@@ -1,0 +1,5 @@
+{
+  TransactionListenerProvider[] providers=configuration.transactionListenerProviders();
+  listeners=new TransactionListener[providers.length];
+  for (int i=0; i < providers.length; i++)   listeners[i]=providers[i].provide();
+}
