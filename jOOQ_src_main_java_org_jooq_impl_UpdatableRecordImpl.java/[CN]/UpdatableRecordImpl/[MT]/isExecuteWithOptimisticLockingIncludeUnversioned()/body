@@ -1,0 +1,4 @@
+{
+  Configuration configuration=configuration();
+  return configuration != null ? !TRUE.equals(configuration.settings().isExecuteWithOptimisticLockingExcludeUnversioned()) : true;
+}

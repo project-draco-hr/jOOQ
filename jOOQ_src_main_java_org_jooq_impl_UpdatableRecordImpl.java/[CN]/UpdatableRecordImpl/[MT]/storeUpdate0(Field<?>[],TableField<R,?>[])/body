@@ -12,7 +12,7 @@
     if (isTimestampOrVersionAvailable()) {
       addConditionForVersionAndTimestamp(update);
     }
- else {
+ else     if (isExecuteWithOptimisticLockingIncludeUnversioned()) {
       checkIfChanged(keys);
     }
   }

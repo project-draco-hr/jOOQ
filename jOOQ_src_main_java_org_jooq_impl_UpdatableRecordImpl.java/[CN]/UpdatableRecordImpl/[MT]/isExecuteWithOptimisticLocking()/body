@@ -1,7 +1,4 @@
 {
   Configuration configuration=configuration();
-  if (configuration != null) {
-    return TRUE.equals(configuration.settings().isExecuteWithOptimisticLocking());
-  }
-  return false;
+  return configuration != null ? TRUE.equals(configuration.settings().isExecuteWithOptimisticLocking()) : false;
 }

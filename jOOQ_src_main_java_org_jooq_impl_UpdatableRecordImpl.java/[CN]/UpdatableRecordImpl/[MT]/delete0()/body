@@ -7,7 +7,7 @@
       if (isTimestampOrVersionAvailable()) {
         addConditionForVersionAndTimestamp(delete1);
       }
- else {
+ else       if (isExecuteWithOptimisticLockingIncludeUnversioned()) {
         checkIfChanged(keys);
       }
     }
