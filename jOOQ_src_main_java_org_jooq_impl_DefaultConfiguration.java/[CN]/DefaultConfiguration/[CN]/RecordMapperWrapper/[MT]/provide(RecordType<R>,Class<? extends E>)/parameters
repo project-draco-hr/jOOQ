@@ -1,0 +1,2 @@
+RecordType<R> recordType
+Class<? extends E> type
