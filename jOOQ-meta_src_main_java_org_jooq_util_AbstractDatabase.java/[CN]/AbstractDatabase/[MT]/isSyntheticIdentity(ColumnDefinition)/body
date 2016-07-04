@@ -1,6 +1,0 @@
-{
-  if (syntheticIdentities == null) {
-    return false;
-  }
-  return !filterExcludeInclude(singletonList(columnDefinition),null,syntheticIdentities,filters).isEmpty();
-}

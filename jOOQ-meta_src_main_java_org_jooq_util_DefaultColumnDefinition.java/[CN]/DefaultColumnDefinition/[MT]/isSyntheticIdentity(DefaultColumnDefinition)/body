@@ -1,0 +1,5 @@
+{
+  AbstractDatabase db=(AbstractDatabase)column.getDatabase();
+  String[] syntheticIdentities=db.getSyntheticIdentities();
+  return !db.filterExcludeInclude(singletonList(column),null,syntheticIdentities,db.getFilters()).isEmpty();
+}

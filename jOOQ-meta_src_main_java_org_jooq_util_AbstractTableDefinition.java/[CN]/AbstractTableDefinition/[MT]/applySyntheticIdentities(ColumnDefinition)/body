@@ -1,7 +1,0 @@
-{
-  if (!columnDefinition.isIdentity() && getDatabase().isSyntheticIdentity(columnDefinition)) {
-    log.info("Synthetic Identity: " + columnDefinition.getQualifiedName());
-    return new DefaultColumnDefinition(columnDefinition.getContainer(),columnDefinition.getName(),columnDefinition.getPosition(),columnDefinition.getType(),true,columnDefinition.getComment());
-  }
-  return columnDefinition;
-}

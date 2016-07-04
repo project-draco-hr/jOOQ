@@ -1,0 +1,6 @@
+{
+  if (syntheticIdentities == null) {
+    syntheticIdentities=new String[0];
+  }
+  return syntheticIdentities;
+}
