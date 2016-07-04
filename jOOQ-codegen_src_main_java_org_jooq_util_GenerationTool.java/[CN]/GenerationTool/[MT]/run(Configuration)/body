@@ -203,6 +203,9 @@ if (g.getDatabase() == null) g.setDatabase(new org.jooq.util.jaxb.Database());
 if (!StringUtils.isBlank(g.getDatabase().getSchemaVersionProvider())) generator.setUseSchemaVersionProvider(true);
 if (!StringUtils.isBlank(g.getDatabase().getCatalogVersionProvider())) generator.setUseCatalogVersionProvider(true);
 if (g.getDatabase().isTableValuedFunctions() != null) generator.setGenerateTableValuedFunctions(g.getDatabase().isTableValuedFunctions());
+ else {
+generator.setGenerateTableValuedFunctions(true);
+}
 strategy.setInstanceFields(generator.generateInstanceFields());
 generator.generate(database);
 }
