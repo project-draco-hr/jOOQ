@@ -1,0 +1,5 @@
+{
+  if (syntheticIdentities.length > 0 && !syntheticIdentities[0].isEmpty()) {
+    this.syntheticIdentities=syntheticIdentities;
+  }
+}

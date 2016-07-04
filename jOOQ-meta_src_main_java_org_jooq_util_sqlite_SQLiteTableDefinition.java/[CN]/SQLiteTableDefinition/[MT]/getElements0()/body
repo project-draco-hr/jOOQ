@@ -11,7 +11,7 @@
     boolean identity=pk > 0 && existsSqliteSequence() && create().fetchOne("select count(*) from sqlite_sequence where name = ?",getName()).get(0,Boolean.class);
     DefaultDataTypeDefinition type=new DefaultDataTypeDefinition(getDatabase(),getSchema(),dataType,precision,precision,scale,!record.get("notnull",boolean.class),record.get("dflt_value",String.class));
     ColumnDefinition column=new DefaultColumnDefinition(getDatabase().getTable(getSchema(),getName()),name,position,type,identity,null);
-    result.add(column);
+    result.add(applySyntheticIdentities(column));
   }
   return result;
 }
