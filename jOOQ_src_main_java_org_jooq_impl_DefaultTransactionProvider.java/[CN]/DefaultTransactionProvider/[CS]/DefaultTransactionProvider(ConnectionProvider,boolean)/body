@@ -1,4 +1,4 @@
 {
-  this.provider=provider;
+  this.connectionProvider=connectionProvider;
   this.nested=nested;
 }

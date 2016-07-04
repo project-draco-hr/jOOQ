@@ -6,7 +6,7 @@
   }
   finally {
     if (!start) {
-      provider.release(connection.connection);
+      connectionProvider.release(connection.connection);
       configuration.data().remove(DATA_DEFAULT_TRANSACTION_PROVIDER_CONNECTION);
     }
   }

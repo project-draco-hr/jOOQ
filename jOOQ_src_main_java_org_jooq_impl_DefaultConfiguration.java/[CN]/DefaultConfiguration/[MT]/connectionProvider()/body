@@ -1,5 +1,5 @@
 {
   TransactionProvider tp=transactionProvider();
-  ConnectionProvider transactional=tp instanceof ThreadLocalTransactionProvider ? ((ThreadLocalTransactionProvider)tp).connection : (ConnectionProvider)data(DATA_DEFAULT_TRANSACTION_PROVIDER_CONNECTION);
+  ConnectionProvider transactional=tp instanceof ThreadLocalTransactionProvider ? ((ThreadLocalTransactionProvider)tp).localConnectionProvider : (ConnectionProvider)data(DATA_DEFAULT_TRANSACTION_PROVIDER_CONNECTION);
   return transactional == null ? connectionProvider : transactional;
 }

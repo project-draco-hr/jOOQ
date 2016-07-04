@@ -1,5 +1,5 @@
 {
-  transaction.begin(ctx);
+  delegateTransactionProvider.begin(ctx);
   configurations().push(ctx.configuration());
-  if (transaction.nestingLevel(ctx.configuration()) == 1)   connection.tl.set(((DefaultConnectionProvider)ctx.configuration().data(DATA_DEFAULT_TRANSACTION_PROVIDER_CONNECTION)).connection);
+  if (delegateTransactionProvider.nestingLevel(ctx.configuration()) == 1)   localTxConnection.set(((DefaultConnectionProvider)ctx.configuration().data(DATA_DEFAULT_TRANSACTION_PROVIDER_CONNECTION)).connection);
 }

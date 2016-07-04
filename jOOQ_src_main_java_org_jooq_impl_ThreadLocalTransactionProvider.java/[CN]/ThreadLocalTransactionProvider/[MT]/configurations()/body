@@ -1,8 +1,8 @@
 {
-  Deque<Configuration> result=configuration.get();
+  Deque<Configuration> result=localConfigurations.get();
   if (result == null) {
     result=new ArrayDeque<Configuration>();
-    configuration.set(result);
+    localConfigurations.set(result);
   }
   return result;
 }

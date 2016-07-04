@@ -1,0 +1,5 @@
+{
+  Connection local=localTxConnection.get();
+  if (local == null)   delegateConnectionProvider.release(connection);
+ else   if (local != connection)   throw new IllegalStateException("A different connection was released than the thread-bound one that was expected");
+}

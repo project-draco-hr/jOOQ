@@ -1,5 +1,6 @@
 {
-  this.connection=new ThreadLocalConnectionProvider(provider);
-  this.transaction=new DefaultTransactionProvider(connection,nested);
-  this.configuration=new ThreadLocal<Deque<Configuration>>();
+  this.localConnectionProvider=new ThreadLocalConnectionProvider(connectionProvider);
+  this.delegateTransactionProvider=new DefaultTransactionProvider(localConnectionProvider,nested);
+  this.localConfigurations=new ThreadLocal<Deque<Configuration>>();
+  this.localTxConnection=new ThreadLocal<Connection>();
 }

@@ -1,5 +1,5 @@
 {
-  if (transaction.nestingLevel(ctx.configuration()) == 1)   connection.tl.remove();
+  if (delegateTransactionProvider.nestingLevel(ctx.configuration()) == 1)   localTxConnection.remove();
   configurations().pop();
-  transaction.rollback(ctx);
+  delegateTransactionProvider.rollback(ctx);
 }

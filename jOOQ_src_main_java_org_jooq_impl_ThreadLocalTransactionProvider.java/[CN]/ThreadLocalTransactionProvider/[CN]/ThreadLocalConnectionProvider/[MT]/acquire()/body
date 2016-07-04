@@ -1,0 +1,5 @@
+{
+  Connection local=localTxConnection.get();
+  if (local == null)   return delegateConnectionProvider.acquire();
+ else   return local;
+}

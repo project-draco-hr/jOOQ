@@ -1,5 +1,0 @@
-{
-  Connection previous=tl.get();
-  if (previous == null)   delegate.release(connection);
- else   if (previous != connection)   throw new IllegalStateException("A different connection was released than the thread-bound one that was expected");
-}
