@@ -1,0 +1,5 @@
+{
+  StringWriter writer=new StringWriter();
+  formatJSON(writer,format);
+  return writer.toString();
+}

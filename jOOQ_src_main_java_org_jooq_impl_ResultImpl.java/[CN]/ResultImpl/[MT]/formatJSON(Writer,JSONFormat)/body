@@ -1,0 +1,54 @@
+{
+  try {
+    List<Map<String,String>> f=null;
+    List<Object> r=new ArrayList<Object>();
+    if (format.header()) {
+      f=new ArrayList<Map<String,String>>();
+      for (      Field<?> field : fields.fields) {
+        Map<String,String> fieldMap=new LinkedHashMap<String,String>();
+        if (field instanceof TableField) {
+          Table<?> table=((TableField<?,?>)field).getTable();
+          if (table != null) {
+            Schema schema=table.getSchema();
+            if (schema != null)             fieldMap.put("schema",schema.getName());
+            fieldMap.put("table",table.getName());
+          }
+        }
+        fieldMap.put("name",field.getName());
+        fieldMap.put("type",field.getDataType().getTypeName().toUpperCase());
+        f.add(fieldMap);
+      }
+    }
+switch (format.recordFormat()) {
+case ARRAY:
+      for (      Record record : this) {
+        List<Object> list=new ArrayList<Object>();
+        for (int index=0; index < fields.fields.length; index++)         list.add(formatJSON0(record.get(index)));
+        r.add(list);
+      }
+    break;
+case OBJECT:
+  for (  Record record : this) {
+    Map<String,Object> map=new LinkedHashMap<String,Object>();
+    for (int index=0; index < fields.fields.length; index++)     map.put(record.field(index).getName(),formatJSON0(record.get(index)));
+    r.add(map);
+  }
+break;
+default :
+throw new IllegalArgumentException("Format not supported: " + format);
+}
+if (f == null) {
+writer.append(JSONArray.toJSONString(r));
+}
+ else {
+Map<String,List<?>> map=new LinkedHashMap<String,List<?>>();
+map.put("fields",f);
+map.put("records",r);
+writer.append(JSONObject.toJSONString(map));
+}
+writer.flush();
+}
+ catch (java.io.IOException e) {
+throw new IOException("Exception while writing JSON",e);
+}
+}

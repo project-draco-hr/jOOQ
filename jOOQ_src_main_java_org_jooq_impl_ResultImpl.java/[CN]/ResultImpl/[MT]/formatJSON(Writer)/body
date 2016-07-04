@@ -1,38 +1,3 @@
 {
-  try {
-    List<Map<String,String>> f=new ArrayList<Map<String,String>>();
-    List<List<Object>> r=new ArrayList<List<Object>>();
-    Map<String,String> fieldMap;
-    for (    Field<?> field : fields.fields) {
-      fieldMap=new LinkedHashMap<String,String>();
-      if (field instanceof TableField) {
-        Table<?> table=((TableField<?,?>)field).getTable();
-        if (table != null) {
-          Schema schema=table.getSchema();
-          if (schema != null) {
-            fieldMap.put("schema",schema.getName());
-          }
-          fieldMap.put("table",table.getName());
-        }
-      }
-      fieldMap.put("name",field.getName());
-      fieldMap.put("type",field.getDataType().getTypeName().toUpperCase());
-      f.add(fieldMap);
-    }
-    for (    Record record : this) {
-      List<Object> list=new ArrayList<Object>();
-      for (int index=0; index < fields.fields.length; index++) {
-        list.add(formatJSON0(record.get(index)));
-      }
-      r.add(list);
-    }
-    Map<String,List<?>> map=new LinkedHashMap<String,List<?>>();
-    map.put("fields",f);
-    map.put("records",r);
-    writer.append(JSONObject.toJSONString(map));
-    writer.flush();
-  }
- catch (  java.io.IOException e) {
-    throw new IOException("Exception while writing JSON",e);
-  }
+  formatJSON(writer,new JSONFormat());
 }
