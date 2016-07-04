@@ -1,0 +1,3 @@
+{
+  return isOverloaded() || asList(Byte.class,Short.class).contains(parameter.getType());
+}

@@ -4,21 +4,13 @@
   List<Field<?>> fields=new ArrayList<Field<?>>();
   for (  Parameter<?> parameter : getInParameters()) {
     if (inValuesDefaulted.contains(parameter))     continue;
-    if (ctx.family() == POSTGRES) {
-      if (hasUnnamedParameters()) {
-        if (isOverloaded())         fields.add(getInValues().get(parameter).cast(parameter.getType()));
- else         fields.add(getInValues().get(parameter));
-      }
- else {
-        if (isOverloaded())         fields.add(field("{0} := {1}",name(parameter.getName()),getInValues().get(parameter).cast(parameter.getType())));
- else         fields.add(field("{0} := {1}",name(parameter.getName()),getInValues().get(parameter)));
-      }
-    }
+    if (ctx.family() == POSTGRES)     if (hasUnnamedParameters())     if (pgArgNeedsCasting(parameter))     fields.add(new Cast(getInValues().get(parameter),parameter.getDataType()));
+ else     fields.add(getInValues().get(parameter));
+ else     if (pgArgNeedsCasting(parameter))     fields.add(field("{0} := {1}",name(parameter.getName()),new Cast(getInValues().get(parameter),parameter.getDataType())));
+ else     fields.add(field("{0} := {1}",name(parameter.getName()),getInValues().get(parameter)));
  else     fields.add(getInValues().get(parameter));
   }
   Field<T> result=function(local.render(),getDataType(),fields.toArray(EMPTY_FIELD));
-  if (TRUE.equals(settings(ctx.configuration()).isRenderScalarSubqueriesForStoredFunctions())) {
-    result=DSL.select(result).asField();
-  }
+  if (TRUE.equals(settings(ctx.configuration()).isRenderScalarSubqueriesForStoredFunctions()))   result=DSL.select(result).asField();
   ctx.visit(result);
 }
