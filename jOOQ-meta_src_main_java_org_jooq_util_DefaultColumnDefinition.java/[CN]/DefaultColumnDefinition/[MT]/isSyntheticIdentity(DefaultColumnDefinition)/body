@@ -1,5 +1,7 @@
 {
   AbstractDatabase db=(AbstractDatabase)column.getDatabase();
   String[] syntheticIdentities=db.getSyntheticIdentities();
-  return !db.filterExcludeInclude(singletonList(column),null,syntheticIdentities,db.getFilters()).isEmpty();
+  boolean match=!db.filterExcludeInclude(singletonList(column),null,syntheticIdentities,db.getFilters()).isEmpty();
+  if (match)   log.info("Synthetic Identity: " + column.getQualifiedName());
+  return match;
 }
