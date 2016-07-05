@@ -1,3 +1,0 @@
-Converter<T,X1> c1
-Converter<X1,X2> c2
-Converter<X2,U> c3
