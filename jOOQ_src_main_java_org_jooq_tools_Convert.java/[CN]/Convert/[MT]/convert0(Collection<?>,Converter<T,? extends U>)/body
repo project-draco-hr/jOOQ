@@ -1,5 +1,5 @@
 {
-  ConvertAll<T> all=new ConvertAll<T>((Class<T>)converter.fromType());
+  ConvertAll<T> all=new ConvertAll<T>(converter.fromType());
   List<U> result=new ArrayList<U>(collection.size());
   for (  Object o : collection) {
     result.add(convert(all.from(o),converter));

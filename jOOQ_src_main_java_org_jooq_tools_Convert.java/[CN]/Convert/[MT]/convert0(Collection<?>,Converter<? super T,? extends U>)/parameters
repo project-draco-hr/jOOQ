@@ -1,2 +1,0 @@
-Collection<?> collection
-Converter<? super T,? extends U> converter
