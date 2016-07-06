@@ -1,3 +1,0 @@
-int index
-Converter<?,U> converter
-U defaultValue

@@ -1,3 +1,0 @@
-Field<T> field
-U value
-Converter<T,? super U> converter
