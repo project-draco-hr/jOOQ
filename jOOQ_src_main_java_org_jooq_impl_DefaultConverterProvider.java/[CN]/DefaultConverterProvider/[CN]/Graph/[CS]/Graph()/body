@@ -1,5 +1,0 @@
-{
-  vertices=new HashSet<Class<?>>();
-  adjacency=new HashMap<Class<?>,Set<Converter<?,?>>>();
-  paths=new ConcurrentHashMap<Endpoints<?,?>,Converter<?,?>>();
-}

@@ -1,4 +1,0 @@
-{
-  this.fromType=t;
-  this.toType=u;
-}

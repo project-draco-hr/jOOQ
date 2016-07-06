@@ -1,8 +1,0 @@
-{
-  if (this == obj)   return true;
-  if (obj instanceof Endpoints) {
-    Endpoints<?,?> that=(Endpoints<?,?>)obj;
-    return fromType == that.fromType && toType == that.toType;
-  }
-  return false;
-}
