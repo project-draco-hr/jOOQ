@@ -7,16 +7,12 @@
     }
     try {
       connection=DriverManager.getConnection("jdbc:h2:mem:jooq-meta-extensions","sa","");
-      MetadataSources metadata=new MetadataSources(new StandardServiceRegistryBuilder().applySetting("hibernate.dialect","org.hibernate.dialect.H2Dialect").build());
+      MetadataSources metadata=new MetadataSources(new StandardServiceRegistryBuilder().applySetting("hibernate.dialect","org.hibernate.dialect.H2Dialect").applySetting("javax.persistence.schema-generation-connection",connection).build());
       ClassPathScanningCandidateComponentProvider scanner=new ClassPathScanningCandidateComponentProvider(true);
       scanner.addIncludeFilter(new AnnotationTypeFilter(Entity.class));
-      for (      String pkg : packages.split(",")) {
-        for (        BeanDefinition def : scanner.findCandidateComponents(defaultIfBlank(pkg,"").trim())) {
-          metadata.addAnnotatedClass(Class.forName(def.getBeanClassName()));
-        }
-      }
-      SchemaExport export=new SchemaExport((MetadataImplementor)metadata.buildMetadata(),connection);
-      export.create(true,true);
+      for (      String pkg : packages.split(","))       for (      BeanDefinition def : scanner.findCandidateComponents(defaultIfBlank(pkg,"").trim()))       metadata.addAnnotatedClass(Class.forName(def.getBeanClassName()));
+      SchemaExport export=new SchemaExport();
+      export.create(EnumSet.of(TargetType.DATABASE),metadata.buildMetadata());
     }
  catch (    Exception e) {
       throw new DataAccessException("Error while exporting schema",e);
