@@ -69,7 +69,7 @@ ExecuteListener listener2=new ExecuteListeners(ctx2);
 ctx2.resultSet(rs);
 returned=new CursorImpl<R>(ctx2,listener2,fieldArray(returning),null,false,true).fetch();
 if (table.fields().length > 0) returned=returned.into(table);
-if (returned.size() > 0) {
+if (returned.size() > 0 || ctx.family() != HSQLDB) {
 result=returned.size();
 ctx.rows(result);
 }
