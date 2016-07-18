@@ -2,7 +2,7 @@
   final String className=getStrategy().getJavaClassName(tableOrUDT,Mode.POJO);
   out.println();
   if (scala) {
-    out.tab(1).println("override def equals(obj : Any) : scala.Boolean = {");
+    out.tab(1).println("override def equals(obj: Any): scala.Boolean = {");
     out.tab(2).println("if (this == obj)");
     out.tab(3).println("return true");
     out.tab(2).println("if (obj == null)");
@@ -56,7 +56,7 @@
   }
   out.println();
   if (scala) {
-    out.tab(1).println("override def hashCode : Int = {");
+    out.tab(1).println("override def hashCode: Int = {");
     out.tab(2).println("val prime = 31");
     out.tab(2).println("var result = 1");
     for (    TypedElementDefinition<?> column : getTypedElements(tableOrUDT)) {

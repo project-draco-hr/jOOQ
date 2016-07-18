@@ -3,7 +3,7 @@
   for (  ParameterDefinition parameter : function.getParameters()) {
     out.print(sep1);
     if (scala) {
-      out.print("%s : ",getStrategy().getJavaMemberName(parameter));
+      out.print("%s: ",getStrategy().getJavaMemberName(parameter));
       if (parametersAsField) {
         out.print("%s[%s]",Field.class,refExtendsNumberType(out,parameter.getType()));
       }

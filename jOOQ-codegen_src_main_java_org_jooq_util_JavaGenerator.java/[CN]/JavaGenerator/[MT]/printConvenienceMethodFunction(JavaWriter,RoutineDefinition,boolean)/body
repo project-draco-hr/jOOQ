@@ -14,7 +14,7 @@
  else   out.tab(1).print("public %s%s %s(",!instance ? "static " : "",functionType,methodName);
   String glue="";
   if (!instance) {
-    if (scala)     out.print("%s : %s",configurationArgument,Configuration.class);
+    if (scala)     out.print("%s: %s",configurationArgument,Configuration.class);
  else     out.print("%s %s",Configuration.class,configurationArgument);
     glue=", ";
   }
@@ -24,12 +24,12 @@
     }
     final String paramType=refNumberType(out,parameter.getType());
     final String paramMember=getStrategy().getJavaMemberName(parameter);
-    if (scala)     out.print("%s%s : %s",glue,paramMember,paramType);
+    if (scala)     out.print("%s%s: %s",glue,paramMember,paramType);
  else     out.print("%s%s %s",glue,paramType,paramMember);
     glue=", ";
   }
   if (scala) {
-    out.println(") : %s = {",functionType);
+    out.println("): %s = {",functionType);
     out.tab(2).println("val %s = new %s()",localVar,className);
   }
  else {
