@@ -31,7 +31,7 @@
   out.print("(");
   String glue="";
   if (!instance) {
-    if (scala)     out.print("%s : %s",configurationArgument,Configuration.class);
+    if (scala)     out.print("%s: %s",configurationArgument,Configuration.class);
  else     out.print("%s %s",Configuration.class,configurationArgument);
     glue=", ";
   }
@@ -40,12 +40,12 @@
       continue;
     }
     out.print(glue);
-    if (scala)     out.print("%s : %s",getStrategy().getJavaMemberName(parameter),refNumberType(out,parameter.getType()));
+    if (scala)     out.print("%s: %s",getStrategy().getJavaMemberName(parameter),refNumberType(out,parameter.getType()));
  else     out.print("%s %s",refNumberType(out,parameter.getType()),getStrategy().getJavaMemberName(parameter));
     glue=", ";
   }
   if (scala) {
-    out.print(") : ");
+    out.print("): ");
     if (outParams.size() == 0) {
       out.print("Unit");
     }

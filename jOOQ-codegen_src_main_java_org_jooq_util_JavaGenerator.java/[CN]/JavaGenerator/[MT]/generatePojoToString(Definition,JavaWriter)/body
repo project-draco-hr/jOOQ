@@ -2,7 +2,7 @@
   final String className=getStrategy().getJavaClassName(tableOrUDT,Mode.POJO);
   out.println();
   if (scala) {
-    out.tab(1).println("override def toString : String = {");
+    out.tab(1).println("override def toString: String = {");
     out.tab(2).println("val sb = new %s(\"%s (\")",StringBuilder.class,className);
     out.tab(2).println();
     String separator="";

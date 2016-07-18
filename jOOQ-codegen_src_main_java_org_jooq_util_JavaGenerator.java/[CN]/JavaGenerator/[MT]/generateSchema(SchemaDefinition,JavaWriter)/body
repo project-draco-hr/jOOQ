@@ -43,7 +43,7 @@
   }
   out.println();
   if (scala) {
-    out.tab(1).println("override def getCatalog : %s = %s",Catalog.class,catalogId);
+    out.tab(1).println("override def getCatalog: %s = %s",Catalog.class,catalogId);
   }
  else {
     out.tab(1).overrideInherit();
