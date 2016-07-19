@@ -38,7 +38,7 @@
       int size=getTypedElements(tableOrUDT).size();
       if (size > 0) {
         List<String> nulls=new ArrayList<String>();
-        for (        TypedElementDefinition<?> column : getTypedElements(tableOrUDT))         if (size == 1)         nulls.add("null : " + out.ref(getJavaType(column.getType(),Mode.POJO)));
+        for (        TypedElementDefinition<?> column : getTypedElements(tableOrUDT))         if (size == 1)         nulls.add("null: " + out.ref(getJavaType(column.getType(),Mode.POJO)));
  else         nulls.add("null");
         out.tab(1).println("def this() = {",className);
         out.tab(2).println("this([[%s]])",nulls);
@@ -99,7 +99,7 @@
     if (column instanceof ColumnDefinition)     printColumnJPAAnnotation(out,(ColumnDefinition)column);
     printValidationAnnotation(out,column);
     if (scala) {
-      out.tab(1).println("def %s: %s = {",columnGetter,columnType);
+      out.tab(1).println("def %s : %s = {",columnGetter,columnType);
       out.tab(2).println("this.%s",columnMember);
       out.tab(1).println("}");
     }
