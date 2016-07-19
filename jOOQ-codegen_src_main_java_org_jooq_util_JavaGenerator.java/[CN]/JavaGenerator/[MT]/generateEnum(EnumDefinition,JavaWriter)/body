@@ -15,17 +15,17 @@
     out.println("object %s {",className);
     out.println();
     for (int i=0; i < identifiers.size(); i++) {
-      out.tab(1).println("val %s: %s = %s.%s",identifiers.get(i),className,getStrategy().getJavaPackageName(e),identifiers.get(i));
+      out.tab(1).println("val %s : %s = %s.%s",identifiers.get(i),className,getStrategy().getJavaPackageName(e),identifiers.get(i));
     }
     out.println();
-    out.tab(1).println("def values: %s[%s] = %s(",out.ref("scala.Array"),className,out.ref("scala.Array"));
+    out.tab(1).println("def values : %s[%s] = %s(",out.ref("scala.Array"),className,out.ref("scala.Array"));
     for (int i=0; i < identifiers.size(); i++) {
       out.tab(2).print((i > 0 ? ", " : "  "));
       out.println(identifiers.get(i));
     }
     out.tab(1).println(")");
     out.println();
-    out.tab(1).println("def valueOf(s: %s): %s = s match {",String.class,className);
+    out.tab(1).println("def valueOf(s : %s) : %s = s match {",String.class,className);
     for (int i=0; i < identifiers.size(); i++) {
       out.tab(2).println("case \"%s\" => %s",literals.get(i),identifiers.get(i));
     }
@@ -34,14 +34,14 @@
     out.println("}");
     out.println();
     out.println("sealed trait %s extends %s[[before= with ][%s]] {",className,EnumType.class,interfaces);
-    out.tab(1).println("override def getSchema: %s = %s",Schema.class,(e.isSynthetic() || !(e.getDatabase() instanceof PostgresDatabase)) ? "null" : out.ref(getStrategy().getFullJavaIdentifier(e.getSchema()),2));
-    out.tab(1).println("override def getName: %s = %s",String.class,e.isSynthetic() ? "null" : "\"" + e.getName().replace("\"","\\\"") + "\"");
+    out.tab(1).println("override def getSchema : %s = %s",Schema.class,(e.isSynthetic() || !(e.getDatabase() instanceof PostgresDatabase)) ? "null" : out.ref(getStrategy().getFullJavaIdentifier(e.getSchema()),2));
+    out.tab(1).println("override def getName : %s = %s",String.class,e.isSynthetic() ? "null" : "\"" + e.getName().replace("\"","\\\"") + "\"");
     generateEnumClassFooter(e,out);
     out.println("}");
     for (int i=0; i < literals.size(); i++) {
       out.println();
       out.println("case object %s extends %s {",identifiers.get(i),className);
-      out.tab(1).println("override def getLiteral: %s = \"%s\"",String.class,literals.get(i));
+      out.tab(1).println("override def getLiteral : %s = \"%s\"",String.class,literals.get(i));
       out.println("}");
     }
   }

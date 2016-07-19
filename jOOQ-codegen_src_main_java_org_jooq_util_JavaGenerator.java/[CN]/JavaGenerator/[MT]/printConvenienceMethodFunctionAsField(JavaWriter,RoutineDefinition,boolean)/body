@@ -15,7 +15,7 @@
   for (  ParameterDefinition parameter : function.getInParameters()) {
     out.print(separator);
     if (scala) {
-      out.print("%s: ",getStrategy().getJavaMemberName(parameter));
+      out.print("%s : ",getStrategy().getJavaMemberName(parameter));
       if (parametersAsField) {
         out.print("%s[%s]",Field.class,refExtendsNumberType(out,parameter.getType()));
       }
@@ -35,7 +35,7 @@
     separator=", ";
   }
   if (scala) {
-    out.println("): %s[%s] = {",function.isAggregate() ? AggregateFunction.class : Field.class,out.ref(getJavaType(function.getReturnType())));
+    out.println(") : %s[%s] = {",function.isAggregate() ? AggregateFunction.class : Field.class,out.ref(getJavaType(function.getReturnType())));
     out.tab(2).println("val %s = new %s",localVar,className);
   }
  else {

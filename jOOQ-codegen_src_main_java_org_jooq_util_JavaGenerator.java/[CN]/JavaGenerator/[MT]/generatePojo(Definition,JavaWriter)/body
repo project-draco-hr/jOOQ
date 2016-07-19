@@ -19,7 +19,7 @@
     out.println("%sclass %s(",(generateImmutablePojos() ? "case " : ""),className);
     String separator="  ";
     for (    TypedElementDefinition<?> column : getTypedElements(tableOrUDT)) {
-      out.tab(1).println("%s%s%s: %s",separator,generateImmutablePojos() ? "" : "private var ",getStrategy().getJavaMemberName(column,Mode.POJO),StringUtils.rightPad(out.ref(getJavaType(column.getType(),Mode.POJO)),maxLength));
+      out.tab(1).println("%s%s%s : %s",separator,generateImmutablePojos() ? "" : "private var ",getStrategy().getJavaMemberName(column,Mode.POJO),StringUtils.rightPad(out.ref(getJavaType(column.getType(),Mode.POJO)),maxLength));
       separator=", ";
     }
     out.println(")[[before= extends ][%s]][[before= with ][separator= with ][%s]] {",first(superTypes),remaining(superTypes));
@@ -38,7 +38,7 @@
       int size=getTypedElements(tableOrUDT).size();
       if (size > 0) {
         List<String> nulls=new ArrayList<String>();
-        for (        TypedElementDefinition<?> column : getTypedElements(tableOrUDT))         if (size == 1)         nulls.add("null: " + out.ref(getJavaType(column.getType(),Mode.POJO)));
+        for (        TypedElementDefinition<?> column : getTypedElements(tableOrUDT))         if (size == 1)         nulls.add("null : " + out.ref(getJavaType(column.getType(),Mode.POJO)));
  else         nulls.add("null");
         out.tab(1).println("def this() = {",className);
         out.tab(2).println("this([[%s]])",nulls);
@@ -51,7 +51,7 @@
   }
   out.println();
   if (scala) {
-    out.tab(1).println("def this (value: %s) = {",className,className);
+    out.tab(1).println("def this (value : %s) = {",className,className);
     out.tab(2).println("this(");
     String separator="  ";
     for (    TypedElementDefinition<?> column : getTypedElements(tableOrUDT)) {
@@ -113,7 +113,7 @@
       if (!(generateInterfaces() && isUDTArray)) {
         out.println();
         if (scala) {
-          out.tab(1).println("def %s(%s: %s): %s = {",columnSetter,columnMember,columnType,columnSetterReturnType);
+          out.tab(1).println("def %s(%s : %s) : %s = {",columnSetter,columnMember,columnType,columnSetterReturnType);
           out.tab(2).println("this.%s = %s",columnMember,columnMember);
           if (fluentSetters())           out.tab(2).println("this");
           out.tab(1).println("}");
@@ -130,7 +130,7 @@
         final String columnTypeInterface=out.ref(getJavaType(column.getType(),Mode.INTERFACE));
         out.println();
         if (scala) {
-          out.tab(1).println("def %s(%s: %s): %s = {",columnSetter,columnMember,columnTypeInterface,columnSetterReturnType);
+          out.tab(1).println("def %s(%s : %s) : %s = {",columnSetter,columnMember,columnTypeInterface,columnSetterReturnType);
           out.tab(2).println("if (%s == null)",columnMember);
           out.tab(3).println("this.%s = null",columnMember);
           out.tab(2).println("else");
