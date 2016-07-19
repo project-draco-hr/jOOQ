@@ -1,0 +1,3 @@
+{
+  return isScalaLetter(c);
+}
