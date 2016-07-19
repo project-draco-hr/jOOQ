@@ -2,21 +2,13 @@
   if (language == JAVA && JAVA_KEYWORDS.contains(literal))   return literal + "_";
   if (language == SCALA && SCALA_KEYWORDS.contains(literal))   return "`" + literal + "`";
   StringBuilder sb=new StringBuilder();
-  if ("".equals(literal)) {
-    return "_";
-  }
+  if ("".equals(literal))   return "_";
   for (int i=0; i < literal.length(); i++) {
     char c=literal.charAt(i);
-    if (!Character.isJavaIdentifierPart(c)) {
-      sb.append(escape(c));
-    }
- else     if (i == 0 && !Character.isJavaIdentifierStart(literal.charAt(0))) {
-      sb.append("_");
-      sb.append(c);
-    }
- else {
-      sb.append(c);
-    }
+    if (!Character.isJavaIdentifierPart(c))     if (language == SCALA && c == '=' && i == literal.length() - 1)     sb.append(c);
+ else     sb.append(escape(c));
+ else     if (i == 0 && !Character.isJavaIdentifierStart(literal.charAt(0)))     sb.append("_").append(c);
+ else     sb.append(c);
   }
   return sb.toString();
 }
