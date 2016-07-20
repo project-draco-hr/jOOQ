@@ -4,7 +4,7 @@
     final List<String> references=out.ref(getStrategy().getFullJavaIdentifiers(definitions),2);
     out.println();
     if (scala) {
-      out.tab(1).println("override def get%ss : %s[%s%s] = {",type.getSimpleName(),List.class,type,generic);
+      out.tab(1).println("override def get%ss: %s[%s%s] = {",type.getSimpleName(),List.class,type,generic);
       out.tab(2).println("val result = new %s[%s%s]",ArrayList.class,type,generic);
       for (int i=0; i < definitions.size(); i+=INITIALISER_SIZE) {
         out.tab(2).println("result.addAll(get%ss%s)",type.getSimpleName(),i / INITIALISER_SIZE);

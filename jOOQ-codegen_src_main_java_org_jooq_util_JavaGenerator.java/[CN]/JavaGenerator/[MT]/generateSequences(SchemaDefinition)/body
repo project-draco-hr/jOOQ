@@ -13,7 +13,7 @@
     final String schemaId=out.ref(getStrategy().getFullJavaIdentifier(schema),2);
     final String typeRef=getJavaTypeReference(sequence.getDatabase(),sequence.getType());
     out.tab(1).javadoc("The sequence <code>%s</code>",sequence.getQualifiedOutputName());
-    if (scala)     out.tab(1).println("val %s : %s[%s] = new %s[%s](\"%s\", %s, %s)",seqId,Sequence.class,seqType,SequenceImpl.class,seqType,seqName,schemaId,typeRef);
+    if (scala)     out.tab(1).println("val %s: %s[%s] = new %s[%s](\"%s\", %s, %s)",seqId,Sequence.class,seqType,SequenceImpl.class,seqType,seqName,schemaId,typeRef);
  else     out.tab(1).println("public static final %s<%s> %s = new %s<%s>(\"%s\", %s, %s);",Sequence.class,seqType,seqId,SequenceImpl.class,seqType,seqName,schemaId,typeRef);
   }
   out.println("}");

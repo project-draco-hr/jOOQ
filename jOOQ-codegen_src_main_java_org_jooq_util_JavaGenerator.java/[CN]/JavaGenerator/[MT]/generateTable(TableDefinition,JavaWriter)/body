@@ -19,7 +19,7 @@
   generateTableClassJavadoc(table,out);
   printClassAnnotations(out,schema);
   if (scala) {
-    out.println("class %s(alias : String, aliased : %s[%s], parameters : %s[ %s[_] ]) extends %s[%s](alias, %s, aliased, parameters, \"%s\")[[before= with ][separator= with ][%s]] {",className,Table.class,recordType,out.ref("scala.Array"),Field.class,TableImpl.class,recordType,schemaId,escapeString(comment),interfaces);
+    out.println("class %s(alias: String, aliased: %s[%s], parameters: %s[ %s[_] ]) extends %s[%s](alias, %s, aliased, parameters, \"%s\")[[before= with ][separator= with ][%s]] {",className,Table.class,recordType,out.ref("scala.Array"),Field.class,TableImpl.class,recordType,schemaId,escapeString(comment),interfaces);
   }
  else {
     out.println("public class %s extends %s<%s>[[before= implements ][%s]] {",className,TableImpl.class,recordType,interfaces);
@@ -36,7 +36,7 @@
     final List<String> converters=out.ref(list(column.getType().getConverter(),column.getType().getBinding()));
     out.tab(1).javadoc("The column <code>%s</code>.%s",column.getQualifiedOutputName(),defaultIfBlank(" " + columnComment,""));
     if (scala) {
-      out.tab(1).println("val %s : %s[%s, %s] = createField(\"%s\", %s, \"%s\"[[before=, ][new %s()]])",columnId,TableField.class,recordType,columnType,columnName,columnTypeRef,escapeString(columnComment),converters);
+      out.tab(1).println("val %s: %s[%s, %s] = createField(\"%s\", %s, \"%s\"[[before=, ][new %s()]])",columnId,TableField.class,recordType,columnType,columnName,columnTypeRef,escapeString(columnComment),converters);
     }
  else {
       String isStatic=generateInstanceFields() ? "" : "static ";
@@ -64,7 +64,7 @@
   }
   if (scala) {
     out.tab(1).javadoc("Create an aliased <code>%s</code> table reference",table.getQualifiedOutputName());
-    out.tab(1).println("def this(alias : %s) = {",String.class);
+    out.tab(1).println("def this(alias: %s) = {",String.class);
     out.tab(2).println("this(alias, %s, null)",tableId);
     out.tab(1).println("}");
   }
@@ -76,7 +76,7 @@
   }
   out.println();
   if (scala) {
-    out.tab(1).println("private def this(alias : %s, aliased : %s[%s]) = {",String.class,Table.class,recordType);
+    out.tab(1).println("private def this(alias: %s, aliased: %s[%s]) = {",String.class,Table.class,recordType);
     if (table.isTableValuedFunction())     out.tab(2).println("this(alias, aliased, new %s[ %s[_] ](%s))",out.ref("scala.Array"),Field.class,table.getParameters().size());
  else     out.tab(2).println("this(alias, aliased, null)");
     out.tab(1).println("}");
@@ -93,7 +93,7 @@
   }
   if (scala) {
     out.println();
-    out.tab(1).println("override def getSchema : %s = %s",Schema.class,schemaId);
+    out.tab(1).println("override def getSchema: %s = %s",Schema.class,schemaId);
   }
  else {
     out.tab(1).overrideInherit();
@@ -108,7 +108,7 @@
       final String identityFullId=out.ref(getStrategy().getFullJavaIdentifier(identity),2);
       if (scala) {
         out.println();
-        out.tab(1).println("override def getIdentity : %s[%s, %s] = {",Identity.class,recordType,identityType);
+        out.tab(1).println("override def getIdentity: %s[%s, %s] = {",Identity.class,recordType,identityType);
         out.tab(2).println("%s",identityFullId);
         out.tab(1).println("}");
       }
@@ -123,7 +123,7 @@
       final String keyFullId=out.ref(getStrategy().getFullJavaIdentifier(primaryKey),2);
       if (scala) {
         out.println();
-        out.tab(1).println("override def getPrimaryKey : %s[%s] = {",UniqueKey.class,recordType);
+        out.tab(1).println("override def getPrimaryKey: %s[%s] = {",UniqueKey.class,recordType);
         out.tab(2).println("%s",keyFullId);
         out.tab(1).println("}");
       }
@@ -139,7 +139,7 @@
       final List<String> keyFullIds=out.ref(getStrategy().getFullJavaIdentifiers(uniqueKeys),2);
       if (scala) {
         out.println();
-        out.tab(1).println("override def getKeys : %s[ %s[%s] ] = {",List.class,UniqueKey.class,recordType);
+        out.tab(1).println("override def getKeys: %s[ %s[%s] ] = {",List.class,UniqueKey.class,recordType);
         out.tab(2).println("return %s.asList[ %s[%s] ]([[%s]])",Arrays.class,UniqueKey.class,recordType,keyFullIds);
         out.tab(1).println("}");
       }
@@ -155,7 +155,7 @@
       final List<String> keyFullIds=out.ref(getStrategy().getFullJavaIdentifiers(foreignKeys),2);
       if (scala) {
         out.println();
-        out.tab(1).println("override def getReferences : %s[ %s[%s, _] ] = {",List.class,ForeignKey.class,recordType);
+        out.tab(1).println("override def getReferences: %s[ %s[%s, _] ] = {",List.class,ForeignKey.class,recordType);
         out.tab(2).println("return %s.asList[ %s[%s, _] ]([[%s]])",Arrays.class,ForeignKey.class,recordType,keyFullIds);
         out.tab(1).println("}");
       }
@@ -176,7 +176,7 @@
           final String columnId=getStrategy().getJavaIdentifier(column);
           if (scala) {
             out.println();
-            out.tab(1).println("override def getRecordVersion : %s[%s, %s] = {",TableField.class,recordType,columnType);
+            out.tab(1).println("override def getRecordVersion: %s[%s, %s] = {",TableField.class,recordType,columnType);
             out.tab(2).println("%s",columnId);
             out.tab(1).println("}");
           }
@@ -198,7 +198,7 @@
           final String columnId=getStrategy().getJavaIdentifier(column);
           if (scala) {
             out.println();
-            out.tab(1).println("override def getRecordTimestamp : %s[%s, %s] = {",TableField.class,recordType,columnType);
+            out.tab(1).println("override def getRecordTimestamp: %s[%s, %s] = {",TableField.class,recordType,columnType);
             out.tab(2).println("%s",columnId);
             out.tab(1).println("}");
           }
@@ -215,7 +215,7 @@
   }
   if (scala) {
     out.println();
-    out.tab(1).println("override def as(alias : %s) : %s = {",String.class,className);
+    out.tab(1).println("override def as(alias: %s): %s = {",String.class,className);
     if (table.isTableValuedFunction())     out.tab(2).println("new %s(alias, this, parameters)",className);
  else     out.tab(2).println("new %s(alias, this)",className);
     out.tab(1).println("}");
@@ -229,7 +229,7 @@
   }
   if (scala) {
     out.tab(1).javadoc("Rename this table");
-    out.tab(1).println("override def rename(name : %s) : %s = {",String.class,className);
+    out.tab(1).println("override def rename(name: %s): %s = {",String.class,className);
     if (table.isTableValuedFunction())     out.tab(2).println("new %s(name, null, parameters)",className);
  else     out.tab(2).println("new %s(name, null)",className);
     out.tab(1).println("}");
@@ -249,7 +249,7 @@
       if (scala) {
         out.tab(1).print("def call(");
         printParameterDeclarations(out,table,parametersAsField);
-        out.println(") : %s = {",className);
+        out.println("): %s = {",className);
         out.tab(2).print("return new %s(getName(), null, %s(",className,out.ref("scala.Array"));
         String separator="";
         for (        ParameterDefinition parameter : table.getParameters()) {

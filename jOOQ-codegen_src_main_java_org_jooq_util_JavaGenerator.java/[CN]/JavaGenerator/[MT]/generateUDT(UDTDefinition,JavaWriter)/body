@@ -40,7 +40,7 @@
     final String attrComment=StringUtils.defaultString(attribute.getComment());
     final List<String> converters=out.ref(list(attribute.getType().getConverter(),attribute.getType().getBinding()));
     if (scala) {
-      out.tab(1).println("private val %s : %s[%s, %s] = %s.createField(\"%s\", %s, this, \"%s\"[[before=, ][new %s]])",attrId,UDTField.class,recordType,attrType,UDTImpl.class,attrName,attrTypeRef,escapeString(""),converters);
+      out.tab(1).println("private val %s: %s[%s, %s] = %s.createField(\"%s\", %s, this, \"%s\"[[before=, ][new %s]])",attrId,UDTField.class,recordType,attrType,UDTImpl.class,attrName,attrTypeRef,escapeString(""),converters);
     }
  else {
       out.tab(1).javadoc("The attribute <code>%s</code>.%s",attribute.getQualifiedOutputName(),defaultIfBlank(" " + attrComment,""));
@@ -74,7 +74,7 @@
   }
   if (scala) {
     out.println();
-    out.tab(1).println("override def getSchema : %s = %s",Schema.class,schemaId);
+    out.tab(1).println("override def getSchema: %s = %s",Schema.class,schemaId);
   }
  else {
     out.tab(1).overrideInherit();
