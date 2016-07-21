@@ -1,0 +1,3 @@
+{
+  return of(new MockResult(result.size(),result));
+}
