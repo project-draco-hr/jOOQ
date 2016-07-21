@@ -12,7 +12,7 @@
  else   out.tab(1).print("public static %s %s(",className,javaMethodName);
   printParameterDeclarations(out,function,parametersAsField);
   if (scala) {
-    out.println("): %s = {",className);
+    out.println(") : %s = {",className);
     out.tab(2).print("%s.call(",out.ref(getStrategy().getFullJavaIdentifier(function),2));
   }
  else {

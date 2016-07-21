@@ -1,3 +1,0 @@
-{
-  return isScalaIdentifierStart(c) || Character.isDigit(c);
-}

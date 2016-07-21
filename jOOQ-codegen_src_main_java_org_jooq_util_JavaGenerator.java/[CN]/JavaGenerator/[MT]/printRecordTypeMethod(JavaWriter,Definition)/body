@@ -2,7 +2,7 @@
   final String className=out.ref(getStrategy().getFullJavaClassName(definition,Mode.RECORD));
   out.tab(1).javadoc("The class holding records for this type");
   if (scala) {
-    out.tab(1).println("override def getRecordType: %s[%s] = {",Class.class,className);
+    out.tab(1).println("override def getRecordType : %s[%s] = {",Class.class,className);
     out.tab(2).println("classOf[%s]",className);
     out.tab(1).println("}");
   }
