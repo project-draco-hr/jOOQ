@@ -1,0 +1,5 @@
+{
+  List<Query> queries=new ArrayList<Query>();
+  for (  Schema schema : catalog.getSchemas())   queries.addAll(Arrays.asList(queries(schema).queries()));
+  return DSL.queries(queries);
+}

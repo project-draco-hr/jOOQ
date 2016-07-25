@@ -1,5 +1,6 @@
 {
   List<Query> queries=new ArrayList<Query>();
+  if (flags.contains(SCHEMA))   queries.add(ctx.createSchema(schema.getName()));
   if (flags.contains(TABLE)) {
     for (    Table<?> table : schema.getTables()) {
       List<Constraint> constraints=new ArrayList<Constraint>();

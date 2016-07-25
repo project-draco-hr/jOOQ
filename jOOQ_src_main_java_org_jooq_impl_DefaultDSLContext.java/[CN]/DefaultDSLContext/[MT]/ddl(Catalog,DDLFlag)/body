@@ -1,0 +1,3 @@
+{
+  return new DDL(this,flags).queries(schema);
+}
