@@ -1,0 +1,13 @@
+{
+  DataType<?> type=null;
+  try {
+    type=DefaultDataType.getDataType(configuration.family(),typeName);
+    type=type.nullable(nullable);
+    if (length != 0)     type=type.length(length);
+ else     if (precision != 0 || scale != 0)     type=type.precision(precision,scale);
+  }
+ catch (  SQLDialectNotSupportedException e) {
+    type=SQLDataType.OTHER;
+  }
+  return type;
+}

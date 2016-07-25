@@ -7,6 +7,8 @@
   this.tables=new ArrayList<Table<?>>();
   this.tablesByName=new HashMap<String,Table<?>>();
   this.tablesPerSchema=new HashMap<Schema,List<Table<?>>>();
+  this.sequences=new ArrayList<Sequence<?>>();
+  this.sequencesPerSchema=new HashMap<Schema,List<Sequence<?>>>();
   this.primaryKeys=new ArrayList<UniqueKey<?>>();
   init(schema);
 }
