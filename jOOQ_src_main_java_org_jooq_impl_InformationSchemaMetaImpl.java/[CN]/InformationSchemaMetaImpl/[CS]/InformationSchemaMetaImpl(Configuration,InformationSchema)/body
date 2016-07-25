@@ -1,0 +1,12 @@
+{
+  this.configuration=configuration;
+  this.catalogs=new ArrayList<Catalog>();
+  this.schemas=new ArrayList<Schema>();
+  this.schemasByName=new HashMap<String,Schema>();
+  this.schemasPerCatalog=new HashMap<Catalog,List<Schema>>();
+  this.tables=new ArrayList<Table<?>>();
+  this.tablesByName=new HashMap<String,Table<?>>();
+  this.tablesPerSchema=new HashMap<Schema,List<Table<?>>>();
+  this.primaryKeys=new ArrayList<UniqueKey<?>>();
+  init(schema);
+}

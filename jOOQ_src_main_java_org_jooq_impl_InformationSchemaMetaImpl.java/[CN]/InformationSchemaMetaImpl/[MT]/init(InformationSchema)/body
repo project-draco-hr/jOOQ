@@ -1,0 +1,49 @@
+{
+  for (  org.jooq.util.xml.jaxb.Schema xs : meta.getSchemata()) {
+    InformationSchemaCatalog catalog=new InformationSchemaCatalog(xs.getCatalogName());
+    if (!catalogs.contains(catalog))     catalogs.add(catalog);
+    InformationSchemaSchema is=new InformationSchemaSchema(xs.getSchemaName(),catalog);
+    schemas.add(is);
+    schemasByName.put(xs.getSchemaName(),is);
+  }
+  for (  org.jooq.util.xml.jaxb.Table xt : meta.getTables()) {
+    InformationSchemaTable it=new InformationSchemaTable(xt.getTableName(),schemasByName.get(xt.getTableSchema()));
+    tables.add(it);
+    tablesByName.put(xt.getTableName(),it);
+  }
+  for (  Column xc : meta.getColumns()) {
+    String typeName=xc.getDataType();
+    int precision=xc.getNumericPrecision() == null ? 0 : xc.getNumericPrecision();
+    int scale=xc.getNumericScale() == null ? 0 : xc.getNumericScale();
+    boolean nullable=xc.isIsNullable() == null ? true : xc.isIsNullable();
+    DataType<?> type=null;
+    try {
+      type=DefaultDataType.getDataType(configuration.family(),typeName,precision,scale);
+      type=type.precision(precision,scale);
+      type=type.length(precision);
+      type=type.nullable(nullable);
+    }
+ catch (    SQLDialectNotSupportedException e) {
+      type=SQLDataType.OTHER;
+    }
+    AbstractTable.createField(xc.getColumnName(),type,tablesByName.get(xc.getTableName()));
+  }
+  for (  Schema s : schemas) {
+    Catalog c=s.getCatalog();
+    List<Schema> list=schemasPerCatalog.get(c);
+    if (list == null) {
+      list=new ArrayList<Schema>();
+      schemasPerCatalog.put(c,list);
+    }
+    list.add(s);
+  }
+  for (  Table<?> t : tables) {
+    Schema s=t.getSchema();
+    List<Table<?>> list=tablesPerSchema.get(s);
+    if (list == null) {
+      list=new ArrayList<Table<?>>();
+      tablesPerSchema.put(s,list);
+    }
+    list.add(t);
+  }
+}
