@@ -1,7 +1,5 @@
 {
   List<Table<?>> result=new ArrayList<Table<?>>();
-  for (  Schema schema : getSchemas()) {
-    result.addAll(schema.getTables());
-  }
+  for (  Schema schema : getSchemas())   result.addAll(schema.getTables());
   return result;
 }

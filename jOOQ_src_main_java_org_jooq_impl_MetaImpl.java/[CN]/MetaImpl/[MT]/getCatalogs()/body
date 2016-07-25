@@ -7,12 +7,8 @@
       }
     }
 );
-    for (    String name : catalogs.getValues(0,String.class)) {
-      result.add(new MetaCatalog(name));
-    }
+    for (    String name : catalogs.getValues(0,String.class))     result.add(new MetaCatalog(name));
   }
-  if (result.isEmpty()) {
-    result.add(new MetaCatalog(""));
-  }
+  if (result.isEmpty())   result.add(new MetaCatalog(""));
   return result;
 }

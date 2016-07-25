@@ -1,0 +1,5 @@
+{
+  List<Sequence<?>> result=new ArrayList<Sequence<?>>();
+  for (  Schema schema : getSchemas())   result.addAll(schema.getSequences());
+  return result;
+}

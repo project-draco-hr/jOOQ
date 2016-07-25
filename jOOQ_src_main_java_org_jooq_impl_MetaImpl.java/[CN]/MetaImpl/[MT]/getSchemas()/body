@@ -1,7 +1,5 @@
 {
   List<Schema> result=new ArrayList<Schema>();
-  for (  Catalog catalog : getCatalogs()) {
-    result.addAll(catalog.getSchemas());
-  }
+  for (  Catalog catalog : getCatalogs())   result.addAll(catalog.getSchemas());
   return result;
 }
