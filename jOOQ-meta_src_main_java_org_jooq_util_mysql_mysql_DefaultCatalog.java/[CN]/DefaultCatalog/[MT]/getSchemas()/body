@@ -1,5 +1,5 @@
 {
   List result=new ArrayList();
-  result.addAll(getTables0());
+  result.addAll(getSchemas0());
   return result;
 }

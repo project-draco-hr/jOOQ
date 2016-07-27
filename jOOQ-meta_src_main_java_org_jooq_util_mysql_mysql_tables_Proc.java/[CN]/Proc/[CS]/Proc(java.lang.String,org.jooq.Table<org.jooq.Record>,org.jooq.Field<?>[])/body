@@ -1,3 +1,0 @@
-{
-  super(alias,org.jooq.util.mysql.mysql.Mysql.MYSQL,aliased,parameters,"Stored Procedures");
-}
