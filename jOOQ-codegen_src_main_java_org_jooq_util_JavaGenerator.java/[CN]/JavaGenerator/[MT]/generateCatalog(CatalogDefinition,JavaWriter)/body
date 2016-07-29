@@ -22,9 +22,11 @@
     out.tab(1).javadoc("The reference instance of <code>%s</code>",catalogName);
     out.tab(1).println("public static final %s %s = new %s();",className,catalogId,className);
   }
+  List<SchemaDefinition> schemas=new ArrayList<SchemaDefinition>();
   if (generateGlobalObjectReferences() && generateGlobalSchemaReferences()) {
     for (    SchemaDefinition schema : catalog.getSchemata()) {
       if (generateSchemaIfEmpty(schema)) {
+        schemas.add(schema);
         final String schemaClassName=out.ref(getStrategy().getFullJavaClassName(schema));
         final String schemaId=getStrategy().getJavaIdentifier(schema);
         final String schemaFullId=getStrategy().getFullJavaIdentifier(schema);
@@ -42,7 +44,7 @@
     out.tab(2).println("super(\"%s\");",catalog.getOutputName());
     out.tab(1).println("}");
   }
-  printReferences(out,database.getSchemata(catalog),Schema.class,false);
+  printReferences(out,schemas,Schema.class,false);
   generateCatalogClassFooter(catalog,out);
   out.println("}");
 }
