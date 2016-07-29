@@ -1,0 +1,7 @@
+{
+  if (generateEmptyCatalogs())   return true;
+  List<SchemaDefinition> schemas=catalog.getSchemata();
+  if (schemas.isEmpty())   return false;
+  for (  SchemaDefinition schema : schemas)   if (generateSchemaIfEmpty(schema))   return true;
+  return false;
+}

@@ -21,7 +21,8 @@
   log.info("Generating schemata","Total: " + catalog.getSchemata().size());
   for (  SchemaDefinition schema : catalog.getSchemata()) {
     try {
-      generate(schema);
+      if (generateSchemaIfEmpty(schema))       generate(schema);
+ else       log.info("Excluding empty schema",schema);
     }
  catch (    Exception e) {
       throw new GeneratorException("Error generating code for schema " + schema,e);

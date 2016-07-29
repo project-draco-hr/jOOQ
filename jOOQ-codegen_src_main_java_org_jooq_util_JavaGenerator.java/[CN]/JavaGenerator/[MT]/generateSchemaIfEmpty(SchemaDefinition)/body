@@ -1,0 +1,5 @@
+{
+  if (generateEmptySchemas())   return true;
+  if (database.getArrays(schema).isEmpty() && database.getEnums(schema).isEmpty() && database.getPackages(schema).isEmpty()&& database.getRoutines(schema).isEmpty()&& database.getTables(schema).isEmpty()&& database.getUDTs(schema).isEmpty())   return false;
+  return true;
+}
