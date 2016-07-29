@@ -9,13 +9,16 @@
     }
     Iterator<SchemaDefinition> it=schemata.iterator();
     while (it.hasNext()) {
-      if (!getInputSchemata().contains(it.next().getName())) {
+      SchemaDefinition schema=it.next();
+      if (!getInputSchemata().contains(schema.getName())) {
+        it.remove();
+      }
+ else       if (!includeEmptySchemas() && getArrays(schema).isEmpty() && getEnums(schema).isEmpty()&& getPackages(schema).isEmpty()&& getRoutines(schema).isEmpty()&& getTables(schema).isEmpty()&& getUDTs(schema).isEmpty()) {
+        log.info("Excluding empty schema",schema);
         it.remove();
       }
     }
-    if (schemata.isEmpty()) {
-      log.warn("No schemata were loaded","Please check your connection settings, and whether your database (and your database version!) is really supported by jOOQ. Also, check the case-sensitivity in your configured <inputSchema/> elements : " + inputSchemata);
-    }
+    if (schemata.isEmpty())     log.warn("No schemata were loaded","Please check your connection settings, and whether your database (and your database version!) is really supported by jOOQ. Also, check the case-sensitivity in your configured <inputSchema/> elements : " + inputSchemata);
   }
   return schemata;
 }

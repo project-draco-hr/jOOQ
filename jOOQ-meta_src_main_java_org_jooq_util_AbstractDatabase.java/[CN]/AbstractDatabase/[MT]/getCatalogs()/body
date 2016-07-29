@@ -7,6 +7,14 @@
  catch (    Exception e) {
       log.error("Could not load catalogs",e);
     }
+    Iterator<CatalogDefinition> it=catalogs.iterator();
+    while (it.hasNext()) {
+      CatalogDefinition catalog=it.next();
+      if (!includeEmptyCatalogs() && getSchemata(catalog).isEmpty()) {
+        log.info("Excluding empty catalog",catalog);
+        it.remove();
+      }
+    }
   }
   return catalogs;
 }

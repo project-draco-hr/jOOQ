@@ -199,6 +199,8 @@ if (g.getGenerate().isFluentSetters() != null) generator.setFluentSetters(g.getG
 if (g.getGenerate().isPojosEqualsAndHashCode() != null) generator.setGeneratePojosEqualsAndHashCode(g.getGenerate().isPojosEqualsAndHashCode());
 if (g.getGenerate().isPojosToString() != null) generator.setGeneratePojosToString(g.getGenerate().isPojosToString());
 if (g.getGenerate().getFullyQualifiedTypes() != null) generator.setGenerateFullyQualifiedTypes(g.getGenerate().getFullyQualifiedTypes());
+if (g.getGenerate().isEmptyCatalogs() != null) generator.setGenerateEmptyCatalogs(g.getGenerate().isEmptyCatalogs());
+if (g.getGenerate().isEmptySchemas() != null) generator.setGenerateEmptySchemas(g.getGenerate().isEmptySchemas());
 if (g.getDatabase() == null) g.setDatabase(new org.jooq.util.jaxb.Database());
 if (!StringUtils.isBlank(g.getDatabase().getSchemaVersionProvider())) generator.setUseSchemaVersionProvider(true);
 if (!StringUtils.isBlank(g.getDatabase().getCatalogVersionProvider())) generator.setUseCatalogVersionProvider(true);
