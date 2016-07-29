@@ -4,21 +4,12 @@
     if (!catalogs.contains(catalog))     catalogs.add(catalog);
     InformationSchemaSchema is=new InformationSchemaSchema(xs.getSchemaName(),catalog);
     schemas.add(is);
-    schemasByName.put(xs.getSchemaName(),is);
+    schemasByName.put(name(xs.getCatalogName(),xs.getSchemaName()),is);
   }
   for (  org.jooq.util.xml.jaxb.Table xt : meta.getTables()) {
-    InformationSchemaTable it=new InformationSchemaTable(xt.getTableName(),schemasByName.get(xt.getTableSchema()));
+    InformationSchemaTable it=new InformationSchemaTable(xt.getTableName(),schemasByName.get(name(xt.getTableCatalog(),xt.getTableSchema())));
     tables.add(it);
-    tablesByName.put(xt.getTableName(),it);
-  }
-  for (  org.jooq.util.xml.jaxb.Sequence xs : meta.getSequences()) {
-    String typeName=xs.getDataType();
-    int length=xs.getCharacterMaximumLength() == null ? 0 : xs.getCharacterMaximumLength();
-    int precision=xs.getNumericPrecision() == null ? 0 : xs.getNumericPrecision();
-    int scale=xs.getNumericScale() == null ? 0 : xs.getNumericScale();
-    boolean nullable=true;
-    @SuppressWarnings({"rawtypes","unchecked"}) InformationSchemaSequence is=new InformationSchemaSequence(xs.getSequenceName(),schemasByName.get(xs.getSequenceSchema()),type(typeName,length,precision,scale,nullable));
-    sequences.add(is);
+    tablesByName.put(name(xt.getTableCatalog(),xt.getTableSchema(),xt.getTableName()),it);
   }
   List<Column> columns=new ArrayList<Column>(meta.getColumns());
   Collections.sort(columns,new Comparator<Column>(){
@@ -38,33 +29,82 @@
     int precision=xc.getNumericPrecision() == null ? 0 : xc.getNumericPrecision();
     int scale=xc.getNumericScale() == null ? 0 : xc.getNumericScale();
     boolean nullable=xc.isIsNullable() == null ? true : xc.isIsNullable();
-    AbstractTable.createField(xc.getColumnName(),type(typeName,length,precision,scale,nullable),tablesByName.get(xc.getTableName()));
+    AbstractTable.createField(xc.getColumnName(),type(typeName,length,precision,scale,nullable),tablesByName.get(name(xc.getTableCatalog(),xc.getTableSchema(),xc.getTableName())));
   }
-  for (  Schema s : schemas) {
-    Catalog c=s.getCatalog();
-    List<Schema> list=schemasPerCatalog.get(c);
-    if (list == null) {
-      list=new ArrayList<Schema>();
-      schemasPerCatalog.put(c,list);
+  Map<Name,List<TableField<Record,?>>> columnsByConstraint=new HashMap<Name,List<TableField<Record,?>>>();
+  List<KeyColumnUsage> keyColumnUsages=new ArrayList<KeyColumnUsage>(meta.getKeyColumnUsages());
+  Collections.sort(keyColumnUsages,new Comparator<KeyColumnUsage>(){
+    @Override public int compare(    KeyColumnUsage o1,    KeyColumnUsage o2){
+      Integer p1=o1.getOrdinalPosition();
+      Integer p2=o2.getOrdinalPosition();
+      if (p1 == p2)       return 0;
+      if (p1 == null)       return -1;
+      if (p2 == null)       return 1;
+      return p1.compareTo(p2);
     }
-    list.add(s);
   }
-  for (  Table<?> t : tables) {
-    Schema s=t.getSchema();
-    List<Table<?>> list=tablesPerSchema.get(s);
-    if (list == null) {
-      list=new ArrayList<Table<?>>();
-      tablesPerSchema.put(s,list);
+);
+  for (  KeyColumnUsage xc : keyColumnUsages) {
+    Name name=name(xc.getConstraintCatalog(),xc.getConstraintSchema(),xc.getConstraintName());
+    List<TableField<Record,?>> fields=columnsByConstraint.get(name);
+    if (fields == null) {
+      fields=new ArrayList<TableField<Record,?>>();
+      columnsByConstraint.put(name,fields);
     }
-    list.add(t);
+    InformationSchemaTable table=tablesByName.get(name(xc.getTableCatalog(),xc.getTableSchema(),xc.getTableName()));
+    fields.add((TableField<Record,?>)table.field(xc.getColumnName()));
   }
-  for (  Sequence<?> q : sequences) {
-    Schema s=q.getSchema();
-    List<Sequence<?>> list=sequencesPerSchema.get(s);
-    if (list == null) {
-      list=new ArrayList<Sequence<?>>();
-      sequencesPerSchema.put(s,list);
-    }
-    list.add(q);
+  for (  TableConstraint xc : meta.getTableConstraints()) {
+switch (xc.getConstraintType()) {
+case PRIMARY_KEY:
+case UNIQUE:
+{
+        InformationSchemaTable table=tablesByName.get(name(xc.getTableCatalog(),xc.getTableSchema(),xc.getTableName()));
+        List<TableField<Record,?>> c=columnsByConstraint.get(name(xc.getConstraintCatalog(),xc.getConstraintSchema(),xc.getConstraintName()));
+        UniqueKey<Record> key=AbstractKeys.createUniqueKey(table,xc.getConstraintName(),c.toArray(new TableField[0]));
+        if (xc.getConstraintType() == PRIMARY_KEY) {
+          table.primaryKey=key;
+          primaryKeys.add(key);
+        }
+        table.uniqueKeys.add(key);
+        break;
+      }
   }
+}
+for (org.jooq.util.xml.jaxb.Sequence xs : meta.getSequences()) {
+  String typeName=xs.getDataType();
+  int length=xs.getCharacterMaximumLength() == null ? 0 : xs.getCharacterMaximumLength();
+  int precision=xs.getNumericPrecision() == null ? 0 : xs.getNumericPrecision();
+  int scale=xs.getNumericScale() == null ? 0 : xs.getNumericScale();
+  boolean nullable=true;
+  @SuppressWarnings({"rawtypes","unchecked"}) InformationSchemaSequence is=new InformationSchemaSequence(xs.getSequenceName(),schemasByName.get(name(xs.getSequenceCatalog(),xs.getSequenceSchema())),type(typeName,length,precision,scale,nullable));
+  sequences.add(is);
+}
+for (Schema s : schemas) {
+  Catalog c=s.getCatalog();
+  List<Schema> list=schemasPerCatalog.get(c);
+  if (list == null) {
+    list=new ArrayList<Schema>();
+    schemasPerCatalog.put(c,list);
+  }
+  list.add(s);
+}
+for (InformationSchemaTable t : tables) {
+  Schema s=t.getSchema();
+  List<InformationSchemaTable> list=tablesPerSchema.get(s);
+  if (list == null) {
+    list=new ArrayList<InformationSchemaTable>();
+    tablesPerSchema.put(s,list);
+  }
+  list.add(t);
+}
+for (Sequence<?> q : sequences) {
+  Schema s=q.getSchema();
+  List<Sequence<?>> list=sequencesPerSchema.get(s);
+  if (list == null) {
+    list=new ArrayList<Sequence<?>>();
+    sequencesPerSchema.put(s,list);
+  }
+  list.add(q);
+}
 }

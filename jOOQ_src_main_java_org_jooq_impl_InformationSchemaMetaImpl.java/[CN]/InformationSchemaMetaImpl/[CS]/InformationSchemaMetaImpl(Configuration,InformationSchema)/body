@@ -2,11 +2,11 @@
   this.configuration=configuration;
   this.catalogs=new ArrayList<Catalog>();
   this.schemas=new ArrayList<Schema>();
-  this.schemasByName=new HashMap<String,Schema>();
+  this.schemasByName=new HashMap<Name,Schema>();
   this.schemasPerCatalog=new HashMap<Catalog,List<Schema>>();
-  this.tables=new ArrayList<Table<?>>();
-  this.tablesByName=new HashMap<String,Table<?>>();
-  this.tablesPerSchema=new HashMap<Schema,List<Table<?>>>();
+  this.tables=new ArrayList<InformationSchemaTable>();
+  this.tablesByName=new HashMap<Name,InformationSchemaTable>();
+  this.tablesPerSchema=new HashMap<Schema,List<InformationSchemaTable>>();
   this.sequences=new ArrayList<Sequence<?>>();
   this.sequencesPerSchema=new HashMap<Schema,List<Sequence<?>>>();
   this.primaryKeys=new ArrayList<UniqueKey<?>>();
