@@ -1,4 +1,5 @@
 {
+  List<String> errors=new ArrayList<String>();
   for (  org.jooq.util.xml.jaxb.Schema xs : meta.getSchemata()) {
     InformationSchemaCatalog catalog=new InformationSchemaCatalog(xs.getCatalogName());
     if (!catalogs.contains(catalog))     catalogs.add(catalog);
@@ -6,8 +7,14 @@
     schemas.add(is);
     schemasByName.put(name(xs.getCatalogName(),xs.getSchemaName()),is);
   }
-  for (  org.jooq.util.xml.jaxb.Table xt : meta.getTables()) {
-    InformationSchemaTable it=new InformationSchemaTable(xt.getTableName(),schemasByName.get(name(xt.getTableCatalog(),xt.getTableSchema())));
+  tableLoop:   for (  org.jooq.util.xml.jaxb.Table xt : meta.getTables()) {
+    Name schemaName=name(xt.getTableCatalog(),xt.getTableSchema());
+    Schema schema=schemasByName.get(schemaName);
+    if (schema == null) {
+      errors.add(String.format("Schema " + schemaName + " not defined for table "+ xt.getTableName()));
+      continue tableLoop;
+    }
+    InformationSchemaTable it=new InformationSchemaTable(xt.getTableName(),schema);
     tables.add(it);
     tablesByName.put(name(xt.getTableCatalog(),xt.getTableSchema(),xt.getTableName()),it);
   }
@@ -23,88 +30,149 @@
     }
   }
 );
-  for (  Column xc : columns) {
+  columnLoop:   for (  Column xc : columns) {
     String typeName=xc.getDataType();
     int length=xc.getCharacterMaximumLength() == null ? 0 : xc.getCharacterMaximumLength();
     int precision=xc.getNumericPrecision() == null ? 0 : xc.getNumericPrecision();
     int scale=xc.getNumericScale() == null ? 0 : xc.getNumericScale();
     boolean nullable=xc.isIsNullable() == null ? true : xc.isIsNullable();
-    AbstractTable.createField(xc.getColumnName(),type(typeName,length,precision,scale,nullable),tablesByName.get(name(xc.getTableCatalog(),xc.getTableSchema(),xc.getTableName())));
+    Name tableName=name(xc.getTableCatalog(),xc.getTableSchema(),xc.getTableName());
+    InformationSchemaTable table=tablesByName.get(tableName);
+    if (table == null) {
+      errors.add(String.format("Table " + tableName + " not defined for column "+ xc.getColumnName()));
+      continue columnLoop;
+    }
+    AbstractTable.createField(xc.getColumnName(),type(typeName,length,precision,scale,nullable),table);
   }
   Map<Name,List<TableField<Record,?>>> columnsByConstraint=new HashMap<Name,List<TableField<Record,?>>>();
   List<KeyColumnUsage> keyColumnUsages=new ArrayList<KeyColumnUsage>(meta.getKeyColumnUsages());
   Collections.sort(keyColumnUsages,new Comparator<KeyColumnUsage>(){
     @Override public int compare(    KeyColumnUsage o1,    KeyColumnUsage o2){
-      Integer p1=o1.getOrdinalPosition();
-      Integer p2=o2.getOrdinalPosition();
-      if (p1 == p2)       return 0;
-      if (p1 == null)       return -1;
-      if (p2 == null)       return 1;
-      return p1.compareTo(p2);
+      int p1=o1.getOrdinalPosition();
+      int p2=o2.getOrdinalPosition();
+      return (p1 < p2) ? -1 : ((p1 == p2) ? 0 : 1);
     }
   }
 );
-  for (  KeyColumnUsage xc : keyColumnUsages) {
-    Name name=name(xc.getConstraintCatalog(),xc.getConstraintSchema(),xc.getConstraintName());
-    List<TableField<Record,?>> fields=columnsByConstraint.get(name);
+  keyColumnLoop:   for (  KeyColumnUsage xc : keyColumnUsages) {
+    Name constraintName=name(xc.getConstraintCatalog(),xc.getConstraintSchema(),xc.getConstraintName());
+    List<TableField<Record,?>> fields=columnsByConstraint.get(constraintName);
     if (fields == null) {
       fields=new ArrayList<TableField<Record,?>>();
-      columnsByConstraint.put(name,fields);
+      columnsByConstraint.put(constraintName,fields);
     }
-    InformationSchemaTable table=tablesByName.get(name(xc.getTableCatalog(),xc.getTableSchema(),xc.getTableName()));
-    fields.add((TableField<Record,?>)table.field(xc.getColumnName()));
+    Name tableName=name(xc.getTableCatalog(),xc.getTableSchema(),xc.getTableName());
+    InformationSchemaTable table=tablesByName.get(tableName);
+    if (table == null) {
+      errors.add(String.format("Table " + tableName + " not defined for constraint "+ constraintName));
+      continue keyColumnLoop;
+    }
+    TableField<Record,?> field=(TableField<Record,?>)table.field(xc.getColumnName());
+    if (field == null) {
+      errors.add(String.format("Column " + xc.getColumnName() + " not defined for table "+ tableName));
+      continue keyColumnLoop;
+    }
+    fields.add(field);
   }
-  for (  TableConstraint xc : meta.getTableConstraints()) {
+  tableConstraintLoop:   for (  TableConstraint xc : meta.getTableConstraints()) {
 switch (xc.getConstraintType()) {
 case PRIMARY_KEY:
 case UNIQUE:
 {
-        InformationSchemaTable table=tablesByName.get(name(xc.getTableCatalog(),xc.getTableSchema(),xc.getTableName()));
-        List<TableField<Record,?>> c=columnsByConstraint.get(name(xc.getConstraintCatalog(),xc.getConstraintSchema(),xc.getConstraintName()));
-        UniqueKey<Record> key=AbstractKeys.createUniqueKey(table,xc.getConstraintName(),c.toArray(new TableField[0]));
+        Name tableName=name(xc.getTableCatalog(),xc.getTableSchema(),xc.getTableName());
+        Name constraintName=name(xc.getConstraintCatalog(),xc.getConstraintSchema(),xc.getConstraintName());
+        InformationSchemaTable table=tablesByName.get(tableName);
+        if (table == null) {
+          errors.add(String.format("Table " + tableName + " not defined for constraint "+ constraintName));
+          continue tableConstraintLoop;
+        }
+        List<TableField<Record,?>> c=columnsByConstraint.get(constraintName);
+        if (c == null || c.isEmpty()) {
+          errors.add(String.format("No columns defined for constraint " + constraintName));
+          continue tableConstraintLoop;
+        }
+        UniqueKeyImpl<Record> key=(UniqueKeyImpl<Record>)AbstractKeys.createUniqueKey(table,xc.getConstraintName(),c.toArray(new TableField[0]));
         if (xc.getConstraintType() == PRIMARY_KEY) {
           table.primaryKey=key;
           primaryKeys.add(key);
         }
         table.uniqueKeys.add(key);
+        uniqueKeysByName.put(constraintName,key);
         break;
       }
   }
 }
-for (org.jooq.util.xml.jaxb.Sequence xs : meta.getSequences()) {
-  String typeName=xs.getDataType();
-  int length=xs.getCharacterMaximumLength() == null ? 0 : xs.getCharacterMaximumLength();
-  int precision=xs.getNumericPrecision() == null ? 0 : xs.getNumericPrecision();
-  int scale=xs.getNumericScale() == null ? 0 : xs.getNumericScale();
-  boolean nullable=true;
-  @SuppressWarnings({"rawtypes","unchecked"}) InformationSchemaSequence is=new InformationSchemaSequence(xs.getSequenceName(),schemasByName.get(name(xs.getSequenceCatalog(),xs.getSequenceSchema())),type(typeName,length,precision,scale,nullable));
-  sequences.add(is);
+for (ReferentialConstraint xr : meta.getReferentialConstraints()) {
+  referentialKeys.put(name(xr.getConstraintCatalog(),xr.getConstraintSchema(),xr.getConstraintName()),name(xr.getUniqueConstraintCatalog(),xr.getUniqueConstraintSchema(),xr.getUniqueConstraintName()));
+}
+tableConstraintLoop: for (TableConstraint xc : meta.getTableConstraints()) {
+switch (xc.getConstraintType()) {
+case FOREIGN_KEY:
+{
+      Name tableName=name(xc.getTableCatalog(),xc.getTableSchema(),xc.getTableName());
+      Name constraintName=name(xc.getConstraintCatalog(),xc.getConstraintSchema(),xc.getConstraintName());
+      InformationSchemaTable table=tablesByName.get(tableName);
+      if (table == null) {
+        errors.add(String.format("Table " + tableName + " not defined for constraint "+ constraintName));
+        continue tableConstraintLoop;
+      }
+      List<TableField<Record,?>> c=columnsByConstraint.get(constraintName);
+      if (c == null || c.isEmpty()) {
+        errors.add(String.format("No columns defined for constraint " + constraintName));
+        continue tableConstraintLoop;
+      }
+      UniqueKeyImpl<Record> uniqueKey=uniqueKeysByName.get(referentialKeys.get(constraintName));
+      if (uniqueKey == null) {
+        errors.add(String.format("No unique key defined for foreign key " + constraintName));
+        continue tableConstraintLoop;
+      }
+      ForeignKey<Record,Record> key=AbstractKeys.createForeignKey(uniqueKey,table,xc.getConstraintName(),c.toArray(new TableField[0]));
+      table.foreignKeys.add(key);
+      break;
+    }
+}
+}
+sequenceLoop: for (org.jooq.util.xml.jaxb.Sequence xs : meta.getSequences()) {
+Name schemaName=name(xs.getSequenceCatalog(),xs.getSequenceSchema());
+Schema schema=schemasByName.get(schemaName);
+if (schema == null) {
+  errors.add(String.format("Schema " + schemaName + " not defined for sequence "+ xs.getSequenceName()));
+  continue sequenceLoop;
+}
+String typeName=xs.getDataType();
+int length=xs.getCharacterMaximumLength() == null ? 0 : xs.getCharacterMaximumLength();
+int precision=xs.getNumericPrecision() == null ? 0 : xs.getNumericPrecision();
+int scale=xs.getNumericScale() == null ? 0 : xs.getNumericScale();
+boolean nullable=true;
+@SuppressWarnings({"rawtypes","unchecked"}) InformationSchemaSequence is=new InformationSchemaSequence(xs.getSequenceName(),schema,type(typeName,length,precision,scale,nullable));
+sequences.add(is);
 }
 for (Schema s : schemas) {
-  Catalog c=s.getCatalog();
-  List<Schema> list=schemasPerCatalog.get(c);
-  if (list == null) {
-    list=new ArrayList<Schema>();
-    schemasPerCatalog.put(c,list);
-  }
-  list.add(s);
+Catalog c=s.getCatalog();
+List<Schema> list=schemasPerCatalog.get(c);
+if (list == null) {
+  list=new ArrayList<Schema>();
+  schemasPerCatalog.put(c,list);
+}
+list.add(s);
 }
 for (InformationSchemaTable t : tables) {
-  Schema s=t.getSchema();
-  List<InformationSchemaTable> list=tablesPerSchema.get(s);
-  if (list == null) {
-    list=new ArrayList<InformationSchemaTable>();
-    tablesPerSchema.put(s,list);
-  }
-  list.add(t);
+Schema s=t.getSchema();
+List<InformationSchemaTable> list=tablesPerSchema.get(s);
+if (list == null) {
+  list=new ArrayList<InformationSchemaTable>();
+  tablesPerSchema.put(s,list);
+}
+list.add(t);
 }
 for (Sequence<?> q : sequences) {
-  Schema s=q.getSchema();
-  List<Sequence<?>> list=sequencesPerSchema.get(s);
-  if (list == null) {
-    list=new ArrayList<Sequence<?>>();
-    sequencesPerSchema.put(s,list);
-  }
-  list.add(q);
+Schema s=q.getSchema();
+List<Sequence<?>> list=sequencesPerSchema.get(s);
+if (list == null) {
+  list=new ArrayList<Sequence<?>>();
+  sequencesPerSchema.put(s,list);
 }
+list.add(q);
+}
+if (!errors.isEmpty()) throw new IllegalArgumentException(errors.toString());
 }

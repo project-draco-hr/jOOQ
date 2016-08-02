@@ -1,5 +1,6 @@
 {
   this.configuration=configuration;
+  this.source=source;
   this.catalogs=new ArrayList<Catalog>();
   this.schemas=new ArrayList<Schema>();
   this.schemasByName=new HashMap<Name,Schema>();
@@ -9,6 +10,8 @@
   this.tablesPerSchema=new HashMap<Schema,List<InformationSchemaTable>>();
   this.sequences=new ArrayList<Sequence<?>>();
   this.sequencesPerSchema=new HashMap<Schema,List<Sequence<?>>>();
-  this.primaryKeys=new ArrayList<UniqueKey<?>>();
-  init(schema);
+  this.primaryKeys=new ArrayList<UniqueKeyImpl<Record>>();
+  this.uniqueKeysByName=new HashMap<Name,UniqueKeyImpl<Record>>();
+  this.referentialKeys=new HashMap<Name,Name>();
+  init(source);
 }
