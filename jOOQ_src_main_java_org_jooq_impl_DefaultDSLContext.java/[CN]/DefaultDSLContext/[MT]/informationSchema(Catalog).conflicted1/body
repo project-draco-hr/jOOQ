@@ -1,0 +1,5 @@
+{
+  List<Schema> schemas=new ArrayList<Schema>();
+  for (  Catalog catalog : catalogs)   schemas.addAll(catalog.getSchemas());
+  return informationSchema0(schemas);
+}
