@@ -1,0 +1,47 @@
+{
+  TableConstraint tc=new TableConstraint();
+  String catalogName=t.getCatalog().getName();
+  String schemaName=t.getSchema().getName();
+  tc.setConstraintName(key.getName());
+  tc.setConstraintType(constraintType);
+  if (!StringUtils.isBlank(catalogName)) {
+    tc.setConstraintCatalog(catalogName);
+    tc.setTableCatalog(catalogName);
+  }
+  if (!StringUtils.isBlank(schemaName)) {
+    tc.setConstraintSchema(schemaName);
+    tc.setTableSchema(schemaName);
+  }
+  tc.setTableName(t.getName());
+  result.getTableConstraints().add(tc);
+  int i=0;
+  for (  Field<?> f : key.getFields()) {
+    KeyColumnUsage kc=new KeyColumnUsage();
+    if (!StringUtils.isBlank(catalogName)) {
+      kc.setConstraintCatalog(catalogName);
+      kc.setTableCatalog(catalogName);
+    }
+    if (!StringUtils.isBlank(schemaName)) {
+      kc.setConstraintSchema(schemaName);
+      kc.setTableSchema(schemaName);
+    }
+    kc.setColumnName(f.getName());
+    kc.setTableName(t.getName());
+    kc.setOrdinalPosition(++i);
+    kc.setConstraintName(key.getName());
+    result.getKeyColumnUsages().add(kc);
+  }
+  if (constraintType == FOREIGN_KEY) {
+    ReferentialConstraint rc=new ReferentialConstraint();
+    UniqueKey<?> uk=((ForeignKey<?,?>)key).getKey();
+    String ukCatalogName=uk.getTable().getCatalog().getName();
+    String ukSchemaName=uk.getTable().getSchema().getName();
+    if (!StringUtils.isBlank(catalogName))     rc.setConstraintCatalog(catalogName);
+    if (!StringUtils.isBlank(ukCatalogName))     rc.setUniqueConstraintCatalog(ukCatalogName);
+    if (!StringUtils.isBlank(schemaName))     rc.setConstraintSchema(schemaName);
+    if (!StringUtils.isBlank(ukSchemaName))     rc.setUniqueConstraintSchema(ukSchemaName);
+    rc.setConstraintName(key.getName());
+    rc.setUniqueConstraintName(uk.getName());
+    result.getReferentialConstraints().add(rc);
+  }
+}

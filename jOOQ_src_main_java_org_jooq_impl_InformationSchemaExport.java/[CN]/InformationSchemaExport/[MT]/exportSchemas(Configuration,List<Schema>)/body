@@ -1,8 +1,10 @@
 {
   InformationSchema result=new InformationSchema();
+  Set<Table<?>> includedTables=new LinkedHashSet<Table<?>>();
+  for (  Schema s : schemas)   for (  Table<?> t : s.getTables())   includedTables.add(t);
   for (  Schema s : schemas) {
     exportSchema0(result,s);
-    for (    Table<?> t : s.getTables())     exportTable0(configuration,result,t);
+    for (    Table<?> t : s.getTables())     exportTable0(configuration,result,t,includedTables);
     for (    Sequence<?> q : s.getSequences())     exportSequences0(configuration,result,q);
   }
   return result;

@@ -21,4 +21,6 @@
     ic.setOrdinalPosition(i + 1);
     result.getColumns().add(ic);
   }
+  for (  UniqueKey<?> key : t.getKeys())   exportKey0(result,t,key,key.isPrimary() ? PRIMARY_KEY : UNIQUE);
+  for (  ForeignKey<?,?> fk : t.getReferences())   if (includedTables.contains(fk.getKey().getTable()))   exportKey0(result,t,fk,FOREIGN_KEY);
 }

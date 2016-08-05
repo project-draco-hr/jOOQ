@@ -1,0 +1,4 @@
+InformationSchema result
+Table<?> t
+Key<?> key
+TableConstraintType constraintType
