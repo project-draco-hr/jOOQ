@@ -1,0 +1,9 @@
+{
+  InformationSchema result=new InformationSchema();
+  for (  Schema s : schemas) {
+    exportSchema0(result,s);
+    for (    Table<?> t : s.getTables())     exportTable0(configuration,result,t);
+    for (    Sequence<?> q : s.getSequences())     exportSequences0(configuration,result,q);
+  }
+  return result;
+}

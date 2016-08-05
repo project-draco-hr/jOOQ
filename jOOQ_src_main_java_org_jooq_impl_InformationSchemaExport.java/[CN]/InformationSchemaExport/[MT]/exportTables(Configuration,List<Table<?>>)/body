@@ -1,0 +1,8 @@
+{
+  InformationSchema result=new InformationSchema();
+  Set<Schema> schemas=new LinkedHashSet<Schema>();
+  for (  Table<?> t : tables)   schemas.add(t.getSchema());
+  for (  Schema s : schemas)   exportSchema0(result,s);
+  for (  Table<?> t : tables)   exportTable0(configuration,result,t);
+  return result;
+}

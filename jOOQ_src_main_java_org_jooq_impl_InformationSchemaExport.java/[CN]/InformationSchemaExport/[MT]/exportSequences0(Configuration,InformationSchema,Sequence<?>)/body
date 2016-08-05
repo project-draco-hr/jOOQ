@@ -1,0 +1,11 @@
+{
+  org.jooq.util.xml.jaxb.Sequence iq=new org.jooq.util.xml.jaxb.Sequence();
+  if (!StringUtils.isBlank(q.getCatalog().getName()))   iq.setSequenceCatalog(q.getCatalog().getName());
+  if (!StringUtils.isBlank(q.getSchema().getName()))   iq.setSequenceSchema(q.getSchema().getName());
+  iq.setSequenceName(q.getName());
+  iq.setDataType(q.getDataType().getTypeName(configuration));
+  if (q.getDataType().hasLength())   iq.setCharacterMaximumLength(q.getDataType().length());
+  if (q.getDataType().hasPrecision())   iq.setNumericPrecision(q.getDataType().precision());
+  if (q.getDataType().hasScale())   iq.setNumericScale(q.getDataType().scale());
+  result.getSequences().add(iq);
+}

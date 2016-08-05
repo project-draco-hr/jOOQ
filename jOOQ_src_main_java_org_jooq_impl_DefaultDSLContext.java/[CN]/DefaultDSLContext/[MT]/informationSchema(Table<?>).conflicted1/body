@@ -1,0 +1,3 @@
+{
+  return InformationSchemaExport.exportTables(configuration(),Arrays.asList(tables));
+}

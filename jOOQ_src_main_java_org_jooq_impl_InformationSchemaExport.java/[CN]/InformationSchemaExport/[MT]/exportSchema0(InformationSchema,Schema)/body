@@ -1,0 +1,8 @@
+{
+  org.jooq.util.xml.jaxb.Schema is=new org.jooq.util.xml.jaxb.Schema();
+  if (!StringUtils.isBlank(s.getCatalog().getName()))   is.setCatalogName(s.getCatalog().getName());
+  if (!StringUtils.isBlank(s.getName())) {
+    is.setSchemaName(s.getName());
+    result.getSchemata().add(is);
+  }
+}
