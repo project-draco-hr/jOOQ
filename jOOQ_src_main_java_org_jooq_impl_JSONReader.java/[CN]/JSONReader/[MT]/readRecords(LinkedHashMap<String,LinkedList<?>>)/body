@@ -1,0 +1,11 @@
+{
+  records=new ArrayList<String[]>();
+  for (  Object record : jsonRoot.get("records")) {
+    String[] v=new String[fieldNames.length];
+    int i=0;
+    if (record instanceof LinkedList)     for (    Object value : (LinkedList<Object>)record)     v[i++]=value == null ? null : String.valueOf(value);
+ else     if (record instanceof LinkedHashMap)     for (    Entry<String,Object> entry : ((LinkedHashMap<String,Object>)record).entrySet())     v[fieldIndexes.get(entry.getKey())]=entry.getValue() == null ? null : String.valueOf(entry.getValue());
+ else     throw new IllegalArgumentException("Ill formed JSON : " + jsonRoot);
+    records.add(v);
+  }
+}

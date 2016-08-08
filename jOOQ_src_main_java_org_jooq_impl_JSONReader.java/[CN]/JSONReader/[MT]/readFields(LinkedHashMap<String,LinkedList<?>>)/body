@@ -1,0 +1,12 @@
+{
+  LinkedList<LinkedHashMap<String,String>> fieldEntries=(LinkedList<LinkedHashMap<String,String>>)jsonRoot.get("fields");
+  fieldNames=new String[fieldEntries.size()];
+  fieldIndexes=new HashMap<String,Integer>();
+  int i=0;
+  for (  LinkedHashMap<String,String> key : fieldEntries) {
+    String name=key.get("name");
+    fieldNames[i]=name;
+    fieldIndexes.put(name,i);
+    i++;
+  }
+}

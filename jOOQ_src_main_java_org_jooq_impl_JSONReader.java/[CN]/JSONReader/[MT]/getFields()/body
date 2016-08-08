@@ -1,6 +1,4 @@
 {
-  if (fieldMetaData == null) {
-    readAll();
-  }
-  return fieldMetaData;
+  if (fieldNames == null)   readAll();
+  return fieldNames;
 }
