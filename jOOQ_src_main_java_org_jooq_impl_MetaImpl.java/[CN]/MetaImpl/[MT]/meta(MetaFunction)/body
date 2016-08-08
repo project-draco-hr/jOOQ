@@ -1,14 +1,8 @@
 {
-  ConnectionProvider provider=configuration.connectionProvider();
-  Connection connection=null;
-  try {
-    connection=provider.acquire();
-    return consumer.run(connection.getMetaData());
+  return ctx.connectionResult(new ConnectionCallable<Result<Record>>(){
+    @Override public Result<Record> run(    Connection connection) throws SQLException {
+      return consumer.run(connection.getMetaData());
+    }
   }
- catch (  SQLException e) {
-    throw new DataAccessException("Error while accessing DatabaseMetaData",e);
-  }
- finally {
-    if (connection != null)     provider.release(connection);
-  }
+);
 }

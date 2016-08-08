@@ -10,7 +10,7 @@
  else {
         rs=meta.getPrimaryKeys(schema,null,getName());
       }
-      return create.fetch(rs,String.class,String.class,String.class,String.class,int.class,String.class);
+      return ctx.fetch(rs,String.class,String.class,String.class,String.class,int.class,String.class);
     }
   }
 );

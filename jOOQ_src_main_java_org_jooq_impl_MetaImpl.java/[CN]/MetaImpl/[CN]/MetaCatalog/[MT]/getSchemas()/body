@@ -3,7 +3,7 @@
   if (!inverseSchemaCatalog) {
     Result<Record> schemas=meta(new MetaFunction(){
       @Override public Result<Record> run(      DatabaseMetaData meta) throws SQLException {
-        return create.fetch(meta.getSchemas(),SQLDataType.VARCHAR);
+        return ctx.fetch(meta.getSchemas(),SQLDataType.VARCHAR);
       }
     }
 );
@@ -14,7 +14,7 @@
  else {
     Result<Record> schemas=meta(new MetaFunction(){
       @Override public Result<Record> run(      DatabaseMetaData meta) throws SQLException {
-        return create.fetch(meta.getCatalogs(),SQLDataType.VARCHAR);
+        return ctx.fetch(meta.getCatalogs(),SQLDataType.VARCHAR);
       }
     }
 );
