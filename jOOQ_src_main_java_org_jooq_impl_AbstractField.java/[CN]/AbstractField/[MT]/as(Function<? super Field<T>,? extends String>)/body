@@ -1,0 +1,3 @@
+{
+  return as(aliasFunction.apply(this));
+}
