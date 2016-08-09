@@ -1,0 +1,8 @@
+{
+switch (ctx.family()) {
+default :
+    ctx.visit(field.cast(SQLDataType.DECIMAL)).sql(" / ").visit(DSL.sum(field));
+  toSQLOverClause(ctx);
+break;
+}
+}

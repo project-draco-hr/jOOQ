@@ -1,0 +1,4 @@
+{
+  super("ratio_to_report",SQLDataType.DECIMAL,field);
+  this.field=field;
+}
