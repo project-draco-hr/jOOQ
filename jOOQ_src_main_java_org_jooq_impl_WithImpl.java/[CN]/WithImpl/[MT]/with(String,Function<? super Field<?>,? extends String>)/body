@@ -1,5 +1,2 @@
 {
-  this.alias=a;
-  this.fieldNameFunction=f;
-  return this;
 }

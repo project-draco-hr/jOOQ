@@ -1,2 +1,9 @@
 {
+  this.select=s;
+  if (fieldNameFunction != null) {
+    List<Field<?>> source=s.getSelect();
+    fields=new Field[source.size()];
+    for (int i=0; i < fields.length; i++)     fields[i]=fieldNameFunction.apply(source.get(i),i);
+  }
+  return this;
 }

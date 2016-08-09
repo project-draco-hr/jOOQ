@@ -1,3 +1,2 @@
 {
-  return new DerivedColumnListImpl(qualifiedName[0],fieldNameFunction);
 }

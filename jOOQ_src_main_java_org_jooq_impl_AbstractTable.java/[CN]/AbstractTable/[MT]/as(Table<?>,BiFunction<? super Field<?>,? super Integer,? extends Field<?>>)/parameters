@@ -1,0 +1,2 @@
+Table<?> otherTable
+BiFunction<? super Field<?>,? super Integer,? extends Field<?>> aliasFunction

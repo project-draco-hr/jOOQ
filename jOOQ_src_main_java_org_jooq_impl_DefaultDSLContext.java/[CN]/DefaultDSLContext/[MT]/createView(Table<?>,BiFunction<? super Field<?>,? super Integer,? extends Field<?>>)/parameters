@@ -1,0 +1,2 @@
+Table<?> view
+BiFunction<? super Field<?>,? super Integer,? extends Field<?>> fieldNameFunction

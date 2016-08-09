@@ -1,0 +1,6 @@
+{
+  Field<?>[] fields=fields();
+  String[] names=new String[fields.length];
+  for (int i=0; i < fields.length; i++)   names[i]=aliasFunction.apply(fields[i],i);
+  return as(alias,names);
+}

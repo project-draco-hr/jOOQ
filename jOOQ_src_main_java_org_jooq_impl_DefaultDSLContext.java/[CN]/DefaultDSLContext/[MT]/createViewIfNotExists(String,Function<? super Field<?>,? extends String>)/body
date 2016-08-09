@@ -1,3 +1,2 @@
 {
-  return createView(table(name(view)),fieldNameFunction);
 }

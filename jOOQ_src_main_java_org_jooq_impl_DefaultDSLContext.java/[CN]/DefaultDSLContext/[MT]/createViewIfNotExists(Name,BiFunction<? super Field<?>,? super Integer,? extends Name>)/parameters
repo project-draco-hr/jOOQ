@@ -1,0 +1,2 @@
+Name view
+BiFunction<? super Field<?>,? super Integer,? extends Name> fieldNameFunction

@@ -1,4 +1,0 @@
-Configuration configuration
-Table<?> view
-Function<? super Field<?>,? extends String> fieldNameFunction
-boolean ifNotExists

@@ -1,0 +1,4 @@
+Configuration configuration
+Table<?> view
+BiFunction<? super Field<?>,? super Integer,? extends Field<?>> fieldNameFunction
+boolean ifNotExists
