@@ -3,5 +3,5 @@
   for (int i=0; i < fieldSets.length; i++) {
     array[i]=new WrappedList(new QueryPartList<Field<?>>(fieldSets[i]));
   }
-  return new Function<Object>("grouping sets",SQLDataType.OTHER,array);
+  return new org.jooq.impl.Function<Object>("grouping sets",SQLDataType.OTHER,array);
 }

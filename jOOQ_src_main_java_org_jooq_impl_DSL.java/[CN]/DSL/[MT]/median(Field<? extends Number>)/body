@@ -1,3 +1,3 @@
 {
-  return new Function<BigDecimal>(Term.MEDIAN,SQLDataType.NUMERIC,nullSafe(field));
+  return new org.jooq.impl.Function<BigDecimal>(Term.MEDIAN,SQLDataType.NUMERIC,nullSafe(field));
 }

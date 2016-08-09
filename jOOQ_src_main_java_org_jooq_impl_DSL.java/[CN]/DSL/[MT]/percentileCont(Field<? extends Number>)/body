@@ -1,3 +1,3 @@
 {
-  return new Function<BigDecimal>("percentile_cont",SQLDataType.NUMERIC,nullSafe(field));
+  return new org.jooq.impl.Function<BigDecimal>("percentile_cont",SQLDataType.NUMERIC,nullSafe(field));
 }

@@ -1,3 +1,3 @@
 {
-  return new Function<Integer>("count",SQLDataType.INTEGER,nullSafe(field));
+  return new org.jooq.impl.Function<Integer>("count",SQLDataType.INTEGER,nullSafe(field));
 }

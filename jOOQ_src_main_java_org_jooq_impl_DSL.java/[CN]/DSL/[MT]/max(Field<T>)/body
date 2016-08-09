@@ -1,3 +1,3 @@
 {
-  return new Function<T>("max",nullSafeDataType(field),nullSafe(field));
+  return new org.jooq.impl.Function<T>("max",nullSafeDataType(field),nullSafe(field));
 }

@@ -1,0 +1,7 @@
+{
+  super(configuration);
+  this.view=view;
+  this.fields=null;
+  this.fieldNameFunction=fieldNameFunction;
+  this.ifNotExists=ifNotExists;
+}

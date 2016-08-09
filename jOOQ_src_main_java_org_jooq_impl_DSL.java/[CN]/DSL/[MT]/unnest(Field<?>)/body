@@ -3,7 +3,7 @@
     throw new IllegalArgumentException();
   }
  else   if (cursor.getType() == Result.class) {
-    return new FunctionTable<Record>(cursor);
+    return new org.jooq.impl.FunctionTable<Record>(cursor);
   }
  else   if (cursor.getType().isArray() && cursor.getType() != byte[].class) {
     return new ArrayTable(cursor);
