@@ -1,6 +1,8 @@
 {
-  cte.add(name(alias).fields(fieldAliases).as(select));
+  if (fieldNameFunction != null)   cte.add(name(alias).fields(fieldNameFunction).as(select));
+ else   cte.add(name(alias).fields(fieldAliases).as(select));
   this.alias=null;
   this.fieldAliases=null;
+  this.fieldNameFunction=null;
   return this;
 }
