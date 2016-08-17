@@ -1,0 +1,5 @@
+{
+  this.type=type;
+  this.root=type.getAnnotation(XmlRootElement.class);
+  this.ctx=initCtx();
+}

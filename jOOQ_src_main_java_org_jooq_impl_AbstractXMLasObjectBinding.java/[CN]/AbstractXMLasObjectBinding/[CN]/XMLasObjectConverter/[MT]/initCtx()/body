@@ -1,0 +1,8 @@
+{
+  try {
+    return JAXBContext.newInstance(type);
+  }
+ catch (  JAXBException e) {
+    throw new DataBindingException(e);
+  }
+}

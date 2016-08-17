@@ -1,0 +1,17 @@
+{
+  if (u == null)   return null;
+  try {
+    StringWriter s=new StringWriter();
+    Object o=u;
+    if (root == null) {
+      o=new JAXBElement<T>(new QName(decapitalize(type.getSimpleName())),type,u);
+    }
+    Marshaller m=ctx.createMarshaller();
+    m.setProperty(Marshaller.JAXB_FRAGMENT,true);
+    m.marshal(o,s);
+    return s.toString();
+  }
+ catch (  JAXBException e) {
+    throw new DataBindingException(e);
+  }
+}
