@@ -8,10 +8,10 @@
     if (indent)     ctx.formatIndentStart();
     for (int i=0; i < size(); i++) {
       ctx.sql(separator);
-      if (i > 0 || indent)       ctx.formatNewLine();
+      if (i > 0 || indent)       ctx.formatSeparator();
       ctx.visit(get(i));
-      separator=", ";
+      separator=",";
     }
-    if (indent)     ctx.formatIndentEnd().formatNewLine();
+    if (indent)     ctx.formatIndentEnd();
   }
 }
