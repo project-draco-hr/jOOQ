@@ -73,6 +73,9 @@
  else   if (Record.class.isAssignableFrom(type)) {
     return (T)pgNewRecord(type,null,string);
   }
+ else   if (type == Object.class) {
+    return (T)string;
+  }
  else {
     Converter<Object,T> c=(Converter<Object,T>)converter;
     return c.from(pgFromString(c.fromType(),string));

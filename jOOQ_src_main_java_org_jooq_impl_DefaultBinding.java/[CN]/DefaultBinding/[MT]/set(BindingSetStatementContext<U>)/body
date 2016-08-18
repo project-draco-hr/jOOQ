@@ -2,14 +2,8 @@
   Configuration configuration=ctx.configuration();
   SQLDialect dialect=ctx.dialect();
   T value=converter.to(ctx.value());
-  if (log.isTraceEnabled()) {
-    if (value != null && value.getClass().isArray() && value.getClass() != byte[].class) {
-      log.trace("Binding variable " + ctx.index(),Arrays.asList((Object[])value) + " (" + type+ ")");
-    }
- else {
-      log.trace("Binding variable " + ctx.index(),value + " (" + type+ ")");
-    }
-  }
+  if (log.isTraceEnabled())   if (value != null && value.getClass().isArray() && value.getClass() != byte[].class)   log.trace("Binding variable " + ctx.index(),Arrays.asList((Object[])value) + " (" + type+ ")");
+ else   log.trace("Binding variable " + ctx.index(),value + " (" + type+ ")");
   if (value == null) {
     int sqlType=DefaultDataType.getDataType(dialect,type).getSQLType();
     if (UDTRecord.class.isAssignableFrom(type)) {
