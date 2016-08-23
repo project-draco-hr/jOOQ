@@ -1,4 +1,5 @@
 {
+  this.rowType=rowType;
   this.fields=rowType.fields();
   this.type=type;
   this.configuration=configuration;
