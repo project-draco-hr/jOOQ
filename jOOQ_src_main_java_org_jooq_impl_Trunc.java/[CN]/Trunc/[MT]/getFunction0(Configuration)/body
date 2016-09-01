@@ -15,12 +15,12 @@ case DERBY:
 case H2:
 case MARIADB:
 case MYSQL:
-  return field("{truncate}({0}, {1})",field.getDataType(),field,decimals);
+  return DSL.field("{truncate}({0}, {1})",field.getDataType(),field,decimals);
 case POSTGRES:
-return field("{trunc}({0}, {1})",SQLDataType.NUMERIC,field.cast(BigDecimal.class),decimals).cast(field.getDataType());
+return DSL.field("{trunc}({0}, {1})",SQLDataType.NUMERIC,field.cast(BigDecimal.class),decimals).cast(field.getDataType());
 case CUBRID:
 case HSQLDB:
 default :
-return field("{trunc}({0}, {1})",field.getDataType(),field,decimals);
+return DSL.field("{trunc}({0}, {1})",field.getDataType(),field,decimals);
 }
 }

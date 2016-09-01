@@ -27,7 +27,7 @@ break;
 default :
 throwUnsupported();
 }
-return field("{trunc}({0}, {1})",getDataType(),date,inline(keyword));
+return DSL.field("{trunc}({0}, {1})",getDataType(),date,inline(keyword));
 }
 case H2:
 {
@@ -53,7 +53,7 @@ break;
 default :
 throwUnsupported();
 }
-return field("{parsedatetime}({formatdatetime}({0}, {1}), {1})",getDataType(),date,inline(format));
+return DSL.field("{parsedatetime}({formatdatetime}({0}, {1}), {1})",getDataType(),date,inline(format));
 }
 case POSTGRES:
 {
@@ -79,9 +79,9 @@ break;
 default :
 throwUnsupported();
 }
-return field("{date_trunc}({0}, {1})",getDataType(),inline(keyword),date);
+return DSL.field("{date_trunc}({0}, {1})",getDataType(),inline(keyword),date);
 }
 default :
-return field("{trunc}({0}, {1})",getDataType(),date,inline(part.name()));
+return DSL.field("{trunc}({0}, {1})",getDataType(),date,inline(part.name()));
 }
 }

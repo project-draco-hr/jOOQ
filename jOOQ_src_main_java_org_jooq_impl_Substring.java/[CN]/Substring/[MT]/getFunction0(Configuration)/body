@@ -4,10 +4,10 @@ switch (configuration.family()) {
 case FIREBIRD:
 {
       if (getArguments().length == 2) {
-        return field("{substring}({0} {from} {1})",SQLDataType.VARCHAR,getArguments());
+        return DSL.field("{substring}({0} {from} {1})",SQLDataType.VARCHAR,getArguments());
       }
  else {
-        return field("{substring}({0} {from} {1} {for} {2})",SQLDataType.VARCHAR,getArguments());
+        return DSL.field("{substring}({0} {from} {1} {for} {2})",SQLDataType.VARCHAR,getArguments());
       }
     }
 case DERBY:

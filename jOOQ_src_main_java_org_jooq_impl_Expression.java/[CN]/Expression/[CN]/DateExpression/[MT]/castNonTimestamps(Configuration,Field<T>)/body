@@ -1,6 +1,6 @@
 {
   if (getDataType().getType() != Timestamp.class) {
-    return field("{cast}({0} {as} " + getDataType().getCastTypeName(configuration) + ")",getDataType(),result);
+    return DSL.field("{cast}({0} {as} " + getDataType().getCastTypeName(configuration) + ")",getDataType(),result);
   }
   return result;
 }

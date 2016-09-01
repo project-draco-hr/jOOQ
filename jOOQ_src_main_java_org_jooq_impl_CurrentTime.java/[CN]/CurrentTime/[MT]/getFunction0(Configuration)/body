@@ -5,7 +5,7 @@ case FIREBIRD:
 case HSQLDB:
 case POSTGRES:
 case SQLITE:
-    return field("{current_time}",SQLDataType.TIME);
+    return DSL.field("{current_time}",SQLDataType.TIME);
 }
-return function("current_time",SQLDataType.TIME);
+return DSL.function("current_time",SQLDataType.TIME);
 }

@@ -2,7 +2,7 @@
 switch (ctx.family()) {
 case CUBRID:
 case FIREBIRD:
-    ctx.visit(field(not(condition(field))));
+    ctx.visit(DSL.field(not(condition(field))));
   break;
 case DERBY:
 case H2:
@@ -12,7 +12,7 @@ case MYSQL:
 case POSTGRES:
 case SQLITE:
 default :
-ctx.visit(field("{not}({0})",getDataType(),field));
+ctx.visit(DSL.field("{not}({0})",getDataType(),field));
 break;
 }
 }

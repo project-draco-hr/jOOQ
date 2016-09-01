@@ -1,8 +1,8 @@
 {
 switch (configuration.family()) {
 case FIREBIRD:
-    return field("{trim}({leading} {from} {0})",SQLDataType.VARCHAR,argument);
+    return DSL.field("{trim}({leading} {from} {0})",SQLDataType.VARCHAR,argument);
 default :
-  return function("ltrim",SQLDataType.VARCHAR,argument);
+  return DSL.function("ltrim",SQLDataType.VARCHAR,argument);
 }
 }

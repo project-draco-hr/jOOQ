@@ -6,7 +6,7 @@ case SQLITE:
     }
 case FIREBIRD:
 {
-    return field("cast(lpad({0}, {1}, {2}) as varchar(4000))",SQLDataType.VARCHAR,field,length,character);
+    return DSL.field("cast(lpad({0}, {1}, {2}) as varchar(4000))",SQLDataType.VARCHAR,field,length,character);
   }
 default :
 {

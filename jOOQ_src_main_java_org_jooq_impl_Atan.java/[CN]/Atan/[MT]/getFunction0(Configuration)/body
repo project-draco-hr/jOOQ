@@ -1,6 +1,6 @@
 {
 switch (configuration.dialect().family()) {
 default :
-    return field("{atan}({0})",getDataType(),arg);
+    return DSL.field("{atan}({0})",getDataType(),arg);
 }
 }

@@ -3,8 +3,8 @@ switch (configuration.family()) {
 case CUBRID:
 case MARIADB:
 case MYSQL:
-    return field("{0} {with rollup}",arguments);
+    return DSL.field("{0} {with rollup}",arguments);
 default :
-  return field("{rollup}({0})",Object.class,arguments);
+  return DSL.field("{rollup}({0})",Object.class,arguments);
 }
 }

@@ -3,29 +3,29 @@ switch (configuration.family()) {
 case FIREBIRD:
 {
       if (operator == ADD) {
-        return field("{dateadd}(day, {0}, {1})",getDataType(),rhsAsNumber(),lhs);
+        return DSL.field("{dateadd}(day, {0}, {1})",getDataType(),rhsAsNumber(),lhs);
       }
  else {
-        return field("{dateadd}(day, {0}, {1})",getDataType(),rhsAsNumber().neg(),lhs);
+        return DSL.field("{dateadd}(day, {0}, {1})",getDataType(),rhsAsNumber().neg(),lhs);
       }
     }
 case HSQLDB:
 {
     if (operator == ADD) {
-      return lhs.add(field("{0} day",rhsAsNumber()));
+      return lhs.add(DSL.field("{0} day",rhsAsNumber()));
     }
  else {
-      return lhs.sub(field("{0} day",rhsAsNumber()));
+      return lhs.sub(DSL.field("{0} day",rhsAsNumber()));
     }
   }
 case DERBY:
 {
   Field<T> result;
   if (operator == ADD) {
-    result=field("{fn {timestampadd}({sql_tsi_day}, {0}, {1}) }",getDataType(),rhsAsNumber(),lhs);
+    result=DSL.field("{fn {timestampadd}({sql_tsi_day}, {0}, {1}) }",getDataType(),rhsAsNumber(),lhs);
   }
  else {
-    result=field("{fn {timestampadd}({sql_tsi_day}, {0}, {1}) }",getDataType(),rhsAsNumber().neg(),lhs);
+    result=DSL.field("{fn {timestampadd}({sql_tsi_day}, {0}, {1}) }",getDataType(),rhsAsNumber().neg(),lhs);
   }
   return castNonTimestamps(configuration,result);
 }
@@ -34,10 +34,10 @@ case MARIADB:
 case MYSQL:
 {
 if (operator == ADD) {
-  return field("{date_add}({0}, {interval} {1} {day})",getDataType(),lhs,rhsAsNumber());
+  return DSL.field("{date_add}({0}, {interval} {1} {day})",getDataType(),lhs,rhsAsNumber());
 }
  else {
-  return field("{date_add}({0}, {interval} {1} {day})",getDataType(),lhs,rhsAsNumber().neg());
+  return DSL.field("{date_add}({0}, {interval} {1} {day})",getDataType(),lhs,rhsAsNumber().neg());
 }
 }
 case POSTGRES:
@@ -51,10 +51,10 @@ return new DateAdd(lhs,rhsAsNumber().neg(),DatePart.DAY);
 }
 case SQLITE:
 if (operator == ADD) {
-return field("{datetime}({0}, {1})",getDataType(),lhs,rhsAsNumber().concat(inline(" day")));
+return DSL.field("{datetime}({0}, {1})",getDataType(),lhs,rhsAsNumber().concat(inline(" day")));
 }
  else {
-return field("{datetime}({0}, {1})",getDataType(),lhs,rhsAsNumber().neg().concat(inline(" day")));
+return DSL.field("{datetime}({0}, {1})",getDataType(),lhs,rhsAsNumber().neg().concat(inline(" day")));
 }
 case H2:
 default :

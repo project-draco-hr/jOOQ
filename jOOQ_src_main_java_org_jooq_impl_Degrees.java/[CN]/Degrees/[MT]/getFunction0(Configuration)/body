@@ -4,6 +4,6 @@ case FIREBIRD:
 case SQLITE:
     return argument.cast(BigDecimal.class).mul(inline(180)).div(pi());
 default :
-  return field("{degrees}({0})",SQLDataType.NUMERIC,argument);
+  return DSL.field("{degrees}({0})",SQLDataType.NUMERIC,argument);
 }
 }

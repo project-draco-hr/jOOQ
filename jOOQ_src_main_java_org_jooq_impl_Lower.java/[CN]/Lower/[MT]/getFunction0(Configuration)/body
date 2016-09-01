@@ -1,6 +1,6 @@
 {
 switch (configuration.dialect().family()) {
 default :
-    return field("{lower}({0})",getDataType(),field);
+    return DSL.field("{lower}({0})",getDataType(),field);
 }
 }

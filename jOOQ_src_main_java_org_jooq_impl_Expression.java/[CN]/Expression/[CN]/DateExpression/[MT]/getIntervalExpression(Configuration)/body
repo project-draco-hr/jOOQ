@@ -11,14 +11,14 @@ case MYSQL:
         interval=interval.neg();
       }
       if (rhs.get(0).getType() == YearToMonth.class) {
-        return field("{date_add}({0}, {interval} {1} {year_month})",getDataType(),lhs,Tools.field(interval,String.class));
+        return DSL.field("{date_add}({0}, {interval} {1} {year_month})",getDataType(),lhs,Tools.field(interval,String.class));
       }
  else {
         if (dialect == CUBRID) {
-          return field("{date_add}({0}, {interval} {1} {day_millisecond})",getDataType(),lhs,Tools.field(interval,String.class));
+          return DSL.field("{date_add}({0}, {interval} {1} {day_millisecond})",getDataType(),lhs,Tools.field(interval,String.class));
         }
  else {
-          return field("{date_add}({0}, {interval} {1} {day_microsecond})",getDataType(),lhs,Tools.field(interval,String.class));
+          return DSL.field("{date_add}({0}, {interval} {1} {day_microsecond})",getDataType(),lhs,Tools.field(interval,String.class));
         }
       }
     }
@@ -27,29 +27,29 @@ case HSQLDB:
 {
     Field<T> result;
     if (rhs.get(0).getType() == YearToMonth.class) {
-      result=field("{fn {timestampadd}({sql_tsi_month}, {0}, {1}) }",getDataType(),val(sign * rhsAsYTM().intValue()),lhs);
+      result=DSL.field("{fn {timestampadd}({sql_tsi_month}, {0}, {1}) }",getDataType(),val(sign * rhsAsYTM().intValue()),lhs);
     }
  else {
-      result=field("{fn {timestampadd}({sql_tsi_second}, {0}, {1}) }",getDataType(),val(sign * (long)rhsAsDTS().getTotalSeconds()),lhs);
+      result=DSL.field("{fn {timestampadd}({sql_tsi_second}, {0}, {1}) }",getDataType(),val(sign * (long)rhsAsDTS().getTotalSeconds()),lhs);
     }
     return castNonTimestamps(configuration,result);
   }
 case FIREBIRD:
 {
   if (rhs.get(0).getType() == YearToMonth.class) {
-    return field("{dateadd}({month}, {0}, {1})",getDataType(),val(sign * rhsAsYTM().intValue()),lhs);
+    return DSL.field("{dateadd}({month}, {0}, {1})",getDataType(),val(sign * rhsAsYTM().intValue()),lhs);
   }
  else {
-    return field("{dateadd}({millisecond}, {0}, {1})",getDataType(),val(sign * (long)rhsAsDTS().getTotalMilli()),lhs);
+    return DSL.field("{dateadd}({millisecond}, {0}, {1})",getDataType(),val(sign * (long)rhsAsDTS().getTotalMilli()),lhs);
   }
 }
 case H2:
 {
 if (rhs.get(0).getType() == YearToMonth.class) {
-  return field("{dateadd}('month', {0}, {1})",getDataType(),val(sign * rhsAsYTM().intValue()),lhs);
+  return DSL.field("{dateadd}('month', {0}, {1})",getDataType(),val(sign * rhsAsYTM().intValue()),lhs);
 }
  else {
-  return field("{dateadd}('ms', {0}, {1})",getDataType(),val(sign * (long)rhsAsDTS().getTotalMilli()),lhs);
+  return DSL.field("{dateadd}('ms', {0}, {1})",getDataType(),val(sign * (long)rhsAsDTS().getTotalMilli()),lhs);
 }
 }
 case SQLITE:
@@ -60,7 +60,7 @@ if (sign < 0) {
 interval=interval.neg();
 }
 interval=interval.concat(inline(ytm ? " months" : " seconds"));
-return field("{datetime}({0}, {1})",getDataType(),lhs,interval);
+return DSL.field("{datetime}({0}, {1})",getDataType(),lhs,interval);
 }
 case POSTGRES:
 default :

@@ -4,9 +4,9 @@ case DERBY:
 case FIREBIRD:
 case HSQLDB:
 case POSTGRES:
-    return field("{current_user}",String.class);
+    return DSL.field("{current_user}",String.class);
 case SQLITE:
-  return inline("");
+  return DSL.inline("");
 }
-return function("current_user",SQLDataType.VARCHAR);
+return DSL.function("current_user",SQLDataType.VARCHAR);
 }

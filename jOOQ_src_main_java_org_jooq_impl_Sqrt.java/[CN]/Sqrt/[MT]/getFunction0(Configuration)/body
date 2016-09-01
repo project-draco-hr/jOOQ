@@ -3,6 +3,6 @@ switch (configuration.dialect().family()) {
 case SQLITE:
     return DSL.power(argument,0.5);
 default :
-  return field("{sqrt}({0})",SQLDataType.NUMERIC,argument);
+  return DSL.field("{sqrt}({0})",SQLDataType.NUMERIC,argument);
 }
 }

@@ -5,7 +5,7 @@ case FIREBIRD:
 case HSQLDB:
 case POSTGRES:
 case SQLITE:
-    return field("{current_timestamp}",SQLDataType.TIMESTAMP);
+    return DSL.field("{current_timestamp}",SQLDataType.TIMESTAMP);
 }
 return function("current_timestamp",SQLDataType.TIMESTAMP);
 }

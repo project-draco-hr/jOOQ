@@ -3,6 +3,6 @@ switch (configuration.dialect()) {
 case SQLITE:
     return DSL.round(argument.sub(0.499999999999999));
 default :
-  return field("{floor}({0})",getDataType(),argument);
+  return DSL.field("{floor}({0})",getDataType(),argument);
 }
 }

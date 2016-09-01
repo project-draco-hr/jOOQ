@@ -11,6 +11,6 @@ case MARIADB:
 case MYSQL:
 case POSTGRES:
 default :
-  return field("{left}({0}, {1})",field,length);
+  return DSL.field("{left}({0}, {1})",field,length);
 }
 }

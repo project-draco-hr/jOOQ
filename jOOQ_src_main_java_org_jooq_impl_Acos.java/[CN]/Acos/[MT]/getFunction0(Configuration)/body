@@ -1,6 +1,6 @@
 {
 switch (configuration.dialect().family()) {
 default :
-    return field("{acos}({0})",getDataType(),arg);
+    return DSL.field("{acos}({0})",getDataType(),arg);
 }
 }

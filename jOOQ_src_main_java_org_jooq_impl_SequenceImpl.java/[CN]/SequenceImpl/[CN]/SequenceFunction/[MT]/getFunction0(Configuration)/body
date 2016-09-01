@@ -4,12 +4,12 @@ switch (family) {
 case POSTGRES:
 {
       String field=method + "('" + getQualifiedName(configuration)+ "')";
-      return field(field,getDataType());
+      return DSL.field(field,getDataType());
     }
 case H2:
 {
     String field=method + "(" + getQualifiedName(configuration,true)+ ")";
-    return field(field,getDataType());
+    return DSL.field(field,getDataType());
   }
 case FIREBIRD:
 case DERBY:
@@ -17,10 +17,10 @@ case HSQLDB:
 {
   if ("nextval".equals(method)) {
     String field="next value for " + getQualifiedName(configuration);
-    return field(field,getDataType());
+    return DSL.field(field,getDataType());
   }
  else   if (family == FIREBIRD) {
-    return field("gen_id(" + getQualifiedName(configuration) + ", 0)",getDataType());
+    return DSL.field("gen_id(" + getQualifiedName(configuration) + ", 0)",getDataType());
   }
  else {
     throw new SQLDialectNotSupportedException("The sequence's current value functionality is not supported for the " + family + " dialect.");
@@ -35,12 +35,12 @@ if ("nextval".equals(method)) {
  else {
   field+="current_value";
 }
-return field(field,getDataType());
+return DSL.field(field,getDataType());
 }
 default :
 {
 String field=getQualifiedName(configuration) + "." + method;
-return field(field,getDataType());
+return DSL.field(field,getDataType());
 }
 }
 }
