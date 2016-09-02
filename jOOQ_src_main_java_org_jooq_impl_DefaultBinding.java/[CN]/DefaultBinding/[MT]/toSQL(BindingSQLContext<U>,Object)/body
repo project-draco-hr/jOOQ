@@ -102,7 +102,7 @@
         render.sql(')');
       }
  else       if (family == POSTGRES) {
-        render.visit(inline(PostgresUtils.toPGArrayString((Object[])val)));
+        render.visit(cast(inline(PostgresUtils.toPGArrayString((Object[])val)),type));
       }
  else {
         render.keyword("ARRAY");
