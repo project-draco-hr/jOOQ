@@ -1,22 +1,12 @@
 {
 switch (configuration.family()) {
 case H2:
-{
-      return new H2ArrayTable().as(alias);
-    }
+    return new H2ArrayTable().as(alias);
 case HSQLDB:
 case POSTGRES:
-{
-    return new PostgresHSQLDBTable().as(alias);
-  }
+  return new PostgresHSQLDBTable().as(alias,fieldAliases);
 default :
-{
-  if (array.getDataType().getType().isArray() && array instanceof Param) {
-    return emulate();
-  }
- else {
-    return DSL.table("{0}",array).as(alias);
-  }
-}
+if (array.getDataType().getType().isArray() && array instanceof Param) return emulate();
+ else return DSL.table("{0}",array).as(alias);
 }
 }

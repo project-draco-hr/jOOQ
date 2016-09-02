@@ -1,10 +1,6 @@
 {
-  ctx.keyword("table(").sql("COLUMN_VALUE ");
-  if (array.getDataType().getType() == Object[].class) {
-    ctx.keyword(H2DataType.VARCHAR.getTypeName());
-  }
- else {
-    ctx.keyword(array.getDataType().getTypeName());
-  }
+  ctx.keyword("table").sql('(').visit(name(fieldAliases == null || fieldAliases.length == 0 ? "COLUMN_VALUE" : fieldAliases[0])).sql(' ');
+  if (array.getDataType().getType() == Object[].class)   ctx.keyword(H2DataType.VARCHAR.getTypeName());
+ else   ctx.keyword(array.getDataType().getTypeName());
   ctx.sql(" = ").visit(array).sql(')');
 }

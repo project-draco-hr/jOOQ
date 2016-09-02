@@ -1,4 +1,14 @@
 {
   super(alias);
-  throw new UnsupportedOperationException("This constructor is not yet implemented");
+  Class<?> arrayType;
+  if (array.getDataType().getType().isArray()) {
+    arrayType=array.getDataType().getType().getComponentType();
+  }
+ else {
+    arrayType=Object.class;
+  }
+  this.array=array;
+  this.alias=alias;
+  this.fieldAliases=fieldAliases;
+  this.field=init(arrayType,alias,fieldAliases);
 }

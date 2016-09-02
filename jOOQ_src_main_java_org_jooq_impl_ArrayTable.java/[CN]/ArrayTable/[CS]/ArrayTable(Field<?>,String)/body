@@ -1,14 +1,3 @@
 {
-  super(alias);
-  Class<?> arrayType;
-  if (array.getDataType().getType().isArray()) {
-    arrayType=array.getDataType().getType().getComponentType();
-  }
- else {
-    arrayType=Object.class;
-  }
-  this.array=array;
-  this.alias=alias;
-  this.field=init(alias,arrayType);
-  init(alias,arrayType);
+  this(array,alias,new String[]{"COLUMN_VALUE"});
 }
