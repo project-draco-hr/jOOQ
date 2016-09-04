@@ -174,6 +174,7 @@ if (g.getGenerate().isRelations() != null) generator.setGenerateRelations(g.getG
 if (g.getGenerate().isDeprecated() != null) generator.setGenerateDeprecated(g.getGenerate().isDeprecated());
 if (g.getGenerate().isInstanceFields() != null) generator.setGenerateInstanceFields(g.getGenerate().isInstanceFields());
 if (g.getGenerate().isGeneratedAnnotation() != null) generator.setGenerateGeneratedAnnotation(g.getGenerate().isGeneratedAnnotation());
+if (g.getGenerate().isRoutines() != null) generator.setGenerateRoutines(g.getGenerate().isRoutines());
 if (g.getGenerate().isRecords() != null) generator.setGenerateRecords(g.getGenerate().isRecords());
 if (g.getGenerate().isPojos() != null) generator.setGeneratePojos(g.getGenerate().isPojos());
 if (g.getGenerate().isImmutablePojos() != null) generator.setGenerateImmutablePojos(g.getGenerate().isImmutablePojos());

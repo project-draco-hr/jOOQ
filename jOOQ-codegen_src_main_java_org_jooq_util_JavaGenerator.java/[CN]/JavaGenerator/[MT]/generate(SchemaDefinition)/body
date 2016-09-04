@@ -54,7 +54,7 @@
   if (generateInterfaces() && database.getUDTs(schema).size() > 0) {
     generateUDTInterfaces(schema);
   }
-  if (database.getUDTs(schema).size() > 0) {
+  if (generateRoutines() && database.getUDTs(schema).size() > 0) {
     generateUDTRoutines(schema);
   }
   if (generateGlobalObjectReferences() && generateGlobalUDTReferences() && database.getUDTs(schema).size() > 0) {
@@ -69,7 +69,7 @@
   if (database.getDomains(schema).size() > 0) {
     generateDomains(schema);
   }
-  if (generateGlobalObjectReferences() && generateGlobalRoutineReferences() && database.getRoutines(schema).size() > 0 || hasTableValuedFunctions(schema)) {
+  if (generateRoutines() && (database.getRoutines(schema).size() > 0 || hasTableValuedFunctions(schema))) {
     generateRoutines(schema);
   }
   log.info("Removing excess files");

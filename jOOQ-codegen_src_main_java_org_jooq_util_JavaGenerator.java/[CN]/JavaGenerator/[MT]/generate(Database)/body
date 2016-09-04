@@ -16,6 +16,7 @@
   log.info("  JPA annotations",generateJPAAnnotations());
   log.info("  validation annotations",generateValidationAnnotations());
   log.info("  instance fields",generateInstanceFields());
+  log.info("  routines",generateRoutines());
   log.info("  records",generateRecords() + ((!generateRecords && generateDaos) ? " (forced to true because of <daos/>)" : ""));
   log.info("  pojos",generatePojos() + ((!generatePojos && generateDaos) ? " (forced to true because of <daos/>)" : ((!generatePojos && generateImmutablePojos) ? " (forced to true because of <immutablePojos/>)" : "")));
   log.info("  immutable pojos",generateImmutablePojos());
