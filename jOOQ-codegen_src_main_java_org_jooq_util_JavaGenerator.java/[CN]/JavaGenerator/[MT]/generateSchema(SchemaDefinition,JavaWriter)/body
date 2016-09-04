@@ -22,7 +22,7 @@
     out.printSerial();
     out.tab(1).javadoc("The reference instance of <code>%s</code>",schemaName);
     out.tab(1).println("public static final %s %s = new %s();",className,schemaId,className);
-    if (generateGlobalObjectReferences() && generateGlobalTableReferences()) {
+    if (generateTables() && generateGlobalObjectReferences() && generateGlobalTableReferences()) {
       for (      TableDefinition table : schema.getTables()) {
         final String tableClassName=out.ref(getStrategy().getFullJavaClassName(table));
         final String tableId=getStrategy().getJavaIdentifier(table);
@@ -31,9 +31,7 @@
         out.tab(1).javadoc(tableComment);
         if (scala)         out.tab(1).println("val %s = %s",tableId,tableFullId);
  else         out.tab(1).println("public final %s %s = %s;",tableClassName,tableId,tableFullId);
-        if (table.isTableValuedFunction()) {
-          printTableValuedFunction(out,table,getStrategy().getJavaIdentifier(table));
-        }
+        if (table.isTableValuedFunction())         printTableValuedFunction(out,table,getStrategy().getJavaIdentifier(table));
       }
     }
     out.tab(1).javadoc(NO_FURTHER_INSTANCES_ALLOWED);
@@ -51,10 +49,8 @@
     out.tab(2).println("return %s;",catalogId);
     out.tab(1).println("}");
   }
-  if (generateGlobalObjectReferences() && generateGlobalSequenceReferences()) {
-    printReferences(out,database.getSequences(schema),Sequence.class,true);
-  }
-  printReferences(out,database.getTables(schema),Table.class,true);
+  if (generateGlobalObjectReferences() && generateGlobalSequenceReferences())   printReferences(out,database.getSequences(schema),Sequence.class,true);
+  if (generateTables() && generateGlobalObjectReferences() && generateGlobalTableReferences())   printReferences(out,database.getTables(schema),Table.class,true);
   printReferences(out,database.getUDTs(schema),UDT.class,true);
   generateSchemaClassFooter(schema,out);
   out.println("}");

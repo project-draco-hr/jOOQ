@@ -21,7 +21,7 @@
   if (generateGlobalObjectReferences() && generateGlobalSequenceReferences() && database.getSequences(schema).size() > 0) {
     generateSequences(schema);
   }
-  if (database.getTables(schema).size() > 0) {
+  if (generateTables() && database.getTables(schema).size() > 0) {
     generateTables(schema);
   }
   if (generatePojos() && database.getTables(schema).size() > 0) {
@@ -30,7 +30,7 @@
   if (generateDaos() && database.getTables(schema).size() > 0) {
     generateDaos(schema);
   }
-  if (generateGlobalObjectReferences() && generateGlobalTableReferences() && database.getTables(schema).size() > 0) {
+  if (generateTables() && generateGlobalObjectReferences() && generateGlobalTableReferences()&& database.getTables(schema).size() > 0) {
     generateTableReferences(schema);
   }
   if (generateRelations() && database.getTables(schema).size() > 0) {

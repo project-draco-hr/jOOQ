@@ -17,13 +17,14 @@
   log.info("  validation annotations",generateValidationAnnotations());
   log.info("  instance fields",generateInstanceFields());
   log.info("  routines",generateRoutines());
+  log.info("  tables",generateTables() + ((!generateTables && generateRecords) ? " (forced to true because of <records/>)" : ((!generateTables && generateDaos) ? " (forced to true because of <daos/>)" : "")));
   log.info("  records",generateRecords() + ((!generateRecords && generateDaos) ? " (forced to true because of <daos/>)" : ""));
   log.info("  pojos",generatePojos() + ((!generatePojos && generateDaos) ? " (forced to true because of <daos/>)" : ((!generatePojos && generateImmutablePojos) ? " (forced to true because of <immutablePojos/>)" : "")));
   log.info("  immutable pojos",generateImmutablePojos());
   log.info("  interfaces",generateInterfaces() + ((!generateInterfaces && generateImmutableInterfaces) ? " (forced to true because of <immutableInterfaces/>)" : ""));
   log.info("  immutable interfaces",generateInterfaces());
   log.info("  daos",generateDaos());
-  log.info("  relations",generateRelations() + ((!generateRelations && generateDaos) ? " (forced to true because of <daos/>)" : ""));
+  log.info("  relations",generateRelations() + ((!generateRelations && generateTables) ? " (forced to true because of <tables/>)" : ((!generateRelations && generateDaos) ? " (forced to true because of <daos/>)" : "")));
   log.info("  table-valued functions",generateTableValuedFunctions());
   log.info("  global references",generateGlobalObjectReferences());
   log.info("----------------------------------------------------------");

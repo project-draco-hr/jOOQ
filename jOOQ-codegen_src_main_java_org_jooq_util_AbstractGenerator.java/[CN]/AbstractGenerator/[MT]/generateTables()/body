@@ -1,0 +1,3 @@
+{
+  return generateTables || generateRecords || generateDaos;
+}
