@@ -1,6 +1,0 @@
-{
-  if (o == null) {
-    log.error(message + " For details, see " + Constants.NS_CODEGEN);
-    System.exit(-1);
-  }
-}

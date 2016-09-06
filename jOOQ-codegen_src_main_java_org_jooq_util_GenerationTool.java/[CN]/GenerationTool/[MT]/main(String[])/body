@@ -1,6 +1,10 @@
 {
-  if (args.length < 1)   error();
-  argsLoop:   for (  String arg : args) {
+  if (args.length < 1) {
+    log.error("Usage : GenerationTool <configuration-file>");
+    System.exit(-1);
+    return;
+  }
+  for (  String arg : args) {
     InputStream in=GenerationTool.class.getResourceAsStream(arg);
     try {
       if (in == null && !arg.startsWith("/"))       in=GenerationTool.class.getResourceAsStream("/" + arg);
@@ -11,20 +15,19 @@
         log.error("Please be sure it is located");
         log.error("  - on the classpath and qualified as a classpath location.");
         log.error("  - in the local directory or at a global path in the file system.");
-        continue argsLoop;
+        System.exit(-1);
+        return;
       }
       log.info("Initialising properties",arg);
       generate(load(in));
     }
  catch (    Exception e) {
-      log.error("Cannot read " + arg + ". Error : "+ e.getMessage());
-      e.printStackTrace();
-      continue argsLoop;
+      log.error("Cannot read " + arg + ". Error : "+ e.getMessage(),e);
+      System.exit(-1);
+      return;
     }
  finally {
-      if (in != null) {
-        in.close();
-      }
+      if (in != null)       in.close();
     }
   }
 }

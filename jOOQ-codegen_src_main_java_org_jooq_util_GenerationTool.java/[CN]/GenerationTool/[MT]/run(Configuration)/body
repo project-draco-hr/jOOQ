@@ -23,7 +23,7 @@ break;
 }
 Jdbc j=configuration.getJdbc();
 org.jooq.util.jaxb.Generator g=configuration.getGenerator();
-errorIfNull(g,"The <generator/> tag is mandatory.");
+if (g == null) throw new GeneratorException("The <generator/> tag is mandatory. For details, see " + Constants.NS_CODEGEN);
 if (g.getStrategy() == null) g.setStrategy(new Strategy());
 if (g.getTarget() == null) g.setTarget(new Target());
 try {
@@ -70,12 +70,8 @@ schema.setOutputSchemaToDefault(d.isOutputSchemaToDefault());
 schemata.add(schema);
 }
  else {
-if (!StringUtils.isBlank(d.getInputSchema())) {
-log.warn("WARNING: Cannot combine configuration properties /configuration/generator/database/inputSchema and /configuration/generator/database/schemata");
-}
-if (!StringUtils.isBlank(d.getOutputSchema())) {
-log.warn("WARNING: Cannot combine configuration properties /configuration/generator/database/outputSchema and /configuration/generator/database/schemata");
-}
+if (!StringUtils.isBlank(d.getInputSchema())) log.warn("WARNING: Cannot combine configuration properties /configuration/generator/database/inputSchema and /configuration/generator/database/schemata");
+if (!StringUtils.isBlank(d.getOutputSchema())) log.warn("WARNING: Cannot combine configuration properties /configuration/generator/database/outputSchema and /configuration/generator/database/schemata");
 }
 for (Schema schema : schemata) {
 if (StringUtils.isBlank(schema.getInputSchema())) {
@@ -84,21 +80,11 @@ log.warn("WARNING: The configuration property jdbc.Schema is deprecated and will
 }
 schema.setInputSchema(trim(j.getSchema()));
 }
-if ("".equals(schema.getOutputSchema())) {
-log.warn("WARNING: Empty <outputSchema/> should no longer be used to model default outputSchemas. Use <outputSchemaToDefault>true</outputSchemaToDefault>, instead. See also: https://github.com/jOOQ/jOOQ/issues/3018");
+if ("".equals(schema.getOutputSchema())) log.warn("WARNING: Empty <outputSchema/> should no longer be used to model default outputSchemas. Use <outputSchemaToDefault>true</outputSchemaToDefault>, instead. See also: https://github.com/jOOQ/jOOQ/issues/3018");
+if (TRUE.equals(schema.isOutputSchemaToDefault())) schema.setOutputSchema("");
+ else if (schema.getOutputSchema() == null) schema.setOutputSchema(trim(schema.getInputSchema()));
 }
-if (TRUE.equals(schema.isOutputSchemaToDefault())) {
-schema.setOutputSchema("");
-}
- else if (schema.getOutputSchema() == null) {
-schema.setOutputSchema(trim(schema.getInputSchema()));
-}
-}
-if (schemata.size() == 1) {
-if (StringUtils.isBlank(schemata.get(0).getInputSchema())) {
-log.info("No <inputSchema/> was provided. Generating ALL available schemata instead!");
-}
-}
+if (schemata.size() == 1) if (StringUtils.isBlank(schemata.get(0).getInputSchema())) log.info("No <inputSchema/> was provided. Generating ALL available schemata instead!");
 database.setConnection(connection);
 database.setConfiguredSchemata(schemata);
 database.setIncludes(new String[]{defaultString(d.getIncludes())});
@@ -215,13 +201,7 @@ generator.setGenerateTableValuedFunctions(true);
 strategy.setInstanceFields(generator.generateInstanceFields());
 generator.generate(database);
 }
- catch (Exception e) {
-e.printStackTrace();
-throw e;
-}
- finally {
-if (close && connection != null) {
-connection.close();
-}
+  finally {
+if (close && connection != null) connection.close();
 }
 }

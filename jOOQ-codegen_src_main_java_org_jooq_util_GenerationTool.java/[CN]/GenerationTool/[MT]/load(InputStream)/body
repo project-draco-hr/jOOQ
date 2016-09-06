@@ -20,6 +20,6 @@
     return (Configuration)unmarshaller.unmarshal(new StringReader(xml));
   }
  catch (  Exception e) {
-    throw new RuntimeException(e);
+    throw new GeneratorException("Error while reading XML configuration",e);
   }
 }

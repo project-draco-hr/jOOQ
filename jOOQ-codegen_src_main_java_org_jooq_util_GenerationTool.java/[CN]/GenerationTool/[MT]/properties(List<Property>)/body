@@ -1,7 +1,5 @@
 {
   Properties result=new Properties();
-  for (  Property p : properties) {
-    result.put(p.getKey(),p.getValue());
-  }
+  for (  Property p : properties)   result.put(p.getKey(),p.getValue());
   return result;
 }

@@ -3,6 +3,6 @@
     return databaseClass(c.getMetaData().getURL());
   }
  catch (  SQLException e) {
-    throw new RuntimeException(e);
+    throw new GeneratorException("Error when reading URL from JDBC connection",e);
   }
 }
