@@ -23,7 +23,7 @@
     out.tab(1).println("public static final %s %s = new %s();",className,catalogId,className);
   }
   List<SchemaDefinition> schemas=new ArrayList<SchemaDefinition>();
-  if (generateGlobalObjectReferences() && generateGlobalSchemaReferences()) {
+  if (generateGlobalSchemaReferences()) {
     for (    SchemaDefinition schema : catalog.getSchemata()) {
       if (generateSchemaIfEmpty(schema)) {
         schemas.add(schema);

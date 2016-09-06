@@ -18,7 +18,7 @@
     }
   }
   generateSchema(schema);
-  if (generateSequences() && generateGlobalObjectReferences() && generateGlobalSequenceReferences()&& database.getSequences(schema).size() > 0) {
+  if (generateGlobalSequenceReferences() && database.getSequences(schema).size() > 0) {
     generateSequences(schema);
   }
   if (generateTables() && database.getTables(schema).size() > 0) {
@@ -30,7 +30,7 @@
   if (generateDaos() && database.getTables(schema).size() > 0) {
     generateDaos(schema);
   }
-  if (generateTables() && generateGlobalObjectReferences() && generateGlobalTableReferences()&& database.getTables(schema).size() > 0) {
+  if (generateGlobalTableReferences() && database.getTables(schema).size() > 0) {
     generateTableReferences(schema);
   }
   if (generateRelations() && database.getTables(schema).size() > 0) {
@@ -42,31 +42,31 @@
   if (generateInterfaces() && database.getTables(schema).size() > 0) {
     generateInterfaces(schema);
   }
-  if (database.getUDTs(schema).size() > 0) {
+  if (generateUDTs() && database.getUDTs(schema).size() > 0) {
     generateUDTs(schema);
   }
   if (generatePojos() && database.getUDTs(schema).size() > 0) {
     generateUDTPojos(schema);
   }
-  if (database.getUDTs(schema).size() > 0) {
+  if (generateUDTs() && generateRecords() && database.getUDTs(schema).size() > 0) {
     generateUDTRecords(schema);
   }
   if (generateInterfaces() && database.getUDTs(schema).size() > 0) {
     generateUDTInterfaces(schema);
   }
-  if (generateRoutines() && database.getUDTs(schema).size() > 0) {
+  if (generateUDTs() && generateRoutines() && database.getUDTs(schema).size() > 0) {
     generateUDTRoutines(schema);
   }
-  if (generateGlobalObjectReferences() && generateGlobalUDTReferences() && database.getUDTs(schema).size() > 0) {
+  if (generateGlobalUDTReferences() && database.getUDTs(schema).size() > 0) {
     generateUDTReferences(schema);
   }
-  if (database.getArrays(schema).size() > 0) {
+  if (generateUDTs() && database.getArrays(schema).size() > 0) {
     generateArrays(schema);
   }
-  if (database.getEnums(schema).size() > 0) {
+  if (generateUDTs() && database.getEnums(schema).size() > 0) {
     generateEnums(schema);
   }
-  if (database.getDomains(schema).size() > 0) {
+  if (generateUDTs() && database.getDomains(schema).size() > 0) {
     generateDomains(schema);
   }
   if (generateRoutines() && (database.getRoutines(schema).size() > 0 || hasTableValuedFunctions(schema))) {

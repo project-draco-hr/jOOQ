@@ -22,7 +22,7 @@
     out.printSerial();
     out.tab(1).javadoc("The reference instance of <code>%s</code>",schemaName);
     out.tab(1).println("public static final %s %s = new %s();",className,schemaId,className);
-    if (generateTables() && generateGlobalObjectReferences() && generateGlobalTableReferences()) {
+    if (generateGlobalTableReferences()) {
       for (      TableDefinition table : schema.getTables()) {
         final String tableClassName=out.ref(getStrategy().getFullJavaClassName(table));
         final String tableId=getStrategy().getJavaIdentifier(table);
@@ -49,9 +49,9 @@
     out.tab(2).println("return %s;",catalogId);
     out.tab(1).println("}");
   }
-  if (generateGlobalObjectReferences() && generateGlobalSequenceReferences())   printReferences(out,database.getSequences(schema),Sequence.class,true);
-  if (generateTables() && generateGlobalObjectReferences() && generateGlobalTableReferences())   printReferences(out,database.getTables(schema),Table.class,true);
-  printReferences(out,database.getUDTs(schema),UDT.class,true);
+  if (generateGlobalSequenceReferences())   printReferences(out,database.getSequences(schema),Sequence.class,true);
+  if (generateGlobalTableReferences())   printReferences(out,database.getTables(schema),Table.class,true);
+  if (generateGlobalUDTReferences())   printReferences(out,database.getUDTs(schema),UDT.class,true);
   generateSchemaClassFooter(schema,out);
   out.println("}");
 }

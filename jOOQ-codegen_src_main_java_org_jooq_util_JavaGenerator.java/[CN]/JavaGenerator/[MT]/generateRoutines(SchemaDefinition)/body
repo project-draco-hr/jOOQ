@@ -1,6 +1,6 @@
 {
   log.info("Generating routines and table-valued functions");
-  if (generateGlobalObjectReferences() && generateGlobalRoutineReferences()) {
+  if (generateGlobalRoutineReferences()) {
     JavaWriter out=newJavaWriter(new File(getStrategy().getFile(schema).getParentFile(),"Routines.java"));
     printPackage(out,schema);
     printClassJavadoc(out,"Convenience access to all stored procedures and functions in " + schema.getOutputName());
