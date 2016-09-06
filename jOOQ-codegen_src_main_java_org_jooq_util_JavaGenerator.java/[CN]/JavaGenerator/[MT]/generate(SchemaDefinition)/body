@@ -18,7 +18,7 @@
     }
   }
   generateSchema(schema);
-  if (generateGlobalObjectReferences() && generateGlobalSequenceReferences() && database.getSequences(schema).size() > 0) {
+  if (generateSequences() && generateGlobalObjectReferences() && generateGlobalSequenceReferences()&& database.getSequences(schema).size() > 0) {
     generateSequences(schema);
   }
   if (generateTables() && database.getTables(schema).size() > 0) {
