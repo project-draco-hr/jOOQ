@@ -1,6 +1,6 @@
 {
   if (maxValue == null) {
-    this.maxValue=f;
+    this.maxValue=nullSafe(f,field.getDataType());
     return this;
   }
  else {

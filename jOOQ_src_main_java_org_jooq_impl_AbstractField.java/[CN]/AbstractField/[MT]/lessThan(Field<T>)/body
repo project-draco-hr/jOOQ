@@ -1,3 +1,3 @@
 {
-  return compare(LESS,nullSafe(field));
+  return compare(LESS,nullSafe(field,getDataType()));
 }

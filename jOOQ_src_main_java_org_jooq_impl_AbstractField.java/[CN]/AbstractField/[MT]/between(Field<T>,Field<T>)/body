@@ -1,3 +1,3 @@
 {
-  return between(nullSafe(minValue)).and(nullSafe(maxValue));
+  return between(nullSafe(minValue,getDataType())).and(nullSafe(maxValue,getDataType()));
 }
