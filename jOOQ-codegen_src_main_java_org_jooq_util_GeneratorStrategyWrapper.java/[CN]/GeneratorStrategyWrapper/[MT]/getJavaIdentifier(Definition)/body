@@ -12,5 +12,9 @@
     SchemaDefinition schema=definition.getSchema();
     if (identifier.equals(getJavaIdentifier(schema)))     return identifier + "_";
   }
+ else   if (definition instanceof SchemaDefinition) {
+    CatalogDefinition catalog=definition.getCatalog();
+    if (identifier.equals(getJavaIdentifier(catalog)))     return identifier + "_";
+  }
   return identifier;
 }
