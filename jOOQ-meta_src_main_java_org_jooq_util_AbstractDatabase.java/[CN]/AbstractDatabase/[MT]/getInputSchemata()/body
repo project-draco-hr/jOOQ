@@ -1,20 +1,45 @@
 {
-  if (inputSchemata == null) {
+  if (inputSchemataPerCatalog == null) {
     inputSchemata=new ArrayList<String>();
+    inputSchemataPerCatalog=new LinkedHashMap<String,List<String>>();
     if (configuredSchemata.size() == 1 && StringUtils.isBlank(configuredSchemata.get(0).getInputSchema())) {
       try {
         for (        SchemaDefinition schema : getSchemata0()) {
           inputSchemata.add(schema.getName());
+          List<String> list=inputSchemataPerCatalog.get(schema.getCatalog().getName());
+          if (list == null) {
+            list=new ArrayList<String>();
+            inputSchemataPerCatalog.put(schema.getCatalog().getName(),list);
+          }
+          list.add(schema.getName());
         }
       }
  catch (      Exception e) {
         log.error("Could not load schemata",e);
       }
     }
- else {
+ else     if (configuredCatalogs.isEmpty()) {
+      inputSchemataPerCatalog.put("",inputSchemata);
       for (      Schema schema : configuredSchemata) {
 {
           inputSchemata.add(schema.getInputSchema());
+        }
+      }
+    }
+ else {
+      for (      Catalog catalog : configuredCatalogs) {
+        for (        Schema schema : catalog.getSchemata()) {
+          String inputSchema;
+{
+            inputSchema=schema.getInputSchema();
+          }
+          inputSchemata.add(inputSchema);
+          List<String> list=inputSchemataPerCatalog.get(catalog.getInputCatalog());
+          if (list == null) {
+            list=new ArrayList<String>();
+            inputSchemataPerCatalog.put(catalog.getInputCatalog(),list);
+          }
+          list.add(inputSchema);
         }
       }
     }

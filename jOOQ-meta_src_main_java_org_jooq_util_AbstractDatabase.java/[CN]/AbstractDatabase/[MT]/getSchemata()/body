@@ -12,7 +12,7 @@
       SchemaDefinition schema=it.next();
       if (!getInputSchemata().contains(schema.getName()))       it.remove();
     }
-    if (schemata.isEmpty())     log.warn("No schemata were loaded","Please check your connection settings, and whether your database (and your database version!) is really supported by jOOQ. Also, check the case-sensitivity in your configured <inputSchema/> elements : " + inputSchemata);
+    if (schemata.isEmpty())     log.warn("No schemata were loaded","Please check your connection settings, and whether your database (and your database version!) is really supported by jOOQ. Also, check the case-sensitivity in your configured <inputSchema/> elements : " + inputSchemataPerCatalog);
   }
   return schemata;
 }

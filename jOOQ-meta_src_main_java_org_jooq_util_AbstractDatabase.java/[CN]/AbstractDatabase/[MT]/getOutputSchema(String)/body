@@ -1,8 +1,4 @@
 {
-  for (  Schema schema : configuredSchemata) {
-    if (inputSchema.equals(schema.getInputSchema())) {
-      return schema.getOutputSchema();
-    }
-  }
+  for (  Schema schema : configuredSchemata)   if (inputSchema.equals(schema.getInputSchema()))   return schema.getOutputSchema();
   return inputSchema;
 }

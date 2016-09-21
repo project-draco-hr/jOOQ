@@ -1,0 +1,19 @@
+{
+  if (inputCatalogs == null) {
+    inputCatalogs=new ArrayList<String>();
+    if (configuredCatalogs.size() == 1 && StringUtils.isBlank(configuredCatalogs.get(0).getInputCatalog())) {
+      try {
+        for (        CatalogDefinition catalog : getCatalogs0())         inputCatalogs.add(catalog.getName());
+      }
+ catch (      Exception e) {
+        log.error("Could not load catalogs",e);
+      }
+    }
+ else {
+      for (      Catalog catalog : configuredCatalogs) {
+        inputCatalogs.add(catalog.getInputCatalog());
+      }
+    }
+  }
+  return inputCatalogs;
+}

@@ -1,0 +1,4 @@
+{
+  for (  Catalog catalog : configuredCatalogs)   if (inputCatalog.equals(catalog.getInputCatalog()))   return catalog.getOutputCatalog();
+  return inputCatalog;
+}

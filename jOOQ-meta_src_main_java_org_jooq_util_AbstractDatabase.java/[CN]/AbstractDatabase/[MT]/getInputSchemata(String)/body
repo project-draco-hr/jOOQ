@@ -1,0 +1,4 @@
+{
+  getInputSchemata();
+  return inputSchemataPerCatalog.containsKey(catalog) ? inputSchemataPerCatalog.get(catalog) : Collections.<String>emptyList();
+}

@@ -1,0 +1,4 @@
+{
+  for (  Catalog catalog : configuredCatalogs)   if (inputCatalog.equals(catalog.getInputCatalog()))   for (  Schema schema : catalog.getSchemata())   if (inputSchema.equals(schema.getInputSchema()))   return schema.getOutputSchema();
+  return inputSchema;
+}
