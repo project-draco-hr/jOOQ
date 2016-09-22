@@ -1,5 +1,5 @@
 {
-  if (!globalThreshold.supports(Level.TRACE))   return;
+  if (!globalThreshold.supports(Log.Level.TRACE))   return;
  else   if (slf4j != null)   slf4j.trace(getMessage(message,details));
  else   if (log4j != null)   log4j.trace(getMessage(message,details));
  else   util.finer("" + getMessage(message,details));

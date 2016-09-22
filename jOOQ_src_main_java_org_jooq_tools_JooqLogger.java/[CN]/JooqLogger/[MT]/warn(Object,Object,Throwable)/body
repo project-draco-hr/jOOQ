@@ -1,5 +1,5 @@
 {
-  if (!globalThreshold.supports(Level.WARN))   return;
+  if (!globalThreshold.supports(Log.Level.WARN))   return;
  else   if (slf4j != null)   slf4j.warn(getMessage(message,details),throwable);
  else   if (log4j != null)   log4j.warn(getMessage(message,details),throwable);
  else   util.log(java.util.logging.Level.WARNING,"" + getMessage(message,details),throwable);

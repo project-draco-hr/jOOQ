@@ -1,5 +1,5 @@
 {
-  if (!globalThreshold.supports(Level.DEBUG))   return;
+  if (!globalThreshold.supports(Log.Level.DEBUG))   return;
  else   if (slf4j != null)   slf4j.debug(getMessage(message,details),throwable);
  else   if (log4j != null)   log4j.debug(getMessage(message,details),throwable);
  else   util.log(java.util.logging.Level.FINE,"" + getMessage(message,details),throwable);

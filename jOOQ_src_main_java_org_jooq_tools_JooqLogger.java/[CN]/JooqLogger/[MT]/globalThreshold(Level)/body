@@ -1,3 +1,22 @@
 {
-  globalThreshold=level;
+switch (level) {
+case TRACE:
+    globalThreshold(Log.Level.TRACE);
+  break;
+case DEBUG:
+globalThreshold(Log.Level.DEBUG);
+break;
+case INFO:
+globalThreshold(Log.Level.INFO);
+break;
+case WARN:
+globalThreshold(Log.Level.WARN);
+break;
+case ERROR:
+globalThreshold(Log.Level.ERROR);
+break;
+case FATAL:
+globalThreshold(Log.Level.FATAL);
+break;
+}
 }

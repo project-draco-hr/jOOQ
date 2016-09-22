@@ -1,5 +1,5 @@
 {
-  if (!globalThreshold.supports(Level.INFO))   return false;
+  if (!globalThreshold.supports(Log.Level.INFO))   return false;
   if (!supportsInfo)   return false;
  else   if (slf4j != null)   return slf4j.isInfoEnabled();
  else   if (log4j != null)   return log4j.isInfoEnabled();
