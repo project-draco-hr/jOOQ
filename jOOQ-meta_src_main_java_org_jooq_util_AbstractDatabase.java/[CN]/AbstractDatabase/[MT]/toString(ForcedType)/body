@@ -1,0 +1,5 @@
+{
+  StringWriter writer=new StringWriter();
+  JAXB.marshal(type,writer);
+  return writer.toString();
+}
