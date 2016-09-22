@@ -1,0 +1,6 @@
+{
+  this.level=level;
+  this.message=message;
+  this.details=details;
+  this.throwable=throwable;
+}

@@ -1,0 +1,28 @@
+{
+  JooqLogger delegate=JooqLogger.getLogger(BufferedLog.class);
+  if (!messages.isEmpty()) {
+    delegate.info("Buffered warning and error messages:");
+    delegate.info("------------------------------------");
+  }
+  for (  Message m : messages) switch (m.level) {
+case DEBUG:
+    delegate.debug(m.message,m.details,m.throwable);
+  break;
+case TRACE:
+delegate.trace(m.message,m.details,m.throwable);
+break;
+case INFO:
+delegate.info(m.message,m.details,m.throwable);
+break;
+case WARN:
+delegate.warn(m.message,m.details,m.throwable);
+break;
+case ERROR:
+delegate.error(m.message,m.details,m.throwable);
+break;
+case FATAL:
+delegate.error(m.message,m.details,m.throwable);
+break;
+}
+messages.clear();
+}

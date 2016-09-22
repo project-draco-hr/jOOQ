@@ -1,0 +1,4 @@
+{
+  delegate.warn(message,throwable);
+  messages.add(message(WARN,message,throwable));
+}

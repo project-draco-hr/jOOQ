@@ -1,0 +1,4 @@
+{
+  delegate.error(message,details);
+  messages.add(message(ERROR,message,details));
+}

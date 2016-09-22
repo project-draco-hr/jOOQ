@@ -1,0 +1,3 @@
+{
+  return new Message(level,message,null,throwable);
+}
