@@ -1,17 +1,17 @@
 {
   if (file != null) {
+    if (file.getParentFile() == null) {
+      log.warn("WARNING: Root directory configured for code generation. Not deleting anything from previous generations!");
+      return;
+    }
     if (file.isDirectory()) {
       File[] children=file.listFiles();
-      if (children != null) {
-        for (        File child : children) {
-          empty(child,suffix,keep);
-        }
-      }
+      if (children != null)       for (      File child : children)       empty(child,suffix,keep);
+      File[] childrenAfterDeletion=file.listFiles();
+      if (childrenAfterDeletion != null && childrenAfterDeletion.length == 0)       file.delete();
     }
- else {
-      if (file.getName().endsWith(suffix) && !keep.contains(file)) {
-        file.delete();
-      }
+ else     if (file.getName().endsWith(suffix) && !keep.contains(file)) {
+      file.delete();
     }
   }
 }

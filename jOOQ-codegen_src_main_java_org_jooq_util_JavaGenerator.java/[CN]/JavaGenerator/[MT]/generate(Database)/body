@@ -41,7 +41,9 @@
   log.info("");
   log.info("----------------------------------------------------------");
   log.info("Generating catalogs","Total: " + database.getCatalogs().size());
+  CatalogDefinition last=null;
   for (  CatalogDefinition catalog : database.getCatalogs()) {
+    last=catalog;
     try {
       if (generateCatalogIfEmpty(catalog))       generate(catalog);
  else       log.info("Excluding empty catalog",catalog);
@@ -49,5 +51,10 @@
  catch (    Exception e) {
       throw new GeneratorException("Error generating code for catalog " + catalog,e);
     }
+  }
+  if (last != null) {
+    log.info("Removing excess files");
+    empty(getStrategy().getFile(last).getParentFile(),(scala ? ".scala" : ".java"),files);
+    files.clear();
   }
 }

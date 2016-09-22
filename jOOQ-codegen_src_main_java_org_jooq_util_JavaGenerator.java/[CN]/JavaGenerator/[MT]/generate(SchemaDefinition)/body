@@ -72,9 +72,6 @@
   if (generateRoutines() && (database.getRoutines(schema).size() > 0 || hasTableValuedFunctions(schema))) {
     generateRoutines(schema);
   }
-  log.info("Removing excess files");
-  empty(getStrategy().getFile(schema).getParentFile(),(scala ? ".scala" : ".java"),files);
-  files.clear();
   watch.splitInfo("Generation finished: " + schema.getQualifiedName());
   log.info("");
 }
