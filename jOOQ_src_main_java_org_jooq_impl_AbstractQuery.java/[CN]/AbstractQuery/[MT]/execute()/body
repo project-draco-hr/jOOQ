@@ -1,63 +1,68 @@
 {
   if (isExecutable()) {
-    Configuration c=configuration();
-    DefaultExecuteContext ctx=new DefaultExecuteContext(c,this);
-    ExecuteListener listener=new ExecuteListeners(ctx);
-    int result=0;
-    try {
-      if (keepStatement() && statement != null) {
-        ctx.sql(rendered.sql);
-        ctx.statement(statement);
-        ctx.connection(c.connectionProvider(),statement.getConnection());
-      }
+    final Configuration c=configuration();
+    return c.dialect().executor().submit(new SQLDialectSupplier<Integer>(){
+      @Override public Integer get(){
+        DefaultExecuteContext ctx=new DefaultExecuteContext(c,AbstractQuery.this);
+        ExecuteListener listener=new ExecuteListeners(ctx);
+        int result=0;
+        try {
+          if (keepStatement() && statement != null) {
+            ctx.sql(rendered.sql);
+            ctx.statement(statement);
+            ctx.connection(c.connectionProvider(),statement.getConnection());
+          }
  else {
-        listener.renderStart(ctx);
-        rendered=getSQL0(ctx);
-        ctx.sql(rendered.sql);
-        listener.renderEnd(ctx);
-        rendered.sql=ctx.sql();
-        if (ctx.connection() == null) {
-          throw new DetachedException("Cannot execute query. No Connection configured");
+            listener.renderStart(ctx);
+            rendered=getSQL0(ctx);
+            ctx.sql(rendered.sql);
+            listener.renderEnd(ctx);
+            rendered.sql=ctx.sql();
+            if (ctx.connection() == null) {
+              throw new DetachedException("Cannot execute query. No Connection configured");
+            }
+            listener.prepareStart(ctx);
+            prepare(ctx);
+            listener.prepareEnd(ctx);
+            statement=ctx.statement();
+          }
+          int t=SettingsTools.getQueryTimeout(timeout,ctx.settings());
+          if (t != 0) {
+            ctx.statement().setQueryTimeout(t);
+          }
+          if (executePreparedStatements(c.settings()) && !Boolean.TRUE.equals(ctx.data(DATA_FORCE_STATIC_STATEMENT))) {
+            listener.bindStart(ctx);
+            if (rendered.bindValues != null)             using(c).bindContext(ctx.statement()).visit(rendered.bindValues);
+            listener.bindEnd(ctx);
+          }
+          result=execute(ctx,listener);
+          return result;
         }
-        listener.prepareStart(ctx);
-        prepare(ctx);
-        listener.prepareEnd(ctx);
-        statement=ctx.statement();
-      }
-      int t=SettingsTools.getQueryTimeout(timeout,ctx.settings());
-      if (t != 0) {
-        ctx.statement().setQueryTimeout(t);
-      }
-      if (executePreparedStatements(c.settings()) && !Boolean.TRUE.equals(ctx.data(DATA_FORCE_STATIC_STATEMENT))) {
-        listener.bindStart(ctx);
-        if (rendered.bindValues != null)         using(c).bindContext(ctx.statement()).visit(rendered.bindValues);
-        listener.bindEnd(ctx);
-      }
-      result=execute(ctx,listener);
-      return result;
-    }
- catch (    ControlFlowSignal e) {
-      throw e;
-    }
-catch (    RuntimeException e) {
-      ctx.exception(e);
-      listener.exception(ctx);
-      throw ctx.exception();
-    }
-catch (    SQLException e) {
-      ctx.sqlException(e);
-      listener.exception(ctx);
-      throw ctx.exception();
-    }
+ catch (        ControlFlowSignal e) {
+          throw e;
+        }
+catch (        RuntimeException e) {
+          ctx.exception(e);
+          listener.exception(ctx);
+          throw ctx.exception();
+        }
+catch (        SQLException e) {
+          ctx.sqlException(e);
+          listener.exception(ctx);
+          throw ctx.exception();
+        }
  finally {
-      if (!keepResultSet() || ctx.exception() != null) {
-        Tools.safeClose(listener,ctx,keepStatement());
-      }
-      if (!keepStatement()) {
-        statement=null;
-        rendered=null;
+          if (!keepResultSet() || ctx.exception() != null) {
+            Tools.safeClose(listener,ctx,keepStatement());
+          }
+          if (!keepStatement()) {
+            statement=null;
+            rendered=null;
+          }
+        }
       }
     }
+);
   }
  else {
     if (log.isDebugEnabled())     log.debug("Query is not executable",this);

@@ -1,3 +1,8 @@
 {
-  return execute(configuration,queries);
+  return configuration.dialect().executor().submit(new SQLDialectSupplier<int[]>(){
+    @Override public int[] get(){
+      return execute(configuration,queries);
+    }
+  }
+);
 }

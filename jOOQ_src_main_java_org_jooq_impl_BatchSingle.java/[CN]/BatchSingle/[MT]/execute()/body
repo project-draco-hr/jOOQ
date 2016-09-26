@@ -1,13 +1,18 @@
 {
-  if (allBindValues.isEmpty()) {
-    log.info("Single batch","No bind variables have been provided with a single statement batch execution. This may be due to accidental API misuse");
-    return BatchMultiple.execute(configuration,new Query[]{query});
-  }
-  checkBindValues();
-  if (executeStaticStatements(configuration.settings())) {
-    return executeStatic();
-  }
+  return configuration.dialect().executor().submit(new SQLDialectSupplier<int[]>(){
+    @Override public int[] get(){
+      if (allBindValues.isEmpty()) {
+        log.info("Single batch","No bind variables have been provided with a single statement batch execution. This may be due to accidental API misuse");
+        return BatchMultiple.execute(configuration,new Query[]{query});
+      }
+      checkBindValues();
+      if (executeStaticStatements(configuration.settings())) {
+        return executeStatic();
+      }
  else {
-    return executePrepared();
+        return executePrepared();
+      }
+    }
   }
+);
 }
