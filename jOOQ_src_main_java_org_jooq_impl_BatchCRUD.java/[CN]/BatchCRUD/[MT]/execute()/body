@@ -1,9 +1,8 @@
 {
-  return configuration.dialect().executor().submit(new SQLDialectSupplier<int[]>(){
-    @Override public int[] get(){
-      if (executeStaticStatements(configuration.settings()))       return executeStatic();
- else       return executePrepared();
-    }
+  if (executeStaticStatements(configuration.settings())) {
+    return executeStatic();
   }
-);
+ else {
+    return executePrepared();
+  }
 }

@@ -1,30 +1,25 @@
 {
-  return configuration.dialect().executor().submit(new SQLDialectSupplier<Integer>(){
-    @Override public Integer get(){
-      SQLDialect family=configuration.family();
-      results.clear();
-      outValues.clear();
-      if (family == POSTGRES) {
-        return executeSelectFromPOSTGRES();
-      }
- else       if (type == null) {
-        return executeCallableStatement();
-      }
+  SQLDialect family=configuration.family();
+  results.clear();
+  outValues.clear();
+  if (family == POSTGRES) {
+    return executeSelectFromPOSTGRES();
+  }
+ else   if (type == null) {
+    return executeCallableStatement();
+  }
  else {
 switch (family) {
 case HSQLDB:
-          if (SQLDataType.RESULT.equals(type.getSQLDataType())) {
-            return executeSelectFromHSQLDB();
-          }
+      if (SQLDataType.RESULT.equals(type.getSQLDataType())) {
+        return executeSelectFromHSQLDB();
+      }
  else {
-          }
+      }
 case H2:
-        return executeSelect();
+    return executeSelect();
 default :
-      return executeCallableStatement();
-  }
+  return executeCallableStatement();
 }
 }
-}
-);
 }

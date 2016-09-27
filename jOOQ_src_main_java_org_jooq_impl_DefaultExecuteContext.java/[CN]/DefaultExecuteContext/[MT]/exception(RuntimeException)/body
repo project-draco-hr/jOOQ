@@ -1,3 +1,12 @@
 {
   this.exception=e;
+  if (Boolean.TRUE.equals(settings().isDebugInfoOnStackTrace())) {
+    StackTraceElement[] oldStack=e.getStackTrace();
+    if (oldStack != null) {
+      StackTraceElement[] newStack=new StackTraceElement[oldStack.length + 1];
+      System.arraycopy(oldStack,0,newStack,1,oldStack.length);
+      newStack[0]=new StackTraceElement("org.jooq_" + Constants.VERSION + "."+ dialect(),"debug",null,-1);
+      e.setStackTrace(newStack);
+    }
+  }
 }
