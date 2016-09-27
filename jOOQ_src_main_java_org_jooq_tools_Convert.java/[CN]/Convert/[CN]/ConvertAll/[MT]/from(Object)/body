@@ -24,7 +24,7 @@
       return (U)from;
     }
  else     if (fromClass == byte[].class) {
-      return convert(Arrays.toString((byte[])from),toClass);
+      return convert(new String((byte[])from),toClass);
     }
  else     if (fromClass.isArray()) {
       if (toClass == java.sql.Array.class) {
@@ -42,6 +42,9 @@
         return (U)((EnumType)from).getLiteral();
       }
       return (U)from.toString();
+    }
+ else     if (toClass == byte[].class) {
+      return (U)from.toString().getBytes();
     }
  else     if (toClass == Byte.class || toClass == byte.class) {
       if (Number.class.isAssignableFrom(fromClass)) {
