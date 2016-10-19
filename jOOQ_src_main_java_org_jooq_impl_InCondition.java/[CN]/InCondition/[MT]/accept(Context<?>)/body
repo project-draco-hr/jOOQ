@@ -18,7 +18,7 @@ case FIREBIRD:
               ctx.formatSeparator().keyword("and").sql(' ');
             }
           }
-          toSQLSubValues(ctx,list.subList(i,Math.min(i + IN_LIMIT,list.size())));
+          toSQLSubValues(ctx,padded(ctx,list.subList(i,Math.min(i + IN_LIMIT,list.size()))));
         }
         ctx.formatIndentEnd().formatNewLine().sql(')');
         break;
@@ -31,6 +31,6 @@ default :
 }
 }
  else {
-toSQLSubValues(ctx,list);
+toSQLSubValues(ctx,padded(ctx,list));
 }
 }
