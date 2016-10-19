@@ -1,0 +1,3 @@
+{
+  return name == null ? null : WINDOWS_FORBIDDEN.contains(name.toUpperCase()) ? name + "_" : name;
+}

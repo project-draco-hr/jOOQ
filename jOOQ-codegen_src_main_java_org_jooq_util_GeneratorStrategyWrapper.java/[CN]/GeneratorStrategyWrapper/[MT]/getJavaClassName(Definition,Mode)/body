@@ -12,5 +12,6 @@
   className=delegate.getJavaClassName(definition,mode);
   className=overload(definition,mode,className);
   className=convertToIdentifier(className,language);
+  className=escapeWindowsForbiddenNames(className);
   return className;
 }
