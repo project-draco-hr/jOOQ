@@ -1,0 +1,6 @@
+{
+  List<SchemaDefinition> result=new ArrayList<SchemaDefinition>(super.getSchemata0());
+  Iterator<SchemaDefinition> it=result.iterator();
+  while (it.hasNext())   if ("INFORMATION_SCHEMA".equals(it.next().getName()))   it.remove();
+  return result;
+}

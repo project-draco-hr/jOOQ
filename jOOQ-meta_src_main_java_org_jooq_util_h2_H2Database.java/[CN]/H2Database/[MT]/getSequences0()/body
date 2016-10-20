@@ -2,9 +2,11 @@
   List<SequenceDefinition> result=new ArrayList<SequenceDefinition>();
   for (  Record record : create().select(Sequences.SEQUENCE_SCHEMA,Sequences.SEQUENCE_NAME).from(SEQUENCES).where(Sequences.SEQUENCE_SCHEMA.in(getInputSchemata())).orderBy(Sequences.SEQUENCE_SCHEMA,Sequences.SEQUENCE_NAME).fetch()) {
     SchemaDefinition schema=getSchema(record.get(Sequences.SEQUENCE_SCHEMA));
-    String name=record.get(Sequences.SEQUENCE_NAME);
-    DefaultDataTypeDefinition type=new DefaultDataTypeDefinition(this,schema,H2DataType.BIGINT.getTypeName());
-    result.add(new DefaultSequenceDefinition(schema,name,type));
+    if (schema != null) {
+      String name=record.get(Sequences.SEQUENCE_NAME);
+      DefaultDataTypeDefinition type=new DefaultDataTypeDefinition(this,schema,H2DataType.BIGINT.getTypeName());
+      result.add(new DefaultSequenceDefinition(schema,name,type));
+    }
   }
   return result;
 }
