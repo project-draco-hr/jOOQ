@@ -7,5 +7,5 @@
     split[i]=convertToIdentifier(split[i],language);
     split[i]=escapeWindowsForbiddenNames(split[i]);
   }
-  return StringUtils.join(split,".");
+  return StringUtils.join(split,".").replaceAll("\\._?\\.",".");
 }

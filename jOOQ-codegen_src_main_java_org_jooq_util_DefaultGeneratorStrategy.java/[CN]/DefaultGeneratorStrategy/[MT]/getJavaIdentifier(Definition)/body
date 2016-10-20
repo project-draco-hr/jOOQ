@@ -1,3 +1,6 @@
 {
+  if (definition instanceof IdentityDefinition)   return "IDENTITY_" + getJavaIdentifier(((IdentityDefinition)definition).getColumn().getContainer());
+ else   if (definition instanceof CatalogDefinition && ((CatalogDefinition)definition).isDefaultCatalog())   return "DEFAULT_CATALOG";
+ else   if (definition instanceof SchemaDefinition && ((SchemaDefinition)definition).isDefaultSchema())   return "DEFAULT_SCHEMA";
   return definition.getOutputName().toUpperCase();
 }

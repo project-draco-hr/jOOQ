@@ -1,3 +1,9 @@
 {
+  if (definition instanceof CatalogDefinition && ((CatalogDefinition)definition).isDefaultCatalog()) {
+    return "DefaultCatalog";
+  }
+ else   if (definition instanceof SchemaDefinition && ((SchemaDefinition)definition).isDefaultSchema()) {
+    return "DefaultSchema";
+  }
   return getJavaClassName0(definition,mode);
 }
