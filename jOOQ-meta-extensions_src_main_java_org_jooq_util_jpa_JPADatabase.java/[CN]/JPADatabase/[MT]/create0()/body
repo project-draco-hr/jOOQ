@@ -7,7 +7,23 @@
     }
     try {
       connection=DriverManager.getConnection("jdbc:h2:mem:jooq-meta-extensions","sa","");
-      MetadataSources metadata=new MetadataSources(new StandardServiceRegistryBuilder().applySetting("hibernate.dialect","org.hibernate.dialect.H2Dialect").applySetting("javax.persistence.schema-generation-connection",connection).build());
+      MetadataSources metadata=new MetadataSources(new StandardServiceRegistryBuilder().applySetting("hibernate.dialect","org.hibernate.dialect.H2Dialect").applySetting("javax.persistence.schema-generation-connection",connection).applySetting(AvailableSettings.CONNECTION_PROVIDER,new ConnectionProvider(){
+        @SuppressWarnings("rawtypes") @Override public boolean isUnwrappableAs(        Class unwrapType){
+          return false;
+        }
+        @Override public <T>T unwrap(        Class<T> unwrapType){
+          return null;
+        }
+        @Override public Connection getConnection(){
+          return connection;
+        }
+        @Override public void closeConnection(        Connection conn) throws SQLException {
+        }
+        @Override public boolean supportsAggressiveRelease(){
+          return true;
+        }
+      }
+).build());
       ClassPathScanningCandidateComponentProvider scanner=new ClassPathScanningCandidateComponentProvider(true);
       scanner.addIncludeFilter(new AnnotationTypeFilter(Entity.class));
       for (      String pkg : packages.split(","))       for (      BeanDefinition def : scanner.findCandidateComponents(defaultIfBlank(pkg,"").trim()))       metadata.addAnnotatedClass(Class.forName(def.getBeanClassName()));
