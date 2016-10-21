@@ -4,9 +4,10 @@
       log.warn("WARNING: Root directory configured for code generation. Not deleting anything from previous generations!");
       return;
     }
+    for (    File i : ignore)     if (file.getAbsolutePath().startsWith(i.getAbsolutePath()))     return;
     if (file.isDirectory()) {
       File[] children=file.listFiles();
-      if (children != null)       for (      File child : children)       empty(child,suffix,keep);
+      if (children != null)       for (      File child : children)       empty(child,suffix,keep,ignore);
       File[] childrenAfterDeletion=file.listFiles();
       if (childrenAfterDeletion != null && childrenAfterDeletion.length == 0)       file.delete();
     }

@@ -51,6 +51,7 @@
     }
   }
   log.info("Removing excess files");
-  empty(getStrategy().getFileRoot(),(scala ? ".scala" : ".java"),files);
+  empty(getStrategy().getFileRoot(),(scala ? ".scala" : ".java"),files,directoriesNotForRemoval);
+  directoriesNotForRemoval.clear();
   files.clear();
 }

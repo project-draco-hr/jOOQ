@@ -14,6 +14,7 @@
     }
  else {
       log.info("Existing version " + oldVersion + " is up to date with "+ newVersion+ " for schema "+ schema.getInputName()+ ". Ignoring schema.");
+      directoriesNotForRemoval.add(getStrategy().getFile(schema).getParentFile());
       return;
     }
   }
