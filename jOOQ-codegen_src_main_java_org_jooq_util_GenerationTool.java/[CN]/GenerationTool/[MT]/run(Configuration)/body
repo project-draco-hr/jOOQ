@@ -71,12 +71,14 @@ catalog.setInputCatalog(trim(d.getInputCatalog()));
 catalog.setOutputCatalog(trim(d.getOutputCatalog()));
 catalog.setOutputCatalogToDefault(d.isOutputCatalogToDefault());
 catalogs.add(catalog);
+if (!StringUtils.isBlank(catalog.getInputCatalog())) catalogsEmpty=false;
 if (schemataEmpty) {
 Schema schema=new Schema();
 schema.setInputSchema(trim(d.getInputSchema()));
 schema.setOutputSchema(trim(d.getOutputSchema()));
 schema.setOutputSchemaToDefault(d.isOutputSchemaToDefault());
 catalog.getSchemata().add(schema);
+if (!StringUtils.isBlank(schema.getInputSchema())) schemataEmpty=false;
 }
  else {
 catalog.getSchemata().addAll(schemata);

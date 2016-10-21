@@ -1,0 +1,16 @@
+{
+  try {
+    for (    SchemaDefinition schema : getSchemata0()) {
+      inputSchemata.add(schema.getName());
+      List<String> list=inputSchemataPerCatalog.get(schema.getCatalog().getName());
+      if (list == null) {
+        list=new ArrayList<String>();
+        inputSchemataPerCatalog.put(schema.getCatalog().getName(),list);
+      }
+      list.add(schema.getName());
+    }
+  }
+ catch (  Exception e) {
+    log.error("Could not load schemata",e);
+  }
+}
